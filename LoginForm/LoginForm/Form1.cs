@@ -45,8 +45,12 @@ namespace LoginForm
                 MessageBox.Show("Wrong ID or Password");
             }
         }
+
         #endregion
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }

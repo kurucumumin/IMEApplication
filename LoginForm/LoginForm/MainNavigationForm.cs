@@ -14,17 +14,19 @@ namespace LoginForm
 {
     public partial class MainNavigationForm : Form
     {
+        IMEEntities IME = new IMEEntities();
+        public AuthorizationValue Logged;
         public MainNavigationForm()
         {
+            AuthorizationValue AV = new AuthorizationValue();
+
             InitializeComponent();
         }
 
         private void lblQuotation_DoubleClick(object sender, EventArgs e)
         {
-            if (true)
-            {
-
-            }
+            
+           
         }
 
         private void MainNavigationForm_Load(object sender, EventArgs e)
