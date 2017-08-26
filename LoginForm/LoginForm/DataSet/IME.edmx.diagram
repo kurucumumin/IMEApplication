@@ -4,11 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="969652c9774946ee8282086807d272e2" Name="Diagram1">
+      <Diagram DiagramId="969652c9774946ee8282086807d272e2" Name="Diagram1" ZoomLevel="47">
         <EntityTypeShape EntityType="IMEModel.AuthorizationValue" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.sysdiagram" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Worker" Width="1.5" PointX="5.5" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="IMEModel.UserAuthorization" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="IMEModel.Customer" Width="1.5" PointX="8.125" PointY="0.75" />
+        <EntityTypeShape EntityType="IMEModel.CustomerAddress" Width="1.5" PointX="0.75" PointY="8.25" />
+        <EntityTypeShape EntityType="IMEModel.CustomerCategory" Width="1.5" PointX="8.75" PointY="9.5" />
+        <EntityTypeShape EntityType="IMEModel.CustomerDepartment" Width="1.5" PointX="3.75" PointY="5.625" />
+        <EntityTypeShape EntityType="IMEModel.CustomerSubCategory" Width="1.5" PointX="11" PointY="9.375" />
+        <EntityTypeShape EntityType="IMEModel.CustomerTitle" Width="1.5" PointX="6" PointY="5.5" />
+        <EntityTypeShape EntityType="IMEModel.CustomerWorker" Width="1.5" PointX="8.25" PointY="5.375" />
+        <EntityTypeShape EntityType="IMEModel.PaymentTerm" Width="1.5" PointX="5.875" PointY="8.75" />
+        <AssociationConnector Association="IMEModel.FK__Customer__paymen__74AE54BC" />
+        <AssociationConnector Association="IMEModel.FK__Customer__repres__75A278F5" />
+        <AssociationConnector Association="IMEModel.FK__CustomerS__categ__656C112C" />
+        <AssociationConnector Association="IMEModel.FK__CustomerT__depar__6A30C649" />
+        <AssociationConnector Association="IMEModel.FK__CustomerW__depar__70DDC3D8" />
+        <AssociationConnector Association="IMEModel.FK__CustomerW__title__71D1E811" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -57,6 +57,27 @@
     <Compile Include="DataSet\AuthorizationValue.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\Customer.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\CustomerAddress.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\CustomerCategory.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\CustomerDepartment.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\CustomerSubCategory.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\CustomerTitle.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\CustomerWorker.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\IME.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -71,6 +92,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>IME.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PaymentTerm.cs">
+      <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\sysdiagram.cs">
       <DependentUpon>IME.tt</DependentUpon>
@@ -99,6 +123,13 @@
     <Compile Include="Quotation\Quotation.Designer.cs">
       <DependentUpon>Quotation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Services\WorkerService.cs" />
+    <Compile Include="WorkerManager\AddIMEWorker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkerManager\AddIMEWorker.Designer.cs">
+      <DependentUpon>AddIMEWorker.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -116,6 +147,9 @@
     </Compile>
     <EmbeddedResource Include="Quotation\Quotation.resx">
       <DependentUpon>Quotation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkerManager\AddIMEWorker.resx">
+      <DependentUpon>AddIMEWorker.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="DataSet\IME.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -153,5 +187,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

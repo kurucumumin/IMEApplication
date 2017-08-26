@@ -28,5 +28,13 @@ namespace LoginForm.DataSet
         public virtual DbSet<AuthorizationValue> AuthorizationValues { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Worker> Workers { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<CustomerAddress> CustomerAddresses { get; set; }
+        public virtual DbSet<CustomerCategory> CustomerCategories { get; set; }
+        public virtual DbSet<CustomerDepartment> CustomerDepartments { get; set; }
+        public virtual DbSet<CustomerSubCategory> CustomerSubCategories { get; set; }
+        public virtual DbSet<CustomerTitle> CustomerTitles { get; set; }
+        public virtual DbSet<CustomerWorker> CustomerWorkers { get; set; }
+        public virtual DbSet<PaymentTerm> PaymentTerms { get; set; }
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 using LoginForm.Quotation;
+using LoginForm.WorkerManager;
 
 
 namespace LoginForm
@@ -45,8 +46,13 @@ namespace LoginForm
                 MessageBox.Show("Wrong ID or Password");
             }
         }
+
         #endregion
 
-
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            AddIMEWorker workerform = new AddIMEWorker();
+            workerform.Show();
+        }
     }
 }

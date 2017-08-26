@@ -12,24 +12,20 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class Worker
+    public partial class CustomerTitle
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Worker()
+        public CustomerTitle()
         {
-            this.AuthorizationValues = new HashSet<AuthorizationValue>();
-            this.Customers = new HashSet<Customer>();
+            this.CustomerWorkers = new HashSet<CustomerWorker>();
         }
     
-        public int WorkerID { get; set; }
-        public string LastName { get; set; }
-        public string FirstName { get; set; }
-        public string EMail { get; set; }
-        public string Phone { get; set; }
+        public int ID { get; set; }
+        public string titlename { get; set; }
+        public Nullable<int> departmnetID { get; set; }
     
+        public virtual CustomerDepartment CustomerDepartment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AuthorizationValue> AuthorizationValues { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Customer> Customers { get; set; }
+        public virtual ICollection<CustomerWorker> CustomerWorkers { get; set; }
     }
 }
