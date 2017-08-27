@@ -123,12 +123,19 @@
     <Compile Include="Quotation\Quotation.Designer.cs">
       <DependentUpon>Quotation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Services\AuthorizationService.cs" />
     <Compile Include="Services\WorkerService.cs" />
     <Compile Include="WorkerManager\AddIMEWorker.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="WorkerManager\AddIMEWorker.Designer.cs">
       <DependentUpon>AddIMEWorker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkerManager\AuthorizationManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkerManager\AuthorizationManagement.Designer.cs">
+      <DependentUpon>AuthorizationManagement.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -150,6 +157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="WorkerManager\AddIMEWorker.resx">
       <DependentUpon>AddIMEWorker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkerManager\AuthorizationManagement.resx">
+      <DependentUpon>AuthorizationManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="DataSet\IME.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

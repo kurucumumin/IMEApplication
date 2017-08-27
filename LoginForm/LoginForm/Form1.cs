@@ -52,7 +52,9 @@ namespace LoginForm
         private void Form1_Load(object sender, EventArgs e)
         {
             AddIMEWorker workerform = new AddIMEWorker();
-            workerform.Show();
+            AuthorizationManagement manager = new AuthorizationManagement();
+            manager.Show();
+            //workerform.Show();
         }
     }
 }
