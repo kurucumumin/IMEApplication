@@ -34,6 +34,7 @@ namespace LoginForm
             Worker Logged = IME.Workers
                 .Where(uName => uName.FirstName == UserName)
                 .Where(pw => pw.LastName == PW)
+                .Where(status=>status.isActive=="A")
                 .FirstOrDefault();
             WorkerApp.ID = Logged.WorkerID;
             if (Logged != null)

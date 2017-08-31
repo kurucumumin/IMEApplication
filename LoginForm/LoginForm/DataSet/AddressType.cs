@@ -12,28 +12,17 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class Customer
+    public partial class AddressType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Customer()
+        public AddressType()
         {
             this.AddressPools = new HashSet<AddressPool>();
         }
     
-        public int ID { get; set; }
-        public string c_name { get; set; }
-        public string capital { get; set; }
-        public string city { get; set; }
-        public string town { get; set; }
-        public Nullable<int> postcode { get; set; }
-        public Nullable<int> telephone { get; set; }
-        public Nullable<int> fax { get; set; }
-        public string webadress { get; set; }
-        public Nullable<int> payment_termID { get; set; }
-        public Nullable<int> representaryID { get; set; }
+        public int AddressTypeID { get; set; }
+        public string TypeName { get; set; }
     
-        public virtual PaymentTerm PaymentTerm { get; set; }
-        public virtual Worker Worker { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AddressPool> AddressPools { get; set; }
     }

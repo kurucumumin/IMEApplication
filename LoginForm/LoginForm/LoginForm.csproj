@@ -54,6 +54,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomerManager\AddressBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomerManager\AddressBook.Designer.cs">
+      <DependentUpon>AddressBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\AddressPool.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\AddressType.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\AuthorizationValue.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -123,7 +135,9 @@
     <Compile Include="Quotation\Quotation.Designer.cs">
       <DependentUpon>Quotation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Services\AddressService.cs" />
     <Compile Include="Services\AuthorizationService.cs" />
+    <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\WorkerService.cs" />
     <Compile Include="WorkerManager\AddIMEWorker.cs">
       <SubType>Form</SubType>
@@ -137,6 +151,9 @@
     <Compile Include="WorkerManager\AuthorizationManagement.Designer.cs">
       <DependentUpon>AuthorizationManagement.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CustomerManager\AddressBook.resx">
+      <DependentUpon>AddressBook.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
