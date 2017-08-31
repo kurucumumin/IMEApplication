@@ -17,7 +17,8 @@ namespace LoginForm.WorkerManager
     {
         AuthorizationService AuthorizationManager = new AuthorizationService();
         WorkerService WorkerService = new WorkerService();
-        
+        Worker AutWorker;
+        AuthorizationValue AutValue;
         public AuthorizationManagement()
         {
             InitializeComponent();
@@ -53,14 +54,30 @@ namespace LoginForm.WorkerManager
 
         private void btnAddAuthorization_Click(object sender, EventArgs e)
         {
-            //Aktif Değil Burası Çalıştırmayın Beyler.
 
-            AuthorizationValue AutValue = lstAddAuthorization.SelectedItem as AuthorizationValue;
-            Worker AutWorker = cbUser.SelectedItem as Worker;
+            AutWorker = cbUser.SelectedItem as Worker;
+            AutValue = lstAddAuthorization.SelectedItem as AuthorizationValue;
+
             AutValue.Workers.Add(AutWorker);
-            AuthorizationManager.AddNewAuthorization(AutValue);
+            int WorkerID = AutWorker.WorkerID;
+            int AuthorizationID = AutValue.AuthorizationID;
+            AuthorizationManager.Add(AuthorizationID, WorkerID);
+
+
             lstAddAuthorization.DataSource = AuthorizationManager.GetAvailAuthorization(AutWorker);
-            
+
+            dgAuthorizations.DataSource = AuthorizationManager.GetUserAuthorization(AutWorker);
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            int AuthorizationID = Convert.ToInt32(dgAuthorizations.CurrentRow.Cells["AuthorizationID"].Value);
+            AutWorker = cbUser.SelectedItem as Worker;
+            int WorkerID = AutWorker.WorkerID;
+            AuthorizationManager.Delete(AuthorizationID, WorkerID);
+
+            lstAddAuthorization.DataSource = AuthorizationManager.GetAvailAuthorization(AutWorker);
+
             dgAuthorizations.DataSource = AuthorizationManager.GetUserAuthorization(AutWorker);
         }
     }

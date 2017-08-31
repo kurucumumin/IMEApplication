@@ -88,7 +88,7 @@
             this.Controls.Add(this.txtPassWord);
             this.Controls.Add(this.txtID);
             this.Name = "Form1";
-            this.Text = "s";
+            this.Text = "Login Page";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -5,6 +5,22 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="IMEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AddressPool">
+          <Key>
+            <PropertyRef Name="PoolID" />
+          </Key>
+          <Property Name="PoolID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AddressValue" Type="nvarchar" MaxLength="500" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="AddressTypeID" Type="int" />
+        </EntityType>
+        <EntityType Name="AddressType">
+          <Key>
+            <PropertyRef Name="AddressTypeID" />
+          </Key>
+          <Property Name="AddressTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="AuthorizationValue">
           <Key>
             <PropertyRef Name="AuthorizationID" />
@@ -111,7 +127,32 @@
           <Property Name="FirstName" Type="varchar" MaxLength="255" />
           <Property Name="EMail" Type="varchar" MaxLength="255" />
           <Property Name="Phone" Type="varchar" MaxLength="255" />
+          <Property Name="isActive" Type="nvarchar" MaxLength="2" />
         </EntityType>
+        <Association Name="FK__AddressPo__Addre__18EBB532">
+          <End Role="AddressType" Type="Self.AddressType" Multiplicity="0..1" />
+          <End Role="AddressPool" Type="Self.AddressPool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddressType">
+              <PropertyRef Name="AddressTypeID" />
+            </Principal>
+            <Dependent Role="AddressPool">
+              <PropertyRef Name="AddressTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AddressPo__Custo__17F790F9">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="AddressPool" Type="Self.AddressPool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AddressPool">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Customer__paymen__74AE54BC">
           <End Role="PaymentTerm" Type="Self.PaymentTerm" Multiplicity="0..1" />
           <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
@@ -184,7 +225,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserAutho__Autho__2C3393D0">
+        <Association Name="FK__UserAutho__Autho__1332DBDC">
           <End Role="AuthorizationValue" Type="Self.AuthorizationValue" Multiplicity="1" />
           <End Role="UserAuthorization" Type="Self.UserAuthorization" Multiplicity="*" />
           <ReferentialConstraint>
@@ -196,7 +237,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserAutho__Worke__2B3F6F97">
+        <Association Name="FK__UserAutho__Worke__123EB7A3">
           <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
           <End Role="UserAuthorization" Type="Self.UserAuthorization" Multiplicity="*" />
           <ReferentialConstraint>
@@ -209,6 +250,8 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="IMEModelStoreContainer">
+          <EntitySet Name="AddressPool" EntityType="Self.AddressPool" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AddressType" EntityType="Self.AddressType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AuthorizationValue" EntityType="Self.AuthorizationValue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerAddress" EntityType="Self.CustomerAddress" Schema="dbo" store:Type="Tables" />
@@ -221,6 +264,14 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAuthorization" EntityType="Self.UserAuthorization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AddressPo__Addre__18EBB532" Association="Self.FK__AddressPo__Addre__18EBB532">
+            <End Role="AddressType" EntitySet="AddressType" />
+            <End Role="AddressPool" EntitySet="AddressPool" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AddressPo__Custo__17F790F9" Association="Self.FK__AddressPo__Custo__17F790F9">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="AddressPool" EntitySet="AddressPool" />
+          </AssociationSet>
           <AssociationSet Name="FK__Customer__paymen__74AE54BC" Association="Self.FK__Customer__paymen__74AE54BC">
             <End Role="PaymentTerm" EntitySet="PaymentTerm" />
             <End Role="Customer" EntitySet="Customer" />
@@ -245,11 +296,11 @@
             <End Role="CustomerTitle" EntitySet="CustomerTitle" />
             <End Role="CustomerWorker" EntitySet="CustomerWorker" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserAutho__Autho__2C3393D0" Association="Self.FK__UserAutho__Autho__2C3393D0">
+          <AssociationSet Name="FK__UserAutho__Autho__1332DBDC" Association="Self.FK__UserAutho__Autho__1332DBDC">
             <End Role="AuthorizationValue" EntitySet="AuthorizationValue" />
             <End Role="UserAuthorization" EntitySet="UserAuthorization" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserAutho__Worke__2B3F6F97" Association="Self.FK__UserAutho__Worke__2B3F6F97">
+          <AssociationSet Name="FK__UserAutho__Worke__123EB7A3" Association="Self.FK__UserAutho__Worke__123EB7A3">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="UserAuthorization" EntitySet="UserAuthorization" />
           </AssociationSet>
@@ -287,6 +338,7 @@
           <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="AuthorizationValues" Relationship="Self.UserAuthorization" FromRole="Worker" ToRole="AuthorizationValue" />
           <NavigationProperty Name="Customers" Relationship="IMEModel.FK__Customer__repres__75A278F5" FromRole="Worker" ToRole="Customer" />
+          <Property Name="isActive" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="UserAuthorization">
           <End Role="AuthorizationValue" Type="Self.AuthorizationValue" Multiplicity="*" />
@@ -332,6 +384,16 @@
             <End Role="CustomerTitle" EntitySet="CustomerTitles" />
             <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
           </AssociationSet>
+          <EntitySet Name="AddressPools" EntityType="IMEModel.AddressPool" />
+          <EntitySet Name="AddressTypes" EntityType="IMEModel.AddressType" />
+          <AssociationSet Name="FK__AddressPo__Addre__18EBB532" Association="IMEModel.FK__AddressPo__Addre__18EBB532">
+            <End Role="AddressType" EntitySet="AddressTypes" />
+            <End Role="AddressPool" EntitySet="AddressPools" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AddressPo__Custo__17F790F9" Association="IMEModel.FK__AddressPo__Custo__17F790F9">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="AddressPool" EntitySet="AddressPools" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Customer">
           <Key>
@@ -350,6 +412,7 @@
           <Property Name="representaryID" Type="Int32" />
           <NavigationProperty Name="PaymentTerm" Relationship="IMEModel.FK__Customer__paymen__74AE54BC" FromRole="Customer" ToRole="PaymentTerm" />
           <NavigationProperty Name="Worker" Relationship="IMEModel.FK__Customer__repres__75A278F5" FromRole="Customer" ToRole="Worker" />
+          <NavigationProperty Name="AddressPools" Relationship="IMEModel.FK__AddressPo__Custo__17F790F9" FromRole="Customer" ToRole="AddressPool" />
         </EntityType>
         <EntityType Name="CustomerAddress">
           <Key>
@@ -488,6 +551,49 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="AddressPool">
+          <Key>
+            <PropertyRef Name="PoolID" />
+          </Key>
+          <Property Name="PoolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AddressValue" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="AddressTypeID" Type="Int32" />
+          <NavigationProperty Name="AddressType" Relationship="IMEModel.FK__AddressPo__Addre__18EBB532" FromRole="AddressPool" ToRole="AddressType" />
+          <NavigationProperty Name="Customer" Relationship="IMEModel.FK__AddressPo__Custo__17F790F9" FromRole="AddressPool" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="AddressType">
+          <Key>
+            <PropertyRef Name="AddressTypeID" />
+          </Key>
+          <Property Name="AddressTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AddressPools" Relationship="IMEModel.FK__AddressPo__Addre__18EBB532" FromRole="AddressType" ToRole="AddressPool" />
+        </EntityType>
+        <Association Name="FK__AddressPo__Addre__18EBB532">
+          <End Type="IMEModel.AddressType" Role="AddressType" Multiplicity="0..1" />
+          <End Type="IMEModel.AddressPool" Role="AddressPool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddressType">
+              <PropertyRef Name="AddressTypeID" />
+            </Principal>
+            <Dependent Role="AddressPool">
+              <PropertyRef Name="AddressTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AddressPo__Custo__17F790F9">
+          <End Type="IMEModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="IMEModel.AddressPool" Role="AddressPool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AddressPool">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -516,6 +622,7 @@
           <EntitySetMapping Name="Workers">
             <EntityTypeMapping TypeName="IMEModel.Worker">
               <MappingFragment StoreEntitySet="Worker">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
                 <ScalarProperty Name="WorkerID" ColumnName="WorkerID" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -609,6 +716,24 @@
               <MappingFragment StoreEntitySet="PaymentTerm">
                 <ScalarProperty Name="term_name" ColumnName="term_name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AddressPools">
+            <EntityTypeMapping TypeName="IMEModel.AddressPool">
+              <MappingFragment StoreEntitySet="AddressPool">
+                <ScalarProperty Name="AddressTypeID" ColumnName="AddressTypeID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="AddressValue" ColumnName="AddressValue" />
+                <ScalarProperty Name="PoolID" ColumnName="PoolID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AddressTypes">
+            <EntityTypeMapping TypeName="IMEModel.AddressType">
+              <MappingFragment StoreEntitySet="AddressType">
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="AddressTypeID" ColumnName="AddressTypeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
