@@ -155,6 +155,7 @@
     </Compile>
     <Compile Include="Services\AddressService.cs" />
     <Compile Include="Services\AuthorizationService.cs" />
+    <Compile Include="Services\ContactListItem.cs" />
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\WorkerService.cs" />
     <Compile Include="WorkerManager\AddIMEWorker.cs">
