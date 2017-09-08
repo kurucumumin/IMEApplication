@@ -60,6 +60,24 @@
     <Compile Include="CustomerManager\AddressBook.Designer.cs">
       <DependentUpon>AddressBook.cs</DependentUpon>
     </Compile>
+    <Compile Include="Customer\CustomerMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerMain.designer.cs">
+      <DependentUpon>CustomerMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\DepartmentAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer\DepartmentAdd.designer.cs">
+      <DependentUpon>DepartmentAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\PositionAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer\PositionAdd.designer.cs">
+      <DependentUpon>PositionAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\AddressPool.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -153,6 +171,15 @@
     </Compile>
     <EmbeddedResource Include="CustomerManager\AddressBook.resx">
       <DependentUpon>AddressBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer\CustomerMain.resx">
+      <DependentUpon>CustomerMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer\DepartmentAdd.resx">
+      <DependentUpon>DepartmentAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer\PositionAdd.resx">
+      <DependentUpon>PositionAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
