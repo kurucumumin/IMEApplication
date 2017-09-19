@@ -145,6 +145,18 @@
     <Compile Include="ITEM\ItemCard.designer.cs">
       <DependentUpon>ItemCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="ITEM\LoaderPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ITEM\LoaderPage.designer.cs">
+      <DependentUpon>LoaderPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ITEM\MainPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ITEM\MainPage.designer.cs">
+      <DependentUpon>MainPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainNavigationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,6 +175,7 @@
     <Compile Include="Services\AuthorizationService.cs" />
     <Compile Include="Services\ContactListItem.cs" />
     <Compile Include="Services\CustomerService.cs" />
+    <Compile Include="Services\txtReader.cs" />
     <Compile Include="Services\WorkerService.cs" />
     <Compile Include="WorkerManager\AddIMEWorker.cs">
       <SubType>Form</SubType>
@@ -193,6 +206,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ITEM\ItemCard.resx">
       <DependentUpon>ItemCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ITEM\LoaderPage.resx">
+      <DependentUpon>LoaderPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ITEM\MainPage.resx">
+      <DependentUpon>MainPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainNavigationForm.resx">
       <DependentUpon>MainNavigationForm.cs</DependentUpon>
