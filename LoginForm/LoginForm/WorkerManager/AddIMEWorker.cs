@@ -36,7 +36,7 @@ namespace LoginForm.WorkerManager
                     {
 
                         Worker2Add.FirstName = txtFirstName.Text;
-                        Worker2Add.LastName = txtFirstName.Text;
+                        Worker2Add.LastName = txtLastName.Text;
 
                         Worker2Add.Phone = txtPhone.Text;
                         bool isDuplidateWorker = WorkerService.WarnDuplicateRecord(Worker2Add);
@@ -47,6 +47,7 @@ namespace LoginForm.WorkerManager
                         }
                         else
                         {
+                            Worker2Add.isActive = "A";
                             WorkerService.AddNewWorker(Worker2Add);
                             #region PrintingResult
                             label5.Visible = true;
@@ -69,9 +70,9 @@ namespace LoginForm.WorkerManager
             }
             #endregion
             #region RefreshListBox
-            List<Worker> Workers = new List<Worker>();
-            Workers = WorkerService.GetWorkers();
-            lstWorker.DataSource = Workers;
+      
+          lstWorker.DataSource= WorkerService.GetWorkers();
+           
             lstWorker.DisplayMember = "Email";
             lstWorker.ValueMember = "WorkerID";
             #endregion
@@ -94,7 +95,7 @@ namespace LoginForm.WorkerManager
 
         private void lstWorker_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+           
         }
 
         private void lstWorker_Click(object sender, EventArgs e)
@@ -109,6 +110,73 @@ namespace LoginForm.WorkerManager
             txtLastName.Text = DisplayWorker.LastName;
             txtPhone.Text = DisplayWorker.Phone;
             #endregion
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            Worker Deleted = new Worker();
+            Deleted = lstWorker.SelectedItem as Worker;
+            Deleted.isActive = "I";
+
+            try
+            {
+                WorkerService.UpdateWorker(Deleted);
+                MessageBox.Show("The Worker Updadated.");
+
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("The Operation Could Not Completed.Please Contact Your Consultant.");
+            }
+            #region RefreshListBox
+            List<Worker> Workers = new List<Worker>();
+            Workers = WorkerService.GetWorkers();
+            lstWorker.DataSource = Workers;
+            lstWorker.DisplayMember = "Email";
+            lstWorker.ValueMember = "WorkerID";
+            #endregion
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            Worker Updated = new Worker();
+            Updated = lstWorker.SelectedItem as Worker;
+            Updated.FirstName = txtFirstName.Text;
+            Updated.LastName = txtLastName.Text;
+            Updated.EMail = txtEmail.Text;
+            Updated.Phone = txtPhone.Text;
+            Updated.isActive = "A";
+            try
+            {
+                WorkerService.UpdateWorker(Updated);
+
+                MessageBox.Show("The Worker Updadated.");
+
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("The Operation Could Not Completed.Please Contact Your Consultant.");
+            }
+            finally
+            {
+                #region RefreshListBox
+                List<Worker> Workers = new List<Worker>();
+                Workers = WorkerService.GetWorkers();
+                lstWorker.DataSource = Workers;
+                lstWorker.DisplayMember = "Email";
+                lstWorker.ValueMember = "WorkerID";
+                #endregion
+            }
+
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AuthorizationManagement management = new AuthorizationManagement();
+            management.Show();
         }
     }
 }

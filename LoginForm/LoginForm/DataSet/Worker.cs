@@ -26,6 +26,7 @@ namespace LoginForm.DataSet
         public string FirstName { get; set; }
         public string EMail { get; set; }
         public string Phone { get; set; }
+        public string isActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AuthorizationValue> AuthorizationValues { get; set; }

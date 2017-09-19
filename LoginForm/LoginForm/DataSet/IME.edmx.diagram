@@ -23,6 +23,10 @@
         <AssociationConnector Association="IMEModel.FK__CustomerT__depar__6A30C649" />
         <AssociationConnector Association="IMEModel.FK__CustomerW__depar__70DDC3D8" />
         <AssociationConnector Association="IMEModel.FK__CustomerW__title__71D1E811" />
+        <EntityTypeShape EntityType="IMEModel.AddressPool" Width="1.5" PointX="10.375" PointY="1.5" />
+        <EntityTypeShape EntityType="IMEModel.AddressType" Width="1.5" PointX="8.125" PointY="12.75" />
+        <AssociationConnector Association="IMEModel.FK__AddressPo__Addre__18EBB532" />
+        <AssociationConnector Association="IMEModel.FK__AddressPo__Custo__17F790F9" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

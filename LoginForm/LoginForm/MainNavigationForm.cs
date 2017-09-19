@@ -28,7 +28,7 @@ namespace LoginForm
         {
 
             //Yetkli Kontrolü
-            bool Login = canLog(LoggedPerson);
+            bool Login = canLog(LoggedPerson,"Worker Manager2");
            
             if (Login)
             {
@@ -37,7 +37,7 @@ namespace LoginForm
             }
             else
             {
-                MessageBox.Show("siktir git");
+                MessageBox.Show("Insufficient Previleges.");
             }
         }
 
@@ -49,13 +49,13 @@ namespace LoginForm
             LoggedPerson = IME.Workers.Where(wID => wID.WorkerID == PersonID).FirstOrDefault();
         }
 
-        public bool canLog(Worker Person)
+        public bool canLog(Worker Person,string AuthorizationValue)
         {
             //Sonuç Çeken Sorgu
             var result = (from m in IME.AuthorizationValues
                           from b in m.Workers
                           where b.WorkerID == Person.WorkerID
-                          where m.AuthorizationID == 9
+                          where m.AuthorizationValue1 == AuthorizationValue
                           select new
                           {
                               m.AuthorizationValue1
@@ -71,6 +71,21 @@ namespace LoginForm
             {
                 return false;
 
+            }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            bool Login = canLog(LoggedPerson, "Worker Manager");
+
+            if (Login)
+            {
+                LoginForm.WorkerManager.AddIMEWorker WorkerPage = new WorkerManager.AddIMEWorker();
+                WorkerPage.Show();
+            }
+            else
+            {
+                MessageBox.Show("Insufficient Previleges.");
             }
         }
     }
