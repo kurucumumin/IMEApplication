@@ -12,18 +12,20 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class AddressType
+    public partial class SupplierSubCategory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AddressType()
+        public SupplierSubCategory()
         {
-            this.AddressPools = new HashSet<AddressPool>();
+            this.SupplierCategorySubCategories = new HashSet<SupplierCategorySubCategory>();
         }
     
-        public int AddressTypeID { get; set; }
-        public string TypeName { get; set; }
+        public int ID { get; set; }
+        public string subcategoryname { get; set; }
+        public Nullable<int> categoryID { get; set; }
     
+        public virtual SupplierCategory SupplierCategory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AddressPool> AddressPools { get; set; }
+        public virtual ICollection<SupplierCategorySubCategory> SupplierCategorySubCategories { get; set; }
     }
 }

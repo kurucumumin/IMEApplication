@@ -12,14 +12,9 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class AddressPool
+    public partial class capital
     {
-        public int PoolID { get; set; }
-        public string AddressValue { get; set; }
-        public Nullable<int> CustomerID { get; set; }
-        public Nullable<int> AddressTypeID { get; set; }
-    
-        public virtual AddressType AddressType { get; set; }
-        public virtual Customer Customer { get; set; }
+        public int ID { get; set; }
+        public string capitalname { get; set; }
     }
 }

@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -62,45 +63,8 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ıDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.snameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.discountrateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telephoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paymentmethodIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.faxDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.creditlimitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.webadressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paymenttermIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.representaryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rateIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.taxofficeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.taxnumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accountrepresentaryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isactiveDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.supplierNoteIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bankIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mainContactIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.iMEDataSet = new QuotationModule.IMEDataSet();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.ıDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.swnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.departmentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titleIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.faxDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mobilephoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.swemailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.supplieradressIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.supplierIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.supplierNoteIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.languageIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bankIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.supplierWorkerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.iMEDataSet1 = new QuotationModule.IMEDataSet1();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.textBox12 = new System.Windows.Forms.TextBox();
@@ -108,15 +72,6 @@
             this.button10 = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.workerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eMailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.workerNoteIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.workerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.iMEDataSet3 = new QuotationModule.IMEDataSet3();
-            this.supplierTableAdapter = new QuotationModule.IMEDataSetTableAdapters.SupplierTableAdapter();
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -125,53 +80,38 @@
             this.addressDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customerDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contactDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.supplierWorkerTableAdapter = new QuotationModule.IMEDataSet1TableAdapters.SupplierWorkerTableAdapter();
-            this.iMEDataSet2 = new QuotationModule.IMEDataSet2();
-            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.customerTableAdapter = new QuotationModule.IMEDataSet2TableAdapters.CustomerTableAdapter();
-            this.workerTableAdapter = new QuotationModule.IMEDataSet3TableAdapters.WorkerTableAdapter();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.comboBox8 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.label42 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
+            this.checkBox9 = new System.Windows.Forms.CheckBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label45 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.checkBox9 = new System.Windows.Forms.CheckBox();
-            this.label36 = new System.Windows.Forms.Label();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
-            this.label21 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iMEDataSet)).BeginInit();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierWorkerBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iMEDataSet1)).BeginInit();
             this.groupBox7.SuspendLayout();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.workerBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iMEDataSet3)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iMEDataSet2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.groupBox10.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -207,6 +147,24 @@
             this.groupBox1.Size = new System.Drawing.Size(454, 131);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // comboBox7
+            // 
+            this.comboBox7.FormattingEnabled = true;
+            this.comboBox7.Location = new System.Drawing.Point(262, 83);
+            this.comboBox7.Name = "comboBox7";
+            this.comboBox7.Size = new System.Drawing.Size(184, 21);
+            this.comboBox7.TabIndex = 74;
+            this.comboBox7.Text = "Selected...";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(206, 86);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(48, 13);
+            this.label21.TabIndex = 73;
+            this.label21.Text = "Payment";
             // 
             // button4
             // 
@@ -487,161 +445,14 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.number,
-            this.ıDDataGridViewTextBoxColumn,
-            this.snameDataGridViewTextBoxColumn,
-            this.discountrateDataGridViewTextBoxColumn,
-            this.telephoneDataGridViewTextBoxColumn,
-            this.paymentmethodIDDataGridViewTextBoxColumn,
-            this.faxDataGridViewTextBoxColumn,
-            this.creditlimitDataGridViewTextBoxColumn,
-            this.webadressDataGridViewTextBoxColumn,
-            this.paymenttermIDDataGridViewTextBoxColumn,
-            this.representaryIDDataGridViewTextBoxColumn,
-            this.rateIDDataGridViewTextBoxColumn,
-            this.taxofficeDataGridViewTextBoxColumn,
-            this.taxnumberDataGridViewTextBoxColumn,
-            this.accountrepresentaryIDDataGridViewTextBoxColumn,
-            this.isactiveDataGridViewTextBoxColumn,
-            this.supplierNoteIDDataGridViewTextBoxColumn,
-            this.bankIDDataGridViewTextBoxColumn,
-            this.mainContactIDDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.supplierBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(4, 9);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(1339, 229);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // number
-            // 
-            this.number.HeaderText = "number";
-            this.number.Name = "number";
-            // 
-            // ıDDataGridViewTextBoxColumn
-            // 
-            this.ıDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.ıDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.ıDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.ıDDataGridViewTextBoxColumn.Name = "ıDDataGridViewTextBoxColumn";
-            this.ıDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.ıDDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ıDDataGridViewTextBoxColumn.Width = 43;
-            // 
-            // snameDataGridViewTextBoxColumn
-            // 
-            this.snameDataGridViewTextBoxColumn.DataPropertyName = "s_name";
-            this.snameDataGridViewTextBoxColumn.HeaderText = "s_name";
-            this.snameDataGridViewTextBoxColumn.Name = "snameDataGridViewTextBoxColumn";
-            // 
-            // discountrateDataGridViewTextBoxColumn
-            // 
-            this.discountrateDataGridViewTextBoxColumn.DataPropertyName = "discountrate";
-            this.discountrateDataGridViewTextBoxColumn.HeaderText = "discountrate";
-            this.discountrateDataGridViewTextBoxColumn.Name = "discountrateDataGridViewTextBoxColumn";
-            // 
-            // telephoneDataGridViewTextBoxColumn
-            // 
-            this.telephoneDataGridViewTextBoxColumn.DataPropertyName = "telephone";
-            this.telephoneDataGridViewTextBoxColumn.HeaderText = "telephone";
-            this.telephoneDataGridViewTextBoxColumn.Name = "telephoneDataGridViewTextBoxColumn";
-            // 
-            // paymentmethodIDDataGridViewTextBoxColumn
-            // 
-            this.paymentmethodIDDataGridViewTextBoxColumn.DataPropertyName = "paymentmethodID";
-            this.paymentmethodIDDataGridViewTextBoxColumn.HeaderText = "paymentmethodID";
-            this.paymentmethodIDDataGridViewTextBoxColumn.Name = "paymentmethodIDDataGridViewTextBoxColumn";
-            // 
-            // faxDataGridViewTextBoxColumn
-            // 
-            this.faxDataGridViewTextBoxColumn.DataPropertyName = "fax";
-            this.faxDataGridViewTextBoxColumn.HeaderText = "fax";
-            this.faxDataGridViewTextBoxColumn.Name = "faxDataGridViewTextBoxColumn";
-            // 
-            // creditlimitDataGridViewTextBoxColumn
-            // 
-            this.creditlimitDataGridViewTextBoxColumn.DataPropertyName = "creditlimit";
-            this.creditlimitDataGridViewTextBoxColumn.HeaderText = "creditlimit";
-            this.creditlimitDataGridViewTextBoxColumn.Name = "creditlimitDataGridViewTextBoxColumn";
-            // 
-            // webadressDataGridViewTextBoxColumn
-            // 
-            this.webadressDataGridViewTextBoxColumn.DataPropertyName = "webadress";
-            this.webadressDataGridViewTextBoxColumn.HeaderText = "webadress";
-            this.webadressDataGridViewTextBoxColumn.Name = "webadressDataGridViewTextBoxColumn";
-            // 
-            // paymenttermIDDataGridViewTextBoxColumn
-            // 
-            this.paymenttermIDDataGridViewTextBoxColumn.DataPropertyName = "payment_termID";
-            this.paymenttermIDDataGridViewTextBoxColumn.HeaderText = "payment_termID";
-            this.paymenttermIDDataGridViewTextBoxColumn.Name = "paymenttermIDDataGridViewTextBoxColumn";
-            // 
-            // representaryIDDataGridViewTextBoxColumn
-            // 
-            this.representaryIDDataGridViewTextBoxColumn.DataPropertyName = "representaryID";
-            this.representaryIDDataGridViewTextBoxColumn.HeaderText = "representaryID";
-            this.representaryIDDataGridViewTextBoxColumn.Name = "representaryIDDataGridViewTextBoxColumn";
-            // 
-            // rateIDDataGridViewTextBoxColumn
-            // 
-            this.rateIDDataGridViewTextBoxColumn.DataPropertyName = "rate_ID";
-            this.rateIDDataGridViewTextBoxColumn.HeaderText = "rate_ID";
-            this.rateIDDataGridViewTextBoxColumn.Name = "rateIDDataGridViewTextBoxColumn";
-            // 
-            // taxofficeDataGridViewTextBoxColumn
-            // 
-            this.taxofficeDataGridViewTextBoxColumn.DataPropertyName = "taxoffice";
-            this.taxofficeDataGridViewTextBoxColumn.HeaderText = "taxoffice";
-            this.taxofficeDataGridViewTextBoxColumn.Name = "taxofficeDataGridViewTextBoxColumn";
-            // 
-            // taxnumberDataGridViewTextBoxColumn
-            // 
-            this.taxnumberDataGridViewTextBoxColumn.DataPropertyName = "taxnumber";
-            this.taxnumberDataGridViewTextBoxColumn.HeaderText = "taxnumber";
-            this.taxnumberDataGridViewTextBoxColumn.Name = "taxnumberDataGridViewTextBoxColumn";
-            // 
-            // accountrepresentaryIDDataGridViewTextBoxColumn
-            // 
-            this.accountrepresentaryIDDataGridViewTextBoxColumn.DataPropertyName = "accountrepresentaryID";
-            this.accountrepresentaryIDDataGridViewTextBoxColumn.HeaderText = "accountrepresentaryID";
-            this.accountrepresentaryIDDataGridViewTextBoxColumn.Name = "accountrepresentaryIDDataGridViewTextBoxColumn";
-            // 
-            // isactiveDataGridViewTextBoxColumn
-            // 
-            this.isactiveDataGridViewTextBoxColumn.DataPropertyName = "isactive";
-            this.isactiveDataGridViewTextBoxColumn.HeaderText = "isactive";
-            this.isactiveDataGridViewTextBoxColumn.Name = "isactiveDataGridViewTextBoxColumn";
-            // 
-            // supplierNoteIDDataGridViewTextBoxColumn
-            // 
-            this.supplierNoteIDDataGridViewTextBoxColumn.DataPropertyName = "SupplierNoteID";
-            this.supplierNoteIDDataGridViewTextBoxColumn.HeaderText = "SupplierNoteID";
-            this.supplierNoteIDDataGridViewTextBoxColumn.Name = "supplierNoteIDDataGridViewTextBoxColumn";
-            // 
-            // bankIDDataGridViewTextBoxColumn
-            // 
-            this.bankIDDataGridViewTextBoxColumn.DataPropertyName = "BankID";
-            this.bankIDDataGridViewTextBoxColumn.HeaderText = "BankID";
-            this.bankIDDataGridViewTextBoxColumn.Name = "bankIDDataGridViewTextBoxColumn";
-            // 
-            // mainContactIDDataGridViewTextBoxColumn
-            // 
-            this.mainContactIDDataGridViewTextBoxColumn.DataPropertyName = "MainContactID";
-            this.mainContactIDDataGridViewTextBoxColumn.HeaderText = "MainContactID";
-            this.mainContactIDDataGridViewTextBoxColumn.Name = "mainContactIDDataGridViewTextBoxColumn";
-            // 
-            // supplierBindingSource
-            // 
-            this.supplierBindingSource.DataMember = "Supplier";
-            this.supplierBindingSource.DataSource = this.iMEDataSet;
-            // 
-            // iMEDataSet
-            // 
-            this.iMEDataSet.DataSetName = "IMEDataSet";
-            this.iMEDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // groupBox6
             // 
@@ -655,124 +466,15 @@
             // 
             // dataGridView2
             // 
-            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ıDDataGridViewTextBoxColumn1,
-            this.swnameDataGridViewTextBoxColumn,
-            this.departmentIDDataGridViewTextBoxColumn,
-            this.phoneDataGridViewTextBoxColumn,
-            this.titleIDDataGridViewTextBoxColumn,
-            this.faxDataGridViewTextBoxColumn1,
-            this.mobilephoneDataGridViewTextBoxColumn,
-            this.swemailDataGridViewTextBoxColumn,
-            this.supplieradressIDDataGridViewTextBoxColumn,
-            this.supplierIDDataGridViewTextBoxColumn,
-            this.supplierNoteIDDataGridViewTextBoxColumn1,
-            this.languageIDDataGridViewTextBoxColumn,
-            this.bankIDDataGridViewTextBoxColumn1,
-            this.categoryIDDataGridViewTextBoxColumn});
-            this.dataGridView2.DataSource = this.supplierWorkerBindingSource;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.Location = new System.Drawing.Point(3, 16);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
             this.dataGridView2.Size = new System.Drawing.Size(1326, 111);
             this.dataGridView2.TabIndex = 0;
-            // 
-            // ıDDataGridViewTextBoxColumn1
-            // 
-            this.ıDDataGridViewTextBoxColumn1.DataPropertyName = "ID";
-            this.ıDDataGridViewTextBoxColumn1.HeaderText = "ID";
-            this.ıDDataGridViewTextBoxColumn1.Name = "ıDDataGridViewTextBoxColumn1";
-            this.ıDDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // swnameDataGridViewTextBoxColumn
-            // 
-            this.swnameDataGridViewTextBoxColumn.DataPropertyName = "sw_name";
-            this.swnameDataGridViewTextBoxColumn.HeaderText = "sw_name";
-            this.swnameDataGridViewTextBoxColumn.Name = "swnameDataGridViewTextBoxColumn";
-            // 
-            // departmentIDDataGridViewTextBoxColumn
-            // 
-            this.departmentIDDataGridViewTextBoxColumn.DataPropertyName = "departmentID";
-            this.departmentIDDataGridViewTextBoxColumn.HeaderText = "departmentID";
-            this.departmentIDDataGridViewTextBoxColumn.Name = "departmentIDDataGridViewTextBoxColumn";
-            // 
-            // phoneDataGridViewTextBoxColumn
-            // 
-            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "phone";
-            this.phoneDataGridViewTextBoxColumn.HeaderText = "phone";
-            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
-            // 
-            // titleIDDataGridViewTextBoxColumn
-            // 
-            this.titleIDDataGridViewTextBoxColumn.DataPropertyName = "titleID";
-            this.titleIDDataGridViewTextBoxColumn.HeaderText = "titleID";
-            this.titleIDDataGridViewTextBoxColumn.Name = "titleIDDataGridViewTextBoxColumn";
-            // 
-            // faxDataGridViewTextBoxColumn1
-            // 
-            this.faxDataGridViewTextBoxColumn1.DataPropertyName = "fax";
-            this.faxDataGridViewTextBoxColumn1.HeaderText = "fax";
-            this.faxDataGridViewTextBoxColumn1.Name = "faxDataGridViewTextBoxColumn1";
-            // 
-            // mobilephoneDataGridViewTextBoxColumn
-            // 
-            this.mobilephoneDataGridViewTextBoxColumn.DataPropertyName = "mobilephone";
-            this.mobilephoneDataGridViewTextBoxColumn.HeaderText = "mobilephone";
-            this.mobilephoneDataGridViewTextBoxColumn.Name = "mobilephoneDataGridViewTextBoxColumn";
-            // 
-            // swemailDataGridViewTextBoxColumn
-            // 
-            this.swemailDataGridViewTextBoxColumn.DataPropertyName = "sw_email";
-            this.swemailDataGridViewTextBoxColumn.HeaderText = "sw_email";
-            this.swemailDataGridViewTextBoxColumn.Name = "swemailDataGridViewTextBoxColumn";
-            // 
-            // supplieradressIDDataGridViewTextBoxColumn
-            // 
-            this.supplieradressIDDataGridViewTextBoxColumn.DataPropertyName = "supplieradressID";
-            this.supplieradressIDDataGridViewTextBoxColumn.HeaderText = "supplieradressID";
-            this.supplieradressIDDataGridViewTextBoxColumn.Name = "supplieradressIDDataGridViewTextBoxColumn";
-            // 
-            // supplierIDDataGridViewTextBoxColumn
-            // 
-            this.supplierIDDataGridViewTextBoxColumn.DataPropertyName = "supplierID";
-            this.supplierIDDataGridViewTextBoxColumn.HeaderText = "supplierID";
-            this.supplierIDDataGridViewTextBoxColumn.Name = "supplierIDDataGridViewTextBoxColumn";
-            // 
-            // supplierNoteIDDataGridViewTextBoxColumn1
-            // 
-            this.supplierNoteIDDataGridViewTextBoxColumn1.DataPropertyName = "supplierNoteID";
-            this.supplierNoteIDDataGridViewTextBoxColumn1.HeaderText = "supplierNoteID";
-            this.supplierNoteIDDataGridViewTextBoxColumn1.Name = "supplierNoteIDDataGridViewTextBoxColumn1";
-            // 
-            // languageIDDataGridViewTextBoxColumn
-            // 
-            this.languageIDDataGridViewTextBoxColumn.DataPropertyName = "languageID";
-            this.languageIDDataGridViewTextBoxColumn.HeaderText = "languageID";
-            this.languageIDDataGridViewTextBoxColumn.Name = "languageIDDataGridViewTextBoxColumn";
-            // 
-            // bankIDDataGridViewTextBoxColumn1
-            // 
-            this.bankIDDataGridViewTextBoxColumn1.DataPropertyName = "bankID";
-            this.bankIDDataGridViewTextBoxColumn1.HeaderText = "bankID";
-            this.bankIDDataGridViewTextBoxColumn1.Name = "bankIDDataGridViewTextBoxColumn1";
-            // 
-            // categoryIDDataGridViewTextBoxColumn
-            // 
-            this.categoryIDDataGridViewTextBoxColumn.DataPropertyName = "categoryID";
-            this.categoryIDDataGridViewTextBoxColumn.HeaderText = "categoryID";
-            this.categoryIDDataGridViewTextBoxColumn.Name = "categoryIDDataGridViewTextBoxColumn";
-            // 
-            // supplierWorkerBindingSource
-            // 
-            this.supplierWorkerBindingSource.DataMember = "SupplierWorker";
-            this.supplierWorkerBindingSource.DataSource = this.iMEDataSet1;
-            // 
-            // iMEDataSet1
-            // 
-            this.iMEDataSet1.DataSetName = "IMEDataSet1";
-            this.iMEDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // groupBox7
             // 
@@ -833,72 +535,15 @@
             // 
             // dataGridView3
             // 
-            this.dataGridView3.AutoGenerateColumns = false;
+            this.dataGridView3.AllowUserToAddRows = false;
+            this.dataGridView3.AllowUserToDeleteRows = false;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.workerIDDataGridViewTextBoxColumn,
-            this.lastNameDataGridViewTextBoxColumn,
-            this.firstNameDataGridViewTextBoxColumn,
-            this.eMailDataGridViewTextBoxColumn,
-            this.phoneDataGridViewTextBoxColumn1,
-            this.workerNoteIDDataGridViewTextBoxColumn});
-            this.dataGridView3.DataSource = this.workerBindingSource;
             this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView3.Location = new System.Drawing.Point(3, 16);
             this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.ReadOnly = true;
             this.dataGridView3.Size = new System.Drawing.Size(877, 127);
             this.dataGridView3.TabIndex = 0;
-            // 
-            // workerIDDataGridViewTextBoxColumn
-            // 
-            this.workerIDDataGridViewTextBoxColumn.DataPropertyName = "WorkerID";
-            this.workerIDDataGridViewTextBoxColumn.HeaderText = "WorkerID";
-            this.workerIDDataGridViewTextBoxColumn.Name = "workerIDDataGridViewTextBoxColumn";
-            this.workerIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            // 
-            // eMailDataGridViewTextBoxColumn
-            // 
-            this.eMailDataGridViewTextBoxColumn.DataPropertyName = "EMail";
-            this.eMailDataGridViewTextBoxColumn.HeaderText = "EMail";
-            this.eMailDataGridViewTextBoxColumn.Name = "eMailDataGridViewTextBoxColumn";
-            // 
-            // phoneDataGridViewTextBoxColumn1
-            // 
-            this.phoneDataGridViewTextBoxColumn1.DataPropertyName = "Phone";
-            this.phoneDataGridViewTextBoxColumn1.HeaderText = "Phone";
-            this.phoneDataGridViewTextBoxColumn1.Name = "phoneDataGridViewTextBoxColumn1";
-            // 
-            // workerNoteIDDataGridViewTextBoxColumn
-            // 
-            this.workerNoteIDDataGridViewTextBoxColumn.DataPropertyName = "WorkerNoteID";
-            this.workerNoteIDDataGridViewTextBoxColumn.HeaderText = "WorkerNoteID";
-            this.workerNoteIDDataGridViewTextBoxColumn.Name = "workerNoteIDDataGridViewTextBoxColumn";
-            // 
-            // workerBindingSource
-            // 
-            this.workerBindingSource.DataMember = "Worker";
-            this.workerBindingSource.DataSource = this.iMEDataSet3;
-            // 
-            // iMEDataSet3
-            // 
-            this.iMEDataSet3.DataSetName = "IMEDataSet3";
-            this.iMEDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // supplierTableAdapter
-            // 
-            this.supplierTableAdapter.ClearBeforeFill = true;
             // 
             // textBox13
             // 
@@ -949,6 +594,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(1354, 24);
             this.menuStrip1.TabIndex = 45;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // addressDetailsToolStripMenuItem
             // 
@@ -968,28 +614,6 @@
             this.contactDetailsToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
             this.contactDetailsToolStripMenuItem.Text = "Contact Details";
             // 
-            // supplierWorkerTableAdapter
-            // 
-            this.supplierWorkerTableAdapter.ClearBeforeFill = true;
-            // 
-            // iMEDataSet2
-            // 
-            this.iMEDataSet2.DataSetName = "IMEDataSet2";
-            this.iMEDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // customerBindingSource
-            // 
-            this.customerBindingSource.DataMember = "Customer";
-            this.customerBindingSource.DataSource = this.iMEDataSet2;
-            // 
-            // customerTableAdapter
-            // 
-            this.customerTableAdapter.ClearBeforeFill = true;
-            // 
-            // workerTableAdapter
-            // 
-            this.workerTableAdapter.ClearBeforeFill = true;
-            // 
             // groupBox10
             // 
             this.groupBox10.Controls.Add(this.label7);
@@ -1000,6 +624,28 @@
             this.groupBox10.TabIndex = 46;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Shipping Method";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 9);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(0, 13);
+            this.label7.TabIndex = 9;
+            // 
+            // comboBox8
+            // 
+            this.comboBox8.FormattingEnabled = true;
+            this.comboBox8.Items.AddRange(new object[] {
+            "Air Freight",
+            "Express",
+            "Truck",
+            "Sea Freight"});
+            this.comboBox8.Location = new System.Drawing.Point(6, 25);
+            this.comboBox8.Name = "comboBox8";
+            this.comboBox8.Size = new System.Drawing.Size(121, 21);
+            this.comboBox8.TabIndex = 8;
+            this.comboBox8.Text = "Air Freight";
             // 
             // button1
             // 
@@ -1033,12 +679,67 @@
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "CALCULATION";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label4.Location = new System.Drawing.Point(172, 18);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(20, 16);
+            this.label4.TabIndex = 23;
+            this.label4.Text = "%";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(273, 43);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(20, 13);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "TL";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(9, 40);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(77, 20);
+            this.textBox7.TabIndex = 21;
+            this.textBox7.Text = "Extra Charges";
+            // 
+            // textBox15
+            // 
+            this.textBox15.Location = new System.Drawing.Point(209, 39);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.Size = new System.Drawing.Size(52, 20);
+            this.textBox15.TabIndex = 20;
+            this.textBox15.Text = "0";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(243, 73);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(50, 13);
+            this.label42.TabIndex = 18;
+            this.label42.Text = "0,00   TL";
+            // 
             // textBox8
             // 
             this.textBox8.Location = new System.Drawing.Point(208, 15);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(53, 20);
             this.textBox8.TabIndex = 15;
+            // 
+            // checkBox9
+            // 
+            this.checkBox9.AutoSize = true;
+            this.checkBox9.Location = new System.Drawing.Point(62, 71);
+            this.checkBox9.Name = "checkBox9";
+            this.checkBox9.Size = new System.Drawing.Size(48, 17);
+            this.checkBox9.TabIndex = 17;
+            this.checkBox9.Text = "KDV";
+            this.checkBox9.UseVisualStyleBackColor = true;
             // 
             // textBox4
             // 
@@ -1055,6 +756,15 @@
             this.label45.Size = new System.Drawing.Size(50, 13);
             this.label45.TabIndex = 12;
             this.label45.Text = "0,00   TL";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(6, 72);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(50, 13);
+            this.label36.TabIndex = 16;
+            this.label36.Text = "Total Vat";
             // 
             // label41
             // 
@@ -1082,92 +792,6 @@
             this.label34.Size = new System.Drawing.Size(76, 13);
             this.label34.TabIndex = 0;
             this.label34.Text = "Total Discount";
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(243, 73);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(50, 13);
-            this.label42.TabIndex = 18;
-            this.label42.Text = "0,00   TL";
-            // 
-            // checkBox9
-            // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(62, 71);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(48, 17);
-            this.checkBox9.TabIndex = 17;
-            this.checkBox9.Text = "KDV";
-            this.checkBox9.UseVisualStyleBackColor = true;
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(6, 72);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(50, 13);
-            this.label36.TabIndex = 16;
-            this.label36.Text = "Total Vat";
-            // 
-            // comboBox8
-            // 
-            this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.Items.AddRange(new object[] {
-            "Air Freight",
-            "Express",
-            "Truck",
-            "Sea Freight"});
-            this.comboBox8.Location = new System.Drawing.Point(6, 25);
-            this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(121, 21);
-            this.comboBox8.TabIndex = 8;
-            this.comboBox8.Text = "Air Freight";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(0, 13);
-            this.label7.TabIndex = 9;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(9, 40);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(77, 20);
-            this.textBox7.TabIndex = 21;
-            this.textBox7.Text = "Extra Charges";
-            // 
-            // textBox15
-            // 
-            this.textBox15.Location = new System.Drawing.Point(209, 39);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(52, 20);
-            this.textBox15.TabIndex = 20;
-            this.textBox15.Text = "0";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(273, 43);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(20, 13);
-            this.label9.TabIndex = 22;
-            this.label9.Text = "TL";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(172, 18);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(20, 16);
-            this.label4.TabIndex = 23;
-            this.label4.Text = "%";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // checkBox1
             // 
@@ -1217,24 +841,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Landing Cost";
             // 
-            // comboBox7
-            // 
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(262, 83);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(184, 21);
-            this.comboBox7.TabIndex = 74;
-            this.comboBox7.Text = "Selected...";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(206, 86);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(48, 13);
-            this.label21.TabIndex = 73;
-            this.label21.Text = "Payment";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1270,22 +876,14 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iMEDataSet)).EndInit();
             this.groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierWorkerBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iMEDataSet1)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.workerBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iMEDataSet3)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iMEDataSet2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             this.groupBox11.ResumeLayout(false);
@@ -1321,9 +919,6 @@
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.DataGridView dataGridView3;
-        private IMEDataSet iMEDataSet;
-        private System.Windows.Forms.BindingSource supplierBindingSource;
-        private IMEDataSetTableAdapters.SupplierTableAdapter supplierTableAdapter;
         private System.Windows.Forms.TextBox textBox13;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
@@ -1331,25 +926,6 @@
         private System.Windows.Forms.ComboBox comboBox5;
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn number;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ıDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn snameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn discountrateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telephoneDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn paymentmethodIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn faxDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn creditlimitDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn webadressDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn paymenttermIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn representaryIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rateIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn taxofficeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn taxnumberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn accountrepresentaryIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn isactiveDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn supplierNoteIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bankIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mainContactIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem addressDetailsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem customerDetailsToolStripMenuItem;
@@ -1369,37 +945,8 @@
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button4;
-        private IMEDataSet1 iMEDataSet1;
-        private System.Windows.Forms.BindingSource supplierWorkerBindingSource;
-        private IMEDataSet1TableAdapters.SupplierWorkerTableAdapter supplierWorkerTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ıDDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn swnameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn departmentIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn titleIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn faxDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mobilephoneDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn swemailDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn supplieradressIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn supplierIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn supplierNoteIDDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn languageIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bankIDDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoryIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label35;
-        private IMEDataSet2 iMEDataSet2;
-        private System.Windows.Forms.BindingSource customerBindingSource;
-        private IMEDataSet2TableAdapters.CustomerTableAdapter customerTableAdapter;
-        private IMEDataSet3 iMEDataSet3;
-        private System.Windows.Forms.BindingSource workerBindingSource;
-        private IMEDataSet3TableAdapters.WorkerTableAdapter workerTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn workerIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn eMailDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn workerNoteIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox11;

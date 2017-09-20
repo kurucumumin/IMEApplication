@@ -12,21 +12,26 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class CustomerCategory
+    public partial class Rate
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CustomerCategory()
+        public Rate()
         {
-            this.CustomerCategorySubCategories = new HashSet<CustomerCategorySubCategory>();
-            this.CustomerSubCategories = new HashSet<CustomerSubCategory>();
+            this.Customers = new HashSet<Customer>();
+            this.Customers1 = new HashSet<Customer>();
+            this.Suppliers = new HashSet<Supplier>();
         }
     
         public int ID { get; set; }
-        public string categoryname { get; set; }
+        public string rate_name { get; set; }
+        public Nullable<System.DateTime> rate_date { get; set; }
+        public Nullable<decimal> currency { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerCategorySubCategory> CustomerCategorySubCategories { get; set; }
+        public virtual ICollection<Customer> Customers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerSubCategory> CustomerSubCategories { get; set; }
+        public virtual ICollection<Customer> Customers1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Supplier> Suppliers { get; set; }
     }
 }

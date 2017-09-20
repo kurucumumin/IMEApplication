@@ -12,48 +12,40 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class Customer
+    public partial class Supplier
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Customer()
+        public Supplier()
         {
-            this.CustomerAdresses = new HashSet<CustomerAdress>();
-            this.CustomerCategorySubCategories = new HashSet<CustomerCategorySubCategory>();
-            this.CustomerWorkers = new HashSet<CustomerWorker>();
+            this.SupplierCategorySubCategories = new HashSet<SupplierCategorySubCategory>();
+            this.SupplierWorkers = new HashSet<SupplierWorker>();
+            this.SupplierWorkerNotes = new HashSet<SupplierWorkerNote>();
         }
     
         public string ID { get; set; }
-        public string c_name { get; set; }
+        public string s_name { get; set; }
         public Nullable<int> discountrate { get; set; }
-        public Nullable<int> telephone { get; set; }
+        public string telephone { get; set; }
         public Nullable<int> paymentmethodID { get; set; }
-        public Nullable<int> fax { get; set; }
+        public string fax { get; set; }
         public Nullable<int> creditlimit { get; set; }
         public string webadress { get; set; }
         public Nullable<int> payment_termID { get; set; }
         public Nullable<int> representaryID { get; set; }
         public Nullable<int> rate_ID { get; set; }
-        public Nullable<int> customerNoteID { get; set; }
-        public Nullable<int> representary2ID { get; set; }
-        public Nullable<int> accountrepresentaryID { get; set; }
-        public Nullable<int> isactive { get; set; }
-        public Nullable<int> rateIDinvoice { get; set; }
         public string taxoffice { get; set; }
         public Nullable<int> taxnumber { get; set; }
+        public Nullable<int> accountrepresentaryID { get; set; }
     
-        public virtual Worker Worker { get; set; }
-        public virtual Note Note { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
         public virtual PaymentTerm PaymentTerm { get; set; }
         public virtual Rate Rate { get; set; }
-        public virtual Rate Rate1 { get; set; }
-        public virtual Worker Worker1 { get; set; }
-        public virtual Worker Worker2 { get; set; }
+        public virtual Worker Worker { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerAdress> CustomerAdresses { get; set; }
+        public virtual ICollection<SupplierCategorySubCategory> SupplierCategorySubCategories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerCategorySubCategory> CustomerCategorySubCategories { get; set; }
+        public virtual ICollection<SupplierWorker> SupplierWorkers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerWorker> CustomerWorkers { get; set; }
+        public virtual ICollection<SupplierWorkerNote> SupplierWorkerNotes { get; set; }
     }
 }

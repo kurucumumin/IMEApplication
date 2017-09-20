@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
-using LoginForm.Quotation;
+//using LoginForm.Quotation;
 using LoginForm.WorkerManager;
 
 
@@ -34,7 +34,7 @@ namespace LoginForm
             Worker Logged = IME.Workers
                 .Where(uName => uName.FirstName == UserName)
                 .Where(pw => pw.LastName == PW)
-                .Where(status=>status.isActive=="A")
+                .Where(status=>status.isActive==1)
                 .FirstOrDefault();
             WorkerApp.ID = Logged.WorkerID;
             if (Logged != null)

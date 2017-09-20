@@ -17,8 +17,12 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Worker()
         {
-            this.AuthorizationValues = new HashSet<AuthorizationValue>();
             this.Customers = new HashSet<Customer>();
+            this.Customers1 = new HashSet<Customer>();
+            this.Customers2 = new HashSet<Customer>();
+            this.Suppliers = new HashSet<Supplier>();
+            this.SupplierWorkerNotes = new HashSet<SupplierWorkerNote>();
+            this.AuthorizationValues = new HashSet<AuthorizationValue>();
         }
     
         public int WorkerID { get; set; }
@@ -26,11 +30,25 @@ namespace LoginForm.DataSet
         public string FirstName { get; set; }
         public string EMail { get; set; }
         public string Phone { get; set; }
-        public string isActive { get; set; }
+        public Nullable<int> WorkerNoteID { get; set; }
+        public string Username { get; set; }
+        public Nullable<decimal> MinMarge { get; set; }
+        public Nullable<decimal> MinRate { get; set; }
+        public Nullable<int> Title { get; set; }
+        public Nullable<int> isActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AuthorizationValue> AuthorizationValues { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Customer> Customers1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Customer> Customers2 { get; set; }
+        public virtual Note Note { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Supplier> Suppliers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SupplierWorkerNote> SupplierWorkerNotes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AuthorizationValue> AuthorizationValues { get; set; }
     }
 }

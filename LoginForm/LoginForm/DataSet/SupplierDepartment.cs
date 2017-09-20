@@ -12,21 +12,21 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class CustomerCategory
+    public partial class SupplierDepartment
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CustomerCategory()
+        public SupplierDepartment()
         {
-            this.CustomerCategorySubCategories = new HashSet<CustomerCategorySubCategory>();
-            this.CustomerSubCategories = new HashSet<CustomerSubCategory>();
+            this.SupplierTitles = new HashSet<SupplierTitle>();
+            this.SupplierWorkers = new HashSet<SupplierWorker>();
         }
     
         public int ID { get; set; }
-        public string categoryname { get; set; }
+        public string departmentname { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerCategorySubCategory> CustomerCategorySubCategories { get; set; }
+        public virtual ICollection<SupplierTitle> SupplierTitles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerSubCategory> CustomerSubCategories { get; set; }
+        public virtual ICollection<SupplierWorker> SupplierWorkers { get; set; }
     }
 }
