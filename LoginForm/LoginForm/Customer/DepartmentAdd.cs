@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using LoginForm.DataSet;
 
 namespace CustomerPage2
 {
@@ -41,11 +40,6 @@ namespace CustomerPage2
             CustomerMain form = new CustomerMain();
             form.Show();
             this.Hide();
-        }
-
-        private void DepartmentAdd_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

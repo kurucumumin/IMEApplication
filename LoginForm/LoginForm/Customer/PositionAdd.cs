@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using LoginForm.DataSet;
 
 namespace CustomerPage2
 {

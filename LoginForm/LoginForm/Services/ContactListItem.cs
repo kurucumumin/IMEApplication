@@ -10,5 +10,6 @@ namespace CustomerPage2
     {
         public static int ID;
         public static string contactName;
+        public static int AdressID;
     }
 }

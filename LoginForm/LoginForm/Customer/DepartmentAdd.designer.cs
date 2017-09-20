@@ -81,7 +81,6 @@
             this.Controls.Add(this.label1);
             this.Name = "DepartmentAdd";
             this.Text = "DepartmentAdd";
-            this.Load += new System.EventHandler(this.DepartmentAdd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

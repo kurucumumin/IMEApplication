@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using LoginForm.DataSet;
 
 namespace CustomerPage2
 {
@@ -32,6 +31,7 @@ namespace CustomerPage2
         private void CustomerMain_Load(object sender, EventArgs e)
         {
             #region ComboboxFiller
+            
             ContactDepartment.DataSource = IME.CustomerDepartments.ToList();
             ContactDepartment.DisplayMember = "departmentname";
             ContactTitle.DataSource = IME.CustomerTitles.ToList();
@@ -58,6 +58,11 @@ namespace CustomerPage2
             PaymentMethod.DisplayMember = "Payment";
             AccountRepresentary.DataSource = IME.Workers.ToList();
             AccountRepresentary.DisplayMember= "FirstName";
+            
+            
+            cbCountry.DataSource = IME.Countries.ToList();
+            cbCountry.DisplayMember = "Country_name";
+            
             #endregion
             customersearch();
         }
@@ -107,7 +112,7 @@ namespace CustomerPage2
                                     ContactMobilePhone.Text = a.mobilephone;
                                     ContactTitle.Text = a.CustomerTitle.titlename;
                                     ContactPhone.Text = a.phone;
-                                    ContactNotes.Text = a.Notes.Note_name;
+                                    ContactNotes.Text = a.Note.Note_name;
                                 }
                             }
             }catch { }
@@ -179,6 +184,11 @@ namespace CustomerPage2
             ContactFAX.Enabled = false;
             CommunicationLanguage.Enabled = false;
             ContactNotes.Enabled = false;
+            departmentAdd.Enabled = false;
+            DeliveryAddressOk.Enabled = false;
+            InvoiceAdressOk.Enabled = false;
+
+            titleAdd.Enabled = false;
             ContactList.Enabled = true;
             
             btnContactAdd.Enabled = true;
@@ -219,11 +229,66 @@ namespace CustomerPage2
             ContactFAX.Enabled = true;
             CommunicationLanguage.Enabled = true;
             ContactNotes.Enabled = true;
+            departmentAdd.Enabled = true;
+            DeliveryAddressOk.Enabled = true;
+            InvoiceAdressOk.Enabled = true;
+            titleAdd.Enabled = true;
             ContactList.Enabled = false;
             CustomerDataGrid.Enabled = false;
             btnContactAdd.Enabled = false;
             btnContactDelete.Enabled = false;
             btnContactUpdate.Enabled = false;
+            btnCreate.Enabled = false;
+            btnUpdate.Enabled = false;
+            txtSearch.Enabled = false;
+            Search.Enabled = false;
+            #endregion
+        }
+
+        private void AdressTabEnableFalse()
+        {
+            #region AdressTabEnableFalse
+            AddressType.Enabled = false;
+            cbCountry.Enabled = false;
+            cbCity.Enabled = false;
+            cbTown.Enabled = false;
+            PostCode.Enabled = false;
+            AddressDetails.Enabled = false;
+            DeliveryAddressOk.Enabled = false;
+            InvoiceAdressOk.Enabled = false;
+            cbCompanyAdress.Enabled = false;
+            AdressList.Enabled = true;
+
+            
+            if (ContactList.DataSource != null)
+            {
+                AddressDel.Enabled = true;
+                AddressUpd.Enabled = true;
+            }
+            AdressAdd.Enabled = true;
+            btnCreate.Enabled = true;
+            btnUpdate.Enabled = true;
+            #endregion
+        }
+
+        private void AdressTabEnableTrue()
+        {
+            #region contactTabEnableTrue
+            AddressType.Enabled = true;
+            cbCountry.Enabled = true;
+            cbCity.Enabled = true;
+            cbTown.Enabled = true;
+            PostCode.Enabled = true;
+            AddressDetails.Enabled = true;
+            DeliveryAddressOk.Enabled = true;
+            InvoiceAdressOk.Enabled = true;
+            cbCompanyAdress.Enabled = true;
+            AdressList.Enabled = false;
+
+            CustomerDataGrid.Enabled = false;
+            AdressAdd.Enabled = false;
+            AddressDel.Enabled = false;
+            AddressUpd.Enabled = false;
             btnCreate.Enabled = false;
             btnUpdate.Enabled = false;
             txtSearch.Enabled = false;
@@ -244,6 +309,8 @@ namespace CustomerPage2
                                    join p in IME.PaymentTerms on c.payment_termID equals p.ID
                                    join m in IME.PaymentMethods on c.paymentmethodID equals m.ID
                                    join l in IME.Languages on customerworker.languageID equals l.ID
+                                   join a in IME.CustomerAdresses on c.ID equals a.CustomerID into adress
+                                   let a = adress.Select(customerworker1 => customerworker1).FirstOrDefault()
 
                                    select new
                                    {
@@ -263,22 +330,33 @@ namespace CustomerPage2
                                        s.CustomerSubCategory.subcategoryname,
                                        p.term_name,
                                        customerworker,
-                                       cwNote = customerworker.Notes.Note_name,
+                                       cwNote = customerworker.Note.Note_name,
                                        c.isactive,
                                        c.rateIDinvoice,
-                                       CustomerNote = c.Notes.Note_name,
-                                       WorkerNote = w.Notes.Note_name,
-                                       CustomerWorkerNote = customerworker.Notes.Note_name,
+                                       CustomerNote = c.Note.Note_name,
+                                       WorkerNote = w.Note.Note_name,
+                                       CustomerWorkerNote = customerworker.Note.Note_name,
                                        AccountRepresentative = customeraccountant.FirstName,
-                                       l.languagename
+                                       l.languagename,
+                                       AddressCity=a.City.City_name,
+                                       AddressContact=a.CustomerWorker.cw_name,
+                                       AdressCountry=a.Country.Country_name,
+                                       a.isDeliveryAdress,
+                                       a.isInvoiceAdress,
+                                       a.PostCode,
+                                       a.Town.Town_name,
+                                       a.AdressDetails,
                                    }).ToList();
             #endregion
 
             #region FillInfos
             CustomerDataGrid.DataSource = customerAdapter;
+            
             CustomerDataGrid.ClearSelection();
             CustomerDataGrid.Rows[gridselectedindex].Selected = true;// tüm row u seçtirmek için bu formülü kullnınca selectedrow index =0 oluyor
             CustomerCode.Text = customerAdapter[gridselectedindex].ID;
+            AddressType.DataSource = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text).ToList();
+            AddressType.DisplayMember = "cw_name";
             CustomerName.Text = customerAdapter[gridselectedindex].c_name;
             factor.SelectedIndex = factor.FindStringExact(customerAdapter[gridselectedindex].currency.ToString());
             Telephone.Text = customerAdapter[gridselectedindex].telephone.ToString();
@@ -301,6 +379,21 @@ namespace CustomerPage2
             if (customerAdapter[gridselectedindex].isactive == 1) { rb_active.Checked = true; } else { rb_passive.Checked = true; }
             ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
             ContactList.DisplayMember = "cw_name";
+            AdressList.DataSource = IME.CustomerAdresses.Where(a => a.CustomerID == CustomerCode.Text).ToList();
+            AdressList.DisplayMember = "AdressDetails";
+            if (customerAdapter[gridselectedindex].AddressContact == null)
+            { AddressType.SelectedItem=null;cbCompanyAdress.Checked = true; }
+            else
+            {
+                AddressType.SelectedIndex = AddressType.FindStringExact(customerAdapter[gridselectedindex].AddressContact);
+            }
+            PostCode.Text = customerAdapter[gridselectedindex].PostCode;
+            cbCountry.SelectedIndex = cbCountry.FindStringExact(customerAdapter[gridselectedindex].AdressCountry);
+            cbCity.SelectedIndex = cbCity.FindStringExact(customerAdapter[gridselectedindex].AddressCity);
+            if (customerAdapter[gridselectedindex].isDeliveryAdress == 1) { DeliveryAddressOk.Checked = true; } else { DeliveryAddressOk.Checked = false; }
+            if (customerAdapter[gridselectedindex].isInvoiceAdress == 1) { InvoiceAdressOk.Checked = true; } else { InvoiceAdressOk.Checked = false; }
+            cbTown.SelectedIndex = cbTown.FindStringExact(customerAdapter[gridselectedindex].Town_name);
+            AddressDetails.Text = customerAdapter[gridselectedindex].AdressDetails;
             #endregion
         }
 
@@ -358,25 +451,26 @@ namespace CustomerPage2
             #endregion
         }
 
+
         private void btnContactDone_Click(object sender, EventArgs e)
         {
             
                 CustomerWorker cw = new CustomerWorker();
             //CustomerCode.Text;
             cw.customerID = CustomerCode.Text;
-            cw.departmentID = IME.CustomerDepartments.First(a => a.departmentname == ContactDepartment.Text).ID;
-            cw.titleID = IME.CustomerTitles.First(a => a.titlename == ContactTitle.Text).ID;
+            cw.departmentID = ((CustomerDepartment)(ContactDepartment).SelectedItem).ID;
+            cw.titleID = ((CustomerTitle)(ContactTitle).SelectedItem).ID;
             cw.cw_name = ContactName.Text;
             cw.cw_email = ContactEmail.Text;
             cw.phone = ContactPhone.Text;
             cw.mobilephone = ContactMobilePhone.Text;
             cw.fax = ContactFAX.Text;
-            cw.languageID = IME.Languages.First(a => a.languagename == CommunicationLanguage.Text).ID;
-            Notes n = new Notes();
+            cw.languageID = ((Language)(CommunicationLanguage).SelectedItem).ID;
+            Note n = new Note();
             n.Note_name = ContactNotes.Text;
             IME.Notes.Add(n);
             IME.SaveChanges();
-            cw.customerNoteID = IME.Notes.First(a => a.Note_name == ContactNotes.Text).ID;
+            cw.customerNoteID = n.ID;
             IME.CustomerWorkers.Add(cw);
             IME.SaveChanges();
             contactTabEnableFalse();
@@ -399,13 +493,10 @@ namespace CustomerPage2
 
         private void ContactDepartment_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
                 int c_departmentID;
                 try { c_departmentID = ((CustomerDepartment)((ComboBox)sender).SelectedItem).ID; } catch { c_departmentID = 0; }
                 ContactTitle.DataSource = IME.CustomerTitles.Where(b => b.CustomerDepartment.ID == c_departmentID).ToList();
                 ContactTitle.DisplayMember = "titlename";
-           
-            
         }
 
         private void btnContactDelete_Click(object sender, EventArgs e)
@@ -515,15 +606,15 @@ namespace CustomerPage2
                 {
                     if (c.customerNoteID != null)
                     {
-                        Notes note1 = new Notes();
+                        Note note1 = new Note();
                         note1 = IME.Notes.Where(a => a.ID == c.customerNoteID).FirstOrDefault();
                         note1.Note_name = CompanyNotes.Text;
                     }
                     else
                     {
-                        c.Notes.Note_name = CompanyNotes.Text;
-                        IME.Notes.Add(c.Notes);
-                        c.customerNoteID = c.Notes.ID;
+                        c.Note.Note_name = CompanyNotes.Text;
+                        IME.Notes.Add(c.Note);
+                        c.customerNoteID = c.Note.ID;
                     }
                     IME.SaveChanges();
                     
@@ -638,6 +729,7 @@ namespace CustomerPage2
             TermsofPayments.Enabled = false;
             TaxOffice.Enabled = false;
             btnContactAdd.Enabled = true;
+
             if (ContactList.DataSource!=null)
             {
                 btnContactDelete.Enabled = true;
@@ -682,7 +774,6 @@ namespace CustomerPage2
             PaymentMethod.Enabled = true;
             TermsofPayments.Enabled = true;
             TaxOffice.Enabled = true;
-            departmentAdd.Enabled = true;
             Represantative2.Enabled = true;
             Represantative1.Enabled = true;
             InvCurrency.Enabled = true;
@@ -713,6 +804,181 @@ namespace CustomerPage2
         {
                 if (ContactList.DataSource == null) { btnContactDelete.Enabled = false; btnContactUpdate.Enabled = false; }
             
+        }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                gridselectedindex = 0;
+                searchtxt = txtSearch.Text;
+                customersearch();
+            }
+        }
+
+        private void AdressAdd_Click(object sender, EventArgs e)
+        {
+            #region addAdressButton
+            AdressTabEnableTrue();
+            AddressType.Text = "";
+            cbCompanyAdress.Checked = false;
+            InvoiceAdressOk.Checked = false;
+            DeliveryAddressOk.Checked = false;
+            cbCountry.Text = "";
+            cbCity.Text = "";
+            cbTown.Text = "";
+            PostCode.Text = "";
+            AddressDetails.Text = "";
+            AdressAdd.Visible = false;
+            AdressCancel.Visible = true;
+            AddressDel.Visible = false;
+            AdressDone.Visible = true;
+            AddressUpd.Visible = false;
+            AdressList.Enabled = false;
+            #endregion
+        }
+
+        private void AddressUpd_Click(object sender, EventArgs e)
+        {
+            #region  AdressUpd
+            AdressTabEnableTrue();
+            AdressAdd.Visible = false;
+            AdressCancel.Visible = true;
+            AddressDel.Visible = false;
+            AdressDone.Visible = true;
+            AddressUpd.Visible = false;
+            #endregion
+        }
+
+        private void AddressDel_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are You Sure Delete This Adress ?", "Delete", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                CustomerAdress ca = IME.CustomerAdresses.First(a => a.ID == ContactListItem.AdressID);
+                IME.CustomerAdresses.Remove(ca);
+                IME.SaveChanges();
+                AdressList.DataSource = IME.CustomerAdresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
+                AdressList.DisplayMember = "AdressDetails";
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+            }
+        }
+
+        private void AdressDone_Click(object sender, EventArgs e)
+        {
+            CustomerAdress ca = new CustomerAdress();
+            //CustomerCode.Text;
+            ca.CustomerID = CustomerCode.Text;
+            ca.CountryID = ((Country)(cbCountry).SelectedItem).ID;
+            ca.CityID = ((City)(cbCity).SelectedItem).ID;
+            //AddresType
+            if (cbCompanyAdress.Checked==false)
+            {
+                ca.ContactID = ((CustomerWorker)(AddressType).SelectedItem).ID;
+            }
+
+            ca.PostCode = PostCode.Text;
+            ca.AdressDetails = AddressDetails.Text;
+            if (DeliveryAddressOk.Checked) { ca.isDeliveryAdress = 1; } else { ca.isDeliveryAdress = 0; }
+            if (InvoiceAdressOk.Checked) { ca.isInvoiceAdress = 1; } else { ca.isInvoiceAdress = 0; }
+
+            IME.CustomerAdresses.Add(ca);
+            IME.SaveChanges();
+            AdressTabEnableFalse();
+            if (btnCreate.Text == "CREATE")
+            {
+                txtSearch.Enabled = true;
+                Search.Enabled = true;
+                CustomerDataGrid.Enabled = true;
+            }
+            AdressList.DataSource = IME.CustomerAdresses.Where(customerw => customerw.CustomerID == CustomerCode.Text).ToList();
+            AdressList.DisplayMember = "AdressDetails";
+
+            AdressAdd.Visible = true;
+            AddressDel.Visible = true;
+            AddressUpd.Visible = true;
+            AdressCancel.Visible = false;
+            AdressDone.Visible = false;
+        }
+
+        private void label40_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbCompanyAdress.Checked)
+            {
+                AddressType.Enabled = false;
+                AddressType.SelectedItem = null;
+            }
+            else { AddressType.Enabled = true; }
+            
+        }
+
+        private void AdressCancel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Country_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                cbCity.DataSource = IME.Cities.Where(a => a.CountryID == ((Country)(cbCountry).SelectedItem).ID).ToList();
+                cbCity.DisplayMember = "City_name";
+            }
+            catch { }
+        }
+
+        private void City_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                cbTown.DataSource = IME.Towns.Where(a => a.CityID == ((City)(cbCity).SelectedItem).ID).ToList();
+                cbTown.DisplayMember = "Town_name";
+            }
+            catch { }
+        }
+
+        private void AdressList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            #region AdressList
+            //contact daki list box a tıklandığında contact ın bilgileri tıklanan göre doldurulmasıse
+            int cw_ID = 0;
+            try { cw_ID = ((CustomerAdress)((ListBox)sender).SelectedItem).ID; } catch { cw_ID = 0; }
+            try
+            {
+                if (ContactListItem.AdressID != cw_ID)
+                {
+                    ContactListItem.AdressID = cw_ID;
+                    //string contactname = ((CustomerWorker)((ListBox)sender).SelectedItem).cw_name;
+                    //ContactListItem.contactName = contactname;
+                    var contact1 = IME.CustomerAdresses.Where(cw => cw.ID == cw_ID).ToList();
+                    foreach (var a in contact1)
+                    {
+                        if (a.isDeliveryAdress == 1) { DeliveryAddressOk.Checked = true; } else { DeliveryAddressOk.Checked = false; }
+                        if (a.isInvoiceAdress == 1) { InvoiceAdressOk.Checked = true; } else { InvoiceAdressOk.Checked = false; }
+                        
+                        cbCountry.SelectedItem = a.Country;
+                        ((City)(cbCity).SelectedItem).ID=(int)a.CityID;
+                        cbTown.SelectedItem = a.Town;
+                        PostCode.Text = a.PostCode;
+                        AddressDetails.Text = a.AdressDetails;
+                    }
+                }
+            }
+            catch { }
+            #endregion
+        }
+
+        private void CustomerDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
