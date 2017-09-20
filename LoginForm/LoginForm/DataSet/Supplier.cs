@@ -24,7 +24,6 @@ namespace LoginForm.DataSet
     
         public string ID { get; set; }
         public string s_name { get; set; }
-        public Nullable<int> discountrate { get; set; }
         public string telephone { get; set; }
         public Nullable<int> paymentmethodID { get; set; }
         public string fax { get; set; }
@@ -36,10 +35,17 @@ namespace LoginForm.DataSet
         public string taxoffice { get; set; }
         public Nullable<int> taxnumber { get; set; }
         public Nullable<int> accountrepresentaryID { get; set; }
+        public Nullable<int> SupplierNoteID { get; set; }
+        public Nullable<int> MainContactID { get; set; }
+        public Nullable<int> BankID { get; set; }
+        public string PoBox { get; set; }
+        public Nullable<decimal> discountrate { get; set; }
     
+        public virtual Note Note { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
         public virtual PaymentTerm PaymentTerm { get; set; }
-        public virtual Rate Rate { get; set; }
+        public virtual SupplierBank SupplierBank { get; set; }
+        public virtual SupplierMainContact SupplierMainContact { get; set; }
         public virtual Worker Worker { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SupplierCategorySubCategory> SupplierCategorySubCategories { get; set; }
@@ -47,5 +53,6 @@ namespace LoginForm.DataSet
         public virtual ICollection<SupplierWorker> SupplierWorkers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SupplierWorkerNote> SupplierWorkerNotes { get; set; }
+        public virtual Rate Rate { get; set; }
     }
 }

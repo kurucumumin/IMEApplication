@@ -14,11 +14,18 @@ namespace LoginForm.DataSet
     
     public partial class SupplierMainContact
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public SupplierMainContact()
+        {
+            this.Suppliers = new HashSet<Supplier>();
+        }
+    
         public int ID { get; set; }
-        public string supplierID { get; set; }
         public Nullable<int> supplierWorkerID { get; set; }
         public Nullable<int> workerID { get; set; }
     
         public virtual SupplierWorker SupplierWorker { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Supplier> Suppliers { get; set; }
     }
 }

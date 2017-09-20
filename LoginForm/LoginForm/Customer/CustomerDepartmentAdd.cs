@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 
-namespace CustomerPage2
+namespace LoginForm
 {
-    public partial class DepartmentAdd : Form
+    public partial class CustomerDepartmentAdd : Form
     {
         IMEEntities IME = new IMEEntities();
-        public DepartmentAdd()
+        public CustomerDepartmentAdd()
         {
             InitializeComponent();
         }
@@ -41,6 +41,11 @@ namespace CustomerPage2
             CustomerMain form = new CustomerMain();
             form.Show();
             this.Hide();
+        }
+
+        private void DepartmentAdd_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

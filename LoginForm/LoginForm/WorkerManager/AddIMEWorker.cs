@@ -47,7 +47,8 @@ namespace LoginForm.WorkerManager
                         }
                         else
                         {
-                            Worker2Add.isActive = "A";
+                            Worker2Add.isActive = 1;
+                            //Worker2Add.isActive = "A";
                             WorkerService.AddNewWorker(Worker2Add);
                             #region PrintingResult
                             label5.Visible = true;
@@ -116,7 +117,8 @@ namespace LoginForm.WorkerManager
         {
             Worker Deleted = new Worker();
             Deleted = lstWorker.SelectedItem as Worker;
-            Deleted.isActive = "I";
+            Deleted.isActive = 0;
+            //Deleted.isActive = "I";
 
             try
             {
@@ -146,7 +148,7 @@ namespace LoginForm.WorkerManager
             Updated.LastName = txtLastName.Text;
             Updated.EMail = txtEmail.Text;
             Updated.Phone = txtPhone.Text;
-            Updated.isActive = "A";
+            //Updated.isActive = "A";
             try
             {
                 WorkerService.UpdateWorker(Updated);

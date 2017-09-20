@@ -9,20 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 
-namespace ModuleSupplier
+namespace LoginForm
 {
-    public partial class DepartmentAdd : Form
+    public partial class SupplierDepartmentAdd : Form
     {
         IMEEntities db = new IMEEntities();
 
-        public DepartmentAdd()
+        public SupplierDepartmentAdd()
         {
             InitializeComponent();
         }
 
         private void btncancel_Click(object sender, EventArgs e)
         {
-            Form1 form = new Form1();
+            SupplierMain form = new SupplierMain();
             form.Show();
             this.Hide();
         }
@@ -42,6 +42,11 @@ namespace ModuleSupplier
             {
                 MessageBox.Show("There is already a departmnet name with " + txtdepartment.Text);
             }
+        }
+
+        private void DepartmentAdd_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

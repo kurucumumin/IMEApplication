@@ -9,17 +9,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using LoginForm.DataSet;
+using LoginForm.Services;
 
-    namespace ModuleSupplier
+    namespace LoginForm
     {
-        public partial class Form1 : Form
+        public partial class SupplierMain : Form
         {
             IMEEntities db = new IMEEntities();
             int gridselectedindex = 0;
             string searchtxt = "";
             int selectedContactID;
 
-            public Form1()
+            public SupplierMain()
             {
                 InitializeComponent();
             }
@@ -33,7 +34,7 @@ using LoginForm.DataSet;
                     itemsClear();
 
                     //for new customerCode
-                    var suppliercode = db.Supplier.OrderByDescending(a => a.ID).FirstOrDefault().ID;
+                    var suppliercode = db.Suppliers.OrderByDescending(a => a.ID).FirstOrDefault().ID;
                     string suppliernumbers = string.Empty;
                     string newsuppliercodenumbers = "";
                     string newsuppliercodezeros = "";
@@ -52,7 +53,7 @@ using LoginForm.DataSet;
 
                     }
                     //Aynı ID ile supplier oluşturmasını önleyen kısım
-                    while (db.Supplier.Where(a => a.ID == suppliercode).Count() > 0)
+                    while (db.Suppliers.Where(a => a.ID == suppliercode).Count() > 0)
                     {
                         newsuppliercodenumbers = (Int32.Parse(newsuppliercodenumbers) + 1).ToString();
                         suppliercode = newsuppliercodechars + newsuppliercodezeros + newsuppliercodenumbers;
@@ -63,7 +64,7 @@ using LoginForm.DataSet;
                     txtcode.Text = suppliercode;
                     Supplier s = new Supplier();
                     s.ID = txtcode.Text;
-                    db.Supplier.Add(s);
+                    db.Suppliers.Add(s);
                     db.SaveChanges();
 
                     btnnew.Text = "Save";
@@ -74,7 +75,7 @@ using LoginForm.DataSet;
                     btnnew.Text = "Add";
                     btnupdate.Text = "Modify";
                     Supplier s = new Supplier();
-                s = db.Supplier.Where(a => a.ID == txtcode.Text).FirstOrDefault();
+                s = db.Suppliers.Where(a => a.ID == txtcode.Text).FirstOrDefault();
                 s.s_name = txtname.Text;
                 if (txtdiscount.Text != "") { s.discountrate = Int32.Parse(txtdiscount.Text); }
                 if (txtphone.Text != "") { s.telephone = txtphone.Text; }
@@ -85,6 +86,7 @@ using LoginForm.DataSet;
                 int s_rep1ID = ((Worker)(cmbrepresentative).SelectedItem).WorkerID; s.representaryID = s_rep1ID;
                 int s_repAcoID = ((Worker)(cmbAcountRep).SelectedItem).WorkerID; s.accountrepresentaryID = s_repAcoID;
                 s.taxoffice = txtTaxOffice.Text;
+                
                 s.PoBox = txtpobox.Text;
                 if (txtTaxNumber.Text != "") { s.taxnumber = Int32.Parse(txtTaxNumber.Text); }
                 try
@@ -92,13 +94,14 @@ using LoginForm.DataSet;
                     if (s.BankID != null)
                     {
                         SupplierBank bank1 = new SupplierBank();
-                        bank1 = db.SupplierBank.Where(a => a.ID == s.BankID).FirstOrDefault();
+                        bank1 = db.SupplierBanks.Where(a => a.ID == s.BankID).FirstOrDefault();
                         bank1.iban = txtBankIban.Text;
                     }
                     else
                     {
+                        
                         s.SupplierBank.iban = txtBankIban.Text;
-                        db.SupplierBank.Add(s.SupplierBank);
+                        db.SupplierBanks.Add(s.SupplierBank);
                         s.BankID = s.SupplierBank.ID;
                     }
                     db.SaveChanges();
@@ -109,13 +112,13 @@ using LoginForm.DataSet;
                 //CategorySubCategory Tablosuna veri ekleniyor(ara tabloya)
                 SupplierCategorySubCategory SupplierCatSubCat = new SupplierCategorySubCategory();
                 //UPDATE YAPILIRKEN BU ŞEKİLDE OLUYOR
-                if (db.SupplierCategorySubCategory.Where(a => a.supplierID == txtcode.Text).FirstOrDefault() != null) { SupplierCatSubCat = db.SupplierCategorySubCategory.Where(a => a.supplierID == txtcode.Text).FirstOrDefault(); }
+                if (db.SupplierCategorySubCategories.Where(a => a.supplierID == txtcode.Text).FirstOrDefault() != null) { SupplierCatSubCat = db.SupplierCategorySubCategories.Where(a => a.supplierID == txtcode.Text).FirstOrDefault(); }
                 SupplierCatSubCat.supplierID = txtcode.Text;
                 int c_CategoryID = ((SupplierCategory)(cmbcategory).SelectedItem).ID;
                 SupplierCatSubCat.categoryID = c_CategoryID;
                 int c_SubcategoryID = ((SupplierSubCategory)(cmbsub).SelectedItem).ID;
                 SupplierCatSubCat.subcategoryID = c_SubcategoryID;
-                if (db.SupplierCategorySubCategory.Where(a => a.supplierID == txtcode.Text).FirstOrDefault() == null) { db.SupplierCategorySubCategory.Add(SupplierCatSubCat); }
+                if (db.SupplierCategorySubCategories.Where(a => a.supplierID == txtcode.Text).FirstOrDefault() == null) { db.SupplierCategorySubCategories.Add(SupplierCatSubCat); }
                 db.SaveChanges();
                 //        
                 //Notes kısmına kayıt ediliyor
@@ -124,13 +127,13 @@ using LoginForm.DataSet;
                     if (s.SupplierNoteID != null)
                     {
                         Note note1 = new Note();
-                        note1 = db.Note.Where(a => a.ID == s.SupplierNoteID).FirstOrDefault();
+                        note1 = db.Notes.Where(a => a.ID == s.SupplierNoteID).FirstOrDefault();
                         note1.Note_name = txtnotes.Text;
                     }
                     else
                     {
                         s.Note.Note_name = txtnotes.Text;
-                        db.Note.Add(s.Note);
+                        db.Notes.Add(s.Note);
                         s.SupplierNoteID = s.Note.ID;
                     }
                     db.SaveChanges();
@@ -161,23 +164,23 @@ using LoginForm.DataSet;
                                         btnnew.Text = "Add";
                                         itemsEnableFalse();
                                     contactTabEnableFalse();
-                                    var supplier = db.Supplier.Where(a => a.ID == txtcode.Text).FirstOrDefault();
+                                    var supplier = db.Suppliers.Where(a => a.ID == txtcode.Text).FirstOrDefault();
                                     if (supplier.s_name == null)
                                     {
                                         //CREATE in cancel ı
-                                        var sw = db.SupplierWorker.Where(a => a.supplierID == txtcode.Text);
+                                        var sw = db.SupplierWorkers.Where(a => a.supplierID == txtcode.Text);
                                         //ilk önce Contact ların ve adress lerin verilerini sil sonra supplier ın verisini sil
                                         while (sw.Count() > 0)
                                         {
-                                            db.SupplierWorker.Remove(sw.FirstOrDefault());
+                                            db.SupplierWorkers.Remove(sw.FirstOrDefault());
                                             db.SaveChanges();
                                         }
                                         //üstteki işlem adresses için de yapılmalı
                                         //
 
                                         Supplier s = new Supplier();
-                                        s = db.Supplier.Where(a => a.ID == txtcode.Text).FirstOrDefault();
-                                        db.Supplier.Remove(s);
+                                        s = db.Suppliers.Where(a => a.ID == txtcode.Text).FirstOrDefault();
+                                        db.Suppliers.Remove(s);
                                         db.SaveChanges();
                                     }
                                     dgSupplier.Enabled = true;
@@ -190,39 +193,39 @@ using LoginForm.DataSet;
             private void Form1_Load(object sender, EventArgs e)
             {
                 #region ComboboxFiller
-                cmbAcountMethod.DataSource = db.PaymentMethod.ToList();
+                cmbAcountMethod.DataSource = db.PaymentMethods.ToList();
                 cmbAcountMethod.DisplayMember = "Payment";
                 cmbAcountMethod.ValueMember = "ID";
 
-                cmbAcountRep.DataSource = db.Worker.ToList();
+                cmbAcountRep.DataSource = db.Workers.ToList();
                 cmbAcountRep.DisplayMember = "FirstName";
                 cmbAcountRep.ValueMember = "WorkerID";
 
-                cmbAcountTerms.DataSource = db.PaymentTerm.ToList();
+                cmbAcountTerms.DataSource = db.PaymentTerms.ToList();
                 cmbAcountTerms.DisplayMember = "term_name";
                 cmbAcountTerms.ValueMember = "ID";
 
-                cmbcategory.DataSource = db.SupplierCategory.ToList();
+                cmbcategory.DataSource = db.SupplierCategories.ToList();
                 cmbcategory.DisplayMember = "categoryname";
                 cmbcategory.ValueMember = "ID";
 
-                cmbsub.DataSource = db.SupplierSubCategory.ToList();
+                cmbsub.DataSource = db.SupplierSubCategories.ToList();
                 cmbsub.DisplayMember = "subcategoryname";
                 cmbsub.ValueMember = "ID";
 
-                cmbCurrenyt.DataSource = db.Rate.ToList();
+                cmbCurrenyt.DataSource = db.Rates.ToList();
                 cmbCurrenyt.DisplayMember = "rate_name";
                 cmbCurrenyt.ValueMember = "ID";
 
-                cmbInvoiceCur.DataSource = db.Rate.ToList();
+                cmbInvoiceCur.DataSource = db.Rates.ToList();
                 cmbInvoiceCur.DisplayMember = "currency";
                 cmbInvoiceCur.ValueMember = "ID";
 
-                cmbrepresentative.DataSource = db.Worker.ToList();
+                cmbrepresentative.DataSource = db.Workers.ToList();
                 cmbrepresentative.DisplayMember = "FirstName";
                 cmbrepresentative.ValueMember = "WorkerID";
 
-                cmbdepartman.DataSource = db.SupplierDepartment.ToList();
+                cmbdepartman.DataSource = db.SupplierDepartments.ToList();
                 cmbdepartman.DisplayMember = "departmentname";
                 cmbdepartman.ValueMember = "ID";
 
@@ -230,12 +233,12 @@ using LoginForm.DataSet;
                 cmblanguage.DisplayMember = "languagename";
                 cmblanguage.ValueMember = "ID";
 
-                cmbposition.DataSource = db.SupplierTitle.ToList();
+                cmbposition.DataSource = db.SupplierTitles.ToList();
                 cmbposition.DisplayMember = "titlename";
                 cmbposition.ValueMember = "ID";
 
 
-            cmbBankName.DataSource = db.SupplierBank.ToList();
+            cmbBankName.DataSource = db.SupplierBanks.ToList();
             cmbBankName.DisplayMember = "bankname";
             cmbBankName.ValueMember = "ID";
 
@@ -267,10 +270,11 @@ using LoginForm.DataSet;
                 {
                     if (ContactListItem.ID != cw_ID)
                     {
+                    
                         ContactListItem.ID = cw_ID;
                         string contactname = ((SupplierWorker)((ListBox)sender).SelectedItem).sw_name;
                         ContactListItem.contactName = contactname;
-                        var contact1 = db.SupplierWorker.Where(cw => cw.ID == cw_ID).ToList();
+                        var contact1 = db.SupplierWorkers.Where(cw => cw.ID == cw_ID).ToList();
                         foreach (var a in contact1)
                         {
                             selectedContactID = a.ID;
@@ -291,24 +295,30 @@ using LoginForm.DataSet;
 
             private void btnDep_Click(object sender, EventArgs e)
             {
-                DepartmentAdd form = new DepartmentAdd();
+                CustomerDepartmentAdd form = new CustomerDepartmentAdd();
                 form.Show();
                 this.Hide();
             }
 
             private void btnPos_Click(object sender, EventArgs e)
             {
-                PositionAdd form = new PositionAdd();
+                SupplierPositionAdd form = new SupplierPositionAdd();
                 form.Show();
                 this.Hide();
             }
 
             private void cmbcategory_SelectedIndexChanged(object sender, EventArgs e)
             {
-                int c_categoryID;
-                try { c_categoryID = ((SupplierCategory)((ComboBox)sender).SelectedItem).ID; } catch { c_categoryID = 0; }
-                cmbsub.DataSource = db.SupplierSubCategory.Where(b => b.categoryID == c_categoryID).ToList();
+            
+            int c_categoryID;
+                try {
+                c_categoryID = ((SupplierCategory)((ComboBox)sender).SelectedItem).ID;
+                cmbsub.DataSource = db.SupplierSubCategories.Where(b => b.categoryID == c_categoryID).ToList();
                 cmbsub.DisplayMember = "subcategoryname";
+            } catch { 
+            }
+            if (cmbsub.Items.Count== 0) { cmbsub.Text = "";}
+                
             }
 
             private void contactTabEnableFalse()
@@ -387,48 +397,48 @@ using LoginForm.DataSet;
             private void suppliersearch()
             {
                 #region suppliersearch
-                      var supplierAdapter = (from c in db.Supplier.Where(a => a.s_name.Contains(searchtxt))
-                                                   join w in db.Worker on c.representaryID equals w.WorkerID
-                                                   join SupplierWorker in db.SupplierWorker on c.ID equals SupplierWorker.supplierID into supplierworker
+                      var supplierAdapter = (from c in db.Suppliers.Where(a => a.s_name.Contains(searchtxt))
+                                                   join w in db.Workers on c.representaryID equals w.WorkerID
+                                                   join SupplierWorker in db.SupplierWorkers on c.ID equals SupplierWorker.supplierID into supplierworker
                                                    let SupplierWorker = supplierworker.Select(supplierworker1 => supplierworker1).FirstOrDefault()
-                                                   join supplieraccountant in db.Worker on c.accountrepresentaryID equals supplieraccountant.WorkerID
-                                                   join s in db.SupplierCategorySubCategory on c.ID equals s.supplierID
-                                                   join p in db.PaymentTerm on c.payment_termID equals p.ID
-                                                   join m in db.PaymentMethod on c.paymentmethodID equals m.ID
-                                                   join l in db.Languages on SupplierWorker.languageID equals l.ID
-                                                   join n in db.SupplierBank on c.BankID equals n.ID
-                                                   join k in db.SupplierMainContact on SupplierWorker.MainContactID equals k.ID
+                                                   join supplieraccountant in db.Workers on c.accountrepresentaryID equals supplieraccountant.WorkerID
+                                                   join s in db.SupplierCategorySubCategories on c.ID equals s.supplierID
+                                                   join p in db.PaymentTerms on c.payment_termID equals p.ID
+                                                   join m in db.PaymentMethods on c.paymentmethodID equals m.ID
+                                             join l in db.Languages on SupplierWorker.languageID equals l.ID
+                                             join n in db.SupplierBanks on c.BankID equals n.ID
+                                             join k in db.SupplierMainContacts on SupplierWorker.ID equals k.supplierWorkerID
 
                                              select new
                                                    {
-                                                       c.ID,
-                                                       c.s_name,
-                                                       c.Rate.currency,
-                                                       c.telephone,
-                                                       c.fax,
-                                                       c.webadress,
-                                                       c.discountrate,
-                                                       w.FirstName,
-                                                       SupplierWorker.sw_name,
-                                                       SupplierWorker.sw_email,
-                                                       SupplierWorker.SupplierTitle.titlename,
-                                                       SupplierWorker.SupplierDepartment.departmentname,
-                                                       s.SupplierCategory.categoryname,
-                                                       s.SupplierSubCategory.subcategoryname,
-                                                       p.term_name,
-                                                       supplierworker,
-                                                       swNote = SupplierWorker.Note.Note_name,
-                                                       c.rate_ID,
-                                                       SupplierNote = c.SupplierWorkerNote,
-                                                       WorkerNote = w.Note.Note_name,
-                                                       SupplierWorkerNote = SupplierWorker.Note.Note_name,
-                                                       AccountRepresentative = supplieraccountant.FirstName,
-                                                       l.languagename,
-                                                       n.bankname,
-                                                       n.iban,
-                                                       c.PoBox,
-                                                       k.SupplierWorker
-                                                   }).ToList();
+                                                 c.ID,
+                                                 c.s_name,
+                                                 c.Rate.currency,
+                                                 c.telephone,
+                                                 c.fax,
+                                                 c.webadress,
+                                                 c.discountrate,
+                                                 w.FirstName,
+                                                 SupplierWorker.sw_name,
+                                                 SupplierWorker.sw_email,
+                                                 SupplierWorker.SupplierTitle.titlename,
+                                                 SupplierWorker.SupplierDepartment.departmentname,
+                                                 s.SupplierCategory.categoryname,
+                                                 s.SupplierSubCategory.subcategoryname,
+                                                 p.term_name,
+                                                 supplierworker,
+                                                 swNote = SupplierWorker.Note.Note_name,
+                                                 c.rate_ID,
+                                                 SupplierNote = c.SupplierWorkerNotes,
+                                                 WorkerNote = w.Note.Note_name,
+                                                 SupplierWorkerNote = SupplierWorker.Note.Note_name,
+                                                 AccountRepresentative = supplieraccountant.FirstName,
+                                                 l.languagename,
+                                                 n.bankname,
+                                                 n.iban,
+                                                 c.PoBox,
+                                                 k.SupplierWorker
+                                             }).ToList();
             #endregion
 
             #region FillInfos
@@ -458,15 +468,15 @@ using LoginForm.DataSet;
             cmblanguage.Text = supplierAdapter[gridselectedindex].languagename;
 
             txtpobox.Text = supplierAdapter[gridselectedindex].PoBox;
-            listContact.DataSource = db.SupplierWorker.Where(supplierw => supplierw.supplierID == txtcode.Text).ToList();
+            listContact.DataSource = db.SupplierWorkers.Where(supplierw => supplierw.supplierID == txtcode.Text).ToList();
             listContact.DisplayMember = "sw_name";
-            cmbMainContact.DataSource = db.SupplierWorker.Where(supplierw => supplierw.supplierID == txtcode.Text).ToList();
+            cmbMainContact.DataSource = db.SupplierWorkers.Where(supplierw => supplierw.supplierID == txtcode.Text).ToList();
             cmbMainContact.DisplayMember = "sw_name";
-            dgSupplier.Update ();
+            dgSupplier.Update();
             dgSupplier.Refresh();
-                         
+
             #endregion
-            }
+        }
 
             private void btnContactNew_Click(object sender, EventArgs e)
             {
@@ -542,8 +552,8 @@ using LoginForm.DataSet;
                         else
                         {
                             cw.supplierID = txtcode.Text;
-                            cw.departmentID = db.SupplierDepartment.First(a => a.departmentname == cmbdepartman.Text).ID;
-                            cw.titleID = db.SupplierTitle.First(a => a.titlename == cmbposition.Text).ID;
+                            cw.departmentID = db.SupplierDepartments.First(a => a.departmentname == cmbdepartman.Text).ID;
+                            cw.titleID = db.SupplierTitles.First(a => a.titlename == cmbposition.Text).ID;
                             cw.sw_name = txtContactName.Text;
                             cw.sw_email = txtContactMail.Text;
                             cw.phone = txtContactPhone.Text;
@@ -552,10 +562,10 @@ using LoginForm.DataSet;
                             cw.languageID = db.Languages.First(a => a.languagename == cmblanguage.Text).ID;
                             Note n = new Note();
                             n.Note_name = txtContactNotes.Text;
-                            db.Note.Add(n);
+                            db.Notes.Add(n);
                             db.SaveChanges();
-                            cw.supplierNoteID = db.Note.First(a => a.Note_name == txtContactNotes.Text).ID;
-                            db.SupplierWorker.Add(cw);
+                            cw.supplierNoteID = db.Notes.First(a => a.Note_name == txtContactNotes.Text).ID;
+                            db.SupplierWorkers.Add(cw);
                             db.SaveChanges();
                             contactTabEnableFalse();
                             if (btnnew.Text == "Add")
@@ -563,10 +573,10 @@ using LoginForm.DataSet;
                                 txtsearch.Enabled = true;
                                 dgSupplier.Enabled = true;
                             }
-                            listContact.DataSource = db.SupplierWorker.Where(supplierw => supplierw.supplierID == txtcode.Text).ToList();
+                            listContact.DataSource = db.SupplierWorkers.Where(supplierw => supplierw.supplierID == txtcode.Text).ToList();
                             listContact.DisplayMember = "sw_name";
 
-                        cmbMainContact.DataSource = db.SupplierWorker.Where(supplierw => supplierw.supplierID == txtcode.Text).ToList();
+                        cmbMainContact.DataSource = db.SupplierWorkers.Where(supplierw => supplierw.supplierID == txtcode.Text).ToList();
                         cmbMainContact.DisplayMember = "sw_name";
                         //catch { MessageBox.Show("Contact is NOT successfull"); }
                         btnContactNew.Visible = true;
@@ -584,7 +594,7 @@ using LoginForm.DataSet;
             {
                 int s_departmentID;
                 try { s_departmentID = ((SupplierDepartment)((ComboBox)sender).SelectedItem).ID; } catch { s_departmentID = 0; }
-                cmbposition.DataSource = db.SupplierTitle.Where(b => b.SupplierDepartment.ID == s_departmentID).ToList();
+                cmbposition.DataSource = db.SupplierTitles.Where(b => b.SupplierDepartment.ID == s_departmentID).ToList();
                 cmbposition.DisplayMember = "titlename";
             }
 
@@ -593,12 +603,12 @@ using LoginForm.DataSet;
                 DialogResult dialogResult = MessageBox.Show("Are You Sure Delete Contact " + ContactListItem.contactName + " ?", "Delete", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    SupplierWorker sw = db.SupplierWorker.First(a => a.ID == ContactListItem.ID);
-                    db.SupplierWorker.Remove(sw);
+                    SupplierWorker sw = db.SupplierWorkers.First(a => a.ID == ContactListItem.ID);
+                    db.SupplierWorkers.Remove(sw);
                     db.SaveChanges();
-                    listContact.DataSource = db.SupplierWorker.Where(supplierw => supplierw.supplierID == txtcode.Text).ToList();
+                    listContact.DataSource = db.SupplierWorkers.Where(supplierw => supplierw.supplierID == txtcode.Text).ToList();
                     listContact.DisplayMember = "sw_name";
-                cmbMainContact.DataSource = db.SupplierWorker.Where(supplierw => supplierw.supplierID == txtcode.Text).ToList();
+                cmbMainContact.DataSource = db.SupplierWorkers.Where(supplierw => supplierw.supplierID == txtcode.Text).ToList();
                 cmbMainContact.DisplayMember = "sw_name";
                 
                 }

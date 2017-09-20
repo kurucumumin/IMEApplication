@@ -38,7 +38,6 @@ namespace LoginForm.DataSet
     
         public virtual Language Language { get; set; }
         public virtual Note Note { get; set; }
-        public virtual Supplier Supplier { get; set; }
         public virtual SupplierAdress SupplierAdress { get; set; }
         public virtual SupplierBank SupplierBank { get; set; }
         public virtual SupplierCategory SupplierCategory { get; set; }
@@ -48,5 +47,6 @@ namespace LoginForm.DataSet
         public virtual SupplierTitle SupplierTitle { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SupplierWorkerNote> SupplierWorkerNotes { get; set; }
+        public virtual Supplier Supplier { get; set; }
     }
 }

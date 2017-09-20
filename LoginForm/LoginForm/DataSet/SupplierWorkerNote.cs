@@ -19,8 +19,8 @@ namespace LoginForm.DataSet
         public Nullable<int> sw_ID { get; set; }
         public Nullable<int> workerID { get; set; }
     
-        public virtual Supplier Supplier { get; set; }
         public virtual SupplierWorker SupplierWorker { get; set; }
         public virtual Worker Worker { get; set; }
+        public virtual Supplier Supplier { get; set; }
     }
 }
