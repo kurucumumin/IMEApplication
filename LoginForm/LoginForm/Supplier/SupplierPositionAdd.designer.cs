@@ -1,6 +1,6 @@
-﻿namespace ModuleSupplier
+﻿namespace LoginForm
 {
-    partial class PositionAdd
+    partial class SupplierPositionAdd
     {
         /// <summary>
         /// Required designer variable.
@@ -39,25 +39,28 @@
             // cmbDepartment
             // 
             this.cmbDepartment.FormattingEnabled = true;
-            this.cmbDepartment.Location = new System.Drawing.Point(125, 8);
+            this.cmbDepartment.Location = new System.Drawing.Point(167, 10);
+            this.cmbDepartment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbDepartment.Name = "cmbDepartment";
-            this.cmbDepartment.Size = new System.Drawing.Size(149, 21);
+            this.cmbDepartment.Size = new System.Drawing.Size(197, 24);
             this.cmbDepartment.TabIndex = 15;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 47);
+            this.label2.Location = new System.Drawing.Point(19, 58);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.Size = new System.Drawing.Size(76, 17);
             this.label2.TabIndex = 14;
             this.label2.Text = "Title Name";
             // 
             // btncancel
             // 
-            this.btncancel.Location = new System.Drawing.Point(199, 96);
+            this.btncancel.Location = new System.Drawing.Point(265, 118);
+            this.btncancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btncancel.Name = "btncancel";
-            this.btncancel.Size = new System.Drawing.Size(75, 23);
+            this.btncancel.Size = new System.Drawing.Size(100, 28);
             this.btncancel.TabIndex = 13;
             this.btncancel.Text = "Cancel";
             this.btncancel.UseVisualStyleBackColor = true;
@@ -65,9 +68,10 @@
             // 
             // btnadd
             // 
-            this.btnadd.Location = new System.Drawing.Point(12, 96);
+            this.btnadd.Location = new System.Drawing.Point(16, 118);
+            this.btnadd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnadd.Name = "btnadd";
-            this.btnadd.Size = new System.Drawing.Size(75, 23);
+            this.btnadd.Size = new System.Drawing.Size(100, 28);
             this.btnadd.TabIndex = 12;
             this.btnadd.Text = "Add";
             this.btnadd.UseVisualStyleBackColor = true;
@@ -75,33 +79,37 @@
             // 
             // txttitle
             // 
-            this.txttitle.Location = new System.Drawing.Point(125, 40);
+            this.txttitle.Location = new System.Drawing.Point(167, 49);
+            this.txttitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txttitle.Name = "txttitle";
-            this.txttitle.Size = new System.Drawing.Size(149, 20);
+            this.txttitle.Size = new System.Drawing.Size(197, 22);
             this.txttitle.TabIndex = 11;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 11);
+            this.label1.Location = new System.Drawing.Point(12, 14);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 13);
+            this.label1.Size = new System.Drawing.Size(123, 17);
             this.label1.TabIndex = 10;
             this.label1.Text = "Department Name";
             // 
             // PositionAdd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 143);
+            this.ClientSize = new System.Drawing.Size(379, 176);
             this.Controls.Add(this.cmbDepartment);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btncancel);
             this.Controls.Add(this.btnadd);
             this.Controls.Add(this.txttitle);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "PositionAdd";
             this.Text = "PositionAdd";
+            this.Load += new System.EventHandler(this.PositionAdd_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 

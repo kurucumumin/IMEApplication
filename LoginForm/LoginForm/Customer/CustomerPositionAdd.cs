@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LoginForm.DataSet;
 
-namespace CustomerPage2
+namespace LoginForm
 {
-    public partial class TitleAdd : Form
+    public partial class CustomerPositionAdd : Form
     {
         IMEEntities IME = new IMEEntities();
-        public TitleAdd()
+        public CustomerPositionAdd()
         {
             InitializeComponent();
         }

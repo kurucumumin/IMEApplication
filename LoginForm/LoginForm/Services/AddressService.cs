@@ -35,12 +35,12 @@ namespace LoginForm.Services
 
         }
 
-        public List<AddressType> GetAddressType()
-        {
-            IMEEntities AddressIME = new IMEEntities();
+        //public List<AddressType> GetAddressType()
+        //{
+        //    IMEEntities AddressIME = new IMEEntities();
 
-            return AddressIME.AddressTypes.ToList();
+        //    return AddressIME.AddressTypes.ToList();
 
-        }
+        //}
     }
 }

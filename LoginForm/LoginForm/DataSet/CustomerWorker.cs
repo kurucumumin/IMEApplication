@@ -14,12 +14,30 @@ namespace LoginForm.DataSet
     
     public partial class CustomerWorker
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CustomerWorker()
+        {
+            this.CustomerAdresses = new HashSet<CustomerAdress>();
+        }
+    
         public int ID { get; set; }
         public string cw_name { get; set; }
-        public Nullable<int> departmnetID { get; set; }
+        public Nullable<int> departmentID { get; set; }
+        public string phone { get; set; }
         public Nullable<int> titleID { get; set; }
+        public string fax { get; set; }
+        public string mobilephone { get; set; }
+        public string cw_email { get; set; }
+        public string customerID { get; set; }
+        public Nullable<int> customerNoteID { get; set; }
+        public Nullable<int> languageID { get; set; }
     
+        public virtual Customer Customer { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CustomerAdress> CustomerAdresses { get; set; }
         public virtual CustomerDepartment CustomerDepartment { get; set; }
         public virtual CustomerTitle CustomerTitle { get; set; }
+        public virtual Note Note { get; set; }
+        public virtual Language Language { get; set; }
     }
 }

@@ -12,12 +12,12 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class CustomerAddress
+    public partial class Hazardou
     {
-        public int ID { get; set; }
-        public string w_name { get; set; }
-        public string pssword { get; set; }
-        public string mail { get; set; }
-        public Nullable<int> phonenumber { get; set; }
+        public string ArticleNo { get; set; }
+        public Nullable<int> Occurrences { get; set; }
+        public Nullable<int> Environment { get; set; }
+        public string Shipping { get; set; }
+        public string Lithium { get; set; }
     }
 }

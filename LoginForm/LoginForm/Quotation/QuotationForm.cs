@@ -8,30 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuotationModule
+namespace LoginForm
 {
-    public partial class Form1 : Form
+    public partial class QuotationForm : Form
     {
-        public Form1()
+        public QuotationForm()
         {
             InitializeComponent();
         }
 
         private void label16_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            //// TODO: Bu kod satırı 'iMEDataSet3.Worker' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
-            //this.workerTableAdapter.Fill(this.iMEDataSet3.Worker);
-            //// TODO: Bu kod satırı 'iMEDataSet2.Customer' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
-            //this.customerTableAdapter.Fill(this.iMEDataSet2.Customer);
-            //// TODO: Bu kod satırı 'iMEDataSet1.SupplierWorker' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
-            //this.supplierWorkerTableAdapter.Fill(this.iMEDataSet1.SupplierWorker);
-            //// TODO: Bu kod satırı 'iMEDataSet.Supplier' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
-            //this.supplierTableAdapter.Fill(this.iMEDataSet.Supplier);
 
         }
 
@@ -48,6 +35,23 @@ namespace QuotationModule
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void QuotationForm_Load(object sender, EventArgs e)
+        {
+            //// TODO: Bu kod satırı 'iMEDataSet3.Worker' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
+            //this.workerTableAdapter.Fill(this.iMEDataSet3.Worker);
+            //// TODO: Bu kod satırı 'iMEDataSet2.Customer' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
+            //this.customerTableAdapter.Fill(this.iMEDataSet2.Customer);
+            //// TODO: Bu kod satırı 'iMEDataSet1.SupplierWorker' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
+            //this.supplierWorkerTableAdapter.Fill(this.iMEDataSet1.SupplierWorker);
+            //// TODO: Bu kod satırı 'iMEDataSet.Supplier' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
+            //this.supplierTableAdapter.Fill(this.iMEDataSet.Supplier);
         }
     }
 }

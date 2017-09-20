@@ -38,6 +38,10 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -66,34 +70,40 @@
     <Compile Include="Customer\CustomerMain.designer.cs">
       <DependentUpon>CustomerMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Customer\DepartmentAdd.cs">
+    <Compile Include="Customer\CustomerDepartmentAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Customer\DepartmentAdd.designer.cs">
-      <DependentUpon>DepartmentAdd.cs</DependentUpon>
+    <Compile Include="Customer\CustomerDepartmentAdd.designer.cs">
+      <DependentUpon>CustomerDepartmentAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Customer\PositionAdd.cs">
+    <Compile Include="Customer\CustomerPositionAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Customer\PositionAdd.designer.cs">
-      <DependentUpon>PositionAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AddressPool.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\AddressType.cs">
-      <DependentUpon>IME.tt</DependentUpon>
+    <Compile Include="Customer\CustomerPositionAdd.designer.cs">
+      <DependentUpon>CustomerPositionAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="DataSet\AuthorizationValue.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\capital.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\City.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Country.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Customer.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\CustomerAddress.cs">
+    <Compile Include="DataSet\CustomerAdress.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\CustomerCategory.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\CustomerCategorySubCategory.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\CustomerDepartment.cs">
@@ -106,6 +116,18 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\CustomerWorker.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DailyDiscontinued.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DualUse.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ExtendedRange.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Hazardou.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\IME.Context.cs">
@@ -123,10 +145,76 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IME.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\ItemNote.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Language.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Note.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\OnSale.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PaymentMethod.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PaymentTerm.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\Rate.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\RSPro.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SlidingPrice.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SuperDisk.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SuperDiskP.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Supplier.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SupplierAdress.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SupplierBank.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SupplierCategory.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SupplierCategorySubCategory.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SupplierDepartment.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SupplierMainContact.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SupplierSubCategory.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SupplierTitle.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SupplierWorker.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SupplierWorkerNote.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\sysdiagram.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Town.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Worker.cs">
@@ -177,23 +265,23 @@
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\txtReader.cs" />
     <Compile Include="Services\WorkerService.cs" />
-    <Compile Include="Supplier\DepartmentAdd.cs">
+    <Compile Include="Supplier\SupplierDepartmentAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Supplier\DepartmentAdd.designer.cs">
-      <DependentUpon>DepartmentAdd.cs</DependentUpon>
+    <Compile Include="Supplier\SupplierDepartmentAdd.designer.cs">
+      <DependentUpon>SupplierDepartmentAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Supplier\Form1.cs">
+    <Compile Include="Supplier\SupplierMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Supplier\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Supplier\SupplierMain.Designer.cs">
+      <DependentUpon>SupplierMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Supplier\PositionAdd.cs">
+    <Compile Include="Supplier\SupplierPositionAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Supplier\PositionAdd.designer.cs">
-      <DependentUpon>PositionAdd.cs</DependentUpon>
+    <Compile Include="Supplier\SupplierPositionAdd.designer.cs">
+      <DependentUpon>SupplierPositionAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="WorkerManager\AddIMEWorker.cs">
       <SubType>Form</SubType>
@@ -213,11 +301,11 @@
     <EmbeddedResource Include="Customer\CustomerMain.resx">
       <DependentUpon>CustomerMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Customer\DepartmentAdd.resx">
-      <DependentUpon>DepartmentAdd.cs</DependentUpon>
+    <EmbeddedResource Include="Customer\CustomerDepartmentAdd.resx">
+      <DependentUpon>CustomerDepartmentAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Customer\PositionAdd.resx">
-      <DependentUpon>PositionAdd.cs</DependentUpon>
+    <EmbeddedResource Include="Customer\CustomerPositionAdd.resx">
+      <DependentUpon>CustomerPositionAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -246,14 +334,14 @@
     <EmbeddedResource Include="Quotation\QuotationForm.resx">
       <DependentUpon>QuotationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Supplier\DepartmentAdd.resx">
-      <DependentUpon>DepartmentAdd.cs</DependentUpon>
+    <EmbeddedResource Include="Supplier\SupplierDepartmentAdd.resx">
+      <DependentUpon>SupplierDepartmentAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Supplier\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Supplier\SupplierMain.resx">
+      <DependentUpon>SupplierMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Supplier\PositionAdd.resx">
-      <DependentUpon>PositionAdd.cs</DependentUpon>
+    <EmbeddedResource Include="Supplier\SupplierPositionAdd.resx">
+      <DependentUpon>SupplierPositionAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WorkerManager\AddIMEWorker.resx">
       <DependentUpon>AddIMEWorker.cs</DependentUpon>

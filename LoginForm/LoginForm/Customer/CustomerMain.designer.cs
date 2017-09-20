@@ -1,4 +1,4 @@
-﻿namespace CustomerPage2
+﻿namespace LoginForm
 {
     partial class CustomerMain
     {

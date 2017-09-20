@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LoginForm.DataSet;
+using LoginForm.Services;
 
-namespace CustomerPage2
+namespace LoginForm
 {
     public partial class CustomerMain : Form
     {
@@ -121,7 +123,7 @@ namespace CustomerPage2
 
         private void departmentAdd_Click(object sender, EventArgs e)
         {
-            DepartmentAdd form = new DepartmentAdd();
+            CustomerDepartmentAdd form = new CustomerDepartmentAdd();
             form.Show();
             this.Hide();
             
@@ -129,7 +131,7 @@ namespace CustomerPage2
 
         private void titleAdd_Click(object sender, EventArgs e)
         {
-            TitleAdd form = new TitleAdd();
+            CustomerPositionAdd form = new CustomerPositionAdd();
             form.Show();
             this.Hide();
         }

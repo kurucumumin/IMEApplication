@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using LoginForm.Quotation;
+//using LoginForm.Quotation;
 using LoginForm.DataSet;
 
 namespace LoginForm
@@ -30,15 +30,15 @@ namespace LoginForm
             //Yetkli Kontrolü
             bool Login = canLog(LoggedPerson,"Worker Manager2");
            
-            if (Login)
-            {
-                LoginForm.Quotation.Quotation quotation = new Quotation.Quotation();
-                quotation.Show();
-            }
-            else
-            {
-                MessageBox.Show("Insufficient Previleges.");
-            }
+            //if (Login)
+            //{
+            //    LoginForm.Quotation.Quotation quotation = new Quotation.Quotation();
+            //    quotation.Show();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Insufficient Previleges.");
+            //}
         }
 
         private void MainNavigationForm_Load(object sender, EventArgs e)
