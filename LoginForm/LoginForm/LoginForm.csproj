@@ -165,11 +165,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Quotation\Quotation.cs">
+    <Compile Include="Quotation\QuotationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Quotation\Quotation.Designer.cs">
-      <DependentUpon>Quotation.cs</DependentUpon>
+    <Compile Include="Quotation\QuotationForm.designer.cs">
+      <DependentUpon>QuotationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Services\AddressService.cs" />
     <Compile Include="Services\AuthorizationService.cs" />
@@ -177,6 +177,24 @@
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\txtReader.cs" />
     <Compile Include="Services\WorkerService.cs" />
+    <Compile Include="Supplier\DepartmentAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier\DepartmentAdd.designer.cs">
+      <DependentUpon>DepartmentAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier\PositionAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier\PositionAdd.designer.cs">
+      <DependentUpon>PositionAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="WorkerManager\AddIMEWorker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,8 +243,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Quotation\Quotation.resx">
-      <DependentUpon>Quotation.cs</DependentUpon>
+    <EmbeddedResource Include="Quotation\QuotationForm.resx">
+      <DependentUpon>QuotationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplier\DepartmentAdd.resx">
+      <DependentUpon>DepartmentAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplier\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplier\PositionAdd.resx">
+      <DependentUpon>PositionAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WorkerManager\AddIMEWorker.resx">
       <DependentUpon>AddIMEWorker.cs</DependentUpon>
