@@ -80,7 +80,7 @@ namespace LoginForm
 
             if (Login)
             {
-                LoginForm.WorkerManager.AddIMEWorker WorkerPage = new WorkerManager.AddIMEWorker();
+                AddIMEWorker WorkerPage = new AddIMEWorker();
                 WorkerPage.Show();
             }
             else

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using LoginForm.DataSet;
 using LoginForm.Services;
 
-namespace LoginForm.WorkerManager
+namespace LoginForm
 {
     public partial class AddIMEWorker : Form
     {

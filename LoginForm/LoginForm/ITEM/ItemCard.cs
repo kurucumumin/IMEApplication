@@ -163,32 +163,36 @@ namespace LoginForm
                 //List Birleştirme
                 #region List Birleştirme
                 var gridAdapterPC = (from a in IME.SuperDisks.Where(a => a.MPN.Contains(txtSelected))
+                                     join customerworker in IME.ItemNotes on a.Article_No equals customerworker.ArticleNo into customerworkeres
+                                     let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
                                      select new
                                      {
                                          ArticleNo = a.Article_No,
                                          ArticleDesc = a.Article_Desc,
-                                         //a.MH1,
-                                         //a.CofO,
-                                         //a.Pack_Code
+                                         a.MPN,
+                                         customerworker.Note.Note_name,
                                      }
                              ).ToList();
                 var list2 = (from a in IME.SuperDiskPs.Where(a => a.MPN.Contains(txtSelected))
+                             join customerworker in IME.ItemNotes on a.Article_No equals customerworker.ArticleNo into customerworkeres
+                             let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
                              select new
                              {
                                  ArticleNo = a.Article_No,
                                  ArticleDesc = a.Article_Desc,
-                                 //a.MH1,
-                                 //a.CofO,
-                                 //a.Pack_Code
+                                 a.MPN,
+                                 customerworker.Note.Note_name,
                              }
                             ).ToList();
                 var list3 = (from a in IME.ExtendedRanges.Where(a => a.MPN.Contains(txtSelected))
+                             join customerworker in IME.ItemNotes on a.ArticleNo equals customerworker.ArticleNo into customerworkeres
+                             let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
                              select new
                              {
                                  ArticleNo = a.ArticleNo,
                                  ArticleDesc = a.ArticleDescription,
-
-
+                                 a.MPN,
+                                 customerworker.Note.Note_name,
                              }
                             ).ToList();
                 gridAdapterPC.AddRange(list2);
@@ -210,31 +214,39 @@ namespace LoginForm
                 //List Birleştirme
                 #region List Birleştirme
                 var gridAdapterPC = (from a in IME.SuperDisks.Where(a => a.Article_Desc.Contains(txtSelected))
+                                     join customerworker in IME.ItemNotes on a.Article_No equals customerworker.ArticleNo into customerworkeres
+                                     let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
+
                                      select new
                                      {
                                          ArticleNo = a.Article_No,
                                          ArticleDesc = a.Article_Desc,
-                                         //a.MH1,
-                                         //a.CofO,
-                                         //a.Pack_Code
+                                         a.MPN,
+                                         customerworker.Note.Note_name,
                                      }
                              ).ToList();
                 var list2 = (from a in IME.SuperDiskPs.Where(a => a.Article_Desc.Contains(txtSelected))
+                             join customerworker in IME.ItemNotes on a.Article_No equals customerworker.ArticleNo into customerworkeres
+                             let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
+
                              select new
                              {
                                  ArticleNo = a.Article_No,
                                  ArticleDesc = a.Article_Desc,
-                                 //a.MH1,
-                                 //a.CofO,
-                                 //a.Pack_Code
+                                 a.MPN,
+                                 customerworker.Note.Note_name,
                              }
                             ).ToList();
                 var list3 = (from a in IME.ExtendedRanges.Where(a => a.ArticleDescription.Contains(txtSelected))
+                             join customerworker in IME.ItemNotes on a.ArticleNo equals customerworker.ArticleNo into customerworkeres
+                             let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
+
                              select new
                              {
                                  ArticleNo = a.ArticleNo,
                                  ArticleDesc = a.ArticleDescription,
-
+                                 a.MPN,
+                                 customerworker.Note.Note_name,
 
                              }
                             ).ToList();
@@ -251,6 +263,53 @@ namespace LoginForm
                 {
                     MessageBox.Show("There is no such a data");
                 }
+            }else if (rbItemNotes.Checked == true)
+            {
+                #region List Birleştirme
+                var gridAdapterPC = (from a in IME.ItemNotes.Where(a => a.ArticleNo.Contains(txtSelected))
+                                     join sp in IME.SuperDisks on a.ArticleNo equals sp.Article_No
+                                     select new
+                                     {
+                                         ArticleNo = a.ArticleNo,
+                                         ArticleDesc = sp.Article_Desc,
+                                         sp.MPN,
+                                         a.Note.Note_name,
+                                     }
+                             ).ToList();
+                var list2 = (from a in IME.ItemNotes.Where(a => a.ArticleNo.Contains(txtSelected))
+                             join sp in IME.SuperDiskPs on a.ArticleNo equals sp.Article_No
+                             select new
+                             {
+                                 ArticleNo = a.ArticleNo,
+                                 ArticleDesc = sp.Article_Desc,
+                                 sp.MPN,
+                                 a.Note.Note_name,
+                             }
+                            ).ToList();
+                var list3 = (from a in IME.ItemNotes.Where(a => a.ArticleNo.Contains(txtSelected))
+                             join sp in IME.ExtendedRanges on a.ArticleNo equals sp.ArticleNo
+                             select new
+                             {
+                                 ArticleNo = a.ArticleNo,
+                                 ArticleDesc = sp.ArticleNo,
+                                 sp.MPN,
+                                 a.Note.Note_name,
+                             }
+                            ).ToList();
+                gridAdapterPC.AddRange(list2);
+                gridAdapterPC.AddRange(list3);
+                //
+                #endregion
+                dataGridView1.DataSource = gridAdapterPC;
+                if (gridAdapterPC.Count != 0)
+                {
+                    ArticleNoSearch = gridAdapterPC[gridselectedindex].ArticleNo;
+                }
+                else
+                {
+                    MessageBox.Show("There is no such a data");
+                }
+
             }
 
 
@@ -701,6 +760,7 @@ namespace LoginForm
                 var note = IME.Notes.Where(a => a.ID == Updnote.NoteID).FirstOrDefault();
                 note.Note_name = Note.Text;
                 IME.SaveChanges();
+                MessageBox.Show("Note updated successfully");
             }
             else
             {
@@ -713,6 +773,7 @@ namespace LoginForm
                 newNoteID.ArticleNo = ArticleNo.Text;
                 IME.ItemNotes.Add(newNoteID);
                 IME.SaveChanges();
+                MessageBox.Show("Note added to item successfully");
             }
         }
 

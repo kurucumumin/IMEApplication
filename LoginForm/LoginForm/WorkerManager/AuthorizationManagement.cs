@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LoginForm.WorkerManager
+namespace LoginForm
 {
     
     public partial class AuthorizationManagement : Form

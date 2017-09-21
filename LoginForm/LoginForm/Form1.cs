@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 //using LoginForm.Quotation;
-using LoginForm.WorkerManager;
 
 
 namespace LoginForm

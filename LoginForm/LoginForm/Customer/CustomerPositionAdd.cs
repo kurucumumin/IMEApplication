@@ -21,19 +21,29 @@ namespace LoginForm
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var result = IME.CustomerTitles.Where(title => title.titlename == TitleName.Text).ToList();
-            if (result.Count == 0)
+            var dep = IME.CustomerDepartments.Where(a => a.departmentname == comboBox1.Text).FirstOrDefault();
+            if (dep != null)
             {
-                
-                CustomerTitle ct = new CustomerTitle();
-                ct.titlename = TitleName.Text;
-                string Department = comboBox1.Items[comboBox1.SelectedIndex].ToString();
-                ct.departmnetID = IME.CustomerDepartments.Where(cd => cd.departmentname == Department).Select(cd => cd.ID).ToList()[0];
-                IME.CustomerTitles.Add(ct);
+                var result = IME.CustomerTitles.Where(title => title.titlename == TitleName.Text).FirstOrDefault();
+
+                if (result == null || ( ((IME.CustomerTitles.Where(a=>a.departmnetID==a.departmnetID)).Count()==0) && result != null))
+                {
+
+                    CustomerTitle ct = new CustomerTitle();
+                    ct.titlename = TitleName.Text;
+                    string Department = comboBox1.Items[comboBox1.SelectedIndex].ToString();
+                    ct.departmnetID = IME.CustomerDepartments.Where(cd => cd.departmentname == Department).Select(cd => cd.ID).ToList()[0];
+                    IME.CustomerTitles.Add(ct);
+                    MessageBox.Show(ct.titlename + " added as a Title");
+                }
+                else
+                {
+                    MessageBox.Show("There is a Already title with the same name in this department");
+                }
             }
             else
             {
-
+                MessageBox.Show("Please choose a department name properly");
             }
         }
 
