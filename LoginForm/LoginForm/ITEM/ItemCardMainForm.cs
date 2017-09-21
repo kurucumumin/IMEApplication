@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ItemCard1
+namespace LoginForm
 {
-    public partial class MainPage : Form
+    public partial class ItemCardMainForm : Form
     {
-        public MainPage()
+        public ItemCardMainForm()
         {
             
             InitializeComponent();

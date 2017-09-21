@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 
-namespace ItemCard1
+namespace LoginForm
 {
     public partial class LoaderPage : Form
     {
@@ -21,7 +21,7 @@ namespace ItemCard1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MainPage form = new MainPage();
+            ItemCardMainForm form = new ItemCardMainForm();
             form.Show();
             this.Hide();
         }

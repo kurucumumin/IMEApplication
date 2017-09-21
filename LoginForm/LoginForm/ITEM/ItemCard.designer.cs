@@ -1,4 +1,4 @@
-﻿namespace ItemCard1
+﻿namespace LoginForm
 {
     partial class ItemCard
     {

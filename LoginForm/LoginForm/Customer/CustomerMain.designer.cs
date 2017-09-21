@@ -79,7 +79,7 @@
             this.TaxOffice = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.tab_adresses = new System.Windows.Forms.TabPage();
-            this.cbCompanyAdress = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.DeliveryAddressOk = new System.Windows.Forms.CheckBox();
             this.InvoiceAdressOk = new System.Windows.Forms.CheckBox();
             this.AddressType = new System.Windows.Forms.ComboBox();
@@ -636,7 +636,7 @@
             // 
             // tab_adresses
             // 
-            this.tab_adresses.Controls.Add(this.cbCompanyAdress);
+            this.tab_adresses.Controls.Add(this.checkBox1);
             this.tab_adresses.Controls.Add(this.DeliveryAddressOk);
             this.tab_adresses.Controls.Add(this.InvoiceAdressOk);
             this.tab_adresses.Controls.Add(this.AddressType);
@@ -664,17 +664,17 @@
             this.tab_adresses.Text = "Adresses";
             this.tab_adresses.UseVisualStyleBackColor = true;
             // 
-            // cbCompanyAdress
+            // checkBox1
             // 
-            this.cbCompanyAdress.AutoSize = true;
-            this.cbCompanyAdress.Enabled = false;
-            this.cbCompanyAdress.Location = new System.Drawing.Point(108, 22);
-            this.cbCompanyAdress.Name = "cbCompanyAdress";
-            this.cbCompanyAdress.Size = new System.Drawing.Size(105, 17);
-            this.cbCompanyAdress.TabIndex = 43;
-            this.cbCompanyAdress.Text = "Company Adress";
-            this.cbCompanyAdress.UseVisualStyleBackColor = true;
-            this.cbCompanyAdress.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Enabled = false;
+            this.checkBox1.Location = new System.Drawing.Point(108, 22);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(105, 17);
+            this.checkBox1.TabIndex = 43;
+            this.checkBox1.Text = "Company Adress";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // DeliveryAddressOk
             // 
@@ -1175,7 +1175,6 @@
             this.CustomerDataGrid.Size = new System.Drawing.Size(688, 139);
             this.CustomerDataGrid.TabIndex = 1;
             this.CustomerDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CustomerDataGrid_CellClick);
-            this.CustomerDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CustomerDataGrid_CellContentClick);
             this.CustomerDataGrid.Click += new System.EventHandler(this.CustomerDataGrid_Click);
             // 
             // Search
@@ -1364,7 +1363,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckBox DeliveryAddressOk;
         private System.Windows.Forms.CheckBox InvoiceAdressOk;
-        private System.Windows.Forms.CheckBox cbCompanyAdress;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

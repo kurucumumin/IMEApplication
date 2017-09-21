@@ -11,7 +11,7 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 
 
-namespace ItemCard1
+namespace LoginForm
 {
     class txtReader
     {

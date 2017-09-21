@@ -64,17 +64,17 @@
     <Compile Include="CustomerManager\AddressBook.Designer.cs">
       <DependentUpon>AddressBook.cs</DependentUpon>
     </Compile>
-    <Compile Include="Customer\CustomerMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Customer\CustomerMain.designer.cs">
-      <DependentUpon>CustomerMain.cs</DependentUpon>
-    </Compile>
     <Compile Include="Customer\CustomerDepartmentAdd.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Customer\CustomerDepartmentAdd.designer.cs">
       <DependentUpon>CustomerDepartmentAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\CustomerMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerMain.designer.cs">
+      <DependentUpon>CustomerMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Customer\CustomerPositionAdd.cs">
       <SubType>Form</SubType>
@@ -239,11 +239,11 @@
     <Compile Include="ITEM\LoaderPage.designer.cs">
       <DependentUpon>LoaderPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="ITEM\MainPage.cs">
+    <Compile Include="ITEM\ItemCardMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ITEM\MainPage.designer.cs">
-      <DependentUpon>MainPage.cs</DependentUpon>
+    <Compile Include="ITEM\ItemCardMainForm.designer.cs">
+      <DependentUpon>ItemCardMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainNavigationForm.cs">
       <SubType>Form</SubType>
@@ -298,11 +298,11 @@
     <EmbeddedResource Include="CustomerManager\AddressBook.resx">
       <DependentUpon>AddressBook.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Customer\CustomerMain.resx">
-      <DependentUpon>CustomerMain.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Customer\CustomerDepartmentAdd.resx">
       <DependentUpon>CustomerDepartmentAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer\CustomerMain.resx">
+      <DependentUpon>CustomerMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customer\CustomerPositionAdd.resx">
       <DependentUpon>CustomerPositionAdd.cs</DependentUpon>
@@ -316,8 +316,8 @@
     <EmbeddedResource Include="ITEM\LoaderPage.resx">
       <DependentUpon>LoaderPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ITEM\MainPage.resx">
-      <DependentUpon>MainPage.cs</DependentUpon>
+    <EmbeddedResource Include="ITEM\ItemCardMainForm.resx">
+      <DependentUpon>ItemCardMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainNavigationForm.resx">
       <DependentUpon>MainNavigationForm.cs</DependentUpon>

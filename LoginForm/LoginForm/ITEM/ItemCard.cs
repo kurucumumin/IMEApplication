@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 
-namespace ItemCard1
+namespace LoginForm
 {
     public partial class ItemCard : Form
     {

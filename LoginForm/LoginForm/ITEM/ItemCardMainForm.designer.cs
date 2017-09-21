@@ -1,6 +1,6 @@
-﻿namespace ItemCard1
+﻿namespace LoginForm
 {
-    partial class MainPage
+    partial class ItemCardMainForm
     {
         /// <summary>
         /// Required designer variable.
