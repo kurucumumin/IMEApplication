@@ -111,6 +111,7 @@
             this.label34 = new System.Windows.Forms.Label();
             this.CommunicationLanguage = new System.Windows.Forms.ComboBox();
             this.ContactType = new System.Windows.Forms.ComboBox();
+            this.cbMainContact = new System.Windows.Forms.ComboBox();
             this.ContactTitle = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.ContactDepartment = new System.Windows.Forms.ComboBox();
@@ -118,6 +119,7 @@
             this.label27 = new System.Windows.Forms.Label();
             this.ContactFAX = new System.Windows.Forms.TextBox();
             this.label33 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
             this.ContactPhone = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
             this.ContactMobilePhone = new System.Windows.Forms.TextBox();
@@ -878,6 +880,7 @@
             this.tab_contact.Controls.Add(this.label34);
             this.tab_contact.Controls.Add(this.CommunicationLanguage);
             this.tab_contact.Controls.Add(this.ContactType);
+            this.tab_contact.Controls.Add(this.cbMainContact);
             this.tab_contact.Controls.Add(this.ContactTitle);
             this.tab_contact.Controls.Add(this.label5);
             this.tab_contact.Controls.Add(this.ContactDepartment);
@@ -885,6 +888,7 @@
             this.tab_contact.Controls.Add(this.label27);
             this.tab_contact.Controls.Add(this.ContactFAX);
             this.tab_contact.Controls.Add(this.label33);
+            this.tab_contact.Controls.Add(this.label35);
             this.tab_contact.Controls.Add(this.ContactPhone);
             this.tab_contact.Controls.Add(this.label31);
             this.tab_contact.Controls.Add(this.ContactMobilePhone);
@@ -971,10 +975,10 @@
             // ContactNotes
             // 
             this.ContactNotes.Enabled = false;
-            this.ContactNotes.Location = new System.Drawing.Point(382, 127);
+            this.ContactNotes.Location = new System.Drawing.Point(382, 130);
             this.ContactNotes.Multiline = true;
             this.ContactNotes.Name = "ContactNotes";
-            this.ContactNotes.Size = new System.Drawing.Size(151, 98);
+            this.ContactNotes.Size = new System.Drawing.Size(151, 114);
             this.ContactNotes.TabIndex = 29;
             this.ContactNotes.TextChanged += new System.EventHandler(this.ContactNotes_TextChanged);
             // 
@@ -1005,6 +1009,15 @@
             this.ContactType.Name = "ContactType";
             this.ContactType.Size = new System.Drawing.Size(142, 21);
             this.ContactType.TabIndex = 26;
+            // 
+            // cbMainContact
+            // 
+            this.cbMainContact.Enabled = false;
+            this.cbMainContact.FormattingEnabled = true;
+            this.cbMainContact.Location = new System.Drawing.Point(98, 223);
+            this.cbMainContact.Name = "cbMainContact";
+            this.cbMainContact.Size = new System.Drawing.Size(142, 21);
+            this.cbMainContact.TabIndex = 22;
             // 
             // ContactTitle
             // 
@@ -1068,18 +1081,27 @@
             this.label33.TabIndex = 19;
             this.label33.Text = "FAX";
             // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(17, 227);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(70, 13);
+            this.label35.TabIndex = 19;
+            this.label35.Text = "Main Contact";
+            // 
             // ContactPhone
             // 
             this.ContactPhone.Enabled = false;
-            this.ContactPhone.Location = new System.Drawing.Point(96, 205);
+            this.ContactPhone.Location = new System.Drawing.Point(98, 189);
             this.ContactPhone.Name = "ContactPhone";
-            this.ContactPhone.Size = new System.Drawing.Size(144, 20);
+            this.ContactPhone.Size = new System.Drawing.Size(142, 20);
             this.ContactPhone.TabIndex = 25;
             // 
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(17, 208);
+            this.label31.Location = new System.Drawing.Point(17, 192);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(38, 13);
             this.label31.TabIndex = 19;
@@ -1104,7 +1126,7 @@
             // ContactEmail
             // 
             this.ContactEmail.Enabled = false;
-            this.ContactEmail.Location = new System.Drawing.Point(98, 166);
+            this.ContactEmail.Location = new System.Drawing.Point(98, 158);
             this.ContactEmail.Name = "ContactEmail";
             this.ContactEmail.Size = new System.Drawing.Size(142, 20);
             this.ContactEmail.TabIndex = 24;
@@ -1130,7 +1152,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(17, 169);
+            this.label30.Location = new System.Drawing.Point(17, 161);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(36, 13);
             this.label30.TabIndex = 20;
@@ -1172,10 +1194,17 @@
             this.CustomerDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CustomerDataGrid.Location = new System.Drawing.Point(7, 359);
             this.CustomerDataGrid.Name = "CustomerDataGrid";
+            this.CustomerDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.CustomerDataGrid.Size = new System.Drawing.Size(688, 139);
             this.CustomerDataGrid.TabIndex = 1;
-            this.CustomerDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CustomerDataGrid_CellClick);
+            this.CustomerDataGrid.TabStop = false;
+            this.CustomerDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CustomerDataGrid_CellClick_1);
+            this.CustomerDataGrid.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.CustomerDataGrid_CellMouseDown);
+            this.CustomerDataGrid.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.CustomerDataGrid_RowHeaderMouseClick);
+            this.CustomerDataGrid.SelectionChanged += new System.EventHandler(this.CustomerDataGrid_SelectionChanged);
             this.CustomerDataGrid.Click += new System.EventHandler(this.CustomerDataGrid_Click);
+            this.CustomerDataGrid.MouseClick += new System.Windows.Forms.MouseEventHandler(this.CustomerDataGrid_MouseClick);
+            this.CustomerDataGrid.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CustomerDataGrid_MouseDown);
             // 
             // Search
             // 
@@ -1239,6 +1268,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "CustomerMain";
             this.Text = "CustomerMain";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.CustomerMain_Load);
             this.tabControl1.ResumeLayout(false);
             this.tab_company.ResumeLayout(false);
@@ -1364,6 +1394,8 @@
         private System.Windows.Forms.CheckBox DeliveryAddressOk;
         private System.Windows.Forms.CheckBox InvoiceAdressOk;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.ComboBox cbMainContact;
+        private System.Windows.Forms.Label label35;
     }
 }
 

@@ -81,6 +81,7 @@ namespace LoginForm
             Number.Text = "";
             gridselectedindex = 0;
             itemSelect();
+            
         }
 
         private void groupBox7_Enter(object sender, EventArgs e)
@@ -156,6 +157,7 @@ namespace LoginForm
                 {
                     MessageBox.Show("There is no such a data");
                 }
+                
             }
             else if (rbMPNCode.Checked == true)
             {
@@ -316,8 +318,7 @@ namespace LoginForm
             #endregion
             if (dataGridView1.RowCount > 0)
             {
-                dataGridView1.ClearSelection();
-                dataGridView1.Rows[gridselectedindex].Selected = true;// tüm row u seçtirmek için bu formülü kullnınca selectedrow index =0 oluyor
+                
                 Filler(ArticleNoSearch);
                 //
             }
@@ -481,13 +482,18 @@ namespace LoginForm
 
         private void dataGridView1_Click(object sender, EventArgs e)
         {
-
             textsClear();
             if (dataGridView1.RowCount > 0)
             {
                 gridselectedindex = dataGridView1.CurrentCell.RowIndex;
             }
             Filler(dataGridView1.Rows[gridselectedindex].Cells["ArticleNo"].Value.ToString());
+            if (dataGridView1.RowCount > 0)
+            {
+                dataGridView1.ClearSelection();
+                dataGridView1.Rows[gridselectedindex].Selected = true;
+            }
+
         }
         private void textsClear()
         {
@@ -785,6 +791,11 @@ namespace LoginForm
                 gridselectedindex = 0;
                 itemSelect();
             }
+        }
+
+        private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
+        {
+           
         }
     }
 }

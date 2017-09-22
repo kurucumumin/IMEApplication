@@ -391,6 +391,8 @@
       <DependentUpon>IME.edmx</DependentUpon>
       <LastGenOutput>IME.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\btnBackground.png" />
+    <None Include="Resources\gradient2.jpg" />
     <Content Include="Resources\IME.jpg" />
   </ItemGroup>
   <ItemGroup>

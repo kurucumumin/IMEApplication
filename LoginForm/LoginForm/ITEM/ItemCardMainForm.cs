@@ -29,8 +29,9 @@ namespace LoginForm
         private void btnItemCard_Click(object sender, EventArgs e)
         {
             ItemCard form = new ItemCard();
-            form.Show();
             this.Hide();
+            form.ShowDialog();
+            this.Show();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -113,8 +114,9 @@ namespace LoginForm
         private void GoToLoaderPage()
         {
             LoaderPage form = new LoaderPage();
-            form.Show();
             this.Hide();
+            form.ShowDialog();
+            this.Show();
         }
 
         

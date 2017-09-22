@@ -18,6 +18,7 @@ namespace LoginForm
         int gridselectedindex=0;
         string searchtxt="";
         int selectedContactID;
+        int contactnewID = 0;
 
         public CustomerMain()
         {
@@ -70,13 +71,12 @@ namespace LoginForm
             
         }
         private void CustomerDataGrid_Click(object sender, EventArgs e)
-        {        
+        {
             gridselectedindex = CustomerDataGrid.CurrentCell.RowIndex;
             customersearch();
-
         }
 
-       
+
 
         private void ContactNotes_TextChanged(object sender, EventArgs e)
         {
@@ -122,16 +122,17 @@ namespace LoginForm
         private void departmentAdd_Click(object sender, EventArgs e)
         {
             CustomerDepartmentAdd form = new CustomerDepartmentAdd();
-            form.Show();
-            this.Hide();
-            
+            this.Enabled = false;
+            form.ShowDialog();
+            this.Enabled = true;
         }
 
         private void titleAdd_Click(object sender, EventArgs e)
         {
             CustomerPositionAdd form = new CustomerPositionAdd();
-            form.Show();
-            this.Hide();
+            this.Enabled = false;
+            form.ShowDialog();
+            this.Enabled = true;
         }
 
         private void label34_Click(object sender, EventArgs e)
@@ -175,6 +176,7 @@ namespace LoginForm
             ContactType.Enabled = false;
             ContactDepartment.Enabled = false;
             departmentAdd.Enabled = false;
+            cbMainContact.Enabled = false;
             ContactTitle.Enabled = false;
             titleAdd.Enabled = false;
             ContactName.Enabled = false;
@@ -222,6 +224,7 @@ namespace LoginForm
             departmentAdd.Enabled = true;
             ContactTitle.Enabled = true;
             titleAdd.Enabled = true;
+            cbMainContact.Enabled = true;
             ContactName.Enabled = true;
             ContactEmail.Enabled = true;
             ContactPhone.Enabled = true;
@@ -311,7 +314,8 @@ namespace LoginForm
                                    join l in IME.Languages on customerworker.languageID equals l.ID
                                    join a in IME.CustomerAdresses on c.ID equals a.CustomerID into adress
                                    let a = adress.Select(customerworker1 => customerworker1).FirstOrDefault()
-
+                                   join mc in IME.CustomerWorkers on c.MainContactID equals mc.ID into maincontact
+                                   let mc = maincontact.Select(customerworker1 => customerworker1).FirstOrDefault()
                                    select new
                                    {
                                        c.ID,
@@ -346,13 +350,13 @@ namespace LoginForm
                                        a.PostCode,
                                        a.Town.Town_name,
                                        a.AdressDetails,
+                                       c.MainContactID,
+                                       MainContact=mc.cw_name
                                    }).ToList();
             #endregion
 
             #region FillInfos
             CustomerDataGrid.DataSource = customerAdapter;
-            CustomerDataGrid.ClearSelection();
-            CustomerDataGrid.Rows[gridselectedindex].Selected = true;// tüm row u seçtirmek için bu formülü kullnınca selectedrow index =0 oluyor
             CustomerCode.Text = customerAdapter[gridselectedindex].ID;
             CustomerName.Text = customerAdapter[gridselectedindex].c_name;
             factor.SelectedIndex = factor.FindStringExact(customerAdapter[gridselectedindex].currency.ToString());
@@ -364,7 +368,6 @@ namespace LoginForm
             AddressType.DisplayMember = "cw_name";
 
             Represantative2.Text = customerAdapter[gridselectedindex].Representative2;
-            ContactNotes.Text = customerAdapter[gridselectedindex].cwNote;
             Represantative1.SelectedIndex = Represantative1.FindStringExact(customerAdapter[gridselectedindex].FirstName);
             ContactTitle.SelectedIndex = ContactTitle.FindStringExact(customerAdapter[gridselectedindex].titlename);
             ContactDepartment.SelectedIndex = ContactDepartment.FindStringExact(customerAdapter[gridselectedindex].titlename);
@@ -374,12 +377,15 @@ namespace LoginForm
             ContactName.Text = customerAdapter[gridselectedindex].cw_name;
             ContactEmail.Text = customerAdapter[gridselectedindex].cw_email;
             CompanyNotes.Text = customerAdapter[gridselectedindex].CustomerNote;
-            ContactNotes.Text = customerAdapter[gridselectedindex].WorkerNote;
+            ContactNotes.Text = customerAdapter[gridselectedindex].CustomerWorkerNote;
             AccountRepresentary.Text = customerAdapter[gridselectedindex].AccountRepresentative;
             CommunicationLanguage.Text = customerAdapter[gridselectedindex].languagename;
             if (customerAdapter[gridselectedindex].isactive == 1) { rb_active.Checked = true; } else { rb_passive.Checked = true; }
             ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
             ContactList.DisplayMember = "cw_name";
+            cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
+            cbMainContact.DisplayMember = "cw_name";
+            cbMainContact.SelectedItem = cbMainContact.FindStringExact(customerAdapter[gridselectedindex].cw_name);
             if (customerAdapter[gridselectedindex].AddressContact == null)
             { AddressType.SelectedItem=null;checkBox1.Checked = true; }
             else
@@ -394,16 +400,20 @@ namespace LoginForm
             cbTown.SelectedIndex = cbTown.FindStringExact(customerAdapter[gridselectedindex].Town_name);
             AddressDetails.Text = customerAdapter[gridselectedindex].AdressDetails;
             #endregion
+            
+
         }
 
         //CONTACT ADD NEW
         private void button1_Click(object sender, EventArgs e)
         {
             #region addContactButton
+            contactnewID = 0;
             contactTabEnableTrue();
             ContactType.Text="";
             ContactDepartment.Text = "";
             ContactTitle.Text = "";
+            cbMainContact.Text = "";
             ContactName.Text = "";
             ContactEmail.Text = "";
             ContactPhone.Text = "";
@@ -436,11 +446,13 @@ namespace LoginForm
             btnContactDone.Visible = false;
             btnContactUpdate.Visible = true;
             #endregion
+            
         }
         //CONTACT UPDATE
         private void btnContactUpdate_Click(object sender, EventArgs e)
         {
             #region  btnContactUpdate
+            contactnewID = 1;
             contactTabEnableTrue();
             btnContactAdd.Visible = false;
             btnContactCancel.Visible = true;
@@ -453,40 +465,89 @@ namespace LoginForm
 
         private void btnContactDone_Click(object sender, EventArgs e)
         {
-            
-                CustomerWorker cw = new CustomerWorker();
-            //CustomerCode.Text;
-            cw.customerID = CustomerCode.Text;
-            cw.departmentID = ((CustomerDepartment)(ContactDepartment).SelectedItem).ID;
-            cw.titleID = ((CustomerTitle)(ContactTitle).SelectedItem).ID;
-            cw.cw_name = ContactName.Text;
-            cw.cw_email = ContactEmail.Text;
-            cw.phone = ContactPhone.Text;
-            cw.mobilephone = ContactMobilePhone.Text;
-            cw.fax = ContactFAX.Text;
-            cw.languageID = ((Language)(CommunicationLanguage).SelectedItem).ID;
-            Note n = new Note();
-            n.Note_name = ContactNotes.Text;
-            IME.Notes.Add(n);
-            IME.SaveChanges();
-            cw.customerNoteID = n.ID;
-            IME.CustomerWorkers.Add(cw);
-            IME.SaveChanges();
-            contactTabEnableFalse();
-            if(btnCreate.Text=="CREATE")
+            if (contactnewID == 0)
             {
-                txtSearch.Enabled = true;
-                Search.Enabled = true;
-                CustomerDataGrid.Enabled = true;
+                CustomerWorker cw = new CustomerWorker();
+                //CustomerCode.Text;
+                cw.customerID = CustomerCode.Text;
+                cw.departmentID = ((CustomerDepartment)(ContactDepartment).SelectedItem).ID;
+                cw.titleID = ((CustomerTitle)(ContactTitle).SelectedItem).ID;
+                cw.cw_name = ContactName.Text;
+                cw.cw_email = ContactEmail.Text;
+                cw.phone = ContactPhone.Text;
+                cw.mobilephone = ContactMobilePhone.Text;
+                cw.fax = ContactFAX.Text;
+                cw.languageID = ((Language)(CommunicationLanguage).SelectedItem).ID;
+                Note n = new Note();
+                n.Note_name = ContactNotes.Text;
+                IME.Notes.Add(n);
+                IME.SaveChanges();
+                cw.customerNoteID = n.ID;
+                IME.CustomerWorkers.Add(cw);
+                IME.SaveChanges();
+                contactTabEnableFalse();
+                if (btnCreate.Text == "CREATE")
+                {
+                    txtSearch.Enabled = true;
+                    Search.Enabled = true;
+                    CustomerDataGrid.Enabled = true;
+                }
+                ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
+                ContactList.DisplayMember = "cw_name";
+                //catch { MessageBox.Show("Contact is NOT successfull"); }
+            }else
+            {
+                CustomerWorker cw = IME.CustomerWorkers.Where(a => a.ID == ((CustomerWorker)(ContactList).SelectedItem).ID).FirstOrDefault();
+                if (cw.cw_name!="")
+                {
+                    
+                    cw.customerID = CustomerCode.Text;
+                    cw.departmentID = ((CustomerDepartment)(ContactDepartment).SelectedItem).ID;
+                    cw.titleID = ((CustomerTitle)(ContactTitle).SelectedItem).ID;
+                    cw.cw_name = ContactName.Text;
+                    cw.cw_email = ContactEmail.Text;
+                    cw.phone = ContactPhone.Text;
+                    cw.mobilephone = ContactMobilePhone.Text;
+                    cw.fax = ContactFAX.Text;
+                    cw.languageID = ((Language)(CommunicationLanguage).SelectedItem).ID;
+                    var contactNote = IME.Notes.Where(a => a.ID == cw.customerNoteID).FirstOrDefault();
+                    if (contactNote.ID.ToString() == null)
+                    {
+                        Note n = new Note();
+                        n.Note_name = ContactNotes.Text;
+                        IME.Notes.Add(n);
+                        IME.SaveChanges();
+                    }else
+                    {
+                        contactNote.Note_name= ContactNotes.Text;
+                        IME.SaveChanges();
+                    }
+                    
+                    cw.customerNoteID = contactNote.ID;
+                    IME.SaveChanges();
+                    contactTabEnableFalse();
+                    if (btnCreate.Text == "CREATE")
+                    {
+                        txtSearch.Enabled = true;
+                        Search.Enabled = true;
+                        CustomerDataGrid.Enabled = true;
+                    }
+                    ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
+                    ContactList.DisplayMember = "cw_name";
+                    //catch { MessageBox.Show("Contact is NOT successfull"); }
+                }
+                else { MessageBox.Show("Please choose a contact to update"); }
             }
-            ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
-            ContactList.DisplayMember = "cw_name";
-            //catch { MessageBox.Show("Contact is NOT successfull"); }
+
+
+
+
             btnContactAdd.Visible = true;
             btnContactDelete.Visible = true;
             btnContactUpdate.Visible = true;
             btnContactCancel.Visible = false;
             btnContactDone.Visible = false;
+
 
         }
 
@@ -987,6 +1048,38 @@ namespace LoginForm
             }
             catch { }
             #endregion
+
+        }
+
+        private void CustomerDataGrid_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+           
+        }
+
+        private void CustomerDataGrid_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            
+            
+        }
+
+        private void CustomerDataGrid_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void CustomerDataGrid_MouseDown(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void CustomerDataGrid_MouseClick(object sender, MouseEventArgs e)
+        {
+            
+
+        }
+
+        private void CustomerDataGrid_SelectionChanged(object sender, EventArgs e)
+        {
 
         }
     }

@@ -21,30 +21,32 @@ namespace LoginForm
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var dep = IME.CustomerDepartments.Where(a => a.departmentname == comboBox1.Text).FirstOrDefault();
-            if (dep != null)
-            {
-                var result = IME.CustomerTitles.Where(title => title.titlename == TitleName.Text).FirstOrDefault();
-
-                if (result == null || ( ((IME.CustomerTitles.Where(a=>a.departmnetID==a.departmnetID)).Count()==0) && result != null))
+           
+                var dep = IME.CustomerDepartments.Where(a => a.departmentname == comboBox1.Text).FirstOrDefault();
+                if (dep != null)
                 {
+                    var result = IME.CustomerTitles.Where(title => title.titlename == TitleName.Text).FirstOrDefault();
 
-                    CustomerTitle ct = new CustomerTitle();
-                    ct.titlename = TitleName.Text;
-                    string Department = comboBox1.Items[comboBox1.SelectedIndex].ToString();
-                    ct.departmnetID = IME.CustomerDepartments.Where(cd => cd.departmentname == Department).Select(cd => cd.ID).ToList()[0];
-                    IME.CustomerTitles.Add(ct);
-                    MessageBox.Show(ct.titlename + " added as a Title");
+                    if (result == null || (((IME.CustomerTitles.Where(a => a.departmnetID == a.departmnetID)).Count() == 0) && result != null))
+                    {
+                        CustomerTitle ct = new CustomerTitle();
+                        ct.titlename = TitleName.Text;
+                        string Department = comboBox1.Items[comboBox1.SelectedIndex].ToString();
+                        ct.departmnetID = IME.CustomerDepartments.Where(cd => cd.departmentname == Department).Select(cd => cd.ID).ToList()[0];
+                        IME.CustomerTitles.Add(ct);
+                        MessageBox.Show(ct.titlename + " added as a Title");
+                    }
+                    else
+                    {
+                        MessageBox.Show("There is a Already title with the same name in this department");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("There is a Already title with the same name in this department");
+                    MessageBox.Show("Please choose a department name properly");
                 }
-            }
-            else
-            {
-                MessageBox.Show("Please choose a department name properly");
-            }
+            
+           
         }
 
         private void TitleAdd_Load(object sender, EventArgs e)
@@ -55,8 +57,6 @@ namespace LoginForm
 
         private void button2_Click(object sender, EventArgs e)
         {
-            CustomerMain form = new CustomerMain();
-            form.Show();
             this.Hide();
         }
     }

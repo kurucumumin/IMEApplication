@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,12 +13,28 @@ namespace LoginForm
 {
     public partial class FormMain : Form
     {
+        ArrayList developmentButtons = new ArrayList();
+
+        public void initialize()
+        {
+            developmentButtons.Add(btnCustomerMain);
+            developmentButtons.Add(btnLogin);
+            developmentButtons.Add(btnQuotation);
+            developmentButtons.Add(btnSupplier);
+            developmentButtons.Add(btnWorker);
+
+
+
+
+        }
+
         public FormMain()
         {
             InitializeComponent();
+            initialize();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void trialMain_Load(object sender, EventArgs e)
         {
 
         }
@@ -28,7 +45,7 @@ namespace LoginForm
             customerMain.Show();
         }
 
-        private void btnItems_Click(object sender, EventArgs e)
+        private void btnLoader_Click(object sender, EventArgs e)
         {
             ItemCardMainForm itemCardMainForm = new ItemCardMainForm();
             itemCardMainForm.Show();
@@ -56,6 +73,19 @@ namespace LoginForm
         {
             Form1 loginForm = new Form1();
             loginForm.Show();
+        }
+
+        private void btnDevelopment_Click(object sender, EventArgs e)
+        {
+            changeButtonVisibility(developmentButtons, true);
+        }
+
+        private void changeButtonVisibility(ArrayList list, bool state)
+        {
+            foreach (Button item in list)
+            {
+                item.Visible = state;
+            }
         }
     }
 }

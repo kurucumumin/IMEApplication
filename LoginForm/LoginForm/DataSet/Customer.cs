@@ -40,11 +40,15 @@ namespace LoginForm.DataSet
         public Nullable<int> rateIDinvoice { get; set; }
         public string taxoffice { get; set; }
         public Nullable<int> taxnumber { get; set; }
+        public Nullable<int> MainContactID { get; set; }
     
         public virtual Worker Worker { get; set; }
         public virtual Note Note { get; set; }
+        public virtual CustomerWorker CustomerWorker { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
         public virtual PaymentTerm PaymentTerm { get; set; }
+        public virtual Rate Rate { get; set; }
+        public virtual Rate Rate1 { get; set; }
         public virtual Worker Worker1 { get; set; }
         public virtual Worker Worker2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -53,7 +57,5 @@ namespace LoginForm.DataSet
         public virtual ICollection<CustomerCategorySubCategory> CustomerCategorySubCategories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomerWorker> CustomerWorkers { get; set; }
-        public virtual Rate Rate { get; set; }
-        public virtual Rate Rate1 { get; set; }
     }
 }
