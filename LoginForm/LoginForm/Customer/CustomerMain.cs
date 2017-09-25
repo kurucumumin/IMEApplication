@@ -107,12 +107,13 @@ namespace LoginForm
                                     selectedContactID = a.ID;
                                     ContactName.Text = a.cw_name;
                                     ContactEmail.Text = a.cw_email;
-                                    ContactDepartment.Text = a.CustomerDepartment.departmentname;
+                                    ContactDepartment.SelectedIndex = ContactDepartment.FindStringExact(a.CustomerDepartment.departmentname);
                                     ContactFAX.Text = a.fax;
                                     ContactMobilePhone.Text = a.mobilephone;
-                                    ContactTitle.Text = a.CustomerTitle.titlename;
+                                    ContactTitle.SelectedIndex = ContactTitle.FindStringExact(a.CustomerTitle.titlename);
                                     ContactPhone.Text = a.phone;
-                                    ContactNotes.Text = a.Note.Note_name;
+                                    CommunicationLanguage.SelectedIndex = CommunicationLanguage.FindStringExact(a.Language.languagename);
+                                    if (a.Note !=null) { ContactNotes.Text = a.Note.Note_name; }else{ ContactNotes.Text = ""; }
                                 }
                             }
             }catch { }
@@ -357,6 +358,7 @@ namespace LoginForm
 
             #region FillInfos
             CustomerDataGrid.DataSource = customerAdapter;
+            CustomerDataGrid.CurrentCell = CustomerDataGrid.Rows[gridselectedindex].Cells[0];
             CustomerCode.Text = customerAdapter[gridselectedindex].ID;
             CustomerName.Text = customerAdapter[gridselectedindex].c_name;
             factor.SelectedIndex = factor.FindStringExact(customerAdapter[gridselectedindex].currency.ToString());
@@ -500,7 +502,7 @@ namespace LoginForm
                 CustomerWorker cw = IME.CustomerWorkers.Where(a => a.ID == ((CustomerWorker)(ContactList).SelectedItem).ID).FirstOrDefault();
                 if (cw.cw_name!="")
                 {
-                    
+                    //UPDATE CONTACT
                     cw.customerID = CustomerCode.Text;
                     cw.departmentID = ((CustomerDepartment)(ContactDepartment).SelectedItem).ID;
                     cw.titleID = ((CustomerTitle)(ContactTitle).SelectedItem).ID;
@@ -511,19 +513,22 @@ namespace LoginForm
                     cw.fax = ContactFAX.Text;
                     cw.languageID = ((Language)(CommunicationLanguage).SelectedItem).ID;
                     var contactNote = IME.Notes.Where(a => a.ID == cw.customerNoteID).FirstOrDefault();
-                    if (contactNote.ID.ToString() == null)
+                    if (contactNote == null)
                     {
-                        Note n = new Note();
-                        n.Note_name = ContactNotes.Text;
-                        IME.Notes.Add(n);
-                        IME.SaveChanges();
+                        if (ContactNotes.Text != "")
+                        {
+                            Note n = new Note();
+                            n.Note_name = ContactNotes.Text;
+                            IME.Notes.Add(n);
+                            IME.SaveChanges();
+                            cw.customerNoteID = n.ID;
+                        }
                     }else
                     {
                         contactNote.Note_name= ContactNotes.Text;
                         IME.SaveChanges();
+                        cw.customerNoteID = contactNote.ID;
                     }
-                    
-                    cw.customerNoteID = contactNote.ID;
                     IME.SaveChanges();
                     contactTabEnableFalse();
                     if (btnCreate.Text == "CREATE")
@@ -534,7 +539,8 @@ namespace LoginForm
                     }
                     ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
                     ContactList.DisplayMember = "cw_name";
-                    //catch { MessageBox.Show("Contact is NOT successfull"); }
+                    cbMainContact.DataSource= IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
+                    cbMainContact.DisplayMember = "cw_name";
                 }
                 else { MessageBox.Show("Please choose a contact to update"); }
             }

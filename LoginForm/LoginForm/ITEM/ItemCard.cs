@@ -318,7 +318,7 @@ namespace LoginForm
             #endregion
             if (dataGridView1.RowCount > 0)
             {
-                
+                dataGridView1.CurrentCell = dataGridView1.Rows[gridselectedindex].Cells[0];
                 Filler(ArticleNoSearch);
                 //
             }
