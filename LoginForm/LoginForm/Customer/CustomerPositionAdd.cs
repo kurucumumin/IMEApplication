@@ -34,16 +34,16 @@ namespace LoginForm
                         string Department = comboBox1.Items[comboBox1.SelectedIndex].ToString();
                         ct.departmnetID = IME.CustomerDepartments.Where(cd => cd.departmentname == Department).Select(cd => cd.ID).ToList()[0];
                         IME.CustomerTitles.Add(ct);
-                        MessageBox.Show(ct.titlename + " added as a Title");
+                    MessageBox.Show(this,ct.titlename + " added as a Title");
                     }
                     else
                     {
-                        MessageBox.Show("There is a Already title with the same name in this department");
+                        MessageBox.Show(this,"There is a Already title with the same name in this department");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Please choose a department name properly");
+                    MessageBox.Show(this,"Please choose a department name properly");
                 }
             
            

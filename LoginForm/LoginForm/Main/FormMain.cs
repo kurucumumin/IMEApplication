@@ -14,6 +14,7 @@ namespace LoginForm
     public partial class FormMain : Form
     {
         ArrayList developmentButtons = new ArrayList();
+        ArrayList loaderButtons = new ArrayList();
 
         public void initialize()
         {
@@ -22,10 +23,20 @@ namespace LoginForm
             developmentButtons.Add(btnQuotation);
             developmentButtons.Add(btnSupplier);
             developmentButtons.Add(btnWorker);
+            developmentButtons.Add(btnItemCard);
 
+            loaderButtons.Add(btnOnSale);
+            loaderButtons.Add(btnSuperDisk);
+            loaderButtons.Add(btnSlidingPriceList);
+            loaderButtons.Add(btnDiscontinuedList);
+            loaderButtons.Add(btnSuperDiskwithP);
+            loaderButtons.Add(btnDualUsedArticles);
+            loaderButtons.Add(btnHazardousFile);
+            loaderButtons.Add(btnExtendedRangePrice);
+            loaderButtons.Add(btnTSEList);
+            loaderButtons.Add(btnRSProList);
 
-
-
+            
         }
 
         public FormMain()
@@ -34,58 +45,163 @@ namespace LoginForm
             initialize();
         }
 
-        private void trialMain_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnCustomerMain_Click(object sender, EventArgs e)
         {
+            this.Hide();
             CustomerMain customerMain = new CustomerMain();
-            customerMain.Show();
+            customerMain.ShowDialog();
+            this.Show();
         }
 
         private void btnLoader_Click(object sender, EventArgs e)
         {
-            ItemCardMainForm itemCardMainForm = new ItemCardMainForm();
-            itemCardMainForm.Show();
+
+            changeButtonVisibility(loaderButtons, true);
+            changeButtonVisibility(developmentButtons, false);
+
+
         }
 
         private void btnQuotation_Click(object sender, EventArgs e)
         {
-            QuotationForm quotationForm = new QuotationForm();
-            quotationForm.Show();
+            this.Hide();
+            QuotationAdd quotationForm = new QuotationAdd();
+            quotationForm.ShowDialog();
         }
 
         private void btnSupplier_Click(object sender, EventArgs e)
         {
+            this.Hide();
             SupplierMain supplierMain = new SupplierMain();
-            supplierMain.Show();
+            supplierMain.ShowDialog();
+            this.Show();
+
         }
 
         private void btnWorker_Click(object sender, EventArgs e)
         {
+            this.Hide();
             AddIMEWorker addIMEWorker = new AddIMEWorker();
-            addIMEWorker.Show();
+            addIMEWorker.ShowDialog();
+            this.Show();
+                
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            this.Hide();
             Form1 loginForm = new Form1();
-            loginForm.Show();
+            loginForm.ShowDialog();
+            this.Show();
         }
 
         private void btnDevelopment_Click(object sender, EventArgs e)
         {
             changeButtonVisibility(developmentButtons, true);
+            changeButtonVisibility(loaderButtons, false);
         }
+
+
+
+
+
+
+
+
+
 
         private void changeButtonVisibility(ArrayList list, bool state)
         {
             foreach (Button item in list)
             {
-                item.Visible = state;
+                item.Visible = state;                
             }
+        }
+
+        private void GoToLoaderPage()
+        {
+            LoaderPage form = new LoaderPage();
+            this.Hide();
+            form.ShowDialog();
+            this.Show();
+        }
+
+        private void btnOnSale_Click(object sender, EventArgs e)
+        {
+            txtReader.LoaderType = "";
+            txtReader.LoaderType = "OnSale";
+            GoToLoaderPage();
+        }
+
+        private void btnSuperDisk_Click(object sender, EventArgs e)
+        {
+            txtReader.LoaderType = "";
+            txtReader.LoaderType = "SuperDisk";
+            GoToLoaderPage();
+        }
+
+        private void btnSlidingPriceList_Click(object sender, EventArgs e)
+        {
+            txtReader.LoaderType = "";
+            txtReader.LoaderType = "SlidingPrice";
+            GoToLoaderPage();
+        }
+
+        private void btnDiscontinuedList_Click(object sender, EventArgs e)
+        {
+            txtReader.LoaderType = "";
+            txtReader.LoaderType = "DiscontinuedList";
+            GoToLoaderPage();
+        }
+
+        private void btnSuperDiskwithP_Click(object sender, EventArgs e)
+        {
+            txtReader.LoaderType = "";
+            txtReader.LoaderType = "SuperDiskP";
+            GoToLoaderPage();
+        }
+
+        private void btnDualUsedArticles_Click(object sender, EventArgs e)
+        {
+            txtReader.LoaderType = "";
+            txtReader.LoaderType = "DualUse";
+            GoToLoaderPage();
+        }
+
+        private void btnHazardousFile_Click(object sender, EventArgs e)
+        {
+            txtReader.LoaderType = "";
+            txtReader.LoaderType = "Hazardous";
+            GoToLoaderPage();
+        }
+
+        private void btnExtendedRangePrice_Click(object sender, EventArgs e)
+        {
+            txtReader.LoaderType = "";
+            txtReader.LoaderType = "ExtendedRange";
+            GoToLoaderPage();
+        }
+
+        private void btnTSEList_Click(object sender, EventArgs e)
+        {
+            txtReader.LoaderType = "";
+            txtReader.LoaderType = "TSE";
+            GoToLoaderPage();
+        }
+
+        private void btnRSProList_Click(object sender, EventArgs e)
+        {
+            txtReader.LoaderType = "";
+            txtReader.LoaderType = "RSPro";
+            GoToLoaderPage();
+        }
+
+        private void btnItemCard_Click(object sender, EventArgs e)
+        {
+            ItemCard form = new ItemCard();
+            this.Hide();
+            form.ShowDialog();
+            this.Show();
         }
     }
 }

@@ -64,7 +64,7 @@ namespace LoginForm
             cbCountry.DisplayMember = "Country_name";
             
             #endregion
-            customersearch();
+            //customersearch();
         }
         private void CustomerDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -124,7 +124,9 @@ namespace LoginForm
         {
             CustomerDepartmentAdd form = new CustomerDepartmentAdd();
             this.Enabled = false;
+            this.SendToBack();
             form.ShowDialog();
+            ContactDepartment.DataSource = IME.CustomerDepartments;
             this.Enabled = true;
         }
 
@@ -132,7 +134,9 @@ namespace LoginForm
         {
             CustomerPositionAdd form = new CustomerPositionAdd();
             this.Enabled = false;
+            this.SendToBack();
             form.ShowDialog();
+            ContactTitle.DataSource = IME.CustomerTitles;
             this.Enabled = true;
         }
 
@@ -234,8 +238,12 @@ namespace LoginForm
             CommunicationLanguage.Enabled = true;
             ContactNotes.Enabled = true;
             departmentAdd.Enabled = true;
-            DeliveryAddressOk.Enabled = true;
-            InvoiceAdressOk.Enabled = true;
+            if (AdressList.Items.Count > 0)
+            {
+                AddressDel.Enabled = true;
+                AddressUpd.Enabled = true;
+            }
+            AdressAdd.Enabled = true;
             titleAdd.Enabled = true;
             ContactList.Enabled = false;
             CustomerDataGrid.Enabled = false;
@@ -360,6 +368,8 @@ namespace LoginForm
             CustomerDataGrid.DataSource = customerAdapter;
             CustomerDataGrid.CurrentCell = CustomerDataGrid.Rows[gridselectedindex].Cells[0];
             CustomerCode.Text = customerAdapter[gridselectedindex].ID;
+            AdressList.DataSource = IME.CustomerAdresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
+            AdressList.DisplayMember = "AdressDetails";
             CustomerName.Text = customerAdapter[gridselectedindex].c_name;
             factor.SelectedIndex = factor.FindStringExact(customerAdapter[gridselectedindex].currency.ToString());
             Telephone.Text = customerAdapter[gridselectedindex].telephone.ToString();
@@ -692,8 +702,8 @@ namespace LoginForm
         {
             if (btnUpdate.Text == "UPDATE")
             {
-                contactTabEnableTrue();
                 itemsEnableTrue();
+                contactTabEnableTrue();
                 btnUpdate.Text = "CANCEL";
                 btnCreate.Text = "DONE";
             }
@@ -928,9 +938,11 @@ namespace LoginForm
 
         private void AdressDone_Click(object sender, EventArgs e)
         {
-            if (IME.CustomerAdresses.Where(a => a.AdressDetails == AddressDetails.Text).ToList().Count > 0)
+            CustomerAdress ca = new CustomerAdress();
+            ca = IME.CustomerAdresses.Where(a => a.ID == ((CustomerAdress)(AdressList).SelectedItem).ID).FirstOrDefault();
+            if (ca!=null)
             {
-                CustomerAdress ca = IME.CustomerAdresses.Where(a => a.AdressDetails == AddressDetails.Text) as CustomerAdress;
+                
                 //CustomerCode.Text;
                 ca.CustomerID = CustomerCode.Text;
                 ca.CountryID = ((Country)(cbCountry).SelectedItem).ID;
@@ -949,7 +961,7 @@ namespace LoginForm
             }
             else
             {
-                CustomerAdress ca = new CustomerAdress();
+                ca = new CustomerAdress();
                 //CustomerCode.Text;
                 ca.CustomerID = CustomerCode.Text;
                 ca.CountryID = ((Country)(cbCountry).SelectedItem).ID;
@@ -1002,7 +1014,23 @@ namespace LoginForm
 
         private void AdressCancel_Click(object sender, EventArgs e)
         {
+            AdressTabEnableFalse();
+            if (btnCreate.Text == "CREATE")
+            {
+                txtSearch.Enabled = true;
+                Search.Enabled = true;
+                CustomerDataGrid.Enabled = true;
+            }
+            AdressList.DataSource = IME.CustomerAdresses.Where(customerw => customerw.CustomerID == CustomerCode.Text).ToList();
+            AdressList.DisplayMember = "cw_name";
 
+            AdressAdd.Visible = true;
+            AddressDel.Visible = true;
+            AddressUpd.Visible = true;
+            AdressCancel.Visible = false;
+            AdressDone.Visible = false;
+            gridselectedindex = CustomerDataGrid.CurrentCell.RowIndex;
+            customersearch();
         }
 
         private void Country_SelectedIndexChanged(object sender, EventArgs e)

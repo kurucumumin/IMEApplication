@@ -145,7 +145,7 @@
             this.tabgenel.Controls.Add(this.tabcountact);
             this.tabgenel.Controls.Add(this.tabbank);
             this.tabgenel.Location = new System.Drawing.Point(16, 15);
-            this.tabgenel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabgenel.Margin = new System.Windows.Forms.Padding(4);
             this.tabgenel.Name = "tabgenel";
             this.tabgenel.SelectedIndex = 0;
             this.tabgenel.Size = new System.Drawing.Size(1199, 249);
@@ -170,9 +170,9 @@
             this.tabinfo.Controls.Add(this.label3);
             this.tabinfo.Controls.Add(this.label2);
             this.tabinfo.Location = new System.Drawing.Point(4, 25);
-            this.tabinfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabinfo.Margin = new System.Windows.Forms.Padding(4);
             this.tabinfo.Name = "tabinfo";
-            this.tabinfo.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabinfo.Padding = new System.Windows.Forms.Padding(4);
             this.tabinfo.Size = new System.Drawing.Size(1191, 220);
             this.tabinfo.TabIndex = 0;
             this.tabinfo.Text = "Info";
@@ -182,7 +182,7 @@
             // 
             this.cmbsub.FormattingEnabled = true;
             this.cmbsub.Location = new System.Drawing.Point(867, 16);
-            this.cmbsub.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbsub.Margin = new System.Windows.Forms.Padding(4);
             this.cmbsub.Name = "cmbsub";
             this.cmbsub.Size = new System.Drawing.Size(193, 24);
             this.cmbsub.TabIndex = 15;
@@ -200,7 +200,7 @@
             // txtTaxNumber
             // 
             this.txtTaxNumber.Location = new System.Drawing.Point(867, 74);
-            this.txtTaxNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTaxNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtTaxNumber.Name = "txtTaxNumber";
             this.txtTaxNumber.Size = new System.Drawing.Size(193, 22);
             this.txtTaxNumber.TabIndex = 13;
@@ -208,7 +208,7 @@
             // txtTaxOffice
             // 
             this.txtTaxOffice.Location = new System.Drawing.Point(507, 70);
-            this.txtTaxOffice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTaxOffice.Margin = new System.Windows.Forms.Padding(4);
             this.txtTaxOffice.Name = "txtTaxOffice";
             this.txtTaxOffice.Size = new System.Drawing.Size(193, 22);
             this.txtTaxOffice.TabIndex = 12;
@@ -236,7 +236,7 @@
             // txtnotes
             // 
             this.txtnotes.Location = new System.Drawing.Point(507, 123);
-            this.txtnotes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtnotes.Margin = new System.Windows.Forms.Padding(4);
             this.txtnotes.Multiline = true;
             this.txtnotes.Name = "txtnotes";
             this.txtnotes.Size = new System.Drawing.Size(553, 85);
@@ -246,7 +246,7 @@
             // 
             this.cmbcategory.FormattingEnabled = true;
             this.cmbcategory.Location = new System.Drawing.Point(507, 12);
-            this.cmbcategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbcategory.Margin = new System.Windows.Forms.Padding(4);
             this.cmbcategory.Name = "cmbcategory";
             this.cmbcategory.Size = new System.Drawing.Size(193, 24);
             this.cmbcategory.TabIndex = 8;
@@ -255,7 +255,7 @@
             // txtname
             // 
             this.txtname.Location = new System.Drawing.Point(141, 128);
-            this.txtname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtname.Margin = new System.Windows.Forms.Padding(4);
             this.txtname.Name = "txtname";
             this.txtname.Size = new System.Drawing.Size(183, 22);
             this.txtname.TabIndex = 7;
@@ -264,7 +264,7 @@
             // 
             this.cmbrepresentative.FormattingEnabled = true;
             this.cmbrepresentative.Location = new System.Drawing.Point(141, 78);
-            this.cmbrepresentative.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbrepresentative.Margin = new System.Windows.Forms.Padding(4);
             this.cmbrepresentative.Name = "cmbrepresentative";
             this.cmbrepresentative.Size = new System.Drawing.Size(183, 24);
             this.cmbrepresentative.TabIndex = 6;
@@ -272,7 +272,7 @@
             // txtcode
             // 
             this.txtcode.Location = new System.Drawing.Point(141, 7);
-            this.txtcode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtcode.Margin = new System.Windows.Forms.Padding(4);
             this.txtcode.Name = "txtcode";
             this.txtcode.Size = new System.Drawing.Size(183, 22);
             this.txtcode.TabIndex = 5;
@@ -344,9 +344,9 @@
             this.tabaccount.Controls.Add(this.label8);
             this.tabaccount.Controls.Add(this.label7);
             this.tabaccount.Location = new System.Drawing.Point(4, 25);
-            this.tabaccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabaccount.Margin = new System.Windows.Forms.Padding(4);
             this.tabaccount.Name = "tabaccount";
-            this.tabaccount.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabaccount.Padding = new System.Windows.Forms.Padding(4);
             this.tabaccount.Size = new System.Drawing.Size(1191, 220);
             this.tabaccount.TabIndex = 1;
             this.tabaccount.Text = "Acount";
@@ -355,7 +355,7 @@
             // txtAccountNotes
             // 
             this.txtAccountNotes.Location = new System.Drawing.Point(769, 14);
-            this.txtAccountNotes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAccountNotes.Margin = new System.Windows.Forms.Padding(4);
             this.txtAccountNotes.Multiline = true;
             this.txtAccountNotes.Name = "txtAccountNotes";
             this.txtAccountNotes.Size = new System.Drawing.Size(409, 163);
@@ -365,7 +365,7 @@
             // 
             this.cmbInvoiceCur.FormattingEnabled = true;
             this.cmbInvoiceCur.Location = new System.Drawing.Point(532, 151);
-            this.cmbInvoiceCur.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbInvoiceCur.Margin = new System.Windows.Forms.Padding(4);
             this.cmbInvoiceCur.Name = "cmbInvoiceCur";
             this.cmbInvoiceCur.Size = new System.Drawing.Size(160, 24);
             this.cmbInvoiceCur.TabIndex = 14;
@@ -374,7 +374,7 @@
             // 
             this.cmbCurrenyt.FormattingEnabled = true;
             this.cmbCurrenyt.Location = new System.Drawing.Point(532, 74);
-            this.cmbCurrenyt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbCurrenyt.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCurrenyt.Name = "cmbCurrenyt";
             this.cmbCurrenyt.Size = new System.Drawing.Size(160, 24);
             this.cmbCurrenyt.TabIndex = 13;
@@ -382,7 +382,7 @@
             // txtdiscount
             // 
             this.txtdiscount.Location = new System.Drawing.Point(532, 9);
-            this.txtdiscount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtdiscount.Margin = new System.Windows.Forms.Padding(4);
             this.txtdiscount.Name = "txtdiscount";
             this.txtdiscount.Size = new System.Drawing.Size(160, 22);
             this.txtdiscount.TabIndex = 12;
@@ -391,7 +391,7 @@
             // 
             this.cmbAcountMethod.FormattingEnabled = true;
             this.cmbAcountMethod.Location = new System.Drawing.Point(156, 151);
-            this.cmbAcountMethod.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbAcountMethod.Margin = new System.Windows.Forms.Padding(4);
             this.cmbAcountMethod.Name = "cmbAcountMethod";
             this.cmbAcountMethod.Size = new System.Drawing.Size(160, 24);
             this.cmbAcountMethod.TabIndex = 11;
@@ -400,7 +400,7 @@
             // 
             this.cmbAcountTerms.FormattingEnabled = true;
             this.cmbAcountTerms.Location = new System.Drawing.Point(156, 74);
-            this.cmbAcountTerms.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbAcountTerms.Margin = new System.Windows.Forms.Padding(4);
             this.cmbAcountTerms.Name = "cmbAcountTerms";
             this.cmbAcountTerms.Size = new System.Drawing.Size(160, 24);
             this.cmbAcountTerms.TabIndex = 10;
@@ -409,7 +409,7 @@
             // 
             this.cmbAcountRep.FormattingEnabled = true;
             this.cmbAcountRep.Location = new System.Drawing.Point(156, 14);
-            this.cmbAcountRep.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbAcountRep.Margin = new System.Windows.Forms.Padding(4);
             this.cmbAcountRep.Name = "cmbAcountRep";
             this.cmbAcountRep.Size = new System.Drawing.Size(160, 24);
             this.cmbAcountRep.TabIndex = 9;
@@ -507,9 +507,9 @@
             this.tabadres.Controls.Add(this.label17);
             this.tabadres.Controls.Add(this.label16);
             this.tabadres.Location = new System.Drawing.Point(4, 25);
-            this.tabadres.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabadres.Margin = new System.Windows.Forms.Padding(4);
             this.tabadres.Name = "tabadres";
-            this.tabadres.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabadres.Padding = new System.Windows.Forms.Padding(4);
             this.tabadres.Size = new System.Drawing.Size(1191, 220);
             this.tabadres.TabIndex = 2;
             this.tabadres.Text = "Company Address";
@@ -518,7 +518,7 @@
             // txtpobox
             // 
             this.txtpobox.Location = new System.Drawing.Point(77, 169);
-            this.txtpobox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtpobox.Margin = new System.Windows.Forms.Padding(4);
             this.txtpobox.Name = "txtpobox";
             this.txtpobox.Size = new System.Drawing.Size(132, 22);
             this.txtpobox.TabIndex = 19;
@@ -536,7 +536,7 @@
             // txtCompanyAddress
             // 
             this.txtCompanyAddress.Location = new System.Drawing.Point(837, 41);
-            this.txtCompanyAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCompanyAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txtCompanyAddress.Multiline = true;
             this.txtCompanyAddress.Name = "txtCompanyAddress";
             this.txtCompanyAddress.Size = new System.Drawing.Size(341, 147);
@@ -556,7 +556,7 @@
             // 
             this.cmbtown.FormattingEnabled = true;
             this.cmbtown.Location = new System.Drawing.Point(297, 162);
-            this.cmbtown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbtown.Margin = new System.Windows.Forms.Padding(4);
             this.cmbtown.Name = "cmbtown";
             this.cmbtown.Size = new System.Drawing.Size(160, 24);
             this.cmbtown.TabIndex = 15;
@@ -565,7 +565,7 @@
             // 
             this.cmbcity.FormattingEnabled = true;
             this.cmbcity.Location = new System.Drawing.Point(297, 90);
-            this.cmbcity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbcity.Margin = new System.Windows.Forms.Padding(4);
             this.cmbcity.Name = "cmbcity";
             this.cmbcity.Size = new System.Drawing.Size(160, 24);
             this.cmbcity.TabIndex = 14;
@@ -574,7 +574,7 @@
             // 
             this.cmbcounrty.FormattingEnabled = true;
             this.cmbcounrty.Location = new System.Drawing.Point(297, 12);
-            this.cmbcounrty.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbcounrty.Margin = new System.Windows.Forms.Padding(4);
             this.cmbcounrty.Name = "cmbcounrty";
             this.cmbcounrty.Size = new System.Drawing.Size(160, 24);
             this.cmbcounrty.TabIndex = 13;
@@ -582,7 +582,7 @@
             // txtmail
             // 
             this.txtmail.Location = new System.Drawing.Point(569, 164);
-            this.txtmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtmail.Name = "txtmail";
             this.txtmail.Size = new System.Drawing.Size(236, 22);
             this.txtmail.TabIndex = 12;
@@ -631,7 +631,7 @@
             // txtweb
             // 
             this.txtweb.Location = new System.Drawing.Point(569, 91);
-            this.txtweb.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtweb.Margin = new System.Windows.Forms.Padding(4);
             this.txtweb.Name = "txtweb";
             this.txtweb.Size = new System.Drawing.Size(236, 22);
             this.txtweb.TabIndex = 7;
@@ -640,7 +640,7 @@
             // txtpost
             // 
             this.txtpost.Location = new System.Drawing.Point(569, 12);
-            this.txtpost.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtpost.Margin = new System.Windows.Forms.Padding(4);
             this.txtpost.Name = "txtpost";
             this.txtpost.Size = new System.Drawing.Size(132, 22);
             this.txtpost.TabIndex = 6;
@@ -648,7 +648,7 @@
             // txtfax
             // 
             this.txtfax.Location = new System.Drawing.Point(77, 85);
-            this.txtfax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtfax.Margin = new System.Windows.Forms.Padding(4);
             this.txtfax.Name = "txtfax";
             this.txtfax.Size = new System.Drawing.Size(132, 22);
             this.txtfax.TabIndex = 5;
@@ -657,7 +657,7 @@
             // txtphone
             // 
             this.txtphone.Location = new System.Drawing.Point(77, 9);
-            this.txtphone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtphone.Margin = new System.Windows.Forms.Padding(4);
             this.txtphone.Name = "txtphone";
             this.txtphone.Size = new System.Drawing.Size(132, 22);
             this.txtphone.TabIndex = 4;
@@ -736,9 +736,9 @@
             this.tabcountact.Controls.Add(this.label27);
             this.tabcountact.Controls.Add(this.label26);
             this.tabcountact.Location = new System.Drawing.Point(4, 25);
-            this.tabcountact.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabcountact.Margin = new System.Windows.Forms.Padding(4);
             this.tabcountact.Name = "tabcountact";
-            this.tabcountact.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabcountact.Padding = new System.Windows.Forms.Padding(4);
             this.tabcountact.Size = new System.Drawing.Size(1191, 220);
             this.tabcountact.TabIndex = 3;
             this.tabcountact.Text = "Contact";
@@ -748,7 +748,7 @@
             // 
             this.cmbMainContact.FormattingEnabled = true;
             this.cmbMainContact.Location = new System.Drawing.Point(100, 177);
-            this.cmbMainContact.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbMainContact.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMainContact.Name = "cmbMainContact";
             this.cmbMainContact.Size = new System.Drawing.Size(160, 24);
             this.cmbMainContact.TabIndex = 33;
@@ -766,7 +766,7 @@
             // btnContactCancel
             // 
             this.btnContactCancel.Location = new System.Drawing.Point(1093, 156);
-            this.btnContactCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnContactCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnContactCancel.Name = "btnContactCancel";
             this.btnContactCancel.Size = new System.Drawing.Size(85, 28);
             this.btnContactCancel.TabIndex = 31;
@@ -778,7 +778,7 @@
             // btnContactDone
             // 
             this.btnContactDone.Location = new System.Drawing.Point(967, 156);
-            this.btnContactDone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnContactDone.Margin = new System.Windows.Forms.Padding(4);
             this.btnContactDone.Name = "btnContactDone";
             this.btnContactDone.Size = new System.Drawing.Size(100, 28);
             this.btnContactDone.TabIndex = 30;
@@ -790,7 +790,7 @@
             // btnContactDelete
             // 
             this.btnContactDelete.Location = new System.Drawing.Point(1107, 181);
-            this.btnContactDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnContactDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnContactDelete.Name = "btnContactDelete";
             this.btnContactDelete.Size = new System.Drawing.Size(73, 28);
             this.btnContactDelete.TabIndex = 29;
@@ -801,7 +801,7 @@
             // btnContactUpdate
             // 
             this.btnContactUpdate.Location = new System.Drawing.Point(1032, 181);
-            this.btnContactUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnContactUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnContactUpdate.Name = "btnContactUpdate";
             this.btnContactUpdate.Size = new System.Drawing.Size(67, 28);
             this.btnContactUpdate.TabIndex = 28;
@@ -812,7 +812,7 @@
             // btnContactNew
             // 
             this.btnContactNew.Location = new System.Drawing.Point(967, 181);
-            this.btnContactNew.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnContactNew.Margin = new System.Windows.Forms.Padding(4);
             this.btnContactNew.Name = "btnContactNew";
             this.btnContactNew.Size = new System.Drawing.Size(57, 28);
             this.btnContactNew.TabIndex = 27;
@@ -825,7 +825,7 @@
             this.listContact.FormattingEnabled = true;
             this.listContact.ItemHeight = 16;
             this.listContact.Location = new System.Drawing.Point(967, 4);
-            this.listContact.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listContact.Margin = new System.Windows.Forms.Padding(4);
             this.listContact.Name = "listContact";
             this.listContact.Size = new System.Drawing.Size(212, 148);
             this.listContact.TabIndex = 26;
@@ -835,7 +835,7 @@
             // btnPos
             // 
             this.btnPos.Location = new System.Drawing.Point(263, 66);
-            this.btnPos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPos.Margin = new System.Windows.Forms.Padding(4);
             this.btnPos.Name = "btnPos";
             this.btnPos.Size = new System.Drawing.Size(32, 28);
             this.btnPos.TabIndex = 25;
@@ -846,7 +846,7 @@
             // btnDep
             // 
             this.btnDep.Location = new System.Drawing.Point(263, 14);
-            this.btnDep.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDep.Margin = new System.Windows.Forms.Padding(4);
             this.btnDep.Name = "btnDep";
             this.btnDep.Size = new System.Drawing.Size(32, 28);
             this.btnDep.TabIndex = 24;
@@ -857,7 +857,7 @@
             // txtContactNotes
             // 
             this.txtContactNotes.Location = new System.Drawing.Point(675, 127);
-            this.txtContactNotes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtContactNotes.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactNotes.Multiline = true;
             this.txtContactNotes.Name = "txtContactNotes";
             this.txtContactNotes.Size = new System.Drawing.Size(223, 66);
@@ -867,7 +867,7 @@
             // 
             this.cmblanguage.FormattingEnabled = true;
             this.cmblanguage.Location = new System.Drawing.Point(675, 17);
-            this.cmblanguage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmblanguage.Margin = new System.Windows.Forms.Padding(4);
             this.cmblanguage.Name = "cmblanguage";
             this.cmblanguage.Size = new System.Drawing.Size(160, 24);
             this.cmblanguage.TabIndex = 22;
@@ -875,7 +875,7 @@
             // txtContactAddress
             // 
             this.txtContactAddress.Location = new System.Drawing.Point(675, 50);
-            this.txtContactAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtContactAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactAddress.Multiline = true;
             this.txtContactAddress.Name = "txtContactAddress";
             this.txtContactAddress.Size = new System.Drawing.Size(223, 68);
@@ -884,7 +884,7 @@
             // txtContactfax
             // 
             this.txtContactfax.Location = new System.Drawing.Point(429, 160);
-            this.txtContactfax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtContactfax.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactfax.Name = "txtContactfax";
             this.txtContactfax.Size = new System.Drawing.Size(132, 22);
             this.txtContactfax.TabIndex = 20;
@@ -893,7 +893,7 @@
             // txtContactMobile
             // 
             this.txtContactMobile.Location = new System.Drawing.Point(429, 123);
-            this.txtContactMobile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtContactMobile.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactMobile.Name = "txtContactMobile";
             this.txtContactMobile.Size = new System.Drawing.Size(132, 22);
             this.txtContactMobile.TabIndex = 19;
@@ -902,7 +902,7 @@
             // txtContactPhone
             // 
             this.txtContactPhone.Location = new System.Drawing.Point(429, 70);
-            this.txtContactPhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtContactPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactPhone.Name = "txtContactPhone";
             this.txtContactPhone.Size = new System.Drawing.Size(132, 22);
             this.txtContactPhone.TabIndex = 18;
@@ -911,7 +911,7 @@
             // txtContactMail
             // 
             this.txtContactMail.Location = new System.Drawing.Point(429, 21);
-            this.txtContactMail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtContactMail.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactMail.Name = "txtContactMail";
             this.txtContactMail.Size = new System.Drawing.Size(132, 22);
             this.txtContactMail.TabIndex = 17;
@@ -920,7 +920,7 @@
             // txtContactName
             // 
             this.txtContactName.Location = new System.Drawing.Point(93, 123);
-            this.txtContactName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtContactName.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactName.Name = "txtContactName";
             this.txtContactName.Size = new System.Drawing.Size(167, 22);
             this.txtContactName.TabIndex = 16;
@@ -929,16 +929,17 @@
             // 
             this.cmbposition.FormattingEnabled = true;
             this.cmbposition.Location = new System.Drawing.Point(93, 69);
-            this.cmbposition.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbposition.Margin = new System.Windows.Forms.Padding(4);
             this.cmbposition.Name = "cmbposition";
             this.cmbposition.Size = new System.Drawing.Size(160, 24);
             this.cmbposition.TabIndex = 14;
             // 
             // cmbdepartman
             // 
+            this.cmbdepartman.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbdepartman.FormattingEnabled = true;
             this.cmbdepartman.Location = new System.Drawing.Point(93, 15);
-            this.cmbdepartman.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbdepartman.Margin = new System.Windows.Forms.Padding(4);
             this.cmbdepartman.Name = "cmbdepartman";
             this.cmbdepartman.Size = new System.Drawing.Size(160, 24);
             this.cmbdepartman.TabIndex = 13;
@@ -1055,7 +1056,7 @@
             this.tabbank.Controls.Add(this.label38);
             this.tabbank.Controls.Add(this.label37);
             this.tabbank.Location = new System.Drawing.Point(4, 25);
-            this.tabbank.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabbank.Margin = new System.Windows.Forms.Padding(4);
             this.tabbank.Name = "tabbank";
             this.tabbank.Size = new System.Drawing.Size(1191, 220);
             this.tabbank.TabIndex = 4;
@@ -1064,9 +1065,11 @@
             // 
             // cmbBankName
             // 
+            this.cmbBankName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBankName.FormattingEnabled = true;
+            this.cmbBankName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.cmbBankName.Location = new System.Drawing.Point(141, 7);
-            this.cmbBankName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbBankName.Margin = new System.Windows.Forms.Padding(4);
             this.cmbBankName.Name = "cmbBankName";
             this.cmbBankName.Size = new System.Drawing.Size(247, 24);
             this.cmbBankName.TabIndex = 8;
@@ -1074,7 +1077,7 @@
             // txtBankIban
             // 
             this.txtBankIban.Location = new System.Drawing.Point(141, 172);
-            this.txtBankIban.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBankIban.Margin = new System.Windows.Forms.Padding(4);
             this.txtBankIban.Name = "txtBankIban";
             this.txtBankIban.Size = new System.Drawing.Size(247, 22);
             this.txtBankIban.TabIndex = 7;
@@ -1083,7 +1086,7 @@
             // txtBankNumber
             // 
             this.txtBankNumber.Location = new System.Drawing.Point(141, 114);
-            this.txtBankNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBankNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtBankNumber.Name = "txtBankNumber";
             this.txtBankNumber.Size = new System.Drawing.Size(247, 22);
             this.txtBankNumber.TabIndex = 6;
@@ -1091,7 +1094,7 @@
             // txtBankCode
             // 
             this.txtBankCode.Location = new System.Drawing.Point(141, 58);
-            this.txtBankCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBankCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtBankCode.Name = "txtBankCode";
             this.txtBankCode.Size = new System.Drawing.Size(247, 22);
             this.txtBankCode.TabIndex = 5;
@@ -1140,7 +1143,7 @@
             // 
             this.dgSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgSupplier.Location = new System.Drawing.Point(16, 347);
-            this.dgSupplier.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgSupplier.Margin = new System.Windows.Forms.Padding(4);
             this.dgSupplier.Name = "dgSupplier";
             this.dgSupplier.Size = new System.Drawing.Size(1193, 208);
             this.dgSupplier.TabIndex = 1;
@@ -1150,7 +1153,7 @@
             // 
             this.btnupdate.ForeColor = System.Drawing.Color.SteelBlue;
             this.btnupdate.Location = new System.Drawing.Point(836, 271);
-            this.btnupdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnupdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnupdate.Name = "btnupdate";
             this.btnupdate.Size = new System.Drawing.Size(188, 69);
             this.btnupdate.TabIndex = 2;
@@ -1162,7 +1165,7 @@
             // 
             this.btnexit.ForeColor = System.Drawing.Color.Red;
             this.btnexit.Location = new System.Drawing.Point(1037, 271);
-            this.btnexit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnexit.Margin = new System.Windows.Forms.Padding(4);
             this.btnexit.Name = "btnexit";
             this.btnexit.Size = new System.Drawing.Size(177, 69);
             this.btnexit.TabIndex = 3;
@@ -1174,7 +1177,7 @@
             // 
             this.btnnew.ForeColor = System.Drawing.Color.LimeGreen;
             this.btnnew.Location = new System.Drawing.Point(652, 271);
-            this.btnnew.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnnew.Margin = new System.Windows.Forms.Padding(4);
             this.btnnew.Name = "btnnew";
             this.btnnew.Size = new System.Drawing.Size(176, 69);
             this.btnnew.TabIndex = 4;
@@ -1195,7 +1198,7 @@
             // txtsearch
             // 
             this.txtsearch.Location = new System.Drawing.Point(131, 294);
-            this.txtsearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtsearch.Margin = new System.Windows.Forms.Padding(4);
             this.txtsearch.Name = "txtsearch";
             this.txtsearch.Size = new System.Drawing.Size(164, 22);
             this.txtsearch.TabIndex = 6;
@@ -1214,7 +1217,7 @@
             this.Controls.Add(this.btnupdate);
             this.Controls.Add(this.dgSupplier);
             this.Controls.Add(this.tabgenel);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SupplierMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Supplier";

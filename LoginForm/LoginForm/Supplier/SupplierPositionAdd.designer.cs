@@ -109,7 +109,6 @@
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "PositionAdd";
             this.Text = "PositionAdd";
-            this.Load += new System.EventHandler(this.PositionAdd_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 

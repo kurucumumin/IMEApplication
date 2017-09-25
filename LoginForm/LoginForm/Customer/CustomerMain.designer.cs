@@ -681,6 +681,7 @@
             // DeliveryAddressOk
             // 
             this.DeliveryAddressOk.AutoSize = true;
+            this.DeliveryAddressOk.Enabled = false;
             this.DeliveryAddressOk.Location = new System.Drawing.Point(292, 191);
             this.DeliveryAddressOk.Name = "DeliveryAddressOk";
             this.DeliveryAddressOk.Size = new System.Drawing.Size(99, 17);
@@ -691,6 +692,7 @@
             // InvoiceAdressOk
             // 
             this.InvoiceAdressOk.AutoSize = true;
+            this.InvoiceAdressOk.Enabled = false;
             this.InvoiceAdressOk.Location = new System.Drawing.Point(419, 191);
             this.InvoiceAdressOk.Name = "InvoiceAdressOk";
             this.InvoiceAdressOk.Size = new System.Drawing.Size(96, 17);
@@ -736,6 +738,7 @@
             // 
             // AddressDel
             // 
+            this.AddressDel.Enabled = false;
             this.AddressDel.Location = new System.Drawing.Point(629, 214);
             this.AddressDel.Name = "AddressDel";
             this.AddressDel.Size = new System.Drawing.Size(36, 25);
@@ -746,6 +749,7 @@
             // 
             // AddressUpd
             // 
+            this.AddressUpd.Enabled = false;
             this.AddressUpd.Location = new System.Drawing.Point(587, 214);
             this.AddressUpd.Name = "AddressUpd";
             this.AddressUpd.Size = new System.Drawing.Size(36, 25);
@@ -756,6 +760,7 @@
             // 
             // AdressAdd
             // 
+            this.AdressAdd.Enabled = false;
             this.AdressAdd.Location = new System.Drawing.Point(545, 214);
             this.AdressAdd.Name = "AdressAdd";
             this.AdressAdd.Size = new System.Drawing.Size(36, 25);
@@ -934,6 +939,7 @@
             // 
             // btnContactDelete
             // 
+            this.btnContactDelete.Enabled = false;
             this.btnContactDelete.Location = new System.Drawing.Point(632, 215);
             this.btnContactDelete.Name = "btnContactDelete";
             this.btnContactDelete.Size = new System.Drawing.Size(36, 25);
@@ -944,6 +950,7 @@
             // 
             // btnContactUpdate
             // 
+            this.btnContactUpdate.Enabled = false;
             this.btnContactUpdate.Location = new System.Drawing.Point(590, 215);
             this.btnContactUpdate.Name = "btnContactUpdate";
             this.btnContactUpdate.Size = new System.Drawing.Size(36, 25);
@@ -954,6 +961,7 @@
             // 
             // btnContactAdd
             // 
+            this.btnContactAdd.Enabled = false;
             this.btnContactAdd.Location = new System.Drawing.Point(548, 215);
             this.btnContactAdd.Name = "btnContactAdd";
             this.btnContactAdd.Size = new System.Drawing.Size(36, 25);
@@ -1195,7 +1203,7 @@
             this.CustomerDataGrid.Location = new System.Drawing.Point(7, 359);
             this.CustomerDataGrid.Name = "CustomerDataGrid";
             this.CustomerDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.CustomerDataGrid.Size = new System.Drawing.Size(688, 139);
+            this.CustomerDataGrid.Size = new System.Drawing.Size(684, 139);
             this.CustomerDataGrid.TabIndex = 1;
             this.CustomerDataGrid.TabStop = false;
             this.CustomerDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CustomerDataGrid_CellClick_1);
@@ -1258,7 +1266,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(730, 510);
+            this.ClientSize = new System.Drawing.Size(718, 510);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.label36);

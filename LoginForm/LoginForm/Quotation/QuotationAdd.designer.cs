@@ -1,6 +1,6 @@
 ﻿namespace LoginForm
 {
-    partial class QuotationForm
+    partial class QuotationAdd
     {
         /// <summary>
         ///Gerekli tasarımcı değişkeni.
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.CustomerCode = new System.Windows.Forms.TextBox();
             this.comboBox7 = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
@@ -47,7 +48,6 @@
             this.label30 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.button3 = new System.Windows.Forms.Button();
             this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -119,6 +119,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtCustomerName);
             this.groupBox1.Controls.Add(this.CustomerCode);
             this.groupBox1.Controls.Add(this.comboBox7);
             this.groupBox1.Controls.Add(this.label21);
@@ -137,7 +138,6 @@
             this.groupBox1.Controls.Add(this.label30);
             this.groupBox1.Controls.Add(this.comboBox3);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.comboBox5);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.comboBox6);
             this.groupBox1.Controls.Add(this.label17);
@@ -148,12 +148,23 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // txtCustomerName
+            // 
+            this.txtCustomerName.Location = new System.Drawing.Point(158, 8);
+            this.txtCustomerName.Name = "txtCustomerName";
+            this.txtCustomerName.Size = new System.Drawing.Size(288, 20);
+            this.txtCustomerName.TabIndex = 75;
+            this.txtCustomerName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCustomerName_KeyDown);
+            // 
             // CustomerCode
             // 
             this.CustomerCode.Location = new System.Drawing.Point(65, 8);
             this.CustomerCode.Name = "CustomerCode";
             this.CustomerCode.Size = new System.Drawing.Size(87, 20);
             this.CustomerCode.TabIndex = 75;
+            this.CustomerCode.TextChanged += new System.EventHandler(this.CustomerCode_TextChanged);
+            this.CustomerCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CustomerCode_KeyDown);
+            this.CustomerCode.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CustomerCode_MouseDown);
             // 
             // comboBox7
             // 
@@ -179,7 +190,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(34, 24);
             this.button4.TabIndex = 72;
-            this.button4.Text = "*";
+            this.button4.Text = "x";
             this.button4.UseVisualStyleBackColor = true;
             // 
             // comboBox2
@@ -301,14 +312,6 @@
             this.label8.Size = new System.Drawing.Size(26, 13);
             this.label8.TabIndex = 57;
             this.label8.Text = "Curr";
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(158, 9);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(286, 21);
-            this.comboBox5.TabIndex = 47;
             // 
             // button3
             // 
@@ -841,7 +844,7 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Landing Cost";
             // 
-            // QuotationForm
+            // QuotationAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -865,8 +868,8 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MinimizeBox = false;
-            this.Name = "QuotationForm";
-            this.Text = "QuotationAdd";
+            this.Name = "QuotationAdd";
+            this.Text = "Add Quotation";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.QuotationForm_Load);
             this.groupBox1.ResumeLayout(false);
@@ -923,7 +926,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.ComboBox comboBox5;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem addressDetailsToolStripMenuItem;
@@ -971,6 +973,7 @@
         private System.Windows.Forms.ComboBox comboBox7;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox CustomerCode;
+        private System.Windows.Forms.TextBox txtCustomerName;
     }
 }
 

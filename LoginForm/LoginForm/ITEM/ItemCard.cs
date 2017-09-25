@@ -491,7 +491,7 @@ namespace LoginForm
             if (dataGridView1.RowCount > 0)
             {
                 dataGridView1.ClearSelection();
-                dataGridView1.Rows[gridselectedindex].Selected = true;
+                dataGridView1.CurrentCell = dataGridView1.Rows[gridselectedindex].Cells[0];
             }
 
         }
@@ -796,6 +796,11 @@ namespace LoginForm
         private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
         {
            
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

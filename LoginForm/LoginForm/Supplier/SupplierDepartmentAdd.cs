@@ -43,10 +43,5 @@ namespace LoginForm
                 MessageBox.Show("There is already a departmnet name with " + txtdepartment.Text);
             }
         }
-
-        private void DepartmentAdd_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

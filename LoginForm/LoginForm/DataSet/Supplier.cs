@@ -19,7 +19,6 @@ namespace LoginForm.DataSet
         {
             this.SupplierCategorySubCategories = new HashSet<SupplierCategorySubCategory>();
             this.SupplierWorkers = new HashSet<SupplierWorker>();
-            this.SupplierWorkerNotes = new HashSet<SupplierWorkerNote>();
         }
     
         public string ID { get; set; }
@@ -40,19 +39,21 @@ namespace LoginForm.DataSet
         public Nullable<int> BankID { get; set; }
         public string PoBox { get; set; }
         public Nullable<decimal> discountrate { get; set; }
+        public string iban { get; set; }
+        public string branchcode { get; set; }
+        public string accountnumber { get; set; }
     
         public virtual Note Note { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
         public virtual PaymentTerm PaymentTerm { get; set; }
+        public virtual Rate Rate { get; set; }
+        public virtual Worker Worker { get; set; }
         public virtual SupplierBank SupplierBank { get; set; }
         public virtual SupplierMainContact SupplierMainContact { get; set; }
-        public virtual Worker Worker { get; set; }
+        public virtual Worker Worker1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SupplierCategorySubCategory> SupplierCategorySubCategories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SupplierWorker> SupplierWorkers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SupplierWorkerNote> SupplierWorkerNotes { get; set; }
-        public virtual Rate Rate { get; set; }
     }
 }

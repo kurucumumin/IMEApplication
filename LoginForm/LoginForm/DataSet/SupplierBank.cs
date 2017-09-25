@@ -17,19 +17,16 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SupplierBank()
         {
-            this.SupplierWorkers = new HashSet<SupplierWorker>();
             this.Suppliers = new HashSet<Supplier>();
+            this.SupplierWorkers = new HashSet<SupplierWorker>();
         }
     
         public int ID { get; set; }
         public string bankname { get; set; }
-        public Nullable<int> branchcode { get; set; }
-        public Nullable<int> accountnumber { get; set; }
-        public string iban { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SupplierWorker> SupplierWorkers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Supplier> Suppliers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SupplierWorker> SupplierWorkers { get; set; }
     }
 }

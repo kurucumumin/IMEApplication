@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LoginForm.Quotation;
+using LoginForm.Services;
 
 namespace LoginForm
 {
-    public partial class QuotationForm : Form
+    public partial class QuotationAdd : Form
     {
-        public QuotationForm()
+        public QuotationAdd()
         {
             InitializeComponent();
         }
@@ -52,6 +54,52 @@ namespace LoginForm
             //this.supplierWorkerTableAdapter.Fill(this.iMEDataSet1.SupplierWorker);
             //// TODO: Bu kod satırı 'iMEDataSet.Supplier' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
             //this.supplierTableAdapter.Fill(this.iMEDataSet.Supplier);
+        }
+
+        private void CustomerCode_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CustomerCode_MouseDown(object sender, MouseEventArgs e)
+        {
+            
+       
+        }
+
+        private void CustomerCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                classQuotationAdd.customersearchID = CustomerCode.Text;
+                classQuotationAdd.customersearchname = "";
+                FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch();
+                this.Enabled=false;
+                form.ShowDialog();
+                this.Enabled = true ;
+                fillCustomer();
+            }
+
+        }
+
+
+        private void txtCustomerName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                classQuotationAdd.customersearchID = "";
+                classQuotationAdd.customersearchname = txtCustomerName.Text;
+                FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch();
+                this.Enabled = false;
+                form.ShowDialog();
+                this.Enabled = true;
+                fillCustomer();
+            }
+        }
+        private void fillCustomer()
+        {
+            CustomerCode.Text = classQuotationAdd.customerID;
+            txtCustomerName.Text = classQuotationAdd.customername;
         }
     }
 }

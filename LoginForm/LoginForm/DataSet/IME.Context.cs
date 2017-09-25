@@ -29,6 +29,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<capital> capitals { get; set; }
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<CustomerAdress> CustomerAdresses { get; set; }
         public virtual DbSet<CustomerCategory> CustomerCategories { get; set; }
         public virtual DbSet<CustomerCategorySubCategory> CustomerCategorySubCategories { get; set; }
@@ -46,10 +47,12 @@ namespace LoginForm.DataSet
         public virtual DbSet<OnSale> OnSales { get; set; }
         public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
         public virtual DbSet<PaymentTerm> PaymentTerms { get; set; }
+        public virtual DbSet<Rate> Rates { get; set; }
         public virtual DbSet<RSPro> RSProes { get; set; }
         public virtual DbSet<SlidingPrice> SlidingPrices { get; set; }
         public virtual DbSet<SuperDisk> SuperDisks { get; set; }
         public virtual DbSet<SuperDiskP> SuperDiskPs { get; set; }
+        public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<SupplierAdress> SupplierAdresses { get; set; }
         public virtual DbSet<SupplierBank> SupplierBanks { get; set; }
         public virtual DbSet<SupplierCategory> SupplierCategories { get; set; }
@@ -59,12 +62,8 @@ namespace LoginForm.DataSet
         public virtual DbSet<SupplierSubCategory> SupplierSubCategories { get; set; }
         public virtual DbSet<SupplierTitle> SupplierTitles { get; set; }
         public virtual DbSet<SupplierWorker> SupplierWorkers { get; set; }
-        public virtual DbSet<SupplierWorkerNote> SupplierWorkerNotes { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Town> Towns { get; set; }
         public virtual DbSet<Worker> Workers { get; set; }
-        public virtual DbSet<Supplier> Suppliers { get; set; }
-        public virtual DbSet<Rate> Rates { get; set; }
-        public virtual DbSet<Customer> Customers { get; set; }
     }
 }

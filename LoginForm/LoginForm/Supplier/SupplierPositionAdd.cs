@@ -50,10 +50,5 @@ namespace LoginForm
                 MessageBox.Show("There is already a position name with " + txttitle.Text);
             }
         }
-
-        private void PositionAdd_Load_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }

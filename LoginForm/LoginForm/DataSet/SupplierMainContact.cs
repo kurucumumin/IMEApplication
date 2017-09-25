@@ -24,8 +24,8 @@ namespace LoginForm.DataSet
         public Nullable<int> supplierWorkerID { get; set; }
         public Nullable<int> workerID { get; set; }
     
-        public virtual SupplierWorker SupplierWorker { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Supplier> Suppliers { get; set; }
+        public virtual SupplierWorker SupplierWorker { get; set; }
     }
 }
