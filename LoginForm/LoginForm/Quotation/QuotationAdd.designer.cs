@@ -77,9 +77,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.addressDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customerDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contactDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.comboBox8 = new System.Windows.Forms.ComboBox();
@@ -589,9 +587,7 @@
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addressDetailsToolStripMenuItem,
-            this.customerDetailsToolStripMenuItem,
-            this.contactDetailsToolStripMenuItem});
+            this.customerDetailsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1016, 24);
@@ -599,23 +595,12 @@
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
-            // addressDetailsToolStripMenuItem
-            // 
-            this.addressDetailsToolStripMenuItem.Name = "addressDetailsToolStripMenuItem";
-            this.addressDetailsToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
-            this.addressDetailsToolStripMenuItem.Text = "Address Details";
-            // 
             // customerDetailsToolStripMenuItem
             // 
             this.customerDetailsToolStripMenuItem.Name = "customerDetailsToolStripMenuItem";
             this.customerDetailsToolStripMenuItem.Size = new System.Drawing.Size(109, 20);
             this.customerDetailsToolStripMenuItem.Text = "Customer Details";
-            // 
-            // contactDetailsToolStripMenuItem
-            // 
-            this.contactDetailsToolStripMenuItem.Name = "contactDetailsToolStripMenuItem";
-            this.contactDetailsToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
-            this.contactDetailsToolStripMenuItem.Text = "Contact Details";
+            this.customerDetailsToolStripMenuItem.Click += new System.EventHandler(this.customerDetailsToolStripMenuItem_Click);
             // 
             // groupBox10
             // 
@@ -928,9 +913,7 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem addressDetailsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem customerDetailsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem contactDetailsToolStripMenuItem;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox3;
