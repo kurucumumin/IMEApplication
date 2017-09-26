@@ -107,5 +107,15 @@ namespace LoginForm
             CustomerMain f = new CustomerMain(true, CustomerCode.Text);
             f.Show();
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            FormMain f = new FormMain();
+            if (MessageBox.Show("Are You Sure To Exit Programme ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                f.Show();
+                this.Close();
+            }
+        }
     }
 }
