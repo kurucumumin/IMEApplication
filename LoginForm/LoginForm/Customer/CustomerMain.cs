@@ -28,8 +28,9 @@ namespace LoginForm
         
         public CustomerMain(Boolean buttonEnabled, string CustomerID)
         {
+            //Qoutation Customer ID Details
+
             InitializeComponent();
-            //Qoutation Customer Details
             if (CustomerID== "newCustomerDevelopers")
             {
                 #region MyRegion
@@ -85,14 +86,29 @@ namespace LoginForm
                     Search.Enabled = false;
                     btnCreate.Enabled = false;
                     btnUpdate.Enabled = false;
-                    QuotationCustomerSearch(CustomerID);
+                    QuotationCustomerSearchID(CustomerID);
                 }
             }
-            
-            
+               
         }
 
-            private void tabPage2_Click(object sender, EventArgs e)
+        public CustomerMain(string CustomerName, Boolean buttonEnabled)
+        {
+            //Qoutation Customer Name Details
+
+            InitializeComponent();
+            if (buttonEnabled)
+            {
+                CustomerDataGrid.Enabled = false;
+                txtSearch.Enabled = false;
+                Search.Enabled = false;
+                btnCreate.Enabled = false;
+                btnUpdate.Enabled = false;
+                QuotationCustomerSearchName(CustomerName);
+            }
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
         {
             
         }
@@ -500,9 +516,9 @@ namespace LoginForm
             else { itemsClear(); }
         }
 
-        private void QuotationCustomerSearch(string search)
+        private void QuotationCustomerSearchID(string search)
         {
-            #region QuotationCustomerSearch
+            #region QuotationCustomerSearchID
             var customerAdapter = (from c in IME.Customers.Where(a => a.ID.Contains(search))
                                    join w in IME.Workers on c.representaryID equals w.WorkerID
                                    join customerworker in IME.CustomerWorkers on c.ID equals customerworker.customerID into customerworkeres
@@ -556,54 +572,181 @@ namespace LoginForm
                                    }).ToList();
             #endregion
 
-            #region FillInfos
             CustomerDataGrid.DataSource = customerAdapter;
-            CustomerDataGrid.CurrentCell = CustomerDataGrid.Rows[gridselectedindex].Cells[0];
-            CustomerCode.Text = customerAdapter[gridselectedindex].ID;
-            AdressList.DataSource = IME.CustomerAdresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
-            AdressList.DisplayMember = "AdressDetails";
-            CustomerName.Text = customerAdapter[gridselectedindex].c_name;
-            factor.SelectedIndex = factor.FindStringExact(customerAdapter[gridselectedindex].currency.ToString());
-            Telephone.Text = customerAdapter[gridselectedindex].telephone.ToString();
-            ContactFAX.Text = customerAdapter[gridselectedindex].fax.ToString();
-            WebAdress.Text = customerAdapter[gridselectedindex].webadress;
+            if (customerAdapter.Count > 0)
+            {
+                this.Show();
+                #region FillInfos
+                CustomerDataGrid.DataSource = customerAdapter;
+                CustomerDataGrid.CurrentCell = CustomerDataGrid.Rows[gridselectedindex].Cells[0];
+                CustomerCode.Text = customerAdapter[gridselectedindex].ID;
+                AdressList.DataSource = IME.CustomerAdresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
+                AdressList.DisplayMember = "AdressDetails";
+                CustomerName.Text = customerAdapter[gridselectedindex].c_name;
+                factor.SelectedIndex = factor.FindStringExact(customerAdapter[gridselectedindex].currency.ToString());
+                Telephone.Text = customerAdapter[gridselectedindex].telephone.ToString();
+                ContactFAX.Text = customerAdapter[gridselectedindex].fax.ToString();
+                WebAdress.Text = customerAdapter[gridselectedindex].webadress;
 
-            AddressType.DataSource = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text).ToList();
-            AddressType.DisplayMember = "cw_name";
+                AddressType.DataSource = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text).ToList();
+                AddressType.DisplayMember = "cw_name";
 
-            Represantative2.Text = customerAdapter[gridselectedindex].Representative2;
-            Represantative1.SelectedIndex = Represantative1.FindStringExact(customerAdapter[gridselectedindex].FirstName);
-            ContactTitle.SelectedIndex = ContactTitle.FindStringExact(customerAdapter[gridselectedindex].titlename);
-            ContactDepartment.SelectedIndex = ContactDepartment.FindStringExact(customerAdapter[gridselectedindex].titlename);
-            MainCategory.SelectedIndex = MainCategory.FindStringExact(customerAdapter[gridselectedindex].categoryname);
-            SubCategory.SelectedIndex = SubCategory.FindStringExact(customerAdapter[gridselectedindex].subcategoryname);
-            TermsofPayments.SelectedIndex = TermsofPayments.FindStringExact(customerAdapter[gridselectedindex].term_name);
-            ContactName.Text = customerAdapter[gridselectedindex].cw_name;
-            ContactEmail.Text = customerAdapter[gridselectedindex].cw_email;
-            CompanyNotes.Text = customerAdapter[gridselectedindex].CustomerNote;
-            ContactNotes.Text = customerAdapter[gridselectedindex].CustomerWorkerNote;
-            AccountRepresentary.Text = customerAdapter[gridselectedindex].AccountRepresentative;
-            CommunicationLanguage.Text = customerAdapter[gridselectedindex].languagename;
-            if (customerAdapter[gridselectedindex].isactive == 1) { rb_active.Checked = true; } else { rb_passive.Checked = true; }
-            ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
-            ContactList.DisplayMember = "cw_name";
-            cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
-            cbMainContact.DisplayMember = "cw_name";
-            cbMainContact.SelectedItem = cbMainContact.FindStringExact(customerAdapter[gridselectedindex].cw_name);
-            if (customerAdapter[gridselectedindex].AddressContact == null)
-            { AddressType.SelectedItem = null; checkBox1.Checked = true; }
+                Represantative2.Text = customerAdapter[gridselectedindex].Representative2;
+                Represantative1.SelectedIndex = Represantative1.FindStringExact(customerAdapter[gridselectedindex].FirstName);
+                ContactTitle.SelectedIndex = ContactTitle.FindStringExact(customerAdapter[gridselectedindex].titlename);
+                ContactDepartment.SelectedIndex = ContactDepartment.FindStringExact(customerAdapter[gridselectedindex].titlename);
+                MainCategory.SelectedIndex = MainCategory.FindStringExact(customerAdapter[gridselectedindex].categoryname);
+                SubCategory.SelectedIndex = SubCategory.FindStringExact(customerAdapter[gridselectedindex].subcategoryname);
+                TermsofPayments.SelectedIndex = TermsofPayments.FindStringExact(customerAdapter[gridselectedindex].term_name);
+                ContactName.Text = customerAdapter[gridselectedindex].cw_name;
+                ContactEmail.Text = customerAdapter[gridselectedindex].cw_email;
+                CompanyNotes.Text = customerAdapter[gridselectedindex].CustomerNote;
+                ContactNotes.Text = customerAdapter[gridselectedindex].CustomerWorkerNote;
+                AccountRepresentary.Text = customerAdapter[gridselectedindex].AccountRepresentative;
+                CommunicationLanguage.Text = customerAdapter[gridselectedindex].languagename;
+                if (customerAdapter[gridselectedindex].isactive == 1) { rb_active.Checked = true; } else { rb_passive.Checked = true; }
+                ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
+                ContactList.DisplayMember = "cw_name";
+                cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
+                cbMainContact.DisplayMember = "cw_name";
+                cbMainContact.SelectedItem = cbMainContact.FindStringExact(customerAdapter[gridselectedindex].cw_name);
+                if (customerAdapter[gridselectedindex].AddressContact == null)
+                { AddressType.SelectedItem = null; checkBox1.Checked = true; }
+                else
+                {
+                    AddressType.SelectedIndex = AddressType.FindStringExact(customerAdapter[gridselectedindex].AddressContact);
+                }
+                PostCode.Text = customerAdapter[gridselectedindex].PostCode;
+                cbCountry.SelectedIndex = cbCountry.FindStringExact(customerAdapter[gridselectedindex].AdressCountry);
+                cbCity.SelectedIndex = cbCity.FindStringExact(customerAdapter[gridselectedindex].AddressCity);
+                if (customerAdapter[gridselectedindex].isDeliveryAdress == 1) { DeliveryAddressOk.Checked = true; } else { DeliveryAddressOk.Checked = false; }
+                if (customerAdapter[gridselectedindex].isInvoiceAdress == 1) { InvoiceAdressOk.Checked = true; } else { InvoiceAdressOk.Checked = false; }
+                cbTown.SelectedIndex = cbTown.FindStringExact(customerAdapter[gridselectedindex].Town_name);
+                AddressDetails.Text = customerAdapter[gridselectedindex].AdressDetails;
+                #endregion
+            }
             else
             {
-                AddressType.SelectedIndex = AddressType.FindStringExact(customerAdapter[gridselectedindex].AddressContact);
+                MessageBox.Show("There is no such a Customer", "Warning !");
+                this.Hide();
             }
-            PostCode.Text = customerAdapter[gridselectedindex].PostCode;
-            cbCountry.SelectedIndex = cbCountry.FindStringExact(customerAdapter[gridselectedindex].AdressCountry);
-            cbCity.SelectedIndex = cbCity.FindStringExact(customerAdapter[gridselectedindex].AddressCity);
-            if (customerAdapter[gridselectedindex].isDeliveryAdress == 1) { DeliveryAddressOk.Checked = true; } else { DeliveryAddressOk.Checked = false; }
-            if (customerAdapter[gridselectedindex].isInvoiceAdress == 1) { InvoiceAdressOk.Checked = true; } else { InvoiceAdressOk.Checked = false; }
-            cbTown.SelectedIndex = cbTown.FindStringExact(customerAdapter[gridselectedindex].Town_name);
-            AddressDetails.Text = customerAdapter[gridselectedindex].AdressDetails;
+        }
+
+        private void QuotationCustomerSearchName(string search)
+        {
+            #region QuotationCustomerSearchName
+            var customerAdapter = (from c in IME.Customers.Where(a => a.c_name.Contains(search))
+                                   join w in IME.Workers on c.representaryID equals w.WorkerID
+                                   join customerworker in IME.CustomerWorkers on c.ID equals customerworker.customerID into customerworkeres
+                                   let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
+                                   join r in IME.Workers on c.representary2ID equals r.WorkerID
+                                   join customeraccountant in IME.Workers on c.accountrepresentaryID equals customeraccountant.WorkerID
+                                   join s in IME.CustomerCategorySubCategories on c.ID equals s.customerID
+                                   join p in IME.PaymentTerms on c.payment_termID equals p.ID
+                                   join m in IME.PaymentMethods on c.paymentmethodID equals m.ID
+                                   join l in IME.Languages on customerworker.languageID equals l.ID
+                                   join a in IME.CustomerAdresses on c.ID equals a.CustomerID into adress
+                                   let a = adress.Select(customerworker1 => customerworker1).FirstOrDefault()
+                                   join mc in IME.CustomerWorkers on c.MainContactID equals mc.ID into maincontact
+                                   let mc = maincontact.Select(customerworker1 => customerworker1).FirstOrDefault()
+                                   select new
+                                   {
+                                       c.ID,
+                                       c.c_name,
+                                       c.Rate.currency,
+                                       c.telephone,
+                                       c.fax,
+                                       c.webadress,
+                                       w.FirstName,
+                                       Representative2 = r.FirstName,
+                                       customerworker.cw_name,
+                                       customerworker.cw_email,
+                                       customerworker.CustomerTitle.titlename,
+                                       customerworker.CustomerDepartment.departmentname,
+                                       s.CustomerCategory.categoryname,
+                                       s.CustomerSubCategory.subcategoryname,
+                                       p.term_name,
+                                       customerworker,
+                                       cwNote = customerworker.Note.Note_name,
+                                       c.isactive,
+                                       c.rateIDinvoice,
+                                       CustomerNote = c.Note.Note_name,
+                                       WorkerNote = w.Note.Note_name,
+                                       CustomerWorkerNote = customerworker.Note.Note_name,
+                                       AccountRepresentative = customeraccountant.FirstName,
+                                       l.languagename,
+                                       AddressCity = a.City.City_name,
+                                       AddressContact = a.CustomerWorker.cw_name,
+                                       AdressCountry = a.Country.Country_name,
+                                       a.isDeliveryAdress,
+                                       a.isInvoiceAdress,
+                                       a.PostCode,
+                                       a.Town.Town_name,
+                                       a.AdressDetails,
+                                       c.MainContactID,
+                                       MainContact = mc.cw_name
+                                   }).ToList();
             #endregion
+
+            CustomerDataGrid.DataSource = customerAdapter;
+            if (customerAdapter.Count > 0)
+            {
+                this.Show();
+                #region FillInfos
+                CustomerDataGrid.DataSource = customerAdapter;
+                CustomerDataGrid.CurrentCell = CustomerDataGrid.Rows[gridselectedindex].Cells[0];
+                CustomerCode.Text = customerAdapter[gridselectedindex].ID;
+                AdressList.DataSource = IME.CustomerAdresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
+                AdressList.DisplayMember = "AdressDetails";
+                CustomerName.Text = customerAdapter[gridselectedindex].c_name;
+                factor.SelectedIndex = factor.FindStringExact(customerAdapter[gridselectedindex].currency.ToString());
+                Telephone.Text = customerAdapter[gridselectedindex].telephone.ToString();
+                ContactFAX.Text = customerAdapter[gridselectedindex].fax.ToString();
+                WebAdress.Text = customerAdapter[gridselectedindex].webadress;
+
+                AddressType.DataSource = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text).ToList();
+                AddressType.DisplayMember = "cw_name";
+
+                Represantative2.Text = customerAdapter[gridselectedindex].Representative2;
+                Represantative1.SelectedIndex = Represantative1.FindStringExact(customerAdapter[gridselectedindex].FirstName);
+                ContactTitle.SelectedIndex = ContactTitle.FindStringExact(customerAdapter[gridselectedindex].titlename);
+                ContactDepartment.SelectedIndex = ContactDepartment.FindStringExact(customerAdapter[gridselectedindex].titlename);
+                MainCategory.SelectedIndex = MainCategory.FindStringExact(customerAdapter[gridselectedindex].categoryname);
+                SubCategory.SelectedIndex = SubCategory.FindStringExact(customerAdapter[gridselectedindex].subcategoryname);
+                TermsofPayments.SelectedIndex = TermsofPayments.FindStringExact(customerAdapter[gridselectedindex].term_name);
+                ContactName.Text = customerAdapter[gridselectedindex].cw_name;
+                ContactEmail.Text = customerAdapter[gridselectedindex].cw_email;
+                CompanyNotes.Text = customerAdapter[gridselectedindex].CustomerNote;
+                ContactNotes.Text = customerAdapter[gridselectedindex].CustomerWorkerNote;
+                AccountRepresentary.Text = customerAdapter[gridselectedindex].AccountRepresentative;
+                CommunicationLanguage.Text = customerAdapter[gridselectedindex].languagename;
+                if (customerAdapter[gridselectedindex].isactive == 1) { rb_active.Checked = true; } else { rb_passive.Checked = true; }
+                ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
+                ContactList.DisplayMember = "cw_name";
+                cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
+                cbMainContact.DisplayMember = "cw_name";
+                cbMainContact.SelectedItem = cbMainContact.FindStringExact(customerAdapter[gridselectedindex].cw_name);
+                if (customerAdapter[gridselectedindex].AddressContact == null)
+                { AddressType.SelectedItem = null; checkBox1.Checked = true; }
+                else
+                {
+                    AddressType.SelectedIndex = AddressType.FindStringExact(customerAdapter[gridselectedindex].AddressContact);
+                }
+                PostCode.Text = customerAdapter[gridselectedindex].PostCode;
+                cbCountry.SelectedIndex = cbCountry.FindStringExact(customerAdapter[gridselectedindex].AdressCountry);
+                cbCity.SelectedIndex = cbCity.FindStringExact(customerAdapter[gridselectedindex].AddressCity);
+                if (customerAdapter[gridselectedindex].isDeliveryAdress == 1) { DeliveryAddressOk.Checked = true; } else { DeliveryAddressOk.Checked = false; }
+                if (customerAdapter[gridselectedindex].isInvoiceAdress == 1) { InvoiceAdressOk.Checked = true; } else { InvoiceAdressOk.Checked = false; }
+                cbTown.SelectedIndex = cbTown.FindStringExact(customerAdapter[gridselectedindex].Town_name);
+                AddressDetails.Text = customerAdapter[gridselectedindex].AdressDetails;
+                #endregion
+            }
+            else
+            {
+                MessageBox.Show("There is no such a Customer", "Warning !");
+                this.Hide();
+            }
+
         }
 
         //CONTACT ADD NEW
@@ -744,9 +887,6 @@ namespace LoginForm
                 }
                 else { MessageBox.Show("Please choose a contact to update"); }
             }
-
-
-
 
             btnContactAdd.Visible = true;
             btnContactDelete.Visible = true;

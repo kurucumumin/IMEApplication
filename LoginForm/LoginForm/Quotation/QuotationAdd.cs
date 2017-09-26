@@ -9,57 +9,39 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.Quotation;
 using LoginForm.Services;
+using LoginForm.DataSet;
 
 namespace LoginForm
 {
     public partial class QuotationAdd : Form
     {
+        GetWorkerService GetWorkerService = new GetWorkerService();
+        IMEEntities IME = new IMEEntities();
+
         public QuotationAdd()
         {
             InitializeComponent();
         }
 
-        private void label38_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
         private void QuotationForm_Load(object sender, EventArgs e)
         {
-            //// TODO: Bu kod satırı 'iMEDataSet3.Worker' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
-            //this.workerTableAdapter.Fill(this.iMEDataSet3.Worker);
-            //// TODO: Bu kod satırı 'iMEDataSet2.Customer' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
-            //this.customerTableAdapter.Fill(this.iMEDataSet2.Customer);
-            //// TODO: Bu kod satırı 'iMEDataSet1.SupplierWorker' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
-            //this.supplierWorkerTableAdapter.Fill(this.iMEDataSet1.SupplierWorker);
-            //// TODO: Bu kod satırı 'iMEDataSet.Supplier' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
-            //this.supplierTableAdapter.Fill(this.iMEDataSet.Supplier);
-        }
+            #region ComboboxFiller
+            cmbPayment.DataSource = IME.PaymentMethods.ToList();
+            cmbPayment.DisplayMember = "Payment";
+            cmbPayment.ValueMember = "ID";
 
-        private void CustomerCode_TextChanged(object sender, EventArgs e)
-        {
+            cmbRep.DataSource = GetWorkerService.GetWorker();
+            cmbRep.DisplayMember = "FirstName";
+            cmbRep.ValueMember = "WorkerID";
 
-        }
+            cmbCur.DataSource = IME.Rates.ToList();
+            cmbCur.DisplayMember = "rate_name";
+            cmbCur.ValueMember = "ID";
 
-        private void CustomerCode_MouseDown(object sender, MouseEventArgs e)
-        {
-            
-       
+            cmbShipping.DataSource = IME.ShippingMethods.ToList();
+            cmbShipping.DisplayMember = "shipping_name";
+            cmbShipping.ValueMember = "ID";
+            #endregion
         }
 
         private void CustomerCode_KeyDown(object sender, KeyEventArgs e)
@@ -69,14 +51,13 @@ namespace LoginForm
                 classQuotationAdd.customersearchID = CustomerCode.Text;
                 classQuotationAdd.customersearchname = "";
                 FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch();
-                this.Enabled=false;
+                this.Enabled = false;
                 form.ShowDialog();
-                this.Enabled = true ;
+                this.Enabled = true;
                 fillCustomer();
             }
 
         }
-
 
         private void txtCustomerName_KeyDown(object sender, KeyEventArgs e)
         {
@@ -103,6 +84,11 @@ namespace LoginForm
             f.Show();
         }
 
+        private void customerDetailsNameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CustomerMain f = new CustomerMain(txtCustomerName.Text, true);
+        }
+
         private void button10_Click(object sender, EventArgs e)
         {
             FormMain f = new FormMain();
@@ -111,16 +97,6 @@ namespace LoginForm
                 f.Show();
                 this.Close();
             }
-        }
-
-        private void label37_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DiscCharge_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

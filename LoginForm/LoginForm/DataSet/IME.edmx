@@ -269,6 +269,13 @@
           <Property Name="Height" Type="nvarchar" MaxLength="15" />
           <Property Name="GrossWeight" Type="nvarchar" MaxLength="15" />
         </EntityType>
+        <EntityType Name="ShippingMethod">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="shipping_name" Type="nvarchar" MaxLength="40" />
+        </EntityType>
         <EntityType Name="SlidingPrice">
           <Key>
             <PropertyRef Name="ArticleNo" />
@@ -1174,6 +1181,7 @@
           <EntitySet Name="PaymentTerm" EntityType="Self.PaymentTerm" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rate" EntityType="Self.Rate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RSPro" EntityType="Self.RSPro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShippingMethod" EntityType="Self.ShippingMethod" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SlidingPrice" EntityType="Self.SlidingPrice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuperDisk" EntityType="Self.SuperDisk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuperDiskP" EntityType="Self.SuperDiskP" Schema="dbo" store:Type="Tables" />
@@ -1425,6 +1433,7 @@
           <EntitySet Name="PaymentTerms" EntityType="IMEModel.PaymentTerm" />
           <EntitySet Name="Rates" EntityType="IMEModel.Rate" />
           <EntitySet Name="RSProes" EntityType="IMEModel.RSPro" />
+          <EntitySet Name="ShippingMethods" EntityType="IMEModel.ShippingMethod" />
           <EntitySet Name="SlidingPrices" EntityType="IMEModel.SlidingPrice" />
           <EntitySet Name="SuperDisks" EntityType="IMEModel.SuperDisk" />
           <EntitySet Name="SuperDiskPs" EntityType="IMEModel.SuperDiskP" />
@@ -1962,6 +1971,13 @@
           <Property Name="Lenght" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Height" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="GrossWeight" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ShippingMethod">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="shipping_name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="SlidingPrice">
           <Key>
@@ -3149,6 +3165,14 @@
                 <ScalarProperty Name="Width" ColumnName="Width" />
                 <ScalarProperty Name="RsProDesc" ColumnName="RsProDesc" />
                 <ScalarProperty Name="ArticleNo" ColumnName="ArticleNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShippingMethods">
+            <EntityTypeMapping TypeName="IMEModel.ShippingMethod">
+              <MappingFragment StoreEntitySet="ShippingMethod">
+                <ScalarProperty Name="shipping_name" ColumnName="shipping_name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
