@@ -443,7 +443,10 @@ using LoginForm.Services;
                                    }).ToList();
             #endregion
 
-            #region FillInfos
+            dgSupplier.DataSource = supplierAdapter;
+            if (supplierAdapter.Count>0)
+            { 
+                #region FillInfos
             dgSupplier.DataSource = supplierAdapter;
             dgSupplier.ClearSelection();
             dgSupplier.Rows[gridselectedindex].Selected = true;// tüm row u seçtirmek için bu formülü kullnınca selectedrow index =0 oluyor
@@ -482,6 +485,12 @@ using LoginForm.Services;
             dgSupplier.Refresh();
 
             #endregion
+            }
+            else
+            {  
+                MessageBox.Show("There is no such a Customer", "Warning !");
+                itemsClear();
+            }
         }
 
         private void btnContactNew_Click(object sender, EventArgs e)
@@ -894,7 +903,7 @@ using LoginForm.Services;
         {
             if (MessageBox.Show("Are You Sure To Exit Programme ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                Application.Exit();
+                this.Hide();
             }
         }
 
