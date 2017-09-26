@@ -101,5 +101,11 @@ namespace LoginForm
             CustomerCode.Text = classQuotationAdd.customerID;
             txtCustomerName.Text = classQuotationAdd.customername;
         }
+
+        private void customerDetailsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CustomerMain f = new CustomerMain(true, CustomerCode.Text);
+            f.Show();
+        }
     }
 }

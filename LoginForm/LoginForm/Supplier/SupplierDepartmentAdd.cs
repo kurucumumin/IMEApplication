@@ -32,6 +32,7 @@ namespace LoginForm
             var result = db.SupplierDepartments.Where(department => department.departmentname == txtdepartment.Text).ToList();
             if (result.Count == 0)
             {
+                //CommitDenemefromDemir
                 SupplierDepartment cd = new SupplierDepartment();
                 cd.departmentname = txtdepartment.Text;
                 db.SupplierDepartments.Add(cd);
