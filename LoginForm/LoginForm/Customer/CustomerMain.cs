@@ -141,8 +141,11 @@ namespace LoginForm
         }
         private void CustomerDataGrid_Click(object sender, EventArgs e)
         {
-            gridselectedindex = CustomerDataGrid.CurrentCell.RowIndex;
-            customersearch();
+            if (CustomerDataGrid.DataSource!=null)
+            {
+                gridselectedindex = CustomerDataGrid.CurrentCell.RowIndex;
+                customersearch();
+            }
         }
 
 

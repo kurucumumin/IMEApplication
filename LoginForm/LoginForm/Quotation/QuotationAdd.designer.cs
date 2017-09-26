@@ -62,7 +62,6 @@
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -71,6 +70,11 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.Expiringpro = new System.Windows.Forms.TextBox();
+            this.Environment = new System.Windows.Forms.TextBox();
+            this.HazardousInd = new System.Windows.Forms.TextBox();
+            this.DiscCharge = new System.Windows.Forms.TextBox();
+            this.Manufacturer = new System.Windows.Forms.TextBox();
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.LicensedInd = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
@@ -86,15 +90,11 @@
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.Lithium = new System.Windows.Forms.TextBox();
-            this.Expiringpro = new System.Windows.Forms.TextBox();
             this.label63 = new System.Windows.Forms.Label();
             this.label64 = new System.Windows.Forms.Label();
-            this.Environment = new System.Windows.Forms.TextBox();
-            this.DiscCharge = new System.Windows.Forms.TextBox();
             this.label53 = new System.Windows.Forms.Label();
             this.LowDiscontInd = new System.Windows.Forms.TextBox();
             this.label43 = new System.Windows.Forms.Label();
-            this.HazardousInd = new System.Windows.Forms.TextBox();
             this.label44 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.textBox14 = new System.Windows.Forms.TextBox();
@@ -132,7 +132,6 @@
             this.PackQuan = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.MPN = new System.Windows.Forms.TextBox();
-            this.Manufacturer = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.textBox13 = new System.Windows.Forms.TextBox();
@@ -163,10 +162,15 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dgNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgMPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox7.SuspendLayout();
@@ -175,6 +179,7 @@
             this.groupBox10.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -435,7 +440,7 @@
             this.groupBox5.Controls.Add(this.textBox9);
             this.groupBox5.Controls.Add(this.button8);
             this.groupBox5.Controls.Add(this.button7);
-            this.groupBox5.Controls.Add(this.dataGridView1);
+            this.groupBox5.Controls.Add(this.dataGridView3);
             this.groupBox5.Location = new System.Drawing.Point(13, 178);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(1343, 268);
@@ -504,17 +509,6 @@
             this.button7.TabIndex = 3;
             this.button7.Text = "button7";
             this.button7.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(4, 9);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(1339, 229);
-            this.dataGridView1.TabIndex = 2;
             // 
             // groupBox6
             // 
@@ -588,6 +582,10 @@
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.Expiringpro);
+            this.groupBox9.Controls.Add(this.Environment);
+            this.groupBox9.Controls.Add(this.HazardousInd);
+            this.groupBox9.Controls.Add(this.DiscCharge);
             this.groupBox9.Controls.Add(this.Manufacturer);
             this.groupBox9.Controls.Add(this.textBox18);
             this.groupBox9.Controls.Add(this.LicensedInd);
@@ -604,15 +602,11 @@
             this.groupBox9.Controls.Add(this.label37);
             this.groupBox9.Controls.Add(this.label38);
             this.groupBox9.Controls.Add(this.Lithium);
-            this.groupBox9.Controls.Add(this.Expiringpro);
             this.groupBox9.Controls.Add(this.label63);
             this.groupBox9.Controls.Add(this.label64);
-            this.groupBox9.Controls.Add(this.Environment);
-            this.groupBox9.Controls.Add(this.DiscCharge);
             this.groupBox9.Controls.Add(this.label53);
             this.groupBox9.Controls.Add(this.LowDiscontInd);
             this.groupBox9.Controls.Add(this.label43);
-            this.groupBox9.Controls.Add(this.HazardousInd);
             this.groupBox9.Controls.Add(this.label44);
             this.groupBox9.Controls.Add(this.label28);
             this.groupBox9.Controls.Add(this.textBox14);
@@ -659,6 +653,53 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Item Card";
             // 
+            // Expiringpro
+            // 
+            this.Expiringpro.Enabled = false;
+            this.Expiringpro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Expiringpro.Location = new System.Drawing.Point(862, 97);
+            this.Expiringpro.Name = "Expiringpro";
+            this.Expiringpro.Size = new System.Drawing.Size(21, 20);
+            this.Expiringpro.TabIndex = 255;
+            // 
+            // Environment
+            // 
+            this.Environment.Enabled = false;
+            this.Environment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Environment.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Environment.Location = new System.Drawing.Point(740, 72);
+            this.Environment.Name = "Environment";
+            this.Environment.Size = new System.Drawing.Size(21, 20);
+            this.Environment.TabIndex = 269;
+            // 
+            // HazardousInd
+            // 
+            this.HazardousInd.Enabled = false;
+            this.HazardousInd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.HazardousInd.Location = new System.Drawing.Point(694, 72);
+            this.HazardousInd.Name = "HazardousInd";
+            this.HazardousInd.Size = new System.Drawing.Size(21, 20);
+            this.HazardousInd.TabIndex = 263;
+            // 
+            // DiscCharge
+            // 
+            this.DiscCharge.Enabled = false;
+            this.DiscCharge.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.DiscCharge.Location = new System.Drawing.Point(787, 96);
+            this.DiscCharge.Name = "DiscCharge";
+            this.DiscCharge.Size = new System.Drawing.Size(21, 20);
+            this.DiscCharge.TabIndex = 257;
+            this.DiscCharge.TextChanged += new System.EventHandler(this.DiscCharge_TextChanged);
+            // 
+            // Manufacturer
+            // 
+            this.Manufacturer.Enabled = false;
+            this.Manufacturer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Manufacturer.Location = new System.Drawing.Point(662, 18);
+            this.Manufacturer.Name = "Manufacturer";
+            this.Manufacturer.Size = new System.Drawing.Size(89, 20);
+            this.Manufacturer.TabIndex = 277;
+            // 
             // textBox18
             // 
             this.textBox18.Enabled = false;
@@ -673,14 +714,14 @@
             // 
             this.LicensedInd.Enabled = false;
             this.LicensedInd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.LicensedInd.Location = new System.Drawing.Point(877, 125);
+            this.LicensedInd.Location = new System.Drawing.Point(862, 125);
             this.LicensedInd.Name = "LicensedInd";
             this.LicensedInd.Size = new System.Drawing.Size(21, 20);
             this.LicensedInd.TabIndex = 258;
             // 
             // label31
             // 
-            this.label31.Location = new System.Drawing.Point(827, 122);
+            this.label31.Location = new System.Drawing.Point(812, 122);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(56, 27);
             this.label31.TabIndex = 249;
@@ -699,14 +740,14 @@
             // 
             this.BHCFlag.Enabled = false;
             this.BHCFlag.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.BHCFlag.Location = new System.Drawing.Point(798, 125);
+            this.BHCFlag.Location = new System.Drawing.Point(787, 125);
             this.BHCFlag.Name = "BHCFlag";
             this.BHCFlag.Size = new System.Drawing.Size(21, 20);
             this.BHCFlag.TabIndex = 253;
             // 
             // label33
             // 
-            this.label33.Location = new System.Drawing.Point(762, 121);
+            this.label33.Location = new System.Drawing.Point(743, 123);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(39, 27);
             this.label33.TabIndex = 251;
@@ -725,7 +766,7 @@
             // 
             this.Shipping.Enabled = false;
             this.Shipping.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Shipping.Location = new System.Drawing.Point(877, 71);
+            this.Shipping.Location = new System.Drawing.Point(862, 71);
             this.Shipping.Name = "Shipping";
             this.Shipping.Size = new System.Drawing.Size(21, 20);
             this.Shipping.TabIndex = 264;
@@ -768,16 +809,16 @@
             // 
             // label37
             // 
-            this.label37.Location = new System.Drawing.Point(746, 95);
+            this.label37.Location = new System.Drawing.Point(743, 95);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(46, 27);
+            this.label37.Size = new System.Drawing.Size(54, 27);
             this.label37.TabIndex = 247;
             this.label37.Text = "Disc Change";
             this.label37.Click += new System.EventHandler(this.label37_Click);
             // 
             // label38
             // 
-            this.label38.Location = new System.Drawing.Point(820, 93);
+            this.label38.Location = new System.Drawing.Point(811, 93);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(56, 27);
             this.label38.TabIndex = 250;
@@ -787,23 +828,14 @@
             // 
             this.Lithium.Enabled = false;
             this.Lithium.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Lithium.Location = new System.Drawing.Point(799, 72);
+            this.Lithium.Location = new System.Drawing.Point(787, 70);
             this.Lithium.Name = "Lithium";
             this.Lithium.Size = new System.Drawing.Size(21, 20);
             this.Lithium.TabIndex = 265;
             // 
-            // Expiringpro
-            // 
-            this.Expiringpro.Enabled = false;
-            this.Expiringpro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Expiringpro.Location = new System.Drawing.Point(877, 97);
-            this.Expiringpro.Name = "Expiringpro";
-            this.Expiringpro.Size = new System.Drawing.Size(21, 20);
-            this.Expiringpro.TabIndex = 255;
-            // 
             // label63
             // 
-            this.label63.Location = new System.Drawing.Point(826, 75);
+            this.label63.Location = new System.Drawing.Point(809, 75);
             this.label63.Name = "label63";
             this.label63.Size = new System.Drawing.Size(51, 13);
             this.label63.TabIndex = 261;
@@ -813,36 +845,16 @@
             // label64
             // 
             this.label64.AutoSize = true;
-            this.label64.Location = new System.Drawing.Point(775, 74);
+            this.label64.Location = new System.Drawing.Point(760, 74);
             this.label64.Name = "label64";
             this.label64.Size = new System.Drawing.Size(24, 13);
             this.label64.TabIndex = 262;
             this.label64.Text = "Lith";
             this.label64.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // Environment
-            // 
-            this.Environment.Enabled = false;
-            this.Environment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Environment.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.Environment.Location = new System.Drawing.Point(746, 72);
-            this.Environment.Name = "Environment";
-            this.Environment.Size = new System.Drawing.Size(21, 20);
-            this.Environment.TabIndex = 269;
-            // 
-            // DiscCharge
-            // 
-            this.DiscCharge.Enabled = false;
-            this.DiscCharge.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.DiscCharge.Location = new System.Drawing.Point(798, 96);
-            this.DiscCharge.Name = "DiscCharge";
-            this.DiscCharge.Size = new System.Drawing.Size(21, 20);
-            this.DiscCharge.TabIndex = 257;
-            this.DiscCharge.TextChanged += new System.EventHandler(this.DiscCharge_TextChanged);
-            // 
             // label53
             // 
-            this.label53.Location = new System.Drawing.Point(718, 75);
+            this.label53.Location = new System.Drawing.Point(713, 75);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(28, 13);
             this.label53.TabIndex = 268;
@@ -866,15 +878,6 @@
             this.label43.Size = new System.Drawing.Size(51, 13);
             this.label43.TabIndex = 248;
             this.label43.Text = "Low Disc";
-            // 
-            // HazardousInd
-            // 
-            this.HazardousInd.Enabled = false;
-            this.HazardousInd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.HazardousInd.Location = new System.Drawing.Point(694, 72);
-            this.HazardousInd.Name = "HazardousInd";
-            this.HazardousInd.Size = new System.Drawing.Size(21, 20);
-            this.HazardousInd.TabIndex = 263;
             // 
             // label44
             // 
@@ -1028,7 +1031,7 @@
             this.RunOn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.RunOn.Location = new System.Drawing.Point(798, 47);
             this.RunOn.Name = "RunOn";
-            this.RunOn.Size = new System.Drawing.Size(89, 20);
+            this.RunOn.Size = new System.Drawing.Size(85, 20);
             this.RunOn.TabIndex = 273;
             // 
             // label54
@@ -1061,14 +1064,14 @@
             // 
             this.OnSubstitutedBy.Enabled = false;
             this.OnSubstitutedBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.OnSubstitutedBy.Location = new System.Drawing.Point(799, 20);
+            this.OnSubstitutedBy.Location = new System.Drawing.Point(798, 18);
             this.OnSubstitutedBy.Name = "OnSubstitutedBy";
-            this.OnSubstitutedBy.Size = new System.Drawing.Size(89, 20);
+            this.OnSubstitutedBy.Size = new System.Drawing.Size(85, 20);
             this.OnSubstitutedBy.TabIndex = 274;
             // 
             // label60
             // 
-            this.label60.Location = new System.Drawing.Point(763, 19);
+            this.label60.Location = new System.Drawing.Point(754, 19);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(39, 29);
             this.label60.TabIndex = 267;
@@ -1212,15 +1215,6 @@
             this.MPN.Name = "MPN";
             this.MPN.Size = new System.Drawing.Size(89, 20);
             this.MPN.TabIndex = 270;
-            // 
-            // Manufacturer
-            // 
-            this.Manufacturer.Enabled = false;
-            this.Manufacturer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Manufacturer.Location = new System.Drawing.Point(680, 19);
-            this.Manufacturer.Name = "Manufacturer";
-            this.Manufacturer.Size = new System.Drawing.Size(89, 20);
-            this.Manufacturer.TabIndex = 277;
             // 
             // label27
             // 
@@ -1524,6 +1518,52 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Landing Cost";
             // 
+            // dataGridView3
+            // 
+            this.dataGridView3.AllowUserToOrderColumns = true;
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgNo,
+            this.dgSupplier,
+            this.dgProductCode,
+            this.dgMPN,
+            this.dgDesc});
+            this.dataGridView3.Location = new System.Drawing.Point(3, 9);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.Size = new System.Drawing.Size(1340, 229);
+            this.dataGridView3.TabIndex = 9;
+            this.dataGridView3.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellEndEdit);
+            this.dataGridView3.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellLeave);
+            this.dataGridView3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView3_KeyDown);
+            // 
+            // dgNo
+            // 
+            this.dgNo.HeaderText = "No";
+            this.dgNo.Name = "dgNo";
+            this.dgNo.ReadOnly = true;
+            // 
+            // dgSupplier
+            // 
+            this.dgSupplier.HeaderText = "Supplier";
+            this.dgSupplier.Name = "dgSupplier";
+            // 
+            // dgProductCode
+            // 
+            this.dgProductCode.HeaderText = "Product Code";
+            this.dgProductCode.Name = "dgProductCode";
+            // 
+            // dgMPN
+            // 
+            this.dgMPN.HeaderText = "MPN";
+            this.dgMPN.Name = "dgMPN";
+            this.dgMPN.ReadOnly = true;
+            // 
+            // dgDesc
+            // 
+            this.dgDesc.HeaderText = "Description";
+            this.dgDesc.Name = "dgDesc";
+            this.dgDesc.ReadOnly = true;
+            // 
             // QuotationAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1558,7 +1598,6 @@
             this.groupBox3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox7.ResumeLayout(false);
@@ -1573,6 +1612,7 @@
             this.groupBox11.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1592,7 +1632,6 @@
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.GroupBox groupBox7;
@@ -1715,6 +1754,12 @@
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.TextBox textBox18;
         private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgSupplier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgProductCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgMPN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgDesc;
     }
 }
 

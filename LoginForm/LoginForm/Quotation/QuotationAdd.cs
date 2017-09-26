@@ -122,5 +122,26 @@ namespace LoginForm
         {
 
         }
+
+        private void dataGridView3_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void dataGridView3_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            
+               
+        }
+
+        private void dataGridView3_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            if (dataGridView3.CurrentCell.ColumnIndex == 2)
+            {
+                //MessageBox.Show(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells[dataGridView3.CurrentCell.ColumnIndex].Value.ToString());
+                string searchProductCode = dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells[dataGridView3.CurrentCell.ColumnIndex].Value.ToString();
+            }
+        }
     }
 }
