@@ -18,7 +18,6 @@ namespace LoginForm.DataSet
         public SupplierBank()
         {
             this.Suppliers = new HashSet<Supplier>();
-            this.SupplierWorkers = new HashSet<SupplierWorker>();
         }
     
         public int ID { get; set; }
@@ -26,7 +25,5 @@ namespace LoginForm.DataSet
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Supplier> Suppliers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SupplierWorker> SupplierWorkers { get; set; }
     }
 }

@@ -493,7 +493,6 @@
           <Property Name="supplierID" Type="nvarchar" MaxLength="15" />
           <Property Name="supplierNoteID" Type="int" />
           <Property Name="languageID" Type="int" />
-          <Property Name="bankID" Type="int" />
           <Property Name="categoryID" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -1018,18 +1017,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SupplierW__bankI__7849DB76">
-          <End Role="SupplierBank" Type="Self.SupplierBank" Multiplicity="0..1" />
-          <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SupplierBank">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="SupplierWorker">
-              <PropertyRef Name="bankID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__SupplierW__categ__793DFFAF">
           <End Role="SupplierCategory" Type="Self.SupplierCategory" Multiplicity="0..1" />
           <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="*" />
@@ -1364,10 +1351,6 @@
             <End Role="SupplierDepartment" EntitySet="SupplierDepartment" />
             <End Role="SupplierTitle" EntitySet="SupplierTitle" />
           </AssociationSet>
-          <AssociationSet Name="FK__SupplierW__bankI__7849DB76" Association="Self.FK__SupplierW__bankI__7849DB76">
-            <End Role="SupplierBank" EntitySet="SupplierBank" />
-            <End Role="SupplierWorker" EntitySet="SupplierWorker" />
-          </AssociationSet>
           <AssociationSet Name="FK__SupplierW__categ__793DFFAF" Association="Self.FK__SupplierW__categ__793DFFAF">
             <End Role="SupplierCategory" EntitySet="SupplierCategory" />
             <End Role="SupplierWorker" EntitySet="SupplierWorker" />
@@ -1620,10 +1603,6 @@
           </AssociationSet>
           <AssociationSet Name="FK__SupplierW__suppl__756D6ECB" Association="IMEModel.FK__SupplierW__suppl__756D6ECB">
             <End Role="SupplierAdress" EntitySet="SupplierAdresses" />
-            <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierW__bankI__7849DB76" Association="IMEModel.FK__SupplierW__bankI__7849DB76">
-            <End Role="SupplierBank" EntitySet="SupplierBanks" />
             <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
           </AssociationSet>
           <AssociationSet Name="FK__SupplierC__categ__0697FACD" Association="IMEModel.FK__SupplierC__categ__0697FACD">
@@ -2156,7 +2135,6 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="bankname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__BankID__0C50D423" FromRole="SupplierBank" ToRole="Supplier" />
-          <NavigationProperty Name="SupplierWorkers" Relationship="IMEModel.FK__SupplierW__bankI__7849DB76" FromRole="SupplierBank" ToRole="SupplierWorker" />
         </EntityType>
         <EntityType Name="SupplierCategory">
           <Key>
@@ -2235,13 +2213,11 @@
           <Property Name="supplierID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="supplierNoteID" Type="Int32" />
           <Property Name="languageID" Type="Int32" />
-          <Property Name="bankID" Type="Int32" />
           <Property Name="categoryID" Type="Int32" />
           <NavigationProperty Name="Language" Relationship="IMEModel.FK__SupplierW__langu__72910220" FromRole="SupplierWorker" ToRole="Language" />
           <NavigationProperty Name="Note" Relationship="IMEModel.FK__SupplierW__suppl__73852659" FromRole="SupplierWorker" ToRole="Note" />
           <NavigationProperty Name="Supplier" Relationship="IMEModel.FK__SupplierW__suppl__74794A92" FromRole="SupplierWorker" ToRole="Supplier" />
           <NavigationProperty Name="SupplierAdress" Relationship="IMEModel.FK__SupplierW__suppl__756D6ECB" FromRole="SupplierWorker" ToRole="SupplierAdress" />
-          <NavigationProperty Name="SupplierBank" Relationship="IMEModel.FK__SupplierW__bankI__7849DB76" FromRole="SupplierWorker" ToRole="SupplierBank" />
           <NavigationProperty Name="SupplierCategory" Relationship="IMEModel.FK__SupplierW__categ__793DFFAF" FromRole="SupplierWorker" ToRole="SupplierCategory" />
           <NavigationProperty Name="SupplierDepartment" Relationship="IMEModel.FK__SupplierW__depar__76619304" FromRole="SupplierWorker" ToRole="SupplierDepartment" />
           <NavigationProperty Name="SupplierMainContacts" Relationship="IMEModel.FK__SupplierM__suppl__00DF2177" FromRole="SupplierWorker" ToRole="SupplierMainContact" />
@@ -2779,18 +2755,6 @@
             </Principal>
             <Dependent Role="SupplierWorker">
               <PropertyRef Name="supplieradressID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SupplierW__bankI__7849DB76">
-          <End Type="IMEModel.SupplierBank" Role="SupplierBank" Multiplicity="0..1" />
-          <End Type="IMEModel.SupplierWorker" Role="SupplierWorker" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SupplierBank">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="SupplierWorker">
-              <PropertyRef Name="bankID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3412,7 +3376,6 @@
             <EntityTypeMapping TypeName="IMEModel.SupplierWorker">
               <MappingFragment StoreEntitySet="SupplierWorker">
                 <ScalarProperty Name="categoryID" ColumnName="categoryID" />
-                <ScalarProperty Name="bankID" ColumnName="bankID" />
                 <ScalarProperty Name="languageID" ColumnName="languageID" />
                 <ScalarProperty Name="supplierNoteID" ColumnName="supplierNoteID" />
                 <ScalarProperty Name="supplierID" ColumnName="supplierID" />
