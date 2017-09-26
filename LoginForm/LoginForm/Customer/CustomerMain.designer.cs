@@ -218,6 +218,7 @@
             // 
             // Represantative2
             // 
+            this.Represantative2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Represantative2.Enabled = false;
             this.Represantative2.FormattingEnabled = true;
             this.Represantative2.Location = new System.Drawing.Point(109, 225);
@@ -227,6 +228,7 @@
             // 
             // Represantative1
             // 
+            this.Represantative1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Represantative1.Enabled = false;
             this.Represantative1.FormattingEnabled = true;
             this.Represantative1.Location = new System.Drawing.Point(107, 186);
@@ -244,6 +246,7 @@
             // 
             // SubCategory
             // 
+            this.SubCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SubCategory.Enabled = false;
             this.SubCategory.FormattingEnabled = true;
             this.SubCategory.Location = new System.Drawing.Point(109, 150);
@@ -269,6 +272,7 @@
             // 
             // Capital
             // 
+            this.Capital.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Capital.Enabled = false;
             this.Capital.FormattingEnabled = true;
             this.Capital.Location = new System.Drawing.Point(454, 51);
@@ -279,6 +283,7 @@
             // 
             // MainCategory
             // 
+            this.MainCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MainCategory.Enabled = false;
             this.MainCategory.FormattingEnabled = true;
             this.MainCategory.Location = new System.Drawing.Point(107, 103);
@@ -451,6 +456,7 @@
             // 
             // InvCurrency
             // 
+            this.InvCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.InvCurrency.Enabled = false;
             this.InvCurrency.FormattingEnabled = true;
             this.InvCurrency.Location = new System.Drawing.Point(432, 129);
@@ -460,6 +466,7 @@
             // 
             // factor
             // 
+            this.factor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.factor.Enabled = false;
             this.factor.FormattingEnabled = true;
             this.factor.Location = new System.Drawing.Point(430, 22);
@@ -469,6 +476,7 @@
             // 
             // QuoCurrency
             // 
+            this.QuoCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.QuoCurrency.Enabled = false;
             this.QuoCurrency.FormattingEnabled = true;
             this.QuoCurrency.Location = new System.Drawing.Point(432, 89);
@@ -478,6 +486,7 @@
             // 
             // DiscountRate
             // 
+            this.DiscountRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DiscountRate.Enabled = false;
             this.DiscountRate.FormattingEnabled = true;
             this.DiscountRate.Location = new System.Drawing.Point(108, 203);
@@ -496,6 +505,7 @@
             // 
             // PaymentMethod
             // 
+            this.PaymentMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PaymentMethod.Enabled = false;
             this.PaymentMethod.FormattingEnabled = true;
             this.PaymentMethod.Location = new System.Drawing.Point(108, 162);
@@ -514,6 +524,7 @@
             // 
             // TermsofPayments
             // 
+            this.TermsofPayments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TermsofPayments.Enabled = false;
             this.TermsofPayments.FormattingEnabled = true;
             this.TermsofPayments.Location = new System.Drawing.Point(108, 126);
@@ -532,6 +543,7 @@
             // 
             // AccountRepresentary
             // 
+            this.AccountRepresentary.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AccountRepresentary.Enabled = false;
             this.AccountRepresentary.FormattingEnabled = true;
             this.AccountRepresentary.Location = new System.Drawing.Point(108, 22);
@@ -702,6 +714,7 @@
             // 
             // AddressType
             // 
+            this.AddressType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AddressType.Enabled = false;
             this.AddressType.FormattingEnabled = true;
             this.AddressType.Location = new System.Drawing.Point(108, 53);
@@ -780,6 +793,7 @@
             // 
             // cbTown
             // 
+            this.cbTown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTown.Enabled = false;
             this.cbTown.FormattingEnabled = true;
             this.cbTown.Location = new System.Drawing.Point(108, 172);
@@ -789,6 +803,7 @@
             // 
             // cbCity
             // 
+            this.cbCity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCity.Enabled = false;
             this.cbCity.FormattingEnabled = true;
             this.cbCity.Location = new System.Drawing.Point(108, 133);
@@ -799,6 +814,7 @@
             // 
             // cbCountry
             // 
+            this.cbCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCountry.Enabled = false;
             this.cbCountry.FormattingEnabled = true;
             this.cbCountry.Location = new System.Drawing.Point(108, 95);
@@ -1002,6 +1018,7 @@
             // 
             // CommunicationLanguage
             // 
+            this.CommunicationLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CommunicationLanguage.Enabled = false;
             this.CommunicationLanguage.FormattingEnabled = true;
             this.CommunicationLanguage.Location = new System.Drawing.Point(382, 93);
@@ -1011,6 +1028,7 @@
             // 
             // ContactType
             // 
+            this.ContactType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ContactType.Enabled = false;
             this.ContactType.FormattingEnabled = true;
             this.ContactType.Location = new System.Drawing.Point(98, 23);
@@ -1020,6 +1038,7 @@
             // 
             // cbMainContact
             // 
+            this.cbMainContact.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMainContact.Enabled = false;
             this.cbMainContact.FormattingEnabled = true;
             this.cbMainContact.Location = new System.Drawing.Point(98, 223);
@@ -1029,6 +1048,7 @@
             // 
             // ContactTitle
             // 
+            this.ContactTitle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ContactTitle.Enabled = false;
             this.ContactTitle.FormattingEnabled = true;
             this.ContactTitle.Location = new System.Drawing.Point(98, 92);
@@ -1046,6 +1066,7 @@
             // 
             // ContactDepartment
             // 
+            this.ContactDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ContactDepartment.Enabled = false;
             this.ContactDepartment.FormattingEnabled = true;
             this.ContactDepartment.Location = new System.Drawing.Point(98, 58);

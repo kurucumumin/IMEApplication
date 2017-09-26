@@ -33,6 +33,7 @@ namespace LoginForm
 
         private void CustomerMain_Load(object sender, EventArgs e)
         {
+           
             #region ComboboxFiller
             ContactDepartment.DataSource = IME.CustomerDepartments.ToList();
             ContactDepartment.DisplayMember = "departmentname";
@@ -64,7 +65,7 @@ namespace LoginForm
             cbCountry.DisplayMember = "Country_name";
             
             #endregion
-            //customersearch();
+            customersearch();
         }
         private void CustomerDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -204,8 +205,10 @@ namespace LoginForm
                 btnContactDelete.Enabled = true;
                 btnContactUpdate.Enabled = true;
             }
-            
 
+            btnContactAdd.Enabled = false;
+            btnContactDelete.Enabled = false;
+            btnContactUpdate.Enabled = false;
             btnCreate.Enabled = true;
             btnUpdate.Enabled = true;
             
@@ -233,6 +236,13 @@ namespace LoginForm
             ContactName.Enabled = true;
             ContactEmail.Enabled = true;
             ContactPhone.Enabled = true;
+            btnContactAdd.Enabled = true;
+            if (ContactList.Items.Count>0)
+            {
+                btnContactDelete.Enabled = true;
+                btnContactUpdate.Enabled = true;
+            }
+            
             ContactMobilePhone.Enabled = true;
             ContactFAX.Enabled = true;
             CommunicationLanguage.Enabled = true;
@@ -286,7 +296,10 @@ namespace LoginForm
         private void AdressTabEnableTrue()
         {
             #region contactTabEnableTrue
-            AddressType.Enabled = true;
+            if (checkBox1.Checked == false)
+            {
+                AddressType.Enabled = true;
+            }
             cbCountry.Enabled = true;
             cbCity.Enabled = true;
             cbTown.Enabled = true;
@@ -363,57 +376,60 @@ namespace LoginForm
                                        MainContact=mc.cw_name
                                    }).ToList();
             #endregion
-
-            #region FillInfos
             CustomerDataGrid.DataSource = customerAdapter;
-            CustomerDataGrid.CurrentCell = CustomerDataGrid.Rows[gridselectedindex].Cells[0];
-            CustomerCode.Text = customerAdapter[gridselectedindex].ID;
-            AdressList.DataSource = IME.CustomerAdresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
-            AdressList.DisplayMember = "AdressDetails";
-            CustomerName.Text = customerAdapter[gridselectedindex].c_name;
-            factor.SelectedIndex = factor.FindStringExact(customerAdapter[gridselectedindex].currency.ToString());
-            Telephone.Text = customerAdapter[gridselectedindex].telephone.ToString();
-            ContactFAX.Text = customerAdapter[gridselectedindex].fax.ToString();
-            WebAdress.Text = customerAdapter[gridselectedindex].webadress;
-
-            AddressType.DataSource = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text).ToList();
-            AddressType.DisplayMember = "cw_name";
-
-            Represantative2.Text = customerAdapter[gridselectedindex].Representative2;
-            Represantative1.SelectedIndex = Represantative1.FindStringExact(customerAdapter[gridselectedindex].FirstName);
-            ContactTitle.SelectedIndex = ContactTitle.FindStringExact(customerAdapter[gridselectedindex].titlename);
-            ContactDepartment.SelectedIndex = ContactDepartment.FindStringExact(customerAdapter[gridselectedindex].titlename);
-            MainCategory.SelectedIndex = MainCategory.FindStringExact(customerAdapter[gridselectedindex].categoryname);
-            SubCategory.SelectedIndex = SubCategory.FindStringExact(customerAdapter[gridselectedindex].subcategoryname);
-            TermsofPayments.SelectedIndex = TermsofPayments.FindStringExact(customerAdapter[gridselectedindex].term_name);
-            ContactName.Text = customerAdapter[gridselectedindex].cw_name;
-            ContactEmail.Text = customerAdapter[gridselectedindex].cw_email;
-            CompanyNotes.Text = customerAdapter[gridselectedindex].CustomerNote;
-            ContactNotes.Text = customerAdapter[gridselectedindex].CustomerWorkerNote;
-            AccountRepresentary.Text = customerAdapter[gridselectedindex].AccountRepresentative;
-            CommunicationLanguage.Text = customerAdapter[gridselectedindex].languagename;
-            if (customerAdapter[gridselectedindex].isactive == 1) { rb_active.Checked = true; } else { rb_passive.Checked = true; }
-            ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
-            ContactList.DisplayMember = "cw_name";
-            cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
-            cbMainContact.DisplayMember = "cw_name";
-            cbMainContact.SelectedItem = cbMainContact.FindStringExact(customerAdapter[gridselectedindex].cw_name);
-            if (customerAdapter[gridselectedindex].AddressContact == null)
-            { AddressType.SelectedItem=null;checkBox1.Checked = true; }
-            else
+            if (customerAdapter.Count>0)
             {
-                AddressType.SelectedIndex = AddressType.FindStringExact(customerAdapter[gridselectedindex].AddressContact);
-            }
-            PostCode.Text = customerAdapter[gridselectedindex].PostCode;
-            cbCountry.SelectedIndex = cbCountry.FindStringExact(customerAdapter[gridselectedindex].AdressCountry);
-            cbCity.SelectedIndex = cbCity.FindStringExact(customerAdapter[gridselectedindex].AddressCity);
-            if (customerAdapter[gridselectedindex].isDeliveryAdress == 1) { DeliveryAddressOk.Checked = true; } else { DeliveryAddressOk.Checked = false; }
-            if (customerAdapter[gridselectedindex].isInvoiceAdress == 1) { InvoiceAdressOk.Checked = true; } else { InvoiceAdressOk.Checked = false; }
-            cbTown.SelectedIndex = cbTown.FindStringExact(customerAdapter[gridselectedindex].Town_name);
-            AddressDetails.Text = customerAdapter[gridselectedindex].AdressDetails;
-            #endregion
-            
+                #region FillInfos
+                CustomerDataGrid.CurrentCell = CustomerDataGrid.Rows[gridselectedindex].Cells[0];
+                CustomerCode.Text = customerAdapter[gridselectedindex].ID;
 
+                AdressList.DataSource = IME.CustomerAdresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
+                AdressList.DisplayMember = "AdressDetails";
+                IME.SaveChanges();
+                CustomerName.Text = customerAdapter[gridselectedindex].c_name;
+                factor.SelectedIndex = factor.FindStringExact(customerAdapter[gridselectedindex].currency.ToString());
+                Telephone.Text = customerAdapter[gridselectedindex].telephone.ToString();
+                ContactFAX.Text = customerAdapter[gridselectedindex].fax.ToString();
+                WebAdress.Text = customerAdapter[gridselectedindex].webadress;
+
+                AddressType.DataSource = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text).ToList();
+                AddressType.DisplayMember = "cw_name";
+                Represantative2.Text = customerAdapter[gridselectedindex].Representative2;
+                Represantative1.SelectedIndex = Represantative1.FindStringExact(customerAdapter[gridselectedindex].FirstName);
+                ContactTitle.SelectedIndex = ContactTitle.FindStringExact(customerAdapter[gridselectedindex].titlename);
+                ContactDepartment.SelectedIndex = ContactDepartment.FindStringExact(customerAdapter[gridselectedindex].titlename);
+                MainCategory.SelectedIndex = MainCategory.FindStringExact(customerAdapter[gridselectedindex].categoryname);
+                SubCategory.SelectedIndex = SubCategory.FindStringExact(customerAdapter[gridselectedindex].subcategoryname);
+                TermsofPayments.SelectedIndex = TermsofPayments.FindStringExact(customerAdapter[gridselectedindex].term_name);
+                ContactName.Text = customerAdapter[gridselectedindex].cw_name;
+                ContactEmail.Text = customerAdapter[gridselectedindex].cw_email;
+                CompanyNotes.Text = customerAdapter[gridselectedindex].CustomerNote;
+                ContactNotes.Text = customerAdapter[gridselectedindex].CustomerWorkerNote;
+                AccountRepresentary.Text = customerAdapter[gridselectedindex].AccountRepresentative;
+                CommunicationLanguage.Text = customerAdapter[gridselectedindex].languagename;
+                if (customerAdapter[gridselectedindex].isactive == 1) { rb_active.Checked = true; } else { rb_passive.Checked = true; }
+
+                ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
+                ContactList.DisplayMember = "cw_name";
+                cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
+                cbMainContact.DisplayMember = "cw_name";
+                cbMainContact.SelectedItem = cbMainContact.FindStringExact(customerAdapter[gridselectedindex].cw_name);
+                if (customerAdapter[gridselectedindex].AddressContact == null)
+                { AddressType.SelectedItem = null; checkBox1.Checked = true; }
+                else
+                {
+                    AddressType.SelectedIndex = AddressType.FindStringExact(customerAdapter[gridselectedindex].AddressContact);
+                }
+                PostCode.Text = customerAdapter[gridselectedindex].PostCode;
+                cbCountry.SelectedIndex = cbCountry.FindStringExact(customerAdapter[gridselectedindex].AdressCountry);
+                cbCity.SelectedIndex = cbCity.FindStringExact(customerAdapter[gridselectedindex].AddressCity);
+                if (customerAdapter[gridselectedindex].isDeliveryAdress == 1) { DeliveryAddressOk.Checked = true; } else { DeliveryAddressOk.Checked = false; }
+                if (customerAdapter[gridselectedindex].isInvoiceAdress == 1) { InvoiceAdressOk.Checked = true; } else { InvoiceAdressOk.Checked = false; }
+                cbTown.SelectedIndex = cbTown.FindStringExact(customerAdapter[gridselectedindex].Town_name);
+                AddressDetails.Text = customerAdapter[gridselectedindex].AdressDetails;
+                #endregion
+            }
+            else { itemsClear(); }
         }
 
         //CONTACT ADD NEW
@@ -598,10 +614,11 @@ namespace LoginForm
             
             if (btnCreate.Text == "CREATE")
             {
+                
                 itemsEnableTrue();
                 itemsClear();
                 //for new customerCode
-                var custmrcode = IME.Customers.OrderByDescending(a => a.ID).FirstOrDefault().ID;
+                string custmrcode = IME.Customers.OrderByDescending(a => a.ID).FirstOrDefault().ID;
                 string custmrnumbers = string.Empty;
                 string newcustomercodenumbers="";
                 string newcustomercodezeros = "";
@@ -626,13 +643,16 @@ namespace LoginForm
                 //              
                 ContactList.DataSource = null;
                 CustomerCode.Text = custmrcode;
-                Customer c = new Customer();
-                c.ID = CustomerCode.Text;
-                IME.Customers.Add(c);
+                Customer newCustomer = new Customer();
+                newCustomer.ID = CustomerCode.Text;
+                IME.Customers.Add(newCustomer);
                 IME.SaveChanges();                
                 btnCreate.Text = "DONE";
                 btnUpdate.Text = "CANCEL";
-                
+                AdressList.Enabled = false;
+                AdressList.DataSource = null;
+                AdressAdd.Enabled = true;
+                btnContactAdd.Enabled = true;
             }
             else
             {
@@ -703,7 +723,18 @@ namespace LoginForm
             if (btnUpdate.Text == "UPDATE")
             {
                 itemsEnableTrue();
-                contactTabEnableTrue();
+                btnContactAdd.Enabled = true;
+                if (ContactList.DataSource != null)
+                {
+                    btnContactDelete.Enabled = true;
+                    btnContactUpdate.Enabled = true;
+                }
+                AdressAdd.Enabled = true;
+                if (AdressList.DataSource != null)
+                {
+                    AddressDel.Enabled = true;
+                    AddressUpd.Enabled = true;
+                }
                 btnUpdate.Text = "CANCEL";
                 btnCreate.Text = "DONE";
             }
@@ -712,7 +743,9 @@ namespace LoginForm
                 btnUpdate.Text = "UPDATE";
                 btnCreate.Text = "CREATE";
                 itemsEnableFalse();
-                contactTabEnableFalse();
+                btnContactAdd.Enabled = false;
+                btnContactDelete.Enabled = false;
+                btnContactUpdate.Enabled = false;
                 var customer = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
                 if (customer.c_name == null)
                 {
@@ -725,8 +758,12 @@ namespace LoginForm
                         IME.SaveChanges();
                     }
                     //üstteki işlem adresses için de yapılmalı
+
                     //
 
+                    //contact için de yapılmalı
+
+                    //
                     Customer c = new Customer();
                     c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
                     IME.Customers.Remove(c);
@@ -735,7 +772,6 @@ namespace LoginForm
                 CustomerDataGrid.Enabled = true;
                 gridselectedindex = CustomerDataGrid.CurrentCell.RowIndex;
                 customersearch();
-
             }
         }
 
@@ -776,6 +812,8 @@ namespace LoginForm
             factor.Text = "";
             Capital.Text = "";
             ContactEmail.Text = "";
+            AdressList.DataSource = null;
+            ContactList.DataSource = null;
             #endregion
 
         }
@@ -818,8 +856,8 @@ namespace LoginForm
             rb_active.Enabled = false;
             factor.Enabled = false;
             Capital.Enabled = false;
-            btnCreate.Enabled = false;
-            btnUpdate.Enabled = false;
+            btnCreate.Enabled = true;
+            btnUpdate.Enabled = true;
             btnContactDone.Enabled = false;
             btnContactCancel.Enabled = false;
             CustomerDataGrid.Enabled = true;
@@ -1029,7 +1067,6 @@ namespace LoginForm
             AddressUpd.Visible = true;
             AdressCancel.Visible = false;
             AdressDone.Visible = false;
-            gridselectedindex = CustomerDataGrid.CurrentCell.RowIndex;
             customersearch();
         }
 
@@ -1064,8 +1101,7 @@ namespace LoginForm
                 if (ContactListItem.AdressID != cw_ID)
                 {
                     ContactListItem.AdressID = cw_ID;
-                    //string contactname = ((CustomerWorker)((ListBox)sender).SelectedItem).cw_name;
-                    //ContactListItem.contactName = contactname;
+                    
                     var contact1 = IME.CustomerAdresses.Where(cw => cw.ID == cw_ID).ToList();
                     foreach (var a in contact1)
                     {
@@ -1073,8 +1109,8 @@ namespace LoginForm
                         if (a.isInvoiceAdress == 1) { InvoiceAdressOk.Checked = true; } else { InvoiceAdressOk.Checked = false; }
 
                         cbCountry.SelectedItem = a.Country;
-                        ((City)(cbCity).SelectedItem).ID = (int)a.CityID;
-                        cbTown.SelectedItem = a.Town;
+                        cbCity.SelectedIndex = cbCity.FindStringExact(a.City.City_name);
+                        cbTown.SelectedIndex = cbTown.FindStringExact(a.Town.Town_name);
                         PostCode.Text = a.PostCode;
                         AddressDetails.Text = a.AdressDetails;
                     }
@@ -1083,6 +1119,7 @@ namespace LoginForm
             catch { }
             #endregion
 
+           
         }
 
         private void CustomerDataGrid_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
