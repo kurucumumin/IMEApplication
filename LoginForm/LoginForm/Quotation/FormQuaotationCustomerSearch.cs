@@ -102,5 +102,14 @@ namespace LoginForm.Quotation
         {
             if (CustomerCode.Text != "") { CustomerCode.Text = ""; }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CustomerMain form = new CustomerMain(true, "newCustomerDevelopers");
+            form.ShowDialog();
+            this.Show();
+            List<Customer> c = classQuotationAdd.CustomerSearch();
+            CustomerSearchGrid.DataSource = c;
+        }
     }
 }

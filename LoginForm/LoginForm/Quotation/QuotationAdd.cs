@@ -19,11 +19,6 @@ namespace LoginForm
             InitializeComponent();
         }
 
-        private void label16_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void label38_Click(object sender, EventArgs e)
         {
 
@@ -116,6 +111,16 @@ namespace LoginForm
                 f.Show();
                 this.Close();
             }
+        }
+
+        private void label37_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DiscCharge_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

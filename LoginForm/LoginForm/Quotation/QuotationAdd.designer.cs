@@ -71,7 +71,70 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.LicensedInd = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.LicenceType = new System.Windows.Forms.TextBox();
+            this.BHCFlag = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.Shipping = new System.Windows.Forms.TextBox();
+            this.ObsoluteFlag = new System.Windows.Forms.TextBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.CalibrationInd = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.Lithium = new System.Windows.Forms.TextBox();
+            this.Expiringpro = new System.Windows.Forms.TextBox();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label64 = new System.Windows.Forms.Label();
+            this.Environment = new System.Windows.Forms.TextBox();
+            this.DiscCharge = new System.Windows.Forms.TextBox();
+            this.label53 = new System.Windows.Forms.Label();
+            this.LowDiscontInd = new System.Windows.Forms.TextBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.HazardousInd = new System.Windows.Forms.TextBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.OnhandStockBalance = new System.Windows.Forms.TextBox();
+            this.Referral = new System.Windows.Forms.TextBox();
+            this.QuantityonOrder = new System.Windows.Forms.TextBox();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.grossWeight = new System.Windows.Forms.TextBox();
+            this.label56 = new System.Windows.Forms.Label();
+            this.StandartWeight = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label58 = new System.Windows.Forms.Label();
+            this.RunOn = new System.Windows.Forms.TextBox();
+            this.label54 = new System.Windows.Forms.Label();
+            this.CofO = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.OnSubstitutedBy = new System.Windows.Forms.TextBox();
+            this.label60 = new System.Windows.Forms.Label();
+            this.ArticleNo = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.ArticleDesc = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.UnitMeasure = new System.Windows.Forms.TextBox();
+            this.label52 = new System.Windows.Forms.Label();
+            this.MHCodeLevel1 = new System.Windows.Forms.TextBox();
+            this.UnitContent = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.CCCNNo = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.PackQuan = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.MPN = new System.Windows.Forms.TextBox();
+            this.Manufacturer = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -108,7 +171,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox7.SuspendLayout();
             this.groupBox9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -526,25 +588,657 @@
             // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.dataGridView3);
-            this.groupBox9.Location = new System.Drawing.Point(469, 12);
+            this.groupBox9.Controls.Add(this.Manufacturer);
+            this.groupBox9.Controls.Add(this.textBox18);
+            this.groupBox9.Controls.Add(this.LicensedInd);
+            this.groupBox9.Controls.Add(this.label31);
+            this.groupBox9.Controls.Add(this.LicenceType);
+            this.groupBox9.Controls.Add(this.BHCFlag);
+            this.groupBox9.Controls.Add(this.label33);
+            this.groupBox9.Controls.Add(this.label32);
+            this.groupBox9.Controls.Add(this.Shipping);
+            this.groupBox9.Controls.Add(this.ObsoluteFlag);
+            this.groupBox9.Controls.Add(this.label55);
+            this.groupBox9.Controls.Add(this.CalibrationInd);
+            this.groupBox9.Controls.Add(this.label29);
+            this.groupBox9.Controls.Add(this.label37);
+            this.groupBox9.Controls.Add(this.label38);
+            this.groupBox9.Controls.Add(this.Lithium);
+            this.groupBox9.Controls.Add(this.Expiringpro);
+            this.groupBox9.Controls.Add(this.label63);
+            this.groupBox9.Controls.Add(this.label64);
+            this.groupBox9.Controls.Add(this.Environment);
+            this.groupBox9.Controls.Add(this.DiscCharge);
+            this.groupBox9.Controls.Add(this.label53);
+            this.groupBox9.Controls.Add(this.LowDiscontInd);
+            this.groupBox9.Controls.Add(this.label43);
+            this.groupBox9.Controls.Add(this.HazardousInd);
+            this.groupBox9.Controls.Add(this.label44);
+            this.groupBox9.Controls.Add(this.label28);
+            this.groupBox9.Controls.Add(this.textBox14);
+            this.groupBox9.Controls.Add(this.textBox17);
+            this.groupBox9.Controls.Add(this.label22);
+            this.groupBox9.Controls.Add(this.OnhandStockBalance);
+            this.groupBox9.Controls.Add(this.Referral);
+            this.groupBox9.Controls.Add(this.QuantityonOrder);
+            this.groupBox9.Controls.Add(this.label59);
+            this.groupBox9.Controls.Add(this.label26);
+            this.groupBox9.Controls.Add(this.label25);
+            this.groupBox9.Controls.Add(this.grossWeight);
+            this.groupBox9.Controls.Add(this.label56);
+            this.groupBox9.Controls.Add(this.StandartWeight);
+            this.groupBox9.Controls.Add(this.label23);
+            this.groupBox9.Controls.Add(this.label58);
+            this.groupBox9.Controls.Add(this.RunOn);
+            this.groupBox9.Controls.Add(this.label54);
+            this.groupBox9.Controls.Add(this.CofO);
+            this.groupBox9.Controls.Add(this.label20);
+            this.groupBox9.Controls.Add(this.OnSubstitutedBy);
+            this.groupBox9.Controls.Add(this.label60);
+            this.groupBox9.Controls.Add(this.ArticleNo);
+            this.groupBox9.Controls.Add(this.label19);
+            this.groupBox9.Controls.Add(this.ArticleDesc);
+            this.groupBox9.Controls.Add(this.label11);
+            this.groupBox9.Controls.Add(this.UnitMeasure);
+            this.groupBox9.Controls.Add(this.label52);
+            this.groupBox9.Controls.Add(this.MHCodeLevel1);
+            this.groupBox9.Controls.Add(this.UnitContent);
+            this.groupBox9.Controls.Add(this.label14);
+            this.groupBox9.Controls.Add(this.label12);
+            this.groupBox9.Controls.Add(this.CCCNNo);
+            this.groupBox9.Controls.Add(this.label13);
+            this.groupBox9.Controls.Add(this.PackQuan);
+            this.groupBox9.Controls.Add(this.label18);
+            this.groupBox9.Controls.Add(this.MPN);
+            this.groupBox9.Controls.Add(this.label27);
+            this.groupBox9.Controls.Add(this.label24);
+            this.groupBox9.Location = new System.Drawing.Point(469, 0);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(883, 146);
+            this.groupBox9.Size = new System.Drawing.Size(887, 158);
             this.groupBox9.TabIndex = 14;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Item Card";
             // 
-            // dataGridView3
+            // textBox18
             // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.AllowUserToDeleteRows = false;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView3.Location = new System.Drawing.Point(3, 16);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.ReadOnly = true;
-            this.dataGridView3.Size = new System.Drawing.Size(877, 127);
-            this.dataGridView3.TabIndex = 0;
+            this.textBox18.Enabled = false;
+            this.textBox18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.textBox18.Location = new System.Drawing.Point(320, 97);
+            this.textBox18.Multiline = true;
+            this.textBox18.Name = "textBox18";
+            this.textBox18.Size = new System.Drawing.Size(162, 24);
+            this.textBox18.TabIndex = 292;
+            // 
+            // LicensedInd
+            // 
+            this.LicensedInd.Enabled = false;
+            this.LicensedInd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.LicensedInd.Location = new System.Drawing.Point(877, 125);
+            this.LicensedInd.Name = "LicensedInd";
+            this.LicensedInd.Size = new System.Drawing.Size(21, 20);
+            this.LicensedInd.TabIndex = 258;
+            // 
+            // label31
+            // 
+            this.label31.Location = new System.Drawing.Point(827, 122);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(56, 27);
+            this.label31.TabIndex = 249;
+            this.label31.Text = "Licensed Ind";
+            // 
+            // LicenceType
+            // 
+            this.LicenceType.Enabled = false;
+            this.LicenceType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.LicenceType.Location = new System.Drawing.Point(622, 97);
+            this.LicenceType.Name = "LicenceType";
+            this.LicenceType.Size = new System.Drawing.Size(42, 20);
+            this.LicenceType.TabIndex = 267;
+            // 
+            // BHCFlag
+            // 
+            this.BHCFlag.Enabled = false;
+            this.BHCFlag.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.BHCFlag.Location = new System.Drawing.Point(798, 125);
+            this.BHCFlag.Name = "BHCFlag";
+            this.BHCFlag.Size = new System.Drawing.Size(21, 20);
+            this.BHCFlag.TabIndex = 253;
+            // 
+            // label33
+            // 
+            this.label33.Location = new System.Drawing.Point(762, 121);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(39, 27);
+            this.label33.TabIndex = 251;
+            this.label33.Text = "BHC Flag";
+            // 
+            // label32
+            // 
+            this.label32.Location = new System.Drawing.Point(666, 122);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(50, 27);
+            this.label32.TabIndex = 252;
+            this.label32.Text = "Obsolete Flag";
+            this.label32.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // Shipping
+            // 
+            this.Shipping.Enabled = false;
+            this.Shipping.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Shipping.Location = new System.Drawing.Point(877, 71);
+            this.Shipping.Name = "Shipping";
+            this.Shipping.Size = new System.Drawing.Size(21, 20);
+            this.Shipping.TabIndex = 264;
+            // 
+            // ObsoluteFlag
+            // 
+            this.ObsoluteFlag.Enabled = false;
+            this.ObsoluteFlag.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.ObsoluteFlag.Location = new System.Drawing.Point(721, 125);
+            this.ObsoluteFlag.Name = "ObsoluteFlag";
+            this.ObsoluteFlag.Size = new System.Drawing.Size(21, 20);
+            this.ObsoluteFlag.TabIndex = 254;
+            // 
+            // label55
+            // 
+            this.label55.Location = new System.Drawing.Point(569, 99);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(52, 15);
+            this.label55.TabIndex = 266;
+            this.label55.Text = "Licence";
+            this.label55.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // CalibrationInd
+            // 
+            this.CalibrationInd.Enabled = false;
+            this.CalibrationInd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.CalibrationInd.Location = new System.Drawing.Point(547, 97);
+            this.CalibrationInd.Name = "CalibrationInd";
+            this.CalibrationInd.Size = new System.Drawing.Size(21, 20);
+            this.CalibrationInd.TabIndex = 260;
+            // 
+            // label29
+            // 
+            this.label29.Location = new System.Drawing.Point(488, 100);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(61, 18);
+            this.label29.TabIndex = 259;
+            this.label29.Text = "Calibration";
+            this.label29.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label37
+            // 
+            this.label37.Location = new System.Drawing.Point(746, 95);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(46, 27);
+            this.label37.TabIndex = 247;
+            this.label37.Text = "Disc Change";
+            this.label37.Click += new System.EventHandler(this.label37_Click);
+            // 
+            // label38
+            // 
+            this.label38.Location = new System.Drawing.Point(820, 93);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(56, 27);
+            this.label38.TabIndex = 250;
+            this.label38.Text = "Exp. Prod. Change";
+            // 
+            // Lithium
+            // 
+            this.Lithium.Enabled = false;
+            this.Lithium.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Lithium.Location = new System.Drawing.Point(799, 72);
+            this.Lithium.Name = "Lithium";
+            this.Lithium.Size = new System.Drawing.Size(21, 20);
+            this.Lithium.TabIndex = 265;
+            // 
+            // Expiringpro
+            // 
+            this.Expiringpro.Enabled = false;
+            this.Expiringpro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Expiringpro.Location = new System.Drawing.Point(877, 97);
+            this.Expiringpro.Name = "Expiringpro";
+            this.Expiringpro.Size = new System.Drawing.Size(21, 20);
+            this.Expiringpro.TabIndex = 255;
+            // 
+            // label63
+            // 
+            this.label63.Location = new System.Drawing.Point(826, 75);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(51, 13);
+            this.label63.TabIndex = 261;
+            this.label63.Text = "Shipping";
+            this.label63.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Location = new System.Drawing.Point(775, 74);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(24, 13);
+            this.label64.TabIndex = 262;
+            this.label64.Text = "Lith";
+            this.label64.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // Environment
+            // 
+            this.Environment.Enabled = false;
+            this.Environment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Environment.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Environment.Location = new System.Drawing.Point(746, 72);
+            this.Environment.Name = "Environment";
+            this.Environment.Size = new System.Drawing.Size(21, 20);
+            this.Environment.TabIndex = 269;
+            // 
+            // DiscCharge
+            // 
+            this.DiscCharge.Enabled = false;
+            this.DiscCharge.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.DiscCharge.Location = new System.Drawing.Point(798, 96);
+            this.DiscCharge.Name = "DiscCharge";
+            this.DiscCharge.Size = new System.Drawing.Size(21, 20);
+            this.DiscCharge.TabIndex = 257;
+            this.DiscCharge.TextChanged += new System.EventHandler(this.DiscCharge_TextChanged);
+            // 
+            // label53
+            // 
+            this.label53.Location = new System.Drawing.Point(718, 75);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(28, 13);
+            this.label53.TabIndex = 268;
+            this.label53.Text = "Env";
+            this.label53.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // LowDiscontInd
+            // 
+            this.LowDiscontInd.Enabled = false;
+            this.LowDiscontInd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.LowDiscontInd.Location = new System.Drawing.Point(721, 97);
+            this.LowDiscontInd.Name = "LowDiscontInd";
+            this.LowDiscontInd.Size = new System.Drawing.Size(21, 20);
+            this.LowDiscontInd.TabIndex = 256;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(670, 100);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(51, 13);
+            this.label43.TabIndex = 248;
+            this.label43.Text = "Low Disc";
+            // 
+            // HazardousInd
+            // 
+            this.HazardousInd.Enabled = false;
+            this.HazardousInd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.HazardousInd.Location = new System.Drawing.Point(694, 72);
+            this.HazardousInd.Name = "HazardousInd";
+            this.HazardousInd.Size = new System.Drawing.Size(21, 20);
+            this.HazardousInd.TabIndex = 263;
+            // 
+            // label44
+            // 
+            this.label44.Location = new System.Drawing.Point(281, 94);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(39, 26);
+            this.label44.TabIndex = 258;
+            this.label44.Text = "Item Note";
+            this.label44.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label28
+            // 
+            this.label28.Location = new System.Drawing.Point(669, 74);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(26, 18);
+            this.label28.TabIndex = 258;
+            this.label28.Text = "Hazardous";
+            this.label28.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // textBox14
+            // 
+            this.textBox14.Enabled = false;
+            this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.textBox14.Location = new System.Drawing.Point(190, 73);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(89, 20);
+            this.textBox14.TabIndex = 288;
+            // 
+            // textBox17
+            // 
+            this.textBox17.Enabled = false;
+            this.textBox17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.textBox17.Location = new System.Drawing.Point(320, 71);
+            this.textBox17.Name = "textBox17";
+            this.textBox17.Size = new System.Drawing.Size(89, 20);
+            this.textBox17.TabIndex = 289;
+            // 
+            // label22
+            // 
+            this.label22.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label22.Location = new System.Drawing.Point(153, 70);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(38, 28);
+            this.label22.TabIndex = 286;
+            this.label22.Text = "IME Stock";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // OnhandStockBalance
+            // 
+            this.OnhandStockBalance.Enabled = false;
+            this.OnhandStockBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.OnhandStockBalance.Location = new System.Drawing.Point(447, 73);
+            this.OnhandStockBalance.Name = "OnhandStockBalance";
+            this.OnhandStockBalance.Size = new System.Drawing.Size(89, 20);
+            this.OnhandStockBalance.TabIndex = 284;
+            // 
+            // Referral
+            // 
+            this.Referral.Enabled = false;
+            this.Referral.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Referral.Location = new System.Drawing.Point(61, 71);
+            this.Referral.Name = "Referral";
+            this.Referral.Size = new System.Drawing.Size(89, 20);
+            this.Referral.TabIndex = 276;
+            // 
+            // QuantityonOrder
+            // 
+            this.QuantityonOrder.Enabled = false;
+            this.QuantityonOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.QuantityonOrder.Location = new System.Drawing.Point(575, 73);
+            this.QuantityonOrder.Name = "QuantityonOrder";
+            this.QuantityonOrder.Size = new System.Drawing.Size(89, 20);
+            this.QuantityonOrder.TabIndex = 285;
+            // 
+            // label59
+            // 
+            this.label59.Location = new System.Drawing.Point(401, 70);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(41, 26);
+            this.label59.TabIndex = 282;
+            this.label59.Text = "RS Stock";
+            this.label59.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label26
+            // 
+            this.label26.Location = new System.Drawing.Point(153, 97);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(36, 27);
+            this.label26.TabIndex = 290;
+            this.label26.Text = "GrossW.";
+            this.label26.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label25
+            // 
+            this.label25.Location = new System.Drawing.Point(4, 97);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(57, 29);
+            this.label25.TabIndex = 280;
+            this.label25.Text = "Standard Weight";
+            this.label25.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // grossWeight
+            // 
+            this.grossWeight.Enabled = false;
+            this.grossWeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.grossWeight.Location = new System.Drawing.Point(191, 97);
+            this.grossWeight.Name = "grossWeight";
+            this.grossWeight.Size = new System.Drawing.Size(88, 20);
+            this.grossWeight.TabIndex = 291;
+            // 
+            // label56
+            // 
+            this.label56.Location = new System.Drawing.Point(531, 71);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(43, 27);
+            this.label56.TabIndex = 283;
+            this.label56.Text = "RS On Order";
+            this.label56.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // StandartWeight
+            // 
+            this.StandartWeight.Enabled = false;
+            this.StandartWeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.StandartWeight.Location = new System.Drawing.Point(61, 97);
+            this.StandartWeight.Name = "StandartWeight";
+            this.StandartWeight.Size = new System.Drawing.Size(89, 20);
+            this.StandartWeight.TabIndex = 281;
+            // 
+            // label23
+            // 
+            this.label23.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label23.Location = new System.Drawing.Point(273, 70);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(47, 27);
+            this.label23.TabIndex = 287;
+            this.label23.Text = "IME On Order";
+            this.label23.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label58
+            // 
+            this.label58.Location = new System.Drawing.Point(28, 76);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(35, 13);
+            this.label58.TabIndex = 269;
+            this.label58.Text = "Referral";
+            this.label58.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // RunOn
+            // 
+            this.RunOn.Enabled = false;
+            this.RunOn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.RunOn.Location = new System.Drawing.Point(798, 47);
+            this.RunOn.Name = "RunOn";
+            this.RunOn.Size = new System.Drawing.Size(89, 20);
+            this.RunOn.TabIndex = 273;
+            // 
+            // label54
+            // 
+            this.label54.Location = new System.Drawing.Point(755, 50);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(42, 13);
+            this.label54.TabIndex = 271;
+            this.label54.Text = "Run on";
+            this.label54.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // CofO
+            // 
+            this.CofO.Enabled = false;
+            this.CofO.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.CofO.Location = new System.Drawing.Point(462, 19);
+            this.CofO.Name = "CofO";
+            this.CofO.Size = new System.Drawing.Size(36, 20);
+            this.CofO.TabIndex = 268;
+            // 
+            // label20
+            // 
+            this.label20.Location = new System.Drawing.Point(430, 21);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(31, 13);
+            this.label20.TabIndex = 262;
+            this.label20.Text = "CofO";
+            // 
+            // OnSubstitutedBy
+            // 
+            this.OnSubstitutedBy.Enabled = false;
+            this.OnSubstitutedBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.OnSubstitutedBy.Location = new System.Drawing.Point(799, 20);
+            this.OnSubstitutedBy.Name = "OnSubstitutedBy";
+            this.OnSubstitutedBy.Size = new System.Drawing.Size(89, 20);
+            this.OnSubstitutedBy.TabIndex = 274;
+            // 
+            // label60
+            // 
+            this.label60.Location = new System.Drawing.Point(763, 19);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(39, 29);
+            this.label60.TabIndex = 267;
+            this.label60.Text = "Subs  By";
+            this.label60.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // ArticleNo
+            // 
+            this.ArticleNo.Enabled = false;
+            this.ArticleNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.ArticleNo.Location = new System.Drawing.Point(61, 19);
+            this.ArticleNo.Name = "ArticleNo";
+            this.ArticleNo.Size = new System.Drawing.Size(89, 20);
+            this.ArticleNo.TabIndex = 275;
+            // 
+            // label19
+            // 
+            this.label19.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label19.Location = new System.Drawing.Point(3, 22);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(59, 18);
+            this.label19.TabIndex = 254;
+            this.label19.Text = "Article No";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // ArticleDesc
+            // 
+            this.ArticleDesc.Enabled = false;
+            this.ArticleDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.ArticleDesc.Location = new System.Drawing.Point(190, 19);
+            this.ArticleDesc.Multiline = true;
+            this.ArticleDesc.Name = "ArticleDesc";
+            this.ArticleDesc.Size = new System.Drawing.Size(237, 24);
+            this.ArticleDesc.TabIndex = 279;
+            // 
+            // label11
+            // 
+            this.label11.Location = new System.Drawing.Point(153, 16);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(39, 27);
+            this.label11.TabIndex = 278;
+            this.label11.Text = "Article Desc";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // UnitMeasure
+            // 
+            this.UnitMeasure.Enabled = false;
+            this.UnitMeasure.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.UnitMeasure.Location = new System.Drawing.Point(662, 47);
+            this.UnitMeasure.Name = "UnitMeasure";
+            this.UnitMeasure.Size = new System.Drawing.Size(89, 20);
+            this.UnitMeasure.TabIndex = 272;
+            // 
+            // label52
+            // 
+            this.label52.Location = new System.Drawing.Point(609, 43);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(49, 27);
+            this.label52.TabIndex = 261;
+            this.label52.Text = "Unit Measure";
+            this.label52.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // MHCodeLevel1
+            // 
+            this.MHCodeLevel1.Enabled = false;
+            this.MHCodeLevel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.MHCodeLevel1.Location = new System.Drawing.Point(190, 47);
+            this.MHCodeLevel1.Name = "MHCodeLevel1";
+            this.MHCodeLevel1.Size = new System.Drawing.Size(89, 20);
+            this.MHCodeLevel1.TabIndex = 266;
+            // 
+            // UnitContent
+            // 
+            this.UnitContent.Enabled = false;
+            this.UnitContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.UnitContent.Location = new System.Drawing.Point(518, 45);
+            this.UnitContent.Name = "UnitContent";
+            this.UnitContent.Size = new System.Drawing.Size(89, 20);
+            this.UnitContent.TabIndex = 264;
+            // 
+            // label14
+            // 
+            this.label14.Location = new System.Drawing.Point(467, 40);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(45, 30);
+            this.label14.TabIndex = 258;
+            this.label14.Text = "Unit Content";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label12
+            // 
+            this.label12.Location = new System.Drawing.Point(156, 46);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(36, 30);
+            this.label12.TabIndex = 260;
+            this.label12.Text = "MH Code Level 1";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // CCCNNo
+            // 
+            this.CCCNNo.Enabled = false;
+            this.CCCNNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.CCCNNo.Location = new System.Drawing.Point(551, 19);
+            this.CCCNNo.Name = "CCCNNo";
+            this.CCCNNo.Size = new System.Drawing.Size(50, 20);
+            this.CCCNNo.TabIndex = 265;
+            // 
+            // label13
+            // 
+            this.label13.Location = new System.Drawing.Point(504, 19);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(40, 29);
+            this.label13.TabIndex = 255;
+            this.label13.Text = "CCCN No";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // PackQuan
+            // 
+            this.PackQuan.Enabled = false;
+            this.PackQuan.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.PackQuan.Location = new System.Drawing.Point(319, 47);
+            this.PackQuan.Name = "PackQuan";
+            this.PackQuan.Size = new System.Drawing.Size(142, 20);
+            this.PackQuan.TabIndex = 263;
+            // 
+            // label18
+            // 
+            this.label18.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label18.Location = new System.Drawing.Point(285, 43);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(35, 30);
+            this.label18.TabIndex = 259;
+            this.label18.Text = "Pack Quantity";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // MPN
+            // 
+            this.MPN.Enabled = false;
+            this.MPN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.MPN.Location = new System.Drawing.Point(61, 45);
+            this.MPN.Name = "MPN";
+            this.MPN.Size = new System.Drawing.Size(89, 20);
+            this.MPN.TabIndex = 270;
+            // 
+            // Manufacturer
+            // 
+            this.Manufacturer.Enabled = false;
+            this.Manufacturer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Manufacturer.Location = new System.Drawing.Point(680, 19);
+            this.Manufacturer.Name = "Manufacturer";
+            this.Manufacturer.Size = new System.Drawing.Size(89, 20);
+            this.Manufacturer.TabIndex = 277;
+            // 
+            // label27
+            // 
+            this.label27.Location = new System.Drawing.Point(29, 50);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(31, 13);
+            this.label27.TabIndex = 257;
+            this.label27.Text = "MPN";
+            this.label27.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label24
+            // 
+            this.label24.Location = new System.Drawing.Point(607, 21);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(70, 17);
+            this.label24.TabIndex = 256;
+            this.label24.Text = "Manufacturer";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // textBox13
             // 
@@ -591,7 +1285,7 @@
             this.customerDetailsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1334, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1354, 24);
             this.menuStrip1.TabIndex = 45;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -834,7 +1528,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1334, 741);
+            this.ClientSize = new System.Drawing.Size(1354, 733);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox11);
             this.Controls.Add(this.button1);
@@ -870,7 +1564,7 @@
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            this.groupBox9.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox10.ResumeLayout(false);
@@ -907,7 +1601,6 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.TextBox textBox13;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
@@ -958,6 +1651,70 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox CustomerCode;
         private System.Windows.Forms.TextBox txtCustomerName;
+        private System.Windows.Forms.TextBox CofO;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox ArticleNo;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox ArticleDesc;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox CCCNNo;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox RunOn;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.TextBox OnSubstitutedBy;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.TextBox Referral;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.TextBox MHCodeLevel1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox MPN;
+        private System.Windows.Forms.TextBox UnitMeasure;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox Manufacturer;
+        private System.Windows.Forms.TextBox UnitContent;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.TextBox PackQuan;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox StandartWeight;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox grossWeight;
+        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox OnhandStockBalance;
+        private System.Windows.Forms.TextBox QuantityonOrder;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox LicenceType;
+        private System.Windows.Forms.TextBox Shipping;
+        private System.Windows.Forms.Label label55;
+        private System.Windows.Forms.TextBox CalibrationInd;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox Lithium;
+        private System.Windows.Forms.Label label63;
+        private System.Windows.Forms.Label label64;
+        private System.Windows.Forms.TextBox Environment;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.TextBox HazardousInd;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox LicensedInd;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TextBox BHCFlag;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox ObsoluteFlag;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.TextBox Expiringpro;
+        private System.Windows.Forms.TextBox DiscCharge;
+        private System.Windows.Forms.TextBox LowDiscontInd;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.Label label44;
     }
 }
 

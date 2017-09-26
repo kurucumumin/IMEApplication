@@ -28,18 +28,68 @@ namespace LoginForm
         
         public CustomerMain(Boolean buttonEnabled, string CustomerID)
         {
-            //Qoutation Customer Details
-
             InitializeComponent();
-            if (buttonEnabled)
+            //Qoutation Customer Details
+            if (CustomerID== "newCustomerDevelopers")
             {
-                CustomerDataGrid.Enabled = false;
-                txtSearch.Enabled = false;
-                Search.Enabled = false;
-                btnCreate.Enabled = false;
-                btnUpdate.Enabled = false;
-                QuotationCustomerSearch(CustomerID);
+                #region MyRegion
+                CustomerDataGrid.Visible = false; label36.Visible = false; txtSearch.Visible = false;Search.Visible = false;btnCreate.Visible = false;btnUpdate.Visible = false;
+                itemsEnableTrue();
+                itemsClear();
+                //for new customerCode
+                string custmrcode = IME.Customers.OrderByDescending(a => a.ID).FirstOrDefault().ID;
+                string custmrnumbers = string.Empty;
+                string newcustomercodenumbers = "";
+                string newcustomercodezeros = "";
+                string newcustomercodechars = "";
+                for (int i = 0; i < custmrcode.Length; i++)
+                {
+                    if (Char.IsDigit(custmrcode[i]))
+                    {
+                        if (custmrcode[i] == '0') { newcustomercodezeros += custmrcode[i]; } else { newcustomercodenumbers += custmrcode[i]; }
+                    }
+                    else
+                    {
+                        newcustomercodechars += custmrcode[i];
+                    }
+                }
+                //Aynı ID ile customer oluşturmasını önleyen kısım
+                while (IME.Customers.Where(a => a.ID == custmrcode).Count() > 0)
+                {
+                    newcustomercodenumbers = (Int32.Parse(newcustomercodenumbers) + 1).ToString();
+                    custmrcode = newcustomercodechars + newcustomercodezeros + newcustomercodenumbers;
+                }
+                //              
+                ContactList.DataSource = null;
+                CustomerCode.Text = custmrcode;
+                Customer newCustomer = new Customer();
+                newCustomer.ID = CustomerCode.Text;
+                IME.Customers.Add(newCustomer);
+                IME.SaveChanges();
+                btnCreate.Text = "DONE";
+                btnUpdate.Text = "CANCEL";
+                AdressList.Enabled = false;
+                AdressList.DataSource = null;
+                AdressAdd.Enabled = true;
+                btnContactAdd.Enabled = true;
+                btnQuotationCancel.Visible = true;
+                btnQuotationSave.Visible = true;
+                #endregion
             }
+            else
+            {
+                if (buttonEnabled)
+                {
+                    CustomerDataGrid.Enabled = false;
+                    txtSearch.Enabled = false;
+                    Search.Enabled = false;
+                    btnCreate.Enabled = false;
+                    btnUpdate.Enabled = false;
+                    QuotationCustomerSearch(CustomerID);
+                }
+            }
+            
+            
         }
 
             private void tabPage2_Click(object sender, EventArgs e)
@@ -49,7 +99,6 @@ namespace LoginForm
 
         private void CustomerMain_Load(object sender, EventArgs e)
         {
-           
             #region ComboboxFiller
             ContactDepartment.DataSource = IME.CustomerDepartments.ToList();
             ContactDepartment.DisplayMember = "departmentname";
@@ -79,9 +128,12 @@ namespace LoginForm
             AccountRepresentary.DisplayMember= "FirstName";
             cbCountry.DataSource = IME.Countries.ToList();
             cbCountry.DisplayMember = "Country_name";
-            
+
             #endregion
-            //customersearch();
+            if (CustomerDataGrid.Visible == true)
+            {
+                customersearch();
+            }
         }
         private void CustomerDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -910,8 +962,8 @@ namespace LoginForm
             ContactFAX.Text = "";
             CommunicationLanguage.Text = "";
             ContactNotes.Text = "";
-            MainCategory.SelectedIndex=0;
-            SubCategory.SelectedIndex = 0;
+            if (MainCategory.DataSource != null) { MainCategory.SelectedIndex = 0; }
+            if (SubCategory.DataSource != null) { SubCategory.SelectedIndex = 0; }
             CompanyNotes.Text = "";
             WebAdress.Text = "";
             CustomerFax.Text = "";
@@ -1275,5 +1327,92 @@ namespace LoginForm
         {
 
         }
+
+        private void btnQuotationSave_Click(object sender, EventArgs e)
+        {
+            Customer c = new Customer();
+            c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
+            if (rb_active.Checked) { c.isactive = 1; } else { c.isactive = 0; }
+            c.c_name = CustomerName.Text;
+            if (Telephone.Text != "") { c.telephone = Int32.Parse(Telephone.Text); }
+            if (CustomerFax.Text != "") { c.fax = Int32.Parse(CustomerFax.Text); }
+            c.webadress = WebAdress.Text;
+            c.taxoffice = CustomerFax.Text;
+            if (CreditLimit.Text != "") { c.creditlimit = Int32.Parse(CreditLimit.Text); }
+            if (DiscountRate.Text != "") { c.discountrate = Int32.Parse(DiscountRate.Text); }
+            c.taxoffice = TaxOffice.Text;
+            if (taxNumber.Text != "") { c.taxnumber = Int32.Parse(taxNumber.Text); }
+            //CategorySubCategory Tablosuna veri ekleniyor(ara tabloya)
+            CustomerCategorySubCategory CustomerCatSubcat = new CustomerCategorySubCategory();
+            //UPDATE YAPILIRKEN BU ŞEKİLDE OLUYOR
+            if (IME.CustomerCategorySubCategories.Where(a => a.customerID == CustomerCode.Text).FirstOrDefault() != null) { CustomerCatSubcat = IME.CustomerCategorySubCategories.Where(a => a.customerID == CustomerCode.Text).FirstOrDefault(); }
+            CustomerCatSubcat.customerID = CustomerCode.Text;
+            int c_CategoryID = ((CustomerCategory)(MainCategory).SelectedItem).ID;
+            CustomerCatSubcat.categoryID = c_CategoryID;
+            int c_SubcategoryID = ((CustomerSubCategory)(SubCategory).SelectedItem).ID;
+            CustomerCatSubcat.subcategoryID = c_SubcategoryID;
+            if (IME.CustomerCategorySubCategories.Where(a => a.customerID == CustomerCode.Text).FirstOrDefault() == null) { IME.CustomerCategorySubCategories.Add(CustomerCatSubcat); }
+            IME.SaveChanges();
+            //
+            int c_rep1ID = ((Worker)(Represantative1).SelectedItem).WorkerID;
+            c.representaryID = c_rep1ID;
+            int c_rep2ID = ((Worker)(Represantative2).SelectedItem).WorkerID;
+            c.representary2ID = c_rep2ID;
+            int c_termpayment = ((PaymentTerm)(TermsofPayments).SelectedItem).ID;
+            c.payment_termID = c_termpayment;
+            int c_paymentmeth = ((PaymentMethod)(PaymentMethod).SelectedItem).ID;
+            c.paymentmethodID = c_paymentmeth;
+            //Notes kısmına kayıt ediliyor
+            try
+            {
+                if (c.customerNoteID != null)
+                {
+                    Note note1 = new Note();
+                    note1 = IME.Notes.Where(a => a.ID == c.customerNoteID).FirstOrDefault();
+                    note1.Note_name = CompanyNotes.Text;
+                }
+                else
+                {
+                    c.Note.Note_name = CompanyNotes.Text;
+                    IME.Notes.Add(c.Note);
+                    c.customerNoteID = c.Note.ID;
+                }
+                IME.SaveChanges();
+
+            }
+            catch { }
+
+            IME.SaveChanges();
+            classQuotationAdd.customersearchID = c.ID;
+            classQuotationAdd.customersearchname = "";
+            this.Hide();
+        }
+
+        private void btnQuotationCancel_Click(object sender, EventArgs e)
+        {
+            var customer = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
+            if (customer.c_name == null)
+            {
+                //CREATE in cancel ı
+                var cw = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text);
+                //ilk önce Contact ların ve adress lerin verilerini sil sonra customer ın verisini sil
+                while (cw.Count() > 0)
+                {
+                    IME.CustomerWorkers.Remove(cw.FirstOrDefault());
+                    IME.SaveChanges();
+                }
+                //üstteki işlem adresses için de yapılmalı
+
+                //
+
+                //contact için de yapılmalı
+
+                //
+                Customer c = new Customer();
+                c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
+                IME.Customers.Remove(c);
+                IME.SaveChanges();
+            }
+            }
     }
 }

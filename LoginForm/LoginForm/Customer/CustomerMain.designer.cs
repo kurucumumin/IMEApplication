@@ -137,6 +137,8 @@
             this.label36 = new System.Windows.Forms.Label();
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnQuotationCancel = new System.Windows.Forms.Button();
+            this.btnQuotationSave = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tab_company.SuspendLayout();
             this.tab_account.SuspendLayout();
@@ -1283,18 +1285,42 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // btnQuotationCancel
+            // 
+            this.btnQuotationCancel.Location = new System.Drawing.Point(540, 309);
+            this.btnQuotationCancel.Name = "btnQuotationCancel";
+            this.btnQuotationCancel.Size = new System.Drawing.Size(151, 35);
+            this.btnQuotationCancel.TabIndex = 6;
+            this.btnQuotationCancel.Text = "CANCEL";
+            this.btnQuotationCancel.UseVisualStyleBackColor = true;
+            this.btnQuotationCancel.Visible = false;
+            this.btnQuotationCancel.Click += new System.EventHandler(this.btnQuotationCancel_Click);
+            // 
+            // btnQuotationSave
+            // 
+            this.btnQuotationSave.Location = new System.Drawing.Point(383, 309);
+            this.btnQuotationSave.Name = "btnQuotationSave";
+            this.btnQuotationSave.Size = new System.Drawing.Size(151, 35);
+            this.btnQuotationSave.TabIndex = 7;
+            this.btnQuotationSave.Text = "SAVE";
+            this.btnQuotationSave.UseVisualStyleBackColor = true;
+            this.btnQuotationSave.Visible = false;
+            this.btnQuotationSave.Click += new System.EventHandler(this.btnQuotationSave_Click);
+            // 
             // CustomerMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(718, 510);
-            this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.label36);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.Search);
             this.Controls.Add(this.CustomerDataGrid);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnCreate);
+            this.Controls.Add(this.btnQuotationCancel);
+            this.Controls.Add(this.btnQuotationSave);
             this.Name = "CustomerMain";
             this.Text = "CustomerMain";
             this.TopMost = true;
@@ -1425,6 +1451,8 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.ComboBox cbMainContact;
         private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Button btnQuotationCancel;
+        private System.Windows.Forms.Button btnQuotationSave;
     }
 }
 
