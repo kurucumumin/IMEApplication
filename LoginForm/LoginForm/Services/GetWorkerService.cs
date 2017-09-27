@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LoginForm.DataSet;
 
-namespace LoginForm.Services
+namespace LoginForm
 {
     class GetWorkerService
     {

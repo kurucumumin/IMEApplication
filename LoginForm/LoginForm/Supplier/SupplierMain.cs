@@ -30,7 +30,7 @@ using LoginForm.Services;
         {
             if (btnnew.Text == "Add")
             {
-                
+
                 itemsEnableTrue();
                 itemsClear();
 
@@ -443,11 +443,8 @@ using LoginForm.Services;
                                    }).ToList();
             #endregion
 
+            #region FillInfos
             dgSupplier.DataSource = supplierAdapter;
-            if (supplierAdapter.Count > 0)
-            {
-                #region FillInfos
-                dgSupplier.DataSource = supplierAdapter;
             dgSupplier.ClearSelection();
             dgSupplier.Rows[gridselectedindex].Selected = true;// tüm row u seçtirmek için bu formülü kullnınca selectedrow index =0 oluyor
             txtcode.Text = supplierAdapter[gridselectedindex].ID;
@@ -484,13 +481,7 @@ using LoginForm.Services;
             dgSupplier.Update();
             dgSupplier.Refresh();
 
-                #endregion
-            }
-            else
-            {
-                MessageBox.Show("There is no such a Customer", "Warning !");
-                itemsClear();
-            }
+            #endregion
         }
 
         private void btnContactNew_Click(object sender, EventArgs e)

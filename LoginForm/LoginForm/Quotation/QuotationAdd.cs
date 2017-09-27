@@ -86,7 +86,8 @@ namespace LoginForm
 
         private void customerDetailsNameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CustomerMain f = new CustomerMain(txtCustomerName.Text, true);
+            
+            CustomerMain f = new CustomerMain(true,txtCustomerName.Text);
         }
 
         private void button10_Click(object sender, EventArgs e)

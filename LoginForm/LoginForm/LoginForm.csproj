@@ -169,9 +169,6 @@
     <Compile Include="DataSet\RSPro.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\ShippingMethod.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\SlidingPrice.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -276,6 +273,7 @@
     <Compile Include="Services\classQuotationAdd.cs" />
     <Compile Include="Services\ContactListItem.cs" />
     <Compile Include="Services\CustomerService.cs" />
+    <Compile Include="Services\GetWorkerService.cs" />
     <Compile Include="Services\txtReader.cs" />
     <Compile Include="Services\WorkerService.cs" />
     <Compile Include="Supplier\SupplierDepartmentAdd.cs">
