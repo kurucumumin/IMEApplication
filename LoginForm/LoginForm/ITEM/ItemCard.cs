@@ -348,15 +348,15 @@ namespace LoginForm
                 if (sd.Standard_Weight != 0) { StandartWeight.Text = ((decimal)(sd.Standard_Weight) / (decimal)100).ToString("G29"); } else { }
                 HazardousInd.Text = sd.Hazardous_Ind;
                 CalibrationInd.Text = sd.Calibration_Ind;
-                ObsoluteFlag.Text = sd.Obsolete_Flag.ToString();
-                LowDiscontInd.Text = sd.Low_Discount_Ind;
-                LicensedInd.Text = sd.Licensed_Ind.ToString();
-                ShelfLife.Text = sd.Shelf_Life;
+                //ObsoluteFlag.Text = sd.Obsolete_Flag.ToString();
+                //LowDiscontInd.Text = sd.Low_Discount_Ind;
+                //LicensedInd.Text = sd.Licensed_Ind.ToString();
+                //ShelfLife.Text = sd.Shelf_Life;
                 CofO.Text = sd.CofO;
                 CCCNNo.Text = sd.CCCN_No.ToString();
-                UKIntroDate.Text = sd.Uk_Intro_Date;
+                //UKIntroDate.Text = sd.Uk_Intro_Date;
                 UKDiscDate.Text = sd.Uk_Disc_Date;
-                BHCFlag.Text = sd.BHC_Flag.ToString();
+                //BHCFlag.Text = sd.BHC_Flag.ToString();
                 DiscCharge.Text = sd.Disc_Change_Ind;
                 Expiringpro.Text = sd.Expiring_Product_Change_Ind;
                 Manufacturer.Text = sd.Manufacturer.ToString();
@@ -378,15 +378,15 @@ namespace LoginForm
                 if (sdP.Standard_Weight != 0) { StandartWeight.Text = ((decimal)(sdP.Standard_Weight) / (decimal)100).ToString("G29"); }
                 HazardousInd.Text = sdP.Hazardous_Ind;
                 CalibrationInd.Text = sdP.Calibration_Ind;
-                ObsoluteFlag.Text = sdP.Obsolete_Flag.ToString();
-                LowDiscontInd.Text = sdP.Low_Discount_Ind;
-                LicensedInd.Text = sdP.Licensed_Ind.ToString();
-                ShelfLife.Text = sdP.Shelf_Life;
+                //ObsoluteFlag.Text = sdP.Obsolete_Flag.ToString();
+                //LowDiscontInd.Text = sdP.Low_Discount_Ind;
+                //LicensedInd.Text = sdP.Licensed_Ind.ToString();
+                //ShelfLife.Text = sdP.Shelf_Life;
                 CofO.Text = sdP.CofO;
                 CCCNNo.Text = sdP.CCCN_No.ToString();
-                UKIntroDate.Text = sdP.Uk_Intro_Date;
+                //UKIntroDate.Text = sdP.Uk_Intro_Date;
                 UKDiscDate.Text = sdP.Uk_Disc_Date;
-                BHCFlag.Text = sdP.BHC_Flag.ToString();
+                //BHCFlag.Text = sdP.BHC_Flag.ToString();
                 DiscCharge.Text = sdP.Disc_Change_Ind;
                 Expiringpro.Text = sdP.Expiring_Product_Change_Ind;
                 Manufacturer.Text = sdP.Manufacturer.ToString();
@@ -428,8 +428,8 @@ namespace LoginForm
             if (sp != null)
             {
                 ArticleNo.Text = sp.ArticleNo;
-                IntroductionDate.Text = sp.IntroductionDate;
-                DiscontinuedDate.Text = sp.DiscontinuedDate;
+                //IntroductionDate.Text = sp.IntroductionDate;
+                //DiscontinuedDate.Text = sp.DiscontinuedDate;
                 ColBreak1.Text = sp.Col1Break.ToString();
                 ColBreak2.Text = sp.Col2Break.ToString();
                 ColBreak3.Text = sp.Col3Break.ToString();
@@ -458,8 +458,8 @@ namespace LoginForm
             if (os != null)
             {
                 ArticleNo.Text = os.ArticleNumber;
-                OnSaleDiscontinuedDate.Text = os.DiscontinuedDate;
-                OnSaleIntroductionDate.Text = os.IntroductionDate;
+                //OnSaleDiscontinuedDate.Text = os.DiscontinuedDate;
+                //OnSaleIntroductionDate.Text = os.IntroductionDate;
                 OnhandStockBalance.Text = os.OnhandStockBalance.ToString();
                 QuantityonOrder.Text = os.QuantityonOrder.ToString();
 
@@ -508,16 +508,13 @@ namespace LoginForm
             StandartWeight.Text = "";
             HazardousInd.Text = "";
             CalibrationInd.Text = "";
-            ObsoluteFlag.Text = "";
-            LowDiscontInd.Text = "";
-            LicensedInd.Text = "";
-            ShelfLife.Text = "";
+            
             CofO.Text = "";
             CCCNNo.Text = "";
-            UKIntroDate.Text = "";
+            
             UKDiscDate.Text = "";
 
-            BHCFlag.Text = "";
+            
             DiscCharge.Text = "";
             Expiringpro.Text = "";
             Manufacturer.Text = "";
@@ -528,8 +525,7 @@ namespace LoginForm
             Length.Text = "";
             Height.Text = "";
             ArticleNo.Text = "";
-            IntroductionDate.Text = "";
-            DiscontinuedDate.Text = "";
+           
             ColBreak1.Text = "";
             ColBreak2.Text = "";
             ColBreak3.Text = "";
@@ -552,8 +548,6 @@ namespace LoginForm
             Lithium.Text = "";
             Shipping.Text = "";
             ArticleNo.Text = "";
-            OnSaleDiscontinuedDate.Text = "";
-            OnSaleIntroductionDate.Text = "";
             OnhandStockBalance.Text = "";
             QuantityonOrder.Text = "";
             ArticleNo.Text = "";

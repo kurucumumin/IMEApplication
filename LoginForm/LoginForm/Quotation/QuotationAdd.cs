@@ -26,21 +26,21 @@ namespace LoginForm
         private void QuotationForm_Load(object sender, EventArgs e)
         {
             #region ComboboxFiller
-            cmbPayment.DataSource = IME.PaymentMethods.ToList();
-            cmbPayment.DisplayMember = "Payment";
-            cmbPayment.ValueMember = "ID";
+            //cmbPayment.DataSource = IME.PaymentMethods.ToList();
+            //cmbPayment.DisplayMember = "Payment";
+            //cmbPayment.ValueMember = "ID";
 
-            cmbRep.DataSource = GetWorkerService.GetWorker();
-            cmbRep.DisplayMember = "FirstName";
-            cmbRep.ValueMember = "WorkerID";
+            //cmbRep.DataSource = GetWorkerService.GetWorker();
+            //cmbRep.DisplayMember = "FirstName";
+            //cmbRep.ValueMember = "WorkerID";
 
-            cmbCur.DataSource = IME.Rates.ToList();
-            cmbCur.DisplayMember = "rate_name";
-            cmbCur.ValueMember = "ID";
+            //cmbCur.DataSource = IME.Rates.ToList();
+            //cmbCur.DisplayMember = "rate_name";
+            //cmbCur.ValueMember = "ID";
 
-            cmbShipping.DataSource = IME.ShippingMethods.ToList();
-            cmbShipping.DisplayMember = "shipping_name";
-            cmbShipping.ValueMember = "ID";
+            //cmbShipping.DataSource = IME.ShippingMethods.ToList();
+            //cmbShipping.DisplayMember = "shipping_name";
+            //cmbShipping.ValueMember = "ID";
             #endregion
         }
 
