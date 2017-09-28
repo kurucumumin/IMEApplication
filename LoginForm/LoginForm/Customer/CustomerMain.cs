@@ -779,6 +779,7 @@ namespace LoginForm
                 c.taxoffice = TaxOffice.Text;
                 if (taxNumber.Text != "") { c.taxnumber = Int32.Parse(taxNumber.Text); }
                 //CategorySubCategory Tablosuna veri ekleniyor(ara tabloya)
+
                 CustomerCategorySubCategory CustomerCatSubcat = new CustomerCategorySubCategory();
                 //UPDATE YAPILIRKEN BU ŞEKİLDE OLUYOR
                 if (IME.CustomerCategorySubCategories.Where(a => a.customerID == CustomerCode.Text).FirstOrDefault() != null) { CustomerCatSubcat = IME.CustomerCategorySubCategories.Where(a => a.customerID == CustomerCode.Text).FirstOrDefault(); }

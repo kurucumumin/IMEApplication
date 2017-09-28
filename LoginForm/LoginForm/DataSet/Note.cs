@@ -22,6 +22,7 @@ namespace LoginForm.DataSet
             this.ItemNotes = new HashSet<ItemNote>();
             this.Suppliers = new HashSet<Supplier>();
             this.SupplierWorkers = new HashSet<SupplierWorker>();
+            this.SupplierWorkers1 = new HashSet<SupplierWorker>();
             this.Workers = new HashSet<Worker>();
         }
     
@@ -38,6 +39,8 @@ namespace LoginForm.DataSet
         public virtual ICollection<Supplier> Suppliers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SupplierWorker> SupplierWorkers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SupplierWorker> SupplierWorkers1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Worker> Workers { get; set; }
     }

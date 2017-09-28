@@ -19,6 +19,7 @@ namespace LoginForm.DataSet
         {
             this.Cities = new HashSet<City>();
             this.CustomerAdresses = new HashSet<CustomerAdress>();
+            this.SupplierAdresses = new HashSet<SupplierAdress>();
         }
     
         public int ID { get; set; }
@@ -28,5 +29,7 @@ namespace LoginForm.DataSet
         public virtual ICollection<City> Cities { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomerAdress> CustomerAdresses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SupplierAdress> SupplierAdresses { get; set; }
     }
 }

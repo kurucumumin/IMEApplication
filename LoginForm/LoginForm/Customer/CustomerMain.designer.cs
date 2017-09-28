@@ -1326,11 +1326,14 @@
             // 
             // CustomerDataGrid
             // 
+            this.CustomerDataGrid.AllowUserToAddRows = false;
+            this.CustomerDataGrid.AllowUserToDeleteRows = false;
             this.CustomerDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CustomerDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CustomerDataGrid.Location = new System.Drawing.Point(9, 459);
             this.CustomerDataGrid.Margin = new System.Windows.Forms.Padding(4);
             this.CustomerDataGrid.Name = "CustomerDataGrid";
+            this.CustomerDataGrid.ReadOnly = true;
             this.CustomerDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.CustomerDataGrid.Size = new System.Drawing.Size(939, 269);
             this.CustomerDataGrid.TabIndex = 1;
