@@ -21,7 +21,7 @@ namespace LoginForm
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ItemCardMainForm form = new ItemCardMainForm();
+            FormMain form = new FormMain();
             form.Show();
             this.Hide();
         }

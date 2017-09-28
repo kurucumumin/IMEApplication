@@ -38,12 +38,7 @@
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.dgNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgMPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -51,6 +46,77 @@
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.LicensedInd = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.LicenceType = new System.Windows.Forms.TextBox();
+            this.BHCFlag = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.Shipping = new System.Windows.Forms.TextBox();
+            this.ObsoluteFlag = new System.Windows.Forms.TextBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.CalibrationInd = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.Lithium = new System.Windows.Forms.TextBox();
+            this.Expiringpro = new System.Windows.Forms.TextBox();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label64 = new System.Windows.Forms.Label();
+            this.Environment = new System.Windows.Forms.TextBox();
+            this.DiscCharge = new System.Windows.Forms.TextBox();
+            this.label53 = new System.Windows.Forms.Label();
+            this.LowDiscontInd = new System.Windows.Forms.TextBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.HazardousInd = new System.Windows.Forms.TextBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.OnhandStockBalance = new System.Windows.Forms.TextBox();
+            this.Referral = new System.Windows.Forms.TextBox();
+            this.QuantityonOrder = new System.Windows.Forms.TextBox();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.grossWeight = new System.Windows.Forms.TextBox();
+            this.label56 = new System.Windows.Forms.Label();
+            this.StandartWeight = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label58 = new System.Windows.Forms.Label();
+            this.RunOn = new System.Windows.Forms.TextBox();
+            this.label54 = new System.Windows.Forms.Label();
+            this.CofO = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.OnSubstitutedBy = new System.Windows.Forms.TextBox();
+            this.label60 = new System.Windows.Forms.Label();
+            this.ArticleNo = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.ArticleDesc = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.UnitMeasure = new System.Windows.Forms.TextBox();
+            this.label52 = new System.Windows.Forms.Label();
+            this.MHCodeLevel1 = new System.Windows.Forms.TextBox();
+            this.UnitContent = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.CCCNNo = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.PackQuan = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.MPN = new System.Windows.Forms.TextBox();
+            this.Manufacturer = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.customerDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.comboBox8 = new System.Windows.Forms.ComboBox();
@@ -72,168 +138,16 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.StandartWeight = new System.Windows.Forms.TextBox();
-            this.Height = new System.Windows.Forms.TextBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.label46 = new System.Windows.Forms.Label();
-            this.Width = new System.Windows.Forms.TextBox();
-            this.grossWeight = new System.Windows.Forms.TextBox();
-            this.label47 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
-            this.Length = new System.Windows.Forms.TextBox();
-            this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.DiscontinuationDate = new System.Windows.Forms.TextBox();
-            this.UKDiscDate = new System.Windows.Forms.TextBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.OnSubstitutedBy = new System.Windows.Forms.TextBox();
-            this.label60 = new System.Windows.Forms.Label();
-            this.RunOn = new System.Windows.Forms.TextBox();
-            this.label54 = new System.Windows.Forms.Label();
-            this.Referral = new System.Windows.Forms.TextBox();
-            this.label58 = new System.Windows.Forms.Label();
-            this.label62 = new System.Windows.Forms.Label();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.Expiringpro = new System.Windows.Forms.TextBox();
-            this.HazardousInd = new System.Windows.Forms.TextBox();
-            this.DiscCharge = new System.Windows.Forms.TextBox();
-            this.label53 = new System.Windows.Forms.Label();
-            this.Environment = new System.Windows.Forms.TextBox();
-            this.Lithium = new System.Windows.Forms.TextBox();
-            this.label64 = new System.Windows.Forms.Label();
-            this.Shipping = new System.Windows.Forms.TextBox();
-            this.label63 = new System.Windows.Forms.Label();
-            this.LicenceType = new System.Windows.Forms.TextBox();
-            this.CalibrationInd = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label55 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.textBox23 = new System.Windows.Forms.TextBox();
-            this.textBox24 = new System.Windows.Forms.TextBox();
-            this.label59 = new System.Windows.Forms.Label();
-            this.label56 = new System.Windows.Forms.Label();
-            this.OnhandStockBalance = new System.Windows.Forms.TextBox();
-            this.QuantityonOrder = new System.Windows.Forms.TextBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.textBox18 = new System.Windows.Forms.TextBox();
-            this.label33 = new System.Windows.Forms.Label();
-            this.textBox19 = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textBox20 = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.textBox21 = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBox22 = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.SupersectionName = new System.Windows.Forms.TextBox();
-            this.label51 = new System.Windows.Forms.Label();
-            this.CofO = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.Manufacturer = new System.Windows.Forms.TextBox();
-            this.CCCNNo = new System.Windows.Forms.TextBox();
-            this.textBox17 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.MHCodeLevel1 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtCustomerName = new System.Windows.Forms.TextBox();
-            this.CustomerCode = new System.Windows.Forms.TextBox();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.groupBox15 = new System.Windows.Forms.GroupBox();
-            this.DiscountedPrice1 = new System.Windows.Forms.TextBox();
-            this.textBox25 = new System.Windows.Forms.TextBox();
-            this.ColBreak5 = new System.Windows.Forms.TextBox();
-            this.label50 = new System.Windows.Forms.Label();
-            this.ColPrice5 = new System.Windows.Forms.TextBox();
-            this.ColPrice2 = new System.Windows.Forms.TextBox();
-            this.label52 = new System.Windows.Forms.Label();
-            this.DiscountedPrice5 = new System.Windows.Forms.TextBox();
-            this.textBox26 = new System.Windows.Forms.TextBox();
-            this.ColBreak2 = new System.Windows.Forms.TextBox();
-            this.textBox27 = new System.Windows.Forms.TextBox();
-            this.ColPrice3 = new System.Windows.Forms.TextBox();
-            this.label57 = new System.Windows.Forms.Label();
-            this.ColBreak1 = new System.Windows.Forms.TextBox();
-            this.ColPrice1 = new System.Windows.Forms.TextBox();
-            this.DiscountedPrice3 = new System.Windows.Forms.TextBox();
-            this.textBox28 = new System.Windows.Forms.TextBox();
-            this.DiscountedPrice4 = new System.Windows.Forms.TextBox();
-            this.ColBreak4 = new System.Windows.Forms.TextBox();
-            this.DiscountedPrice2 = new System.Windows.Forms.TextBox();
-            this.textBox29 = new System.Windows.Forms.TextBox();
-            this.ColPrice4 = new System.Windows.Forms.TextBox();
-            this.ColBreak3 = new System.Windows.Forms.TextBox();
-            this.label61 = new System.Windows.Forms.Label();
-            this.textBox30 = new System.Windows.Forms.TextBox();
-            this.textBox31 = new System.Windows.Forms.TextBox();
-            this.label65 = new System.Windows.Forms.Label();
-            this.textBox32 = new System.Windows.Forms.TextBox();
-            this.textBox33 = new System.Windows.Forms.TextBox();
-            this.textBox34 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label66 = new System.Windows.Forms.Label();
-            this.textBox35 = new System.Windows.Forms.TextBox();
+            this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox7.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.groupBox9.SuspendLayout();
-            this.groupBox14.SuspendLayout();
-            this.groupBox13.SuspendLayout();
-            this.groupBox12.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox15.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -266,9 +180,8 @@
             this.groupBox5.Controls.Add(this.textBox9);
             this.groupBox5.Controls.Add(this.button8);
             this.groupBox5.Controls.Add(this.button7);
-            this.groupBox5.Controls.Add(this.dataGridView3);
-            this.groupBox5.Location = new System.Drawing.Point(17, 219);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox5.Controls.Add(this.dataGridView1);
+            this.groupBox5.Location = new System.Drawing.Point(13, 178);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox5.Size = new System.Drawing.Size(1791, 330);
@@ -345,52 +258,16 @@
             this.button7.Text = "Import From Excel";
             this.button7.UseVisualStyleBackColor = true;
             // 
-            // dataGridView3
+            // dataGridView1
             // 
-            this.dataGridView3.AllowUserToOrderColumns = true;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgNo,
-            this.dgSupplier,
-            this.dgProductCode,
-            this.dgMPN,
-            this.dgDesc});
-            this.dataGridView3.Location = new System.Drawing.Point(4, 11);
-            this.dataGridView3.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(1787, 282);
-            this.dataGridView3.TabIndex = 9;
-            //this.dataGridView3.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellEndEdit);
-            //this.dataGridView3.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellLeave);
-            //this.dataGridView3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView3_KeyDown);
-            // 
-            // dgNo
-            // 
-            this.dgNo.HeaderText = "No";
-            this.dgNo.Name = "dgNo";
-            this.dgNo.ReadOnly = true;
-            // 
-            // dgSupplier
-            // 
-            this.dgSupplier.HeaderText = "Supplier";
-            this.dgSupplier.Name = "dgSupplier";
-            // 
-            // dgProductCode
-            // 
-            this.dgProductCode.HeaderText = "Product Code";
-            this.dgProductCode.Name = "dgProductCode";
-            // 
-            // dgMPN
-            // 
-            this.dgMPN.HeaderText = "MPN";
-            this.dgMPN.Name = "dgMPN";
-            this.dgMPN.ReadOnly = true;
-            // 
-            // dgDesc
-            // 
-            this.dgDesc.HeaderText = "Description";
-            this.dgDesc.Name = "dgDesc";
-            this.dgDesc.ReadOnly = true;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(4, 9);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(1339, 229);
+            this.dataGridView1.TabIndex = 2;
             // 
             // groupBox6
             // 
@@ -751,11 +628,33 @@
             // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.groupBox14);
-            this.groupBox9.Controls.Add(this.groupBox13);
-            this.groupBox9.Controls.Add(this.groupBox12);
-            this.groupBox9.Controls.Add(this.groupBox8);
-            this.groupBox9.Controls.Add(this.groupBox4);
+            this.groupBox9.Controls.Add(this.Manufacturer);
+            this.groupBox9.Controls.Add(this.textBox18);
+            this.groupBox9.Controls.Add(this.LicensedInd);
+            this.groupBox9.Controls.Add(this.label31);
+            this.groupBox9.Controls.Add(this.LicenceType);
+            this.groupBox9.Controls.Add(this.BHCFlag);
+            this.groupBox9.Controls.Add(this.label33);
+            this.groupBox9.Controls.Add(this.label32);
+            this.groupBox9.Controls.Add(this.Shipping);
+            this.groupBox9.Controls.Add(this.ObsoluteFlag);
+            this.groupBox9.Controls.Add(this.label55);
+            this.groupBox9.Controls.Add(this.CalibrationInd);
+            this.groupBox9.Controls.Add(this.label29);
+            this.groupBox9.Controls.Add(this.label37);
+            this.groupBox9.Controls.Add(this.label38);
+            this.groupBox9.Controls.Add(this.Lithium);
+            this.groupBox9.Controls.Add(this.Expiringpro);
+            this.groupBox9.Controls.Add(this.label63);
+            this.groupBox9.Controls.Add(this.label64);
+            this.groupBox9.Controls.Add(this.Environment);
+            this.groupBox9.Controls.Add(this.DiscCharge);
+            this.groupBox9.Controls.Add(this.label53);
+            this.groupBox9.Controls.Add(this.LowDiscontInd);
+            this.groupBox9.Controls.Add(this.label43);
+            this.groupBox9.Controls.Add(this.HazardousInd);
+            this.groupBox9.Controls.Add(this.label44);
+            this.groupBox9.Controls.Add(this.label28);
             this.groupBox9.Controls.Add(this.textBox14);
             this.groupBox9.Controls.Add(this.SupersectionName);
             this.groupBox9.Controls.Add(this.label51);
@@ -779,7 +678,7 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Item Card";
             // 
-            // groupBox14
+            // textBox18
             // 
             this.groupBox14.Controls.Add(this.label29);
             this.groupBox14.Controls.Add(this.label31);
@@ -805,18 +704,16 @@
             // 
             // label29
             // 
-            this.label29.Location = new System.Drawing.Point(27, 22);
-            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(51, 16);
-            this.label29.TabIndex = 286;
-            this.label29.Text = "Height";
-            this.label29.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.LicensedInd.Enabled = false;
+            this.LicensedInd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.LicensedInd.Location = new System.Drawing.Point(877, 125);
+            this.LicensedInd.Name = "LicensedInd";
+            this.LicensedInd.Size = new System.Drawing.Size(21, 20);
+            this.LicensedInd.TabIndex = 258;
             // 
             // label31
             // 
-            this.label31.Location = new System.Drawing.Point(16, 115);
-            this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label31.Location = new System.Drawing.Point(827, 122);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(60, 25);
             this.label31.TabIndex = 283;
@@ -825,23 +722,20 @@
             // 
             // StandartWeight
             // 
-            this.StandartWeight.Enabled = false;
-            this.StandartWeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.StandartWeight.Location = new System.Drawing.Point(79, 115);
-            this.StandartWeight.Margin = new System.Windows.Forms.Padding(4);
-            this.StandartWeight.Name = "StandartWeight";
-            this.StandartWeight.Size = new System.Drawing.Size(77, 23);
-            this.StandartWeight.TabIndex = 287;
+            this.BHCFlag.Enabled = false;
+            this.BHCFlag.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.BHCFlag.Location = new System.Drawing.Point(798, 125);
+            this.BHCFlag.Name = "BHCFlag";
+            this.BHCFlag.Size = new System.Drawing.Size(21, 20);
+            this.BHCFlag.TabIndex = 253;
             // 
             // Height
             // 
-            this.Height.Enabled = false;
-            this.Height.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Height.Location = new System.Drawing.Point(79, 19);
-            this.Height.Margin = new System.Windows.Forms.Padding(4);
-            this.Height.Name = "Height";
-            this.Height.Size = new System.Drawing.Size(78, 23);
-            this.Height.TabIndex = 289;
+            this.label33.Location = new System.Drawing.Point(762, 121);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(39, 27);
+            this.label33.TabIndex = 251;
+            this.label33.Text = "BHC Flag";
             // 
             // label32
             // 
@@ -956,26 +850,12 @@
             // 
             // groupBox13
             // 
-            this.groupBox13.Controls.Add(this.DiscontinuationDate);
-            this.groupBox13.Controls.Add(this.UKDiscDate);
-            this.groupBox13.Controls.Add(this.label27);
-            this.groupBox13.Controls.Add(this.OnSubstitutedBy);
-            this.groupBox13.Controls.Add(this.label60);
-            this.groupBox13.Controls.Add(this.RunOn);
-            this.groupBox13.Controls.Add(this.label54);
-            this.groupBox13.Controls.Add(this.textBox35);
-            this.groupBox13.Controls.Add(this.label66);
-            this.groupBox13.Controls.Add(this.Referral);
-            this.groupBox13.Controls.Add(this.label58);
-            this.groupBox13.Controls.Add(this.label62);
-            this.groupBox13.Location = new System.Drawing.Point(804, 1);
-            this.groupBox13.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox13.Size = new System.Drawing.Size(209, 190);
-            this.groupBox13.TabIndex = 304;
-            this.groupBox13.TabStop = false;
-            this.groupBox13.Text = "Disc. Info";
+            this.Shipping.Enabled = false;
+            this.Shipping.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Shipping.Location = new System.Drawing.Point(877, 71);
+            this.Shipping.Name = "Shipping";
+            this.Shipping.Size = new System.Drawing.Size(21, 20);
+            this.Shipping.TabIndex = 264;
             // 
             // DiscontinuationDate
             // 
@@ -1020,173 +900,86 @@
             // 
             // label60
             // 
-            this.label60.Location = new System.Drawing.Point(4, 76);
-            this.label60.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(88, 23);
-            this.label60.TabIndex = 213;
-            this.label60.Text = "SS By";
-            this.label60.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label37.Location = new System.Drawing.Point(746, 95);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(46, 27);
+            this.label37.TabIndex = 247;
+            this.label37.Text = "Disc Change";
+            this.label37.Click += new System.EventHandler(this.label37_Click);
             // 
             // RunOn
             // 
-            this.RunOn.Enabled = false;
-            this.RunOn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.RunOn.Location = new System.Drawing.Point(98, 107);
-            this.RunOn.Margin = new System.Windows.Forms.Padding(4);
-            this.RunOn.Name = "RunOn";
-            this.RunOn.Size = new System.Drawing.Size(92, 23);
-            this.RunOn.TabIndex = 236;
+            this.label38.Location = new System.Drawing.Point(820, 93);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(56, 27);
+            this.label38.TabIndex = 250;
+            this.label38.Text = "Exp. Prod. Change";
             // 
             // label54
             // 
-            this.label54.Location = new System.Drawing.Point(43, 110);
-            this.label54.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(56, 16);
-            this.label54.TabIndex = 230;
-            this.label54.Text = "Run on";
-            this.label54.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // Referral
-            // 
-            this.Referral.Enabled = false;
-            this.Referral.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Referral.Location = new System.Drawing.Point(97, 138);
-            this.Referral.Margin = new System.Windows.Forms.Padding(4);
-            this.Referral.Name = "Referral";
-            this.Referral.Size = new System.Drawing.Size(90, 23);
-            this.Referral.TabIndex = 242;
-            // 
-            // label58
-            // 
-            this.label58.Location = new System.Drawing.Point(30, 140);
-            this.label58.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(59, 16);
-            this.label58.TabIndex = 218;
-            this.label58.Text = "Referral";
-            this.label58.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label62
-            // 
-            this.label62.Location = new System.Drawing.Point(-9, 45);
-            this.label62.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(99, 28);
-            this.label62.TabIndex = 269;
-            this.label62.Text = "Disc. (OS)";
-            this.label62.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // groupBox12
-            // 
-            this.groupBox12.Controls.Add(this.Expiringpro);
-            this.groupBox12.Controls.Add(this.HazardousInd);
-            this.groupBox12.Controls.Add(this.DiscCharge);
-            this.groupBox12.Controls.Add(this.label53);
-            this.groupBox12.Controls.Add(this.Environment);
-            this.groupBox12.Controls.Add(this.Lithium);
-            this.groupBox12.Controls.Add(this.label64);
-            this.groupBox12.Controls.Add(this.Shipping);
-            this.groupBox12.Controls.Add(this.label63);
-            this.groupBox12.Controls.Add(this.LicenceType);
-            this.groupBox12.Controls.Add(this.CalibrationInd);
-            this.groupBox12.Controls.Add(this.label22);
-            this.groupBox12.Controls.Add(this.label28);
-            this.groupBox12.Controls.Add(this.label55);
-            this.groupBox12.Controls.Add(this.label25);
-            this.groupBox12.Controls.Add(this.label26);
-            this.groupBox12.Location = new System.Drawing.Point(497, 116);
-            this.groupBox12.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox12.Size = new System.Drawing.Size(299, 69);
-            this.groupBox12.TabIndex = 303;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Indicators";
+            this.Lithium.Enabled = false;
+            this.Lithium.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Lithium.Location = new System.Drawing.Point(799, 72);
+            this.Lithium.Name = "Lithium";
+            this.Lithium.Size = new System.Drawing.Size(21, 20);
+            this.Lithium.TabIndex = 265;
             // 
             // Expiringpro
             // 
             this.Expiringpro.Enabled = false;
             this.Expiringpro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Expiringpro.Location = new System.Drawing.Point(258, 40);
-            this.Expiringpro.Margin = new System.Windows.Forms.Padding(4);
+            this.Expiringpro.Location = new System.Drawing.Point(877, 97);
             this.Expiringpro.Name = "Expiringpro";
-            this.Expiringpro.Size = new System.Drawing.Size(27, 23);
-            this.Expiringpro.TabIndex = 278;
+            this.Expiringpro.Size = new System.Drawing.Size(21, 20);
+            this.Expiringpro.TabIndex = 255;
             // 
-            // HazardousInd
+            // label63
             // 
-            this.HazardousInd.Enabled = false;
-            this.HazardousInd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.HazardousInd.Location = new System.Drawing.Point(49, 8);
-            this.HazardousInd.Margin = new System.Windows.Forms.Padding(4);
-            this.HazardousInd.Name = "HazardousInd";
-            this.HazardousInd.Size = new System.Drawing.Size(27, 23);
-            this.HazardousInd.TabIndex = 231;
-            // 
-            // DiscCharge
-            // 
-            this.DiscCharge.Enabled = false;
-            this.DiscCharge.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.DiscCharge.Location = new System.Drawing.Point(187, 41);
-            this.DiscCharge.Margin = new System.Windows.Forms.Padding(4);
-            this.DiscCharge.Name = "DiscCharge";
-            this.DiscCharge.Size = new System.Drawing.Size(27, 23);
-            this.DiscCharge.TabIndex = 279;
+            this.label63.Location = new System.Drawing.Point(826, 75);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(51, 13);
+            this.label63.TabIndex = 261;
+            this.label63.Text = "Shipping";
+            this.label63.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label53
             // 
-            this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(85, 13);
-            this.label53.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(27, 17);
-            this.label53.TabIndex = 256;
-            this.label53.Text = "HE";
-            this.label53.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label64.AutoSize = true;
+            this.label64.Location = new System.Drawing.Point(775, 74);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(24, 13);
+            this.label64.TabIndex = 262;
+            this.label64.Text = "Lith";
+            this.label64.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // Environment
             // 
             this.Environment.Enabled = false;
             this.Environment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.Environment.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.Environment.Location = new System.Drawing.Point(118, 9);
-            this.Environment.Margin = new System.Windows.Forms.Padding(4);
+            this.Environment.Location = new System.Drawing.Point(746, 72);
             this.Environment.Name = "Environment";
-            this.Environment.Size = new System.Drawing.Size(27, 23);
-            this.Environment.TabIndex = 257;
+            this.Environment.Size = new System.Drawing.Size(21, 20);
+            this.Environment.TabIndex = 269;
             // 
-            // Lithium
+            // DiscCharge
             // 
-            this.Lithium.Enabled = false;
-            this.Lithium.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Lithium.Location = new System.Drawing.Point(258, 9);
-            this.Lithium.Margin = new System.Windows.Forms.Padding(4);
-            this.Lithium.Name = "Lithium";
-            this.Lithium.Size = new System.Drawing.Size(27, 23);
-            this.Lithium.TabIndex = 251;
+            this.DiscCharge.Enabled = false;
+            this.DiscCharge.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.DiscCharge.Location = new System.Drawing.Point(798, 96);
+            this.DiscCharge.Name = "DiscCharge";
+            this.DiscCharge.Size = new System.Drawing.Size(21, 20);
+            this.DiscCharge.TabIndex = 257;
+            this.DiscCharge.TextChanged += new System.EventHandler(this.DiscCharge_TextChanged);
             // 
-            // label64
+            // label53
             // 
-            this.label64.AutoSize = true;
-            this.label64.Location = new System.Drawing.Point(227, 13);
-            this.label64.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(19, 17);
-            this.label64.TabIndex = 228;
-            this.label64.Text = "Li";
-            this.label64.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Shipping
-            // 
-            this.Shipping.Enabled = false;
-            this.Shipping.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Shipping.Location = new System.Drawing.Point(187, 9);
-            this.Shipping.Margin = new System.Windows.Forms.Padding(4);
-            this.Shipping.Name = "Shipping";
-            this.Shipping.Size = new System.Drawing.Size(27, 23);
-            this.Shipping.TabIndex = 247;
+            this.label53.Location = new System.Drawing.Point(718, 75);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(28, 13);
+            this.label53.TabIndex = 268;
+            this.label53.Text = "Env";
+            this.label53.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label63
             // 
@@ -1209,17 +1002,16 @@
             this.LicenceType.Size = new System.Drawing.Size(27, 23);
             this.LicenceType.TabIndex = 255;
             // 
-            // CalibrationInd
+            // HazardousInd
             // 
-            this.CalibrationInd.Enabled = false;
-            this.CalibrationInd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.CalibrationInd.Location = new System.Drawing.Point(49, 39);
-            this.CalibrationInd.Margin = new System.Windows.Forms.Padding(4);
-            this.CalibrationInd.Name = "CalibrationInd";
-            this.CalibrationInd.Size = new System.Drawing.Size(27, 23);
-            this.CalibrationInd.TabIndex = 214;
+            this.HazardousInd.Enabled = false;
+            this.HazardousInd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.HazardousInd.Location = new System.Drawing.Point(694, 72);
+            this.HazardousInd.Name = "HazardousInd";
+            this.HazardousInd.Size = new System.Drawing.Size(21, 20);
+            this.HazardousInd.TabIndex = 263;
             // 
-            // label22
+            // label44
             // 
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(17, 43);
@@ -1450,15 +1242,12 @@
             // 
             // label18
             // 
-            this.label18.AutoSize = true;
-            this.label18.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label18.Location = new System.Drawing.Point(21, 30);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(51, 17);
-            this.label18.TabIndex = 259;
-            this.label18.Text = "IME 01";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.RunOn.Enabled = false;
+            this.RunOn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.RunOn.Location = new System.Drawing.Point(798, 47);
+            this.RunOn.Name = "RunOn";
+            this.RunOn.Size = new System.Drawing.Size(89, 20);
+            this.RunOn.TabIndex = 273;
             // 
             // textBox22
             // 
@@ -1632,46 +1421,21 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.txtCustomerName);
-            this.groupBox1.Controls.Add(this.CustomerCode);
-            this.groupBox1.Controls.Add(this.comboBox7);
-            this.groupBox1.Controls.Add(this.label21);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.textBox16);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label30);
-            this.groupBox1.Controls.Add(this.comboBox3);
-            this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.comboBox6);
-            this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Location = new System.Drawing.Point(16, 7);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(726, 161);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            
+            this.OnSubstitutedBy.Enabled = false;
+            this.OnSubstitutedBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.OnSubstitutedBy.Location = new System.Drawing.Point(799, 20);
+            this.OnSubstitutedBy.Name = "OnSubstitutedBy";
+            this.OnSubstitutedBy.Size = new System.Drawing.Size(89, 20);
+            this.OnSubstitutedBy.TabIndex = 274;
             // 
             // txtCustomerName
             // 
-            this.txtCustomerName.Location = new System.Drawing.Point(250, 10);
-            this.txtCustomerName.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.Size = new System.Drawing.Size(383, 22);
-            this.txtCustomerName.TabIndex = 75;
+            this.label60.Location = new System.Drawing.Point(763, 19);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(39, 29);
+            this.label60.TabIndex = 267;
+            this.label60.Text = "Subs  By";
+            this.label60.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // CustomerCode
             // 
@@ -1815,17 +1579,16 @@
             this.label1.TabIndex = 62;
             this.label1.Text = "Quote No";
             // 
-            // label30
+            // Manufacturer
             // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(525, 133);
-            this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(48, 17);
-            this.label30.TabIndex = 60;
-            this.label30.Text = "Factor";
+            this.Manufacturer.Enabled = false;
+            this.Manufacturer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.Manufacturer.Location = new System.Drawing.Point(680, 19);
+            this.Manufacturer.Name = "Manufacturer";
+            this.Manufacturer.Size = new System.Drawing.Size(89, 20);
+            this.Manufacturer.TabIndex = 277;
             // 
-            // comboBox3
+            // label27
             // 
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(363, 130);
@@ -2292,6 +2055,52 @@
             this.textBox35.Size = new System.Drawing.Size(90, 23);
             this.textBox35.TabIndex = 242;
             // 
+            // dataGridView3
+            // 
+            this.dataGridView3.AllowUserToOrderColumns = true;
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgNo,
+            this.dgSupplier,
+            this.dgProductCode,
+            this.dgMPN,
+            this.dgDesc});
+            this.dataGridView3.Location = new System.Drawing.Point(3, 9);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.Size = new System.Drawing.Size(1340, 229);
+            this.dataGridView3.TabIndex = 9;
+            this.dataGridView3.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellEndEdit);
+            this.dataGridView3.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellLeave);
+            this.dataGridView3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView3_KeyDown);
+            // 
+            // dgNo
+            // 
+            this.dgNo.HeaderText = "No";
+            this.dgNo.Name = "dgNo";
+            this.dgNo.ReadOnly = true;
+            // 
+            // dgSupplier
+            // 
+            this.dgSupplier.HeaderText = "Supplier";
+            this.dgSupplier.Name = "dgSupplier";
+            // 
+            // dgProductCode
+            // 
+            this.dgProductCode.HeaderText = "Product Code";
+            this.dgProductCode.Name = "dgProductCode";
+            // 
+            // dgMPN
+            // 
+            this.dgMPN.HeaderText = "MPN";
+            this.dgMPN.Name = "dgMPN";
+            this.dgMPN.ReadOnly = true;
+            // 
+            // dgDesc
+            // 
+            this.dgDesc.HeaderText = "Description";
+            this.dgDesc.Name = "dgDesc";
+            this.dgDesc.ReadOnly = true;
+            // 
             // QuotationAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2318,7 +2127,7 @@
             this.groupBox3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox7.ResumeLayout(false);
@@ -2329,26 +2138,6 @@
             this.groupBox11.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
-            this.groupBox14.ResumeLayout(false);
-            this.groupBox14.PerformLayout();
-            this.groupBox13.ResumeLayout(false);
-            this.groupBox13.PerformLayout();
-            this.groupBox12.ResumeLayout(false);
-            this.groupBox12.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox15.ResumeLayout(false);
-            this.groupBox15.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2504,42 +2293,13 @@
         private System.Windows.Forms.TextBox MHCodeLevel1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.GroupBox groupBox15;
-        private System.Windows.Forms.TextBox textBox30;
-        private System.Windows.Forms.TextBox textBox31;
-        private System.Windows.Forms.Label label65;
-        private System.Windows.Forms.TextBox textBox32;
-        private System.Windows.Forms.TextBox textBox33;
-        private System.Windows.Forms.TextBox textBox34;
-        private System.Windows.Forms.TextBox DiscountedPrice1;
-        private System.Windows.Forms.TextBox textBox25;
-        private System.Windows.Forms.TextBox ColBreak5;
-        private System.Windows.Forms.Label label50;
-        private System.Windows.Forms.TextBox ColPrice5;
-        private System.Windows.Forms.TextBox ColPrice2;
-        private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.TextBox DiscountedPrice5;
-        private System.Windows.Forms.TextBox textBox26;
-        private System.Windows.Forms.TextBox ColBreak2;
-        private System.Windows.Forms.TextBox textBox27;
-        private System.Windows.Forms.TextBox ColPrice3;
-        private System.Windows.Forms.Label label57;
-        private System.Windows.Forms.TextBox ColBreak1;
-        private System.Windows.Forms.TextBox ColPrice1;
-        private System.Windows.Forms.TextBox DiscountedPrice3;
-        private System.Windows.Forms.TextBox textBox28;
-        private System.Windows.Forms.TextBox DiscountedPrice4;
-        private System.Windows.Forms.TextBox ColBreak4;
-        private System.Windows.Forms.TextBox DiscountedPrice2;
-        private System.Windows.Forms.TextBox textBox29;
-        private System.Windows.Forms.TextBox ColPrice4;
-        private System.Windows.Forms.TextBox ColBreak3;
-        private System.Windows.Forms.Label label61;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox35;
-        private System.Windows.Forms.Label label66;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.TextBox Expiringpro;
+        private System.Windows.Forms.TextBox DiscCharge;
+        private System.Windows.Forms.TextBox LowDiscontInd;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.Label label44;
     }
 }
 

@@ -89,11 +89,14 @@ namespace LoginForm
         }
         private void CustomerDataGrid_Click(object sender, EventArgs e)
         {
-            if (CustomerDataGrid.DataSource != null)
-            {
-                gridselectedindex = CustomerDataGrid.CurrentCell.RowIndex;
-                customersearch();
-            }
+            gridselectedindex = CustomerDataGrid.CurrentCell.RowIndex;
+            customersearch();
+        }
+
+
+
+        private void ContactNotes_TextChanged(object sender, EventArgs e)
+        {
             
         }
 

@@ -67,6 +67,7 @@ namespace LoginForm
             this.Hide();
             QuotationAdd quotationForm = new QuotationAdd();
             quotationForm.ShowDialog();
+            this.Show();
         }
 
         private void btnSupplier_Click(object sender, EventArgs e)
