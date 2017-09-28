@@ -269,6 +269,13 @@
           <Property Name="Height" Type="nvarchar" MaxLength="15" />
           <Property Name="GrossWeight" Type="nvarchar" MaxLength="15" />
         </EntityType>
+        <EntityType Name="ShippingMethod">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="shipping_name" Type="nvarchar" MaxLength="40" />
+        </EntityType>
         <EntityType Name="SlidingPrice">
           <Key>
             <PropertyRef Name="ArticleNo" />
@@ -410,7 +417,6 @@
           <Property Name="SupplierNoteID" Type="int" />
           <Property Name="MainContactID" Type="int" />
           <Property Name="BankID" Type="int" />
-          <Property Name="PoBox" Type="nvarchar" MaxLength="40" />
           <Property Name="discountrate" Type="decimal" Precision="10" Scale="3" />
           <Property Name="iban" Type="nvarchar" MaxLength="40" />
           <Property Name="branchcode" Type="nvarchar" MaxLength="40" />
@@ -421,7 +427,13 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Adress" Type="nvarchar" MaxLength="200" />
+          <Property Name="SupplierID" Type="nvarchar" MaxLength="15" />
+          <Property Name="PostCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="AdressDetails" Type="nvarchar(max)" />
+          <Property Name="TownID" Type="int" />
+          <Property Name="CityID" Type="int" />
+          <Property Name="CountryID" Type="int" />
+          <Property Name="PoBox" Type="nvarchar" MaxLength="40" />
         </EntityType>
         <EntityType Name="SupplierBank">
           <Key>
@@ -489,11 +501,11 @@
           <Property Name="fax" Type="nvarchar" MaxLength="15" />
           <Property Name="mobilephone" Type="nvarchar" MaxLength="15" />
           <Property Name="sw_email" Type="nvarchar" MaxLength="50" />
-          <Property Name="supplieradressID" Type="int" />
           <Property Name="supplierID" Type="nvarchar" MaxLength="15" />
-          <Property Name="supplierNoteID" Type="int" />
           <Property Name="languageID" Type="int" />
           <Property Name="categoryID" Type="int" />
+          <Property Name="WorkerNoteID" Type="int" />
+          <Property Name="adress" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -945,6 +957,54 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__SupplierA__CityI__4959E263">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="SupplierAdresses" Type="Self.SupplierAdresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SupplierAdresses">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplierA__Count__4A4E069C">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="SupplierAdresses" Type="Self.SupplierAdresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SupplierAdresses">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplierA__Suppl__4589517F">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="SupplierAdresses" Type="Self.SupplierAdresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SupplierAdresses">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplierA__TownI__4B422AD5">
+          <End Role="Town" Type="Self.Town" Multiplicity="0..1" />
+          <End Role="SupplierAdresses" Type="Self.SupplierAdresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Town">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SupplierAdresses">
+              <PropertyRef Name="TownID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__SupplierC__categ__0697FACD">
           <End Role="SupplierCategory" Type="Self.SupplierCategory" Multiplicity="0..1" />
           <End Role="SupplierCategorySubCategory" Type="Self.SupplierCategorySubCategory" Multiplicity="*" />
@@ -1053,18 +1113,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SupplierW__suppl__73852659">
-          <End Role="Notes" Type="Self.Notes" Multiplicity="0..1" />
-          <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Notes">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="SupplierWorker">
-              <PropertyRef Name="supplierNoteID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__SupplierW__suppl__74794A92">
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
           <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="*" />
@@ -1077,18 +1125,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SupplierW__suppl__756D6ECB">
-          <End Role="SupplierAdresses" Type="Self.SupplierAdresses" Multiplicity="0..1" />
-          <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SupplierAdresses">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="SupplierWorker">
-              <PropertyRef Name="supplieradressID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__SupplierW__title__7755B73D">
           <End Role="SupplierTitle" Type="Self.SupplierTitle" Multiplicity="0..1" />
           <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="*" />
@@ -1098,6 +1134,30 @@
             </Principal>
             <Dependent Role="SupplierWorker">
               <PropertyRef Name="titleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplierW__Worke__42ACE4D4">
+          <End Role="Notes" Type="Self.Notes" Multiplicity="0..1" />
+          <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Notes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SupplierWorker">
+              <PropertyRef Name="WorkerNoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplierW__Worke__44952D46">
+          <End Role="Notes" Type="Self.Notes" Multiplicity="0..1" />
+          <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Notes">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SupplierWorker">
+              <PropertyRef Name="WorkerNoteID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1174,6 +1234,7 @@
           <EntitySet Name="PaymentTerm" EntityType="Self.PaymentTerm" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rate" EntityType="Self.Rate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RSPro" EntityType="Self.RSPro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShippingMethod" EntityType="Self.ShippingMethod" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SlidingPrice" EntityType="Self.SlidingPrice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuperDisk" EntityType="Self.SuperDisk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuperDiskP" EntityType="Self.SuperDiskP" Schema="dbo" store:Type="Tables" />
@@ -1327,6 +1388,22 @@
             <End Role="Notes" EntitySet="Notes" />
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
+          <AssociationSet Name="FK__SupplierA__CityI__4959E263" Association="Self.FK__SupplierA__CityI__4959E263">
+            <End Role="City" EntitySet="City" />
+            <End Role="SupplierAdresses" EntitySet="SupplierAdresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierA__Count__4A4E069C" Association="Self.FK__SupplierA__Count__4A4E069C">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="SupplierAdresses" EntitySet="SupplierAdresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierA__Suppl__4589517F" Association="Self.FK__SupplierA__Suppl__4589517F">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="SupplierAdresses" EntitySet="SupplierAdresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierA__TownI__4B422AD5" Association="Self.FK__SupplierA__TownI__4B422AD5">
+            <End Role="Town" EntitySet="Town" />
+            <End Role="SupplierAdresses" EntitySet="SupplierAdresses" />
+          </AssociationSet>
           <AssociationSet Name="FK__SupplierC__categ__0697FACD" Association="Self.FK__SupplierC__categ__0697FACD">
             <End Role="SupplierCategory" EntitySet="SupplierCategory" />
             <End Role="SupplierCategorySubCategory" EntitySet="SupplierCategorySubCategory" />
@@ -1363,20 +1440,20 @@
             <End Role="Languages" EntitySet="Languages" />
             <End Role="SupplierWorker" EntitySet="SupplierWorker" />
           </AssociationSet>
-          <AssociationSet Name="FK__SupplierW__suppl__73852659" Association="Self.FK__SupplierW__suppl__73852659">
-            <End Role="Notes" EntitySet="Notes" />
-            <End Role="SupplierWorker" EntitySet="SupplierWorker" />
-          </AssociationSet>
           <AssociationSet Name="FK__SupplierW__suppl__74794A92" Association="Self.FK__SupplierW__suppl__74794A92">
             <End Role="Supplier" EntitySet="Supplier" />
             <End Role="SupplierWorker" EntitySet="SupplierWorker" />
           </AssociationSet>
-          <AssociationSet Name="FK__SupplierW__suppl__756D6ECB" Association="Self.FK__SupplierW__suppl__756D6ECB">
-            <End Role="SupplierAdresses" EntitySet="SupplierAdresses" />
-            <End Role="SupplierWorker" EntitySet="SupplierWorker" />
-          </AssociationSet>
           <AssociationSet Name="FK__SupplierW__title__7755B73D" Association="Self.FK__SupplierW__title__7755B73D">
             <End Role="SupplierTitle" EntitySet="SupplierTitle" />
+            <End Role="SupplierWorker" EntitySet="SupplierWorker" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierW__Worke__42ACE4D4" Association="Self.FK__SupplierW__Worke__42ACE4D4">
+            <End Role="Notes" EntitySet="Notes" />
+            <End Role="SupplierWorker" EntitySet="SupplierWorker" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierW__Worke__44952D46" Association="Self.FK__SupplierW__Worke__44952D46">
+            <End Role="Notes" EntitySet="Notes" />
             <End Role="SupplierWorker" EntitySet="SupplierWorker" />
           </AssociationSet>
           <AssociationSet Name="FK__Town__CityID__5224328E" Association="Self.FK__Town__CityID__5224328E">
@@ -1425,6 +1502,7 @@
           <EntitySet Name="PaymentTerms" EntityType="IMEModel.PaymentTerm" />
           <EntitySet Name="Rates" EntityType="IMEModel.Rate" />
           <EntitySet Name="RSProes" EntityType="IMEModel.RSPro" />
+          <EntitySet Name="ShippingMethods" EntityType="IMEModel.ShippingMethod" />
           <EntitySet Name="SlidingPrices" EntityType="IMEModel.SlidingPrice" />
           <EntitySet Name="SuperDisks" EntityType="IMEModel.SuperDisk" />
           <EntitySet Name="SuperDiskPs" EntityType="IMEModel.SuperDiskP" />
@@ -1449,6 +1527,10 @@
             <End Role="City" EntitySet="Cities" />
             <End Role="CustomerAdress" EntitySet="CustomerAdresses" />
           </AssociationSet>
+          <AssociationSet Name="FK__SupplierA__CityI__4959E263" Association="IMEModel.FK__SupplierA__CityI__4959E263">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="SupplierAdress" EntitySet="SupplierAdresses" />
+          </AssociationSet>
           <AssociationSet Name="FK__Town__CityID__5224328E" Association="IMEModel.FK__Town__CityID__5224328E">
             <End Role="City" EntitySet="Cities" />
             <End Role="Town" EntitySet="Towns" />
@@ -1456,6 +1538,10 @@
           <AssociationSet Name="FK__CustomerA__Count__503BEA1C" Association="IMEModel.FK__CustomerA__Count__503BEA1C">
             <End Role="Country" EntitySet="Countries" />
             <End Role="CustomerAdress" EntitySet="CustomerAdresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierA__Count__4A4E069C" Association="IMEModel.FK__SupplierA__Count__4A4E069C">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="SupplierAdress" EntitySet="SupplierAdresses" />
           </AssociationSet>
           <AssociationSet Name="FK__Customer__accoun__6EF57B66" Association="IMEModel.FK__Customer__accoun__6EF57B66">
             <End Role="Worker" EntitySet="Workers" />
@@ -1557,7 +1643,11 @@
             <End Role="Note" EntitySet="Notes" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
-          <AssociationSet Name="FK__SupplierW__suppl__73852659" Association="IMEModel.FK__SupplierW__suppl__73852659">
+          <AssociationSet Name="FK__SupplierW__Worke__42ACE4D4" Association="IMEModel.FK__SupplierW__Worke__42ACE4D4">
+            <End Role="Note" EntitySet="Notes" />
+            <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierW__Worke__44952D46" Association="IMEModel.FK__SupplierW__Worke__44952D46">
             <End Role="Note" EntitySet="Notes" />
             <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
           </AssociationSet>
@@ -1593,6 +1683,10 @@
             <End Role="Worker" EntitySet="Workers" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
+          <AssociationSet Name="FK__SupplierA__Suppl__4589517F" Association="IMEModel.FK__SupplierA__Suppl__4589517F">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="SupplierAdress" EntitySet="SupplierAdresses" />
+          </AssociationSet>
           <AssociationSet Name="FK__SupplierC__suppl__0880433F" Association="IMEModel.FK__SupplierC__suppl__0880433F">
             <End Role="Supplier" EntitySet="Suppliers" />
             <End Role="SupplierCategorySubCategory" EntitySet="SupplierCategorySubCategories" />
@@ -1601,9 +1695,9 @@
             <End Role="Supplier" EntitySet="Suppliers" />
             <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
           </AssociationSet>
-          <AssociationSet Name="FK__SupplierW__suppl__756D6ECB" Association="IMEModel.FK__SupplierW__suppl__756D6ECB">
+          <AssociationSet Name="FK__SupplierA__TownI__4B422AD5" Association="IMEModel.FK__SupplierA__TownI__4B422AD5">
+            <End Role="Town" EntitySet="Towns" />
             <End Role="SupplierAdress" EntitySet="SupplierAdresses" />
-            <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
           </AssociationSet>
           <AssociationSet Name="FK__SupplierC__categ__0697FACD" Association="IMEModel.FK__SupplierC__categ__0697FACD">
             <End Role="SupplierCategory" EntitySet="SupplierCategories" />
@@ -1666,6 +1760,7 @@
           <Property Name="CountryID" Type="Int32" />
           <NavigationProperty Name="Country" Relationship="IMEModel.FK__City__CountryID__51300E55" FromRole="City" ToRole="Country" />
           <NavigationProperty Name="CustomerAdresses" Relationship="IMEModel.FK__CustomerA__CityI__4E53A1AA" FromRole="City" ToRole="CustomerAdress" />
+          <NavigationProperty Name="SupplierAdresses" Relationship="IMEModel.FK__SupplierA__CityI__4959E263" FromRole="City" ToRole="SupplierAdress" />
           <NavigationProperty Name="Towns" Relationship="IMEModel.FK__Town__CityID__5224328E" FromRole="City" ToRole="Town" />
         </EntityType>
         <EntityType Name="Country">
@@ -1676,6 +1771,7 @@
           <Property Name="Country_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Cities" Relationship="IMEModel.FK__City__CountryID__51300E55" FromRole="Country" ToRole="City" />
           <NavigationProperty Name="CustomerAdresses" Relationship="IMEModel.FK__CustomerA__Count__503BEA1C" FromRole="Country" ToRole="CustomerAdress" />
+          <NavigationProperty Name="SupplierAdresses" Relationship="IMEModel.FK__SupplierA__Count__4A4E069C" FromRole="Country" ToRole="SupplierAdress" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -1900,7 +1996,8 @@
           <NavigationProperty Name="CustomerWorkers" Relationship="IMEModel.FK__CustomerW__custo__4222D4EF" FromRole="Note" ToRole="CustomerWorker" />
           <NavigationProperty Name="ItemNotes" Relationship="IMEModel.FK__ItemNote__NoteID__2B0A656D" FromRole="Note" ToRole="ItemNote" />
           <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__Suppli__09746778" FromRole="Note" ToRole="Supplier" />
-          <NavigationProperty Name="SupplierWorkers" Relationship="IMEModel.FK__SupplierW__suppl__73852659" FromRole="Note" ToRole="SupplierWorker" />
+          <NavigationProperty Name="SupplierWorkers" Relationship="IMEModel.FK__SupplierW__Worke__42ACE4D4" FromRole="Note" ToRole="SupplierWorker" />
+          <NavigationProperty Name="SupplierWorkers1" Relationship="IMEModel.FK__SupplierW__Worke__44952D46" FromRole="Note" ToRole="SupplierWorker" />
           <NavigationProperty Name="Workers" Relationship="IMEModel.FK__Worker__WorkerNo__4BAC3F29" FromRole="Note" ToRole="Worker" />
         </EntityType>
         <EntityType Name="OnSale">
@@ -1962,6 +2059,13 @@
           <Property Name="Lenght" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Height" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="GrossWeight" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ShippingMethod">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="shipping_name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="SlidingPrice">
           <Key>
@@ -2104,7 +2208,6 @@
           <Property Name="SupplierNoteID" Type="Int32" />
           <Property Name="MainContactID" Type="Int32" />
           <Property Name="BankID" Type="Int32" />
-          <Property Name="PoBox" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="discountrate" Type="Decimal" Precision="10" Scale="3" />
           <Property Name="iban" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="branchcode" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
@@ -2117,6 +2220,7 @@
           <NavigationProperty Name="SupplierBank" Relationship="IMEModel.FK__Supplier__BankID__0C50D423" FromRole="Supplier" ToRole="SupplierBank" />
           <NavigationProperty Name="SupplierMainContact" Relationship="IMEModel.FK__Supplier__MainCo__0A688BB1" FromRole="Supplier" ToRole="SupplierMainContact" />
           <NavigationProperty Name="Worker1" Relationship="IMEModel.FK__Supplier__repres__65370702" FromRole="Supplier" ToRole="Worker" />
+          <NavigationProperty Name="SupplierAdresses" Relationship="IMEModel.FK__SupplierA__Suppl__4589517F" FromRole="Supplier" ToRole="SupplierAdress" />
           <NavigationProperty Name="SupplierCategorySubCategories" Relationship="IMEModel.FK__SupplierC__suppl__0880433F" FromRole="Supplier" ToRole="SupplierCategorySubCategory" />
           <NavigationProperty Name="SupplierWorkers" Relationship="IMEModel.FK__SupplierW__suppl__74794A92" FromRole="Supplier" ToRole="SupplierWorker" />
         </EntityType>
@@ -2125,8 +2229,17 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Adress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="SupplierWorkers" Relationship="IMEModel.FK__SupplierW__suppl__756D6ECB" FromRole="SupplierAdress" ToRole="SupplierWorker" />
+          <Property Name="SupplierID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="PostCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AdressDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TownID" Type="Int32" />
+          <Property Name="CityID" Type="Int32" />
+          <Property Name="CountryID" Type="Int32" />
+          <Property Name="PoBox" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="City" Relationship="IMEModel.FK__SupplierA__CityI__4959E263" FromRole="SupplierAdress" ToRole="City" />
+          <NavigationProperty Name="Country" Relationship="IMEModel.FK__SupplierA__Count__4A4E069C" FromRole="SupplierAdress" ToRole="Country" />
+          <NavigationProperty Name="Supplier" Relationship="IMEModel.FK__SupplierA__Suppl__4589517F" FromRole="SupplierAdress" ToRole="Supplier" />
+          <NavigationProperty Name="Town" Relationship="IMEModel.FK__SupplierA__TownI__4B422AD5" FromRole="SupplierAdress" ToRole="Town" />
         </EntityType>
         <EntityType Name="SupplierBank">
           <Key>
@@ -2209,15 +2322,15 @@
           <Property Name="fax" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="mobilephone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="sw_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="supplieradressID" Type="Int32" />
           <Property Name="supplierID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="supplierNoteID" Type="Int32" />
           <Property Name="languageID" Type="Int32" />
           <Property Name="categoryID" Type="Int32" />
+          <Property Name="WorkerNoteID" Type="Int32" />
+          <Property Name="adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Language" Relationship="IMEModel.FK__SupplierW__langu__72910220" FromRole="SupplierWorker" ToRole="Language" />
-          <NavigationProperty Name="Note" Relationship="IMEModel.FK__SupplierW__suppl__73852659" FromRole="SupplierWorker" ToRole="Note" />
+          <NavigationProperty Name="Note" Relationship="IMEModel.FK__SupplierW__Worke__42ACE4D4" FromRole="SupplierWorker" ToRole="Note" />
+          <NavigationProperty Name="Note1" Relationship="IMEModel.FK__SupplierW__Worke__44952D46" FromRole="SupplierWorker" ToRole="Note" />
           <NavigationProperty Name="Supplier" Relationship="IMEModel.FK__SupplierW__suppl__74794A92" FromRole="SupplierWorker" ToRole="Supplier" />
-          <NavigationProperty Name="SupplierAdress" Relationship="IMEModel.FK__SupplierW__suppl__756D6ECB" FromRole="SupplierWorker" ToRole="SupplierAdress" />
           <NavigationProperty Name="SupplierCategory" Relationship="IMEModel.FK__SupplierW__categ__793DFFAF" FromRole="SupplierWorker" ToRole="SupplierCategory" />
           <NavigationProperty Name="SupplierDepartment" Relationship="IMEModel.FK__SupplierW__depar__76619304" FromRole="SupplierWorker" ToRole="SupplierDepartment" />
           <NavigationProperty Name="SupplierMainContacts" Relationship="IMEModel.FK__SupplierM__suppl__00DF2177" FromRole="SupplierWorker" ToRole="SupplierMainContact" />
@@ -2242,6 +2355,7 @@
           <Property Name="CityID" Type="Int32" />
           <NavigationProperty Name="City" Relationship="IMEModel.FK__Town__CityID__5224328E" FromRole="Town" ToRole="City" />
           <NavigationProperty Name="CustomerAdresses" Relationship="IMEModel.FK__CustomerA__TownI__4F47C5E3" FromRole="Town" ToRole="CustomerAdress" />
+          <NavigationProperty Name="SupplierAdresses" Relationship="IMEModel.FK__SupplierA__TownI__4B422AD5" FromRole="Town" ToRole="SupplierAdress" />
         </EntityType>
         <EntityType Name="Worker">
           <Key>
@@ -2290,6 +2404,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__SupplierA__CityI__4959E263">
+          <End Type="IMEModel.City" Role="City" Multiplicity="0..1" />
+          <End Type="IMEModel.SupplierAdress" Role="SupplierAdress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SupplierAdress">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Town__CityID__5224328E">
           <End Type="IMEModel.City" Role="City" Multiplicity="0..1" />
           <End Type="IMEModel.Town" Role="Town" Multiplicity="*" />
@@ -2310,6 +2436,18 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="CustomerAdress">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplierA__Count__4A4E069C">
+          <End Type="IMEModel.Country" Role="Country" Multiplicity="0..1" />
+          <End Type="IMEModel.SupplierAdress" Role="SupplierAdress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SupplierAdress">
               <PropertyRef Name="CountryID" />
             </Dependent>
           </ReferentialConstraint>
@@ -2614,7 +2752,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SupplierW__suppl__73852659">
+        <Association Name="FK__SupplierW__Worke__42ACE4D4">
           <End Type="IMEModel.Note" Role="Note" Multiplicity="0..1" />
           <End Type="IMEModel.SupplierWorker" Role="SupplierWorker" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2622,7 +2760,19 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="SupplierWorker">
-              <PropertyRef Name="supplierNoteID" />
+              <PropertyRef Name="WorkerNoteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SupplierW__Worke__44952D46">
+          <End Type="IMEModel.Note" Role="Note" Multiplicity="0..1" />
+          <End Type="IMEModel.SupplierWorker" Role="SupplierWorker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Note">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SupplierWorker">
+              <PropertyRef Name="WorkerNoteID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2722,6 +2872,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__SupplierA__Suppl__4589517F">
+          <End Type="IMEModel.Supplier" Role="Supplier" Multiplicity="0..1" />
+          <End Type="IMEModel.SupplierAdress" Role="SupplierAdress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SupplierAdress">
+              <PropertyRef Name="SupplierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__SupplierC__suppl__0880433F">
           <End Type="IMEModel.Supplier" Role="Supplier" Multiplicity="0..1" />
           <End Type="IMEModel.SupplierCategorySubCategory" Role="SupplierCategorySubCategory" Multiplicity="*" />
@@ -2746,15 +2908,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SupplierW__suppl__756D6ECB">
-          <End Type="IMEModel.SupplierAdress" Role="SupplierAdress" Multiplicity="0..1" />
-          <End Type="IMEModel.SupplierWorker" Role="SupplierWorker" Multiplicity="*" />
+        <Association Name="FK__SupplierA__TownI__4B422AD5">
+          <End Type="IMEModel.Town" Role="Town" Multiplicity="0..1" />
+          <End Type="IMEModel.SupplierAdress" Role="SupplierAdress" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="SupplierAdress">
+            <Principal Role="Town">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="SupplierWorker">
-              <PropertyRef Name="supplieradressID" />
+            <Dependent Role="SupplierAdress">
+              <PropertyRef Name="TownID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3152,6 +3314,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ShippingMethods">
+            <EntityTypeMapping TypeName="IMEModel.ShippingMethod">
+              <MappingFragment StoreEntitySet="ShippingMethod">
+                <ScalarProperty Name="shipping_name" ColumnName="shipping_name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="SlidingPrices">
             <EntityTypeMapping TypeName="IMEModel.SlidingPrice">
               <MappingFragment StoreEntitySet="SlidingPrice">
@@ -3283,7 +3453,6 @@
                 <ScalarProperty Name="branchcode" ColumnName="branchcode" />
                 <ScalarProperty Name="iban" ColumnName="iban" />
                 <ScalarProperty Name="discountrate" ColumnName="discountrate" />
-                <ScalarProperty Name="PoBox" ColumnName="PoBox" />
                 <ScalarProperty Name="BankID" ColumnName="BankID" />
                 <ScalarProperty Name="MainContactID" ColumnName="MainContactID" />
                 <ScalarProperty Name="SupplierNoteID" ColumnName="SupplierNoteID" />
@@ -3306,7 +3475,13 @@
           <EntitySetMapping Name="SupplierAdresses">
             <EntityTypeMapping TypeName="IMEModel.SupplierAdress">
               <MappingFragment StoreEntitySet="SupplierAdresses">
-                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="PoBox" ColumnName="PoBox" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="TownID" ColumnName="TownID" />
+                <ScalarProperty Name="AdressDetails" ColumnName="AdressDetails" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -3375,11 +3550,11 @@
           <EntitySetMapping Name="SupplierWorkers">
             <EntityTypeMapping TypeName="IMEModel.SupplierWorker">
               <MappingFragment StoreEntitySet="SupplierWorker">
+                <ScalarProperty Name="adress" ColumnName="adress" />
+                <ScalarProperty Name="WorkerNoteID" ColumnName="WorkerNoteID" />
                 <ScalarProperty Name="categoryID" ColumnName="categoryID" />
                 <ScalarProperty Name="languageID" ColumnName="languageID" />
-                <ScalarProperty Name="supplierNoteID" ColumnName="supplierNoteID" />
                 <ScalarProperty Name="supplierID" ColumnName="supplierID" />
-                <ScalarProperty Name="supplieradressID" ColumnName="supplieradressID" />
                 <ScalarProperty Name="sw_email" ColumnName="sw_email" />
                 <ScalarProperty Name="mobilephone" ColumnName="mobilephone" />
                 <ScalarProperty Name="fax" ColumnName="fax" />

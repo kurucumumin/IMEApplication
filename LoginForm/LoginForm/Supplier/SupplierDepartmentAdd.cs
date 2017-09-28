@@ -44,5 +44,10 @@ namespace LoginForm
                 MessageBox.Show("There is already a departmnet name with " + txtdepartment.Text);
             }
         }
+
+        private void SupplierDepartmentAdd_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
