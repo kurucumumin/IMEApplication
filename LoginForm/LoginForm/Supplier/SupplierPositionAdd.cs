@@ -24,6 +24,8 @@ namespace LoginForm
         {
             var departmenList = db.SupplierDepartments.Select(a => a.departmentname).ToList();
             cmbDepartment.DataSource = departmenList;
+            cmbDepartment.DisplayMember = "departmentname";
+            cmbDepartment.ValueMember = "ID";
         }
 
         private void btncancel_Click(object sender, EventArgs e)
@@ -35,20 +37,37 @@ namespace LoginForm
 
         private void btnadd_Click(object sender, EventArgs e)
         {
-            var result = db.SupplierTitles.Where(title => title.titlename == txttitle.Text).ToList();
-            if (result.Count == 0)
+            var dep = db.SupplierDepartments.Where(a => a.departmentname == cmbDepartment.Text).FirstOrDefault();
+            if (dep != null)
             {
+                var result = db.SupplierTitles.Where(title => title.titlename == txttitle.Text).FirstOrDefault();
 
-                SupplierTitle ct = new SupplierTitle();
-                ct.titlename = txttitle.Text;
-                string Department = cmbDepartment.Items[cmbDepartment.SelectedIndex].ToString();
-                ct.departmnetID = db.SupplierDepartments.Where(cd => cd.departmentname == Department).Select(cd => cd.ID).ToList()[0];
-                db.SupplierTitles.Add(ct);
+                if (result == null || (((db.SupplierTitles.Where(a => a.departmnetID == a.departmnetID)).Count() == 0) && result != null))
+                {
+                    SupplierTitle ct = new SupplierTitle();
+                    ct.titlename = txttitle.Text;
+                    string Department = cmbDepartment.Items[cmbDepartment.SelectedIndex].ToString();
+                    ct.departmnetID = db.SupplierDepartments.Where(cd => cd.departmentname == Department).Select(cd => cd.ID).ToList()[0];
+                    db.SupplierTitles.Add(ct);
+                    MessageBox.Show(this, ct.titlename + " added as a Title");
+                }
+                else
+                {
+                    MessageBox.Show(this, "There is a Already title with the same name in this department");
+                }
             }
             else
             {
-                MessageBox.Show("There is already a position name with " + txttitle.Text);
+                MessageBox.Show(this, "Please choose a department name properly");
             }
+        }
+
+            private void SupplierPositionAdd_Load(object sender, EventArgs e)
+        {
+            var departmenList = db.SupplierDepartments.Select(a => a.departmentname).ToList();
+            cmbDepartment.DataSource = departmenList;
+            cmbDepartment.DisplayMember = "departmentname";
+            cmbDepartment.ValueMember = "ID";
         }
     }
 }
