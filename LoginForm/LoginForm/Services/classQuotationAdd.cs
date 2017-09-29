@@ -29,6 +29,24 @@ namespace LoginForm.Services
             }
             return c;
         }
-        
+
+        public static SuperDisk ItemGetSuperDisk(string ItemID)
+        {
+            IMEEntities IME = new IMEEntities();
+            
+            return IME.SuperDisks.Where(a => a.Article_No == ItemID).FirstOrDefault();
+
+        }
+        public static SuperDiskP ItemGetSuperDiskP(string ItemID)
+        {
+            IMEEntities IME = new IMEEntities();
+            return IME.SuperDiskPs.Where(a => a.Article_No == ItemID).FirstOrDefault();
+
+        }
+        public static ExtendedRange ItemGetExtendedRange(string ItemID)
+        {
+            IMEEntities IME = new IMEEntities();
+            return IME.ExtendedRanges.Where(a => a.ArticleNo == ItemID).FirstOrDefault();
+        }
     }
 }

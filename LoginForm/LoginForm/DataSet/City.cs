@@ -18,7 +18,6 @@ namespace LoginForm.DataSet
         public City()
         {
             this.CustomerAdresses = new HashSet<CustomerAdress>();
-            this.SupplierAdresses = new HashSet<SupplierAdress>();
             this.Towns = new HashSet<Town>();
         }
     
@@ -29,8 +28,6 @@ namespace LoginForm.DataSet
         public virtual Country Country { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomerAdress> CustomerAdresses { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SupplierAdress> SupplierAdresses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Town> Towns { get; set; }
     }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -78,7 +78,7 @@ namespace LoginForm
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Number.Text = "";
+            txtQuantitiy.Text = "";
             gridselectedindex = 0;
             itemSelect();
             
@@ -100,7 +100,7 @@ namespace LoginForm
             //Seçilen txt grid e yansıyacak
 
             //Article no ile search
-            txtSelected = SearchText.Text;
+            txtSelected = txtSearchBox.Text;
             string ArticleNoSearch = "";
 
             //
@@ -148,7 +148,7 @@ namespace LoginForm
                 gridAdapterPC.AddRange(list3);
                 //
                 #endregion
-                dataGridView1.DataSource = gridAdapterPC;
+                dgItemList.DataSource = gridAdapterPC;
                 if (gridAdapterPC.Count != 0)
                 {
                     ArticleNoSearch = gridAdapterPC[gridselectedindex].ArticleNo;
@@ -201,7 +201,7 @@ namespace LoginForm
                 gridAdapterPC.AddRange(list3);
                 //
                 #endregion
-                dataGridView1.DataSource = gridAdapterPC;
+                dgItemList.DataSource = gridAdapterPC;
                 if (gridAdapterPC.Count != 0)
                 {
                     ArticleNoSearch = gridAdapterPC[gridselectedindex].ArticleNo;
@@ -256,7 +256,7 @@ namespace LoginForm
                 gridAdapterPC.AddRange(list3);
                 //
                 #endregion
-                dataGridView1.DataSource = gridAdapterPC;
+                dgItemList.DataSource = gridAdapterPC;
                 if (gridAdapterPC.Count != 0)
                 {
                     ArticleNoSearch = gridAdapterPC[gridselectedindex].ArticleNo;
@@ -302,7 +302,7 @@ namespace LoginForm
                 gridAdapterPC.AddRange(list3);
                 //
                 #endregion
-                dataGridView1.DataSource = gridAdapterPC;
+                dgItemList.DataSource = gridAdapterPC;
                 if (gridAdapterPC.Count != 0)
                 {
                     ArticleNoSearch = gridAdapterPC[gridselectedindex].ArticleNo;
@@ -316,9 +316,9 @@ namespace LoginForm
 
 
             #endregion
-            if (dataGridView1.RowCount > 0)
+            if (dgItemList.RowCount > 0)
             {
-                dataGridView1.CurrentCell = dataGridView1.Rows[gridselectedindex].Cells[0];
+                dgItemList.CurrentCell = dgItemList.Rows[gridselectedindex].Cells[0];
                 Filler(ArticleNoSearch);
                 //
             }
@@ -340,280 +340,280 @@ namespace LoginForm
 
             if (sd != null)
             {
-                ArticleNo.Text = sd.Article_No;
-                ArticleDesc.Text = sd.Article_Desc;
-                PackQuan.Text = sd.Pack_Quantity.ToString();
-                UnitContent.Text = sd.Unit_Content.ToString();
-                UnitMeasure.Text = sd.Unit_Measure;
-                if (sd.Standard_Weight != 0) { StandartWeight.Text = ((decimal)(sd.Standard_Weight) / (decimal)100).ToString("G29"); } else { }
-                HazardousInd.Text = sd.Hazardous_Ind;
-                CalibrationInd.Text = sd.Calibration_Ind;
+                txtStockNo.Text = sd.Article_No;
+                txtDesc.Text = sd.Article_Desc;
+                txtSSM.Text = sd.Pack_Quantity.ToString();
+                txtUC.Text = sd.Unit_Content.ToString();
+                txtUM.Text = sd.Unit_Measure;
+                if (sd.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sd.Standard_Weight) / (decimal)100).ToString("G29"); } else { }
+                txtHazardousInd.Text = sd.Hazardous_Ind;
+                txtCalibrationInd.Text = sd.Calibration_Ind;
                 //ObsoluteFlag.Text = sd.Obsolete_Flag.ToString();
                 //LowDiscontInd.Text = sd.Low_Discount_Ind;
                 //LicensedInd.Text = sd.Licensed_Ind.ToString();
                 //ShelfLife.Text = sd.Shelf_Life;
-                CofO.Text = sd.CofO;
-                CCCNNo.Text = sd.CCCN_No.ToString();
+                txtCoO.Text = sd.CofO;
+                txtCCCN.Text = sd.CCCN_No.ToString();
                 //UKIntroDate.Text = sd.Uk_Intro_Date;
-                UKDiscDate.Text = sd.Uk_Disc_Date;
+                txtUKDiscDate.Text = sd.Uk_Disc_Date;
                 //BHCFlag.Text = sd.BHC_Flag.ToString();
-                DiscCharge.Text = sd.Disc_Change_Ind;
-                Expiringpro.Text = sd.Expiring_Product_Change_Ind;
-                Manufacturer.Text = sd.Manufacturer.ToString();
-                MPN.Text = sd.MPN;
-                MHCodeLevel1.Text = sd.MH_Code_Level_1;
-                CCCNNo.Text = sd.CCCN_No.ToString();
-                Height.Text = ((decimal)(sd.Heigh * ((Decimal)100))).ToString("G29");
-                Width.Text = ((decimal)(sd.Width * ((Decimal)100))).ToString("G29");
-                Length.Text = ((decimal)(sd.Length * ((Decimal)100))).ToString("G29");
+                txtDiscCharge.Text = sd.Disc_Change_Ind;
+                txtExpiringPro.Text = sd.Expiring_Product_Change_Ind;
+                txtManufacturer.Text = sd.Manufacturer.ToString();
+                txtMPN.Text = sd.MPN;
+                txtMHCodeLevel1.Text = sd.MH_Code_Level_1;
+                txtCCCN.Text = sd.CCCN_No.ToString();
+                txtHeight.Text = ((decimal)(sd.Heigh * ((Decimal)100))).ToString("G29");
+                txtWidth.Text = ((decimal)(sd.Width * ((Decimal)100))).ToString("G29");
+                txtLength.Text = ((decimal)(sd.Length * ((Decimal)100))).ToString("G29");
             }
 
             if (sdP != null)
             {
-                ArticleNo.Text = sdP.Article_No;
-                ArticleDesc.Text = sdP.Article_Desc;
-                PackQuan.Text = sdP.Pack_Quantity.ToString();
-                UnitContent.Text = sdP.Unit_Content.ToString();
-                UnitMeasure.Text = sdP.Unit_Measure;
-                if (sdP.Standard_Weight != 0) { StandartWeight.Text = ((decimal)(sdP.Standard_Weight) / (decimal)100).ToString("G29"); }
-                HazardousInd.Text = sdP.Hazardous_Ind;
-                CalibrationInd.Text = sdP.Calibration_Ind;
+                txtStockNo.Text = sdP.Article_No;
+                txtDesc.Text = sdP.Article_Desc;
+                txtSSM.Text = sdP.Pack_Quantity.ToString();
+                txtUC.Text = sdP.Unit_Content.ToString();
+                txtUM.Text = sdP.Unit_Measure;
+                if (sdP.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sdP.Standard_Weight) / (decimal)100).ToString("G29"); }
+                txtHazardousInd.Text = sdP.Hazardous_Ind;
+                txtCalibrationInd.Text = sdP.Calibration_Ind;
                 //ObsoluteFlag.Text = sdP.Obsolete_Flag.ToString();
                 //LowDiscontInd.Text = sdP.Low_Discount_Ind;
                 //LicensedInd.Text = sdP.Licensed_Ind.ToString();
                 //ShelfLife.Text = sdP.Shelf_Life;
-                CofO.Text = sdP.CofO;
-                CCCNNo.Text = sdP.CCCN_No.ToString();
+                txtCoO.Text = sdP.CofO;
+                txtCCCN.Text = sdP.CCCN_No.ToString();
                 //UKIntroDate.Text = sdP.Uk_Intro_Date;
-                UKDiscDate.Text = sdP.Uk_Disc_Date;
+                txtUKDiscDate.Text = sdP.Uk_Disc_Date;
                 //BHCFlag.Text = sdP.BHC_Flag.ToString();
-                DiscCharge.Text = sdP.Disc_Change_Ind;
-                Expiringpro.Text = sdP.Expiring_Product_Change_Ind;
-                Manufacturer.Text = sdP.Manufacturer.ToString();
-                MPN.Text = sdP.MPN;
-                MHCodeLevel1.Text = sdP.MH_Code_Level_1;
-                CCCNNo.Text = sdP.CCCN_No.ToString();
-                Height.Text = ((decimal)(sdP.Heigh * ((Decimal)100))).ToString("G29");
-                Width.Text = ((decimal)(sdP.Width * ((Decimal)100))).ToString("G29");
-                Length.Text = ((decimal)(sdP.Length * ((Decimal)100))).ToString("G29");
+                txtDiscCharge.Text = sdP.Disc_Change_Ind;
+                txtExpiringPro.Text = sdP.Expiring_Product_Change_Ind;
+                txtManufacturer.Text = sdP.Manufacturer.ToString();
+                txtMPN.Text = sdP.MPN;
+                txtMHCodeLevel1.Text = sdP.MH_Code_Level_1;
+                txtCCCN.Text = sdP.CCCN_No.ToString();
+                txtHeight.Text = ((decimal)(sdP.Heigh * ((Decimal)100))).ToString("G29");
+                txtWidth.Text = ((decimal)(sdP.Width * ((Decimal)100))).ToString("G29");
+                txtLength.Text = ((decimal)(sdP.Length * ((Decimal)100))).ToString("G29");
             }
             if (er != null)
             {
-                ArticleNo.Text = er.ArticleNo;
-                ArticleDesc.Text = er.ArticleDescription;
-                MPN.Text = er.MPN;
-                if (Length.Text != "") { Length.Text = ((decimal)(er.ExtendedRangeLength * ((Decimal)100))).ToString("G29"); }
-                if (Width.Text != "") { Width.Text = ((decimal)(er.Width * ((Decimal)100))).ToString("G29"); }
-                if (Height.Text != "") { Height.Text = ((decimal)(er.Height * ((Decimal)100))).ToString("G29"); }
-                if (er.ExtendedRangeWeight != null) { StandartWeight.Text = ((decimal)(er.ExtendedRangeWeight) / (decimal)100).ToString("G29"); }
-                CCCNNo.Text = er.CCCN.ToString();
-                CofO.Text = er.CountryofOrigin;
-                UnitMeasure.Text = er.UnitofMeasure;
-                ColPrice1.Text = er.Col1Price.ToString();
-                ColPrice2.Text = er.Col2Price.ToString();
-                ColPrice3.Text = er.Col3Price.ToString();
-                ColPrice4.Text = er.Col4Price.ToString();
-                ColPrice5.Text = er.Col5Price.ToString();
-                ColBreak1.Text = er.Col1Break.ToString();
-                ColBreak2.Text = er.Col2Break.ToString();
-                ColBreak3.Text = er.Col3Break.ToString();
-                ColBreak4.Text = er.Col4Break.ToString();
-                ColBreak5.Text = er.Col5Break.ToString();
-                DiscountedPrice1.Text = er.DiscountedPrice1.ToString();
-                DiscountedPrice2.Text = er.DiscountedPrice2.ToString();
-                DiscountedPrice3.Text = er.DiscountedPrice3.ToString();
-                DiscountedPrice4.Text = er.DiscountedPrice4.ToString();
-                DiscountedPrice5.Text = er.DiscountedPrice5.ToString();
+                txtStockNo.Text = er.ArticleNo;
+                txtDesc.Text = er.ArticleDescription;
+                txtMPN.Text = er.MPN;
+                if (txtLength.Text != "") { txtLength.Text = ((decimal)(er.ExtendedRangeLength * ((Decimal)100))).ToString("G29"); }
+                if (txtWidth.Text != "") { txtWidth.Text = ((decimal)(er.Width * ((Decimal)100))).ToString("G29"); }
+                if (txtHeight.Text != "") { txtHeight.Text = ((decimal)(er.Height * ((Decimal)100))).ToString("G29"); }
+                if (er.ExtendedRangeWeight != null) { txtStandartWeight.Text = ((decimal)(er.ExtendedRangeWeight) / (decimal)100).ToString("G29"); }
+                txtCCCN.Text = er.CCCN.ToString();
+                txtCoO.Text = er.CountryofOrigin;
+                txtUM.Text = er.UnitofMeasure;
+                txtUK1.Text = er.Col1Price.ToString();
+                txtUK5.Text = er.Col2Price.ToString();
+                txtUK10.Text = er.Col3Price.ToString();
+                txtUK25.Text = er.Col4Price.ToString();
+                txtUK50.Text = er.Col5Price.ToString();
+                txtUnitCount1.Text = er.Col1Break.ToString();
+                txtUnitCount5.Text = er.Col2Break.ToString();
+                txtUnitCount10.Text = er.Col3Break.ToString();
+                txtUnitCount25.Text = er.Col4Break.ToString();
+                txtUnitCount50.Text = er.Col5Break.ToString();
+                txtCost1.Text = er.DiscountedPrice1.ToString();
+                txtCost5.Text = er.DiscountedPrice2.ToString();
+                txtCost10.Text = er.DiscountedPrice3.ToString();
+                txtCost25.Text = er.DiscountedPrice4.ToString();
+                txtCost50.Text = er.DiscountedPrice5.ToString();
             }
             if (sp != null)
             {
-                ArticleNo.Text = sp.ArticleNo;
+                txtStockNo.Text = sp.ArticleNo;
                 //IntroductionDate.Text = sp.IntroductionDate;
                 //DiscontinuedDate.Text = sp.DiscontinuedDate;
-                ColBreak1.Text = sp.Col1Break.ToString();
-                ColBreak2.Text = sp.Col2Break.ToString();
-                ColBreak3.Text = sp.Col3Break.ToString();
-                ColBreak4.Text = sp.Col4Break.ToString();
-                ColBreak5.Text = sp.Col5Break.ToString();
-                ColPrice1.Text = sp.Col1Price.ToString();
-                ColPrice2.Text = sp.Col2Price.ToString();
-                ColPrice3.Text = sp.Col3Price.ToString();
-                ColPrice4.Text = sp.Col4Price.ToString();
-                ColPrice5.Text = sp.Col5Price.ToString();
-                DiscountedPrice1.Text = sp.DiscountedPrice1.ToString();
-                DiscountedPrice2.Text = sp.DiscountedPrice2.ToString();
-                DiscountedPrice3.Text = sp.DiscountedPrice3.ToString();
-                DiscountedPrice4.Text = sp.DiscountedPrice4.ToString();
-                DiscountedPrice5.Text = sp.DiscountedPrice5.ToString();
-                SupersectionName.Text = sp.SupersectionName;
-                ArticleDesc.Text = sp.ItemTypeDesc;
+                txtUnitCount1.Text = sp.Col1Break.ToString();
+                txtUnitCount5.Text = sp.Col2Break.ToString();
+                txtUnitCount10.Text = sp.Col3Break.ToString();
+                txtUnitCount25.Text = sp.Col4Break.ToString();
+                txtUnitCount50.Text = sp.Col5Break.ToString();
+                txtUK1.Text = sp.Col1Price.ToString();
+                txtUK5.Text = sp.Col2Price.ToString();
+                txtUK10.Text = sp.Col3Price.ToString();
+                txtUK25.Text = sp.Col4Price.ToString();
+                txtUK50.Text = sp.Col5Price.ToString();
+                txtCost1.Text = sp.DiscountedPrice1.ToString();
+                txtCost5.Text = sp.DiscountedPrice2.ToString();
+                txtCost10.Text = sp.DiscountedPrice3.ToString();
+                txtCost25.Text = sp.DiscountedPrice4.ToString();
+                txtCost50.Text = sp.DiscountedPrice5.ToString();
+                txtSupersectionName.Text = sp.SupersectionName;
+                txtDesc.Text = sp.ItemTypeDesc;
             }
             if (h != null)
             {
-                ArticleNo.Text = h.ArticleNo;
-                Environment.Text = h.Environment.ToString();
-                Lithium.Text = h.Lithium;
-                Shipping.Text = h.Shipping;
+                txtStockNo.Text = h.ArticleNo;
+                txtEnvironment.Text = h.Environment.ToString();
+                txtLithium.Text = h.Lithium;
+                txtShipping.Text = h.Shipping;
             }
             if (os != null)
             {
-                ArticleNo.Text = os.ArticleNumber;
+                txtStockNo.Text = os.ArticleNumber;
                 //OnSaleDiscontinuedDate.Text = os.DiscontinuedDate;
                 //OnSaleIntroductionDate.Text = os.IntroductionDate;
-                OnhandStockBalance.Text = os.OnhandStockBalance.ToString();
-                QuantityonOrder.Text = os.QuantityonOrder.ToString();
+                txtRSStock.Text = os.OnhandStockBalance.ToString();
+                txtRSOnOrder.Text = os.QuantityonOrder.ToString();
 
             }
             if (dd != null)
             {
-                ArticleNo.Text = dd.ArticleNo;
-                DiscontinuationDate.Text = dd.DiscontinuationDate;
-                RunOn.Text = dd.Runon.ToString();
-                Referral.Text = dd.Referral.ToString();
+                txtStockNo.Text = dd.ArticleNo;
+                txtDiscontinuationDate.Text = dd.DiscontinuationDate;
+                txtRunOn.Text = dd.Runon.ToString();
+                txtReferral.Text = dd.Referral.ToString();
             }
 
-            if (du != null) { LicenceType.Text = du.LicenceType; ArticleNo.Text = du.ArticleNo; }
+            if (du != null) { txtLicenceType.Text = du.LicenceType; txtStockNo.Text = du.ArticleNo; }
             //
             #endregion
-            if (Lithium.Text != "") { label64.BackColor = Color.Red; }
-            if (Shipping.Text != "") { label63.BackColor = Color.Red; }
-            if (Environment.Text != "") { label53.BackColor = Color.Red; }
+            if (txtLithium.Text != "") { label64.BackColor = Color.Red; }
+            if (txtShipping.Text != "") { label63.BackColor = Color.Red; }
+            if (txtEnvironment.Text != "") { label53.BackColor = Color.Red; }
         }
 
         private void dataGridView1_Click(object sender, EventArgs e)
         {
             textsClear();
-            if (dataGridView1.RowCount > 0)
+            if (dgItemList.RowCount > 0)
             {
-                gridselectedindex = dataGridView1.CurrentCell.RowIndex;
+                gridselectedindex = dgItemList.CurrentCell.RowIndex;
             }
-            Filler(dataGridView1.Rows[gridselectedindex].Cells["ArticleNo"].Value.ToString());
-            if (dataGridView1.RowCount > 0)
+            Filler(dgItemList.Rows[gridselectedindex].Cells["ArticleNo"].Value.ToString());
+            if (dgItemList.RowCount > 0)
             {
-                dataGridView1.ClearSelection();
-                dataGridView1.CurrentCell = dataGridView1.Rows[gridselectedindex].Cells[0];
+                dgItemList.ClearSelection();
+                dgItemList.CurrentCell = dgItemList.Rows[gridselectedindex].Cells[0];
             }
 
         }
         private void textsClear()
         {
-            Price.Text = "";
-            Note.Text = "";
-            Number.Text = "";
-            ArticleNo.Text = "";
-            ArticleDesc.Text = "";
-            PackQuan.Text = "";
-            UnitContent.Text = "";
-            UnitMeasure.Text = "";
-            StandartWeight.Text = "";
-            HazardousInd.Text = "";
-            CalibrationInd.Text = "";
+            txtUnitPrice.Text = "";
+            txtNote.Text = "";
+            txtQuantitiy.Text = "";
+            txtStockNo.Text = "";
+            txtDesc.Text = "";
+            txtSSM.Text = "";
+            txtUC.Text = "";
+            txtUM.Text = "";
+            txtStandartWeight.Text = "";
+            txtHazardousInd.Text = "";
+            txtCalibrationInd.Text = "";
             
-            CofO.Text = "";
-            CCCNNo.Text = "";
+            txtCoO.Text = "";
+            txtCCCN.Text = "";
             
-            UKDiscDate.Text = "";
+            txtUKDiscDate.Text = "";
 
             
-            DiscCharge.Text = "";
-            Expiringpro.Text = "";
-            Manufacturer.Text = "";
-            MPN.Text = "";
-            MHCodeLevel1.Text = "";
-            CCCNNo.Text = "";
-            Width.Text = "";
-            Length.Text = "";
-            Height.Text = "";
-            ArticleNo.Text = "";
+            txtDiscCharge.Text = "";
+            txtExpiringPro.Text = "";
+            txtManufacturer.Text = "";
+            txtMPN.Text = "";
+            txtMHCodeLevel1.Text = "";
+            txtCCCN.Text = "";
+            txtWidth.Text = "";
+            txtLength.Text = "";
+            txtHeight.Text = "";
+            txtStockNo.Text = "";
            
-            ColBreak1.Text = "";
-            ColBreak2.Text = "";
-            ColBreak3.Text = "";
-            ColBreak4.Text = "";
-            ColBreak5.Text = "";
-            ColPrice1.Text = "";
-            ColPrice2.Text = "";
-            ColPrice3.Text = "";
-            ColPrice4.Text = "";
-            ColPrice5.Text = "";
-            DiscountedPrice1.Text = "";
-            DiscountedPrice2.Text = "";
-            DiscountedPrice3.Text = "";
-            DiscountedPrice4.Text = "";
-            DiscountedPrice5.Text = "";
-            SupersectionName.Text = "";
-            ArticleDesc.Text = "";
-            ArticleNo.Text = "";
-            Environment.Text = "";
-            Lithium.Text = "";
-            Shipping.Text = "";
-            ArticleNo.Text = "";
-            OnhandStockBalance.Text = "";
-            QuantityonOrder.Text = "";
-            ArticleNo.Text = "";
-            DiscontinuationDate.Text = "";
-            RunOn.Text = "";
-            Referral.Text = "";
-            LicenceType.Text = "";
+            txtUnitCount1.Text = "";
+            txtUnitCount5.Text = "";
+            txtUnitCount10.Text = "";
+            txtUnitCount25.Text = "";
+            txtUnitCount50.Text = "";
+            txtUK1.Text = "";
+            txtUK5.Text = "";
+            txtUK10.Text = "";
+            txtUK25.Text = "";
+            txtUK50.Text = "";
+            txtCost1.Text = "";
+            txtCost5.Text = "";
+            txtCost10.Text = "";
+            txtCost25.Text = "";
+            txtCost50.Text = "";
+            txtSupersectionName.Text = "";
+            txtDesc.Text = "";
+            txtStockNo.Text = "";
+            txtEnvironment.Text = "";
+            txtLithium.Text = "";
+            txtShipping.Text = "";
+            txtStockNo.Text = "";
+            txtRSStock.Text = "";
+            txtRSOnOrder.Text = "";
+            txtStockNo.Text = "";
+            txtDiscontinuationDate.Text = "";
+            txtRunOn.Text = "";
+            txtReferral.Text = "";
+            txtLicenceType.Text = "";
         }
 
         private void rbProductCode_CheckedChanged(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = null;
+            dgItemList.DataSource = null;
             textsClear();
         }
 
         private void rbMPNCode_CheckedChanged(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = null;
+            dgItemList.DataSource = null;
             textsClear();
         }
 
         private void rbFullLicence_CheckedChanged(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = null;
+            dgItemList.DataSource = null;
             textsClear();
         }
 
         private void rbSupplierCode_CheckedChanged(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = null;
+            dgItemList.DataSource = null;
             textsClear();
         }
 
         private void rbImport_CheckedChanged(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = null;
+            dgItemList.DataSource = null;
             textsClear();
         }
 
         private void rbProductName_CheckedChanged(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = null;
+            dgItemList.DataSource = null;
             textsClear();
         }
 
         private void rbEUU_CheckedChanged(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = null;
+            dgItemList.DataSource = null;
             textsClear();
         }
 
         private void rbDiscontinued_CheckedChanged(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = null;
+            dgItemList.DataSource = null;
             textsClear();
         }
 
         private void rbQuickSearch_CheckedChanged(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = null;
+            dgItemList.DataSource = null;
             textsClear();
         }
 
         private void rbItemNotes_CheckedChanged(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = null;
+            dgItemList.DataSource = null;
             textsClear();
         }
 
@@ -641,23 +641,23 @@ namespace LoginForm
         {
             try
             {
-                if (Int32.Parse(Number.Text) < Int32.Parse(ColBreak2.Text) && Int32.Parse(ColBreak1.Text) != 0)
+                if (Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount5.Text) && Int32.Parse(txtUnitCount1.Text) != 0)
                 {
-                    Price.Text = ColPrice1.Text;
+                    txtUnitPrice.Text = txtUK1.Text;
                 }
-                else if (Int32.Parse(Number.Text) < Int32.Parse(ColBreak3.Text)&& Int32.Parse(ColBreak2.Text)!=0)
+                else if (Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount10.Text)&& Int32.Parse(txtUnitCount5.Text)!=0)
                 {
-                    Price.Text = ColPrice2.Text;
+                    txtUnitPrice.Text = txtUK5.Text;
                 }
-                else if (Int32.Parse(Number.Text) < Int32.Parse(ColBreak4.Text) && Int32.Parse(ColBreak3.Text) != 0)
+                else if (Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount25.Text) && Int32.Parse(txtUnitCount10.Text) != 0)
                 {
-                    Price.Text = ColPrice3.Text;
+                    txtUnitPrice.Text = txtUK10.Text;
                 }
-                else if (Int32.Parse(Number.Text) < Int32.Parse(ColBreak5.Text) && Int32.Parse(ColBreak4.Text) != 0)
+                else if (Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount50.Text) && Int32.Parse(txtUnitCount25.Text) != 0)
                 {
-                    Price.Text = ColPrice4.Text;
+                    txtUnitPrice.Text = txtUK25.Text;
                 }
-                else if(Int32.Parse(ColBreak5.Text) != 0) { Price.Text = ColPrice5.Text; }
+                else if(Int32.Parse(txtUnitCount50.Text) != 0) { txtUnitPrice.Text = txtUK50.Text; }
             }
             catch { }
 
@@ -665,24 +665,24 @@ namespace LoginForm
 
         private void Environment_TextChanged(object sender, EventArgs e)
         {
-            if (Environment.Text != "") { label53.BackColor = Color.Red; } else { label53.BackColor = Color.White; }
+            if (txtEnvironment.Text != "") { label53.BackColor = Color.Red; } else { label53.BackColor = Color.White; }
         }
 
         private void Lithium_TextChanged(object sender, EventArgs e)
         {
-            if (Lithium.Text != "") { label64.BackColor = Color.Red; } else { label64.BackColor = Color.White; }
+            if (txtLithium.Text != "") { label64.BackColor = Color.Red; } else { label64.BackColor = Color.White; }
 
         }
 
         private void Shipping_TextChanged(object sender, EventArgs e)
         {
-            if (Shipping.Text != "") { label63.BackColor = Color.Red; } else { label63.BackColor = Color.White; }
+            if (txtShipping.Text != "") { label63.BackColor = Color.Red; } else { label63.BackColor = Color.White; }
         }
 
         private void Length_TextChanged(object sender, EventArgs e)
         {
-            grossWeight.Text = "";
-            if (Height.Text != "" && Length.Text != "" && Width.Text != "") { grossWeight.Text = (Decimal.Parse(Length.Text) * Decimal.Parse(Width.Text) * Decimal.Parse(Height.Text) / 6000).ToString(); }
+            txtGrossWeight.Text = "";
+            if (txtHeight.Text != "" && txtLength.Text != "" && txtWidth.Text != "") { txtGrossWeight.Text = (Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString(); }
         }
 
         private void StandartWeight_TextChanged(object sender, EventArgs e)
@@ -746,31 +746,31 @@ namespace LoginForm
 
         private void ArticleNo_TextChanged(object sender, EventArgs e)
         {
-            if (ArticleNo.Text != "")
+            if (txtStockNo.Text != "")
             {
-                if (IME.ItemNotes.Where(c => c.ArticleNo == ArticleNo.Text).FirstOrDefault() != null) { Note.Text = IME.Notes.Where(b => b.ID == IME.ItemNotes.Where(a => a.ArticleNo == ArticleNo.Text).FirstOrDefault().NoteID).FirstOrDefault().Note_name; }
+                if (IME.ItemNotes.Where(c => c.ArticleNo == txtStockNo.Text).FirstOrDefault() != null) { txtNote.Text = IME.Notes.Where(b => b.ID == IME.ItemNotes.Where(a => a.ArticleNo == txtStockNo.Text).FirstOrDefault().NoteID).FirstOrDefault().Note_name; }
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var Updnote = IME.ItemNotes.Where(a => a.ArticleNo == ArticleNo.Text).FirstOrDefault();
+            var Updnote = IME.ItemNotes.Where(a => a.ArticleNo == txtStockNo.Text).FirstOrDefault();
             if (Updnote != null)
             {
                 var note = IME.Notes.Where(a => a.ID == Updnote.NoteID).FirstOrDefault();
-                note.Note_name = Note.Text;
+                note.Note_name = txtNote.Text;
                 IME.SaveChanges();
                 MessageBox.Show("Note updated successfully");
             }
             else
             {
                 var note = new Note();
-                note.Note_name = Note.Text;
+                note.Note_name = txtNote.Text;
                 IME.Notes.Add(note);
                 IME.SaveChanges();
                 var newNoteID = new ItemNote();
                 newNoteID.NoteID = note.ID;
-                newNoteID.ArticleNo = ArticleNo.Text;
+                newNoteID.ArticleNo = txtStockNo.Text;
                 IME.ItemNotes.Add(newNoteID);
                 IME.SaveChanges();
                 MessageBox.Show("Note added to item successfully");
@@ -781,7 +781,7 @@ namespace LoginForm
         {
             if (e.KeyCode == Keys.Enter)
             {
-                Number.Text = "";
+                txtQuantitiy.Text = "";
                 gridselectedindex = 0;
                 itemSelect();
             }
@@ -793,6 +793,11 @@ namespace LoginForm
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgItemList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

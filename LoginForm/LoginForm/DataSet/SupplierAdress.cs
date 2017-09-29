@@ -14,18 +14,16 @@ namespace LoginForm.DataSet
     
     public partial class SupplierAdress
     {
-        public int ID { get; set; }
-        public string SupplierID { get; set; }
-        public string PostCode { get; set; }
-        public string AdressDetails { get; set; }
-        public Nullable<int> TownID { get; set; }
-        public Nullable<int> CityID { get; set; }
-        public Nullable<int> CountryID { get; set; }
-        public string PoBox { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public SupplierAdress()
+        {
+            this.SupplierWorkers = new HashSet<SupplierWorker>();
+        }
     
-        public virtual City City { get; set; }
-        public virtual Country Country { get; set; }
-        public virtual Supplier Supplier { get; set; }
-        public virtual Town Town { get; set; }
+        public int ID { get; set; }
+        public string Adress { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SupplierWorker> SupplierWorkers { get; set; }
     }
 }
