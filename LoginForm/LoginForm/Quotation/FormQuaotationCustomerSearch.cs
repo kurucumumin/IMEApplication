@@ -49,6 +49,8 @@ namespace LoginForm.Quotation
             string cname = CustomerSearchGrid.Rows[CustomerSearchGrid.CurrentCell.RowIndex].Cells["ID"].Value.ToString();
             Customer c = new Customer();
             c = IME.Customers.Where(a => a.ID == cname).FirstOrDefault();
+            CustomerCode.Text = c.ID;
+            CustomerName.Text = c.c_name;
             classQuotationAdd.customerID = CustomerCode.Text;
             classQuotationAdd.customername = CustomerName.Text;
             this.Hide();
@@ -95,12 +97,12 @@ namespace LoginForm.Quotation
 
         private void CustomerCode_TextChanged(object sender, EventArgs e)
         {
-            if (CustomerName.Text != "") {  CustomerName.Text = "";}
+            //if (CustomerName.Text != "") {  CustomerName.Text = "";}
         }
 
         private void CustomerName_TextChanged(object sender, EventArgs e)
         {
-            if (CustomerCode.Text != "") { CustomerCode.Text = ""; }
+            //if (CustomerCode.Text != "") { CustomerCode.Text = ""; }
         }
 
         private void button1_Click(object sender, EventArgs e)

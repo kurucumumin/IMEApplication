@@ -410,20 +410,20 @@ namespace LoginForm
                 txtCoO.Text = er.CountryofOrigin;
                 txtUM.Text = er.UnitofMeasure;
                 txtUK1.Text = er.Col1Price.ToString();
-                txtUK5.Text = er.Col2Price.ToString();
-                txtUK10.Text = er.Col3Price.ToString();
-                txtUK25.Text = er.Col4Price.ToString();
-                txtUK50.Text = er.Col5Price.ToString();
+                txtUK2.Text = er.Col2Price.ToString();
+                txtUK3.Text = er.Col3Price.ToString();
+                txtUK4.Text = er.Col4Price.ToString();
+                txtUK5.Text = er.Col5Price.ToString();
                 txtUnitCount1.Text = er.Col1Break.ToString();
-                txtUnitCount5.Text = er.Col2Break.ToString();
-                txtUnitCount10.Text = er.Col3Break.ToString();
-                txtUnitCount25.Text = er.Col4Break.ToString();
-                txtUnitCount50.Text = er.Col5Break.ToString();
+                txtUnitCount2.Text = er.Col2Break.ToString();
+                txtUnitCount3.Text = er.Col3Break.ToString();
+                txtUnitCount4.Text = er.Col4Break.ToString();
+                txtUnitCount5.Text = er.Col5Break.ToString();
                 txtCost1.Text = er.DiscountedPrice1.ToString();
-                txtCost5.Text = er.DiscountedPrice2.ToString();
-                txtCost10.Text = er.DiscountedPrice3.ToString();
-                txtCost25.Text = er.DiscountedPrice4.ToString();
-                txtCost50.Text = er.DiscountedPrice5.ToString();
+                txtCost2.Text = er.DiscountedPrice2.ToString();
+                txtCost3.Text = er.DiscountedPrice3.ToString();
+                txtCost4.Text = er.DiscountedPrice4.ToString();
+                txtCost5.Text = er.DiscountedPrice5.ToString();
             }
             if (sp != null)
             {
@@ -431,20 +431,20 @@ namespace LoginForm
                 //IntroductionDate.Text = sp.IntroductionDate;
                 //DiscontinuedDate.Text = sp.DiscontinuedDate;
                 txtUnitCount1.Text = sp.Col1Break.ToString();
-                txtUnitCount5.Text = sp.Col2Break.ToString();
-                txtUnitCount10.Text = sp.Col3Break.ToString();
-                txtUnitCount25.Text = sp.Col4Break.ToString();
-                txtUnitCount50.Text = sp.Col5Break.ToString();
+                txtUnitCount2.Text = sp.Col2Break.ToString();
+                txtUnitCount3.Text = sp.Col3Break.ToString();
+                txtUnitCount4.Text = sp.Col4Break.ToString();
+                txtUnitCount5.Text = sp.Col5Break.ToString();
                 txtUK1.Text = sp.Col1Price.ToString();
-                txtUK5.Text = sp.Col2Price.ToString();
-                txtUK10.Text = sp.Col3Price.ToString();
-                txtUK25.Text = sp.Col4Price.ToString();
-                txtUK50.Text = sp.Col5Price.ToString();
+                txtUK2.Text = sp.Col2Price.ToString();
+                txtUK3.Text = sp.Col3Price.ToString();
+                txtUK4.Text = sp.Col4Price.ToString();
+                txtUK5.Text = sp.Col5Price.ToString();
                 txtCost1.Text = sp.DiscountedPrice1.ToString();
-                txtCost5.Text = sp.DiscountedPrice2.ToString();
-                txtCost10.Text = sp.DiscountedPrice3.ToString();
-                txtCost25.Text = sp.DiscountedPrice4.ToString();
-                txtCost50.Text = sp.DiscountedPrice5.ToString();
+                txtCost2.Text = sp.DiscountedPrice2.ToString();
+                txtCost3.Text = sp.DiscountedPrice3.ToString();
+                txtCost4.Text = sp.DiscountedPrice4.ToString();
+                txtCost5.Text = sp.DiscountedPrice5.ToString();
                 txtSupersectionName.Text = sp.SupersectionName;
                 txtDesc.Text = sp.ItemTypeDesc;
             }
@@ -527,20 +527,20 @@ namespace LoginForm
             txtStockNo.Text = "";
            
             txtUnitCount1.Text = "";
+            txtUnitCount2.Text = "";
+            txtUnitCount3.Text = "";
+            txtUnitCount4.Text = "";
             txtUnitCount5.Text = "";
-            txtUnitCount10.Text = "";
-            txtUnitCount25.Text = "";
-            txtUnitCount50.Text = "";
             txtUK1.Text = "";
+            txtUK2.Text = "";
+            txtUK3.Text = "";
+            txtUK4.Text = "";
             txtUK5.Text = "";
-            txtUK10.Text = "";
-            txtUK25.Text = "";
-            txtUK50.Text = "";
             txtCost1.Text = "";
+            txtCost2.Text = "";
+            txtCost3.Text = "";
+            txtCost4.Text = "";
             txtCost5.Text = "";
-            txtCost10.Text = "";
-            txtCost25.Text = "";
-            txtCost50.Text = "";
             txtSupersectionName.Text = "";
             txtDesc.Text = "";
             txtStockNo.Text = "";
@@ -641,23 +641,23 @@ namespace LoginForm
         {
             try
             {
-                if (Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount5.Text) && Int32.Parse(txtUnitCount1.Text) != 0)
+                if (Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount2.Text) && Int32.Parse(txtUnitCount1.Text) != 0)
                 {
                     txtUnitPrice.Text = txtUK1.Text;
                 }
-                else if (Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount10.Text)&& Int32.Parse(txtUnitCount5.Text)!=0)
+                else if (Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount3.Text)&& Int32.Parse(txtUnitCount2.Text)!=0)
                 {
-                    txtUnitPrice.Text = txtUK5.Text;
+                    txtUnitPrice.Text = txtUK2.Text;
                 }
-                else if (Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount25.Text) && Int32.Parse(txtUnitCount10.Text) != 0)
+                else if (Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount4.Text) && Int32.Parse(txtUnitCount3.Text) != 0)
                 {
-                    txtUnitPrice.Text = txtUK10.Text;
+                    txtUnitPrice.Text = txtUK3.Text;
                 }
-                else if (Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount50.Text) && Int32.Parse(txtUnitCount25.Text) != 0)
+                else if (Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount5.Text) && Int32.Parse(txtUnitCount4.Text) != 0)
                 {
-                    txtUnitPrice.Text = txtUK25.Text;
+                    txtUnitPrice.Text = txtUK4.Text;
                 }
-                else if(Int32.Parse(txtUnitCount50.Text) != 0) { txtUnitPrice.Text = txtUK50.Text; }
+                else if(Int32.Parse(txtUnitCount5.Text) != 0) { txtUnitPrice.Text = txtUK5.Text; }
             }
             catch { }
 
@@ -798,6 +798,11 @@ namespace LoginForm
         }
 
         private void dgItemList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void groupBox7_Enter_1(object sender, EventArgs e)
         {
 
         }

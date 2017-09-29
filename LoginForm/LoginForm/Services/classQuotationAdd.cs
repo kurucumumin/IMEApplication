@@ -14,7 +14,6 @@ namespace LoginForm.Services
         public static string customersearchname;
         public static string customerID;
         public static string customername;
-
         public static List<Customer> CustomerSearch()
         {
             IMEEntities IME = new IMEEntities();

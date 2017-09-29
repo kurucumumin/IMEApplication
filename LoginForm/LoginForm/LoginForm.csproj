@@ -239,12 +239,6 @@
     <Compile Include="ITEM\LoaderPage.designer.cs">
       <DependentUpon>LoaderPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="ITEM\ItemCardMainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ITEM\ItemCardMainForm.designer.cs">
-      <DependentUpon>ItemCardMainForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainNavigationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -329,9 +323,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ITEM\LoaderPage.resx">
       <DependentUpon>LoaderPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ITEM\ItemCardMainForm.resx">
-      <DependentUpon>ItemCardMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainNavigationForm.resx">
       <DependentUpon>MainNavigationForm.cs</DependentUpon>
