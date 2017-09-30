@@ -101,16 +101,24 @@ namespace LoginForm
 
         private void lstWorker_Click(object sender, EventArgs e)
         {
-            #region FillTextBoxDetails
-            Worker DetailWorker = new Worker();
-            Worker DisplayWorker = new Worker();
-            DetailWorker = lstWorker.SelectedItem as Worker;
-            DisplayWorker = WorkerService.GetWorkersbyID(DetailWorker.WorkerID);
-            txtEmail.Text = DisplayWorker.EMail;
-            txtFirstName.Text = DisplayWorker.FirstName;
-            txtLastName.Text = DisplayWorker.LastName;
-            txtPhone.Text = DisplayWorker.Phone;
-            #endregion
+            if (lstWorker.Items.Count >0)
+            {
+                #region FillTextBoxDetails
+                Worker DetailWorker = new Worker();
+                Worker DisplayWorker = new Worker();
+                DetailWorker = lstWorker.SelectedItem as Worker;
+                DisplayWorker = WorkerService.GetWorkersbyID(DetailWorker.WorkerID);
+                txtEmail.Text = DisplayWorker.EMail;
+                txtFirstName.Text = DisplayWorker.FirstName;
+                txtLastName.Text = DisplayWorker.LastName;
+                txtPhone.Text = DisplayWorker.Phone;
+                #endregion
+            }
+            else
+            {
+                //MessageBox.Show("There is no Worker Defined in the List");
+            }
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -123,7 +131,7 @@ namespace LoginForm
             try
             {
                 WorkerService.UpdateWorker(Deleted);
-                MessageBox.Show("The Worker Updadated.");
+                MessageBox.Show("The Worker Deleted.");
 
             }
             catch (Exception)

@@ -39,14 +39,14 @@ namespace LoginForm.CustomerManager
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-        //    AddressType Type = new AddressType();
-        //    Customer CustomerAddress = new Customer();
-        //    Type = cbAddressType.SelectedItem as AddressType;
-        //    CustomerAddress = cbCustomer.SelectedItem as Customer;
-        //    int CustomerID = CustomerAddress.ID;
-        //    int TypeID = Type.AddressTypeID;
-        //    string AddressValue = richTextBox1.Text;
-        //    AdresService.AddNewAddressBook(TypeID, CustomerID, AddressValue);
+            //AddressType Type = new AddressType();
+            //Customer CustomerAddress = new Customer();
+            //Type = cbAddressType.SelectedItem as AddressType;
+            //CustomerAddress = cbCustomer.SelectedItem as Customer;
+            //int CustomerID = CustomerAddress.ID;
+            //int TypeID = Type.AddressTypeID;
+            //string AddressValue = richTextBox1.Text;
+            //AdresService.AddNewAddressBook(TypeID, CustomerID, AddressValue);
         }
     }
 }

@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace LoginForm
 {
-    
+
     public partial class AuthorizationManagement : Form
     {
         AuthorizationService AuthorizationManager = new AuthorizationService();
@@ -30,8 +30,8 @@ namespace LoginForm
             lstAddAuthorization.DataSource = AuthorizationManager.GetAvailAuthorization(AutWorker);
             lstAddAuthorization.DisplayMember = "AuthorizationValue1";
             lstAddAuthorization.ValueMember = "AuthorizationID";
-            dgAuthorizations.DataSource= AuthorizationManager.GetUserAuthorization(AutWorker);
-           
+            dgAuthorizations.DataSource = AuthorizationManager.GetUserAuthorization(AutWorker);
+
 
         }
 
@@ -43,42 +43,65 @@ namespace LoginForm
             //lstAddAuthorization.DataSource = AuthorizationManager.Authorizations();
 
 
-          
-            
+
+
         }
 
         private void cbUser_Click(object sender, EventArgs e)
         {
-        
+
         }
 
         private void btnAddAuthorization_Click(object sender, EventArgs e)
         {
+            if (lstAddAuthorization.Items.Count == 0)
+            {
+                MessageBox.Show("No Authorization Selected to Add");
+            }
+            else
+            {
+                AutWorker = cbUser.SelectedItem as Worker;
+                AutValue = lstAddAuthorization.SelectedItem as AuthorizationValue;
 
-            AutWorker = cbUser.SelectedItem as Worker;
-            AutValue = lstAddAuthorization.SelectedItem as AuthorizationValue;
-
-            AutValue.Workers.Add(AutWorker);
-            int WorkerID = AutWorker.WorkerID;
-            int AuthorizationID = AutValue.AuthorizationID;
-            AuthorizationManager.Add(AuthorizationID, WorkerID);
+                AutValue.Workers.Add(AutWorker);
+                int WorkerID = AutWorker.WorkerID;
+                int AuthorizationID = AutValue.AuthorizationID;
+                AuthorizationManager.Add(AuthorizationID, WorkerID);
 
 
-            lstAddAuthorization.DataSource = AuthorizationManager.GetAvailAuthorization(AutWorker);
+                lstAddAuthorization.DataSource = AuthorizationManager.GetAvailAuthorization(AutWorker);
 
-            dgAuthorizations.DataSource = AuthorizationManager.GetUserAuthorization(AutWorker);
+                dgAuthorizations.DataSource = AuthorizationManager.GetUserAuthorization(AutWorker);
+            }
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            int AuthorizationID = Convert.ToInt32(dgAuthorizations.CurrentRow.Cells["AuthorizationID"].Value);
-            AutWorker = cbUser.SelectedItem as Worker;
-            int WorkerID = AutWorker.WorkerID;
-            AuthorizationManager.Delete(AuthorizationID, WorkerID);
 
-            lstAddAuthorization.DataSource = AuthorizationManager.GetAvailAuthorization(AutWorker);
 
-            dgAuthorizations.DataSource = AuthorizationManager.GetUserAuthorization(AutWorker);
+            try
+            {
+                int AuthorizationID = Convert.ToInt32(dgAuthorizations.CurrentRow.Cells["AuthorizationID"].Value);
+
+                AutWorker = cbUser.SelectedItem as Worker;
+                int WorkerID = AutWorker.WorkerID;
+                AuthorizationManager.Delete(AuthorizationID, WorkerID);
+
+                lstAddAuthorization.DataSource = AuthorizationManager.GetAvailAuthorization(AutWorker);
+
+                dgAuthorizations.DataSource = AuthorizationManager.GetUserAuthorization(AutWorker);
+            }
+            catch (NullReferenceException ex)
+            {
+
+                MessageBox.Show("No Authorization Selected");
+            }
+
+
+
+
+
         }
     }
 }
