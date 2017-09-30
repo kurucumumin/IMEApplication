@@ -81,7 +81,7 @@ namespace LoginForm
             cbCountry.DisplayMember = "Country_name";
             
             #endregion
-            //customersearch();
+            customersearch();
         }
         private void CustomerDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -1223,6 +1223,11 @@ namespace LoginForm
             #endregion
 
            
+        }
+
+        private void tableMain_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
