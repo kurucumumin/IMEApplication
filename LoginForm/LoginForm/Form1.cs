@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
+using LoginForm.Services;
 //using LoginForm.Quotation;
 
 
@@ -54,6 +55,26 @@ namespace LoginForm
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+           
+                ExchangeService DailyDolar = new ExchangeService();
+                Rate DolarRate = new Rate();
+                ExchangeRate RateForDolar = new ExchangeRate();
+                RateForDolar = DailyDolar.GetExchangeRateforDolar();
+                DolarRate.CurType = RateForDolar.Code;
+                DolarRate.RateBuy = RateForDolar.ExchangeBuy;
+                DolarRate.RateSell = RateForDolar.ExchangeSell;
+                DolarRate.RateSellEffective = RateForDolar.ExchangeSellEffective;
+                DolarRate.RateBuyEffective = RateForDolar.ExchangeBuyEffective;
+                DolarRate.rate_date = DateTime.Now.Date;
+                IME.Rates.Add(DolarRate);
+                IME.SaveChanges();
+            
+            
 
         }
 

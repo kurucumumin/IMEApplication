@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using LoginForm.DataSet;
+using System.Windows.Forms;
 
 namespace LoginForm.Services
 {
@@ -42,12 +43,22 @@ namespace LoginForm.Services
             string BuyUSD = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/ForexSelling").InnerXml;
             string SellUSD = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/ForexBuying").InnerXml;
 
+            if (BuyUSD.Contains('.'))
+                BuyUSD = BuyUSD.Replace('.', ',');
+            if (BuyUSDeffective.Contains('.'))
+                BuyUSDeffective = BuyUSDeffective.Replace('.', ',');
+            if (SellUSD.Contains('.'))
+                SellUSD = SellUSD.Replace('.', ',');
+            if (SellUSDEffective.Contains('.'))
+                SellUSDEffective = SellUSDEffective.Replace('.', ',');
+     
             RateForDolar.Code = Name;
             RateForDolar.RateDate = TodayDate;
-            RateForDolar.ExchangeBuy = BuyUSD;
-            RateForDolar.ExchangeSell = SellUSD;
-            RateForDolar.ExchangeBuyEffective = BuyUSDeffective;
-            RateForDolar.ExchangeSellEffective = SellUSDEffective;
+            RateForDolar.ExchangeBuy = Decimal.Parse(BuyUSD);
+            RateForDolar.ExchangeSell = Decimal.Parse(SellUSD);
+            RateForDolar.ExchangeBuyEffective = Decimal.Parse(BuyUSDeffective);
+            RateForDolar.ExchangeSellEffective = Decimal.Parse(SellUSDEffective);
+           
             return RateForDolar;
         }
 
