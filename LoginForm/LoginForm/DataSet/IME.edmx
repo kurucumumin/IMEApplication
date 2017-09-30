@@ -253,9 +253,13 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="rate_name" Type="nvarchar" MaxLength="15" />
           <Property Name="rate_date" Type="date" />
           <Property Name="currency" Type="decimal" Precision="16" Scale="6" />
+          <Property Name="CurType" Type="nvarchar" MaxLength="50" />
+          <Property Name="RateBuy" Type="decimal" Precision="20" Scale="10" />
+          <Property Name="RateSell" Type="decimal" Precision="20" Scale="10" />
+          <Property Name="RateBuyEffective" Type="decimal" Precision="20" Scale="10" />
+          <Property Name="RateSellEffective" Type="decimal" Precision="20" Scale="10" />
         </EntityType>
         <EntityType Name="RSPro">
           <Key>
@@ -268,13 +272,6 @@
           <Property Name="Lenght" Type="nvarchar" MaxLength="15" />
           <Property Name="Height" Type="nvarchar" MaxLength="15" />
           <Property Name="GrossWeight" Type="nvarchar" MaxLength="15" />
-        </EntityType>
-        <EntityType Name="ShippingMethod">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="shipping_name" Type="nvarchar" MaxLength="40" />
         </EntityType>
         <EntityType Name="SlidingPrice">
           <Key>
@@ -501,7 +498,6 @@
           <Property Name="supplierNoteID" Type="int" />
           <Property Name="languageID" Type="int" />
           <Property Name="categoryID" Type="int" />
-          <Property Name="adress" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -1182,7 +1178,6 @@
           <EntitySet Name="PaymentTerm" EntityType="Self.PaymentTerm" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rate" EntityType="Self.Rate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RSPro" EntityType="Self.RSPro" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ShippingMethod" EntityType="Self.ShippingMethod" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SlidingPrice" EntityType="Self.SlidingPrice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuperDisk" EntityType="Self.SuperDisk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuperDiskP" EntityType="Self.SuperDiskP" Schema="dbo" store:Type="Tables" />
@@ -1434,7 +1429,6 @@
           <EntitySet Name="PaymentTerms" EntityType="IMEModel.PaymentTerm" />
           <EntitySet Name="Rates" EntityType="IMEModel.Rate" />
           <EntitySet Name="RSProes" EntityType="IMEModel.RSPro" />
-          <EntitySet Name="ShippingMethods" EntityType="IMEModel.ShippingMethod" />
           <EntitySet Name="SlidingPrices" EntityType="IMEModel.SlidingPrice" />
           <EntitySet Name="SuperDisks" EntityType="IMEModel.SuperDisk" />
           <EntitySet Name="SuperDiskPs" EntityType="IMEModel.SuperDiskP" />
@@ -1954,9 +1948,13 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="rate_name" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="rate_date" Type="DateTime" Precision="0" />
           <Property Name="currency" Type="Decimal" Precision="16" Scale="6" />
+          <Property Name="CurType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RateBuy" Type="Decimal" Precision="20" Scale="10" />
+          <Property Name="RateSell" Type="Decimal" Precision="20" Scale="10" />
+          <Property Name="RateBuyEffective" Type="Decimal" Precision="20" Scale="10" />
+          <Property Name="RateSellEffective" Type="Decimal" Precision="20" Scale="10" />
           <NavigationProperty Name="Customers" Relationship="IMEModel.FK__Customer__rate_I__3C69FB99" FromRole="Rate" ToRole="Customer" />
           <NavigationProperty Name="Customers1" Relationship="IMEModel.FK__Customer__rateID__6FE99F9F" FromRole="Rate" ToRole="Customer" />
           <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__rate_I__625A9A57" FromRole="Rate" ToRole="Supplier" />
@@ -1972,13 +1970,6 @@
           <Property Name="Lenght" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Height" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="GrossWeight" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="ShippingMethod">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="shipping_name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="SlidingPrice">
           <Key>
@@ -2231,7 +2222,6 @@
           <Property Name="supplierNoteID" Type="Int32" />
           <Property Name="languageID" Type="Int32" />
           <Property Name="categoryID" Type="Int32" />
-          <Property Name="adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Language" Relationship="IMEModel.FK__SupplierW__langu__72910220" FromRole="SupplierWorker" ToRole="Language" />
           <NavigationProperty Name="Note" Relationship="IMEModel.FK__SupplierW__suppl__73852659" FromRole="SupplierWorker" ToRole="Note" />
           <NavigationProperty Name="Supplier" Relationship="IMEModel.FK__SupplierW__suppl__74794A92" FromRole="SupplierWorker" ToRole="Supplier" />
@@ -3150,9 +3140,13 @@
           <EntitySetMapping Name="Rates">
             <EntityTypeMapping TypeName="IMEModel.Rate">
               <MappingFragment StoreEntitySet="Rate">
+                <ScalarProperty Name="RateSellEffective" ColumnName="RateSellEffective" />
+                <ScalarProperty Name="RateBuyEffective" ColumnName="RateBuyEffective" />
+                <ScalarProperty Name="RateSell" ColumnName="RateSell" />
+                <ScalarProperty Name="RateBuy" ColumnName="RateBuy" />
+                <ScalarProperty Name="CurType" ColumnName="CurType" />
                 <ScalarProperty Name="currency" ColumnName="currency" />
                 <ScalarProperty Name="rate_date" ColumnName="rate_date" />
-                <ScalarProperty Name="rate_name" ColumnName="rate_name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -3167,14 +3161,6 @@
                 <ScalarProperty Name="Width" ColumnName="Width" />
                 <ScalarProperty Name="RsProDesc" ColumnName="RsProDesc" />
                 <ScalarProperty Name="ArticleNo" ColumnName="ArticleNo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ShippingMethods">
-            <EntityTypeMapping TypeName="IMEModel.ShippingMethod">
-              <MappingFragment StoreEntitySet="ShippingMethod">
-                <ScalarProperty Name="shipping_name" ColumnName="shipping_name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3401,7 +3387,6 @@
           <EntitySetMapping Name="SupplierWorkers">
             <EntityTypeMapping TypeName="IMEModel.SupplierWorker">
               <MappingFragment StoreEntitySet="SupplierWorker">
-                <ScalarProperty Name="adress" ColumnName="adress" />
                 <ScalarProperty Name="categoryID" ColumnName="categoryID" />
                 <ScalarProperty Name="languageID" ColumnName="languageID" />
                 <ScalarProperty Name="supplierNoteID" ColumnName="supplierNoteID" />

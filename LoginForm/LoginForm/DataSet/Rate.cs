@@ -23,9 +23,13 @@ namespace LoginForm.DataSet
         }
     
         public int ID { get; set; }
-        public string rate_name { get; set; }
         public Nullable<System.DateTime> rate_date { get; set; }
         public Nullable<decimal> currency { get; set; }
+        public string CurType { get; set; }
+        public Nullable<decimal> RateBuy { get; set; }
+        public Nullable<decimal> RateSell { get; set; }
+        public Nullable<decimal> RateBuyEffective { get; set; }
+        public Nullable<decimal> RateSellEffective { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }
