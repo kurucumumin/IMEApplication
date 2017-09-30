@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LoginForm.Services;
+using LoginForm.DataSet;
 
 namespace LoginForm
 {
@@ -36,7 +38,7 @@ namespace LoginForm
             loaderButtons.Add(btnTSEList);
             loaderButtons.Add(btnRSProList);
 
-            
+
         }
 
         public FormMain()
@@ -85,7 +87,7 @@ namespace LoginForm
             AddIMEWorker addIMEWorker = new AddIMEWorker();
             addIMEWorker.ShowDialog();
             this.Show();
-                
+
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -115,7 +117,7 @@ namespace LoginForm
         {
             foreach (Button item in list)
             {
-                item.Visible = state;                
+                item.Visible = state;
             }
         }
 
@@ -203,6 +205,21 @@ namespace LoginForm
             this.Hide();
             form.ShowDialog();
             this.Show();
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            ExchangeService DailyDolar = new ExchangeService();
+            ExchangeRate RateForDolar = new ExchangeRate();
+            RateForDolar = DailyDolar.GetExchangeRateforDolar();
+            lblRateBuy.Text = RateForDolar.ExchangeBuy;
+            lblRateSell.Text = RateForDolar.ExchangeSell;
+            lblRateBuyEffective.Text = RateForDolar.ExchangeBuyEffective;
+            lblRateSellEffective.Text = RateForDolar.ExchangeSellEffective;
+            //string Euro = DailyEuro.GetExchangeRateforEuro();
+            //string Dolar = DailyEuro.GetExchangeRateforDolar();
+            //lblDolarSell.Text = Dolar;
+            //lblEuroSell.Text = Euro;
         }
     }
 }
