@@ -35,6 +35,8 @@
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.txtPhone = new System.Windows.Forms.MaskedTextBox();
             this.txtEmail = new System.Windows.Forms.MaskedTextBox();
             this.btnSaveWorker = new System.Windows.Forms.Button();
@@ -42,8 +44,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.lstWorker = new System.Windows.Forms.ListBox();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -63,7 +63,7 @@
             this.label2.Location = new System.Drawing.Point(26, 123);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 13);
-            this.label2.TabIndex = 1;
+            this.label2.TabIndex = 15;
             this.label2.Text = "Last Name";
             // 
             // label3
@@ -72,7 +72,7 @@
             this.label3.Location = new System.Drawing.Point(26, 191);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(36, 13);
-            this.label3.TabIndex = 2;
+            this.label3.TabIndex = 16;
             this.label3.Text = "E-Mail";
             // 
             // label4
@@ -81,7 +81,7 @@
             this.label4.Location = new System.Drawing.Point(26, 254);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 13);
-            this.label4.TabIndex = 3;
+            this.label4.TabIndex = 17;
             this.label4.Text = "Phone";
             // 
             // txtFirstName
@@ -89,14 +89,14 @@
             this.txtFirstName.Location = new System.Drawing.Point(105, 49);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(100, 20);
-            this.txtFirstName.TabIndex = 4;
+            this.txtFirstName.TabIndex = 1;
             // 
             // txtLastName
             // 
             this.txtLastName.Location = new System.Drawing.Point(105, 116);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(100, 20);
-            this.txtLastName.TabIndex = 5;
+            this.txtLastName.TabIndex = 2;
             // 
             // groupBox1
             // 
@@ -118,27 +118,47 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Worker Registration Form";
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(88, 282);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(76, 44);
+            this.btnDelete.TabIndex = 6;
+            this.btnDelete.Text = "Delete Worker";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(6, 282);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(76, 44);
+            this.btnUpdate.TabIndex = 5;
+            this.btnUpdate.Text = "Update Worker";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // txtPhone
             // 
             this.txtPhone.Location = new System.Drawing.Point(105, 247);
             this.txtPhone.Mask = "(999) 000-0000";
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(100, 20);
-            this.txtPhone.TabIndex = 10;
+            this.txtPhone.TabIndex = 4;
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(105, 183);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(100, 20);
-            this.txtEmail.TabIndex = 9;
+            this.txtEmail.TabIndex = 3;
             // 
             // btnSaveWorker
             // 
             this.btnSaveWorker.Location = new System.Drawing.Point(171, 282);
             this.btnSaveWorker.Name = "btnSaveWorker";
             this.btnSaveWorker.Size = new System.Drawing.Size(76, 44);
-            this.btnSaveWorker.TabIndex = 8;
+            this.btnSaveWorker.TabIndex = 7;
             this.btnSaveWorker.Text = "Save Worker";
             this.btnSaveWorker.UseVisualStyleBackColor = true;
             this.btnSaveWorker.Click += new System.EventHandler(this.btnSaveWorker_Click);
@@ -170,7 +190,7 @@
             this.button2.Location = new System.Drawing.Point(249, 223);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(76, 44);
-            this.button2.TabIndex = 9;
+            this.button2.TabIndex = 8;
             this.button2.Text = "Authorization Panel";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -184,26 +204,6 @@
             this.lstWorker.TabIndex = 0;
             this.lstWorker.Click += new System.EventHandler(this.lstWorker_Click);
             this.lstWorker.SelectedIndexChanged += new System.EventHandler(this.lstWorker_SelectedIndexChanged);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Location = new System.Drawing.Point(6, 282);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(76, 44);
-            this.btnUpdate.TabIndex = 11;
-            this.btnUpdate.Text = "Update Worker";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(88, 282);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(76, 44);
-            this.btnDelete.TabIndex = 12;
-            this.btnDelete.Text = "Delete Worker";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // AddIMEWorker
             // 
