@@ -81,7 +81,7 @@ namespace LoginForm
             cbCountry.DisplayMember = "Country_name";
             
             #endregion
-            //customersearch();
+            customersearch();
         }
         private void CustomerDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -943,7 +943,8 @@ namespace LoginForm
             TermsofPayments.Enabled = false;
             TaxOffice.Enabled = false;
             btnContactAdd.Enabled = true;
-
+            txtSearch.Enabled = true;
+            Search.Enabled = true;
             if (ContactList.DataSource!=null)
             {
                 btnContactDelete.Enabled = true;
@@ -957,8 +958,6 @@ namespace LoginForm
             AccountRepresentary.Enabled = false;
             CreditLimit.Enabled = false;
             taxNumber.Enabled = false;
-            Search.Enabled = false;
-            txtSearch.Enabled = false;
             rb_passive.Enabled = false;
             rb_active.Enabled = false;
             factor.Enabled = false;
@@ -995,7 +994,7 @@ namespace LoginForm
             AccountRepresentary.Enabled = true;
             CreditLimit.Enabled = true;
             taxNumber.Enabled = true;
-            txtSearch.Enabled = true;
+           
             rb_passive.Enabled = true;
             rb_active.Enabled = true;
             factor.Enabled = true;
@@ -1006,6 +1005,7 @@ namespace LoginForm
             btnContactCancel.Enabled = true;
             CustomerDataGrid.Enabled = false;
             Search.Enabled = false;
+            txtSearch.Enabled = false;
             #endregion
         }
 
@@ -1223,6 +1223,11 @@ namespace LoginForm
             #endregion
 
            
+        }
+
+        private void tableMain_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

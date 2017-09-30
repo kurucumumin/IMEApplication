@@ -25,6 +25,7 @@ namespace LoginForm
 
         private void QuotationForm_Load(object sender, EventArgs e)
         {
+            
             dataGridView3.Rows[0].Cells["dgQty"].Value ="0";
             dataGridView3.Rows[0].Cells[0].Value = 1.ToString();
             #region ComboboxFiller
@@ -37,7 +38,8 @@ namespace LoginForm
             cbPayment.DataSource = IME.PaymentMethods.ToList();
             cbPayment.DisplayMember = "Payment";
             //cbPayment.ValueMember = "ID";
-            
+            cbRep.DataSource = IME.Workers.ToList();
+            cbRep.DisplayMember = "FirstName";
 
             dtpDate.Value = DateTime.Now;
             #endregion
@@ -60,9 +62,11 @@ namespace LoginForm
         }
         private void fillCustomer()
         {
+            
             CustomerCode.Text = classQuotationAdd.customerID;
             txtCustomerName.Text = classQuotationAdd.customername;
             var c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
+            
             if (c.rate_ID != null)
             {
                 cbFactor.SelectedIndex = cbFactor.FindStringExact(c.Rate.rate_name); 
@@ -70,10 +74,11 @@ namespace LoginForm
             }
             if (c.paymentmethodID != null)
             {
-                cbPayment.SelectedIndex = cbPayment.FindStringExact(c.paymentmethodID.ToString());
+                cbPayment.SelectedIndex = cbPayment.FindStringExact(c.PaymentMethod.Payment);
             }
             try { txtContactNote.Text = c.CustomerWorker.Note.Note_name; } catch { }
             try { txtCustomerNote.Text = c.Note.Note_name; } catch { }
+            cbRep.SelectedIndex = cbRep.FindStringExact(c.Worker.FirstName.ToString());
         }
 
         private void customerDetailsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -122,6 +127,7 @@ namespace LoginForm
                         var er = classQuotationAdd.ItemGetExtendedRange(dataGridView3.CurrentCell.Value.ToString());
                         if (sd != null || sdp != null || er != null)
                         {
+                            int itemnumber = 0;//
                             ItemDetailsFiller(dataGridView3.CurrentCell.Value.ToString());
                             //LandingCost Calculation
                             dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells[8].Value = (classQuotationAdd.GetLandingCost(dataGridView3.CurrentCell.Value.ToString())).ToString("G29");
@@ -150,6 +156,10 @@ namespace LoginForm
                         dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = discResult.ToString("G29");
                     }
                     break;
+                case 18://
+                    {
+
+                    }break;
             }
         }
 
@@ -306,13 +316,15 @@ namespace LoginForm
         {
             if (e.KeyCode == Keys.Enter)
             {
-                classQuotationAdd.customersearchID = CustomerCode.Text;
-                classQuotationAdd.customersearchname = "";
-                FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch();
-                this.Enabled = false;
-                form.ShowDialog();
-                this.Enabled = true;
-                fillCustomer();
+                
+                    classQuotationAdd.customersearchID = CustomerCode.Text;
+                    classQuotationAdd.customersearchname = "";
+                    FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch();
+                    this.Enabled = false;
+                    form.ShowDialog();
+                    this.Enabled = true;
+                    fillCustomer();
+               
             }
         }
 

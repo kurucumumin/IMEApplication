@@ -260,6 +260,12 @@
     <Compile Include="Quotation\FormQuaotationCustomerSearch.Designer.cs">
       <DependentUpon>FormQuaotationCustomerSearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="Quotation\FormQuotationItemSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Quotation\FormQuotationItemSearch.Designer.cs">
+      <DependentUpon>FormQuotationItemSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Quotation\QuotationAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -344,6 +350,9 @@
     </Compile>
     <EmbeddedResource Include="Quotation\FormQuaotationCustomerSearch.resx">
       <DependentUpon>FormQuaotationCustomerSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Quotation\FormQuotationItemSearch.resx">
+      <DependentUpon>FormQuotationItemSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Quotation\QuotationAdd.resx">
       <DependentUpon>QuotationAdd.cs</DependentUpon>

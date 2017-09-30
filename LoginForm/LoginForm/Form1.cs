@@ -47,14 +47,24 @@ namespace LoginForm
             }
         }
 
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         #endregion
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            AddIMEWorker workerform = new AddIMEWorker();
-            AuthorizationManagement manager = new AuthorizationManagement();
-            manager.Show();
-            //workerform.Show();
-        }
+        //private void Form1_Load(object sender, EventArgs e)
+        //{
+        //    AddIMEWorker workerform = new AddIMEWorker();
+        //    AuthorizationManagement manager = new AuthorizationManagement();
+        //    manager.Show();
+        //    //workerform.Show();
+        //}
     }
 }
