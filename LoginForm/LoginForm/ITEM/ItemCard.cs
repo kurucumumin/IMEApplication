@@ -345,7 +345,7 @@ namespace LoginForm
                 txtSSM.Text = sd.Pack_Quantity.ToString();
                 txtUC.Text = sd.Unit_Content.ToString();
                 txtUM.Text = sd.Unit_Measure;
-                if (sd.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sd.Standard_Weight) / (decimal)100).ToString("G29"); } else { }
+                if (sd.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sd.Standard_Weight) / (decimal)1000).ToString("G29"); } else { }
                 txtHazardousInd.Text = sd.Hazardous_Ind;
                 txtCalibrationInd.Text = sd.Calibration_Ind;
                 //ObsoluteFlag.Text = sd.Obsolete_Flag.ToString();
@@ -375,7 +375,7 @@ namespace LoginForm
                 txtSSM.Text = sdP.Pack_Quantity.ToString();
                 txtUC.Text = sdP.Unit_Content.ToString();
                 txtUM.Text = sdP.Unit_Measure;
-                if (sdP.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sdP.Standard_Weight) / (decimal)100).ToString("G29"); }
+                if (sdP.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sdP.Standard_Weight) / (decimal)1000).ToString("G29"); }
                 txtHazardousInd.Text = sdP.Hazardous_Ind;
                 txtCalibrationInd.Text = sdP.Calibration_Ind;
                 //ObsoluteFlag.Text = sdP.Obsolete_Flag.ToString();
@@ -405,7 +405,7 @@ namespace LoginForm
                 if (txtLength.Text != "") { txtLength.Text = ((decimal)(er.ExtendedRangeLength * ((Decimal)100))).ToString("G29"); }
                 if (txtWidth.Text != "") { txtWidth.Text = ((decimal)(er.Width * ((Decimal)100))).ToString("G29"); }
                 if (txtHeight.Text != "") { txtHeight.Text = ((decimal)(er.Height * ((Decimal)100))).ToString("G29"); }
-                if (er.ExtendedRangeWeight != null) { txtStandartWeight.Text = ((decimal)(er.ExtendedRangeWeight) / (decimal)100).ToString("G29"); }
+                if (er.ExtendedRangeWeight != null) { txtStandartWeight.Text = ((decimal)(er.ExtendedRangeWeight) / (decimal)1000).ToString("G29"); }
                 txtCCCN.Text = er.CCCN.ToString();
                 txtCoO.Text = er.CountryofOrigin;
                 txtUM.Text = er.UnitofMeasure;
@@ -803,6 +803,11 @@ namespace LoginForm
         }
 
         private void groupBox7_Enter_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ItemCard_Load(object sender, EventArgs e)
         {
 
         }

@@ -102,6 +102,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.button2 = new System.Windows.Forms.Button();
             this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.CustomerCode = new System.Windows.Forms.TextBox();
@@ -118,6 +119,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
+            this.cbFactor = new System.Windows.Forms.ComboBox();
             this.cbCurrency = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
@@ -231,8 +233,6 @@
             this.txtUnitCount1 = new System.Windows.Forms.TextBox();
             this.txtUnitCount4 = new System.Windows.Forms.TextBox();
             this.txtUnitCount3 = new System.Windows.Forms.TextBox();
-            this.cbFactor = new System.Windows.Forms.ComboBox();
-            this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -917,6 +917,13 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
+            // dtpDate
+            // 
+            this.dtpDate.Location = new System.Drawing.Point(274, 57);
+            this.dtpDate.Name = "dtpDate";
+            this.dtpDate.Size = new System.Drawing.Size(112, 20);
+            this.dtpDate.TabIndex = 77;
+            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(480, 8);
@@ -945,12 +952,12 @@
             // 
             // cbPayment
             // 
+            this.cbPayment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPayment.FormattingEnabled = true;
             this.cbPayment.Location = new System.Drawing.Point(274, 83);
             this.cbPayment.Name = "cbPayment";
             this.cbPayment.Size = new System.Drawing.Size(202, 21);
             this.cbPayment.TabIndex = 74;
-            this.cbPayment.Text = "Selected...";
             // 
             // label21
             // 
@@ -972,12 +979,12 @@
             // 
             // cbRep
             // 
+            this.cbRep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRep.FormattingEnabled = true;
             this.cbRep.Location = new System.Drawing.Point(66, 106);
             this.cbRep.Name = "cbRep";
             this.cbRep.Size = new System.Drawing.Size(138, 21);
             this.cbRep.TabIndex = 71;
-            this.cbRep.Text = "Mustafa Çelebi";
             // 
             // label6
             // 
@@ -1056,14 +1063,23 @@
             this.label30.TabIndex = 60;
             this.label30.Text = "Factor";
             // 
+            // cbFactor
+            // 
+            this.cbFactor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFactor.FormattingEnabled = true;
+            this.cbFactor.Location = new System.Drawing.Point(409, 107);
+            this.cbFactor.Name = "cbFactor";
+            this.cbFactor.Size = new System.Drawing.Size(67, 21);
+            this.cbFactor.TabIndex = 58;
+            // 
             // cbCurrency
             // 
+            this.cbCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCurrency.FormattingEnabled = true;
             this.cbCurrency.Location = new System.Drawing.Point(272, 106);
             this.cbCurrency.Name = "cbCurrency";
             this.cbCurrency.Size = new System.Drawing.Size(81, 21);
             this.cbCurrency.TabIndex = 58;
-            this.cbCurrency.Text = "TL";
             // 
             // label8
             // 
@@ -2206,27 +2222,11 @@
             this.txtUnitCount3.Size = new System.Drawing.Size(44, 20);
             this.txtUnitCount3.TabIndex = 410;
             // 
-            // cbFactor
-            // 
-            this.cbFactor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFactor.FormattingEnabled = true;
-            this.cbFactor.Location = new System.Drawing.Point(409, 107);
-            this.cbFactor.Name = "cbFactor";
-            this.cbFactor.Size = new System.Drawing.Size(67, 21);
-            this.cbFactor.TabIndex = 58;
-            // 
-            // dtpDate
-            // 
-            this.dtpDate.Location = new System.Drawing.Point(274, 57);
-            this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(112, 20);
-            this.dtpDate.TabIndex = 77;
-            // 
             // QuotationAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1361, 733);
+            this.ClientSize = new System.Drawing.Size(1354, 733);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox11);

@@ -25,20 +25,20 @@ namespace LoginForm
 
         private void QuotationForm_Load(object sender, EventArgs e)
         {
+            dataGridView3.Rows[0].Cells["dgQty"].Value ="0";
             dataGridView3.Rows[0].Cells[0].Value = 1.ToString();
             #region ComboboxFiller
             cbFactor.DataSource = IME.Rates.ToList();
-            cbFactor.DisplayMember = "rate_name";
+            cbFactor.DisplayMember = "currency";
             //cbFactor.ValueMember = "ID";
             cbCurrency.DataSource = IME.Rates.ToList();
-            cbCurrency.DisplayMember = "currency";
+            cbCurrency.DisplayMember = "rate_name";
             //cbCurrency.ValueMember = "ID";
             cbPayment.DataSource = IME.PaymentMethods.ToList();
             cbPayment.DisplayMember = "Payment";
             //cbPayment.ValueMember = "ID";
-            cbRep.DataSource = IME.CustomerWorkers.ToList();
-            cbRep.DisplayMember = "cw_name";
-            //cbRep.ValueMember = "ID";
+            
+
             dtpDate.Value = DateTime.Now;
             #endregion
         }
@@ -55,6 +55,7 @@ namespace LoginForm
                 form.ShowDialog();
                 this.Enabled = true;
                 fillCustomer();
+                if (classQuotationAdd.customersearchID!="") { cbRep.DataSource = IME.CustomerWorkers.Where(a => a.customerID == IME.Customers.Where(b => b.ID == classQuotationAdd.customersearchID).FirstOrDefault().ID).ToList(); cbRep.DisplayMember = "cw_name";  }
             }
         }
         private void fillCustomer()
@@ -108,11 +109,13 @@ namespace LoginForm
         private void dataGridView3_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
 
-            switch (dataGridView3.CurrentCell.ColumnIndex) {
+            
+            switch (dataGridView3.CurrentCell.ColumnIndex)
+            {
                 case 0:
                     if (dataGridView3.CurrentCell.RowIndex != 0) { dataGridView3.CurrentCell.Value = (dataGridView3.CurrentCell.RowIndex + 1).ToString(); }
                     break;
-                case 2:
+                case 2://PRODUCT CODE
                     {
                         var sd = classQuotationAdd.ItemGetSuperDisk(dataGridView3.CurrentCell.Value.ToString());
                         var sdp = classQuotationAdd.ItemGetSuperDiskP(dataGridView3.CurrentCell.Value.ToString());
@@ -120,10 +123,34 @@ namespace LoginForm
                         if (sd != null || sdp != null || er != null)
                         {
                             ItemDetailsFiller(dataGridView3.CurrentCell.Value.ToString());
+                            //LandingCost Calculation
+                            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells[8].Value = (classQuotationAdd.GetLandingCost(dataGridView3.CurrentCell.Value.ToString())).ToString("G29");
                         }
                         else { MessageBox.Show("There is no such an item"); }
                     }break;
-        }
+                case 10://QAUANTITY
+                    {
+                        if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value != null) { dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgCost"].Value = classQuotationAdd.GetCost(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())).ToString("G29"); }
+                        if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value != null) { dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value = (classQuotationAdd.GetPrice(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString()))* Decimal.Parse(cbFactor.Text)* Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())).ToString("G29") ; }
+                        decimal discResult = 0;
+                        if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value != null) { discResult = decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value.ToString()); }
+                        discResult = (discResult - (discResult * decimal.Parse(dataGridView3.CurrentCell.Value.ToString()) / 100));
+                        dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = discResult.ToString("G29");
+                        //if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value != null)
+                        //{
+                        //    dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value.ToString())) / (Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString())))) * 100).ToString("G29");
+                        //}
+                    }
+                    break;
+                case 17://Disc
+                    {
+                        decimal discResult=0;
+                        if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value != null) { discResult = decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value.ToString()); }
+                        discResult = (discResult - (discResult * decimal.Parse(dataGridView3.CurrentCell.Value.ToString()) / 100));
+                        dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = discResult.ToString("G29");
+                    }
+                    break;
+            }
         }
 
         private void ItemDetailsFiller(string ArticleNoSearch)
@@ -140,13 +167,12 @@ namespace LoginForm
             var du = IME.DualUses.Where(a => a.ArticleNo == ArticleNoSearch).FirstOrDefault();
             if (sd != null)
             {
-                
-                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["Description"].Value = sd.Article_Desc;
-                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["SSM"].Value = sd.Pack_Quantity.ToString();
-                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["U/C"].Value = sd.Unit_Content.ToString();
-                
-                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["UOM"].Value = sd.Unit_Measure;
-                if (sd.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sd.Standard_Weight) / (decimal)100).ToString("G29"); } else { }
+                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgDesc"].Value = sd.Article_Desc;
+                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgSSM"].Value = sd.Pack_Quantity.ToString();
+                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUC"].Value = sd.Unit_Content.ToString();
+                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUOM"].Value = sd.Unit_Measure;
+                if (sd.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sd.Standard_Weight) / (decimal)1000).ToString("G29"); } else { }
+                if (txtHeight.Text != "" && txtLength.Text != "" && txtWidth.Text != "") { txtGrossWeight.Text = (Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString(); }
                 txtHazardousInd.Text = sd.Hazardous_Ind;
                 txtCalibrationInd.Text = sd.Calibration_Ind;
                 //ObsoluteFlag.Text = sd.Obsolete_Flag.ToString();
@@ -161,7 +187,7 @@ namespace LoginForm
                 txtDiscCharge.Text = sd.Disc_Change_Ind;
                 txtExpiringPro.Text = sd.Expiring_Product_Change_Ind;
                 txtManufacturer.Text = sd.Manufacturer.ToString();
-                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["MPN"].Value = sd.MPN;
+                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgMPN"].Value = sd.MPN;
                 txtMHCodeLevel1.Text = sd.MH_Code_Level_1;
                 txtCCCN.Text = sd.CCCN_No.ToString();
                 txtHeight.Text = ((decimal)(sd.Heigh * ((Decimal)100))).ToString("G29");
@@ -170,12 +196,11 @@ namespace LoginForm
             }
             if (sdP != null)
             {
-
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["Description"].Value = sdP.Article_Desc;
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["SSM"].Value = sdP.Pack_Quantity.ToString();
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["U/C"].Value = sdP.Unit_Content.ToString();
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["UOM"].Value = sdP.Unit_Measure;
-                if (sdP.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sdP.Standard_Weight) / (decimal)100).ToString("G29"); }
+                if (sdP.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sdP.Standard_Weight) / (decimal)1000).ToString("G29"); }
                 txtHazardousInd.Text = sdP.Hazardous_Ind;
                 txtCalibrationInd.Text = sdP.Calibration_Ind;
                 //ObsoluteFlag.Text = sdP.Obsolete_Flag.ToString();
@@ -205,7 +230,7 @@ namespace LoginForm
                 if (txtLength.Text != "") { txtLength.Text = ((decimal)(er.ExtendedRangeLength * ((Decimal)100))).ToString("G29"); }
                 if (txtWidth.Text != "") { txtWidth.Text = ((decimal)(er.Width * ((Decimal)100))).ToString("G29"); }
                 if (txtHeight.Text != "") { txtHeight.Text = ((decimal)(er.Height * ((Decimal)100))).ToString("G29"); }
-                if (er.ExtendedRangeWeight != null) { txtStandartWeight.Text = ((decimal)(er.ExtendedRangeWeight) / (decimal)100).ToString("G29"); }
+                if (er.ExtendedRangeWeight != null) { txtStandartWeight.Text = ((decimal)(er.ExtendedRangeWeight) / (decimal)1000).ToString("G29"); }
                 txtCCCN.Text = er.CCCN.ToString();
                 txtCofO.Text = er.CountryofOrigin;
                 txtUK1.Text = er.Col1Price.ToString();
@@ -226,7 +251,6 @@ namespace LoginForm
             }
             if (sp != null)
             {
-
                 //IntroductionDate.Text = sp.IntroductionDate;
                 //DiscontinuedDate.Text = sp.DiscontinuedDate;
                 txtUnitCount1.Text = sp.Col1Break.ToString();
@@ -267,7 +291,6 @@ namespace LoginForm
             }
             if (du != null) { txtLicenceType.Text = du.LicenceType;}
             //
-
             #endregion
             if (txtLithium.Text != "") { label64.BackColor = Color.Red; }
             if (txtShipping.Text != "") { label63.BackColor = Color.Red; }
@@ -292,6 +315,8 @@ namespace LoginForm
                 fillCustomer();
             }
         }
+        
+
     }
     
 }
