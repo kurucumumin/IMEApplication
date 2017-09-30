@@ -60,9 +60,11 @@ namespace LoginForm
         }
         private void fillCustomer()
         {
+            
             CustomerCode.Text = classQuotationAdd.customerID;
             txtCustomerName.Text = classQuotationAdd.customername;
             var c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
+            cbRep.DataSource = IME.Workers.ToList();
             if (c.rate_ID != null)
             {
                 cbFactor.SelectedIndex = cbFactor.FindStringExact(c.Rate.rate_name); 
@@ -74,6 +76,7 @@ namespace LoginForm
             }
             try { txtContactNote.Text = c.CustomerWorker.Note.Note_name; } catch { }
             try { txtCustomerNote.Text = c.Note.Note_name; } catch { }
+            cbRep.SelectedIndex = cbRep.FindStringExact(c.Worker.FirstName);
         }
 
         private void customerDetailsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -150,6 +153,10 @@ namespace LoginForm
                         dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = discResult.ToString("G29");
                     }
                     break;
+                case 18://
+                    {
+
+                    }break;
             }
         }
 
