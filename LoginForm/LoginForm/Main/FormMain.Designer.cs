@@ -75,7 +75,6 @@
             this.btnOnSale = new System.Windows.Forms.Button();
             this.btnCustomerMain = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -87,6 +86,16 @@
             this.panel22 = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
             this.btnRSProList = new System.Windows.Forms.Button();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.lblRateBuy = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblRateSell = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblRateSellEffective = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblRateBuyEffective = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.tableLeftPanel.SuspendLayout();
             this.gbMainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -97,12 +106,14 @@
             this.panel16.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel14.SuspendLayout();
+            this.panel12.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel21.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLeftPanel
@@ -552,6 +563,10 @@
             // 
             // panel12
             // 
+            this.panel12.Controls.Add(this.lblRateSellEffective);
+            this.panel12.Controls.Add(this.label8);
+            this.panel12.Controls.Add(this.label6);
+            this.panel12.Controls.Add(this.lblRateBuyEffective);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel12.Location = new System.Drawing.Point(773, 89);
             this.panel12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -738,15 +753,7 @@
             this.panel6.Size = new System.Drawing.Size(148, 83);
             this.panel6.TabIndex = 38;
             // 
-            // panel5
-            // 
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(773, 2);
-            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(151, 83);
-            this.panel5.TabIndex = 37;
-            // 
+
             // panel4
             // 
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -854,6 +861,101 @@
             this.btnRSProList.Visible = false;
             this.btnRSProList.Click += new System.EventHandler(this.btnRSProList_Click);
             // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.label2);
+            this.panel5.Controls.Add(this.lblRateSell);
+            this.panel5.Controls.Add(this.label4);
+            this.panel5.Controls.Add(this.lblRateBuy);
+            this.panel5.Controls.Add(this.label1);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(577, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(117, 66);
+            this.panel5.TabIndex = 37;
+            // 
+            // lblRateBuy
+            // 
+            this.lblRateBuy.AutoSize = true;
+            this.lblRateBuy.Location = new System.Drawing.Point(73, 23);
+            this.lblRateBuy.Name = "lblRateBuy";
+            this.lblRateBuy.Size = new System.Drawing.Size(35, 13);
+            this.lblRateBuy.TabIndex = 1;
+            this.lblRateBuy.Text = "label2";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(2, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Döviz Alış";
+            // 
+            // lblRateSell
+            // 
+            this.lblRateSell.AutoSize = true;
+            this.lblRateSell.Location = new System.Drawing.Point(73, 50);
+            this.lblRateSell.Name = "lblRateSell";
+            this.lblRateSell.Size = new System.Drawing.Size(35, 13);
+            this.lblRateSell.TabIndex = 3;
+            this.lblRateSell.Text = "label3";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(2, 50);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(60, 13);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Döviz Satış";
+            // 
+            // lblRateSellEffective
+            // 
+            this.lblRateSellEffective.AutoSize = true;
+            this.lblRateSellEffective.Location = new System.Drawing.Point(73, 54);
+            this.lblRateSellEffective.Name = "lblRateSellEffective";
+            this.lblRateSellEffective.Size = new System.Drawing.Size(35, 13);
+            this.lblRateSellEffective.TabIndex = 7;
+            this.lblRateSellEffective.Text = "label5";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(1, 54);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(63, 13);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Efektif Satış";
+            // 
+            // lblRateBuyEffective
+            // 
+            this.lblRateBuyEffective.AutoSize = true;
+            this.lblRateBuyEffective.Location = new System.Drawing.Point(73, 27);
+            this.lblRateBuyEffective.Name = "lblRateBuyEffective";
+            this.lblRateBuyEffective.Size = new System.Drawing.Size(35, 13);
+            this.lblRateBuyEffective.TabIndex = 5;
+            this.lblRateBuyEffective.Text = "label7";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(1, 27);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(56, 13);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Efektif Alış";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(42, 5);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(32, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Dolar";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -866,6 +968,7 @@
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "IME General Components";
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.tableLeftPanel.ResumeLayout(false);
             this.gbMainMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -876,12 +979,16 @@
             this.panel16.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel21.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -918,7 +1025,6 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
@@ -946,5 +1052,15 @@
         private System.Windows.Forms.Button btnTSEList;
         private System.Windows.Forms.Button btnRSProList;
         private System.Windows.Forms.Button btnItemCard;
+        private System.Windows.Forms.Label lblRateSellEffective;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblRateBuyEffective;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label lblRateSell;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblRateBuy;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
