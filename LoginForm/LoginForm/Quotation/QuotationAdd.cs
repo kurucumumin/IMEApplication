@@ -322,8 +322,11 @@ namespace LoginForm
                 fillCustomer();
             }
         }
-        
 
+        private void cbRep_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
     
 }

@@ -985,6 +985,7 @@
             this.cbRep.Name = "cbRep";
             this.cbRep.Size = new System.Drawing.Size(138, 21);
             this.cbRep.TabIndex = 71;
+            this.cbRep.SelectedIndexChanged += new System.EventHandler(this.cbRep_SelectedIndexChanged);
             // 
             // label6
             // 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.CustomerManager;
-
+using LoginForm.Quotation;
 namespace LoginForm
 {
     static class Program
@@ -17,7 +17,7 @@ namespace LoginForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
+            Application.Run(new QuotationAdd());
         }
     }
 }
