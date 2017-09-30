@@ -1229,5 +1229,10 @@ namespace LoginForm
         {
 
         }
+
+        private void factor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

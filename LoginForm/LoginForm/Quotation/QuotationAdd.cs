@@ -69,7 +69,7 @@ namespace LoginForm
             
             if (c.rate_ID != null)
             {
-                cbFactor.SelectedIndex = cbFactor.FindStringExact(c.Rate.rate_name); 
+                cbFactor.SelectedIndex = cbFactor.FindStringExact(c.Rate.CurType); 
                 cbCurrency.SelectedIndex = cbCurrency.FindStringExact(c.Rate.currency.ToString());
             }
             if (c.paymentmethodID != null)

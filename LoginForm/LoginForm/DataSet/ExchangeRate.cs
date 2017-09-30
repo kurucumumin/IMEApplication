@@ -10,9 +10,9 @@ namespace LoginForm.DataSet
     {
         public string Code { get; set; }
         public DateTime RateDate { get; set; }
-        public string ExchangeBuy { get; set; }
-        public string ExchangeSell { get; set; }
-        public string ExchangeBuyEffective { get; set; }
-        public string ExchangeSellEffective { get; set; }
+        public decimal ExchangeBuy { get; set; }
+        public decimal ExchangeSell { get; set; }
+        public decimal ExchangeBuyEffective { get; set; }
+        public decimal ExchangeSellEffective { get; set; }
     }
 }

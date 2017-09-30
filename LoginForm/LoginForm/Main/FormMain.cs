@@ -212,10 +212,10 @@ namespace LoginForm
             ExchangeService DailyDolar = new ExchangeService();
             ExchangeRate RateForDolar = new ExchangeRate();
             RateForDolar = DailyDolar.GetExchangeRateforDolar();
-            lblRateBuy.Text = RateForDolar.ExchangeBuy;
-            lblRateSell.Text = RateForDolar.ExchangeSell;
-            lblRateBuyEffective.Text = RateForDolar.ExchangeBuyEffective;
-            lblRateSellEffective.Text = RateForDolar.ExchangeSellEffective;
+            lblRateBuy.Text = RateForDolar.ExchangeBuy.ToString();
+            lblRateSell.Text = RateForDolar.ExchangeSell.ToString();
+            lblRateBuyEffective.Text = RateForDolar.ExchangeBuyEffective.ToString();
+            lblRateSellEffective.Text = RateForDolar.ExchangeSellEffective.ToString();
             //string Euro = DailyEuro.GetExchangeRateforEuro();
             //string Dolar = DailyEuro.GetExchangeRateforDolar();
             //lblDolarSell.Text = Dolar;
