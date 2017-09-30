@@ -482,16 +482,19 @@ namespace LoginForm
 
         private void dataGridView1_Click(object sender, EventArgs e)
         {
-            textsClear();
-            if (dgItemList.RowCount > 0)
+            if (dgItemList.DataSource != null)
             {
-                gridselectedindex = dgItemList.CurrentCell.RowIndex;
-            }
-            Filler(dgItemList.Rows[gridselectedindex].Cells["ArticleNo"].Value.ToString());
-            if (dgItemList.RowCount > 0)
-            {
-                dgItemList.ClearSelection();
-                dgItemList.CurrentCell = dgItemList.Rows[gridselectedindex].Cells[0];
+                textsClear();
+                if (dgItemList.RowCount > 0)
+                {
+                    gridselectedindex = dgItemList.CurrentCell.RowIndex;
+                }
+                Filler(dgItemList.Rows[gridselectedindex].Cells["ArticleNo"].Value.ToString());
+                if (dgItemList.RowCount > 0)
+                {
+                    dgItemList.ClearSelection();
+                    dgItemList.CurrentCell = dgItemList.Rows[gridselectedindex].Cells[0];
+                }
             }
 
         }
