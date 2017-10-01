@@ -19,8 +19,8 @@ namespace LoginForm
         IMEEntities IME = new IMEEntities();
         public Worker Logged;
         public string LoginPerson { get; set; }
-        
-        
+
+
         public Form1()
         {
             InitializeComponent();
@@ -34,7 +34,7 @@ namespace LoginForm
             Worker Logged = IME.Workers
                 .Where(uName => uName.FirstName == UserName)
                 .Where(pw => pw.LastName == PW)
-                .Where(status=>status.isActive==1)
+                .Where(status => status.isActive == 1)
                 .FirstOrDefault();
             WorkerApp.ID = Logged.WorkerID;
             if (Logged != null)
@@ -60,21 +60,37 @@ namespace LoginForm
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
-                ExchangeService DailyDolar = new ExchangeService();
-                Rate DolarRate = new Rate();
-                ExchangeRate RateForDolar = new ExchangeRate();
-                RateForDolar = DailyDolar.GetExchangeRateforDolar();
-                DolarRate.CurType = RateForDolar.Code;
-                DolarRate.RateBuy = RateForDolar.ExchangeBuy;
-                DolarRate.RateSell = RateForDolar.ExchangeSell;
-                DolarRate.RateSellEffective = RateForDolar.ExchangeSellEffective;
-                DolarRate.RateBuyEffective = RateForDolar.ExchangeBuyEffective;
-                DolarRate.rate_date = DateTime.Now.Date;
-                IME.Rates.Add(DolarRate);
-                IME.SaveChanges();
-            
-            
+
+            ExchangeService DailyDolar = new ExchangeService();
+            Rate DolarRate = new Rate();
+            ExchangeRate RateForDolar = new ExchangeRate();
+            RateForDolar = DailyDolar.GetExchangeRateforDolar();
+            DolarRate.CurType = RateForDolar.Code;
+            DolarRate.RateBuy = RateForDolar.ExchangeBuy;
+            DolarRate.RateSell = RateForDolar.ExchangeSell;
+            DolarRate.RateSellEffective = RateForDolar.ExchangeSellEffective;
+            DolarRate.RateBuyEffective = RateForDolar.ExchangeBuyEffective;
+            DolarRate.rate_date = DateTime.Now.Date;
+            IME.Rates.Add(DolarRate);
+            IME.SaveChanges();
+
+            Rate SterlinRate = new Rate();
+            ExchangeRate RateforSterlin = new ExchangeRate();
+            RateforSterlin = DailyDolar.GetExchangeRateforSterlin();
+            SterlinRate.CurType = RateforSterlin.Code;
+            SterlinRate.RateBuy = RateforSterlin.ExchangeBuy;
+            SterlinRate.RateSell = RateforSterlin.ExchangeSell;
+            SterlinRate.RateSellEffective = RateforSterlin.ExchangeSellEffective;
+            SterlinRate.RateBuyEffective = RateforSterlin.ExchangeBuyEffective;
+            SterlinRate.rate_date = DateTime.Now.Date;
+            label6.Text = SterlinRate.RateBuyEffective.ToString();
+            label5.Text = SterlinRate.RateSellEffective.ToString();
+
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
 
         }
 
