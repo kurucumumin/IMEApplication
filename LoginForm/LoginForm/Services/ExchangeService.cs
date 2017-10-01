@@ -62,10 +62,40 @@ namespace LoginForm.Services
             return RateForDolar;
         }
 
-        public string GetExchangeRateforSterlin()
+        public ExchangeRate GetExchangeRateforSterlin()
         {
 
-            return "deneme";
+            ExchangeRate RateforSterlin = new ExchangeRate();
+            string today = "http://www.tcmb.gov.tr/kurlar/today.xml";
+
+            var xmlDoc = new XmlDocument();
+            xmlDoc.Load(today);
+
+            string Name = "STR";
+            DateTime TodayDate = new DateTime();
+            TodayDate = DateTime.Now.Date;
+            string BuySTReffective = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='GBP']/BanknoteBuying").InnerXml;
+            string SellSTREffective = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='GBP']/BanknoteSelling").InnerXml;
+            string BuySTR = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/ForexSelling").InnerXml;
+            string SellSTR = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/ForexBuying").InnerXml;
+
+            if (BuySTR.Contains('.'))
+                BuySTR = BuySTR.Replace('.', ',');
+            if (BuySTReffective.Contains('.'))
+                BuySTReffective = BuySTReffective.Replace('.', ',');
+            if (SellSTR.Contains('.'))
+                SellSTR = SellSTR.Replace('.', ',');
+            if (SellSTREffective.Contains('.'))
+                SellSTREffective = SellSTREffective.Replace('.', ',');
+
+            RateforSterlin.Code = Name;
+            RateforSterlin.RateDate = TodayDate;
+            RateforSterlin.ExchangeBuy = Decimal.Parse(BuySTR);
+            RateforSterlin.ExchangeSell = Decimal.Parse(SellSTR);
+            RateforSterlin.ExchangeBuyEffective = Decimal.Parse(BuySTReffective);
+            RateforSterlin.ExchangeSellEffective = Decimal.Parse(SellSTREffective);
+
+            return RateforSterlin;
         }
     }
 }
