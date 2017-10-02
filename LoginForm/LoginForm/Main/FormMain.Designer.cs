@@ -62,6 +62,10 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.lblRateSellEffective = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lblRateBuyEffective = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.btnDiscontinuedList = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -75,6 +79,12 @@
             this.btnOnSale = new System.Windows.Forms.Button();
             this.btnCustomerMain = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblRateSell = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblRateBuy = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -86,16 +96,6 @@
             this.panel22 = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
             this.btnRSProList = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.lblRateBuy = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblRateSell = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblRateSellEffective = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lblRateBuyEffective = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.tableLeftPanel.SuspendLayout();
             this.gbMainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -112,8 +112,8 @@
             this.panel10.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.panel21.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel21.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLeftPanel
@@ -377,7 +377,7 @@
             this.btnTSEList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnTSEList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTSEList.Location = new System.Drawing.Point(0, 0);
-            this.btnTSEList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTSEList.Margin = new System.Windows.Forms.Padding(4);
             this.btnTSEList.Name = "btnTSEList";
             this.btnTSEList.Size = new System.Drawing.Size(148, 83);
             this.btnTSEList.TabIndex = 9;
@@ -412,7 +412,7 @@
             this.btnExtendedRangePrice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnExtendedRangePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExtendedRangePrice.Location = new System.Drawing.Point(0, 0);
-            this.btnExtendedRangePrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExtendedRangePrice.Margin = new System.Windows.Forms.Padding(4);
             this.btnExtendedRangePrice.Name = "btnExtendedRangePrice";
             this.btnExtendedRangePrice.Size = new System.Drawing.Size(148, 83);
             this.btnExtendedRangePrice.TabIndex = 8;
@@ -439,7 +439,7 @@
             this.btnHazardousFile.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnHazardousFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHazardousFile.Location = new System.Drawing.Point(0, 0);
-            this.btnHazardousFile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnHazardousFile.Margin = new System.Windows.Forms.Padding(4);
             this.btnHazardousFile.Name = "btnHazardousFile";
             this.btnHazardousFile.Size = new System.Drawing.Size(148, 83);
             this.btnHazardousFile.TabIndex = 7;
@@ -455,7 +455,7 @@
             this.btnItemCard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnItemCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnItemCard.Location = new System.Drawing.Point(0, 0);
-            this.btnItemCard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnItemCard.Margin = new System.Windows.Forms.Padding(4);
             this.btnItemCard.Name = "btnItemCard";
             this.btnItemCard.Size = new System.Drawing.Size(148, 83);
             this.btnItemCard.TabIndex = 12;
@@ -482,7 +482,7 @@
             this.btnDualUsedArticles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDualUsedArticles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDualUsedArticles.Location = new System.Drawing.Point(0, 0);
-            this.btnDualUsedArticles.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDualUsedArticles.Margin = new System.Windows.Forms.Padding(4);
             this.btnDualUsedArticles.Name = "btnDualUsedArticles";
             this.btnDualUsedArticles.Size = new System.Drawing.Size(148, 83);
             this.btnDualUsedArticles.TabIndex = 32;
@@ -526,7 +526,7 @@
             this.btnSuperDiskwithP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSuperDiskwithP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSuperDiskwithP.Location = new System.Drawing.Point(0, 0);
-            this.btnSuperDiskwithP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSuperDiskwithP.Margin = new System.Windows.Forms.Padding(4);
             this.btnSuperDiskwithP.Name = "btnSuperDiskwithP";
             this.btnSuperDiskwithP.Size = new System.Drawing.Size(148, 83);
             this.btnSuperDiskwithP.TabIndex = 29;
@@ -574,6 +574,42 @@
             this.panel12.Size = new System.Drawing.Size(151, 83);
             this.panel12.TabIndex = 43;
             // 
+            // lblRateSellEffective
+            // 
+            this.lblRateSellEffective.AutoSize = true;
+            this.lblRateSellEffective.Location = new System.Drawing.Point(73, 54);
+            this.lblRateSellEffective.Name = "lblRateSellEffective";
+            this.lblRateSellEffective.Size = new System.Drawing.Size(46, 17);
+            this.lblRateSellEffective.TabIndex = 7;
+            this.lblRateSellEffective.Text = "label5";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(1, 27);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(73, 17);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Efektif Alış";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(1, 54);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(82, 17);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Efektif Satış";
+            // 
+            // lblRateBuyEffective
+            // 
+            this.lblRateBuyEffective.AutoSize = true;
+            this.lblRateBuyEffective.Location = new System.Drawing.Point(73, 27);
+            this.lblRateBuyEffective.Name = "lblRateBuyEffective";
+            this.lblRateBuyEffective.Size = new System.Drawing.Size(46, 17);
+            this.lblRateBuyEffective.TabIndex = 5;
+            this.lblRateBuyEffective.Text = "label7";
+            // 
             // panel11
             // 
             this.panel11.Controls.Add(this.btnDiscontinuedList);
@@ -591,7 +627,7 @@
             this.btnDiscontinuedList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDiscontinuedList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDiscontinuedList.Location = new System.Drawing.Point(0, 0);
-            this.btnDiscontinuedList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDiscontinuedList.Margin = new System.Windows.Forms.Padding(4);
             this.btnDiscontinuedList.Name = "btnDiscontinuedList";
             this.btnDiscontinuedList.Size = new System.Drawing.Size(148, 83);
             this.btnDiscontinuedList.TabIndex = 4;
@@ -628,7 +664,7 @@
             this.btnSlidingPriceList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSlidingPriceList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSlidingPriceList.Location = new System.Drawing.Point(0, 0);
-            this.btnSlidingPriceList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSlidingPriceList.Margin = new System.Windows.Forms.Padding(4);
             this.btnSlidingPriceList.Name = "btnSlidingPriceList";
             this.btnSlidingPriceList.Size = new System.Drawing.Size(148, 83);
             this.btnSlidingPriceList.TabIndex = 31;
@@ -672,7 +708,7 @@
             this.btnSuperDisk.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSuperDisk.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSuperDisk.Location = new System.Drawing.Point(0, 0);
-            this.btnSuperDisk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSuperDisk.Margin = new System.Windows.Forms.Padding(4);
             this.btnSuperDisk.Name = "btnSuperDisk";
             this.btnSuperDisk.Size = new System.Drawing.Size(148, 83);
             this.btnSuperDisk.TabIndex = 30;
@@ -691,7 +727,7 @@
             this.btnQuotation.Location = new System.Drawing.Point(0, 0);
             this.btnQuotation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnQuotation.Name = "btnQuotation";
-            this.btnQuotation.Padding = new System.Windows.Forms.Padding(16, 16, 16, 16);
+            this.btnQuotation.Padding = new System.Windows.Forms.Padding(16);
             this.btnQuotation.Size = new System.Drawing.Size(148, 83);
             this.btnQuotation.TabIndex = 29;
             this.btnQuotation.Text = "Quotation";
@@ -717,7 +753,7 @@
             this.btnOnSale.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnOnSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOnSale.Location = new System.Drawing.Point(0, 0);
-            this.btnOnSale.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnOnSale.Margin = new System.Windows.Forms.Padding(4);
             this.btnOnSale.Name = "btnOnSale";
             this.btnOnSale.Size = new System.Drawing.Size(148, 83);
             this.btnOnSale.TabIndex = 28;
@@ -734,7 +770,7 @@
             this.btnCustomerMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnCustomerMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCustomerMain.Location = new System.Drawing.Point(0, 0);
-            this.btnCustomerMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCustomerMain.Margin = new System.Windows.Forms.Padding(4);
             this.btnCustomerMain.Name = "btnCustomerMain";
             this.btnCustomerMain.Size = new System.Drawing.Size(148, 83);
             this.btnCustomerMain.TabIndex = 27;
@@ -753,7 +789,65 @@
             this.panel6.Size = new System.Drawing.Size(148, 83);
             this.panel6.TabIndex = 38;
             // 
-
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.label2);
+            this.panel5.Controls.Add(this.lblRateSell);
+            this.panel5.Controls.Add(this.label4);
+            this.panel5.Controls.Add(this.lblRateBuy);
+            this.panel5.Controls.Add(this.label1);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(772, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(153, 83);
+            this.panel5.TabIndex = 37;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(42, 5);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(42, 17);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Dolar";
+            // 
+            // lblRateSell
+            // 
+            this.lblRateSell.AutoSize = true;
+            this.lblRateSell.Location = new System.Drawing.Point(73, 50);
+            this.lblRateSell.Name = "lblRateSell";
+            this.lblRateSell.Size = new System.Drawing.Size(46, 17);
+            this.lblRateSell.TabIndex = 3;
+            this.lblRateSell.Text = "label3";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(2, 50);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(78, 17);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Döviz Satış";
+            // 
+            // lblRateBuy
+            // 
+            this.lblRateBuy.AutoSize = true;
+            this.lblRateBuy.Location = new System.Drawing.Point(73, 23);
+            this.lblRateBuy.Name = "lblRateBuy";
+            this.lblRateBuy.Size = new System.Drawing.Size(46, 17);
+            this.lblRateBuy.TabIndex = 1;
+            this.lblRateBuy.Text = "label2";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(2, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Döviz Alış";
+            // 
             // panel4
             // 
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -852,7 +946,7 @@
             this.btnRSProList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnRSProList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRSProList.Location = new System.Drawing.Point(0, 0);
-            this.btnRSProList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRSProList.Margin = new System.Windows.Forms.Padding(4);
             this.btnRSProList.Name = "btnRSProList";
             this.btnRSProList.Size = new System.Drawing.Size(148, 83);
             this.btnRSProList.TabIndex = 10;
@@ -860,101 +954,6 @@
             this.btnRSProList.UseVisualStyleBackColor = true;
             this.btnRSProList.Visible = false;
             this.btnRSProList.Click += new System.EventHandler(this.btnRSProList_Click);
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.label2);
-            this.panel5.Controls.Add(this.lblRateSell);
-            this.panel5.Controls.Add(this.label4);
-            this.panel5.Controls.Add(this.lblRateBuy);
-            this.panel5.Controls.Add(this.label1);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(577, 2);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(117, 66);
-            this.panel5.TabIndex = 37;
-            // 
-            // lblRateBuy
-            // 
-            this.lblRateBuy.AutoSize = true;
-            this.lblRateBuy.Location = new System.Drawing.Point(73, 23);
-            this.lblRateBuy.Name = "lblRateBuy";
-            this.lblRateBuy.Size = new System.Drawing.Size(35, 13);
-            this.lblRateBuy.TabIndex = 1;
-            this.lblRateBuy.Text = "label2";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(2, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Döviz Alış";
-            // 
-            // lblRateSell
-            // 
-            this.lblRateSell.AutoSize = true;
-            this.lblRateSell.Location = new System.Drawing.Point(73, 50);
-            this.lblRateSell.Name = "lblRateSell";
-            this.lblRateSell.Size = new System.Drawing.Size(35, 13);
-            this.lblRateSell.TabIndex = 3;
-            this.lblRateSell.Text = "label3";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(2, 50);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 13);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Döviz Satış";
-            // 
-            // lblRateSellEffective
-            // 
-            this.lblRateSellEffective.AutoSize = true;
-            this.lblRateSellEffective.Location = new System.Drawing.Point(73, 54);
-            this.lblRateSellEffective.Name = "lblRateSellEffective";
-            this.lblRateSellEffective.Size = new System.Drawing.Size(35, 13);
-            this.lblRateSellEffective.TabIndex = 7;
-            this.lblRateSellEffective.Text = "label5";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1, 54);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 13);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Efektif Satış";
-            // 
-            // lblRateBuyEffective
-            // 
-            this.lblRateBuyEffective.AutoSize = true;
-            this.lblRateBuyEffective.Location = new System.Drawing.Point(73, 27);
-            this.lblRateBuyEffective.Name = "lblRateBuyEffective";
-            this.lblRateBuyEffective.Size = new System.Drawing.Size(35, 13);
-            this.lblRateBuyEffective.TabIndex = 5;
-            this.lblRateBuyEffective.Text = "label7";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1, 27);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(56, 13);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "Efektif Alış";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(42, 5);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Dolar";
             // 
             // FormMain
             // 
@@ -966,7 +965,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MinimumSize = new System.Drawing.Size(1149, 477);
             this.Name = "FormMain";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IME General Components";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.tableLeftPanel.ResumeLayout(false);
@@ -986,9 +985,9 @@
             this.panel10.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
-            this.panel21.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.panel21.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

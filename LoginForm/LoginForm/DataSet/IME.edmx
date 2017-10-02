@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="IMEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="IMEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AuthorizationValue">
           <Key>
             <PropertyRef Name="AuthorizationID" />
@@ -1400,259 +1400,18 @@
             <End Role="Worker" EntitySet="Worker" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="IMEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="IMEEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AuthorizationValues" EntityType="IMEModel.AuthorizationValue" />
-          <EntitySet Name="capitals" EntityType="IMEModel.capital" />
-          <EntitySet Name="Cities" EntityType="IMEModel.City" />
-          <EntitySet Name="Countries" EntityType="IMEModel.Country" />
-          <EntitySet Name="Customers" EntityType="IMEModel.Customer" />
-          <EntitySet Name="CustomerAdresses" EntityType="IMEModel.CustomerAdress" />
-          <EntitySet Name="CustomerCategories" EntityType="IMEModel.CustomerCategory" />
-          <EntitySet Name="CustomerCategorySubCategories" EntityType="IMEModel.CustomerCategorySubCategory" />
-          <EntitySet Name="CustomerDepartments" EntityType="IMEModel.CustomerDepartment" />
-          <EntitySet Name="CustomerSubCategories" EntityType="IMEModel.CustomerSubCategory" />
-          <EntitySet Name="CustomerTitles" EntityType="IMEModel.CustomerTitle" />
-          <EntitySet Name="CustomerWorkers" EntityType="IMEModel.CustomerWorker" />
-          <EntitySet Name="DailyDiscontinueds" EntityType="IMEModel.DailyDiscontinued" />
-          <EntitySet Name="DualUses" EntityType="IMEModel.DualUse" />
-          <EntitySet Name="ExtendedRanges" EntityType="IMEModel.ExtendedRange" />
-          <EntitySet Name="Hazardous" EntityType="IMEModel.Hazardou" />
-          <EntitySet Name="ItemNotes" EntityType="IMEModel.ItemNote" />
-          <EntitySet Name="Languages" EntityType="IMEModel.Language" />
-          <EntitySet Name="Notes" EntityType="IMEModel.Note" />
-          <EntitySet Name="OnSales" EntityType="IMEModel.OnSale" />
-          <EntitySet Name="PaymentMethods" EntityType="IMEModel.PaymentMethod" />
-          <EntitySet Name="PaymentTerms" EntityType="IMEModel.PaymentTerm" />
-          <EntitySet Name="Rates" EntityType="IMEModel.Rate" />
-          <EntitySet Name="RSProes" EntityType="IMEModel.RSPro" />
-          <EntitySet Name="SlidingPrices" EntityType="IMEModel.SlidingPrice" />
-          <EntitySet Name="SuperDisks" EntityType="IMEModel.SuperDisk" />
-          <EntitySet Name="SuperDiskPs" EntityType="IMEModel.SuperDiskP" />
-          <EntitySet Name="Suppliers" EntityType="IMEModel.Supplier" />
-          <EntitySet Name="SupplierAdresses" EntityType="IMEModel.SupplierAdress" />
-          <EntitySet Name="SupplierBanks" EntityType="IMEModel.SupplierBank" />
-          <EntitySet Name="SupplierCategories" EntityType="IMEModel.SupplierCategory" />
-          <EntitySet Name="SupplierCategorySubCategories" EntityType="IMEModel.SupplierCategorySubCategory" />
-          <EntitySet Name="SupplierDepartments" EntityType="IMEModel.SupplierDepartment" />
-          <EntitySet Name="SupplierMainContacts" EntityType="IMEModel.SupplierMainContact" />
-          <EntitySet Name="SupplierSubCategories" EntityType="IMEModel.SupplierSubCategory" />
-          <EntitySet Name="SupplierTitles" EntityType="IMEModel.SupplierTitle" />
-          <EntitySet Name="SupplierWorkers" EntityType="IMEModel.SupplierWorker" />
-          <EntitySet Name="sysdiagrams" EntityType="IMEModel.sysdiagram" />
-          <EntitySet Name="Towns" EntityType="IMEModel.Town" />
-          <EntitySet Name="Workers" EntityType="IMEModel.Worker" />
-          <AssociationSet Name="FK__City__CountryID__51300E55" Association="IMEModel.FK__City__CountryID__51300E55">
-            <End Role="Country" EntitySet="Countries" />
-            <End Role="City" EntitySet="Cities" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CustomerA__CityI__4E53A1AA" Association="IMEModel.FK__CustomerA__CityI__4E53A1AA">
-            <End Role="City" EntitySet="Cities" />
-            <End Role="CustomerAdress" EntitySet="CustomerAdresses" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Town__CityID__5224328E" Association="IMEModel.FK__Town__CityID__5224328E">
-            <End Role="City" EntitySet="Cities" />
-            <End Role="Town" EntitySet="Towns" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CustomerA__Count__503BEA1C" Association="IMEModel.FK__CustomerA__Count__503BEA1C">
-            <End Role="Country" EntitySet="Countries" />
-            <End Role="CustomerAdress" EntitySet="CustomerAdresses" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Customer__accoun__6EF57B66" Association="IMEModel.FK__Customer__accoun__6EF57B66">
-            <End Role="Worker" EntitySet="Workers" />
-            <End Role="Customer" EntitySet="Customers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Customer__custom__3B75D760" Association="IMEModel.FK__Customer__custom__3B75D760">
-            <End Role="Note" EntitySet="Notes" />
-            <End Role="Customer" EntitySet="Customers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Customer__MainCo__19AACF41" Association="IMEModel.FK__Customer__MainCo__19AACF41">
-            <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
-            <End Role="Customer" EntitySet="Customers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Customer__paymen__3D5E1FD2" Association="IMEModel.FK__Customer__paymen__3D5E1FD2">
-            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
-            <End Role="Customer" EntitySet="Customers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Customer__paymen__3E52440B" Association="IMEModel.FK__Customer__paymen__3E52440B">
-            <End Role="PaymentTerm" EntitySet="PaymentTerms" />
-            <End Role="Customer" EntitySet="Customers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Customer__rate_I__3C69FB99" Association="IMEModel.FK__Customer__rate_I__3C69FB99">
-            <End Role="Rate" EntitySet="Rates" />
-            <End Role="Customer" EntitySet="Customers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Customer__rateID__6FE99F9F" Association="IMEModel.FK__Customer__rateID__6FE99F9F">
-            <End Role="Rate" EntitySet="Rates" />
-            <End Role="Customer" EntitySet="Customers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Customer__repres__3F466844" Association="IMEModel.FK__Customer__repres__3F466844">
-            <End Role="Worker" EntitySet="Workers" />
-            <End Role="Customer" EntitySet="Customers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Customer__repres__6E01572D" Association="IMEModel.FK__Customer__repres__6E01572D">
-            <End Role="Worker" EntitySet="Workers" />
-            <End Role="Customer" EntitySet="Customers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CustomerA__Custo__44CA3770" Association="IMEModel.FK__CustomerA__Custo__44CA3770">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="CustomerAdress" EntitySet="CustomerAdresses" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CustomerC__custo__534D60F1" Association="IMEModel.FK__CustomerC__custo__534D60F1">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="CustomerCategorySubCategory" EntitySet="CustomerCategorySubCategories" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CustomerW__custo__4316F928" Association="IMEModel.FK__CustomerW__custo__4316F928">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CustomerA__Conta__45BE5BA9" Association="IMEModel.FK__CustomerA__Conta__45BE5BA9">
-            <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
-            <End Role="CustomerAdress" EntitySet="CustomerAdresses" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CustomerA__TownI__4F47C5E3" Association="IMEModel.FK__CustomerA__TownI__4F47C5E3">
-            <End Role="Town" EntitySet="Towns" />
-            <End Role="CustomerAdress" EntitySet="CustomerAdresses" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CustomerC__categ__5165187F" Association="IMEModel.FK__CustomerC__categ__5165187F">
-            <End Role="CustomerCategory" EntitySet="CustomerCategories" />
-            <End Role="CustomerCategorySubCategory" EntitySet="CustomerCategorySubCategories" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CustomerS__categ__4E88ABD4" Association="IMEModel.FK__CustomerS__categ__4E88ABD4">
-            <End Role="CustomerCategory" EntitySet="CustomerCategories" />
-            <End Role="CustomerSubCategory" EntitySet="CustomerSubCategories" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CustomerC__subca__52593CB8" Association="IMEModel.FK__CustomerC__subca__52593CB8">
-            <End Role="CustomerSubCategory" EntitySet="CustomerSubCategories" />
-            <End Role="CustomerCategorySubCategory" EntitySet="CustomerCategorySubCategories" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CustomerT__depar__30F848ED" Association="IMEModel.FK__CustomerT__depar__30F848ED">
-            <End Role="CustomerDepartment" EntitySet="CustomerDepartments" />
-            <End Role="CustomerTitle" EntitySet="CustomerTitles" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CustomerW__depar__44FF419A" Association="IMEModel.FK__CustomerW__depar__44FF419A">
-            <End Role="CustomerDepartment" EntitySet="CustomerDepartments" />
-            <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CustomerW__title__45F365D3" Association="IMEModel.FK__CustomerW__title__45F365D3">
-            <End Role="CustomerTitle" EntitySet="CustomerTitles" />
-            <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CustomerW__custo__4222D4EF" Association="IMEModel.FK__CustomerW__custo__4222D4EF">
-            <End Role="Note" EntitySet="Notes" />
-            <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CustomerW__langu__72C60C4A" Association="IMEModel.FK__CustomerW__langu__72C60C4A">
-            <End Role="Language" EntitySet="Languages" />
-            <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ItemNote__NoteID__2B0A656D" Association="IMEModel.FK__ItemNote__NoteID__2B0A656D">
-            <End Role="Note" EntitySet="Notes" />
-            <End Role="ItemNote" EntitySet="ItemNotes" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierW__langu__72910220" Association="IMEModel.FK__SupplierW__langu__72910220">
-            <End Role="Language" EntitySet="Languages" />
-            <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Supplier__Suppli__09746778" Association="IMEModel.FK__Supplier__Suppli__09746778">
-            <End Role="Note" EntitySet="Notes" />
-            <End Role="Supplier" EntitySet="Suppliers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierW__suppl__73852659" Association="IMEModel.FK__SupplierW__suppl__73852659">
-            <End Role="Note" EntitySet="Notes" />
-            <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Worker__WorkerNo__4BAC3F29" Association="IMEModel.FK__Worker__WorkerNo__4BAC3F29">
-            <End Role="Note" EntitySet="Notes" />
-            <End Role="Worker" EntitySet="Workers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Supplier__paymen__634EBE90" Association="IMEModel.FK__Supplier__paymen__634EBE90">
-            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
-            <End Role="Supplier" EntitySet="Suppliers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Supplier__paymen__6442E2C9" Association="IMEModel.FK__Supplier__paymen__6442E2C9">
-            <End Role="PaymentTerm" EntitySet="PaymentTerms" />
-            <End Role="Supplier" EntitySet="Suppliers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Supplier__rate_I__625A9A57" Association="IMEModel.FK__Supplier__rate_I__625A9A57">
-            <End Role="Rate" EntitySet="Rates" />
-            <End Role="Supplier" EntitySet="Suppliers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Supplier__accoun__2DB1C7EE" Association="IMEModel.FK__Supplier__accoun__2DB1C7EE">
-            <End Role="Worker" EntitySet="Workers" />
-            <End Role="Supplier" EntitySet="Suppliers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Supplier__BankID__0C50D423" Association="IMEModel.FK__Supplier__BankID__0C50D423">
-            <End Role="SupplierBank" EntitySet="SupplierBanks" />
-            <End Role="Supplier" EntitySet="Suppliers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Supplier__MainCo__0A688BB1" Association="IMEModel.FK__Supplier__MainCo__0A688BB1">
-            <End Role="SupplierMainContact" EntitySet="SupplierMainContacts" />
-            <End Role="Supplier" EntitySet="Suppliers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Supplier__repres__65370702" Association="IMEModel.FK__Supplier__repres__65370702">
-            <End Role="Worker" EntitySet="Workers" />
-            <End Role="Supplier" EntitySet="Suppliers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierC__suppl__0880433F" Association="IMEModel.FK__SupplierC__suppl__0880433F">
-            <End Role="Supplier" EntitySet="Suppliers" />
-            <End Role="SupplierCategorySubCategory" EntitySet="SupplierCategorySubCategories" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierW__suppl__74794A92" Association="IMEModel.FK__SupplierW__suppl__74794A92">
-            <End Role="Supplier" EntitySet="Suppliers" />
-            <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierW__suppl__756D6ECB" Association="IMEModel.FK__SupplierW__suppl__756D6ECB">
-            <End Role="SupplierAdress" EntitySet="SupplierAdresses" />
-            <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierC__categ__0697FACD" Association="IMEModel.FK__SupplierC__categ__0697FACD">
-            <End Role="SupplierCategory" EntitySet="SupplierCategories" />
-            <End Role="SupplierCategorySubCategory" EntitySet="SupplierCategorySubCategories" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierS__categ__03BB8E22" Association="IMEModel.FK__SupplierS__categ__03BB8E22">
-            <End Role="SupplierCategory" EntitySet="SupplierCategories" />
-            <End Role="SupplierSubCategory" EntitySet="SupplierSubCategories" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierW__categ__793DFFAF" Association="IMEModel.FK__SupplierW__categ__793DFFAF">
-            <End Role="SupplierCategory" EntitySet="SupplierCategories" />
-            <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierC__subca__078C1F06" Association="IMEModel.FK__SupplierC__subca__078C1F06">
-            <End Role="SupplierSubCategory" EntitySet="SupplierSubCategories" />
-            <End Role="SupplierCategorySubCategory" EntitySet="SupplierCategorySubCategories" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierT__depar__6BE40491" Association="IMEModel.FK__SupplierT__depar__6BE40491">
-            <End Role="SupplierDepartment" EntitySet="SupplierDepartments" />
-            <End Role="SupplierTitle" EntitySet="SupplierTitles" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierW__depar__76619304" Association="IMEModel.FK__SupplierW__depar__76619304">
-            <End Role="SupplierDepartment" EntitySet="SupplierDepartments" />
-            <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierM__suppl__00DF2177" Association="IMEModel.FK__SupplierM__suppl__00DF2177">
-            <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
-            <End Role="SupplierMainContact" EntitySet="SupplierMainContacts" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierW__title__7755B73D" Association="IMEModel.FK__SupplierW__title__7755B73D">
-            <End Role="SupplierTitle" EntitySet="SupplierTitles" />
-            <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
-          </AssociationSet>
-          <AssociationSet Name="UserAuthorization" Association="IMEModel.UserAuthorization">
-            <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
-            <End Role="Worker" EntitySet="Workers" />
-          </AssociationSet>
-        </EntityContainer>
         <EntityType Name="AuthorizationValue">
           <Key>
             <PropertyRef Name="AuthorizationID" />
           </Key>
           <Property Name="AuthorizationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AuthorizationValue1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Workers" Relationship="IMEModel.UserAuthorization" FromRole="AuthorizationValue" ToRole="Worker" />
+          <NavigationProperty Name="Workers" Relationship="Self.UserAuthorization" FromRole="AuthorizationValue" ToRole="Worker" />
         </EntityType>
         <EntityType Name="capital">
           <Key>
@@ -1668,9 +1427,9 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="City_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CountryID" Type="Int32" />
-          <NavigationProperty Name="Country" Relationship="IMEModel.FK__City__CountryID__51300E55" FromRole="City" ToRole="Country" />
-          <NavigationProperty Name="CustomerAdresses" Relationship="IMEModel.FK__CustomerA__CityI__4E53A1AA" FromRole="City" ToRole="CustomerAdress" />
-          <NavigationProperty Name="Towns" Relationship="IMEModel.FK__Town__CityID__5224328E" FromRole="City" ToRole="Town" />
+          <NavigationProperty Name="Country" Relationship="Self.FK__City__CountryID__51300E55" FromRole="City" ToRole="Country" />
+          <NavigationProperty Name="CustomerAdresses" Relationship="Self.FK__CustomerA__CityI__4E53A1AA" FromRole="City" ToRole="CustomerAdress" />
+          <NavigationProperty Name="Towns" Relationship="Self.FK__Town__CityID__5224328E" FromRole="City" ToRole="Town" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -1678,14 +1437,14 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Country_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Cities" Relationship="IMEModel.FK__City__CountryID__51300E55" FromRole="Country" ToRole="City" />
-          <NavigationProperty Name="CustomerAdresses" Relationship="IMEModel.FK__CustomerA__Count__503BEA1C" FromRole="Country" ToRole="CustomerAdress" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK__City__CountryID__51300E55" FromRole="Country" ToRole="City" />
+          <NavigationProperty Name="CustomerAdresses" Relationship="Self.FK__CustomerA__Count__503BEA1C" FromRole="Country" ToRole="CustomerAdress" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="c_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="discountrate" Type="Int32" />
           <Property Name="telephone" Type="Int32" />
@@ -1704,18 +1463,18 @@
           <Property Name="taxoffice" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="taxnumber" Type="Int32" />
           <Property Name="MainContactID" Type="Int32" />
-          <NavigationProperty Name="Worker" Relationship="IMEModel.FK__Customer__accoun__6EF57B66" FromRole="Customer" ToRole="Worker" />
-          <NavigationProperty Name="Note" Relationship="IMEModel.FK__Customer__custom__3B75D760" FromRole="Customer" ToRole="Note" />
-          <NavigationProperty Name="CustomerWorker" Relationship="IMEModel.FK__Customer__MainCo__19AACF41" FromRole="Customer" ToRole="CustomerWorker" />
-          <NavigationProperty Name="PaymentMethod" Relationship="IMEModel.FK__Customer__paymen__3D5E1FD2" FromRole="Customer" ToRole="PaymentMethod" />
-          <NavigationProperty Name="PaymentTerm" Relationship="IMEModel.FK__Customer__paymen__3E52440B" FromRole="Customer" ToRole="PaymentTerm" />
-          <NavigationProperty Name="Rate" Relationship="IMEModel.FK__Customer__rate_I__3C69FB99" FromRole="Customer" ToRole="Rate" />
-          <NavigationProperty Name="Rate1" Relationship="IMEModel.FK__Customer__rateID__6FE99F9F" FromRole="Customer" ToRole="Rate" />
-          <NavigationProperty Name="Worker1" Relationship="IMEModel.FK__Customer__repres__3F466844" FromRole="Customer" ToRole="Worker" />
-          <NavigationProperty Name="Worker2" Relationship="IMEModel.FK__Customer__repres__6E01572D" FromRole="Customer" ToRole="Worker" />
-          <NavigationProperty Name="CustomerAdresses" Relationship="IMEModel.FK__CustomerA__Custo__44CA3770" FromRole="Customer" ToRole="CustomerAdress" />
-          <NavigationProperty Name="CustomerCategorySubCategories" Relationship="IMEModel.FK__CustomerC__custo__534D60F1" FromRole="Customer" ToRole="CustomerCategorySubCategory" />
-          <NavigationProperty Name="CustomerWorkers" Relationship="IMEModel.FK__CustomerW__custo__4316F928" FromRole="Customer" ToRole="CustomerWorker" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__Customer__accoun__6EF57B66" FromRole="Customer" ToRole="Worker" />
+          <NavigationProperty Name="Note" Relationship="Self.FK__Customer__custom__3B75D760" FromRole="Customer" ToRole="Notes" />
+          <NavigationProperty Name="CustomerWorker" Relationship="Self.FK__Customer__MainCo__19AACF41" FromRole="Customer" ToRole="CustomerWorker" />
+          <NavigationProperty Name="PaymentMethod" Relationship="Self.FK__Customer__paymen__3D5E1FD2" FromRole="Customer" ToRole="PaymentMethod" />
+          <NavigationProperty Name="PaymentTerm" Relationship="Self.FK__Customer__paymen__3E52440B" FromRole="Customer" ToRole="PaymentTerm" />
+          <NavigationProperty Name="Rate" Relationship="Self.FK__Customer__rate_I__3C69FB99" FromRole="Customer" ToRole="Rate" />
+          <NavigationProperty Name="Rate1" Relationship="Self.FK__Customer__rateID__6FE99F9F" FromRole="Customer" ToRole="Rate" />
+          <NavigationProperty Name="Worker1" Relationship="Self.FK__Customer__repres__3F466844" FromRole="Customer" ToRole="Worker" />
+          <NavigationProperty Name="Worker2" Relationship="Self.FK__Customer__repres__6E01572D" FromRole="Customer" ToRole="Worker" />
+          <NavigationProperty Name="CustomerAdresses" Relationship="Self.FK__CustomerA__Custo__44CA3770" FromRole="Customer" ToRole="CustomerAdress" />
+          <NavigationProperty Name="CustomerCategorySubCategories" Relationship="Self.FK__CustomerC__custo__534D60F1" FromRole="Customer" ToRole="CustomerCategorySubCategory" />
+          <NavigationProperty Name="CustomerWorkers" Relationship="Self.FK__CustomerW__custo__4316F928" FromRole="Customer" ToRole="CustomerWorker" />
         </EntityType>
         <EntityType Name="CustomerAdress">
           <Key>
@@ -1731,11 +1490,11 @@
           <Property Name="TownID" Type="Int32" />
           <Property Name="CityID" Type="Int32" />
           <Property Name="CountryID" Type="Int32" />
-          <NavigationProperty Name="City" Relationship="IMEModel.FK__CustomerA__CityI__4E53A1AA" FromRole="CustomerAdress" ToRole="City" />
-          <NavigationProperty Name="Country" Relationship="IMEModel.FK__CustomerA__Count__503BEA1C" FromRole="CustomerAdress" ToRole="Country" />
-          <NavigationProperty Name="Customer" Relationship="IMEModel.FK__CustomerA__Custo__44CA3770" FromRole="CustomerAdress" ToRole="Customer" />
-          <NavigationProperty Name="CustomerWorker" Relationship="IMEModel.FK__CustomerA__Conta__45BE5BA9" FromRole="CustomerAdress" ToRole="CustomerWorker" />
-          <NavigationProperty Name="Town" Relationship="IMEModel.FK__CustomerA__TownI__4F47C5E3" FromRole="CustomerAdress" ToRole="Town" />
+          <NavigationProperty Name="City" Relationship="Self.FK__CustomerA__CityI__4E53A1AA" FromRole="CustomerAdress" ToRole="City" />
+          <NavigationProperty Name="Country" Relationship="Self.FK__CustomerA__Count__503BEA1C" FromRole="CustomerAdress" ToRole="Country" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__CustomerA__Custo__44CA3770" FromRole="CustomerAdress" ToRole="Customer" />
+          <NavigationProperty Name="CustomerWorker" Relationship="Self.FK__CustomerA__Conta__45BE5BA9" FromRole="CustomerAdress" ToRole="CustomerWorker" />
+          <NavigationProperty Name="Town" Relationship="Self.FK__CustomerA__TownI__4F47C5E3" FromRole="CustomerAdress" ToRole="Town" />
         </EntityType>
         <EntityType Name="CustomerCategory">
           <Key>
@@ -1743,8 +1502,8 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="categoryname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CustomerCategorySubCategories" Relationship="IMEModel.FK__CustomerC__categ__5165187F" FromRole="CustomerCategory" ToRole="CustomerCategorySubCategory" />
-          <NavigationProperty Name="CustomerSubCategories" Relationship="IMEModel.FK__CustomerS__categ__4E88ABD4" FromRole="CustomerCategory" ToRole="CustomerSubCategory" />
+          <NavigationProperty Name="CustomerCategorySubCategories" Relationship="Self.FK__CustomerC__categ__5165187F" FromRole="CustomerCategory" ToRole="CustomerCategorySubCategory" />
+          <NavigationProperty Name="CustomerSubCategories" Relationship="Self.FK__CustomerS__categ__4E88ABD4" FromRole="CustomerCategory" ToRole="CustomerSubCategory" />
         </EntityType>
         <EntityType Name="CustomerCategorySubCategory">
           <Key>
@@ -1754,9 +1513,9 @@
           <Property Name="categoryID" Type="Int32" />
           <Property Name="subcategoryID" Type="Int32" />
           <Property Name="customerID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Customer" Relationship="IMEModel.FK__CustomerC__custo__534D60F1" FromRole="CustomerCategorySubCategory" ToRole="Customer" />
-          <NavigationProperty Name="CustomerCategory" Relationship="IMEModel.FK__CustomerC__categ__5165187F" FromRole="CustomerCategorySubCategory" ToRole="CustomerCategory" />
-          <NavigationProperty Name="CustomerSubCategory" Relationship="IMEModel.FK__CustomerC__subca__52593CB8" FromRole="CustomerCategorySubCategory" ToRole="CustomerSubCategory" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__CustomerC__custo__534D60F1" FromRole="CustomerCategorySubCategory" ToRole="Customer" />
+          <NavigationProperty Name="CustomerCategory" Relationship="Self.FK__CustomerC__categ__5165187F" FromRole="CustomerCategorySubCategory" ToRole="CustomerCategory" />
+          <NavigationProperty Name="CustomerSubCategory" Relationship="Self.FK__CustomerC__subca__52593CB8" FromRole="CustomerCategorySubCategory" ToRole="CustomerSubCategory" />
         </EntityType>
         <EntityType Name="CustomerDepartment">
           <Key>
@@ -1764,8 +1523,8 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="departmentname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CustomerTitles" Relationship="IMEModel.FK__CustomerT__depar__30F848ED" FromRole="CustomerDepartment" ToRole="CustomerTitle" />
-          <NavigationProperty Name="CustomerWorkers" Relationship="IMEModel.FK__CustomerW__depar__44FF419A" FromRole="CustomerDepartment" ToRole="CustomerWorker" />
+          <NavigationProperty Name="CustomerTitles" Relationship="Self.FK__CustomerT__depar__30F848ED" FromRole="CustomerDepartment" ToRole="CustomerTitle" />
+          <NavigationProperty Name="CustomerWorkers" Relationship="Self.FK__CustomerW__depar__44FF419A" FromRole="CustomerDepartment" ToRole="CustomerWorker" />
         </EntityType>
         <EntityType Name="CustomerSubCategory">
           <Key>
@@ -1774,8 +1533,8 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="subcategoryname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="categoryID" Type="Int32" />
-          <NavigationProperty Name="CustomerCategory" Relationship="IMEModel.FK__CustomerS__categ__4E88ABD4" FromRole="CustomerSubCategory" ToRole="CustomerCategory" />
-          <NavigationProperty Name="CustomerCategorySubCategories" Relationship="IMEModel.FK__CustomerC__subca__52593CB8" FromRole="CustomerSubCategory" ToRole="CustomerCategorySubCategory" />
+          <NavigationProperty Name="CustomerCategory" Relationship="Self.FK__CustomerS__categ__4E88ABD4" FromRole="CustomerSubCategory" ToRole="CustomerCategory" />
+          <NavigationProperty Name="CustomerCategorySubCategories" Relationship="Self.FK__CustomerC__subca__52593CB8" FromRole="CustomerSubCategory" ToRole="CustomerCategorySubCategory" />
         </EntityType>
         <EntityType Name="CustomerTitle">
           <Key>
@@ -1784,8 +1543,8 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="titlename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="departmnetID" Type="Int32" />
-          <NavigationProperty Name="CustomerDepartment" Relationship="IMEModel.FK__CustomerT__depar__30F848ED" FromRole="CustomerTitle" ToRole="CustomerDepartment" />
-          <NavigationProperty Name="CustomerWorkers" Relationship="IMEModel.FK__CustomerW__title__45F365D3" FromRole="CustomerTitle" ToRole="CustomerWorker" />
+          <NavigationProperty Name="CustomerDepartment" Relationship="Self.FK__CustomerT__depar__30F848ED" FromRole="CustomerTitle" ToRole="CustomerDepartment" />
+          <NavigationProperty Name="CustomerWorkers" Relationship="Self.FK__CustomerW__title__45F365D3" FromRole="CustomerTitle" ToRole="CustomerWorker" />
         </EntityType>
         <EntityType Name="CustomerWorker">
           <Key>
@@ -1802,19 +1561,19 @@
           <Property Name="customerID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="customerNoteID" Type="Int32" />
           <Property Name="languageID" Type="Int32" />
-          <NavigationProperty Name="Customers" Relationship="IMEModel.FK__Customer__MainCo__19AACF41" FromRole="CustomerWorker" ToRole="Customer" />
-          <NavigationProperty Name="Customer" Relationship="IMEModel.FK__CustomerW__custo__4316F928" FromRole="CustomerWorker" ToRole="Customer" />
-          <NavigationProperty Name="CustomerAdresses" Relationship="IMEModel.FK__CustomerA__Conta__45BE5BA9" FromRole="CustomerWorker" ToRole="CustomerAdress" />
-          <NavigationProperty Name="CustomerDepartment" Relationship="IMEModel.FK__CustomerW__depar__44FF419A" FromRole="CustomerWorker" ToRole="CustomerDepartment" />
-          <NavigationProperty Name="CustomerTitle" Relationship="IMEModel.FK__CustomerW__title__45F365D3" FromRole="CustomerWorker" ToRole="CustomerTitle" />
-          <NavigationProperty Name="Note" Relationship="IMEModel.FK__CustomerW__custo__4222D4EF" FromRole="CustomerWorker" ToRole="Note" />
-          <NavigationProperty Name="Language" Relationship="IMEModel.FK__CustomerW__langu__72C60C4A" FromRole="CustomerWorker" ToRole="Language" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__MainCo__19AACF41" FromRole="CustomerWorker" ToRole="Customer" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__CustomerW__custo__4316F928" FromRole="CustomerWorker" ToRole="Customer" />
+          <NavigationProperty Name="CustomerAdresses" Relationship="Self.FK__CustomerA__Conta__45BE5BA9" FromRole="CustomerWorker" ToRole="CustomerAdress" />
+          <NavigationProperty Name="CustomerDepartment" Relationship="Self.FK__CustomerW__depar__44FF419A" FromRole="CustomerWorker" ToRole="CustomerDepartment" />
+          <NavigationProperty Name="CustomerTitle" Relationship="Self.FK__CustomerW__title__45F365D3" FromRole="CustomerWorker" ToRole="CustomerTitle" />
+          <NavigationProperty Name="Note" Relationship="Self.FK__CustomerW__custo__4222D4EF" FromRole="CustomerWorker" ToRole="Notes" />
+          <NavigationProperty Name="Language" Relationship="Self.FK__CustomerW__langu__72C60C4A" FromRole="CustomerWorker" ToRole="Languages" />
         </EntityType>
         <EntityType Name="DailyDiscontinued">
           <Key>
             <PropertyRef Name="ArticleNo" />
           </Key>
-          <Property Name="ArticleNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArticleNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ReasonDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DiscontinuationDate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Runon" Type="Int32" />
@@ -1824,7 +1583,7 @@
           <Key>
             <PropertyRef Name="ArticleNo" />
           </Key>
-          <Property Name="ArticleNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArticleNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="DualUseSite" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="LicenceType" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="ControlClass" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
@@ -1833,7 +1592,7 @@
           <Key>
             <PropertyRef Name="ArticleNo" />
           </Key>
-          <Property Name="ArticleNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArticleNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ManufacturerCode" Type="Int32" />
           <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MPN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1870,7 +1629,7 @@
           <Key>
             <PropertyRef Name="ArticleNo" />
           </Key>
-          <Property Name="ArticleNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArticleNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Occurrences" Type="Int32" />
           <Property Name="Environment" Type="Int32" />
           <Property Name="Shipping" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1883,7 +1642,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ArticleNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NoteID" Type="Int32" />
-          <NavigationProperty Name="Note" Relationship="IMEModel.FK__ItemNote__NoteID__2B0A656D" FromRole="ItemNote" ToRole="Note" />
+          <NavigationProperty Name="Note" Relationship="Self.FK__ItemNote__NoteID__2B0A656D" FromRole="ItemNote" ToRole="Notes" />
         </EntityType>
         <EntityType Name="Language">
           <Key>
@@ -1891,8 +1650,8 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="languagename" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CustomerWorkers" Relationship="IMEModel.FK__CustomerW__langu__72C60C4A" FromRole="Language" ToRole="CustomerWorker" />
-          <NavigationProperty Name="SupplierWorkers" Relationship="IMEModel.FK__SupplierW__langu__72910220" FromRole="Language" ToRole="SupplierWorker" />
+          <NavigationProperty Name="CustomerWorkers" Relationship="Self.FK__CustomerW__langu__72C60C4A" FromRole="Languages" ToRole="CustomerWorker" />
+          <NavigationProperty Name="SupplierWorkers" Relationship="Self.FK__SupplierW__langu__72910220" FromRole="Languages" ToRole="SupplierWorker" />
         </EntityType>
         <EntityType Name="Note">
           <Key>
@@ -1900,18 +1659,18 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Note_name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Customers" Relationship="IMEModel.FK__Customer__custom__3B75D760" FromRole="Note" ToRole="Customer" />
-          <NavigationProperty Name="CustomerWorkers" Relationship="IMEModel.FK__CustomerW__custo__4222D4EF" FromRole="Note" ToRole="CustomerWorker" />
-          <NavigationProperty Name="ItemNotes" Relationship="IMEModel.FK__ItemNote__NoteID__2B0A656D" FromRole="Note" ToRole="ItemNote" />
-          <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__Suppli__09746778" FromRole="Note" ToRole="Supplier" />
-          <NavigationProperty Name="SupplierWorkers" Relationship="IMEModel.FK__SupplierW__suppl__73852659" FromRole="Note" ToRole="SupplierWorker" />
-          <NavigationProperty Name="Workers" Relationship="IMEModel.FK__Worker__WorkerNo__4BAC3F29" FromRole="Note" ToRole="Worker" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__custom__3B75D760" FromRole="Notes" ToRole="Customer" />
+          <NavigationProperty Name="CustomerWorkers" Relationship="Self.FK__CustomerW__custo__4222D4EF" FromRole="Notes" ToRole="CustomerWorker" />
+          <NavigationProperty Name="ItemNotes" Relationship="Self.FK__ItemNote__NoteID__2B0A656D" FromRole="Notes" ToRole="ItemNote" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__Suppli__09746778" FromRole="Notes" ToRole="Supplier" />
+          <NavigationProperty Name="SupplierWorkers" Relationship="Self.FK__SupplierW__suppl__73852659" FromRole="Notes" ToRole="SupplierWorker" />
+          <NavigationProperty Name="Workers" Relationship="Self.FK__Worker__WorkerNo__4BAC3F29" FromRole="Notes" ToRole="Worker" />
         </EntityType>
         <EntityType Name="OnSale">
           <Key>
             <PropertyRef Name="ArticleNumber" />
           </Key>
-          <Property Name="ArticleNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArticleNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AvailabletoPromiseCheck" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="BulkPack" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="CatalogueStatus" Type="Int32" />
@@ -1931,8 +1690,8 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Payment" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Customers" Relationship="IMEModel.FK__Customer__paymen__3D5E1FD2" FromRole="PaymentMethod" ToRole="Customer" />
-          <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__paymen__634EBE90" FromRole="PaymentMethod" ToRole="Supplier" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__paymen__3D5E1FD2" FromRole="PaymentMethod" ToRole="Customer" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__paymen__634EBE90" FromRole="PaymentMethod" ToRole="Supplier" />
         </EntityType>
         <EntityType Name="PaymentTerm">
           <Key>
@@ -1940,8 +1699,8 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="term_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Customers" Relationship="IMEModel.FK__Customer__paymen__3E52440B" FromRole="PaymentTerm" ToRole="Customer" />
-          <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__paymen__6442E2C9" FromRole="PaymentTerm" ToRole="Supplier" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__paymen__3E52440B" FromRole="PaymentTerm" ToRole="Customer" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__paymen__6442E2C9" FromRole="PaymentTerm" ToRole="Supplier" />
         </EntityType>
         <EntityType Name="Rate">
           <Key>
@@ -1955,15 +1714,15 @@
           <Property Name="RateSell" Type="Decimal" Precision="20" Scale="10" />
           <Property Name="RateBuyEffective" Type="Decimal" Precision="20" Scale="10" />
           <Property Name="RateSellEffective" Type="Decimal" Precision="20" Scale="10" />
-          <NavigationProperty Name="Customers" Relationship="IMEModel.FK__Customer__rate_I__3C69FB99" FromRole="Rate" ToRole="Customer" />
-          <NavigationProperty Name="Customers1" Relationship="IMEModel.FK__Customer__rateID__6FE99F9F" FromRole="Rate" ToRole="Customer" />
-          <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__rate_I__625A9A57" FromRole="Rate" ToRole="Supplier" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__rate_I__3C69FB99" FromRole="Rate" ToRole="Customer" />
+          <NavigationProperty Name="Customers1" Relationship="Self.FK__Customer__rateID__6FE99F9F" FromRole="Rate" ToRole="Customer" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__rate_I__625A9A57" FromRole="Rate" ToRole="Supplier" />
         </EntityType>
         <EntityType Name="RSPro">
           <Key>
             <PropertyRef Name="ArticleNo" />
           </Key>
-          <Property Name="ArticleNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArticleNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RsProDesc" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Width" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Volume" Type="Decimal" Precision="18" Scale="3" />
@@ -1975,7 +1734,7 @@
           <Key>
             <PropertyRef Name="ArticleNo" />
           </Key>
-          <Property Name="ArticleNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArticleNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ArticleDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ItemTypeCode" Type="Int32" />
           <Property Name="ItemTypeDesc" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
@@ -2004,7 +1763,7 @@
           <Key>
             <PropertyRef Name="Article_No" />
           </Key>
-          <Property Name="Article_No" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Article_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Article_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Pack_Code" Type="Int32" />
           <Property Name="Pack_Quantity" Type="Int32" />
@@ -2050,7 +1809,7 @@
           <Key>
             <PropertyRef Name="Article_No" />
           </Key>
-          <Property Name="Article_No" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Article_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Article_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Pack_Code" Type="Int32" />
           <Property Name="Pack_Quantity" Type="Int32" />
@@ -2096,7 +1855,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="s_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="telephone" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="paymentmethodID" Type="Int32" />
@@ -2117,16 +1876,16 @@
           <Property Name="iban" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="branchcode" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="accountnumber" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Note" Relationship="IMEModel.FK__Supplier__Suppli__09746778" FromRole="Supplier" ToRole="Note" />
-          <NavigationProperty Name="PaymentMethod" Relationship="IMEModel.FK__Supplier__paymen__634EBE90" FromRole="Supplier" ToRole="PaymentMethod" />
-          <NavigationProperty Name="PaymentTerm" Relationship="IMEModel.FK__Supplier__paymen__6442E2C9" FromRole="Supplier" ToRole="PaymentTerm" />
-          <NavigationProperty Name="Rate" Relationship="IMEModel.FK__Supplier__rate_I__625A9A57" FromRole="Supplier" ToRole="Rate" />
-          <NavigationProperty Name="Worker" Relationship="IMEModel.FK__Supplier__accoun__2DB1C7EE" FromRole="Supplier" ToRole="Worker" />
-          <NavigationProperty Name="SupplierBank" Relationship="IMEModel.FK__Supplier__BankID__0C50D423" FromRole="Supplier" ToRole="SupplierBank" />
-          <NavigationProperty Name="SupplierMainContact" Relationship="IMEModel.FK__Supplier__MainCo__0A688BB1" FromRole="Supplier" ToRole="SupplierMainContact" />
-          <NavigationProperty Name="Worker1" Relationship="IMEModel.FK__Supplier__repres__65370702" FromRole="Supplier" ToRole="Worker" />
-          <NavigationProperty Name="SupplierCategorySubCategories" Relationship="IMEModel.FK__SupplierC__suppl__0880433F" FromRole="Supplier" ToRole="SupplierCategorySubCategory" />
-          <NavigationProperty Name="SupplierWorkers" Relationship="IMEModel.FK__SupplierW__suppl__74794A92" FromRole="Supplier" ToRole="SupplierWorker" />
+          <NavigationProperty Name="Note" Relationship="Self.FK__Supplier__Suppli__09746778" FromRole="Supplier" ToRole="Notes" />
+          <NavigationProperty Name="PaymentMethod" Relationship="Self.FK__Supplier__paymen__634EBE90" FromRole="Supplier" ToRole="PaymentMethod" />
+          <NavigationProperty Name="PaymentTerm" Relationship="Self.FK__Supplier__paymen__6442E2C9" FromRole="Supplier" ToRole="PaymentTerm" />
+          <NavigationProperty Name="Rate" Relationship="Self.FK__Supplier__rate_I__625A9A57" FromRole="Supplier" ToRole="Rate" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__Supplier__accoun__2DB1C7EE" FromRole="Supplier" ToRole="Worker" />
+          <NavigationProperty Name="SupplierBank" Relationship="Self.FK__Supplier__BankID__0C50D423" FromRole="Supplier" ToRole="SupplierBank" />
+          <NavigationProperty Name="SupplierMainContact" Relationship="Self.FK__Supplier__MainCo__0A688BB1" FromRole="Supplier" ToRole="SupplierMainContact" />
+          <NavigationProperty Name="Worker1" Relationship="Self.FK__Supplier__repres__65370702" FromRole="Supplier" ToRole="Worker" />
+          <NavigationProperty Name="SupplierCategorySubCategories" Relationship="Self.FK__SupplierC__suppl__0880433F" FromRole="Supplier" ToRole="SupplierCategorySubCategory" />
+          <NavigationProperty Name="SupplierWorkers" Relationship="Self.FK__SupplierW__suppl__74794A92" FromRole="Supplier" ToRole="SupplierWorker" />
         </EntityType>
         <EntityType Name="SupplierAdress">
           <Key>
@@ -2134,7 +1893,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Adress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="SupplierWorkers" Relationship="IMEModel.FK__SupplierW__suppl__756D6ECB" FromRole="SupplierAdress" ToRole="SupplierWorker" />
+          <NavigationProperty Name="SupplierWorkers" Relationship="Self.FK__SupplierW__suppl__756D6ECB" FromRole="SupplierAdresses" ToRole="SupplierWorker" />
         </EntityType>
         <EntityType Name="SupplierBank">
           <Key>
@@ -2142,7 +1901,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="bankname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__BankID__0C50D423" FromRole="SupplierBank" ToRole="Supplier" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__BankID__0C50D423" FromRole="SupplierBank" ToRole="Supplier" />
         </EntityType>
         <EntityType Name="SupplierCategory">
           <Key>
@@ -2150,9 +1909,9 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="categoryname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="SupplierCategorySubCategories" Relationship="IMEModel.FK__SupplierC__categ__0697FACD" FromRole="SupplierCategory" ToRole="SupplierCategorySubCategory" />
-          <NavigationProperty Name="SupplierSubCategories" Relationship="IMEModel.FK__SupplierS__categ__03BB8E22" FromRole="SupplierCategory" ToRole="SupplierSubCategory" />
-          <NavigationProperty Name="SupplierWorkers" Relationship="IMEModel.FK__SupplierW__categ__793DFFAF" FromRole="SupplierCategory" ToRole="SupplierWorker" />
+          <NavigationProperty Name="SupplierCategorySubCategories" Relationship="Self.FK__SupplierC__categ__0697FACD" FromRole="SupplierCategory" ToRole="SupplierCategorySubCategory" />
+          <NavigationProperty Name="SupplierSubCategories" Relationship="Self.FK__SupplierS__categ__03BB8E22" FromRole="SupplierCategory" ToRole="SupplierSubCategory" />
+          <NavigationProperty Name="SupplierWorkers" Relationship="Self.FK__SupplierW__categ__793DFFAF" FromRole="SupplierCategory" ToRole="SupplierWorker" />
         </EntityType>
         <EntityType Name="SupplierCategorySubCategory">
           <Key>
@@ -2162,9 +1921,9 @@
           <Property Name="categoryID" Type="Int32" />
           <Property Name="subcategoryID" Type="Int32" />
           <Property Name="supplierID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Supplier" Relationship="IMEModel.FK__SupplierC__suppl__0880433F" FromRole="SupplierCategorySubCategory" ToRole="Supplier" />
-          <NavigationProperty Name="SupplierCategory" Relationship="IMEModel.FK__SupplierC__categ__0697FACD" FromRole="SupplierCategorySubCategory" ToRole="SupplierCategory" />
-          <NavigationProperty Name="SupplierSubCategory" Relationship="IMEModel.FK__SupplierC__subca__078C1F06" FromRole="SupplierCategorySubCategory" ToRole="SupplierSubCategory" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK__SupplierC__suppl__0880433F" FromRole="SupplierCategorySubCategory" ToRole="Supplier" />
+          <NavigationProperty Name="SupplierCategory" Relationship="Self.FK__SupplierC__categ__0697FACD" FromRole="SupplierCategorySubCategory" ToRole="SupplierCategory" />
+          <NavigationProperty Name="SupplierSubCategory" Relationship="Self.FK__SupplierC__subca__078C1F06" FromRole="SupplierCategorySubCategory" ToRole="SupplierSubCategory" />
         </EntityType>
         <EntityType Name="SupplierDepartment">
           <Key>
@@ -2172,8 +1931,8 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="departmentname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="SupplierTitles" Relationship="IMEModel.FK__SupplierT__depar__6BE40491" FromRole="SupplierDepartment" ToRole="SupplierTitle" />
-          <NavigationProperty Name="SupplierWorkers" Relationship="IMEModel.FK__SupplierW__depar__76619304" FromRole="SupplierDepartment" ToRole="SupplierWorker" />
+          <NavigationProperty Name="SupplierTitles" Relationship="Self.FK__SupplierT__depar__6BE40491" FromRole="SupplierDepartment" ToRole="SupplierTitle" />
+          <NavigationProperty Name="SupplierWorkers" Relationship="Self.FK__SupplierW__depar__76619304" FromRole="SupplierDepartment" ToRole="SupplierWorker" />
         </EntityType>
         <EntityType Name="SupplierMainContact">
           <Key>
@@ -2182,8 +1941,8 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="supplierWorkerID" Type="Int32" />
           <Property Name="workerID" Type="Int32" />
-          <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__MainCo__0A688BB1" FromRole="SupplierMainContact" ToRole="Supplier" />
-          <NavigationProperty Name="SupplierWorker" Relationship="IMEModel.FK__SupplierM__suppl__00DF2177" FromRole="SupplierMainContact" ToRole="SupplierWorker" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__MainCo__0A688BB1" FromRole="SupplierMainContact" ToRole="Supplier" />
+          <NavigationProperty Name="SupplierWorker" Relationship="Self.FK__SupplierM__suppl__00DF2177" FromRole="SupplierMainContact" ToRole="SupplierWorker" />
         </EntityType>
         <EntityType Name="SupplierSubCategory">
           <Key>
@@ -2192,8 +1951,8 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="subcategoryname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="categoryID" Type="Int32" />
-          <NavigationProperty Name="SupplierCategory" Relationship="IMEModel.FK__SupplierS__categ__03BB8E22" FromRole="SupplierSubCategory" ToRole="SupplierCategory" />
-          <NavigationProperty Name="SupplierCategorySubCategories" Relationship="IMEModel.FK__SupplierC__subca__078C1F06" FromRole="SupplierSubCategory" ToRole="SupplierCategorySubCategory" />
+          <NavigationProperty Name="SupplierCategory" Relationship="Self.FK__SupplierS__categ__03BB8E22" FromRole="SupplierSubCategory" ToRole="SupplierCategory" />
+          <NavigationProperty Name="SupplierCategorySubCategories" Relationship="Self.FK__SupplierC__subca__078C1F06" FromRole="SupplierSubCategory" ToRole="SupplierCategorySubCategory" />
         </EntityType>
         <EntityType Name="SupplierTitle">
           <Key>
@@ -2202,8 +1961,8 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="titlename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="departmnetID" Type="Int32" />
-          <NavigationProperty Name="SupplierDepartment" Relationship="IMEModel.FK__SupplierT__depar__6BE40491" FromRole="SupplierTitle" ToRole="SupplierDepartment" />
-          <NavigationProperty Name="SupplierWorkers" Relationship="IMEModel.FK__SupplierW__title__7755B73D" FromRole="SupplierTitle" ToRole="SupplierWorker" />
+          <NavigationProperty Name="SupplierDepartment" Relationship="Self.FK__SupplierT__depar__6BE40491" FromRole="SupplierTitle" ToRole="SupplierDepartment" />
+          <NavigationProperty Name="SupplierWorkers" Relationship="Self.FK__SupplierW__title__7755B73D" FromRole="SupplierTitle" ToRole="SupplierWorker" />
         </EntityType>
         <EntityType Name="SupplierWorker">
           <Key>
@@ -2222,20 +1981,20 @@
           <Property Name="supplierNoteID" Type="Int32" />
           <Property Name="languageID" Type="Int32" />
           <Property Name="categoryID" Type="Int32" />
-          <NavigationProperty Name="Language" Relationship="IMEModel.FK__SupplierW__langu__72910220" FromRole="SupplierWorker" ToRole="Language" />
-          <NavigationProperty Name="Note" Relationship="IMEModel.FK__SupplierW__suppl__73852659" FromRole="SupplierWorker" ToRole="Note" />
-          <NavigationProperty Name="Supplier" Relationship="IMEModel.FK__SupplierW__suppl__74794A92" FromRole="SupplierWorker" ToRole="Supplier" />
-          <NavigationProperty Name="SupplierAdress" Relationship="IMEModel.FK__SupplierW__suppl__756D6ECB" FromRole="SupplierWorker" ToRole="SupplierAdress" />
-          <NavigationProperty Name="SupplierCategory" Relationship="IMEModel.FK__SupplierW__categ__793DFFAF" FromRole="SupplierWorker" ToRole="SupplierCategory" />
-          <NavigationProperty Name="SupplierDepartment" Relationship="IMEModel.FK__SupplierW__depar__76619304" FromRole="SupplierWorker" ToRole="SupplierDepartment" />
-          <NavigationProperty Name="SupplierMainContacts" Relationship="IMEModel.FK__SupplierM__suppl__00DF2177" FromRole="SupplierWorker" ToRole="SupplierMainContact" />
-          <NavigationProperty Name="SupplierTitle" Relationship="IMEModel.FK__SupplierW__title__7755B73D" FromRole="SupplierWorker" ToRole="SupplierTitle" />
+          <NavigationProperty Name="Language" Relationship="Self.FK__SupplierW__langu__72910220" FromRole="SupplierWorker" ToRole="Languages" />
+          <NavigationProperty Name="Note" Relationship="Self.FK__SupplierW__suppl__73852659" FromRole="SupplierWorker" ToRole="Notes" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK__SupplierW__suppl__74794A92" FromRole="SupplierWorker" ToRole="Supplier" />
+          <NavigationProperty Name="SupplierAdress" Relationship="Self.FK__SupplierW__suppl__756D6ECB" FromRole="SupplierWorker" ToRole="SupplierAdresses" />
+          <NavigationProperty Name="SupplierCategory" Relationship="Self.FK__SupplierW__categ__793DFFAF" FromRole="SupplierWorker" ToRole="SupplierCategory" />
+          <NavigationProperty Name="SupplierDepartment" Relationship="Self.FK__SupplierW__depar__76619304" FromRole="SupplierWorker" ToRole="SupplierDepartment" />
+          <NavigationProperty Name="SupplierMainContacts" Relationship="Self.FK__SupplierM__suppl__00DF2177" FromRole="SupplierWorker" ToRole="SupplierMainContact" />
+          <NavigationProperty Name="SupplierTitle" Relationship="Self.FK__SupplierW__title__7755B73D" FromRole="SupplierWorker" ToRole="SupplierTitle" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
@@ -2248,8 +2007,8 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Town_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CityID" Type="Int32" />
-          <NavigationProperty Name="City" Relationship="IMEModel.FK__Town__CityID__5224328E" FromRole="Town" ToRole="City" />
-          <NavigationProperty Name="CustomerAdresses" Relationship="IMEModel.FK__CustomerA__TownI__4F47C5E3" FromRole="Town" ToRole="CustomerAdress" />
+          <NavigationProperty Name="City" Relationship="Self.FK__Town__CityID__5224328E" FromRole="Town" ToRole="City" />
+          <NavigationProperty Name="CustomerAdresses" Relationship="Self.FK__CustomerA__TownI__4F47C5E3" FromRole="Town" ToRole="CustomerAdress" />
         </EntityType>
         <EntityType Name="Worker">
           <Key>
@@ -2266,17 +2025,17 @@
           <Property Name="MinRate" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="Title" Type="Int32" />
           <Property Name="isActive" Type="Int32" />
-          <NavigationProperty Name="Customers" Relationship="IMEModel.FK__Customer__accoun__6EF57B66" FromRole="Worker" ToRole="Customer" />
-          <NavigationProperty Name="Customers1" Relationship="IMEModel.FK__Customer__repres__3F466844" FromRole="Worker" ToRole="Customer" />
-          <NavigationProperty Name="Customers2" Relationship="IMEModel.FK__Customer__repres__6E01572D" FromRole="Worker" ToRole="Customer" />
-          <NavigationProperty Name="Note" Relationship="IMEModel.FK__Worker__WorkerNo__4BAC3F29" FromRole="Worker" ToRole="Note" />
-          <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__accoun__2DB1C7EE" FromRole="Worker" ToRole="Supplier" />
-          <NavigationProperty Name="Suppliers1" Relationship="IMEModel.FK__Supplier__repres__65370702" FromRole="Worker" ToRole="Supplier" />
-          <NavigationProperty Name="AuthorizationValues" Relationship="IMEModel.UserAuthorization" FromRole="Worker" ToRole="AuthorizationValue" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__accoun__6EF57B66" FromRole="Worker" ToRole="Customer" />
+          <NavigationProperty Name="Customers1" Relationship="Self.FK__Customer__repres__3F466844" FromRole="Worker" ToRole="Customer" />
+          <NavigationProperty Name="Customers2" Relationship="Self.FK__Customer__repres__6E01572D" FromRole="Worker" ToRole="Customer" />
+          <NavigationProperty Name="Note" Relationship="Self.FK__Worker__WorkerNo__4BAC3F29" FromRole="Worker" ToRole="Notes" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__accoun__2DB1C7EE" FromRole="Worker" ToRole="Supplier" />
+          <NavigationProperty Name="Suppliers1" Relationship="Self.FK__Supplier__repres__65370702" FromRole="Worker" ToRole="Supplier" />
+          <NavigationProperty Name="AuthorizationValues" Relationship="Self.UserAuthorization" FromRole="Worker" ToRole="AuthorizationValue" />
         </EntityType>
         <Association Name="FK__City__CountryID__51300E55">
-          <End Type="IMEModel.Country" Role="Country" Multiplicity="0..1" />
-          <End Type="IMEModel.City" Role="City" Multiplicity="*" />
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Country">
               <PropertyRef Name="ID" />
@@ -2287,8 +2046,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__CustomerA__CityI__4E53A1AA">
-          <End Type="IMEModel.City" Role="City" Multiplicity="0..1" />
-          <End Type="IMEModel.CustomerAdress" Role="CustomerAdress" Multiplicity="*" />
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="CustomerAdress" Type="Self.CustomerAdress" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="City">
               <PropertyRef Name="ID" />
@@ -2299,8 +2058,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Town__CityID__5224328E">
-          <End Type="IMEModel.City" Role="City" Multiplicity="0..1" />
-          <End Type="IMEModel.Town" Role="Town" Multiplicity="*" />
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Town" Type="Self.Town" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="City">
               <PropertyRef Name="ID" />
@@ -2311,8 +2070,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__CustomerA__Count__503BEA1C">
-          <End Type="IMEModel.Country" Role="Country" Multiplicity="0..1" />
-          <End Type="IMEModel.CustomerAdress" Role="CustomerAdress" Multiplicity="*" />
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="CustomerAdress" Type="Self.CustomerAdress" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Country">
               <PropertyRef Name="ID" />
@@ -2323,8 +2082,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Customer__accoun__6EF57B66">
-          <End Type="IMEModel.Worker" Role="Worker" Multiplicity="0..1" />
-          <End Type="IMEModel.Customer" Role="Customer" Multiplicity="*" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Worker">
               <PropertyRef Name="WorkerID" />
@@ -2335,10 +2094,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Customer__custom__3B75D760">
-          <End Type="IMEModel.Note" Role="Note" Multiplicity="0..1" />
-          <End Type="IMEModel.Customer" Role="Customer" Multiplicity="*" />
+          <End Role="Notes" Type="Self.Note" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Note">
+            <Principal Role="Notes">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Customer">
@@ -2347,8 +2106,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Customer__MainCo__19AACF41">
-          <End Type="IMEModel.CustomerWorker" Role="CustomerWorker" Multiplicity="0..1" />
-          <End Type="IMEModel.Customer" Role="Customer" Multiplicity="*" />
+          <End Role="CustomerWorker" Type="Self.CustomerWorker" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CustomerWorker">
               <PropertyRef Name="ID" />
@@ -2359,8 +2118,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Customer__paymen__3D5E1FD2">
-          <End Type="IMEModel.PaymentMethod" Role="PaymentMethod" Multiplicity="0..1" />
-          <End Type="IMEModel.Customer" Role="Customer" Multiplicity="*" />
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PaymentMethod">
               <PropertyRef Name="ID" />
@@ -2371,8 +2130,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Customer__paymen__3E52440B">
-          <End Type="IMEModel.PaymentTerm" Role="PaymentTerm" Multiplicity="0..1" />
-          <End Type="IMEModel.Customer" Role="Customer" Multiplicity="*" />
+          <End Role="PaymentTerm" Type="Self.PaymentTerm" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PaymentTerm">
               <PropertyRef Name="ID" />
@@ -2383,8 +2142,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Customer__rate_I__3C69FB99">
-          <End Type="IMEModel.Rate" Role="Rate" Multiplicity="0..1" />
-          <End Type="IMEModel.Customer" Role="Customer" Multiplicity="*" />
+          <End Role="Rate" Type="Self.Rate" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Rate">
               <PropertyRef Name="ID" />
@@ -2395,8 +2154,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Customer__rateID__6FE99F9F">
-          <End Type="IMEModel.Rate" Role="Rate" Multiplicity="0..1" />
-          <End Type="IMEModel.Customer" Role="Customer" Multiplicity="*" />
+          <End Role="Rate" Type="Self.Rate" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Rate">
               <PropertyRef Name="ID" />
@@ -2407,8 +2166,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Customer__repres__3F466844">
-          <End Type="IMEModel.Worker" Role="Worker" Multiplicity="0..1" />
-          <End Type="IMEModel.Customer" Role="Customer" Multiplicity="*" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Worker">
               <PropertyRef Name="WorkerID" />
@@ -2419,8 +2178,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Customer__repres__6E01572D">
-          <End Type="IMEModel.Worker" Role="Worker" Multiplicity="0..1" />
-          <End Type="IMEModel.Customer" Role="Customer" Multiplicity="*" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Worker">
               <PropertyRef Name="WorkerID" />
@@ -2431,8 +2190,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__CustomerA__Custo__44CA3770">
-          <End Type="IMEModel.Customer" Role="Customer" Multiplicity="0..1" />
-          <End Type="IMEModel.CustomerAdress" Role="CustomerAdress" Multiplicity="*" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="CustomerAdress" Type="Self.CustomerAdress" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customer">
               <PropertyRef Name="ID" />
@@ -2443,8 +2202,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__CustomerC__custo__534D60F1">
-          <End Type="IMEModel.Customer" Role="Customer" Multiplicity="0..1" />
-          <End Type="IMEModel.CustomerCategorySubCategory" Role="CustomerCategorySubCategory" Multiplicity="*" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="CustomerCategorySubCategory" Type="Self.CustomerCategorySubCategory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customer">
               <PropertyRef Name="ID" />
@@ -2455,8 +2214,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__CustomerW__custo__4316F928">
-          <End Type="IMEModel.Customer" Role="Customer" Multiplicity="0..1" />
-          <End Type="IMEModel.CustomerWorker" Role="CustomerWorker" Multiplicity="*" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="CustomerWorker" Type="Self.CustomerWorker" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customer">
               <PropertyRef Name="ID" />
@@ -2467,8 +2226,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__CustomerA__Conta__45BE5BA9">
-          <End Type="IMEModel.CustomerWorker" Role="CustomerWorker" Multiplicity="0..1" />
-          <End Type="IMEModel.CustomerAdress" Role="CustomerAdress" Multiplicity="*" />
+          <End Role="CustomerWorker" Type="Self.CustomerWorker" Multiplicity="0..1" />
+          <End Role="CustomerAdress" Type="Self.CustomerAdress" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CustomerWorker">
               <PropertyRef Name="ID" />
@@ -2479,8 +2238,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__CustomerA__TownI__4F47C5E3">
-          <End Type="IMEModel.Town" Role="Town" Multiplicity="0..1" />
-          <End Type="IMEModel.CustomerAdress" Role="CustomerAdress" Multiplicity="*" />
+          <End Role="Town" Type="Self.Town" Multiplicity="0..1" />
+          <End Role="CustomerAdress" Type="Self.CustomerAdress" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Town">
               <PropertyRef Name="ID" />
@@ -2491,8 +2250,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__CustomerC__categ__5165187F">
-          <End Type="IMEModel.CustomerCategory" Role="CustomerCategory" Multiplicity="0..1" />
-          <End Type="IMEModel.CustomerCategorySubCategory" Role="CustomerCategorySubCategory" Multiplicity="*" />
+          <End Role="CustomerCategory" Type="Self.CustomerCategory" Multiplicity="0..1" />
+          <End Role="CustomerCategorySubCategory" Type="Self.CustomerCategorySubCategory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CustomerCategory">
               <PropertyRef Name="ID" />
@@ -2503,8 +2262,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__CustomerS__categ__4E88ABD4">
-          <End Type="IMEModel.CustomerCategory" Role="CustomerCategory" Multiplicity="0..1" />
-          <End Type="IMEModel.CustomerSubCategory" Role="CustomerSubCategory" Multiplicity="*" />
+          <End Role="CustomerCategory" Type="Self.CustomerCategory" Multiplicity="0..1" />
+          <End Role="CustomerSubCategory" Type="Self.CustomerSubCategory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CustomerCategory">
               <PropertyRef Name="ID" />
@@ -2515,8 +2274,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__CustomerC__subca__52593CB8">
-          <End Type="IMEModel.CustomerSubCategory" Role="CustomerSubCategory" Multiplicity="0..1" />
-          <End Type="IMEModel.CustomerCategorySubCategory" Role="CustomerCategorySubCategory" Multiplicity="*" />
+          <End Role="CustomerSubCategory" Type="Self.CustomerSubCategory" Multiplicity="0..1" />
+          <End Role="CustomerCategorySubCategory" Type="Self.CustomerCategorySubCategory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CustomerSubCategory">
               <PropertyRef Name="ID" />
@@ -2527,8 +2286,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__CustomerT__depar__30F848ED">
-          <End Type="IMEModel.CustomerDepartment" Role="CustomerDepartment" Multiplicity="0..1" />
-          <End Type="IMEModel.CustomerTitle" Role="CustomerTitle" Multiplicity="*" />
+          <End Role="CustomerDepartment" Type="Self.CustomerDepartment" Multiplicity="0..1" />
+          <End Role="CustomerTitle" Type="Self.CustomerTitle" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CustomerDepartment">
               <PropertyRef Name="ID" />
@@ -2539,8 +2298,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__CustomerW__depar__44FF419A">
-          <End Type="IMEModel.CustomerDepartment" Role="CustomerDepartment" Multiplicity="0..1" />
-          <End Type="IMEModel.CustomerWorker" Role="CustomerWorker" Multiplicity="*" />
+          <End Role="CustomerDepartment" Type="Self.CustomerDepartment" Multiplicity="0..1" />
+          <End Role="CustomerWorker" Type="Self.CustomerWorker" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CustomerDepartment">
               <PropertyRef Name="ID" />
@@ -2551,8 +2310,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__CustomerW__title__45F365D3">
-          <End Type="IMEModel.CustomerTitle" Role="CustomerTitle" Multiplicity="0..1" />
-          <End Type="IMEModel.CustomerWorker" Role="CustomerWorker" Multiplicity="*" />
+          <End Role="CustomerTitle" Type="Self.CustomerTitle" Multiplicity="0..1" />
+          <End Role="CustomerWorker" Type="Self.CustomerWorker" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CustomerTitle">
               <PropertyRef Name="ID" />
@@ -2563,10 +2322,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__CustomerW__custo__4222D4EF">
-          <End Type="IMEModel.Note" Role="Note" Multiplicity="0..1" />
-          <End Type="IMEModel.CustomerWorker" Role="CustomerWorker" Multiplicity="*" />
+          <End Role="Notes" Type="Self.Note" Multiplicity="0..1" />
+          <End Role="CustomerWorker" Type="Self.CustomerWorker" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Note">
+            <Principal Role="Notes">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="CustomerWorker">
@@ -2575,10 +2334,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__CustomerW__langu__72C60C4A">
-          <End Type="IMEModel.Language" Role="Language" Multiplicity="0..1" />
-          <End Type="IMEModel.CustomerWorker" Role="CustomerWorker" Multiplicity="*" />
+          <End Role="Languages" Type="Self.Language" Multiplicity="0..1" />
+          <End Role="CustomerWorker" Type="Self.CustomerWorker" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Language">
+            <Principal Role="Languages">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="CustomerWorker">
@@ -2587,10 +2346,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__ItemNote__NoteID__2B0A656D">
-          <End Type="IMEModel.Note" Role="Note" Multiplicity="0..1" />
-          <End Type="IMEModel.ItemNote" Role="ItemNote" Multiplicity="*" />
+          <End Role="Notes" Type="Self.Note" Multiplicity="0..1" />
+          <End Role="ItemNote" Type="Self.ItemNote" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Note">
+            <Principal Role="Notes">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="ItemNote">
@@ -2599,10 +2358,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SupplierW__langu__72910220">
-          <End Type="IMEModel.Language" Role="Language" Multiplicity="0..1" />
-          <End Type="IMEModel.SupplierWorker" Role="SupplierWorker" Multiplicity="*" />
+          <End Role="Languages" Type="Self.Language" Multiplicity="0..1" />
+          <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Language">
+            <Principal Role="Languages">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="SupplierWorker">
@@ -2611,10 +2370,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Supplier__Suppli__09746778">
-          <End Type="IMEModel.Note" Role="Note" Multiplicity="0..1" />
-          <End Type="IMEModel.Supplier" Role="Supplier" Multiplicity="*" />
+          <End Role="Notes" Type="Self.Note" Multiplicity="0..1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Note">
+            <Principal Role="Notes">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Supplier">
@@ -2623,10 +2382,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SupplierW__suppl__73852659">
-          <End Type="IMEModel.Note" Role="Note" Multiplicity="0..1" />
-          <End Type="IMEModel.SupplierWorker" Role="SupplierWorker" Multiplicity="*" />
+          <End Role="Notes" Type="Self.Note" Multiplicity="0..1" />
+          <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Note">
+            <Principal Role="Notes">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="SupplierWorker">
@@ -2635,10 +2394,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Worker__WorkerNo__4BAC3F29">
-          <End Type="IMEModel.Note" Role="Note" Multiplicity="0..1" />
-          <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
+          <End Role="Notes" Type="Self.Note" Multiplicity="0..1" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Note">
+            <Principal Role="Notes">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Worker">
@@ -2647,8 +2406,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Supplier__paymen__634EBE90">
-          <End Type="IMEModel.PaymentMethod" Role="PaymentMethod" Multiplicity="0..1" />
-          <End Type="IMEModel.Supplier" Role="Supplier" Multiplicity="*" />
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="0..1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PaymentMethod">
               <PropertyRef Name="ID" />
@@ -2659,8 +2418,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Supplier__paymen__6442E2C9">
-          <End Type="IMEModel.PaymentTerm" Role="PaymentTerm" Multiplicity="0..1" />
-          <End Type="IMEModel.Supplier" Role="Supplier" Multiplicity="*" />
+          <End Role="PaymentTerm" Type="Self.PaymentTerm" Multiplicity="0..1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PaymentTerm">
               <PropertyRef Name="ID" />
@@ -2671,8 +2430,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Supplier__rate_I__625A9A57">
-          <End Type="IMEModel.Rate" Role="Rate" Multiplicity="0..1" />
-          <End Type="IMEModel.Supplier" Role="Supplier" Multiplicity="*" />
+          <End Role="Rate" Type="Self.Rate" Multiplicity="0..1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Rate">
               <PropertyRef Name="ID" />
@@ -2683,8 +2442,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Supplier__accoun__2DB1C7EE">
-          <End Type="IMEModel.Worker" Role="Worker" Multiplicity="0..1" />
-          <End Type="IMEModel.Supplier" Role="Supplier" Multiplicity="*" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Worker">
               <PropertyRef Name="WorkerID" />
@@ -2695,8 +2454,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Supplier__BankID__0C50D423">
-          <End Type="IMEModel.SupplierBank" Role="SupplierBank" Multiplicity="0..1" />
-          <End Type="IMEModel.Supplier" Role="Supplier" Multiplicity="*" />
+          <End Role="SupplierBank" Type="Self.SupplierBank" Multiplicity="0..1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SupplierBank">
               <PropertyRef Name="ID" />
@@ -2707,8 +2466,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Supplier__MainCo__0A688BB1">
-          <End Type="IMEModel.SupplierMainContact" Role="SupplierMainContact" Multiplicity="0..1" />
-          <End Type="IMEModel.Supplier" Role="Supplier" Multiplicity="*" />
+          <End Role="SupplierMainContact" Type="Self.SupplierMainContact" Multiplicity="0..1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SupplierMainContact">
               <PropertyRef Name="ID" />
@@ -2719,8 +2478,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Supplier__repres__65370702">
-          <End Type="IMEModel.Worker" Role="Worker" Multiplicity="0..1" />
-          <End Type="IMEModel.Supplier" Role="Supplier" Multiplicity="*" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Worker">
               <PropertyRef Name="WorkerID" />
@@ -2731,8 +2490,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SupplierC__suppl__0880433F">
-          <End Type="IMEModel.Supplier" Role="Supplier" Multiplicity="0..1" />
-          <End Type="IMEModel.SupplierCategorySubCategory" Role="SupplierCategorySubCategory" Multiplicity="*" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="SupplierCategorySubCategory" Type="Self.SupplierCategorySubCategory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Supplier">
               <PropertyRef Name="ID" />
@@ -2743,8 +2502,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SupplierW__suppl__74794A92">
-          <End Type="IMEModel.Supplier" Role="Supplier" Multiplicity="0..1" />
-          <End Type="IMEModel.SupplierWorker" Role="SupplierWorker" Multiplicity="*" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+          <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Supplier">
               <PropertyRef Name="ID" />
@@ -2755,10 +2514,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SupplierW__suppl__756D6ECB">
-          <End Type="IMEModel.SupplierAdress" Role="SupplierAdress" Multiplicity="0..1" />
-          <End Type="IMEModel.SupplierWorker" Role="SupplierWorker" Multiplicity="*" />
+          <End Role="SupplierAdresses" Type="Self.SupplierAdress" Multiplicity="0..1" />
+          <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="SupplierAdress">
+            <Principal Role="SupplierAdresses">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="SupplierWorker">
@@ -2767,8 +2526,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SupplierC__categ__0697FACD">
-          <End Type="IMEModel.SupplierCategory" Role="SupplierCategory" Multiplicity="0..1" />
-          <End Type="IMEModel.SupplierCategorySubCategory" Role="SupplierCategorySubCategory" Multiplicity="*" />
+          <End Role="SupplierCategory" Type="Self.SupplierCategory" Multiplicity="0..1" />
+          <End Role="SupplierCategorySubCategory" Type="Self.SupplierCategorySubCategory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SupplierCategory">
               <PropertyRef Name="ID" />
@@ -2779,8 +2538,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SupplierS__categ__03BB8E22">
-          <End Type="IMEModel.SupplierCategory" Role="SupplierCategory" Multiplicity="0..1" />
-          <End Type="IMEModel.SupplierSubCategory" Role="SupplierSubCategory" Multiplicity="*" />
+          <End Role="SupplierCategory" Type="Self.SupplierCategory" Multiplicity="0..1" />
+          <End Role="SupplierSubCategory" Type="Self.SupplierSubCategory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SupplierCategory">
               <PropertyRef Name="ID" />
@@ -2791,8 +2550,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SupplierW__categ__793DFFAF">
-          <End Type="IMEModel.SupplierCategory" Role="SupplierCategory" Multiplicity="0..1" />
-          <End Type="IMEModel.SupplierWorker" Role="SupplierWorker" Multiplicity="*" />
+          <End Role="SupplierCategory" Type="Self.SupplierCategory" Multiplicity="0..1" />
+          <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SupplierCategory">
               <PropertyRef Name="ID" />
@@ -2803,8 +2562,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SupplierC__subca__078C1F06">
-          <End Type="IMEModel.SupplierSubCategory" Role="SupplierSubCategory" Multiplicity="0..1" />
-          <End Type="IMEModel.SupplierCategorySubCategory" Role="SupplierCategorySubCategory" Multiplicity="*" />
+          <End Role="SupplierSubCategory" Type="Self.SupplierSubCategory" Multiplicity="0..1" />
+          <End Role="SupplierCategorySubCategory" Type="Self.SupplierCategorySubCategory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SupplierSubCategory">
               <PropertyRef Name="ID" />
@@ -2815,8 +2574,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SupplierT__depar__6BE40491">
-          <End Type="IMEModel.SupplierDepartment" Role="SupplierDepartment" Multiplicity="0..1" />
-          <End Type="IMEModel.SupplierTitle" Role="SupplierTitle" Multiplicity="*" />
+          <End Role="SupplierDepartment" Type="Self.SupplierDepartment" Multiplicity="0..1" />
+          <End Role="SupplierTitle" Type="Self.SupplierTitle" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SupplierDepartment">
               <PropertyRef Name="ID" />
@@ -2827,8 +2586,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SupplierW__depar__76619304">
-          <End Type="IMEModel.SupplierDepartment" Role="SupplierDepartment" Multiplicity="0..1" />
-          <End Type="IMEModel.SupplierWorker" Role="SupplierWorker" Multiplicity="*" />
+          <End Role="SupplierDepartment" Type="Self.SupplierDepartment" Multiplicity="0..1" />
+          <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SupplierDepartment">
               <PropertyRef Name="ID" />
@@ -2839,8 +2598,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SupplierM__suppl__00DF2177">
-          <End Type="IMEModel.SupplierWorker" Role="SupplierWorker" Multiplicity="0..1" />
-          <End Type="IMEModel.SupplierMainContact" Role="SupplierMainContact" Multiplicity="*" />
+          <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="0..1" />
+          <End Role="SupplierMainContact" Type="Self.SupplierMainContact" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SupplierWorker">
               <PropertyRef Name="ID" />
@@ -2851,8 +2610,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SupplierW__title__7755B73D">
-          <End Type="IMEModel.SupplierTitle" Role="SupplierTitle" Multiplicity="0..1" />
-          <End Type="IMEModel.SupplierWorker" Role="SupplierWorker" Multiplicity="*" />
+          <End Role="SupplierTitle" Type="Self.SupplierTitle" Multiplicity="0..1" />
+          <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SupplierTitle">
               <PropertyRef Name="ID" />
@@ -2863,10 +2622,252 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="UserAuthorization">
-          <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
-          <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
+          <End Role="AuthorizationValue" Type="Self.AuthorizationValue" Multiplicity="*" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
         </Association>
-        </Schema>
+        <EntityContainer Name="IMEEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AuthorizationValues" EntityType="Self.AuthorizationValue" />
+          <EntitySet Name="capitals" EntityType="Self.capital" />
+          <EntitySet Name="Cities" EntityType="Self.City" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="CustomerAdresses" EntityType="Self.CustomerAdress" />
+          <EntitySet Name="CustomerCategories" EntityType="Self.CustomerCategory" />
+          <EntitySet Name="CustomerCategorySubCategories" EntityType="Self.CustomerCategorySubCategory" />
+          <EntitySet Name="CustomerDepartments" EntityType="Self.CustomerDepartment" />
+          <EntitySet Name="CustomerSubCategories" EntityType="Self.CustomerSubCategory" />
+          <EntitySet Name="CustomerTitles" EntityType="Self.CustomerTitle" />
+          <EntitySet Name="CustomerWorkers" EntityType="Self.CustomerWorker" />
+          <EntitySet Name="DailyDiscontinueds" EntityType="Self.DailyDiscontinued" />
+          <EntitySet Name="DualUses" EntityType="Self.DualUse" />
+          <EntitySet Name="ExtendedRanges" EntityType="Self.ExtendedRange" />
+          <EntitySet Name="Hazardous" EntityType="Self.Hazardou" />
+          <EntitySet Name="ItemNotes" EntityType="Self.ItemNote" />
+          <EntitySet Name="Languages" EntityType="Self.Language" />
+          <EntitySet Name="Notes" EntityType="Self.Note" />
+          <EntitySet Name="OnSales" EntityType="Self.OnSale" />
+          <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethod" />
+          <EntitySet Name="PaymentTerms" EntityType="Self.PaymentTerm" />
+          <EntitySet Name="Rates" EntityType="Self.Rate" />
+          <EntitySet Name="RSProes" EntityType="Self.RSPro" />
+          <EntitySet Name="SlidingPrices" EntityType="Self.SlidingPrice" />
+          <EntitySet Name="SuperDisks" EntityType="Self.SuperDisk" />
+          <EntitySet Name="SuperDiskPs" EntityType="Self.SuperDiskP" />
+          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+          <EntitySet Name="SupplierAdresses" EntityType="Self.SupplierAdress" />
+          <EntitySet Name="SupplierBanks" EntityType="Self.SupplierBank" />
+          <EntitySet Name="SupplierCategories" EntityType="Self.SupplierCategory" />
+          <EntitySet Name="SupplierCategorySubCategories" EntityType="Self.SupplierCategorySubCategory" />
+          <EntitySet Name="SupplierDepartments" EntityType="Self.SupplierDepartment" />
+          <EntitySet Name="SupplierMainContacts" EntityType="Self.SupplierMainContact" />
+          <EntitySet Name="SupplierSubCategories" EntityType="Self.SupplierSubCategory" />
+          <EntitySet Name="SupplierTitles" EntityType="Self.SupplierTitle" />
+          <EntitySet Name="SupplierWorkers" EntityType="Self.SupplierWorker" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Towns" EntityType="Self.Town" />
+          <EntitySet Name="Workers" EntityType="Self.Worker" />
+          <AssociationSet Name="FK__City__CountryID__51300E55" Association="Self.FK__City__CountryID__51300E55">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerA__CityI__4E53A1AA" Association="Self.FK__CustomerA__CityI__4E53A1AA">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="CustomerAdress" EntitySet="CustomerAdresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Town__CityID__5224328E" Association="Self.FK__Town__CityID__5224328E">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Town" EntitySet="Towns" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerA__Count__503BEA1C" Association="Self.FK__CustomerA__Count__503BEA1C">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="CustomerAdress" EntitySet="CustomerAdresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer__accoun__6EF57B66" Association="Self.FK__Customer__accoun__6EF57B66">
+            <End Role="Worker" EntitySet="Workers" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer__custom__3B75D760" Association="Self.FK__Customer__custom__3B75D760">
+            <End Role="Notes" EntitySet="Notes" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer__MainCo__19AACF41" Association="Self.FK__Customer__MainCo__19AACF41">
+            <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer__paymen__3D5E1FD2" Association="Self.FK__Customer__paymen__3D5E1FD2">
+            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer__paymen__3E52440B" Association="Self.FK__Customer__paymen__3E52440B">
+            <End Role="PaymentTerm" EntitySet="PaymentTerms" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer__rate_I__3C69FB99" Association="Self.FK__Customer__rate_I__3C69FB99">
+            <End Role="Rate" EntitySet="Rates" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer__rateID__6FE99F9F" Association="Self.FK__Customer__rateID__6FE99F9F">
+            <End Role="Rate" EntitySet="Rates" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer__repres__3F466844" Association="Self.FK__Customer__repres__3F466844">
+            <End Role="Worker" EntitySet="Workers" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer__repres__6E01572D" Association="Self.FK__Customer__repres__6E01572D">
+            <End Role="Worker" EntitySet="Workers" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerA__Custo__44CA3770" Association="Self.FK__CustomerA__Custo__44CA3770">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CustomerAdress" EntitySet="CustomerAdresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__custo__534D60F1" Association="Self.FK__CustomerC__custo__534D60F1">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CustomerCategorySubCategory" EntitySet="CustomerCategorySubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerW__custo__4316F928" Association="Self.FK__CustomerW__custo__4316F928">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerA__Conta__45BE5BA9" Association="Self.FK__CustomerA__Conta__45BE5BA9">
+            <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
+            <End Role="CustomerAdress" EntitySet="CustomerAdresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerA__TownI__4F47C5E3" Association="Self.FK__CustomerA__TownI__4F47C5E3">
+            <End Role="Town" EntitySet="Towns" />
+            <End Role="CustomerAdress" EntitySet="CustomerAdresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__categ__5165187F" Association="Self.FK__CustomerC__categ__5165187F">
+            <End Role="CustomerCategory" EntitySet="CustomerCategories" />
+            <End Role="CustomerCategorySubCategory" EntitySet="CustomerCategorySubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerS__categ__4E88ABD4" Association="Self.FK__CustomerS__categ__4E88ABD4">
+            <End Role="CustomerCategory" EntitySet="CustomerCategories" />
+            <End Role="CustomerSubCategory" EntitySet="CustomerSubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerC__subca__52593CB8" Association="Self.FK__CustomerC__subca__52593CB8">
+            <End Role="CustomerSubCategory" EntitySet="CustomerSubCategories" />
+            <End Role="CustomerCategorySubCategory" EntitySet="CustomerCategorySubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerT__depar__30F848ED" Association="Self.FK__CustomerT__depar__30F848ED">
+            <End Role="CustomerDepartment" EntitySet="CustomerDepartments" />
+            <End Role="CustomerTitle" EntitySet="CustomerTitles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerW__depar__44FF419A" Association="Self.FK__CustomerW__depar__44FF419A">
+            <End Role="CustomerDepartment" EntitySet="CustomerDepartments" />
+            <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerW__title__45F365D3" Association="Self.FK__CustomerW__title__45F365D3">
+            <End Role="CustomerTitle" EntitySet="CustomerTitles" />
+            <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerW__custo__4222D4EF" Association="Self.FK__CustomerW__custo__4222D4EF">
+            <End Role="Notes" EntitySet="Notes" />
+            <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerW__langu__72C60C4A" Association="Self.FK__CustomerW__langu__72C60C4A">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ItemNote__NoteID__2B0A656D" Association="Self.FK__ItemNote__NoteID__2B0A656D">
+            <End Role="Notes" EntitySet="Notes" />
+            <End Role="ItemNote" EntitySet="ItemNotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierW__langu__72910220" Association="Self.FK__SupplierW__langu__72910220">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Supplier__Suppli__09746778" Association="Self.FK__Supplier__Suppli__09746778">
+            <End Role="Notes" EntitySet="Notes" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierW__suppl__73852659" Association="Self.FK__SupplierW__suppl__73852659">
+            <End Role="Notes" EntitySet="Notes" />
+            <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Worker__WorkerNo__4BAC3F29" Association="Self.FK__Worker__WorkerNo__4BAC3F29">
+            <End Role="Notes" EntitySet="Notes" />
+            <End Role="Worker" EntitySet="Workers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Supplier__paymen__634EBE90" Association="Self.FK__Supplier__paymen__634EBE90">
+            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Supplier__paymen__6442E2C9" Association="Self.FK__Supplier__paymen__6442E2C9">
+            <End Role="PaymentTerm" EntitySet="PaymentTerms" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Supplier__rate_I__625A9A57" Association="Self.FK__Supplier__rate_I__625A9A57">
+            <End Role="Rate" EntitySet="Rates" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Supplier__accoun__2DB1C7EE" Association="Self.FK__Supplier__accoun__2DB1C7EE">
+            <End Role="Worker" EntitySet="Workers" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Supplier__BankID__0C50D423" Association="Self.FK__Supplier__BankID__0C50D423">
+            <End Role="SupplierBank" EntitySet="SupplierBanks" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Supplier__MainCo__0A688BB1" Association="Self.FK__Supplier__MainCo__0A688BB1">
+            <End Role="SupplierMainContact" EntitySet="SupplierMainContacts" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Supplier__repres__65370702" Association="Self.FK__Supplier__repres__65370702">
+            <End Role="Worker" EntitySet="Workers" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierC__suppl__0880433F" Association="Self.FK__SupplierC__suppl__0880433F">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="SupplierCategorySubCategory" EntitySet="SupplierCategorySubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierW__suppl__74794A92" Association="Self.FK__SupplierW__suppl__74794A92">
+            <End Role="Supplier" EntitySet="Suppliers" />
+            <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierW__suppl__756D6ECB" Association="Self.FK__SupplierW__suppl__756D6ECB">
+            <End Role="SupplierAdresses" EntitySet="SupplierAdresses" />
+            <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierC__categ__0697FACD" Association="Self.FK__SupplierC__categ__0697FACD">
+            <End Role="SupplierCategory" EntitySet="SupplierCategories" />
+            <End Role="SupplierCategorySubCategory" EntitySet="SupplierCategorySubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierS__categ__03BB8E22" Association="Self.FK__SupplierS__categ__03BB8E22">
+            <End Role="SupplierCategory" EntitySet="SupplierCategories" />
+            <End Role="SupplierSubCategory" EntitySet="SupplierSubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierW__categ__793DFFAF" Association="Self.FK__SupplierW__categ__793DFFAF">
+            <End Role="SupplierCategory" EntitySet="SupplierCategories" />
+            <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierC__subca__078C1F06" Association="Self.FK__SupplierC__subca__078C1F06">
+            <End Role="SupplierSubCategory" EntitySet="SupplierSubCategories" />
+            <End Role="SupplierCategorySubCategory" EntitySet="SupplierCategorySubCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierT__depar__6BE40491" Association="Self.FK__SupplierT__depar__6BE40491">
+            <End Role="SupplierDepartment" EntitySet="SupplierDepartments" />
+            <End Role="SupplierTitle" EntitySet="SupplierTitles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierW__depar__76619304" Association="Self.FK__SupplierW__depar__76619304">
+            <End Role="SupplierDepartment" EntitySet="SupplierDepartments" />
+            <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierM__suppl__00DF2177" Association="Self.FK__SupplierM__suppl__00DF2177">
+            <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
+            <End Role="SupplierMainContact" EntitySet="SupplierMainContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SupplierW__title__7755B73D" Association="Self.FK__SupplierW__title__7755B73D">
+            <End Role="SupplierTitle" EntitySet="SupplierTitles" />
+            <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
+          </AssociationSet>
+          <AssociationSet Name="UserAuthorization" Association="Self.UserAuthorization">
+            <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
+            <End Role="Worker" EntitySet="Workers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -2875,577 +2876,577 @@
           <EntitySetMapping Name="AuthorizationValues">
             <EntityTypeMapping TypeName="IMEModel.AuthorizationValue">
               <MappingFragment StoreEntitySet="AuthorizationValue">
-                <ScalarProperty Name="AuthorizationValue1" ColumnName="AuthorizationValue" />
                 <ScalarProperty Name="AuthorizationID" ColumnName="AuthorizationID" />
+                <ScalarProperty Name="AuthorizationValue1" ColumnName="AuthorizationValue" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="capitals">
             <EntityTypeMapping TypeName="IMEModel.capital">
               <MappingFragment StoreEntitySet="capital">
-                <ScalarProperty Name="capitalname" ColumnName="capitalname" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="capitalname" ColumnName="capitalname" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cities">
             <EntityTypeMapping TypeName="IMEModel.City">
               <MappingFragment StoreEntitySet="City">
-                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
-                <ScalarProperty Name="City_name" ColumnName="City_name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="City_name" ColumnName="City_name" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Countries">
             <EntityTypeMapping TypeName="IMEModel.Country">
               <MappingFragment StoreEntitySet="Country">
-                <ScalarProperty Name="Country_name" ColumnName="Country_name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Country_name" ColumnName="Country_name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="IMEModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="MainContactID" ColumnName="MainContactID" />
-                <ScalarProperty Name="taxnumber" ColumnName="taxnumber" />
-                <ScalarProperty Name="taxoffice" ColumnName="taxoffice" />
-                <ScalarProperty Name="rateIDinvoice" ColumnName="rateIDinvoice" />
-                <ScalarProperty Name="isactive" ColumnName="isactive" />
-                <ScalarProperty Name="accountrepresentaryID" ColumnName="accountrepresentaryID" />
-                <ScalarProperty Name="representary2ID" ColumnName="representary2ID" />
-                <ScalarProperty Name="customerNoteID" ColumnName="customerNoteID" />
-                <ScalarProperty Name="rate_ID" ColumnName="rate_ID" />
-                <ScalarProperty Name="representaryID" ColumnName="representaryID" />
-                <ScalarProperty Name="payment_termID" ColumnName="payment_termID" />
-                <ScalarProperty Name="webadress" ColumnName="webadress" />
-                <ScalarProperty Name="creditlimit" ColumnName="creditlimit" />
-                <ScalarProperty Name="fax" ColumnName="fax" />
-                <ScalarProperty Name="paymentmethodID" ColumnName="paymentmethodID" />
-                <ScalarProperty Name="telephone" ColumnName="telephone" />
-                <ScalarProperty Name="discountrate" ColumnName="discountrate" />
-                <ScalarProperty Name="c_name" ColumnName="c_name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="c_name" ColumnName="c_name" />
+                <ScalarProperty Name="discountrate" ColumnName="discountrate" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="paymentmethodID" ColumnName="paymentmethodID" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="creditlimit" ColumnName="creditlimit" />
+                <ScalarProperty Name="webadress" ColumnName="webadress" />
+                <ScalarProperty Name="payment_termID" ColumnName="payment_termID" />
+                <ScalarProperty Name="representaryID" ColumnName="representaryID" />
+                <ScalarProperty Name="rate_ID" ColumnName="rate_ID" />
+                <ScalarProperty Name="customerNoteID" ColumnName="customerNoteID" />
+                <ScalarProperty Name="representary2ID" ColumnName="representary2ID" />
+                <ScalarProperty Name="accountrepresentaryID" ColumnName="accountrepresentaryID" />
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="rateIDinvoice" ColumnName="rateIDinvoice" />
+                <ScalarProperty Name="taxoffice" ColumnName="taxoffice" />
+                <ScalarProperty Name="taxnumber" ColumnName="taxnumber" />
+                <ScalarProperty Name="MainContactID" ColumnName="MainContactID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CustomerAdresses">
             <EntityTypeMapping TypeName="IMEModel.CustomerAdress">
               <MappingFragment StoreEntitySet="CustomerAdress">
-                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
-                <ScalarProperty Name="CityID" ColumnName="CityID" />
-                <ScalarProperty Name="TownID" ColumnName="TownID" />
-                <ScalarProperty Name="isInvoiceAdress" ColumnName="isInvoiceAdress" />
-                <ScalarProperty Name="isDeliveryAdress" ColumnName="isDeliveryAdress" />
-                <ScalarProperty Name="AdressDetails" ColumnName="AdressDetails" />
-                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
-                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="AdressDetails" ColumnName="AdressDetails" />
+                <ScalarProperty Name="isDeliveryAdress" ColumnName="isDeliveryAdress" />
+                <ScalarProperty Name="isInvoiceAdress" ColumnName="isInvoiceAdress" />
+                <ScalarProperty Name="TownID" ColumnName="TownID" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CustomerCategories">
             <EntityTypeMapping TypeName="IMEModel.CustomerCategory">
               <MappingFragment StoreEntitySet="CustomerCategory">
-                <ScalarProperty Name="categoryname" ColumnName="categoryname" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="categoryname" ColumnName="categoryname" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CustomerCategorySubCategories">
             <EntityTypeMapping TypeName="IMEModel.CustomerCategorySubCategory">
               <MappingFragment StoreEntitySet="CustomerCategorySubCategory">
-                <ScalarProperty Name="customerID" ColumnName="customerID" />
-                <ScalarProperty Name="subcategoryID" ColumnName="subcategoryID" />
-                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="subcategoryID" ColumnName="subcategoryID" />
+                <ScalarProperty Name="customerID" ColumnName="customerID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CustomerDepartments">
             <EntityTypeMapping TypeName="IMEModel.CustomerDepartment">
               <MappingFragment StoreEntitySet="CustomerDepartment">
-                <ScalarProperty Name="departmentname" ColumnName="departmentname" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="departmentname" ColumnName="departmentname" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CustomerSubCategories">
             <EntityTypeMapping TypeName="IMEModel.CustomerSubCategory">
               <MappingFragment StoreEntitySet="CustomerSubCategory">
-                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
-                <ScalarProperty Name="subcategoryname" ColumnName="subcategoryname" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="subcategoryname" ColumnName="subcategoryname" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CustomerTitles">
             <EntityTypeMapping TypeName="IMEModel.CustomerTitle">
               <MappingFragment StoreEntitySet="CustomerTitle">
-                <ScalarProperty Name="departmnetID" ColumnName="departmnetID" />
-                <ScalarProperty Name="titlename" ColumnName="titlename" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="titlename" ColumnName="titlename" />
+                <ScalarProperty Name="departmnetID" ColumnName="departmnetID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CustomerWorkers">
             <EntityTypeMapping TypeName="IMEModel.CustomerWorker">
               <MappingFragment StoreEntitySet="CustomerWorker">
-                <ScalarProperty Name="languageID" ColumnName="languageID" />
-                <ScalarProperty Name="customerNoteID" ColumnName="customerNoteID" />
-                <ScalarProperty Name="customerID" ColumnName="customerID" />
-                <ScalarProperty Name="cw_email" ColumnName="cw_email" />
-                <ScalarProperty Name="mobilephone" ColumnName="mobilephone" />
-                <ScalarProperty Name="fax" ColumnName="fax" />
-                <ScalarProperty Name="titleID" ColumnName="titleID" />
-                <ScalarProperty Name="phone" ColumnName="phone" />
-                <ScalarProperty Name="departmentID" ColumnName="departmentID" />
-                <ScalarProperty Name="cw_name" ColumnName="cw_name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="cw_name" ColumnName="cw_name" />
+                <ScalarProperty Name="departmentID" ColumnName="departmentID" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="titleID" ColumnName="titleID" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="mobilephone" ColumnName="mobilephone" />
+                <ScalarProperty Name="cw_email" ColumnName="cw_email" />
+                <ScalarProperty Name="customerID" ColumnName="customerID" />
+                <ScalarProperty Name="customerNoteID" ColumnName="customerNoteID" />
+                <ScalarProperty Name="languageID" ColumnName="languageID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DailyDiscontinueds">
             <EntityTypeMapping TypeName="IMEModel.DailyDiscontinued">
               <MappingFragment StoreEntitySet="DailyDiscontinued">
-                <ScalarProperty Name="Referral" ColumnName="Referral" />
-                <ScalarProperty Name="Runon" ColumnName="Runon" />
-                <ScalarProperty Name="DiscontinuationDate" ColumnName="DiscontinuationDate" />
-                <ScalarProperty Name="ReasonDescription" ColumnName="ReasonDescription" />
                 <ScalarProperty Name="ArticleNo" ColumnName="ArticleNo" />
+                <ScalarProperty Name="ReasonDescription" ColumnName="ReasonDescription" />
+                <ScalarProperty Name="DiscontinuationDate" ColumnName="DiscontinuationDate" />
+                <ScalarProperty Name="Runon" ColumnName="Runon" />
+                <ScalarProperty Name="Referral" ColumnName="Referral" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DualUses">
             <EntityTypeMapping TypeName="IMEModel.DualUse">
               <MappingFragment StoreEntitySet="DualUse">
-                <ScalarProperty Name="ControlClass" ColumnName="ControlClass" />
-                <ScalarProperty Name="LicenceType" ColumnName="LicenceType" />
-                <ScalarProperty Name="DualUseSite" ColumnName="DualUseSite" />
                 <ScalarProperty Name="ArticleNo" ColumnName="ArticleNo" />
+                <ScalarProperty Name="DualUseSite" ColumnName="DualUseSite" />
+                <ScalarProperty Name="LicenceType" ColumnName="LicenceType" />
+                <ScalarProperty Name="ControlClass" ColumnName="ControlClass" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ExtendedRanges">
             <EntityTypeMapping TypeName="IMEModel.ExtendedRange">
               <MappingFragment StoreEntitySet="ExtendedRange">
-                <ScalarProperty Name="DiscountedPrice5" ColumnName="DiscountedPrice5" />
-                <ScalarProperty Name="DiscountedPrice4" ColumnName="DiscountedPrice4" />
-                <ScalarProperty Name="DiscountedPrice3" ColumnName="DiscountedPrice3" />
-                <ScalarProperty Name="DiscountedPrice2" ColumnName="DiscountedPrice2" />
-                <ScalarProperty Name="DiscountedPrice1" ColumnName="DiscountedPrice1" />
-                <ScalarProperty Name="Col5Break" ColumnName="Col5Break" />
-                <ScalarProperty Name="Col4Break" ColumnName="Col4Break" />
-                <ScalarProperty Name="Col3Break" ColumnName="Col3Break" />
-                <ScalarProperty Name="Col2Break" ColumnName="Col2Break" />
-                <ScalarProperty Name="Col1Break" ColumnName="Col1Break" />
-                <ScalarProperty Name="Col5Price" ColumnName="Col5Price" />
-                <ScalarProperty Name="Col4Price" ColumnName="Col4Price" />
-                <ScalarProperty Name="Col3Price" ColumnName="Col3Price" />
-                <ScalarProperty Name="Col2Price" ColumnName="Col2Price" />
-                <ScalarProperty Name="Col1Price" ColumnName="Col1Price" />
-                <ScalarProperty Name="CostPriceCurrency" ColumnName="CostPriceCurrency" />
-                <ScalarProperty Name="SalesUoM" ColumnName="SalesUoM" />
-                <ScalarProperty Name="PackSize" ColumnName="PackSize" />
-                <ScalarProperty Name="UnitofMeasure" ColumnName="UnitofMeasure" />
-                <ScalarProperty Name="CountryofOrigin" ColumnName="CountryofOrigin" />
-                <ScalarProperty Name="CCCN" ColumnName="CCCN" />
-                <ScalarProperty Name="WeightUoM" ColumnName="WeightUoM" />
-                <ScalarProperty Name="ExtendedRangeWeight" ColumnName="ExtendedRangeWeight" />
-                <ScalarProperty Name="DimensionUoM" ColumnName="DimensionUoM" />
-                <ScalarProperty Name="Height" ColumnName="Height" />
-                <ScalarProperty Name="Width" ColumnName="Width" />
-                <ScalarProperty Name="ExtendedRangeLength" ColumnName="ExtendedRangeLength" />
-                <ScalarProperty Name="ArticleDescription" ColumnName="ArticleDescription" />
-                <ScalarProperty Name="MPN" ColumnName="MPN" />
-                <ScalarProperty Name="Brand" ColumnName="Brand" />
-                <ScalarProperty Name="ManufacturerCode" ColumnName="ManufacturerCode" />
                 <ScalarProperty Name="ArticleNo" ColumnName="ArticleNo" />
+                <ScalarProperty Name="ManufacturerCode" ColumnName="ManufacturerCode" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="MPN" ColumnName="MPN" />
+                <ScalarProperty Name="ArticleDescription" ColumnName="ArticleDescription" />
+                <ScalarProperty Name="ExtendedRangeLength" ColumnName="ExtendedRangeLength" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="DimensionUoM" ColumnName="DimensionUoM" />
+                <ScalarProperty Name="ExtendedRangeWeight" ColumnName="ExtendedRangeWeight" />
+                <ScalarProperty Name="WeightUoM" ColumnName="WeightUoM" />
+                <ScalarProperty Name="CCCN" ColumnName="CCCN" />
+                <ScalarProperty Name="CountryofOrigin" ColumnName="CountryofOrigin" />
+                <ScalarProperty Name="UnitofMeasure" ColumnName="UnitofMeasure" />
+                <ScalarProperty Name="PackSize" ColumnName="PackSize" />
+                <ScalarProperty Name="SalesUoM" ColumnName="SalesUoM" />
+                <ScalarProperty Name="CostPriceCurrency" ColumnName="CostPriceCurrency" />
+                <ScalarProperty Name="Col1Price" ColumnName="Col1Price" />
+                <ScalarProperty Name="Col2Price" ColumnName="Col2Price" />
+                <ScalarProperty Name="Col3Price" ColumnName="Col3Price" />
+                <ScalarProperty Name="Col4Price" ColumnName="Col4Price" />
+                <ScalarProperty Name="Col5Price" ColumnName="Col5Price" />
+                <ScalarProperty Name="Col1Break" ColumnName="Col1Break" />
+                <ScalarProperty Name="Col2Break" ColumnName="Col2Break" />
+                <ScalarProperty Name="Col3Break" ColumnName="Col3Break" />
+                <ScalarProperty Name="Col4Break" ColumnName="Col4Break" />
+                <ScalarProperty Name="Col5Break" ColumnName="Col5Break" />
+                <ScalarProperty Name="DiscountedPrice1" ColumnName="DiscountedPrice1" />
+                <ScalarProperty Name="DiscountedPrice2" ColumnName="DiscountedPrice2" />
+                <ScalarProperty Name="DiscountedPrice3" ColumnName="DiscountedPrice3" />
+                <ScalarProperty Name="DiscountedPrice4" ColumnName="DiscountedPrice4" />
+                <ScalarProperty Name="DiscountedPrice5" ColumnName="DiscountedPrice5" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Hazardous">
             <EntityTypeMapping TypeName="IMEModel.Hazardou">
               <MappingFragment StoreEntitySet="Hazardous">
-                <ScalarProperty Name="Lithium" ColumnName="Lithium" />
-                <ScalarProperty Name="Shipping" ColumnName="Shipping" />
-                <ScalarProperty Name="Environment" ColumnName="Environment" />
-                <ScalarProperty Name="Occurrences" ColumnName="Occurrences" />
                 <ScalarProperty Name="ArticleNo" ColumnName="ArticleNo" />
+                <ScalarProperty Name="Occurrences" ColumnName="Occurrences" />
+                <ScalarProperty Name="Environment" ColumnName="Environment" />
+                <ScalarProperty Name="Shipping" ColumnName="Shipping" />
+                <ScalarProperty Name="Lithium" ColumnName="Lithium" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ItemNotes">
             <EntityTypeMapping TypeName="IMEModel.ItemNote">
               <MappingFragment StoreEntitySet="ItemNote">
-                <ScalarProperty Name="NoteID" ColumnName="NoteID" />
-                <ScalarProperty Name="ArticleNo" ColumnName="ArticleNo" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ArticleNo" ColumnName="ArticleNo" />
+                <ScalarProperty Name="NoteID" ColumnName="NoteID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Languages">
             <EntityTypeMapping TypeName="IMEModel.Language">
               <MappingFragment StoreEntitySet="Languages">
-                <ScalarProperty Name="languagename" ColumnName="languagename" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="languagename" ColumnName="languagename" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Notes">
             <EntityTypeMapping TypeName="IMEModel.Note">
               <MappingFragment StoreEntitySet="Notes">
-                <ScalarProperty Name="Note_name" ColumnName="Note_name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Note_name" ColumnName="Note_name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OnSales">
             <EntityTypeMapping TypeName="IMEModel.OnSale">
               <MappingFragment StoreEntitySet="OnSale">
-                <ScalarProperty Name="SubstitutedFor" ColumnName="SubstitutedFor" />
-                <ScalarProperty Name="SubstitutedBy" ColumnName="SubstitutedBy" />
-                <ScalarProperty Name="SmallOrderProtectionLevel" ColumnName="SmallOrderProtectionLevel" />
-                <ScalarProperty Name="QuantityonOrder" ColumnName="QuantityonOrder" />
-                <ScalarProperty Name="PackSize" ColumnName="PackSize" />
-                <ScalarProperty Name="OnhandStockBalance" ColumnName="OnhandStockBalance" />
-                <ScalarProperty Name="NextScheduledDelivery" ColumnName="NextScheduledDelivery" />
-                <ScalarProperty Name="IntroductionDate" ColumnName="IntroductionDate" />
-                <ScalarProperty Name="DiscontinuedDate" ColumnName="DiscontinuedDate" />
-                <ScalarProperty Name="CatalogueStatus" ColumnName="CatalogueStatus" />
-                <ScalarProperty Name="BulkPack" ColumnName="BulkPack" />
-                <ScalarProperty Name="AvailabletoPromiseCheck" ColumnName="AvailabletoPromiseCheck" />
                 <ScalarProperty Name="ArticleNumber" ColumnName="ArticleNumber" />
+                <ScalarProperty Name="AvailabletoPromiseCheck" ColumnName="AvailabletoPromiseCheck" />
+                <ScalarProperty Name="BulkPack" ColumnName="BulkPack" />
+                <ScalarProperty Name="CatalogueStatus" ColumnName="CatalogueStatus" />
+                <ScalarProperty Name="DiscontinuedDate" ColumnName="DiscontinuedDate" />
+                <ScalarProperty Name="IntroductionDate" ColumnName="IntroductionDate" />
+                <ScalarProperty Name="NextScheduledDelivery" ColumnName="NextScheduledDelivery" />
+                <ScalarProperty Name="OnhandStockBalance" ColumnName="OnhandStockBalance" />
+                <ScalarProperty Name="PackSize" ColumnName="PackSize" />
+                <ScalarProperty Name="QuantityonOrder" ColumnName="QuantityonOrder" />
+                <ScalarProperty Name="SmallOrderProtectionLevel" ColumnName="SmallOrderProtectionLevel" />
+                <ScalarProperty Name="SubstitutedBy" ColumnName="SubstitutedBy" />
+                <ScalarProperty Name="SubstitutedFor" ColumnName="SubstitutedFor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PaymentMethods">
             <EntityTypeMapping TypeName="IMEModel.PaymentMethod">
               <MappingFragment StoreEntitySet="PaymentMethod">
-                <ScalarProperty Name="Payment" ColumnName="Payment" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Payment" ColumnName="Payment" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PaymentTerms">
             <EntityTypeMapping TypeName="IMEModel.PaymentTerm">
               <MappingFragment StoreEntitySet="PaymentTerm">
-                <ScalarProperty Name="term_name" ColumnName="term_name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="term_name" ColumnName="term_name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Rates">
             <EntityTypeMapping TypeName="IMEModel.Rate">
               <MappingFragment StoreEntitySet="Rate">
-                <ScalarProperty Name="RateSellEffective" ColumnName="RateSellEffective" />
-                <ScalarProperty Name="RateBuyEffective" ColumnName="RateBuyEffective" />
-                <ScalarProperty Name="RateSell" ColumnName="RateSell" />
-                <ScalarProperty Name="RateBuy" ColumnName="RateBuy" />
-                <ScalarProperty Name="CurType" ColumnName="CurType" />
-                <ScalarProperty Name="currency" ColumnName="currency" />
-                <ScalarProperty Name="rate_date" ColumnName="rate_date" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="rate_date" ColumnName="rate_date" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="CurType" ColumnName="CurType" />
+                <ScalarProperty Name="RateBuy" ColumnName="RateBuy" />
+                <ScalarProperty Name="RateSell" ColumnName="RateSell" />
+                <ScalarProperty Name="RateBuyEffective" ColumnName="RateBuyEffective" />
+                <ScalarProperty Name="RateSellEffective" ColumnName="RateSellEffective" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RSProes">
             <EntityTypeMapping TypeName="IMEModel.RSPro">
               <MappingFragment StoreEntitySet="RSPro">
-                <ScalarProperty Name="GrossWeight" ColumnName="GrossWeight" />
-                <ScalarProperty Name="Height" ColumnName="Height" />
-                <ScalarProperty Name="Lenght" ColumnName="Lenght" />
-                <ScalarProperty Name="Volume" ColumnName="Volume" />
-                <ScalarProperty Name="Width" ColumnName="Width" />
-                <ScalarProperty Name="RsProDesc" ColumnName="RsProDesc" />
                 <ScalarProperty Name="ArticleNo" ColumnName="ArticleNo" />
+                <ScalarProperty Name="RsProDesc" ColumnName="RsProDesc" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Volume" ColumnName="Volume" />
+                <ScalarProperty Name="Lenght" ColumnName="Lenght" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="GrossWeight" ColumnName="GrossWeight" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SlidingPrices">
             <EntityTypeMapping TypeName="IMEModel.SlidingPrice">
               <MappingFragment StoreEntitySet="SlidingPrice">
-                <ScalarProperty Name="SupersectionName" ColumnName="SupersectionName" />
-                <ScalarProperty Name="SuperSectionNo" ColumnName="SuperSectionNo" />
-                <ScalarProperty Name="DiscountedPrice5" ColumnName="DiscountedPrice5" />
-                <ScalarProperty Name="DiscountedPrice4" ColumnName="DiscountedPrice4" />
-                <ScalarProperty Name="DiscountedPrice3" ColumnName="DiscountedPrice3" />
-                <ScalarProperty Name="DiscountedPrice2" ColumnName="DiscountedPrice2" />
-                <ScalarProperty Name="DiscountedPrice1" ColumnName="DiscountedPrice1" />
-                <ScalarProperty Name="Col5Break" ColumnName="Col5Break" />
-                <ScalarProperty Name="Col4Break" ColumnName="Col4Break" />
-                <ScalarProperty Name="Col3Break" ColumnName="Col3Break" />
-                <ScalarProperty Name="Col2Break" ColumnName="Col2Break" />
-                <ScalarProperty Name="Col1Break" ColumnName="Col1Break" />
-                <ScalarProperty Name="Col5Price" ColumnName="Col5Price" />
-                <ScalarProperty Name="Col4Price" ColumnName="Col4Price" />
-                <ScalarProperty Name="Col3Price" ColumnName="Col3Price" />
-                <ScalarProperty Name="Col2Price" ColumnName="Col2Price" />
-                <ScalarProperty Name="Col1Price" ColumnName="Col1Price" />
-                <ScalarProperty Name="Quantity1" ColumnName="Quantity1" />
-                <ScalarProperty Name="DiscontinuedDate" ColumnName="DiscontinuedDate" />
-                <ScalarProperty Name="IntroductionDate" ColumnName="IntroductionDate" />
-                <ScalarProperty Name="ItemTypeDesc" ColumnName="ItemTypeDesc" />
-                <ScalarProperty Name="ItemTypeCode" ColumnName="ItemTypeCode" />
-                <ScalarProperty Name="ArticleDescription" ColumnName="ArticleDescription" />
                 <ScalarProperty Name="ArticleNo" ColumnName="ArticleNo" />
+                <ScalarProperty Name="ArticleDescription" ColumnName="ArticleDescription" />
+                <ScalarProperty Name="ItemTypeCode" ColumnName="ItemTypeCode" />
+                <ScalarProperty Name="ItemTypeDesc" ColumnName="ItemTypeDesc" />
+                <ScalarProperty Name="IntroductionDate" ColumnName="IntroductionDate" />
+                <ScalarProperty Name="DiscontinuedDate" ColumnName="DiscontinuedDate" />
+                <ScalarProperty Name="Quantity1" ColumnName="Quantity1" />
+                <ScalarProperty Name="Col1Price" ColumnName="Col1Price" />
+                <ScalarProperty Name="Col2Price" ColumnName="Col2Price" />
+                <ScalarProperty Name="Col3Price" ColumnName="Col3Price" />
+                <ScalarProperty Name="Col4Price" ColumnName="Col4Price" />
+                <ScalarProperty Name="Col5Price" ColumnName="Col5Price" />
+                <ScalarProperty Name="Col1Break" ColumnName="Col1Break" />
+                <ScalarProperty Name="Col2Break" ColumnName="Col2Break" />
+                <ScalarProperty Name="Col3Break" ColumnName="Col3Break" />
+                <ScalarProperty Name="Col4Break" ColumnName="Col4Break" />
+                <ScalarProperty Name="Col5Break" ColumnName="Col5Break" />
+                <ScalarProperty Name="DiscountedPrice1" ColumnName="DiscountedPrice1" />
+                <ScalarProperty Name="DiscountedPrice2" ColumnName="DiscountedPrice2" />
+                <ScalarProperty Name="DiscountedPrice3" ColumnName="DiscountedPrice3" />
+                <ScalarProperty Name="DiscountedPrice4" ColumnName="DiscountedPrice4" />
+                <ScalarProperty Name="DiscountedPrice5" ColumnName="DiscountedPrice5" />
+                <ScalarProperty Name="SuperSectionNo" ColumnName="SuperSectionNo" />
+                <ScalarProperty Name="SupersectionName" ColumnName="SupersectionName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SuperDisks">
             <EntityTypeMapping TypeName="IMEModel.SuperDisk">
               <MappingFragment StoreEntitySet="SuperDisk">
-                <ScalarProperty Name="Length" ColumnName="Length" />
-                <ScalarProperty Name="Width" ColumnName="Width" />
-                <ScalarProperty Name="Heigh" ColumnName="Heigh" />
-                <ScalarProperty Name="MH_Code_Level_1" ColumnName="MH_Code_Level_1" />
-                <ScalarProperty Name="MPN" ColumnName="MPN" />
-                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
-                <ScalarProperty Name="Expiring_Product_Change_Ind" ColumnName="Expiring_Product_Change_Ind" />
-                <ScalarProperty Name="Rolled_Product_Change_Ind" ColumnName="Rolled_Product_Change_Ind" />
-                <ScalarProperty Name="Pack_Size_Change_Ind" ColumnName="Pack_Size_Change_Ind" />
-                <ScalarProperty Name="Superceded_Change_Ind" ColumnName="Superceded_Change_Ind" />
-                <ScalarProperty Name="Disc_Change_Ind" ColumnName="Disc_Change_Ind" />
-                <ScalarProperty Name="Out_of_Stock_Prohibit_change_ind" ColumnName="Out_of_Stock_Prohibit_change_ind" />
-                <ScalarProperty Name="New_Prod_Change_Ind" ColumnName="New_Prod_Change_Ind" />
-                <ScalarProperty Name="Int_Cat" ColumnName="Int_Cat" />
-                <ScalarProperty Name="Future_Sell_Price" ColumnName="Future_Sell_Price" />
-                <ScalarProperty Name="Filler1" ColumnName="Filler1" />
-                <ScalarProperty Name="BHC_Flag" ColumnName="BHC_Flag" />
-                <ScalarProperty Name="Substitute_By" ColumnName="Substitute_By" />
-                <ScalarProperty Name="Uk_Disc_Date" ColumnName="Uk_Disc_Date" />
-                <ScalarProperty Name="Filler" ColumnName="Filler" />
-                <ScalarProperty Name="Uk_Intro_Date" ColumnName="Uk_Intro_Date" />
-                <ScalarProperty Name="Current_Cat_page" ColumnName="Current_Cat_page" />
-                <ScalarProperty Name="Supercede_Date" ColumnName="Supercede_Date" />
-                <ScalarProperty Name="CCCN_No" ColumnName="CCCN_No" />
-                <ScalarProperty Name="EUR1_Indicator" ColumnName="EUR1_Indicator" />
-                <ScalarProperty Name="CofO" ColumnName="CofO" />
-                <ScalarProperty Name="Shelf_Life" ColumnName="Shelf_Life" />
-                <ScalarProperty Name="Licensed_Ind" ColumnName="Licensed_Ind" />
-                <ScalarProperty Name="Low_Discount_Ind" ColumnName="Low_Discount_Ind" />
-                <ScalarProperty Name="MH1" ColumnName="MH1" />
-                <ScalarProperty Name="Obsolete_Flag" ColumnName="Obsolete_Flag" />
-                <ScalarProperty Name="Calibration_Ind" ColumnName="Calibration_Ind" />
-                <ScalarProperty Name="Hazardous_Ind" ColumnName="Hazardous_Ind" />
-                <ScalarProperty Name="Standard_Weight" ColumnName="Standard_Weight" />
-                <ScalarProperty Name="Uk_Col_1" ColumnName="Uk_Col_1" />
-                <ScalarProperty Name="Unit_Measure" ColumnName="Unit_Measure" />
-                <ScalarProperty Name="Unit_Content" ColumnName="Unit_Content" />
-                <ScalarProperty Name="Pack_Quantity" ColumnName="Pack_Quantity" />
-                <ScalarProperty Name="Pack_Code" ColumnName="Pack_Code" />
-                <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
                 <ScalarProperty Name="Article_No" ColumnName="Article_No" />
+                <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
+                <ScalarProperty Name="Pack_Code" ColumnName="Pack_Code" />
+                <ScalarProperty Name="Pack_Quantity" ColumnName="Pack_Quantity" />
+                <ScalarProperty Name="Unit_Content" ColumnName="Unit_Content" />
+                <ScalarProperty Name="Unit_Measure" ColumnName="Unit_Measure" />
+                <ScalarProperty Name="Uk_Col_1" ColumnName="Uk_Col_1" />
+                <ScalarProperty Name="Standard_Weight" ColumnName="Standard_Weight" />
+                <ScalarProperty Name="Hazardous_Ind" ColumnName="Hazardous_Ind" />
+                <ScalarProperty Name="Calibration_Ind" ColumnName="Calibration_Ind" />
+                <ScalarProperty Name="Obsolete_Flag" ColumnName="Obsolete_Flag" />
+                <ScalarProperty Name="MH1" ColumnName="MH1" />
+                <ScalarProperty Name="Low_Discount_Ind" ColumnName="Low_Discount_Ind" />
+                <ScalarProperty Name="Licensed_Ind" ColumnName="Licensed_Ind" />
+                <ScalarProperty Name="Shelf_Life" ColumnName="Shelf_Life" />
+                <ScalarProperty Name="CofO" ColumnName="CofO" />
+                <ScalarProperty Name="EUR1_Indicator" ColumnName="EUR1_Indicator" />
+                <ScalarProperty Name="CCCN_No" ColumnName="CCCN_No" />
+                <ScalarProperty Name="Supercede_Date" ColumnName="Supercede_Date" />
+                <ScalarProperty Name="Current_Cat_page" ColumnName="Current_Cat_page" />
+                <ScalarProperty Name="Uk_Intro_Date" ColumnName="Uk_Intro_Date" />
+                <ScalarProperty Name="Filler" ColumnName="Filler" />
+                <ScalarProperty Name="Uk_Disc_Date" ColumnName="Uk_Disc_Date" />
+                <ScalarProperty Name="Substitute_By" ColumnName="Substitute_By" />
+                <ScalarProperty Name="BHC_Flag" ColumnName="BHC_Flag" />
+                <ScalarProperty Name="Filler1" ColumnName="Filler1" />
+                <ScalarProperty Name="Future_Sell_Price" ColumnName="Future_Sell_Price" />
+                <ScalarProperty Name="Int_Cat" ColumnName="Int_Cat" />
+                <ScalarProperty Name="New_Prod_Change_Ind" ColumnName="New_Prod_Change_Ind" />
+                <ScalarProperty Name="Out_of_Stock_Prohibit_change_ind" ColumnName="Out_of_Stock_Prohibit_change_ind" />
+                <ScalarProperty Name="Disc_Change_Ind" ColumnName="Disc_Change_Ind" />
+                <ScalarProperty Name="Superceded_Change_Ind" ColumnName="Superceded_Change_Ind" />
+                <ScalarProperty Name="Pack_Size_Change_Ind" ColumnName="Pack_Size_Change_Ind" />
+                <ScalarProperty Name="Rolled_Product_Change_Ind" ColumnName="Rolled_Product_Change_Ind" />
+                <ScalarProperty Name="Expiring_Product_Change_Ind" ColumnName="Expiring_Product_Change_Ind" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="MPN" ColumnName="MPN" />
+                <ScalarProperty Name="MH_Code_Level_1" ColumnName="MH_Code_Level_1" />
+                <ScalarProperty Name="Heigh" ColumnName="Heigh" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SuperDiskPs">
             <EntityTypeMapping TypeName="IMEModel.SuperDiskP">
               <MappingFragment StoreEntitySet="SuperDiskP">
-                <ScalarProperty Name="Length" ColumnName="Length" />
-                <ScalarProperty Name="Width" ColumnName="Width" />
-                <ScalarProperty Name="Heigh" ColumnName="Heigh" />
-                <ScalarProperty Name="MH_Code_Level_1" ColumnName="MH_Code_Level_1" />
-                <ScalarProperty Name="MPN" ColumnName="MPN" />
-                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
-                <ScalarProperty Name="Expiring_Product_Change_Ind" ColumnName="Expiring_Product_Change_Ind" />
-                <ScalarProperty Name="Rolled_Product_Change_Ind" ColumnName="Rolled_Product_Change_Ind" />
-                <ScalarProperty Name="Pack_Size_Change_Ind" ColumnName="Pack_Size_Change_Ind" />
-                <ScalarProperty Name="Superceded_Change_Ind" ColumnName="Superceded_Change_Ind" />
-                <ScalarProperty Name="Disc_Change_Ind" ColumnName="Disc_Change_Ind" />
-                <ScalarProperty Name="Out_of_Stock_Prohibit_change_ind" ColumnName="Out_of_Stock_Prohibit_change_ind" />
-                <ScalarProperty Name="New_Prod_Change_Ind" ColumnName="New_Prod_Change_Ind" />
-                <ScalarProperty Name="Int_Cat" ColumnName="Int_Cat" />
-                <ScalarProperty Name="Future_Sell_Price" ColumnName="Future_Sell_Price" />
-                <ScalarProperty Name="Filler1" ColumnName="Filler1" />
-                <ScalarProperty Name="BHC_Flag" ColumnName="BHC_Flag" />
-                <ScalarProperty Name="Substitute_By" ColumnName="Substitute_By" />
-                <ScalarProperty Name="Uk_Disc_Date" ColumnName="Uk_Disc_Date" />
-                <ScalarProperty Name="Filler" ColumnName="Filler" />
-                <ScalarProperty Name="Uk_Intro_Date" ColumnName="Uk_Intro_Date" />
-                <ScalarProperty Name="Current_Cat_page" ColumnName="Current_Cat_page" />
-                <ScalarProperty Name="Supercede_Date" ColumnName="Supercede_Date" />
-                <ScalarProperty Name="CCCN_No" ColumnName="CCCN_No" />
-                <ScalarProperty Name="EUR1_Indicator" ColumnName="EUR1_Indicator" />
-                <ScalarProperty Name="CofO" ColumnName="CofO" />
-                <ScalarProperty Name="Shelf_Life" ColumnName="Shelf_Life" />
-                <ScalarProperty Name="Licensed_Ind" ColumnName="Licensed_Ind" />
-                <ScalarProperty Name="Low_Discount_Ind" ColumnName="Low_Discount_Ind" />
-                <ScalarProperty Name="MH1" ColumnName="MH1" />
-                <ScalarProperty Name="Obsolete_Flag" ColumnName="Obsolete_Flag" />
-                <ScalarProperty Name="Calibration_Ind" ColumnName="Calibration_Ind" />
-                <ScalarProperty Name="Hazardous_Ind" ColumnName="Hazardous_Ind" />
-                <ScalarProperty Name="Standard_Weight" ColumnName="Standard_Weight" />
-                <ScalarProperty Name="Uk_Col_1" ColumnName="Uk_Col_1" />
-                <ScalarProperty Name="Unit_Measure" ColumnName="Unit_Measure" />
-                <ScalarProperty Name="Unit_Content" ColumnName="Unit_Content" />
-                <ScalarProperty Name="Pack_Quantity" ColumnName="Pack_Quantity" />
-                <ScalarProperty Name="Pack_Code" ColumnName="Pack_Code" />
-                <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
                 <ScalarProperty Name="Article_No" ColumnName="Article_No" />
+                <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
+                <ScalarProperty Name="Pack_Code" ColumnName="Pack_Code" />
+                <ScalarProperty Name="Pack_Quantity" ColumnName="Pack_Quantity" />
+                <ScalarProperty Name="Unit_Content" ColumnName="Unit_Content" />
+                <ScalarProperty Name="Unit_Measure" ColumnName="Unit_Measure" />
+                <ScalarProperty Name="Uk_Col_1" ColumnName="Uk_Col_1" />
+                <ScalarProperty Name="Standard_Weight" ColumnName="Standard_Weight" />
+                <ScalarProperty Name="Hazardous_Ind" ColumnName="Hazardous_Ind" />
+                <ScalarProperty Name="Calibration_Ind" ColumnName="Calibration_Ind" />
+                <ScalarProperty Name="Obsolete_Flag" ColumnName="Obsolete_Flag" />
+                <ScalarProperty Name="MH1" ColumnName="MH1" />
+                <ScalarProperty Name="Low_Discount_Ind" ColumnName="Low_Discount_Ind" />
+                <ScalarProperty Name="Licensed_Ind" ColumnName="Licensed_Ind" />
+                <ScalarProperty Name="Shelf_Life" ColumnName="Shelf_Life" />
+                <ScalarProperty Name="CofO" ColumnName="CofO" />
+                <ScalarProperty Name="EUR1_Indicator" ColumnName="EUR1_Indicator" />
+                <ScalarProperty Name="CCCN_No" ColumnName="CCCN_No" />
+                <ScalarProperty Name="Supercede_Date" ColumnName="Supercede_Date" />
+                <ScalarProperty Name="Current_Cat_page" ColumnName="Current_Cat_page" />
+                <ScalarProperty Name="Uk_Intro_Date" ColumnName="Uk_Intro_Date" />
+                <ScalarProperty Name="Filler" ColumnName="Filler" />
+                <ScalarProperty Name="Uk_Disc_Date" ColumnName="Uk_Disc_Date" />
+                <ScalarProperty Name="Substitute_By" ColumnName="Substitute_By" />
+                <ScalarProperty Name="BHC_Flag" ColumnName="BHC_Flag" />
+                <ScalarProperty Name="Filler1" ColumnName="Filler1" />
+                <ScalarProperty Name="Future_Sell_Price" ColumnName="Future_Sell_Price" />
+                <ScalarProperty Name="Int_Cat" ColumnName="Int_Cat" />
+                <ScalarProperty Name="New_Prod_Change_Ind" ColumnName="New_Prod_Change_Ind" />
+                <ScalarProperty Name="Out_of_Stock_Prohibit_change_ind" ColumnName="Out_of_Stock_Prohibit_change_ind" />
+                <ScalarProperty Name="Disc_Change_Ind" ColumnName="Disc_Change_Ind" />
+                <ScalarProperty Name="Superceded_Change_Ind" ColumnName="Superceded_Change_Ind" />
+                <ScalarProperty Name="Pack_Size_Change_Ind" ColumnName="Pack_Size_Change_Ind" />
+                <ScalarProperty Name="Rolled_Product_Change_Ind" ColumnName="Rolled_Product_Change_Ind" />
+                <ScalarProperty Name="Expiring_Product_Change_Ind" ColumnName="Expiring_Product_Change_Ind" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="MPN" ColumnName="MPN" />
+                <ScalarProperty Name="MH_Code_Level_1" ColumnName="MH_Code_Level_1" />
+                <ScalarProperty Name="Heigh" ColumnName="Heigh" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Suppliers">
             <EntityTypeMapping TypeName="IMEModel.Supplier">
               <MappingFragment StoreEntitySet="Supplier">
-                <ScalarProperty Name="accountnumber" ColumnName="accountnumber" />
-                <ScalarProperty Name="branchcode" ColumnName="branchcode" />
-                <ScalarProperty Name="iban" ColumnName="iban" />
-                <ScalarProperty Name="discountrate" ColumnName="discountrate" />
-                <ScalarProperty Name="PoBox" ColumnName="PoBox" />
-                <ScalarProperty Name="BankID" ColumnName="BankID" />
-                <ScalarProperty Name="MainContactID" ColumnName="MainContactID" />
-                <ScalarProperty Name="SupplierNoteID" ColumnName="SupplierNoteID" />
-                <ScalarProperty Name="accountrepresentaryID" ColumnName="accountrepresentaryID" />
-                <ScalarProperty Name="taxnumber" ColumnName="taxnumber" />
-                <ScalarProperty Name="taxoffice" ColumnName="taxoffice" />
-                <ScalarProperty Name="rate_ID" ColumnName="rate_ID" />
-                <ScalarProperty Name="representaryID" ColumnName="representaryID" />
-                <ScalarProperty Name="payment_termID" ColumnName="payment_termID" />
-                <ScalarProperty Name="webadress" ColumnName="webadress" />
-                <ScalarProperty Name="creditlimit" ColumnName="creditlimit" />
-                <ScalarProperty Name="fax" ColumnName="fax" />
-                <ScalarProperty Name="paymentmethodID" ColumnName="paymentmethodID" />
-                <ScalarProperty Name="telephone" ColumnName="telephone" />
-                <ScalarProperty Name="s_name" ColumnName="s_name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="s_name" ColumnName="s_name" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="paymentmethodID" ColumnName="paymentmethodID" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="creditlimit" ColumnName="creditlimit" />
+                <ScalarProperty Name="webadress" ColumnName="webadress" />
+                <ScalarProperty Name="payment_termID" ColumnName="payment_termID" />
+                <ScalarProperty Name="representaryID" ColumnName="representaryID" />
+                <ScalarProperty Name="rate_ID" ColumnName="rate_ID" />
+                <ScalarProperty Name="taxoffice" ColumnName="taxoffice" />
+                <ScalarProperty Name="taxnumber" ColumnName="taxnumber" />
+                <ScalarProperty Name="accountrepresentaryID" ColumnName="accountrepresentaryID" />
+                <ScalarProperty Name="SupplierNoteID" ColumnName="SupplierNoteID" />
+                <ScalarProperty Name="MainContactID" ColumnName="MainContactID" />
+                <ScalarProperty Name="BankID" ColumnName="BankID" />
+                <ScalarProperty Name="PoBox" ColumnName="PoBox" />
+                <ScalarProperty Name="discountrate" ColumnName="discountrate" />
+                <ScalarProperty Name="iban" ColumnName="iban" />
+                <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+                <ScalarProperty Name="accountnumber" ColumnName="accountnumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SupplierAdresses">
             <EntityTypeMapping TypeName="IMEModel.SupplierAdress">
               <MappingFragment StoreEntitySet="SupplierAdresses">
-                <ScalarProperty Name="Adress" ColumnName="Adress" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SupplierBanks">
             <EntityTypeMapping TypeName="IMEModel.SupplierBank">
               <MappingFragment StoreEntitySet="SupplierBank">
-                <ScalarProperty Name="bankname" ColumnName="bankname" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="bankname" ColumnName="bankname" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SupplierCategories">
             <EntityTypeMapping TypeName="IMEModel.SupplierCategory">
               <MappingFragment StoreEntitySet="SupplierCategory">
-                <ScalarProperty Name="categoryname" ColumnName="categoryname" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="categoryname" ColumnName="categoryname" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SupplierCategorySubCategories">
             <EntityTypeMapping TypeName="IMEModel.SupplierCategorySubCategory">
               <MappingFragment StoreEntitySet="SupplierCategorySubCategory">
-                <ScalarProperty Name="supplierID" ColumnName="supplierID" />
-                <ScalarProperty Name="subcategoryID" ColumnName="subcategoryID" />
-                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
+                <ScalarProperty Name="subcategoryID" ColumnName="subcategoryID" />
+                <ScalarProperty Name="supplierID" ColumnName="supplierID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SupplierDepartments">
             <EntityTypeMapping TypeName="IMEModel.SupplierDepartment">
               <MappingFragment StoreEntitySet="SupplierDepartment">
-                <ScalarProperty Name="departmentname" ColumnName="departmentname" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="departmentname" ColumnName="departmentname" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SupplierMainContacts">
             <EntityTypeMapping TypeName="IMEModel.SupplierMainContact">
               <MappingFragment StoreEntitySet="SupplierMainContact">
-                <ScalarProperty Name="workerID" ColumnName="workerID" />
-                <ScalarProperty Name="supplierWorkerID" ColumnName="supplierWorkerID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="supplierWorkerID" ColumnName="supplierWorkerID" />
+                <ScalarProperty Name="workerID" ColumnName="workerID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SupplierSubCategories">
             <EntityTypeMapping TypeName="IMEModel.SupplierSubCategory">
               <MappingFragment StoreEntitySet="SupplierSubCategory">
-                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
-                <ScalarProperty Name="subcategoryname" ColumnName="subcategoryname" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="subcategoryname" ColumnName="subcategoryname" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SupplierTitles">
             <EntityTypeMapping TypeName="IMEModel.SupplierTitle">
               <MappingFragment StoreEntitySet="SupplierTitle">
-                <ScalarProperty Name="departmnetID" ColumnName="departmnetID" />
-                <ScalarProperty Name="titlename" ColumnName="titlename" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="titlename" ColumnName="titlename" />
+                <ScalarProperty Name="departmnetID" ColumnName="departmnetID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SupplierWorkers">
             <EntityTypeMapping TypeName="IMEModel.SupplierWorker">
               <MappingFragment StoreEntitySet="SupplierWorker">
-                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
-                <ScalarProperty Name="languageID" ColumnName="languageID" />
-                <ScalarProperty Name="supplierNoteID" ColumnName="supplierNoteID" />
-                <ScalarProperty Name="supplierID" ColumnName="supplierID" />
-                <ScalarProperty Name="supplieradressID" ColumnName="supplieradressID" />
-                <ScalarProperty Name="sw_email" ColumnName="sw_email" />
-                <ScalarProperty Name="mobilephone" ColumnName="mobilephone" />
-                <ScalarProperty Name="fax" ColumnName="fax" />
-                <ScalarProperty Name="titleID" ColumnName="titleID" />
-                <ScalarProperty Name="phone" ColumnName="phone" />
-                <ScalarProperty Name="departmentID" ColumnName="departmentID" />
-                <ScalarProperty Name="sw_name" ColumnName="sw_name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="sw_name" ColumnName="sw_name" />
+                <ScalarProperty Name="departmentID" ColumnName="departmentID" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="titleID" ColumnName="titleID" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="mobilephone" ColumnName="mobilephone" />
+                <ScalarProperty Name="sw_email" ColumnName="sw_email" />
+                <ScalarProperty Name="supplieradressID" ColumnName="supplieradressID" />
+                <ScalarProperty Name="supplierID" ColumnName="supplierID" />
+                <ScalarProperty Name="supplierNoteID" ColumnName="supplierNoteID" />
+                <ScalarProperty Name="languageID" ColumnName="languageID" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="IMEModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Towns">
             <EntityTypeMapping TypeName="IMEModel.Town">
               <MappingFragment StoreEntitySet="Town">
-                <ScalarProperty Name="CityID" ColumnName="CityID" />
-                <ScalarProperty Name="Town_name" ColumnName="Town_name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Town_name" ColumnName="Town_name" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Workers">
             <EntityTypeMapping TypeName="IMEModel.Worker">
               <MappingFragment StoreEntitySet="Worker">
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="MinRate" ColumnName="MinRate" />
-                <ScalarProperty Name="MinMarge" ColumnName="MinMarge" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="WorkerNoteID" ColumnName="WorkerNoteID" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="EMail" ColumnName="EMail" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="WorkerID" ColumnName="WorkerID" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="WorkerNoteID" ColumnName="WorkerNoteID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="MinMarge" ColumnName="MinMarge" />
+                <ScalarProperty Name="MinRate" ColumnName="MinRate" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <AssociationSetMapping Name="UserAuthorization" TypeName="IMEModel.UserAuthorization" StoreEntitySet="UserAuthorization">
-            <EndProperty Name="Worker">
-              <ScalarProperty Name="WorkerID" ColumnName="WorkerID" />
-            </EndProperty>
             <EndProperty Name="AuthorizationValue">
               <ScalarProperty Name="AuthorizationID" ColumnName="AuthorizationID" />
+            </EndProperty>
+            <EndProperty Name="Worker">
+              <ScalarProperty Name="WorkerID" ColumnName="WorkerID" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>
