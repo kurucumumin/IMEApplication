@@ -31,13 +31,13 @@ namespace LoginForm
             #region ComboboxFiller
             cbFactor.DataSource = IME.Rates.ToList();
             cbFactor.DisplayMember = "currency";
-            //cbFactor.ValueMember = "ID";
+            cbFactor.ValueMember = "ID";
             cbCurrency.DataSource = IME.Rates.ToList();
-            cbCurrency.DisplayMember = "rate_name";
-            //cbCurrency.ValueMember = "ID";
+            cbCurrency.DisplayMember = "CurType";
+            cbCurrency.ValueMember = "ID";
             cbPayment.DataSource = IME.PaymentMethods.ToList();
             cbPayment.DisplayMember = "Payment";
-            //cbPayment.ValueMember = "ID";
+            cbPayment.ValueMember = "ID";
             cbRep.DataSource = IME.Workers.ToList();
             cbRep.DisplayMember = "FirstName";
 
