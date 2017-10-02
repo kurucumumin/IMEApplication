@@ -37,8 +37,7 @@ namespace LoginForm
             loaderButtons.Add(btnExtendedRangePrice);
             loaderButtons.Add(btnTSEList);
             loaderButtons.Add(btnRSProList);
-
-
+            
         }
 
         public FormMain()
@@ -220,6 +219,12 @@ namespace LoginForm
             //string Dolar = DailyEuro.GetExchangeRateforDolar();
             //lblDolarSell.Text = Dolar;
             //lblEuroSell.Text = Euro;
+
+            this.Show();
+            this.Enabled = false;
+            Form1 loginForm = new Form1();
+            loginForm.ShowDialog();
+            this.Enabled = true;
         }
     }
 }

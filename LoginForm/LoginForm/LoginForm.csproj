@@ -391,18 +391,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\btnBackground.png" />
+    <None Include="Resources\gradient2.jpg" />
     <Content Include="DataSet\IME.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>IME.Context.cs</LastGenOutput>
       <DependentUpon>IME.edmx</DependentUpon>
+      <LastGenOutput>IME.Context.cs</LastGenOutput>
     </Content>
     <Content Include="DataSet\IME.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>IME.edmx</DependentUpon>
       <LastGenOutput>IME.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\btnBackground.png" />
-    <None Include="Resources\gradient2.jpg" />
     <Content Include="Resources\IME.jpg" />
   </ItemGroup>
   <ItemGroup>
