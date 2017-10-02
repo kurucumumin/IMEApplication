@@ -19,6 +19,7 @@ namespace LoginForm
         string searchtxt="";
         int selectedContactID;
         int contactnewID = 0;
+        int isUpdateAdress;
 
         public CustomerMain()
         {
@@ -770,8 +771,8 @@ namespace LoginForm
                 c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
                 if (rb_active.Checked) { c.isactive = 1; } else { c.isactive = 0; }
                 c.c_name = CustomerName.Text;
-                if (Telephone.Text != "") { c.telephone = Int32.Parse(Telephone.Text); }
-                if (CustomerFax.Text != "") { c.fax = Int32.Parse(CustomerFax.Text); }
+                if (Telephone.Text != "") { c.telephone = Telephone.Text; }
+                if (CustomerFax.Text != "") { c.fax = CustomerFax.Text; }
                 c.webadress = WebAdress.Text;
                 c.taxoffice = CustomerFax.Text;
                 if (CreditLimit.Text != "") { c.creditlimit = Int32.Parse(CreditLimit.Text); }
@@ -1032,6 +1033,7 @@ namespace LoginForm
 
         private void AdressAdd_Click(object sender, EventArgs e)
         {
+            isUpdateAdress = 0;
             #region addAdressButton
             AdressTabEnableTrue();
             AddressType.Text = "";
@@ -1054,6 +1056,7 @@ namespace LoginForm
 
         private void AddressUpd_Click(object sender, EventArgs e)
         {
+            isUpdateAdress = 1;
             #region  AdressUpd
             AdressTabEnableTrue();
             AdressAdd.Visible = false;
@@ -1084,7 +1087,10 @@ namespace LoginForm
         private void AdressDone_Click(object sender, EventArgs e)
         {
             CustomerAdress ca = new CustomerAdress();
-            ca = IME.CustomerAdresses.Where(a => a.ID == ((CustomerAdress)(AdressList).SelectedItem).ID).FirstOrDefault();
+            if(isUpdateAdress==1){
+                ca = IME.CustomerAdresses.Where(a => a.ID == ((CustomerAdress)(AdressList).SelectedItem).ID).FirstOrDefault();
+            }
+            
             if (ca!=null)
             {
                 
