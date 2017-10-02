@@ -53,6 +53,7 @@ namespace LoginForm
             {
                 if(Logged.isActive == 1)
                 {
+                    closeRequest = true;
                     this.Close();
                 }
                 else
