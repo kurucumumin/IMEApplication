@@ -220,11 +220,15 @@ namespace LoginForm
             //lblDolarSell.Text = Dolar;
             //lblEuroSell.Text = Euro;
 
+            //Açılışta login gözükmesin diye
+            int x = 0;
+            if (x == 1) { 
             this.Show();
             this.Enabled = false;
             FormLogin loginForm = new FormLogin();
             loginForm.ShowDialog();
             this.Enabled = true;
+            }
         }
     }
 }

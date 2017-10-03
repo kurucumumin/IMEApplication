@@ -49,6 +49,7 @@
             this.txtQuotationItemCode.Name = "txtQuotationItemCode";
             this.txtQuotationItemCode.Size = new System.Drawing.Size(100, 20);
             this.txtQuotationItemCode.TabIndex = 1;
+            this.txtQuotationItemCode.TextChanged += new System.EventHandler(this.txtQuotationItemCode_TextChanged);
             // 
             // dgQuotationItemSearch
             // 
