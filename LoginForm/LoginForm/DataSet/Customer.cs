@@ -25,9 +25,9 @@ namespace LoginForm.DataSet
         public string ID { get; set; }
         public string c_name { get; set; }
         public Nullable<int> discountrate { get; set; }
-        public Nullable<int> telephone { get; set; }
+        public string telephone { get; set; }
         public Nullable<int> paymentmethodID { get; set; }
-        public Nullable<int> fax { get; set; }
+        public string fax { get; set; }
         public Nullable<int> creditlimit { get; set; }
         public string webadress { get; set; }
         public Nullable<int> payment_termID { get; set; }

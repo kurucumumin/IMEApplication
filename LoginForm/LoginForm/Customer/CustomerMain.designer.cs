@@ -520,7 +520,7 @@
             this.factor.Location = new System.Drawing.Point(656, 22);
             this.factor.Margin = new System.Windows.Forms.Padding(4);
             this.factor.Name = "factor";
-            this.factor.Size = new System.Drawing.Size(232, 28);
+            this.factor.Size = new System.Drawing.Size(236, 28);
             this.factor.TabIndex = 12;
             this.factor.SelectedIndexChanged += new System.EventHandler(this.factor_SelectedIndexChanged);
             // 
@@ -686,7 +686,7 @@
             this.CreditLimit.Location = new System.Drawing.Point(656, 73);
             this.CreditLimit.Margin = new System.Windows.Forms.Padding(4);
             this.CreditLimit.Name = "CreditLimit";
-            this.CreditLimit.Size = new System.Drawing.Size(232, 26);
+            this.CreditLimit.Size = new System.Drawing.Size(236, 26);
             this.CreditLimit.TabIndex = 10;
             // 
             // taxNumber
