@@ -14,6 +14,7 @@ namespace LoginForm.Services
         public static string customersearchname;
         public static string customerID;
         public static string customername;
+        public static string ItemCode;
         public static List<Customer> CustomerSearch()
         {
             IMEEntities IME = new IMEEntities();
@@ -124,27 +125,38 @@ namespace LoginForm.Services
             decimal result;
             try
             {
-                if (quantity < sp.Col2Break && sp.DiscountedPrice1 != 0)
-                {
-                    return result = Decimal.Parse(sp.Col1Price.ToString());
-                }
-                else if (quantity < sp.Col3Break && sp.DiscountedPrice2 != 0)
-                {
-                    return result = Decimal.Parse(sp.Col2Price.ToString());
-                }
-                else if (quantity < sp.Col4Break && sp.DiscountedPrice3 != 0)
-                {
-                    return result = Decimal.Parse(sp.Col3Price.ToString());
-                }
-                else if (quantity < sp.Col5Break && sp.DiscountedPrice4 != 0)
-                {
-                    return result = Decimal.Parse(sp.Col4Price.ToString());
-                }
-                else if (sp.DiscountedPrice4 != 0) { return result = Decimal.Parse(sp.Col5Price.ToString()); }
+                //FOR TURKEY
+                //if (quantity < sp.Col2Break && sp.DiscountedPrice1 != 0)
+                //{
+                //    return result = Decimal.Parse(sp.Col1Price.ToString());
+                //}
+                //else if (quantity < sp.Col3Break && sp.DiscountedPrice2 != 0)
+                //{
+                //    return result = Decimal.Parse(sp.Col2Price.ToString());
+                //}
+                //else if (quantity < sp.Col4Break && sp.DiscountedPrice3 != 0)
+                //{
+                //    return result = Decimal.Parse(sp.Col3Price.ToString());
+                //}
+                //else if (quantity < sp.Col5Break && sp.DiscountedPrice4 != 0)
+                //{
+                //    return result = Decimal.Parse(sp.Col4Price.ToString());
+                //}
+                //else if (sp.DiscountedPrice4 != 0) { return result = Decimal.Parse(sp.Col5Price.ToString()); }
+                
+                return result = Decimal.Parse(sp.Col1Price.ToString()); // FOR DUBAI
             }
             catch { }
             return -1;// fiyatının olmadığı gösteriyor
             #endregion
+        }
+        public static int NumberofItem(string ArticleNo)
+            {
+            IMEEntities IME = new IMEEntities();
+            if (IME.SuperDisks.Where(a => a.Article_No.Contains(ArticleNo)).ToList().Count > 1 || IME.SuperDiskPs.Where(b => b.Article_No.Contains(ArticleNo)).ToList().Count > 1 || IME.ExtendedRanges.Where(c => c.ArticleNo.Contains(ArticleNo)).ToList().Count > 1) {
+                return 1;
+            }
+            return 0;
         }
     }
 }
