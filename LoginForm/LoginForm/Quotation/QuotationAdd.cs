@@ -29,14 +29,15 @@ namespace LoginForm
             dataGridView3.Rows[0].Cells["dgQty"].Value ="0";
             dataGridView3.Rows[0].Cells[0].Value = 1.ToString();
             #region ComboboxFiller
-            
+            cbFactor.DataSource = IME.Rates.ToList();
+            cbFactor.DisplayMember = "currency";
             //cbFactor.ValueMember = "ID";
             cbCurrency.DataSource = IME.Rates.ToList();
-            cbCurrency.DisplayMember = "rate_name";
-            //cbCurrency.ValueMember = "ID";
+            cbCurrency.DisplayMember = "CurType";
+            cbCurrency.ValueMember = "ID";
             cbPayment.DataSource = IME.PaymentMethods.ToList();
             cbPayment.DisplayMember = "Payment";
-            //cbPayment.ValueMember = "ID";
+            cbPayment.ValueMember = "ID";
             cbRep.DataSource = IME.Workers.ToList();
             cbRep.DisplayMember = "FirstName";
 

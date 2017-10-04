@@ -92,7 +92,7 @@ namespace LoginForm
         private void btnLogin_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form1 loginForm = new Form1();
+            FormLogin loginForm = new FormLogin();
             loginForm.ShowDialog();
             this.Show();
         }
@@ -217,11 +217,15 @@ namespace LoginForm
             //lblDolarSell.Text = Dolar;
             //lblEuroSell.Text = Euro;
 
+            //Açılışta login gözükmesin diye
+            int x = 0;
+            if (x == 1) { 
             this.Show();
             this.Enabled = false;
-            Form1 loginForm = new Form1();
+            FormLogin loginForm = new FormLogin();
             loginForm.ShowDialog();
             this.Enabled = true;
+            }
         }
     }
 }
