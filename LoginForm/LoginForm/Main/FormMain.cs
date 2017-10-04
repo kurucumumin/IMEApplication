@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.Services;
 using LoginForm.DataSet;
+using LoginForm.RolesAndAuths;
 
 namespace LoginForm
 {
@@ -20,7 +21,7 @@ namespace LoginForm
 
         public void initialize()
         {
-            developmentButtons.Add(btnCustomerMain);
+            developmentButtons.Add(btnCustomer);
             developmentButtons.Add(btnLogin);
             developmentButtons.Add(btnQuotation);
             developmentButtons.Add(btnSupplier);
@@ -83,8 +84,8 @@ namespace LoginForm
         private void btnWorker_Click(object sender, EventArgs e)
         {
             this.Hide();
-            AddIMEWorker addIMEWorker = new AddIMEWorker();
-            addIMEWorker.ShowDialog();
+            FormRoles roles = new FormRoles();
+            roles.ShowDialog();
             this.Show();
 
         }
@@ -219,12 +220,13 @@ namespace LoginForm
 
             //Açılışta login gözükmesin diye
             int x = 0;
-            if (x == 1) { 
-            this.Show();
-            this.Enabled = false;
-            FormLogin loginForm = new FormLogin();
-            loginForm.ShowDialog();
-            this.Enabled = true;
+            if (x == 1)
+            {
+                this.Show();
+                this.Enabled = false;
+                FormLogin loginForm = new FormLogin();
+                loginForm.ShowDialog();
+                this.Enabled = true;
             }
         }
     }

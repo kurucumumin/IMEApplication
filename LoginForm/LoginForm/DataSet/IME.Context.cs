@@ -26,6 +26,7 @@ namespace LoginForm.DataSet
         }
     
         public virtual DbSet<AuthorizationValue> AuthorizationValues { get; set; }
+        public virtual DbSet<AuthRole> AuthRoles { get; set; }
         public virtual DbSet<capital> capitals { get; set; }
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
@@ -64,6 +65,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<SupplierWorker> SupplierWorkers { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Town> Towns { get; set; }
+        public virtual DbSet<UserAuthorization> UserAuthorizations { get; set; }
         public virtual DbSet<Worker> Workers { get; set; }
     }
 }

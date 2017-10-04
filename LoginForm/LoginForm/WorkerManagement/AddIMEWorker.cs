@@ -22,7 +22,6 @@ namespace LoginForm
 
         private void btnSaveWorker_Click(object sender, EventArgs e)
         {
-
             Worker Worker2Add = new Worker();
 
             #region NewWorkerBlock
@@ -51,8 +50,8 @@ namespace LoginForm
                             //Worker2Add.isActive = "A";
                             WorkerService.AddNewWorker(Worker2Add);
                             #region PrintingResult
-                            label5.Visible = true;
-                            label5.Text = "Successfull Added New Worker";
+                            lblResult.Visible = true;
+                            lblResult.Text = "Successfull Added New Worker";
                             #endregion(Worker2Add);
                         }
 
@@ -72,41 +71,35 @@ namespace LoginForm
             #endregion
             #region RefreshListBox
       
-          lstWorker.DataSource= WorkerService.GetWorkers();
+          lbWorkerList.DataSource= WorkerService.GetWorkers();
            
-            lstWorker.DisplayMember = "Email";
-            lstWorker.ValueMember = "WorkerID";
+            lbWorkerList.DisplayMember = "Email";
+            lbWorkerList.ValueMember = "WorkerID";
             #endregion
-
-
         }
 
         private void AddIMEWorker_Load(object sender, EventArgs e)
         {
-            label5.Visible = false;
+            lblResult.Visible = false;
             #region PumpWorker->Listbox
             List<Worker> Workers = new List<Worker>();
             Workers = WorkerService.GetWorkers();
-            lstWorker.DataSource = Workers;
-            lstWorker.DisplayMember = "Email";
-            lstWorker.ValueMember = "WorkerID";
+            lbWorkerList.DataSource = Workers;
+            lbWorkerList.DisplayMember = "Email";
+            lbWorkerList.ValueMember = "WorkerID";
             #endregion
+            formIsEditMode(false);
 
         }
 
-        private void lstWorker_SelectedIndexChanged(object sender, EventArgs e)
+        private void lbWorkerList_Click(object sender, EventArgs e)
         {
-           
-        }
-
-        private void lstWorker_Click(object sender, EventArgs e)
-        {
-            if (lstWorker.Items.Count >0)
+            if (lbWorkerList.Items.Count >0)
             {
                 #region FillTextBoxDetails
                 Worker DetailWorker = new Worker();
                 Worker DisplayWorker = new Worker();
-                DetailWorker = lstWorker.SelectedItem as Worker;
+                DetailWorker = lbWorkerList.SelectedItem as Worker;
                 DisplayWorker = WorkerService.GetWorkersbyID(DetailWorker.WorkerID);
                 txtEmail.Text = DisplayWorker.EMail;
                 txtFirstName.Text = DisplayWorker.FirstName;
@@ -121,10 +114,10 @@ namespace LoginForm
 
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void btnDeleteWorker_Click(object sender, EventArgs e)
         {
             Worker Deleted = new Worker();
-            Deleted = lstWorker.SelectedItem as Worker;
+            Deleted = lbWorkerList.SelectedItem as Worker;
             Deleted.isActive = 0;
             //Deleted.isActive = "I";
 
@@ -142,16 +135,16 @@ namespace LoginForm
             #region RefreshListBox
             List<Worker> Workers = new List<Worker>();
             Workers = WorkerService.GetWorkers();
-            lstWorker.DataSource = Workers;
-            lstWorker.DisplayMember = "Email";
-            lstWorker.ValueMember = "WorkerID";
+            lbWorkerList.DataSource = Workers;
+            lbWorkerList.DisplayMember = "Email";
+            lbWorkerList.ValueMember = "WorkerID";
             #endregion
         }
 
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private void btnUpdateWorker_Click(object sender, EventArgs e)
         {
             Worker Updated = new Worker();
-            Updated = lstWorker.SelectedItem as Worker;
+            Updated = lbWorkerList.SelectedItem as Worker;
             Updated.FirstName = txtFirstName.Text;
             Updated.LastName = txtLastName.Text;
             Updated.EMail = txtEmail.Text;
@@ -174,19 +167,49 @@ namespace LoginForm
                 #region RefreshListBox
                 List<Worker> Workers = new List<Worker>();
                 Workers = WorkerService.GetWorkers();
-                lstWorker.DataSource = Workers;
-                lstWorker.DisplayMember = "Email";
-                lstWorker.ValueMember = "WorkerID";
+                lbWorkerList.DataSource = Workers;
+                lbWorkerList.DisplayMember = "Email";
+                lbWorkerList.ValueMember = "WorkerID";
                 #endregion
             }
 
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnAuthorizationPanel_Click(object sender, EventArgs e)
         {
             AuthorizationManagement management = new AuthorizationManagement();
             management.Show();
         }
-    }
+
+        private void formIsEditMode(bool state)
+        {
+            txtEmail.Enabled = state;
+            txtFirstName.Enabled = state;
+            txtLastName.Enabled = state;
+            txtPhone.Enabled = state;
+            btnSaveWorker.Visible = state;
+        }
+
+        private void btnNewWorker_Click(object sender, EventArgs e)
+        {
+            lbWorkerList.ClearSelected();
+            lbWorkerList.Enabled = false;
+            btnUpdateWorker.Visible = false;
+            btnDeleteWorker.Visible = false;
+            btnAuthorizationPanel.Visible = false;
+            btnNewWorker.Visible = false;
+
+            formIsEditMode(true);
+            clearTextBoxes();
+            
+        }
+        private void clearTextBoxes()
+        {
+            txtEmail.Clear();
+            txtFirstName.Clear();
+            txtLastName.Clear();
+            txtPhone.Clear();
+        }
+    }    
 }

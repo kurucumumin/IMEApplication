@@ -27,10 +27,10 @@ namespace LoginForm
         private void cbUser_SelectedIndexChanged(object sender, EventArgs e)
         {
             Worker AutWorker = cbUser.SelectedItem as Worker;
-            lstAddAuthorization.DataSource = AuthorizationManager.GetAvailAuthorization(AutWorker);
+            //lstAddAuthorization.DataSource = AuthorizationManager.GetAvailAuthorization(AutWorker);
             lstAddAuthorization.DisplayMember = "AuthorizationValue1";
             lstAddAuthorization.ValueMember = "AuthorizationID";
-            dgAuthorizations.DataSource = AuthorizationManager.GetUserAuthorization(AutWorker);
+            //dgAuthorizations.DataSource = AuthorizationManager.GetUserAuthorization(AutWorker);
 
 
         }
@@ -63,15 +63,15 @@ namespace LoginForm
                 AutWorker = cbUser.SelectedItem as Worker;
                 AutValue = lstAddAuthorization.SelectedItem as AuthorizationValue;
 
-                AutValue.Workers.Add(AutWorker);
+                //AutValue.Workers.Add(AutWorker);
                 int WorkerID = AutWorker.WorkerID;
                 int AuthorizationID = AutValue.AuthorizationID;
                 AuthorizationManager.Add(AuthorizationID, WorkerID);
 
 
-                lstAddAuthorization.DataSource = AuthorizationManager.GetAvailAuthorization(AutWorker);
+                //lstAddAuthorization.DataSource = AuthorizationManager.GetAvailAuthorization(AutWorker);
 
-                dgAuthorizations.DataSource = AuthorizationManager.GetUserAuthorization(AutWorker);
+                //dgAuthorizations.DataSource = AuthorizationManager.GetUserAuthorization(AutWorker);
             }
 
         }
@@ -88,9 +88,9 @@ namespace LoginForm
                 int WorkerID = AutWorker.WorkerID;
                 AuthorizationManager.Delete(AuthorizationID, WorkerID);
 
-                lstAddAuthorization.DataSource = AuthorizationManager.GetAvailAuthorization(AutWorker);
+                //lstAddAuthorization.DataSource = AuthorizationManager.GetAvailAuthorization(AutWorker);
 
-                dgAuthorizations.DataSource = AuthorizationManager.GetUserAuthorization(AutWorker);
+                //dgAuthorizations.DataSource = AuthorizationManager.GetUserAuthorization(AutWorker);
             }
             catch (NullReferenceException ex)
             {

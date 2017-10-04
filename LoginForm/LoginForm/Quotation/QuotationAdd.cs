@@ -25,7 +25,6 @@ namespace LoginForm
 
         private void QuotationForm_Load(object sender, EventArgs e)
         {
-            
             dataGridView3.Rows[0].Cells["dgQty"].Value ="0";
             dataGridView3.Rows[0].Cells[0].Value = 1.ToString();
             #region ComboboxFiller

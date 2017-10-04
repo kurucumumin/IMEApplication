@@ -12,20 +12,14 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class AuthorizationValue
+    public partial class UserAuthorization
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AuthorizationValue()
-        {
-            this.UserAuthorizations = new HashSet<UserAuthorization>();
-        }
-    
+        public int WorkerID { get; set; }
         public int AuthorizationID { get; set; }
-        public string AuthorizationValue1 { get; set; }
-        public int RoleID { get; set; }
+        public int AuthRoleID { get; set; }
     
+        public virtual AuthorizationValue AuthorizationValue { get; set; }
         public virtual AuthRole AuthRole { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserAuthorization> UserAuthorizations { get; set; }
+        public virtual Worker Worker { get; set; }
     }
 }

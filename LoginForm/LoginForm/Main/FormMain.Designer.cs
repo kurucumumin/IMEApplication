@@ -73,7 +73,7 @@
             this.btnQuotation = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnOnSale = new System.Windows.Forms.Button();
-            this.btnCustomerMain = new System.Windows.Forms.Button();
+            this.btnCustomer = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -678,7 +678,7 @@
             // panel7
             // 
             this.panel7.Controls.Add(this.btnOnSale);
-            this.panel7.Controls.Add(this.btnCustomerMain);
+            this.panel7.Controls.Add(this.btnCustomer);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(117, 72);
             this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -701,22 +701,25 @@
             this.btnOnSale.Visible = false;
             this.btnOnSale.Click += new System.EventHandler(this.btnOnSale_Click);
             // 
-            // btnCustomerMain
+
+            // btnCustomer
             // 
-            this.btnCustomerMain.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnCustomerMain.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCustomerMain.BackgroundImage")));
-            this.btnCustomerMain.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCustomerMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCustomerMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCustomerMain.Location = new System.Drawing.Point(0, 0);
-            this.btnCustomerMain.Name = "btnCustomerMain";
-            this.btnCustomerMain.Size = new System.Drawing.Size(111, 66);
-            this.btnCustomerMain.TabIndex = 27;
-            this.btnCustomerMain.Text = "Customer Main";
-            this.btnCustomerMain.UseMnemonic = false;
-            this.btnCustomerMain.UseVisualStyleBackColor = true;
-            this.btnCustomerMain.Visible = false;
-            this.btnCustomerMain.Click += new System.EventHandler(this.btnCustomerMain_Click);
+            this.btnCustomer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnCustomer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCustomer.BackgroundImage")));
+            this.btnCustomer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCustomer.Location = new System.Drawing.Point(0, 0);
+            this.btnCustomer.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCustomer.Name = "btnCustomer";
+            this.btnCustomer.Size = new System.Drawing.Size(148, 83);
+            this.btnCustomer.TabIndex = 27;
+            this.btnCustomer.Text = "Customer";
+            this.btnCustomer.UseMnemonic = false;
+            this.btnCustomer.UseVisualStyleBackColor = true;
+            this.btnCustomer.Visible = false;
+            this.btnCustomer.Click += new System.EventHandler(this.btnCustomerMain_Click);
+
             // 
             // panel6
             // 
@@ -888,7 +891,7 @@
         private System.Windows.Forms.Button btnLoader;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TableLayoutPanel tableRightPanel;
-        private System.Windows.Forms.Button btnCustomerMain;
+        private System.Windows.Forms.Button btnCustomer;
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnQuotation;
         private System.Windows.Forms.Button btnSupplier;
