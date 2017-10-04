@@ -43,11 +43,6 @@ namespace LoginForm
             }
         }
 
-            private void tabPage2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void CustomerMain_Load(object sender, EventArgs e)
         {
            
@@ -84,25 +79,13 @@ namespace LoginForm
             #endregion
             customersearch();
         }
-        private void CustomerDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
+
         private void CustomerDataGrid_Click(object sender, EventArgs e)
         {
             gridselectedindex = CustomerDataGrid.CurrentCell.RowIndex;
             customersearch();
         }
-
-
-
-        private void ContactNotes_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         
-
         private void ContactList_SelectedIndexChanged(object sender, EventArgs e)
         {
             #region ContactList
@@ -123,9 +106,9 @@ namespace LoginForm
                                     ContactName.Text = a.cw_name;
                                     ContactEmail.Text = a.cw_email;
                                     ContactDepartment.SelectedIndex = ContactDepartment.FindStringExact(a.CustomerDepartment.departmentname);
+                                    ContactTitle.SelectedIndex = ContactTitle.FindStringExact(a.CustomerTitle.titlename);
                                     ContactFAX.Text = a.fax;
                                     ContactMobilePhone.Text = a.mobilephone;
-                                    ContactTitle.SelectedIndex = ContactTitle.FindStringExact(a.CustomerTitle.titlename);
                                     ContactPhone.Text = a.phone;
                                     CommunicationLanguage.SelectedIndex = CommunicationLanguage.FindStringExact(a.Language.languagename);
                                     if (a.Note !=null) { ContactNotes.Text = a.Note.Note_name; }else{ ContactNotes.Text = ""; }
@@ -1010,10 +993,6 @@ namespace LoginForm
             #endregion
         }
 
-        private void AccountRepresentary_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void ContactList_DataSourceChanged(object sender, EventArgs e)
         {
@@ -1147,7 +1126,6 @@ namespace LoginForm
             AdressDone.Visible = false;
         }
 
-
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
@@ -1231,14 +1209,5 @@ namespace LoginForm
            
         }
 
-        private void tableMain_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void factor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
