@@ -17,17 +17,19 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Note()
         {
+            this.Customers = new HashSet<Customer>();
             this.CustomerWorkers = new HashSet<CustomerWorker>();
             this.ItemNotes = new HashSet<ItemNote>();
             this.Suppliers = new HashSet<Supplier>();
             this.SupplierWorkers = new HashSet<SupplierWorker>();
             this.Workers = new HashSet<Worker>();
-            this.Customers = new HashSet<Customer>();
         }
     
         public int ID { get; set; }
         public string Note_name { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Customer> Customers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomerWorker> CustomerWorkers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -38,7 +40,5 @@ namespace LoginForm.DataSet
         public virtual ICollection<SupplierWorker> SupplierWorkers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Worker> Workers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Customer> Customers { get; set; }
     }
 }
