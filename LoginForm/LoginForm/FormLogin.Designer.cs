@@ -1,6 +1,6 @@
-namespace LoginForm
+﻿namespace LoginForm
 {
-    partial class Form1
+    partial class FormLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -91,7 +91,8 @@ namespace LoginForm
             // 
             this.txtID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtID.Location = new System.Drawing.Point(186, 27);
+            this.txtID.Location = new System.Drawing.Point(248, 34);
+            this.txtID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(111, 23);
             this.txtID.TabIndex = 16;
@@ -100,7 +101,8 @@ namespace LoginForm
             // 
             this.txtPassWord.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPassWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassWord.Location = new System.Drawing.Point(186, 71);
+            this.txtPassWord.Location = new System.Drawing.Point(248, 88);
+            this.txtPassWord.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPassWord.Name = "txtPassWord";
             this.txtPassWord.Size = new System.Drawing.Size(111, 23);
             this.txtPassWord.TabIndex = 17;
@@ -118,6 +120,7 @@ namespace LoginForm
             this.btnLogin.TabIndex = 19;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // panel1
             // 
@@ -195,8 +198,9 @@ namespace LoginForm
             this.ClientSize = new System.Drawing.Size(410, 375);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.MaximumSize = new System.Drawing.Size(578, 548);
-            this.MinimumSize = new System.Drawing.Size(426, 413);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximumSize = new System.Drawing.Size(765, 666);
+            this.MinimumSize = new System.Drawing.Size(562, 499);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Login Page";
