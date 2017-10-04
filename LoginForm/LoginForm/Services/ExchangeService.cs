@@ -43,14 +43,14 @@ namespace LoginForm.Services
             string BuyUSD = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/ForexSelling").InnerXml;
             string SellUSD = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/ForexBuying").InnerXml;
 
-            if (BuyUSD.Contains('.'))
-                BuyUSD = BuyUSD.Replace('.', ',');
-            if (BuyUSDeffective.Contains('.'))
-                BuyUSDeffective = BuyUSDeffective.Replace('.', ',');
-            if (SellUSD.Contains('.'))
-                SellUSD = SellUSD.Replace('.', ',');
-            if (SellUSDEffective.Contains('.'))
-                SellUSDEffective = SellUSDEffective.Replace('.', ',');
+            //if (BuyUSD.Contains('.'))
+            //    BuyUSD = BuyUSD.Replace('.', ',');
+            //if (BuyUSDeffective.Contains('.'))
+            //    BuyUSDeffective = BuyUSDeffective.Replace('.', ',');
+            //if (SellUSD.Contains('.'))
+            //    SellUSD = SellUSD.Replace('.', ',');
+            //if (SellUSDEffective.Contains('.'))
+            //    SellUSDEffective = SellUSDEffective.Replace('.', ',');
      
             RateForDolar.Code = Name;
             RateForDolar.RateDate = TodayDate;
@@ -71,7 +71,7 @@ namespace LoginForm.Services
             var xmlDoc = new XmlDocument();
             xmlDoc.Load(today);
 
-            string Name = "STR";
+            string Name = "GBP";
             DateTime TodayDate = new DateTime();
             TodayDate = DateTime.Now.Date;
             string BuySTReffective = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='GBP']/BanknoteBuying").InnerXml;
@@ -79,14 +79,14 @@ namespace LoginForm.Services
             string BuySTR = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/ForexSelling").InnerXml;
             string SellSTR = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/ForexBuying").InnerXml;
 
-            if (BuySTR.Contains('.'))
-                BuySTR = BuySTR.Replace('.', ',');
-            if (BuySTReffective.Contains('.'))
-                BuySTReffective = BuySTReffective.Replace('.', ',');
-            if (SellSTR.Contains('.'))
-                SellSTR = SellSTR.Replace('.', ',');
-            if (SellSTREffective.Contains('.'))
-                SellSTREffective = SellSTREffective.Replace('.', ',');
+            //if (BuySTR.Contains('.'))
+            //    BuySTR = BuySTR.Replace('.', ',');
+            //if (BuySTReffective.Contains('.'))
+            //    BuySTReffective = BuySTReffective.Replace('.', ',');
+            //if (SellSTR.Contains('.'))
+            //    SellSTR = SellSTR.Replace('.', ',');
+            //if (SellSTREffective.Contains('.'))
+            //    SellSTREffective = SellSTREffective.Replace('.', ',');
 
             RateforSterlin.Code = Name;
             RateforSterlin.RateDate = TodayDate;

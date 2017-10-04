@@ -39,38 +39,6 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.dgNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgMPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgLM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgLandingCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgMargin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgSSM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgPackType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUPIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDisc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUCUPCurr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTargetUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCompetitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgHZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUnitWeigt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTotalWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCustStkCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCustDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCOO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCCCNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -100,7 +68,7 @@
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabCustomerDetails = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.button2 = new System.Windows.Forms.Button();
@@ -113,13 +81,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.cbFactor = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.cbFactor = new System.Windows.Forms.ComboBox();
             this.cbCurrency = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
@@ -130,7 +98,7 @@
             this.txtCustomerNote = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabItemDetails = new System.Windows.Forms.TabPage();
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.txtSupersectionName = new System.Windows.Forms.TextBox();
             this.label51 = new System.Windows.Forms.Label();
@@ -233,6 +201,37 @@
             this.txtUnitCount1 = new System.Windows.Forms.TextBox();
             this.txtUnitCount4 = new System.Windows.Forms.TextBox();
             this.txtUnitCount3 = new System.Windows.Forms.TextBox();
+            this.dgNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgMPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgLM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgLandingCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgMargin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSSM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUPIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDisc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUCUPCurr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTargetUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCompetitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgHZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUnitWeigt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTotalWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCustStkCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCustDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCOO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCCCNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -243,9 +242,9 @@
             this.groupBox11.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabCustomerDetails.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tabItemDetails.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -365,7 +364,6 @@
             this.dgUOM,
             this.dgSSM,
             this.dgUC,
-            this.dgPackType,
             this.dgUPIME,
             this.dgDisc,
             this.dgUCUPCurr,
@@ -388,189 +386,6 @@
             this.dataGridView3.TabIndex = 9;
             this.dataGridView3.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellEndEdit);
             this.dataGridView3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView3_KeyDown);
-            // 
-            // dgNo
-            // 
-            this.dgNo.HeaderText = "No";
-            this.dgNo.Name = "dgNo";
-            this.dgNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // dgSupplier
-            // 
-            this.dgSupplier.HeaderText = "Supplier";
-            this.dgSupplier.Name = "dgSupplier";
-            this.dgSupplier.ReadOnly = true;
-            // 
-            // dgProductCode
-            // 
-            this.dgProductCode.HeaderText = "Item Code";
-            this.dgProductCode.Name = "dgProductCode";
-            // 
-            // dgBrand
-            // 
-            this.dgBrand.HeaderText = "Brand";
-            this.dgBrand.Name = "dgBrand";
-            this.dgBrand.ReadOnly = true;
-            // 
-            // dgMPN
-            // 
-            this.dgMPN.HeaderText = "MPN";
-            this.dgMPN.Name = "dgMPN";
-            this.dgMPN.ReadOnly = true;
-            // 
-            // dgDesc
-            // 
-            this.dgDesc.HeaderText = "Description";
-            this.dgDesc.Name = "dgDesc";
-            this.dgDesc.ReadOnly = true;
-            // 
-            // dgLM
-            // 
-            this.dgLM.HeaderText = "LM";
-            this.dgLM.Name = "dgLM";
-            this.dgLM.ReadOnly = true;
-            // 
-            // dgCost
-            // 
-            this.dgCost.HeaderText = "Cost (£)";
-            this.dgCost.Name = "dgCost";
-            this.dgCost.ReadOnly = true;
-            // 
-            // dgLandingCost
-            // 
-            this.dgLandingCost.HeaderText = "Landing Cost (£)";
-            this.dgLandingCost.Name = "dgLandingCost";
-            this.dgLandingCost.ReadOnly = true;
-            // 
-            // dgMargin
-            // 
-            this.dgMargin.HeaderText = "Margin";
-            this.dgMargin.Name = "dgMargin";
-            this.dgMargin.ReadOnly = true;
-            // 
-            // dgQty
-            // 
-            this.dgQty.HeaderText = "Qty";
-            this.dgQty.Name = "dgQty";
-            // 
-            // dgStock
-            // 
-            this.dgStock.HeaderText = "Stock";
-            this.dgStock.Name = "dgStock";
-            this.dgStock.ReadOnly = true;
-            // 
-            // dgUOM
-            // 
-            this.dgUOM.HeaderText = "UOM";
-            this.dgUOM.Name = "dgUOM";
-            this.dgUOM.ReadOnly = true;
-            // 
-            // dgSSM
-            // 
-            this.dgSSM.HeaderText = "SSM";
-            this.dgSSM.Name = "dgSSM";
-            this.dgSSM.ReadOnly = true;
-            // 
-            // dgUC
-            // 
-            this.dgUC.HeaderText = "U/C";
-            this.dgUC.Name = "dgUC";
-            this.dgUC.ReadOnly = true;
-            // 
-            // dgPackType
-            // 
-            this.dgPackType.HeaderText = "Pack Type ";
-            this.dgPackType.Name = "dgPackType";
-            this.dgPackType.ReadOnly = true;
-            // 
-            // dgUPIME
-            // 
-            this.dgUPIME.HeaderText = "U/P IME L/P ";
-            this.dgUPIME.Name = "dgUPIME";
-            this.dgUPIME.ReadOnly = true;
-            // 
-            // dgDisc
-            // 
-            this.dgDisc.HeaderText = "Disc. (%)";
-            this.dgDisc.Name = "dgDisc";
-            // 
-            // dgUCUPCurr
-            // 
-            this.dgUCUPCurr.HeaderText = "U/C U/P (Curr.)";
-            this.dgUCUPCurr.Name = "dgUCUPCurr";
-            // 
-            // dgTotal
-            // 
-            this.dgTotal.HeaderText = "TOTAL";
-            this.dgTotal.Name = "dgTotal";
-            this.dgTotal.ReadOnly = true;
-            // 
-            // dgTargetUP
-            // 
-            this.dgTargetUP.HeaderText = "Target U/P";
-            this.dgTargetUP.Name = "dgTargetUP";
-            // 
-            // dgCompetitor
-            // 
-            this.dgCompetitor.HeaderText = "Competitor";
-            this.dgCompetitor.Name = "dgCompetitor";
-            // 
-            // dgHZ
-            // 
-            this.dgHZ.HeaderText = "HZ";
-            this.dgHZ.Name = "dgHZ";
-            this.dgHZ.ReadOnly = true;
-            // 
-            // dgCL
-            // 
-            this.dgCL.HeaderText = "CL";
-            this.dgCL.Name = "dgCL";
-            this.dgCL.ReadOnly = true;
-            // 
-            // dgCR
-            // 
-            this.dgCR.HeaderText = "CR";
-            this.dgCR.Name = "dgCR";
-            this.dgCR.ReadOnly = true;
-            // 
-            // dgDelivery
-            // 
-            this.dgDelivery.HeaderText = "Delivery";
-            this.dgDelivery.Name = "dgDelivery";
-            // 
-            // dgUnitWeigt
-            // 
-            this.dgUnitWeigt.HeaderText = "Unit Weigt (Kg)";
-            this.dgUnitWeigt.Name = "dgUnitWeigt";
-            this.dgUnitWeigt.ReadOnly = true;
-            // 
-            // dgTotalWeight
-            // 
-            this.dgTotalWeight.HeaderText = "Total Weight (Kg)";
-            this.dgTotalWeight.Name = "dgTotalWeight";
-            this.dgTotalWeight.ReadOnly = true;
-            // 
-            // dgCustStkCode
-            // 
-            this.dgCustStkCode.HeaderText = "Cust Stk Code";
-            this.dgCustStkCode.Name = "dgCustStkCode";
-            // 
-            // dgCustDescription
-            // 
-            this.dgCustDescription.HeaderText = "Cust. Description";
-            this.dgCustDescription.Name = "dgCustDescription";
-            // 
-            // dgCOO
-            // 
-            this.dgCOO.HeaderText = "COO";
-            this.dgCOO.Name = "dgCOO";
-            this.dgCOO.ReadOnly = true;
-            // 
-            // dgCCCNO
-            // 
-            this.dgCCCNO.HeaderText = "CCCNO";
-            this.dgCCCNO.Name = "dgCCCNO";
-            this.dgCCCNO.ReadOnly = true;
             // 
             // groupBox6
             // 
@@ -860,8 +675,8 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabCustomerDetails);
+            this.tabControl1.Controls.Add(this.tabItemDetails);
             this.tabControl1.Location = new System.Drawing.Point(3, 2);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
@@ -869,21 +684,21 @@
             this.tabControl1.Size = new System.Drawing.Size(1353, 180);
             this.tabControl1.TabIndex = 51;
             // 
-            // tabPage1
+            // tabCustomerDetails
             // 
-            this.tabPage1.Controls.Add(this.groupBox1);
-            this.tabPage1.Controls.Add(this.txtContactNote);
-            this.tabPage1.Controls.Add(this.txtCustomerNote);
-            this.tabPage1.Controls.Add(this.label16);
-            this.tabPage1.Controls.Add(this.label15);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(1345, 154);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Customer Details";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabCustomerDetails.Controls.Add(this.groupBox1);
+            this.tabCustomerDetails.Controls.Add(this.txtContactNote);
+            this.tabCustomerDetails.Controls.Add(this.txtCustomerNote);
+            this.tabCustomerDetails.Controls.Add(this.label16);
+            this.tabCustomerDetails.Controls.Add(this.label15);
+            this.tabCustomerDetails.Location = new System.Drawing.Point(4, 22);
+            this.tabCustomerDetails.Margin = new System.Windows.Forms.Padding(2);
+            this.tabCustomerDetails.Name = "tabCustomerDetails";
+            this.tabCustomerDetails.Padding = new System.Windows.Forms.Padding(2);
+            this.tabCustomerDetails.Size = new System.Drawing.Size(1345, 154);
+            this.tabCustomerDetails.TabIndex = 0;
+            this.tabCustomerDetails.Text = "Customer Details";
+            this.tabCustomerDetails.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -898,13 +713,13 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.textBox3);
             this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.cbFactor);
             this.groupBox1.Controls.Add(this.textBox5);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label30);
-            this.groupBox1.Controls.Add(this.cbFactor);
             this.groupBox1.Controls.Add(this.cbCurrency);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.button3);
@@ -1012,6 +827,14 @@
             this.label3.TabIndex = 68;
             this.label3.Text = "RFQ No";
             // 
+            // cbFactor
+            // 
+            this.cbFactor.Location = new System.Drawing.Point(409, 107);
+            this.cbFactor.Name = "cbFactor";
+            this.cbFactor.Size = new System.Drawing.Size(67, 20);
+            this.cbFactor.TabIndex = 67;
+            this.cbFactor.Text = "5.5";
+            // 
             // textBox5
             // 
             this.textBox5.Location = new System.Drawing.Point(434, 59);
@@ -1063,15 +886,6 @@
             this.label30.Size = new System.Drawing.Size(37, 13);
             this.label30.TabIndex = 60;
             this.label30.Text = "Factor";
-            // 
-            // cbFactor
-            // 
-            this.cbFactor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFactor.FormattingEnabled = true;
-            this.cbFactor.Location = new System.Drawing.Point(409, 107);
-            this.cbFactor.Name = "cbFactor";
-            this.cbFactor.Size = new System.Drawing.Size(67, 21);
-            this.cbFactor.TabIndex = 58;
             // 
             // cbCurrency
             // 
@@ -1158,118 +972,118 @@
             this.label15.TabIndex = 45;
             this.label15.Text = "Customer Note";
             // 
-            // tabPage2
+            // tabItemDetails
             // 
-            this.tabPage2.Controls.Add(this.textBox14);
-            this.tabPage2.Controls.Add(this.txtSupersectionName);
-            this.tabPage2.Controls.Add(this.label51);
-            this.tabPage2.Controls.Add(this.txtCofO);
-            this.tabPage2.Controls.Add(this.label24);
-            this.tabPage2.Controls.Add(this.txtManufacturer);
-            this.tabPage2.Controls.Add(this.txtCCCN);
-            this.tabPage2.Controls.Add(this.textBox17);
-            this.tabPage2.Controls.Add(this.label11);
-            this.tabPage2.Controls.Add(this.txtMHCodeLevel1);
-            this.tabPage2.Controls.Add(this.label12);
-            this.tabPage2.Controls.Add(this.label37);
-            this.tabPage2.Controls.Add(this.label13);
-            this.tabPage2.Controls.Add(this.label20);
-            this.tabPage2.Controls.Add(this.textBox18);
-            this.tabPage2.Controls.Add(this.label33);
-            this.tabPage2.Controls.Add(this.textBox19);
-            this.tabPage2.Controls.Add(this.label14);
-            this.tabPage2.Controls.Add(this.textBox20);
-            this.tabPage2.Controls.Add(this.label23);
-            this.tabPage2.Controls.Add(this.textBox21);
-            this.tabPage2.Controls.Add(this.label18);
-            this.tabPage2.Controls.Add(this.textBox22);
-            this.tabPage2.Controls.Add(this.label19);
-            this.tabPage2.Controls.Add(this.txtExpiringPro);
-            this.tabPage2.Controls.Add(this.txtHazardousInd);
-            this.tabPage2.Controls.Add(this.txtDiscCharge);
-            this.tabPage2.Controls.Add(this.label53);
-            this.tabPage2.Controls.Add(this.txtEnvironment);
-            this.tabPage2.Controls.Add(this.txtLithium);
-            this.tabPage2.Controls.Add(this.label64);
-            this.tabPage2.Controls.Add(this.txtShipping);
-            this.tabPage2.Controls.Add(this.label63);
-            this.tabPage2.Controls.Add(this.txtLicenceType);
-            this.tabPage2.Controls.Add(this.txtCalibrationInd);
-            this.tabPage2.Controls.Add(this.label22);
-            this.tabPage2.Controls.Add(this.label28);
-            this.tabPage2.Controls.Add(this.label55);
-            this.tabPage2.Controls.Add(this.label25);
-            this.tabPage2.Controls.Add(this.label26);
-            this.tabPage2.Controls.Add(this.textBox23);
-            this.tabPage2.Controls.Add(this.textBox24);
-            this.tabPage2.Controls.Add(this.label59);
-            this.tabPage2.Controls.Add(this.label56);
-            this.tabPage2.Controls.Add(this.txtRSStock);
-            this.tabPage2.Controls.Add(this.txtRSOnOrder);
-            this.tabPage2.Controls.Add(this.txtDiscontinuationDate);
-            this.tabPage2.Controls.Add(this.txtUKDiscDate);
-            this.tabPage2.Controls.Add(this.label27);
-            this.tabPage2.Controls.Add(this.txtSubstitutedBy);
-            this.tabPage2.Controls.Add(this.label60);
-            this.tabPage2.Controls.Add(this.txtRunOn);
-            this.tabPage2.Controls.Add(this.label54);
-            this.tabPage2.Controls.Add(this.textBox35);
-            this.tabPage2.Controls.Add(this.label66);
-            this.tabPage2.Controls.Add(this.txtReferral);
-            this.tabPage2.Controls.Add(this.label58);
-            this.tabPage2.Controls.Add(this.label62);
-            this.tabPage2.Controls.Add(this.label29);
-            this.tabPage2.Controls.Add(this.label31);
-            this.tabPage2.Controls.Add(this.txtStandartWeight);
-            this.tabPage2.Controls.Add(this.txtHeight);
-            this.tabPage2.Controls.Add(this.label32);
-            this.tabPage2.Controls.Add(this.label38);
-            this.tabPage2.Controls.Add(this.label43);
-            this.tabPage2.Controls.Add(this.label44);
-            this.tabPage2.Controls.Add(this.label46);
-            this.tabPage2.Controls.Add(this.txtWidth);
-            this.tabPage2.Controls.Add(this.txtGrossWeight);
-            this.tabPage2.Controls.Add(this.label47);
-            this.tabPage2.Controls.Add(this.label48);
-            this.tabPage2.Controls.Add(this.label49);
-            this.tabPage2.Controls.Add(this.txtLength);
-            this.tabPage2.Controls.Add(this.txtWeb5);
-            this.tabPage2.Controls.Add(this.txtWeb2);
-            this.tabPage2.Controls.Add(this.label65);
-            this.tabPage2.Controls.Add(this.txtWeb3);
-            this.tabPage2.Controls.Add(this.txtWeb1);
-            this.tabPage2.Controls.Add(this.txtWeb4);
-            this.tabPage2.Controls.Add(this.txtCost1);
-            this.tabPage2.Controls.Add(this.txtMargin5);
-            this.tabPage2.Controls.Add(this.label36);
-            this.tabPage2.Controls.Add(this.txtUK5);
-            this.tabPage2.Controls.Add(this.txtUK2);
-            this.tabPage2.Controls.Add(this.label50);
-            this.tabPage2.Controls.Add(this.txtCost5);
-            this.tabPage2.Controls.Add(this.txtMargin1);
-            this.tabPage2.Controls.Add(this.txtMargin2);
-            this.tabPage2.Controls.Add(this.txtUK3);
-            this.tabPage2.Controls.Add(this.txtUK1);
-            this.tabPage2.Controls.Add(this.txtCost3);
-            this.tabPage2.Controls.Add(this.txtMargin4);
-            this.tabPage2.Controls.Add(this.txtCost4);
-            this.tabPage2.Controls.Add(this.txtCost2);
-            this.tabPage2.Controls.Add(this.txtMargin3);
-            this.tabPage2.Controls.Add(this.txtUK4);
-            this.tabPage2.Controls.Add(this.txtUnitCount5);
-            this.tabPage2.Controls.Add(this.txtUnitCount2);
-            this.tabPage2.Controls.Add(this.label57);
-            this.tabPage2.Controls.Add(this.txtUnitCount1);
-            this.tabPage2.Controls.Add(this.txtUnitCount4);
-            this.tabPage2.Controls.Add(this.txtUnitCount3);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(1345, 154);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Item Details";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabItemDetails.Controls.Add(this.textBox14);
+            this.tabItemDetails.Controls.Add(this.txtSupersectionName);
+            this.tabItemDetails.Controls.Add(this.label51);
+            this.tabItemDetails.Controls.Add(this.txtCofO);
+            this.tabItemDetails.Controls.Add(this.label24);
+            this.tabItemDetails.Controls.Add(this.txtManufacturer);
+            this.tabItemDetails.Controls.Add(this.txtCCCN);
+            this.tabItemDetails.Controls.Add(this.textBox17);
+            this.tabItemDetails.Controls.Add(this.label11);
+            this.tabItemDetails.Controls.Add(this.txtMHCodeLevel1);
+            this.tabItemDetails.Controls.Add(this.label12);
+            this.tabItemDetails.Controls.Add(this.label37);
+            this.tabItemDetails.Controls.Add(this.label13);
+            this.tabItemDetails.Controls.Add(this.label20);
+            this.tabItemDetails.Controls.Add(this.textBox18);
+            this.tabItemDetails.Controls.Add(this.label33);
+            this.tabItemDetails.Controls.Add(this.textBox19);
+            this.tabItemDetails.Controls.Add(this.label14);
+            this.tabItemDetails.Controls.Add(this.textBox20);
+            this.tabItemDetails.Controls.Add(this.label23);
+            this.tabItemDetails.Controls.Add(this.textBox21);
+            this.tabItemDetails.Controls.Add(this.label18);
+            this.tabItemDetails.Controls.Add(this.textBox22);
+            this.tabItemDetails.Controls.Add(this.label19);
+            this.tabItemDetails.Controls.Add(this.txtExpiringPro);
+            this.tabItemDetails.Controls.Add(this.txtHazardousInd);
+            this.tabItemDetails.Controls.Add(this.txtDiscCharge);
+            this.tabItemDetails.Controls.Add(this.label53);
+            this.tabItemDetails.Controls.Add(this.txtEnvironment);
+            this.tabItemDetails.Controls.Add(this.txtLithium);
+            this.tabItemDetails.Controls.Add(this.label64);
+            this.tabItemDetails.Controls.Add(this.txtShipping);
+            this.tabItemDetails.Controls.Add(this.label63);
+            this.tabItemDetails.Controls.Add(this.txtLicenceType);
+            this.tabItemDetails.Controls.Add(this.txtCalibrationInd);
+            this.tabItemDetails.Controls.Add(this.label22);
+            this.tabItemDetails.Controls.Add(this.label28);
+            this.tabItemDetails.Controls.Add(this.label55);
+            this.tabItemDetails.Controls.Add(this.label25);
+            this.tabItemDetails.Controls.Add(this.label26);
+            this.tabItemDetails.Controls.Add(this.textBox23);
+            this.tabItemDetails.Controls.Add(this.textBox24);
+            this.tabItemDetails.Controls.Add(this.label59);
+            this.tabItemDetails.Controls.Add(this.label56);
+            this.tabItemDetails.Controls.Add(this.txtRSStock);
+            this.tabItemDetails.Controls.Add(this.txtRSOnOrder);
+            this.tabItemDetails.Controls.Add(this.txtDiscontinuationDate);
+            this.tabItemDetails.Controls.Add(this.txtUKDiscDate);
+            this.tabItemDetails.Controls.Add(this.label27);
+            this.tabItemDetails.Controls.Add(this.txtSubstitutedBy);
+            this.tabItemDetails.Controls.Add(this.label60);
+            this.tabItemDetails.Controls.Add(this.txtRunOn);
+            this.tabItemDetails.Controls.Add(this.label54);
+            this.tabItemDetails.Controls.Add(this.textBox35);
+            this.tabItemDetails.Controls.Add(this.label66);
+            this.tabItemDetails.Controls.Add(this.txtReferral);
+            this.tabItemDetails.Controls.Add(this.label58);
+            this.tabItemDetails.Controls.Add(this.label62);
+            this.tabItemDetails.Controls.Add(this.label29);
+            this.tabItemDetails.Controls.Add(this.label31);
+            this.tabItemDetails.Controls.Add(this.txtStandartWeight);
+            this.tabItemDetails.Controls.Add(this.txtHeight);
+            this.tabItemDetails.Controls.Add(this.label32);
+            this.tabItemDetails.Controls.Add(this.label38);
+            this.tabItemDetails.Controls.Add(this.label43);
+            this.tabItemDetails.Controls.Add(this.label44);
+            this.tabItemDetails.Controls.Add(this.label46);
+            this.tabItemDetails.Controls.Add(this.txtWidth);
+            this.tabItemDetails.Controls.Add(this.txtGrossWeight);
+            this.tabItemDetails.Controls.Add(this.label47);
+            this.tabItemDetails.Controls.Add(this.label48);
+            this.tabItemDetails.Controls.Add(this.label49);
+            this.tabItemDetails.Controls.Add(this.txtLength);
+            this.tabItemDetails.Controls.Add(this.txtWeb5);
+            this.tabItemDetails.Controls.Add(this.txtWeb2);
+            this.tabItemDetails.Controls.Add(this.label65);
+            this.tabItemDetails.Controls.Add(this.txtWeb3);
+            this.tabItemDetails.Controls.Add(this.txtWeb1);
+            this.tabItemDetails.Controls.Add(this.txtWeb4);
+            this.tabItemDetails.Controls.Add(this.txtCost1);
+            this.tabItemDetails.Controls.Add(this.txtMargin5);
+            this.tabItemDetails.Controls.Add(this.label36);
+            this.tabItemDetails.Controls.Add(this.txtUK5);
+            this.tabItemDetails.Controls.Add(this.txtUK2);
+            this.tabItemDetails.Controls.Add(this.label50);
+            this.tabItemDetails.Controls.Add(this.txtCost5);
+            this.tabItemDetails.Controls.Add(this.txtMargin1);
+            this.tabItemDetails.Controls.Add(this.txtMargin2);
+            this.tabItemDetails.Controls.Add(this.txtUK3);
+            this.tabItemDetails.Controls.Add(this.txtUK1);
+            this.tabItemDetails.Controls.Add(this.txtCost3);
+            this.tabItemDetails.Controls.Add(this.txtMargin4);
+            this.tabItemDetails.Controls.Add(this.txtCost4);
+            this.tabItemDetails.Controls.Add(this.txtCost2);
+            this.tabItemDetails.Controls.Add(this.txtMargin3);
+            this.tabItemDetails.Controls.Add(this.txtUK4);
+            this.tabItemDetails.Controls.Add(this.txtUnitCount5);
+            this.tabItemDetails.Controls.Add(this.txtUnitCount2);
+            this.tabItemDetails.Controls.Add(this.label57);
+            this.tabItemDetails.Controls.Add(this.txtUnitCount1);
+            this.tabItemDetails.Controls.Add(this.txtUnitCount4);
+            this.tabItemDetails.Controls.Add(this.txtUnitCount3);
+            this.tabItemDetails.Location = new System.Drawing.Point(4, 22);
+            this.tabItemDetails.Margin = new System.Windows.Forms.Padding(2);
+            this.tabItemDetails.Name = "tabItemDetails";
+            this.tabItemDetails.Padding = new System.Windows.Forms.Padding(2);
+            this.tabItemDetails.Size = new System.Drawing.Size(1345, 154);
+            this.tabItemDetails.TabIndex = 1;
+            this.tabItemDetails.Text = "Item Details";
+            this.tabItemDetails.UseVisualStyleBackColor = true;
             // 
             // textBox14
             // 
@@ -1956,6 +1770,7 @@
             this.txtLength.Name = "txtLength";
             this.txtLength.Size = new System.Drawing.Size(59, 20);
             this.txtLength.TabIndex = 444;
+            this.txtLength.TextChanged += new System.EventHandler(this.txtLength_TextChanged);
             // 
             // txtWeb5
             // 
@@ -2223,6 +2038,183 @@
             this.txtUnitCount3.Size = new System.Drawing.Size(44, 20);
             this.txtUnitCount3.TabIndex = 410;
             // 
+            // dgNo
+            // 
+            this.dgNo.HeaderText = "No";
+            this.dgNo.Name = "dgNo";
+            this.dgNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
+            // dgSupplier
+            // 
+            this.dgSupplier.HeaderText = "Supplier";
+            this.dgSupplier.Name = "dgSupplier";
+            this.dgSupplier.ReadOnly = true;
+            // 
+            // dgProductCode
+            // 
+            this.dgProductCode.HeaderText = "Item Code";
+            this.dgProductCode.Name = "dgProductCode";
+            // 
+            // dgBrand
+            // 
+            this.dgBrand.HeaderText = "Brand";
+            this.dgBrand.Name = "dgBrand";
+            this.dgBrand.ReadOnly = true;
+            // 
+            // dgMPN
+            // 
+            this.dgMPN.HeaderText = "MPN";
+            this.dgMPN.Name = "dgMPN";
+            this.dgMPN.ReadOnly = true;
+            // 
+            // dgDesc
+            // 
+            this.dgDesc.HeaderText = "Description";
+            this.dgDesc.Name = "dgDesc";
+            this.dgDesc.ReadOnly = true;
+            // 
+            // dgLM
+            // 
+            this.dgLM.HeaderText = "LM";
+            this.dgLM.Name = "dgLM";
+            this.dgLM.ReadOnly = true;
+            // 
+            // dgCost
+            // 
+            this.dgCost.HeaderText = "Cost (£)";
+            this.dgCost.Name = "dgCost";
+            this.dgCost.ReadOnly = true;
+            // 
+            // dgLandingCost
+            // 
+            this.dgLandingCost.HeaderText = "Landing Cost (£)";
+            this.dgLandingCost.Name = "dgLandingCost";
+            this.dgLandingCost.ReadOnly = true;
+            // 
+            // dgMargin
+            // 
+            this.dgMargin.HeaderText = "Margin";
+            this.dgMargin.Name = "dgMargin";
+            this.dgMargin.ReadOnly = true;
+            // 
+            // dgQty
+            // 
+            this.dgQty.HeaderText = "Qty";
+            this.dgQty.Name = "dgQty";
+            // 
+            // dgStock
+            // 
+            this.dgStock.HeaderText = "Stock";
+            this.dgStock.Name = "dgStock";
+            this.dgStock.ReadOnly = true;
+            // 
+            // dgUOM
+            // 
+            this.dgUOM.HeaderText = "UOM";
+            this.dgUOM.Name = "dgUOM";
+            this.dgUOM.ReadOnly = true;
+            // 
+            // dgSSM
+            // 
+            this.dgSSM.HeaderText = "SSM";
+            this.dgSSM.Name = "dgSSM";
+            this.dgSSM.ReadOnly = true;
+            // 
+            // dgUC
+            // 
+            this.dgUC.HeaderText = "U/C";
+            this.dgUC.Name = "dgUC";
+            this.dgUC.ReadOnly = true;
+            // 
+            // dgUPIME
+            // 
+            this.dgUPIME.HeaderText = "U/P IME L/P ";
+            this.dgUPIME.Name = "dgUPIME";
+            this.dgUPIME.ReadOnly = true;
+            // 
+            // dgDisc
+            // 
+            this.dgDisc.HeaderText = "Disc. (%)";
+            this.dgDisc.Name = "dgDisc";
+            // 
+            // dgUCUPCurr
+            // 
+            this.dgUCUPCurr.HeaderText = "U/C U/P (Curr.)";
+            this.dgUCUPCurr.Name = "dgUCUPCurr";
+            // 
+            // dgTotal
+            // 
+            this.dgTotal.HeaderText = "TOTAL";
+            this.dgTotal.Name = "dgTotal";
+            this.dgTotal.ReadOnly = true;
+            // 
+            // dgTargetUP
+            // 
+            this.dgTargetUP.HeaderText = "Target U/P";
+            this.dgTargetUP.Name = "dgTargetUP";
+            // 
+            // dgCompetitor
+            // 
+            this.dgCompetitor.HeaderText = "Competitor";
+            this.dgCompetitor.Name = "dgCompetitor";
+            // 
+            // dgHZ
+            // 
+            this.dgHZ.HeaderText = "HZ";
+            this.dgHZ.Name = "dgHZ";
+            this.dgHZ.ReadOnly = true;
+            // 
+            // dgCL
+            // 
+            this.dgCL.HeaderText = "CL";
+            this.dgCL.Name = "dgCL";
+            this.dgCL.ReadOnly = true;
+            // 
+            // dgCR
+            // 
+            this.dgCR.HeaderText = "CR";
+            this.dgCR.Name = "dgCR";
+            this.dgCR.ReadOnly = true;
+            // 
+            // dgDelivery
+            // 
+            this.dgDelivery.HeaderText = "Delivery";
+            this.dgDelivery.Name = "dgDelivery";
+            // 
+            // dgUnitWeigt
+            // 
+            this.dgUnitWeigt.HeaderText = "Unit Weigt (Kg)";
+            this.dgUnitWeigt.Name = "dgUnitWeigt";
+            this.dgUnitWeigt.ReadOnly = true;
+            // 
+            // dgTotalWeight
+            // 
+            this.dgTotalWeight.HeaderText = "Total Weight (Kg)";
+            this.dgTotalWeight.Name = "dgTotalWeight";
+            this.dgTotalWeight.ReadOnly = true;
+            // 
+            // dgCustStkCode
+            // 
+            this.dgCustStkCode.HeaderText = "Cust Stk Code";
+            this.dgCustStkCode.Name = "dgCustStkCode";
+            // 
+            // dgCustDescription
+            // 
+            this.dgCustDescription.HeaderText = "Cust. Description";
+            this.dgCustDescription.Name = "dgCustDescription";
+            // 
+            // dgCOO
+            // 
+            this.dgCOO.HeaderText = "COO";
+            this.dgCOO.Name = "dgCOO";
+            this.dgCOO.ReadOnly = true;
+            // 
+            // dgCCCNO
+            // 
+            this.dgCCCNO.HeaderText = "CCCNO";
+            this.dgCCCNO.Name = "dgCCCNO";
+            this.dgCCCNO.ReadOnly = true;
+            // 
             // QuotationAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2260,12 +2252,12 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tabCustomerDetails.ResumeLayout(false);
+            this.tabCustomerDetails.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.tabItemDetails.ResumeLayout(false);
+            this.tabItemDetails.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2311,8 +2303,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabCustomerDetails;
+        private System.Windows.Forms.TabPage tabItemDetails;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtCustomerName;
         private System.Windows.Forms.TextBox CustomerCode;
@@ -2340,38 +2332,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgSupplier;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgProductCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgBrand;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgMPN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgDesc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgLM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCost;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgLandingCost;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgMargin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgQty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgStock;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgUOM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgSSM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgUC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgPackType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgUPIME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgDisc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgUCUPCurr;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgTotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgTargetUP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCompetitor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgHZ;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCR;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgDelivery;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitWeigt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgTotalWeight;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCustStkCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCustDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCOO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCCCNO;
         private System.Windows.Forms.TextBox textBox14;
         private System.Windows.Forms.TextBox txtSupersectionName;
         private System.Windows.Forms.Label label51;
@@ -2474,8 +2434,39 @@
         private System.Windows.Forms.TextBox txtUnitCount1;
         private System.Windows.Forms.TextBox txtUnitCount4;
         private System.Windows.Forms.TextBox txtUnitCount3;
-        private System.Windows.Forms.ComboBox cbFactor;
         private System.Windows.Forms.DateTimePicker dtpDate;
+        private System.Windows.Forms.TextBox cbFactor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgSupplier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgProductCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgBrand;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgMPN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgLM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgLandingCost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgMargin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgQty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgStock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUOM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgSSM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUPIME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgDisc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUCUPCurr;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgTargetUP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCompetitor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgHZ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgDelivery;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitWeigt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgTotalWeight;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCustStkCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCustDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCOO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCCCNO;
     }
 }
 

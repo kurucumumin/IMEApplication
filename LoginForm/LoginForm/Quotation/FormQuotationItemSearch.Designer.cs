@@ -58,6 +58,8 @@
             this.dgQuotationItemSearch.Name = "dgQuotationItemSearch";
             this.dgQuotationItemSearch.Size = new System.Drawing.Size(450, 113);
             this.dgQuotationItemSearch.TabIndex = 2;
+            this.dgQuotationItemSearch.DoubleClick += new System.EventHandler(this.dgQuotationItemSearch_DoubleClick);
+            this.dgQuotationItemSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgQuotationItemSearch_KeyDown);
             // 
             // FormQuotationItemSearch
             // 

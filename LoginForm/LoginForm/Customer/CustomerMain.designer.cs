@@ -522,7 +522,6 @@
             this.factor.Name = "factor";
             this.factor.Size = new System.Drawing.Size(236, 28);
             this.factor.TabIndex = 12;
-            this.factor.SelectedIndexChanged += new System.EventHandler(this.factor_SelectedIndexChanged);
             // 
             // QuoCurrency
             // 
@@ -608,7 +607,6 @@
             this.AccountRepresentary.Name = "AccountRepresentary";
             this.AccountRepresentary.Size = new System.Drawing.Size(230, 28);
             this.AccountRepresentary.TabIndex = 16;
-            this.AccountRepresentary.Click += new System.EventHandler(this.AccountRepresentary_Click);
             // 
             // label16
             // 
@@ -1429,7 +1427,6 @@
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableMain.Size = new System.Drawing.Size(956, 746);
             this.tableMain.TabIndex = 6;
-            this.tableMain.Paint += new System.Windows.Forms.PaintEventHandler(this.tableMain_Paint);
             // 
             // panel1
             // 

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
+using LoginForm.Services;
 
 namespace LoginForm.Quotation
 {
@@ -22,8 +23,10 @@ namespace LoginForm.Quotation
         }
         public FormQuotationItemSearch(string ItemCode)
         {
-            ArticleCode = ItemCode;
             InitializeComponent();
+            ArticleCode = ItemCode;
+            txtQuotationItemCode.Text = ArticleCode;
+            
         }
 
         private void FormQuotationItemSearch_Load(object sender, EventArgs e)
@@ -78,6 +81,26 @@ namespace LoginForm.Quotation
             if (gridAdapterPC.Count == 0)
             {
                 MessageBox.Show("There is no such a data");
+            }
+        }
+
+        private void dgQuotationItemSearch_DoubleClick(object sender, EventArgs e)
+        {
+            if (dgQuotationItemSearch.DataSource != null)
+            {
+              classQuotationAdd.ItemCode  =  dgQuotationItemSearch.Rows[dgQuotationItemSearch.CurrentCell.RowIndex].Cells[0].Value.ToString();
+            }this.Close();
+        }
+
+        private void dgQuotationItemSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode==Keys.Enter)
+            {
+                if (dgQuotationItemSearch.DataSource != null)
+                {
+                    classQuotationAdd.ItemCode = dgQuotationItemSearch.Rows[dgQuotationItemSearch.CurrentCell.RowIndex].Cells[0].Value.ToString();
+                }
+                this.Close();
             }
         }
     }
