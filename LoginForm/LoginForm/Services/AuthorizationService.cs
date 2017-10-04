@@ -10,32 +10,82 @@ namespace LoginForm.Services
 {
     class AuthorizationService
     {
-        IMEEntities IMEDB = new IMEEntities();
-        public List<AuthorizationValue> GetAvailAuthorization(Worker Worker)
+        static IMEEntities IME = new IMEEntities();
+
+        public static List<AuthRole> getRoles()
         {
+            return IME.AuthRoles.ToList();
+        }
+        public static List<AuthorizationValue> getAuths()
+        {
+            return IME.AuthorizationValues.ToList();
+        }
 
+        public static List<Worker> getWorkers()
+        {
+            return IME.Workers.ToList();
+        }
+        
+        public static bool AddAuthToRole(AuthorizationValue Auth)
+        {
+            try
+            {
+                IME.AuthorizationValues.Add(Auth);
+                IME.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
+        }
 
-            return IMEDB.AuthorizationValues.Where(a => !a.Workers.Any(w => w.WorkerID == Worker.WorkerID)).ToList();
+        public static bool AddRole(AuthRole role)
+        {
+            try
+            {
+                IME.AuthRoles.Add(role);
+                IME.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
 
         }
-        public List<AuthorizationValue> GetUserAuthorization(Worker Worker)
-        {
 
-            return IMEDB.AuthorizationValues.Where(a => a.Workers.Any(w => w.WorkerID == Worker.WorkerID)).ToList();
 
-        }
+
+
+
+        //public List<AuthorizationValue> GetAvailAuthorization(Worker Worker)
+        //{
+
+
+        //    return IME.AuthorizationValues.Where(a => !a.Workers.Any(w => w.WorkerID == Worker.WorkerID)).ToList();
+
+        //}
+        //public List<AuthorizationValue> GetUserAuthorization(Worker Worker)
+        //{
+
+        //    return IME.AuthorizationValues.Where(a => a.Workers.Any(w => w.WorkerID == Worker.WorkerID)).ToList();
+
+        //}
         public List<AuthorizationValue> Authorizations()
         {
 
-            return IMEDB.AuthorizationValues.ToList();
+            return IME.AuthorizationValues.ToList();
 
         }
         public void AddNewAuthorization(AuthorizationValue NewAuthorization)
         {
 
-            IMEDB.AuthorizationValues.Add(NewAuthorization);
+            IME.AuthorizationValues.Add(NewAuthorization);
             
-            IMEDB.SaveChanges();
+            IME.SaveChanges();
         }
         public void Add(int AutID, int WorkerID)
         {

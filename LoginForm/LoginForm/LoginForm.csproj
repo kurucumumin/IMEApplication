@@ -47,6 +47,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -83,6 +84,9 @@
       <DependentUpon>CustomerPositionAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="DataSet\AuthorizationValue.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\AuthRole.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\capital.cs">
@@ -215,6 +219,9 @@
     <Compile Include="DataSet\Town.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\UserAuthorization.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Worker.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -269,6 +276,12 @@
     <Compile Include="Quotation\QuotationAdd.designer.cs">
       <DependentUpon>QuotationAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="RolesAndAuths\FormRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RolesAndAuths\FormRoles.Designer.cs">
+      <DependentUpon>FormRoles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Services\AddressService.cs" />
     <Compile Include="Services\AuthorizationService.cs" />
     <Compile Include="Services\classQuotationAdd.cs" />
@@ -296,17 +309,23 @@
     <Compile Include="Supplier\SupplierPositionAdd.designer.cs">
       <DependentUpon>SupplierPositionAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="WorkerManager\AddIMEWorker.cs">
+    <Compile Include="WorkerManagement\AddIMEWorker.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WorkerManager\AddIMEWorker.Designer.cs">
+    <Compile Include="WorkerManagement\AddIMEWorker.Designer.cs">
       <DependentUpon>AddIMEWorker.cs</DependentUpon>
     </Compile>
-    <Compile Include="WorkerManager\AuthorizationManagement.cs">
+    <Compile Include="WorkerManagement\AuthorizationManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WorkerManager\AuthorizationManagement.Designer.cs">
+    <Compile Include="WorkerManagement\AuthorizationManagement.Designer.cs">
       <DependentUpon>AuthorizationManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkerManagement\FormWorkerManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkerManagement\FormWorkerManagement.Designer.cs">
+      <DependentUpon>FormWorkerManagement.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="CustomerManager\AddressBook.resx">
       <DependentUpon>AddressBook.cs</DependentUpon>
@@ -354,6 +373,9 @@
     <EmbeddedResource Include="Quotation\QuotationAdd.resx">
       <DependentUpon>QuotationAdd.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RolesAndAuths\FormRoles.resx">
+      <DependentUpon>FormRoles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Supplier\SupplierDepartmentAdd.resx">
       <DependentUpon>SupplierDepartmentAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -363,11 +385,14 @@
     <EmbeddedResource Include="Supplier\SupplierPositionAdd.resx">
       <DependentUpon>SupplierPositionAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WorkerManager\AddIMEWorker.resx">
+    <EmbeddedResource Include="WorkerManagement\AddIMEWorker.resx">
       <DependentUpon>AddIMEWorker.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WorkerManager\AuthorizationManagement.resx">
+    <EmbeddedResource Include="WorkerManagement\AuthorizationManagement.resx">
       <DependentUpon>AuthorizationManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkerManagement\FormWorkerManagement.resx">
+      <DependentUpon>FormWorkerManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="DataSet\IME.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -377,6 +402,8 @@
       <DependentUpon>IME.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\LoginForm.DataSet.AuthorizationValue.datasource" />
+    <None Include="Properties\DataSources\LoginForm.DataSet.AuthRole.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

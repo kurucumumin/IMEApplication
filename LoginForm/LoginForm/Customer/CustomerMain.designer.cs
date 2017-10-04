@@ -1454,7 +1454,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(974, 793);
             this.Name = "CustomerMain";
-            this.Text = "CustomerMain";
+            this.Text = "Customer Card";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.CustomerMain_Load);
             this.tabControl1.ResumeLayout(false);

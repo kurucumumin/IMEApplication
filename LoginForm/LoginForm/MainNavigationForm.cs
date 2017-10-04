@@ -53,8 +53,8 @@ namespace LoginForm
         {
             //Sonuç Çeken Sorgu
             var result = (from m in IME.AuthorizationValues
-                          from b in m.Workers
-                          where b.WorkerID == Person.WorkerID
+                          //from b in m.Workers
+                          //where b.WorkerID == Person.WorkerID
                           where m.AuthorizationValue1 == AuthorizationValue
                           select new
                           {

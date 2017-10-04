@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.CustomerManager;
 using LoginForm.Quotation;
+using LoginForm.WorkerManagement;
+
 namespace LoginForm
 {
     static class Program

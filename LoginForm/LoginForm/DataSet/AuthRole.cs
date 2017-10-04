@@ -12,21 +12,21 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class PaymentMethod
+    public partial class AuthRole
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PaymentMethod()
+        public AuthRole()
         {
-            this.Customers = new HashSet<Customer>();
-            this.Suppliers = new HashSet<Supplier>();
+            this.AuthorizationValues = new HashSet<AuthorizationValue>();
+            this.UserAuthorizations = new HashSet<UserAuthorization>();
         }
     
-        public int ID { get; set; }
-        public string Payment { get; set; }
+        public int RoleID { get; set; }
+        public string roleName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Customer> Customers { get; set; }
+        public virtual ICollection<AuthorizationValue> AuthorizationValues { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Supplier> Suppliers { get; set; }
+        public virtual ICollection<UserAuthorization> UserAuthorizations { get; set; }
     }
 }

@@ -12,15 +12,14 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class CustomerCategorySubCategory
+    public partial class UserAuthorization
     {
-        public int ID { get; set; }
-        public Nullable<int> categoryID { get; set; }
-        public Nullable<int> subcategoryID { get; set; }
-        public string customerID { get; set; }
+        public int WorkerID { get; set; }
+        public int AuthorizationID { get; set; }
+        public int AuthRoleID { get; set; }
     
-        public virtual Customer Customer { get; set; }
-        public virtual CustomerCategory CustomerCategory { get; set; }
-        public virtual CustomerSubCategory CustomerSubCategory { get; set; }
+        public virtual AuthorizationValue AuthorizationValue { get; set; }
+        public virtual AuthRole AuthRole { get; set; }
+        public virtual Worker Worker { get; set; }
     }
 }

@@ -32,7 +32,6 @@ namespace LoginForm.Services
         public List<Worker> GetWorkers()
         {
             return IMEDB.Workers.AsNoTracking().Where(w => w.isActive == 1).ToList();
-            //return IMEDB.Workers.AsNoTracking().Where(w => w.isActive == "A").ToList();
         }
         public Worker GetWorkersbyID(int WorkerID)
         {
