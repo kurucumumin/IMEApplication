@@ -25,13 +25,14 @@ namespace LoginForm
 
         private void QuotationForm_Load(object sender, EventArgs e)
         {
-            dataGridView3.Rows[0].Cells["dgQty"].Value ="0";
+
+            dataGridView3.Rows[0].Cells["dgQty"].Value = "0";
             dataGridView3.Rows[0].Cells[0].Value = 1.ToString();
             #region ComboboxFiller
-            cbFactor.DataSource = IME.Rates.ToList();
-            cbFactor.DisplayMember = "currency";
+            //cbFactor.DataSource = IME.Rates.ToList();
+            //cbFactor.DisplayMember = "currency";
             //cbFactor.ValueMember = "ID";
-            cbCurrency.DataSource = IME.Rates.ToList();
+            cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList();
             cbCurrency.DisplayMember = "CurType";
             cbCurrency.ValueMember = "ID";
             cbPayment.DataSource = IME.PaymentMethods.ToList();
@@ -44,7 +45,7 @@ namespace LoginForm
             #endregion
         }
 
-       
+
         private void txtCustomerName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -56,19 +57,19 @@ namespace LoginForm
                 form.ShowDialog();
                 this.Enabled = true;
                 fillCustomer();
-                if (classQuotationAdd.customersearchID!="") { cbRep.DataSource = IME.CustomerWorkers.Where(a => a.customerID == IME.Customers.Where(b => b.ID == classQuotationAdd.customersearchID).FirstOrDefault().ID).ToList(); cbRep.DisplayMember = "cw_name";  }
+                if (classQuotationAdd.customersearchID != "") { cbRep.DataSource = IME.CustomerWorkers.Where(a => a.customerID == IME.Customers.Where(b => b.ID == classQuotationAdd.customersearchID).FirstOrDefault().ID).ToList(); cbRep.DisplayMember = "cw_name"; }
             }
         }
         private void fillCustomer()
         {
-            
+
             CustomerCode.Text = classQuotationAdd.customerID;
             txtCustomerName.Text = classQuotationAdd.customername;
             var c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
-            
+
             if (c.rate_ID != null)
             {
-                cbFactor.Text = c.Rate.currency.ToString(); 
+                cbFactor.Text = c.Rate.currency.ToString();
                 cbCurrency.SelectedIndex = cbCurrency.FindStringExact(c.Rate.currency.ToString());
             }
             if (c.paymentmethodID != null)
@@ -104,7 +105,7 @@ namespace LoginForm
 
         private void dataGridView3_KeyDown(object sender, KeyEventArgs e)
         {
-           
+
 
         }
 
@@ -112,27 +113,25 @@ namespace LoginForm
 
         private void dataGridView3_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-
-            decimal landingCost;
-            decimal margin;
-            decimal UCUPcurr;
             switch (dataGridView3.CurrentCell.ColumnIndex)
             {
-                
-
                 case 0:
                     if (dataGridView3.CurrentCell.RowIndex != 0) { dataGridView3.CurrentCell.Value = (dataGridView3.CurrentCell.RowIndex + 1).ToString(); }
                     break;
                 case 2://PRODUCT CODE
                     {
+                        #region Product Code
+
+
                         if (dataGridView3.CurrentCell.Value != null)
                         {
                             var sd = classQuotationAdd.ItemGetSuperDisk(dataGridView3.CurrentCell.Value.ToString());
                             var sdp = classQuotationAdd.ItemGetSuperDiskP(dataGridView3.CurrentCell.Value.ToString());
                             var er = classQuotationAdd.ItemGetExtendedRange(dataGridView3.CurrentCell.Value.ToString());
-                            int sdNumber = IME.SuperDisks.Where(a => a.Article_No.Contains(dataGridView3.CurrentCell.Value.ToString())).ToList().Count;
-                            int sdPNumber = IME.SuperDiskPs.Where(a => a.Article_No.Contains(dataGridView3.CurrentCell.Value.ToString())).ToList().Count;
-                            int erNumber = IME.ExtendedRanges.Where(a => a.ArticleNo.Contains(dataGridView3.CurrentCell.Value.ToString())).ToList().Count;
+                            int sdNumber; int sdPNumber; int erNumber;
+                            try { sdNumber = IME.SuperDisks.Where(a => a.Article_No.Contains(dataGridView3.CurrentCell.Value.ToString())).ToList().Count; } catch { sdNumber = 0; }
+                            try { sdPNumber = IME.SuperDiskPs.Where(a => a.Article_No.Contains(dataGridView3.CurrentCell.Value.ToString())).ToList().Count; } catch { sdPNumber = 0; }
+                            try { erNumber = IME.ExtendedRanges.Where(a => a.ArticleNo.Contains(dataGridView3.CurrentCell.Value.ToString())).ToList().Count; } catch { erNumber = 0; }
                             if (sdNumber != 0 || sdPNumber != 0 || erNumber != 0)
                             {
                                 if (classQuotationAdd.NumberofItem(dataGridView3.CurrentCell.Value.ToString()) == 0)
@@ -140,10 +139,8 @@ namespace LoginForm
                                     if (tabControl1.SelectedTab != tabItemDetails) { tabControl1.SelectedTab = tabItemDetails; }
                                     ItemDetailsFiller(dataGridView3.CurrentCell.Value.ToString());
                                     //LandingCost Calculation
-                                    dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgLandingCost"].Value = (classQuotationAdd.GetLandingCost(dataGridView3.CurrentCell.Value.ToString())).ToString("G29");
-                                    dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgHZ"].Value = txtHazardousInd.Text;
-                                    dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgCCCNO"].Value = txtCCCN.Text;
-                                    dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgCOO"].Value = txtCofO.Text;
+                                    FillProductCodeItem();
+
                                 }
                                 else
                                 {
@@ -151,103 +148,131 @@ namespace LoginForm
                                     FormQuotationItemSearch itemsearch = new FormQuotationItemSearch(dataGridView3.CurrentCell.Value.ToString());
                                     itemsearch.ShowDialog();
                                     dataGridView3.CurrentCell.Value = classQuotationAdd.ItemCode;
-                                    sdNumber = IME.SuperDisks.Where(a => a.Article_No.Contains(dataGridView3.CurrentCell.Value.ToString())).ToList().Count;
-                                    sdPNumber = IME.SuperDiskPs.Where(a => a.Article_No.Contains(dataGridView3.CurrentCell.Value.ToString())).ToList().Count;
-                                    erNumber = IME.ExtendedRanges.Where(a => a.ArticleNo.Contains(dataGridView3.CurrentCell.Value.ToString())).ToList().Count;
-                                    if (sdNumber != 0 || sdPNumber != 0 || erNumber != 0)
+                                    try { sdNumber = IME.SuperDisks.Where(a => a.Article_No.Contains(dataGridView3.CurrentCell.Value.ToString())).ToList().Count; } catch { sdNumber = 0; }
+                                    try { sdPNumber = IME.SuperDiskPs.Where(a => a.Article_No.Contains(dataGridView3.CurrentCell.Value.ToString())).ToList().Count; } catch { sdPNumber = 0; }
+                                    try { erNumber = IME.ExtendedRanges.Where(a => a.ArticleNo.Contains(dataGridView3.CurrentCell.Value.ToString())).ToList().Count; } catch { erNumber = 0; }
+                                    if (sdNumber == 1 || sdPNumber == 1 || erNumber == 1)
                                     {
                                         if (classQuotationAdd.NumberofItem(dataGridView3.CurrentCell.Value.ToString()) == 0)
                                         {
                                             if (tabControl1.SelectedTab != tabItemDetails) { tabControl1.SelectedTab = tabItemDetails; }
                                             ItemDetailsFiller(dataGridView3.CurrentCell.Value.ToString());
                                             //LandingCost Calculation
-                                            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgLandingCost"].Value = (classQuotationAdd.GetLandingCost(dataGridView3.CurrentCell.Value.ToString())).ToString("G29");
-                                            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgHZ"].Value = txtHazardousInd.Text;
-                                            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgCCCNO"].Value = txtCCCN.Text;
-                                            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgCOO"].Value = txtCofO.Text;
+                                            FillProductCodeItem();
                                             #region DataGridClear
                                             dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value = null;
                                             dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgDisc"].Value = null;
                                             dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = null;
                                             dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value = null;
                                             dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = null;
+                                            txtSubstitutedBy.Text = null;
                                             #endregion
-
                                         }
                                     }
+
                                     this.Enabled = true;
                                 }
 
                             }
                             else { MessageBox.Show("There is no such an item"); }
                         }
-                    }break;
+                    }
+                    #endregion
+                    break;
                 case 10://QAUANTITY
                     {
-                       
-                        if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value != null) { dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgCost"].Value = classQuotationAdd.GetCost(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())).ToString("G29"); }
-                        if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value != null) { price = Decimal.Parse((classQuotationAdd.GetPrice(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())) * Decimal.Parse(cbFactor.Text) * Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())).ToString("G29")); }
-                        decimal discResult = 0;
 
-                        //Fiyat burada 
-                        string articleNo = dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString();
-                        int isP=0;
-                        if (articleNo.ToUpper().IndexOf('P') != -1) { isP = 1; }
-
-                        if (isP == 0)
+                        if (Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString()) != 0)
                         {
-                            if (IME.SuperDiskPs.Where(a => a.Article_No == articleNo).ToList().Count>0)
+                            #region Quantity
+
+
+                            if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value != null) { dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgCost"].Value = classQuotationAdd.GetCost(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())).ToString("G29"); }
+                            if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value != null) { price = Decimal.Parse((classQuotationAdd.GetPrice(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())) * Decimal.Parse(cbFactor.Text) * Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())).ToString("G29")); }
+                            decimal discResult = 0;
+
+                            //Fiyat burada 
+                            string articleNo = dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString();
+                            int isP = 0;
+                            if (articleNo.ToUpper().IndexOf('P') != -1) { isP = 1; }
+
+                            if (isP == 1)
                             {
-                                if(IME.SuperDiskPs.Where(a => a.Article_No == articleNo).FirstOrDefault().Pack_Quantity > 1)
+                                if (IME.SuperDiskPs.Where(a => a.Article_No == articleNo).ToList().Count > 0)
                                 {
-                                    if (Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString()) > Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgSSM"].Value.ToString()))
+                                    if (IME.SuperDiskPs.Where(a => a.Article_No == articleNo).FirstOrDefault().Pack_Quantity > 1)
+                                    {
+
+
+                                        if (Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgSSM"].Value.ToString()) > 1 && Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString()) == 1)
+                                        {
+                                            if ((Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString()) % Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgSSM"].Value.ToString())) != 0)
+                                            {
+                                                MessageBox.Show("Please enter a number that is a multiple of SSM");
+                                            }
+                                            else
+                                            {
+                                                price = price / decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString());
+                                            }
+
+
+                                        }
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+
+                                if (Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString()) > 1 && Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgSSM"].Value.ToString()) == 1)
+                                {
+                                    int resultMod = (Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString()) % Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString()));
+                                    if ((resultMod != 0) || (Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())) < Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString()))
+                                    {
+                                        MessageBox.Show("Please enter a number that is a multiple of Unit Content");
+                                        break;
+                                    }
+                                    else
                                     {
                                         price = price / decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString());
-
                                     }
+
                                 }
-
                             }
-                        }
-                        else
-                        {
-                            if (Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString()) > Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgSSM"].Value.ToString()))
+                            //
+
+                            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value = price.ToString();
+                            discResult = decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value.ToString());
+
+                            if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgDisc"].Value != null) discResult = (discResult - (discResult * decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgDisc"].Value.ToString()) / 100));
+                            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = discResult.ToString("G29");
+
+
+                            Rate rate = new Rate();
+                            DateTime today = DateTime.Today;
+                            rate = IME.Rates.Where(a => a.rate_date == today).Where(b => b.CurType == "GBP").FirstOrDefault();
+                            decimal GBPBuy = Decimal.Parse(rate.RateBuy.ToString());
+
+                            if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value != null)
                             {
-                                price = price / decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString());
-
+                                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString())) / GBPBuy))) * 100).ToString("G29");
                             }
                         }
-                        //
-                        
-                        dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value = price.ToString();
-                        discResult = decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value.ToString());
 
-                        if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgDisc"].Value != null) discResult = (discResult - (discResult * decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgDisc"].Value.ToString()) / 100));
-                        dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = discResult.ToString("G29");
-
-
-                        Rate rate = new Rate();
-                        DateTime today = DateTime.Today.Date;
-                        rate = IME.Rates.Where(a => a.rate_date == today).Where(b=>b.CurType=="GBP").FirstOrDefault();
-                        decimal GBPBuy = Decimal.Parse(rate.RateBuy.ToString());
-
-                        if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value != null)
-                        {
-                            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString())) / GBPBuy))) * 100).ToString("G29");
-                        }
+                        #endregion
                     }
                     break;
-                case 17://Disc
+                case 16://Disc
                     {
-                        decimal discResult=0;
+                        decimal discResult = 0;
                         if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value != null) { discResult = decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value.ToString()); }
                         discResult = (discResult - (discResult * decimal.Parse(dataGridView3.CurrentCell.Value.ToString()) / 100));
-                        dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = discResult.ToString("#.###");
+                        dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = discResult.ToString();
                     }
                     break;
-                case 18://
+                case 17://
                     {
-                        
+
                         decimal total = decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString());
                         decimal UcupIME = decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value.ToString());
                         dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgDisc"].Value = String.Format("{0:0.000}", ((UcupIME - total) * (decimal)100 / UcupIME));
@@ -256,25 +281,57 @@ namespace LoginForm
             }
         }
 
+        private void FillProductCodeItem()
+        {
+            #region FillProductCodeItem
+            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgLandingCost"].Value = (classQuotationAdd.GetLandingCost(dataGridView3.CurrentCell.Value.ToString())).ToString("G29");
+            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgHZ"].Value = txtHazardousInd.Text;
+            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgCCCNO"].Value = txtCCCN.Text;
+            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgCOO"].Value = txtCofO.Text;
+            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUnitWeigt"].Value = txtStandartWeight.Text;
+            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgTotalWeight"].Value = txtGrossWeight.Text;
+            #endregion
+        }
+
+
+
         private void ItemDetailsFiller(string ArticleNoSearch)
         {
             #region Filler
+            string ArticleNoSearch1 = ArticleNoSearch;
+            try { ArticleNoSearch1 = (Int32.Parse(ArticleNoSearch)).ToString(); } catch { }
             //Seçili olan item ı text lere yazdıran fonksiyon yazılacak
             var sd = IME.SuperDisks.Where(a => a.Article_No == ArticleNoSearch).FirstOrDefault();
+            if (sd == null) { sd = IME.SuperDisks.Where(a => a.Article_No == ArticleNoSearch1).FirstOrDefault(); }
+
             var sdP = IME.SuperDiskPs.Where(a => a.Article_No == ArticleNoSearch).FirstOrDefault();
+            if (sdP == null) { sdP = IME.SuperDiskPs.Where(a => a.Article_No == ArticleNoSearch1).FirstOrDefault(); }
+
             var er = IME.ExtendedRanges.Where(a => a.ArticleNo == ArticleNoSearch).FirstOrDefault();
+            if (er == null) { er = IME.ExtendedRanges.Where(a => a.ArticleNo == ArticleNoSearch1).FirstOrDefault(); }
+
             var os = IME.OnSales.Where(a => a.ArticleNumber == ArticleNoSearch).FirstOrDefault();
+            if (os == null) { os = IME.OnSales.Where(a => a.ArticleNumber == ArticleNoSearch1).FirstOrDefault(); }
+
             var sp = IME.SlidingPrices.Where(a => a.ArticleNo == ArticleNoSearch).FirstOrDefault();
+            if (sp == null) { sp = IME.SlidingPrices.Where(a => a.ArticleNo == ArticleNoSearch1).FirstOrDefault(); }
+
             var dd = IME.DailyDiscontinueds.Where(a => a.ArticleNo == ArticleNoSearch).FirstOrDefault();
+            if (dd == null) { dd = IME.DailyDiscontinueds.Where(a => a.ArticleNo == ArticleNoSearch1).FirstOrDefault(); }
+
             var h = IME.Hazardous.Where(a => a.ArticleNo == ArticleNoSearch).FirstOrDefault();
+            if (h == null) { h = IME.Hazardous.Where(a => a.ArticleNo == ArticleNoSearch1).FirstOrDefault(); }
+
             var du = IME.DualUses.Where(a => a.ArticleNo == ArticleNoSearch).FirstOrDefault();
+            if (du == null) { du = IME.DualUses.Where(a => a.ArticleNo == ArticleNoSearch1).FirstOrDefault(); }
+
             if (sd != null)
             {
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgDesc"].Value = sd.Article_Desc;
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgSSM"].Value = sd.Pack_Quantity.ToString();
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUC"].Value = sd.Unit_Content.ToString();
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUOM"].Value = sd.Unit_Measure;
-                
+
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgCL"].Value = sd.Calibration_Ind;
                 if (sd.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sd.Standard_Weight) / (decimal)1000).ToString("G29"); } else { }
                 if (txtHeight.Text != "" && txtLength.Text != "" && txtWidth.Text != "") { txtGrossWeight.Text = (Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString(); }
@@ -380,9 +437,9 @@ namespace LoginForm
             }
             if (h != null)
             {
-                txtEnvironment.Text = h.Environment.ToString();
-                txtLithium.Text = h.Lithium;
-                txtShipping.Text = h.Shipping;
+                if (h.Environment != null) { txtEnvironment.Text = "Y"; }
+                if (h.Lithium != null) { txtLithium.Text = "Y"; }
+                if (h.Shipping != null) { txtShipping.Text = "Y"; }
             }
             if (os != null)
             {
@@ -397,7 +454,7 @@ namespace LoginForm
                 txtRunOn.Text = dd.Runon.ToString();
                 txtReferral.Text = dd.Referral.ToString();
             }
-            if (du != null) { txtLicenceType.Text = du.LicenceType;}
+            if (du != null) { txtLicenceType.Text = du.LicenceType; }
             //
             #endregion
             if (txtLithium.Text != "") { label64.BackColor = Color.Red; }
@@ -414,14 +471,14 @@ namespace LoginForm
         {
             if (e.KeyCode == Keys.Enter)
             {
-                    classQuotationAdd.customersearchID = CustomerCode.Text;
-                    classQuotationAdd.customersearchname = "";
-                    FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch();
-                    this.Enabled = false;
-                    form.ShowDialog();
-                    this.Enabled = true;
-                    fillCustomer();
-               
+                classQuotationAdd.customersearchID = CustomerCode.Text;
+                classQuotationAdd.customersearchname = "";
+                FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch();
+                this.Enabled = false;
+                form.ShowDialog();
+                this.Enabled = true;
+                fillCustomer();
+
             }
         }
 
@@ -437,5 +494,5 @@ namespace LoginForm
 
         }
     }
-    
+
 }
