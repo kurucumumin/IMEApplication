@@ -219,8 +219,8 @@ namespace LoginForm
             //lblEuroSell.Text = Euro;
 
             //Açılışta login gözükmesin diye
-            int x = 0;
-            if (x == 1)
+            bool x = false;
+            if (x)
             {
                 this.Show();
                 this.Enabled = false;

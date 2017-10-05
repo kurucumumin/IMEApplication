@@ -133,7 +133,6 @@ namespace LoginForm
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(410, 375);
             this.panel1.TabIndex = 4;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // tableLayoutPanel1
             // 
@@ -189,7 +188,6 @@ namespace LoginForm
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(406, 121);
             this.panel2.TabIndex = 0;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // Form1
             // 

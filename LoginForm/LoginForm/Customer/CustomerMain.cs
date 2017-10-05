@@ -330,8 +330,8 @@ namespace LoginForm
                                        c.telephone,
                                        c.fax,
                                        c.webadress,
-                                       w.FirstName,
-                                       Representative2 = r.FirstName,
+                                       w.NameLastName,
+                                       Representative2 = r.NameLastName,
                                        customerworker.cw_name,
                                        customerworker.cw_email,
                                        customerworker.CustomerTitle.titlename,
@@ -346,7 +346,7 @@ namespace LoginForm
                                        CustomerNote = c.Note.Note_name,
                                        WorkerNote = w.Note.Note_name,
                                        CustomerWorkerNote = customerworker.Note.Note_name,
-                                       AccountRepresentative = customeraccountant.FirstName,
+                                       AccountRepresentative = customeraccountant.NameLastName,
                                        l.languagename,
                                        AddressCity=a.City.City_name,
                                        AddressContact=a.CustomerWorker.cw_name,
@@ -379,7 +379,7 @@ namespace LoginForm
                 AddressType.DataSource = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text).ToList();
                 AddressType.DisplayMember = "cw_name";
                 Represantative2.Text = customerAdapter[gridselectedindex].Representative2;
-                Represantative1.SelectedIndex = Represantative1.FindStringExact(customerAdapter[gridselectedindex].FirstName);
+                Represantative1.SelectedIndex = Represantative1.FindStringExact(customerAdapter[gridselectedindex].NameLastName);
                 ContactTitle.SelectedIndex = ContactTitle.FindStringExact(customerAdapter[gridselectedindex].titlename);
                 ContactDepartment.SelectedIndex = ContactDepartment.FindStringExact(customerAdapter[gridselectedindex].titlename);
                 MainCategory.SelectedIndex = MainCategory.FindStringExact(customerAdapter[gridselectedindex].categoryname);
@@ -441,8 +441,8 @@ namespace LoginForm
                                        c.telephone,
                                        c.fax,
                                        c.webadress,
-                                       w.FirstName,
-                                       Representative2 = r.FirstName,
+                                       w.NameLastName,
+                                       Representative2 = r.NameLastName,
                                        customerworker.cw_name,
                                        customerworker.cw_email,
                                        customerworker.CustomerTitle.titlename,
@@ -457,7 +457,7 @@ namespace LoginForm
                                        CustomerNote = c.Note.Note_name,
                                        WorkerNote = w.Note.Note_name,
                                        CustomerWorkerNote = customerworker.Note.Note_name,
-                                       AccountRepresentative = customeraccountant.FirstName,
+                                       AccountRepresentative = customeraccountant.NameLastName,
                                        l.languagename,
                                        AddressCity = a.City.City_name,
                                        AddressContact = a.CustomerWorker.cw_name,
@@ -488,7 +488,7 @@ namespace LoginForm
             AddressType.DisplayMember = "cw_name";
 
             Represantative2.Text = customerAdapter[gridselectedindex].Representative2;
-            Represantative1.SelectedIndex = Represantative1.FindStringExact(customerAdapter[gridselectedindex].FirstName);
+            Represantative1.SelectedIndex = Represantative1.FindStringExact(customerAdapter[gridselectedindex].NameLastName);
             ContactTitle.SelectedIndex = ContactTitle.FindStringExact(customerAdapter[gridselectedindex].titlename);
             ContactDepartment.SelectedIndex = ContactDepartment.FindStringExact(customerAdapter[gridselectedindex].titlename);
             MainCategory.SelectedIndex = MainCategory.FindStringExact(customerAdapter[gridselectedindex].categoryname);

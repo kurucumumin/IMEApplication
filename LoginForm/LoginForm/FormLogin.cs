@@ -33,13 +33,13 @@ namespace LoginForm
         {
             #region LoginBlock
             string UserName = txtID.Text;
-            string PW = txtPassWord.Text;
+            string PW = Utils.MD5Hash(txtPassWord.Text);
             Worker Logged = new Worker();
             try
             {
                 Logged = IME.Workers
-               .Where(uName => uName.FirstName == UserName)
-               .Where(pw => pw.LastName == PW)
+               .Where(uName => uName.UserName == UserName)
+               .Where(pw => pw.UserPass == PW)
                //.Where(status => status.isActive == 1)
                .FirstOrDefault();
             }
@@ -51,7 +51,7 @@ namespace LoginForm
             //WorkerApp.ID = Logged.WorkerID;
             if (Logged != null)
             {
-                if(Logged.isActive == 1)
+                if(Logged.isActive == true)
                 {
                     closeRequest = true;
                     this.Close();
@@ -66,16 +66,6 @@ namespace LoginForm
             {
                 MessageBox.Show("Wrong ID or Password","Login Error",MessageBoxButtons.OK);
             }
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -111,11 +101,6 @@ namespace LoginForm
 
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
@@ -140,14 +125,6 @@ namespace LoginForm
         }
 
         #endregion
-
-        //private void Form1_Load(object sender, EventArgs e)
-        //{
-        //    AddIMEWorker workerform = new AddIMEWorker();
-        //    AuthorizationManagement manager = new AuthorizationManagement();
-        //    manager.Show();
-        //    //workerform.Show();
-        //}
     }
 
     

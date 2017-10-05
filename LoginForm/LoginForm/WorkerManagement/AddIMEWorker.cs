@@ -29,13 +29,13 @@ namespace LoginForm
             {
                 if (txtEmail.Text.Contains(".com"))
                 {
-                    Worker2Add.EMail = txtEmail.Text;
+                    Worker2Add.Email = txtEmail.Text;
                     #region AddNewWorker
                     try
                     {
 
-                        Worker2Add.FirstName = txtFirstName.Text;
-                        Worker2Add.LastName = txtLastName.Text;
+                        Worker2Add.NameLastName = txtFirstName.Text;
+                        Worker2Add.UserPass = txtLastName.Text;
 
                         Worker2Add.Phone = txtPhone.Text;
                         bool isDuplidateWorker = WorkerService.WarnDuplicateRecord(Worker2Add);
@@ -46,7 +46,7 @@ namespace LoginForm
                         }
                         else
                         {
-                            Worker2Add.isActive = 1;
+                            Worker2Add.isActive = true;
                             //Worker2Add.isActive = "A";
                             WorkerService.AddNewWorker(Worker2Add);
                             #region PrintingResult
@@ -101,9 +101,9 @@ namespace LoginForm
                 Worker DisplayWorker = new Worker();
                 DetailWorker = lbWorkerList.SelectedItem as Worker;
                 DisplayWorker = WorkerService.GetWorkersbyID(DetailWorker.WorkerID);
-                txtEmail.Text = DisplayWorker.EMail;
-                txtFirstName.Text = DisplayWorker.FirstName;
-                txtLastName.Text = DisplayWorker.LastName;
+                txtEmail.Text = DisplayWorker.Email;
+                txtFirstName.Text = DisplayWorker.NameLastName;
+                txtLastName.Text = DisplayWorker.UserPass;
                 txtPhone.Text = DisplayWorker.Phone;
                 #endregion
             }
@@ -118,7 +118,7 @@ namespace LoginForm
         {
             Worker Deleted = new Worker();
             Deleted = lbWorkerList.SelectedItem as Worker;
-            Deleted.isActive = 0;
+            Deleted.isActive = false;
             //Deleted.isActive = "I";
 
             try
@@ -145,9 +145,9 @@ namespace LoginForm
         {
             Worker Updated = new Worker();
             Updated = lbWorkerList.SelectedItem as Worker;
-            Updated.FirstName = txtFirstName.Text;
-            Updated.LastName = txtLastName.Text;
-            Updated.EMail = txtEmail.Text;
+            Updated.NameLastName = txtFirstName.Text;
+            Updated.UserPass = txtLastName.Text;
+            Updated.Email = txtEmail.Text;
             Updated.Phone = txtPhone.Text;
             //Updated.isActive = "A";
             try

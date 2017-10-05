@@ -78,7 +78,7 @@ namespace LoginForm
             }
             try { txtContactNote.Text = c.CustomerWorker.Note.Note_name; } catch { }
             try { txtCustomerNote.Text = c.Note.Note_name; } catch { }
-            cbRep.SelectedIndex = cbRep.FindStringExact(c.Worker.FirstName.ToString());
+            cbRep.SelectedIndex = cbRep.FindStringExact(c.Worker.NameLastName.ToString());
         }
 
         private void customerDetailsToolStripMenuItem_Click(object sender, EventArgs e)

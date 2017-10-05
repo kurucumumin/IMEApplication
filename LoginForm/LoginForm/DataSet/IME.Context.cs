@@ -26,8 +26,7 @@ namespace LoginForm.DataSet
         }
     
         public virtual DbSet<AuthorizationValue> AuthorizationValues { get; set; }
-        public virtual DbSet<AuthRole> AuthRoles { get; set; }
-        public virtual DbSet<capital> capitals { get; set; }
+        public virtual DbSet<Capital> Capitals { get; set; }
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
@@ -49,6 +48,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
         public virtual DbSet<PaymentTerm> PaymentTerms { get; set; }
         public virtual DbSet<Rate> Rates { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<RSPro> RSProes { get; set; }
         public virtual DbSet<SlidingPrice> SlidingPrices { get; set; }
         public virtual DbSet<SuperDisk> SuperDisks { get; set; }
@@ -65,7 +65,6 @@ namespace LoginForm.DataSet
         public virtual DbSet<SupplierWorker> SupplierWorkers { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Town> Towns { get; set; }
-        public virtual DbSet<UserAuthorization> UserAuthorizations { get; set; }
         public virtual DbSet<Worker> Workers { get; set; }
     }
 }

@@ -35,9 +35,9 @@
             this.gbAuthorities = new System.Windows.Forms.GroupBox();
             this.clbAuthorities = new System.Windows.Forms.CheckedListBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.gbUserInfo = new System.Windows.Forms.GroupBox();
+            this.chcActive = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.numeric2 = new System.Windows.Forms.NumericUpDown();
             this.numeric1 = new System.Windows.Forms.NumericUpDown();
@@ -94,7 +94,7 @@
             this.gbRoles.Location = new System.Drawing.Point(488, 16);
             this.gbRoles.Margin = new System.Windows.Forms.Padding(8, 16, 8, 8);
             this.gbRoles.Name = "gbRoles";
-            this.gbRoles.Padding = new System.Windows.Forms.Padding(4);
+            this.gbRoles.Padding = new System.Windows.Forms.Padding(12);
             this.gbRoles.Size = new System.Drawing.Size(309, 563);
             this.gbRoles.TabIndex = 0;
             this.gbRoles.TabStop = false;
@@ -105,11 +105,11 @@
             this.clbRoles.CheckOnClick = true;
             this.clbRoles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clbRoles.FormattingEnabled = true;
-            this.clbRoles.Location = new System.Drawing.Point(4, 23);
+            this.clbRoles.Location = new System.Drawing.Point(12, 31);
             this.clbRoles.Name = "clbRoles";
-            this.clbRoles.Size = new System.Drawing.Size(301, 536);
+            this.clbRoles.Size = new System.Drawing.Size(285, 520);
             this.clbRoles.TabIndex = 1;
-            this.clbRoles.Click += new System.EventHandler(this.clbRoles_Click);
+            this.clbRoles.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbRoles_ItemCheck);
             // 
             // gbAuthorities
             // 
@@ -118,7 +118,7 @@
             this.gbAuthorities.Location = new System.Drawing.Point(813, 16);
             this.gbAuthorities.Margin = new System.Windows.Forms.Padding(8, 16, 8, 8);
             this.gbAuthorities.Name = "gbAuthorities";
-            this.gbAuthorities.Padding = new System.Windows.Forms.Padding(4);
+            this.gbAuthorities.Padding = new System.Windows.Forms.Padding(12);
             this.gbAuthorities.Size = new System.Drawing.Size(309, 563);
             this.gbAuthorities.TabIndex = 1;
             this.gbAuthorities.TabStop = false;
@@ -128,14 +128,13 @@
             // 
             this.clbAuthorities.Dock = System.Windows.Forms.DockStyle.Fill;
             this.clbAuthorities.FormattingEnabled = true;
-            this.clbAuthorities.Location = new System.Drawing.Point(4, 23);
+            this.clbAuthorities.Location = new System.Drawing.Point(12, 31);
             this.clbAuthorities.Name = "clbAuthorities";
-            this.clbAuthorities.Size = new System.Drawing.Size(301, 536);
+            this.clbAuthorities.Size = new System.Drawing.Size(285, 520);
             this.clbAuthorities.TabIndex = 0;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.gbUserInfo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -146,30 +145,22 @@
             this.panel1.Size = new System.Drawing.Size(480, 587);
             this.panel1.TabIndex = 2;
             // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnClose.Location = new System.Drawing.Point(331, 514);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(126, 33);
-            this.btnClose.TabIndex = 4;
-            this.btnClose.Text = "CLOSE";
-            this.btnClose.UseVisualStyleBackColor = true;
-            // 
             // btnSave
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSave.Location = new System.Drawing.Point(190, 514);
+            this.btnSave.Location = new System.Drawing.Point(339, 532);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(118, 33);
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "SAVE";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // gbUserInfo
             // 
             this.gbUserInfo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.gbUserInfo.BackColor = System.Drawing.SystemColors.Control;
+            this.gbUserInfo.Controls.Add(this.chcActive);
             this.gbUserInfo.Controls.Add(this.panel2);
             this.gbUserInfo.Controls.Add(this.txtPhone);
             this.gbUserInfo.Controls.Add(this.txtMail);
@@ -190,6 +181,17 @@
             this.gbUserInfo.TabIndex = 2;
             this.gbUserInfo.TabStop = false;
             this.gbUserInfo.Text = "USER INFO";
+            // 
+            // chcActive
+            // 
+            this.chcActive.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.chcActive.AutoSize = true;
+            this.chcActive.Location = new System.Drawing.Point(347, 408);
+            this.chcActive.Name = "chcActive";
+            this.chcActive.Size = new System.Drawing.Size(77, 24);
+            this.chcActive.TabIndex = 12;
+            this.chcActive.Text = "Active";
+            this.chcActive.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -353,10 +355,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "NAME - LAST NAME";
             // 
-            // authRoleBindingSource
-            // 
-            this.authRoleBindingSource.DataSource = typeof(LoginForm.DataSet.AuthRole);
-            // 
             // authorizationValueBindingSource
             // 
             this.authorizationValueBindingSource.DataSource = typeof(LoginForm.DataSet.AuthorizationValue);
@@ -411,7 +409,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.NumericUpDown numeric1;
         private System.Windows.Forms.NumericUpDown numeric2;
@@ -419,5 +416,6 @@
         private System.Windows.Forms.BindingSource authorizationValueBindingSource;
         private System.Windows.Forms.CheckedListBox clbAuthorities;
         private System.Windows.Forms.CheckedListBox clbRoles;
+        private System.Windows.Forms.CheckBox chcActive;
     }
 }

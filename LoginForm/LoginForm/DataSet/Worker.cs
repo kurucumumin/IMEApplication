@@ -22,20 +22,20 @@ namespace LoginForm.DataSet
             this.Customers2 = new HashSet<Customer>();
             this.Suppliers = new HashSet<Supplier>();
             this.Suppliers1 = new HashSet<Supplier>();
-            this.UserAuthorizations = new HashSet<UserAuthorization>();
+            this.AuthorizationValues = new HashSet<AuthorizationValue>();
         }
     
         public int WorkerID { get; set; }
-        public string LastName { get; set; }
-        public string FirstName { get; set; }
-        public string EMail { get; set; }
-        public string Phone { get; set; }
+        public string NameLastName { get; set; }
+        public string UserName { get; set; }
+        public string UserPass { get; set; }
+        public string Email { get; set; }
         public Nullable<int> WorkerNoteID { get; set; }
-        public string Username { get; set; }
+        public string Phone { get; set; }
         public Nullable<decimal> MinMarge { get; set; }
         public Nullable<decimal> MinRate { get; set; }
         public Nullable<int> Title { get; set; }
-        public Nullable<int> isActive { get; set; }
+        public Nullable<bool> isActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }
@@ -49,6 +49,6 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Supplier> Suppliers1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserAuthorization> UserAuthorizations { get; set; }
+        public virtual ICollection<AuthorizationValue> AuthorizationValues { get; set; }
     }
 }
