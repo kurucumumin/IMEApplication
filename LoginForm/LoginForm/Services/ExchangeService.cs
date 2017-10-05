@@ -40,8 +40,8 @@ namespace LoginForm.Services
             TodayDate = DateTime.Now.Date;
             string BuyUSDeffective = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/BanknoteBuying").InnerXml;
             string SellUSDEffective = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/BanknoteSelling").InnerXml;
-            string BuyUSD = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/ForexSelling").InnerXml;
-            string SellUSD = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/ForexBuying").InnerXml;
+            string BuyUSD = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/ForexBuying").InnerXml;
+            string SellUSD = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/ForexSelling").InnerXml;
 
             //if (BuyUSD.Contains('.'))
             //    BuyUSD = BuyUSD.Replace('.', ',');
@@ -51,14 +51,14 @@ namespace LoginForm.Services
             //    SellUSD = SellUSD.Replace('.', ',');
             //if (SellUSDEffective.Contains('.'))
             //    SellUSDEffective = SellUSDEffective.Replace('.', ',');
-     
+
             RateForDolar.Code = Name;
             RateForDolar.RateDate = TodayDate;
             RateForDolar.ExchangeBuy = Decimal.Parse(BuyUSD);
             RateForDolar.ExchangeSell = Decimal.Parse(SellUSD);
             RateForDolar.ExchangeBuyEffective = Decimal.Parse(BuyUSDeffective);
             RateForDolar.ExchangeSellEffective = Decimal.Parse(SellUSDEffective);
-           
+
             return RateForDolar;
         }
 
@@ -76,8 +76,8 @@ namespace LoginForm.Services
             TodayDate = DateTime.Now.Date;
             string BuySTReffective = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='GBP']/BanknoteBuying").InnerXml;
             string SellSTREffective = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='GBP']/BanknoteSelling").InnerXml;
-            string BuySTR = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/ForexSelling").InnerXml;
-            string SellSTR = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/ForexBuying").InnerXml;
+            string BuySTR = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='GBP']/ForexBuying").InnerXml;
+            string SellSTR = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='GBP']/ForexSelling").InnerXml;
 
             //if (BuySTR.Contains('.'))
             //    BuySTR = BuySTR.Replace('.', ',');

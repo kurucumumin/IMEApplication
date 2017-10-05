@@ -17,15 +17,12 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public AuthRole()
         {
-            this.AuthorizationValues = new HashSet<AuthorizationValue>();
             this.UserAuthorizations = new HashSet<UserAuthorization>();
         }
     
         public int RoleID { get; set; }
         public string roleName { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AuthorizationValue> AuthorizationValues { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserAuthorization> UserAuthorizations { get; set; }
     }
