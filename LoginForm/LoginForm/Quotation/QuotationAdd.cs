@@ -18,6 +18,8 @@ namespace LoginForm
         GetWorkerService GetWorkerService = new GetWorkerService();
         IMEEntities IME = new IMEEntities();
         decimal price;
+        int rowIndexFromMouseDown;
+        DataGridViewRow rw;
         public QuotationAdd()
         {
             InitializeComponent();
@@ -116,7 +118,27 @@ namespace LoginForm
             switch (dataGridView3.CurrentCell.ColumnIndex)
             {
                 case 0:
-                    if (dataGridView3.CurrentCell.RowIndex != 0) { dataGridView3.CurrentCell.Value = (dataGridView3.CurrentCell.RowIndex + 1).ToString(); }
+                    if (Int32.Parse(dataGridView3.CurrentCell.Value.ToString()) <= Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells[0].Value.ToString()))
+                    {
+                        int currentID = dataGridView3.CurrentCell.RowIndex;
+                        List<int> Quotation = new List<int>();
+                        for (int i = 0; i < dataGridView3.RowCount;i++)
+                        {
+                            Quotation.Add(Int32.Parse(dataGridView3.Rows[i].Cells[0].Value.ToString()));
+                        }
+                        for (int i = 0; i < dataGridView3.RowCount; i++)
+                        {
+
+                            if (Int32.Parse(dataGridView3.Rows[i].Cells[0].Value.ToString()) >= Int32.Parse(dataGridView3.CurrentCell.Value.ToString()) && currentID!=i)
+                            {
+                                if (i < Quotation.Count) { dataGridView3.Rows[i].Cells[0].Value = (Quotation[i]+1).ToString(); } else {// dataGridView3.Rows[i].Cells[0].Value = (Quotation[i] + 1).ToString(); }
+                            }
+                        }
+                        //dataGridView3.Rows[dataGridView3.RowCount-1].Cells[0].Value = (Int32.Parse(dataGridView3.Rows[dataGridView3.RowCount-1].Cells[0].Value.ToString()) + 1).ToString();
+                    }
+                        }
+                    // if (dataGridView3.CurrentCell.RowIndex != 0) { dataGridView3.CurrentCell.Value = (dataGridView3.CurrentCell.RowIndex + 1).ToString(); }
+                    dataGridView3.Sort(dataGridView3.Columns[0], ListSortDirection.Ascending);
                     break;
                 case 2://PRODUCT CODE
                     {
@@ -493,6 +515,14 @@ namespace LoginForm
             if (txtHeight.Text != "" && txtLength.Text != "" && txtWidth.Text != "") { txtGrossWeight.Text = (Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString(); }
 
         }
+
+        private void dataGridView3_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            dataGridView3.Rows[dataGridView3.CurrentRow.Index +1].Cells[0].Value = (Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentRow.Index].Cells[0].Value.ToString()) + 1).ToString();
+
+        }
+
+       
     }
 
 }

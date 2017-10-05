@@ -24,6 +24,7 @@ namespace LoginForm.DataSet
         public string AuthorizationValue1 { get; set; }
         public int RoleID { get; set; }
     
+        public virtual AuthRole AuthRole { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserAuthorization> UserAuthorizations { get; set; }
     }
