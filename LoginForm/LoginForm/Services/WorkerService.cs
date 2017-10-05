@@ -12,15 +12,14 @@ namespace LoginForm.Services
     
     class WorkerService
     {
-        IMEEntities IMEDB = new IMEEntities();
+        static IMEEntities IMEDB = new IMEEntities();
 
-        public void AddNewWorker(Worker NewWorker)
+        public static void AddNewWorker(Worker NewWorker)
         {
             try
             {
                 IMEDB.Workers.Add(NewWorker);
                 IMEDB.SaveChanges();
-
             }
             catch (Exception e)
             {
@@ -31,7 +30,7 @@ namespace LoginForm.Services
         }
         public List<Worker> GetWorkers()
         {
-            return IMEDB.Workers.AsNoTracking().Where(w => w.isActive == 1).ToList();
+            return IMEDB.Workers.AsNoTracking().Where(w => w.isActive == true).ToList();
         }
         public Worker GetWorkersbyID(int WorkerID)
         {
@@ -41,7 +40,7 @@ namespace LoginForm.Services
         public bool WarnDuplicateRecord(Worker CheckWorker)
         {
             //Mail üzerinden Unique Kontrolü
-            var isDuplidate = IMEDB.Workers.Any(w=>w.EMail==CheckWorker.EMail);
+            var isDuplidate = IMEDB.Workers.Any(w=>w.Email==CheckWorker.Email);
             //isDuplicate Dolu ise Kayıt Zaten Mevcut.
             if (isDuplidate==null)
             {
@@ -56,13 +55,13 @@ namespace LoginForm.Services
         {
             using (SqlConnection connection = new SqlConnection("data source=.;initial catalog=IME;integrated security=True;multipleactiveresultsets=True"))
             {
-                string kayit = "Update dbo.Worker set LastName=@lname,FirstName=@fname,EMail=@mail,Phone=@tphone,isActive=@status where WorkerID=@UpdateID";
+                string kayit = "Update dbo.Worker set UserPass=@pass,NameLastName=@fname,Email=@mail,Phone=@tphone,isActive=@status where WorkerID=@UpdateID";
                 connection.Open();
                 SqlCommand komut = new SqlCommand(kayit, connection);
                 //Sorgumuzu ve baglantimizi parametre olarak alan bir SqlCommand nesnesi oluşturuyoruz.
-                komut.Parameters.AddWithValue("@lname", UpdatedWorker.LastName);
-                komut.Parameters.AddWithValue("@fname", UpdatedWorker.FirstName);
-                komut.Parameters.AddWithValue("@mail", UpdatedWorker.EMail);
+                komut.Parameters.AddWithValue("@pass", UpdatedWorker.UserPass);
+                komut.Parameters.AddWithValue("@fname", UpdatedWorker.NameLastName);
+                komut.Parameters.AddWithValue("@mail", UpdatedWorker.Email);
                 komut.Parameters.AddWithValue("@tphone", UpdatedWorker.Phone);
                 komut.Parameters.AddWithValue("@status", UpdatedWorker.isActive);
                 komut.Parameters.AddWithValue("@UpdateID", UpdatedWorker.WorkerID);

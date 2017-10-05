@@ -1,14 +1,8 @@
 ﻿using LoginForm.DataSet;
 using LoginForm.Services;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace LoginForm.WorkerManagement
 {
@@ -28,7 +22,7 @@ namespace LoginForm.WorkerManagement
         private void LoadAuthorities()
         {
             clbAuthorities.DataSource = AuthorizationService.getAuths();
-            clbAuthorities.DisplayMember = "AuthorizationValue";
+            clbAuthorities.DisplayMember = "AuthorizationValue1";
         }
 
         private void LoadRoles()
@@ -37,9 +31,72 @@ namespace LoginForm.WorkerManagement
             clbRoles.DisplayMember = "roleName";
         }
 
-        private void clbRoles_Click(object sender, EventArgs e)
+        private void clbRoles_ItemCheck(object sender, ItemCheckEventArgs e)
         {
+            int roleID = ((Role)clbRoles.SelectedValue).RoleID;
+            if (e.NewValue == CheckState.Checked)
+            {
+                ChangeCheckStateOfAuths(roleID, true);
+            }
+            else
+            {
+                ChangeCheckStateOfAuths(roleID, false);
+            }
+        }
 
+        private void ChangeCheckStateOfAuths(int roleID,bool state)
+        {
+            for (int i = 0; i < clbAuthorities.Items.Count; i++)
+            {
+                foreach (Role item in ((AuthorizationValue)clbAuthorities.Items[i]).Roles)
+                {
+                    if(item.RoleID == roleID)
+                    {
+                        clbAuthorities.SetItemChecked(i, state);
+                        break;
+                    }
+                }
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Worker worker = new Worker();
+                worker.NameLastName = txtNameLastName.Text;
+                worker.isActive = chcActive.Checked;
+                worker.Email = txtMail.Text;
+                worker.MinMarge = numeric1.Value;
+                worker.MinRate = numeric2.Value;
+                worker.Phone = txtPhone.Text;
+                worker.UserName = txtUsername.Text;
+                worker.UserPass = Utils.MD5Hash(txtUserPass.Text);
+                int title = 0;
+                if (rbSales.Checked)
+                {
+                    title = 1;
+                }
+                else if (rbSalesManager.Checked)
+                {
+                    title = 2;
+                }
+                else if (rbGeneralManager.Checked)
+                {
+                    title = 3;
+                }
+                worker.Title = title;
+
+                WorkerService.AddNewWorker(worker);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Bir hata oluştu");
+                throw;
+            }
+            
+
+            
         }
 
         //private void dgRoles_CellClick(object sender, DataGridViewCellEventArgs e)

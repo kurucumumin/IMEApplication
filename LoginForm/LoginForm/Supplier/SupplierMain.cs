@@ -486,7 +486,7 @@ using LoginForm.Services;
                                        c.fax,
                                        c.webadress,
                                        c.discountrate,
-                                       w.FirstName,
+                                       w.NameLastName,
                                        SupplierWorker.sw_name,
                                        SupplierWorker.sw_email,
                                        SupplierWorker.SupplierTitle.titlename,
@@ -497,7 +497,7 @@ using LoginForm.Services;
                                        supplierworker,
                                        swNote = SupplierWorker.Note.Note_name,
                                        SupplierNote = c.Note.Note_name,
-                                       AccountRepresentative = supplieraccountant.FirstName,
+                                       AccountRepresentative = supplieraccountant.NameLastName,
                                        l.languagename,
                                        n.bankname,
                                        c.iban,
@@ -534,7 +534,7 @@ using LoginForm.Services;
                 try { txtfax.Text = supplierAdapter[gridselectedindex].fax.ToString(); } catch { }
                 txtweb.Text = supplierAdapter[gridselectedindex].webadress;
                 txtContactNotes.Text = supplierAdapter[gridselectedindex].swNote;
-                cmbrepresentative.SelectedIndex = cmbrepresentative.FindStringExact(supplierAdapter[gridselectedindex].FirstName);
+                cmbrepresentative.SelectedIndex = cmbrepresentative.FindStringExact(supplierAdapter[gridselectedindex].NameLastName);
                 cmbposition.SelectedIndex = cmbposition.FindStringExact(supplierAdapter[gridselectedindex].titlename);
                 cmbdepartman.SelectedIndex = cmbdepartman.FindStringExact(supplierAdapter[gridselectedindex].departmentname);
                 cmbcategory.SelectedIndex = cmbcategory.FindStringExact(supplierAdapter[gridselectedindex].categoryname);

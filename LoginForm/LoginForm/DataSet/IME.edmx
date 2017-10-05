@@ -11,16 +11,16 @@
           </Key>
           <Property Name="AuthorizationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AuthorizationValue" Type="varchar" MaxLength="255" />
-          <Property Name="RoleID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="AuthRole">
           <Key>
             <PropertyRef Name="RoleID" />
+            <PropertyRef Name="AuthID" />
           </Key>
-          <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="roleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="AuthID" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="capital">
+        <EntityType Name="Capital">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -268,6 +268,13 @@
           <Property Name="RateSell" Type="decimal" Precision="20" Scale="10" />
           <Property Name="RateBuyEffective" Type="decimal" Precision="20" Scale="10" />
           <Property Name="RateSellEffective" Type="decimal" Precision="20" Scale="10" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="roleName" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="RSPro">
           <Key>
@@ -533,36 +540,46 @@
           <Key>
             <PropertyRef Name="WorkerID" />
             <PropertyRef Name="AuthorizationID" />
-            <PropertyRef Name="AuthRoleID" />
           </Key>
           <Property Name="WorkerID" Type="int" Nullable="false" />
           <Property Name="AuthorizationID" Type="int" Nullable="false" />
-          <Property Name="AuthRoleID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Worker">
           <Key>
             <PropertyRef Name="WorkerID" />
           </Key>
           <Property Name="WorkerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LastName" Type="varchar" MaxLength="255" />
-          <Property Name="FirstName" Type="varchar" MaxLength="255" />
-          <Property Name="EMail" Type="varchar" MaxLength="255" />
-          <Property Name="Phone" Type="varchar" MaxLength="255" />
+          <Property Name="NameLastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="UserPass" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="WorkerNoteID" Type="int" />
-          <Property Name="Username" Type="varchar" MaxLength="255" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" />
           <Property Name="MinMarge" Type="decimal" Precision="5" Scale="2" />
           <Property Name="MinRate" Type="decimal" Precision="5" Scale="2" />
           <Property Name="Title" Type="int" />
-          <Property Name="isActive" Type="int" />
+          <Property Name="isActive" Type="bit" />
         </EntityType>
-        <Association Name="FK__Authoriza__RoleI__324172E1">
-          <End Role="AuthRole" Type="Self.AuthRole" Multiplicity="1" />
-          <End Role="AuthorizationValue" Type="Self.AuthorizationValue" Multiplicity="*" />
+        <Association Name="FK__AuthRole__AuthID__4924D839">
+          <End Role="AuthorizationValue" Type="Self.AuthorizationValue" Multiplicity="1" />
+          <End Role="AuthRole" Type="Self.AuthRole" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="AuthRole">
+            <Principal Role="AuthorizationValue">
+              <PropertyRef Name="AuthorizationID" />
+            </Principal>
+            <Dependent Role="AuthRole">
+              <PropertyRef Name="AuthID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AuthRole__RoleID__473C8FC7">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="AuthRole" Type="Self.AuthRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
               <PropertyRef Name="RoleID" />
             </Principal>
-            <Dependent Role="AuthorizationValue">
+            <Dependent Role="AuthRole">
               <PropertyRef Name="RoleID" />
             </Dependent>
           </ReferentialConstraint>
@@ -1203,18 +1220,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserAutho__AuthR__30592A6F">
-          <End Role="AuthRole" Type="Self.AuthRole" Multiplicity="1" />
-          <End Role="UserAuthorization" Type="Self.UserAuthorization" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AuthRole">
-              <PropertyRef Name="RoleID" />
-            </Principal>
-            <Dependent Role="UserAuthorization">
-              <PropertyRef Name="AuthRoleID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__UserAutho__Worke__2E70E1FD">
           <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
           <End Role="UserAuthorization" Type="Self.UserAuthorization" Multiplicity="*" />
@@ -1242,7 +1247,7 @@
         <EntityContainer Name="IMEModelStoreContainer">
           <EntitySet Name="AuthorizationValue" EntityType="Self.AuthorizationValue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AuthRole" EntityType="Self.AuthRole" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="capital" EntityType="Self.capital" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Capital" EntityType="Self.Capital" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
@@ -1264,6 +1269,7 @@
           <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentTerm" EntityType="Self.PaymentTerm" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rate" EntityType="Self.Rate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RSPro" EntityType="Self.RSPro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SlidingPrice" EntityType="Self.SlidingPrice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuperDisk" EntityType="Self.SuperDisk" Schema="dbo" store:Type="Tables" />
@@ -1282,9 +1288,13 @@
           <EntitySet Name="Town" EntityType="Self.Town" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAuthorization" EntityType="Self.UserAuthorization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Authoriza__RoleI__324172E1" Association="Self.FK__Authoriza__RoleI__324172E1">
-            <End Role="AuthRole" EntitySet="AuthRole" />
+          <AssociationSet Name="FK__AuthRole__AuthID__4924D839" Association="Self.FK__AuthRole__AuthID__4924D839">
             <End Role="AuthorizationValue" EntitySet="AuthorizationValue" />
+            <End Role="AuthRole" EntitySet="AuthRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AuthRole__RoleID__473C8FC7" Association="Self.FK__AuthRole__RoleID__473C8FC7">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="AuthRole" EntitySet="AuthRole" />
           </AssociationSet>
           <AssociationSet Name="FK__City__CountryID__51300E55" Association="Self.FK__City__CountryID__51300E55">
             <End Role="Country" EntitySet="Country" />
@@ -1498,10 +1508,6 @@
             <End Role="AuthorizationValue" EntitySet="AuthorizationValue" />
             <End Role="UserAuthorization" EntitySet="UserAuthorization" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserAutho__AuthR__30592A6F" Association="Self.FK__UserAutho__AuthR__30592A6F">
-            <End Role="AuthRole" EntitySet="AuthRole" />
-            <End Role="UserAuthorization" EntitySet="UserAuthorization" />
-          </AssociationSet>
           <AssociationSet Name="FK__UserAutho__Worke__2E70E1FD" Association="Self.FK__UserAutho__Worke__2E70E1FD">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="UserAuthorization" EntitySet="UserAuthorization" />
@@ -1517,8 +1523,7 @@
       <Schema Namespace="IMEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="IMEEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AuthorizationValues" EntityType="IMEModel.AuthorizationValue" />
-          <EntitySet Name="AuthRoles" EntityType="IMEModel.AuthRole" />
-          <EntitySet Name="capitals" EntityType="IMEModel.capital" />
+          <EntitySet Name="Capitals" EntityType="IMEModel.Capital" />
           <EntitySet Name="Cities" EntityType="IMEModel.City" />
           <EntitySet Name="Countries" EntityType="IMEModel.Country" />
           <EntitySet Name="Customers" EntityType="IMEModel.Customer" />
@@ -1540,6 +1545,7 @@
           <EntitySet Name="PaymentMethods" EntityType="IMEModel.PaymentMethod" />
           <EntitySet Name="PaymentTerms" EntityType="IMEModel.PaymentTerm" />
           <EntitySet Name="Rates" EntityType="IMEModel.Rate" />
+          <EntitySet Name="Roles" EntityType="IMEModel.Role" />
           <EntitySet Name="RSProes" EntityType="IMEModel.RSPro" />
           <EntitySet Name="SlidingPrices" EntityType="IMEModel.SlidingPrice" />
           <EntitySet Name="SuperDisks" EntityType="IMEModel.SuperDisk" />
@@ -1556,20 +1562,7 @@
           <EntitySet Name="SupplierWorkers" EntityType="IMEModel.SupplierWorker" />
           <EntitySet Name="sysdiagrams" EntityType="IMEModel.sysdiagram" />
           <EntitySet Name="Towns" EntityType="IMEModel.Town" />
-          <EntitySet Name="UserAuthorizations" EntityType="IMEModel.UserAuthorization" />
           <EntitySet Name="Workers" EntityType="IMEModel.Worker" />
-          <AssociationSet Name="FK__Authoriza__RoleI__324172E1" Association="IMEModel.FK__Authoriza__RoleI__324172E1">
-            <End Role="AuthRole" EntitySet="AuthRoles" />
-            <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UserAutho__Autho__2F650636" Association="IMEModel.FK__UserAutho__Autho__2F650636">
-            <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
-            <End Role="UserAuthorization" EntitySet="UserAuthorizations" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UserAutho__AuthR__30592A6F" Association="IMEModel.FK__UserAutho__AuthR__30592A6F">
-            <End Role="AuthRole" EntitySet="AuthRoles" />
-            <End Role="UserAuthorization" EntitySet="UserAuthorizations" />
-          </AssociationSet>
           <AssociationSet Name="FK__City__CountryID__51300E55" Association="IMEModel.FK__City__CountryID__51300E55">
             <End Role="Country" EntitySet="Countries" />
             <End Role="City" EntitySet="Cities" />
@@ -1782,9 +1775,13 @@
             <End Role="SupplierTitle" EntitySet="SupplierTitles" />
             <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserAutho__Worke__2E70E1FD" Association="IMEModel.FK__UserAutho__Worke__2E70E1FD">
+          <AssociationSet Name="AuthRole" Association="IMEModel.AuthRole">
+            <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
+            <End Role="Role" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="UserAuthorization" Association="IMEModel.UserAuthorization">
+            <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
             <End Role="Worker" EntitySet="Workers" />
-            <End Role="UserAuthorization" EntitySet="UserAuthorizations" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AuthorizationValue">
@@ -1793,20 +1790,10 @@
           </Key>
           <Property Name="AuthorizationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AuthorizationValue1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="RoleID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AuthRole" Relationship="IMEModel.FK__Authoriza__RoleI__324172E1" FromRole="AuthorizationValue" ToRole="AuthRole" />
-          <NavigationProperty Name="UserAuthorizations" Relationship="IMEModel.FK__UserAutho__Autho__2F650636" FromRole="AuthorizationValue" ToRole="UserAuthorization" />
+          <NavigationProperty Name="Roles" Relationship="IMEModel.AuthRole" FromRole="AuthorizationValue" ToRole="Role" />
+          <NavigationProperty Name="Workers" Relationship="IMEModel.UserAuthorization" FromRole="AuthorizationValue" ToRole="Worker" />
         </EntityType>
-        <EntityType Name="AuthRole">
-          <Key>
-            <PropertyRef Name="RoleID" />
-          </Key>
-          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="roleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AuthorizationValues" Relationship="IMEModel.FK__Authoriza__RoleI__324172E1" FromRole="AuthRole" ToRole="AuthorizationValue" />
-          <NavigationProperty Name="UserAuthorizations" Relationship="IMEModel.FK__UserAutho__AuthR__30592A6F" FromRole="AuthRole" ToRole="UserAuthorization" />
-        </EntityType>
-        <EntityType Name="capital">
+        <EntityType Name="Capital">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -2113,6 +2100,14 @@
           <NavigationProperty Name="Customers1" Relationship="IMEModel.FK__Customer__rateID__6FE99F9F" FromRole="Rate" ToRole="Customer" />
           <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__rate_I__625A9A57" FromRole="Rate" ToRole="Supplier" />
         </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="roleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AuthorizationValues" Relationship="IMEModel.AuthRole" FromRole="Role" ToRole="AuthorizationValue" />
+        </EntityType>
         <EntityType Name="RSPro">
           <Key>
             <PropertyRef Name="ArticleNo" />
@@ -2415,78 +2410,29 @@
           <NavigationProperty Name="CustomerAdresses" Relationship="IMEModel.FK__CustomerA__TownI__4F47C5E3" FromRole="Town" ToRole="CustomerAdress" />
           <NavigationProperty Name="SupplierAdresses" Relationship="IMEModel.FK__SupplierA__TownI__41B8C09B" FromRole="Town" ToRole="SupplierAdress" />
         </EntityType>
-        <EntityType Name="UserAuthorization">
-          <Key>
-            <PropertyRef Name="WorkerID" />
-            <PropertyRef Name="AuthorizationID" />
-            <PropertyRef Name="AuthRoleID" />
-          </Key>
-          <Property Name="WorkerID" Type="Int32" Nullable="false" />
-          <Property Name="AuthorizationID" Type="Int32" Nullable="false" />
-          <Property Name="AuthRoleID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AuthorizationValue" Relationship="IMEModel.FK__UserAutho__Autho__2F650636" FromRole="UserAuthorization" ToRole="AuthorizationValue" />
-          <NavigationProperty Name="AuthRole" Relationship="IMEModel.FK__UserAutho__AuthR__30592A6F" FromRole="UserAuthorization" ToRole="AuthRole" />
-          <NavigationProperty Name="Worker" Relationship="IMEModel.FK__UserAutho__Worke__2E70E1FD" FromRole="UserAuthorization" ToRole="Worker" />
-        </EntityType>
         <EntityType Name="Worker">
           <Key>
             <PropertyRef Name="WorkerID" />
           </Key>
           <Property Name="WorkerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="EMail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NameLastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="UserPass" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="WorkerNoteID" Type="Int32" />
-          <Property Name="Username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="MinMarge" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="MinRate" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="Title" Type="Int32" />
-          <Property Name="isActive" Type="Int32" />
+          <Property Name="isActive" Type="Boolean" />
           <NavigationProperty Name="Customers" Relationship="IMEModel.FK__Customer__accoun__6EF57B66" FromRole="Worker" ToRole="Customer" />
           <NavigationProperty Name="Customers1" Relationship="IMEModel.FK__Customer__repres__3F466844" FromRole="Worker" ToRole="Customer" />
           <NavigationProperty Name="Customers2" Relationship="IMEModel.FK__Customer__repres__6E01572D" FromRole="Worker" ToRole="Customer" />
           <NavigationProperty Name="Note" Relationship="IMEModel.FK__Worker__WorkerNo__4BAC3F29" FromRole="Worker" ToRole="Note" />
           <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__accoun__2DB1C7EE" FromRole="Worker" ToRole="Supplier" />
           <NavigationProperty Name="Suppliers1" Relationship="IMEModel.FK__Supplier__repres__65370702" FromRole="Worker" ToRole="Supplier" />
-          <NavigationProperty Name="UserAuthorizations" Relationship="IMEModel.FK__UserAutho__Worke__2E70E1FD" FromRole="Worker" ToRole="UserAuthorization" />
+          <NavigationProperty Name="AuthorizationValues" Relationship="IMEModel.UserAuthorization" FromRole="Worker" ToRole="AuthorizationValue" />
         </EntityType>
-        <Association Name="FK__Authoriza__RoleI__324172E1">
-          <End Type="IMEModel.AuthRole" Role="AuthRole" Multiplicity="1" />
-          <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AuthRole">
-              <PropertyRef Name="RoleID" />
-            </Principal>
-            <Dependent Role="AuthorizationValue">
-              <PropertyRef Name="RoleID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UserAutho__Autho__2F650636">
-          <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="1" />
-          <End Type="IMEModel.UserAuthorization" Role="UserAuthorization" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AuthorizationValue">
-              <PropertyRef Name="AuthorizationID" />
-            </Principal>
-            <Dependent Role="UserAuthorization">
-              <PropertyRef Name="AuthorizationID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UserAutho__AuthR__30592A6F">
-          <End Type="IMEModel.AuthRole" Role="AuthRole" Multiplicity="1" />
-          <End Type="IMEModel.UserAuthorization" Role="UserAuthorization" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AuthRole">
-              <PropertyRef Name="RoleID" />
-            </Principal>
-            <Dependent Role="UserAuthorization">
-              <PropertyRef Name="AuthRoleID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__City__CountryID__51300E55">
           <End Type="IMEModel.Country" Role="Country" Multiplicity="0..1" />
           <End Type="IMEModel.City" Role="City" Multiplicity="*" />
@@ -3123,19 +3069,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserAutho__Worke__2E70E1FD">
-          <End Type="IMEModel.Worker" Role="Worker" Multiplicity="1" />
-          <End Type="IMEModel.UserAuthorization" Role="UserAuthorization" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Worker">
-              <PropertyRef Name="WorkerID" />
-            </Principal>
-            <Dependent Role="UserAuthorization">
-              <PropertyRef Name="WorkerID" />
-            </Dependent>
-          </ReferentialConstraint>
+        <Association Name="AuthRole">
+          <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
+          <End Type="IMEModel.Role" Role="Role" Multiplicity="*" />
         </Association>
-      </Schema>
+        <Association Name="UserAuthorization">
+          <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
+          <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -3144,23 +3086,14 @@
           <EntitySetMapping Name="AuthorizationValues">
             <EntityTypeMapping TypeName="IMEModel.AuthorizationValue">
               <MappingFragment StoreEntitySet="AuthorizationValue">
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="AuthorizationValue1" ColumnName="AuthorizationValue" />
                 <ScalarProperty Name="AuthorizationID" ColumnName="AuthorizationID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AuthRoles">
-            <EntityTypeMapping TypeName="IMEModel.AuthRole">
-              <MappingFragment StoreEntitySet="AuthRole">
-                <ScalarProperty Name="roleName" ColumnName="roleName" />
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="capitals">
-            <EntityTypeMapping TypeName="IMEModel.capital">
-              <MappingFragment StoreEntitySet="capital">
+          <EntitySetMapping Name="Capitals">
+            <EntityTypeMapping TypeName="IMEModel.Capital">
+              <MappingFragment StoreEntitySet="Capital">
                 <ScalarProperty Name="capitalname" ColumnName="capitalname" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
@@ -3426,6 +3359,14 @@
                 <ScalarProperty Name="currency" ColumnName="currency" />
                 <ScalarProperty Name="rate_date" ColumnName="rate_date" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="IMEModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="roleName" ColumnName="roleName" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3705,15 +3646,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UserAuthorizations">
-            <EntityTypeMapping TypeName="IMEModel.UserAuthorization">
-              <MappingFragment StoreEntitySet="UserAuthorization">
-                <ScalarProperty Name="AuthRoleID" ColumnName="AuthRoleID" />
-                <ScalarProperty Name="AuthorizationID" ColumnName="AuthorizationID" />
-                <ScalarProperty Name="WorkerID" ColumnName="WorkerID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Workers">
             <EntityTypeMapping TypeName="IMEModel.Worker">
               <MappingFragment StoreEntitySet="Worker">
@@ -3721,16 +3653,32 @@
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="MinRate" ColumnName="MinRate" />
                 <ScalarProperty Name="MinMarge" ColumnName="MinMarge" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="WorkerNoteID" ColumnName="WorkerNoteID" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="EMail" ColumnName="EMail" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="WorkerNoteID" ColumnName="WorkerNoteID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserPass" ColumnName="UserPass" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="NameLastName" ColumnName="NameLastName" />
                 <ScalarProperty Name="WorkerID" ColumnName="WorkerID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="AuthRole" TypeName="IMEModel.AuthRole" StoreEntitySet="AuthRole">
+            <EndProperty Name="Role">
+              <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+            </EndProperty>
+            <EndProperty Name="AuthorizationValue">
+              <ScalarProperty Name="AuthorizationID" ColumnName="AuthID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="UserAuthorization" TypeName="IMEModel.UserAuthorization" StoreEntitySet="UserAuthorization">
+            <EndProperty Name="Worker">
+              <ScalarProperty Name="WorkerID" ColumnName="WorkerID" />
+            </EndProperty>
+            <EndProperty Name="AuthorizationValue">
+              <ScalarProperty Name="AuthorizationID" ColumnName="AuthorizationID" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

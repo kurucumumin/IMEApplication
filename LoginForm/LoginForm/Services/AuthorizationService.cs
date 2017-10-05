@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LoginForm.Services
 {
@@ -12,9 +10,9 @@ namespace LoginForm.Services
     {
         static IMEEntities IME = new IMEEntities();
 
-        public static List<AuthRole> getRoles()
+        public static List<Role> getRoles()
         {
-            return IME.AuthRoles.ToList();
+            return IME.Roles.ToList();
         }
         public static List<AuthorizationValue> getAuths()
         {
@@ -41,11 +39,11 @@ namespace LoginForm.Services
             }
         }
 
-        public static bool AddRole(AuthRole role)
+        public static bool AddRole(Role role)
         {
             try
             {
-                IME.AuthRoles.Add(role);
+                IME.Roles.Add(role);
                 IME.SaveChanges();
                 return true;
             }

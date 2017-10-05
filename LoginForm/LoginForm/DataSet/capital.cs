@@ -12,7 +12,7 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class capital
+    public partial class Capital
     {
         public int ID { get; set; }
         public string capitalname { get; set; }

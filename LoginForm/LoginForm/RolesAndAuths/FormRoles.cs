@@ -35,7 +35,7 @@ namespace LoginForm.RolesAndAuths
         private void LoadWorkerList()
         {
             lbWorkerList.DataSource = AuthorizationService.getWorkers();
-            lbWorkerList.DisplayMember = "FirstName";
+            lbWorkerList.DisplayMember = "NameLastName";
         }
 
 
@@ -43,16 +43,17 @@ namespace LoginForm.RolesAndAuths
         private void btnAddAuth_Click(object sender, EventArgs e)
         {
             AuthorizationValue auth = new AuthorizationValue();
-            auth.AuthRole = (AuthRole) cbRoleList.SelectedItem;
+            //auth.AuthRole = (AuthRole) cbRoleList.SelectedItem;
             auth.AuthorizationValue1 = txtAuthName.Text;
             AuthorizationService.AddAuthToRole(auth);
         }
 
         private void btnAddRole_Click(object sender, EventArgs e)
         {
-            AuthRole role = new AuthRole();
+            Role role = new Role();
             role.roleName = txtRoleName.Text;
             AuthorizationService.AddRole(role);
+            LoadCBRoleList();
         }
 
         private void btnAddWorker_Click(object sender, EventArgs e)
