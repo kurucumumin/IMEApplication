@@ -92,7 +92,7 @@ namespace LoginForm
 
                 //dgAuthorizations.DataSource = AuthorizationManager.GetUserAuthorization(AutWorker);
             }
-            catch (NullReferenceException ex)
+            catch
             {
 
                 MessageBox.Show("No Authorization Selected");

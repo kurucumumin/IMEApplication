@@ -40,7 +40,7 @@ namespace LoginForm.Services
         public bool WarnDuplicateRecord(Worker CheckWorker)
         {
             //Mail üzerinden Unique Kontrolü
-            var isDuplidate = IMEDB.Workers.Any(w=>w.Email==CheckWorker.Email);
+            var isDuplidate = IMEDB.Workers.Where(w=>w.Email==CheckWorker.Email);
             //isDuplicate Dolu ise Kayıt Zaten Mevcut.
             if (isDuplidate==null)
             {

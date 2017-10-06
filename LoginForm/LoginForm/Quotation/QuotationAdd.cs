@@ -122,21 +122,42 @@ namespace LoginForm
                     {
                         int currentID = dataGridView3.CurrentCell.RowIndex;
                         List<int> Quotation = new List<int>();
-                        for (int i = 0; i < dataGridView3.RowCount;i++)
+                        for (int i = 0; i < dataGridView3.RowCount; i++)
                         {
                             Quotation.Add(Int32.Parse(dataGridView3.Rows[i].Cells[0].Value.ToString()));
                         }
                         for (int i = 0; i < dataGridView3.RowCount; i++)
                         {
-
-                            if (Int32.Parse(dataGridView3.Rows[i].Cells[0].Value.ToString()) >= Int32.Parse(dataGridView3.CurrentCell.Value.ToString()) && currentID!=i)
+                            if (dataGridView3.CurrentCell.RowIndex < Int32.Parse(dataGridView3.CurrentCell.Value.ToString()))
                             {
-                                if (i < Quotation.Count) { dataGridView3.Rows[i].Cells[0].Value = (Quotation[i]+1).ToString(); } else {// dataGridView3.Rows[i].Cells[0].Value = (Quotation[i] + 1).ToString(); }
+                                #region RowChange1
+                                //Üstteki bir row u aşşağıya getirmek için
+                                if (Int32.Parse(dataGridView3.Rows[i].Cells[0].Value.ToString()) <= Int32.Parse(dataGridView3.CurrentCell.Value.ToString()) && currentID != i && dataGridView3.CurrentCell.RowIndex < i)
+                                {
+                                    if (i <= Quotation.Count - 1)
+                                    {
+                                        dataGridView3.Rows[i].Cells[0].Value = (i + 2).ToString();
+                                    }
+                                }
+                                #endregion
                             }
+                            else
+                            {
+                                #region RowChange2
+                                //Üstteki bir row u aşşağıya getirmek için
+                                if (Int32.Parse(dataGridView3.Rows[i].Cells[0].Value.ToString()) >= Int32.Parse(dataGridView3.CurrentCell.Value.ToString()) && currentID != i && dataGridView3.CurrentCell.RowIndex > i)
+                                {
+                                    if (i <= Quotation.Count - 1)
+                                    {
+                                        dataGridView3.Rows[i].Cells[0].Value = (i + 2).ToString();
+                                    }
+                                }
+                                #endregion
+                            }
+
                         }
-                        //dataGridView3.Rows[dataGridView3.RowCount-1].Cells[0].Value = (Int32.Parse(dataGridView3.Rows[dataGridView3.RowCount-1].Cells[0].Value.ToString()) + 1).ToString();
                     }
-                        }
+
                     // if (dataGridView3.CurrentCell.RowIndex != 0) { dataGridView3.CurrentCell.Value = (dataGridView3.CurrentCell.RowIndex + 1).ToString(); }
                     dataGridView3.Sort(dataGridView3.Columns[0], ListSortDirection.Ascending);
                     break;
