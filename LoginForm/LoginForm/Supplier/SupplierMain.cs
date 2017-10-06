@@ -36,7 +36,7 @@ using LoginForm.Services;
             cmbAcountMethod.ValueMember = "ID";
 
             cmbAcountRep.DataSource = db.Workers.ToList();
-            cmbAcountRep.DisplayMember = "FirstName";
+            cmbAcountRep.DisplayMember = "UserName";
             cmbAcountRep.ValueMember = "WorkerID";
 
             cmbAcountTerms.DataSource = db.PaymentTerms.ToList();
@@ -52,15 +52,15 @@ using LoginForm.Services;
             cmbsub.ValueMember = "ID";
 
             cmbCurrenyt.DataSource = db.Rates.ToList();
-            cmbCurrenyt.DisplayMember = "currency";
+            cmbCurrenyt.DisplayMember = "CurType";
             cmbCurrenyt.ValueMember = "ID";
 
             cmbInvoiceCur.DataSource = db.Rates.ToList();
-            cmbInvoiceCur.DisplayMember = "currency";
+            cmbInvoiceCur.DisplayMember = "CurType";
             cmbInvoiceCur.ValueMember = "ID";
 
             cmbrepresentative.DataSource = db.Workers.ToList();
-            cmbrepresentative.DisplayMember = "FirstName";
+            cmbrepresentative.DisplayMember = "UserName";
             cmbrepresentative.ValueMember = "WorkerID";
 
             cmbdepartman.DataSource = db.SupplierDepartments.ToList();
@@ -343,11 +343,13 @@ using LoginForm.Services;
                 btnContactDelete.Enabled = true;
                 btnContactUpdate.Enabled = true;
             }
-            btnupdate.Enabled = false;
             btnContactDone.Enabled = false;
             btnDep.Enabled = false;
             btnPos.Enabled = false;
             btnContactCancel.Enabled = false;
+            btnupdate.Enabled = true;
+            btnnew.Enabled = true;
+            txtsearch.Enabled = true;
             dgSupplier.Enabled = true;
             #endregion
         }
@@ -597,6 +599,8 @@ using LoginForm.Services;
             btnPos.Enabled = true;
             btnContactCancel.Visible = true;
             btnContactDone.Visible = true;
+            btnnew.Enabled = true;
+            btnupdate.Enabled = true;
             #endregion
         }
 
@@ -1134,9 +1138,11 @@ using LoginForm.Services;
 
         private void btnexit_Click(object sender, EventArgs e)
         {
+            FormMain f = new FormMain();
             if (MessageBox.Show("Are You Sure To Exit Programme ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                Application.Exit();
+                f.Show();
+                this.Close();
             }
         }
 

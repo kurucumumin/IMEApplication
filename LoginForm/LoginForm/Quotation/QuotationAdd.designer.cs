@@ -31,7 +31,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label40 = new System.Windows.Forms.Label();
+            this.lblsubtotal = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
@@ -263,6 +263,10 @@
             this.txtUnitCount1 = new System.Windows.Forms.TextBox();
             this.txtUnitCount4 = new System.Windows.Forms.TextBox();
             this.txtUnitCount3 = new System.Windows.Forms.TextBox();
+            this.label52 = new System.Windows.Forms.Label();
+            this.lbltotal = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.lblkdv = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -298,7 +302,7 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.label40);
+            this.groupBox5.Controls.Add(this.lblsubtotal);
             this.groupBox5.Controls.Add(this.label35);
             this.groupBox5.Controls.Add(this.textBox11);
             this.groupBox5.Controls.Add(this.textBox10);
@@ -312,14 +316,14 @@
             this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
             // 
-            // label40
+            // lblsubtotal
             // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(905, 245);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(50, 13);
-            this.label40.TabIndex = 8;
-            this.label40.Text = "0,00   TL";
+            this.lblsubtotal.AutoSize = true;
+            this.lblsubtotal.Location = new System.Drawing.Point(905, 245);
+            this.lblsubtotal.Name = "lblsubtotal";
+            this.lblsubtotal.Size = new System.Drawing.Size(50, 13);
+            this.lblsubtotal.TabIndex = 8;
+            this.lblsubtotal.Text = "0,00   TL";
             // 
             // label35
             // 
@@ -418,8 +422,11 @@
             this.dataGridView3.TabIndex = 9;
             this.dataGridView3.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellEndEdit);
             this.dataGridView3.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView3_RowsAdded);
+<<<<<<< HEAD
             this.dataGridView3.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridView3_UserDeletingRow);
             this.dataGridView3.Click += new System.EventHandler(this.dataGridView3_Click);
+=======
+>>>>>>> Mumin-Feature-QuotationModule
             this.dataGridView3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView3_KeyDown);
             // 
             // dgNo
@@ -920,6 +927,10 @@
             // 
             // groupBox11
             // 
+            this.groupBox11.Controls.Add(this.lblkdv);
+            this.groupBox11.Controls.Add(this.label40);
+            this.groupBox11.Controls.Add(this.lbltotal);
+            this.groupBox11.Controls.Add(this.label52);
             this.groupBox11.Controls.Add(this.label4);
             this.groupBox11.Controls.Add(this.label9);
             this.groupBox11.Controls.Add(this.textBox7);
@@ -938,7 +949,6 @@
             this.groupBox11.Size = new System.Drawing.Size(240, 123);
             this.groupBox11.TabIndex = 49;
             this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "CALCULATION";
             // 
             // label4
             // 
@@ -953,7 +963,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(215, 43);
+            this.label9.Location = new System.Drawing.Point(215, 56);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(20, 13);
             this.label9.TabIndex = 22;
@@ -961,7 +971,7 @@
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(9, 40);
+            this.textBox7.Location = new System.Drawing.Point(9, 53);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(77, 20);
             this.textBox7.TabIndex = 21;
@@ -969,16 +979,17 @@
             // 
             // textBox15
             // 
-            this.textBox15.Location = new System.Drawing.Point(150, 39);
+            this.textBox15.Location = new System.Drawing.Point(157, 52);
             this.textBox15.Name = "textBox15";
             this.textBox15.Size = new System.Drawing.Size(54, 20);
             this.textBox15.TabIndex = 20;
             this.textBox15.Text = "0";
+            this.textBox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(188, 81);
+            this.label42.Location = new System.Drawing.Point(188, 78);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(50, 13);
             this.label42.TabIndex = 18;
@@ -986,15 +997,16 @@
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(150, 15);
+            this.textBox8.Location = new System.Drawing.Point(155, 15);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(53, 20);
             this.textBox8.TabIndex = 15;
+            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // checkBox9
             // 
             this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(9, 72);
+            this.checkBox9.Location = new System.Drawing.Point(9, 77);
             this.checkBox9.Name = "checkBox9";
             this.checkBox9.Size = new System.Drawing.Size(47, 17);
             this.checkBox9.TabIndex = 17;
@@ -2458,6 +2470,44 @@
             this.txtUnitCount3.Size = new System.Drawing.Size(44, 20);
             this.txtUnitCount3.TabIndex = 410;
             // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(8, 35);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(31, 13);
+            this.label52.TabIndex = 52;
+            this.label52.Text = "Total";
+            // 
+            // lbltotal
+            // 
+            this.lbltotal.AutoSize = true;
+            this.lbltotal.Location = new System.Drawing.Point(184, 38);
+            this.lbltotal.Name = "lbltotal";
+            this.lbltotal.Size = new System.Drawing.Size(50, 13);
+            this.lbltotal.TabIndex = 53;
+            this.lbltotal.Text = "0,00   TL";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label40.Location = new System.Drawing.Point(114, 76);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(20, 16);
+            this.label40.TabIndex = 54;
+            this.label40.Text = "%";
+            // 
+            // lblkdv
+            // 
+            this.lblkdv.AutoSize = true;
+            this.lblkdv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblkdv.Location = new System.Drawing.Point(85, 75);
+            this.lblkdv.Name = "lblkdv";
+            this.lblkdv.Size = new System.Drawing.Size(32, 16);
+            this.lblkdv.TabIndex = 55;
+            this.lblkdv.Text = "0,00";
+            // 
             // QuotationAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2520,7 +2570,7 @@
         private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label lblsubtotal;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.Button button1;
@@ -2709,6 +2759,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCustDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCOO;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCCCNO;
+<<<<<<< HEAD
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -2741,6 +2792,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn30;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
+=======
+        private System.Windows.Forms.Label lbltotal;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.Label lblkdv;
+        private System.Windows.Forms.Label label40;
+>>>>>>> Mumin-Feature-QuotationModule
     }
 }
 

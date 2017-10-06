@@ -87,8 +87,6 @@ namespace LoginForm
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.tabcountact = new System.Windows.Forms.TabPage();
-            this.cmbMainContact = new System.Windows.Forms.ComboBox();
-            this.label28 = new System.Windows.Forms.Label();
             this.btnContactCancel = new System.Windows.Forms.Button();
             this.btnContactDone = new System.Windows.Forms.Button();
             this.btnContactDelete = new System.Windows.Forms.Button();
@@ -107,7 +105,6 @@ namespace LoginForm
             this.txtContactName = new System.Windows.Forms.TextBox();
             this.cmbposition = new System.Windows.Forms.ComboBox();
             this.cmbdepartman = new System.Windows.Forms.ComboBox();
-            this.label36 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
@@ -134,6 +131,10 @@ namespace LoginForm
             this.txtsearch = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbMainContact = new System.Windows.Forms.ComboBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.txtExtNumber = new System.Windows.Forms.TextBox();
             this.tabgenel.SuspendLayout();
             this.tabinfo.SuspendLayout();
             this.tabaccount.SuspendLayout();
@@ -742,6 +743,7 @@ namespace LoginForm
             // 
             // tabcountact
             // 
+            this.tabcountact.Controls.Add(this.txtExtNumber);
             this.tabcountact.Controls.Add(this.cmbMainContact);
             this.tabcountact.Controls.Add(this.label28);
             this.tabcountact.Controls.Add(this.btnContactCancel);
@@ -779,24 +781,6 @@ namespace LoginForm
             this.tabcountact.TabIndex = 3;
             this.tabcountact.Text = "Contact";
             this.tabcountact.UseVisualStyleBackColor = true;
-            // 
-            // cmbMainContact
-            // 
-            this.cmbMainContact.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMainContact.FormattingEnabled = true;
-            this.cmbMainContact.Location = new System.Drawing.Point(88, 150);
-            this.cmbMainContact.Name = "cmbMainContact";
-            this.cmbMainContact.Size = new System.Drawing.Size(121, 24);
-            this.cmbMainContact.TabIndex = 4;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(6, 152);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(90, 17);
-            this.label28.TabIndex = 32;
-            this.label28.Text = "Main Contact";
             // 
             // btnContactCancel
             // 
@@ -883,48 +867,48 @@ namespace LoginForm
             // 
             // txtContactNotes
             // 
-            this.txtContactNotes.Location = new System.Drawing.Point(514, 104);
+            this.txtContactNotes.Location = new System.Drawing.Point(550, 104);
             this.txtContactNotes.Multiline = true;
             this.txtContactNotes.Name = "txtContactNotes";
-            this.txtContactNotes.Size = new System.Drawing.Size(168, 67);
+            this.txtContactNotes.Size = new System.Drawing.Size(154, 67);
             this.txtContactNotes.TabIndex = 11;
             // 
             // cmblanguage
             // 
             this.cmblanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmblanguage.FormattingEnabled = true;
-            this.cmblanguage.Location = new System.Drawing.Point(514, 11);
+            this.cmblanguage.Location = new System.Drawing.Point(550, 6);
             this.cmblanguage.Name = "cmblanguage";
-            this.cmblanguage.Size = new System.Drawing.Size(121, 24);
+            this.cmblanguage.Size = new System.Drawing.Size(154, 24);
             this.cmblanguage.TabIndex = 9;
             // 
             // txtContactAddress
             // 
-            this.txtContactAddress.Location = new System.Drawing.Point(514, 40);
+            this.txtContactAddress.Location = new System.Drawing.Point(550, 40);
             this.txtContactAddress.Multiline = true;
             this.txtContactAddress.Name = "txtContactAddress";
-            this.txtContactAddress.Size = new System.Drawing.Size(168, 56);
+            this.txtContactAddress.Size = new System.Drawing.Size(154, 41);
             this.txtContactAddress.TabIndex = 10;
             // 
             // txtContactfax
             // 
-            this.txtContactfax.Location = new System.Drawing.Point(338, 150);
+            this.txtContactfax.Location = new System.Drawing.Point(345, 150);
             this.txtContactfax.Name = "txtContactfax";
-            this.txtContactfax.Size = new System.Drawing.Size(100, 23);
+            this.txtContactfax.Size = new System.Drawing.Size(119, 23);
             this.txtContactfax.TabIndex = 8;
             this.txtContactfax.Leave += new System.EventHandler(this.txtContactfax_Leave);
             // 
             // txtContactMobile
             // 
-            this.txtContactMobile.Location = new System.Drawing.Point(338, 104);
+            this.txtContactMobile.Location = new System.Drawing.Point(346, 104);
             this.txtContactMobile.Name = "txtContactMobile";
-            this.txtContactMobile.Size = new System.Drawing.Size(100, 23);
+            this.txtContactMobile.Size = new System.Drawing.Size(120, 23);
             this.txtContactMobile.TabIndex = 7;
             this.txtContactMobile.Leave += new System.EventHandler(this.txtContactMobile_Leave);
             // 
             // txtContactPhone
             // 
-            this.txtContactPhone.Location = new System.Drawing.Point(338, 57);
+            this.txtContactPhone.Location = new System.Drawing.Point(85, 151);
             this.txtContactPhone.Name = "txtContactPhone";
             this.txtContactPhone.Size = new System.Drawing.Size(100, 23);
             this.txtContactPhone.TabIndex = 6;
@@ -932,26 +916,26 @@ namespace LoginForm
             // 
             // txtContactMail
             // 
-            this.txtContactMail.Location = new System.Drawing.Point(338, 10);
+            this.txtContactMail.Location = new System.Drawing.Point(345, 10);
             this.txtContactMail.Name = "txtContactMail";
-            this.txtContactMail.Size = new System.Drawing.Size(100, 23);
+            this.txtContactMail.Size = new System.Drawing.Size(119, 23);
             this.txtContactMail.TabIndex = 5;
             this.txtContactMail.Leave += new System.EventHandler(this.txtContactMail_Leave);
             // 
             // txtContactName
             // 
-            this.txtContactName.Location = new System.Drawing.Point(88, 104);
+            this.txtContactName.Location = new System.Drawing.Point(85, 104);
             this.txtContactName.Name = "txtContactName";
-            this.txtContactName.Size = new System.Drawing.Size(121, 23);
+            this.txtContactName.Size = new System.Drawing.Size(153, 23);
             this.txtContactName.TabIndex = 3;
             // 
             // cmbposition
             // 
             this.cmbposition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbposition.FormattingEnabled = true;
-            this.cmbposition.Location = new System.Drawing.Point(88, 57);
+            this.cmbposition.Location = new System.Drawing.Point(85, 57);
             this.cmbposition.Name = "cmbposition";
-            this.cmbposition.Size = new System.Drawing.Size(121, 24);
+            this.cmbposition.Size = new System.Drawing.Size(124, 24);
             this.cmbposition.TabIndex = 2;
             // 
             // cmbdepartman
@@ -964,19 +948,10 @@ namespace LoginForm
             this.cmbdepartman.TabIndex = 1;
             this.cmbdepartman.SelectedIndexChanged += new System.EventHandler(this.cmbdepartman_SelectedIndexChanged);
             // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(448, 127);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(45, 17);
-            this.label36.TabIndex = 11;
-            this.label36.Text = "Notes";
-            // 
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(448, 12);
+            this.label35.Location = new System.Drawing.Point(470, 12);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(72, 17);
             this.label35.TabIndex = 10;
@@ -985,7 +960,7 @@ namespace LoginForm
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(448, 59);
+            this.label34.Location = new System.Drawing.Point(470, 59);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(60, 17);
             this.label34.TabIndex = 9;
@@ -1005,14 +980,14 @@ namespace LoginForm
             this.label32.AutoSize = true;
             this.label32.Location = new System.Drawing.Point(253, 106);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(94, 17);
+            this.label32.Size = new System.Drawing.Size(49, 17);
             this.label32.TabIndex = 7;
-            this.label32.Text = "Mobile Phone";
+            this.label32.Text = "Mobile";
             // 
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(253, 59);
+            this.label31.Location = new System.Drawing.Point(3, 154);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(49, 17);
             this.label31.TabIndex = 6;
@@ -1243,6 +1218,40 @@ namespace LoginForm
             this.panel1.Size = new System.Drawing.Size(921, 65);
             this.panel1.TabIndex = 2;
             // 
+            // cmbMainContact
+            // 
+            this.cmbMainContact.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMainContact.FormattingEnabled = true;
+            this.cmbMainContact.Location = new System.Drawing.Point(345, 54);
+            this.cmbMainContact.Name = "cmbMainContact";
+            this.cmbMainContact.Size = new System.Drawing.Size(121, 24);
+            this.cmbMainContact.TabIndex = 33;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(253, 57);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(90, 17);
+            this.label28.TabIndex = 34;
+            this.label28.Text = "Main Contact";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(470, 110);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(45, 17);
+            this.label36.TabIndex = 11;
+            this.label36.Text = "Notes";
+            // 
+            // txtExtNumber
+            // 
+            this.txtExtNumber.Location = new System.Drawing.Point(191, 152);
+            this.txtExtNumber.Name = "txtExtNumber";
+            this.txtExtNumber.Size = new System.Drawing.Size(47, 23);
+            this.txtExtNumber.TabIndex = 36;
+            // 
             // SupplierMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1344,7 +1353,6 @@ namespace LoginForm
         private System.Windows.Forms.TextBox txtContactName;
         private System.Windows.Forms.ComboBox cmbposition;
         private System.Windows.Forms.ComboBox cmbdepartman;
-        private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label33;
@@ -1369,8 +1377,6 @@ namespace LoginForm
         private System.Windows.Forms.Button btnContactDone;
         private System.Windows.Forms.ComboBox cmbsub;
         private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.ComboBox cmbMainContact;
-        private System.Windows.Forms.Label label28;
         private System.Windows.Forms.ComboBox cmbBankName;
         private System.Windows.Forms.TextBox txtpobox;
         private System.Windows.Forms.Label label14;
@@ -1382,6 +1388,10 @@ namespace LoginForm
         private System.Windows.Forms.Button AdressCancel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox txtExtNumber;
+        private System.Windows.Forms.ComboBox cmbMainContact;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label36;
     }
 }
 
