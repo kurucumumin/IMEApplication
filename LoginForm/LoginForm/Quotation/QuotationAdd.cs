@@ -107,7 +107,7 @@ namespace LoginForm
 
         private void dataGridView3_KeyDown(object sender, KeyEventArgs e)
         {
-
+            
 
         }
 
@@ -136,7 +136,7 @@ namespace LoginForm
                                 {
                                     if (i <= Quotation.Count - 1)
                                     {
-                                        dataGridView3.Rows[i].Cells[0].Value = (i + 2).ToString();
+                                        dataGridView3.Rows[i].Cells[0].Value = (i).ToString();
                                     }
                                 }
                                 #endregion
@@ -180,6 +180,7 @@ namespace LoginForm
                                 if (classQuotationAdd.NumberofItem(dataGridView3.CurrentCell.Value.ToString()) == 0)
                                 {
                                     if (tabControl1.SelectedTab != tabItemDetails) { tabControl1.SelectedTab = tabItemDetails; }
+                                    //ItemClear();
                                     ItemDetailsFiller(dataGridView3.CurrentCell.Value.ToString());
                                     //LandingCost Calculation
                                     FillProductCodeItem();
@@ -198,6 +199,7 @@ namespace LoginForm
                                     {
                                         if (classQuotationAdd.NumberofItem(dataGridView3.CurrentCell.Value.ToString()) == 0)
                                         {
+                                            //ItemClear();
                                             if (tabControl1.SelectedTab != tabItemDetails) { tabControl1.SelectedTab = tabItemDetails; }
                                             ItemDetailsFiller(dataGridView3.CurrentCell.Value.ToString());
                                             //LandingCost Calculation
@@ -336,10 +338,83 @@ namespace LoginForm
             #endregion
         }
 
+        private void ItemClear()
+        {
+            #region ItemPageClear
+            label63.BackColor = Color.Transparent;
+            label53.BackColor = Color.Transparent;
+            label64.BackColor = Color.Transparent;
+            label55.BackColor = Color.Transparent;
+            label26.BackColor = Color.Transparent;
+            label28.BackColor = Color.Transparent;
+            txtManufacturer.Text = "";
+            textBox17.Text = "";
+            txtSupersectionName.Text = "";
+            textBox14.Text = "";
+            txtMHCodeLevel1.Text = "";
+            txtCofO.Text = "";
+            txtCCCN.Text = "";
+            textBox21.Text = "";
+            textBox20.Text = "";
+            textBox19.Text = "";
+            textBox18.Text = "";
+            textBox22.Text = "";
+            txtRSStock.Text = "";
+            textBox23.Text = "";
+            txtRSOnOrder.Text = "";
+            textBox24.Text = "";
+            txtHazardousInd.Text = "";
+            txtEnvironment.Text = "";
+            txtShipping.Text = "";
+            txtLithium.Text = "";
+            txtCalibrationInd.Text = "";
+            txtLicenceType.Text = "";
+            txtDiscCharge.Text = "";
+            txtExpiringPro.Text = "";
+            txtUKDiscDate.Text = "";
+            txtDiscontinuationDate.Text = "";
+            txtSubstitutedBy.Text = "";
+            txtRunOn.Text = "";
+            txtReferral.Text = "";
+            textBox35.Text = "";
+            txtHeight.Text = "";
+            txtWidth.Text = "";
+            txtLength.Text = "";
+            txtStandartWeight.Text = "";
+            txtGrossWeight.Text = "";
+            txtUnitCount1.Text = "";
+            txtUnitCount2.Text = "";
+            txtUnitCount3.Text = "";
+            txtUnitCount4.Text = "";
+            txtUnitCount5.Text = "";
+            txtWeb1.Text = "";
+            txtWeb2.Text = "";
+            txtWeb3.Text = "";
+            txtWeb4.Text = "";
+            txtWeb5.Text = "";
+            txtUK1.Text = "";
+            txtUK2.Text = "";
+            txtUK3.Text = "";
+            txtUK4.Text = "";
+            txtUK5.Text = "";
+            txtCost1.Text = "";
+            txtCost2.Text = "";
+            txtCost3.Text = "";
+            txtCost4.Text = "";
+            txtCost5.Text = "";
+            txtMargin1.Text = "";
+            txtMargin2.Text = "";
+            txtMargin3.Text = "";
+            txtMargin4.Text = "";
+            txtMargin5.Text = "";
+            #endregion
+        }
+
 
 
         private void ItemDetailsFiller(string ArticleNoSearch)
         {
+            
             #region Filler
             string ArticleNoSearch1 = ArticleNoSearch;
             try { ArticleNoSearch1 = (Int32.Parse(ArticleNoSearch)).ToString(); } catch { }
@@ -374,7 +449,7 @@ namespace LoginForm
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgSSM"].Value = sd.Pack_Quantity.ToString();
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUC"].Value = sd.Unit_Content.ToString();
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUOM"].Value = sd.Unit_Measure;
-
+                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgMPN"].Value = sd.MPN;
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgCL"].Value = sd.Calibration_Ind;
                 if (sd.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sd.Standard_Weight) / (decimal)1000).ToString("G29"); } else { }
                 if (txtHeight.Text != "" && txtLength.Text != "" && txtWidth.Text != "") { txtGrossWeight.Text = (Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString(); }
@@ -391,8 +466,7 @@ namespace LoginForm
                 //BHCFlag.Text = sd.BHC_Flag.ToString();
                 txtDiscCharge.Text = sd.Disc_Change_Ind;
                 txtExpiringPro.Text = sd.Expiring_Product_Change_Ind;
-                txtManufacturer.Text = sd.Manufacturer.ToString();
-                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgMPN"].Value = sd.MPN;
+                txtManufacturer.Text = sd.Manufacturer.ToString();                
                 txtMHCodeLevel1.Text = sd.MH_Code_Level_1;
                 txtCCCN.Text = sd.CCCN_No.ToString();
                 txtHeight.Text = ((decimal)(sd.Heigh * ((Decimal)100))).ToString("G29");
@@ -543,7 +617,28 @@ namespace LoginForm
 
         }
 
-       
+        private void dataGridView3_Click(object sender, EventArgs e)
+        {
+            ItemClear();
+            try { ItemDetailsFiller(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells[2].Value.ToString()); } catch { }
+        }
+
+        private void dataGridView3_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            dataGridView2.Rows.Add();
+            for (int i = 0; i < dataGridView3.Columns.Count; i++)
+            {
+                dataGridView2.Rows[dataGridView2.Rows.Count-2].Cells[i].Value= dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells[i].Value;
+            }
+        }
+
+        private void cbFactor_TextChanged(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dataGridView3.Rows.Count; i++)
+            {
+                dataGridView3.Rows[i].Cells["dgUPIME"].Value = (Int32.Parse(dataGridView3.Rows[i].Cells["dgLandingCost"].Value.ToString()) * Int32.Parse(cbFactor.Text)).ToString();
+            }
+        }
     }
 
 }
