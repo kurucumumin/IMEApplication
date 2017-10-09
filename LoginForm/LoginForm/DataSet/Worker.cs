@@ -35,7 +35,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> MinMarge { get; set; }
         public Nullable<decimal> MinRate { get; set; }
         public Nullable<int> Title { get; set; }
-        public Nullable<bool> isActive { get; set; }
+        public Nullable<int> isActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }

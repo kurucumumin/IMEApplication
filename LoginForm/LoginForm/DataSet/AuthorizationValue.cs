@@ -17,7 +17,7 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public AuthorizationValue()
         {
-            this.Roles = new HashSet<Role>();
+            this.RoleValues = new HashSet<RoleValue>();
             this.Workers = new HashSet<Worker>();
         }
     
@@ -25,7 +25,7 @@ namespace LoginForm.DataSet
         public string AuthorizationValue1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Role> Roles { get; set; }
+        public virtual ICollection<RoleValue> RoleValues { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Worker> Workers { get; set; }
     }

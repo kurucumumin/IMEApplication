@@ -10,9 +10,9 @@ namespace LoginForm.Services
     {
         static IMEEntities IME = new IMEEntities();
 
-        public static List<Role> getRoles()
+        public static List<RoleValue> getRoles()
         {
-            return IME.Roles.ToList();
+            return IME.RoleValues.ToList();
         }
         public static List<AuthorizationValue> getAuths()
         {
@@ -39,11 +39,11 @@ namespace LoginForm.Services
             }
         }
 
-        public static bool AddRole(Role role)
+        public static bool AddRole(RoleValue role)
         {
             try
             {
-                IME.Roles.Add(role);
+                IME.RoleValues.Add(role);
                 IME.SaveChanges();
                 return true;
             }
