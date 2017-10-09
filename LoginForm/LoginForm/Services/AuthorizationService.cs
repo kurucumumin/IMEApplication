@@ -21,7 +21,8 @@ namespace LoginForm.Services
 
         public static List<Worker> getWorkers()
         {
-            return IME.Workers.ToList();
+            IMEEntities ime = new IMEEntities();
+            return ime.Workers.ToList();
         }
         
         public static bool AddAuthToRole(AuthorizationValue Auth)
