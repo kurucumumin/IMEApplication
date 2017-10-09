@@ -51,7 +51,7 @@ namespace LoginForm
             //WorkerApp.ID = Logged.WorkerID;
             if (Logged != null)
             {
-                if(Logged.isActive == true)
+                if(Logged.isActive == 1)
                 {
                     closeRequest = true;
                     this.Close();

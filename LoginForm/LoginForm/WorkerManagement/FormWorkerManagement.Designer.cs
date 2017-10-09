@@ -357,7 +357,7 @@
             // 
             // authorizationValueBindingSource
             // 
-            this.authorizationValueBindingSource.DataSource = typeof(LoginForm.DataSet.AuthorizationValue);
+            //this.authorizationValueBindingSource.DataSource = typeof(LoginForm.DataSet.AuthorizationValue);
             // 
             // FormWorkerManagement
             // 

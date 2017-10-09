@@ -46,7 +46,7 @@ namespace LoginForm
                         }
                         else
                         {
-                            Worker2Add.isActive = true;
+                            Worker2Add.isActive = 1;
                             //Worker2Add.isActive = "A";
                             WorkerService.AddNewWorker(Worker2Add);
                             #region PrintingResult
@@ -118,7 +118,7 @@ namespace LoginForm
         {
             Worker Deleted = new Worker();
             Deleted = lbWorkerList.SelectedItem as Worker;
-            Deleted.isActive = false;
+            Deleted.isActive = 0;
             //Deleted.isActive = "I";
 
             try

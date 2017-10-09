@@ -177,7 +177,7 @@
     <Compile Include="DataSet\Rate.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\Role.cs">
+    <Compile Include="DataSet\RoleValue.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\RSPro.cs">
