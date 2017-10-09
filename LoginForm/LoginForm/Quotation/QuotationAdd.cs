@@ -225,6 +225,7 @@ namespace LoginForm
                     #endregion
                     break;
                 case 10://QAUANTITY
+                    #region Quantity
                     {
 
                         if (Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString()) != 0)
@@ -291,38 +292,43 @@ namespace LoginForm
 
                             if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgDisc"].Value != null) discResult = (discResult - (discResult * decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgDisc"].Value.ToString()) / 100));
                             dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = discResult.ToString("G29");
-
-
-                            Rate rate = new Rate();
-                            DateTime today = DateTime.Today;
-                            rate = IME.Rates.Where(a => a.rate_date == today).Where(b => b.CurType == "GBP").FirstOrDefault();
-                            decimal GBPBuy = Decimal.Parse(rate.RateBuy.ToString());
-
-                            if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value != null)
-                            {
-                                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString())) / GBPBuy))) * 100).ToString("G29");
-                            }
+                            GetMargin();
                         }
 
                         #endregion
                     }
                     break;
+                #endregion
                 case 16://Disc
                     {
                         decimal discResult = 0;
                         if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value != null) { discResult = decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value.ToString()); }
                         discResult = (discResult - (discResult * decimal.Parse(dataGridView3.CurrentCell.Value.ToString()) / 100));
                         dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = discResult.ToString();
+                        GetMargin();
                     }
                     break;
-                case 17://
+                case 17://total 
                     {
 
                         decimal total = decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString());
                         decimal UcupIME = decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value.ToString());
                         dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgDisc"].Value = String.Format("{0:0.000}", ((UcupIME - total) * (decimal)100 / UcupIME));
+                        GetMargin();
                     }
                     break;
+            }
+        }
+        private void GetMargin()
+        {
+            Rate rate = new Rate();
+            DateTime today = DateTime.Today;
+            rate = IME.Rates.Where(a => a.rate_date == today).Where(b => b.CurType == "GBP").FirstOrDefault();
+            decimal GBPBuy = Decimal.Parse(rate.RateBuy.ToString());
+
+            if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value != null)
+            {
+                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString())) / GBPBuy))) * 100).ToString("G29");
             }
         }
 
@@ -337,6 +343,8 @@ namespace LoginForm
             dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgTotalWeight"].Value = txtGrossWeight.Text;
             #endregion
         }
+
+       
 
         private void ItemClear()
         {

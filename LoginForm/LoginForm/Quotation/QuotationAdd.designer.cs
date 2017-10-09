@@ -413,7 +413,6 @@
             this.dgCCCNO});
             this.dataGridView3.Location = new System.Drawing.Point(-23, 5);
             this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView3.Size = new System.Drawing.Size(1340, 229);
             this.dataGridView3.TabIndex = 9;
             this.dataGridView3.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellEndEdit);
