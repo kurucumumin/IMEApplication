@@ -605,9 +605,31 @@ namespace LoginForm
             if (du != null) { txtLicenceType.Text = du.LicenceType; }
             //
             #endregion
-            if (txtLithium.Text != "") { label64.BackColor = Color.Red; }
-            if (txtShipping.Text != "") { label63.BackColor = Color.Red; }
-            if (txtEnvironment.Text != "") { label53.BackColor = Color.Red; }
+            if (txtLithium.Text != "") {
+                label64.BackColor = Color.Red;
+                for(int i = 0; i < dataGridView3.ColumnCount; i++)
+                {
+                    dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells[i].Style.ForeColor = Color.Blue;
+                }
+                
+            }
+            if (txtShipping.Text != "")
+            {
+                label63.BackColor = Color.Red;
+                for (int i = 0; i < dataGridView3.ColumnCount; i++)
+                {
+                    dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells[i].Style.ForeColor = Color.Red;
+                }
+            }
+            if (txtEnvironment.Text != "")
+            {
+                label53.BackColor = Color.Red;
+                
+                for (int i = 0; i < dataGridView3.ColumnCount; i++)
+                {
+                    dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells[i].Style.ForeColor = Color.Maroon;
+                }
+            }
         }
 
         private void CustomerCode_TextChanged(object sender, EventArgs e)
@@ -696,6 +718,22 @@ namespace LoginForm
             {
                 GetLandingCost(i);
                 GetQuotationQuantity(i);
+                try
+                {
+                    #region Get Margin
+                    Rate rate = new Rate();
+                    DateTime today = DateTime.Today;
+                    rate = IME.Rates.Where(a => a.rate_date == today).Where(b => b.CurType == "GBP").FirstOrDefault();
+                    decimal GBPBuy = Decimal.Parse(rate.RateBuy.ToString());
+
+                    if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value != null)
+                    {
+                        dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dataGridView3.Rows[i].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString())) / GBPBuy))) * 100).ToString("G29");
+                    }
+                    #endregion
+                }
+                catch { }
+
             }
         }
 
