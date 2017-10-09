@@ -33,13 +33,12 @@
             this.cbRoleList = new System.Windows.Forms.ComboBox();
             this.txtRoleName = new System.Windows.Forms.TextBox();
             this.txtAuthName = new System.Windows.Forms.TextBox();
-            this.btnAddWorker = new System.Windows.Forms.Button();
             this.lbWorkerList = new System.Windows.Forms.ListBox();
-            this.btnEdit = new System.Windows.Forms.Button();
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialCheckBox1 = new MaterialSkin.Controls.MaterialCheckBox();
             this.materialSingleLineTextField1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnEditWorker = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.btnAddWorker = new MaterialSkin.Controls.MaterialRaisedButton();
             this.SuspendLayout();
             // 
             // btnAddRole
@@ -89,17 +88,6 @@
             this.txtAuthName.Size = new System.Drawing.Size(276, 26);
             this.txtAuthName.TabIndex = 4;
             // 
-            // btnAddWorker
-            // 
-            this.btnAddWorker.Location = new System.Drawing.Point(652, 335);
-            this.btnAddWorker.Margin = new System.Windows.Forms.Padding(4);
-            this.btnAddWorker.Name = "btnAddWorker";
-            this.btnAddWorker.Size = new System.Drawing.Size(142, 29);
-            this.btnAddWorker.TabIndex = 5;
-            this.btnAddWorker.Text = "AddWorker";
-            this.btnAddWorker.UseVisualStyleBackColor = true;
-            this.btnAddWorker.Click += new System.EventHandler(this.btnAddWorker_Click);
-            // 
             // lbWorkerList
             // 
             this.lbWorkerList.FormattingEnabled = true;
@@ -109,16 +97,6 @@
             this.lbWorkerList.Name = "lbWorkerList";
             this.lbWorkerList.Size = new System.Drawing.Size(330, 204);
             this.lbWorkerList.TabIndex = 6;
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Location = new System.Drawing.Point(352, 208);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(4);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(142, 29);
-            this.btnEdit.TabIndex = 7;
-            this.btnEdit.Text = "button1";
-            this.btnEdit.UseVisualStyleBackColor = true;
             // 
             // materialFlatButton1
             // 
@@ -167,30 +145,43 @@
             this.materialSingleLineTextField1.Text = "materialSingleLineTextField1";
             this.materialSingleLineTextField1.UseSystemPasswordChar = false;
             // 
-            // materialRaisedButton1
+            // btnEditWorker
             // 
-            this.materialRaisedButton1.Depth = 0;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(621, 280);
-            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRaisedButton1.Name = "materialRaisedButton1";
-            this.materialRaisedButton1.Primary = true;
-            this.materialRaisedButton1.Size = new System.Drawing.Size(213, 43);
-            this.materialRaisedButton1.TabIndex = 11;
-            this.materialRaisedButton1.Text = "materialRaisedButton1";
-            this.materialRaisedButton1.UseVisualStyleBackColor = true;
+            this.btnEditWorker.Depth = 0;
+            this.btnEditWorker.Location = new System.Drawing.Point(352, 209);
+            this.btnEditWorker.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnEditWorker.Name = "btnEditWorker";
+            this.btnEditWorker.Primary = true;
+            this.btnEditWorker.Size = new System.Drawing.Size(93, 43);
+            this.btnEditWorker.TabIndex = 11;
+            this.btnEditWorker.Text = "Edit";
+            this.btnEditWorker.UseVisualStyleBackColor = true;
+            this.btnEditWorker.Click += new System.EventHandler(this.btnEditWorker_Click);
+            // 
+            // btnAddWorker
+            // 
+            this.btnAddWorker.Depth = 0;
+            this.btnAddWorker.Location = new System.Drawing.Point(352, 160);
+            this.btnAddWorker.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnAddWorker.Name = "btnAddWorker";
+            this.btnAddWorker.Primary = true;
+            this.btnAddWorker.Size = new System.Drawing.Size(93, 43);
+            this.btnAddWorker.TabIndex = 12;
+            this.btnAddWorker.Text = "Add";
+            this.btnAddWorker.UseVisualStyleBackColor = true;
+            this.btnAddWorker.Click += new System.EventHandler(this.btnAddWorker_Click);
             // 
             // FormRoles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1095, 395);
-            this.Controls.Add(this.materialRaisedButton1);
+            this.Controls.Add(this.btnAddWorker);
+            this.Controls.Add(this.btnEditWorker);
             this.Controls.Add(this.materialSingleLineTextField1);
             this.Controls.Add(this.materialCheckBox1);
             this.Controls.Add(this.materialFlatButton1);
-            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.lbWorkerList);
-            this.Controls.Add(this.btnAddWorker);
             this.Controls.Add(this.txtAuthName);
             this.Controls.Add(this.txtRoleName);
             this.Controls.Add(this.cbRoleList);
@@ -214,12 +205,11 @@
         private System.Windows.Forms.ComboBox cbRoleList;
         private System.Windows.Forms.TextBox txtRoleName;
         private System.Windows.Forms.TextBox txtAuthName;
-        private System.Windows.Forms.Button btnAddWorker;
         private System.Windows.Forms.ListBox lbWorkerList;
-        private System.Windows.Forms.Button btnEdit;
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
         private MaterialSkin.Controls.MaterialCheckBox materialCheckBox1;
         private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField1;
-        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
+        private MaterialSkin.Controls.MaterialRaisedButton btnEditWorker;
+        private MaterialSkin.Controls.MaterialRaisedButton btnAddWorker;
     }
 }

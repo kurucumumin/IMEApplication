@@ -2,24 +2,33 @@
 using LoginForm.Services;
 using System;
 using System.Windows.Forms;
-using System.Security.Cryptography;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
+using LoginForm.RolesAndAuths;
 
 namespace LoginForm.WorkerManagement
 {
     public partial class FormWorkerManagement : Form
     {
+        bool isEditMode = false;
+        Worker worker;
+
         public FormWorkerManagement()
         {
             InitializeComponent();
-        }
-
-        private void FormWorkerManagement_Load(object sender, EventArgs e)
-        {
+            chcChangePassword.Visible = false;
             LoadRoles();
             LoadAuthorities();
+        }
+        public FormWorkerManagement(Worker worker)
+        {
+            InitializeComponent();
+            this.worker = worker;
+            chcChangePassword.Visible = true;
+            LoadRoles();
+            LoadAuthorities();
+
+            isEditMode = true;
+            loadEditWorker();
         }
 
         private void LoadAuthorities()
@@ -64,91 +73,231 @@ namespace LoginForm.WorkerManagement
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
-            using (IMEEntities IME = new IMEEntities())
-                try
+            IMEEntities IME = new IMEEntities();
+            if (isEditMode)
+            {
+                if (nullExist())
                 {
-                    Worker worker = new Worker();
-                    worker.NameLastName = txtNameLastName.Text;
-                    if (chcActive.Checked)
-                    {
-                        worker.isActive = 1;
-                    }
-                    else
-                    {
-                        worker.isActive = 0;
-                    }
-                    worker.Email = txtMail.Text;
-                    worker.MinMarge = numeric1.Value;
-                    worker.MinRate = numeric2.Value;
-                    worker.Phone = txtPhone.Text;
-                    worker.UserName = txtUsername.Text;
-                    worker.UserPass = Utils.MD5Hash(txtUserPass.Text);
+                    MessageBox.Show("You need to fill in the marked('*') fields", "New Worker", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    Worker wrkr = IME.Workers.Where(w => w.WorkerID == worker.WorkerID).FirstOrDefault();
 
-                    int title = 0;
+                    wrkr.NameLastName = txtNameLastName.Text;
+                    wrkr.UserName = txtUsername.Text;
+                    wrkr.Email = txtMail.Text;
+                    wrkr.Phone = txtPhone.Text;
+                    if (chcChangePassword.Checked)
+                    {
+                        wrkr.UserPass = Utils.MD5Hash(txtUserPass.Text);
+                    }
                     if (rbSales.Checked)
                     {
-                        title = 1;
+                        wrkr.Title = 1;
                     }
                     else if (rbSalesManager.Checked)
                     {
-                        title = 2;
+                        wrkr.Title = 2;
                     }
                     else if (rbGeneralManager.Checked)
                     {
-                        title = 3;
+                        wrkr.Title = 3;
                     }
-                    worker.Title = title;
 
-                    IME.Workers.Add(worker);
-                    IME.SaveChanges();
+                    wrkr.MinMarge = numeric1.Value;
+                    wrkr.MinRate = numeric2.Value;
 
-                    worker = IME.Workers.Where(w => w.UserName == worker.UserName).FirstOrDefault();
-                    //WorkerService.AddNewWorker(worker);
-                    foreach (AuthorizationValue item in clbAuthorities.CheckedItems)
+                    if (chcActive.Checked)
                     {
-                        //AuthorizationValue av = IME.AuthorizationValues.Where(auth => auth.AuthorizationID == item.AuthorizationID).FirstOrDefault();
-
-                        //av.Workers.Add(worker);
-                        //IME.SaveChanges();
-
-
-                        AuthorizationValue av = IME.AuthorizationValues.Where(auth => auth.AuthorizationID == item.AuthorizationID).FirstOrDefault();
-                        worker.AuthorizationValues.Add(av);
-                        IME.SaveChanges();
-
-
+                        wrkr.isActive = 1;
+                    }
+                    else
+                    {
+                        wrkr.isActive = 0;
                     }
 
+                    if (clbAuthorities.CheckedItems.Count != 0)
+                    {
+                        foreach (AuthorizationValue item in clbAuthorities.CheckedItems)
+                        {
+                            AuthorizationValue av = IME.AuthorizationValues.Where(auth => auth.AuthorizationID == item.AuthorizationID).FirstOrDefault();
+                            worker.AuthorizationValues.Add(av);
+                        }
+                        IME.SaveChanges();
+                    }
                 }
-                catch (Exception)
+            }
+            else
+            {
+                if (nullExist())
                 {
-                    MessageBox.Show("Bir hata oluştu");
-                    throw;
+                    MessageBox.Show("You need to fill in the marked('*') fields", "New Worker", MessageBoxButtons.OK);
                 }
+                else
+                {
+                        try
+                        {
+                            Worker worker = new Worker();
+                            worker.NameLastName = txtNameLastName.Text;
+                            if (chcActive.Checked)
+                            {
+                                worker.isActive = 1;
+                            }
+                            else
+                            {
+                                worker.isActive = 0;
+                            }
+                            worker.Email = txtMail.Text;
+                            worker.MinMarge = numeric1.Value;
+                            worker.MinRate = numeric2.Value;
+                            worker.Phone = txtPhone.Text;
+                            worker.UserName = txtUsername.Text;
+                            worker.UserPass = Utils.MD5Hash(txtUserPass.Text);
+
+                            int title = 0;
+                            if (rbSales.Checked)
+                            {
+                                title = 1;
+                            }
+                            else if (rbSalesManager.Checked)
+                            {
+                                title = 2;
+                            }
+                            else if (rbGeneralManager.Checked)
+                            {
+                                title = 3;
+                            }
+                            worker.Title = title;
+
+                            IME.Workers.Add(worker);
+                            IME.SaveChanges();
+
+                            if (clbAuthorities.CheckedItems.Count != 0)
+                            {
+                                worker = IME.Workers.Where(w => w.UserName == worker.UserName).FirstOrDefault();
+                                foreach (AuthorizationValue item in clbAuthorities.CheckedItems)
+                                {
+                                    AuthorizationValue av = IME.AuthorizationValues.Where(auth => auth.AuthorizationID == item.AuthorizationID).FirstOrDefault();
+                                    worker.AuthorizationValues.Add(av);
+                                }
+                            IME.SaveChanges();
+                        }
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Bir hata oluştu");
+                            throw;
+                        }
+                }
+            }
+            
+            this.Close();
         }
 
-        //private void dgRoles_CellClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    if (e.ColumnIndex == 0)
-        //    {
-        //        DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)dgRoles.Rows[e.RowIndex].Cells[0];
-        //        if (chk.Value == chk.TrueValue)
-        //        {
-        //            chk.Value = chk.FalseValue;
-        //        }
-        //        else
-        //        {
-        //            chk.Value = chk.TrueValue;
-        //        }
-        //    }
-        //}
+        private bool nullExist()
+        {
+            if (isEditMode)
+            {
+                if (chcChangePassword.Checked)
+                {
+                    if (txtUserPass.Text.Length == 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        if (txtNameLastName.Text.Length == 0 || txtUsername.Text.Length == 0 || txtMail.Text.Length == 0 || txtPhone.Text.Length == 0 || (rbSales.Checked == false && rbSalesManager.Checked == false && rbGeneralManager.Checked == false) == true || numeric1.Value <= 0 || numeric2.Value <= 0)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+                else
+                {
+                    if (txtNameLastName.Text.Length == 0 || txtUsername.Text.Length == 0 || txtMail.Text.Length == 0 || txtPhone.Text.Length == 0 || (rbSales.Checked == false && rbSalesManager.Checked == false && rbGeneralManager.Checked == false) == true || numeric1.Value <= 0 || numeric2.Value <= 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                if (txtNameLastName.Text.Length == 0 || txtUsername.Text.Length == 0 || txtUserPass.Text.Length == 0 || txtMail.Text.Length == 0 || txtPhone.Text.Length == 0 || (rbSales.Checked == false && rbSalesManager.Checked == false && rbGeneralManager.Checked == false) == true || numeric1.Value <= 0 || numeric2.Value <= 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
 
-        //private bool checkNulls()
-        //{
-        //    if()
+        private void loadEditWorker()
+        {
+            txtNameLastName.Text = worker.NameLastName;
+            txtUsername.Text = worker.UserName;
+            txtUserPass.Enabled = false;
+            chcChangePassword.Checked = false;
+            txtMail.Text = worker.Email;
+            txtPhone.Text = worker.Phone;
 
-        //    return true;
-        //}
+            switch (worker.Title)
+            {
+                case 1:
+                    rbSales.Checked = true;
+                    break;
+                case 2:
+                    rbSalesManager.Checked = true;
+                    break;
+                case 3:
+                    rbGeneralManager.Checked = true;
+                    break;
+            }
+
+            if (worker.isActive == 1)
+            {
+                chcActive.Checked = true;
+            }
+            else
+            {
+                chcActive.Checked = false;
+            }
+
+            numeric1.Value = (decimal)worker.MinMarge;
+            numeric2.Value = (decimal)worker.MinRate;
+
+            for(int i = 0; i < clbAuthorities.Items.Count; i++)
+            {
+                foreach (var wAuth in worker.AuthorizationValues)
+                {
+                    if (wAuth.AuthorizationID == ((AuthorizationValue)clbAuthorities.Items[i]).AuthorizationID)
+                    {
+                        clbAuthorities.SetItemChecked(i, true);
+                    }
+                }
+            }
+        }
+
+        private void chcChangePassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chcChangePassword.Checked)
+            {
+                txtUserPass.Enabled = true;
+            }
+            else
+            {
+                txtUserPass.Enabled = false;
+            }
+        }
     }
 }
