@@ -115,6 +115,7 @@ namespace LoginForm
 
         private void dataGridView3_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            #region MyRegion
             switch (dataGridView3.CurrentCell.ColumnIndex)
             {
                 case 0:
@@ -318,9 +319,12 @@ namespace LoginForm
                     }
                     break;
             }
+            #endregion
         }
+
         private void GetMargin()
         {
+            #region Get Margin
             Rate rate = new Rate();
             DateTime today = DateTime.Today;
             rate = IME.Rates.Where(a => a.rate_date == today).Where(b => b.CurType == "GBP").FirstOrDefault();
@@ -330,6 +334,8 @@ namespace LoginForm
             {
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString())) / GBPBuy))) * 100).ToString("G29");
             }
+            #endregion
+
         }
 
         private void FillProductCodeItem()
@@ -343,8 +349,6 @@ namespace LoginForm
             dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgTotalWeight"].Value = txtGrossWeight.Text;
             #endregion
         }
-
-       
 
         private void ItemClear()
         {

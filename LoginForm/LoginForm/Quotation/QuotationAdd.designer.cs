@@ -421,11 +421,10 @@
             this.dataGridView3.TabIndex = 9;
             this.dataGridView3.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellEndEdit);
             this.dataGridView3.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView3_RowsAdded);
-<<<<<<< HEAD
+
             this.dataGridView3.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridView3_UserDeletingRow);
             this.dataGridView3.Click += new System.EventHandler(this.dataGridView3_Click);
-=======
->>>>>>> Mumin-Feature-QuotationModule
+
             this.dataGridView3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView3_KeyDown);
             // 
             // dgNo
@@ -2758,7 +2757,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCustDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCOO;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCCCNO;
-<<<<<<< HEAD
+
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -2791,12 +2790,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn30;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
-=======
+
         private System.Windows.Forms.Label lbltotal;
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.Label lblkdv;
         private System.Windows.Forms.Label label40;
->>>>>>> Mumin-Feature-QuotationModule
+
     }
 }
 
