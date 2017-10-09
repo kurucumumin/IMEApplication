@@ -64,68 +64,69 @@ namespace LoginForm.WorkerManagement
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            
-            using (IMEEntities IME = new IMEEntities())
-                try
-                {
-                    Worker worker = new Worker();
-                    worker.NameLastName = txtNameLastName.Text;
-                    if (chcActive.Checked)
+            if (checkNulls())
+            {
+                MessageBox.Show("You need to fill in the marked('*') fields", "New Worker" , MessageBoxButtons.OK);
+            }
+            else
+            {
+                using (IMEEntities IME = new IMEEntities())
+                    try
                     {
-                        worker.isActive = 1;
-                    }
-                    else
-                    {
-                        worker.isActive = 0;
-                    }
-                    worker.Email = txtMail.Text;
-                    worker.MinMarge = numeric1.Value;
-                    worker.MinRate = numeric2.Value;
-                    worker.Phone = txtPhone.Text;
-                    worker.UserName = txtUsername.Text;
-                    worker.UserPass = Utils.MD5Hash(txtUserPass.Text);
+                        Worker worker = new Worker();
+                        worker.NameLastName = txtNameLastName.Text;
+                        if (chcActive.Checked)
+                        {
+                            worker.isActive = 1;
+                        }
+                        else
+                        {
+                            worker.isActive = 0;
+                        }
+                        worker.Email = txtMail.Text;
+                        worker.MinMarge = numeric1.Value;
+                        worker.MinRate = numeric2.Value;
+                        worker.Phone = txtPhone.Text;
+                        worker.UserName = txtUsername.Text;
+                        worker.UserPass = Utils.MD5Hash(txtUserPass.Text);
 
-                    int title = 0;
-                    if (rbSales.Checked)
-                    {
-                        title = 1;
-                    }
-                    else if (rbSalesManager.Checked)
-                    {
-                        title = 2;
-                    }
-                    else if (rbGeneralManager.Checked)
-                    {
-                        title = 3;
-                    }
-                    worker.Title = title;
+                        int title = 0;
+                        if (rbSales.Checked)
+                        {
+                            title = 1;
+                        }
+                        else if (rbSalesManager.Checked)
+                        {
+                            title = 2;
+                        }
+                        else if (rbGeneralManager.Checked)
+                        {
+                            title = 3;
+                        }
+                        worker.Title = title;
 
-                    IME.Workers.Add(worker);
-                    IME.SaveChanges();
-
-                    worker = IME.Workers.Where(w => w.UserName == worker.UserName).FirstOrDefault();
-                    //WorkerService.AddNewWorker(worker);
-                    foreach (AuthorizationValue item in clbAuthorities.CheckedItems)
-                    {
-                        //AuthorizationValue av = IME.AuthorizationValues.Where(auth => auth.AuthorizationID == item.AuthorizationID).FirstOrDefault();
-
-                        //av.Workers.Add(worker);
-                        //IME.SaveChanges();
-
-
-                        AuthorizationValue av = IME.AuthorizationValues.Where(auth => auth.AuthorizationID == item.AuthorizationID).FirstOrDefault();
-                        worker.AuthorizationValues.Add(av);
+                        IME.Workers.Add(worker);
                         IME.SaveChanges();
 
-
+                        if(clbAuthorities.CheckedItems.Count != 0)
+                        {
+                            worker = IME.Workers.Where(w => w.UserName == worker.UserName).FirstOrDefault();
+                            //WorkerService.AddNewWorker(worker);
+                            foreach (AuthorizationValue item in clbAuthorities.CheckedItems)
+                            {
+                                AuthorizationValue av = IME.AuthorizationValues.Where(auth => auth.AuthorizationID == item.AuthorizationID).FirstOrDefault();
+                                worker.AuthorizationValues.Add(av);
+                                IME.SaveChanges();
+                            }
+                        }
                     }
-
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Bir hata oluştu");
-                    throw;
-                }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Bir hata oluştu");
+                        throw;
+                    }
+            }
+            
         }
 
         //private void dgRoles_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -144,11 +145,17 @@ namespace LoginForm.WorkerManagement
         //    }
         //}
 
-        //private bool checkNulls()
-        //{
-        //    if()
-
-        //    return true;
-        //}
+        private bool checkNulls()
+        {
+            if (txtNameLastName.Text.Length == 0 || txtUsername.Text.Length == 0 || txtUserPass.Text.Length == 0 || txtMail.Text.Length == 0 || txtPhone.Text.Length == 0 || (rbSales.Checked == false && rbSalesManager.Checked == false && rbGeneralManager.Checked == false) == true || numeric1.Value <= 0 ||numeric2.Value <= 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+                
+        }
     }
 }
