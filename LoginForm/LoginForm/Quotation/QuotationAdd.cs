@@ -107,7 +107,7 @@ namespace LoginForm
 
         private void dataGridView3_KeyDown(object sender, KeyEventArgs e)
         {
-            
+
 
         }
 
@@ -228,75 +228,7 @@ namespace LoginForm
                 case 10://QAUANTITY
                     #region Quantity
                     {
-
-                        if (Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString()) != 0)
-                        {
-                            #region Quantity
-
-
-                            if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value != null) { dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgCost"].Value = classQuotationAdd.GetCost(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())).ToString("G29"); }
-                            if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value != null) { price = Decimal.Parse((classQuotationAdd.GetPrice(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())) * Decimal.Parse(cbFactor.Text) * Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())).ToString("G29")); }
-                            decimal discResult = 0;
-
-                            //Fiyat burada 
-                            string articleNo = dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString();
-                            int isP = 0;
-                            if (articleNo.ToUpper().IndexOf('P') != -1) { isP = 1; }
-
-                            if (isP == 1)
-                            {
-                                if (IME.SuperDiskPs.Where(a => a.Article_No == articleNo).ToList().Count > 0)
-                                {
-                                    if (IME.SuperDiskPs.Where(a => a.Article_No == articleNo).FirstOrDefault().Pack_Quantity > 1)
-                                    {
-
-
-                                        if (Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgSSM"].Value.ToString()) > 1 && Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString()) == 1)
-                                        {
-                                            if ((Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString()) % Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgSSM"].Value.ToString())) != 0)
-                                            {
-                                                MessageBox.Show("Please enter a number that is a multiple of SSM");
-                                            }
-                                            else
-                                            {
-                                                price = price / decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString());
-                                            }
-
-
-                                        }
-                                    }
-
-                                }
-                            }
-                            else
-                            {
-
-                                if (Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString()) > 1 && Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgSSM"].Value.ToString()) == 1)
-                                {
-                                    int resultMod = (Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString()) % Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString()));
-                                    if ((resultMod != 0) || (Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())) < Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString()))
-                                    {
-                                        MessageBox.Show("Please enter a number that is a multiple of Unit Content");
-                                        break;
-                                    }
-                                    else
-                                    {
-                                        price = price / decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString());
-                                    }
-
-                                }
-                            }
-                            //
-
-                            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value = price.ToString();
-                            discResult = decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value.ToString());
-
-                            if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgDisc"].Value != null) discResult = (discResult - (discResult * decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgDisc"].Value.ToString()) / 100));
-                            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = discResult.ToString("G29");
-                            GetMargin();
-                        }
-
-                        #endregion
+                        GetQuotationQuantity(dataGridView3.CurrentCell.RowIndex);
                     }
                     break;
                 #endregion
@@ -322,6 +254,93 @@ namespace LoginForm
             #endregion
         }
 
+        private void GetQuotationQuantity(int rowindex)
+        {
+            if (cbFactor.Text != null && cbFactor.Text != "")
+            {
+                #region Quantity
+                try
+                {
+                    if (Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString()) != 0)
+                    {
+                        #region Quantity
+                        if (Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString()) != 0)
+                        {
+
+
+
+                            if (dataGridView3.Rows[rowindex].Cells["dgQty"].Value != null) { dataGridView3.Rows[rowindex].Cells["dgCost"].Value = classQuotationAdd.GetCost(dataGridView3.Rows[rowindex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString("G29"); }
+                            if (dataGridView3.Rows[rowindex].Cells["dgQty"].Value != null) { price = Decimal.Parse((classQuotationAdd.GetPrice(dataGridView3.Rows[rowindex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString())) * Decimal.Parse(cbFactor.Text) * Decimal.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString("G29")); }
+                            decimal discResult = 0;
+
+                            //Fiyat burada 
+                            string articleNo = dataGridView3.Rows[rowindex].Cells["dgProductCode"].Value.ToString();
+                            int isP = 0;
+                            if (articleNo.ToUpper().IndexOf('P') != -1) { isP = 1; }
+
+                            if (isP == 1)
+                            {
+                                if (IME.SuperDiskPs.Where(a => a.Article_No == articleNo).ToList().Count > 0)
+                                {
+                                    if (IME.SuperDiskPs.Where(a => a.Article_No == articleNo).FirstOrDefault().Pack_Quantity > 1)
+                                    {
+
+
+                                        if (Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgSSM"].Value.ToString()) > 1 && Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgUC"].Value.ToString()) == 1)
+                                        {
+                                            if ((Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString()) % Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgSSM"].Value.ToString())) != 0)
+                                            {
+                                                MessageBox.Show("Please enter a number that is a multiple of SSM");
+                                            }
+                                            else
+                                            {
+                                                price = price / decimal.Parse(dataGridView3.Rows[rowindex].Cells["dgUC"].Value.ToString());
+                                            }
+
+
+                                        }
+                                    }
+
+                                }
+                            }
+                            else
+                            {
+
+                                if (Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgUC"].Value.ToString()) > 1 && Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgSSM"].Value.ToString()) == 1)
+                                {
+                                    int resultMod = (Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString()) % Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgUC"].Value.ToString()));
+                                    if ((resultMod != 0) || (Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString())) < Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgUC"].Value.ToString()))
+                                    {
+                                        MessageBox.Show("Please enter a number that is a multiple of Unit Content");
+
+                                    }
+                                    else
+                                    {
+                                        price = price / decimal.Parse(dataGridView3.Rows[rowindex].Cells["dgUC"].Value.ToString());
+                                    }
+
+                                }
+                            }
+                            //
+
+                            dataGridView3.Rows[rowindex].Cells["dgUPIME"].Value = price.ToString();
+                            discResult = decimal.Parse(dataGridView3.Rows[rowindex].Cells["dgUPIME"].Value.ToString());
+
+                            if (dataGridView3.Rows[rowindex].Cells["dgDisc"].Value != null) discResult = (discResult - (discResult * decimal.Parse(dataGridView3.Rows[rowindex].Cells["dgDisc"].Value.ToString()) / 100));
+                            dataGridView3.Rows[rowindex].Cells["dgUCUPCurr"].Value = discResult.ToString("G29");
+                            GetMargin();
+                        }
+
+ #endregion
+                    }
+                }
+                catch { }
+                #endregion
+
+            }
+        }
+
+
         private void GetMargin()
         {
             #region Get Margin
@@ -341,7 +360,7 @@ namespace LoginForm
         private void FillProductCodeItem()
         {
             #region FillProductCodeItem
-            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgLandingCost"].Value = (classQuotationAdd.GetLandingCost(dataGridView3.CurrentCell.Value.ToString())).ToString("G29");
+            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgLandingCost"].Value = (classQuotationAdd.GetLandingCost(dataGridView3.CurrentCell.Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked)).ToString("G29");
             dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgHZ"].Value = txtHazardousInd.Text;
             dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgCCCNO"].Value = txtCCCN.Text;
             dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgCOO"].Value = txtCofO.Text;
@@ -426,7 +445,7 @@ namespace LoginForm
 
         private void ItemDetailsFiller(string ArticleNoSearch)
         {
-            
+
             #region Filler
             string ArticleNoSearch1 = ArticleNoSearch;
             try { ArticleNoSearch1 = (Int32.Parse(ArticleNoSearch)).ToString(); } catch { }
@@ -478,7 +497,7 @@ namespace LoginForm
                 //BHCFlag.Text = sd.BHC_Flag.ToString();
                 txtDiscCharge.Text = sd.Disc_Change_Ind;
                 txtExpiringPro.Text = sd.Expiring_Product_Change_Ind;
-                txtManufacturer.Text = sd.Manufacturer.ToString();                
+                txtManufacturer.Text = sd.Manufacturer.ToString();
                 txtMHCodeLevel1.Text = sd.MH_Code_Level_1;
                 txtCCCN.Text = sd.CCCN_No.ToString();
                 txtHeight.Text = ((decimal)(sd.Heigh * ((Decimal)100))).ToString("G29");
@@ -625,7 +644,7 @@ namespace LoginForm
 
         private void dataGridView3_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            dataGridView3.Rows[dataGridView3.CurrentRow.Index +1].Cells[0].Value = (Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentRow.Index].Cells[0].Value.ToString()) + 1).ToString();
+            dataGridView3.Rows[dataGridView3.CurrentRow.Index + 1].Cells[0].Value = (Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentRow.Index].Cells[0].Value.ToString()) + 1).ToString();
 
         }
 
@@ -640,17 +659,52 @@ namespace LoginForm
             dataGridView2.Rows.Add();
             for (int i = 0; i < dataGridView3.Columns.Count; i++)
             {
-                dataGridView2.Rows[dataGridView2.Rows.Count-2].Cells[i].Value= dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells[i].Value;
+                dataGridView2.Rows[dataGridView2.Rows.Count - 2].Cells[i].Value = dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells[i].Value;
             }
         }
 
         private void cbFactor_TextChanged(object sender, EventArgs e)
         {
-            for (int i = 0; i < dataGridView3.Rows.Count; i++)
+
+            #region Faktör Değişimi
+            for (int i = 0; i < dataGridView3.RowCount; i++)
             {
-                dataGridView3.Rows[i].Cells["dgUPIME"].Value = (Int32.Parse(dataGridView3.Rows[i].Cells["dgLandingCost"].Value.ToString()) * Int32.Parse(cbFactor.Text)).ToString();
+                GetQuotationQuantity(i);
+            }
+            #endregion
+
+            //for (int i = 0; i < dataGridView3.Rows.Count; i++)
+            //{
+            //    dataGridView3.Rows[i].Cells["dgUPIME"].Value = (Int32.Parse(dataGridView3.Rows[i].Cells["dgLandingCost"].Value.ToString()) * Int32.Parse(cbFactor.Text)).ToString();
+            //}
+        }
+
+        private void GetLandingCost(int Rowindex)
+        {
+            try
+            {
+                dataGridView3.Rows[Rowindex].Cells["dgLandingCost"].Value = (classQuotationAdd.GetLandingCost(dataGridView3.Rows[Rowindex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked)).ToString("G29");
+            }
+            catch { }
+
+            }
+
+
+        private void getQuotationValues()
+        {
+            for (int i = 0; i < dataGridView3.RowCount; i++)
+            {
+                GetLandingCost(i);
+                GetQuotationQuantity(i);
             }
         }
+
+        private void ckItemCost_CheckedChanged(object sender, EventArgs e)
+        {
+            getQuotationValues();
+        }
+
+
     }
 
 }

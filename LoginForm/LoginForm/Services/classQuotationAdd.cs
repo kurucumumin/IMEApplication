@@ -80,7 +80,7 @@ namespace LoginForm.Services
             return -1;// fiyatının olmadığı gösteriyor
             #endregion
         }
-        public static decimal GetLandingCost(string ArticleNo)
+        public static decimal GetLandingCost(string ArticleNo, bool Product, bool Weight, bool CustomsDuties)
         {
             #region Calculating LandingCost
             IMEEntities IME = new IMEEntities();
@@ -108,11 +108,10 @@ namespace LoginForm.Services
             }
 
             decimal l = 0;
-            if (!(w == 0 || p == 0))
-            {
-                l = (p + (w * ((decimal)1.7)) + (((decimal)0.0675) * (p + (w * ((decimal)1.7)))));
-                return l;
-            }
+            if (Product == false) { p = 0; }
+            if (Weight == false) { w = 0; }
+            l = (p + (w * ((decimal)1.7)) + (((decimal)0.0675) * (p + (w * ((decimal)1.7)))));
+            if (CustomsDuties == false) { l = 0; }
             return l;
             #endregion
         }

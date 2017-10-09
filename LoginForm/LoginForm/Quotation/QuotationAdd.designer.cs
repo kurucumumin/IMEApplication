@@ -113,6 +113,10 @@
             this.comboBox8 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.lblkdv = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.lbltotal = new System.Windows.Forms.Label();
+            this.label52 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
@@ -125,9 +129,9 @@
             this.label41 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.ckItemCost = new System.Windows.Forms.CheckBox();
+            this.ckWeightCost = new System.Windows.Forms.CheckBox();
+            this.ckCustomsDuties = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabCustomerDetails = new System.Windows.Forms.TabPage();
@@ -263,10 +267,6 @@
             this.txtUnitCount1 = new System.Windows.Forms.TextBox();
             this.txtUnitCount4 = new System.Windows.Forms.TextBox();
             this.txtUnitCount3 = new System.Windows.Forms.TextBox();
-            this.label52 = new System.Windows.Forms.Label();
-            this.lbltotal = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.lblkdv = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -421,10 +421,8 @@
             this.dataGridView3.TabIndex = 9;
             this.dataGridView3.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellEndEdit);
             this.dataGridView3.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView3_RowsAdded);
-
             this.dataGridView3.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridView3_UserDeletingRow);
             this.dataGridView3.Click += new System.EventHandler(this.dataGridView3_Click);
-
             this.dataGridView3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView3_KeyDown);
             // 
             // dgNo
@@ -948,6 +946,44 @@
             this.groupBox11.TabIndex = 49;
             this.groupBox11.TabStop = false;
             // 
+            // lblkdv
+            // 
+            this.lblkdv.AutoSize = true;
+            this.lblkdv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblkdv.Location = new System.Drawing.Point(85, 75);
+            this.lblkdv.Name = "lblkdv";
+            this.lblkdv.Size = new System.Drawing.Size(32, 16);
+            this.lblkdv.TabIndex = 55;
+            this.lblkdv.Text = "0,00";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label40.Location = new System.Drawing.Point(114, 76);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(20, 16);
+            this.label40.TabIndex = 54;
+            this.label40.Text = "%";
+            // 
+            // lbltotal
+            // 
+            this.lbltotal.AutoSize = true;
+            this.lbltotal.Location = new System.Drawing.Point(184, 38);
+            this.lbltotal.Name = "lbltotal";
+            this.lbltotal.Size = new System.Drawing.Size(50, 13);
+            this.lbltotal.TabIndex = 53;
+            this.lbltotal.Text = "0,00   TL";
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(8, 35);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(31, 13);
+            this.label52.TabIndex = 52;
+            this.label52.Text = "Total";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -1054,47 +1090,50 @@
             this.label34.TabIndex = 0;
             this.label34.Text = "Total Discount";
             // 
-            // checkBox1
+            // ckItemCost
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(6, 20);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(70, 17);
-            this.checkBox1.TabIndex = 10;
-            this.checkBox1.Text = "Item Cost";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.ckItemCost.AutoSize = true;
+            this.ckItemCost.Checked = true;
+            this.ckItemCost.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckItemCost.Location = new System.Drawing.Point(6, 20);
+            this.ckItemCost.Name = "ckItemCost";
+            this.ckItemCost.Size = new System.Drawing.Size(70, 17);
+            this.ckItemCost.TabIndex = 10;
+            this.ckItemCost.Text = "Item Cost";
+            this.ckItemCost.UseVisualStyleBackColor = true;
+            this.ckItemCost.CheckedChanged += new System.EventHandler(this.ckItemCost_CheckedChanged);
             // 
-            // checkBox2
+            // ckWeightCost
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Checked = true;
-            this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox2.Location = new System.Drawing.Point(6, 52);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(84, 17);
-            this.checkBox2.TabIndex = 11;
-            this.checkBox2.Text = "Weight Cost";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.ckWeightCost.AutoSize = true;
+            this.ckWeightCost.Checked = true;
+            this.ckWeightCost.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckWeightCost.Location = new System.Drawing.Point(6, 56);
+            this.ckWeightCost.Name = "ckWeightCost";
+            this.ckWeightCost.Size = new System.Drawing.Size(84, 17);
+            this.ckWeightCost.TabIndex = 11;
+            this.ckWeightCost.Text = "Weight Cost";
+            this.ckWeightCost.UseVisualStyleBackColor = true;
+            this.ckWeightCost.CheckedChanged += new System.EventHandler(this.ckItemCost_CheckedChanged);
             // 
-            // checkBox3
+            // ckCustomsDuties
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Checked = true;
-            this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox3.Location = new System.Drawing.Point(6, 92);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(99, 17);
-            this.checkBox3.TabIndex = 12;
-            this.checkBox3.Text = "Customs Duties";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.ckCustomsDuties.AutoSize = true;
+            this.ckCustomsDuties.Checked = true;
+            this.ckCustomsDuties.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckCustomsDuties.Location = new System.Drawing.Point(6, 92);
+            this.ckCustomsDuties.Name = "ckCustomsDuties";
+            this.ckCustomsDuties.Size = new System.Drawing.Size(99, 17);
+            this.ckCustomsDuties.TabIndex = 12;
+            this.ckCustomsDuties.Text = "Customs Duties";
+            this.ckCustomsDuties.UseVisualStyleBackColor = true;
+            this.ckCustomsDuties.CheckedChanged += new System.EventHandler(this.ckItemCost_CheckedChanged);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.checkBox3);
-            this.groupBox2.Controls.Add(this.checkBox2);
-            this.groupBox2.Controls.Add(this.checkBox1);
+            this.groupBox2.Controls.Add(this.ckCustomsDuties);
+            this.groupBox2.Controls.Add(this.ckWeightCost);
+            this.groupBox2.Controls.Add(this.ckItemCost);
             this.groupBox2.Location = new System.Drawing.Point(663, 587);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(131, 120);
@@ -2468,44 +2507,6 @@
             this.txtUnitCount3.Size = new System.Drawing.Size(44, 20);
             this.txtUnitCount3.TabIndex = 410;
             // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(8, 35);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(31, 13);
-            this.label52.TabIndex = 52;
-            this.label52.Text = "Total";
-            // 
-            // lbltotal
-            // 
-            this.lbltotal.AutoSize = true;
-            this.lbltotal.Location = new System.Drawing.Point(184, 38);
-            this.lbltotal.Name = "lbltotal";
-            this.lbltotal.Size = new System.Drawing.Size(50, 13);
-            this.lbltotal.TabIndex = 53;
-            this.lbltotal.Text = "0,00   TL";
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label40.Location = new System.Drawing.Point(114, 76);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(20, 16);
-            this.label40.TabIndex = 54;
-            this.label40.Text = "%";
-            // 
-            // lblkdv
-            // 
-            this.lblkdv.AutoSize = true;
-            this.lblkdv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblkdv.Location = new System.Drawing.Point(85, 75);
-            this.lblkdv.Name = "lblkdv";
-            this.lblkdv.Size = new System.Drawing.Size(32, 16);
-            this.lblkdv.TabIndex = 55;
-            this.lblkdv.Text = "0,00";
-            // 
             // QuotationAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2587,9 +2588,9 @@
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox ckItemCost;
+        private System.Windows.Forms.CheckBox ckWeightCost;
+        private System.Windows.Forms.CheckBox ckCustomsDuties;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.TabControl tabControl1;
