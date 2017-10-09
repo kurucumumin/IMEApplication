@@ -269,7 +269,7 @@
           <Property Name="RateBuyEffective" Type="decimal" Precision="20" Scale="10" />
           <Property Name="RateSellEffective" Type="decimal" Precision="20" Scale="10" />
         </EntityType>
-        <EntityType Name="Role">
+        <EntityType Name="RoleValue">
           <Key>
             <PropertyRef Name="RoleID" />
           </Key>
@@ -558,7 +558,7 @@
           <Property Name="MinMarge" Type="decimal" Precision="5" Scale="2" />
           <Property Name="MinRate" Type="decimal" Precision="5" Scale="2" />
           <Property Name="Title" Type="int" />
-          <Property Name="isActive" Type="bit" />
+          <Property Name="isActive" Type="int" />
         </EntityType>
         <Association Name="FK__AuthRole__AuthID__4924D839">
           <End Role="AuthorizationValue" Type="Self.AuthorizationValue" Multiplicity="1" />
@@ -573,10 +573,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__AuthRole__RoleID__473C8FC7">
-          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="RoleValue" Type="Self.RoleValue" Multiplicity="1" />
           <End Role="AuthRole" Type="Self.AuthRole" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Role">
+            <Principal Role="RoleValue">
               <PropertyRef Name="RoleID" />
             </Principal>
             <Dependent Role="AuthRole">
@@ -1269,7 +1269,7 @@
           <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentTerm" EntityType="Self.PaymentTerm" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rate" EntityType="Self.Rate" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleValue" EntityType="Self.RoleValue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RSPro" EntityType="Self.RSPro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SlidingPrice" EntityType="Self.SlidingPrice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuperDisk" EntityType="Self.SuperDisk" Schema="dbo" store:Type="Tables" />
@@ -1293,7 +1293,7 @@
             <End Role="AuthRole" EntitySet="AuthRole" />
           </AssociationSet>
           <AssociationSet Name="FK__AuthRole__RoleID__473C8FC7" Association="Self.FK__AuthRole__RoleID__473C8FC7">
-            <End Role="Role" EntitySet="Role" />
+            <End Role="RoleValue" EntitySet="RoleValue" />
             <End Role="AuthRole" EntitySet="AuthRole" />
           </AssociationSet>
           <AssociationSet Name="FK__City__CountryID__51300E55" Association="Self.FK__City__CountryID__51300E55">
@@ -1545,7 +1545,7 @@
           <EntitySet Name="PaymentMethods" EntityType="IMEModel.PaymentMethod" />
           <EntitySet Name="PaymentTerms" EntityType="IMEModel.PaymentTerm" />
           <EntitySet Name="Rates" EntityType="IMEModel.Rate" />
-          <EntitySet Name="Roles" EntityType="IMEModel.Role" />
+          <EntitySet Name="RoleValues" EntityType="IMEModel.RoleValue" />
           <EntitySet Name="RSProes" EntityType="IMEModel.RSPro" />
           <EntitySet Name="SlidingPrices" EntityType="IMEModel.SlidingPrice" />
           <EntitySet Name="SuperDisks" EntityType="IMEModel.SuperDisk" />
@@ -1777,7 +1777,7 @@
           </AssociationSet>
           <AssociationSet Name="AuthRole" Association="IMEModel.AuthRole">
             <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
-            <End Role="Role" EntitySet="Roles" />
+            <End Role="RoleValue" EntitySet="RoleValues" />
           </AssociationSet>
           <AssociationSet Name="UserAuthorization" Association="IMEModel.UserAuthorization">
             <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
@@ -1790,7 +1790,7 @@
           </Key>
           <Property Name="AuthorizationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="AuthorizationValue1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Roles" Relationship="IMEModel.AuthRole" FromRole="AuthorizationValue" ToRole="Role" />
+          <NavigationProperty Name="RoleValues" Relationship="IMEModel.AuthRole" FromRole="AuthorizationValue" ToRole="RoleValue" />
           <NavigationProperty Name="Workers" Relationship="IMEModel.UserAuthorization" FromRole="AuthorizationValue" ToRole="Worker" />
         </EntityType>
         <EntityType Name="Capital">
@@ -2100,13 +2100,13 @@
           <NavigationProperty Name="Customers1" Relationship="IMEModel.FK__Customer__rateID__6FE99F9F" FromRole="Rate" ToRole="Customer" />
           <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__rate_I__625A9A57" FromRole="Rate" ToRole="Supplier" />
         </EntityType>
-        <EntityType Name="Role">
+        <EntityType Name="RoleValue">
           <Key>
             <PropertyRef Name="RoleID" />
           </Key>
           <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="roleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AuthorizationValues" Relationship="IMEModel.AuthRole" FromRole="Role" ToRole="AuthorizationValue" />
+          <NavigationProperty Name="AuthorizationValues" Relationship="IMEModel.AuthRole" FromRole="RoleValue" ToRole="AuthorizationValue" />
         </EntityType>
         <EntityType Name="RSPro">
           <Key>
@@ -2424,7 +2424,7 @@
           <Property Name="MinMarge" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="MinRate" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="Title" Type="Int32" />
-          <Property Name="isActive" Type="Boolean" />
+          <Property Name="isActive" Type="Int32" />
           <NavigationProperty Name="Customers" Relationship="IMEModel.FK__Customer__accoun__6EF57B66" FromRole="Worker" ToRole="Customer" />
           <NavigationProperty Name="Customers1" Relationship="IMEModel.FK__Customer__repres__3F466844" FromRole="Worker" ToRole="Customer" />
           <NavigationProperty Name="Customers2" Relationship="IMEModel.FK__Customer__repres__6E01572D" FromRole="Worker" ToRole="Customer" />
@@ -3071,7 +3071,7 @@
         </Association>
         <Association Name="AuthRole">
           <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
-          <End Type="IMEModel.Role" Role="Role" Multiplicity="*" />
+          <End Type="IMEModel.RoleValue" Role="RoleValue" Multiplicity="*" />
         </Association>
         <Association Name="UserAuthorization">
           <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
@@ -3362,9 +3362,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="IMEModel.Role">
-              <MappingFragment StoreEntitySet="Role">
+          <EntitySetMapping Name="RoleValues">
+            <EntityTypeMapping TypeName="IMEModel.RoleValue">
+              <MappingFragment StoreEntitySet="RoleValue">
                 <ScalarProperty Name="roleName" ColumnName="roleName" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
               </MappingFragment>
@@ -3664,7 +3664,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <AssociationSetMapping Name="AuthRole" TypeName="IMEModel.AuthRole" StoreEntitySet="AuthRole">
-            <EndProperty Name="Role">
+            <EndProperty Name="RoleValue">
               <ScalarProperty Name="RoleID" ColumnName="RoleID" />
             </EndProperty>
             <EndProperty Name="AuthorizationValue">

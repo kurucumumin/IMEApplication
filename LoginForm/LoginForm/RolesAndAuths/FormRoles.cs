@@ -10,14 +10,22 @@ using System.Windows.Forms;
 using LoginForm.Services;
 using LoginForm.DataSet;
 using LoginForm.WorkerManagement;
+using MaterialSkin;
+using MaterialSkin.Controls;
 
 namespace LoginForm.RolesAndAuths
 {
-    public partial class FormRoles : Form
+    public partial class FormRoles : MaterialForm
     {
         public FormRoles()
         {
             InitializeComponent();
+
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+
         }
 
         private void FormRoles_Load(object sender, EventArgs e)
@@ -50,7 +58,7 @@ namespace LoginForm.RolesAndAuths
 
         private void btnAddRole_Click(object sender, EventArgs e)
         {
-            Role role = new Role();
+            RoleValue role = new RoleValue();
             role.roleName = txtRoleName.Text;
             AuthorizationService.AddRole(role);
             LoadCBRoleList();
