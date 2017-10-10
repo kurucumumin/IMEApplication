@@ -211,6 +211,8 @@ namespace LoginForm
                                             dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = null;
                                             dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value = null;
                                             dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = null;
+                                            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgTotal"].Value = null;
+                                            CalculateSubTotal();
                                             txtSubstitutedBy.Text = null;
                                             #endregion
                                         }
@@ -236,8 +238,10 @@ namespace LoginForm
                     {
                         decimal discResult = 0;
                         if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value != null) { discResult = decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value.ToString()); }
-                        discResult = (discResult - (discResult * decimal.Parse(dataGridView3.CurrentCell.Value.ToString()) / 100));
+                        if (dataGridView3.CurrentCell.Value != null && dataGridView3.CurrentCell.Value != "") { discResult = (discResult - (discResult * decimal.Parse(dataGridView3.CurrentCell.Value.ToString()) / 100)); }
                         dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = discResult.ToString();
+                        try { dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgTotal"].Value = (discResult * Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())).ToString(); } catch { }
+                        CalculateSubTotal();
                         GetMargin();
                     }
                     break;
@@ -321,17 +325,18 @@ namespace LoginForm
 
                                 }
                             }
-                            //
-
-                            dataGridView3.Rows[rowindex].Cells["dgUPIME"].Value = price.ToString();
+                            //TOTAL ve UPIME belirleniyor
+                            dataGridView3.Rows[rowindex].Cells["dgTotal"].Value = price.ToString();
+                            dataGridView3.Rows[rowindex].Cells["dgUPIME"].Value = (price / Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
                             discResult = decimal.Parse(dataGridView3.Rows[rowindex].Cells["dgUPIME"].Value.ToString());
 
                             if (dataGridView3.Rows[rowindex].Cells["dgDisc"].Value != null) discResult = (discResult - (discResult * decimal.Parse(dataGridView3.Rows[rowindex].Cells["dgDisc"].Value.ToString()) / 100));
                             dataGridView3.Rows[rowindex].Cells["dgUCUPCurr"].Value = discResult.ToString("G29");
                             GetMargin();
+                            CalculateSubTotal();
                         }
 
- #endregion
+                        #endregion
                     }
                 }
                 catch { }
@@ -351,7 +356,7 @@ namespace LoginForm
 
             if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value != null)
             {
-                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString())) / GBPBuy))) * 100).ToString("G29");
+                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgTotal"].Value.ToString())) / GBPBuy))) * 100).ToString("G29");
             }
             #endregion
 
@@ -605,13 +610,14 @@ namespace LoginForm
             if (du != null) { txtLicenceType.Text = du.LicenceType; }
             //
             #endregion
-            if (txtLithium.Text != "") {
+            if (txtLithium.Text != "")
+            {
                 label64.BackColor = Color.Red;
-                for(int i = 0; i < dataGridView3.ColumnCount; i++)
+                for (int i = 0; i < dataGridView3.ColumnCount; i++)
                 {
                     dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells[i].Style.ForeColor = Color.Blue;
                 }
-                
+
             }
             if (txtShipping.Text != "")
             {
@@ -624,7 +630,7 @@ namespace LoginForm
             if (txtEnvironment.Text != "")
             {
                 label53.BackColor = Color.Red;
-                
+
                 for (int i = 0; i < dataGridView3.ColumnCount; i++)
                 {
                     dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells[i].Style.ForeColor = Color.Maroon;
@@ -709,7 +715,7 @@ namespace LoginForm
             }
             catch { }
 
-            }
+        }
 
 
         private void getQuotationValues()
@@ -740,6 +746,19 @@ namespace LoginForm
         private void ckItemCost_CheckedChanged(object sender, EventArgs e)
         {
             getQuotationValues();
+        }
+        private void CalculateSubTotal()
+        {
+            lblsubtotal.Text = "";
+            for (int i = 0; i < dataGridView3.RowCount; i++)
+            {
+                if (dataGridView3.Rows[i].Cells["dgTotal"].Value != null && dataGridView3.Rows[i].Cells["dgTotal"].Value != "")
+                {
+                    if (lblsubtotal.Text != null && lblsubtotal.Text != "")
+                    { lblsubtotal.Text = (Decimal.Parse(lblsubtotal.Text) + Decimal.Parse(dataGridView3.Rows[i].Cells["dgTotal"].Value.ToString())).ToString(); }
+                    else { lblsubtotal.Text = dataGridView3.Rows[i].Cells["dgTotal"].Value.ToString(); }
+                }
+            }
         }
 
 
