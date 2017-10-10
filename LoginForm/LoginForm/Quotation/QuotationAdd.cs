@@ -165,11 +165,12 @@ namespace LoginForm
                     break;
                 case 2://PRODUCT CODE
                     {
+                        if (dataGridView3.CurrentCell.Value.ToString().Length == 6)
+                        {
+                            dataGridView3.CurrentCell.Value = 0.ToString() + dataGridView3.CurrentCell.Value.ToString();
+                        }
+
                         #region Product Code
-
-                        
-
-
                         if (dataGridView3.CurrentCell.Value != null)
                         {
                             var sd = classQuotationAdd.ItemGetSuperDisk(dataGridView3.CurrentCell.Value.ToString());
@@ -293,6 +294,12 @@ namespace LoginForm
                         #region Quantity
                         if (Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString()) != 0)
                         {
+                            if (txtHeight.Text != "" && txtLength.Text != "" && txtWidth.Text != "")
+                            {
+                                txtGrossWeight.Text = (Decimal.Parse(txtStandartWeight.Text) * Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())).ToString();
+                                dataGridView3.Rows[rowindex].Cells["dgTotalWeight"].Value = txtGrossWeight.Text;
+                            }
+
 
 
 
@@ -361,6 +368,7 @@ namespace LoginForm
 
                         #endregion
                     }
+
                 }
                 catch { }
                 #endregion
@@ -511,8 +519,7 @@ namespace LoginForm
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgMPN"].Value = sd.MPN;
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgCL"].Value = sd.Calibration_Ind;
                 if (sd.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sd.Standard_Weight) / (decimal)1000).ToString("G29"); } else { }
-                if (txtHeight.Text != "" && txtLength.Text != "" && txtWidth.Text != "") { txtGrossWeight.Text = (Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString(); }
-                txtHazardousInd.Text = sd.Hazardous_Ind;
+                 txtHazardousInd.Text = sd.Hazardous_Ind;
                 txtCalibrationInd.Text = sd.Calibration_Ind;
                 //ObsoluteFlag.Text = sd.Obsolete_Flag.ToString();
                 //LowDiscontInd.Text = sd.Low_Discount_Ind;
@@ -792,7 +799,7 @@ namespace LoginForm
                 }
 
             }
-            else
+            else 
             {
                 lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - SubTotal[RowIndex]).ToString();
                 if (dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value != null && dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value != "")
