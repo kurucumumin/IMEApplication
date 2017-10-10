@@ -113,6 +113,8 @@
             this.comboBox8 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.lblTotalExtra = new System.Windows.Forms.Label();
+            this.lblTotalDis = new System.Windows.Forms.Label();
             this.lblVat = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.lbltotal = new System.Windows.Forms.Label();
@@ -265,8 +267,6 @@
             this.txtUnitCount1 = new System.Windows.Forms.TextBox();
             this.txtUnitCount4 = new System.Windows.Forms.TextBox();
             this.txtUnitCount3 = new System.Windows.Forms.TextBox();
-            this.lblTotalDis = new System.Windows.Forms.Label();
-            this.lblTotalExtra = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -321,9 +321,9 @@
             this.lblsubtotal.AutoSize = true;
             this.lblsubtotal.Location = new System.Drawing.Point(905, 245);
             this.lblsubtotal.Name = "lblsubtotal";
-            this.lblsubtotal.Size = new System.Drawing.Size(50, 13);
+            this.lblsubtotal.Size = new System.Drawing.Size(28, 13);
             this.lblsubtotal.TabIndex = 8;
-            this.lblsubtotal.Text = "0,00   TL";
+            this.lblsubtotal.Text = "0,00";
             // 
             // label35
             // 
@@ -946,6 +946,24 @@
             this.groupBox11.TabIndex = 49;
             this.groupBox11.TabStop = false;
             // 
+            // lblTotalExtra
+            // 
+            this.lblTotalExtra.AutoSize = true;
+            this.lblTotalExtra.Location = new System.Drawing.Point(207, 56);
+            this.lblTotalExtra.Name = "lblTotalExtra";
+            this.lblTotalExtra.Size = new System.Drawing.Size(28, 13);
+            this.lblTotalExtra.TabIndex = 57;
+            this.lblTotalExtra.Text = "0,00";
+            // 
+            // lblTotalDis
+            // 
+            this.lblTotalDis.AutoSize = true;
+            this.lblTotalDis.Location = new System.Drawing.Point(213, 18);
+            this.lblTotalDis.Name = "lblTotalDis";
+            this.lblTotalDis.Size = new System.Drawing.Size(20, 13);
+            this.lblTotalDis.TabIndex = 56;
+            this.lblTotalDis.Text = "TL";
+            // 
             // lblVat
             // 
             this.lblVat.AutoSize = true;
@@ -969,11 +987,11 @@
             // lbltotal
             // 
             this.lbltotal.AutoSize = true;
-            this.lbltotal.Location = new System.Drawing.Point(187, 38);
+            this.lbltotal.Location = new System.Drawing.Point(206, 38);
             this.lbltotal.Name = "lbltotal";
-            this.lbltotal.Size = new System.Drawing.Size(50, 13);
+            this.lbltotal.Size = new System.Drawing.Size(28, 13);
             this.lbltotal.TabIndex = 53;
-            this.lbltotal.Text = "0,00   TL";
+            this.lbltotal.Text = "0,00";
             // 
             // label52
             // 
@@ -1013,11 +1031,11 @@
             // lblVatTotal
             // 
             this.lblVatTotal.AutoSize = true;
-            this.lblVatTotal.Location = new System.Drawing.Point(188, 78);
+            this.lblVatTotal.Location = new System.Drawing.Point(207, 78);
             this.lblVatTotal.Name = "lblVatTotal";
-            this.lblVatTotal.Size = new System.Drawing.Size(50, 13);
+            this.lblVatTotal.Size = new System.Drawing.Size(28, 13);
             this.lblVatTotal.TabIndex = 18;
-            this.lblVatTotal.Text = "0,00   TL";
+            this.lblVatTotal.Text = "0,00";
             // 
             // txtTotalDis2
             // 
@@ -1047,11 +1065,11 @@
             // lblGrossTotal
             // 
             this.lblGrossTotal.AutoSize = true;
-            this.lblGrossTotal.Location = new System.Drawing.Point(188, 97);
+            this.lblGrossTotal.Location = new System.Drawing.Point(207, 97);
             this.lblGrossTotal.Name = "lblGrossTotal";
-            this.lblGrossTotal.Size = new System.Drawing.Size(50, 13);
+            this.lblGrossTotal.Size = new System.Drawing.Size(28, 13);
             this.lblGrossTotal.TabIndex = 12;
-            this.lblGrossTotal.Text = "0,00   TL";
+            this.lblGrossTotal.Text = "0,00";
             // 
             // label39
             // 
@@ -2487,24 +2505,6 @@
             this.txtUnitCount3.Name = "txtUnitCount3";
             this.txtUnitCount3.Size = new System.Drawing.Size(44, 20);
             this.txtUnitCount3.TabIndex = 410;
-            // 
-            // lblTotalDis
-            // 
-            this.lblTotalDis.AutoSize = true;
-            this.lblTotalDis.Location = new System.Drawing.Point(213, 18);
-            this.lblTotalDis.Name = "lblTotalDis";
-            this.lblTotalDis.Size = new System.Drawing.Size(20, 13);
-            this.lblTotalDis.TabIndex = 56;
-            this.lblTotalDis.Text = "TL";
-            // 
-            // lblTotalExtra
-            // 
-            this.lblTotalExtra.AutoSize = true;
-            this.lblTotalExtra.Location = new System.Drawing.Point(188, 56);
-            this.lblTotalExtra.Name = "lblTotalExtra";
-            this.lblTotalExtra.Size = new System.Drawing.Size(50, 13);
-            this.lblTotalExtra.TabIndex = 57;
-            this.lblTotalExtra.Text = "0,00   TL";
             // 
             // QuotationAdd
             // 
