@@ -810,23 +810,6 @@ namespace LoginForm
                 }
                 lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + SubTotal[RowIndex]).ToString();
             }
-            #endregion
-        }
-
-            }
-            else
-            {
-                lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - SubTotal[RowIndex]).ToString();
-                if (dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value != null && dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value != "")
-                {
-                    SubTotal[RowIndex] = Decimal.Parse(dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value.ToString());
-                }
-                else
-                {
-                    SubTotal[RowIndex] = 0;
-                }
-                lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + SubTotal[RowIndex]).ToString();
-            }
             if (txtTotalDis.Text != "" && txtTotalDis.Text != null)
             {
                 txtTotalDis2.Enabled = false;
@@ -869,7 +852,9 @@ namespace LoginForm
             sayi1 = 0;
             sayi2 = 0;
             sayi3 = 0;
+            #endregion
         }
+
     }
 
 }

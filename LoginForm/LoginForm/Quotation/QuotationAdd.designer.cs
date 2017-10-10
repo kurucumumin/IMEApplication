@@ -113,6 +113,8 @@
             this.comboBox8 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.lblTotalExtra = new System.Windows.Forms.Label();
+            this.lblTotalDis = new System.Windows.Forms.Label();
             this.lblVat = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.lbltotal = new System.Windows.Forms.Label();
@@ -265,8 +267,6 @@
             this.txtUnitCount1 = new System.Windows.Forms.TextBox();
             this.txtUnitCount4 = new System.Windows.Forms.TextBox();
             this.txtUnitCount3 = new System.Windows.Forms.TextBox();
-            this.lblTotalDis = new System.Windows.Forms.Label();
-            this.lblTotalExtra = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -323,11 +323,7 @@
             this.lblsubtotal.Name = "lblsubtotal";
             this.lblsubtotal.Size = new System.Drawing.Size(28, 13);
             this.lblsubtotal.TabIndex = 8;
-<<<<<<< HEAD
             this.lblsubtotal.Text = "0,00";
-=======
-            this.lblsubtotal.Text = "0,00   TL";
->>>>>>> MuminFeature-QuotationAdd
             // 
             // label35
             // 
@@ -927,13 +923,9 @@
             // 
             // groupBox11
             // 
-<<<<<<< HEAD
-            this.groupBox11.Controls.Add(this.lblkdv);
-=======
             this.groupBox11.Controls.Add(this.lblTotalExtra);
             this.groupBox11.Controls.Add(this.lblTotalDis);
             this.groupBox11.Controls.Add(this.lblVat);
->>>>>>> MuminFeature-QuotationAdd
             this.groupBox11.Controls.Add(this.label40);
             this.groupBox11.Controls.Add(this.lbltotal);
             this.groupBox11.Controls.Add(this.label52);
@@ -954,17 +946,24 @@
             this.groupBox11.TabIndex = 49;
             this.groupBox11.TabStop = false;
             // 
-<<<<<<< HEAD
-            // lblkdv
+            // lblTotalExtra
             // 
-            this.lblkdv.AutoSize = true;
-            this.lblkdv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblkdv.Location = new System.Drawing.Point(85, 75);
-            this.lblkdv.Name = "lblkdv";
-            this.lblkdv.Size = new System.Drawing.Size(32, 16);
-            this.lblkdv.TabIndex = 55;
-            this.lblkdv.Text = "0,00";
-=======
+            this.lblTotalExtra.AutoSize = true;
+            this.lblTotalExtra.Location = new System.Drawing.Point(207, 56);
+            this.lblTotalExtra.Name = "lblTotalExtra";
+            this.lblTotalExtra.Size = new System.Drawing.Size(28, 13);
+            this.lblTotalExtra.TabIndex = 57;
+            this.lblTotalExtra.Text = "0,00";
+            // 
+            // lblTotalDis
+            // 
+            this.lblTotalDis.AutoSize = true;
+            this.lblTotalDis.Location = new System.Drawing.Point(213, 18);
+            this.lblTotalDis.Name = "lblTotalDis";
+            this.lblTotalDis.Size = new System.Drawing.Size(20, 13);
+            this.lblTotalDis.TabIndex = 56;
+            this.lblTotalDis.Text = "TL";
+            // 
             // lblVat
             // 
             this.lblVat.AutoSize = true;
@@ -974,7 +973,6 @@
             this.lblVat.Size = new System.Drawing.Size(32, 16);
             this.lblVat.TabIndex = 55;
             this.lblVat.Text = "0,00";
->>>>>>> MuminFeature-QuotationAdd
             // 
             // label40
             // 
@@ -989,11 +987,11 @@
             // lbltotal
             // 
             this.lbltotal.AutoSize = true;
-            this.lbltotal.Location = new System.Drawing.Point(187, 38);
+            this.lbltotal.Location = new System.Drawing.Point(206, 38);
             this.lbltotal.Name = "lbltotal";
-            this.lbltotal.Size = new System.Drawing.Size(50, 13);
+            this.lbltotal.Size = new System.Drawing.Size(28, 13);
             this.lbltotal.TabIndex = 53;
-            this.lbltotal.Text = "0,00   TL";
+            this.lbltotal.Text = "0,00";
             // 
             // label52
             // 
@@ -1014,18 +1012,6 @@
             this.label4.TabIndex = 23;
             this.label4.Text = "%";
             // 
-<<<<<<< HEAD
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(215, 56);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(20, 13);
-            this.label9.TabIndex = 22;
-            this.label9.Text = "TL";
-            // 
-=======
->>>>>>> MuminFeature-QuotationAdd
             // textBox7
             // 
             this.textBox7.Location = new System.Drawing.Point(9, 53);
@@ -1034,68 +1020,6 @@
             this.textBox7.TabIndex = 21;
             this.textBox7.Text = "Extra Charges";
             // 
-<<<<<<< HEAD
-            // textBox15
-            // 
-            this.textBox15.Location = new System.Drawing.Point(157, 52);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(54, 20);
-            this.textBox15.TabIndex = 20;
-            this.textBox15.Text = "0";
-            this.textBox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(188, 78);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(50, 13);
-            this.label42.TabIndex = 18;
-            this.label42.Text = "0,00   TL";
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(155, 15);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(53, 20);
-            this.textBox8.TabIndex = 15;
-            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // checkBox9
-            // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(9, 77);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(47, 17);
-            this.checkBox9.TabIndex = 17;
-            this.checkBox9.Text = "VAT";
-            this.checkBox9.UseVisualStyleBackColor = true;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(89, 15);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(24, 20);
-            this.textBox4.TabIndex = 13;
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(188, 97);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(50, 13);
-            this.label45.TabIndex = 12;
-            this.label45.Text = "0,00   TL";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(214, 18);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(20, 13);
-            this.label41.TabIndex = 8;
-            this.label41.Text = "TL";
-=======
             // txtExtraChanges
             // 
             this.txtExtraChanges.Location = new System.Drawing.Point(96, 52);
@@ -1107,11 +1031,11 @@
             // lblVatTotal
             // 
             this.lblVatTotal.AutoSize = true;
-            this.lblVatTotal.Location = new System.Drawing.Point(188, 78);
+            this.lblVatTotal.Location = new System.Drawing.Point(207, 78);
             this.lblVatTotal.Name = "lblVatTotal";
-            this.lblVatTotal.Size = new System.Drawing.Size(50, 13);
+            this.lblVatTotal.Size = new System.Drawing.Size(28, 13);
             this.lblVatTotal.TabIndex = 18;
-            this.lblVatTotal.Text = "0,00   TL";
+            this.lblVatTotal.Text = "0,00";
             // 
             // txtTotalDis2
             // 
@@ -1141,12 +1065,11 @@
             // lblGrossTotal
             // 
             this.lblGrossTotal.AutoSize = true;
-            this.lblGrossTotal.Location = new System.Drawing.Point(188, 97);
+            this.lblGrossTotal.Location = new System.Drawing.Point(207, 97);
             this.lblGrossTotal.Name = "lblGrossTotal";
-            this.lblGrossTotal.Size = new System.Drawing.Size(50, 13);
+            this.lblGrossTotal.Size = new System.Drawing.Size(28, 13);
             this.lblGrossTotal.TabIndex = 12;
-            this.lblGrossTotal.Text = "0,00   TL";
->>>>>>> MuminFeature-QuotationAdd
+            this.lblGrossTotal.Text = "0,00";
             // 
             // label39
             // 
@@ -2583,27 +2506,6 @@
             this.txtUnitCount3.Size = new System.Drawing.Size(44, 20);
             this.txtUnitCount3.TabIndex = 410;
             // 
-<<<<<<< HEAD
-=======
-            // lblTotalDis
-            // 
-            this.lblTotalDis.AutoSize = true;
-            this.lblTotalDis.Location = new System.Drawing.Point(213, 18);
-            this.lblTotalDis.Name = "lblTotalDis";
-            this.lblTotalDis.Size = new System.Drawing.Size(20, 13);
-            this.lblTotalDis.TabIndex = 56;
-            this.lblTotalDis.Text = "TL";
-            // 
-            // lblTotalExtra
-            // 
-            this.lblTotalExtra.AutoSize = true;
-            this.lblTotalExtra.Location = new System.Drawing.Point(188, 56);
-            this.lblTotalExtra.Name = "lblTotalExtra";
-            this.lblTotalExtra.Size = new System.Drawing.Size(50, 13);
-            this.lblTotalExtra.TabIndex = 57;
-            this.lblTotalExtra.Text = "0,00   TL";
-            // 
->>>>>>> MuminFeature-QuotationAdd
             // QuotationAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
