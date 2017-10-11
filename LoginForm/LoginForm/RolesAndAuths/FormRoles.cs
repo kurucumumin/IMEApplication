@@ -36,7 +36,8 @@ namespace LoginForm.RolesAndAuths
 
         public void LoadWorkerList()
         {
-            dgWorkerList.DataSource = AuthorizationService.getWorkers();
+            //dgWorkerList.DataSource = AuthorizationService.getWorkers();
+            dgdg.DataSource = AuthorizationService.getWorkers();
         }
 
 
@@ -65,9 +66,8 @@ namespace LoginForm.RolesAndAuths
 
         private void btnEditWorker_Click(object sender, EventArgs e)
         {
-            FormWorkerManagement formWorkerAdd = new FormWorkerManagement((Worker)dgWorkerList.CurrentRow.DataBoundItem);
-            formWorkerAdd.ShowDialog();
-            LoadWorkerList();
+            FormWorkerManagement formWorkerAdd = new FormWorkerManagement((Worker)dgdg.CurrentRow.DataBoundItem, this);
+            formWorkerAdd.Show();
         }
     }
 }
