@@ -17,7 +17,7 @@ namespace LoginForm.Quotation
             InitializeComponent();
         }
 
-        private void btnAddQuotation_Click(object sender, EventArgs e)
+        private void btnNewQuotation_Click(object sender, EventArgs e)
         {
             this.Hide();
             QuotationAdd quotationForm = new QuotationAdd();
