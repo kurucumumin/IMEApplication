@@ -58,23 +58,23 @@ namespace LoginForm.Services
             decimal result;
             try
             {
-                if (sp.DiscountedPrice1 != 0)
+                if (quantity < sp.Col2Break && sp.DiscountedPrice1 != 0)
                 {
                     return result = Decimal.Parse(sp.DiscountedPrice1.ToString());
                 }
-                //else if (quantity < sp.Col3Break && sp.DiscountedPrice2 != 0)
-                //{
-                //    return result = Decimal.Parse(sp.DiscountedPrice2.ToString());
-                //}
-                //else if (quantity < sp.Col4Break && sp.DiscountedPrice3 != 0)
-                //{
-                //    return result = Decimal.Parse(sp.DiscountedPrice3.ToString());
-                //}
-                //else if (quantity < sp.Col5Break && sp.DiscountedPrice4 != 0)
-                //{
-                //    return result = Decimal.Parse(sp.DiscountedPrice4.ToString());
-                //}
-                //else if (sp.DiscountedPrice4 != 0) { return result = Decimal.Parse(sp.DiscountedPrice5.ToString()); }
+                else if (quantity < sp.Col3Break && sp.DiscountedPrice2 != 0)
+                {
+                    return result = Decimal.Parse(sp.DiscountedPrice2.ToString());
+                }
+                else if (quantity < sp.Col4Break && sp.DiscountedPrice3 != 0)
+                {
+                    return result = Decimal.Parse(sp.DiscountedPrice3.ToString());
+                }
+                else if (quantity < sp.Col5Break && sp.DiscountedPrice4 != 0)
+                {
+                    return result = Decimal.Parse(sp.DiscountedPrice4.ToString());
+                }
+                else if (sp.DiscountedPrice4 != 0) { return result = Decimal.Parse(sp.DiscountedPrice5.ToString()); }
             }
             catch { }
             return -1;// fiyatının olmadığı gösteriyor

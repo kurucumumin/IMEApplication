@@ -113,20 +113,20 @@
             this.comboBox8 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.lblkdv = new System.Windows.Forms.Label();
+            this.lblTotalExtra = new System.Windows.Forms.Label();
+            this.lblTotalDis = new System.Windows.Forms.Label();
+            this.lblVat = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.lbltotal = new System.Windows.Forms.Label();
             this.label52 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.label42 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.checkBox9 = new System.Windows.Forms.CheckBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
+            this.txtExtraChanges = new System.Windows.Forms.TextBox();
+            this.lblVatTotal = new System.Windows.Forms.Label();
+            this.txtTotalDis2 = new System.Windows.Forms.TextBox();
+            this.chkVat = new System.Windows.Forms.CheckBox();
+            this.txtTotalDis = new System.Windows.Forms.TextBox();
+            this.lblGrossTotal = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
             this.ckItemCost = new System.Windows.Forms.CheckBox();
@@ -923,20 +923,20 @@
             // 
             // groupBox11
             // 
-            this.groupBox11.Controls.Add(this.lblkdv);
+            this.groupBox11.Controls.Add(this.lblTotalExtra);
+            this.groupBox11.Controls.Add(this.lblTotalDis);
+            this.groupBox11.Controls.Add(this.lblVat);
             this.groupBox11.Controls.Add(this.label40);
             this.groupBox11.Controls.Add(this.lbltotal);
             this.groupBox11.Controls.Add(this.label52);
             this.groupBox11.Controls.Add(this.label4);
-            this.groupBox11.Controls.Add(this.label9);
             this.groupBox11.Controls.Add(this.textBox7);
-            this.groupBox11.Controls.Add(this.textBox15);
-            this.groupBox11.Controls.Add(this.label42);
-            this.groupBox11.Controls.Add(this.textBox8);
-            this.groupBox11.Controls.Add(this.checkBox9);
-            this.groupBox11.Controls.Add(this.textBox4);
-            this.groupBox11.Controls.Add(this.label45);
-            this.groupBox11.Controls.Add(this.label41);
+            this.groupBox11.Controls.Add(this.txtExtraChanges);
+            this.groupBox11.Controls.Add(this.lblVatTotal);
+            this.groupBox11.Controls.Add(this.txtTotalDis2);
+            this.groupBox11.Controls.Add(this.chkVat);
+            this.groupBox11.Controls.Add(this.txtTotalDis);
+            this.groupBox11.Controls.Add(this.lblGrossTotal);
             this.groupBox11.Controls.Add(this.label39);
             this.groupBox11.Controls.Add(this.label34);
             this.groupBox11.ForeColor = System.Drawing.Color.Black;
@@ -946,15 +946,33 @@
             this.groupBox11.TabIndex = 49;
             this.groupBox11.TabStop = false;
             // 
-            // lblkdv
+            // lblTotalExtra
             // 
-            this.lblkdv.AutoSize = true;
-            this.lblkdv.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblkdv.Location = new System.Drawing.Point(85, 75);
-            this.lblkdv.Name = "lblkdv";
-            this.lblkdv.Size = new System.Drawing.Size(32, 16);
-            this.lblkdv.TabIndex = 55;
-            this.lblkdv.Text = "0,00";
+            this.lblTotalExtra.AutoSize = true;
+            this.lblTotalExtra.Location = new System.Drawing.Point(207, 56);
+            this.lblTotalExtra.Name = "lblTotalExtra";
+            this.lblTotalExtra.Size = new System.Drawing.Size(28, 13);
+            this.lblTotalExtra.TabIndex = 57;
+            this.lblTotalExtra.Text = "0,00";
+            // 
+            // lblTotalDis
+            // 
+            this.lblTotalDis.AutoSize = true;
+            this.lblTotalDis.Location = new System.Drawing.Point(213, 18);
+            this.lblTotalDis.Name = "lblTotalDis";
+            this.lblTotalDis.Size = new System.Drawing.Size(20, 13);
+            this.lblTotalDis.TabIndex = 56;
+            this.lblTotalDis.Text = "TL";
+            // 
+            // lblVat
+            // 
+            this.lblVat.AutoSize = true;
+            this.lblVat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblVat.Location = new System.Drawing.Point(85, 75);
+            this.lblVat.Name = "lblVat";
+            this.lblVat.Size = new System.Drawing.Size(32, 16);
+            this.lblVat.TabIndex = 55;
+            this.lblVat.Text = "0,00";
             // 
             // label40
             // 
@@ -969,11 +987,11 @@
             // lbltotal
             // 
             this.lbltotal.AutoSize = true;
-            this.lbltotal.Location = new System.Drawing.Point(184, 38);
+            this.lbltotal.Location = new System.Drawing.Point(206, 38);
             this.lbltotal.Name = "lbltotal";
-            this.lbltotal.Size = new System.Drawing.Size(50, 13);
+            this.lbltotal.Size = new System.Drawing.Size(28, 13);
             this.lbltotal.TabIndex = 53;
-            this.lbltotal.Text = "0,00   TL";
+            this.lbltotal.Text = "0,00";
             // 
             // label52
             // 
@@ -988,20 +1006,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(114, 18);
+            this.label4.Location = new System.Drawing.Point(109, 18);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(20, 16);
             this.label4.TabIndex = 23;
             this.label4.Text = "%";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(215, 56);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(20, 13);
-            this.label9.TabIndex = 22;
-            this.label9.Text = "TL";
             // 
             // textBox7
             // 
@@ -1011,66 +1020,56 @@
             this.textBox7.TabIndex = 21;
             this.textBox7.Text = "Extra Charges";
             // 
-            // textBox15
+            // txtExtraChanges
             // 
-            this.textBox15.Location = new System.Drawing.Point(157, 52);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(54, 20);
-            this.textBox15.TabIndex = 20;
-            this.textBox15.Text = "0";
-            this.textBox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtExtraChanges.Location = new System.Drawing.Point(96, 52);
+            this.txtExtraChanges.Name = "txtExtraChanges";
+            this.txtExtraChanges.Size = new System.Drawing.Size(54, 20);
+            this.txtExtraChanges.TabIndex = 20;
+            this.txtExtraChanges.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label42
+            // lblVatTotal
             // 
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(188, 78);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(50, 13);
-            this.label42.TabIndex = 18;
-            this.label42.Text = "0,00   TL";
+            this.lblVatTotal.AutoSize = true;
+            this.lblVatTotal.Location = new System.Drawing.Point(207, 78);
+            this.lblVatTotal.Name = "lblVatTotal";
+            this.lblVatTotal.Size = new System.Drawing.Size(28, 13);
+            this.lblVatTotal.TabIndex = 18;
+            this.lblVatTotal.Text = "0,00";
             // 
-            // textBox8
+            // txtTotalDis2
             // 
-            this.textBox8.Location = new System.Drawing.Point(155, 15);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(53, 20);
-            this.textBox8.TabIndex = 15;
-            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTotalDis2.Location = new System.Drawing.Point(157, 14);
+            this.txtTotalDis2.Name = "txtTotalDis2";
+            this.txtTotalDis2.Size = new System.Drawing.Size(54, 20);
+            this.txtTotalDis2.TabIndex = 15;
+            this.txtTotalDis2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // checkBox9
+            // chkVat
             // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Location = new System.Drawing.Point(9, 77);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(47, 17);
-            this.checkBox9.TabIndex = 17;
-            this.checkBox9.Text = "VAT";
-            this.checkBox9.UseVisualStyleBackColor = true;
+            this.chkVat.AutoSize = true;
+            this.chkVat.Location = new System.Drawing.Point(9, 77);
+            this.chkVat.Name = "chkVat";
+            this.chkVat.Size = new System.Drawing.Size(47, 17);
+            this.chkVat.TabIndex = 17;
+            this.chkVat.Text = "VAT";
+            this.chkVat.UseVisualStyleBackColor = true;
             // 
-            // textBox4
+            // txtTotalDis
             // 
-            this.textBox4.Location = new System.Drawing.Point(89, 15);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(24, 20);
-            this.textBox4.TabIndex = 13;
+            this.txtTotalDis.Location = new System.Drawing.Point(83, 15);
+            this.txtTotalDis.Name = "txtTotalDis";
+            this.txtTotalDis.Size = new System.Drawing.Size(24, 20);
+            this.txtTotalDis.TabIndex = 13;
             // 
-            // label45
+            // lblGrossTotal
             // 
-            this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(188, 97);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(50, 13);
-            this.label45.TabIndex = 12;
-            this.label45.Text = "0,00   TL";
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(214, 18);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(20, 13);
-            this.label41.TabIndex = 8;
-            this.label41.Text = "TL";
+            this.lblGrossTotal.AutoSize = true;
+            this.lblGrossTotal.Location = new System.Drawing.Point(207, 97);
+            this.lblGrossTotal.Name = "lblGrossTotal";
+            this.lblGrossTotal.Size = new System.Drawing.Size(28, 13);
+            this.lblGrossTotal.TabIndex = 12;
+            this.lblGrossTotal.Text = "0,00";
             // 
             // label39
             // 
@@ -2574,19 +2573,17 @@
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.TextBox txtTotalDis2;
+        private System.Windows.Forms.TextBox txtTotalDis;
+        private System.Windows.Forms.Label lblGrossTotal;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.CheckBox checkBox9;
+        private System.Windows.Forms.Label lblVatTotal;
+        private System.Windows.Forms.CheckBox chkVat;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboBox8;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.TextBox txtExtraChanges;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox ckItemCost;
         private System.Windows.Forms.CheckBox ckWeightCost;
@@ -2794,8 +2791,9 @@
 
         private System.Windows.Forms.Label lbltotal;
         private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.Label lblkdv;
+        private System.Windows.Forms.Label lblVat;
         private System.Windows.Forms.Label label40;
-
+        private System.Windows.Forms.Label lblTotalDis;
+        private System.Windows.Forms.Label lblTotalExtra;
     }
 }

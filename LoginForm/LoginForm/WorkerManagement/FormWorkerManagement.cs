@@ -56,13 +56,13 @@ namespace LoginForm.WorkerManagement
             }
         }
 
-        private void ChangeCheckStateOfAuths(int roleID,bool state)
+        private void ChangeCheckStateOfAuths(int roleID, bool state)
         {
             for (int i = 0; i < clbAuthorities.Items.Count; i++)
             {
                 foreach (RoleValue item in ((AuthorizationValue)clbAuthorities.Items[i]).RoleValues)
                 {
-                    if(item.RoleID == roleID)
+                    if (item.RoleID == roleID)
                     {
                         clbAuthorities.SetItemChecked(i, state);
                         break;
@@ -73,126 +73,139 @@ namespace LoginForm.WorkerManagement
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            IMEEntities IME = new IMEEntities();
             if (isEditMode)
             {
+                IMEEntities IME = new IMEEntities();
                 if (nullExist())
                 {
                     MessageBox.Show("You need to fill in the marked('*') fields", "New Worker", MessageBoxButtons.OK);
                 }
                 else
                 {
-                    Worker wrkr = IME.Workers.Where(w => w.WorkerID == worker.WorkerID).FirstOrDefault();
+                    try
+                    {
+                        Worker wrkr = IME.Workers.Where(w => w.WorkerID == worker.WorkerID).FirstOrDefault();
 
-                    wrkr.NameLastName = txtNameLastName.Text;
-                    wrkr.UserName = txtUsername.Text;
-                    wrkr.Email = txtMail.Text;
-                    wrkr.Phone = txtPhone.Text;
-                    if (chcChangePassword.Checked)
-                    {
-                        wrkr.UserPass = Utils.MD5Hash(txtUserPass.Text);
-                    }
-                    if (rbSales.Checked)
-                    {
-                        wrkr.Title = 1;
-                    }
-                    else if (rbSalesManager.Checked)
-                    {
-                        wrkr.Title = 2;
-                    }
-                    else if (rbGeneralManager.Checked)
-                    {
-                        wrkr.Title = 3;
-                    }
-
-                    wrkr.MinMarge = numeric1.Value;
-                    wrkr.MinRate = numeric2.Value;
-
-                    if (chcActive.Checked)
-                    {
-                        wrkr.isActive = 1;
-                    }
-                    else
-                    {
-                        wrkr.isActive = 0;
-                    }
-
-                    if (clbAuthorities.CheckedItems.Count != 0)
-                    {
-                        foreach (AuthorizationValue item in clbAuthorities.CheckedItems)
+                        wrkr.NameLastName = txtNameLastName.Text;
+                        wrkr.UserName = txtUsername.Text;
+                        wrkr.Email = txtMail.Text;
+                        wrkr.Phone = txtPhone.Text;
+                        if (chcChangePassword.Checked)
                         {
-                            AuthorizationValue av = IME.AuthorizationValues.Where(auth => auth.AuthorizationID == item.AuthorizationID).FirstOrDefault();
-                            worker.AuthorizationValues.Add(av);
+                            wrkr.UserPass = Utils.MD5Hash(txtUserPass.Text);
                         }
+                        if (rbSales.Checked)
+                        {
+                            wrkr.Title = 1;
+                        }
+                        else if (rbSalesManager.Checked)
+                        {
+                            wrkr.Title = 2;
+                        }
+                        else if (rbGeneralManager.Checked)
+                        {
+                            wrkr.Title = 3;
+                        }
+
+                        wrkr.MinMarge = numeric1.Value;
+                        wrkr.MinRate = numeric2.Value;
+
+                        if (chcActive.Checked)
+                        {
+                            wrkr.isActive = 1;
+                        }
+                        else
+                        {
+                            wrkr.isActive = 0;
+                        }
+
+                        wrkr.AuthorizationValues.Clear();
                         IME.SaveChanges();
+
+                        if (clbAuthorities.CheckedItems.Count != 0)
+                        {
+                            foreach (AuthorizationValue item in clbAuthorities.CheckedItems)
+                            {
+                                AuthorizationValue av = IME.AuthorizationValues.Where(auth => auth.AuthorizationID == item.AuthorizationID).FirstOrDefault();
+                                wrkr.AuthorizationValues.Add(av);
+                            }
+                            IME.SaveChanges();
+                        }
                     }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Bir hata oluştu");
+                        throw;
+                    }
+                    this.Close();
                 }
             }
             else
             {
+                IMEEntities IME = new IMEEntities();
                 if (nullExist())
                 {
                     MessageBox.Show("You need to fill in the marked('*') fields", "New Worker", MessageBoxButtons.OK);
                 }
                 else
                 {
-                        try
+                    try
+                    {
+                        Worker worker = new Worker();
+                        worker.NameLastName = txtNameLastName.Text;
+                        if (chcActive.Checked)
                         {
-                            Worker worker = new Worker();
-                            worker.NameLastName = txtNameLastName.Text;
-                            if (chcActive.Checked)
-                            {
-                                worker.isActive = 1;
-                            }
-                            else
-                            {
-                                worker.isActive = 0;
-                            }
-                            worker.Email = txtMail.Text;
-                            worker.MinMarge = numeric1.Value;
-                            worker.MinRate = numeric2.Value;
-                            worker.Phone = txtPhone.Text;
-                            worker.UserName = txtUsername.Text;
-                            worker.UserPass = Utils.MD5Hash(txtUserPass.Text);
-
-                            int title = 0;
-                            if (rbSales.Checked)
-                            {
-                                title = 1;
-                            }
-                            else if (rbSalesManager.Checked)
-                            {
-                                title = 2;
-                            }
-                            else if (rbGeneralManager.Checked)
-                            {
-                                title = 3;
-                            }
-                            worker.Title = title;
-
-                            IME.Workers.Add(worker);
-                            IME.SaveChanges();
-
-                            if (clbAuthorities.CheckedItems.Count != 0)
-                            {
-                                worker = IME.Workers.Where(w => w.UserName == worker.UserName).FirstOrDefault();
-                                foreach (AuthorizationValue item in clbAuthorities.CheckedItems)
-                                {
-                                    AuthorizationValue av = IME.AuthorizationValues.Where(auth => auth.AuthorizationID == item.AuthorizationID).FirstOrDefault();
-                                    worker.AuthorizationValues.Add(av);
-                                }
-                            IME.SaveChanges();
+                            worker.isActive = 1;
                         }
-                        }
-                        catch (Exception)
+                        else
                         {
-                            MessageBox.Show("Bir hata oluştu");
-                            throw;
+                            worker.isActive = 0;
                         }
+                        worker.Email = txtMail.Text;
+                        worker.MinMarge = numeric1.Value;
+                        worker.MinRate = numeric2.Value;
+                        worker.Phone = txtPhone.Text;
+                        worker.UserName = txtUsername.Text;
+                        worker.UserPass = Utils.MD5Hash(txtUserPass.Text);
+
+                        int title = 0;
+                        if (rbSales.Checked)
+                        {
+                            title = 1;
+                        }
+                        else if (rbSalesManager.Checked)
+                        {
+                            title = 2;
+                        }
+                        else if (rbGeneralManager.Checked)
+                        {
+                            title = 3;
+                        }
+                        worker.Title = title;
+
+                        IME.Workers.Add(worker);
+                        IME.SaveChanges();
+
+                        if (clbAuthorities.CheckedItems.Count != 0)
+                        {
+                            worker = IME.Workers.Where(w => w.UserName == worker.UserName).FirstOrDefault();
+                            foreach (AuthorizationValue item in clbAuthorities.CheckedItems)
+                            {
+                                AuthorizationValue av = IME.AuthorizationValues.Where(auth => auth.AuthorizationID == item.AuthorizationID).FirstOrDefault();
+                                worker.AuthorizationValues.Add(av);
+                            }
+                            IME.SaveChanges();
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Bir hata oluştu");
+                        throw;
+                    }
+                    this.Close();
                 }
+
             }
-            
-            this.Close();
         }
 
         private bool nullExist()
@@ -276,7 +289,7 @@ namespace LoginForm.WorkerManagement
             numeric1.Value = (decimal)worker.MinMarge;
             numeric2.Value = (decimal)worker.MinRate;
 
-            for(int i = 0; i < clbAuthorities.Items.Count; i++)
+            for (int i = 0; i < clbAuthorities.Items.Count; i++)
             {
                 foreach (var wAuth in worker.AuthorizationValues)
                 {
@@ -290,7 +303,7 @@ namespace LoginForm.WorkerManagement
 
         private void chcChangePassword_CheckedChanged(object sender, EventArgs e)
         {
-            if(chcChangePassword.Checked)
+            if (chcChangePassword.Checked)
             {
                 txtUserPass.Enabled = true;
             }

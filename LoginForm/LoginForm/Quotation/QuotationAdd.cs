@@ -165,7 +165,7 @@ namespace LoginForm
                     break;
                 case 2://PRODUCT CODE
                     {
-                        if (dataGridView3.CurrentCell.Value.ToString().Length == 6)
+                        if (dataGridView3.CurrentCell.Value != null && dataGridView3.CurrentCell.Value.ToString().Length == 6)
                         {
                             dataGridView3.CurrentCell.Value = 0.ToString() + dataGridView3.CurrentCell.Value.ToString();
                         }
@@ -294,9 +294,9 @@ namespace LoginForm
                         #region Quantity
                         if (Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString()) != 0)
                         {
-                            if (txtHeight.Text != "" && txtLength.Text != "" && txtWidth.Text != "")
+                            if (dataGridView3.Rows[rowindex].Cells["dgQty"].Value != null && txtStandartWeight.Text!=null)
                             {
-                                txtGrossWeight.Text = (Decimal.Parse(txtStandartWeight.Text) * Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())).ToString();
+                                txtGrossWeight.Text = (Decimal.Parse(txtStandartWeight.Text) * Decimal.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
                                 dataGridView3.Rows[rowindex].Cells["dgTotalWeight"].Value = txtGrossWeight.Text;
                             }
 
