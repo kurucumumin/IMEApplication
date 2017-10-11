@@ -29,7 +29,6 @@ namespace LoginForm
 
             dataGridView3.Rows[0].Cells["dgQty"].Value = "0";
             dataGridView3.Rows[0].Cells[0].Value = 1.ToString();
-            chkVat.Checked = true;
             #region ComboboxFiller
             //cbFactor.DataSource = IME.Rates.ToList();
             //cbFactor.DisplayMember = "currency";
@@ -166,11 +165,12 @@ namespace LoginForm
                     break;
                 case 2://PRODUCT CODE
                     {
+                        if (dataGridView3.CurrentCell.Value != null && dataGridView3.CurrentCell.Value.ToString().Length == 6)
+                        {
+                            dataGridView3.CurrentCell.Value = 0.ToString() + dataGridView3.CurrentCell.Value.ToString();
+                        }
+
                         #region Product Code
-
-
-
-
                         if (dataGridView3.CurrentCell.Value != null)
                         {
                             var sd = classQuotationAdd.ItemGetSuperDisk(dataGridView3.CurrentCell.Value.ToString());
@@ -184,7 +184,7 @@ namespace LoginForm
                             {
                                 if (classQuotationAdd.NumberofItem(dataGridView3.CurrentCell.Value.ToString()) == 0)
                                 {
-                                    //Bu item daha önceden eklimi diye kontrol ediyor
+                                    //Bu item daha önceden eklimi diye kontrol ediyor  
                                          DataGridViewRow row = dataGridView3.Rows
             .Cast<DataGridViewRow>()
             .Where(r => r.Cells["dgProductCode"].Value.ToString().Equals(dataGridView3.CurrentCell.Value.ToString()))
@@ -205,7 +205,7 @@ namespace LoginForm
                                     itemsearch.ShowDialog();
                                     try
                                     {
-                                        //Bu item daha önceden eklimi diye kontrol ediyor
+                                        //Bu item daha önceden eklimi diye kontrol ediyor  
                                         DataGridViewRow row = dataGridView3.Rows
            .Cast<DataGridViewRow>()
            .Where(r => r.Cells["dgProductCode"].Value.ToString().Equals(classQuotationAdd.ItemCode))
@@ -239,7 +239,7 @@ namespace LoginForm
                                             txtSubstitutedBy.Text = null;
                                             #endregion
                                         }
-
+                                        
                                     }
 
                                     this.Enabled = true;
@@ -269,7 +269,7 @@ namespace LoginForm
                         GetMargin();
                     }
                     break;
-                case 17://total
+                case 17://total 
                     {
 
                         decimal total = decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString());
@@ -294,6 +294,12 @@ namespace LoginForm
                         #region Quantity
                         if (Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString()) != 0)
                         {
+                            if (dataGridView3.Rows[rowindex].Cells["dgQty"].Value != null && txtStandartWeight.Text!=null)
+                            {
+                                txtGrossWeight.Text = (Decimal.Parse(txtStandartWeight.Text) * Decimal.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
+                                dataGridView3.Rows[rowindex].Cells["dgTotalWeight"].Value = txtGrossWeight.Text;
+                            }
+
 
 
 
@@ -301,7 +307,7 @@ namespace LoginForm
                             if (dataGridView3.Rows[rowindex].Cells["dgQty"].Value != null) { price = Decimal.Parse((classQuotationAdd.GetPrice(dataGridView3.Rows[rowindex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString())) * Decimal.Parse(cbFactor.Text) * Decimal.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString("G29")); }
                             decimal discResult = 0;
 
-                            //Fiyat burada
+                            //Fiyat burada 
                             string articleNo = dataGridView3.Rows[rowindex].Cells["dgProductCode"].Value.ToString();
                             int isP = 0;
                             if (articleNo.ToUpper().IndexOf('P') != -1) { isP = 1; }
@@ -362,6 +368,7 @@ namespace LoginForm
 
                         #endregion
                     }
+
                 }
                 catch { }
                 #endregion
@@ -512,8 +519,7 @@ namespace LoginForm
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgMPN"].Value = sd.MPN;
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgCL"].Value = sd.Calibration_Ind;
                 if (sd.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sd.Standard_Weight) / (decimal)1000).ToString("G29"); } else { }
-                if (txtHeight.Text != "" && txtLength.Text != "" && txtWidth.Text != "") { txtGrossWeight.Text = (Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString(); }
-                txtHazardousInd.Text = sd.Hazardous_Ind;
+                 txtHazardousInd.Text = sd.Hazardous_Ind;
                 txtCalibrationInd.Text = sd.Calibration_Ind;
                 //ObsoluteFlag.Text = sd.Obsolete_Flag.ToString();
                 //LowDiscontInd.Text = sd.Low_Discount_Ind;
@@ -770,15 +776,11 @@ namespace LoginForm
         {
             getQuotationValues();
         }
-
         private void CalculateSubTotal()
         {
             #region SubTotal Calculation
 
-            decimal sayi1;
-            decimal sayi2;
-            decimal sayi3;
-
+            
             int RowIndex = dataGridView3.CurrentCell.RowIndex;
             if (!(SubTotal.Count > RowIndex)) { SubTotal.Add(0); }
             if (SubTotal.Count>0 && SubTotal[RowIndex] == null)
@@ -797,7 +799,7 @@ namespace LoginForm
                 }
 
             }
-            else
+            else 
             {
                 lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - SubTotal[RowIndex]).ToString();
                 if (dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value != null && dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value != "")
@@ -810,50 +812,9 @@ namespace LoginForm
                 }
                 lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + SubTotal[RowIndex]).ToString();
             }
-            if (txtTotalDis.Text != "" && txtTotalDis.Text != null)
-            {
-                txtTotalDis2.Enabled = false;
-                sayi1 = Convert.ToDecimal(lblsubtotal.Text);
-                sayi2 = Convert.ToDecimal(txtTotalDis.Text);
-                lbltotal.Text = Convert.ToString((sayi1) + sayi1 * (sayi2 / 100));
-                sayi1 = 0;
-                sayi2 = 0;
-            }
-            if (txtTotalDis2.Text != "" && txtTotalDis2.Text == null)
-            {
-                txtTotalDis.Enabled = false;
-                sayi1 = Convert.ToDecimal(lblsubtotal.Text);
-                sayi2 = Convert.ToDecimal(txtTotalDis2.Text);
-                lbltotal.Text = Convert.ToString(sayi1 + sayi2);
-                sayi1 = 0;
-                sayi2 = 0;
-            }
-            if (txtExtraChanges.Text != "" && txtExtraChanges.Text != null)
-            {
-                sayi1 = Convert.ToDecimal(lbltotal.Text);
-                sayi2 = Convert.ToDecimal(txtExtraChanges.Text);
-                lblTotalExtra.Text = Convert.ToString(sayi1 + sayi2);
-                sayi1 = 0;
-                sayi2 = 0;
-            }
-
-            sayi1 = Convert.ToDecimal(lblTotalExtra.Text);
-            sayi2 = Convert.ToDecimal(lbltotal.Text);
-            sayi3 = Convert.ToDecimal(lblVat.Text);
-            lblVatTotal.Text = Convert.ToString((sayi1 + sayi2) * (sayi3 / 100));
-            sayi1 = 0;
-            sayi2 = 0;
-            sayi3 = 0;
-
-            sayi1 = Convert.ToDecimal(lblTotalExtra.Text);
-            sayi2 = Convert.ToDecimal(lbltotal.Text);
-            sayi3 = Convert.ToDecimal(lblVatTotal.Text);
-            lblGrossTotal.Text = Convert.ToString(sayi1 + sayi2 + sayi3);
-            sayi1 = 0;
-            sayi2 = 0;
-            sayi3 = 0;
             #endregion
         }
+
 
     }
 

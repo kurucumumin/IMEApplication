@@ -66,6 +66,7 @@ namespace LoginForm
             {
                 MessageBox.Show("Wrong ID or Password","Login Error",MessageBoxButtons.OK);
             }
+            #endregion
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -123,8 +124,13 @@ namespace LoginForm
                 }
             }
         }
-
-        #endregion
+        private void EnterPress(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin.PerformClick();
+            }
+        }
     }
 
     
