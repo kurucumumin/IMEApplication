@@ -56,9 +56,13 @@
             this.txtMail = new System.Windows.Forms.TextBox();
             this.txtUserPass = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
+            this.chcChangePassword = new System.Windows.Forms.CheckBox();
             this.authRoleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.authorizationValueBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.chcChangePassword = new System.Windows.Forms.CheckBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.clbUserAuthorityList = new System.Windows.Forms.CheckedListBox();
+            this.txtNote = new System.Windows.Forms.TextBox();
+            this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
             this.tableLayoutPanel1.SuspendLayout();
             this.gbRoles.SuspendLayout();
             this.gbAuthorities.SuspendLayout();
@@ -69,11 +73,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.numeric1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.authRoleBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.authorizationValueBindingSource)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.gbRoles, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.gbAuthorities, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
@@ -128,6 +134,8 @@
             // 
             resources.ApplyResources(this.gbUserInfo, "gbUserInfo");
             this.gbUserInfo.BackColor = System.Drawing.SystemColors.Control;
+            this.gbUserInfo.Controls.Add(this.materialLabel7);
+            this.gbUserInfo.Controls.Add(this.txtNote);
             this.gbUserInfo.Controls.Add(this.txtNameLastName);
             this.gbUserInfo.Controls.Add(this.materialLabel6);
             this.gbUserInfo.Controls.Add(this.materialLabel5);
@@ -286,6 +294,32 @@
             this.chcChangePassword.UseVisualStyleBackColor = true;
             this.chcChangePassword.CheckedChanged += new System.EventHandler(this.chcChangePassword_CheckedChanged);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.clbUserAuthorityList);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // clbUserAuthorityList
+            // 
+            resources.ApplyResources(this.clbUserAuthorityList, "clbUserAuthorityList");
+            this.clbUserAuthorityList.FormattingEnabled = true;
+            this.clbUserAuthorityList.Name = "clbUserAuthorityList";
+            // 
+            // txtNote
+            // 
+            resources.ApplyResources(this.txtNote, "txtNote");
+            this.txtNote.Name = "txtNote";
+            // 
+            // materialLabel7
+            // 
+            resources.ApplyResources(this.materialLabel7, "materialLabel7");
+            this.materialLabel7.Depth = 0;
+            this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel7.Name = "materialLabel7";
+            // 
             // FormWorkerManagement
             // 
             resources.ApplyResources(this, "$this");
@@ -304,6 +338,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numeric1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.authRoleBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.authorizationValueBindingSource)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -339,5 +374,9 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private System.Windows.Forms.TextBox txtNameLastName;
         private System.Windows.Forms.CheckBox chcChangePassword;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckedListBox clbUserAuthorityList;
+        private MaterialSkin.Controls.MaterialLabel materialLabel7;
+        private System.Windows.Forms.TextBox txtNote;
     }
 }
