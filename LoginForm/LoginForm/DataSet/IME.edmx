@@ -3077,7 +3077,11 @@
           <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
         </Association>
+<<<<<<< HEAD
       </Schema>
+=======
+        </Schema>
+>>>>>>> f774886b5829b606bb897709fc2067095ef3f9b1
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
