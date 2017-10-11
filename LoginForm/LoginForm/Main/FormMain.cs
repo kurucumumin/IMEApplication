@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using LoginForm.Services;
 using LoginForm.DataSet;
 using LoginForm.RolesAndAuths;
+using LoginForm.Quotation;
 
 namespace LoginForm
 {
@@ -67,8 +68,8 @@ namespace LoginForm
         private void btnQuotation_Click(object sender, EventArgs e)
         {
             this.Hide();
-            QuotationAdd quotationForm = new QuotationAdd();
-            quotationForm.ShowDialog();
+            FormQuotationMain formQuotationMain = new FormQuotationMain();
+            formQuotationMain.ShowDialog();
             this.Show();
         }
 

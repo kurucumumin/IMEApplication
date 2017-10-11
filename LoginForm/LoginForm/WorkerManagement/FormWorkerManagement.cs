@@ -11,6 +11,7 @@ namespace LoginForm.WorkerManagement
     {
         bool isEditMode = false;
         Worker worker;
+        FormRoles upperForm;
 
         public FormWorkerManagement()
         {
@@ -19,10 +20,11 @@ namespace LoginForm.WorkerManagement
             LoadRoles();
             LoadAuthorities();
         }
-        public FormWorkerManagement(Worker worker)
+        public FormWorkerManagement(Worker worker, FormRoles form)
         {
             InitializeComponent();
             this.worker = worker;
+            this.upperForm = form;
             chcChangePassword.Visible = true;
             LoadRoles();
             LoadAuthorities();
@@ -90,6 +92,17 @@ namespace LoginForm.WorkerManagement
                         wrkr.UserName = txtUsername.Text;
                         wrkr.Email = txtMail.Text;
                         wrkr.Phone = txtPhone.Text;
+
+                        if (wrkr.Note != null)
+                        {
+                            Note n = IME.Notes.Remove(wrkr.Note);
+
+                            Note note = new Note();
+                            note.Note_name = txtNote.Text;
+
+                            wrkr.Note = note;
+                            IME.SaveChanges();
+                        }
                         if (chcChangePassword.Checked)
                         {
                             wrkr.UserPass = Utils.MD5Hash(txtUserPass.Text);
@@ -137,6 +150,7 @@ namespace LoginForm.WorkerManagement
                         MessageBox.Show("Bir hata oluştu");
                         throw;
                     }
+                    upperForm.LoadWorkerList();
                     this.Close();
                 }
             }
@@ -160,6 +174,13 @@ namespace LoginForm.WorkerManagement
                         else
                         {
                             worker.isActive = 0;
+                        }
+                        if(txtNote.Text.Length != 0)
+                        {
+                            Note note = new Note();
+                            note.Note_name = txtNote.Text;
+                            IME.SaveChanges();
+                            worker.Note = note;
                         }
                         worker.Email = txtMail.Text;
                         worker.MinMarge = numeric1.Value;
@@ -202,6 +223,7 @@ namespace LoginForm.WorkerManagement
                         MessageBox.Show("Bir hata oluştu");
                         throw;
                     }
+                    upperForm.LoadWorkerList();
                     this.Close();
                 }
 
@@ -263,7 +285,10 @@ namespace LoginForm.WorkerManagement
             chcChangePassword.Checked = false;
             txtMail.Text = worker.Email;
             txtPhone.Text = worker.Phone;
-
+            if(worker.Note != null)
+            {
+                txtNote.Text = worker.Note.Note_name;
+            }
             switch (worker.Title)
             {
                 case 1:

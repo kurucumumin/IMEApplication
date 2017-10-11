@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar2">
+      <HintPath>..\..\..\..\Users\cm_gn\Desktop\DotNetBar\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -44,6 +47,9 @@
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="NeoSmart.Unicode, Version=0.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unicode.net.0.1.2\lib\net45\NeoSmart.Unicode.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -276,6 +282,12 @@
     <Compile Include="Quotation\FormQuotationItemSearch.Designer.cs">
       <DependentUpon>FormQuotationItemSearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="Quotation\FormQuotationMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Quotation\FormQuotationMain.Designer.cs">
+      <DependentUpon>FormQuotationMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Quotation\QuotationAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -376,6 +388,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Quotation\FormQuotationItemSearch.resx">
       <DependentUpon>FormQuotationItemSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Quotation\FormQuotationMain.resx">
+      <DependentUpon>FormQuotationMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Quotation\QuotationAdd.resx">
       <DependentUpon>QuotationAdd.cs</DependentUpon>
