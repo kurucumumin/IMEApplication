@@ -365,29 +365,6 @@ namespace LoginForm.WorkerManagement
             }
         }
 
-        //private void clbAuthorities_ItemCheck(object sender, ItemCheckEventArgs e)
-        //{
-        //    if (clbUserAuthorityList.DataSource != null)
-        //    {
-        //        if (e.NewValue == CheckState.Checked)
-        //        {
-        //            authList.Add((AuthorizationValue)clbAuthorities.Items[e.Index]);
-        //            RefreshUserAuthList();
-        //        }
-        //        else if (e.NewValue == CheckState.Unchecked)
-        //        {
-        //            for (int i = 0; i < clbUserAuthorityList.Items.Count; i++)
-        //            {
-        //                if (((AuthorizationValue)clbAuthorities.Items[e.Index]).AuthorizationID == ((AuthorizationValue)clbUserAuthorityList.Items[i]).AuthorizationID)
-        //                {
-        //                    authList.Remove((AuthorizationValue)clbUserAuthorityList.Items[i]);
-        //                    RefreshUserAuthList();
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
-
         private void RefreshUserAuthList()
         {
             clbUserAuthorityList.DataSource = null;
@@ -430,38 +407,16 @@ namespace LoginForm.WorkerManagement
             }
         }
 
-        //private void clbUserAuthorityList_MouseClick(object sender, MouseEventArgs e)
-        //{
-        //    int index = clbUserAuthorityList.SelectedIndex;
-        //    bool state = clbUserAuthorityList.GetItemChecked(index);
+        private void clbUserAuthorityList_MouseClick(object sender, MouseEventArgs e)
+        {
+            int index = clbUserAuthorityList.SelectedIndex;
 
-        //    //clbAuthorities.SetItemChecked(index, !state);
+            authList.Remove((AuthorizationValue)clbUserAuthorityList.Items[index]);
 
-        //    if (!state)
-        //    {
-        //        authList.Add((AuthorizationValue)clbAuthorities.Items[index]);
-        //        RefreshUserAuthList();
-        //    }
-        //    else if (state)
-        //    {
-        //        for (int i = 0; i < clbUserAuthorityList.Items.Count; i++)
-        //        {
-        //            if (((AuthorizationValue)clbAuthorities.Items[index]).AuthorizationID == ((AuthorizationValue)clbUserAuthorityList.Items[i]).AuthorizationID)
-        //            {
-        //                authList.Remove((AuthorizationValue)clbUserAuthorityList.Items[i]);
-        //                RefreshUserAuthList();
-        //            }
-        //        }
-        //    }
-        //}
-
-
-
-        //private void addItemToList(AuthorizationValue item, List<AuthorizationValue> list)
-        //{
-        //    if(!list.Contains(item))
-        //    list.Add(item);
-        //}
+            RefreshUserAuthList();
+            matchAuthorities();
+            clbUserAuthorityList.ClearSelected();
+        }
     }
     
 }

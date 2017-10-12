@@ -100,7 +100,7 @@
             resources.ApplyResources(this.clbUserAuthorityList, "clbUserAuthorityList");
             this.clbUserAuthorityList.FormattingEnabled = true;
             this.clbUserAuthorityList.Name = "clbUserAuthorityList";
-            //this.clbUserAuthorityList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.clbUserAuthorityList_MouseClick);
+            this.clbUserAuthorityList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.clbUserAuthorityList_MouseClick);
             // 
             // gbRoles
             // 
