@@ -4,6 +4,7 @@ using System;
 using System.Windows.Forms;
 using System.Linq;
 using LoginForm.RolesAndAuths;
+using System.Collections.Generic;
 
 namespace LoginForm.WorkerManagement
 {
@@ -12,42 +13,39 @@ namespace LoginForm.WorkerManagement
         bool isEditMode = false;
         Worker worker;
         FormRoles upperForm;
+        List<AuthorizationValue> authList;
 
         public FormWorkerManagement()
         {
             InitializeComponent();
             chcChangePassword.Visible = false;
             LoadRoles();
-            LoadAuthorities();
+            //LoadAuthorities();
         }
         public FormWorkerManagement(Worker worker, FormRoles form)
         {
             InitializeComponent();
             this.worker = worker;
+            this.authList = worker.AuthorizationValues.ToList();
             this.upperForm = form;
+
             chcChangePassword.Visible = true;
-            LoadRoles();
-            LoadAuthorities();
-
+            //LoadAuthorities();
             isEditMode = true;
-            loadEditWorker();
-        }
 
-        private void LoadAuthorities()
-        {
-            clbAuthorities.DataSource = AuthorizationService.getAuths();
-            clbAuthorities.DisplayMember = "AuthorizationValue1";
+            loadEditWorker();
+            LoadRoles();
         }
 
         private void LoadRoles()
         {
-            clbRoles.DataSource = AuthorizationService.getRoles();
-            clbRoles.DisplayMember = "roleName";
+            lbRoles.DataSource = AuthorizationService.getRoles();
+            lbRoles.DisplayMember = "roleName";
         }
 
         private void clbRoles_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            int roleID = ((RoleValue)clbRoles.SelectedValue).RoleID;
+            int roleID = ((RoleValue)lbRoles.SelectedValue).RoleID;
             if (e.NewValue == CheckState.Checked)
             {
                 ChangeCheckStateOfAuths(roleID, true);
@@ -135,9 +133,9 @@ namespace LoginForm.WorkerManagement
                         wrkr.AuthorizationValues.Clear();
                         IME.SaveChanges();
 
-                        if (clbAuthorities.CheckedItems.Count != 0)
+                        if (clbUserAuthorityList.CheckedItems.Count != 0)
                         {
-                            foreach (AuthorizationValue item in clbAuthorities.CheckedItems)
+                            foreach (AuthorizationValue item in clbUserAuthorityList.CheckedItems)
                             {
                                 AuthorizationValue av = IME.AuthorizationValues.Where(auth => auth.AuthorizationID == item.AuthorizationID).FirstOrDefault();
                                 wrkr.AuthorizationValues.Add(av);
@@ -207,10 +205,10 @@ namespace LoginForm.WorkerManagement
                         IME.Workers.Add(worker);
                         IME.SaveChanges();
 
-                        if (clbAuthorities.CheckedItems.Count != 0)
+                        if (clbUserAuthorityList.CheckedItems.Count != 0)
                         {
                             worker = IME.Workers.Where(w => w.UserName == worker.UserName).FirstOrDefault();
-                            foreach (AuthorizationValue item in clbAuthorities.CheckedItems)
+                            foreach (AuthorizationValue item in clbUserAuthorityList.CheckedItems)
                             {
                                 AuthorizationValue av = IME.AuthorizationValues.Where(auth => auth.AuthorizationID == item.AuthorizationID).FirstOrDefault();
                                 worker.AuthorizationValues.Add(av);
@@ -285,10 +283,14 @@ namespace LoginForm.WorkerManagement
             chcChangePassword.Checked = false;
             txtMail.Text = worker.Email;
             txtPhone.Text = worker.Phone;
+
+
             if(worker.Note != null)
             {
                 txtNote.Text = worker.Note.Note_name;
             }
+
+
             switch (worker.Title)
             {
                 case 1:
@@ -302,6 +304,7 @@ namespace LoginForm.WorkerManagement
                     break;
             }
 
+
             if (worker.isActive == 1)
             {
                 chcActive.Checked = true;
@@ -311,19 +314,16 @@ namespace LoginForm.WorkerManagement
                 chcActive.Checked = false;
             }
 
+
             numeric1.Value = (decimal)worker.MinMarge;
             numeric2.Value = (decimal)worker.MinRate;
 
-            for (int i = 0; i < clbAuthorities.Items.Count; i++)
-            {
-                foreach (var wAuth in worker.AuthorizationValues)
-                {
-                    if (wAuth.AuthorizationID == ((AuthorizationValue)clbAuthorities.Items[i]).AuthorizationID)
-                    {
-                        clbAuthorities.SetItemChecked(i, true);
-                    }
-                }
-            }
+
+            clbUserAuthorityList.DataSource = authList;
+            clbUserAuthorityList.DisplayMember = "AuthorizationValue1";
+
+
+            CheckAllItemsListBox(clbUserAuthorityList);
         }
 
         private void chcChangePassword_CheckedChanged(object sender, EventArgs e)
@@ -337,5 +337,131 @@ namespace LoginForm.WorkerManagement
                 txtUserPass.Enabled = false;
             }
         }
+
+        private void lbRoles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            clbAuthorities.DataSource = ((RoleValue)lbRoles.SelectedItem).AuthorizationValues.ToList();
+            clbAuthorities.DisplayMember = "AuthorizationValue1";
+
+            for (int i = 0; i < clbAuthorities.Items.Count; i++)
+            {
+                clbAuthorities.SetItemChecked(i, false);
+            }
+
+            matchAuthorities();
+        }
+
+        private void matchAuthorities()
+        {
+            for(int i = 0; i < clbUserAuthorityList.Items.Count; i++)
+            {
+                for (int j = 0; j < clbAuthorities.Items.Count; j++)
+                {
+                    if(((AuthorizationValue)clbUserAuthorityList.Items[i]).AuthorizationID == ((AuthorizationValue)clbAuthorities.Items[j]).AuthorizationID)
+                    {
+                        clbAuthorities.SetItemChecked(j, true);
+                    }
+                }
+            }
+        }
+
+        //private void clbAuthorities_ItemCheck(object sender, ItemCheckEventArgs e)
+        //{
+        //    if (clbUserAuthorityList.DataSource != null)
+        //    {
+        //        if (e.NewValue == CheckState.Checked)
+        //        {
+        //            authList.Add((AuthorizationValue)clbAuthorities.Items[e.Index]);
+        //            RefreshUserAuthList();
+        //        }
+        //        else if (e.NewValue == CheckState.Unchecked)
+        //        {
+        //            for (int i = 0; i < clbUserAuthorityList.Items.Count; i++)
+        //            {
+        //                if (((AuthorizationValue)clbAuthorities.Items[e.Index]).AuthorizationID == ((AuthorizationValue)clbUserAuthorityList.Items[i]).AuthorizationID)
+        //                {
+        //                    authList.Remove((AuthorizationValue)clbUserAuthorityList.Items[i]);
+        //                    RefreshUserAuthList();
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
+
+        private void RefreshUserAuthList()
+        {
+            clbUserAuthorityList.DataSource = null;
+            clbUserAuthorityList.DataSource = authList;
+            clbUserAuthorityList.DisplayMember = "AuthorizationValue1";
+
+            CheckAllItemsListBox(clbUserAuthorityList);
+        }
+
+        private void CheckAllItemsListBox(CheckedListBox listBox)
+        {
+            for (int i = 0; i < listBox.Items.Count; i++)
+            {
+                listBox.SetItemChecked(i, true);
+            }
+        }
+
+        private void clbAuthorities_MouseClick(object sender, MouseEventArgs e)
+        {
+            int index = clbAuthorities.SelectedIndex;
+            bool state = clbAuthorities.GetItemChecked(index);
+
+            //clbAuthorities.SetItemChecked(index, !state);
+
+            if (!state)
+            {
+                authList.Add((AuthorizationValue)clbAuthorities.Items[index]);
+                RefreshUserAuthList();
+            }
+            else if (state)
+            {
+                for (int i = 0; i < clbUserAuthorityList.Items.Count; i++)
+                {
+                    if (((AuthorizationValue)clbAuthorities.Items[index]).AuthorizationID == ((AuthorizationValue)clbUserAuthorityList.Items[i]).AuthorizationID)
+                    {
+                        authList.Remove((AuthorizationValue)clbUserAuthorityList.Items[i]);
+                        RefreshUserAuthList();
+                    }
+                }
+            }
+        }
+
+        //private void clbUserAuthorityList_MouseClick(object sender, MouseEventArgs e)
+        //{
+        //    int index = clbUserAuthorityList.SelectedIndex;
+        //    bool state = clbUserAuthorityList.GetItemChecked(index);
+
+        //    //clbAuthorities.SetItemChecked(index, !state);
+
+        //    if (!state)
+        //    {
+        //        authList.Add((AuthorizationValue)clbAuthorities.Items[index]);
+        //        RefreshUserAuthList();
+        //    }
+        //    else if (state)
+        //    {
+        //        for (int i = 0; i < clbUserAuthorityList.Items.Count; i++)
+        //        {
+        //            if (((AuthorizationValue)clbAuthorities.Items[index]).AuthorizationID == ((AuthorizationValue)clbUserAuthorityList.Items[i]).AuthorizationID)
+        //            {
+        //                authList.Remove((AuthorizationValue)clbUserAuthorityList.Items[i]);
+        //                RefreshUserAuthList();
+        //            }
+        //        }
+        //    }
+        //}
+
+
+
+        //private void addItemToList(AuthorizationValue item, List<AuthorizationValue> list)
+        //{
+        //    if(!list.Contains(item))
+        //    list.Add(item);
+        //}
     }
+    
 }

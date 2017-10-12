@@ -31,13 +31,18 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormWorkerManagement));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.clbUserAuthorityList = new System.Windows.Forms.CheckedListBox();
             this.gbRoles = new System.Windows.Forms.GroupBox();
-            this.clbRoles = new System.Windows.Forms.CheckedListBox();
+            this.lbRoles = new System.Windows.Forms.ListBox();
+            this.roleValueBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gbAuthorities = new System.Windows.Forms.GroupBox();
             this.clbAuthorities = new System.Windows.Forms.CheckedListBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.gbUserInfo = new System.Windows.Forms.GroupBox();
+            this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
+            this.txtNote = new System.Windows.Forms.TextBox();
             this.txtNameLastName = new System.Windows.Forms.TextBox();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
@@ -59,12 +64,10 @@
             this.chcChangePassword = new System.Windows.Forms.CheckBox();
             this.authRoleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.authorizationValueBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.clbUserAuthorityList = new System.Windows.Forms.CheckedListBox();
-            this.txtNote = new System.Windows.Forms.TextBox();
-            this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
             this.tableLayoutPanel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.gbRoles.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.roleValueBindingSource)).BeginInit();
             this.gbAuthorities.SuspendLayout();
             this.panel1.SuspendLayout();
             this.gbUserInfo.SuspendLayout();
@@ -73,7 +76,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numeric1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.authRoleBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.authorizationValueBindingSource)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -85,20 +87,41 @@
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.clbUserAuthorityList);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // clbUserAuthorityList
+            // 
+            this.clbUserAuthorityList.CheckOnClick = true;
+            resources.ApplyResources(this.clbUserAuthorityList, "clbUserAuthorityList");
+            this.clbUserAuthorityList.FormattingEnabled = true;
+            this.clbUserAuthorityList.Name = "clbUserAuthorityList";
+            //this.clbUserAuthorityList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.clbUserAuthorityList_MouseClick);
+            // 
             // gbRoles
             // 
-            this.gbRoles.Controls.Add(this.clbRoles);
+            this.gbRoles.Controls.Add(this.lbRoles);
             resources.ApplyResources(this.gbRoles, "gbRoles");
             this.gbRoles.Name = "gbRoles";
             this.gbRoles.TabStop = false;
             // 
-            // clbRoles
+            // lbRoles
             // 
-            this.clbRoles.CheckOnClick = true;
-            resources.ApplyResources(this.clbRoles, "clbRoles");
-            this.clbRoles.FormattingEnabled = true;
-            this.clbRoles.Name = "clbRoles";
-            this.clbRoles.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbRoles_ItemCheck);
+            this.lbRoles.DataSource = this.roleValueBindingSource;
+            this.lbRoles.DisplayMember = "roleName";
+            resources.ApplyResources(this.lbRoles, "lbRoles");
+            this.lbRoles.FormattingEnabled = true;
+            this.lbRoles.Name = "lbRoles";
+            this.lbRoles.ValueMember = "RoleID";
+            this.lbRoles.SelectedIndexChanged += new System.EventHandler(this.lbRoles_SelectedIndexChanged);
+            // 
+            // roleValueBindingSource
+            // 
+            this.roleValueBindingSource.DataSource = typeof(LoginForm.DataSet.RoleValue);
             // 
             // gbAuthorities
             // 
@@ -109,9 +132,11 @@
             // 
             // clbAuthorities
             // 
+            this.clbAuthorities.CheckOnClick = true;
             resources.ApplyResources(this.clbAuthorities, "clbAuthorities");
             this.clbAuthorities.FormattingEnabled = true;
             this.clbAuthorities.Name = "clbAuthorities";
+            this.clbAuthorities.MouseClick += new System.Windows.Forms.MouseEventHandler(this.clbAuthorities_MouseClick);
             // 
             // panel1
             // 
@@ -122,8 +147,8 @@
             // 
             // materialRaisedButton1
             // 
-            this.materialRaisedButton1.Depth = 0;
             resources.ApplyResources(this.materialRaisedButton1, "materialRaisedButton1");
+            this.materialRaisedButton1.Depth = 0;
             this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialRaisedButton1.Name = "materialRaisedButton1";
             this.materialRaisedButton1.Primary = true;
@@ -152,6 +177,19 @@
             this.gbUserInfo.Controls.Add(this.chcChangePassword);
             this.gbUserInfo.Name = "gbUserInfo";
             this.gbUserInfo.TabStop = false;
+            // 
+            // materialLabel7
+            // 
+            resources.ApplyResources(this.materialLabel7, "materialLabel7");
+            this.materialLabel7.Depth = 0;
+            this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel7.Name = "materialLabel7";
+            // 
+            // txtNote
+            // 
+            resources.ApplyResources(this.txtNote, "txtNote");
+            this.txtNote.Name = "txtNote";
             // 
             // txtNameLastName
             // 
@@ -294,32 +332,6 @@
             this.chcChangePassword.UseVisualStyleBackColor = true;
             this.chcChangePassword.CheckedChanged += new System.EventHandler(this.chcChangePassword_CheckedChanged);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.clbUserAuthorityList);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
-            // 
-            // clbUserAuthorityList
-            // 
-            resources.ApplyResources(this.clbUserAuthorityList, "clbUserAuthorityList");
-            this.clbUserAuthorityList.FormattingEnabled = true;
-            this.clbUserAuthorityList.Name = "clbUserAuthorityList";
-            // 
-            // txtNote
-            // 
-            resources.ApplyResources(this.txtNote, "txtNote");
-            this.txtNote.Name = "txtNote";
-            // 
-            // materialLabel7
-            // 
-            resources.ApplyResources(this.materialLabel7, "materialLabel7");
-            this.materialLabel7.Depth = 0;
-            this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel7.Name = "materialLabel7";
-            // 
             // FormWorkerManagement
             // 
             resources.ApplyResources(this, "$this");
@@ -327,7 +339,9 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FormWorkerManagement";
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.gbRoles.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.roleValueBindingSource)).EndInit();
             this.gbAuthorities.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.gbUserInfo.ResumeLayout(false);
@@ -338,7 +352,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numeric1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.authRoleBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.authorizationValueBindingSource)).EndInit();
-            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -363,7 +376,6 @@
         private System.Windows.Forms.BindingSource authRoleBindingSource;
         private System.Windows.Forms.BindingSource authorizationValueBindingSource;
         private System.Windows.Forms.CheckedListBox clbAuthorities;
-        private System.Windows.Forms.CheckedListBox clbRoles;
         private System.Windows.Forms.CheckBox chcActive;
         private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
@@ -378,5 +390,7 @@
         private System.Windows.Forms.CheckedListBox clbUserAuthorityList;
         private MaterialSkin.Controls.MaterialLabel materialLabel7;
         private System.Windows.Forms.TextBox txtNote;
+        private System.Windows.Forms.ListBox lbRoles;
+        private System.Windows.Forms.BindingSource roleValueBindingSource;
     }
 }

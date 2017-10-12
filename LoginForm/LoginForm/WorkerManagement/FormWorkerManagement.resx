@@ -180,28 +180,34 @@
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="clbRoles.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <metadata name="roleValueBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>517, 17</value>
+  </metadata>
+  <data name="lbRoles.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="clbRoles.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lbRoles.ItemHeight" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="lbRoles.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 31</value>
   </data>
-  <data name="clbRoles.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lbRoles.Size" type="System.Drawing.Size, System.Drawing">
     <value>252, 567</value>
   </data>
-  <data name="clbRoles.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="lbRoles.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="&gt;&gt;clbRoles.Name" xml:space="preserve">
-    <value>clbRoles</value>
+  <data name="&gt;&gt;lbRoles.Name" xml:space="preserve">
+    <value>lbRoles</value>
   </data>
-  <data name="&gt;&gt;clbRoles.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckedListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;lbRoles.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;clbRoles.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lbRoles.Parent" xml:space="preserve">
     <value>gbRoles</value>
   </data>
-  <data name="&gt;&gt;clbRoles.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lbRoles.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="gbRoles.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -293,6 +299,9 @@
   </data>
   <data name="&gt;&gt;gbAuthorities.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="materialRaisedButton1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>None</value>
   </data>
   <data name="materialRaisedButton1.Location" type="System.Drawing.Point, System.Drawing">
     <value>320, 550</value>
@@ -593,9 +602,6 @@
   </data>
   <data name="&gt;&gt;materialLabel1.ZOrder" xml:space="preserve">
     <value>8</value>
-  </data>
-  <data name="chcActive.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>None</value>
   </data>
   <data name="chcActive.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -997,10 +1003,16 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1148, 634</value>
+    <value>1375, 681</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Worker Management</value>
+  </data>
+  <data name="&gt;&gt;roleValueBindingSource.Name" xml:space="preserve">
+    <value>roleValueBindingSource</value>
+  </data>
+  <data name="&gt;&gt;roleValueBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;authRoleBindingSource.Name" xml:space="preserve">
     <value>authRoleBindingSource</value>
