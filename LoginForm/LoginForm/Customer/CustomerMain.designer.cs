@@ -101,6 +101,7 @@
             this.AdressDone = new System.Windows.Forms.Button();
             this.AdressCancel = new System.Windows.Forms.Button();
             this.tab_contact = new System.Windows.Forms.TabPage();
+            this.txtExtNumber = new System.Windows.Forms.TextBox();
             this.departmentAdd = new System.Windows.Forms.Button();
             this.titleAdd = new System.Windows.Forms.Button();
             this.btnContactDelete = new System.Windows.Forms.Button();
@@ -139,7 +140,6 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.tableMain = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtExtNumber = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tab_company.SuspendLayout();
             this.tab_account.SuspendLayout();
@@ -193,7 +193,7 @@
             this.tab_company.Controls.Add(this.label1);
             this.tab_company.Location = new System.Drawing.Point(4, 25);
             this.tab_company.Name = "tab_company";
-            this.tab_company.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tab_company.Padding = new System.Windows.Forms.Padding(3);
             this.tab_company.Size = new System.Drawing.Size(696, 274);
             this.tab_company.TabIndex = 0;
             this.tab_company.Text = "Company Info";
@@ -458,8 +458,8 @@
             this.tab_account.Controls.Add(this.label21);
             this.tab_account.Location = new System.Drawing.Point(4, 25);
             this.tab_account.Name = "tab_account";
-            this.tab_account.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tab_account.Size = new System.Drawing.Size(696, 273);
+            this.tab_account.Padding = new System.Windows.Forms.Padding(3);
+            this.tab_account.Size = new System.Drawing.Size(696, 274);
             this.tab_account.TabIndex = 2;
             this.tab_account.Text = "Account";
             this.tab_account.UseVisualStyleBackColor = true;
@@ -691,7 +691,7 @@
             this.tab_adresses.Controls.Add(this.AdressCancel);
             this.tab_adresses.Location = new System.Drawing.Point(4, 25);
             this.tab_adresses.Name = "tab_adresses";
-            this.tab_adresses.Size = new System.Drawing.Size(696, 273);
+            this.tab_adresses.Size = new System.Drawing.Size(696, 274);
             this.tab_adresses.TabIndex = 3;
             this.tab_adresses.Text = "Adresses";
             this.tab_adresses.UseVisualStyleBackColor = true;
@@ -946,6 +946,14 @@
             this.tab_contact.TabIndex = 4;
             this.tab_contact.Text = "Contact";
             this.tab_contact.UseVisualStyleBackColor = true;
+            // 
+            // txtExtNumber
+            // 
+            this.txtExtNumber.Enabled = false;
+            this.txtExtNumber.Location = new System.Drawing.Point(214, 201);
+            this.txtExtNumber.Name = "txtExtNumber";
+            this.txtExtNumber.Size = new System.Drawing.Size(51, 23);
+            this.txtExtNumber.TabIndex = 35;
             // 
             // departmentAdd
             // 
@@ -1311,9 +1319,9 @@
             this.tableMain.Controls.Add(this.panel1, 0, 1);
             this.tableMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableMain.Location = new System.Drawing.Point(0, 0);
-            this.tableMain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableMain.Margin = new System.Windows.Forms.Padding(2);
             this.tableMain.Name = "tableMain";
-            this.tableMain.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableMain.Padding = new System.Windows.Forms.Padding(4);
             this.tableMain.RowCount = 3;
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 309F));
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 61F));
@@ -1330,18 +1338,10 @@
             this.panel1.Controls.Add(this.Search);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(6, 315);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(706, 57);
             this.panel1.TabIndex = 2;
-            // 
-            // txtExtNumber
-            // 
-            this.txtExtNumber.Enabled = false;
-            this.txtExtNumber.Location = new System.Drawing.Point(214, 201);
-            this.txtExtNumber.Name = "txtExtNumber";
-            this.txtExtNumber.Size = new System.Drawing.Size(51, 23);
-            this.txtExtNumber.TabIndex = 35;
             // 
             // CustomerMain
             // 

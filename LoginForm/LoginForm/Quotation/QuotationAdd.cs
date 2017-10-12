@@ -782,6 +782,9 @@ namespace LoginForm
 
             
             int RowIndex = dataGridView3.CurrentCell.RowIndex;
+            decimal sayi1;
+            decimal sayi2;
+            decimal sayi3;
             if (!(SubTotal.Count > RowIndex)) { SubTotal.Add(0); }
             if (SubTotal.Count>0 && SubTotal[RowIndex] == null)
             {
@@ -812,10 +815,62 @@ namespace LoginForm
                 }
                 lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + SubTotal[RowIndex]).ToString();
             }
+
+            if (txtTotalDis.Text != "" && txtTotalDis.Text != null)
+            {
+                txtTotalDis2.Enabled = false;
+                sayi1 = Convert.ToDecimal(lblsubtotal.Text);
+                sayi2 = Convert.ToDecimal(txtTotalDis.Text);
+                lbltotal.Text = Convert.ToString((sayi1) - sayi1 * (sayi2 / 100));
+                sayi3 = Convert.ToDecimal(lbltotal.Text);
+                txtTotalDis2.Text = Convert.ToString(sayi1-sayi3);
+                sayi1 = 0;
+                sayi2 = 0;
+            }
+            if (txtTotalDis2.Text != "" && txtTotalDis2.Text == null)
+            {
+                txtTotalDis.Enabled = false;
+                sayi1 = Convert.ToDecimal(lblsubtotal.Text);
+                sayi2 = Convert.ToDecimal(txtTotalDis2.Text);
+                lbltotal.Text = Convert.ToString(sayi1 - sayi2);
+                sayi1 = 0;
+                sayi2 = 0;
+            }
+            if (txtExtraChanges.Text != "" && txtExtraChanges.Text != null)
+            {
+                sayi1 = Convert.ToDecimal(lbltotal.Text);
+                sayi2 = Convert.ToDecimal(txtExtraChanges.Text);
+                lblTotalExtra.Text = Convert.ToString(sayi1 + sayi2);
+                sayi1 = 0;
+                sayi2 = 0;
+            }
+
+            if(chkVat.Checked)
+            {
+                sayi1 = Convert.ToDecimal(lblTotalExtra.Text);
+                sayi2 = Convert.ToDecimal(lbltotal.Text);
+                sayi3 = Convert.ToDecimal(lblVat.Text);
+                lblVatTotal.Text = Convert.ToString((sayi1 + sayi2) * (sayi3 / 100));
+                sayi1 = 0;
+                sayi2 = 0;
+                sayi3 = 0;
+            }
+            else
+            {
+                sayi1 = Convert.ToDecimal(lblTotalExtra.Text);
+                sayi2 = Convert.ToDecimal(lbltotal.Text);
+                lblVatTotal.Text = Convert.ToString((sayi1 + sayi2) * (0));
+                sayi1 = 0;
+                sayi2 = 0;
+            }
+
+            sayi1 = Convert.ToDecimal(lblTotalExtra.Text);
+            sayi2 = Convert.ToDecimal(lblVatTotal.Text);
+            lblGrossTotal.Text = Convert.ToString(sayi1 + sayi2);
+            sayi1 = 0;
+            sayi2 = 0;
             #endregion
         }
-
-
     }
 
 }

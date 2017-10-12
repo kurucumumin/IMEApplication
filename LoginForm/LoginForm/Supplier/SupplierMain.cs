@@ -472,13 +472,13 @@ using LoginForm.Services;
                                    join s in db.SupplierCategorySubCategories on c.ID equals s.supplierID
                                    join p in db.PaymentTerms on c.payment_termID equals p.ID
                                    join m in db.PaymentMethods on c.paymentmethodID equals m.ID
-                                   join l in db.Languages on SupplierWorker.languageID equals l.ID into supplierlanguage
-                                   let l = supplierlanguage.Select(supplierlanguage1 => supplierlanguage1).FirstOrDefault()
                                    join n in db.SupplierBanks on c.BankID equals n.ID
                                    join a in db.SupplierAdresses on c.ID equals a.SupplierID into adress
                                    let a = adress.Select(supplierworker1 => supplierworker1).FirstOrDefault()
-                                   join sc in db.SupplierWorkers on c.MainContactID equals sc.ID into suppliercontact
-                                   let sc = suppliercontact.Select(supplierworker1 => supplierworker1).FirstOrDefault()
+                                   join sc in db.SupplierWorkers on c.MainContactID equals sc.ID into maincontact
+                                   let sc = maincontact.Select(supplierworker1 => supplierworker1).FirstOrDefault()
+                                   join l in db.Languages on SupplierWorker.languageID equals l.ID into supplierlanguage
+                                   let l = supplierlanguage.Select(supplierlanguage1 => supplierlanguage1).FirstOrDefault()
                                    select new
                                    {
                                        c.ID,
@@ -639,12 +639,8 @@ using LoginForm.Services;
 
         private void btnContactDone_Click(object sender, EventArgs e)
         {
-
             if (isNewContact == 0)
             {
-                SupplierWorker cw = new SupplierWorker();
-                //SupplierCode.Text;
-
                 foreach (Control ctl in this.Controls)
                     if (ctl is TextBox)
                     {
@@ -654,6 +650,7 @@ using LoginForm.Services;
                         }
                         else
                         {
+                            SupplierWorker cw = new SupplierWorker();
                             cw.supplierID = txtcode.Text;
                             cw.departmentID = ((SupplierDepartment)(cmbdepartman).SelectedItem).ID;
                             cw.titleID = ((SupplierTitle)(cmbposition).SelectedItem).ID;
@@ -670,7 +667,6 @@ using LoginForm.Services;
                             db.Notes.Add(n);
                             db.SaveChanges();
                             cw.supplierNoteID = n.ID;
-
                             contactTabEnableFalse();
                             if (btnnew.Text == "Add")
                             {
@@ -700,14 +696,14 @@ using LoginForm.Services;
                             {
                                 //UPDATE CONTACT
                                 cw.supplierID = txtcode.Text;
-                                cw.departmentID = db.SupplierDepartments.First(a => a.departmentname == cmbdepartman.Text).ID;
-                                cw.titleID = db.SupplierTitles.First(a => a.ID == ((SupplierTitle)(cmbposition).SelectedItem).departmnetID).ID;
+                                cw.departmentID = ((SupplierDepartment)(cmbdepartman).SelectedItem).ID;
+                                cw.titleID = ((SupplierTitle)(cmbposition).SelectedItem).ID;
                                 cw.sw_name = txtContactName.Text;
                                 cw.sw_email = txtContactMail.Text;
                                 cw.phone = txtContactPhone.Text;
                                 cw.mobilephone = txtContactMobile.Text;
                                 cw.fax = txtContactfax.Text;
-                                cw.languageID = db.Languages.First(a => a.languagename == cmblanguage.Text).ID;
+                                cw.languageID = ((Language)(cmblanguage).SelectedItem).ID;
                                 var contactNote = db.Notes.Where(a => a.ID == cw.supplierNoteID).FirstOrDefault();
                                 if (contactNote == null)
                                 {
@@ -830,7 +826,7 @@ using LoginForm.Services;
                 Supplier s = new Supplier();
                 s = db.Suppliers.Where(a => a.ID == txtcode.Text).FirstOrDefault();
                 s.s_name = txtname.Text;
-                if (txtdiscount.Text != "") { s.discountrate = Int32.Parse(txtdiscount.Text); }
+                try { if (txtdiscount.Text != "") { s.discountrate = Int32.Parse(txtdiscount.Text); } } catch { };
                 if (txtphone.Text != "") { s.telephone = txtphone.Text; }
                 int s_paymentmeth = ((PaymentMethod)(cmbAcountMethod).SelectedItem).ID; s.paymentmethodID = s_paymentmeth;
                 if (txtfax.Text != "") { s.fax = txtfax.Text; }

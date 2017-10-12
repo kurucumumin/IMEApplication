@@ -22,8 +22,8 @@ namespace LoginForm
 
         private void btncancel_Click(object sender, EventArgs e)
         {
-            SupplierMain form = new SupplierMain();
-            form.Show();
+            //SupplierMain form = new SupplierMain();
+            //form.Show();
             this.Hide();
         }
 
