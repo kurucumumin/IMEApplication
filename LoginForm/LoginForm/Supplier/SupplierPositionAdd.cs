@@ -20,18 +20,10 @@ namespace LoginForm
             InitializeComponent();
         }
 
-        private void PositionAdd_Load(object sender, EventArgs e)
-        {
-            var departmenList = db.SupplierDepartments.Select(a => a.departmentname).ToList();
-            cmbDepartment.DataSource = departmenList;
-            cmbDepartment.DisplayMember = "departmentname";
-            cmbDepartment.ValueMember = "ID";
-        }
-
         private void btncancel_Click(object sender, EventArgs e)
         {
-            SupplierMain form = new SupplierMain();
-            form.Show();
+            //SupplierMain form = new SupplierMain();
+            //form.Show();
             this.Hide();
         }
 
@@ -66,8 +58,6 @@ namespace LoginForm
         {
             var departmenList = db.SupplierDepartments.Select(a => a.departmentname).ToList();
             cmbDepartment.DataSource = departmenList;
-            cmbDepartment.DisplayMember = "departmentname";
-            cmbDepartment.ValueMember = "ID";
         }
     }
 }
