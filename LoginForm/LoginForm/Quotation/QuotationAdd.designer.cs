@@ -39,6 +39,42 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dgNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgMPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgLM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgLandingCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgMargin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSSM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUPIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDisc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUCUPCurr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTargetUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCompetitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgHZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUnitWeigt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTotalWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCustStkCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCustDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCOO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCCCNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -236,42 +272,6 @@
             this.txtUnitCount1 = new System.Windows.Forms.TextBox();
             this.txtUnitCount4 = new System.Windows.Forms.TextBox();
             this.txtUnitCount3 = new System.Windows.Forms.TextBox();
-            this.dgNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgMPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgLM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgLandingCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgMargin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgSSM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUPIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDisc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUCUPCurr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTargetUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCompetitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgHZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUnitWeigt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTotalWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCustStkCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCustDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCOO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCCCNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -329,6 +329,7 @@
             this.lblsubtotal.Size = new System.Drawing.Size(28, 13);
             this.lblsubtotal.TabIndex = 8;
             this.lblsubtotal.Text = "0,00";
+            this.lblsubtotal.TextChanged += new System.EventHandler(this.lblsubtotal_TextChanged);
             // 
             // label35
             // 
@@ -434,6 +435,225 @@
             this.dataGridView3.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridView3_UserDeletingRow);
             this.dataGridView3.Click += new System.EventHandler(this.dataGridView3_Click);
             this.dataGridView3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView3_KeyDown);
+            // 
+            // dgNo
+            // 
+            this.dgNo.HeaderText = "No";
+            this.dgNo.Name = "dgNo";
+            this.dgNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dgNo.Width = 45;
+            // 
+            // HS
+            // 
+            this.HS.HeaderText = "HS";
+            this.HS.Name = "HS";
+            this.HS.ReadOnly = true;
+            this.HS.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.HS.Width = 32;
+            // 
+            // LI
+            // 
+            this.LI.HeaderText = "LI";
+            this.LI.Name = "LI";
+            this.LI.ReadOnly = true;
+            this.LI.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.LI.Width = 32;
+            // 
+            // CL
+            // 
+            this.CL.HeaderText = "CL";
+            this.CL.Name = "CL";
+            this.CL.ReadOnly = true;
+            this.CL.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.CL.Width = 32;
+            // 
+            // LC
+            // 
+            this.LC.HeaderText = "LC";
+            this.LC.Name = "LC";
+            this.LC.ReadOnly = true;
+            this.LC.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.LC.Width = 32;
+            // 
+            // LM
+            // 
+            this.LM.HeaderText = "LM";
+            this.LM.Name = "LM";
+            this.LM.ReadOnly = true;
+            this.LM.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.LM.Width = 32;
+            // 
+            // dgSupplier
+            // 
+            this.dgSupplier.HeaderText = "Supplier";
+            this.dgSupplier.Name = "dgSupplier";
+            this.dgSupplier.ReadOnly = true;
+            // 
+            // dgProductCode
+            // 
+            this.dgProductCode.HeaderText = "Item Code";
+            this.dgProductCode.Name = "dgProductCode";
+            // 
+            // dgBrand
+            // 
+            this.dgBrand.HeaderText = "Brand";
+            this.dgBrand.Name = "dgBrand";
+            this.dgBrand.ReadOnly = true;
+            // 
+            // dgMPN
+            // 
+            this.dgMPN.HeaderText = "MPN";
+            this.dgMPN.Name = "dgMPN";
+            this.dgMPN.ReadOnly = true;
+            // 
+            // dgDesc
+            // 
+            this.dgDesc.HeaderText = "Description";
+            this.dgDesc.Name = "dgDesc";
+            this.dgDesc.ReadOnly = true;
+            // 
+            // dgLM
+            // 
+            this.dgLM.HeaderText = "LM";
+            this.dgLM.Name = "dgLM";
+            this.dgLM.ReadOnly = true;
+            // 
+            // dgCost
+            // 
+            this.dgCost.HeaderText = "Cost (£)";
+            this.dgCost.Name = "dgCost";
+            this.dgCost.ReadOnly = true;
+            // 
+            // dgLandingCost
+            // 
+            this.dgLandingCost.HeaderText = "Landing Cost (£)";
+            this.dgLandingCost.Name = "dgLandingCost";
+            this.dgLandingCost.ReadOnly = true;
+            // 
+            // dgMargin
+            // 
+            this.dgMargin.HeaderText = "Margin";
+            this.dgMargin.Name = "dgMargin";
+            this.dgMargin.ReadOnly = true;
+            // 
+            // dgQty
+            // 
+            this.dgQty.HeaderText = "Qty";
+            this.dgQty.Name = "dgQty";
+            // 
+            // dgStock
+            // 
+            this.dgStock.HeaderText = "Stock";
+            this.dgStock.Name = "dgStock";
+            this.dgStock.ReadOnly = true;
+            // 
+            // dgUOM
+            // 
+            this.dgUOM.HeaderText = "UOM";
+            this.dgUOM.Name = "dgUOM";
+            this.dgUOM.ReadOnly = true;
+            // 
+            // dgSSM
+            // 
+            this.dgSSM.HeaderText = "SSM";
+            this.dgSSM.Name = "dgSSM";
+            this.dgSSM.ReadOnly = true;
+            // 
+            // dgUC
+            // 
+            this.dgUC.HeaderText = "U/C";
+            this.dgUC.Name = "dgUC";
+            this.dgUC.ReadOnly = true;
+            // 
+            // dgUPIME
+            // 
+            this.dgUPIME.HeaderText = "U/P IME L/P ";
+            this.dgUPIME.Name = "dgUPIME";
+            this.dgUPIME.ReadOnly = true;
+            // 
+            // dgDisc
+            // 
+            this.dgDisc.HeaderText = "Disc. (%)";
+            this.dgDisc.Name = "dgDisc";
+            this.dgDisc.ReadOnly = true;
+            // 
+            // dgUCUPCurr
+            // 
+            this.dgUCUPCurr.HeaderText = "U/C U/P (Curr.)";
+            this.dgUCUPCurr.Name = "dgUCUPCurr";
+            // 
+            // dgTotal
+            // 
+            this.dgTotal.HeaderText = "TOTAL";
+            this.dgTotal.Name = "dgTotal";
+            this.dgTotal.ReadOnly = true;
+            // 
+            // dgTargetUP
+            // 
+            this.dgTargetUP.HeaderText = "Target U/P";
+            this.dgTargetUP.Name = "dgTargetUP";
+            // 
+            // dgCompetitor
+            // 
+            this.dgCompetitor.HeaderText = "Competitor";
+            this.dgCompetitor.Name = "dgCompetitor";
+            // 
+            // dgHZ
+            // 
+            this.dgHZ.HeaderText = "HZ";
+            this.dgHZ.Name = "dgHZ";
+            this.dgHZ.ReadOnly = true;
+            // 
+            // dgCL
+            // 
+            this.dgCL.HeaderText = "CL";
+            this.dgCL.Name = "dgCL";
+            this.dgCL.ReadOnly = true;
+            // 
+            // dgCR
+            // 
+            this.dgCR.HeaderText = "CR";
+            this.dgCR.Name = "dgCR";
+            this.dgCR.ReadOnly = true;
+            // 
+            // dgDelivery
+            // 
+            this.dgDelivery.HeaderText = "Delivery";
+            this.dgDelivery.Name = "dgDelivery";
+            // 
+            // dgUnitWeigt
+            // 
+            this.dgUnitWeigt.HeaderText = "Unit Weigt (Kg)";
+            this.dgUnitWeigt.Name = "dgUnitWeigt";
+            this.dgUnitWeigt.ReadOnly = true;
+            // 
+            // dgTotalWeight
+            // 
+            this.dgTotalWeight.HeaderText = "Total Weight (Kg)";
+            this.dgTotalWeight.Name = "dgTotalWeight";
+            this.dgTotalWeight.ReadOnly = true;
+            // 
+            // dgCustStkCode
+            // 
+            this.dgCustStkCode.HeaderText = "Cust Stk Code";
+            this.dgCustStkCode.Name = "dgCustStkCode";
+            // 
+            // dgCustDescription
+            // 
+            this.dgCustDescription.HeaderText = "Cust. Description";
+            this.dgCustDescription.Name = "dgCustDescription";
+            // 
+            // dgCOO
+            // 
+            this.dgCOO.HeaderText = "COO";
+            this.dgCOO.Name = "dgCOO";
+            this.dgCOO.ReadOnly = true;
+            // 
+            // dgCCCNO
+            // 
+            this.dgCCCNO.HeaderText = "CCCNO";
+            this.dgCCCNO.Name = "dgCCCNO";
+            this.dgCCCNO.ReadOnly = true;
             // 
             // groupBox6
             // 
@@ -859,6 +1079,7 @@
             this.txtExtraChanges.Size = new System.Drawing.Size(54, 20);
             this.txtExtraChanges.TabIndex = 20;
             this.txtExtraChanges.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtExtraChanges.TextChanged += new System.EventHandler(this.txtExtraChanges_TextChanged);
             // 
             // lblVatTotal
             // 
@@ -871,7 +1092,7 @@
             // 
             // txtTotalDis2
             // 
-            this.txtTotalDis2.Location = new System.Drawing.Point(174, 14);
+            this.txtTotalDis2.Location = new System.Drawing.Point(174, 16);
             this.txtTotalDis2.Name = "txtTotalDis2";
             this.txtTotalDis2.Size = new System.Drawing.Size(54, 20);
             this.txtTotalDis2.TabIndex = 15;
@@ -888,6 +1109,7 @@
             this.chkVat.TabIndex = 17;
             this.chkVat.Text = "VAT";
             this.chkVat.UseVisualStyleBackColor = true;
+            this.chkVat.CheckedChanged += new System.EventHandler(this.chkVat_CheckedChanged);
             // 
             // txtTotalDis
             // 
@@ -895,6 +1117,7 @@
             this.txtTotalDis.Name = "txtTotalDis";
             this.txtTotalDis.Size = new System.Drawing.Size(24, 20);
             this.txtTotalDis.TabIndex = 13;
+            this.txtTotalDis.TextChanged += new System.EventHandler(this.txtTotalDis_TextChanged);
             // 
             // lblGrossTotal
             // 
@@ -2339,224 +2562,6 @@
             this.txtUnitCount3.Name = "txtUnitCount3";
             this.txtUnitCount3.Size = new System.Drawing.Size(44, 20);
             this.txtUnitCount3.TabIndex = 410;
-            // 
-            // dgNo
-            // 
-            this.dgNo.HeaderText = "No";
-            this.dgNo.Name = "dgNo";
-            this.dgNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dgNo.Width = 45;
-            // 
-            // HS
-            // 
-            this.HS.HeaderText = "HS";
-            this.HS.Name = "HS";
-            this.HS.ReadOnly = true;
-            this.HS.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.HS.Width = 32;
-            // 
-            // LI
-            // 
-            this.LI.HeaderText = "LI";
-            this.LI.Name = "LI";
-            this.LI.ReadOnly = true;
-            this.LI.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.LI.Width = 32;
-            // 
-            // CL
-            // 
-            this.CL.HeaderText = "CL";
-            this.CL.Name = "CL";
-            this.CL.ReadOnly = true;
-            this.CL.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.CL.Width = 32;
-            // 
-            // LC
-            // 
-            this.LC.HeaderText = "LC";
-            this.LC.Name = "LC";
-            this.LC.ReadOnly = true;
-            this.LC.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.LC.Width = 32;
-            // 
-            // LM
-            // 
-            this.LM.HeaderText = "LM";
-            this.LM.Name = "LM";
-            this.LM.ReadOnly = true;
-            this.LM.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.LM.Width = 32;
-            // 
-            // dgSupplier
-            // 
-            this.dgSupplier.HeaderText = "Supplier";
-            this.dgSupplier.Name = "dgSupplier";
-            this.dgSupplier.ReadOnly = true;
-            // 
-            // dgProductCode
-            // 
-            this.dgProductCode.HeaderText = "Item Code";
-            this.dgProductCode.Name = "dgProductCode";
-            // 
-            // dgBrand
-            // 
-            this.dgBrand.HeaderText = "Brand";
-            this.dgBrand.Name = "dgBrand";
-            this.dgBrand.ReadOnly = true;
-            // 
-            // dgMPN
-            // 
-            this.dgMPN.HeaderText = "MPN";
-            this.dgMPN.Name = "dgMPN";
-            this.dgMPN.ReadOnly = true;
-            // 
-            // dgDesc
-            // 
-            this.dgDesc.HeaderText = "Description";
-            this.dgDesc.Name = "dgDesc";
-            this.dgDesc.ReadOnly = true;
-            // 
-            // dgLM
-            // 
-            this.dgLM.HeaderText = "LM";
-            this.dgLM.Name = "dgLM";
-            this.dgLM.ReadOnly = true;
-            // 
-            // dgCost
-            // 
-            this.dgCost.HeaderText = "Cost (£)";
-            this.dgCost.Name = "dgCost";
-            this.dgCost.ReadOnly = true;
-            // 
-            // dgLandingCost
-            // 
-            this.dgLandingCost.HeaderText = "Landing Cost (£)";
-            this.dgLandingCost.Name = "dgLandingCost";
-            this.dgLandingCost.ReadOnly = true;
-            // 
-            // dgMargin
-            // 
-            this.dgMargin.HeaderText = "Margin";
-            this.dgMargin.Name = "dgMargin";
-            this.dgMargin.ReadOnly = true;
-            // 
-            // dgQty
-            // 
-            this.dgQty.HeaderText = "Qty";
-            this.dgQty.Name = "dgQty";
-            // 
-            // dgStock
-            // 
-            this.dgStock.HeaderText = "Stock";
-            this.dgStock.Name = "dgStock";
-            this.dgStock.ReadOnly = true;
-            // 
-            // dgUOM
-            // 
-            this.dgUOM.HeaderText = "UOM";
-            this.dgUOM.Name = "dgUOM";
-            this.dgUOM.ReadOnly = true;
-            // 
-            // dgSSM
-            // 
-            this.dgSSM.HeaderText = "SSM";
-            this.dgSSM.Name = "dgSSM";
-            this.dgSSM.ReadOnly = true;
-            // 
-            // dgUC
-            // 
-            this.dgUC.HeaderText = "U/C";
-            this.dgUC.Name = "dgUC";
-            this.dgUC.ReadOnly = true;
-            // 
-            // dgUPIME
-            // 
-            this.dgUPIME.HeaderText = "U/P IME L/P ";
-            this.dgUPIME.Name = "dgUPIME";
-            this.dgUPIME.ReadOnly = true;
-            // 
-            // dgDisc
-            // 
-            this.dgDisc.HeaderText = "Disc. (%)";
-            this.dgDisc.Name = "dgDisc";
-            // 
-            // dgUCUPCurr
-            // 
-            this.dgUCUPCurr.HeaderText = "U/C U/P (Curr.)";
-            this.dgUCUPCurr.Name = "dgUCUPCurr";
-            // 
-            // dgTotal
-            // 
-            this.dgTotal.HeaderText = "TOTAL";
-            this.dgTotal.Name = "dgTotal";
-            this.dgTotal.ReadOnly = true;
-            // 
-            // dgTargetUP
-            // 
-            this.dgTargetUP.HeaderText = "Target U/P";
-            this.dgTargetUP.Name = "dgTargetUP";
-            // 
-            // dgCompetitor
-            // 
-            this.dgCompetitor.HeaderText = "Competitor";
-            this.dgCompetitor.Name = "dgCompetitor";
-            // 
-            // dgHZ
-            // 
-            this.dgHZ.HeaderText = "HZ";
-            this.dgHZ.Name = "dgHZ";
-            this.dgHZ.ReadOnly = true;
-            // 
-            // dgCL
-            // 
-            this.dgCL.HeaderText = "CL";
-            this.dgCL.Name = "dgCL";
-            this.dgCL.ReadOnly = true;
-            // 
-            // dgCR
-            // 
-            this.dgCR.HeaderText = "CR";
-            this.dgCR.Name = "dgCR";
-            this.dgCR.ReadOnly = true;
-            // 
-            // dgDelivery
-            // 
-            this.dgDelivery.HeaderText = "Delivery";
-            this.dgDelivery.Name = "dgDelivery";
-            // 
-            // dgUnitWeigt
-            // 
-            this.dgUnitWeigt.HeaderText = "Unit Weigt (Kg)";
-            this.dgUnitWeigt.Name = "dgUnitWeigt";
-            this.dgUnitWeigt.ReadOnly = true;
-            // 
-            // dgTotalWeight
-            // 
-            this.dgTotalWeight.HeaderText = "Total Weight (Kg)";
-            this.dgTotalWeight.Name = "dgTotalWeight";
-            this.dgTotalWeight.ReadOnly = true;
-            // 
-            // dgCustStkCode
-            // 
-            this.dgCustStkCode.HeaderText = "Cust Stk Code";
-            this.dgCustStkCode.Name = "dgCustStkCode";
-            // 
-            // dgCustDescription
-            // 
-            this.dgCustDescription.HeaderText = "Cust. Description";
-            this.dgCustDescription.Name = "dgCustDescription";
-            // 
-            // dgCOO
-            // 
-            this.dgCOO.HeaderText = "COO";
-            this.dgCOO.Name = "dgCOO";
-            this.dgCOO.ReadOnly = true;
-            // 
-            // dgCCCNO
-            // 
-            this.dgCCCNO.HeaderText = "CCCNO";
-            this.dgCCCNO.Name = "dgCCCNO";
-            this.dgCCCNO.ReadOnly = true;
             // 
             // QuotationAdd
             // 
