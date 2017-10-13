@@ -410,12 +410,14 @@ namespace LoginForm.WorkerManagement
         private void clbUserAuthorityList_MouseClick(object sender, MouseEventArgs e)
         {
             int index = clbUserAuthorityList.SelectedIndex;
+            if (index >=0)
+            {
+                authList.Remove((AuthorizationValue)clbUserAuthorityList.Items[index]);
 
-            authList.Remove((AuthorizationValue)clbUserAuthorityList.Items[index]);
-
-            RefreshUserAuthList();
-            matchAuthorities();
-            clbUserAuthorityList.ClearSelected();
+                RefreshUserAuthList();
+                matchAuthorities();
+                clbUserAuthorityList.ClearSelected();
+            }
         }
     }
     

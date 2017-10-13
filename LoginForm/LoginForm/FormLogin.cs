@@ -18,15 +18,18 @@ namespace LoginForm
     {
 
         bool closeRequest = false;
+        private FormMain mainForm;
+
 
         IMEEntities IME = new IMEEntities();
-        public Worker Logged;
+
         public string LoginPerson { get; set; }
 
 
-        public FormLogin()
+        public FormLogin(FormMain mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -54,6 +57,9 @@ namespace LoginForm
                 if(Logged.isActive == 1)
                 {
                     closeRequest = true;
+                    Utils.setCurrentUser(Logged);
+                    Utils.bringManagement();
+                    mainForm.Enabled = true;
                     this.Close();
                 }
                 else

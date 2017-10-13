@@ -17,195 +17,22 @@ namespace LoginForm
 {
     public partial class FormMain : Form
     {
-        ArrayList developmentButtons = new ArrayList();
-        ArrayList loaderButtons = new ArrayList();
-
-        public void initialize()
-        {
-            developmentButtons.Add(btnCustomer);
-            developmentButtons.Add(btnLogin);
-            developmentButtons.Add(btnQuotation);
-            developmentButtons.Add(btnSupplier);
-            developmentButtons.Add(btnWorker);
-            developmentButtons.Add(btnItemCard);
-
-            loaderButtons.Add(btnOnSale);
-            loaderButtons.Add(btnSuperDisk);
-            loaderButtons.Add(btnSlidingPriceList);
-            loaderButtons.Add(btnDiscontinuedList);
-            loaderButtons.Add(btnSuperDiskwithP);
-            loaderButtons.Add(btnDualUsedArticles);
-            loaderButtons.Add(btnHazardousFile);
-            loaderButtons.Add(btnExtendedRangePrice);
-            loaderButtons.Add(btnTSEList);
-            loaderButtons.Add(btnRSProList);
-            
-        }
+        private Worker User;
 
         public FormMain()
         {
+            Utils.bringManagement();
             InitializeComponent();
-            initialize();
-        }
-
-        private void btnCustomerMain_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            CustomerMain customerMain = new CustomerMain();
-            customerMain.ShowDialog();
-            this.Show();
         }
 
         private void btnLoader_Click(object sender, EventArgs e)
         {
-
-            changeButtonVisibility(loaderButtons, true);
-            changeButtonVisibility(developmentButtons, false);
-
-
-        }
-
-        private void btnQuotation_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            FormQuotationMain formQuotationMain = new FormQuotationMain();
-            formQuotationMain.ShowDialog();
-            this.Show();
-        }
-
-        private void btnSupplier_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            SupplierMain supplierMain = new SupplierMain();
-            supplierMain.ShowDialog();
-            this.Show();
-
-        }
-
-        private void btnWorker_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            FormRoles roles = new FormRoles();
-            roles.ShowDialog();
-            this.Show();
-
-        }
-
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            FormLogin loginForm = new FormLogin();
-            loginForm.ShowDialog();
-            this.Show();
+            controlLoader.BringToFront();
         }
 
         private void btnDevelopment_Click(object sender, EventArgs e)
         {
-            changeButtonVisibility(developmentButtons, true);
-            changeButtonVisibility(loaderButtons, false);
-        }
-
-
-
-
-
-
-
-
-
-
-        private void changeButtonVisibility(ArrayList list, bool state)
-        {
-            foreach (Button item in list)
-            {
-                item.Visible = state;
-            }
-        }
-
-        private void GoToLoaderPage()
-        {
-            LoaderPage form = new LoaderPage();
-            this.Hide();
-            form.ShowDialog();
-            this.Show();
-        }
-
-        private void btnOnSale_Click(object sender, EventArgs e)
-        {
-            txtReader.LoaderType = "";
-            txtReader.LoaderType = "OnSale";
-            GoToLoaderPage();
-        }
-
-        private void btnSuperDisk_Click(object sender, EventArgs e)
-        {
-            txtReader.LoaderType = "";
-            txtReader.LoaderType = "SuperDisk";
-            GoToLoaderPage();
-        }
-
-        private void btnSlidingPriceList_Click(object sender, EventArgs e)
-        {
-            txtReader.LoaderType = "";
-            txtReader.LoaderType = "SlidingPrice";
-            GoToLoaderPage();
-        }
-
-        private void btnDiscontinuedList_Click(object sender, EventArgs e)
-        {
-            txtReader.LoaderType = "";
-            txtReader.LoaderType = "DiscontinuedList";
-            GoToLoaderPage();
-        }
-
-        private void btnSuperDiskwithP_Click(object sender, EventArgs e)
-        {
-            txtReader.LoaderType = "";
-            txtReader.LoaderType = "SuperDiskP";
-            GoToLoaderPage();
-        }
-
-        private void btnDualUsedArticles_Click(object sender, EventArgs e)
-        {
-            txtReader.LoaderType = "";
-            txtReader.LoaderType = "DualUse";
-            GoToLoaderPage();
-        }
-
-        private void btnHazardousFile_Click(object sender, EventArgs e)
-        {
-            txtReader.LoaderType = "";
-            txtReader.LoaderType = "Hazardous";
-            GoToLoaderPage();
-        }
-
-        private void btnExtendedRangePrice_Click(object sender, EventArgs e)
-        {
-            txtReader.LoaderType = "";
-            txtReader.LoaderType = "ExtendedRange";
-            GoToLoaderPage();
-        }
-
-        private void btnTSEList_Click(object sender, EventArgs e)
-        {
-            txtReader.LoaderType = "";
-            txtReader.LoaderType = "TSE";
-            GoToLoaderPage();
-        }
-
-        private void btnRSProList_Click(object sender, EventArgs e)
-        {
-            txtReader.LoaderType = "";
-            txtReader.LoaderType = "RSPro";
-            GoToLoaderPage();
-        }
-
-        private void btnItemCard_Click(object sender, EventArgs e)
-        {
-            ItemCard form = new ItemCard();
-            this.Hide();
-            form.ShowDialog();
-            this.Show();
+            controlDevelopment.BringToFront();
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -213,21 +40,28 @@ namespace LoginForm
             ExchangeService DailyDolar = new ExchangeService();
             ExchangeRate RateForDolar = new ExchangeRate();
             RateForDolar = DailyDolar.GetExchangeRateforDolar();
-            
+
             //string Euro = DailyEuro.GetExchangeRateforEuro();
             //string Dolar = DailyEuro.GetExchangeRateforDolar();
             //lblDolarSell.Text = Dolar;
             //lblEuroSell.Text = Euro;
 
-            //Açılışta login gözükmesin diye
-            bool x = true;
-            if (x)
+            this.Enabled = false;
+            FormLogin loginForm = new FormLogin(this);
+            loginForm.ShowDialog();
+            User = Utils.getCurrentUser();
+
+        }
+
+        private void btnManagement_Click(object sender, EventArgs e)
+        {
+            if (User.AuthorizationValues.Where(a => a.AuthorizationID == 1009).Count() > 0)
             {
-                this.Show();
-                this.Enabled = false;
-                FormLogin loginForm = new FormLogin();
-                loginForm.ShowDialog();
-                this.Enabled = true;
+                controlManagement.BringToFront();
+            }
+            else
+            {
+                MessageBox.Show("You are not authorized for this process");
             }
         }
     }

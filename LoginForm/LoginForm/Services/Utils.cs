@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LoginForm.DataSet;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -9,6 +10,9 @@ namespace LoginForm.Services
 {
     class Utils
     {
+        private static Worker worker;
+        private static Management management;
+
         public static string MD5Hash(string input)
         {
             StringBuilder hash = new StringBuilder();
@@ -20,6 +24,38 @@ namespace LoginForm.Services
                 hash.Append(bytes[i].ToString("x2"));
             }
             return hash.ToString();
+        }
+
+        public static void setCurrentUser(Worker w)
+        {
+            worker = w;
+        }
+
+        public static Worker getCurrentUser()
+        {
+            return worker;
+        }
+
+
+
+        public static void bringManagement()
+        {
+            IMEEntities IME = new IMEEntities();
+            management = IME.Managements.FirstOrDefault();
+            
+        }
+
+        public static void saveManagement(Management man)
+        {
+            IMEEntities IME = new IMEEntities();
+            Management mn = IME.Managements.Where(m => m.ID == man.ID).FirstOrDefault();
+            mn = man;
+            IME.SaveChanges();
+        }
+
+        public static Management getManagement()
+        {
+            return management;
         }
     }
 }
