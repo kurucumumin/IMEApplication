@@ -217,6 +217,13 @@
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="languagename" Type="nvarchar" MaxLength="20" />
         </EntityType>
+        <EntityType Name="Management">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LowMarginLimit" Type="decimal" Precision="4" Scale="2" />
+        </EntityType>
         <EntityType Name="Notes">
           <Key>
             <PropertyRef Name="ID" />
@@ -1264,6 +1271,7 @@
           <EntitySet Name="Hazardous" EntityType="Self.Hazardous" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemNote" EntityType="Self.ItemNote" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Management" EntityType="Self.Management" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OnSale" EntityType="Self.OnSale" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
@@ -1540,6 +1548,7 @@
           <EntitySet Name="Hazardous" EntityType="IMEModel.Hazardou" />
           <EntitySet Name="ItemNotes" EntityType="IMEModel.ItemNote" />
           <EntitySet Name="Languages" EntityType="IMEModel.Language" />
+          <EntitySet Name="Managements" EntityType="IMEModel.Management" />
           <EntitySet Name="Notes" EntityType="IMEModel.Note" />
           <EntitySet Name="OnSales" EntityType="IMEModel.OnSale" />
           <EntitySet Name="PaymentMethods" EntityType="IMEModel.PaymentMethod" />
@@ -2034,6 +2043,13 @@
           <Property Name="languagename" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CustomerWorkers" Relationship="IMEModel.FK__CustomerW__langu__72C60C4A" FromRole="Language" ToRole="CustomerWorker" />
           <NavigationProperty Name="SupplierWorkers" Relationship="IMEModel.FK__SupplierW__langu__72910220" FromRole="Language" ToRole="SupplierWorker" />
+        </EntityType>
+        <EntityType Name="Management">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LowMarginLimit" Type="Decimal" Precision="4" Scale="2" />
         </EntityType>
         <EntityType Name="Note">
           <Key>
@@ -3301,6 +3317,14 @@
             <EntityTypeMapping TypeName="IMEModel.Language">
               <MappingFragment StoreEntitySet="Languages">
                 <ScalarProperty Name="languagename" ColumnName="languagename" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Managements">
+            <EntityTypeMapping TypeName="IMEModel.Management">
+              <MappingFragment StoreEntitySet="Management">
+                <ScalarProperty Name="LowMarginLimit" ColumnName="LowMarginLimit" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
