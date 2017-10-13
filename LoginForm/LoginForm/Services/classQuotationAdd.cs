@@ -103,8 +103,12 @@ namespace LoginForm.Services
             }
             else if (er != null)
             {
-                w = Decimal.Parse(er.ExtendedRangeWeight.ToString());
-                w = (w / (decimal)1000);
+                try
+                {
+                    w = Decimal.Parse(er.ExtendedRangeWeight.ToString());
+                    w = (w / (decimal)1000);
+                }
+                catch { }
             }
 
             decimal l = 0;

@@ -189,7 +189,21 @@ namespace LoginForm
             .Cast<DataGridViewRow>()
             .Where(r => r.Cells["dgProductCode"].Value.ToString().Equals(dataGridView3.CurrentCell.Value.ToString()))
             .FirstOrDefault();
-                                        if (row!= null) MessageBox.Show("There is already an item added this qoutation");
+                                    List<DataGridViewRow> rowList = dataGridView3.Rows
+                                        .Cast<DataGridViewRow>()
+            .Where(r => r.Cells["dgProductCode"].Value.ToString().Equals(dataGridView3.CurrentCell.Value.ToString()))
+            .ToList();
+                                    string no="";
+                                    if (rowList.Count > 2)
+                                    {
+                                         no+= " " + row.Cells["dgNo"];
+                                        if (row != null) MessageBox.Show("There is already an item added this qoutation in the " + no);
+                                    }
+                                    else
+                                    {
+                                        if (row!= null) MessageBox.Show("There is already an item added this qoutation in the " + row.Cells["dgNo"]);
+                                    }
+                                        
                                     //
                                     if (tabControl1.SelectedTab != tabItemDetails) { tabControl1.SelectedTab = tabItemDetails; }
                                     //ItemClear();
@@ -210,7 +224,18 @@ namespace LoginForm
            .Cast<DataGridViewRow>()
            .Where(r => r.Cells["dgProductCode"].Value.ToString().Equals(classQuotationAdd.ItemCode))
            .FirstOrDefault();
-                                        if (row != null) MessageBox.Show("There is already an item added this qoutation");
+
+                                     //   List<int> rowList = dataGridView3.Rows
+                                     //.Cast<DataGridViewRow>()
+                                     //.Where(r => r.Cells["dgProductCode"].Value.ToString().Equals(classQuotationAdd.ItemCode)).Select(a => a.Index).ToList();
+                                     
+                                        
+                                        //    no += " " + row.Cells["dgNo"];
+                                        //    if (row != null) MessageBox.Show("There is already an item added this qoutation in the " + no);
+                                        //}
+                                        
+                                            if (row != null) MessageBox.Show("There is already an item added this qoutation in the " + row.Cells["dgNo"]);
+                                        
                                         //
                                     }
                                     catch { }
@@ -255,24 +280,16 @@ namespace LoginForm
                     #region Quantity
                     {
                         GetQuotationQuantity(dataGridView3.CurrentCell.RowIndex);
+                        
                     }
                     //LOW MARGIN
                     GetMarginMark();
                     //
+                    TotalDis();
                     break;
                 #endregion
-                case 21://Disc
-                    {
-                        decimal discResult = 0;
-                        if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value != null) { discResult = decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value.ToString()); }
-                        if (dataGridView3.CurrentCell.Value != null && dataGridView3.CurrentCell.Value != "") { discResult = (discResult - (discResult * decimal.Parse(dataGridView3.CurrentCell.Value.ToString()) / 100)); }
-                        dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = discResult.ToString();
-                        try { dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgTotal"].Value = (discResult * Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())).ToString(); } catch { }
-                        CalculateSubTotal();
-                        GetMargin();
-                        GetMarginMark();
-                    }
-                    break;
+                
+                    
                 case 22://total 
                     {
 
@@ -406,6 +423,30 @@ namespace LoginForm
             {
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString())) / GBPBuy))) * 100).ToString("G29");
             }
+            #endregion
+
+        }
+
+        private void GetAllMargin()
+        {
+            #region Get Margin
+            Rate rate = new Rate();
+            DateTime today = DateTime.Today;
+            rate = IME.Rates.Where(a => a.rate_date == today).Where(b => b.CurType == "GBP").FirstOrDefault();
+            decimal GBPBuy = Decimal.Parse(rate.RateBuy.ToString());
+            for (int i = 0; i < dataGridView3.RowCount; i++)
+            {
+                try
+                {
+                    if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value != null)
+                    {
+                        dataGridView3.Rows[i].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dataGridView3.Rows[i].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dataGridView3.Rows[i].Cells["dgUCUPCurr"].Value.ToString())) / GBPBuy))) * 100).ToString("G29");
+                    }
+                }
+                catch { }
+
+            }
+            
             #endregion
 
         }
@@ -558,7 +599,7 @@ namespace LoginForm
             }
             if (sdP != null)
             {
-                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["Description"].Value = sdP.Article_Desc;
+                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgDesc"].Value = sdP.Article_Desc;
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgSSM"].Value = sdP.Pack_Quantity.ToString();
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUC"].Value = sdP.Unit_Content.ToString();
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUOM"].Value = sdP.Unit_Measure;
@@ -589,7 +630,7 @@ namespace LoginForm
             }
             if (er != null)
             {
-                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgDescription"].Value = er.ArticleDescription;
+                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgDesc"].Value = er.ArticleDescription;
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUOM"].Value = er.UnitofMeasure;
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgMPN"].Value = er.MPN;
                 if (txtLength.Text != "") { txtLength.Text = ((decimal)(er.ExtendedRangeLength * ((Decimal)100))).ToString("G29"); }
@@ -678,11 +719,18 @@ namespace LoginForm
             {
                 label53.BackColor = Color.Red;
             }
-            if (txtCalibrationInd.Text != "")
+            if (txtCalibrationInd.Text != "" && txtCalibrationInd.Text!=null && txtCalibrationInd.Text!= "N")
             {
                 label22.BackColor = Color.Red;
                 dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.Green;
             }
+
+            if(txtLicenceType.Text!="" && txtLicenceType.Text != null) {
+                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.BurlyWood;
+            }
+
+            
+
             #endregion
 
 
@@ -748,8 +796,15 @@ namespace LoginForm
             for (int i = 0; i < dataGridView3.RowCount; i++)
             {
                 GetQuotationQuantity(i);
+                GetLandingCost(i);
             }
             #endregion
+            
+                GetAllMargin();
+            
+            
+
+
 
             //for (int i = 0; i < dataGridView3.Rows.Count; i++)
             //{
@@ -843,7 +898,7 @@ namespace LoginForm
                 sayi2 = Convert.ToDecimal(txtTotalDis.Text);
                 lbltotal.Text = Convert.ToString((sayi1) - sayi1 * (sayi2 / 100));
                 sayi3 = Convert.ToDecimal(lbltotal.Text);
-                txtTotalDis2.Text = Convert.ToString(sayi1-sayi3);
+                txtTotalDis2.Text = Convert.ToString(sayi1 - sayi3);
                 sayi1 = 0;
                 sayi2 = 0;
             }
@@ -856,40 +911,99 @@ namespace LoginForm
                 sayi1 = 0;
                 sayi2 = 0;
             }
-            if (txtExtraChanges.Text != "" && txtExtraChanges.Text != null)
-            {
-                sayi1 = Convert.ToDecimal(lbltotal.Text);
-                sayi2 = Convert.ToDecimal(txtExtraChanges.Text);
-                lblTotalExtra.Text = Convert.ToString(sayi1 + sayi2);
-                sayi1 = 0;
-                sayi2 = 0;
-            }
+            //if (txtExtraChanges.Text != "" && txtExtraChanges.Text != null)
+            //{
+            //    sayi1 = Convert.ToDecimal(lbltotal.Text);
+            //    sayi2 = Convert.ToDecimal(txtExtraChanges.Text);
+            //    lblTotalExtra.Text = Convert.ToString(sayi1 + sayi2);
+            //    sayi1 = 0;
+            //    sayi2 = 0;
+            //}
 
-            if(chkVat.Checked)
+            //if(chkVat.Checked)
+            //{
+            //    sayi1 = Convert.ToDecimal(lblTotalExtra.Text);
+            //    sayi2 = Convert.ToDecimal(lbltotal.Text);
+            //    sayi3 = Convert.ToDecimal(lblVat.Text);
+            //    lblVatTotal.Text = Convert.ToString((sayi1 + sayi2) * (sayi3 / 100));
+            //    sayi1 = 0;
+            //    sayi2 = 0;
+            //    sayi3 = 0;
+            //}
+            //else
+            //{
+            //    sayi1 = Convert.ToDecimal(lblTotalExtra.Text);
+            //    sayi2 = Convert.ToDecimal(lbltotal.Text);
+            //    lblVatTotal.Text = Convert.ToString((sayi1 + sayi2) * (0));
+            //    sayi1 = 0;
+            //    sayi2 = 0;
+            //}
+
+            //sayi1 = Convert.ToDecimal(lblTotalExtra.Text);
+            //sayi2 = Convert.ToDecimal(lblVatTotal.Text);
+            //lblGrossTotal.Text = Convert.ToString(sayi1 + sayi2);
+            //sayi1 = 0;
+            //sayi2 = 0;
+            #endregion
+        }
+
+        private void txtTotalDis_TextChanged(object sender, EventArgs e)
+        {
+            TotalDis();
+        }
+
+
+        private void TotalDis()
+        {
+            for (int i = 0; i < dataGridView3.RowCount; i++)
             {
-                sayi1 = Convert.ToDecimal(lblTotalExtra.Text);
-                sayi2 = Convert.ToDecimal(lbltotal.Text);
-                sayi3 = Convert.ToDecimal(lblVat.Text);
-                lblVatTotal.Text = Convert.ToString((sayi1 + sayi2) * (sayi3 / 100));
-                sayi1 = 0;
-                sayi2 = 0;
-                sayi3 = 0;
+                try
+                {
+                    dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgDisc"].Value = decimal.Parse(txtTotalDis.Text);
+                    GetQuotationQuantity(i);
+                }
+                catch { }
+            }
+            decimal exc=0 , total=0;
+            try {exc = Decimal.Parse(txtExtraChanges.Text);}catch { }
+            try { total = Decimal.Parse(lbltotal.Text); } catch { }
+            lblTotalExtra.Text = (exc + total).ToString();
+            chkVat_Checked();
+        }
+
+        private void txtExtraChanges_TextChanged(object sender, EventArgs e)
+        {
+            lblTotalExtra.Text = (Decimal.Parse(txtExtraChanges.Text) + Decimal.Parse(lbltotal.Text)).ToString();
+            chkVat_Checked();
+        }
+
+        private void chkVat_CheckedChanged(object sender, EventArgs e)
+        {
+            chkVat_Checked();
+        }
+
+        private void chkVat_Checked()
+        {
+            if (chkVat.Checked)
+            {
+                lblVatTotal.Text = (Decimal.Parse(lblTotalExtra.Text) * Decimal.Parse((0.4).ToString())).ToString();
+                lblGrossTotal.Text = ((Decimal.Parse(lblTotalExtra.Text) + ((Decimal.Parse(lblTotalExtra.Text) * (Decimal.Parse((0.4).ToString())))))).ToString();
             }
             else
             {
-                sayi1 = Convert.ToDecimal(lblTotalExtra.Text);
-                sayi2 = Convert.ToDecimal(lbltotal.Text);
-                lblVatTotal.Text = Convert.ToString((sayi1 + sayi2) * (0));
-                sayi1 = 0;
-                sayi2 = 0;
+                lblVatTotal.Text = 0.ToString();
+                lblGrossTotal.Text = lblTotalExtra.Text;
             }
+        }
 
-            sayi1 = Convert.ToDecimal(lblTotalExtra.Text);
-            sayi2 = Convert.ToDecimal(lblVatTotal.Text);
-            lblGrossTotal.Text = Convert.ToString(sayi1 + sayi2);
-            sayi1 = 0;
-            sayi2 = 0;
-            #endregion
+        private void lblsubtotal_TextChanged(object sender, EventArgs e)
+        {
+            decimal st = 0;
+            try { st = decimal.Parse(lblsubtotal.Text); } catch { }
+            decimal p = 0;
+            try { p = decimal.Parse(lblTotalDis.Text); } catch { }
+            try
+            {lbltotal.Text = (st - (st * (p / 100))).ToString();}catch { }
         }
     }
 
