@@ -241,7 +241,7 @@
             this.LI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LW = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -394,7 +394,7 @@
             this.LI,
             this.CL,
             this.LC,
-            this.LW,
+            this.LM,
             this.dgSupplier,
             this.dgProductCode,
             this.dgBrand,
@@ -2345,36 +2345,47 @@
             this.dgNo.HeaderText = "No";
             this.dgNo.Name = "dgNo";
             this.dgNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dgNo.Width = 45;
             // 
             // HS
             // 
             this.HS.HeaderText = "HS";
             this.HS.Name = "HS";
             this.HS.ReadOnly = true;
+            this.HS.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.HS.Width = 32;
             // 
             // LI
             // 
             this.LI.HeaderText = "LI";
             this.LI.Name = "LI";
             this.LI.ReadOnly = true;
+            this.LI.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.LI.Width = 32;
             // 
             // CL
             // 
             this.CL.HeaderText = "CL";
             this.CL.Name = "CL";
             this.CL.ReadOnly = true;
+            this.CL.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.CL.Width = 32;
             // 
             // LC
             // 
             this.LC.HeaderText = "LC";
             this.LC.Name = "LC";
             this.LC.ReadOnly = true;
+            this.LC.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.LC.Width = 32;
             // 
-            // LW
+            // LM
             // 
-            this.LW.HeaderText = "LW";
-            this.LW.Name = "LW";
-            this.LW.ReadOnly = true;
+            this.LM.HeaderText = "LM";
+            this.LM.Name = "LM";
+            this.LM.ReadOnly = true;
+            this.LM.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.LM.Width = 32;
             // 
             // dgSupplier
             // 
@@ -2810,7 +2821,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LI;
         private System.Windows.Forms.DataGridViewTextBoxColumn CL;
         private System.Windows.Forms.DataGridViewTextBoxColumn LC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LW;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LM;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgSupplier;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgProductCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgBrand;

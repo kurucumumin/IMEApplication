@@ -163,7 +163,7 @@ namespace LoginForm
                     // if (dataGridView3.CurrentCell.RowIndex != 0) { dataGridView3.CurrentCell.Value = (dataGridView3.CurrentCell.RowIndex + 1).ToString(); }
                     dataGridView3.Sort(dataGridView3.Columns[0], ListSortDirection.Ascending);
                     break;
-                case 2://PRODUCT CODE
+                case 7://PRODUCT CODE
                     {
                         if (dataGridView3.CurrentCell.Value != null && dataGridView3.CurrentCell.Value.ToString().Length == 6)
                         {
@@ -251,14 +251,17 @@ namespace LoginForm
                     }
                     #endregion
                     break;
-                case 10://QAUANTITY
+                case 15://QAUANTITY
                     #region Quantity
                     {
                         GetQuotationQuantity(dataGridView3.CurrentCell.RowIndex);
                     }
+                    //LOW MARGIN
+                    GetMarginMark();
+                    //
                     break;
                 #endregion
-                case 16://Disc
+                case 21://Disc
                     {
                         decimal discResult = 0;
                         if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value != null) { discResult = decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value.ToString()); }
@@ -267,15 +270,17 @@ namespace LoginForm
                         try { dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgTotal"].Value = (discResult * Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())).ToString(); } catch { }
                         CalculateSubTotal();
                         GetMargin();
+                        GetMarginMark();
                     }
                     break;
-                case 17://total 
+                case 22://total 
                     {
 
                         decimal total = decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString());
                         decimal UcupIME = decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUPIME"].Value.ToString());
                         dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgDisc"].Value = String.Format("{0:0.000}", ((UcupIME - total) * (decimal)100 / UcupIME));
                         GetMargin();
+                        GetMarginMark();
                     }
                     break;
             }
@@ -294,7 +299,7 @@ namespace LoginForm
                         #region Quantity
                         if (Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString()) != 0)
                         {
-                            if (dataGridView3.Rows[rowindex].Cells["dgQty"].Value != null && txtStandartWeight.Text!=null)
+                            if (dataGridView3.Rows[rowindex].Cells["dgQty"].Value != null && txtStandartWeight.Text!=null && txtStandartWeight.Text != "")
                             {
                                 txtGrossWeight.Text = (Decimal.Parse(txtStandartWeight.Text) * Decimal.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
                                 dataGridView3.Rows[rowindex].Cells["dgTotalWeight"].Value = txtGrossWeight.Text;
@@ -374,6 +379,18 @@ namespace LoginForm
                 #endregion
 
             }
+        }
+
+        private void GetMarginMark()
+        {
+            try
+            {
+                if (Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgMargin"].Value.ToString()) < Decimal.Parse(15.ToString()))
+                {
+                    dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["LM"].Style.BackColor = Color.Blue;
+                }
+            }
+            catch { }
         }
 
 
@@ -640,32 +657,35 @@ namespace LoginForm
             if (du != null) { txtLicenceType.Text = du.LicenceType; }
             //
             #endregion
+
+            #region Low Margin Mark
+
+            
             if (txtLithium.Text != "")
             {
                 label64.BackColor = Color.Red;
-                for (int i = 0; i < dataGridView3.ColumnCount; i++)
-                {
-                    dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells[i].Style.ForeColor = Color.Blue;
-                }
+                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.Ivory;
+                
 
             }
             if (txtShipping.Text != "")
             {
                 label63.BackColor = Color.Red;
-                for (int i = 0; i < dataGridView3.ColumnCount; i++)
-                {
-                    dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells[i].Style.ForeColor = Color.Red;
-                }
+                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["HS"].Style.BackColor = Color.Red;
+                
             }
             if (txtEnvironment.Text != "")
             {
                 label53.BackColor = Color.Red;
-
-                for (int i = 0; i < dataGridView3.ColumnCount; i++)
-                {
-                    dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells[i].Style.ForeColor = Color.Maroon;
-                }
             }
+            if (txtCalibrationInd.Text != "")
+            {
+                label22.BackColor = Color.Red;
+                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.Green;
+            }
+            #endregion
+
+
         }
 
         private void CustomerCode_TextChanged(object sender, EventArgs e)
