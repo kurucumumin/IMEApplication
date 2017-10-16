@@ -40,10 +40,10 @@
             this.panel18 = new System.Windows.Forms.Panel();
             this.panel17 = new System.Windows.Forms.Panel();
             this.panel16 = new System.Windows.Forms.Panel();
-            this.btnItemCard = new System.Windows.Forms.Button();
             this.panel15 = new System.Windows.Forms.Panel();
-            this.btnWorker = new System.Windows.Forms.Button();
+            this.btnItemCard = new System.Windows.Forms.Button();
             this.panel14 = new System.Windows.Forms.Panel();
+            this.btnWorker = new System.Windows.Forms.Button();
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
@@ -217,21 +217,6 @@
             this.panel16.Size = new System.Drawing.Size(144, 111);
             this.panel16.TabIndex = 47;
             // 
-            // btnItemCard
-            // 
-            this.btnItemCard.BackgroundImage = global::LoginForm.Properties.Resources.gradient2;
-            this.btnItemCard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnItemCard.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnItemCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnItemCard.Location = new System.Drawing.Point(0, 0);
-            this.btnItemCard.Margin = new System.Windows.Forms.Padding(4);
-            this.btnItemCard.Name = "btnItemCard";
-            this.btnItemCard.Size = new System.Drawing.Size(144, 111);
-            this.btnItemCard.TabIndex = 12;
-            this.btnItemCard.Text = "Item Card";
-            this.btnItemCard.UseVisualStyleBackColor = true;
-            this.btnItemCard.Click += new System.EventHandler(this.btnItemCard_Click);
-            // 
             // panel15
             // 
             this.panel15.Controls.Add(this.btnItemCard);
@@ -242,21 +227,21 @@
             this.panel15.Size = new System.Drawing.Size(144, 111);
             this.panel15.TabIndex = 46;
             // 
-            // btnWorker
+            // btnItemCard
             // 
-            this.btnWorker.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnWorker.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnWorker.BackgroundImage")));
-            this.btnWorker.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnWorker.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnWorker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnWorker.Location = new System.Drawing.Point(0, 0);
-            this.btnWorker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnWorker.Name = "btnWorker";
-            this.btnWorker.Size = new System.Drawing.Size(144, 111);
-            this.btnWorker.TabIndex = 31;
-            this.btnWorker.Text = "Worker";
-            this.btnWorker.UseVisualStyleBackColor = true;
-            this.btnWorker.Click += new System.EventHandler(this.btnWorker_Click);
+            this.btnItemCard.BackgroundImage = global::LoginForm.Properties.Resources.gradient2;
+            this.btnItemCard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnItemCard.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnItemCard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnItemCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnItemCard.Location = new System.Drawing.Point(0, 0);
+            this.btnItemCard.Margin = new System.Windows.Forms.Padding(4);
+            this.btnItemCard.Name = "btnItemCard";
+            this.btnItemCard.Size = new System.Drawing.Size(144, 111);
+            this.btnItemCard.TabIndex = 12;
+            this.btnItemCard.Text = "Item Card";
+            this.btnItemCard.UseVisualStyleBackColor = true;
+            this.btnItemCard.Click += new System.EventHandler(this.btnItemCard_Click);
             // 
             // panel14
             // 
@@ -267,6 +252,23 @@
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(144, 111);
             this.panel14.TabIndex = 45;
+            // 
+            // btnWorker
+            // 
+            this.btnWorker.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnWorker.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnWorker.BackgroundImage")));
+            this.btnWorker.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnWorker.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnWorker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnWorker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWorker.Location = new System.Drawing.Point(0, 0);
+            this.btnWorker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnWorker.Name = "btnWorker";
+            this.btnWorker.Size = new System.Drawing.Size(144, 111);
+            this.btnWorker.TabIndex = 31;
+            this.btnWorker.Text = "Worker";
+            this.btnWorker.UseVisualStyleBackColor = true;
+            this.btnWorker.Click += new System.EventHandler(this.btnWorker_Click);
             // 
             // panel13
             // 
@@ -321,6 +323,7 @@
             this.btnSupplier.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSupplier.BackgroundImage")));
             this.btnSupplier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSupplier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSupplier.Location = new System.Drawing.Point(0, 0);
             this.btnSupplier.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -347,6 +350,7 @@
             this.btnQuotation.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnQuotation.BackgroundImage")));
             this.btnQuotation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnQuotation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnQuotation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuotation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuotation.Location = new System.Drawing.Point(0, 0);
             this.btnQuotation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -374,6 +378,7 @@
             this.btnCustomer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCustomer.BackgroundImage")));
             this.btnCustomer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCustomer.Location = new System.Drawing.Point(0, 0);
             this.btnCustomer.Margin = new System.Windows.Forms.Padding(6);

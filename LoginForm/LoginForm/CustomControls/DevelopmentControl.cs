@@ -39,7 +39,7 @@ namespace LoginForm.CustomControls
 
         private void btnWorker_Click(object sender, EventArgs e)
         {
-            FormRoles roles = new FormRoles();
+            FormWorkersMain roles = new FormWorkersMain();
             roles.Show();
         }
 

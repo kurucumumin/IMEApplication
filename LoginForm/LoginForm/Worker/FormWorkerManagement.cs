@@ -12,17 +12,18 @@ namespace LoginForm.WorkerManagement
     {
         bool isEditMode = false;
         Worker worker;
-        FormRoles upperForm;
+        FormWorkersMain upperForm;
         List<AuthorizationValue> authList;
 
         public FormWorkerManagement()
         {
             InitializeComponent();
+            authList = new List<AuthorizationValue>();
             chcChangePassword.Visible = false;
             LoadRoles();
             //LoadAuthorities();
         }
-        public FormWorkerManagement(Worker worker, FormRoles form)
+        public FormWorkerManagement(Worker worker, FormWorkersMain form)
         {
             InitializeComponent();
             this.worker = worker;

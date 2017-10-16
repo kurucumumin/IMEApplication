@@ -8,15 +8,13 @@ namespace LoginForm.Services
 {
     class AuthorizationService
     {
-        static IMEEntities IME = new IMEEntities();
-
         public static List<RoleValue> getRoles()
         {
-            return IME.RoleValues.ToList();
+            return new IMEEntities().RoleValues.ToList();
         }
         public static List<AuthorizationValue> getAuths()
         {
-            return IME.AuthorizationValues.ToList();
+            return new IMEEntities().AuthorizationValues.ToList();
         }
 
         public static List<Worker> getWorkers()
@@ -29,6 +27,7 @@ namespace LoginForm.Services
         {
             try
             {
+                IMEEntities IME = new IMEEntities();
                 IME.AuthorizationValues.Add(Auth);
                 IME.SaveChanges();
                 return true;
@@ -44,6 +43,7 @@ namespace LoginForm.Services
         {
             try
             {
+                IMEEntities IME = new IMEEntities();
                 IME.RoleValues.Add(role);
                 IME.SaveChanges();
                 return true;
@@ -75,15 +75,12 @@ namespace LoginForm.Services
         //}
         public List<AuthorizationValue> Authorizations()
         {
-
-            return IME.AuthorizationValues.ToList();
-
+            return new IMEEntities().AuthorizationValues.ToList();
         }
         public void AddNewAuthorization(AuthorizationValue NewAuthorization)
         {
-
+            IMEEntities IME = new IMEEntities();
             IME.AuthorizationValues.Add(NewAuthorization);
-            
             IME.SaveChanges();
         }
         public void Add(int AutID, int WorkerID)

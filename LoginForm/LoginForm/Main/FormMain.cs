@@ -64,5 +64,10 @@ namespace LoginForm
                 MessageBox.Show("You are not authorized for this process");
             }
         }
+
+        public void setManagementControl()
+        {
+            controlManagement.setManagementModule(Utils.management.LowMarginLimit);
+        }
     }
 }

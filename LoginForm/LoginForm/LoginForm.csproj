@@ -268,12 +268,6 @@
     <Compile Include="ITEM\LoaderPage.designer.cs">
       <DependentUpon>LoaderPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainNavigationForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainNavigationForm.Designer.cs">
-      <DependentUpon>MainNavigationForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="CustomControls\DevelopmentControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -324,11 +318,11 @@
     <Compile Include="Quotation\QuotationAdd.designer.cs">
       <DependentUpon>QuotationAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="RolesAndAuths\FormRoles.cs">
+    <Compile Include="Worker\FormWorkersMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RolesAndAuths\FormRoles.Designer.cs">
-      <DependentUpon>FormRoles.cs</DependentUpon>
+    <Compile Include="Worker\FormWorkersMain.Designer.cs">
+      <DependentUpon>FormWorkersMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Services\AddressService.cs" />
     <Compile Include="Services\AuthorizationService.cs" />
@@ -358,22 +352,16 @@
     <Compile Include="Supplier\SupplierPositionAdd.designer.cs">
       <DependentUpon>SupplierPositionAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="WorkerManagement\AddIMEWorker.cs">
+    <Compile Include="Management\FormRoleAuth.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WorkerManagement\AddIMEWorker.Designer.cs">
-      <DependentUpon>AddIMEWorker.cs</DependentUpon>
+    <Compile Include="Management\FormRoleAuth.Designer.cs">
+      <DependentUpon>FormRoleAuth.cs</DependentUpon>
     </Compile>
-    <Compile Include="WorkerManagement\AuthorizationManagement.cs">
+    <Compile Include="Worker\FormWorkerManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WorkerManagement\AuthorizationManagement.Designer.cs">
-      <DependentUpon>AuthorizationManagement.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WorkerManagement\FormWorkerManagement.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WorkerManagement\FormWorkerManagement.Designer.cs">
+    <Compile Include="Worker\FormWorkerManagement.Designer.cs">
       <DependentUpon>FormWorkerManagement.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="CustomerManager\AddressBook.resx">
@@ -396,9 +384,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ITEM\LoaderPage.resx">
       <DependentUpon>LoaderPage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainNavigationForm.resx">
-      <DependentUpon>MainNavigationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\DevelopmentControl.resx">
       <DependentUpon>DevelopmentControl.cs</DependentUpon>
@@ -434,8 +419,8 @@
     <EmbeddedResource Include="Quotation\QuotationAdd.resx">
       <DependentUpon>QuotationAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RolesAndAuths\FormRoles.resx">
-      <DependentUpon>FormRoles.cs</DependentUpon>
+    <EmbeddedResource Include="Worker\FormWorkersMain.resx">
+      <DependentUpon>FormWorkersMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier\SupplierDepartmentAdd.resx">
       <DependentUpon>SupplierDepartmentAdd.cs</DependentUpon>
@@ -446,13 +431,10 @@
     <EmbeddedResource Include="Supplier\SupplierPositionAdd.resx">
       <DependentUpon>SupplierPositionAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WorkerManagement\AddIMEWorker.resx">
-      <DependentUpon>AddIMEWorker.cs</DependentUpon>
+    <EmbeddedResource Include="Management\FormRoleAuth.resx">
+      <DependentUpon>FormRoleAuth.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WorkerManagement\AuthorizationManagement.resx">
-      <DependentUpon>AuthorizationManagement.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WorkerManagement\FormWorkerManagement.resx">
+    <EmbeddedResource Include="Worker\FormWorkerManagement.resx">
       <DependentUpon>FormWorkerManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="DataSet\IME.edmx">

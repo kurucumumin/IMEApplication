@@ -206,6 +206,8 @@
             this.btnTSEList.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTSEList.BackgroundImage")));
             this.btnTSEList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnTSEList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTSEList.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnTSEList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTSEList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTSEList.Location = new System.Drawing.Point(0, 0);
             this.btnTSEList.Margin = new System.Windows.Forms.Padding(4);
@@ -240,6 +242,8 @@
             this.btnExtendedRangePrice.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExtendedRangePrice.BackgroundImage")));
             this.btnExtendedRangePrice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnExtendedRangePrice.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnExtendedRangePrice.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnExtendedRangePrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExtendedRangePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExtendedRangePrice.Location = new System.Drawing.Point(0, 0);
             this.btnExtendedRangePrice.Margin = new System.Windows.Forms.Padding(4);
@@ -265,6 +269,8 @@
             this.btnHazardousFile.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHazardousFile.BackgroundImage")));
             this.btnHazardousFile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnHazardousFile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnHazardousFile.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnHazardousFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHazardousFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHazardousFile.Location = new System.Drawing.Point(0, 0);
             this.btnHazardousFile.Margin = new System.Windows.Forms.Padding(4);
@@ -290,6 +296,8 @@
             this.btnDualUsedArticles.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDualUsedArticles.BackgroundImage")));
             this.btnDualUsedArticles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDualUsedArticles.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDualUsedArticles.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnDualUsedArticles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDualUsedArticles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDualUsedArticles.Location = new System.Drawing.Point(0, 0);
             this.btnDualUsedArticles.Margin = new System.Windows.Forms.Padding(4);
@@ -315,6 +323,8 @@
             this.btnSuperDiskwithP.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSuperDiskwithP.BackgroundImage")));
             this.btnSuperDiskwithP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSuperDiskwithP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSuperDiskwithP.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnSuperDiskwithP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSuperDiskwithP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSuperDiskwithP.Location = new System.Drawing.Point(0, 0);
             this.btnSuperDiskwithP.Margin = new System.Windows.Forms.Padding(4);
@@ -358,6 +368,8 @@
             this.btnDiscontinuedList.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDiscontinuedList.BackgroundImage")));
             this.btnDiscontinuedList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDiscontinuedList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDiscontinuedList.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnDiscontinuedList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDiscontinuedList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDiscontinuedList.Location = new System.Drawing.Point(0, 0);
             this.btnDiscontinuedList.Margin = new System.Windows.Forms.Padding(4);
@@ -393,6 +405,8 @@
             this.btnSlidingPriceList.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSlidingPriceList.BackgroundImage")));
             this.btnSlidingPriceList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSlidingPriceList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSlidingPriceList.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnSlidingPriceList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSlidingPriceList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSlidingPriceList.Location = new System.Drawing.Point(0, 0);
             this.btnSlidingPriceList.Margin = new System.Windows.Forms.Padding(4);
@@ -418,6 +432,8 @@
             this.btnSuperDisk.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSuperDisk.BackgroundImage")));
             this.btnSuperDisk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSuperDisk.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSuperDisk.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnSuperDisk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSuperDisk.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSuperDisk.Location = new System.Drawing.Point(0, 0);
             this.btnSuperDisk.Margin = new System.Windows.Forms.Padding(4);
@@ -443,6 +459,8 @@
             this.btnOnSale.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnOnSale.BackgroundImage")));
             this.btnOnSale.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnOnSale.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnOnSale.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnOnSale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOnSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOnSale.Location = new System.Drawing.Point(0, 0);
             this.btnOnSale.Margin = new System.Windows.Forms.Padding(4);
@@ -567,6 +585,8 @@
             this.btnRSProList.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRSProList.BackgroundImage")));
             this.btnRSProList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnRSProList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRSProList.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnRSProList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRSProList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRSProList.Location = new System.Drawing.Point(0, 0);
             this.btnRSProList.Margin = new System.Windows.Forms.Padding(4);

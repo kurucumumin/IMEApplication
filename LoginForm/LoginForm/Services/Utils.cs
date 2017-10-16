@@ -11,7 +11,7 @@ namespace LoginForm.Services
     class Utils
     {
         private static Worker worker;
-        private static Management management;
+        public static Management management;
 
         public static string MD5Hash(string input)
         {
