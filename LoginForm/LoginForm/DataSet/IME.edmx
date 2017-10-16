@@ -146,6 +146,22 @@
           <Property Name="Runon" Type="int" />
           <Property Name="Referral" Type="int" />
         </EntityType>
+        <EntityType Name="DiscountValues">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Arcticle_No" Type="nvarchar" MaxLength="50" />
+          <Property Name="Arcticle_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="BrandID" Type="nvarchar" MaxLength="20" />
+          <Property Name="SectionID" Type="nvarchar" MaxLength="20" />
+          <Property Name="SuperSection_No" Type="nvarchar" MaxLength="20" />
+          <Property Name="CustomerID" Type="nvarchar" MaxLength="15" />
+          <Property Name="RepresentativeID" Type="int" />
+          <Property Name="First_date" Type="date" />
+          <Property Name="Finish_date" Type="date" />
+          <Property Name="Discount_Rate" Type="nvarchar" MaxLength="20" />
+        </EntityType>
         <EntityType Name="DualUse">
           <Key>
             <PropertyRef Name="ArticleNo" />
@@ -895,6 +911,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__DiscountV__Arcti__6D6238AF">
+          <End Role="SlidingPrice" Type="Self.SlidingPrice" Multiplicity="0..1" />
+          <End Role="DiscountValues" Type="Self.DiscountValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SlidingPrice">
+              <PropertyRef Name="ArticleNo" />
+            </Principal>
+            <Dependent Role="DiscountValues">
+              <PropertyRef Name="Arcticle_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DiscountV__Custo__6E565CE8">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="DiscountValues" Type="Self.DiscountValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DiscountValues">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DiscountV__Repre__6F4A8121">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+          <End Role="DiscountValues" Type="Self.DiscountValues" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerID" />
+            </Principal>
+            <Dependent Role="DiscountValues">
+              <PropertyRef Name="RepresentativeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__ItemNote__NoteID__2B0A656D">
           <End Role="Notes" Type="Self.Notes" Multiplicity="0..1" />
           <End Role="ItemNote" Type="Self.ItemNote" Multiplicity="*" />
@@ -1270,6 +1322,7 @@
           <EntitySet Name="CustomerTitle" EntityType="Self.CustomerTitle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerWorker" EntityType="Self.CustomerWorker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DailyDiscontinued" EntityType="Self.DailyDiscontinued" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DiscountValues" EntityType="Self.DiscountValues" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DualUse" EntityType="Self.DualUse" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExtendedRange" EntityType="Self.ExtendedRange" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hazardous" EntityType="Self.Hazardous" Schema="dbo" store:Type="Tables" />
@@ -1407,6 +1460,18 @@
           <AssociationSet Name="FK__CustomerW__title__45F365D3" Association="Self.FK__CustomerW__title__45F365D3">
             <End Role="CustomerTitle" EntitySet="CustomerTitle" />
             <End Role="CustomerWorker" EntitySet="CustomerWorker" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DiscountV__Arcti__6D6238AF" Association="Self.FK__DiscountV__Arcti__6D6238AF">
+            <End Role="SlidingPrice" EntitySet="SlidingPrice" />
+            <End Role="DiscountValues" EntitySet="DiscountValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DiscountV__Custo__6E565CE8" Association="Self.FK__DiscountV__Custo__6E565CE8">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="DiscountValues" EntitySet="DiscountValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DiscountV__Repre__6F4A8121" Association="Self.FK__DiscountV__Repre__6F4A8121">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="DiscountValues" EntitySet="DiscountValues" />
           </AssociationSet>
           <AssociationSet Name="FK__ItemNote__NoteID__2B0A656D" Association="Self.FK__ItemNote__NoteID__2B0A656D">
             <End Role="Notes" EntitySet="Notes" />
@@ -1796,6 +1861,19 @@
             <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
             <End Role="Worker" EntitySet="Workers" />
           </AssociationSet>
+          <EntitySet Name="DiscountValues" EntityType="IMEModel.DiscountValue" />
+          <AssociationSet Name="FK__DiscountV__Custo__6E565CE8" Association="IMEModel.FK__DiscountV__Custo__6E565CE8">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="DiscountValue" EntitySet="DiscountValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DiscountV__Arcti__6D6238AF" Association="IMEModel.FK__DiscountV__Arcti__6D6238AF">
+            <End Role="SlidingPrice" EntitySet="SlidingPrices" />
+            <End Role="DiscountValue" EntitySet="DiscountValues" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DiscountV__Repre__6F4A8121" Association="IMEModel.FK__DiscountV__Repre__6F4A8121">
+            <End Role="Worker" EntitySet="Workers" />
+            <End Role="DiscountValue" EntitySet="DiscountValues" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="AuthorizationValue">
           <Key>
@@ -1870,6 +1948,7 @@
           <NavigationProperty Name="CustomerAdresses" Relationship="IMEModel.FK__CustomerA__Custo__44CA3770" FromRole="Customer" ToRole="CustomerAdress" />
           <NavigationProperty Name="CustomerCategorySubCategories" Relationship="IMEModel.FK__CustomerC__custo__534D60F1" FromRole="Customer" ToRole="CustomerCategorySubCategory" />
           <NavigationProperty Name="CustomerWorkers" Relationship="IMEModel.FK__CustomerW__custo__4316F928" FromRole="Customer" ToRole="CustomerWorker" />
+          <NavigationProperty Name="DiscountValues" Relationship="IMEModel.FK__DiscountV__Custo__6E565CE8" FromRole="Customer" ToRole="DiscountValue" />
         </EntityType>
         <EntityType Name="CustomerAdress">
           <Key>
@@ -2172,6 +2251,7 @@
           <Property Name="Brandname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="SectionID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="SectionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DiscountValues" Relationship="IMEModel.FK__DiscountV__Arcti__6D6238AF" FromRole="SlidingPrice" ToRole="DiscountValue" />
         </EntityType>
         <EntityType Name="SuperDisk">
           <Key>
@@ -2456,6 +2536,7 @@
           <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__accoun__2DB1C7EE" FromRole="Worker" ToRole="Supplier" />
           <NavigationProperty Name="Suppliers1" Relationship="IMEModel.FK__Supplier__repres__65370702" FromRole="Worker" ToRole="Supplier" />
           <NavigationProperty Name="AuthorizationValues" Relationship="IMEModel.UserAuthorization" FromRole="Worker" ToRole="AuthorizationValue" />
+          <NavigationProperty Name="DiscountValues" Relationship="IMEModel.FK__DiscountV__Repre__6F4A8121" FromRole="Worker" ToRole="DiscountValue" />
         </EntityType>
         <Association Name="FK__City__CountryID__51300E55">
           <End Type="IMEModel.Country" Role="Country" Multiplicity="0..1" />
@@ -3101,6 +3182,61 @@
           <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
         </Association>
+        <EntityType Name="DiscountValue">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Arcticle_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Arcticle_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BrandID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SectionID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SuperSection_No" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="RepresentativeID" Type="Int32" />
+          <Property Name="First_date" Type="DateTime" Precision="0" />
+          <Property Name="Finish_date" Type="DateTime" Precision="0" />
+          <Property Name="Discount_Rate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customer" Relationship="IMEModel.FK__DiscountV__Custo__6E565CE8" FromRole="DiscountValue" ToRole="Customer" />
+          <NavigationProperty Name="SlidingPrice" Relationship="IMEModel.FK__DiscountV__Arcti__6D6238AF" FromRole="DiscountValue" ToRole="SlidingPrice" />
+          <NavigationProperty Name="Worker" Relationship="IMEModel.FK__DiscountV__Repre__6F4A8121" FromRole="DiscountValue" ToRole="Worker" />
+        </EntityType>
+        <Association Name="FK__DiscountV__Custo__6E565CE8">
+          <End Type="IMEModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="IMEModel.DiscountValue" Role="DiscountValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DiscountValue">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DiscountV__Arcti__6D6238AF">
+          <End Type="IMEModel.SlidingPrice" Role="SlidingPrice" Multiplicity="0..1" />
+          <End Type="IMEModel.DiscountValue" Role="DiscountValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SlidingPrice">
+              <PropertyRef Name="ArticleNo" />
+            </Principal>
+            <Dependent Role="DiscountValue">
+              <PropertyRef Name="Arcticle_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DiscountV__Repre__6F4A8121">
+          <End Type="IMEModel.Worker" Role="Worker" Multiplicity="0..1" />
+          <End Type="IMEModel.DiscountValue" Role="DiscountValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerID" />
+            </Principal>
+            <Dependent Role="DiscountValue">
+              <PropertyRef Name="RepresentativeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3715,6 +3851,23 @@
               <ScalarProperty Name="AuthorizationID" ColumnName="AuthorizationID" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="DiscountValues">
+            <EntityTypeMapping TypeName="IMEModel.DiscountValue">
+              <MappingFragment StoreEntitySet="DiscountValues">
+                <ScalarProperty Name="Discount_Rate" ColumnName="Discount_Rate" />
+                <ScalarProperty Name="Finish_date" ColumnName="Finish_date" />
+                <ScalarProperty Name="First_date" ColumnName="First_date" />
+                <ScalarProperty Name="RepresentativeID" ColumnName="RepresentativeID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="SuperSection_No" ColumnName="SuperSection_No" />
+                <ScalarProperty Name="SectionID" ColumnName="SectionID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="Arcticle_Name" ColumnName="Arcticle_Name" />
+                <ScalarProperty Name="Arcticle_No" ColumnName="Arcticle_No" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

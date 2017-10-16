@@ -102,6 +102,10 @@
         <AssociationConnector Association="IMEModel.FK__SupplierW__title__7755B73D" />
         <AssociationConnector Association="IMEModel.AuthRole" />
         <AssociationConnector Association="IMEModel.UserAuthorization" />
+        <EntityTypeShape EntityType="IMEModel.DiscountValue" Width="1.5" PointX="20" PointY="11" />
+        <AssociationConnector Association="IMEModel.FK__DiscountV__Custo__6E565CE8" />
+        <AssociationConnector Association="IMEModel.FK__DiscountV__Arcti__6D6238AF" />
+        <AssociationConnector Association="IMEModel.FK__DiscountV__Repre__6F4A8121" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

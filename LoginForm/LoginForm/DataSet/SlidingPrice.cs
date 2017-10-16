@@ -14,6 +14,12 @@ namespace LoginForm.DataSet
     
     public partial class SlidingPrice
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public SlidingPrice()
+        {
+            this.DiscountValues = new HashSet<DiscountValue>();
+        }
+    
         public string ArticleNo { get; set; }
         public string ArticleDescription { get; set; }
         public Nullable<int> ItemTypeCode { get; set; }
@@ -42,5 +48,8 @@ namespace LoginForm.DataSet
         public string Brandname { get; set; }
         public string SectionID { get; set; }
         public string SectionName { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DiscountValue> DiscountValues { get; set; }
     }
 }

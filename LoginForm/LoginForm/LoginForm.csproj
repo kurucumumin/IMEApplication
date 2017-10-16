@@ -146,6 +146,9 @@
     <Compile Include="DataSet\DailyDiscontinued.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\DiscountValue.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\DualUse.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>

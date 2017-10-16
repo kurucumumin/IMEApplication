@@ -20,6 +20,7 @@ namespace LoginForm.DataSet
             this.CustomerAdresses = new HashSet<CustomerAdress>();
             this.CustomerCategorySubCategories = new HashSet<CustomerCategorySubCategory>();
             this.CustomerWorkers = new HashSet<CustomerWorker>();
+            this.DiscountValues = new HashSet<DiscountValue>();
         }
     
         public string ID { get; set; }
@@ -57,5 +58,7 @@ namespace LoginForm.DataSet
         public virtual ICollection<CustomerCategorySubCategory> CustomerCategorySubCategories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomerWorker> CustomerWorkers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DiscountValue> DiscountValues { get; set; }
     }
 }

@@ -15,10 +15,12 @@ namespace LoginForm
 {
     public partial class QuotationAdd : Form
     {
+        decimal? LowMarginLimit = Utils.management.LowMarginLimit;
         GetWorkerService GetWorkerService = new GetWorkerService();
         IMEEntities IME = new IMEEntities();
         decimal price;
-        List<decimal> SubTotal = new List<decimal>();
+        List<Tuple<int, decimal>> SubTotal = new List<Tuple<int, decimal>>();
+        List<Tuple<int, decimal>> SubDeletingTotal = new List<Tuple<int, decimal>>();
         public QuotationAdd()
         {
             InitializeComponent();
@@ -783,11 +785,38 @@ namespace LoginForm
 
         private void dataGridView3_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
+            int rownumber=dataGridView3.CurrentCell.RowIndex;
             dataGridView2.Rows.Add();
             for (int i = 0; i < dataGridView3.Columns.Count; i++)
             {
                 dataGridView2.Rows[dataGridView2.Rows.Count - 2].Cells[i].Value = dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells[i].Value;
             }
+
+            try { lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - SubTotal.Where(a => a.Item1 == rownumber).FirstOrDefault().Item2).ToString(); } catch { }
+            var st = SubTotal.Where(a => a.Item1 == rownumber).FirstOrDefault();
+                SubDeletingTotal.Add(new Tuple<int, decimal>(rownumber, st.Item2));
+            
+            st = new Tuple<int, decimal>(rownumber, 0);
+
+            //for (int i = 0; i < dataGridView3.Columns.Count; i++)
+            //{
+            //    dataGridView2.Rows[dataGridView2.Rows.Count - 2].Cells[i].Value = dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells[i].Value;
+
+            //    var tuple = SubDeletingTotal.Where(a => a.Item1 == rownumber).FirstOrDefault();
+            //    var tuple0 = SubTotal.Where(a => a.Item1 == rownumber).FirstOrDefault();
+            //    if (tuple != null)
+            //    {
+
+            //        tuple = new Tuple<int, decimal>(rownumber, tuple0.Item2);
+            //    }
+            //    else
+            //    {
+            //        tuple = new Tuple<int, decimal>(rownumber, tuple0.Item2);
+            //        SubDeletingTotal.Add(tuple);
+            //    }
+            //    tuple0 = new Tuple<int, decimal>(rownumber, 0);
+            //    try { lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - tuple.Item2 ).ToString(); } catch { }
+            //}
         }
 
         private void cbFactor_TextChanged(object sender, EventArgs e)
@@ -861,34 +890,34 @@ namespace LoginForm
             decimal sayi1;
             decimal sayi2;
             decimal sayi3;
-            if (!(SubTotal.Count > RowIndex)) { SubTotal.Add(0); }
-            if (SubTotal.Count>0 && (SubTotal[RowIndex] == null || SubTotal[RowIndex]==0))
+            var tuple = SubTotal.Where(a => a.Item1 == RowIndex).FirstOrDefault();
+
+            if (tuple==null || tuple.Item2==0)
             {
-                if(dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value!=null && dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value != "")
-                {
-                    SubTotal[RowIndex] = Decimal.Parse(dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value.ToString());
-                    if(lblsubtotal.Text!=""&& lblsubtotal.Text!=null)
+                //if(dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value!=null && dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value != "")
+                //{
+                    var tuple0 = new Tuple<int, decimal>(RowIndex, Decimal.Parse(dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value.ToString()));
+                    SubTotal.Add(tuple0);
+                    tuple = SubTotal.Where(a => a.Item1 == RowIndex).FirstOrDefault();
+                    if (lblsubtotal.Text!=""&& lblsubtotal.Text!=null)
                     {
-                        lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + SubTotal[RowIndex]).ToString();
+                        lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + tuple.Item2).ToString();
                     }
                     else
                     {
                         lblsubtotal.Text = (SubTotal[RowIndex]).ToString();
                     }
-                }
+                //}
 
             }
             else 
             {
-                lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - SubTotal[RowIndex]).ToString();
+                var tuple0 = new Tuple<int, decimal>(RowIndex, Decimal.Parse(dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value.ToString()));
+                lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - (tuple0.Item2)).ToString();
                 if (dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value != null && dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value != "")
                 {
-                    SubTotal[RowIndex] = Decimal.Parse(dataGridView3.Rows[RowIndex].Cells["dgUCUPCurr"].Value.ToString());
+                    tuple = new Tuple<int, decimal>(RowIndex, (Decimal.Parse(dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value.ToString())* decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())));
                     dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value = (Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString()) * Decimal.Parse(dataGridView3.Rows[RowIndex].Cells["dgUCUPCurr"].Value.ToString())).ToString();
-                }
-                else
-                {
-                    SubTotal[RowIndex] = 0;
                 }
                 decimal total = 0;
                 try { total = decimal.Parse(dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value.ToString()); } catch { }
@@ -1006,8 +1035,7 @@ namespace LoginForm
             try { st = decimal.Parse(lblsubtotal.Text); } catch { }
             decimal p = 0;
             try { p = decimal.Parse(lblTotalDis.Text); } catch { }
-            try
-            {lbltotal.Text = (st - (st * (p / 100))).ToString();}catch { }
+            try{lbltotal.Text = (st - (st * (p / 100))).ToString();}catch { }
         }
 
         private void lbltotal_TextChanged(object sender, EventArgs e)
@@ -1023,6 +1051,12 @@ namespace LoginForm
         {
             chkVat_Checked();
         }
+
+
+
     }
+
+
+
 
 }
