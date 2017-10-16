@@ -30,7 +30,8 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel31 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRolesAuthorities = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.txtLowMarginLimit = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
@@ -50,32 +51,50 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1018, 553);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1023, 553);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // panel31
             // 
-            this.panel31.Controls.Add(this.button1);
+            this.panel31.Controls.Add(this.btnRolesAuthorities);
+            this.panel31.Controls.Add(this.btnSave);
             this.panel31.Controls.Add(this.txtLowMarginLimit);
             this.panel31.Controls.Add(this.label1);
             this.panel31.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel31.Location = new System.Drawing.Point(206, 3);
+            this.panel31.Location = new System.Drawing.Point(204, 0);
+            this.panel31.Margin = new System.Windows.Forms.Padding(0);
             this.panel31.Name = "panel31";
-            this.panel31.Size = new System.Drawing.Size(326, 547);
+            this.panel31.Size = new System.Drawing.Size(334, 553);
             this.panel31.TabIndex = 0;
             // 
-            // button1
+            // btnRolesAuthorities
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(0, 492);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(326, 55);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnRolesAuthorities.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRolesAuthorities.Location = new System.Drawing.Point(0, 456);
+            this.btnRolesAuthorities.Margin = new System.Windows.Forms.Padding(0);
+            this.btnRolesAuthorities.Name = "btnRolesAuthorities";
+            this.btnRolesAuthorities.Size = new System.Drawing.Size(334, 29);
+            this.btnRolesAuthorities.TabIndex = 5;
+            this.btnRolesAuthorities.Text = "Roles and Authorities";
+            this.btnRolesAuthorities.UseVisualStyleBackColor = true;
+            this.btnRolesAuthorities.Click += new System.EventHandler(this.btnRolesAuthorities_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnSave.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(0, 498);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(334, 55);
+            this.btnSave.TabIndex = 2;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtLowMarginLimit
             // 
@@ -99,7 +118,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "ManagementControl";
-            this.Size = new System.Drawing.Size(1018, 553);
+            this.Size = new System.Drawing.Size(1023, 553);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel31.ResumeLayout(false);
             this.panel31.PerformLayout();
@@ -113,6 +132,7 @@
         private System.Windows.Forms.Panel panel31;
         private System.Windows.Forms.TextBox txtLowMarginLimit;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnRolesAuthorities;
     }
 }

@@ -38,7 +38,7 @@ namespace LoginForm.Services
             string Name = "USD";
             DateTime TodayDate = new DateTime();
             TodayDate = DateTime.Now.Date;
-            string BuyUSDeffective = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/BanknoteBuying").InnerXml;
+            string BuyUSDEffective = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/BanknoteBuying").InnerXml;
             string SellUSDEffective = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/BanknoteSelling").InnerXml;
             string BuyUSD = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/ForexBuying").InnerXml;
             string SellUSD = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/ForexSelling").InnerXml;
@@ -56,7 +56,7 @@ namespace LoginForm.Services
             RateForDolar.RateDate = TodayDate;
             RateForDolar.ExchangeBuy = Decimal.Parse(BuyUSD);
             RateForDolar.ExchangeSell = Decimal.Parse(SellUSD);
-            RateForDolar.ExchangeBuyEffective = Decimal.Parse(BuyUSDeffective);
+            RateForDolar.ExchangeBuyEffective = Decimal.Parse(BuyUSDEffective);
             RateForDolar.ExchangeSellEffective = Decimal.Parse(SellUSDEffective);
 
             return RateForDolar;

@@ -9,9 +9,9 @@ using System.Windows.Forms;
 namespace LoginForm.RolesAndAuths
 {
     //public partial class FormRoles : MaterialForm
-    public partial class FormRoles : Form
+    public partial class FormWorkersMain : Form
     {
-        public FormRoles()
+        public FormWorkersMain()
         {
             InitializeComponent();
 
@@ -24,15 +24,15 @@ namespace LoginForm.RolesAndAuths
 
         private void FormRoles_Load(object sender, EventArgs e)
         {
-            LoadCBRoleList();
+            //LoadCBRoleList();
             LoadWorkerList();
         }
 
-        private void LoadCBRoleList()
-        {
-            cbRoleList.DataSource = AuthorizationService.getRoles();
-            cbRoleList.DisplayMember = "roleName";
-        }
+        //private void LoadCBRoleList()
+        //{
+        //    cbRoleList.DataSource = AuthorizationService.getRoles();
+        //    cbRoleList.DisplayMember = "roleName";
+        //}
 
         public void LoadWorkerList()
         {
@@ -40,23 +40,22 @@ namespace LoginForm.RolesAndAuths
             dgdg.DataSource = AuthorizationService.getWorkers();
         }
 
+        //private void btnAddAuth_Click(object sender, EventArgs e)
+        //{
+        //    IMEEntities IME = new IMEEntities();
+        //    AuthorizationValue auth = new AuthorizationValue();
+        //    //auth.AuthRole = (AuthRole) cbRoleList.SelectedItem;
+        //    auth.AuthorizationValue1 = txtAuthName.Text;
+        //    AuthorizationService.AddAuthToRole(auth);
+        //}
 
-
-        private void btnAddAuth_Click(object sender, EventArgs e)
-        {
-            AuthorizationValue auth = new AuthorizationValue();
-            //auth.AuthRole = (AuthRole) cbRoleList.SelectedItem;
-            auth.AuthorizationValue1 = txtAuthName.Text;
-            AuthorizationService.AddAuthToRole(auth);
-        }
-
-        private void btnAddRole_Click(object sender, EventArgs e)
-        {
-            RoleValue role = new RoleValue();
-            role.roleName = txtRoleName.Text;
-            AuthorizationService.AddRole(role);
-            LoadCBRoleList();
-        }
+        //private void btnAddRole_Click(object sender, EventArgs e)
+        //{
+        //    RoleValue role = new RoleValue();
+        //    role.roleName = txtRoleName.Text;
+        //    AuthorizationService.AddRole(role);
+        //    LoadCBRoleList();
+        //}
 
         private void btnAddWorker_Click(object sender, EventArgs e)
         {
