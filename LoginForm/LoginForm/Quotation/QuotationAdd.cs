@@ -298,6 +298,7 @@ namespace LoginForm
                         dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgDisc"].Value = String.Format("{0:0.000}", ((UcupIME - total) * (decimal)100 / UcupIME));
                         GetMargin();
                         GetMarginMark();
+                        CalculateSubTotal();
                     }
                     break;
             }
@@ -777,7 +778,7 @@ namespace LoginForm
         private void dataGridView3_Click(object sender, EventArgs e)
         {
             ItemClear();
-            try { ItemDetailsFiller(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells[2].Value.ToString()); } catch { }
+            try { ItemDetailsFiller(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString()); } catch { }
         }
 
         private void dataGridView3_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
@@ -861,7 +862,7 @@ namespace LoginForm
             decimal sayi2;
             decimal sayi3;
             if (!(SubTotal.Count > RowIndex)) { SubTotal.Add(0); }
-            if (SubTotal.Count>0 && SubTotal[RowIndex] == null)
+            if (SubTotal.Count>0 && (SubTotal[RowIndex] == null || SubTotal[RowIndex]==0))
             {
                 if(dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value!=null && dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value != "")
                 {
@@ -882,13 +883,16 @@ namespace LoginForm
                 lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - SubTotal[RowIndex]).ToString();
                 if (dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value != null && dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value != "")
                 {
-                    SubTotal[RowIndex] = Decimal.Parse(dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value.ToString());
+                    SubTotal[RowIndex] = Decimal.Parse(dataGridView3.Rows[RowIndex].Cells["dgUCUPCurr"].Value.ToString());
+                    dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value = (Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString()) * Decimal.Parse(dataGridView3.Rows[RowIndex].Cells["dgUCUPCurr"].Value.ToString())).ToString();
                 }
                 else
                 {
                     SubTotal[RowIndex] = 0;
                 }
-                lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + SubTotal[RowIndex]).ToString();
+                decimal total = 0;
+                try { total = decimal.Parse(dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value.ToString()); } catch { }
+                lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + total).ToString();
             }
 
             if (txtTotalDis.Text != "" && txtTotalDis.Text != null)
@@ -967,14 +971,12 @@ namespace LoginForm
             decimal exc=0 , total=0;
             try {exc = Decimal.Parse(txtExtraChanges.Text);}catch { }
             try { total = Decimal.Parse(lbltotal.Text); } catch { }
-            lblTotalExtra.Text = (exc + total).ToString();
-            chkVat_Checked();
+            lbltotal.Text = (exc + total).ToString();
         }
 
         private void txtExtraChanges_TextChanged(object sender, EventArgs e)
         {
             lblTotalExtra.Text = (Decimal.Parse(txtExtraChanges.Text) + Decimal.Parse(lbltotal.Text)).ToString();
-            chkVat_Checked();
         }
 
         private void chkVat_CheckedChanged(object sender, EventArgs e)
@@ -986,7 +988,9 @@ namespace LoginForm
         {
             if (chkVat.Checked)
             {
-                lblVatTotal.Text = (Decimal.Parse(lblTotalExtra.Text) * Decimal.Parse((0.4).ToString())).ToString();
+                decimal totalextra = 0;
+                try { totalextra = Decimal.Parse(lblTotalExtra.Text); } catch { }
+                lblVatTotal.Text = (totalextra * Decimal.Parse((0.4).ToString())).ToString();
                 lblGrossTotal.Text = ((Decimal.Parse(lblTotalExtra.Text) + ((Decimal.Parse(lblTotalExtra.Text) * (Decimal.Parse((0.4).ToString())))))).ToString();
             }
             else
@@ -1004,6 +1008,20 @@ namespace LoginForm
             try { p = decimal.Parse(lblTotalDis.Text); } catch { }
             try
             {lbltotal.Text = (st - (st * (p / 100))).ToString();}catch { }
+        }
+
+        private void lbltotal_TextChanged(object sender, EventArgs e)
+        {
+            decimal total = 0;
+            try{total =decimal.Parse(lbltotal.Text); } catch { }
+            decimal extrachange = 0;
+            try { extrachange = decimal.Parse(txtExtraChanges.Text); } catch { }
+            lblTotalExtra.Text = (total + extrachange).ToString();
+        }
+
+        private void lblTotalExtra_TextChanged(object sender, EventArgs e)
+        {
+            chkVat_Checked();
         }
     }
 

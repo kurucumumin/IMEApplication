@@ -1007,6 +1007,7 @@
             this.lblTotalExtra.Size = new System.Drawing.Size(28, 13);
             this.lblTotalExtra.TabIndex = 57;
             this.lblTotalExtra.Text = "0,00";
+            this.lblTotalExtra.TextChanged += new System.EventHandler(this.lblTotalExtra_TextChanged);
             // 
             // lblTotalDis
             // 
@@ -1044,6 +1045,7 @@
             this.lbltotal.Size = new System.Drawing.Size(28, 13);
             this.lbltotal.TabIndex = 53;
             this.lbltotal.Text = "0,00";
+            this.lbltotal.TextChanged += new System.EventHandler(this.lbltotal_TextChanged);
             // 
             // label52
             // 

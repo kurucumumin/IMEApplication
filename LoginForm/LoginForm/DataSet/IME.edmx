@@ -323,6 +323,10 @@
           <Property Name="DiscountedPrice5" Type="decimal" Precision="18" Scale="3" />
           <Property Name="SuperSectionNo" Type="nvarchar" MaxLength="20" />
           <Property Name="SupersectionName" Type="nvarchar" MaxLength="100" />
+          <Property Name="BrandID" Type="nvarchar" MaxLength="20" />
+          <Property Name="Brandname" Type="nvarchar" MaxLength="100" />
+          <Property Name="SectionID" Type="nvarchar" MaxLength="20" />
+          <Property Name="SectionName" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="SuperDisk">
           <Key>
@@ -2164,6 +2168,10 @@
           <Property Name="DiscountedPrice5" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="SuperSectionNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="SupersectionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BrandID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Brandname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SectionID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SectionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="SuperDisk">
           <Key>
@@ -3093,7 +3101,7 @@
           <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
         </Association>
-        </Schema>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -3410,6 +3418,10 @@
           <EntitySetMapping Name="SlidingPrices">
             <EntityTypeMapping TypeName="IMEModel.SlidingPrice">
               <MappingFragment StoreEntitySet="SlidingPrice">
+                <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+                <ScalarProperty Name="SectionID" ColumnName="SectionID" />
+                <ScalarProperty Name="Brandname" ColumnName="Brandname" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
                 <ScalarProperty Name="SupersectionName" ColumnName="SupersectionName" />
                 <ScalarProperty Name="SuperSectionNo" ColumnName="SuperSectionNo" />
                 <ScalarProperty Name="DiscountedPrice5" ColumnName="DiscountedPrice5" />

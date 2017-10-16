@@ -38,5 +38,9 @@ namespace LoginForm.DataSet
         public Nullable<decimal> DiscountedPrice5 { get; set; }
         public string SuperSectionNo { get; set; }
         public string SupersectionName { get; set; }
+        public string BrandID { get; set; }
+        public string Brandname { get; set; }
+        public string SectionID { get; set; }
+        public string SectionName { get; set; }
     }
 }

@@ -619,6 +619,31 @@ namespace LoginForm
                                 case "SuperSectionNo":
                                     Superdiskitems.SuperSectionNo = word[i];
                                     break;
+
+
+                                case "BrandID":
+                                    if (word[i] != "")
+                                    {
+                                        Superdiskitems.BrandID = word[i];
+                                    }break;
+                                case "Brandname":
+                                    if (word[i] != "")
+                                    {
+                                        Superdiskitems.Brandname = word[i];
+                                    }
+                                    break;
+                                case "SectionID":
+                                    if (word[i] != "")
+                                    {
+                                        Superdiskitems.SectionID = word[i];
+                                    }
+                                    break;
+                                case "SectionName":
+                                    if (word[i] != "")
+                                    {
+                                        Superdiskitems.SectionName = word[i];
+                                    }
+                                    break;
                                 case "IntroductionDate":
                                     Superdiskitems.IntroductionDate = word[i];
                                     break;
