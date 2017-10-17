@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DevelopmentControl));
             this.tableRightPanel = new System.Windows.Forms.TableLayoutPanel();
             this.panel30 = new System.Windows.Forms.Panel();
             this.panel29 = new System.Windows.Forms.Panel();
@@ -229,9 +228,10 @@
             // 
             // btnItemCard
             // 
-            this.btnItemCard.BackgroundImage = global::LoginForm.Properties.Resources.gradient2;
+            this.btnItemCard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(244)))));
             this.btnItemCard.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnItemCard.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnItemCard.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
             this.btnItemCard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnItemCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnItemCard.Location = new System.Drawing.Point(0, 0);
@@ -240,7 +240,7 @@
             this.btnItemCard.Size = new System.Drawing.Size(144, 111);
             this.btnItemCard.TabIndex = 12;
             this.btnItemCard.Text = "Item Card";
-            this.btnItemCard.UseVisualStyleBackColor = true;
+            this.btnItemCard.UseVisualStyleBackColor = false;
             this.btnItemCard.Click += new System.EventHandler(this.btnItemCard_Click);
             // 
             // panel14
@@ -256,9 +256,10 @@
             // btnWorker
             // 
             this.btnWorker.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnWorker.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnWorker.BackgroundImage")));
+            this.btnWorker.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(244)))));
             this.btnWorker.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnWorker.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnWorker.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
             this.btnWorker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnWorker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnWorker.Location = new System.Drawing.Point(0, 0);
@@ -267,7 +268,7 @@
             this.btnWorker.Size = new System.Drawing.Size(144, 111);
             this.btnWorker.TabIndex = 31;
             this.btnWorker.Text = "Worker";
-            this.btnWorker.UseVisualStyleBackColor = true;
+            this.btnWorker.UseVisualStyleBackColor = false;
             this.btnWorker.Click += new System.EventHandler(this.btnWorker_Click);
             // 
             // panel13
@@ -320,9 +321,10 @@
             // btnSupplier
             // 
             this.btnSupplier.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnSupplier.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSupplier.BackgroundImage")));
+            this.btnSupplier.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(244)))));
             this.btnSupplier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSupplier.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
             this.btnSupplier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSupplier.Location = new System.Drawing.Point(0, 0);
@@ -331,7 +333,7 @@
             this.btnSupplier.Size = new System.Drawing.Size(144, 111);
             this.btnSupplier.TabIndex = 30;
             this.btnSupplier.Text = "Supplier";
-            this.btnSupplier.UseVisualStyleBackColor = true;
+            this.btnSupplier.UseVisualStyleBackColor = false;
             this.btnSupplier.Click += new System.EventHandler(this.btnSupplier_Click);
             // 
             // panel8
@@ -347,9 +349,10 @@
             // btnQuotation
             // 
             this.btnQuotation.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnQuotation.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnQuotation.BackgroundImage")));
+            this.btnQuotation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(244)))));
             this.btnQuotation.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnQuotation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnQuotation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
             this.btnQuotation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuotation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuotation.Location = new System.Drawing.Point(0, 0);
@@ -359,7 +362,7 @@
             this.btnQuotation.Size = new System.Drawing.Size(144, 111);
             this.btnQuotation.TabIndex = 29;
             this.btnQuotation.Text = "Quotation";
-            this.btnQuotation.UseVisualStyleBackColor = true;
+            this.btnQuotation.UseVisualStyleBackColor = false;
             this.btnQuotation.Click += new System.EventHandler(this.btnQuotation_Click);
             // 
             // panel7
@@ -375,9 +378,10 @@
             // btnCustomer
             // 
             this.btnCustomer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnCustomer.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCustomer.BackgroundImage")));
+            this.btnCustomer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(244)))));
             this.btnCustomer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCustomer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
             this.btnCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCustomer.Location = new System.Drawing.Point(0, 0);
@@ -387,7 +391,7 @@
             this.btnCustomer.TabIndex = 27;
             this.btnCustomer.Text = "Customer";
             this.btnCustomer.UseMnemonic = false;
-            this.btnCustomer.UseVisualStyleBackColor = true;
+            this.btnCustomer.UseVisualStyleBackColor = false;
             this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
             // 
             // panel6

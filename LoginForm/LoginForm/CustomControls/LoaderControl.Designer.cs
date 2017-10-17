@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoaderControl));
             this.tableRightPanel = new System.Windows.Forms.TableLayoutPanel();
             this.panel30 = new System.Windows.Forms.Panel();
             this.panel29 = new System.Windows.Forms.Panel();
@@ -203,10 +202,10 @@
             // 
             // btnTSEList
             // 
-            this.btnTSEList.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTSEList.BackgroundImage")));
+            this.btnTSEList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(244)))));
             this.btnTSEList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnTSEList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTSEList.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnTSEList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
             this.btnTSEList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTSEList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTSEList.Location = new System.Drawing.Point(0, 0);
@@ -215,7 +214,7 @@
             this.btnTSEList.Size = new System.Drawing.Size(160, 113);
             this.btnTSEList.TabIndex = 9;
             this.btnTSEList.Text = "TSE List";
-            this.btnTSEList.UseVisualStyleBackColor = true;
+            this.btnTSEList.UseVisualStyleBackColor = false;
             this.btnTSEList.Click += new System.EventHandler(this.btnTSEList_Click);
             // 
             // panel18
@@ -239,10 +238,10 @@
             // 
             // btnExtendedRangePrice
             // 
-            this.btnExtendedRangePrice.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExtendedRangePrice.BackgroundImage")));
+            this.btnExtendedRangePrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(244)))));
             this.btnExtendedRangePrice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnExtendedRangePrice.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnExtendedRangePrice.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnExtendedRangePrice.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
             this.btnExtendedRangePrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExtendedRangePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExtendedRangePrice.Location = new System.Drawing.Point(0, 0);
@@ -251,7 +250,7 @@
             this.btnExtendedRangePrice.Size = new System.Drawing.Size(160, 113);
             this.btnExtendedRangePrice.TabIndex = 8;
             this.btnExtendedRangePrice.Text = "Extended Range Price File";
-            this.btnExtendedRangePrice.UseVisualStyleBackColor = true;
+            this.btnExtendedRangePrice.UseVisualStyleBackColor = false;
             this.btnExtendedRangePrice.Click += new System.EventHandler(this.btnExtendedRangePrice_Click);
             // 
             // panel16
@@ -266,10 +265,10 @@
             // 
             // btnHazardousFile
             // 
-            this.btnHazardousFile.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHazardousFile.BackgroundImage")));
+            this.btnHazardousFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(244)))));
             this.btnHazardousFile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnHazardousFile.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnHazardousFile.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnHazardousFile.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
             this.btnHazardousFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHazardousFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHazardousFile.Location = new System.Drawing.Point(0, 0);
@@ -278,7 +277,7 @@
             this.btnHazardousFile.Size = new System.Drawing.Size(160, 113);
             this.btnHazardousFile.TabIndex = 7;
             this.btnHazardousFile.Text = "Hazardous File";
-            this.btnHazardousFile.UseVisualStyleBackColor = true;
+            this.btnHazardousFile.UseVisualStyleBackColor = false;
             this.btnHazardousFile.Click += new System.EventHandler(this.btnHazardousFile_Click);
             // 
             // panel15
@@ -293,10 +292,10 @@
             // 
             // btnDualUsedArticles
             // 
-            this.btnDualUsedArticles.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDualUsedArticles.BackgroundImage")));
+            this.btnDualUsedArticles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(244)))));
             this.btnDualUsedArticles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDualUsedArticles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDualUsedArticles.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnDualUsedArticles.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
             this.btnDualUsedArticles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDualUsedArticles.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDualUsedArticles.Location = new System.Drawing.Point(0, 0);
@@ -305,7 +304,7 @@
             this.btnDualUsedArticles.Size = new System.Drawing.Size(160, 113);
             this.btnDualUsedArticles.TabIndex = 32;
             this.btnDualUsedArticles.Text = "Daul Used Articles (EUU-Licance)";
-            this.btnDualUsedArticles.UseVisualStyleBackColor = true;
+            this.btnDualUsedArticles.UseVisualStyleBackColor = false;
             this.btnDualUsedArticles.Click += new System.EventHandler(this.btnDualUsedArticles_Click);
             // 
             // panel14
@@ -320,10 +319,10 @@
             // 
             // btnSuperDiskwithP
             // 
-            this.btnSuperDiskwithP.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSuperDiskwithP.BackgroundImage")));
+            this.btnSuperDiskwithP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(244)))));
             this.btnSuperDiskwithP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSuperDiskwithP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSuperDiskwithP.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnSuperDiskwithP.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
             this.btnSuperDiskwithP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSuperDiskwithP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSuperDiskwithP.Location = new System.Drawing.Point(0, 0);
@@ -332,7 +331,7 @@
             this.btnSuperDiskwithP.Size = new System.Drawing.Size(160, 113);
             this.btnSuperDiskwithP.TabIndex = 29;
             this.btnSuperDiskwithP.Text = "Superdisk with P";
-            this.btnSuperDiskwithP.UseVisualStyleBackColor = true;
+            this.btnSuperDiskwithP.UseVisualStyleBackColor = false;
             this.btnSuperDiskwithP.Click += new System.EventHandler(this.btnSuperDiskwithP_Click);
             // 
             // panel13
@@ -365,10 +364,10 @@
             // 
             // btnDiscontinuedList
             // 
-            this.btnDiscontinuedList.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDiscontinuedList.BackgroundImage")));
+            this.btnDiscontinuedList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(244)))));
             this.btnDiscontinuedList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDiscontinuedList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDiscontinuedList.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnDiscontinuedList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
             this.btnDiscontinuedList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDiscontinuedList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDiscontinuedList.Location = new System.Drawing.Point(0, 0);
@@ -377,7 +376,7 @@
             this.btnDiscontinuedList.Size = new System.Drawing.Size(160, 113);
             this.btnDiscontinuedList.TabIndex = 4;
             this.btnDiscontinuedList.Text = "Discontinued List";
-            this.btnDiscontinuedList.UseVisualStyleBackColor = true;
+            this.btnDiscontinuedList.UseVisualStyleBackColor = false;
             this.btnDiscontinuedList.Click += new System.EventHandler(this.btnDiscontinuedList_Click);
             // 
             // panel9
@@ -402,10 +401,10 @@
             // 
             // btnSlidingPriceList
             // 
-            this.btnSlidingPriceList.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSlidingPriceList.BackgroundImage")));
+            this.btnSlidingPriceList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(244)))));
             this.btnSlidingPriceList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSlidingPriceList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSlidingPriceList.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnSlidingPriceList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
             this.btnSlidingPriceList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSlidingPriceList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSlidingPriceList.Location = new System.Drawing.Point(0, 0);
@@ -414,7 +413,7 @@
             this.btnSlidingPriceList.Size = new System.Drawing.Size(160, 113);
             this.btnSlidingPriceList.TabIndex = 31;
             this.btnSlidingPriceList.Text = "Sliding Price List";
-            this.btnSlidingPriceList.UseVisualStyleBackColor = true;
+            this.btnSlidingPriceList.UseVisualStyleBackColor = false;
             this.btnSlidingPriceList.Click += new System.EventHandler(this.btnSlidingPriceList_Click);
             // 
             // panel8
@@ -429,10 +428,10 @@
             // 
             // btnSuperDisk
             // 
-            this.btnSuperDisk.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSuperDisk.BackgroundImage")));
+            this.btnSuperDisk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(244)))));
             this.btnSuperDisk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSuperDisk.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSuperDisk.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnSuperDisk.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
             this.btnSuperDisk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSuperDisk.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSuperDisk.Location = new System.Drawing.Point(0, 0);
@@ -441,7 +440,7 @@
             this.btnSuperDisk.Size = new System.Drawing.Size(160, 113);
             this.btnSuperDisk.TabIndex = 30;
             this.btnSuperDisk.Text = "Super Disk";
-            this.btnSuperDisk.UseVisualStyleBackColor = true;
+            this.btnSuperDisk.UseVisualStyleBackColor = false;
             this.btnSuperDisk.Click += new System.EventHandler(this.btnSuperDisk_Click);
             // 
             // panel7
@@ -456,10 +455,10 @@
             // 
             // btnOnSale
             // 
-            this.btnOnSale.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnOnSale.BackgroundImage")));
+            this.btnOnSale.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(244)))));
             this.btnOnSale.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnOnSale.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnOnSale.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnOnSale.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
             this.btnOnSale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOnSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOnSale.Location = new System.Drawing.Point(0, 0);
@@ -468,7 +467,7 @@
             this.btnOnSale.Size = new System.Drawing.Size(160, 113);
             this.btnOnSale.TabIndex = 28;
             this.btnOnSale.Text = "OnSale File";
-            this.btnOnSale.UseVisualStyleBackColor = true;
+            this.btnOnSale.UseVisualStyleBackColor = false;
             this.btnOnSale.Click += new System.EventHandler(this.btnOnSale_Click);
             // 
             // panel6
@@ -582,10 +581,10 @@
             // 
             // btnRSProList
             // 
-            this.btnRSProList.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRSProList.BackgroundImage")));
+            this.btnRSProList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(244)))));
             this.btnRSProList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnRSProList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnRSProList.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.btnRSProList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
             this.btnRSProList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRSProList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRSProList.Location = new System.Drawing.Point(0, 0);
@@ -594,7 +593,7 @@
             this.btnRSProList.Size = new System.Drawing.Size(160, 113);
             this.btnRSProList.TabIndex = 10;
             this.btnRSProList.Text = "RS Pro List";
-            this.btnRSProList.UseVisualStyleBackColor = true;
+            this.btnRSProList.UseVisualStyleBackColor = false;
             this.btnRSProList.Click += new System.EventHandler(this.btnRSProList_Click);
             // 
             // LoaderControl

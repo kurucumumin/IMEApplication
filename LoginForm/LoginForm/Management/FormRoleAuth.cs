@@ -22,6 +22,8 @@ namespace LoginForm.WorkerManagement
         {
             loadRoles();
             txtNewRoleName.Enabled = false;
+            lblNewRoleName.Enabled = false;
+
         }
 
         private void loadRoles()
@@ -30,15 +32,14 @@ namespace LoginForm.WorkerManagement
             cbRole.DisplayMember = "roleName";
             lbRoleList.DataSource = AuthorizationService.getRoles();
             lbRoleList.DisplayMember = "roleName";
-
         }
-
-
 
         private void chcNewRole_CheckedChanged(object sender, EventArgs e)
         {
             txtNewRoleName.Enabled = !txtNewRoleName.Enabled;
+            lblNewRoleName.Enabled = !lblNewRoleName.Enabled;
             cbRole.Enabled = !cbRole.Enabled;
+            lblRoletobeEdited.Enabled = !lblRoletobeEdited.Enabled;
 
             if (chcNewRole.Checked)
             {
@@ -52,29 +53,10 @@ namespace LoginForm.WorkerManagement
                 clbNewAuthorizations.DataSource = newAuthList;
                 clbNewAuthorizations.DisplayMember = "AuthorizationValue1";
 
-                for (int i = 0; i < clbNewAuthorizations.Items.Count; i++)
-                {
-                    clbNewAuthorizations.SetItemChecked(i, true);
-                }
+                CheckAllItemsListBox(clbNewAuthorizations);
             }
         }
         
-
-        //private void chcNewRole_CheckStateChanged(object sender, EventArgs e)
-        //{
-        //    if (chcNewRole.Checked)
-        //    {
-        //        newAuthList.Clear();
-        //        clbNewAuthorizations.DataSource = newAuthList;
-        //        clbNewAuthorizations.DisplayMember = "AuthorizationValue1";
-        //    }
-        //    else
-        //    {
-        //        newAuthList.AddRange(((RoleValue)cbRole.SelectedItem).AuthorizationValues);
-        //        clbNewAuthorizations.DataSource = newAuthList;
-        //    }
-        //}
-
         private void cbRole_SelectedIndexChanged(object sender, EventArgs e)
         {
             newAuthList.Clear();
@@ -84,12 +66,10 @@ namespace LoginForm.WorkerManagement
             clbNewAuthorizations.DataSource = newAuthList;
             clbNewAuthorizations.DisplayMember = "AuthorizationValue1";
 
-            for (int i = 0; i < clbNewAuthorizations.Items.Count; i++)
-            {
-                clbNewAuthorizations.SetItemChecked(i, true);
-            }
+            CheckAllItemsListBox(clbNewAuthorizations);
+            matchAuthorities();
         }
-
+        
         private void lbRoleList_SelectedIndexChanged(object sender, EventArgs e)
         {
             authList.Clear();
@@ -100,8 +80,10 @@ namespace LoginForm.WorkerManagement
             clbAuthorizationList.DisplayMember = "AuthorizationValue1";
 
             matchAuthorities();
-
         }
+
+
+
 
         private void clbAuthorizationList_MouseClick(object sender, MouseEventArgs e)
         {
@@ -112,7 +94,6 @@ namespace LoginForm.WorkerManagement
             if (!state)
             {
                 newAuthList.Add((AuthorizationValue)clbAuthorizationList.Items[index]);
-                RefreshNewAuthList();
             }
             else if (state)
             {
@@ -121,9 +102,22 @@ namespace LoginForm.WorkerManagement
                     if (((AuthorizationValue)clbAuthorizationList.Items[index]).AuthorizationID == ((AuthorizationValue)clbNewAuthorizations.Items[i]).AuthorizationID)
                     {
                         newAuthList.Remove((AuthorizationValue)clbNewAuthorizations.Items[i]);
-                        RefreshNewAuthList();
                     }
                 }
+            }
+            RefreshNewAuthList();
+        }
+
+        private void clbNewAuthorizations_MouseClick(object sender, MouseEventArgs e)
+        {
+            int index = clbNewAuthorizations.SelectedIndex;
+            if (index >= 0)
+            {
+                newAuthList.Remove((AuthorizationValue)clbNewAuthorizations.Items[index]);
+
+                RefreshNewAuthList();
+                clbNewAuthorizations.ClearSelected();
+                matchAuthorities();
             }
         }
 
@@ -146,32 +140,68 @@ namespace LoginForm.WorkerManagement
 
         private void matchAuthorities()
         {
-            for (int i = 0; i < clbNewAuthorizations.Items.Count; i++)
+            for (int i = 0; i < clbAuthorizationList.Items.Count; i++)
             {
-                for (int j = 0; j < clbAuthorizationList.Items.Count; j++)
+                for (int j = 0; j <= clbNewAuthorizations.Items.Count; j++)
                 {
-                    if (((AuthorizationValue)clbNewAuthorizations.Items[i]).AuthorizationID == ((AuthorizationValue)clbAuthorizationList.Items[j]).AuthorizationID)
+                    if(j == clbNewAuthorizations.Items.Count)
                     {
-                        clbAuthorizationList.SetItemChecked(j, true);
-                    }
-                    else
+                        clbAuthorizationList.SetItemChecked(i, false);
+                    } else if (((AuthorizationValue)clbNewAuthorizations.Items[j]).AuthorizationID == ((AuthorizationValue)clbAuthorizationList.Items[i]).AuthorizationID)
                     {
-                        clbAuthorizationList.SetItemChecked(j, false);
+                        clbAuthorizationList.SetItemChecked(i, true);
+                        break;
                     }
                 }
             }
         }
 
-        private void clbNewAuthorizations_MouseClick(object sender, MouseEventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
-            int index = clbNewAuthorizations.SelectedIndex;
-            if (index >= 0)
+            if (chcNewRole.Checked)
             {
-                newAuthList.Remove((AuthorizationValue)clbNewAuthorizations.Items[index]);
+                if (checkNulls())
+                {
+                    MessageBox.Show("You have to fill * marked areas");
+                }
+                else
+                {
+                    RoleValue role = new RoleValue();
+                    role.roleName = txtNewRoleName.Text;
+                    if(AuthorizationService.AddRoleWithAuths(role, newAuthList))
+                    {
+                        MessageBox.Show("New role is successfully added!", "Success");
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("An error occured while saving a new role, Try again later.", "Error");
+                    }
+                }
+            }
+            else
+            {
+                if (AuthorizationService.EditRole((RoleValue)cbRole.SelectedItem, newAuthList))
+                {
+                    MessageBox.Show("Selected role is successfully edited!", "Success");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("An error occured while saving a changes, Try again later.", "Error");
+                }
+            }
+        }
 
-                RefreshNewAuthList();
-                clbNewAuthorizations.ClearSelected();
-                matchAuthorities();
+        private bool checkNulls()
+        {
+            if (txtNewRoleName.Text.Length > 0 && clbNewAuthorizations.Items.Count > 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
             }
         }
     }
