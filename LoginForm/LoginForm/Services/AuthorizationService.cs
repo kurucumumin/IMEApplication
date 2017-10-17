@@ -22,14 +22,24 @@ namespace LoginForm.Services
             IMEEntities ime = new IMEEntities();
             return ime.Workers.ToList();
         }
+
         
-        public static bool AddAuthToRole(AuthorizationValue Auth)
+        public static bool EditRole(RoleValue role, List<AuthorizationValue> newAuthList)
         {
             try
             {
                 IMEEntities IME = new IMEEntities();
-                IME.AuthorizationValues.Add(Auth);
+                role = IME.RoleValues.Where(r => r.RoleID == role.RoleID).FirstOrDefault();
+                role.AuthorizationValues.Clear();
                 IME.SaveChanges();
+
+                foreach (AuthorizationValue auth in newAuthList)
+                {
+                    role.AuthorizationValues.Add(auth);
+                }
+
+                IME.SaveChanges();
+
                 return true;
             }
             catch (Exception)
@@ -39,13 +49,24 @@ namespace LoginForm.Services
             }
         }
 
-        public static bool AddRole(RoleValue role)
+
+        public static bool AddRoleWithAuths(RoleValue role, List<AuthorizationValue> authList)
         {
             try
             {
                 IMEEntities IME = new IMEEntities();
                 IME.RoleValues.Add(role);
                 IME.SaveChanges();
+
+                role = IME.RoleValues.Where(r => r.roleName == role.roleName).FirstOrDefault();
+
+                foreach (AuthorizationValue auth in authList)
+                {
+                    role.AuthorizationValues.Add(auth);
+                }
+
+                IME.SaveChanges();
+
                 return true;
             }
             catch (Exception)
@@ -53,13 +74,11 @@ namespace LoginForm.Services
                 return false;
                 throw;
             }
-
         }
 
 
 
-
-
+        
         //public List<AuthorizationValue> GetAvailAuthorization(Worker Worker)
         //{
 
