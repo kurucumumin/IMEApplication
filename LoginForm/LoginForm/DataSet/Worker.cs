@@ -20,10 +20,10 @@ namespace LoginForm.DataSet
             this.Customers = new HashSet<Customer>();
             this.Customers1 = new HashSet<Customer>();
             this.Customers2 = new HashSet<Customer>();
+            this.DiscountValues = new HashSet<DiscountValue>();
             this.Suppliers = new HashSet<Supplier>();
             this.Suppliers1 = new HashSet<Supplier>();
             this.AuthorizationValues = new HashSet<AuthorizationValue>();
-            this.DiscountValues = new HashSet<DiscountValue>();
         }
     
         public int WorkerID { get; set; }
@@ -44,6 +44,8 @@ namespace LoginForm.DataSet
         public virtual ICollection<Customer> Customers1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DiscountValue> DiscountValues { get; set; }
         public virtual Note Note { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Supplier> Suppliers { get; set; }
@@ -51,7 +53,5 @@ namespace LoginForm.DataSet
         public virtual ICollection<Supplier> Suppliers1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AuthorizationValue> AuthorizationValues { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DiscountValue> DiscountValues { get; set; }
     }
 }
