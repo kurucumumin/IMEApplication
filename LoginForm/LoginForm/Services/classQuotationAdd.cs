@@ -62,19 +62,22 @@ namespace LoginForm.Services
                 {
                     return result = Decimal.Parse(sp.DiscountedPrice1.ToString());
                 }
-                else if (quantity < sp.Col3Break && sp.DiscountedPrice2 != 0)
+                else if (quantity < sp.Col3Break)
                 {
+                    if(sp.DiscountedPrice2 == 0) { return result = Decimal.Parse(sp.DiscountedPrice1.ToString()); }
                     return result = Decimal.Parse(sp.DiscountedPrice2.ToString());
                 }
                 else if (quantity < sp.Col4Break && sp.DiscountedPrice3 != 0)
                 {
+                    if (sp.DiscountedPrice3 == 0) { return result = Decimal.Parse(sp.DiscountedPrice2.ToString()); }
                     return result = Decimal.Parse(sp.DiscountedPrice3.ToString());
                 }
                 else if (quantity < sp.Col5Break && sp.DiscountedPrice4 != 0)
                 {
+                    if (sp.DiscountedPrice4 == 0) { return result = Decimal.Parse(sp.DiscountedPrice3.ToString()); }
                     return result = Decimal.Parse(sp.DiscountedPrice4.ToString());
                 }
-                else if (sp.DiscountedPrice4 != 0) { return result = Decimal.Parse(sp.DiscountedPrice5.ToString()); }
+                else if (sp.DiscountedPrice4 != 0) { return result = Decimal.Parse(sp.DiscountedPrice5.ToString()); }else { return result = Decimal.Parse(sp.DiscountedPrice4.ToString()); }
             }
             catch { }
             return -1;// fiyatının olmadığı gösteriyor
