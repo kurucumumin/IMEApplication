@@ -369,13 +369,14 @@ namespace LoginForm
                             }
                             //TOTAL ve UPIME belirleniyor
                             //dataGridView3.Rows[rowindex].Cells["dgUPIME"].Value = (price / Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
-                            discResult = decimal.Parse(dataGridView3.Rows[rowindex].Cells["dgUPIME"].Value.ToString());
-
+                            
                         dataGridView3.Rows[rowindex].Cells["dgUPIME"].Value = (price / Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
+                        discResult = decimal.Parse(dataGridView3.Rows[rowindex].Cells["dgUPIME"].Value.ToString());
+
                         dataGridView3.Rows[rowindex].Cells["dgTotal"].Value = (price * decimal.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
 
 
-                        if (dataGridView3.Rows[rowindex].Cells["dgDisc"].Value != null) discResult = (discResult - (discResult * decimal.Parse(dataGridView3.Rows[rowindex].Cells["dgDisc"].Value.ToString()) / 100));
+                        if (dataGridView3.Rows[rowindex].Cells["dgDisc"].Value != null) { discResult = (discResult - (discResult * decimal.Parse(dataGridView3.Rows[rowindex].Cells["dgDisc"].Value.ToString()) / 100)); }
                             dataGridView3.Rows[rowindex].Cells["dgUCUPCurr"].Value = discResult.ToString("G29");
                             GetMargin();
                             CalculateSubTotal();
