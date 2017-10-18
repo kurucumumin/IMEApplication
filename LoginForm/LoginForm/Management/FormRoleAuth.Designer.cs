@@ -35,12 +35,16 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.lbRoleList = new System.Windows.Forms.ListBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.clbAuthorizationList = new System.Windows.Forms.CheckedListBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.clbNewAuthorizations = new System.Windows.Forms.CheckedListBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.lblNewRoleName = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
@@ -53,7 +57,6 @@
             // 
             // cbRole
             // 
-            this.cbRole.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cbRole.DisplayMember = "RoleID";
             this.cbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRole.FormattingEnabled = true;
@@ -67,19 +70,17 @@
             // 
             // lblRoletobeEdited
             // 
-            this.lblRoletobeEdited.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblRoletobeEdited.AutoSize = true;
             this.lblRoletobeEdited.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRoletobeEdited.Location = new System.Drawing.Point(22, 18);
             this.lblRoletobeEdited.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRoletobeEdited.Name = "lblRoletobeEdited";
-            this.lblRoletobeEdited.Size = new System.Drawing.Size(138, 18);
+            this.lblRoletobeEdited.Size = new System.Drawing.Size(113, 18);
             this.lblRoletobeEdited.TabIndex = 4;
-            this.lblRoletobeEdited.Text = "Role to be Edited";
+            this.lblRoletobeEdited.Text = "Selected Role";
             // 
             // chcNewRole
             // 
-            this.chcNewRole.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.chcNewRole.AutoSize = true;
             this.chcNewRole.Location = new System.Drawing.Point(168, 60);
             this.chcNewRole.Name = "chcNewRole";
@@ -91,7 +92,6 @@
             // 
             // txtNewRoleName
             // 
-            this.txtNewRoleName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtNewRoleName.Location = new System.Drawing.Point(168, 101);
             this.txtNewRoleName.Name = "txtNewRoleName";
             this.txtNewRoleName.Size = new System.Drawing.Size(210, 24);
@@ -133,6 +133,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.lbRoleList);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -142,22 +143,37 @@
             this.panel2.Size = new System.Drawing.Size(357, 448);
             this.panel2.TabIndex = 12;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(16, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 18);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Role List";
+            // 
             // lbRoleList
             // 
+            this.lbRoleList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lbRoleList.DisplayMember = "roleName";
-            this.lbRoleList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbRoleList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbRoleList.FormattingEnabled = true;
-            this.lbRoleList.ItemHeight = 18;
-            this.lbRoleList.Location = new System.Drawing.Point(16, 16);
+            this.lbRoleList.ItemHeight = 20;
+            this.lbRoleList.Location = new System.Drawing.Point(16, 50);
             this.lbRoleList.Margin = new System.Windows.Forms.Padding(4);
             this.lbRoleList.Name = "lbRoleList";
-            this.lbRoleList.Size = new System.Drawing.Size(325, 416);
+            this.lbRoleList.Size = new System.Drawing.Size(325, 364);
             this.lbRoleList.TabIndex = 8;
             this.lbRoleList.ValueMember = "RoleID";
             this.lbRoleList.SelectedIndexChanged += new System.EventHandler(this.lbRoleList_SelectedIndexChanged);
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.clbAuthorizationList);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(357, 0);
@@ -167,20 +183,35 @@
             this.panel3.Size = new System.Drawing.Size(357, 448);
             this.panel3.TabIndex = 13;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(16, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(106, 18);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Authority List";
+            // 
             // clbAuthorizationList
             // 
+            this.clbAuthorizationList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.clbAuthorizationList.CheckOnClick = true;
-            this.clbAuthorizationList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clbAuthorizationList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clbAuthorizationList.FormattingEnabled = true;
-            this.clbAuthorizationList.Location = new System.Drawing.Point(16, 16);
+            this.clbAuthorizationList.Location = new System.Drawing.Point(16, 48);
             this.clbAuthorizationList.Margin = new System.Windows.Forms.Padding(4);
             this.clbAuthorizationList.Name = "clbAuthorizationList";
-            this.clbAuthorizationList.Size = new System.Drawing.Size(325, 416);
+            this.clbAuthorizationList.Size = new System.Drawing.Size(325, 384);
             this.clbAuthorizationList.TabIndex = 10;
             this.clbAuthorizationList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.clbAuthorizationList_MouseClick);
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.clbNewAuthorizations);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(814, 0);
@@ -190,20 +221,35 @@
             this.panel4.Size = new System.Drawing.Size(358, 448);
             this.panel4.TabIndex = 14;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(16, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(144, 18);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "New Authority List";
+            // 
             // clbNewAuthorizations
             // 
+            this.clbNewAuthorizations.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.clbNewAuthorizations.CheckOnClick = true;
-            this.clbNewAuthorizations.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clbNewAuthorizations.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clbNewAuthorizations.FormattingEnabled = true;
-            this.clbNewAuthorizations.Location = new System.Drawing.Point(16, 16);
+            this.clbNewAuthorizations.Location = new System.Drawing.Point(16, 48);
             this.clbNewAuthorizations.Margin = new System.Windows.Forms.Padding(4);
             this.clbNewAuthorizations.Name = "clbNewAuthorizations";
-            this.clbNewAuthorizations.Size = new System.Drawing.Size(326, 416);
+            this.clbNewAuthorizations.Size = new System.Drawing.Size(326, 384);
             this.clbNewAuthorizations.TabIndex = 11;
             this.clbNewAuthorizations.MouseClick += new System.Windows.Forms.MouseEventHandler(this.clbNewAuthorizations_MouseClick);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.lblNewRoleName);
             this.panel1.Controls.Add(this.cbRole);
@@ -217,13 +263,30 @@
             this.panel1.Size = new System.Drawing.Size(1172, 150);
             this.panel1.TabIndex = 0;
             // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(115)))), ((int)(((byte)(115)))));
+            this.btnDelete.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.Color.Black;
+            this.btnDelete.Location = new System.Drawing.Point(972, 0);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(100, 150);
+            this.btnDelete.TabIndex = 10;
+            this.btnDelete.Text = "DELETE";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // btnSave
             // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(166)))), ((int)(((byte)(154)))));
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(199)))), ((int)(((byte)(132)))));
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(203)))), ((int)(((byte)(196)))));
+            this.btnSave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(199)))), ((int)(((byte)(132)))));
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.Black;
             this.btnSave.Location = new System.Drawing.Point(1072, 0);
             this.btnSave.Margin = new System.Windows.Forms.Padding(0);
@@ -236,7 +299,6 @@
             // 
             // lblNewRoleName
             // 
-            this.lblNewRoleName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblNewRoleName.AutoSize = true;
             this.lblNewRoleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNewRoleName.Location = new System.Drawing.Point(68, 104);
@@ -261,8 +323,11 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -286,5 +351,9 @@
         private System.Windows.Forms.CheckedListBox clbAuthorizationList;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

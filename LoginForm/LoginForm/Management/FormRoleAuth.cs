@@ -2,6 +2,7 @@
 using LoginForm.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace LoginForm.WorkerManagement
@@ -40,12 +41,13 @@ namespace LoginForm.WorkerManagement
             lblNewRoleName.Enabled = !lblNewRoleName.Enabled;
             cbRole.Enabled = !cbRole.Enabled;
             lblRoletobeEdited.Enabled = !lblRoletobeEdited.Enabled;
+            btnDelete.Enabled = !btnDelete.Enabled;
 
             if (chcNewRole.Checked)
             {
                 newAuthList.Clear();
                 clbNewAuthorizations.DataSource = null;
-                clbNewAuthorizations.DisplayMember = "AuthorizationValue1";
+                lbRoleList.SetSelected(0,true);
             }
             else
             {
@@ -203,6 +205,37 @@ namespace LoginForm.WorkerManagement
             {
                 return true;
             }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Selected role will be deleted! Do you confirm?", "Delete Role", MessageBoxButtons.OKCancel);
+
+            if (result == DialogResult.OK)
+            {
+                try
+                {
+                    IMEEntities IME = new IMEEntities();
+                    RoleValue role = IME.RoleValues.Where(r => r.RoleID == ((RoleValue)cbRole.SelectedItem).RoleID).FirstOrDefault();
+                    role.AuthorizationValues.Clear();
+                    IME.SaveChanges();
+                    IME.RoleValues.Remove(role);
+                    IME.SaveChanges();
+
+                    MessageBox.Show("Selected role is deleted.", "Success");
+                    this.Close();
+                }
+                catch (Exception)
+                {
+                    
+                    throw;
+                }
+            }
+
+
+            
+
+            
         }
     }
 }

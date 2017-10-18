@@ -74,10 +74,11 @@
             this.btnRolesAuthorities.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(187)))), ((int)(((byte)(106)))));
             this.btnRolesAuthorities.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
             this.btnRolesAuthorities.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRolesAuthorities.Location = new System.Drawing.Point(0, 438);
+            this.btnRolesAuthorities.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRolesAuthorities.Location = new System.Drawing.Point(0, 408);
             this.btnRolesAuthorities.Margin = new System.Windows.Forms.Padding(0);
             this.btnRolesAuthorities.Name = "btnRolesAuthorities";
-            this.btnRolesAuthorities.Size = new System.Drawing.Size(334, 29);
+            this.btnRolesAuthorities.Size = new System.Drawing.Size(334, 59);
             this.btnRolesAuthorities.TabIndex = 5;
             this.btnRolesAuthorities.Text = "Roles and Authorities";
             this.btnRolesAuthorities.UseVisualStyleBackColor = false;
@@ -85,7 +86,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(165)))), ((int)(((byte)(245)))));
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

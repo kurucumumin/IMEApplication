@@ -33,9 +33,6 @@
             this.gbMainMenu = new System.Windows.Forms.GroupBox();
             this.btnDevelopment = new System.Windows.Forms.Button();
             this.btnManagement = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.btnLoader = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableMain = new System.Windows.Forms.TableLayoutPanel();
@@ -71,15 +68,12 @@
             // 
             this.gbMainMenu.Controls.Add(this.btnDevelopment);
             this.gbMainMenu.Controls.Add(this.btnManagement);
-            this.gbMainMenu.Controls.Add(this.button4);
-            this.gbMainMenu.Controls.Add(this.button3);
-            this.gbMainMenu.Controls.Add(this.button2);
             this.gbMainMenu.Controls.Add(this.btnLoader);
             this.gbMainMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbMainMenu.Location = new System.Drawing.Point(3, 171);
             this.gbMainMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbMainMenu.Name = "gbMainMenu";
-            this.gbMainMenu.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gbMainMenu.Padding = new System.Windows.Forms.Padding(0);
             this.gbMainMenu.Size = new System.Drawing.Size(212, 363);
             this.gbMainMenu.TabIndex = 32;
             this.gbMainMenu.TabStop = false;
@@ -87,71 +81,47 @@
             // 
             // btnDevelopment
             // 
+            this.btnDevelopment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
+            this.btnDevelopment.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.btnDevelopment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDevelopment.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDevelopment.Location = new System.Drawing.Point(3, 84);
-            this.btnDevelopment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDevelopment.Location = new System.Drawing.Point(0, 80);
+            this.btnDevelopment.Margin = new System.Windows.Forms.Padding(0);
             this.btnDevelopment.Name = "btnDevelopment";
-            this.btnDevelopment.Size = new System.Drawing.Size(201, 50);
+            this.btnDevelopment.Size = new System.Drawing.Size(212, 50);
             this.btnDevelopment.TabIndex = 34;
             this.btnDevelopment.Text = "Developments";
-            this.btnDevelopment.UseVisualStyleBackColor = true;
+            this.btnDevelopment.UseVisualStyleBackColor = false;
             this.btnDevelopment.Click += new System.EventHandler(this.btnDevelopment_Click);
             // 
             // btnManagement
             // 
+            this.btnManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
+            this.btnManagement.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.btnManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManagement.Location = new System.Drawing.Point(3, 140);
-            this.btnManagement.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnManagement.Location = new System.Drawing.Point(0, 130);
+            this.btnManagement.Margin = new System.Windows.Forms.Padding(0);
             this.btnManagement.Name = "btnManagement";
-            this.btnManagement.Size = new System.Drawing.Size(201, 50);
+            this.btnManagement.Size = new System.Drawing.Size(212, 50);
             this.btnManagement.TabIndex = 33;
             this.btnManagement.Text = "Management";
-            this.btnManagement.UseVisualStyleBackColor = true;
+            this.btnManagement.UseVisualStyleBackColor = false;
             this.btnManagement.Click += new System.EventHandler(this.btnManagement_Click);
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(3, 303);
-            this.button4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(201, 50);
-            this.button4.TabIndex = 32;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(3, 248);
-            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(201, 50);
-            this.button3.TabIndex = 31;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(3, 194);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(201, 50);
-            this.button2.TabIndex = 30;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // btnLoader
             // 
+            this.btnLoader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
+            this.btnLoader.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.btnLoader.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLoader.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLoader.Location = new System.Drawing.Point(3, 30);
-            this.btnLoader.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLoader.Location = new System.Drawing.Point(0, 30);
+            this.btnLoader.Margin = new System.Windows.Forms.Padding(0);
             this.btnLoader.Name = "btnLoader";
-            this.btnLoader.Size = new System.Drawing.Size(201, 50);
+            this.btnLoader.Size = new System.Drawing.Size(212, 50);
             this.btnLoader.TabIndex = 29;
             this.btnLoader.Text = "Loader";
-            this.btnLoader.UseVisualStyleBackColor = true;
+            this.btnLoader.UseVisualStyleBackColor = false;
             this.btnLoader.Click += new System.EventHandler(this.btnLoader_Click);
             // 
             // pictureBox1
@@ -254,9 +224,6 @@
         private System.Windows.Forms.GroupBox gbMainMenu;
         private System.Windows.Forms.Button btnDevelopment;
         private System.Windows.Forms.Button btnManagement;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnLoader;
     }
 }
