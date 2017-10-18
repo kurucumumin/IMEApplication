@@ -1,5 +1,8 @@
-﻿using System;
+﻿using LoginForm.DataSet;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace LoginForm.QuotationModule
@@ -25,17 +28,14 @@ namespace LoginForm.QuotationModule
 
         private void bringQuotationList()
         {
-            //IMEEntities IME = new IMEEntities();
-
-            //quotationList = IME.Quotations.toList();
+            IMEEntities IME = new IMEEntities();
+            bringQuotationList(DateTime.Today, DateTime.Today.AddDays(-7));
         }
         private void bringQuotationList(DateTime startDate, DateTime endDate)
         {
-            //IMEEntities IME = new IMEEntities();
+            IMEEntities IME = new IMEEntities();
 
-            //var a = datetimeStart.Value;
-
-            //quotationList = IME.Workers.Where(q => (q.date >= startDate) && (q.date <= endDate)).toList();
+            quotationList = IME.Quotations.Where(q => (q.StartDate >= endDate) && (q.StartDate <= startDate)).ToList();
         }
 
         private void btnRefreshList_Click(object sender, EventArgs e)
@@ -58,13 +58,9 @@ namespace LoginForm.QuotationModule
 
         private void FormQuotationMain_Load(object sender, EventArgs e)
         {
+            bringQuotationList();
 
-        }
-    }
-    public class Quotation
-    {
-        public Quotation()
-        {
+            dgQuotation.DataSource = quotationList;
         }
     }
 }
