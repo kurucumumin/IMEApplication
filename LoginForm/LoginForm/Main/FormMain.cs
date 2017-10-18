@@ -21,7 +21,6 @@ namespace LoginForm
 
         public FormMain()
         {
-            Utils.bringManagement();
             InitializeComponent();
         }
 
@@ -67,7 +66,7 @@ namespace LoginForm
 
         public void setManagementControl()
         {
-            controlManagement.setManagementModule(Utils.management.LowMarginLimit);
+            controlManagement.setManagementModule(Utils.getManagement().LowMarginLimit);
         }
     }
 }

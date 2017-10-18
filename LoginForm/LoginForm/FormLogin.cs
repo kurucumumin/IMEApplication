@@ -58,7 +58,6 @@ namespace LoginForm
                 {
                     closeRequest = true;
                     Utils.setCurrentUser(Logged);
-                    Utils.bringManagement();
                     mainForm.setManagementControl();
                     mainForm.Enabled = true;
                     this.Close();
