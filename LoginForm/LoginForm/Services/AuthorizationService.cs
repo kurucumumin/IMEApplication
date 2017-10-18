@@ -12,17 +12,12 @@ namespace LoginForm.Services
         {
             return new IMEEntities().RoleValues.ToList();
         }
-        public static List<AuthorizationValue> getAuths()
-        {
-            return new IMEEntities().AuthorizationValues.ToList();
-        }
-
+        
         public static List<Worker> getWorkers()
         {
             IMEEntities ime = new IMEEntities();
             return ime.Workers.ToList();
         }
-
         
         public static bool EditRole(RoleValue role, List<AuthorizationValue> newAuthList)
         {
@@ -35,7 +30,8 @@ namespace LoginForm.Services
 
                 foreach (AuthorizationValue auth in newAuthList)
                 {
-                    role.AuthorizationValues.Add(auth);
+                    AuthorizationValue av = IME.AuthorizationValues.Where(a => a.AuthorizationID == auth.AuthorizationID).FirstOrDefault();
+                    role.AuthorizationValues.Add(av);
                 }
 
                 IME.SaveChanges();
@@ -48,7 +44,6 @@ namespace LoginForm.Services
                 throw;
             }
         }
-
 
         public static bool AddRoleWithAuths(RoleValue role, List<AuthorizationValue> authList)
         {
@@ -62,7 +57,8 @@ namespace LoginForm.Services
 
                 foreach (AuthorizationValue auth in authList)
                 {
-                    role.AuthorizationValues.Add(auth);
+                    AuthorizationValue av = IME.AuthorizationValues.Where(a => a.AuthorizationID == auth.AuthorizationID).FirstOrDefault();
+                    role.AuthorizationValues.Add(av);
                 }
 
                 IME.SaveChanges();
@@ -78,13 +74,60 @@ namespace LoginForm.Services
 
 
 
-        
+        //public static List<AuthorizationValue> getAuths()
+        //{
+        //    return new IMEEntities().AuthorizationValues.ToList();
+        //}
         //public List<AuthorizationValue> GetAvailAuthorization(Worker Worker)
         //{
-
-
         //    return IME.AuthorizationValues.Where(a => !a.Workers.Any(w => w.WorkerID == Worker.WorkerID)).ToList();
+        //}
+        //public List<AuthorizationValue> Authorizations()
+        //{
+        //    return new IMEEntities().AuthorizationValues.ToList();
+        //}
+        //public void AddNewAuthorization(AuthorizationValue NewAuthorization)
+        //{
+        //    IMEEntities IME = new IMEEntities();
+        //    IME.AuthorizationValues.Add(NewAuthorization);
+        //    IME.SaveChanges();
+        //}
+        //public void Add(int AutID, int WorkerID)
+        //{
+        //    using (SqlConnection connection = new SqlConnection("data source=.;initial catalog=IME;integrated security=True;multipleactiveresultsets=True"))
+        //    {
+        //        String query = "INSERT INTO dbo.UserAuthorization (WorkerID,AuthorizationID) VALUES (@WorkerID,@AutID)";
 
+        //        using (SqlCommand command = new SqlCommand(query, connection))
+        //        {
+        //            command.Parameters.AddWithValue("@AutID", AutID);
+        //            command.Parameters.AddWithValue("@WorkerID", WorkerID);
+
+        //            connection.Open();
+        //            int result = command.ExecuteNonQuery();
+        //            connection.Close();
+        //            // Check Error
+
+        //        }
+        //    }
+        //}
+        //public void Delete(int AutID, int WorkerID)
+        //{
+        //    using (SqlConnection connection = new SqlConnection("data source=.;initial catalog=IME;integrated security=True;multipleactiveresultsets=True"))
+        //    {
+        //        String query = "DELETE FROM dbo.UserAuthorization WHERE WorkerID = @worker AND AuthorizationID = @authorization";
+
+        //        using (SqlCommand command = new SqlCommand(query, connection))
+        //        {
+        //            command.Parameters.AddWithValue("@authorization", AutID);
+        //            command.Parameters.AddWithValue("@worker", WorkerID);
+
+        //            connection.Open();
+        //            int result = command.ExecuteNonQuery();
+        //            connection.Close();
+
+        //        }
+        //    }
         //}
         //public List<AuthorizationValue> GetUserAuthorization(Worker Worker)
         //{
@@ -92,53 +135,5 @@ namespace LoginForm.Services
         //    return IME.AuthorizationValues.Where(a => a.Workers.Any(w => w.WorkerID == Worker.WorkerID)).ToList();
 
         //}
-        public List<AuthorizationValue> Authorizations()
-        {
-            return new IMEEntities().AuthorizationValues.ToList();
-        }
-        public void AddNewAuthorization(AuthorizationValue NewAuthorization)
-        {
-            IMEEntities IME = new IMEEntities();
-            IME.AuthorizationValues.Add(NewAuthorization);
-            IME.SaveChanges();
-        }
-        public void Add(int AutID, int WorkerID)
-        {
-            using (SqlConnection connection = new SqlConnection("data source=.;initial catalog=IME;integrated security=True;multipleactiveresultsets=True"))
-            {
-                String query = "INSERT INTO dbo.UserAuthorization (WorkerID,AuthorizationID) VALUES (@WorkerID,@AutID)";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@AutID", AutID);
-                    command.Parameters.AddWithValue("@WorkerID", WorkerID);
-
-                    connection.Open();
-                    int result = command.ExecuteNonQuery();
-                    connection.Close();
-                    // Check Error
-
-                }
-            }
-        }
-        public void Delete(int AutID, int WorkerID)
-        {
-            using (SqlConnection connection = new SqlConnection("data source=.;initial catalog=IME;integrated security=True;multipleactiveresultsets=True"))
-            {
-                String query = "DELETE FROM dbo.UserAuthorization WHERE WorkerID = @worker AND AuthorizationID = @authorization";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@authorization", AutID);
-                    command.Parameters.AddWithValue("@worker", WorkerID);
-
-                    connection.Open();
-                    int result = command.ExecuteNonQuery();
-                    connection.Close();
-                    // Check Error
-
-                }
-            }
-        }
     }
 }

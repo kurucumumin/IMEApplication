@@ -79,7 +79,7 @@ namespace LoginForm.WorkerManagement
                 IMEEntities IME = new IMEEntities();
                 if (nullExist())
                 {
-                    MessageBox.Show("You need to fill in the marked('*') fields", "New Worker", MessageBoxButtons.OK);
+                    MessageBox.Show("You need to fill in the marked('*') fields", "New Worker");
                 }
                 else
                 {
@@ -354,13 +354,17 @@ namespace LoginForm.WorkerManagement
 
         private void matchAuthorities()
         {
-            for(int i = 0; i < clbUserAuthorityList.Items.Count; i++)
+            for(int i = 0; i < clbAuthorities.Items.Count; i++)
             {
-                for (int j = 0; j < clbAuthorities.Items.Count; j++)
+                for (int j = 0; j <= clbUserAuthorityList.Items.Count; j++)
                 {
-                    if(((AuthorizationValue)clbUserAuthorityList.Items[i]).AuthorizationID == ((AuthorizationValue)clbAuthorities.Items[j]).AuthorizationID)
+                    if (j == clbUserAuthorityList.Items.Count)
+                    {
+                        clbAuthorities.SetItemChecked(i, false);
+                    }else if (((AuthorizationValue)clbUserAuthorityList.Items[j]).AuthorizationID == ((AuthorizationValue)clbAuthorities.Items[i]).AuthorizationID)
                     {
                         clbAuthorities.SetItemChecked(j, true);
+                        break;
                     }
                 }
             }
