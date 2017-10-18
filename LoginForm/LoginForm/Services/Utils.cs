@@ -11,7 +11,6 @@ namespace LoginForm.Services
     class Utils
     {
         private static Worker worker;
-        public static Management management;
 
         public static string MD5Hash(string input)
         {
@@ -36,26 +35,9 @@ namespace LoginForm.Services
             return worker;
         }
 
-
-
-        public static void bringManagement()
-        {
-            IMEEntities IME = new IMEEntities();
-            management = IME.Managements.FirstOrDefault();
-            
-        }
-
-        public static void saveManagement(Management man)
-        {
-            IMEEntities IME = new IMEEntities();
-            Management mn = IME.Managements.Where(m => m.ID == man.ID).FirstOrDefault();
-            mn = man;
-            IME.SaveChanges();
-        }
-
         public static Management getManagement()
         {
-            return management;
+            return new IMEEntities().Managements.FirstOrDefault();
         }
     }
 }

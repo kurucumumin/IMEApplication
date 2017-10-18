@@ -25,7 +25,6 @@ namespace LoginForm.CustomControls
                 IMEEntities IME = new IMEEntities();
                 Management management = IME.Managements.First();
                 management.LowMarginLimit = Convert.ToDecimal(txtLowMarginLimit.Text);
-                Utils.management = management;
                 IME.SaveChanges();
 
                 MessageBox.Show("Changes Saved");
