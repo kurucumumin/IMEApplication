@@ -195,6 +195,12 @@
     <Compile Include="DataSet\PaymentTerm.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\Quotation.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\QuotationDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Rate.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>

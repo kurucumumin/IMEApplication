@@ -61,11 +61,12 @@
             this.tableLeftPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 169F));
             this.tableLeftPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLeftPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
-            this.tableLeftPanel.Size = new System.Drawing.Size(219, 541);
+            this.tableLeftPanel.Size = new System.Drawing.Size(219, 459);
             this.tableLeftPanel.TabIndex = 0;
             // 
             // gbMainMenu
             // 
+            this.gbMainMenu.AutoSize = true;
             this.gbMainMenu.Controls.Add(this.btnDevelopment);
             this.gbMainMenu.Controls.Add(this.btnManagement);
             this.gbMainMenu.Controls.Add(this.btnLoader);
@@ -74,14 +75,14 @@
             this.gbMainMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbMainMenu.Name = "gbMainMenu";
             this.gbMainMenu.Padding = new System.Windows.Forms.Padding(0);
-            this.gbMainMenu.Size = new System.Drawing.Size(212, 363);
+            this.gbMainMenu.Size = new System.Drawing.Size(212, 200);
             this.gbMainMenu.TabIndex = 32;
             this.gbMainMenu.TabStop = false;
             this.gbMainMenu.Text = "Menu";
             // 
             // btnDevelopment
             // 
-            this.btnDevelopment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
+            this.btnDevelopment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(164)))), ((int)(((byte)(174)))));
             this.btnDevelopment.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
             this.btnDevelopment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDevelopment.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -96,7 +97,7 @@
             // 
             // btnManagement
             // 
-            this.btnManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
+            this.btnManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(164)))), ((int)(((byte)(174)))));
             this.btnManagement.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
             this.btnManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -111,7 +112,7 @@
             // 
             // btnLoader
             // 
-            this.btnLoader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
+            this.btnLoader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(144)))), ((int)(((byte)(164)))), ((int)(((byte)(174)))));
             this.btnLoader.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
             this.btnLoader.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLoader.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -149,7 +150,7 @@
             this.tableMain.Name = "tableMain";
             this.tableMain.RowCount = 1;
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableMain.Size = new System.Drawing.Size(1095, 545);
+            this.tableMain.Size = new System.Drawing.Size(993, 463);
             this.tableMain.TabIndex = 0;
             // 
             // panel1
@@ -161,7 +162,7 @@
             this.panel1.Location = new System.Drawing.Point(225, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(870, 545);
+            this.panel1.Size = new System.Drawing.Size(768, 463);
             this.panel1.TabIndex = 1;
             // 
             // controlDevelopment
@@ -170,7 +171,7 @@
             this.controlDevelopment.Location = new System.Drawing.Point(0, 0);
             this.controlDevelopment.MinimumSize = new System.Drawing.Size(0, 545);
             this.controlDevelopment.Name = "controlDevelopment";
-            this.controlDevelopment.Size = new System.Drawing.Size(870, 545);
+            this.controlDevelopment.Size = new System.Drawing.Size(768, 545);
             this.controlDevelopment.TabIndex = 1;
             // 
             // controlLoader
@@ -178,7 +179,7 @@
             this.controlLoader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.controlLoader.Location = new System.Drawing.Point(0, 0);
             this.controlLoader.Name = "controlLoader";
-            this.controlLoader.Size = new System.Drawing.Size(870, 545);
+            this.controlLoader.Size = new System.Drawing.Size(768, 463);
             this.controlLoader.TabIndex = 0;
             // 
             // controlManagement
@@ -186,24 +187,25 @@
             this.controlManagement.Dock = System.Windows.Forms.DockStyle.Fill;
             this.controlManagement.Location = new System.Drawing.Point(0, 0);
             this.controlManagement.Name = "controlManagement";
-            this.controlManagement.Size = new System.Drawing.Size(870, 545);
+            this.controlManagement.Size = new System.Drawing.Size(768, 463);
             this.controlManagement.TabIndex = 2;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1095, 545);
+            this.ClientSize = new System.Drawing.Size(993, 463);
             this.Controls.Add(this.tableMain);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MinimumSize = new System.Drawing.Size(1113, 592);
+            this.MinimumSize = new System.Drawing.Size(1011, 510);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IME General Components";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.tableLeftPanel.ResumeLayout(false);
+            this.tableLeftPanel.PerformLayout();
             this.gbMainMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableMain.ResumeLayout(false);

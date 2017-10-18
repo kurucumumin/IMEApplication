@@ -180,14 +180,18 @@
             // 
             // btnSearchStockNumber
             // 
+            this.btnSearchStockNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(189)))), ((int)(((byte)(189)))));
+            this.btnSearchStockNumber.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.btnSearchStockNumber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearchStockNumber.Image = global::LoginForm.Properties.Resources.btnBackground;
             this.btnSearchStockNumber.Location = new System.Drawing.Point(895, 73);
+            this.btnSearchStockNumber.Margin = new System.Windows.Forms.Padding(0);
             this.btnSearchStockNumber.Name = "btnSearchStockNumber";
-            this.btnSearchStockNumber.Size = new System.Drawing.Size(192, 25);
+            this.btnSearchStockNumber.Size = new System.Drawing.Size(192, 28);
             this.btnSearchStockNumber.TabIndex = 27;
             this.btnSearchStockNumber.Text = "Search Stock Number";
             this.btnSearchStockNumber.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSearchStockNumber.UseVisualStyleBackColor = true;
+            this.btnSearchStockNumber.UseVisualStyleBackColor = false;
             // 
             // chcCustStockNumber
             // 
@@ -269,51 +273,67 @@
             // 
             // btnDeleteQuotation
             // 
+            this.btnDeleteQuotation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(189)))), ((int)(((byte)(189)))));
+            this.btnDeleteQuotation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.btnDeleteQuotation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDeleteQuotation.Image = global::LoginForm.Properties.Resources.btnBackground;
             this.btnDeleteQuotation.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnDeleteQuotation.Location = new System.Drawing.Point(547, 16);
+            this.btnDeleteQuotation.Location = new System.Drawing.Point(535, 16);
+            this.btnDeleteQuotation.Margin = new System.Windows.Forms.Padding(0);
             this.btnDeleteQuotation.Name = "btnDeleteQuotation";
             this.btnDeleteQuotation.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
             this.btnDeleteQuotation.Size = new System.Drawing.Size(88, 85);
             this.btnDeleteQuotation.TabIndex = 17;
             this.btnDeleteQuotation.Text = "Delete";
-            this.btnDeleteQuotation.UseVisualStyleBackColor = true;
+            this.btnDeleteQuotation.UseVisualStyleBackColor = false;
             // 
             // btnModifyQuotation
             // 
+            this.btnModifyQuotation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(189)))), ((int)(((byte)(189)))));
+            this.btnModifyQuotation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.btnModifyQuotation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModifyQuotation.Image = global::LoginForm.Properties.Resources.btnBackground;
             this.btnModifyQuotation.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnModifyQuotation.Location = new System.Drawing.Point(456, 16);
+            this.btnModifyQuotation.Location = new System.Drawing.Point(450, 16);
+            this.btnModifyQuotation.Margin = new System.Windows.Forms.Padding(0);
             this.btnModifyQuotation.Name = "btnModifyQuotation";
             this.btnModifyQuotation.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
             this.btnModifyQuotation.Size = new System.Drawing.Size(85, 85);
             this.btnModifyQuotation.TabIndex = 16;
             this.btnModifyQuotation.Text = "Modify";
-            this.btnModifyQuotation.UseVisualStyleBackColor = true;
+            this.btnModifyQuotation.UseVisualStyleBackColor = false;
             this.btnModifyQuotation.Click += new System.EventHandler(this.btnModifyQuotation_Click);
             // 
             // btnRefreshList
             // 
+            this.btnRefreshList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(189)))), ((int)(((byte)(189)))));
+            this.btnRefreshList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.btnRefreshList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefreshList.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnRefreshList.Location = new System.Drawing.Point(214, 16);
+            this.btnRefreshList.Location = new System.Drawing.Point(211, 16);
+            this.btnRefreshList.Margin = new System.Windows.Forms.Padding(0);
             this.btnRefreshList.Name = "btnRefreshList";
             this.btnRefreshList.Size = new System.Drawing.Size(77, 85);
             this.btnRefreshList.TabIndex = 14;
             this.btnRefreshList.Text = "Refresh List";
-            this.btnRefreshList.UseVisualStyleBackColor = true;
+            this.btnRefreshList.UseVisualStyleBackColor = false;
             this.btnRefreshList.Click += new System.EventHandler(this.btnRefreshList_Click);
             // 
             // btnNewQuotation
             // 
+            this.btnNewQuotation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(189)))), ((int)(((byte)(189)))));
+            this.btnNewQuotation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.btnNewQuotation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewQuotation.Image = global::LoginForm.Properties.Resources.btnBackground;
             this.btnNewQuotation.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnNewQuotation.Location = new System.Drawing.Point(365, 16);
+            this.btnNewQuotation.Margin = new System.Windows.Forms.Padding(0);
             this.btnNewQuotation.Name = "btnNewQuotation";
             this.btnNewQuotation.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
             this.btnNewQuotation.Size = new System.Drawing.Size(85, 85);
             this.btnNewQuotation.TabIndex = 1;
             this.btnNewQuotation.Text = "New";
-            this.btnNewQuotation.UseVisualStyleBackColor = true;
+            this.btnNewQuotation.UseVisualStyleBackColor = false;
             this.btnNewQuotation.Click += new System.EventHandler(this.btnNewQuotation_Click);
             // 
             // panel2
@@ -329,27 +349,35 @@
             // 
             // button5
             // 
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(189)))), ((int)(((byte)(189)))));
+            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Image = global::LoginForm.Properties.Resources.btnBackground;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button5.Location = new System.Drawing.Point(108, 15);
+            this.button5.Margin = new System.Windows.Forms.Padding(0);
             this.button5.Name = "button5";
             this.button5.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
             this.button5.Size = new System.Drawing.Size(87, 85);
             this.button5.TabIndex = 8;
             this.button5.Text = "Print";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button5.UseVisualStyleBackColor = false;
             // 
             // button4
             // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(189)))), ((int)(((byte)(189)))));
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Image = global::LoginForm.Properties.Resources.btnBackground;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button4.Location = new System.Drawing.Point(15, 15);
+            this.button4.Margin = new System.Windows.Forms.Padding(0);
             this.button4.Name = "button4";
             this.button4.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
             this.button4.Size = new System.Drawing.Size(87, 85);
             this.button4.TabIndex = 7;
             this.button4.Text = "Export to Excel";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             // 
             // FormQuotationMain
             // 
