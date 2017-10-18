@@ -68,5 +68,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Town> Towns { get; set; }
         public virtual DbSet<Worker> Workers { get; set; }
+        public virtual DbSet<Quotation> Quotations { get; set; }
+        public virtual DbSet<QuotationDetail> QuotationDetails { get; set; }
     }
 }

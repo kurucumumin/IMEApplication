@@ -1,4 +1,4 @@
-﻿namespace LoginForm
+﻿namespace LoginForm.QuotationModule
 {
     partial class QuotationAdd
     {
@@ -81,13 +81,13 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addToQuotationAgainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.chkbForFinance = new System.Windows.Forms.CheckBox();
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.cbSMethod = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.lblTotalExtra = new System.Windows.Forms.Label();
@@ -122,10 +122,10 @@
             this.button4 = new System.Windows.Forms.Button();
             this.cbRep = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtRFQNo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cbFactor = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtValidation = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -244,6 +244,7 @@
             this.txtUnitCount1 = new System.Windows.Forms.TextBox();
             this.txtUnitCount4 = new System.Windows.Forms.TextBox();
             this.txtUnitCount3 = new System.Windows.Forms.TextBox();
+            this.cbCurrType = new System.Windows.Forms.ComboBox();
             this.No1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -259,25 +260,25 @@
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgQty1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUCUPCurr1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTotal1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTargetUP1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCompetitor1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCustomerStokCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCustDescription1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3.SuspendLayout();
@@ -693,25 +694,25 @@
             this.dataGridViewTextBoxColumn13,
             this.dataGridViewTextBoxColumn14,
             this.dataGridViewTextBoxColumn15,
-            this.dataGridViewTextBoxColumn16,
+            this.dgQty1,
             this.dataGridViewTextBoxColumn17,
             this.dataGridViewTextBoxColumn18,
             this.dataGridViewTextBoxColumn19,
             this.dataGridViewTextBoxColumn20,
             this.dataGridViewTextBoxColumn21,
             this.dataGridViewTextBoxColumn22,
-            this.dataGridViewTextBoxColumn23,
-            this.dataGridViewTextBoxColumn24,
-            this.dataGridViewTextBoxColumn25,
-            this.dataGridViewTextBoxColumn26,
+            this.dgUCUPCurr1,
+            this.dgTotal1,
+            this.dgTargetUP1,
+            this.dgCompetitor1,
             this.dataGridViewTextBoxColumn27,
             this.dataGridViewTextBoxColumn28,
             this.dataGridViewTextBoxColumn29,
             this.dataGridViewTextBoxColumn30,
             this.dataGridViewTextBoxColumn31,
             this.dataGridViewTextBoxColumn32,
-            this.dataGridViewTextBoxColumn33,
-            this.dataGridViewTextBoxColumn34,
+            this.dgCustomerStokCode1,
+            this.dgCustDescription1,
             this.dataGridViewTextBoxColumn35,
             this.dataGridViewTextBoxColumn36});
             this.dataGridView2.ContextMenuStrip = this.contextMenuStrip1;
@@ -737,7 +738,7 @@
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.checkBox8);
+            this.groupBox7.Controls.Add(this.chkbForFinance);
             this.groupBox7.Controls.Add(this.textBox12);
             this.groupBox7.Location = new System.Drawing.Point(12, 579);
             this.groupBox7.Name = "groupBox7";
@@ -746,15 +747,15 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Quot Notes For Us";
             // 
-            // checkBox8
+            // chkbForFinance
             // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(416, 20);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(82, 17);
-            this.checkBox8.TabIndex = 1;
-            this.checkBox8.Text = "For Finance";
-            this.checkBox8.UseVisualStyleBackColor = true;
+            this.chkbForFinance.AutoSize = true;
+            this.chkbForFinance.Location = new System.Drawing.Point(416, 20);
+            this.chkbForFinance.Name = "chkbForFinance";
+            this.chkbForFinance.Size = new System.Drawing.Size(82, 17);
+            this.chkbForFinance.TabIndex = 1;
+            this.chkbForFinance.Text = "For Finance";
+            this.chkbForFinance.UseVisualStyleBackColor = true;
             // 
             // textBox12
             // 
@@ -772,6 +773,7 @@
             this.button9.TabIndex = 8;
             this.button9.Text = "Save (f2)";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button10
             // 
@@ -786,7 +788,7 @@
             // groupBox10
             // 
             this.groupBox10.Controls.Add(this.label7);
-            this.groupBox10.Controls.Add(this.comboBox8);
+            this.groupBox10.Controls.Add(this.cbSMethod);
             this.groupBox10.Location = new System.Drawing.Point(518, 585);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(139, 123);
@@ -802,19 +804,19 @@
             this.label7.Size = new System.Drawing.Size(0, 13);
             this.label7.TabIndex = 9;
             // 
-            // comboBox8
+            // cbSMethod
             // 
-            this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.Items.AddRange(new object[] {
+            this.cbSMethod.FormattingEnabled = true;
+            this.cbSMethod.Items.AddRange(new object[] {
             "Air Freight",
             "Express",
             "Truck",
             "Sea Freight"});
-            this.comboBox8.Location = new System.Drawing.Point(6, 25);
-            this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(121, 21);
-            this.comboBox8.TabIndex = 8;
-            this.comboBox8.Text = "Air Freight";
+            this.cbSMethod.Location = new System.Drawing.Point(6, 25);
+            this.cbSMethod.Name = "cbSMethod";
+            this.cbSMethod.Size = new System.Drawing.Size(121, 21);
+            this.cbSMethod.TabIndex = 8;
+            this.cbSMethod.Text = "Air Freight";
             // 
             // button1
             // 
@@ -950,6 +952,7 @@
             this.txtTotalDis2.Size = new System.Drawing.Size(54, 20);
             this.txtTotalDis2.TabIndex = 15;
             this.txtTotalDis2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTotalDis2.Leave += new System.EventHandler(this.txtTotalDis2_Leave);
             // 
             // chkVat
             // 
@@ -970,7 +973,7 @@
             this.txtTotalDis.Name = "txtTotalDis";
             this.txtTotalDis.Size = new System.Drawing.Size(24, 20);
             this.txtTotalDis.TabIndex = 13;
-            this.txtTotalDis.TextChanged += new System.EventHandler(this.txtTotalDis_TextChanged);
+            this.txtTotalDis.Leave += new System.EventHandler(this.txtTotalDis_Leave);
             // 
             // lblGrossTotal
             // 
@@ -1088,15 +1091,16 @@
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.cbRep);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.txtRFQNo);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.cbFactor);
-            this.groupBox1.Controls.Add(this.textBox5);
+            this.groupBox1.Controls.Add(this.txtValidation);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label30);
+            this.groupBox1.Controls.Add(this.cbCurrType);
             this.groupBox1.Controls.Add(this.cbCurrency);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.button3);
@@ -1188,12 +1192,12 @@
             this.label6.TabIndex = 70;
             this.label6.Text = "Rep.";
             // 
-            // textBox3
+            // txtRFQNo
             // 
-            this.textBox3.Location = new System.Drawing.Point(65, 83);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(139, 20);
-            this.textBox3.TabIndex = 69;
+            this.txtRFQNo.Location = new System.Drawing.Point(65, 83);
+            this.txtRFQNo.Name = "txtRFQNo";
+            this.txtRFQNo.Size = new System.Drawing.Size(139, 20);
+            this.txtRFQNo.TabIndex = 69;
             // 
             // label3
             // 
@@ -1206,20 +1210,20 @@
             // 
             // cbFactor
             // 
-            this.cbFactor.Location = new System.Drawing.Point(409, 107);
+            this.cbFactor.Location = new System.Drawing.Point(434, 107);
             this.cbFactor.Name = "cbFactor";
-            this.cbFactor.Size = new System.Drawing.Size(67, 20);
+            this.cbFactor.Size = new System.Drawing.Size(42, 20);
             this.cbFactor.TabIndex = 67;
             this.cbFactor.Text = "5.5";
             this.cbFactor.TextChanged += new System.EventHandler(this.cbFactor_TextChanged);
             // 
-            // textBox5
+            // txtValidation
             // 
-            this.textBox5.Location = new System.Drawing.Point(434, 59);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(42, 20);
-            this.textBox5.TabIndex = 67;
-            this.textBox5.Text = "3";
+            this.txtValidation.Location = new System.Drawing.Point(434, 59);
+            this.txtValidation.Name = "txtValidation";
+            this.txtValidation.Size = new System.Drawing.Size(42, 20);
+            this.txtValidation.TabIndex = 67;
+            this.txtValidation.Text = "3";
             // 
             // label5
             // 
@@ -1259,7 +1263,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(366, 110);
+            this.label30.Location = new System.Drawing.Point(391, 109);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(37, 13);
             this.label30.TabIndex = 60;
@@ -1269,9 +1273,9 @@
             // 
             this.cbCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCurrency.FormattingEnabled = true;
-            this.cbCurrency.Location = new System.Drawing.Point(272, 106);
+            this.cbCurrency.Location = new System.Drawing.Point(274, 107);
             this.cbCurrency.Name = "cbCurrency";
-            this.cbCurrency.Size = new System.Drawing.Size(81, 21);
+            this.cbCurrency.Size = new System.Drawing.Size(58, 21);
             this.cbCurrency.TabIndex = 58;
             // 
             // label8
@@ -2416,6 +2420,20 @@
             this.txtUnitCount3.Size = new System.Drawing.Size(44, 20);
             this.txtUnitCount3.TabIndex = 410;
             // 
+            // cbCurrType
+            // 
+            this.cbCurrType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCurrType.FormattingEnabled = true;
+            this.cbCurrType.Items.AddRange(new object[] {
+            "Buy",
+            "Eff. Buy",
+            "Sale",
+            "Eff. Sale"});
+            this.cbCurrType.Location = new System.Drawing.Point(336, 107);
+            this.cbCurrType.Name = "cbCurrType";
+            this.cbCurrType.Size = new System.Drawing.Size(50, 21);
+            this.cbCurrType.TabIndex = 58;
+            // 
             // No1
             // 
             this.No1.HeaderText = "No";
@@ -2518,11 +2536,11 @@
             this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
             this.dataGridViewTextBoxColumn15.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn16
+            // dgQty1
             // 
-            this.dataGridViewTextBoxColumn16.HeaderText = "Qty";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            this.dgQty1.HeaderText = "Qty";
+            this.dgQty1.Name = "dgQty1";
+            this.dgQty1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn17
             // 
@@ -2560,29 +2578,29 @@
             this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
             this.dataGridViewTextBoxColumn22.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn23
+            // dgUCUPCurr1
             // 
-            this.dataGridViewTextBoxColumn23.HeaderText = "U/C U/P (Curr.)";
-            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
-            this.dataGridViewTextBoxColumn23.ReadOnly = true;
+            this.dgUCUPCurr1.HeaderText = "U/C U/P (Curr.)";
+            this.dgUCUPCurr1.Name = "dgUCUPCurr1";
+            this.dgUCUPCurr1.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn24
+            // dgTotal1
             // 
-            this.dataGridViewTextBoxColumn24.HeaderText = "TOTAL";
-            this.dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
-            this.dataGridViewTextBoxColumn24.ReadOnly = true;
+            this.dgTotal1.HeaderText = "TOTAL";
+            this.dgTotal1.Name = "dgTotal1";
+            this.dgTotal1.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn25
+            // dgTargetUP1
             // 
-            this.dataGridViewTextBoxColumn25.HeaderText = "Target U/P";
-            this.dataGridViewTextBoxColumn25.Name = "dataGridViewTextBoxColumn25";
-            this.dataGridViewTextBoxColumn25.ReadOnly = true;
+            this.dgTargetUP1.HeaderText = "Target U/P";
+            this.dgTargetUP1.Name = "dgTargetUP1";
+            this.dgTargetUP1.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn26
+            // dgCompetitor1
             // 
-            this.dataGridViewTextBoxColumn26.HeaderText = "Competitor";
-            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
-            this.dataGridViewTextBoxColumn26.ReadOnly = true;
+            this.dgCompetitor1.HeaderText = "Competitor";
+            this.dgCompetitor1.Name = "dgCompetitor1";
+            this.dgCompetitor1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn27
             // 
@@ -2620,17 +2638,17 @@
             this.dataGridViewTextBoxColumn32.Name = "dataGridViewTextBoxColumn32";
             this.dataGridViewTextBoxColumn32.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn33
+            // dgCustomerStokCode1
             // 
-            this.dataGridViewTextBoxColumn33.HeaderText = "Cust Stk Code";
-            this.dataGridViewTextBoxColumn33.Name = "dataGridViewTextBoxColumn33";
-            this.dataGridViewTextBoxColumn33.ReadOnly = true;
+            this.dgCustomerStokCode1.HeaderText = "Cust Stk Code";
+            this.dgCustomerStokCode1.Name = "dgCustomerStokCode1";
+            this.dgCustomerStokCode1.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn34
+            // dgCustDescription1
             // 
-            this.dataGridViewTextBoxColumn34.HeaderText = "Cust. Description";
-            this.dataGridViewTextBoxColumn34.Name = "dataGridViewTextBoxColumn34";
-            this.dataGridViewTextBoxColumn34.ReadOnly = true;
+            this.dgCustDescription1.HeaderText = "Cust. Description";
+            this.dgCustDescription1.Name = "dgCustDescription1";
+            this.dgCustDescription1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn35
             // 
@@ -2703,7 +2721,7 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.CheckBox checkBox8;
+        private System.Windows.Forms.CheckBox chkbForFinance;
         private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
@@ -2720,7 +2738,7 @@
         private System.Windows.Forms.Label lblVatTotal;
         private System.Windows.Forms.CheckBox chkVat;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox8;
+        private System.Windows.Forms.ComboBox cbSMethod;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox txtExtraChanges;
         private System.Windows.Forms.Label label4;
@@ -2740,9 +2758,9 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ComboBox cbRep;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtRFQNo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtValidation;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
@@ -2909,6 +2927,7 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem addToQuotationAgainToolStripMenuItem;
+        private System.Windows.Forms.ComboBox cbCurrType;
         private System.Windows.Forms.DataGridViewTextBoxColumn No1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -2924,25 +2943,25 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgQty1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUCUPCurr1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgTotal1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgTargetUP1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCompetitor1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn30;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn33;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn34;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCustomerStokCode1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCustDescription1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
     }

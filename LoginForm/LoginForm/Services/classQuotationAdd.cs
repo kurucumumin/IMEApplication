@@ -118,7 +118,7 @@ namespace LoginForm.Services
             if (Product == false) { p = 0; }
             if (Weight == false) { w = 0; }
             l = (p + (w * ((decimal)1.7)) + (((decimal)0.0675) * (p + (w * ((decimal)1.7)))));
-            if (CustomsDuties == false) { l = 0; }
+            if (CustomsDuties == false) {l = (p + (w * ((decimal)1.7))); }
             return l;
             #endregion
         }

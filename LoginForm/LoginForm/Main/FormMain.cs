@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using LoginForm.Services;
 using LoginForm.DataSet;
 using LoginForm.RolesAndAuths;
-using LoginForm.Quotation;
+using LoginForm.QuotationModule;
 
 namespace LoginForm
 {

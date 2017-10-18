@@ -106,7 +106,14 @@
         <AssociationConnector Association="IMEModel.FK__SupplierW__title__7755B73D" />
         <AssociationConnector Association="IMEModel.AuthRole" />
         <AssociationConnector Association="IMEModel.UserAuthorization" />
-      </Diagram>
+        <EntityTypeShape EntityType="IMEModel.Quotation" Width="1.5" PointX="12.25" PointY="28.625" />
+        <AssociationConnector Association="IMEModel.FK__Quotation__Custo__00750D23" />
+        <AssociationConnector Association="IMEModel.FK__Quotation__NoteF__0169315C" />
+        <AssociationConnector Association="IMEModel.FK__Quotation__NoteF__025D5595" />
+        <AssociationConnector Association="IMEModel.FK__Quotation__Payme__035179CE" />
+        <EntityTypeShape EntityType="IMEModel.QuotationDetail" Width="1.5" PointX="14.5" PointY="29.75" />
+        <AssociationConnector Association="IMEModel.FK__Quotation__RFQNo__119F9925" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

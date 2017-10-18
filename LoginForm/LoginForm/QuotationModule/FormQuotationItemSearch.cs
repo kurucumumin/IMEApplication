@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using LoginForm.DataSet;
 using LoginForm.Services;
 
-namespace LoginForm.Quotation
+namespace LoginForm.QuotationModule
 {
     public partial class FormQuotationItemSearch : Form
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace LoginForm.Quotation
+namespace LoginForm.QuotationModule
 {
     public partial class FormQuotationMain : Form
     {
@@ -54,6 +54,11 @@ namespace LoginForm.Quotation
             //Quotation q = (Quotation)dgQuotation.CurrentRow.DataBoundItem;
 
             //QuotationAdd formQuot = new QuotationAdd( );
+        }
+
+        private void FormQuotationMain_Load(object sender, EventArgs e)
+        {
+
         }
     }
     public class Quotation

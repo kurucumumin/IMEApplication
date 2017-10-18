@@ -195,6 +195,12 @@
     <Compile Include="DataSet\PaymentTerm.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\Quotation.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\QuotationDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Rate.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -297,28 +303,28 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Quotation\FormQuaotationCustomerSearch.cs">
+    <Compile Include="QuotationModule\FormQuaotationCustomerSearch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Quotation\FormQuaotationCustomerSearch.Designer.cs">
+    <Compile Include="QuotationModule\FormQuaotationCustomerSearch.Designer.cs">
       <DependentUpon>FormQuaotationCustomerSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="Quotation\FormQuotationItemSearch.cs">
+    <Compile Include="QuotationModule\FormQuotationItemSearch.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Quotation\FormQuotationItemSearch.Designer.cs">
+    <Compile Include="QuotationModule\FormQuotationItemSearch.Designer.cs">
       <DependentUpon>FormQuotationItemSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="Quotation\FormQuotationMain.cs">
+    <Compile Include="QuotationModule\FormQuotationMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Quotation\FormQuotationMain.Designer.cs">
+    <Compile Include="QuotationModule\FormQuotationMain.Designer.cs">
       <DependentUpon>FormQuotationMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Quotation\QuotationAdd.cs">
+    <Compile Include="QuotationModule\QuotationAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Quotation\QuotationAdd.designer.cs">
+    <Compile Include="QuotationModule\QuotationAdd.designer.cs">
       <DependentUpon>QuotationAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Worker\FormWorkersMain.cs">
@@ -410,16 +416,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Quotation\FormQuaotationCustomerSearch.resx">
+    <EmbeddedResource Include="QuotationModule\FormQuaotationCustomerSearch.resx">
       <DependentUpon>FormQuaotationCustomerSearch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Quotation\FormQuotationItemSearch.resx">
+    <EmbeddedResource Include="QuotationModule\FormQuotationItemSearch.resx">
       <DependentUpon>FormQuotationItemSearch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Quotation\FormQuotationMain.resx">
+    <EmbeddedResource Include="QuotationModule\FormQuotationMain.resx">
       <DependentUpon>FormQuotationMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Quotation\QuotationAdd.resx">
+    <EmbeddedResource Include="QuotationModule\QuotationAdd.resx">
       <DependentUpon>QuotationAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Worker\FormWorkersMain.resx">

@@ -1,4 +1,4 @@
-﻿namespace LoginForm.Quotation
+﻿namespace LoginForm.QuotationModule
 {
     partial class FormQuaotationCustomerSearch
     {
