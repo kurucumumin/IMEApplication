@@ -373,7 +373,7 @@ namespace LoginForm
                         dataGridView3.Rows[rowindex].Cells["dgUPIME"].Value = (price / Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
                         discResult = decimal.Parse(dataGridView3.Rows[rowindex].Cells["dgUPIME"].Value.ToString());
 
-                        dataGridView3.Rows[rowindex].Cells["dgTotal"].Value = (price * decimal.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
+                        dataGridView3.Rows[rowindex].Cells["dgTotal"].Value = (price).ToString();
 
 
                         if (dataGridView3.Rows[rowindex].Cells["dgDisc"].Value != null) { discResult = (discResult - (discResult * decimal.Parse(dataGridView3.Rows[rowindex].Cells["dgDisc"].Value.ToString()) / 100)); }
@@ -426,7 +426,7 @@ namespace LoginForm
                 }
             }
             #endregion
-        }
+        } 
 
         private void GetAllMargin()
         {
@@ -917,7 +917,7 @@ namespace LoginForm
                
                 if (dataGridView3.Rows[RowIndex].Cells["dgQty"].Value != null && dataGridView3.Rows[RowIndex].Cells["dgQty"].Value != "")
                 {
-                    SubTotal.Add(new Tuple<int, decimal>(rowindexSubTotal, (Decimal.Parse(dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value.ToString()) * decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString()))));
+                    SubTotal.Add(new Tuple<int, decimal>(rowindexSubTotal, (Decimal.Parse(dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value.ToString()))));
                     dataGridView3.Rows[RowIndex].Cells["dgTotal"].Value = (Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString()) * Decimal.Parse(dataGridView3.Rows[RowIndex].Cells["dgUCUPCurr"].Value.ToString())).ToString();
                 }
                 decimal total = 0;
@@ -1036,6 +1036,7 @@ namespace LoginForm
             decimal st = 0;
             try { st = decimal.Parse(lblsubtotal.Text); } catch { }
             decimal p = 0;
+            ///////////PROBLEM OLABİLİR her seferinde indirim hesaplaması
             try { p = decimal.Parse(lblTotalDis.Text); } catch { }
             try{lbltotal.Text = (st - (st * (p / 100))).ToString();}catch { }
         }
