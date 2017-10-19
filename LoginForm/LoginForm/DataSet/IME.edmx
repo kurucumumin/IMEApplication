@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="IMEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="IMEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AuthorizationValue">
           <Key>
             <PropertyRef Name="AuthorizationID" />
@@ -1720,8 +1720,7 @@
             <End Role="Worker" EntitySet="Worker" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="IMEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -2085,26 +2084,7 @@
           <NavigationProperty Name="Note" Relationship="Self.FK__Quotation__NoteF__0169315C" FromRole="Quotation" ToRole="Notes" />
           <NavigationProperty Name="Note1" Relationship="Self.FK__Quotation__NoteF__025D5595" FromRole="Quotation" ToRole="Notes" />
           <NavigationProperty Name="PaymentMethod" Relationship="Self.FK__Quotation__Payme__035179CE" FromRole="Quotation" ToRole="PaymentMethod" />
-          <NavigationProperty Name="QuotationDetails" Relationship="Self.FK__Quotation__RFQNo__119F9925" FromRole="Quotation" ToRole="QuotationDetail" />
-        </EntityType>
-        <EntityType Name="QuotationDetail">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RFQNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="QuotationNo" Type="Int32" />
-          <Property Name="ItemCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Qty" Type="Int32" />
-          <Property Name="UCUPCurr" Type="Decimal" Precision="20" Scale="5" />
-          <Property Name="Disc" Type="Decimal" Precision="5" Scale="3" />
-          <Property Name="Total" Type="Decimal" Precision="20" Scale="5" />
-          <Property Name="TargetUP" Type="Decimal" Precision="20" Scale="5" />
-          <Property Name="Competitor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerStockCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="IsDeleted" Type="Int32" />
-          <NavigationProperty Name="Quotation" Relationship="Self.FK__Quotation__RFQNo__119F9925" FromRole="QuotationDetail" ToRole="Quotation" />
+          <NavigationProperty Name="QuotationDetails" Relationship="IMEModel.FK__Quotation__RFQNo__119F9925" FromRole="Quotation" ToRole="QuotationDetail" />
         </EntityType>
         <EntityType Name="Rate">
           <Key>
@@ -2965,18 +2945,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Quotation__RFQNo__119F9925">
-          <End Role="Quotation" Type="Self.Quotation" Multiplicity="0..1" />
-          <End Role="QuotationDetail" Type="Self.QuotationDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Quotation">
-              <PropertyRef Name="RFQNo" />
-            </Principal>
-            <Dependent Role="QuotationDetail">
-              <PropertyRef Name="RFQNo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Supplier__rate_I__625A9A57">
           <End Role="Rate" Type="Self.Rate" Multiplicity="0..1" />
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
@@ -3227,7 +3195,6 @@
           <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethod" />
           <EntitySet Name="PaymentTerms" EntityType="Self.PaymentTerm" />
           <EntitySet Name="Quotations" EntityType="Self.Quotation" />
-          <EntitySet Name="QuotationDetails" EntityType="Self.QuotationDetail" />
           <EntitySet Name="Rates" EntityType="Self.Rate" />
           <EntitySet Name="RoleValues" EntityType="Self.RoleValue" />
           <EntitySet Name="RSProes" EntityType="Self.RSPro" />
@@ -3415,10 +3382,6 @@
             <End Role="PaymentTerm" EntitySet="PaymentTerms" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
-          <AssociationSet Name="FK__Quotation__RFQNo__119F9925" Association="Self.FK__Quotation__RFQNo__119F9925">
-            <End Role="Quotation" EntitySet="Quotations" />
-            <End Role="QuotationDetail" EntitySet="QuotationDetails" />
-          </AssociationSet>
           <AssociationSet Name="FK__Supplier__rate_I__625A9A57" Association="Self.FK__Supplier__rate_I__625A9A57">
             <End Role="Rate" EntitySet="Rates" />
             <End Role="Supplier" EntitySet="Suppliers" />
@@ -3499,7 +3462,43 @@
             <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
             <End Role="Worker" EntitySet="Workers" />
           </AssociationSet>
+          <EntitySet Name="QuotationDetails" EntityType="IMEModel.QuotationDetail" />
+          <AssociationSet Name="FK__Quotation__RFQNo__119F9925" Association="IMEModel.FK__Quotation__RFQNo__119F9925">
+            <End Role="Quotation" EntitySet="Quotations" />
+            <End Role="QuotationDetail" EntitySet="QuotationDetails" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="QuotationDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RFQNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="QuotationNo" Type="Int32" />
+          <Property Name="ItemCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="UCUPCurr" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="Disc" Type="Decimal" Precision="5" Scale="3" />
+          <Property Name="Total" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="TargetUP" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="Competitor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerStockCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Int32" />
+          <NavigationProperty Name="Quotation" Relationship="IMEModel.FK__Quotation__RFQNo__119F9925" FromRole="QuotationDetail" ToRole="Quotation" />
+        </EntityType>
+        <Association Name="FK__Quotation__RFQNo__119F9925">
+          <End Type="IMEModel.Quotation" Role="Quotation" Multiplicity="0..1" />
+          <End Type="IMEModel.QuotationDetail" Role="QuotationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quotation">
+              <PropertyRef Name="RFQNo" />
+            </Principal>
+            <Dependent Role="QuotationDetail">
+              <PropertyRef Name="RFQNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3820,25 +3819,6 @@
                 <ScalarProperty Name="IsVatValue" ColumnName="IsVatValue" />
                 <ScalarProperty Name="VatValue" ColumnName="VatValue" />
                 <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="QuotationDetails">
-            <EntityTypeMapping TypeName="IMEModel.QuotationDetail">
-              <MappingFragment StoreEntitySet="QuotationDetail">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="RFQNo" ColumnName="RFQNo" />
-                <ScalarProperty Name="QuotationNo" ColumnName="QuotationNo" />
-                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="UCUPCurr" ColumnName="UCUPCurr" />
-                <ScalarProperty Name="Disc" ColumnName="Disc" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="TargetUP" ColumnName="TargetUP" />
-                <ScalarProperty Name="Competitor" ColumnName="Competitor" />
-                <ScalarProperty Name="CustomerDescription" ColumnName="CustomerDescription" />
-                <ScalarProperty Name="CustomerStockCode" ColumnName="CustomerStockCode" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4177,6 +4157,25 @@
               <ScalarProperty Name="WorkerID" ColumnName="WorkerID" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="QuotationDetails">
+            <EntityTypeMapping TypeName="IMEModel.QuotationDetail">
+              <MappingFragment StoreEntitySet="QuotationDetail">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CustomerStockCode" ColumnName="CustomerStockCode" />
+                <ScalarProperty Name="CustomerDescription" ColumnName="CustomerDescription" />
+                <ScalarProperty Name="Competitor" ColumnName="Competitor" />
+                <ScalarProperty Name="TargetUP" ColumnName="TargetUP" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Disc" ColumnName="Disc" />
+                <ScalarProperty Name="UCUPCurr" ColumnName="UCUPCurr" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="QuotationNo" ColumnName="QuotationNo" />
+                <ScalarProperty Name="RFQNo" ColumnName="RFQNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
