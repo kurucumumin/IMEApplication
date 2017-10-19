@@ -14,6 +14,7 @@ namespace LoginForm.QuotationModule
         public FormQuotationMain()
         {
             InitializeComponent();
+            datetimeEnd.Value = DateTime.Now.AddDays(-7);
             bringQuotationList();
         }
 
@@ -21,7 +22,7 @@ namespace LoginForm.QuotationModule
         {
             var a = datetimeStart.Value;
             this.Hide();
-            QuotationAdd quotationForm = new QuotationAdd();
+            FormQuotationAdd quotationForm = new FormQuotationAdd();
             quotationForm.ShowDialog();
             this.Show();
         }
@@ -36,31 +37,52 @@ namespace LoginForm.QuotationModule
             IMEEntities IME = new IMEEntities();
 
             quotationList = IME.Quotations.Where(q => (q.StartDate >= endDate) && (q.StartDate <= startDate)).ToList();
+
+            var list = from q in IME.Quotations
+                       join c in IME.Customers on q.CustomerID equals c.ID
+                       where q.StartDate >= endDate && q.StartDate <= startDate
+                       select new
+                       {
+                           Date = q.StartDate,
+                           RFQ = q.RFQNo,
+                           CustomerName = c.c_name 
+                       };
+
+            populateGrid(list.ToList());
+        }
+
+        private void populateGrid(List<object> list)
+        {
+            throw new NotImplementedException();
         }
 
         private void btnRefreshList_Click(object sender, EventArgs e)
         {
-            //bringQuotationList(datetimeStart.Value, datetimeEnd.Value);
+            bringQuotationList(datetimeStart.Value, datetimeEnd.Value);
+            //populateGrid();
         }
 
-        private void populateGrid()
+        private void populateGrid<T>(List<T> queryable)
         {
-            //dgQuotation.DataSource = null;
-            //dgQuotation.DataSource = quotationList;
+            dgQuotation.DataSource = null;
+            dgQuotation.DataSource = queryable;
         }
 
         private void btnModifyQuotation_Click(object sender, EventArgs e)
         {
-            //Quotation q = (Quotation)dgQuotation.CurrentRow.DataBoundItem;
+            string RFQ = dgQuotation.CurrentRow.Cells["RFQ"].Value.ToString();
 
-            //QuotationAdd formQuot = new QuotationAdd( );
+
+            IMEEntities IME = new IMEEntities();
+            Quotation quo = IME.Quotations.Where(q => q.RFQNo == RFQ).FirstOrDefault();
+
+            FormQuotationAdd newForm = new FormQuotationAdd(quo);
+            newForm.Show();
         }
 
         private void FormQuotationMain_Load(object sender, EventArgs e)
         {
             bringQuotationList();
-
-            dgQuotation.DataSource = quotationList;
         }
     }
 }

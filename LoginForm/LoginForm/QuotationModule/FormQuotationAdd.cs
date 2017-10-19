@@ -13,7 +13,7 @@ using LoginForm.Services;
 
 namespace LoginForm.QuotationModule
 {
-    public partial class QuotationAdd : Form
+    public partial class FormQuotationAdd : Form
     {
         #region Definitions 
         GetWorkerService GetWorkerService = new GetWorkerService();
@@ -26,9 +26,15 @@ namespace LoginForm.QuotationModule
         decimal CurrentDis = 0;
         #endregion
 
-        public QuotationAdd()
+        public FormQuotationAdd()
         {
             InitializeComponent();
+        }
+
+        public FormQuotationAdd(Quotation quotation)
+        {
+            InitializeComponent();
+            modifyQuotation(quotation);
         }
 
         private void QuotationForm_Load(object sender, EventArgs e)
@@ -1154,8 +1160,12 @@ namespace LoginForm.QuotationModule
                 IME.QuotationDetails.Add(qd);
                     IME.SaveChanges();
                 }
-
-
         }
+
+        private void modifyQuotation(Quotation q)
+        {
+            CustomerCode.Text = q.Customer.c_name;
+            //dataGridView3.DataSource = q.QuotationDetails;
         }
     }
+}
