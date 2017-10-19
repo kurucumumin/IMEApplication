@@ -321,11 +321,11 @@
     <Compile Include="QuotationModule\FormQuotationMain.Designer.cs">
       <DependentUpon>FormQuotationMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuotationModule\QuotationAdd.cs">
+    <Compile Include="QuotationModule\FormQuotationAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QuotationModule\QuotationAdd.designer.cs">
-      <DependentUpon>QuotationAdd.cs</DependentUpon>
+    <Compile Include="QuotationModule\FormQuotationAdd.designer.cs">
+      <DependentUpon>FormQuotationAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Worker\FormWorkersMain.cs">
       <SubType>Form</SubType>
@@ -425,8 +425,8 @@
     <EmbeddedResource Include="QuotationModule\FormQuotationMain.resx">
       <DependentUpon>FormQuotationMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QuotationModule\QuotationAdd.resx">
-      <DependentUpon>QuotationAdd.cs</DependentUpon>
+    <EmbeddedResource Include="QuotationModule\FormQuotationAdd.resx">
+      <DependentUpon>FormQuotationAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Worker\FormWorkersMain.resx">
       <DependentUpon>FormWorkersMain.cs</DependentUpon>
