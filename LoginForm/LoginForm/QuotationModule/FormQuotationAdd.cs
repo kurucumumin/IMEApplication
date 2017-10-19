@@ -26,6 +26,8 @@ namespace LoginForm.QuotationModule
         decimal CurrentDis = 0;
         #endregion
 
+        bool modifyMod = false;
+
         public FormQuotationAdd()
         {
             InitializeComponent();
@@ -35,28 +37,31 @@ namespace LoginForm.QuotationModule
         {
             InitializeComponent();
             modifyQuotation(quotation);
+            modifyMod = true;
         }
 
         private void QuotationForm_Load(object sender, EventArgs e)
         {
+            if (!modifyMod)
+            {
+                dataGridView3.Rows[0].Cells["dgQty"].Value = "0";
+                dataGridView3.Rows[0].Cells[0].Value = 1.ToString();
+                #region ComboboxFiller
+                //cbFactor.DataSource = IME.Rates.ToList();
+                //cbFactor.DisplayMember = "currency";
+                //cbFactor.ValueMember = "ID";
+                cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList();
+                cbCurrency.DisplayMember = "CurType";
+                cbCurrency.ValueMember = "ID";
+                cbPayment.DataSource = IME.PaymentMethods.ToList();
+                cbPayment.DisplayMember = "Payment";
+                cbPayment.ValueMember = "ID";
+                cbRep.DataSource = IME.Workers.ToList();
+                cbRep.DisplayMember = "FirstName";
 
-            dataGridView3.Rows[0].Cells["dgQty"].Value = "0";
-            dataGridView3.Rows[0].Cells[0].Value = 1.ToString();
-            #region ComboboxFiller
-            //cbFactor.DataSource = IME.Rates.ToList();
-            //cbFactor.DisplayMember = "currency";
-            //cbFactor.ValueMember = "ID";
-            cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList();
-            cbCurrency.DisplayMember = "CurType";
-            cbCurrency.ValueMember = "ID";
-            cbPayment.DataSource = IME.PaymentMethods.ToList();
-            cbPayment.DisplayMember = "Payment";
-            cbPayment.ValueMember = "ID";
-            cbRep.DataSource = IME.Workers.ToList();
-            cbRep.DisplayMember = "FirstName";
-
-            dtpDate.Value = DateTime.Now;
-            #endregion
+                dtpDate.Value = DateTime.Now;
+                #endregion
+            }
         }
 
         private void txtCustomerName_KeyDown(object sender, KeyEventArgs e)
@@ -1165,7 +1170,7 @@ namespace LoginForm.QuotationModule
         private void modifyQuotation(Quotation q)
         {
             CustomerCode.Text = q.Customer.c_name;
-            //dataGridView3.DataSource = q.QuotationDetails;
+            dataGridView3.DataSource = q.QuotationDetails.ToList();
         }
     }
 }
