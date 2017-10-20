@@ -17,8 +17,6 @@ namespace LoginForm
 {
     public partial class FormMain : Form
     {
-        private Worker User;
-
         public FormMain()
         {
             InitializeComponent();
@@ -36,32 +34,20 @@ namespace LoginForm
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            ExchangeService DailyDolar = new ExchangeService();
-            ExchangeRate RateForDolar = new ExchangeRate();
-            RateForDolar = DailyDolar.GetExchangeRateforDolar();
+            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1009).Count() <= 0)
+            {
+                btnManagement.Visible = false;
+            }
 
-            //string Euro = DailyEuro.GetExchangeRateforEuro();
-            //string Dolar = DailyEuro.GetExchangeRateforDolar();
-            //lblDolarSell.Text = Dolar;
-            //lblEuroSell.Text = Euro;
-
-            this.Enabled = false;
-            FormLogin loginForm = new FormLogin(this);
-            loginForm.ShowDialog();
-            User = Utils.getCurrentUser();
-
+            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1007).Count() <= 0)
+            {
+                btnLoader.Visible = false;
+            }
         }
 
         private void btnManagement_Click(object sender, EventArgs e)
         {
-            if (User.AuthorizationValues.Where(a => a.AuthorizationID == 1009).Count() > 0)
-            {
-                controlManagement.BringToFront();
-            }
-            else
-            {
-                MessageBox.Show("You are not authorized for this process");
-            }
+            controlManagement.BringToFront();
         }
 
         public void setManagementControl()

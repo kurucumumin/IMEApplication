@@ -17,21 +17,19 @@ namespace LoginForm
     public partial class FormLogin : Form
     {
 
-        bool closeRequest = false;
-        private FormMain mainForm;
+        //bool closeRequest = false;
 
+        //private FormMain mainForm;
 
         IMEEntities IME = new IMEEntities();
 
         public string LoginPerson { get; set; }
 
-
-        public FormLogin(FormMain mainForm)
+        public FormLogin()
         {
             InitializeComponent();
-            this.mainForm = mainForm;
         }
-
+        
         private void btnLogin_Click(object sender, EventArgs e)
         {
             #region LoginBlock
@@ -56,17 +54,17 @@ namespace LoginForm
             {
                 if(Logged.isActive == 1)
                 {
-                    closeRequest = true;
                     Utils.setCurrentUser(Logged);
-                    mainForm.setManagementControl();
-                    mainForm.Enabled = true;
+                    FormMain formMain = new FormMain();
+                    this.Hide();
+                    formMain.ShowDialog();
+                    
                     this.Close();
                 }
                 else
                 {
                     MessageBox.Show("Your profile is not active", "Login Error", MessageBoxButtons.OK);
                 }
-                
             }
             else
             {
@@ -75,7 +73,7 @@ namespace LoginForm
             #endregion
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void FormLogin_Load(object sender, EventArgs e)
         {
             Rate DolarRate1 = new Rate();
             DolarRate1 = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).FirstOrDefault();
@@ -105,31 +103,32 @@ namespace LoginForm
                 IME.Rates.Add(SterlinRate);
                 IME.SaveChanges();
             }
-
         }
 
 
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            if (!closeRequest)
-            {
-                base.OnFormClosing(e);
-                if (e.CloseReason == CloseReason.WindowsShutDown) return;
+        //protected override void OnFormClosing(FormClosingEventArgs e)
+        //{
+        //    if (!closeRequest)
+        //    {
+        //        base.OnFormClosing(e);
+        //        if (e.CloseReason == CloseReason.WindowsShutDown) return;
 
-                switch (MessageBox.Show(this, "Are you sure you want to close?", "Closing", MessageBoxButtons.YesNo))
-                {
-                    case DialogResult.Yes:
-                        closeRequest = true;
-                        Application.Exit();
-                        break;
-                    case DialogResult.No:
-                        e.Cancel = true;
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
+        //        switch (MessageBox.Show(this, "Are you sure you want to close?", "Closing", MessageBoxButtons.YesNo))
+        //        {
+        //            case DialogResult.Yes:
+        //                closeRequest = true;
+        //                Application.Exit();
+        //                break;
+        //            case DialogResult.No:
+        //                e.Cancel = true;
+        //                break;
+        //            default:
+        //                break;
+        //        }
+        //    }
+        //}
+
+
         private void EnterPress(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)

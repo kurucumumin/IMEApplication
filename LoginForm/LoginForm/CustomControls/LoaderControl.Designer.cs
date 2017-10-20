@@ -202,7 +202,7 @@
             // 
             // btnTSEList
             // 
-            this.btnTSEList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(181)))), ((int)(((byte)(246)))));
+            this.btnTSEList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnTSEList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnTSEList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnTSEList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
@@ -238,7 +238,7 @@
             // 
             // btnExtendedRangePrice
             // 
-            this.btnExtendedRangePrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(181)))), ((int)(((byte)(246)))));
+            this.btnExtendedRangePrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnExtendedRangePrice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnExtendedRangePrice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnExtendedRangePrice.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
@@ -265,7 +265,7 @@
             // 
             // btnHazardousFile
             // 
-            this.btnHazardousFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(181)))), ((int)(((byte)(246)))));
+            this.btnHazardousFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnHazardousFile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnHazardousFile.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnHazardousFile.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
@@ -292,7 +292,7 @@
             // 
             // btnDualUsedArticles
             // 
-            this.btnDualUsedArticles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(181)))), ((int)(((byte)(246)))));
+            this.btnDualUsedArticles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnDualUsedArticles.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDualUsedArticles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDualUsedArticles.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
@@ -319,7 +319,7 @@
             // 
             // btnSuperDiskwithP
             // 
-            this.btnSuperDiskwithP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(181)))), ((int)(((byte)(246)))));
+            this.btnSuperDiskwithP.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnSuperDiskwithP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSuperDiskwithP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSuperDiskwithP.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
@@ -364,7 +364,7 @@
             // 
             // btnDiscontinuedList
             // 
-            this.btnDiscontinuedList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(181)))), ((int)(((byte)(246)))));
+            this.btnDiscontinuedList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnDiscontinuedList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDiscontinuedList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDiscontinuedList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
@@ -401,7 +401,7 @@
             // 
             // btnSlidingPriceList
             // 
-            this.btnSlidingPriceList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(181)))), ((int)(((byte)(246)))));
+            this.btnSlidingPriceList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnSlidingPriceList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSlidingPriceList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSlidingPriceList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
@@ -428,7 +428,7 @@
             // 
             // btnSuperDisk
             // 
-            this.btnSuperDisk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(181)))), ((int)(((byte)(246)))));
+            this.btnSuperDisk.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnSuperDisk.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnSuperDisk.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSuperDisk.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
@@ -455,7 +455,7 @@
             // 
             // btnOnSale
             // 
-            this.btnOnSale.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(181)))), ((int)(((byte)(246)))));
+            this.btnOnSale.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnOnSale.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnOnSale.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnOnSale.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
@@ -581,7 +581,7 @@
             // 
             // btnRSProList
             // 
-            this.btnRSProList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(181)))), ((int)(((byte)(246)))));
+            this.btnRSProList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
             this.btnRSProList.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnRSProList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnRSProList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
@@ -600,6 +600,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.Controls.Add(this.tableRightPanel);
             this.Name = "LoaderControl";
             this.Size = new System.Drawing.Size(1000, 588);
