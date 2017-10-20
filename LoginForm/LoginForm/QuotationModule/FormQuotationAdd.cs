@@ -31,6 +31,7 @@ namespace LoginForm.QuotationModule
         public FormQuotationAdd()
         {
             InitializeComponent();
+            newQuotationID();
         }
 
         public FormQuotationAdd(Quotation quotation)
@@ -427,16 +428,19 @@ namespace LoginForm.QuotationModule
             rate = IME.Rates.Where(a => a.rate_date == today).Where(b => b.CurType == "GBP").FirstOrDefault();
             decimal GBPBuy = Decimal.Parse(rate.RateBuy.ToString());
 
-            if (dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value != null && dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value != "")
+            DataGridViewRow row = dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex];
+
+
+            if (row.Cells["dgQty"].Value != null && row.Cells["dgQty"].Value != "")
             {
-                if (Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString()) > 1 || Int32.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgSSM"].Value.ToString()) > 1)
+                if (Int32.Parse(row.Cells["dgUC"].Value.ToString()) > 1 || Int32.Parse(row.Cells["dgSSM"].Value.ToString()) > 1)
                 {
-                    dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgTotal"].Value.ToString())) / GBPBuy))) * 100).ToString("G29");
+                    row.Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(row.Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(row.Cells["dgTotal"].Value.ToString())) / GBPBuy))) * 100).ToString("G29");
 
                 }
                 else
                 {
-                    dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgTotal"].Value.ToString()) / Decimal.Parse(dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())) / GBPBuy))) * 100).ToString("G29");
+                    row.Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(row.Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(row.Cells["dgTotal"].Value.ToString()) / Decimal.Parse(row.Cells["dgQty"].Value.ToString())) / GBPBuy))) * 100).ToString("G29");
 
                 }
             }
@@ -470,12 +474,14 @@ namespace LoginForm.QuotationModule
         private void FillProductCodeItem()
         {
             #region FillProductCodeItem
-            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgLandingCost"].Value = (classQuotationAdd.GetLandingCost(dataGridView3.CurrentCell.Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked)).ToString("G29");
-            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgHZ"].Value = txtHazardousInd.Text;
-            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgCCCNO"].Value = txtCCCN.Text;
-            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgCOO"].Value = txtCofO.Text;
-            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUnitWeigt"].Value = txtStandartWeight.Text;
-            dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgTotalWeight"].Value = txtGrossWeight.Text;
+            DataGridViewRow row = dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex];
+
+            row.Cells["dgLandingCost"].Value = (classQuotationAdd.GetLandingCost(dataGridView3.CurrentCell.Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked)).ToString("G29");
+            row.Cells["dgHZ"].Value = txtHazardousInd.Text;
+            row.Cells["dgCCCNO"].Value = txtCCCN.Text;
+            row.Cells["dgCOO"].Value = txtCofO.Text;
+            row.Cells["dgUnitWeigt"].Value = txtStandartWeight.Text;
+            row.Cells["dgTotalWeight"].Value = txtGrossWeight.Text;
             #endregion
         }
 
@@ -584,12 +590,14 @@ namespace LoginForm.QuotationModule
 
             if (sd != null)
             {
-                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgDesc"].Value = sd.Article_Desc;
-                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgSSM"].Value = sd.Pack_Quantity.ToString();
-                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUC"].Value = sd.Unit_Content.ToString();
-                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUOM"].Value = sd.Unit_Measure;
-                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgMPN"].Value = sd.MPN;
-                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgCL"].Value = sd.Calibration_Ind;
+                DataGridViewRow row = dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex];
+
+                row.Cells["dgDesc"].Value = sd.Article_Desc;
+                row.Cells["dgSSM"].Value = sd.Pack_Quantity.ToString();
+                row.Cells["dgUC"].Value = sd.Unit_Content.ToString();
+                row.Cells["dgUOM"].Value = sd.Unit_Measure;
+                row.Cells["dgMPN"].Value = sd.MPN;
+                row.Cells["dgCL"].Value = sd.Calibration_Ind;
                 if (sd.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sd.Standard_Weight) / (decimal)1000).ToString("G29"); } else { }
                 txtHazardousInd.Text = sd.Hazardous_Ind;
                 txtCalibrationInd.Text = sd.Calibration_Ind;
@@ -613,12 +621,14 @@ namespace LoginForm.QuotationModule
             }
             if (sdP != null)
             {
-                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgDesc"].Value = sdP.Article_Desc;
-                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgSSM"].Value = sdP.Pack_Quantity.ToString();
-                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUC"].Value = sdP.Unit_Content.ToString();
-                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUOM"].Value = sdP.Unit_Measure;
-                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUOM"].Value = sdP.Unit_Measure;
-                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgPackType"].Value = sdP.Calibration_Ind;
+                DataGridViewRow row = dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex];
+
+                row.Cells["dgDesc"].Value = sdP.Article_Desc;
+                row.Cells["dgSSM"].Value = sdP.Pack_Quantity.ToString();
+                row.Cells["dgUC"].Value = sdP.Unit_Content.ToString();
+                row.Cells["dgUOM"].Value = sdP.Unit_Measure;
+                row.Cells["dgUOM"].Value = sdP.Unit_Measure;
+                row.Cells["dgPackType"].Value = sdP.Calibration_Ind;
 
                 if (sdP.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sdP.Standard_Weight) / (decimal)1000).ToString("G29"); }
                 txtHazardousInd.Text = sdP.Hazardous_Ind;
@@ -644,9 +654,11 @@ namespace LoginForm.QuotationModule
             }
             if (er != null)
             {
-                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgDesc"].Value = er.ArticleDescription;
-                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgUOM"].Value = er.UnitofMeasure;
-                dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex].Cells["dgMPN"].Value = er.MPN;
+                DataGridViewRow row = dataGridView3.Rows[dataGridView3.CurrentCell.RowIndex];
+
+                row.Cells["dgDesc"].Value = er.ArticleDescription;
+                row.Cells["dgUOM"].Value = er.UnitofMeasure;
+                row.Cells["dgMPN"].Value = er.MPN;
                 if (txtLength.Text != "") { txtLength.Text = ((decimal)(er.ExtendedRangeLength * ((Decimal)100))).ToString("G29"); }
                 if (txtWidth.Text != "") { txtWidth.Text = ((decimal)(er.Width * ((Decimal)100))).ToString("G29"); }
                 if (txtHeight.Text != "") { txtHeight.Text = ((decimal)(er.Height * ((Decimal)100))).ToString("G29"); }
@@ -1171,6 +1183,22 @@ namespace LoginForm.QuotationModule
         {
             CustomerCode.Text = q.Customer.c_name;
             dataGridView3.DataSource = q.QuotationDetails.ToList();
+        }
+
+        private int newQuotationID()
+        {
+            IMEEntities IME = new IMEEntities();
+            List<Quotation> quotList = IME.Quotations.Where(q => q.year == DateTime.Now.Year).toList();
+
+            if (quotList != null)
+            {
+                int newID = quotList.OrderByDescending(q => q.QuotationNo).First().QuotationNo;
+                return newID++;
+            }
+            else
+            {
+                return 1;
+            }
         }
     }
 }
