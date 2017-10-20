@@ -16,7 +16,7 @@ namespace LoginForm.DataSet
     {
         public int ID { get; set; }
         public string RFQNo { get; set; }
-        public Nullable<int> QuotationNo { get; set; }
+        public Nullable<int> dgNo { get; set; }
         public string ItemCode { get; set; }
         public Nullable<int> Qty { get; set; }
         public Nullable<decimal> UCUPCurr { get; set; }
@@ -27,6 +27,7 @@ namespace LoginForm.DataSet
         public string CustomerDescription { get; set; }
         public string CustomerStockCode { get; set; }
         public Nullable<int> IsDeleted { get; set; }
+        public string QuotationNo { get; set; }
     
         public virtual Quotation Quotation { get; set; }
     }

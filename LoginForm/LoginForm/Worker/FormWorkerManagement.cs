@@ -363,7 +363,7 @@ namespace LoginForm.WorkerManagement
                         clbAuthorities.SetItemChecked(i, false);
                     }else if (((AuthorizationValue)clbUserAuthorityList.Items[j]).AuthorizationID == ((AuthorizationValue)clbAuthorities.Items[i]).AuthorizationID)
                     {
-                        clbAuthorities.SetItemChecked(j, true);
+                        clbAuthorities.SetItemChecked(i, true);
                         break;
                     }
                 }

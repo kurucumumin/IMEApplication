@@ -15,7 +15,7 @@ namespace LoginForm.QuotationModule
 {
     public partial class FormQuotationAdd : Form
     {
-        #region Definitions 
+        #region Definitions
         GetWorkerService GetWorkerService = new GetWorkerService();
 
         IMEEntities IME = new IMEEntities();
@@ -86,7 +86,7 @@ namespace LoginForm.QuotationModule
                 CustomerCode.Text = classQuotationAdd.customerID;
                 txtCustomerName.Text = classQuotationAdd.customername;
             }
-            
+
             var c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
 
             if (c.rate_ID != null)
@@ -203,7 +203,7 @@ namespace LoginForm.QuotationModule
                             {
                                 if (classQuotationAdd.NumberofItem(dgQuotationAddedItems.CurrentCell.Value.ToString()) == 0)
                                 {
-                                    //Bu item daha önceden eklimi diye kontrol ediyor  
+                                    //Bu item daha önceden eklimi diye kontrol ediyor
                                     //                             DataGridViewRow row = dataGridView3.Rows
                                     //.Cast<DataGridViewRow>()
                                     //.Where(r => r.Cells["dgProductCode"].Value.ToString().Equals(dataGridView3.CurrentCell.Value.ToString()))
@@ -232,7 +232,7 @@ namespace LoginForm.QuotationModule
                                     itemsearch.ShowDialog();
                                     try
                                     {
-                                        //Bu item daha önceden eklimi diye kontrol ediyor  
+                                        //Bu item daha önceden eklimi diye kontrol ediyor
                                         DataGridViewRow row = dgQuotationAddedItems.Rows
            .Cast<DataGridViewRow>()
            .Where(r => r.Cells["dgProductCode"].Value.ToString().Equals(classQuotationAdd.ItemCode))
@@ -298,7 +298,7 @@ namespace LoginForm.QuotationModule
                     //TotalDis();
                     break;
                 #endregion
-                case 22://total 
+                case 22://total
                     {
                         #region Total
                         decimal total = decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString());
@@ -332,7 +332,7 @@ namespace LoginForm.QuotationModule
                         dgQuotationAddedItems.Rows[rowindex].Cells["dgCost"].Value = classQuotationAdd.GetCost(dgQuotationAddedItems.Rows[rowindex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString("G29");
                         price = Decimal.Parse((classQuotationAdd.GetPrice(dgQuotationAddedItems.Rows[rowindex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())) * Decimal.Parse(cbFactor.Text) * Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString("G29"));
                         decimal discResult = 0;
-                        //Fiyat burada 
+                        //Fiyat burada
                         string articleNo = dgQuotationAddedItems.Rows[rowindex].Cells["dgProductCode"].Value.ToString();
                         int isP = 0;
                         if (articleNo.ToUpper().IndexOf('P') != -1) { isP = 1; }
@@ -792,7 +792,7 @@ namespace LoginForm.QuotationModule
             {
                 dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[0].Value = (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 2].Cells[0].Value.ToString()) + 1).ToString();
             }
-            
+
         }
 
         private void dataGridView3_Click(object sender, EventArgs e)
@@ -873,7 +873,7 @@ namespace LoginForm.QuotationModule
 
         private void CalculateSubTotal()
         {
-            #region SubTotal Calculation 
+            #region SubTotal Calculation
             int RowIndex = dgQuotationAddedItems.CurrentCell.RowIndex;
             int rowindexSubTotal = Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgNo"].Value.ToString());
             var tuple = SubTotal.Where(a => a.Item1 == rowindexSubTotal).FirstOrDefault();
@@ -1166,8 +1166,8 @@ namespace LoginForm.QuotationModule
                 catch { }
                 qd.IsDeleted = 1;
                 IME.QuotationDetails.Add(qd);
-                    IME.SaveChanges();
-                }
+                IME.SaveChanges();
+            }
         }
 
         private void modifyQuotation(Quotation q)
@@ -1183,7 +1183,7 @@ namespace LoginForm.QuotationModule
                 {
                     DataGridViewRow row = (DataGridViewRow)dgQuotationDeleted.Rows[0].Clone();
                     row.Cells[0].Value = item.QuotationNo;
-                    row.Cells[7].Value = item.ItemCode;                    
+                    row.Cells[7].Value = item.ItemCode;
                     row.Cells[15].Value = item.Qty;
                     row.Cells[22].Value = item.UCUPCurr;
                     row.Cells[21].Value = item.Disc;
@@ -1429,5 +1429,20 @@ namespace LoginForm.QuotationModule
 
         }
 
+        private int newQuotationID()
+        {
+            IMEEntities IME = new IMEEntities();
+            List<Quotation> quotList = IME.Quotations.Where(q => q.year == DateTime.Now.Year).toList();
+
+            if (quotList != null)
+            {
+                int newID = quotList.OrderByDescending(q => q.QuotationNo).First().QuotationNo;
+                return newID++;
+            }
+            else
+            {
+                return 1;
+            }
+        }
     }
 }

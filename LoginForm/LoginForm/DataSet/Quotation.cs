@@ -20,7 +20,6 @@ namespace LoginForm.DataSet
             this.QuotationDetails = new HashSet<QuotationDetail>();
         }
     
-        public string RFQNo { get; set; }
         public string CustomerID { get; set; }
         public Nullable<int> NoteForUsID { get; set; }
         public Nullable<int> NoteForCustomerID { get; set; }
@@ -36,11 +35,13 @@ namespace LoginForm.DataSet
         public Nullable<int> ValidationDay { get; set; }
         public Nullable<int> PaymentID { get; set; }
         public Nullable<decimal> Curr { get; set; }
-        public Nullable<decimal> CurrType { get; set; }
         public Nullable<decimal> Factor { get; set; }
         public Nullable<int> IsVatValue { get; set; }
         public Nullable<decimal> VatValue { get; set; }
         public string CurrName { get; set; }
+        public string QuotationNo { get; set; }
+        public string RFQNo { get; set; }
+        public string CurrType { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Note Note { get; set; }
