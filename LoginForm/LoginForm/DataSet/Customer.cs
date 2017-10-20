@@ -34,7 +34,6 @@ namespace LoginForm.DataSet
         public string webadress { get; set; }
         public Nullable<int> payment_termID { get; set; }
         public Nullable<int> representaryID { get; set; }
-        public Nullable<int> rate_ID { get; set; }
         public Nullable<int> customerNoteID { get; set; }
         public Nullable<int> representary2ID { get; set; }
         public Nullable<int> accountrepresentaryID { get; set; }
@@ -43,14 +42,16 @@ namespace LoginForm.DataSet
         public string taxoffice { get; set; }
         public Nullable<int> taxnumber { get; set; }
         public Nullable<int> MainContactID { get; set; }
+        public string CurrTypeInv { get; set; }
+        public string CurrNameInv { get; set; }
+        public string CurrTypeQuo { get; set; }
+        public string CurrNameQuo { get; set; }
     
         public virtual Worker Worker { get; set; }
         public virtual Note Note { get; set; }
         public virtual CustomerWorker CustomerWorker { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
         public virtual PaymentTerm PaymentTerm { get; set; }
-        public virtual Rate Rate { get; set; }
-        public virtual Rate Rate1 { get; set; }
         public virtual Worker Worker1 { get; set; }
         public virtual Worker Worker2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

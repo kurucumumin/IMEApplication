@@ -61,7 +61,7 @@
             this.tableLeftPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 169F));
             this.tableLeftPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLeftPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
-            this.tableLeftPanel.Size = new System.Drawing.Size(219, 459);
+            this.tableLeftPanel.Size = new System.Drawing.Size(219, 467);
             this.tableLeftPanel.TabIndex = 0;
             // 
             // gbMainMenu
@@ -75,7 +75,7 @@
             this.gbMainMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbMainMenu.Name = "gbMainMenu";
             this.gbMainMenu.Padding = new System.Windows.Forms.Padding(0);
-            this.gbMainMenu.Size = new System.Drawing.Size(212, 200);
+            this.gbMainMenu.Size = new System.Drawing.Size(212, 196);
             this.gbMainMenu.TabIndex = 32;
             this.gbMainMenu.TabStop = false;
             this.gbMainMenu.Text = "Menu";
@@ -150,7 +150,7 @@
             this.tableMain.Name = "tableMain";
             this.tableMain.RowCount = 1;
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableMain.Size = new System.Drawing.Size(993, 463);
+            this.tableMain.Size = new System.Drawing.Size(995, 471);
             this.tableMain.TabIndex = 0;
             // 
             // panel1
@@ -162,39 +162,42 @@
             this.panel1.Location = new System.Drawing.Point(225, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(768, 463);
+            this.panel1.Size = new System.Drawing.Size(770, 471);
             this.panel1.TabIndex = 1;
             // 
             // controlDevelopment
             // 
             this.controlDevelopment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.controlDevelopment.Location = new System.Drawing.Point(0, 0);
+            this.controlDevelopment.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.controlDevelopment.MinimumSize = new System.Drawing.Size(0, 545);
             this.controlDevelopment.Name = "controlDevelopment";
-            this.controlDevelopment.Size = new System.Drawing.Size(768, 545);
+            this.controlDevelopment.Size = new System.Drawing.Size(770, 545);
             this.controlDevelopment.TabIndex = 1;
             // 
             // controlLoader
             // 
             this.controlLoader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.controlLoader.Location = new System.Drawing.Point(0, 0);
+            this.controlLoader.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.controlLoader.Name = "controlLoader";
-            this.controlLoader.Size = new System.Drawing.Size(768, 463);
+            this.controlLoader.Size = new System.Drawing.Size(770, 471);
             this.controlLoader.TabIndex = 0;
             // 
             // controlManagement
             // 
             this.controlManagement.Dock = System.Windows.Forms.DockStyle.Fill;
             this.controlManagement.Location = new System.Drawing.Point(0, 0);
+            this.controlManagement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.controlManagement.Name = "controlManagement";
-            this.controlManagement.Size = new System.Drawing.Size(768, 463);
+            this.controlManagement.Size = new System.Drawing.Size(770, 471);
             this.controlManagement.TabIndex = 2;
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(993, 463);
+            this.ClientSize = new System.Drawing.Size(995, 471);
             this.Controls.Add(this.tableMain);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

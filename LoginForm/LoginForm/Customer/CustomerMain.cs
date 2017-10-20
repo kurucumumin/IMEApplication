@@ -63,10 +63,14 @@ namespace LoginForm
             SubCategory.DisplayMember = "subcategoryname";
             MainCategory.DataSource = IME.CustomerCategories.ToList();
             MainCategory.DisplayMember = "categoryname";
-            QuoCurrency.DataSource = IME.Rates.ToList();
-            QuoCurrency.DisplayMember = "currency";
-            InvCurrency.DataSource = IME.Rates.ToList();
-            InvCurrency.DisplayMember = "currency";
+
+            QuoCurrencyName.DataSource = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList();
+            QuoCurrencyName.DisplayMember = "CurType";
+            QuoCurrencyName.ValueMember = "ID";
+            InvCurrencyName.DataSource = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList();
+            InvCurrencyName.DisplayMember = "CurType";
+            InvCurrencyName.ValueMember = "ID";
+
             TermsofPayments.DataSource = IME.PaymentTerms.ToList();
             TermsofPayments.DisplayMember = "term_name";
             PaymentMethod.DataSource = IME.PaymentMethods.ToList();
@@ -326,7 +330,6 @@ namespace LoginForm
                                    {
                                        c.ID,
                                        c.c_name,
-                                       c.Rate.currency,
                                        c.telephone,
                                        c.fax,
                                        c.webadress,
@@ -357,11 +360,15 @@ namespace LoginForm
                                        a.Town.Town_name,
                                        a.AdressDetails,
                                        c.MainContactID,
-                                       MainContact=mc.cw_name
+                                       MainContact=mc.cw_name,
+                                       c.CurrNameQuo,
+                                       c.CurrTypeQuo,
+                                       c.CurrNameInv,
+                                       c.CurrTypeInv
                                    }).ToList();
             #endregion
             CustomerDataGrid.DataSource = customerAdapter;
-            if (customerAdapter.Count>0)
+            if (customerAdapter.Count()>0)
             {
                 #region FillInfos
                 CustomerDataGrid.CurrentCell = CustomerDataGrid.Rows[gridselectedindex].Cells[0];
@@ -371,7 +378,6 @@ namespace LoginForm
                 AdressList.DisplayMember = "AdressDetails";
                 IME.SaveChanges();
                 CustomerName.Text = customerAdapter[gridselectedindex].c_name;
-                factor.SelectedIndex = factor.FindStringExact(customerAdapter[gridselectedindex].currency.ToString());
                 Telephone.Text = customerAdapter[gridselectedindex].telephone.ToString();
                 ContactFAX.Text = customerAdapter[gridselectedindex].fax.ToString();
                 WebAdress.Text = customerAdapter[gridselectedindex].webadress;
@@ -411,6 +417,10 @@ namespace LoginForm
                 if (customerAdapter[gridselectedindex].isInvoiceAdress == 1) { InvoiceAdressOk.Checked = true; } else { InvoiceAdressOk.Checked = false; }
                 cbTown.SelectedIndex = cbTown.FindStringExact(customerAdapter[gridselectedindex].Town_name);
                 AddressDetails.Text = customerAdapter[gridselectedindex].AdressDetails;
+                QuoCurrencyName.Text = customerAdapter[gridselectedindex].CurrNameQuo;
+                QuoCurrencyType.Text = customerAdapter[gridselectedindex].CurrTypeQuo;
+                InvCurrencyName.Text = customerAdapter[gridselectedindex].CurrNameInv;
+                InvCurrencyType.Text = customerAdapter[gridselectedindex].CurrTypeInv;
                 #endregion
             }
             else { itemsClear(); }
@@ -437,7 +447,6 @@ namespace LoginForm
                                    {
                                        c.ID,
                                        c.c_name,
-                                       c.Rate.currency,
                                        c.telephone,
                                        c.fax,
                                        c.webadress,
@@ -479,14 +488,11 @@ namespace LoginForm
             AdressList.DataSource = IME.CustomerAdresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
             AdressList.DisplayMember = "AdressDetails";
             CustomerName.Text = customerAdapter[gridselectedindex].c_name;
-            factor.SelectedIndex = factor.FindStringExact(customerAdapter[gridselectedindex].currency.ToString());
             Telephone.Text = customerAdapter[gridselectedindex].telephone.ToString();
             ContactFAX.Text = customerAdapter[gridselectedindex].fax.ToString();
             WebAdress.Text = customerAdapter[gridselectedindex].webadress;
-
             AddressType.DataSource = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text).ToList();
             AddressType.DisplayMember = "cw_name";
-
             Represantative2.Text = customerAdapter[gridselectedindex].Representative2;
             Represantative1.SelectedIndex = Represantative1.FindStringExact(customerAdapter[gridselectedindex].NameLastName);
             ContactTitle.SelectedIndex = ContactTitle.FindStringExact(customerAdapter[gridselectedindex].titlename);
@@ -894,8 +900,10 @@ namespace LoginForm
             TaxOffice.Text = "";           
             Represantative2.Text = "";
             Represantative1.Text = "";
-            InvCurrency.Text = "";
-            QuoCurrency.Text = "";
+            InvCurrencyName.Text = "";
+            InvCurrencyType.Text = "";
+            QuoCurrencyType.Text = "";
+            QuoCurrencyName.Text = "";
             AccountRepresentary.Text = "";
             CommunicationLanguage.Text = "";
             CreditLimit.Text = "";
@@ -937,8 +945,11 @@ namespace LoginForm
             departmentAdd.Enabled = false;
             Represantative2.Enabled = false;
             Represantative1.Enabled = false;
-            InvCurrency.Enabled = false;
-            QuoCurrency.Enabled = false;
+            InvCurrencyName.Enabled = false;
+            InvCurrencyType.Enabled = false;
+            QuoCurrencyName.Enabled = false;
+            QuoCurrencyType.Enabled = false;
+
             AccountRepresentary.Enabled = false;
             CreditLimit.Enabled = false;
             taxNumber.Enabled = false;
@@ -973,8 +984,10 @@ namespace LoginForm
             TaxOffice.Enabled = true;
             Represantative2.Enabled = true;
             Represantative1.Enabled = true;
-            InvCurrency.Enabled = true;
-            QuoCurrency.Enabled = true;
+            InvCurrencyName.Enabled = true;
+            InvCurrencyType.Enabled = true;
+            QuoCurrencyName.Enabled = true;
+            QuoCurrencyType.Enabled = true;
             AccountRepresentary.Enabled = true;
             CreditLimit.Enabled = true;
             taxNumber.Enabled = true;

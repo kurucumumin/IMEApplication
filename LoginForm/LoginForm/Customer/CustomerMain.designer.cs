@@ -57,9 +57,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tab_account = new System.Windows.Forms.TabPage();
             this.AccountingNotes = new System.Windows.Forms.TextBox();
-            this.InvCurrency = new System.Windows.Forms.ComboBox();
+            this.InvCurrencyName = new System.Windows.Forms.ComboBox();
             this.factor = new System.Windows.Forms.ComboBox();
-            this.QuoCurrency = new System.Windows.Forms.ComboBox();
             this.DiscountRate = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.PaymentMethod = new System.Windows.Forms.ComboBox();
@@ -140,6 +139,9 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.tableMain = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.QuoCurrencyName = new System.Windows.Forms.ComboBox();
+            this.QuoCurrencyType = new System.Windows.Forms.ComboBox();
+            this.InvCurrencyType = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tab_company.SuspendLayout();
             this.tab_account.SuspendLayout();
@@ -435,9 +437,11 @@
             // tab_account
             // 
             this.tab_account.Controls.Add(this.AccountingNotes);
-            this.tab_account.Controls.Add(this.InvCurrency);
+            this.tab_account.Controls.Add(this.InvCurrencyName);
             this.tab_account.Controls.Add(this.factor);
-            this.tab_account.Controls.Add(this.QuoCurrency);
+            this.tab_account.Controls.Add(this.InvCurrencyType);
+            this.tab_account.Controls.Add(this.QuoCurrencyType);
+            this.tab_account.Controls.Add(this.QuoCurrencyName);
             this.tab_account.Controls.Add(this.DiscountRate);
             this.tab_account.Controls.Add(this.label14);
             this.tab_account.Controls.Add(this.PaymentMethod);
@@ -473,15 +477,15 @@
             this.AccountingNotes.Size = new System.Drawing.Size(178, 65);
             this.AccountingNotes.TabIndex = 17;
             // 
-            // InvCurrency
+            // InvCurrencyName
             // 
-            this.InvCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.InvCurrency.Enabled = false;
-            this.InvCurrency.FormattingEnabled = true;
-            this.InvCurrency.Location = new System.Drawing.Point(492, 142);
-            this.InvCurrency.Name = "InvCurrency";
-            this.InvCurrency.Size = new System.Drawing.Size(178, 24);
-            this.InvCurrency.TabIndex = 12;
+            this.InvCurrencyName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.InvCurrencyName.Enabled = false;
+            this.InvCurrencyName.FormattingEnabled = true;
+            this.InvCurrencyName.Location = new System.Drawing.Point(492, 142);
+            this.InvCurrencyName.Name = "InvCurrencyName";
+            this.InvCurrencyName.Size = new System.Drawing.Size(84, 24);
+            this.InvCurrencyName.TabIndex = 12;
             // 
             // factor
             // 
@@ -492,16 +496,6 @@
             this.factor.Name = "factor";
             this.factor.Size = new System.Drawing.Size(178, 24);
             this.factor.TabIndex = 12;
-            // 
-            // QuoCurrency
-            // 
-            this.QuoCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.QuoCurrency.Enabled = false;
-            this.QuoCurrency.FormattingEnabled = true;
-            this.QuoCurrency.Location = new System.Drawing.Point(491, 101);
-            this.QuoCurrency.Name = "QuoCurrency";
-            this.QuoCurrency.Size = new System.Drawing.Size(178, 24);
-            this.QuoCurrency.TabIndex = 12;
             // 
             // DiscountRate
             // 
@@ -554,7 +548,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(368, 63);
+            this.label23.Location = new System.Drawing.Point(368, 65);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(78, 17);
             this.label23.TabIndex = 3;
@@ -1343,6 +1337,46 @@
             this.panel1.Size = new System.Drawing.Size(706, 57);
             this.panel1.TabIndex = 2;
             // 
+            // QuoCurrencyName
+            // 
+            this.QuoCurrencyName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.QuoCurrencyName.Enabled = false;
+            this.QuoCurrencyName.FormattingEnabled = true;
+            this.QuoCurrencyName.Location = new System.Drawing.Point(491, 101);
+            this.QuoCurrencyName.Name = "QuoCurrencyName";
+            this.QuoCurrencyName.Size = new System.Drawing.Size(85, 24);
+            this.QuoCurrencyName.TabIndex = 12;
+            // 
+            // QuoCurrencyType
+            // 
+            this.QuoCurrencyType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.QuoCurrencyType.Enabled = false;
+            this.QuoCurrencyType.FormattingEnabled = true;
+            this.QuoCurrencyType.Items.AddRange(new object[] {
+            "Buy",
+            "Eff. Buy",
+            "Sale",
+            "Eff. Sale"});
+            this.QuoCurrencyType.Location = new System.Drawing.Point(582, 101);
+            this.QuoCurrencyType.Name = "QuoCurrencyType";
+            this.QuoCurrencyType.Size = new System.Drawing.Size(88, 24);
+            this.QuoCurrencyType.TabIndex = 12;
+            // 
+            // InvCurrencyType
+            // 
+            this.InvCurrencyType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.InvCurrencyType.Enabled = false;
+            this.InvCurrencyType.FormattingEnabled = true;
+            this.InvCurrencyType.Items.AddRange(new object[] {
+            "Buy",
+            "Eff. Buy",
+            "Sale",
+            "Eff. Sale"});
+            this.InvCurrencyType.Location = new System.Drawing.Point(582, 142);
+            this.InvCurrencyType.Name = "InvCurrencyType";
+            this.InvCurrencyType.Size = new System.Drawing.Size(88, 24);
+            this.InvCurrencyType.TabIndex = 12;
+            // 
             // CustomerMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1433,8 +1467,7 @@
         private System.Windows.Forms.ComboBox Represantative1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label;
-        private System.Windows.Forms.ComboBox InvCurrency;
-        private System.Windows.Forms.ComboBox QuoCurrency;
+        private System.Windows.Forms.ComboBox InvCurrencyName;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox AccountRepresentary;
@@ -1485,6 +1518,9 @@
         private System.Windows.Forms.TableLayoutPanel tableMain;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtExtNumber;
+        private System.Windows.Forms.ComboBox InvCurrencyType;
+        private System.Windows.Forms.ComboBox QuoCurrencyType;
+        private System.Windows.Forms.ComboBox QuoCurrencyName;
     }
 }
 
