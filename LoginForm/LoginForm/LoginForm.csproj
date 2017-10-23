@@ -293,16 +293,16 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="ITEM\ItemCard.cs">
+    <Compile Include="Item\ItemCard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ITEM\ItemCard.designer.cs">
+    <Compile Include="Item\ItemCard.designer.cs">
       <DependentUpon>ItemCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="ITEM\LoaderPage.cs">
+    <Compile Include="Item\LoaderPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ITEM\LoaderPage.designer.cs">
+    <Compile Include="Item\LoaderPage.designer.cs">
       <DependentUpon>LoaderPage.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\DevelopmentControl.cs">
@@ -416,10 +416,10 @@
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ITEM\ItemCard.resx">
+    <EmbeddedResource Include="Item\ItemCard.resx">
       <DependentUpon>ItemCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ITEM\LoaderPage.resx">
+    <EmbeddedResource Include="Item\LoaderPage.resx">
       <DependentUpon>LoaderPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\DevelopmentControl.resx">

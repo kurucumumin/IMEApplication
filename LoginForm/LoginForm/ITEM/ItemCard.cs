@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 
-namespace LoginForm
+namespace LoginForm.Item
 {
     public partial class ItemCard : Form
     {
@@ -21,77 +21,12 @@ namespace LoginForm
             InitializeComponent();
         }
 
-        private void label42_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox42_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label29_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox63_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label64_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label63_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox62_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label53_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             txtQuantitiy.Text = "";
             gridselectedindex = 0;
             itemSelect();
             
-        }
-
-        private void groupBox7_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Substitute_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void itemSelect()
@@ -620,26 +555,6 @@ namespace LoginForm
             textsClear();
         }
 
-        private void SearchText_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void OnSaleDiscontinuedDate_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Price_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void Number_TextChanged(object sender, EventArgs e)
         {
             try
@@ -688,65 +603,6 @@ namespace LoginForm
             if (txtHeight.Text != "" && txtLength.Text != "" && txtWidth.Text != "") { txtGrossWeight.Text = (Decimal.Parse(txtLength.Text) * Decimal.Parse(txtWidth.Text) * Decimal.Parse(txtHeight.Text) / 6000).ToString(); }
         }
 
-        private void StandartWeight_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void UnitContent_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CCCNNo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label54_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MPN_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label27_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RunOn_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label16_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void grossWeight_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Height_TextChanged(object sender, EventArgs e)
-        {
-            // Height.Text = ((Decimal.Parse(Height.Text)) * 100).ToString();
-        }
-
-        private void Width_TextChanged(object sender, EventArgs e)
-        {
-            //Width.Text = ((Decimal.Parse(Width.Text)) * 100).ToString();
-        }
-
         private void ArticleNo_TextChanged(object sender, EventArgs e)
         {
             if (txtStockNo.Text != "")
@@ -755,7 +611,7 @@ namespace LoginForm
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e)
         {
             var Updnote = IME.ItemNotes.Where(a => a.ArticleNo == txtStockNo.Text).FirstOrDefault();
             if (Updnote != null)
@@ -788,31 +644,6 @@ namespace LoginForm
                 gridselectedindex = 0;
                 itemSelect();
             }
-        }
-
-        private void dataGridView1_MouseDown(object sender, MouseEventArgs e)
-        {
-           
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dgItemList_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void groupBox7_Enter_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ItemCard_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

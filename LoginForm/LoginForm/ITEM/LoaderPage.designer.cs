@@ -1,4 +1,4 @@
-﻿namespace LoginForm
+﻿namespace LoginForm.Item
 {
     partial class LoaderPage
     {
