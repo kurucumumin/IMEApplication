@@ -121,7 +121,7 @@ namespace LoginForm.QuotationModule
             CustomerMain f = new CustomerMain(true, txtCustomerName.Text);
         }
 
-        private void button10_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
             FormMain f = new FormMain();
             if (MessageBox.Show("Are You Sure To Exit Programme ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
@@ -1050,12 +1050,10 @@ namespace LoginForm.QuotationModule
             }
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
-
             QuotationSave();
             QuotationDetailsSave();
-
         }
 
         private void QuotationSave()
