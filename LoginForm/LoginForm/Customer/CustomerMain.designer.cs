@@ -347,6 +347,7 @@
             this.WebAdress.Name = "WebAdress";
             this.WebAdress.Size = new System.Drawing.Size(199, 23);
             this.WebAdress.TabIndex = 1;
+            this.WebAdress.Leave += new System.EventHandler(this.WebAdress_Leave);
             // 
             // CustomerFax
             // 
@@ -355,6 +356,7 @@
             this.CustomerFax.Name = "CustomerFax";
             this.CustomerFax.Size = new System.Drawing.Size(199, 23);
             this.CustomerFax.TabIndex = 1;
+            this.CustomerFax.Leave += new System.EventHandler(this.CustomerFax_Leave);
             // 
             // label3
             // 
@@ -389,6 +391,7 @@
             this.Telephone.Name = "Telephone";
             this.Telephone.Size = new System.Drawing.Size(199, 23);
             this.Telephone.TabIndex = 1;
+            this.Telephone.Leave += new System.EventHandler(this.Telephone_Leave);
             // 
             // label2
             // 
@@ -1159,6 +1162,7 @@
             this.ContactFAX.Name = "ContactFAX";
             this.ContactFAX.Size = new System.Drawing.Size(151, 23);
             this.ContactFAX.TabIndex = 27;
+            this.ContactFAX.Leave += new System.EventHandler(this.ContactFAX_Leave);
             // 
             // label33
             // 
@@ -1185,6 +1189,7 @@
             this.ContactPhone.Name = "ContactPhone";
             this.ContactPhone.Size = new System.Drawing.Size(110, 23);
             this.ContactPhone.TabIndex = 25;
+            this.ContactPhone.Leave += new System.EventHandler(this.ContactPhone_Leave);
             // 
             // label31
             // 
@@ -1202,6 +1207,7 @@
             this.ContactMobilePhone.Name = "ContactMobilePhone";
             this.ContactMobilePhone.Size = new System.Drawing.Size(151, 23);
             this.ContactMobilePhone.TabIndex = 26;
+            this.ContactMobilePhone.Leave += new System.EventHandler(this.ContactMobilePhone_Leave);
             // 
             // ContactName
             // 
@@ -1218,6 +1224,7 @@
             this.ContactEmail.Name = "ContactEmail";
             this.ContactEmail.Size = new System.Drawing.Size(167, 23);
             this.ContactEmail.TabIndex = 24;
+            this.ContactEmail.Leave += new System.EventHandler(this.ContactEmail_Leave);
             // 
             // label32
             // 

@@ -1152,6 +1152,7 @@ using LoginForm.Services;
             else
             {
                 MessageBox.Show("info@imeturkey.com", "Please prowide valid Mail address !");
+                txtContactMail.Focus();
                 return;
             }
         }
@@ -1166,6 +1167,7 @@ using LoginForm.Services;
             else
             {
                 MessageBox.Show("Example: 0212 210 05 07", "Please prowide valid Phone Number !");
+                txtContactPhone.Focus();
                 return;
             }
         }
@@ -1180,6 +1182,7 @@ using LoginForm.Services;
             else
             {
                 MessageBox.Show("Example: 0212 210 05 07", "Please prowide valid Phone Number !");
+                txtphone.Focus();
                 return;
             }
         }
@@ -1194,6 +1197,7 @@ using LoginForm.Services;
             else
             {
                 MessageBox.Show("Example: 0212 210 05 07", "Please prowide valid Fax Number !");
+                txtfax.Focus();
                 return;
             }
         }
@@ -1208,6 +1212,7 @@ using LoginForm.Services;
             else
             {
                 MessageBox.Show("Example: 0212 210 05 07", "Please prowide valid Fax Number !");
+                txtContactfax.Focus();
                 return;
             }
         }
@@ -1222,6 +1227,7 @@ using LoginForm.Services;
             else
             {
                 MessageBox.Show("Example: 0530 283 38 02 ", "Please prowide valid Mobile Phone Number !");
+                txtContactMobile.Focus();
                 return;
             }
         }
@@ -1236,6 +1242,7 @@ using LoginForm.Services;
             else
             {
                 MessageBox.Show("Example: www.rsdelivers.com ", "Please prowide valid Web Address !");
+                txtweb.Focus();
                 return;
             }
         }
@@ -1251,6 +1258,7 @@ using LoginForm.Services;
             else
             {
                 MessageBox.Show("Example: TR11 0011 1000 0000 0038 1312 04 ", "Please prowide valid IBAN Number !");
+                txtBankIban.Focus();
                 return;
             }
         }
