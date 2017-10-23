@@ -1414,6 +1414,7 @@
             // 
             // txtCustomerName
             // 
+            this.txtCustomerName.Enabled = false;
             this.txtCustomerName.Location = new System.Drawing.Point(251, 10);
             this.txtCustomerName.Margin = new System.Windows.Forms.Padding(4);
             this.txtCustomerName.Name = "txtCustomerName";
@@ -1616,6 +1617,7 @@
             // 
             // comboBox6
             // 
+            this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox6.FormattingEnabled = true;
             this.comboBox6.Location = new System.Drawing.Point(251, 42);
             this.comboBox6.Margin = new System.Windows.Forms.Padding(4);
