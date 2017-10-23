@@ -309,7 +309,6 @@
           <Property Name="QuotationNo" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="RFQNo" Type="nvarchar" MaxLength="20" />
           <Property Name="CurrType" Type="nvarchar" MaxLength="15" />
-          <Property Name="version" Type="int" />
         </EntityType>
         <EntityType Name="QuotationDetail">
           <Key>
@@ -1719,10 +1718,12 @@
           <EntitySet Name="Hazardous" EntityType="IMEModel.Hazardou" />
           <EntitySet Name="ItemNotes" EntityType="IMEModel.ItemNote" />
           <EntitySet Name="Languages" EntityType="IMEModel.Language" />
+          <EntitySet Name="Managements" EntityType="IMEModel.Management" />
           <EntitySet Name="Notes" EntityType="IMEModel.Note" />
           <EntitySet Name="OnSales" EntityType="IMEModel.OnSale" />
           <EntitySet Name="PaymentMethods" EntityType="IMEModel.PaymentMethod" />
           <EntitySet Name="PaymentTerms" EntityType="IMEModel.PaymentTerm" />
+          <EntitySet Name="Quotations" EntityType="IMEModel.Quotation" />
           <EntitySet Name="QuotationDetails" EntityType="IMEModel.QuotationDetail" />
           <EntitySet Name="Rates" EntityType="IMEModel.Rate" />
           <EntitySet Name="RoleValues" EntityType="IMEModel.RoleValue" />
@@ -1811,6 +1812,10 @@
             <End Role="Customer" EntitySet="Customers" />
             <End Role="DiscountValue" EntitySet="DiscountValues" />
           </AssociationSet>
+          <AssociationSet Name="FK__Quotation__Custo__00750D23" Association="IMEModel.FK__Quotation__Custo__00750D23">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Quotation" EntitySet="Quotations" />
+          </AssociationSet>
           <AssociationSet Name="FK__CustomerA__Conta__45BE5BA9" Association="IMEModel.FK__CustomerA__Conta__45BE5BA9">
             <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
             <End Role="CustomerAdress" EntitySet="CustomerAdresses" />
@@ -1867,6 +1872,14 @@
             <End Role="Language" EntitySet="Languages" />
             <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
           </AssociationSet>
+          <AssociationSet Name="FK__Quotation__NoteF__0169315C" Association="IMEModel.FK__Quotation__NoteF__0169315C">
+            <End Role="Note" EntitySet="Notes" />
+            <End Role="Quotation" EntitySet="Quotations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Quotation__NoteF__025D5595" Association="IMEModel.FK__Quotation__NoteF__025D5595">
+            <End Role="Note" EntitySet="Notes" />
+            <End Role="Quotation" EntitySet="Quotations" />
+          </AssociationSet>
           <AssociationSet Name="FK__Supplier__Suppli__09746778" Association="IMEModel.FK__Supplier__Suppli__09746778">
             <End Role="Note" EntitySet="Notes" />
             <End Role="Supplier" EntitySet="Suppliers" />
@@ -1879,6 +1892,10 @@
             <End Role="Note" EntitySet="Notes" />
             <End Role="Worker" EntitySet="Workers" />
           </AssociationSet>
+          <AssociationSet Name="FK__Quotation__Payme__035179CE" Association="IMEModel.FK__Quotation__Payme__035179CE">
+            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+            <End Role="Quotation" EntitySet="Quotations" />
+          </AssociationSet>
           <AssociationSet Name="FK__Supplier__paymen__634EBE90" Association="IMEModel.FK__Supplier__paymen__634EBE90">
             <End Role="PaymentMethod" EntitySet="PaymentMethods" />
             <End Role="Supplier" EntitySet="Suppliers" />
@@ -1886,6 +1903,10 @@
           <AssociationSet Name="FK__Supplier__paymen__6442E2C9" Association="IMEModel.FK__Supplier__paymen__6442E2C9">
             <End Role="PaymentTerm" EntitySet="PaymentTerms" />
             <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Quotation__Quota__147C05D0" Association="IMEModel.FK__Quotation__Quota__147C05D0">
+            <End Role="Quotation" EntitySet="Quotations" />
+            <End Role="QuotationDetail" EntitySet="QuotationDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__Supplier__rate_I__625A9A57" Association="IMEModel.FK__Supplier__rate_I__625A9A57">
             <End Role="Rate" EntitySet="Rates" />
@@ -1966,28 +1987,6 @@
           <AssociationSet Name="UserAuthorization" Association="IMEModel.UserAuthorization">
             <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
             <End Role="Worker" EntitySet="Workers" />
-          </AssociationSet>
-          <EntitySet Name="Managements" EntityType="IMEModel.Management" />
-          <EntitySet Name="Quotations" EntityType="IMEModel.Quotation" />
-          <AssociationSet Name="FK__Quotation__Custo__00750D23" Association="IMEModel.FK__Quotation__Custo__00750D23">
-            <End Role="Customer" EntitySet="Customers" />
-            <End Role="Quotation" EntitySet="Quotations" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Quotation__NoteF__0169315C" Association="IMEModel.FK__Quotation__NoteF__0169315C">
-            <End Role="Note" EntitySet="Notes" />
-            <End Role="Quotation" EntitySet="Quotations" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Quotation__NoteF__025D5595" Association="IMEModel.FK__Quotation__NoteF__025D5595">
-            <End Role="Note" EntitySet="Notes" />
-            <End Role="Quotation" EntitySet="Quotations" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Quotation__Payme__035179CE" Association="IMEModel.FK__Quotation__Payme__035179CE">
-            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
-            <End Role="Quotation" EntitySet="Quotations" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Quotation__Quota__147C05D0" Association="IMEModel.FK__Quotation__Quota__147C05D0">
-            <End Role="Quotation" EntitySet="Quotations" />
-            <End Role="QuotationDetail" EntitySet="QuotationDetails" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AuthorizationValue">
@@ -2263,6 +2262,14 @@
           <NavigationProperty Name="CustomerWorkers" Relationship="IMEModel.FK__CustomerW__langu__72C60C4A" FromRole="Language" ToRole="CustomerWorker" />
           <NavigationProperty Name="SupplierWorkers" Relationship="IMEModel.FK__SupplierW__langu__72910220" FromRole="Language" ToRole="SupplierWorker" />
         </EntityType>
+        <EntityType Name="Management">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LowMarginLimit" Type="Decimal" Precision="4" Scale="2" />
+          <Property Name="VAT" Type="Decimal" Precision="5" Scale="2" />
+        </EntityType>
         <EntityType Name="Note">
           <Key>
             <PropertyRef Name="ID" />
@@ -2272,11 +2279,11 @@
           <NavigationProperty Name="Customers" Relationship="IMEModel.FK__Customer__custom__3B75D760" FromRole="Note" ToRole="Customer" />
           <NavigationProperty Name="CustomerWorkers" Relationship="IMEModel.FK__CustomerW__custo__4222D4EF" FromRole="Note" ToRole="CustomerWorker" />
           <NavigationProperty Name="ItemNotes" Relationship="IMEModel.FK__ItemNote__NoteID__2B0A656D" FromRole="Note" ToRole="ItemNote" />
+          <NavigationProperty Name="Quotations" Relationship="IMEModel.FK__Quotation__NoteF__0169315C" FromRole="Note" ToRole="Quotation" />
+          <NavigationProperty Name="Quotations1" Relationship="IMEModel.FK__Quotation__NoteF__025D5595" FromRole="Note" ToRole="Quotation" />
           <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__Suppli__09746778" FromRole="Note" ToRole="Supplier" />
           <NavigationProperty Name="SupplierWorkers" Relationship="IMEModel.FK__SupplierW__suppl__73852659" FromRole="Note" ToRole="SupplierWorker" />
           <NavigationProperty Name="Workers" Relationship="IMEModel.FK__Worker__WorkerNo__4BAC3F29" FromRole="Note" ToRole="Worker" />
-          <NavigationProperty Name="Quotations" Relationship="IMEModel.FK__Quotation__NoteF__0169315C" FromRole="Note" ToRole="Quotation" />
-          <NavigationProperty Name="Quotations1" Relationship="IMEModel.FK__Quotation__NoteF__025D5595" FromRole="Note" ToRole="Quotation" />
         </EntityType>
         <EntityType Name="OnSale">
           <Key>
@@ -2303,8 +2310,8 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Payment" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Customers" Relationship="IMEModel.FK__Customer__paymen__3D5E1FD2" FromRole="PaymentMethod" ToRole="Customer" />
-          <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__paymen__634EBE90" FromRole="PaymentMethod" ToRole="Supplier" />
           <NavigationProperty Name="Quotations" Relationship="IMEModel.FK__Quotation__Payme__035179CE" FromRole="PaymentMethod" ToRole="Quotation" />
+          <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__paymen__634EBE90" FromRole="PaymentMethod" ToRole="Supplier" />
         </EntityType>
         <EntityType Name="PaymentTerm">
           <Key>
@@ -2314,6 +2321,38 @@
           <Property Name="term_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Customers" Relationship="IMEModel.FK__Customer__paymen__3E52440B" FromRole="PaymentTerm" ToRole="Customer" />
           <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__paymen__6442E2C9" FromRole="PaymentTerm" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="Quotation">
+          <Key>
+            <PropertyRef Name="QuotationNo" />
+          </Key>
+          <Property Name="CustomerID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="NoteForUsID" Type="Int32" />
+          <Property Name="NoteForCustomerID" Type="Int32" />
+          <Property Name="ForFinancelIsTrue" Type="Int32" />
+          <Property Name="ShippingMethodID" Type="Int32" />
+          <Property Name="IsItemCost" Type="Int32" />
+          <Property Name="IsWeightCost" Type="Int32" />
+          <Property Name="IsCustomsDuties" Type="Int32" />
+          <Property Name="DiscOnSubTotal2" Type="Decimal" Precision="25" Scale="5" />
+          <Property Name="ExtraCharges" Type="Decimal" Precision="15" Scale="5" />
+          <Property Name="SubTotal" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="ValidationDay" Type="Int32" />
+          <Property Name="PaymentID" Type="Int32" />
+          <Property Name="Curr" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="Factor" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="IsVatValue" Type="Int32" />
+          <Property Name="VatValue" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="CurrName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="QuotationNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="RFQNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CurrType" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customer" Relationship="IMEModel.FK__Quotation__Custo__00750D23" FromRole="Quotation" ToRole="Customer" />
+          <NavigationProperty Name="Note" Relationship="IMEModel.FK__Quotation__NoteF__0169315C" FromRole="Quotation" ToRole="Note" />
+          <NavigationProperty Name="Note1" Relationship="IMEModel.FK__Quotation__NoteF__025D5595" FromRole="Quotation" ToRole="Note" />
+          <NavigationProperty Name="PaymentMethod" Relationship="IMEModel.FK__Quotation__Payme__035179CE" FromRole="Quotation" ToRole="PaymentMethod" />
+          <NavigationProperty Name="QuotationDetails" Relationship="IMEModel.FK__Quotation__Quota__147C05D0" FromRole="Quotation" ToRole="QuotationDetail" />
         </EntityType>
         <EntityType Name="QuotationDetail">
           <Key>
@@ -2892,6 +2931,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Quotation__Custo__00750D23">
+          <End Type="IMEModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="IMEModel.Quotation" Role="Quotation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Quotation">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__CustomerA__Conta__45BE5BA9">
           <End Type="IMEModel.CustomerWorker" Role="CustomerWorker" Multiplicity="0..1" />
           <End Type="IMEModel.CustomerAdress" Role="CustomerAdress" Multiplicity="*" />
@@ -3060,6 +3111,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Quotation__NoteF__0169315C">
+          <End Type="IMEModel.Note" Role="Note" Multiplicity="0..1" />
+          <End Type="IMEModel.Quotation" Role="Quotation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Note">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Quotation">
+              <PropertyRef Name="NoteForUsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Quotation__NoteF__025D5595">
+          <End Type="IMEModel.Note" Role="Note" Multiplicity="0..1" />
+          <End Type="IMEModel.Quotation" Role="Quotation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Note">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Quotation">
+              <PropertyRef Name="NoteForCustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Supplier__Suppli__09746778">
           <End Type="IMEModel.Note" Role="Note" Multiplicity="0..1" />
           <End Type="IMEModel.Supplier" Role="Supplier" Multiplicity="*" />
@@ -3096,6 +3171,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Quotation__Payme__035179CE">
+          <End Type="IMEModel.PaymentMethod" Role="PaymentMethod" Multiplicity="0..1" />
+          <End Type="IMEModel.Quotation" Role="Quotation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Quotation">
+              <PropertyRef Name="PaymentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Supplier__paymen__634EBE90">
           <End Type="IMEModel.PaymentMethod" Role="PaymentMethod" Multiplicity="0..1" />
           <End Type="IMEModel.Supplier" Role="Supplier" Multiplicity="*" />
@@ -3117,6 +3204,18 @@
             </Principal>
             <Dependent Role="Supplier">
               <PropertyRef Name="payment_termID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Quotation__Quota__147C05D0">
+          <End Type="IMEModel.Quotation" Role="Quotation" Multiplicity="0..1" />
+          <End Type="IMEModel.QuotationDetail" Role="QuotationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quotation">
+              <PropertyRef Name="QuotationNo" />
+            </Principal>
+            <Dependent Role="QuotationDetail">
+              <PropertyRef Name="QuotationNo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3343,107 +3442,6 @@
         <Association Name="UserAuthorization">
           <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
-        </Association>
-        <EntityType Name="Management">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LowMarginLimit" Type="Decimal" Precision="4" Scale="2" />
-          <Property Name="VAT" Type="Decimal" Precision="5" Scale="2" />
-        </EntityType>
-        <EntityType Name="Quotation">
-          <Key>
-            <PropertyRef Name="QuotationNo" />
-          </Key>
-          <Property Name="CustomerID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="NoteForUsID" Type="Int32" />
-          <Property Name="NoteForCustomerID" Type="Int32" />
-          <Property Name="ForFinancelIsTrue" Type="Int32" />
-          <Property Name="ShippingMethodID" Type="Int32" />
-          <Property Name="IsItemCost" Type="Int32" />
-          <Property Name="IsWeightCost" Type="Int32" />
-          <Property Name="IsCustomsDuties" Type="Int32" />
-          <Property Name="DiscOnSubTotal2" Type="Decimal" Precision="25" Scale="5" />
-          <Property Name="ExtraCharges" Type="Decimal" Precision="15" Scale="5" />
-          <Property Name="SubTotal" Type="Decimal" Precision="20" Scale="5" />
-          <Property Name="StartDate" Type="DateTime" Precision="0" />
-          <Property Name="ValidationDay" Type="Int32" />
-          <Property Name="PaymentID" Type="Int32" />
-          <Property Name="Curr" Type="Decimal" Precision="20" Scale="5" />
-          <Property Name="Factor" Type="Decimal" Precision="20" Scale="5" />
-          <Property Name="IsVatValue" Type="Int32" />
-          <Property Name="VatValue" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="CurrName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="QuotationNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="RFQNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="CurrType" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="version" Type="Int32" />
-          <NavigationProperty Name="Customer" Relationship="IMEModel.FK__Quotation__Custo__00750D23" FromRole="Quotation" ToRole="Customer" />
-          <NavigationProperty Name="Note" Relationship="IMEModel.FK__Quotation__NoteF__0169315C" FromRole="Quotation" ToRole="Note" />
-          <NavigationProperty Name="Note1" Relationship="IMEModel.FK__Quotation__NoteF__025D5595" FromRole="Quotation" ToRole="Note" />
-          <NavigationProperty Name="PaymentMethod" Relationship="IMEModel.FK__Quotation__Payme__035179CE" FromRole="Quotation" ToRole="PaymentMethod" />
-          <NavigationProperty Name="QuotationDetails" Relationship="IMEModel.FK__Quotation__Quota__147C05D0" FromRole="Quotation" ToRole="QuotationDetail" />
-        </EntityType>
-        <Association Name="FK__Quotation__Custo__00750D23">
-          <End Type="IMEModel.Customer" Role="Customer" Multiplicity="0..1" />
-          <End Type="IMEModel.Quotation" Role="Quotation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customer">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Quotation">
-              <PropertyRef Name="CustomerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Quotation__NoteF__0169315C">
-          <End Type="IMEModel.Note" Role="Note" Multiplicity="0..1" />
-          <End Type="IMEModel.Quotation" Role="Quotation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Note">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Quotation">
-              <PropertyRef Name="NoteForUsID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Quotation__NoteF__025D5595">
-          <End Type="IMEModel.Note" Role="Note" Multiplicity="0..1" />
-          <End Type="IMEModel.Quotation" Role="Quotation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Note">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Quotation">
-              <PropertyRef Name="NoteForCustomerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Quotation__Payme__035179CE">
-          <End Type="IMEModel.PaymentMethod" Role="PaymentMethod" Multiplicity="0..1" />
-          <End Type="IMEModel.Quotation" Role="Quotation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PaymentMethod">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Quotation">
-              <PropertyRef Name="PaymentID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Quotation__Quota__147C05D0">
-          <End Type="IMEModel.Quotation" Role="Quotation" Multiplicity="0..1" />
-          <End Type="IMEModel.QuotationDetail" Role="QuotationDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Quotation">
-              <PropertyRef Name="QuotationNo" />
-            </Principal>
-            <Dependent Role="QuotationDetail">
-              <PropertyRef Name="QuotationNo" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -3693,6 +3691,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Managements">
+            <EntityTypeMapping TypeName="IMEModel.Management">
+              <MappingFragment StoreEntitySet="Management">
+                <ScalarProperty Name="VAT" ColumnName="VAT" />
+                <ScalarProperty Name="LowMarginLimit" ColumnName="LowMarginLimit" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Notes">
             <EntityTypeMapping TypeName="IMEModel.Note">
               <MappingFragment StoreEntitySet="Notes">
@@ -3733,6 +3740,34 @@
               <MappingFragment StoreEntitySet="PaymentTerm">
                 <ScalarProperty Name="term_name" ColumnName="term_name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quotations">
+            <EntityTypeMapping TypeName="IMEModel.Quotation">
+              <MappingFragment StoreEntitySet="Quotation">
+                <ScalarProperty Name="CurrType" ColumnName="CurrType" />
+                <ScalarProperty Name="RFQNo" ColumnName="RFQNo" />
+                <ScalarProperty Name="QuotationNo" ColumnName="QuotationNo" />
+                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
+                <ScalarProperty Name="VatValue" ColumnName="VatValue" />
+                <ScalarProperty Name="IsVatValue" ColumnName="IsVatValue" />
+                <ScalarProperty Name="Factor" ColumnName="Factor" />
+                <ScalarProperty Name="Curr" ColumnName="Curr" />
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+                <ScalarProperty Name="ValidationDay" ColumnName="ValidationDay" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="ExtraCharges" ColumnName="ExtraCharges" />
+                <ScalarProperty Name="DiscOnSubTotal2" ColumnName="DiscOnSubTotal2" />
+                <ScalarProperty Name="IsCustomsDuties" ColumnName="IsCustomsDuties" />
+                <ScalarProperty Name="IsWeightCost" ColumnName="IsWeightCost" />
+                <ScalarProperty Name="IsItemCost" ColumnName="IsItemCost" />
+                <ScalarProperty Name="ShippingMethodID" ColumnName="ShippingMethodID" />
+                <ScalarProperty Name="ForFinancelIsTrue" ColumnName="ForFinancelIsTrue" />
+                <ScalarProperty Name="NoteForCustomerID" ColumnName="NoteForCustomerID" />
+                <ScalarProperty Name="NoteForUsID" ColumnName="NoteForUsID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4091,44 +4126,6 @@
               <ScalarProperty Name="AuthorizationID" ColumnName="AuthorizationID" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Managements">
-            <EntityTypeMapping TypeName="IMEModel.Management">
-              <MappingFragment StoreEntitySet="Management">
-                <ScalarProperty Name="VAT" ColumnName="VAT" />
-                <ScalarProperty Name="LowMarginLimit" ColumnName="LowMarginLimit" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Quotations">
-            <EntityTypeMapping TypeName="IMEModel.Quotation">
-              <MappingFragment StoreEntitySet="Quotation">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="CurrType" ColumnName="CurrType" />
-                <ScalarProperty Name="RFQNo" ColumnName="RFQNo" />
-                <ScalarProperty Name="QuotationNo" ColumnName="QuotationNo" />
-                <ScalarProperty Name="CurrName" ColumnName="CurrName" />
-                <ScalarProperty Name="VatValue" ColumnName="VatValue" />
-                <ScalarProperty Name="IsVatValue" ColumnName="IsVatValue" />
-                <ScalarProperty Name="Factor" ColumnName="Factor" />
-                <ScalarProperty Name="Curr" ColumnName="Curr" />
-                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
-                <ScalarProperty Name="ValidationDay" ColumnName="ValidationDay" />
-                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-                <ScalarProperty Name="ExtraCharges" ColumnName="ExtraCharges" />
-                <ScalarProperty Name="DiscOnSubTotal2" ColumnName="DiscOnSubTotal2" />
-                <ScalarProperty Name="IsCustomsDuties" ColumnName="IsCustomsDuties" />
-                <ScalarProperty Name="IsWeightCost" ColumnName="IsWeightCost" />
-                <ScalarProperty Name="IsItemCost" ColumnName="IsItemCost" />
-                <ScalarProperty Name="ShippingMethodID" ColumnName="ShippingMethodID" />
-                <ScalarProperty Name="ForFinancelIsTrue" ColumnName="ForFinancelIsTrue" />
-                <ScalarProperty Name="NoteForCustomerID" ColumnName="NoteForCustomerID" />
-                <ScalarProperty Name="NoteForUsID" ColumnName="NoteForUsID" />
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
