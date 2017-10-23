@@ -11,9 +11,11 @@ namespace LoginForm.RolesAndAuths
     //public partial class FormRoles : MaterialForm
     public partial class FormWorkersMain : Form
     {
-        public FormWorkersMain()
+        FormMain mainForm;
+        public FormWorkersMain(FormMain mainForm)
         {
             InitializeComponent();
+            this.mainForm = mainForm;
 
             //var materialSkinManager = MaterialSkinManager.Instance;
             //materialSkinManager.AddFormToManage(this);
@@ -59,13 +61,13 @@ namespace LoginForm.RolesAndAuths
 
         private void btnAddWorker_Click(object sender, EventArgs e)
         {
-            FormWorkerManagement formWorkerAdd = new FormWorkerManagement();
+            FormWorkerManagement formWorkerAdd = new FormWorkerManagement(this);
             formWorkerAdd.ShowDialog();
         }
 
         private void btnEditWorker_Click(object sender, EventArgs e)
         {
-            FormWorkerManagement formWorkerAdd = new FormWorkerManagement((Worker)dgdg.CurrentRow.DataBoundItem, this);
+            FormWorkerManagement formWorkerAdd = new FormWorkerManagement(mainForm, (Worker)dgdg.CurrentRow.DataBoundItem, this);
             formWorkerAdd.Show();
         }
     }

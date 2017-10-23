@@ -13,20 +13,23 @@ namespace LoginForm.WorkerManagement
         bool isEditMode = false;
         Worker worker;
         FormWorkersMain upperForm;
+        FormMain formMain;
         List<AuthorizationValue> authList;
 
-        public FormWorkerManagement()
+        public FormWorkerManagement(FormWorkersMain form)
         {
             InitializeComponent();
             authList = new List<AuthorizationValue>();
             chcChangePassword.Visible = false;
             LoadRoles();
+            this.upperForm = form;
             //LoadAuthorities();
         }
-        public FormWorkerManagement(Worker worker, FormWorkersMain form)
+        public FormWorkerManagement(FormMain formMain ,Worker worker, FormWorkersMain form)
         {
             InitializeComponent();
             this.worker = worker;
+            this.formMain = formMain;
             this.authList = worker.AuthorizationValues.ToList();
             this.upperForm = form;
 
@@ -142,6 +145,12 @@ namespace LoginForm.WorkerManagement
                                 wrkr.AuthorizationValues.Add(av);
                             }
                             IME.SaveChanges();
+                        }
+
+                        if (wrkr.WorkerID == Utils.getCurrentUser().WorkerID)
+                        {
+                            Utils.setCurrentUser(wrkr);
+                            formMain.checkAuthorities();
                         }
                     }
                     catch (Exception)

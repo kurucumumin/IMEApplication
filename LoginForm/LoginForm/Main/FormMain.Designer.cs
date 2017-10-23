@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.tableLeftPanel = new System.Windows.Forms.TableLayoutPanel();
             this.gbMainMenu = new System.Windows.Forms.GroupBox();
+            this.btnManagement = new System.Windows.Forms.Button();
             this.btnDevelopment = new System.Windows.Forms.Button();
             this.btnLoader = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -39,7 +40,6 @@
             this.controlDevelopment = new LoginForm.CustomControls.DevelopmentControl();
             this.controlLoader = new LoginForm.CustomControls.LoaderControl();
             this.controlManagement = new LoginForm.CustomControls.ManagementControl();
-            this.btnManagement = new System.Windows.Forms.Button();
             this.tableLeftPanel.SuspendLayout();
             this.gbMainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -82,6 +82,22 @@
             this.gbMainMenu.TabIndex = 32;
             this.gbMainMenu.TabStop = false;
             this.gbMainMenu.Text = "Menu";
+            // 
+            // btnManagement
+            // 
+            this.btnManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(199)))), ((int)(((byte)(132)))));
+            this.btnManagement.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnManagement.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.btnManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManagement.Location = new System.Drawing.Point(0, 124);
+            this.btnManagement.Margin = new System.Windows.Forms.Padding(0);
+            this.btnManagement.Name = "btnManagement";
+            this.btnManagement.Size = new System.Drawing.Size(213, 50);
+            this.btnManagement.TabIndex = 33;
+            this.btnManagement.Text = "Management";
+            this.btnManagement.UseVisualStyleBackColor = false;
+            this.btnManagement.Click += new System.EventHandler(this.btnManagement_Click);
             // 
             // btnDevelopment
             // 
@@ -157,6 +173,7 @@
             // 
             // controlDevelopment
             // 
+            this.controlDevelopment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.controlDevelopment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.controlDevelopment.Location = new System.Drawing.Point(0, 0);
             this.controlDevelopment.Margin = new System.Windows.Forms.Padding(0);
@@ -167,6 +184,7 @@
             // 
             // controlLoader
             // 
+            this.controlLoader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.controlLoader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.controlLoader.Location = new System.Drawing.Point(0, 0);
             this.controlLoader.Name = "controlLoader";
@@ -180,22 +198,6 @@
             this.controlManagement.Name = "controlManagement";
             this.controlManagement.Size = new System.Drawing.Size(768, 463);
             this.controlManagement.TabIndex = 2;
-            // 
-            // btnManagement
-            // 
-            this.btnManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(199)))), ((int)(((byte)(132)))));
-            this.btnManagement.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnManagement.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
-            this.btnManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManagement.Location = new System.Drawing.Point(0, 124);
-            this.btnManagement.Margin = new System.Windows.Forms.Padding(0);
-            this.btnManagement.Name = "btnManagement";
-            this.btnManagement.Size = new System.Drawing.Size(213, 50);
-            this.btnManagement.TabIndex = 33;
-            this.btnManagement.Text = "Management";
-            this.btnManagement.UseVisualStyleBackColor = false;
-            this.btnManagement.Click += new System.EventHandler(this.btnManagement_Click);
             // 
             // FormMain
             // 

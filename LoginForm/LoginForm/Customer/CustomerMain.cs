@@ -1006,7 +1006,7 @@ namespace LoginForm
             #endregion
         }
 
-
+        
         private void ContactList_DataSourceChanged(object sender, EventArgs e)
         {
                 if (ContactList.DataSource == null) { btnContactDelete.Enabled = false; btnContactUpdate.Enabled = false; }
