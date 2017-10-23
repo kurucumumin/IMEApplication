@@ -16,5 +16,6 @@ namespace LoginForm.DataSet
     {
         public int ID { get; set; }
         public Nullable<decimal> LowMarginLimit { get; set; }
+        public Nullable<decimal> VAT { get; set; }
     }
 }

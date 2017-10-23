@@ -44,6 +44,7 @@ namespace LoginForm.QuotationModule
                        select new
                        {
                            Date = q.StartDate,
+                           QuotationNo = q.QuotationNo,
                            RFQ = q.RFQNo,
                            CustomerName = c.c_name 
                        };
@@ -72,10 +73,10 @@ namespace LoginForm.QuotationModule
         {
             if (dgQuotation.CurrentRow != null)
             {
-                string RFQ = dgQuotation.CurrentRow.Cells["RFQ"].Value.ToString();
+                string QuotationNo = dgQuotation.CurrentRow.Cells["QuotationNo"].Value.ToString();
 
                 IMEEntities IME = new IMEEntities();
-                Quotation quo = IME.Quotations.Where(q => q.RFQNo == RFQ).FirstOrDefault();
+                Quotation quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
 
                 FormQuotationAdd newForm = new FormQuotationAdd(quo);
                 newForm.Show();

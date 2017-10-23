@@ -58,6 +58,7 @@ namespace LoginForm.QuotationModule
                 dgQuotationAddedItems.Rows[0].Cells["dgQty"].Value = "0";
                 dgQuotationAddedItems.Rows[0].Cells[0].Value = 1.ToString();
                 LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
+                chkVat.Text = IME.Managements.FirstOrDefault().VAT.ToString();
                 #region ComboboxFiller
                 cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList();
                 cbCurrency.DisplayMember = "CurType";
@@ -1107,6 +1108,7 @@ namespace LoginForm.QuotationModule
                 q.CurrType = cbCurrType.SelectedText;
                 q.Curr = CurrValue;
                 q.CustomerID = CustomerCode.Text;
+               
                 IME.Quotations.Add(q);
                 IME.SaveChanges();
 
@@ -1126,9 +1128,11 @@ namespace LoginForm.QuotationModule
 
             for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
             {
-                QuotationDetail qd = new QuotationDetail();
+                if (dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value != null)
+                {
+                    QuotationDetail qd = new QuotationDetail();
                 qd.QuotationNo = txtQuotationNo.Text;
-                qd.RFQNo = txtRFQNo.Text;
+                try { qd.RFQNo = txtRFQNo.Text; } catch { }
                 try { qd.dgNo = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgNo"].Value.ToString()); } catch { }
                 try { qd.ItemCode = dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(); } catch { }
                 try { qd.Qty = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString()); } catch { }
@@ -1140,13 +1144,18 @@ namespace LoginForm.QuotationModule
                 try { qd.CustomerDescription = dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].Value.ToString(); } catch { }
                 try { qd.CustomerStockCode = dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].Value.ToString(); }
                 catch { }
-                IME.QuotationDetails.Add(qd);
-                IME.SaveChanges();
+               
+                    IME.QuotationDetails.Add(qd);
+                    IME.SaveChanges();
+                }
+                
             }
 
             for (int i = 0; i < dgQuotationDeleted.RowCount; i++)
             {
-                QuotationDetail qd = new QuotationDetail();
+                if (dgQuotationDeleted.Rows[i].Cells["dgProductCode1"].Value != null)
+                {
+                    QuotationDetail qd = new QuotationDetail();
                 qd.RFQNo = txtRFQNo.Text;
                 try { qd.dgNo = Int32.Parse(dgQuotationDeleted.Rows[i].Cells["No1"].Value.ToString()); } catch { }
                 try
@@ -1195,8 +1204,10 @@ namespace LoginForm.QuotationModule
                 }
                 catch { }
                 qd.IsDeleted = 1;
-                IME.QuotationDetails.Add(qd);
-                IME.SaveChanges();
+                
+                    IME.QuotationDetails.Add(qd);
+                    IME.SaveChanges();
+                }
             }
         }
 
@@ -1614,12 +1625,16 @@ namespace LoginForm.QuotationModule
         {
             IMEEntities IME = new IMEEntities();
             //List<Quotation> quotList = IME.Quotations.Where(q => q.QuotationNo == DateTime.Now.Year).toList();
-
+            int ID;
             Quotation quo = IME.Quotations.OrderByDescending(q => q.QuotationNo).FirstOrDefault();
-            int ID = Convert.ToInt32(quo.QuotationNo.Substring(quo.QuotationNo.LastIndexOf('/') + 1));
-            ID++;
+            if (quo != null)
+            {
+                ID = Convert.ToInt32(quo.QuotationNo.Substring(quo.QuotationNo.LastIndexOf('/') + 1));
+                ID++;
+            }else { ID = 1; }
+            
 
-            string qNo = DateTime.Now.Year.ToString() + ID.ToString();
+            string qNo = DateTime.Now.Year.ToString() + "/" + ID.ToString();
 
             return qNo;
         }

@@ -24,7 +24,6 @@
         <EntityTypeShape EntityType="IMEModel.Hazardou" Width="1.5" PointX="7.75" PointY="0.75" />
         <EntityTypeShape EntityType="IMEModel.ItemNote" Width="1.5" PointX="3" PointY="43.875" />
         <EntityTypeShape EntityType="IMEModel.Language" Width="1.5" PointX="8.25" PointY="33.875" />
-        <EntityTypeShape EntityType="IMEModel.Management" Width="1.5" PointX="0.75" PointY="8.75" />
         <EntityTypeShape EntityType="IMEModel.Note" Width="1.5" PointX="0.75" PointY="21.625" />
         <EntityTypeShape EntityType="IMEModel.OnSale" Width="1.5" PointX="11.75" PointY="8.75" />
         <EntityTypeShape EntityType="IMEModel.PaymentMethod" Width="1.5" PointX="6" PointY="6.25" />
@@ -111,6 +110,7 @@
         <AssociationConnector Association="IMEModel.FK__SupplierW__title__7755B73D" />
         <AssociationConnector Association="IMEModel.AuthRole" />
         <AssociationConnector Association="IMEModel.UserAuthorization" />
+        <EntityTypeShape EntityType="IMEModel.Management" Width="1.5" PointX="12.375" PointY="13.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
