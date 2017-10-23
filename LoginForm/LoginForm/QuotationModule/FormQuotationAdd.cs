@@ -102,8 +102,8 @@ namespace LoginForm.QuotationModule
             if (c != null)
             {
 
-                cbCurrency.SelectedIndex = cbCurrency.FindStringExact(c.CurrTypeQuo);
-                cbCurrType.SelectedIndex = cbCurrType.FindStringExact(c.CurrNameQuo);
+                cbCurrency.SelectedIndex = cbCurrency.FindStringExact(c.CurrNameQuo);
+                cbCurrType.SelectedIndex = cbCurrType.FindStringExact(c.CurrTypeQuo);
                 if (c.paymentmethodID != null)
                 {
                     cbPayment.SelectedIndex = cbPayment.FindStringExact(c.PaymentMethod.Payment);
@@ -327,7 +327,6 @@ namespace LoginForm.QuotationModule
                         if (txtStandartWeight.Text != null && txtStandartWeight.Text != "")
                         {
                             txtGrossWeight.Text = (Decimal.Parse(txtStandartWeight.Text) * Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
-                            dgQuotationAddedItems.Rows[rowindex].Cells["dgTotalWeight"].Value = txtGrossWeight.Text;
                         }
                         dgQuotationAddedItems.Rows[rowindex].Cells["dgCost"].Value = classQuotationAdd.GetCost(dgQuotationAddedItems.Rows[rowindex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString("G29");
                         GetLandingCost(rowindex);
@@ -781,7 +780,7 @@ namespace LoginForm.QuotationModule
         private void txtLength_TextChanged(object sender, EventArgs e)
         {
             txtGrossWeight.Text = "";
-            if (txtHeight.Text != "" && txtLength.Text != "" && txtWidth.Text != "") {
+            if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value!=null) {
                 txtGrossWeight.Text = (Decimal.Parse(txtStandartWeight.Text) * Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())).ToString();
             }
 
@@ -1072,7 +1071,7 @@ namespace LoginForm.QuotationModule
             }
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
             QuotationSave();
             QuotationDetailsSave();
@@ -1107,8 +1106,14 @@ namespace LoginForm.QuotationModule
                 IME.Quotations.Add(q);
                 IME.SaveChanges();
 
+                MessageBox.Show("Quotation is successfully added","Success");
+
             }
-            catch { }
+            catch
+            {
+
+                MessageBox.Show("Error Occured", "Failure");
+            }
 
         }
 
@@ -1505,9 +1510,7 @@ namespace LoginForm.QuotationModule
         { 
             if (dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value != null)
             {
-                dgQuotationAddedItems.Rows[rowindex].Cells["dgCost"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgCost"].Value.ToString())) / factor).ToString();
-                decimal lc = Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgLandingCost"].Value.ToString());
-                dgQuotationAddedItems.Rows[rowindex].Cells["dgLandingCost"].Value = (lc / factor).ToString();
+                
                 dgQuotationAddedItems.Rows[rowindex].Cells["dgUCUPCurr"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUCUPCurr"].Value.ToString())) / factor).ToString();
                 dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value.ToString())) / factor).ToString();
                 dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())) / factor).ToString();
@@ -1587,5 +1590,23 @@ namespace LoginForm.QuotationModule
             }
             
         }
+
+        //private void FormQuotationAdd_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    if (e.KeyCode == Keys.F2)
+        //    {
+        //        QuotationSave();
+        //        QuotationDetailsSave();
+        //    }
+        //    else if (e.KeyCode == Keys.F3)
+        //    {
+        //        FormMain f = new FormMain();
+        //        if (MessageBox.Show("Are You Sure To Exit Programme ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
+        //        {
+        //            f.Show();
+        //            this.Close();
+        //        }
+        //    }
+        //}
     }
 }
