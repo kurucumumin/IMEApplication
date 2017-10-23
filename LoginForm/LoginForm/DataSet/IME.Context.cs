@@ -48,7 +48,6 @@ namespace LoginForm.DataSet
         public virtual DbSet<OnSale> OnSales { get; set; }
         public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
         public virtual DbSet<PaymentTerm> PaymentTerms { get; set; }
-        public virtual DbSet<Quotation> Quotations { get; set; }
         public virtual DbSet<QuotationDetail> QuotationDetails { get; set; }
         public virtual DbSet<Rate> Rates { get; set; }
         public virtual DbSet<RoleValue> RoleValues { get; set; }
@@ -70,5 +69,6 @@ namespace LoginForm.DataSet
         public virtual DbSet<Town> Towns { get; set; }
         public virtual DbSet<Worker> Workers { get; set; }
         public virtual DbSet<Management> Managements { get; set; }
+        public virtual DbSet<Quotation> Quotations { get; set; }
     }
 }

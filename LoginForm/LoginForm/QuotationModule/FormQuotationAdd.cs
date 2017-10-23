@@ -41,13 +41,18 @@ namespace LoginForm.QuotationModule
 
         public FormQuotationAdd(Quotation quotation)
         {
+            //Son versiyonu açmayı sağlıyor
+            Quotation q1 = IME.Quotations.Where(a => a.QuotationNo.Contains(quotation.QuotationNo)).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
+
+            this.Text = "Edit Quotation";
             modifyMod = true;
             InitializeComponent();
             cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList();
             cbCurrency.DisplayMember = "CurType";
             cbCurrency.ValueMember = "ID";
             cbCurrency.SelectedIndex = 0;
-            modifyQuotation(quotation);
+            CustomerCode.Enabled = false;
+            modifyQuotation(q1);
         }
 
         private void QuotationForm_Load(object sender, EventArgs e)
@@ -1081,6 +1086,7 @@ namespace LoginForm.QuotationModule
             QuotationSave();
             QuotationDetailsSave();
 
+
         }
 
         private void QuotationSave()
@@ -1113,7 +1119,77 @@ namespace LoginForm.QuotationModule
                 IME.SaveChanges();
 
                 MessageBox.Show("Quotation is successfully added","Success");
+                this.Close();
+            }
+            catch
+            {
 
+                MessageBox.Show("Error Occured", "Failure");
+            }
+
+        }
+        private void QuotationSave(string QuoNo)
+        {
+            IMEEntities IME = new IMEEntities();
+            try
+            {
+                Quotation q1 = IME.Quotations.Where(a => a.QuotationNo.Contains(QuoNo)).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
+
+
+
+                if (q1.QuotationNo.Contains("v"))
+                {
+                    int quoID = Int32.Parse(q1.QuotationNo.Substring(q1.QuotationNo.LastIndexOf('v') + 1))+1;
+                txtQuotationNo.Text = (q1.QuotationNo.Substring(q1.QuotationNo.IndexOf('v') + 1) + quoID).ToString();
+                    int charLocation = q1.QuotationNo.IndexOf("v", StringComparison.Ordinal);
+
+                    if (charLocation > 0)
+                    {
+                    txtQuotationNo.Text = txtQuotationNo.Text.Substring(0, charLocation) + quoID.ToString();
+                    }
+                    
+                  
+                }
+                else
+                {
+                txtQuotationNo.Text = q1.QuotationNo + "v1";
+                }
+               
+               
+                Quotation q = new Quotation();
+                 q.QuotationNo= txtQuotationNo.Text;
+                q.RFQNo = txtRFQNo.Text;
+                try { q.SubTotal = decimal.Parse(lblsubtotal.Text); } catch { }
+                if (chkbForFinance.Checked) { q.ForFinancelIsTrue = 1; } else { q.ForFinancelIsTrue = 0; }
+                if (ckItemCost.Checked) { q.IsItemCost = 1; } else { q.IsItemCost = 0; }
+                if (ckWeightCost.Checked) { q.IsWeightCost = 1; } else { q.IsWeightCost = 0; }
+                if (ckCustomsDuties.Checked) { q.IsCustomsDuties = 1; } else { q.IsCustomsDuties = 0; }
+                q.ShippingMethodID = cbSMethod.SelectedIndex;
+                try { q.DiscOnSubTotal2 = decimal.Parse(txtTotalDis2.Text); } catch { }
+                try { q.ExtraCharges = decimal.Parse(txtExtraChanges.Text); } catch { }
+                if (chkVat.Checked) { q.IsVatValue = 1; } else { q.IsVatValue = 0; }
+                try { q.VatValue = Decimal.Parse(lblVat.Text); } catch { }
+                try { q.StartDate = dtpDate.Value; } catch { }
+                try { q.Factor = Decimal.Parse(cbFactor.Text); } catch { }
+                try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
+                try { q.PaymentID = (cbPayment.SelectedItem as PaymentMethod).ID; } catch { }
+                try { q.CurrName = (cbCurrency.SelectedItem as Rate).CurType; } catch { }
+                try
+                {
+                    q.CurrType = cbCurrType.SelectedText;
+            }
+            catch { }
+                try
+                {
+                    q.Curr = CurrValue;
+        } catch { }
+                try { q.CustomerID = CustomerCode.Text;} catch { }
+
+                IME.Quotations.Add(q);
+                IME.SaveChanges();
+
+                MessageBox.Show("Quotation is successfully added", "Success");
+                this.Close();
             }
             catch
             {
@@ -1125,7 +1201,7 @@ namespace LoginForm.QuotationModule
 
         private void QuotationDetailsSave()
         {
-
+            IMEEntities IME = new IMEEntities();
             for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
             {
                 if (dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value != null)
@@ -1637,6 +1713,12 @@ namespace LoginForm.QuotationModule
             string qNo = DateTime.Now.Year.ToString() + "/" + ID.ToString();
 
             return qNo;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            QuotationSave(txtQuotationNo.Text);
+            QuotationDetailsSave();
         }
     }
 }
