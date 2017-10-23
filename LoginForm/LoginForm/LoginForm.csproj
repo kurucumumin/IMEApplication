@@ -57,7 +57,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar.Design">
@@ -505,6 +505,10 @@
   <ItemGroup>
     <None Include="Resources\btnBackground.png" />
     <None Include="Resources\gradient2.jpg" />
+    <None Include="Resources\icons8-Plus-32.png" />
+    <None Include="Resources\icons8-Cancel-32.png" />
+    <None Include="Resources\icons8-Edit Property-32.png" />
+    <None Include="Resources\icons8-Refresh-32.png" />
     <Content Include="DataSet\IME.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>IME.edmx</DependentUpon>
@@ -515,10 +519,6 @@
       <DependentUpon>IME.edmx</DependentUpon>
       <LastGenOutput>IME.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\icons8-Plus-32.png" />
-    <None Include="Resources\icons8-Cancel-32.png" />
-    <None Include="Resources\icons8-Edit Property-32.png" />
-    <None Include="Resources\icons8-Refresh-32.png" />
     <Content Include="Resources\IME.jpg" />
   </ItemGroup>
   <ItemGroup>
