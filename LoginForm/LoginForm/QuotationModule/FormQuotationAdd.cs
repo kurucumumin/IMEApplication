@@ -67,7 +67,7 @@ namespace LoginForm.QuotationModule
                 cbPayment.DisplayMember = "Payment";
                 cbPayment.ValueMember = "ID";
                 cbRep.DataSource = IME.Workers.ToList();
-                cbRep.DisplayMember = "FirstName";
+                cbRep.DisplayMember = "NameLastName";
                 cbCurrType.SelectedIndex = 0;
                 dtpDate.Value = DateTime.Now;
                 GetCurrency();
