@@ -242,6 +242,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LowMarginLimit" Type="decimal" Precision="4" Scale="2" />
+          <Property Name="VAT" Type="decimal" Precision="5" Scale="2" />
         </EntityType>
         <EntityType Name="Notes">
           <Key>
@@ -2267,6 +2268,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LowMarginLimit" Type="Decimal" Precision="4" Scale="2" />
+          <Property Name="VAT" Type="Decimal" Precision="5" Scale="2" />
         </EntityType>
         <EntityType Name="Note">
           <Key>
@@ -3692,6 +3694,7 @@
           <EntitySetMapping Name="Managements">
             <EntityTypeMapping TypeName="IMEModel.Management">
               <MappingFragment StoreEntitySet="Management">
+                <ScalarProperty Name="VAT" ColumnName="VAT" />
                 <ScalarProperty Name="LowMarginLimit" ColumnName="LowMarginLimit" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>

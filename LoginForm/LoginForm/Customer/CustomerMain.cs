@@ -56,9 +56,9 @@ namespace LoginForm
             factor.DataSource = IME.Rates.Where(d => d.rate_date == DateTime.Now).ToList();// bugünün rateleri gelecek
             factor.DisplayMember = "rate_name";
             Represantative2.DataSource = IME.Workers.ToList();
-            Represantative2.DisplayMember = "FirstName";
+            Represantative2.DisplayMember = "NameLastName";
             Represantative1.DataSource = IME.Workers.ToList();
-            Represantative1.DisplayMember = "FirstName";
+            Represantative1.DisplayMember = "NameLastName";
             SubCategory.DataSource = IME.CustomerSubCategories.ToList();
             SubCategory.DisplayMember = "subcategoryname";
             MainCategory.DataSource = IME.CustomerCategories.ToList();
@@ -76,7 +76,7 @@ namespace LoginForm
             PaymentMethod.DataSource = IME.PaymentMethods.ToList();
             PaymentMethod.DisplayMember = "Payment";
             AccountRepresentary.DataSource = IME.Workers.ToList();
-            AccountRepresentary.DisplayMember= "FirstName";
+            AccountRepresentary.DisplayMember= "NameLastName";
             cbCountry.DataSource = IME.Countries.ToList();
             cbCountry.DisplayMember = "Country_name";
             

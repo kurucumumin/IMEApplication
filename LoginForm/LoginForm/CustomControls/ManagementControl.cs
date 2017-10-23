@@ -13,9 +13,11 @@ namespace LoginForm.CustomControls
         {
             InitializeComponent();
         }
-        public void setManagementModule(decimal? value)
+
+        public void setManagementModule(Management m)
         {
-            txtLowMarginLimit.Text = Convert.ToString(value);
+            txtLowMarginLimit.Text = Convert.ToString(m.LowMarginLimit);
+            txtVAT.Text = Convert.ToString(m.VAT);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -23,8 +25,9 @@ namespace LoginForm.CustomControls
             try
             {
                 IMEEntities IME = new IMEEntities();
-                Management management = IME.Managements.First();
+                Management management = Utils.getManagement();
                 management.LowMarginLimit = Convert.ToDecimal(txtLowMarginLimit.Text);
+                management.VAT = Convert.ToDecimal(txtVAT.Text);
                 IME.SaveChanges();
 
                 MessageBox.Show("Changes Saved");
