@@ -36,8 +36,8 @@
             this.chcCustStockNumber = new System.Windows.Forms.CheckBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.chcAllQuots = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtSearchText = new System.Windows.Forms.TextBox();
+            this.cbSearch = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.datetimeEnd = new System.Windows.Forms.DateTimePicker();
@@ -102,8 +102,8 @@
             this.panel1.Controls.Add(this.chcCustStockNumber);
             this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.chcAllQuots);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.txtSearchText);
+            this.panel1.Controls.Add(this.cbSearch);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.datetimeEnd);
@@ -119,10 +119,9 @@
             // 
             // btnSearchStockNumber
             // 
-            this.btnSearchStockNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(189)))), ((int)(((byte)(189)))));
+            this.btnSearchStockNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
             this.btnSearchStockNumber.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnSearchStockNumber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearchStockNumber.Image = global::LoginForm.Properties.Resources.btnBackground;
             this.btnSearchStockNumber.Location = new System.Drawing.Point(895, 73);
             this.btnSearchStockNumber.Margin = new System.Windows.Forms.Padding(0);
             this.btnSearchStockNumber.Name = "btnSearchStockNumber";
@@ -159,20 +158,24 @@
             this.chcAllQuots.Text = "All Quotations";
             this.chcAllQuots.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtSearchText
             // 
-            this.textBox1.Location = new System.Drawing.Point(699, 49);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(164, 24);
-            this.textBox1.TabIndex = 23;
+            this.txtSearchText.Location = new System.Drawing.Point(699, 49);
+            this.txtSearchText.Name = "txtSearchText";
+            this.txtSearchText.Size = new System.Drawing.Size(164, 24);
+            this.txtSearchText.TabIndex = 23;
+            this.txtSearchText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchText_KeyPress);
             // 
-            // comboBox1
+            // cbSearch
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(699, 19);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(164, 26);
-            this.comboBox1.TabIndex = 22;
+            this.cbSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSearch.FormattingEnabled = true;
+            this.cbSearch.Items.AddRange(new object[] {
+            "QUOT NUMBER"});
+            this.cbSearch.Location = new System.Drawing.Point(699, 19);
+            this.cbSearch.Name = "cbSearch";
+            this.cbSearch.Size = new System.Drawing.Size(164, 26);
+            this.cbSearch.TabIndex = 22;
             // 
             // label2
             // 
@@ -212,66 +215,73 @@
             // 
             // btnDeleteQuotation
             // 
-            this.btnDeleteQuotation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(189)))), ((int)(((byte)(189)))));
+            this.btnDeleteQuotation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
             this.btnDeleteQuotation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnDeleteQuotation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteQuotation.Image = global::LoginForm.Properties.Resources.btnBackground;
+            this.btnDeleteQuotation.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
             this.btnDeleteQuotation.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnDeleteQuotation.Location = new System.Drawing.Point(535, 16);
             this.btnDeleteQuotation.Margin = new System.Windows.Forms.Padding(0);
             this.btnDeleteQuotation.Name = "btnDeleteQuotation";
-            this.btnDeleteQuotation.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
+            this.btnDeleteQuotation.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.btnDeleteQuotation.Size = new System.Drawing.Size(88, 85);
             this.btnDeleteQuotation.TabIndex = 17;
             this.btnDeleteQuotation.Text = "Delete";
+            this.btnDeleteQuotation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDeleteQuotation.UseVisualStyleBackColor = false;
             // 
             // btnModifyQuotation
             // 
-            this.btnModifyQuotation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(189)))), ((int)(((byte)(189)))));
+            this.btnModifyQuotation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
             this.btnModifyQuotation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnModifyQuotation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModifyQuotation.Image = global::LoginForm.Properties.Resources.btnBackground;
+            this.btnModifyQuotation.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
             this.btnModifyQuotation.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnModifyQuotation.Location = new System.Drawing.Point(450, 16);
             this.btnModifyQuotation.Margin = new System.Windows.Forms.Padding(0);
             this.btnModifyQuotation.Name = "btnModifyQuotation";
-            this.btnModifyQuotation.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
+            this.btnModifyQuotation.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.btnModifyQuotation.Size = new System.Drawing.Size(85, 85);
             this.btnModifyQuotation.TabIndex = 16;
             this.btnModifyQuotation.Text = "Modify";
+            this.btnModifyQuotation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnModifyQuotation.UseVisualStyleBackColor = false;
             this.btnModifyQuotation.Click += new System.EventHandler(this.btnModifyQuotation_Click);
             // 
             // btnRefreshList
             // 
-            this.btnRefreshList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(189)))), ((int)(((byte)(189)))));
+            this.btnRefreshList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
             this.btnRefreshList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnRefreshList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefreshList.Image = global::LoginForm.Properties.Resources.icons8_Refresh_32;
             this.btnRefreshList.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnRefreshList.Location = new System.Drawing.Point(211, 16);
             this.btnRefreshList.Margin = new System.Windows.Forms.Padding(0);
             this.btnRefreshList.Name = "btnRefreshList";
+            this.btnRefreshList.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.btnRefreshList.Size = new System.Drawing.Size(77, 85);
             this.btnRefreshList.TabIndex = 14;
             this.btnRefreshList.Text = "Refresh List";
+            this.btnRefreshList.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnRefreshList.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRefreshList.UseVisualStyleBackColor = false;
             this.btnRefreshList.Click += new System.EventHandler(this.btnRefreshList_Click);
             // 
             // btnNewQuotation
             // 
-            this.btnNewQuotation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(189)))), ((int)(((byte)(189)))));
+            this.btnNewQuotation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
             this.btnNewQuotation.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnNewQuotation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNewQuotation.Image = global::LoginForm.Properties.Resources.btnBackground;
+            this.btnNewQuotation.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
             this.btnNewQuotation.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnNewQuotation.Location = new System.Drawing.Point(365, 16);
             this.btnNewQuotation.Margin = new System.Windows.Forms.Padding(0);
             this.btnNewQuotation.Name = "btnNewQuotation";
-            this.btnNewQuotation.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
+            this.btnNewQuotation.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
             this.btnNewQuotation.Size = new System.Drawing.Size(85, 85);
             this.btnNewQuotation.TabIndex = 1;
             this.btnNewQuotation.Text = "New";
+            this.btnNewQuotation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnNewQuotation.UseVisualStyleBackColor = false;
             this.btnNewQuotation.Click += new System.EventHandler(this.btnNewQuotation_Click);
             // 
@@ -288,10 +298,9 @@
             // 
             // button5
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(189)))), ((int)(((byte)(189)))));
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
             this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Image = global::LoginForm.Properties.Resources.btnBackground;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button5.Location = new System.Drawing.Point(108, 15);
             this.button5.Margin = new System.Windows.Forms.Padding(0);
@@ -304,10 +313,9 @@
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(189)))), ((int)(((byte)(189)))));
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
             this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Image = global::LoginForm.Properties.Resources.btnBackground;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button4.Location = new System.Drawing.Point(15, 15);
             this.button4.Margin = new System.Windows.Forms.Padding(0);
@@ -352,8 +360,8 @@
         private System.Windows.Forms.DateTimePicker datetimeEnd;
         private System.Windows.Forms.Button btnRefreshList;
         private System.Windows.Forms.CheckBox chcAllQuots;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtSearchText;
+        private System.Windows.Forms.ComboBox cbSearch;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;

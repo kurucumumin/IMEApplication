@@ -36,7 +36,7 @@ namespace LoginForm.QuotationModule
         {
             IMEEntities IME = new IMEEntities();
 
-            quotationList = IME.Quotations.Where(q => (q.StartDate >= endDate) && (q.StartDate <= startDate)).ToList();
+            //quotationList = IME.Quotations.Where(q => (q.StartDate >= endDate) && (q.StartDate <= startDate)).ToList();
 
             var list = from q in IME.Quotations
                        join c in IME.Customers on q.CustomerID equals c.ID
@@ -83,6 +83,31 @@ namespace LoginForm.QuotationModule
         private void FormQuotationMain_Load(object sender, EventArgs e)
         {
             bringQuotationList();
+        }
+
+        private void txtSearchText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                if(cbSearch.SelectedItem.ToString() == "QUOT NUMBER")
+                {
+                    IMEEntities IME = new IMEEntities();
+
+                    //quotationList = IME.Quotations.Where(q => (q.StartDate >= endDate) && (q.StartDate <= startDate)).ToList();
+
+                    var list = from q in IME.Quotations
+                               join c in IME.Customers on q.CustomerID equals c.ID
+                               where q.RFQNo.Contains(txtSearchText.Text)
+                               select new
+                               {
+                                   Date = q.StartDate,
+                                   RFQ = q.RFQNo,
+                                   CustomerName = c.c_name
+                               };
+
+                    populateGrid(list.ToList());
+                }
+            }
         }
     }
 }
