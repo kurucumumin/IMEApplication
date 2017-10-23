@@ -54,6 +54,7 @@ namespace LoginForm.QuotationModule
         {
             if (!modifyMod)
             {
+                txtQuotationNo.Text = NewQuotationID();
                 dgQuotationAddedItems.Rows[0].Cells["dgQty"].Value = "0";
                 dgQuotationAddedItems.Rows[0].Cells[0].Value = 1.ToString();
                 LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
@@ -780,9 +781,12 @@ namespace LoginForm.QuotationModule
         private void txtLength_TextChanged(object sender, EventArgs e)
         {
             txtGrossWeight.Text = "";
-            if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value!=null) {
+            try { 
+            if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value != null) {
                 txtGrossWeight.Text = (Decimal.Parse(txtStandartWeight.Text) * Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())).ToString();
             }
+            }
+            catch { }
 
         }
 
@@ -1123,6 +1127,7 @@ namespace LoginForm.QuotationModule
             for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
             {
                 QuotationDetail qd = new QuotationDetail();
+                qd.QuotationNo = txtQuotationNo.Text;
                 qd.RFQNo = txtRFQNo.Text;
                 try { qd.dgNo = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgNo"].Value.ToString()); } catch { }
                 try { qd.ItemCode = dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(); } catch { }
@@ -1210,7 +1215,7 @@ namespace LoginForm.QuotationModule
                 if (item.IsDeleted == 1)
                 {
                     DataGridViewRow row = (DataGridViewRow)dgQuotationDeleted.Rows[0].Clone();
-                    row.Cells[0].Value = item.QuotationNo;
+                    row.Cells[0].Value = item.dgNo;
                     row.Cells[7].Value = item.ItemCode;
                     row.Cells[15].Value = item.Qty;
                     row.Cells[22].Value = item.UCUPCurr;
@@ -1227,7 +1232,7 @@ namespace LoginForm.QuotationModule
                 {
                     DataGridViewRow row = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
                     row.CreateCells(dgQuotationAddedItems);
-                    row.Cells[0].Value = item.QuotationNo;
+                    row.Cells[0].Value = item.dgNo;
                     row.Cells[7].Value = item.ItemCode;
                     row.Cells[15].Value = item.Qty;
                     row.Cells[22].Value = item.UCUPCurr;
@@ -1605,5 +1610,18 @@ namespace LoginForm.QuotationModule
         //        }
         //    }
         //}
+        private string NewQuotationID()
+        {
+            IMEEntities IME = new IMEEntities();
+            //List<Quotation> quotList = IME.Quotations.Where(q => q.QuotationNo == DateTime.Now.Year).toList();
+
+            Quotation quo = IME.Quotations.OrderByDescending(q => q.QuotationNo).FirstOrDefault();
+            int ID = Convert.ToInt32(quo.QuotationNo.Substring(quo.QuotationNo.LastIndexOf('/') + 1));
+            ID++;
+
+            string qNo = DateTime.Now.Year.ToString() + ID.ToString();
+
+            return qNo;
+        }
     }
 }
