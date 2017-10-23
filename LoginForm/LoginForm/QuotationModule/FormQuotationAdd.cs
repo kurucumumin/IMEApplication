@@ -1703,12 +1703,28 @@ namespace LoginForm.QuotationModule
             //List<Quotation> quotList = IME.Quotations.Where(q => q.QuotationNo == DateTime.Now.Year).toList();
             int ID;
             Quotation quo = IME.Quotations.OrderByDescending(q => q.QuotationNo).FirstOrDefault();
-            if (quo != null)
+            string q1 = quo.QuotationNo;
+            if (quo.QuotationNo.Contains("v"))
             {
-                ID = Convert.ToInt32(quo.QuotationNo.Substring(quo.QuotationNo.LastIndexOf('/') + 1));
+                int quoID = Int32.Parse(quo.QuotationNo.Substring(quo.QuotationNo.LastIndexOf('v') + 1)) + 1;
+                q1 = (quo.QuotationNo.Substring(quo.QuotationNo.IndexOf('v') + 1) + quoID).ToString();
+                int charLocation = quo.QuotationNo.IndexOf("v", StringComparison.Ordinal);
+
+                if (charLocation > 0)
+                {
+                    q1 = q1.Substring(0, charLocation) + quoID.ToString();
+                }
+            }
+
+
+
+            if (q1 != null)
+            {
+                ID = Convert.ToInt32(q1.Substring(quo.QuotationNo.LastIndexOf('/') + 1));
                 ID++;
-            }else { ID = 1; }
-            
+            }
+            else { ID = 1; }
+
 
             string qNo = DateTime.Now.Year.ToString() + "/" + ID.ToString();
 
