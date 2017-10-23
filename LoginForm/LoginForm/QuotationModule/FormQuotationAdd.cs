@@ -1537,9 +1537,6 @@ namespace LoginForm.QuotationModule
                     #region Get Margin
                     if (dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value != null)
                     {
-                        dgQuotationAddedItems.Rows[i].Cells["dgCost"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgCost"].Value.ToString())) / factor).ToString();
-                        decimal lc = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString());
-                        dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value = (lc / factor).ToString();
                         dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString())) / factor).ToString();
                         dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString())) / factor).ToString();
                         dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString())) / factor).ToString();
