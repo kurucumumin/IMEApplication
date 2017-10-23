@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 using LoginForm.Services;
+using System.Text.RegularExpressions;
 
 namespace LoginForm
 {
@@ -1220,6 +1221,111 @@ namespace LoginForm
             #endregion
 
            
+        }
+
+        private void WebAdress_Leave(object sender, EventArgs e)
+        {
+            string pattern = @"^(www\.)([\w]+)\.([\w]+)$";
+            if (Regex.IsMatch(WebAdress.Text, pattern))
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Example: www.rsdelivers.com ", "Please prowide valid Web Address !");
+                WebAdress.Focus();
+                return;
+            }
+        }
+
+        private void Telephone_Leave(object sender, EventArgs e)
+        {
+            string pattern = "^([0-9]{4})[ ]([0-9]{3})[ ]([0-9]{2})[ ]([0-9]{2})$";
+            if (Regex.IsMatch(Telephone.Text, pattern))
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Example: 0212 210 05 07", "Please prowide valid Phone Number !");
+                Telephone.Focus();
+                return;
+            }
+        }
+
+        private void CustomerFax_Leave(object sender, EventArgs e)
+        {
+            string pattern = "^([0-9]{4})[ ]([0-9]{3})[ ]([0-9]{2})[ ]([0-9]{2})$";
+            if (Regex.IsMatch(CustomerFax.Text, pattern))
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Example: 0212 210 05 07", "Please prowide valid Fax Number !");
+                CustomerFax.Focus();
+                return;
+            }
+        }
+
+        private void ContactEmail_Leave(object sender, EventArgs e)
+        {
+            string pattern = "^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$";
+            if (Regex.IsMatch(ContactEmail.Text, pattern))
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("info@imeturkey.com", "Please prowide valid Mail address !");
+                ContactEmail.Focus();
+                return;
+            }
+        }
+
+        private void ContactPhone_Leave(object sender, EventArgs e)
+        {
+            string pattern = "^([0-9]{4})[ ]([0-9]{3})[ ]([0-9]{2})[ ]([0-9]{2})$";
+            if (Regex.IsMatch(ContactPhone.Text, pattern))
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Example: 0212 210 05 07", "Please prowide valid Phone Number !");
+                ContactPhone.Focus();
+                return;
+            }
+        }
+
+        private void ContactMobilePhone_Leave(object sender, EventArgs e)
+        {
+            string pattern = "^([0-9]{4})[ ]([0-9]{3})[ ]([0-9]{2})[ ]([0-9]{2})$";
+            if (Regex.IsMatch(ContactMobilePhone.Text, pattern))
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Example: 0530 283 38 02 ", "Please prowide valid Mobile Phone Number !");
+                ContactMobilePhone.Focus();
+                return;
+            }
+        }
+
+        private void ContactFAX_Leave(object sender, EventArgs e)
+        {
+            string pattern = "^([0-9]{4})[ ]([0-9]{3})[ ]([0-9]{2})[ ]([0-9]{2})$";
+            if (Regex.IsMatch(ContactFAX.Text, pattern))
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Example: 0212 210 05 07", "Please prowide valid Fax Number !");
+                ContactFAX.Focus();
+                return;
+            }
         }
     }
 }
