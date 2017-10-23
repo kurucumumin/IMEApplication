@@ -62,7 +62,7 @@ namespace LoginForm.QuotationModule
                 cbPayment.DisplayMember = "Payment";
                 cbPayment.ValueMember = "ID";
                 cbRep.DataSource = IME.Workers.ToList();
-                cbRep.DisplayMember = "FirstName";
+                cbRep.DisplayMember = "NameLastName";
                 cbCurrType.SelectedIndex = 0;
                 dtpDate.Value = DateTime.Now;
                 GetCurrency();
@@ -97,8 +97,8 @@ namespace LoginForm.QuotationModule
             if (c != null)
             {
                 
-                cbCurrency.SelectedIndex = cbCurrency.FindStringExact(c.CurrTypeQuo);
-                cbCurrType.SelectedIndex = cbCurrType.FindStringExact(c.CurrNameQuo);
+                cbCurrency.SelectedIndex = cbCurrency.FindStringExact(c.CurrNameQuo);
+                cbCurrType.SelectedIndex = cbCurrType.FindStringExact(c.CurrTypeQuo);
                 if (c.paymentmethodID != null)
                 {
                     cbPayment.SelectedIndex = cbPayment.FindStringExact(c.PaymentMethod.Payment);
@@ -1052,6 +1052,7 @@ namespace LoginForm.QuotationModule
 
         private void button9_Click(object sender, EventArgs e)
         {
+
             QuotationSave();
             QuotationDetailsSave();
 
@@ -1084,8 +1085,12 @@ namespace LoginForm.QuotationModule
                 IME.Quotations.Add(q);
                 IME.SaveChanges();
 
+                MessageBox.Show("Quotation Saved", "Success");
+
             }
-            catch { }
+            catch {
+                MessageBox.Show("An error occured","Error");
+            }
 
         }
 
@@ -1440,7 +1445,7 @@ namespace LoginForm.QuotationModule
 
         private void GetCurrency()
         {
-            curr = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList().Where(b => b.CurType == (cbCurrency.SelectedItem as Rate).CurType).FirstOrDefault();
+            curr = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList().Where(b => b.CurType == ((Rate)cbCurrency.SelectedItem).CurType).FirstOrDefault();
             if (cbCurrType.SelectedText == "Buy" || cbCurrType.SelectedIndex==0)
             {
                 if(CurrValue1 != Decimal.Parse(curr.RateBuy.ToString())) CurrValue1 = CurrValue;

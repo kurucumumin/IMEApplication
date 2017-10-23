@@ -70,14 +70,23 @@ namespace LoginForm.QuotationModule
 
         private void btnModifyQuotation_Click(object sender, EventArgs e)
         {
-            string RFQ = dgQuotation.CurrentRow.Cells["RFQ"].Value.ToString();
+            if (dgQuotation.CurrentRow != null)
+            {
+                string RFQ = dgQuotation.CurrentRow.Cells["RFQ"].Value.ToString();
+
+                IMEEntities IME = new IMEEntities();
+                Quotation quo = IME.Quotations.Where(q => q.RFQNo == RFQ).FirstOrDefault();
+
+                FormQuotationAdd newForm = new FormQuotationAdd(quo);
+                newForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("You did not chose any quotation.","Warning!");
+            }
 
 
-            IMEEntities IME = new IMEEntities();
-            Quotation quo = IME.Quotations.Where(q => q.RFQNo == RFQ).FirstOrDefault();
-
-            FormQuotationAdd newForm = new FormQuotationAdd(quo);
-            newForm.Show();
+            
         }
 
         private void FormQuotationMain_Load(object sender, EventArgs e)

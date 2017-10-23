@@ -34,15 +34,7 @@ namespace LoginForm
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1009).Count() <= 0)
-            {
-                btnManagement.Visible = false;
-            }
-
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1007).Count() <= 0)
-            {
-                btnLoader.Visible = false;
-            }
+            checkAuthorities();
         }
 
         private void btnManagement_Click(object sender, EventArgs e)
@@ -53,6 +45,28 @@ namespace LoginForm
         public void setManagementControl()
         {
             controlManagement.setManagementModule(Utils.getManagement().LowMarginLimit);
+        }
+        
+        public void checkAuthorities()
+        {
+            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1009).Count() <= 0)
+            {
+                btnManagement.Visible = false;
+            }
+            else
+            {
+                btnManagement.Visible = true;
+                setManagementControl();
+            }
+
+            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1007).Count() <= 0)
+            {
+                btnLoader.Visible = false;
+            }
+            else
+            {
+                btnLoader.Visible = true;
+            }
         }
     }
 }
