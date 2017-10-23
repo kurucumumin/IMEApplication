@@ -444,7 +444,7 @@ namespace LoginForm
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(286, 68);
+            this.label11.Location = new System.Drawing.Point(272, 68);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(131, 17);
             this.label11.TabIndex = 4;
@@ -471,7 +471,7 @@ namespace LoginForm
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 68);
+            this.label8.Location = new System.Drawing.Point(-4, 68);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(123, 17);
             this.label8.TabIndex = 1;
@@ -595,7 +595,7 @@ namespace LoginForm
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 137);
+            this.label14.Location = new System.Drawing.Point(-1, 137);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(63, 17);
             this.label14.TabIndex = 18;
@@ -668,7 +668,7 @@ namespace LoginForm
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(174, 14);
+            this.label20.Location = new System.Drawing.Point(168, 14);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(57, 17);
             this.label20.TabIndex = 8;
@@ -717,7 +717,7 @@ namespace LoginForm
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(365, 73);
+            this.label18.Location = new System.Drawing.Point(358, 73);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(93, 17);
             this.label18.TabIndex = 2;
@@ -1085,14 +1085,14 @@ namespace LoginForm
             this.cmbBankName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBankName.FormattingEnabled = true;
             this.cmbBankName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.cmbBankName.Location = new System.Drawing.Point(109, 7);
+            this.cmbBankName.Location = new System.Drawing.Point(117, 10);
             this.cmbBankName.Name = "cmbBankName";
             this.cmbBankName.Size = new System.Drawing.Size(186, 24);
             this.cmbBankName.TabIndex = 1;
             // 
             // txtBankIban
             // 
-            this.txtBankIban.Location = new System.Drawing.Point(109, 141);
+            this.txtBankIban.Location = new System.Drawing.Point(117, 144);
             this.txtBankIban.Name = "txtBankIban";
             this.txtBankIban.Size = new System.Drawing.Size(186, 23);
             this.txtBankIban.TabIndex = 4;
@@ -1100,14 +1100,14 @@ namespace LoginForm
             // 
             // txtBankNumber
             // 
-            this.txtBankNumber.Location = new System.Drawing.Point(109, 98);
+            this.txtBankNumber.Location = new System.Drawing.Point(117, 101);
             this.txtBankNumber.Name = "txtBankNumber";
             this.txtBankNumber.Size = new System.Drawing.Size(186, 23);
             this.txtBankNumber.TabIndex = 3;
             // 
             // txtBankCode
             // 
-            this.txtBankCode.Location = new System.Drawing.Point(109, 52);
+            this.txtBankCode.Location = new System.Drawing.Point(117, 55);
             this.txtBankCode.Name = "txtBankCode";
             this.txtBankCode.Size = new System.Drawing.Size(186, 23);
             this.txtBankCode.TabIndex = 2;

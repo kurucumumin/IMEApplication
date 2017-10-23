@@ -1718,6 +1718,7 @@
           <EntitySet Name="Hazardous" EntityType="IMEModel.Hazardou" />
           <EntitySet Name="ItemNotes" EntityType="IMEModel.ItemNote" />
           <EntitySet Name="Languages" EntityType="IMEModel.Language" />
+          <EntitySet Name="Managements" EntityType="IMEModel.Management" />
           <EntitySet Name="Notes" EntityType="IMEModel.Note" />
           <EntitySet Name="OnSales" EntityType="IMEModel.OnSale" />
           <EntitySet Name="PaymentMethods" EntityType="IMEModel.PaymentMethod" />
@@ -1987,7 +1988,6 @@
             <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
             <End Role="Worker" EntitySet="Workers" />
           </AssociationSet>
-          <EntitySet Name="Managements" EntityType="IMEModel.Management" />
         </EntityContainer>
         <EntityType Name="AuthorizationValue">
           <Key>
@@ -2261,6 +2261,14 @@
           <Property Name="languagename" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CustomerWorkers" Relationship="IMEModel.FK__CustomerW__langu__72C60C4A" FromRole="Language" ToRole="CustomerWorker" />
           <NavigationProperty Name="SupplierWorkers" Relationship="IMEModel.FK__SupplierW__langu__72910220" FromRole="Language" ToRole="SupplierWorker" />
+        </EntityType>
+        <EntityType Name="Management">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LowMarginLimit" Type="Decimal" Precision="4" Scale="2" />
+          <Property Name="VAT" Type="Decimal" Precision="5" Scale="2" />
         </EntityType>
         <EntityType Name="Note">
           <Key>
@@ -3435,14 +3443,6 @@
           <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
         </Association>
-        <EntityType Name="Management">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LowMarginLimit" Type="Decimal" Precision="4" Scale="2" />
-          <Property Name="VAT" Type="Decimal" Precision="5" Scale="2" />
-        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3687,6 +3687,15 @@
             <EntityTypeMapping TypeName="IMEModel.Language">
               <MappingFragment StoreEntitySet="Languages">
                 <ScalarProperty Name="languagename" ColumnName="languagename" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Managements">
+            <EntityTypeMapping TypeName="IMEModel.Management">
+              <MappingFragment StoreEntitySet="Management">
+                <ScalarProperty Name="VAT" ColumnName="VAT" />
+                <ScalarProperty Name="LowMarginLimit" ColumnName="LowMarginLimit" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4117,15 +4126,6 @@
               <ScalarProperty Name="AuthorizationID" ColumnName="AuthorizationID" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Managements">
-            <EntityTypeMapping TypeName="IMEModel.Management">
-              <MappingFragment StoreEntitySet="Management">
-                <ScalarProperty Name="VAT" ColumnName="VAT" />
-                <ScalarProperty Name="LowMarginLimit" ColumnName="LowMarginLimit" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
