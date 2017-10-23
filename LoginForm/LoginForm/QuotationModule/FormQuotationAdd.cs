@@ -43,6 +43,10 @@ namespace LoginForm.QuotationModule
         {
             modifyMod = true;
             InitializeComponent();
+            cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList();
+            cbCurrency.DisplayMember = "CurType";
+            cbCurrency.ValueMember = "ID";
+            cbCurrency.SelectedIndex = 0;
             modifyQuotation(quotation);
         }
 
@@ -1099,6 +1103,7 @@ namespace LoginForm.QuotationModule
                 q.CurrName = (cbCurrency.SelectedItem as Rate).CurType;
                 q.CurrType = cbCurrType.SelectedText;
                 q.Curr = CurrValue;
+                q.CustomerID = CustomerCode.Text;
                 IME.Quotations.Add(q);
                 IME.SaveChanges();
 
@@ -1193,6 +1198,8 @@ namespace LoginForm.QuotationModule
             CustomerCode.Text = q.Customer.ID;
             fillCustomer();
             #region QuotationDetails
+            cbCurrency.SelectedItem = q.CurrName;
+            cbCurrType.SelectedItem = q.CurrType;
             foreach (var item in q.QuotationDetails)
             {
                 if (item.IsDeleted == 1)

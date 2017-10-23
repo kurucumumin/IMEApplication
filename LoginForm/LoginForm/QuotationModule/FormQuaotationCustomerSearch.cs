@@ -28,20 +28,6 @@ namespace LoginForm.QuotationModule
             CustomerSearchGrid.DataSource = c;
         }
 
-        private void CustomerSearchGrid_Click(object sender, EventArgs e)
-        {
-            if (CustomerSearchGrid.RowCount > 0)
-            {
-                CustomerSearchGrid.ClearSelection();
-                CustomerSearchGrid.CurrentCell = CustomerSearchGrid.Rows[CustomerSearchGrid.CurrentCell.RowIndex].Cells[0];
-                string cname = CustomerSearchGrid.Rows[CustomerSearchGrid.CurrentCell.RowIndex].Cells["ID"].Value.ToString();
-                Customer c = new Customer();
-                c = IME.Customers.Where(a => a.ID == cname).FirstOrDefault();
-                CustomerCode.Text = c.ID;
-                CustomerName.Text = c.c_name;
-            }
-        }
-
         private void CustomerSearchGrid_DoubleClick(object sender, EventArgs e)
         {
             CustomerSearchGrid.ClearSelection();
