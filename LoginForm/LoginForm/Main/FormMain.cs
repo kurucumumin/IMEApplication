@@ -44,7 +44,7 @@ namespace LoginForm
 
         public void setManagementControl()
         {
-            controlManagement.setManagementModule(Utils.getManagement().LowMarginLimit);
+            controlManagement.setManagementModule(Utils.getManagement());
         }
         
         public void checkAuthorities()

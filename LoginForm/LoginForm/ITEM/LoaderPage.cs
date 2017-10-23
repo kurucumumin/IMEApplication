@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 
-namespace LoginForm
+namespace LoginForm.Item
 {
     public partial class LoaderPage : Form
     {
