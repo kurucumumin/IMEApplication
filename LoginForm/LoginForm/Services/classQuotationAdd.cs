@@ -119,6 +119,7 @@ namespace LoginForm.Services
             if (Weight == false) { w = 0; }
             l = (p + (w * ((decimal)1.7)) + (((decimal)0.0675) * (p + (w * ((decimal)1.7)))));
             if (CustomsDuties == false) {l = (p + (w * ((decimal)1.7))); }
+            
             return l;
             #endregion
         }

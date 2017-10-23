@@ -167,6 +167,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
+            this.cbCurrType = new System.Windows.Forms.ComboBox();
             this.cbCurrency = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
@@ -280,7 +281,6 @@
             this.txtUnitCount1 = new System.Windows.Forms.TextBox();
             this.txtUnitCount4 = new System.Windows.Forms.TextBox();
             this.txtUnitCount3 = new System.Windows.Forms.TextBox();
-            this.cbCurrType = new System.Windows.Forms.ComboBox();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgQuotationAddedItems)).BeginInit();
@@ -1173,6 +1173,7 @@
             this.lblVatTotal.Size = new System.Drawing.Size(28, 13);
             this.lblVatTotal.TabIndex = 18;
             this.lblVatTotal.Text = "0,00";
+            this.lblVatTotal.TextChanged += new System.EventHandler(this.lblVatTotal_TextChanged);
             // 
             // txtTotalDis2
             // 
@@ -1212,6 +1213,7 @@
             this.lblGrossTotal.Size = new System.Drawing.Size(28, 13);
             this.lblGrossTotal.TabIndex = 12;
             this.lblGrossTotal.Text = "0,00";
+            this.lblGrossTotal.TextChanged += new System.EventHandler(this.lblGrossTotal_TextChanged);
             // 
             // label39
             // 
@@ -1497,6 +1499,21 @@
             this.label30.Size = new System.Drawing.Size(37, 13);
             this.label30.TabIndex = 60;
             this.label30.Text = "Factor";
+            // 
+            // cbCurrType
+            // 
+            this.cbCurrType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCurrType.FormattingEnabled = true;
+            this.cbCurrType.Items.AddRange(new object[] {
+            "Buy",
+            "Eff. Buy",
+            "Sale",
+            "Eff. Sale"});
+            this.cbCurrType.Location = new System.Drawing.Point(336, 107);
+            this.cbCurrType.Name = "cbCurrType";
+            this.cbCurrType.Size = new System.Drawing.Size(50, 21);
+            this.cbCurrType.TabIndex = 58;
+            this.cbCurrType.SelectedIndexChanged += new System.EventHandler(this.cbCurrType_SelectedIndexChanged);
             // 
             // cbCurrency
             // 
@@ -2649,21 +2666,6 @@
             this.txtUnitCount3.Name = "txtUnitCount3";
             this.txtUnitCount3.Size = new System.Drawing.Size(44, 20);
             this.txtUnitCount3.TabIndex = 410;
-            // 
-            // cbCurrType
-            // 
-            this.cbCurrType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCurrType.FormattingEnabled = true;
-            this.cbCurrType.Items.AddRange(new object[] {
-            "Buy",
-            "Eff. Buy",
-            "Sale",
-            "Eff. Sale"});
-            this.cbCurrType.Location = new System.Drawing.Point(336, 107);
-            this.cbCurrType.Name = "cbCurrType";
-            this.cbCurrType.Size = new System.Drawing.Size(50, 21);
-            this.cbCurrType.TabIndex = 58;
-            this.cbCurrType.SelectedIndexChanged += new System.EventHandler(this.cbCurrType_SelectedIndexChanged);
             // 
             // FormQuotationAdd
             // 
