@@ -25,7 +25,7 @@ namespace LoginForm.CustomControls
             try
             {
                 IMEEntities IME = new IMEEntities();
-                Management management = Utils.getManagement();
+                Management management = IME.Managements.First();
                 management.LowMarginLimit = Convert.ToDecimal(txtLowMarginLimit.Text);
                 management.VAT = Convert.ToDecimal(txtVAT.Text);
                 IME.SaveChanges();
