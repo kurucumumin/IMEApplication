@@ -30,12 +30,12 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel31 = new System.Windows.Forms.Panel();
+            this.txtVAT = new System.Windows.Forms.TextBox();
+            this.lblVAT = new System.Windows.Forms.Label();
             this.btnRolesAuthorities = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtLowMarginLimit = new System.Windows.Forms.TextBox();
             this.lblLowMarginLimit = new System.Windows.Forms.Label();
-            this.txtVAT = new System.Windows.Forms.TextBox();
-            this.lblVAT = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel31.SuspendLayout();
             this.SuspendLayout();
@@ -72,6 +72,25 @@
             this.panel31.Name = "panel31";
             this.panel31.Size = new System.Drawing.Size(334, 553);
             this.panel31.TabIndex = 0;
+            // 
+            // txtVAT
+            // 
+            this.txtVAT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtVAT.Location = new System.Drawing.Point(193, 71);
+            this.txtVAT.Margin = new System.Windows.Forms.Padding(3, 3, 16, 3);
+            this.txtVAT.Name = "txtVAT";
+            this.txtVAT.Size = new System.Drawing.Size(125, 24);
+            this.txtVAT.TabIndex = 7;
+            // 
+            // lblVAT
+            // 
+            this.lblVAT.AutoSize = true;
+            this.lblVAT.Location = new System.Drawing.Point(16, 74);
+            this.lblVAT.Margin = new System.Windows.Forms.Padding(16, 0, 3, 0);
+            this.lblVAT.Name = "lblVAT";
+            this.lblVAT.Size = new System.Drawing.Size(35, 18);
+            this.lblVAT.TabIndex = 6;
+            this.lblVAT.Text = "VAT";
             // 
             // btnRolesAuthorities
             // 
@@ -124,25 +143,6 @@
             this.lblLowMarginLimit.Size = new System.Drawing.Size(120, 18);
             this.lblLowMarginLimit.TabIndex = 0;
             this.lblLowMarginLimit.Text = "Low Margin Limit";
-            // 
-            // txtVAT
-            // 
-            this.txtVAT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtVAT.Location = new System.Drawing.Point(193, 71);
-            this.txtVAT.Margin = new System.Windows.Forms.Padding(3, 3, 16, 3);
-            this.txtVAT.Name = "txtVAT";
-            this.txtVAT.Size = new System.Drawing.Size(125, 24);
-            this.txtVAT.TabIndex = 7;
-            // 
-            // lblVAT
-            // 
-            this.lblVAT.AutoSize = true;
-            this.lblVAT.Location = new System.Drawing.Point(16, 74);
-            this.lblVAT.Margin = new System.Windows.Forms.Padding(16, 0, 3, 0);
-            this.lblVAT.Name = "lblVAT";
-            this.lblVAT.Size = new System.Drawing.Size(162, 18);
-            this.lblVAT.TabIndex = 6;
-            this.lblVAT.Text = "Value Added Text (VAT)";
             // 
             // ManagementControl
             // 
