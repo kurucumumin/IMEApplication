@@ -64,7 +64,7 @@ namespace LoginForm.QuotationModule
                 dgQuotationAddedItems.Rows[0].Cells["dgQty"].Value = "0";
                 dgQuotationAddedItems.Rows[0].Cells[0].Value = 1.ToString();
                 LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
-                chkVat.Text = IME.Managements.FirstOrDefault().VAT.ToString();
+                lblVat.Text = IME.Managements.FirstOrDefault().VAT.ToString();
                 #region ComboboxFiller
                 cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList();
                 cbCurrency.DisplayMember = "CurType";
