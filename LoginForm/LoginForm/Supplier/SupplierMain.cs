@@ -499,7 +499,6 @@ using LoginForm.Services;
                                        supplierworker,
                                        swNote = SupplierWorker.Note.Note_name,
                                        SupplierNote = c.Note.Note_name,
-                                       AccountRepresentative = supplieraccountant.NameLastName,
                                        l.languagename,
                                        n.bankname,
                                        c.iban,
@@ -535,7 +534,7 @@ using LoginForm.Services;
                 try { txtphone.Text = supplierAdapter[gridselectedindex].telephone.ToString(); } catch { }
                 try { txtfax.Text = supplierAdapter[gridselectedindex].fax.ToString(); } catch { }
                 txtweb.Text = supplierAdapter[gridselectedindex].webadress;
-                txtContactNotes.Text = supplierAdapter[gridselectedindex].swNote;
+                //txtContactNotes.Text = supplierAdapter[gridselectedindex].swNote;
                 cmbrepresentative.SelectedIndex = cmbrepresentative.FindStringExact(supplierAdapter[gridselectedindex].NameLastName);
                 cmbposition.SelectedIndex = cmbposition.FindStringExact(supplierAdapter[gridselectedindex].titlename);
                 cmbdepartman.SelectedIndex = cmbdepartman.FindStringExact(supplierAdapter[gridselectedindex].departmentname);
@@ -550,8 +549,8 @@ using LoginForm.Services;
                 cmbAcountTerms.SelectedIndex = cmbAcountTerms.FindStringExact(supplierAdapter[gridselectedindex].term_name);
                 txtContactName.Text = supplierAdapter[gridselectedindex].sw_name;
                 txtContactMail.Text = supplierAdapter[gridselectedindex].sw_email;
-                txtnotes.Text = supplierAdapter[gridselectedindex].SupplierNote;
-                cmbAcountRep.Text = supplierAdapter[gridselectedindex].AccountRepresentative;
+                //txtnotes.Text = supplierAdapter[gridselectedindex].SupplierNote;
+                cmbAcountRep.Text = supplierAdapter[gridselectedindex].NameLastName;
                 cmblanguage.Text = supplierAdapter[gridselectedindex].languagename;
                 txtpobox.Text = supplierAdapter[gridselectedindex].PoBox;
 
@@ -660,13 +659,13 @@ using LoginForm.Services;
                             cw.mobilephone = txtContactMobile.Text;
                             cw.fax = txtContactfax.Text;
                             cw.languageID = ((Language)(cmblanguage).SelectedItem).ID;
-                            db.SupplierWorkers.Add(cw);
-                            db.SaveChanges();
                             Note n = new Note();
                             n.Note_name = txtContactNotes.Text;
                             db.Notes.Add(n);
                             db.SaveChanges();
                             cw.supplierNoteID = n.ID;
+                            db.SupplierWorkers.Add(cw);
+                            db.SaveChanges();
                             contactTabEnableFalse();
                             if (btnnew.Text == "Add")
                             {
@@ -827,16 +826,16 @@ using LoginForm.Services;
                 s = db.Suppliers.Where(a => a.ID == txtcode.Text).FirstOrDefault();
                 s.s_name = txtname.Text;
                 try { if (txtdiscount.Text != "") { s.discountrate = Int32.Parse(txtdiscount.Text); } } catch { };
-                if (txtphone.Text != "") { s.telephone = txtphone.Text; }
-                int s_paymentmeth = ((PaymentMethod)(cmbAcountMethod).SelectedItem).ID; s.paymentmethodID = s_paymentmeth;
-                if (txtfax.Text != "") { s.fax = txtfax.Text; }
+                try { if (txtphone.Text != "") { s.telephone = txtphone.Text; } } catch { };
+                try { int s_paymentmeth = ((PaymentMethod)(cmbAcountMethod).SelectedItem).ID; s.paymentmethodID = s_paymentmeth; } catch { };
+                try { if (txtfax.Text != "") { s.fax = txtfax.Text; }} catch { };
                 s.webadress = txtweb.Text;
-                int s_termpayment = ((PaymentTerm)(cmbAcountTerms).SelectedItem).ID; s.payment_termID = s_termpayment;
-                int s_rep1ID = ((Worker)(cmbrepresentative).SelectedItem).WorkerID; s.representaryID = s_rep1ID;
-                int s_repAcoID = ((Worker)(cmbAcountRep).SelectedItem).WorkerID; s.accountrepresentaryID = s_repAcoID;
+                try { int s_termpayment = ((PaymentTerm)(cmbAcountTerms).SelectedItem).ID; s.payment_termID = s_termpayment;} catch { };
+                try { int s_rep1ID = ((Worker)(cmbrepresentative).SelectedItem).WorkerID; s.representaryID = s_rep1ID; } catch { };
+                try { int s_repAcoID = ((Worker)(cmbAcountRep).SelectedItem).WorkerID; s.accountrepresentaryID = s_repAcoID; } catch { };
                 s.taxoffice = txtTaxOffice.Text;
                 s.PoBox = txtpobox.Text;
-                if (txtTaxNumber.Text != "") { s.taxnumber = Int32.Parse(txtTaxNumber.Text); }
+                try { if (txtTaxNumber.Text != "") { s.taxnumber = Int32.Parse(txtTaxNumber.Text); } } catch { };
                 try
                 {
                     if (s.BankID != null)
