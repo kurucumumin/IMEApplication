@@ -71,23 +71,7 @@ namespace LoginForm.QuotationModule
 
         private void btnModifyQuotation_Click(object sender, EventArgs e)
         {
-            if (dgQuotation.CurrentRow != null)
-            {
-                string QuotationNo = dgQuotation.CurrentRow.Cells["QuotationNo"].Value.ToString();
-
-                IMEEntities IME = new IMEEntities();
-                Quotation quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
-
-                FormQuotationAdd newForm = new FormQuotationAdd(quo);
-                newForm.Show();
-            }
-            else
-            {
-                MessageBox.Show("You did not chose any quotation.","Warning!");
-            }
-
-
-            
+            ModifyQuotation();
         }
 
         private void FormQuotationMain_Load(object sender, EventArgs e)
@@ -118,6 +102,29 @@ namespace LoginForm.QuotationModule
                     populateGrid(list.ToList());
                 }
             }
+        }
+
+        private void ModifyQuotation()
+        {
+            if (dgQuotation.CurrentRow != null)
+            {
+                string QuotationNo = dgQuotation.CurrentRow.Cells["QuotationNo"].Value.ToString();
+
+                IMEEntities IME = new IMEEntities();
+                Quotation quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
+
+                FormQuotationAdd newForm = new FormQuotationAdd(quo);
+                newForm.Show();
+            }
+            else
+            {
+                MessageBox.Show("You did not chose any quotation.", "Warning!");
+            }
+        }
+
+        private void dgQuotation_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            ModifyQuotation();
         }
     }
 }
