@@ -782,6 +782,7 @@ namespace LoginForm
                 if (IME.CustomerCategorySubCategories.Where(a => a.customerID == CustomerCode.Text).FirstOrDefault() == null){ IME.CustomerCategorySubCategories.Add(CustomerCatSubcat); }
                 IME.SaveChanges();
                 //
+                c.accountrepresentaryID = (AccountRepresentary.SelectedItem as Worker).WorkerID;
                 int c_rep1ID = ((Worker)(Represantative1).SelectedItem).WorkerID;
                 c.representaryID = c_rep1ID;
                 int c_rep2ID = ((Worker)(Represantative2).SelectedItem).WorkerID;
