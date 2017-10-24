@@ -744,7 +744,7 @@ namespace LoginForm
                 newCustomer.ID = CustomerCode.Text;
                 IME.Customers.Add(newCustomer);
                 IME.SaveChanges();                
-                btnCreate.Text = "DONE";
+                btnCreate.Text = "SAVE";
                 btnUpdate.Text = "CANCEL";
                 AdressList.Enabled = false;
                 AdressList.DataSource = null;
@@ -834,7 +834,7 @@ namespace LoginForm
                     AddressUpd.Enabled = true;
                 }
                 btnUpdate.Text = "CANCEL";
-                btnCreate.Text = "DONE";
+                btnCreate.Text = "SAVE";
             }
             else
             {
