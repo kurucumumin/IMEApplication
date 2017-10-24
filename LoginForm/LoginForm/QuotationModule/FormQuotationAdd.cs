@@ -52,6 +52,7 @@ namespace LoginForm.QuotationModule
             cbCurrency.ValueMember = "ID";
             cbCurrency.SelectedIndex = 0;
             CustomerCode.Enabled = false;
+            button9.Enabled = false;
             modifyQuotation(q1);
         }
 
@@ -219,7 +220,7 @@ namespace LoginForm.QuotationModule
                             try { erNumber = IME.ExtendedRanges.Where(a => a.ArticleNo.Contains(dgQuotationAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { erNumber = 0; }
                             if (sdNumber != 0 || sdPNumber != 0 || erNumber != 0)
                             {
-                                if (classQuotationAdd.NumberofItem(dgQuotationAddedItems.CurrentCell.Value.ToString()) == 0 && ((dgQuotationAddedItems.CurrentCell.Value.ToString().Length == 6 || (dgQuotationAddedItems.CurrentCell.Value.ToString().Contains("P") && dgQuotationAddedItems.CurrentCell.Value.ToString().Length == 7))))
+                                if (classQuotationAdd.NumberofItem(dgQuotationAddedItems.CurrentCell.Value.ToString()) == 0 && ((dgQuotationAddedItems.CurrentCell.Value.ToString().Length == 7 || (dgQuotationAddedItems.CurrentCell.Value.ToString().Contains("P") && dgQuotationAddedItems.CurrentCell.Value.ToString().Length == 8))))
                                 {
                                     
                                     if (tabControl1.SelectedTab != tabItemDetails) { tabControl1.SelectedTab = tabItemDetails; }
@@ -766,7 +767,7 @@ namespace LoginForm.QuotationModule
 
         private void CustomerCode_KeyDown_1(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter || e.KeyCode==Keys.Tab)
             {
                 classQuotationAdd.customersearchID = CustomerCode.Text;
                 classQuotationAdd.customersearchname = "";
@@ -1754,6 +1755,17 @@ namespace LoginForm.QuotationModule
         {
             QuotationSave(txtQuotationNo.Text);
             QuotationDetailsSave();
+        }
+
+        private void CustomerCode_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            classQuotationAdd.customersearchID = CustomerCode.Text;
+            classQuotationAdd.customersearchname = "";
+            FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch();
+            this.Enabled = false;
+            form.ShowDialog();
+            this.Enabled = true;
+            fillCustomer();
         }
     }
 }

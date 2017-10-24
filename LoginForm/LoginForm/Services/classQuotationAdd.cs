@@ -21,11 +21,11 @@ namespace LoginForm.Services
             List<Customer> c = new List<Customer>();
             if (customersearchname == "")
             {
-                c = IME.Customers.Where(a => a.ID.Contains(customersearchID)).ToList();
+                c = IME.Customers.Where(a => a.ID.Contains(customersearchID)).ToList().Where(a=>a.c_name!=null).ToList();
             }
             else
             {
-                c = IME.Customers.Where(a => a.c_name.Contains(customersearchname)).ToList();
+                c = IME.Customers.Where(a => a.c_name.Contains(customersearchname)).ToList().Where(a => a.c_name != null).ToList();
             }
             return c;
         }
