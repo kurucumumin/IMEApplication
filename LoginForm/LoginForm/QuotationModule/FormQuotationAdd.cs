@@ -294,6 +294,7 @@ namespace LoginForm.QuotationModule
                         }
                     }
                     #endregion
+                    //ChangeCurrnetCell(dgQuotationAddedItems.CurrentCell.RowIndex +1);
                     break;
                 case 15://QAUANTITY
                     #region Quantity
@@ -320,9 +321,15 @@ namespace LoginForm.QuotationModule
                         #endregion
                     }
                     break;
+                    
             }
             #endregion
-            ChangeCurrnetCell();
+            try
+            {
+                ChangeCurrnetCell(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
+            }
+            catch { }
+
         }
 
         private void GetQuotationQuantity(int rowindex)
@@ -825,7 +832,7 @@ namespace LoginForm.QuotationModule
         }
 
         private void dataGridView3_Click(object sender, EventArgs e)
-        {
+            {
             ItemClear();
             try { ItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString()); } catch { }
         }
@@ -1079,7 +1086,8 @@ namespace LoginForm.QuotationModule
 
         private void txtTotalDis_Leave(object sender, EventArgs e)
         {
-            if (Decimal.Parse(lblsubtotal.Text) != 0 && lblsubtotal.Text != "" && lblsubtotal.Text != null)
+            if (lblsubtotal.Text != "" && Decimal.Parse(lblsubtotal.Text) != 0 &&  lblsubtotal.Text != null
+                &&txtTotalDis.Text != "" && Decimal.Parse(txtTotalDis.Text) != 0)
             {
                 decimal dis2 = Decimal.Parse(lblsubtotal.Text) * Decimal.Parse(txtTotalDis.Text) / 100;
                 if (dis2 != CurrentDis)
@@ -1098,7 +1106,7 @@ namespace LoginForm.QuotationModule
             }
             else
             {
-                txtTotalDis.Text = "";
+                txtTotalDis.Text = 0.ToString();
             }
         }
 
@@ -1381,8 +1389,11 @@ namespace LoginForm.QuotationModule
             //if(Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 2].Cells[0].Value.ToString())> Int32.Parse(dgQuotationDeleted.Rows[dgQuotationDeleted.RowCount - 2].Cells[0].Value.ToString()))
             //{
             //dgQuotationAddedItems.Rows.Add(new DataGridViewRow());
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount-1].Cells[0].Value = (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 2].Cells[0].Value.ToString()) + 1).ToString();
-
+            if (dgQuotationAddedItems.RowCount > 1)
+            {
+                dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[0].Value = (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 2].Cells[0].Value.ToString()) + 1).ToString();
+            }
+            else { dgQuotationAddedItems.Rows[0].Cells[0].Value = 1.ToString(); }
             //}
             //else
             //{
@@ -1588,8 +1599,10 @@ namespace LoginForm.QuotationModule
 
 
         }
+        
+            
 
-        private void cbCurrType_SelectedIndexChanged(object sender, EventArgs e)
+    private void cbCurrType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if ((cbCurrType.SelectedIndex != null))
             {
@@ -1792,15 +1805,45 @@ namespace LoginForm.QuotationModule
 
         
 
-        private void ChangeCurrnetCell()
+        private void ChangeCurrnetCell(int currindex)
         {
-            int currindex = dgQuotationAddedItems.CurrentCell.ColumnIndex +1;
-            while ( dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex].ReadOnly==true)
+            while (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex].ReadOnly == true)
             {
                 currindex++;
             }
-            dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex];
+            try
+            {
+                dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex];
+            }
+            catch { }
+        }
+        private void ChangeCurrnetCellTabKey(int currindex)
+        {
+            while (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex].ReadOnly == true)
+            {
+                currindex++;
+            }
+            try
+            {
+                dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex - 1];
+            }
+            catch { }
         }
 
+        private void dgQuotationAddedItems_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab)
+            {
+                ChangeCurrnetCellTabKey(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
+            }
+            else if((e.KeyCode == Keys.Escape))
+            {
+                ChangeCurrnetCell(dgQuotationAddedItems.CurrentCell.ColumnIndex+1);
+            }else if(e.KeyCode == Keys.Enter)
+            {
+                ChangeCurrnetCell(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
+            }
+            
+        }
     }
 }
