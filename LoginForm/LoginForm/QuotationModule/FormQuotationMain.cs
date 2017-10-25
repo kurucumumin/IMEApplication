@@ -1,5 +1,4 @@
 ﻿using LoginForm.DataSet;
-
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -49,7 +48,7 @@ namespace LoginForm.QuotationModule
                            Date = q.StartDate,
                            QuotationNo = q.QuotationNo,
                            RFQ = q.RFQNo,
-                           CustomerName = c.c_name 
+                           CustomerName = c.c_name
                        };
 
             populateGrid(list.ToList());
