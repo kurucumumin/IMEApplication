@@ -146,6 +146,7 @@ namespace LoginForm.QuotationModule
 
         private void dataGridView3_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            
             #region MyRegion
             switch (dgQuotationAddedItems.CurrentCell.ColumnIndex)
             {
@@ -320,6 +321,7 @@ namespace LoginForm.QuotationModule
                     break;
             }
             #endregion
+            ChangeCurrnetCell();
         }
 
         private void GetQuotationQuantity(int rowindex)
@@ -1767,5 +1769,18 @@ namespace LoginForm.QuotationModule
             this.Enabled = true;
             fillCustomer();
         }
+
+        
+
+        private void ChangeCurrnetCell()
+        {
+            int currindex = dgQuotationAddedItems.CurrentCell.ColumnIndex +1;
+            while ( dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex].ReadOnly==true)
+            {
+                currindex++;
+            }
+            dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex];
+        }
+
     }
 }

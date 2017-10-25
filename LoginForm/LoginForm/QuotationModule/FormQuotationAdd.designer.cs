@@ -40,42 +40,6 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.dgQuotationAddedItems = new System.Windows.Forms.DataGridView();
-            this.dgNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgMPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgLM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgLandingCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgMargin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgSSM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUPIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDisc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUCUPCurr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTargetUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCompetitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgHZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgDelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgUnitWeigt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgTotalWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCustStkCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCustDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCOO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgCCCNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.dgQuotationDeleted = new System.Windows.Forms.DataGridView();
             this.No1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -281,6 +245,42 @@
             this.txtUnitCount1 = new System.Windows.Forms.TextBox();
             this.txtUnitCount4 = new System.Windows.Forms.TextBox();
             this.txtUnitCount3 = new System.Windows.Forms.TextBox();
+            this.dgNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgMPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgLM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgLandingCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgMargin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSSM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUPIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDisc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUCUPCurr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTargetUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCompetitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgHZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgDelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUnitWeigt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgTotalWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCustStkCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCustDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCOO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgCCCNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgQuotationAddedItems)).BeginInit();
@@ -444,282 +444,6 @@
             this.dgQuotationAddedItems.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView3_RowsAdded);
             this.dgQuotationAddedItems.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridView3_UserDeletingRow);
             this.dgQuotationAddedItems.Click += new System.EventHandler(this.dataGridView3_Click);
-            // 
-            // dgNo
-            // 
-            this.dgNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgNo.HeaderText = "No";
-            this.dgNo.Name = "dgNo";
-            this.dgNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dgNo.Width = 46;
-            // 
-            // HS
-            // 
-            this.HS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.HS.HeaderText = "HS";
-            this.HS.Name = "HS";
-            this.HS.ReadOnly = true;
-            this.HS.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.HS.Width = 47;
-            // 
-            // LI
-            // 
-            this.LI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.LI.HeaderText = "LI";
-            this.LI.Name = "LI";
-            this.LI.ReadOnly = true;
-            this.LI.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.LI.Width = 41;
-            // 
-            // CL
-            // 
-            this.CL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.CL.HeaderText = "CL";
-            this.CL.Name = "CL";
-            this.CL.ReadOnly = true;
-            this.CL.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.CL.Width = 45;
-            // 
-            // LC
-            // 
-            this.LC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.LC.HeaderText = "LC";
-            this.LC.Name = "LC";
-            this.LC.ReadOnly = true;
-            this.LC.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.LC.Width = 45;
-            // 
-            // LM
-            // 
-            this.LM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.LM.HeaderText = "LM";
-            this.LM.Name = "LM";
-            this.LM.ReadOnly = true;
-            this.LM.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.LM.Width = 47;
-            // 
-            // dgSupplier
-            // 
-            this.dgSupplier.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgSupplier.HeaderText = "Supplier";
-            this.dgSupplier.Name = "dgSupplier";
-            this.dgSupplier.ReadOnly = true;
-            this.dgSupplier.Width = 70;
-            // 
-            // dgProductCode
-            // 
-            this.dgProductCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgProductCode.HeaderText = "Item Code";
-            this.dgProductCode.Name = "dgProductCode";
-            this.dgProductCode.Width = 74;
-            // 
-            // dgBrand
-            // 
-            this.dgBrand.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgBrand.HeaderText = "Brand";
-            this.dgBrand.Name = "dgBrand";
-            this.dgBrand.ReadOnly = true;
-            this.dgBrand.Width = 60;
-            // 
-            // dgMPN
-            // 
-            this.dgMPN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgMPN.HeaderText = "MPN";
-            this.dgMPN.Name = "dgMPN";
-            this.dgMPN.ReadOnly = true;
-            this.dgMPN.Width = 56;
-            // 
-            // dgDesc
-            // 
-            this.dgDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgDesc.HeaderText = "Description";
-            this.dgDesc.Name = "dgDesc";
-            this.dgDesc.ReadOnly = true;
-            this.dgDesc.Width = 85;
-            // 
-            // dgLM
-            // 
-            this.dgLM.HeaderText = "LM";
-            this.dgLM.Name = "dgLM";
-            this.dgLM.ReadOnly = true;
-            // 
-            // dgCost
-            // 
-            this.dgCost.HeaderText = "Cost (£)";
-            this.dgCost.Name = "dgCost";
-            this.dgCost.ReadOnly = true;
-            // 
-            // dgLandingCost
-            // 
-            this.dgLandingCost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgLandingCost.HeaderText = "Landing Cost (£)";
-            this.dgLandingCost.Name = "dgLandingCost";
-            this.dgLandingCost.ReadOnly = true;
-            this.dgLandingCost.Width = 89;
-            // 
-            // dgMargin
-            // 
-            this.dgMargin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgMargin.HeaderText = "Margin";
-            this.dgMargin.Name = "dgMargin";
-            this.dgMargin.ReadOnly = true;
-            this.dgMargin.Width = 64;
-            // 
-            // dgQty
-            // 
-            this.dgQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgQty.HeaderText = "Qty";
-            this.dgQty.Name = "dgQty";
-            this.dgQty.Width = 48;
-            // 
-            // dgStock
-            // 
-            this.dgStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgStock.HeaderText = "Stock";
-            this.dgStock.Name = "dgStock";
-            this.dgStock.ReadOnly = true;
-            this.dgStock.Width = 60;
-            // 
-            // dgUOM
-            // 
-            this.dgUOM.HeaderText = "UOM";
-            this.dgUOM.Name = "dgUOM";
-            this.dgUOM.ReadOnly = true;
-            this.dgUOM.Width = 57;
-            // 
-            // dgSSM
-            // 
-            this.dgSSM.HeaderText = "SSM";
-            this.dgSSM.Name = "dgSSM";
-            this.dgSSM.ReadOnly = true;
-            // 
-            // dgUC
-            // 
-            this.dgUC.HeaderText = "U/C";
-            this.dgUC.Name = "dgUC";
-            this.dgUC.ReadOnly = true;
-            // 
-            // dgUPIME
-            // 
-            this.dgUPIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgUPIME.HeaderText = "U/P IME L/P ";
-            this.dgUPIME.Name = "dgUPIME";
-            this.dgUPIME.ReadOnly = true;
-            this.dgUPIME.Width = 90;
-            // 
-            // dgDisc
-            // 
-            this.dgDisc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgDisc.HeaderText = "Disc. (%)";
-            this.dgDisc.Name = "dgDisc";
-            this.dgDisc.ReadOnly = true;
-            this.dgDisc.Width = 68;
-            // 
-            // dgUCUPCurr
-            // 
-            this.dgUCUPCurr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgUCUPCurr.HeaderText = "U/C U/P (Curr.)";
-            this.dgUCUPCurr.Name = "dgUCUPCurr";
-            this.dgUCUPCurr.Width = 97;
-            // 
-            // dgTotal
-            // 
-            this.dgTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgTotal.HeaderText = "TOTAL";
-            this.dgTotal.Name = "dgTotal";
-            this.dgTotal.ReadOnly = true;
-            this.dgTotal.Width = 67;
-            // 
-            // dgTargetUP
-            // 
-            this.dgTargetUP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgTargetUP.HeaderText = "Target U/P";
-            this.dgTargetUP.Name = "dgTargetUP";
-            this.dgTargetUP.Width = 79;
-            // 
-            // dgCompetitor
-            // 
-            this.dgCompetitor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgCompetitor.HeaderText = "Competitor";
-            this.dgCompetitor.Name = "dgCompetitor";
-            this.dgCompetitor.Width = 82;
-            // 
-            // dgHZ
-            // 
-            this.dgHZ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgHZ.HeaderText = "HZ";
-            this.dgHZ.Name = "dgHZ";
-            this.dgHZ.ReadOnly = true;
-            this.dgHZ.Width = 47;
-            // 
-            // dgCL
-            // 
-            this.dgCL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgCL.HeaderText = "CL";
-            this.dgCL.Name = "dgCL";
-            this.dgCL.ReadOnly = true;
-            this.dgCL.Width = 45;
-            // 
-            // dgCR
-            // 
-            this.dgCR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgCR.HeaderText = "CR";
-            this.dgCR.Name = "dgCR";
-            this.dgCR.ReadOnly = true;
-            this.dgCR.Width = 47;
-            // 
-            // dgDelivery
-            // 
-            this.dgDelivery.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgDelivery.HeaderText = "Delivery";
-            this.dgDelivery.Name = "dgDelivery";
-            this.dgDelivery.Width = 70;
-            // 
-            // dgUnitWeigt
-            // 
-            this.dgUnitWeigt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgUnitWeigt.HeaderText = "Unit Weigt (Kg)";
-            this.dgUnitWeigt.Name = "dgUnitWeigt";
-            this.dgUnitWeigt.ReadOnly = true;
-            this.dgUnitWeigt.Width = 96;
-            // 
-            // dgTotalWeight
-            // 
-            this.dgTotalWeight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgTotalWeight.HeaderText = "Total Weight (Kg)";
-            this.dgTotalWeight.Name = "dgTotalWeight";
-            this.dgTotalWeight.ReadOnly = true;
-            this.dgTotalWeight.Width = 88;
-            // 
-            // dgCustStkCode
-            // 
-            this.dgCustStkCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgCustStkCode.HeaderText = "Cust Stk Code";
-            this.dgCustStkCode.Name = "dgCustStkCode";
-            this.dgCustStkCode.Width = 92;
-            // 
-            // dgCustDescription
-            // 
-            this.dgCustDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgCustDescription.HeaderText = "Cust. Description";
-            this.dgCustDescription.Name = "dgCustDescription";
-            this.dgCustDescription.Width = 103;
-            // 
-            // dgCOO
-            // 
-            this.dgCOO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgCOO.HeaderText = "COO";
-            this.dgCOO.Name = "dgCOO";
-            this.dgCOO.ReadOnly = true;
-            this.dgCOO.Width = 55;
-            // 
-            // dgCCCNO
-            // 
-            this.dgCCCNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dgCCCNO.HeaderText = "CCCNO";
-            this.dgCCCNO.Name = "dgCCCNO";
-            this.dgCCCNO.ReadOnly = true;
-            this.dgCCCNO.Width = 69;
             // 
             // groupBox6
             // 
@@ -1346,7 +1070,7 @@
             this.tabControl1.Controls.Add(this.tabCustomerDetails);
             this.tabControl1.Controls.Add(this.tabItemDetails);
             this.tabControl1.Location = new System.Drawing.Point(3, 2);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1353, 180);
@@ -1360,9 +1084,9 @@
             this.tabCustomerDetails.Controls.Add(this.label16);
             this.tabCustomerDetails.Controls.Add(this.label15);
             this.tabCustomerDetails.Location = new System.Drawing.Point(4, 22);
-            this.tabCustomerDetails.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabCustomerDetails.Margin = new System.Windows.Forms.Padding(2);
             this.tabCustomerDetails.Name = "tabCustomerDetails";
-            this.tabCustomerDetails.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabCustomerDetails.Padding = new System.Windows.Forms.Padding(2);
             this.tabCustomerDetails.Size = new System.Drawing.Size(1345, 154);
             this.tabCustomerDetails.TabIndex = 0;
             this.tabCustomerDetails.Text = "Customer Details";
@@ -1411,7 +1135,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(480, 8);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(59, 46);
             this.button2.TabIndex = 76;
@@ -1422,7 +1146,7 @@
             // 
             this.txtCustomerName.Enabled = false;
             this.txtCustomerName.Location = new System.Drawing.Point(186, 9);
-            this.txtCustomerName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCustomerName.Margin = new System.Windows.Forms.Padding(4);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(288, 20);
             this.txtCustomerName.TabIndex = 75;
@@ -1767,9 +1491,9 @@
             this.tabItemDetails.Controls.Add(this.txtUnitCount4);
             this.tabItemDetails.Controls.Add(this.txtUnitCount3);
             this.tabItemDetails.Location = new System.Drawing.Point(4, 22);
-            this.tabItemDetails.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabItemDetails.Margin = new System.Windows.Forms.Padding(2);
             this.tabItemDetails.Name = "tabItemDetails";
-            this.tabItemDetails.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabItemDetails.Padding = new System.Windows.Forms.Padding(2);
             this.tabItemDetails.Size = new System.Drawing.Size(1345, 154);
             this.tabItemDetails.TabIndex = 1;
             this.tabItemDetails.Text = "Item Details";
@@ -2727,6 +2451,282 @@
             this.txtUnitCount3.Name = "txtUnitCount3";
             this.txtUnitCount3.Size = new System.Drawing.Size(44, 20);
             this.txtUnitCount3.TabIndex = 410;
+            // 
+            // dgNo
+            // 
+            this.dgNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgNo.HeaderText = "No";
+            this.dgNo.Name = "dgNo";
+            this.dgNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dgNo.Width = 46;
+            // 
+            // HS
+            // 
+            this.HS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.HS.HeaderText = "HS";
+            this.HS.Name = "HS";
+            this.HS.ReadOnly = true;
+            this.HS.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.HS.Width = 20;
+            // 
+            // LI
+            // 
+            this.LI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.LI.HeaderText = "LI";
+            this.LI.Name = "LI";
+            this.LI.ReadOnly = true;
+            this.LI.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.LI.Width = 20;
+            // 
+            // CL
+            // 
+            this.CL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CL.HeaderText = "CL";
+            this.CL.Name = "CL";
+            this.CL.ReadOnly = true;
+            this.CL.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.CL.Width = 20;
+            // 
+            // LC
+            // 
+            this.LC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.LC.HeaderText = "LC";
+            this.LC.Name = "LC";
+            this.LC.ReadOnly = true;
+            this.LC.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.LC.Width = 20;
+            // 
+            // LM
+            // 
+            this.LM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.LM.HeaderText = "LM";
+            this.LM.Name = "LM";
+            this.LM.ReadOnly = true;
+            this.LM.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.LM.Width = 20;
+            // 
+            // dgSupplier
+            // 
+            this.dgSupplier.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgSupplier.HeaderText = "Supplier";
+            this.dgSupplier.Name = "dgSupplier";
+            this.dgSupplier.ReadOnly = true;
+            this.dgSupplier.Width = 70;
+            // 
+            // dgProductCode
+            // 
+            this.dgProductCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgProductCode.HeaderText = "Item Code";
+            this.dgProductCode.Name = "dgProductCode";
+            this.dgProductCode.Width = 80;
+            // 
+            // dgBrand
+            // 
+            this.dgBrand.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgBrand.HeaderText = "Brand";
+            this.dgBrand.Name = "dgBrand";
+            this.dgBrand.ReadOnly = true;
+            this.dgBrand.Width = 60;
+            // 
+            // dgMPN
+            // 
+            this.dgMPN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgMPN.HeaderText = "MPN";
+            this.dgMPN.Name = "dgMPN";
+            this.dgMPN.ReadOnly = true;
+            this.dgMPN.Width = 56;
+            // 
+            // dgDesc
+            // 
+            this.dgDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgDesc.HeaderText = "Description";
+            this.dgDesc.Name = "dgDesc";
+            this.dgDesc.ReadOnly = true;
+            this.dgDesc.Width = 85;
+            // 
+            // dgLM
+            // 
+            this.dgLM.HeaderText = "LM";
+            this.dgLM.Name = "dgLM";
+            this.dgLM.ReadOnly = true;
+            // 
+            // dgCost
+            // 
+            this.dgCost.HeaderText = "Cost (£)";
+            this.dgCost.Name = "dgCost";
+            this.dgCost.ReadOnly = true;
+            // 
+            // dgLandingCost
+            // 
+            this.dgLandingCost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgLandingCost.HeaderText = "Landing Cost (£)";
+            this.dgLandingCost.Name = "dgLandingCost";
+            this.dgLandingCost.ReadOnly = true;
+            this.dgLandingCost.Width = 89;
+            // 
+            // dgMargin
+            // 
+            this.dgMargin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgMargin.HeaderText = "Margin";
+            this.dgMargin.Name = "dgMargin";
+            this.dgMargin.ReadOnly = true;
+            this.dgMargin.Width = 64;
+            // 
+            // dgQty
+            // 
+            this.dgQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgQty.HeaderText = "Qty";
+            this.dgQty.Name = "dgQty";
+            this.dgQty.Width = 48;
+            // 
+            // dgStock
+            // 
+            this.dgStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgStock.HeaderText = "Stock";
+            this.dgStock.Name = "dgStock";
+            this.dgStock.ReadOnly = true;
+            this.dgStock.Width = 60;
+            // 
+            // dgUOM
+            // 
+            this.dgUOM.HeaderText = "UOM";
+            this.dgUOM.Name = "dgUOM";
+            this.dgUOM.ReadOnly = true;
+            this.dgUOM.Width = 57;
+            // 
+            // dgSSM
+            // 
+            this.dgSSM.HeaderText = "SSM";
+            this.dgSSM.Name = "dgSSM";
+            this.dgSSM.ReadOnly = true;
+            // 
+            // dgUC
+            // 
+            this.dgUC.HeaderText = "U/C";
+            this.dgUC.Name = "dgUC";
+            this.dgUC.ReadOnly = true;
+            // 
+            // dgUPIME
+            // 
+            this.dgUPIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgUPIME.HeaderText = "U/P IME L/P ";
+            this.dgUPIME.Name = "dgUPIME";
+            this.dgUPIME.ReadOnly = true;
+            this.dgUPIME.Width = 90;
+            // 
+            // dgDisc
+            // 
+            this.dgDisc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgDisc.HeaderText = "Disc. (%)";
+            this.dgDisc.Name = "dgDisc";
+            this.dgDisc.ReadOnly = true;
+            this.dgDisc.Width = 68;
+            // 
+            // dgUCUPCurr
+            // 
+            this.dgUCUPCurr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgUCUPCurr.HeaderText = "U/C U/P (Curr.)";
+            this.dgUCUPCurr.Name = "dgUCUPCurr";
+            this.dgUCUPCurr.Width = 97;
+            // 
+            // dgTotal
+            // 
+            this.dgTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgTotal.HeaderText = "TOTAL";
+            this.dgTotal.Name = "dgTotal";
+            this.dgTotal.ReadOnly = true;
+            this.dgTotal.Width = 67;
+            // 
+            // dgTargetUP
+            // 
+            this.dgTargetUP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgTargetUP.HeaderText = "Target U/P";
+            this.dgTargetUP.Name = "dgTargetUP";
+            this.dgTargetUP.Width = 79;
+            // 
+            // dgCompetitor
+            // 
+            this.dgCompetitor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgCompetitor.HeaderText = "Competitor";
+            this.dgCompetitor.Name = "dgCompetitor";
+            this.dgCompetitor.Width = 82;
+            // 
+            // dgHZ
+            // 
+            this.dgHZ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgHZ.HeaderText = "HZ";
+            this.dgHZ.Name = "dgHZ";
+            this.dgHZ.ReadOnly = true;
+            this.dgHZ.Width = 47;
+            // 
+            // dgCL
+            // 
+            this.dgCL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgCL.HeaderText = "CL";
+            this.dgCL.Name = "dgCL";
+            this.dgCL.ReadOnly = true;
+            this.dgCL.Width = 45;
+            // 
+            // dgCR
+            // 
+            this.dgCR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgCR.HeaderText = "CR";
+            this.dgCR.Name = "dgCR";
+            this.dgCR.ReadOnly = true;
+            this.dgCR.Width = 47;
+            // 
+            // dgDelivery
+            // 
+            this.dgDelivery.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgDelivery.HeaderText = "Delivery";
+            this.dgDelivery.Name = "dgDelivery";
+            this.dgDelivery.Width = 70;
+            // 
+            // dgUnitWeigt
+            // 
+            this.dgUnitWeigt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgUnitWeigt.HeaderText = "Unit Weigt (Kg)";
+            this.dgUnitWeigt.Name = "dgUnitWeigt";
+            this.dgUnitWeigt.ReadOnly = true;
+            this.dgUnitWeigt.Width = 96;
+            // 
+            // dgTotalWeight
+            // 
+            this.dgTotalWeight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgTotalWeight.HeaderText = "Total Weight (Kg)";
+            this.dgTotalWeight.Name = "dgTotalWeight";
+            this.dgTotalWeight.ReadOnly = true;
+            this.dgTotalWeight.Width = 88;
+            // 
+            // dgCustStkCode
+            // 
+            this.dgCustStkCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgCustStkCode.HeaderText = "Cust Stk Code";
+            this.dgCustStkCode.Name = "dgCustStkCode";
+            this.dgCustStkCode.Width = 92;
+            // 
+            // dgCustDescription
+            // 
+            this.dgCustDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgCustDescription.HeaderText = "Cust. Description";
+            this.dgCustDescription.Name = "dgCustDescription";
+            this.dgCustDescription.Width = 103;
+            // 
+            // dgCOO
+            // 
+            this.dgCOO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgCOO.HeaderText = "COO";
+            this.dgCOO.Name = "dgCOO";
+            this.dgCOO.ReadOnly = true;
+            this.dgCOO.Width = 55;
+            // 
+            // dgCCCNO
+            // 
+            this.dgCCCNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgCCCNO.HeaderText = "CCCNO";
+            this.dgCCCNO.Name = "dgCCCNO";
+            this.dgCCCNO.ReadOnly = true;
+            this.dgCCCNO.Width = 69;
             // 
             // FormQuotationAdd
             // 
