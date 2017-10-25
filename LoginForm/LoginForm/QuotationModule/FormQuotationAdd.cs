@@ -1448,7 +1448,7 @@ namespace LoginForm.QuotationModule
             #region Filler
             Rate currWeb = new Rate();
             currWeb = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList().Where(b => b.CurType == "GBP").FirstOrDefault();
-            decimal CurrValueWeb = Decimal.Parse(curr.RateBuy.ToString());
+            decimal CurrValueWeb = Decimal.Parse(currWeb.RateBuy.ToString());
             string ArticleNoSearch1 = ArticleNoSearch;
             try { ArticleNoSearch1 = (Int32.Parse(ArticleNoSearch)).ToString(); } catch { }
             //Seçili olan item ı text lere yazdıran fonksiyon yazılacak

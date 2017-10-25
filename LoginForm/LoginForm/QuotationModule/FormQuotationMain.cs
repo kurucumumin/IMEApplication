@@ -1,5 +1,4 @@
 ﻿using LoginForm.DataSet;
-
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -49,7 +48,7 @@ namespace LoginForm.QuotationModule
                            Date = q.StartDate,
                            QuotationNo = q.QuotationNo,
                            RFQ = q.RFQNo,
-                           CustomerName = c.c_name 
+                           CustomerName = c.c_name
                        };
 
             populateGrid(list.ToList());
@@ -128,6 +127,44 @@ namespace LoginForm.QuotationModule
         private void dgQuotation_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             ModifyQuotation();
+        }
+
+        private void btnDeleteQuotation_Click(object sender, EventArgs e)
+        {
+            if (dgQuotation.CurrentRow != null)
+            {
+                DialogResult result = MessageBox.Show("Selected quotation will be deleted! Do you confirm?", "Delete Quotation", MessageBoxButtons.OKCancel);
+
+                if (result == DialogResult.OK)
+                {
+                    try
+                    {
+                        string QuotationNo = dgQuotation.CurrentRow.Cells["QuotationNo"].Value.ToString();
+
+                        IMEEntities IME = new IMEEntities();
+                        Quotation quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
+
+                        quo.QuotationDetails.Clear();
+                        IME.SaveChanges();
+
+                        IME.Quotations.Remove(quo);
+                        IME.SaveChanges();
+
+                        bringQuotationList();
+
+                        MessageBox.Show("Quotation is successfully deleted.", "Success!");
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("An error was encountered", "Error!");
+                        throw;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("You did not chose any quotation.", "Warning!");
+            }
         }
     }
 }
