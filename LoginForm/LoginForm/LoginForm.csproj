@@ -401,12 +401,6 @@
     <Compile Include="Worker\FormWorkerManagement.Designer.cs">
       <DependentUpon>FormWorkerManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="ZZZ\deneme.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ZZZ\deneme.Designer.cs">
-      <DependentUpon>deneme.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="CustomerManager\AddressBook.resx">
       <DependentUpon>AddressBook.cs</DependentUpon>
     </EmbeddedResource>
@@ -479,9 +473,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Worker\FormWorkerManagement.resx">
       <DependentUpon>FormWorkerManagement.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ZZZ\deneme.resx">
-      <DependentUpon>deneme.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="DataSet\IME.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
