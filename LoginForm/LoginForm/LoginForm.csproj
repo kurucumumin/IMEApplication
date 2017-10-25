@@ -337,6 +337,12 @@
     <Compile Include="QuotationModule\FormQuaotationCustomerSearch.Designer.cs">
       <DependentUpon>FormQuaotationCustomerSearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuotationModule\FormQuotationAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuotationModule\FormQuotationAdd.designer.cs">
+      <DependentUpon>FormQuotationAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuotationModule\FormQuotationItemSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -348,12 +354,6 @@
     </Compile>
     <Compile Include="QuotationModule\FormQuotationMain.Designer.cs">
       <DependentUpon>FormQuotationMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="QuotationModule\FormQuotationAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="QuotationModule\FormQuotationAdd.designer.cs">
-      <DependentUpon>FormQuotationAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Worker\FormWorkersMain.cs">
       <SubType>Form</SubType>
@@ -401,6 +401,12 @@
     <Compile Include="Worker\FormWorkerManagement.Designer.cs">
       <DependentUpon>FormWorkerManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="ZZZ\deneme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ZZZ\deneme.Designer.cs">
+      <DependentUpon>deneme.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CustomerManager\AddressBook.resx">
       <DependentUpon>AddressBook.cs</DependentUpon>
     </EmbeddedResource>
@@ -447,14 +453,14 @@
     <EmbeddedResource Include="QuotationModule\FormQuaotationCustomerSearch.resx">
       <DependentUpon>FormQuaotationCustomerSearch.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="QuotationModule\FormQuotationAdd.resx">
+      <DependentUpon>FormQuotationAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\FormQuotationItemSearch.resx">
       <DependentUpon>FormQuotationItemSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\FormQuotationMain.resx">
       <DependentUpon>FormQuotationMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="QuotationModule\FormQuotationAdd.resx">
-      <DependentUpon>FormQuotationAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Worker\FormWorkersMain.resx">
       <DependentUpon>FormWorkersMain.cs</DependentUpon>
@@ -473,6 +479,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Worker\FormWorkerManagement.resx">
       <DependentUpon>FormWorkerManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ZZZ\deneme.resx">
+      <DependentUpon>deneme.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="DataSet\IME.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -503,6 +512,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\resize.png" />
     <None Include="Resources\btnBackground.png" />
     <None Include="Resources\gradient2.jpg" />
     <None Include="Resources\icons8-Plus-32.png" />

@@ -309,7 +309,6 @@
           <Property Name="QuotationNo" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="RFQNo" Type="nvarchar" MaxLength="20" />
           <Property Name="CurrType" Type="nvarchar" MaxLength="15" />
-          <Property Name="version" Type="int" />
         </EntityType>
         <EntityType Name="QuotationDetail">
           <Key>
@@ -2349,7 +2348,6 @@
           <Property Name="QuotationNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="RFQNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="CurrType" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="version" Type="Int32" />
           <NavigationProperty Name="Customer" Relationship="IMEModel.FK__Quotation__Custo__00750D23" FromRole="Quotation" ToRole="Customer" />
           <NavigationProperty Name="Note" Relationship="IMEModel.FK__Quotation__NoteF__0169315C" FromRole="Quotation" ToRole="Note" />
           <NavigationProperty Name="Note1" Relationship="IMEModel.FK__Quotation__NoteF__025D5595" FromRole="Quotation" ToRole="Note" />
@@ -3748,7 +3746,6 @@
           <EntitySetMapping Name="Quotations">
             <EntityTypeMapping TypeName="IMEModel.Quotation">
               <MappingFragment StoreEntitySet="Quotation">
-                <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="CurrType" ColumnName="CurrType" />
                 <ScalarProperty Name="RFQNo" ColumnName="RFQNo" />
                 <ScalarProperty Name="QuotationNo" ColumnName="QuotationNo" />
