@@ -21,6 +21,7 @@ namespace LoginForm
         int selectedContactID;
         int contactnewID = 0;
         int isUpdateAdress;
+        bool isModify=false;
 
         public CustomerMain()
         {
@@ -40,6 +41,35 @@ namespace LoginForm
                 Search.Enabled = false;
                 btnCreate.Enabled = false;
                 btnUpdate.Enabled = false;
+                btnContactAdd.Enabled = false;
+                btnContactCancel.Enabled = false;
+                btnContactDelete.Enabled = false;
+                btnContactDone.Enabled = false;
+                btnContactUpdate.Enabled = false;
+                isModify = true;
+                QuotationCustomerSearch(CustomerID);
+
+            }
+        }
+
+        public CustomerMain(int x, string CustomerID)
+        {
+            //Qoutation Customer Details
+
+            InitializeComponent();
+            if (x==1)
+            {
+                CustomerDataGrid.Enabled = false;
+                txtSearch.Enabled = false;
+                Search.Enabled = false;
+                btnCreate.Enabled = false;
+                btnUpdate.Enabled = false;
+                btnContactAdd.Enabled = true;
+                btnContactCancel.Enabled = true;
+                btnContactDelete.Enabled = true;
+                btnContactDone.Enabled = true;
+                btnContactUpdate.Enabled = true;
+                tabControl1.SelectedTab = tab_contact;
                 QuotationCustomerSearch(CustomerID);
             }
         }
@@ -82,7 +112,10 @@ namespace LoginForm
             cbCountry.DisplayMember = "Country_name";
             
             #endregion
-            customersearch();
+            if (!isModify)
+            { 
+                customersearch();
+            }
         }
 
         private void CustomerDataGrid_Click(object sender, EventArgs e)
@@ -430,7 +463,7 @@ namespace LoginForm
         private void QuotationCustomerSearch(string search)
         {
             #region QuotationCustomerSearch
-            var customerAdapter = (from c in IME.Customers.Where(a => a.ID.Contains(search))
+            var customerAdapter = (from c in IME.Customers.Where(a => a.ID == search)
                                    join w in IME.Workers on c.representaryID equals w.WorkerID
                                    join customerworker in IME.CustomerWorkers on c.ID equals customerworker.customerID into customerworkeres
                                    let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()

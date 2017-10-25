@@ -61,7 +61,7 @@
             this.btnEditWorker.Primary = true;
             this.btnEditWorker.Size = new System.Drawing.Size(100, 48);
             this.btnEditWorker.TabIndex = 11;
-            this.btnEditWorker.Text = "Edit user";
+            this.btnEditWorker.Text = "Edıt user";
             this.btnEditWorker.UseVisualStyleBackColor = true;
             this.btnEditWorker.Click += new System.EventHandler(this.btnEditWorker_Click);
             // 
@@ -93,7 +93,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(793, 665);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(795, 673);
             this.tableLayoutPanel1.TabIndex = 13;
             // 
             // flowLayoutPanel1
@@ -103,7 +103,7 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(787, 69);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(789, 69);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // dgdg
@@ -135,7 +135,7 @@
             this.dgdg.ReadOnly = true;
             this.dgdg.RowTemplate.Height = 24;
             this.dgdg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgdg.Size = new System.Drawing.Size(787, 584);
+            this.dgdg.Size = new System.Drawing.Size(789, 592);
             this.dgdg.TabIndex = 3;
             // 
             // userNameDataGridViewTextBoxColumn1
@@ -196,9 +196,9 @@
             // 
             // FormWorkersMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(793, 665);
+            this.ClientSize = new System.Drawing.Size(795, 673);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);

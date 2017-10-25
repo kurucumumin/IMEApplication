@@ -51,6 +51,9 @@ namespace LoginForm.QuotationModule
             cbCurrency.DisplayMember = "CurType";
             cbCurrency.ValueMember = "ID";
             cbCurrency.SelectedIndex = 0;
+            comboBox6.DataSource = IME.CustomerWorkers.ToList();
+            comboBox6.DisplayMember = "cw_name";
+            comboBox6.ValueMember = "ID";
             CustomerCode.Enabled = false;
             modifyQuotation(q1);
         }
@@ -64,7 +67,10 @@ namespace LoginForm.QuotationModule
                 dgQuotationAddedItems.Rows[0].Cells[0].Value = 1.ToString();
                 LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
                 lblVat.Text = IME.Managements.FirstOrDefault().VAT.ToString();
-                #region ComboboxFiller
+                #region ComboboxFiller.
+                comboBox6.DataSource = IME.CustomerWorkers.ToList();
+                comboBox6.DisplayMember = "cw_name";
+                comboBox6.ValueMember = "ID";
                 cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList();
                 cbCurrency.DisplayMember = "CurType";
                 cbCurrency.ValueMember = "ID";
@@ -111,6 +117,7 @@ namespace LoginForm.QuotationModule
 
                 cbCurrency.SelectedIndex = cbCurrency.FindStringExact(c.CurrNameQuo);
                 cbCurrType.SelectedIndex = cbCurrType.FindStringExact(c.CurrTypeQuo);
+                comboBox6.SelectedIndex = comboBox6.FindStringExact(IME.CustomerWorkers.Where(a => a.ID == c.MainContactID).FirstOrDefault().cw_name);
                 if (c.paymentmethodID != null)
                 {
                     cbPayment.SelectedIndex = cbPayment.FindStringExact(c.PaymentMethod.Payment);
@@ -563,6 +570,9 @@ namespace LoginForm.QuotationModule
         {
 
             #region Filler
+            Rate currWeb = new Rate();
+            currWeb = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList().Where(b => b.CurType == "GBP").FirstOrDefault();
+            decimal CurrValueWeb = Decimal.Parse(curr.RateBuy.ToString());
             string ArticleNoSearch1 = ArticleNoSearch;
             try { ArticleNoSearch1 = (Int32.Parse(ArticleNoSearch)).ToString(); } catch { }
             //Seçili olan item ı text lere yazdıran fonksiyon yazılacak
@@ -676,6 +686,11 @@ namespace LoginForm.QuotationModule
                 txtCost3.Text = er.DiscountedPrice3.ToString();
                 txtCost4.Text = er.DiscountedPrice4.ToString();
                 txtCost5.Text = er.DiscountedPrice5.ToString();
+                txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
             }
             if (sp != null)
             {
@@ -696,6 +711,11 @@ namespace LoginForm.QuotationModule
                 txtCost3.Text = sp.DiscountedPrice3.ToString();
                 txtCost4.Text = sp.DiscountedPrice4.ToString();
                 txtCost5.Text = sp.DiscountedPrice5.ToString();
+                txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
                 txtSupersectionName.Text = sp.SupersectionName;
             }
             if (h != null)
@@ -1112,7 +1132,7 @@ namespace LoginForm.QuotationModule
                 q.CurrType = cbCurrType.SelectedText;
                 q.Curr = CurrValue;
                 q.CustomerID = CustomerCode.Text;
-               
+
                 IME.Quotations.Add(q);
                 IME.SaveChanges();
             }
@@ -1300,6 +1320,7 @@ namespace LoginForm.QuotationModule
             #region QuotationDetails
             cbCurrency.SelectedItem = q.CurrName;
             cbCurrType.SelectedItem = q.CurrType;
+            comboBox6.SelectedItem = q.Customer.MainContactID;
             foreach (var item in q.QuotationDetails)
             {
                 if (item.IsDeleted == 1)
@@ -1373,6 +1394,9 @@ namespace LoginForm.QuotationModule
         {
 
             #region Filler
+            Rate currWeb = new Rate();
+            currWeb = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList().Where(b => b.CurType == "GBP").FirstOrDefault();
+            decimal CurrValueWeb = Decimal.Parse(curr.RateBuy.ToString());
             string ArticleNoSearch1 = ArticleNoSearch;
             try { ArticleNoSearch1 = (Int32.Parse(ArticleNoSearch)).ToString(); } catch { }
             //Seçili olan item ı text lere yazdıran fonksiyon yazılacak
@@ -1486,6 +1510,11 @@ namespace LoginForm.QuotationModule
                 txtCost3.Text = er.DiscountedPrice3.ToString();
                 txtCost4.Text = er.DiscountedPrice4.ToString();
                 txtCost5.Text = er.DiscountedPrice5.ToString();
+                txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
             }
             if (sp != null)
             {
@@ -1507,6 +1536,11 @@ namespace LoginForm.QuotationModule
                 txtCost4.Text = sp.DiscountedPrice4.ToString();
                 txtCost5.Text = sp.DiscountedPrice5.ToString();
                 txtSupersectionName.Text = sp.SupersectionName;
+                txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
             }
             if (h != null)
             {
@@ -1756,5 +1790,43 @@ namespace LoginForm.QuotationModule
             QuotationDetailsSave();
         }
 
+        private void btnViewMore_Click(object sender, EventArgs e)
+        {
+            if (CustomerCode.Text==null)
+            {
+                MessageBox.Show("Customer not selected !", "Eror !");
+            }
+            else
+            {
+                CustomerMain f = new CustomerMain(true, CustomerCode.Text);
+                f.Show();
+            }
+        }
+
+        private void btnContactAdd_Click(object sender, EventArgs e)
+        {
+            if (CustomerCode.Text == null)
+            {
+                MessageBox.Show("Customer not selected !", "Eror !");
+            }
+            else
+            {
+                CustomerMain f = new CustomerMain(1, CustomerCode.Text);
+                f.Show();
+            }
+        }
+
+        private void btnContactUpdate_Click(object sender, EventArgs e)
+        {
+            if (CustomerCode.Text == null)
+            {
+                MessageBox.Show("Customer not selected !", "Eror !");
+            }
+            else
+            {
+                CustomerMain f = new CustomerMain(1, CustomerCode.Text);
+                f.Show();
+            }
+        }
     }
 }
