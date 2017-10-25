@@ -128,5 +128,43 @@ namespace LoginForm.QuotationModule
         {
             ModifyQuotation();
         }
+
+        private void btnDeleteQuotation_Click(object sender, EventArgs e)
+        {
+            if (dgQuotation.CurrentRow != null)
+            {
+                DialogResult result = MessageBox.Show("Selected quotation will be deleted! Do you confirm?", "Delete Quotation", MessageBoxButtons.OKCancel);
+
+                if (result == DialogResult.OK)
+                {
+                    try
+                    {
+                        string QuotationNo = dgQuotation.CurrentRow.Cells["QuotationNo"].Value.ToString();
+
+                        IMEEntities IME = new IMEEntities();
+                        Quotation quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
+
+                        quo.QuotationDetails.Clear();
+                        IME.SaveChanges();
+
+                        IME.Quotations.Remove(quo);
+                        IME.SaveChanges();
+
+                        bringQuotationList();
+
+                        MessageBox.Show("Quotation is successfully deleted.", "Success!");
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("An error was encountered", "Error!");
+                        throw;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("You did not chose any quotation.", "Warning!");
+            }
+        }
     }
 }
