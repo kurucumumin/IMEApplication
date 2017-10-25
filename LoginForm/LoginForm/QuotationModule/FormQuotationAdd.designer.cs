@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -36,7 +37,7 @@
             this.label35 = new System.Windows.Forms.Label();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtTotalMargin = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.dgQuotationAddedItems = new System.Windows.Forms.DataGridView();
@@ -321,7 +322,7 @@
             this.groupBox5.Controls.Add(this.label35);
             this.groupBox5.Controls.Add(this.textBox11);
             this.groupBox5.Controls.Add(this.textBox10);
-            this.groupBox5.Controls.Add(this.textBox9);
+            this.groupBox5.Controls.Add(this.txtTotalMargin);
             this.groupBox5.Controls.Add(this.button8);
             this.groupBox5.Controls.Add(this.button7);
             this.groupBox5.Controls.Add(this.dgQuotationAddedItems);
@@ -368,14 +369,14 @@
             this.textBox10.Text = "0,00";
             this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox9
+            // txtTotalMargin
             // 
-            this.textBox9.Location = new System.Drawing.Point(293, 244);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(68, 20);
-            this.textBox9.TabIndex = 4;
-            this.textBox9.Text = "Nan %";
-            this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTotalMargin.Location = new System.Drawing.Point(293, 244);
+            this.txtTotalMargin.Name = "txtTotalMargin";
+            this.txtTotalMargin.Size = new System.Drawing.Size(68, 20);
+            this.txtTotalMargin.TabIndex = 4;
+            this.txtTotalMargin.Text = "Nan %";
+            this.txtTotalMargin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // button8
             // 
@@ -2463,11 +2464,13 @@
             // HS
             // 
             this.HS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            this.HS.DefaultCellStyle = dataGridViewCellStyle1;
             this.HS.HeaderText = "HS";
             this.HS.Name = "HS";
             this.HS.ReadOnly = true;
             this.HS.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.HS.Width = 20;
+            this.HS.Width = 25;
             // 
             // LI
             // 
@@ -2476,7 +2479,7 @@
             this.LI.Name = "LI";
             this.LI.ReadOnly = true;
             this.LI.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.LI.Width = 20;
+            this.LI.Width = 25;
             // 
             // CL
             // 
@@ -2485,7 +2488,7 @@
             this.CL.Name = "CL";
             this.CL.ReadOnly = true;
             this.CL.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.CL.Width = 20;
+            this.CL.Width = 25;
             // 
             // LC
             // 
@@ -2494,7 +2497,7 @@
             this.LC.Name = "LC";
             this.LC.ReadOnly = true;
             this.LC.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.LC.Width = 20;
+            this.LC.Width = 25;
             // 
             // LM
             // 
@@ -2503,7 +2506,7 @@
             this.LM.Name = "LM";
             this.LM.ReadOnly = true;
             this.LM.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.LM.Width = 20;
+            this.LM.Width = 25;
             // 
             // dgSupplier
             // 
@@ -2549,6 +2552,7 @@
             this.dgLM.HeaderText = "LM";
             this.dgLM.Name = "dgLM";
             this.dgLM.ReadOnly = true;
+            this.dgLM.Visible = false;
             // 
             // dgCost
             // 
@@ -2782,7 +2786,7 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txtTotalMargin;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.GroupBox groupBox6;
