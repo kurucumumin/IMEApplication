@@ -1,4 +1,5 @@
 ﻿using LoginForm.DataSet;
+using LoginForm.ZZZ;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -24,6 +25,8 @@ namespace LoginForm.QuotationModule
             this.Hide();
             FormQuotationAdd quotationForm = new FormQuotationAdd();
             quotationForm.ShowDialog();
+            //deneme quotationForm = new deneme();
+            //quotationForm.Show();
             this.Show();
         }
 
