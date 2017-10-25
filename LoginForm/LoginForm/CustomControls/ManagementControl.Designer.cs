@@ -60,6 +60,7 @@
             // 
             // panel31
             // 
+            this.panel31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel31.Controls.Add(this.txtVAT);
             this.panel31.Controls.Add(this.lblVAT);
             this.panel31.Controls.Add(this.btnRolesAuthorities);
@@ -76,7 +77,7 @@
             // txtVAT
             // 
             this.txtVAT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtVAT.Location = new System.Drawing.Point(193, 71);
+            this.txtVAT.Location = new System.Drawing.Point(191, 71);
             this.txtVAT.Margin = new System.Windows.Forms.Padding(3, 3, 16, 3);
             this.txtVAT.Name = "txtVAT";
             this.txtVAT.Size = new System.Drawing.Size(125, 24);
@@ -100,10 +101,10 @@
             this.btnRolesAuthorities.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
             this.btnRolesAuthorities.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRolesAuthorities.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRolesAuthorities.Location = new System.Drawing.Point(0, 416);
+            this.btnRolesAuthorities.Location = new System.Drawing.Point(0, 414);
             this.btnRolesAuthorities.Margin = new System.Windows.Forms.Padding(0);
             this.btnRolesAuthorities.Name = "btnRolesAuthorities";
-            this.btnRolesAuthorities.Size = new System.Drawing.Size(334, 59);
+            this.btnRolesAuthorities.Size = new System.Drawing.Size(332, 59);
             this.btnRolesAuthorities.TabIndex = 5;
             this.btnRolesAuthorities.Text = "Roles and Authorities";
             this.btnRolesAuthorities.UseVisualStyleBackColor = false;
@@ -116,10 +117,10 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(0, 498);
+            this.btnSave.Location = new System.Drawing.Point(0, 496);
             this.btnSave.Margin = new System.Windows.Forms.Padding(0);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(334, 55);
+            this.btnSave.Size = new System.Drawing.Size(332, 55);
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -128,7 +129,7 @@
             // txtLowMarginLimit
             // 
             this.txtLowMarginLimit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtLowMarginLimit.Location = new System.Drawing.Point(193, 27);
+            this.txtLowMarginLimit.Location = new System.Drawing.Point(191, 27);
             this.txtLowMarginLimit.Margin = new System.Windows.Forms.Padding(3, 3, 16, 3);
             this.txtLowMarginLimit.Name = "txtLowMarginLimit";
             this.txtLowMarginLimit.Size = new System.Drawing.Size(125, 24);
