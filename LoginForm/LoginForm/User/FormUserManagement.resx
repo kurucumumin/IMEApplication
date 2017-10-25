@@ -1006,7 +1006,7 @@
     <value>1375, 681</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Worker Management</value>
+    <value>User Management</value>
   </data>
   <data name="&gt;&gt;roleValueBindingSource.Name" xml:space="preserve">
     <value>roleValueBindingSource</value>

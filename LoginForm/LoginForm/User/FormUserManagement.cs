@@ -3,20 +3,19 @@ using LoginForm.Services;
 using System;
 using System.Windows.Forms;
 using System.Linq;
-using LoginForm.RolesAndAuths;
 using System.Collections.Generic;
 
-namespace LoginForm.WorkerManagement
+namespace LoginForm.User
 {
     public partial class FormWorkerManagement : Form
     {
         bool isEditMode = false;
         Worker worker;
-        FormWorkersMain upperForm;
+        FormUserMain upperForm;
         FormMain formMain;
         List<AuthorizationValue> authList;
 
-        public FormWorkerManagement(FormWorkersMain form)
+        public FormWorkerManagement(FormUserMain form)
         {
             InitializeComponent();
             authList = new List<AuthorizationValue>();
@@ -25,7 +24,7 @@ namespace LoginForm.WorkerManagement
             this.upperForm = form;
             //LoadAuthorities();
         }
-        public FormWorkerManagement(FormMain formMain ,Worker worker, FormWorkersMain form)
+        public FormWorkerManagement(FormMain formMain ,Worker worker, FormUserMain form)
         {
             InitializeComponent();
             this.worker = worker;

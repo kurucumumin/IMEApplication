@@ -1,4 +1,4 @@
-﻿namespace LoginForm.WorkerManagement
+﻿namespace LoginForm.User
 {
     partial class FormWorkerManagement
     {

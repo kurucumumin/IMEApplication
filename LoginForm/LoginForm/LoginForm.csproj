@@ -355,11 +355,11 @@
     <Compile Include="QuotationModule\FormQuotationMain.Designer.cs">
       <DependentUpon>FormQuotationMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Worker\FormWorkersMain.cs">
+    <Compile Include="User\FormUsersMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Worker\FormWorkersMain.Designer.cs">
-      <DependentUpon>FormWorkersMain.cs</DependentUpon>
+    <Compile Include="User\FormUsersMain.Designer.cs">
+      <DependentUpon>FormUsersMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Services\AddressService.cs" />
     <Compile Include="Services\AuthorizationService.cs" />
@@ -395,11 +395,11 @@
     <Compile Include="Management\FormRoleAuth.Designer.cs">
       <DependentUpon>FormRoleAuth.cs</DependentUpon>
     </Compile>
-    <Compile Include="Worker\FormWorkerManagement.cs">
+    <Compile Include="User\FormUserManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Worker\FormWorkerManagement.Designer.cs">
-      <DependentUpon>FormWorkerManagement.cs</DependentUpon>
+    <Compile Include="User\FormUserManagement.Designer.cs">
+      <DependentUpon>FormUserManagement.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="CustomerManager\AddressBook.resx">
       <DependentUpon>AddressBook.cs</DependentUpon>
@@ -456,8 +456,8 @@
     <EmbeddedResource Include="QuotationModule\FormQuotationMain.resx">
       <DependentUpon>FormQuotationMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Worker\FormWorkersMain.resx">
-      <DependentUpon>FormWorkersMain.cs</DependentUpon>
+    <EmbeddedResource Include="User\FormUsersMain.resx">
+      <DependentUpon>FormUsersMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier\SupplierDepartmentAdd.resx">
       <DependentUpon>SupplierDepartmentAdd.cs</DependentUpon>
@@ -471,8 +471,8 @@
     <EmbeddedResource Include="Management\FormRoleAuth.resx">
       <DependentUpon>FormRoleAuth.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Worker\FormWorkerManagement.resx">
-      <DependentUpon>FormWorkerManagement.cs</DependentUpon>
+    <EmbeddedResource Include="User\FormUserManagement.resx">
+      <DependentUpon>FormUserManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="DataSet\IME.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

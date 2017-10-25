@@ -1,6 +1,6 @@
-﻿namespace LoginForm.RolesAndAuths
+﻿namespace LoginForm.User
 {
-    partial class FormWorkersMain
+    partial class FormUserMain
     {
         /// <summary>
         /// Required designer variable.
@@ -194,17 +194,17 @@
             // 
             this.workerBindingSource.DataSource = typeof(LoginForm.DataSet.Worker);
             // 
-            // FormWorkersMain
+            // FormUserMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(795, 673);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(811, 712);
-            this.Name = "FormWorkersMain";
-            this.Text = "Workers";
+            this.Name = "FormUserMain";
+            this.Text = "Users";
             this.Load += new System.EventHandler(this.FormRoles_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);

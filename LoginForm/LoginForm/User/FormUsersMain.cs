@@ -6,13 +6,13 @@ using MaterialSkin;
 using MaterialSkin.Controls;
 using System.Windows.Forms;
 
-namespace LoginForm.RolesAndAuths
+namespace LoginForm.User
 {
     //public partial class FormRoles : MaterialForm
-    public partial class FormWorkersMain : Form
+    public partial class FormUserMain : Form
     {
         FormMain mainForm;
-        public FormWorkersMain(FormMain mainForm)
+        public FormUserMain(FormMain mainForm)
         {
             InitializeComponent();
             this.mainForm = mainForm;

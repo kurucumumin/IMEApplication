@@ -267,7 +267,7 @@
             this.btnWorker.Name = "btnWorker";
             this.btnWorker.Size = new System.Drawing.Size(144, 111);
             this.btnWorker.TabIndex = 31;
-            this.btnWorker.Text = "Worker";
+            this.btnWorker.Text = "User";
             this.btnWorker.UseVisualStyleBackColor = false;
             this.btnWorker.Click += new System.EventHandler(this.btnWorker_Click);
             // 

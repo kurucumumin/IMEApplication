@@ -8,8 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.QuotationModule;
-using LoginForm.RolesAndAuths;
 using LoginForm.Item;
+using LoginForm.User;
 
 namespace LoginForm.CustomControls
 {
@@ -41,7 +41,7 @@ namespace LoginForm.CustomControls
         private void btnWorker_Click(object sender, EventArgs e)
         {
             FormMain formMain = (FormMain) this.Parent.Parent.Parent;
-            FormWorkersMain roles = new FormWorkersMain(formMain);
+            FormUserMain roles = new FormUserMain(formMain);
             roles.Show();
         }
 
