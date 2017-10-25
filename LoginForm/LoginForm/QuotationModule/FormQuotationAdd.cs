@@ -56,6 +56,7 @@ namespace LoginForm.QuotationModule
             comboBox6.ValueMember = "ID";
             CustomerCode.Enabled = false;
             button9.Enabled = false;
+            
             modifyQuotation(q1);
         }
 
@@ -1123,7 +1124,11 @@ namespace LoginForm.QuotationModule
                     {
                         try
                         {
-                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgDisc"].Value = decimal.Parse(txtTotalDis.Text);
+                            decimal disc = Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgDisc"].Value.ToString());
+                            decimal ItemTotal = Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotal"].Value.ToString());
+                            decimal newTotal = (ItemTotal - (ItemTotal * disc / 100));
+                            decimal Disc1 = (ItemTotal * 100) / (100 - disc);
+                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgDisc"].Value = -((newTotal * 100 / Disc1)-100);
                             GetQuotationQuantity(i);
                         }
                         catch { }
@@ -1134,6 +1139,8 @@ namespace LoginForm.QuotationModule
             {
                 txtTotalDis.Text = 0.ToString();
             }
+            lbltotal.Text = (Decimal.Parse(lbltotal.Text) - Decimal.Parse(txtTotalDis2.Text)).ToString();
+           // GetAllMargin();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -1183,29 +1190,28 @@ namespace LoginForm.QuotationModule
         private void QuotationSave(string QuoNo)
         {
             IMEEntities IME = new IMEEntities();
-            try
-            {
+            
                 Quotation q1 = IME.Quotations.Where(a => a.QuotationNo.Contains(QuoNo)).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
 
 
 
-                if (q1.QuotationNo.Contains("v"))
-                {
-                    int quoID = Int32.Parse(q1.QuotationNo.Substring(q1.QuotationNo.LastIndexOf('v') + 1)) + 1;
-                    txtQuotationNo.Text = (q1.QuotationNo.Substring(q1.QuotationNo.IndexOf('v') + 1) + quoID).ToString();
-                    int charLocation = q1.QuotationNo.IndexOf("v", StringComparison.Ordinal);
+                //if (q1.QuotationNo.Contains("v"))
+                //{
+                //    int quoID = Int32.Parse(q1.QuotationNo.Substring(q1.QuotationNo.LastIndexOf('v') + 1)) + 1;
+                //    txtQuotationNo.Text = (q1.QuotationNo.Substring(q1.QuotationNo.IndexOf('v') + 1) + quoID).ToString();
+                //    int charLocation = q1.QuotationNo.IndexOf("v", StringComparison.Ordinal);
 
-                    if (charLocation > 0)
-                    {
-                        txtQuotationNo.Text = txtQuotationNo.Text.Substring(0, charLocation) + quoID.ToString();
-                    }
+                //    if (charLocation > 0)
+                //    {
+                //        txtQuotationNo.Text = txtQuotationNo.Text.Substring(0, charLocation) + quoID.ToString();
+                //    }
 
 
-                }
-                else
-                {
-                    txtQuotationNo.Text = q1.QuotationNo + "v1";
-                }
+                //}
+                //else
+                //{
+                //    txtQuotationNo.Text = q1.QuotationNo + "v1";
+                //}
 
 
                 Quotation q = new Quotation();
@@ -1240,52 +1246,43 @@ namespace LoginForm.QuotationModule
 
                 IME.Quotations.Add(q);
                 IME.SaveChanges();
-            }
-            catch
-            {
-
-                MessageBox.Show("Error Occured", "Failure");
-            }
-
         }
 
         private void QuotationDetailsSave()
         {
             IMEEntities IME = new IMEEntities();
-            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+            try
             {
-                if (dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value != null)
+                for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
                 {
-                    QuotationDetail qd = new QuotationDetail();
-                    qd.QuotationNo = txtQuotationNo.Text;
-                    try { qd.RFQNo = txtRFQNo.Text; } catch { }
-                    try { qd.dgNo = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgNo"].Value.ToString()); } catch { }
-                    try { qd.ItemCode = dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(); } catch { }
-                    try { qd.Qty = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString()); } catch { }
-                    try { qd.UCUPCurr = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()); } catch { }
-                    try { qd.Disc = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value.ToString()); } catch { }
-                    try { qd.Total = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString()); } catch { }
-                    try { qd.TargetUP = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].Value.ToString()); } catch { }
-                    try { qd.Competitor = dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].Value.ToString(); } catch { }
-                    try { qd.CustomerDescription = dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].Value.ToString(); } catch { }
-                    try { qd.CustomerStockCode = dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].Value.ToString(); }
-                    catch { }
-                    try
+                    if (dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value != null)
                     {
+                        QuotationDetail qd = new QuotationDetail();
+                        qd.QuotationNo = txtQuotationNo.Text;
+                        try { qd.RFQNo = txtRFQNo.Text; } catch { }
+                        try { qd.dgNo = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgNo"].Value.ToString()); } catch { }
+                        try { qd.ItemCode = dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(); } catch { }
+                        try { qd.Qty = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString()); } catch { }
+                        try { qd.UCUPCurr = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()); } catch { }
+                        try { qd.Disc = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value.ToString()); } catch { }
+                        try { qd.Total = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString()); } catch { }
+                        try { qd.TargetUP = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].Value.ToString()); } catch { }
+                        try { qd.Competitor = dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].Value.ToString(); } catch { }
+                        try { qd.CustomerDescription = dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].Value.ToString(); } catch { }
+                        try { qd.CustomerStockCode = dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].Value.ToString(); }
+                        catch { }
                         IME.QuotationDetails.Add(qd);
                         IME.SaveChanges();
 
                     }
-                    catch
-                    {
-                        MessageBox.Show("Error Occured", "Failure");
-                        this.Close();
-                    }
 
                 }
-
             }
-
+            catch
+            {
+                MessageBox.Show("Error Occured", "Failure");
+                this.Close();
+            }
             for (int i = 0; i < dgQuotationDeleted.RowCount; i++)
             {
                 if (dgQuotationDeleted.Rows[i].Cells["dgProductCode1"].Value != null)
@@ -1422,13 +1419,27 @@ namespace LoginForm.QuotationModule
                 dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[0].Value = (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 2].Cells[0].Value.ToString()) + 1).ToString();
             }
             else { dgQuotationAddedItems.Rows[0].Cells[0].Value = 1.ToString(); }
+
             //}
             //else
             //{
             //    dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[0].Value = (Int32.Parse(dgQuotationDeleted.Rows[dgQuotationDeleted.RowCount - 2].Cells[0].Value.ToString()) + 1).ToString();
 
             //}
+            string q1 = q.QuotationNo;
+            while (IME.Quotations.Where(a => a.QuotationNo == q1).ToList().Count > 0)
+            {
 
+                if (q.QuotationNo.Contains("v"))
+                {
+                    int quoID = Int32.Parse(q1.Substring(q.QuotationNo.LastIndexOf('v') + 1)) + 1;
+
+                    q1 = (q.QuotationNo.Substring(0, q.QuotationNo.IndexOf('v') + 1)).ToString();
+
+                    q1 = q1 + quoID.ToString();
+                }
+            }
+            txtQuotationNo.Text = q1;
         }
 
         private void QuotataionModifyItemDetailsFiller(string ArticleNoSearch, int RowIndex)
@@ -1740,7 +1751,6 @@ namespace LoginForm.QuotationModule
                 catch { }
             }
             lblsubtotal.Text = SubTotalTotal.ToString();
-            //lblsubtotal.Text = SubTotalTotal.ToString("G29");
 
         }
 
@@ -1780,23 +1790,6 @@ namespace LoginForm.QuotationModule
             catch { }
         }
 
-        //private void FormQuotationAdd_KeyDown(object sender, KeyEventArgs e)
-        //{
-        //    if (e.KeyCode == Keys.F2)
-        //    {
-        //        QuotationSave();
-        //        QuotationDetailsSave();
-        //    }
-        //    else if (e.KeyCode == Keys.F3)
-        //    {
-        //        FormMain f = new FormMain();
-        //        if (MessageBox.Show("Are You Sure To Exit Programme ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
-        //        {
-        //            f.Show();
-        //            this.Close();
-        //        }
-        //    }
-        //}
         private string NewQuotationID()
         {
             IMEEntities IME = new IMEEntities();
@@ -1805,35 +1798,39 @@ namespace LoginForm.QuotationModule
             Quotation quo = IME.Quotations.OrderByDescending(q => q.QuotationNo).FirstOrDefault();
             string q1 = "";
             q1 = quo.QuotationNo;
-            if (quo.QuotationNo.Contains("v"))
+            while (IME.Quotations.Where(a => a.QuotationNo == q1).ToList().Count > 0)
             {
-                int quoID = Int32.Parse(q1.Substring(quo.QuotationNo.LastIndexOf('/') + 1, (quo.QuotationNo.LastIndexOf('v') + 1) - (quo.QuotationNo.LastIndexOf('/') + 1) - 1)) + 1;
+                
+                if (quo.QuotationNo.Contains("v"))
+                {
+                    int quoID = Int32.Parse(q1.Substring(quo.QuotationNo.LastIndexOf('/') + 1, (quo.QuotationNo.LastIndexOf('v') + 1) - (quo.QuotationNo.LastIndexOf('/') + 1) - 1)) + 1;
 
-                q1 = (quo.QuotationNo.Substring(0, quo.QuotationNo.IndexOf('/') + 1)).ToString();
+                    q1 = (quo.QuotationNo.Substring(0, quo.QuotationNo.IndexOf('/') + 1)).ToString();
 
-                q1 = q1 + quoID.ToString();
+                    q1 = q1 + quoID.ToString();
 
+                }
             }
-            //if (q1 != null&& q1!="")
-            //{
-            //    ID = Convert.ToInt32(q1.Substring(quo.QuotationNo.LastIndexOf('/')));
-            //    ID++;
-            //}
-            //else { ID = 1; }
-
-
-            //string qNo = DateTime.Now.Year.ToString() + "/" + ID.ToString();
-
+            
+          
             return q1;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string newID= NewQuotationID();
-            if (txtQuotationNo.Text != newID) { txtQuotationNo.Text = newID; }
-            QuotationSave(txtQuotationNo.Text);
-            QuotationDetailsSave();
-        }
+            try
+            {
+                //string newID = NewQuotationID();
+                //if (txtQuotationNo.Text != newID) { txtQuotationNo.Text = newID; }
+                QuotationSave(txtQuotationNo.Text);
+                QuotationDetailsSave();
+            }
+            catch
+            {
+
+                MessageBox.Show("Error Occured", "Failure");
+            }
+}
 
         private void CustomerCode_MouseDoubleClick(object sender, MouseEventArgs e)
         {
