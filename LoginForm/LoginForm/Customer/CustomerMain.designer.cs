@@ -1019,11 +1019,11 @@
             // btnContactDelete
             // 
             this.btnContactDelete.Enabled = false;
-            this.btnContactDelete.Location = new System.Drawing.Point(632, 234);
+            this.btnContactDelete.Location = new System.Drawing.Point(637, 233);
             this.btnContactDelete.Name = "btnContactDelete";
-            this.btnContactDelete.Size = new System.Drawing.Size(36, 25);
+            this.btnContactDelete.Size = new System.Drawing.Size(43, 25);
             this.btnContactDelete.TabIndex = 31;
-            this.btnContactDelete.Text = "Del";
+            this.btnContactDelete.Text = "Dlt";
             this.btnContactDelete.UseVisualStyleBackColor = true;
             this.btnContactDelete.Click += new System.EventHandler(this.btnContactDelete_Click);
             // 
@@ -1032,7 +1032,7 @@
             this.btnContactUpdate.Enabled = false;
             this.btnContactUpdate.Location = new System.Drawing.Point(590, 234);
             this.btnContactUpdate.Name = "btnContactUpdate";
-            this.btnContactUpdate.Size = new System.Drawing.Size(36, 25);
+            this.btnContactUpdate.Size = new System.Drawing.Size(46, 25);
             this.btnContactUpdate.TabIndex = 30;
             this.btnContactUpdate.Text = "Upd";
             this.btnContactUpdate.UseVisualStyleBackColor = true;
@@ -1043,7 +1043,7 @@
             this.btnContactAdd.Enabled = false;
             this.btnContactAdd.Location = new System.Drawing.Point(548, 234);
             this.btnContactAdd.Name = "btnContactAdd";
-            this.btnContactAdd.Size = new System.Drawing.Size(36, 25);
+            this.btnContactAdd.Size = new System.Drawing.Size(43, 25);
             this.btnContactAdd.TabIndex = 2;
             this.btnContactAdd.Text = "Add";
             this.btnContactAdd.UseVisualStyleBackColor = true;
@@ -1277,7 +1277,7 @@
             // 
             this.btnContactCancel.Location = new System.Drawing.Point(611, 235);
             this.btnContactCancel.Name = "btnContactCancel";
-            this.btnContactCancel.Size = new System.Drawing.Size(57, 23);
+            this.btnContactCancel.Size = new System.Drawing.Size(74, 23);
             this.btnContactCancel.TabIndex = 34;
             this.btnContactCancel.Text = "Cancel";
             this.btnContactCancel.UseVisualStyleBackColor = true;

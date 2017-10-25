@@ -317,7 +317,7 @@ namespace LoginForm.Item
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(168, 140);
             this.groupBox1.TabIndex = 265;
             this.groupBox1.TabStop = false;
@@ -473,7 +473,7 @@ namespace LoginForm.Item
             this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox9.Location = new System.Drawing.Point(3, 247);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox9.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox9.Size = new System.Drawing.Size(236, 76);
             this.groupBox9.TabIndex = 281;
             this.groupBox9.TabStop = false;
@@ -561,6 +561,7 @@ namespace LoginForm.Item
             // 
             // groupBox4
             // 
+            this.groupBox4.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.groupBox4.Controls.Add(this.txtExpiringPro);
             this.groupBox4.Controls.Add(this.txtHazardousInd);
             this.groupBox4.Controls.Add(this.txtDiscCharge);
@@ -581,7 +582,7 @@ namespace LoginForm.Item
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(164, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox4.Size = new System.Drawing.Size(75, 238);
             this.groupBox4.TabIndex = 274;
             this.groupBox4.TabStop = false;
@@ -799,7 +800,7 @@ namespace LoginForm.Item
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.Location = new System.Drawing.Point(3, 100);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox5.Size = new System.Drawing.Size(155, 141);
             this.groupBox5.TabIndex = 274;
             this.groupBox5.TabStop = false;
@@ -915,9 +916,9 @@ namespace LoginForm.Item
             this.label36.ImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.label36.Location = new System.Drawing.Point(4, 115);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(68, 17);
+            this.label36.Size = new System.Drawing.Size(69, 17);
             this.label36.TabIndex = 259;
-            this.label36.Text = "On Order";
+            this.label36.Text = "Reserved";
             this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // groupBox8
@@ -933,7 +934,7 @@ namespace LoginForm.Item
             this.groupBox8.Location = new System.Drawing.Point(0, 0);
             this.groupBox8.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox8.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox8.Size = new System.Drawing.Size(161, 97);
             this.groupBox8.TabIndex = 273;
             this.groupBox8.TabStop = false;
@@ -1300,7 +1301,7 @@ namespace LoginForm.Item
             this.groupPrices.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupPrices.Location = new System.Drawing.Point(3, 42);
             this.groupPrices.Name = "groupPrices";
-            this.groupPrices.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupPrices.Padding = new System.Windows.Forms.Padding(2);
             this.groupPrices.Size = new System.Drawing.Size(309, 192);
             this.groupPrices.TabIndex = 271;
             this.groupPrices.TabStop = false;
@@ -1656,7 +1657,7 @@ namespace LoginForm.Item
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.Location = new System.Drawing.Point(8, 31);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(296, 149);
             this.pictureBox1.TabIndex = 294;
@@ -1711,7 +1712,7 @@ namespace LoginForm.Item
             this.panel1.Controls.Add(this.Price1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(2, 2);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(311, 35);
             this.panel1.TabIndex = 0;
@@ -1770,7 +1771,7 @@ namespace LoginForm.Item
             this.tblBRight.Controls.Add(this.tableLayoutPanel1, 0, 0);
             this.tblBRight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblBRight.Location = new System.Drawing.Point(695, 2);
-            this.tblBRight.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tblBRight.Margin = new System.Windows.Forms.Padding(2);
             this.tblBRight.Name = "tblBRight";
             this.tblBRight.RowCount = 2;
             this.tblBRight.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
@@ -1787,7 +1788,7 @@ namespace LoginForm.Item
             this.tblBottom.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tblBottom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblBottom.Location = new System.Drawing.Point(2, 139);
-            this.tblBottom.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tblBottom.Margin = new System.Windows.Forms.Padding(2);
             this.tblBottom.Name = "tblBottom";
             this.tblBottom.RowCount = 1;
             this.tblBottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1819,7 +1820,7 @@ namespace LoginForm.Item
             this.tableLayoutPanel3.Controls.Add(this.btnUpdateNote, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 328);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1830,7 +1831,7 @@ namespace LoginForm.Item
             // 
             this.txtNote.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtNote.Location = new System.Drawing.Point(6, 6);
-            this.txtNote.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtNote.Margin = new System.Windows.Forms.Padding(6);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(527, 93);
@@ -1907,7 +1908,7 @@ namespace LoginForm.Item
             this.groupBox6.Location = new System.Drawing.Point(0, 0);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox6.Size = new System.Drawing.Size(277, 326);
             this.groupBox6.TabIndex = 272;
             this.groupBox6.TabStop = false;
@@ -2007,13 +2008,13 @@ namespace LoginForm.Item
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(2, 148);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(170, 176);
             this.groupBox2.TabIndex = 275;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Dimentions";
+            this.groupBox2.Text = "Dimensions";
             // 
             // rbItemNotes
             // 
@@ -2128,7 +2129,7 @@ namespace LoginForm.Item
             this.tblTop.Controls.Add(this.panelSearch, 0, 0);
             this.tblTop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblTop.Location = new System.Drawing.Point(2, 2);
-            this.tblTop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tblTop.Margin = new System.Windows.Forms.Padding(2);
             this.tblTop.Name = "tblTop";
             this.tblTop.RowCount = 1;
             this.tblTop.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -2153,7 +2154,7 @@ namespace LoginForm.Item
             this.tblMain.Controls.Add(this.tblBottom, 0, 1);
             this.tblMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblMain.Location = new System.Drawing.Point(0, 0);
-            this.tblMain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tblMain.Margin = new System.Windows.Forms.Padding(2);
             this.tblMain.Name = "tblMain";
             this.tblMain.RowCount = 2;
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.79471F));

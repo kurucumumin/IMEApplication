@@ -285,6 +285,8 @@
             this.cbSMethod = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtAccountingNote = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -331,7 +333,7 @@
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 180F));
@@ -347,14 +349,14 @@
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(6, 186);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(6);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.dgQuotationAddedItems);
-            this.splitContainer1.Panel1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.splitContainer1.Panel1.Margin = new System.Windows.Forms.Padding(3);
             this.splitContainer1.Panel1MinSize = 80;
             // 
             // splitContainer1.Panel2
@@ -1000,7 +1002,7 @@
             this.panel2.Controls.Add(this.textBox10);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(2, 2);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1334, 45);
             this.panel2.TabIndex = 0;
@@ -1075,7 +1077,7 @@
             this.tabControl1.Controls.Add(this.tabItemDetails);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(2, 2);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1350, 176);
@@ -1083,15 +1085,17 @@
             // 
             // tabCustomerDetails
             // 
+            this.tabCustomerDetails.Controls.Add(this.txtAccountingNote);
+            this.tabCustomerDetails.Controls.Add(this.label9);
             this.tabCustomerDetails.Controls.Add(this.groupBox1);
             this.tabCustomerDetails.Controls.Add(this.txtContactNote);
             this.tabCustomerDetails.Controls.Add(this.txtCustomerNote);
             this.tabCustomerDetails.Controls.Add(this.label16);
             this.tabCustomerDetails.Controls.Add(this.label15);
             this.tabCustomerDetails.Location = new System.Drawing.Point(4, 22);
-            this.tabCustomerDetails.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabCustomerDetails.Margin = new System.Windows.Forms.Padding(2);
             this.tabCustomerDetails.Name = "tabCustomerDetails";
-            this.tabCustomerDetails.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabCustomerDetails.Padding = new System.Windows.Forms.Padding(2);
             this.tabCustomerDetails.Size = new System.Drawing.Size(1342, 150);
             this.tabCustomerDetails.TabIndex = 0;
             this.tabCustomerDetails.Text = "Customer Details";
@@ -1140,7 +1144,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(480, 8);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(59, 46);
             this.button2.TabIndex = 76;
@@ -1152,7 +1156,7 @@
             // 
             this.txtCustomerName.Enabled = false;
             this.txtCustomerName.Location = new System.Drawing.Point(186, 9);
-            this.txtCustomerName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCustomerName.Margin = new System.Windows.Forms.Padding(4);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(288, 20);
             this.txtCustomerName.TabIndex = 75;
@@ -1497,10 +1501,10 @@
             this.tabItemDetails.Controls.Add(this.label50);
             this.tabItemDetails.Controls.Add(this.label57);
             this.tabItemDetails.Location = new System.Drawing.Point(4, 22);
-            this.tabItemDetails.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabItemDetails.Margin = new System.Windows.Forms.Padding(2);
             this.tabItemDetails.Name = "tabItemDetails";
-            this.tabItemDetails.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabItemDetails.Size = new System.Drawing.Size(1341, 151);
+            this.tabItemDetails.Padding = new System.Windows.Forms.Padding(2);
+            this.tabItemDetails.Size = new System.Drawing.Size(1342, 150);
             this.tabItemDetails.TabIndex = 1;
             this.tabItemDetails.Text = "Item Details";
             this.tabItemDetails.UseVisualStyleBackColor = true;
@@ -2470,7 +2474,7 @@
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(2, 597);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1350, 134);
             this.panel1.TabIndex = 58;
@@ -2665,7 +2669,7 @@
             // 
             this.txtExtraChanges.Location = new System.Drawing.Point(96, 52);
             this.txtExtraChanges.Name = "txtExtraChanges";
-            this.txtExtraChanges.Size = new System.Drawing.Size(54, 20);
+            this.txtExtraChanges.Size = new System.Drawing.Size(105, 20);
             this.txtExtraChanges.TabIndex = 20;
             this.txtExtraChanges.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtExtraChanges.TextChanged += new System.EventHandler(this.txtExtraChanges_TextChanged);
@@ -2819,6 +2823,22 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(404, 36);
             this.textBox2.TabIndex = 0;
+            // 
+            // txtAccountingNote
+            // 
+            this.txtAccountingNote.Location = new System.Drawing.Point(975, 17);
+            this.txtAccountingNote.Multiline = true;
+            this.txtAccountingNote.Name = "txtAccountingNote";
+            this.txtAccountingNote.Size = new System.Drawing.Size(254, 45);
+            this.txtAccountingNote.TabIndex = 77;
+            // 
+            // label9
+            // 
+            this.label9.Location = new System.Drawing.Point(894, 21);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(73, 30);
+            this.label9.TabIndex = 76;
+            this.label9.Text = "Accounting Note";
             // 
             // FormQuotationAdd
             // 
@@ -3120,5 +3140,7 @@
         private System.Windows.Forms.ComboBox cbSMethod;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtAccountingNote;
+        private System.Windows.Forms.Label label9;
     }
 }

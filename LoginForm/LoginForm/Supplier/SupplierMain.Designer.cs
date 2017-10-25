@@ -360,7 +360,7 @@ namespace LoginForm
             this.tabaccount.Padding = new System.Windows.Forms.Padding(3);
             this.tabaccount.Size = new System.Drawing.Size(911, 176);
             this.tabaccount.TabIndex = 1;
-            this.tabaccount.Text = "Acount";
+            this.tabaccount.Text = "Account";
             this.tabaccount.UseVisualStyleBackColor = true;
             // 
             // txtAccountNotes
