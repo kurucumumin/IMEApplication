@@ -85,7 +85,7 @@ namespace LoginForm.QuotationModule
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
             {
-                if(cbSearch.SelectedItem.ToString() == "QUOT NUMBER")
+                if(cbSearch.SelectedItem != null && cbSearch.SelectedItem.ToString() == "QUOT NUMBER")
                 {
                     IMEEntities IME = new IMEEntities();
 
@@ -93,11 +93,11 @@ namespace LoginForm.QuotationModule
 
                     var list = from q in IME.Quotations
                                join c in IME.Customers on q.CustomerID equals c.ID
-                               where q.RFQNo.Contains(txtSearchText.Text)
+                               where q.QuotationNo.Contains(txtSearchText.Text)
                                select new
                                {
                                    Date = q.StartDate,
-                                   RFQ = q.RFQNo,
+                                   QuotationNo = q.QuotationNo,
                                    CustomerName = c.c_name
                                };
 
