@@ -1941,6 +1941,12 @@ namespace LoginForm.QuotationModule
                 CustomerMain f = new CustomerMain(1, CustomerCode.Text);
                 f.Show();
             }
+
+
+
+
+
+
         }
     }
 }
