@@ -30,6 +30,8 @@ namespace LoginForm.QuotationModule
         decimal CurrentDis;
         decimal LowMarginLimit;
         decimal CurrentExraChange;
+
+        public static Customer customer;
         #endregion
 
         bool modifyMod = false;
@@ -51,11 +53,11 @@ namespace LoginForm.QuotationModule
             cbCurrency.DisplayMember = "CurType";
             cbCurrency.ValueMember = "ID";
             cbCurrency.SelectedIndex = 0;
-            comboBox6.DataSource = IME.CustomerWorkers.ToList();
-            comboBox6.DisplayMember = "cw_name";
-            comboBox6.ValueMember = "ID";
+            //cbWorkers.DataSource = IME.CustomerWorkers.ToList();
+            //cbWorkers.DisplayMember = "cw_name";
+            //cbWorkers.ValueMember = "ID";
             CustomerCode.Enabled = false;
-            button9.Enabled = false;
+            btnSave.Enabled = false;
             
             modifyQuotation(q1);
         }
@@ -68,11 +70,11 @@ namespace LoginForm.QuotationModule
                 dgQuotationAddedItems.Rows[0].Cells["dgQty"].Value = "0";
                 dgQuotationAddedItems.Rows[0].Cells[0].Value = 1.ToString();
                 LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
-                lblVat.Text = IME.Managements.FirstOrDefault().VAT.ToString();
+                lblVat.Text = Utils.getManagement().VAT.ToString();
                 #region ComboboxFiller.
-                comboBox6.DataSource = IME.CustomerWorkers.ToList();
-                comboBox6.DisplayMember = "cw_name";
-                comboBox6.ValueMember = "ID";
+                //cbWorkers.DataSource = IME.CustomerWorkers.ToList();
+                //cbWorkers.DisplayMember = "cw_name";
+                //cbWorkers.ValueMember = "ID";
                 cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList();
                 cbCurrency.DisplayMember = "CurType";
                 cbCurrency.ValueMember = "ID";
@@ -119,7 +121,7 @@ namespace LoginForm.QuotationModule
 
                 cbCurrency.SelectedIndex = cbCurrency.FindStringExact(c.CurrNameQuo);
                 cbCurrType.SelectedIndex = cbCurrType.FindStringExact(c.CurrTypeQuo);
-                comboBox6.SelectedIndex = comboBox6.FindStringExact(IME.CustomerWorkers.Where(a => a.ID == c.MainContactID).FirstOrDefault().cw_name);
+                cbWorkers.SelectedIndex = cbWorkers.FindStringExact(IME.CustomerWorkers.Where(a => a.ID == c.MainContactID).FirstOrDefault().cw_name);
                 if (c.paymentmethodID != null)
                 {
                     cbPayment.SelectedIndex = cbPayment.FindStringExact(c.PaymentMethod.Payment);
@@ -143,7 +145,7 @@ namespace LoginForm.QuotationModule
             CustomerMain f = new CustomerMain(true, txtCustomerName.Text);
         }
 
-        private void button10_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
             FormMain f = new FormMain();
             if (MessageBox.Show("Are You Sure To Exit Programme ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
@@ -814,20 +816,23 @@ namespace LoginForm.QuotationModule
 
         }
 
-        private void CustomerCode_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void CustomerCode_KeyDown_1(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 classQuotationAdd.customersearchID = CustomerCode.Text;
                 classQuotationAdd.customersearchname = "";
-                FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch();
+                FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(customer);
                 this.Enabled = false;
-                form.ShowDialog();
+                var result = form.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    customer = form.customer;
+                    cbWorkers.DataSource = customer.CustomerWorkers;
+                    cbWorkers.DisplayMember = "cw_name";
+                    cbWorkers.ValueMember = "ID";
+                }
                 this.Enabled = true;
                 fillCustomer();
 
@@ -1356,7 +1361,7 @@ namespace LoginForm.QuotationModule
             #region QuotationDetails
             cbCurrency.SelectedItem = q.CurrName;
             cbCurrType.SelectedItem = q.CurrType;
-            comboBox6.SelectedItem = q.Customer.MainContactID;
+            cbWorkers.SelectedItem = q.Customer.MainContactID;
             foreach (var item in q.QuotationDetails)
             {
                 if (item.IsDeleted == 1)
@@ -1795,29 +1800,34 @@ namespace LoginForm.QuotationModule
         {
             IMEEntities IME = new IMEEntities();
             //List<Quotation> quotList = IME.Quotations.Where(q => q.QuotationNo == DateTime.Now.Year).toList();
-            int ID;
+            //int ID;
             Quotation quo = IME.Quotations.OrderByDescending(q => q.QuotationNo).FirstOrDefault();
-            string q1 = "";
-            q1 = quo.QuotationNo;
-            while (IME.Quotations.Where(a => a.QuotationNo == q1).ToList().Count > 0)
+            string q1;
+            if (quo == null)
             {
-                
-                if (quo.QuotationNo.Contains("v"))
+                q1 = DateTime.Now.Year.ToString() + "/1";
+            }
+            else
+            {
+                q1 = quo.QuotationNo;
+                while (IME.Quotations.Where(a => a.QuotationNo == q1).ToList().Count > 0)
                 {
-                    int quoID = Int32.Parse(q1.Substring(quo.QuotationNo.LastIndexOf('/') + 1, (quo.QuotationNo.LastIndexOf('v') + 1) - (quo.QuotationNo.LastIndexOf('/') + 1) - 1)) + 1;
 
-                    q1 = (quo.QuotationNo.Substring(0, quo.QuotationNo.IndexOf('/') + 1)).ToString();
+                    if (quo.QuotationNo.Contains("v"))
+                    {
+                        int quoID = Int32.Parse(q1.Substring(quo.QuotationNo.LastIndexOf('/') + 1, (quo.QuotationNo.LastIndexOf('v') + 1) - (quo.QuotationNo.LastIndexOf('/') + 1) - 1)) + 1;
 
-                    q1 = q1 + quoID.ToString();
+                        q1 = (quo.QuotationNo.Substring(0, quo.QuotationNo.IndexOf('/') + 1)).ToString();
 
+                        q1 = q1 + quoID.ToString();
+
+                    }
                 }
             }
-            
-          
             return q1;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnCreateRev_Click(object sender, EventArgs e)
         {
             try
             {
@@ -1837,9 +1847,17 @@ namespace LoginForm.QuotationModule
         {
             classQuotationAdd.customersearchID = CustomerCode.Text;
             classQuotationAdd.customersearchname = "";
-            FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch();
+            FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(customer);
             this.Enabled = false;
-            form.ShowDialog();
+            var result = form.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                customer = form.customer;
+                cbWorkers.DataSource = customer.CustomerWorkers.ToList();
+                cbWorkers.DisplayMember = "cw_name";
+                cbWorkers.ValueMember = "ID";
+            }
             this.Enabled = true;
             fillCustomer();
         }

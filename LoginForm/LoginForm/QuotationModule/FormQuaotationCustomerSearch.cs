@@ -15,9 +15,16 @@ namespace LoginForm.QuotationModule
     public partial class FormQuaotationCustomerSearch : Form
     {
         IMEEntities IME = new IMEEntities();
+        public Customer customer;
         public FormQuaotationCustomerSearch()
         {
             InitializeComponent();
+        }
+
+        public FormQuaotationCustomerSearch(Customer customer)
+        {
+            InitializeComponent();
+            this.customer = customer;
         }
 
         private void FormQuaotationCustomerSearch_Load(object sender, EventArgs e)
@@ -39,6 +46,9 @@ namespace LoginForm.QuotationModule
             CustomerName.Text = c.c_name;
             classQuotationAdd.customerID = CustomerCode.Text;
             classQuotationAdd.customername = CustomerName.Text;
+            customer = c;
+
+            this.DialogResult = DialogResult.OK;
             this.Hide();
         }
 
@@ -55,6 +65,9 @@ namespace LoginForm.QuotationModule
                 CustomerName.Text = c.c_name;
                 classQuotationAdd.customerID = CustomerCode.Text;
                 classQuotationAdd.customername = CustomerName.Text;
+                customer = c;
+
+                this.DialogResult = DialogResult.OK;
                 this.Hide();
             }
         }
