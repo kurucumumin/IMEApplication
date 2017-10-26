@@ -1831,6 +1831,12 @@ namespace LoginForm.QuotationModule
                         q1 = q1 + quoID.ToString();
 
                     }
+                    else
+                    {
+                        int quoID = Int32.Parse(q1.Substring(quo.QuotationNo.LastIndexOf('/') + 1)) + 1;
+
+                        q1 = DateTime.Now.Year.ToString()+"/"+quoID.ToString();
+                    }
                 }
             }
             return q1;
