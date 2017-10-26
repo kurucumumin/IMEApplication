@@ -1,4 +1,4 @@
-﻿namespace LoginForm.WorkerManagement
+﻿namespace LoginForm.Roles
 {
     partial class FormRoleAuths
     {
@@ -35,12 +35,15 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtSearchRole = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lbRoleList = new System.Windows.Forms.ListBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txtSearchAuthority = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.clbAuthorizationList = new System.Windows.Forms.CheckedListBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.txtSearchUserAuthority = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.clbNewAuthorizations = new System.Windows.Forms.CheckedListBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -133,6 +136,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.txtSearchRole);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.lbRoleList);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -142,6 +146,16 @@
             this.panel2.Padding = new System.Windows.Forms.Padding(16);
             this.panel2.Size = new System.Drawing.Size(357, 448);
             this.panel2.TabIndex = 12;
+            // 
+            // txtSearchRole
+            // 
+            this.txtSearchRole.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearchRole.Location = new System.Drawing.Point(16, 48);
+            this.txtSearchRole.Name = "txtSearchRole";
+            this.txtSearchRole.Size = new System.Drawing.Size(325, 24);
+            this.txtSearchRole.TabIndex = 10;
+            this.txtSearchRole.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchRole_KeyDown);
             // 
             // label1
             // 
@@ -163,16 +177,17 @@
             this.lbRoleList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbRoleList.FormattingEnabled = true;
             this.lbRoleList.ItemHeight = 20;
-            this.lbRoleList.Location = new System.Drawing.Point(16, 50);
+            this.lbRoleList.Location = new System.Drawing.Point(16, 91);
             this.lbRoleList.Margin = new System.Windows.Forms.Padding(4);
             this.lbRoleList.Name = "lbRoleList";
-            this.lbRoleList.Size = new System.Drawing.Size(325, 364);
+            this.lbRoleList.Size = new System.Drawing.Size(325, 344);
             this.lbRoleList.TabIndex = 8;
             this.lbRoleList.ValueMember = "RoleID";
             this.lbRoleList.SelectedIndexChanged += new System.EventHandler(this.lbRoleList_SelectedIndexChanged);
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.txtSearchAuthority);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.clbAuthorizationList);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -182,6 +197,16 @@
             this.panel3.Padding = new System.Windows.Forms.Padding(16);
             this.panel3.Size = new System.Drawing.Size(357, 448);
             this.panel3.TabIndex = 13;
+            // 
+            // txtSearchAuthority
+            // 
+            this.txtSearchAuthority.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearchAuthority.Location = new System.Drawing.Point(19, 48);
+            this.txtSearchAuthority.Name = "txtSearchAuthority";
+            this.txtSearchAuthority.Size = new System.Drawing.Size(325, 24);
+            this.txtSearchAuthority.TabIndex = 11;
+            this.txtSearchAuthority.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchAuthority_KeyDown);
             // 
             // label2
             // 
@@ -202,15 +227,16 @@
             this.clbAuthorizationList.CheckOnClick = true;
             this.clbAuthorizationList.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clbAuthorizationList.FormattingEnabled = true;
-            this.clbAuthorizationList.Location = new System.Drawing.Point(16, 48);
+            this.clbAuthorizationList.Location = new System.Drawing.Point(19, 95);
             this.clbAuthorizationList.Margin = new System.Windows.Forms.Padding(4);
             this.clbAuthorizationList.Name = "clbAuthorizationList";
-            this.clbAuthorizationList.Size = new System.Drawing.Size(325, 384);
+            this.clbAuthorizationList.Size = new System.Drawing.Size(325, 340);
             this.clbAuthorizationList.TabIndex = 10;
             this.clbAuthorizationList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.clbAuthorizationList_MouseClick);
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.txtSearchUserAuthority);
             this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.clbNewAuthorizations);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -220,6 +246,16 @@
             this.panel4.Padding = new System.Windows.Forms.Padding(16);
             this.panel4.Size = new System.Drawing.Size(358, 448);
             this.panel4.TabIndex = 14;
+            // 
+            // txtSearchUserAuthority
+            // 
+            this.txtSearchUserAuthority.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearchUserAuthority.Location = new System.Drawing.Point(19, 48);
+            this.txtSearchUserAuthority.Name = "txtSearchUserAuthority";
+            this.txtSearchUserAuthority.Size = new System.Drawing.Size(326, 24);
+            this.txtSearchUserAuthority.TabIndex = 13;
+            this.txtSearchUserAuthority.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchUserAuthority_KeyDown);
             // 
             // label3
             // 
@@ -240,10 +276,10 @@
             this.clbNewAuthorizations.CheckOnClick = true;
             this.clbNewAuthorizations.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clbNewAuthorizations.FormattingEnabled = true;
-            this.clbNewAuthorizations.Location = new System.Drawing.Point(16, 48);
+            this.clbNewAuthorizations.Location = new System.Drawing.Point(19, 95);
             this.clbNewAuthorizations.Margin = new System.Windows.Forms.Padding(4);
             this.clbNewAuthorizations.Name = "clbNewAuthorizations";
-            this.clbNewAuthorizations.Size = new System.Drawing.Size(326, 384);
+            this.clbNewAuthorizations.Size = new System.Drawing.Size(326, 340);
             this.clbNewAuthorizations.TabIndex = 11;
             this.clbNewAuthorizations.MouseClick += new System.Windows.Forms.MouseEventHandler(this.clbNewAuthorizations_MouseClick);
             // 
@@ -355,5 +391,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtSearchRole;
+        private System.Windows.Forms.TextBox txtSearchAuthority;
+        private System.Windows.Forms.TextBox txtSearchUserAuthority;
     }
 }

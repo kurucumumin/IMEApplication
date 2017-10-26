@@ -5,15 +5,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace LoginForm.WorkerManagement
+namespace LoginForm.Roles
 {
     public partial class FormRoleAuths : Form
     {
-        List<AuthorizationValue> newAuthList = new List<AuthorizationValue>();
-        List<AuthorizationValue> authList = new List<AuthorizationValue>();
-
         List<RoleValue> roleList = new List<RoleValue>();
-        
+        List<AuthorizationValue> authList = new List<AuthorizationValue>();
+        List<AuthorizationValue> newAuthList = new List<AuthorizationValue>();
+
+        List<RoleValue> tempRoleList = new List<RoleValue>();
+        List<AuthorizationValue> tempAuthList = new List<AuthorizationValue>();
+        List<AuthorizationValue> tempNewAuthList = new List<AuthorizationValue>();
+
+
         public FormRoleAuths()
         {
             InitializeComponent();
@@ -29,9 +33,11 @@ namespace LoginForm.WorkerManagement
 
         private void loadRoles()
         {
-            cbRole.DataSource = AuthorizationService.getRoles();
+            roleList = AuthorizationService.getRoles();
+            tempRoleList = roleList.ToList();
+            cbRole.DataSource = roleList;
             cbRole.DisplayMember = "roleName";
-            lbRoleList.DataSource = AuthorizationService.getRoles();
+            lbRoleList.DataSource = tempRoleList;
             lbRoleList.DisplayMember = "roleName";
         }
 
@@ -74,25 +80,28 @@ namespace LoginForm.WorkerManagement
         
         private void lbRoleList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            authList.Clear();
-            authList.AddRange(((RoleValue)lbRoleList.SelectedItem).AuthorizationValues);
+            if (lbRoleList.SelectedItem != null)
+            {
+                authList.Clear();
+                authList.AddRange(((RoleValue)lbRoleList.SelectedItem).AuthorizationValues);
 
-            clbAuthorizationList.DataSource = null;
-            clbAuthorizationList.DataSource = authList;
-            clbAuthorizationList.DisplayMember = "AuthorizationValue1";
+                clbAuthorizationList.DataSource = null;
+                clbAuthorizationList.DataSource = authList;
+                clbAuthorizationList.DisplayMember = "AuthorizationValue1";
 
-            matchAuthorities();
+                matchAuthorities();
+            }
         }
-
-
-
+        
 
         private void clbAuthorizationList_MouseClick(object sender, MouseEventArgs e)
         {
+            txtSearchUserAuthority.Text = String.Empty;
+            tempNewAuthList.Clear();
+
             int index = clbAuthorizationList.SelectedIndex;
             bool state = clbAuthorizationList.GetItemChecked(index);
             
-
             if (!state)
             {
                 newAuthList.Add((AuthorizationValue)clbAuthorizationList.Items[index]);
@@ -107,7 +116,7 @@ namespace LoginForm.WorkerManagement
                     }
                 }
             }
-            RefreshNewAuthList();
+            RefreshNewAuthList(newAuthList);
         }
 
         private void clbNewAuthorizations_MouseClick(object sender, MouseEventArgs e)
@@ -116,17 +125,25 @@ namespace LoginForm.WorkerManagement
             if (index >= 0)
             {
                 newAuthList.Remove((AuthorizationValue)clbNewAuthorizations.Items[index]);
+                tempNewAuthList.Remove((AuthorizationValue)clbNewAuthorizations.Items[index]);
 
-                RefreshNewAuthList();
+                if (newAuthList.SequenceEqual((List<AuthorizationValue>)clbNewAuthorizations.DataSource))
+                {
+                    RefreshNewAuthList(newAuthList);
+                }
+                else
+                {
+                    RefreshNewAuthList(tempNewAuthList);
+                }
                 clbNewAuthorizations.ClearSelected();
                 matchAuthorities();
             }
         }
 
-        private void RefreshNewAuthList()
+        private void RefreshNewAuthList(List<AuthorizationValue> list)
         {
             clbNewAuthorizations.DataSource = null;
-            clbNewAuthorizations.DataSource = newAuthList;
+            clbNewAuthorizations.DataSource = list;
             clbNewAuthorizations.DisplayMember = "AuthorizationValue1";
 
             CheckAllItemsListBox(clbNewAuthorizations);
@@ -144,12 +161,12 @@ namespace LoginForm.WorkerManagement
         {
             for (int i = 0; i < clbAuthorizationList.Items.Count; i++)
             {
-                for (int j = 0; j <= clbNewAuthorizations.Items.Count; j++)
+                for (int j = 0; j <= newAuthList.Count; j++)
                 {
-                    if(j == clbNewAuthorizations.Items.Count)
+                    if(j == newAuthList.Count)
                     {
                         clbAuthorizationList.SetItemChecked(i, false);
-                    } else if (((AuthorizationValue)clbNewAuthorizations.Items[j]).AuthorizationID == ((AuthorizationValue)clbAuthorizationList.Items[i]).AuthorizationID)
+                    } else if (newAuthList[j].AuthorizationID == ((AuthorizationValue)clbAuthorizationList.Items[i]).AuthorizationID)
                     {
                         clbAuthorizationList.SetItemChecked(i, true);
                         break;
@@ -231,11 +248,44 @@ namespace LoginForm.WorkerManagement
                     throw;
                 }
             }
+        }
 
+        private void txtSearchRole_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                tempRoleList = roleList.Where(r => r.roleName.IndexOf(txtSearchRole.Text, StringComparison.OrdinalIgnoreCase) >= 0 ).ToList();
+                lbRoleList.DataSource = null;
+                lbRoleList.DataSource = tempRoleList;
+                lbRoleList.DisplayMember = "roleName";
+            }
+        }
 
-            
+        private void txtSearchAuthority_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                tempAuthList = authList.Where(r => r.AuthorizationValue1.IndexOf(txtSearchAuthority.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+                clbAuthorizationList.DataSource = null;
+                clbAuthorizationList.DataSource = tempAuthList;
+                clbAuthorizationList.DisplayMember = "AuthorizationValue1";
 
-            
+                matchAuthorities();
+            }
+        }
+
+        private void txtSearchUserAuthority_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                tempNewAuthList = newAuthList.Where(r => r.AuthorizationValue1.IndexOf(txtSearchUserAuthority.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+                clbNewAuthorizations.DataSource = null;
+                clbNewAuthorizations.DataSource = tempNewAuthList;
+                clbNewAuthorizations.DisplayMember = "AuthorizationValue1";
+
+                CheckAllItemsListBox(clbNewAuthorizations);
+                matchAuthorities();
+            }
         }
     }
 }
