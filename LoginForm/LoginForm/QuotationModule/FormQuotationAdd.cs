@@ -218,7 +218,7 @@ namespace LoginForm.QuotationModule
                     break;
                 case 7://PRODUCT CODE
                     {
-                        #region PRODUCT CODE
+                     #region PRODUCT CODE
 
                         if (dgQuotationAddedItems.CurrentCell.Value != null)
                         {
@@ -672,7 +672,7 @@ namespace LoginForm.QuotationModule
                 dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value = sdP.Unit_Content.ToString();
                 dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUOM"].Value = sdP.Unit_Measure;
                 dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUOM"].Value = sdP.Unit_Measure;
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgPackType"].Value = sdP.Calibration_Ind;
+                //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgPackType"].Value = sdP.Calibration_Ind.ToString();
 
                 if (sdP.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sdP.Standard_Weight) / (decimal)1000).ToString("G29"); }
                 txtHazardousInd.Text = sdP.Hazardous_Ind;
@@ -1091,7 +1091,8 @@ namespace LoginForm.QuotationModule
 
         }
 
-        private void txtTotalDis2_Leave(object sender, EventArgs e)
+
+        private void totalDis2Change()
         {
             if (Decimal.Parse(lblsubtotal.Text) != 0 && lblsubtotal.Text != "" && lblsubtotal.Text != null)
             {
@@ -1105,6 +1106,7 @@ namespace LoginForm.QuotationModule
                     }
                     else
                     {
+
                         lbltotal.Text = (Decimal.Parse(lbltotal.Text) + CurrentDis).ToString();
                         CurrentDis = Decimal.Parse(txtTotalDis2.Text);
                     }
@@ -1118,36 +1120,40 @@ namespace LoginForm.QuotationModule
             }
         }
 
+        private void txtTotalDis2_Leave(object sender, EventArgs e)
+        {
+            totalDis2Change();
+        }
+
         private void txtTotalDis_Leave(object sender, EventArgs e)
         {
             if (lblsubtotal.Text != "" && Decimal.Parse(lblsubtotal.Text) != 0 && lblsubtotal.Text != null
                 && txtTotalDis.Text != "" && Decimal.Parse(txtTotalDis.Text) != 0)
             {
                 decimal dis2 = Decimal.Parse(lblsubtotal.Text) * Decimal.Parse(txtTotalDis.Text) / 100;
-                if (dis2 != CurrentDis)
-                {
+
                     txtTotalDis2.Text = dis2.ToString();
-                    for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
-                    {
-                        try
-                        {
-                            decimal disc = Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgDisc"].Value.ToString());
-                            decimal ItemTotal = Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotal"].Value.ToString());
-                            decimal newTotal = (ItemTotal - (ItemTotal * disc / 100));
-                            decimal Disc1 = (ItemTotal * 100) / (100 - disc);
-                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgDisc"].Value = -((newTotal * 100 / Disc1)-100);
-                            GetQuotationQuantity(i);
-                        }
-                        catch { }
-                    }
+                for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+                {
+                    dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value = txtTotalDis.Text;
                 }
+                //for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+                //{
+                //    try
+                //    {
+                //        decimal disc = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value.ToString());
+                //        decimal ItemTotal = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString());
+                //        decimal newTotal = (ItemTotal - (ItemTotal * disc / 100));
+                //        decimal Disc1 = (ItemTotal * 100) / (100 - disc);
+                //        dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value = -((newTotal * 100 / Disc1)-100);
+                //        GetQuotationQuantity(i);
+                //    }
+                //    catch { }
+                //}
+                totalDis2Change();
             }
-            else
-            {
-                txtTotalDis.Text = 0.ToString();
-            }
-            lbltotal.Text = (Decimal.Parse(lbltotal.Text) - Decimal.Parse(txtTotalDis2.Text)).ToString();
-           // GetAllMargin();
+
+            
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -1194,6 +1200,7 @@ namespace LoginForm.QuotationModule
             }
 
         }
+
         private void QuotationSave(string QuoNo)
         {
             IMEEntities IME = new IMEEntities();
@@ -1659,8 +1666,6 @@ namespace LoginForm.QuotationModule
 
         }
 
-
-
         private void cbCurrType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if ((cbCurrType.SelectedIndex != null))
@@ -1713,6 +1718,7 @@ namespace LoginForm.QuotationModule
                 cbCurrency.SelectedIndex = 0;
             }
         }
+
         private void ChangeCurr(int rowindex)
         {
             if (dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value != null)
@@ -1733,6 +1739,7 @@ namespace LoginForm.QuotationModule
             }
 
         }
+
         private void ChangeCurr()
         {
             decimal SubTotalTotal = 0;
@@ -1778,6 +1785,7 @@ namespace LoginForm.QuotationModule
                 lblGrossTotal.Text = Decimal.Parse(String.Format("{0:0.0000}", (decimal.Parse(lblGrossTotal.Text)))).ToString("G29");
             }
         }
+
         private void ItemDetailsClear()
         {
             try
