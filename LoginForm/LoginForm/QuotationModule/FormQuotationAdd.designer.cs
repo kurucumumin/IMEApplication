@@ -415,10 +415,10 @@
             this.dgQuotationAddedItems.Name = "dgQuotationAddedItems";
             this.dgQuotationAddedItems.Size = new System.Drawing.Size(1785, 224);
             this.dgQuotationAddedItems.TabIndex = 9;
-            this.dgQuotationAddedItems.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellEndEdit);
-            this.dgQuotationAddedItems.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView3_RowsAdded);
-            this.dgQuotationAddedItems.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dataGridView3_UserDeletingRow);
-            this.dgQuotationAddedItems.Click += new System.EventHandler(this.dataGridView3_Click);
+            this.dgQuotationAddedItems.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotationAddedItems_CellEndEdit);
+            this.dgQuotationAddedItems.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgQuotationAddedItems_RowsAdded);
+            this.dgQuotationAddedItems.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgQuotationAddedItems_UserDeletingRow);
+            this.dgQuotationAddedItems.Click += new System.EventHandler(this.dgQuotationAddedItems_Click);
             this.dgQuotationAddedItems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgQuotationAddedItems_KeyDown);
             // 
             // dgNo

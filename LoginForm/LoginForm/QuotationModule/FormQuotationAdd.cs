@@ -128,7 +128,8 @@ namespace LoginForm.QuotationModule
                 }
                 try { txtContactNote.Text = c.CustomerWorker.Note.Note_name; } catch { }
                 try { txtCustomerNote.Text = c.Note.Note_name; } catch { }
-              //  try { txtAccountingNote.Text = c.Note.Note_name; } catch { }
+                try { txtAccountingNote.Text = c.Note.Note_name; } catch { }
+                //  try { txtAccountingNote.Text = c.Note.Note_name; } catch { }
                 cbRep.SelectedIndex = cbRep.FindStringExact(c.Worker.NameLastName.ToString());
             }
         }
@@ -155,7 +156,7 @@ namespace LoginForm.QuotationModule
             }
         }
 
-        private void dataGridView3_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void dgQuotationAddedItems_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
 
             #region MyRegion
@@ -858,19 +859,19 @@ namespace LoginForm.QuotationModule
 
         }
 
-        private void dataGridView3_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        private void dgQuotationAddedItems_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[0].Value = (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 2].Cells[0].Value.ToString()) + 1).ToString();
 
         }
 
-        private void dataGridView3_Click(object sender, EventArgs e)
+        private void dgQuotationAddedItems_Click(object sender, EventArgs e)
         {
             ItemClear();
             try { ItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString()); } catch { }
         }
 
-        private void dataGridView3_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        private void dgQuotationAddedItems_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
             int rownumber = Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgNo"].Value.ToString());
             dgQuotationDeleted.Rows.Add();
@@ -1838,7 +1839,6 @@ namespace LoginForm.QuotationModule
             }
             catch
             {
-
                 MessageBox.Show("Error Occured", "Failure");
             }
 }

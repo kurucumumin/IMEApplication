@@ -49,7 +49,7 @@ namespace LoginForm.QuotationModule
             customer = c;
 
             this.DialogResult = DialogResult.OK;
-            this.Hide();
+            this.Close();
         }
 
         private void CustomerSearchGrid_KeyDown(object sender, KeyEventArgs e)
@@ -68,7 +68,7 @@ namespace LoginForm.QuotationModule
                 customer = c;
 
                 this.DialogResult = DialogResult.OK;
-                this.Hide();
+                this.Close();
             }
         }
 
