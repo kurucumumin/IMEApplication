@@ -3,7 +3,7 @@ using System.Linq;
 using System.Windows.Forms;
 using LoginForm.Services;
 using LoginForm.DataSet;
-using LoginForm.WorkerManagement;
+using LoginForm.Roles;
 
 namespace LoginForm.CustomControls
 {
