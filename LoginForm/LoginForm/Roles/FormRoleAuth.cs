@@ -177,6 +177,8 @@ namespace LoginForm.Roles
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            RefreshNewAuthList(newAuthList);
+
             if (chcNewRole.Checked)
             {
                 if (checkNulls())
@@ -189,12 +191,12 @@ namespace LoginForm.Roles
                     role.roleName = txtNewRoleName.Text;
                     if(AuthorizationService.AddRoleWithAuths(role, newAuthList))
                     {
-                        MessageBox.Show("New role is successfully added!", "Success");
+                        MessageBox.Show("New role '" + txtNewRoleName.Text + "' is successfully added!", "Success");
                         this.Close();
                     }
                     else
                     {
-                        MessageBox.Show("An error occured while saving a new role, Try again later.", "Error");
+                        MessageBox.Show("An error occured while saving a new role '" + txtNewRoleName.Text + "', Try again later.", "Error");
                     }
                 }
             }
@@ -202,19 +204,19 @@ namespace LoginForm.Roles
             {
                 if (AuthorizationService.EditRole((RoleValue)cbRole.SelectedItem, newAuthList))
                 {
-                    MessageBox.Show("Selected role is successfully edited!", "Success");
+                    MessageBox.Show("Selected role '" + ((RoleValue)cbRole.SelectedItem).roleName + "' is successfully edited!", "Success");
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("An error occured while saving a changes, Try again later.", "Error");
+                    MessageBox.Show("An error occured while saving changes on role'" + ((RoleValue)cbRole.SelectedItem).roleName + "', Try again later.", "Error");
                 }
             }
         }
 
         private bool checkNulls()
         {
-            if (txtNewRoleName.Text.Length > 0 && clbNewAuthorizations.Items.Count > 0)
+            if (txtNewRoleName.Text.Length > 0 && newAuthList.Count > 0)
             {
                 return false;
             }

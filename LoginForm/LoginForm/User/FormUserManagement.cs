@@ -22,7 +22,6 @@ namespace LoginForm.User
             chcChangePassword.Visible = false;
             LoadRoles();
             this.upperForm = form;
-            //LoadAuthorities();
         }
         public FormWorkerManagement(FormMain formMain ,Worker worker, FormUserMain form)
         {
@@ -33,7 +32,6 @@ namespace LoginForm.User
             this.upperForm = form;
 
             chcChangePassword.Visible = true;
-            //LoadAuthorities();
             isEditMode = true;
 
             loadEditWorker();
@@ -399,8 +397,7 @@ namespace LoginForm.User
         {
             int index = clbAuthorities.SelectedIndex;
             bool state = clbAuthorities.GetItemChecked(index);
-
-            //clbAuthorities.SetItemChecked(index, !state);
+            
 
             if (!state)
             {
