@@ -355,6 +355,8 @@
     <Compile Include="QuotationModule\FormQuotationMain.Designer.cs">
       <DependentUpon>FormQuotationMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Services\LoginFormName.cs" />
+    <Compile Include="Services\LoginFormUserName.cs" />
     <Compile Include="User\FormUsersMain.cs">
       <SubType>Form</SubType>
     </Compile>

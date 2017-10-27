@@ -22,18 +22,18 @@ namespace LoginForm
         //private FormMain mainForm;
 
         IMEEntities IME = new IMEEntities();
-
         public string LoginPerson { get; set; }
 
         public FormLogin()
         {
             InitializeComponent();
         }
-        
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             #region LoginBlock
             string UserName = txtID.Text;
+            LoginFormName.LoginName = txtID.Text;
             string PW = Utils.MD5Hash(txtPassWord.Text);
             Worker Logged = new Worker();
             try
@@ -75,6 +75,7 @@ namespace LoginForm
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
+            
             Rate DolarRate1 = new Rate();
             DolarRate1 = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).FirstOrDefault();
             if (DolarRate1 == null)

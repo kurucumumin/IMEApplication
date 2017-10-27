@@ -22,7 +22,6 @@ namespace LoginForm
         int contactnewID = 0;
         int isUpdateAdress;
         bool isModify=false;
-
         public CustomerMain()
         {
             InitializeComponent();
@@ -101,6 +100,7 @@ namespace LoginForm
             Represantative2.DisplayMember = "NameLastName";
             Represantative1.DataSource = IME.Workers.ToList();
             Represantative1.DisplayMember = "NameLastName";
+
             SubCategory.DataSource = IME.CustomerSubCategories.ToList();
             SubCategory.DisplayMember = "subcategoryname";
             MainCategory.DataSource = IME.CustomerCategories.ToList();
@@ -597,6 +597,8 @@ namespace LoginForm
             btnContactUpdate.Visible = false;
             ContactList.Enabled = false;
             #endregion
+
+            ContactDepartment.Text = "Choose";
         }
 
         private void btnContactCancel_Click(object sender, EventArgs e)
@@ -758,6 +760,10 @@ namespace LoginForm
 
                 itemsEnableTrue();
                 itemsClear();
+                rb_active.Checked = true;
+                Represantative1.DataSource = null;
+                Represantative1.Items.Add(LoginFormName.LoginName);
+                
                 //for new customerCode
                 string custmrcode = IME.Customers.OrderByDescending(a => a.ID).FirstOrDefault().ID;
                 string custmrnumbers = string.Empty;
@@ -827,8 +833,8 @@ namespace LoginForm
                 IME.SaveChanges();
                 //
                 c.accountrepresentaryID = (AccountRepresentary.SelectedItem as Worker).WorkerID;
-                int c_rep1ID = ((Worker)(Represantative1).SelectedItem).WorkerID;
-                c.representaryID = c_rep1ID;
+                //int c_rep1ID = ((Worker)(Represantative1).SelectedItem).WorkerID;
+                c.representaryID = Int32.Parse((LoginFormName.LoginName));
                 int c_rep2ID = ((Worker)(Represantative2).SelectedItem).WorkerID;
                 c.representary2ID = c_rep2ID;
                 int c_termpayment = ((PaymentTerm)(TermsofPayments).SelectedItem).ID;
@@ -1270,20 +1276,20 @@ namespace LoginForm
            
         }
 
-        private void WebAdress_Leave(object sender, EventArgs e)
-        {
-            string pattern = @"^(www\.)([\w]+)\.([\w]+)$";
-            if (Regex.IsMatch(WebAdress.Text, pattern))
-            {
+        //private void WebAdress_Leave(object sender, EventArgs e)
+        //{
+        //    string pattern = @"^(www\.)([\w]+)\.([\w]+)$";
+        //    if (Regex.IsMatch(WebAdress.Text, pattern))
+        //    {
 
-            }
-            else
-            {
-                MessageBox.Show("Example: www.rsdelivers.com ", "Please provide valid Web Address !");
-                WebAdress.Focus();
-                return;
-            }
-        }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Example: www.rsdelivers.com ", "Please provide valid Web Address !");
+        //        WebAdress.Focus();
+        //        return;
+        //    }
+        //}
 
         private void Telephone_Leave(object sender, EventArgs e)
         {
@@ -1303,7 +1309,7 @@ namespace LoginForm
         private void CustomerFax_Leave(object sender, EventArgs e)
         {
             string pattern = "^([0-9]{4})[ ]([0-9]{3})[ ]([0-9]{2})[ ]([0-9]{2})$";
-            if (Regex.IsMatch(CustomerFax.Text, pattern))
+            if (Regex.IsMatch(CustomerFax.Text, pattern) || CustomerFax.Text == string.Empty)
             {
 
             }
@@ -1333,7 +1339,7 @@ namespace LoginForm
         private void ContactPhone_Leave(object sender, EventArgs e)
         {
             string pattern = "^([0-9]{4})[ ]([0-9]{3})[ ]([0-9]{2})[ ]([0-9]{2})$";
-            if (Regex.IsMatch(ContactPhone.Text, pattern))
+            if (Regex.IsMatch(ContactPhone.Text, pattern) || ContactPhone.Text == string.Empty)
             {
 
             }
@@ -1348,7 +1354,7 @@ namespace LoginForm
         private void ContactMobilePhone_Leave(object sender, EventArgs e)
         {
             string pattern = "^([0-9]{4})[ ]([0-9]{3})[ ]([0-9]{2})[ ]([0-9]{2})$";
-            if (Regex.IsMatch(ContactMobilePhone.Text, pattern))
+            if (Regex.IsMatch(ContactMobilePhone.Text, pattern) || ContactMobilePhone.Text == string.Empty)
             {
 
             }
@@ -1363,9 +1369,9 @@ namespace LoginForm
         private void ContactFAX_Leave(object sender, EventArgs e)
         {
             string pattern = "^([0-9]{4})[ ]([0-9]{3})[ ]([0-9]{2})[ ]([0-9]{2})$";
-            if (Regex.IsMatch(ContactFAX.Text, pattern))
+            if (Regex.IsMatch(ContactFAX.Text, pattern) || ContactFAX.Text==string.Empty)
             {
-
+              
             }
             else
             {

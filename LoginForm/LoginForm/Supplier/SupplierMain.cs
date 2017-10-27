@@ -1161,7 +1161,7 @@ using LoginForm.Services;
         private void txtContactPhone_Leave(object sender, EventArgs e)
         {
             string pattern = "^([0-9]{4})[ ]([0-9]{3})[ ]([0-9]{2})[ ]([0-9]{2})$";
-            if (Regex.IsMatch(txtContactPhone.Text, pattern))
+            if (Regex.IsMatch(txtContactPhone.Text, pattern) || txtContactPhone.Text == string.Empty)
             {
 
             }
@@ -1191,7 +1191,7 @@ using LoginForm.Services;
         private void txtfax_Leave(object sender, EventArgs e)
         {
             string pattern = "^([0-9]{4})[ ]([0-9]{3})[ ]([0-9]{2})[ ]([0-9]{2})$";
-            if (Regex.IsMatch(txtfax.Text, pattern))
+            if (Regex.IsMatch(txtfax.Text, pattern) || txtfax.Text == string.Empty)
             {
 
             }
@@ -1206,7 +1206,7 @@ using LoginForm.Services;
         private void txtContactfax_Leave(object sender, EventArgs e)
         {
             string pattern = "^([0-9]{4})[ ]([0-9]{3})[ ]([0-9]{2})[ ]([0-9]{2})$";
-            if (Regex.IsMatch(txtContactfax.Text, pattern))
+            if (Regex.IsMatch(txtContactfax.Text, pattern) || txtContactfax.Text == string.Empty)
             {
 
             }
@@ -1221,7 +1221,7 @@ using LoginForm.Services;
         private void txtContactMobile_Leave(object sender, EventArgs e)
         {
             string pattern = "^([0-9]{4})[ ]([0-9]{3})[ ]([0-9]{2})[ ]([0-9]{2})$";
-            if (Regex.IsMatch(txtContactMobile.Text, pattern))
+            if (Regex.IsMatch(txtContactMobile.Text, pattern) || txtContactMobile.Text == string.Empty)
             {
 
             }
@@ -1233,20 +1233,20 @@ using LoginForm.Services;
             }
         }
 
-        private void txtweb_Leave(object sender, EventArgs e)
-        {
-            string pattern = @"^(www\.)([\w]+)\.([\w]+)$";
-            if (Regex.IsMatch(txtweb.Text, pattern))
-            {
+        //private void txtweb_Leave(object sender, EventArgs e)
+        //{
+        //    string pattern = @"^(www\.)([\w]+)\.([\w]+)$";
+        //    if (Regex.IsMatch(txtweb.Text, pattern))
+        //    {
 
-            }
-            else
-            {
-                MessageBox.Show("Example: www.rsdelivers.com ", "Please provide valid Web Address !");
-                txtweb.Focus();
-                return;
-            }
-        }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Example: www.rsdelivers.com ", "Please provide valid Web Address !");
+        //        txtweb.Focus();
+        //        return;
+        //    }
+        //}
 
         private void txtBankIban_Leave(object sender, EventArgs e)
         {
