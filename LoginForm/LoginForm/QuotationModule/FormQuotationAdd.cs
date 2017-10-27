@@ -689,7 +689,7 @@ namespace LoginForm.QuotationModule
                 txtDiscCharge.Text = sdP.Disc_Change_Ind;
                 txtExpiringPro.Text = sdP.Expiring_Product_Change_Ind;
                 txtManufacturer.Text = sdP.Manufacturer.ToString();
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["MPN"].Value = sdP.MPN;
+                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMPN"].Value = sdP.MPN;
                 txtMHCodeLevel1.Text = sdP.MH_Code_Level_1;
                 txtCCCN.Text = sdP.CCCN_No.ToString();
                 txtHeight.Text = ((decimal)(sdP.Heigh * ((Decimal)100))).ToString("G29");
@@ -1111,7 +1111,21 @@ namespace LoginForm.QuotationModule
                         CurrentDis = Decimal.Parse(txtTotalDis2.Text);
                     }
                     lbltotal.Text = (Decimal.Parse(lbltotal.Text) - CurrentDis).ToString();
-                    txtTotalDis.Text = ((CurrentDis * 100) / Decimal.Parse(lblsubtotal.Text)).ToString();
+                    if(txtTotalDis.Text != ((CurrentDis * 100) / Decimal.Parse(lblsubtotal.Text)).ToString())
+                    {
+                        txtTotalDis.Text = ((CurrentDis * 100) / Decimal.Parse(lblsubtotal.Text)).ToString();
+                        for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+                        {
+                            if (dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value == null || dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value.ToString() == 0.ToString())
+                            {
+                                dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value = txtTotalDis.Text;
+                            }
+                        }
+                    }
+                    
+                    
+
+
                 }
             }
             else
@@ -1135,7 +1149,10 @@ namespace LoginForm.QuotationModule
                     txtTotalDis2.Text = dis2.ToString();
                 for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
                 {
-                    dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value = txtTotalDis.Text;
+                    if (dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value == null || dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value.ToString() == 0.ToString())
+                    {
+                        dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value = txtTotalDis.Text;
+                    }
                 }
                 //for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
                 //{
@@ -1156,8 +1173,16 @@ namespace LoginForm.QuotationModule
             
         }
 
+        private bool ControlSave()
+        {
+            if(txtCustomerName.Text!=null && txtCustomerName.Text != "") { MessageBox.Show("Please Enter a Customer");return false; }
+            return true;
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
+            bool SaveOK = false;
+            SaveOK= ControlSave();
             QuotationSave();
             QuotationDetailsSave();
 
@@ -1910,6 +1935,7 @@ namespace LoginForm.QuotationModule
             else if (e.KeyCode == Keys.Enter)
             {
                 ChangeCurrnetCell(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
+                SendKeys.Send("{UP}");
             }
         }
         private void btnViewMore_Click(object sender, EventArgs e)
