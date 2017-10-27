@@ -195,7 +195,7 @@ namespace LoginForm
             this.cmbsub.Location = new System.Drawing.Point(651, 11);
             this.cmbsub.Name = "cmbsub";
             this.cmbsub.Size = new System.Drawing.Size(146, 24);
-            this.cmbsub.TabIndex = 7;
+            this.cmbsub.TabIndex = 6;
             // 
             // label42
             // 
@@ -213,7 +213,7 @@ namespace LoginForm
             this.txtTaxNumber.Location = new System.Drawing.Point(651, 58);
             this.txtTaxNumber.Name = "txtTaxNumber";
             this.txtTaxNumber.Size = new System.Drawing.Size(146, 23);
-            this.txtTaxNumber.TabIndex = 8;
+            this.txtTaxNumber.TabIndex = 7;
             // 
             // txtTaxOffice
             // 
@@ -250,7 +250,7 @@ namespace LoginForm
             this.txtnotes.Multiline = true;
             this.txtnotes.Name = "txtnotes";
             this.txtnotes.Size = new System.Drawing.Size(416, 70);
-            this.txtnotes.TabIndex = 6;
+            this.txtnotes.TabIndex = 8;
             // 
             // cmbcategory
             // 
@@ -526,7 +526,7 @@ namespace LoginForm
             this.AddressDel.Location = new System.Drawing.Point(846, 145);
             this.AddressDel.Name = "AddressDel";
             this.AddressDel.Size = new System.Drawing.Size(36, 26);
-            this.AddressDel.TabIndex = 41;
+            this.AddressDel.TabIndex = 23;
             this.AddressDel.Text = "Del";
             this.AddressDel.UseVisualStyleBackColor = true;
             this.AddressDel.Click += new System.EventHandler(this.AddressDel_Click);
@@ -537,7 +537,7 @@ namespace LoginForm
             this.AddressUpd.Location = new System.Drawing.Point(804, 145);
             this.AddressUpd.Name = "AddressUpd";
             this.AddressUpd.Size = new System.Drawing.Size(36, 26);
-            this.AddressUpd.TabIndex = 40;
+            this.AddressUpd.TabIndex = 22;
             this.AddressUpd.Text = "Upd";
             this.AddressUpd.UseVisualStyleBackColor = true;
             this.AddressUpd.Click += new System.EventHandler(this.AddressUpd_Click);
@@ -680,7 +680,6 @@ namespace LoginForm
             this.txtweb.Name = "txtweb";
             this.txtweb.Size = new System.Drawing.Size(129, 23);
             this.txtweb.TabIndex = 17;
-            this.txtweb.Leave += new System.EventHandler(this.txtweb_Leave);
             // 
             // txtpost
             // 
@@ -787,7 +786,7 @@ namespace LoginForm
             this.txtExtNumber.Location = new System.Drawing.Point(191, 152);
             this.txtExtNumber.Name = "txtExtNumber";
             this.txtExtNumber.Size = new System.Drawing.Size(47, 23);
-            this.txtExtNumber.TabIndex = 36;
+            this.txtExtNumber.TabIndex = 5;
             // 
             // cmbMainContact
             // 
@@ -796,7 +795,7 @@ namespace LoginForm
             this.cmbMainContact.Location = new System.Drawing.Point(345, 54);
             this.cmbMainContact.Name = "cmbMainContact";
             this.cmbMainContact.Size = new System.Drawing.Size(121, 24);
-            this.cmbMainContact.TabIndex = 33;
+            this.cmbMainContact.TabIndex = 7;
             // 
             // label28
             // 
@@ -812,7 +811,7 @@ namespace LoginForm
             this.btnContactCancel.Location = new System.Drawing.Point(820, 127);
             this.btnContactCancel.Name = "btnContactCancel";
             this.btnContactCancel.Size = new System.Drawing.Size(64, 23);
-            this.btnContactCancel.TabIndex = 13;
+            this.btnContactCancel.TabIndex = 14;
             this.btnContactCancel.Text = "Cancel";
             this.btnContactCancel.UseVisualStyleBackColor = true;
             this.btnContactCancel.Visible = false;
@@ -823,7 +822,7 @@ namespace LoginForm
             this.btnContactDone.Location = new System.Drawing.Point(725, 127);
             this.btnContactDone.Name = "btnContactDone";
             this.btnContactDone.Size = new System.Drawing.Size(75, 23);
-            this.btnContactDone.TabIndex = 12;
+            this.btnContactDone.TabIndex = 13;
             this.btnContactDone.Text = "Done";
             this.btnContactDone.UseVisualStyleBackColor = true;
             this.btnContactDone.Visible = false;
@@ -834,7 +833,7 @@ namespace LoginForm
             this.btnContactDelete.Location = new System.Drawing.Point(830, 147);
             this.btnContactDelete.Name = "btnContactDelete";
             this.btnContactDelete.Size = new System.Drawing.Size(55, 23);
-            this.btnContactDelete.TabIndex = 16;
+            this.btnContactDelete.TabIndex = 17;
             this.btnContactDelete.Text = "Delete";
             this.btnContactDelete.UseVisualStyleBackColor = true;
             this.btnContactDelete.Click += new System.EventHandler(this.btnContactDelete_Click);
@@ -844,7 +843,7 @@ namespace LoginForm
             this.btnContactUpdate.Location = new System.Drawing.Point(774, 147);
             this.btnContactUpdate.Name = "btnContactUpdate";
             this.btnContactUpdate.Size = new System.Drawing.Size(50, 23);
-            this.btnContactUpdate.TabIndex = 15;
+            this.btnContactUpdate.TabIndex = 16;
             this.btnContactUpdate.Text = "Update";
             this.btnContactUpdate.UseVisualStyleBackColor = true;
             this.btnContactUpdate.Click += new System.EventHandler(this.btnContactUpdate_Click);
@@ -854,7 +853,7 @@ namespace LoginForm
             this.btnContactNew.Location = new System.Drawing.Point(725, 147);
             this.btnContactNew.Name = "btnContactNew";
             this.btnContactNew.Size = new System.Drawing.Size(43, 23);
-            this.btnContactNew.TabIndex = 14;
+            this.btnContactNew.TabIndex = 15;
             this.btnContactNew.Text = "New";
             this.btnContactNew.UseVisualStyleBackColor = true;
             this.btnContactNew.Click += new System.EventHandler(this.btnContactNew_Click);
@@ -875,7 +874,7 @@ namespace LoginForm
             this.btnPos.Location = new System.Drawing.Point(214, 57);
             this.btnPos.Name = "btnPos";
             this.btnPos.Size = new System.Drawing.Size(24, 23);
-            this.btnPos.TabIndex = 25;
+            this.btnPos.TabIndex = 19;
             this.btnPos.Text = "+";
             this.btnPos.UseVisualStyleBackColor = true;
             this.btnPos.Click += new System.EventHandler(this.btnPos_Click);
@@ -885,7 +884,7 @@ namespace LoginForm
             this.btnDep.Location = new System.Drawing.Point(214, 10);
             this.btnDep.Name = "btnDep";
             this.btnDep.Size = new System.Drawing.Size(24, 23);
-            this.btnDep.TabIndex = 24;
+            this.btnDep.TabIndex = 18;
             this.btnDep.Text = "+";
             this.btnDep.UseVisualStyleBackColor = true;
             this.btnDep.Click += new System.EventHandler(this.btnDep_Click);
@@ -896,7 +895,7 @@ namespace LoginForm
             this.txtContactNotes.Multiline = true;
             this.txtContactNotes.Name = "txtContactNotes";
             this.txtContactNotes.Size = new System.Drawing.Size(154, 67);
-            this.txtContactNotes.TabIndex = 11;
+            this.txtContactNotes.TabIndex = 12;
             // 
             // cmblanguage
             // 
@@ -905,7 +904,7 @@ namespace LoginForm
             this.cmblanguage.Location = new System.Drawing.Point(550, 6);
             this.cmblanguage.Name = "cmblanguage";
             this.cmblanguage.Size = new System.Drawing.Size(154, 24);
-            this.cmblanguage.TabIndex = 9;
+            this.cmblanguage.TabIndex = 10;
             // 
             // txtContactAddress
             // 
@@ -913,14 +912,14 @@ namespace LoginForm
             this.txtContactAddress.Multiline = true;
             this.txtContactAddress.Name = "txtContactAddress";
             this.txtContactAddress.Size = new System.Drawing.Size(154, 41);
-            this.txtContactAddress.TabIndex = 10;
+            this.txtContactAddress.TabIndex = 11;
             // 
             // txtContactfax
             // 
             this.txtContactfax.Location = new System.Drawing.Point(345, 150);
             this.txtContactfax.Name = "txtContactfax";
             this.txtContactfax.Size = new System.Drawing.Size(119, 23);
-            this.txtContactfax.TabIndex = 8;
+            this.txtContactfax.TabIndex = 9;
             this.txtContactfax.Leave += new System.EventHandler(this.txtContactfax_Leave);
             // 
             // txtContactMobile
@@ -928,7 +927,7 @@ namespace LoginForm
             this.txtContactMobile.Location = new System.Drawing.Point(346, 104);
             this.txtContactMobile.Name = "txtContactMobile";
             this.txtContactMobile.Size = new System.Drawing.Size(120, 23);
-            this.txtContactMobile.TabIndex = 7;
+            this.txtContactMobile.TabIndex = 8;
             this.txtContactMobile.Leave += new System.EventHandler(this.txtContactMobile_Leave);
             // 
             // txtContactPhone
@@ -936,7 +935,7 @@ namespace LoginForm
             this.txtContactPhone.Location = new System.Drawing.Point(85, 151);
             this.txtContactPhone.Name = "txtContactPhone";
             this.txtContactPhone.Size = new System.Drawing.Size(100, 23);
-            this.txtContactPhone.TabIndex = 6;
+            this.txtContactPhone.TabIndex = 4;
             this.txtContactPhone.Leave += new System.EventHandler(this.txtContactPhone_Leave);
             // 
             // txtContactMail
@@ -944,7 +943,7 @@ namespace LoginForm
             this.txtContactMail.Location = new System.Drawing.Point(345, 10);
             this.txtContactMail.Name = "txtContactMail";
             this.txtContactMail.Size = new System.Drawing.Size(119, 23);
-            this.txtContactMail.TabIndex = 5;
+            this.txtContactMail.TabIndex = 6;
             this.txtContactMail.Leave += new System.EventHandler(this.txtContactMail_Leave);
             // 
             // txtContactName
@@ -1167,7 +1166,7 @@ namespace LoginForm
             this.btnupdate.Location = new System.Drawing.Point(605, 3);
             this.btnupdate.Name = "btnupdate";
             this.btnupdate.Size = new System.Drawing.Size(141, 56);
-            this.btnupdate.TabIndex = 22;
+            this.btnupdate.TabIndex = 51;
             this.btnupdate.Text = "Modify";
             this.btnupdate.UseVisualStyleBackColor = true;
             this.btnupdate.Click += new System.EventHandler(this.btnsave_Click);
@@ -1180,7 +1179,7 @@ namespace LoginForm
             this.btnexit.Location = new System.Drawing.Point(756, 3);
             this.btnexit.Name = "btnexit";
             this.btnexit.Size = new System.Drawing.Size(133, 56);
-            this.btnexit.TabIndex = 23;
+            this.btnexit.TabIndex = 53;
             this.btnexit.Text = "Exit";
             this.btnexit.UseVisualStyleBackColor = true;
             this.btnexit.Click += new System.EventHandler(this.btnexit_Click);
@@ -1193,7 +1192,7 @@ namespace LoginForm
             this.btnnew.Location = new System.Drawing.Point(467, 3);
             this.btnnew.Name = "btnnew";
             this.btnnew.Size = new System.Drawing.Size(132, 56);
-            this.btnnew.TabIndex = 21;
+            this.btnnew.TabIndex = 50;
             this.btnnew.Text = "Add";
             this.btnnew.UseVisualStyleBackColor = true;
             this.btnnew.Click += new System.EventHandler(this.btnnew_Click);
@@ -1216,7 +1215,7 @@ namespace LoginForm
             this.txtsearch.Location = new System.Drawing.Point(122, 23);
             this.txtsearch.Name = "txtsearch";
             this.txtsearch.Size = new System.Drawing.Size(124, 23);
-            this.txtsearch.TabIndex = 20;
+            this.txtsearch.TabIndex = 52;
             this.txtsearch.TextChanged += new System.EventHandler(this.txtsearch_TextChanged);
             this.txtsearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtsearch_KeyDown);
             // 
