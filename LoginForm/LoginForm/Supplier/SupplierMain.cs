@@ -535,7 +535,9 @@ using LoginForm.Services;
                 try { txtfax.Text = supplierAdapter[gridselectedindex].fax.ToString(); } catch { }
                 txtweb.Text = supplierAdapter[gridselectedindex].webadress;
                 //txtContactNotes.Text = supplierAdapter[gridselectedindex].swNote;
-                cmbrepresentative.SelectedIndex = cmbrepresentative.FindStringExact(supplierAdapter[gridselectedindex].NameLastName);
+                //string name = supplierAdapter[gridselectedindex].NameLastName;
+                
+                cmbrepresentative.SelectedIndex = ((List<Worker>)cmbrepresentative.DataSource).FindIndex(wr => wr.NameLastName == supplierAdapter[gridselectedindex].NameLastName);
                 cmbposition.SelectedIndex = cmbposition.FindStringExact(supplierAdapter[gridselectedindex].titlename);
                 cmbdepartman.SelectedIndex = cmbdepartman.FindStringExact(supplierAdapter[gridselectedindex].departmentname);
                 cmbcategory.SelectedIndex = cmbcategory.FindStringExact(supplierAdapter[gridselectedindex].categoryname);
