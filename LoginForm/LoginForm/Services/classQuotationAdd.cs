@@ -83,13 +83,59 @@ namespace LoginForm.Services
             return Decimal.Parse(sp.DiscountedPrice1.ToString());// fiyatının olmadığı gösteriyor
             #endregion
         }
+        public static decimal GetLandingCost(string ArticleNo, bool Product, bool Weight, bool CustomsDuties, int quantity)
+        {
+            #region Calculating LandingCost
+            IMEEntities IME = new IMEEntities();
+            SlidingPrice sp = IME.SlidingPrices.Where(a => a.ArticleNo == ArticleNo).FirstOrDefault();
+            decimal p = 0;
+            if (sp != null)
+            {
+                p = GetCost(ArticleNo, quantity);
+            }
+            decimal w = 0;
+            var sd = IME.SuperDisks.Where(a => a.Article_No == ArticleNo).FirstOrDefault();
+            var sdP = IME.SuperDiskPs.Where(a => a.Article_No == ArticleNo).FirstOrDefault();
+            var er = IME.ExtendedRanges.Where(a => a.ArticleNo == ArticleNo).FirstOrDefault();
+            if (sd != null)
+            {
+                w = Decimal.Parse(sd.Standard_Weight.ToString());
+                w = (w / (decimal)1000);
+            }
+            else if (sdP != null)
+            {
+                w = Decimal.Parse(sdP.Standard_Weight.ToString());
+                w = (w / (decimal)1000);
+            }
+            else if (er != null)
+            {
+                try
+                {
+                    w = Decimal.Parse(er.ExtendedRangeWeight.ToString());
+                    w = (w / (decimal)1000);
+                }
+                catch { }
+            }
+
+            decimal l = 0;
+            if (Product == false) { p = 0; }
+            if (Weight == false) { w = 0; }
+            l = (p + (w * ((decimal)1.7)) + (((decimal)0.0675) * (p + (w * ((decimal)1.7)))));
+            if (CustomsDuties == false) { l = (p + (w * ((decimal)1.7))); }
+
+            return l;
+            #endregion
+        }
         public static decimal GetLandingCost(string ArticleNo, bool Product, bool Weight, bool CustomsDuties)
         {
             #region Calculating LandingCost
             IMEEntities IME = new IMEEntities();
             SlidingPrice sp = IME.SlidingPrices.Where(a => a.ArticleNo == ArticleNo).FirstOrDefault();
             decimal p = 0;
-            if (sp != null) { p = Decimal.Parse(sp.DiscountedPrice1.ToString()); }
+            if (sp != null)
+            {
+                p = Decimal.Parse(sp.DiscountedPrice1.ToString());
+            }
             decimal w = 0;
             var sd = IME.SuperDisks.Where(a => a.Article_No == ArticleNo).FirstOrDefault();
             var sdP = IME.SuperDiskPs.Where(a => a.Article_No == ArticleNo).FirstOrDefault();
