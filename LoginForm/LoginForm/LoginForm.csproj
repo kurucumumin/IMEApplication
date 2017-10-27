@@ -389,10 +389,10 @@
     <Compile Include="Supplier\SupplierPositionAdd.designer.cs">
       <DependentUpon>SupplierPositionAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Management\FormRoleAuth.cs">
+    <Compile Include="Roles\FormRoleAuth.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Management\FormRoleAuth.Designer.cs">
+    <Compile Include="Roles\FormRoleAuth.Designer.cs">
       <DependentUpon>FormRoleAuth.cs</DependentUpon>
     </Compile>
     <Compile Include="User\FormUserManagement.cs">
@@ -468,7 +468,7 @@
     <EmbeddedResource Include="Supplier\SupplierPositionAdd.resx">
       <DependentUpon>SupplierPositionAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Management\FormRoleAuth.resx">
+    <EmbeddedResource Include="Roles\FormRoleAuth.resx">
       <DependentUpon>FormRoleAuth.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\FormUserManagement.resx">

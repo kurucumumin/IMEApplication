@@ -106,11 +106,11 @@ namespace LoginForm.QuotationModule
 
         private void button1_Click(object sender, EventArgs e)
         {
-            CustomerMain form = new CustomerMain(true, "newCustomerDevelopers");
+            CustomerMain form = new CustomerMain(true);
             form.ShowDialog();
-            this.Show();
-            List<Customer> c = classQuotationAdd.CustomerSearch();
-            CustomerSearchGrid.DataSource = c;
+            //this.Show();
+            //List<Customer> c = classQuotationAdd.CustomerSearch();
+            //CustomerSearchGrid.DataSource = c;
         }
     }
 }

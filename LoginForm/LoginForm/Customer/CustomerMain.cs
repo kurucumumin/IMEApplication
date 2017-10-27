@@ -74,6 +74,17 @@ namespace LoginForm
             }
         }
 
+        public CustomerMain(Boolean buttonEnabled)
+        {
+            //Qoutation Customer Add
+
+            InitializeComponent();
+            if (buttonEnabled==true)
+            {
+                
+            }
+        }
+
         private void CustomerMain_Load(object sender, EventArgs e)
         {
            
@@ -744,15 +755,15 @@ namespace LoginForm
             
             if (btnCreate.Text == "CREATE")
             {
-                
+
                 itemsEnableTrue();
                 itemsClear();
                 //for new customerCode
                 string custmrcode = IME.Customers.OrderByDescending(a => a.ID).FirstOrDefault().ID;
                 string custmrnumbers = string.Empty;
-                string newcustomercodenumbers="";
+                string newcustomercodenumbers = "";
                 string newcustomercodezeros = "";
-                string newcustomercodechars="";
+                string newcustomercodechars = "";
                 for (int i = 0; i < custmrcode.Length; i++)
                 {
                     if (Char.IsDigit(custmrcode[i]))
@@ -762,10 +773,10 @@ namespace LoginForm
                     else
                     {
                         newcustomercodechars += custmrcode[i];
-                    }                       
+                    }
                 }
                 //Aynı ID ile customer oluşturmasını önleyen kısım
-                while(IME.Customers.Where(a=>a.ID== custmrcode).Count()>0)
+                while (IME.Customers.Where(a => a.ID == custmrcode).Count() > 0)
                 {
                     newcustomercodenumbers = (Int32.Parse(newcustomercodenumbers) + 1).ToString();
                     custmrcode = newcustomercodechars + newcustomercodezeros + newcustomercodenumbers;
@@ -776,7 +787,7 @@ namespace LoginForm
                 Customer newCustomer = new Customer();
                 newCustomer.ID = CustomerCode.Text;
                 IME.Customers.Add(newCustomer);
-                IME.SaveChanges();                
+                IME.SaveChanges();
                 btnCreate.Text = "SAVE";
                 btnUpdate.Text = "CANCEL";
                 AdressList.Enabled = false;
