@@ -326,7 +326,7 @@ namespace LoginForm.QuotationModule
                     //TotalDis();
                     break;
                 #endregion
-                case 22://total
+                case 22://Total
                     {
                         #region Total
                         decimal total = decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString());
