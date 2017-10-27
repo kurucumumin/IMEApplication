@@ -226,7 +226,7 @@ namespace LoginForm
             CommunicationLanguage.Enabled = false;
             ContactNotes.Enabled = false;
             departmentAdd.Enabled = false;
-            DeliveryAddressOk.Enabled = false;
+            cbIMEOffice.Enabled = false;
             InvoiceAdressOk.Enabled = false;
 
             titleAdd.Enabled = false;
@@ -309,9 +309,9 @@ namespace LoginForm
             cbTown.Enabled = false;
             PostCode.Enabled = false;
             AddressDetails.Enabled = false;
-            DeliveryAddressOk.Enabled = false;
+            cbIMEOffice.Enabled = false;
             InvoiceAdressOk.Enabled = false;
-            checkBox1.Enabled = false;
+            cbIMEOffice.Enabled = false;
             AdressList.Enabled = true;
 
             
@@ -329,7 +329,7 @@ namespace LoginForm
         private void AdressTabEnableTrue()
         {
             #region contactTabEnableTrue
-            if (checkBox1.Checked == false)
+            if (cbIMEOffice.Checked == false)
             {
                 AddressType.Enabled = true;
             }
@@ -338,9 +338,9 @@ namespace LoginForm
             cbTown.Enabled = true;
             PostCode.Enabled = true;
             AddressDetails.Enabled = true;
-            DeliveryAddressOk.Enabled = true;
+            cbIMEOffice.Enabled = true;
             InvoiceAdressOk.Enabled = true;
-            checkBox1.Enabled = true;
+            cbIMEOffice.Enabled = true;
             AdressList.Enabled = false;
 
             CustomerDataGrid.Enabled = false;
@@ -450,7 +450,7 @@ namespace LoginForm
                 cbMainContact.DisplayMember = "cw_name";
                 cbMainContact.SelectedItem = cbMainContact.FindStringExact(customerAdapter[gridselectedindex].cw_name);
                 if (customerAdapter[gridselectedindex].AddressContact == null)
-                { AddressType.SelectedItem = null; checkBox1.Checked = true; }
+                { AddressType.SelectedItem = null; cbIMEOffice.Checked = true; }
                 else
                 {
                     AddressType.SelectedIndex = AddressType.FindStringExact(customerAdapter[gridselectedindex].AddressContact);
@@ -458,7 +458,7 @@ namespace LoginForm
                 PostCode.Text = customerAdapter[gridselectedindex].PostCode;
                 cbCountry.SelectedIndex = cbCountry.FindStringExact(customerAdapter[gridselectedindex].AdressCountry);
                 cbCity.SelectedIndex = cbCity.FindStringExact(customerAdapter[gridselectedindex].AddressCity);
-                if (customerAdapter[gridselectedindex].isDeliveryAdress == 1) { DeliveryAddressOk.Checked = true; } else { DeliveryAddressOk.Checked = false; }
+                if (customerAdapter[gridselectedindex].isDeliveryAdress == 1) { cbIMEOffice.Checked = true; } else { cbIMEOffice.Checked = false; }
                 if (customerAdapter[gridselectedindex].isInvoiceAdress == 1) { InvoiceAdressOk.Checked = true; } else { InvoiceAdressOk.Checked = false; }
                 cbTown.SelectedIndex = cbTown.FindStringExact(customerAdapter[gridselectedindex].Town_name);
                 AddressDetails.Text = customerAdapter[gridselectedindex].AdressDetails;
@@ -558,7 +558,7 @@ namespace LoginForm
             cbMainContact.DisplayMember = "cw_name";
             cbMainContact.SelectedItem = cbMainContact.FindStringExact(customerAdapter[gridselectedindex].cw_name);
             if (customerAdapter[gridselectedindex].AddressContact == null)
-            { AddressType.SelectedItem = null; checkBox1.Checked = true; }
+            { AddressType.SelectedItem = null; cbIMEOffice.Checked = true; }
             else
             {
                 AddressType.SelectedIndex = AddressType.FindStringExact(customerAdapter[gridselectedindex].AddressContact);
@@ -566,7 +566,7 @@ namespace LoginForm
             PostCode.Text = customerAdapter[gridselectedindex].PostCode;
             cbCountry.SelectedIndex = cbCountry.FindStringExact(customerAdapter[gridselectedindex].AdressCountry);
             cbCity.SelectedIndex = cbCity.FindStringExact(customerAdapter[gridselectedindex].AddressCity);
-            if (customerAdapter[gridselectedindex].isDeliveryAdress == 1) { DeliveryAddressOk.Checked = true; } else { DeliveryAddressOk.Checked = false; }
+            if (customerAdapter[gridselectedindex].isDeliveryAdress == 1) { cbIMEOffice.Checked = true; } else { cbIMEOffice.Checked = false; }
             if (customerAdapter[gridselectedindex].isInvoiceAdress == 1) { InvoiceAdressOk.Checked = true; } else { InvoiceAdressOk.Checked = false; }
             cbTown.SelectedIndex = cbTown.FindStringExact(customerAdapter[gridselectedindex].Town_name);
             AddressDetails.Text = customerAdapter[gridselectedindex].AdressDetails;
@@ -1076,9 +1076,9 @@ namespace LoginForm
             AdressTabEnableTrue();
             AddressType.Text = "";
             cbCountry.Text = "";
-            checkBox1.Checked = false;
+            cbIMEOffice.Checked = false;
             InvoiceAdressOk.Checked = false;
-            DeliveryAddressOk.Checked = false;
+            cbIMEOffice.Checked = false;
             cbCity.Text = "";
             cbTown.Text = "";
             PostCode.Text = "";
@@ -1137,14 +1137,14 @@ namespace LoginForm
                 ca.CountryID = ((Country)(cbCountry).SelectedItem).ID;
                 ca.CityID = ((City)(cbCity).SelectedItem).ID;
                 //AddresType
-                if (checkBox1.Checked == false)
+                if (cbIMEOffice.Checked == false)
                 {
                     ca.ContactID = ((CustomerWorker)(AddressType).SelectedItem).ID;
                 }
 
                 ca.PostCode = PostCode.Text;
                 ca.AdressDetails = AddressDetails.Text;
-                if (DeliveryAddressOk.Checked) { ca.isDeliveryAdress = 1; } else { ca.isDeliveryAdress = 0; }
+                if (cbIMEOffice.Checked) { ca.isDeliveryAdress = 1; } else { ca.isDeliveryAdress = 0; }
                 if (InvoiceAdressOk.Checked) { ca.isInvoiceAdress = 1; } else { ca.isInvoiceAdress = 0; }
                 IME.SaveChanges();
             }
@@ -1156,14 +1156,14 @@ namespace LoginForm
                 ca.CountryID = ((Country)(cbCountry).SelectedItem).ID;
                 ca.CityID = ((City)(cbCity).SelectedItem).ID;
                 //AddresType
-                if (checkBox1.Checked == false)
+                if (cbIMEOffice.Checked == false)
                 {
                     ca.ContactID = ((CustomerWorker)(AddressType).SelectedItem).ID;
                 }
 
                 ca.PostCode = PostCode.Text;
                 ca.AdressDetails = AddressDetails.Text;
-                if (DeliveryAddressOk.Checked) { ca.isDeliveryAdress = 1; } else { ca.isDeliveryAdress = 0; }
+                if (cbIMEOffice.Checked) { ca.isDeliveryAdress = 1; } else { ca.isDeliveryAdress = 0; }
                 if (InvoiceAdressOk.Checked) { ca.isInvoiceAdress = 1; } else { ca.isInvoiceAdress = 0; }
                 IME.CustomerAdresses.Add(ca);
                 IME.SaveChanges();
@@ -1175,19 +1175,21 @@ namespace LoginForm
                 Search.Enabled = true;
                 CustomerDataGrid.Enabled = true;
             }
-            AdressList.DataSource = IME.CustomerAdresses.Where(customerw => customerw.CustomerID == CustomerCode.Text).ToList();
-            AdressList.DisplayMember = "cw_name";
+            AdressList.Update();
+            //AdressList.DataSource = IME.CustomerAdresses.Where(customerw => customerw.CustomerID == CustomerCode.Text).ToList();
+            //AdressList.DisplayMember = "cw_name";
 
             AdressAdd.Visible = true;
             AddressDel.Visible = true;
             AddressUpd.Visible = true;
             AdressCancel.Visible = false;
             AdressDone.Visible = false;
+            
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked)
+            if (cbIMEOffice.Checked)
             {
                 AddressType.Enabled = false;
                 AddressType.SelectedItem = null;
@@ -1251,7 +1253,7 @@ namespace LoginForm
                     var contact1 = IME.CustomerAdresses.Where(cw => cw.ID == cw_ID).ToList();
                     foreach (var a in contact1)
                     {
-                        if (a.isDeliveryAdress == 1) { DeliveryAddressOk.Checked = true; } else { DeliveryAddressOk.Checked = false; }
+                        if (a.isDeliveryAdress == 1) { cbIMEOffice.Checked = true; } else { cbIMEOffice.Checked = false; }
                         if (a.isInvoiceAdress == 1) { InvoiceAdressOk.Checked = true; } else { InvoiceAdressOk.Checked = false; }
 
                         cbCountry.SelectedItem = a.Country;

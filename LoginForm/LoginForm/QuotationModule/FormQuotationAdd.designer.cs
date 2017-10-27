@@ -287,6 +287,8 @@
             this.cbSMethod = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label41 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -422,11 +424,11 @@
             // 
             // dgNo
             // 
-            this.dgNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dgNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.dgNo.HeaderText = "No";
             this.dgNo.Name = "dgNo";
             this.dgNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dgNo.Width = 46;
+            this.dgNo.Width = 30;
             // 
             // HS
             // 
@@ -1421,6 +1423,7 @@
             this.tabItemDetails.Controls.Add(this.textBox14);
             this.tabItemDetails.Controls.Add(this.txtSupersectionName);
             this.tabItemDetails.Controls.Add(this.txtCofO);
+            this.tabItemDetails.Controls.Add(this.textBox1);
             this.tabItemDetails.Controls.Add(this.txtManufacturer);
             this.tabItemDetails.Controls.Add(this.txtCCCN);
             this.tabItemDetails.Controls.Add(this.textBox17);
@@ -1488,6 +1491,7 @@
             this.tabItemDetails.Controls.Add(this.label33);
             this.tabItemDetails.Controls.Add(this.label14);
             this.tabItemDetails.Controls.Add(this.label23);
+            this.tabItemDetails.Controls.Add(this.label41);
             this.tabItemDetails.Controls.Add(this.label18);
             this.tabItemDetails.Controls.Add(this.label19);
             this.tabItemDetails.Controls.Add(this.label53);
@@ -1577,7 +1581,7 @@
             // textBox17
             // 
             this.textBox17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox17.Location = new System.Drawing.Point(68, 26);
+            this.textBox17.Location = new System.Drawing.Point(68, 29);
             this.textBox17.Name = "textBox17";
             this.textBox17.ReadOnly = true;
             this.textBox17.Size = new System.Drawing.Size(171, 20);
@@ -1595,7 +1599,7 @@
             // textBox18
             // 
             this.textBox18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox18.Location = new System.Drawing.Point(325, 96);
+            this.textBox18.Location = new System.Drawing.Point(325, 98);
             this.textBox18.Name = "textBox18";
             this.textBox18.ReadOnly = true;
             this.textBox18.Size = new System.Drawing.Size(64, 20);
@@ -1604,7 +1608,7 @@
             // textBox19
             // 
             this.textBox19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox19.Location = new System.Drawing.Point(325, 73);
+            this.textBox19.Location = new System.Drawing.Point(325, 75);
             this.textBox19.Name = "textBox19";
             this.textBox19.ReadOnly = true;
             this.textBox19.Size = new System.Drawing.Size(64, 20);
@@ -1613,7 +1617,7 @@
             // textBox20
             // 
             this.textBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox20.Location = new System.Drawing.Point(325, 48);
+            this.textBox20.Location = new System.Drawing.Point(325, 50);
             this.textBox20.Name = "textBox20";
             this.textBox20.ReadOnly = true;
             this.textBox20.Size = new System.Drawing.Size(64, 20);
@@ -1622,7 +1626,7 @@
             // textBox21
             // 
             this.textBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox21.Location = new System.Drawing.Point(325, 23);
+            this.textBox21.Location = new System.Drawing.Point(325, 27);
             this.textBox21.Name = "textBox21";
             this.textBox21.ReadOnly = true;
             this.textBox21.Size = new System.Drawing.Size(64, 20);
@@ -1713,7 +1717,7 @@
             // textBox23
             // 
             this.textBox23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox23.Location = new System.Drawing.Point(525, 24);
+            this.textBox23.Location = new System.Drawing.Point(525, 28);
             this.textBox23.Name = "textBox23";
             this.textBox23.ReadOnly = true;
             this.textBox23.Size = new System.Drawing.Size(66, 20);
@@ -1722,7 +1726,7 @@
             // textBox24
             // 
             this.textBox24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox24.Location = new System.Drawing.Point(527, 49);
+            this.textBox24.Location = new System.Drawing.Point(527, 52);
             this.textBox24.Name = "textBox24";
             this.textBox24.ReadOnly = true;
             this.textBox24.Size = new System.Drawing.Size(64, 20);
@@ -1731,7 +1735,7 @@
             // txtRSStock
             // 
             this.txtRSStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtRSStock.Location = new System.Drawing.Point(456, 24);
+            this.txtRSStock.Location = new System.Drawing.Point(456, 28);
             this.txtRSStock.Name = "txtRSStock";
             this.txtRSStock.ReadOnly = true;
             this.txtRSStock.Size = new System.Drawing.Size(64, 20);
@@ -1740,7 +1744,7 @@
             // txtRSOnOrder
             // 
             this.txtRSOnOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtRSOnOrder.Location = new System.Drawing.Point(456, 49);
+            this.txtRSOnOrder.Location = new System.Drawing.Point(456, 52);
             this.txtRSOnOrder.Name = "txtRSOnOrder";
             this.txtRSOnOrder.ReadOnly = true;
             this.txtRSOnOrder.Size = new System.Drawing.Size(66, 20);
@@ -2116,7 +2120,7 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(16, 26);
+            this.label37.Location = new System.Drawing.Point(16, 29);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(35, 13);
             this.label37.TabIndex = 498;
@@ -2147,7 +2151,7 @@
             // 
             this.label33.AutoSize = true;
             this.label33.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label33.Location = new System.Drawing.Point(262, 96);
+            this.label33.Location = new System.Drawing.Point(262, 98);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(41, 13);
             this.label33.TabIndex = 492;
@@ -2158,7 +2162,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label14.Location = new System.Drawing.Point(265, 70);
+            this.label14.Location = new System.Drawing.Point(265, 72);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(41, 13);
             this.label14.TabIndex = 493;
@@ -2169,7 +2173,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label23.Location = new System.Drawing.Point(263, 51);
+            this.label23.Location = new System.Drawing.Point(263, 53);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(41, 13);
             this.label23.TabIndex = 486;
@@ -2180,7 +2184,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label18.Location = new System.Drawing.Point(263, 25);
+            this.label18.Location = new System.Drawing.Point(263, 28);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(41, 13);
             this.label18.TabIndex = 487;
@@ -2280,7 +2284,7 @@
             // 
             // label59
             // 
-            this.label59.Location = new System.Drawing.Point(395, 26);
+            this.label59.Location = new System.Drawing.Point(395, 30);
             this.label59.Name = "label59";
             this.label59.Size = new System.Drawing.Size(56, 19);
             this.label59.TabIndex = 464;
@@ -2289,7 +2293,7 @@
             // 
             // label56
             // 
-            this.label56.Location = new System.Drawing.Point(395, 51);
+            this.label56.Location = new System.Drawing.Point(395, 54);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(57, 16);
             this.label56.TabIndex = 465;
@@ -2689,7 +2693,7 @@
             // 
             this.txtExtraChanges.Location = new System.Drawing.Point(96, 52);
             this.txtExtraChanges.Name = "txtExtraChanges";
-            this.txtExtraChanges.Size = new System.Drawing.Size(105, 20);
+            this.txtExtraChanges.Size = new System.Drawing.Size(50, 20);
             this.txtExtraChanges.TabIndex = 20;
             this.txtExtraChanges.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtExtraChanges.TextChanged += new System.EventHandler(this.txtExtraChanges_TextChanged);
@@ -2844,6 +2848,26 @@
             this.textBox2.Size = new System.Drawing.Size(404, 36);
             this.textBox2.TabIndex = 0;
             // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.textBox1.Location = new System.Drawing.Point(325, 4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(309, 20);
+            this.textBox1.TabIndex = 504;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label41.Location = new System.Drawing.Point(263, 8);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(53, 13);
+            this.label41.TabIndex = 487;
+            this.label41.Text = "Item Note";
+            this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // FormQuotationAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2894,42 +2918,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.DataGridView dgQuotationAddedItems;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LI;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgSupplier;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgProductCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgBrand;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgMPN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgDesc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgLM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCost;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgLandingCost;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgMargin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgQty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgStock;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgUOM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgSSM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgUC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgUPIME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgDisc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgUCUPCurr;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgTotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgTargetUP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCompetitor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgHZ;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCR;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgDelivery;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitWeigt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgTotalWeight;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCustStkCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCustDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCOO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgCCCNO;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.DataGridView dgQuotationDeleted;
         private System.Windows.Forms.DataGridViewTextBoxColumn No1;
@@ -3146,5 +3134,43 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox txtAccountingNote;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgSupplier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgProductCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgBrand;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgMPN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgLM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgLandingCost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgMargin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgQty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgStock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUOM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgSSM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUPIME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgDisc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUCUPCurr;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgTargetUP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCompetitor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgHZ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgDelivery;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitWeigt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgTotalWeight;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCustStkCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCustDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCOO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgCCCNO;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label41;
     }
 }

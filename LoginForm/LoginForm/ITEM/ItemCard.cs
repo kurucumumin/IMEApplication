@@ -203,7 +203,7 @@ namespace LoginForm.Item
             }else if (rbItemNotes.Checked == true)
             {
                 #region List Birleştirme
-                var gridAdapterPC = (from a in IME.ItemNotes.Where(a => a.ArticleNo.Contains(txtSelected))
+                var gridAdapterPC = (from a in IME.ItemNotes.Where(a => a.Note.Note_name.Contains(txtSelected))
                                      join sp in IME.SuperDisks on a.ArticleNo equals sp.Article_No
                                      select new
                                      {
@@ -213,7 +213,7 @@ namespace LoginForm.Item
                                          a.Note.Note_name,
                                      }
                              ).ToList();
-                var list2 = (from a in IME.ItemNotes.Where(a => a.ArticleNo.Contains(txtSelected))
+                var list2 = (from a in IME.ItemNotes.Where(a => a.Note.Note_name.Contains(txtSelected))
                              join sp in IME.SuperDiskPs on a.ArticleNo equals sp.Article_No
                              select new
                              {
@@ -223,7 +223,7 @@ namespace LoginForm.Item
                                  a.Note.Note_name,
                              }
                             ).ToList();
-                var list3 = (from a in IME.ItemNotes.Where(a => a.ArticleNo.Contains(txtSelected))
+                var list3 = (from a in IME.ItemNotes.Where(a => a.Note.Note_name.Contains(txtSelected))
                              join sp in IME.ExtendedRanges on a.ArticleNo equals sp.ArticleNo
                              select new
                              {

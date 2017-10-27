@@ -77,10 +77,10 @@ namespace LoginForm.Services
                     if (sp.DiscountedPrice4 == 0) { return result = Decimal.Parse(sp.DiscountedPrice3.ToString()); }
                     return result = Decimal.Parse(sp.DiscountedPrice4.ToString());
                 }
-                else if (sp.DiscountedPrice4 != 0) { return result = Decimal.Parse(sp.DiscountedPrice5.ToString()); }else { return result = Decimal.Parse(sp.DiscountedPrice4.ToString()); }
+                else if (sp.DiscountedPrice4 != 0) { return result = Decimal.Parse(sp.DiscountedPrice5.ToString()); }else { return result = Decimal.Parse(sp.DiscountedPrice1.ToString()); }
             }
             catch { }
-            return -1;// fiyatının olmadığı gösteriyor
+            return Decimal.Parse(sp.DiscountedPrice1.ToString());// fiyatının olmadığı gösteriyor
             #endregion
         }
         public static decimal GetLandingCost(string ArticleNo, bool Product, bool Weight, bool CustomsDuties)

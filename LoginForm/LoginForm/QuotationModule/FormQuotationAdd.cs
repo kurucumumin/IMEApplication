@@ -830,7 +830,7 @@ namespace LoginForm.QuotationModule
                 if (result == DialogResult.OK)
                 {
                     customer = form.customer;
-                    cbWorkers.DataSource = customer.CustomerWorkers;
+                    cbWorkers.DataSource = customer.CustomerWorkers.ToList();
                     cbWorkers.DisplayMember = "cw_name";
                     cbWorkers.ValueMember = "ID";
                 }
