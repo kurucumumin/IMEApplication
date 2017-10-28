@@ -33,7 +33,6 @@ namespace LoginForm
         {
             #region LoginBlock
             string UserName = txtID.Text;
-            LoginFormName.LoginName = txtID.Text;
             string PW = Utils.MD5Hash(txtPassWord.Text);
             Worker Logged = new Worker();
             try

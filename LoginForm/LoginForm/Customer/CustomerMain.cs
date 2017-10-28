@@ -762,7 +762,7 @@ namespace LoginForm
                 itemsClear();
                 rb_active.Checked = true;
                 Represantative1.DataSource = null;
-                Represantative1.Items.Add(LoginFormName.LoginName);
+                Represantative1.Items.Add(Utils.getCurrentUser().UserName);
                 
                 //for new customerCode
                 string custmrcode = IME.Customers.OrderByDescending(a => a.ID).FirstOrDefault().ID;
@@ -834,7 +834,7 @@ namespace LoginForm
                 //
                 c.accountrepresentaryID = (AccountRepresentary.SelectedItem as Worker).WorkerID;
                 //int c_rep1ID = ((Worker)(Represantative1).SelectedItem).WorkerID;
-                c.representaryID = Int32.Parse((LoginFormName.LoginName));
+                c.representaryID = Utils.getCurrentUser().WorkerID;
                 int c_rep2ID = ((Worker)(Represantative2).SelectedItem).WorkerID;
                 c.representary2ID = c_rep2ID;
                 int c_termpayment = ((PaymentTerm)(TermsofPayments).SelectedItem).ID;
