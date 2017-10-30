@@ -30,13 +30,16 @@
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel31 = new System.Windows.Forms.Panel();
+            this.btnTermsOfPayment = new System.Windows.Forms.Button();
             this.txtVAT = new System.Windows.Forms.TextBox();
             this.lblVAT = new System.Windows.Forms.Label();
             this.btnRolesAuthorities = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtLowMarginLimit = new System.Windows.Forms.TextBox();
             this.lblLowMarginLimit = new System.Windows.Forms.Label();
-            this.btnTermsOfPayment = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbCurrencyName = new System.Windows.Forms.ComboBox();
+            this.cbCurrencyType = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel31.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +65,9 @@
             // panel31
             // 
             this.panel31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel31.Controls.Add(this.cbCurrencyType);
+            this.panel31.Controls.Add(this.cbCurrencyName);
+            this.panel31.Controls.Add(this.label1);
             this.panel31.Controls.Add(this.btnTermsOfPayment);
             this.panel31.Controls.Add(this.txtVAT);
             this.panel31.Controls.Add(this.lblVAT);
@@ -75,6 +81,23 @@
             this.panel31.Name = "panel31";
             this.panel31.Size = new System.Drawing.Size(334, 553);
             this.panel31.TabIndex = 0;
+            // 
+            // btnTermsOfPayment
+            // 
+            this.btnTermsOfPayment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTermsOfPayment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(187)))), ((int)(((byte)(106)))));
+            this.btnTermsOfPayment.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
+            this.btnTermsOfPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTermsOfPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTermsOfPayment.Location = new System.Drawing.Point(-1, 394);
+            this.btnTermsOfPayment.Margin = new System.Windows.Forms.Padding(0);
+            this.btnTermsOfPayment.Name = "btnTermsOfPayment";
+            this.btnTermsOfPayment.Size = new System.Drawing.Size(335, 37);
+            this.btnTermsOfPayment.TabIndex = 8;
+            this.btnTermsOfPayment.Text = "Terms of Payment";
+            this.btnTermsOfPayment.UseVisualStyleBackColor = false;
+            this.btnTermsOfPayment.Click += new System.EventHandler(this.btnTermsOfPayment_Click);
             // 
             // txtVAT
             // 
@@ -147,22 +170,30 @@
             this.lblLowMarginLimit.TabIndex = 0;
             this.lblLowMarginLimit.Text = "Low Margin Limit";
             // 
-            // btnTermsOfPayment
+            // label1
             // 
-            this.btnTermsOfPayment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTermsOfPayment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(187)))), ((int)(((byte)(106)))));
-            this.btnTermsOfPayment.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
-            this.btnTermsOfPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTermsOfPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTermsOfPayment.Location = new System.Drawing.Point(-1, 394);
-            this.btnTermsOfPayment.Margin = new System.Windows.Forms.Padding(0);
-            this.btnTermsOfPayment.Name = "btnTermsOfPayment";
-            this.btnTermsOfPayment.Size = new System.Drawing.Size(335, 37);
-            this.btnTermsOfPayment.TabIndex = 8;
-            this.btnTermsOfPayment.Text = "Terms of Payment";
-            this.btnTermsOfPayment.UseVisualStyleBackColor = false;
-            this.btnTermsOfPayment.Click += new System.EventHandler(this.btnTermsOfPayment_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 118);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 18);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Default Currency";
+            // 
+            // cbCurrencyName
+            // 
+            this.cbCurrencyName.FormattingEnabled = true;
+            this.cbCurrencyName.Location = new System.Drawing.Point(191, 115);
+            this.cbCurrencyName.Name = "cbCurrencyName";
+            this.cbCurrencyName.Size = new System.Drawing.Size(125, 26);
+            this.cbCurrencyName.TabIndex = 10;
+            // 
+            // cbCurrencyType
+            // 
+            this.cbCurrencyType.FormattingEnabled = true;
+            this.cbCurrencyType.Location = new System.Drawing.Point(191, 147);
+            this.cbCurrencyType.Name = "cbCurrencyType";
+            this.cbCurrencyType.Size = new System.Drawing.Size(125, 26);
+            this.cbCurrencyType.TabIndex = 11;
             // 
             // ManagementControl
             // 
@@ -189,5 +220,8 @@
         private System.Windows.Forms.TextBox txtVAT;
         private System.Windows.Forms.Label lblVAT;
         private System.Windows.Forms.Button btnTermsOfPayment;
+        private System.Windows.Forms.ComboBox cbCurrencyType;
+        private System.Windows.Forms.ComboBox cbCurrencyName;
+        private System.Windows.Forms.Label label1;
     }
 }
