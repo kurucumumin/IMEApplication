@@ -61,13 +61,13 @@
             this.CustomerCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tab_account = new System.Windows.Forms.TabPage();
+            this.factor = new System.Windows.Forms.TextBox();
+            this.DiscountRate = new System.Windows.Forms.TextBox();
             this.AccountingNotes = new System.Windows.Forms.TextBox();
             this.InvCurrencyName = new System.Windows.Forms.ComboBox();
-            this.factor = new System.Windows.Forms.ComboBox();
             this.InvCurrencyType = new System.Windows.Forms.ComboBox();
             this.QuoCurrencyType = new System.Windows.Forms.ComboBox();
             this.QuoCurrencyName = new System.Windows.Forms.ComboBox();
-            this.DiscountRate = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.PaymentMethod = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -158,9 +158,9 @@
             this.tableMain.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // tabControl1
-            // 
+            //
             this.tabControl1.Controls.Add(this.tab_company);
             this.tabControl1.Controls.Add(this.tab_account);
             this.tabControl1.Controls.Add(this.tab_adresses);
@@ -172,9 +172,9 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(704, 303);
             this.tabControl1.TabIndex = 0;
-            // 
+            //
             // tab_company
-            // 
+            //
             this.tab_company.Controls.Add(this.dateTimePicker1);
             this.tab_company.Controls.Add(this.cbMainContact);
             this.tab_company.Controls.Add(this.label35);
@@ -212,36 +212,36 @@
             this.tab_company.TabIndex = 0;
             this.tab_company.Text = "Company Info";
             this.tab_company.UseVisualStyleBackColor = true;
-            // 
+            //
             // dateTimePicker1
-            // 
+            //
             this.dateTimePicker1.Enabled = false;
             this.dateTimePicker1.Location = new System.Drawing.Point(212, 19);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(93, 23);
             this.dateTimePicker1.TabIndex = 2;
-            // 
+            //
             // cbMainContact
-            // 
-            this.cbMainContact.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            //
             this.cbMainContact.Enabled = false;
             this.cbMainContact.FormattingEnabled = true;
             this.cbMainContact.Location = new System.Drawing.Point(471, 179);
             this.cbMainContact.Name = "cbMainContact";
             this.cbMainContact.Size = new System.Drawing.Size(197, 24);
             this.cbMainContact.TabIndex = 12;
-            // 
+            this.cbMainContact.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbMainContact_KeyPress);
+            //
             // label35
-            // 
+            //
             this.label35.AutoSize = true;
             this.label35.Location = new System.Drawing.Point(368, 179);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(90, 17);
             this.label35.TabIndex = 23;
             this.label35.Text = "Main Contact";
-            // 
+            //
             // btnAddSubcategory
-            // 
+            //
             this.btnAddSubcategory.Location = new System.Drawing.Point(310, 141);
             this.btnAddSubcategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddSubcategory.Name = "btnAddSubcategory";
@@ -249,9 +249,9 @@
             this.btnAddSubcategory.TabIndex = 15;
             this.btnAddSubcategory.Text = "+";
             this.btnAddSubcategory.UseVisualStyleBackColor = true;
-            // 
+            //
             // btnAddMainCategory
-            // 
+            //
             this.btnAddMainCategory.Location = new System.Drawing.Point(310, 100);
             this.btnAddMainCategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddMainCategory.Name = "btnAddMainCategory";
@@ -259,9 +259,9 @@
             this.btnAddMainCategory.TabIndex = 14;
             this.btnAddMainCategory.Text = "+";
             this.btnAddMainCategory.UseVisualStyleBackColor = true;
-            // 
+            //
             // rb_passive
-            // 
+            //
             this.rb_passive.AutoSize = true;
             this.rb_passive.Enabled = false;
             this.rb_passive.Location = new System.Drawing.Point(568, 20);
@@ -271,9 +271,9 @@
             this.rb_passive.TabStop = true;
             this.rb_passive.Text = "Passive";
             this.rb_passive.UseVisualStyleBackColor = true;
-            // 
+            //
             // rb_active
-            // 
+            //
             this.rb_active.AutoSize = true;
             this.rb_active.Enabled = false;
             this.rb_active.Location = new System.Drawing.Point(471, 20);
@@ -283,67 +283,67 @@
             this.rb_active.TabStop = true;
             this.rb_active.Text = "Active";
             this.rb_active.UseVisualStyleBackColor = true;
-            // 
+            //
             // Represantative2
-            // 
-            this.Represantative2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            //
             this.Represantative2.Enabled = false;
             this.Represantative2.FormattingEnabled = true;
             this.Represantative2.Location = new System.Drawing.Point(123, 223);
             this.Represantative2.Name = "Represantative2";
             this.Represantative2.Size = new System.Drawing.Size(182, 24);
             this.Represantative2.TabIndex = 7;
-            // 
+            this.Represantative2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Represantative2_KeyPress);
+            //
             // Represantative1
-            // 
-            this.Represantative1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            //
             this.Represantative1.Enabled = false;
             this.Represantative1.FormattingEnabled = true;
             this.Represantative1.Location = new System.Drawing.Point(123, 182);
             this.Represantative1.Name = "Represantative1";
             this.Represantative1.Size = new System.Drawing.Size(182, 24);
             this.Represantative1.TabIndex = 6;
-            // 
+            this.Represantative1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Represantative1_KeyPress);
+            this.Represantative1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Represantative1_MouseClick);
+            //
             // label6
-            // 
+            //
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(8, 227);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(116, 17);
             this.label6.TabIndex = 0;
             this.label6.Text = "Represantative 2";
-            // 
+            //
             // SubCategory
-            // 
-            this.SubCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            //
             this.SubCategory.Enabled = false;
             this.SubCategory.FormattingEnabled = true;
             this.SubCategory.Location = new System.Drawing.Point(123, 141);
             this.SubCategory.Name = "SubCategory";
             this.SubCategory.Size = new System.Drawing.Size(182, 24);
             this.SubCategory.TabIndex = 5;
-            // 
+            this.SubCategory.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SubCategory_KeyPress);
+            //
             // label18
-            // 
+            //
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(368, 21);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(48, 17);
             this.label18.TabIndex = 0;
             this.label18.Text = "Status";
-            // 
+            //
             // label
-            // 
+            //
             this.label.AutoSize = true;
             this.label.Location = new System.Drawing.Point(8, 185);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(116, 17);
             this.label.TabIndex = 0;
             this.label.Text = "Represantative 1";
-            // 
+            //
             // Capital
-            // 
-            this.Capital.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            //
             this.Capital.Enabled = false;
             this.Capital.FormattingEnabled = true;
             this.Capital.Items.AddRange(new object[] {
@@ -354,10 +354,11 @@
             this.Capital.Name = "Capital";
             this.Capital.Size = new System.Drawing.Size(199, 24);
             this.Capital.TabIndex = 8;
-            // 
+            this.Capital.SelectedIndexChanged += new System.EventHandler(this.MainCategory_SelectedIndexChanged);
+            this.Capital.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Capital_KeyPress);
+            //
             // MainCategory
-            // 
-            this.MainCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            //
             this.MainCategory.Enabled = false;
             this.MainCategory.FormattingEnabled = true;
             this.MainCategory.Location = new System.Drawing.Point(123, 100);
@@ -365,146 +366,147 @@
             this.MainCategory.Size = new System.Drawing.Size(182, 24);
             this.MainCategory.TabIndex = 4;
             this.MainCategory.SelectedIndexChanged += new System.EventHandler(this.MainCategory_SelectedIndexChanged);
-            // 
+            this.MainCategory.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MainCategory_KeyPress);
+            //
             // label11
-            // 
+            //
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(359, 216);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(108, 17);
             this.label11.TabIndex = 0;
             this.label11.Text = "Company Notes";
-            // 
+            //
             // label10
-            // 
+            //
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(368, 151);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(85, 17);
             this.label10.TabIndex = 0;
             this.label10.Text = "Web Adress";
-            // 
+            //
             // label4
-            // 
+            //
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(8, 144);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(88, 17);
             this.label4.TabIndex = 0;
             this.label4.Text = "Subcategory";
-            // 
+            //
             // CompanyNotes
-            // 
+            //
             this.CompanyNotes.Enabled = false;
             this.CompanyNotes.Location = new System.Drawing.Point(471, 216);
             this.CompanyNotes.Multiline = true;
             this.CompanyNotes.Name = "CompanyNotes";
             this.CompanyNotes.Size = new System.Drawing.Size(199, 48);
             this.CompanyNotes.TabIndex = 13;
-            // 
+            //
             // WebAdress
-            // 
+            //
             this.WebAdress.Enabled = false;
             this.WebAdress.Location = new System.Drawing.Point(471, 150);
             this.WebAdress.Name = "WebAdress";
             this.WebAdress.Size = new System.Drawing.Size(199, 23);
             this.WebAdress.TabIndex = 11;
-            // 
+            //
             // CustomerFax
-            // 
+            //
             this.CustomerFax.Enabled = false;
             this.CustomerFax.Location = new System.Drawing.Point(471, 117);
             this.CustomerFax.Name = "CustomerFax";
             this.CustomerFax.Size = new System.Drawing.Size(199, 23);
             this.CustomerFax.TabIndex = 10;
-            // 
+            //
             // label3
-            // 
+            //
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(8, 102);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(99, 17);
             this.label3.TabIndex = 0;
             this.label3.Text = "Main Category";
-            // 
+            //
             // label9
-            // 
+            //
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(368, 119);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(93, 17);
             this.label9.TabIndex = 0;
             this.label9.Text = "Company Fax";
-            // 
+            //
             // CustomerName
-            // 
+            //
             this.CustomerName.Enabled = false;
             this.CustomerName.Location = new System.Drawing.Point(123, 59);
             this.CustomerName.Name = "CustomerName";
             this.CustomerName.Size = new System.Drawing.Size(182, 23);
             this.CustomerName.TabIndex = 3;
-            // 
+            //
             // Telephone
-            // 
+            //
             this.Telephone.Enabled = false;
             this.Telephone.Location = new System.Drawing.Point(471, 84);
             this.Telephone.Name = "Telephone";
             this.Telephone.Size = new System.Drawing.Size(199, 23);
             this.Telephone.TabIndex = 9;
-            // 
+            //
             // label2
-            // 
+            //
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(8, 63);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 17);
             this.label2.TabIndex = 0;
             this.label2.Text = "Customer Name";
-            // 
+            //
             // label24
-            // 
+            //
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(368, 54);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(51, 17);
             this.label24.TabIndex = 0;
             this.label24.Text = "Capital";
-            // 
+            //
             // label8
-            // 
+            //
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(357, 86);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(112, 17);
             this.label8.TabIndex = 0;
             this.label8.Text = "Company Phone";
-            // 
+            //
             // CustomerCode
-            // 
+            //
             this.CustomerCode.Enabled = false;
             this.CustomerCode.Location = new System.Drawing.Point(123, 19);
             this.CustomerCode.Name = "CustomerCode";
             this.CustomerCode.Size = new System.Drawing.Size(83, 23);
             this.CustomerCode.TabIndex = 1;
-            // 
+            //
             // label1
-            // 
+            //
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(8, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Customer Code";
-            // 
+            //
             // tab_account
-            // 
+            //
+            this.tab_account.Controls.Add(this.factor);
+            this.tab_account.Controls.Add(this.DiscountRate);
             this.tab_account.Controls.Add(this.AccountingNotes);
             this.tab_account.Controls.Add(this.InvCurrencyName);
-            this.tab_account.Controls.Add(this.factor);
             this.tab_account.Controls.Add(this.InvCurrencyType);
             this.tab_account.Controls.Add(this.QuoCurrencyType);
             this.tab_account.Controls.Add(this.QuoCurrencyName);
-            this.tab_account.Controls.Add(this.DiscountRate);
             this.tab_account.Controls.Add(this.label14);
             this.tab_account.Controls.Add(this.PaymentMethod);
             this.tab_account.Controls.Add(this.label13);
@@ -529,39 +531,44 @@
             this.tab_account.TabIndex = 2;
             this.tab_account.Text = "Account";
             this.tab_account.UseVisualStyleBackColor = true;
-            // 
+            //
+            // factor
+            //
+            this.factor.Enabled = false;
+            this.factor.Location = new System.Drawing.Point(491, 14);
+            this.factor.Name = "factor";
+            this.factor.Size = new System.Drawing.Size(174, 23);
+            this.factor.TabIndex = 7;
+            //
+            // DiscountRate
+            //
+            this.DiscountRate.Enabled = false;
+            this.DiscountRate.Location = new System.Drawing.Point(123, 224);
+            this.DiscountRate.Name = "DiscountRate";
+            this.DiscountRate.Size = new System.Drawing.Size(174, 23);
+            this.DiscountRate.TabIndex = 6;
+            //
             // AccountingNotes
-            // 
+            //
             this.AccountingNotes.Enabled = false;
             this.AccountingNotes.Location = new System.Drawing.Point(492, 184);
             this.AccountingNotes.Multiline = true;
             this.AccountingNotes.Name = "AccountingNotes";
             this.AccountingNotes.Size = new System.Drawing.Size(178, 65);
             this.AccountingNotes.TabIndex = 13;
-            // 
+            //
             // InvCurrencyName
-            // 
-            this.InvCurrencyName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            //
             this.InvCurrencyName.Enabled = false;
             this.InvCurrencyName.FormattingEnabled = true;
             this.InvCurrencyName.Location = new System.Drawing.Point(492, 142);
             this.InvCurrencyName.Name = "InvCurrencyName";
             this.InvCurrencyName.Size = new System.Drawing.Size(84, 24);
             this.InvCurrencyName.TabIndex = 11;
-            // 
-            // factor
-            // 
-            this.factor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.factor.Enabled = false;
-            this.factor.FormattingEnabled = true;
-            this.factor.Location = new System.Drawing.Point(492, 18);
-            this.factor.Name = "factor";
-            this.factor.Size = new System.Drawing.Size(178, 24);
-            this.factor.TabIndex = 7;
-            // 
+            this.InvCurrencyName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InvCurrencyName_KeyPress);
+            //
             // InvCurrencyType
-            // 
-            this.InvCurrencyType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            //
             this.InvCurrencyType.Enabled = false;
             this.InvCurrencyType.FormattingEnabled = true;
             this.InvCurrencyType.Items.AddRange(new object[] {
@@ -573,10 +580,10 @@
             this.InvCurrencyType.Name = "InvCurrencyType";
             this.InvCurrencyType.Size = new System.Drawing.Size(88, 24);
             this.InvCurrencyType.TabIndex = 12;
-            // 
+            this.InvCurrencyType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InvCurrencyType_KeyPress);
+            //
             // QuoCurrencyType
-            // 
-            this.QuoCurrencyType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            //
             this.QuoCurrencyType.Enabled = false;
             this.QuoCurrencyType.FormattingEnabled = true;
             this.QuoCurrencyType.Items.AddRange(new object[] {
@@ -588,182 +595,173 @@
             this.QuoCurrencyType.Name = "QuoCurrencyType";
             this.QuoCurrencyType.Size = new System.Drawing.Size(88, 24);
             this.QuoCurrencyType.TabIndex = 10;
-            // 
+            this.QuoCurrencyType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.QuoCurrencyType_KeyPress);
+            //
             // QuoCurrencyName
-            // 
-            this.QuoCurrencyName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            //
             this.QuoCurrencyName.Enabled = false;
             this.QuoCurrencyName.FormattingEnabled = true;
             this.QuoCurrencyName.Location = new System.Drawing.Point(491, 101);
             this.QuoCurrencyName.Name = "QuoCurrencyName";
             this.QuoCurrencyName.Size = new System.Drawing.Size(85, 24);
             this.QuoCurrencyName.TabIndex = 9;
-            // 
-            // DiscountRate
-            // 
-            this.DiscountRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.DiscountRate.Enabled = false;
-            this.DiscountRate.FormattingEnabled = true;
-            this.DiscountRate.Location = new System.Drawing.Point(123, 223);
-            this.DiscountRate.Name = "DiscountRate";
-            this.DiscountRate.Size = new System.Drawing.Size(174, 24);
-            this.DiscountRate.TabIndex = 6;
-            // 
+            this.QuoCurrencyName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.QuoCurrencyName_KeyPress);
+            //
             // label14
-            // 
+            //
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(368, 145);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(113, 17);
             this.label14.TabIndex = 3;
             this.label14.Text = "Invoice Currency";
-            // 
+            //
             // PaymentMethod
-            // 
-            this.PaymentMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            //
             this.PaymentMethod.Enabled = false;
             this.PaymentMethod.FormattingEnabled = true;
             this.PaymentMethod.Location = new System.Drawing.Point(123, 182);
             this.PaymentMethod.Name = "PaymentMethod";
             this.PaymentMethod.Size = new System.Drawing.Size(174, 24);
             this.PaymentMethod.TabIndex = 5;
-            // 
+            this.PaymentMethod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PaymentMethod_KeyPress);
+            //
             // label13
-            // 
+            //
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(358, 104);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(131, 17);
             this.label13.TabIndex = 3;
             this.label13.Text = "Quotation Currency";
-            // 
+            //
             // TermsofPayments
-            // 
-            this.TermsofPayments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            //
             this.TermsofPayments.Enabled = false;
             this.TermsofPayments.FormattingEnabled = true;
             this.TermsofPayments.Location = new System.Drawing.Point(123, 141);
             this.TermsofPayments.Name = "TermsofPayments";
             this.TermsofPayments.Size = new System.Drawing.Size(174, 24);
             this.TermsofPayments.TabIndex = 4;
-            // 
+            this.TermsofPayments.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TermsofPayments_KeyPress);
+            //
             // label23
-            // 
+            //
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(368, 65);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(78, 17);
             this.label23.TabIndex = 3;
             this.label23.Text = "Credit Limit";
-            // 
+            //
             // AccountRepresentary
-            // 
-            this.AccountRepresentary.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            //
             this.AccountRepresentary.Enabled = false;
             this.AccountRepresentary.FormattingEnabled = true;
             this.AccountRepresentary.Location = new System.Drawing.Point(123, 18);
             this.AccountRepresentary.Name = "AccountRepresentary";
             this.AccountRepresentary.Size = new System.Drawing.Size(174, 24);
             this.AccountRepresentary.TabIndex = 1;
-            // 
+            this.AccountRepresentary.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AccountRepresentary_KeyPress);
+            //
             // label16
-            // 
+            //
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(368, 207);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(119, 17);
             this.label16.TabIndex = 3;
             this.label16.Text = "Accounting Notes";
-            // 
+            //
             // label15
-            // 
+            //
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(8, 227);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(97, 17);
             this.label15.TabIndex = 4;
             this.label15.Text = "Discount Rate";
-            // 
+            //
             // label17
-            // 
+            //
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(8, 185);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(114, 17);
             this.label17.TabIndex = 4;
             this.label17.Text = "Payment Method";
-            // 
+            //
             // label7
-            // 
+            //
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(8, 20);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(79, 17);
             this.label7.TabIndex = 7;
             this.label7.Text = "Accountant";
-            // 
+            //
             // label19
-            // 
+            //
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(-1, 144);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(123, 17);
             this.label19.TabIndex = 6;
             this.label19.Text = "Terms of Payment";
-            // 
+            //
             // label22
-            // 
+            //
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(368, 21);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(48, 17);
             this.label22.TabIndex = 7;
             this.label22.Text = "Factor";
-            // 
+            //
             // label20
-            // 
+            //
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(8, 102);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(85, 17);
             this.label20.TabIndex = 7;
             this.label20.Text = "Tax Number";
-            // 
+            //
             // CreditLimit
-            // 
+            //
             this.CreditLimit.Enabled = false;
             this.CreditLimit.Location = new System.Drawing.Point(492, 59);
             this.CreditLimit.Name = "CreditLimit";
             this.CreditLimit.Size = new System.Drawing.Size(178, 23);
             this.CreditLimit.TabIndex = 8;
-            // 
+            //
             // taxNumber
-            // 
+            //
             this.taxNumber.Enabled = false;
             this.taxNumber.Location = new System.Drawing.Point(123, 99);
             this.taxNumber.Name = "taxNumber";
             this.taxNumber.Size = new System.Drawing.Size(174, 23);
             this.taxNumber.TabIndex = 3;
-            // 
+            //
             // TaxOffice
-            // 
+            //
             this.TaxOffice.Enabled = false;
             this.TaxOffice.Location = new System.Drawing.Point(123, 59);
             this.TaxOffice.Name = "TaxOffice";
             this.TaxOffice.Size = new System.Drawing.Size(174, 23);
             this.TaxOffice.TabIndex = 2;
-            // 
+            //
             // label21
-            // 
+            //
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(8, 63);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(72, 17);
             this.label21.TabIndex = 8;
             this.label21.Text = "Tax Office";
-            // 
+            //
             // tab_adresses
-            // 
+            //
             this.tab_adresses.Controls.Add(this.cbIMEOffice);
             this.tab_adresses.Controls.Add(this.InvoiceAdressOk);
             this.tab_adresses.Controls.Add(this.AddressType);
@@ -794,9 +792,9 @@
             this.tab_adresses.TabIndex = 3;
             this.tab_adresses.Text = "Adresses";
             this.tab_adresses.UseVisualStyleBackColor = true;
-            // 
+            //
             // cbIMEOffice
-            // 
+            //
             this.cbIMEOffice.AutoSize = true;
             this.cbIMEOffice.Enabled = false;
             this.cbIMEOffice.Location = new System.Drawing.Point(321, 242);
@@ -805,9 +803,9 @@
             this.cbIMEOffice.TabIndex = 9;
             this.cbIMEOffice.Text = "IME Office";
             this.cbIMEOffice.UseVisualStyleBackColor = true;
-            // 
+            //
             // InvoiceAdressOk
-            // 
+            //
             this.InvoiceAdressOk.AutoSize = true;
             this.InvoiceAdressOk.Enabled = false;
             this.InvoiceAdressOk.Location = new System.Drawing.Point(321, 217);
@@ -816,45 +814,45 @@
             this.InvoiceAdressOk.TabIndex = 8;
             this.InvoiceAdressOk.Text = "Default Delivery Adress";
             this.InvoiceAdressOk.UseVisualStyleBackColor = true;
-            // 
+            //
             // AddressType
-            // 
-            this.AddressType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            //
             this.AddressType.Enabled = false;
             this.AddressType.FormattingEnabled = true;
             this.AddressType.Location = new System.Drawing.Point(88, 75);
             this.AddressType.Name = "AddressType";
             this.AddressType.Size = new System.Drawing.Size(151, 24);
             this.AddressType.TabIndex = 2;
-            // 
+            this.AddressType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AddressType_KeyPress);
+            //
             // label40
-            // 
+            //
             this.label40.AutoSize = true;
             this.label40.Location = new System.Drawing.Point(-1, 79);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(88, 17);
             this.label40.TabIndex = 40;
             this.label40.Text = "Adress Type";
-            // 
+            //
             // AddressDetails
-            // 
+            //
             this.AddressDetails.Enabled = false;
             this.AddressDetails.Location = new System.Drawing.Point(321, 18);
             this.AddressDetails.Multiline = true;
             this.AddressDetails.Name = "AddressDetails";
             this.AddressDetails.Size = new System.Drawing.Size(181, 188);
             this.AddressDetails.TabIndex = 7;
-            // 
+            //
             // label12
-            // 
+            //
             this.label12.Location = new System.Drawing.Point(251, 18);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(64, 34);
             this.label12.TabIndex = 38;
             this.label12.Text = "Adress Details";
-            // 
+            //
             // AddressDel
-            // 
+            //
             this.AddressDel.Enabled = false;
             this.AddressDel.Location = new System.Drawing.Point(630, 213);
             this.AddressDel.Name = "AddressDel";
@@ -862,9 +860,9 @@
             this.AddressDel.TabIndex = 14;
             this.AddressDel.Text = "Dlt";
             this.AddressDel.UseVisualStyleBackColor = true;
-            // 
+            //
             // AddressUpd
-            // 
+            //
             this.AddressUpd.Enabled = false;
             this.AddressUpd.Location = new System.Drawing.Point(586, 213);
             this.AddressUpd.Name = "AddressUpd";
@@ -872,9 +870,9 @@
             this.AddressUpd.TabIndex = 13;
             this.AddressUpd.Text = "Upd";
             this.AddressUpd.UseVisualStyleBackColor = true;
-            // 
+            //
             // AdressAdd
-            // 
+            //
             this.AdressAdd.Enabled = false;
             this.AdressAdd.Location = new System.Drawing.Point(545, 213);
             this.AdressAdd.Name = "AdressAdd";
@@ -882,109 +880,111 @@
             this.AdressAdd.TabIndex = 12;
             this.AdressAdd.Text = "Add";
             this.AdressAdd.UseVisualStyleBackColor = true;
-            // 
+            //
             // AdressList
-            // 
+            //
             this.AdressList.FormattingEnabled = true;
             this.AdressList.ItemHeight = 16;
             this.AdressList.Location = new System.Drawing.Point(548, 21);
             this.AdressList.Name = "AdressList";
             this.AdressList.Size = new System.Drawing.Size(120, 164);
             this.AdressList.TabIndex = 33;
-            // 
+            //
             // cbTown
-            // 
-            this.cbTown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            //
             this.cbTown.Enabled = false;
             this.cbTown.FormattingEnabled = true;
             this.cbTown.Location = new System.Drawing.Point(88, 174);
             this.cbTown.Name = "cbTown";
             this.cbTown.Size = new System.Drawing.Size(151, 24);
             this.cbTown.TabIndex = 5;
-            // 
+            this.cbTown.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbTown_KeyPress);
+            //
             // cbCity
-            // 
-            this.cbCity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            //
             this.cbCity.Enabled = false;
             this.cbCity.FormattingEnabled = true;
             this.cbCity.Location = new System.Drawing.Point(88, 139);
             this.cbCity.Name = "cbCity";
             this.cbCity.Size = new System.Drawing.Size(151, 24);
             this.cbCity.TabIndex = 4;
-            // 
+            this.cbCity.SelectedIndexChanged += new System.EventHandler(this.City_SelectedIndexChanged);
+            this.cbCity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbCity_KeyPress);
+            //
             // cbCountry
-            // 
-            this.cbCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            //
             this.cbCountry.Enabled = false;
             this.cbCountry.FormattingEnabled = true;
             this.cbCountry.Location = new System.Drawing.Point(88, 107);
             this.cbCountry.Name = "cbCountry";
             this.cbCountry.Size = new System.Drawing.Size(151, 24);
             this.cbCountry.TabIndex = 3;
-            // 
+            this.cbCountry.SelectedIndexChanged += new System.EventHandler(this.Country_SelectedIndexChanged);
+            this.cbCountry.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbCountry_KeyPress);
+            //
             // label37
-            // 
+            //
             this.label37.AutoSize = true;
             this.label37.Location = new System.Drawing.Point(8, 177);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(42, 17);
             this.label37.TabIndex = 16;
             this.label37.Text = "Town";
-            // 
+            //
             // label38
-            // 
+            //
             this.label38.AutoSize = true;
             this.label38.Location = new System.Drawing.Point(8, 142);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(36, 17);
             this.label38.TabIndex = 17;
             this.label38.Text = "Cirty";
-            // 
+            //
             // label39
-            // 
+            //
             this.label39.AutoSize = true;
             this.label39.Location = new System.Drawing.Point(8, 108);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(57, 17);
             this.label39.TabIndex = 18;
             this.label39.Text = "Country";
-            // 
+            //
             // textBox1
-            // 
+            //
             this.textBox1.Enabled = false;
             this.textBox1.Location = new System.Drawing.Point(88, 41);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(151, 23);
             this.textBox1.TabIndex = 1;
-            // 
+            //
             // label41
-            // 
+            //
             this.label41.AutoSize = true;
             this.label41.Location = new System.Drawing.Point(3, 44);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(83, 17);
             this.label41.TabIndex = 2;
             this.label41.Text = "Adress Title";
-            // 
+            //
             // PostCode
-            // 
+            //
             this.PostCode.Enabled = false;
             this.PostCode.Location = new System.Drawing.Point(88, 207);
             this.PostCode.Name = "PostCode";
             this.PostCode.Size = new System.Drawing.Size(151, 23);
             this.PostCode.TabIndex = 6;
-            // 
+            //
             // label25
-            // 
+            //
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(8, 211);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(73, 17);
             this.label25.TabIndex = 2;
             this.label25.Text = "Post Code";
-            // 
+            //
             // AdressDone
-            // 
+            //
             this.AdressDone.Location = new System.Drawing.Point(548, 215);
             this.AdressDone.Name = "AdressDone";
             this.AdressDone.Size = new System.Drawing.Size(57, 23);
@@ -993,9 +993,9 @@
             this.AdressDone.UseVisualStyleBackColor = true;
             this.AdressDone.Visible = false;
             this.AdressDone.Click += new System.EventHandler(this.AdressDone_Click);
-            // 
+            //
             // AdressCancel
-            // 
+            //
             this.AdressCancel.Location = new System.Drawing.Point(610, 215);
             this.AdressCancel.Name = "AdressCancel";
             this.AdressCancel.Size = new System.Drawing.Size(57, 23);
@@ -1003,9 +1003,9 @@
             this.AdressCancel.Text = "Cancel";
             this.AdressCancel.UseVisualStyleBackColor = true;
             this.AdressCancel.Visible = false;
-            // 
+            //
             // tab_contact
-            // 
+            //
             this.tab_contact.Controls.Add(this.checkBox2);
             this.tab_contact.Controls.Add(this.txtExtNumber);
             this.tab_contact.Controls.Add(this.departmentAdd);
@@ -1042,9 +1042,9 @@
             this.tab_contact.TabIndex = 4;
             this.tab_contact.Text = "Contact";
             this.tab_contact.UseVisualStyleBackColor = true;
-            // 
+            //
             // checkBox2
-            // 
+            //
             this.checkBox2.AutoSize = true;
             this.checkBox2.Enabled = false;
             this.checkBox2.Location = new System.Drawing.Point(90, 239);
@@ -1053,17 +1053,17 @@
             this.checkBox2.TabIndex = 8;
             this.checkBox2.Text = "Main Contact";
             this.checkBox2.UseVisualStyleBackColor = true;
-            // 
+            //
             // txtExtNumber
-            // 
+            //
             this.txtExtNumber.Enabled = false;
             this.txtExtNumber.Location = new System.Drawing.Point(214, 201);
             this.txtExtNumber.Name = "txtExtNumber";
             this.txtExtNumber.Size = new System.Drawing.Size(58, 23);
             this.txtExtNumber.TabIndex = 7;
-            // 
+            //
             // departmentAdd
-            // 
+            //
             this.departmentAdd.Enabled = false;
             this.departmentAdd.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.departmentAdd.Location = new System.Drawing.Point(246, 54);
@@ -1073,9 +1073,9 @@
             this.departmentAdd.Text = "+";
             this.departmentAdd.UseVisualStyleBackColor = true;
             this.departmentAdd.Click += new System.EventHandler(this.departmentAdd_Click);
-            // 
+            //
             // titleAdd
-            // 
+            //
             this.titleAdd.Enabled = false;
             this.titleAdd.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.titleAdd.Location = new System.Drawing.Point(246, 91);
@@ -1085,9 +1085,9 @@
             this.titleAdd.Text = "+";
             this.titleAdd.UseVisualStyleBackColor = true;
             this.titleAdd.Click += new System.EventHandler(this.titleAdd_Click);
-            // 
+            //
             // btnContactDelete
-            // 
+            //
             this.btnContactDelete.Enabled = false;
             this.btnContactDelete.Location = new System.Drawing.Point(637, 233);
             this.btnContactDelete.Name = "btnContactDelete";
@@ -1096,9 +1096,9 @@
             this.btnContactDelete.Text = "Dlt";
             this.btnContactDelete.UseVisualStyleBackColor = true;
             this.btnContactDelete.Click += new System.EventHandler(this.btnContactDelete_Click);
-            // 
+            //
             // btnContactUpdate
-            // 
+            //
             this.btnContactUpdate.Enabled = false;
             this.btnContactUpdate.Location = new System.Drawing.Point(593, 233);
             this.btnContactUpdate.Name = "btnContactUpdate";
@@ -1107,9 +1107,9 @@
             this.btnContactUpdate.Text = "Upd";
             this.btnContactUpdate.UseVisualStyleBackColor = true;
             this.btnContactUpdate.Click += new System.EventHandler(this.btnContactUpdate_Click);
-            // 
+            //
             // btnContactAdd
-            // 
+            //
             this.btnContactAdd.Enabled = false;
             this.btnContactAdd.Location = new System.Drawing.Point(548, 234);
             this.btnContactAdd.Name = "btnContactAdd";
@@ -1118,9 +1118,9 @@
             this.btnContactAdd.Text = "Add";
             this.btnContactAdd.UseVisualStyleBackColor = true;
             this.btnContactAdd.Click += new System.EventHandler(this.button1_Click);
-            // 
+            //
             // ContactList
-            // 
+            //
             this.ContactList.FormattingEnabled = true;
             this.ContactList.ItemHeight = 16;
             this.ContactList.Location = new System.Drawing.Point(548, 23);
@@ -1128,66 +1128,65 @@
             this.ContactList.Size = new System.Drawing.Size(120, 180);
             this.ContactList.TabIndex = 29;
             this.ContactList.SelectedIndexChanged += new System.EventHandler(this.ContactList_SelectedIndexChanged);
-            // 
+            //
             // ContactNotes
-            // 
+            //
             this.ContactNotes.Enabled = false;
             this.ContactNotes.Location = new System.Drawing.Point(382, 128);
             this.ContactNotes.Multiline = true;
             this.ContactNotes.Name = "ContactNotes";
             this.ContactNotes.Size = new System.Drawing.Size(151, 132);
             this.ContactNotes.TabIndex = 12;
-            // 
+            //
             // label34
-            // 
+            //
             this.label34.AutoSize = true;
             this.label34.Location = new System.Drawing.Point(286, 190);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(97, 17);
             this.label34.TabIndex = 27;
             this.label34.Text = "Contact Notes";
-            // 
+            //
             // CommunicationLanguage
-            // 
-            this.CommunicationLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            //
             this.CommunicationLanguage.Enabled = false;
             this.CommunicationLanguage.FormattingEnabled = true;
             this.CommunicationLanguage.Location = new System.Drawing.Point(382, 93);
             this.CommunicationLanguage.Name = "CommunicationLanguage";
             this.CommunicationLanguage.Size = new System.Drawing.Size(151, 24);
             this.CommunicationLanguage.TabIndex = 11;
-            // 
+            this.CommunicationLanguage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CommunicationLanguage_KeyPress);
+            //
             // ContactType
-            // 
-            this.ContactType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            //
             this.ContactType.Enabled = false;
             this.ContactType.FormattingEnabled = true;
             this.ContactType.Location = new System.Drawing.Point(98, 18);
             this.ContactType.Name = "ContactType";
             this.ContactType.Size = new System.Drawing.Size(142, 24);
             this.ContactType.TabIndex = 1;
-            // 
+            this.ContactType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ContactType_KeyPress);
+            //
             // ContactTitle
-            // 
-            this.ContactTitle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            //
             this.ContactTitle.Enabled = false;
             this.ContactTitle.FormattingEnabled = true;
             this.ContactTitle.Location = new System.Drawing.Point(98, 91);
             this.ContactTitle.Name = "ContactTitle";
             this.ContactTitle.Size = new System.Drawing.Size(142, 24);
             this.ContactTitle.TabIndex = 3;
-            // 
+            this.ContactTitle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ContactTitle_KeyPress);
+            //
             // label5
-            // 
+            //
             this.label5.Location = new System.Drawing.Point(271, 87);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(105, 34);
             this.label5.TabIndex = 16;
             this.label5.Text = "Comminication Language";
-            // 
+            //
             // ContactDepartment
-            // 
-            this.ContactDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            //
             this.ContactDepartment.Enabled = false;
             this.ContactDepartment.FormattingEnabled = true;
             this.ContactDepartment.Location = new System.Drawing.Point(98, 54);
@@ -1195,121 +1194,122 @@
             this.ContactDepartment.Size = new System.Drawing.Size(142, 24);
             this.ContactDepartment.TabIndex = 2;
             this.ContactDepartment.SelectedIndexChanged += new System.EventHandler(this.ContactDepartment_SelectedIndexChanged);
-            // 
+            this.ContactDepartment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ContactDepartment_KeyPress);
+            //
             // label26
-            // 
+            //
             this.label26.AutoSize = true;
             this.label26.Location = new System.Drawing.Point(-2, 131);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(106, 17);
             this.label26.TabIndex = 17;
             this.label26.Text = "Name Surname";
-            // 
+            //
             // label27
-            // 
+            //
             this.label27.AutoSize = true;
             this.label27.Location = new System.Drawing.Point(8, 58);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(82, 17);
             this.label27.TabIndex = 18;
             this.label27.Text = "Department";
-            // 
+            //
             // ContactFAX
-            // 
+            //
             this.ContactFAX.Enabled = false;
             this.ContactFAX.Location = new System.Drawing.Point(382, 54);
             this.ContactFAX.Name = "ContactFAX";
             this.ContactFAX.Size = new System.Drawing.Size(151, 23);
             this.ContactFAX.TabIndex = 10;
-            // 
+            //
             // label33
-            // 
+            //
             this.label33.AutoSize = true;
             this.label33.Location = new System.Drawing.Point(286, 58);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(34, 17);
             this.label33.TabIndex = 19;
             this.label33.Text = "FAX";
-            // 
+            //
             // ContactPhone
-            // 
+            //
             this.ContactPhone.Enabled = false;
             this.ContactPhone.Location = new System.Drawing.Point(98, 201);
             this.ContactPhone.Name = "ContactPhone";
             this.ContactPhone.Size = new System.Drawing.Size(110, 23);
             this.ContactPhone.TabIndex = 6;
-            // 
+            //
             // label31
-            // 
+            //
             this.label31.AutoSize = true;
             this.label31.Location = new System.Drawing.Point(8, 204);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(49, 17);
             this.label31.TabIndex = 19;
             this.label31.Text = "Phone";
-            // 
+            //
             // ContactMobilePhone
-            // 
+            //
             this.ContactMobilePhone.Enabled = false;
             this.ContactMobilePhone.Location = new System.Drawing.Point(382, 18);
             this.ContactMobilePhone.Name = "ContactMobilePhone";
             this.ContactMobilePhone.Size = new System.Drawing.Size(151, 23);
             this.ContactMobilePhone.TabIndex = 9;
-            // 
+            //
             // ContactName
-            // 
+            //
             this.ContactName.Enabled = false;
             this.ContactName.Location = new System.Drawing.Point(106, 128);
             this.ContactName.Name = "ContactName";
             this.ContactName.Size = new System.Drawing.Size(167, 23);
             this.ContactName.TabIndex = 4;
-            // 
+            //
             // ContactEmail
-            // 
+            //
             this.ContactEmail.Enabled = false;
             this.ContactEmail.Location = new System.Drawing.Point(105, 164);
             this.ContactEmail.Name = "ContactEmail";
             this.ContactEmail.Size = new System.Drawing.Size(167, 23);
             this.ContactEmail.TabIndex = 5;
-            // 
+            //
             // label32
-            // 
+            //
             this.label32.AutoSize = true;
             this.label32.Location = new System.Drawing.Point(286, 21);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(94, 17);
             this.label32.TabIndex = 20;
             this.label32.Text = "Mobile Phone";
-            // 
+            //
             // label28
-            // 
+            //
             this.label28.AutoSize = true;
             this.label28.Location = new System.Drawing.Point(8, 94);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(58, 17);
             this.label28.TabIndex = 19;
             this.label28.Text = "Position";
-            // 
+            //
             // label30
-            // 
+            //
             this.label30.AutoSize = true;
             this.label30.Location = new System.Drawing.Point(8, 167);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(47, 17);
             this.label30.TabIndex = 20;
             this.label30.Text = "E-Mail";
-            // 
+            //
             // label29
-            // 
+            //
             this.label29.AutoSize = true;
             this.label29.Location = new System.Drawing.Point(8, 21);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(92, 17);
             this.label29.TabIndex = 20;
             this.label29.Text = "Contact Type";
-            // 
+            //
             // btnContactDone
-            // 
+            //
             this.btnContactDone.Location = new System.Drawing.Point(548, 235);
             this.btnContactDone.Name = "btnContactDone";
             this.btnContactDone.Size = new System.Drawing.Size(57, 23);
@@ -1318,9 +1318,9 @@
             this.btnContactDone.UseVisualStyleBackColor = true;
             this.btnContactDone.Visible = false;
             this.btnContactDone.Click += new System.EventHandler(this.btnContactDone_Click);
-            // 
+            //
             // btnContactCancel
-            // 
+            //
             this.btnContactCancel.Location = new System.Drawing.Point(611, 235);
             this.btnContactCancel.Name = "btnContactCancel";
             this.btnContactCancel.Size = new System.Drawing.Size(74, 23);
@@ -1329,9 +1329,9 @@
             this.btnContactCancel.UseVisualStyleBackColor = true;
             this.btnContactCancel.Visible = false;
             this.btnContactCancel.Click += new System.EventHandler(this.btnContactCancel_Click);
-            // 
+            //
             // CustomerDataGrid
-            // 
+            //
             this.CustomerDataGrid.AllowUserToAddRows = false;
             this.CustomerDataGrid.AllowUserToDeleteRows = false;
             this.CustomerDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -1344,9 +1344,9 @@
             this.CustomerDataGrid.TabIndex = 1;
             this.CustomerDataGrid.TabStop = false;
             this.CustomerDataGrid.Click += new System.EventHandler(this.CustomerDataGrid_Click);
-            // 
+            //
             // Search
-            // 
+            //
             this.Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Search.Location = new System.Drawing.Point(262, 18);
             this.Search.Name = "Search";
@@ -1355,17 +1355,17 @@
             this.Search.Text = "Search";
             this.Search.UseVisualStyleBackColor = true;
             this.Search.Click += new System.EventHandler(this.Search_Click);
-            // 
+            //
             // txtSearch
-            // 
+            //
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(116, 18);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(141, 23);
             this.txtSearch.TabIndex = 52;
-            // 
+            //
             // label36
-            // 
+            //
             this.label36.AutoSize = true;
             this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label36.Location = new System.Drawing.Point(5, 20);
@@ -1373,9 +1373,9 @@
             this.label36.Size = new System.Drawing.Size(109, 17);
             this.label36.TabIndex = 4;
             this.label36.Text = "Customer Name";
-            // 
+            //
             // btnCreate
-            // 
+            //
             this.btnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreate.Location = new System.Drawing.Point(365, 10);
             this.btnCreate.Name = "btnCreate";
@@ -1384,9 +1384,9 @@
             this.btnCreate.Text = "CREATE";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
-            // 
+            //
             // btnUpdate
-            // 
+            //
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.Location = new System.Drawing.Point(522, 10);
             this.btnUpdate.Name = "btnUpdate";
@@ -1395,9 +1395,9 @@
             this.btnUpdate.Text = "UPDATE";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
+            //
             // tableMain
-            // 
+            //
             this.tableMain.ColumnCount = 1;
             this.tableMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableMain.Controls.Add(this.CustomerDataGrid, 0, 2);
@@ -1414,9 +1414,9 @@
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableMain.Size = new System.Drawing.Size(718, 602);
             this.tableMain.TabIndex = 6;
-            // 
+            //
             // panel1
-            // 
+            //
             this.panel1.Controls.Add(this.label36);
             this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.txtSearch);
@@ -1428,18 +1428,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(706, 57);
             this.panel1.TabIndex = 2;
-            // 
+            //
             // label42
-            // 
+            //
             this.label42.AutoSize = true;
             this.label42.Location = new System.Drawing.Point(8, 243);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(56, 17);
             this.label42.TabIndex = 16;
             this.label42.Text = "Contact";
-            // 
+            //
             // cbContactAdress
-            // 
+            //
             this.cbContactAdress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbContactAdress.Enabled = false;
             this.cbContactAdress.FormattingEnabled = true;
@@ -1447,9 +1447,9 @@
             this.cbContactAdress.Name = "cbContactAdress";
             this.cbContactAdress.Size = new System.Drawing.Size(151, 24);
             this.cbContactAdress.TabIndex = 5;
-            // 
+            //
             // CustomerMain
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(718, 602);
@@ -1501,7 +1501,6 @@
         private System.Windows.Forms.TabPage tab_contact;
         private System.Windows.Forms.DataGridView CustomerDataGrid;
         private System.Windows.Forms.TextBox AccountingNotes;
-        private System.Windows.Forms.ComboBox DiscountRate;
         private System.Windows.Forms.ComboBox PaymentMethod;
         private System.Windows.Forms.ComboBox TermsofPayments;
         private System.Windows.Forms.Label label23;
@@ -1555,7 +1554,6 @@
         private System.Windows.Forms.RadioButton rb_passive;
         private System.Windows.Forms.RadioButton rb_active;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.ComboBox factor;
         private System.Windows.Forms.ComboBox Capital;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TextBox ContactEmail;
@@ -1597,8 +1595,7 @@
         private System.Windows.Forms.ComboBox cbMainContact;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.ComboBox cbContactAdress;
-        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.TextBox DiscountRate;
+        private System.Windows.Forms.TextBox factor;
     }
 }
-
