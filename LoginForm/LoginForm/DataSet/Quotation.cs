@@ -42,7 +42,6 @@ namespace LoginForm.DataSet
         public string QuotationNo { get; set; }
         public string RFQNo { get; set; }
         public string CurrType { get; set; }
-        public Nullable<int> version { get; set; }
     
         public virtual Note Note { get; set; }
         public virtual Note Note1 { get; set; }

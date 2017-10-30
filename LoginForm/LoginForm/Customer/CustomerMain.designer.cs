@@ -147,8 +147,6 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.tableMain = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label42 = new System.Windows.Forms.Label();
-            this.cbContactAdress = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tab_company.SuspendLayout();
             this.tab_account.SuspendLayout();
@@ -772,10 +770,8 @@
             this.tab_adresses.Controls.Add(this.AddressUpd);
             this.tab_adresses.Controls.Add(this.AdressAdd);
             this.tab_adresses.Controls.Add(this.AdressList);
-            this.tab_adresses.Controls.Add(this.cbContactAdress);
             this.tab_adresses.Controls.Add(this.cbTown);
             this.tab_adresses.Controls.Add(this.cbCity);
-            this.tab_adresses.Controls.Add(this.label42);
             this.tab_adresses.Controls.Add(this.cbCountry);
             this.tab_adresses.Controls.Add(this.label37);
             this.tab_adresses.Controls.Add(this.label38);
@@ -1428,25 +1424,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(706, 57);
             this.panel1.TabIndex = 2;
-            //
-            // label42
-            //
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(8, 243);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(56, 17);
-            this.label42.TabIndex = 16;
-            this.label42.Text = "Contact";
-            //
-            // cbContactAdress
-            //
-            this.cbContactAdress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbContactAdress.Enabled = false;
-            this.cbContactAdress.FormattingEnabled = true;
-            this.cbContactAdress.Location = new System.Drawing.Point(88, 240);
-            this.cbContactAdress.Name = "cbContactAdress";
-            this.cbContactAdress.Size = new System.Drawing.Size(151, 24);
-            this.cbContactAdress.TabIndex = 5;
             //
             // CustomerMain
             //
