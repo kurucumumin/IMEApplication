@@ -61,13 +61,13 @@
             this.CustomerCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tab_account = new System.Windows.Forms.TabPage();
+            this.factor = new System.Windows.Forms.TextBox();
+            this.DiscountRate = new System.Windows.Forms.TextBox();
             this.AccountingNotes = new System.Windows.Forms.TextBox();
             this.InvCurrencyName = new System.Windows.Forms.ComboBox();
-            this.factor = new System.Windows.Forms.ComboBox();
             this.InvCurrencyType = new System.Windows.Forms.ComboBox();
             this.QuoCurrencyType = new System.Windows.Forms.ComboBox();
             this.QuoCurrencyName = new System.Windows.Forms.ComboBox();
-            this.DiscountRate = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.PaymentMethod = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -221,13 +221,13 @@
             // 
             // cbMainContact
             // 
-            this.cbMainContact.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMainContact.Enabled = false;
             this.cbMainContact.FormattingEnabled = true;
             this.cbMainContact.Location = new System.Drawing.Point(471, 179);
             this.cbMainContact.Name = "cbMainContact";
             this.cbMainContact.Size = new System.Drawing.Size(197, 24);
             this.cbMainContact.TabIndex = 12;
+            this.cbMainContact.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbMainContact_KeyPress);
             // 
             // label35
             // 
@@ -284,23 +284,24 @@
             // 
             // Represantative2
             // 
-            this.Represantative2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Represantative2.Enabled = false;
             this.Represantative2.FormattingEnabled = true;
             this.Represantative2.Location = new System.Drawing.Point(123, 223);
             this.Represantative2.Name = "Represantative2";
             this.Represantative2.Size = new System.Drawing.Size(182, 24);
             this.Represantative2.TabIndex = 7;
+            this.Represantative2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Represantative2_KeyPress);
             // 
             // Represantative1
             // 
-            this.Represantative1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Represantative1.Enabled = false;
             this.Represantative1.FormattingEnabled = true;
             this.Represantative1.Location = new System.Drawing.Point(123, 182);
             this.Represantative1.Name = "Represantative1";
             this.Represantative1.Size = new System.Drawing.Size(182, 24);
             this.Represantative1.TabIndex = 6;
+            this.Represantative1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Represantative1_KeyPress);
+            this.Represantative1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Represantative1_MouseClick);
             // 
             // label6
             // 
@@ -313,13 +314,13 @@
             // 
             // SubCategory
             // 
-            this.SubCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SubCategory.Enabled = false;
             this.SubCategory.FormattingEnabled = true;
             this.SubCategory.Location = new System.Drawing.Point(123, 141);
             this.SubCategory.Name = "SubCategory";
             this.SubCategory.Size = new System.Drawing.Size(182, 24);
             this.SubCategory.TabIndex = 5;
+            this.SubCategory.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SubCategory_KeyPress);
             // 
             // label18
             // 
@@ -341,7 +342,6 @@
             // 
             // Capital
             // 
-            this.Capital.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Capital.Enabled = false;
             this.Capital.FormattingEnabled = true;
             this.Capital.Items.AddRange(new object[] {
@@ -353,10 +353,10 @@
             this.Capital.Size = new System.Drawing.Size(199, 24);
             this.Capital.TabIndex = 8;
             this.Capital.SelectedIndexChanged += new System.EventHandler(this.MainCategory_SelectedIndexChanged);
+            this.Capital.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Capital_KeyPress);
             // 
             // MainCategory
             // 
-            this.MainCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MainCategory.Enabled = false;
             this.MainCategory.FormattingEnabled = true;
             this.MainCategory.Location = new System.Drawing.Point(123, 100);
@@ -364,6 +364,7 @@
             this.MainCategory.Size = new System.Drawing.Size(182, 24);
             this.MainCategory.TabIndex = 4;
             this.MainCategory.SelectedIndexChanged += new System.EventHandler(this.MainCategory_SelectedIndexChanged);
+            this.MainCategory.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MainCategory_KeyPress);
             // 
             // label11
             // 
@@ -499,13 +500,13 @@
             // 
             // tab_account
             // 
+            this.tab_account.Controls.Add(this.factor);
+            this.tab_account.Controls.Add(this.DiscountRate);
             this.tab_account.Controls.Add(this.AccountingNotes);
             this.tab_account.Controls.Add(this.InvCurrencyName);
-            this.tab_account.Controls.Add(this.factor);
             this.tab_account.Controls.Add(this.InvCurrencyType);
             this.tab_account.Controls.Add(this.QuoCurrencyType);
             this.tab_account.Controls.Add(this.QuoCurrencyName);
-            this.tab_account.Controls.Add(this.DiscountRate);
             this.tab_account.Controls.Add(this.label14);
             this.tab_account.Controls.Add(this.PaymentMethod);
             this.tab_account.Controls.Add(this.label13);
@@ -531,6 +532,22 @@
             this.tab_account.Text = "Account";
             this.tab_account.UseVisualStyleBackColor = true;
             // 
+            // factor
+            // 
+            this.factor.Enabled = false;
+            this.factor.Location = new System.Drawing.Point(491, 14);
+            this.factor.Name = "factor";
+            this.factor.Size = new System.Drawing.Size(174, 23);
+            this.factor.TabIndex = 7;
+            // 
+            // DiscountRate
+            // 
+            this.DiscountRate.Enabled = false;
+            this.DiscountRate.Location = new System.Drawing.Point(123, 224);
+            this.DiscountRate.Name = "DiscountRate";
+            this.DiscountRate.Size = new System.Drawing.Size(174, 23);
+            this.DiscountRate.TabIndex = 6;
+            // 
             // AccountingNotes
             // 
             this.AccountingNotes.Enabled = false;
@@ -542,27 +559,16 @@
             // 
             // InvCurrencyName
             // 
-            this.InvCurrencyName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.InvCurrencyName.Enabled = false;
             this.InvCurrencyName.FormattingEnabled = true;
             this.InvCurrencyName.Location = new System.Drawing.Point(492, 142);
             this.InvCurrencyName.Name = "InvCurrencyName";
             this.InvCurrencyName.Size = new System.Drawing.Size(84, 24);
             this.InvCurrencyName.TabIndex = 11;
-            // 
-            // factor
-            // 
-            this.factor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.factor.Enabled = false;
-            this.factor.FormattingEnabled = true;
-            this.factor.Location = new System.Drawing.Point(492, 18);
-            this.factor.Name = "factor";
-            this.factor.Size = new System.Drawing.Size(178, 24);
-            this.factor.TabIndex = 7;
+            this.InvCurrencyName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InvCurrencyName_KeyPress);
             // 
             // InvCurrencyType
             // 
-            this.InvCurrencyType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.InvCurrencyType.Enabled = false;
             this.InvCurrencyType.FormattingEnabled = true;
             this.InvCurrencyType.Items.AddRange(new object[] {
@@ -574,10 +580,10 @@
             this.InvCurrencyType.Name = "InvCurrencyType";
             this.InvCurrencyType.Size = new System.Drawing.Size(88, 24);
             this.InvCurrencyType.TabIndex = 12;
+            this.InvCurrencyType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InvCurrencyType_KeyPress);
             // 
             // QuoCurrencyType
             // 
-            this.QuoCurrencyType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.QuoCurrencyType.Enabled = false;
             this.QuoCurrencyType.FormattingEnabled = true;
             this.QuoCurrencyType.Items.AddRange(new object[] {
@@ -589,26 +595,17 @@
             this.QuoCurrencyType.Name = "QuoCurrencyType";
             this.QuoCurrencyType.Size = new System.Drawing.Size(88, 24);
             this.QuoCurrencyType.TabIndex = 10;
+            this.QuoCurrencyType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.QuoCurrencyType_KeyPress);
             // 
             // QuoCurrencyName
             // 
-            this.QuoCurrencyName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.QuoCurrencyName.Enabled = false;
             this.QuoCurrencyName.FormattingEnabled = true;
             this.QuoCurrencyName.Location = new System.Drawing.Point(491, 101);
             this.QuoCurrencyName.Name = "QuoCurrencyName";
             this.QuoCurrencyName.Size = new System.Drawing.Size(85, 24);
             this.QuoCurrencyName.TabIndex = 9;
-            // 
-            // DiscountRate
-            // 
-            this.DiscountRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.DiscountRate.Enabled = false;
-            this.DiscountRate.FormattingEnabled = true;
-            this.DiscountRate.Location = new System.Drawing.Point(123, 223);
-            this.DiscountRate.Name = "DiscountRate";
-            this.DiscountRate.Size = new System.Drawing.Size(174, 24);
-            this.DiscountRate.TabIndex = 6;
+            this.QuoCurrencyName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.QuoCurrencyName_KeyPress);
             // 
             // label14
             // 
@@ -621,13 +618,13 @@
             // 
             // PaymentMethod
             // 
-            this.PaymentMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PaymentMethod.Enabled = false;
             this.PaymentMethod.FormattingEnabled = true;
             this.PaymentMethod.Location = new System.Drawing.Point(123, 182);
             this.PaymentMethod.Name = "PaymentMethod";
             this.PaymentMethod.Size = new System.Drawing.Size(174, 24);
             this.PaymentMethod.TabIndex = 5;
+            this.PaymentMethod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PaymentMethod_KeyPress);
             // 
             // label13
             // 
@@ -640,13 +637,13 @@
             // 
             // TermsofPayments
             // 
-            this.TermsofPayments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.TermsofPayments.Enabled = false;
             this.TermsofPayments.FormattingEnabled = true;
             this.TermsofPayments.Location = new System.Drawing.Point(123, 141);
             this.TermsofPayments.Name = "TermsofPayments";
             this.TermsofPayments.Size = new System.Drawing.Size(174, 24);
             this.TermsofPayments.TabIndex = 4;
+            this.TermsofPayments.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TermsofPayments_KeyPress);
             // 
             // label23
             // 
@@ -659,13 +656,13 @@
             // 
             // AccountRepresentary
             // 
-            this.AccountRepresentary.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AccountRepresentary.Enabled = false;
             this.AccountRepresentary.FormattingEnabled = true;
             this.AccountRepresentary.Location = new System.Drawing.Point(123, 18);
             this.AccountRepresentary.Name = "AccountRepresentary";
             this.AccountRepresentary.Size = new System.Drawing.Size(174, 24);
             this.AccountRepresentary.TabIndex = 1;
+            this.AccountRepresentary.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AccountRepresentary_KeyPress);
             // 
             // label16
             // 
@@ -818,13 +815,13 @@
             // 
             // AddressType
             // 
-            this.AddressType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AddressType.Enabled = false;
             this.AddressType.FormattingEnabled = true;
             this.AddressType.Location = new System.Drawing.Point(88, 78);
             this.AddressType.Name = "AddressType";
             this.AddressType.Size = new System.Drawing.Size(151, 24);
             this.AddressType.TabIndex = 2;
+            this.AddressType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AddressType_KeyPress);
             // 
             // label40
             // 
@@ -897,17 +894,16 @@
             // 
             // cbTown
             // 
-            this.cbTown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTown.Enabled = false;
             this.cbTown.FormattingEnabled = true;
             this.cbTown.Location = new System.Drawing.Point(88, 199);
             this.cbTown.Name = "cbTown";
             this.cbTown.Size = new System.Drawing.Size(151, 24);
             this.cbTown.TabIndex = 5;
+            this.cbTown.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbTown_KeyPress);
             // 
             // cbCity
             // 
-            this.cbCity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCity.Enabled = false;
             this.cbCity.FormattingEnabled = true;
             this.cbCity.Location = new System.Drawing.Point(88, 158);
@@ -915,10 +911,10 @@
             this.cbCity.Size = new System.Drawing.Size(151, 24);
             this.cbCity.TabIndex = 4;
             this.cbCity.SelectedIndexChanged += new System.EventHandler(this.City_SelectedIndexChanged);
+            this.cbCity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbCity_KeyPress);
             // 
             // cbCountry
             // 
-            this.cbCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCountry.Enabled = false;
             this.cbCountry.FormattingEnabled = true;
             this.cbCountry.Location = new System.Drawing.Point(88, 118);
@@ -926,6 +922,7 @@
             this.cbCountry.Size = new System.Drawing.Size(151, 24);
             this.cbCountry.TabIndex = 3;
             this.cbCountry.SelectedIndexChanged += new System.EventHandler(this.Country_SelectedIndexChanged);
+            this.cbCountry.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbCountry_KeyPress);
             // 
             // label37
             // 
@@ -1156,33 +1153,33 @@
             // 
             // CommunicationLanguage
             // 
-            this.CommunicationLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CommunicationLanguage.Enabled = false;
             this.CommunicationLanguage.FormattingEnabled = true;
             this.CommunicationLanguage.Location = new System.Drawing.Point(382, 93);
             this.CommunicationLanguage.Name = "CommunicationLanguage";
             this.CommunicationLanguage.Size = new System.Drawing.Size(151, 24);
             this.CommunicationLanguage.TabIndex = 11;
+            this.CommunicationLanguage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CommunicationLanguage_KeyPress);
             // 
             // ContactType
             // 
-            this.ContactType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ContactType.Enabled = false;
             this.ContactType.FormattingEnabled = true;
             this.ContactType.Location = new System.Drawing.Point(98, 18);
             this.ContactType.Name = "ContactType";
             this.ContactType.Size = new System.Drawing.Size(142, 24);
             this.ContactType.TabIndex = 1;
+            this.ContactType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ContactType_KeyPress);
             // 
             // ContactTitle
             // 
-            this.ContactTitle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ContactTitle.Enabled = false;
             this.ContactTitle.FormattingEnabled = true;
             this.ContactTitle.Location = new System.Drawing.Point(98, 91);
             this.ContactTitle.Name = "ContactTitle";
             this.ContactTitle.Size = new System.Drawing.Size(142, 24);
             this.ContactTitle.TabIndex = 3;
+            this.ContactTitle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ContactTitle_KeyPress);
             // 
             // label5
             // 
@@ -1194,7 +1191,6 @@
             // 
             // ContactDepartment
             // 
-            this.ContactDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ContactDepartment.Enabled = false;
             this.ContactDepartment.FormattingEnabled = true;
             this.ContactDepartment.Location = new System.Drawing.Point(98, 54);
@@ -1202,6 +1198,7 @@
             this.ContactDepartment.Size = new System.Drawing.Size(142, 24);
             this.ContactDepartment.TabIndex = 2;
             this.ContactDepartment.SelectedIndexChanged += new System.EventHandler(this.ContactDepartment_SelectedIndexChanged);
+            this.ContactDepartment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ContactDepartment_KeyPress);
             // 
             // label26
             // 
@@ -1494,7 +1491,6 @@
         private System.Windows.Forms.TabPage tab_contact;
         private System.Windows.Forms.DataGridView CustomerDataGrid;
         private System.Windows.Forms.TextBox AccountingNotes;
-        private System.Windows.Forms.ComboBox DiscountRate;
         private System.Windows.Forms.ComboBox PaymentMethod;
         private System.Windows.Forms.ComboBox TermsofPayments;
         private System.Windows.Forms.Label label23;
@@ -1548,7 +1544,6 @@
         private System.Windows.Forms.RadioButton rb_passive;
         private System.Windows.Forms.RadioButton rb_active;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.ComboBox factor;
         private System.Windows.Forms.ComboBox Capital;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TextBox ContactEmail;
@@ -1590,6 +1585,8 @@
         private System.Windows.Forms.ComboBox cbMainContact;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.TextBox DiscountRate;
+        private System.Windows.Forms.TextBox factor;
     }
 }
 

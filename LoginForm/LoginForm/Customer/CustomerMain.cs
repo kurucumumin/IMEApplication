@@ -22,6 +22,7 @@ namespace LoginForm
         int contactnewID = 0;
         int isUpdateAdress;
         bool isModify=false;
+        string ComboboxString = "Choose";
         public CustomerMain()
         {
             InitializeComponent();
@@ -94,8 +95,8 @@ namespace LoginForm
             ContactTitle.DisplayMember = "titlename";
             CommunicationLanguage.DataSource = IME.Languages.ToList();
             CommunicationLanguage.DisplayMember = "languagename";
-            factor.DataSource = IME.Rates.Where(d => d.rate_date == DateTime.Now).ToList();// bugünün rateleri gelecek
-            factor.DisplayMember = "rate_name";
+            //factor.DataSource = IME.Rates.Where(d => d.rate_date == DateTime.Now).ToList();// bugünün rateleri gelecek
+            //factor.DisplayMember = "rate_name";
             Represantative2.DataSource = IME.Workers.ToList();
             Represantative2.DisplayMember = "NameLastName";
             Represantative1.DataSource = IME.Workers.ToList();
@@ -596,9 +597,12 @@ namespace LoginForm
             btnContactDone.Visible = true;
             btnContactUpdate.Visible = false;
             ContactList.Enabled = false;
-            #endregion
 
-            ContactDepartment.Text = "Choose";
+            ContactType.Text = (ComboboxString);
+            ContactDepartment.Text = (ComboboxString);
+            ContactTitle.Text = (ComboboxString);
+            CommunicationLanguage.Text = (ComboboxString);
+            #endregion
         }
 
         private void btnContactCancel_Click(object sender, EventArgs e)
@@ -761,9 +765,34 @@ namespace LoginForm
                 itemsEnableTrue();
                 itemsClear();
                 rb_active.Checked = true;
-                Represantative1.DataSource = null;
-                Represantative1.Items.Add(Utils.getCurrentUser().UserName);
-                
+                int represantative_id= Utils.getCurrentUser().WorkerID;
+                Represantative1.DataSource = IME.Workers.Where(a=> a.WorkerID==represantative_id).ToList();
+                Represantative1.DisplayMember = "NameLastName";
+
+                #region ComboboxChoose
+                MainCategory.Text = (ComboboxString);
+                SubCategory.Text = (ComboboxString);
+                // Represantative1.Text = (ComboboxString);
+                Represantative2.Text = (ComboboxString);
+                Capital.Text = (ComboboxString);
+                cbMainContact.Text = (ComboboxString);
+                AccountRepresentary.Text = (ComboboxString);
+                TermsofPayments.Text = (ComboboxString);
+                PaymentMethod.Text = (ComboboxString);
+                QuoCurrencyName.Text = (ComboboxString);
+                QuoCurrencyType.Text = (ComboboxString);
+                InvCurrencyName.Text = (ComboboxString);
+                InvCurrencyType.Text = (ComboboxString);
+                AddressType.Text = (ComboboxString);
+                cbCountry.Text = (ComboboxString);
+                cbCity.Text = (ComboboxString);
+                cbTown.Text = (ComboboxString);
+                ContactType.Text = (ComboboxString);
+                ContactDepartment.Text = (ComboboxString);
+                ContactTitle.Text = (ComboboxString);
+                CommunicationLanguage.Text = (ComboboxString);
+                #endregion
+
                 //for new customerCode
                 string custmrcode = IME.Customers.OrderByDescending(a => a.ID).FirstOrDefault().ID;
                 string custmrnumbers = string.Empty;
@@ -801,12 +830,16 @@ namespace LoginForm
                 AdressAdd.Enabled = true;
                 btnContactAdd.Enabled = true;
             }
+            else if(MainCategory.Text==ComboboxString && SubCategory.Text== ComboboxString && Represantative2.Text == ComboboxString && Capital.Text == ComboboxString && cbMainContact.Text == ComboboxString && AccountRepresentary.Text == ComboboxString && TermsofPayments.Text == ComboboxString && PaymentMethod.Text == ComboboxString && QuoCurrencyName.Text == ComboboxString && QuoCurrencyType.Text == ComboboxString && InvCurrencyName.Text == ComboboxString && InvCurrencyType.Text == ComboboxString && AddressType.Text == ComboboxString && cbCountry.Text == ComboboxString && cbCity.Text == ComboboxString && cbTown.Text == ComboboxString && ContactType.Text == ComboboxString && ContactDepartment.Text == ComboboxString && ContactTitle.Text == ComboboxString && CommunicationLanguage.Text == ComboboxString)
+            {
+                MessageBox.Show("Combobox is empty", "WARNİNG", MessageBoxButtons.OK);
+            }
             else
             {
-                
+
                 btnCreate.Text = "CREATE";
                 btnUpdate.Text = "UPDATE";
-                
+
                 Customer c = new Customer();
                 c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
                 if (rb_active.Checked) { c.isactive = 1; } else { c.isactive = 0; }
@@ -829,7 +862,7 @@ namespace LoginForm
                 CustomerCatSubcat.categoryID = c_CategoryID;
                 int c_SubcategoryID = ((CustomerSubCategory)(SubCategory).SelectedItem).ID;
                 CustomerCatSubcat.subcategoryID = c_SubcategoryID;
-                if (IME.CustomerCategorySubCategories.Where(a => a.customerID == CustomerCode.Text).FirstOrDefault() == null){ IME.CustomerCategorySubCategories.Add(CustomerCatSubcat); }
+                if (IME.CustomerCategorySubCategories.Where(a => a.customerID == CustomerCode.Text).FirstOrDefault() == null) { IME.CustomerCategorySubCategories.Add(CustomerCatSubcat); }
                 IME.SaveChanges();
                 //
                 c.accountrepresentaryID = (AccountRepresentary.SelectedItem as Worker).WorkerID;
@@ -857,7 +890,7 @@ namespace LoginForm
                         c.customerNoteID = c.Note.ID;
                     }
                     IME.SaveChanges();
-                    
+
                 }
                 catch { }
 
@@ -1095,6 +1128,11 @@ namespace LoginForm
             AdressDone.Visible = true;
             AddressUpd.Visible = false;
             AdressList.Enabled = false;
+
+            AddressType.Text = (ComboboxString);
+            cbCountry.Text = (ComboboxString);
+            cbCity.Text = (ComboboxString);
+            cbTown.Text = (ComboboxString);
             #endregion
         }
 
@@ -1379,6 +1417,122 @@ namespace LoginForm
                 ContactFAX.Focus();
                 return;
             }
+        }
+
+        private void Represantative1_MouseClick(object sender, MouseEventArgs e)
+        {
+            Represantative1.DataSource = IME.Workers.ToList();
+            Represantative1.DisplayMember = "NameLastName";
+        }
+
+        private void ComboboxElleGirisEngelleme(KeyPressEventArgs e)
+        {
+            e.Handled = Char.IsLetterOrDigit(e.KeyChar) || Char.IsSymbol(e.KeyChar) || Char.IsPunctuation(e.KeyChar) || Char.IsWhiteSpace(e.KeyChar) || Char.IsControl(e.KeyChar) || Char.IsNumber(e.KeyChar);
+        }
+
+        private void Represantative2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ComboboxElleGirisEngelleme(e);
+        }
+
+        private void MainCategory_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ComboboxElleGirisEngelleme(e);
+        }
+
+        private void SubCategory_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ComboboxElleGirisEngelleme(e);
+        }
+
+        private void Represantative1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ComboboxElleGirisEngelleme(e);
+        }
+
+        private void Capital_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ComboboxElleGirisEngelleme(e);
+        }
+
+        private void cbMainContact_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ComboboxElleGirisEngelleme(e);
+        }
+
+        private void AccountRepresentary_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ComboboxElleGirisEngelleme(e);
+        }
+
+        private void TermsofPayments_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ComboboxElleGirisEngelleme(e);
+        }
+
+        private void PaymentMethod_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ComboboxElleGirisEngelleme(e);
+        }
+
+        private void QuoCurrencyName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ComboboxElleGirisEngelleme(e);
+        }
+
+        private void QuoCurrencyType_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ComboboxElleGirisEngelleme(e);
+        }
+
+        private void InvCurrencyName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ComboboxElleGirisEngelleme(e);
+        }
+
+        private void InvCurrencyType_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ComboboxElleGirisEngelleme(e);
+        }
+
+        private void AddressType_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ComboboxElleGirisEngelleme(e);
+        }
+
+        private void cbCountry_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ComboboxElleGirisEngelleme(e);
+        }
+
+        private void cbCity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ComboboxElleGirisEngelleme(e);
+        }
+
+        private void cbTown_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ComboboxElleGirisEngelleme(e);
+        }
+
+        private void ContactType_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ComboboxElleGirisEngelleme(e);
+        }
+
+        private void ContactDepartment_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ComboboxElleGirisEngelleme(e);
+        }
+
+        private void ContactTitle_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ComboboxElleGirisEngelleme(e);
+        }
+
+        private void CommunicationLanguage_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ComboboxElleGirisEngelleme(e);
         }
     }
 }
