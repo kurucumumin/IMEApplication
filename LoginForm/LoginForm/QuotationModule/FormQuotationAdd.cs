@@ -85,6 +85,7 @@ namespace LoginForm.QuotationModule
                 cbPayment.ValueMember = "ID";
                 cbRep.DataSource = IME.Workers.ToList();
                 cbRep.DisplayMember = "NameLastName";
+                cbRep.SelectedIndex = cbRep.FindStringExact(Utils.getCurrentUser().NameLastName);
                 cbCurrType.SelectedIndex = 0;
                 dtpDate.Value = DateTime.Now;
                 GetCurrency();
@@ -128,8 +129,7 @@ namespace LoginForm.QuotationModule
                 }
                 try { txtContactNote.Text = c.CustomerWorker.Note.Note_name; } catch { }
                 try { txtCustomerNote.Text = c.Note.Note_name; } catch { }
-                try { txtAccountingNote.Text = c.Note.Note_name; } catch { }
-                //  try { txtAccountingNote.Text = c.Note.Note_name; } catch { }
+                try { txtAccountingNote.Text = IME.Notes.Where(a=>a.ID==c.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
                 cbRep.SelectedIndex = cbRep.FindStringExact(c.Worker.NameLastName.ToString());
             }
         }

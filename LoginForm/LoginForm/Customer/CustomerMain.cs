@@ -131,6 +131,7 @@ namespace LoginForm
 
         private void CustomerDataGrid_Click(object sender, EventArgs e)
         {
+            itemsClear();
             gridselectedindex = CustomerDataGrid.CurrentCell.RowIndex;
             customersearch();
         }
@@ -228,7 +229,7 @@ namespace LoginForm
             departmentAdd.Enabled = false;
             cbIMEOffice.Enabled = false;
             InvoiceAdressOk.Enabled = false;
-
+            
             titleAdd.Enabled = false;
             ContactList.Enabled = true;
             
@@ -356,6 +357,7 @@ namespace LoginForm
 
         private void customersearch()
         {
+            IME = new IMEEntities();
             #region customersearch
             var customerAdapter = (from c in IME.Customers.Where(a => a.c_name.Contains(searchtxt))
                                    join w in IME.Workers on c.representaryID equals w.WorkerID
@@ -391,7 +393,7 @@ namespace LoginForm
                                        cwNote = customerworker.Note.Note_name,
                                        c.isactive,
                                        c.rateIDinvoice,
-                                       CustomerNote = c.Note.Note_name,
+                                       CustomerNote = c.customerNoteID,
                                        WorkerNote = w.Note.Note_name,
                                        CustomerWorkerNote = customerworker.Note.Note_name,
                                        AccountRepresentative = customeraccountant.NameLastName,
@@ -409,7 +411,9 @@ namespace LoginForm
                                        c.CurrNameQuo,
                                        c.CurrTypeQuo,
                                        c.CurrNameInv,
-                                       c.CurrTypeInv
+                                       c.CurrTypeInv,
+                                       c.customerNoteID,
+                                       c.customerAccountantNoteID
                                    }).ToList();
             #endregion
             CustomerDataGrid.DataSource = customerAdapter;
@@ -423,25 +427,24 @@ namespace LoginForm
                 AdressList.DisplayMember = "AdressDetails";
                 IME.SaveChanges();
                 CustomerName.Text = customerAdapter[gridselectedindex].c_name;
-                Telephone.Text = customerAdapter[gridselectedindex].telephone.ToString();
-                ContactFAX.Text = customerAdapter[gridselectedindex].fax.ToString();
-                WebAdress.Text = customerAdapter[gridselectedindex].webadress;
-
-                AddressType.DataSource = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text).ToList();
-                AddressType.DisplayMember = "cw_name";
-                Represantative2.Text = customerAdapter[gridselectedindex].Representative2;
-                Represantative1.SelectedIndex = Represantative1.FindStringExact(customerAdapter[gridselectedindex].NameLastName);
-                ContactTitle.SelectedIndex = ContactTitle.FindStringExact(customerAdapter[gridselectedindex].titlename);
-                ContactDepartment.SelectedIndex = ContactDepartment.FindStringExact(customerAdapter[gridselectedindex].titlename);
-                MainCategory.SelectedIndex = MainCategory.FindStringExact(customerAdapter[gridselectedindex].categoryname);
-                SubCategory.SelectedIndex = SubCategory.FindStringExact(customerAdapter[gridselectedindex].subcategoryname);
-                TermsofPayments.SelectedIndex = TermsofPayments.FindStringExact(customerAdapter[gridselectedindex].term_name);
-                ContactName.Text = customerAdapter[gridselectedindex].cw_name;
-                ContactEmail.Text = customerAdapter[gridselectedindex].cw_email;
-                CompanyNotes.Text = customerAdapter[gridselectedindex].CustomerNote;
-                ContactNotes.Text = customerAdapter[gridselectedindex].CustomerWorkerNote;
-                AccountRepresentary.Text = customerAdapter[gridselectedindex].AccountRepresentative;
-                CommunicationLanguage.Text = customerAdapter[gridselectedindex].languagename;
+                try { Telephone.Text = customerAdapter[gridselectedindex].telephone.ToString(); } catch { }
+                try{ ContactFAX.Text = customerAdapter[gridselectedindex].fax.ToString(); } catch { }
+                try { WebAdress.Text = customerAdapter[gridselectedindex].webadress;} catch { }
+                try{ AddressType.DataSource = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text).ToList();} catch { }
+                try{ AddressType.DisplayMember = "cw_name";} catch { }
+                try{Represantative2.Text = customerAdapter[gridselectedindex].Representative2;} catch { }
+                try{ Represantative1.SelectedIndex = Represantative1.FindStringExact(customerAdapter[gridselectedindex].NameLastName);} catch { }
+                try{ContactTitle.SelectedIndex = ContactTitle.FindStringExact(customerAdapter[gridselectedindex].titlename);} catch { }
+                try{ContactDepartment.SelectedIndex = ContactDepartment.FindStringExact(customerAdapter[gridselectedindex].titlename);} catch { }
+                try{MainCategory.SelectedIndex = MainCategory.FindStringExact(customerAdapter[gridselectedindex].categoryname);} catch { }
+                try{SubCategory.SelectedIndex = SubCategory.FindStringExact(customerAdapter[gridselectedindex].subcategoryname);} catch { }
+                try{TermsofPayments.SelectedIndex = TermsofPayments.FindStringExact(customerAdapter[gridselectedindex].term_name);} catch { }
+                try{ContactName.Text = customerAdapter[gridselectedindex].cw_name;} catch { }
+                try{ContactEmail.Text = customerAdapter[gridselectedindex].cw_email;} catch { }
+                
+                try{ContactNotes.Text = customerAdapter[gridselectedindex].CustomerWorkerNote;} catch { }
+                try{AccountRepresentary.Text = customerAdapter[gridselectedindex].AccountRepresentative;} catch { }
+                try{ CommunicationLanguage.Text = customerAdapter[gridselectedindex].languagename;} catch { }
                 if (customerAdapter[gridselectedindex].isactive == 1) { rb_active.Checked = true; } else { rb_passive.Checked = true; }
 
                 ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
@@ -466,6 +469,13 @@ namespace LoginForm
                 QuoCurrencyType.Text = customerAdapter[gridselectedindex].CurrTypeQuo;
                 InvCurrencyName.Text = customerAdapter[gridselectedindex].CurrNameInv;
                 InvCurrencyType.Text = customerAdapter[gridselectedindex].CurrTypeInv;
+                try {
+                    int? cNoteID = customerAdapter[gridselectedindex].customerNoteID;
+                    
+                    CompanyNotes.Text = IME.Notes.Where(a => a.ID == cNoteID).FirstOrDefault().Note_name; } catch { }
+                try {
+                    int? cAccountentNoteID = customerAdapter[gridselectedindex].customerAccountantNoteID;
+                    AccountingNotes.Text = IME.Notes.Where(a => a.ID == cAccountentNoteID).FirstOrDefault().Note_name; } catch { }
                 #endregion
             }
             else { itemsClear(); }
@@ -522,7 +532,9 @@ namespace LoginForm
                                        a.Town.Town_name,
                                        a.AdressDetails,
                                        c.MainContactID,
-                                       MainContact = mc.cw_name
+                                       MainContact = mc.cw_name,
+                                       c.customerNoteID,
+                                       c.customerAccountantNoteID
                                    }).ToList();
             #endregion
 
@@ -570,6 +582,8 @@ namespace LoginForm
             if (customerAdapter[gridselectedindex].isInvoiceAdress == 1) { InvoiceAdressOk.Checked = true; } else { InvoiceAdressOk.Checked = false; }
             cbTown.SelectedIndex = cbTown.FindStringExact(customerAdapter[gridselectedindex].Town_name);
             AddressDetails.Text = customerAdapter[gridselectedindex].AdressDetails;
+            AccountingNotes.Text = IME.Notes.Where(a => a.ID == customerAdapter[gridselectedindex].customerAccountantNoteID).FirstOrDefault().Note_name;
+
             #endregion
         }
 
@@ -834,7 +848,7 @@ namespace LoginForm
                 //
                 c.accountrepresentaryID = (AccountRepresentary.SelectedItem as Worker).WorkerID;
                 //int c_rep1ID = ((Worker)(Represantative1).SelectedItem).WorkerID;
-                c.representaryID = Int32.Parse((LoginFormName.LoginName));
+                c.representaryID = Utils.getCurrentUser().WorkerID;
                 int c_rep2ID = ((Worker)(Represantative2).SelectedItem).WorkerID;
                 c.representary2ID = c_rep2ID;
                 int c_termpayment = ((PaymentTerm)(TermsofPayments).SelectedItem).ID;
@@ -842,25 +856,38 @@ namespace LoginForm
                 int c_paymentmeth = ((PaymentMethod)(PaymentMethod).SelectedItem).ID;
                 c.paymentmethodID = c_paymentmeth;
                 //Notes kısmına kayıt ediliyor
-                try
+                Note n1 = new Note();
+                try { n1 = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault(); } catch { }
+                if (c.Note==null)
                 {
-                    if (c.customerNoteID != null)
+                    n1.Note_name= CompanyNotes.Text;
+                    c.Note = n1;
+                    IME.Notes.Add(c.Note);
+                    IME.SaveChanges();
+                    //c.customerNoteID = c.Note.ID;
+
+                }
+                else
+                {
+                    n1.Note_name = CompanyNotes.Text;
+                    IME.SaveChanges();
+                }
+                if (c.customerAccountantNoteID==null)
                     {
-                        Note note1 = new Note();
-                        note1 = IME.Notes.Where(a => a.ID == c.customerNoteID).FirstOrDefault();
-                        note1.Note_name = CompanyNotes.Text;
+                        Note n = new Note();
+                        n.Note_name = AccountingNotes.Text;
+                        IME.Notes.Add(n);
+                        IME.SaveChanges();
+                        c.customerAccountantNoteID = n.ID;
                     }
                     else
                     {
-                        c.Note.Note_name = CompanyNotes.Text;
-                        IME.Notes.Add(c.Note);
-                        c.customerNoteID = c.Note.ID;
+                        Note n = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault();
+                        n.Note_name = AccountingNotes.Text;
+                        IME.SaveChanges();
                     }
-                    IME.SaveChanges();
-                    
-                }
-                catch { }
-
+                
+                   
                 IME.SaveChanges();
                 itemsEnableFalse();
                 contactTabEnableFalse();
@@ -943,6 +970,7 @@ namespace LoginForm
             WebAdress.Text = "";
             CustomerFax.Text = "";
             CustomerName.Text = "";
+            AccountingNotes.Text = "";
             Telephone.Text = "";
             CustomerCode.Text = "";         
             AccountingNotes.Text = "";
@@ -1035,7 +1063,6 @@ namespace LoginForm
             TermsofPayments.Enabled = true;
             TaxOffice.Enabled = true;
             Represantative2.Enabled = true;
-            Represantative1.Enabled = true;
             InvCurrencyName.Enabled = true;
             InvCurrencyType.Enabled = true;
             QuoCurrencyName.Enabled = true;
@@ -1131,7 +1158,8 @@ namespace LoginForm
         private void AdressDone_Click(object sender, EventArgs e)
         {
             CustomerAdress ca = new CustomerAdress();
-            if(isUpdateAdress==1){
+            if(isUpdateAdress==1)
+            {
                 ca = IME.CustomerAdresses.Where(a => a.ID == ((CustomerAdress)(AdressList).SelectedItem).ID).FirstOrDefault();
             }
             
@@ -1380,5 +1408,7 @@ namespace LoginForm
                 return;
             }
         }
+
+        
     }
 }

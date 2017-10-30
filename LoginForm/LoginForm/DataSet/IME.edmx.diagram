@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="IMEModel.Capital" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="IMEModel.City" Width="1.5" PointX="11.25" PointY="8.625" />
         <EntityTypeShape EntityType="IMEModel.Country" Width="1.5" PointX="9" PointY="8.75" />
-        <EntityTypeShape EntityType="IMEModel.Customer" Width="1.5" PointX="8.25" PointY="19.5" />
         <EntityTypeShape EntityType="IMEModel.CustomerAdress" Width="1.5" PointX="13.5" PointY="17.25" />
         <EntityTypeShape EntityType="IMEModel.CustomerCategory" Width="1.5" PointX="11.25" PointY="2" />
         <EntityTypeShape EntityType="IMEModel.CustomerCategorySubCategory" Width="1.5" PointX="13.5" PointY="22" />
@@ -56,18 +55,6 @@
         <AssociationConnector Association="IMEModel.FK__Town__CityID__5224328E" />
         <AssociationConnector Association="IMEModel.FK__CustomerA__Count__503BEA1C" />
         <AssociationConnector Association="IMEModel.FK__SupplierA__Count__3FD07829" />
-        <AssociationConnector Association="IMEModel.FK__Customer__accoun__6EF57B66" />
-        <AssociationConnector Association="IMEModel.FK__Customer__custom__3B75D760" />
-        <AssociationConnector Association="IMEModel.FK__Customer__MainCo__19AACF41" />
-        <AssociationConnector Association="IMEModel.FK__Customer__paymen__3D5E1FD2" />
-        <AssociationConnector Association="IMEModel.FK__Customer__paymen__3E52440B" />
-        <AssociationConnector Association="IMEModel.FK__Customer__repres__3F466844" />
-        <AssociationConnector Association="IMEModel.FK__Customer__repres__6E01572D" />
-        <AssociationConnector Association="IMEModel.FK__CustomerA__Custo__44CA3770" />
-        <AssociationConnector Association="IMEModel.FK__CustomerC__custo__534D60F1" />
-        <AssociationConnector Association="IMEModel.FK__CustomerW__custo__4316F928" />
-        <AssociationConnector Association="IMEModel.FK__DiscountV__Custo__6E565CE8" />
-        <AssociationConnector Association="IMEModel.FK__Quotation__Custo__00750D23" />
         <AssociationConnector Association="IMEModel.FK__CustomerA__Conta__45BE5BA9" />
         <AssociationConnector Association="IMEModel.FK__CustomerA__TownI__4F47C5E3" />
         <AssociationConnector Association="IMEModel.FK__CustomerC__categ__5165187F" />
@@ -111,7 +98,20 @@
         <AssociationConnector Association="IMEModel.FK__SupplierW__title__7755B73D" />
         <AssociationConnector Association="IMEModel.AuthRole" />
         <AssociationConnector Association="IMEModel.UserAuthorization" />
-      </Diagram>
+        <EntityTypeShape EntityType="IMEModel.Customer" Width="1.5" PointX="18.75" PointY="16.5" />
+        <AssociationConnector Association="IMEModel.FK__Customer__accoun__6EF57B66" />
+        <AssociationConnector Association="IMEModel.FK__Customer__custom__3B75D760" />
+        <AssociationConnector Association="IMEModel.FK__Customer__MainCo__19AACF41" />
+        <AssociationConnector Association="IMEModel.FK__Customer__paymen__3D5E1FD2" />
+        <AssociationConnector Association="IMEModel.FK__Customer__paymen__3E52440B" />
+        <AssociationConnector Association="IMEModel.FK__Customer__repres__3F466844" />
+        <AssociationConnector Association="IMEModel.FK__Customer__repres__6E01572D" />
+        <AssociationConnector Association="IMEModel.FK__CustomerA__Custo__44CA3770" />
+        <AssociationConnector Association="IMEModel.FK__CustomerC__custo__534D60F1" />
+        <AssociationConnector Association="IMEModel.FK__CustomerW__custo__4316F928" />
+        <AssociationConnector Association="IMEModel.FK__DiscountV__Custo__6E565CE8" />
+        <AssociationConnector Association="IMEModel.FK__Quotation__Custo__00750D23" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
