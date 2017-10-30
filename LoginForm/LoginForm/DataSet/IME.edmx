@@ -56,7 +56,7 @@
           <Property Name="webadress" Type="nvarchar" MaxLength="50" />
           <Property Name="payment_termID" Type="int" />
           <Property Name="representaryID" Type="int" />
-          <Property Name="customerNoteID" Type="int" />
+          <Property Name="customerAccountantNoteID" Type="int" />
           <Property Name="representary2ID" Type="int" />
           <Property Name="accountrepresentaryID" Type="int" />
           <Property Name="isactive" Type="int" />
@@ -282,6 +282,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="term_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="timespan" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Quotation">
           <Key>
@@ -309,7 +310,6 @@
           <Property Name="QuotationNo" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="RFQNo" Type="nvarchar" MaxLength="20" />
           <Property Name="CurrType" Type="nvarchar" MaxLength="15" />
-          <Property Name="version" Type="int" />
         </EntityType>
         <EntityType Name="QuotationDetail">
           <Key>
@@ -694,7 +694,7 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Customer">
-              <PropertyRef Name="customerNoteID" />
+              <PropertyRef Name="customerAccountantNoteID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2042,7 +2042,7 @@
           <Property Name="webadress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="payment_termID" Type="Int32" />
           <Property Name="representaryID" Type="Int32" />
-          <Property Name="customerNoteID" Type="Int32" />
+          <Property Name="customerAccountantNoteID" Type="Int32" />
           <Property Name="representary2ID" Type="Int32" />
           <Property Name="accountrepresentaryID" Type="Int32" />
           <Property Name="isactive" Type="Int32" />
@@ -2320,6 +2320,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="term_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="timespan" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Customers" Relationship="IMEModel.FK__Customer__paymen__3E52440B" FromRole="PaymentTerm" ToRole="Customer" />
           <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__paymen__6442E2C9" FromRole="PaymentTerm" ToRole="Supplier" />
         </EntityType>
@@ -2349,7 +2350,6 @@
           <Property Name="QuotationNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="RFQNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="CurrType" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="version" Type="Int32" />
           <NavigationProperty Name="Customer" Relationship="IMEModel.FK__Quotation__Custo__00750D23" FromRole="Quotation" ToRole="Customer" />
           <NavigationProperty Name="Note" Relationship="IMEModel.FK__Quotation__NoteF__0169315C" FromRole="Quotation" ToRole="Note" />
           <NavigationProperty Name="Note1" Relationship="IMEModel.FK__Quotation__NoteF__025D5595" FromRole="Quotation" ToRole="Note" />
@@ -2821,7 +2821,7 @@
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Customer">
-              <PropertyRef Name="customerNoteID" />
+              <PropertyRef Name="customerAccountantNoteID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3498,7 +3498,7 @@
                 <ScalarProperty Name="isactive" ColumnName="isactive" />
                 <ScalarProperty Name="accountrepresentaryID" ColumnName="accountrepresentaryID" />
                 <ScalarProperty Name="representary2ID" ColumnName="representary2ID" />
-                <ScalarProperty Name="customerNoteID" ColumnName="customerNoteID" />
+                <ScalarProperty Name="customerAccountantNoteID" ColumnName="customerAccountantNoteID" />
                 <ScalarProperty Name="representaryID" ColumnName="representaryID" />
                 <ScalarProperty Name="payment_termID" ColumnName="payment_termID" />
                 <ScalarProperty Name="webadress" ColumnName="webadress" />
@@ -3740,6 +3740,7 @@
           <EntitySetMapping Name="PaymentTerms">
             <EntityTypeMapping TypeName="IMEModel.PaymentTerm">
               <MappingFragment StoreEntitySet="PaymentTerm">
+                <ScalarProperty Name="timespan" ColumnName="timespan" />
                 <ScalarProperty Name="term_name" ColumnName="term_name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
@@ -3748,7 +3749,6 @@
           <EntitySetMapping Name="Quotations">
             <EntityTypeMapping TypeName="IMEModel.Quotation">
               <MappingFragment StoreEntitySet="Quotation">
-                <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="CurrType" ColumnName="CurrType" />
                 <ScalarProperty Name="RFQNo" ColumnName="RFQNo" />
                 <ScalarProperty Name="QuotationNo" ColumnName="QuotationNo" />

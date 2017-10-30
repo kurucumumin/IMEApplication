@@ -1,4 +1,4 @@
-﻿namespace LoginForm.Roles
+﻿namespace LoginForm.ManagementModule
 {
     partial class FormRoleAuths
     {

@@ -52,8 +52,12 @@
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.chcActive = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.numeric2 = new System.Windows.Forms.NumericUpDown();
-            this.numeric1 = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtDiscountRate = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numericFactor = new System.Windows.Forms.NumericUpDown();
+            this.numericMinMargin = new System.Windows.Forms.NumericUpDown();
             this.rbGeneralManager = new System.Windows.Forms.RadioButton();
             this.rbSalesManager = new System.Windows.Forms.RadioButton();
             this.rbSales = new System.Windows.Forms.RadioButton();
@@ -72,8 +76,8 @@
             this.panel1.SuspendLayout();
             this.gbUserInfo.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numeric2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numeric1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericFactor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericMinMargin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.authRoleBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.authorizationValueBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -254,35 +258,59 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Window;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.numeric2);
-            this.panel2.Controls.Add(this.numeric1);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.txtDiscountRate);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.numericFactor);
+            this.panel2.Controls.Add(this.numericMinMargin);
             this.panel2.Controls.Add(this.rbGeneralManager);
             this.panel2.Controls.Add(this.rbSalesManager);
             this.panel2.Controls.Add(this.rbSales);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
-            // numeric2
+            // label3
             // 
-            this.numeric2.DecimalPlaces = 2;
-            this.numeric2.Increment = new decimal(new int[] {
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // txtDiscountRate
+            // 
+            resources.ApplyResources(this.txtDiscountRate, "txtDiscountRate");
+            this.txtDiscountRate.Name = "txtDiscountRate";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // numericFactor
+            // 
+            this.numericFactor.DecimalPlaces = 2;
+            this.numericFactor.Increment = new decimal(new int[] {
             1,
             0,
             0,
             131072});
-            resources.ApplyResources(this.numeric2, "numeric2");
-            this.numeric2.Name = "numeric2";
+            resources.ApplyResources(this.numericFactor, "numericFactor");
+            this.numericFactor.Name = "numericFactor";
             // 
-            // numeric1
+            // numericMinMargin
             // 
-            this.numeric1.DecimalPlaces = 2;
-            this.numeric1.Increment = new decimal(new int[] {
+            this.numericMinMargin.DecimalPlaces = 2;
+            this.numericMinMargin.Increment = new decimal(new int[] {
             1,
             0,
             0,
             131072});
-            resources.ApplyResources(this.numeric1, "numeric1");
-            this.numeric1.Name = "numeric1";
+            resources.ApplyResources(this.numericMinMargin, "numericMinMargin");
+            this.numericMinMargin.Name = "numericMinMargin";
             // 
             // rbGeneralManager
             // 
@@ -348,8 +376,8 @@
             this.gbUserInfo.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numeric2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numeric1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericFactor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericMinMargin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.authRoleBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.authorizationValueBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -371,8 +399,8 @@
         private System.Windows.Forms.TextBox txtMail;
         private System.Windows.Forms.TextBox txtUserPass;
         private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.NumericUpDown numeric1;
-        private System.Windows.Forms.NumericUpDown numeric2;
+        private System.Windows.Forms.NumericUpDown numericMinMargin;
+        private System.Windows.Forms.NumericUpDown numericFactor;
         private System.Windows.Forms.BindingSource authRoleBindingSource;
         private System.Windows.Forms.BindingSource authorizationValueBindingSource;
         private System.Windows.Forms.CheckedListBox clbAuthorities;
@@ -392,5 +420,9 @@
         private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.ListBox lbRoles;
         private System.Windows.Forms.BindingSource roleValueBindingSource;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtDiscountRate;
     }
 }

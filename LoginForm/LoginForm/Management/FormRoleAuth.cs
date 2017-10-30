@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace LoginForm.Roles
+namespace LoginForm.ManagementModule
 {
     public partial class FormRoleAuths : Form
     {

@@ -36,6 +36,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.txtLowMarginLimit = new System.Windows.Forms.TextBox();
             this.lblLowMarginLimit = new System.Windows.Forms.Label();
+            this.btnTermsOfPayment = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel31.SuspendLayout();
             this.SuspendLayout();
@@ -61,6 +62,7 @@
             // panel31
             // 
             this.panel31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel31.Controls.Add(this.btnTermsOfPayment);
             this.panel31.Controls.Add(this.txtVAT);
             this.panel31.Controls.Add(this.lblVAT);
             this.panel31.Controls.Add(this.btnRolesAuthorities);
@@ -101,10 +103,10 @@
             this.btnRolesAuthorities.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
             this.btnRolesAuthorities.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRolesAuthorities.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRolesAuthorities.Location = new System.Drawing.Point(0, 414);
+            this.btnRolesAuthorities.Location = new System.Drawing.Point(-2, 440);
             this.btnRolesAuthorities.Margin = new System.Windows.Forms.Padding(0);
             this.btnRolesAuthorities.Name = "btnRolesAuthorities";
-            this.btnRolesAuthorities.Size = new System.Drawing.Size(332, 59);
+            this.btnRolesAuthorities.Size = new System.Drawing.Size(335, 37);
             this.btnRolesAuthorities.TabIndex = 5;
             this.btnRolesAuthorities.Text = "Roles and Authorities";
             this.btnRolesAuthorities.UseVisualStyleBackColor = false;
@@ -145,6 +147,23 @@
             this.lblLowMarginLimit.TabIndex = 0;
             this.lblLowMarginLimit.Text = "Low Margin Limit";
             // 
+            // btnTermsOfPayment
+            // 
+            this.btnTermsOfPayment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTermsOfPayment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(187)))), ((int)(((byte)(106)))));
+            this.btnTermsOfPayment.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
+            this.btnTermsOfPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTermsOfPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTermsOfPayment.Location = new System.Drawing.Point(-1, 394);
+            this.btnTermsOfPayment.Margin = new System.Windows.Forms.Padding(0);
+            this.btnTermsOfPayment.Name = "btnTermsOfPayment";
+            this.btnTermsOfPayment.Size = new System.Drawing.Size(335, 37);
+            this.btnTermsOfPayment.TabIndex = 8;
+            this.btnTermsOfPayment.Text = "Terms of Payment";
+            this.btnTermsOfPayment.UseVisualStyleBackColor = false;
+            this.btnTermsOfPayment.Click += new System.EventHandler(this.btnTermsOfPayment_Click);
+            // 
             // ManagementControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -169,5 +188,6 @@
         private System.Windows.Forms.Button btnRolesAuthorities;
         private System.Windows.Forms.TextBox txtVAT;
         private System.Windows.Forms.Label lblVAT;
+        private System.Windows.Forms.Button btnTermsOfPayment;
     }
 }
