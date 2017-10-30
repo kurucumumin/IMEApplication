@@ -776,7 +776,7 @@ namespace LoginForm
                 itemsClear();
                 rb_active.Checked = true;
                 Represantative1.DataSource = null;
-                Represantative1.Items.Add(LoginFormName.LoginName);
+                Represantative1.Items.Add(Utils.getCurrentUser().UserName);
                 
                 //for new customerCode
                 string custmrcode = IME.Customers.OrderByDescending(a => a.ID).FirstOrDefault().ID;
