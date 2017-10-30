@@ -863,6 +863,7 @@ namespace LoginForm
                 }
                 else
                 {
+<<<<<<< HEAD
                     btnCreate.Text = "CREATE";
                     btnUpdate.Text = "UPDATE";
 
@@ -930,6 +931,19 @@ namespace LoginForm
                         Note n = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault();
                         n.Note_name = AccountingNotes.Text;
                         IME.SaveChanges();
+=======
+                    if (c.customerAccountantNoteID != null)
+                    {
+                        Note note1 = new Note();
+                        note1 = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault();
+                        note1.Note_name = CompanyNotes.Text;
+                    }
+                    else
+                    {
+                        c.Note.Note_name = CompanyNotes.Text;
+                        IME.Notes.Add(c.Note);
+                        c.customerAccountantNoteID = c.Note.ID;
+>>>>>>> Cem-@Develop
                     }
                     IME.SaveChanges();
 

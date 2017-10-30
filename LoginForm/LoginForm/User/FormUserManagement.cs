@@ -119,8 +119,8 @@ namespace LoginForm.User
                             wrkr.Title = 3;
                         }
 
-                        wrkr.MinMarge = numeric1.Value;
-                        wrkr.MinRate = numeric2.Value;
+                        wrkr.MinMarge = numericMinMargin.Value;
+                        wrkr.MinRate = numericFactor.Value;
 
                         if (chcActive.Checked)
                         {
@@ -188,8 +188,8 @@ namespace LoginForm.User
                             worker.Note = note;
                         }
                         worker.Email = txtMail.Text;
-                        worker.MinMarge = numeric1.Value;
-                        worker.MinRate = numeric2.Value;
+                        worker.MinMarge = numericMinMargin.Value;
+                        worker.MinRate = numericFactor.Value;
                         worker.Phone = txtPhone.Text;
                         worker.UserName = txtUsername.Text;
                         worker.UserPass = Utils.MD5Hash(txtUserPass.Text);
@@ -247,7 +247,7 @@ namespace LoginForm.User
                     }
                     else
                     {
-                        if (txtNameLastName.Text.Length == 0 || txtUsername.Text.Length == 0 || txtMail.Text.Length == 0 || txtPhone.Text.Length == 0 || (rbSales.Checked == false && rbSalesManager.Checked == false && rbGeneralManager.Checked == false) == true || numeric1.Value <= 0 || numeric2.Value <= 0)
+                        if (txtNameLastName.Text.Length == 0 || txtUsername.Text.Length == 0 || txtMail.Text.Length == 0 || txtPhone.Text.Length == 0 || (rbSales.Checked == false && rbSalesManager.Checked == false && rbGeneralManager.Checked == false) == true || numericMinMargin.Value <= 0 || numericFactor.Value <= 0)
                         {
                             return true;
                         }
@@ -259,7 +259,7 @@ namespace LoginForm.User
                 }
                 else
                 {
-                    if (txtNameLastName.Text.Length == 0 || txtUsername.Text.Length == 0 || txtMail.Text.Length == 0 || txtPhone.Text.Length == 0 || (rbSales.Checked == false && rbSalesManager.Checked == false && rbGeneralManager.Checked == false) == true || numeric1.Value <= 0 || numeric2.Value <= 0)
+                    if (txtNameLastName.Text.Length == 0 || txtUsername.Text.Length == 0 || txtMail.Text.Length == 0 || txtPhone.Text.Length == 0 || (rbSales.Checked == false && rbSalesManager.Checked == false && rbGeneralManager.Checked == false) == true || numericMinMargin.Value <= 0 || numericFactor.Value <= 0)
                     {
                         return true;
                     }
@@ -271,7 +271,7 @@ namespace LoginForm.User
             }
             else
             {
-                if (txtNameLastName.Text.Length == 0 || txtUsername.Text.Length == 0 || txtUserPass.Text.Length == 0 || txtMail.Text.Length == 0 || txtPhone.Text.Length == 0 || (rbSales.Checked == false && rbSalesManager.Checked == false && rbGeneralManager.Checked == false) == true || numeric1.Value <= 0 || numeric2.Value <= 0)
+                if (txtNameLastName.Text.Length == 0 || txtUsername.Text.Length == 0 || txtUserPass.Text.Length == 0 || txtMail.Text.Length == 0 || txtPhone.Text.Length == 0 || (rbSales.Checked == false && rbSalesManager.Checked == false && rbGeneralManager.Checked == false) == true || numericMinMargin.Value <= 0 || numericFactor.Value <= 0)
                 {
                     return true;
                 }
@@ -322,8 +322,8 @@ namespace LoginForm.User
             }
 
 
-            numeric1.Value = (decimal)worker.MinMarge;
-            numeric2.Value = (decimal)worker.MinRate;
+            numericMinMargin.Value = (decimal)worker.MinMarge;
+            numericFactor.Value = (decimal)worker.MinRate;
 
 
             clbUserAuthorityList.DataSource = authList;

@@ -329,6 +329,12 @@
     <Compile Include="CustomControls\ManagementControl.Designer.cs">
       <DependentUpon>ManagementControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Management\FormTermsOfPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\FormTermsOfPayment.Designer.cs">
+      <DependentUpon>FormTermsOfPayment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuotationModule\FormQuaotationCustomerSearch.cs">
@@ -389,10 +395,10 @@
     <Compile Include="Supplier\SupplierPositionAdd.designer.cs">
       <DependentUpon>SupplierPositionAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Roles\FormRoleAuth.cs">
+    <Compile Include="Management\FormRoleAuth.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Roles\FormRoleAuth.Designer.cs">
+    <Compile Include="Management\FormRoleAuth.Designer.cs">
       <DependentUpon>FormRoleAuth.cs</DependentUpon>
     </Compile>
     <Compile Include="User\FormUserManagement.cs">
@@ -434,6 +440,9 @@
     <EmbeddedResource Include="CustomControls\ManagementControl.resx">
       <DependentUpon>ManagementControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Management\FormTermsOfPayment.resx">
+      <DependentUpon>FormTermsOfPayment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -468,7 +477,7 @@
     <EmbeddedResource Include="Supplier\SupplierPositionAdd.resx">
       <DependentUpon>SupplierPositionAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Roles\FormRoleAuth.resx">
+    <EmbeddedResource Include="Management\FormRoleAuth.resx">
       <DependentUpon>FormRoleAuth.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\FormUserManagement.resx">
