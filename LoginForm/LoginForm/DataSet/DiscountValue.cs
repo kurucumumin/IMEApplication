@@ -26,8 +26,8 @@ namespace LoginForm.DataSet
         public Nullable<System.DateTime> Finish_date { get; set; }
         public string Discount_Rate { get; set; }
     
+        public virtual Customer Customer { get; set; }
         public virtual SlidingPrice SlidingPrice { get; set; }
         public virtual Worker Worker { get; set; }
-        public virtual Customer Customer { get; set; }
     }
 }
