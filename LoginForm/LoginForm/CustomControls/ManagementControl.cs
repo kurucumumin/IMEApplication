@@ -18,6 +18,7 @@ namespace LoginForm.CustomControls
         {
             txtLowMarginLimit.Text = Convert.ToString(m.LowMarginLimit);
             txtVAT.Text = Convert.ToString(m.VAT);
+            numericFactor.Value = m.Factor;
             
             cbCurrency.DataSource = new IMEEntities().Rates.Where(r => r.rate_date == DateTime.Today).Select(type => type.CurType).ToList();
 
@@ -37,6 +38,7 @@ namespace LoginForm.CustomControls
                 management.VAT = Convert.ToDecimal(txtVAT.Text);
                 management.DefaultCurrency = cbCurrency.SelectedItem as string;
                 management.DefaultCurrencyType = cbCurrencyType.SelectedItem as string;
+                management.Factor = numericFactor.Value;
                 IME.SaveChanges();
 
                 MessageBox.Show("Changes Saved");

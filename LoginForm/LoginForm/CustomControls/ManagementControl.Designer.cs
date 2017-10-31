@@ -32,7 +32,7 @@
             this.panel31 = new System.Windows.Forms.Panel();
             this.cbCurrencyType = new System.Windows.Forms.ComboBox();
             this.cbCurrency = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblDefaultCurrency = new System.Windows.Forms.Label();
             this.btnTermsOfPayment = new System.Windows.Forms.Button();
             this.txtVAT = new System.Windows.Forms.TextBox();
             this.lblVAT = new System.Windows.Forms.Label();
@@ -40,8 +40,11 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.txtLowMarginLimit = new System.Windows.Forms.TextBox();
             this.lblLowMarginLimit = new System.Windows.Forms.Label();
+            this.lblFactor = new System.Windows.Forms.Label();
+            this.numericFactor = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel31.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericFactor)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -65,9 +68,11 @@
             // panel31
             // 
             this.panel31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel31.Controls.Add(this.numericFactor);
+            this.panel31.Controls.Add(this.lblFactor);
             this.panel31.Controls.Add(this.cbCurrencyType);
             this.panel31.Controls.Add(this.cbCurrency);
-            this.panel31.Controls.Add(this.label1);
+            this.panel31.Controls.Add(this.lblDefaultCurrency);
             this.panel31.Controls.Add(this.btnTermsOfPayment);
             this.panel31.Controls.Add(this.txtVAT);
             this.panel31.Controls.Add(this.lblVAT);
@@ -107,14 +112,14 @@
             this.cbCurrency.Size = new System.Drawing.Size(125, 26);
             this.cbCurrency.TabIndex = 10;
             // 
-            // label1
+            // lblDefaultCurrency
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 118);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 18);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Default Currency";
+            this.lblDefaultCurrency.AutoSize = true;
+            this.lblDefaultCurrency.Location = new System.Drawing.Point(16, 118);
+            this.lblDefaultCurrency.Name = "lblDefaultCurrency";
+            this.lblDefaultCurrency.Size = new System.Drawing.Size(118, 18);
+            this.lblDefaultCurrency.TabIndex = 9;
+            this.lblDefaultCurrency.Text = "Default Currency";
             // 
             // btnTermsOfPayment
             // 
@@ -206,6 +211,31 @@
             this.lblLowMarginLimit.TabIndex = 0;
             this.lblLowMarginLimit.Text = "Low Margin Limit";
             // 
+            // lblFactor
+            // 
+            this.lblFactor.AutoSize = true;
+            this.lblFactor.Location = new System.Drawing.Point(16, 199);
+            this.lblFactor.Margin = new System.Windows.Forms.Padding(16, 0, 3, 0);
+            this.lblFactor.Name = "lblFactor";
+            this.lblFactor.Size = new System.Drawing.Size(51, 18);
+            this.lblFactor.TabIndex = 12;
+            this.lblFactor.Text = "Factor";
+            // 
+            // numericFactor
+            // 
+            this.numericFactor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericFactor.DecimalPlaces = 2;
+            this.numericFactor.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.numericFactor.Location = new System.Drawing.Point(191, 197);
+            this.numericFactor.Name = "numericFactor";
+            this.numericFactor.Size = new System.Drawing.Size(125, 24);
+            this.numericFactor.TabIndex = 13;
+            // 
             // ManagementControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -216,6 +246,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel31.ResumeLayout(false);
             this.panel31.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericFactor)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -233,6 +264,8 @@
         private System.Windows.Forms.Button btnTermsOfPayment;
         private System.Windows.Forms.ComboBox cbCurrencyType;
         private System.Windows.Forms.ComboBox cbCurrency;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblDefaultCurrency;
+        private System.Windows.Forms.Label lblFactor;
+        private System.Windows.Forms.NumericUpDown numericFactor;
     }
 }

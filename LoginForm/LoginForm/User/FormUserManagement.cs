@@ -36,6 +36,7 @@ namespace LoginForm.User
 
             loadEditWorker();
             LoadRoles();
+            numericDiscountRate.Value = (100 - (((decimal)worker.MinRate * 100) / Utils.getManagement().Factor));
         }
 
         private void LoadRoles()
@@ -429,6 +430,24 @@ namespace LoginForm.User
                 clbUserAuthorityList.ClearSelected();
             }
         }
+        private void numericFactor_ValueChanged(object sender, EventArgs e)
+        {
+            if(numericFactor.Focused)
+            {
+                decimal factor = numericFactor.Value;
+
+                numericDiscountRate.Value = (100 - ((factor * 100) / Utils.getManagement().Factor));
+            }
+        }
+
+        private void numericDiscountRate_ValueChanged(object sender, EventArgs e)
+        {
+            if (numericDiscountRate.Focused)
+            {
+                decimal discountRate = numericDiscountRate.Value;
+
+                numericFactor.Value = (Utils.getManagement().Factor - ((discountRate * Utils.getManagement().Factor) / 100));
+            }
+        }
     }
-    
 }

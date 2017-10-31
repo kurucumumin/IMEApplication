@@ -237,6 +237,22 @@
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="languagename" Type="nvarchar" MaxLength="20" />
         </EntityType>
+        <EntityType Name="LoaderDates">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SD_Date" Type="datetime" />
+          <Property Name="SP_Date" Type="datetime" />
+          <Property Name="SDP_Date" Type="datetime" />
+          <Property Name="ER_Date" Type="datetime" />
+          <Property Name="OnSale_Date" Type="datetime" />
+          <Property Name="DiscontinuedList_Date" Type="datetime" />
+          <Property Name="DualUsed_Date" Type="datetime" />
+          <Property Name="Hazardous_Date" Type="datetime" />
+          <Property Name="TSEList_Date" Type="datetime" />
+          <Property Name="RSPro_Date" Type="datetime" />
+        </EntityType>
         <EntityType Name="Management">
           <Key>
             <PropertyRef Name="ID" />
@@ -244,8 +260,9 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LowMarginLimit" Type="decimal" Precision="4" Scale="2" />
           <Property Name="VAT" Type="decimal" Precision="5" Scale="2" />
-          <Property Name="DefaultCurrency" Type="nvarchar" MaxLength="5" />
-          <Property Name="DefaultCurrencyType" Type="nvarchar" MaxLength="10" />
+          <Property Name="DefaultCurrency" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="DefaultCurrencyType" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Factor" Type="decimal" Precision="6" Scale="3" Nullable="false" />
         </EntityType>
         <EntityType Name="Notes">
           <Key>
@@ -313,7 +330,6 @@
           <Property Name="QuotationNo" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="RFQNo" Type="nvarchar" MaxLength="20" />
           <Property Name="CurrType" Type="nvarchar" MaxLength="15" />
-          <Property Name="version" Type="int" />
         </EntityType>
         <EntityType Name="QuotationDetail">
           <Key>
@@ -1419,6 +1435,7 @@
           <EntitySet Name="Hazardous" EntityType="Self.Hazardous" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemNote" EntityType="Self.ItemNote" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaderDates" EntityType="Self.LoaderDates" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Management" EntityType="Self.Management" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OnSale" EntityType="Self.OnSale" Schema="dbo" store:Type="Tables" />
@@ -1723,6 +1740,7 @@
           <EntitySet Name="Hazardous" EntityType="IMEModel.Hazardou" />
           <EntitySet Name="ItemNotes" EntityType="IMEModel.ItemNote" />
           <EntitySet Name="Languages" EntityType="IMEModel.Language" />
+          <EntitySet Name="LoaderDates" EntityType="IMEModel.LoaderDate" />
           <EntitySet Name="Managements" EntityType="IMEModel.Management" />
           <EntitySet Name="Notes" EntityType="IMEModel.Note" />
           <EntitySet Name="OnSales" EntityType="IMEModel.OnSale" />
@@ -2268,6 +2286,22 @@
           <NavigationProperty Name="CustomerWorkers" Relationship="IMEModel.FK__CustomerW__langu__72C60C4A" FromRole="Language" ToRole="CustomerWorker" />
           <NavigationProperty Name="SupplierWorkers" Relationship="IMEModel.FK__SupplierW__langu__72910220" FromRole="Language" ToRole="SupplierWorker" />
         </EntityType>
+        <EntityType Name="LoaderDate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SD_Date" Type="DateTime" Precision="3" />
+          <Property Name="SP_Date" Type="DateTime" Precision="3" />
+          <Property Name="SDP_Date" Type="DateTime" Precision="3" />
+          <Property Name="ER_Date" Type="DateTime" Precision="3" />
+          <Property Name="OnSale_Date" Type="DateTime" Precision="3" />
+          <Property Name="DiscontinuedList_Date" Type="DateTime" Precision="3" />
+          <Property Name="DualUsed_Date" Type="DateTime" Precision="3" />
+          <Property Name="Hazardous_Date" Type="DateTime" Precision="3" />
+          <Property Name="TSEList_Date" Type="DateTime" Precision="3" />
+          <Property Name="RSPro_Date" Type="DateTime" Precision="3" />
+        </EntityType>
         <EntityType Name="Management">
           <Key>
             <PropertyRef Name="ID" />
@@ -2275,8 +2309,9 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LowMarginLimit" Type="Decimal" Precision="4" Scale="2" />
           <Property Name="VAT" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="DefaultCurrency" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="DefaultCurrencyType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DefaultCurrency" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="DefaultCurrencyType" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Factor" Type="Decimal" Nullable="false" Precision="6" Scale="3" />
         </EntityType>
         <EntityType Name="Note">
           <Key>
@@ -2357,7 +2392,6 @@
           <Property Name="QuotationNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="RFQNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="CurrType" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="version" Type="Int32" />
           <NavigationProperty Name="Customer" Relationship="IMEModel.FK__Quotation__Custo__00750D23" FromRole="Quotation" ToRole="Customer" />
           <NavigationProperty Name="Note" Relationship="IMEModel.FK__Quotation__NoteF__0169315C" FromRole="Quotation" ToRole="Note" />
           <NavigationProperty Name="Note1" Relationship="IMEModel.FK__Quotation__NoteF__025D5595" FromRole="Quotation" ToRole="Note" />
@@ -3702,9 +3736,27 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="LoaderDates">
+            <EntityTypeMapping TypeName="IMEModel.LoaderDate">
+              <MappingFragment StoreEntitySet="LoaderDates">
+                <ScalarProperty Name="RSPro_Date" ColumnName="RSPro_Date" />
+                <ScalarProperty Name="TSEList_Date" ColumnName="TSEList_Date" />
+                <ScalarProperty Name="Hazardous_Date" ColumnName="Hazardous_Date" />
+                <ScalarProperty Name="DualUsed_Date" ColumnName="DualUsed_Date" />
+                <ScalarProperty Name="DiscontinuedList_Date" ColumnName="DiscontinuedList_Date" />
+                <ScalarProperty Name="OnSale_Date" ColumnName="OnSale_Date" />
+                <ScalarProperty Name="ER_Date" ColumnName="ER_Date" />
+                <ScalarProperty Name="SDP_Date" ColumnName="SDP_Date" />
+                <ScalarProperty Name="SP_Date" ColumnName="SP_Date" />
+                <ScalarProperty Name="SD_Date" ColumnName="SD_Date" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Managements">
             <EntityTypeMapping TypeName="IMEModel.Management">
               <MappingFragment StoreEntitySet="Management">
+                <ScalarProperty Name="Factor" ColumnName="Factor" />
                 <ScalarProperty Name="DefaultCurrencyType" ColumnName="DefaultCurrencyType" />
                 <ScalarProperty Name="DefaultCurrency" ColumnName="DefaultCurrency" />
                 <ScalarProperty Name="VAT" ColumnName="VAT" />
@@ -3760,7 +3812,6 @@
           <EntitySetMapping Name="Quotations">
             <EntityTypeMapping TypeName="IMEModel.Quotation">
               <MappingFragment StoreEntitySet="Quotation">
-                <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="CurrType" ColumnName="CurrType" />
                 <ScalarProperty Name="RFQNo" ColumnName="RFQNo" />
                 <ScalarProperty Name="QuotationNo" ColumnName="QuotationNo" />

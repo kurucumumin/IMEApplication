@@ -16,6 +16,7 @@ namespace LoginForm.DataSet
     {
         public int ID { get; set; }
         public Nullable<System.DateTime> SD_Date { get; set; }
+        public Nullable<System.DateTime> SP_Date { get; set; }
         public Nullable<System.DateTime> SDP_Date { get; set; }
         public Nullable<System.DateTime> ER_Date { get; set; }
         public Nullable<System.DateTime> OnSale_Date { get; set; }

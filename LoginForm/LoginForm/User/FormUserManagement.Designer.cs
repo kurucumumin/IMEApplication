@@ -52,8 +52,8 @@
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.chcActive = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.numericDiscountRate = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtDiscountRate = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.numericFactor = new System.Windows.Forms.NumericUpDown();
@@ -76,6 +76,7 @@
             this.panel1.SuspendLayout();
             this.gbUserInfo.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericDiscountRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericFactor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericMinMargin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.authRoleBindingSource)).BeginInit();
@@ -258,8 +259,8 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Window;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.numericDiscountRate);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.txtDiscountRate);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.numericFactor);
@@ -270,15 +271,27 @@
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
+            // numericDiscountRate
+            // 
+            this.numericDiscountRate.DecimalPlaces = 2;
+            this.numericDiscountRate.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            resources.ApplyResources(this.numericDiscountRate, "numericDiscountRate");
+            this.numericDiscountRate.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+            this.numericDiscountRate.Name = "numericDiscountRate";
+            this.numericDiscountRate.ValueChanged += new System.EventHandler(this.numericDiscountRate_ValueChanged);
+            // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            // 
-            // txtDiscountRate
-            // 
-            resources.ApplyResources(this.txtDiscountRate, "txtDiscountRate");
-            this.txtDiscountRate.Name = "txtDiscountRate";
             // 
             // label2
             // 
@@ -300,6 +313,7 @@
             131072});
             resources.ApplyResources(this.numericFactor, "numericFactor");
             this.numericFactor.Name = "numericFactor";
+            this.numericFactor.ValueChanged += new System.EventHandler(this.numericFactor_ValueChanged);
             // 
             // numericMinMargin
             // 
@@ -377,6 +391,7 @@
             this.gbUserInfo.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericDiscountRate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericFactor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericMinMargin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.authRoleBindingSource)).EndInit();
@@ -424,6 +439,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtDiscountRate;
+        private System.Windows.Forms.NumericUpDown numericDiscountRate;
     }
 }

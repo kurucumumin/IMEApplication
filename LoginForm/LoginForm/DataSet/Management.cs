@@ -19,5 +19,6 @@ namespace LoginForm.DataSet
         public Nullable<decimal> VAT { get; set; }
         public string DefaultCurrency { get; set; }
         public string DefaultCurrencyType { get; set; }
+        public decimal Factor { get; set; }
     }
 }
