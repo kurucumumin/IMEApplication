@@ -18,6 +18,13 @@ namespace LoginForm.CustomControls
         {
             txtLowMarginLimit.Text = Convert.ToString(m.LowMarginLimit);
             txtVAT.Text = Convert.ToString(m.VAT);
+            
+            cbCurrency.DataSource = new IMEEntities().Rates.Where(r => r.rate_date == DateTime.Today).Select(type => type.CurType).ToList();
+
+            cbCurrency.SelectedItem = m.DefaultCurrency;
+
+            cbCurrencyType.SelectedItem = m.DefaultCurrencyType;
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -28,6 +35,8 @@ namespace LoginForm.CustomControls
                 Management management = IME.Managements.First();
                 management.LowMarginLimit = Convert.ToDecimal(txtLowMarginLimit.Text);
                 management.VAT = Convert.ToDecimal(txtVAT.Text);
+                management.DefaultCurrency = cbCurrency.SelectedItem as string;
+                management.DefaultCurrencyType = cbCurrencyType.SelectedItem as string;
                 IME.SaveChanges();
 
                 MessageBox.Show("Changes Saved");

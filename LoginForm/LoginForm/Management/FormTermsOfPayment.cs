@@ -100,6 +100,7 @@ namespace LoginForm.ManagementModule
                 {
                     MessageBox.Show("Count must be an integer number.");
                 }
+                editMode = false;
             }
             
         }
@@ -116,6 +117,7 @@ namespace LoginForm.ManagementModule
 
         private void changeMode(bool isOpen)
         {
+
             lbPaymentList.Enabled = !isOpen;
             txtNote.ReadOnly = !isOpen;
             btnNew.Enabled = !isOpen;
@@ -161,6 +163,7 @@ namespace LoginForm.ManagementModule
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            editMode = false;
             changeMode(false);
             lbPaymentList.SelectedItem = selectedTerm;
             populateForm(selectedTerm);
