@@ -34,7 +34,7 @@ namespace LoginForm.DataSet
         public string webadress { get; set; }
         public Nullable<int> payment_termID { get; set; }
         public Nullable<int> representaryID { get; set; }
-        public Nullable<int> customerAccountantNoteID { get; set; }
+        public Nullable<int> customerNoteID { get; set; }
         public Nullable<int> representary2ID { get; set; }
         public Nullable<int> accountrepresentaryID { get; set; }
         public Nullable<int> isactive { get; set; }

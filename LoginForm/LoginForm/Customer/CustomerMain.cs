@@ -785,85 +785,84 @@ namespace LoginForm
             if (btnCreate.Text == "CREATE")
             {
 
-                    itemsEnableTrue();
-                    itemsClear();
-                    rb_active.Checked = true;
-                    int represantative_id = Utils.getCurrentUser().WorkerID;
-                    Represantative1.DataSource = IME.Workers.Where(a => a.WorkerID == represantative_id).ToList();
-                    Represantative1.DisplayMember = "NameLastName";
+                itemsEnableTrue();
+                itemsClear();
+                rb_active.Checked = true;
+                int represantative_id = Utils.getCurrentUser().WorkerID;
+                Represantative1.DataSource = IME.Workers.Where(a => a.WorkerID == represantative_id).ToList();
+                Represantative1.DisplayMember = "NameLastName";
 
-                    #region ComboboxChoose
-                    MainCategory.Text = (ComboboxString);
-                    SubCategory.Text = (ComboboxString);
-                    // Represantative1.Text = (ComboboxString);
-                    Represantative2.Text = (ComboboxString);
-                    Capital.Text = (ComboboxString);
-                    cbMainContact.Text = (ComboboxString);
-                    AccountRepresentary.Text = (ComboboxString);
-                    TermsofPayments.Text = (ComboboxString);
-                    PaymentMethod.Text = (ComboboxString);
-                    QuoCurrencyName.Text = (ComboboxString);
-                    QuoCurrencyType.Text = (ComboboxString);
-                    InvCurrencyName.Text = (ComboboxString);
-                    InvCurrencyType.Text = (ComboboxString);
-                    AddressType.Text = (ComboboxString);
-                    cbCountry.Text = (ComboboxString);
-                    cbCity.Text = (ComboboxString);
-                    cbTown.Text = (ComboboxString);
-                    ContactType.Text = (ComboboxString);
-                    ContactDepartment.Text = (ComboboxString);
-                    ContactTitle.Text = (ComboboxString);
-                    CommunicationLanguage.Text = (ComboboxString);
-                    #endregion
+                #region ComboboxChoose
+                MainCategory.Text = (ComboboxString);
+                SubCategory.Text = (ComboboxString);
+                // Represantative1.Text = (ComboboxString);
+                Represantative2.Text = (ComboboxString);
+                Capital.Text = (ComboboxString);
+                cbMainContact.Text = (ComboboxString);
+                AccountRepresentary.Text = (ComboboxString);
+                TermsofPayments.Text = (ComboboxString);
+                PaymentMethod.Text = (ComboboxString);
+                QuoCurrencyName.Text = (ComboboxString);
+                QuoCurrencyType.Text = (ComboboxString);
+                InvCurrencyName.Text = (ComboboxString);
+                InvCurrencyType.Text = (ComboboxString);
+                AddressType.Text = (ComboboxString);
+                cbCountry.Text = (ComboboxString);
+                cbCity.Text = (ComboboxString);
+                cbTown.Text = (ComboboxString);
+                ContactType.Text = (ComboboxString);
+                ContactDepartment.Text = (ComboboxString);
+                ContactTitle.Text = (ComboboxString);
+                CommunicationLanguage.Text = (ComboboxString);
+                #endregion
 
-                    //for new customerCode
-                    string custmrcode = IME.Customers.OrderByDescending(a => a.ID).FirstOrDefault().ID;
-                    string custmrnumbers = string.Empty;
-                    string newcustomercodenumbers = "";
-                    string newcustomercodezeros = "";
-                    string newcustomercodechars = "";
-                    for (int i = 0; i < custmrcode.Length; i++)
+                //for new customerCode
+                string custmrcode = IME.Customers.OrderByDescending(a => a.ID).FirstOrDefault().ID;
+                string custmrnumbers = string.Empty;
+                string newcustomercodenumbers = "";
+                string newcustomercodezeros = "";
+                string newcustomercodechars = "";
+                for (int i = 0; i < custmrcode.Length; i++)
+                {
+                    if (Char.IsDigit(custmrcode[i]))
                     {
-                        if (Char.IsDigit(custmrcode[i]))
-                        {
-                            if (custmrcode[i] == '0') { newcustomercodezeros += custmrcode[i]; } else { newcustomercodenumbers += custmrcode[i]; }
-                        }
-                        else
-                        {
-                            newcustomercodechars += custmrcode[i];
-                        }
+                        if (custmrcode[i] == '0') { newcustomercodezeros += custmrcode[i]; } else { newcustomercodenumbers += custmrcode[i]; }
                     }
-                    //Aynı ID ile customer oluşturmasını önleyen kısım
-                    while (IME.Customers.Where(a => a.ID == custmrcode).Count() > 0)
+                    else
                     {
-                        newcustomercodenumbers = (Int32.Parse(newcustomercodenumbers) + 1).ToString();
-                        custmrcode = newcustomercodechars + newcustomercodezeros + newcustomercodenumbers;
+                        newcustomercodechars += custmrcode[i];
                     }
-                    //              
-                    ContactList.DataSource = null;
-                    CustomerCode.Text = custmrcode;
-                    Customer newCustomer = new Customer();
-                    newCustomer.ID = CustomerCode.Text;
-                    IME.Customers.Add(newCustomer);
-                    IME.SaveChanges();
-                    btnCreate.Text = "SAVE";
-                    btnUpdate.Text = "CANCEL";
-                    AdressList.Enabled = false;
-                    AdressList.DataSource = null;
-                    AdressAdd.Enabled = true;
-                    btnContactAdd.Enabled = true;
-                
+                }
+                //Aynı ID ile customer oluşturmasını önleyen kısım
+                while (IME.Customers.Where(a => a.ID == custmrcode).Count() > 0)
+                {
+                    newcustomercodenumbers = (Int32.Parse(newcustomercodenumbers) + 1).ToString();
+                    custmrcode = newcustomercodechars + newcustomercodezeros + newcustomercodenumbers;
+                }
+                //              
+                ContactList.DataSource = null;
+                CustomerCode.Text = custmrcode;
+                Customer newCustomer = new Customer();
+                newCustomer.ID = CustomerCode.Text;
+                IME.Customers.Add(newCustomer);
+                IME.SaveChanges();
+                btnCreate.Text = "SAVE";
+                btnUpdate.Text = "CANCEL";
+                AdressList.Enabled = false;
+                AdressList.DataSource = null;
+                AdressAdd.Enabled = true;
+                btnContactAdd.Enabled = true;
+
             }
             else
             {
                 if (MainCategory.Text == ComboboxString || SubCategory.Text == ComboboxString || Represantative2.Text == ComboboxString || Capital.Text == ComboboxString || cbMainContact.Text == ComboboxString || AccountRepresentary.Text == ComboboxString || TermsofPayments.Text == ComboboxString || PaymentMethod.Text == ComboboxString || QuoCurrencyName.Text == ComboboxString || QuoCurrencyType.Text == ComboboxString || InvCurrencyName.Text == ComboboxString || InvCurrencyType.Text == ComboboxString || AddressType.Text == ComboboxString || cbCountry.Text == ComboboxString || cbCity.Text == ComboboxString || cbTown.Text == ComboboxString || ContactType.Text == ComboboxString || ContactDepartment.Text == ComboboxString || ContactTitle.Text == ComboboxString || CommunicationLanguage.Text == ComboboxString)
                 {
                     MessageBox.Show("Combobox is empty", "WARNİNG", MessageBoxButtons.OK);
-                    
+
                 }
                 else
                 {
-<<<<<<< HEAD
                     btnCreate.Text = "CREATE";
                     btnUpdate.Text = "UPDATE";
 
@@ -931,19 +930,6 @@ namespace LoginForm
                         Note n = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault();
                         n.Note_name = AccountingNotes.Text;
                         IME.SaveChanges();
-=======
-                    if (c.customerAccountantNoteID != null)
-                    {
-                        Note note1 = new Note();
-                        note1 = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault();
-                        note1.Note_name = CompanyNotes.Text;
-                    }
-                    else
-                    {
-                        c.Note.Note_name = CompanyNotes.Text;
-                        IME.Notes.Add(c.Note);
-                        c.customerAccountantNoteID = c.Note.ID;
->>>>>>> Cem-@Develop
                     }
                     IME.SaveChanges();
 
@@ -954,6 +940,7 @@ namespace LoginForm
 
             }
         }
+
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (btnUpdate.Text == "UPDATE")

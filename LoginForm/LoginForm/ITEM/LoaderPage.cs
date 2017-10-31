@@ -32,43 +32,92 @@ namespace LoginForm.Item
             {
                 #region LoaderPage
                 case "SuperDisk":
-                    txtReader.SuperDiskRead();
+                    if (txtReader.SuperDiskRead() == 1)
+                    {
+                        LoaderDate ld = new LoaderDate();
+                        ld.SD_Date = DTPLoaderDate.Value;
+                        IME.LoaderDates.Add(ld);
+                        IME.SaveChanges();
+                    }
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = IME.SuperDisks.Take(10).ToList();
                     break;
                 case "SuperDiskP":
-                    txtReader.SuperDiskPRead();
+                    if (txtReader.SuperDiskPRead() == 1)
+                    {
+                        LoaderDate ld = new LoaderDate();
+                        ld.SDP_Date = DTPLoaderDate.Value;
+                        IME.LoaderDates.Add(ld);
+                        IME.SaveChanges();
+                    }
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = IME.SuperDiskPs.Take(10).ToList();
 
                     break;
                 case "SlidingPrice":
-                    txtReader.SlidingPriceRead();
+                    if (txtReader.SlidingPriceRead() == 1)
+                    {
+                        //LoaderDate ld = new LoaderDate();
+                        //ld = DTPLoaderDate.Value;
+                        //IME.LoaderDates.Add(ld);
+                        //IME.SaveChanges();
+                    }
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = IME.SlidingPrices.Take(10).ToList();
                     break;
                 case "OnSale":
+                    if (txtReader.SuperDiskRead() == 1)
+                    {
+                        LoaderDate ld = new LoaderDate();
+                        ld.SDP_Date = DTPLoaderDate.Value;
+                        IME.LoaderDates.Add(ld);
+                        IME.SaveChanges();
+                    }
                     txtReader.SuperDiskRead();
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = IME.SuperDisks.Take(10).ToList();
                     break;
                 case "DiscontinuedList":
-                    txtReader.DiscontinuedListRead();
+                    if (txtReader.DiscontinuedListRead() == 1)
+                    {
+                        LoaderDate ld = new LoaderDate();
+                        ld.DiscontinuedList_Date = DTPLoaderDate.Value;
+                        IME.LoaderDates.Add(ld);
+                        IME.SaveChanges();
+                    }
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = IME.DailyDiscontinueds.Take(10).ToList();
                     break;
                 case "DualUse":
-                    txtReader.DualUsedRead();
+                    if (txtReader.DualUsedRead() == 1)
+                    {
+                        LoaderDate ld = new LoaderDate();
+                        ld.DualUsed_Date = DTPLoaderDate.Value;
+                        IME.LoaderDates.Add(ld);
+                        IME.SaveChanges();
+                    }
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = IME.DualUses.Take(10).ToList();
                     break;
                 case "Hazardous":
-                    txtReader.HazardousRead();
+                    if (txtReader.HazardousRead() == 1)
+                    {
+                        LoaderDate ld = new LoaderDate();
+                        ld.Hazardous_Date = DTPLoaderDate.Value;
+                        IME.LoaderDates.Add(ld);
+                        IME.SaveChanges();
+                    }
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = IME.Hazardous.Take(10).ToList();
                     break;
                 case "ExtendedRange":
-                    txtReader.EntendedRangeRead();
+                    if (txtReader.EntendedRangeRead() == 1)
+                    {
+                        LoaderDate ld = new LoaderDate();
+                        ld.ER_Date = DTPLoaderDate.Value;
+                        IME.LoaderDates.Add(ld);
+                        IME.SaveChanges();
+                    }
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = IME.ExtendedRanges.Take(10).ToList();
                     break;
@@ -78,7 +127,13 @@ namespace LoginForm.Item
                     //dataGridView1.DataSource = IME.RSProes.Take(10).ToList();
                     break;
                 case "RSPro":
-                    txtReader.RSProRead();
+                    if (txtReader.RSProRead() == 1)
+                    {
+                        LoaderDate ld = new LoaderDate();
+                        ld.RSPro_Date = DTPLoaderDate.Value;
+                        IME.LoaderDates.Add(ld);
+                        IME.SaveChanges();
+                    }
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = IME.RSProes.Take(10).ToList();
                     break;
@@ -93,6 +148,11 @@ namespace LoginForm.Item
         private void LoaderPage_Load(object sender, EventArgs e)
         {
             this.Text = txtReader.LoaderType;
+        }
+
+        private void DTPLoaderDate_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

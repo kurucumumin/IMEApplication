@@ -113,7 +113,7 @@
             this.lblsubtotal = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
             this.label35 = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnExcelExport = new System.Windows.Forms.Button();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.txtTotalMargin = new System.Windows.Forms.TextBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
@@ -155,6 +155,7 @@
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.txtSupersectionName = new System.Windows.Forms.TextBox();
             this.txtCofO = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.txtManufacturer = new System.Windows.Forms.TextBox();
             this.txtCCCN = new System.Windows.Forms.TextBox();
             this.textBox17 = new System.Windows.Forms.TextBox();
@@ -222,6 +223,7 @@
             this.label33 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
@@ -287,8 +289,6 @@
             this.cbSMethod = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label41 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -998,7 +998,7 @@
             this.panel2.Controls.Add(this.lblsubtotal);
             this.panel2.Controls.Add(this.button7);
             this.panel2.Controls.Add(this.label35);
-            this.panel2.Controls.Add(this.button8);
+            this.panel2.Controls.Add(this.btnExcelExport);
             this.panel2.Controls.Add(this.textBox11);
             this.panel2.Controls.Add(this.txtTotalMargin);
             this.panel2.Controls.Add(this.textBox10);
@@ -1037,14 +1037,15 @@
             this.label35.TabIndex = 7;
             this.label35.Text = "Subtotal";
             // 
-            // button8
+            // btnExcelExport
             // 
-            this.button8.Location = new System.Drawing.Point(141, 11);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(113, 23);
-            this.button8.TabIndex = 3;
-            this.button8.Text = "Export To Excel";
-            this.button8.UseVisualStyleBackColor = true;
+            this.btnExcelExport.Location = new System.Drawing.Point(141, 11);
+            this.btnExcelExport.Name = "btnExcelExport";
+            this.btnExcelExport.Size = new System.Drawing.Size(113, 23);
+            this.btnExcelExport.TabIndex = 3;
+            this.btnExcelExport.Text = "Export To Excel";
+            this.btnExcelExport.UseVisualStyleBackColor = true;
+            this.btnExcelExport.Click += new System.EventHandler(this.btnExcelExport_Click);
             // 
             // textBox11
             // 
@@ -1559,6 +1560,15 @@
             this.txtCofO.ReadOnly = true;
             this.txtCofO.Size = new System.Drawing.Size(36, 20);
             this.txtCofO.TabIndex = 503;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.textBox1.Location = new System.Drawing.Point(325, 4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(309, 20);
+            this.textBox1.TabIndex = 504;
             // 
             // txtManufacturer
             // 
@@ -2179,6 +2189,17 @@
             this.label23.TabIndex = 486;
             this.label23.Text = "IME 02";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.label41.Location = new System.Drawing.Point(263, 8);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(53, 13);
+            this.label41.TabIndex = 487;
+            this.label41.Text = "Item Note";
+            this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label18
             // 
@@ -2848,26 +2869,6 @@
             this.textBox2.Size = new System.Drawing.Size(404, 36);
             this.textBox2.TabIndex = 0;
             // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox1.Location = new System.Drawing.Point(325, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(309, 20);
-            this.textBox1.TabIndex = 504;
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.label41.Location = new System.Drawing.Point(263, 8);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(53, 13);
-            this.label41.TabIndex = 487;
-            this.label41.Text = "Item Note";
-            this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // FormQuotationAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2960,7 +2961,7 @@
         private System.Windows.Forms.Label lblsubtotal;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnExcelExport;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.TextBox txtTotalMargin;
         private System.Windows.Forms.TextBox textBox10;

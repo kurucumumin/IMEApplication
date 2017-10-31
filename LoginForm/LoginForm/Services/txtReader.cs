@@ -17,7 +17,7 @@ namespace LoginForm
     {
         public static string LoaderType;
 
-        public static void SuperDiskRead()
+        public static int SuperDiskRead()
         {
             #region Superdisk
             int a = 1;
@@ -28,7 +28,7 @@ namespace LoginForm
             openFileDialog1.Filter = "txt files (*.txt)|*.txt";
             DialogResult result1 = openFileDialog1.ShowDialog();
 
-            int UptCounter=0;
+            int UptCounter = 0;
             int AddedCounter = 0;
             if (result1 == DialogResult.OK) // Test result.
             {
@@ -285,15 +285,21 @@ namespace LoginForm
                             a++;
                             Superdiskitems = new SuperDisk();
                         }
+                        MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
+                        return 1;
                     }
-                    else { MessageBox.Show("Please Choose Correct File"); }
+                    else
+                    {
+                        MessageBox.Show("Please Choose Correct File");
+                        return 0;
+                    }
                 }
-                catch (Exception ex) { MessageBox.Show(ex.Message); MessageBox.Show(a.ToString()); }
-                MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
+                catch (Exception ex) { MessageBox.Show(ex.Message); MessageBox.Show(a.ToString()); return 0; }
                 #endregion
             }
+            return 0;
         }
-        public static void SuperDiskPRead()
+        public static int SuperDiskPRead()
         {
             #region SuperdiskP
             IMEEntities IME = new IMEEntities();
@@ -553,23 +559,27 @@ namespace LoginForm
                             Superdiskitems = new SuperDiskP();
 
                         }
+                        MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
+                        return 1;
                     }
                     else
-                    { MessageBox.Show("Please Choose Correct File1"); }
+                    { MessageBox.Show("Please Choose Correct File1"); return 0; }
 
                 }
-                catch (Exception ex) { MessageBox.Show(ex.Message); }
-                MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
+                catch (Exception ex) { MessageBox.Show(ex.Message); return 0; }
+
                 #endregion
+
             }
+            return 0;
         }
-        public static void SlidingPriceRead()
+        public static int SlidingPriceRead()
         {
             #region SlidingPrice
             IMEEntities IME = new IMEEntities();
             SlidingPrice Superdiskitems = new SlidingPrice();
             int AddedCounter = 0;
-            int UptCounter = 0 ;
+            int UptCounter = 0;
             //Show the dialog and get result.
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Filter = "txt files (*.txt)|*.txt";
@@ -625,7 +635,8 @@ namespace LoginForm
                                     if (word[i] != "")
                                     {
                                         Superdiskitems.BrandID = word[i];
-                                    }break;
+                                    }
+                                    break;
                                 case "Brandname":
                                     if (word[i] != "")
                                     {
@@ -796,15 +807,16 @@ namespace LoginForm
                         Superdiskitems = new SlidingPrice();
                     }
 
-
+                    MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
+                    return 1;
                 }
-                catch { MessageBox.Show("Please Choose Correct File"); }
-                MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
+                catch { MessageBox.Show("Please Choose Correct File"); return 0; }
+
                 #endregion
             }
+            return 0;
         }
-
-        public static void DiscontinuedListRead()
+        public static int DiscontinuedListRead()
         {
             IMEEntities IME = new IMEEntities();
 
@@ -851,13 +863,15 @@ namespace LoginForm
                         ArticleNumb = ws.Cells[ColumnNumber, 1].Text;
                     }
                     MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
+                    return 1;
                     #endregion
                 }
-                catch { MessageBox.Show("This document does not proper to load here"); }
+                catch { MessageBox.Show("This document does not proper to load here"); return 0; }
             }
+            return 0;
 
         }
-        public static void DualUsedRead()
+        public static int DualUsedRead()
         {
             #region DualUsedList
             IMEEntities IME = new IMEEntities();
@@ -903,13 +917,14 @@ namespace LoginForm
                         ArticleNumb = ws.Cells[ColumnNumber, 1].Text;
                     }
                     MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
+                    return 1;
                     #endregion
                 }
-                catch { MessageBox.Show("This document does not proper to load here"); }
+                catch { MessageBox.Show("This document does not proper to load here"); return 0; }
             }
-
+            return 0;
         }
-        public static void HazardousRead()
+        public static int HazardousRead()
         {
             #region HazardousRead
             IMEEntities IME = new IMEEntities();
@@ -957,14 +972,14 @@ namespace LoginForm
                         ArticleNumb = ws.Cells[ColumnNumber, 3].Text;
                     }
                     MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
+                    return 1;
                     #endregion
                 }
-                catch { MessageBox.Show("This document does not proper to load here"); }
+                catch { MessageBox.Show("This document does not proper to load here"); return 0; }
             }
-
+            return 0;
         }
-
-        public static void EntendedRangeRead()
+        public static int EntendedRangeRead()
         {
             #region EntendedRangeRead
             IMEEntities IME = new IMEEntities();
@@ -1135,13 +1150,13 @@ namespace LoginForm
                     }
                     MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
                     #endregion
+                    return 1;
                 }
-                catch { MessageBox.Show("This document does not proper to load here"); }
+                catch { MessageBox.Show("This document does not proper to load here"); return 0; }
             }
-
+            return 0;
         }
-
-        public static void RSProRead()
+        public static int RSProRead()
         {
             #region RSPro
             IMEEntities IME = new IMEEntities();
@@ -1156,19 +1171,19 @@ namespace LoginForm
                 try
                 {
                     Excel.Application excel = new Excel.Application();
-                Workbook wb = excel.Workbooks.Open(openFileDialog1.FileName);
-                Worksheet ws = wb.Worksheets[1];
-                int ColumnNumber = 2;
-                //verilerin bşaldığı yeri bulan kısım
-                while (ws.Cells[ColumnNumber - 1, 1].Text == "") { ColumnNumber++; }
-                //
-                //row sayısını bulan code
-                int TotalRowNumber = ws.UsedRange.Rows.Count;
-                List<string> Columns = new List<string>();
-                int RowNumber = 1;
-                //column ların isimlerini alıyor
-                //COLUMNS
-               
+                    Workbook wb = excel.Workbooks.Open(openFileDialog1.FileName);
+                    Worksheet ws = wb.Worksheets[1];
+                    int ColumnNumber = 2;
+                    //verilerin bşaldığı yeri bulan kısım
+                    while (ws.Cells[ColumnNumber - 1, 1].Text == "") { ColumnNumber++; }
+                    //
+                    //row sayısını bulan code
+                    int TotalRowNumber = ws.UsedRange.Rows.Count;
+                    List<string> Columns = new List<string>();
+                    int RowNumber = 1;
+                    //column ların isimlerini alıyor
+                    //COLUMNS
+
                     while (ws.Cells[ColumnNumber - 1, RowNumber].Text != "" || ws.Cells[ColumnNumber, RowNumber].Text != "")
                     {
                         if (RowNumber < 2) { Columns.Add(ws.Cells[ColumnNumber - 1, RowNumber].Text); } else { Columns.Add(ws.Cells[ColumnNumber - 2, RowNumber].Text); }
@@ -1237,12 +1252,62 @@ namespace LoginForm
 
                         MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
                         #endregion
+                        return 1;
                     }
                 }
-                catch { MessageBox.Show("This document does not proper to load here"); }
-                 }
+                catch { MessageBox.Show("This document does not proper to load here"); return 0; }
+            }
+            return 0;
+        }
+    }
+    class QuotationExcelExport
+    {
+        public static void Export(DataGridView dg,string quotationNo)
+        {
+            #region Copy All Items
+            dg.SelectAll();
+            DataObject dataObj = dg.GetClipboardContent();
+            if (dataObj != null)
+                Clipboard.SetDataObject(dataObj);
+            #endregion
+
+            #region ExcelExport
+            Microsoft.Office.Interop.Excel.Application xlexcel;
+            Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
+            Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
+            xlexcel = new Excel.Application();
+            xlexcel.Visible = true;
+            xlWorkBook = xlexcel.Workbooks.Add(misValue);
+            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            for (int j = 0; j <= dg.ColumnCount - 1; j++)
+            {
+                xlWorkSheet.Cells[1, j + 1] = dg.Columns[j].Name;
+            }
+            for (int i = 0; i <= dg.RowCount - 2; i++)
+            {
+                for (int j = 0; j <= dg.ColumnCount - 1; j++)
+                {
+                    if (dg.Rows[i].Cells[j].Value != null) { xlWorkSheet.Cells[i + 2, j + 1] = dg.Rows[i].Cells[j].Value.ToString(); }
+                }
+            }
+            SaveFileDialog savefile = new SaveFileDialog();
+            savefile.Filter = "Excel Files (*.xls)|*.xls|All files (*.xls)|*.xls";
+            savefile.FileName = quotationNo;
+            if (savefile.ShowDialog()==DialogResult.OK)
+            {
+                string path = savefile.FileName;
+                //@"C:\Users\PC\Desktop\test2.xls"
+                xlWorkBook.SaveAs(@path, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+
             }
 
-        }
 
+                    //xlWorkBook.Close(true, misValue, misValue);
+                    //xlexcel.Quit();
+
+            #endregion
+
+        }
     }
+}

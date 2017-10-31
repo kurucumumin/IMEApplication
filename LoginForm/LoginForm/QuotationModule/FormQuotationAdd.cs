@@ -439,24 +439,16 @@ namespace LoginForm.QuotationModule
                         }
                         //TOTAL ve UPIME belirleniyor
                         //dataGridView3.Rows[rowindex].Cells["dgUPIME"].Value = (price / Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
-                        
                         dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = (price / Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
                         discResult = decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value.ToString());
                         dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value.ToString())).ToString();
                         dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = String.Format("{0:0.0000}", price).ToString();
-
-
-
-
                         if (dgQuotationAddedItems.Rows[rowindex].Cells["dgDisc"].Value != null)
                         {
                             dgQuotationAddedItems.Rows[rowindex].Cells["dgDisc"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgDisc"].Value.ToString())).ToString();
                             discResult = (discResult - (discResult * decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgDisc"].Value.ToString()) / 100));
                         }
                         dgQuotationAddedItems.Rows[rowindex].Cells["dgUCUPCurr"].Value = String.Format("{0:0.0000}", discResult).ToString();
-
-                        
-                        
                         ChangeCurr(rowindex);
                         GetMargin();
                         dgQuotationAddedItems.Rows[rowindex].Cells["dgMargin"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgMargin"].Value.ToString())).ToString();
@@ -527,7 +519,7 @@ namespace LoginForm.QuotationModule
                 {
                     if (dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value != null)
                     {
-                        dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString())) / CurrValue))) * 100).ToString("G29");
+                        dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
                     }
                 }
                 catch { }
@@ -968,18 +960,28 @@ namespace LoginForm.QuotationModule
         {
             for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
             {
-                GetLandingCost(i);
-                GetQuotationQuantity(i);
-                try
+                if (dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value != null)
                 {
-                    #region Get Margin
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value != null)
+
+
+                    GetLandingCost(i);
+                    if (Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString()) < Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgCost"].Value.ToString()))
                     {
-                        dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString())) / CurrValue))) * 100).ToString("G29");
+                        dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value = dgQuotationAddedItems.Rows[i].Cells["dgCost"].Value.ToString();
                     }
-                    #endregion
+                    //GetQuotationQuantity(i);
+                    GetAllMargin();
+                    try
+                    {
+                        #region Get Margin
+                        if (dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value != null)
+                        {
+                            dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
+                        }
+                        #endregion
+                    }
+                    catch { }
                 }
-                catch { }
             }
         }
 
@@ -2037,6 +2039,11 @@ namespace LoginForm.QuotationModule
 
 
 
+        }
+
+        private void btnExcelExport_Click(object sender, EventArgs e)
+        {
+            QuotationExcelExport.Export(dgQuotationAddedItems,txtQuotationNo.Text);
         }
     }
 }
