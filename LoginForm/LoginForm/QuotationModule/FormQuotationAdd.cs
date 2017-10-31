@@ -288,6 +288,8 @@ namespace LoginForm.QuotationModule
                                             ItemDetailsFiller(dgQuotationAddedItems.CurrentCell.Value.ToString());
                                             //LandingCost Calculation
                                             FillProductCodeItem();
+                                            dgQuotationAddedItems.CurrentRow.Cells["dgQty"].ReadOnly = false;
+
                                             #region DataGridClear
                                             dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value = null;
                                             dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgDisc"].Value = null;
@@ -324,6 +326,13 @@ namespace LoginForm.QuotationModule
                     #region Quantity
                     {
                         GetQuotationQuantity(dgQuotationAddedItems.CurrentCell.RowIndex);
+
+                        dgQuotationAddedItems.CurrentRow.Cells["dgUCUPCurr"].ReadOnly = false;
+                        dgQuotationAddedItems.CurrentRow.Cells["dgTargetUP"].ReadOnly = false;
+                        dgQuotationAddedItems.CurrentRow.Cells["dgCompetitor"].ReadOnly = false;
+                        dgQuotationAddedItems.CurrentRow.Cells["dgDelivery"].ReadOnly = false;
+                        dgQuotationAddedItems.CurrentRow.Cells["dgCustStkCode"].ReadOnly = false;
+                        dgQuotationAddedItems.CurrentRow.Cells["dgCustDescription"].ReadOnly = false;
                     }
                     //LOW MARGIN
                     GetMarginMark();
