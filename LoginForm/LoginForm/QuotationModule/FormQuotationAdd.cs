@@ -26,7 +26,7 @@ namespace LoginForm.QuotationModule
         Rate curr = new Rate();
         Decimal CurrValue = 1;
         Decimal CurrValue1 = 1;
-        decimal factor = 1;
+        decimal Currfactor = 1;
         decimal CurrentDis;
         decimal LowMarginLimit;
         decimal CurrentExraChange;
@@ -57,9 +57,11 @@ namespace LoginForm.QuotationModule
             //cbWorkers.DisplayMember = "cw_name";
             //cbWorkers.ValueMember = "ID";
             CustomerCode.Enabled = false;
+            txtCustomerName.Enabled = false;
             btnSave.Enabled = false;
             
             modifyQuotation(q1);
+            fillCustomer();
         }
 
         private void QuotationForm_Load(object sender, EventArgs e)
@@ -119,7 +121,7 @@ namespace LoginForm.QuotationModule
             var c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
             if (c != null)
             {
-
+                txtCustomerName.Text = c.c_name;
                 cbCurrency.SelectedIndex = cbCurrency.FindStringExact(c.CurrNameQuo);
                 cbCurrType.SelectedIndex = cbCurrType.FindStringExact(c.CurrTypeQuo);
                 cbWorkers.SelectedIndex = cbWorkers.FindStringExact(IME.CustomerWorkers.Where(a => a.ID == c.MainContactID).FirstOrDefault().cw_name);
@@ -1805,9 +1807,9 @@ namespace LoginForm.QuotationModule
             if (dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value != null)
             {
 
-                dgQuotationAddedItems.Rows[rowindex].Cells["dgUCUPCurr"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUCUPCurr"].Value.ToString())) / factor).ToString();
-                dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value.ToString())) / factor).ToString();
-                dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())) / factor).ToString();
+                dgQuotationAddedItems.Rows[rowindex].Cells["dgUCUPCurr"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUCUPCurr"].Value.ToString())) / Currfactor).ToString();
+                dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value.ToString())) / Currfactor).ToString();
+                dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())) / Currfactor).ToString();
                 var st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
                 if (st != null)
                 {
@@ -1821,10 +1823,37 @@ namespace LoginForm.QuotationModule
 
         }
 
+        private string GetCurrencySign()
+        {
+            switch (cbCurrency.Text)
+            {
+                case "USD":
+                        return "$";
+                    break;
+                case "GBP":
+                    return "£";
+                    break;
+                case "EUR":
+                    return "€";
+                    break;
+            }
+            return "£";
+        }
+
         private void ChangeCurr()
         {
+            string currencySign;
+            lblWeb.Text = "Web (" + GetCurrencySign() + ")";
             decimal SubTotalTotal = 0;
-            if (CurrValue1 != Decimal.Parse(curr.RateBuy.ToString())) factor = CurrValue / CurrValue1;
+            if (CurrValue1 != Decimal.Parse(curr.RateBuy.ToString())) { Currfactor = CurrValue / CurrValue1; } else { Currfactor = 1; }
+            #region ChangeWebValues
+            if (txtWeb1.Text!="" && txtWeb1.Text != null) {
+                txtWeb1.Text = (Decimal.Parse(txtWeb1.Text) / Currfactor).ToString();
+                txtWeb2.Text = (Decimal.Parse(txtWeb2.Text) / Currfactor).ToString();
+                txtWeb3.Text = (Decimal.Parse(txtWeb3.Text) / Currfactor).ToString();
+                txtWeb4.Text = (Decimal.Parse(txtWeb4.Text) / Currfactor).ToString();
+                txtWeb5.Text = (Decimal.Parse(txtWeb5.Text) / Currfactor).ToString(); }
+            #endregion
             for (int i = 0; i < dgQuotationAddedItems.RowCount - 1; i++)
             {
                 try
@@ -1832,9 +1861,9 @@ namespace LoginForm.QuotationModule
                     #region Get Margin
                     if (dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value != null)
                     {
-                        dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString())) / factor).ToString();
-                        dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString())) / factor).ToString();
-                        dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString())) / factor).ToString();
+                        dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString())) / Currfactor).ToString();
+                        dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString())) / Currfactor).ToString();
+                        dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString())) / Currfactor).ToString();
                         var st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()))).FirstOrDefault();
                         SubTotal.Remove(st);
                         SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()), Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString())));

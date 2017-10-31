@@ -1293,6 +1293,7 @@ namespace LoginForm
             }
             SaveFileDialog savefile = new SaveFileDialog();
             savefile.Filter = "Excel Files (*.xls)|*.xls|All files (*.xls)|*.xls";
+            quotationNo= quotationNo.Replace("/", "-");
             savefile.FileName = quotationNo;
             if (savefile.ShowDialog()==DialogResult.OK)
             {
