@@ -252,7 +252,7 @@
             this.label47 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
-            this.label65 = new System.Windows.Forms.Label();
+            this.lblWeb = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
@@ -1156,6 +1156,7 @@
             // 
             // dtpDate
             // 
+            this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDate.Location = new System.Drawing.Point(274, 57);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(112, 20);
@@ -1521,7 +1522,7 @@
             this.tabItemDetails.Controls.Add(this.label47);
             this.tabItemDetails.Controls.Add(this.label48);
             this.tabItemDetails.Controls.Add(this.label49);
-            this.tabItemDetails.Controls.Add(this.label65);
+            this.tabItemDetails.Controls.Add(this.lblWeb);
             this.tabItemDetails.Controls.Add(this.label36);
             this.tabItemDetails.Controls.Add(this.label50);
             this.tabItemDetails.Controls.Add(this.label57);
@@ -2466,15 +2467,15 @@
             this.label49.Text = "Length";
             this.label49.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // label65
+            // lblWeb
             // 
-            this.label65.AutoSize = true;
-            this.label65.Location = new System.Drawing.Point(1001, 6);
-            this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(45, 13);
-            this.label65.TabIndex = 432;
-            this.label65.Text = "Web (£)";
-            this.label65.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblWeb.AutoSize = true;
+            this.lblWeb.Location = new System.Drawing.Point(1001, 6);
+            this.lblWeb.Name = "lblWeb";
+            this.lblWeb.Size = new System.Drawing.Size(45, 13);
+            this.lblWeb.TabIndex = 432;
+            this.lblWeb.Text = "Web (£)";
+            this.lblWeb.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label36
             // 
@@ -3096,7 +3097,7 @@
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.Label lblWeb;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.Label label57;
