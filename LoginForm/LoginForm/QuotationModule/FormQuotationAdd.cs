@@ -225,6 +225,7 @@ namespace LoginForm.QuotationModule
                     {
                      #region PRODUCT CODE
 
+
                         if (dgQuotationAddedItems.CurrentCell.Value != null)
                         {
                             if (dgQuotationAddedItems.CurrentCell.Value.ToString().Contains("-")) { dgQuotationAddedItems.CurrentCell.Value = dgQuotationAddedItems.CurrentCell.Value.ToString().Replace("-", string.Empty).ToString(); }
@@ -292,6 +293,7 @@ namespace LoginForm.QuotationModule
                                             dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUPIME"].Value = null;
                                             dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = null;
                                             dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotal"].Value = null;
+                                            
                                             CalculateSubTotal();
                                             txtSubstitutedBy.Text = null;
                                             #endregion
@@ -309,6 +311,8 @@ namespace LoginForm.QuotationModule
                         else
                         {
                             ItemDetailsClear();
+                            //dgQuotationAddedItems.Rows[dgQuotationAddedItems.].Cells["dgProductCode"].Selected
+                           
                         }
                     }
                     #endregion
@@ -902,7 +906,7 @@ namespace LoginForm.QuotationModule
 
         private void dgQuotationAddedItems_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[0].Value = (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 2].Cells[0].Value.ToString()) + 1).ToString();
+             dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[0].Value = (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 2].Cells[0].Value.ToString()) + 1).ToString();
 
         }
 
@@ -2033,11 +2037,6 @@ namespace LoginForm.QuotationModule
                 CustomerMain f = new CustomerMain(1, CustomerCode.Text);
                 f.Show();
             }
-
-
-
-
-
 
         }
 
