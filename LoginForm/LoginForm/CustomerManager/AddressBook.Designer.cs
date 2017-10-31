@@ -41,9 +41,9 @@
             this.cbCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCustomer.FormattingEnabled = true;
             this.cbCustomer.Location = new System.Drawing.Point(153, 16);
-            this.cbCustomer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbCustomer.Margin = new System.Windows.Forms.Padding(4);
             this.cbCustomer.Name = "cbCustomer";
-            this.cbCustomer.Size = new System.Drawing.Size(180, 26);
+            this.cbCustomer.Size = new System.Drawing.Size(180, 23);
             this.cbCustomer.TabIndex = 0;
             // 
             // cbAddressType
@@ -51,9 +51,9 @@
             this.cbAddressType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAddressType.FormattingEnabled = true;
             this.cbAddressType.Location = new System.Drawing.Point(153, 79);
-            this.cbAddressType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbAddressType.Margin = new System.Windows.Forms.Padding(4);
             this.cbAddressType.Name = "cbAddressType";
-            this.cbAddressType.Size = new System.Drawing.Size(180, 26);
+            this.cbAddressType.Size = new System.Drawing.Size(180, 23);
             this.cbAddressType.TabIndex = 1;
             // 
             // label1
@@ -62,7 +62,7 @@
             this.label1.Location = new System.Drawing.Point(15, 19);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 18);
+            this.label1.Size = new System.Drawing.Size(55, 15);
             this.label1.TabIndex = 3;
             this.label1.Text = "Category";
             // 
@@ -72,7 +72,7 @@
             this.label2.Location = new System.Drawing.Point(15, 82);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 18);
+            this.label2.Size = new System.Drawing.Size(75, 15);
             this.label2.TabIndex = 4;
             this.label2.Text = "Subcategory";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -97,7 +97,7 @@
             // 
             // AddressBook
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(626, 374);
             this.Controls.Add(this.button2);
@@ -107,9 +107,10 @@
             this.Controls.Add(this.cbAddressType);
             this.Controls.Add(this.cbCustomer);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddressBook";
             this.Text = "AddressBook";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AddressBook_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -134,6 +134,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FormQuotationItemSearch";
             this.Text = "FormQuotationItemSearch";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dgQuotationItemSearch)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

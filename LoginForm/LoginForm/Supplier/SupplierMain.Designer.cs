@@ -1262,6 +1262,7 @@ namespace LoginForm
             this.Name = "SupplierMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Supplier";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabgenel.ResumeLayout(false);
             this.tabinfo.ResumeLayout(false);

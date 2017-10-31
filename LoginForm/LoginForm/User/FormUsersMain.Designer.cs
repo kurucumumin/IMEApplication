@@ -196,7 +196,7 @@
             // 
             // FormUserMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(795, 673);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -205,6 +205,7 @@
             this.MinimumSize = new System.Drawing.Size(811, 712);
             this.Name = "FormUserMain";
             this.Text = "Users";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormRoles_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);

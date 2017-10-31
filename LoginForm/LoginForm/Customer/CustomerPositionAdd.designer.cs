@@ -103,6 +103,7 @@
             this.Controls.Add(this.label1);
             this.Name = "CustomerPositionAdd";
             this.Text = "TitleAdd";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.TitleAdd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -103,6 +103,7 @@
             this.Controls.Add(this.label1);
             this.Name = "SupplierPositionAdd";
             this.Text = "PositionAdd";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.SupplierPositionAdd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

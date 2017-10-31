@@ -205,7 +205,7 @@
             this.tab_company.Controls.Add(this.label1);
             this.tab_company.Location = new System.Drawing.Point(4, 25);
             this.tab_company.Name = "tab_company";
-            this.tab_company.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tab_company.Padding = new System.Windows.Forms.Padding(3);
             this.tab_company.Size = new System.Drawing.Size(696, 274);
             this.tab_company.TabIndex = 0;
             this.tab_company.Text = "Company Info";
@@ -241,7 +241,7 @@
             // btnAddSubcategory
             // 
             this.btnAddSubcategory.Location = new System.Drawing.Point(310, 141);
-            this.btnAddSubcategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddSubcategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddSubcategory.Name = "btnAddSubcategory";
             this.btnAddSubcategory.Size = new System.Drawing.Size(23, 21);
             this.btnAddSubcategory.TabIndex = 15;
@@ -251,7 +251,7 @@
             // btnAddMainCategory
             // 
             this.btnAddMainCategory.Location = new System.Drawing.Point(310, 100);
-            this.btnAddMainCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddMainCategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddMainCategory.Name = "btnAddMainCategory";
             this.btnAddMainCategory.Size = new System.Drawing.Size(23, 21);
             this.btnAddMainCategory.TabIndex = 14;
@@ -523,7 +523,7 @@
             this.tab_account.Controls.Add(this.label21);
             this.tab_account.Location = new System.Drawing.Point(4, 25);
             this.tab_account.Name = "tab_account";
-            this.tab_account.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tab_account.Padding = new System.Windows.Forms.Padding(3);
             this.tab_account.Size = new System.Drawing.Size(696, 274);
             this.tab_account.TabIndex = 2;
             this.tab_account.Text = "Account";
@@ -783,7 +783,7 @@
             this.tab_adresses.Controls.Add(this.AdressCancel);
             this.tab_adresses.Location = new System.Drawing.Point(4, 25);
             this.tab_adresses.Name = "tab_adresses";
-            this.tab_adresses.Size = new System.Drawing.Size(696, 273);
+            this.tab_adresses.Size = new System.Drawing.Size(696, 274);
             this.tab_adresses.TabIndex = 3;
             this.tab_adresses.Text = "Adresses";
             this.tab_adresses.UseVisualStyleBackColor = true;
@@ -1400,9 +1400,9 @@
             this.tableMain.Controls.Add(this.panel1, 0, 1);
             this.tableMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableMain.Location = new System.Drawing.Point(0, 0);
-            this.tableMain.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableMain.Margin = new System.Windows.Forms.Padding(2);
             this.tableMain.Name = "tableMain";
-            this.tableMain.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tableMain.Padding = new System.Windows.Forms.Padding(4);
             this.tableMain.RowCount = 3;
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 309F));
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 61F));
@@ -1419,7 +1419,7 @@
             this.panel1.Controls.Add(this.Search);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(6, 315);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(706, 57);
             this.panel1.TabIndex = 2;
@@ -1434,6 +1434,7 @@
             this.Name = "CustomerMain";
             this.Text = "Customer Card";
             this.TopMost = true;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.CustomerMain_Load);
             this.tabControl1.ResumeLayout(false);
             this.tab_company.ResumeLayout(false);

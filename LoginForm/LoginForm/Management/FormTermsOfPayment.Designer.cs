@@ -50,10 +50,10 @@
             this.lbPaymentList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lbPaymentList.FormattingEnabled = true;
-            this.lbPaymentList.ItemHeight = 18;
+            this.lbPaymentList.ItemHeight = 15;
             this.lbPaymentList.Location = new System.Drawing.Point(14, 33);
             this.lbPaymentList.Name = "lbPaymentList";
-            this.lbPaymentList.Size = new System.Drawing.Size(260, 220);
+            this.lbPaymentList.Size = new System.Drawing.Size(260, 214);
             this.lbPaymentList.TabIndex = 0;
             this.lbPaymentList.SelectedIndexChanged += new System.EventHandler(this.lbPaymentList_SelectedIndexChanged);
             // 
@@ -68,7 +68,7 @@
             "Months"});
             this.cbType.Location = new System.Drawing.Point(773, 43);
             this.cbType.Name = "cbType";
-            this.cbType.Size = new System.Drawing.Size(206, 26);
+            this.cbType.Size = new System.Drawing.Size(206, 23);
             this.cbType.TabIndex = 3;
             // 
             // label1
@@ -77,7 +77,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(14, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 17);
+            this.label1.Size = new System.Drawing.Size(79, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "Payment List";
             // 
@@ -87,7 +87,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(457, 20);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 17);
+            this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Count";
             // 
@@ -97,7 +97,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(770, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 17);
+            this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Type";
             // 
@@ -137,7 +137,7 @@
             "30"});
             this.cbCount.Location = new System.Drawing.Point(460, 43);
             this.cbCount.Name = "cbCount";
-            this.cbCount.Size = new System.Drawing.Size(307, 26);
+            this.cbCount.Size = new System.Drawing.Size(307, 23);
             this.cbCount.TabIndex = 9;
             // 
             // txtNote
@@ -163,7 +163,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(457, 72);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 17);
+            this.label4.Size = new System.Drawing.Size(34, 13);
             this.label4.TabIndex = 12;
             this.label4.Text = "Note";
             // 
@@ -201,9 +201,9 @@
             // 
             // FormTermsOfPayment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 270);
+            this.ClientSize = new System.Drawing.Size(1028, 278);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnEdit);
@@ -221,6 +221,7 @@
             this.MinimumSize = new System.Drawing.Size(806, 317);
             this.Name = "FormTermsOfPayment";
             this.Text = "FormTermsOfPayment";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormTermsOfPayment_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

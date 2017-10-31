@@ -146,7 +146,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(895, 19);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(192, 24);
+            this.textBox2.Size = new System.Drawing.Size(192, 21);
             this.textBox2.TabIndex = 25;
             // 
             // chcAllQuots
@@ -163,7 +163,7 @@
             // 
             this.txtSearchText.Location = new System.Drawing.Point(699, 49);
             this.txtSearchText.Name = "txtSearchText";
-            this.txtSearchText.Size = new System.Drawing.Size(164, 24);
+            this.txtSearchText.Size = new System.Drawing.Size(164, 21);
             this.txtSearchText.TabIndex = 23;
             this.txtSearchText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchText_KeyPress);
             // 
@@ -175,7 +175,7 @@
             "QUOT NUMBER"});
             this.cbSearch.Location = new System.Drawing.Point(699, 19);
             this.cbSearch.Name = "cbSearch";
-            this.cbSearch.Size = new System.Drawing.Size(164, 26);
+            this.cbSearch.Size = new System.Drawing.Size(164, 23);
             this.cbSearch.TabIndex = 22;
             // 
             // label2
@@ -183,7 +183,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(9, 80);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 18);
+            this.label2.Size = new System.Drawing.Size(58, 15);
             this.label2.TabIndex = 21;
             this.label2.Text = "End Date";
             // 
@@ -192,7 +192,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 18);
+            this.label1.Size = new System.Drawing.Size(61, 15);
             this.label1.TabIndex = 20;
             this.label1.Text = "Start Date";
             // 
@@ -202,7 +202,7 @@
             this.datetimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datetimeEnd.Location = new System.Drawing.Point(89, 77);
             this.datetimeEnd.Name = "datetimeEnd";
-            this.datetimeEnd.Size = new System.Drawing.Size(119, 24);
+            this.datetimeEnd.Size = new System.Drawing.Size(119, 21);
             this.datetimeEnd.TabIndex = 19;
             // 
             // datetimeStart
@@ -211,7 +211,7 @@
             this.datetimeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datetimeStart.Location = new System.Drawing.Point(89, 16);
             this.datetimeStart.Name = "datetimeStart";
-            this.datetimeStart.Size = new System.Drawing.Size(119, 24);
+            this.datetimeStart.Size = new System.Drawing.Size(119, 21);
             this.datetimeStart.TabIndex = 18;
             // 
             // btnDeleteQuotation
@@ -330,7 +330,7 @@
             // 
             // FormQuotationMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 681);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -338,6 +338,7 @@
             this.MinimumSize = new System.Drawing.Size(1200, 720);
             this.Name = "FormQuotationMain";
             this.Text = "Quotation";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormQuotationMain_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgQuotation)).EndInit();

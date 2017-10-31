@@ -214,6 +214,7 @@
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IME General Components";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.tableLeftPanel.ResumeLayout(false);
             this.tableLeftPanel.PerformLayout();
