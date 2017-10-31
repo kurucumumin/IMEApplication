@@ -208,6 +208,9 @@
     <Compile Include="DataSet\Language.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\LoaderDate.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Management.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>

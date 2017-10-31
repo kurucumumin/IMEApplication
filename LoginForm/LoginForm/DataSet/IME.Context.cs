@@ -12,19 +12,19 @@ namespace LoginForm.DataSet
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class IMEEntities : DbContext
     {
         public IMEEntities()
             : base("name=IMEEntities")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<AuthorizationValue> AuthorizationValues { get; set; }
         public virtual DbSet<Capital> Capitals { get; set; }
         public virtual DbSet<City> Cities { get; set; }
@@ -70,5 +70,6 @@ namespace LoginForm.DataSet
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Town> Towns { get; set; }
         public virtual DbSet<Worker> Workers { get; set; }
+        public virtual DbSet<LoaderDate> LoaderDates { get; set; }
     }
 }
