@@ -288,7 +288,9 @@ namespace LoginForm.QuotationModule
                                             ItemDetailsFiller(dgQuotationAddedItems.CurrentCell.Value.ToString());
                                             //LandingCost Calculation
                                             FillProductCodeItem();
+
                                             dgQuotationAddedItems.CurrentRow.Cells["dgQty"].ReadOnly = false;
+
 
                                             #region DataGridClear
                                             dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value = null;
