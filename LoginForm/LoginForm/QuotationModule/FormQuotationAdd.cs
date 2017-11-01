@@ -290,6 +290,7 @@ namespace LoginForm.QuotationModule
                                             FillProductCodeItem();
 
                                             dgQuotationAddedItems.CurrentRow.Cells["dgQty"].ReadOnly = false;
+                                            dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
 
                                             #region DataGridClear
@@ -330,11 +331,23 @@ namespace LoginForm.QuotationModule
                         GetQuotationQuantity(dgQuotationAddedItems.CurrentCell.RowIndex);
 
                         dgQuotationAddedItems.CurrentRow.Cells["dgUCUPCurr"].ReadOnly = false;
+                        dgQuotationAddedItems.CurrentRow.Cells["dgUCUPCurr"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
                         dgQuotationAddedItems.CurrentRow.Cells["dgTargetUP"].ReadOnly = false;
+                        dgQuotationAddedItems.CurrentRow.Cells["dgTargetUP"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
                         dgQuotationAddedItems.CurrentRow.Cells["dgCompetitor"].ReadOnly = false;
+                        dgQuotationAddedItems.CurrentRow.Cells["dgCompetitor"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
                         dgQuotationAddedItems.CurrentRow.Cells["dgDelivery"].ReadOnly = false;
+                        dgQuotationAddedItems.CurrentRow.Cells["dgDelivery"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
                         dgQuotationAddedItems.CurrentRow.Cells["dgCustStkCode"].ReadOnly = false;
+                        dgQuotationAddedItems.CurrentRow.Cells["dgCustStkCode"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
                         dgQuotationAddedItems.CurrentRow.Cells["dgCustDescription"].ReadOnly = false;
+                        dgQuotationAddedItems.CurrentRow.Cells["dgCustDescription"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
                     }
                     //LOW MARGIN
                     GetMarginMark();
