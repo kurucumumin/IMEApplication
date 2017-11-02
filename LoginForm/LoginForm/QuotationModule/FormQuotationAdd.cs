@@ -52,6 +52,7 @@ namespace LoginForm.QuotationModule
             modifyMod = true;
             InitializeComponent();
             dtpDate.Value = (DateTime)q1.StartDate;
+            dtpDate.MaxDate = DateTime.Today.Date;
             cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList();
             cbCurrency.DisplayMember = "CurType";
             cbCurrency.ValueMember = "ID";
@@ -65,6 +66,30 @@ namespace LoginForm.QuotationModule
 
             modifyQuotation(q1);
             fillCustomer();
+
+            for (int i = 0; i < dgQuotationAddedItems.RowCount-1; i++)
+            {
+                dgQuotationAddedItems.Rows[i].Cells["dgQty"].ReadOnly = false;
+                dgQuotationAddedItems.Rows[i].Cells["dgQty"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
+                dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].ReadOnly = false;
+                dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
+                dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].ReadOnly = false;
+                dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
+                dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].ReadOnly = false;
+                dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
+                dgQuotationAddedItems.Rows[i].Cells["dgDelivery"].ReadOnly = false;
+                dgQuotationAddedItems.Rows[i].Cells["dgDelivery"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
+                dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].ReadOnly = false;
+                dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
+                dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].ReadOnly = false;
+                dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].Style = dgQuotationAddedItems.DefaultCellStyle;
+            }
         }
 
         private void QuotationForm_Load(object sender, EventArgs e)

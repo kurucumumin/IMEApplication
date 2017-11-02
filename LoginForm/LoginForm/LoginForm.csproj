@@ -111,12 +111,6 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomerManager\AddressBook.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CustomerManager\AddressBook.Designer.cs">
-      <DependentUpon>AddressBook.cs</DependentUpon>
-    </Compile>
     <Compile Include="Customer\CustomerDepartmentAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -410,9 +404,6 @@
     <Compile Include="User\FormUserManagement.Designer.cs">
       <DependentUpon>FormUserManagement.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="CustomerManager\AddressBook.resx">
-      <DependentUpon>AddressBook.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Customer\CustomerDepartmentAdd.resx">
       <DependentUpon>CustomerDepartmentAdd.cs</DependentUpon>
     </EmbeddedResource>
