@@ -116,7 +116,7 @@ namespace LoginForm.QuotationModule
                 Quotation quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
 
                 FormQuotationAdd newForm = new FormQuotationAdd(quo);
-                newForm.Show();
+                newForm.ShowDialog();
             }
             else
             {

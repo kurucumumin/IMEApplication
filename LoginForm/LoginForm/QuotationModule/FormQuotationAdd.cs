@@ -39,6 +39,8 @@ namespace LoginForm.QuotationModule
         public FormQuotationAdd()
         {
             InitializeComponent();
+            dtpDate.Value = DateTime.Now;
+            dtpDate.Enabled = false;
         }
 
         public FormQuotationAdd(Quotation quotation)
@@ -49,6 +51,7 @@ namespace LoginForm.QuotationModule
             this.Text = "Edit Quotation";
             modifyMod = true;
             InitializeComponent();
+            dtpDate.Value = (DateTime)q1.StartDate;
             cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList();
             cbCurrency.DisplayMember = "CurType";
             cbCurrency.ValueMember = "ID";
@@ -90,9 +93,9 @@ namespace LoginForm.QuotationModule
                 cbRep.SelectedIndex = cbRep.FindStringExact(Utils.getCurrentUser().NameLastName);
                 cbCurrType.SelectedIndex = 0;
                 dtpDate.Value = DateTime.Now;
-                GetCurrency();
                 #endregion
             }
+            GetCurrency(dtpDate.Value);
         }
 
         private void txtCustomerName_KeyDown(object sender, KeyEventArgs e)
@@ -139,7 +142,7 @@ namespace LoginForm.QuotationModule
         private void customerDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CustomerMain f = new CustomerMain(true, CustomerCode.Text);
-            f.Show();
+            f.ShowDialog();
         }
 
         private void customerDetailsNameToolStripMenuItem_Click(object sender, EventArgs e)
@@ -153,7 +156,7 @@ namespace LoginForm.QuotationModule
             FormMain f = new FormMain();
             if (MessageBox.Show("Are You Sure To Exit Programme ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                f.Show();
+                f.ShowDialog();
                 this.Close();
             }
         }
@@ -1548,9 +1551,8 @@ namespace LoginForm.QuotationModule
 
             //}
             string q1 = q.QuotationNo;
-            while (IME.Quotations.Where(a => a.QuotationNo == q1).ToList().Count > 0)
+            if (IME.Quotations.Where(a => a.QuotationNo == q1).ToList().Count > 0)
             {
-
                 if (q.QuotationNo.Contains("v"))
                 {
                     int quoID = Int32.Parse(q1.Substring(q.QuotationNo.LastIndexOf('v') + 1)) + 1;
@@ -1777,7 +1779,7 @@ namespace LoginForm.QuotationModule
         {
             if ((cbCurrType.SelectedIndex != null))
             {
-                GetCurrency();
+                GetCurrency(dtpDate.Value);
                 ChangeCurr();
             }
             else
@@ -1787,9 +1789,9 @@ namespace LoginForm.QuotationModule
             }
         }
 
-        private void GetCurrency()
+        private void GetCurrency(DateTime date)
         {
-            curr = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList().Where(b => b.CurType == (cbCurrency.SelectedItem as Rate).CurType).FirstOrDefault();
+            curr = IME.Rates.Where(a => a.rate_date == date.Date).ToList().Where(b => b.CurType == (cbCurrency.SelectedItem as Rate).CurType).FirstOrDefault();
             if (cbCurrType.SelectedText == "Buy" || cbCurrType.SelectedIndex == 0)
             {
                 if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
@@ -1816,7 +1818,7 @@ namespace LoginForm.QuotationModule
         {
             if (cbCurrency.SelectedIndex != null)
             {
-                GetCurrency();
+                GetCurrency(dtpDate.Value);
                 ChangeCurr();
             }
             else
@@ -1849,24 +1851,24 @@ namespace LoginForm.QuotationModule
 
         private string GetCurrencySign()
         {
+            string cur = "";
             switch (cbCurrency.Text)
             {
                 case "USD":
-                        return "$";
+                    cur = "$";
                     break;
                 case "GBP":
-                    return "£";
+                    cur = "£";
                     break;
                 case "EUR":
-                    return "€";
+                    cur = "€";
                     break;
             }
-            return "£";
+            return cur;
         }
 
         private void ChangeCurr()
         {
-            string currencySign;
             lblWeb.Text = "Web (" + GetCurrencySign() + ")";
             decimal SubTotalTotal = 0;
             if (CurrValue1 != Decimal.Parse(curr.RateBuy.ToString())) { Currfactor = CurrValue / CurrValue1; } else { Currfactor = 1; }
@@ -2062,7 +2064,7 @@ namespace LoginForm.QuotationModule
             else
             {
                 CustomerMain f = new CustomerMain(true, CustomerCode.Text);
-                f.Show();
+                f.ShowDialog();
             }
         }
 
@@ -2075,7 +2077,7 @@ namespace LoginForm.QuotationModule
             else
             {
                 CustomerMain f = new CustomerMain(1, CustomerCode.Text);
-                f.Show();
+                f.ShowDialog();
             }
         }
 
@@ -2088,7 +2090,7 @@ namespace LoginForm.QuotationModule
             else
             {
                 CustomerMain f = new CustomerMain(1, CustomerCode.Text);
-                f.Show();
+                f.ShowDialog();
             }
 
         }

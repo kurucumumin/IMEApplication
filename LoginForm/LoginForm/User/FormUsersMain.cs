@@ -36,7 +36,7 @@ namespace LoginForm.User
         private void btnEditWorker_Click(object sender, EventArgs e)
         {
             FormWorkerManagement formWorkerAdd = new FormWorkerManagement(mainForm, (Worker)dgdg.CurrentRow.DataBoundItem, this);
-            formWorkerAdd.Show();
+            formWorkerAdd.ShowDialog();
         }
     }
 }

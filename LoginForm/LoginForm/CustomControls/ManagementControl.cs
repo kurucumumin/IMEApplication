@@ -53,13 +53,13 @@ namespace LoginForm.CustomControls
         private void btnRolesAuthorities_Click(object sender, EventArgs e)
         {
             FormRoleAuths form = new FormRoleAuths();
-            form.Show();
+            form.ShowDialog();
         }
 
         private void btnTermsOfPayment_Click(object sender, EventArgs e)
         {
             FormTermsOfPayment form = new FormTermsOfPayment();
-            form.Show();
+            form.ShowDialog();
         }
     }
 }

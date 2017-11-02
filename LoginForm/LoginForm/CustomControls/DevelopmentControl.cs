@@ -23,32 +23,32 @@ namespace LoginForm.CustomControls
         private void btnCustomer_Click(object sender, EventArgs e)
         {
             CustomerMain customerMain = new CustomerMain();
-            customerMain.Show();
+            customerMain.ShowDialog();
         }
 
         private void btnQuotation_Click(object sender, EventArgs e)
         {
             FormQuotationMain formQuotationMain = new FormQuotationMain();
-            formQuotationMain.Show();
+            formQuotationMain.ShowDialog();
         }
 
         private void btnSupplier_Click(object sender, EventArgs e)
         {
             SupplierMain supplierMain = new SupplierMain();
-            supplierMain.Show();
+            supplierMain.ShowDialog();
         }
 
         private void btnWorker_Click(object sender, EventArgs e)
         {
             FormMain formMain = (FormMain) this.Parent.Parent.Parent;
             FormUserMain roles = new FormUserMain(formMain);
-            roles.Show();
+            roles.ShowDialog();
         }
 
         private void btnItemCard_Click(object sender, EventArgs e)
         {
             ItemCard form = new ItemCard();
-            form.Show();
+            form.ShowDialog();
         }
     }
 }

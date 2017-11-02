@@ -19,14 +19,15 @@ namespace LoginForm.Item
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
-            FormMain form = new FormMain();
-            form.Show();
-            this.Hide();
+            this.Close();
+            //FormMain form = new FormMain();
+            //form.Show();
+            //this.Hide();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnChooseFile_Click(object sender, EventArgs e)
         {
             switch (txtReader.LoaderType)
             {

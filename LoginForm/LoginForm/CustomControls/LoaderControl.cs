@@ -14,7 +14,7 @@ namespace LoginForm.CustomControls
         private void GoToLoaderPage()
         {
             LoaderPage form = new LoaderPage();
-            form.Show();
+            form.ShowDialog();
         }
 
         private void btnOnSale_Click(object sender, EventArgs e)
