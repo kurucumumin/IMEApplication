@@ -62,7 +62,7 @@ namespace LoginForm.QuotationModule
             CustomerCode.Enabled = false;
             txtCustomerName.Enabled = false;
             btnSave.Enabled = false;
-            
+
             modifyQuotation(q1);
             fillCustomer();
         }
@@ -303,7 +303,7 @@ namespace LoginForm.QuotationModule
                                             dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUPIME"].Value = null;
                                             dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = null;
                                             dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotal"].Value = null;
-                                            
+
                                             CalculateSubTotal();
                                             txtSubstitutedBy.Text = null;
                                             #endregion
@@ -313,7 +313,7 @@ namespace LoginForm.QuotationModule
 
                                     this.Enabled = true;
                                 }
-                                
+
                             }
                             else { MessageBox.Show("There is no such an item"); }
 
@@ -322,7 +322,7 @@ namespace LoginForm.QuotationModule
                         {
                             ItemDetailsClear();
                             //dgQuotationAddedItems.Rows[dgQuotationAddedItems.].Cells["dgProductCode"].Selected
-                           
+
                         }
                     }
                     #endregion
@@ -485,7 +485,7 @@ namespace LoginForm.QuotationModule
                         ChangeCurr(rowindex);
                         GetMargin();
                         dgQuotationAddedItems.Rows[rowindex].Cells["dgMargin"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgMargin"].Value.ToString())).ToString();
-                        
+
                         //CalculateSubTotal();
                         #region Calculate Total Margin
                         try
@@ -851,7 +851,7 @@ namespace LoginForm.QuotationModule
                                    , Int32.Parse(sp1.Col5Break.ToString()))).ToString("G29");
                 txtMargin5.Text = ((1 - ((Decimal.Parse(txtMargin5.Text)) / (decimal.Parse(txtWeb5.Text)))) * 100).ToString();
             }
-           
+
             #endregion
             #region Low Margin Mark
 
@@ -935,8 +935,11 @@ namespace LoginForm.QuotationModule
 
         private void dgQuotationAddedItems_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-             dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[0].Value = (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 2].Cells[0].Value.ToString()) + 1).ToString();
-
+            try
+            {
+                dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[0].Value = (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 2].Cells[0].Value.ToString()) + 1).ToString();
+            }
+            catch { }
         }
 
         private void dgQuotationAddedItems_Click(object sender, EventArgs e)
@@ -1149,30 +1152,33 @@ namespace LoginForm.QuotationModule
 
         private void addToQuotationAgainToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int rowindex = dgQuotationDeleted.CurrentCell.RowIndex;
-            int no = Int32.Parse(dgQuotationDeleted.Rows[rowindex].Cells["No1"].Value.ToString());
-            var st = SubTotal.Where(a => a.Item1 == no).FirstOrDefault();
-            var st1 = SubDeletingTotal.Where(a => a.Item1 == no).FirstOrDefault();
-            if (st != null)
+            if (dgQuotationDeleted.CurrentRow.Cells["dgProductCode1"].Value != null)
             {
-                SubTotal.Remove(st);
-                SubTotal.Add(new Tuple<int, decimal>(no, st1.Item2));
-                lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + st1.Item2).ToString();
-                SubDeletingTotal.Remove(st1);
-            }
-
-            if (dgQuotationDeleted.Rows[rowindex].Cells["dgProductCode1"].Value != null)
-            {
-                int rowindex1 = dgQuotationAddedItems.RowCount - 1;
-                dgQuotationAddedItems.Rows.Add();
-                for (int i = 0; i < dgQuotationDeleted.Columns.Count; i++)
+                int rowindex = dgQuotationDeleted.CurrentCell.RowIndex;
+                int no = Int32.Parse(dgQuotationDeleted.Rows[rowindex].Cells["No1"].Value.ToString());
+                var st = SubTotal.Where(a => a.Item1 == no).FirstOrDefault();
+                var st1 = SubDeletingTotal.Where(a => a.Item1 == no).FirstOrDefault();
+                if (st != null)
                 {
-                    dgQuotationAddedItems.Rows[rowindex1].Cells[i].Value = dgQuotationDeleted.Rows[dgQuotationDeleted.CurrentCell.RowIndex].Cells[i].Value;
+                    SubTotal.Remove(st);
+                    SubTotal.Add(new Tuple<int, decimal>(no, st1.Item2));
+                    lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + st1.Item2).ToString();
+                    SubDeletingTotal.Remove(st1);
                 }
-                dgQuotationDeleted.Rows.Remove(dgQuotationDeleted.Rows[rowindex]);
-                dgQuotationAddedItems.Sort(dgQuotationAddedItems.Columns[0], ListSortDirection.Ascending);
-            }
-            else { MessageBox.Show("Please choose an item to add Quotation"); }
+
+
+                    int rowindex1 = dgQuotationAddedItems.RowCount - 1;
+                    dgQuotationAddedItems.Rows.Add();
+                    for (int i = 0; i < dgQuotationDeleted.Columns.Count; i++)
+                    {
+                        dgQuotationAddedItems.Rows[rowindex1].Cells[i].Value = dgQuotationDeleted.Rows[dgQuotationDeleted.CurrentCell.RowIndex].Cells[i].Value;
+                    }
+                    dgQuotationDeleted.Rows.Remove(dgQuotationDeleted.Rows[rowindex]);
+                    dgQuotationAddedItems.Sort(dgQuotationAddedItems.Columns[0], ListSortDirection.Ascending);
+                }
+                else { MessageBox.Show("Please choose an item to add Quotation"); }
+
+
 
         }
 
@@ -1207,8 +1213,8 @@ namespace LoginForm.QuotationModule
                             }
                         }
                     }
-                    
-                    
+
+
 
 
                 }
@@ -1255,12 +1261,12 @@ namespace LoginForm.QuotationModule
                 totalDis2Change();
             }
 
-            
+
         }
 
         private bool ControlSave()
         {
-            if(txtCustomerName.Text!=null && txtCustomerName.Text != "") { MessageBox.Show("Please Enter a Customer");return false; }
+            if(txtCustomerName.Text==null || txtCustomerName.Text == "") { MessageBox.Show("Please Enter a Customer");return false; }
             return true;
         }
 
@@ -1299,7 +1305,26 @@ namespace LoginForm.QuotationModule
                 q.CurrType = cbCurrType.SelectedText;
                 q.Curr = CurrValue;
                 q.CustomerID = CustomerCode.Text;
-
+                if(txtNoteForUs.Text!=null || txtNoteForUs.Text != "")
+                {
+                    Note n = new Note();
+                    n.Note_name = txtNoteForUs.Text;
+                    IME.Notes.Add(n);
+                    q.NoteForUsID = n.ID;
+                    IME.SaveChanges();
+                }
+                if (txtNoteForUs.Text != null || txtNoteForUs.Text != "")
+                {
+                    Note n1 = new Note();
+                    n1.Note_name = txtNoteForCustomer.Text;
+                    IME.Notes.Add(n1);
+                    q.NoteForCustomerID = n1.ID;
+                    IME.SaveChanges();
+                }
+                if (chkbForFinance.Checked)
+                {
+                    q.ForFinancelIsTrue = 1;
+                }
                 IME.Quotations.Add(q);
                 IME.SaveChanges();
             }
@@ -1314,7 +1339,7 @@ namespace LoginForm.QuotationModule
         private void QuotationSave(string QuoNo)
         {
             IMEEntities IME = new IMEEntities();
-            
+
                 Quotation q1 = IME.Quotations.Where(a => a.QuotationNo.Contains(QuoNo)).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
 
 
@@ -1367,8 +1392,40 @@ namespace LoginForm.QuotationModule
                 }
                 catch { }
                 try { q.CustomerID = CustomerCode.Text; } catch { }
+            if (q.NoteForUsID==null)
+            {
+                Note n = new Note();
+                n.Note_name = txtNoteForUs.Text;
+                IME.Notes.Add(n);
+                q.NoteForUsID = n.ID;
+                IME.SaveChanges();
+            }
+            else
+            {
+                Note n = IME.Notes.Where(a => a.ID == q.NoteForUsID).FirstOrDefault();
+                n.Note_name = txtNoteForUs.Text;
+                IME.SaveChanges();
+            }
+            if (q.NoteForCustomerID == null)
+            {
+                Note n = new Note();
+                n.Note_name = txtNoteForCustomer.Text;
+                IME.Notes.Add(n);
+                q.NoteForCustomerID = n.ID;
+                IME.SaveChanges();
+            }
+            else
+            {
+                Note n = IME.Notes.Where(a => a.ID == q.NoteForCustomerID).FirstOrDefault();
+                n.Note_name = txtNoteForCustomer.Text;
+                IME.SaveChanges();
+            }
 
-                IME.Quotations.Add(q);
+            if (chkbForFinance.Checked)
+            {
+                q.ForFinancelIsTrue = 1;
+            }
+            IME.Quotations.Add(q);
                 IME.SaveChanges();
         }
 
@@ -1475,6 +1532,9 @@ namespace LoginForm.QuotationModule
             txtQuotationNo.Text = q.QuotationNo;
             txtRFQNo.Text = q.RFQNo;
             CustomerCode.Text = q.Customer.ID;
+            txtNoteForCustomer.Text = IME.Notes.Where(a => a.ID == q.NoteForCustomerID).FirstOrDefault().Note_name;
+            txtNoteForUs.Text = IME.Notes.Where(a => a.ID == q.NoteForUsID).FirstOrDefault().Note_name;
+            if (q.ForFinancelIsTrue == 1) { chkbForFinance.Checked = true; }
             fillCustomer();
             #region QuotationDetails
             cbCurrency.SelectedItem = q.CurrName;
@@ -1797,19 +1857,19 @@ namespace LoginForm.QuotationModule
                 if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
                 CurrValue = Decimal.Parse(curr.RateBuy.ToString());
             }
-            else if (cbCurrType.SelectedText == "Eff. Buy" || cbCurrType.SelectedIndex == 1)
+            else if (cbCurrType.SelectedIndex == 1)
             {
-                if (CurrValue1 != Decimal.Parse(curr.RateBuy.ToString())) CurrValue1 = CurrValue;
+                if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
                 CurrValue = Decimal.Parse(curr.RateBuyEffective.ToString());
             }
-            else if (cbCurrType.SelectedText == "Sale" || cbCurrType.SelectedIndex == 2)
+            else if (cbCurrType.SelectedIndex == 2)
             {
-                if (CurrValue1 != Decimal.Parse(curr.RateBuy.ToString())) CurrValue1 = CurrValue;
+                if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
                 CurrValue = Decimal.Parse(curr.RateSell.ToString());
             }
-            else if (cbCurrType.SelectedText == "Eff. Sale" || cbCurrType.SelectedIndex == 3)
+            else if (cbCurrType.SelectedIndex == 3)
             {
-                if (CurrValue1 != Decimal.Parse(curr.RateBuy.ToString())) CurrValue1 = CurrValue;
+                if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
                 CurrValue = Decimal.Parse(curr.RateSellEffective.ToString());
             }
         }
@@ -1871,7 +1931,7 @@ namespace LoginForm.QuotationModule
         {
             lblWeb.Text = "Web (" + GetCurrencySign() + ")";
             decimal SubTotalTotal = 0;
-            if (CurrValue1 != Decimal.Parse(curr.RateBuy.ToString())) { Currfactor = CurrValue / CurrValue1; } else { Currfactor = 1; }
+            if (CurrValue1 !=CurrValue) { Currfactor = CurrValue / CurrValue1; } else { Currfactor = 1; }
             #region ChangeWebValues
             if (txtWeb1.Text!="" && txtWeb1.Text != null) {
                 txtWeb1.Text = (Decimal.Parse(txtWeb1.Text) / Currfactor).ToString();
@@ -2011,8 +2071,6 @@ namespace LoginForm.QuotationModule
             this.Enabled = true;
             fillCustomer();
         }
-
-
 
         private void ChangeCurrnetCell(int currindex)
         {
