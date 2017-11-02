@@ -53,7 +53,7 @@ namespace LoginForm.QuotationModule
             InitializeComponent();
             dtpDate.Value = (DateTime)q1.StartDate;
             dtpDate.MaxDate = DateTime.Today.Date;
-            cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList();
+            cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == dtpDate.Value).ToList();
             cbCurrency.DisplayMember = "CurType";
             cbCurrency.ValueMember = "ID";
             cbCurrency.SelectedIndex = 0;
@@ -1876,26 +1876,29 @@ namespace LoginForm.QuotationModule
 
         private void GetCurrency(DateTime date)
         {
-            curr = IME.Rates.Where(a => a.rate_date == date.Date).ToList().Where(b => b.CurType == (cbCurrency.SelectedItem as Rate).CurType).FirstOrDefault();
-            if (cbCurrType.SelectedText == "Buy" || cbCurrType.SelectedIndex == 0)
+            if (cbCurrency.SelectedIndex >= 0)
             {
-                if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
-                CurrValue = Decimal.Parse(curr.RateBuy.ToString());
-            }
-            else if (cbCurrType.SelectedIndex == 1)
-            {
-                if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
-                CurrValue = Decimal.Parse(curr.RateBuyEffective.ToString());
-            }
-            else if (cbCurrType.SelectedIndex == 2)
-            {
-                if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
-                CurrValue = Decimal.Parse(curr.RateSell.ToString());
-            }
-            else if (cbCurrType.SelectedIndex == 3)
-            {
-                if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
-                CurrValue = Decimal.Parse(curr.RateSellEffective.ToString());
+                curr = IME.Rates.Where(a => a.rate_date == date.Date).ToList().Where(b => b.CurType == (cbCurrency.SelectedItem as Rate).CurType).FirstOrDefault();
+                if (cbCurrType.SelectedText == "Buy" || cbCurrType.SelectedIndex == 0)
+                {
+                    if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
+                    CurrValue = Decimal.Parse(curr.RateBuy.ToString());
+                }
+                else if (cbCurrType.SelectedIndex == 1)
+                {
+                    if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
+                    CurrValue = Decimal.Parse(curr.RateBuyEffective.ToString());
+                }
+                else if (cbCurrType.SelectedIndex == 2)
+                {
+                    if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
+                    CurrValue = Decimal.Parse(curr.RateSell.ToString());
+                }
+                else if (cbCurrType.SelectedIndex == 3)
+                {
+                    if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
+                    CurrValue = Decimal.Parse(curr.RateSellEffective.ToString());
+                }
             }
         }
 
@@ -2181,6 +2184,14 @@ namespace LoginForm.QuotationModule
         private void btnExcelExport_Click(object sender, EventArgs e)
         {
             QuotationExcelExport.Export(dgQuotationAddedItems,txtQuotationNo.Text);
+        }
+
+        private void dtpDate_ValueChanged(object sender, EventArgs e)
+        {
+            cbCurrency.DataSource = null;
+            cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == dtpDate.Value).ToList();
+            cbCurrency.DisplayMember = "CurType";
+            cbCurrency.ValueMember = "ID";
         }
     }
 }
