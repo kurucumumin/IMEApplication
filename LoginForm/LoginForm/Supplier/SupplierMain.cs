@@ -919,7 +919,7 @@ using LoginForm.Services;
                     AddressDel.Enabled = true;
                     AddressUpd.Enabled = true;
                 }
-                btnupdate.Text = "CANCEL";
+                btnupdate.Text = "Cancel";
                 btnnew.Text = "Save";
             }
             else
