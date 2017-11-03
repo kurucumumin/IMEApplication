@@ -42,6 +42,7 @@ namespace LoginForm.DataSet
         public string QuotationNo { get; set; }
         public string RFQNo { get; set; }
         public string CurrType { get; set; }
+        public Nullable<int> QuotationMainContact { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual Note Note { get; set; }

@@ -30,7 +30,6 @@
         <EntityTypeShape EntityType="IMEModel.OnSale" Width="1.5" PointX="13.75" PointY="0.75" />
         <EntityTypeShape EntityType="IMEModel.PaymentMethod" Width="1.5" PointX="6" PointY="12.625" />
         <EntityTypeShape EntityType="IMEModel.PaymentTerm" Width="1.5" PointX="6" PointY="9.375" />
-        <EntityTypeShape EntityType="IMEModel.Quotation" Width="1.5" PointX="10.5" PointY="20" />
         <EntityTypeShape EntityType="IMEModel.QuotationDetail" Width="1.5" PointX="12.75" PointY="12.125" />
         <EntityTypeShape EntityType="IMEModel.Rate" Width="1.5" PointX="3" PointY="12.875" />
         <EntityTypeShape EntityType="IMEModel.RoleValue" Width="1.5" PointX="3" PointY="26.375" />
@@ -68,7 +67,6 @@
         <AssociationConnector Association="IMEModel.FK__CustomerC__custo__534D60F1" />
         <AssociationConnector Association="IMEModel.FK__CustomerW__custo__4316F928" />
         <AssociationConnector Association="IMEModel.FK__DiscountV__Custo__6E565CE8" />
-        <AssociationConnector Association="IMEModel.FK__Quotation__Custo__00750D23" />
         <AssociationConnector Association="IMEModel.FK__CustomerA__Conta__45BE5BA9" />
         <AssociationConnector Association="IMEModel.FK__CustomerA__TownI__4F47C5E3" />
         <AssociationConnector Association="IMEModel.FK__CustomerC__categ__5165187F" />
@@ -83,15 +81,11 @@
         <AssociationConnector Association="IMEModel.FK__DiscountV__Repre__6F4A8121" />
         <AssociationConnector Association="IMEModel.FK__ItemNote__NoteID__2B0A656D" />
         <AssociationConnector Association="IMEModel.FK__SupplierW__langu__72910220" />
-        <AssociationConnector Association="IMEModel.FK__Quotation__NoteF__0169315C" />
-        <AssociationConnector Association="IMEModel.FK__Quotation__NoteF__025D5595" />
         <AssociationConnector Association="IMEModel.FK__Supplier__Suppli__09746778" />
         <AssociationConnector Association="IMEModel.FK__SupplierW__suppl__73852659" />
         <AssociationConnector Association="IMEModel.FK__Worker__WorkerNo__4BAC3F29" />
-        <AssociationConnector Association="IMEModel.FK__Quotation__Payme__035179CE" />
         <AssociationConnector Association="IMEModel.FK__Supplier__paymen__634EBE90" />
         <AssociationConnector Association="IMEModel.FK__Supplier__paymen__6442E2C9" />
-        <AssociationConnector Association="IMEModel.FK__Quotation__Quota__147C05D0" />
         <AssociationConnector Association="IMEModel.FK__Supplier__rate_I__625A9A57" />
         <AssociationConnector Association="IMEModel.FK__Supplier__accoun__2DB1C7EE" />
         <AssociationConnector Association="IMEModel.FK__Supplier__BankID__0C50D423" />
@@ -112,6 +106,12 @@
         <AssociationConnector Association="IMEModel.FK__SupplierW__title__7755B73D" />
         <AssociationConnector Association="IMEModel.AuthRole" />
         <AssociationConnector Association="IMEModel.UserAuthorization" />
+        <EntityTypeShape EntityType="IMEModel.Quotation" Width="1.5" PointX="17.5" PointY="14.625" />
+        <AssociationConnector Association="IMEModel.FK__Quotation__Custo__00750D23" />
+        <AssociationConnector Association="IMEModel.FK__Quotation__NoteF__0169315C" />
+        <AssociationConnector Association="IMEModel.FK__Quotation__NoteF__025D5595" />
+        <AssociationConnector Association="IMEModel.FK__Quotation__Payme__035179CE" />
+        <AssociationConnector Association="IMEModel.FK__Quotation__Quota__147C05D0" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

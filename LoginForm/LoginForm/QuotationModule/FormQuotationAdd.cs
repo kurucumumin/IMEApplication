@@ -47,7 +47,6 @@ namespace LoginForm.QuotationModule
         {
             //Son versiyonu açmayı sağlıyor
             Quotation q1 = IME.Quotations.Where(a => a.QuotationNo.Contains(quotation.QuotationNo)).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
-
             this.Text = "Edit Quotation";
             modifyMod = true;
             InitializeComponent();
@@ -57,16 +56,22 @@ namespace LoginForm.QuotationModule
             cbCurrency.DisplayMember = "CurType";
             cbCurrency.ValueMember = "ID";
             cbCurrency.SelectedIndex = 0;
-            //cbWorkers.DataSource = IME.CustomerWorkers.ToList();
-            //cbWorkers.DisplayMember = "cw_name";
-            //cbWorkers.ValueMember = "ID";
+            cbPayment.DataSource = IME.PaymentMethods.ToList();
+            cbPayment.DisplayMember = "Payment";
+            cbPayment.ValueMember = "ID";
+            cbRep.DataSource = IME.Workers.ToList();
+            cbRep.DisplayMember = "NameLastName";
+            cbWorkers.DataSource = IME.CustomerWorkers.Where(a=>a.customerID==q1.CustomerID).ToList();
+            cbWorkers.DisplayMember = "cw_name";
+            cbWorkers.ValueMember = "ID";
+            if(q1.QuotationMainContact!=null) cbWorkers.SelectedIndex = (int)q1.QuotationMainContact;
             CustomerCode.Enabled = false;
             txtCustomerName.Enabled = false;
             btnSave.Enabled = false;
             LowMarginLimit = (Decimal)Utils.getManagement().LowMarginLimit;
             modifyQuotation(q1);
-            fillCustomer();
-
+            //fillCustomer();
+            cbSMethod.SelectedIndex = (int)q1.ShippingMethodID;
             for (int i = 0; i < dgQuotationAddedItems.RowCount-1; i++)
             {
                 dgQuotationAddedItems.Rows[i].Cells["dgQty"].ReadOnly = false;
@@ -104,9 +109,7 @@ namespace LoginForm.QuotationModule
                 LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
                 lblVat.Text = Utils.getManagement().VAT.ToString();
                 #region ComboboxFiller.
-                //cbWorkers.DataSource = IME.CustomerWorkers.ToList();
-                //cbWorkers.DisplayMember = "cw_name";
-                //cbWorkers.ValueMember = "ID";
+               
                 dtpDate.Value = DateTime.Now;
                 cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == dtpDate.Value.Date).ToList();
                 cbCurrency.DisplayMember = "CurType";
@@ -118,7 +121,7 @@ namespace LoginForm.QuotationModule
                 cbPayment.ValueMember = "ID";
                 cbRep.DataSource = IME.Workers.ToList();
                 cbRep.DisplayMember = "NameLastName";
-                cbRep.SelectedIndex = cbRep.FindStringExact(Utils.getCurrentUser().NameLastName);
+                cbRep.SelectedIndex = Utils.getCurrentUser().WorkerID;
                 cbCurrType.SelectedIndex = 0;
 
                 #endregion
@@ -155,7 +158,7 @@ namespace LoginForm.QuotationModule
                 txtCustomerName.Text = c.c_name;
                 cbCurrency.SelectedIndex = cbCurrency.FindStringExact(c.CurrNameQuo);
                 cbCurrType.SelectedIndex = cbCurrType.FindStringExact(c.CurrTypeQuo);
-                cbWorkers.SelectedIndex = cbWorkers.FindStringExact(IME.CustomerWorkers.Where(a => a.ID == c.MainContactID).FirstOrDefault().cw_name);
+                //if(c.MainContactID!=null) cbWorkers.SelectedIndex = (int)c.MainContactID;
                 if (c.paymentmethodID != null)
                 {
                     cbPayment.SelectedIndex = cbPayment.FindStringExact(c.PaymentMethod.Payment);
@@ -163,7 +166,7 @@ namespace LoginForm.QuotationModule
                 try { txtContactNote.Text = c.CustomerWorker.Note.Note_name; } catch { }
                 try { txtCustomerNote.Text = c.Note.Note_name; } catch { }
                 try { txtAccountingNote.Text = IME.Notes.Where(a=>a.ID==c.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
-                cbRep.SelectedIndex = cbRep.FindStringExact(c.Worker.NameLastName.ToString());
+                cbRep.SelectedIndex = c.Worker.WorkerID;
             }
         }
 
@@ -538,7 +541,6 @@ namespace LoginForm.QuotationModule
             }
         }
 
-
         private void GetMarginMark(int rowindex)
         {
             try
@@ -869,11 +871,19 @@ namespace LoginForm.QuotationModule
             #region ItemMarginFiller
             string articleNo = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString();
             SlidingPrice sp1 = IME.SlidingPrices.Where(a => a.ArticleNo == articleNo).FirstOrDefault();
-            txtMargin1.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
+            try
+            {
+                txtMargin1.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
 , Int32.Parse(sp1.Col1Break.ToString()))).ToString("G29");
-            txtMargin1.Text = ((1 - ((Decimal.Parse(txtMargin1.Text)) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
-            txtMargin2.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
-                               , Int32.Parse(sp1.Col2Break.ToString()))).ToString("G29");
+                txtMargin1.Text = ((1 - ((Decimal.Parse(txtMargin1.Text)) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
+            }
+            catch { }
+            try
+            {
+                txtMargin2.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
+                             , Int32.Parse(sp1.Col2Break.ToString()))).ToString("G29");
+            }
+            catch { }
             if (txtWeb2.Text == "0")
             {
                 txtMargin2.Text = "";
@@ -883,15 +893,25 @@ namespace LoginForm.QuotationModule
             }
             else
             {
-                txtMargin2.Text = ((1 - ((Decimal.Parse(txtMargin2.Text)) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
-                txtMargin3.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked, Int32.Parse(sp1.Col3Break.ToString()))).ToString("G29");
-                txtMargin3.Text = ((1 - ((Decimal.Parse(txtMargin3.Text)) / (decimal.Parse(txtWeb3.Text)))) * 100).ToString();
-                txtMargin4.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
-                                   , Int32.Parse(sp1.Col4Break.ToString()))).ToString("G29");
-                txtMargin4.Text = ((1 - ((Decimal.Parse(txtMargin4.Text)) / (decimal.Parse(txtWeb4.Text)))) * 100).ToString();
-                txtMargin5.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
-                                   , Int32.Parse(sp1.Col5Break.ToString()))).ToString("G29");
-                txtMargin5.Text = ((1 - ((Decimal.Parse(txtMargin5.Text)) / (decimal.Parse(txtWeb5.Text)))) * 100).ToString();
+                try
+                {
+                    txtMargin2.Text = ((1 - ((Decimal.Parse(txtMargin2.Text)) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
+                    txtMargin3.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked, Int32.Parse(sp1.Col3Break.ToString()))).ToString("G29");
+                    txtMargin3.Text = ((1 - ((Decimal.Parse(txtMargin3.Text)) / (decimal.Parse(txtWeb3.Text)))) * 100).ToString();
+                    if (sp1.Col4Break != 0)
+                    {
+                        txtMargin4.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
+                    , Int32.Parse(sp1.Col4Break.ToString()))).ToString("G29");
+                        txtMargin4.Text = ((1 - ((Decimal.Parse(txtMargin4.Text)) / (decimal.Parse(txtWeb4.Text)))) * 100).ToString();
+                        if (sp1.Col5Break != 0)
+                        {
+                            txtMargin5.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
+                        , Int32.Parse(sp1.Col5Break.ToString()))).ToString("G29");
+                            txtMargin5.Text = ((1 - ((Decimal.Parse(txtMargin5.Text)) / (decimal.Parse(txtWeb5.Text)))) * 100).ToString();
+                        }
+                    }
+                }
+                catch { }
             }
 
             #endregion
@@ -1279,53 +1299,55 @@ namespace LoginForm.QuotationModule
 
         private void QuotationSave()
         {
-                DataSet.Quotation q = new DataSet.Quotation();
-                q.QuotationNo = txtQuotationNo.Text;
-                q.RFQNo = txtRFQNo.Text;
-                try { q.SubTotal = decimal.Parse(lblsubtotal.Text); } catch { }
-                if (chkbForFinance.Checked) { q.ForFinancelIsTrue = 1; } else { q.ForFinancelIsTrue = 0; }
-                if (ckItemCost.Checked) { q.IsItemCost = 1; } else { q.IsItemCost = 0; }
-                if (ckWeightCost.Checked) { q.IsWeightCost = 1; } else { q.IsWeightCost = 0; }
-                if (ckCustomsDuties.Checked) { q.IsCustomsDuties = 1; } else { q.IsCustomsDuties = 0; }
-                q.ShippingMethodID = cbSMethod.SelectedIndex;
-                try { q.DiscOnSubTotal2 = decimal.Parse(txtTotalDis2.Text); } catch { }
-                try { q.ExtraCharges = decimal.Parse(txtExtraChanges.Text); } catch { }
-                if (chkVat.Checked) { q.IsVatValue = 1; } else { q.IsVatValue = 0; }
-                try { q.VatValue = Decimal.Parse(lblVat.Text); } catch { }
-                try { q.StartDate = dtpDate.Value; } catch { }
-                try { q.Factor = Decimal.Parse(cbFactor.Text); } catch { }
-                try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
-                q.PaymentID = (cbPayment.SelectedItem as PaymentMethod).ID;
-                q.CurrName = (cbCurrency.SelectedItem as Rate).CurType;
-                q.CurrType = cbCurrType.SelectedText;
-                q.Curr = CurrValue;
-                q.CustomerID = CustomerCode.Text;
-                int Note2 = 0;
-                int Note1 = 0;
-                if (txtNoteForUs.Text != null || txtNoteForUs.Text != "")
-                {
-                    Note n = new Note();
-                    n.Note_name = txtNoteForUs.Text;
-                    IME.Notes.Add(n);
-                    IME.SaveChanges();
-                    Note1 = n.ID;
-                }
-                if (txtNoteForUs.Text != null || txtNoteForUs.Text != "")
-                {
-                    Note n1 = new Note();
-                    n1.Note_name = txtNoteForCustomer.Text;
-                    IME.Notes.Add(n1);
-                    IME.SaveChanges();
-                    Note2 = n1.ID;
-                }
-                if (chkbForFinance.Checked)
-                {
-                    q.ForFinancelIsTrue = 1;
-                }
-                if (Note1 != 0) q.NoteForUsID = Note1;
-                if (Note2 != 0) q.NoteForCustomerID = Note2;
-                IME.Quotations.Add(q);
+            DataSet.Quotation q = new DataSet.Quotation();
+            q.QuotationNo = txtQuotationNo.Text;
+            q.RFQNo = txtRFQNo.Text;
+            try { q.SubTotal = decimal.Parse(lblsubtotal.Text); } catch { }
+            if (chkbForFinance.Checked) { q.ForFinancelIsTrue = 1; } else { q.ForFinancelIsTrue = 0; }
+            if (ckItemCost.Checked) { q.IsItemCost = 1; } else { q.IsItemCost = 0; }
+            if (ckWeightCost.Checked) { q.IsWeightCost = 1; } else { q.IsWeightCost = 0; }
+            if (ckCustomsDuties.Checked) { q.IsCustomsDuties = 1; } else { q.IsCustomsDuties = 0; }
+            q.ShippingMethodID = cbSMethod.SelectedIndex;
+            try { q.DiscOnSubTotal2 = decimal.Parse(txtTotalDis2.Text); } catch { }
+            try { q.ExtraCharges = decimal.Parse(txtExtraChanges.Text); } catch { }
+            if (chkVat.Checked) { q.IsVatValue = 1; } else { q.IsVatValue = 0; }
+            try { q.VatValue = Decimal.Parse(lblVat.Text); } catch { }
+            try { q.StartDate = dtpDate.Value; } catch { }
+            try { q.Factor = Decimal.Parse(cbFactor.Text); } catch { }
+            try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
+            q.PaymentID = (cbPayment.SelectedItem as PaymentMethod).ID;
+            q.CurrName = (cbCurrency.SelectedItem as Rate).CurType;
+            q.CurrType = cbCurrType.SelectedText;
+            q.Curr = CurrValue;
+            q.CustomerID = CustomerCode.Text;
+            q.ShippingMethodID = cbSMethod.SelectedIndex;
+            q.QuotationMainContact = cbWorkers.SelectedIndex;
+            int Note2 = 0;
+            int Note1 = 0;
+            if (txtNoteForUs.Text != null || txtNoteForUs.Text != "")
+            {
+                Note n = new Note();
+                n.Note_name = txtNoteForUs.Text;
+                IME.Notes.Add(n);
                 IME.SaveChanges();
+                Note1 = n.ID;
+            }
+            if (txtNoteForUs.Text != null || txtNoteForUs.Text != "")
+            {
+                Note n1 = new Note();
+                n1.Note_name = txtNoteForCustomer.Text;
+                IME.Notes.Add(n1);
+                IME.SaveChanges();
+                Note2 = n1.ID;
+            }
+            if (chkbForFinance.Checked)
+            {
+                q.ForFinancelIsTrue = 1;
+            }
+            if (Note1 != 0) q.NoteForUsID = Note1;
+            if (Note2 != 0) q.NoteForCustomerID = Note2;
+            IME.Quotations.Add(q);
+            IME.SaveChanges();
         }
 
         private void QuotationSave(string QuoNo)
@@ -1342,34 +1364,28 @@ namespace LoginForm.QuotationModule
                 txtQuotationNo.Text = q1.QuotationNo + "v1";
             }
             Quotation q = new Quotation();
-                q.QuotationNo = txtQuotationNo.Text;
-                q.RFQNo = txtRFQNo.Text;
-                try { q.SubTotal = decimal.Parse(lblsubtotal.Text); } catch { }
-                if (chkbForFinance.Checked) { q.ForFinancelIsTrue = 1; } else { q.ForFinancelIsTrue = 0; }
-                if (ckItemCost.Checked) { q.IsItemCost = 1; } else { q.IsItemCost = 0; }
-                if (ckWeightCost.Checked) { q.IsWeightCost = 1; } else { q.IsWeightCost = 0; }
-                if (ckCustomsDuties.Checked) { q.IsCustomsDuties = 1; } else { q.IsCustomsDuties = 0; }
-                q.ShippingMethodID = cbSMethod.SelectedIndex;
-                try { q.DiscOnSubTotal2 = decimal.Parse(txtTotalDis2.Text); } catch { }
-                try { q.ExtraCharges = decimal.Parse(txtExtraChanges.Text); } catch { }
-                if (chkVat.Checked) { q.IsVatValue = 1; } else { q.IsVatValue = 0; }
-                try { q.VatValue = Decimal.Parse(lblVat.Text); } catch { }
-                try { q.StartDate = dtpDate.Value; } catch { }
-                try { q.Factor = Decimal.Parse(cbFactor.Text); } catch { }
-                try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
-                try { q.PaymentID = (cbPayment.SelectedItem as PaymentMethod).ID; } catch { }
-                try { q.CurrName = (cbCurrency.SelectedItem as Rate).CurType; } catch { }
-                try
-                {
-                    q.CurrType = cbCurrType.SelectedText;
-                }
-                catch { }
-                try
-                {
-                    q.Curr = CurrValue;
-                }
-                catch { }
-                try { q.CustomerID = CustomerCode.Text; } catch { }
+            q.QuotationNo = txtQuotationNo.Text;
+            q.RFQNo = txtRFQNo.Text;
+            try { q.SubTotal = decimal.Parse(lblsubtotal.Text); } catch { }
+            if (chkbForFinance.Checked) { q.ForFinancelIsTrue = 1; } else { q.ForFinancelIsTrue = 0; }
+            if (ckItemCost.Checked) { q.IsItemCost = 1; } else { q.IsItemCost = 0; }
+            if (ckWeightCost.Checked) { q.IsWeightCost = 1; } else { q.IsWeightCost = 0; }
+            if (ckCustomsDuties.Checked) { q.IsCustomsDuties = 1; } else { q.IsCustomsDuties = 0; }
+            q.ShippingMethodID = cbSMethod.SelectedIndex;
+            try { q.DiscOnSubTotal2 = decimal.Parse(txtTotalDis2.Text); } catch { }
+            try { q.ExtraCharges = decimal.Parse(txtExtraChanges.Text); } catch { }
+            if (chkVat.Checked) { q.IsVatValue = 1; } else { q.IsVatValue = 0; }
+            try { q.VatValue = Decimal.Parse(lblVat.Text); } catch { }
+            try { q.StartDate = dtpDate.Value; } catch { }
+            try { q.Factor = Decimal.Parse(cbFactor.Text); } catch { }
+            try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
+            try { q.PaymentID = (cbPayment.SelectedItem as PaymentMethod).ID; } catch { }
+            try { q.CurrName = (cbCurrency.SelectedItem as Rate).CurType; } catch { }
+            q.ShippingMethodID = cbSMethod.SelectedIndex;
+            try { q.CurrType = cbCurrType.SelectedText; } catch { }
+            try { q.Curr = CurrValue; } catch { }
+            try { q.CustomerID = CustomerCode.Text; } catch { }
+            try { q.QuotationMainContact = cbWorkers.SelectedIndex; } catch { }
             int Note2 = 0;
             int Note1 = 0;
             if (txtNoteForUs.Text != null || txtNoteForUs.Text != "")
@@ -1396,7 +1412,7 @@ namespace LoginForm.QuotationModule
             if (Note2 != 0) q.NoteForCustomerID = Note2;
 
             IME.Quotations.Add(q);
-                IME.SaveChanges();
+            IME.SaveChanges();
         }
 
         private void QuotationDetailsSave()
@@ -1418,8 +1434,7 @@ namespace LoginForm.QuotationModule
                     try { qd.TargetUP = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].Value.ToString()); } catch { }
                     try { qd.Competitor = dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].Value.ToString(); } catch { }
                     try { qd.CustomerDescription = dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].Value.ToString(); } catch { }
-                    try { qd.CustomerStockCode = dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].Value.ToString(); }
-                    catch { }
+                    try { qd.CustomerStockCode = dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].Value.ToString(); } catch { }
                     IME.QuotationDetails.Add(qd);
                     IME.SaveChanges();
 
@@ -1457,8 +1472,8 @@ namespace LoginForm.QuotationModule
             txtQuotationNo.Text = q.QuotationNo;
             txtRFQNo.Text = q.RFQNo;
             CustomerCode.Text = q.Customer.ID;
-            txtNoteForCustomer.Text = IME.Notes.Where(a => a.ID == q.NoteForCustomerID).FirstOrDefault().Note_name;
-            txtNoteForUs.Text = IME.Notes.Where(a => a.ID == q.NoteForUsID).FirstOrDefault().Note_name;
+            if(q.NoteForCustomerID!=null)txtNoteForCustomer.Text = IME.Notes.Where(a => a.ID == q.NoteForCustomerID).FirstOrDefault().Note_name;
+            if (q.NoteForCustomerID != null) txtNoteForUs.Text = IME.Notes.Where(a => a.ID == q.NoteForUsID).FirstOrDefault().Note_name;
             if (q.ForFinancelIsTrue == 1) { chkbForFinance.Checked = true; }
             fillCustomer();
             #region QuotationDetails
