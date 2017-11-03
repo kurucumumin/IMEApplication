@@ -80,7 +80,7 @@ namespace LoginForm.Services
                 else if (sp.DiscountedPrice4 != 0) { return result = Decimal.Parse(sp.DiscountedPrice5.ToString()); }else { return result = Decimal.Parse(sp.DiscountedPrice1.ToString()); }
             }
             catch { }
-            return Decimal.Parse(sp.DiscountedPrice1.ToString());// fiyatının olmadığı gösteriyor
+            return 0;// fiyatının olmadığı gösteriyor
             #endregion
         }
         public static decimal GetLandingCost(string ArticleNo, bool Product, bool Weight, bool CustomsDuties, int quantity)

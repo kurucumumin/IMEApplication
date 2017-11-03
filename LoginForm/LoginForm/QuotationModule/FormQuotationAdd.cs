@@ -1276,8 +1276,6 @@ namespace LoginForm.QuotationModule
                 txtTotalDis2.Text = "";
             }
         }
-
-        }
         private bool ControlSave()
         {
             if(txtCustomerName.Text==null || txtCustomerName.Text == "") { MessageBox.Show("Please Enter a Customer");return false; }
@@ -2225,7 +2223,7 @@ namespace LoginForm.QuotationModule
 
         private void txtTotalDis_Click(object sender, EventArgs e)
         {
-            if (txtTotalDis.Text != null)
+            if (txtTotalDis.Text != null && txtTotalDis.Text!="")
             {
             decimal sonuc = Decimal.Parse(txtTotalDis.Text);
             txtTotalDis.Text = sonuc.ToString();
