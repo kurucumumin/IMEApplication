@@ -21,7 +21,7 @@ namespace LoginForm.Item
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnSearch_Click(object sender, EventArgs e)
         {
             txtQuantitiy.Text = "";
             gridselectedindex = 0;

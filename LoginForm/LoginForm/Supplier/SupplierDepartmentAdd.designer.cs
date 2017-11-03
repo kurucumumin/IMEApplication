@@ -36,9 +36,10 @@
             // 
             // btncancel
             // 
-            this.btncancel.Location = new System.Drawing.Point(197, 42);
+            this.btncancel.Location = new System.Drawing.Point(263, 52);
+            this.btncancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btncancel.Name = "btncancel";
-            this.btncancel.Size = new System.Drawing.Size(75, 23);
+            this.btncancel.Size = new System.Drawing.Size(100, 28);
             this.btncancel.TabIndex = 7;
             this.btncancel.Text = "Cancel";
             this.btncancel.UseVisualStyleBackColor = true;
@@ -46,9 +47,10 @@
             // 
             // btnadd
             // 
-            this.btnadd.Location = new System.Drawing.Point(10, 42);
+            this.btnadd.Location = new System.Drawing.Point(13, 52);
+            this.btnadd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnadd.Name = "btnadd";
-            this.btnadd.Size = new System.Drawing.Size(75, 23);
+            this.btnadd.Size = new System.Drawing.Size(100, 28);
             this.btnadd.TabIndex = 6;
             this.btnadd.Text = "Add";
             this.btnadd.UseVisualStyleBackColor = true;
@@ -56,32 +58,34 @@
             // 
             // txtdepartment
             // 
-            this.txtdepartment.Location = new System.Drawing.Point(123, 2);
+            this.txtdepartment.Location = new System.Drawing.Point(166, 8);
+            this.txtdepartment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtdepartment.Name = "txtdepartment";
-            this.txtdepartment.Size = new System.Drawing.Size(149, 20);
+            this.txtdepartment.Size = new System.Drawing.Size(197, 22);
             this.txtdepartment.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 9);
+            this.label1.Location = new System.Drawing.Point(9, 11);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 13);
+            this.label1.Size = new System.Drawing.Size(123, 17);
             this.label1.TabIndex = 4;
             this.label1.Text = "Department Name";
             // 
             // SupplierDepartmentAdd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 80);
+            this.ClientSize = new System.Drawing.Size(379, 98);
             this.Controls.Add(this.btncancel);
             this.Controls.Add(this.btnadd);
             this.Controls.Add(this.txtdepartment);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "SupplierDepartmentAdd";
             this.Text = "DepartmentAdd";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.SupplierDepartmentAdd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

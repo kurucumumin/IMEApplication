@@ -36,9 +36,10 @@
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(162, 83);
+            this.CancelButton.Location = new System.Drawing.Point(216, 102);
+            this.CancelButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelButton.Size = new System.Drawing.Size(100, 28);
             this.CancelButton.TabIndex = 5;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
@@ -46,9 +47,10 @@
             // 
             // AddButton
             // 
-            this.AddButton.Location = new System.Drawing.Point(62, 83);
+            this.AddButton.Location = new System.Drawing.Point(83, 102);
+            this.AddButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(75, 23);
+            this.AddButton.Size = new System.Drawing.Size(100, 28);
             this.AddButton.TabIndex = 6;
             this.AddButton.Text = "Add";
             this.AddButton.UseVisualStyleBackColor = true;
@@ -56,32 +58,34 @@
             // 
             // DepartmentName
             // 
-            this.DepartmentName.Location = new System.Drawing.Point(95, 46);
+            this.DepartmentName.Location = new System.Drawing.Point(127, 57);
+            this.DepartmentName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DepartmentName.Name = "DepartmentName";
-            this.DepartmentName.Size = new System.Drawing.Size(142, 20);
+            this.DepartmentName.Size = new System.Drawing.Size(188, 22);
             this.DepartmentName.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 49);
+            this.label1.Location = new System.Drawing.Point(16, 60);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 13);
+            this.label1.Size = new System.Drawing.Size(82, 17);
             this.label1.TabIndex = 3;
             this.label1.Text = "Department";
             // 
             // CustomerDepartmentAdd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 152);
+            this.ClientSize = new System.Drawing.Size(379, 187);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.DepartmentName);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CustomerDepartmentAdd";
             this.Text = "DepartmentAdd";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.DepartmentAdd_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
