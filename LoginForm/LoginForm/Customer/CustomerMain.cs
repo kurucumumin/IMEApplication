@@ -843,6 +843,7 @@ namespace LoginForm
                 ContactList.DataSource = null;
                 CustomerCode.Text = custmrcode;
                 Customer newCustomer = new Customer();
+                newCustomer.CreateDate = DateTime.Now.Date;
                 newCustomer.ID = CustomerCode.Text;
                 IME.Customers.Add(newCustomer);
                 IME.SaveChanges();
