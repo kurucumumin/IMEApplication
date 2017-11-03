@@ -69,6 +69,7 @@
           <Property Name="CurrTypeQuo" Type="nvarchar" MaxLength="15" />
           <Property Name="CurrNameQuo" Type="nvarchar" MaxLength="15" />
           <Property Name="customerAccountantNoteID" Type="int" />
+          <Property Name="CreateDate" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="CustomerAdress">
           <Key>
@@ -2077,6 +2078,7 @@
           <Property Name="CurrTypeQuo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="CurrNameQuo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="customerAccountantNoteID" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Worker" Relationship="IMEModel.FK__Customer__accoun__6EF57B66" FromRole="Customer" ToRole="Worker" />
           <NavigationProperty Name="Note" Relationship="IMEModel.FK__Customer__custom__3B75D760" FromRole="Customer" ToRole="Note" />
           <NavigationProperty Name="CustomerWorker" Relationship="IMEModel.FK__Customer__MainCo__19AACF41" FromRole="Customer" ToRole="CustomerWorker" />
@@ -3529,6 +3531,7 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="IMEModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="customerAccountantNoteID" ColumnName="customerAccountantNoteID" />
                 <ScalarProperty Name="CurrNameQuo" ColumnName="CurrNameQuo" />
                 <ScalarProperty Name="CurrTypeQuo" ColumnName="CurrTypeQuo" />
