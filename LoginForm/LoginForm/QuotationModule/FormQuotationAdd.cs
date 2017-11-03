@@ -63,7 +63,7 @@ namespace LoginForm.QuotationModule
             CustomerCode.Enabled = false;
             txtCustomerName.Enabled = false;
             btnSave.Enabled = false;
-
+            LowMarginLimit = (Decimal)Utils.getManagement().LowMarginLimit;
             modifyQuotation(q1);
             fillCustomer();
 
@@ -89,6 +89,8 @@ namespace LoginForm.QuotationModule
 
                 dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].ReadOnly = false;
                 dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
+                GetMarginMark(i);
             }
         }
 
@@ -533,6 +535,19 @@ namespace LoginForm.QuotationModule
                 #endregion
 
             }
+        }
+
+
+        private void GetMarginMark(int rowindex)
+        {
+            try
+            {
+                if (Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgMargin"].Value.ToString()) < LowMarginLimit)
+                {
+                    dgQuotationAddedItems.Rows[rowindex].Cells["LM"].Style.BackColor = Color.Blue;
+                }
+            }
+            catch { }
         }
 
         private void GetMarginMark()
@@ -1361,31 +1376,17 @@ namespace LoginForm.QuotationModule
         private void QuotationSave(string QuoNo)
         {
             IMEEntities IME = new IMEEntities();
-
-                Quotation q1 = IME.Quotations.Where(a => a.QuotationNo.Contains(QuoNo)).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
-
-
-
-                //if (q1.QuotationNo.Contains("v"))
-                //{
-                //    int quoID = Int32.Parse(q1.QuotationNo.Substring(q1.QuotationNo.LastIndexOf('v') + 1)) + 1;
-                //    txtQuotationNo.Text = (q1.QuotationNo.Substring(q1.QuotationNo.IndexOf('v') + 1) + quoID).ToString();
-                //    int charLocation = q1.QuotationNo.IndexOf("v", StringComparison.Ordinal);
-
-                //    if (charLocation > 0)
-                //    {
-                //        txtQuotationNo.Text = txtQuotationNo.Text.Substring(0, charLocation) + quoID.ToString();
-                //    }
-
-
-                //}
-                //else
-                //{
-                //    txtQuotationNo.Text = q1.QuotationNo + "v1";
-                //}
-
-
-                Quotation q = new Quotation();
+            Quotation q1 = IME.Quotations.Where(a => a.QuotationNo.Contains(QuoNo)).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
+            if (txtQuotationNo.Text.Contains("v"))
+            {
+                int quoID = Int32.Parse(txtQuotationNo.Text.Substring(txtQuotationNo.Text.LastIndexOf('v') + 1));
+                txtQuotationNo.Text = (txtQuotationNo.Text.Substring(0, txtQuotationNo.Text.IndexOf('v') + 1) + quoID).ToString();
+            }
+            else
+            {
+                txtQuotationNo.Text = q1.QuotationNo + "v1";
+            }
+            Quotation q = new Quotation();
                 q.QuotationNo = txtQuotationNo.Text;
                 q.RFQNo = txtRFQNo.Text;
                 try { q.SubTotal = decimal.Parse(lblsubtotal.Text); } catch { }
@@ -1414,39 +1415,31 @@ namespace LoginForm.QuotationModule
                 }
                 catch { }
                 try { q.CustomerID = CustomerCode.Text; } catch { }
-            if (q.NoteForUsID==null)
+            int Note2 = 0;
+            int Note1 = 0;
+            if (txtNoteForUs.Text != null || txtNoteForUs.Text != "")
             {
                 Note n = new Note();
                 n.Note_name = txtNoteForUs.Text;
                 IME.Notes.Add(n);
-                q.NoteForUsID = n.ID;
                 IME.SaveChanges();
+                Note1 = n.ID;
             }
-            else
+            if (txtNoteForUs.Text != null || txtNoteForUs.Text != "")
             {
-                Note n = IME.Notes.Where(a => a.ID == q.NoteForUsID).FirstOrDefault();
-                n.Note_name = txtNoteForUs.Text;
+                Note n1 = new Note();
+                n1.Note_name = txtNoteForCustomer.Text;
+                IME.Notes.Add(n1);
                 IME.SaveChanges();
+                Note2 = n1.ID;
             }
-            if (q.NoteForCustomerID == null)
-            {
-                Note n = new Note();
-                n.Note_name = txtNoteForCustomer.Text;
-                IME.Notes.Add(n);
-                q.NoteForCustomerID = n.ID;
-                IME.SaveChanges();
-            }
-            else
-            {
-                Note n = IME.Notes.Where(a => a.ID == q.NoteForCustomerID).FirstOrDefault();
-                n.Note_name = txtNoteForCustomer.Text;
-                IME.SaveChanges();
-            }
-
             if (chkbForFinance.Checked)
             {
                 q.ForFinancelIsTrue = 1;
             }
+            if (Note1 != 0) q.NoteForUsID = Note1;
+            if (Note2 != 0) q.NoteForCustomerID = Note2;
+            
             IME.Quotations.Add(q);
                 IME.SaveChanges();
         }
@@ -1672,7 +1665,7 @@ namespace LoginForm.QuotationModule
                 dgQuotationAddedItems.Rows[RowIndex].Cells["dgUC"].Value = sdP.Unit_Content.ToString();
                 dgQuotationAddedItems.Rows[RowIndex].Cells["dgUOM"].Value = sdP.Unit_Measure;
                 dgQuotationAddedItems.Rows[RowIndex].Cells["dgUOM"].Value = sdP.Unit_Measure;
-                dgQuotationAddedItems.Rows[RowIndex].Cells["dgPackType"].Value = sdP.Calibration_Ind;
+               // dgQuotationAddedItems.Rows[RowIndex].Cells["dgPackType"].Value = sdP.Calibration_Ind;
 
                 if (sdP.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sdP.Standard_Weight) / (decimal)1000).ToString("G29"); }
                 txtHazardousInd.Text = sdP.Hazardous_Ind;
@@ -1689,7 +1682,7 @@ namespace LoginForm.QuotationModule
                 txtDiscCharge.Text = sdP.Disc_Change_Ind;
                 txtExpiringPro.Text = sdP.Expiring_Product_Change_Ind;
                 txtManufacturer.Text = sdP.Manufacturer.ToString();
-                dgQuotationAddedItems.Rows[RowIndex].Cells["MPN"].Value = sdP.MPN;
+                dgQuotationAddedItems.Rows[RowIndex].Cells["dgMPN"].Value = sdP.MPN;
                 txtMHCodeLevel1.Text = sdP.MH_Code_Level_1;
                 txtCCCN.Text = sdP.CCCN_No.ToString();
                 txtHeight.Text = ((decimal)(sdP.Heigh * ((Decimal)100))).ToString("G29");
@@ -1778,7 +1771,6 @@ namespace LoginForm.QuotationModule
             #endregion
 
             #region Low Margin Mark
-
 
             if (txtLithium.Text != "")
             {
