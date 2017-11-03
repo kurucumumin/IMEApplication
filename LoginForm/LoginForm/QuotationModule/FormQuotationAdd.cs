@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using LoginForm.DataSet;
 using LoginForm.Services;
 
-
 namespace LoginForm.QuotationModule
 {
     public partial class FormQuotationAdd : Form
@@ -35,6 +34,7 @@ namespace LoginForm.QuotationModule
         #endregion
 
         bool modifyMod = false;
+        ToolTip aciklama = new ToolTip();
 
         public FormQuotationAdd()
         {
@@ -120,7 +120,7 @@ namespace LoginForm.QuotationModule
                 cbRep.DisplayMember = "NameLastName";
                 cbRep.SelectedIndex = cbRep.FindStringExact(Utils.getCurrentUser().NameLastName);
                 cbCurrType.SelectedIndex = 0;
-               
+
                 #endregion
             }
             GetCurrency(dtpDate.Value);
@@ -439,7 +439,8 @@ namespace LoginForm.QuotationModule
                         dgQuotationAddedItems.Rows[rowindex].Cells["dgCost"].Value = classQuotationAdd.GetCost(dgQuotationAddedItems.Rows[rowindex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString("G29");
                         if (dgQuotationAddedItems.Rows[rowindex].Cells["dgCost"].Value.ToString() != "-1") { String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgCost"].Value.ToString())).ToString(); }
                         GetLandingCost(rowindex);
-                        dgQuotationAddedItems.Rows[rowindex].Cells["dgLandingCost"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgLandingCost"].Value.ToString())).ToString();
+                        //  dgQuotationAddedItems.Rows[rowindex].Cells["dgLandingCost"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgLandingCost"].Value.ToString())).ToString();
+                        dgQuotationAddedItems.Rows[rowindex].Cells["dgLandingCost"].Value = Math.Round(Convert.ToDecimal(dgQuotationAddedItems.Rows[rowindex].Cells["dgLandingCost"].Value.ToString()), 4);
                         price = Decimal.Parse((classQuotationAdd.GetPrice(dgQuotationAddedItems.Rows[rowindex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())) * Decimal.Parse(cbFactor.Text) * Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString("G29"));
                         //price /= factor;
                         decimal discResult = 0;
@@ -1110,14 +1111,6 @@ namespace LoginForm.QuotationModule
             #endregion
         }
 
-        private void txtExtraChanges_TextChanged(object sender, EventArgs e)
-        {
-            decimal ExtraCharge = 0;
-            try { ExtraCharge = Decimal.Parse(txtExtraChanges.Text); } catch { }
-            lblTotalExtra.Text = (ExtraCharge + Decimal.Parse(lbltotal.Text) - CurrentExraChange).ToString();
-            CurrentExraChange = ExtraCharge;
-        }
-
         private void chkVat_CheckedChanged(object sender, EventArgs e)
         {
             chkVat_Checked();
@@ -1264,45 +1257,7 @@ namespace LoginForm.QuotationModule
             }
         }
 
-        private void txtTotalDis2_Leave(object sender, EventArgs e)
-        {
-            totalDis2Change();
         }
-
-        private void txtTotalDis_Leave(object sender, EventArgs e)
-        {
-            if (lblsubtotal.Text != "" && Decimal.Parse(lblsubtotal.Text) != 0 && lblsubtotal.Text != null
-                && txtTotalDis.Text != "" && Decimal.Parse(txtTotalDis.Text) != 0)
-            {
-                decimal dis2 = Decimal.Parse(lblsubtotal.Text) * Decimal.Parse(txtTotalDis.Text) / 100;
-
-                    txtTotalDis2.Text = dis2.ToString();
-                for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
-                {
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value == null || dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value.ToString() == 0.ToString())
-                    {
-                        dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value = txtTotalDis.Text;
-                    }
-                }
-                //for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
-                //{
-                //    try
-                //    {
-                //        decimal disc = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value.ToString());
-                //        decimal ItemTotal = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString());
-                //        decimal newTotal = (ItemTotal - (ItemTotal * disc / 100));
-                //        decimal Disc1 = (ItemTotal * 100) / (100 - disc);
-                //        dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value = -((newTotal * 100 / Disc1)-100);
-                //        GetQuotationQuantity(i);
-                //    }
-                //    catch { }
-                //}
-                totalDis2Change();
-            }
-
-
-        }
-
         private bool ControlSave()
         {
             if(txtCustomerName.Text==null || txtCustomerName.Text == "") { MessageBox.Show("Please Enter a Customer");return false; }
@@ -1439,7 +1394,7 @@ namespace LoginForm.QuotationModule
             }
             if (Note1 != 0) q.NoteForUsID = Note1;
             if (Note2 != 0) q.NoteForCustomerID = Note2;
-            
+
             IME.Quotations.Add(q);
                 IME.SaveChanges();
         }
@@ -2130,6 +2085,166 @@ namespace LoginForm.QuotationModule
             QuotationExcelExport.Export(dgQuotationAddedItems,txtQuotationNo.Text);
         }
 
+        private void textBox10_Click(object sender, EventArgs e)
+        {
+            if (textBox10.Text != null)
+            {
+                decimal sonuc = Decimal.Parse(textBox10.Text);
+                textBox10.Text = sonuc.ToString();
+            }
+        }
+
+        private void textBox10_Leave(object sender, EventArgs e)
+        {
+            if (textBox10.Text != null)
+            {
+                decimal sonuc = Decimal.Parse(textBox10.Text);
+                sonuc = Math.Round(sonuc, 4);
+                textBox10.Text = sonuc.ToString();
+            }
+        }
+
+        private void txtTotalMargin_Click(object sender, EventArgs e)
+        {
+            if (txtTotalMargin.Text != null)
+            {
+                decimal sonuc = Decimal.Parse(txtTotalMargin.Text);
+                txtTotalMargin.Text = sonuc.ToString();
+            }
+        }
+
+        private void txtTotalMargin_Leave(object sender, EventArgs e)
+        {
+            if (txtTotalMargin.Text != null)
+            {
+                decimal sonuc = Decimal.Parse(txtTotalMargin.Text);
+                sonuc = Math.Round(sonuc, 4);
+                txtTotalMargin.Text = sonuc.ToString();
+            }
+        }
+
+        private void textBox11_Click(object sender, EventArgs e)
+        {
+            if (textBox11.Text != null)
+            {
+                decimal sonuc = Decimal.Parse(textBox11.Text);
+                textBox11.Text = sonuc.ToString();
+            }
+        }
+
+        private void textBox11_Leave(object sender, EventArgs e)
+        {
+            if (textBox11.Text != null)
+            {
+                decimal sonuc = Decimal.Parse(textBox11.Text);
+                sonuc = Math.Round(sonuc, 4);
+                textBox11.Text = sonuc.ToString();
+            }
+        }
+
+        private void lblsubtotal_Click(object sender, EventArgs e)
+        {
+            if (lblsubtotal.Text != null)
+            {
+                decimal sonuc = Decimal.Parse(lblsubtotal.Text);
+                lblsubtotal.Text = sonuc.ToString();
+            }
+        }
+
+        private void lblsubtotal_Leave(object sender, EventArgs e)
+        {
+            if (lblsubtotal.Text != null)
+            {
+                decimal sonuc = Decimal.Parse(lblsubtotal.Text);
+                sonuc = Math.Round(sonuc, 4);
+                lblsubtotal.Text = sonuc.ToString();
+            }
+        }
+
+        private void txtTotalDis2_Leave(object sender, EventArgs e)
+        {
+            totalDis2Change();
+
+            if (txtTotalDis2.Text != null)
+            {
+                decimal sonuc = Decimal.Parse(txtTotalDis2.Text);
+                sonuc = Math.Round(sonuc, 4);
+                txtTotalDis2.Text = sonuc.ToString();
+            }
+        }
+
+        private void txtTotalDis2_Click(object sender, EventArgs e)
+        {
+            if (txtTotalDis2.Text != null)
+            {
+                decimal sonuc = Decimal.Parse(txtTotalDis2.Text);
+                txtTotalDis2.Text = sonuc.ToString();
+            }
+        }
+
+        private void txtTotalDis_Leave(object sender, EventArgs e)
+        {
+            if (lblsubtotal.Text != "" && Decimal.Parse(lblsubtotal.Text) != 0 && lblsubtotal.Text != null
+                && txtTotalDis.Text != "" && Decimal.Parse(txtTotalDis.Text) != 0)
+            {
+                decimal dis2 = Decimal.Parse(lblsubtotal.Text) * Decimal.Parse(txtTotalDis.Text) / 100;
+
+                txtTotalDis2.Text = dis2.ToString();
+                for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+                {
+                    if (dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value == null || dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value.ToString() == 0.ToString())
+                    {
+                        dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value = txtTotalDis.Text;
+                    }
+                }
+                totalDis2Change();
+
+                if (txtTotalDis.Text != null)
+                {
+                    decimal sonuc = Decimal.Parse(txtTotalDis.Text);
+                    sonuc = Math.Round(sonuc, 4);
+                    txtTotalDis.Text = sonuc.ToString();
+                }
+            }
+        }
+
+        private void txtTotalDis_Click(object sender, EventArgs e)
+        {
+            if (txtTotalDis.Text != null)
+            {
+            decimal sonuc = Decimal.Parse(txtTotalDis.Text);
+            txtTotalDis.Text = sonuc.ToString();
+            }
+        }
+
+        private void txtExtraChanges_TextChanged(object sender, EventArgs e)
+        {
+            decimal ExtraCharge = 0;
+
+            try { ExtraCharge = Decimal.Parse(txtExtraChanges.Text); } catch { }
+            lblTotalExtra.Text = (ExtraCharge + Decimal.Parse(lbltotal.Text) - CurrentExraChange).ToString();
+            CurrentExraChange = ExtraCharge;
+        }
+
+        private void txtExtraChanges_Leave(object sender, EventArgs e)
+        {
+            if (txtExtraChanges.Text != null)
+            {
+                decimal sonuc = Decimal.Parse(txtExtraChanges.Text);
+                sonuc = Math.Round(sonuc, 4);
+                txtExtraChanges.Text = sonuc.ToString();
+            }
+        }
+
+        private void txtExtraChanges_Click(object sender, EventArgs e)
+        {
+            if (txtExtraChanges.Text != null)
+            {
+                decimal sonuc = Decimal.Parse(txtExtraChanges.Text);
+                txtExtraChanges.Text = sonuc.ToString();
+            }
+        }
+
         private void dtpDate_ValueChanged(object sender, EventArgs e)
         {
             cbCurrency.DataSource = null;
@@ -2137,5 +2252,6 @@ namespace LoginForm.QuotationModule
             cbCurrency.DisplayMember = "CurType";
             cbCurrency.ValueMember = "ID";
         }
+
     }
 }
