@@ -590,7 +590,7 @@ namespace LoginForm
             if (customerAdapter[gridselectedindex].isInvoiceAdress == 1) { InvoiceAdressOk.Checked = true; } else { InvoiceAdressOk.Checked = false; }
             cbTown.SelectedIndex = cbTown.FindStringExact(customerAdapter[gridselectedindex].Town_name);
             AddressDetails.Text = customerAdapter[gridselectedindex].AdressDetails;
-            AccountingNotes.Text = IME.Notes.Where(a => a.ID == customerAdapter[gridselectedindex].customerAccountantNoteID).FirstOrDefault().Note_name;
+            try { AccountingNotes.Text = IME.Notes.Where(a => a.ID == customerAdapter[gridselectedindex].customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
 
             #endregion
         }
