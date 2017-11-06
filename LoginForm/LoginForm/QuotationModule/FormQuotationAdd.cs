@@ -99,8 +99,11 @@ namespace LoginForm.QuotationModule
 
         private void QuotationForm_Load(object sender, EventArgs e)
         {
+
             if (!modifyMod)
             {
+                DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
+                dgQuotationAddedItems.Rows.Add(dgRow);
                 txtQuotationNo.Text = NewQuotationID();
                 dgQuotationAddedItems.Rows[0].Cells["dgQty"].Value = "0";
                 dgQuotationAddedItems.Rows[0].Cells[0].Value = 1.ToString();
@@ -117,8 +120,9 @@ namespace LoginForm.QuotationModule
                 cbPayment.DisplayMember = "Payment";
                 cbPayment.ValueMember = "ID";
                 cbRep.DataSource = IME.Workers.ToList();
+                cbRep.ValueMember = "WorkerID";
                 cbRep.DisplayMember = "NameLastName";
-                cbRep.SelectedIndex = Utils.getCurrentUser().WorkerID;
+                cbRep.SelectedValue = Utils.getCurrentUser().WorkerID;
                 cbCurrType.SelectedIndex = 0;
                 #endregion
             }
@@ -338,8 +342,8 @@ namespace LoginForm.QuotationModule
                                         }
 
                                     }
-
                                     this.Enabled = true;
+                                    if(dgQuotationAddedItems.CurrentCell.ColumnIndex==7) dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentRow.Index].Cells[dgQuotationAddedItems.CurrentCell.ColumnIndex+1];
                                 }
 
                             }
@@ -1002,7 +1006,8 @@ namespace LoginForm.QuotationModule
         }
 
         private void dgQuotationAddedItems_Click(object sender, EventArgs e)
-        {
+
+                {
             ItemClear();
             try { ItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString()); } catch { }
         }
@@ -1534,21 +1539,11 @@ namespace LoginForm.QuotationModule
             if (q.IsCustomsDuties == 1) { ckCustomsDuties.Checked = true; } else { ckCustomsDuties.Checked = false; }
             //Buraya Curr verileri gelecek
             #endregion
-            //if(Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 2].Cells[0].Value.ToString())> Int32.Parse(dgQuotationDeleted.Rows[dgQuotationDeleted.RowCount - 2].Cells[0].Value.ToString()))
-            //{
-            //dgQuotationAddedItems.Rows.Add(new DataGridViewRow());
             if (dgQuotationAddedItems.RowCount > 1)
             {
                 dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[0].Value = (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 2].Cells[0].Value.ToString()) + 1).ToString();
             }
             else { dgQuotationAddedItems.Rows[0].Cells[0].Value = 1.ToString(); }
-
-            //}
-            //else
-            //{
-            //    dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[0].Value = (Int32.Parse(dgQuotationDeleted.Rows[dgQuotationDeleted.RowCount - 2].Cells[0].Value.ToString()) + 1).ToString();
-
-            //}
             string q1 = q.QuotationNo;
             if (IME.Quotations.Where(a => a.QuotationNo == q1).ToList().Count > 0)
             {
@@ -2061,27 +2056,67 @@ namespace LoginForm.QuotationModule
 
         private void ChangeCurrnetCell(int currindex)
         {
+            int row= dgQuotationAddedItems.CurrentCell.RowIndex;
             while (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex].ReadOnly == true)
             {
-                currindex++;
+                if (currindex == 35)
+                {
+                    if (currindex == 15 && dgQuotationAddedItems.Rows[row].Cells[15].Value == null) break;
+                    if (dgQuotationAddedItems.RowCount - 1 == row)
+                    {
+                        DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
+                        dgQuotationAddedItems.Rows.Add(dgRow);
+                    }
+                    currindex = 6;
+                    row++;
+                }
+                else
+                {
+                    if (currindex == 16 && dgQuotationAddedItems.Rows[row].Cells[15].Value == null) break;
+                    currindex++;
+                }
             }
             try
             {
-                dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex];
+                dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[row].Cells[currindex];
             }
             catch { }
         }
         private void ChangeCurrnetCellTabKey(int currindex)
         {
+            int row = dgQuotationAddedItems.CurrentCell.RowIndex;
             while (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex].ReadOnly == true)
             {
-                currindex++;
+                if (currindex == 35)
+                {
+                    
+                    if (dgQuotationAddedItems.RowCount - 1 == row)
+                    {
+                        DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
+                        dgQuotationAddedItems.Rows.Add(dgRow);
+                    }
+                    currindex = 6;
+                    row++;
+                }
+                else {
+                    if (currindex == 16 && dgQuotationAddedItems.Rows[row].Cells[15].Value == null) break;
+                    currindex++;
+                }
             }
             try
             {
-                dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex - 1];
+                 dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[row].Cells[currindex-1]; 
             }
             catch { }
+            //while (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex].ReadOnly == true)
+            //{
+            //    currindex++;
+            //}
+            //try
+            //{
+            //    dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex - 1];
+            //}
+            //catch { }
         }
 
         private void dgQuotationAddedItems_KeyDown(object sender, KeyEventArgs e)
