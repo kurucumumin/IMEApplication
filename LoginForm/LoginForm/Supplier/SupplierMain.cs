@@ -39,7 +39,7 @@ using LoginForm.Services;
             cmbAcountRep.DisplayMember = "UserName";
             cmbAcountRep.ValueMember = "WorkerID";
 
-            cmbAcountTerms.DataSource = db.PaymentTerms.ToList();
+            cmbAcountTerms.DataSource = db.PaymentTerms.OrderBy(p=>p.timespan).ToList();
             cmbAcountTerms.DisplayMember = "term_name";
             cmbAcountTerms.ValueMember = "ID";
 
