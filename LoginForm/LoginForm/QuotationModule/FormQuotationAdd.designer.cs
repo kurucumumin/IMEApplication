@@ -398,6 +398,7 @@
             // 
             // dgQuotationAddedItems
             // 
+            this.dgQuotationAddedItems.AllowUserToAddRows = false;
             this.dgQuotationAddedItems.AllowUserToOrderColumns = true;
             this.dgQuotationAddedItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgQuotationAddedItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
