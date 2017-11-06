@@ -2100,7 +2100,7 @@ namespace LoginForm.QuotationModule
 
         private void textBox10_Click(object sender, EventArgs e)
         {
-            if (textBox10.Text != null)
+            if (textBox10.Text != null && textBox10.Text != "")
             {
                 decimal sonuc = Decimal.Parse(textBox10.Text);
                 textBox10.Text = sonuc.ToString();
@@ -2109,7 +2109,7 @@ namespace LoginForm.QuotationModule
 
         private void textBox10_Leave(object sender, EventArgs e)
         {
-            if (textBox10.Text != null)
+            if (textBox10.Text != null && textBox10.Text != "")
             {
                 decimal sonuc = Decimal.Parse(textBox10.Text);
                 sonuc = Math.Round(sonuc, 4);
@@ -2119,7 +2119,7 @@ namespace LoginForm.QuotationModule
 
         private void txtTotalMargin_Click(object sender, EventArgs e)
         {
-            if (txtTotalMargin.Text != null)
+            if (txtTotalMargin.Text != null && txtTotalMargin.Text != "")
             {
                 decimal sonuc = Decimal.Parse(txtTotalMargin.Text);
                 txtTotalMargin.Text = sonuc.ToString();
@@ -2128,7 +2128,7 @@ namespace LoginForm.QuotationModule
 
         private void txtTotalMargin_Leave(object sender, EventArgs e)
         {
-            if (txtTotalMargin.Text != null)
+            if (txtTotalMargin.Text != null && txtTotalMargin.Text != "")
             {
                 decimal sonuc = Decimal.Parse(txtTotalMargin.Text);
                 sonuc = Math.Round(sonuc, 4);
@@ -2138,7 +2138,7 @@ namespace LoginForm.QuotationModule
 
         private void textBox11_Click(object sender, EventArgs e)
         {
-            if (textBox11.Text != null)
+            if (textBox11.Text != null && textBox11.Text != "")
             {
                 decimal sonuc = Decimal.Parse(textBox11.Text);
                 textBox11.Text = sonuc.ToString();
@@ -2147,7 +2147,7 @@ namespace LoginForm.QuotationModule
 
         private void textBox11_Leave(object sender, EventArgs e)
         {
-            if (textBox11.Text != null)
+            if (textBox11.Text != null && textBox11.Text != "")
             {
                 decimal sonuc = Decimal.Parse(textBox11.Text);
                 sonuc = Math.Round(sonuc, 4);
@@ -2157,7 +2157,7 @@ namespace LoginForm.QuotationModule
 
         private void lblsubtotal_Click(object sender, EventArgs e)
         {
-            if (lblsubtotal.Text != null)
+            if (lblsubtotal.Text != null && lblsubtotal.Text != "")
             {
                 decimal sonuc = Decimal.Parse(lblsubtotal.Text);
                 lblsubtotal.Text = sonuc.ToString();
@@ -2166,7 +2166,7 @@ namespace LoginForm.QuotationModule
 
         private void lblsubtotal_Leave(object sender, EventArgs e)
         {
-            if (lblsubtotal.Text != null)
+            if (lblsubtotal.Text != null && lblsubtotal.Text != "")
             {
                 decimal sonuc = Decimal.Parse(lblsubtotal.Text);
                 sonuc = Math.Round(sonuc, 4);
@@ -2178,7 +2178,7 @@ namespace LoginForm.QuotationModule
         {
             totalDis2Change();
 
-            if (txtTotalDis2.Text != null)
+            if (txtTotalDis2.Text != null && txtTotalDis2.Text != "")
             {
                 decimal sonuc = Decimal.Parse(txtTotalDis2.Text);
                 sonuc = Math.Round(sonuc, 4);
@@ -2188,7 +2188,7 @@ namespace LoginForm.QuotationModule
 
         private void txtTotalDis2_Click(object sender, EventArgs e)
         {
-            if (txtTotalDis2.Text != null)
+            if (txtTotalDis2.Text != null && txtTotalDis2.Text != "")
             {
                 decimal sonuc = Decimal.Parse(txtTotalDis2.Text);
                 txtTotalDis2.Text = sonuc.ToString();
@@ -2212,7 +2212,7 @@ namespace LoginForm.QuotationModule
                 }
                 totalDis2Change();
 
-                if (txtTotalDis.Text != null)
+                if (txtTotalDis.Text != null && txtTotalDis.Text != "")
                 {
                     decimal sonuc = Decimal.Parse(txtTotalDis.Text);
                     sonuc = Math.Round(sonuc, 4);
@@ -2241,7 +2241,7 @@ namespace LoginForm.QuotationModule
 
         private void txtExtraChanges_Leave(object sender, EventArgs e)
         {
-            if (txtExtraChanges.Text != null)
+            if (txtExtraChanges.Text != null && txtExtraChanges.Text != "")
             {
                 decimal sonuc = Decimal.Parse(txtExtraChanges.Text);
                 sonuc = Math.Round(sonuc, 4);
@@ -2251,7 +2251,7 @@ namespace LoginForm.QuotationModule
 
         private void txtExtraChanges_Click(object sender, EventArgs e)
         {
-            if (txtExtraChanges.Text != null)
+            if (txtExtraChanges.Text != null && txtExtraChanges.Text != "")
             {
                 decimal sonuc = Decimal.Parse(txtExtraChanges.Text);
                 txtExtraChanges.Text = sonuc.ToString();
