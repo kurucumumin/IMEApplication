@@ -1991,7 +1991,7 @@ namespace LoginForm.QuotationModule
             {
                 q1 = DateTime.Now.Year.ToString() + "/1";
             }
-            else
+            else 
             {
                 q1 = quo.QuotationNo;
                 while (IME.Quotations.Where(a => a.QuotationNo == q1).ToList().Count > 0)
