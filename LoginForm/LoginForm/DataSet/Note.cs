@@ -20,11 +20,11 @@ namespace LoginForm.DataSet
             this.Customers = new HashSet<Customer>();
             this.CustomerWorkers = new HashSet<CustomerWorker>();
             this.ItemNotes = new HashSet<ItemNote>();
+            this.Quotations = new HashSet<Quotation>();
+            this.Quotations1 = new HashSet<Quotation>();
             this.Suppliers = new HashSet<Supplier>();
             this.SupplierWorkers = new HashSet<SupplierWorker>();
             this.Workers = new HashSet<Worker>();
-            this.Quotations = new HashSet<Quotation>();
-            this.Quotations1 = new HashSet<Quotation>();
         }
     
         public int ID { get; set; }
@@ -37,14 +37,14 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemNote> ItemNotes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Quotation> Quotations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Quotation> Quotations1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Supplier> Suppliers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SupplierWorker> SupplierWorkers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Worker> Workers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Quotation> Quotations { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Quotation> Quotations1 { get; set; }
     }
 }
