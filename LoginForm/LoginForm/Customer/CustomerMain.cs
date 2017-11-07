@@ -114,7 +114,7 @@ namespace LoginForm
             InvCurrencyName.DisplayMember = "CurType";
             InvCurrencyName.ValueMember = "ID";
 
-            TermsofPayments.DataSource = IME.PaymentTerms.ToList();
+            TermsofPayments.DataSource = IME.PaymentTerms.OrderBy(p=>p.timespan).ToList();
             TermsofPayments.DisplayMember = "term_name";
             PaymentMethod.DataSource = IME.PaymentMethods.ToList();
             PaymentMethod.DisplayMember = "Payment";

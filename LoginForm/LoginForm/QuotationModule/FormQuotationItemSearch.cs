@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 using LoginForm.Services;
+using System.Collections;
 
 namespace LoginForm.QuotationModule
 {
@@ -27,52 +28,13 @@ namespace LoginForm.QuotationModule
             InitializeComponent();
             ArticleCode = ItemCode;
             txtQuotationItemCode.Text = ArticleCode;
-            
+
         }
 
         private void txtQuotationItemCode_TextChanged(object sender, EventArgs e)
         {
-            #region List Birleştirme
-            string txtSelected = txtQuotationItemCode.Text;
-            var gridAdapterPC = (from a in IME.SuperDisks.Where(a => a.Article_No.Contains(txtSelected))
-                                 join customerworker in IME.ItemNotes on a.Article_No equals customerworker.ArticleNo into customerworkeres
-                                 let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
-                                 select new
-                                 {
-                                     ArticleNo = a.Article_No,
-                                     ArticleDesc = a.Article_Desc,
-                                     a.MPN,
-                                     customerworker.Note.Note_name,
-                                 }
-                         ).ToList();
-            var list2 = (from a in IME.SuperDiskPs.Where(a => a.Article_No.Contains(txtSelected))
-                         join customerworker in IME.ItemNotes on a.Article_No equals customerworker.ArticleNo into customerworkeres
-                         let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
-                         select new
-                         {
-                             ArticleNo = a.Article_No,
-                             ArticleDesc = a.Article_Desc,
-                             a.MPN,
-                             customerworker.Note.Note_name,
-                             //a.CofO,
-                             //a.Pack_Code
-                         }
-        ).ToList();
-            var list3 = (from a in IME.ExtendedRanges.Where(a => a.ArticleNo.Contains(txtSelected))
-                         join customerworker in IME.ItemNotes on a.ArticleNo equals customerworker.ArticleNo into customerworkeres
-                         let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
-                         select new
-                         {
-                             ArticleNo = a.ArticleNo,
-                             ArticleDesc = a.ArticleDescription,
-                             a.MPN,
-                             customerworker.Note.Note_name
-                         }
-                        ).ToList();
-            gridAdapterPC.AddRange(list2);
-            gridAdapterPC.AddRange(list3);
-            //
-            #endregion
+            var gridAdapterPC = BringItems(txtQuotationItemCode.Text, false);
+
             dgQuotationItemSearch.DataSource = gridAdapterPC;
             if (gridAdapterPC.Count == 0)
             {
@@ -84,13 +46,16 @@ namespace LoginForm.QuotationModule
         {
             if (dgQuotationItemSearch.DataSource != null)
             {
-              classQuotationAdd.ItemCode  =  dgQuotationItemSearch.Rows[dgQuotationItemSearch.CurrentCell.RowIndex].Cells[0].Value.ToString();
-            }this.Close();
+                classQuotationAdd.ItemCode = dgQuotationItemSearch.Rows[dgQuotationItemSearch.CurrentCell.RowIndex].Cells[0].Value.ToString();
+
+
+            }
+            this.Close();
         }
 
         private void dgQuotationItemSearch_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode==Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 if (dgQuotationItemSearch.DataSource != null)
                 {
@@ -243,6 +208,97 @@ namespace LoginForm.QuotationModule
             {
                 MessageBox.Show("There is no such a data");
             }
+        }
+
+        private dynamic BringItems(string code,bool isMPN)
+        {
+            dynamic gridAdapterPC = new object();
+            dynamic list2 = new object();
+            dynamic list3 = new object();
+
+            switch (isMPN)
+            {
+                case false:
+                    gridAdapterPC = (from a in IME.SuperDisks.Where(a => a.Article_No.Contains(code))
+                                     join customerworker in IME.ItemNotes on a.Article_No equals customerworker.ArticleNo into customerworkeres
+                                     let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
+                                     select new
+                                     {
+                                         ArticleNo = a.Article_No,
+                                         ArticleDesc = a.Article_Desc,
+                                         a.MPN,
+                                         customerworker.Note.Note_name,
+                                     }
+                         ).ToList();
+                    list2 = (from a in IME.SuperDiskPs.Where(a => a.Article_No.Contains(code))
+                                     join customerworker in IME.ItemNotes on a.Article_No equals customerworker.ArticleNo into customerworkeres
+                                     let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
+                                     select new
+                                     {
+                                         ArticleNo = a.Article_No,
+                                         ArticleDesc = a.Article_Desc,
+                                         a.MPN,
+                                         customerworker.Note.Note_name,
+                                         //a.CofO,
+                                         //a.Pack_Code
+                                     }
+                ).ToList();
+                    list3 = (from a in IME.ExtendedRanges.Where(a => a.ArticleNo.Contains(code))
+                                     join customerworker in IME.ItemNotes on a.ArticleNo equals customerworker.ArticleNo into customerworkeres
+                                     let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
+                                     select new
+                                     {
+                                         ArticleNo = a.ArticleNo,
+                                         ArticleDesc = a.ArticleDescription,
+                                         a.MPN,
+                                         customerworker.Note.Note_name
+                                     }
+                                ).ToList();
+                    gridAdapterPC.AddRange(list2);
+                    gridAdapterPC.AddRange(list3);
+                    break;
+                case true:
+                    gridAdapterPC = (from a in IME.SuperDisks.Where(a => a.MPN == code)
+                                     join customerworker in IME.ItemNotes on a.Article_No equals customerworker.ArticleNo into customerworkeres
+                                     let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
+                                     select new
+                                     {
+                                         ArticleNo = a.Article_No,
+                                         ArticleDesc = a.Article_Desc,
+                                         a.MPN,
+                                         customerworker.Note.Note_name,
+                                     }
+                         ).ToList();
+                    list2 = (from a in IME.SuperDiskPs.Where(a => a.MPN == code)
+                                     join customerworker in IME.ItemNotes on a.Article_No equals customerworker.ArticleNo into customerworkeres
+                                     let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
+                                     select new
+                                     {
+                                         ArticleNo = a.Article_No,
+                                         ArticleDesc = a.Article_Desc,
+                                         a.MPN,
+                                         customerworker.Note.Note_name,
+                                         //a.CofO,
+                                         //a.Pack_Code
+                                     }
+                ).ToList();
+                    list3 = (from a in IME.ExtendedRanges.Where(a => a.MPN == code)
+                                     join customerworker in IME.ItemNotes on a.ArticleNo equals customerworker.ArticleNo into customerworkeres
+                                     let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
+                                     select new
+                                     {
+                                         ArticleNo = a.ArticleNo,
+                                         ArticleDesc = a.ArticleDescription,
+                                         a.MPN,
+                                         customerworker.Note.Note_name
+                                     }
+                                ).ToList();
+                    gridAdapterPC.AddRange(list2);
+                    gridAdapterPC.AddRange(list3);
+                    break;
+            }
+
+            return gridAdapterPC;
         }
     }
 }
