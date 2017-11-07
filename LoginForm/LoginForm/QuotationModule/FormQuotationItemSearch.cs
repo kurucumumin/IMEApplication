@@ -48,6 +48,11 @@ namespace LoginForm.QuotationModule
             {
                 classQuotationAdd.ItemCode = dgQuotationItemSearch.Rows[dgQuotationItemSearch.CurrentCell.RowIndex].Cells[0].Value.ToString();
 
+                var MPNItemList = BringItems(dgQuotationItemSearch.CurrentRow.Cells[2].Value.ToString(), true);
+                if( MPNItemList.Count >= 0)
+                {
+
+                }
 
             }
             this.Close();
@@ -60,6 +65,12 @@ namespace LoginForm.QuotationModule
                 if (dgQuotationItemSearch.DataSource != null)
                 {
                     classQuotationAdd.ItemCode = dgQuotationItemSearch.Rows[dgQuotationItemSearch.CurrentCell.RowIndex].Cells[0].Value.ToString();
+
+                    var MPNItemList = BringItems(dgQuotationItemSearch.CurrentRow.Cells[2].Value.ToString(), true);
+                    if (MPNItemList.Count >= 0)
+                    {
+
+                    }
                 }
                 this.Close();
             }
