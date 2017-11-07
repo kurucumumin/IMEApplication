@@ -36,11 +36,11 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }
         public virtual Customer Customer { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerAdress> CustomerAdresses { get; set; }
         public virtual CustomerDepartment CustomerDepartment { get; set; }
         public virtual CustomerTitle CustomerTitle { get; set; }
         public virtual Note Note { get; set; }
         public virtual Language Language { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CustomerAdress> CustomerAdresses { get; set; }
     }
 }

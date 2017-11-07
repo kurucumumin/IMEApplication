@@ -20,10 +20,12 @@ namespace LoginForm.DataSet
         public string PostCode { get; set; }
         public string AdressDetails { get; set; }
         public Nullable<int> isDeliveryAdress { get; set; }
-        public Nullable<int> isInvoiceAdress { get; set; }
+        public Nullable<int> isIMEOffice { get; set; }
         public Nullable<int> TownID { get; set; }
         public Nullable<int> CityID { get; set; }
         public Nullable<int> CountryID { get; set; }
+        public string AdressTitle { get; set; }
+        public string AddressType { get; set; }
     
         public virtual City City { get; set; }
         public virtual Country Country { get; set; }

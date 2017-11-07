@@ -29,10 +29,9 @@ namespace LoginForm.QuotationModule
         decimal CurrentDis;
         decimal LowMarginLimit;
         public static Customer customer;
-        #endregion
-
         bool modifyMod = false;
         ToolTip aciklama = new ToolTip();
+        #endregion
 
         public FormQuotationAdd()
         {
@@ -95,6 +94,7 @@ namespace LoginForm.QuotationModule
 
                 GetMarginMark(i);
             }
+            QuotataionModifyItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells["dgProductCode"].Value.ToString(), dgQuotationAddedItems.RowCount - 1);
         }
 
         private void QuotationForm_Load(object sender, EventArgs e)
@@ -867,7 +867,6 @@ namespace LoginForm.QuotationModule
             if (du != null) { txtLicenceType.Text = du.LicenceType; }
             //
             #endregion
-
             if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUOM"].Value == "" && dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value != null) { dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUOM"].Value = "Each"; }
             #region ItemMarginFiller
             string articleNo = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString();
@@ -1238,7 +1237,6 @@ namespace LoginForm.QuotationModule
 
         }
 
-
         private void totalDis2Change()
         {
             if (Decimal.Parse(lblsubtotal.Text) != 0 && lblsubtotal.Text != "" && lblsubtotal.Text != null)
@@ -1274,6 +1272,7 @@ namespace LoginForm.QuotationModule
                 txtTotalDis2.Text = "";
             }
         }
+
         private bool ControlSave()
         {
             if(txtCustomerName.Text==null || txtCustomerName.Text ==String.Empty) { MessageBox.Show("Please Enter a Customer");return false; }
@@ -1557,16 +1556,12 @@ namespace LoginForm.QuotationModule
                 }
             }
             txtQuotationNo.Text = q1;
-            QuotataionModifyItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 2].Cells["dgProductCode"].Value.ToString(), dgQuotationAddedItems.RowCount - 2);
-        }
+            }
 
         private void QuotataionModifyItemDetailsFiller(string ArticleNoSearch, int RowIndex)
         {
-
             #region Filler
-            Rate currWeb = new Rate();
-            currWeb = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList().Where(b => b.CurType == "GBP").FirstOrDefault();
-            decimal CurrValueWeb = Decimal.Parse(currWeb.RateBuy.ToString());
+            decimal CurrValueWeb = Decimal.Parse(curr.RateBuy.ToString());
             string ArticleNoSearch1 = ArticleNoSearch;
             try { ArticleNoSearch1 = (Int32.Parse(ArticleNoSearch)).ToString(); } catch { }
             //Seçili olan item ı text lere yazdıran fonksiyon yazılacak
@@ -1736,7 +1731,7 @@ namespace LoginForm.QuotationModule
             #endregion
             #region ItemMarginFiller
             string articleNo = ArticleNoSearch;
-            SlidingPrice sp1 = IME.SlidingPrices.Where(a => a.ArticleNo == articleNo).FirstOrDefault();
+            SlidingPrice sp1 = IME.SlidingPrices.Where(a => a.ArticleNo == ArticleNoSearch).FirstOrDefault();
             try
             {
                 txtMargin1.Text = (classQuotationAdd.GetLandingCost(ArticleNoSearch, ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
@@ -1811,8 +1806,6 @@ namespace LoginForm.QuotationModule
                 dgQuotationAddedItems.Rows[RowIndex].Cells["LC"].Style.BackColor = Color.BurlyWood;
             }
             #endregion
-
-
         }
 
         private void cbCurrType_SelectedIndexChanged(object sender, EventArgs e)
@@ -2082,6 +2075,7 @@ namespace LoginForm.QuotationModule
             }
             catch { }
         }
+
         private void ChangeCurrnetCellTabKey(int currindex)
         {
             int row = dgQuotationAddedItems.CurrentCell.RowIndex;
@@ -2135,6 +2129,7 @@ namespace LoginForm.QuotationModule
                 SendKeys.Send("{UP}");
             }
         }
+
         private void btnViewMore_Click(object sender, EventArgs e)
         {
             if (CustomerCode.Text == null)
@@ -2347,6 +2342,7 @@ namespace LoginForm.QuotationModule
             cbCurrency.ValueMember = "ID";
             GetAllMargin();
         }
+
         private bool GetUserAutorities(int AuthorizationID)
         {
             List<AuthorizationValue> UserAutorityList = Utils.getCurrentUser().AuthorizationValues.ToList();
@@ -2356,6 +2352,7 @@ namespace LoginForm.QuotationModule
             }
             return false;
         }
+
         private void VisibleCostMarginTrue()
         {
             label50.Visible = true;
