@@ -1166,8 +1166,8 @@ namespace LoginForm.QuotationModule
             catch { }
             decimal p = 0;
             ///////////PROBLEM OLABİLİR her seferinde indirim hesaplaması
-            //try { p = decimal.Parse(lblTotalDis.Text); } catch { }
-            //try { lbltotal.Text = (st - (st * (p / 100))).ToString(); } catch { }
+            try { p = decimal.Parse(lblTotalDis.Text); } catch { }
+            try { lbltotal.Text = (st - (st * (p / 100))).ToString(); } catch { }
         }
 
         private void lbltotal_TextChanged(object sender, EventArgs e)
@@ -1991,7 +1991,7 @@ namespace LoginForm.QuotationModule
             {
                 q1 = DateTime.Now.Year.ToString() + "/1";
             }
-            else
+            else 
             {
                 q1 = quo.QuotationNo;
                 while (IME.Quotations.Where(a => a.QuotationNo == q1).ToList().Count > 0)
