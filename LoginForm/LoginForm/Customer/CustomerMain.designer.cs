@@ -885,9 +885,9 @@
             // 
             this.AdressList.FormattingEnabled = true;
             this.AdressList.ItemHeight = 16;
-            this.AdressList.Location = new System.Drawing.Point(548, 21);
+            this.AdressList.Location = new System.Drawing.Point(544, 18);
             this.AdressList.Name = "AdressList";
-            this.AdressList.Size = new System.Drawing.Size(120, 180);
+            this.AdressList.Size = new System.Drawing.Size(131, 180);
             this.AdressList.TabIndex = 33;
             // 
             // cbTown
@@ -1078,7 +1078,7 @@
             // btnContactDelete
             // 
             this.btnContactDelete.Enabled = false;
-            this.btnContactDelete.Location = new System.Drawing.Point(637, 233);
+            this.btnContactDelete.Location = new System.Drawing.Point(642, 233);
             this.btnContactDelete.Name = "btnContactDelete";
             this.btnContactDelete.Size = new System.Drawing.Size(43, 25);
             this.btnContactDelete.TabIndex = 17;
@@ -1112,9 +1112,9 @@
             // 
             this.ContactList.FormattingEnabled = true;
             this.ContactList.ItemHeight = 16;
-            this.ContactList.Location = new System.Drawing.Point(548, 23);
+            this.ContactList.Location = new System.Drawing.Point(548, 18);
             this.ContactList.Name = "ContactList";
-            this.ContactList.Size = new System.Drawing.Size(120, 148);
+            this.ContactList.Size = new System.Drawing.Size(137, 212);
             this.ContactList.TabIndex = 29;
             this.ContactList.SelectedIndexChanged += new System.EventHandler(this.ContactList_SelectedIndexChanged);
             // 

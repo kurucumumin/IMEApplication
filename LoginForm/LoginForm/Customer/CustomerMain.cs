@@ -209,7 +209,6 @@ namespace LoginForm
 
         }
 
-
         private void contactTabEnableFalse()
         {
             #region contactTabEnableFalse
@@ -379,6 +378,7 @@ namespace LoginForm
                                    select new
                                    {
                                        c.ID,
+                                       c.CreateDate,
                                        c.c_name,
                                        c.telephone,
                                        c.fax,
@@ -425,8 +425,8 @@ namespace LoginForm
             {
                 #region FillInfos
                 CustomerDataGrid.CurrentCell = CustomerDataGrid.Rows[gridselectedindex].Cells[0];
+                dateTimePicker1.Value = customerAdapter[gridselectedindex].CreateDate;
                 CustomerCode.Text = customerAdapter[gridselectedindex].ID;
-
                 AdressList.DataSource = IME.CustomerAdresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
                 AdressList.DisplayMember = "AdressDetails";
                 IME.SaveChanges();
@@ -456,9 +456,9 @@ namespace LoginForm
                 cbMainContact.SelectedItem = cbMainContact.FindStringExact(customerAdapter[gridselectedindex].cw_name);
                 if (customerAdapter[gridselectedindex].AddressContact == null)
                 { AddressType.SelectedItem = null; cbIMEOffice.Checked = true; }
-                
+
                 PostCode.Text = customerAdapter[gridselectedindex].PostCode;
-                txtAdressTitle.Text= customerAdapter[gridselectedindex].AdressTitle;
+                txtAdressTitle.Text = customerAdapter[gridselectedindex].AdressTitle;
                 cbCountry.SelectedIndex = cbCountry.FindStringExact(customerAdapter[gridselectedindex].AdressCountry);
                 cbCity.SelectedIndex = cbCity.FindStringExact(customerAdapter[gridselectedindex].AddressCity);
                 if (customerAdapter[gridselectedindex].isDeliveryAdress == 1) { cbIMEOffice.Checked = true; } else { cbIMEOffice.Checked = false; }
@@ -555,7 +555,7 @@ namespace LoginForm
             Telephone.Text = customerAdapter[gridselectedindex].telephone.ToString();
             ContactFAX.Text = customerAdapter[gridselectedindex].fax.ToString();
             WebAdress.Text = customerAdapter[gridselectedindex].webadress;
-            
+
             Represantative2.Text = customerAdapter[gridselectedindex].Representative2;
             Represantative1.SelectedIndex = Represantative1.FindStringExact(customerAdapter[gridselectedindex].NameLastName);
             ContactTitle.SelectedIndex = ContactTitle.FindStringExact(customerAdapter[gridselectedindex].titlename);
@@ -565,7 +565,7 @@ namespace LoginForm
             TermsofPayments.SelectedIndex = TermsofPayments.FindStringExact(customerAdapter[gridselectedindex].term_name);
             ContactName.Text = customerAdapter[gridselectedindex].cw_name;
             ContactEmail.Text = customerAdapter[gridselectedindex].cw_email;
-            txtAdressTitle.Text= customerAdapter[gridselectedindex].AdressTitle;
+            txtAdressTitle.Text = customerAdapter[gridselectedindex].AdressTitle;
             CompanyNotes.Text = customerAdapter[gridselectedindex].CustomerNote;
             ContactNotes.Text = customerAdapter[gridselectedindex].CustomerWorkerNote;
             AccountRepresentary.Text = customerAdapter[gridselectedindex].AccountRepresentative;
@@ -578,7 +578,7 @@ namespace LoginForm
             cbMainContact.SelectedItem = cbMainContact.FindStringExact(customerAdapter[gridselectedindex].cw_name);
             if (customerAdapter[gridselectedindex].AddressContact == null)
             { AddressType.SelectedItem = null; cbIMEOffice.Checked = true; }
-            
+
             PostCode.Text = customerAdapter[gridselectedindex].PostCode;
             cbCountry.SelectedIndex = cbCountry.FindStringExact(customerAdapter[gridselectedindex].AdressCountry);
             cbCity.SelectedIndex = cbCity.FindStringExact(customerAdapter[gridselectedindex].AddressCity);
@@ -653,7 +653,6 @@ namespace LoginForm
             btnContactUpdate.Visible = false;
             #endregion
         }
-
 
         private void btnContactDone_Click(object sender, EventArgs e)
         {
@@ -853,86 +852,88 @@ namespace LoginForm
             }
             else
             {
-                if (MainCategory.Text == ComboboxString || SubCategory.Text == ComboboxString || Represantative2.Text == ComboboxString || Capital.Text == ComboboxString || cbMainContact.Text == ComboboxString || AccountRepresentary.Text == ComboboxString || TermsofPayments.Text == ComboboxString || PaymentMethod.Text == ComboboxString || QuoCurrencyName.Text == ComboboxString || QuoCurrencyType.Text == ComboboxString || InvCurrencyName.Text == ComboboxString || InvCurrencyType.Text == ComboboxString || AddressType.Text == ComboboxString || cbCountry.Text == ComboboxString || cbCity.Text == ComboboxString || cbTown.Text == ComboboxString || ContactType.Text == ComboboxString || ContactDepartment.Text == ComboboxString || ContactTitle.Text == ComboboxString || CommunicationLanguage.Text == ComboboxString)
-                {
-                    MessageBox.Show("Combobox is empty", "WARNİNG", MessageBoxButtons.OK);
-
-                }
-                else
-                {
-                    btnCreate.Text = "CREATE";
-                    btnUpdate.Text = "UPDATE";
-
-                    Customer c = new Customer();
-                    c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
-                    if (rb_active.Checked) { c.isactive = 1; } else { c.isactive = 0; }
-                    c.c_name = CustomerName.Text;
-                    if (Telephone.Text != "") { c.telephone = Telephone.Text; }
-                    if (CustomerFax.Text != "") { c.fax = CustomerFax.Text; }
-                    c.webadress = WebAdress.Text;
-                    c.taxoffice = CustomerFax.Text;
-                    if (CreditLimit.Text != "") { c.creditlimit = Int32.Parse(CreditLimit.Text); }
-                    if (DiscountRate.Text != "") { c.discountrate = Int32.Parse(DiscountRate.Text); }
-                    c.taxoffice = TaxOffice.Text;
-                    if (taxNumber.Text != "") { c.taxnumber = Int32.Parse(taxNumber.Text); }
-                    //CategorySubCategory Tablosuna veri ekleniyor(ara tabloya)
-
-                    CustomerCategorySubCategory CustomerCatSubcat = new CustomerCategorySubCategory();
-                    //UPDATE YAPILIRKEN BU ŞEKİLDE OLUYOR
-                    if (IME.CustomerCategorySubCategories.Where(a => a.customerID == CustomerCode.Text).FirstOrDefault() != null) { CustomerCatSubcat = IME.CustomerCategorySubCategories.Where(a => a.customerID == CustomerCode.Text).FirstOrDefault(); }
-                    CustomerCatSubcat.customerID = CustomerCode.Text;
-                    int c_CategoryID = ((CustomerCategory)(MainCategory).SelectedItem).ID;
-                    CustomerCatSubcat.categoryID = c_CategoryID;
-                    int c_SubcategoryID = ((CustomerSubCategory)(SubCategory).SelectedItem).ID;
-                    CustomerCatSubcat.subcategoryID = c_SubcategoryID;
-                    if (IME.CustomerCategorySubCategories.Where(a => a.customerID == CustomerCode.Text).FirstOrDefault() == null) { IME.CustomerCategorySubCategories.Add(CustomerCatSubcat); }
-                    IME.SaveChanges();
-                    //
-                    c.accountrepresentaryID = (AccountRepresentary.SelectedItem as Worker).WorkerID;
-                    //int c_rep1ID = ((Worker)(Represantative1).SelectedItem).WorkerID;
-                    c.representaryID = Utils.getCurrentUser().WorkerID;
-                    int c_rep2ID = ((Worker)(Represantative2).SelectedItem).WorkerID;
-                    c.representary2ID = c_rep2ID;
-                    int c_termpayment = ((PaymentTerm)(TermsofPayments).SelectedItem).ID;
-                    c.payment_termID = c_termpayment;
-                    int c_paymentmeth = ((PaymentMethod)(PaymentMethod).SelectedItem).ID;
-                    c.paymentmethodID = c_paymentmeth;
-                    //Notes kısmına kayıt ediliyor
-                    Note n1 = new Note();
-                    try { n1 = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault(); } catch { }
-                    if (c.Note == null)
+                if (ControlSave()) {
+                    if (MainCategory.Text == ComboboxString || SubCategory.Text == ComboboxString || Represantative2.Text == ComboboxString || Capital.Text == ComboboxString || cbMainContact.Text == ComboboxString || AccountRepresentary.Text == ComboboxString || TermsofPayments.Text == ComboboxString || PaymentMethod.Text == ComboboxString || QuoCurrencyName.Text == ComboboxString || QuoCurrencyType.Text == ComboboxString || InvCurrencyName.Text == ComboboxString || InvCurrencyType.Text == ComboboxString || AddressType.Text == ComboboxString || cbCountry.Text == ComboboxString || cbCity.Text == ComboboxString || cbTown.Text == ComboboxString || ContactType.Text == ComboboxString || ContactDepartment.Text == ComboboxString || ContactTitle.Text == ComboboxString || CommunicationLanguage.Text == ComboboxString)
                     {
-                        n1.Note_name = CompanyNotes.Text;
-                        c.Note = n1;
-                        IME.Notes.Add(c.Note);
-                        IME.SaveChanges();
-                        //c.customerNoteID = c.Note.ID;
+                        MessageBox.Show("Combobox is empty", "WARNİNG", MessageBoxButtons.OK);
 
                     }
                     else
                     {
-                        n1.Note_name = CompanyNotes.Text;
-                        IME.SaveChanges();
-                    }
-                    if (c.customerAccountantNoteID == null)
-                    {
-                        Note n = new Note();
-                        n.Note_name = AccountingNotes.Text;
-                        IME.Notes.Add(n);
-                        IME.SaveChanges();
-                        c.customerAccountantNoteID = n.ID;
-                    }
-                    else
-                    {
-                        Note n = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault();
-                        n.Note_name = AccountingNotes.Text;
-                        IME.SaveChanges();
-                    }
-                    IME.SaveChanges();
+                        btnCreate.Text = "CREATE";
+                        btnUpdate.Text = "UPDATE";
 
-                    itemsEnableFalse();
-                    contactTabEnableFalse();
-                    customersearch();
+                        Customer c = new Customer();
+                        c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
+                        if (rb_active.Checked) { c.isactive = 1; } else { c.isactive = 0; }
+                        c.c_name = CustomerName.Text;
+                        if (Telephone.Text != "") { c.telephone = Telephone.Text; }
+                        if (CustomerFax.Text != "") { c.fax = CustomerFax.Text; }
+                        c.webadress = WebAdress.Text;
+                        c.taxoffice = CustomerFax.Text;
+                        if (CreditLimit.Text != "") { c.creditlimit = Int32.Parse(CreditLimit.Text); }
+                        if (DiscountRate.Text != "") { c.discountrate = Int32.Parse(DiscountRate.Text); }
+                        c.taxoffice = TaxOffice.Text;
+                        if (taxNumber.Text != "") { c.taxnumber = Int32.Parse(taxNumber.Text); }
+                        //CategorySubCategory Tablosuna veri ekleniyor(ara tabloya)
+
+                        CustomerCategorySubCategory CustomerCatSubcat = new CustomerCategorySubCategory();
+                        //UPDATE YAPILIRKEN BU ŞEKİLDE OLUYOR
+                        if (IME.CustomerCategorySubCategories.Where(a => a.customerID == CustomerCode.Text).FirstOrDefault() != null) { CustomerCatSubcat = IME.CustomerCategorySubCategories.Where(a => a.customerID == CustomerCode.Text).FirstOrDefault(); }
+                        CustomerCatSubcat.customerID = CustomerCode.Text;
+                        int c_CategoryID = ((CustomerCategory)(MainCategory).SelectedItem).ID;
+                        CustomerCatSubcat.categoryID = c_CategoryID;
+                        int c_SubcategoryID = ((CustomerSubCategory)(SubCategory).SelectedItem).ID;
+                        CustomerCatSubcat.subcategoryID = c_SubcategoryID;
+                        if (IME.CustomerCategorySubCategories.Where(a => a.customerID == CustomerCode.Text).FirstOrDefault() == null) { IME.CustomerCategorySubCategories.Add(CustomerCatSubcat); }
+                        IME.SaveChanges();
+                        //
+                        c.accountrepresentaryID = (AccountRepresentary.SelectedItem as Worker).WorkerID;
+                        //int c_rep1ID = ((Worker)(Represantative1).SelectedItem).WorkerID;
+                        c.representaryID = Utils.getCurrentUser().WorkerID;
+                        int c_rep2ID = ((Worker)(Represantative2).SelectedItem).WorkerID;
+                        c.representary2ID = c_rep2ID;
+                        int c_termpayment = ((PaymentTerm)(TermsofPayments).SelectedItem).ID;
+                        c.payment_termID = c_termpayment;
+                        int c_paymentmeth = ((PaymentMethod)(PaymentMethod).SelectedItem).ID;
+                        c.paymentmethodID = c_paymentmeth;
+                        //Notes kısmına kayıt ediliyor
+                        Note n1 = new Note();
+                        try { n1 = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault(); } catch { }
+                        if (c.Note == null)
+                        {
+                            n1.Note_name = CompanyNotes.Text;
+                            c.Note = n1;
+                            IME.Notes.Add(c.Note);
+                            IME.SaveChanges();
+                            //c.customerNoteID = c.Note.ID;
+
+                        }
+                        else
+                        {
+                            n1.Note_name = CompanyNotes.Text;
+                            IME.SaveChanges();
+                        }
+                        if (c.customerAccountantNoteID == null)
+                        {
+                            Note n = new Note();
+                            n.Note_name = AccountingNotes.Text;
+                            IME.Notes.Add(n);
+                            IME.SaveChanges();
+                            c.customerAccountantNoteID = n.ID;
+                        }
+                        else
+                        {
+                            Note n = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault();
+                            n.Note_name = AccountingNotes.Text;
+                            IME.SaveChanges();
+                        }
+                        IME.SaveChanges();
+
+                        itemsEnableFalse();
+                        contactTabEnableFalse();
+                        customersearch();
+                    }
                 }
 
             }
@@ -1040,6 +1041,7 @@ namespace LoginForm
             #endregion
 
         }
+
         private void itemsEnableFalse()
         {
             #region itemsEnableFalse
@@ -1128,7 +1130,6 @@ namespace LoginForm
             txtSearch.Enabled = false;
             #endregion
         }
-
 
         private void ContactList_DataSourceChanged(object sender, EventArgs e)
         {
@@ -1219,7 +1220,7 @@ namespace LoginForm
                 ca.AddressType = AddressType.Text;
                 //CustomerCode.Text;
                 ca.CustomerID = CustomerCode.Text;
-                ca.CountryID = ((cbCountry ).SelectedItem as Country).ID;
+                ca.CountryID = ((cbCountry).SelectedItem as Country).ID;
                 ca.CityID = ((cbCity).SelectedItem as City).ID;
                 //AddresType
                 ca.isIMEOffice = 0;
@@ -1228,7 +1229,7 @@ namespace LoginForm
                     ca.isIMEOffice = 1;
                 }
                 ca.AdressTitle = txtAdressTitle.Text;
-                
+
                 ca.PostCode = PostCode.Text;
                 ca.AdressDetails = AddressDetails.Text;
                 if (cbIMEOffice.Checked) { ca.isDeliveryAdress = 1; } else { ca.isDeliveryAdress = 0; }
@@ -1462,6 +1463,7 @@ namespace LoginForm
                 return;
             }
         }
+
         private void Represantative1_MouseClick(object sender, MouseEventArgs e)
         {
             Represantative1.DataSource = IME.Workers.ToList();
@@ -1580,7 +1582,7 @@ namespace LoginForm
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if(txtAdressTitle.Text!=string.Empty || txtAdressTitle.Text != null)
+            if (txtAdressTitle.Text != string.Empty || txtAdressTitle.Text != null)
             {
                 AddressType.Text = string.Empty;
             }
@@ -1589,6 +1591,19 @@ namespace LoginForm
         private void AddressType_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtAdressTitle.Text = string.Empty;
+        }
+
+        private bool ControlSave()
+        {
+            bool isSave = true;
+            string ErrorMessage = string.Empty ;
+            if (CustomerName.Text == null || CustomerName.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter Company's Name\n"; isSave= false; }
+            if (MainCategory.Text == ComboboxString) { ErrorMessage = ErrorMessage + "Please Choose Main Category Company\n"; isSave = false; }
+            if (SubCategory.Text == ComboboxString) { ErrorMessage = ErrorMessage + "Please Choose SubCategory of Company\n"; isSave = false; }
+            if (Capital.Text == ComboboxString) { ErrorMessage = ErrorMessage + "Please Choose Capital of the Company\n"; isSave = false;}
+            if (Telephone.Text == null || Telephone.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter Company's Phone correctly or Delete\n"; isSave = false; }
+            if(ContactList.Items.Count == 1) { ErrorMessage = ErrorMessage + "Please Enter a Contact\n"; isSave = false; }
+            if (isSave == true) { return true; } else { MessageBox.Show(ErrorMessage);return false; }
         }
     }
 }

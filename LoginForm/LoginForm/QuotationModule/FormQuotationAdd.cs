@@ -1432,6 +1432,7 @@ namespace LoginForm.QuotationModule
                     try { qd.ItemCode = dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(); } catch { }
                     try { qd.Qty = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString()); } catch { }
                     try { qd.UCUPCurr = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()); } catch { }
+                    try { qd.UCUPCurr = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString()); } catch { }
                     try { qd.Disc = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value.ToString()); } catch { }
                     try { qd.Total = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString()); } catch { }
                     try { qd.TargetUP = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].Value.ToString()); } catch { }
@@ -1455,7 +1456,8 @@ namespace LoginForm.QuotationModule
                     try{qd.Qty = Int32.Parse(dgQuotationDeleted.Rows[i].Cells["dgQty1"].Value.ToString());}catch { }
                     try{qd.UCUPCurr = Decimal.Parse(dgQuotationDeleted.Rows[i].Cells["dgUCUPCurr1"].Value.ToString());}catch { }
                     try{qd.Disc = Decimal.Parse(dgQuotationDeleted.Rows[i].Cells["dgDisc1"].Value.ToString());}catch { }
-                    try{qd.Total = Decimal.Parse(dgQuotationDeleted.Rows[i].Cells["dgTotal1"].Value.ToString());}catch { }
+                    try { qd.UCUPCurr = Decimal.Parse(dgQuotationDeleted.Rows[i].Cells["dgUPIME"].Value.ToString()); } catch { }
+                    try {qd.Total = Decimal.Parse(dgQuotationDeleted.Rows[i].Cells["dgTotal1"].Value.ToString());}catch { }
                     try{qd.TargetUP = Decimal.Parse(dgQuotationDeleted.Rows[i].Cells["dgTargetUP1"].Value.ToString());}catch { }
                     try{qd.Competitor = dgQuotationDeleted.Rows[i].Cells["dgCompetitor1"].Value.ToString();  } catch { }
                     try{qd.CustomerDescription = dgQuotationDeleted.Rows[i].Cells["dgCustDescription1"].Value.ToString();}catch { }
@@ -1491,6 +1493,7 @@ namespace LoginForm.QuotationModule
                     row.Cells[0].Value = item.dgNo;
                     row.Cells[7].Value = item.ItemCode;
                     row.Cells[15].Value = item.Qty;
+                    row.Cells[20].Value = item.dgUPIME;
                     row.Cells[22].Value = item.UCUPCurr;
                     row.Cells[21].Value = item.Disc;
                     row.Cells[23].Value = item.Total;
@@ -1508,6 +1511,7 @@ namespace LoginForm.QuotationModule
                     row.Cells[7].Value = item.ItemCode;
                     row.Cells[15].Value = item.Qty;
                     row.Cells[22].Value = item.UCUPCurr;
+                    row.Cells[20].Value = item.dgUPIME;
                     row.Cells[21].Value = item.Disc;
                     row.Cells[23].Value = item.Total;
                     row.Cells[24].Value = item.TargetUP;
@@ -1912,10 +1916,8 @@ namespace LoginForm.QuotationModule
                 txtWeb4.Text = (Decimal.Parse(txtWeb4.Text) / Currfactor).ToString();
                 txtWeb5.Text = (Decimal.Parse(txtWeb5.Text) / Currfactor).ToString(); }
             #endregion
-            for (int i = 0; i < dgQuotationAddedItems.RowCount - 1; i++)
-            {
-                try
-                {
+            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+            {               
                     #region Get Margin
                     if (dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value != null)
                     {
@@ -1929,8 +1931,6 @@ namespace LoginForm.QuotationModule
                         SubTotalTotal += st.Item2;
                     }
                     #endregion
-                }
-                catch { }
             }
             lblsubtotal.Text = SubTotalTotal.ToString();
 
