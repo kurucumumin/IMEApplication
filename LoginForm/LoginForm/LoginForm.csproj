@@ -367,6 +367,13 @@
     <Compile Include="QuotationModule\FormQuotationMain.Designer.cs">
       <DependentUpon>FormQuotationMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuotationModule\FormQuotationMPN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuotationModule\FormQuotationMPN.Designer.cs">
+      <DependentUpon>FormQuotationMPN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuotationModule\QuotationHelper.cs" />
     <Compile Include="User\FormUsersMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -470,6 +477,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\FormQuotationMain.resx">
       <DependentUpon>FormQuotationMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuotationModule\FormQuotationMPN.resx">
+      <DependentUpon>FormQuotationMPN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\FormUsersMain.resx">
       <DependentUpon>FormUsersMain.cs</DependentUpon>

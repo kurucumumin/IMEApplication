@@ -265,26 +265,39 @@ namespace LoginForm.QuotationModule
 
                         if (dgQuotationAddedItems.CurrentCell.Value != null)
                         {
+                            //0100-124 => 0100124
                             if (dgQuotationAddedItems.CurrentCell.Value.ToString().Contains("-")) { dgQuotationAddedItems.CurrentCell.Value = dgQuotationAddedItems.CurrentCell.Value.ToString().Replace("-", string.Empty).ToString(); }
                             if (dgQuotationAddedItems.CurrentCell.Value != null && dgQuotationAddedItems.CurrentCell.Value.ToString().Length == 6 || (dgQuotationAddedItems.CurrentCell.Value.ToString().Contains("P") && dgQuotationAddedItems.CurrentCell.Value.ToString().Length == 7)) { dgQuotationAddedItems.CurrentCell.Value = 0.ToString() + dgQuotationAddedItems.CurrentCell.Value.ToString(); }
                             var sd = classQuotationAdd.ItemGetSuperDisk(dgQuotationAddedItems.CurrentCell.Value.ToString());
                             var sdp = classQuotationAdd.ItemGetSuperDiskP(dgQuotationAddedItems.CurrentCell.Value.ToString());
                             var er = classQuotationAdd.ItemGetExtendedRange(dgQuotationAddedItems.CurrentCell.Value.ToString());
                             int sdNumber; int sdPNumber; int erNumber;
-                            try { sdNumber = IME.SuperDisks.Where(a => a.Article_No.Contains(dgQuotationAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { sdNumber = 0; }
-                            try { sdPNumber = IME.SuperDiskPs.Where(a => a.Article_No.Contains(dgQuotationAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { sdPNumber = 0; }
-                            try { erNumber = IME.ExtendedRanges.Where(a => a.ArticleNo.Contains(dgQuotationAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { erNumber = 0; }
+                            try { sdNumber = IME.SuperDisks.Where(a => a.Article_No.Contains(dgQuotationAddedItems.CurrentCell.Value.ToString())).Count(); } catch { sdNumber = 0; }
+                            try { sdPNumber = IME.SuperDiskPs.Where(a => a.Article_No.Contains(dgQuotationAddedItems.CurrentCell.Value.ToString())).Count(); } catch { sdPNumber = 0; }
+                            try { erNumber = IME.ExtendedRanges.Where(a => a.ArticleNo.Contains(dgQuotationAddedItems.CurrentCell.Value.ToString())).Count(); } catch { erNumber = 0; }
                             if (sdNumber != 0 || sdPNumber != 0 || erNumber != 0)
                             {
-                                if (classQuotationAdd.NumberofItem(dgQuotationAddedItems.CurrentCell.Value.ToString()) == 0 && ((dgQuotationAddedItems.CurrentCell.Value.ToString().Length == 7 || (dgQuotationAddedItems.CurrentCell.Value.ToString().Contains("P") && dgQuotationAddedItems.CurrentCell.Value.ToString().Length == 8))))
+                                if (classQuotationAdd.HasMultipleItems(dgQuotationAddedItems.CurrentCell.Value.ToString()) == 0 && ((dgQuotationAddedItems.CurrentCell.Value.ToString().Length == 7 || (dgQuotationAddedItems.CurrentCell.Value.ToString().Contains("P") && dgQuotationAddedItems.CurrentCell.Value.ToString().Length == 8))))
                                 {
-
                                     if (tabControl1.SelectedTab != tabItemDetails) { tabControl1.SelectedTab = tabItemDetails; }
+                                    #region MyRegion
+                                    string itemCode = dgQuotationAddedItems.CurrentCell.Value.ToString();
+                                    var sd1 = IME.SuperDisks.Where(a => a.Article_No == itemCode).FirstOrDefault();
+                                    if (sd1 == null) { sd1 = IME.SuperDisks.Where(a => a.Article_No == itemCode).FirstOrDefault(); }
+
+                                    var sdP1 = IME.SuperDiskPs.Where(a => a.Article_No == itemCode).FirstOrDefault();
+                                    if (sdP1 == null) { sdP1 = IME.SuperDiskPs.Where(a => a.Article_No == itemCode).FirstOrDefault(); }
+
+                                    var er1 = IME.ExtendedRanges.Where(a => a.ArticleNo == itemCode).FirstOrDefault();
+                                    if (er1 == null) { er1 = IME.ExtendedRanges.Where(a => a.ArticleNo == itemCode).FirstOrDefault(); }
+                                    #endregion
+                                    var MPNList = new QuotationHelper();
+
                                     //ItemClear();
+
                                     ItemDetailsFiller(dgQuotationAddedItems.CurrentCell.Value.ToString());
                                     //LandingCost Calculation
                                     FillProductCodeItem();
-
                                 }
                                 else
                                 {
@@ -316,9 +329,8 @@ namespace LoginForm.QuotationModule
                                     try { erNumber = IME.ExtendedRanges.Where(a => a.ArticleNo.Contains(dgQuotationAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { erNumber = 0; }
                                     if (sdNumber == 1 || sdPNumber == 1 || erNumber == 1)
                                     {
-                                        if (classQuotationAdd.NumberofItem(dgQuotationAddedItems.CurrentCell.Value.ToString()) == 0)
+                                        if (classQuotationAdd.HasMultipleItems(dgQuotationAddedItems.CurrentCell.Value.ToString()) == 0)
                                         {
-                                            //ItemClear();
                                             if (tabControl1.SelectedTab != tabItemDetails) { tabControl1.SelectedTab = tabItemDetails; }
                                             ItemDetailsFiller(dgQuotationAddedItems.CurrentCell.Value.ToString());
                                             //LandingCost Calculation

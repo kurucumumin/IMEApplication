@@ -203,14 +203,17 @@ namespace LoginForm.Services
             return -1;// fiyatının olmadığı gösteriyor
             #endregion
         }
-        public static int NumberofItem(string ArticleNo)
+        public static int HasMultipleItems(string ArticleNo)
         {
             IMEEntities IME = new IMEEntities();
             if (IME.SuperDisks.Where(a => a.Article_No.Contains(ArticleNo)).ToList().Count > 1 || IME.SuperDiskPs.Where(b => b.Article_No.Contains(ArticleNo)).ToList().Count > 1 || IME.ExtendedRanges.Where(c => c.ArticleNo.Contains(ArticleNo)).ToList().Count > 1)
             {
                 return 1;
             }
-            return 0;
+            else
+            {
+                return 0;
+            }
         }
         
     }
