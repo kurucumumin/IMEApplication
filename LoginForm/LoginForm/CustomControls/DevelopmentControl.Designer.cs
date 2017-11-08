@@ -65,7 +65,9 @@
             this.panel23 = new System.Windows.Forms.Panel();
             this.panel22 = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
+            this.btnSalesOrder = new System.Windows.Forms.Button();
             this.tableRightPanel.SuspendLayout();
+            this.panel16.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel14.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -209,6 +211,7 @@
             // 
             // panel16
             // 
+            this.panel16.Controls.Add(this.btnSalesOrder);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel16.Location = new System.Drawing.Point(453, 232);
             this.panel16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -502,6 +505,23 @@
             this.panel21.Size = new System.Drawing.Size(144, 111);
             this.panel21.TabIndex = 52;
             // 
+            // btnSalesOrder
+            // 
+            this.btnSalesOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnSalesOrder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSalesOrder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSalesOrder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
+            this.btnSalesOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalesOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSalesOrder.Location = new System.Drawing.Point(0, 0);
+            this.btnSalesOrder.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSalesOrder.Name = "btnSalesOrder";
+            this.btnSalesOrder.Size = new System.Drawing.Size(144, 111);
+            this.btnSalesOrder.TabIndex = 13;
+            this.btnSalesOrder.Text = "Sales Order";
+            this.btnSalesOrder.UseVisualStyleBackColor = false;
+            this.btnSalesOrder.Click += new System.EventHandler(this.btnSalesOrder_Click);
+            // 
             // DevelopmentControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -512,6 +532,7 @@
             this.Name = "DevelopmentControl";
             this.Size = new System.Drawing.Size(901, 577);
             this.tableRightPanel.ResumeLayout(false);
+            this.panel16.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
@@ -561,5 +582,6 @@
         private System.Windows.Forms.Panel panel23;
         private System.Windows.Forms.Panel panel22;
         private System.Windows.Forms.Panel panel21;
+        private System.Windows.Forms.Button btnSalesOrder;
     }
 }

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using LoginForm.QuotationModule;
 using LoginForm.Item;
 using LoginForm.User;
+using LoginForm.SalesOrder;
 
 namespace LoginForm.CustomControls
 {
@@ -48,6 +49,12 @@ namespace LoginForm.CustomControls
         private void btnItemCard_Click(object sender, EventArgs e)
         {
             ItemCard form = new ItemCard();
+            form.ShowDialog();
+        }
+
+        private void btnSalesOrder_Click(object sender, EventArgs e)
+        {
+            FormSalesOrderMain form = new FormSalesOrderMain();
             form.ShowDialog();
         }
     }

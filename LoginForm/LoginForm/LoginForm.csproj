@@ -374,6 +374,12 @@
       <DependentUpon>FormQuotationMPN.cs</DependentUpon>
     </Compile>
     <Compile Include="QuotationModule\QuotationHelper.cs" />
+    <Compile Include="SalesOrder\FormSalesOrderMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesOrder\FormSalesOrderMain.Designer.cs">
+      <DependentUpon>FormSalesOrderMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="User\FormUsersMain.cs">
       <SubType>Form</SubType>
     </Compile>
