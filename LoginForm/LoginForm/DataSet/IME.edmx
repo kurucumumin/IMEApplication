@@ -191,7 +191,6 @@
             <PropertyRef Name="ArticleNo" />
           </Key>
           <Property Name="ArticleNo" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ManufacturerCode" Type="int" />
           <Property Name="Brand" Type="nvarchar" MaxLength="50" />
           <Property Name="MPN" Type="nvarchar" MaxLength="50" />
           <Property Name="ArticleDescription" Type="nvarchar" MaxLength="50" />
@@ -222,6 +221,7 @@
           <Property Name="DiscountedPrice3" Type="decimal" Precision="18" Scale="3" />
           <Property Name="DiscountedPrice4" Type="decimal" Precision="18" Scale="3" />
           <Property Name="DiscountedPrice5" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="ManufacturerCode" Type="nvarchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="Hazardous">
           <Key>
@@ -912,7 +912,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CustomerW__Conta__3AA1AEB8">
+        <Association Name="FK__CustomerW__Conta__4CC05EF3">
           <End Role="ContactType" Type="Self.ContactType" Multiplicity="0..1" />
           <End Role="CustomerWorker" Type="Self.CustomerWorker" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1570,7 +1570,7 @@
             <End Role="CustomerDepartment" EntitySet="CustomerDepartment" />
             <End Role="CustomerTitle" EntitySet="CustomerTitle" />
           </AssociationSet>
-          <AssociationSet Name="FK__CustomerW__Conta__3AA1AEB8" Association="Self.FK__CustomerW__Conta__3AA1AEB8">
+          <AssociationSet Name="FK__CustomerW__Conta__4CC05EF3" Association="Self.FK__CustomerW__Conta__4CC05EF3">
             <End Role="ContactType" EntitySet="ContactType" />
             <End Role="CustomerWorker" EntitySet="CustomerWorker" />
           </AssociationSet>
@@ -1768,7 +1768,6 @@
           <EntitySet Name="DailyDiscontinueds" EntityType="IMEModel.DailyDiscontinued" />
           <EntitySet Name="DiscountValues" EntityType="IMEModel.DiscountValue" />
           <EntitySet Name="DualUses" EntityType="IMEModel.DualUse" />
-          <EntitySet Name="ExtendedRanges" EntityType="IMEModel.ExtendedRange" />
           <EntitySet Name="Hazardous" EntityType="IMEModel.Hazardou" />
           <EntitySet Name="ItemNotes" EntityType="IMEModel.ItemNote" />
           <EntitySet Name="Languages" EntityType="IMEModel.Language" />
@@ -2047,6 +2046,7 @@
             <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
             <End Role="Worker" EntitySet="Workers" />
           </AssociationSet>
+          <EntitySet Name="ExtendedRanges" EntityType="IMEModel.ExtendedRange" />
         </EntityContainer>
         <EntityType Name="AuthorizationValue">
           <Key>
@@ -2269,43 +2269,6 @@
           <Property Name="DualUseSite" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="LicenceType" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="ControlClass" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="ExtendedRange">
-          <Key>
-            <PropertyRef Name="ArticleNo" />
-          </Key>
-          <Property Name="ArticleNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ManufacturerCode" Type="Int32" />
-          <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MPN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ArticleDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ExtendedRangeLength" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Width" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Height" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="DimensionUoM" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="ExtendedRangeWeight" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="WeightUoM" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="CCCN" Type="Int32" />
-          <Property Name="CountryofOrigin" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="UnitofMeasure" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="PackSize" Type="Int32" />
-          <Property Name="SalesUoM" Type="Int32" />
-          <Property Name="CostPriceCurrency" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Col1Price" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Col2Price" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Col3Price" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Col4Price" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Col5Price" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Col1Break" Type="Int32" />
-          <Property Name="Col2Break" Type="Int32" />
-          <Property Name="Col3Break" Type="Int32" />
-          <Property Name="Col4Break" Type="Int32" />
-          <Property Name="Col5Break" Type="Int32" />
-          <Property Name="DiscountedPrice1" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice2" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice3" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice4" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="DiscountedPrice5" Type="Decimal" Precision="18" Scale="3" />
         </EntityType>
         <EntityType Name="Hazardou">
           <Key>
@@ -3551,6 +3514,43 @@
           <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
         </Association>
+        <EntityType Name="ExtendedRange">
+          <Key>
+            <PropertyRef Name="ArticleNo" />
+          </Key>
+          <Property Name="ArticleNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MPN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArticleDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExtendedRangeLength" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Width" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Height" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="DimensionUoM" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="ExtendedRangeWeight" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="WeightUoM" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="CCCN" Type="Int32" />
+          <Property Name="CountryofOrigin" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="UnitofMeasure" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PackSize" Type="Int32" />
+          <Property Name="SalesUoM" Type="Int32" />
+          <Property Name="CostPriceCurrency" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Col1Price" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Col2Price" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Col3Price" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Col4Price" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Col5Price" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="Col1Break" Type="Int32" />
+          <Property Name="Col2Break" Type="Int32" />
+          <Property Name="Col3Break" Type="Int32" />
+          <Property Name="Col4Break" Type="Int32" />
+          <Property Name="Col5Break" Type="Int32" />
+          <Property Name="DiscountedPrice1" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="DiscountedPrice2" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="DiscountedPrice3" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="DiscountedPrice4" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="DiscountedPrice5" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="ManufacturerCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3742,44 +3742,6 @@
                 <ScalarProperty Name="ControlClass" ColumnName="ControlClass" />
                 <ScalarProperty Name="LicenceType" ColumnName="LicenceType" />
                 <ScalarProperty Name="DualUseSite" ColumnName="DualUseSite" />
-                <ScalarProperty Name="ArticleNo" ColumnName="ArticleNo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ExtendedRanges">
-            <EntityTypeMapping TypeName="IMEModel.ExtendedRange">
-              <MappingFragment StoreEntitySet="ExtendedRange">
-                <ScalarProperty Name="DiscountedPrice5" ColumnName="DiscountedPrice5" />
-                <ScalarProperty Name="DiscountedPrice4" ColumnName="DiscountedPrice4" />
-                <ScalarProperty Name="DiscountedPrice3" ColumnName="DiscountedPrice3" />
-                <ScalarProperty Name="DiscountedPrice2" ColumnName="DiscountedPrice2" />
-                <ScalarProperty Name="DiscountedPrice1" ColumnName="DiscountedPrice1" />
-                <ScalarProperty Name="Col5Break" ColumnName="Col5Break" />
-                <ScalarProperty Name="Col4Break" ColumnName="Col4Break" />
-                <ScalarProperty Name="Col3Break" ColumnName="Col3Break" />
-                <ScalarProperty Name="Col2Break" ColumnName="Col2Break" />
-                <ScalarProperty Name="Col1Break" ColumnName="Col1Break" />
-                <ScalarProperty Name="Col5Price" ColumnName="Col5Price" />
-                <ScalarProperty Name="Col4Price" ColumnName="Col4Price" />
-                <ScalarProperty Name="Col3Price" ColumnName="Col3Price" />
-                <ScalarProperty Name="Col2Price" ColumnName="Col2Price" />
-                <ScalarProperty Name="Col1Price" ColumnName="Col1Price" />
-                <ScalarProperty Name="CostPriceCurrency" ColumnName="CostPriceCurrency" />
-                <ScalarProperty Name="SalesUoM" ColumnName="SalesUoM" />
-                <ScalarProperty Name="PackSize" ColumnName="PackSize" />
-                <ScalarProperty Name="UnitofMeasure" ColumnName="UnitofMeasure" />
-                <ScalarProperty Name="CountryofOrigin" ColumnName="CountryofOrigin" />
-                <ScalarProperty Name="CCCN" ColumnName="CCCN" />
-                <ScalarProperty Name="WeightUoM" ColumnName="WeightUoM" />
-                <ScalarProperty Name="ExtendedRangeWeight" ColumnName="ExtendedRangeWeight" />
-                <ScalarProperty Name="DimensionUoM" ColumnName="DimensionUoM" />
-                <ScalarProperty Name="Height" ColumnName="Height" />
-                <ScalarProperty Name="Width" ColumnName="Width" />
-                <ScalarProperty Name="ExtendedRangeLength" ColumnName="ExtendedRangeLength" />
-                <ScalarProperty Name="ArticleDescription" ColumnName="ArticleDescription" />
-                <ScalarProperty Name="MPN" ColumnName="MPN" />
-                <ScalarProperty Name="Brand" ColumnName="Brand" />
-                <ScalarProperty Name="ManufacturerCode" ColumnName="ManufacturerCode" />
                 <ScalarProperty Name="ArticleNo" ColumnName="ArticleNo" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4271,6 +4233,44 @@
               <ScalarProperty Name="AuthorizationID" ColumnName="AuthorizationID" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="ExtendedRanges">
+            <EntityTypeMapping TypeName="IMEModel.ExtendedRange">
+              <MappingFragment StoreEntitySet="ExtendedRange">
+                <ScalarProperty Name="ManufacturerCode" ColumnName="ManufacturerCode" />
+                <ScalarProperty Name="DiscountedPrice5" ColumnName="DiscountedPrice5" />
+                <ScalarProperty Name="DiscountedPrice4" ColumnName="DiscountedPrice4" />
+                <ScalarProperty Name="DiscountedPrice3" ColumnName="DiscountedPrice3" />
+                <ScalarProperty Name="DiscountedPrice2" ColumnName="DiscountedPrice2" />
+                <ScalarProperty Name="DiscountedPrice1" ColumnName="DiscountedPrice1" />
+                <ScalarProperty Name="Col5Break" ColumnName="Col5Break" />
+                <ScalarProperty Name="Col4Break" ColumnName="Col4Break" />
+                <ScalarProperty Name="Col3Break" ColumnName="Col3Break" />
+                <ScalarProperty Name="Col2Break" ColumnName="Col2Break" />
+                <ScalarProperty Name="Col1Break" ColumnName="Col1Break" />
+                <ScalarProperty Name="Col5Price" ColumnName="Col5Price" />
+                <ScalarProperty Name="Col4Price" ColumnName="Col4Price" />
+                <ScalarProperty Name="Col3Price" ColumnName="Col3Price" />
+                <ScalarProperty Name="Col2Price" ColumnName="Col2Price" />
+                <ScalarProperty Name="Col1Price" ColumnName="Col1Price" />
+                <ScalarProperty Name="CostPriceCurrency" ColumnName="CostPriceCurrency" />
+                <ScalarProperty Name="SalesUoM" ColumnName="SalesUoM" />
+                <ScalarProperty Name="PackSize" ColumnName="PackSize" />
+                <ScalarProperty Name="UnitofMeasure" ColumnName="UnitofMeasure" />
+                <ScalarProperty Name="CountryofOrigin" ColumnName="CountryofOrigin" />
+                <ScalarProperty Name="CCCN" ColumnName="CCCN" />
+                <ScalarProperty Name="WeightUoM" ColumnName="WeightUoM" />
+                <ScalarProperty Name="ExtendedRangeWeight" ColumnName="ExtendedRangeWeight" />
+                <ScalarProperty Name="DimensionUoM" ColumnName="DimensionUoM" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="ExtendedRangeLength" ColumnName="ExtendedRangeLength" />
+                <ScalarProperty Name="ArticleDescription" ColumnName="ArticleDescription" />
+                <ScalarProperty Name="MPN" ColumnName="MPN" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="ArticleNo" ColumnName="ArticleNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

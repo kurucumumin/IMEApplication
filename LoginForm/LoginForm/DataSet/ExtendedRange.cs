@@ -15,7 +15,6 @@ namespace LoginForm.DataSet
     public partial class ExtendedRange
     {
         public string ArticleNo { get; set; }
-        public Nullable<int> ManufacturerCode { get; set; }
         public string Brand { get; set; }
         public string MPN { get; set; }
         public string ArticleDescription { get; set; }
@@ -46,5 +45,6 @@ namespace LoginForm.DataSet
         public Nullable<decimal> DiscountedPrice3 { get; set; }
         public Nullable<decimal> DiscountedPrice4 { get; set; }
         public Nullable<decimal> DiscountedPrice5 { get; set; }
+        public string ManufacturerCode { get; set; }
     }
 }

@@ -645,5 +645,10 @@ namespace LoginForm.Item
                 itemSelect();
             }
         }
+
+        private void ItemCard_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

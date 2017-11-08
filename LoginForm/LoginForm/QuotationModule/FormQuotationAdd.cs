@@ -282,16 +282,32 @@ namespace LoginForm.QuotationModule
                                     if (tabControl1.SelectedTab != tabItemDetails) { tabControl1.SelectedTab = tabItemDetails; }
                                     #region MyRegion
                                     string itemCode = dgQuotationAddedItems.CurrentCell.Value.ToString();
+
+                                    dynamic MPNList;
                                     var sd1 = IME.SuperDisks.Where(a => a.Article_No == itemCode).FirstOrDefault();
-                                    if (sd1 == null) { sd1 = IME.SuperDisks.Where(a => a.Article_No == itemCode).FirstOrDefault(); }
+                                    if (sd1 == null)
+                                    {
+                                        MPNList = QuotationHelper.BringItems(itemCode,true);
+                                    }
+                                    else
+                                    {
+                                        var sdP1 = IME.SuperDiskPs.Where(a => a.Article_No == itemCode).FirstOrDefault();
+                                        if (sdP1 == null)
+                                        {
+                                            MPNList = QuotationHelper.BringItems(itemCode, true);
+                                        }
+                                        else
+                                        {
+                                            var er1 = IME.ExtendedRanges.Where(a => a.ArticleNo == itemCode).FirstOrDefault();
+                                            if (er1 == null)
+                                            {
+                                                MPNList = QuotationHelper.BringItems(itemCode, true);
+                                            }
+                                        }
+                                    }
 
-                                    var sdP1 = IME.SuperDiskPs.Where(a => a.Article_No == itemCode).FirstOrDefault();
-                                    if (sdP1 == null) { sdP1 = IME.SuperDiskPs.Where(a => a.Article_No == itemCode).FirstOrDefault(); }
-
-                                    var er1 = IME.ExtendedRanges.Where(a => a.ArticleNo == itemCode).FirstOrDefault();
-                                    if (er1 == null) { er1 = IME.ExtendedRanges.Where(a => a.ArticleNo == itemCode).FirstOrDefault(); }
+                                    
                                     #endregion
-                                    var MPNList = new QuotationHelper();
 
                                     //ItemClear();
 

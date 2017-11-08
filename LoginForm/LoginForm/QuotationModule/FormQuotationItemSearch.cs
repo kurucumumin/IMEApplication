@@ -220,5 +220,10 @@ namespace LoginForm.QuotationModule
                 MessageBox.Show("There is no such a data");
             }
         }
+
+        private void FormQuotationItemSearch_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

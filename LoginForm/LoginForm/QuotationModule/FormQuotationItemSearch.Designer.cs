@@ -43,86 +43,95 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 12);
+            this.label1.Location = new System.Drawing.Point(16, 15);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.Size = new System.Drawing.Size(71, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Item Code";
             // 
             // txtQuotationItemCode
             // 
-            this.txtQuotationItemCode.Location = new System.Drawing.Point(73, 9);
+            this.txtQuotationItemCode.Location = new System.Drawing.Point(97, 11);
+            this.txtQuotationItemCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtQuotationItemCode.Name = "txtQuotationItemCode";
-            this.txtQuotationItemCode.Size = new System.Drawing.Size(125, 20);
+            this.txtQuotationItemCode.Size = new System.Drawing.Size(165, 22);
             this.txtQuotationItemCode.TabIndex = 1;
             this.txtQuotationItemCode.TextChanged += new System.EventHandler(this.txtQuotationItemCode_TextChanged);
             // 
             // dgQuotationItemSearch
             // 
             this.dgQuotationItemSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgQuotationItemSearch.Location = new System.Drawing.Point(12, 57);
+            this.dgQuotationItemSearch.Location = new System.Drawing.Point(16, 70);
+            this.dgQuotationItemSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgQuotationItemSearch.Name = "dgQuotationItemSearch";
-            this.dgQuotationItemSearch.Size = new System.Drawing.Size(868, 559);
+            this.dgQuotationItemSearch.Size = new System.Drawing.Size(1157, 688);
             this.dgQuotationItemSearch.TabIndex = 2;
             this.dgQuotationItemSearch.DoubleClick += new System.EventHandler(this.dgQuotationItemSearch_DoubleClick);
             this.dgQuotationItemSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgQuotationItemSearch_KeyDown);
             // 
             // txtQuotationArticleDesc
             // 
-            this.txtQuotationArticleDesc.Location = new System.Drawing.Point(308, 9);
+            this.txtQuotationArticleDesc.Location = new System.Drawing.Point(411, 11);
+            this.txtQuotationArticleDesc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtQuotationArticleDesc.Name = "txtQuotationArticleDesc";
-            this.txtQuotationArticleDesc.Size = new System.Drawing.Size(125, 20);
+            this.txtQuotationArticleDesc.Size = new System.Drawing.Size(165, 22);
             this.txtQuotationArticleDesc.TabIndex = 3;
             this.txtQuotationArticleDesc.TextChanged += new System.EventHandler(this.txtQuotationArticleDesc_TextChanged);
             // 
             // txtQuotationMPN
             // 
-            this.txtQuotationMPN.Location = new System.Drawing.Point(534, 9);
+            this.txtQuotationMPN.Location = new System.Drawing.Point(712, 11);
+            this.txtQuotationMPN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtQuotationMPN.Name = "txtQuotationMPN";
-            this.txtQuotationMPN.Size = new System.Drawing.Size(125, 20);
+            this.txtQuotationMPN.Size = new System.Drawing.Size(165, 22);
             this.txtQuotationMPN.TabIndex = 4;
             this.txtQuotationMPN.TextChanged += new System.EventHandler(this.txtQuotationMPN_TextChanged);
             // 
             // txtQuotationNote
             // 
-            this.txtQuotationNote.Location = new System.Drawing.Point(755, 9);
+            this.txtQuotationNote.Location = new System.Drawing.Point(1007, 11);
+            this.txtQuotationNote.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtQuotationNote.Name = "txtQuotationNote";
-            this.txtQuotationNote.Size = new System.Drawing.Size(125, 20);
+            this.txtQuotationNote.Size = new System.Drawing.Size(165, 22);
             this.txtQuotationNote.TabIndex = 5;
             this.txtQuotationNote.TextChanged += new System.EventHandler(this.txtQuotationNote_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(238, 12);
+            this.label2.Location = new System.Drawing.Point(317, 15);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.Size = new System.Drawing.Size(83, 17);
             this.label2.TabIndex = 6;
             this.label2.Text = "Article Desc";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(497, 12);
+            this.label3.Location = new System.Drawing.Point(663, 15);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 13);
+            this.label3.Size = new System.Drawing.Size(38, 17);
             this.label3.TabIndex = 7;
             this.label3.Text = "MPN";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(719, 12);
+            this.label4.Location = new System.Drawing.Point(959, 15);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(30, 13);
+            this.label4.Size = new System.Drawing.Size(38, 17);
             this.label4.TabIndex = 8;
             this.label4.Text = "Note";
             // 
             // FormQuotationItemSearch
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(892, 628);
+            this.ClientSize = new System.Drawing.Size(1189, 773);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -132,9 +141,11 @@
             this.Controls.Add(this.dgQuotationItemSearch);
             this.Controls.Add(this.txtQuotationItemCode);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormQuotationItemSearch";
             this.Text = "FormQuotationItemSearch";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FormQuotationItemSearch_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgQuotationItemSearch)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

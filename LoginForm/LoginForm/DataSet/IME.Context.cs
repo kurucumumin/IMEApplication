@@ -41,7 +41,6 @@ namespace LoginForm.DataSet
         public virtual DbSet<DailyDiscontinued> DailyDiscontinueds { get; set; }
         public virtual DbSet<DiscountValue> DiscountValues { get; set; }
         public virtual DbSet<DualUse> DualUses { get; set; }
-        public virtual DbSet<ExtendedRange> ExtendedRanges { get; set; }
         public virtual DbSet<Hazardou> Hazardous { get; set; }
         public virtual DbSet<ItemNote> ItemNotes { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
@@ -72,5 +71,6 @@ namespace LoginForm.DataSet
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Town> Towns { get; set; }
         public virtual DbSet<Worker> Workers { get; set; }
+        public virtual DbSet<ExtendedRange> ExtendedRanges { get; set; }
     }
 }
