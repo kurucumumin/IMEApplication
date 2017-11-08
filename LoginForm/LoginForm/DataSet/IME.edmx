@@ -35,6 +35,13 @@
           <Property Name="City_name" Type="nvarchar" MaxLength="50" />
           <Property Name="CountryID" Type="int" />
         </EntityType>
+        <EntityType Name="ContactType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactTypeName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Country">
           <Key>
             <PropertyRef Name="ID" />
@@ -142,6 +149,7 @@
           <Property Name="customerID" Type="nvarchar" MaxLength="15" />
           <Property Name="customerNoteID" Type="int" />
           <Property Name="languageID" Type="int" />
+          <Property Name="ContactTypeID" Type="int" />
         </EntityType>
         <EntityType Name="DailyDiscontinued">
           <Key>
@@ -904,6 +912,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__CustomerW__Conta__3AA1AEB8">
+          <End Role="ContactType" Type="Self.ContactType" Multiplicity="0..1" />
+          <End Role="CustomerWorker" Type="Self.CustomerWorker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerWorker">
+              <PropertyRef Name="ContactTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__CustomerW__custo__4222D4EF">
           <End Role="Notes" Type="Self.Notes" Multiplicity="0..1" />
           <End Role="CustomerWorker" Type="Self.CustomerWorker" Multiplicity="*" />
@@ -1425,6 +1445,7 @@
           <EntitySet Name="AuthRole" EntityType="Self.AuthRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Capital" EntityType="Self.Capital" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactType" EntityType="Self.ContactType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerAdress" EntityType="Self.CustomerAdress" Schema="dbo" store:Type="Tables" />
@@ -1548,6 +1569,10 @@
           <AssociationSet Name="FK__CustomerT__depar__30F848ED" Association="Self.FK__CustomerT__depar__30F848ED">
             <End Role="CustomerDepartment" EntitySet="CustomerDepartment" />
             <End Role="CustomerTitle" EntitySet="CustomerTitle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerW__Conta__3AA1AEB8" Association="Self.FK__CustomerW__Conta__3AA1AEB8">
+            <End Role="ContactType" EntitySet="ContactType" />
+            <End Role="CustomerWorker" EntitySet="CustomerWorker" />
           </AssociationSet>
           <AssociationSet Name="FK__CustomerW__custo__4222D4EF" Association="Self.FK__CustomerW__custo__4222D4EF">
             <End Role="Notes" EntitySet="Notes" />
@@ -1730,6 +1755,7 @@
           <EntitySet Name="AuthorizationValues" EntityType="IMEModel.AuthorizationValue" />
           <EntitySet Name="Capitals" EntityType="IMEModel.Capital" />
           <EntitySet Name="Cities" EntityType="IMEModel.City" />
+          <EntitySet Name="ContactTypes" EntityType="IMEModel.ContactType" />
           <EntitySet Name="Countries" EntityType="IMEModel.Country" />
           <EntitySet Name="Customers" EntityType="IMEModel.Customer" />
           <EntitySet Name="CustomerAdresses" EntityType="IMEModel.CustomerAdress" />
@@ -1788,6 +1814,10 @@
           <AssociationSet Name="FK__Town__CityID__5224328E" Association="IMEModel.FK__Town__CityID__5224328E">
             <End Role="City" EntitySet="Cities" />
             <End Role="Town" EntitySet="Towns" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CustomerW__Conta__3AA1AEB8" Association="IMEModel.FK__CustomerW__Conta__3AA1AEB8">
+            <End Role="ContactType" EntitySet="ContactTypes" />
+            <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
           </AssociationSet>
           <AssociationSet Name="FK__CustomerA__Count__503BEA1C" Association="IMEModel.FK__CustomerA__Count__503BEA1C">
             <End Role="Country" EntitySet="Countries" />
@@ -2046,6 +2076,14 @@
           <NavigationProperty Name="SupplierAdresses" Relationship="IMEModel.FK__SupplierA__CityI__40C49C62" FromRole="City" ToRole="SupplierAdress" />
           <NavigationProperty Name="Towns" Relationship="IMEModel.FK__Town__CityID__5224328E" FromRole="City" ToRole="Town" />
         </EntityType>
+        <EntityType Name="ContactType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CustomerWorkers" Relationship="IMEModel.FK__CustomerW__Conta__3AA1AEB8" FromRole="ContactType" ToRole="CustomerWorker" />
+        </EntityType>
         <EntityType Name="Country">
           <Key>
             <PropertyRef Name="ID" />
@@ -2184,6 +2222,8 @@
           <Property Name="customerID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="customerNoteID" Type="Int32" />
           <Property Name="languageID" Type="Int32" />
+          <Property Name="ContactTypeID" Type="Int32" />
+          <NavigationProperty Name="ContactType" Relationship="IMEModel.FK__CustomerW__Conta__3AA1AEB8" FromRole="CustomerWorker" ToRole="ContactType" />
           <NavigationProperty Name="Customers" Relationship="IMEModel.FK__Customer__MainCo__19AACF41" FromRole="CustomerWorker" ToRole="Customer" />
           <NavigationProperty Name="Customer" Relationship="IMEModel.FK__CustomerW__custo__4316F928" FromRole="CustomerWorker" ToRole="Customer" />
           <NavigationProperty Name="CustomerAdresses" Relationship="IMEModel.FK__CustomerA__Conta__45BE5BA9" FromRole="CustomerWorker" ToRole="CustomerAdress" />
@@ -2828,6 +2868,18 @@
             </Principal>
             <Dependent Role="Town">
               <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CustomerW__Conta__3AA1AEB8">
+          <End Type="IMEModel.ContactType" Role="ContactType" Multiplicity="0..1" />
+          <End Type="IMEModel.CustomerWorker" Role="CustomerWorker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CustomerWorker">
+              <PropertyRef Name="ContactTypeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3530,6 +3582,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ContactTypes">
+            <EntityTypeMapping TypeName="IMEModel.ContactType">
+              <MappingFragment StoreEntitySet="ContactType">
+                <ScalarProperty Name="ContactTypeName" ColumnName="ContactTypeName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Countries">
             <EntityTypeMapping TypeName="IMEModel.Country">
               <MappingFragment StoreEntitySet="Country">
@@ -3633,6 +3693,7 @@
           <EntitySetMapping Name="CustomerWorkers">
             <EntityTypeMapping TypeName="IMEModel.CustomerWorker">
               <MappingFragment StoreEntitySet="CustomerWorker">
+                <ScalarProperty Name="ContactTypeID" ColumnName="ContactTypeID" />
                 <ScalarProperty Name="languageID" ColumnName="languageID" />
                 <ScalarProperty Name="customerNoteID" ColumnName="customerNoteID" />
                 <ScalarProperty Name="customerID" ColumnName="customerID" />

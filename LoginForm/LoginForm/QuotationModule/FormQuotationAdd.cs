@@ -518,7 +518,7 @@ namespace LoginForm.QuotationModule
                         ChangeCurr(rowindex);
                         GetMargin();
                         dgQuotationAddedItems.Rows[rowindex].Cells["dgMargin"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgMargin"].Value.ToString())).ToString();
-
+                        dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotalWeight"].Value = (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUnitWeigt"].Value.ToString()) * Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
                         //CalculateSubTotal();
                         #region Calculate Total Margin
                         try
@@ -1919,7 +1919,7 @@ namespace LoginForm.QuotationModule
             for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
             {               
                     #region Get Margin
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value != null)
+                    if (dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value != null && dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString() != "0")
                     {
                         dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString())) / Currfactor).ToString();
                         dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString())) / Currfactor).ToString();
@@ -2132,9 +2132,9 @@ namespace LoginForm.QuotationModule
 
         private void btnViewMore_Click(object sender, EventArgs e)
         {
-            if (CustomerCode.Text == null)
+            if (CustomerCode.Text == null|| CustomerCode.Text == string.Empty)
             {
-                MessageBox.Show("Customer not selected !", "Eror !");
+                MessageBox.Show("Please Enter a Customer", "Eror !");
             }
             else
             {
@@ -2340,6 +2340,7 @@ namespace LoginForm.QuotationModule
             cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == dtpDate.Value).ToList();
             cbCurrency.DisplayMember = "CurType";
             cbCurrency.ValueMember = "ID";
+
             GetAllMargin();
         }
 
@@ -2381,3 +2382,4 @@ namespace LoginForm.QuotationModule
         }
     }
 }
+    

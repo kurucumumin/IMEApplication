@@ -1100,7 +1100,7 @@
             // btnContactAdd
             // 
             this.btnContactAdd.Enabled = false;
-            this.btnContactAdd.Location = new System.Drawing.Point(548, 234);
+            this.btnContactAdd.Location = new System.Drawing.Point(539, 236);
             this.btnContactAdd.Name = "btnContactAdd";
             this.btnContactAdd.Size = new System.Drawing.Size(43, 25);
             this.btnContactAdd.TabIndex = 15;
@@ -1150,6 +1150,11 @@
             // 
             this.ContactType.Enabled = false;
             this.ContactType.FormattingEnabled = true;
+            this.ContactType.Items.AddRange(new object[] {
+            "Account",
+            "Sales",
+            "Purchase",
+            "Logistic"});
             this.ContactType.Location = new System.Drawing.Point(98, 18);
             this.ContactType.Name = "ContactType";
             this.ContactType.Size = new System.Drawing.Size(142, 24);

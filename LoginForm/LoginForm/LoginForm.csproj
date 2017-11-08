@@ -138,6 +138,9 @@
     <Compile Include="DataSet\City.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\ContactType.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Country.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
