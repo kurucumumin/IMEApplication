@@ -28,6 +28,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<AuthorizationValue> AuthorizationValues { get; set; }
         public virtual DbSet<Capital> Capitals { get; set; }
         public virtual DbSet<City> Cities { get; set; }
+        public virtual DbSet<ContactType> ContactTypes { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<CustomerAdress> CustomerAdresses { get; set; }

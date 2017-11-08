@@ -32,7 +32,9 @@ namespace LoginForm.DataSet
         public string customerID { get; set; }
         public Nullable<int> customerNoteID { get; set; }
         public Nullable<int> languageID { get; set; }
+        public Nullable<int> ContactTypeID { get; set; }
     
+        public virtual ContactType ContactType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }
         public virtual Customer Customer { get; set; }
