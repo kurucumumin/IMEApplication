@@ -1038,7 +1038,7 @@ namespace LoginForm
                                     ddc.ArticleNo = ws.Cells[ColumnNumber, Rownb].Text;
                                     break;
                                 case "Manufacturer Code":
-                                    if (ws.Cells[ColumnNumber, Rownb].Text != "") { ddc.ManufacturerCode = Int32.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
+                                    if (ws.Cells[ColumnNumber, Rownb].Text != "") { ddc.ManufacturerCode = ws.Cells[ColumnNumber, Rownb].Text; }
                                     break;
                                 case "Brand":
                                     ddc.Brand = ws.Cells[ColumnNumber, Rownb].Text;

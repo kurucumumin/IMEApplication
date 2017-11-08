@@ -46,14 +46,21 @@ namespace LoginForm.QuotationModule
         {
             if (dgQuotationItemSearch.DataSource != null)
             {
-                classQuotationAdd.ItemCode = dgQuotationItemSearch.Rows[dgQuotationItemSearch.CurrentCell.RowIndex].Cells[0].Value.ToString();
-
                 var MPNItemList = QuotationHelper.BringItems(dgQuotationItemSearch.CurrentRow.Cells[2].Value.ToString(), true);
-                if( MPNItemList.Count >= 0)
-                {
 
+                if (MPNItemList.Count > 1)
+                {
+                    FormQuotationMPN form = new FormQuotationMPN(MPNItemList);
+                    form.ShowDialog();
+                }
+                else
+                {
+                    classQuotationAdd.ItemCode = dgQuotationItemSearch
+                        .Rows[dgQuotationItemSearch.CurrentCell.RowIndex]
+                        .Cells[0].Value.ToString();
                 }
 
+                
             }
             this.Close();
         }
@@ -67,9 +74,10 @@ namespace LoginForm.QuotationModule
                     classQuotationAdd.ItemCode = dgQuotationItemSearch.Rows[dgQuotationItemSearch.CurrentCell.RowIndex].Cells[0].Value.ToString();
 
                     var MPNItemList = QuotationHelper.BringItems(dgQuotationItemSearch.CurrentRow.Cells[2].Value.ToString(), true);
-                    if (MPNItemList.Count >= 0)
+                    if (MPNItemList.Count > 1)
                     {
-
+                        FormQuotationMPN form = new FormQuotationMPN(MPNItemList);
+                        form.ShowDialog();
                     }
                 }
                 this.Close();

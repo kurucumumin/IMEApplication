@@ -32,8 +32,8 @@ namespace LoginForm.QuotationModule
                                          Supplier = a.Manufacturer,
                                          UniteCode = a.Unit_Content,
                                          StandardWeight = a.Standard_Weight,
-                                         HzrInd = a.Hazardous_Ind,
-                                         Calib = a.Calibration_Ind
+                                         //HzrInd = a.Hazardous_Ind,
+                                         //Calib = a.Calibration_Ind
                                      }
                          ).ToList();
                     list2 = (from a in IME.SuperDiskPs.Where(a => a.Article_No.Contains(code))
@@ -48,8 +48,8 @@ namespace LoginForm.QuotationModule
                                  Supplier = a.Manufacturer,
                                  UniteCode = a.Unit_Content,
                                  StandardWeight = a.Standard_Weight,
-                                 HzrInd = a.Hazardous_Ind,
-                                 Calib = a.Calibration_Ind
+                                 //HzrInd = a.Hazardous_Ind,
+                                 //Calib = a.Calibration_Ind
                                  //a.CofO,
                                  //a.Pack_Code
                              }
@@ -71,7 +71,7 @@ namespace LoginForm.QuotationModule
                              }
                                 ).ToList();
                     gridAdapterPC.AddRange(list2);
-                    gridAdapterPC.AddRange(list3);
+                    //gridAdapterPC.AddRange(list3);
                     break;
                 case true:
                     gridAdapterPC = (from a in IME.SuperDisks.Where(a => a.MPN == code)
