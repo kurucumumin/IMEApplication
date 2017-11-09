@@ -19,9 +19,9 @@ namespace LoginForm.DataSet
         {
             this.CustomerAdresses = new HashSet<CustomerAdress>();
             this.CustomerCategorySubCategories = new HashSet<CustomerCategorySubCategory>();
-            this.CustomerWorkers = new HashSet<CustomerWorker>();
             this.DiscountValues = new HashSet<DiscountValue>();
             this.Quotations = new HashSet<Quotation>();
+            this.CustomerWorkers = new HashSet<CustomerWorker>();
         }
     
         public string ID { get; set; }
@@ -51,7 +51,6 @@ namespace LoginForm.DataSet
     
         public virtual Worker Worker { get; set; }
         public virtual Note Note { get; set; }
-        public virtual CustomerWorker CustomerWorker { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
         public virtual PaymentTerm PaymentTerm { get; set; }
         public virtual Worker Worker1 { get; set; }
@@ -61,10 +60,11 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomerCategorySubCategory> CustomerCategorySubCategories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerWorker> CustomerWorkers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DiscountValue> DiscountValues { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Quotation> Quotations { get; set; }
+        public virtual CustomerWorker CustomerWorker { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CustomerWorker> CustomerWorkers { get; set; }
     }
 }

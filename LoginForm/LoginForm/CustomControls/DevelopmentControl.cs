@@ -23,7 +23,7 @@ namespace LoginForm.CustomControls
         private void btnCustomer_Click(object sender, EventArgs e)
         {
             CustomerMain customerMain = new CustomerMain();
-            customerMain.ShowDialog();
+           customerMain.ShowDialog();
         }
 
         private void btnQuotation_Click(object sender, EventArgs e)

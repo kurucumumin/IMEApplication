@@ -30,7 +30,7 @@ namespace LoginForm.DataSet
         public virtual City City { get; set; }
         public virtual Country Country { get; set; }
         public virtual Customer Customer { get; set; }
-        public virtual CustomerWorker CustomerWorker { get; set; }
         public virtual Town Town { get; set; }
+        public virtual CustomerWorker CustomerWorker { get; set; }
     }
 }
