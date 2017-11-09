@@ -113,6 +113,7 @@ namespace LoginForm
             cbCountry.DataSource = IME.Countries.ToList();
             cbCountry.DisplayMember = "Country_name";
             ContactType.DataSource = IME.ContactTypes.ToList();
+            ContactType.ValueMember = "ID";
             ContactType.DisplayMember = "ContactTypeName";
             #endregion
             if (!isModify)
@@ -145,7 +146,8 @@ namespace LoginForm
                     foreach (var a in contact1)
                     {
                         selectedContactID = a.ID;
-                        if(a.ContactTypeID!=null) ContactType.SelectedIndex = Int32.Parse(a.ContactTypeID.ToString());
+                        ContactType.SelectedValue = a.ContactTypeID;
+                       // Int32.Parse(a.ContactTypeID.ToString());
                         ContactName.Text = a.cw_name;
                         ContactEmail.Text = a.cw_email;
                         ContactDepartment.SelectedIndex = ContactDepartment.FindStringExact(a.CustomerDepartment.departmentname);
@@ -153,6 +155,7 @@ namespace LoginForm
                         ContactFAX.Text = a.fax;
                         ContactMobilePhone.Text = a.mobilephone;
                         ContactPhone.Text = a.phone;
+                        if(a.CustomerWorkerAdress!=null) ContactAdress.SelectedItem = Int32.Parse(a.CustomerWorkerAdress.ToString());
                         CommunicationLanguage.SelectedIndex = CommunicationLanguage.FindStringExact(a.Language.languagename);
                         if (a.Note != null) { ContactNotes.Text = a.Note.Note_name; } else { ContactNotes.Text = ""; }
                     }
@@ -215,6 +218,7 @@ namespace LoginForm
             ContactName.Enabled = false;
             ContactEmail.Enabled = false;
             ContactPhone.Enabled = false;
+            ContactAdress.Enabled = false;
             ContactMobilePhone.Enabled = false;
             ContactFAX.Enabled = false;
             CommunicationLanguage.Enabled = false;
@@ -263,6 +267,7 @@ namespace LoginForm
             ContactName.Enabled = true;
             ContactEmail.Enabled = true;
             ContactPhone.Enabled = true;
+            ContactAdress.Enabled = true;
             btnContactAdd.Enabled = true;
             if (ContactList.Items.Count > 0)
             {
@@ -421,6 +426,8 @@ namespace LoginForm
                 CustomerCode.Text = customerAdapter[gridselectedindex].ID;
                 AdressList.DataSource = IME.CustomerAdresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
                 AdressList.DisplayMember = "AdressDetails";
+                ContactAdress.DataSource = IME.CustomerAdresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
+                ContactAdress.DisplayMember = "AdressDetails";
                 IME.SaveChanges();
                 CustomerName.Text = customerAdapter[gridselectedindex].c_name;
                 try { Telephone.Text = customerAdapter[gridselectedindex].telephone.ToString(); } catch { }
@@ -544,6 +551,8 @@ namespace LoginForm
                 CustomerCode.Text = customerAdapter[gridselectedindex].ID;
                 AdressList.DataSource = IME.CustomerAdresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
                 AdressList.DisplayMember = "AdressDetails";
+                ContactAdress.DataSource = IME.CustomerAdresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
+                ContactAdress.DisplayMember = "AdressDetails";
                 CustomerName.Text = customerAdapter[gridselectedindex].c_name;
                 Telephone.Text = customerAdapter[gridselectedindex].telephone.ToString();
                 ContactFAX.Text = customerAdapter[gridselectedindex].fax.ToString();
@@ -660,6 +669,7 @@ namespace LoginForm
                 cw.cw_name = ContactName.Text;
                 cw.cw_email = ContactEmail.Text;
                 cw.phone = ContactPhone.Text;
+                cw.CustomerWorkerAdress = (ContactAdress.SelectedItem as CustomerAdress).ID;
                 cw.ContactTypeID = (ContactType.SelectedItem as ContactType).ID;
                 cw.mobilephone = ContactMobilePhone.Text;
                 cw.fax = ContactFAX.Text;
@@ -695,6 +705,7 @@ namespace LoginForm
                     cw.cw_name = ContactName.Text;
                     cw.cw_email = ContactEmail.Text;
                     cw.phone = ContactPhone.Text;
+                    if(ContactAdress.SelectedItem!=null) cw.CustomerWorkerAdress = (ContactAdress.SelectedItem as CustomerAdress).ID;
                     cw.mobilephone = ContactMobilePhone.Text;
                     cw.fax = ContactFAX.Text;
                     cw.languageID = ((CommunicationLanguage).SelectedItem as Language).ID;
@@ -842,6 +853,7 @@ namespace LoginForm
                 btnUpdate.Text = "CANCEL";
                 AdressList.Enabled = false;
                 AdressList.DataSource = null;
+                ContactAdress.DataSource = null;
                 AdressAdd.Enabled = true;
                 btnContactAdd.Enabled = true;
 
@@ -1264,6 +1276,9 @@ namespace LoginForm
             AdressList.DataSource = null;
             AdressList.DataSource = IME.CustomerAdresses.Where(customerw => customerw.CustomerID == CustomerCode.Text).ToList();
             AdressList.DisplayMember = "AdressDetails";
+            ContactAdress.DataSource = null;
+            ContactAdress.DataSource = IME.CustomerAdresses.Where(customerw => customerw.CustomerID == CustomerCode.Text).ToList();
+            ContactAdress.DisplayMember = "AdressDetails";
             AdressAdd.Visible = true;
             AddressDel.Visible = true;
             AddressUpd.Visible = true;

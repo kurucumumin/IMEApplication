@@ -146,6 +146,8 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.tableMain = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ContactAdress = new System.Windows.Forms.ComboBox();
+            this.label42 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tab_company.SuspendLayout();
             this.tab_account.SuspendLayout();
@@ -1007,6 +1009,8 @@
             // 
             // tab_contact
             // 
+            this.tab_contact.Controls.Add(this.ContactAdress);
+            this.tab_contact.Controls.Add(this.label42);
             this.tab_contact.Controls.Add(this.txtExtNumber);
             this.tab_contact.Controls.Add(this.departmentAdd);
             this.tab_contact.Controls.Add(this.titleAdd);
@@ -1192,10 +1196,9 @@
             // 
             // label26
             // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(-2, 131);
+            this.label26.Location = new System.Drawing.Point(27, 118);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(106, 17);
+            this.label26.Size = new System.Drawing.Size(70, 39);
             this.label26.TabIndex = 17;
             this.label26.Text = "Name Surname";
             // 
@@ -1253,7 +1256,7 @@
             // ContactName
             // 
             this.ContactName.Enabled = false;
-            this.ContactName.Location = new System.Drawing.Point(106, 128);
+            this.ContactName.Location = new System.Drawing.Point(97, 128);
             this.ContactName.Name = "ContactName";
             this.ContactName.Size = new System.Drawing.Size(167, 23);
             this.ContactName.TabIndex = 4;
@@ -1423,6 +1426,24 @@
             this.panel1.Size = new System.Drawing.Size(706, 57);
             this.panel1.TabIndex = 2;
             // 
+            // ContactAdress
+            // 
+            this.ContactAdress.Enabled = false;
+            this.ContactAdress.FormattingEnabled = true;
+            this.ContactAdress.Location = new System.Drawing.Point(97, 237);
+            this.ContactAdress.Name = "ContactAdress";
+            this.ContactAdress.Size = new System.Drawing.Size(151, 24);
+            this.ContactAdress.TabIndex = 43;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(28, 240);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(52, 17);
+            this.label42.TabIndex = 44;
+            this.label42.Text = "Adress";
+            // 
             // CustomerMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1572,5 +1593,7 @@
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.TextBox DiscountRate;
         private System.Windows.Forms.TextBox factor;
+        private System.Windows.Forms.ComboBox ContactAdress;
+        private System.Windows.Forms.Label label42;
     }
 }
