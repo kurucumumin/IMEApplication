@@ -12,8 +12,15 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class CustomerAdress
+    public partial class CustomerAddress
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CustomerAddress()
+        {
+            this.SalesOrders = new HashSet<SalesOrder>();
+            this.SalesOrders1 = new HashSet<SalesOrder>();
+        }
+    
         public int ID { get; set; }
         public string CustomerID { get; set; }
         public Nullable<int> ContactID { get; set; }
@@ -30,7 +37,11 @@ namespace LoginForm.DataSet
         public virtual City City { get; set; }
         public virtual Country Country { get; set; }
         public virtual Customer Customer { get; set; }
-        public virtual Town Town { get; set; }
         public virtual CustomerWorker CustomerWorker { get; set; }
+        public virtual Town Town { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesOrder> SalesOrders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesOrder> SalesOrders1 { get; set; }
     }
 }

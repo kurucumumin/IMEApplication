@@ -18,7 +18,13 @@ namespace LoginForm.DataSet
         public CustomerWorker()
         {
             this.Customers = new HashSet<Customer>();
-            this.CustomerAdresses = new HashSet<CustomerAdress>();
+            this.CustomerAddresses = new HashSet<CustomerAddress>();
+            this.SalesOrders = new HashSet<SalesOrder>();
+            this.SalesOrders1 = new HashSet<SalesOrder>();
+            this.SalesOrders2 = new HashSet<SalesOrder>();
+            this.SalesOrders3 = new HashSet<SalesOrder>();
+            this.SalesOrders4 = new HashSet<SalesOrder>();
+            this.SalesOrders5 = new HashSet<SalesOrder>();
         }
     
         public int ID { get; set; }
@@ -39,11 +45,23 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }
         public virtual Customer Customer { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerAdress> CustomerAdresses { get; set; }
         public virtual CustomerDepartment CustomerDepartment { get; set; }
         public virtual CustomerTitle CustomerTitle { get; set; }
         public virtual Note Note { get; set; }
         public virtual Language Language { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CustomerAddress> CustomerAddresses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesOrder> SalesOrders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesOrder> SalesOrders1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesOrder> SalesOrders2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesOrder> SalesOrders3 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesOrder> SalesOrders4 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesOrder> SalesOrders5 { get; set; }
     }
 }
