@@ -389,7 +389,7 @@ namespace LoginForm.QuotationModule
                     #endregion
                     //ChangeCurrnetCell(dgQuotationAddedItems.CurrentCell.RowIndex +1);
                     break;
-                case 15://QAUANTITY
+                case 14://QAUANTITY
                     #region Quantity
                     {
                         GetQuotationQuantity(dgQuotationAddedItems.CurrentCell.RowIndex);
@@ -420,7 +420,7 @@ namespace LoginForm.QuotationModule
                     //TotalDis();
                     break;
                 #endregion
-                case 22://Total
+                case 21://Total
                     {
                         #region Total
                         decimal total = decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString());
@@ -642,7 +642,6 @@ namespace LoginForm.QuotationModule
             #region FillProductCodeItem
             //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgLandingCost"].Value = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.CurrentCell.Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked,
             //    Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQtr"].Value.ToString()))).ToString("G29");
-            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgHZ"].Value = txtHazardousInd.Text;
             dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgCCCNO"].Value = txtCCCN.Text;
             dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgCOO"].Value = txtCofO.Text;
             dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUnitWeigt"].Value = txtStandartWeight.Text;
@@ -1460,6 +1459,7 @@ namespace LoginForm.QuotationModule
                     try { qd.dgNo = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgNo"].Value.ToString()); } catch { }
                     try { qd.ItemCode = dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(); } catch { }
                     try { qd.Qty = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString()); } catch { }
+                    try { qd.UnitOfMeasure = dgQuotationAddedItems.Rows[i].Cells["dgUOM"].Value.ToString(); } catch { }
                     try { qd.UCUPCurr = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()); } catch { }
                     try { qd.UCUPCurr = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString()); } catch { }
                     try { qd.Disc = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value.ToString()); } catch { }
@@ -1484,8 +1484,9 @@ namespace LoginForm.QuotationModule
                     try{qd.ItemCode = dgQuotationDeleted.Rows[i].Cells["dgProductCode1"].Value.ToString();}catch { }
                     try{qd.Qty = Int32.Parse(dgQuotationDeleted.Rows[i].Cells["dgQty1"].Value.ToString());}catch { }
                     try{qd.UCUPCurr = Decimal.Parse(dgQuotationDeleted.Rows[i].Cells["dgUCUPCurr1"].Value.ToString());}catch { }
-                    try{qd.Disc = Decimal.Parse(dgQuotationDeleted.Rows[i].Cells["dgDisc1"].Value.ToString());}catch { }
-                    try { qd.UCUPCurr = Decimal.Parse(dgQuotationDeleted.Rows[i].Cells["dgUPIME"].Value.ToString()); } catch { }
+                    try { qd.UnitOfMeasure = dgQuotationDeleted.Rows[i].Cells["dgUOM1"].Value.ToString(); } catch { }
+                    try {qd.Disc = Decimal.Parse(dgQuotationDeleted.Rows[i].Cells["dgDisc1"].Value.ToString());}catch { }
+                    try { qd.UCUPCurr = Decimal.Parse(dgQuotationDeleted.Rows[i].Cells["dgUPIME1"].Value.ToString()); } catch { }
                     try {qd.Total = Decimal.Parse(dgQuotationDeleted.Rows[i].Cells["dgTotal1"].Value.ToString());}catch { }
                     try{qd.TargetUP = Decimal.Parse(dgQuotationDeleted.Rows[i].Cells["dgTargetUP1"].Value.ToString());}catch { }
                     try{qd.Competitor = dgQuotationDeleted.Rows[i].Cells["dgCompetitor1"].Value.ToString();  } catch { }
@@ -1521,15 +1522,15 @@ namespace LoginForm.QuotationModule
                     DataGridViewRow row = (DataGridViewRow)dgQuotationDeleted.Rows[0].Clone();
                     row.Cells[0].Value = item.dgNo;
                     row.Cells[7].Value = item.ItemCode;
-                    row.Cells[15].Value = item.Qty;
-                    row.Cells[20].Value = item.dgUPIME;
-                    row.Cells[22].Value = item.UCUPCurr;
-                    row.Cells[21].Value = item.Disc;
-                    row.Cells[23].Value = item.Total;
-                    row.Cells[24].Value = item.TargetUP;
-                    row.Cells[25].Value = item.Competitor;
-                    row.Cells[29].Value = item.Qty;
-                    row.Cells[30].Value = item.CustomerStockCode;
+                    row.Cells[14].Value = item.Qty;
+                    row.Cells[19].Value = item.dgUPIME;
+                    row.Cells[21].Value = item.UCUPCurr;
+                    row.Cells[20].Value = item.Disc;
+                    row.Cells[22].Value = item.Total;
+                    row.Cells[23].Value = item.TargetUP;
+                    row.Cells[24].Value = item.Competitor;
+                    row.Cells[28].Value = item.Qty;
+                    row.Cells[29].Value = item.CustomerStockCode;
                     dgQuotationDeleted.Rows.Add(row);
                 }
                 else
@@ -1538,14 +1539,14 @@ namespace LoginForm.QuotationModule
                     row.CreateCells(dgQuotationAddedItems);
                     row.Cells[0].Value = item.dgNo;
                     row.Cells[7].Value = item.ItemCode;
-                    row.Cells[15].Value = item.Qty;
-                    row.Cells[22].Value = item.UCUPCurr;
-                    row.Cells[20].Value = item.dgUPIME;
-                    row.Cells[21].Value = item.Disc;
-                    row.Cells[23].Value = item.Total;
-                    row.Cells[24].Value = item.TargetUP;
-                    row.Cells[25].Value = item.Competitor;
-                    row.Cells[30].Value = item.Qty;
+                    row.Cells[14].Value = item.Qty;
+                    row.Cells[19].Value = item.dgUPIME;
+                    row.Cells[21].Value = item.UCUPCurr;
+                    row.Cells[20].Value = item.Disc;
+                    row.Cells[22].Value = item.Total;
+                    row.Cells[23].Value = item.TargetUP;
+                    row.Cells[24].Value = item.Competitor;
+                    row.Cells[28].Value = item.Qty;
                     row.Cells[29].Value = item.CustomerStockCode;
                     dgQuotationAddedItems.Rows.Add(row);
                     
@@ -2081,9 +2082,9 @@ namespace LoginForm.QuotationModule
             int row= dgQuotationAddedItems.CurrentCell.RowIndex;
             while (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex].ReadOnly == true)
             {
-                if (currindex == 35)
+                if (currindex == 32)
                 {
-                    if (currindex == 15 && dgQuotationAddedItems.Rows[row].Cells[15].Value == null) break;
+                    if (currindex == 14 && dgQuotationAddedItems.Rows[row].Cells[14].Value == null) break;
                     if (dgQuotationAddedItems.RowCount - 1 == row)
                     {
                         DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
@@ -2110,7 +2111,7 @@ namespace LoginForm.QuotationModule
             int row = dgQuotationAddedItems.CurrentCell.RowIndex;
             while (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex].ReadOnly == true)
             {
-                if (currindex == 35)
+                if (currindex == 32)
                 {
                     
                     if (dgQuotationAddedItems.RowCount - 1 == row)
@@ -2121,8 +2122,9 @@ namespace LoginForm.QuotationModule
                     currindex = 6;
                     row++;
                 }
-                else {
-                    if (currindex == 16 && dgQuotationAddedItems.Rows[row].Cells[15].Value == null) break;
+                else
+                {
+                  if (currindex == 14 && dgQuotationAddedItems.Rows[row].Cells[14].Value == null) break;
                     currindex++;
                 }
             }
