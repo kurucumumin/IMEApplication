@@ -17,7 +17,7 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Town()
         {
-            this.CustomerAdresses = new HashSet<CustomerAdress>();
+            this.CustomerAddresses = new HashSet<CustomerAddress>();
             this.SupplierAdresses = new HashSet<SupplierAdress>();
         }
     
@@ -27,7 +27,7 @@ namespace LoginForm.DataSet
     
         public virtual City City { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerAdress> CustomerAdresses { get; set; }
+        public virtual ICollection<CustomerAddress> CustomerAddresses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SupplierAdress> SupplierAdresses { get; set; }
     }

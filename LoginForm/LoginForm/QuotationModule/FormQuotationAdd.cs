@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -29,6 +30,8 @@ namespace LoginForm.QuotationModule
         public static Customer customer;
         bool modifyMod = false;
         ToolTip aciklama = new ToolTip();
+        SqlDataAdapter da;
+        System.Data.DataSet ds = new System.Data.DataSet();
         #endregion
 
         public FormQuotationAdd()
@@ -2405,6 +2408,23 @@ namespace LoginForm.QuotationModule
             txtMargin3.Visible = true;
             txtMargin4.Visible = true;
             txtMargin5.Visible = true;
+        }
+
+        private void dgQuotationAddedItems_DoubleClick(object sender, EventArgs e)
+        {
+            string item_code;
+
+            item_code= dgQuotationAddedItems.CurrentRow.Cells["dgProductCode"].Value.ToString();
+
+            if (item_code == null || item_code == string.Empty)
+            {
+                MessageBox.Show("Please Enter a Item Code", "Eror !");
+            }
+            else
+            {
+                ViewProductHistory f = new ViewProductHistory(item_code);
+                f.ShowDialog();
+            }
         }
     }
 }
