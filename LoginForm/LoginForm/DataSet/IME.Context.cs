@@ -31,7 +31,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<ContactType> ContactTypes { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<CustomerAdress> CustomerAdresses { get; set; }
+        public virtual DbSet<CustomerAddress> CustomerAddresses { get; set; }
         public virtual DbSet<CustomerCategory> CustomerCategories { get; set; }
         public virtual DbSet<CustomerCategorySubCategory> CustomerCategorySubCategories { get; set; }
         public virtual DbSet<CustomerDepartment> CustomerDepartments { get; set; }
@@ -56,6 +56,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<Rate> Rates { get; set; }
         public virtual DbSet<RoleValue> RoleValues { get; set; }
         public virtual DbSet<RSPro> RSProes { get; set; }
+        public virtual DbSet<SalesOrder> SalesOrders { get; set; }
         public virtual DbSet<SlidingPrice> SlidingPrices { get; set; }
         public virtual DbSet<SuperDisk> SuperDisks { get; set; }
         public virtual DbSet<SuperDiskP> SuperDiskPs { get; set; }

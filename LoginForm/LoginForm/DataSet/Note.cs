@@ -18,13 +18,13 @@ namespace LoginForm.DataSet
         public Note()
         {
             this.Customers = new HashSet<Customer>();
+            this.CustomerWorkers = new HashSet<CustomerWorker>();
             this.ItemNotes = new HashSet<ItemNote>();
             this.Quotations = new HashSet<Quotation>();
             this.Quotations1 = new HashSet<Quotation>();
             this.Suppliers = new HashSet<Supplier>();
             this.SupplierWorkers = new HashSet<SupplierWorker>();
             this.Workers = new HashSet<Worker>();
-            this.CustomerWorkers = new HashSet<CustomerWorker>();
         }
     
         public int ID { get; set; }
@@ -32,6 +32,8 @@ namespace LoginForm.DataSet
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CustomerWorker> CustomerWorkers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemNote> ItemNotes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -44,7 +46,5 @@ namespace LoginForm.DataSet
         public virtual ICollection<SupplierWorker> SupplierWorkers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Worker> Workers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerWorker> CustomerWorkers { get; set; }
     }
 }

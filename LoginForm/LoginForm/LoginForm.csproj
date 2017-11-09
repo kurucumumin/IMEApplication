@@ -147,7 +147,7 @@
     <Compile Include="DataSet\Customer.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\CustomerAdress.cs">
+    <Compile Include="DataSet\CustomerAddress.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\CustomerCategory.cs">
@@ -236,6 +236,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\RSPro.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalesOrder.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SlidingPrice.cs">
@@ -374,6 +377,12 @@
       <DependentUpon>FormQuotationMPN.cs</DependentUpon>
     </Compile>
     <Compile Include="QuotationModule\QuotationHelper.cs" />
+    <Compile Include="QuotationModule\ViewProductHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuotationModule\ViewProductHistory.Designer.cs">
+      <DependentUpon>ViewProductHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="SalesOrder\FormSalesOrderAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -492,6 +501,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\FormQuotationMPN.resx">
       <DependentUpon>FormQuotationMPN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuotationModule\ViewProductHistory.resx">
+      <DependentUpon>ViewProductHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SalesOrder\FormSalesOrderAdd.resx">
       <DependentUpon>FormSalesOrderAdd.cs</DependentUpon>

@@ -368,7 +368,7 @@ namespace LoginForm
                                    join p in IME.PaymentTerms on c.payment_termID equals p.ID
                                    join m in IME.PaymentMethods on c.paymentmethodID equals m.ID
                                    join l in IME.Languages on customerworker.languageID equals l.ID
-                                   join a in IME.CustomerAdresses on c.ID equals a.CustomerID into adress
+                                   join a in IME.CustomerAddresses on c.ID equals a.CustomerID into adress
                                    let a = adress.Select(customerworker1 => customerworker1).FirstOrDefault()
                                    join mc in IME.CustomerWorkers on c.MainContactID equals mc.ID into maincontact
                                    let mc = maincontact.Select(customerworker1 => customerworker1).FirstOrDefault()
@@ -424,9 +424,9 @@ namespace LoginForm
                 CustomerDataGrid.CurrentCell = CustomerDataGrid.Rows[gridselectedindex].Cells[0];
                 dateTimePicker1.Value = customerAdapter[gridselectedindex].CreateDate;
                 CustomerCode.Text = customerAdapter[gridselectedindex].ID;
-                AdressList.DataSource = IME.CustomerAdresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
+                AdressList.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
                 AdressList.DisplayMember = "AdressDetails";
-                ContactAdress.DataSource = IME.CustomerAdresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
+                ContactAdress.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
                 ContactAdress.DisplayMember = "AdressDetails";
                 IME.SaveChanges();
                 CustomerName.Text = customerAdapter[gridselectedindex].c_name;
@@ -500,7 +500,7 @@ namespace LoginForm
                                        join p in IME.PaymentTerms on c.payment_termID equals p.ID
                                        join m in IME.PaymentMethods on c.paymentmethodID equals m.ID
                                        join l in IME.Languages on customerworker.languageID equals l.ID
-                                       join a in IME.CustomerAdresses on c.ID equals a.CustomerID into adress
+                                       join a in IME.CustomerAddresses on c.ID equals a.CustomerID into adress
                                        let a = adress.Select(customerworker1 => customerworker1).FirstOrDefault()
                                        join mc in IME.CustomerWorkers on c.MainContactID equals mc.ID into maincontact
                                        let mc = maincontact.Select(customerworker1 => customerworker1).FirstOrDefault()
@@ -549,9 +549,9 @@ namespace LoginForm
                 CustomerDataGrid.DataSource = customerAdapter;
                 CustomerDataGrid.CurrentCell = CustomerDataGrid.Rows[gridselectedindex].Cells[0];
                 CustomerCode.Text = customerAdapter[gridselectedindex].ID;
-                AdressList.DataSource = IME.CustomerAdresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
+                AdressList.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
                 AdressList.DisplayMember = "AdressDetails";
-                ContactAdress.DataSource = IME.CustomerAdresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
+                ContactAdress.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
                 ContactAdress.DisplayMember = "AdressDetails";
                 CustomerName.Text = customerAdapter[gridselectedindex].c_name;
                 Telephone.Text = customerAdapter[gridselectedindex].telephone.ToString();
@@ -669,7 +669,7 @@ namespace LoginForm
                 cw.cw_name = ContactName.Text;
                 cw.cw_email = ContactEmail.Text;
                 cw.phone = ContactPhone.Text;
-                cw.CustomerWorkerAdress = (ContactAdress.SelectedItem as CustomerAdress).ID;
+                cw.CustomerWorkerAdress = (ContactAdress.SelectedItem as CustomerAddress).ID;
                 cw.ContactTypeID = (ContactType.SelectedItem as ContactType).ID;
                 cw.mobilephone = ContactMobilePhone.Text;
                 cw.fax = ContactFAX.Text;
@@ -705,7 +705,7 @@ namespace LoginForm
                     cw.cw_name = ContactName.Text;
                     cw.cw_email = ContactEmail.Text;
                     cw.phone = ContactPhone.Text;
-                    if(ContactAdress.SelectedItem!=null) cw.CustomerWorkerAdress = (ContactAdress.SelectedItem as CustomerAdress).ID;
+                    if(ContactAdress.SelectedItem!=null) cw.CustomerWorkerAdress = (ContactAdress.SelectedItem as CustomerAddress).ID;
                     cw.mobilephone = ContactMobilePhone.Text;
                     cw.fax = ContactFAX.Text;
                     cw.languageID = ((CommunicationLanguage).SelectedItem as Language).ID;
@@ -1201,10 +1201,10 @@ namespace LoginForm
             DialogResult dialogResult = MessageBox.Show("Are You Sure Delete This Adress ?", "Delete", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                CustomerAdress ca = IME.CustomerAdresses.First(a => a.ID == ContactListItem.AdressID);
-                IME.CustomerAdresses.Remove(ca);
+                CustomerAddress ca = IME.CustomerAddresses.First(a => a.ID == ContactListItem.AdressID);
+                IME.CustomerAddresses.Remove(ca);
                 IME.SaveChanges();
-                AdressList.DataSource = IME.CustomerAdresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
+                AdressList.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
                 AdressList.DisplayMember = "AdressDetails";
             }
             else if (dialogResult == DialogResult.No)
@@ -1215,11 +1215,11 @@ namespace LoginForm
 
         private void AdressDone_Click(object sender, EventArgs e)
         {
-            CustomerAdress ca = new CustomerAdress();
+            CustomerAddress ca = new CustomerAddress();
             if (isUpdateAdress == 1)
             {
-                int caID = ((AdressList).SelectedItem as CustomerAdress).ID;
-                ca = IME.CustomerAdresses.Where(a => a.ID == caID).FirstOrDefault();
+                int caID = ((AdressList).SelectedItem as CustomerAddress).ID;
+                ca = IME.CustomerAddresses.Where(a => a.ID == caID).FirstOrDefault();
             }
             else { ca = null; }
 
@@ -1246,7 +1246,7 @@ namespace LoginForm
             }
             else
             {
-                ca = new CustomerAdress();
+                ca = new CustomerAddress();
                 ca.AddressType = AddressType.Text;
                 //CustomerCode.Text;
                 ca.CustomerID = CustomerCode.Text;
@@ -1263,7 +1263,7 @@ namespace LoginForm
                 ca.AdressDetails = AddressDetails.Text;
                 if (cbIMEOffice.Checked) { ca.isDeliveryAdress = 1; } else { ca.isDeliveryAdress = 0; }
                 if (cbDafultDeliveryAdress.Checked) { ca.isIMEOffice = 1; } else { ca.isIMEOffice = 0; }
-                IME.CustomerAdresses.Add(ca);
+                IME.CustomerAddresses.Add(ca);
                 IME.SaveChanges();
             }
             AdressTabEnableFalse();
@@ -1274,10 +1274,10 @@ namespace LoginForm
                 CustomerDataGrid.Enabled = true;
             }
             AdressList.DataSource = null;
-            AdressList.DataSource = IME.CustomerAdresses.Where(customerw => customerw.CustomerID == CustomerCode.Text).ToList();
+            AdressList.DataSource = IME.CustomerAddresses.Where(customerw => customerw.CustomerID == CustomerCode.Text).ToList();
             AdressList.DisplayMember = "AdressDetails";
             ContactAdress.DataSource = null;
-            ContactAdress.DataSource = IME.CustomerAdresses.Where(customerw => customerw.CustomerID == CustomerCode.Text).ToList();
+            ContactAdress.DataSource = IME.CustomerAddresses.Where(customerw => customerw.CustomerID == CustomerCode.Text).ToList();
             ContactAdress.DisplayMember = "AdressDetails";
             AdressAdd.Visible = true;
             AddressDel.Visible = true;
@@ -1307,7 +1307,7 @@ namespace LoginForm
                 Search.Enabled = true;
                 CustomerDataGrid.Enabled = true;
             }
-            AdressList.DataSource = IME.CustomerAdresses.Where(customerw => customerw.CustomerID == CustomerCode.Text).ToList();
+            AdressList.DataSource = IME.CustomerAddresses.Where(customerw => customerw.CustomerID == CustomerCode.Text).ToList();
             AdressList.DisplayMember = "AdressDetails";
 
             AdressAdd.Visible = true;
@@ -1343,14 +1343,14 @@ namespace LoginForm
             #region AdressList
             //contact daki list box a tıklandığında contact ın bilgileri tıklanan göre doldurulmasıse
             int cw_ID = 0;
-            try { cw_ID = ((CustomerAdress)((ListBox)sender).SelectedItem).ID; } catch { cw_ID = 0; }
+            try { cw_ID = ((CustomerAddress)((ListBox)sender).SelectedItem).ID; } catch { cw_ID = 0; }
             try
             {
                 if (ContactListItem.AdressID != cw_ID)
                 {
                     ContactListItem.AdressID = cw_ID;
 
-                    var contact1 = IME.CustomerAdresses.Where(cw => cw.ID == cw_ID).ToList();
+                    var contact1 = IME.CustomerAddresses.Where(cw => cw.ID == cw_ID).ToList();
                     foreach (var a in contact1)
                     {
                         if (a.isDeliveryAdress == 1) { cbIMEOffice.Checked = true; } else { cbIMEOffice.Checked = false; }
