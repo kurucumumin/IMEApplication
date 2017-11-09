@@ -374,6 +374,12 @@
       <DependentUpon>FormQuotationMPN.cs</DependentUpon>
     </Compile>
     <Compile Include="QuotationModule\QuotationHelper.cs" />
+    <Compile Include="SalesOrder\FormSalesOrderAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesOrder\FormSalesOrderAdd.Designer.cs">
+      <DependentUpon>FormSalesOrderAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="SalesOrder\FormSalesOrderMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -388,7 +394,7 @@
     </Compile>
     <Compile Include="Services\AddressService.cs" />
     <Compile Include="Services\AuthorizationService.cs" />
-    <Compile Include="Services\classQuotationAdd.cs" />
+    <Compile Include="QuotationModule\classQuotationAdd.cs" />
     <Compile Include="Services\ContactListItem.cs" />
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\ExchangeService.cs" />
@@ -486,6 +492,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\FormQuotationMPN.resx">
       <DependentUpon>FormQuotationMPN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesOrder\FormSalesOrderAdd.resx">
+      <DependentUpon>FormSalesOrderAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesOrder\FormSalesOrderMain.resx">
+      <DependentUpon>FormSalesOrderMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\FormUsersMain.resx">
       <DependentUpon>FormUsersMain.cs</DependentUpon>

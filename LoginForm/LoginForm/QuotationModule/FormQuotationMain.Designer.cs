@@ -42,13 +42,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.datetimeEnd = new System.Windows.Forms.DateTimePicker();
             this.datetimeStart = new System.Windows.Forms.DateTimePicker();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.btnDeleteQuotation = new System.Windows.Forms.Button();
             this.btnModifyQuotation = new System.Windows.Forms.Button();
             this.btnRefreshList = new System.Windows.Forms.Button();
             this.btnNewQuotation = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgQuotation)).BeginInit();
             this.panel1.SuspendLayout();
@@ -69,7 +69,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 121F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 112F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1184, 681);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1236, 696);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // dgQuotation
@@ -88,12 +88,13 @@
             this.dgQuotation.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgQuotation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgQuotation.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dgQuotation.Location = new System.Drawing.Point(3, 124);
+            this.dgQuotation.Location = new System.Drawing.Point(8, 129);
+            this.dgQuotation.Margin = new System.Windows.Forms.Padding(8);
             this.dgQuotation.Name = "dgQuotation";
             this.dgQuotation.ReadOnly = true;
             this.dgQuotation.RowTemplate.Height = 24;
             this.dgQuotation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgQuotation.Size = new System.Drawing.Size(1178, 442);
+            this.dgQuotation.Size = new System.Drawing.Size(1220, 447);
             this.dgQuotation.TabIndex = 0;
             this.dgQuotation.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgQuotation_CellMouseDoubleClick);
             // 
@@ -113,9 +114,10 @@
             this.panel1.Controls.Add(this.btnModifyQuotation);
             this.panel1.Controls.Add(this.btnRefreshList);
             this.panel1.Controls.Add(this.btnNewQuotation);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1176, 115);
+            this.panel1.Size = new System.Drawing.Size(1230, 115);
             this.panel1.TabIndex = 1;
             // 
             // btnSearchStockNumber
@@ -146,7 +148,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(895, 19);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(192, 21);
+            this.textBox2.Size = new System.Drawing.Size(192, 24);
             this.textBox2.TabIndex = 25;
             // 
             // chcAllQuots
@@ -163,7 +165,7 @@
             // 
             this.txtSearchText.Location = new System.Drawing.Point(699, 49);
             this.txtSearchText.Name = "txtSearchText";
-            this.txtSearchText.Size = new System.Drawing.Size(164, 21);
+            this.txtSearchText.Size = new System.Drawing.Size(164, 24);
             this.txtSearchText.TabIndex = 23;
             this.txtSearchText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchText_KeyPress);
             // 
@@ -175,7 +177,7 @@
             "QUOT NUMBER"});
             this.cbSearch.Location = new System.Drawing.Point(699, 19);
             this.cbSearch.Name = "cbSearch";
-            this.cbSearch.Size = new System.Drawing.Size(164, 23);
+            this.cbSearch.Size = new System.Drawing.Size(164, 26);
             this.cbSearch.TabIndex = 22;
             // 
             // label2
@@ -183,7 +185,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(9, 80);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 15);
+            this.label2.Size = new System.Drawing.Size(69, 18);
             this.label2.TabIndex = 21;
             this.label2.Text = "End Date";
             // 
@@ -192,7 +194,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 15);
+            this.label1.Size = new System.Drawing.Size(74, 18);
             this.label1.TabIndex = 20;
             this.label1.Text = "Start Date";
             // 
@@ -202,7 +204,7 @@
             this.datetimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datetimeEnd.Location = new System.Drawing.Point(89, 77);
             this.datetimeEnd.Name = "datetimeEnd";
-            this.datetimeEnd.Size = new System.Drawing.Size(119, 21);
+            this.datetimeEnd.Size = new System.Drawing.Size(119, 24);
             this.datetimeEnd.TabIndex = 19;
             // 
             // datetimeStart
@@ -211,8 +213,49 @@
             this.datetimeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datetimeStart.Location = new System.Drawing.Point(89, 16);
             this.datetimeStart.Name = "datetimeStart";
-            this.datetimeStart.Size = new System.Drawing.Size(119, 21);
+            this.datetimeStart.Size = new System.Drawing.Size(119, 24);
             this.datetimeStart.TabIndex = 18;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.button5);
+            this.panel2.Controls.Add(this.button4);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 584);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1236, 112);
+            this.panel2.TabIndex = 2;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
+            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button5.Location = new System.Drawing.Point(108, 15);
+            this.button5.Margin = new System.Windows.Forms.Padding(0);
+            this.button5.Name = "button5";
+            this.button5.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
+            this.button5.Size = new System.Drawing.Size(87, 85);
+            this.button5.TabIndex = 8;
+            this.button5.Text = "Print";
+            this.button5.UseVisualStyleBackColor = false;
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button4.Location = new System.Drawing.Point(15, 15);
+            this.button4.Margin = new System.Windows.Forms.Padding(0);
+            this.button4.Name = "button4";
+            this.button4.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
+            this.button4.Size = new System.Drawing.Size(87, 85);
+            this.button4.TabIndex = 7;
+            this.button4.Text = "Export to Excel";
+            this.button4.UseVisualStyleBackColor = false;
             // 
             // btnDeleteQuotation
             // 
@@ -287,52 +330,11 @@
             this.btnNewQuotation.UseVisualStyleBackColor = false;
             this.btnNewQuotation.Click += new System.EventHandler(this.btnNewQuotation_Click);
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.button5);
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 569);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1184, 112);
-            this.panel2.TabIndex = 2;
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button5.Location = new System.Drawing.Point(108, 15);
-            this.button5.Margin = new System.Windows.Forms.Padding(0);
-            this.button5.Name = "button5";
-            this.button5.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
-            this.button5.Size = new System.Drawing.Size(87, 85);
-            this.button5.TabIndex = 8;
-            this.button5.Text = "Print";
-            this.button5.UseVisualStyleBackColor = false;
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button4.Location = new System.Drawing.Point(15, 15);
-            this.button4.Margin = new System.Windows.Forms.Padding(0);
-            this.button4.Name = "button4";
-            this.button4.Padding = new System.Windows.Forms.Padding(8, 16, 8, 0);
-            this.button4.Size = new System.Drawing.Size(87, 85);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "Export to Excel";
-            this.button4.UseVisualStyleBackColor = false;
-            // 
             // FormQuotationMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 681);
+            this.ClientSize = new System.Drawing.Size(1236, 696);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MinimumSize = new System.Drawing.Size(1200, 720);

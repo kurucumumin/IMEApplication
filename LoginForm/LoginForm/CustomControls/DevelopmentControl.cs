@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using LoginForm.Item;
 using LoginForm.QuotationModule;
-using LoginForm.Item;
-using LoginForm.User;
 using LoginForm.SalesOrder;
+using LoginForm.User;
+using System;
+using System.Windows.Forms;
 
 namespace LoginForm.CustomControls
 {

@@ -1,9 +1,6 @@
-﻿using System;
+﻿using LoginForm.DataSet;
 using LoginForm.Services;
-using LoginForm.DataSet;
-using LoginForm.ManagementModule;
-using MaterialSkin;
-using MaterialSkin.Controls;
+using System;
 using System.Windows.Forms;
 
 namespace LoginForm.User

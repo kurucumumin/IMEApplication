@@ -1,7 +1,6 @@
 ﻿using LoginForm.DataSet;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 
 namespace LoginForm.Services

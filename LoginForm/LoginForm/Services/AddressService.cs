@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LoginForm.DataSet;
 using System.Windows.Forms;
 
 namespace LoginForm.Services
