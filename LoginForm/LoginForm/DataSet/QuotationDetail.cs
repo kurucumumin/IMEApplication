@@ -15,7 +15,6 @@ namespace LoginForm.DataSet
     public partial class QuotationDetail
     {
         public int ID { get; set; }
-        public string RFQNo { get; set; }
         public Nullable<int> dgNo { get; set; }
         public string ItemCode { get; set; }
         public Nullable<int> Qty { get; set; }
@@ -28,9 +27,8 @@ namespace LoginForm.DataSet
         public string CustomerStockCode { get; set; }
         public Nullable<int> IsDeleted { get; set; }
         public string QuotationNo { get; set; }
-        public Nullable<decimal> dgUPIME { get; set; }
+        public Nullable<decimal> UPIME { get; set; }
         public Nullable<decimal> Marge { get; set; }
-        public string UnitOfMeasure { get; set; }
     
         public virtual Quotation Quotation { get; set; }
     }

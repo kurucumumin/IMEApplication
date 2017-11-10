@@ -32,7 +32,7 @@
             this.btnSearchStockNumber = new System.Windows.Forms.Button();
             this.chcCustStockNumber = new System.Windows.Forms.CheckBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.chcAllQuots = new System.Windows.Forms.CheckBox();
+            this.chcAllSales = new System.Windows.Forms.CheckBox();
             this.txtSearchText = new System.Windows.Forms.TextBox();
             this.cbSearch = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,11 +48,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgQuotation = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.dgSales = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgQuotation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSales)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSearchStockNumber
@@ -86,15 +86,15 @@
             this.textBox2.Size = new System.Drawing.Size(216, 24);
             this.textBox2.TabIndex = 25;
             // 
-            // chcAllQuots
+            // chcAllSales
             // 
-            this.chcAllQuots.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chcAllQuots.Location = new System.Drawing.Point(786, 90);
-            this.chcAllQuots.Name = "chcAllQuots";
-            this.chcAllQuots.Size = new System.Drawing.Size(184, 24);
-            this.chcAllQuots.TabIndex = 24;
-            this.chcAllQuots.Text = "All Quotations";
-            this.chcAllQuots.UseVisualStyleBackColor = true;
+            this.chcAllSales.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chcAllSales.Location = new System.Drawing.Point(786, 90);
+            this.chcAllSales.Name = "chcAllSales";
+            this.chcAllSales.Size = new System.Drawing.Size(184, 24);
+            this.chcAllSales.TabIndex = 24;
+            this.chcAllSales.Text = "All Quotations";
+            this.chcAllSales.UseVisualStyleBackColor = true;
             // 
             // txtSearchText
             // 
@@ -239,7 +239,7 @@
             this.panel1.Controls.Add(this.btnSearchStockNumber);
             this.panel1.Controls.Add(this.chcCustStockNumber);
             this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.chcAllQuots);
+            this.panel1.Controls.Add(this.chcAllSales);
             this.panel1.Controls.Add(this.txtSearchText);
             this.panel1.Controls.Add(this.cbSearch);
             this.panel1.Controls.Add(this.label2);
@@ -286,7 +286,7 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.dgQuotation, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dgSales, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -299,12 +299,12 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1248, 704);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // dgQuotation
+            // dgSales
             // 
-            this.dgQuotation.AllowUserToAddRows = false;
-            this.dgQuotation.AllowUserToDeleteRows = false;
-            this.dgQuotation.AllowUserToOrderColumns = true;
-            this.dgQuotation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgSales.AllowUserToAddRows = false;
+            this.dgSales.AllowUserToDeleteRows = false;
+            this.dgSales.AllowUserToOrderColumns = true;
+            this.dgSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -312,17 +312,17 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgQuotation.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dgQuotation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgQuotation.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dgQuotation.Location = new System.Drawing.Point(8, 144);
-            this.dgQuotation.Margin = new System.Windows.Forms.Padding(8);
-            this.dgQuotation.Name = "dgQuotation";
-            this.dgQuotation.ReadOnly = true;
-            this.dgQuotation.RowTemplate.Height = 24;
-            this.dgQuotation.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgQuotation.Size = new System.Drawing.Size(1232, 426);
-            this.dgQuotation.TabIndex = 0;
+            this.dgSales.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgSales.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgSales.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dgSales.Location = new System.Drawing.Point(8, 144);
+            this.dgSales.Margin = new System.Windows.Forms.Padding(8);
+            this.dgSales.Name = "dgSales";
+            this.dgSales.ReadOnly = true;
+            this.dgSales.RowTemplate.Height = 24;
+            this.dgSales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgSales.Size = new System.Drawing.Size(1232, 426);
+            this.dgSales.TabIndex = 0;
             // 
             // FormSalesOrderMain
             // 
@@ -334,11 +334,12 @@
             this.MinimumSize = new System.Drawing.Size(1266, 751);
             this.Name = "FormSalesOrderMain";
             this.Text = "Sales Order";
+            this.Load += new System.EventHandler(this.FormSalesOrderMain_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgQuotation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSales)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -348,7 +349,7 @@
         private System.Windows.Forms.Button btnSearchStockNumber;
         private System.Windows.Forms.CheckBox chcCustStockNumber;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.CheckBox chcAllQuots;
+        private System.Windows.Forms.CheckBox chcAllSales;
         private System.Windows.Forms.TextBox txtSearchText;
         private System.Windows.Forms.ComboBox cbSearch;
         private System.Windows.Forms.Label label2;
@@ -364,6 +365,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private DevComponents.DotNetBar.Controls.DataGridViewX dgQuotation;
+        private DevComponents.DotNetBar.Controls.DataGridViewX dgSales;
     }
 }

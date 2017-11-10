@@ -22,9 +22,6 @@ namespace LoginForm.DataSet
             this.CustomerWorkers = new HashSet<CustomerWorker>();
             this.DiscountValues = new HashSet<DiscountValue>();
             this.Quotations = new HashSet<Quotation>();
-            this.SalesOrders = new HashSet<SalesOrder>();
-            this.SalesOrders1 = new HashSet<SalesOrder>();
-            this.SalesOrders2 = new HashSet<SalesOrder>();
         }
     
         public string ID { get; set; }
@@ -69,11 +66,5 @@ namespace LoginForm.DataSet
         public virtual ICollection<DiscountValue> DiscountValues { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Quotation> Quotations { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SalesOrder> SalesOrders { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SalesOrder> SalesOrders1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SalesOrder> SalesOrders2 { get; set; }
     }
 }

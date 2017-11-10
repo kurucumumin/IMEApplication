@@ -15,7 +15,6 @@ namespace LoginForm.DataSet
     public partial class SalesOrder
     {
         public string SoNO { get; set; }
-        public string CustomerID { get; set; }
         public string CurrencyName { get; set; }
         public string CurrencyType { get; set; }
         public decimal CurrencyValue { get; set; }
@@ -27,16 +26,9 @@ namespace LoginForm.DataSet
         public Nullable<int> DeliveryAddressID { get; set; }
         public Nullable<System.DateTime> RequiredDeliveryDate { get; set; }
     
-        public virtual Customer Customer { get; set; }
-        public virtual Customer Customer1 { get; set; }
-        public virtual Customer Customer2 { get; set; }
         public virtual CustomerAddress CustomerAddress { get; set; }
         public virtual CustomerAddress CustomerAddress1 { get; set; }
         public virtual CustomerWorker CustomerWorker { get; set; }
         public virtual CustomerWorker CustomerWorker1 { get; set; }
-        public virtual CustomerWorker CustomerWorker2 { get; set; }
-        public virtual CustomerWorker CustomerWorker3 { get; set; }
-        public virtual CustomerWorker CustomerWorker4 { get; set; }
-        public virtual CustomerWorker CustomerWorker5 { get; set; }
     }
 }
