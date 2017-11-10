@@ -318,6 +318,7 @@ namespace LoginForm.QuotationModule
                                 }
                                 else
                                 {
+
                                     this.Enabled = false;
                                     FormQuotationItemSearch itemsearch = new FormQuotationItemSearch(dgQuotationAddedItems.CurrentCell.Value.ToString());
                                     itemsearch.ShowDialog();
@@ -355,8 +356,6 @@ namespace LoginForm.QuotationModule
 
                                             dgQuotationAddedItems.CurrentRow.Cells["dgQty"].ReadOnly = false;
                                             dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Style = dgQuotationAddedItems.DefaultCellStyle;
-
-
                                             #region DataGridClear
                                             dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value = null;
                                             dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgDisc"].Value = null;
@@ -373,8 +372,9 @@ namespace LoginForm.QuotationModule
                                     }
                                     this.Enabled = true;
                                     if(dgQuotationAddedItems.CurrentCell.ColumnIndex==7) dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentRow.Index].Cells[dgQuotationAddedItems.CurrentCell.ColumnIndex+1];
+                                    //ChangeCurrnetCellTabKey(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
                                 }
-
+                                
                             }
                             else { MessageBox.Show("There is no such an item"); }
 
@@ -1171,7 +1171,7 @@ namespace LoginForm.QuotationModule
             {
                 decimal totalextra = 0;
                 try { totalextra = Decimal.Parse(lblTotalExtra.Text); } catch { }
-                lblVatTotal.Text = (totalextra * Decimal.Parse((0.4).ToString())).ToString();
+                lblVatTotal.Text = (totalextra * (Decimal.Parse((lblVat.Text))/100)).ToString();
                 lblGrossTotal.Text = ((Decimal.Parse(lblTotalExtra.Text) + ((Decimal.Parse(lblTotalExtra.Text) * (Decimal.Parse((0.4).ToString())))))).ToString();
             }
             else
@@ -2111,7 +2111,7 @@ namespace LoginForm.QuotationModule
                 int row = dgQuotationAddedItems.CurrentCell.RowIndex;
             while (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex].ReadOnly == true)
             {
-                if (currindex == 32)
+                if (currindex == dgQuotationAddedItems.ColumnCount-1)
                 {
                     
                     if (dgQuotationAddedItems.RowCount - 1 == row)
