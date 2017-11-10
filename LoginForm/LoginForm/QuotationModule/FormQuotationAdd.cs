@@ -1455,7 +1455,6 @@ namespace LoginForm.QuotationModule
                 {
                     QuotationDetail qd = new QuotationDetail();
                     qd.QuotationNo = txtQuotationNo.Text;
-                    
                     try { qd.dgNo = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgNo"].Value.ToString()); } catch { }
                     try { qd.ItemCode = dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(); } catch { }
                     try { qd.Qty = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString()); } catch { }
@@ -1523,7 +1522,7 @@ namespace LoginForm.QuotationModule
                     row.Cells[0].Value = item.dgNo;
                     row.Cells[7].Value = item.ItemCode;
                     row.Cells[14].Value = item.Qty;
-                    row.Cells[19].Value = item.dgUPIME;
+                    row.Cells[19].Value = item.UPIME;
                     row.Cells[21].Value = item.UCUPCurr;
                     row.Cells[20].Value = item.Disc;
                     row.Cells[22].Value = item.Total;
@@ -1540,7 +1539,7 @@ namespace LoginForm.QuotationModule
                     row.Cells[0].Value = item.dgNo;
                     row.Cells[7].Value = item.ItemCode;
                     row.Cells[14].Value = item.Qty;
-                    row.Cells[19].Value = item.dgUPIME;
+                    row.Cells[19].Value = item.UPIME;
                     row.Cells[21].Value = item.UCUPCurr;
                     row.Cells[20].Value = item.Disc;
                     row.Cells[22].Value = item.Total;

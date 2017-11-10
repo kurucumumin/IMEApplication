@@ -30,7 +30,8 @@ namespace LoginForm.SalesOrder
         {
             IMEEntities IME = new IMEEntities();
 
-            dynamic list = from so in IME.SalesOrders
+            dynamic list;
+            var query = from so in IME.SaleOrders
                        join cw in IME.CustomerWorkers on so.ContactID equals cw.ID
                        join cw1 in IME.CustomerWorkers on so.DeliveryContactID equals cw1.ID
                        join cwa in IME.CustomerAddresses on so.AddressID equals cwa.ID
@@ -48,7 +49,12 @@ namespace LoginForm.SalesOrder
 
                        };
 
-            populateGrid(list.ToList());
+            list = query.ToList();
+            if(list.Count != 0)
+            {
+                populateGrid(list.ToList());
+            }
+
         }
 
         private void populateGrid<T>(List<T> queryable)
