@@ -395,6 +395,7 @@
     <Compile Include="SalesOrder\FormSalesOrderMain.Designer.cs">
       <DependentUpon>FormSalesOrderMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="SalesOrder\SalesOrderHelper.cs" />
     <Compile Include="User\FormUsersMain.cs">
       <SubType>Form</SubType>
     </Compile>
