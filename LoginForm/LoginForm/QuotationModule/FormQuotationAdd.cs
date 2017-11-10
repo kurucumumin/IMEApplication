@@ -2095,7 +2095,7 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                    if (currindex == 16 && dgQuotationAddedItems.Rows[row].Cells[15].Value == null) break;
+                    if (currindex == 14 && dgQuotationAddedItems.Rows[row].Cells[14].Value == null) break;
                     currindex++;
                 }
             }
@@ -2108,7 +2108,7 @@ namespace LoginForm.QuotationModule
 
         private void ChangeCurrnetCellTabKey(int currindex)
         {
-            int row = dgQuotationAddedItems.CurrentCell.RowIndex;
+                int row = dgQuotationAddedItems.CurrentCell.RowIndex;
             while (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex].ReadOnly == true)
             {
                 if (currindex == 32)
@@ -2124,7 +2124,7 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                  if (currindex == 14 && dgQuotationAddedItems.Rows[row].Cells[14].Value == null) break;
+                  //if (currindex == 14 && dgQuotationAddedItems.Rows[row].Cells[14].Value == null) break;
                     currindex++;
                 }
             }
@@ -2133,15 +2133,6 @@ namespace LoginForm.QuotationModule
                  dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[row].Cells[currindex-1]; 
             }
             catch { }
-            //while (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex].ReadOnly == true)
-            //{
-            //    currindex++;
-            //}
-            //try
-            //{
-            //    dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex - 1];
-            //}
-            //catch { }
         }
 
         private void dgQuotationAddedItems_KeyDown(object sender, KeyEventArgs e)
