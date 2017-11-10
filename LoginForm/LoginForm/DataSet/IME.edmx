@@ -363,6 +363,7 @@
           <Property Name="QuotationNo" Type="nvarchar" MaxLength="20" />
           <Property Name="UPIME" Type="decimal" Precision="20" Scale="5" />
           <Property Name="Marge" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="UnitOfMeasure" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Rate">
           <Key>
@@ -396,7 +397,7 @@
           <Property Name="Height" Type="nvarchar" MaxLength="15" />
           <Property Name="GrossWeight" Type="nvarchar" MaxLength="15" />
         </EntityType>
-        <EntityType Name="SalesOrder">
+        <EntityType Name="SaleOrder">
           <Key>
             <PropertyRef Name="SoNO" />
           </Key>
@@ -411,6 +412,7 @@
           <Property Name="AddressID" Type="int" Nullable="false" />
           <Property Name="DeliveryAddressID" Type="int" />
           <Property Name="RequiredDeliveryDate" Type="date" />
+          <Property Name="TotalPrice" Type="decimal" Precision="15" Scale="7" Nullable="false" />
         </EntityType>
         <EntityType Name="SlidingPrice">
           <Key>
@@ -1110,48 +1112,48 @@
         </Association>
         <Association Name="FK__SalesOrde__Addre__5EDF0F2E">
           <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="1" />
-          <End Role="SalesOrder" Type="Self.SalesOrder" Multiplicity="*" />
+          <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CustomerAddress">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="SalesOrder">
+            <Dependent Role="SaleOrder">
               <PropertyRef Name="AddressID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SalesOrde__Conta__5CF6C6BC">
           <End Role="CustomerWorker" Type="Self.CustomerWorker" Multiplicity="1" />
-          <End Role="SalesOrder" Type="Self.SalesOrder" Multiplicity="*" />
+          <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CustomerWorker">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="SalesOrder">
+            <Dependent Role="SaleOrder">
               <PropertyRef Name="ContactID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SalesOrde__Deliv__5DEAEAF5">
           <End Role="CustomerWorker" Type="Self.CustomerWorker" Multiplicity="0..1" />
-          <End Role="SalesOrder" Type="Self.SalesOrder" Multiplicity="*" />
+          <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CustomerWorker">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="SalesOrder">
+            <Dependent Role="SaleOrder">
               <PropertyRef Name="DeliveryContactID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SalesOrde__Deliv__5FD33367">
           <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="0..1" />
-          <End Role="SalesOrder" Type="Self.SalesOrder" Multiplicity="*" />
+          <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CustomerAddress">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="SalesOrder">
+            <Dependent Role="SaleOrder">
               <PropertyRef Name="DeliveryAddressID" />
             </Dependent>
           </ReferentialConstraint>
@@ -1537,7 +1539,7 @@
           <EntitySet Name="Rate" EntityType="Self.Rate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleValue" EntityType="Self.RoleValue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RSPro" EntityType="Self.RSPro" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SalesOrder" EntityType="Self.SalesOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SaleOrder" EntityType="Self.SaleOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SlidingPrice" EntityType="Self.SlidingPrice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuperDisk" EntityType="Self.SuperDisk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuperDiskP" EntityType="Self.SuperDiskP" Schema="dbo" store:Type="Tables" />
@@ -1697,19 +1699,19 @@
           </AssociationSet>
           <AssociationSet Name="FK__SalesOrde__Addre__5EDF0F2E" Association="Self.FK__SalesOrde__Addre__5EDF0F2E">
             <End Role="CustomerAddress" EntitySet="CustomerAddress" />
-            <End Role="SalesOrder" EntitySet="SalesOrder" />
+            <End Role="SaleOrder" EntitySet="SaleOrder" />
           </AssociationSet>
           <AssociationSet Name="FK__SalesOrde__Conta__5CF6C6BC" Association="Self.FK__SalesOrde__Conta__5CF6C6BC">
             <End Role="CustomerWorker" EntitySet="CustomerWorker" />
-            <End Role="SalesOrder" EntitySet="SalesOrder" />
+            <End Role="SaleOrder" EntitySet="SaleOrder" />
           </AssociationSet>
           <AssociationSet Name="FK__SalesOrde__Deliv__5DEAEAF5" Association="Self.FK__SalesOrde__Deliv__5DEAEAF5">
             <End Role="CustomerWorker" EntitySet="CustomerWorker" />
-            <End Role="SalesOrder" EntitySet="SalesOrder" />
+            <End Role="SaleOrder" EntitySet="SaleOrder" />
           </AssociationSet>
           <AssociationSet Name="FK__SalesOrde__Deliv__5FD33367" Association="Self.FK__SalesOrde__Deliv__5FD33367">
             <End Role="CustomerAddress" EntitySet="CustomerAddress" />
-            <End Role="SalesOrder" EntitySet="SalesOrder" />
+            <End Role="SaleOrder" EntitySet="SaleOrder" />
           </AssociationSet>
           <AssociationSet Name="FK__Supplier__accoun__2DB1C7EE" Association="Self.FK__Supplier__accoun__2DB1C7EE">
             <End Role="Worker" EntitySet="Worker" />
@@ -1864,7 +1866,7 @@
           <EntitySet Name="Rates" EntityType="IMEModel.Rate" />
           <EntitySet Name="RoleValues" EntityType="IMEModel.RoleValue" />
           <EntitySet Name="RSProes" EntityType="IMEModel.RSPro" />
-          <EntitySet Name="SalesOrders" EntityType="IMEModel.SalesOrder" />
+          <EntitySet Name="SaleOrders" EntityType="IMEModel.SaleOrder" />
           <EntitySet Name="SlidingPrices" EntityType="IMEModel.SlidingPrice" />
           <EntitySet Name="SuperDisks" EntityType="IMEModel.SuperDisk" />
           <EntitySet Name="SuperDiskPs" EntityType="IMEModel.SuperDiskP" />
@@ -1967,11 +1969,11 @@
           </AssociationSet>
           <AssociationSet Name="FK__SalesOrde__Addre__5EDF0F2E" Association="IMEModel.FK__SalesOrde__Addre__5EDF0F2E">
             <End Role="CustomerAddress" EntitySet="CustomerAddresses" />
-            <End Role="SalesOrder" EntitySet="SalesOrders" />
+            <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
           <AssociationSet Name="FK__SalesOrde__Deliv__5FD33367" Association="IMEModel.FK__SalesOrde__Deliv__5FD33367">
             <End Role="CustomerAddress" EntitySet="CustomerAddresses" />
-            <End Role="SalesOrder" EntitySet="SalesOrders" />
+            <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
           <AssociationSet Name="FK__CustomerC__categ__5165187F" Association="IMEModel.FK__CustomerC__categ__5165187F">
             <End Role="CustomerCategory" EntitySet="CustomerCategories" />
@@ -2007,11 +2009,11 @@
           </AssociationSet>
           <AssociationSet Name="FK__SalesOrde__Conta__5CF6C6BC" Association="IMEModel.FK__SalesOrde__Conta__5CF6C6BC">
             <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
-            <End Role="SalesOrder" EntitySet="SalesOrders" />
+            <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
           <AssociationSet Name="FK__SalesOrde__Deliv__5DEAEAF5" Association="IMEModel.FK__SalesOrde__Deliv__5DEAEAF5">
             <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
-            <End Role="SalesOrder" EntitySet="SalesOrders" />
+            <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
           <AssociationSet Name="FK__DiscountV__Arcti__6D6238AF" Association="IMEModel.FK__DiscountV__Arcti__6D6238AF">
             <End Role="SlidingPrice" EntitySet="SlidingPrices" />
@@ -2254,8 +2256,8 @@
           <NavigationProperty Name="Customer" Relationship="IMEModel.FK__CustomerA__Custo__44CA3770" FromRole="CustomerAddress" ToRole="Customer" />
           <NavigationProperty Name="CustomerWorker" Relationship="IMEModel.FK__CustomerA__Conta__45BE5BA9" FromRole="CustomerAddress" ToRole="CustomerWorker" />
           <NavigationProperty Name="Town" Relationship="IMEModel.FK__CustomerA__TownI__4F47C5E3" FromRole="CustomerAddress" ToRole="Town" />
-          <NavigationProperty Name="SalesOrders" Relationship="IMEModel.FK__SalesOrde__Addre__5EDF0F2E" FromRole="CustomerAddress" ToRole="SalesOrder" />
-          <NavigationProperty Name="SalesOrders1" Relationship="IMEModel.FK__SalesOrde__Deliv__5FD33367" FromRole="CustomerAddress" ToRole="SalesOrder" />
+          <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SalesOrde__Addre__5EDF0F2E" FromRole="CustomerAddress" ToRole="SaleOrder" />
+          <NavigationProperty Name="SaleOrders1" Relationship="IMEModel.FK__SalesOrde__Deliv__5FD33367" FromRole="CustomerAddress" ToRole="SaleOrder" />
         </EntityType>
         <EntityType Name="CustomerCategory">
           <Key>
@@ -2332,8 +2334,8 @@
           <NavigationProperty Name="CustomerTitle" Relationship="IMEModel.FK__CustomerW__title__45F365D3" FromRole="CustomerWorker" ToRole="CustomerTitle" />
           <NavigationProperty Name="Note" Relationship="IMEModel.FK__CustomerW__custo__4222D4EF" FromRole="CustomerWorker" ToRole="Note" />
           <NavigationProperty Name="Language" Relationship="IMEModel.FK__CustomerW__langu__72C60C4A" FromRole="CustomerWorker" ToRole="Language" />
-          <NavigationProperty Name="SalesOrders" Relationship="IMEModel.FK__SalesOrde__Conta__5CF6C6BC" FromRole="CustomerWorker" ToRole="SalesOrder" />
-          <NavigationProperty Name="SalesOrders1" Relationship="IMEModel.FK__SalesOrde__Deliv__5DEAEAF5" FromRole="CustomerWorker" ToRole="SalesOrder" />
+          <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SalesOrde__Conta__5CF6C6BC" FromRole="CustomerWorker" ToRole="SaleOrder" />
+          <NavigationProperty Name="SaleOrders1" Relationship="IMEModel.FK__SalesOrde__Deliv__5DEAEAF5" FromRole="CustomerWorker" ToRole="SaleOrder" />
         </EntityType>
         <EntityType Name="DailyDiscontinued">
           <Key>
@@ -2570,6 +2572,7 @@
           <Property Name="QuotationNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="UPIME" Type="Decimal" Precision="20" Scale="5" />
           <Property Name="Marge" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="UnitOfMeasure" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Quotation" Relationship="IMEModel.FK__Quotation__Quota__147C05D0" FromRole="QuotationDetail" ToRole="Quotation" />
         </EntityType>
         <EntityType Name="Rate">
@@ -2606,7 +2609,7 @@
           <Property Name="Height" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="GrossWeight" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="SalesOrder">
+        <EntityType Name="SaleOrder">
           <Key>
             <PropertyRef Name="SoNO" />
           </Key>
@@ -2621,10 +2624,11 @@
           <Property Name="AddressID" Type="Int32" Nullable="false" />
           <Property Name="DeliveryAddressID" Type="Int32" />
           <Property Name="RequiredDeliveryDate" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="CustomerAddress" Relationship="IMEModel.FK__SalesOrde__Addre__5EDF0F2E" FromRole="SalesOrder" ToRole="CustomerAddress" />
-          <NavigationProperty Name="CustomerAddress1" Relationship="IMEModel.FK__SalesOrde__Deliv__5FD33367" FromRole="SalesOrder" ToRole="CustomerAddress" />
-          <NavigationProperty Name="CustomerWorker" Relationship="IMEModel.FK__SalesOrde__Conta__5CF6C6BC" FromRole="SalesOrder" ToRole="CustomerWorker" />
-          <NavigationProperty Name="CustomerWorker1" Relationship="IMEModel.FK__SalesOrde__Deliv__5DEAEAF5" FromRole="SalesOrder" ToRole="CustomerWorker" />
+          <Property Name="TotalPrice" Type="Decimal" Nullable="false" Precision="15" Scale="7" />
+          <NavigationProperty Name="CustomerAddress" Relationship="IMEModel.FK__SalesOrde__Addre__5EDF0F2E" FromRole="SaleOrder" ToRole="CustomerAddress" />
+          <NavigationProperty Name="CustomerAddress1" Relationship="IMEModel.FK__SalesOrde__Deliv__5FD33367" FromRole="SaleOrder" ToRole="CustomerAddress" />
+          <NavigationProperty Name="CustomerWorker" Relationship="IMEModel.FK__SalesOrde__Conta__5CF6C6BC" FromRole="SaleOrder" ToRole="CustomerWorker" />
+          <NavigationProperty Name="CustomerWorker1" Relationship="IMEModel.FK__SalesOrde__Deliv__5DEAEAF5" FromRole="SaleOrder" ToRole="CustomerWorker" />
         </EntityType>
         <EntityType Name="SlidingPrice">
           <Key>
@@ -3199,24 +3203,24 @@
         </Association>
         <Association Name="FK__SalesOrde__Addre__5EDF0F2E">
           <End Type="IMEModel.CustomerAddress" Role="CustomerAddress" Multiplicity="1" />
-          <End Type="IMEModel.SalesOrder" Role="SalesOrder" Multiplicity="*" />
+          <End Type="IMEModel.SaleOrder" Role="SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CustomerAddress">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="SalesOrder">
+            <Dependent Role="SaleOrder">
               <PropertyRef Name="AddressID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SalesOrde__Deliv__5FD33367">
           <End Type="IMEModel.CustomerAddress" Role="CustomerAddress" Multiplicity="0..1" />
-          <End Type="IMEModel.SalesOrder" Role="SalesOrder" Multiplicity="*" />
+          <End Type="IMEModel.SaleOrder" Role="SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CustomerAddress">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="SalesOrder">
+            <Dependent Role="SaleOrder">
               <PropertyRef Name="DeliveryAddressID" />
             </Dependent>
           </ReferentialConstraint>
@@ -3319,24 +3323,24 @@
         </Association>
         <Association Name="FK__SalesOrde__Conta__5CF6C6BC">
           <End Type="IMEModel.CustomerWorker" Role="CustomerWorker" Multiplicity="1" />
-          <End Type="IMEModel.SalesOrder" Role="SalesOrder" Multiplicity="*" />
+          <End Type="IMEModel.SaleOrder" Role="SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CustomerWorker">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="SalesOrder">
+            <Dependent Role="SaleOrder">
               <PropertyRef Name="ContactID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SalesOrde__Deliv__5DEAEAF5">
           <End Type="IMEModel.CustomerWorker" Role="CustomerWorker" Multiplicity="0..1" />
-          <End Type="IMEModel.SalesOrder" Role="SalesOrder" Multiplicity="*" />
+          <End Type="IMEModel.SaleOrder" Role="SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="CustomerWorker">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="SalesOrder">
+            <Dependent Role="SaleOrder">
               <PropertyRef Name="DeliveryContactID" />
             </Dependent>
           </ReferentialConstraint>
@@ -4088,6 +4092,7 @@
           <EntitySetMapping Name="QuotationDetails">
             <EntityTypeMapping TypeName="IMEModel.QuotationDetail">
               <MappingFragment StoreEntitySet="QuotationDetail">
+                <ScalarProperty Name="UnitOfMeasure" ColumnName="UnitOfMeasure" />
                 <ScalarProperty Name="Marge" ColumnName="Marge" />
                 <ScalarProperty Name="UPIME" ColumnName="UPIME" />
                 <ScalarProperty Name="QuotationNo" ColumnName="QuotationNo" />
@@ -4141,9 +4146,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SalesOrders">
-            <EntityTypeMapping TypeName="IMEModel.SalesOrder">
-              <MappingFragment StoreEntitySet="SalesOrder">
+          <EntitySetMapping Name="SaleOrders">
+            <EntityTypeMapping TypeName="IMEModel.SaleOrder">
+              <MappingFragment StoreEntitySet="SaleOrder">
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
                 <ScalarProperty Name="RequiredDeliveryDate" ColumnName="RequiredDeliveryDate" />
                 <ScalarProperty Name="DeliveryAddressID" ColumnName="DeliveryAddressID" />
                 <ScalarProperty Name="AddressID" ColumnName="AddressID" />

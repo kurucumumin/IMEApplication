@@ -12,7 +12,7 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class SalesOrder
+    public partial class SaleOrder
     {
         public string SoNO { get; set; }
         public string CurrencyName { get; set; }
@@ -25,6 +25,7 @@ namespace LoginForm.DataSet
         public int AddressID { get; set; }
         public Nullable<int> DeliveryAddressID { get; set; }
         public Nullable<System.DateTime> RequiredDeliveryDate { get; set; }
+        public decimal TotalPrice { get; set; }
     
         public virtual CustomerAddress CustomerAddress { get; set; }
         public virtual CustomerAddress CustomerAddress1 { get; set; }

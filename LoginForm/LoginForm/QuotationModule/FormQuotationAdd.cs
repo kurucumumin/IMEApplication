@@ -1455,7 +1455,7 @@ namespace LoginForm.QuotationModule
                 {
                     QuotationDetail qd = new QuotationDetail();
                     qd.QuotationNo = txtQuotationNo.Text;
-                    try { qd.RFQNo = txtRFQNo.Text; } catch { }
+                    
                     try { qd.dgNo = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgNo"].Value.ToString()); } catch { }
                     try { qd.ItemCode = dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(); } catch { }
                     try { qd.Qty = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString()); } catch { }
@@ -1479,7 +1479,7 @@ namespace LoginForm.QuotationModule
                 if (dgQuotationDeleted.Rows[i].Cells["dgProductCode1"].Value != null)
                 {
                     QuotationDetail qd = new QuotationDetail();
-                    qd.RFQNo = txtRFQNo.Text;
+                    
                     try{qd.dgNo = Int32.Parse(dgQuotationDeleted.Rows[i].Cells["No1"].Value.ToString()); } catch { }
                     try{qd.ItemCode = dgQuotationDeleted.Rows[i].Cells["dgProductCode1"].Value.ToString();}catch { }
                     try{qd.Qty = Int32.Parse(dgQuotationDeleted.Rows[i].Cells["dgQty1"].Value.ToString());}catch { }

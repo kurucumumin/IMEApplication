@@ -19,8 +19,8 @@ namespace LoginForm.DataSet
         {
             this.Customers = new HashSet<Customer>();
             this.CustomerAddresses = new HashSet<CustomerAddress>();
-            this.SalesOrders = new HashSet<SalesOrder>();
-            this.SalesOrders1 = new HashSet<SalesOrder>();
+            this.SaleOrders = new HashSet<SaleOrder>();
+            this.SaleOrders1 = new HashSet<SaleOrder>();
         }
     
         public int ID { get; set; }
@@ -48,8 +48,8 @@ namespace LoginForm.DataSet
         public virtual Note Note { get; set; }
         public virtual Language Language { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SalesOrder> SalesOrders { get; set; }
+        public virtual ICollection<SaleOrder> SaleOrders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SalesOrder> SalesOrders1 { get; set; }
+        public virtual ICollection<SaleOrder> SaleOrders1 { get; set; }
     }
 }

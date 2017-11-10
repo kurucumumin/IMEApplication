@@ -56,7 +56,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<Rate> Rates { get; set; }
         public virtual DbSet<RoleValue> RoleValues { get; set; }
         public virtual DbSet<RSPro> RSProes { get; set; }
-        public virtual DbSet<SalesOrder> SalesOrders { get; set; }
+        public virtual DbSet<SaleOrder> SaleOrders { get; set; }
         public virtual DbSet<SlidingPrice> SlidingPrices { get; set; }
         public virtual DbSet<SuperDisk> SuperDisks { get; set; }
         public virtual DbSet<SuperDiskP> SuperDiskPs { get; set; }

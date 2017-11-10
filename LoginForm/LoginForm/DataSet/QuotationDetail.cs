@@ -29,6 +29,7 @@ namespace LoginForm.DataSet
         public string QuotationNo { get; set; }
         public Nullable<decimal> UPIME { get; set; }
         public Nullable<decimal> Marge { get; set; }
+        public string UnitOfMeasure { get; set; }
     
         public virtual Quotation Quotation { get; set; }
     }
