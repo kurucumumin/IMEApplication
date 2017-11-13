@@ -4,13 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ed25f267ad3b47f28357ae57dc0d2944" Name="Diagram1" ZoomLevel="93" >
+      <Diagram DiagramId="ed25f267ad3b47f28357ae57dc0d2944" Name="Diagram1" ZoomLevel="87" >
         <EntityTypeShape EntityType="IMEModel.AuthorizationValue" Width="1.5" PointX="3.75" PointY="31.25" />
         <EntityTypeShape EntityType="IMEModel.Capital" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="IMEModel.City" Width="1.5" PointX="10.5" PointY="37.5" />
         <EntityTypeShape EntityType="IMEModel.ContactType" Width="1.5" PointX="8.25" PointY="29" />
         <EntityTypeShape EntityType="IMEModel.Country" Width="1.5" PointX="8.25" PointY="37.75" />
-        <EntityTypeShape EntityType="IMEModel.Customer" Width="1.5" PointX="8.25" PointY="20.25" />
         <EntityTypeShape EntityType="IMEModel.CustomerAddress" Width="1.5" PointX="12.75" PointY="21.875" />
         <EntityTypeShape EntityType="IMEModel.CustomerCategory" Width="1.5" PointX="8.25" PointY="8.875" />
         <EntityTypeShape EntityType="IMEModel.CustomerCategorySubCategory" Width="1.5" PointX="10.5" PointY="18" />
@@ -60,18 +59,6 @@
         <AssociationConnector Association="IMEModel.FK__CustomerW__Conta__4CC05EF3" />
         <AssociationConnector Association="IMEModel.FK__CustomerA__Count__503BEA1C" />
         <AssociationConnector Association="IMEModel.FK__SupplierA__Count__3FD07829" />
-        <AssociationConnector Association="IMEModel.FK__Customer__accoun__6EF57B66" />
-        <AssociationConnector Association="IMEModel.FK__Customer__custom__3B75D760" />
-        <AssociationConnector Association="IMEModel.FK__Customer__MainCo__19AACF41" />
-        <AssociationConnector Association="IMEModel.FK__Customer__paymen__3D5E1FD2" />
-        <AssociationConnector Association="IMEModel.FK__Customer__paymen__3E52440B" />
-        <AssociationConnector Association="IMEModel.FK__Customer__repres__3F466844" />
-        <AssociationConnector Association="IMEModel.FK__Customer__repres__6E01572D" />
-        <AssociationConnector Association="IMEModel.FK__CustomerA__Custo__44CA3770" />
-        <AssociationConnector Association="IMEModel.FK__CustomerC__custo__534D60F1" />
-        <AssociationConnector Association="IMEModel.FK__CustomerW__custo__4316F928" />
-        <AssociationConnector Association="IMEModel.FK__DiscountV__Custo__6E565CE8" />
-        <AssociationConnector Association="IMEModel.FK__Quotation__Custo__00750D23" />
         <AssociationConnector Association="IMEModel.FK__CustomerA__Conta__45BE5BA9" />
         <AssociationConnector Association="IMEModel.FK__CustomerA__TownI__4F47C5E3" />
         <AssociationConnector Association="IMEModel.FK__SalesOrde__Addre__5EDF0F2E" />
@@ -119,6 +106,19 @@
         <AssociationConnector Association="IMEModel.FK__SupplierW__title__7755B73D" />
         <AssociationConnector Association="IMEModel.AuthRole" />
         <AssociationConnector Association="IMEModel.UserAuthorization" />
+        <EntityTypeShape EntityType="IMEModel.Customer" Width="1.5" PointX="17.75" PointY="7" />
+        <AssociationConnector Association="IMEModel.FK__Customer__accoun__6EF57B66" />
+        <AssociationConnector Association="IMEModel.FK__Customer__custom__3B75D760" />
+        <AssociationConnector Association="IMEModel.FK__Customer__MainCo__19AACF41" />
+        <AssociationConnector Association="IMEModel.FK__Customer__paymen__3D5E1FD2" />
+        <AssociationConnector Association="IMEModel.FK__Customer__paymen__3E52440B" />
+        <AssociationConnector Association="IMEModel.FK__Customer__repres__3F466844" />
+        <AssociationConnector Association="IMEModel.FK__Customer__repres__6E01572D" />
+        <AssociationConnector Association="IMEModel.FK__CustomerA__Custo__44CA3770" />
+        <AssociationConnector Association="IMEModel.FK__CustomerC__custo__534D60F1" />
+        <AssociationConnector Association="IMEModel.FK__CustomerW__custo__4316F928" />
+        <AssociationConnector Association="IMEModel.FK__DiscountV__Custo__6E565CE8" />
+        <AssociationConnector Association="IMEModel.FK__Quotation__Custo__00750D23" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

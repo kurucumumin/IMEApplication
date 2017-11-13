@@ -238,7 +238,7 @@
     <Compile Include="DataSet\RSPro.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\SalesOrder.cs">
+    <Compile Include="DataSet\SaleOrder.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SlidingPrice.cs">

@@ -30,7 +30,7 @@ namespace LoginForm.SalesOrder
         {
             IMEEntities IME = new IMEEntities();
 
-            dynamic list = from so in IME.SalesOrders
+            dynamic list = from so in IME.SaleOrders
                        join cw in IME.CustomerWorkers on so.ContactID equals cw.ID
                        join cw1 in IME.CustomerWorkers on so.DeliveryContactID equals cw1.ID
                        join cwa in IME.CustomerAddresses on so.AddressID equals cwa.ID
