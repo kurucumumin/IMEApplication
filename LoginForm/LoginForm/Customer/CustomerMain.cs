@@ -135,10 +135,9 @@ namespace LoginForm
             //contact daki list box a tıklandığında contact ın bilgileri tıklanan göre doldurulmasıse
             int cw_ID = 0;
             try { cw_ID = ((CustomerWorker)((ListBox)sender).SelectedItem).ID; } catch { cw_ID = 0; }
-            try
-            {
                 if (ContactListItem.ID != cw_ID)
                 {
+                if (CustomerName.Text!=string.Empty) { 
                     ContactListItem.ID = cw_ID;
                     string contactname = ((CustomerWorker)((ListBox)sender).SelectedItem).cw_name;
                     ContactListItem.contactName = contactname;
@@ -146,22 +145,20 @@ namespace LoginForm
                     foreach (var a in contact1)
                     {
                         selectedContactID = a.ID;
-                        ContactType.SelectedValue = a.ContactTypeID;
-                       // Int32.Parse(a.ContactTypeID.ToString());
+                        if (a.ContactTypeID != null) ContactType.SelectedValue = a.ContactTypeID;
                         ContactName.Text = a.cw_name;
                         ContactEmail.Text = a.cw_email;
                         ContactDepartment.SelectedIndex = ContactDepartment.FindStringExact(a.CustomerDepartment.departmentname);
-                        ContactTitle.SelectedIndex = ContactTitle.FindStringExact(a.CustomerTitle.titlename);
+                        if (a.CustomerTitle != null) ContactTitle.SelectedIndex = ContactTitle.FindStringExact(a.CustomerTitle.titlename);
                         ContactFAX.Text = a.fax;
                         ContactMobilePhone.Text = a.mobilephone;
                         ContactPhone.Text = a.phone;
-                        if(a.CustomerWorkerAdress!=null) ContactAdress.SelectedItem = Int32.Parse(a.CustomerWorkerAdress.ToString());
+                        if (a.CustomerWorkerAdress != null) ContactAdress.SelectedItem = Int32.Parse(a.CustomerWorkerAdress.ToString());
                         CommunicationLanguage.SelectedIndex = CommunicationLanguage.FindStringExact(a.Language.languagename);
                         if (a.Note != null) { ContactNotes.Text = a.Note.Note_name; } else { ContactNotes.Text = ""; }
                     }
+                    }
                 }
-            }
-            catch { }
             #endregion
         }
 
@@ -669,11 +666,11 @@ namespace LoginForm
                 cw.cw_name = ContactName.Text;
                 cw.cw_email = ContactEmail.Text;
                 cw.phone = ContactPhone.Text;
-                cw.CustomerWorkerAdress = (ContactAdress.SelectedItem as CustomerAddress).ID;
-                cw.ContactTypeID = (ContactType.SelectedItem as ContactType).ID;
+                if(ContactAdress.SelectedItem!=null) cw.CustomerWorkerAdress = (ContactAdress.SelectedItem as CustomerAddress).ID;
+                if(ContactType.SelectedItem!=null) cw.ContactTypeID = (ContactType.SelectedItem as ContactType).ID;
                 cw.mobilephone = ContactMobilePhone.Text;
                 cw.fax = ContactFAX.Text;
-                cw.languageID = ((Language)(CommunicationLanguage).SelectedItem).ID;
+                if (CommunicationLanguage.SelectedItem != null) cw.languageID = ((Language)(CommunicationLanguage).SelectedItem).ID;
                 Note n = new Note();
                 n.Note_name = ContactNotes.Text;
                 IME.Notes.Add(n);
@@ -691,6 +688,8 @@ namespace LoginForm
                 ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
                 ContactList.DisplayMember = "cw_name";
                 //catch { MessageBox.Show("Contact is NOT successfull"); }
+                cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
+                cbMainContact.DisplayMember = "cw_name";
             }
             else
             {
@@ -773,6 +772,9 @@ namespace LoginForm
                 IME.SaveChanges();
                 ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
                 ContactList.DisplayMember = "cw_name";
+                cbMainContact.DataSource = null;
+                cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
+                cbMainContact.DisplayMember = "cw_name";
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -793,7 +795,7 @@ namespace LoginForm
                 int represantative_id = Utils.getCurrentUser().WorkerID;
                 Represantative1.DataSource = IME.Workers.Where(a => a.WorkerID == represantative_id).ToList();
                 Represantative1.DisplayMember = "NameLastName";
-
+                cbMainContact.DataSource = null;
                 #region ComboboxChoose
                 MainCategory.Text = (ComboboxString);
                 SubCategory.Text = (ComboboxString);
@@ -1056,6 +1058,8 @@ namespace LoginForm
             #region itemsEnableFalse
             SubCategory.Enabled = false;
             MainCategory.Enabled = false;
+            cbMainContact.Enabled = false;
+            Represantative1.Enabled = false;
             CompanyNotes.Enabled = false;
             WebAdress.Enabled = false;
             cbMainContact.Enabled = false;
@@ -1107,6 +1111,8 @@ namespace LoginForm
             SubCategory.Enabled = true;
             MainCategory.Enabled = true;
             CompanyNotes.Enabled = true;
+            cbMainContact.Enabled = true;
+            Represantative1.Enabled = true;
             WebAdress.Enabled = true;
             cbMainContact.Enabled = true;
             CustomerFax.Enabled = true;
@@ -1347,8 +1353,7 @@ namespace LoginForm
             //contact daki list box a tıklandığında contact ın bilgileri tıklanan göre doldurulmasıse
             int cw_ID = 0;
             try { cw_ID = ((CustomerAddress)((ListBox)sender).SelectedItem).ID; } catch { cw_ID = 0; }
-            try
-            {
+           
                 if (ContactListItem.AdressID != cw_ID)
                 {
                     ContactListItem.AdressID = cw_ID;
@@ -1360,17 +1365,13 @@ namespace LoginForm
                         if (a.isIMEOffice == 1) { cbDafultDeliveryAdress.Checked = true; } else { cbDafultDeliveryAdress.Checked = false; }
                         txtAdressTitle.Text = a.AdressTitle;
                         cbCountry.SelectedItem = a.Country;
-                        cbCity.SelectedIndex = cbCity.FindStringExact(a.City.City_name);
-                        cbTown.SelectedIndex = cbTown.FindStringExact(a.Town.Town_name);
+                        if (a.City != null) cbCity.SelectedIndex =  cbCity.FindStringExact(a.City.City_name);
+                        if(a.Town != null) cbTown.SelectedIndex = cbTown.FindStringExact(a.Town.Town_name);
                         PostCode.Text = a.PostCode;
                         AddressDetails.Text = a.AdressDetails;
                     }
                 }
-            }
-            catch { }
             #endregion
-
-
         }
 
         //private void WebAdress_Leave(object sender, EventArgs e)

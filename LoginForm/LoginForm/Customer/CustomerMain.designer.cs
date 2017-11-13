@@ -748,7 +748,7 @@
             // TaxOffice
             // 
             this.TaxOffice.Enabled = false;
-            this.TaxOffice.Location = new System.Drawing.Point(123, 59);
+            this.TaxOffice.Location = new System.Drawing.Point(123, 60);
             this.TaxOffice.Name = "TaxOffice";
             this.TaxOffice.Size = new System.Drawing.Size(174, 23);
             this.TaxOffice.TabIndex = 2;
@@ -894,7 +894,8 @@
             this.AdressList.Location = new System.Drawing.Point(544, 18);
             this.AdressList.Name = "AdressList";
             this.AdressList.Size = new System.Drawing.Size(131, 180);
-            this.AdressList.TabIndex = 33;
+            this.AdressList.TabIndex = 10;
+            this.AdressList.SelectedIndexChanged += new System.EventHandler(this.AdressList_SelectedIndexChanged);
             // 
             // cbTown
             // 
@@ -1126,7 +1127,7 @@
             // btnContactAdd
             // 
             this.btnContactAdd.Enabled = false;
-            this.btnContactAdd.Location = new System.Drawing.Point(539, 236);
+            this.btnContactAdd.Location = new System.Drawing.Point(548, 233);
             this.btnContactAdd.Name = "btnContactAdd";
             this.btnContactAdd.Size = new System.Drawing.Size(43, 25);
             this.btnContactAdd.TabIndex = 15;
