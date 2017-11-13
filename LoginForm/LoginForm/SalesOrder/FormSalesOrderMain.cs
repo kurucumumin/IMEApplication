@@ -28,23 +28,24 @@ namespace LoginForm.SalesOrder
         private void BringSalesList(DateTime startDate, DateTime endDate)
         {
             IMEEntities IME = new IMEEntities();
-            
+
             var list = from so in IME.SaleOrders
-                        join cw in IME.CustomerWorkers on so.ContactID equals cw.ID
-                        join cw1 in IME.CustomerWorkers on so.DeliveryContactID equals cw1.ID
-                        join cwa in IME.CustomerAddresses on so.AddressID equals cwa.ID
-                        join cwa1 in IME.CustomerAddresses on so.AddressID equals cwa1.ID
-                        //where so.SalesOrderDate >= endDate && so.SalesOrderDate <= startDate
-                        select new
-                        {
-                            Date = so.SalesOrderDate,
-                            SoNO = so.SoNO,
-                            CustomerName = cw.Customer.c_name,
-                            Contact = cw.cw_name,
-                            DeliveryContact = cw1.cw_name,
-                            Address = cwa.AdressDetails,
-                            DeliveryAddress = cwa1.AdressDetails
-                        };
+                       from cw in IME.CustomerWorkers.Where(x => x.ID == so.ContactID)
+                       from ca in IME.CustomerAddresses.Where(x => x.ID == so.AddressID)
+                       from cw1 in IME.CustomerWorkers.Where(x => x.ID == so.DeliveryContactID).DefaultIfEmpty()
+                       from ca1 in IME.CustomerAddresses.Where(x => x.ID == so.DeliveryAddressID).DefaultIfEmpty()
+                       where so.SalesOrderDate >= endDate && so.SalesOrderDate <= startDate
+                       select new
+                       {
+                           Date = so.SalesOrderDate,
+                           SoNO = so.SoNO,
+                           CustomerName = cw.Customer.c_name,
+                           Contact = cw.cw_name,
+                           DeliveryContact = (cw1.cw_name != null) ? cw1.cw_name : "--None--",
+                           Address = ca.AdressDetails,
+                           DeliveryAddress = (ca1.AdressDetails != null) ? ca1.AdressDetails : "--None--",
+
+                       };
             populateGrid(list.ToList());
 
         }
