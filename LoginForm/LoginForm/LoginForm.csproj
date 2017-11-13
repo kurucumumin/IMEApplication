@@ -383,19 +383,25 @@
     <Compile Include="QuotationModule\ViewProductHistory.Designer.cs">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="SalesOrder\FormSalesOrderAdd.cs">
+    <Compile Include="SaleOrder\FormSaleOrderCustList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SalesOrder\FormSalesOrderAdd.Designer.cs">
-      <DependentUpon>FormSalesOrderAdd.cs</DependentUpon>
+    <Compile Include="SaleOrder\FormSaleOrderCustList.Designer.cs">
+      <DependentUpon>FormSaleOrderCustList.cs</DependentUpon>
     </Compile>
-    <Compile Include="SalesOrder\FormSalesOrderMain.cs">
+    <Compile Include="SaleOrder\FormSaleOrderAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SalesOrder\FormSalesOrderMain.Designer.cs">
-      <DependentUpon>FormSalesOrderMain.cs</DependentUpon>
+    <Compile Include="SaleOrder\FormSaleOrderAdd.Designer.cs">
+      <DependentUpon>FormSaleOrderAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="SalesOrder\SalesOrderHelper.cs" />
+    <Compile Include="SaleOrder\FormSaleOrderMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleOrder\FormSaleOrderMain.Designer.cs">
+      <DependentUpon>FormSaleOrderMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaleOrder\SalesOrderHelper.cs" />
     <Compile Include="User\FormUsersMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -506,11 +512,14 @@
     <EmbeddedResource Include="QuotationModule\ViewProductHistory.resx">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SalesOrder\FormSalesOrderAdd.resx">
-      <DependentUpon>FormSalesOrderAdd.cs</DependentUpon>
+    <EmbeddedResource Include="SaleOrder\FormSaleOrderCustList.resx">
+      <DependentUpon>FormSaleOrderCustList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SalesOrder\FormSalesOrderMain.resx">
-      <DependentUpon>FormSalesOrderMain.cs</DependentUpon>
+    <EmbeddedResource Include="SaleOrder\FormSaleOrderAdd.resx">
+      <DependentUpon>FormSaleOrderAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleOrder\FormSaleOrderMain.resx">
+      <DependentUpon>FormSaleOrderMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\FormUsersMain.resx">
       <DependentUpon>FormUsersMain.cs</DependentUpon>
@@ -540,6 +549,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthorizationValue.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthRole.datasource" />
+    <None Include="Properties\DataSources\LoginForm.DataSet.Customer.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Quotation.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.RoleValue.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Worker.datasource" />

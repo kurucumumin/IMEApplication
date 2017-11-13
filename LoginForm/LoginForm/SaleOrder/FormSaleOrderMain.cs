@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 using System.Linq;
+using LoginForm.SaleOrder;
 
 namespace LoginForm.SalesOrder
 {
@@ -54,6 +55,12 @@ namespace LoginForm.SalesOrder
         {
             dgSales.DataSource = null;
             dgSales.DataSource = queryable;
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            FormSaleOrderCustList form = new FormSaleOrderCustList();
+            form.ShowDialog();
         }
     }
 }
