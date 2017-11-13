@@ -447,6 +447,32 @@ namespace LoginForm.QuotationModule
 
             }
             #endregion
+
+            #region ProductHistory
+            string item_code;
+            Boolean sayac = false;
+
+            item_code = dgQuotationAddedItems.CurrentRow.Cells["dgProductCode"].Value.ToString();
+
+            if (item_code == null || item_code == string.Empty)
+            {
+                MessageBox.Show("Please Enter a Item Code", "Eror !");
+            }
+            else
+            {
+                ViewProductHistory f = new ViewProductHistory(sayac,item_code);
+                if (sayac == true)
+                {
+                    lblMessage.Font = new Font(lblMessage.Font, lblMessage.Font.Style ^ FontStyle.Underline);
+                    lblMessage.Text = "Product History";
+                }
+                else
+                {
+                    lblMessage.Text = "";
+                }
+            }
+            #endregion
+
             try
             {
                 ChangeCurrnetCell(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
@@ -2410,11 +2436,12 @@ namespace LoginForm.QuotationModule
             txtMargin5.Visible = true;
         }
 
-        private void dgQuotationAddedItems_DoubleClick(object sender, EventArgs e)
+        private void lblMessage_Click(object sender, EventArgs e)
         {
             string item_code;
+            Boolean sayac = false;
 
-            item_code= dgQuotationAddedItems.CurrentRow.Cells["dgProductCode"].Value.ToString();
+            item_code = dgQuotationAddedItems.CurrentRow.Cells["dgProductCode"].Value.ToString();
 
             if (item_code == null || item_code == string.Empty)
             {
@@ -2422,8 +2449,15 @@ namespace LoginForm.QuotationModule
             }
             else
             {
-                ViewProductHistory f = new ViewProductHistory(item_code);
+                ViewProductHistory f = new ViewProductHistory(sayac, item_code);
+                if (sayac==true)
+                { 
                 f.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("No Records Found");
+                }
             }
         }
     }
