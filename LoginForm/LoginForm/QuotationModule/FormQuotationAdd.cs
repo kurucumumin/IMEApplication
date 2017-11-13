@@ -70,7 +70,7 @@ namespace LoginForm.QuotationModule
             modifyQuotation(q1);
             //fillCustomer();
             cbSMethod.SelectedIndex = (int)q1.ShippingMethodID;
-            for (int i = 0; i < dgQuotationAddedItems.RowCount-1; i++)
+            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
             {
                 dgQuotationAddedItems.Rows[i].Cells["dgQty"].ReadOnly = false;
                 dgQuotationAddedItems.Rows[i].Cells["dgQty"].Style = dgQuotationAddedItems.DefaultCellStyle;
@@ -95,7 +95,7 @@ namespace LoginForm.QuotationModule
 
                 GetMarginMark(i);
             }
-            QuotataionModifyItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells["dgProductCode"].Value.ToString(), dgQuotationAddedItems.RowCount - 1);
+            QuotataionModifyItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount].Cells["dgProductCode"].Value.ToString(), dgQuotationAddedItems.RowCount);
         }
 
         private void QuotationForm_Load(object sender, EventArgs e)
@@ -1027,7 +1027,7 @@ namespace LoginForm.QuotationModule
         {
             try
             {
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[0].Value = (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 2].Cells[0].Value.ToString()) + 1).ToString();
+                dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount].Cells[0].Value = (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[0].Value.ToString()) + 1).ToString();
             }
             catch { }
         }
@@ -1250,7 +1250,7 @@ namespace LoginForm.QuotationModule
                 }
 
 
-                    int rowindex1 = dgQuotationAddedItems.RowCount - 1;
+                    int rowindex1 = dgQuotationAddedItems.RowCount;
                     dgQuotationAddedItems.Rows.Add();
                     for (int i = 0; i < dgQuotationDeleted.Columns.Count; i++)
                     {
@@ -1304,7 +1304,7 @@ namespace LoginForm.QuotationModule
         private bool ControlSave()
         {
             if(txtCustomerName.Text==null || txtCustomerName.Text ==String.Empty) { MessageBox.Show("Please Enter a Customer");return false; }
-            for (int i = 0; i < dgQuotationAddedItems.RowCount-1 ; i++)
+            for (int i = 0; i < dgQuotationAddedItems.RowCount ; i++)
             {
                 if (Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString()) < Utils.getCurrentUser().MinMarge) { MessageBox.Show("Please Check Merge of Products "); return false;  }
             }
@@ -1348,7 +1348,7 @@ namespace LoginForm.QuotationModule
             try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
             q.PaymentID = (cbPayment.SelectedItem as PaymentMethod).ID;
             q.CurrName = (cbCurrency.SelectedItem as Rate).CurType;
-            q.CurrType = cbCurrType.SelectedText;
+            q.CurrType = cbCurrType.Text;
             q.Curr = CurrValue;
             q.CustomerID = CustomerCode.Text;
             q.ShippingMethodID = cbSMethod.SelectedIndex;
@@ -1573,7 +1573,7 @@ namespace LoginForm.QuotationModule
             #endregion
             if (dgQuotationAddedItems.RowCount > 1)
             {
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[0].Value = (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 2].Cells[0].Value.ToString()) + 1).ToString();
+                dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount].Cells[0].Value = (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[0].Value.ToString()) + 1).ToString();
             }
             else { dgQuotationAddedItems.Rows[0].Cells[0].Value = 1.ToString(); }
             string q1 = q.QuotationNo;
@@ -2084,7 +2084,7 @@ namespace LoginForm.QuotationModule
                 if (currindex == 32)
                 {
                     if (currindex == 14 && dgQuotationAddedItems.Rows[row].Cells[14].Value == null) break;
-                    if (dgQuotationAddedItems.RowCount - 1 == row)
+                    if (dgQuotationAddedItems.RowCount  == row)
                     {
                         DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
                         dgQuotationAddedItems.Rows.Add(dgRow);
@@ -2113,7 +2113,7 @@ namespace LoginForm.QuotationModule
                 if (currindex == dgQuotationAddedItems.ColumnCount-1)
                 {
                     
-                    if (dgQuotationAddedItems.RowCount - 1 == row)
+                    if (dgQuotationAddedItems.RowCount == row)
                     {
                         DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
                         dgQuotationAddedItems.Rows.Add(dgRow);

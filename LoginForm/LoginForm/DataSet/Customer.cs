@@ -48,6 +48,7 @@ namespace LoginForm.DataSet
         public string CurrNameQuo { get; set; }
         public Nullable<int> customerAccountantNoteID { get; set; }
         public System.DateTime CreateDate { get; set; }
+        public string extensionnumber { get; set; }
     
         public virtual Worker Worker { get; set; }
         public virtual Note Note { get; set; }

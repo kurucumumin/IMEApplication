@@ -82,7 +82,7 @@ namespace LoginForm
 
         private void CustomerMain_Load(object sender, EventArgs e)
         {
-
+            this.CompanyNotes.KeyDown += new KeyEventHandler(CompanyNotes_KeyDown);
             #region ComboboxFiller
             ContactDepartment.DataSource = IME.CustomerDepartments.ToList();
             ContactDepartment.DisplayMember = "departmentname";
@@ -786,7 +786,7 @@ namespace LoginForm
 
             if (btnCreate.Text == "CREATE")
             {
-
+                dateTimePicker1.Value = DateTime.Today;
                 itemsEnableTrue();
                 itemsClear();
                 rb_active.Checked = true;
@@ -876,6 +876,7 @@ namespace LoginForm
                         if (rb_active.Checked) { c.isactive = 1; } else { c.isactive = 0; }
                         c.c_name = CustomerName.Text;
                         if (Telephone.Text != "") { c.telephone = Telephone.Text; }
+                        if (txtExtNumber.Text != "") { c.extensionnumber = txtExtNumber.Text; }
                         if (CustomerFax.Text != "") { c.fax = CustomerFax.Text; }
                         c.webadress = WebAdress.Text;
                         c.taxoffice = CustomerFax.Text;
@@ -1057,6 +1058,7 @@ namespace LoginForm
             MainCategory.Enabled = false;
             CompanyNotes.Enabled = false;
             WebAdress.Enabled = false;
+            cbMainContact.Enabled = false;
             CustomerFax.Enabled = false;
             CustomerName.Enabled = false;
             Telephone.Enabled = false;
@@ -1106,6 +1108,7 @@ namespace LoginForm
             MainCategory.Enabled = true;
             CompanyNotes.Enabled = true;
             WebAdress.Enabled = true;
+            cbMainContact.Enabled = true;
             CustomerFax.Enabled = true;
             CustomerName.Enabled = true;
             Telephone.Enabled = true;
@@ -1615,6 +1618,14 @@ namespace LoginForm
             if (Telephone.Text == null || Telephone.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter Company's Phone correctly or Delete\n"; isSave = false; }
             if(ContactList.Items.Count == 0) { ErrorMessage = ErrorMessage + "Please Enter a Contact\n"; isSave = false; }
             if (isSave == true) { return true; } else { MessageBox.Show(ErrorMessage);return false; }
+        }
+
+        private void CompanyNotes_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab|| e.KeyCode == Keys.Enter)
+            {
+                tabControl1.SelectedTab = tabControl1.TabPages["tab_account"];
+            }
         }
     }
 }

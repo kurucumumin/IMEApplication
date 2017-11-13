@@ -109,6 +109,8 @@
             this.AdressDone = new System.Windows.Forms.Button();
             this.AdressCancel = new System.Windows.Forms.Button();
             this.tab_contact = new System.Windows.Forms.TabPage();
+            this.ContactAdress = new System.Windows.Forms.ComboBox();
+            this.label42 = new System.Windows.Forms.Label();
             this.txtExtNumber = new System.Windows.Forms.TextBox();
             this.departmentAdd = new System.Windows.Forms.Button();
             this.titleAdd = new System.Windows.Forms.Button();
@@ -146,8 +148,6 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.tableMain = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ContactAdress = new System.Windows.Forms.ComboBox();
-            this.label42 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tab_company.SuspendLayout();
             this.tab_account.SuspendLayout();
@@ -215,10 +215,11 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Enabled = false;
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(212, 19);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(93, 23);
-            this.dateTimePicker1.TabIndex = 2;
+            this.dateTimePicker1.TabIndex = 100;
             // 
             // cbMainContact
             // 
@@ -227,7 +228,7 @@
             this.cbMainContact.Location = new System.Drawing.Point(471, 179);
             this.cbMainContact.Name = "cbMainContact";
             this.cbMainContact.Size = new System.Drawing.Size(197, 24);
-            this.cbMainContact.TabIndex = 12;
+            this.cbMainContact.TabIndex = 13;
             this.cbMainContact.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbMainContact_KeyPress);
             // 
             // label35
@@ -245,7 +246,7 @@
             this.btnAddSubcategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddSubcategory.Name = "btnAddSubcategory";
             this.btnAddSubcategory.Size = new System.Drawing.Size(23, 21);
-            this.btnAddSubcategory.TabIndex = 15;
+            this.btnAddSubcategory.TabIndex = 56;
             this.btnAddSubcategory.Text = "+";
             this.btnAddSubcategory.UseVisualStyleBackColor = true;
             // 
@@ -255,7 +256,7 @@
             this.btnAddMainCategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddMainCategory.Name = "btnAddMainCategory";
             this.btnAddMainCategory.Size = new System.Drawing.Size(23, 21);
-            this.btnAddMainCategory.TabIndex = 14;
+            this.btnAddMainCategory.TabIndex = 55;
             this.btnAddMainCategory.Text = "+";
             this.btnAddMainCategory.UseVisualStyleBackColor = true;
             // 
@@ -266,7 +267,7 @@
             this.rb_passive.Location = new System.Drawing.Point(568, 20);
             this.rb_passive.Name = "rb_passive";
             this.rb_passive.Size = new System.Drawing.Size(75, 21);
-            this.rb_passive.TabIndex = 17;
+            this.rb_passive.TabIndex = 8;
             this.rb_passive.TabStop = true;
             this.rb_passive.Text = "Passive";
             this.rb_passive.UseVisualStyleBackColor = true;
@@ -278,7 +279,7 @@
             this.rb_active.Location = new System.Drawing.Point(471, 20);
             this.rb_active.Name = "rb_active";
             this.rb_active.Size = new System.Drawing.Size(64, 21);
-            this.rb_active.TabIndex = 16;
+            this.rb_active.TabIndex = 7;
             this.rb_active.TabStop = true;
             this.rb_active.Text = "Active";
             this.rb_active.UseVisualStyleBackColor = true;
@@ -290,7 +291,7 @@
             this.Represantative2.Location = new System.Drawing.Point(123, 223);
             this.Represantative2.Name = "Represantative2";
             this.Represantative2.Size = new System.Drawing.Size(182, 24);
-            this.Represantative2.TabIndex = 7;
+            this.Represantative2.TabIndex = 6;
             this.Represantative2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Represantative2_KeyPress);
             // 
             // Represantative1
@@ -299,7 +300,7 @@
             this.Represantative1.Location = new System.Drawing.Point(123, 182);
             this.Represantative1.Name = "Represantative1";
             this.Represantative1.Size = new System.Drawing.Size(182, 24);
-            this.Represantative1.TabIndex = 6;
+            this.Represantative1.TabIndex = 5;
             this.Represantative1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Represantative1_KeyPress);
             this.Represantative1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Represantative1_MouseClick);
             // 
@@ -319,7 +320,7 @@
             this.SubCategory.Location = new System.Drawing.Point(123, 141);
             this.SubCategory.Name = "SubCategory";
             this.SubCategory.Size = new System.Drawing.Size(182, 24);
-            this.SubCategory.TabIndex = 5;
+            this.SubCategory.TabIndex = 4;
             this.SubCategory.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SubCategory_KeyPress);
             // 
             // label18
@@ -351,7 +352,7 @@
             this.Capital.Location = new System.Drawing.Point(471, 52);
             this.Capital.Name = "Capital";
             this.Capital.Size = new System.Drawing.Size(199, 24);
-            this.Capital.TabIndex = 8;
+            this.Capital.TabIndex = 9;
             this.Capital.SelectedIndexChanged += new System.EventHandler(this.MainCategory_SelectedIndexChanged);
             this.Capital.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Capital_KeyPress);
             // 
@@ -362,7 +363,7 @@
             this.MainCategory.Location = new System.Drawing.Point(123, 100);
             this.MainCategory.Name = "MainCategory";
             this.MainCategory.Size = new System.Drawing.Size(182, 24);
-            this.MainCategory.TabIndex = 4;
+            this.MainCategory.TabIndex = 3;
             this.MainCategory.SelectedIndexChanged += new System.EventHandler(this.MainCategory_SelectedIndexChanged);
             this.MainCategory.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MainCategory_KeyPress);
             // 
@@ -395,12 +396,14 @@
             // 
             // CompanyNotes
             // 
+            this.CompanyNotes.AcceptsTab = true;
             this.CompanyNotes.Enabled = false;
             this.CompanyNotes.Location = new System.Drawing.Point(471, 216);
             this.CompanyNotes.Multiline = true;
             this.CompanyNotes.Name = "CompanyNotes";
             this.CompanyNotes.Size = new System.Drawing.Size(199, 48);
-            this.CompanyNotes.TabIndex = 13;
+            this.CompanyNotes.TabIndex = 14;
+            this.CompanyNotes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CompanyNotes_KeyDown);
             // 
             // WebAdress
             // 
@@ -408,7 +411,7 @@
             this.WebAdress.Location = new System.Drawing.Point(471, 150);
             this.WebAdress.Name = "WebAdress";
             this.WebAdress.Size = new System.Drawing.Size(199, 23);
-            this.WebAdress.TabIndex = 11;
+            this.WebAdress.TabIndex = 12;
             // 
             // CustomerFax
             // 
@@ -416,7 +419,7 @@
             this.CustomerFax.Location = new System.Drawing.Point(471, 117);
             this.CustomerFax.Name = "CustomerFax";
             this.CustomerFax.Size = new System.Drawing.Size(199, 23);
-            this.CustomerFax.TabIndex = 10;
+            this.CustomerFax.TabIndex = 11;
             // 
             // label3
             // 
@@ -442,7 +445,7 @@
             this.CustomerName.Location = new System.Drawing.Point(123, 59);
             this.CustomerName.Name = "CustomerName";
             this.CustomerName.Size = new System.Drawing.Size(182, 23);
-            this.CustomerName.TabIndex = 3;
+            this.CustomerName.TabIndex = 2;
             // 
             // Telephone
             // 
@@ -450,7 +453,7 @@
             this.Telephone.Location = new System.Drawing.Point(471, 84);
             this.Telephone.Name = "Telephone";
             this.Telephone.Size = new System.Drawing.Size(199, 23);
-            this.Telephone.TabIndex = 9;
+            this.Telephone.TabIndex = 10;
             // 
             // label2
             // 
@@ -548,6 +551,7 @@
             // 
             // AccountingNotes
             // 
+            this.AccountingNotes.AcceptsTab = true;
             this.AccountingNotes.Enabled = false;
             this.AccountingNotes.Location = new System.Drawing.Point(492, 184);
             this.AccountingNotes.Multiline = true;
@@ -1047,6 +1051,24 @@
             this.tab_contact.Text = "Contact";
             this.tab_contact.UseVisualStyleBackColor = true;
             // 
+            // ContactAdress
+            // 
+            this.ContactAdress.Enabled = false;
+            this.ContactAdress.FormattingEnabled = true;
+            this.ContactAdress.Location = new System.Drawing.Point(97, 237);
+            this.ContactAdress.Name = "ContactAdress";
+            this.ContactAdress.Size = new System.Drawing.Size(151, 24);
+            this.ContactAdress.TabIndex = 43;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(28, 240);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(52, 17);
+            this.label42.TabIndex = 44;
+            this.label42.Text = "Adress";
+            // 
             // txtExtNumber
             // 
             this.txtExtNumber.Enabled = false;
@@ -1338,7 +1360,7 @@
             this.CustomerDataGrid.ReadOnly = true;
             this.CustomerDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.CustomerDataGrid.Size = new System.Drawing.Size(704, 222);
-            this.CustomerDataGrid.TabIndex = 1;
+            this.CustomerDataGrid.TabIndex = 56;
             this.CustomerDataGrid.TabStop = false;
             this.CustomerDataGrid.Click += new System.EventHandler(this.CustomerDataGrid_Click);
             // 
@@ -1368,7 +1390,7 @@
             this.label36.Location = new System.Drawing.Point(5, 20);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(109, 17);
-            this.label36.TabIndex = 4;
+            this.label36.TabIndex = 55;
             this.label36.Text = "Customer Name";
             // 
             // btnCreate
@@ -1426,30 +1448,13 @@
             this.panel1.Size = new System.Drawing.Size(706, 57);
             this.panel1.TabIndex = 2;
             // 
-            // ContactAdress
-            // 
-            this.ContactAdress.Enabled = false;
-            this.ContactAdress.FormattingEnabled = true;
-            this.ContactAdress.Location = new System.Drawing.Point(97, 237);
-            this.ContactAdress.Name = "ContactAdress";
-            this.ContactAdress.Size = new System.Drawing.Size(151, 24);
-            this.ContactAdress.TabIndex = 43;
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(28, 240);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(52, 17);
-            this.label42.TabIndex = 44;
-            this.label42.Text = "Adress";
-            // 
             // CustomerMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(718, 602);
             this.Controls.Add(this.tableMain);
+            this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(734, 593);
             this.Name = "CustomerMain";
             this.Text = "Customer Card";

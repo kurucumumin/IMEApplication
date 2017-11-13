@@ -30,7 +30,6 @@ namespace LoginForm.DataSet
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<ContactType> ContactTypes { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
-        public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<CustomerAddress> CustomerAddresses { get; set; }
         public virtual DbSet<CustomerCategory> CustomerCategories { get; set; }
         public virtual DbSet<CustomerCategorySubCategory> CustomerCategorySubCategories { get; set; }
@@ -73,5 +72,6 @@ namespace LoginForm.DataSet
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Town> Towns { get; set; }
         public virtual DbSet<Worker> Workers { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
     }
 }

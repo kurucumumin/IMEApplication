@@ -1192,7 +1192,7 @@ namespace LoginForm.QuotationModule
                     QuotationSave();
                     QuotationDetailsSave();
                 }
-                
+
             }
             catch { MessageBox.Show("Error Occured", "Failure"); }
 
@@ -1411,10 +1411,10 @@ namespace LoginForm.QuotationModule
                     row.Cells[30].Value = item.Qty;
                     row.Cells[29].Value = item.CustomerStockCode;
                     dgQuotationAddedItems.Rows.Add(row);
-                    
+
                 }
             }
-            //ItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString()); 
+            //ItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString());
              for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
             {
                 GetQuotationQuantity(i);
@@ -1769,7 +1769,7 @@ namespace LoginForm.QuotationModule
                 GetCurrency(dtpDate.Value);
                 ChangeCurr();
             }
-            
+
         }
 
         private void ChangeCurr(int rowindex)
