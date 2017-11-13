@@ -692,7 +692,7 @@
             this.CustomerCode.Name = "CustomerCode";
             this.CustomerCode.Size = new System.Drawing.Size(87, 20);
             this.CustomerCode.TabIndex = 75;
-            this.CustomerCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CustomerCode_KeyDown_1);
+            this.CustomerCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CustomerCode_KeyDown);
             this.CustomerCode.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.CustomerCode_MouseDoubleClick);
             //
             // cbPayment
