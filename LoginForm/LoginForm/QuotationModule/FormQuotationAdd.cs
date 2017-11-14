@@ -1490,7 +1490,7 @@ namespace LoginForm.QuotationModule
                     QuotationDetail qd = new QuotationDetail();
                     qd.QuotationNo = txtQuotationNo.Text;
                     if (dgQuotationAddedItems.Rows[i].Cells["dgNo"].Value != null) qd.dgNo = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgNo"].Value.ToString()); 
-                    if(dgQuotationAddedItems.Rows[i].Cells["dgDesc"].Value!=null) qd.dgNo = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgDesc"].Value.ToString()); 
+                    if(dgQuotationAddedItems.Rows[i].Cells["dgDesc"].Value!=null) qd.CustomerDescription = dgQuotationAddedItems.Rows[i].Cells["dgDesc"].Value.ToString(); 
                     if (dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value != null) qd.ItemCode = dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString();
                     if(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value!=null) qd.Qty = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString()); 
                     if(dgQuotationAddedItems.Rows[i].Cells["dgUOM"].Value!=null) qd.UnitOfMeasure = dgQuotationAddedItems.Rows[i].Cells["dgUOM"].Value.ToString(); 
@@ -1514,7 +1514,7 @@ namespace LoginForm.QuotationModule
                     QuotationDetail qd = new QuotationDetail();
                     
                     if(dgQuotationDeleted.Rows[i].Cells["No1"].Value!=null) qd.dgNo = Int32.Parse(dgQuotationDeleted.Rows[i].Cells["No1"].Value.ToString());
-                    if (dgQuotationDeleted.Rows[i].Cells["dgDesc1"].Value != null) qd.dgNo = Int32.Parse(dgQuotationDeleted.Rows[i].Cells["dgDesc1"].Value.ToString());
+                    if (dgQuotationDeleted.Rows[i].Cells["dgDesc1"].Value != null) qd.CustomerDescription = dgQuotationDeleted.Rows[i].Cells["dgDesc1"].Value.ToString();
                     if (dgQuotationDeleted.Rows[i].Cells["dgProductCode1"].Value != null) qd.ItemCode = dgQuotationDeleted.Rows[i].Cells["dgProductCode1"].Value.ToString();
                     if (dgQuotationDeleted.Rows[i].Cells["dgQty1"].Value != null) qd.Qty = Int32.Parse(dgQuotationDeleted.Rows[i].Cells["dgQty1"].Value.ToString());
                     if (dgQuotationDeleted.Rows[i].Cells["dgUCUPCurr1"].Value != null) qd.UCUPCurr = Decimal.Parse(dgQuotationDeleted.Rows[i].Cells["dgUCUPCurr1"].Value.ToString());
