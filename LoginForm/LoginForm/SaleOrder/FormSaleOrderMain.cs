@@ -59,7 +59,7 @@ namespace LoginForm.SalesOrder
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            FormSaleOrderCustList form = new FormSaleOrderCustList();
+            FormSaleOrderCreate form = new FormSaleOrderCreate();
             form.ShowDialog();
         }
     }
