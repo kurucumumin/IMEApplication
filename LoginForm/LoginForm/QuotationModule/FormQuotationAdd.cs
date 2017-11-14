@@ -387,7 +387,7 @@ namespace LoginForm.QuotationModule
                         }
                     }
                     #endregion
-                    //ChangeCurrnetCell(dgQuotationAddedItems.CurrentCell.RowIndex +1);
+                    if (dgQuotationAddedItems.CurrentRow.Cells["dgDesc"].Value != null) ChangeCurrnetCell(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
                     break;
                 case 14://QAUANTITY
                     #region Quantity
@@ -444,7 +444,6 @@ namespace LoginForm.QuotationModule
                         #endregion
                     }
                     break;
-
             }
             #endregion
 
@@ -472,13 +471,6 @@ namespace LoginForm.QuotationModule
                 }
             }
             #endregion
-
-            try
-            {
-                ChangeCurrnetCell(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
-            }
-            catch { }
-
         }
 
         private void GetQuotationQuantity(int rowindex)
@@ -1028,7 +1020,7 @@ namespace LoginForm.QuotationModule
                 if (result == DialogResult.OK)
                 {
                     customer = form.customer;
-                    cbWorkers.DataSource = customer.CustomerWorkers.ToList();
+                    cbWorkers.DataSource = customer.CustomerWorkers.Where(a=>a.cw_name!=null).ToList();
                     cbWorkers.DisplayMember = "cw_name";
                     cbWorkers.ValueMember = "ID";
                 }
@@ -2112,14 +2104,14 @@ namespace LoginForm.QuotationModule
         }
 
         private void ChangeCurrnetCell(int currindex)
-        {
+            {
             int row= dgQuotationAddedItems.CurrentCell.RowIndex;
             while (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex].ReadOnly == true)
             {
-                if (currindex == dgQuotationAddedItems.ColumnCount-4)
+                if (currindex == dgQuotationAddedItems.ColumnCount-1)
                 {
                     if (currindex == 14 && dgQuotationAddedItems.Rows[row].Cells[14].Value == null) break;
-                    if (dgQuotationAddedItems.RowCount  == row)
+                    if (dgQuotationAddedItems.RowCount-1  == row && dgQuotationAddedItems.CurrentRow.Cells["dgDesc"].Value!=null)
                     {
                         DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
                         dgQuotationAddedItems.Rows.Add(dgRow);
@@ -2182,7 +2174,7 @@ namespace LoginForm.QuotationModule
             else if (e.KeyCode == Keys.Enter)
             {
                 ChangeCurrnetCell(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
-                SendKeys.Send("{UP}");
+                if(dgQuotationAddedItems.CurrentRow.Index!=dgQuotationAddedItems.RowCount-1)SendKeys.Send("{UP}");
             }
         }
 
