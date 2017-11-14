@@ -40,9 +40,37 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dgQuotations = new System.Windows.Forms.DataGridView();
+            this.noteForUsIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noteForCustomerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.forFinancelIsTrueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shippingMethodIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isItemCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isWeightCostDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isCustomsDutiesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.discOnSubTotal2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.extraChargesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.startDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.validationDayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paymentIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.factorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isVatValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vatValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuotationNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rFQNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.currTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quotationMainContactDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.noteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.note1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paymentMethodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quotationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dgItems = new System.Windows.Forms.DataGridView();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
@@ -52,9 +80,12 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgQuotations)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quotationBindingSource)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgItems)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -79,6 +110,7 @@
             this.txtSearchCustomer.Name = "txtSearchCustomer";
             this.txtSearchCustomer.Size = new System.Drawing.Size(259, 24);
             this.txtSearchCustomer.TabIndex = 10;
+            this.txtSearchCustomer.TextChanged += new System.EventHandler(this.txtSearchCustomer_TextChanged);
             // 
             // label1
             // 
@@ -108,6 +140,7 @@
             this.lbCustomerList.Size = new System.Drawing.Size(259, 364);
             this.lbCustomerList.TabIndex = 8;
             this.lbCustomerList.ValueMember = "ID";
+            this.lbCustomerList.SelectedValueChanged += new System.EventHandler(this.lbCustomerList_SelectedValueChanged);
             // 
             // customerBindingSource
             // 
@@ -202,52 +235,286 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.dataGridView1);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel1.Padding = new System.Windows.Forms.Padding(8);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel5);
+            this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
+            this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(8);
             this.splitContainer1.Size = new System.Drawing.Size(873, 500);
             this.splitContainer1.SplitterDistance = 245;
             this.splitContainer1.TabIndex = 13;
             // 
-            // dataGridView1
+            // groupBox1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(8, 8);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(853, 225);
-            this.dataGridView1.TabIndex = 0;
+            this.groupBox1.Controls.Add(this.dgQuotations);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(8, 8);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(853, 225);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Quotations";
+            // 
+            // dgQuotations
+            // 
+            this.dgQuotations.AllowUserToAddRows = false;
+            this.dgQuotations.AllowUserToDeleteRows = false;
+            this.dgQuotations.AutoGenerateColumns = false;
+            this.dgQuotations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgQuotations.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.noteForUsIDDataGridViewTextBoxColumn,
+            this.noteForCustomerIDDataGridViewTextBoxColumn,
+            this.forFinancelIsTrueDataGridViewTextBoxColumn,
+            this.shippingMethodIDDataGridViewTextBoxColumn,
+            this.isItemCostDataGridViewTextBoxColumn,
+            this.isWeightCostDataGridViewTextBoxColumn,
+            this.isCustomsDutiesDataGridViewTextBoxColumn,
+            this.discOnSubTotal2DataGridViewTextBoxColumn,
+            this.extraChargesDataGridViewTextBoxColumn,
+            this.subTotalDataGridViewTextBoxColumn,
+            this.startDateDataGridViewTextBoxColumn,
+            this.validationDayDataGridViewTextBoxColumn,
+            this.paymentIDDataGridViewTextBoxColumn,
+            this.currDataGridViewTextBoxColumn,
+            this.factorDataGridViewTextBoxColumn,
+            this.isVatValueDataGridViewTextBoxColumn,
+            this.vatValueDataGridViewTextBoxColumn,
+            this.currNameDataGridViewTextBoxColumn,
+            this.QuotationNo,
+            this.rFQNoDataGridViewTextBoxColumn,
+            this.currTypeDataGridViewTextBoxColumn,
+            this.quotationMainContactDataGridViewTextBoxColumn,
+            this.noteDataGridViewTextBoxColumn,
+            this.note1DataGridViewTextBoxColumn,
+            this.paymentMethodDataGridViewTextBoxColumn});
+            this.dgQuotations.DataSource = this.quotationBindingSource;
+            this.dgQuotations.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgQuotations.Location = new System.Drawing.Point(3, 22);
+            this.dgQuotations.Name = "dgQuotations";
+            this.dgQuotations.ReadOnly = true;
+            this.dgQuotations.RowTemplate.Height = 24;
+            this.dgQuotations.Size = new System.Drawing.Size(847, 200);
+            this.dgQuotations.TabIndex = 0;
+            this.dgQuotations.SelectionChanged += new System.EventHandler(this.dgQuotations_SelectionChanged);
+            // 
+            // noteForUsIDDataGridViewTextBoxColumn
+            // 
+            this.noteForUsIDDataGridViewTextBoxColumn.DataPropertyName = "NoteForUsID";
+            this.noteForUsIDDataGridViewTextBoxColumn.HeaderText = "NoteForUsID";
+            this.noteForUsIDDataGridViewTextBoxColumn.Name = "noteForUsIDDataGridViewTextBoxColumn";
+            this.noteForUsIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // noteForCustomerIDDataGridViewTextBoxColumn
+            // 
+            this.noteForCustomerIDDataGridViewTextBoxColumn.DataPropertyName = "NoteForCustomerID";
+            this.noteForCustomerIDDataGridViewTextBoxColumn.HeaderText = "NoteForCustomerID";
+            this.noteForCustomerIDDataGridViewTextBoxColumn.Name = "noteForCustomerIDDataGridViewTextBoxColumn";
+            this.noteForCustomerIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // forFinancelIsTrueDataGridViewTextBoxColumn
+            // 
+            this.forFinancelIsTrueDataGridViewTextBoxColumn.DataPropertyName = "ForFinancelIsTrue";
+            this.forFinancelIsTrueDataGridViewTextBoxColumn.HeaderText = "ForFinancelIsTrue";
+            this.forFinancelIsTrueDataGridViewTextBoxColumn.Name = "forFinancelIsTrueDataGridViewTextBoxColumn";
+            this.forFinancelIsTrueDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // shippingMethodIDDataGridViewTextBoxColumn
+            // 
+            this.shippingMethodIDDataGridViewTextBoxColumn.DataPropertyName = "ShippingMethodID";
+            this.shippingMethodIDDataGridViewTextBoxColumn.HeaderText = "ShippingMethodID";
+            this.shippingMethodIDDataGridViewTextBoxColumn.Name = "shippingMethodIDDataGridViewTextBoxColumn";
+            this.shippingMethodIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // isItemCostDataGridViewTextBoxColumn
+            // 
+            this.isItemCostDataGridViewTextBoxColumn.DataPropertyName = "IsItemCost";
+            this.isItemCostDataGridViewTextBoxColumn.HeaderText = "IsItemCost";
+            this.isItemCostDataGridViewTextBoxColumn.Name = "isItemCostDataGridViewTextBoxColumn";
+            this.isItemCostDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // isWeightCostDataGridViewTextBoxColumn
+            // 
+            this.isWeightCostDataGridViewTextBoxColumn.DataPropertyName = "IsWeightCost";
+            this.isWeightCostDataGridViewTextBoxColumn.HeaderText = "IsWeightCost";
+            this.isWeightCostDataGridViewTextBoxColumn.Name = "isWeightCostDataGridViewTextBoxColumn";
+            this.isWeightCostDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // isCustomsDutiesDataGridViewTextBoxColumn
+            // 
+            this.isCustomsDutiesDataGridViewTextBoxColumn.DataPropertyName = "IsCustomsDuties";
+            this.isCustomsDutiesDataGridViewTextBoxColumn.HeaderText = "IsCustomsDuties";
+            this.isCustomsDutiesDataGridViewTextBoxColumn.Name = "isCustomsDutiesDataGridViewTextBoxColumn";
+            this.isCustomsDutiesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // discOnSubTotal2DataGridViewTextBoxColumn
+            // 
+            this.discOnSubTotal2DataGridViewTextBoxColumn.DataPropertyName = "DiscOnSubTotal2";
+            this.discOnSubTotal2DataGridViewTextBoxColumn.HeaderText = "DiscOnSubTotal2";
+            this.discOnSubTotal2DataGridViewTextBoxColumn.Name = "discOnSubTotal2DataGridViewTextBoxColumn";
+            this.discOnSubTotal2DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // extraChargesDataGridViewTextBoxColumn
+            // 
+            this.extraChargesDataGridViewTextBoxColumn.DataPropertyName = "ExtraCharges";
+            this.extraChargesDataGridViewTextBoxColumn.HeaderText = "ExtraCharges";
+            this.extraChargesDataGridViewTextBoxColumn.Name = "extraChargesDataGridViewTextBoxColumn";
+            this.extraChargesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // subTotalDataGridViewTextBoxColumn
+            // 
+            this.subTotalDataGridViewTextBoxColumn.DataPropertyName = "SubTotal";
+            this.subTotalDataGridViewTextBoxColumn.HeaderText = "SubTotal";
+            this.subTotalDataGridViewTextBoxColumn.Name = "subTotalDataGridViewTextBoxColumn";
+            this.subTotalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // startDateDataGridViewTextBoxColumn
+            // 
+            this.startDateDataGridViewTextBoxColumn.DataPropertyName = "StartDate";
+            this.startDateDataGridViewTextBoxColumn.HeaderText = "StartDate";
+            this.startDateDataGridViewTextBoxColumn.Name = "startDateDataGridViewTextBoxColumn";
+            this.startDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // validationDayDataGridViewTextBoxColumn
+            // 
+            this.validationDayDataGridViewTextBoxColumn.DataPropertyName = "ValidationDay";
+            this.validationDayDataGridViewTextBoxColumn.HeaderText = "ValidationDay";
+            this.validationDayDataGridViewTextBoxColumn.Name = "validationDayDataGridViewTextBoxColumn";
+            this.validationDayDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // paymentIDDataGridViewTextBoxColumn
+            // 
+            this.paymentIDDataGridViewTextBoxColumn.DataPropertyName = "PaymentID";
+            this.paymentIDDataGridViewTextBoxColumn.HeaderText = "PaymentID";
+            this.paymentIDDataGridViewTextBoxColumn.Name = "paymentIDDataGridViewTextBoxColumn";
+            this.paymentIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // currDataGridViewTextBoxColumn
+            // 
+            this.currDataGridViewTextBoxColumn.DataPropertyName = "Curr";
+            this.currDataGridViewTextBoxColumn.HeaderText = "Curr";
+            this.currDataGridViewTextBoxColumn.Name = "currDataGridViewTextBoxColumn";
+            this.currDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // factorDataGridViewTextBoxColumn
+            // 
+            this.factorDataGridViewTextBoxColumn.DataPropertyName = "Factor";
+            this.factorDataGridViewTextBoxColumn.HeaderText = "Factor";
+            this.factorDataGridViewTextBoxColumn.Name = "factorDataGridViewTextBoxColumn";
+            this.factorDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // isVatValueDataGridViewTextBoxColumn
+            // 
+            this.isVatValueDataGridViewTextBoxColumn.DataPropertyName = "IsVatValue";
+            this.isVatValueDataGridViewTextBoxColumn.HeaderText = "IsVatValue";
+            this.isVatValueDataGridViewTextBoxColumn.Name = "isVatValueDataGridViewTextBoxColumn";
+            this.isVatValueDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // vatValueDataGridViewTextBoxColumn
+            // 
+            this.vatValueDataGridViewTextBoxColumn.DataPropertyName = "VatValue";
+            this.vatValueDataGridViewTextBoxColumn.HeaderText = "VatValue";
+            this.vatValueDataGridViewTextBoxColumn.Name = "vatValueDataGridViewTextBoxColumn";
+            this.vatValueDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // currNameDataGridViewTextBoxColumn
+            // 
+            this.currNameDataGridViewTextBoxColumn.DataPropertyName = "CurrName";
+            this.currNameDataGridViewTextBoxColumn.HeaderText = "CurrName";
+            this.currNameDataGridViewTextBoxColumn.Name = "currNameDataGridViewTextBoxColumn";
+            this.currNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // QuotationNo
+            // 
+            this.QuotationNo.DataPropertyName = "QuotationNo";
+            this.QuotationNo.HeaderText = "QuotationNo";
+            this.QuotationNo.Name = "QuotationNo";
+            this.QuotationNo.ReadOnly = true;
+            // 
+            // rFQNoDataGridViewTextBoxColumn
+            // 
+            this.rFQNoDataGridViewTextBoxColumn.DataPropertyName = "RFQNo";
+            this.rFQNoDataGridViewTextBoxColumn.HeaderText = "RFQNo";
+            this.rFQNoDataGridViewTextBoxColumn.Name = "rFQNoDataGridViewTextBoxColumn";
+            this.rFQNoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // currTypeDataGridViewTextBoxColumn
+            // 
+            this.currTypeDataGridViewTextBoxColumn.DataPropertyName = "CurrType";
+            this.currTypeDataGridViewTextBoxColumn.HeaderText = "CurrType";
+            this.currTypeDataGridViewTextBoxColumn.Name = "currTypeDataGridViewTextBoxColumn";
+            this.currTypeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // quotationMainContactDataGridViewTextBoxColumn
+            // 
+            this.quotationMainContactDataGridViewTextBoxColumn.DataPropertyName = "QuotationMainContact";
+            this.quotationMainContactDataGridViewTextBoxColumn.HeaderText = "QuotationMainContact";
+            this.quotationMainContactDataGridViewTextBoxColumn.Name = "quotationMainContactDataGridViewTextBoxColumn";
+            this.quotationMainContactDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // noteDataGridViewTextBoxColumn
+            // 
+            this.noteDataGridViewTextBoxColumn.DataPropertyName = "Note";
+            this.noteDataGridViewTextBoxColumn.HeaderText = "Note";
+            this.noteDataGridViewTextBoxColumn.Name = "noteDataGridViewTextBoxColumn";
+            this.noteDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // note1DataGridViewTextBoxColumn
+            // 
+            this.note1DataGridViewTextBoxColumn.DataPropertyName = "Note1";
+            this.note1DataGridViewTextBoxColumn.HeaderText = "Note1";
+            this.note1DataGridViewTextBoxColumn.Name = "note1DataGridViewTextBoxColumn";
+            this.note1DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // paymentMethodDataGridViewTextBoxColumn
+            // 
+            this.paymentMethodDataGridViewTextBoxColumn.DataPropertyName = "PaymentMethod";
+            this.paymentMethodDataGridViewTextBoxColumn.HeaderText = "PaymentMethod";
+            this.paymentMethodDataGridViewTextBoxColumn.Name = "paymentMethodDataGridViewTextBoxColumn";
+            this.paymentMethodDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // quotationBindingSource
+            // 
+            this.quotationBindingSource.DataSource = typeof(LoginForm.DataSet.Quotation);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.tableLayoutPanel5);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(8, 8);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(0);
+            this.groupBox2.Size = new System.Drawing.Size(853, 231);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Items";
             // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Controls.Add(this.dataGridView2, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.dgItems, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 17);
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.Padding = new System.Windows.Forms.Padding(8);
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(869, 247);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(853, 214);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
-            // dataGridView2
+            // dgItems
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.Location = new System.Drawing.Point(8, 8);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(0);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(853, 191);
-            this.dataGridView2.TabIndex = 0;
+            this.dgItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgItems.Location = new System.Drawing.Point(3, 3);
+            this.dgItems.Name = "dgItems";
+            this.dgItems.RowTemplate.Height = 24;
+            this.dgItems.Size = new System.Drawing.Size(847, 168);
+            this.dgItems.TabIndex = 0;
             // 
             // FormSaleOrderCustList
             // 
@@ -272,9 +539,12 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgQuotations)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quotationBindingSource)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgItems)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -291,8 +561,36 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgQuotations;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgItems;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.BindingSource quotationBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noteForUsIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noteForCustomerIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn forFinancelIsTrueDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn shippingMethodIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn isItemCostDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn isWeightCostDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn isCustomsDutiesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn discOnSubTotal2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn extraChargesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subTotalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn validationDayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn paymentIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn factorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn isVatValueDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vatValueDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QuotationNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rFQNoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quotationMainContactDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noteDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn note1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn paymentMethodDataGridViewTextBoxColumn;
     }
 }
