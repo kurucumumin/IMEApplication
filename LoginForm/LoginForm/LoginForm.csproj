@@ -383,11 +383,11 @@
     <Compile Include="QuotationModule\ViewProductHistory.Designer.cs">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="SaleOrder\FormSaleOrderCustList.cs">
+    <Compile Include="SaleOrder\FormSaleOrderCreate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SaleOrder\FormSaleOrderCustList.Designer.cs">
-      <DependentUpon>FormSaleOrderCustList.cs</DependentUpon>
+    <Compile Include="SaleOrder\FormSaleOrderCreate.Designer.cs">
+      <DependentUpon>FormSaleOrderCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="SaleOrder\FormSaleOrderAdd.cs">
       <SubType>Form</SubType>
@@ -512,8 +512,8 @@
     <EmbeddedResource Include="QuotationModule\ViewProductHistory.resx">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SaleOrder\FormSaleOrderCustList.resx">
-      <DependentUpon>FormSaleOrderCustList.cs</DependentUpon>
+    <EmbeddedResource Include="SaleOrder\FormSaleOrderCreate.resx">
+      <DependentUpon>FormSaleOrderCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\FormSaleOrderAdd.resx">
       <DependentUpon>FormSaleOrderAdd.cs</DependentUpon>
@@ -551,6 +551,7 @@
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthRole.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Customer.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Quotation.datasource" />
+    <None Include="Properties\DataSources\LoginForm.DataSet.QuotationDetail.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.RoleValue.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Worker.datasource" />
     <None Include="Properties\Settings.settings">

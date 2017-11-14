@@ -1,6 +1,6 @@
 ﻿namespace LoginForm.SaleOrder
 {
-    partial class FormSaleOrderCustList
+    partial class FormSaleOrderCreate
     {
         /// <summary>
         /// Required designer variable.
@@ -71,6 +71,23 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.dgItems = new System.Windows.Forms.DataGridView();
+            this.quotationDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dgNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itemCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.discDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uCUPCurrDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.targetUPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.competitorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerDescriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerStockCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isDeletedDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quotationNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.uPIMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.margeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitOfMeasureDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quotationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
@@ -86,6 +103,7 @@
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quotationDetailBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -296,6 +314,7 @@
             this.dgQuotations.Name = "dgQuotations";
             this.dgQuotations.ReadOnly = true;
             this.dgQuotations.RowTemplate.Height = 24;
+            this.dgQuotations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgQuotations.Size = new System.Drawing.Size(847, 200);
             this.dgQuotations.TabIndex = 0;
             this.dgQuotations.SelectionChanged += new System.EventHandler(this.dgQuotations_SelectionChanged);
@@ -508,15 +527,154 @@
             // 
             // dgItems
             // 
+            this.dgItems.AllowUserToAddRows = false;
+            this.dgItems.AllowUserToDeleteRows = false;
+            this.dgItems.AutoGenerateColumns = false;
             this.dgItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgNoDataGridViewTextBoxColumn,
+            this.itemCodeDataGridViewTextBoxColumn,
+            this.qtyDataGridViewTextBoxColumn,
+            this.discDataGridViewTextBoxColumn,
+            this.totalDataGridViewTextBoxColumn,
+            this.uCUPCurrDataGridViewTextBoxColumn,
+            this.targetUPDataGridViewTextBoxColumn,
+            this.competitorDataGridViewTextBoxColumn,
+            this.customerDescriptionDataGridViewTextBoxColumn,
+            this.customerStockCodeDataGridViewTextBoxColumn,
+            this.isDeletedDataGridViewTextBoxColumn,
+            this.quotationNoDataGridViewTextBoxColumn,
+            this.uPIMEDataGridViewTextBoxColumn,
+            this.margeDataGridViewTextBoxColumn,
+            this.unitOfMeasureDataGridViewTextBoxColumn,
+            this.quotationDataGridViewTextBoxColumn});
+            this.dgItems.DataSource = this.quotationDetailBindingSource;
             this.dgItems.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgItems.Location = new System.Drawing.Point(3, 3);
             this.dgItems.Name = "dgItems";
+            this.dgItems.ReadOnly = true;
             this.dgItems.RowTemplate.Height = 24;
+            this.dgItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgItems.Size = new System.Drawing.Size(847, 168);
             this.dgItems.TabIndex = 0;
             // 
-            // FormSaleOrderCustList
+            // quotationDetailBindingSource
+            // 
+            this.quotationDetailBindingSource.DataSource = typeof(LoginForm.DataSet.QuotationDetail);
+            // 
+            // dgNoDataGridViewTextBoxColumn
+            // 
+            this.dgNoDataGridViewTextBoxColumn.DataPropertyName = "dgNo";
+            this.dgNoDataGridViewTextBoxColumn.HeaderText = "dgNo";
+            this.dgNoDataGridViewTextBoxColumn.Name = "dgNoDataGridViewTextBoxColumn";
+            this.dgNoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // itemCodeDataGridViewTextBoxColumn
+            // 
+            this.itemCodeDataGridViewTextBoxColumn.DataPropertyName = "ItemCode";
+            this.itemCodeDataGridViewTextBoxColumn.HeaderText = "ItemCode";
+            this.itemCodeDataGridViewTextBoxColumn.Name = "itemCodeDataGridViewTextBoxColumn";
+            this.itemCodeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // qtyDataGridViewTextBoxColumn
+            // 
+            this.qtyDataGridViewTextBoxColumn.DataPropertyName = "Qty";
+            this.qtyDataGridViewTextBoxColumn.HeaderText = "Qty";
+            this.qtyDataGridViewTextBoxColumn.Name = "qtyDataGridViewTextBoxColumn";
+            this.qtyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // discDataGridViewTextBoxColumn
+            // 
+            this.discDataGridViewTextBoxColumn.DataPropertyName = "Disc";
+            this.discDataGridViewTextBoxColumn.HeaderText = "Disc";
+            this.discDataGridViewTextBoxColumn.Name = "discDataGridViewTextBoxColumn";
+            this.discDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // totalDataGridViewTextBoxColumn
+            // 
+            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
+            this.totalDataGridViewTextBoxColumn.HeaderText = "Total";
+            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
+            this.totalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // uCUPCurrDataGridViewTextBoxColumn
+            // 
+            this.uCUPCurrDataGridViewTextBoxColumn.DataPropertyName = "UCUPCurr";
+            this.uCUPCurrDataGridViewTextBoxColumn.HeaderText = "UCUPCurr";
+            this.uCUPCurrDataGridViewTextBoxColumn.Name = "uCUPCurrDataGridViewTextBoxColumn";
+            this.uCUPCurrDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // targetUPDataGridViewTextBoxColumn
+            // 
+            this.targetUPDataGridViewTextBoxColumn.DataPropertyName = "TargetUP";
+            this.targetUPDataGridViewTextBoxColumn.HeaderText = "TargetUP";
+            this.targetUPDataGridViewTextBoxColumn.Name = "targetUPDataGridViewTextBoxColumn";
+            this.targetUPDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // competitorDataGridViewTextBoxColumn
+            // 
+            this.competitorDataGridViewTextBoxColumn.DataPropertyName = "Competitor";
+            this.competitorDataGridViewTextBoxColumn.HeaderText = "Competitor";
+            this.competitorDataGridViewTextBoxColumn.Name = "competitorDataGridViewTextBoxColumn";
+            this.competitorDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // customerDescriptionDataGridViewTextBoxColumn
+            // 
+            this.customerDescriptionDataGridViewTextBoxColumn.DataPropertyName = "CustomerDescription";
+            this.customerDescriptionDataGridViewTextBoxColumn.HeaderText = "CustomerDescription";
+            this.customerDescriptionDataGridViewTextBoxColumn.Name = "customerDescriptionDataGridViewTextBoxColumn";
+            this.customerDescriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // customerStockCodeDataGridViewTextBoxColumn
+            // 
+            this.customerStockCodeDataGridViewTextBoxColumn.DataPropertyName = "CustomerStockCode";
+            this.customerStockCodeDataGridViewTextBoxColumn.HeaderText = "CustomerStockCode";
+            this.customerStockCodeDataGridViewTextBoxColumn.Name = "customerStockCodeDataGridViewTextBoxColumn";
+            this.customerStockCodeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // isDeletedDataGridViewTextBoxColumn
+            // 
+            this.isDeletedDataGridViewTextBoxColumn.DataPropertyName = "IsDeleted";
+            this.isDeletedDataGridViewTextBoxColumn.HeaderText = "IsDeleted";
+            this.isDeletedDataGridViewTextBoxColumn.Name = "isDeletedDataGridViewTextBoxColumn";
+            this.isDeletedDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // quotationNoDataGridViewTextBoxColumn
+            // 
+            this.quotationNoDataGridViewTextBoxColumn.DataPropertyName = "QuotationNo";
+            this.quotationNoDataGridViewTextBoxColumn.HeaderText = "QuotationNo";
+            this.quotationNoDataGridViewTextBoxColumn.Name = "quotationNoDataGridViewTextBoxColumn";
+            this.quotationNoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // uPIMEDataGridViewTextBoxColumn
+            // 
+            this.uPIMEDataGridViewTextBoxColumn.DataPropertyName = "UPIME";
+            this.uPIMEDataGridViewTextBoxColumn.HeaderText = "UPIME";
+            this.uPIMEDataGridViewTextBoxColumn.Name = "uPIMEDataGridViewTextBoxColumn";
+            this.uPIMEDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // margeDataGridViewTextBoxColumn
+            // 
+            this.margeDataGridViewTextBoxColumn.DataPropertyName = "Marge";
+            this.margeDataGridViewTextBoxColumn.HeaderText = "Marge";
+            this.margeDataGridViewTextBoxColumn.Name = "margeDataGridViewTextBoxColumn";
+            this.margeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // unitOfMeasureDataGridViewTextBoxColumn
+            // 
+            this.unitOfMeasureDataGridViewTextBoxColumn.DataPropertyName = "UnitOfMeasure";
+            this.unitOfMeasureDataGridViewTextBoxColumn.HeaderText = "UnitOfMeasure";
+            this.unitOfMeasureDataGridViewTextBoxColumn.Name = "unitOfMeasureDataGridViewTextBoxColumn";
+            this.unitOfMeasureDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // quotationDataGridViewTextBoxColumn
+            // 
+            this.quotationDataGridViewTextBoxColumn.DataPropertyName = "Quotation";
+            this.quotationDataGridViewTextBoxColumn.HeaderText = "Quotation";
+            this.quotationDataGridViewTextBoxColumn.Name = "quotationDataGridViewTextBoxColumn";
+            this.quotationDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // FormSaleOrderCreate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -525,7 +683,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1137, 645);
-            this.Name = "FormSaleOrderCustList";
+            this.Name = "FormSaleOrderCreate";
             this.Text = "New Sale Order";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormSaleOrderCustList_Load);
@@ -545,6 +703,7 @@
             this.groupBox2.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.quotationDetailBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -592,5 +751,22 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn noteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn note1DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn paymentMethodDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource quotationDetailBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgNoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itemCodeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn discDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn uCUPCurrDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn targetUPDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn competitorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customerDescriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customerStockCodeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn isDeletedDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quotationNoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn uPIMEDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn margeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitOfMeasureDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quotationDataGridViewTextBoxColumn;
     }
 }

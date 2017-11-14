@@ -6,14 +6,14 @@ using System.Windows.Forms;
 
 namespace LoginForm.SaleOrder
 {
-    public partial class FormSaleOrderCustList : Form
+    public partial class FormSaleOrderCreate : Form
     {
         IMEEntities IME = new IMEEntities();
 
         List<Customer> customerList = new List<Customer>();
         List<Customer> tempCustomerList = new List<Customer>();
 
-        public FormSaleOrderCustList()
+        public FormSaleOrderCreate()
         {
             InitializeComponent();
         }
@@ -33,7 +33,7 @@ namespace LoginForm.SaleOrder
         private void txtSearchCustomer_TextChanged(object sender, EventArgs e)
         {
             tempCustomerList = customerList.Where(c => c.c_name.IndexOf(txtSearchCustomer.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
-            lbCustomerList.DataSource = tempCustomerList;
+            PopulateCustomerList(tempCustomerList);
         }
 
         private void lbCustomerList_SelectedValueChanged(object sender, EventArgs e)
@@ -42,6 +42,7 @@ namespace LoginForm.SaleOrder
             {
                 var dgList = IME.Quotations.Where(q => q.CustomerID == lbCustomerList.SelectedValue.ToString()).ToList();
                 dgQuotations.DataSource = dgList;
+                dgQuotations.ClearSelection();
             }
         }
 
@@ -57,6 +58,7 @@ namespace LoginForm.SaleOrder
                 itemList.AddRange(quot.QuotationDetails);
             }
             dgItems.DataSource = itemList;
+            dgItems.ClearSelection();
 
         }
     }
