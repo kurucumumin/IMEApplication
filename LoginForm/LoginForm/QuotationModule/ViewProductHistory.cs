@@ -26,15 +26,15 @@ namespace LoginForm.QuotationModule
             InitializeComponent();
         }
 
-        public ViewProductHistory(Boolean sayac, string item_code)
+        public ViewProductHistory(string item_code)
         {
             InitializeComponent();
-            ProductHistory(sayac, item_code);
+            ProductHistory(item_code);
         }
 
-        public void ProductHistory(Boolean sayac, string item_code)
+        public void ProductHistory(string item_code)
         {
-            SqlConnection connection = new SqlConnection(@"Data Source=.;Initial Catalog=IME;Integrated Security=True");
+            SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-51RN2GB\LOCAL;Initial Catalog=IME;Integrated Security=True");
             StringBuilder history = new StringBuilder();
             history.Append("Select c.ItemCode,a.ID,a.c_name, b.StartDate, b.QuotationNo, c.Qty, b.CurrName, c.Disc ");
             history.Append("from Customer a, Quotation b, QuotationDetail c where b.CustomerID=a.ID and b.QuotationNo=c.QuotationNo ");
@@ -52,13 +52,12 @@ namespace LoginForm.QuotationModule
 
                 if (ds.Tables[0].Rows.Count == 0)//History tablosunda herhangi bir veri yoksa (boşsa) aşağıdaki blok çalışacak     
                 {
-                   // MessageBox.Show("No Records Found");
+                    MessageBox.Show("No Records Found");
                     return;//kayıt olmadığı için return ile bloğun dışına çıkıyoruz
                 }
                 else//kayıt varsa
                 {
                     dgProductHistory.DataSource = ds.Tables["History"];//sqlCmd sorgusu ile çektiğimiz kayıtlar datagridview1 üzerinde gösteriliyor    
-                    sayac = true;
                 }
             }
             catch (SqlException ex)

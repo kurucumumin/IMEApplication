@@ -446,31 +446,6 @@ namespace LoginForm.QuotationModule
                     break;
             }
             #endregion
-
-            #region ProductHistory
-            string item_code=null;
-            Boolean sayac = false;
-
-            if(dgQuotationAddedItems.CurrentRow.Cells["dgProductCode"].Value!=null) item_code = dgQuotationAddedItems.CurrentRow.Cells["dgProductCode"].Value.ToString();
-
-            if (item_code == null)
-            {
-                MessageBox.Show("Please Enter a Item Code", "Eror !");
-            }
-            else
-            {
-                ViewProductHistory f = new ViewProductHistory(sayac,item_code);
-                if (sayac == true)
-                {
-                    lblMessage.Font = new Font(lblMessage.Font, lblMessage.Font.Style ^ FontStyle.Underline);
-                    lblMessage.Text = "Product History";
-                }
-                else
-                {
-                    lblMessage.Text = "";
-                }
-            }
-            #endregion
         }
 
         private void GetQuotationQuantity(int rowindex)
@@ -2429,29 +2404,23 @@ namespace LoginForm.QuotationModule
             txtMargin5.Visible = true;
         }
 
-        private void lblMessage_Click(object sender, EventArgs e)
+        private void btnProductHistory_Click(object sender, EventArgs e)
         {
-            string item_code;
-            Boolean sayac = false;
+            #region ProductHistory
+            string item_code = null;
+            btnProductHistory.Font = new Font(btnProductHistory.Font, btnProductHistory.Font.Style ^ FontStyle.Underline);
+            btnProductHistory.Text = "Product History";
 
-            item_code = dgQuotationAddedItems.CurrentRow.Cells["dgProductCode"].Value.ToString();
-
-            if (item_code == null || item_code == string.Empty)
-            {
+            if (dgQuotationAddedItems.CurrentRow.Cells["dgProductCode"].Value != null)
+                item_code = dgQuotationAddedItems.CurrentRow.Cells["dgProductCode"].Value.ToString();
+            if (item_code == null)
                 MessageBox.Show("Please Enter a Item Code", "Eror !");
-            }
             else
             {
-                ViewProductHistory f = new ViewProductHistory(sayac, item_code);
-                if (sayac==true)
-                { 
+                ViewProductHistory f = new ViewProductHistory(item_code);
                 f.ShowDialog();
-                }
-                else
-                {
-                    MessageBox.Show("No Records Found");
-                }
             }
+            #endregion
         }
     }
 }
