@@ -338,6 +338,7 @@
     <Compile Include="Management\FormTermsOfPayment.Designer.cs">
       <DependentUpon>FormTermsOfPayment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\SaleItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuotationModule\FormQuaotationCustomerSearch.cs">
