@@ -74,17 +74,9 @@ namespace LoginForm.SaleOrder
 
         private decimal CalculateMargin(decimal landingCost, decimal UCUPCurr)
         {
-            return (((1 - landingCost / UCUPCurr)) * 100)/*.ToString("G29")*/;
+            return 1;
+            //return (((1 - landingCost / UCUPCurr)) * 100)/*.ToString("G29")*/;
         }
-
-        //private void CalculateLandingCost()
-        //{
-        //    dgQuotationAddedItems.Rows[Rowindex].Cells["dgLandingCost"].Value = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[Rowindex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
-        //            )).ToString("G29");
-        //    dgQuotationAddedItems.Rows[Rowindex].Cells["dgLandingCost"].Value = String.Format("{0:0.0000}", dgQuotationAddedItems.Rows[Rowindex].Cells["dgLandingCost"].Value.ToString()).ToString();
-        //}
-
-
 
 
         public partial class SaleItem
@@ -127,41 +119,37 @@ namespace LoginForm.SaleOrder
 
         private void FillCustomer()
         {
-            IMEEntities IME = new IMEEntities();
-
-            var c = IME.Customers.Where(a => a.ID == customer.ID).FirstOrDefault();
-
-            if (c != null)
+            txtCustomerName.Text = customer.c_name;
+            CustomerCode.Text = customer.ID;
+            cbCurrency.SelectedIndex = cbCurrency.FindStringExact(customer.CurrNameQuo);
+            cbCurrType.SelectedIndex = cbCurrType.FindStringExact(customer.CurrTypeQuo);
+            if (customer.paymentmethodID != null)
             {
-                txtCustomerName.Text = c.c_name;
-                cbCurrency.SelectedIndex = cbCurrency.FindStringExact(c.CurrNameQuo);
-                cbCurrType.SelectedIndex = cbCurrType.FindStringExact(c.CurrTypeQuo);
-                if (c.paymentmethodID != null)
-                {
-                    cbPayment.SelectedIndex = cbPayment.FindStringExact(c.PaymentMethod.Payment);
-                }
-                try { txtContactNote.Text = c.CustomerWorker.Note.Note_name; } catch { }
-                try { txtCustomerNote.Text = c.Note.Note_name; } catch { }
-                try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
+                cbPayment.SelectedIndex = cbPayment.FindStringExact(customer.PaymentMethod.Payment);
             }
-            cbRep.SelectedValue = c.representaryID;
+            try { txtContactNote.Text = customer.CustomerWorker.Note.Note_name; } catch { }
+            try { txtCustomerNote.Text = customer.Note.Note_name; } catch { }
+            try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == customer.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
+
+            
+            cbRep.SelectedValue = customer.representaryID;
         }
 
         private void FormSaleOrderAdd_Load(object sender, EventArgs e)
         {
-            #region Combobox
+            populateComboBoxes();
+            FillCustomer();
+        }
 
+        private void populateComboBoxes()
+        {
             cbRep.DataSource = IME.Workers.ToList();
             cbRep.DisplayMember = "NameLastName";
             cbRep.ValueMember = "WorkerID";
-           // cbRep.SelectedValue = Utils.getCurrentUser().WorkerID;
 
             cbWorkers.DataSource = IME.CustomerWorkers.Where(a => a.customerID == customer.ID).ToList();
             cbWorkers.DisplayMember = "cw_name";
             cbWorkers.ValueMember = "ID";
-            #endregion
-
-            FillCustomer();
         }
 
 
