@@ -1,4 +1,5 @@
 ﻿using LoginForm.DataSet;
+using LoginForm.QuotationModule;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ namespace LoginForm.SaleOrder
 {
     public partial class FormSaleOrderAdd : Form
     {
-        List<SaleItem> ItemList = new List<SaleItem>();
+        List<SaleItem> itemList = new List<SaleItem>();
         Customer customer;
 
         public FormSaleOrderAdd()
@@ -25,45 +26,67 @@ namespace LoginForm.SaleOrder
         {
             InitializeComponent();
             this.customer = customer;
-            ConvertToSaleItem(list);
-            dgSaleItems.DataSource = list;
+            itemList = ConvertToSaleItem(list);
+            dgSaleItems.DataSource = itemList;
         }
 
-        private void ConvertToSaleItem(List<QuotationDetail> list)
+        private List<SaleItem> ConvertToSaleItem(List<QuotationDetail> list)
         {
             IMEEntities IME = new IMEEntities();
 
-            //foreach (QuotationDetail q in list)
-            //{
-            //    SaleItem s = new SaleItem();
-            //    s.ItemCode = q.ItemCode;
-            //    var item = IME.SuperDisks.Where(x => x.Article_No == s.ItemCode).First();
-            //    s.Competitor = q.Competitor;
-            //    s.CustItemDescription = q.CustomerDescription;
-            //    s.CustItemStockCode = q.CustomerStockCode;
-            //    s.NO = (int)q.dgNo;
-            //    //s.Discount = (decimal)q.Disc;
-            //    s.isDeleted = (int)q.IsDeleted;
-            //    s.Margin = (decimal)q.Marge;
-            //    s.Qty = (int)q.Qty;
-            //    //s.Stock
-            //    //s.Supplier
-            //    s.TargetUP = (decimal)q.TargetUP;
-            //    s.Total = (decimal)q.Total;
-            //    s.UnitWeight = (decimal)item.Standard_Weight/1000;
-            //    s.TotalWeight = s.UnitWeight * s.Qty;
-            //    s.UC = (int)item.Unit_Content;
-            //    s.UC_UP = (decimal)q.UCUPCurr;
-            //    s.UOM = item.Unit_Measure;
-            //    s.UPIMELP = (decimal)q.UPIME;
-            //    //s.HZ = (item.Hazardous_Ind);
-            //}
+            List<SaleItem> saleItemList = new List<SaleItem>();
+
+            foreach (QuotationDetail q in list)
+            {
+                SaleItem s = new SaleItem();
+                s.ItemCode = q.ItemCode;
+                var item = IME.SuperDisks.Where(x => x.Article_No == s.ItemCode).First();
+                s.Competitor = q.Competitor;
+                s.CustItemDescription = q.CustomerDescription;
+                s.CustItemStockCode = q.CustomerStockCode;
+                s.NO = (int)q.dgNo;
+                //s.Discount = (decimal)q.Disc;
+                s.isDeleted = (q.IsDeleted == 1) ? 1 : 0;
+                s.Qty = (int)q.Qty;
+                //s.UC_UP = (decimal)q.UPIME;
+                bool isItemCost = (q.Quotation.IsItemCost == 1) ? true : false;
+                bool isWeightCost =(q.Quotation.IsWeightCost == 1) ? true : false;
+                bool isCustomsDuties = (q.Quotation.IsCustomsDuties == 1) ? true : false;
+                s.LandingCost = classQuotationAdd.GetLandingCost(s.ItemCode, isItemCost, isWeightCost, isCustomsDuties);
+                s.Margin = CalculateMargin(s.LandingCost, s.UC_UP);
+                //s.Stock
+                //s.Supplier
+                if(q.TargetUP != null) {s.TargetUP = (decimal)q.TargetUP;}
+                s.Total = (decimal)q.Total;
+                s.UnitWeight = (decimal)item.Standard_Weight / 1000;
+                s.TotalWeight = s.UnitWeight * s.Qty;
+                s.UC = (int)item.Unit_Content;
+                s.UOM = item.Unit_Measure;
+                s.UPIMELP = (decimal)q.UCUPCurr;
+                s.HZ = (item.Hazardous_Ind == "Y") ? true : false;
+
+                saleItemList.Add(s);
+            }
+
+            return saleItemList;
         }
 
+        private decimal CalculateMargin(decimal landingCost, decimal UCUPCurr)
+        {
+            return (((1 - landingCost / UCUPCurr)) * 100)/*.ToString("G29")*/;
+        }
+
+        //private void CalculateLandingCost()
+        //{
+        //    dgQuotationAddedItems.Rows[Rowindex].Cells["dgLandingCost"].Value = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[Rowindex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
+        //            )).ToString("G29");
+        //    dgQuotationAddedItems.Rows[Rowindex].Cells["dgLandingCost"].Value = String.Format("{0:0.0000}", dgQuotationAddedItems.Rows[Rowindex].Cells["dgLandingCost"].Value.ToString()).ToString();
+        //}
 
 
 
-        class SaleItem
+
+        public partial class SaleItem
         {
             public int NO { get; set; }
             public bool HS { get; set; }
