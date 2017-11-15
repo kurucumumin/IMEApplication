@@ -1,4 +1,5 @@
 ﻿using LoginForm.DataSet;
+using LoginForm.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,7 @@ namespace LoginForm.SaleOrder
     {
         List<SaleItem> ItemList = new List<SaleItem>();
         Customer customer;
+        IMEEntities IME = new IMEEntities();
 
         public FormSaleOrderAdd()
         {
@@ -25,6 +27,9 @@ namespace LoginForm.SaleOrder
         {
             InitializeComponent();
             this.customer = customer;
+          
+            //cbRep.DataSource = IME.CustomerWorkers.Where(a => a.customerID == IME.Customers.Where(b => b.ID == customer.ID).FirstOrDefault().ID).ToList();
+            //cbRep.DisplayMember = "cw_name";
             ConvertToSaleItem(list);
             dgSaleItems.DataSource = list;
         }
@@ -100,5 +105,46 @@ namespace LoginForm.SaleOrder
             public string CCCNO { get; set; }
             public int isDeleted { get; set; }
         }
+
+        private void FillCustomer()
+        {
+            IMEEntities IME = new IMEEntities();
+
+            var c = IME.Customers.Where(a => a.ID == customer.ID).FirstOrDefault();
+
+            if (c != null)
+            {
+                txtCustomerName.Text = c.c_name;
+                cbCurrency.SelectedIndex = cbCurrency.FindStringExact(c.CurrNameQuo);
+                cbCurrType.SelectedIndex = cbCurrType.FindStringExact(c.CurrTypeQuo);
+                if (c.paymentmethodID != null)
+                {
+                    cbPayment.SelectedIndex = cbPayment.FindStringExact(c.PaymentMethod.Payment);
+                }
+                try { txtContactNote.Text = c.CustomerWorker.Note.Note_name; } catch { }
+                try { txtCustomerNote.Text = c.Note.Note_name; } catch { }
+                try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
+            }
+            cbRep.SelectedValue = c.representaryID;
+        }
+
+        private void FormSaleOrderAdd_Load(object sender, EventArgs e)
+        {
+            #region Combobox
+
+            cbRep.DataSource = IME.Workers.ToList();
+            cbRep.DisplayMember = "NameLastName";
+            cbRep.ValueMember = "WorkerID";
+           // cbRep.SelectedValue = Utils.getCurrentUser().WorkerID;
+
+            cbWorkers.DataSource = IME.CustomerWorkers.Where(a => a.customerID == customer.ID).ToList();
+            cbWorkers.DisplayMember = "cw_name";
+            cbWorkers.ValueMember = "ID";
+            #endregion
+
+            FillCustomer();
+        }
+
+
     }
 }
