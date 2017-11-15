@@ -150,6 +150,15 @@ namespace LoginForm.SaleOrder
             cbWorkers.DataSource = IME.CustomerWorkers.Where(a => a.customerID == customer.ID).ToList();
             cbWorkers.DisplayMember = "cw_name";
             cbWorkers.ValueMember = "ID";
+
+            cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == dtpDate.Value).ToList();
+            cbCurrency.DisplayMember = "CurType";
+            cbCurrency.ValueMember = "ID";
+//            cbCurrency.SelectedIndex = 0;
+
+            cbPayment.DataSource = IME.PaymentMethods.ToList();
+            cbPayment.DisplayMember = "Payment";
+            cbPayment.ValueMember = "ID";
         }
 
 

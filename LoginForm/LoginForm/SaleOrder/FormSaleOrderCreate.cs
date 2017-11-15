@@ -80,8 +80,9 @@ namespace LoginForm.SaleOrder
 
             FormSaleOrderAdd form = new FormSaleOrderAdd((Customer)lbCustomerList.SelectedItem,list);
             form.Show();
-            form.BringToFront();
             this.Close();
+           // form.BringToFront();
+            
 
         }
     }

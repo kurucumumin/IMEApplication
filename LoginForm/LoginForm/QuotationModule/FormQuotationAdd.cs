@@ -2513,5 +2513,10 @@ namespace LoginForm.QuotationModule
             }
             dgQuotationAddedItems.Sort(dgQuotationAddedItems.Columns[0], ListSortDirection.Ascending);
         }
+
+        private void dgQuotationAddedItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
