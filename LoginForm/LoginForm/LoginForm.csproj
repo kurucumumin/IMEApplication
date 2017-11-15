@@ -555,6 +555,7 @@
     <None Include="Properties\DataSources\LoginForm.DataSet.QuotationDetail.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.RoleValue.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Worker.datasource" />
+    <None Include="Properties\DataSources\LoginForm.SaleOrder.FormSaleOrderAdd.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
