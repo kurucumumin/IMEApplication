@@ -30,7 +30,6 @@ namespace LoginForm.QuotationModule
         public static Customer customer;
         bool modifyMod = false;
         ToolTip aciklama = new ToolTip();
-        SqlDataAdapter da;
         System.Data.DataSet ds = new System.Data.DataSet();
         #endregion
 
@@ -100,7 +99,7 @@ namespace LoginForm.QuotationModule
 
         private void QuotationForm_Load(object sender, EventArgs e)
         {
-
+            DeletedQuotationMenu.MenuItems.Add(new MenuItem("Add to Quotation", DeletedQuotationMenu_Click));
             if (!modifyMod)
             {
                 DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
@@ -631,7 +630,16 @@ namespace LoginForm.QuotationModule
                 if (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString()) > 1 || Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgSSM"].Value.ToString()) > 1)
                 {
                     dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value = (((1 - ((Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString())))))) * 100).ToString("G29");
-
+                    if (SubTotal.Where(a => a.Item1 == Int32.Parse(dgQuotationAddedItems.CurrentRow.Cells[0].Value.ToString())).FirstOrDefault() != null)
+                    {
+                        var st = SubTotal.Where(a => a.Item1 == Int32.Parse(dgQuotationAddedItems.CurrentRow.Cells[0].Value.ToString())).FirstOrDefault();
+                        SubTotal.Remove(st);
+                        SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgQuotationAddedItems.CurrentRow.Cells[0].Value.ToString()), Decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells["dgTotal"].Value.ToString())));
+                    }
+                    else
+                    {
+                        SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgQuotationAddedItems.CurrentRow.Cells[0].Value.ToString()), Decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells["dgTotal"].Value.ToString())));
+                    }
                 }
                 else
                 {
@@ -653,6 +661,16 @@ namespace LoginForm.QuotationModule
                     if (dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value != null)
                     {
                         dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
+                    }
+                    if (SubTotal.Where(a => a.Item1 == Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString())).FirstOrDefault() != null)
+                    {
+                        var st = SubTotal.Where(a => a.Item1 == Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString())).FirstOrDefault();
+                        SubTotal.Remove(st);
+                        SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()), Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString())));
+                    }
+                    else
+                    {
+                        SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()), Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString())));
                     }
                 }
                 catch { }
@@ -1061,25 +1079,6 @@ namespace LoginForm.QuotationModule
             try { ItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString()); } catch { }
         }
 
-        private void dgQuotationAddedItems_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
-        {
-            int rownumber = Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgNo"].Value.ToString());
-            dgQuotationDeleted.Rows.Add();
-            for (int i = 0; i < dgQuotationAddedItems.Columns.Count; i++)
-            {
-                dgQuotationDeleted.Rows[dgQuotationDeleted.Rows.Count - 2].Cells[i].Value = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[i].Value;
-            }
-            try { lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - SubTotal.Where(a => a.Item1 == rownumber).FirstOrDefault().Item2).ToString(); } catch { }
-            var st = SubTotal.Where(a => a.Item1 == rownumber).FirstOrDefault();
-            try
-            {
-                SubDeletingTotal.Add(new Tuple<int, decimal>(rownumber, st.Item2));
-                SubTotal.Remove(st);
-                SubTotal.Add(new Tuple<int, decimal>(rownumber, 0));
-            }
-            catch { }
-        }
-
         private void cbFactor_TextChanged(object sender, EventArgs e)
         {
             #region Faktör Değişimi
@@ -1259,38 +1258,6 @@ namespace LoginForm.QuotationModule
             }
         }
 
-        private void addToQuotationAgainToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (dgQuotationDeleted.CurrentRow.Cells["dgProductCode1"].Value != null)
-            {
-                int rowindex = dgQuotationDeleted.CurrentCell.RowIndex;
-                int no = Int32.Parse(dgQuotationDeleted.Rows[rowindex].Cells["No1"].Value.ToString());
-                var st = SubTotal.Where(a => a.Item1 == no).FirstOrDefault();
-                var st1 = SubDeletingTotal.Where(a => a.Item1 == no).FirstOrDefault();
-                if (st != null)
-                {
-                    SubTotal.Remove(st);
-                    SubTotal.Add(new Tuple<int, decimal>(no, st1.Item2));
-                    lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + st1.Item2).ToString();
-                    SubDeletingTotal.Remove(st1);
-                }
-
-
-                    int rowindex1 = dgQuotationAddedItems.RowCount;
-                    dgQuotationAddedItems.Rows.Add();
-                    for (int i = 0; i < dgQuotationDeleted.Columns.Count; i++)
-                    {
-                        dgQuotationAddedItems.Rows[rowindex1].Cells[i].Value = dgQuotationDeleted.Rows[dgQuotationDeleted.CurrentCell.RowIndex].Cells[i].Value;
-                    }
-                    dgQuotationDeleted.Rows.Remove(dgQuotationDeleted.Rows[rowindex]);
-                    dgQuotationAddedItems.Sort(dgQuotationAddedItems.Columns[0], ListSortDirection.Ascending);
-                }
-                else { MessageBox.Show("Please choose an item to add Quotation"); }
-
-
-
-        }
-
         private void totalDis2Change()
         {
             if (Decimal.Parse(lblsubtotal.Text) != 0 && lblsubtotal.Text != "" && lblsubtotal.Text != null)
@@ -1330,17 +1297,17 @@ namespace LoginForm.QuotationModule
         private bool ControlSave()
         {
             if(txtCustomerName.Text==null || txtCustomerName.Text ==String.Empty) { MessageBox.Show("Please Enter a Customer");return false; }
-            for (int i = 0; i < dgQuotationAddedItems.RowCount ; i++)
+            for (int i = 0; i < dgQuotationAddedItems.RowCount-1 ; i++)
             {
-                if (Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString()) < Utils.getCurrentUser().MinMarge) { MessageBox.Show("Please Check Merge of Products "); return false;  }
+                if (dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value != null && Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString()) < Utils.getCurrentUser().MinMarge) { MessageBox.Show("Please Check Merge of Products "); return false;  }
             }
             return true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 bool SaveOK = false;
                 SaveOK = ControlSave();
                 if (SaveOK)
@@ -1349,8 +1316,8 @@ namespace LoginForm.QuotationModule
                     QuotationDetailsSave();
                 }
                 
-            }
-            catch { MessageBox.Show("Error Occured", "Failure"); }
+            //}
+            //catch { MessageBox.Show("Error Occured", "Failure"); }
 
         }
 
@@ -1487,7 +1454,7 @@ namespace LoginForm.QuotationModule
                     if(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value!=null) qd.Qty = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString()); 
                     if(dgQuotationAddedItems.Rows[i].Cells["dgUOM"].Value!=null) qd.UnitOfMeasure = dgQuotationAddedItems.Rows[i].Cells["dgUOM"].Value.ToString(); 
                     if(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value!=null) qd.UCUPCurr = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()); 
-                    if(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value!=null) qd.UCUPCurr = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString());
+                    if(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value!=null) qd.UPIME = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString());
                     if(dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value!=null) qd.Disc = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value.ToString());
                     if(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value!=null) qd.Total = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString());
                     if(dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].Value!=null) qd.TargetUP = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].Value.ToString());
@@ -2134,13 +2101,13 @@ namespace LoginForm.QuotationModule
 
         private void ChangeCurrnetCellTabKey(int currindex)
         {
-                int row = dgQuotationAddedItems.CurrentCell.RowIndex;
+            int row = dgQuotationAddedItems.CurrentCell.RowIndex;
             while (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex].ReadOnly == true)
             {
                 if (currindex == dgQuotationAddedItems.ColumnCount-1)
                 {
                     
-                    if (dgQuotationAddedItems.RowCount-1 == row)
+                    if (dgQuotationAddedItems.RowCount-1 == row && dgQuotationAddedItems.CurrentRow.Cells["dgDesc"].Value != null)
                     {
                         DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
                         dgQuotationAddedItems.Rows.Add(dgRow);
@@ -2175,6 +2142,24 @@ namespace LoginForm.QuotationModule
             {
                 ChangeCurrnetCell(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
                 if(dgQuotationAddedItems.CurrentRow.Index!=dgQuotationAddedItems.RowCount-1)SendKeys.Send("{UP}");
+            }else if (e.KeyCode == Keys.Delete)
+            {
+                foreach (DataGridViewRow item in dgQuotationAddedItems.SelectedRows)
+                {
+                    int rownumber = Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgNo"].Value.ToString());
+                    dgQuotationDeleted.Rows.Add();
+                    for (int i = 0; i < dgQuotationAddedItems.Columns.Count-1; i++)
+                    {
+                        dgQuotationDeleted.Rows[dgQuotationDeleted.Rows.Count - 2].Cells[i].Value = item.Cells[i].Value;
+                    }
+                     
+                    var st = SubTotal.Where(a => a.Item1 == rownumber).FirstOrDefault();
+                    lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - st.Item2).ToString();
+                    SubDeletingTotal.Add(new Tuple<int, decimal>(rownumber, SubTotal.Where(a => a.Item1 == rownumber).FirstOrDefault().Item2));
+                        SubTotal.Remove(st);
+                        SubTotal.Add(new Tuple<int, decimal>(rownumber, 0));
+                   
+                }
             }
         }
 
@@ -2452,6 +2437,109 @@ namespace LoginForm.QuotationModule
                     MessageBox.Show("No Records Found");
                 }
             }
+        }
+
+        private void dgQuotationAddedItems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 7)
+            {
+                string ArticleNO=null;
+                if (dgQuotationAddedItems.CurrentCell.Value != null) ArticleNO = dgQuotationAddedItems.CurrentCell.Value.ToString();
+                FormQuotationItemSearch itemsearch = new FormQuotationItemSearch(ArticleNO);
+                itemsearch.ShowDialog();
+                try
+                {
+                    //Bu item daha önceden eklimi diye kontrol ediyor
+                    DataGridViewRow row = dgQuotationAddedItems.Rows
+.Cast<DataGridViewRow>()
+.Where(r => r.Cells["dgProductCode"].Value.ToString().Equals(classQuotationAdd.ItemCode))
+.FirstOrDefault();
+                    if (row.Cells["dgUCUPCurr"].Value != null)
+                    {
+                        if (row != null) MessageBox.Show("There is already an item added this qoutation in the " + row.Cells["dgNo"].Value.ToString() + ". Row and the price " + row.Cells["dgUCUPCurr"].Value.ToString());
+
+                    }
+                    else
+                    {
+                        if (row != null) MessageBox.Show("There is already an item added this qoutation in the " + row.Cells["dgNo"].Value.ToString() + ". Row");
+
+                    }
+                }
+                catch { }
+                    int sdNumber = 0, sdPNumber = 0, erNumber = 0;
+                    dgQuotationAddedItems.CurrentCell.Value = classQuotationAdd.ItemCode;
+                if (dgQuotationAddedItems.CurrentCell.Value != null)
+                {
+                    try { sdNumber = IME.SuperDisks.Where(a => a.Article_No.Contains(dgQuotationAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { sdNumber = 0; }
+                    try { sdPNumber = IME.SuperDiskPs.Where(a => a.Article_No.Contains(dgQuotationAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { sdPNumber = 0; }
+                    try { erNumber = IME.ExtendedRanges.Where(a => a.ArticleNo.Contains(dgQuotationAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { erNumber = 0; }
+                    if (sdNumber == 1 || sdPNumber == 1 || erNumber == 1)
+                    {
+                        if (classQuotationAdd.HasMultipleItems(dgQuotationAddedItems.CurrentCell.Value.ToString()) == 0)
+                        {
+                            if (tabControl1.SelectedTab != tabItemDetails) { tabControl1.SelectedTab = tabItemDetails; }
+                            ItemDetailsFiller(dgQuotationAddedItems.CurrentCell.Value.ToString());
+                            //LandingCost Calculation
+                            FillProductCodeItem();
+
+                            dgQuotationAddedItems.CurrentRow.Cells["dgQty"].ReadOnly = false;
+                            dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Value = null;
+                            dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Style = dgQuotationAddedItems.DefaultCellStyle;
+                            #region DataGridClear
+                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value = null;
+                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgDisc"].Value = null;
+                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = null;
+                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUPIME"].Value = null;
+                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = null;
+                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotal"].Value = null;
+
+                            CalculateSubTotal();
+                            txtSubstitutedBy.Text = null;
+                            #endregion
+                        }
+                    }
+                }
+            }
+        }
+
+        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void DeletedQuotationMenu_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow item in dgQuotationDeleted.SelectedRows)
+            {
+                if (item.Cells["dgProductCode1"].Value != null)
+                {
+                    int rowindex = item.Index; 
+                    int no = Int32.Parse(dgQuotationDeleted.Rows[rowindex].Cells["No1"].Value.ToString());
+                    var st = SubTotal.Where(a => a.Item1 == no).FirstOrDefault();
+                    var st1 = SubDeletingTotal.Where(a => a.Item1 == no).FirstOrDefault();
+                    if (st != null)
+                    {
+                        SubTotal.Remove(st);
+                        if (st1!=null)
+                        {
+                            SubTotal.Add(new Tuple<int, decimal>(no, st1.Item2));
+                            lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + st1.Item2).ToString();
+                            SubDeletingTotal.Remove(st1);
+                        }
+                    }
+                    int rowindex1 = dgQuotationAddedItems.RowCount;
+                    dgQuotationAddedItems.Rows.Add();
+                    for (int i = 0; i < dgQuotationDeleted.Columns.Count; i++)
+                    {
+                        dgQuotationAddedItems.Rows[rowindex1].Cells[i].Value = dgQuotationDeleted.Rows[item.Index].Cells[i].Value;
+                    }
+                    dgQuotationAddedItems.Rows[rowindex1].Cells[0].Value =  dgQuotationDeleted.Rows[item.Index].Cells[0].Value.ToString();
+                    dgQuotationDeleted.Rows.Remove(dgQuotationDeleted.Rows[rowindex]);
+                    
+                }
+                else { MessageBox.Show("Please choose an item to add Quotation"); }
+            }
+            //dgQuotationAddedItems.Sort()
+            dgQuotationAddedItems.Sort(dgQuotationAddedItems.Columns[0], ListSortDirection.Ascending);
         }
     }
 }

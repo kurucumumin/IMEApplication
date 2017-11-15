@@ -20,7 +20,7 @@ namespace LoginForm.QuotationModule
         {
             InitializeComponent();
             ArticleCode = ItemCode;
-            txtQuotationItemCode.Text = ArticleCode;
+            if(ArticleCode!=null) txtQuotationItemCode.Text = ArticleCode;
 
         }
 
