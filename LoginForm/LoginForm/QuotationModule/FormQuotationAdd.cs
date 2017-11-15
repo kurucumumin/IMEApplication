@@ -1505,7 +1505,7 @@ namespace LoginForm.QuotationModule
                 {
                     DataGridViewRow row = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
                     row.CreateCells(dgQuotationAddedItems);
-                    row.Cells[0].Value = item.dgNo;
+                    row.Cells[0].Value = Int32.Parse(item.dgNo.ToString());
                     row.Cells[7].Value = item.ItemCode;
                     row.Cells[14].Value = item.Qty;
                     row.Cells[19].Value = item.UPIME;
@@ -2121,7 +2121,7 @@ namespace LoginForm.QuotationModule
             {
                 foreach (DataGridViewRow item in dgQuotationAddedItems.SelectedRows)
                 {
-                    int rownumber = Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgNo"].Value.ToString());
+                    int rownumber = Int32.Parse(dgQuotationAddedItems.Rows[item.Index].Cells["dgNo"].Value.ToString());
                     dgQuotationDeleted.Rows.Add();
                     for (int i = 0; i < dgQuotationAddedItems.Columns.Count-1; i++)
                     {
@@ -2501,13 +2501,16 @@ namespace LoginForm.QuotationModule
                     {
                         dgQuotationAddedItems.Rows[rowindex1].Cells[i].Value = dgQuotationDeleted.Rows[item.Index].Cells[i].Value;
                     }
-                    dgQuotationAddedItems.Rows[rowindex1].Cells[0].Value =  dgQuotationDeleted.Rows[item.Index].Cells[0].Value.ToString();
                     dgQuotationDeleted.Rows.Remove(dgQuotationDeleted.Rows[rowindex]);
 
                 }
                 else { MessageBox.Show("Please choose an item to add Quotation"); }
             }
             //dgQuotationAddedItems.Sort()
+            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+            {
+                dgQuotationAddedItems.Rows[i].Cells[0].Value = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString());
+            }
             dgQuotationAddedItems.Sort(dgQuotationAddedItems.Columns[0], ListSortDirection.Ascending);
         }
     }
