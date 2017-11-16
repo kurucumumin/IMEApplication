@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
-using LoginForm.Services;
 using LoginForm.DataSet;
 using LoginForm.ManagementModule;
 
@@ -59,6 +58,12 @@ namespace LoginForm.CustomControls
         private void btnTermsOfPayment_Click(object sender, EventArgs e)
         {
             FormTermsOfPayment form = new FormTermsOfPayment();
+            form.ShowDialog();
+        }
+
+        private void btnExchangeRate_Click(object sender, EventArgs e)
+        {
+            FormExchangeRate form = new FormExchangeRate();
             form.ShowDialog();
         }
     }

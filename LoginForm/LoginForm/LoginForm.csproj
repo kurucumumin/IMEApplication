@@ -332,6 +332,12 @@
     <Compile Include="CustomControls\ManagementControl.Designer.cs">
       <DependentUpon>ManagementControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Management\FormExchangeRate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\FormExchangeRate.Designer.cs">
+      <DependentUpon>FormExchangeRate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Management\FormTermsOfPayment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -479,6 +485,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\ManagementControl.resx">
       <DependentUpon>ManagementControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Management\FormExchangeRate.resx">
+      <DependentUpon>FormExchangeRate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Management\FormTermsOfPayment.resx">
       <DependentUpon>FormTermsOfPayment.cs</DependentUpon>
