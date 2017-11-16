@@ -31,6 +31,8 @@ namespace LoginForm.QuotationModule
         bool modifyMod = false;
         ToolTip aciklama = new ToolTip();
         System.Data.DataSet ds = new System.Data.DataSet();
+        decimal round=0;
+        decimal sonuc=0;
         #endregion
 
         public FormQuotationAdd()
@@ -2474,11 +2476,6 @@ namespace LoginForm.QuotationModule
                 }
             }
         }
-
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
         private void DeletedQuotationMenu_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow item in dgQuotationDeleted.SelectedRows)
@@ -2521,6 +2518,52 @@ namespace LoginForm.QuotationModule
         private void dgQuotationAddedItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dgQuotationAddedItems_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.ColumnIndex;
+            decimal sayi;
+            if (index == 11 || index == 12 || index == 13 || index == 19 || index == 20 || index == 21 || index == 22 || index == 23)
+            {
+                for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+                {
+                    if (dgQuotationAddedItems.Rows[i].Cells[index].Value.ToString() != null && dgQuotationAddedItems.Rows[i].Cells[index].Value.ToString() != "")
+                    {
+                        sayi = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[index].Value.ToString());
+                        if (sayi.ToString() == Math.Round(sayi,4).ToString())
+                        {
+                            dgQuotationAddedItems.Rows[i].Cells[index].Value = round.ToString();
+                            
+                        }
+                        else
+                        {
+                            round = sayi;
+                            dgQuotationAddedItems.Rows[i].Cells[index].Value = round.ToString();
+                        }
+                    }
+                }
+            }
+        }
+
+        private void dgQuotationAddedItems_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.ColumnIndex;
+
+            if (index == 11 || index == 12 || index == 13 || index == 19 || index == 20 || index == 21 || index == 22 || index == 23)
+            {
+                for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+                {
+                    if (dgQuotationAddedItems.Rows[i].Cells[index].Value != null && dgQuotationAddedItems.Rows[i].Cells[index].Value.ToString() != "")
+                    {
+                        //round = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[index].Value.ToString());
+                        sonuc = Math.Round(round, 4);
+                        dgQuotationAddedItems.Rows[i].Cells[index].Value = sonuc.ToString();
+                        
+                    }
+                }
+            }
+            
         }
     }
 }
