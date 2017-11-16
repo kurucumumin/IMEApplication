@@ -38,21 +38,25 @@ namespace LoginForm.QuotationModule
         {
             if (dgQuotation.CurrentRow != null)
             {
-                DialogResult result = MessageBox.Show("Selected quotation will be deleted! Do you confirm?", "Delete Quotation", MessageBoxButtons.OKCancel);
+                DialogResult result = MessageBox.Show("Selected quotation(s) will be deleted! Do you confirm?", "Delete Quotation", MessageBoxButtons.OKCancel);
 
                 if (result == DialogResult.OK)
                 {
                     try
                     {
-                        string QuotationNo = dgQuotation.CurrentRow.Cells["QuotationNo"].Value.ToString();
-
                         IMEEntities IME = new IMEEntities();
-                        Quotation quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
 
-                        quo.QuotationDetails.Clear();
-                        IME.SaveChanges();
+                        foreach (DataGridViewRow row in dgQuotation.SelectedRows)
+                        {
+                            string QuotationNo = row.Cells["QuotationNo"].Value.ToString();
 
-                        IME.Quotations.Remove(quo);
+                            Quotation quo = IME.Quotations.Where(q => q.QuotationNo == QuotationNo).FirstOrDefault();
+
+                            IME.QuotationDetails.RemoveRange(quo.QuotationDetails);
+
+                            IME.Quotations.Remove(quo);
+                        }
+
                         IME.SaveChanges();
 
                         BringQuotationList();
@@ -164,5 +168,12 @@ namespace LoginForm.QuotationModule
             dgQuotation.DataSource = queryable;
         }
 
+        private void dgQuotation_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                btnDeleteQuotation.PerformClick();
+            }
+        }
     }
 }
