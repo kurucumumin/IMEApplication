@@ -96,7 +96,6 @@ namespace LoginForm.QuotationModule
             }
             QuotataionModifyItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount-1].Cells["dgProductCode"].Value.ToString(), dgQuotationAddedItems.RowCount-1);
         }
-
         private void QuotationForm_Load(object sender, EventArgs e)
         {
             DeletedQuotationMenu.MenuItems.Add(new MenuItem("Add to Quotation", DeletedQuotationMenu_Click));
@@ -152,7 +151,6 @@ namespace LoginForm.QuotationModule
                 CustomerCode.Text = classQuotationAdd.customerID;
                 txtCustomerName.Text = classQuotationAdd.customername;
             }
-
             var c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
             if (c != null)
             {
