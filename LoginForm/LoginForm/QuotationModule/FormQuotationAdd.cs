@@ -513,8 +513,6 @@ namespace LoginForm.QuotationModule
                                         price = price / decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString());
                                         dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = price / decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString());
                                         dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = price;
-
-                                        //GetUCMargin();
                                     }
                                 }
                             }
@@ -531,9 +529,10 @@ namespace LoginForm.QuotationModule
                             }
                             dgQuotationAddedItems.Rows[rowindex].Cells["dgUCUPCurr"].Value = String.Format("{0:0.0000}", discResult).ToString();
                             ChangeCurr(rowindex);
+                        if (dgQuotationAddedItems.CurrentCell == null) dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[rowindex].Cells[0];
                             GetMargin();
                             dgQuotationAddedItems.Rows[rowindex].Cells["dgMargin"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgMargin"].Value.ToString())).ToString();
-                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotalWeight"].Value = (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUnitWeigt"].Value.ToString()) * Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
+                            //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotalWeight"].Value = (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUnitWeigt"].Value.ToString()) * Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
                             //CalculateSubTotal();
                             #region Calculate Total Margin
                             try
@@ -1312,6 +1311,7 @@ namespace LoginForm.QuotationModule
             q.CurrName = (cbCurrency.SelectedItem as Rate).CurType;
             q.CurrType = cbCurrType.Text;
             q.Curr = CurrValue;
+            
             q.CustomerID = CustomerCode.Text;
             q.ShippingMethodID = cbSMethod.SelectedIndex;
             q.QuotationMainContact = cbWorkers.SelectedIndex;
@@ -1430,6 +1430,9 @@ namespace LoginForm.QuotationModule
                     if(dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].Value!=null) qd.Competitor = dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].Value.ToString();
                     if(dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].Value!=null) qd.CustomerDescription = dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].Value.ToString();
                     if(dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].Value!=null) qd.CustomerStockCode = dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].Value.ToString();
+                    if (dgQuotationAddedItems.Rows[i].Cells["dgUC"].Value != null) qd.UC = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUC"].Value.ToString());
+                    if (dgQuotationAddedItems.Rows[i].Cells["dgSSM"].Value != null) qd.SSM = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgSSM"].Value.ToString());
+                    if (dgQuotationAddedItems.Rows[i].Cells["dgUnitWeigt"].Value != null) qd.UnitWeight = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUnitWeigt"].Value.ToString());
                     IME.QuotationDetails.Add(qd);
                     IME.SaveChanges();
                 }
@@ -1454,6 +1457,9 @@ namespace LoginForm.QuotationModule
                     if (dgQuotationDeleted.Rows[i].Cells["dgCompetitor1"].Value != null)qd.Competitor = dgQuotationDeleted.Rows[i].Cells["dgCompetitor1"].Value.ToString();
                     if (dgQuotationDeleted.Rows[i].Cells["dgCustDescription1"].Value != null)qd.CustomerDescription = dgQuotationDeleted.Rows[i].Cells["dgCustDescription1"].Value.ToString();
                     if (dgQuotationDeleted.Rows[i].Cells["dgCustomerStokCode1"].Value != null)qd.CustomerStockCode = dgQuotationDeleted.Rows[i].Cells["dgCustomerStokCode1"].Value.ToString();
+                    if (dgQuotationDeleted.Rows[i].Cells["dgSSM"].Value != null) qd.SSM = Int32.Parse(dgQuotationDeleted.Rows[i].Cells["dgSSM"].Value.ToString());
+                    if (dgQuotationDeleted.Rows[i].Cells["dgUC"].Value != null) qd.UC = Int32.Parse(dgQuotationDeleted.Rows[i].Cells["dgUC"].Value.ToString());
+                    if (dgQuotationDeleted.Rows[i].Cells["dgUnitWeigt"].Value != null) qd.UnitWeight = Decimal.Parse(dgQuotationDeleted.Rows[i].Cells["dgUnitWeigt"].Value.ToString());
                     qd.IsDeleted = 1;
                     IME.QuotationDetails.Add(qd);
                     IME.SaveChanges();
@@ -1485,14 +1491,17 @@ namespace LoginForm.QuotationModule
                     row.Cells[0].Value = item.dgNo;
                     row.Cells[7].Value = item.ItemCode;
                     row.Cells[14].Value = item.Qty;
+                    row.Cells[17].Value = item.SSM;
+                    row.Cells[18].Value = item.UC;
                     row.Cells[19].Value = item.UPIME;
                     row.Cells[21].Value = item.UCUPCurr;
                     row.Cells[20].Value = item.Disc;
                     row.Cells[22].Value = item.Total;
                     row.Cells[23].Value = item.TargetUP;
                     row.Cells[24].Value = item.Competitor;
-                    row.Cells[28].Value = item.Qty;
-                    row.Cells[29].Value = item.CustomerStockCode;
+                    row.Cells[29].Value = item.UnitWeight;
+                    row.Cells[30].Value = item.UnitWeight * item.Qty;
+                    row.Cells[31].Value = item.CustomerStockCode;
                     dgQuotationDeleted.Rows.Add(row);
                 }
                 else
@@ -1502,14 +1511,17 @@ namespace LoginForm.QuotationModule
                     row.Cells[0].Value = Int32.Parse(item.dgNo.ToString());
                     row.Cells[7].Value = item.ItemCode;
                     row.Cells[14].Value = item.Qty;
+                    row.Cells[17].Value = item.SSM;
+                    row.Cells[18].Value = item.UC;
                     row.Cells[19].Value = item.UPIME;
                     row.Cells[21].Value = item.UCUPCurr;
                     row.Cells[20].Value = item.Disc;
                     row.Cells[22].Value = item.Total;
                     row.Cells[23].Value = item.TargetUP;
                     row.Cells[24].Value = item.Competitor;
-                    row.Cells[28].Value = item.Qty;
-                    row.Cells[29].Value = item.CustomerStockCode;
+                    row.Cells[29].Value = item.UnitWeight;
+                    row.Cells[30].Value = item.UnitWeight * item.Qty;
+                    row.Cells[31].Value = item.CustomerStockCode;
                     dgQuotationAddedItems.Rows.Add(row);
 
                 }
