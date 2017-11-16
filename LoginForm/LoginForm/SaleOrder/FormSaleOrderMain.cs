@@ -61,7 +61,6 @@ namespace LoginForm.SalesOrder
         {
             FormSaleOrderCreate form = new FormSaleOrderCreate();
             form.Show();
-            //this.Close();
         }
     }
 }

@@ -14,7 +14,9 @@ namespace LoginForm.SaleOrder
 {
     public partial class FormSaleOrderAdd : Form
     {
-        List<SaleItem> itemList = new List<SaleItem>();
+        List<SaleItem> addedItemList = new List<SaleItem>();
+        List<SaleItem> removedItemList = new List<SaleItem>();
+
         Customer customer;
         IMEEntities IME = new IMEEntities();
 
@@ -27,11 +29,34 @@ namespace LoginForm.SaleOrder
         {
             InitializeComponent();
             this.customer = customer;
-            itemList = ConvertToSaleItem(list);
-            dgSaleItems.DataSource = itemList;
+            ConvertToSaleItem(list, addedItemList, removedItemList);
+            SortTheList();
         }
 
-        private List<SaleItem> ConvertToSaleItem(List<QuotationDetail> list)
+        private void FormSaleOrderAdd_Load(object sender, EventArgs e)
+        {
+            foreach (SaleItem item in addedItemList)
+            {
+                int newRowIndex = dgSaleItems.Rows.Add();
+                SaleItemToRow(item,dgSaleItems.Rows[newRowIndex]);
+            }
+
+            //dgSaleItems.Rows.Add(itemList);
+            populateComboBoxes();
+            FillCustomer();
+        }
+
+        private void SortTheList()
+        {
+            int i = 1;
+            foreach (SaleItem item in addedItemList)
+            {
+                item.NO = i;
+                i++;
+            }
+        }
+
+        private void ConvertToSaleItem(List<QuotationDetail> list, List<SaleItem> itemList, List<SaleItem> deletedList)
         {
             IMEEntities IME = new IMEEntities();
 
@@ -66,16 +91,69 @@ namespace LoginForm.SaleOrder
                 s.UPIMELP = (decimal)q.UCUPCurr;
                 s.HZ = (item.Hazardous_Ind == "Y") ? true : false;
 
-                saleItemList.Add(s);
+                if (s.isDeleted == 1)
+                {
+                    removedItemList.Add(s);
+                }
+                else
+                {
+                    itemList.Add(s);
+                }
             }
+        }
 
-            return saleItemList;
+        private SaleItem RowToSaleItem(DataGridViewRow row)
+        {
+            SaleItem item = new SaleItem();
+
+            item.NO = (int)row.Cells["No"].Value;
+            
+            return item;
+        }
+
+        private void SaleItemToRow(SaleItem item, DataGridViewRow row)
+        {
+            row.Cells["sNo"].Value = item.NO;
+            row.Cells["sBrand"].Value = item.Brand;
+            row.Cells["sCCCNO"].Value = item.CCCNO;
+            row.Cells["sCL"].Value = item.CL;
+            row.Cells["sCompetitor"].Value = item.Competitor;
+            row.Cells["sCOO"].Value = item.COO;
+            row.Cells["sCost"].Value = item.Cost;
+            row.Cells["sCR"].Value = item.CR;
+            row.Cells["sCustItemDescription"].Value = item.CustItemDescription;
+            row.Cells["sCustItemStockCode"].Value = item.CustItemStockCode;
+            row.Cells["sDelivery"].Value = item.Delivery;
+            row.Cells["sDescription"].Value = item.Description;
+            row.Cells["sDiscount"].Value = item.Discount;
+            row.Cells["sHS"].Value = item.HS;
+            row.Cells["sHZ"].Value = item.HZ;
+            //row.Cells["sisDeleted"].Value = item.isDeleted;
+            row.Cells["sItemCode"].Value = item.ItemCode;
+            row.Cells["sLandingCost"].Value = item.LandingCost;
+            row.Cells["sLC"].Value = item.LC;
+            row.Cells["sLI"].Value = item.LI;
+            row.Cells["sLM"].Value = item.LM;
+            row.Cells["sMargin"].Value = item.Margin;
+            row.Cells["sMPN"].Value = item.MPN;
+            row.Cells["sNO"].Value = item.NO;
+            row.Cells["sQty"].Value = item.Qty;
+            row.Cells["sStock"].Value = item.Stock;
+            row.Cells["sSupplier"].Value = item.Supplier;
+            row.Cells["sTargetUP"].Value = item.TargetUP;
+            row.Cells["sTotal"].Value = item.Total;
+            row.Cells["sTotalWeight"].Value = item.TotalWeight;
+            row.Cells["sUC"].Value = item.UC;
+            row.Cells["sUCUPCurr"].Value = item.UC_UP;
+            row.Cells["sUnitWeight"].Value = item.UnitWeight;
+            row.Cells["sUOM"].Value = item.UOM;
+            row.Cells["sUPIMELP"].Value = item.UPIMELP;
         }
 
         private decimal CalculateMargin(decimal landingCost, decimal UCUPCurr)
         {
             return 1;
-            //return (((1 - landingCost / UCUPCurr)) * 100)/*.ToString("G29")*/;
+            return (((1 - landingCost / UCUPCurr)) * 100)/*.ToString("G29")*/;
         }
 
 
@@ -132,20 +210,16 @@ namespace LoginForm.SaleOrder
             try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == customer.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
 
             
-            cbRep.SelectedValue = customer.representaryID;
         }
 
-        private void FormSaleOrderAdd_Load(object sender, EventArgs e)
-        {
-            populateComboBoxes();
-            FillCustomer();
-        }
+        
 
         private void populateComboBoxes()
         {
             cbRep.DataSource = IME.Workers.ToList();
             cbRep.DisplayMember = "NameLastName";
             cbRep.ValueMember = "WorkerID";
+            cbRep.SelectedValue = customer.representaryID;
 
             cbWorkers.DataSource = IME.CustomerWorkers.Where(a => a.customerID == customer.ID).ToList();
             cbWorkers.DisplayMember = "cw_name";
@@ -154,7 +228,6 @@ namespace LoginForm.SaleOrder
             cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == dtpDate.Value).ToList();
             cbCurrency.DisplayMember = "CurType";
             cbCurrency.ValueMember = "ID";
-//            cbCurrency.SelectedIndex = 0;
 
             cbPayment.DataSource = IME.PaymentMethods.ToList();
             cbPayment.DisplayMember = "Payment";
