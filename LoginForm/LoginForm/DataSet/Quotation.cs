@@ -47,8 +47,8 @@ namespace LoginForm.DataSet
         public virtual Note Note { get; set; }
         public virtual Note Note1 { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
+        public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<QuotationDetail> QuotationDetails { get; set; }
-        public virtual Customer Customer { get; set; }
     }
 }
