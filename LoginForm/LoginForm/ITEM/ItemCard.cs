@@ -553,28 +553,27 @@ namespace LoginForm.Item
 
         private void Number_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                if (Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount2.Text) && Int32.Parse(txtUnitCount1.Text) != 0)
+            if (!(txtQuantitiy.Text==string.Empty|| Int32.Parse(txtQuantitiy.Text)==0)) {
+                if ((Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount2.Text) && Int32.Parse(txtUnitCount1.Text) != 0) || Int32.Parse(txtUnitCount2.Text) == 0)
                 {
                     txtUnitPrice.Text = txtUK1.Text;
                 }
-                else if (Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount3.Text)&& Int32.Parse(txtUnitCount2.Text)!=0)
+                else if ((Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount3.Text) && Int32.Parse(txtUnitCount2.Text) != 0) || Int32.Parse(txtUnitCount3.Text) == 0)
                 {
                     txtUnitPrice.Text = txtUK2.Text;
                 }
-                else if (Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount4.Text) && Int32.Parse(txtUnitCount3.Text) != 0)
+                else if ((Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount4.Text) && Int32.Parse(txtUnitCount3.Text) != 0) || Int32.Parse(txtUnitCount4.Text) == 0)
                 {
                     txtUnitPrice.Text = txtUK3.Text;
                 }
-                else if (Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount5.Text) && Int32.Parse(txtUnitCount4.Text) != 0)
+                else if ((Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount5.Text) && Int32.Parse(txtUnitCount4.Text) != 0) || Int32.Parse(txtUnitCount5.Text) == 0)
                 {
                     txtUnitPrice.Text = txtUK4.Text;
                 }
-                else if(Int32.Parse(txtUnitCount5.Text) != 0) { txtUnitPrice.Text = txtUK5.Text; }
+                else if (Int32.Parse(txtUnitCount5.Text) != 0) { txtUnitPrice.Text = txtUK5.Text; }
             }
-            catch { }
-
+            else { txtUnitPrice.Text = string.Empty; }
+           
         }
 
         private void Environment_TextChanged(object sender, EventArgs e)
@@ -639,12 +638,39 @@ namespace LoginForm.Item
                 txtQuantitiy.Text = "";
                 gridselectedindex = 0;
                 itemSelect();
+                dgItemList.Select();
             }
         }
 
         private void ItemCard_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgItemList_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgItemList_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgItemList.CurrentCell != null)
+            {
+                if (dgItemList.DataSource != null)
+                {
+                    textsClear();
+                    if (dgItemList.RowCount > 0)
+                    {
+                        gridselectedindex = dgItemList.CurrentCell.RowIndex;
+                    }
+                    Filler(dgItemList.Rows[gridselectedindex].Cells["ArticleNo"].Value.ToString());
+                    if (dgItemList.RowCount > 0)
+                    {
+                        dgItemList.ClearSelection();
+                        dgItemList.CurrentCell = dgItemList.Rows[gridselectedindex].Cells[0];
+                    }
+                }
+            }
         }
     }
 }
