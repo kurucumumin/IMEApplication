@@ -532,7 +532,7 @@ namespace LoginForm.QuotationModule
                         if (dgQuotationAddedItems.CurrentCell == null) dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[rowindex].Cells[0];
                             GetMargin();
                             dgQuotationAddedItems.Rows[rowindex].Cells["dgMargin"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgMargin"].Value.ToString())).ToString();
-                            //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotalWeight"].Value = (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUnitWeigt"].Value.ToString()) * Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
+                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotalWeight"].Value = (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUnitWeigt"].Value.ToString()) * Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
                             //CalculateSubTotal();
                             #region Calculate Total Margin
                             try
@@ -2548,21 +2548,20 @@ namespace LoginForm.QuotationModule
 
         private void dgQuotationAddedItems_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
-            int index = e.ColumnIndex;
+            //int index = e.ColumnIndex;
 
-            if (index == 11 || index == 12 || index == 13 || index == 19 || index == 20 || index == 21 || index == 22 || index == 23)
-            {
-                for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
-                {
-                    if (dgQuotationAddedItems.Rows[i].Cells[index].Value != null && dgQuotationAddedItems.Rows[i].Cells[index].Value.ToString() != "")
-                    {
-                        //round = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[index].Value.ToString());
-                        sonuc = Math.Round(round, 4);
-                        dgQuotationAddedItems.Rows[i].Cells[index].Value = sonuc.ToString();
-                        
-                    }
-                }
-            }
+            //if (index == 11 || index == 12 || index == 13 || index == 19 || index == 20 || index == 21 || index == 22 || index == 23)
+            //{
+            //    for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+            //    {
+            //        if (dgQuotationAddedItems.Rows[i].Cells[index].Value != null && dgQuotationAddedItems.Rows[i].Cells[index].Value.ToString() != "")
+            //        {
+            //            //round = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[index].Value.ToString());
+            //            sonuc = Math.Round(round, 4);
+            //            dgQuotationAddedItems.Rows[i].Cells[index].Value = sonuc.ToString();
+            //        }
+            //    }
+            //}
             
         }
     }
