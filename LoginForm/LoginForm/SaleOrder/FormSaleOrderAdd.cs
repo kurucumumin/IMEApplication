@@ -71,7 +71,7 @@ namespace LoginForm.SaleOrder
                 s.CustItemDescription = q.CustomerDescription;
                 s.CustItemStockCode = q.CustomerStockCode;
                 s.NO = (int)q.dgNo;
-                s.Discount = (decimal)q.Disc;
+                s.Discount = (q.Disc != null) ? (decimal)q.Disc : 0;
                 s.isDeleted = (q.IsDeleted == 1) ? 1 : 0;
                 s.Qty = (int)q.Qty;
                 s.UC_UP = (decimal)q.UPIME;
@@ -90,6 +90,8 @@ namespace LoginForm.SaleOrder
                 s.UOM = item.Unit_Measure;
                 s.UPIMELP = (decimal)q.UCUPCurr;
                 s.HZ = (item.Hazardous_Ind == "Y") ? true : false;
+                s.CL = (item.Calibration_Ind == "Y") ? true : false;
+                s.LC = (item.Licensed_Ind == "" && item.Licensed_Ind != null) ? true : false;
 
                 if (s.isDeleted == 1)
                 {
@@ -113,10 +115,11 @@ namespace LoginForm.SaleOrder
 
         private void SaleItemToRow(SaleItem item, DataGridViewRow row)
         {
+            
             row.Cells["sNo"].Value = item.NO;
             row.Cells["sBrand"].Value = item.Brand;
             row.Cells["sCCCNO"].Value = item.CCCNO;
-            row.Cells["sCL"].Value = item.CL;
+            row.Cells["sCL"].Style.BackColor = (item.CL == true) ? Color.Green : Color.White;
             row.Cells["sCompetitor"].Value = item.Competitor;
             row.Cells["sCOO"].Value = item.COO;
             row.Cells["sCost"].Value = item.Cost;
@@ -126,14 +129,14 @@ namespace LoginForm.SaleOrder
             row.Cells["sDelivery"].Value = item.Delivery;
             row.Cells["sDescription"].Value = item.Description;
             row.Cells["sDiscount"].Value = item.Discount;
-            row.Cells["sHS"].Value = item.HS;
+            row.Cells["sHS"].Style.BackColor = (item.HS == true) ? Color.Red : Color.White;
             row.Cells["sHZ"].Value = item.HZ;
             //row.Cells["sisDeleted"].Value = item.isDeleted;
             row.Cells["sItemCode"].Value = item.ItemCode;
             row.Cells["sLandingCost"].Value = item.LandingCost;
-            row.Cells["sLC"].Value = item.LC;
-            row.Cells["sLI"].Value = item.LI;
-            row.Cells["sLM"].Value = item.LM;
+            row.Cells["sLC"].Style.BackColor = (item.LM == true) ? Color.BurlyWood : Color.White;
+            row.Cells["sLI"].Style.BackColor = (item.LI == true) ? Color.Ivory : Color.White;
+            row.Cells["sLM"].Style.BackColor = (item.LM == true) ? Color.Blue : Color.White;
             row.Cells["sMargin"].Value = item.Margin;
             row.Cells["sMPN"].Value = item.MPN;
             row.Cells["sNO"].Value = item.NO;
