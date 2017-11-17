@@ -365,8 +365,8 @@
           <Property Name="UPIME" Type="decimal" Precision="20" Scale="5" />
           <Property Name="Marge" Type="decimal" Precision="20" Scale="5" />
           <Property Name="UnitOfMeasure" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="SSM" Type="int" />
           <Property Name="UC" Type="int" />
+          <Property Name="SSM" Type="int" />
           <Property Name="UnitWeight" Type="decimal" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="Rate">
@@ -1865,6 +1865,7 @@
           <EntitySet Name="PaymentMethods" EntityType="IMEModel.PaymentMethod" />
           <EntitySet Name="PaymentTerms" EntityType="IMEModel.PaymentTerm" />
           <EntitySet Name="Quotations" EntityType="IMEModel.Quotation" />
+          <EntitySet Name="QuotationDetails" EntityType="IMEModel.QuotationDetail" />
           <EntitySet Name="Rates" EntityType="IMEModel.Rate" />
           <EntitySet Name="RoleValues" EntityType="IMEModel.RoleValue" />
           <EntitySet Name="RSProes" EntityType="IMEModel.RSPro" />
@@ -2017,6 +2018,10 @@
             <End Role="PaymentTerm" EntitySet="PaymentTerms" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
+          <AssociationSet Name="FK__Quotation__Quota__147C05D0" Association="IMEModel.FK__Quotation__Quota__147C05D0">
+            <End Role="Quotation" EntitySet="Quotations" />
+            <End Role="QuotationDetail" EntitySet="QuotationDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK__Supplier__rate_I__625A9A57" Association="IMEModel.FK__Supplier__rate_I__625A9A57">
             <End Role="Rate" EntitySet="Rates" />
             <End Role="Supplier" EntitySet="Suppliers" />
@@ -2145,11 +2150,6 @@
           <AssociationSet Name="FK__Quotation__Custo__00750D23" Association="IMEModel.FK__Quotation__Custo__00750D23">
             <End Role="Customer" EntitySet="Customers" />
             <End Role="Quotation" EntitySet="Quotations" />
-          </AssociationSet>
-          <EntitySet Name="QuotationDetails" EntityType="IMEModel.QuotationDetail" />
-          <AssociationSet Name="FK__Quotation__Quota__147C05D0" Association="IMEModel.FK__Quotation__Quota__147C05D0">
-            <End Role="Quotation" EntitySet="Quotations" />
-            <End Role="QuotationDetail" EntitySet="QuotationDetails" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AuthorizationValue">
@@ -2513,8 +2513,33 @@
           <NavigationProperty Name="Note" Relationship="IMEModel.FK__Quotation__NoteF__0169315C" FromRole="Quotation" ToRole="Note" />
           <NavigationProperty Name="Note1" Relationship="IMEModel.FK__Quotation__NoteF__025D5595" FromRole="Quotation" ToRole="Note" />
           <NavigationProperty Name="PaymentMethod" Relationship="IMEModel.FK__Quotation__Payme__035179CE" FromRole="Quotation" ToRole="PaymentMethod" />
-          <NavigationProperty Name="Customer" Relationship="IMEModel.FK__Quotation__Custo__00750D23" FromRole="Quotation" ToRole="Customer" />
           <NavigationProperty Name="QuotationDetails" Relationship="IMEModel.FK__Quotation__Quota__147C05D0" FromRole="Quotation" ToRole="QuotationDetail" />
+          <NavigationProperty Name="Customer" Relationship="IMEModel.FK__Quotation__Custo__00750D23" FromRole="Quotation" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="QuotationDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dgNo" Type="Int32" />
+          <Property Name="ItemCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="UCUPCurr" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="Disc" Type="Decimal" Precision="5" Scale="3" />
+          <Property Name="Total" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="TargetUP" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="Competitor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerStockCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Int32" />
+          <Property Name="QuotationNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UPIME" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="Marge" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="UnitOfMeasure" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UC" Type="Int32" />
+          <Property Name="SSM" Type="Int32" />
+          <Property Name="UnitWeight" Type="Decimal" Precision="15" Scale="4" />
+          <NavigationProperty Name="Quotation" Relationship="IMEModel.FK__Quotation__Quota__147C05D0" FromRole="QuotationDetail" ToRole="Quotation" />
         </EntityType>
         <EntityType Name="Rate">
           <Key>
@@ -3286,6 +3311,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Quotation__Quota__147C05D0">
+          <End Type="IMEModel.Quotation" Role="Quotation" Multiplicity="0..1" />
+          <End Type="IMEModel.QuotationDetail" Role="QuotationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quotation">
+              <PropertyRef Name="QuotationNo" />
+            </Principal>
+            <Dependent Role="QuotationDetail">
+              <PropertyRef Name="QuotationNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Supplier__rate_I__625A9A57">
           <End Type="IMEModel.Rate" Role="Rate" Multiplicity="0..1" />
           <End Type="IMEModel.Supplier" Role="Supplier" Multiplicity="*" />
@@ -3696,43 +3733,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="QuotationDetail">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="dgNo" Type="Int32" />
-          <Property Name="ItemCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Qty" Type="Int32" />
-          <Property Name="UCUPCurr" Type="Decimal" Precision="20" Scale="5" />
-          <Property Name="Disc" Type="Decimal" Precision="5" Scale="3" />
-          <Property Name="Total" Type="Decimal" Precision="20" Scale="5" />
-          <Property Name="TargetUP" Type="Decimal" Precision="20" Scale="5" />
-          <Property Name="Competitor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerStockCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="IsDeleted" Type="Int32" />
-          <Property Name="QuotationNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="UPIME" Type="Decimal" Precision="20" Scale="5" />
-          <Property Name="Marge" Type="Decimal" Precision="20" Scale="5" />
-          <Property Name="UnitOfMeasure" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="SSM" Type="Int32" />
-          <Property Name="UC" Type="Int32" />
-          <Property Name="UnitWeight" Type="Decimal" Precision="15" Scale="4" />
-          <NavigationProperty Name="Quotation" Relationship="IMEModel.FK__Quotation__Quota__147C05D0" FromRole="QuotationDetail" ToRole="Quotation" />
-        </EntityType>
-        <Association Name="FK__Quotation__Quota__147C05D0">
-          <End Type="IMEModel.Quotation" Role="Quotation" Multiplicity="0..1" />
-          <End Type="IMEModel.QuotationDetail" Role="QuotationDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Quotation">
-              <PropertyRef Name="QuotationNo" />
-            </Principal>
-            <Dependent Role="QuotationDetail">
-              <PropertyRef Name="QuotationNo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4064,6 +4064,31 @@
                 <ScalarProperty Name="NoteForCustomerID" ColumnName="NoteForCustomerID" />
                 <ScalarProperty Name="NoteForUsID" ColumnName="NoteForUsID" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuotationDetails">
+            <EntityTypeMapping TypeName="IMEModel.QuotationDetail">
+              <MappingFragment StoreEntitySet="QuotationDetail">
+                <ScalarProperty Name="UnitWeight" ColumnName="UnitWeight" />
+                <ScalarProperty Name="SSM" ColumnName="SSM" />
+                <ScalarProperty Name="UC" ColumnName="UC" />
+                <ScalarProperty Name="UnitOfMeasure" ColumnName="UnitOfMeasure" />
+                <ScalarProperty Name="Marge" ColumnName="Marge" />
+                <ScalarProperty Name="UPIME" ColumnName="UPIME" />
+                <ScalarProperty Name="QuotationNo" ColumnName="QuotationNo" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CustomerStockCode" ColumnName="CustomerStockCode" />
+                <ScalarProperty Name="CustomerDescription" ColumnName="CustomerDescription" />
+                <ScalarProperty Name="Competitor" ColumnName="Competitor" />
+                <ScalarProperty Name="TargetUP" ColumnName="TargetUP" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Disc" ColumnName="Disc" />
+                <ScalarProperty Name="UCUPCurr" ColumnName="UCUPCurr" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="dgNo" ColumnName="dgNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4451,31 +4476,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="QuotationDetails">
-            <EntityTypeMapping TypeName="IMEModel.QuotationDetail">
-              <MappingFragment StoreEntitySet="QuotationDetail">
-                <ScalarProperty Name="UnitWeight" ColumnName="UnitWeight" />
-                <ScalarProperty Name="UC" ColumnName="UC" />
-                <ScalarProperty Name="SSM" ColumnName="SSM" />
-                <ScalarProperty Name="UnitOfMeasure" ColumnName="UnitOfMeasure" />
-                <ScalarProperty Name="Marge" ColumnName="Marge" />
-                <ScalarProperty Name="UPIME" ColumnName="UPIME" />
-                <ScalarProperty Name="QuotationNo" ColumnName="QuotationNo" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
-                <ScalarProperty Name="CustomerStockCode" ColumnName="CustomerStockCode" />
-                <ScalarProperty Name="CustomerDescription" ColumnName="CustomerDescription" />
-                <ScalarProperty Name="Competitor" ColumnName="Competitor" />
-                <ScalarProperty Name="TargetUP" ColumnName="TargetUP" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Disc" ColumnName="Disc" />
-                <ScalarProperty Name="UCUPCurr" ColumnName="UCUPCurr" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
-                <ScalarProperty Name="dgNo" ColumnName="dgNo" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -4490,7 +4490,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

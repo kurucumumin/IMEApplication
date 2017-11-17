@@ -21,7 +21,7 @@ namespace LoginForm
         public CustomerMain()
         {
             InitializeComponent();
-
+            
         }
 
         public CustomerMain(Boolean buttonEnabled, string CustomerID)
@@ -305,6 +305,8 @@ namespace LoginForm
             cbTown.Enabled = false;
             PostCode.Enabled = false;
             txtAdressTitle.Enabled = false;
+            cbTown.Enabled = false;
+            TownAdd.Enabled = false;
             AddressDetails.Enabled = false;
             cbIMEOffice.Enabled = false;
             cbDafultDeliveryAdress.Enabled = false;
@@ -334,12 +336,14 @@ namespace LoginForm
             cbTown.Enabled = true;
             PostCode.Enabled = true;
             txtAdressTitle.Enabled = true;
+            cbTown.Enabled = true;
             AddressDetails.Enabled = true;
             cbIMEOffice.Enabled = true;
             cbDafultDeliveryAdress.Enabled = true;
             cbIMEOffice.Enabled = true;
             AdressList.Enabled = false;
             txtAdressTitle.Enabled = true;
+            TownAdd.Enabled = true;
             CustomerDataGrid.Enabled = false;
             AdressAdd.Enabled = false;
             AddressDel.Enabled = false;
@@ -1639,6 +1643,15 @@ namespace LoginForm
         {
             decimal DiscountRateValue = Decimal.Parse(DiscountRate.Text);
             factor.Text = (Utils.getManagement().Factor - ((DiscountRateValue * Utils.getManagement().Factor) / 100)).ToString();
+        }
+
+        private void TownAdd_Click(object sender, EventArgs e)
+        {
+            FormTownAdd form = new FormTownAdd();
+            this.SendToBack();
+            form.ShowDialog();
+            this.BringToFront();
+            cbTown.Refresh();
         }
     }
 }

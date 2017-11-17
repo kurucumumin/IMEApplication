@@ -86,6 +86,7 @@
             this.TaxOffice = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.tab_adresses = new System.Windows.Forms.TabPage();
+            this.TownAdd = new System.Windows.Forms.Button();
             this.cbIMEOffice = new System.Windows.Forms.CheckBox();
             this.cbDafultDeliveryAdress = new System.Windows.Forms.CheckBox();
             this.AddressType = new System.Windows.Forms.ComboBox();
@@ -148,7 +149,6 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.tableMain = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.TownAdd = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tab_company.SuspendLayout();
             this.tab_account.SuspendLayout();
@@ -796,6 +796,18 @@
             this.tab_adresses.TabIndex = 3;
             this.tab_adresses.Text = "Adresses";
             this.tab_adresses.UseVisualStyleBackColor = true;
+            // 
+            // TownAdd
+            // 
+            this.TownAdd.Enabled = false;
+            this.TownAdd.Location = new System.Drawing.Point(244, 169);
+            this.TownAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.TownAdd.Name = "TownAdd";
+            this.TownAdd.Size = new System.Drawing.Size(23, 21);
+            this.TownAdd.TabIndex = 57;
+            this.TownAdd.Text = "+";
+            this.TownAdd.UseVisualStyleBackColor = true;
+            this.TownAdd.Click += new System.EventHandler(this.TownAdd_Click);
             // 
             // cbIMEOffice
             // 
@@ -1452,16 +1464,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(706, 57);
             this.panel1.TabIndex = 2;
-            // 
-            // TownAdd
-            // 
-            this.TownAdd.Location = new System.Drawing.Point(244, 169);
-            this.TownAdd.Margin = new System.Windows.Forms.Padding(2);
-            this.TownAdd.Name = "TownAdd";
-            this.TownAdd.Size = new System.Drawing.Size(23, 21);
-            this.TownAdd.TabIndex = 57;
-            this.TownAdd.Text = "+";
-            this.TownAdd.UseVisualStyleBackColor = true;
             // 
             // CustomerMain
             // 

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 
-namespace LoginForm.Customer
+namespace LoginForm
 {
     public partial class FormTownAdd : Form
     {
@@ -17,22 +17,39 @@ namespace LoginForm.Customer
         public FormTownAdd()
         {
             InitializeComponent();
+            this.BringToFront();
             cbCountry.DataSource = IME.Countries.ToList();
             cbCountry.DisplayMember = "Country_name";
-            cbCountry.ValueMember = "ID";
+            //cbCountry.ValueMember = "ID";
         }
 
         private void cbCountry_SelectedValueChanged(object sender, EventArgs e)
         {
-            cbCountry.DataSource = IME.Cities.Where(a=>a.CountryID==(cbCountry.SelectedValue as Country).ID).ToList();
-            if (cbCountry.DataSource != null)
+
+            int cityID1 = (cbCountry.SelectedValue as Country).ID;
+            cbCity.DataSource = null;
+            if (IME.Cities.Where(a => a.CountryID == cityID1).ToList() != null)
             {
-                cbCountry.DisplayMember = "City_name";
-                cbCountry.ValueMember = "ID";
+                cbCity.DataSource = IME.Cities.Where(a => a.CountryID == cityID1).ToList();
+                cbCity.DisplayMember = "City_name";
+                //cbCity.ValueMember = "ID";
                 cbCity.Enabled = true;
             }
             else { MessageBox.Show("There is no such a country"); }
+        }
 
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if(txtTown.Text!=null&& txtTown.Text != string.Empty)
+            {
+                Town newTown = new Town();
+                int CityID = (cbCity.SelectedValue as City).ID;
+                newTown.CityID = CityID;
+                newTown.Town_name = txtTown.Text;
+                IME.Towns.Add(newTown);
+                IME.SaveChanges();
+                this.Close();
+            }
         }
     }
 }

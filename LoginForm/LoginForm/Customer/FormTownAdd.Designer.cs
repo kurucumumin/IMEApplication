@@ -1,4 +1,4 @@
-﻿namespace LoginForm.Customer
+﻿namespace LoginForm
 {
     partial class FormTownAdd
     {
@@ -39,7 +39,6 @@
             // 
             // cbCity
             // 
-            this.cbCity.Enabled = false;
             this.cbCity.FormattingEnabled = true;
             this.cbCity.Location = new System.Drawing.Point(104, 51);
             this.cbCity.Name = "cbCity";
@@ -48,7 +47,6 @@
             // 
             // cbCountry
             // 
-            this.cbCountry.Enabled = false;
             this.cbCountry.FormattingEnabled = true;
             this.cbCountry.Location = new System.Drawing.Point(104, 12);
             this.cbCountry.Name = "cbCountry";
@@ -85,7 +83,6 @@
             // 
             // txtTown
             // 
-            this.txtTown.Enabled = false;
             this.txtTown.Location = new System.Drawing.Point(104, 90);
             this.txtTown.Name = "txtTown";
             this.txtTown.Size = new System.Drawing.Size(151, 20);
@@ -99,6 +96,7 @@
             this.btnAdd.TabIndex = 26;
             this.btnAdd.Text = "ADD";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // FormTownAdd
             // 
