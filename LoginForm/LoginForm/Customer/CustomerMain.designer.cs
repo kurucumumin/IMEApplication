@@ -148,6 +148,7 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.tableMain = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.TownAdd = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tab_company.SuspendLayout();
             this.tab_account.SuspendLayout();
@@ -540,14 +541,16 @@
             this.factor.Name = "factor";
             this.factor.Size = new System.Drawing.Size(174, 23);
             this.factor.TabIndex = 7;
+            this.factor.TextChanged += new System.EventHandler(this.factor_TextChanged);
             // 
             // DiscountRate
             // 
             this.DiscountRate.Enabled = false;
-            this.DiscountRate.Location = new System.Drawing.Point(123, 224);
+            this.DiscountRate.Location = new System.Drawing.Point(491, 57);
             this.DiscountRate.Name = "DiscountRate";
             this.DiscountRate.Size = new System.Drawing.Size(174, 23);
-            this.DiscountRate.TabIndex = 6;
+            this.DiscountRate.TabIndex = 8;
+            this.DiscountRate.TextChanged += new System.EventHandler(this.DiscountRate_TextChanged);
             // 
             // AccountingNotes
             // 
@@ -612,7 +615,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(368, 145);
+            this.label14.Location = new System.Drawing.Point(350, 144);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(113, 17);
             this.label14.TabIndex = 3;
@@ -631,7 +634,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(358, 104);
+            this.label13.Location = new System.Drawing.Point(350, 108);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(131, 17);
             this.label13.TabIndex = 3;
@@ -650,7 +653,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(368, 65);
+            this.label23.Location = new System.Drawing.Point(3, 229);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(78, 17);
             this.label23.TabIndex = 3;
@@ -669,7 +672,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(368, 207);
+            this.label16.Location = new System.Drawing.Point(350, 208);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(119, 17);
             this.label16.TabIndex = 3;
@@ -678,7 +681,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(8, 227);
+            this.label15.Location = new System.Drawing.Point(350, 63);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(97, 17);
             this.label15.TabIndex = 4;
@@ -687,7 +690,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(8, 185);
+            this.label17.Location = new System.Drawing.Point(3, 187);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(114, 17);
             this.label17.TabIndex = 4;
@@ -696,7 +699,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 20);
+            this.label7.Location = new System.Drawing.Point(3, 17);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(79, 17);
             this.label7.TabIndex = 7;
@@ -705,7 +708,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(-1, 144);
+            this.label19.Location = new System.Drawing.Point(1, 145);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(123, 17);
             this.label19.TabIndex = 6;
@@ -714,7 +717,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(368, 21);
+            this.label22.Location = new System.Drawing.Point(350, 17);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(48, 17);
             this.label22.TabIndex = 7;
@@ -723,7 +726,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(8, 102);
+            this.label20.Location = new System.Drawing.Point(3, 104);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(85, 17);
             this.label20.TabIndex = 7;
@@ -732,10 +735,10 @@
             // CreditLimit
             // 
             this.CreditLimit.Enabled = false;
-            this.CreditLimit.Location = new System.Drawing.Point(492, 59);
+            this.CreditLimit.Location = new System.Drawing.Point(123, 226);
             this.CreditLimit.Name = "CreditLimit";
             this.CreditLimit.Size = new System.Drawing.Size(178, 23);
-            this.CreditLimit.TabIndex = 8;
+            this.CreditLimit.TabIndex = 6;
             // 
             // taxNumber
             // 
@@ -756,7 +759,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(8, 63);
+            this.label21.Location = new System.Drawing.Point(3, 63);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(72, 17);
             this.label21.TabIndex = 8;
@@ -764,6 +767,7 @@
             // 
             // tab_adresses
             // 
+            this.tab_adresses.Controls.Add(this.TownAdd);
             this.tab_adresses.Controls.Add(this.cbIMEOffice);
             this.tab_adresses.Controls.Add(this.cbDafultDeliveryAdress);
             this.tab_adresses.Controls.Add(this.AddressType);
@@ -1449,6 +1453,16 @@
             this.panel1.Size = new System.Drawing.Size(706, 57);
             this.panel1.TabIndex = 2;
             // 
+            // TownAdd
+            // 
+            this.TownAdd.Location = new System.Drawing.Point(244, 169);
+            this.TownAdd.Margin = new System.Windows.Forms.Padding(2);
+            this.TownAdd.Name = "TownAdd";
+            this.TownAdd.Size = new System.Drawing.Size(23, 21);
+            this.TownAdd.TabIndex = 57;
+            this.TownAdd.Text = "+";
+            this.TownAdd.UseVisualStyleBackColor = true;
+            // 
             // CustomerMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1601,5 +1615,6 @@
         private System.Windows.Forms.TextBox factor;
         private System.Windows.Forms.ComboBox ContactAdress;
         private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Button TownAdd;
     }
 }

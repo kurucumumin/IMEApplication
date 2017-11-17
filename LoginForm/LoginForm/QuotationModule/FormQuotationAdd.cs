@@ -167,7 +167,9 @@ namespace LoginForm.QuotationModule
                 try { txtContactNote.Text = c.CustomerWorker.Note.Note_name; } catch { }
                 try { txtCustomerNote.Text = c.Note.Note_name; } catch { }
                 try { txtAccountingNote.Text = IME.Notes.Where(a=>a.ID==c.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
-                cbRep.SelectedIndex = c.Worker.WorkerID;
+                cbRep.SelectedValue = c.Worker.WorkerID;
+                cbCurrency.SelectedItem = cbCurrency.FindStringExact(c.CurrNameQuo);
+                cbCurrType.SelectedItem = cbCurrType.FindStringExact(c.CurrTypeQuo);
             }
         }
 

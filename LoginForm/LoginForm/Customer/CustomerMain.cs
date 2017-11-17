@@ -1597,15 +1597,15 @@ namespace LoginForm
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (txtAdressTitle.Text != string.Empty || txtAdressTitle.Text != null)
-            {
-                AddressType.Text = string.Empty;
-            }
+            //if (txtAdressTitle.Text != string.Empty || txtAdressTitle.Text != null)
+            //{
+            //    AddressType.Text = string.Empty;
+            //}
         }
 
         private void AddressType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtAdressTitle.Text = string.Empty;
+            //txtAdressTitle.Text = string.Empty;
         }
 
         private bool ControlSave()
@@ -1627,6 +1627,18 @@ namespace LoginForm
             {
                 tabControl1.SelectedTab = tabControl1.TabPages["tab_account"];
             }
+        }
+
+        private void factor_TextChanged(object sender, EventArgs e)
+        {
+            decimal factorValue = Decimal.Parse(factor.Text);
+            DiscountRate.Text= (100 - ((factorValue * 100) / Utils.getManagement().Factor)).ToString();
+        }
+
+        private void DiscountRate_TextChanged(object sender, EventArgs e)
+        {
+            decimal DiscountRateValue = Decimal.Parse(DiscountRate.Text);
+            factor.Text = (Utils.getManagement().Factor - ((DiscountRateValue * Utils.getManagement().Factor) / 100)).ToString();
         }
     }
 }
