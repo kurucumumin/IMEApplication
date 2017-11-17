@@ -71,10 +71,10 @@ namespace LoginForm.SaleOrder
                 s.CustItemDescription = q.CustomerDescription;
                 s.CustItemStockCode = q.CustomerStockCode;
                 s.NO = (int)q.dgNo;
-                //s.Discount = (decimal)q.Disc;
+                s.Discount = (decimal)q.Disc;
                 s.isDeleted = (q.IsDeleted == 1) ? 1 : 0;
                 s.Qty = (int)q.Qty;
-                //s.UC_UP = (decimal)q.UPIME;
+                s.UC_UP = (decimal)q.UPIME;
                 bool isItemCost = (q.Quotation.IsItemCost == 1) ? true : false;
                 bool isWeightCost =(q.Quotation.IsWeightCost == 1) ? true : false;
                 bool isCustomsDuties = (q.Quotation.IsCustomsDuties == 1) ? true : false;
@@ -152,7 +152,6 @@ namespace LoginForm.SaleOrder
 
         private decimal CalculateMargin(decimal landingCost, decimal UCUPCurr)
         {
-            return 1;
             return (((1 - landingCost / UCUPCurr)) * 100)/*.ToString("G29")*/;
         }
 
