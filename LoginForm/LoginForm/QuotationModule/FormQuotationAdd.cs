@@ -2405,7 +2405,7 @@ namespace LoginForm.QuotationModule
             else
             {
                 ViewProductHistory f = new ViewProductHistory(item_code);
-                f.ShowDialog();
+                try { f.ShowDialog(); } catch { }
             }
             #endregion
         }

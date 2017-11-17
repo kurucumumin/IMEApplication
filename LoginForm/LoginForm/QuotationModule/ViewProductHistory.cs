@@ -52,8 +52,13 @@ namespace LoginForm.QuotationModule
 
                 if (ds.Tables[0].Rows.Count == 0)//History tablosunda herhangi bir veri yoksa (boşsa) aşağıdaki blok çalışacak     
                 {
-                    MessageBox.Show("No Records Found");
+                    DialogResult dialog = new DialogResult();
+                    dialog =MessageBox.Show("No Records Found","", MessageBoxButtons.OK);
+                    if (dialog==DialogResult.OK)
+                    { 
+                    this.Close();
                     return;//kayıt olmadığı için return ile bloğun dışına çıkıyoruz
+                    }
                 }
                 else//kayıt varsa
                 {
