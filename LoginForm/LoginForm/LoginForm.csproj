@@ -129,6 +129,12 @@
     <Compile Include="Customer\CustomerPositionAdd.designer.cs">
       <DependentUpon>CustomerPositionAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Customer\FormTownAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer\FormTownAdd.Designer.cs">
+      <DependentUpon>FormTownAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\AuthorizationValue.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -464,6 +470,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Customer\CustomerPositionAdd.resx">
       <DependentUpon>CustomerPositionAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer\FormTownAdd.resx">
+      <DependentUpon>FormTownAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
