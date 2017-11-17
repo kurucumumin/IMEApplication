@@ -349,7 +349,6 @@ namespace LoginForm.QuotationModule
                                             ItemDetailsFiller(dgQuotationAddedItems.CurrentCell.Value.ToString());
                                             //LandingCost Calculation
                                             FillProductCodeItem();
-
                                             dgQuotationAddedItems.CurrentRow.Cells["dgQty"].ReadOnly = false;
                                             dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Style = dgQuotationAddedItems.DefaultCellStyle;
                                             #region DataGridClear
@@ -368,7 +367,8 @@ namespace LoginForm.QuotationModule
                                     }
                                     this.Enabled = true;
                                     if(dgQuotationAddedItems.CurrentCell.ColumnIndex==7) dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentRow.Index].Cells[dgQuotationAddedItems.CurrentCell.ColumnIndex+1];
-                                    //ChangeCurrnetCellTabKey(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
+                                    dgQuotationAddedItems.Select();
+                                    ChangeCurrnetCellTabKey(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
                                 }
 
                             }
@@ -378,8 +378,6 @@ namespace LoginForm.QuotationModule
                         else
                         {
                             ItemDetailsClear();
-                            //dgQuotationAddedItems.Rows[dgQuotationAddedItems.].Cells["dgProductCode"].Selected
-
                         }
                     }
                     #endregion
@@ -516,6 +514,7 @@ namespace LoginForm.QuotationModule
                                     }
                                 }
                             }
+
                             //TOTAL ve UPIME belirleniyor
                             //dataGridView3.Rows[rowindex].Cells["dgUPIME"].Value = (price / Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
                             dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = (price / Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
@@ -533,7 +532,6 @@ namespace LoginForm.QuotationModule
                             GetMargin();
                             dgQuotationAddedItems.Rows[rowindex].Cells["dgMargin"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgMargin"].Value.ToString())).ToString();
                             dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotalWeight"].Value = (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUnitWeigt"].Value.ToString()) * Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
-                            //CalculateSubTotal();
                             #region Calculate Total Margin
                             try
                             {
@@ -549,7 +547,6 @@ namespace LoginForm.QuotationModule
                         }
                     else { MessageBox.Show("This product does not have price"); }
                 }
-                    
                     #endregion
                 #endregion
 
@@ -1085,7 +1082,6 @@ namespace LoginForm.QuotationModule
                     {
                         dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value = dgQuotationAddedItems.Rows[i].Cells["dgCost"].Value.ToString();
                     }
-                    //GetQuotationQuantity(i);
                     GetAllMargin();
                     try
                     {
