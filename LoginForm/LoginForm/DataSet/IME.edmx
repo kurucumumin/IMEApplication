@@ -365,8 +365,8 @@
           <Property Name="UPIME" Type="decimal" Precision="20" Scale="5" />
           <Property Name="Marge" Type="decimal" Precision="20" Scale="5" />
           <Property Name="UnitOfMeasure" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="UC" Type="int" />
           <Property Name="SSM" Type="int" />
+          <Property Name="UC" Type="int" />
           <Property Name="UnitWeight" Type="decimal" Precision="15" Scale="4" />
         </EntityType>
         <EntityType Name="Rate">
@@ -3716,8 +3716,8 @@
           <Property Name="UPIME" Type="Decimal" Precision="20" Scale="5" />
           <Property Name="Marge" Type="Decimal" Precision="20" Scale="5" />
           <Property Name="UnitOfMeasure" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="UC" Type="Int32" />
           <Property Name="SSM" Type="Int32" />
+          <Property Name="UC" Type="Int32" />
           <Property Name="UnitWeight" Type="Decimal" Precision="15" Scale="4" />
           <NavigationProperty Name="Quotation" Relationship="IMEModel.FK__Quotation__Quota__147C05D0" FromRole="QuotationDetail" ToRole="Quotation" />
         </EntityType>
@@ -4455,8 +4455,8 @@
             <EntityTypeMapping TypeName="IMEModel.QuotationDetail">
               <MappingFragment StoreEntitySet="QuotationDetail">
                 <ScalarProperty Name="UnitWeight" ColumnName="UnitWeight" />
-                <ScalarProperty Name="SSM" ColumnName="SSM" />
                 <ScalarProperty Name="UC" ColumnName="UC" />
+                <ScalarProperty Name="SSM" ColumnName="SSM" />
                 <ScalarProperty Name="UnitOfMeasure" ColumnName="UnitOfMeasure" />
                 <ScalarProperty Name="Marge" ColumnName="Marge" />
                 <ScalarProperty Name="UPIME" ColumnName="UPIME" />
