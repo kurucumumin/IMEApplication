@@ -827,7 +827,7 @@ namespace LoginForm.QuotationModule
                 txtWidth.Text = ((decimal)(sdP.Width * ((Decimal)100))).ToString("G29");
                 txtLength.Text = ((decimal)(sdP.Length * ((Decimal)100))).ToString("G29");
             }
-            if (er != null)
+              if (er != null)
             {
                 dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgDesc"].Value = er.ArticleDescription;
                 dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUOM"].Value = er.UnitofMeasure;
@@ -911,19 +911,17 @@ namespace LoginForm.QuotationModule
             #region ItemMarginFiller
             string articleNo = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString();
             SlidingPrice sp1 = IME.SlidingPrices.Where(a => a.ArticleNo == articleNo).FirstOrDefault();
-            try
-            {
-                txtMargin1.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
-, Int32.Parse(sp1.Col1Break.ToString()))).ToString("G29");
+            int quantity = 0;
+            if (sp != null) { quantity = Int32.Parse(sp1.Col1Break.ToString()); } else{ quantity = Int32.Parse(er.Col1Break.ToString()); }
+
+            txtMargin1.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
+, quantity)).ToString("G29");
                 txtMargin1.Text = ((1 - ((Decimal.Parse(txtMargin1.Text)) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
-            }
-            catch { }
-            try
-            {
+           
+           
                 txtMargin2.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
                              , Int32.Parse(sp1.Col2Break.ToString()))).ToString("G29");
-            }
-            catch { }
+           
             if (txtWeb2.Text == "0")
             {
                 txtMargin2.Text = "";
@@ -933,8 +931,7 @@ namespace LoginForm.QuotationModule
             }
             else
             {
-                try
-                {
+                
                     txtMargin2.Text = ((1 - ((Decimal.Parse(txtMargin2.Text)) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
                     txtMargin3.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked, Int32.Parse(sp1.Col3Break.ToString()))).ToString("G29");
                     txtMargin3.Text = ((1 - ((Decimal.Parse(txtMargin3.Text)) / (decimal.Parse(txtWeb3.Text)))) * 100).ToString();
@@ -950,8 +947,7 @@ namespace LoginForm.QuotationModule
                             txtMargin5.Text = ((1 - ((Decimal.Parse(txtMargin5.Text)) / (decimal.Parse(txtWeb5.Text)))) * 100).ToString();
                         }
                     }
-                }
-                catch { }
+                
             }
 
             #endregion

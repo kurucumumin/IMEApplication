@@ -25,7 +25,7 @@ namespace LoginForm.QuotationModule
                                          ArticleDesc = a.Article_Desc,
                                          a.MPN,
                                          customerworker.Note.Note_name,
-                                         Supplier = a.Manufacturer,
+                                         //Supplier = a.Manufacturer,
                                          UniteCode = a.Unit_Content,
                                          StandardWeight = a.Standard_Weight,
                                          //HzrInd = a.Hazardous_Ind,
@@ -41,7 +41,7 @@ namespace LoginForm.QuotationModule
                                  ArticleDesc = a.Article_Desc,
                                  a.MPN,
                                  customerworker.Note.Note_name,
-                                 Supplier = a.Manufacturer,
+                                 //Supplier = a.Manufacturer,
                                  UniteCode = a.Unit_Content,
                                  StandardWeight = a.Standard_Weight,
                                  //HzrInd = a.Hazardous_Ind,
@@ -51,7 +51,7 @@ namespace LoginForm.QuotationModule
                              }
                 ).ToList();
                     list3 = (from a in IME.ExtendedRanges.Where(a => a.ArticleNo.Contains(code))
-                             join sup in IME.Suppliers on a.ManufacturerCode equals sup.ID
+                             //join sup in IME.Suppliers on a.ManufacturerCode equals sup.ID
                              join customerworker in IME.ItemNotes on a.ArticleNo equals customerworker.ArticleNo into customerworkeres
                              let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
                              
@@ -61,13 +61,13 @@ namespace LoginForm.QuotationModule
                                  ArticleDesc = a.ArticleDescription,
                                  a.MPN,
                                  customerworker.Note.Note_name,
-                                 Supplier = sup.s_name,
+                                 //Supplier = sup.s_name,
                                  UniteCode = a.PackSize,
                                  StandardWeight = a.ExtendedRangeWeight
                              }
                                 ).ToList();
                     gridAdapterPC.AddRange(list2);
-                    //gridAdapterPC.AddRange(list3);
+                    gridAdapterPC.AddRange(list3);
                     break;
                 case true:
                     gridAdapterPC = (from a in IME.SuperDisks.Where(a => a.MPN == code)

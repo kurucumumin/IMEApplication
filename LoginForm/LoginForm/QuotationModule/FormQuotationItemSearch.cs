@@ -26,7 +26,7 @@ namespace LoginForm.QuotationModule
 
         private void txtQuotationItemCode_TextChanged(object sender, EventArgs e)
         {
-            var gridAdapterPC = QuotationHelper.BringItems(txtQuotationItemCode.Text, false);
+                var gridAdapterPC = QuotationHelper.BringItems(txtQuotationItemCode.Text, false);
 
             dgQuotationItemSearch.DataSource = gridAdapterPC;
             if (gridAdapterPC.Count == 0)
