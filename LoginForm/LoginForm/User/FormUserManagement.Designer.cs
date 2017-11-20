@@ -287,6 +287,7 @@
             -2147483648});
             this.numericDiscountRate.Name = "numericDiscountRate";
             this.numericDiscountRate.ValueChanged += new System.EventHandler(this.numericDiscountRate_ValueChanged);
+            this.numericDiscountRate.Leave += new System.EventHandler(this.numericDiscountRate_ValueChanged);
             // 
             // label3
             // 
@@ -314,6 +315,7 @@
             resources.ApplyResources(this.numericFactor, "numericFactor");
             this.numericFactor.Name = "numericFactor";
             this.numericFactor.ValueChanged += new System.EventHandler(this.numericFactor_ValueChanged);
+            this.numericFactor.Leave += new System.EventHandler(this.numericFactor_ValueChanged);
             // 
             // numericMinMargin
             // 
