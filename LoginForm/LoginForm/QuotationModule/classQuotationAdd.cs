@@ -57,7 +57,7 @@ namespace LoginForm.QuotationModule
             decimal result;
             try
             {
-                if (quantity < sp.Col2Break && sp.DiscountedPrice1 != 0)
+                if ((quantity < sp.Col2Break && sp.DiscountedPrice1 != 0)||(sp.Col2Break==0&& sp.DiscountedPrice1 != 0))
                 {
                     return result = Decimal.Parse(sp.DiscountedPrice1.ToString());
                 }
@@ -81,7 +81,7 @@ namespace LoginForm.QuotationModule
             catch { }
             try
             {
-                if (quantity < er.Col2Break && er.DiscountedPrice1 != 0)
+                if ((quantity < er.Col2Break && er.DiscountedPrice1 != 0)|| er.Col2Break==0 && er.DiscountedPrice1 != 0)
                 {
                     return result = Decimal.Parse(er.DiscountedPrice1.ToString());
                 }
@@ -111,15 +111,20 @@ namespace LoginForm.QuotationModule
             #region Calculating LandingCost
             IMEEntities IME = new IMEEntities();
             SlidingPrice sp = IME.SlidingPrices.Where(a => a.ArticleNo == ArticleNo).FirstOrDefault();
+            var er = IME.ExtendedRanges.Where(a => a.ArticleNo == ArticleNo).FirstOrDefault();
             decimal p = 0;
             if (sp != null)
             {
                 p = GetCost(ArticleNo, quantity);
             }
+            else if(er!=null)
+            {
+                p= GetCost(ArticleNo, quantity);
+            }
             decimal w = 0;
             var sd = IME.SuperDisks.Where(a => a.Article_No == ArticleNo).FirstOrDefault();
             var sdP = IME.SuperDiskPs.Where(a => a.Article_No == ArticleNo).FirstOrDefault();
-            var er = IME.ExtendedRanges.Where(a => a.ArticleNo == ArticleNo).FirstOrDefault();
+            
             if (sd != null)
             {
                 w = Decimal.Parse(sd.Standard_Weight.ToString());
@@ -154,15 +159,21 @@ namespace LoginForm.QuotationModule
             #region Calculating LandingCost
             IMEEntities IME = new IMEEntities();
             SlidingPrice sp = IME.SlidingPrices.Where(a => a.ArticleNo == ArticleNo).FirstOrDefault();
+            ExtendedRange er = IME.ExtendedRanges.Where(a => a.ArticleNo == ArticleNo).FirstOrDefault();
             decimal p = 0;
             if (sp != null)
             {
                 p = Decimal.Parse(sp.DiscountedPrice1.ToString());
             }
+            else
+            {
+                p= Decimal.Parse(er.DiscountedPrice1.ToString());
+
+            }
             decimal w = 0;
             var sd = IME.SuperDisks.Where(a => a.Article_No == ArticleNo).FirstOrDefault();
             var sdP = IME.SuperDiskPs.Where(a => a.Article_No == ArticleNo).FirstOrDefault();
-            var er = IME.ExtendedRanges.Where(a => a.ArticleNo == ArticleNo).FirstOrDefault();
+            
             if (sd != null)
             {
                 w = Decimal.Parse(sd.Standard_Weight.ToString());
@@ -198,6 +209,7 @@ namespace LoginForm.QuotationModule
             if (quantity == 0) { return -1; }
             IMEEntities IME = new IMEEntities();
             SlidingPrice sp = IME.SlidingPrices.Where(a => a.ArticleNo == ArticleNo).FirstOrDefault();
+            ExtendedRange er = IME.ExtendedRanges.Where(a => a.ArticleNo == ArticleNo).FirstOrDefault();
             decimal result;
             try
             {
@@ -223,6 +235,7 @@ namespace LoginForm.QuotationModule
                 return result = Decimal.Parse(sp.Col1Price.ToString()); // FOR DUBAI
             }
             catch { }
+            if(er!=null)return result= Decimal.Parse(er.Col1Price.ToString()); // FOR DUBAI
             return -1;// fiyatının olmadığı gösteriyor
             #endregion
         }
