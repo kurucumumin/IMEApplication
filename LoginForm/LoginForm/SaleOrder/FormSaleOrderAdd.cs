@@ -30,29 +30,34 @@ namespace LoginForm.SaleOrder
             InitializeComponent();
             this.customer = customer;
             ConvertToSaleItem(list, addedItemList, removedItemList);
-            SortTheList();
+            SortTheList(addedItemList);
+            SortTheList(removedItemList);
         }
 
         private void FormSaleOrderAdd_Load(object sender, EventArgs e)
         {
-            foreach (SaleItem item in addedItemList)
-            {
-                int newRowIndex = dgSaleItems.Rows.Add();
-                SaleItemToRow(item,dgSaleItems.Rows[newRowIndex]);
-            }
-
-            //dgSaleItems.Rows.Add(itemList);
-            populateComboBoxes();
+            PopulateList(addedItemList, dgSaleItems);
+            PopulateList(removedItemList, dgSalesDeleted);
             FillCustomer();
+            populateComboBoxes();
         }
 
-        private void SortTheList()
+        private void SortTheList(List<SaleItem> list)
         {
             int i = 1;
-            foreach (SaleItem item in addedItemList)
+            foreach (SaleItem item in list)
             {
                 item.NO = i;
                 i++;
+            }
+        }
+
+        private void PopulateList(List<SaleItem> list, DataGridView grid)
+        {
+            foreach (SaleItem item in list)
+            {
+                int newRowIndex = grid.Rows.Add();
+                SaleItemToRow(item, grid.Rows[newRowIndex]);
             }
         }
 
@@ -66,6 +71,7 @@ namespace LoginForm.SaleOrder
             {
                 SaleItem s = new SaleItem();
                 s.ItemCode = q.ItemCode;
+                // TODO item 3 listeden kontrol edilecek
                 var item = IME.SuperDisks.Where(x => x.Article_No == s.ItemCode).First();
                 s.Competitor = q.Competitor;
                 s.CustItemDescription = q.CustomerDescription;

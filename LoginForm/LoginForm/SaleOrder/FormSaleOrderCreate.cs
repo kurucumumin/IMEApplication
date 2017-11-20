@@ -59,6 +59,7 @@ namespace LoginForm.SaleOrder
                 Quotation quot = IME.Quotations.Where(q => q.QuotationNo == quotNo).FirstOrDefault();
                 tempItemList.AddRange(quot.QuotationDetails);
             }
+
             dgItems.DataSource = tempItemList;
             itemList = tempItemList.ToList();
             dgItems.ClearSelection();
