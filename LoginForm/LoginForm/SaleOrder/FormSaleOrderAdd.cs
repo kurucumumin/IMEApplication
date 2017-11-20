@@ -2,12 +2,9 @@
 using LoginForm.QuotationModule;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LoginForm.SaleOrder
@@ -16,6 +13,9 @@ namespace LoginForm.SaleOrder
     {
         List<SaleItem> addedItemList = new List<SaleItem>();
         List<SaleItem> removedItemList = new List<SaleItem>();
+
+        List<Hazardou> hazarousList = new List<Hazardou>();
+        List<SlidingPrice> priceList = new List<SlidingPrice>();
 
         Customer customer;
         IMEEntities IME = new IMEEntities();
@@ -29,9 +29,22 @@ namespace LoginForm.SaleOrder
         {
             InitializeComponent();
             this.customer = customer;
+            BringPriceList(list);
             ConvertToSaleItem(list, addedItemList, removedItemList);
             SortTheList(addedItemList);
             SortTheList(removedItemList);
+        }
+
+        private void BringPriceList(List<QuotationDetail> list)
+        {
+            foreach (QuotationDetail item in list)
+            {
+                SlidingPrice sp = IME.SlidingPrices.Where(x => x.ArticleNo == item.ItemCode).FirstOrDefault();
+                if (sp != null)
+                {
+                    priceList.Add(sp);
+                }
+            }
         }
 
         private void FormSaleOrderAdd_Load(object sender, EventArgs e)
@@ -71,33 +84,86 @@ namespace LoginForm.SaleOrder
             {
                 SaleItem s = new SaleItem();
                 s.ItemCode = q.ItemCode;
-                // TODO item 3 listeden kontrol edilecek
-                var item = IME.SuperDisks.Where(x => x.Article_No == s.ItemCode).First();
                 s.Competitor = q.Competitor;
                 s.CustItemDescription = q.CustomerDescription;
-                s.CustItemStockCode = q.CustomerStockCode;
-                s.NO = (int)q.dgNo;
+                s.CustItemStockCode = q.CustomerStockCode; s.NO = (int)q.dgNo;
                 s.Discount = (q.Disc != null) ? (decimal)q.Disc : 0;
                 s.isDeleted = (q.IsDeleted == 1) ? 1 : 0;
                 s.Qty = (int)q.Qty;
                 s.UC_UP = (decimal)q.UPIME;
                 bool isItemCost = (q.Quotation.IsItemCost == 1) ? true : false;
-                bool isWeightCost =(q.Quotation.IsWeightCost == 1) ? true : false;
+                bool isWeightCost = (q.Quotation.IsWeightCost == 1) ? true : false;
                 bool isCustomsDuties = (q.Quotation.IsCustomsDuties == 1) ? true : false;
                 s.LandingCost = classQuotationAdd.GetLandingCost(s.ItemCode, isItemCost, isWeightCost, isCustomsDuties);
                 s.Margin = CalculateMargin(s.LandingCost, s.UC_UP);
+                if (q.TargetUP != null) { s.TargetUP = (decimal)q.TargetUP; }
+                s.Total = (decimal)q.Total;
+
+                // TODO !Important dependantTable verisi eklenmeli
+                s.dependentTable = q.dependantTable;
+
+                switch (q.dependantTable)
+                {
+                    case "sd":
+                        SuperDisk itemSD = IME.SuperDisks.Where(sd => sd.Article_No == q.ItemCode).FirstOrDefault();
+                        s.UnitWeight = (decimal)itemSD.Standard_Weight / 1000;
+
+                        s.CL = (itemSD.Calibration_Ind == "Y") ? true : false;
+                        s.LC = (itemSD.Licensed_Ind == "Y") ? true : false;
+                        s.Manufacturer = itemSD.Manufacturer;
+                        s.COO = itemSD.CofO;
+                        s.CCCNO = itemSD.CCCN_No;
+                        // TODO Aşağıdaki 2 tarih verisi güncel olan tablodan alınacak.
+                        s.UKIntroDate = itemSD.Uk_Intro_Date;
+                        s.UKDiscDate = itemSD.Uk_Disc_Date;
+                        s.Height = (decimal)itemSD.Heigh;
+                        s.Width = (decimal)itemSD.Width;
+                        s.Length = (decimal)itemSD.Length;
+                        s.TotalWeight = (decimal)(s.UnitWeight * itemSD.Unit_Content);
+
+
+                        if (itemSD.Hazardous_Ind == "Y")
+                        {
+                            Hazardou h = IME.Hazardous.Where(x => x.ArticleNo == itemSD.Article_No).FirstOrDefault();
+                            s.HS = (h.Environment != null) ? true : false;
+                            s.LI = (h.Lithium != null && h.Lithium != String.Empty) ? true : false;
+                            hazarousList.Add(h);
+                        }
+
+
+                        break;
+                    case "sdp":
+                        SuperDiskP itemSDP = IME.SuperDiskPs.Where(sdp => sdp.Article_No == q.ItemCode).FirstOrDefault();
+                        s.UnitWeight = (decimal)itemSDP.Standard_Weight / 1000;
+                        if (itemSDP.Hazardous_Ind == "Y")
+                        {
+                            Hazardou h = IME.Hazardous.Where(x => x.ArticleNo == itemSDP.Article_No).FirstOrDefault();
+                            s.HS = (h.Environment != null) ? true : false;
+                            s.LI = (h.Lithium != null && h.Lithium != String.Empty) ? true : false;
+                            hazarousList.Add(h);
+                        }
+
+                        break;
+                    case "ext":
+                        ExtendedRange itemEXT = IME.ExtendedRanges.Where(ext => ext.ArticleNo == q.ItemCode).FirstOrDefault();
+                        s.UnitWeight = (decimal)itemEXT.ExtendedRangeWeight / 1000;
+
+                        break;
+                }
+                
+                s.TotalWeight = s.UnitWeight * s.Qty;
+                // TODO item 3 listeden kontrol edilecek
                 //s.Stock
                 //s.Supplier
-                if(q.TargetUP != null) {s.TargetUP = (decimal)q.TargetUP;}
-                s.Total = (decimal)q.Total;
-                s.UnitWeight = (decimal)item.Standard_Weight / 1000;
-                s.TotalWeight = s.UnitWeight * s.Qty;
-                s.UC = (int)item.Unit_Content;
+                
+                // TODO 2 İndicator'ları tekrar kontrol et ve çek
+
+                /*s.UC = (int)item.Unit_Content;
                 s.UOM = item.Unit_Measure;
                 s.UPIMELP = (decimal)q.UCUPCurr;
                 s.HZ = (item.Hazardous_Ind == "Y") ? true : false;
                 s.CL = (item.Calibration_Ind == "Y") ? true : false;
-                s.LC = (item.Licensed_Ind == "" && item.Licensed_Ind != null) ? true : false;
+                s.LC = (item.Licensed_Ind == "" && item.Licensed_Ind != null) ? true : false;*/
 
                 if (s.isDeleted == 1)
                 {
@@ -113,15 +179,12 @@ namespace LoginForm.SaleOrder
         private SaleItem RowToSaleItem(DataGridViewRow row)
         {
             SaleItem item = new SaleItem();
-
-            item.NO = (int)row.Cells["No"].Value;
             
             return item;
         }
 
         private void SaleItemToRow(SaleItem item, DataGridViewRow row)
         {
-            
             row.Cells["sNo"].Value = item.NO;
             row.Cells["sBrand"].Value = item.Brand;
             row.Cells["sCCCNO"].Value = item.CCCNO;
@@ -168,6 +231,8 @@ namespace LoginForm.SaleOrder
         public partial class SaleItem
         {
             public int NO { get; set; }
+            public bool HZ { get; set; }
+            public bool HE { get; set; }
             public bool HS { get; set; }
             public bool LI { get; set; }
             public bool CL { get; set; }
@@ -191,7 +256,6 @@ namespace LoginForm.SaleOrder
             public decimal Total { get; set; }
             public decimal TargetUP { get; set; }
             public string Competitor { get; set; }
-            public bool HZ { get; set; }
             public bool CR { get; set; }
             public string Delivery { get; set; }
             public decimal UnitWeight { get; set; }
@@ -201,6 +265,13 @@ namespace LoginForm.SaleOrder
             public string COO { get; set; }
             public string CCCNO { get; set; }
             public int isDeleted { get; set; }
+            public string Manufacturer { get; set; }
+            public string dependentTable { get; set; }
+            public string UKIntroDate { get; set; }
+            public string UKDiscDate { get; set; }
+            public decimal Height { get; set; }
+            public decimal Width { get; set; }
+            public decimal Length { get; set; }
         }
 
         private void FillCustomer()
@@ -219,8 +290,6 @@ namespace LoginForm.SaleOrder
 
             
         }
-
-        
 
         private void populateComboBoxes()
         {
@@ -242,6 +311,20 @@ namespace LoginForm.SaleOrder
             cbPayment.ValueMember = "ID";
         }
 
+        private void dgSaleItems_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if(dgSaleItems.DataSource != null)
+            {
+                FillItemCard(dgSaleItems.CurrentRow.Cells["sItemCode"].Value.ToString());
+            }
+        }
 
+        private void FillItemCard(string itemCode)
+        {
+
+
+
+            //throw new NotImplementedException();
+        }
     }
 }
