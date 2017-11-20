@@ -874,7 +874,7 @@
             // AddressDel
             // 
             this.AddressDel.Enabled = false;
-            this.AddressDel.Location = new System.Drawing.Point(630, 213);
+            this.AddressDel.Location = new System.Drawing.Point(631, 214);
             this.AddressDel.Name = "AddressDel";
             this.AddressDel.Size = new System.Drawing.Size(45, 25);
             this.AddressDel.TabIndex = 14;
@@ -895,7 +895,7 @@
             // AdressAdd
             // 
             this.AdressAdd.Enabled = false;
-            this.AdressAdd.Location = new System.Drawing.Point(544, 214);
+            this.AdressAdd.Location = new System.Drawing.Point(544, 213);
             this.AdressAdd.Name = "AdressAdd";
             this.AdressAdd.Size = new System.Drawing.Size(42, 25);
             this.AdressAdd.TabIndex = 12;
@@ -1027,6 +1027,7 @@
             this.AdressCancel.Text = "Cancel";
             this.AdressCancel.UseVisualStyleBackColor = true;
             this.AdressCancel.Visible = false;
+            this.AdressCancel.Click += new System.EventHandler(this.AdressCancel_Click);
             // 
             // tab_contact
             // 
@@ -1074,7 +1075,7 @@
             this.ContactAdress.FormattingEnabled = true;
             this.ContactAdress.Location = new System.Drawing.Point(97, 237);
             this.ContactAdress.Name = "ContactAdress";
-            this.ContactAdress.Size = new System.Drawing.Size(151, 24);
+            this.ContactAdress.Size = new System.Drawing.Size(175, 24);
             this.ContactAdress.TabIndex = 43;
             // 
             // label42
@@ -1193,11 +1194,6 @@
             // 
             this.ContactType.Enabled = false;
             this.ContactType.FormattingEnabled = true;
-            this.ContactType.Items.AddRange(new object[] {
-            "Account",
-            "Sales",
-            "Purchase",
-            "Logistic"});
             this.ContactType.Location = new System.Drawing.Point(98, 18);
             this.ContactType.Name = "ContactType";
             this.ContactType.Size = new System.Drawing.Size(142, 24);
@@ -1297,15 +1293,15 @@
             this.ContactName.Enabled = false;
             this.ContactName.Location = new System.Drawing.Point(97, 128);
             this.ContactName.Name = "ContactName";
-            this.ContactName.Size = new System.Drawing.Size(167, 23);
+            this.ContactName.Size = new System.Drawing.Size(175, 23);
             this.ContactName.TabIndex = 4;
             // 
             // ContactEmail
             // 
             this.ContactEmail.Enabled = false;
-            this.ContactEmail.Location = new System.Drawing.Point(105, 164);
+            this.ContactEmail.Location = new System.Drawing.Point(97, 164);
             this.ContactEmail.Name = "ContactEmail";
-            this.ContactEmail.Size = new System.Drawing.Size(167, 23);
+            this.ContactEmail.Size = new System.Drawing.Size(175, 23);
             this.ContactEmail.TabIndex = 5;
             // 
             // label32

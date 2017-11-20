@@ -1934,7 +1934,7 @@ namespace LoginForm.QuotationModule
                     #endregion
             }
             lblsubtotal.Text = SubTotalTotal.ToString();
-
+            lblCurrValue.Text = CurrValue.ToString();
         }
 
         private void lblVatTotal_TextChanged(object sender, EventArgs e)

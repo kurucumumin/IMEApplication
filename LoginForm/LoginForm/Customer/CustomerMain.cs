@@ -215,6 +215,7 @@ namespace LoginForm
             ContactName.Enabled = false;
             ContactEmail.Enabled = false;
             ContactPhone.Enabled = false;
+            txtExtNumber.Enabled = false;
             ContactAdress.Enabled = false;
             ContactMobilePhone.Enabled = false;
             ContactFAX.Enabled = false;
@@ -264,6 +265,7 @@ namespace LoginForm
             ContactName.Enabled = true;
             ContactEmail.Enabled = true;
             ContactPhone.Enabled = true;
+            txtExtNumber.Enabled = true;
             ContactAdress.Enabled = true;
             btnContactAdd.Enabled = true;
             if (ContactList.Items.Count > 0)
