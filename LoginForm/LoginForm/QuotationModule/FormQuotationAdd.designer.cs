@@ -143,6 +143,7 @@
             this.txtAccountingNote = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblCurrValue = new System.Windows.Forms.Label();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.btnViewMore = new System.Windows.Forms.Button();
             this.txtCustomerName = new System.Windows.Forms.TextBox();
@@ -286,6 +287,7 @@
             this.ckItemCost = new System.Windows.Forms.CheckBox();
             this.btnCreateRev = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.cbDeliverDiscount = new System.Windows.Forms.CheckBox();
             this.lblTotalExtra = new System.Windows.Forms.Label();
             this.lblTotalDis = new System.Windows.Forms.Label();
             this.lblVat = new System.Windows.Forms.Label();
@@ -296,6 +298,7 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.txtExtraChanges = new System.Windows.Forms.TextBox();
             this.lblVatTotal = new System.Windows.Forms.Label();
+            this.txtTotalMarge = new System.Windows.Forms.TextBox();
             this.txtTotalDis2 = new System.Windows.Forms.TextBox();
             this.chkVat = new System.Windows.Forms.CheckBox();
             this.txtTotalDis = new System.Windows.Forms.TextBox();
@@ -310,7 +313,6 @@
             this.cbSMethod = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtNoteForCustomer = new System.Windows.Forms.TextBox();
-            this.lblCurrValue = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -421,10 +423,7 @@
             this.dgQuotationAddedItems.Name = "dgQuotationAddedItems";
             this.dgQuotationAddedItems.Size = new System.Drawing.Size(1227, 178);
             this.dgQuotationAddedItems.TabIndex = 9;
-            this.dgQuotationAddedItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotationAddedItems_CellClick);
-            this.dgQuotationAddedItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotationAddedItems_CellContentClick);
             this.dgQuotationAddedItems.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotationAddedItems_CellEndEdit);
-            this.dgQuotationAddedItems.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotationAddedItems_CellLeave);
             this.dgQuotationAddedItems.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgQuotationAddedItems_RowsAdded);
             this.dgQuotationAddedItems.Click += new System.EventHandler(this.dgQuotationAddedItems_Click);
             this.dgQuotationAddedItems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgQuotationAddedItems_KeyDown);
@@ -1245,6 +1244,16 @@
             this.groupBox1.Size = new System.Drawing.Size(544, 131);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
+            // 
+            // lblCurrValue
+            // 
+            this.lblCurrValue.AutoSize = true;
+            this.lblCurrValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblCurrValue.Location = new System.Drawing.Point(482, 110);
+            this.lblCurrValue.Name = "lblCurrValue";
+            this.lblCurrValue.Size = new System.Drawing.Size(62, 13);
+            this.lblCurrValue.TabIndex = 78;
+            this.lblCurrValue.Text = "CurrValue";
             // 
             // dtpDate
             // 
@@ -2724,6 +2733,7 @@
             // groupBox11
             // 
             this.groupBox11.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.groupBox11.Controls.Add(this.cbDeliverDiscount);
             this.groupBox11.Controls.Add(this.lblTotalExtra);
             this.groupBox11.Controls.Add(this.lblTotalDis);
             this.groupBox11.Controls.Add(this.lblVat);
@@ -2734,6 +2744,7 @@
             this.groupBox11.Controls.Add(this.textBox7);
             this.groupBox11.Controls.Add(this.txtExtraChanges);
             this.groupBox11.Controls.Add(this.lblVatTotal);
+            this.groupBox11.Controls.Add(this.txtTotalMarge);
             this.groupBox11.Controls.Add(this.txtTotalDis2);
             this.groupBox11.Controls.Add(this.chkVat);
             this.groupBox11.Controls.Add(this.txtTotalDis);
@@ -2743,14 +2754,24 @@
             this.groupBox11.ForeColor = System.Drawing.Color.Black;
             this.groupBox11.Location = new System.Drawing.Point(803, 12);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(280, 123);
+            this.groupBox11.Size = new System.Drawing.Size(323, 123);
             this.groupBox11.TabIndex = 49;
             this.groupBox11.TabStop = false;
+            // 
+            // cbDeliverDiscount
+            // 
+            this.cbDeliverDiscount.Location = new System.Drawing.Point(247, 38);
+            this.cbDeliverDiscount.Name = "cbDeliverDiscount";
+            this.cbDeliverDiscount.Size = new System.Drawing.Size(70, 32);
+            this.cbDeliverDiscount.TabIndex = 58;
+            this.cbDeliverDiscount.Text = "Deliver Discount";
+            this.cbDeliverDiscount.UseVisualStyleBackColor = true;
+            this.cbDeliverDiscount.Visible = false;
             // 
             // lblTotalExtra
             // 
             this.lblTotalExtra.AutoSize = true;
-            this.lblTotalExtra.Location = new System.Drawing.Point(207, 56);
+            this.lblTotalExtra.Location = new System.Drawing.Point(193, 57);
             this.lblTotalExtra.Name = "lblTotalExtra";
             this.lblTotalExtra.Size = new System.Drawing.Size(28, 13);
             this.lblTotalExtra.TabIndex = 57;
@@ -2788,7 +2809,7 @@
             // lbltotal
             // 
             this.lbltotal.AutoSize = true;
-            this.lbltotal.Location = new System.Drawing.Point(206, 38);
+            this.lbltotal.Location = new System.Drawing.Point(193, 38);
             this.lbltotal.Name = "lbltotal";
             this.lbltotal.Size = new System.Drawing.Size(28, 13);
             this.lbltotal.TabIndex = 53;
@@ -2836,12 +2857,21 @@
             // lblVatTotal
             // 
             this.lblVatTotal.AutoSize = true;
-            this.lblVatTotal.Location = new System.Drawing.Point(207, 78);
+            this.lblVatTotal.Location = new System.Drawing.Point(193, 78);
             this.lblVatTotal.Name = "lblVatTotal";
             this.lblVatTotal.Size = new System.Drawing.Size(28, 13);
             this.lblVatTotal.TabIndex = 18;
             this.lblVatTotal.Text = "0,00";
             this.lblVatTotal.TextChanged += new System.EventHandler(this.lblVatTotal_TextChanged);
+            // 
+            // txtTotalMarge
+            // 
+            this.txtTotalMarge.Location = new System.Drawing.Point(247, 15);
+            this.txtTotalMarge.Name = "txtTotalMarge";
+            this.txtTotalMarge.Size = new System.Drawing.Size(54, 20);
+            this.txtTotalMarge.TabIndex = 15;
+            this.txtTotalMarge.Visible = false;
+            this.txtTotalMarge.Leave += new System.EventHandler(this.txtTotalDis2_Leave);
             // 
             // txtTotalDis2
             // 
@@ -2849,7 +2879,6 @@
             this.txtTotalDis2.Name = "txtTotalDis2";
             this.txtTotalDis2.Size = new System.Drawing.Size(54, 20);
             this.txtTotalDis2.TabIndex = 15;
-            this.txtTotalDis2.Click += new System.EventHandler(this.txtTotalDis2_Click);
             this.txtTotalDis2.Leave += new System.EventHandler(this.txtTotalDis2_Leave);
             // 
             // chkVat
@@ -2871,13 +2900,12 @@
             this.txtTotalDis.Name = "txtTotalDis";
             this.txtTotalDis.Size = new System.Drawing.Size(50, 20);
             this.txtTotalDis.TabIndex = 13;
-            this.txtTotalDis.Click += new System.EventHandler(this.txtTotalDis_Click);
             this.txtTotalDis.Leave += new System.EventHandler(this.txtTotalDis_Leave);
             // 
             // lblGrossTotal
             // 
             this.lblGrossTotal.AutoSize = true;
-            this.lblGrossTotal.Location = new System.Drawing.Point(207, 97);
+            this.lblGrossTotal.Location = new System.Drawing.Point(193, 97);
             this.lblGrossTotal.Name = "lblGrossTotal";
             this.lblGrossTotal.Size = new System.Drawing.Size(28, 13);
             this.lblGrossTotal.TabIndex = 12;
@@ -2984,16 +3012,6 @@
             this.txtNoteForCustomer.Name = "txtNoteForCustomer";
             this.txtNoteForCustomer.Size = new System.Drawing.Size(404, 36);
             this.txtNoteForCustomer.TabIndex = 0;
-            // 
-            // lblCurrValue
-            // 
-            this.lblCurrValue.AutoSize = true;
-            this.lblCurrValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblCurrValue.Location = new System.Drawing.Point(482, 110);
-            this.lblCurrValue.Name = "lblCurrValue";
-            this.lblCurrValue.Size = new System.Drawing.Size(62, 13);
-            this.lblCurrValue.TabIndex = 78;
-            this.lblCurrValue.Text = "CurrValue";
             // 
             // FormQuotationAdd
             // 
@@ -3297,5 +3315,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
         private System.Windows.Forms.Button btnProductHistory;
         private System.Windows.Forms.Label lblCurrValue;
+        private System.Windows.Forms.TextBox txtTotalMarge;
+        private System.Windows.Forms.CheckBox cbDeliverDiscount;
     }
 }

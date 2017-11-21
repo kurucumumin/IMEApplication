@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ed25f267ad3b47f28357ae57dc0d2944" Name="Diagram1" ZoomLevel="52" >
+      <Diagram DiagramId="ed25f267ad3b47f28357ae57dc0d2944" Name="Diagram1" ZoomLevel="46" >
         <EntityTypeShape EntityType="IMEModel.AuthorizationValue" Width="1.5" PointX="0.75" PointY="19.25" />
         <EntityTypeShape EntityType="IMEModel.Capital" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="IMEModel.City" Width="1.5" PointX="13.5" PointY="3.5" />
@@ -20,8 +20,7 @@
         <EntityTypeShape EntityType="IMEModel.DailyDiscontinued" Width="1.5" PointX="2.75" PointY="0.75" />
         <EntityTypeShape EntityType="IMEModel.DiscountValue" Width="1.5" PointX="10.5" PointY="26.375" />
         <EntityTypeShape EntityType="IMEModel.DualUse" Width="1.5" PointX="0.75" PointY="3.75" />
-        <EntityTypeShape EntityType="IMEModel.ExtendedRange" Width="1.5" PointX="2.75" PointY="3.75" />
-        <EntityTypeShape EntityType="IMEModel.Hazardou" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="IMEModel.Hazardou" Width="1.5" PointX="0.75" PointY="6.75" />
         <EntityTypeShape EntityType="IMEModel.ItemNote" Width="1.5" PointX="3" PointY="36.625" />
         <EntityTypeShape EntityType="IMEModel.Language" Width="1.5" PointX="11.25" PointY="7.5" />
         <EntityTypeShape EntityType="IMEModel.LoaderDate" Width="1.5" PointX="4.75" PointY="3.75" />
@@ -119,6 +118,7 @@
         <AssociationConnector Association="IMEModel.FK__CustomerW__custo__4316F928" />
         <AssociationConnector Association="IMEModel.FK__DiscountV__Custo__6E565CE8" />
         <AssociationConnector Association="IMEModel.FK__Quotation__Custo__00750D23" />
+        <EntityTypeShape EntityType="IMEModel.ExtendedRange" Width="1.5" PointX="20.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -430,6 +430,7 @@ namespace LoginForm.User
                 clbUserAuthorityList.ClearSelected();
             }
         }
+
         private void numericFactor_ValueChanged(object sender, EventArgs e)
         {
             if(numericFactor.Focused)
