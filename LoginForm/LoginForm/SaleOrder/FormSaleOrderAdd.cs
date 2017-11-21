@@ -326,5 +326,44 @@ namespace LoginForm.SaleOrder
 
             //throw new NotImplementedException();
         }
+
+        private void btnViewMore_Click(object sender, EventArgs e)
+        {
+            if (CustomerCode.Text == null || CustomerCode.Text == string.Empty)
+            {
+                MessageBox.Show("Please Enter a Customer", "Eror !");
+            }
+            else
+            {
+                CustomerMain f = new CustomerMain(true, CustomerCode.Text);
+                f.ShowDialog();
+            }
+        }
+
+        private void btnContactAdd_Click(object sender, EventArgs e)
+        {
+            if (CustomerCode.Text == null)
+            {
+                MessageBox.Show("Customer not selected !", "Eror !");
+            }
+            else
+            {
+                CustomerMain f = new CustomerMain(1, CustomerCode.Text);
+                f.ShowDialog();
+            }
+        }
+
+        private void btnContactUpdate_Click(object sender, EventArgs e)
+        {
+            if (CustomerCode.Text == null)
+            {
+                MessageBox.Show("Customer not selected !", "Eror !");
+            }
+            else
+            {
+                CustomerMain f = new CustomerMain(1, CustomerCode.Text);
+                f.ShowDialog();
+            }
+        }
     }
 }
