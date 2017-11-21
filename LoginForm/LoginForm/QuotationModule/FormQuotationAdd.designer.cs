@@ -1148,7 +1148,6 @@
             this.txtTotalMargin.Name = "txtTotalMargin";
             this.txtTotalMargin.Size = new System.Drawing.Size(68, 20);
             this.txtTotalMargin.TabIndex = 4;
-            this.txtTotalMargin.Text = "Nan %";
             this.txtTotalMargin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtTotalMargin.Click += new System.EventHandler(this.txtTotalMargin_Click);
             this.txtTotalMargin.Leave += new System.EventHandler(this.txtTotalMargin_Leave);
@@ -2767,6 +2766,7 @@
             this.cbDeliverDiscount.Text = "Deliver Discount";
             this.cbDeliverDiscount.UseVisualStyleBackColor = true;
             this.cbDeliverDiscount.Visible = false;
+            this.cbDeliverDiscount.CheckedChanged += new System.EventHandler(this.cbDeliverDiscount_CheckedChanged);
             // 
             // lblTotalExtra
             // 

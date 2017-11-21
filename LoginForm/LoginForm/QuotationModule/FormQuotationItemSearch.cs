@@ -20,7 +20,11 @@ namespace LoginForm.QuotationModule
         {
             InitializeComponent();
             ArticleCode = ItemCode;
-            if(ArticleCode!=null) txtQuotationItemCode.Text = ArticleCode;
+            if (ArticleCode != null)
+            {
+                txtQuotationItemCode.Text = ArticleCode;
+                dgQuotationItemSearch.Select();
+            }
 
         }
 
