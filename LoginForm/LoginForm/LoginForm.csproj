@@ -609,6 +609,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\update_icon22.png" />
+    <None Include="Resources\update_icon21.png" />
+    <None Include="Resources\update_icon - Kopya.png" />
+    <None Include="Resources\update_icon2.png" />
     <None Include="Resources\update_icon1.png" />
     <None Include="Resources\update_icon.png" />
     <None Include="Resources\resize.png" />
