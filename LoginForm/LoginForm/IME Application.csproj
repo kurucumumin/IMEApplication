@@ -12,7 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\PC\Desktop\IME\</PublishUrl>
+    <PublishUrl>C:\Users\PC\Desktop\WebSite\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>13</ApplicationRevision>
+    <ApplicationRevision>14</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -111,6 +111,12 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\frmAccountGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\frmAccountGroup.Designer.cs">
+      <DependentUpon>frmAccountGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customer\CustomerDepartmentAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </Compile>
     <Compile Include="Customer\FormTownAdd.Designer.cs">
       <DependentUpon>FormTownAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\AccountGroup.cs">
+      <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\AuthorizationValue.cs">
       <DependentUpon>IME.tt</DependentUpon>
@@ -462,6 +471,9 @@
     <Compile Include="User\FormUserManagement.Designer.cs">
       <DependentUpon>FormUserManagement.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Account\frmAccountGroup.resx">
+      <DependentUpon>frmAccountGroup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Customer\CustomerDepartmentAdd.resx">
       <DependentUpon>CustomerDepartmentAdd.cs</DependentUpon>
     </EmbeddedResource>

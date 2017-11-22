@@ -5,6 +5,19 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="IMEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AccountGroup">
+          <Key>
+            <PropertyRef Name="accountGroupId" />
+          </Key>
+          <Property Name="accountGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="accountGroupName" Type="nvarchar" MaxLength="50" />
+          <Property Name="groupUnder" Type="int" />
+          <Property Name="narration" Type="nvarchar" MaxLength="200" />
+          <Property Name="isDefault" Type="bit" />
+          <Property Name="nature" Type="nvarchar" MaxLength="50" />
+          <Property Name="affectGrossProfit" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountGroupDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="AuthorizationValue">
           <Key>
             <PropertyRef Name="AuthorizationID" />
@@ -1511,6 +1524,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="IMEModelStoreContainer">
+          <EntitySet Name="AccountGroup" EntityType="Self.AccountGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AuthorizationValue" EntityType="Self.AuthorizationValue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AuthRole" EntityType="Self.AuthRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Capital" EntityType="Self.Capital" Schema="dbo" store:Type="Tables" />
@@ -2151,6 +2165,7 @@
             <End Role="Quotation" EntitySet="Quotations" />
           </AssociationSet>
           <EntitySet Name="ExtendedRanges" EntityType="IMEModel.ExtendedRange" />
+          <EntitySet Name="AccountGroups" EntityType="IMEModel.AccountGroup" />
         </EntityContainer>
         <EntityType Name="AuthorizationValue">
           <Key>
@@ -3733,6 +3748,19 @@
           <Property Name="ManufacturerCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="ExtendedRangeWeight" Type="Int32" />
         </EntityType>
+        <EntityType Name="AccountGroup">
+          <Key>
+            <PropertyRef Name="accountGroupId" />
+          </Key>
+          <Property Name="accountGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="accountGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="groupUnder" Type="Int32" />
+          <Property Name="narration" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="isDefault" Type="Boolean" />
+          <Property Name="nature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="affectGrossProfit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountGroupDate" Type="DateTime" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4473,6 +4501,20 @@
                 <ScalarProperty Name="MPN" ColumnName="MPN" />
                 <ScalarProperty Name="Brand" ColumnName="Brand" />
                 <ScalarProperty Name="ArticleNo" ColumnName="ArticleNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountGroups">
+            <EntityTypeMapping TypeName="IMEModel.AccountGroup">
+              <MappingFragment StoreEntitySet="AccountGroup">
+                <ScalarProperty Name="AccountGroupDate" ColumnName="AccountGroupDate" />
+                <ScalarProperty Name="affectGrossProfit" ColumnName="affectGrossProfit" />
+                <ScalarProperty Name="nature" ColumnName="nature" />
+                <ScalarProperty Name="isDefault" ColumnName="isDefault" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="groupUnder" ColumnName="groupUnder" />
+                <ScalarProperty Name="accountGroupName" ColumnName="accountGroupName" />
+                <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

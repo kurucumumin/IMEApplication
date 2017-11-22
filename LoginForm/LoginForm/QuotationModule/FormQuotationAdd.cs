@@ -61,6 +61,7 @@ namespace LoginForm.QuotationModule
             cbPayment.ValueMember = "ID";
             cbRep.DataSource = IME.Workers.ToList();
             cbRep.DisplayMember = "NameLastName";
+            cbRep.ValueMember = "WorkerID";
             cbWorkers.DataSource = IME.CustomerWorkers.Where(a => a.customerID == q1.CustomerID).ToList();
             cbWorkers.DisplayMember = "cw_name";
             cbWorkers.ValueMember = "ID";

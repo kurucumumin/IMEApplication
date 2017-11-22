@@ -1135,6 +1135,7 @@
             // 
             this.textBox11.Location = new System.Drawing.Point(1029, 12);
             this.textBox11.Name = "textBox11";
+            this.textBox11.ReadOnly = true;
             this.textBox11.Size = new System.Drawing.Size(46, 20);
             this.textBox11.TabIndex = 6;
             this.textBox11.Text = "0,00";
@@ -1146,6 +1147,7 @@
             // 
             this.txtTotalMargin.Location = new System.Drawing.Point(795, 12);
             this.txtTotalMargin.Name = "txtTotalMargin";
+            this.txtTotalMargin.ReadOnly = true;
             this.txtTotalMargin.Size = new System.Drawing.Size(68, 20);
             this.txtTotalMargin.TabIndex = 4;
             this.txtTotalMargin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1156,6 +1158,7 @@
             // 
             this.textBox10.Location = new System.Drawing.Point(891, 12);
             this.textBox10.Name = "textBox10";
+            this.textBox10.ReadOnly = true;
             this.textBox10.Size = new System.Drawing.Size(94, 20);
             this.textBox10.TabIndex = 5;
             this.textBox10.Text = "0,00";
