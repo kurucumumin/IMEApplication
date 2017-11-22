@@ -149,6 +149,8 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.tableMain = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txt3partyCode = new System.Windows.Forms.TextBox();
+            this.label43 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tab_company.SuspendLayout();
             this.tab_account.SuspendLayout();
@@ -175,6 +177,8 @@
             // 
             // tab_company
             // 
+            this.tab_company.Controls.Add(this.txt3partyCode);
+            this.tab_company.Controls.Add(this.label43);
             this.tab_company.Controls.Add(this.dateTimePicker1);
             this.tab_company.Controls.Add(this.cbMainContact);
             this.tab_company.Controls.Add(this.label35);
@@ -235,7 +239,7 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(368, 179);
+            this.label35.Location = new System.Drawing.Point(358, 185);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(90, 17);
             this.label35.TabIndex = 23;
@@ -243,7 +247,7 @@
             // 
             // btnAddSubcategory
             // 
-            this.btnAddSubcategory.Location = new System.Drawing.Point(310, 141);
+            this.btnAddSubcategory.Location = new System.Drawing.Point(310, 162);
             this.btnAddSubcategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddSubcategory.Name = "btnAddSubcategory";
             this.btnAddSubcategory.Size = new System.Drawing.Size(23, 21);
@@ -253,7 +257,7 @@
             // 
             // btnAddMainCategory
             // 
-            this.btnAddMainCategory.Location = new System.Drawing.Point(310, 100);
+            this.btnAddMainCategory.Location = new System.Drawing.Point(310, 121);
             this.btnAddMainCategory.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddMainCategory.Name = "btnAddMainCategory";
             this.btnAddMainCategory.Size = new System.Drawing.Size(23, 21);
@@ -289,7 +293,7 @@
             // 
             this.Represantative2.Enabled = false;
             this.Represantative2.FormattingEnabled = true;
-            this.Represantative2.Location = new System.Drawing.Point(123, 223);
+            this.Represantative2.Location = new System.Drawing.Point(123, 244);
             this.Represantative2.Name = "Represantative2";
             this.Represantative2.Size = new System.Drawing.Size(182, 24);
             this.Represantative2.TabIndex = 6;
@@ -298,7 +302,7 @@
             // Represantative1
             // 
             this.Represantative1.FormattingEnabled = true;
-            this.Represantative1.Location = new System.Drawing.Point(123, 182);
+            this.Represantative1.Location = new System.Drawing.Point(123, 203);
             this.Represantative1.Name = "Represantative1";
             this.Represantative1.Size = new System.Drawing.Size(182, 24);
             this.Represantative1.TabIndex = 5;
@@ -308,7 +312,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 227);
+            this.label6.Location = new System.Drawing.Point(8, 248);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(116, 17);
             this.label6.TabIndex = 0;
@@ -318,7 +322,7 @@
             // 
             this.SubCategory.Enabled = false;
             this.SubCategory.FormattingEnabled = true;
-            this.SubCategory.Location = new System.Drawing.Point(123, 141);
+            this.SubCategory.Location = new System.Drawing.Point(123, 162);
             this.SubCategory.Name = "SubCategory";
             this.SubCategory.Size = new System.Drawing.Size(182, 24);
             this.SubCategory.TabIndex = 4;
@@ -327,7 +331,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(368, 21);
+            this.label18.Location = new System.Drawing.Point(357, 21);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(48, 17);
             this.label18.TabIndex = 0;
@@ -336,7 +340,7 @@
             // label
             // 
             this.label.AutoSize = true;
-            this.label.Location = new System.Drawing.Point(8, 185);
+            this.label.Location = new System.Drawing.Point(8, 206);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(116, 17);
             this.label.TabIndex = 0;
@@ -361,7 +365,7 @@
             // 
             this.MainCategory.Enabled = false;
             this.MainCategory.FormattingEnabled = true;
-            this.MainCategory.Location = new System.Drawing.Point(123, 100);
+            this.MainCategory.Location = new System.Drawing.Point(123, 121);
             this.MainCategory.Name = "MainCategory";
             this.MainCategory.Size = new System.Drawing.Size(182, 24);
             this.MainCategory.TabIndex = 3;
@@ -371,7 +375,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(359, 216);
+            this.label11.Location = new System.Drawing.Point(357, 216);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(108, 17);
             this.label11.TabIndex = 0;
@@ -380,7 +384,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(368, 151);
+            this.label10.Location = new System.Drawing.Point(357, 153);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(85, 17);
             this.label10.TabIndex = 0;
@@ -389,7 +393,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 144);
+            this.label4.Location = new System.Drawing.Point(8, 165);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(88, 17);
             this.label4.TabIndex = 0;
@@ -425,7 +429,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 102);
+            this.label3.Location = new System.Drawing.Point(8, 123);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(99, 17);
             this.label3.TabIndex = 0;
@@ -434,7 +438,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(368, 119);
+            this.label9.Location = new System.Drawing.Point(358, 120);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(93, 17);
             this.label9.TabIndex = 0;
@@ -443,7 +447,7 @@
             // CustomerName
             // 
             this.CustomerName.Enabled = false;
-            this.CustomerName.Location = new System.Drawing.Point(123, 59);
+            this.CustomerName.Location = new System.Drawing.Point(123, 80);
             this.CustomerName.Name = "CustomerName";
             this.CustomerName.Size = new System.Drawing.Size(182, 23);
             this.CustomerName.TabIndex = 2;
@@ -459,7 +463,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 63);
+            this.label2.Location = new System.Drawing.Point(8, 84);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(109, 17);
             this.label2.TabIndex = 0;
@@ -468,7 +472,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(368, 54);
+            this.label24.Location = new System.Drawing.Point(357, 55);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(51, 17);
             this.label24.TabIndex = 0;
@@ -477,7 +481,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(357, 86);
+            this.label8.Location = new System.Drawing.Point(356, 86);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(112, 17);
             this.label8.TabIndex = 0;
@@ -1372,7 +1376,7 @@
             this.CustomerDataGrid.Name = "CustomerDataGrid";
             this.CustomerDataGrid.ReadOnly = true;
             this.CustomerDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.CustomerDataGrid.Size = new System.Drawing.Size(704, 222);
+            this.CustomerDataGrid.Size = new System.Drawing.Size(704, 284);
             this.CustomerDataGrid.TabIndex = 56;
             this.CustomerDataGrid.TabStop = false;
             this.CustomerDataGrid.Click += new System.EventHandler(this.CustomerDataGrid_Click);
@@ -1400,7 +1404,7 @@
             // 
             this.label36.AutoSize = true;
             this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.Location = new System.Drawing.Point(5, 20);
+            this.label36.Location = new System.Drawing.Point(2, 21);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(109, 17);
             this.label36.TabIndex = 55;
@@ -1444,7 +1448,7 @@
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 309F));
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 61F));
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableMain.Size = new System.Drawing.Size(718, 602);
+            this.tableMain.Size = new System.Drawing.Size(718, 668);
             this.tableMain.TabIndex = 6;
             // 
             // panel1
@@ -1461,11 +1465,28 @@
             this.panel1.Size = new System.Drawing.Size(706, 57);
             this.panel1.TabIndex = 2;
             // 
+            // txt3partyCode
+            // 
+            this.txt3partyCode.Enabled = false;
+            this.txt3partyCode.Location = new System.Drawing.Point(123, 48);
+            this.txt3partyCode.Name = "txt3partyCode";
+            this.txt3partyCode.Size = new System.Drawing.Size(182, 23);
+            this.txt3partyCode.TabIndex = 102;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(10, 52);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(103, 17);
+            this.label43.TabIndex = 101;
+            this.label43.Text = "3rd Party Code";
+            // 
             // CustomerMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 602);
+            this.ClientSize = new System.Drawing.Size(718, 668);
             this.Controls.Add(this.tableMain);
             this.KeyPreview = true;
             this.MinimumSize = new System.Drawing.Size(734, 593);
@@ -1614,5 +1635,7 @@
         private System.Windows.Forms.ComboBox ContactAdress;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Button TownAdd;
+        private System.Windows.Forms.TextBox txt3partyCode;
+        private System.Windows.Forms.Label label43;
     }
 }
