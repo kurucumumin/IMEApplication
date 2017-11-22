@@ -609,6 +609,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\update_icon1.png" />
+    <None Include="Resources\update_icon.png" />
     <None Include="Resources\resize.png" />
     <None Include="Resources\btnBackground.png" />
     <None Include="Resources\gradient2.jpg" />
