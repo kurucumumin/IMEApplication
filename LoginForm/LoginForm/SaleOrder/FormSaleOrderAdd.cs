@@ -100,62 +100,91 @@ namespace LoginForm.SaleOrder
                 s.Total = (decimal)q.Total;
 
                 // TODO !Important dependantTable verisi eklenmeli
-                //s.dependentTable = q.dependantTable;
+                s.dependentTable = q.dependantTable;
 
-                //switch (q.dependantTable)
-                //{
-                //    case "sd":
-                //        SuperDisk itemSD = IME.SuperDisks.Where(sd => sd.Article_No == q.ItemCode).FirstOrDefault();
-                //        s.UnitWeight = (decimal)itemSD.Standard_Weight / 1000;
+                switch (q.dependantTable)
+                {
+                    case "sd":
+                        SuperDisk itemSD = IME.SuperDisks.Where(sd => sd.Article_No == q.ItemCode).FirstOrDefault();
+                        s.UnitWeight = (decimal)itemSD.Standard_Weight / 1000;
 
-                //        s.CL = (itemSD.Calibration_Ind == "Y") ? true : false;
-                //        s.LC = (itemSD.Licensed_Ind == "Y") ? true : false;
-                //        s.Manufacturer = itemSD.Manufacturer;
-                //        s.COO = itemSD.CofO;
-                //        s.CCCNO = itemSD.CCCN_No;
-                //        // TODO Aşağıdaki 2 tarih verisi güncel olan tablodan alınacak.
-                //        s.UKIntroDate = itemSD.Uk_Intro_Date;
-                //        s.UKDiscDate = itemSD.Uk_Disc_Date;
-                //        s.Height = (decimal)itemSD.Heigh;
-                //        s.Width = (decimal)itemSD.Width;
-                //        s.Length = (decimal)itemSD.Length;
-                //        s.TotalWeight = (decimal)(s.UnitWeight * itemSD.Unit_Content);
-
-
-                //        if (itemSD.Hazardous_Ind == "Y")
-                //        {
-                //            Hazardou h = IME.Hazardous.Where(x => x.ArticleNo == itemSD.Article_No).FirstOrDefault();
-                //            s.HS = (h.Environment != null) ? true : false;
-                //            s.LI = (h.Lithium != null && h.Lithium != String.Empty) ? true : false;
-                //            hazarousList.Add(h);
-                //        }
+                        s.CL = (itemSD.Calibration_Ind == "Y") ? true : false;
+                        s.LC = (itemSD.Licensed_Ind == "Y") ? true : false;
+                        s.Manufacturer = itemSD.Manufacturer;
+                        s.COO = itemSD.CofO;
+                        s.CCCNO = itemSD.CCCN_No;
+                        // TODO Aşağıdaki 2 tarih verisi güncel olan tablodan alınacak.
+                        s.UKIntroDate = itemSD.Uk_Intro_Date;
+                        s.UKDiscDate = itemSD.Uk_Disc_Date;
+                        s.Height = (decimal)itemSD.Heigh;
+                        s.Width = (decimal)itemSD.Width;
+                        s.Length = (decimal)itemSD.Length;
+                        s.TotalWeight = (decimal)(s.UnitWeight * itemSD.Unit_Content);
 
 
-                //        break;
-                //    case "sdp":
-                //        SuperDiskP itemSDP = IME.SuperDiskPs.Where(sdp => sdp.Article_No == q.ItemCode).FirstOrDefault();
-                //        s.UnitWeight = (decimal)itemSDP.Standard_Weight / 1000;
-                //        if (itemSDP.Hazardous_Ind == "Y")
-                //        {
-                //            Hazardou h = IME.Hazardous.Where(x => x.ArticleNo == itemSDP.Article_No).FirstOrDefault();
-                //            s.HS = (h.Environment != null) ? true : false;
-                //            s.LI = (h.Lithium != null && h.Lithium != String.Empty) ? true : false;
-                //            hazarousList.Add(h);
-                //        }
+                        if (itemSD.Hazardous_Ind == "Y")
+                        {
+                            Hazardou h = IME.Hazardous.Where(x => x.ArticleNo == itemSD.Article_No).FirstOrDefault();
+                            s.HS = (h.Environment != null) ? true : false;
+                            s.LI = (h.Lithium != null && h.Lithium != String.Empty) ? true : false;
+                            hazarousList.Add(h);
+                        }
+                        
+                        break;
+                    case "sdp":
+                        SuperDiskP itemSDP = IME.SuperDiskPs.Where(sdp => sdp.Article_No == q.ItemCode).FirstOrDefault();
+                        s.UnitWeight = (decimal)itemSDP.Standard_Weight / 1000;
 
-                //        break;
-                //    case "ext":
-                //        ExtendedRange itemEXT = IME.ExtendedRanges.Where(ext => ext.ArticleNo == q.ItemCode).FirstOrDefault();
-                //        s.UnitWeight = (decimal)itemEXT.ExtendedRangeWeight / 1000;
+                        s.CL = (itemSDP.Calibration_Ind == "Y") ? true : false;
+                        s.LC = (itemSDP.Licensed_Ind == "Y") ? true : false;
+                        s.Manufacturer = itemSDP.Manufacturer;
+                        s.COO = itemSDP.CofO;
+                        s.CCCNO = itemSDP.CCCN_No;
+                        // TODO Aşağıdaki 2 tarih verisi güncel olan tablodan alınacak.
+                        s.UKIntroDate = itemSDP.Uk_Intro_Date;
+                        s.UKDiscDate = itemSDP.Uk_Disc_Date;
+                        s.Height = (decimal)itemSDP.Heigh;
+                        s.Width = (decimal)itemSDP.Width;
+                        s.Length = (decimal)itemSDP.Length;
+                        s.TotalWeight = (decimal)(s.UnitWeight * itemSDP.Unit_Content);
 
-                //        break;
-                //}
-                
+                        if (itemSDP.Hazardous_Ind == "Y")
+                        {
+                            Hazardou h = IME.Hazardous.Where(x => x.ArticleNo == itemSDP.Article_No).FirstOrDefault();
+                            s.HS = (h.Environment != null) ? true : false;
+                            s.LI = (h.Lithium != null && h.Lithium != String.Empty) ? true : false;
+                            hazarousList.Add(h);
+                        }
+
+                        break;
+                    case "ext":
+                        ExtendedRange itemEXT = IME.ExtendedRanges.Where(ext => ext.ArticleNo == q.ItemCode).FirstOrDefault();
+                        s.UnitWeight = (decimal)itemEXT.ExtendedRangeWeight / 1000;
+                        
+                        s.LC = (itemEXT.Licensed_Ind == "Y") ? true : false;
+                        s.Manufacturer = itemEXT.Manufacturer;
+                        s.COO = itemEXT.CofO;
+                        s.CCCNO = itemEXT.CCCN_No;
+                        // TODO Aşağıdaki 2 tarih verisi güncel olan tablodan alınacak.
+                        s.UKIntroDate = itemEXT.Uk_Intro_Date;
+                        s.UKDiscDate = itemEXT.Uk_Disc_Date;
+                        s.Height = (decimal)itemEXT.Heigh;
+                        s.Width = (decimal)itemEXT.Width;
+                        s.Length = (decimal)itemEXT.Length;
+                        s.TotalWeight = (decimal)(s.UnitWeight * itemEXT.Unit_Content);
+
+
+
+
+
+                        break;
+                }
+
                 s.TotalWeight = s.UnitWeight * s.Qty;
                 // TODO item 3 listeden kontrol edilecek
                 //s.Stock
                 //s.Supplier
-                
+
                 // TODO 2 İndicator'ları tekrar kontrol et ve çek
 
                 /*s.UC = (int)item.Unit_Content;
@@ -272,6 +301,7 @@ namespace LoginForm.SaleOrder
             public decimal Height { get; set; }
             public decimal Width { get; set; }
             public decimal Length { get; set; }
+            public string MHLevel1 { get; set; }
         }
 
         private void FillCustomer()
