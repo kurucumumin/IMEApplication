@@ -100,9 +100,10 @@ namespace LoginForm.SaleOrder
                 s.Total = (decimal)q.Total;
 
                 // TODO !Important dependantTable verisi eklenmeli
-                s.dependentTable = q.dependantTable;
+                //s.dependentTable = q.dependantTable;
 
-                switch (q.dependantTable)
+                //switch (q.dependantTable)
+                switch ("cem")
                 {
                     case "sd":
                         SuperDisk itemSD = IME.SuperDisks.Where(sd => sd.Article_No == q.ItemCode).FirstOrDefault();
@@ -161,17 +162,17 @@ namespace LoginForm.SaleOrder
                         ExtendedRange itemEXT = IME.ExtendedRanges.Where(ext => ext.ArticleNo == q.ItemCode).FirstOrDefault();
                         s.UnitWeight = (decimal)itemEXT.ExtendedRangeWeight / 1000;
                         
-                        s.LC = (itemEXT.Licensed_Ind == "Y") ? true : false;
-                        s.Manufacturer = itemEXT.Manufacturer;
-                        s.COO = itemEXT.CofO;
-                        s.CCCNO = itemEXT.CCCN_No;
-                        // TODO Aşağıdaki 2 tarih verisi güncel olan tablodan alınacak.
-                        s.UKIntroDate = itemEXT.Uk_Intro_Date;
-                        s.UKDiscDate = itemEXT.Uk_Disc_Date;
-                        s.Height = (decimal)itemEXT.Heigh;
-                        s.Width = (decimal)itemEXT.Width;
-                        s.Length = (decimal)itemEXT.Length;
-                        s.TotalWeight = (decimal)(s.UnitWeight * itemEXT.Unit_Content);
+                        //s.LC = (itemEXT.Licensed_Ind == "Y") ? true : false;
+                        //s.Manufacturer = itemEXT.Manufacturer;
+                        //s.COO = itemEXT.CofO;
+                        //s.CCCNO = itemEXT.CCCN_No;
+                        //// TODO Aşağıdaki 2 tarih verisi güncel olan tablodan alınacak.
+                        //s.UKIntroDate = itemEXT.Uk_Intro_Date;
+                        //s.UKDiscDate = itemEXT.Uk_Disc_Date;
+                        //s.Height = (decimal)itemEXT.Heigh;
+                        //s.Width = (decimal)itemEXT.Width;
+                        //s.Length = (decimal)itemEXT.Length;
+                        //s.TotalWeight = (decimal)(s.UnitWeight * itemEXT.Unit_Content);
 
 
 

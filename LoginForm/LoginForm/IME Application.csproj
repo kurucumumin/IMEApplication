@@ -111,6 +111,12 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\frmAccountLedger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\frmAccountLedger.designer.cs">
+      <DependentUpon>frmAccountLedger.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customer\CustomerDepartmentAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -415,6 +421,7 @@
       <DependentUpon>FormSaleOrderMain.cs</DependentUpon>
     </Compile>
     <Compile Include="SaleOrder\SalesOrderHelper.cs" />
+    <Compile Include="Services\Messages.cs" />
     <Compile Include="Services\ToolTipService.cs" />
     <Compile Include="User\FormUsersMain.cs">
       <SubType>Form</SubType>
@@ -462,6 +469,9 @@
     <Compile Include="User\FormUserManagement.Designer.cs">
       <DependentUpon>FormUserManagement.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Account\frmAccountLedger.resx">
+      <DependentUpon>frmAccountLedger.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Customer\CustomerDepartmentAdd.resx">
       <DependentUpon>CustomerDepartmentAdd.cs</DependentUpon>
     </EmbeddedResource>
