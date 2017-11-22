@@ -16,5 +16,24 @@ namespace LoginForm.ShipingDetails
         {
             InitializeComponent();
         }
+
+        private void ShipingDetailMain_Load(object sender, EventArgs e)
+        {
+            SetMyButtonIcon();
+        }
+
+        private void SetMyButtonIcon()
+        {
+            //// Assign an image to the button.
+        
+            //// Align the image and text on the button.
+            //button1.ImageAlign = ContentAlignment.MiddleRight;
+            //button1.TextAlign = ContentAlignment.MiddleLeft;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
