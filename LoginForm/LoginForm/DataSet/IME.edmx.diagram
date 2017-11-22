@@ -119,6 +119,7 @@
         <AssociationConnector Association="IMEModel.FK__DiscountV__Custo__6E565CE8" />
         <AssociationConnector Association="IMEModel.FK__Quotation__Custo__00750D23" />
         <EntityTypeShape EntityType="IMEModel.ExtendedRange" Width="1.5" PointX="20.375" PointY="0.75" />
+        <EntityTypeShape EntityType="IMEModel.AccountGroup" Width="1.5" PointX="15.375" PointY="10.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
