@@ -42,8 +42,14 @@ namespace LoginForm.SaleOrder
         {
             if(lbCustomerList.SelectedValue != null)
             {
+                //var dgList = ((Customer)lbCustomerList.SelectedItem).Quotations;
                 var dgList = IME.Quotations.Where(q => q.CustomerID == lbCustomerList.SelectedValue.ToString()).ToList();
                 dgQuotations.DataSource = dgList;
+                dgQuotations.ClearSelection();
+            }
+            else
+            {
+                dgQuotations.DataSource = null;
                 dgQuotations.ClearSelection();
             }
         }

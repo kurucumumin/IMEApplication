@@ -10,7 +10,7 @@ namespace LoginForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmAccountGroup());
+            Application.Run(new FormLogin());
         }
     }
 }
