@@ -50,10 +50,12 @@
             // 
             // dgMail
             // 
+            this.dgMail.AllowUserToDeleteRows = false;
             this.dgMail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgMail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgMail.Location = new System.Drawing.Point(3, 16);
             this.dgMail.Name = "dgMail";
+            this.dgMail.ReadOnly = true;
             this.dgMail.Size = new System.Drawing.Size(500, 128);
             this.dgMail.TabIndex = 0;
             // 
@@ -86,6 +88,7 @@
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // radioSpecial
             // 
@@ -111,6 +114,7 @@
             this.Name = "MailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MailForm";
+            this.Load += new System.EventHandler(this.MailForm_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgMail)).EndInit();
             this.ResumeLayout(false);

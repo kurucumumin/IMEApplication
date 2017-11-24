@@ -22,6 +22,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> Width { get; set; }
         public Nullable<decimal> Height { get; set; }
         public string DimensionUoM { get; set; }
+        public Nullable<decimal> ExtendedRangeWeight { get; set; }
         public string WeightUoM { get; set; }
         public Nullable<int> CCCN { get; set; }
         public string CountryofOrigin { get; set; }
@@ -45,6 +46,5 @@ namespace LoginForm.DataSet
         public Nullable<decimal> DiscountedPrice4 { get; set; }
         public Nullable<decimal> DiscountedPrice5 { get; set; }
         public string ManufacturerCode { get; set; }
-        public Nullable<int> ExtendedRangeWeight { get; set; }
     }
 }

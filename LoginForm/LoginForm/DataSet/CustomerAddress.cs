@@ -36,12 +36,12 @@ namespace LoginForm.DataSet
     
         public virtual City City { get; set; }
         public virtual Country Country { get; set; }
+        public virtual Customer Customer { get; set; }
         public virtual CustomerWorker CustomerWorker { get; set; }
         public virtual Town Town { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleOrder> SaleOrders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleOrder> SaleOrders1 { get; set; }
-        public virtual Customer Customer { get; set; }
     }
 }
