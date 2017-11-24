@@ -30,8 +30,8 @@ namespace LoginForm.DataSet
         public Nullable<decimal> UPIME { get; set; }
         public Nullable<decimal> Marge { get; set; }
         public string UnitOfMeasure { get; set; }
-        public Nullable<int> UC { get; set; }
         public Nullable<int> SSM { get; set; }
+        public Nullable<int> UC { get; set; }
         public Nullable<decimal> UnitWeight { get; set; }
     
         public virtual Quotation Quotation { get; set; }

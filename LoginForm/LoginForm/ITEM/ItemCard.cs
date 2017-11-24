@@ -642,10 +642,6 @@ namespace LoginForm.Item
             }
         }
 
-        private void ItemCard_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void dgItemList_CellEnter(object sender, DataGridViewCellEventArgs e)
         {

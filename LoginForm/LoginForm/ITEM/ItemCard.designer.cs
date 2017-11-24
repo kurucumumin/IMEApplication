@@ -2174,7 +2174,6 @@ namespace LoginForm.Item
             this.Name = "ItemCard";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.ItemCard_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
