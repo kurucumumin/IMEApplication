@@ -12,7 +12,7 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class mail
+    public partial class Mail
     {
         public int id { get; set; }
         public string FirstName { get; set; }

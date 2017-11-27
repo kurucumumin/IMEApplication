@@ -27,7 +27,6 @@
         <EntityTypeShape EntityType="IMEModel.ItemNote" Width="1.5" PointX="3" PointY="33.25" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Language" Width="1.5" PointX="6" PointY="38" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.LoaderDate" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.mail" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Management" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Note" Width="1.5" PointX="0.75" PointY="23.5" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.OnSale" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
@@ -128,6 +127,7 @@
         <AssociationConnector Association="IMEModel.FK__SupplierW__title__7755B73D" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.AuthRole" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.UserAuthorization" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="IMEModel.Mail" Width="1.5" PointX="8.375" PointY="12.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

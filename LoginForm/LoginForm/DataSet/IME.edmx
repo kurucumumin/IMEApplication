@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="IMEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="IMEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AccountGroup">
           <Key>
             <PropertyRef Name="accountGroupId" />
@@ -279,7 +279,7 @@
           <Property Name="TSEList_Date" Type="datetime" />
           <Property Name="RSPro_Date" Type="datetime" />
         </EntityType>
-        <EntityType Name="mail">
+        <EntityType Name="Mail">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -1642,7 +1642,7 @@
           <EntitySet Name="ItemNote" EntityType="Self.ItemNote" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoaderDates" EntityType="Self.LoaderDates" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="mail" EntityType="Self.mail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mail" EntityType="Self.Mail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Management" EntityType="Self.Management" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OnSale" EntityType="Self.OnSale" Schema="dbo" store:Type="Tables" />
@@ -1966,8 +1966,7 @@
             <End Role="Worker" EntitySet="Worker" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="IMEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -2294,16 +2293,6 @@
           <Property Name="Hazardous_Date" Type="DateTime" Precision="3" />
           <Property Name="TSEList_Date" Type="DateTime" Precision="3" />
           <Property Name="RSPro_Date" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="mail">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="cc" Type="Boolean" />
-          <Property Name="too" Type="Boolean" />
         </EntityType>
         <EntityType Name="Management">
           <Key>
@@ -3693,7 +3682,6 @@
           <EntitySet Name="ItemNotes" EntityType="Self.ItemNote" />
           <EntitySet Name="Languages" EntityType="Self.Language" />
           <EntitySet Name="LoaderDates" EntityType="Self.LoaderDate" />
-          <EntitySet Name="mails" EntityType="Self.mail" />
           <EntitySet Name="Managements" EntityType="Self.Management" />
           <EntitySet Name="Notes" EntityType="Self.Note" />
           <EntitySet Name="OnSales" EntityType="Self.OnSale" />
@@ -4007,7 +3995,18 @@
             <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
             <End Role="Worker" EntitySet="Workers" />
           </AssociationSet>
+          <EntitySet Name="Mails" EntityType="IMEModel.Mail" />
         </EntityContainer>
+        <EntityType Name="Mail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cc" Type="Boolean" />
+          <Property Name="too" Type="Boolean" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4299,17 +4298,6 @@
                 <ScalarProperty Name="Hazardous_Date" ColumnName="Hazardous_Date" />
                 <ScalarProperty Name="TSEList_Date" ColumnName="TSEList_Date" />
                 <ScalarProperty Name="RSPro_Date" ColumnName="RSPro_Date" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="mails">
-            <EntityTypeMapping TypeName="IMEModel.mail">
-              <MappingFragment StoreEntitySet="mail">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="MailAddress" ColumnName="MailAddress" />
-                <ScalarProperty Name="cc" ColumnName="cc" />
-                <ScalarProperty Name="too" ColumnName="too" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4803,6 +4791,17 @@
               <ScalarProperty Name="WorkerID" ColumnName="WorkerID" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Mails">
+            <EntityTypeMapping TypeName="IMEModel.Mail">
+              <MappingFragment StoreEntitySet="Mail">
+                <ScalarProperty Name="too" ColumnName="too" />
+                <ScalarProperty Name="cc" ColumnName="cc" />
+                <ScalarProperty Name="MailAddress" ColumnName="MailAddress" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
