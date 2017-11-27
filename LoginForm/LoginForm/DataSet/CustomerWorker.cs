@@ -21,6 +21,7 @@ namespace LoginForm.DataSet
             this.CustomerAddresses = new HashSet<CustomerAddress>();
             this.SaleOrders = new HashSet<SaleOrder>();
             this.SaleOrders1 = new HashSet<SaleOrder>();
+            this.SaleOrders2 = new HashSet<SaleOrder>();
         }
     
         public int ID { get; set; }
@@ -51,5 +52,7 @@ namespace LoginForm.DataSet
         public virtual ICollection<SaleOrder> SaleOrders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleOrder> SaleOrders1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SaleOrder> SaleOrders2 { get; set; }
     }
 }

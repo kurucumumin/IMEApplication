@@ -233,6 +233,9 @@
     <Compile Include="DataSet\LoaderDate.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\Mail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Management.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -643,6 +646,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>IME.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="ClassDiagram1.cd" />
     <None Include="DataSet\IME.edmx.diagram">
       <DependentUpon>IME.edmx</DependentUpon>
     </None>

@@ -1,22 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using LoginForm.DataSet;
-using LoginForm.Services;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.ComponentModel;
+//using System.Data;
+//using System.Drawing;
+//using System.Linq;
+//using System.Text;
+//using System.Windows.Forms;
+//using LoginForm.DataSet;
+//using LoginForm.Services;
 
-//namespace Open_Miracle
+//namespace LoginForm
 //{
 //    public partial class frmTax : Form
 //    {
 //        #region Public Variables
+
 //        IMEEntities IME = new IMEEntities();
-
-
 //        bool isDefault = false;
 //        decimal decTaxId;
 //        int inNarrationCount;
@@ -28,34 +27,13 @@ using LoginForm.Services;
 //        #endregion
 
 //        #region Functions
-//        /// <summary>
-//        /// creating an instance for frmTax Class
-//        /// </summary>
+
 //        public frmTax()
 //        {
 //            InitializeComponent();
 //        }
-//        /// <summary>
-//        /// its a call function from product creation from to create a new tax
-//        /// </summary>
-//        /// <param name="frmProduct"></param>
-//        public void CallFromProdutCreation(frmProductCreation frmProduct)
-//        {
-//            try
-//            {
-//                frmProduct.Enabled = false;
-//                this.frmProductCreationObj = frmProduct;
-//                base.Show();
-//                groupBox2.Enabled = false;
-//            }
-//            catch(Exception ex)
-//            {
-//                MessageBox.Show("TC1:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-//            }
-//        }
-//        /// <summary>
-//        /// reset the form here
-//        /// </summary>
+
+
 //        public void Clear()
 //        {
 //            try
@@ -80,9 +58,8 @@ using LoginForm.Services;
 //                MessageBox.Show("TC2:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
 //            }
 //        }
-//        /// <summary>
-//        ///  search function clear function
-//        /// </summary>
+
+
 //        public void SearchClear()
 //        {
 //            try
@@ -99,74 +76,42 @@ using LoginForm.Services;
 //                MessageBox.Show("TC3:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
 //            }
 //        }
-//        /// <summary>
-//        /// save function
-//        /// </summary>
+
+
 //        public void SaveFunction()
 //        {
-//            try
+//            if (IME.Taxes.Where(a => a.taxName == txtTaxName.Text.Trim()).FirstOrDefault() == null)
 //            {
-//                Tax tax = new Tax();
-//                tax.taxName = txtTaxName.Text.Trim();
-//                tax.Rate = Convert.ToDecimal(txtRate.Text.ToString());
-//                tax.ApplicationOn = cmbApplicableFor.SelectedItem.ToString();
+//                Tax infoTax = new Tax();
+//                TaxDetail spTax = new TaxDetail();
+
+//                infoTax.taxName = txtTaxName.Text.Trim();
+//                infoTax.Rate = Convert.ToDecimal(txtRate.Text.ToString());
+//                infoTax.ApplicationOn = cmbApplicableFor.SelectedItem.ToString();
 //                if (cmbCalculationMode.Enabled != true)
 //                {
-//                    tax.CalculatingMode = string.Empty;
+//                    infoTax.CalculatingMode = string.Empty;
 //                }
 //                else
 //                {
-//                    tax.CalculatingMode = cmbCalculationMode.SelectedItem.ToString();
+//                    infoTax.CalculatingMode = cmbCalculationMode.SelectedItem.ToString();
 //                }
-//                tax.narration = txtNarration.Text.Trim();
+//                infoTax.narration = txtNarration.Text.Trim();
 //                if (cbxActive.Checked)
 //                {
-//                    tax.isActive = true;
+//                    infoTax.isActive = true;
 //                }
 //                else
 //                {
-//                    tax.isActive = false;
+//                    infoTax.isActive = false;
 //                }
-                
-//                if (spTax.TaxCheckExistence(0, txtTaxName.Text.Trim()) == false)
-//                {
-//                    decTaxId = spTax.TaxAddWithIdentity(infoTax);
-//                    decIdForOtherForms = decTaxId;
-//                    if (dgvTaxSelection.RowCount > 0)
-//                    {
-//                        bool isOk = false;
-//                        foreach (DataGridViewRow dgvRow in dgvTaxSelection.Rows)
-//                        {
-//                            isOk = Convert.ToBoolean(dgvRow.Cells["dgvcbxSelect"].Value);
-//                            if (isOk)
-//                            {
-//                                infoTaxDetails.TaxId = decTaxId;
-//                                infoTaxDetails.SelectedtaxId = Convert.ToDecimal(dgvRow.Cells["dgvtxtTaxId"].Value.ToString());//dgvRow.Cells[0].Value.ToString();
-//                                infoTaxDetails.ExtraDate = DateTime.Now;
-//                                infoTaxDetails.Extra1 = string.Empty;
-//                                infoTaxDetails.Extra2 = string.Empty;
-//                                spTaxDetails.TaxDetailsAddWithoutId(infoTaxDetails);
-//                            }
-//                        }
-//                    }
-//                    CreateLedger();
-//                    Messages.SavedMessage();
-//                    Clear();
-//                    SearchClear();
-//                }
-//                else
-//                {
-//                    Messages.InformationMessage(" Tax or ledger already exist");
-//                    txtTaxName.Focus();
-//                }
-//                if (frmProductCreationObj != null)
-//                {
-//                    this.Close();
-//                }
+
+//                IME.Taxes.Add(infoTax);
+//                IME.SaveChanges();
 //            }
-//            catch (Exception ex)
+//            else
 //            {
-//                MessageBox.Show("TC4:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+//                MessageBox.Show("Tax or ledger already exist");
 //            }
 //        }
 //        /// <summary>
@@ -281,23 +226,16 @@ using LoginForm.Services;
 //                string strTaxNameForLedger = string.Empty;
 //                strTaxNameForLedger = txtTaxName.Text;
 
-                
-//                    if (btnSave.Text == "Save")
-//                    {
-//                        if (!spAccountLedger.AccountLedgerCheckExistence(strTaxNameForLedger, 0))
-//                        {
-//                            if (PublicVariables.isMessageAdd)
-//                            {
-//                                if (Messages.SaveMessage())
-//                                {
 
-//                                    SaveFunction();
-//                                    TaxSelectionGridFill();
-//                                    TaxSearchGridFill();
-//                                }
-//                            }
-//                            else
+//                if (btnSave.Text == "Save")
+//                {
+//                    if (!spAccountLedger.AccountLedgerCheckExistence(strTaxNameForLedger, 0))
+//                    {
+//                        if (PublicVariables.isMessageAdd)
+//                        {
+//                            if (Messages.SaveMessage())
 //                            {
+
 //                                SaveFunction();
 //                                TaxSelectionGridFill();
 //                                TaxSearchGridFill();
@@ -305,23 +243,23 @@ using LoginForm.Services;
 //                        }
 //                        else
 //                        {
-//                            Messages.InformationMessage("Cannot save. Ledger already exists");
+//                            SaveFunction();
+//                            TaxSelectionGridFill();
+//                            TaxSearchGridFill();
 //                        }
 //                    }
 //                    else
 //                    {
-//                        if (!spAccountLedger.AccountLedgerCheckExistence(strTaxNameForLedger, decLedgerId))
+//                        Messages.InformationMessage("Cannot save. Ledger already exists");
+//                    }
+//                }
+//                else
+//                {
+//                    if (!spAccountLedger.AccountLedgerCheckExistence(strTaxNameForLedger, decLedgerId))
+//                    {
+//                        if (PublicVariables.isMessageEdit)
 //                        {
-//                            if (PublicVariables.isMessageEdit)
-//                            {
-//                                if (Messages.UpdateMessage())
-//                                {
-//                                    EditFunction();
-//                                    TaxSelectionGridFill();
-//                                    TaxSearchGridFill();
-//                                }
-//                            }
-//                            else
+//                            if (Messages.UpdateMessage())
 //                            {
 //                                EditFunction();
 //                                TaxSelectionGridFill();
@@ -330,10 +268,17 @@ using LoginForm.Services;
 //                        }
 //                        else
 //                        {
-//                            Messages.InformationMessage("Cannot save. Ledger already exists");
+//                            EditFunction();
+//                            TaxSelectionGridFill();
+//                            TaxSearchGridFill();
 //                        }
 //                    }
-                
+//                    else
+//                    {
+//                        Messages.InformationMessage("Cannot save. Ledger already exists");
+//                    }
+//                }
+
 //            }
 //            catch (Exception ex)
 //            {
@@ -527,117 +472,113 @@ using LoginForm.Services;
 //        /// </summary>
 //        public void Delete()
 //        {
-//            //try
-//            //{
-//            //    if (PublicVariables.isMessageDelete)
-//            //    {
-//            //        if (Messages.DeleteMessage())
-//            //        {
-//            //            TaxInfo infoTax = new TaxInfo();
-//            //            TaxSP spTax = new TaxSP();
-//            //            TaxDetailsInfo infoTaxDetails = new TaxDetailsInfo();
-//            //            TaxDetailsSP spTaxDetails = new TaxDetailsSP();
-//            //            AccountLedgerSP spAccountLedger = new AccountLedgerSP();
-//            //            bool isExist = spTax.TaxReferenceCheck(decTaxId);
-//            //            if (!isExist)
-//            //            {
-//            //                if ((spTax.TaxReferenceDelete(decTaxId,decLedgerId)) == -1)
-//            //                {
-//            //                    Messages.ReferenceExistsMessage();
-//            //                }
-//            //                else
-//            //                {
-//            //                    spTaxDetails.TaxDetailsDeleteWithTaxId(decTaxId);
-//            //                    spAccountLedger.AccountLedgerDelete(decLedgerId);
-//            //                    Messages.DeletedMessage();
-//            //                    TaxSearchGridFill();
-//            //                    TaxSelectionGridFill();
-//            //                    Clear();
-//            //                    SearchClear();
-//            //                }
-//            //            }
-//            //            else
-//            //            {
-//            //                Messages.ReferenceExistsMessage();
-//            //            }
-//            //        }
-//            //    }
-//            //    else
-//            //    {
-//            //        TaxInfo infoTax = new TaxInfo();
-//            //        TaxSP spTax = new TaxSP();
-//            //        TaxDetailsInfo infoTaxDetails = new TaxDetailsInfo();
-//            //        TaxDetailsSP spTaxDetails = new TaxDetailsSP();
-//            //        bool isExist = spTax.TaxReferenceCheck(decTaxId);
-//            //        if (!isExist)
-//            //        {
-//            //            if ((spTax.TaxReferenceDelete(decTaxId,decLedgerId)) == -1)
-//            //            {
-//            //                Messages.ReferenceExistsMessage();
-//            //            }
-//            //            else
-//            //            {
-//            //                spTaxDetails.TaxDetailsDeleteWithTaxId(decTaxId);
-//            //                Messages.DeletedMessage();
-//            //                TaxSearchGridFill();
-//            //                TaxSelectionGridFill();
-//            //                Clear();
-//            //                SearchClear();
-//            //            }
-//            //        }
-//            //        else
-//            //        {
-//            //            Messages.ReferenceExistsMessage();
-//            //        }
-//            //    }
-//            //}
-//            //catch (Exception ex)
-//            //{
-//            //    MessageBox.Show("TC11:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-//            //}
+//            if (PublicVariables.isMessageDelete)
+//            {
+//                if (Messages.DeleteMessage())
+//                {
+//                    Tax infoTax = new Tax();
+//                    TaxDetail taxDetail = new TaxDetail();
+
+
+//                    TaxInfo infoTax = new TaxInfo();
+//                    TaxSP spTax = new TaxSP();
+//                    TaxDetailsInfo infoTaxDetails = new TaxDetailsInfo();
+//                    TaxDetailsSP spTaxDetails = new TaxDetailsSP();
+//                    AccountLedgerSP spAccountLedger = new AccountLedgerSP();
+//                    bool isExist = spTax.TaxReferenceCheck(decTaxId);
+//                    if (!isExist)
+//                    {
+//                        if ((spTax.TaxReferenceDelete(decTaxId, decLedgerId)) == -1)
+//                        {
+//                            Messages.ReferenceExistsMessage();
+//                        }
+//                        else
+//                        {
+//                            spTaxDetails.TaxDetailsDeleteWithTaxId(decTaxId);
+//                            spAccountLedger.AccountLedgerDelete(decLedgerId);
+//                            Messages.DeletedMessage();
+//                            TaxSearchGridFill();
+//                            TaxSelectionGridFill();
+//                            Clear();
+//                            SearchClear();
+//                        }
+//                    }
+//                    else
+//                    {
+//                        Messages.ReferenceExistsMessage();
+//                    }
+//                }
+//            }
+//            else
+//            {
+//                TaxInfo infoTax = new TaxInfo();
+//                TaxSP spTax = new TaxSP();
+//                TaxDetailsInfo infoTaxDetails = new TaxDetailsInfo();
+//                TaxDetailsSP spTaxDetails = new TaxDetailsSP();
+//                bool isExist = spTax.TaxReferenceCheck(decTaxId);
+//                if (!isExist)
+//                {
+//                    if ((spTax.TaxReferenceDelete(decTaxId, decLedgerId)) == -1)
+//                    {
+//                        Messages.ReferenceExistsMessage();
+//                    }
+//                    else
+//                    {
+//                        spTaxDetails.TaxDetailsDeleteWithTaxId(decTaxId);
+//                        Messages.DeletedMessage();
+//                        TaxSearchGridFill();
+//                        TaxSelectionGridFill();
+//                        Clear();
+//                        SearchClear();
+//                    }
+//                }
+//                else
+//                {
+//                    Messages.ReferenceExistsMessage();
+//                }
+//            }
+
 //        }
-//        /// <summary>
-//        /// Creating one ledger for the purticular tax
-//        /// </summary>
+
 //        public void CreateLedger()
 //        {
-//            //try
-//            //{
-//            //    AccountLedgerInfo infoAccountLedger = new AccountLedgerInfo();
-//            //    AccountLedgerSP spAccountLedger = new AccountLedgerSP();
-//            //    infoAccountLedger.AccountGroupId = 20;
-//            //    infoAccountLedger.LedgerName = txtTaxName.Text;
-//            //    infoAccountLedger.OpeningBalance = 0;
-//            //    infoAccountLedger.IsDefault = false;
-//            //    infoAccountLedger.CrOrDr = "Cr";
-//            //    infoAccountLedger.Narration = string.Empty;
-//            //    infoAccountLedger.MailingName = txtTaxName.Text;
-//            //    infoAccountLedger.Address = string.Empty;
-//            //    infoAccountLedger.Phone = string.Empty;
-//            //    infoAccountLedger.Mobile = string.Empty;
-//            //    infoAccountLedger.Email = string.Empty;
-//            //    infoAccountLedger.CreditPeriod = 0;
-//            //    infoAccountLedger.CreditLimit = 0;
-//            //    infoAccountLedger.PricinglevelId = 0;
-//            //    infoAccountLedger.BillByBill = false;
-//            //    infoAccountLedger.Tin = string.Empty;
-//            //    infoAccountLedger.Cst = string.Empty;
-//            //    infoAccountLedger.Pan = string.Empty;
-//            //    infoAccountLedger.RouteId = 1;
-//            //    infoAccountLedger.BankAccountNumber = string.Empty;
-//            //    infoAccountLedger.BranchName = string.Empty;
-//            //    infoAccountLedger.BranchCode = string.Empty;
-//            //    infoAccountLedger.ExtraDate = DateTime.Now;
-//            //    infoAccountLedger.Extra1 = string.Empty;
-//            //    infoAccountLedger.Extra2 = string.Empty;
-//            //    infoAccountLedger.AreaId = 1;
-//            //    spAccountLedger.AccountLedgerAddWithIdentity(infoAccountLedger);
-               
-//            //}
-//            //catch (Exception ex)
-//            //{
-//            //    MessageBox.Show("TAX:12" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-//            //}
+//            try
+//            {
+//                AccountLedgerInfo infoAccountLedger = new AccountLedgerInfo();
+//                AccountLedgerSP spAccountLedger = new AccountLedgerSP();
+//                infoAccountLedger.AccountGroupId = 20;
+//                infoAccountLedger.LedgerName = txtTaxName.Text;
+//                infoAccountLedger.OpeningBalance = 0;
+//                infoAccountLedger.IsDefault = false;
+//                infoAccountLedger.CrOrDr = "Cr";
+//                infoAccountLedger.Narration = string.Empty;
+//                infoAccountLedger.MailingName = txtTaxName.Text;
+//                infoAccountLedger.Address = string.Empty;
+//                infoAccountLedger.Phone = string.Empty;
+//                infoAccountLedger.Mobile = string.Empty;
+//                infoAccountLedger.Email = string.Empty;
+//                infoAccountLedger.CreditPeriod = 0;
+//                infoAccountLedger.CreditLimit = 0;
+//                infoAccountLedger.PricinglevelId = 0;
+//                infoAccountLedger.BillByBill = false;
+//                infoAccountLedger.Tin = string.Empty;
+//                infoAccountLedger.Cst = string.Empty;
+//                infoAccountLedger.Pan = string.Empty;
+//                infoAccountLedger.RouteId = 1;
+//                infoAccountLedger.BankAccountNumber = string.Empty;
+//                infoAccountLedger.BranchName = string.Empty;
+//                infoAccountLedger.BranchCode = string.Empty;
+//                infoAccountLedger.ExtraDate = DateTime.Now;
+//                infoAccountLedger.Extra1 = string.Empty;
+//                infoAccountLedger.Extra2 = string.Empty;
+//                infoAccountLedger.AreaId = 1;
+//                spAccountLedger.AccountLedgerAddWithIdentity(infoAccountLedger);
+
+//            }
+//            catch (Exception ex)
+//            {
+//                MessageBox.Show("TAX:12" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+//            }
 
 //        }
 //        /// <summary>
@@ -645,43 +586,43 @@ using LoginForm.Services;
 //        /// </summary>
 //        public void LedgerEdit()
 //        {
-//            //try
-//            //{
-//            //    AccountLedgerInfo infoAccountLedger = new AccountLedgerInfo();
-//            //    AccountLedgerSP spAccountLedger = new AccountLedgerSP();
-//            //    infoAccountLedger.LedgerId = decLedgerId;
-//            //    infoAccountLedger.AccountGroupId = 20;
-//            //    infoAccountLedger.LedgerName = txtTaxName.Text;
-//            //    infoAccountLedger.OpeningBalance = 0;
-//            //    infoAccountLedger.IsDefault = false;
-//            //    infoAccountLedger.CrOrDr = "Cr";
-//            //    infoAccountLedger.Narration = string.Empty;
-//            //    infoAccountLedger.MailingName = txtTaxName.Text;
-//            //    infoAccountLedger.Address = string.Empty;
-//            //    infoAccountLedger.Phone = string.Empty;
-//            //    infoAccountLedger.Mobile = string.Empty;
-//            //    infoAccountLedger.Email = string.Empty;
-//            //    infoAccountLedger.CreditPeriod = 0;
-//            //    infoAccountLedger.CreditLimit = 0;
-//            //    infoAccountLedger.PricinglevelId = 0;
-//            //    infoAccountLedger.BillByBill = false;
-//            //    infoAccountLedger.Tin = string.Empty;
-//            //    infoAccountLedger.Cst = string.Empty;
-//            //    infoAccountLedger.Pan = string.Empty;
-//            //    infoAccountLedger.RouteId = 1;
-//            //    infoAccountLedger.BankAccountNumber = string.Empty;
-//            //    infoAccountLedger.BranchCode = string.Empty;
-//            //    infoAccountLedger.BranchName = string.Empty;
-//            //    infoAccountLedger.ExtraDate = DateTime.Now;
-//            //    infoAccountLedger.Extra1 = string.Empty;
-//            //    infoAccountLedger.Extra2 = string.Empty;
-//            //    infoAccountLedger.AreaId = 1;
-//            //    spAccountLedger.AccountLedgerEdit(infoAccountLedger);
-//            //}
-//            //catch(Exception ex)
-//            //{
-//            //    MessageBox.Show("TAX:13" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-//            //}
+//            try
+//            {
+//                AccountLedgerInfo infoAccountLedger = new AccountLedgerInfo();
+//                AccountLedgerSP spAccountLedger = new AccountLedgerSP();
+//                infoAccountLedger.LedgerId = decLedgerId;
+//                infoAccountLedger.AccountGroupId = 20;
+//                infoAccountLedger.LedgerName = txtTaxName.Text;
+//                infoAccountLedger.OpeningBalance = 0;
+//                infoAccountLedger.IsDefault = false;
+//                infoAccountLedger.CrOrDr = "Cr";
+//                infoAccountLedger.Narration = string.Empty;
+//                infoAccountLedger.MailingName = txtTaxName.Text;
+//                infoAccountLedger.Address = string.Empty;
+//                infoAccountLedger.Phone = string.Empty;
+//                infoAccountLedger.Mobile = string.Empty;
+//                infoAccountLedger.Email = string.Empty;
+//                infoAccountLedger.CreditPeriod = 0;
+//                infoAccountLedger.CreditLimit = 0;
+//                infoAccountLedger.PricinglevelId = 0;
+//                infoAccountLedger.BillByBill = false;
+//                infoAccountLedger.Tin = string.Empty;
+//                infoAccountLedger.Cst = string.Empty;
+//                infoAccountLedger.Pan = string.Empty;
+//                infoAccountLedger.RouteId = 1;
+//                infoAccountLedger.BankAccountNumber = string.Empty;
+//                infoAccountLedger.BranchCode = string.Empty;
+//                infoAccountLedger.BranchName = string.Empty;
+//                infoAccountLedger.ExtraDate = DateTime.Now;
+//                infoAccountLedger.Extra1 = string.Empty;
+//                infoAccountLedger.Extra2 = string.Empty;
+//                infoAccountLedger.AreaId = 1;
+//                spAccountLedger.AccountLedgerEdit(infoAccountLedger);
+//            }
+//            catch (Exception ex)
+//            {
+//                MessageBox.Show("TAX:13" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+//            }
 //        }
 //        #endregion
 
@@ -753,7 +694,7 @@ using LoginForm.Services;
 //                if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnSave.Text))
 //                {
 //                    SaveOrEdit();
-//                   txtRate.Focus();
+//                    txtRate.Focus();
 //                }
 //                else
 //                {
@@ -917,22 +858,15 @@ using LoginForm.Services;
 //        /// <param name="e"></param>
 //        private void btnDelete_Click(object sender, EventArgs e)
 //        {
-//            try
+//            DialogResult result = MessageBox.Show("Selected tax will be deleted! Do you confirm?", "Delete Tax", MessageBoxButtons.OKCancel);
+
+//            if (result == DialogResult.OK)
 //            {
-//                if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnDelete.Text))
-//                {
-//                    Delete();
-//                    txtTaxName.Focus();
-//                }
-//                else
-//                {
-//                    Messages.NoPrivillageMessage();
-//                }
+
+//                Delete();
+//                txtTaxName.Focus();
 //            }
-//            catch (Exception ex)
-//            {
-//                MessageBox.Show("TC24:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-//            }
+
 //        }
 //        /// <summary>
 //        /// grid binding complete event for clear the selection
@@ -1457,8 +1391,8 @@ using LoginForm.Services;
 
 //        #endregion
 
-        
 
-        
+
+
 //    }
 //}
