@@ -10,8 +10,15 @@ using System.Windows.Forms;
 
 namespace LoginForm.SaleOrder
 {
+
     public partial class FormSaleOrderAdd : Form
     {
+        decimal subtotal = 0;
+        decimal totalMargin = 0;
+        decimal customerFactor = (decimal)5.5;
+        decimal currency;
+
+
         List<SaleItem> addedItemList = new List<SaleItem>();
         List<SaleItem> removedItemList = new List<SaleItem>();
         
@@ -31,10 +38,13 @@ namespace LoginForm.SaleOrder
         {
             InitializeComponent();
             this.customer = customer;
+            dtpDate.Value = DateTime.Today;
             BringPriceList(list);
             ConvertToSaleItem(list, addedItemList, removedItemList);
             SortTheList(addedItemList);
             SortTheList(removedItemList);
+            FillCustomer();
+            populateComboBoxes();
         }
 
         private void BringPriceList(List<QuotationDetail> list)
@@ -53,8 +63,32 @@ namespace LoginForm.SaleOrder
         {
             PopulateList(addedItemList, dgSaleItems);
             PopulateList(removedItemList, dgSalesDeleted);
-            FillCustomer();
-            populateComboBoxes();
+            CalculateSubtotal();
+            CalculateTotalMargin();
+            //currency = GetCurrency(dtpDate.Value);
+        }
+
+        private decimal GetCurrency(DateTime value)
+        {
+            decimal curr = 0;
+            Rate rate = cbCurrency.SelectedItem as Rate;
+
+            switch (cbCurrType.SelectedItem)
+            {
+                case "Buy":
+                    curr = (decimal)rate.RateBuy;
+                    break;
+                case "Eff. Buy":
+                    curr = (decimal)rate.RateBuyEffective;
+                    break;
+                case "Sell":
+                    curr = (decimal)rate.RateSell;
+                    break;
+                case "Eff. Sell":
+                    curr = (decimal)rate.RateSellEffective;
+                    break;
+            }
+            return curr;            
         }
 
         private void SortTheList(List<SaleItem> list)
@@ -318,7 +352,7 @@ namespace LoginForm.SaleOrder
             row.Cells["sLC"].Style.BackColor = (item.LM == true) ? Color.BurlyWood : Color.White;
             row.Cells["sLI"].Style.BackColor = (item.LI == true) ? Color.Ivory : Color.White;
             row.Cells["sLM"].Style.BackColor = (item.LM == true) ? Color.Blue : Color.White;
-            row.Cells["sMargin"].Value = item.Margin;
+            row.Cells["sMargin"].Value = CalculateMargin(item.LandingCost, item.UC_UP);
             row.Cells["sMPN"].Value = item.MPN;
             row.Cells["sNO"].Value = item.NO;
             row.Cells["sQty"].Value = item.Qty;
@@ -438,7 +472,10 @@ namespace LoginForm.SaleOrder
 
             cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == dtpDate.Value).ToList();
             cbCurrency.DisplayMember = "CurType";
-            cbCurrency.ValueMember = "ID";
+            cbCurrency.ValueMember = "CurType";
+            cbCurrency.SelectedValue= customer.CurrNameQuo;
+
+            cbCurrType.SelectedItem = customer.CurrTypeQuo;
 
             cbPayment.DataSource = IME.PaymentMethods.ToList();
             cbPayment.DisplayMember = "Payment";
@@ -502,6 +539,7 @@ namespace LoginForm.SaleOrder
             txtCost3.Text = s.Cost3.ToString();
             txtCost4.Text = s.Cost4.ToString();
             txtCost5.Text = s.Cost5.ToString();
+            //txtWeb1.Text = (s.UK1Price * customerFactor) / 
         }
 
         private void btnViewMore_Click(object sender, EventArgs e)
@@ -549,6 +587,47 @@ namespace LoginForm.SaleOrder
             {
                 FillItemCard(dgSaleItems.CurrentRow.Cells["sItemCode"].Value.ToString());
             }
+        }
+
+        private void CalculateSubtotal()
+        {
+            foreach (DataGridViewRow row in dgSaleItems.Rows)
+            {
+                if(row.Index != dgSaleItems.RowCount-1)
+                {
+                    subtotal += (decimal)row.Cells["sTotal"].Value;
+                }
+            }
+
+            lblsubtotal.Text = subtotal.ToString();
+        }
+
+        private void CalculateTotalMargin()
+        {
+            decimal total = 0;
+            foreach (DataGridViewRow row in dgSaleItems.Rows)
+            {
+                if (row.Index != dgSaleItems.RowCount - 1)
+                {
+                    total += (decimal)row.Cells["sTotal"].Value * (decimal)row.Cells["sMargin"].Value;
+                }
+            }
+            totalMargin = total / subtotal;
+            txtTotalMargin.Text = totalMargin.ToString();
+        }
+
+        private void dtpDate_ValueChanged(object sender, EventArgs e)
+        {
+            // TODO SaleOrderAdd Tarih ile ilgili Yapılacakları Öğren
+        }
+
+        private void cbCurrency_SelectedValueChanged(object sender, EventArgs e)
+        {
+            currency = GetCurrency(dtpDate.Value);
+        }
+        private void ChangeCurrency()
+        {
+
         }
     }
 }

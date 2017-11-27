@@ -28,31 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle76 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle77 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle78 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle79 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle80 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle81 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle82 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle83 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle84 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle85 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle86 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle87 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle88 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle89 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle90 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle91 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle92 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle93 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle94 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle95 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle96 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle97 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle98 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle99 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle100 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtSection = new System.Windows.Forms.TextBox();
             this.txtSupersectionName = new System.Windows.Forms.TextBox();
             this.txtCofO = new System.Windows.Forms.TextBox();
@@ -96,41 +96,6 @@
             this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgSaleItems = new System.Windows.Forms.DataGridView();
-            this.sNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sHS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sLI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sCL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sLC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sLM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sMPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sLandingCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sMargin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sSSM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sUPIMELP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sUCUPCurr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sTargetUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sCompetitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sHZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sCR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sDelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sUnitWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sTotalWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sCustItemStockCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sCustItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sCOO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sCCCNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sDependantTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblsubtotal = new System.Windows.Forms.Label();
@@ -318,6 +283,41 @@
             this.label36 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
+            this.sNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sHS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sLI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sCL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sLC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sLM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sSupplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sItemCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sMPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sLandingCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sMargin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sUOM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sSSM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sUC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sUPIMELP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sUCUPCurr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sTargetUP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sCompetitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sHZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sCR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sDelivery = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sUnitWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sTotalWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sCustItemStockCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sCustItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sCOO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sCCCNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sDependantTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgSalesDeleted)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -681,7 +681,6 @@
             // 
             // dgSaleItems
             // 
-            this.dgSaleItems.AllowUserToAddRows = false;
             this.dgSaleItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgSaleItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.sNo,
@@ -727,353 +726,6 @@
             this.dgSaleItems.TabIndex = 10;
             this.dgSaleItems.Click += new System.EventHandler(this.dgSaleItems_Click);
             // 
-            // sNo
-            // 
-            this.sNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.sNo.HeaderText = "No";
-            this.sNo.Name = "sNo";
-            this.sNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.sNo.Width = 30;
-            // 
-            // sHS
-            // 
-            this.sHS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.sHS.DefaultCellStyle = dataGridViewCellStyle1;
-            this.sHS.HeaderText = "HS";
-            this.sHS.Name = "sHS";
-            this.sHS.ReadOnly = true;
-            this.sHS.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.sHS.Width = 25;
-            // 
-            // sLI
-            // 
-            this.sLI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.sLI.DefaultCellStyle = dataGridViewCellStyle2;
-            this.sLI.HeaderText = "LI";
-            this.sLI.Name = "sLI";
-            this.sLI.ReadOnly = true;
-            this.sLI.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.sLI.Width = 25;
-            // 
-            // sCL
-            // 
-            this.sCL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.sCL.DefaultCellStyle = dataGridViewCellStyle3;
-            this.sCL.HeaderText = "CL";
-            this.sCL.Name = "sCL";
-            this.sCL.ReadOnly = true;
-            this.sCL.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.sCL.Width = 25;
-            // 
-            // sLC
-            // 
-            this.sLC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.sLC.DefaultCellStyle = dataGridViewCellStyle4;
-            this.sLC.HeaderText = "LC";
-            this.sLC.Name = "sLC";
-            this.sLC.ReadOnly = true;
-            this.sLC.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.sLC.Width = 25;
-            // 
-            // sLM
-            // 
-            this.sLM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.sLM.DefaultCellStyle = dataGridViewCellStyle5;
-            this.sLM.HeaderText = "LM";
-            this.sLM.Name = "sLM";
-            this.sLM.ReadOnly = true;
-            this.sLM.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.sLM.Width = 25;
-            // 
-            // sSupplier
-            // 
-            this.sSupplier.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            this.sSupplier.DefaultCellStyle = dataGridViewCellStyle6;
-            this.sSupplier.HeaderText = "Supplier";
-            this.sSupplier.Name = "sSupplier";
-            this.sSupplier.ReadOnly = true;
-            this.sSupplier.Width = 89;
-            // 
-            // sItemCode
-            // 
-            this.sItemCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.sItemCode.HeaderText = "Item Code";
-            this.sItemCode.Name = "sItemCode";
-            this.sItemCode.Width = 92;
-            // 
-            // sBrand
-            // 
-            this.sBrand.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            this.sBrand.DefaultCellStyle = dataGridViewCellStyle7;
-            this.sBrand.HeaderText = "Brand";
-            this.sBrand.Name = "sBrand";
-            this.sBrand.ReadOnly = true;
-            this.sBrand.Width = 75;
-            // 
-            // sMPN
-            // 
-            this.sMPN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            this.sMPN.DefaultCellStyle = dataGridViewCellStyle8;
-            this.sMPN.HeaderText = "MPN";
-            this.sMPN.Name = "sMPN";
-            this.sMPN.ReadOnly = true;
-            this.sMPN.Width = 67;
-            // 
-            // sDescription
-            // 
-            this.sDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            this.sDescription.DefaultCellStyle = dataGridViewCellStyle9;
-            this.sDescription.HeaderText = "Description";
-            this.sDescription.Name = "sDescription";
-            this.sDescription.ReadOnly = true;
-            this.sDescription.Width = 108;
-            // 
-            // sCost
-            // 
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            this.sCost.DefaultCellStyle = dataGridViewCellStyle10;
-            this.sCost.HeaderText = "Cost (£)";
-            this.sCost.Name = "sCost";
-            this.sCost.ReadOnly = true;
-            // 
-            // sLandingCost
-            // 
-            this.sLandingCost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
-            this.sLandingCost.DefaultCellStyle = dataGridViewCellStyle11;
-            this.sLandingCost.HeaderText = "Landing Cost (£)";
-            this.sLandingCost.Name = "sLandingCost";
-            this.sLandingCost.ReadOnly = true;
-            this.sLandingCost.Width = 114;
-            // 
-            // sMargin
-            // 
-            this.sMargin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            this.sMargin.DefaultCellStyle = dataGridViewCellStyle12;
-            this.sMargin.HeaderText = "Margin";
-            this.sMargin.Name = "sMargin";
-            this.sMargin.ReadOnly = true;
-            this.sMargin.Width = 80;
-            // 
-            // sQty
-            // 
-            this.sQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.sQty.DataPropertyName = "QtyDeneme";
-            this.sQty.HeaderText = "Qty";
-            this.sQty.Name = "sQty";
-            this.sQty.ReadOnly = true;
-            this.sQty.Width = 59;
-            // 
-            // sStock
-            // 
-            this.sStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
-            this.sStock.DefaultCellStyle = dataGridViewCellStyle13;
-            this.sStock.HeaderText = "Stock";
-            this.sStock.Name = "sStock";
-            this.sStock.ReadOnly = true;
-            this.sStock.Width = 72;
-            // 
-            // sUOM
-            // 
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
-            this.sUOM.DefaultCellStyle = dataGridViewCellStyle14;
-            this.sUOM.HeaderText = "UOM";
-            this.sUOM.Name = "sUOM";
-            this.sUOM.ReadOnly = true;
-            this.sUOM.Width = 57;
-            // 
-            // sSSM
-            // 
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
-            this.sSSM.DefaultCellStyle = dataGridViewCellStyle15;
-            this.sSSM.HeaderText = "SSM";
-            this.sSSM.Name = "sSSM";
-            this.sSSM.ReadOnly = true;
-            // 
-            // sUC
-            // 
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
-            this.sUC.DefaultCellStyle = dataGridViewCellStyle16;
-            this.sUC.HeaderText = "U/C";
-            this.sUC.Name = "sUC";
-            this.sUC.ReadOnly = true;
-            // 
-            // sUPIMELP
-            // 
-            this.sUPIMELP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
-            this.sUPIMELP.DefaultCellStyle = dataGridViewCellStyle17;
-            this.sUPIMELP.HeaderText = "U/P IME L/P ";
-            this.sUPIMELP.Name = "sUPIMELP";
-            this.sUPIMELP.ReadOnly = true;
-            this.sUPIMELP.Width = 107;
-            // 
-            // sDiscount
-            // 
-            this.sDiscount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
-            this.sDiscount.DefaultCellStyle = dataGridViewCellStyle18;
-            this.sDiscount.HeaderText = "Disc. (%)";
-            this.sDiscount.Name = "sDiscount";
-            this.sDiscount.ReadOnly = true;
-            this.sDiscount.Width = 87;
-            // 
-            // sUCUPCurr
-            // 
-            this.sUCUPCurr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.sUCUPCurr.HeaderText = "U/C U/P (Curr.)";
-            this.sUCUPCurr.Name = "sUCUPCurr";
-            this.sUCUPCurr.ReadOnly = true;
-            this.sUCUPCurr.Width = 121;
-            // 
-            // sTotal
-            // 
-            this.sTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Black;
-            this.sTotal.DefaultCellStyle = dataGridViewCellStyle19;
-            this.sTotal.HeaderText = "TOTAL";
-            this.sTotal.Name = "sTotal";
-            this.sTotal.ReadOnly = true;
-            this.sTotal.Width = 83;
-            // 
-            // sTargetUP
-            // 
-            this.sTargetUP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.sTargetUP.HeaderText = "Target U/P";
-            this.sTargetUP.Name = "sTargetUP";
-            this.sTargetUP.ReadOnly = true;
-            this.sTargetUP.Width = 98;
-            // 
-            // sCompetitor
-            // 
-            this.sCompetitor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.sCompetitor.HeaderText = "Competitor";
-            this.sCompetitor.Name = "sCompetitor";
-            this.sCompetitor.ReadOnly = true;
-            this.sCompetitor.Width = 105;
-            // 
-            // sHZ
-            // 
-            this.sHZ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
-            this.sHZ.DefaultCellStyle = dataGridViewCellStyle20;
-            this.sHZ.HeaderText = "HZ";
-            this.sHZ.Name = "sHZ";
-            this.sHZ.ReadOnly = true;
-            this.sHZ.Width = 56;
-            // 
-            // sCR
-            // 
-            this.sCR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.Black;
-            this.sCR.DefaultCellStyle = dataGridViewCellStyle21;
-            this.sCR.HeaderText = "CR";
-            this.sCR.Name = "sCR";
-            this.sCR.ReadOnly = true;
-            this.sCR.Width = 56;
-            // 
-            // sDelivery
-            // 
-            this.sDelivery.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.sDelivery.HeaderText = "Delivery";
-            this.sDelivery.Name = "sDelivery";
-            this.sDelivery.ReadOnly = true;
-            this.sDelivery.Width = 88;
-            // 
-            // sUnitWeight
-            // 
-            this.sUnitWeight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.Black;
-            this.sUnitWeight.DefaultCellStyle = dataGridViewCellStyle22;
-            this.sUnitWeight.HeaderText = "Unit Weigt (Kg)";
-            this.sUnitWeight.Name = "sUnitWeight";
-            this.sUnitWeight.ReadOnly = true;
-            this.sUnitWeight.Width = 122;
-            // 
-            // sTotalWeight
-            // 
-            this.sTotalWeight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.Black;
-            this.sTotalWeight.DefaultCellStyle = dataGridViewCellStyle23;
-            this.sTotalWeight.HeaderText = "Total Weight (Kg)";
-            this.sTotalWeight.Name = "sTotalWeight";
-            this.sTotalWeight.ReadOnly = true;
-            this.sTotalWeight.Width = 136;
-            // 
-            // sCustItemStockCode
-            // 
-            this.sCustItemStockCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.sCustItemStockCode.HeaderText = "Cust Item Stk Code";
-            this.sCustItemStockCode.Name = "sCustItemStockCode";
-            this.sCustItemStockCode.ReadOnly = true;
-            this.sCustItemStockCode.Width = 113;
-            // 
-            // sCustItemDescription
-            // 
-            this.sCustItemDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.sCustItemDescription.HeaderText = "Cust. Item Description";
-            this.sCustItemDescription.Name = "sCustItemDescription";
-            this.sCustItemDescription.ReadOnly = true;
-            this.sCustItemDescription.Width = 159;
-            // 
-            // sCOO
-            // 
-            this.sCOO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.Black;
-            this.sCOO.DefaultCellStyle = dataGridViewCellStyle24;
-            this.sCOO.HeaderText = "COO";
-            this.sCOO.Name = "sCOO";
-            this.sCOO.ReadOnly = true;
-            this.sCOO.Width = 68;
-            // 
-            // sCCCNO
-            // 
-            this.sCCCNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.Color.Black;
-            this.sCCCNO.DefaultCellStyle = dataGridViewCellStyle25;
-            this.sCCCNO.HeaderText = "CCCNO";
-            this.sCCCNO.Name = "sCCCNO";
-            this.sCCCNO.ReadOnly = true;
-            this.sCCCNO.Width = 85;
-            // 
-            // sDependantTable
-            // 
-            this.sDependantTable.HeaderText = "DependantTable";
-            this.sDependantTable.Name = "sDependantTable";
-            this.sDependantTable.Visible = false;
-            // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
@@ -1108,10 +760,11 @@
             // lblsubtotal
             // 
             this.lblsubtotal.AutoSize = true;
+            this.lblsubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblsubtotal.Location = new System.Drawing.Point(1217, 20);
             this.lblsubtotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblsubtotal.Name = "lblsubtotal";
-            this.lblsubtotal.Size = new System.Drawing.Size(36, 17);
+            this.lblsubtotal.Size = new System.Drawing.Size(40, 17);
             this.lblsubtotal.TabIndex = 8;
             this.lblsubtotal.Text = "0,00";
             // 
@@ -1137,9 +790,11 @@
             // 
             // textBox11
             // 
+            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox11.Location = new System.Drawing.Point(943, 15);
             this.textBox11.Margin = new System.Windows.Forms.Padding(4);
             this.textBox11.Name = "textBox11";
+            this.textBox11.ReadOnly = true;
             this.textBox11.Size = new System.Drawing.Size(60, 22);
             this.textBox11.TabIndex = 6;
             this.textBox11.Text = "0,00";
@@ -1147,19 +802,23 @@
             // 
             // txtTotalMargin
             // 
+            this.txtTotalMargin.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalMargin.Location = new System.Drawing.Point(396, 16);
             this.txtTotalMargin.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotalMargin.Name = "txtTotalMargin";
+            this.txtTotalMargin.ReadOnly = true;
             this.txtTotalMargin.Size = new System.Drawing.Size(89, 22);
             this.txtTotalMargin.TabIndex = 4;
-            this.txtTotalMargin.Text = "Nan %";
+            this.txtTotalMargin.Text = "0";
             this.txtTotalMargin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox10
             // 
+            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox10.Location = new System.Drawing.Point(580, 16);
             this.textBox10.Margin = new System.Windows.Forms.Padding(4);
             this.textBox10.Name = "textBox10";
+            this.textBox10.ReadOnly = true;
             this.textBox10.Size = new System.Drawing.Size(124, 22);
             this.textBox10.TabIndex = 5;
             this.textBox10.Text = "0,00";
@@ -2232,6 +1891,7 @@
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(148, 22);
             this.dtpDate.TabIndex = 77;
+            this.dtpDate.ValueChanged += new System.EventHandler(this.dtpDate_ValueChanged);
             // 
             // btnViewMore
             // 
@@ -2367,8 +2027,8 @@
             this.cbCurrType.Items.AddRange(new object[] {
             "Buy",
             "Eff. Buy",
-            "Sale",
-            "Eff. Sale"});
+            "Sell",
+            "Eff. Sell"});
             this.cbCurrType.Location = new System.Drawing.Point(448, 132);
             this.cbCurrType.Margin = new System.Windows.Forms.Padding(4);
             this.cbCurrType.Name = "cbCurrType";
@@ -2384,6 +2044,7 @@
             this.cbCurrency.Name = "cbCurrency";
             this.cbCurrency.Size = new System.Drawing.Size(76, 24);
             this.cbCurrency.TabIndex = 58;
+            this.cbCurrency.SelectedValueChanged += new System.EventHandler(this.cbCurrency_SelectedValueChanged);
             // 
             // label8
             // 
@@ -3191,6 +2852,351 @@
             this.label57.TabIndex = 414;
             this.label57.Text = "Col Qty";
             this.label57.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // sNo
+            // 
+            this.sNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.sNo.HeaderText = "No";
+            this.sNo.Name = "sNo";
+            this.sNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.sNo.Width = 30;
+            // 
+            // sHS
+            // 
+            this.sHS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle76.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle76.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.sHS.DefaultCellStyle = dataGridViewCellStyle76;
+            this.sHS.HeaderText = "HS";
+            this.sHS.Name = "sHS";
+            this.sHS.ReadOnly = true;
+            this.sHS.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.sHS.Width = 25;
+            // 
+            // sLI
+            // 
+            this.sLI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle77.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.sLI.DefaultCellStyle = dataGridViewCellStyle77;
+            this.sLI.HeaderText = "LI";
+            this.sLI.Name = "sLI";
+            this.sLI.ReadOnly = true;
+            this.sLI.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.sLI.Width = 25;
+            // 
+            // sCL
+            // 
+            this.sCL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle78.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.sCL.DefaultCellStyle = dataGridViewCellStyle78;
+            this.sCL.HeaderText = "CL";
+            this.sCL.Name = "sCL";
+            this.sCL.ReadOnly = true;
+            this.sCL.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.sCL.Width = 25;
+            // 
+            // sLC
+            // 
+            this.sLC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle79.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.sLC.DefaultCellStyle = dataGridViewCellStyle79;
+            this.sLC.HeaderText = "LC";
+            this.sLC.Name = "sLC";
+            this.sLC.ReadOnly = true;
+            this.sLC.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.sLC.Width = 25;
+            // 
+            // sLM
+            // 
+            this.sLM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle80.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.sLM.DefaultCellStyle = dataGridViewCellStyle80;
+            this.sLM.HeaderText = "LM";
+            this.sLM.Name = "sLM";
+            this.sLM.ReadOnly = true;
+            this.sLM.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.sLM.Width = 25;
+            // 
+            // sSupplier
+            // 
+            this.sSupplier.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle81.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle81.SelectionForeColor = System.Drawing.Color.Black;
+            this.sSupplier.DefaultCellStyle = dataGridViewCellStyle81;
+            this.sSupplier.HeaderText = "Supplier";
+            this.sSupplier.Name = "sSupplier";
+            this.sSupplier.ReadOnly = true;
+            this.sSupplier.Width = 89;
+            // 
+            // sItemCode
+            // 
+            this.sItemCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.sItemCode.HeaderText = "Item Code";
+            this.sItemCode.Name = "sItemCode";
+            // 
+            // sBrand
+            // 
+            this.sBrand.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle82.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle82.SelectionForeColor = System.Drawing.Color.Black;
+            this.sBrand.DefaultCellStyle = dataGridViewCellStyle82;
+            this.sBrand.HeaderText = "Brand";
+            this.sBrand.Name = "sBrand";
+            this.sBrand.ReadOnly = true;
+            this.sBrand.Width = 75;
+            // 
+            // sMPN
+            // 
+            this.sMPN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle83.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle83.SelectionForeColor = System.Drawing.Color.Black;
+            this.sMPN.DefaultCellStyle = dataGridViewCellStyle83;
+            this.sMPN.HeaderText = "MPN";
+            this.sMPN.Name = "sMPN";
+            this.sMPN.ReadOnly = true;
+            this.sMPN.Width = 67;
+            // 
+            // sDescription
+            // 
+            this.sDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle84.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle84.SelectionForeColor = System.Drawing.Color.Black;
+            this.sDescription.DefaultCellStyle = dataGridViewCellStyle84;
+            this.sDescription.HeaderText = "Description";
+            this.sDescription.Name = "sDescription";
+            this.sDescription.ReadOnly = true;
+            this.sDescription.Width = 108;
+            // 
+            // sCost
+            // 
+            dataGridViewCellStyle85.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle85.SelectionForeColor = System.Drawing.Color.Black;
+            this.sCost.DefaultCellStyle = dataGridViewCellStyle85;
+            this.sCost.HeaderText = "Cost (£)";
+            this.sCost.Name = "sCost";
+            this.sCost.ReadOnly = true;
+            // 
+            // sLandingCost
+            // 
+            this.sLandingCost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle86.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle86.SelectionForeColor = System.Drawing.Color.Black;
+            this.sLandingCost.DefaultCellStyle = dataGridViewCellStyle86;
+            this.sLandingCost.HeaderText = "Landing Cost (£)";
+            this.sLandingCost.Name = "sLandingCost";
+            this.sLandingCost.ReadOnly = true;
+            this.sLandingCost.Width = 114;
+            // 
+            // sMargin
+            // 
+            this.sMargin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle87.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle87.SelectionForeColor = System.Drawing.Color.Black;
+            this.sMargin.DefaultCellStyle = dataGridViewCellStyle87;
+            this.sMargin.HeaderText = "Margin";
+            this.sMargin.Name = "sMargin";
+            this.sMargin.ReadOnly = true;
+            this.sMargin.Width = 80;
+            // 
+            // sQty
+            // 
+            this.sQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.sQty.DataPropertyName = "QtyDeneme";
+            this.sQty.HeaderText = "Qty";
+            this.sQty.Name = "sQty";
+            this.sQty.Width = 59;
+            // 
+            // sStock
+            // 
+            this.sStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle88.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle88.SelectionForeColor = System.Drawing.Color.Black;
+            this.sStock.DefaultCellStyle = dataGridViewCellStyle88;
+            this.sStock.HeaderText = "Stock";
+            this.sStock.Name = "sStock";
+            this.sStock.ReadOnly = true;
+            this.sStock.Width = 72;
+            // 
+            // sUOM
+            // 
+            dataGridViewCellStyle89.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle89.SelectionForeColor = System.Drawing.Color.Black;
+            this.sUOM.DefaultCellStyle = dataGridViewCellStyle89;
+            this.sUOM.HeaderText = "UOM";
+            this.sUOM.Name = "sUOM";
+            this.sUOM.ReadOnly = true;
+            this.sUOM.Width = 57;
+            // 
+            // sSSM
+            // 
+            dataGridViewCellStyle90.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle90.SelectionForeColor = System.Drawing.Color.Black;
+            this.sSSM.DefaultCellStyle = dataGridViewCellStyle90;
+            this.sSSM.HeaderText = "SSM";
+            this.sSSM.Name = "sSSM";
+            this.sSSM.ReadOnly = true;
+            // 
+            // sUC
+            // 
+            dataGridViewCellStyle91.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle91.SelectionForeColor = System.Drawing.Color.Black;
+            this.sUC.DefaultCellStyle = dataGridViewCellStyle91;
+            this.sUC.HeaderText = "U/C";
+            this.sUC.Name = "sUC";
+            this.sUC.ReadOnly = true;
+            // 
+            // sUPIMELP
+            // 
+            this.sUPIMELP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle92.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle92.SelectionForeColor = System.Drawing.Color.Black;
+            this.sUPIMELP.DefaultCellStyle = dataGridViewCellStyle92;
+            this.sUPIMELP.HeaderText = "U/P IME L/P ";
+            this.sUPIMELP.Name = "sUPIMELP";
+            this.sUPIMELP.ReadOnly = true;
+            this.sUPIMELP.Width = 107;
+            // 
+            // sDiscount
+            // 
+            this.sDiscount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle93.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle93.SelectionForeColor = System.Drawing.Color.Black;
+            this.sDiscount.DefaultCellStyle = dataGridViewCellStyle93;
+            this.sDiscount.HeaderText = "Disc. (%)";
+            this.sDiscount.Name = "sDiscount";
+            this.sDiscount.ReadOnly = true;
+            this.sDiscount.Width = 87;
+            // 
+            // sUCUPCurr
+            // 
+            this.sUCUPCurr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.sUCUPCurr.HeaderText = "U/C U/P (Curr.)";
+            this.sUCUPCurr.Name = "sUCUPCurr";
+            this.sUCUPCurr.ReadOnly = true;
+            this.sUCUPCurr.Width = 121;
+            // 
+            // sTotal
+            // 
+            this.sTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle94.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle94.SelectionForeColor = System.Drawing.Color.Black;
+            this.sTotal.DefaultCellStyle = dataGridViewCellStyle94;
+            this.sTotal.HeaderText = "TOTAL";
+            this.sTotal.Name = "sTotal";
+            this.sTotal.ReadOnly = true;
+            this.sTotal.Width = 83;
+            // 
+            // sTargetUP
+            // 
+            this.sTargetUP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.sTargetUP.HeaderText = "Target U/P";
+            this.sTargetUP.Name = "sTargetUP";
+            this.sTargetUP.ReadOnly = true;
+            this.sTargetUP.Width = 98;
+            // 
+            // sCompetitor
+            // 
+            this.sCompetitor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.sCompetitor.HeaderText = "Competitor";
+            this.sCompetitor.Name = "sCompetitor";
+            this.sCompetitor.ReadOnly = true;
+            this.sCompetitor.Width = 105;
+            // 
+            // sHZ
+            // 
+            this.sHZ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle95.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle95.SelectionForeColor = System.Drawing.Color.Black;
+            this.sHZ.DefaultCellStyle = dataGridViewCellStyle95;
+            this.sHZ.HeaderText = "HZ";
+            this.sHZ.Name = "sHZ";
+            this.sHZ.ReadOnly = true;
+            this.sHZ.Width = 56;
+            // 
+            // sCR
+            // 
+            this.sCR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle96.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle96.SelectionForeColor = System.Drawing.Color.Black;
+            this.sCR.DefaultCellStyle = dataGridViewCellStyle96;
+            this.sCR.HeaderText = "CR";
+            this.sCR.Name = "sCR";
+            this.sCR.ReadOnly = true;
+            this.sCR.Width = 56;
+            // 
+            // sDelivery
+            // 
+            this.sDelivery.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.sDelivery.HeaderText = "Delivery";
+            this.sDelivery.Name = "sDelivery";
+            this.sDelivery.ReadOnly = true;
+            this.sDelivery.Width = 88;
+            // 
+            // sUnitWeight
+            // 
+            this.sUnitWeight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle97.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle97.SelectionForeColor = System.Drawing.Color.Black;
+            this.sUnitWeight.DefaultCellStyle = dataGridViewCellStyle97;
+            this.sUnitWeight.HeaderText = "Unit Weigt (Kg)";
+            this.sUnitWeight.Name = "sUnitWeight";
+            this.sUnitWeight.ReadOnly = true;
+            this.sUnitWeight.Width = 122;
+            // 
+            // sTotalWeight
+            // 
+            this.sTotalWeight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle98.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle98.SelectionForeColor = System.Drawing.Color.Black;
+            this.sTotalWeight.DefaultCellStyle = dataGridViewCellStyle98;
+            this.sTotalWeight.HeaderText = "Total Weight (Kg)";
+            this.sTotalWeight.Name = "sTotalWeight";
+            this.sTotalWeight.ReadOnly = true;
+            this.sTotalWeight.Width = 136;
+            // 
+            // sCustItemStockCode
+            // 
+            this.sCustItemStockCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.sCustItemStockCode.HeaderText = "Cust Item Stk Code";
+            this.sCustItemStockCode.Name = "sCustItemStockCode";
+            this.sCustItemStockCode.ReadOnly = true;
+            this.sCustItemStockCode.Width = 113;
+            // 
+            // sCustItemDescription
+            // 
+            this.sCustItemDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.sCustItemDescription.HeaderText = "Cust. Item Description";
+            this.sCustItemDescription.Name = "sCustItemDescription";
+            this.sCustItemDescription.ReadOnly = true;
+            this.sCustItemDescription.Width = 159;
+            // 
+            // sCOO
+            // 
+            this.sCOO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle99.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle99.SelectionForeColor = System.Drawing.Color.Black;
+            this.sCOO.DefaultCellStyle = dataGridViewCellStyle99;
+            this.sCOO.HeaderText = "COO";
+            this.sCOO.Name = "sCOO";
+            this.sCOO.ReadOnly = true;
+            this.sCOO.Width = 68;
+            // 
+            // sCCCNO
+            // 
+            this.sCCCNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle100.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle100.SelectionForeColor = System.Drawing.Color.Black;
+            this.sCCCNO.DefaultCellStyle = dataGridViewCellStyle100;
+            this.sCCCNO.HeaderText = "CCCNO";
+            this.sCCCNO.Name = "sCCCNO";
+            this.sCCCNO.ReadOnly = true;
+            this.sCCCNO.Width = 85;
+            // 
+            // sDependantTable
+            // 
+            this.sDependantTable.HeaderText = "DependantTable";
+            this.sDependantTable.Name = "sDependantTable";
+            this.sDependantTable.Visible = false;
             // 
             // FormSaleOrderAdd
             // 
