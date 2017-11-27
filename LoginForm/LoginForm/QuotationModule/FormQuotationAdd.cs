@@ -2318,7 +2318,7 @@ namespace LoginForm.QuotationModule
             decimal total = 0;
             for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
             {
-                if (dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value != null && dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value != string.Empty)
+                if (dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value != null && dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString() != string.Empty)
                 {
                     decimal margin = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString());
                     decimal price = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString());
@@ -2332,7 +2332,7 @@ namespace LoginForm.QuotationModule
         {
             for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
             {
-                if (dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value != null && dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value != string.Empty)
+                if (dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value != null && dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString() != string.Empty)
                 {
                     decimal cost = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString());
                     decimal UCUPCur = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString());
