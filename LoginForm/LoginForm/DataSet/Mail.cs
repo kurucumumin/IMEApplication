@@ -12,15 +12,12 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class AccountGroup
+    public partial class Mail
     {
-        public int accountGroupId { get; set; }
-        public string accountGroupName { get; set; }
-        public Nullable<int> groupUnder { get; set; }
-        public string narration { get; set; }
-        public Nullable<bool> isDefault { get; set; }
-        public string nature { get; set; }
-        public string affectGrossProfit { get; set; }
-        public Nullable<System.DateTime> AccountGroupDate { get; set; }
+        public int id { get; set; }
+        public string FirstName { get; set; }
+        public string MailAddress { get; set; }
+        public Nullable<bool> cc { get; set; }
+        public Nullable<bool> too { get; set; }
     }
 }

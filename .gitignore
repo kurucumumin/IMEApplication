@@ -288,3 +288,7 @@ __pycache__/
 *.xsd.cs
 LoginForm/LoginForm.sln
 LoginForm/LoginForm.sln
+LoginForm/LoginForm/DataSet/IME.edmx
+LoginForm/LoginForm/DataSet/IME.edmx
+LoginForm/LoginForm/DataSet/IME.Context.cs
+LoginForm/LoginForm/DataSet/IME.edmx.diagram

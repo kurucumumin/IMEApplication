@@ -19,8 +19,8 @@ namespace LoginForm.DataSet
         public Nullable<int> subcategoryID { get; set; }
         public string customerID { get; set; }
     
+        public virtual Customer Customer { get; set; }
         public virtual CustomerCategory CustomerCategory { get; set; }
         public virtual CustomerSubCategory CustomerSubCategory { get; set; }
-        public virtual Customer Customer { get; set; }
     }
 }
