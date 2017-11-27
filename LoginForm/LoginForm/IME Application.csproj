@@ -151,6 +151,9 @@
     <Compile Include="Customer\FormTownAdd.Designer.cs">
       <DependentUpon>FormTownAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\AccountGroup.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\AuthorizationValue.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -228,6 +231,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\LoaderDate.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Mail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Management.cs">

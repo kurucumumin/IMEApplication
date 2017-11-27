@@ -12,19 +12,20 @@ namespace LoginForm.DataSet
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
+    
     public partial class IMEEntities : DbContext
     {
         public IMEEntities()
             : base("name=IMEEntities")
         {
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
+        public virtual DbSet<AccountGroup> AccountGroups { get; set; }
         public virtual DbSet<AuthorizationValue> AuthorizationValues { get; set; }
         public virtual DbSet<Capital> Capitals { get; set; }
         public virtual DbSet<City> Cities { get; set; }
@@ -46,6 +47,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<ItemNote> ItemNotes { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
         public virtual DbSet<LoaderDate> LoaderDates { get; set; }
+        public virtual DbSet<mail> mails { get; set; }
         public virtual DbSet<Management> Managements { get; set; }
         public virtual DbSet<Note> Notes { get; set; }
         public virtual DbSet<OnSale> OnSales { get; set; }
@@ -71,12 +73,9 @@ namespace LoginForm.DataSet
         public virtual DbSet<SupplierTitle> SupplierTitles { get; set; }
         public virtual DbSet<SupplierWorker> SupplierWorkers { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<Town> Towns { get; set; }
-        public virtual DbSet<Worker> Workers { get; set; }
-        public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<ExtendedRange> ExtendedRanges { get; set; }
-        public virtual DbSet<AccountGroup> AccountGroups { get; set; }
         public virtual DbSet<Tax> Taxes { get; set; }
         public virtual DbSet<TaxDetail> TaxDetails { get; set; }
+        public virtual DbSet<Town> Towns { get; set; }
+        public virtual DbSet<Worker> Workers { get; set; }
     }
 }

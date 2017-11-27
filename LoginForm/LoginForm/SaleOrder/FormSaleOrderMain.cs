@@ -32,14 +32,14 @@ namespace LoginForm.SalesOrder
 
             var list = from so in IME.SaleOrders
                        from cw in IME.CustomerWorkers.Where(x => x.ID == so.ContactID)
-                       from ca in IME.CustomerAddresses.Where(x => x.ID == so.AddressID)
+                       from ca in IME.CustomerAddresses.Where(x => x.ID == so.InvoiceAddressID)
                        from cw1 in IME.CustomerWorkers.Where(x => x.ID == so.DeliveryContactID).DefaultIfEmpty()
                        from ca1 in IME.CustomerAddresses.Where(x => x.ID == so.DeliveryAddressID).DefaultIfEmpty()
-                       where so.SalesOrderDate >= endDate && so.SalesOrderDate <= startDate
+                       where so.SaleDate >= endDate && so.SaleDate <= startDate
                        select new
                        {
-                           Date = so.SalesOrderDate,
-                           SoNO = so.SoNO,
+                           Date = so.SaleDate,
+                           SoNO = so.SaleOrderNo,
                            CustomerName = cw.Customer.c_name,
                            Contact = cw.cw_name,
                            DeliveryContact = (cw1.cw_name != null) ? cw1.cw_name : "--None--",

@@ -33,7 +33,7 @@ namespace LoginForm.PurchaseOrder
         private void MailFill()
         {
             IME = new IMEEntities();
-            var adapter = (from m in IME.Mails
+            var adapter = (from m in IME.mails
                            select new
                            {
                                m.FirstName,
