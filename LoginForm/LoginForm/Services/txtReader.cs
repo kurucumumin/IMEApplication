@@ -869,6 +869,7 @@ namespace LoginForm
             return 0;
 
         }
+
         public static int DualUsedRead()
         {
             #region DualUsedList
@@ -1257,7 +1258,143 @@ namespace LoginForm
             }
             return 0;
         }
+
+        public static int excelCustomerCountry()
+        {
+            IMEEntities IME = new IMEEntities();
+
+            int AddedCounter = 0;
+            int UptCounter = 0;
+            //Show the dialog and get result.
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "txt files (*.xlsx)|*.xlsx";
+            DialogResult result1 = openFileDialog1.ShowDialog();
+            if (result1 == DialogResult.OK)
+            {
+
+                Excel.Application excel = new Excel.Application();
+                Workbook wb = excel.Workbooks.Open(openFileDialog1.FileName);
+                Worksheet ws = wb.Worksheets[1];
+                int ColumnNumber = 3;
+                string ArticleNumb = ws.Cells[3, 24].Text;
+                #region DiscontinuedList
+                while ((ws.Cells[ColumnNumber, 1].Text) != "")
+                {
+                    ArticleNumb = ws.Cells[ColumnNumber, 24].Text;
+                    if (IME.Countries.Where(a => a.Country_name == ArticleNumb).FirstOrDefault() == null)
+                    {
+                        Country country = new Country();
+
+                        country.Country_name = ArticleNumb.Trim();
+                        IME.Countries.Add(country);
+                        IME.SaveChanges();
+                        AddedCounter++;
+                    }
+                    ColumnNumber++;
+                }
+                MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
+                return 1;
+                #endregion
+
+            }
+            return 0;
+
+        }
+
+        public static int excelCustomerCity()
+        {
+            IMEEntities IME = new IMEEntities();
+
+            int AddedCounter = 0;
+            int UptCounter = 0;
+            //Show the dialog and get result.
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "txt files (*.xlsx)|*.xlsx";
+            DialogResult result1 = openFileDialog1.ShowDialog();
+            if (result1 == DialogResult.OK)
+            {
+
+                    Excel.Application excel = new Excel.Application();
+                    Workbook wb = excel.Workbooks.Open(openFileDialog1.FileName);
+                    Worksheet ws = wb.Worksheets[1];
+                    int ColumnNumber = 3;
+                    string ArticleNumb = ws.Cells[3, 24].Text;
+                #region DiscontinuedList
+                  while ((ws.Cells[ColumnNumber, 1].Text) !="")
+                    {
+                    ArticleNumb = ws.Cells[ColumnNumber, 25].Text;
+                        if (IME.Cities.Where(a => a.City_name == ArticleNumb).FirstOrDefault() == null && ArticleNumb!=null)
+                        {
+                        City city = new City();
+                        city.City_name = ArticleNumb;
+                        string Countryname = ws.Cells[ColumnNumber, 24].Text;
+                        Country c = IME.Countries.Where(a => a.Country_name == Countryname).FirstOrDefault();
+                        int countryID = c.ID;
+                        city.CountryID = countryID;
+                            IME.Cities.Add(city);
+                            IME.SaveChanges();
+                            AddedCounter++;
+                        }
+                    ColumnNumber++;
+                    }
+                    MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
+                    return 1;
+                    #endregion
+
+            }
+            return 0;
+
+        }
+
+        public static int excelCustomerTown()
+        {
+            IMEEntities IME = new IMEEntities();
+
+            int AddedCounter = 0;
+            int UptCounter = 0;
+            //Show the dialog and get result.
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "txt files (*.xlsx)|*.xlsx";
+            DialogResult result1 = openFileDialog1.ShowDialog();
+            if (result1 == DialogResult.OK)
+            {
+
+                Excel.Application excel = new Excel.Application();
+                Workbook wb = excel.Workbooks.Open(openFileDialog1.FileName);
+                Worksheet ws = wb.Worksheets[1];
+                int ColumnNumber = 3;
+                string ArticleNumb = ws.Cells[3, 26].Text;
+                #region DiscontinuedList
+                while ((ws.Cells[ColumnNumber, 1].Text) != "")
+                {
+                    ArticleNumb = ws.Cells[ColumnNumber, 26].Text;
+                    if (IME.Cities.Where(a => a.City_name == ArticleNumb).FirstOrDefault() == null && ArticleNumb != null)
+                    {
+                        Town town = new Town();
+                        town.Town_name = ArticleNumb;
+                        string Countryname = ws.Cells[ColumnNumber, 25].Text;
+                        City c = IME.Cities.Where(a => a.City_name == Countryname).FirstOrDefault();
+                        int cityID = c.ID;
+                        town.CityID = cityID;
+                        IME.Towns.Add(town);
+                        IME.SaveChanges();
+                        AddedCounter++;
+                    }
+                    ColumnNumber++;
+                }
+                MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
+                return 1;
+                #endregion
+
+            }
+            return 0;
+
+        }
+
     }
+
+
+
     class QuotationExcelExport
     {
         public static void Export(DataGridView dg,string quotationNo)
