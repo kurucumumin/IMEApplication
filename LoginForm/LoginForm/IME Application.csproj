@@ -646,6 +646,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>IME.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="ClassDiagram1.cd" />
     <None Include="DataSet\IME.edmx.diagram">
       <DependentUpon>IME.edmx</DependentUpon>
     </None>
