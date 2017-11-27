@@ -39,6 +39,7 @@
             this.panel18 = new System.Windows.Forms.Panel();
             this.panel17 = new System.Windows.Forms.Panel();
             this.panel16 = new System.Windows.Forms.Panel();
+            this.btnSalesOrder = new System.Windows.Forms.Button();
             this.panel15 = new System.Windows.Forms.Panel();
             this.btnItemCard = new System.Windows.Forms.Button();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -65,11 +66,12 @@
             this.panel23 = new System.Windows.Forms.Panel();
             this.panel22 = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
-            this.btnSalesOrder = new System.Windows.Forms.Button();
+            this.btnShippingDetail = new System.Windows.Forms.Button();
             this.tableRightPanel.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel14.SuspendLayout();
+            this.panel11.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -219,6 +221,23 @@
             this.panel16.Size = new System.Drawing.Size(144, 111);
             this.panel16.TabIndex = 47;
             // 
+            // btnSalesOrder
+            // 
+            this.btnSalesOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnSalesOrder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSalesOrder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSalesOrder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
+            this.btnSalesOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalesOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnSalesOrder.Location = new System.Drawing.Point(0, 0);
+            this.btnSalesOrder.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSalesOrder.Name = "btnSalesOrder";
+            this.btnSalesOrder.Size = new System.Drawing.Size(144, 111);
+            this.btnSalesOrder.TabIndex = 13;
+            this.btnSalesOrder.Text = "Sales Order";
+            this.btnSalesOrder.UseVisualStyleBackColor = false;
+            this.btnSalesOrder.Click += new System.EventHandler(this.btnSalesOrder_Click);
+            // 
             // panel15
             // 
             this.panel15.Controls.Add(this.btnItemCard);
@@ -294,6 +313,7 @@
             // 
             // panel11
             // 
+            this.panel11.Controls.Add(this.btnShippingDetail);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel11.Location = new System.Drawing.Point(603, 117);
             this.panel11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -505,22 +525,23 @@
             this.panel21.Size = new System.Drawing.Size(144, 111);
             this.panel21.TabIndex = 52;
             // 
-            // btnSalesOrder
+            // btnShippingDetail
             // 
-            this.btnSalesOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
-            this.btnSalesOrder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSalesOrder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSalesOrder.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
-            this.btnSalesOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalesOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnSalesOrder.Location = new System.Drawing.Point(0, 0);
-            this.btnSalesOrder.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSalesOrder.Name = "btnSalesOrder";
-            this.btnSalesOrder.Size = new System.Drawing.Size(144, 111);
-            this.btnSalesOrder.TabIndex = 13;
-            this.btnSalesOrder.Text = "Sales Order";
-            this.btnSalesOrder.UseVisualStyleBackColor = false;
-            this.btnSalesOrder.Click += new System.EventHandler(this.btnSalesOrder_Click);
+            this.btnShippingDetail.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnShippingDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnShippingDetail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnShippingDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnShippingDetail.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
+            this.btnShippingDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShippingDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShippingDetail.Location = new System.Drawing.Point(0, 0);
+            this.btnShippingDetail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnShippingDetail.Name = "btnShippingDetail";
+            this.btnShippingDetail.Size = new System.Drawing.Size(144, 111);
+            this.btnShippingDetail.TabIndex = 31;
+            this.btnShippingDetail.Text = "Shipping Detail";
+            this.btnShippingDetail.UseVisualStyleBackColor = false;
+            this.btnShippingDetail.Click += new System.EventHandler(this.btnShippingDetail_Click);
             // 
             // DevelopmentControl
             // 
@@ -535,6 +556,7 @@
             this.panel16.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
@@ -583,5 +605,6 @@
         private System.Windows.Forms.Panel panel22;
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.Button btnSalesOrder;
+        private System.Windows.Forms.Button btnShippingDetail;
     }
 }
