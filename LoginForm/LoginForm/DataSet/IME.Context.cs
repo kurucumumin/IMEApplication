@@ -12,24 +12,25 @@ namespace LoginForm.DataSet
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class IMEEntities : DbContext
     {
         public IMEEntities()
             : base("name=IMEEntities")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<AuthorizationValue> AuthorizationValues { get; set; }
         public virtual DbSet<Capital> Capitals { get; set; }
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<ContactType> ContactTypes { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<CustomerAddress> CustomerAddresses { get; set; }
         public virtual DbSet<CustomerCategory> CustomerCategories { get; set; }
         public virtual DbSet<CustomerCategorySubCategory> CustomerCategorySubCategories { get; set; }
@@ -40,6 +41,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<DailyDiscontinued> DailyDiscontinueds { get; set; }
         public virtual DbSet<DiscountValue> DiscountValues { get; set; }
         public virtual DbSet<DualUse> DualUses { get; set; }
+        public virtual DbSet<ExtendedRange> ExtendedRanges { get; set; }
         public virtual DbSet<Hazardou> Hazardous { get; set; }
         public virtual DbSet<ItemNote> ItemNotes { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
