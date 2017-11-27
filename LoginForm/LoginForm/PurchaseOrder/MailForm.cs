@@ -28,7 +28,7 @@ namespace LoginForm.PurchaseOrder
 
             if ( radioDefault.Checked == true)
             {
-                dgMail.Enabled = false;  
+                dgMail.Enabled = false;
             }
         }
 
@@ -68,9 +68,20 @@ namespace LoginForm.PurchaseOrder
         {
             if(e.KeyCode==Keys.Delete)
             {
-                if (MessageBox.Show("Are you sure want to delete this record ?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    mailBindingSource.RemoveCurrent();
+              if (MessageBox.Show("Are you sure want to delete this record ?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                mailBindingSource.RemoveCurrent();
             }
+
+            IME = new IMEEntities();
+            var adapter = (from m in IME.Mails
+                           select new
+                           {
+                               m.FirstName,
+                               m.MailAddress,
+                               m.cc,
+                               m.too
+                           }).ToList();
+            dgMail.DataSource = adapter;
         }
 
         private void radioSpecial_CheckedChanged(object sender, EventArgs e)
