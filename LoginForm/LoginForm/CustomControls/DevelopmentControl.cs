@@ -1,4 +1,5 @@
 ﻿using LoginForm.Item;
+using LoginForm.PurchaseOrder;
 using LoginForm.QuotationModule;
 using LoginForm.SalesOrder;
 using LoginForm.ShipingDetails;
@@ -55,6 +56,12 @@ namespace LoginForm.CustomControls
         private void btnShippingDetail_Click(object sender, EventArgs e)
         {
             ShipingDetailMain form = new ShipingDetailMain();
+            form.ShowDialog();
+        }
+
+        private void btnPurchaseOrders_Click(object sender, EventArgs e)
+        {
+            PurchaseOrderMain form = new PurchaseOrderMain();
             form.ShowDialog();
         }
     }

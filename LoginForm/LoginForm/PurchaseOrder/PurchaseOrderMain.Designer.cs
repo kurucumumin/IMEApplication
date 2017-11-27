@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnPurchaseOrders = new System.Windows.Forms.Button();
+            this.dateEnding = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dateStarting = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dateStarting = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dateEnding = new System.Windows.Forms.DateTimePicker();
-            this.btnPurchaseOrders = new System.Windows.Forms.Button();
             this.dgPurchase = new System.Windows.Forms.DataGridView();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnExcel = new System.Windows.Forms.Button();
@@ -59,7 +59,49 @@
             this.groupBox1.Size = new System.Drawing.Size(1667, 65);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Purchase Orders";
+            // 
+            // btnPurchaseOrders
+            // 
+            this.btnPurchaseOrders.Location = new System.Drawing.Point(1197, 13);
+            this.btnPurchaseOrders.Name = "btnPurchaseOrders";
+            this.btnPurchaseOrders.Size = new System.Drawing.Size(163, 31);
+            this.btnPurchaseOrders.TabIndex = 14;
+            this.btnPurchaseOrders.Text = "Bring The Purchase Orders";
+            this.btnPurchaseOrders.UseVisualStyleBackColor = true;
+            this.btnPurchaseOrders.Click += new System.EventHandler(this.btnPurchaseOrders_Click);
+            // 
+            // dateEnding
+            // 
+            this.dateEnding.Location = new System.Drawing.Point(897, 22);
+            this.dateEnding.Name = "dateEnding";
+            this.dateEnding.Size = new System.Drawing.Size(200, 20);
+            this.dateEnding.TabIndex = 13;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(825, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Ending Date";
+            // 
+            // dateStarting
+            // 
+            this.dateStarting.Location = new System.Drawing.Point(615, 22);
+            this.dateStarting.Name = "dateStarting";
+            this.dateStarting.Size = new System.Drawing.Size(200, 20);
+            this.dateStarting.TabIndex = 11;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(540, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Starting Date";
             // 
             // txtSearch
             // 
@@ -78,67 +120,27 @@
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(620, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 13);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Starting Date";
-            // 
-            // dateStarting
-            // 
-            this.dateStarting.Location = new System.Drawing.Point(695, 22);
-            this.dateStarting.Name = "dateStarting";
-            this.dateStarting.Size = new System.Drawing.Size(200, 20);
-            this.dateStarting.TabIndex = 11;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(905, 28);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 13);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Ending Date";
-            // 
-            // dateEnding
-            // 
-            this.dateEnding.Location = new System.Drawing.Point(977, 22);
-            this.dateEnding.Name = "dateEnding";
-            this.dateEnding.Size = new System.Drawing.Size(200, 20);
-            this.dateEnding.TabIndex = 13;
-            // 
-            // btnPurchaseOrders
-            // 
-            this.btnPurchaseOrders.Location = new System.Drawing.Point(1498, 19);
-            this.btnPurchaseOrders.Name = "btnPurchaseOrders";
-            this.btnPurchaseOrders.Size = new System.Drawing.Size(163, 31);
-            this.btnPurchaseOrders.TabIndex = 14;
-            this.btnPurchaseOrders.Text = "Bring The Purchase Orders";
-            this.btnPurchaseOrders.UseVisualStyleBackColor = true;
-            // 
             // dgPurchase
             // 
             this.dgPurchase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgPurchase.Location = new System.Drawing.Point(12, 83);
             this.dgPurchase.Name = "dgPurchase";
-            this.dgPurchase.Size = new System.Drawing.Size(1667, 605);
+            this.dgPurchase.Size = new System.Drawing.Size(1365, 505);
             this.dgPurchase.TabIndex = 9;
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1580, 705);
+            this.btnClose.Location = new System.Drawing.Point(1280, 598);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(97, 42);
             this.btnClose.TabIndex = 12;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnExcel
             // 
-            this.btnExcel.Location = new System.Drawing.Point(1202, 705);
+            this.btnExcel.Location = new System.Drawing.Point(902, 598);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(166, 42);
             this.btnExcel.TabIndex = 11;
@@ -147,16 +149,17 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(1374, 705);
+            this.btnCreate.Location = new System.Drawing.Point(1074, 598);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(97, 42);
             this.btnCreate.TabIndex = 10;
             this.btnCreate.Text = "Create Purchase Orders";
             this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(1477, 705);
+            this.btnPrint.Location = new System.Drawing.Point(1177, 598);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(97, 42);
             this.btnPrint.TabIndex = 13;
@@ -167,7 +170,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1691, 759);
+            this.ClientSize = new System.Drawing.Size(1384, 652);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnExcel);

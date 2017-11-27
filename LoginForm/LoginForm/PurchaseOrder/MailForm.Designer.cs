@@ -28,14 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgMail = new System.Windows.Forms.DataGridView();
             this.radioDefault = new System.Windows.Forms.RadioButton();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.radioSpecial = new System.Windows.Forms.RadioButton();
+            this.iMEDataSet = new LoginForm.IMEDataSet();
+            this.mailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.mailTableAdapter = new LoginForm.IMEDataSetTableAdapters.MailTableAdapter();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mailAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ccDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tooDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgMail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iMEDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mailBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -43,21 +54,28 @@
             this.groupBox1.Controls.Add(this.dgMail);
             this.groupBox1.Location = new System.Drawing.Point(2, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(506, 147);
+            this.groupBox1.Size = new System.Drawing.Size(570, 147);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Mail To List";
             // 
             // dgMail
             // 
-            this.dgMail.AllowUserToDeleteRows = false;
+            this.dgMail.AllowUserToOrderColumns = true;
+            this.dgMail.AutoGenerateColumns = false;
             this.dgMail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgMail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgMail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.firstNameDataGridViewTextBoxColumn,
+            this.mailAddressDataGridViewTextBoxColumn,
+            this.ccDataGridViewCheckBoxColumn,
+            this.tooDataGridViewCheckBoxColumn});
+            this.dgMail.DataSource = this.mailBindingSource;
             this.dgMail.Location = new System.Drawing.Point(3, 16);
             this.dgMail.Name = "dgMail";
-            this.dgMail.ReadOnly = true;
-            this.dgMail.Size = new System.Drawing.Size(500, 128);
+            this.dgMail.Size = new System.Drawing.Size(567, 125);
             this.dgMail.TabIndex = 0;
+            this.dgMail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgMail_KeyDown);
             // 
             // radioDefault
             // 
@@ -73,16 +91,17 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(430, 153);
+            this.btnClose.Location = new System.Drawing.Point(494, 156);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 3;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(349, 153);
+            this.btnSave.Location = new System.Drawing.Point(413, 156);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 4;
@@ -99,12 +118,67 @@
             this.radioSpecial.TabIndex = 1;
             this.radioSpecial.Text = "Special Settings";
             this.radioSpecial.UseVisualStyleBackColor = true;
+            this.radioSpecial.CheckedChanged += new System.EventHandler(this.radioSpecial_CheckedChanged);
+            // 
+            // iMEDataSet
+            // 
+            this.iMEDataSet.DataSetName = "IMEDataSet";
+            this.iMEDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // mailBindingSource
+            // 
+            this.mailBindingSource.DataMember = "Mail";
+            this.mailBindingSource.DataSource = this.iMEDataSet;
+            // 
+            // mailTableAdapter
+            // 
+            this.mailTableAdapter.ClearBeforeFill = true;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Width = 21;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.Width = 79;
+            // 
+            // mailAddressDataGridViewTextBoxColumn
+            // 
+            this.mailAddressDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.mailAddressDataGridViewTextBoxColumn.DataPropertyName = "MailAddress";
+            this.mailAddressDataGridViewTextBoxColumn.HeaderText = "MailAddress";
+            this.mailAddressDataGridViewTextBoxColumn.Name = "mailAddressDataGridViewTextBoxColumn";
+            // 
+            // ccDataGridViewCheckBoxColumn
+            // 
+            this.ccDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.ccDataGridViewCheckBoxColumn.DataPropertyName = "cc";
+            this.ccDataGridViewCheckBoxColumn.HeaderText = "cc";
+            this.ccDataGridViewCheckBoxColumn.Name = "ccDataGridViewCheckBoxColumn";
+            this.ccDataGridViewCheckBoxColumn.Width = 21;
+            // 
+            // tooDataGridViewCheckBoxColumn
+            // 
+            this.tooDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.tooDataGridViewCheckBoxColumn.DataPropertyName = "too";
+            this.tooDataGridViewCheckBoxColumn.HeaderText = "too";
+            this.tooDataGridViewCheckBoxColumn.Name = "tooDataGridViewCheckBoxColumn";
+            this.tooDataGridViewCheckBoxColumn.Width = 21;
             // 
             // MailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(518, 183);
+            this.ClientSize = new System.Drawing.Size(584, 183);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.radioDefault);
@@ -117,6 +191,8 @@
             this.Load += new System.EventHandler(this.MailForm_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgMail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iMEDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mailBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,5 +206,13 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.RadioButton radioSpecial;
+        private IMEDataSet iMEDataSet;
+        private System.Windows.Forms.BindingSource mailBindingSource;
+        private IMEDataSetTableAdapters.MailTableAdapter mailTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mailAddressDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ccDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn tooDataGridViewCheckBoxColumn;
     }
 }

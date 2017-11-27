@@ -47,6 +47,7 @@
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.btnShippingDetail = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.btnSupplier = new System.Windows.Forms.Button();
@@ -66,8 +67,9 @@
             this.panel23 = new System.Windows.Forms.Panel();
             this.panel22 = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
-            this.btnShippingDetail = new System.Windows.Forms.Button();
+            this.btnPurchaseOrders = new System.Windows.Forms.Button();
             this.tableRightPanel.SuspendLayout();
+            this.panel17.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel14.SuspendLayout();
@@ -119,7 +121,7 @@
             this.tableRightPanel.Controls.Add(this.panel21, 2, 3);
             this.tableRightPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableRightPanel.Location = new System.Drawing.Point(0, 0);
-            this.tableRightPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableRightPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableRightPanel.Name = "tableRightPanel";
             this.tableRightPanel.RowCount = 5;
             this.tableRightPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -127,98 +129,99 @@
             this.tableRightPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableRightPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableRightPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableRightPanel.Size = new System.Drawing.Size(901, 577);
+            this.tableRightPanel.Size = new System.Drawing.Size(676, 469);
             this.tableRightPanel.TabIndex = 2;
             // 
             // panel30
             // 
             this.panel30.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel30.Location = new System.Drawing.Point(3, 462);
-            this.panel30.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel30.Location = new System.Drawing.Point(2, 374);
+            this.panel30.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel30.Name = "panel30";
-            this.panel30.Size = new System.Drawing.Size(144, 113);
+            this.panel30.Size = new System.Drawing.Size(108, 93);
             this.panel30.TabIndex = 61;
             // 
             // panel29
             // 
             this.panel29.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel29.Location = new System.Drawing.Point(153, 462);
-            this.panel29.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel29.Location = new System.Drawing.Point(114, 374);
+            this.panel29.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel29.Name = "panel29";
-            this.panel29.Size = new System.Drawing.Size(144, 113);
+            this.panel29.Size = new System.Drawing.Size(108, 93);
             this.panel29.TabIndex = 60;
             // 
             // panel28
             // 
             this.panel28.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel28.Location = new System.Drawing.Point(603, 462);
-            this.panel28.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel28.Location = new System.Drawing.Point(450, 374);
+            this.panel28.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel28.Name = "panel28";
-            this.panel28.Size = new System.Drawing.Size(144, 113);
+            this.panel28.Size = new System.Drawing.Size(108, 93);
             this.panel28.TabIndex = 59;
             // 
             // panel27
             // 
             this.panel27.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel27.Location = new System.Drawing.Point(753, 462);
-            this.panel27.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel27.Location = new System.Drawing.Point(562, 374);
+            this.panel27.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel27.Name = "panel27";
-            this.panel27.Size = new System.Drawing.Size(145, 113);
+            this.panel27.Size = new System.Drawing.Size(112, 93);
             this.panel27.TabIndex = 58;
             // 
             // panel26
             // 
             this.panel26.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel26.Location = new System.Drawing.Point(303, 462);
-            this.panel26.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel26.Location = new System.Drawing.Point(226, 374);
+            this.panel26.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(144, 113);
+            this.panel26.Size = new System.Drawing.Size(108, 93);
             this.panel26.TabIndex = 57;
             // 
             // panel25
             // 
             this.panel25.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel25.Location = new System.Drawing.Point(453, 462);
-            this.panel25.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel25.Location = new System.Drawing.Point(338, 374);
+            this.panel25.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel25.Name = "panel25";
-            this.panel25.Size = new System.Drawing.Size(144, 113);
+            this.panel25.Size = new System.Drawing.Size(108, 93);
             this.panel25.TabIndex = 56;
             // 
             // panel20
             // 
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel20.Location = new System.Drawing.Point(153, 347);
-            this.panel20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel20.Location = new System.Drawing.Point(114, 281);
+            this.panel20.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(144, 111);
+            this.panel20.Size = new System.Drawing.Size(108, 89);
             this.panel20.TabIndex = 51;
             // 
             // panel18
             // 
             this.panel18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel18.Location = new System.Drawing.Point(753, 232);
-            this.panel18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel18.Location = new System.Drawing.Point(562, 188);
+            this.panel18.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(145, 111);
+            this.panel18.Size = new System.Drawing.Size(112, 89);
             this.panel18.TabIndex = 49;
             // 
             // panel17
             // 
+            this.panel17.Controls.Add(this.btnPurchaseOrders);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(603, 232);
-            this.panel17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel17.Location = new System.Drawing.Point(450, 188);
+            this.panel17.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(144, 111);
+            this.panel17.Size = new System.Drawing.Size(108, 89);
             this.panel17.TabIndex = 48;
             // 
             // panel16
             // 
             this.panel16.Controls.Add(this.btnSalesOrder);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel16.Location = new System.Drawing.Point(453, 232);
-            this.panel16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel16.Location = new System.Drawing.Point(338, 188);
+            this.panel16.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(144, 111);
+            this.panel16.Size = new System.Drawing.Size(108, 89);
             this.panel16.TabIndex = 47;
             // 
             // btnSalesOrder
@@ -230,9 +233,8 @@
             this.btnSalesOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalesOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnSalesOrder.Location = new System.Drawing.Point(0, 0);
-            this.btnSalesOrder.Margin = new System.Windows.Forms.Padding(4);
             this.btnSalesOrder.Name = "btnSalesOrder";
-            this.btnSalesOrder.Size = new System.Drawing.Size(144, 111);
+            this.btnSalesOrder.Size = new System.Drawing.Size(108, 89);
             this.btnSalesOrder.TabIndex = 13;
             this.btnSalesOrder.Text = "Sales Order";
             this.btnSalesOrder.UseVisualStyleBackColor = false;
@@ -242,10 +244,10 @@
             // 
             this.panel15.Controls.Add(this.btnItemCard);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel15.Location = new System.Drawing.Point(303, 232);
-            this.panel15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel15.Location = new System.Drawing.Point(226, 188);
+            this.panel15.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(144, 111);
+            this.panel15.Size = new System.Drawing.Size(108, 89);
             this.panel15.TabIndex = 46;
             // 
             // btnItemCard
@@ -257,9 +259,8 @@
             this.btnItemCard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnItemCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnItemCard.Location = new System.Drawing.Point(0, 0);
-            this.btnItemCard.Margin = new System.Windows.Forms.Padding(4);
             this.btnItemCard.Name = "btnItemCard";
-            this.btnItemCard.Size = new System.Drawing.Size(144, 111);
+            this.btnItemCard.Size = new System.Drawing.Size(108, 89);
             this.btnItemCard.TabIndex = 12;
             this.btnItemCard.Text = "Item Card";
             this.btnItemCard.UseVisualStyleBackColor = false;
@@ -269,10 +270,10 @@
             // 
             this.panel14.Controls.Add(this.btnWorker);
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel14.Location = new System.Drawing.Point(153, 232);
-            this.panel14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel14.Location = new System.Drawing.Point(114, 188);
+            this.panel14.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(144, 111);
+            this.panel14.Size = new System.Drawing.Size(108, 89);
             this.panel14.TabIndex = 45;
             // 
             // btnWorker
@@ -285,9 +286,9 @@
             this.btnWorker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnWorker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnWorker.Location = new System.Drawing.Point(0, 0);
-            this.btnWorker.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnWorker.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnWorker.Name = "btnWorker";
-            this.btnWorker.Size = new System.Drawing.Size(144, 111);
+            this.btnWorker.Size = new System.Drawing.Size(108, 89);
             this.btnWorker.TabIndex = 31;
             this.btnWorker.Text = "User";
             this.btnWorker.UseVisualStyleBackColor = false;
@@ -296,39 +297,57 @@
             // panel13
             // 
             this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel13.Location = new System.Drawing.Point(3, 232);
-            this.panel13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel13.Location = new System.Drawing.Point(2, 188);
+            this.panel13.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(144, 111);
+            this.panel13.Size = new System.Drawing.Size(108, 89);
             this.panel13.TabIndex = 44;
             // 
             // panel12
             // 
             this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel12.Location = new System.Drawing.Point(753, 117);
-            this.panel12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel12.Location = new System.Drawing.Point(562, 95);
+            this.panel12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(145, 111);
+            this.panel12.Size = new System.Drawing.Size(112, 89);
             this.panel12.TabIndex = 43;
             // 
             // panel11
             // 
             this.panel11.Controls.Add(this.btnShippingDetail);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel11.Location = new System.Drawing.Point(603, 117);
-            this.panel11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel11.Location = new System.Drawing.Point(450, 95);
+            this.panel11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(144, 111);
+            this.panel11.Size = new System.Drawing.Size(108, 89);
             this.panel11.TabIndex = 42;
+            // 
+            // btnShippingDetail
+            // 
+            this.btnShippingDetail.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnShippingDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnShippingDetail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnShippingDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnShippingDetail.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
+            this.btnShippingDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShippingDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShippingDetail.Location = new System.Drawing.Point(0, 0);
+            this.btnShippingDetail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnShippingDetail.Name = "btnShippingDetail";
+            this.btnShippingDetail.Size = new System.Drawing.Size(108, 89);
+            this.btnShippingDetail.TabIndex = 31;
+            this.btnShippingDetail.Text = "Shipping Detail";
+            this.btnShippingDetail.UseVisualStyleBackColor = false;
+            this.btnShippingDetail.Click += new System.EventHandler(this.btnShippingDetail_Click);
             // 
             // panel9
             // 
             this.panel9.Controls.Add(this.panel10);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(453, 117);
-            this.panel9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel9.Location = new System.Drawing.Point(338, 95);
+            this.panel9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(144, 111);
+            this.panel9.Size = new System.Drawing.Size(108, 89);
             this.panel9.TabIndex = 41;
             // 
             // panel10
@@ -336,9 +355,9 @@
             this.panel10.Controls.Add(this.btnSupplier);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel10.Location = new System.Drawing.Point(0, 0);
-            this.panel10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(144, 111);
+            this.panel10.Size = new System.Drawing.Size(108, 89);
             this.panel10.TabIndex = 33;
             // 
             // btnSupplier
@@ -351,9 +370,9 @@
             this.btnSupplier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSupplier.Location = new System.Drawing.Point(0, 0);
-            this.btnSupplier.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSupplier.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSupplier.Name = "btnSupplier";
-            this.btnSupplier.Size = new System.Drawing.Size(144, 111);
+            this.btnSupplier.Size = new System.Drawing.Size(108, 89);
             this.btnSupplier.TabIndex = 30;
             this.btnSupplier.Text = "Supplier";
             this.btnSupplier.UseVisualStyleBackColor = false;
@@ -363,10 +382,10 @@
             // 
             this.panel8.Controls.Add(this.btnQuotation);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(303, 117);
-            this.panel8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel8.Location = new System.Drawing.Point(226, 95);
+            this.panel8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(144, 111);
+            this.panel8.Size = new System.Drawing.Size(108, 89);
             this.panel8.TabIndex = 40;
             // 
             // btnQuotation
@@ -379,10 +398,10 @@
             this.btnQuotation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnQuotation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuotation.Location = new System.Drawing.Point(0, 0);
-            this.btnQuotation.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnQuotation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnQuotation.Name = "btnQuotation";
-            this.btnQuotation.Padding = new System.Windows.Forms.Padding(18);
-            this.btnQuotation.Size = new System.Drawing.Size(144, 111);
+            this.btnQuotation.Padding = new System.Windows.Forms.Padding(14, 15, 14, 15);
+            this.btnQuotation.Size = new System.Drawing.Size(108, 89);
             this.btnQuotation.TabIndex = 29;
             this.btnQuotation.Text = "Quotation";
             this.btnQuotation.UseVisualStyleBackColor = false;
@@ -392,10 +411,10 @@
             // 
             this.panel7.Controls.Add(this.btnCustomer);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(153, 117);
-            this.panel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel7.Location = new System.Drawing.Point(114, 95);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(144, 111);
+            this.panel7.Size = new System.Drawing.Size(108, 89);
             this.panel7.TabIndex = 39;
             // 
             // btnCustomer
@@ -408,9 +427,9 @@
             this.btnCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCustomer.Location = new System.Drawing.Point(0, 0);
-            this.btnCustomer.Margin = new System.Windows.Forms.Padding(6);
+            this.btnCustomer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCustomer.Name = "btnCustomer";
-            this.btnCustomer.Size = new System.Drawing.Size(144, 111);
+            this.btnCustomer.Size = new System.Drawing.Size(108, 89);
             this.btnCustomer.TabIndex = 27;
             this.btnCustomer.Text = "Customer";
             this.btnCustomer.UseMnemonic = false;
@@ -420,139 +439,138 @@
             // panel6
             // 
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(3, 117);
-            this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel6.Location = new System.Drawing.Point(2, 95);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(144, 111);
+            this.panel6.Size = new System.Drawing.Size(108, 89);
             this.panel6.TabIndex = 38;
             // 
             // panel5
             // 
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(753, 2);
-            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel5.Location = new System.Drawing.Point(562, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(145, 111);
+            this.panel5.Size = new System.Drawing.Size(112, 89);
             this.panel5.TabIndex = 37;
             // 
             // panel4
             // 
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(603, 2);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel4.Location = new System.Drawing.Point(450, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(144, 111);
+            this.panel4.Size = new System.Drawing.Size(108, 89);
             this.panel4.TabIndex = 36;
             // 
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(453, 2);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Location = new System.Drawing.Point(338, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(144, 111);
+            this.panel3.Size = new System.Drawing.Size(108, 89);
             this.panel3.TabIndex = 35;
             // 
             // panel2
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(303, 2);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Location = new System.Drawing.Point(226, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(144, 111);
+            this.panel2.Size = new System.Drawing.Size(108, 89);
             this.panel2.TabIndex = 34;
             // 
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(153, 2);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(114, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(144, 111);
+            this.panel1.Size = new System.Drawing.Size(108, 89);
             this.panel1.TabIndex = 33;
             // 
             // dock1
             // 
             this.dock1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dock1.Location = new System.Drawing.Point(3, 2);
-            this.dock1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dock1.Location = new System.Drawing.Point(2, 2);
+            this.dock1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dock1.Name = "dock1";
-            this.dock1.Size = new System.Drawing.Size(144, 111);
+            this.dock1.Size = new System.Drawing.Size(108, 89);
             this.dock1.TabIndex = 32;
             // 
             // panel19
             // 
             this.panel19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel19.Location = new System.Drawing.Point(3, 347);
-            this.panel19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel19.Location = new System.Drawing.Point(2, 281);
+            this.panel19.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(144, 111);
+            this.panel19.Size = new System.Drawing.Size(108, 89);
             this.panel19.TabIndex = 50;
             // 
             // panel24
             // 
             this.panel24.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel24.Location = new System.Drawing.Point(753, 347);
-            this.panel24.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel24.Location = new System.Drawing.Point(562, 281);
+            this.panel24.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(145, 111);
+            this.panel24.Size = new System.Drawing.Size(112, 89);
             this.panel24.TabIndex = 55;
             // 
             // panel23
             // 
             this.panel23.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel23.Location = new System.Drawing.Point(603, 347);
-            this.panel23.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel23.Location = new System.Drawing.Point(450, 281);
+            this.panel23.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(144, 111);
+            this.panel23.Size = new System.Drawing.Size(108, 89);
             this.panel23.TabIndex = 54;
             // 
             // panel22
             // 
             this.panel22.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel22.Location = new System.Drawing.Point(453, 347);
-            this.panel22.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel22.Location = new System.Drawing.Point(338, 281);
+            this.panel22.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(144, 111);
+            this.panel22.Size = new System.Drawing.Size(108, 89);
             this.panel22.TabIndex = 53;
             // 
             // panel21
             // 
             this.panel21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel21.Location = new System.Drawing.Point(303, 347);
-            this.panel21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel21.Location = new System.Drawing.Point(226, 281);
+            this.panel21.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(144, 111);
+            this.panel21.Size = new System.Drawing.Size(108, 89);
             this.panel21.TabIndex = 52;
             // 
-            // btnShippingDetail
+            // btnPurchaseOrders
             // 
-            this.btnShippingDetail.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnShippingDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
-            this.btnShippingDetail.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnShippingDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnShippingDetail.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
-            this.btnShippingDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnShippingDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShippingDetail.Location = new System.Drawing.Point(0, 0);
-            this.btnShippingDetail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnShippingDetail.Name = "btnShippingDetail";
-            this.btnShippingDetail.Size = new System.Drawing.Size(144, 111);
-            this.btnShippingDetail.TabIndex = 31;
-            this.btnShippingDetail.Text = "Shipping Detail";
-            this.btnShippingDetail.UseVisualStyleBackColor = false;
-            this.btnShippingDetail.Click += new System.EventHandler(this.btnShippingDetail_Click);
+            this.btnPurchaseOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnPurchaseOrders.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPurchaseOrders.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPurchaseOrders.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
+            this.btnPurchaseOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPurchaseOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnPurchaseOrders.Location = new System.Drawing.Point(0, 0);
+            this.btnPurchaseOrders.Name = "btnPurchaseOrders";
+            this.btnPurchaseOrders.Size = new System.Drawing.Size(108, 89);
+            this.btnPurchaseOrders.TabIndex = 14;
+            this.btnPurchaseOrders.Text = "Purchase Orders";
+            this.btnPurchaseOrders.UseVisualStyleBackColor = false;
+            this.btnPurchaseOrders.Click += new System.EventHandler(this.btnPurchaseOrders_Click);
             // 
             // DevelopmentControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.Controls.Add(this.tableRightPanel);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "DevelopmentControl";
-            this.Size = new System.Drawing.Size(901, 577);
+            this.Size = new System.Drawing.Size(676, 469);
             this.tableRightPanel.ResumeLayout(false);
+            this.panel17.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
@@ -606,5 +624,6 @@
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.Button btnSalesOrder;
         private System.Windows.Forms.Button btnShippingDetail;
+        private System.Windows.Forms.Button btnPurchaseOrders;
     }
 }

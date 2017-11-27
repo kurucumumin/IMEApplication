@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioSent = new System.Windows.Forms.RadioButton();
-            this.radioAll = new System.Windows.Forms.RadioButton();
             this.radioNotSent = new System.Windows.Forms.RadioButton();
+            this.radioAll = new System.Windows.Forms.RadioButton();
+            this.radioSent = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.txtOrderNumber = new System.Windows.Forms.TextBox();
             this.dgPurchase = new System.Windows.Forms.DataGridView();
@@ -54,16 +54,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Parametrs";
             // 
-            // radioSent
+            // radioNotSent
             // 
-            this.radioSent.AutoSize = true;
-            this.radioSent.Location = new System.Drawing.Point(6, 19);
-            this.radioSent.Name = "radioSent";
-            this.radioSent.Size = new System.Drawing.Size(77, 17);
-            this.radioSent.TabIndex = 0;
-            this.radioSent.TabStop = true;
-            this.radioSent.Text = "Sent to RS";
-            this.radioSent.UseVisualStyleBackColor = true;
+            this.radioNotSent.AutoSize = true;
+            this.radioNotSent.Location = new System.Drawing.Point(6, 54);
+            this.radioNotSent.Name = "radioNotSent";
+            this.radioNotSent.Size = new System.Drawing.Size(95, 17);
+            this.radioNotSent.TabIndex = 2;
+            this.radioNotSent.TabStop = true;
+            this.radioNotSent.Text = "Not sent to RS";
+            this.radioNotSent.UseVisualStyleBackColor = true;
             // 
             // radioAll
             // 
@@ -76,16 +76,16 @@
             this.radioAll.Text = "All";
             this.radioAll.UseVisualStyleBackColor = true;
             // 
-            // radioNotSent
+            // radioSent
             // 
-            this.radioNotSent.AutoSize = true;
-            this.radioNotSent.Location = new System.Drawing.Point(6, 54);
-            this.radioNotSent.Name = "radioNotSent";
-            this.radioNotSent.Size = new System.Drawing.Size(95, 17);
-            this.radioNotSent.TabIndex = 2;
-            this.radioNotSent.TabStop = true;
-            this.radioNotSent.Text = "Not sent to RS";
-            this.radioNotSent.UseVisualStyleBackColor = true;
+            this.radioSent.AutoSize = true;
+            this.radioSent.Location = new System.Drawing.Point(6, 19);
+            this.radioSent.Name = "radioSent";
+            this.radioSent.Size = new System.Drawing.Size(77, 17);
+            this.radioSent.TabIndex = 0;
+            this.radioSent.TabStop = true;
+            this.radioSent.Text = "Sent to RS";
+            this.radioSent.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -108,21 +108,22 @@
             this.dgPurchase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgPurchase.Location = new System.Drawing.Point(12, 133);
             this.dgPurchase.Name = "dgPurchase";
-            this.dgPurchase.Size = new System.Drawing.Size(1667, 605);
+            this.dgPurchase.Size = new System.Drawing.Size(1272, 432);
             this.dgPurchase.TabIndex = 10;
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1604, 744);
+            this.btnClose.Location = new System.Drawing.Point(1209, 571);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 42);
             this.btnClose.TabIndex = 13;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnExcel
             // 
-            this.btnExcel.Location = new System.Drawing.Point(1260, 744);
+            this.btnExcel.Location = new System.Drawing.Point(865, 571);
             this.btnExcel.Name = "btnExcel";
             this.btnExcel.Size = new System.Drawing.Size(166, 42);
             this.btnExcel.TabIndex = 12;
@@ -131,18 +132,19 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(1432, 744);
+            this.btnCreate.Location = new System.Drawing.Point(1037, 571);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(166, 42);
             this.btnCreate.TabIndex = 11;
             this.btnCreate.Text = "Create an Order That is Chosen";
             this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // NewPurchaseOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1689, 802);
+            this.ClientSize = new System.Drawing.Size(1300, 614);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.btnCreate);

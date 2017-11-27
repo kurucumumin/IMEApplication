@@ -16,5 +16,25 @@ namespace LoginForm.PurchaseOrder
         {
             InitializeComponent();
         }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            NewPurchaseOrder form = new NewPurchaseOrder();
+            form.Show();
+            this.Hide();
+        }
+
+        private void btnPurchaseOrders_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are You Sure To Exit Programme ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                this.Close();
+            }
+        }
     }
 }

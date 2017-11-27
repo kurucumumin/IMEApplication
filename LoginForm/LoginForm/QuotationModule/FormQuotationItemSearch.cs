@@ -226,9 +226,5 @@ namespace LoginForm.QuotationModule
             }
         }
 
-        private void FormQuotationItemSearch_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

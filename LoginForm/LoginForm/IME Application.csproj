@@ -330,6 +330,21 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="IMEDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IMEDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IMEDataSet11.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IMEDataSet11.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="IMEDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IMEDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Item\ItemCard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -650,6 +665,39 @@
     <None Include="DataSet\IME.edmx.diagram">
       <DependentUpon>IME.edmx</DependentUpon>
     </None>
+    <None Include="IMEDataSet1.xsc">
+      <DependentUpon>IMEDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="IMEDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IMEDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IMEDataSet1.xss">
+      <DependentUpon>IMEDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="IMEDataSet11.xsc">
+      <DependentUpon>IMEDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="IMEDataSet11.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IMEDataSet11.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IMEDataSet11.xss">
+      <DependentUpon>IMEDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="IMEDataSet2.xsc">
+      <DependentUpon>IMEDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="IMEDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IMEDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IMEDataSet2.xss">
+      <DependentUpon>IMEDataSet2.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthorizationValue.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthRole.datasource" />
@@ -658,6 +706,7 @@
     <None Include="Properties\DataSources\LoginForm.DataSet.QuotationDetail.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.RoleValue.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Worker.datasource" />
+    <None Include="Properties\DataSources\LoginForm.PurchaseOrder.MailForm.datasource" />
     <None Include="Properties\DataSources\LoginForm.SaleOrder.FormSaleOrderAdd.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

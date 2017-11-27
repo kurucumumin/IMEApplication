@@ -16,5 +16,21 @@ namespace LoginForm.PurchaseOrder
         {
             InitializeComponent();
         }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            PurchaseExportFiles form = new PurchaseExportFiles();
+            form.ShowDialog();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            PurchaseOrderMain f = new PurchaseOrderMain();
+            if (MessageBox.Show("Are You Sure To Exit Programme ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                f.ShowDialog();
+                this.Close();
+            }
+        }
     }
 }
