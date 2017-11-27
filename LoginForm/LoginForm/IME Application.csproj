@@ -123,6 +123,10 @@
     <Compile Include="Account\frmAccountLedger.designer.cs">
       <DependentUpon>frmAccountLedger.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\frmTax.cs" />
+    <Compile Include="Account\frmTax.designer.cs">
+      <DependentUpon>frmTax.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customer\CustomerDepartmentAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -302,6 +306,12 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\sysdiagram.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Tax.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\TaxDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Town.cs">
@@ -495,6 +505,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\frmAccountLedger.resx">
       <DependentUpon>frmAccountLedger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\frmTax.resx">
+      <DependentUpon>frmTax.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customer\CustomerDepartmentAdd.resx">
       <DependentUpon>CustomerDepartmentAdd.cs</DependentUpon>

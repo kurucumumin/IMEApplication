@@ -62,20 +62,10 @@ namespace LoginForm
         /// </summary>
         public void GroupUnderSearchComboFill()
         {
-            try
-            {
-                DataTable dtblEmployeeCode = new DataTable();
-                DataRow dr = dtblEmployeeCode.NewRow();
-                dr[1] = "All";
-                dtblEmployeeCode.Rows.InsertAt(dr, 0);
-                cmbGroupUnderSearch.DataSource = dtblEmployeeCode;
-                cmbGroupUnderSearch.ValueMember = "accountGroupId";
+                cmbGroupUnderSearch.DataSource = IME.AccountGroups.ToList();
+            cmbGroupUnderSearch.ValueMember = "accountGroupId";
                 cmbGroupUnderSearch.DisplayMember = "accountGroupName";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("AG3:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+           
         }
         /// <summary>
         /// resetting the Account group page
@@ -248,14 +238,7 @@ namespace LoginForm
         /// <param name="e"></param>
         private void btnFrmClose_Click(object sender, EventArgs e)
         {
-            try
-            {
                 btnClose_Click(sender, e);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("AG12:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
         /// <summary>
         /// Load
@@ -263,15 +246,8 @@ namespace LoginForm
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void frmAccountGroup_Load(object sender, EventArgs e)
-        {
-            try
-            {
+        {         
                 Clear();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("AG13:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
         /// <summary>
         /// To close this form on 'Close' button click
@@ -293,8 +269,7 @@ namespace LoginForm
         /// <param name="e"></param>
         private void frmAccountGroup_KeyDown(object sender, KeyEventArgs e)
         {
-            try
-            {
+            
                 if (e.KeyCode == Keys.Escape)
                 {
                     btnClose_Click(sender, e);
@@ -318,11 +293,6 @@ namespace LoginForm
                         btnDelete_Click(sender, e);
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("AG15:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
 
 

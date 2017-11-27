@@ -74,5 +74,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<ExtendedRange> ExtendedRanges { get; set; }
         public virtual DbSet<AccountGroup> AccountGroups { get; set; }
+        public virtual DbSet<Tax> Taxes { get; set; }
+        public virtual DbSet<TaxDetail> TaxDetails { get; set; }
     }
 }

@@ -675,6 +675,27 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="Tax">
+          <Key>
+            <PropertyRef Name="TaxID" />
+          </Key>
+          <Property Name="TaxID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="taxName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ApplicationOn" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rate" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="CalculatingMode" Type="nvarchar" MaxLength="50" />
+          <Property Name="narration" Type="nvarchar" MaxLength="200" />
+          <Property Name="isActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="TaxDetails">
+          <Key>
+            <PropertyRef Name="taxDetailsID" />
+          </Key>
+          <Property Name="taxDetailsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="taxID" Type="int" />
+          <Property Name="SelectedtaxID" Type="int" />
+          <Property Name="taxDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="Town">
           <Key>
             <PropertyRef Name="ID" />
@@ -1572,6 +1593,8 @@
           <EntitySet Name="SupplierTitle" EntityType="Self.SupplierTitle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierWorker" EntityType="Self.SupplierWorker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tax" EntityType="Self.Tax" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaxDetails" EntityType="Self.TaxDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Town" EntityType="Self.Town" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAuthorization" EntityType="Self.UserAuthorization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
@@ -2166,6 +2189,8 @@
           </AssociationSet>
           <EntitySet Name="ExtendedRanges" EntityType="IMEModel.ExtendedRange" />
           <EntitySet Name="AccountGroups" EntityType="IMEModel.AccountGroup" />
+          <EntitySet Name="Taxes" EntityType="IMEModel.Tax" />
+          <EntitySet Name="TaxDetails" EntityType="IMEModel.TaxDetail" />
         </EntityContainer>
         <EntityType Name="AuthorizationValue">
           <Key>
@@ -3761,6 +3786,27 @@
           <Property Name="affectGrossProfit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AccountGroupDate" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="Tax">
+          <Key>
+            <PropertyRef Name="TaxID" />
+          </Key>
+          <Property Name="TaxID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="taxName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationOn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rate" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="CalculatingMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="narration" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="isActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TaxDetail">
+          <Key>
+            <PropertyRef Name="taxDetailsID" />
+          </Key>
+          <Property Name="taxDetailsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="taxID" Type="Int32" />
+          <Property Name="SelectedtaxID" Type="Int32" />
+          <Property Name="taxDate" Type="DateTime" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4515,6 +4561,29 @@
                 <ScalarProperty Name="groupUnder" ColumnName="groupUnder" />
                 <ScalarProperty Name="accountGroupName" ColumnName="accountGroupName" />
                 <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Taxes">
+            <EntityTypeMapping TypeName="IMEModel.Tax">
+              <MappingFragment StoreEntitySet="Tax">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="CalculatingMode" ColumnName="CalculatingMode" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="ApplicationOn" ColumnName="ApplicationOn" />
+                <ScalarProperty Name="taxName" ColumnName="taxName" />
+                <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaxDetails">
+            <EntityTypeMapping TypeName="IMEModel.TaxDetail">
+              <MappingFragment StoreEntitySet="TaxDetails">
+                <ScalarProperty Name="taxDate" ColumnName="taxDate" />
+                <ScalarProperty Name="SelectedtaxID" ColumnName="SelectedtaxID" />
+                <ScalarProperty Name="taxID" ColumnName="taxID" />
+                <ScalarProperty Name="taxDetailsID" ColumnName="taxDetailsID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
