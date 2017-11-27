@@ -17,19 +17,22 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PaymentMethod()
         {
-            this.Quotations = new HashSet<Quotation>();
-            this.Suppliers = new HashSet<Supplier>();
             this.Customers = new HashSet<Customer>();
+            this.Quotations = new HashSet<Quotation>();
+            this.SaleOrders = new HashSet<SaleOrder>();
+            this.Suppliers = new HashSet<Supplier>();
         }
     
         public int ID { get; set; }
         public string Payment { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Customer> Customers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Quotation> Quotations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Supplier> Suppliers { get; set; }
+        public virtual ICollection<SaleOrder> SaleOrders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Customer> Customers { get; set; }
+        public virtual ICollection<Supplier> Suppliers { get; set; }
     }
 }

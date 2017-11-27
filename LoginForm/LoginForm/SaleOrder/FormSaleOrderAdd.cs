@@ -1,5 +1,6 @@
 ﻿using LoginForm.DataSet;
 using LoginForm.QuotationModule;
+using LoginForm.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,9 +14,10 @@ namespace LoginForm.SaleOrder
     {
         List<SaleItem> addedItemList = new List<SaleItem>();
         List<SaleItem> removedItemList = new List<SaleItem>();
-
-        List<Hazardou> hazarousList = new List<Hazardou>();
+        
         List<SlidingPrice> priceList = new List<SlidingPrice>();
+        List<OnSale> onSaleList = new List<OnSale>();
+        List<Hazardou> hazardousList = new List<Hazardou>();
 
         Customer customer;
         IMEEntities IME = new IMEEntities();
@@ -96,6 +98,7 @@ namespace LoginForm.SaleOrder
                 bool isCustomsDuties = (q.Quotation.IsCustomsDuties == 1) ? true : false;
                 s.LandingCost = classQuotationAdd.GetLandingCost(s.ItemCode, isItemCost, isWeightCost, isCustomsDuties);
                 s.Margin = CalculateMargin(s.LandingCost, s.UC_UP);
+                s.LM = (s.Margin < Utils.getCurrentUser().MinMarge) ? true : false;
                 if (q.TargetUP != null) { s.TargetUP = (decimal)q.TargetUP; }
                 s.Total = (decimal)q.Total;
                 s.UPIMELP = (decimal)q.UCUPCurr;
@@ -123,6 +126,22 @@ namespace LoginForm.SaleOrder
                         s.Section = itemSDPrice.SectionName;
                         s.MHLevel1 = itemSD.MH_Code_Level_1;
 
+                        s.Col1Break = (int)itemSDPrice.Col1Break;
+                        s.Col2Break = (int)itemSDPrice.Col2Break;
+                        s.Col3Break = (int)itemSDPrice.Col3Break;
+                        s.Col4Break = (int)itemSDPrice.Col4Break;
+                        s.Col5Break = (int)itemSDPrice.Col5Break;
+                        s.UK1Price = (int)itemSDPrice.Col1Price;
+                        s.UK2Price = (int)itemSDPrice.Col2Price;
+                        s.UK3Price = (int)itemSDPrice.Col3Price;
+                        s.UK4Price = (int)itemSDPrice.Col4Price;
+                        s.UK5Price = (int)itemSDPrice.Col5Price;
+                        s.Cost1 = (decimal)itemSDPrice.DiscountedPrice1;
+                        s.Cost2 = (decimal)itemSDPrice.DiscountedPrice2;
+                        s.Cost3 = (decimal)itemSDPrice.DiscountedPrice3;
+                        s.Cost4 = (decimal)itemSDPrice.DiscountedPrice4;
+                        s.Cost5 = (decimal)itemSDPrice.DiscountedPrice5;
+
                         s.CL = (itemSD.Calibration_Ind == "Y") ? true : false;
                         s.Description = itemSD.Article_Desc;
                         s.LC = (itemSD.Licensed_Ind == "Y") ? true : false;
@@ -146,10 +165,10 @@ namespace LoginForm.SaleOrder
                         if (itemSD.Hazardous_Ind == "Y")
                         {
                             Hazardou h = IME.Hazardous.Where(x => itemSD.Article_No.Contains(x.ArticleNo)).FirstOrDefault();
+                            if (h == null) { h = IME.Hazardous.Where(x => x.ArticleNo == (Int32.Parse(itemSD.Article_No)).ToString()).FirstOrDefault(); }
                             s.HE = (h.Environment != null) ? true : false;
                             s.HS = (h.Shipping != null && h.Shipping != String.Empty) ? true : false;
                             s.LI = (h.Lithium != null && h.Lithium != String.Empty) ? true : false;
-                            hazarousList.Add(h);
                         }
 
                         break;
@@ -168,6 +187,22 @@ namespace LoginForm.SaleOrder
                         s.SuperSection = itemSDPPrice.SupersectionName;
                         s.Section = itemSDPPrice.SectionName;
                         s.MHLevel1 = itemSDP.MH_Code_Level_1;
+
+                        s.Col1Break = (int)itemSDPPrice.Col1Break;
+                        s.Col2Break = (int)itemSDPrice.Col2Break;
+                        s.Col3Break = (int)itemSDPPrice.Col3Break;
+                        s.Col4Break = (int)itemSDPPrice.Col4Break;
+                        s.Col5Break = (int)itemSDPPrice.Col5Break;
+                        s.UK1Price = (int)itemSDPPrice.Col1Price;
+                        s.UK2Price = (int)itemSDPPrice.Col2Price;
+                        s.UK3Price = (int)itemSDPPrice.Col3Price;
+                        s.UK4Price = (int)itemSDPPrice.Col4Price;
+                        s.UK5Price = (int)itemSDPPrice.Col5Price;
+                        s.Cost1 = (decimal)itemSDPPrice.DiscountedPrice1;
+                        s.Cost2 = (decimal)itemSDPPrice.DiscountedPrice2;
+                        s.Cost3 = (decimal)itemSDPPrice.DiscountedPrice3;
+                        s.Cost4 = (decimal)itemSDPPrice.DiscountedPrice4;
+                        s.Cost5 = (decimal)itemSDPPrice.DiscountedPrice5;
 
                         s.CL = (itemSDP.Calibration_Ind == "Y") ? true : false;
                         s.LC = (itemSDP.Licensed_Ind == "Y") ? true : false;
@@ -189,10 +224,10 @@ namespace LoginForm.SaleOrder
                         if (itemSDP.Hazardous_Ind == "Y")
                         {
                             Hazardou h = IME.Hazardous.Where(x => x.ArticleNo == itemSDP.Article_No).FirstOrDefault();
+                            if (h == null) { h = IME.Hazardous.Where(x => x.ArticleNo == (Int32.Parse(itemSDP.Article_No)).ToString()).FirstOrDefault(); }
                             s.HE = (h.Environment != null) ? true : false;
                             s.HS = (h.Shipping != null && h.Shipping != String.Empty) ? true : false;
                             s.LI = (h.Lithium != null && h.Lithium != String.Empty) ? true : false;
-                            hazarousList.Add(h);
                         }
 
                         break;
@@ -225,7 +260,6 @@ namespace LoginForm.SaleOrder
                         //    s.HE = (h.Environment != null) ? true : false;
                         //    s.HS = (h.Shipping != null && h.Shipping != String.Empty) ? true : false;
                         //    s.LI = (h.Lithium != null && h.Lithium != String.Empty) ? true : false;
-                        //    hazarousList.Add(h);
                         //}
 
                         break;
@@ -357,6 +391,21 @@ namespace LoginForm.SaleOrder
             public string Note { get; set; }
             public int OnHandStockBalance { get; set; }
             public int QuantityOnOrder { get; set; }
+            public int Col1Break { get; set; }
+            public int Col2Break { get; set; }
+            public int Col3Break { get; set; }
+            public int Col4Break { get; set; }
+            public int Col5Break { get; set; }
+            public decimal UK1Price { get; set; }
+            public decimal UK2Price { get; set; }
+            public decimal UK3Price { get; set; }
+            public decimal UK4Price { get; set; }
+            public decimal UK5Price { get; set; }
+            public decimal Cost1 { get; set; }
+            public decimal Cost2 { get; set; }
+            public decimal Cost3 { get; set; }
+            public decimal Cost4 { get; set; }
+            public decimal Cost5 { get; set; }
         }
 
         private void FillCustomer()
@@ -430,13 +479,29 @@ namespace LoginForm.SaleOrder
             txtReferral.Text
             textBox35.Text*/
 
-            txtHeight.Text = s.Height.ToString();
-            txtWidth.Text = s.Width.ToString();
-            txtLength.Text = s.Length.ToString();
+            txtHeight.Text = (s.Height * 100).ToString();
+            txtWidth.Text = (s.Width * 100).ToString();
+            txtLength.Text = (s.Length * 100).ToString();
             txtStandartWeight.Text = s.UnitWeight.ToString();
 
             //TODO GrossWeight nedir, öğren
             txtGrossWeight.Text = s.TotalWeight.ToString();
+
+            txtUnitCount1.Text = s.Col1Break.ToString();
+            txtUnitCount2.Text = s.Col2Break.ToString();
+            txtUnitCount3.Text = s.Col3Break.ToString();
+            txtUnitCount4.Text = s.Col4Break.ToString();
+            txtUnitCount5.Text = s.Col5Break.ToString();
+            txtUK1.Text = s.UK1Price.ToString();
+            txtUK2.Text = s.UK2Price.ToString();
+            txtUK3.Text = s.UK3Price.ToString();
+            txtUK4.Text = s.UK4Price.ToString();
+            txtUK5.Text = s.UK5Price.ToString();
+            txtCost1.Text = s.Cost1.ToString();
+            txtCost2.Text = s.Cost2.ToString();
+            txtCost3.Text = s.Cost3.ToString();
+            txtCost4.Text = s.Cost4.ToString();
+            txtCost5.Text = s.Cost5.ToString();
         }
 
         private void btnViewMore_Click(object sender, EventArgs e)
