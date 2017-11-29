@@ -31,7 +31,7 @@ namespace LoginForm.PurchaseOrder
 
         private void btnPurchaseOrders_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -46,6 +46,21 @@ namespace LoginForm.PurchaseOrder
         {
             IMEEntities IME = new IMEEntities();
             dgPurchase.DataSource = IME.PurchaseOrders.ToList();
+        }
+
+        private void PurchaseOrderFill()
+        {
+            IME = new IMEEntities();
+            #region PurchaseOrderFill
+            //var adapter = (from p in IME.PurchaseOrderDetails
+            //               select new
+            //               {
+            //                   p.PurchaseOrderID,
+            //                   p.PurchaseOrderDate,
+            //                   p.
+            //               }.ToString();
+            #endregion
+
         }
     }
 }
