@@ -38,5 +38,10 @@ namespace LoginForm.ShipingDetails
                 this.Close();
             }
         }
+
+        private void dgShipping_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

@@ -14,6 +14,13 @@ namespace LoginForm.DataSet
     
     public partial class SaleOrder
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public SaleOrder()
+        {
+            this.PurchaseOrderDetails = new HashSet<PurchaseOrderDetail>();
+            this.SaleOrderDetails = new HashSet<SaleOrderDetail>();
+        }
+    
         public string SaleOrderNo { get; set; }
         public System.DateTime SaleDate { get; set; }
         public string CurrenyName { get; set; }
@@ -30,6 +37,10 @@ namespace LoginForm.DataSet
         public int DeliveryAddressID { get; set; }
         public int RepresentativeID { get; set; }
         public int PaymentMethodID { get; set; }
+        public string NoteForUs { get; set; }
+        public string NoteForCustomer { get; set; }
+        public Nullable<int> NoteForFinance { get; set; }
+        public string LPONo { get; set; }
     
         public virtual Customer Customer { get; set; }
         public virtual CustomerAddress CustomerAddress { get; set; }
@@ -39,6 +50,10 @@ namespace LoginForm.DataSet
         public virtual CustomerWorker CustomerWorker2 { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
         public virtual PaymentTerm PaymentTerm { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
         public virtual Worker Worker { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SaleOrderDetail> SaleOrderDetails { get; set; }
     }
 }

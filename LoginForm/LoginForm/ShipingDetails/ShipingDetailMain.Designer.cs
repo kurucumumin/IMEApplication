@@ -99,6 +99,7 @@
             this.dgShipping.Name = "dgShipping";
             this.dgShipping.Size = new System.Drawing.Size(1217, 550);
             this.dgShipping.TabIndex = 8;
+            this.dgShipping.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgShipping_CellContentClick);
             // 
             // ShipingDetailMain
             // 

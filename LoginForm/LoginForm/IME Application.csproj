@@ -251,6 +251,12 @@
     <Compile Include="DataSet\PaymentTerm.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PurchaseOrder.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PurchaseOrderDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Quotation.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -267,6 +273,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SaleOrder.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SaleOrderDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SlidingPrice.cs">
@@ -666,22 +675,22 @@
     <EmbeddedResource Include="User\FormUserManagement.resx">
       <DependentUpon>FormUserManagement.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <EntityDeploy Include="DataSet\IME.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>IME.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ClassDiagram1.cd" />
     <None Include="DataSet\IME.edmx.diagram">
       <DependentUpon>IME.edmx</DependentUpon>
     </None>
     <None Include="IMEDataSet1.xsc">
       <DependentUpon>IMEDataSet1.xsd</DependentUpon>
     </None>
-    <None Include="IMEDataSet1.xsd">
+    <EntityDeploy Include="IMEDataSet1.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>IMEDataSet1.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </None>
+    </EntityDeploy>
     <None Include="IMEDataSet1.xss">
       <DependentUpon>IMEDataSet1.xsd</DependentUpon>
     </None>
@@ -699,11 +708,11 @@
     <None Include="IMEDataSet2.xsc">
       <DependentUpon>IMEDataSet2.xsd</DependentUpon>
     </None>
-    <None Include="IMEDataSet2.xsd">
+    <EntityDeploy Include="IMEDataSet2.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>IMEDataSet2.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </None>
+    </EntityDeploy>
     <None Include="IMEDataSet2.xss">
       <DependentUpon>IMEDataSet2.xsd</DependentUpon>
     </None>
@@ -711,6 +720,7 @@
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthorizationValue.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthRole.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Customer.datasource" />
+    <None Include="Properties\DataSources\LoginForm.DataSet.PurchaseOrder.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Quotation.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.QuotationDetail.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.RoleValue.datasource" />

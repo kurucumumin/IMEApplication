@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LoginForm.DataSet;
+using LoginForm.Services;
 
 namespace LoginForm.PurchaseOrder
 {
     public partial class NewPurchaseOrder : Form
     {
+        IMEEntities IME = new IMEEntities();
+
         public NewPurchaseOrder()
         {
             InitializeComponent();
@@ -31,6 +35,12 @@ namespace LoginForm.PurchaseOrder
                 f.ShowDialog();
                 this.Close();
             }
+        }
+
+        private void NewPurchaseOrder_Load(object sender, EventArgs e)
+        {
+            IMEEntities IME = new IMEEntities();
+            dgPurchase.DataSource = IME.PurchaseOrderDetails.ToList();
         }
     }
 }

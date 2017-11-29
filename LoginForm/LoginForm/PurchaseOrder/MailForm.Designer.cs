@@ -35,18 +35,18 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.radioSpecial = new System.Windows.Forms.RadioButton();
-            this.iMEDataSet = new LoginForm.IMEDataSet();
-            this.mailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mailTableAdapter = new LoginForm.IMEDataSetTableAdapters.MailTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mailAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ccDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tooDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.mailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.iMEDataSet = new LoginForm.IMEDataSet();
+            this.mailTableAdapter = new LoginForm.IMEDataSetTableAdapters.MailTableAdapter();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgMail)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iMEDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iMEDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -120,20 +120,6 @@
             this.radioSpecial.UseVisualStyleBackColor = true;
             this.radioSpecial.CheckedChanged += new System.EventHandler(this.radioSpecial_CheckedChanged);
             // 
-            // iMEDataSet
-            // 
-            this.iMEDataSet.DataSetName = "IMEDataSet";
-            this.iMEDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // mailBindingSource
-            // 
-            this.mailBindingSource.DataMember = "Mail";
-            this.mailBindingSource.DataSource = this.iMEDataSet;
-            // 
-            // mailTableAdapter
-            // 
-            this.mailTableAdapter.ClearBeforeFill = true;
-            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
@@ -174,6 +160,20 @@
             this.tooDataGridViewCheckBoxColumn.Name = "tooDataGridViewCheckBoxColumn";
             this.tooDataGridViewCheckBoxColumn.Width = 21;
             // 
+            // mailBindingSource
+            // 
+            this.mailBindingSource.DataMember = "Mail";
+            this.mailBindingSource.DataSource = this.iMEDataSet;
+            // 
+            // iMEDataSet
+            // 
+            this.iMEDataSet.DataSetName = "IMEDataSet";
+            this.iMEDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // mailTableAdapter
+            // 
+            this.mailTableAdapter.ClearBeforeFill = true;
+            // 
             // MailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -191,8 +191,8 @@
             this.Load += new System.EventHandler(this.MailForm_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgMail)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iMEDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iMEDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

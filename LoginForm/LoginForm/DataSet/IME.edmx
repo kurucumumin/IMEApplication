@@ -340,6 +340,29 @@
           <Property Name="term_name" Type="nvarchar" MaxLength="50" />
           <Property Name="timespan" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="PurchaseOrder">
+          <Key>
+            <PropertyRef Name="FicheNo" />
+          </Key>
+          <Property Name="FicheNo" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="CustomerID" Type="nvarchar" MaxLength="15" />
+          <Property Name="PurchaseOrderDate" Type="date" />
+          <Property Name="CameDate" Type="date" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuotationNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="SaleOrderNo" Type="nvarchar" MaxLength="10" />
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="SendQty" Type="int" />
+          <Property Name="SaleOrderNature" Type="int" />
+          <Property Name="FrtType" Type="nvarchar" MaxLength="5" />
+          <Property Name="FicheNo" Type="nvarchar" MaxLength="15" />
+        </EntityType>
         <EntityType Name="Quotation">
           <Key>
             <PropertyRef Name="QuotationNo" />
@@ -444,6 +467,34 @@
           <Property Name="DeliveryAddressID" Type="int" Nullable="false" />
           <Property Name="RepresentativeID" Type="int" Nullable="false" />
           <Property Name="PaymentMethodID" Type="int" Nullable="false" />
+          <Property Name="NoteForUs" Type="nvarchar" MaxLength="200" />
+          <Property Name="NoteForCustomer" Type="nvarchar" MaxLength="200" />
+          <Property Name="NoteForFinance" Type="int" />
+          <Property Name="LPONo" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="SaleOrderDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="UCUPCurr" Type="decimal" Precision="20" Scale="5" Nullable="false" />
+          <Property Name="Discount" Type="decimal" Precision="5" Scale="3" />
+          <Property Name="Total" Type="decimal" Precision="20" Scale="5" Nullable="false" />
+          <Property Name="TargetUP" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="Competitor" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerDescription" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerStockCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UPIME" Type="decimal" Precision="20" Scale="5" Nullable="false" />
+          <Property Name="Margin" Type="decimal" Precision="20" Scale="5" Nullable="false" />
+          <Property Name="UnitOfMeasure" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="UnitContent" Type="int" Nullable="false" />
+          <Property Name="SSM" Type="int" />
+          <Property Name="UnitWeight" Type="decimal" Precision="15" Scale="4" />
+          <Property Name="SaleOrderNo" Type="nvarchar" MaxLength="10" />
+          <Property Name="DependantTable" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="SlidingPrice">
           <Key>
@@ -1102,6 +1153,54 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PurchaseO__Custo__542C7691">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PurchaseO__Fiche__5708E33C">
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
+          <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrder">
+              <PropertyRef Name="FicheNo" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetail">
+              <PropertyRef Name="FicheNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PurchaseO__Quota__57FD0775">
+          <End Role="Quotation" Type="Self.Quotation" Multiplicity="0..1" />
+          <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quotation">
+              <PropertyRef Name="QuotationNo" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetail">
+              <PropertyRef Name="QuotationNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PurchaseO__SaleO__58F12BAE">
+          <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="0..1" />
+          <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SaleOrder">
+              <PropertyRef Name="SaleOrderNo" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetail">
+              <PropertyRef Name="SaleOrderNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Quotation__Custo__00750D23">
           <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
           <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
@@ -1162,7 +1261,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaleOrder__Conta__1DD065E0">
+        <Association Name="FK__SaleOrder__Conta__39788055">
           <End Role="CustomerWorker" Type="Self.CustomerWorker" Multiplicity="1" />
           <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1174,7 +1273,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaleOrder__Conta__1EC48A19">
+        <Association Name="FK__SaleOrder__Conta__3A6CA48E">
           <End Role="CustomerWorker" Type="Self.CustomerWorker" Multiplicity="1" />
           <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1186,7 +1285,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaleOrder__Custo__1CDC41A7">
+        <Association Name="FK__SaleOrder__Custo__38845C1C">
           <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
           <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1198,7 +1297,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaleOrder__Deliv__1FB8AE52">
+        <Association Name="FK__SaleOrder__Deliv__3B60C8C7">
           <End Role="CustomerWorker" Type="Self.CustomerWorker" Multiplicity="1" />
           <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1210,7 +1309,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaleOrder__Deliv__21A0F6C4">
+        <Association Name="FK__SaleOrder__Deliv__3D491139">
           <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="1" />
           <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1222,7 +1321,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaleOrder__Invoi__20ACD28B">
+        <Association Name="FK__SaleOrder__Invoi__3C54ED00">
           <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="1" />
           <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1234,7 +1333,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaleOrder__Payme__1AF3F935">
+        <Association Name="FK__SaleOrder__Payme__369C13AA">
           <End Role="PaymentTerm" Type="Self.PaymentTerm" Multiplicity="1" />
           <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1246,7 +1345,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaleOrder__Payme__1BE81D6E">
+        <Association Name="FK__SaleOrder__Payme__379037E3">
           <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="1" />
           <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1258,7 +1357,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaleOrder__Repre__22951AFD">
+        <Association Name="FK__SaleOrder__Repre__3E3D3572">
           <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
           <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1267,6 +1366,18 @@
             </Principal>
             <Dependent Role="SaleOrder">
               <PropertyRef Name="RepresentativeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SaleOrder__SaleO__4119A21D">
+          <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="0..1" />
+          <End Role="SaleOrderDetail" Type="Self.SaleOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SaleOrder">
+              <PropertyRef Name="SaleOrderNo" />
+            </Principal>
+            <Dependent Role="SaleOrderDetail">
+              <PropertyRef Name="SaleOrderNo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1648,12 +1759,15 @@
           <EntitySet Name="OnSale" EntityType="Self.OnSale" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentTerm" EntityType="Self.PaymentTerm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseOrder" EntityType="Self.PurchaseOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseOrderDetail" EntityType="Self.PurchaseOrderDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Quotation" EntityType="Self.Quotation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuotationDetail" EntityType="Self.QuotationDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rate" EntityType="Self.Rate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleValue" EntityType="Self.RoleValue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RSPro" EntityType="Self.RSPro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SaleOrder" EntityType="Self.SaleOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SaleOrderDetail" EntityType="Self.SaleOrderDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SlidingPrice" EntityType="Self.SlidingPrice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuperDisk" EntityType="Self.SuperDisk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuperDiskP" EntityType="Self.SuperDiskP" Schema="dbo" store:Type="Tables" />
@@ -1793,6 +1907,22 @@
             <End Role="Notes" EntitySet="Notes" />
             <End Role="ItemNote" EntitySet="ItemNote" />
           </AssociationSet>
+          <AssociationSet Name="FK__PurchaseO__Custo__542C7691" Association="Self.FK__PurchaseO__Custo__542C7691">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PurchaseO__Fiche__5708E33C" Association="Self.FK__PurchaseO__Fiche__5708E33C">
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PurchaseO__Quota__57FD0775" Association="Self.FK__PurchaseO__Quota__57FD0775">
+            <End Role="Quotation" EntitySet="Quotation" />
+            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PurchaseO__SaleO__58F12BAE" Association="Self.FK__PurchaseO__SaleO__58F12BAE">
+            <End Role="SaleOrder" EntitySet="SaleOrder" />
+            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
+          </AssociationSet>
           <AssociationSet Name="FK__Quotation__Custo__00750D23" Association="Self.FK__Quotation__Custo__00750D23">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Quotation" EntitySet="Quotation" />
@@ -1813,41 +1943,45 @@
             <End Role="Quotation" EntitySet="Quotation" />
             <End Role="QuotationDetail" EntitySet="QuotationDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaleOrder__Conta__1DD065E0" Association="Self.FK__SaleOrder__Conta__1DD065E0">
+          <AssociationSet Name="FK__SaleOrder__Conta__39788055" Association="Self.FK__SaleOrder__Conta__39788055">
             <End Role="CustomerWorker" EntitySet="CustomerWorker" />
             <End Role="SaleOrder" EntitySet="SaleOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaleOrder__Conta__1EC48A19" Association="Self.FK__SaleOrder__Conta__1EC48A19">
+          <AssociationSet Name="FK__SaleOrder__Conta__3A6CA48E" Association="Self.FK__SaleOrder__Conta__3A6CA48E">
             <End Role="CustomerWorker" EntitySet="CustomerWorker" />
             <End Role="SaleOrder" EntitySet="SaleOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaleOrder__Custo__1CDC41A7" Association="Self.FK__SaleOrder__Custo__1CDC41A7">
+          <AssociationSet Name="FK__SaleOrder__Custo__38845C1C" Association="Self.FK__SaleOrder__Custo__38845C1C">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="SaleOrder" EntitySet="SaleOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaleOrder__Deliv__1FB8AE52" Association="Self.FK__SaleOrder__Deliv__1FB8AE52">
+          <AssociationSet Name="FK__SaleOrder__Deliv__3B60C8C7" Association="Self.FK__SaleOrder__Deliv__3B60C8C7">
             <End Role="CustomerWorker" EntitySet="CustomerWorker" />
             <End Role="SaleOrder" EntitySet="SaleOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaleOrder__Deliv__21A0F6C4" Association="Self.FK__SaleOrder__Deliv__21A0F6C4">
+          <AssociationSet Name="FK__SaleOrder__Deliv__3D491139" Association="Self.FK__SaleOrder__Deliv__3D491139">
             <End Role="CustomerAddress" EntitySet="CustomerAddress" />
             <End Role="SaleOrder" EntitySet="SaleOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaleOrder__Invoi__20ACD28B" Association="Self.FK__SaleOrder__Invoi__20ACD28B">
+          <AssociationSet Name="FK__SaleOrder__Invoi__3C54ED00" Association="Self.FK__SaleOrder__Invoi__3C54ED00">
             <End Role="CustomerAddress" EntitySet="CustomerAddress" />
             <End Role="SaleOrder" EntitySet="SaleOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaleOrder__Payme__1AF3F935" Association="Self.FK__SaleOrder__Payme__1AF3F935">
+          <AssociationSet Name="FK__SaleOrder__Payme__369C13AA" Association="Self.FK__SaleOrder__Payme__369C13AA">
             <End Role="PaymentTerm" EntitySet="PaymentTerm" />
             <End Role="SaleOrder" EntitySet="SaleOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaleOrder__Payme__1BE81D6E" Association="Self.FK__SaleOrder__Payme__1BE81D6E">
+          <AssociationSet Name="FK__SaleOrder__Payme__379037E3" Association="Self.FK__SaleOrder__Payme__379037E3">
             <End Role="PaymentMethod" EntitySet="PaymentMethod" />
             <End Role="SaleOrder" EntitySet="SaleOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaleOrder__Repre__22951AFD" Association="Self.FK__SaleOrder__Repre__22951AFD">
+          <AssociationSet Name="FK__SaleOrder__Repre__3E3D3572" Association="Self.FK__SaleOrder__Repre__3E3D3572">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="SaleOrder" EntitySet="SaleOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SaleOrder__SaleO__4119A21D" Association="Self.FK__SaleOrder__SaleO__4119A21D">
+            <End Role="SaleOrder" EntitySet="SaleOrder" />
+            <End Role="SaleOrderDetail" EntitySet="SaleOrderDetail" />
           </AssociationSet>
           <AssociationSet Name="FK__Supplier__accoun__2DB1C7EE" Association="Self.FK__Supplier__accoun__2DB1C7EE">
             <End Role="Worker" EntitySet="Worker" />
@@ -1999,12 +2133,15 @@
           <EntitySet Name="OnSales" EntityType="IMEModel.OnSale" />
           <EntitySet Name="PaymentMethods" EntityType="IMEModel.PaymentMethod" />
           <EntitySet Name="PaymentTerms" EntityType="IMEModel.PaymentTerm" />
+          <EntitySet Name="PurchaseOrders" EntityType="IMEModel.PurchaseOrder" />
+          <EntitySet Name="PurchaseOrderDetails" EntityType="IMEModel.PurchaseOrderDetail" />
           <EntitySet Name="Quotations" EntityType="IMEModel.Quotation" />
           <EntitySet Name="QuotationDetails" EntityType="IMEModel.QuotationDetail" />
           <EntitySet Name="Rates" EntityType="IMEModel.Rate" />
           <EntitySet Name="RoleValues" EntityType="IMEModel.RoleValue" />
           <EntitySet Name="RSProes" EntityType="IMEModel.RSPro" />
           <EntitySet Name="SaleOrders" EntityType="IMEModel.SaleOrder" />
+          <EntitySet Name="SaleOrderDetails" EntityType="IMEModel.SaleOrderDetail" />
           <EntitySet Name="SlidingPrices" EntityType="IMEModel.SlidingPrice" />
           <EntitySet Name="SuperDisks" EntityType="IMEModel.SuperDisk" />
           <EntitySet Name="SuperDiskPs" EntityType="IMEModel.SuperDiskP" />
@@ -2095,11 +2232,15 @@
             <End Role="Customer" EntitySet="Customers" />
             <End Role="DiscountValue" EntitySet="DiscountValues" />
           </AssociationSet>
+          <AssociationSet Name="FK__PurchaseO__Custo__542C7691" Association="IMEModel.FK__PurchaseO__Custo__542C7691">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
+          </AssociationSet>
           <AssociationSet Name="FK__Quotation__Custo__00750D23" Association="IMEModel.FK__Quotation__Custo__00750D23">
             <End Role="Customer" EntitySet="Customers" />
             <End Role="Quotation" EntitySet="Quotations" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaleOrder__Custo__1CDC41A7" Association="IMEModel.FK__SaleOrder__Custo__1CDC41A7">
+          <AssociationSet Name="FK__SaleOrder__Custo__38845C1C" Association="IMEModel.FK__SaleOrder__Custo__38845C1C">
             <End Role="Customer" EntitySet="Customers" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
@@ -2111,11 +2252,11 @@
             <End Role="Town" EntitySet="Towns" />
             <End Role="CustomerAddress" EntitySet="CustomerAddresses" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaleOrder__Deliv__21A0F6C4" Association="IMEModel.FK__SaleOrder__Deliv__21A0F6C4">
+          <AssociationSet Name="FK__SaleOrder__Deliv__3D491139" Association="IMEModel.FK__SaleOrder__Deliv__3D491139">
             <End Role="CustomerAddress" EntitySet="CustomerAddresses" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaleOrder__Invoi__20ACD28B" Association="IMEModel.FK__SaleOrder__Invoi__20ACD28B">
+          <AssociationSet Name="FK__SaleOrder__Invoi__3C54ED00" Association="IMEModel.FK__SaleOrder__Invoi__3C54ED00">
             <End Role="CustomerAddress" EntitySet="CustomerAddresses" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
@@ -2151,15 +2292,15 @@
             <End Role="Language" EntitySet="Languages" />
             <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaleOrder__Conta__1DD065E0" Association="IMEModel.FK__SaleOrder__Conta__1DD065E0">
+          <AssociationSet Name="FK__SaleOrder__Conta__39788055" Association="IMEModel.FK__SaleOrder__Conta__39788055">
             <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaleOrder__Conta__1EC48A19" Association="IMEModel.FK__SaleOrder__Conta__1EC48A19">
+          <AssociationSet Name="FK__SaleOrder__Conta__3A6CA48E" Association="IMEModel.FK__SaleOrder__Conta__3A6CA48E">
             <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaleOrder__Deliv__1FB8AE52" Association="IMEModel.FK__SaleOrder__Deliv__1FB8AE52">
+          <AssociationSet Name="FK__SaleOrder__Deliv__3B60C8C7" Association="IMEModel.FK__SaleOrder__Deliv__3B60C8C7">
             <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
@@ -2203,7 +2344,7 @@
             <End Role="PaymentMethod" EntitySet="PaymentMethods" />
             <End Role="Quotation" EntitySet="Quotations" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaleOrder__Payme__1BE81D6E" Association="IMEModel.FK__SaleOrder__Payme__1BE81D6E">
+          <AssociationSet Name="FK__SaleOrder__Payme__379037E3" Association="IMEModel.FK__SaleOrder__Payme__379037E3">
             <End Role="PaymentMethod" EntitySet="PaymentMethods" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
@@ -2211,13 +2352,25 @@
             <End Role="PaymentMethod" EntitySet="PaymentMethods" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaleOrder__Payme__1AF3F935" Association="IMEModel.FK__SaleOrder__Payme__1AF3F935">
+          <AssociationSet Name="FK__SaleOrder__Payme__369C13AA" Association="IMEModel.FK__SaleOrder__Payme__369C13AA">
             <End Role="PaymentTerm" EntitySet="PaymentTerms" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
           <AssociationSet Name="FK__Supplier__paymen__6442E2C9" Association="IMEModel.FK__Supplier__paymen__6442E2C9">
             <End Role="PaymentTerm" EntitySet="PaymentTerms" />
             <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PurchaseO__Fiche__5708E33C" Association="IMEModel.FK__PurchaseO__Fiche__5708E33C">
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
+            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PurchaseO__Quota__57FD0775" Association="IMEModel.FK__PurchaseO__Quota__57FD0775">
+            <End Role="Quotation" EntitySet="Quotations" />
+            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PurchaseO__SaleO__58F12BAE" Association="IMEModel.FK__PurchaseO__SaleO__58F12BAE">
+            <End Role="SaleOrder" EntitySet="SaleOrders" />
+            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__Quotation__Quota__147C05D0" Association="IMEModel.FK__Quotation__Quota__147C05D0">
             <End Role="Quotation" EntitySet="Quotations" />
@@ -2227,9 +2380,13 @@
             <End Role="Rate" EntitySet="Rates" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaleOrder__Repre__22951AFD" Association="IMEModel.FK__SaleOrder__Repre__22951AFD">
+          <AssociationSet Name="FK__SaleOrder__Repre__3E3D3572" Association="IMEModel.FK__SaleOrder__Repre__3E3D3572">
             <End Role="Worker" EntitySet="Workers" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SaleOrder__SaleO__4119A21D" Association="IMEModel.FK__SaleOrder__SaleO__4119A21D">
+            <End Role="SaleOrder" EntitySet="SaleOrders" />
+            <End Role="SaleOrderDetail" EntitySet="SaleOrderDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__Supplier__accoun__2DB1C7EE" Association="IMEModel.FK__Supplier__accoun__2DB1C7EE">
             <End Role="Worker" EntitySet="Workers" />
@@ -2407,8 +2564,9 @@
           <NavigationProperty Name="CustomerCategorySubCategories" Relationship="IMEModel.FK__CustomerC__custo__534D60F1" FromRole="Customer" ToRole="CustomerCategorySubCategory" />
           <NavigationProperty Name="CustomerWorkers" Relationship="IMEModel.FK__CustomerW__custo__4316F928" FromRole="Customer" ToRole="CustomerWorker" />
           <NavigationProperty Name="DiscountValues" Relationship="IMEModel.FK__DiscountV__Custo__6E565CE8" FromRole="Customer" ToRole="DiscountValue" />
+          <NavigationProperty Name="PurchaseOrders" Relationship="IMEModel.FK__PurchaseO__Custo__542C7691" FromRole="Customer" ToRole="PurchaseOrder" />
           <NavigationProperty Name="Quotations" Relationship="IMEModel.FK__Quotation__Custo__00750D23" FromRole="Customer" ToRole="Quotation" />
-          <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SaleOrder__Custo__1CDC41A7" FromRole="Customer" ToRole="SaleOrder" />
+          <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SaleOrder__Custo__38845C1C" FromRole="Customer" ToRole="SaleOrder" />
         </EntityType>
         <EntityType Name="CustomerAddress">
           <Key>
@@ -2431,8 +2589,8 @@
           <NavigationProperty Name="Customer" Relationship="IMEModel.FK__CustomerA__Custo__44CA3770" FromRole="CustomerAddress" ToRole="Customer" />
           <NavigationProperty Name="CustomerWorker" Relationship="IMEModel.FK__CustomerA__Conta__45BE5BA9" FromRole="CustomerAddress" ToRole="CustomerWorker" />
           <NavigationProperty Name="Town" Relationship="IMEModel.FK__CustomerA__TownI__4F47C5E3" FromRole="CustomerAddress" ToRole="Town" />
-          <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SaleOrder__Deliv__21A0F6C4" FromRole="CustomerAddress" ToRole="SaleOrder" />
-          <NavigationProperty Name="SaleOrders1" Relationship="IMEModel.FK__SaleOrder__Invoi__20ACD28B" FromRole="CustomerAddress" ToRole="SaleOrder" />
+          <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SaleOrder__Deliv__3D491139" FromRole="CustomerAddress" ToRole="SaleOrder" />
+          <NavigationProperty Name="SaleOrders1" Relationship="IMEModel.FK__SaleOrder__Invoi__3C54ED00" FromRole="CustomerAddress" ToRole="SaleOrder" />
         </EntityType>
         <EntityType Name="CustomerCategory">
           <Key>
@@ -2509,9 +2667,9 @@
           <NavigationProperty Name="CustomerTitle" Relationship="IMEModel.FK__CustomerW__title__45F365D3" FromRole="CustomerWorker" ToRole="CustomerTitle" />
           <NavigationProperty Name="Note" Relationship="IMEModel.FK__CustomerW__custo__4222D4EF" FromRole="CustomerWorker" ToRole="Note" />
           <NavigationProperty Name="Language" Relationship="IMEModel.FK__CustomerW__langu__72C60C4A" FromRole="CustomerWorker" ToRole="Language" />
-          <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SaleOrder__Conta__1DD065E0" FromRole="CustomerWorker" ToRole="SaleOrder" />
-          <NavigationProperty Name="SaleOrders1" Relationship="IMEModel.FK__SaleOrder__Conta__1EC48A19" FromRole="CustomerWorker" ToRole="SaleOrder" />
-          <NavigationProperty Name="SaleOrders2" Relationship="IMEModel.FK__SaleOrder__Deliv__1FB8AE52" FromRole="CustomerWorker" ToRole="SaleOrder" />
+          <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SaleOrder__Conta__39788055" FromRole="CustomerWorker" ToRole="SaleOrder" />
+          <NavigationProperty Name="SaleOrders1" Relationship="IMEModel.FK__SaleOrder__Conta__3A6CA48E" FromRole="CustomerWorker" ToRole="SaleOrder" />
+          <NavigationProperty Name="SaleOrders2" Relationship="IMEModel.FK__SaleOrder__Deliv__3B60C8C7" FromRole="CustomerWorker" ToRole="SaleOrder" />
         </EntityType>
         <EntityType Name="DailyDiscontinued">
           <Key>
@@ -2694,7 +2852,7 @@
           <Property Name="Payment" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Customers" Relationship="IMEModel.FK__Customer__paymen__3D5E1FD2" FromRole="PaymentMethod" ToRole="Customer" />
           <NavigationProperty Name="Quotations" Relationship="IMEModel.FK__Quotation__Payme__035179CE" FromRole="PaymentMethod" ToRole="Quotation" />
-          <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SaleOrder__Payme__1BE81D6E" FromRole="PaymentMethod" ToRole="SaleOrder" />
+          <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SaleOrder__Payme__379037E3" FromRole="PaymentMethod" ToRole="SaleOrder" />
           <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__paymen__634EBE90" FromRole="PaymentMethod" ToRole="Supplier" />
         </EntityType>
         <EntityType Name="PaymentTerm">
@@ -2705,8 +2863,36 @@
           <Property Name="term_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="timespan" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Customers" Relationship="IMEModel.FK__Customer__paymen__3E52440B" FromRole="PaymentTerm" ToRole="Customer" />
-          <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SaleOrder__Payme__1AF3F935" FromRole="PaymentTerm" ToRole="SaleOrder" />
+          <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SaleOrder__Payme__369C13AA" FromRole="PaymentTerm" ToRole="SaleOrder" />
           <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__paymen__6442E2C9" FromRole="PaymentTerm" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="PurchaseOrder">
+          <Key>
+            <PropertyRef Name="FicheNo" />
+          </Key>
+          <Property Name="FicheNo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="PurchaseOrderDate" Type="DateTime" Precision="0" />
+          <Property Name="CameDate" Type="DateTime" Precision="0" />
+          <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customer" Relationship="IMEModel.FK__PurchaseO__Custo__542C7691" FromRole="PurchaseOrder" ToRole="Customer" />
+          <NavigationProperty Name="PurchaseOrderDetails" Relationship="IMEModel.FK__PurchaseO__Fiche__5708E33C" FromRole="PurchaseOrder" ToRole="PurchaseOrderDetail" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuotationNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SaleOrderNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ItemCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SendQty" Type="Int32" />
+          <Property Name="SaleOrderNature" Type="Int32" />
+          <Property Name="FrtType" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="FicheNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PurchaseOrder" Relationship="IMEModel.FK__PurchaseO__Fiche__5708E33C" FromRole="PurchaseOrderDetail" ToRole="PurchaseOrder" />
+          <NavigationProperty Name="Quotation" Relationship="IMEModel.FK__PurchaseO__Quota__57FD0775" FromRole="PurchaseOrderDetail" ToRole="Quotation" />
+          <NavigationProperty Name="SaleOrder" Relationship="IMEModel.FK__PurchaseO__SaleO__58F12BAE" FromRole="PurchaseOrderDetail" ToRole="SaleOrder" />
         </EntityType>
         <EntityType Name="Quotation">
           <Key>
@@ -2739,6 +2925,7 @@
           <NavigationProperty Name="Note" Relationship="IMEModel.FK__Quotation__NoteF__0169315C" FromRole="Quotation" ToRole="Note" />
           <NavigationProperty Name="Note1" Relationship="IMEModel.FK__Quotation__NoteF__025D5595" FromRole="Quotation" ToRole="Note" />
           <NavigationProperty Name="PaymentMethod" Relationship="IMEModel.FK__Quotation__Payme__035179CE" FromRole="Quotation" ToRole="PaymentMethod" />
+          <NavigationProperty Name="PurchaseOrderDetails" Relationship="IMEModel.FK__PurchaseO__Quota__57FD0775" FromRole="Quotation" ToRole="PurchaseOrderDetail" />
           <NavigationProperty Name="QuotationDetails" Relationship="IMEModel.FK__Quotation__Quota__147C05D0" FromRole="Quotation" ToRole="QuotationDetail" />
         </EntityType>
         <EntityType Name="QuotationDetail">
@@ -2820,15 +3007,46 @@
           <Property Name="DeliveryAddressID" Type="Int32" Nullable="false" />
           <Property Name="RepresentativeID" Type="Int32" Nullable="false" />
           <Property Name="PaymentMethodID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Customer" Relationship="IMEModel.FK__SaleOrder__Custo__1CDC41A7" FromRole="SaleOrder" ToRole="Customer" />
-          <NavigationProperty Name="CustomerAddress" Relationship="IMEModel.FK__SaleOrder__Deliv__21A0F6C4" FromRole="SaleOrder" ToRole="CustomerAddress" />
-          <NavigationProperty Name="CustomerAddress1" Relationship="IMEModel.FK__SaleOrder__Invoi__20ACD28B" FromRole="SaleOrder" ToRole="CustomerAddress" />
-          <NavigationProperty Name="CustomerWorker" Relationship="IMEModel.FK__SaleOrder__Conta__1DD065E0" FromRole="SaleOrder" ToRole="CustomerWorker" />
-          <NavigationProperty Name="CustomerWorker1" Relationship="IMEModel.FK__SaleOrder__Conta__1EC48A19" FromRole="SaleOrder" ToRole="CustomerWorker" />
-          <NavigationProperty Name="CustomerWorker2" Relationship="IMEModel.FK__SaleOrder__Deliv__1FB8AE52" FromRole="SaleOrder" ToRole="CustomerWorker" />
-          <NavigationProperty Name="PaymentMethod" Relationship="IMEModel.FK__SaleOrder__Payme__1BE81D6E" FromRole="SaleOrder" ToRole="PaymentMethod" />
-          <NavigationProperty Name="PaymentTerm" Relationship="IMEModel.FK__SaleOrder__Payme__1AF3F935" FromRole="SaleOrder" ToRole="PaymentTerm" />
-          <NavigationProperty Name="Worker" Relationship="IMEModel.FK__SaleOrder__Repre__22951AFD" FromRole="SaleOrder" ToRole="Worker" />
+          <Property Name="NoteForUs" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NoteForCustomer" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NoteForFinance" Type="Int32" />
+          <Property Name="LPONo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customer" Relationship="IMEModel.FK__SaleOrder__Custo__38845C1C" FromRole="SaleOrder" ToRole="Customer" />
+          <NavigationProperty Name="CustomerAddress" Relationship="IMEModel.FK__SaleOrder__Deliv__3D491139" FromRole="SaleOrder" ToRole="CustomerAddress" />
+          <NavigationProperty Name="CustomerAddress1" Relationship="IMEModel.FK__SaleOrder__Invoi__3C54ED00" FromRole="SaleOrder" ToRole="CustomerAddress" />
+          <NavigationProperty Name="CustomerWorker" Relationship="IMEModel.FK__SaleOrder__Conta__39788055" FromRole="SaleOrder" ToRole="CustomerWorker" />
+          <NavigationProperty Name="CustomerWorker1" Relationship="IMEModel.FK__SaleOrder__Conta__3A6CA48E" FromRole="SaleOrder" ToRole="CustomerWorker" />
+          <NavigationProperty Name="CustomerWorker2" Relationship="IMEModel.FK__SaleOrder__Deliv__3B60C8C7" FromRole="SaleOrder" ToRole="CustomerWorker" />
+          <NavigationProperty Name="PaymentMethod" Relationship="IMEModel.FK__SaleOrder__Payme__379037E3" FromRole="SaleOrder" ToRole="PaymentMethod" />
+          <NavigationProperty Name="PaymentTerm" Relationship="IMEModel.FK__SaleOrder__Payme__369C13AA" FromRole="SaleOrder" ToRole="PaymentTerm" />
+          <NavigationProperty Name="PurchaseOrderDetails" Relationship="IMEModel.FK__PurchaseO__SaleO__58F12BAE" FromRole="SaleOrder" ToRole="PurchaseOrderDetail" />
+          <NavigationProperty Name="Worker" Relationship="IMEModel.FK__SaleOrder__Repre__3E3D3572" FromRole="SaleOrder" ToRole="Worker" />
+          <NavigationProperty Name="SaleOrderDetails" Relationship="IMEModel.FK__SaleOrder__SaleO__4119A21D" FromRole="SaleOrder" ToRole="SaleOrderDetail" />
+        </EntityType>
+        <EntityType Name="SaleOrderDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ItemCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="UCUPCurr" Type="Decimal" Nullable="false" Precision="20" Scale="5" />
+          <Property Name="Discount" Type="Decimal" Precision="5" Scale="3" />
+          <Property Name="Total" Type="Decimal" Nullable="false" Precision="20" Scale="5" />
+          <Property Name="TargetUP" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="Competitor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerStockCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="UPIME" Type="Decimal" Nullable="false" Precision="20" Scale="5" />
+          <Property Name="Margin" Type="Decimal" Nullable="false" Precision="20" Scale="5" />
+          <Property Name="UnitOfMeasure" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UnitContent" Type="Int32" Nullable="false" />
+          <Property Name="SSM" Type="Int32" />
+          <Property Name="UnitWeight" Type="Decimal" Precision="15" Scale="4" />
+          <Property Name="SaleOrderNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DependantTable" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SaleOrder" Relationship="IMEModel.FK__SaleOrder__SaleO__4119A21D" FromRole="SaleOrderDetail" ToRole="SaleOrder" />
         </EntityType>
         <EntityType Name="SlidingPrice">
           <Key>
@@ -3166,7 +3384,7 @@
           <NavigationProperty Name="Customers2" Relationship="IMEModel.FK__Customer__repres__6E01572D" FromRole="Worker" ToRole="Customer" />
           <NavigationProperty Name="DiscountValues" Relationship="IMEModel.FK__DiscountV__Repre__6F4A8121" FromRole="Worker" ToRole="DiscountValue" />
           <NavigationProperty Name="Note" Relationship="IMEModel.FK__Worker__WorkerNo__4BAC3F29" FromRole="Worker" ToRole="Note" />
-          <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SaleOrder__Repre__22951AFD" FromRole="Worker" ToRole="SaleOrder" />
+          <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SaleOrder__Repre__3E3D3572" FromRole="Worker" ToRole="SaleOrder" />
           <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__accoun__2DB1C7EE" FromRole="Worker" ToRole="Supplier" />
           <NavigationProperty Name="Suppliers1" Relationship="IMEModel.FK__Supplier__repres__65370702" FromRole="Worker" ToRole="Supplier" />
           <NavigationProperty Name="AuthorizationValues" Relationship="IMEModel.UserAuthorization" FromRole="Worker" ToRole="AuthorizationValue" />
@@ -3387,6 +3605,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PurchaseO__Custo__542C7691">
+          <End Type="IMEModel.Customer" Role="Customer" Multiplicity="0..1" />
+          <End Type="IMEModel.PurchaseOrder" Role="PurchaseOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PurchaseOrder">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Quotation__Custo__00750D23">
           <End Type="IMEModel.Customer" Role="Customer" Multiplicity="0..1" />
           <End Type="IMEModel.Quotation" Role="Quotation" Multiplicity="*" />
@@ -3399,7 +3629,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaleOrder__Custo__1CDC41A7">
+        <Association Name="FK__SaleOrder__Custo__38845C1C">
           <End Type="IMEModel.Customer" Role="Customer" Multiplicity="1" />
           <End Type="IMEModel.SaleOrder" Role="SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3435,7 +3665,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaleOrder__Deliv__21A0F6C4">
+        <Association Name="FK__SaleOrder__Deliv__3D491139">
           <End Type="IMEModel.CustomerAddress" Role="CustomerAddress" Multiplicity="1" />
           <End Type="IMEModel.SaleOrder" Role="SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3447,7 +3677,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaleOrder__Invoi__20ACD28B">
+        <Association Name="FK__SaleOrder__Invoi__3C54ED00">
           <End Type="IMEModel.CustomerAddress" Role="CustomerAddress" Multiplicity="1" />
           <End Type="IMEModel.SaleOrder" Role="SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3555,7 +3785,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaleOrder__Conta__1DD065E0">
+        <Association Name="FK__SaleOrder__Conta__39788055">
           <End Type="IMEModel.CustomerWorker" Role="CustomerWorker" Multiplicity="1" />
           <End Type="IMEModel.SaleOrder" Role="SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3567,7 +3797,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaleOrder__Conta__1EC48A19">
+        <Association Name="FK__SaleOrder__Conta__3A6CA48E">
           <End Type="IMEModel.CustomerWorker" Role="CustomerWorker" Multiplicity="1" />
           <End Type="IMEModel.SaleOrder" Role="SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3579,7 +3809,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaleOrder__Deliv__1FB8AE52">
+        <Association Name="FK__SaleOrder__Deliv__3B60C8C7">
           <End Type="IMEModel.CustomerWorker" Role="CustomerWorker" Multiplicity="1" />
           <End Type="IMEModel.SaleOrder" Role="SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3711,7 +3941,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaleOrder__Payme__1BE81D6E">
+        <Association Name="FK__SaleOrder__Payme__379037E3">
           <End Type="IMEModel.PaymentMethod" Role="PaymentMethod" Multiplicity="1" />
           <End Type="IMEModel.SaleOrder" Role="SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3735,7 +3965,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaleOrder__Payme__1AF3F935">
+        <Association Name="FK__SaleOrder__Payme__369C13AA">
           <End Type="IMEModel.PaymentTerm" Role="PaymentTerm" Multiplicity="1" />
           <End Type="IMEModel.SaleOrder" Role="SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3756,6 +3986,42 @@
             </Principal>
             <Dependent Role="Supplier">
               <PropertyRef Name="payment_termID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PurchaseO__Fiche__5708E33C">
+          <End Type="IMEModel.PurchaseOrder" Role="PurchaseOrder" Multiplicity="0..1" />
+          <End Type="IMEModel.PurchaseOrderDetail" Role="PurchaseOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrder">
+              <PropertyRef Name="FicheNo" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetail">
+              <PropertyRef Name="FicheNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PurchaseO__Quota__57FD0775">
+          <End Type="IMEModel.Quotation" Role="Quotation" Multiplicity="0..1" />
+          <End Type="IMEModel.PurchaseOrderDetail" Role="PurchaseOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quotation">
+              <PropertyRef Name="QuotationNo" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetail">
+              <PropertyRef Name="QuotationNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PurchaseO__SaleO__58F12BAE">
+          <End Type="IMEModel.SaleOrder" Role="SaleOrder" Multiplicity="0..1" />
+          <End Type="IMEModel.PurchaseOrderDetail" Role="PurchaseOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SaleOrder">
+              <PropertyRef Name="SaleOrderNo" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetail">
+              <PropertyRef Name="SaleOrderNo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3783,7 +4049,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaleOrder__Repre__22951AFD">
+        <Association Name="FK__SaleOrder__Repre__3E3D3572">
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="1" />
           <End Type="IMEModel.SaleOrder" Role="SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3792,6 +4058,18 @@
             </Principal>
             <Dependent Role="SaleOrder">
               <PropertyRef Name="RepresentativeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SaleOrder__SaleO__4119A21D">
+          <End Type="IMEModel.SaleOrder" Role="SaleOrder" Multiplicity="0..1" />
+          <End Type="IMEModel.SaleOrderDetail" Role="SaleOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SaleOrder">
+              <PropertyRef Name="SaleOrderNo" />
+            </Principal>
+            <Dependent Role="SaleOrderDetail">
+              <PropertyRef Name="SaleOrderNo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4007,7 +4285,7 @@
           <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -4368,6 +4646,31 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrders">
+            <EntityTypeMapping TypeName="IMEModel.PurchaseOrder">
+              <MappingFragment StoreEntitySet="PurchaseOrder">
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="CameDate" ColumnName="CameDate" />
+                <ScalarProperty Name="PurchaseOrderDate" ColumnName="PurchaseOrderDate" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="FicheNo" ColumnName="FicheNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrderDetails">
+            <EntityTypeMapping TypeName="IMEModel.PurchaseOrderDetail">
+              <MappingFragment StoreEntitySet="PurchaseOrderDetail">
+                <ScalarProperty Name="FicheNo" ColumnName="FicheNo" />
+                <ScalarProperty Name="FrtType" ColumnName="FrtType" />
+                <ScalarProperty Name="SaleOrderNature" ColumnName="SaleOrderNature" />
+                <ScalarProperty Name="SendQty" ColumnName="SendQty" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="SaleOrderNo" ColumnName="SaleOrderNo" />
+                <ScalarProperty Name="QuotationNo" ColumnName="QuotationNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Quotations">
             <EntityTypeMapping TypeName="IMEModel.Quotation">
               <MappingFragment StoreEntitySet="Quotation">
@@ -4460,6 +4763,10 @@
           <EntitySetMapping Name="SaleOrders">
             <EntityTypeMapping TypeName="IMEModel.SaleOrder">
               <MappingFragment StoreEntitySet="SaleOrder">
+                <ScalarProperty Name="LPONo" ColumnName="LPONo" />
+                <ScalarProperty Name="NoteForFinance" ColumnName="NoteForFinance" />
+                <ScalarProperty Name="NoteForCustomer" ColumnName="NoteForCustomer" />
+                <ScalarProperty Name="NoteForUs" ColumnName="NoteForUs" />
                 <ScalarProperty Name="PaymentMethodID" ColumnName="PaymentMethodID" />
                 <ScalarProperty Name="RepresentativeID" ColumnName="RepresentativeID" />
                 <ScalarProperty Name="DeliveryAddressID" ColumnName="DeliveryAddressID" />
@@ -4476,6 +4783,31 @@
                 <ScalarProperty Name="CurrenyName" ColumnName="CurrenyName" />
                 <ScalarProperty Name="SaleDate" ColumnName="SaleDate" />
                 <ScalarProperty Name="SaleOrderNo" ColumnName="SaleOrderNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SaleOrderDetails">
+            <EntityTypeMapping TypeName="IMEModel.SaleOrderDetail">
+              <MappingFragment StoreEntitySet="SaleOrderDetail">
+                <ScalarProperty Name="DependantTable" ColumnName="DependantTable" />
+                <ScalarProperty Name="SaleOrderNo" ColumnName="SaleOrderNo" />
+                <ScalarProperty Name="UnitWeight" ColumnName="UnitWeight" />
+                <ScalarProperty Name="SSM" ColumnName="SSM" />
+                <ScalarProperty Name="UnitContent" ColumnName="UnitContent" />
+                <ScalarProperty Name="UnitOfMeasure" ColumnName="UnitOfMeasure" />
+                <ScalarProperty Name="Margin" ColumnName="Margin" />
+                <ScalarProperty Name="UPIME" ColumnName="UPIME" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CustomerStockCode" ColumnName="CustomerStockCode" />
+                <ScalarProperty Name="CustomerDescription" ColumnName="CustomerDescription" />
+                <ScalarProperty Name="Competitor" ColumnName="Competitor" />
+                <ScalarProperty Name="TargetUP" ColumnName="TargetUP" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="UCUPCurr" ColumnName="UCUPCurr" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
