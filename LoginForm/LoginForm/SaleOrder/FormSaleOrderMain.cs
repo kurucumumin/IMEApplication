@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 using System.Linq;
-using LoginForm.SaleOrder;
 
-namespace LoginForm.SalesOrder
+namespace LoginForm.nsSaleOrder
 {
     public partial class FormSalesOrderMain : Form
     {

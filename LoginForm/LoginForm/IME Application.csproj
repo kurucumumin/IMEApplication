@@ -251,6 +251,12 @@
     <Compile Include="DataSet\PaymentTerm.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PurchaseOrder.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PurchaseOrderDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Quotation.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -267,6 +273,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SaleOrder.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SaleOrderDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SlidingPrice.cs">
@@ -702,6 +711,7 @@
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthorizationValue.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthRole.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Customer.datasource" />
+    <None Include="Properties\DataSources\LoginForm.DataSet.Mail.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Quotation.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.QuotationDetail.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.RoleValue.datasource" />

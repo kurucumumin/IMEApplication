@@ -1,4 +1,4 @@
-﻿namespace LoginForm.SaleOrder
+﻿namespace LoginForm.nsSaleOrder
 {
     partial class FormSaleOrderCreate
     {
