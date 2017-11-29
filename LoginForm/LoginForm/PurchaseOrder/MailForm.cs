@@ -15,6 +15,7 @@ namespace LoginForm.PurchaseOrder
     public partial class MailForm : Form
     {
         IMEEntities IME = new IMEEntities();
+        List<Mail> addedMails = new List<Mail>();
 
         public MailForm()
         {
@@ -24,7 +25,8 @@ namespace LoginForm.PurchaseOrder
         private void MailForm_Load(object sender, EventArgs e)
         {
             // TODO: Bu kod satırı 'iMEDataSet.Mail' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
-            this.mailTableAdapter.Fill(this.iMEDataSet.Mail);
+            //this.mailTableAdapter.Fill(this.iMEDataSet.Mail);
+            dgMail.DataSource = IME.Mails.ToList();
 
             if ( radioDefault.Checked == true)
             {
@@ -49,18 +51,32 @@ namespace LoginForm.PurchaseOrder
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Cursor.Current = Cursors.WaitCursor;
-            try
+            foreach(Mail mail in addedMails)
             {
-                mailBindingSource.EndEdit();
-                mailTableAdapter.Update(this.iMEDataSet.Mail);
-                MessageBox.Show("You have been successfully saved.","Message",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                try
+                {
+                    IME.Mails.Add(mail);
+                    IME.SaveChanges();
+                }
+                catch (Exception )
+                {
+                    throw;
+                }
             }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message,"Message",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
-            Cursor.Current = Cursors.Default;
+
+
+            //Cursor.Current = Cursors.WaitCursor;
+            //try
+            //{
+            //    mailBindingSource.EndEdit();
+            //    mailTableAdapter.Update(this.iMEDataSet.Mail);
+            //    MessageBox.Show("You have been successfully saved.","Message",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            //}
+            //catch(Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message,"Message",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            //}
+            //Cursor.Current = Cursors.Default;
         }
 
 
@@ -100,6 +116,17 @@ namespace LoginForm.PurchaseOrder
                 f.ShowDialog();
                 this.Close();
             }
+        }
+
+        private void dgMail_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            Mail mail = new Mail();
+            mail.FirstName = (string)e.Row.Cells["FirstName"].Value;
+            mail.MailAddress = (string)e.Row.Cells["MailAddress"].Value;
+            mail.too = (bool)e.Row.Cells["too"].Value;
+            mail.cc = (bool)e.Row.Cells["cc"].Value;
+
+            addedMails.Add(mail);
         }
     }
 }

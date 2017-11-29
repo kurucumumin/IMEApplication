@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace LoginForm.SaleOrder
+namespace LoginForm.nsSaleOrder
 {
     public partial class FormSaleOrderCreate : Form
     {

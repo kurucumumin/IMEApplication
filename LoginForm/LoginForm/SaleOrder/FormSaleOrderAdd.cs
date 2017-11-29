@@ -8,9 +8,8 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace LoginForm.SaleOrder
+namespace LoginForm.nsSaleOrder
 {
-
     public partial class FormSaleOrderAdd : Form
     {
         decimal subtotal = 0;
@@ -25,6 +24,7 @@ namespace LoginForm.SaleOrder
         List<SlidingPrice> priceList = new List<SlidingPrice>();
         List<OnSale> onSaleList = new List<OnSale>();
         List<Hazardou> hazardousList = new List<Hazardou>();
+        CustomerAddress invoiceAddress = new CustomerAddress();
 
         Customer customer;
         IMEEntities IME = new IMEEntities();
@@ -39,12 +39,14 @@ namespace LoginForm.SaleOrder
             InitializeComponent();
             this.customer = customer;
             dtpDate.Value = DateTime.Today;
+            dtpRequestedDelvDate.MinDate = dtpDate.Value;
+            dtpRequestedDelvDate.Value = dtpDate.Value;
             BringPriceList(list);
             ConvertToSaleItem(list, addedItemList, removedItemList);
             SortTheList(addedItemList);
             SortTheList(removedItemList);
-            FillCustomer();
             populateComboBoxes();
+            FillCustomer();
         }
 
         private void BringPriceList(List<QuotationDetail> list)
@@ -446,8 +448,17 @@ namespace LoginForm.SaleOrder
         {
             txtCustomerName.Text = customer.c_name;
             CustomerCode.Text = customer.ID;
-            cbCurrency.SelectedIndex = cbCurrency.FindStringExact(customer.CurrNameQuo);
-            cbCurrType.SelectedIndex = cbCurrType.FindStringExact(customer.CurrTypeQuo);
+
+            cbCurrency.SelectedValue = customer.CurrNameQuo;
+            cbCurrType.SelectedItem = customer.CurrTypeQuo;
+            cbRep.SelectedValue = customer.representaryID;
+            cbPaymentTerm.SelectedValue = customer.PaymentTerm;
+            cbPayment.SelectedItem = customer.PaymentMethod;
+            cbWorkers.SelectedValue = (customer.MainContactID != null) ? customer.MainContactID : null;
+
+            //cbCurrency.SelectedIndex = cbCurrency.FindStringExact(customer.CurrNameQuo);
+            //cbCurrType.SelectedIndex = cbCurrType.FindStringExact(customer.CurrTypeQuo);
+
             if (customer.paymentmethodID != null)
             {
                 cbPayment.SelectedIndex = cbPayment.FindStringExact(customer.PaymentMethod.Payment);
@@ -457,6 +468,22 @@ namespace LoginForm.SaleOrder
             try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == customer.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
 
 
+            CustomerAddress deliveryAddress = customer.CustomerAddresses.Where(a => a.AddressType == "Delivery Address").FirstOrDefault();
+            invoiceAddress = customer.CustomerAddresses.Where(a => a.AddressType == "Invoice Address").FirstOrDefault();
+
+            if(invoiceAddress != null)
+            {
+                txtInvoiceAddress.Text = invoiceAddress.AdressDetails;
+            }
+            else
+            {
+                txtInvoiceAddress.ReadOnly = false;
+                txtInvoiceAddress.Text = String.Empty;
+            }
+            cbDeliveryAddress.SelectedItem = (deliveryAddress != null) ? deliveryAddress : invoiceAddress;
+        
+
+
         }
 
         private void populateComboBoxes()
@@ -464,22 +491,30 @@ namespace LoginForm.SaleOrder
             cbRep.DataSource = IME.Workers.ToList();
             cbRep.DisplayMember = "NameLastName";
             cbRep.ValueMember = "WorkerID";
-            cbRep.SelectedValue = customer.representaryID;
 
-            cbWorkers.DataSource = IME.CustomerWorkers.Where(a => a.customerID == customer.ID).ToList();
+            cbWorkers.DataSource = customer.CustomerWorkers.ToList();
             cbWorkers.DisplayMember = "cw_name";
             cbWorkers.ValueMember = "ID";
 
             cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == dtpDate.Value).ToList();
             cbCurrency.DisplayMember = "CurType";
             cbCurrency.ValueMember = "CurType";
-            cbCurrency.SelectedValue= customer.CurrNameQuo;
-
-            cbCurrType.SelectedItem = customer.CurrTypeQuo;
 
             cbPayment.DataSource = IME.PaymentMethods.ToList();
             cbPayment.DisplayMember = "Payment";
             cbPayment.ValueMember = "ID";
+
+            cbDeliveryAddress.DataSource = customer.CustomerAddresses.ToList();
+            cbDeliveryAddress.DisplayMember = "AdressTitle";
+            cbDeliveryAddress.ValueMember = "ID";
+
+            cbDeliveryContact.DataSource = customer.CustomerWorkers.ToList();
+            cbDeliveryContact.DisplayMember = "cw_name";
+            cbDeliveryContact.ValueMember = "ID";
+
+            cbPaymentTerm.DataSource = IME.PaymentTerms.ToList();
+            cbPaymentTerm.DisplayMember = "term_name";
+            cbPaymentTerm.ValueMember = "ID";
         }
 
         private void FillItemCard(string itemCode)
@@ -628,6 +663,35 @@ namespace LoginForm.SaleOrder
         private void ChangeCurrency()
         {
 
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            SaleOrder so = new SaleOrder();
+            so.SaleOrderNo = txtSONo.Text;
+            so.SaleDate = DateTime.Today.Date;
+            so.CurrenyName = (string)cbCurrency.SelectedValue + " " + cbCurrType.SelectedItem;
+            so.OnlineConfirmationNo = txtOnlineConfirmationNo.Text;
+            so.QuotationNos = txtQuotationNo.Text;
+            if (dtpRequestedDelvDate.Value != dtpDate.Value)
+            {
+                so.RequestedDeliveryDate = dtpRequestedDelvDate.Value;
+            }
+            so.Vat = (chkVat.Checked) ? Convert.ToDecimal(lblVat.Text) : 0;
+            so.TotalPrice = Convert.ToDecimal(lblGrossTotal.Text);
+            so.NoteForUs = txtNoteForUs.Text;
+            so.NoteForFinance = (chkForFinance.Checked) ? 1 : 0;
+
+            so.PaymentTerm = (PaymentTerm)cbPaymentTerm.SelectedItem;
+            so.Customer = customer;
+            so.ContactID = (int)cbWorkers.SelectedValue;
+            so.DeliveryContactID = (int)cbDeliveryContact.SelectedValue;
+            so.InvoiceAddressID = invoiceAddress.ID;
+            so.DeliveryAddressID = (int)cbDeliveryAddress.SelectedValue;
+            so.RepresentativeID = (int)cbRep.SelectedValue;
+            so.PaymentMethodID = (int)cbPayment.SelectedValue;
+
+            IME.SaleOrders.Add(so);
         }
     }
 }
