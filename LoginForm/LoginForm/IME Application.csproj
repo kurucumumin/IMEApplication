@@ -722,6 +722,7 @@
     <None Include="Properties\DataSources\LoginForm.DataSet.Customer.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Mail.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.PurchaseOrder.datasource" />
+    <None Include="Properties\DataSources\LoginForm.DataSet.PurchaseOrderDetail.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Quotation.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.QuotationDetail.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.RoleValue.datasource" />

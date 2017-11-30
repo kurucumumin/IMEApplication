@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class SaleOrder
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,7 +20,7 @@ namespace LoginForm.DataSet
             this.PurchaseOrderDetails = new HashSet<PurchaseOrderDetail>();
             this.SaleOrderDetails = new HashSet<SaleOrderDetail>();
         }
-
+    
         public string SaleOrderNo { get; set; }
         public System.DateTime SaleDate { get; set; }
         public string CurrenyName { get; set; }
@@ -41,7 +41,8 @@ namespace LoginForm.DataSet
         public string NoteForCustomer { get; set; }
         public Nullable<int> NoteForFinance { get; set; }
         public string LPONo { get; set; }
-
+        public string SaleOrderNature { get; set; }
+    
         public virtual Customer Customer { get; set; }
         public virtual CustomerAddress CustomerAddress { get; set; }
         public virtual CustomerAddress CustomerAddress1 { get; set; }

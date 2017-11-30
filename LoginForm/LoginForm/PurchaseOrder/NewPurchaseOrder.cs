@@ -15,10 +15,21 @@ namespace LoginForm.PurchaseOrder
     public partial class NewPurchaseOrder : Form
     {
         IMEEntities IME = new IMEEntities();
+        List<SaleOrderDetail> saleItemList = new List<SaleOrderDetail>();
 
         public NewPurchaseOrder()
         {
             InitializeComponent();
+        }
+
+        public NewPurchaseOrder(List<SaleOrder> SaleOrderList)
+        {
+            InitializeComponent();
+
+            foreach (SaleOrder sale in SaleOrderList)
+            { 
+                saleItemList.AddRange(sale.SaleOrderDetails);
+            }
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -39,8 +50,30 @@ namespace LoginForm.PurchaseOrder
 
         private void NewPurchaseOrder_Load(object sender, EventArgs e)
         {
-            IMEEntities IME = new IMEEntities();
-            dgPurchase.DataSource = IME.PurchaseOrderDetails.ToList();
+            PurchaseOrderFill();
+        }
+
+        private void PurchaseOrderFill()
+        {
+            List<PurchaseOrderDetail> purchaseList = new List<PurchaseOrderDetail>();
+
+            foreach (SaleOrderDetail sod in saleItemList)
+            {
+                PurchaseOrderDetail pod = new PurchaseOrderDetail();
+                pod.ItemCode = sod.ItemCode;
+                pod.SaleOrderNature = sod.SaleOrder.SaleOrderNature;
+                pod.QuotationNo = sod.SaleOrder.QuotationNos;
+                pod.SaleOrderNo = sod.SaleOrderNo;
+                pod.ItemDesc = sod.ItemDescription;
+                pod.Unit = sod.UnitOfMeasure;
+                pod.Hazardous = sod.Hazardous;
+                pod.Calibration = sod.Calibration;
+                pod.UnitPrice = sod.UnitPrice;
+
+                purchaseList.Add(pod);
+            }
+
+            dgPurchase.DataSource = purchaseList;
         }
     }
 }

@@ -39,23 +39,28 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnExcel = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
-            this.purchaseOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.customerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quotationNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.saleOrderNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ıtemCodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SaleOrderQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StoreQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sendQtyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.saleOrderNatureDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BillTo = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.ShipTo = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.frtTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.purchaseOrderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.SLC = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ıtemDescDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaleQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DepotQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hazardousDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.calibrationDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.BillTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShipTo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPurchase)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.purchaseOrderBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purchaseOrderDetailBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -124,20 +129,25 @@
             this.dgPurchase.AutoGenerateColumns = false;
             this.dgPurchase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgPurchase.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.customerIDDataGridViewTextBoxColumn,
-            this.quotationNoDataGridViewTextBoxColumn,
-            this.saleOrderNoDataGridViewTextBoxColumn,
-            this.ıtemCodeDataGridViewTextBoxColumn,
-            this.SaleOrderQty,
-            this.StoreQty,
-            this.sendQtyDataGridViewTextBoxColumn,
-            this.saleOrderNatureDataGridViewTextBoxColumn,
+            this.SLC,
+            this.Customer,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn3,
+            this.ıtemDescDataGridViewTextBoxColumn,
+            this.unitDataGridViewTextBoxColumn,
+            this.SaleQty,
+            this.DepotQty,
+            this.dataGridViewTextBoxColumn4,
+            this.hazardousDataGridViewCheckBoxColumn,
+            this.calibrationDataGridViewCheckBoxColumn,
+            this.dataGridViewTextBoxColumn6,
             this.BillTo,
             this.ShipTo,
-            this.frtTypeDataGridViewTextBoxColumn,
-            this.Cost,
-            this.TotalPrice});
-            this.dgPurchase.DataSource = this.purchaseOrderBindingSource;
+            this.dataGridViewTextBoxColumn5,
+            this.unitPriceDataGridViewTextBoxColumn,
+            this.Total});
+            this.dgPurchase.DataSource = this.purchaseOrderDetailBindingSource;
             this.dgPurchase.Location = new System.Drawing.Point(12, 133);
             this.dgPurchase.Name = "dgPurchase";
             this.dgPurchase.Size = new System.Drawing.Size(1272, 432);
@@ -172,116 +182,148 @@
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
-            // purchaseOrderBindingSource
+            // purchaseOrderDetailBindingSource
             // 
-            this.purchaseOrderBindingSource.DataSource = typeof(LoginForm.DataSet.PurchaseOrder);
+            this.purchaseOrderDetailBindingSource.DataSource = typeof(LoginForm.DataSet.PurchaseOrderDetail);
             // 
-            // customerIDDataGridViewTextBoxColumn
+            // SLC
             // 
-            this.customerIDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.customerIDDataGridViewTextBoxColumn.DataPropertyName = "CustomerID";
-            this.customerIDDataGridViewTextBoxColumn.HeaderText = "Customer Title";
-            this.customerIDDataGridViewTextBoxColumn.Name = "customerIDDataGridViewTextBoxColumn";
+            this.SLC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.SLC.HeaderText = "SLC";
+            this.SLC.Name = "SLC";
+            this.SLC.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SLC.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.SLC.Width = 52;
             // 
-            // quotationNoDataGridViewTextBoxColumn
+            // Customer
             // 
-            this.quotationNoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.quotationNoDataGridViewTextBoxColumn.DataPropertyName = "QuotationNo";
-            this.quotationNoDataGridViewTextBoxColumn.HeaderText = "QuotationNo";
-            this.quotationNoDataGridViewTextBoxColumn.Name = "quotationNoDataGridViewTextBoxColumn";
-            this.quotationNoDataGridViewTextBoxColumn.Width = 92;
+            this.Customer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Customer.HeaderText = "Customer";
+            this.Customer.Name = "Customer";
+            this.Customer.Width = 76;
             // 
-            // saleOrderNoDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn2
             // 
-            this.saleOrderNoDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.saleOrderNoDataGridViewTextBoxColumn.DataPropertyName = "SaleOrderNo";
-            this.saleOrderNoDataGridViewTextBoxColumn.HeaderText = "SaleOrderNo";
-            this.saleOrderNoDataGridViewTextBoxColumn.Name = "saleOrderNoDataGridViewTextBoxColumn";
-            this.saleOrderNoDataGridViewTextBoxColumn.Width = 93;
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "SaleOrderNo";
+            this.dataGridViewTextBoxColumn2.HeaderText = "SaleOrderNo";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 21;
             // 
-            // ıtemCodeDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn1
             // 
-            this.ıtemCodeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.ıtemCodeDataGridViewTextBoxColumn.DataPropertyName = "ItemCode";
-            this.ıtemCodeDataGridViewTextBoxColumn.HeaderText = "ItemCode";
-            this.ıtemCodeDataGridViewTextBoxColumn.Name = "ıtemCodeDataGridViewTextBoxColumn";
-            this.ıtemCodeDataGridViewTextBoxColumn.Width = 77;
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "QuotationNo";
+            this.dataGridViewTextBoxColumn1.HeaderText = "QuotationNo";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 21;
             // 
-            // SaleOrderQty
+            // dataGridViewTextBoxColumn3
             // 
-            this.SaleOrderQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.SaleOrderQty.DataPropertyName = "ID";
-            this.SaleOrderQty.HeaderText = "Sales Qty";
-            this.SaleOrderQty.Name = "SaleOrderQty";
-            this.SaleOrderQty.Width = 77;
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "ItemCode";
+            this.dataGridViewTextBoxColumn3.HeaderText = "ItemCode";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 21;
             // 
-            // StoreQty
+            // ıtemDescDataGridViewTextBoxColumn
             // 
-            this.StoreQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.StoreQty.DataPropertyName = "ID";
-            this.StoreQty.HeaderText = "Store Qty";
-            this.StoreQty.Name = "StoreQty";
-            this.StoreQty.Width = 76;
+            this.ıtemDescDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ıtemDescDataGridViewTextBoxColumn.DataPropertyName = "ItemDesc";
+            this.ıtemDescDataGridViewTextBoxColumn.HeaderText = "ItemDesc";
+            this.ıtemDescDataGridViewTextBoxColumn.Name = "ıtemDescDataGridViewTextBoxColumn";
             // 
-            // sendQtyDataGridViewTextBoxColumn
+            // unitDataGridViewTextBoxColumn
             // 
-            this.sendQtyDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.sendQtyDataGridViewTextBoxColumn.DataPropertyName = "SendQty";
-            this.sendQtyDataGridViewTextBoxColumn.HeaderText = "Send Qty";
-            this.sendQtyDataGridViewTextBoxColumn.Name = "sendQtyDataGridViewTextBoxColumn";
-            this.sendQtyDataGridViewTextBoxColumn.Width = 76;
+            this.unitDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.unitDataGridViewTextBoxColumn.DataPropertyName = "Unit";
+            this.unitDataGridViewTextBoxColumn.HeaderText = "Unit";
+            this.unitDataGridViewTextBoxColumn.Name = "unitDataGridViewTextBoxColumn";
+            this.unitDataGridViewTextBoxColumn.Width = 51;
             // 
-            // saleOrderNatureDataGridViewTextBoxColumn
+            // SaleQty
             // 
-            this.saleOrderNatureDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.saleOrderNatureDataGridViewTextBoxColumn.DataPropertyName = "SaleOrderNature";
-            this.saleOrderNatureDataGridViewTextBoxColumn.HeaderText = "SaleOrderNature";
-            this.saleOrderNatureDataGridViewTextBoxColumn.Name = "saleOrderNatureDataGridViewTextBoxColumn";
-            this.saleOrderNatureDataGridViewTextBoxColumn.Width = 111;
+            this.SaleQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.SaleQty.HeaderText = "S.O. QTY";
+            this.SaleQty.Name = "SaleQty";
+            this.SaleQty.Width = 78;
+            // 
+            // DepotQty
+            // 
+            this.DepotQty.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.DepotQty.HeaderText = "Depot QTY";
+            this.DepotQty.Name = "DepotQty";
+            this.DepotQty.Width = 86;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "SendQty";
+            this.dataGridViewTextBoxColumn4.HeaderText = "SendQty";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 73;
+            // 
+            // hazardousDataGridViewCheckBoxColumn
+            // 
+            this.hazardousDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.hazardousDataGridViewCheckBoxColumn.DataPropertyName = "Hazardous";
+            this.hazardousDataGridViewCheckBoxColumn.HeaderText = "HZ";
+            this.hazardousDataGridViewCheckBoxColumn.Name = "hazardousDataGridViewCheckBoxColumn";
+            this.hazardousDataGridViewCheckBoxColumn.Width = 28;
+            // 
+            // calibrationDataGridViewCheckBoxColumn
+            // 
+            this.calibrationDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.calibrationDataGridViewCheckBoxColumn.DataPropertyName = "Calibration";
+            this.calibrationDataGridViewCheckBoxColumn.HeaderText = "CAL";
+            this.calibrationDataGridViewCheckBoxColumn.Name = "calibrationDataGridViewCheckBoxColumn";
+            this.calibrationDataGridViewCheckBoxColumn.Width = 33;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "SaleOrderNature";
+            this.dataGridViewTextBoxColumn6.HeaderText = "S.O. NATURE";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // BillTo
             // 
             this.BillTo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.BillTo.DataPropertyName = "ID";
-            this.BillTo.HeaderText = "Bill To";
+            this.BillTo.HeaderText = "BILL TO";
             this.BillTo.Name = "BillTo";
-            this.BillTo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.BillTo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.BillTo.Width = 61;
+            this.BillTo.Width = 72;
             // 
             // ShipTo
             // 
             this.ShipTo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.ShipTo.DataPropertyName = "ID";
-            this.ShipTo.HeaderText = "Ship To";
+            this.ShipTo.HeaderText = "SHIP TO";
             this.ShipTo.Name = "ShipTo";
-            this.ShipTo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ShipTo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ShipTo.Width = 69;
+            this.ShipTo.Width = 75;
             // 
-            // frtTypeDataGridViewTextBoxColumn
+            // dataGridViewTextBoxColumn5
             // 
-            this.frtTypeDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.frtTypeDataGridViewTextBoxColumn.DataPropertyName = "FrtType";
-            this.frtTypeDataGridViewTextBoxColumn.HeaderText = "FrtType";
-            this.frtTypeDataGridViewTextBoxColumn.Name = "frtTypeDataGridViewTextBoxColumn";
-            this.frtTypeDataGridViewTextBoxColumn.Width = 68;
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "FrtType";
+            this.dataGridViewTextBoxColumn5.HeaderText = "FrtType";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Width = 68;
             // 
-            // Cost
+            // unitPriceDataGridViewTextBoxColumn
             // 
-            this.Cost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Cost.DataPropertyName = "ID";
-            this.Cost.HeaderText = "Cost";
-            this.Cost.Name = "Cost";
-            this.Cost.Width = 53;
+            this.unitPriceDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.unitPriceDataGridViewTextBoxColumn.DataPropertyName = "UnitPrice";
+            this.unitPriceDataGridViewTextBoxColumn.HeaderText = "Cost";
+            this.unitPriceDataGridViewTextBoxColumn.Name = "unitPriceDataGridViewTextBoxColumn";
+            this.unitPriceDataGridViewTextBoxColumn.Width = 53;
             // 
-            // TotalPrice
+            // Total
             // 
-            this.TotalPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TotalPrice.DataPropertyName = "ID";
-            this.TotalPrice.HeaderText = "Total Price";
-            this.TotalPrice.Name = "TotalPrice";
-            this.TotalPrice.Width = 83;
+            this.Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Total.DataPropertyName = "ID";
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.Width = 56;
             // 
             // NewPurchaseOrder
             // 
@@ -303,7 +345,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPurchase)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.purchaseOrderBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.purchaseOrderDetailBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -321,19 +363,30 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnExcel;
         private System.Windows.Forms.Button btnCreate;
-        private System.Windows.Forms.BindingSource purchaseOrderBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn customerIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quotationNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn saleOrderNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ıtemCodeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SaleOrderQty;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StoreQty;
         private System.Windows.Forms.DataGridViewTextBoxColumn sendQtyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn saleOrderNatureDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn BillTo;
-        private System.Windows.Forms.DataGridViewComboBoxColumn ShipTo;
         private System.Windows.Forms.DataGridViewTextBoxColumn frtTypeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cost;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
+        private System.Windows.Forms.BindingSource purchaseOrderDetailBindingSource;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn SLC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Customer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ıtemDescDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SaleQty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DepotQty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn hazardousDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn calibrationDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BillTo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ShipTo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitPriceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
     }
 }

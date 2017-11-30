@@ -44,23 +44,32 @@ namespace LoginForm.PurchaseOrder
 
         private void PurchaseOrderMain_Load(object sender, EventArgs e)
         {
-            IMEEntities IME = new IMEEntities();
-            dgPurchase.DataSource = IME.PurchaseOrders.ToList();
+            PurchaseOrderFill();
         }
 
         private void PurchaseOrderFill()
         {
             IME = new IMEEntities();
             #region PurchaseOrderFill
-            //var adapter = (from p in IME.PurchaseOrderDetails
-            //               select new
-            //               {
-            //                   p.PurchaseOrderID,
-            //                   p.PurchaseOrderDate,
-            //                   p.
-            //               }.ToString();
+            var adapter = (from p in IME.PurchaseOrders
+                           select new
+                           {
+                               p.FicheNo,
+                               p.PurchaseOrderDate,
+                               p.CustomerID,
+                               p.Customer.c_name,
+                               p.CameDate,
+                               p.Reason
+                           }).ToList();
             #endregion
-
+            dgPurchase.DataSource = adapter;
+            dgPurchase.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgPurchase.Columns[0].HeaderText = "Fiche No";
+            dgPurchase.Columns[1].HeaderText = "Date";
+            dgPurchase.Columns[2].HeaderText = "Customer Code";
+            dgPurchase.Columns[3].HeaderText = "Customer Title";
+            dgPurchase.Columns[4].HeaderText = "Came Date";
+            dgPurchase.Columns[5].HeaderText = "Reason";
         }
     }
 }

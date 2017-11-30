@@ -80,5 +80,7 @@ namespace LoginForm.QuotationModule
             this.Hide();
             frm.Show();
         }
+
+      
     }
 }

@@ -30,6 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tab_company = new System.Windows.Forms.TabPage();
+            this.txt3partyCode = new System.Windows.Forms.TextBox();
+            this.label43 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.cbMainContact = new System.Windows.Forms.ComboBox();
             this.label35 = new System.Windows.Forms.Label();
@@ -149,8 +151,6 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.tableMain = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txt3partyCode = new System.Windows.Forms.TextBox();
-            this.label43 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tab_company.SuspendLayout();
             this.tab_account.SuspendLayout();
@@ -216,6 +216,23 @@
             this.tab_company.TabIndex = 0;
             this.tab_company.Text = "Company Info";
             this.tab_company.UseVisualStyleBackColor = true;
+            // 
+            // txt3partyCode
+            // 
+            this.txt3partyCode.Enabled = false;
+            this.txt3partyCode.Location = new System.Drawing.Point(123, 48);
+            this.txt3partyCode.Name = "txt3partyCode";
+            this.txt3partyCode.Size = new System.Drawing.Size(182, 23);
+            this.txt3partyCode.TabIndex = 102;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(10, 52);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(103, 17);
+            this.label43.TabIndex = 101;
+            this.label43.Text = "3rd Party Code";
             // 
             // dateTimePicker1
             // 
@@ -1464,23 +1481,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(706, 57);
             this.panel1.TabIndex = 2;
-            // 
-            // txt3partyCode
-            // 
-            this.txt3partyCode.Enabled = false;
-            this.txt3partyCode.Location = new System.Drawing.Point(123, 48);
-            this.txt3partyCode.Name = "txt3partyCode";
-            this.txt3partyCode.Size = new System.Drawing.Size(182, 23);
-            this.txt3partyCode.TabIndex = 102;
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(10, 52);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(103, 17);
-            this.label43.TabIndex = 101;
-            this.label43.Text = "3rd Party Code";
             // 
             // CustomerMain
             // 
