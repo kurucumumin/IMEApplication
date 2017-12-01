@@ -12,29 +12,32 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class QuotationDetail
+    public partial class SaleOrderDetail
     {
         public int ID { get; set; }
-        public Nullable<int> dgNo { get; set; }
         public string ItemCode { get; set; }
-        public Nullable<int> Qty { get; set; }
-        public Nullable<decimal> UCUPCurr { get; set; }
-        public Nullable<decimal> Disc { get; set; }
-        public Nullable<decimal> Total { get; set; }
+        public int Quantity { get; set; }
+        public decimal UCUPCurr { get; set; }
+        public Nullable<decimal> Discount { get; set; }
+        public decimal Total { get; set; }
         public Nullable<decimal> TargetUP { get; set; }
         public string Competitor { get; set; }
         public string CustomerDescription { get; set; }
         public string CustomerStockCode { get; set; }
-        public Nullable<int> IsDeleted { get; set; }
-        public string QuotationNo { get; set; }
-        public Nullable<decimal> UPIME { get; set; }
-        public Nullable<decimal> Marge { get; set; }
+        public bool IsDeleted { get; set; }
+        public decimal UPIME { get; set; }
+        public decimal Margin { get; set; }
         public string UnitOfMeasure { get; set; }
-        public Nullable<int> UC { get; set; }
+        public int UnitContent { get; set; }
         public Nullable<int> SSM { get; set; }
         public Nullable<decimal> UnitWeight { get; set; }
+        public string SaleOrderNo { get; set; }
         public string DependantTable { get; set; }
+        public string ItemDescription { get; set; }
+        public bool Hazardous { get; set; }
+        public bool Calibration { get; set; }
+        public Nullable<decimal> UnitPrice { get; set; }
     
-        public virtual Quotation Quotation { get; set; }
+        public virtual SaleOrder SaleOrder { get; set; }
     }
 }

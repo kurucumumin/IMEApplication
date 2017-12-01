@@ -21,7 +21,7 @@ namespace LoginForm
         public CustomerMain()
         {
             InitializeComponent();
-            
+
         }
 
         public CustomerMain(Boolean buttonEnabled, string CustomerID)
@@ -104,7 +104,7 @@ namespace LoginForm
             InvCurrencyName.DataSource = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList();
             InvCurrencyName.DisplayMember = "CurType";
             InvCurrencyName.ValueMember = "ID";
-            TermsofPayments.DataSource = IME.PaymentTerms.OrderBy(p=>p.timespan).ToList();
+            TermsofPayments.DataSource = IME.PaymentTerms.OrderBy(p => p.timespan).ToList();
             TermsofPayments.DisplayMember = "term_name";
             PaymentMethod.DataSource = IME.PaymentMethods.ToList();
             PaymentMethod.DisplayMember = "Payment";
@@ -135,9 +135,10 @@ namespace LoginForm
             //contact daki list box a tıklandığında contact ın bilgileri tıklanan göre doldurulmasıse
             int cw_ID = 0;
             try { cw_ID = ((CustomerWorker)((ListBox)sender).SelectedItem).ID; } catch { cw_ID = 0; }
-                if (ContactListItem.ID != cw_ID)
+            if (ContactListItem.ID != cw_ID)
+            {
+                if (CustomerName.Text != string.Empty)
                 {
-                if (CustomerName.Text!=string.Empty) { 
                     ContactListItem.ID = cw_ID;
                     string contactname = ((CustomerWorker)((ListBox)sender).SelectedItem).cw_name;
                     ContactListItem.contactName = contactname;
@@ -148,7 +149,7 @@ namespace LoginForm
                         if (a.ContactTypeID != null) ContactType.SelectedValue = a.ContactTypeID;
                         ContactName.Text = a.cw_name;
                         ContactEmail.Text = a.cw_email;
-                        ContactDepartment.SelectedIndex = ContactDepartment.FindStringExact(a.CustomerDepartment.departmentname);
+                        if(a.CustomerDepartment!=null) ContactDepartment.SelectedIndex = ContactDepartment.FindStringExact(a.CustomerDepartment.departmentname);
                         if (a.CustomerTitle != null) ContactTitle.SelectedIndex = ContactTitle.FindStringExact(a.CustomerTitle.titlename);
                         ContactFAX.Text = a.fax;
                         ContactMobilePhone.Text = a.mobilephone;
@@ -157,8 +158,8 @@ namespace LoginForm
                         CommunicationLanguage.SelectedIndex = CommunicationLanguage.FindStringExact(a.Language.languagename);
                         if (a.Note != null) { ContactNotes.Text = a.Note.Note_name; } else { ContactNotes.Text = ""; }
                     }
-                    }
                 }
+            }
             #endregion
         }
 
@@ -360,241 +361,381 @@ namespace LoginForm
         private void customersearch()
         {
             IME = new IMEEntities();
-            #region customersearch
-            var customerAdapter = (from c in IME.Customers.Where(a => a.c_name.Contains(searchtxt))
-                                   join w in IME.Workers on c.representaryID equals w.WorkerID
-                                   join customerworker in IME.CustomerWorkers on c.ID equals customerworker.customerID into customerworkeres
-                                   let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
-                                   join r in IME.Workers on c.representary2ID equals r.WorkerID
-                                   join customeraccountant in IME.Workers on c.accountrepresentaryID equals customeraccountant.WorkerID
-                                   join s in IME.CustomerCategorySubCategories on c.ID equals s.customerID
-                                   join p in IME.PaymentTerms on c.payment_termID equals p.ID
-                                   join m in IME.PaymentMethods on c.paymentmethodID equals m.ID
-                                   join l in IME.Languages on customerworker.languageID equals l.ID
-                                   join a in IME.CustomerAddresses on c.ID equals a.CustomerID into adress
-                                   let a = adress.Select(customerworker1 => customerworker1).FirstOrDefault()
-                                   join mc in IME.CustomerWorkers on c.MainContactID equals mc.ID into maincontact
-                                   let mc = maincontact.Select(customerworker1 => customerworker1).FirstOrDefault()
-                                   select new
-                                   {
-                                       c.ID,
-                                       c.CreateDate,
-                                       c.c_name,
-                                       c.telephone,
-                                       c.fax,
-                                       c.webadress,
-                                       w.NameLastName,
-                                       Representative2 = r.NameLastName,
-                                       customerworker.cw_name,
-                                       customerworker.cw_email,
-                                       customerworker.CustomerTitle.titlename,
-                                       customerworker.CustomerDepartment.departmentname,
-                                       s.CustomerCategory.categoryname,
-                                       s.CustomerSubCategory.subcategoryname,
-                                       p.term_name,
-                                       customerworker,
-                                       cwNote = customerworker.Note.Note_name,
-                                       c.isactive,
-                                       c.rateIDinvoice,
-                                       CustomerNote = c.customerNoteID,
-                                       WorkerNote = w.Note.Note_name,
-                                       CustomerWorkerNote = customerworker.Note.Note_name,
-                                       AccountRepresentative = customeraccountant.NameLastName,
-                                       l.languagename,
-                                       AddressCity = a.City.City_name,
-                                       AddressContact = a.CustomerWorker.cw_name,
-                                       AdressCountry = a.Country.Country_name,
-                                       a.isDeliveryAdress,
-                                       a.isIMEOffice,
-                                       a.PostCode,
-                                       a.AdressTitle,
-                                       a.Town.Town_name,
-                                       a.AdressDetails,
-                                       c.MainContactID,
-                                       MainContact = mc.cw_name,
-                                       c.CurrNameQuo,
-                                       c.CurrTypeQuo,
-                                       c.CurrNameInv,
-                                       c.CurrTypeInv,
-                                       c.customerNoteID,
-                                       c.customerAccountantNoteID
-                                   }).ToList();
+            #region customersearch1
+            var customerAdapter = from c in IME.Customers.Where(a => a.c_name.Contains(searchtxt))
+                                  from w in IME.Workers.Where(b => b.WorkerID == c.representaryID).DefaultIfEmpty()
+                                  from cw in IME.CustomerWorkers.Where(b => b.customerID == c.ID).DefaultIfEmpty()
+                                  from w2 in IME.Workers.Where(b => b.WorkerID == c.representary2ID).DefaultIfEmpty()
+                                  from customeraccountant in IME.Workers.Where(a => a.WorkerID == c.accountrepresentaryID).DefaultIfEmpty()
+                                  from ccsc in IME.CustomerCategorySubCategories.Where(a => a.customerID == c.ID).DefaultIfEmpty()
+                                  from cc in IME.CustomerCategories.Where(a => a.ID == ccsc.categoryID).DefaultIfEmpty()
+                                  from csc in IME.CustomerSubCategories.Where(a => a.ID == ccsc.subcategoryID).DefaultIfEmpty()
+                                  from p in IME.PaymentTerms.Where(a => a.ID == c.payment_termID).DefaultIfEmpty()
+                                  from m in IME.PaymentMethods.Where(a => a.ID == c.paymentmethodID).DefaultIfEmpty()
+                                  from l in IME.Languages.Where(a => a.ID == cw.languageID).DefaultIfEmpty()
+                                  from a in IME.CustomerAddresses.Where(a => a.CustomerID == c.ID).DefaultIfEmpty()
+                                  from mc in IME.CustomerWorkers.Where(a => a.ID == c.MainContactID).DefaultIfEmpty()
+                                  select new
+                                  {
+                                      c.ID,
+                                      c.CreateDate,
+                                      c.c_name,
+                                      c.telephone,
+                                      c.fax,
+                                      c.webadress,
+                                      w.NameLastName,
+                                      Representative2 = w2.NameLastName,
+                                      cw.cw_name,
+                                      cw.cw_email,
+                                      cw.CustomerTitle.titlename,
+                                      cw.CustomerDepartment.departmentname,
+                                      cc.categoryname,
+                                      csc.subcategoryname,
+                                      p.term_name,
+                                      cw,
+                                      cwNote = cw.Note.Note_name,
+                                      c.isactive,
+                                      c.rateIDinvoice,
+                                      CustomerNote = c.customerNoteID,
+                                      WorkerNote = w.Note.Note_name,
+                                      CustomerWorkerNote = cw.Note.Note_name,
+                                      AccountRepresentative = customeraccountant.NameLastName,
+                                      l.languagename,
+                                      AddressCity = a.City.City_name,
+                                      AddressContact = a.CustomerWorker.cw_name,
+                                      AdressCountry = a.Country.Country_name,
+                                      a.isDeliveryAdress,
+                                      a.isIMEOffice,
+                                      a.PostCode,
+                                      a.AdressTitle,
+                                      a.Town.Town_name,
+                                      a.AdressDetails,
+                                      c.MainContactID,
+                                      MainContact = mc.cw_name,
+                                      c.CurrNameQuo,
+                                      //c.CurrTypeQuo,
+                                      c.CurrNameInv,
+                                      //c.CurrTypeInv,
+                                      c.customerNoteID,
+                                      c.customerAccountantNoteID
+                                  };
             #endregion
-            CustomerDataGrid.DataSource = customerAdapter;
-            if (customerAdapter.Count() > 0)
+            var customerAdapter1 = customerAdapter.ToList().Take(100);
+            CustomerDataGrid.DataSource = customerAdapter1.ToList();
+            if (customerAdapter1.Count() == 0)
+            {
+                itemsClear();
+            }
+            else
             {
                 #region FillInfos
                 CustomerDataGrid.CurrentCell = CustomerDataGrid.Rows[gridselectedindex].Cells[0];
-                dateTimePicker1.Value = customerAdapter[gridselectedindex].CreateDate;
-                CustomerCode.Text = customerAdapter[gridselectedindex].ID;
+                dateTimePicker1.Value = Convert.ToDateTime(CustomerDataGrid.Rows[gridselectedindex].Cells["CreateDate"].Value.ToString());
+                CustomerCode.Text = CustomerDataGrid.Rows[gridselectedindex].Cells[0].Value.ToString();
                 AdressList.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
                 AdressList.DisplayMember = "AdressDetails";
                 ContactAdress.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
                 ContactAdress.DisplayMember = "AdressDetails";
-                IME.SaveChanges();
-                CustomerName.Text = customerAdapter[gridselectedindex].c_name;
-                try { Telephone.Text = customerAdapter[gridselectedindex].telephone.ToString(); } catch { }
-                try { ContactFAX.Text = customerAdapter[gridselectedindex].fax.ToString(); } catch { }
-                try { WebAdress.Text = customerAdapter[gridselectedindex].webadress; } catch { }
-                try { Represantative2.Text = customerAdapter[gridselectedindex].Representative2; } catch { }
-                try { Represantative1.SelectedIndex = Represantative1.FindStringExact(customerAdapter[gridselectedindex].NameLastName); } catch { }
-                try { ContactTitle.SelectedIndex = ContactTitle.FindStringExact(customerAdapter[gridselectedindex].titlename); } catch { }
-                try { ContactDepartment.SelectedIndex = ContactDepartment.FindStringExact(customerAdapter[gridselectedindex].titlename); } catch { }
-                try { MainCategory.SelectedIndex = MainCategory.FindStringExact(customerAdapter[gridselectedindex].categoryname); } catch { }
-                try { SubCategory.SelectedIndex = SubCategory.FindStringExact(customerAdapter[gridselectedindex].subcategoryname); } catch { }
-                try { TermsofPayments.SelectedIndex = TermsofPayments.FindStringExact(customerAdapter[gridselectedindex].term_name); } catch { }
-                try { ContactName.Text = customerAdapter[gridselectedindex].cw_name; } catch { }
-                try { ContactEmail.Text = customerAdapter[gridselectedindex].cw_email; } catch { }
-
-                try { ContactNotes.Text = customerAdapter[gridselectedindex].CustomerWorkerNote; } catch { }
-                try { AccountRepresentary.Text = customerAdapter[gridselectedindex].AccountRepresentative; } catch { }
-                try { CommunicationLanguage.Text = customerAdapter[gridselectedindex].languagename; } catch { }
-                if (customerAdapter[gridselectedindex].isactive == 1) { rb_active.Checked = true; } else { rb_passive.Checked = true; }
-
+                CustomerName.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["c_name"].Value.ToString();
+                if(CustomerDataGrid.Rows[gridselectedindex].Cells["telephone"].Value!=null) Telephone.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["telephone"].Value.ToString();
+                if(CustomerDataGrid.Rows[gridselectedindex].Cells["fax"].Value!=null) ContactFAX.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["fax"].Value.ToString();
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["webadress"].Value!=null) WebAdress.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["webadress"].Value.ToString();
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["Representative2"].Value != null) Represantative2.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["Representative2"].Value.ToString();
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["NameLastName"].Value != null) Represantative1.SelectedIndex = Int32.Parse(CustomerDataGrid.Rows[gridselectedindex].Cells["NameLastName"].Value.ToString());
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["titlename"].Value != null) ContactTitle.SelectedIndex = ContactTitle.FindStringExact(CustomerDataGrid.Rows[gridselectedindex].Cells["titlename"].Value.ToString());
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["departmentname"].Value != null) ContactDepartment.SelectedIndex = ContactDepartment.FindStringExact(CustomerDataGrid.Rows[gridselectedindex].Cells["departmentname"].Value.ToString());
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["categoryname"].Value != null) MainCategory.SelectedIndex = MainCategory.FindStringExact(CustomerDataGrid.Rows[gridselectedindex].Cells["categoryname"].Value.ToString());
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["subcategoryname"].Value != null) SubCategory.SelectedIndex = SubCategory.FindStringExact(CustomerDataGrid.Rows[gridselectedindex].Cells["subcategoryname"].Value.ToString());
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["term_name"].Value != null) TermsofPayments.SelectedIndex = TermsofPayments.FindStringExact(CustomerDataGrid.Rows[gridselectedindex].Cells["term_name"].Value.ToString());
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["cw_name"].Value != null) ContactName.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["cw_name"].Value.ToString();
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["cw_email"].Value != null) ContactEmail.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["cw_email"].Value.ToString();
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["cwNote"].Value != null) ContactNotes.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["cwNote"].Value.ToString();
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["AccountRepresentative"].Value != null) AccountRepresentary.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["AccountRepresentative"].Value.ToString(); 
+                CommunicationLanguage.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["languagename"].Value.ToString(); 
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["isactive"].Value.ToString() == "1") { rb_active.Checked = true; } else { rb_passive.Checked = true; }
                 ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
                 ContactList.DisplayMember = "cw_name";
                 cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
                 cbMainContact.DisplayMember = "cw_name";
-                cbMainContact.SelectedItem = cbMainContact.FindStringExact(customerAdapter[gridselectedindex].cw_name);
-                if (customerAdapter[gridselectedindex].AddressContact == null)
+                if(CustomerDataGrid.Rows[gridselectedindex].Cells["departmentname"].Value!=null) cbMainContact.SelectedItem = cbMainContact.FindStringExact(CustomerDataGrid.Rows[gridselectedindex].Cells["departmentname"].Value.ToString());               
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["AddressContact"].Value== null)
                 { AddressType.SelectedItem = null; cbIMEOffice.Checked = true; }
-
-                PostCode.Text = customerAdapter[gridselectedindex].PostCode;
-                txtAdressTitle.Text = customerAdapter[gridselectedindex].AdressTitle;
-                cbCountry.SelectedIndex = cbCountry.FindStringExact(customerAdapter[gridselectedindex].AdressCountry);
-                cbCity.SelectedIndex = cbCity.FindStringExact(customerAdapter[gridselectedindex].AddressCity);
-                if (customerAdapter[gridselectedindex].isDeliveryAdress == 1) { cbIMEOffice.Checked = true; } else { cbIMEOffice.Checked = false; }
-                if (customerAdapter[gridselectedindex].isIMEOffice == 1) { cbDafultDeliveryAdress.Checked = true; } else { cbDafultDeliveryAdress.Checked = false; }
-                cbTown.SelectedIndex = cbTown.FindStringExact(customerAdapter[gridselectedindex].Town_name);
-                AddressDetails.Text = customerAdapter[gridselectedindex].AdressDetails;
-                QuoCurrencyName.Text = customerAdapter[gridselectedindex].CurrNameQuo;
-                QuoCurrencyType.Text = customerAdapter[gridselectedindex].CurrTypeQuo;
-                InvCurrencyName.Text = customerAdapter[gridselectedindex].CurrNameInv;
-                InvCurrencyType.Text = customerAdapter[gridselectedindex].CurrTypeInv;
+                PostCode.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["PostCode"].Value.ToString();
+                if(CustomerDataGrid.Rows[gridselectedindex].Cells["AdressTitle"].Value!=null) txtAdressTitle.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["AdressTitle"].Value.ToString();
+                cbCountry.SelectedIndex = cbCountry.FindStringExact(CustomerDataGrid.Rows[gridselectedindex].Cells["AdressCountry"].Value.ToString());
+                cbCity.SelectedIndex = cbCity.FindStringExact(CustomerDataGrid.Rows[gridselectedindex].Cells["AddressCity"].Value.ToString());
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["isDeliveryAdress"].Value!=null && CustomerDataGrid.Rows[gridselectedindex].Cells["isDeliveryAdress"].Value.ToString() == "1") { cbIMEOffice.Checked = true; } else { cbIMEOffice.Checked = false; }
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["isIMEOffice"].Value!=null && CustomerDataGrid.Rows[gridselectedindex].Cells["isIMEOffice"].Value.ToString() == "1") { cbDafultDeliveryAdress.Checked = true; } else { cbDafultDeliveryAdress.Checked = false; }
+                cbTown.SelectedIndex = cbTown.FindStringExact(CustomerDataGrid.Rows[gridselectedindex].Cells["Town_name"].Value.ToString());
+                if(CustomerDataGrid.Rows[gridselectedindex].Cells["AdressDetails"].Value!=null) AddressDetails.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["AdressDetails"].Value.ToString();
+                if(CustomerDataGrid.Rows[gridselectedindex].Cells["CurrNameQuo"].Value!=null) QuoCurrencyName.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["CurrNameQuo"].Value.ToString();
+                //QuoCurrencyType.Text = customerAdapter1[gridselectedindex].CurrTypeQuo;
+                if(CustomerDataGrid.Rows[gridselectedindex].Cells["CurrNameInv"].Value!=null) InvCurrencyName.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["CurrNameInv"].Value.ToString();
+                //InvCurrencyType.Text = customerAdapter1[gridselectedindex].CurrTypeInv;
                 try
                 {
-                    int? cNoteID = customerAdapter[gridselectedindex].customerNoteID;
+                    
+                    int? cNoteID = Int32.Parse(CustomerDataGrid.Rows[gridselectedindex].Cells["customerNoteID"].Value.ToString());
 
                     CompanyNotes.Text = IME.Notes.Where(a => a.ID == cNoteID).FirstOrDefault().Note_name;
                 }
                 catch { }
                 try
                 {
-                    int? cAccountentNoteID = customerAdapter[gridselectedindex].customerAccountantNoteID;
+                    int? cAccountentNoteID = Int32.Parse(CustomerDataGrid.Rows[gridselectedindex].Cells["customerAccountantNoteID"].Value.ToString());
                     AccountingNotes.Text = IME.Notes.Where(a => a.ID == cAccountentNoteID).FirstOrDefault().Note_name;
                 }
                 catch { }
-                #endregion
+#endregion
+
             }
-            else { itemsClear(); }
+
         }
 
         private void QuotationCustomerSearch(string search)
         {
-            
-                #region QuotationCustomerSearch
-                var customerAdapter = (from c in IME.Customers.Where(a => a.ID == search)
-                                       join w in IME.Workers on c.representaryID equals w.WorkerID
-                                       join customerworker in IME.CustomerWorkers on c.ID equals customerworker.customerID into customerworkeres
-                                       let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
-                                       join r in IME.Workers on c.representary2ID equals r.WorkerID
-                                       join customeraccountant in IME.Workers on c.accountrepresentaryID equals customeraccountant.WorkerID
-                                       join s in IME.CustomerCategorySubCategories on c.ID equals s.customerID
-                                       join p in IME.PaymentTerms on c.payment_termID equals p.ID
-                                       join m in IME.PaymentMethods on c.paymentmethodID equals m.ID
-                                       join l in IME.Languages on customerworker.languageID equals l.ID
-                                       join a in IME.CustomerAddresses on c.ID equals a.CustomerID into adress
-                                       let a = adress.Select(customerworker1 => customerworker1).FirstOrDefault()
-                                       join mc in IME.CustomerWorkers on c.MainContactID equals mc.ID into maincontact
-                                       let mc = maincontact.Select(customerworker1 => customerworker1).FirstOrDefault()
-                                       select new
-                                       {
-                                           c.ID,
-                                           c.c_name,
-                                           c.telephone,
-                                           c.fax,
-                                           c.webadress,
-                                           w.NameLastName,
-                                           Representative2 = r.NameLastName,
-                                           customerworker.cw_name,
-                                           customerworker.cw_email,
-                                           customerworker.CustomerTitle.titlename,
-                                           customerworker.CustomerDepartment.departmentname,
-                                           s.CustomerCategory.categoryname,
-                                           s.CustomerSubCategory.subcategoryname,
-                                           p.term_name,
-                                           customerworker,
-                                           cwNote = customerworker.Note.Note_name,
-                                           c.isactive,
-                                           c.rateIDinvoice,
-                                           CustomerNote = c.Note.Note_name,
-                                           WorkerNote = w.Note.Note_name,
-                                           CustomerWorkerNote = customerworker.Note.Note_name,
-                                           AccountRepresentative = customeraccountant.NameLastName,
-                                           l.languagename,
-                                           AddressCity = a.City.City_name,
-                                           AddressContact = a.CustomerWorker.cw_name,
-                                           AdressCountry = a.Country.Country_name,
-                                           a.isDeliveryAdress,
-                                           a.isIMEOffice,
-                                           a.PostCode,
-                                           a.AdressTitle,
-                                           a.Town.Town_name,
-                                           a.AdressDetails,
-                                           c.MainContactID,
-                                           MainContact = mc.cw_name,
-                                           c.customerNoteID,
-                                           c.customerAccountantNoteID
-                                       }).ToList();
+
+            #region customersearch1
+            var customerAdapter = from c in IME.Customers.Where(a => a.c_name.ToUpper().Contains(search.ToUpper()))
+                                  from w in IME.Workers.Where(b => b.WorkerID == c.representaryID).DefaultIfEmpty()
+                                  from cw in IME.CustomerWorkers.Where(b => b.customerID == c.ID).DefaultIfEmpty()
+                                  from w2 in IME.Workers.Where(b => b.WorkerID == c.representary2ID).DefaultIfEmpty()
+                                  from customeraccountant in IME.Workers.Where(a => a.WorkerID == c.accountrepresentaryID).DefaultIfEmpty()
+                                  from ccsc in IME.CustomerCategorySubCategories.Where(a => a.customerID == c.ID).DefaultIfEmpty()
+                                  from cc in IME.CustomerCategories.Where(a => a.ID == ccsc.categoryID).DefaultIfEmpty()
+                                  from csc in IME.CustomerSubCategories.Where(a => a.ID == ccsc.subcategoryID).DefaultIfEmpty()
+                                  from p in IME.PaymentTerms.Where(a => a.ID == c.payment_termID).DefaultIfEmpty()
+                                  from m in IME.PaymentMethods.Where(a => a.ID == c.paymentmethodID).DefaultIfEmpty()
+                                  from l in IME.Languages.Where(a => a.ID == cw.languageID).DefaultIfEmpty()
+                                  from a in IME.CustomerAddresses.Where(a => a.CustomerID == c.ID).DefaultIfEmpty()
+                                  from mc in IME.CustomerWorkers.Where(a => a.ID == c.MainContactID).DefaultIfEmpty()
+                                  select new
+                                  {
+                                      c.ID,
+                                      c.CreateDate,
+                                      c.c_name,
+                                      c.telephone,
+                                      c.fax,
+                                      c.webadress,
+                                      w.NameLastName,
+                                      Representative2 = w2.NameLastName,
+                                      cw.cw_name,
+                                      cw.cw_email,
+                                      cw.CustomerTitle.titlename,
+                                      cw.CustomerDepartment.departmentname,
+                                      cc.categoryname,
+                                      csc.subcategoryname,
+                                      p.term_name,
+                                      cw,
+                                      cwNote = cw.Note.Note_name,
+                                      c.isactive,
+                                      c.rateIDinvoice,
+                                      CustomerNote = c.customerNoteID,
+                                      WorkerNote = w.Note.Note_name,
+                                      CustomerWorkerNote = cw.Note.Note_name,
+                                      AccountRepresentative = customeraccountant.NameLastName,
+                                      l.languagename,
+                                      AddressCity = a.City.City_name,
+                                      AddressContact = a.CustomerWorker.cw_name,
+                                      AdressCountry = a.Country.Country_name,
+                                      a.isDeliveryAdress,
+                                      a.isIMEOffice,
+                                      a.PostCode,
+                                      a.AdressTitle,
+                                      a.Town.Town_name,
+                                      a.AdressDetails,
+                                      c.MainContactID,
+                                      MainContact = mc.cw_name,
+                                      c.CurrNameQuo,
+                                      //c.CurrTypeQuo,
+                                      c.CurrNameInv,
+                                      //c.CurrTypeInv,
+                                      c.customerNoteID,
+                                      c.customerAccountantNoteID
+                                  };
             #endregion
-            
+            var customerAdapter1 = customerAdapter.ToList().Take(100);
+            CustomerDataGrid.DataSource = customerAdapter1.ToList();
+            if (customerAdapter1.Count() == 0)
+            {
+                itemsClear();
+            }
+            else
+            {
                 #region FillInfos
-                CustomerDataGrid.DataSource = customerAdapter;
                 CustomerDataGrid.CurrentCell = CustomerDataGrid.Rows[gridselectedindex].Cells[0];
-                CustomerCode.Text = customerAdapter[gridselectedindex].ID;
+                dateTimePicker1.Value = Convert.ToDateTime(CustomerDataGrid.Rows[gridselectedindex].Cells["CreateDate"].Value.ToString());
+                CustomerCode.Text = CustomerDataGrid.Rows[gridselectedindex].Cells[0].Value.ToString();
                 AdressList.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
                 AdressList.DisplayMember = "AdressDetails";
                 ContactAdress.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
                 ContactAdress.DisplayMember = "AdressDetails";
-                CustomerName.Text = customerAdapter[gridselectedindex].c_name;
-                Telephone.Text = customerAdapter[gridselectedindex].telephone.ToString();
-                ContactFAX.Text = customerAdapter[gridselectedindex].fax.ToString();
-                WebAdress.Text = customerAdapter[gridselectedindex].webadress;
-
-                Represantative2.Text = customerAdapter[gridselectedindex].Representative2;
-                Represantative1.SelectedIndex = Represantative1.FindStringExact(customerAdapter[gridselectedindex].NameLastName);
-                ContactTitle.SelectedIndex = ContactTitle.FindStringExact(customerAdapter[gridselectedindex].titlename);
-                ContactDepartment.SelectedIndex = ContactDepartment.FindStringExact(customerAdapter[gridselectedindex].titlename);
-                MainCategory.SelectedIndex = MainCategory.FindStringExact(customerAdapter[gridselectedindex].categoryname);
-                SubCategory.SelectedIndex = SubCategory.FindStringExact(customerAdapter[gridselectedindex].subcategoryname);
-                TermsofPayments.SelectedIndex = TermsofPayments.FindStringExact(customerAdapter[gridselectedindex].term_name);
-                ContactName.Text = customerAdapter[gridselectedindex].cw_name;
-                ContactEmail.Text = customerAdapter[gridselectedindex].cw_email;
-                txtAdressTitle.Text = customerAdapter[gridselectedindex].AdressTitle;
-                CompanyNotes.Text = customerAdapter[gridselectedindex].CustomerNote;
-                ContactNotes.Text = customerAdapter[gridselectedindex].CustomerWorkerNote;
-                AccountRepresentary.Text = customerAdapter[gridselectedindex].AccountRepresentative;
-                CommunicationLanguage.Text = customerAdapter[gridselectedindex].languagename;
-                if (customerAdapter[gridselectedindex].isactive == 1) { rb_active.Checked = true; } else { rb_passive.Checked = true; }
+                CustomerName.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["c_name"].Value.ToString();
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["telephone"].Value != null) Telephone.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["telephone"].Value.ToString();
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["fax"].Value != null) ContactFAX.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["fax"].Value.ToString();
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["webadress"].Value != null) WebAdress.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["webadress"].Value.ToString();
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["Representative2"].Value != null) Represantative2.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["Representative2"].Value.ToString();
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["NameLastName"].Value != null) Represantative1.SelectedIndex = Int32.Parse(CustomerDataGrid.Rows[gridselectedindex].Cells["NameLastName"].Value.ToString());
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["titlename"].Value != null) ContactTitle.SelectedIndex = ContactTitle.FindStringExact(CustomerDataGrid.Rows[gridselectedindex].Cells["titlename"].Value.ToString());
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["departmentname"].Value != null) ContactDepartment.SelectedIndex = ContactDepartment.FindStringExact(CustomerDataGrid.Rows[gridselectedindex].Cells["departmentname"].Value.ToString());
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["categoryname"].Value != null) MainCategory.SelectedIndex = MainCategory.FindStringExact(CustomerDataGrid.Rows[gridselectedindex].Cells["categoryname"].Value.ToString());
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["subcategoryname"].Value != null) SubCategory.SelectedIndex = SubCategory.FindStringExact(CustomerDataGrid.Rows[gridselectedindex].Cells["subcategoryname"].Value.ToString());
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["term_name"].Value != null) TermsofPayments.SelectedIndex = TermsofPayments.FindStringExact(CustomerDataGrid.Rows[gridselectedindex].Cells["term_name"].Value.ToString());
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["cw_name"].Value != null) ContactName.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["cw_name"].Value.ToString();
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["cw_email"].Value != null) ContactEmail.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["cw_email"].Value.ToString();
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["cwNote"].Value != null) ContactNotes.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["cwNote"].Value.ToString();
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["AccountRepresentative"].Value != null) AccountRepresentary.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["AccountRepresentative"].Value.ToString();
+                CommunicationLanguage.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["languagename"].Value.ToString();
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["isactive"].Value.ToString() == "1") { rb_active.Checked = true; } else { rb_passive.Checked = true; }
                 ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
                 ContactList.DisplayMember = "cw_name";
                 cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
                 cbMainContact.DisplayMember = "cw_name";
-                cbMainContact.SelectedItem = cbMainContact.FindStringExact(customerAdapter[gridselectedindex].cw_name);
-                if (customerAdapter[gridselectedindex].AddressContact == null)
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["departmentname"].Value != null) cbMainContact.SelectedItem = cbMainContact.FindStringExact(CustomerDataGrid.Rows[gridselectedindex].Cells["departmentname"].Value.ToString());
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["AddressContact"].Value == null)
                 { AddressType.SelectedItem = null; cbIMEOffice.Checked = true; }
+                PostCode.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["PostCode"].Value.ToString();
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["AdressTitle"].Value != null) txtAdressTitle.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["AdressTitle"].Value.ToString();
+                cbCountry.SelectedIndex = cbCountry.FindStringExact(CustomerDataGrid.Rows[gridselectedindex].Cells["AdressCountry"].Value.ToString());
+                cbCity.SelectedIndex = cbCity.FindStringExact(CustomerDataGrid.Rows[gridselectedindex].Cells["AddressCity"].Value.ToString());
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["isDeliveryAdress"].Value != null && CustomerDataGrid.Rows[gridselectedindex].Cells["isDeliveryAdress"].Value.ToString() == "1") { cbIMEOffice.Checked = true; } else { cbIMEOffice.Checked = false; }
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["isIMEOffice"].Value != null && CustomerDataGrid.Rows[gridselectedindex].Cells["isIMEOffice"].Value.ToString() == "1") { cbDafultDeliveryAdress.Checked = true; } else { cbDafultDeliveryAdress.Checked = false; }
+                cbTown.SelectedIndex = cbTown.FindStringExact(CustomerDataGrid.Rows[gridselectedindex].Cells["Town_name"].Value.ToString());
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["AdressDetails"].Value != null) AddressDetails.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["AdressDetails"].Value.ToString();
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["CurrNameQuo"].Value != null) QuoCurrencyName.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["CurrNameQuo"].Value.ToString();
+                //QuoCurrencyType.Text = customerAdapter1[gridselectedindex].CurrTypeQuo;
+                if (CustomerDataGrid.Rows[gridselectedindex].Cells["CurrNameInv"].Value != null) InvCurrencyName.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["CurrNameInv"].Value.ToString();
+                //InvCurrencyType.Text = customerAdapter1[gridselectedindex].CurrTypeInv;
+                try
+                {
 
-                PostCode.Text = customerAdapter[gridselectedindex].PostCode;
-                cbCountry.SelectedIndex = cbCountry.FindStringExact(customerAdapter[gridselectedindex].AdressCountry);
-                cbCity.SelectedIndex = cbCity.FindStringExact(customerAdapter[gridselectedindex].AddressCity);
-                if (customerAdapter[gridselectedindex].isDeliveryAdress == 1) { cbIMEOffice.Checked = true; } else { cbIMEOffice.Checked = false; }
-                if (customerAdapter[gridselectedindex].isIMEOffice == 1) { cbDafultDeliveryAdress.Checked = true; } else { cbDafultDeliveryAdress.Checked = false; }
-                cbTown.SelectedIndex = cbTown.FindStringExact(customerAdapter[gridselectedindex].Town_name);
-                AddressDetails.Text = customerAdapter[gridselectedindex].AdressDetails;
-                try { AccountingNotes.Text = IME.Notes.Where(a => a.ID == customerAdapter[gridselectedindex].customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
+                    int? cNoteID = Int32.Parse(CustomerDataGrid.Rows[gridselectedindex].Cells["customerNoteID"].Value.ToString());
 
+                    CompanyNotes.Text = IME.Notes.Where(a => a.ID == cNoteID).FirstOrDefault().Note_name;
+                }
+                catch { }
+                try
+                {
+                    int? cAccountentNoteID = Int32.Parse(CustomerDataGrid.Rows[gridselectedindex].Cells["customerAccountantNoteID"].Value.ToString());
+                    AccountingNotes.Text = IME.Notes.Where(a => a.ID == cAccountentNoteID).FirstOrDefault().Note_name;
+                }
+                catch { }
                 #endregion
-            
+
+            }
+
+
+
+
+
+
+            //#region QuotationCustomerSearch
+            //var customerAdapter = (from c in IME.Customers.Where(a => a.ID == search)
+            //                       join w in IME.Workers on c.representaryID equals w.WorkerID
+            //                       join customerworker in IME.CustomerWorkers on c.ID equals customerworker.customerID into customerworkeres
+            //                       let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
+            //                       join r in IME.Workers on c.representary2ID equals r.WorkerID
+            //                       join customeraccountant in IME.Workers on c.accountrepresentaryID equals customeraccountant.WorkerID
+            //                       join s in IME.CustomerCategorySubCategories on c.ID equals s.customerID
+            //                       join cc in IME.CustomerCategories on s.categoryID equals cc.ID into customercategories
+            //                       let cc = customercategories.Select(customerworker1 => customerworker1).FirstOrDefault()
+            //                       join csc in IME.CustomerSubCategories on s.subcategoryID equals csc.ID into customersubcategories
+            //                       let csc = customersubcategories.Select(customerworker1 => customerworker1).FirstOrDefault()
+            //                       join p in IME.PaymentTerms on c.payment_termID equals p.ID
+            //                       join m in IME.PaymentMethods on c.paymentmethodID equals m.ID
+            //                       join l in IME.Languages on customerworker.languageID equals l.ID
+            //                       join a in IME.CustomerAddresses on c.ID equals a.CustomerID into adress
+            //                       let a = adress.Select(customerworker1 => customerworker1).FirstOrDefault()
+            //                       join mc in IME.CustomerWorkers on c.MainContactID equals mc.ID into maincontact
+            //                       let mc = maincontact.Select(customerworker1 => customerworker1).FirstOrDefault()
+            //                       select new
+            //                       {
+            //                           c.ID,
+            //                           c.c_name,
+            //                           c.telephone,
+            //                           c.fax,
+            //                           c.webadress,
+            //                           w.NameLastName,
+            //                           Representative2 = r.NameLastName,
+            //                           customerworker.cw_name,
+            //                           customerworker.cw_email,
+            //                           customerworker.CustomerTitle.titlename,
+            //                           customerworker.CustomerDepartment.departmentname,
+            //                           cc.categoryname,
+            //                           csc.subcategoryname,
+            //                           p.term_name,
+            //                           customerworker,
+            //                           cwNote = customerworker.Note.Note_name,
+            //                           c.isactive,
+            //                           c.rateIDinvoice,
+            //                           CustomerNote = c.Note.Note_name,
+            //                           WorkerNote = w.Note.Note_name,
+            //                           CustomerWorkerNote = customerworker.Note.Note_name,
+            //                           AccountRepresentative = customeraccountant.NameLastName,
+            //                           l.languagename,
+            //                           AddressCity = a.City.City_name,
+            //                           AddressContact = a.CustomerWorker.cw_name,
+            //                           AdressCountry = a.Country.Country_name,
+            //                           a.isDeliveryAdress,
+            //                           a.isIMEOffice,
+            //                           a.PostCode,
+            //                           a.AdressTitle,
+            //                           a.Town.Town_name,
+            //                           a.AdressDetails,
+            //                           c.MainContactID,
+            //                           MainContact = mc.cw_name,
+            //                           c.customerNoteID,
+            //                           c.customerAccountantNoteID
+            //                       }).ToList();
+            //#endregion
+
+            //#region FillInfos
+            //CustomerDataGrid.DataSource = customerAdapter;
+            //CustomerDataGrid.CurrentCell = CustomerDataGrid.Rows[gridselectedindex].Cells[0];
+            //CustomerCode.Text = customerAdapter[gridselectedindex].ID;
+            //AdressList.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
+            //AdressList.DisplayMember = "AdressDetails";
+            //ContactAdress.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
+            //ContactAdress.DisplayMember = "AdressDetails";
+            //CustomerName.Text = customerAdapter[gridselectedindex].c_name;
+            //Telephone.Text = customerAdapter[gridselectedindex].telephone.ToString();
+            //ContactFAX.Text = customerAdapter[gridselectedindex].fax.ToString();
+            //WebAdress.Text = customerAdapter[gridselectedindex].webadress;
+
+            //Represantative2.Text = customerAdapter[gridselectedindex].Representative2;
+            //Represantative1.SelectedIndex = Represantative1.FindStringExact(customerAdapter[gridselectedindex].NameLastName);
+            //ContactTitle.SelectedIndex = ContactTitle.FindStringExact(customerAdapter[gridselectedindex].titlename);
+            //ContactDepartment.SelectedIndex = ContactDepartment.FindStringExact(customerAdapter[gridselectedindex].titlename);
+            //MainCategory.SelectedIndex = MainCategory.FindStringExact(customerAdapter[gridselectedindex].categoryname);
+            //SubCategory.SelectedIndex = SubCategory.FindStringExact(customerAdapter[gridselectedindex].subcategoryname);
+            //TermsofPayments.SelectedIndex = TermsofPayments.FindStringExact(customerAdapter[gridselectedindex].term_name);
+            //ContactName.Text = customerAdapter[gridselectedindex].cw_name;
+            //ContactEmail.Text = customerAdapter[gridselectedindex].cw_email;
+            //txtAdressTitle.Text = customerAdapter[gridselectedindex].AdressTitle;
+            //CompanyNotes.Text = customerAdapter[gridselectedindex].CustomerNote;
+            //ContactNotes.Text = customerAdapter[gridselectedindex].CustomerWorkerNote;
+            //AccountRepresentary.Text = customerAdapter[gridselectedindex].AccountRepresentative;
+            //CommunicationLanguage.Text = customerAdapter[gridselectedindex].languagename;
+            //if (customerAdapter[gridselectedindex].isactive == 1) { rb_active.Checked = true; } else { rb_passive.Checked = true; }
+            //ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
+            //ContactList.DisplayMember = "cw_name";
+            //cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
+            //cbMainContact.DisplayMember = "cw_name";
+            //cbMainContact.SelectedItem = cbMainContact.FindStringExact(customerAdapter[gridselectedindex].cw_name);
+            //if (customerAdapter[gridselectedindex].AddressContact == null)
+            //{ AddressType.SelectedItem = null; cbIMEOffice.Checked = true; }
+
+            //PostCode.Text = customerAdapter[gridselectedindex].PostCode;
+            //cbCountry.SelectedIndex = cbCountry.FindStringExact(customerAdapter[gridselectedindex].AdressCountry);
+            //cbCity.SelectedIndex = cbCity.FindStringExact(customerAdapter[gridselectedindex].AddressCity);
+            //if (customerAdapter[gridselectedindex].isDeliveryAdress == 1) { cbIMEOffice.Checked = true; } else { cbIMEOffice.Checked = false; }
+            //if (customerAdapter[gridselectedindex].isIMEOffice == 1) { cbDafultDeliveryAdress.Checked = true; } else { cbDafultDeliveryAdress.Checked = false; }
+            //cbTown.SelectedIndex = cbTown.FindStringExact(customerAdapter[gridselectedindex].Town_name);
+            //AddressDetails.Text = customerAdapter[gridselectedindex].AdressDetails;
+            //try { AccountingNotes.Text = IME.Notes.Where(a => a.ID == customerAdapter[gridselectedindex].customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
+
+            //#endregion
+
         }
 
         //CONTACT ADD NEW
@@ -672,8 +813,8 @@ namespace LoginForm
                 cw.cw_name = ContactName.Text;
                 cw.cw_email = ContactEmail.Text;
                 cw.phone = ContactPhone.Text;
-                if(ContactAdress.SelectedItem!=null) cw.CustomerWorkerAdress = (ContactAdress.SelectedItem as CustomerAddress).ID;
-                if(ContactType.SelectedItem!=null) cw.ContactTypeID = (ContactType.SelectedItem as ContactType).ID;
+                if (ContactAdress.SelectedItem != null) cw.CustomerWorkerAdress = (ContactAdress.SelectedItem as CustomerAddress).ID;
+                if (ContactType.SelectedItem != null) cw.ContactTypeID = (ContactType.SelectedItem as ContactType).ID;
                 cw.mobilephone = ContactMobilePhone.Text;
                 cw.fax = ContactFAX.Text;
                 if (CommunicationLanguage.SelectedItem != null) cw.languageID = ((Language)(CommunicationLanguage).SelectedItem).ID;
@@ -710,7 +851,7 @@ namespace LoginForm
                     cw.cw_name = ContactName.Text;
                     cw.cw_email = ContactEmail.Text;
                     cw.phone = ContactPhone.Text;
-                    if(ContactAdress.SelectedItem!=null) cw.CustomerWorkerAdress = (ContactAdress.SelectedItem as CustomerAddress).ID;
+                    if (ContactAdress.SelectedItem != null) cw.CustomerWorkerAdress = (ContactAdress.SelectedItem as CustomerAddress).ID;
                     cw.mobilephone = ContactMobilePhone.Text;
                     cw.fax = ContactFAX.Text;
                     cw.languageID = ((CommunicationLanguage).SelectedItem as Language).ID;
@@ -764,7 +905,7 @@ namespace LoginForm
         {
             int c_departmentID;
             try { c_departmentID = ((CustomerDepartment)((ComboBox)sender).SelectedItem).ID; } catch { c_departmentID = 0; }
-            ContactTitle.DataSource = IME.CustomerTitles.Where(b => b.CustomerDepartment.ID == c_departmentID).ToList();
+            ContactTitle.DataSource = IME.CustomerTitles.ToList();
             ContactTitle.DisplayMember = "titlename";
         }
 
@@ -827,7 +968,8 @@ namespace LoginForm
                 #endregion
 
                 //for new customerCode
-                string custmrcode = IME.Customers.OrderByDescending(a => a.ID).FirstOrDefault().ID;
+                string custmrcode = "";
+                if (IME.Customers.ToList().Count != 0) custmrcode = IME.Customers.OrderByDescending(a => a.ID).FirstOrDefault().ID;
                 string custmrnumbers = string.Empty;
                 string newcustomercodenumbers = "";
                 string newcustomercodezeros = "";
@@ -868,7 +1010,8 @@ namespace LoginForm
             }
             else
             {
-                if (ControlSave()) {
+                if (ControlSave())
+                {
                     if (MainCategory.Text == ComboboxString || SubCategory.Text == ComboboxString || Represantative2.Text == ComboboxString || Capital.Text == ComboboxString || cbMainContact.Text == ComboboxString || AccountRepresentary.Text == ComboboxString || TermsofPayments.Text == ComboboxString || PaymentMethod.Text == ComboboxString || QuoCurrencyName.Text == ComboboxString || QuoCurrencyType.Text == ComboboxString || InvCurrencyName.Text == ComboboxString || InvCurrencyType.Text == ComboboxString || AddressType.Text == ComboboxString || cbCountry.Text == ComboboxString || cbCity.Text == ComboboxString || cbTown.Text == ComboboxString || ContactType.Text == ComboboxString || ContactDepartment.Text == ComboboxString || ContactTitle.Text == ComboboxString || CommunicationLanguage.Text == ComboboxString)
                     {
                         MessageBox.Show("Combobox is empty", "WARNİNG", MessageBoxButtons.OK);
@@ -1027,7 +1170,7 @@ namespace LoginForm
             CommunicationLanguage.Text = "";
             ContactNotes.Text = "";
             MainCategory.SelectedIndex = 0;
-            SubCategory.SelectedIndex = 0;
+            if (IME.CustomerSubCategories.ToList().Count != 0) SubCategory.SelectedIndex = 0;
             CompanyNotes.Text = "";
             WebAdress.Text = "";
             CustomerFax.Text = "";
@@ -1359,24 +1502,24 @@ namespace LoginForm
             //contact daki list box a tıklandığında contact ın bilgileri tıklanan göre doldurulmasıse
             int cw_ID = 0;
             try { cw_ID = ((CustomerAddress)((ListBox)sender).SelectedItem).ID; } catch { cw_ID = 0; }
-           
-                if (ContactListItem.AdressID != cw_ID)
-                {
-                    ContactListItem.AdressID = cw_ID;
 
-                    var contact1 = IME.CustomerAddresses.Where(cw => cw.ID == cw_ID).ToList();
-                    foreach (var a in contact1)
-                    {
-                        if (a.isDeliveryAdress == 1) { cbIMEOffice.Checked = true; } else { cbIMEOffice.Checked = false; }
-                        if (a.isIMEOffice == 1) { cbDafultDeliveryAdress.Checked = true; } else { cbDafultDeliveryAdress.Checked = false; }
-                        txtAdressTitle.Text = a.AdressTitle;
-                        cbCountry.SelectedItem = a.Country;
-                        if (a.City != null) cbCity.SelectedIndex =  cbCity.FindStringExact(a.City.City_name);
-                        if(a.Town != null) cbTown.SelectedIndex = cbTown.FindStringExact(a.Town.Town_name);
-                        PostCode.Text = a.PostCode;
-                        AddressDetails.Text = a.AdressDetails;
-                    }
+            if (ContactListItem.AdressID != cw_ID)
+            {
+                ContactListItem.AdressID = cw_ID;
+
+                var contact1 = IME.CustomerAddresses.Where(cw => cw.ID == cw_ID).ToList();
+                foreach (var a in contact1)
+                {
+                    if (a.isDeliveryAdress == 1) { cbIMEOffice.Checked = true; } else { cbIMEOffice.Checked = false; }
+                    if (a.isIMEOffice == 1) { cbDafultDeliveryAdress.Checked = true; } else { cbDafultDeliveryAdress.Checked = false; }
+                    txtAdressTitle.Text = a.AdressTitle;
+                    cbCountry.SelectedItem = a.Country;
+                    if (a.City != null) cbCity.SelectedIndex = cbCity.FindStringExact(a.City.City_name);
+                    if (a.Town != null) cbTown.SelectedIndex = cbTown.FindStringExact(a.Town.Town_name);
+                    PostCode.Text = a.PostCode;
+                    AddressDetails.Text = a.AdressDetails;
                 }
+            }
             #endregion
         }
 
@@ -1617,19 +1760,19 @@ namespace LoginForm
         private bool ControlSave()
         {
             bool isSave = true;
-            string ErrorMessage = string.Empty ;
-            if (CustomerName.Text == null || CustomerName.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter Company's Name\n"; isSave= false; }
+            string ErrorMessage = string.Empty;
+            if (CustomerName.Text == null || CustomerName.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter Company's Name\n"; isSave = false; }
             if (MainCategory.Text == ComboboxString) { ErrorMessage = ErrorMessage + "Please Choose Main Category Company\n"; isSave = false; }
             if (SubCategory.Text == ComboboxString) { ErrorMessage = ErrorMessage + "Please Choose SubCategory of Company\n"; isSave = false; }
-            if (Capital.Text == ComboboxString) { ErrorMessage = ErrorMessage + "Please Choose Capital of the Company\n"; isSave = false;}
+            if (Capital.Text == ComboboxString) { ErrorMessage = ErrorMessage + "Please Choose Capital of the Company\n"; isSave = false; }
             if (Telephone.Text == null || Telephone.Text == string.Empty) { ErrorMessage = ErrorMessage + "Please Enter Company's Phone correctly or Delete\n"; isSave = false; }
-            if(ContactList.Items.Count == 0) { ErrorMessage = ErrorMessage + "Please Enter a Contact\n"; isSave = false; }
-            if (isSave == true) { return true; } else { MessageBox.Show(ErrorMessage);return false; }
+            if (ContactList.Items.Count == 0) { ErrorMessage = ErrorMessage + "Please Enter a Contact\n"; isSave = false; }
+            if (isSave == true) { return true; } else { MessageBox.Show(ErrorMessage); return false; }
         }
 
         private void CompanyNotes_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Tab|| e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Tab || e.KeyCode == Keys.Enter)
             {
                 tabControl1.SelectedTab = tabControl1.TabPages["tab_account"];
             }
@@ -1638,7 +1781,7 @@ namespace LoginForm
         private void factor_TextChanged(object sender, EventArgs e)
         {
             decimal factorValue = Decimal.Parse(factor.Text);
-            DiscountRate.Text= (100 - ((factorValue * 100) / Utils.getManagement().Factor)).ToString();
+            DiscountRate.Text = (100 - ((factorValue * 100) / Utils.getManagement().Factor)).ToString();
         }
 
         private void DiscountRate_TextChanged(object sender, EventArgs e)
@@ -1654,6 +1797,16 @@ namespace LoginForm
             form.ShowDialog();
             this.BringToFront();
             cbTown.Refresh();
+        }
+
+        private void btnAddMainCategory_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddSubcategory_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

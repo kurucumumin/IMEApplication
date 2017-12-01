@@ -14,18 +14,10 @@ namespace LoginForm.DataSet
     
     public partial class CustomerSubCategory
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CustomerSubCategory()
-        {
-            this.CustomerCategorySubCategories = new HashSet<CustomerCategorySubCategory>();
-        }
-    
         public int ID { get; set; }
         public string subcategoryname { get; set; }
         public Nullable<int> categoryID { get; set; }
     
         public virtual CustomerCategory CustomerCategory { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerCategorySubCategory> CustomerCategorySubCategories { get; set; }
     }
 }

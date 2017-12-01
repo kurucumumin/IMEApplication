@@ -12,18 +12,22 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class CustomerCategory
+    public partial class PurchaseOrder
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CustomerCategory()
+        public PurchaseOrder()
         {
-            this.CustomerSubCategories = new HashSet<CustomerSubCategory>();
+            this.PurchaseOrderDetails = new HashSet<PurchaseOrderDetail>();
         }
     
-        public int ID { get; set; }
-        public string categoryname { get; set; }
+        public string FicheNo { get; set; }
+        public string CustomerID { get; set; }
+        public Nullable<System.DateTime> PurchaseOrderDate { get; set; }
+        public Nullable<System.DateTime> CameDate { get; set; }
+        public string Reason { get; set; }
     
+        public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerSubCategory> CustomerSubCategories { get; set; }
+        public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
     }
 }

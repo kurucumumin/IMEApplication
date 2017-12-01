@@ -30,6 +30,7 @@
 //        {
 //            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
 //            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+//            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTax));
 //            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 //            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
 //            this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -319,16 +320,15 @@
 //            // 
 //            // btnClose
 //            // 
-//            this.btnClose.BackColor = System.Drawing.SystemColors.Control;
 //            this.btnClose.FlatAppearance.BorderSize = 0;
 //            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-//            this.btnClose.ForeColor = System.Drawing.Color.Black;
+//            this.btnClose.ForeColor = System.Drawing.Color.White;
 //            this.btnClose.Location = new System.Drawing.Point(652, 151);
 //            this.btnClose.Name = "btnClose";
 //            this.btnClose.Size = new System.Drawing.Size(85, 27);
 //            this.btnClose.TabIndex = 9;
 //            this.btnClose.Text = "Close";
-//            this.btnClose.UseVisualStyleBackColor = false;
+//            this.btnClose.UseVisualStyleBackColor = true;
 //            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
 //            // 
 //            // txtNarration
@@ -355,45 +355,44 @@
 //            // 
 //            // btnDelete
 //            // 
-//            this.btnDelete.BackColor = System.Drawing.SystemColors.Control;
 //            this.btnDelete.FlatAppearance.BorderSize = 0;
 //            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-//            this.btnDelete.ForeColor = System.Drawing.Color.Black;
+//            this.btnDelete.ForeColor = System.Drawing.Color.White;
 //            this.btnDelete.Location = new System.Drawing.Point(561, 151);
 //            this.btnDelete.Name = "btnDelete";
 //            this.btnDelete.Size = new System.Drawing.Size(85, 27);
 //            this.btnDelete.TabIndex = 8;
 //            this.btnDelete.Text = "Delete";
-//            this.btnDelete.UseVisualStyleBackColor = false;
+//            this.btnDelete.UseVisualStyleBackColor = true;
 //            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
 //            // 
 //            // btnSave
 //            // 
-//            this.btnSave.BackColor = System.Drawing.SystemColors.Control;
+//            this.btnSave.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSave.BackgroundImage")));
 //            this.btnSave.FlatAppearance.BorderSize = 0;
 //            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-//            this.btnSave.ForeColor = System.Drawing.Color.Black;
+//            this.btnSave.ForeColor = System.Drawing.Color.White;
 //            this.btnSave.Location = new System.Drawing.Point(379, 151);
 //            this.btnSave.Name = "btnSave";
 //            this.btnSave.Size = new System.Drawing.Size(85, 27);
 //            this.btnSave.TabIndex = 6;
 //            this.btnSave.Text = "Save";
-//            this.btnSave.UseVisualStyleBackColor = false;
+//            this.btnSave.UseVisualStyleBackColor = true;
 //            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
 //            this.btnSave.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnSave_KeyDown);
 //            // 
 //            // btnClear
 //            // 
-//            this.btnClear.BackColor = System.Drawing.SystemColors.Control;
+//            this.btnClear.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClear.BackgroundImage")));
 //            this.btnClear.FlatAppearance.BorderSize = 0;
 //            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-//            this.btnClear.ForeColor = System.Drawing.Color.Black;
+//            this.btnClear.ForeColor = System.Drawing.Color.White;
 //            this.btnClear.Location = new System.Drawing.Point(470, 151);
 //            this.btnClear.Name = "btnClear";
 //            this.btnClear.Size = new System.Drawing.Size(85, 27);
 //            this.btnClear.TabIndex = 7;
 //            this.btnClear.Text = "Clear";
-//            this.btnClear.UseVisualStyleBackColor = false;
+//            this.btnClear.UseVisualStyleBackColor = true;
 //            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
 //            // 
 //            // groupBox2
@@ -494,31 +493,31 @@
 //            // 
 //            // btnSearch
 //            // 
-//            this.btnSearch.BackColor = System.Drawing.SystemColors.Control;
+//            this.btnSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.BackgroundImage")));
 //            this.btnSearch.FlatAppearance.BorderSize = 0;
 //            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-//            this.btnSearch.ForeColor = System.Drawing.Color.Black;
+//            this.btnSearch.ForeColor = System.Drawing.Color.White;
 //            this.btnSearch.Location = new System.Drawing.Point(565, 44);
 //            this.btnSearch.Name = "btnSearch";
 //            this.btnSearch.Size = new System.Drawing.Size(85, 27);
 //            this.btnSearch.TabIndex = 4;
 //            this.btnSearch.Text = "Search";
-//            this.btnSearch.UseVisualStyleBackColor = false;
+//            this.btnSearch.UseVisualStyleBackColor = true;
 //            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
 //            this.btnSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnSearch_KeyDown);
 //            // 
 //            // btnClearSearch
 //            // 
-//            this.btnClearSearch.BackColor = System.Drawing.SystemColors.Control;
+//            this.btnClearSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnClearSearch.BackgroundImage")));
 //            this.btnClearSearch.FlatAppearance.BorderSize = 0;
 //            this.btnClearSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-//            this.btnClearSearch.ForeColor = System.Drawing.Color.Black;
+//            this.btnClearSearch.ForeColor = System.Drawing.Color.White;
 //            this.btnClearSearch.Location = new System.Drawing.Point(656, 44);
 //            this.btnClearSearch.Name = "btnClearSearch";
 //            this.btnClearSearch.Size = new System.Drawing.Size(85, 27);
 //            this.btnClearSearch.TabIndex = 5;
 //            this.btnClearSearch.Text = "Clear";
-//            this.btnClearSearch.UseVisualStyleBackColor = false;
+//            this.btnClearSearch.UseVisualStyleBackColor = true;
 //            this.btnClearSearch.Click += new System.EventHandler(this.btnClearSearch_Click);
 //            this.btnClearSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnClearSearch_KeyDown);
 //            // 

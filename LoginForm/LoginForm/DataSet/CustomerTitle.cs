@@ -22,9 +22,7 @@ namespace LoginForm.DataSet
     
         public int ID { get; set; }
         public string titlename { get; set; }
-        public Nullable<int> departmnetID { get; set; }
     
-        public virtual CustomerDepartment CustomerDepartment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomerWorker> CustomerWorkers { get; set; }
     }
