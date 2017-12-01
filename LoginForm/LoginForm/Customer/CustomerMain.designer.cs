@@ -271,6 +271,7 @@
             this.btnAddSubcategory.TabIndex = 56;
             this.btnAddSubcategory.Text = "+";
             this.btnAddSubcategory.UseVisualStyleBackColor = true;
+            this.btnAddSubcategory.Click += new System.EventHandler(this.btnAddSubcategory_Click);
             // 
             // btnAddMainCategory
             // 
@@ -281,6 +282,7 @@
             this.btnAddMainCategory.TabIndex = 55;
             this.btnAddMainCategory.Text = "+";
             this.btnAddMainCategory.UseVisualStyleBackColor = true;
+            this.btnAddMainCategory.Click += new System.EventHandler(this.btnAddMainCategory_Click);
             // 
             // rb_passive
             // 
@@ -528,7 +530,6 @@
             this.tab_account.Controls.Add(this.AccountingNotes);
             this.tab_account.Controls.Add(this.InvCurrencyName);
             this.tab_account.Controls.Add(this.InvCurrencyType);
-            this.tab_account.Controls.Add(this.QuoCurrencyType);
             this.tab_account.Controls.Add(this.QuoCurrencyName);
             this.tab_account.Controls.Add(this.label14);
             this.tab_account.Controls.Add(this.PaymentMethod);
@@ -547,6 +548,7 @@
             this.tab_account.Controls.Add(this.taxNumber);
             this.tab_account.Controls.Add(this.TaxOffice);
             this.tab_account.Controls.Add(this.label21);
+            this.tab_account.Controls.Add(this.QuoCurrencyType);
             this.tab_account.Location = new System.Drawing.Point(4, 25);
             this.tab_account.Name = "tab_account";
             this.tab_account.Padding = new System.Windows.Forms.Padding(3);
@@ -589,7 +591,7 @@
             this.InvCurrencyName.FormattingEnabled = true;
             this.InvCurrencyName.Location = new System.Drawing.Point(492, 142);
             this.InvCurrencyName.Name = "InvCurrencyName";
-            this.InvCurrencyName.Size = new System.Drawing.Size(84, 24);
+            this.InvCurrencyName.Size = new System.Drawing.Size(178, 24);
             this.InvCurrencyName.TabIndex = 11;
             this.InvCurrencyName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InvCurrencyName_KeyPress);
             // 
@@ -629,7 +631,7 @@
             this.QuoCurrencyName.FormattingEnabled = true;
             this.QuoCurrencyName.Location = new System.Drawing.Point(491, 101);
             this.QuoCurrencyName.Name = "QuoCurrencyName";
-            this.QuoCurrencyName.Size = new System.Drawing.Size(85, 24);
+            this.QuoCurrencyName.Size = new System.Drawing.Size(179, 24);
             this.QuoCurrencyName.TabIndex = 9;
             this.QuoCurrencyName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.QuoCurrencyName_KeyPress);
             // 

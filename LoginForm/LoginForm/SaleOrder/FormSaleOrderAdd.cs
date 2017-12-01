@@ -75,22 +75,22 @@ namespace LoginForm.nsSaleOrder
         {
             decimal curr = 0;
             Rate rate = cbCurrency.SelectedItem as Rate;
-
-            switch (cbCurrType.SelectedItem)
-            {
-                case "Buy":
-                    curr = (decimal)rate.RateBuy;
-                    break;
-                case "Eff. Buy":
-                    curr = (decimal)rate.RateBuyEffective;
-                    break;
-                case "Sell":
-                    curr = (decimal)rate.RateSell;
-                    break;
-                case "Eff. Sell":
-                    curr = (decimal)rate.RateSellEffective;
-                    break;
-            }
+            // TODO 100 comment i aç
+            //switch (cbCurrType.SelectedItem)
+            //{
+            //    case "Buy":
+            //        curr = (decimal)rate.RateBuy;
+            //        break;
+            //    case "Eff. Buy":
+            //        curr = (decimal)rate.RateBuyEffective;
+            //        break;
+            //    case "Sell":
+            //        curr = (decimal)rate.RateSell;
+            //        break;
+            //    case "Eff. Sell":
+            //        curr = (decimal)rate.RateSellEffective;
+            //        break;
+            //}
             return curr;            
         }
 

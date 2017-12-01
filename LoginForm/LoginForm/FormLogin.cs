@@ -74,7 +74,7 @@ namespace LoginForm
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
-            //txtReader.excelCustomerTown();
+            //txtReader.excelCustomerLoader();
             Rate DolarRate1 = new Rate();
             DolarRate1 = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).FirstOrDefault();
             if (DolarRate1 == null)
@@ -135,6 +135,11 @@ namespace LoginForm
             {
                 btnLogin.PerformClick();
             }
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -11,9 +11,10 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class SaleOrderDetail
     {
+        public int ID { get; set; }
         public string ItemCode { get; set; }
         public int Quantity { get; set; }
         public decimal UCUPCurr { get; set; }
@@ -32,12 +33,11 @@ namespace LoginForm.DataSet
         public Nullable<decimal> UnitWeight { get; set; }
         public string SaleOrderNo { get; set; }
         public string DependantTable { get; set; }
-        public int ID { get; set; }
         public string ItemDescription { get; set; }
         public bool Hazardous { get; set; }
         public bool Calibration { get; set; }
         public Nullable<decimal> UnitPrice { get; set; }
-    
+
         public virtual SaleOrder SaleOrder { get; set; }
     }
 }

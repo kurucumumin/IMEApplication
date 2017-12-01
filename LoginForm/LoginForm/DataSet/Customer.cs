@@ -18,7 +18,6 @@ namespace LoginForm.DataSet
         public Customer()
         {
             this.CustomerAddresses = new HashSet<CustomerAddress>();
-            this.CustomerCategorySubCategories = new HashSet<CustomerCategorySubCategory>();
             this.CustomerWorkers = new HashSet<CustomerWorker>();
             this.DiscountValues = new HashSet<DiscountValue>();
             this.PurchaseOrders = new HashSet<PurchaseOrder>();
@@ -29,9 +28,7 @@ namespace LoginForm.DataSet
         public string ID { get; set; }
         public string c_name { get; set; }
         public Nullable<int> discountrate { get; set; }
-        public string telephone { get; set; }
         public Nullable<int> paymentmethodID { get; set; }
-        public string fax { get; set; }
         public Nullable<int> creditlimit { get; set; }
         public string webadress { get; set; }
         public Nullable<int> payment_termID { get; set; }
@@ -49,8 +46,12 @@ namespace LoginForm.DataSet
         public string CurrTypeQuo { get; set; }
         public string CurrNameQuo { get; set; }
         public Nullable<int> customerAccountantNoteID { get; set; }
-        public System.DateTime CreateDate { get; set; }
         public string extensionnumber { get; set; }
+        public Nullable<decimal> factor { get; set; }
+        public Nullable<int> creditDay { get; set; }
+        public Nullable<System.DateTime> CreateDate { get; set; }
+        public string telephone { get; set; }
+        public string fax { get; set; }
     
         public virtual Worker Worker { get; set; }
         public virtual Note Note { get; set; }
@@ -61,8 +62,6 @@ namespace LoginForm.DataSet
         public virtual Worker Worker2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomerAddress> CustomerAddresses { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerCategorySubCategory> CustomerCategorySubCategories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomerWorker> CustomerWorkers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

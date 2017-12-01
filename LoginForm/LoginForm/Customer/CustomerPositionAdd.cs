@@ -22,12 +22,11 @@ namespace LoginForm
                 {
                     var result = IME.CustomerTitles.Where(title => title.titlename == TitleName.Text).FirstOrDefault();
 
-                    if (result == null || (((IME.CustomerTitles.Where(a => a.departmnetID == a.departmnetID)).Count() == 0) && result != null))
+                    if (result == null || (result != null))
                     {
                         CustomerTitle ct = new CustomerTitle();
                         ct.titlename = TitleName.Text;
                         string Department = comboBox1.Items[comboBox1.SelectedIndex].ToString();
-                        ct.departmnetID = IME.CustomerDepartments.Where(cd => cd.departmentname == Department).Select(cd => cd.ID).ToList()[0];
                         IME.CustomerTitles.Add(ct);
                     MessageBox.Show(this,ct.titlename + " added as a Title");
                     }

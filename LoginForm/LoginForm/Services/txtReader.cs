@@ -1274,13 +1274,13 @@ namespace LoginForm
 
                 Excel.Application excel = new Excel.Application();
                 Workbook wb = excel.Workbooks.Open(openFileDialog1.FileName);
-                Worksheet ws = wb.Worksheets[1];
-                int ColumnNumber = 3;
-                string ArticleNumb = ws.Cells[3, 24].Text;
+                Worksheet ws = wb.Worksheets[7];
+                int ColumnNumber = 2;
+                string ArticleNumb = ws.Cells[2, 10].Text;
                 #region DiscontinuedList
-                while ((ws.Cells[ColumnNumber, 1].Text) != "")
+                while ((ws.Cells[ColumnNumber, 10].Text) != "")
                 {
-                    ArticleNumb = ws.Cells[ColumnNumber, 24].Text;
+                    ArticleNumb = ws.Cells[ColumnNumber, 10].Text;
                     if (IME.Countries.Where(a => a.Country_name == ArticleNumb).FirstOrDefault() == null)
                     {
                         Country country = new Country();
@@ -1346,7 +1346,7 @@ namespace LoginForm
 
         }
 
-        public static int excelCustomerTown()
+        public static int excelCustomerTown1()
         {
             IMEEntities IME = new IMEEntities();
 
@@ -1368,7 +1368,7 @@ namespace LoginForm
                 while ((ws.Cells[ColumnNumber, 1].Text) != "")
                 {
                     ArticleNumb = ws.Cells[ColumnNumber, 26].Text;
-                    if (IME.Cities.Where(a => a.City_name == ArticleNumb).FirstOrDefault() == null && ArticleNumb != null)
+                    if (IME.Towns.Where(a => a.Town_name == ArticleNumb).ToList().Count==0 && ArticleNumb != null)
                     {
                         Town town = new Town();
                         town.Town_name = ArticleNumb;
@@ -1391,6 +1391,409 @@ namespace LoginForm
 
         }
 
+
+        public static int excelCustomerTown()
+        {
+            IMEEntities IME = new IMEEntities();
+
+            int AddedCounter = 0;
+            int UptCounter = 0;
+            //Show the dialog and get result.
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "txt files (*.xlsx)|*.xlsx";
+            DialogResult result1 = openFileDialog1.ShowDialog();
+            if (result1 == DialogResult.OK)
+            {
+
+                Excel.Application excel = new Excel.Application();
+                Workbook wb = excel.Workbooks.Open(openFileDialog1.FileName);
+                Worksheet ws = wb.Worksheets[6];
+                int ColumnNumber = 2;
+                string ArticleNumb = ws.Cells[2, 2].Text;
+                #region DiscontinuedList
+                while ((ws.Cells[ColumnNumber, 2].Text) != "")
+                {
+                    ArticleNumb = ws.Cells[ColumnNumber, 2].Text;
+                    if (IME.Towns.Where(a => a.Town_name == ArticleNumb).ToList().Count == 0 && ArticleNumb != null)
+                    {
+                        Town town = new Town();
+                        town.Town_name = ArticleNumb;
+                        string Countryname = ws.Cells[ColumnNumber, 1].Text;
+                        City c = IME.Cities.Where(a => a.City_name == Countryname).FirstOrDefault();
+
+                        if (c == null)
+                        {
+                            Countryname = Countryname.ToUpper();
+                            c = IME.Cities.Where(a => a.City_name == Countryname).FirstOrDefault();
+                        }
+
+                        int cityID = c.ID; 
+                        town.CityID = cityID;
+                        IME.Towns.Add(town);
+                        IME.SaveChanges();
+                        AddedCounter++;
+                    }
+                    ColumnNumber++;
+                }
+                MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
+                return 1;
+                #endregion
+
+            }
+            return 0;
+
+        }
+
+        public static int excelCustomerTitle()
+        {
+            IMEEntities IME = new IMEEntities();
+
+            int AddedCounter = 0;
+            int UptCounter = 0;
+            //Show the dialog and get result.
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "txt files (*.xlsx)|*.xlsx";
+            DialogResult result1 = openFileDialog1.ShowDialog();
+            if (result1 == DialogResult.OK)
+            {
+
+                Excel.Application excel = new Excel.Application();
+                Workbook wb = excel.Workbooks.Open(openFileDialog1.FileName);
+                Worksheet ws = wb.Worksheets[2];
+                int ColumnNumber = 2;
+                string ArticleNumb = ws.Cells[2, 1].Text;
+                #region DiscontinuedList
+                while ((ws.Cells[ColumnNumber, 1].Text) != "")
+                {
+                    ArticleNumb = ws.Cells[ColumnNumber, 1].Text;
+                    if (IME.CustomerTitles.Where(a => a.titlename == ArticleNumb).FirstOrDefault() == null && ArticleNumb != null)
+                    {
+                        CustomerTitle town = new CustomerTitle();
+                        town.titlename = ArticleNumb;
+                        string Countryname = ws.Cells[ColumnNumber, 1].Text;
+                        City c = IME.Cities.Where(a => a.City_name == Countryname).FirstOrDefault();
+                        IME.CustomerTitles.Add(town);
+                        IME.SaveChanges();
+                        AddedCounter++;
+                    }
+                    ColumnNumber++;
+                }
+                MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
+                return 1;
+                #endregion
+
+            }
+            return 0;
+
+        }
+
+        public static int excelCustomerDepartment()
+        {
+            IMEEntities IME = new IMEEntities();
+
+            int AddedCounter = 0;
+            int UptCounter = 0;
+            //Show the dialog and get result.
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "txt files (*.xlsx)|*.xlsx";
+            DialogResult result1 = openFileDialog1.ShowDialog();
+            if (result1 == DialogResult.OK)
+            {
+
+                Excel.Application excel = new Excel.Application();
+                Workbook wb = excel.Workbooks.Open(openFileDialog1.FileName);
+                Worksheet ws = wb.Worksheets[2];
+                int ColumnNumber = 2;
+                string ArticleNumb = ws.Cells[2, 3].Text;
+                #region DiscontinuedList
+                while ((ws.Cells[ColumnNumber, 3].Text) != "")
+                {
+                    ArticleNumb = ws.Cells[ColumnNumber, 1].Text;
+                    if (IME.CustomerDepartments.Where(a => a.departmentname == ArticleNumb).FirstOrDefault() == null && ArticleNumb != null)
+                    {
+                        CustomerDepartment town = new CustomerDepartment();
+                        town.departmentname = ArticleNumb;
+                        string Countryname = ws.Cells[ColumnNumber, 1].Text;
+                        CustomerDepartment c = IME.CustomerDepartments.Where(a => a.departmentname == Countryname).FirstOrDefault();
+                        IME.CustomerDepartments .Add(town);
+                        IME.SaveChanges();
+                        AddedCounter++;
+                    }
+                    ColumnNumber++;
+                }
+                MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
+                return 1;
+                #endregion
+
+            }
+            return 0;
+
+        }
+
+        public static int excelCustomerCategory()
+        {
+            IMEEntities IME = new IMEEntities();
+
+            int AddedCounter = 0;
+            int UptCounter = 0;
+            //Show the dialog and get result.
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "txt files (*.xlsx)|*.xlsx";
+            DialogResult result1 = openFileDialog1.ShowDialog();
+            if (result1 == DialogResult.OK)
+            {
+
+                Excel.Application excel = new Excel.Application();
+                Workbook wb = excel.Workbooks.Open(openFileDialog1.FileName);
+                Worksheet ws = wb.Worksheets[4];
+                int ColumnNumber = 2;
+                string ArticleNumb = ws.Cells[1, 1].Text;
+                #region DiscontinuedList
+                while ((ws.Cells[ColumnNumber, 1].Text) != "")
+                {
+                    ArticleNumb = ws.Cells[ColumnNumber, 1].Text;
+                    if (IME.CustomerDepartments.Where(a => a.departmentname == ArticleNumb).FirstOrDefault() == null && ArticleNumb != null)
+                    {
+                        CustomerCategory town = new CustomerCategory();
+                        town.categoryname = ArticleNumb;
+                        string Countryname = ws.Cells[ColumnNumber, 1].Text;
+                        CustomerCategory c = IME.CustomerCategories.Where(a => a.categoryname == Countryname).FirstOrDefault();
+                        IME.CustomerCategories.Add(town);
+                        IME.SaveChanges();
+                        AddedCounter++;
+                    }
+                    ColumnNumber++;
+                }
+                MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
+                return 1;
+                #endregion
+
+            }
+            return 0;
+
+        }
+                
+        public static int excelCustomerCategory1()
+        {
+            IMEEntities IME = new IMEEntities();
+
+            int AddedCounter = 0;
+            int UptCounter = 0;
+            //Show the dialog and get result.
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "txt files (*.xlsx)|*.xlsx";
+            DialogResult result1 = openFileDialog1.ShowDialog();
+            if (result1 == DialogResult.OK)
+            {
+
+                Excel.Application excel = new Excel.Application();
+                Workbook wb = excel.Workbooks.Open(openFileDialog1.FileName);
+                Worksheet ws = wb.Worksheets[1];
+                int ColumnNumber =3;
+                string ArticleNumb = ws.Cells[3, 3].Text;
+                #region DiscontinuedList
+                while ((ws.Cells[ColumnNumber, 1].Text) != "")
+                {
+                    ArticleNumb = ws.Cells[ColumnNumber, 3].Text;
+                    if (IME.CustomerCategories.Where(a => a.categoryname == ArticleNumb).FirstOrDefault() == null && ArticleNumb != null)
+                    {
+                        CustomerCategory town = new CustomerCategory();
+                        town.categoryname = ArticleNumb;
+                        string Countryname = ws.Cells[ColumnNumber, 3].Text;
+                        IME.CustomerCategories.Add(town);
+                        IME.SaveChanges();
+                        AddedCounter++;
+                    }
+                    ColumnNumber++;
+                }
+                MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
+                return 1;
+                #endregion
+
+            }
+            return 0;
+
+        }
+
+        public static int excelCustomerSubCategory()
+        {
+            IMEEntities IME = new IMEEntities();
+
+            int AddedCounter = 0;
+            int UptCounter = 0;
+            //Show the dialog and get result.
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "txt files (*.xlsx)|*.xlsx";
+            DialogResult result1 = openFileDialog1.ShowDialog();
+            if (result1 == DialogResult.OK)
+            {
+
+                Excel.Application excel = new Excel.Application();
+                Workbook wb = excel.Workbooks.Open(openFileDialog1.FileName);
+                Worksheet ws = wb.Worksheets[1];
+                int ColumnNumber = 3;
+                string ArticleNumb = ws.Cells[3, 1].Text;
+                #region DiscontinuedList
+                while ((ws.Cells[ColumnNumber, 1].Text) != "")
+                {
+                    ArticleNumb = ws.Cells[ColumnNumber, 4].Text;
+                    if (IME.CustomerSubCategories.Where(a => a.subcategoryname == ArticleNumb).FirstOrDefault() == null && ArticleNumb != null)
+                    {
+                        CustomerSubCategory town = new CustomerSubCategory();
+                        town.subcategoryname = ArticleNumb;
+                        string Countryname = ws.Cells[ColumnNumber, 1].Text;
+                        CustomerCategory c = IME.CustomerCategories.Where(a => a.categoryname == Countryname).FirstOrDefault();
+                        IME.CustomerSubCategories.Add(town);
+                        IME.SaveChanges();
+                        AddedCounter++;
+                    }
+                    ColumnNumber++;
+                }
+                MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
+                return 1;
+                #endregion
+
+            }
+            return 0;
+
+        }
+
+        public static int createNOTE(string column)
+        {
+            IMEEntities IME = new IMEEntities();
+            int noteID = 0;
+
+                Note n = new Note();
+            n.Note_name = column;
+                IME.Notes.Add(n);
+                IME.SaveChanges();
+            return n.ID;
+        }
+
+        public static void excelCustomerLoader()
+        {
+            IMEEntities IME = new IMEEntities();
+            int AddedCounter = 0;
+            int UptCounter = 0;
+            //Show the dialog and get result.
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "txt files (*.xlsx)|*.xlsx";
+            DialogResult result1 = openFileDialog1.ShowDialog();
+            if (result1 == DialogResult.OK)
+            {
+
+                Excel.Application excel = new Excel.Application();
+                Workbook wb = excel.Workbooks.Open(openFileDialog1.FileName);
+                Worksheet ws = wb.Worksheets[1];
+
+                //CUSTOMER LOADER
+                int ColumnNumber = 3;
+                while ((ws.Cells[ColumnNumber, 1].Text) != "")
+                {
+                    string CustomerCode = ws.Cells[ColumnNumber, 1].Text;
+                    if (IME.Customers.Where(a=>a.ID== CustomerCode).ToList().Count==0)
+                    {
+                        int noteID=0;
+                        if (ws.Cells[ColumnNumber, 11].Text != "")
+                        {
+                            string notestring = ws.Cells[ColumnNumber, 11].Text;
+                            noteID = createNOTE(notestring);
+                        }
+                        Customer c = new Customer();
+                        c.ID= ws.Cells[ColumnNumber, 1].Text;
+                        if (noteID != 0) c.customerNoteID = noteID;
+                        c.c_name = ws.Cells[ColumnNumber, 2].Text;
+                        string categoryname = null;
+                        string subcategoryname = null;
+                        if(ws.Cells[ColumnNumber, 3].Text==null) categoryname = ws.Cells[ColumnNumber, 3].Text;
+                        if (ws.Cells[ColumnNumber, 4].Text == null) subcategoryname = ws.Cells[ColumnNumber, 4].Text;
+                        //if (categoryname != null && subcategoryname==null)
+                        //{
+                        //    CustomerCategorySubCategory c1 = new CustomerCategorySubCategory();
+                        //    c1.customerID = c.ID;
+                        //    c1.categoryID= IME.CustomerCategories.Where(a => a.categoryname == categoryname).FirstOrDefault().ID;
+                        //    IME.CustomerCategorySubCategories.Add(c1);
+                        //    IME.SaveChanges();
+
+                        //}
+                        //if (categoryname != null && subcategoryname != null)
+                        //{
+                        //    CustomerCategorySubCategory c1 = new CustomerCategorySubCategory();
+                        //    c1.customerID = c.ID;
+                        //    c1.subcategoryID = IME.CustomerSubCategories.Where(a => a.subcategoryname == subcategoryname).FirstOrDefault().ID;
+                        //    c1.categoryID = IME.CustomerCategories.Where(a => a.categoryname == categoryname).FirstOrDefault().ID;
+                        //    IME.CustomerCategorySubCategories.Add(c1);
+                        //    IME.SaveChanges();
+                        //}
+                        if(ws.Cells[ColumnNumber, 7].Text== "Active") { c.isactive = 1; } else { c.isactive = 0; }
+
+                        c.telephone = ws.Cells[ColumnNumber, 8].Text;
+                        c.fax = ws.Cells[ColumnNumber, 9].Text;
+                        
+                        string termName = ws.Cells[ColumnNumber, 15].Text;
+                        if (termName != null && IME.PaymentTerms.Where(a => a.term_name.Trim() == termName.Trim()).FirstOrDefault() != null)
+                        {
+                                c.payment_termID = Int32.Parse(IME.PaymentTerms.Where(a => a.term_name.Trim() == termName.Trim()).FirstOrDefault().ID.ToString());
+                        }
+                        c.factor = Decimal.Parse(ws.Cells[ColumnNumber, 18].Text);
+                        string customercreditstring = ws.Cells[ColumnNumber, 19].Text;
+                        customercreditstring = customercreditstring.Replace(",", "");
+                        if (customercreditstring.Trim() != "-") c.creditlimit = Int32.Parse(customercreditstring);
+                        if (ws.Cells[ColumnNumber, 22].Text != null) c.creditDay = Int32.Parse(ws.Cells[ColumnNumber, 22].Text);
+                        c.CreateDate = DateTime.Today;
+                        IME.Customers.Add(c);
+                        IME.SaveChanges();
+
+
+                        //CONTACT
+                        CustomerWorker cw = new CustomerWorker();
+                        cw.cw_name = ws.Cells[ColumnNumber, 32].Text;
+                        cw.phone = ws.Cells[ColumnNumber, 34].Text;
+                        string languagename;
+                        if (ws.Cells[ColumnNumber, 38].Text != "")
+                        {
+                            cw.languageID = 3;
+                        }
+                        cw.customerID = c.ID;
+                        IME.CustomerWorkers.Add(cw);
+                        IME.SaveChanges();
+                        //
+
+                        //ADDRESS
+                        CustomerAddress ca = new CustomerAddress();
+                        string countryname;
+                        if (ws.Cells[ColumnNumber, 24].Text != null)
+                        {
+                            countryname = ws.Cells[ColumnNumber, 24].Text;
+                            ca.CountryID = IME.Countries.Where(a => a.Country_name.Trim() == countryname.Trim()).FirstOrDefault().ID;
+                        }
+                        string Cityname;
+                        Cityname = ws.Cells[ColumnNumber, 25].Text;
+                        if (Cityname != null)
+                        {
+                            ca.CityID = IME.Cities.Where(a => a.City_name == Cityname).FirstOrDefault().ID;
+                        }
+                        string Townname;
+                        Townname = ws.Cells[ColumnNumber, 26].Text;
+                        if (Townname != null)
+                        {
+                            ca.TownID = IME.Towns.Where(a => a.Town_name == Townname).FirstOrDefault().ID;
+                        }
+                        ca.PostCode = ws.Cells[ColumnNumber, 27].Text;
+                        if (ws.Cells[ColumnNumber, 28].Text != "0") ca.AdressDetails = ws.Cells[ColumnNumber, 28].Text;
+                        ca.CustomerID = c.ID;
+                        IME.CustomerAddresses.Add(ca);
+                        IME.SaveChanges();
+                        //
+
+                        AddedCounter++;
+                    }
+                    ColumnNumber++;
+                }
+                //
+            }
+
+        }
     }
 
 
