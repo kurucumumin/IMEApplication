@@ -37,6 +37,7 @@ namespace LoginForm.nsSaleOrder
         public FormSaleOrderAdd(Customer customer,List<QuotationDetail> list)
         {
             InitializeComponent();
+            txtInvoiceAddress.ReadOnly = (customer.CustomerAddresses.Where(a => a.AddressType == "Invoice Address").FirstOrDefault() != null) ? true : false;
             this.customer = customer;
             dtpDate.Value = DateTime.Today;
             dtpRequestedDelvDate.MinDate = dtpDate.Value;
@@ -139,12 +140,11 @@ namespace LoginForm.nsSaleOrder
                 s.Total = (decimal)q.Total;
                 s.UPIMELP = (decimal)q.UCUPCurr;
                 s.UOM = q.UnitOfMeasure;
+                s.dependentTable = q.DependantTable;
 
                 // TODO !Important dependantTable verisi eklenmeli
-                //s.dependentTable = q.dependantTable;
 
-                //switch (q.dependantTable)
-                switch ("sd")
+                switch (q.DependantTable)
                 {
                     case "sd":
                         SuperDisk itemSD = IME.SuperDisks.Where(sd => sd.Article_No == q.ItemCode).FirstOrDefault();
@@ -215,8 +215,8 @@ namespace LoginForm.nsSaleOrder
                         OnSale itemSDPOS = IME.OnSales.Where(os => os.ArticleNumber == q.ItemCode).FirstOrDefault();
                         if (itemSDPOS != null)
                         {
-                            s.OnHandStockBalance = (int)itemSDOS.OnhandStockBalance;
-                            s.QuantityOnOrder = (int)itemSDOS.QuantityonOrder;
+                            s.OnHandStockBalance = (int)itemSDPOS.OnhandStockBalance;
+                            s.QuantityOnOrder = (int)itemSDPOS.QuantityonOrder;
                         }
 
                         SlidingPrice itemSDPPrice = IME.SlidingPrices.Where(sp => sp.ArticleNo == q.ItemCode).FirstOrDefault();
@@ -225,7 +225,7 @@ namespace LoginForm.nsSaleOrder
                         s.MHLevel1 = itemSDP.MH_Code_Level_1;
 
                         s.Col1Break = (int)itemSDPPrice.Col1Break;
-                        s.Col2Break = (int)itemSDPrice.Col2Break;
+                        s.Col2Break = (int)itemSDPPrice.Col2Break;
                         s.Col3Break = (int)itemSDPPrice.Col3Break;
                         s.Col4Break = (int)itemSDPPrice.Col4Break;
                         s.Col5Break = (int)itemSDPPrice.Col5Break;
@@ -667,31 +667,89 @@ namespace LoginForm.nsSaleOrder
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            SaleOrder so = new SaleOrder();
-            so.SaleOrderNo = txtSONo.Text;
-            so.SaleDate = DateTime.Today.Date;
-            so.CurrenyName = (string)cbCurrency.SelectedValue + " " + cbCurrType.SelectedItem;
-            so.OnlineConfirmationNo = txtOnlineConfirmationNo.Text;
-            so.QuotationNos = txtQuotationNo.Text;
-            if (dtpRequestedDelvDate.Value != dtpDate.Value)
+            try
             {
-                so.RequestedDeliveryDate = dtpRequestedDelvDate.Value;
+                SaleOrder so = new SaleOrder();
+                so.SaleOrderNo = txtSONo.Text;
+                so.SaleDate = DateTime.Today.Date;
+                so.CurrenyName = (string)cbCurrency.SelectedValue + " " + cbCurrType.SelectedItem;
+                so.OnlineConfirmationNo = txtOnlineConfirmationNo.Text;
+                so.QuotationNos = txtQuotationNo.Text;
+                if (dtpRequestedDelvDate.Value != dtpDate.Value)
+                {
+                    so.RequestedDeliveryDate = dtpRequestedDelvDate.Value;
+                }
+                so.Vat = (chkVat.Checked) ? Convert.ToDecimal(lblVat.Text) : 0;
+                so.TotalPrice = Convert.ToDecimal(lblGrossTotal.Text);
+                so.NoteForUs = txtNoteForUs.Text;
+                so.NoteForFinance = (chkForFinance.Checked) ? 1 : 0;
+
+                so.PaymentTermID = (int)cbPaymentTerm.SelectedValue;
+                so.CustomerID = customer.ID;
+                so.ContactID = (int)cbWorkers.SelectedValue;
+                so.DeliveryContactID = (int)cbDeliveryContact.SelectedValue;
+                so.InvoiceAddressID = (invoiceAddress.ID);
+                so.DeliveryAddressID = (int)cbDeliveryAddress.SelectedValue;
+                so.RepresentativeID = (int)cbRep.SelectedValue;
+                so.PaymentMethodID = (int)cbPayment.SelectedValue;
+                so.SaleOrderNature = cbOrderNature.SelectedItem.ToString();
+
+                IME.SaleOrders.Add(so);
+                IME.SaveChanges();
+
+                SaleOrder saleOrder = IME.SaleOrders.Where(s => s.SaleOrderNo == so.SaleOrderNo).FirstOrDefault();
+                if (!RowsHasEmptyAreas())
+                {
+                    for(int i = 0; i < dgSaleItems.RowCount-1; i++)
+                    {
+                        DataGridViewRow row = dgSaleItems.Rows[i];
+                        SaleOrderDetail sod = new SaleOrderDetail();
+                        sod.ItemCode = row.Cells["sItemCode"].Value.ToString();
+                        sod.Quantity = (int)row.Cells["sQty"].Value;
+                        sod.UCUPCurr = (decimal)row.Cells["sUCUPCurr"].Value;
+                        sod.Discount = (decimal?)row.Cells["sDiscount"].Value;
+                        sod.Total = (decimal)row.Cells["sTotal"].Value;
+                        sod.TargetUP = (decimal?)row.Cells["sTargetUP"].Value;
+                        sod.Competitor = (row.Cells["sCompetitor"].Value == null) ? null : row.Cells["sCompetitor"].Value.ToString();
+                        sod.CustomerDescription = row.Cells["sCustItemDescription"].Value.ToString();
+                        //sod.IsDeleted = row.Cells[sdel].Value.ToString();
+                        sod.UPIME= (decimal)row.Cells["sUPIMELP"].Value;
+                        sod.Margin = (decimal)row.Cells["sMargin"].Value;
+                        sod.UnitOfMeasure = row.Cells["sUOM"].Value.ToString();
+                        sod.UnitContent = (int)row.Cells["sUC"].Value;
+                        sod.SSM = (int?)row.Cells["sSSM"].Value;
+                        sod.UnitWeight= (decimal?)row.Cells["sUnitWeight"].Value;
+                        sod.DependantTable = row.Cells["sDependantTable"].Value.ToString();
+
+                        so.SaleOrderDetails.Add(sod);
+                    }
+                    IME.SaveChanges();
+                }
             }
-            so.Vat = (chkVat.Checked) ? Convert.ToDecimal(lblVat.Text) : 0;
-            so.TotalPrice = Convert.ToDecimal(lblGrossTotal.Text);
-            so.NoteForUs = txtNoteForUs.Text;
-            so.NoteForFinance = (chkForFinance.Checked) ? 1 : 0;
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
-            so.PaymentTerm = (PaymentTerm)cbPaymentTerm.SelectedItem;
-            so.Customer = customer;
-            so.ContactID = (int)cbWorkers.SelectedValue;
-            so.DeliveryContactID = (int)cbDeliveryContact.SelectedValue;
-            so.InvoiceAddressID = invoiceAddress.ID;
-            so.DeliveryAddressID = (int)cbDeliveryAddress.SelectedValue;
-            so.RepresentativeID = (int)cbRep.SelectedValue;
-            so.PaymentMethodID = (int)cbPayment.SelectedValue;
+        private bool RowsHasEmptyAreas()
+        {
+            int rowCount = addedItemList.Count;
+            bool hasEmpty = false;
 
-            IME.SaleOrders.Add(so);
+            for (int i = 0; i < rowCount; i++)
+            {
+                DataGridViewRow row = dgSaleItems.Rows[i];
+                if(row.Cells["sItemCode"] == null || row.Cells["sItemCode"].Value.ToString() == "") { hasEmpty = true; break; }
+                if((int)row.Cells["sQty"].Value == null || (int)row.Cells["sQty"].Value == 0) { hasEmpty = true; break; }
+                if((decimal)row.Cells["sUCUPCurr"].Value == null || (decimal)row.Cells["sUCUPCurr"].Value == 0) { hasEmpty = true; break; }
+                if((decimal)row.Cells["sTotal"].Value == null || (decimal)row.Cells["sTotal"].Value == 0) { hasEmpty = true; break; }
+                if((decimal)row.Cells["sUPIMELP"].Value == null || (decimal)row.Cells["sUPIMELP"].Value == 0) { hasEmpty = true; break; }
+                if((decimal)row.Cells["sMargin"].Value == null) { hasEmpty = true; break; }
+                if(row.Cells["sUOM"].Value.ToString() == null || row.Cells["sUOM"].Value.ToString() == "") { hasEmpty = true; break; }
+            }
+
+            return hasEmpty;
         }
     }
 }

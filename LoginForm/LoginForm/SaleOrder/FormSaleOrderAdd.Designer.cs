@@ -153,9 +153,12 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.textBox22 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label67 = new System.Windows.Forms.Label();
+            this.cbPaymentTerm = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label65 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.cbOrderNature = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCreateRev = new System.Windows.Forms.Button();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
@@ -231,6 +234,8 @@
             this.txtAccountingNote = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtpRequestedDelvDate = new System.Windows.Forms.DateTimePicker();
+            this.label68 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.txtOnlineConfirmationNo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -318,11 +323,6 @@
             this.label36 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label67 = new System.Windows.Forms.Label();
-            this.cbPaymentTerm = new System.Windows.Forms.ComboBox();
-            this.dtpRequestedDelvDate = new System.Windows.Forms.DateTimePicker();
-            this.label68 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgSalesDeleted)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -332,6 +332,7 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -342,7 +343,6 @@
             this.tabCustomerDetails.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabItemDetails.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtSection
@@ -1325,11 +1325,44 @@
             this.panel1.Size = new System.Drawing.Size(1666, 166);
             this.panel1.TabIndex = 58;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.groupBox4.Controls.Add(this.label67);
+            this.groupBox4.Controls.Add(this.cbPaymentTerm);
+            this.groupBox4.Location = new System.Drawing.Point(885, 19);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Size = new System.Drawing.Size(178, 65);
+            this.groupBox4.TabIndex = 48;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Payment Term";
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Location = new System.Drawing.Point(8, 11);
+            this.label67.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(0, 17);
+            this.label67.TabIndex = 9;
+            // 
+            // cbPaymentTerm
+            // 
+            this.cbPaymentTerm.FormattingEnabled = true;
+            this.cbPaymentTerm.Location = new System.Drawing.Point(8, 31);
+            this.cbPaymentTerm.Margin = new System.Windows.Forms.Padding(4);
+            this.cbPaymentTerm.Name = "cbPaymentTerm";
+            this.cbPaymentTerm.Size = new System.Drawing.Size(160, 24);
+            this.cbPaymentTerm.TabIndex = 8;
+            this.cbPaymentTerm.Text = "XDOC";
+            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.groupBox2.Controls.Add(this.label65);
-            this.groupBox2.Controls.Add(this.comboBox3);
+            this.groupBox2.Controls.Add(this.cbOrderNature);
             this.groupBox2.Location = new System.Drawing.Point(695, 99);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
@@ -1337,7 +1370,7 @@
             this.groupBox2.Size = new System.Drawing.Size(185, 65);
             this.groupBox2.TabIndex = 47;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Order Type";
+            this.groupBox2.Text = "Order Nature";
             // 
             // label65
             // 
@@ -1348,18 +1381,18 @@
             this.label65.Size = new System.Drawing.Size(0, 17);
             this.label65.TabIndex = 9;
             // 
-            // comboBox3
+            // cbOrderNature
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.cbOrderNature.FormattingEnabled = true;
+            this.cbOrderNature.Items.AddRange(new object[] {
             "XDOC",
             "NORMAL"});
-            this.comboBox3.Location = new System.Drawing.Point(8, 31);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(160, 24);
-            this.comboBox3.TabIndex = 8;
-            this.comboBox3.Text = "XDOC";
+            this.cbOrderNature.Location = new System.Drawing.Point(8, 31);
+            this.cbOrderNature.Margin = new System.Windows.Forms.Padding(4);
+            this.cbOrderNature.Name = "cbOrderNature";
+            this.cbOrderNature.Size = new System.Drawing.Size(160, 24);
+            this.cbOrderNature.TabIndex = 8;
+            this.cbOrderNature.Text = "XDOC";
             // 
             // btnSave
             // 
@@ -2203,6 +2236,26 @@
             this.groupBox1.Size = new System.Drawing.Size(784, 161);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
+            // 
+            // dtpRequestedDelvDate
+            // 
+            this.dtpRequestedDelvDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpRequestedDelvDate.Location = new System.Drawing.Point(624, 132);
+            this.dtpRequestedDelvDate.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpRequestedDelvDate.Name = "dtpRequestedDelvDate";
+            this.dtpRequestedDelvDate.Size = new System.Drawing.Size(148, 22);
+            this.dtpRequestedDelvDate.TabIndex = 83;
+            this.dtpRequestedDelvDate.Value = new System.DateTime(2017, 11, 29, 14, 43, 7, 0);
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Location = new System.Drawing.Point(525, 134);
+            this.label68.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(96, 17);
+            this.label68.TabIndex = 82;
+            this.label68.Text = "Req. Dlv Date";
             // 
             // label30
             // 
@@ -3209,59 +3262,6 @@
             this.label57.Text = "Col Qty";
             this.label57.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.groupBox4.Controls.Add(this.label67);
-            this.groupBox4.Controls.Add(this.cbPaymentTerm);
-            this.groupBox4.Location = new System.Drawing.Point(885, 19);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Size = new System.Drawing.Size(178, 65);
-            this.groupBox4.TabIndex = 48;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Payment Term";
-            // 
-            // label67
-            // 
-            this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(8, 11);
-            this.label67.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(0, 17);
-            this.label67.TabIndex = 9;
-            // 
-            // cbPaymentTerm
-            // 
-            this.cbPaymentTerm.FormattingEnabled = true;
-            this.cbPaymentTerm.Location = new System.Drawing.Point(8, 31);
-            this.cbPaymentTerm.Margin = new System.Windows.Forms.Padding(4);
-            this.cbPaymentTerm.Name = "cbPaymentTerm";
-            this.cbPaymentTerm.Size = new System.Drawing.Size(160, 24);
-            this.cbPaymentTerm.TabIndex = 8;
-            this.cbPaymentTerm.Text = "XDOC";
-            // 
-            // dtpRequestedDelvDate
-            // 
-            this.dtpRequestedDelvDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpRequestedDelvDate.Location = new System.Drawing.Point(624, 132);
-            this.dtpRequestedDelvDate.Margin = new System.Windows.Forms.Padding(4);
-            this.dtpRequestedDelvDate.Name = "dtpRequestedDelvDate";
-            this.dtpRequestedDelvDate.Size = new System.Drawing.Size(148, 22);
-            this.dtpRequestedDelvDate.TabIndex = 83;
-            this.dtpRequestedDelvDate.Value = new System.DateTime(2017, 11, 29, 14, 43, 7, 0);
-            // 
-            // label68
-            // 
-            this.label68.AutoSize = true;
-            this.label68.Location = new System.Drawing.Point(525, 134);
-            this.label68.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(96, 17);
-            this.label68.TabIndex = 82;
-            this.label68.Text = "Req. Dlv Date";
-            // 
             // FormSaleOrderAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -3283,6 +3283,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox11.ResumeLayout(false);
@@ -3301,8 +3303,6 @@
             this.groupBox1.PerformLayout();
             this.tabItemDetails.ResumeLayout(false);
             this.tabItemDetails.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -3538,7 +3538,7 @@
         private System.Windows.Forms.Label label61;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label65;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cbOrderNature;
         private System.Windows.Forms.DataGridViewTextBoxColumn sNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn sHS;
         private System.Windows.Forms.DataGridViewTextBoxColumn sLI;

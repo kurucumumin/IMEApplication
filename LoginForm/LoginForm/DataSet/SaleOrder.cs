@@ -38,7 +38,6 @@ namespace LoginForm.DataSet
         public int RepresentativeID { get; set; }
         public int PaymentMethodID { get; set; }
         public string NoteForUs { get; set; }
-        public string NoteForCustomer { get; set; }
         public Nullable<int> NoteForFinance { get; set; }
         public string LPONo { get; set; }
         public string SaleOrderNature { get; set; }

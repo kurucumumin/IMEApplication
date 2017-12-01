@@ -33,6 +33,7 @@ namespace LoginForm.DataSet
         public Nullable<int> UC { get; set; }
         public Nullable<int> SSM { get; set; }
         public Nullable<decimal> UnitWeight { get; set; }
+        public string DependantTable { get; set; }
     
         public virtual Quotation Quotation { get; set; }
     }
