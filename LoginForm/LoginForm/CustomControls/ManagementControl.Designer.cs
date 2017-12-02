@@ -43,6 +43,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.txtLowMarginLimit = new System.Windows.Forms.TextBox();
             this.lblLowMarginLimit = new System.Windows.Forms.Label();
+            this.btnCategorySubCategory = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel31.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericFactor)).BeginInit();
@@ -69,6 +70,7 @@
             // panel31
             // 
             this.panel31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel31.Controls.Add(this.btnCategorySubCategory);
             this.panel31.Controls.Add(this.button1);
             this.panel31.Controls.Add(this.numericFactor);
             this.panel31.Controls.Add(this.lblFactor);
@@ -97,7 +99,7 @@
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(-1, 344);
+            this.button1.Location = new System.Drawing.Point(-3, 348);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(335, 37);
@@ -173,7 +175,7 @@
             this.btnTermsOfPayment.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
             this.btnTermsOfPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTermsOfPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTermsOfPayment.Location = new System.Drawing.Point(-1, 394);
+            this.btnTermsOfPayment.Location = new System.Drawing.Point(-2, 385);
             this.btnTermsOfPayment.Margin = new System.Windows.Forms.Padding(0);
             this.btnTermsOfPayment.Name = "btnTermsOfPayment";
             this.btnTermsOfPayment.Size = new System.Drawing.Size(335, 37);
@@ -210,7 +212,7 @@
             this.btnRolesAuthorities.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
             this.btnRolesAuthorities.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRolesAuthorities.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRolesAuthorities.Location = new System.Drawing.Point(-1, 440);
+            this.btnRolesAuthorities.Location = new System.Drawing.Point(-2, 422);
             this.btnRolesAuthorities.Margin = new System.Windows.Forms.Padding(0);
             this.btnRolesAuthorities.Name = "btnRolesAuthorities";
             this.btnRolesAuthorities.Size = new System.Drawing.Size(335, 37);
@@ -255,6 +257,23 @@
             this.lblLowMarginLimit.TabIndex = 0;
             this.lblLowMarginLimit.Text = "Low Margin Limit";
             // 
+            // btnCategorySubCategory
+            // 
+            this.btnCategorySubCategory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCategorySubCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(187)))), ((int)(((byte)(106)))));
+            this.btnCategorySubCategory.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
+            this.btnCategorySubCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCategorySubCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCategorySubCategory.Location = new System.Drawing.Point(-1, 459);
+            this.btnCategorySubCategory.Margin = new System.Windows.Forms.Padding(0);
+            this.btnCategorySubCategory.Name = "btnCategorySubCategory";
+            this.btnCategorySubCategory.Size = new System.Drawing.Size(338, 37);
+            this.btnCategorySubCategory.TabIndex = 15;
+            this.btnCategorySubCategory.Text = "Category & Sub Category";
+            this.btnCategorySubCategory.UseVisualStyleBackColor = false;
+            this.btnCategorySubCategory.Click += new System.EventHandler(this.btnCategorySubCategory_Click);
+            // 
             // ManagementControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -287,5 +306,6 @@
         private System.Windows.Forms.Label lblFactor;
         private System.Windows.Forms.NumericUpDown numericFactor;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCategorySubCategory;
     }
 }

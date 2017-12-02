@@ -66,5 +66,11 @@ namespace LoginForm.CustomControls
             FormExchangeRate form = new FormExchangeRate();
             form.ShowDialog();
         }
+
+        private void btnCategorySubCategory_Click(object sender, EventArgs e)
+        {
+            FormCategorySubCategory form = new FormCategorySubCategory();
+            form.ShowDialog();
+        }
     }
 }

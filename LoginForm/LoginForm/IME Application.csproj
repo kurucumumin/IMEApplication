@@ -399,6 +399,12 @@
     <Compile Include="CustomControls\ManagementControl.Designer.cs">
       <DependentUpon>ManagementControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Management\FormCategorySubCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Management\FormCategorySubCategory.Designer.cs">
+      <DependentUpon>FormCategorySubCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Management\FormExchangeRate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -599,6 +605,9 @@
     <EmbeddedResource Include="CustomControls\ManagementControl.resx">
       <DependentUpon>ManagementControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Management\FormCategorySubCategory.resx">
+      <DependentUpon>FormCategorySubCategory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Management\FormExchangeRate.resx">
       <DependentUpon>FormExchangeRate.cs</DependentUpon>
     </EmbeddedResource>
@@ -723,6 +732,9 @@
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthorizationValue.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthRole.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Customer.datasource" />
+    <None Include="Properties\DataSources\LoginForm.DataSet.CustomerCategory.datasource" />
+    <None Include="Properties\DataSources\LoginForm.DataSet.CustomerCategorySubCategory.datasource" />
+    <None Include="Properties\DataSources\LoginForm.DataSet.CustomerSubCategory.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Mail.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.PurchaseOrder.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.PurchaseOrderDetail.datasource" />
