@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 using LoginForm.Services;
+using System.Data.SqlClient;
+
 
 namespace LoginForm.PurchaseOrder
 {
@@ -17,30 +19,39 @@ namespace LoginForm.PurchaseOrder
         IMEEntities IME = new IMEEntities();
         List<SaleOrderDetail> saleItemList = new List<SaleOrderDetail>();
 
+        SqlDataAdapter da;
+        System.Data.DataSet ds = new System.Data.DataSet();
+
         public NewPurchaseOrder()
         {
             InitializeComponent();
         }
 
-        public NewPurchaseOrder(SaleOrder so)
+        public NewPurchaseOrder(string item_code)
         {
             InitializeComponent();
-
-            foreach (SaleOrderDetail item in so.SaleOrderDetails)
-            {
-                saleItemList.Add(item);
-            }
+            PurchaseOrder(item_code);
         }
 
-        public NewPurchaseOrder(List<SaleOrder> SaleOrderList)
-        {
-            InitializeComponent();
+        //public NewPurchaseOrder(SaleOrder so)
+        //{
+        //    InitializeComponent();
 
-            foreach (SaleOrder sale in SaleOrderList)
-            { 
-                saleItemList.AddRange(sale.SaleOrderDetails);
-            }
-        }
+        //    foreach (SaleOrderDetail item in so.SaleOrderDetails)
+        //    {
+        //        saleItemList.Add(item);
+        //    }
+        //}
+
+        //public NewPurchaseOrder(List<SaleOrder> SaleOrderList)
+        //{
+        //    InitializeComponent();
+
+        //    foreach (SaleOrder sale in SaleOrderList)
+        //    { 
+        //        saleItemList.AddRange(sale.SaleOrderDetails);
+        //    }
+        //}
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
@@ -58,10 +69,10 @@ namespace LoginForm.PurchaseOrder
             }
         }
 
-        private void NewPurchaseOrder_Load(object sender, EventArgs e)
-        {
-            PurchaseOrderFill();
-        }
+        //private void NewPurchaseOrder_Load(object sender, EventArgs e)
+        //{
+        //    PurchaseOrderFill();
+        //}
 
         private void PurchaseOrderFill()
         {
@@ -84,6 +95,50 @@ namespace LoginForm.PurchaseOrder
             }
 
             dgPurchase.DataSource = purchaseList;
+        }
+
+        public void PurchaseOrder(string item_code)
+        {
+            SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-51RN2GB\LOCAL;Initial Catalog=IME;Integrated Security=True");
+            StringBuilder history = new StringBuilder();
+            history.Append("Select a.c_name, b.SaleOrderNo, c.ItemCode, c.ItemDescription, c.UnitOfMeasure, c.Quantity, c.Hazardous, ");
+            history.Append("c.Calibration, b.SaleOrderNature, d.AddressType, d.AdressTitle, c.UnitPrice ");
+            history.Append("from  Customer a, SaleOrder b, SaleOrderDetail c, CustomerAddress d ");
+        history.Append("where b.CustomerID=a.ID and c.SaleOrderNo =b.SaleOrderNo and b.DeliveryAddressID=d.ID and b.InvoiceAddressID=d.ID ");
+            history.Append("and c.SaleOrderNo=");
+            history.Append("'");
+            history.Append(item_code);
+            history.Append("'");
+
+            try
+            {
+                connection.Open();
+                da = new SqlDataAdapter(history.ToString(), connection);//dataapter nesnesini oluşturup sqlCmd sorgu cümlesini ve sqlCon veritabanı bağlantımızı yazıyoruz
+
+                da.Fill(ds, "History");
+
+                if (ds.Tables[0].Rows.Count == 0)//History tablosunda herhangi bir veri yoksa (boşsa) aşağıdaki blok çalışacak     
+                {
+                    DialogResult dialog = new DialogResult();
+                    dialog = MessageBox.Show("No Records Found", "", MessageBoxButtons.OK);
+                    if (dialog == DialogResult.OK)
+                    {
+                        this.Close();
+                        return;//kayıt olmadığı için return ile bloğun dışına çıkıyoruz
+                    }
+                }
+                else//kayıt varsa
+                {
+                    dgPurchase.DataSource = ds.Tables["History"];//sqlCmd sorgusu ile çektiğimiz kayıtlar datagridview1 üzerinde gösteriliyor    
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Hata : " + ex); //Veritabanına bağlantı sırasında alınan bir hata varsa burada gösteriliyor
+            }
+
+            connection.Close();//Açık olan Sql bağlantısı sonlandırılıyor      
+            da.Dispose(); //SqlDataApter nesnesi dispose ediliyor
         }
     }
 }

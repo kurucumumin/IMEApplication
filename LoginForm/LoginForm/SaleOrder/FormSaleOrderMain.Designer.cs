@@ -83,7 +83,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(1007, 21);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(216, 24);
+            this.textBox2.Size = new System.Drawing.Size(216, 21);
             this.textBox2.TabIndex = 25;
             // 
             // chcAllSales
@@ -100,7 +100,7 @@
             // 
             this.txtSearchText.Location = new System.Drawing.Point(786, 55);
             this.txtSearchText.Name = "txtSearchText";
-            this.txtSearchText.Size = new System.Drawing.Size(184, 24);
+            this.txtSearchText.Size = new System.Drawing.Size(184, 21);
             this.txtSearchText.TabIndex = 23;
             // 
             // cbSearch
@@ -111,7 +111,7 @@
             "QUOT NUMBER"});
             this.cbSearch.Location = new System.Drawing.Point(786, 21);
             this.cbSearch.Name = "cbSearch";
-            this.cbSearch.Size = new System.Drawing.Size(184, 26);
+            this.cbSearch.Size = new System.Drawing.Size(184, 23);
             this.cbSearch.TabIndex = 22;
             // 
             // label2
@@ -119,7 +119,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(10, 90);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 18);
+            this.label2.Size = new System.Drawing.Size(58, 15);
             this.label2.TabIndex = 21;
             this.label2.Text = "End Date";
             // 
@@ -128,7 +128,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(10, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 18);
+            this.label1.Size = new System.Drawing.Size(61, 15);
             this.label1.TabIndex = 20;
             this.label1.Text = "Start Date";
             // 
@@ -138,7 +138,7 @@
             this.datetimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datetimeEnd.Location = new System.Drawing.Point(100, 87);
             this.datetimeEnd.Name = "datetimeEnd";
-            this.datetimeEnd.Size = new System.Drawing.Size(133, 24);
+            this.datetimeEnd.Size = new System.Drawing.Size(133, 21);
             this.datetimeEnd.TabIndex = 19;
             // 
             // datetimeStart
@@ -147,7 +147,7 @@
             this.datetimeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datetimeStart.Location = new System.Drawing.Point(100, 18);
             this.datetimeStart.Name = "datetimeStart";
-            this.datetimeStart.Size = new System.Drawing.Size(133, 24);
+            this.datetimeStart.Size = new System.Drawing.Size(133, 21);
             this.datetimeStart.TabIndex = 18;
             // 
             // btnDelete
@@ -254,7 +254,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1242, 130);
+            this.panel1.Size = new System.Drawing.Size(1244, 130);
             this.panel1.TabIndex = 1;
             // 
             // panel2
@@ -265,7 +265,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 578);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1248, 126);
+            this.panel2.Size = new System.Drawing.Size(1250, 126);
             this.panel2.TabIndex = 2;
             // 
             // button5
@@ -297,7 +297,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 136F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 126F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1248, 704);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1250, 704);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // dgSales
@@ -322,17 +322,19 @@
             this.dgSales.ReadOnly = true;
             this.dgSales.RowTemplate.Height = 24;
             this.dgSales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgSales.Size = new System.Drawing.Size(1232, 426);
+            this.dgSales.Size = new System.Drawing.Size(1234, 426);
             this.dgSales.TabIndex = 0;
+            this.dgSales.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgSales_MouseClick);
+            this.dgSales.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgSales_MouseDoubleClick);
             // 
             // FormSalesOrderMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1248, 704);
+            this.ClientSize = new System.Drawing.Size(1250, 704);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MinimumSize = new System.Drawing.Size(1266, 751);
+            this.MinimumSize = new System.Drawing.Size(1266, 726);
             this.Name = "FormSalesOrderMain";
             this.Text = "Sales Order";
             this.Load += new System.EventHandler(this.FormSalesOrderMain_Load);
