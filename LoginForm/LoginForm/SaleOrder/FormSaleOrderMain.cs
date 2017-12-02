@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 using System.Linq;
+using LoginForm.PurchaseOrder;
 
 namespace LoginForm.nsSaleOrder
 {
@@ -61,5 +62,20 @@ namespace LoginForm.nsSaleOrder
             FormSaleOrderCreate form = new FormSaleOrderCreate();
             form.Show();
         }
+        private void dgSales_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (dgSales.CurrentRow != null)
+            {
+                IMEEntities IME = new IMEEntities();
+
+                string SaleOrderNo = dgSales.CurrentRow.Cells[1].Value.ToString();
+
+                SaleOrder so = IME.SaleOrders.Where(x => x.SaleOrderNo == SaleOrderNo).FirstOrDefault();
+
+                NewPurchaseOrder form = new NewPurchaseOrder(so);
+                form.ShowDialog();
+            }
+        }
+
     }
 }
