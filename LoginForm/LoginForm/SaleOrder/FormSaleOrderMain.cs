@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 using System.Linq;
+using System.Drawing;
 using LoginForm.PurchaseOrder;
 
 namespace LoginForm.nsSaleOrder
@@ -10,6 +11,7 @@ namespace LoginForm.nsSaleOrder
     public partial class FormSalesOrderMain : Form
     {
         //List<SalesOrder> list = new List<SalesOrder>
+        ContextMenu PurchaseOrderMenu = new ContextMenu();
 
         public FormSalesOrderMain()
         {
@@ -19,6 +21,7 @@ namespace LoginForm.nsSaleOrder
         private void FormSalesOrderMain_Load(object sender, EventArgs e)
         {
             BringSalesList();
+            PurchaseOrderMenu.MenuItems.Add(new MenuItem("Add to Purchase Order", PurchaseOrderMenu_Click));
         }
 
         private void BringSalesList()
@@ -64,6 +67,25 @@ namespace LoginForm.nsSaleOrder
         }
         private void dgSales_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode==Keys.Enter)
+            { 
+
+                if (dgSales.CurrentRow != null)
+                {
+                    IMEEntities IME = new IMEEntities();
+
+                    string SaleOrderNo = dgSales.CurrentRow.Cells[1].Value.ToString();
+
+                    SaleOrder so = IME.SaleOrders.Where(x => x.SaleOrderNo == SaleOrderNo).FirstOrDefault();
+
+                   // NewPurchaseOrder form = new NewPurchaseOrder(so);
+                   // form.ShowDialog();
+                }
+            }   
+        }
+
+        private void dgSales_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
             if (dgSales.CurrentRow != null)
             {
                 IMEEntities IME = new IMEEntities();
@@ -72,10 +94,33 @@ namespace LoginForm.nsSaleOrder
 
                 SaleOrder so = IME.SaleOrders.Where(x => x.SaleOrderNo == SaleOrderNo).FirstOrDefault();
 
-                NewPurchaseOrder form = new NewPurchaseOrder(so);
-                form.ShowDialog();
+               // NewPurchaseOrder form = new NewPurchaseOrder(so);
+              //  form.ShowDialog();
             }
         }
 
-    }
+        private void dgSales_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                PurchaseOrderMenu.Show(dgSales, new Point(e.X, e.Y));
+            }
+        }
+
+        private void PurchaseOrderMenu_Click(object sender, EventArgs e)
+        {
+            string item_code = null;
+
+            if (dgSales.CurrentRow.Cells["SoNO"].Value != null)
+                item_code = dgSales.CurrentRow.Cells["SoNO"].Value.ToString();
+            if (item_code == null)
+                MessageBox.Show("Please Enter a Item Code", "Eror !");
+            else
+            {
+                NewPurchaseOrder f = new NewPurchaseOrder(item_code);
+                try { f.ShowDialog(); } catch { }
+            }
+        }
+
+     }
 }
