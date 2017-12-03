@@ -731,6 +731,7 @@
             this.dgSaleItems.Size = new System.Drawing.Size(1652, 159);
             this.dgSaleItems.TabIndex = 10;
             this.dgSaleItems.Click += new System.EventHandler(this.dgSaleItems_Click);
+            this.dgSaleItems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgSaleItems_KeyDown);
             // 
             // sNo
             // 

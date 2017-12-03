@@ -1,4 +1,5 @@
 ﻿using LoginForm.DataSet;
+using LoginForm.nmSaleOrder;
 using LoginForm.QuotationModule;
 using LoginForm.Services;
 using System;
@@ -618,7 +619,7 @@ namespace LoginForm.nsSaleOrder
 
         private void dgSaleItems_Click(object sender, EventArgs e)
         {
-            if (dgSaleItems.RowCount > 0)
+            if (dgSaleItems.RowCount > 0 && dgSaleItems.CurrentRow.Cells["sItemCode"].Value != null)
             {
                 FillItemCard(dgSaleItems.CurrentRow.Cells["sItemCode"].Value.ToString());
             }
@@ -647,7 +648,7 @@ namespace LoginForm.nsSaleOrder
                     total += (decimal)row.Cells["sTotal"].Value * (decimal)row.Cells["sMargin"].Value;
                 }
             }
-            totalMargin = total / subtotal;
+            //totalMargin = total / subtotal;
             txtTotalMargin.Text = totalMargin.ToString();
         }
 
@@ -660,6 +661,7 @@ namespace LoginForm.nsSaleOrder
         {
             currency = GetCurrency(dtpDate.Value);
         }
+
         private void ChangeCurrency()
         {
 
@@ -750,6 +752,30 @@ namespace LoginForm.nsSaleOrder
             }
 
             return hasEmpty;
+        }
+
+        private void dgSaleItems_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && dgSaleItems.CurrentCell.ColumnIndex == 7)
+            {
+                FormSaleItemSearch form = new FormSaleItemSearch(dgSaleItems.CurrentCell.Value.ToString());
+                form.ShowDialog();
+
+                form.selectedItem.ToString();
+
+                //if (form.DialogResult == DialogResult.Yes)
+                //{
+
+                //}
+                //else
+                //{
+
+                //}
+                //if (dgSaleItems.CurrentCell.Value != null)
+                //{
+                    
+                //}
+            }
         }
     }
 }
