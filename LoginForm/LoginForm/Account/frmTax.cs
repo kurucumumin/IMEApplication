@@ -293,42 +293,42 @@ namespace LoginForm
         /// </summary>
         public void SaveOrEditMessage()
         {
-                //create ledger for the tax
-                string strTaxNameForLedger = string.Empty;
-                strTaxNameForLedger = txtTaxName.Text;
+            //create ledger for the tax
+            string strTaxNameForLedger = string.Empty;
+            strTaxNameForLedger = txtTaxName.Text;
 
 
-                if (btnSave.Text == "Save")
+            if (btnSave.Text == "Save")
+            {
+                if (IME.AccountLedgers.Where(a => a.ledgerName == strTaxNameForLedger).FirstOrDefault() == null)
                 {
-                    if (IME.AccountLedgers.Where(a=>a.ledgerName== strTaxNameForLedger).FirstOrDefault()==null)
-                    {
-                                SaveFunction();
-                                TaxSelectionGridFill();
-                                TaxSearchGridFill();
-                        MessageBox.Show("Ledger Added Successfully");
+                    SaveFunction();
+                    TaxSelectionGridFill();
+                    TaxSearchGridFill();
+                    MessageBox.Show("Ledger Added Successfully");
 
-                    }
-                    else
-                    {
-                        MessageBox.Show("Cannot save. Ledger already exists");
-                    }
                 }
                 else
                 {
-                    if (IME.AccountLedgers.Where(a=>a.ledgerName== strTaxNameForLedger).Where(b=>b.ledgerId== decLedgerId).FirstOrDefault()==null)
-                    {
-                                EditFunction();
-                                TaxSelectionGridFill();
-                                TaxSearchGridFill();
-                        MessageBox.Show("Ledger Edited Successfully");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Cannot save. Ledger already exists");
-                    }
+                    MessageBox.Show("Cannot save. Ledger already exists");
                 }
+            }
+            else
+            {
+                if (IME.AccountLedgers.Where(a => a.ledgerName == strTaxNameForLedger).Where(b => b.ledgerId == decLedgerId).FirstOrDefault() == null)
+                {
+                    EditFunction();
+                    TaxSelectionGridFill();
+                    TaxSearchGridFill();
+                    MessageBox.Show("Ledger Edited Successfully");
+                }
+                else
+                {
+                    MessageBox.Show("Cannot save. Ledger already exists");
+                }
+            }
 
-      
+
         }
         /// <summary>
         /// check invalid entries for save or update function
@@ -394,7 +394,7 @@ namespace LoginForm
         /// </summary>
         public void TaxSelectionGridFill()
         {
-                dgvTaxSelection.DataSource = IME.Taxes.Where(a=>a.ApplicationOn== "Product").Where(b=>b.TaxID>0).ToList();
+            dgvTaxSelection.DataSource = IME.Taxes.Where(a => a.ApplicationOn == "Product").Where(b => b.TaxID > 0).ToList();
         }
         /// <summary>
         /// tax search grid fill
@@ -421,12 +421,12 @@ namespace LoginForm
 
                 //dtblTaxSearch = spTax.TaxSearch(txtTaxNameSearch.Text.Trim(), cmbApplicableForSearch.Text, cmbCalculationModeSearch.Text, strCmbActiveSearchText);
 
-                
+
                 if (strCmbActiveSearchText != "All")
                 {
                     bool strCmbActiveSearch = false;
                     if (strCmbActiveSearchText == "True") { strCmbActiveSearch = true; }
-                    dgvTaxSearch.DataSource = IME.Taxes.Where(a => a.ApplicationOn == cmbApplicableForSearch.Text).Where(b => b.taxName == txtTaxNameSearch.Text.Trim()).Where(c => c.CalculatingMode == cmbCalculationModeSearch.Text).Where(d=>d.isActive== strCmbActiveSearch).ToList();
+                    dgvTaxSearch.DataSource = IME.Taxes.Where(a => a.ApplicationOn == cmbApplicableForSearch.Text).Where(b => b.taxName == txtTaxNameSearch.Text.Trim()).Where(c => c.CalculatingMode == cmbCalculationModeSearch.Text).Where(d => d.isActive == strCmbActiveSearch).ToList();
                 }
                 else
                 {
@@ -455,110 +455,110 @@ namespace LoginForm
         /// </summary>
         public void TaxSelectionFillForUpdate()
         {
-                int inRowCount = dgvTaxSelection.RowCount;
+            int inRowCount = dgvTaxSelection.RowCount;
+            for (int i = 0; i < inRowCount; i++)
+            {
+                dgvTaxSelection.Rows[i].Cells["dgvcbxSelect"].Value = false;
+            }
+            decTaxId = Convert.ToInt32(dgvTaxSearch.CurrentRow.Cells["dgvtxtTaxIdSearch"].Value.ToString());
+            Tax infoTax = IME.Taxes.Where(a => a.TaxID == decTaxId).FirstOrDefault();
+            if (infoTax != null)
+            {
+
+            }
+
+            //TaxInfo infoTax = new TaxInfo();
+            //TaxSP spTax = new TaxSP();
+            //TaxDetailsInfo infoTaxDetails = new TaxDetailsInfo();
+            //TaxDetailsSP spTaxDetails = new TaxDetailsSP();
+            //infoTax = spTax.TaxView(decTaxId);
+            txtTaxName.Text = infoTax.taxName;
+            txtRate.Text = infoTax.Rate.ToString();
+            cmbApplicableFor.Text = infoTax.ApplicationOn;
+            cmbCalculationMode.Text = infoTax.CalculatingMode;
+            txtNarration.Text = infoTax.narration;
+            if (infoTax.isActive.ToString() == "True")
+            {
+                cbxActive.Checked = true;
+            }
+            else
+            {
+                cbxActive.Checked = false;
+            }
+            strTaxName = infoTax.taxName;
+            decTaxIdForEdit = infoTax.TaxID;
+            btnSave.Text = "Update";
+            btnDelete.Enabled = true;
+            IME.SaveChanges();
+            var selectedtaxID = IME.TaxDetails.Where(a => a.taxID == decTaxId).Select(b => b.SelectedtaxID).ToList();
+            foreach (var dr in selectedtaxID)
+            {
+                string strTaxId = dr.ToString();
                 for (int i = 0; i < inRowCount; i++)
                 {
-                    dgvTaxSelection.Rows[i].Cells["dgvcbxSelect"].Value = false;
-                }
-                decTaxId = Convert.ToInt32(dgvTaxSearch.CurrentRow.Cells["dgvtxtTaxIdSearch"].Value.ToString());
-                Tax infoTax = IME.Taxes.Where(a => a.TaxID == decTaxId).FirstOrDefault();
-                if (infoTax!=null)
-                {
-
-                }
-
-                //TaxInfo infoTax = new TaxInfo();
-                //TaxSP spTax = new TaxSP();
-                //TaxDetailsInfo infoTaxDetails = new TaxDetailsInfo();
-                //TaxDetailsSP spTaxDetails = new TaxDetailsSP();
-                //infoTax = spTax.TaxView(decTaxId);
-                txtTaxName.Text = infoTax.taxName;
-                txtRate.Text = infoTax.Rate.ToString();
-                cmbApplicableFor.Text = infoTax.ApplicationOn;
-                cmbCalculationMode.Text = infoTax.CalculatingMode;
-                txtNarration.Text = infoTax.narration;
-                if (infoTax.isActive.ToString() == "True")
-                {
-                    cbxActive.Checked = true;
-                }
-                else
-                {
-                    cbxActive.Checked = false;
-                }
-                strTaxName = infoTax.taxName;
-                decTaxIdForEdit = infoTax.TaxID;
-                btnSave.Text = "Update";
-                btnDelete.Enabled = true;
-                IME.SaveChanges();
-                var selectedtaxID = IME.TaxDetails.Where(a => a.taxID == decTaxId).Select(b => b.SelectedtaxID).ToList(); 
-                foreach (var dr in selectedtaxID)
-                {
-                    string strTaxId = dr.ToString();
-                    for (int i = 0; i < inRowCount; i++)
+                    if (dgvTaxSelection.Rows[i].Cells["dgvtxtTaxId"].Value.ToString() == strTaxId)
                     {
-                        if (dgvTaxSelection.Rows[i].Cells["dgvtxtTaxId"].Value.ToString() == strTaxId)
-                        {
-                            dgvTaxSelection.Rows[i].Cells["dgvcbxSelect"].Value = true;
-                        }
+                        dgvTaxSelection.Rows[i].Cells["dgvcbxSelect"].Value = true;
                     }
                 }
-                AccountLedger al = new AccountLedger();
-                decLedgerId = IME.AccountLedgers.Where(a => a.ledgerName == txtTaxName.Text).FirstOrDefault().ledgerId;
+            }
+            AccountLedger al = new AccountLedger();
+            decLedgerId = IME.AccountLedgers.Where(a => a.ledgerName == txtTaxName.Text).FirstOrDefault().ledgerId;
 
-           
+
         }
         /// <summary>
         /// delete function
         /// </summary>
         public void Delete()
         {
-                    Tax infoTax = new Tax();
-                    TaxDetail taxDetail = new TaxDetail();
-                    bool isExist = false;
-                    if (IME.Taxes.Where(a => a.TaxID == decTaxId).FirstOrDefault() != null) isExist = true;
-                    if (!isExist)
-                    {
+            Tax infoTax = new Tax();
+            TaxDetail taxDetail = new TaxDetail();
+            bool isExist = false;
+            if (IME.Taxes.Where(a => a.TaxID == decTaxId).FirstOrDefault() != null) isExist = true;
+            if (!isExist)
+            {
 
-                        bool isDeletedTax = true;
-                        try
-                        {
-                            Tax tax = IME.Taxes.Where(a => a.TaxID == decTaxId).FirstOrDefault();
-                            IME.Taxes.Remove(tax);
-                        }
-                        catch
-                        {
-                            isDeletedTax = false;
-                        }
-                        if (isDeletedTax==false)
-                        {
-                            MessageBox.Show("You can't delete,reference exist");
-                        }
-                        else
-                        {
-                            var taxdetail = IME.TaxDetails.Where(a => a.taxID == decTaxId).ToList();
-                            foreach (var item in taxdetail)
-                            {
-                                IME.TaxDetails.Remove(item);
-                                IME.SaveChanges();
-                            }
-                            var accountLedger = IME.AccountLedgers.Where(a => a.ledgerId == decLedgerId).ToList();
-                            foreach (var item in accountLedger)
-                            {
-                                IME.AccountLedgers.Remove(item);
-                                IME.SaveChanges();
-                            }
-
-                            MessageBox.Show("Tax is Deleted successfully ");
-                            TaxSearchGridFill();
-                            TaxSelectionGridFill();
-                            Clear();
-                            SearchClear();
-                        }
-                    }
-                    else
+                bool isDeletedTax = true;
+                try
+                {
+                    Tax tax = IME.Taxes.Where(a => a.TaxID == decTaxId).FirstOrDefault();
+                    IME.Taxes.Remove(tax);
+                }
+                catch
+                {
+                    isDeletedTax = false;
+                }
+                if (isDeletedTax == false)
+                {
+                    MessageBox.Show("You can't delete,reference exist");
+                }
+                else
+                {
+                    var taxdetail = IME.TaxDetails.Where(a => a.taxID == decTaxId).ToList();
+                    foreach (var item in taxdetail)
                     {
-                        MessageBox.Show("You can't delete,reference exist");
+                        IME.TaxDetails.Remove(item);
+                        IME.SaveChanges();
                     }
+                    var accountLedger = IME.AccountLedgers.Where(a => a.ledgerId == decLedgerId).ToList();
+                    foreach (var item in accountLedger)
+                    {
+                        IME.AccountLedgers.Remove(item);
+                        IME.SaveChanges();
+                    }
+
+                    MessageBox.Show("Tax is Deleted successfully ");
+                    TaxSearchGridFill();
+                    TaxSelectionGridFill();
+                    Clear();
+                    SearchClear();
+                }
+            }
+            else
+            {
+                MessageBox.Show("You can't delete,reference exist");
+            }
         }
 
         public void CreateLedger()
@@ -694,14 +694,14 @@ namespace LoginForm
             // TO DO TAX CheckUserPrivilege
             //if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnSave.Text))
             //    {
-                    SaveOrEdit();
-                    txtRate.Focus();
-                //}
-                //else
-                //{
-                //    MessageBox.Show()
-                //}
-           
+            SaveOrEdit();
+            txtRate.Focus();
+            //}
+            //else
+            //{
+            //    MessageBox.Show()
+            //}
+
         }
         /// <summary>
         /// clear button click
@@ -892,13 +892,13 @@ namespace LoginForm
         private void frmTax_FormClosing(object sender, FormClosingEventArgs e)
         {
 
-                //if (frmProductCreationObj != null)
-                //{
-                //    frmProductCreationObj.ReturnFromTaxForm(decIdForOtherForms);
-                //    groupBox2.Enabled = true;
-                //    frmProductCreationObj.Enabled = true;
-                //}
-           
+            //if (frmProductCreationObj != null)
+            //{
+            //    frmProductCreationObj.ReturnFromTaxForm(decIdForOtherForms);
+            //    groupBox2.Enabled = true;
+            //    frmProductCreationObj.Enabled = true;
+            //}
+
         }
         #endregion
 

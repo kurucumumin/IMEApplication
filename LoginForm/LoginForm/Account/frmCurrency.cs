@@ -36,14 +36,14 @@ namespace LoginForm
         /// </summary>
         public void SaveFunction()
         {
-            if (IME.tbl_Currency.Where(a => a.currencyName == txtName.Text.Trim()).FirstOrDefault() == null)
+            if (IME.Currencies.Where(a => a.currencyName == txtName.Text.Trim()).FirstOrDefault() == null)
             {
-                tbl_Currency c = new tbl_Currency();
+                Currency c = new Currency();
                 c.currencySymbol = txtSymbol.Text.Trim();
                 c.currencyName = txtName.Text.Trim();
                 c.subunitName = txtSubUnit.Text.Trim();
                 c.isDefault = false;
-                IME.tbl_Currency.Add(c);
+                IME.Currencies.Add(c);
                 IME.SaveChanges();
                 MessageBox.Show("Currency is saved succesfully");
                 Clear();
@@ -59,19 +59,19 @@ namespace LoginForm
         /// </summary>
         public void EditFunction()
         {
-           
-                //infoCurrency.CurrencySymbol = txtSymbol.Text.Trim();
-                //infoCurrency.CurrencyName = txtName.Text.Trim();
-                //infoCurrency.SubunitName = txtSubUnit.Text.Trim();
-                //infoCurrency.NoOfDecimalPlaces = Convert.ToInt32(txtDecimalPlaces.Text.Trim());
-                //infoCurrency.Narration = txtNarration.Text.Trim();
-                //infoCurrency.IsDefault = false;
-                //infoCurrency.Extra1 = String.Empty;
-                //infoCurrency.Extra2 = String.Empty;
-                //infoCurrency.CurrencyId = decId;
-                if (IME.tbl_Currency.Where(a=>a.currencyName== txtName.Text.Trim()).FirstOrDefault()==null)
-                {
-                tbl_Currency c = IME.tbl_Currency.Where(a => a.currencyID == decId).FirstOrDefault();
+
+            //infoCurrency.CurrencySymbol = txtSymbol.Text.Trim();
+            //infoCurrency.CurrencyName = txtName.Text.Trim();
+            //infoCurrency.SubunitName = txtSubUnit.Text.Trim();
+            //infoCurrency.NoOfDecimalPlaces = Convert.ToInt32(txtDecimalPlaces.Text.Trim());
+            //infoCurrency.Narration = txtNarration.Text.Trim();
+            //infoCurrency.IsDefault = false;
+            //infoCurrency.Extra1 = String.Empty;
+            //infoCurrency.Extra2 = String.Empty;
+            //infoCurrency.CurrencyId = decId;
+            if (IME.Currencies.Where(a => a.currencyName == txtName.Text.Trim()).FirstOrDefault() == null)
+            {
+                Currency c = IME.Currencies.Where(a => a.currencyID == decId).FirstOrDefault();
                 c.currencySymbol = txtSymbol.Text.Trim();
                 c.currencyName = txtName.Text.Trim();
                 c.subunitName = txtSubUnit.Text.Trim();
@@ -80,14 +80,14 @@ namespace LoginForm
 
                 MessageBox.Show("Currency is updated successfully");
                 SearchClear();
-                    Clear();
-                }
-                else
-                {
-                    MessageBox.Show("Currency name already exist");
-                    txtName.Focus();
-                }
-            
+                Clear();
+            }
+            else
+            {
+                MessageBox.Show("Currency name already exist");
+                txtName.Focus();
+            }
+
         }
         /// <summary>
         /// FUNCTION TO CALL SAVE OR EDIT
@@ -123,11 +123,11 @@ namespace LoginForm
         /// </summary>
         public void FillControls()
         {
-            var c = IME.tbl_Currency.Where(a => a.currencyID == decId).FirstOrDefault();
-                txtName.Text = c.currencyName;
-                txtSymbol.Text = c.currencySymbol;
-                txtSubUnit.Text = c.subunitName;
-                decCurrencyId = c.currencyID;
+            var c = IME.Currencies.Where(a => a.currencyID == decId).FirstOrDefault();
+            txtName.Text = c.currencyName;
+            txtSymbol.Text = c.currencySymbol;
+            txtSubUnit.Text = c.subunitName;
+            decCurrencyId = c.currencyID;
         }
         /// <summary>
         /// Function to clear controls
@@ -165,24 +165,24 @@ namespace LoginForm
                 MessageBox.Show("C6:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-      
+
         public void GridFill()
         {
             if (txtNameSearch.Text.Trim() == "" && txtSymbolSearch.Text.Trim() != "")
             {
-                dgvCurrency.DataSource = IME.tbl_Currency.Where(b => b.currencySymbol.Contains(txtSymbolSearch.Text.Trim())).ToList();
+                dgvCurrency.DataSource = IME.Currencies.Where(b => b.currencySymbol.Contains(txtSymbolSearch.Text.Trim())).ToList();
             }
-            else if(txtSymbolSearch.Text.Trim()=="" && txtNameSearch.Text.Trim() != "")
+            else if (txtSymbolSearch.Text.Trim() == "" && txtNameSearch.Text.Trim() != "")
             {
-                dgvCurrency.DataSource = IME.tbl_Currency.Where(a => a.currencyName.Contains(txtNameSearch.Text.Trim())).ToList();
+                dgvCurrency.DataSource = IME.Currencies.Where(a => a.currencyName.Contains(txtNameSearch.Text.Trim())).ToList();
             }
-            else if(txtNameSearch.Text.Trim() == "" && txtNameSearch.Text.Trim() == "")
+            else if (txtNameSearch.Text.Trim() == "" && txtNameSearch.Text.Trim() == "")
             {
-                dgvCurrency.DataSource = IME.tbl_Currency.ToList();
+                dgvCurrency.DataSource = IME.Currencies.ToList();
             }
             else
             {
-                dgvCurrency.DataSource = IME.tbl_Currency.Where(a => a.currencyName.Contains(txtNameSearch.Text.Trim())).Where(b => b.currencySymbol.Contains(txtSymbolSearch.Text.Trim())).ToList();
+                dgvCurrency.DataSource = IME.Currencies.Where(a => a.currencyName.Contains(txtNameSearch.Text.Trim())).Where(b => b.currencySymbol.Contains(txtSymbolSearch.Text.Trim())).ToList();
             }
         }
 
@@ -190,10 +190,10 @@ namespace LoginForm
         {
             try
             {
-                var c = IME.tbl_Currency.Where(a => a.currencyID == decId).FirstOrDefault();
+                var c = IME.Currencies.Where(a => a.currencyID == decId).FirstOrDefault();
                 if (c != null)
                 {
-                    IME.tbl_Currency.Remove(c);
+                    IME.Currencies.Remove(c);
                     IME.SaveChanges();
                     MessageBox.Show("Currency Deleted Successfully");
                     Clear();
@@ -247,8 +247,8 @@ namespace LoginForm
         /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
-                    SaveOrEdit();
-                    GridFill();
+            SaveOrEdit();
+            GridFill();
         }
         /// <summary>
         /// On form closing
@@ -282,8 +282,8 @@ namespace LoginForm
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnClear_Click(object sender, EventArgs e)
-        {      
-                Clear();
+        {
+            Clear();
         }
         /// <summary>
         /// On 'Delete' button click
@@ -292,7 +292,7 @@ namespace LoginForm
         /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-                    Delete();
+            Delete();
         }
         /// <summary>
         /// On datagridview cell double click
@@ -301,22 +301,22 @@ namespace LoginForm
         /// <param name="e"></param>
         private void dgvCurrency_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-                if (e.RowIndex != -1)
+            if (e.RowIndex != -1)
+            {
+                decId = Convert.ToDecimal(dgvCurrency.Rows[e.RowIndex].Cells["CurrencyID"].Value.ToString());
+                if (IME.Currencies.Where(a => a.currencyID == decId).FirstOrDefault().isDefault == false)
                 {
-                    decId = Convert.ToDecimal(dgvCurrency.Rows[e.RowIndex].Cells["CurrencyID"].Value.ToString());
-                    if (IME.tbl_Currency.Where(a=>a.currencyID==decId).FirstOrDefault().isDefault==false)
-                    {
-                        FillControls();
-                        btnDelete.Enabled = true;
-                        btnSave.Text = "Update";
-                        txtName.Focus();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Default currency cannot update or delete");
-                        Clear();
-                    }
+                    FillControls();
+                    btnDelete.Enabled = true;
+                    btnSave.Text = "Update";
+                    txtName.Focus();
                 }
+                else
+                {
+                    MessageBox.Show("Default currency cannot update or delete");
+                    Clear();
+                }
+            }
         }
         /// <summary>
         /// Clears selection datagridview
@@ -456,19 +456,19 @@ namespace LoginForm
         /// <param name="e"></param>
         private void txtSubUnit_KeyDown(object sender, KeyEventArgs e)
         {
-                if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtSymbol.Focus();
+            }
+            if (e.KeyCode == Keys.Back)
+            {
+                if (txtSubUnit.Text == string.Empty || txtSubUnit.SelectionStart == 0)
                 {
                     txtSymbol.Focus();
+                    txtSymbol.SelectionStart = 0;
+                    txtSymbol.SelectionLength = 0;
                 }
-                if (e.KeyCode == Keys.Back)
-                {
-                    if (txtSubUnit.Text == string.Empty || txtSubUnit.SelectionStart == 0)
-                    {
-                        txtSymbol.Focus();
-                        txtSymbol.SelectionStart = 0;
-                        txtSymbol.SelectionLength = 0;
-                    }
-                }
+            }
         }
         private void txtNameSearch_KeyDown(object sender, KeyEventArgs e)
         {
@@ -519,7 +519,7 @@ namespace LoginForm
         /// <param name="e"></param>
         private void btnSave_KeyDown(object sender, KeyEventArgs e)
         {
-            
+
         }
         /// <summary>
         /// On 'Search' button key down

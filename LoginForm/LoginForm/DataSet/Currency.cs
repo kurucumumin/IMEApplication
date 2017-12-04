@@ -12,12 +12,12 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class tbl_Currency
+    public partial class Currency
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public tbl_Currency()
+        public Currency()
         {
-            this.tbl_ExchangeRate = new HashSet<tbl_ExchangeRate>();
+            this.ExchangeRates = new HashSet<ExchangeRate>();
         }
     
         public decimal currencyID { get; set; }
@@ -27,6 +27,6 @@ namespace LoginForm.DataSet
         public Nullable<bool> isDefault { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tbl_ExchangeRate> tbl_ExchangeRate { get; set; }
+        public virtual ICollection<ExchangeRate> ExchangeRates { get; set; }
     }
 }

@@ -59,8 +59,6 @@
         <EntityTypeShape EntityType="IMEModel.sysdiagram" Width="1.5" PointX="0.75" PointY="14.75" />
         <EntityTypeShape EntityType="IMEModel.Tax" Width="1.5" PointX="15.75" PointY="10.75" />
         <EntityTypeShape EntityType="IMEModel.TaxDetail" Width="1.5" PointX="2.75" PointY="14.75" />
-        <EntityTypeShape EntityType="IMEModel.tbl_Currency" Width="1.5" PointX="0.75" PointY="0.875" />
-        <EntityTypeShape EntityType="IMEModel.tbl_ExchangeRate" Width="1.5" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="IMEModel.Town" Width="1.5" PointX="13.5" PointY="32.25" />
         <EntityTypeShape EntityType="IMEModel.Worker" Width="1.5" PointX="3" PointY="25.375" />
         <AssociationConnector Association="IMEModel.FK__City__CountryID__51300E55" />
@@ -133,9 +131,11 @@
         <AssociationConnector Association="IMEModel.FK__SupplierW__depar__76619304" />
         <AssociationConnector Association="IMEModel.FK__SupplierM__suppl__00DF2177" />
         <AssociationConnector Association="IMEModel.FK__SupplierW__title__7755B73D" />
-        <AssociationConnector Association="IMEModel.FK__tbl_Excha__curre__52442E1F" />
         <AssociationConnector Association="IMEModel.AuthRole" />
         <AssociationConnector Association="IMEModel.UserAuthorization" />
+        <EntityTypeShape EntityType="IMEModel.Currency" Width="1.5" PointX="16.375" PointY="14.875" />
+        <EntityTypeShape EntityType="IMEModel.ExchangeRate" Width="1.5" PointX="18.625" PointY="15" />
+        <AssociationConnector Association="IMEModel.FK__tbl_Excha__curre__52442E1F" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

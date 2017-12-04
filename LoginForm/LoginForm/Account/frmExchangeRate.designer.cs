@@ -1,4 +1,5 @@
-﻿namespace LoginForm
+﻿
+namespace LoginForm
 {
     partial class frmExchangeRate
     {
