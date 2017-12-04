@@ -5,6 +5,10 @@ using LoginForm.DataSet;
 using System.Linq;
 using System.Drawing;
 using LoginForm.PurchaseOrder;
+using LoginForm.QuotationModule;
+using LoginForm.Services;
+using System.Data;
+
 
 namespace LoginForm.nsSaleOrder
 {
@@ -110,6 +114,7 @@ namespace LoginForm.nsSaleOrder
         private void PurchaseOrderMenu_Click(object sender, EventArgs e)
         {
             string item_code = null;
+            IMEEntities IME = new IMEEntities();
 
             if (dgSales.CurrentRow.Cells["SoNO"].Value != null)
                 item_code = dgSales.CurrentRow.Cells["SoNO"].Value.ToString();
@@ -117,8 +122,9 @@ namespace LoginForm.nsSaleOrder
                 MessageBox.Show("Please Enter a Item Code", "Eror !");
             else
             {
+                this.Close();
                 NewPurchaseOrder f = new NewPurchaseOrder(item_code);
-                try { f.ShowDialog(); } catch { }
+                f.ShowDialog();
             }
         }
 

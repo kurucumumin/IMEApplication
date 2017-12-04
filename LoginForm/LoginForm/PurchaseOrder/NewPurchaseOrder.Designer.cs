@@ -35,10 +35,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtOrderNumber = new System.Windows.Forms.TextBox();
             this.dgPurchase = new System.Windows.Forms.DataGridView();
+            this.SLC = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnExcel = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
-            this.SLC = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPurchase)).BeginInit();
             this.SuspendLayout();
@@ -114,6 +114,13 @@
             this.dgPurchase.Size = new System.Drawing.Size(1272, 432);
             this.dgPurchase.TabIndex = 10;
             // 
+            // SLC
+            // 
+            this.SLC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.SLC.HeaderText = "SLC";
+            this.SLC.Name = "SLC";
+            this.SLC.Width = 33;
+            // 
             // btnClose
             // 
             this.btnClose.Location = new System.Drawing.Point(1209, 571);
@@ -143,13 +150,6 @@
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
-            // SLC
-            // 
-            this.SLC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.SLC.HeaderText = "SLC";
-            this.SLC.Name = "SLC";
-            this.SLC.Width = 33;
-            // 
             // NewPurchaseOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -166,6 +166,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NewPurchaseOrder";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.NewPurchaseOrder_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPurchase)).EndInit();

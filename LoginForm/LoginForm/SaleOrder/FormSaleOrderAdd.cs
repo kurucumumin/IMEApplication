@@ -23,7 +23,7 @@ namespace LoginForm.nsSaleOrder
         
         List<SlidingPrice> priceList = new List<SlidingPrice>();
         List<OnSale> onSaleList = new List<OnSale>();
-        List<Hazardou> hazardousList = new List<Hazardou>();
+        List<Hazardou> hazardousList = new List<Hazardou>(); 
         CustomerAddress invoiceAddress = new CustomerAddress();
 
         Customer customer;
@@ -693,7 +693,7 @@ namespace LoginForm.nsSaleOrder
                 so.RepresentativeID = (int)cbRep.SelectedValue;
                 so.PaymentMethodID = (int)cbPayment.SelectedValue;
                 so.SaleOrderNature = cbOrderNature.SelectedItem.ToString();
-
+                
                 IME.SaleOrders.Add(so);
                 IME.SaveChanges();
 

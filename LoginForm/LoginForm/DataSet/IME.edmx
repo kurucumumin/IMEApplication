@@ -508,7 +508,7 @@
           <Property Name="NoteForCustomer" Type="nvarchar" MaxLength="200" />
           <Property Name="NoteForFinance" Type="int" />
           <Property Name="SaleOrderNature" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="ShippingType" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="ShippingType" Type="nvarchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="SaleOrderDetail">
           <Key>
@@ -537,7 +537,6 @@
           <Property Name="Hazardous" Type="bit" Nullable="false" />
           <Property Name="Calibration" Type="bit" Nullable="false" />
           <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="ItemCost" Type="decimal" Precision="20" Scale="5" Nullable="false" />
         </EntityType>
         <EntityType Name="SlidingPrice">
           <Key>
@@ -1169,18 +1168,6 @@
             </Principal>
             <Dependent Role="PurchaseOrderDetail">
               <PropertyRef Name="FicheNo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PurchaseO__Quota__45DE573A">
-          <End Role="Quotation" Type="Self.Quotation" Multiplicity="0..1" />
-          <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Quotation">
-              <PropertyRef Name="QuotationNo" />
-            </Principal>
-            <Dependent Role="PurchaseOrderDetail">
-              <PropertyRef Name="QuotationNo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1895,10 +1882,6 @@
             <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
             <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__PurchaseO__Quota__45DE573A" Association="Self.FK__PurchaseO__Quota__45DE573A">
-            <End Role="Quotation" EntitySet="Quotation" />
-            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
-          </AssociationSet>
           <AssociationSet Name="FK__PurchaseO__SaleO__46D27B73" Association="Self.FK__PurchaseO__SaleO__46D27B73">
             <End Role="SaleOrder" EntitySet="SaleOrder" />
             <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
@@ -2327,10 +2310,6 @@
           </AssociationSet>
           <AssociationSet Name="FK__PurchaseO__Fiche__44EA3301" Association="IMEModel.FK__PurchaseO__Fiche__44EA3301">
             <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
-            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PurchaseO__Quota__45DE573A" Association="IMEModel.FK__PurchaseO__Quota__45DE573A">
-            <End Role="Quotation" EntitySet="Quotations" />
             <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__PurchaseO__SaleO__46D27B73" Association="IMEModel.FK__PurchaseO__SaleO__46D27B73">
@@ -2884,7 +2863,6 @@
           <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PurchaseOrder" Relationship="IMEModel.FK__PurchaseO__Fiche__44EA3301" FromRole="PurchaseOrderDetail" ToRole="PurchaseOrder" />
-          <NavigationProperty Name="Quotation" Relationship="IMEModel.FK__PurchaseO__Quota__45DE573A" FromRole="PurchaseOrderDetail" ToRole="Quotation" />
           <NavigationProperty Name="SaleOrder" Relationship="IMEModel.FK__PurchaseO__SaleO__46D27B73" FromRole="PurchaseOrderDetail" ToRole="SaleOrder" />
         </EntityType>
         <EntityType Name="Quotation">
@@ -2918,7 +2896,6 @@
           <NavigationProperty Name="Note" Relationship="IMEModel.FK__Quotation__NoteF__0169315C" FromRole="Quotation" ToRole="Note" />
           <NavigationProperty Name="Note1" Relationship="IMEModel.FK__Quotation__NoteF__025D5595" FromRole="Quotation" ToRole="Note" />
           <NavigationProperty Name="PaymentMethod" Relationship="IMEModel.FK__Quotation__Payme__035179CE" FromRole="Quotation" ToRole="PaymentMethod" />
-          <NavigationProperty Name="PurchaseOrderDetails" Relationship="IMEModel.FK__PurchaseO__Quota__45DE573A" FromRole="Quotation" ToRole="PurchaseOrderDetail" />
           <NavigationProperty Name="QuotationDetails" Relationship="IMEModel.FK__Quotation__Quota__147C05D0" FromRole="Quotation" ToRole="QuotationDetail" />
         </EntityType>
         <EntityType Name="QuotationDetail">
@@ -3005,7 +2982,7 @@
           <Property Name="NoteForCustomer" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="NoteForFinance" Type="Int32" />
           <Property Name="SaleOrderNature" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="ShippingType" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ShippingType" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Customer" Relationship="IMEModel.FK__SaleOrder__Custo__1CDC41A7" FromRole="SaleOrder" ToRole="Customer" />
           <NavigationProperty Name="CustomerAddress" Relationship="IMEModel.FK__SaleOrder__Deliv__21A0F6C4" FromRole="SaleOrder" ToRole="CustomerAddress" />
           <NavigationProperty Name="CustomerAddress1" Relationship="IMEModel.FK__SaleOrder__Invoi__20ACD28B" FromRole="SaleOrder" ToRole="CustomerAddress" />
@@ -3045,7 +3022,6 @@
           <Property Name="Hazardous" Type="Boolean" Nullable="false" />
           <Property Name="Calibration" Type="Boolean" Nullable="false" />
           <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="ItemCost" Type="Decimal" Nullable="false" Precision="20" Scale="5" />
           <NavigationProperty Name="SaleOrder" Relationship="IMEModel.FK__SaleOrder__SaleO__3F3159AB" FromRole="SaleOrderDetail" ToRole="SaleOrder" />
         </EntityType>
         <EntityType Name="SlidingPrice">
@@ -3953,18 +3929,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PurchaseO__Quota__45DE573A">
-          <End Type="IMEModel.Quotation" Role="Quotation" Multiplicity="0..1" />
-          <End Type="IMEModel.PurchaseOrderDetail" Role="PurchaseOrderDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Quotation">
-              <PropertyRef Name="QuotationNo" />
-            </Principal>
-            <Dependent Role="PurchaseOrderDetail">
-              <PropertyRef Name="QuotationNo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__PurchaseO__SaleO__46D27B73">
           <End Type="IMEModel.SaleOrder" Role="SaleOrder" Multiplicity="0..1" />
           <End Type="IMEModel.PurchaseOrderDetail" Role="PurchaseOrderDetail" Multiplicity="*" />
@@ -4780,7 +4744,6 @@
           <EntitySetMapping Name="SaleOrderDetails">
             <EntityTypeMapping TypeName="IMEModel.SaleOrderDetail">
               <MappingFragment StoreEntitySet="SaleOrderDetail">
-                <ScalarProperty Name="ItemCost" ColumnName="ItemCost" />
                 <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="Calibration" ColumnName="Calibration" />
                 <ScalarProperty Name="Hazardous" ColumnName="Hazardous" />

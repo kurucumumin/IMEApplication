@@ -14,11 +14,26 @@ namespace LoginForm.PurchaseOrder
     public partial class PurchaseExportFiles : Form
     {
         IMEEntities IME = new IMEEntities();
-
+        List<DataGridViewRow> rowList = new List<DataGridViewRow>();
+        string fiche = "";
         public PurchaseExportFiles()
         {
             InitializeComponent();
         }
+
+        public PurchaseExportFiles(List<DataGridViewRow> List)
+        {
+            InitializeComponent();
+            rowList = List;
+        }
+
+        public PurchaseExportFiles(string ficheNo)
+        {
+            InitializeComponent();
+            fiche = ficheNo;
+
+        }
+
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
@@ -70,6 +85,50 @@ namespace LoginForm.PurchaseOrder
                 f.ShowDialog();
                 this.Close();
             }
+        }
+
+        private void btnCreatePurchase_Click(object sender, EventArgs e)
+        {
+            List<PurchaseOrderDetail> podList = new List<PurchaseOrderDetail>();
+            IMEEntities ime = new IMEEntities();
+
+            foreach (DataGridViewRow row in rowList)
+            {
+                PurchaseOrderDetail pod = new PurchaseOrderDetail();
+
+                pod.QuotationNo = row.Cells[2].Value.ToString();
+                pod.SaleOrderNo = row.Cells[3].Value.ToString();
+                pod.ItemCode = row.Cells[4].Value.ToString();
+                pod.ItemDescription = row.Cells[5].Value.ToString();
+                pod.Unit = row.Cells[6].Value.ToString();
+                pod.SendQty = (int)row.Cells[7].Value;
+                pod.Hazardous = (bool)row.Cells[8].Value;
+                pod.Calibration = (bool)row.Cells[9].Value;
+                pod.SaleOrderNature = row.Cells[10].Value.ToString();
+
+                podList.Add(pod);
+            }
+
+            IME.PurchaseOrderDetails.AddRange(podList);
+            IME.SaveChanges();
+
+
+            DataSet.PurchaseOrder po = new DataSet.PurchaseOrder();
+            po.FicheNo = fiche;
+            string s = rowList[0].Cells[3].Value.ToString();
+            po.CustomerID = ime.SaleOrders.Where(a => a.SaleOrderNo == s).FirstOrDefault().CustomerID;
+            po.PurchaseOrderDate = DateTime.Today.Date;
+            po.CameDate= ime.SaleOrders.Where(a => a.SaleOrderNo ==s).FirstOrDefault().SaleDate;
+            //po.Reason
+            ime.PurchaseOrders.Add(po);
+            IME.SaveChanges();
+            foreach (PurchaseOrderDetail item in podList)
+            {
+                po.PurchaseOrderDetails.Add(item);
+            }
+
+            IME.SaveChanges();
+
         }
     }
 }
