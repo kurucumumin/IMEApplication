@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.tableLeftPanel = new System.Windows.Forms.TableLayoutPanel();
             this.gbMainMenu = new System.Windows.Forms.GroupBox();
+            this.btnAccounting = new System.Windows.Forms.Button();
             this.btnManagement = new System.Windows.Forms.Button();
             this.btnDevelopment = new System.Windows.Forms.Button();
             this.btnLoader = new System.Windows.Forms.Button();
@@ -40,6 +41,7 @@
             this.controlDevelopment = new LoginForm.CustomControls.DevelopmentControl();
             this.controlLoader = new LoginForm.CustomControls.LoaderControl();
             this.controlManagement = new LoginForm.CustomControls.ManagementControl();
+            this.controlAccounting = new LoginForm.CustomControls.AccountingControl();
             this.tableLeftPanel.SuspendLayout();
             this.gbMainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -70,6 +72,7 @@
             this.gbMainMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbMainMenu.AutoSize = true;
+            this.gbMainMenu.Controls.Add(this.btnAccounting);
             this.gbMainMenu.Controls.Add(this.btnManagement);
             this.gbMainMenu.Controls.Add(this.btnDevelopment);
             this.gbMainMenu.Controls.Add(this.btnLoader);
@@ -78,10 +81,26 @@
             this.gbMainMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbMainMenu.Name = "gbMainMenu";
             this.gbMainMenu.Padding = new System.Windows.Forms.Padding(0, 4, 0, 8);
-            this.gbMainMenu.Size = new System.Drawing.Size(213, 182);
+            this.gbMainMenu.Size = new System.Drawing.Size(213, 232);
             this.gbMainMenu.TabIndex = 32;
             this.gbMainMenu.TabStop = false;
             this.gbMainMenu.Text = "Menu";
+            // 
+            // btnAccounting
+            // 
+            this.btnAccounting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(199)))), ((int)(((byte)(132)))));
+            this.btnAccounting.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAccounting.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.btnAccounting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAccounting.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccounting.Location = new System.Drawing.Point(0, 174);
+            this.btnAccounting.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAccounting.Name = "btnAccounting";
+            this.btnAccounting.Size = new System.Drawing.Size(213, 50);
+            this.btnAccounting.TabIndex = 35;
+            this.btnAccounting.Text = "Accounting";
+            this.btnAccounting.UseVisualStyleBackColor = false;
+            this.btnAccounting.Click += new System.EventHandler(this.btnAccounting_Click);
             // 
             // btnManagement
             // 
@@ -164,6 +183,7 @@
             this.panel1.Controls.Add(this.controlDevelopment);
             this.panel1.Controls.Add(this.controlLoader);
             this.panel1.Controls.Add(this.controlManagement);
+            this.panel1.Controls.Add(this.controlAccounting);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(225, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
@@ -200,6 +220,15 @@
             this.controlManagement.Name = "controlManagement";
             this.controlManagement.Size = new System.Drawing.Size(770, 471);
             this.controlManagement.TabIndex = 2;
+            // 
+            // controlAccounting
+            // 
+            this.controlAccounting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.controlAccounting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.controlAccounting.Location = new System.Drawing.Point(0, 0);
+            this.controlAccounting.Name = "controlAccounting";
+            this.controlAccounting.Size = new System.Drawing.Size(770, 471);
+            this.controlAccounting.TabIndex = 3;
             // 
             // FormMain
             // 
@@ -239,5 +268,7 @@
         private System.Windows.Forms.Button btnDevelopment;
         private System.Windows.Forms.Button btnLoader;
         private System.Windows.Forms.Button btnManagement;
+        private System.Windows.Forms.Button btnAccounting;
+        private CustomControls.AccountingControl controlAccounting;
     }
 }

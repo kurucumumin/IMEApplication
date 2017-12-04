@@ -59,5 +59,10 @@ namespace LoginForm
                 btnLoader.Visible = true;
             }
         }
+
+        private void btnAccounting_Click(object sender, EventArgs e)
+        {
+            controlAccounting.BringToFront();
+        }
     }
 }
