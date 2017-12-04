@@ -3,6 +3,8 @@
     public partial class SaleItem
     {
         public int NO { get; set; }
+        public bool HZ { get; set; }
+        public bool HE { get; set; }
         public bool HS { get; set; }
         public bool LI { get; set; }
         public bool CL { get; set; }
@@ -26,7 +28,6 @@
         public decimal Total { get; set; }
         public decimal TargetUP { get; set; }
         public string Competitor { get; set; }
-        public bool HZ { get; set; }
         public bool CR { get; set; }
         public string Delivery { get; set; }
         public decimal UnitWeight { get; set; }
@@ -36,5 +37,33 @@
         public string COO { get; set; }
         public string CCCNO { get; set; }
         public int isDeleted { get; set; }
+        public string Manufacturer { get; set; }
+        public string dependentTable { get; set; }
+        public string UKIntroDate { get; set; }
+        public string UKDiscDate { get; set; }
+        public decimal Height { get; set; }
+        public decimal Width { get; set; }
+        public decimal Length { get; set; }
+        public string MHLevel1 { get; set; }
+        public string SuperSection { get; set; }
+        public string Section { get; set; }
+        public string Note { get; set; }
+        public int OnHandStockBalance { get; set; }
+        public int QuantityOnOrder { get; set; }
+        public int Col1Break { get; set; }
+        public int Col2Break { get; set; }
+        public int Col3Break { get; set; }
+        public int Col4Break { get; set; }
+        public int Col5Break { get; set; }
+        public decimal UK1Price { get; set; }
+        public decimal UK2Price { get; set; }
+        public decimal UK3Price { get; set; }
+        public decimal UK4Price { get; set; }
+        public decimal UK5Price { get; set; }
+        public decimal Cost1 { get; set; }
+        public decimal Cost2 { get; set; }
+        public decimal Cost3 { get; set; }
+        public decimal Cost4 { get; set; }
+        public decimal Cost5 { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using LoginForm.DataSet;
+using LoginForm.Model;
 using LoginForm.nmSaleOrder;
 using LoginForm.QuotationModule;
 using LoginForm.Services;
@@ -43,7 +44,7 @@ namespace LoginForm.nsSaleOrder
             dtpDate.Value = DateTime.Today;
             dtpRequestedDelvDate.MinDate = dtpDate.Value;
             dtpRequestedDelvDate.Value = dtpDate.Value;
-            BringPriceList(list);
+            //BringPriceList(list);
             ConvertToSaleItem(list, addedItemList, removedItemList);
             SortTheList(addedItemList);
             SortTheList(removedItemList);
@@ -355,7 +356,7 @@ namespace LoginForm.nsSaleOrder
             row.Cells["sLC"].Style.BackColor = (item.LM == true) ? Color.BurlyWood : Color.White;
             row.Cells["sLI"].Style.BackColor = (item.LI == true) ? Color.Ivory : Color.White;
             row.Cells["sLM"].Style.BackColor = (item.LM == true) ? Color.Blue : Color.White;
-            row.Cells["sMargin"].Value = CalculateMargin(item.LandingCost, item.UC_UP);
+            //row.Cells["sMargin"].Value = CalculateMargin(item.LandingCost, item.UC_UP);
             row.Cells["sMPN"].Value = item.MPN;
             row.Cells["sNO"].Value = item.NO;
             row.Cells["sQty"].Value = item.Qty;
@@ -377,85 +378,17 @@ namespace LoginForm.nsSaleOrder
             return (((1 - landingCost / UCUPCurr)) * 100)/*.ToString("G29")*/;
         }
 
-
-        public partial class SaleItem
-        {
-            public int NO { get; set; }
-            public bool HZ { get; set; }
-            public bool HE { get; set; }
-            public bool HS { get; set; }
-            public bool LI { get; set; }
-            public bool CL { get; set; }
-            public bool LC { get; set; }
-            public bool LM { get; set; }
-            public string Supplier { get; set; }
-            public string ItemCode { get; set; }
-            public string Brand { get; set; }
-            public string MPN { get; set; }
-            public string Description { get; set; }
-            public decimal Cost { get; set; }
-            public decimal LandingCost { get; set; }
-            public decimal Margin { get; set; }
-            public int Qty { get; set; }
-            public int Stock { get; set; }
-            public string UOM { get; set; }
-            public int UC { get; set; }
-            public decimal UPIMELP { get; set; }
-            public decimal Discount { get; set; }
-            public decimal UC_UP { get; set; }
-            public decimal Total { get; set; }
-            public decimal TargetUP { get; set; }
-            public string Competitor { get; set; }
-            public bool CR { get; set; }
-            public string Delivery { get; set; }
-            public decimal UnitWeight { get; set; }
-            public decimal TotalWeight { get; set; }
-            public string CustItemStockCode { get; set; }
-            public string CustItemDescription { get; set; }
-            public string COO { get; set; }
-            public string CCCNO { get; set; }
-            public int isDeleted { get; set; }
-            public string Manufacturer { get; set; }
-            public string dependentTable { get; set; }
-            public string UKIntroDate { get; set; }
-            public string UKDiscDate { get; set; }
-            public decimal Height { get; set; }
-            public decimal Width { get; set; }
-            public decimal Length { get; set; }
-            public string MHLevel1 { get; set; }
-            public string SuperSection { get; set; }
-            public string Section { get; set; }
-            public string Note { get; set; }
-            public int OnHandStockBalance { get; set; }
-            public int QuantityOnOrder { get; set; }
-            public int Col1Break { get; set; }
-            public int Col2Break { get; set; }
-            public int Col3Break { get; set; }
-            public int Col4Break { get; set; }
-            public int Col5Break { get; set; }
-            public decimal UK1Price { get; set; }
-            public decimal UK2Price { get; set; }
-            public decimal UK3Price { get; set; }
-            public decimal UK4Price { get; set; }
-            public decimal UK5Price { get; set; }
-            public decimal Cost1 { get; set; }
-            public decimal Cost2 { get; set; }
-            public decimal Cost3 { get; set; }
-            public decimal Cost4 { get; set; }
-            public decimal Cost5 { get; set; }
-        }
-
         private void FillCustomer()
         {
             txtCustomerName.Text = customer.c_name;
             CustomerCode.Text = customer.ID;
 
-            cbCurrency.SelectedValue = customer.CurrNameQuo;
-            cbCurrType.SelectedItem = customer.CurrTypeQuo;
-            cbRep.SelectedValue = customer.representaryID;
-            cbPaymentTerm.SelectedValue = customer.PaymentTerm;
-            cbPayment.SelectedItem = customer.PaymentMethod;
-            cbWorkers.SelectedValue = (customer.MainContactID != null) ? customer.MainContactID : null;
+            if (customer.CurrNameQuo != null) { cbCurrency.SelectedValue = customer.CurrNameQuo; } else { cbCurrency.SelectedIndex = 0; }
+            if (customer.CurrTypeQuo != null) { cbCurrType.SelectedItem = customer.CurrTypeQuo; } else { cbCurrType.SelectedIndex = 0; }
+            if (customer.representaryID != null) { cbRep.SelectedValue = customer.representaryID; } else { cbRep.SelectedIndex = 0; }
+            if (customer.PaymentTerm != null) { cbPaymentTerm.SelectedValue = customer.PaymentTerm; } else { cbPaymentTerm.SelectedIndex = 0; }
+            if (customer.PaymentMethod != null) { cbPayment.SelectedItem = customer.PaymentMethod; } else { cbPayment.SelectedIndex = 0; }
+            if (customer.MainContactID != null) { cbWorkers.SelectedValue = customer.MainContactID; } else { cbWorkers.SelectedIndex = 0; }  
 
             //cbCurrency.SelectedIndex = cbCurrency.FindStringExact(customer.CurrNameQuo);
             //cbCurrType.SelectedIndex = cbCurrType.FindStringExact(customer.CurrTypeQuo);
@@ -482,9 +415,6 @@ namespace LoginForm.nsSaleOrder
                 txtInvoiceAddress.Text = String.Empty;
             }
             cbDeliveryAddress.SelectedItem = (deliveryAddress != null) ? deliveryAddress : invoiceAddress;
-        
-
-
         }
 
         private void populateComboBoxes()
@@ -520,62 +450,72 @@ namespace LoginForm.nsSaleOrder
 
         private void FillItemCard(string itemCode)
         {
-            SaleItem s = addedItemList.Where(item => item.ItemCode.Contains(itemCode)).First();
+            SaleItem s = new SaleItem();
+            bool itemFound = false;
+            try
+            {
+                s = addedItemList.Where(item => item.ItemCode.Contains(itemCode)).First();
+                itemFound = true;
+            }
+            catch (Exception){}
 
-            txtManufacturer.Text = s.Manufacturer;
-            txtBrand.Text = s.Brand;
-            txtSupersectionName.Text = s.SuperSection;
-            txtSection.Text = s.Section;
-            txtMHCodeLevel1.Text = s.MHLevel1;
-            txtCofO.Text = s.COO;
-            txtCCCN.Text = s.CCCNO;
-            txtRSStock.Text = s.OnHandStockBalance.ToString();
-            txtRSOnOrder.Text = s.QuantityOnOrder.ToString();
-            txtHazardousInd.BackColor = (s.HZ) ? Color.IndianRed : Color.White;
-            txtEnvironment.BackColor = (s.HE) ? Color.IndianRed : Color.White;
-            txtShipping.BackColor = (s.HS) ? Color.IndianRed : Color.White;
-            txtLithium.BackColor = (s.LI) ? Color.IndianRed : Color.White;
-            txtCalibrationInd.BackColor = (s.CL) ?Color.IndianRed : Color.White;
-            txtLicenceType.BackColor = (s.LC) ? Color.IndianRed : Color.White; 
-            //TODO Alttkileri ekle
-            /*if (s.DC) { txtDiscCharge.BackColor = Color.IndianRed; }
-            if (s.EC) { txtExpiringPro.BackColor = Color.IndianRed; }*/
+            if (itemFound)
+            {
+                txtManufacturer.Text = s.Manufacturer;
+                txtBrand.Text = s.Brand;
+                txtSupersectionName.Text = s.SuperSection;
+                txtSection.Text = s.Section;
+                txtMHCodeLevel1.Text = s.MHLevel1;
+                txtCofO.Text = s.COO;
+                txtCCCN.Text = s.CCCNO;
+                txtRSStock.Text = s.OnHandStockBalance.ToString();
+                txtRSOnOrder.Text = s.QuantityOnOrder.ToString();
+                txtHazardousInd.BackColor = (s.HZ) ? Color.IndianRed : Color.White;
+                txtEnvironment.BackColor = (s.HE) ? Color.IndianRed : Color.White;
+                txtShipping.BackColor = (s.HS) ? Color.IndianRed : Color.White;
+                txtLithium.BackColor = (s.LI) ? Color.IndianRed : Color.White;
+                txtCalibrationInd.BackColor = (s.CL) ? Color.IndianRed : Color.White;
+                txtLicenceType.BackColor = (s.LC) ? Color.IndianRed : Color.White;
+                //TODO Alttkileri ekle
+                /*if (s.DC) { txtDiscCharge.BackColor = Color.IndianRed; }
+                if (s.EC) { txtExpiringPro.BackColor = Color.IndianRed; }*/
 
-            //TODO Intro(SD) veriyi kontrol et. DiskDate mi yoksa intro date mi?
-            txtUKDiscDate.Text = s.UKIntroDate;
+                //TODO Intro(SD) veriyi kontrol et. DiskDate mi yoksa intro date mi?
+                txtUKDiscDate.Text = s.UKIntroDate;
 
-            txtDiscontinuationDate.Text = s.UKDiscDate;
+                txtDiscontinuationDate.Text = s.UKDiscDate;
 
-            //TODO alttakileri doldur.
-            /*txtSubstitutedBy.Text
-            txtRunOn.Text
-            txtReferral.Text
-            textBox35.Text*/
+                //TODO alttakileri doldur.
+                /*txtSubstitutedBy.Text
+                txtRunOn.Text
+                txtReferral.Text
+                textBox35.Text*/
 
-            txtHeight.Text = (s.Height * 100).ToString();
-            txtWidth.Text = (s.Width * 100).ToString();
-            txtLength.Text = (s.Length * 100).ToString();
-            txtStandartWeight.Text = s.UnitWeight.ToString();
+                txtHeight.Text = (s.Height * 100).ToString();
+                txtWidth.Text = (s.Width * 100).ToString();
+                txtLength.Text = (s.Length * 100).ToString();
+                txtStandartWeight.Text = s.UnitWeight.ToString();
 
-            //TODO GrossWeight nedir, öğren
-            txtGrossWeight.Text = s.TotalWeight.ToString();
+                //TODO GrossWeight nedir, öğren
+                txtGrossWeight.Text = s.TotalWeight.ToString();
 
-            txtUnitCount1.Text = s.Col1Break.ToString();
-            txtUnitCount2.Text = s.Col2Break.ToString();
-            txtUnitCount3.Text = s.Col3Break.ToString();
-            txtUnitCount4.Text = s.Col4Break.ToString();
-            txtUnitCount5.Text = s.Col5Break.ToString();
-            txtUK1.Text = s.UK1Price.ToString();
-            txtUK2.Text = s.UK2Price.ToString();
-            txtUK3.Text = s.UK3Price.ToString();
-            txtUK4.Text = s.UK4Price.ToString();
-            txtUK5.Text = s.UK5Price.ToString();
-            txtCost1.Text = s.Cost1.ToString();
-            txtCost2.Text = s.Cost2.ToString();
-            txtCost3.Text = s.Cost3.ToString();
-            txtCost4.Text = s.Cost4.ToString();
-            txtCost5.Text = s.Cost5.ToString();
-            //txtWeb1.Text = (s.UK1Price * customerFactor) / 
+                txtUnitCount1.Text = s.Col1Break.ToString();
+                txtUnitCount2.Text = s.Col2Break.ToString();
+                txtUnitCount3.Text = s.Col3Break.ToString();
+                txtUnitCount4.Text = s.Col4Break.ToString();
+                txtUnitCount5.Text = s.Col5Break.ToString();
+                txtUK1.Text = s.UK1Price.ToString();
+                txtUK2.Text = s.UK2Price.ToString();
+                txtUK3.Text = s.UK3Price.ToString();
+                txtUK4.Text = s.UK4Price.ToString();
+                txtUK5.Text = s.UK5Price.ToString();
+                txtCost1.Text = s.Cost1.ToString();
+                txtCost2.Text = s.Cost2.ToString();
+                txtCost3.Text = s.Cost3.ToString();
+                txtCost4.Text = s.Cost4.ToString();
+                txtCost5.Text = s.Cost5.ToString();
+                //txtWeb1.Text = (s.UK1Price * customerFactor) / 
+            }
         }
 
         private void btnViewMore_Click(object sender, EventArgs e)
@@ -756,25 +696,47 @@ namespace LoginForm.nsSaleOrder
 
         private void dgSaleItems_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter && dgSaleItems.CurrentCell.ColumnIndex == 7)
-            {
-                FormSaleItemSearch form = new FormSaleItemSearch(dgSaleItems.CurrentCell.Value.ToString());
-                form.ShowDialog();
+            //if (e.KeyCode == Keys.Enter && dgSaleItems.CurrentCell.ColumnIndex == 7)
+            //{
+            //    FormSaleItemSearch form = new FormSaleItemSearch(dgSaleItems.CurrentCell.Value.ToString());
+            //    form.ShowDialog();
 
-                form.selectedItem.ToString();
+            //    form.selectedItem.ToString();
 
-                //if (form.DialogResult == DialogResult.Yes)
-                //{
+            //    //if (form.DialogResult == DialogResult.Yes)
+            //    //{
 
-                //}
-                //else
-                //{
+            //    //}
+            //    //else
+            //    //{
 
-                //}
-                //if (dgSaleItems.CurrentCell.Value != null)
-                //{
+            //    //}
+            //    //if (dgSaleItems.CurrentCell.Value != null)
+            //    //{
                     
-                //}
+            //    //}
+            //}
+        }
+
+        private void dgSaleItems_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            switch (e.ColumnIndex)
+            {
+                //ItemCode
+                case 7:
+                    FormSaleItemSearch form = new FormSaleItemSearch(dgSaleItems.CurrentCell.Value.ToString());
+                    DialogResult result = form.ShowDialog();
+                    if (result == DialogResult.OK)
+                    {
+                        SaleItem s = ((SaleItem)form.selectedItem);
+                        SaleItemToRow(s, dgSaleItems.Rows[e.RowIndex]);
+                        addedItemList.Add(s);
+                    }
+                    else
+                    {
+                        MessageBox.Show("You did not choose an item","Attention");
+                    }
+                    break;
             }
         }
     }
