@@ -64,7 +64,7 @@ namespace LoginForm.PurchaseOrder
                 pod.SaleOrderNature = sod.SaleOrder.SaleOrderNature;
                 pod.QuotationNo = sod.SaleOrder.QuotationNos;
                 pod.SaleOrderNo = sod.SaleOrderNo;
-                pod.ItemDesc = sod.ItemDescription;
+                pod.ItemDescription = sod.ItemDescription;
                 pod.Unit = sod.UnitOfMeasure;
                 pod.Hazardous = sod.Hazardous;
                 pod.Calibration = sod.Calibration;

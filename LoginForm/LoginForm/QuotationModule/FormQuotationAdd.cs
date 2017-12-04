@@ -167,7 +167,7 @@ namespace LoginForm.QuotationModule
             {
                 txtCustomerName.Text = c.c_name;
                 cbCurrency.SelectedIndex = cbCurrency.FindStringExact(c.CurrNameQuo);
-                cbCurrType.SelectedIndex = cbCurrType.FindStringExact(c.CurrTypeQuo);
+                //cbCurrType.SelectedIndex = cbCurrType.FindStringExact(c.CurrTypeQuo);
                 //if(c.MainContactID!=null) cbWorkers.SelectedIndex = (int)c.MainContactID;
                 if (c.paymentmethodID != null)
                 {
@@ -176,9 +176,9 @@ namespace LoginForm.QuotationModule
                 try { txtContactNote.Text = c.CustomerWorker.Note.Note_name; } catch { }
                 try { txtCustomerNote.Text = c.Note.Note_name; } catch { }
                 try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
-                cbRep.SelectedValue = c.Worker.WorkerID;
+                if(c.Worker!=null) cbRep.SelectedValue = c.Worker.WorkerID;
                 cbCurrency.SelectedItem = cbCurrency.FindStringExact(c.CurrNameQuo);
-                cbCurrType.SelectedItem = cbCurrType.FindStringExact(c.CurrTypeQuo);
+                //cbCurrType.SelectedItem = cbCurrType.FindStringExact(c.CurrTypeQuo);
             }
         }
 
@@ -1313,7 +1313,7 @@ namespace LoginForm.QuotationModule
             try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
             q.PaymentID = (cbPayment.SelectedItem as PaymentMethod).ID;
             q.CurrName = (cbCurrency.SelectedItem as Rate).CurType;
-            q.CurrType = cbCurrType.Text;
+            //q.CurrType = cbCurrType.Text;
             q.Curr = CurrValue;
 
             q.CustomerID = CustomerCode.Text;
@@ -1379,7 +1379,7 @@ namespace LoginForm.QuotationModule
             try { q.PaymentID = (cbPayment.SelectedItem as PaymentMethod).ID; } catch { }
             try { q.CurrName = (cbCurrency.SelectedItem as Rate).CurType; } catch { }
             q.ShippingMethodID = cbSMethod.SelectedIndex;
-            try { q.CurrType = cbCurrType.SelectedText; } catch { }
+            //try { q.CurrType = cbCurrType.SelectedText; } catch { }
             try { q.Curr = CurrValue; } catch { }
             try { q.CustomerID = CustomerCode.Text; } catch { }
             try { q.QuotationMainContact = cbWorkers.SelectedIndex; } catch { }
@@ -1487,7 +1487,7 @@ namespace LoginForm.QuotationModule
             fillCustomer();
             #region QuotationDetails
             cbCurrency.SelectedItem = q.CurrName;
-            cbCurrType.SelectedItem = q.CurrType;
+            //cbCurrType.SelectedItem = q.CurrType;
             cbWorkers.SelectedItem = q.Customer.MainContactID;
             foreach (var item in q.QuotationDetails)
             {
@@ -1824,16 +1824,16 @@ namespace LoginForm.QuotationModule
 
         private void cbCurrType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ((cbCurrType.SelectedIndex != null))
-            {
-                GetCurrency(dtpDate.Value);
-                ChangeCurr();
-            }
-            else
-            {
-                MessageBox.Show("You Must Choose a Curr Type");
-                cbCurrType.SelectedIndex = 0;
-            }
+        //    if ((cbCurrType.SelectedIndex != null))
+        //    {
+        //        GetCurrency(dtpDate.Value);
+        //        ChangeCurr();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("You Must Choose a Curr Type");
+        //        cbCurrType.SelectedIndex = 0;
+        //    }
         }
 
         private void GetCurrency(DateTime date)

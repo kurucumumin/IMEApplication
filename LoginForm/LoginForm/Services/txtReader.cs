@@ -369,11 +369,10 @@ namespace LoginForm
                                         Superdiskitems.Filler1 = word[i];
                                         break;
                                     case "Future_Sell_Price":
-                                        try
+                                        if(word[i] != "")
                                         {
                                             Superdiskitems.Future_Sell_Price = decimal.Parse(word[i]);
                                         }
-                                        catch { }
                                         break;
                                     case "Hazardous_Ind":
                                         Superdiskitems.Hazardous_Ind = word[i];

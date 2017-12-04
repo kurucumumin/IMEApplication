@@ -81,7 +81,7 @@ namespace LoginForm
             {
                 ExchangeService DailyDolar = new ExchangeService();
                 Rate DolarRate = new Rate();
-                ExchangeRate RateForDolar = new ExchangeRate();
+                classExchangeRate RateForDolar = new classExchangeRate();
                 RateForDolar = DailyDolar.GetExchangeRateforDolar();
                 DolarRate.CurType = RateForDolar.Code;
                 DolarRate.RateBuy = RateForDolar.ExchangeBuy;
@@ -92,7 +92,7 @@ namespace LoginForm
                 IME.Rates.Add(DolarRate);
                 IME.SaveChanges();
                 Rate SterlinRate = new Rate();
-                ExchangeRate RateforSterlin = new ExchangeRate();
+                classExchangeRate RateforSterlin = new classExchangeRate();
                 RateforSterlin = DailyDolar.GetExchangeRateforSterlin();
                 SterlinRate.CurType = RateforSterlin.Code;
                 SterlinRate.RateBuy = RateforSterlin.ExchangeBuy;

@@ -123,7 +123,21 @@
     <Compile Include="Account\frmAccountLedger.designer.cs">
       <DependentUpon>frmAccountLedger.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\frmTax.cs" />
+    <Compile Include="Account\frmCurrency.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\frmCurrency.designer.cs">
+      <DependentUpon>frmCurrency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\frmExchangeRate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\frmExchangeRate.designer.cs">
+      <DependentUpon>frmExchangeRate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\frmTax.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Account\frmTax.designer.cs">
       <DependentUpon>frmTax.cs</DependentUpon>
     </Compile>
@@ -166,6 +180,7 @@
     <Compile Include="DataSet\City.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\classExchangeRate.cs" />
     <Compile Include="DataSet\ContactType.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -205,7 +220,6 @@
     <Compile Include="DataSet\DualUse.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\ExchangeRate.cs" />
     <Compile Include="DataSet\ExtendedRange.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -329,6 +343,12 @@
     <Compile Include="DataSet\TaxDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\tbl_Currency.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\tbl_ExchangeRate.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Town.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -356,12 +376,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>IMEDataSet2.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Invoice\InvoiceMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Invoice\InvoiceMain.Designer.cs">
-      <DependentUpon>InvoiceMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Item\ItemCard.cs">
       <SubType>Form</SubType>
@@ -560,6 +574,12 @@
     <EmbeddedResource Include="Account\frmAccountLedger.resx">
       <DependentUpon>frmAccountLedger.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\frmCurrency.resx">
+      <DependentUpon>frmCurrency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\frmExchangeRate.resx">
+      <DependentUpon>frmExchangeRate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\frmTax.resx">
       <DependentUpon>frmTax.cs</DependentUpon>
     </EmbeddedResource>
@@ -577,9 +597,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Invoice\InvoiceMain.resx">
-      <DependentUpon>InvoiceMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Item\ItemCard.resx">
       <DependentUpon>ItemCard.cs</DependentUpon>
@@ -678,22 +695,22 @@
     <EmbeddedResource Include="User\FormUserManagement.resx">
       <DependentUpon>FormUserManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
     <EntityDeploy Include="DataSet\IME.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>IME.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="ClassDiagram1.cd" />
     <None Include="DataSet\IME.edmx.diagram">
       <DependentUpon>IME.edmx</DependentUpon>
     </None>
     <None Include="IMEDataSet1.xsc">
       <DependentUpon>IMEDataSet1.xsd</DependentUpon>
     </None>
-    <EntityDeploy Include="IMEDataSet1.xsd">
+    <None Include="IMEDataSet1.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>IMEDataSet1.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </EntityDeploy>
+    </None>
     <None Include="IMEDataSet1.xss">
       <DependentUpon>IMEDataSet1.xsd</DependentUpon>
     </None>
@@ -711,11 +728,11 @@
     <None Include="IMEDataSet2.xsc">
       <DependentUpon>IMEDataSet2.xsd</DependentUpon>
     </None>
-    <EntityDeploy Include="IMEDataSet2.xsd">
+    <None Include="IMEDataSet2.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>IMEDataSet2.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </EntityDeploy>
+    </None>
     <None Include="IMEDataSet2.xss">
       <DependentUpon>IMEDataSet2.xsd</DependentUpon>
     </None>
@@ -723,9 +740,6 @@
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthorizationValue.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthRole.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Customer.datasource" />
-    <None Include="Properties\DataSources\LoginForm.DataSet.Mail.datasource" />
-    <None Include="Properties\DataSources\LoginForm.DataSet.PurchaseOrder.datasource" />
-    <None Include="Properties\DataSources\LoginForm.DataSet.PurchaseOrderDetail.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Quotation.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.QuotationDetail.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.RoleValue.datasource" />
@@ -782,6 +796,8 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Invoice\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

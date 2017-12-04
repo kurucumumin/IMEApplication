@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class PurchaseOrderDetail
     {
         public int ID { get; set; }
@@ -19,16 +19,17 @@ namespace LoginForm.DataSet
         public string SaleOrderNo { get; set; }
         public string ItemCode { get; set; }
         public Nullable<int> SendQty { get; set; }
+        public string SaleOrderNature { get; set; }
         public string FrtType { get; set; }
         public string FicheNo { get; set; }
-        public string SaleOrderNature { get; set; }
         public string ItemDescription { get; set; }
         public bool Hazardous { get; set; }
         public bool Calibration { get; set; }
         public Nullable<decimal> UnitPrice { get; set; }
         public string Unit { get; set; }
-
+    
         public virtual PurchaseOrder PurchaseOrder { get; set; }
+        public virtual Quotation Quotation { get; set; }
         public virtual SaleOrder SaleOrder { get; set; }
     }
 }
