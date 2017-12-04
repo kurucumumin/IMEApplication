@@ -1,4 +1,7 @@
 ﻿using LoginForm.DataSet;
+using LoginForm.Model;
+using LoginForm.QuotationModule;
+using LoginForm.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,11 +31,11 @@ namespace LoginForm.nmSaleOrder
             if (searchItemCode != null && searchItemCode != String.Empty)
             {
                 txtItemCode.Text = searchItemCode;
-                dgItemSearch.DataSource = SearchForItems(searchItemCode);
+                dgItemSearch.DataSource = SearchItemsForGrid(searchItemCode);
             }
         }
 
-        private dynamic SearchForItems(string ItemCode, bool isMPN = false)
+        private dynamic SearchItemsForGrid(string ItemCode, bool isMPN = false)
         {
             IMEEntities IME = new IMEEntities();
 
@@ -150,9 +153,204 @@ namespace LoginForm.nmSaleOrder
         {
             string ItemCode = dgItemSearch.CurrentRow.Cells[0].Value.ToString();
             string dependantTable = dgItemSearch.CurrentRow.Cells[6].Value.ToString();
-            selectedItem = dgItemSearch.CurrentRow;
 
+            //DataGridViewRow row = dgItemSearch.CurrentRow;
+            //selectedItem = dgItemSearch.CurrentRow;
+
+            //SaleItem item = new SaleItem();
+            //item.ItemCode = row.Cells[0].Value.ToString();
+            //item.Description = row.Cells[1].Value.ToString();
+            //item.MPN = row.Cells[2].Value.ToString();
+            //selectedItem = item;
+
+            //this.Close();
+
+            SetItemToSend(ItemCode,dependantTable);
+        }
+
+        private void SetItemToSend(string ItemCode, string table)
+        {
+            IMEEntities db = new IMEEntities();
+            SaleItem item = new SaleItem();
+            item.ItemCode = ItemCode;
+
+            //bool isItemCost = (q.Quotation.IsItemCost == 1) ? true : false;
+            //bool isWeightCost = (q.Quotation.IsWeightCost == 1) ? true : false;
+            //bool isCustomsDuties = (q.Quotation.IsCustomsDuties == 1) ? true : false;
+            //item.LandingCost = classQuotationAdd.GetLandingCost(item.ItemCode, isItemCost, isWeightCost, isCustomsDuties);
+            item.LandingCost = classQuotationAdd.GetLandingCost(item.ItemCode, true, true, true);
+            //item.Margin = CalculateMargin(item.LandingCost, item.UC_UP);
+            item.LM = (item.Margin < Utils.getCurrentUser().MinMarge) ? true : false;
+            //if (q.TargetUP != null) { item.TargetUP = (decimal)q.TargetUP; }
+            //item.Total = (decimal)q.Total;
+            //item.UPIMELP = (decimal)q.UCUPCurr;
+            //item.UOM = q.UnitOfMeasure;
+            //item.dependentTable = q.DependantTable;
+
+            switch (table)
+            {
+                case "sd":
+                    SuperDisk itemSD = db.SuperDisks.Where(sd => sd.Article_No == ItemCode).FirstOrDefault();
+                    item.UnitWeight = (decimal)itemSD.Standard_Weight / 1000;
+
+                    OnSale itemSDOS = db.OnSales.Where(os => os.ArticleNumber == ItemCode).FirstOrDefault();
+                    if (itemSDOS != null)
+                    {
+                        item.OnHandStockBalance = (int)itemSDOS.OnhandStockBalance;
+                        item.QuantityOnOrder = (int)itemSDOS.QuantityonOrder;
+                    }
+
+                    SlidingPrice itemSDPrice = db.SlidingPrices.Where(sp => sp.ArticleNo == ItemCode).FirstOrDefault();
+                    item.SuperSection = itemSDPrice.SupersectionName;
+                    item.Section = itemSDPrice.SectionName;
+                    item.MHLevel1 = itemSD.MH_Code_Level_1;
+                    //item.UC_UP = itemSD.
+
+                    item.Col1Break = (int)itemSDPrice.Col1Break;
+                    item.Col2Break = (int)itemSDPrice.Col2Break;
+                    item.Col3Break = (int)itemSDPrice.Col3Break;
+                    item.Col4Break = (int)itemSDPrice.Col4Break;
+                    item.Col5Break = (int)itemSDPrice.Col5Break;
+                    item.UK1Price = (int)itemSDPrice.Col1Price;
+                    item.UK2Price = (int)itemSDPrice.Col2Price;
+                    item.UK3Price = (int)itemSDPrice.Col3Price;
+                    item.UK4Price = (int)itemSDPrice.Col4Price;
+                    item.UK5Price = (int)itemSDPrice.Col5Price;
+                    item.Cost1 = (decimal)itemSDPrice.DiscountedPrice1;
+                    item.Cost2 = (decimal)itemSDPrice.DiscountedPrice2;
+                    item.Cost3 = (decimal)itemSDPrice.DiscountedPrice3;
+                    item.Cost4 = (decimal)itemSDPrice.DiscountedPrice4;
+                    item.Cost5 = (decimal)itemSDPrice.DiscountedPrice5;
+
+                    item.CL = (itemSD.Calibration_Ind == "Y") ? true : false;
+                    item.Description = itemSD.Article_Desc;
+                    item.LC = (itemSD.Licensed_Ind == "Y") ? true : false;
+                    item.Manufacturer = itemSD.Manufacturer;
+                    item.MPN = itemSD.MPN;
+                    item.COO = itemSD.CofO;
+                    item.CCCNO = itemSD.CCCN_No;
+                    // TODO Aşağıdaki 2 tarih verisi güncel olan tablodan alınacak.
+                    item.UKIntroDate = itemSD.Uk_Intro_Date;
+                    item.UKDiscDate = itemSD.Uk_Disc_Date;
+                    item.Height = (decimal)itemSD.Heigh;
+                    item.Width = (decimal)itemSD.Width;
+                    item.Length = (decimal)itemSD.Length;
+                    // TODO  TotalWeight hesaplaması - Grossweight farkı
+                    item.TotalWeight = (decimal)(item.UnitWeight * itemSD.Unit_Content);
+                    item.UC = (int)itemSD.Unit_Content;
+                    item.HZ = (itemSD.Hazardous_Ind == "Y") ? true : false;
+                    item.CL = (itemSD.Calibration_Ind == "Y") ? true : false;
+                    item.LC = (itemSD.Licensed_Ind == "" && itemSD.Licensed_Ind != null) ? true : false;
+
+                    if (itemSD.Hazardous_Ind == "Y")
+                    {
+                        Hazardou h = db.Hazardous.Where(x => itemSD.Article_No.Contains(x.ArticleNo)).FirstOrDefault();
+                        if (h == null) { h = db.Hazardous.Where(x => x.ArticleNo == (Int32.Parse(itemSD.Article_No)).ToString()).FirstOrDefault(); }
+                        item.HE = (h.Environment != null) ? true : false;
+                        item.HS = (h.Shipping != null && h.Shipping != String.Empty) ? true : false;
+                        item.LI = (h.Lithium != null && h.Lithium != String.Empty) ? true : false;
+                    }
+
+                    break;
+                case "sdp":
+                    SuperDiskP itemSDP = db.SuperDiskPs.Where(sdp => sdp.Article_No == ItemCode).FirstOrDefault();
+                    item.UnitWeight = (decimal)itemSDP.Standard_Weight / 1000;
+
+                    OnSale itemSDPOS = db.OnSales.Where(os => os.ArticleNumber == ItemCode).FirstOrDefault();
+                    if (itemSDPOS != null)
+                    {
+                        item.OnHandStockBalance = (int)itemSDPOS.OnhandStockBalance;
+                        item.QuantityOnOrder = (int)itemSDPOS.QuantityonOrder;
+                    }
+
+                    SlidingPrice itemSDPPrice = db.SlidingPrices.Where(sp => sp.ArticleNo == ItemCode).FirstOrDefault();
+                    item.SuperSection = itemSDPPrice.SupersectionName;
+                    item.Section = itemSDPPrice.SectionName;
+                    item.MHLevel1 = itemSDP.MH_Code_Level_1;
+
+                    item.Col1Break = (int)itemSDPPrice.Col1Break;
+                    item.Col2Break = (int)itemSDPPrice.Col2Break;
+                    item.Col3Break = (int)itemSDPPrice.Col3Break;
+                    item.Col4Break = (int)itemSDPPrice.Col4Break;
+                    item.Col5Break = (int)itemSDPPrice.Col5Break;
+                    item.UK1Price = (int)itemSDPPrice.Col1Price;
+                    item.UK2Price = (int)itemSDPPrice.Col2Price;
+                    item.UK3Price = (int)itemSDPPrice.Col3Price;
+                    item.UK4Price = (int)itemSDPPrice.Col4Price;
+                    item.UK5Price = (int)itemSDPPrice.Col5Price;
+                    item.Cost1 = (decimal)itemSDPPrice.DiscountedPrice1;
+                    item.Cost2 = (decimal)itemSDPPrice.DiscountedPrice2;
+                    item.Cost3 = (decimal)itemSDPPrice.DiscountedPrice3;
+                    item.Cost4 = (decimal)itemSDPPrice.DiscountedPrice4;
+                    item.Cost5 = (decimal)itemSDPPrice.DiscountedPrice5;
+
+                    item.CL = (itemSDP.Calibration_Ind == "Y") ? true : false;
+                    item.LC = (itemSDP.Licensed_Ind == "Y") ? true : false;
+                    item.Manufacturer = itemSDP.Manufacturer;
+                    item.COO = itemSDP.CofO;
+                    item.CCCNO = itemSDP.CCCN_No;
+                    // TODO Aşağıdaki 2 tarih verisi güncel olan tablodan alınacak.
+                    item.UKIntroDate = itemSDP.Uk_Intro_Date;
+                    item.UKDiscDate = itemSDP.Uk_Disc_Date;
+                    item.Height = (decimal)itemSDP.Heigh;
+                    item.Width = (decimal)itemSDP.Width;
+                    item.Length = (decimal)itemSDP.Length;
+                    item.TotalWeight = (decimal)(item.UnitWeight * itemSDP.Unit_Content);
+                    item.UC = (int)itemSDP.Unit_Content;
+                    item.HZ = (itemSDP.Hazardous_Ind == "Y") ? true : false;
+                    item.CL = (itemSDP.Calibration_Ind == "Y") ? true : false;
+                    item.LC = (itemSDP.Licensed_Ind == "" && itemSDP.Licensed_Ind != null) ? true : false;
+
+                    if (itemSDP.Hazardous_Ind == "Y")
+                    {
+                        Hazardou h = db.Hazardous.Where(x => x.ArticleNo == itemSDP.Article_No).FirstOrDefault();
+                        if (h == null) { h = db.Hazardous.Where(x => x.ArticleNo == (Int32.Parse(itemSDP.Article_No)).ToString()).FirstOrDefault(); }
+                        item.HE = (h.Environment != null) ? true : false;
+                        item.HS = (h.Shipping != null && h.Shipping != String.Empty) ? true : false;
+                        item.LI = (h.Lithium != null && h.Lithium != String.Empty) ? true : false;
+                    }
+
+                    break;
+                case "ext":
+                    ExtendedRange itemEXT = db.ExtendedRanges.Where(ext => ext.ArticleNo == ItemCode).FirstOrDefault();
+                    item.UnitWeight = (decimal)itemEXT.ExtendedRangeWeight / 1000;
+
+                    //s.CL = (itemEXT.Calibration_Ind == "Y") ? true : false;
+                    //s.LC = (itemEXT.Licensed_Ind == "Y") ? true : false;
+                    item.Manufacturer = (itemEXT.ManufacturerCode != null) ? itemEXT.ManufacturerCode : String.Empty;
+                    item.COO = itemEXT.CountryofOrigin;
+                    if (itemEXT.CCCN != null) item.CCCNO = itemEXT.CCCN.ToString();
+                    // TODO Aşağıdaki 2 tarih verisi güncel olan tablodan alınacak.
+                    //s.UKIntroDate = itemEXT.Uk_Intro_Date;
+                    //s.UKDiscDate = itemEXT.Uk_Disc_Date;
+                    item.Height = (decimal)itemEXT.Height;
+                    item.Width = (itemEXT.Width != null) ? (decimal)itemEXT.Width : 0;
+                    item.Length = (decimal)itemEXT.ExtendedRangeLength;
+                    item.UC = (int)itemEXT.PackSize;
+                    item.TotalWeight = (decimal)(item.UnitWeight * itemEXT.PackSize);
+
+                    item.UOM = itemEXT.UnitofMeasure;
+                    //s.HZ = (itemEXT.Hazardous_Ind == "Y") ? true : false;
+                    //s.CL = (itemEXT.Calibration_Ind == "Y") ? true : false;
+                    //s.LC = (itemEXT.Licensed_Ind == "" && itemEXT.Licensed_Ind != null) ? true : false;
+
+                    //if (itemEXT.Hazardous_Ind == "Y")
+                    //{
+                    //    Hazardou h = IME.Hazardous.Where(x => x.ArticleNo == itemSDP.Article_No).FirstOrDefault();
+                    //    s.HE = (h.Environment != null) ? true : false;
+                    //    s.HS = (h.Shipping != null && h.Shipping != String.Empty) ? true : false;
+                    //    s.LI = (h.Lithium != null && h.Lithium != String.Empty) ? true : false;
+                    //}
+                    break;
+            }
+
+            selectedItem = item;
+            this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+        private decimal CalculateMargin(decimal landingCost, decimal UCUPCurr)
+        {
+            return (((1 - landingCost / UCUPCurr)) * 100)/*.ToString("G29")*/;
         }
     }
 }
