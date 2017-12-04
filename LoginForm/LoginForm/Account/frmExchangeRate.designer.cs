@@ -29,10 +29,9 @@ namespace LoginForm
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmExchangeRate));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtDate = new System.Windows.Forms.TextBox();
             this.lblExchangeRateValidator = new System.Windows.Forms.Label();
@@ -59,18 +58,13 @@ namespace LoginForm
             this.txtDateTo = new System.Windows.Forms.TextBox();
             this.dtpDateTo = new System.Windows.Forms.DateTimePicker();
             this.dtpDateFrom = new System.Windows.Forms.DateTimePicker();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnSearchClear = new System.Windows.Forms.Button();
             this.lblDateFrom = new System.Windows.Forms.Label();
             this.lblDateTo = new System.Windows.Forms.Label();
             this.cmbCurrencyRate = new System.Windows.Forms.ComboBox();
             this.lblCurrencySearch = new System.Windows.Forms.Label();
             this.dgvExchangeRate = new System.Windows.Forms.DataGridView();
-            this.dgvtxtExchangeRateId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxtSlNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxtCurrency = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxtDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxtExchangeRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.btnSearchClear = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.pnlExchange.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -410,6 +404,36 @@ namespace LoginForm
             this.dtpDateFrom.TabStop = false;
             this.dtpDateFrom.ValueChanged += new System.EventHandler(this.dtpDateFrom_ValueChanged);
             // 
+            // btnSearch
+            // 
+            this.btnSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.BackgroundImage")));
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
+            this.btnSearch.Location = new System.Drawing.Point(541, 45);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(85, 27);
+            this.btnSearch.TabIndex = 3;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.btnSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnSearch_KeyDown);
+            // 
+            // btnSearchClear
+            // 
+            this.btnSearchClear.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearchClear.BackgroundImage")));
+            this.btnSearchClear.FlatAppearance.BorderSize = 0;
+            this.btnSearchClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearchClear.ForeColor = System.Drawing.Color.White;
+            this.btnSearchClear.Location = new System.Drawing.Point(632, 45);
+            this.btnSearchClear.Name = "btnSearchClear";
+            this.btnSearchClear.Size = new System.Drawing.Size(85, 27);
+            this.btnSearchClear.TabIndex = 4;
+            this.btnSearchClear.Text = "Clear";
+            this.btnSearchClear.UseVisualStyleBackColor = true;
+            this.btnSearchClear.Click += new System.EventHandler(this.btnSearchClear_Click);
+            this.btnSearchClear.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnSearchClear_KeyDown);
+            // 
             // lblDateFrom
             // 
             this.lblDateFrom.AutoSize = true;
@@ -473,20 +497,14 @@ namespace LoginForm
             this.dgvExchangeRate.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvExchangeRate.ColumnHeadersHeight = 25;
             this.dgvExchangeRate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvExchangeRate.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgvtxtExchangeRateId,
-            this.dgvtxtSlNo,
-            this.dgvtxtCurrency,
-            this.dgvtxtDate,
-            this.dgvtxtExchangeRate});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(202)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvExchangeRate.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(202)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvExchangeRate.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvExchangeRate.EnableHeadersVisualStyles = false;
             this.dgvExchangeRate.GridColor = System.Drawing.Color.SteelBlue;
             this.dgvExchangeRate.Location = new System.Drawing.Point(19, 81);
@@ -500,79 +518,6 @@ namespace LoginForm
             this.dgvExchangeRate.TabStop = false;
             this.dgvExchangeRate.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExchangeRate_CellDoubleClick);
             this.dgvExchangeRate.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvExchangeRate_KeyUp);
-            // 
-            // dgvtxtExchangeRateId
-            // 
-            this.dgvtxtExchangeRateId.DataPropertyName = "exchangerateId";
-            this.dgvtxtExchangeRateId.HeaderText = "ExchangeRateId";
-            this.dgvtxtExchangeRateId.Name = "dgvtxtExchangeRateId";
-            this.dgvtxtExchangeRateId.ReadOnly = true;
-            this.dgvtxtExchangeRateId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dgvtxtExchangeRateId.Visible = false;
-            // 
-            // dgvtxtSlNo
-            // 
-            this.dgvtxtSlNo.DataPropertyName = "SL.NO";
-            this.dgvtxtSlNo.HeaderText = "Sl No";
-            this.dgvtxtSlNo.Name = "dgvtxtSlNo";
-            this.dgvtxtSlNo.ReadOnly = true;
-            this.dgvtxtSlNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dgvtxtCurrency
-            // 
-            this.dgvtxtCurrency.DataPropertyName = "currencyName";
-            this.dgvtxtCurrency.HeaderText = "Currency";
-            this.dgvtxtCurrency.Name = "dgvtxtCurrency";
-            this.dgvtxtCurrency.ReadOnly = true;
-            this.dgvtxtCurrency.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dgvtxtDate
-            // 
-            this.dgvtxtDate.DataPropertyName = "date";
-            this.dgvtxtDate.HeaderText = "Date";
-            this.dgvtxtDate.Name = "dgvtxtDate";
-            this.dgvtxtDate.ReadOnly = true;
-            this.dgvtxtDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dgvtxtExchangeRate
-            // 
-            this.dgvtxtExchangeRate.DataPropertyName = "rate";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.dgvtxtExchangeRate.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvtxtExchangeRate.HeaderText = "Exchange Rate";
-            this.dgvtxtExchangeRate.Name = "dgvtxtExchangeRate";
-            this.dgvtxtExchangeRate.ReadOnly = true;
-            this.dgvtxtExchangeRate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearch.BackgroundImage")));
-            this.btnSearch.FlatAppearance.BorderSize = 0;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(541, 45);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(85, 27);
-            this.btnSearch.TabIndex = 3;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            this.btnSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnSearch_KeyDown);
-            // 
-            // btnSearchClear
-            // 
-            this.btnSearchClear.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSearchClear.BackgroundImage")));
-            this.btnSearchClear.FlatAppearance.BorderSize = 0;
-            this.btnSearchClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearchClear.ForeColor = System.Drawing.Color.White;
-            this.btnSearchClear.Location = new System.Drawing.Point(632, 45);
-            this.btnSearchClear.Name = "btnSearchClear";
-            this.btnSearchClear.Size = new System.Drawing.Size(85, 27);
-            this.btnSearchClear.TabIndex = 4;
-            this.btnSearchClear.Text = "Clear";
-            this.btnSearchClear.UseVisualStyleBackColor = true;
-            this.btnSearchClear.Click += new System.EventHandler(this.btnSearchClear_Click);
-            this.btnSearchClear.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnSearchClear_KeyDown);
             // 
             // frmExchangeRate
             // 
@@ -637,10 +582,5 @@ namespace LoginForm
         private System.Windows.Forms.ComboBox cmbCurrencyRate;
         private System.Windows.Forms.Label lblCurrencySearch;
         private System.Windows.Forms.DataGridView dgvExchangeRate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtExchangeRateId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSlNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtCurrency;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtExchangeRate;
     }
 }
