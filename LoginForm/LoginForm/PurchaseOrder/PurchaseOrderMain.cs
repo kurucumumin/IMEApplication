@@ -15,10 +15,17 @@ namespace LoginForm.PurchaseOrder
     public partial class PurchaseOrderMain : Form
     {
         IMEEntities IME = new IMEEntities();
+        string ficheNumber;
 
         public PurchaseOrderMain()
         {
             InitializeComponent();
+        }
+
+        public PurchaseOrderMain(string ficheNo)
+        {
+            InitializeComponent();
+            ficheNumber = ficheNo;
         }
 
         private void btnCreate_Click(object sender, EventArgs e)

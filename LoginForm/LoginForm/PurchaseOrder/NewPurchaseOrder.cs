@@ -55,8 +55,21 @@ namespace LoginForm.PurchaseOrder
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            PurchaseExportFiles form = new PurchaseExportFiles();
+
+            //List<PurchaseOrderDetail> list = new List<PurchaseOrderDetail>();
+            List<DataGridViewRow> rowList = new List<DataGridViewRow>();
+
+            foreach (DataGridViewRow row in dgPurchase.Rows)
+            {
+                if (row.Cells[0].Value!=null && (bool)row.Cells[0].Value == true)
+                {
+                    rowList.Add(row);
+                }
+            }
+            //this.Hide();
+            PurchaseExportFiles form = new PurchaseExportFiles(rowList);
             form.ShowDialog();
+            
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -101,7 +114,7 @@ namespace LoginForm.PurchaseOrder
         {
             SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-51RN2GB\LOCAL;Initial Catalog=IME;Integrated Security=True");
             StringBuilder history = new StringBuilder();
-            history.Append("Select a.c_name, b.SaleOrderNo, c.ItemCode, c.ItemDescription, c.UnitOfMeasure, c.Quantity, c.Hazardous, ");
+            history.Append("Select a.c_name,b.QuotationNos, b.SaleOrderNo, c.ItemCode, c.ItemDescription, c.UnitOfMeasure, c.Quantity, c.Hazardous, ");
             history.Append("c.Calibration, b.SaleOrderNature, d.AddressType, d.AdressTitle, c.UnitPrice ");
             history.Append("from  Customer a, SaleOrder b, SaleOrderDetail c, CustomerAddress d ");
         history.Append("where b.CustomerID=a.ID and c.SaleOrderNo =b.SaleOrderNo and b.DeliveryAddressID=d.ID and b.InvoiceAddressID=d.ID ");
@@ -139,6 +152,44 @@ namespace LoginForm.PurchaseOrder
 
             connection.Close();//Açık olan Sql bağlantısı sonlandırılıyor      
             da.Dispose(); //SqlDataApter nesnesi dispose ediliyor
+        }
+
+        private void NewPurchaseOrder_Load(object sender, EventArgs e)
+        {
+            
+             NewFicheNo();
+        }
+
+
+        private string NewFicheNo()
+        {
+            IMEEntities IME = new IMEEntities();
+            string purchasecode = "";
+            if (IME.PurchaseOrders.ToList().Count != 0) purchasecode = IME.PurchaseOrders.OrderByDescending(q => q.FicheNo).FirstOrDefault().FicheNo;
+            string custmrnumbers = string.Empty;
+            string newpurchasecodenumbers = "";
+            string newpurchasecodezeros = "";
+            string newpurchasecodechars = "";
+            for (int i = 0; i < purchasecode.Length; i++)
+            {
+                if (Char.IsDigit(purchasecode[i]))
+                {
+                    if (purchasecode[i] == '0') { newpurchasecodezeros += purchasecode[i]; } else { newpurchasecodenumbers += purchasecode[i]; }
+                }
+                else
+                {
+                    newpurchasecodechars += purchasecode[i];
+                }
+            }
+            //Aynı FicheNo ile PurchaseOrder oluşturmasını önleyen kısım
+            while (IME.PurchaseOrders.Where(a => a.FicheNo == purchasecode).Count() > 0)
+            {
+                newpurchasecodenumbers = (Int32.Parse(newpurchasecodenumbers) + 1).ToString();
+                purchasecode = newpurchasecodechars + newpurchasecodezeros + newpurchasecodenumbers;
+            }
+            txtOrderNumber.Text = purchasecode;
+            PurchaseExportFiles f = new PurchaseExportFiles(txtOrderNumber.Text);
+            return purchasecode;
         }
     }
 }
