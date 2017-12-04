@@ -81,5 +81,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<TaxDetail> TaxDetails { get; set; }
         public virtual DbSet<Town> Towns { get; set; }
         public virtual DbSet<Worker> Workers { get; set; }
+        public virtual DbSet<tbl_ExchangeRate> tbl_ExchangeRate { get; set; }
+        public virtual DbSet<tbl_Currency> tbl_Currency { get; set; }
     }
 }

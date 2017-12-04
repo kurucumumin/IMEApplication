@@ -21,10 +21,9 @@ namespace LoginForm.Services
 
             return SellEuro;
         }
-
-        public ExchangeRate GetExchangeRateforDolar()
+         public classExchangeRate GetExchangeRateforDolar()
         {
-            ExchangeRate RateForDolar = new ExchangeRate();
+            classExchangeRate RateForDolar = new classExchangeRate();
             string today = "http://www.tcmb.gov.tr/kurlar/today.xml";
 
             var xmlDoc = new XmlDocument();
@@ -57,10 +56,10 @@ namespace LoginForm.Services
             return RateForDolar;
         }
 
-        public ExchangeRate GetExchangeRateforSterlin()
+        public classExchangeRate GetExchangeRateforSterlin()
         {
 
-            ExchangeRate RateforSterlin = new ExchangeRate();
+            classExchangeRate RateforSterlin = new classExchangeRate();
             string today = "http://www.tcmb.gov.tr/kurlar/today.xml";
 
             var xmlDoc = new XmlDocument();

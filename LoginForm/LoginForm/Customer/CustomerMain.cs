@@ -469,9 +469,8 @@ namespace LoginForm
                 cbTown.SelectedIndex = cbTown.FindStringExact(CustomerDataGrid.Rows[gridselectedindex].Cells["Town_name"].Value.ToString());
                 if(CustomerDataGrid.Rows[gridselectedindex].Cells["AdressDetails"].Value!=null) AddressDetails.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["AdressDetails"].Value.ToString();
                 if(CustomerDataGrid.Rows[gridselectedindex].Cells["CurrNameQuo"].Value!=null) QuoCurrencyName.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["CurrNameQuo"].Value.ToString();
-                //QuoCurrencyType.Text = customerAdapter1[gridselectedindex].CurrTypeQuo;
                 if(CustomerDataGrid.Rows[gridselectedindex].Cells["CurrNameInv"].Value!=null) InvCurrencyName.Text = CustomerDataGrid.Rows[gridselectedindex].Cells["CurrNameInv"].Value.ToString();
-                //InvCurrencyType.Text = customerAdapter1[gridselectedindex].CurrTypeInv;
+
                 try
                 {
                     

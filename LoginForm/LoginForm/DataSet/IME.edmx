@@ -508,7 +508,7 @@
           <Property Name="NoteForCustomer" Type="nvarchar" MaxLength="200" />
           <Property Name="NoteForFinance" Type="int" />
           <Property Name="SaleOrderNature" Type="nvarchar" MaxLength="10" Nullable="false" />
-          <Property Name="ShippingType" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="ShippingType" Type="nvarchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="SaleOrderDetail">
           <Key>
@@ -537,7 +537,7 @@
           <Property Name="Hazardous" Type="bit" Nullable="false" />
           <Property Name="Calibration" Type="bit" Nullable="false" />
           <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="ItemCost" Type="decimal" Precision="20" Scale="5" Nullable="false" />
+          <Property Name="ItemCost" Type="decimal" Precision="20" Scale="5" />
         </EntityType>
         <EntityType Name="SlidingPrice">
           <Key>
@@ -787,13 +787,13 @@
           <Key>
             <PropertyRef Name="TaxID" />
           </Key>
-          <Property Name="TaxID" Type="int" Nullable="false" />
           <Property Name="taxName" Type="nvarchar" MaxLength="100" />
           <Property Name="ApplicationOn" Type="nvarchar" MaxLength="50" />
           <Property Name="Rate" Type="decimal" Precision="20" Scale="5" />
           <Property Name="CalculatingMode" Type="nvarchar" MaxLength="50" />
           <Property Name="narration" Type="nvarchar" MaxLength="200" />
           <Property Name="isActive" Type="bit" />
+          <Property Name="TaxID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="TaxDetail">
           <Key>
@@ -803,6 +803,25 @@
           <Property Name="taxID" Type="int" />
           <Property Name="SelectedtaxID" Type="int" />
           <Property Name="taxDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_Currency">
+          <Key>
+            <PropertyRef Name="currencyID" />
+          </Key>
+          <Property Name="currencyID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="currencySymbol" Type="varchar(max)" />
+          <Property Name="currencyName" Type="varchar(max)" />
+          <Property Name="subunitName" Type="varchar(max)" />
+          <Property Name="isDefault" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_ExchangeRate">
+          <Key>
+            <PropertyRef Name="exchangeRateID" />
+          </Key>
+          <Property Name="exchangeRateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="currencyId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="rate" Type="decimal" Precision="18" Scale="5" />
         </EntityType>
         <EntityType Name="Town">
           <Key>
@@ -1676,6 +1695,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__tbl_Excha__curre__52442E1F">
+          <End Role="tbl_Currency" Type="Self.tbl_Currency" Multiplicity="0..1" />
+          <End Role="tbl_ExchangeRate" Type="Self.tbl_ExchangeRate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Currency">
+              <PropertyRef Name="currencyID" />
+            </Principal>
+            <Dependent Role="tbl_ExchangeRate">
+              <PropertyRef Name="currencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Town__CityID__2EFAF1E2">
           <End Role="City" Type="Self.City" Multiplicity="0..1" />
           <End Role="Town" Type="Self.Town" Multiplicity="*" />
@@ -1780,6 +1811,8 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tax" EntityType="Self.Tax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaxDetail" EntityType="Self.TaxDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Currency" EntityType="Self.tbl_Currency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_ExchangeRate" EntityType="Self.tbl_ExchangeRate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Town" EntityType="Self.Town" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAuthorization" EntityType="Self.UserAuthorization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
@@ -2062,6 +2095,10 @@
           <AssociationSet Name="FK__SupplierW__title__7755B73D" Association="Self.FK__SupplierW__title__7755B73D">
             <End Role="SupplierTitle" EntitySet="SupplierTitle" />
             <End Role="SupplierWorker" EntitySet="SupplierWorker" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_Excha__curre__52442E1F" Association="Self.FK__tbl_Excha__curre__52442E1F">
+            <End Role="tbl_Currency" EntitySet="tbl_Currency" />
+            <End Role="tbl_ExchangeRate" EntitySet="tbl_ExchangeRate" />
           </AssociationSet>
           <AssociationSet Name="FK__Town__CityID__2EFAF1E2" Association="Self.FK__Town__CityID__2EFAF1E2">
             <End Role="City" EntitySet="City" />
@@ -2428,6 +2465,12 @@
           <AssociationSet Name="UserAuthorization" Association="IMEModel.UserAuthorization">
             <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
             <End Role="Worker" EntitySet="Workers" />
+          </AssociationSet>
+          <EntitySet Name="tbl_ExchangeRate" EntityType="IMEModel.tbl_ExchangeRate" />
+          <EntitySet Name="tbl_Currency" EntityType="IMEModel.tbl_Currency" />
+          <AssociationSet Name="FK__tbl_Excha__curre__52442E1F" Association="IMEModel.FK__tbl_Excha__curre__52442E1F">
+            <End Role="tbl_Currency" EntitySet="tbl_Currency" />
+            <End Role="tbl_ExchangeRate" EntitySet="tbl_ExchangeRate" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AccountGroup">
@@ -3005,7 +3048,7 @@
           <Property Name="NoteForCustomer" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="NoteForFinance" Type="Int32" />
           <Property Name="SaleOrderNature" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="ShippingType" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="ShippingType" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Customer" Relationship="IMEModel.FK__SaleOrder__Custo__1CDC41A7" FromRole="SaleOrder" ToRole="Customer" />
           <NavigationProperty Name="CustomerAddress" Relationship="IMEModel.FK__SaleOrder__Deliv__21A0F6C4" FromRole="SaleOrder" ToRole="CustomerAddress" />
           <NavigationProperty Name="CustomerAddress1" Relationship="IMEModel.FK__SaleOrder__Invoi__20ACD28B" FromRole="SaleOrder" ToRole="CustomerAddress" />
@@ -3045,7 +3088,7 @@
           <Property Name="Hazardous" Type="Boolean" Nullable="false" />
           <Property Name="Calibration" Type="Boolean" Nullable="false" />
           <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="ItemCost" Type="Decimal" Nullable="false" Precision="20" Scale="5" />
+          <Property Name="ItemCost" Type="Decimal" Precision="20" Scale="5" />
           <NavigationProperty Name="SaleOrder" Relationship="IMEModel.FK__SaleOrder__SaleO__3F3159AB" FromRole="SaleOrderDetail" ToRole="SaleOrder" />
         </EntityType>
         <EntityType Name="SlidingPrice">
@@ -3336,13 +3379,13 @@
           <Key>
             <PropertyRef Name="TaxID" />
           </Key>
-          <Property Name="TaxID" Type="Int32" Nullable="false" />
           <Property Name="taxName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ApplicationOn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Rate" Type="Decimal" Precision="20" Scale="5" />
           <Property Name="CalculatingMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="narration" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="isActive" Type="Boolean" />
+          <Property Name="TaxID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="TaxDetail">
           <Key>
@@ -4237,6 +4280,39 @@
           <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
         </Association>
+        <EntityType Name="tbl_ExchangeRate">
+          <Key>
+            <PropertyRef Name="exchangeRateID" />
+          </Key>
+          <Property Name="exchangeRateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="currencyId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="rate" Type="Decimal" Precision="18" Scale="5" />
+          <NavigationProperty Name="tbl_Currency" Relationship="IMEModel.FK__tbl_Excha__curre__52442E1F" FromRole="tbl_ExchangeRate" ToRole="tbl_Currency" />
+        </EntityType>
+        <EntityType Name="tbl_Currency">
+          <Key>
+            <PropertyRef Name="currencyID" />
+          </Key>
+          <Property Name="currencyID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="currencySymbol" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="currencyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="subunitName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="isDefault" Type="Boolean" />
+          <NavigationProperty Name="tbl_ExchangeRate" Relationship="IMEModel.FK__tbl_Excha__curre__52442E1F" FromRole="tbl_Currency" ToRole="tbl_ExchangeRate" />
+        </EntityType>
+        <Association Name="FK__tbl_Excha__curre__52442E1F">
+          <End Type="IMEModel.tbl_Currency" Role="tbl_Currency" Multiplicity="0..1" />
+          <End Type="IMEModel.tbl_ExchangeRate" Role="tbl_ExchangeRate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Currency">
+              <PropertyRef Name="currencyID" />
+            </Principal>
+            <Dependent Role="tbl_ExchangeRate">
+              <PropertyRef Name="currencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5068,13 +5144,13 @@
           <EntitySetMapping Name="Taxes">
             <EntityTypeMapping TypeName="IMEModel.Tax">
               <MappingFragment StoreEntitySet="Tax">
+                <ScalarProperty Name="TaxID" ColumnName="TaxID" />
                 <ScalarProperty Name="isActive" ColumnName="isActive" />
                 <ScalarProperty Name="narration" ColumnName="narration" />
                 <ScalarProperty Name="CalculatingMode" ColumnName="CalculatingMode" />
                 <ScalarProperty Name="Rate" ColumnName="Rate" />
                 <ScalarProperty Name="ApplicationOn" ColumnName="ApplicationOn" />
                 <ScalarProperty Name="taxName" ColumnName="taxName" />
-                <ScalarProperty Name="TaxID" ColumnName="TaxID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -5130,6 +5206,27 @@
               <ScalarProperty Name="AuthorizationID" ColumnName="AuthorizationID" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="tbl_ExchangeRate">
+            <EntityTypeMapping TypeName="IMEModel.tbl_ExchangeRate">
+              <MappingFragment StoreEntitySet="tbl_ExchangeRate">
+                <ScalarProperty Name="rate" ColumnName="rate" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="currencyId" ColumnName="currencyId" />
+                <ScalarProperty Name="exchangeRateID" ColumnName="exchangeRateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Currency">
+            <EntityTypeMapping TypeName="IMEModel.tbl_Currency">
+              <MappingFragment StoreEntitySet="tbl_Currency">
+                <ScalarProperty Name="isDefault" ColumnName="isDefault" />
+                <ScalarProperty Name="subunitName" ColumnName="subunitName" />
+                <ScalarProperty Name="currencyName" ColumnName="currencyName" />
+                <ScalarProperty Name="currencySymbol" ColumnName="currencySymbol" />
+                <ScalarProperty Name="currencyID" ColumnName="currencyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
