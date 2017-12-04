@@ -1642,6 +1642,7 @@ namespace LoginForm
                         town.subcategoryname = ArticleNumb;
                         string Countryname = ws.Cells[ColumnNumber, 1].Text;
                         CustomerCategory c = IME.CustomerCategories.Where(a => a.categoryname == Countryname).FirstOrDefault();
+                        if (c != null)town.categoryID = c.ID;
                         IME.CustomerSubCategories.Add(town);
                         IME.SaveChanges();
                         AddedCounter++;
@@ -1657,6 +1658,99 @@ namespace LoginForm
 
         }
 
+        public static int excelCustomerWorker()
+        {
+            IMEEntities IME = new IMEEntities();
+
+            int AddedCounter = 0;
+            int UptCounter = 0;
+            //Show the dialog and get result.
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "txt files (*.xlsx)|*.xlsx";
+            DialogResult result1 = openFileDialog1.ShowDialog();
+            if (result1 == DialogResult.OK)
+            {
+
+                Excel.Application excel = new Excel.Application();
+                Workbook wb = excel.Workbooks.Open(openFileDialog1.FileName);
+                Worksheet ws = wb.Worksheets[1];
+                int ColumnNumber = 3;
+                string Worker = ws.Cells[3, 6].Text;
+                #region DiscontinuedList
+                while ((ws.Cells[ColumnNumber, 1].Text) != "")
+                {
+                    Worker = ws.Cells[ColumnNumber, 6].Text;
+                    if (IME.Workers.Where(a=>a.NameLastName==Worker).FirstOrDefault()==null)
+                    {
+                        Worker w = new Worker();
+                        w.NameLastName = Worker;
+                        w.UserName = Worker;
+                        w.UserPass = Worker;
+                        IME.Workers.Add(w);
+                        IME.SaveChanges();
+                        AddedCounter++;
+                    }
+                    ColumnNumber++;
+                }
+                MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
+                return 1;
+                #endregion
+
+            }
+            return 0;
+
+        }
+
+
+        public static int excelCustomerLoader_CategorySubCategotyAndWorker()
+        {
+            IMEEntities IME = new IMEEntities();
+
+            int AddedCounter = 0;
+            int UptCounter = 0;
+            //Show the dialog and get result.
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "txt files (*.xlsx)|*.xlsx";
+            DialogResult result1 = openFileDialog1.ShowDialog();
+            if (result1 == DialogResult.OK)
+            {
+
+                Excel.Application excel = new Excel.Application();
+                Workbook wb = excel.Workbooks.Open(openFileDialog1.FileName);
+                Worksheet ws = wb.Worksheets[1];
+                int ColumnNumber = 3;
+                string ArticleNumb = ws.Cells[3, 1].Text;
+                #region DiscontinuedList
+                while ((ws.Cells[ColumnNumber, 1].Text) != "")
+                {
+                    ArticleNumb = ws.Cells[ColumnNumber, 1].Text;
+                    string subcategory;
+                    subcategory = ws.Cells[ColumnNumber, 4].Text;
+                    string category;
+                    category = ws.Cells[ColumnNumber, 3].Text;
+                    string worker;
+                    worker= ws.Cells[ColumnNumber, 6].Text;
+                    Customer c = IME.Customers.Where(a => a.ID == ArticleNumb).FirstOrDefault();
+                    if (c!=null)
+                    {
+                        if (category != null) { c.categoryID = IME.CustomerCategories.Where(a => a.categoryname == category).FirstOrDefault().ID; }
+                        if (subcategory != null) { c.subcategoryID = IME.CustomerSubCategories.Where(a => a.subcategoryname == subcategory).FirstOrDefault().ID; }
+                        if (worker != null && worker != "-") c.representaryID = IME.Workers.Where(a => a.NameLastName == worker).FirstOrDefault().WorkerID;
+                        IME.SaveChanges();
+                        AddedCounter++;
+                    }
+                    ColumnNumber++;
+                }
+                MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
+                return 1;
+                #endregion
+
+            }
+            return 0;
+
+        }
+
+
         public static int createNOTE(string column)
         {
             IMEEntities IME = new IMEEntities();
@@ -1668,6 +1762,12 @@ namespace LoginForm
                 IME.SaveChanges();
             return n.ID;
         }
+
+
+
+
+        
+
 
         public static void excelCustomerLoader()
         {

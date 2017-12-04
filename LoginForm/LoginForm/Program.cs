@@ -12,7 +12,7 @@ namespace LoginForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmExchangeRate());
+            Application.Run(new FormLogin());
         }
     }
 }

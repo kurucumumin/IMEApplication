@@ -17,12 +17,15 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CustomerCategory()
         {
+            this.Customers = new HashSet<Customer>();
             this.CustomerSubCategories = new HashSet<CustomerSubCategory>();
         }
     
         public int ID { get; set; }
         public string categoryname { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Customer> Customers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomerSubCategory> CustomerSubCategories { get; set; }
     }

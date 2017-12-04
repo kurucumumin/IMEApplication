@@ -74,7 +74,7 @@ namespace LoginForm
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
-            //txtReader.excelCustomerLoader();
+            //txtReader.excelCustomerCategory1();
             Rate DolarRate1 = new Rate();
             DolarRate1 = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).FirstOrDefault();
             if (DolarRate1 == null)

@@ -68,7 +68,6 @@
             this.AccountingNotes = new System.Windows.Forms.TextBox();
             this.InvCurrencyName = new System.Windows.Forms.ComboBox();
             this.InvCurrencyType = new System.Windows.Forms.ComboBox();
-            this.QuoCurrencyType = new System.Windows.Forms.ComboBox();
             this.QuoCurrencyName = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.PaymentMethod = new System.Windows.Forms.ComboBox();
@@ -87,6 +86,7 @@
             this.taxNumber = new System.Windows.Forms.TextBox();
             this.TaxOffice = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
+            this.QuoCurrencyType = new System.Windows.Forms.ComboBox();
             this.tab_adresses = new System.Windows.Forms.TabPage();
             this.TownAdd = new System.Windows.Forms.Button();
             this.cbIMEOffice = new System.Windows.Forms.CheckBox();
@@ -610,21 +610,6 @@
             this.InvCurrencyType.TabIndex = 12;
             this.InvCurrencyType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InvCurrencyType_KeyPress);
             // 
-            // QuoCurrencyType
-            // 
-            this.QuoCurrencyType.Enabled = false;
-            this.QuoCurrencyType.FormattingEnabled = true;
-            this.QuoCurrencyType.Items.AddRange(new object[] {
-            "Buy",
-            "Eff. Buy",
-            "Sale",
-            "Eff. Sale"});
-            this.QuoCurrencyType.Location = new System.Drawing.Point(582, 101);
-            this.QuoCurrencyType.Name = "QuoCurrencyType";
-            this.QuoCurrencyType.Size = new System.Drawing.Size(88, 24);
-            this.QuoCurrencyType.TabIndex = 10;
-            this.QuoCurrencyType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.QuoCurrencyType_KeyPress);
-            // 
             // QuoCurrencyName
             // 
             this.QuoCurrencyName.Enabled = false;
@@ -787,6 +772,21 @@
             this.label21.Size = new System.Drawing.Size(72, 17);
             this.label21.TabIndex = 8;
             this.label21.Text = "Tax Office";
+            // 
+            // QuoCurrencyType
+            // 
+            this.QuoCurrencyType.Enabled = false;
+            this.QuoCurrencyType.FormattingEnabled = true;
+            this.QuoCurrencyType.Items.AddRange(new object[] {
+            "Buy",
+            "Eff. Buy",
+            "Sale",
+            "Eff. Sale"});
+            this.QuoCurrencyType.Location = new System.Drawing.Point(582, 101);
+            this.QuoCurrencyType.Name = "QuoCurrencyType";
+            this.QuoCurrencyType.Size = new System.Drawing.Size(88, 24);
+            this.QuoCurrencyType.TabIndex = 10;
+            this.QuoCurrencyType.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.QuoCurrencyType_KeyPress);
             // 
             // tab_adresses
             // 
@@ -1389,8 +1389,8 @@
             // 
             this.CustomerDataGrid.AllowUserToAddRows = false;
             this.CustomerDataGrid.AllowUserToDeleteRows = false;
+            this.CustomerDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.CustomerDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.CustomerDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CustomerDataGrid.Location = new System.Drawing.Point(7, 377);
             this.CustomerDataGrid.Name = "CustomerDataGrid";
             this.CustomerDataGrid.ReadOnly = true;

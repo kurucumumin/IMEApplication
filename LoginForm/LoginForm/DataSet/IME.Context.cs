@@ -32,10 +32,10 @@ namespace LoginForm.DataSet
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<ContactType> ContactTypes { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<Currency> Currencies { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<CustomerAddress> CustomerAddresses { get; set; }
         public virtual DbSet<CustomerCategory> CustomerCategories { get; set; }
-        public virtual DbSet<CustomerCategorySubCategory> CustomerCategorySubCategories { get; set; }
         public virtual DbSet<CustomerDepartment> CustomerDepartments { get; set; }
         public virtual DbSet<CustomerSubCategory> CustomerSubCategories { get; set; }
         public virtual DbSet<CustomerTitle> CustomerTitles { get; set; }
@@ -43,6 +43,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<DailyDiscontinued> DailyDiscontinueds { get; set; }
         public virtual DbSet<DiscountValue> DiscountValues { get; set; }
         public virtual DbSet<DualUse> DualUses { get; set; }
+        public virtual DbSet<ExchangeRate> ExchangeRates { get; set; }
         public virtual DbSet<ExtendedRange> ExtendedRanges { get; set; }
         public virtual DbSet<Hazardou> Hazardous { get; set; }
         public virtual DbSet<ItemNote> ItemNotes { get; set; }
@@ -81,7 +82,5 @@ namespace LoginForm.DataSet
         public virtual DbSet<TaxDetail> TaxDetails { get; set; }
         public virtual DbSet<Town> Towns { get; set; }
         public virtual DbSet<Worker> Workers { get; set; }
-        public virtual DbSet<Currency> Currencies { get; set; }
-        public virtual DbSet<ExchangeRate> ExchangeRates { get; set; }
     }
 }
