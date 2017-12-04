@@ -329,6 +329,12 @@
     <Compile Include="DataSet\TaxDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\tbl_Currency.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\tbl_ExchangeRate.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Town.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>

@@ -2176,6 +2176,8 @@
           <EntitySet Name="sysdiagrams" EntityType="IMEModel.sysdiagram" />
           <EntitySet Name="Taxes" EntityType="IMEModel.Tax" />
           <EntitySet Name="TaxDetails" EntityType="IMEModel.TaxDetail" />
+          <EntitySet Name="tbl_Currency" EntityType="IMEModel.tbl_Currency" />
+          <EntitySet Name="tbl_ExchangeRate" EntityType="IMEModel.tbl_ExchangeRate" />
           <EntitySet Name="Towns" EntityType="IMEModel.Town" />
           <EntitySet Name="Workers" EntityType="IMEModel.Worker" />
           <AssociationSet Name="FK__City__CountryID__51300E55" Association="IMEModel.FK__City__CountryID__51300E55">
@@ -2458,6 +2460,10 @@
             <End Role="SupplierTitle" EntitySet="SupplierTitles" />
             <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
           </AssociationSet>
+          <AssociationSet Name="FK__tbl_Excha__curre__52442E1F" Association="IMEModel.FK__tbl_Excha__curre__52442E1F">
+            <End Role="tbl_Currency" EntitySet="tbl_Currency" />
+            <End Role="tbl_ExchangeRate" EntitySet="tbl_ExchangeRate" />
+          </AssociationSet>
           <AssociationSet Name="AuthRole" Association="IMEModel.AuthRole">
             <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
             <End Role="RoleValue" EntitySet="RoleValues" />
@@ -2465,12 +2471,6 @@
           <AssociationSet Name="UserAuthorization" Association="IMEModel.UserAuthorization">
             <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
             <End Role="Worker" EntitySet="Workers" />
-          </AssociationSet>
-          <EntitySet Name="tbl_ExchangeRate" EntityType="IMEModel.tbl_ExchangeRate" />
-          <EntitySet Name="tbl_Currency" EntityType="IMEModel.tbl_Currency" />
-          <AssociationSet Name="FK__tbl_Excha__curre__52442E1F" Association="IMEModel.FK__tbl_Excha__curre__52442E1F">
-            <End Role="tbl_Currency" EntitySet="tbl_Currency" />
-            <End Role="tbl_ExchangeRate" EntitySet="tbl_ExchangeRate" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AccountGroup">
@@ -3396,6 +3396,27 @@
           <Property Name="SelectedtaxID" Type="Int32" />
           <Property Name="taxDate" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="tbl_Currency">
+          <Key>
+            <PropertyRef Name="currencyID" />
+          </Key>
+          <Property Name="currencyID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="currencySymbol" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="currencyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="subunitName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="isDefault" Type="Boolean" />
+          <NavigationProperty Name="tbl_ExchangeRate" Relationship="IMEModel.FK__tbl_Excha__curre__52442E1F" FromRole="tbl_Currency" ToRole="tbl_ExchangeRate" />
+        </EntityType>
+        <EntityType Name="tbl_ExchangeRate">
+          <Key>
+            <PropertyRef Name="exchangeRateID" />
+          </Key>
+          <Property Name="exchangeRateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="currencyId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="rate" Type="Decimal" Precision="18" Scale="5" />
+          <NavigationProperty Name="tbl_Currency" Relationship="IMEModel.FK__tbl_Excha__curre__52442E1F" FromRole="tbl_ExchangeRate" ToRole="tbl_Currency" />
+        </EntityType>
         <EntityType Name="Town">
           <Key>
             <PropertyRef Name="ID" />
@@ -4272,35 +4293,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="AuthRole">
-          <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
-          <End Type="IMEModel.RoleValue" Role="RoleValue" Multiplicity="*" />
-        </Association>
-        <Association Name="UserAuthorization">
-          <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
-          <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
-        </Association>
-        <EntityType Name="tbl_ExchangeRate">
-          <Key>
-            <PropertyRef Name="exchangeRateID" />
-          </Key>
-          <Property Name="exchangeRateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="currencyId" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="date" Type="DateTime" Precision="3" />
-          <Property Name="rate" Type="Decimal" Precision="18" Scale="5" />
-          <NavigationProperty Name="tbl_Currency" Relationship="IMEModel.FK__tbl_Excha__curre__52442E1F" FromRole="tbl_ExchangeRate" ToRole="tbl_Currency" />
-        </EntityType>
-        <EntityType Name="tbl_Currency">
-          <Key>
-            <PropertyRef Name="currencyID" />
-          </Key>
-          <Property Name="currencyID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="currencySymbol" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="currencyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="subunitName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="isDefault" Type="Boolean" />
-          <NavigationProperty Name="tbl_ExchangeRate" Relationship="IMEModel.FK__tbl_Excha__curre__52442E1F" FromRole="tbl_Currency" ToRole="tbl_ExchangeRate" />
-        </EntityType>
         <Association Name="FK__tbl_Excha__curre__52442E1F">
           <End Type="IMEModel.tbl_Currency" Role="tbl_Currency" Multiplicity="0..1" />
           <End Type="IMEModel.tbl_ExchangeRate" Role="tbl_ExchangeRate" Multiplicity="*" />
@@ -4312,6 +4304,14 @@
               <PropertyRef Name="currencyId" />
             </Dependent>
           </ReferentialConstraint>
+        </Association>
+        <Association Name="AuthRole">
+          <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
+          <End Type="IMEModel.RoleValue" Role="RoleValue" Multiplicity="*" />
+        </Association>
+        <Association Name="UserAuthorization">
+          <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
+          <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -5164,6 +5164,27 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Currency">
+            <EntityTypeMapping TypeName="IMEModel.tbl_Currency">
+              <MappingFragment StoreEntitySet="tbl_Currency">
+                <ScalarProperty Name="isDefault" ColumnName="isDefault" />
+                <ScalarProperty Name="subunitName" ColumnName="subunitName" />
+                <ScalarProperty Name="currencyName" ColumnName="currencyName" />
+                <ScalarProperty Name="currencySymbol" ColumnName="currencySymbol" />
+                <ScalarProperty Name="currencyID" ColumnName="currencyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ExchangeRate">
+            <EntityTypeMapping TypeName="IMEModel.tbl_ExchangeRate">
+              <MappingFragment StoreEntitySet="tbl_ExchangeRate">
+                <ScalarProperty Name="rate" ColumnName="rate" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="currencyId" ColumnName="currencyId" />
+                <ScalarProperty Name="exchangeRateID" ColumnName="exchangeRateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Towns">
             <EntityTypeMapping TypeName="IMEModel.Town">
               <MappingFragment StoreEntitySet="Town">
@@ -5206,27 +5227,6 @@
               <ScalarProperty Name="AuthorizationID" ColumnName="AuthorizationID" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="tbl_ExchangeRate">
-            <EntityTypeMapping TypeName="IMEModel.tbl_ExchangeRate">
-              <MappingFragment StoreEntitySet="tbl_ExchangeRate">
-                <ScalarProperty Name="rate" ColumnName="rate" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="currencyId" ColumnName="currencyId" />
-                <ScalarProperty Name="exchangeRateID" ColumnName="exchangeRateID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tbl_Currency">
-            <EntityTypeMapping TypeName="IMEModel.tbl_Currency">
-              <MappingFragment StoreEntitySet="tbl_Currency">
-                <ScalarProperty Name="isDefault" ColumnName="isDefault" />
-                <ScalarProperty Name="subunitName" ColumnName="subunitName" />
-                <ScalarProperty Name="currencyName" ColumnName="currencyName" />
-                <ScalarProperty Name="currencySymbol" ColumnName="currencySymbol" />
-                <ScalarProperty Name="currencyID" ColumnName="currencyID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

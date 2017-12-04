@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LoginForm.DataSet
 {
-    class ExchangeRate
+    class classExchangeRate
     {
         public string Code { get; set; }
         public DateTime RateDate { get; set; }

@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class SaleOrderDetail
     {
         public int ID { get; set; }
@@ -38,7 +38,7 @@ namespace LoginForm.DataSet
         public bool Calibration { get; set; }
         public Nullable<decimal> UnitPrice { get; set; }
         public Nullable<decimal> ItemCost { get; set; }
-
+    
         public virtual SaleOrder SaleOrder { get; set; }
     }
 }
