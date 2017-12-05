@@ -60,23 +60,13 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevComponents.DotNetBar.Design">
-      <HintPath>..\..\..\..\..\Desktop\DotNetBar\DevComponents.DotNetBar.Design.dll</HintPath>
-    </Reference>
-    <Reference Include="DevComponents.DotNetBar2">
-      <HintPath>..\..\..\..\..\Desktop\DotNetBar\DevComponents.DotNetBar2.dll</HintPath>
-    </Reference>
-    <Reference Include="DevComponents.Instrumentation">
-      <HintPath>..\..\..\..\..\Desktop\DotNetBar\DevComponents.Instrumentation.dll</HintPath>
-    </Reference>
-    <Reference Include="DevComponents.Instrumentation.Design">
-      <HintPath>..\..\..\..\..\Desktop\DotNetBar\DevComponents.Instrumentation.Design.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialSkin.0.2.1\lib\MaterialSkin.dll</HintPath>
@@ -146,6 +136,12 @@
     </Compile>
     <Compile Include="Account\frmVoucherType.designer.cs">
       <DependentUpon>frmVoucherType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\AccountingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\AccountingControl.Designer.cs">
+      <DependentUpon>AccountingControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Customer\CustomerDepartmentAdd.cs">
       <SubType>Form</SubType>
@@ -616,6 +612,9 @@
     <EmbeddedResource Include="Account\frmVoucherType.resx">
       <DependentUpon>frmVoucherType.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\AccountingControl.resx">
+      <DependentUpon>AccountingControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Customer\CustomerDepartmentAdd.resx">
       <DependentUpon>CustomerDepartmentAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -844,6 +843,5 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
