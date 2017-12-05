@@ -214,44 +214,16 @@ namespace LoginForm
                         }
                     }
                     vt.isTaxApplicable = isTax;
-                    vt.isDefault = false;
                     vt.masterId = int.Parse(cmbDotMatrix.SelectedValue.ToString());
                     vt.declaration = txtDeclaration.Text;
                     vt.heading1 = txtHeading1.Text;
                     vt.heading2 = txtHeading2.Text;
                     vt.heading3 = txtHeading3.Text;
                     vt.heading4 = txtHeading4.Text;
-                    if (vt.isDefault == false)
-                    {
+                    IME.SaveChanges();
 
-                        spVoucherType.VoucherTypeEdit(infoVoucherType);
-                    }
-                    else
-                    {
-
-                        spVoucherType.VoucherTypeEditForDefaultVouchers(infoVoucherType);
-
-                    }
-                    //------------------------------------- Delete And Add Tax details From VoucherTypeTax Using VoucherTypeId-------------------------------//
-                    spVoucherTypeTax.DeleteVoucherTypeTaxUsingVoucherTypeId(decVoucherTypeId);
-                    if (isTax)
-                    {
-                        for (int i = 0; i <= inRowCount - 1; i++)
-                        {
-                            if (dgvApplicableTaxes.Rows[i].Cells["dgvcbxSelect"].Value != null && dgvApplicableTaxes.Rows[i].Cells["dgvcbxSelect"].Value.ToString() != "False")
-                            {
-                                infoVoucherTypeTax.VoucherTypeId = decVoucherTypeId;
-                                infoVoucherTypeTax.TaxId = Convert.ToDecimal(dgvApplicableTaxes.Rows[i].Cells["dgvtxtTaxId"].Value.ToString());
-                                infoVoucherTypeTax.Extra1 = string.Empty;
-                                infoVoucherTypeTax.Extra2 = string.Empty;
-
-                                spVoucherTypeTax.VoucherTypeTaxAdd(infoVoucherTypeTax);
-                            }
-                        }
-                    }
-
-                    //-----------------------------------------------------------Deleted And Added--------------------------------------------------------//
-                    Messages.UpdatedMessage();
+                    var vouchertaxList = IME.VoucherTypeTaxes.Where(a => a.voucherTypeId == decVoucherTypeId).ToList();
+                    MessageBox.Show("Updated successfully");
                     Clear();
                 }
                 catch
