@@ -55,11 +55,14 @@ namespace LoginForm.DataSet
         public Nullable<int> categoryID { get; set; }
         public Nullable<int> subcategoryID { get; set; }
     
+        public virtual Worker Worker { get; set; }
         public virtual CustomerCategory CustomerCategory { get; set; }
         public virtual Note Note { get; set; }
         public virtual CustomerWorker CustomerWorker { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
         public virtual PaymentTerm PaymentTerm { get; set; }
+        public virtual Worker Worker1 { get; set; }
+        public virtual Worker Worker2 { get; set; }
         public virtual CustomerSubCategory CustomerSubCategory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CustomerAddress> CustomerAddresses { get; set; }
@@ -73,8 +76,5 @@ namespace LoginForm.DataSet
         public virtual ICollection<Quotation> Quotations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleOrder> SaleOrders { get; set; }
-        public virtual Worker Worker { get; set; }
-        public virtual Worker Worker1 { get; set; }
-        public virtual Worker Worker2 { get; set; }
     }
 }
