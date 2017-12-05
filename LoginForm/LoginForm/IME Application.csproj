@@ -135,9 +135,17 @@
     <Compile Include="Account\frmExchangeRate.designer.cs">
       <DependentUpon>frmExchangeRate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\frmTax.cs" />
+    <Compile Include="Account\frmTax.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Account\frmTax.designer.cs">
       <DependentUpon>frmTax.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\frmVoucherType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\frmVoucherType.designer.cs">
+      <DependentUpon>frmVoucherType.cs</DependentUpon>
     </Compile>
     <Compile Include="Customer\CustomerDepartmentAdd.cs">
       <SubType>Form</SubType>
@@ -269,6 +277,9 @@
     <Compile Include="DataSet\PaymentTerm.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PrintFormat.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PurchaseOrder.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -345,6 +356,12 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Town.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\VoucherType.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\VoucherTypeTax.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Worker.cs">
@@ -595,6 +612,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\frmTax.resx">
       <DependentUpon>frmTax.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\frmVoucherType.resx">
+      <DependentUpon>frmVoucherType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customer\CustomerDepartmentAdd.resx">
       <DependentUpon>CustomerDepartmentAdd.cs</DependentUpon>

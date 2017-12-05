@@ -42,7 +42,7 @@
         <EntityTypeShape EntityType="IMEModel.Rate" Width="1.5" PointX="3" PointY="21.25" />
         <EntityTypeShape EntityType="IMEModel.RoleValue" Width="1.5" PointX="3" PointY="16" />
         <EntityTypeShape EntityType="IMEModel.RSPro" Width="1.5" PointX="0.75" PointY="11.75" />
-        <EntityTypeShape EntityType="IMEModel.SaleOrder" Width="1.5" PointX="18.75" PointY="25" />
+        <EntityTypeShape EntityType="IMEModel.SaleOrder" Width="1.875" PointX="18.75" PointY="25" />
         <EntityTypeShape EntityType="IMEModel.SaleOrderDetail" Width="1.5" PointX="21" PointY="25.625" />
         <EntityTypeShape EntityType="IMEModel.SlidingPrice" Width="1.5" PointX="8.25" PointY="43.5" />
         <EntityTypeShape EntityType="IMEModel.SuperDisk" Width="1.5" PointX="12.75" PointY="5.75" />
@@ -137,6 +137,10 @@
         <AssociationConnector Association="IMEModel.FK__Supplier__accoun__2DB1C7EE" />
         <AssociationConnector Association="IMEModel.FK__Supplier__repres__65370702" />
         <AssociationConnector Association="IMEModel.UserAuthorization" />
+        <EntityTypeShape EntityType="IMEModel.VoucherType" Width="1.5" PointX="8.375" PointY="13.75" />
+        <EntityTypeShape EntityType="IMEModel.VoucherTypeTax" Width="1.5" PointX="10.625" PointY="37.75" />
+        <AssociationConnector Association="IMEModel.FK__VoucherTy__vouch__69279377" />
+        <EntityTypeShape EntityType="IMEModel.PrintFormat" Width="1.5" PointX="13.375" PointY="15.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

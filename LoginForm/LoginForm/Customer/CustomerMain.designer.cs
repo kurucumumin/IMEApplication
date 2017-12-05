@@ -320,6 +320,7 @@
             // 
             // Represantative1
             // 
+            this.Represantative1.Enabled = false;
             this.Represantative1.FormattingEnabled = true;
             this.Represantative1.Location = new System.Drawing.Point(123, 203);
             this.Represantative1.Name = "Represantative1";

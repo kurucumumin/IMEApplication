@@ -450,12 +450,12 @@ namespace LoginForm.nsSaleOrder
             txtCustomerName.Text = customer.c_name;
             CustomerCode.Text = customer.ID;
 
-            cbCurrency.SelectedValue = customer.CurrNameQuo;
+            //cbCurrency.SelectedValue = customer.CurrNameQuo;
             cbCurrType.SelectedItem = customer.CurrTypeQuo;
             cbRep.SelectedValue = customer.representaryID;
             cbPaymentTerm.SelectedValue = customer.PaymentTerm;
             cbPayment.SelectedItem = customer.PaymentMethod;
-            cbWorkers.SelectedValue = (customer.MainContactID != null) ? customer.MainContactID : null;
+            cbWorkers.SelectedValue = (customer.MainContactID != null) ? customer.MainContactID : -1;
 
             //cbCurrency.SelectedIndex = cbCurrency.FindStringExact(customer.CurrNameQuo);
             //cbCurrType.SelectedIndex = cbCurrType.FindStringExact(customer.CurrTypeQuo);
@@ -669,8 +669,8 @@ namespace LoginForm.nsSaleOrder
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 SaleOrder so = new SaleOrder();
                 so.SaleOrderNo = txtSONo.Text;
                 so.SaleDate = DateTime.Today.Date;
@@ -690,8 +690,10 @@ namespace LoginForm.nsSaleOrder
                 so.CustomerID = customer.ID;
                 so.ContactID = (int)cbWorkers.SelectedValue;
                 so.DeliveryContactID = (int)cbDeliveryContact.SelectedValue;
-                so.InvoiceAddressID = (invoiceAddress.ID);
-                so.DeliveryAddressID = (int)cbDeliveryAddress.SelectedValue;
+            //so.InvoiceAddressID = (invoiceAddress.ID);
+            so.InvoiceAddressID = 1010;
+            so.DeliveryAddressID = 1010;
+                //so.DeliveryAddressID = (int)cbDeliveryAddress.SelectedValue;
                 so.RepresentativeID = (int)cbRep.SelectedValue;
                 so.PaymentMethodID = (int)cbPayment.SelectedValue;
                 so.SaleOrderNature = cbOrderNature.SelectedItem.ToString();
@@ -727,11 +729,11 @@ namespace LoginForm.nsSaleOrder
                     }
                     IME.SaveChanges();
                 }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            //}
+            //catch (Exception)
+            //{
+            //    //throw;
+            //}
         }
 
         private bool RowsHasEmptyAreas()
