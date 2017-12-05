@@ -53,8 +53,8 @@ namespace LoginForm.DataSet
         public virtual PaymentTerm PaymentTerm { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
+        public virtual Worker Worker { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleOrderDetail> SaleOrderDetails { get; set; }
-        public virtual Worker Worker { get; set; }
     }
 }

@@ -34,7 +34,7 @@ namespace LoginForm.QuotationModule
 
         public void ProductHistory(string item_code)
         {
-            SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-51RN2GB\LOCAL;Initial Catalog=IME;Integrated Security=True");
+            SqlConnection connection = new SqlConnection(@"Data Source=.;Initial Catalog=IME;Integrated Security=True");
             StringBuilder history = new StringBuilder();
             history.Append("Select c.ItemCode,a.ID,a.c_name, b.StartDate, b.QuotationNo, c.Qty, b.CurrName, c.Disc ");
             history.Append("from Customer a, Quotation b, QuotationDetail c where b.CustomerID=a.ID and b.QuotationNo=c.QuotationNo ");

@@ -29,6 +29,7 @@ namespace LoginForm.DataSet
         public string Unit { get; set; }
     
         public virtual PurchaseOrder PurchaseOrder { get; set; }
+        public virtual Quotation Quotation { get; set; }
         public virtual SaleOrder SaleOrder { get; set; }
     }
 }

@@ -108,7 +108,7 @@ namespace LoginForm
                     }
                     else if (isEditMode)
                     {
-                                //EditFunction();
+                                EditFunction();
                     }
                 }
                 SearchGridFill();
@@ -184,88 +184,88 @@ namespace LoginForm
         }
 
 
-        //public void EditFunction()
-        //{
+        public void EditFunction()
+        {
 
-        //        if (IME.VoucherTypes.Where(a => a.voucherTypeName == txtVoucherName.Text.Trim()).Where(b => b.voucherTypeId != decVoucherTypeId).ToList().Count == 0)
-        //        {
-        //            //referans ı var mı kontrol et
-        //            //eğer referans ı varsa kaydetmez hata verir
-        //            try
-        //            {
-        //            VoucherType vt = IME.VoucherTypes.Where(a => a.voucherTypeId == decVoucherTypeId).FirstOrDefault();
-        //            vt.voucherTypeName = txtVoucherName.Text.Trim();
-        //            vt.typeOfVoucher = cmbTypeOfVoucher.Text;
-        //            vt.methodOfVoucherNumbering = cmbMethodOfvoucherNumbering.Text;
-        //            vt.narration = txtNarration.Text.Trim();
-        //                if (cbxActive.Checked)
-        //                {
-        //                    IsActive = true;
-        //                }
-        //            vt.isActive = IsActive;
-        //                int inRowCount = dgvApplicableTaxes.RowCount;
-        //                for (int i = 0; i <= inRowCount - 1; i++)
-        //                {
+            if (IME.VoucherTypes.Where(a => a.voucherTypeName == txtVoucherName.Text.Trim()).Where(b => b.voucherTypeId != decVoucherTypeId).ToList().Count == 0)
+            {
+                //referans ı var mı kontrol et
+                //eğer referans ı varsa kaydetmez hata verir
+                try
+                {
+                    VoucherType vt = IME.VoucherTypes.Where(a => a.voucherTypeId == decVoucherTypeId).FirstOrDefault();
+                    vt.voucherTypeName = txtVoucherName.Text.Trim();
+                    vt.typeOfVoucher = cmbTypeOfVoucher.Text;
+                    vt.methodOfVoucherNumbering = cmbMethodOfvoucherNumbering.Text;
+                    vt.narration = txtNarration.Text.Trim();
+                    if (cbxActive.Checked)
+                    {
+                        IsActive = true;
+                    }
+                    vt.isActive = IsActive;
+                    int inRowCount = dgvApplicableTaxes.RowCount;
+                    for (int i = 0; i <= inRowCount - 1; i++)
+                    {
 
-        //                    if (dgvApplicableTaxes.Rows[i].Cells["dgvcbxSelect"].Value != null && dgvApplicableTaxes.Rows[i].Cells["dgvcbxSelect"].Value.ToString() != "False")
-        //                    {
-        //                        isTax = bool.Parse(dgvApplicableTaxes.Rows[i].Cells["dgvcbxSelect"].Value.ToString());
+                        if (dgvApplicableTaxes.Rows[i].Cells["dgvcbxSelect"].Value != null && dgvApplicableTaxes.Rows[i].Cells["dgvcbxSelect"].Value.ToString() != "False")
+                        {
+                            isTax = bool.Parse(dgvApplicableTaxes.Rows[i].Cells["dgvcbxSelect"].Value.ToString());
 
-        //                    }
-        //                }
-        //            vt.isTaxApplicable = isTax;
-        //            vt.isDefault = false;
-        //            vt.masterId = int.Parse(cmbDotMatrix.SelectedValue.ToString());
-        //            vt.declaration = txtDeclaration.Text;
-        //            vt.heading1 = txtHeading1.Text;
-        //            vt.heading2 = txtHeading2.Text;
-        //            vt.heading3 = txtHeading3.Text;
-        //            vt.heading4 = txtHeading4.Text;
-        //                if (vt.isDefault == false)
-        //                {
+                        }
+                    }
+                    vt.isTaxApplicable = isTax;
+                    vt.isDefault = false;
+                    vt.masterId = int.Parse(cmbDotMatrix.SelectedValue.ToString());
+                    vt.declaration = txtDeclaration.Text;
+                    vt.heading1 = txtHeading1.Text;
+                    vt.heading2 = txtHeading2.Text;
+                    vt.heading3 = txtHeading3.Text;
+                    vt.heading4 = txtHeading4.Text;
+                    if (vt.isDefault == false)
+                    {
 
-        //                    spVoucherType.VoucherTypeEdit(infoVoucherType);
-        //                }
-        //                else
-        //                {
+                        spVoucherType.VoucherTypeEdit(infoVoucherType);
+                    }
+                    else
+                    {
 
-        //                    spVoucherType.VoucherTypeEditForDefaultVouchers(infoVoucherType);
+                        spVoucherType.VoucherTypeEditForDefaultVouchers(infoVoucherType);
 
-        //                }
-        //                //------------------------------------- Delete And Add Tax details From VoucherTypeTax Using VoucherTypeId-------------------------------//
-        //                spVoucherTypeTax.DeleteVoucherTypeTaxUsingVoucherTypeId(decVoucherTypeId);
-        //                if (isTax)
-        //                {
-        //                    for (int i = 0; i <= inRowCount - 1; i++)
-        //                    {
-        //                        if (dgvApplicableTaxes.Rows[i].Cells["dgvcbxSelect"].Value != null && dgvApplicableTaxes.Rows[i].Cells["dgvcbxSelect"].Value.ToString() != "False")
-        //                        {
-        //                            infoVoucherTypeTax.VoucherTypeId = decVoucherTypeId;
-        //                            infoVoucherTypeTax.TaxId = Convert.ToDecimal(dgvApplicableTaxes.Rows[i].Cells["dgvtxtTaxId"].Value.ToString());
-        //                            infoVoucherTypeTax.Extra1 = string.Empty;
-        //                            infoVoucherTypeTax.Extra2 = string.Empty;
+                    }
+                    //------------------------------------- Delete And Add Tax details From VoucherTypeTax Using VoucherTypeId-------------------------------//
+                    spVoucherTypeTax.DeleteVoucherTypeTaxUsingVoucherTypeId(decVoucherTypeId);
+                    if (isTax)
+                    {
+                        for (int i = 0; i <= inRowCount - 1; i++)
+                        {
+                            if (dgvApplicableTaxes.Rows[i].Cells["dgvcbxSelect"].Value != null && dgvApplicableTaxes.Rows[i].Cells["dgvcbxSelect"].Value.ToString() != "False")
+                            {
+                                infoVoucherTypeTax.VoucherTypeId = decVoucherTypeId;
+                                infoVoucherTypeTax.TaxId = Convert.ToDecimal(dgvApplicableTaxes.Rows[i].Cells["dgvtxtTaxId"].Value.ToString());
+                                infoVoucherTypeTax.Extra1 = string.Empty;
+                                infoVoucherTypeTax.Extra2 = string.Empty;
 
-        //                            spVoucherTypeTax.VoucherTypeTaxAdd(infoVoucherTypeTax);
-        //                        }
-        //                    }
-        //                }
+                                spVoucherTypeTax.VoucherTypeTaxAdd(infoVoucherTypeTax);
+                            }
+                        }
+                    }
 
-        //                //-----------------------------------------------------------Deleted And Added--------------------------------------------------------//
-        //                Messages.UpdatedMessage();
-        //                Clear();
-        //            }
-        //            catch
-        //            {
-        //                MessageBox.Show("You can't update,voucher already in use");
-        //            }
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Voucher name already exists");
-        //        }
+                    //-----------------------------------------------------------Deleted And Added--------------------------------------------------------//
+                    Messages.UpdatedMessage();
+                    Clear();
+                }
+                catch
+                {
+                    MessageBox.Show("You can't update,voucher already in use");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Voucher name already exists");
+            }
 
-               
-        //}
+
+        }
 
         public void SearchGridFill()
         {
