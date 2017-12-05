@@ -48,15 +48,15 @@ namespace LoginForm.DataSet
         public virtual PaymentMethod PaymentMethod { get; set; }
         public virtual PaymentTerm PaymentTerm { get; set; }
         public virtual Rate Rate { get; set; }
+        public virtual Worker Worker { get; set; }
         public virtual SupplierBank SupplierBank { get; set; }
         public virtual SupplierMainContact SupplierMainContact { get; set; }
+        public virtual Worker Worker1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SupplierAdress> SupplierAdresses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SupplierCategorySubCategory> SupplierCategorySubCategories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SupplierWorker> SupplierWorkers { get; set; }
-        public virtual Worker Worker { get; set; }
-        public virtual Worker Worker1 { get; set; }
     }
 }

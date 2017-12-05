@@ -90,7 +90,6 @@ namespace LoginForm.PurchaseOrder
         private void btnCreatePurchase_Click(object sender, EventArgs e)
         {
             List<PurchaseOrderDetail> podList = new List<PurchaseOrderDetail>();
-            IMEEntities ime = new IMEEntities();
 
             foreach (DataGridViewRow row in rowList)
             {
@@ -116,12 +115,14 @@ namespace LoginForm.PurchaseOrder
             DataSet.PurchaseOrder po = new DataSet.PurchaseOrder();
             po.FicheNo = fiche;
             string s = rowList[0].Cells[3].Value.ToString();
-            po.CustomerID = ime.SaleOrders.Where(a => a.SaleOrderNo == s).FirstOrDefault().CustomerID;
+            po.CustomerID = IME.SaleOrders.Where(a => a.SaleOrderNo == s).FirstOrDefault().CustomerID;
             po.PurchaseOrderDate = DateTime.Today.Date;
-            po.CameDate= ime.SaleOrders.Where(a => a.SaleOrderNo ==s).FirstOrDefault().SaleDate;
+            po.CameDate= IME.SaleOrders.Where(a => a.SaleOrderNo ==s).FirstOrDefault().SaleDate;
             //po.Reason
-            ime.PurchaseOrders.Add(po);
+            IME.PurchaseOrders.Add(po);
             IME.SaveChanges();
+
+
             foreach (PurchaseOrderDetail item in podList)
             {
                 po.PurchaseOrderDetails.Add(item);
