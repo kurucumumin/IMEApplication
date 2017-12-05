@@ -383,6 +383,23 @@
           <Property Name="term_name" Type="nvarchar" MaxLength="50" />
           <Property Name="timespan" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="PrintFormat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="formName" Type="int" />
+          <Property Name="isTwoLineForHedder" Type="bit" />
+          <Property Name="isTwoLineForDetails" Type="bit" />
+          <Property Name="pageSize1" Type="int" />
+          <Property Name="pageSizeOther" Type="int" />
+          <Property Name="blankLneForFooter" Type="int" />
+          <Property Name="footerLocation" Type="varchar(max)" />
+          <Property Name="lineCountBetweenTwo" Type="int" />
+          <Property Name="pitch" Type="varchar(max)" />
+          <Property Name="condensed" Type="varchar(max)" />
+          <Property Name="lineCountAfterPrint" Type="int" />
+        </EntityType>
         <EntityType Name="PurchaseOrder">
           <Key>
             <PropertyRef Name="FicheNo" />
@@ -831,6 +848,33 @@
           </Key>
           <Property Name="WorkerID" Type="int" Nullable="false" />
           <Property Name="AuthorizationID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VoucherType">
+          <Key>
+            <PropertyRef Name="voucherTypeId" />
+          </Key>
+          <Property Name="voucherTypeId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="voucherTypeName" Type="varchar(max)" />
+          <Property Name="typeOfVoucher" Type="varchar(max)" />
+          <Property Name="methodOfVoucherNumbering" Type="varchar(max)" />
+          <Property Name="isTaxApplicable" Type="bit" />
+          <Property Name="narration" Type="varchar(max)" />
+          <Property Name="isActive" Type="bit" />
+          <Property Name="isDefault" Type="bit" />
+          <Property Name="masterId" Type="int" />
+          <Property Name="declaration" Type="varchar(max)" />
+          <Property Name="heading1" Type="varchar(max)" />
+          <Property Name="heading2" Type="varchar(max)" />
+          <Property Name="heading3" Type="varchar(max)" />
+          <Property Name="heading4" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="VoucherTypeTax">
+          <Key>
+            <PropertyRef Name="voucherTypeTaxId" />
+          </Key>
+          <Property Name="voucherTypeTaxId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="voucherTypeId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="taxId" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Worker">
           <Key>
@@ -1760,6 +1804,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__VoucherTy__vouch__69279377">
+          <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
+          <End Role="VoucherTypeTax" Type="Self.VoucherTypeTax" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="VoucherTypeTax">
+              <PropertyRef Name="voucherTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Worker__WorkerNo__4BAC3F29">
           <End Role="Notes" Type="Self.Notes" Multiplicity="0..1" />
           <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
@@ -1804,6 +1860,7 @@
           <EntitySet Name="OnSale" EntityType="Self.OnSale" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentTerm" EntityType="Self.PaymentTerm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrintFormat" EntityType="Self.PrintFormat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PurchaseOrder" EntityType="Self.PurchaseOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PurchaseOrderDetail" EntityType="Self.PurchaseOrderDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Quotation" EntityType="Self.Quotation" Schema="dbo" store:Type="Tables" />
@@ -1831,6 +1888,8 @@
           <EntitySet Name="TaxDetail" EntityType="Self.TaxDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Town" EntityType="Self.Town" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAuthorization" EntityType="Self.UserAuthorization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VoucherType" EntityType="Self.VoucherType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VoucherTypeTax" EntityType="Self.VoucherTypeTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__AuthRole__AuthID__4924D839" Association="Self.FK__AuthRole__AuthID__4924D839">
             <End Role="AuthorizationValue" EntitySet="AuthorizationValue" />
@@ -2135,6 +2194,10 @@
           <AssociationSet Name="FK__UserAutho__Worke__2E70E1FD" Association="Self.FK__UserAutho__Worke__2E70E1FD">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="UserAuthorization" EntitySet="UserAuthorization" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VoucherTy__vouch__69279377" Association="Self.FK__VoucherTy__vouch__69279377">
+            <End Role="VoucherType" EntitySet="VoucherType" />
+            <End Role="VoucherTypeTax" EntitySet="VoucherTypeTax" />
           </AssociationSet>
           <AssociationSet Name="FK__Worker__WorkerNo__4BAC3F29" Association="Self.FK__Worker__WorkerNo__4BAC3F29">
             <End Role="Notes" EntitySet="Notes" />
@@ -2503,6 +2566,13 @@
             <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
             <End Role="Worker" EntitySet="Workers" />
           </AssociationSet>
+          <EntitySet Name="VoucherTypes" EntityType="IMEModel.VoucherType" />
+          <EntitySet Name="VoucherTypeTaxes" EntityType="IMEModel.VoucherTypeTax" />
+          <AssociationSet Name="FK__VoucherTy__vouch__69279377" Association="IMEModel.FK__VoucherTy__vouch__69279377">
+            <End Role="VoucherType" EntitySet="VoucherTypes" />
+            <End Role="VoucherTypeTax" EntitySet="VoucherTypeTaxes" />
+          </AssociationSet>
+          <EntitySet Name="PrintFormats" EntityType="IMEModel.PrintFormat" />
         </EntityContainer>
         <EntityType Name="AccountGroup">
           <Key>
@@ -4365,6 +4435,64 @@
           <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
         </Association>
+        <EntityType Name="VoucherType">
+          <Key>
+            <PropertyRef Name="voucherTypeId" />
+          </Key>
+          <Property Name="voucherTypeId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="voucherTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="typeOfVoucher" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="methodOfVoucherNumbering" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="isTaxApplicable" Type="Boolean" />
+          <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="isDefault" Type="Boolean" />
+          <Property Name="masterId" Type="Int32" />
+          <Property Name="declaration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="heading1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="heading2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="heading3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="heading4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="VoucherTypeTaxes" Relationship="IMEModel.FK__VoucherTy__vouch__69279377" FromRole="VoucherType" ToRole="VoucherTypeTax" />
+        </EntityType>
+        <EntityType Name="VoucherTypeTax">
+          <Key>
+            <PropertyRef Name="voucherTypeTaxId" />
+          </Key>
+          <Property Name="voucherTypeTaxId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="taxId" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__VoucherTy__vouch__69279377" FromRole="VoucherTypeTax" ToRole="VoucherType" />
+        </EntityType>
+        <Association Name="FK__VoucherTy__vouch__69279377">
+          <End Type="IMEModel.VoucherType" Role="VoucherType" Multiplicity="0..1" />
+          <End Type="IMEModel.VoucherTypeTax" Role="VoucherTypeTax" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="VoucherTypeTax">
+              <PropertyRef Name="voucherTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PrintFormat">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="formName" Type="Int32" />
+          <Property Name="isTwoLineForHedder" Type="Boolean" />
+          <Property Name="isTwoLineForDetails" Type="Boolean" />
+          <Property Name="pageSize1" Type="Int32" />
+          <Property Name="pageSizeOther" Type="Int32" />
+          <Property Name="blankLneForFooter" Type="Int32" />
+          <Property Name="footerLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="lineCountBetweenTwo" Type="Int32" />
+          <Property Name="pitch" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="condensed" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="lineCountAfterPrint" Type="Int32" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5271,6 +5399,53 @@
               <ScalarProperty Name="AuthorizationID" ColumnName="AuthorizationID" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="VoucherTypes">
+            <EntityTypeMapping TypeName="IMEModel.VoucherType">
+              <MappingFragment StoreEntitySet="VoucherType">
+                <ScalarProperty Name="heading4" ColumnName="heading4" />
+                <ScalarProperty Name="heading3" ColumnName="heading3" />
+                <ScalarProperty Name="heading2" ColumnName="heading2" />
+                <ScalarProperty Name="heading1" ColumnName="heading1" />
+                <ScalarProperty Name="declaration" ColumnName="declaration" />
+                <ScalarProperty Name="masterId" ColumnName="masterId" />
+                <ScalarProperty Name="isDefault" ColumnName="isDefault" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="isTaxApplicable" ColumnName="isTaxApplicable" />
+                <ScalarProperty Name="methodOfVoucherNumbering" ColumnName="methodOfVoucherNumbering" />
+                <ScalarProperty Name="typeOfVoucher" ColumnName="typeOfVoucher" />
+                <ScalarProperty Name="voucherTypeName" ColumnName="voucherTypeName" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VoucherTypeTaxes">
+            <EntityTypeMapping TypeName="IMEModel.VoucherTypeTax">
+              <MappingFragment StoreEntitySet="VoucherTypeTax">
+                <ScalarProperty Name="taxId" ColumnName="taxId" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="voucherTypeTaxId" ColumnName="voucherTypeTaxId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrintFormats">
+            <EntityTypeMapping TypeName="IMEModel.PrintFormat">
+              <MappingFragment StoreEntitySet="PrintFormat">
+                <ScalarProperty Name="lineCountAfterPrint" ColumnName="lineCountAfterPrint" />
+                <ScalarProperty Name="condensed" ColumnName="condensed" />
+                <ScalarProperty Name="pitch" ColumnName="pitch" />
+                <ScalarProperty Name="lineCountBetweenTwo" ColumnName="lineCountBetweenTwo" />
+                <ScalarProperty Name="footerLocation" ColumnName="footerLocation" />
+                <ScalarProperty Name="blankLneForFooter" ColumnName="blankLneForFooter" />
+                <ScalarProperty Name="pageSizeOther" ColumnName="pageSizeOther" />
+                <ScalarProperty Name="pageSize1" ColumnName="pageSize1" />
+                <ScalarProperty Name="isTwoLineForDetails" ColumnName="isTwoLineForDetails" />
+                <ScalarProperty Name="isTwoLineForHedder" ColumnName="isTwoLineForHedder" />
+                <ScalarProperty Name="formName" ColumnName="formName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -22,10 +22,10 @@ namespace LoginForm.nsSaleOrder
 
         List<SaleItem> addedItemList = new List<SaleItem>();
         List<SaleItem> removedItemList = new List<SaleItem>();
-        
+
         List<SlidingPrice> priceList = new List<SlidingPrice>();
         List<OnSale> onSaleList = new List<OnSale>();
-        List<Hazardou> hazardousList = new List<Hazardou>(); 
+        List<Hazardou> hazardousList = new List<Hazardou>();
         CustomerAddress invoiceAddress = new CustomerAddress();
 
         Customer customer;
@@ -93,7 +93,7 @@ namespace LoginForm.nsSaleOrder
             //        curr = (decimal)rate.RateSellEffective;
             //        break;
             //}
-            return curr;            
+            return curr;
         }
 
         private void SortTheList(List<SaleItem> list)
@@ -199,7 +199,7 @@ namespace LoginForm.nsSaleOrder
                         s.HZ = (itemSD.Hazardous_Ind == "Y") ? true : false;
                         s.CL = (itemSD.Calibration_Ind == "Y") ? true : false;
                         s.LC = (itemSD.Licensed_Ind == "" && itemSD.Licensed_Ind != null) ? true : false;
-                        
+
                         if (itemSD.Hazardous_Ind == "Y")
                         {
                             Hazardou h = IME.Hazardous.Where(x => itemSD.Article_No.Contains(x.ArticleNo)).FirstOrDefault();
@@ -286,7 +286,7 @@ namespace LoginForm.nsSaleOrder
                         s.Length = (decimal)itemEXT.ExtendedRangeLength;
                         s.UC = (int)itemEXT.PackSize;
                         s.TotalWeight = (decimal)(s.UnitWeight * itemEXT.PackSize);
-                        
+
                         s.UOM = itemEXT.UnitofMeasure;
                         //s.HZ = (itemEXT.Hazardous_Ind == "Y") ? true : false;
                         //s.CL = (itemEXT.Calibration_Ind == "Y") ? true : false;
@@ -305,7 +305,7 @@ namespace LoginForm.nsSaleOrder
 
 
 
-                        
+
                 }
                 //TODO item 3 listeden kontrol edilecek
                 //s.Stock
@@ -313,7 +313,7 @@ namespace LoginForm.nsSaleOrder
 
                 //TODO 2 İndicator'ları tekrar kontrol et ve çek
 
-                
+
 
                 if (s.isDeleted == 1)
                 {
@@ -383,12 +383,12 @@ namespace LoginForm.nsSaleOrder
             txtCustomerName.Text = customer.c_name;
             CustomerCode.Text = customer.ID;
 
-            if (customer.CurrNameQuo != null) { cbCurrency.SelectedValue = customer.CurrNameQuo; } else { cbCurrency.SelectedIndex = 0; }
-            if (customer.CurrTypeQuo != null) { cbCurrType.SelectedItem = customer.CurrTypeQuo; } else { cbCurrType.SelectedIndex = 0; }
-            if (customer.representaryID != null) { cbRep.SelectedValue = customer.representaryID; } else { cbRep.SelectedIndex = 0; }
-            if (customer.PaymentTerm != null) { cbPaymentTerm.SelectedValue = customer.PaymentTerm; } else { cbPaymentTerm.SelectedIndex = 0; }
-            if (customer.PaymentMethod != null) { cbPayment.SelectedItem = customer.PaymentMethod; } else { cbPayment.SelectedIndex = 0; }
-            if (customer.MainContactID != null) { cbWorkers.SelectedValue = customer.MainContactID; } else { cbWorkers.SelectedIndex = 0; }  
+            //cbCurrency.SelectedValue = customer.CurrNameQuo;
+            cbCurrType.SelectedItem = customer.CurrTypeQuo;
+            cbRep.SelectedValue = customer.representaryID;
+            cbPaymentTerm.SelectedValue = customer.PaymentTerm;
+            cbPayment.SelectedItem = customer.PaymentMethod;
+            cbWorkers.SelectedValue = (customer.MainContactID != null) ? customer.MainContactID : -1;
 
             //cbCurrency.SelectedIndex = cbCurrency.FindStringExact(customer.CurrNameQuo);
             //cbCurrType.SelectedIndex = cbCurrType.FindStringExact(customer.CurrTypeQuo);
@@ -514,7 +514,7 @@ namespace LoginForm.nsSaleOrder
                 txtCost3.Text = s.Cost3.ToString();
                 txtCost4.Text = s.Cost4.ToString();
                 txtCost5.Text = s.Cost5.ToString();
-                //txtWeb1.Text = (s.UK1Price * customerFactor) / 
+                //txtWeb1.Text = (s.UK1Price * customerFactor) /
             }
         }
 
@@ -609,8 +609,8 @@ namespace LoginForm.nsSaleOrder
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 SaleOrder so = new SaleOrder();
                 so.SaleOrderNo = txtSONo.Text;
                 so.SaleDate = DateTime.Today.Date;
@@ -630,12 +630,14 @@ namespace LoginForm.nsSaleOrder
                 so.CustomerID = customer.ID;
                 so.ContactID = (int)cbWorkers.SelectedValue;
                 so.DeliveryContactID = (int)cbDeliveryContact.SelectedValue;
-                so.InvoiceAddressID = (invoiceAddress.ID);
-                so.DeliveryAddressID = (int)cbDeliveryAddress.SelectedValue;
+            //so.InvoiceAddressID = (invoiceAddress.ID);
+            so.InvoiceAddressID = 1010;
+            so.DeliveryAddressID = 1010;
+                //so.DeliveryAddressID = (int)cbDeliveryAddress.SelectedValue;
                 so.RepresentativeID = (int)cbRep.SelectedValue;
                 so.PaymentMethodID = (int)cbPayment.SelectedValue;
                 so.SaleOrderNature = cbOrderNature.SelectedItem.ToString();
-                
+
                 IME.SaleOrders.Add(so);
                 IME.SaveChanges();
 
@@ -667,11 +669,11 @@ namespace LoginForm.nsSaleOrder
                     }
                     IME.SaveChanges();
                 }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            //}
+            //catch (Exception)
+            //{
+            //    //throw;
+            //}
         }
 
         private bool RowsHasEmptyAreas()
@@ -713,7 +715,7 @@ namespace LoginForm.nsSaleOrder
             //    //}
             //    //if (dgSaleItems.CurrentCell.Value != null)
             //    //{
-                    
+
             //    //}
             //}
         }

@@ -292,3 +292,4 @@ LoginForm/LoginForm/DataSet/IME.edmx
 LoginForm/LoginForm/DataSet/IME.edmx
 LoginForm/LoginForm/DataSet/IME.Context.cs
 LoginForm/LoginForm/DataSet/IME.edmx.diagram
+*.csproj

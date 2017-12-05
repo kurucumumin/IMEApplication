@@ -943,7 +943,7 @@ namespace LoginForm.QuotationModule
 
                 txtMargin2.Text = ((1 - ((Decimal.Parse(txtMargin2.Text)) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
                 txtMargin3.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked, Int32.Parse(sp1.Col3Break.ToString()))).ToString("G29");
-                txtMargin3.Text = ((1 - ((Decimal.Parse(txtMargin3.Text)) / (decimal.Parse(txtWeb3.Text)))) * 100).ToString();
+                if(txtWeb3.Text!="0") txtMargin3.Text = ((1 - ((Decimal.Parse(txtMargin3.Text)) / (decimal.Parse(txtWeb3.Text)))) * 100).ToString();
                 if (sp1.Col4Break != 0)
                 {
                     txtMargin4.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
@@ -1312,7 +1312,7 @@ namespace LoginForm.QuotationModule
             try { q.Factor = Decimal.Parse(cbFactor.Text); } catch { }
             try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
             q.PaymentID = (cbPayment.SelectedItem as PaymentMethod).ID;
-            q.CurrName = (cbCurrency.SelectedItem as Rate).CurType;
+            q.CurrType = (cbCurrency.SelectedItem as Rate).CurType;
             //q.CurrType = cbCurrType.Text;
             q.Curr = CurrValue;
 
