@@ -15,6 +15,7 @@ namespace LoginForm
     {
         #region Public Variables
 
+        
         IMEEntities IME = new IMEEntities();
         bool isDefault = false;
         int decTaxId;
