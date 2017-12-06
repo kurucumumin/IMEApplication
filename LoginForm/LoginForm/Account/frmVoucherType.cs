@@ -121,11 +121,14 @@ namespace LoginForm
         {
                 if (IME.VoucherTypes.Where(a=>a.voucherTypeName== txtVoucherName.Text.Trim()).FirstOrDefault()==null)
                 {
-                    VoucherType vt = new VoucherType();
-                    vt.voucherTypeName = txtVoucherName.Text.Trim();
-                    vt.typeOfVoucher = cmbTypeOfVoucher.Text;
-                    vt.methodOfVoucherNumbering = cmbMethodOfvoucherNumbering.Text;
-                    int inRowCount = dgvApplicableTaxes.RowCount;
+                
+                VoucherType vt = new VoucherType
+                {
+                    voucherTypeName = txtVoucherName.Text.Trim(),
+                    typeOfVoucher = cmbTypeOfVoucher.Text,
+                    methodOfVoucherNumbering = cmbMethodOfvoucherNumbering.Text
+                };
+                int inRowCount = dgvApplicableTaxes.RowCount;
                     for (int i = 0; i <= inRowCount - 1; i++)
                     {
                         if (dgvApplicableTaxes.Rows[i].Cells["dgvcbxSelect"].Value != null)
@@ -162,10 +165,12 @@ namespace LoginForm
                             {
                                 if (dgvApplicableTaxes.Rows[i].Cells["dgvcbxSelect"].Value.ToString() != "False")
                                 {
-                                    VoucherTypeTax vtt = new VoucherTypeTax();
-                                    vtt.voucherTypeId = decVoucherTypeId;
-                                    vtt.taxId = Convert.ToDecimal(dgvApplicableTaxes.Rows[i].Cells["dgvtxtTaxId"].Value.ToString());
-                                    IME.VoucherTypeTaxes.Add(vtt);
+                                VoucherTypeTax vtt = new VoucherTypeTax
+                                {
+                                    voucherTypeId = decVoucherTypeId,
+                                    taxId = Convert.ToInt32(dgvApplicableTaxes.Rows[i].Cells["dgvtxtTaxId"].Value)
+                                };
+                                IME.VoucherTypeTaxes.Add(vtt);
                                     IME.SaveChanges();
                                 }
                             }

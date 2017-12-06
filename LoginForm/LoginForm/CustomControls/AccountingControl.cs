@@ -35,7 +35,8 @@ namespace LoginForm.CustomControls
 
         private void btnVoucherType_Click(object sender, EventArgs e)
         {
-            
+            frmVoucherType form = new frmVoucherType();
+            form.ShowDialog();
         }
     }
 }

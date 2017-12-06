@@ -153,18 +153,7 @@ namespace LoginForm.nmSaleOrder
         {
             string ItemCode = dgItemSearch.CurrentRow.Cells[0].Value.ToString();
             string dependantTable = dgItemSearch.CurrentRow.Cells[6].Value.ToString();
-
-            //DataGridViewRow row = dgItemSearch.CurrentRow;
-            //selectedItem = dgItemSearch.CurrentRow;
-
-            //SaleItem item = new SaleItem();
-            //item.ItemCode = row.Cells[0].Value.ToString();
-            //item.Description = row.Cells[1].Value.ToString();
-            //item.MPN = row.Cells[2].Value.ToString();
-            //selectedItem = item;
-
-            //this.Close();
-
+            
             SetItemToSend(ItemCode,dependantTable);
         }
 
@@ -173,19 +162,9 @@ namespace LoginForm.nmSaleOrder
             IMEEntities db = new IMEEntities();
             SaleItem item = new SaleItem();
             item.ItemCode = ItemCode;
-
-            //bool isItemCost = (q.Quotation.IsItemCost == 1) ? true : false;
-            //bool isWeightCost = (q.Quotation.IsWeightCost == 1) ? true : false;
-            //bool isCustomsDuties = (q.Quotation.IsCustomsDuties == 1) ? true : false;
-            //item.LandingCost = classQuotationAdd.GetLandingCost(item.ItemCode, isItemCost, isWeightCost, isCustomsDuties);
-            item.LandingCost = classQuotationAdd.GetLandingCost(item.ItemCode, true, true, true);
-            //item.Margin = CalculateMargin(item.LandingCost, item.UC_UP);
-            item.LM = (item.Margin < Utils.getCurrentUser().MinMarge) ? true : false;
-            //if (q.TargetUP != null) { item.TargetUP = (decimal)q.TargetUP; }
-            //item.Total = (decimal)q.Total;
-            //item.UPIMELP = (decimal)q.UCUPCurr;
-            //item.UOM = q.UnitOfMeasure;
-            //item.dependentTable = q.DependantTable;
+            //TODO Landing cost
+            //item.LandingCost = classQuotationAdd.GetLandingCost(item.ItemCode, true, true, true);
+            //item.LM = (item.Margin < Utils.getCurrentUser().MinMarge) ? true : false;
 
             switch (table)
             {
@@ -204,7 +183,7 @@ namespace LoginForm.nmSaleOrder
                     item.SuperSection = itemSDPrice.SupersectionName;
                     item.Section = itemSDPrice.SectionName;
                     item.MHLevel1 = itemSD.MH_Code_Level_1;
-                    //item.UC_UP = itemSD.
+                    //item.UC_UP = itemSDPrice.
 
                     item.Col1Break = (int)itemSDPrice.Col1Break;
                     item.Col2Break = (int)itemSDPrice.Col2Break;
