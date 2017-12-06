@@ -28,25 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgMail = new System.Windows.Forms.DataGridView();
             this.radioDefault = new System.Windows.Forms.RadioButton();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.radioSpecial = new System.Windows.Forms.RadioButton();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mailAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ccDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.tooDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.mailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.iMEDataSet = new LoginForm.IMEDataSet();
-            this.mailTableAdapter = new LoginForm.IMEDataSetTableAdapters.MailTableAdapter();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MailAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cc = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.too = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgMail)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mailBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iMEDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -62,20 +56,19 @@
             // dgMail
             // 
             this.dgMail.AllowUserToOrderColumns = true;
-            this.dgMail.AutoGenerateColumns = false;
             this.dgMail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgMail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.firstNameDataGridViewTextBoxColumn,
-            this.mailAddressDataGridViewTextBoxColumn,
-            this.ccDataGridViewCheckBoxColumn,
-            this.tooDataGridViewCheckBoxColumn});
-            this.dgMail.DataSource = this.mailBindingSource;
+            this.id,
+            this.FirstName,
+            this.MailAddress,
+            this.cc,
+            this.too});
+            this.dgMail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgMail.Location = new System.Drawing.Point(3, 16);
             this.dgMail.Name = "dgMail";
-            this.dgMail.Size = new System.Drawing.Size(567, 125);
+            this.dgMail.Size = new System.Drawing.Size(564, 128);
             this.dgMail.TabIndex = 0;
-            this.dgMail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgMail_KeyDown);
+            this.dgMail.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgMail_RowsAdded);
             // 
             // radioDefault
             // 
@@ -120,59 +113,40 @@
             this.radioSpecial.UseVisualStyleBackColor = true;
             this.radioSpecial.CheckedChanged += new System.EventHandler(this.radioSpecial_CheckedChanged);
             // 
-            // idDataGridViewTextBoxColumn
+            // id
             // 
-            this.idDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Width = 21;
+            this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Width = 21;
             // 
-            // firstNameDataGridViewTextBoxColumn
+            // FirstName
             // 
-            this.firstNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            this.firstNameDataGridViewTextBoxColumn.Width = 79;
+            this.FirstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.FirstName.HeaderText = "FirstName";
+            this.FirstName.Name = "FirstName";
+            this.FirstName.Width = 79;
             // 
-            // mailAddressDataGridViewTextBoxColumn
+            // MailAddress
             // 
-            this.mailAddressDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.mailAddressDataGridViewTextBoxColumn.DataPropertyName = "MailAddress";
-            this.mailAddressDataGridViewTextBoxColumn.HeaderText = "MailAddress";
-            this.mailAddressDataGridViewTextBoxColumn.Name = "mailAddressDataGridViewTextBoxColumn";
+            this.MailAddress.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.MailAddress.HeaderText = "MailAddress";
+            this.MailAddress.Name = "MailAddress";
             // 
-            // ccDataGridViewCheckBoxColumn
+            // cc
             // 
-            this.ccDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.ccDataGridViewCheckBoxColumn.DataPropertyName = "cc";
-            this.ccDataGridViewCheckBoxColumn.HeaderText = "cc";
-            this.ccDataGridViewCheckBoxColumn.Name = "ccDataGridViewCheckBoxColumn";
-            this.ccDataGridViewCheckBoxColumn.Width = 21;
+            this.cc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.cc.HeaderText = "cc";
+            this.cc.Name = "cc";
+            this.cc.Width = 25;
             // 
-            // tooDataGridViewCheckBoxColumn
+            // too
             // 
-            this.tooDataGridViewCheckBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            this.tooDataGridViewCheckBoxColumn.DataPropertyName = "too";
-            this.tooDataGridViewCheckBoxColumn.HeaderText = "too";
-            this.tooDataGridViewCheckBoxColumn.Name = "tooDataGridViewCheckBoxColumn";
-            this.tooDataGridViewCheckBoxColumn.Width = 21;
-            // 
-            // mailBindingSource
-            // 
-            this.mailBindingSource.DataMember = "Mail";
-            this.mailBindingSource.DataSource = this.iMEDataSet;
-            // 
-            // iMEDataSet
-            // 
-            this.iMEDataSet.DataSetName = "IMEDataSet";
-            this.iMEDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // mailTableAdapter
-            // 
-            this.mailTableAdapter.ClearBeforeFill = true;
+            this.too.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.too.HeaderText = "too";
+            this.too.Name = "too";
+            this.too.Width = 28;
             // 
             // MailForm
             // 
@@ -191,8 +165,6 @@
             this.Load += new System.EventHandler(this.MailForm_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgMail)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mailBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iMEDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,18 +173,20 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dgMail;
         private System.Windows.Forms.RadioButton radioDefault;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.RadioButton radioSpecial;
-        private IMEDataSet iMEDataSet;
-        private System.Windows.Forms.BindingSource mailBindingSource;
-        private IMEDataSetTableAdapters.MailTableAdapter mailTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn mailAddressDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ccDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn tooDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridView dgMail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MailAddress;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn cc;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn too;
     }
 }

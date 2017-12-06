@@ -69,7 +69,8 @@ namespace LoginForm.PurchaseOrder
         private void PurchaseExportFiles_Load(object sender, EventArgs e)
         {
             // TODO: Bu kod satırı 'iMEDataSet2.Mail' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
-            this.mailTableAdapter.Fill(this.iMEDataSet2.Mail);
+            IME = new IMEEntities();
+            //this.mailTableAdapter.Fill(IME.Mails);
             #region Filler
             ToFill();
             CCFill();

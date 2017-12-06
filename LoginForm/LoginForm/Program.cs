@@ -1,4 +1,5 @@
-﻿using LoginForm.nsSaleOrder;
+﻿using LoginForm.Invoice;
+using LoginForm.nsSaleOrder;
 using LoginForm.PurchaseOrder;
 using System;
 using System.Windows.Forms;
@@ -12,7 +13,7 @@ namespace LoginForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormLogin());
+            Application.Run(new MailForm());
         }
     }
 }

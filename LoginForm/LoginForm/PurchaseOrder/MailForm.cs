@@ -15,89 +15,40 @@ namespace LoginForm.PurchaseOrder
     public partial class MailForm : Form
     {
         IMEEntities IME = new IMEEntities();
-        List<Mail> addedMails = new List<Mail>();
+        List<Mail> MailList = new List<Mail>();
+        List<int> addedMailIndex = new List<int>();
 
         public MailForm()
         {
             InitializeComponent();
+            MailList = IME.Mails.ToList();
         }
 
         private void MailForm_Load(object sender, EventArgs e)
         {
-            // TODO: Bu kod satırı 'iMEDataSet.Mail' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
-            //this.mailTableAdapter.Fill(this.iMEDataSet.Mail);
-            dgMail.DataSource = IME.Mails.ToList();
-
-            if ( radioDefault.Checked == true)
-            {
-                dgMail.Enabled = false;
-            }
+            FillMain();
+            dgMail.Enabled = false;
         }
-
-        //private void MailFill()
-        //{
-        //    IME = new IMEEntities();
-        //    var adapter = (from m in IME.Mails
-        //                   select new
-        //                   {
-        //                       m.id,
-        //                       m.FirstName,
-        //                       m.MailAddress,
-        //                       m.cc,
-        //                       m.too
-        //                   }).ToList();
-        //    dgMail.DataSource = adapter;
-        //}
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            foreach(Mail mail in addedMails)
-            {
-                try
-                {
-                    IME.Mails.Add(mail);
-                    IME.SaveChanges();
-                }
-                catch (Exception )
-                {
-                    throw;
-                }
-            }
-
-
-            //Cursor.Current = Cursors.WaitCursor;
-            //try
-            //{
-            //    mailBindingSource.EndEdit();
-            //    mailTableAdapter.Update(this.iMEDataSet.Mail);
-            //    MessageBox.Show("You have been successfully saved.","Message",MessageBoxButtons.OK,MessageBoxIcon.Information);
-            //}
-            //catch(Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message,"Message",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            //}
-            //Cursor.Current = Cursors.Default;
-        }
-
-
-        private void dgMail_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode==Keys.Delete)
-            {
-              if (MessageBox.Show("Are you sure want to delete this record ?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                mailBindingSource.RemoveCurrent();
-            }
-
+            List<Mail> MailList = new List<Mail>();
             IME = new IMEEntities();
-            var adapter = (from m in IME.Mails
-                           select new
-                           {
-                               m.FirstName,
-                               m.MailAddress,
-                               m.cc,
-                               m.too
-                           }).ToList();
-            dgMail.DataSource = adapter;
+
+            foreach (int rowIndex in addedMailIndex)
+            {
+                Mail m = new Mail();
+                
+                m.FirstName = dgMail.Rows[rowIndex].Cells[1].Value.ToString();
+                m.MailAddress = dgMail.Rows[rowIndex].Cells[2].Value.ToString();
+                m.cc = (dgMail.Rows[rowIndex].Cells[3].Value != null) ? (bool)dgMail.Rows[rowIndex].Cells[3].Value : false ;
+                m.too = (dgMail.Rows[rowIndex].Cells[4].Value != null) ? (bool)dgMail.Rows[rowIndex].Cells[4].Value : false ;
+
+                MailList.Add(m);
+            }
+
+            IME.Mails.AddRange(MailList);
+            IME.SaveChanges();
         }
 
         private void radioSpecial_CheckedChanged(object sender, EventArgs e)
@@ -120,13 +71,30 @@ namespace LoginForm.PurchaseOrder
 
         private void dgMail_UserAddedRow(object sender, DataGridViewRowEventArgs e)
         {
-            Mail mail = new Mail();
-            mail.FirstName = (string)e.Row.Cells["FirstName"].Value;
-            mail.MailAddress = (string)e.Row.Cells["MailAddress"].Value;
-            mail.too = (bool)e.Row.Cells["too"].Value;
-            mail.cc = (bool)e.Row.Cells["cc"].Value;
+            FillMain();
+        }
 
-            addedMails.Add(mail);
+        private void FillMain()
+        {
+            
+
+            foreach (Mail mail in MailList)
+            {
+                int rowIndex = dgMail.Rows.Add();
+                dgMail.Rows[rowIndex].Cells["id"].Value = mail.id;
+                dgMail.Rows[rowIndex].Cells["FirstName"].Value = mail.FirstName;
+                dgMail.Rows[rowIndex].Cells["MailAddress"].Value = mail.MailAddress;
+                dgMail.Rows[rowIndex].Cells["cc"].Value = mail.cc;
+                dgMail.Rows[rowIndex].Cells["too"].Value = mail.too;
+            }
+        }
+
+        private void dgMail_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            if (e.RowIndex + 1 > MailList.Count)
+            {
+                addedMailIndex.Add(e.RowIndex - 1);
+            }
         }
     }
 }
