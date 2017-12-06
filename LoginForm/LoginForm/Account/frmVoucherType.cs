@@ -112,7 +112,7 @@ namespace LoginForm
                     }
                 }
                 SearchGridFill();
-            
+
         }
         /// <summary>
         /// save function
@@ -241,9 +241,9 @@ namespace LoginForm
 
         public void SearchGridFill()
         {
-            
+
                 dgvVoucherType.DataSource = IME.VoucherTypes.Where(a => a.voucherTypeName == txtVoucherNameSearch.Text.Trim()).Where(b => b.typeOfVoucher == cmbTypeOfVoucherSearch.Text).ToList();
-            
+
         }
 
         public void VoucherTypeComboFill()
@@ -276,7 +276,7 @@ namespace LoginForm
                 txtVoucherNameSearch.Focus();
                 cmbTypeOfVoucherSearch.SelectedIndex = -1;
                 SearchGridFill();
-           
+
         }
         /// <summary>
         /// checking privilage for delete
@@ -480,7 +480,7 @@ namespace LoginForm
 
 
                     }
-                    
+
                     if (IME.VoucherTypes.Where(a => a.voucherTypeId == decVoucherTypeId).FirstOrDefault().isActive == false)
                     {
                         txtVoucherName.Enabled = true;
@@ -813,7 +813,7 @@ namespace LoginForm
             }
         }
         /// <summary>
-        /// enter key of textbox narration for enter key 
+        /// enter key of textbox narration for enter key
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

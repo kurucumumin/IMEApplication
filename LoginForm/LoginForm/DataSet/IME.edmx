@@ -1252,18 +1252,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PurchaseO__Quota__45DE573A">
-          <End Role="Quotation" Type="Self.Quotation" Multiplicity="0..1" />
-          <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Quotation">
-              <PropertyRef Name="QuotationNo" />
-            </Principal>
-            <Dependent Role="PurchaseOrderDetail">
-              <PropertyRef Name="QuotationNo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__PurchaseO__SaleO__46D27B73">
           <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="0..1" />
           <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
@@ -2011,10 +1999,6 @@
             <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
             <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__PurchaseO__Quota__45DE573A" Association="Self.FK__PurchaseO__Quota__45DE573A">
-            <End Role="Quotation" EntitySet="Quotation" />
-            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
-          </AssociationSet>
           <AssociationSet Name="FK__PurchaseO__SaleO__46D27B73" Association="Self.FK__PurchaseO__SaleO__46D27B73">
             <End Role="SaleOrder" EntitySet="SaleOrder" />
             <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
@@ -2698,7 +2682,6 @@
           <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PurchaseOrder" Relationship="Self.FK__PurchaseO__Fiche__44EA3301" FromRole="PurchaseOrderDetail" ToRole="PurchaseOrder" />
-          <NavigationProperty Name="Quotation" Relationship="Self.FK__PurchaseO__Quota__45DE573A" FromRole="PurchaseOrderDetail" ToRole="Quotation" />
           <NavigationProperty Name="SaleOrder" Relationship="Self.FK__PurchaseO__SaleO__46D27B73" FromRole="PurchaseOrderDetail" ToRole="SaleOrder" />
         </EntityType>
         <EntityType Name="Quotation">
@@ -2732,7 +2715,6 @@
           <NavigationProperty Name="Note" Relationship="Self.FK__Quotation__NoteF__0169315C" FromRole="Quotation" ToRole="Notes" />
           <NavigationProperty Name="Note1" Relationship="Self.FK__Quotation__NoteF__025D5595" FromRole="Quotation" ToRole="Notes" />
           <NavigationProperty Name="PaymentMethod" Relationship="Self.FK__Quotation__Payme__035179CE" FromRole="Quotation" ToRole="PaymentMethod" />
-          <NavigationProperty Name="PurchaseOrderDetails" Relationship="Self.FK__PurchaseO__Quota__45DE573A" FromRole="Quotation" ToRole="PurchaseOrderDetail" />
           <NavigationProperty Name="QuotationDetails" Relationship="Self.FK__Quotation__Quota__147C05D0" FromRole="Quotation" ToRole="QuotationDetail" />
         </EntityType>
         <EntityType Name="QuotationDetail">
@@ -3832,18 +3814,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PurchaseO__Quota__45DE573A">
-          <End Role="Quotation" Type="Self.Quotation" Multiplicity="0..1" />
-          <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Quotation">
-              <PropertyRef Name="QuotationNo" />
-            </Principal>
-            <Dependent Role="PurchaseOrderDetail">
-              <PropertyRef Name="QuotationNo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__PurchaseO__SaleO__46D27B73">
           <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="0..1" />
           <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
@@ -4387,10 +4357,6 @@
           </AssociationSet>
           <AssociationSet Name="FK__PurchaseO__Fiche__44EA3301" Association="Self.FK__PurchaseO__Fiche__44EA3301">
             <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
-            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PurchaseO__Quota__45DE573A" Association="Self.FK__PurchaseO__Quota__45DE573A">
-            <End Role="Quotation" EntitySet="Quotations" />
             <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__PurchaseO__SaleO__46D27B73" Association="Self.FK__PurchaseO__SaleO__46D27B73">
