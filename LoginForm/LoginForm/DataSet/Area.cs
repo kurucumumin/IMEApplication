@@ -12,26 +12,20 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class Tax
+    public partial class Area
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tax()
+        public Area()
         {
-            this.TaxDetails = new HashSet<TaxDetail>();
-            this.VoucherTypeTaxes = new HashSet<VoucherTypeTax>();
+            this.Routes = new HashSet<Route>();
         }
     
-        public string taxName { get; set; }
-        public string ApplicationOn { get; set; }
-        public Nullable<decimal> Rate { get; set; }
-        public string CalculatingMode { get; set; }
+        public decimal areaId { get; set; }
+        public string areaName { get; set; }
         public string narration { get; set; }
-        public Nullable<bool> isActive { get; set; }
-        public int TaxID { get; set; }
+        public Nullable<System.DateTime> extraDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TaxDetail> TaxDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VoucherTypeTax> VoucherTypeTaxes { get; set; }
+        public virtual ICollection<Route> Routes { get; set; }
     }
 }

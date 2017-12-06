@@ -23,7 +23,6 @@ namespace LoginForm.DataSet
     
         public string SaleOrderNo { get; set; }
         public System.DateTime SaleDate { get; set; }
-        public string CurrenyName { get; set; }
         public string OnlineConfirmationNo { get; set; }
         public string QuotationNos { get; set; }
         public int PaymentTermID { get; set; }
@@ -42,7 +41,9 @@ namespace LoginForm.DataSet
         public Nullable<int> NoteForFinance { get; set; }
         public string SaleOrderNature { get; set; }
         public string ShippingType { get; set; }
+        public Nullable<decimal> currencyID { get; set; }
     
+        public virtual Currency Currency { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual CustomerAddress CustomerAddress { get; set; }
         public virtual CustomerAddress CustomerAddress1 { get; set; }
