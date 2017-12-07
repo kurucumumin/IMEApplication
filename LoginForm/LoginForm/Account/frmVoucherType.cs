@@ -121,7 +121,7 @@ namespace LoginForm
         {
                 if (IME.VoucherTypes.Where(a=>a.voucherTypeName== txtVoucherName.Text.Trim()).FirstOrDefault()==null)
                 {
-                
+
                 VoucherType vt = new VoucherType
                 {
                     voucherTypeName = txtVoucherName.Text.Trim(),
@@ -165,12 +165,10 @@ namespace LoginForm
                             {
                                 if (dgvApplicableTaxes.Rows[i].Cells["dgvcbxSelect"].Value.ToString() != "False")
                                 {
-                                VoucherTypeTax vtt = new VoucherTypeTax
-                                {
-                                    voucherTypeId = decVoucherTypeId,
-                                    taxId = Convert.ToInt32(dgvApplicableTaxes.Rows[i].Cells["dgvtxtTaxId"].Value)
-                                };
-                                IME.VoucherTypeTaxes.Add(vtt);
+                                    VoucherTypeTax vtt = new VoucherTypeTax();
+                                    vtt.voucherTypeId = decVoucherTypeId;
+                                    vtt.taxId = Convert.ToInt32(dgvApplicableTaxes.Rows[i].Cells["dgvtxtTaxId"].Value.ToString());
+                                    IME.VoucherTypeTaxes.Add(vtt);
                                     IME.SaveChanges();
                                 }
                             }

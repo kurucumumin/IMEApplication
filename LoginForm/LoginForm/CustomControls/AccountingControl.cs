@@ -18,7 +18,7 @@ namespace LoginForm.CustomControls
 
         private void btnAccountLedger_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnExchangeRate_Click(object sender, EventArgs e)
@@ -36,6 +36,18 @@ namespace LoginForm.CustomControls
         private void btnVoucherType_Click(object sender, EventArgs e)
         {
             frmVoucherType form = new frmVoucherType();
+            form.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmCurrency form = new frmCurrency();
+            form.ShowDialog();
+        }
+
+        private void btnArea_Click(object sender, EventArgs e)
+        {
+            frmArea form = new frmArea();
             form.ShowDialog();
         }
     }

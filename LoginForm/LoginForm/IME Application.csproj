@@ -132,6 +132,12 @@
     <Compile Include="Account\frmAccountLedger.designer.cs">
       <DependentUpon>frmAccountLedger.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\frmArea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\frmArea.designer.cs">
+      <DependentUpon>frmArea.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\frmCurrency.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -488,6 +494,12 @@
     <Compile Include="QuotationModule\FormQuaotationCustomerSearch.Designer.cs">
       <DependentUpon>FormQuaotationCustomerSearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuotationModule\FormQuotationAdd -Turkey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuotationModule\FormQuotationAdd -Turkey.designer.cs">
+      <DependentUpon>FormQuotationAdd -Turkey.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuotationModule\FormQuotationAddCopy.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -610,6 +622,9 @@
     <EmbeddedResource Include="Account\frmAccountLedger.resx">
       <DependentUpon>frmAccountLedger.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\frmArea.resx">
+      <DependentUpon>frmArea.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\frmCurrency.resx">
       <DependentUpon>frmCurrency.cs</DependentUpon>
     </EmbeddedResource>
@@ -694,6 +709,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\FormQuaotationCustomerSearch.resx">
       <DependentUpon>FormQuaotationCustomerSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuotationModule\FormQuotationAdd -Turkey.resx">
+      <DependentUpon>FormQuotationAdd -Turkey.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\FormQuotationAddCopy.resx">
       <DependentUpon>FormQuotationAddCopy.cs</DependentUpon>

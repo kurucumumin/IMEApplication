@@ -359,8 +359,8 @@ namespace LoginForm
                 dtpDateTo.MaxDate = DateTime.Today;
                 txtDateTo.Text = DateTime.Today.ToString("dd-MMM-yyyy");
                 dtpDateFrom.Value = DateTime.Today; ;
-                dtpDateFrom.MinDate = DateTime.Today; ;
-                dtpDateFrom.MaxDate = DateTime.Today; ;
+                dtpDateFrom.MinDate = DateTime.Today.AddYears(-1); 
+                dtpDateFrom.MaxDate = DateTime.Today; 
                 txtDatefrom.Text = DateTime.Today.ToString("dd-MMM-yyyy");
                 Clear();
                 GridFill();
