@@ -19,6 +19,8 @@ namespace LoginForm.nmSaleOrder
         string searchItemCode = null;
 
         public object selectedItem = new object();
+        public string selectedItemCode;
+        public string selectedItemTable;
 
         public FormSaleItemSearch(string ItemCode = "")
         {
@@ -151,10 +153,13 @@ namespace LoginForm.nmSaleOrder
 
         private void dgItemSearch_DoubleClick(object sender, EventArgs e)
         {
-            string ItemCode = dgItemSearch.CurrentRow.Cells[0].Value.ToString();
-            string dependantTable = dgItemSearch.CurrentRow.Cells[6].Value.ToString();
-            
-            SetItemToSend(ItemCode,dependantTable);
+            selectedItemCode = dgItemSearch.CurrentRow.Cells[0].Value.ToString();
+            selectedItemTable = dgItemSearch.CurrentRow.Cells[6].Value.ToString();
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+
+            //SetItemToSend(ItemCode,dependantTable);
         }
 
         private void SetItemToSend(string ItemCode, string table)

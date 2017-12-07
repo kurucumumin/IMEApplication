@@ -15,9 +15,9 @@
         public string Brand { get; set; }
         public string MPN { get; set; }
         public string Description { get; set; }
-        public decimal Cost { get; set; }
         public decimal LandingCost { get; set; }
         public decimal Margin { get; set; }
+        public int SSM { get; set; }
         public int Qty { get; set; }
         public int Stock { get; set; }
         public string UOM { get; set; }
@@ -30,8 +30,8 @@
         public string Competitor { get; set; }
         public bool CR { get; set; }
         public string Delivery { get; set; }
-        public decimal UnitWeight { get; set; }
-        public decimal TotalWeight { get; set; }
+        public decimal? UnitWeight { get; set; }
+        public decimal? TotalWeight { get; set; }
         public string CustItemStockCode { get; set; }
         public string CustItemDescription { get; set; }
         public string COO { get; set; }
@@ -41,9 +41,9 @@
         public string dependentTable { get; set; }
         public string UKIntroDate { get; set; }
         public string UKDiscDate { get; set; }
-        public decimal Height { get; set; }
-        public decimal Width { get; set; }
-        public decimal Length { get; set; }
+        public decimal? Height { get; set; }
+        public decimal? Width { get; set; }
+        public decimal? Length { get; set; }
         public string MHLevel1 { get; set; }
         public string SuperSection { get; set; }
         public string Section { get; set; }
@@ -51,19 +51,19 @@
         public int OnHandStockBalance { get; set; }
         public int QuantityOnOrder { get; set; }
         public int Col1Break { get; set; }
-        public int Col2Break { get; set; }
-        public int Col3Break { get; set; }
-        public int Col4Break { get; set; }
-        public int Col5Break { get; set; }
+        public int? Col2Break { get; set; }
+        public int? Col3Break { get; set; }
+        public int? Col4Break { get; set; }
+        public int? Col5Break { get; set; }
         public decimal UK1Price { get; set; }
-        public decimal UK2Price { get; set; }
-        public decimal UK3Price { get; set; }
-        public decimal UK4Price { get; set; }
-        public decimal UK5Price { get; set; }
+        public decimal? UK2Price { get; set; }
+        public decimal? UK3Price { get; set; }
+        public decimal? UK4Price { get; set; }
+        public decimal? UK5Price { get; set; }
         public decimal Cost1 { get; set; }
-        public decimal Cost2 { get; set; }
-        public decimal Cost3 { get; set; }
-        public decimal Cost4 { get; set; }
-        public decimal Cost5 { get; set; }
+        public decimal? Cost2 { get; set; }
+        public decimal? Cost3 { get; set; }
+        public decimal? Cost4 { get; set; }
+        public decimal? Cost5 { get; set; }
     }
 }
