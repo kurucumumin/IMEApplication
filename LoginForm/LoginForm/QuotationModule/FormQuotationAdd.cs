@@ -726,10 +726,10 @@ namespace LoginForm.QuotationModule
             txtMargin5.Text = "";
             #endregion
         }
+        
 
         private void ItemDetailsFiller(string ArticleNoSearch)
         {
-
             #region Filler
             Rate currWeb = new Rate();
             currWeb = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList().Where(b => b.CurType == "GBP").FirstOrDefault();
@@ -893,9 +893,15 @@ namespace LoginForm.QuotationModule
             }
             if (h != null)
             {
-                if (h.Environment != null) { txtEnvironment.Text = "Y"; }
-                if (h.Lithium != null) { txtLithium.Text = "Y"; }
-                if (h.Shipping != null) { txtShipping.Text = "Y"; }
+                if (h.Environment != null) { txtEnvironment.Text = "Y"; } else { txtEnvironment.Text = ""; }
+                if (h.Lithium != null) { txtLithium.Text = "Y"; } else { txtLithium.Text = ""; }
+                if (h.Shipping != null) { txtShipping.Text = "Y"; } else { txtShipping.Text = ""; }
+            }
+            else
+            {
+                txtEnvironment.Text = "";
+                txtLithium.Text = "";
+                txtShipping.Text = "";
             }
             if (os != null)
             {
@@ -918,7 +924,7 @@ namespace LoginForm.QuotationModule
             string articleNo = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString();
             SlidingPrice sp1 = IME.SlidingPrices.Where(a => a.ArticleNo == articleNo).FirstOrDefault();
             int quantity = 0;
-            if (sp != null) { quantity = Int32.Parse(sp1.Col1Break.ToString()); } else { quantity = Int32.Parse(er.Col1Break.ToString()); }
+            if (sp1 != null) { quantity = Int32.Parse(sp1.Col1Break.ToString()); } else { quantity = Int32.Parse(er.Col1Break.ToString()); }
 
             txtMargin1.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
 , quantity)).ToString("G29");
@@ -966,8 +972,11 @@ namespace LoginForm.QuotationModule
             {
                 label64.BackColor = Color.Red;
                 dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.Ivory;
-
-
+            }
+            else
+            {
+                label64.BackColor = Color.White;
+                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.White;
             }
             if (txtShipping.Text != "")
             {
@@ -975,19 +984,39 @@ namespace LoginForm.QuotationModule
                 dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["HS"].Style.BackColor = Color.Red;
 
             }
+            else
+            {
+                label63.BackColor = Color.White;
+                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["HS"].Style.BackColor = Color.White;
+            }
+
             if (txtEnvironment.Text != "")
             {
                 label53.BackColor = Color.Red;
             }
+            else
+            {
+                label53.BackColor = Color.White;
+            }
+
             if (txtCalibrationInd.Text != "" && txtCalibrationInd.Text != null && txtCalibrationInd.Text != "N")
             {
                 label22.BackColor = Color.Red;
                 dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.Green;
             }
+            else
+            {
+                label22.BackColor = Color.White;
+                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.White;
+            }
 
             if (txtLicenceType.Text != "" && txtLicenceType.Text != null)
             {
                 dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.BurlyWood;
+            }
+            else
+            {
+                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.White;
             }
 
 
@@ -1056,8 +1085,24 @@ namespace LoginForm.QuotationModule
             #region Faktör Değişimi
             for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
             {
+                bool isHZ = false;
+                if (dgQuotationAddedItems.Rows[i].Cells["HS"].Style.BackColor == Color.Red)
+                {
+                    isHZ = true;
+                }
+                else if (dgQuotationAddedItems.Rows[i].Cells["LI"].Style.BackColor == Color.Ivory)
+                {
+                    isHZ = true;
+                }
+                //else if ()//HE için
+                //{
+                    //isHZ = true;
+                //}
+                if (!isHZ)
+                {
                 GetQuotationQuantity(i);
                 GetLandingCost(i);
+                }
             }
             #endregion
 
@@ -1116,7 +1161,8 @@ namespace LoginForm.QuotationModule
 
                 #region SubTotal Calculation
                 int RowIndex = dgQuotationAddedItems.CurrentCell.RowIndex;
-                int rowindexSubTotal = Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgNo"].Value.ToString());
+                int rowindexSubTotal = 0;
+                if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgNo"].Value != null && dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgNo"].Value != "") Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgNo"].Value.ToString());
                 var tuple = SubTotal.Where(a => a.Item1 == rowindexSubTotal).FirstOrDefault();
                 if (tuple == null || tuple.Item2 == 0)
                 {
@@ -1722,9 +1768,15 @@ namespace LoginForm.QuotationModule
             }
             if (h != null)
             {
-                if (h.Environment != null) { txtEnvironment.Text = "Y"; }
-                if (h.Lithium != null) { txtLithium.Text = "Y"; }
-                if (h.Shipping != null) { txtShipping.Text = "Y"; }
+                if (h.Environment != null) { txtEnvironment.Text = "Y"; } else { txtEnvironment.Text = ""; }
+                if (h.Lithium != null) { txtLithium.Text = "Y"; } else { txtLithium.Text = ""; }
+                if (h.Shipping != null) { txtShipping.Text = "Y"; } else { txtShipping.Text = ""; }
+            }
+            else
+            {
+                txtEnvironment.Text = "";
+                txtLithium.Text = "";
+                txtShipping.Text = "";
             }
             if (os != null)
             {
@@ -1867,10 +1919,21 @@ namespace LoginForm.QuotationModule
                 {
                     lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - st.Item2).ToString();
                     SubTotal.Remove(st);
+
+                    int subtotalcol1 = 0;
+                    if (dgQuotationAddedItems.Rows[rowindex].Cells[0].Value != null) subtotalcol1 = Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString());
+                    SubTotal.Add(new Tuple<int, decimal>(subtotalcol1, Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())));
+                    st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
+                    lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + st.Item2).ToString();
                 }
-                SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString()), Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())));
-                st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
-                lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + st.Item2).ToString();
+                else
+                {
+                    int subtotalcol1 = 0;
+                    if (dgQuotationAddedItems.Rows[rowindex].Cells[0].Value != null) subtotalcol1 = Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString());
+                    SubTotal.Add(new Tuple<int, decimal>(subtotalcol1, Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())));
+                    st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
+                    lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + st.Item2).ToString();
+                }
             }
 
         }
@@ -2039,7 +2102,7 @@ namespace LoginForm.QuotationModule
             int row = dgQuotationAddedItems.CurrentCell.RowIndex;
             while (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex].ReadOnly == true)
             {
-                if (currindex == dgQuotationAddedItems.ColumnCount - 1)
+                if (currindex == dgQuotationAddedItems.ColumnCount - 2)
                 {
                     if (currindex == 14 && dgQuotationAddedItems.Rows[row].Cells[14].Value == null) break;
                     if (dgQuotationAddedItems.RowCount - 1 == row && dgQuotationAddedItems.CurrentRow.Cells["dgDesc"].Value != null)
@@ -2056,11 +2119,9 @@ namespace LoginForm.QuotationModule
                     currindex++;
                 }
             }
-            try
-            {
-                dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[row].Cells[currindex];
-            }
-            catch { }
+
+            dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[row].Cells[currindex];
+
         }
 
         private void ChangeCurrnetCellTabKey(int currindex)
@@ -2097,15 +2158,18 @@ namespace LoginForm.QuotationModule
             if (e.KeyCode == Keys.Tab)
             {
                 ChangeCurrnetCellTabKey(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
+                dgQuotationAddedItems.Focus();
             }
             else if ((e.KeyCode == Keys.Escape))
             {
                 ChangeCurrnetCell(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
+                dgQuotationAddedItems.Focus();
             }
             else if (e.KeyCode == Keys.Enter)
             {
                 ChangeCurrnetCell(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
                 if (dgQuotationAddedItems.CurrentRow.Index != dgQuotationAddedItems.RowCount - 1) SendKeys.Send("{UP}");
+                dgQuotationAddedItems.Focus();
             }
             else if (e.KeyCode == Keys.Delete)
             {
@@ -2285,10 +2349,22 @@ namespace LoginForm.QuotationModule
                 {
                     //hz ve lithum disc dan etkilenmeyecek
                     decimal hztotal = 0;
-                    //foreach (var item in collection)
-                    //{
 
-                    //}
+                    for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+                    {
+                        if (dgQuotationAddedItems.Rows[i].Cells["HS"].Style.BackColor == Color.Red)
+                        {
+                            hztotal += decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value?.ToString());
+                        }
+                        else if (dgQuotationAddedItems.Rows[i].Cells["LI"].Style.BackColor == Color.Ivory)
+                        {
+                            hztotal += decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value?.ToString());
+                        }
+                        //else if ()//HE için
+                        //{
+
+                        //}
+                    }
                     //
                     decimal subtotal = Decimal.Parse(lblsubtotal.Text) - hztotal;
                     decimal dis2 = subtotal * Decimal.Parse(txtTotalDis.Text) / 100;
@@ -2303,6 +2379,7 @@ namespace LoginForm.QuotationModule
         private decimal calculateTotalMargin()
         {
             decimal total = 0;
+            decimal subtotal = 1;
             for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
             {
                 if (dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value != null && dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString() != string.Empty)
@@ -2312,7 +2389,8 @@ namespace LoginForm.QuotationModule
                     total = total + (margin * price);
                 }
             }
-            return total / (decimal.Parse(lblsubtotal.Text));
+            if (decimal.Parse(lblsubtotal.Text) != 0) subtotal = (decimal.Parse(lblsubtotal.Text));
+            return total / subtotal;
         }
 
         private void getTotalDiscMargin()
