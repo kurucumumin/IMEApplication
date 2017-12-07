@@ -12,13 +12,13 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class VoucherTypeTax
+    public partial class Route
     {
-        public decimal voucherTypeTaxId { get; set; }
-        public Nullable<decimal> voucherTypeId { get; set; }
-        public Nullable<int> taxId { get; set; }
+        public decimal routeId { get; set; }
+        public string routeName { get; set; }
+        public Nullable<decimal> areaId { get; set; }
+        public string narration { get; set; }
     
-        public virtual Tax Tax { get; set; }
-        public virtual VoucherType VoucherType { get; set; }
+        public virtual Area Area { get; set; }
     }
 }

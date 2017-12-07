@@ -18,5 +18,7 @@ namespace LoginForm.DataSet
         public Nullable<int> taxID { get; set; }
         public Nullable<int> SelectedtaxID { get; set; }
         public Nullable<System.DateTime> taxDate { get; set; }
+    
+        public virtual Tax Tax { get; set; }
     }
 }

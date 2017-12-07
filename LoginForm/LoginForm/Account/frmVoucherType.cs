@@ -164,7 +164,7 @@ namespace LoginForm
                                 {
                                     VoucherTypeTax vtt = new VoucherTypeTax();
                                     vtt.voucherTypeId = decVoucherTypeId;
-                                    vtt.taxId = Convert.ToDecimal(dgvApplicableTaxes.Rows[i].Cells["dgvtxtTaxId"].Value.ToString());
+                                    vtt.taxId = Convert.ToInt32(dgvApplicableTaxes.Rows[i].Cells["dgvtxtTaxId"].Value.ToString());
                                     IME.VoucherTypeTaxes.Add(vtt);
                                     IME.SaveChanges();
                                 }

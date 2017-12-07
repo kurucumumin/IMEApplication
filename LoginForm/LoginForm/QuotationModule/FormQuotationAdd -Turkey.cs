@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace LoginForm.QuotationModule
 {
-    public partial class FormQuotationAdd : Form
+    public partial class FormQuotationAddTurkey : Form
     {
         #region Definitions
         GetWorkerService GetWorkerService = new GetWorkerService();
@@ -21,7 +21,7 @@ namespace LoginForm.QuotationModule
         List<Tuple<int, decimal>> SubTotal = new List<Tuple<int, decimal>>();
         List<Tuple<int, decimal>> SubDeletingTotal = new List<Tuple<int, decimal>>();
         ContextMenu DeletedQuotationMenu = new ContextMenu();
-        ExchangeRate curr = new ExchangeRate();
+        Rate curr = new Rate();
         Decimal CurrValue = 1;
         Decimal CurrValue1 = 1;
         decimal Currfactor = 1;
@@ -34,17 +34,16 @@ namespace LoginForm.QuotationModule
         decimal round = 0;
         decimal sonuc = 0;
         decimal sayac = 0;
-        //ExchangeRate exchangeRate;
         #endregion
 
-        public FormQuotationAdd()
+        public FormQuotationAddTurkey()
         {
             InitializeComponent();
             dtpDate.Value = DateTime.Now;
             dtpDate.Enabled = false;
         }
 
-        public FormQuotationAdd(Quotation quotation)
+        public FormQuotationAddTurkey(Quotation quotation)
         {
             //Son versiyonu açmayı sağlıyor
             Quotation q1 = IME.Quotations.Where(a => a.QuotationNo.Contains(quotation.QuotationNo)).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
@@ -54,8 +53,8 @@ namespace LoginForm.QuotationModule
             dtpDate.Value = (DateTime)q1.StartDate;
             dtpDate.MaxDate = DateTime.Today.Date;
             cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == dtpDate.Value).ToList();
-            cbCurrency.DisplayMember = "currencyName";
-            cbCurrency.ValueMember = "currencyID";
+            cbCurrency.DisplayMember = "CurType";
+            cbCurrency.ValueMember = "ID";
             cbCurrency.SelectedIndex = 0;
             cbPayment.DataSource = IME.PaymentMethods.ToList();
             cbPayment.DisplayMember = "Payment";
@@ -110,16 +109,17 @@ namespace LoginForm.QuotationModule
                 DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
                 dgQuotationAddedItems.Rows.Add(dgRow);
                 txtQuotationNo.Text = NewQuotationID();
-                //dgQuotationAddedItems.Rows[0].Cells["dgQty"].Value = "0";
+                dgQuotationAddedItems.Rows[0].Cells["dgQty"].Value = "0";
                 dgQuotationAddedItems.Rows[0].Cells[0].Value = 1.ToString();
                 LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
                 lblVat.Text = Utils.getManagement().VAT.ToString();
                 #region ComboboxFiller.
                 dtpDate.Value = DateTime.Now;
-                cbCurrency.DataSource = IME.Currencies.ToList();
-                cbCurrency.DisplayMember = "currencyName";
-                cbCurrency.ValueMember = "currencyID";
+                cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == dtpDate.Value.Date).ToList();
+                cbCurrency.DisplayMember = "CurType";
+                cbCurrency.ValueMember = "ID";
                 cbCurrency.SelectedIndex = 0;
+                cbCurrType.SelectedIndex = 0;
                 cbPayment.DataSource = IME.PaymentMethods.ToList();
                 cbPayment.DisplayMember = "Payment";
                 cbPayment.ValueMember = "ID";
@@ -127,7 +127,7 @@ namespace LoginForm.QuotationModule
                 cbRep.ValueMember = "WorkerID";
                 cbRep.DisplayMember = "NameLastName";
                 cbRep.SelectedValue = Utils.getCurrentUser().WorkerID;
-                cbFactor.Text = Utils.getManagement().Factor.ToString();
+                cbCurrType.SelectedIndex = 0;
                 #endregion
             }
             GetCurrency(dtpDate.Value);
@@ -176,7 +176,7 @@ namespace LoginForm.QuotationModule
                 try { txtContactNote.Text = c.CustomerWorker.Note.Note_name; } catch { }
                 try { txtCustomerNote.Text = c.Note.Note_name; } catch { }
                 try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
-                if (c.Worker != null) cbRep.SelectedValue = c.Worker.WorkerID;
+                if(c.Worker!=null) cbRep.SelectedValue = c.Worker.WorkerID;
                 cbCurrency.SelectedItem = cbCurrency.FindStringExact(c.CurrNameQuo);
                 //cbCurrType.SelectedItem = cbCurrType.FindStringExact(c.CurrTypeQuo);
             }
@@ -455,7 +455,7 @@ namespace LoginForm.QuotationModule
             if (cbFactor.Text != null && cbFactor.Text != "")
             {
                 #region Quantity
-                if (dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value != null)
+                if (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString()) > 0)
                 {
                     #region Quantity
                     if (txtStandartWeight.Text != null && txtStandartWeight.Text != "")
@@ -641,6 +641,7 @@ namespace LoginForm.QuotationModule
             }
 
             #endregion
+
         }
 
         private void FillProductCodeItem()
@@ -733,7 +734,7 @@ namespace LoginForm.QuotationModule
             #region Filler
             Rate currWeb = new Rate();
             currWeb = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList().Where(b => b.CurType == "GBP").FirstOrDefault();
-            decimal CurrValueWeb = Decimal.Parse(curr.rate.ToString());
+            decimal CurrValueWeb = Decimal.Parse(curr.RateBuy.ToString());
             string ArticleNoSearch1 = ArticleNoSearch;
             try { ArticleNoSearch1 = (Int32.Parse(ArticleNoSearch)).ToString(); } catch { }
             //Seçili olan item ı text lere yazdıran fonksiyon yazılacak
@@ -942,7 +943,7 @@ namespace LoginForm.QuotationModule
 
                 txtMargin2.Text = ((1 - ((Decimal.Parse(txtMargin2.Text)) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
                 txtMargin3.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked, Int32.Parse(sp1.Col3Break.ToString()))).ToString("G29");
-                if (Decimal.Parse(txtWeb3.Text) != 0) txtMargin3.Text = ((1 - ((Decimal.Parse(txtMargin3.Text)) / (decimal.Parse(txtWeb3.Text)))) * 100).ToString();
+                if(txtWeb3.Text!="0") txtMargin3.Text = ((1 - ((Decimal.Parse(txtMargin3.Text)) / (decimal.Parse(txtWeb3.Text)))) * 100).ToString();
                 if (sp1.Col4Break != 0)
                 {
                     txtMargin4.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
@@ -1574,7 +1575,7 @@ namespace LoginForm.QuotationModule
         private void QuotataionModifyItemDetailsFiller(string ArticleNoSearch, int RowIndex)
         {
             #region Filler
-            decimal CurrValueWeb = Decimal.Parse(curr.rate.ToString());
+            decimal CurrValueWeb = Decimal.Parse(curr.RateBuy.ToString());
             string ArticleNoSearch1 = ArticleNoSearch;
             try { ArticleNoSearch1 = (Int32.Parse(ArticleNoSearch)).ToString(); } catch { }
             //Seçili olan item ı text lere yazdıran fonksiyon yazılacak
@@ -1823,25 +1824,44 @@ namespace LoginForm.QuotationModule
 
         private void cbCurrType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //    if ((cbCurrType.SelectedIndex != null))
-            //    {
-            //        GetCurrency(dtpDate.Value);
-            //        ChangeCurr();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("You Must Choose a Curr Type");
-            //        cbCurrType.SelectedIndex = 0;
-            //    }
+        //    if ((cbCurrType.SelectedIndex != null))
+        //    {
+        //        GetCurrency(dtpDate.Value);
+        //        ChangeCurr();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("You Must Choose a Curr Type");
+        //        cbCurrType.SelectedIndex = 0;
+        //    }
         }
 
         private void GetCurrency(DateTime date)
         {
-            var cb = (cbCurrency.SelectedItem as Currency).currencyID;
-            curr = IME.ExchangeRates.Where(a => a.currencyId == cb).OrderByDescending(b => b.date).FirstOrDefault();
-
-            if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
-            CurrValue = (decimal)curr.rate;
+            if (cbCurrency.SelectedIndex >= 0)
+            {
+                curr = IME.Rates.Where(a => a.rate_date == date.Date).ToList().Where(b => b.CurType == (cbCurrency.SelectedItem as Rate).CurType).FirstOrDefault();
+                if (cbCurrType.SelectedText == "Buy" || cbCurrType.SelectedIndex == 0)
+                {
+                    if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
+                    CurrValue = Decimal.Parse(curr.RateBuy.ToString());
+                }
+                else if (cbCurrType.SelectedIndex == 1)
+                {
+                    if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
+                    CurrValue = Decimal.Parse(curr.RateBuyEffective.ToString());
+                }
+                else if (cbCurrType.SelectedIndex == 2)
+                {
+                    if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
+                    CurrValue = Decimal.Parse(curr.RateSell.ToString());
+                }
+                else if (cbCurrType.SelectedIndex == 3)
+                {
+                    if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
+                    CurrValue = Decimal.Parse(curr.RateSellEffective.ToString());
+                }
+            }
         }
 
         private void cbCurrency_SelectedIndexChanged(object sender, EventArgs e)
@@ -1877,30 +1897,35 @@ namespace LoginForm.QuotationModule
 
         private string GetCurrencySign()
         {
-            return curr.Currency.currencySymbol;
+            string cur = "";
+            switch (cbCurrency.Text)
+            {
+                case "USD":
+                    cur = "$";
+                    break;
+                case "GBP":
+                    cur = "£";
+                    break;
+                case "EUR":
+                    cur = "€";
+                    break;
+            }
+            return cur;
         }
 
         private void ChangeCurr()
         {
             lblWeb.Text = "Web (" + GetCurrencySign() + ")";
             decimal SubTotalTotal = 0;
+            if (CurrValue1 != CurrValue) { Currfactor = CurrValue / CurrValue1; } else { Currfactor = 1; }
             #region ChangeWebValues
-            if (CurrValue1 != CurrValue)
+            if (txtWeb1.Text != "" && txtWeb1.Text != null)
             {
-                Currfactor = CurrValue / CurrValue1;
-            }
-            else
-            {
-                Currfactor = 1;
-                if (txtWeb1.Text != "" && txtWeb1.Text != null)
-                {
-                    txtWeb1.Text = (Decimal.Parse(txtWeb1.Text) / Currfactor).ToString();
-                    txtWeb2.Text = (Decimal.Parse(txtWeb2.Text) / Currfactor).ToString();
-                    txtWeb3.Text = (Decimal.Parse(txtWeb3.Text) / Currfactor).ToString();
-                    txtWeb4.Text = (Decimal.Parse(txtWeb4.Text) / Currfactor).ToString();
-                    txtWeb5.Text = (Decimal.Parse(txtWeb5.Text) / Currfactor).ToString();
-                }
-
+                txtWeb1.Text = (Decimal.Parse(txtWeb1.Text) / Currfactor).ToString();
+                txtWeb2.Text = (Decimal.Parse(txtWeb2.Text) / Currfactor).ToString();
+                txtWeb3.Text = (Decimal.Parse(txtWeb3.Text) / Currfactor).ToString();
+                txtWeb4.Text = (Decimal.Parse(txtWeb4.Text) / Currfactor).ToString();
+                txtWeb5.Text = (Decimal.Parse(txtWeb5.Text) / Currfactor).ToString();
             }
             #endregion
             for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
@@ -2251,14 +2276,14 @@ namespace LoginForm.QuotationModule
 
         private void txtTotalDis2_Leave(object sender, EventArgs e)
         {
-            if (lblsubtotal.Text != null & lblsubtotal.Text != string.Empty)
+            if(lblsubtotal.Text!=null& lblsubtotal.Text != string.Empty)
             {
-                if (txtTotalDis2.Text == null || txtTotalDis2.Text == "") txtTotalDis2.Text = "0";
-                decimal totaldis = (Decimal.Parse(txtTotalDis2.Text) * 100) / decimal.Parse(lblsubtotal.Text);
-                txtTotalDis.Text = totaldis.ToString();
-                lbltotal.Text = (Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)).ToString();
-                getTotalDiscMargin();
-                if (txtTotalMarge.Visible == true) txtTotalMarge.Text = calculateTotalMargin().ToString();
+            if (txtTotalDis2.Text == null || txtTotalDis2.Text == "") txtTotalDis2.Text = "0";
+            decimal totaldis = (Decimal.Parse(txtTotalDis2.Text) * 100) / decimal.Parse(lblsubtotal.Text);
+            txtTotalDis.Text = totaldis.ToString();
+            lbltotal.Text = (Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)).ToString();
+            getTotalDiscMargin();
+            if (txtTotalMarge.Visible == true) txtTotalMarge.Text = calculateTotalMargin().ToString();
             }
         }
 
@@ -2278,20 +2303,12 @@ namespace LoginForm.QuotationModule
 
         private void txtTotalDis_Leave(object sender, EventArgs e)
         {
-            if (lblsubtotal.Text != null && lblsubtotal.Text != string.Empty)
+            if(lblsubtotal.Text!=null && lblsubtotal.Text != string.Empty)
             {
                 if (txtTotalDis.Text == null || txtTotalDis.Text == "") txtTotalDis.Text = "0";
                 if (lblsubtotal.Text != "" && Decimal.Parse(lblsubtotal.Text) != 0 && lblsubtotal.Text != null)
                 {
-                    //hz ve lithum disc dan etkilenmeyecek
-                    decimal hztotal = 0;
-                    //foreach (var item in collection)
-                    //{
-
-                    //}
-                    //
-                    decimal subtotal = Decimal.Parse(lblsubtotal.Text) - hztotal;
-                    decimal dis2 = subtotal * Decimal.Parse(txtTotalDis.Text) / 100;
+                    decimal dis2 = Decimal.Parse(lblsubtotal.Text) * Decimal.Parse(txtTotalDis.Text) / 100;
                     txtTotalDis2.Text = dis2.ToString();
                     lbltotal.Text = (Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)).ToString();
                 }
@@ -2361,9 +2378,9 @@ namespace LoginForm.QuotationModule
         private void dtpDate_ValueChanged(object sender, EventArgs e)
         {
             cbCurrency.DataSource = null;
-            cbCurrency.DataSource = IME.Currencies.ToList();
-            cbCurrency.DisplayMember = "currencyName";
-            cbCurrency.ValueMember = "currencyID";
+            cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == dtpDate.Value).ToList();
+            cbCurrency.DisplayMember = "CurType";
+            cbCurrency.ValueMember = "ID";
             GetAllMargin();
         }
 
@@ -2540,7 +2557,7 @@ namespace LoginForm.QuotationModule
                         //total = total - discValue;
                         total = (total * (1 - (disc / 100)));
                         dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value = total.ToString();
-                        dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value = (total / Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString())).ToString();
+                        dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value = (total/ Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString())).ToString();
                         decimal UCIME = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString()) * Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString());
                         dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value = (100 - (100 * total / UCIME)).ToString();
                     }

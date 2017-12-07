@@ -69,7 +69,7 @@ namespace LoginForm
             //infoCurrency.Extra1 = String.Empty;
             //infoCurrency.Extra2 = String.Empty;
             //infoCurrency.CurrencyId = decId;
-            if (IME.Currencies.Where(a => a.currencyName == txtName.Text.Trim()).FirstOrDefault() == null)
+            if (IME.Currencies.Where(a => a.currencyName == txtName.Text.Trim()).Where(b=>b.currencySymbol==txtSymbol.Text.Trim()).FirstOrDefault() == null)
             {
                 Currency c = IME.Currencies.Where(a => a.currencyID == decId).FirstOrDefault();
                 c.currencySymbol = txtSymbol.Text.Trim();
