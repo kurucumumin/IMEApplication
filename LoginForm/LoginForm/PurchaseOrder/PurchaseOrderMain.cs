@@ -36,11 +36,6 @@ namespace LoginForm.PurchaseOrder
             this.Show();
         }
 
-        private void btnPurchaseOrders_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are You Sure To Exit Programme ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)

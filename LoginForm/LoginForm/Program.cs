@@ -13,7 +13,7 @@ namespace LoginForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MailForm());
+            Application.Run(new FormLogin());
         }
     }
 }

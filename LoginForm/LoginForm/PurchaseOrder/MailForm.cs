@@ -49,6 +49,7 @@ namespace LoginForm.PurchaseOrder
 
             IME.Mails.AddRange(MailList);
             IME.SaveChanges();
+            MessageBox.Show("Mail is successfully added", "Success");
         }
 
         private void radioSpecial_CheckedChanged(object sender, EventArgs e)
@@ -76,8 +77,6 @@ namespace LoginForm.PurchaseOrder
 
         private void FillMain()
         {
-            
-
             foreach (Mail mail in MailList)
             {
                 int rowIndex = dgMail.Rows.Add();

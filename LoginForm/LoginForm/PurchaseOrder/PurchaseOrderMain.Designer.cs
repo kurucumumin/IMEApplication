@@ -69,7 +69,6 @@
             this.btnPurchaseOrders.TabIndex = 14;
             this.btnPurchaseOrders.Text = "Bring The Purchase Orders";
             this.btnPurchaseOrders.UseVisualStyleBackColor = true;
-            this.btnPurchaseOrders.Click += new System.EventHandler(this.btnPurchaseOrders_Click);
             // 
             // dateEnding
             // 
