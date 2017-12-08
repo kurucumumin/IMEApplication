@@ -18,9 +18,10 @@ namespace LoginForm.PurchaseOrder
     {
         IMEEntities IME = new IMEEntities();
         List<SaleOrderDetail> saleItemList = new List<SaleOrderDetail>();
-
         SqlDataAdapter da;
         System.Data.DataSet ds = new System.Data.DataSet();
+        string purchasecode = "";
+
 
         public NewPurchaseOrder()
         {
@@ -33,30 +34,8 @@ namespace LoginForm.PurchaseOrder
             PurchaseOrder(item_code);
         }
 
-        //public NewPurchaseOrder(SaleOrder so)
-        //{
-        //    InitializeComponent();
-
-        //    foreach (SaleOrderDetail item in so.SaleOrderDetails)
-        //    {
-        //        saleItemList.Add(item);
-        //    }
-        //}
-
-        //public NewPurchaseOrder(List<SaleOrder> SaleOrderList)
-        //{
-        //    InitializeComponent();
-
-        //    foreach (SaleOrder sale in SaleOrderList)
-        //    { 
-        //        saleItemList.AddRange(sale.SaleOrderDetails);
-        //    }
-        //}
-
         private void btnCreate_Click(object sender, EventArgs e)
         {
-
-            //List<PurchaseOrderDetail> list = new List<PurchaseOrderDetail>();
             List<DataGridViewRow> rowList = new List<DataGridViewRow>();
 
             foreach (DataGridViewRow row in dgPurchase.Rows)
@@ -66,8 +45,7 @@ namespace LoginForm.PurchaseOrder
                     rowList.Add(row);
                 }
             }
-            //this.Hide();
-            PurchaseExportFiles form = new PurchaseExportFiles(rowList);
+            PurchaseExportFiles form = new PurchaseExportFiles(rowList, purchasecode);
             form.ShowDialog();
             
         }
@@ -81,11 +59,6 @@ namespace LoginForm.PurchaseOrder
                 this.Close();
             }
         }
-
-        //private void NewPurchaseOrder_Load(object sender, EventArgs e)
-        //{
-        //    PurchaseOrderFill();
-        //}
 
         private void PurchaseOrderFill()
         {
@@ -156,40 +129,9 @@ namespace LoginForm.PurchaseOrder
 
         private void NewPurchaseOrder_Load(object sender, EventArgs e)
         {
-            
-             NewFicheNo();
-        }
-
-
-        private string NewFicheNo()
-        {
             IMEEntities IME = new IMEEntities();
-            string purchasecode = "";
-            if (IME.PurchaseOrders.ToList().Count != 0) purchasecode = IME.PurchaseOrders.OrderByDescending(q => q.FicheNo).FirstOrDefault().FicheNo;
-            string custmrnumbers = string.Empty;
-            string newpurchasecodenumbers = "";
-            string newpurchasecodezeros = "";
-            string newpurchasecodechars = "";
-            for (int i = 0; i < purchasecode.Length; i++)
-            {
-                if (Char.IsDigit(purchasecode[i]))
-                {
-                    if (purchasecode[i] == '0') { newpurchasecodezeros += purchasecode[i]; } else { newpurchasecodenumbers += purchasecode[i]; }
-                }
-                else
-                {
-                    newpurchasecodechars += purchasecode[i];
-                }
-            }
-            //Aynı FicheNo ile PurchaseOrder oluşturmasını önleyen kısım
-            while (IME.PurchaseOrders.Where(a => a.FicheNo == purchasecode).Count() > 0)
-            {
-                newpurchasecodenumbers = (Int32.Parse(newpurchasecodenumbers) + 1).ToString();
-                purchasecode = newpurchasecodechars + newpurchasecodezeros + newpurchasecodenumbers;
-            }
-            txtOrderNumber.Text = purchasecode;
-            PurchaseExportFiles f = new PurchaseExportFiles(txtOrderNumber.Text);
-            return purchasecode;
+            purchasecode= IME.PurchaseOrders.OrderByDescending(q => q.FicheNo).FirstOrDefault().FicheNo;
+            txtOrderNumber.Text = purchasecode + 1;
         }
     }
 }

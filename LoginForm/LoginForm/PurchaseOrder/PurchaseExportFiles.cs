@@ -15,25 +15,19 @@ namespace LoginForm.PurchaseOrder
     {
         IMEEntities IME = new IMEEntities();
         List<DataGridViewRow> rowList = new List<DataGridViewRow>();
+        List<Mail> MailList = new List<Mail>();
         string fiche = "";
         public PurchaseExportFiles()
         {
             InitializeComponent();
         }
 
-        public PurchaseExportFiles(List<DataGridViewRow> List)
+        public PurchaseExportFiles(List<DataGridViewRow> List, string ficheNo)
         {
             InitializeComponent();
             rowList = List;
-        }
-
-        public PurchaseExportFiles(string ficheNo)
-        {
-            InitializeComponent();
             fiche = ficheNo;
-
         }
-
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
@@ -114,21 +108,18 @@ namespace LoginForm.PurchaseOrder
 
 
             DataSet.PurchaseOrder po = new DataSet.PurchaseOrder();
-            po.FicheNo = fiche;
             string s = rowList[0].Cells[3].Value.ToString();
-            po.CustomerID = IME.SaleOrders.Where(a => a.SaleOrderNo == s).FirstOrDefault().CustomerID;
-            po.PurchaseOrderDate = DateTime.Today.Date;
-            po.CameDate= IME.SaleOrders.Where(a => a.SaleOrderNo ==s).FirstOrDefault().SaleDate;
-            //po.Reason
-            IME.PurchaseOrders.Add(po);
-            IME.SaveChanges();
-
 
             foreach (PurchaseOrderDetail item in podList)
             {
-                po.PurchaseOrderDetails.Add(item);
+                po.FicheNo = fiche;
+                po.CustomerID = IME.SaleOrders.Where(a => a.SaleOrderNo == s).FirstOrDefault().CustomerID;
+                po.PurchaseOrderDate = DateTime.Today.Date;
+                po.CameDate = IME.SaleOrders.Where(a => a.SaleOrderNo == s).FirstOrDefault().SaleDate;
+
             }
 
+            IME.PurchaseOrders.Add(po);
             IME.SaveChanges();
 
         }

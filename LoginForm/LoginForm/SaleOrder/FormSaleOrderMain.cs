@@ -114,15 +114,21 @@ namespace LoginForm.nsSaleOrder
         private void PurchaseOrderMenu_Click(object sender, EventArgs e)
         {
             string item_code = null;
+           // string purchasecode = "";
             IMEEntities IME = new IMEEntities();
 
             if (dgSales.CurrentRow.Cells["SoNO"].Value != null)
+            {
                 item_code = dgSales.CurrentRow.Cells["SoNO"].Value.ToString();
+                //purchasecode = IME.PurchaseOrders.OrderByDescending(q => q.FicheNo).FirstOrDefault().FicheNo;
+                //purchasecode += 1;
+            }
             if (item_code == null)
                 MessageBox.Show("Please Enter a Item Code", "Eror !");
             else
             {
                 this.Close();
+                // NewPurchaseOrder f = new NewPurchaseOrder(item_code,purchasecode);
                 NewPurchaseOrder f = new NewPurchaseOrder(item_code);
                 f.ShowDialog();
             }
