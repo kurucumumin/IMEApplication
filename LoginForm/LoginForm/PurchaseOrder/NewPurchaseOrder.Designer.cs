@@ -35,10 +35,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtOrderNumber = new System.Windows.Forms.TextBox();
             this.dgPurchase = new System.Windows.Forms.DataGridView();
-            this.SLC = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnExcel = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
+            this.SLC = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPurchase)).BeginInit();
             this.SuspendLayout();
@@ -114,13 +114,6 @@
             this.dgPurchase.Size = new System.Drawing.Size(1272, 432);
             this.dgPurchase.TabIndex = 10;
             // 
-            // SLC
-            // 
-            this.SLC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.SLC.HeaderText = "SLC";
-            this.SLC.Name = "SLC";
-            this.SLC.Width = 33;
-            // 
             // btnClose
             // 
             this.btnClose.Location = new System.Drawing.Point(1209, 571);
@@ -149,6 +142,13 @@
             this.btnCreate.Text = "Create an Order That is Chosen";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            // 
+            // SLC
+            // 
+            this.SLC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.SLC.HeaderText = "SLC";
+            this.SLC.Name = "SLC";
+            this.SLC.Width = 33;
             // 
             // NewPurchaseOrder
             // 

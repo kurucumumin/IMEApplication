@@ -84,6 +84,19 @@ namespace LoginForm.PurchaseOrder
 
         private void btnCreatePurchase_Click(object sender, EventArgs e)
         {
+            DataSet.PurchaseOrder po = new DataSet.PurchaseOrder();
+            string s = rowList[0].Cells[3].Value.ToString();
+
+            po.FicheNo = fiche;
+            po.CustomerID = IME.SaleOrders.Where(a => a.SaleOrderNo == s).FirstOrDefault().CustomerID;
+            po.PurchaseOrderDate = DateTime.Today.Date;
+            po.CameDate = IME.SaleOrders.Where(a => a.SaleOrderNo == s).FirstOrDefault().SaleDate;
+
+            IME.PurchaseOrders.Add(po);
+            IME.SaveChanges();
+
+            po = IME.PurchaseOrders.Where(x => x.FicheNo == fiche).FirstOrDefault();
+            
             List<PurchaseOrderDetail> podList = new List<PurchaseOrderDetail>();
 
             foreach (DataGridViewRow row in rowList)
@@ -99,6 +112,7 @@ namespace LoginForm.PurchaseOrder
                 pod.Hazardous = (bool)row.Cells[8].Value;
                 pod.Calibration = (bool)row.Cells[9].Value;
                 pod.SaleOrderNature = row.Cells[10].Value.ToString();
+                pod.FicheNo = po.FicheNo;
 
                 podList.Add(pod);
             }
@@ -106,22 +120,7 @@ namespace LoginForm.PurchaseOrder
             IME.PurchaseOrderDetails.AddRange(podList);
             IME.SaveChanges();
 
-
-            DataSet.PurchaseOrder po = new DataSet.PurchaseOrder();
-            string s = rowList[0].Cells[3].Value.ToString();
-
-            foreach (PurchaseOrderDetail item in podList)
-            {
-                po.FicheNo = fiche;
-                po.CustomerID = IME.SaleOrders.Where(a => a.SaleOrderNo == s).FirstOrDefault().CustomerID;
-                po.PurchaseOrderDate = DateTime.Today.Date;
-                po.CameDate = IME.SaleOrders.Where(a => a.SaleOrderNo == s).FirstOrDefault().SaleDate;
-
-            }
-
-            IME.PurchaseOrders.Add(po);
-            IME.SaveChanges();
-
+            MessageBox.Show("PuchaseOrders is successfully added", "Success");
         }
     }
 }

@@ -24,18 +24,18 @@ namespace LoginForm.DataSet
         public string Competitor { get; set; }
         public string CustomerDescription { get; set; }
         public string CustomerStockCode { get; set; }
-        public bool IsDeleted { get; set; }
-        public decimal UPIME { get; set; }
-        public decimal Margin { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
+        public Nullable<decimal> UPIME { get; set; }
+        public Nullable<decimal> Margin { get; set; }
         public string UnitOfMeasure { get; set; }
-        public int UnitContent { get; set; }
+        public Nullable<int> UnitContent { get; set; }
         public Nullable<int> SSM { get; set; }
         public Nullable<decimal> UnitWeight { get; set; }
         public string SaleOrderNo { get; set; }
         public string DependantTable { get; set; }
         public string ItemDescription { get; set; }
-        public bool Hazardous { get; set; }
-        public bool Calibration { get; set; }
+        public Nullable<bool> Hazardous { get; set; }
+        public Nullable<bool> Calibration { get; set; }
         public Nullable<decimal> UnitPrice { get; set; }
         public Nullable<decimal> ItemCost { get; set; }
     
