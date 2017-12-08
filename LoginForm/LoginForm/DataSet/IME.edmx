@@ -413,11 +413,11 @@
           <Key>
             <PropertyRef Name="FicheNo" />
           </Key>
-          <Property Name="FicheNo" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="CustomerID" Type="nvarchar" MaxLength="15" />
           <Property Name="PurchaseOrderDate" Type="date" />
           <Property Name="CameDate" Type="date" />
           <Property Name="Reason" Type="nvarchar" MaxLength="50" />
+          <Property Name="FicheNo" Type="nvarchar" MaxLength="15" Nullable="false" />
         </EntityType>
         <EntityType Name="PurchaseOrderDetail">
           <Key>
@@ -571,18 +571,18 @@
           <Property Name="Competitor" Type="nvarchar" MaxLength="50" />
           <Property Name="CustomerDescription" Type="nvarchar" MaxLength="50" />
           <Property Name="CustomerStockCode" Type="nvarchar" MaxLength="20" />
-          <Property Name="IsDeleted" Type="bit" Nullable="false" />
-          <Property Name="UPIME" Type="decimal" Precision="20" Scale="5" Nullable="false" />
-          <Property Name="Margin" Type="decimal" Precision="20" Scale="5" Nullable="false" />
-          <Property Name="UnitOfMeasure" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="UnitContent" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="UPIME" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="Margin" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="UnitOfMeasure" Type="nvarchar" MaxLength="20" />
+          <Property Name="UnitContent" Type="int" />
           <Property Name="SSM" Type="int" />
           <Property Name="UnitWeight" Type="decimal" Precision="15" Scale="4" />
           <Property Name="SaleOrderNo" Type="nvarchar" MaxLength="10" />
-          <Property Name="DependantTable" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="DependantTable" Type="nvarchar" MaxLength="10" />
           <Property Name="ItemDescription" Type="nvarchar" MaxLength="50" />
-          <Property Name="Hazardous" Type="bit" Nullable="false" />
-          <Property Name="Calibration" Type="bit" Nullable="false" />
+          <Property Name="Hazardous" Type="bit" />
+          <Property Name="Calibration" Type="bit" />
           <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="0" />
           <Property Name="ItemCost" Type="decimal" Precision="20" Scale="5" />
         </EntityType>
@@ -618,6 +618,15 @@
           <Property Name="Brandname" Type="nvarchar" MaxLength="100" />
           <Property Name="SectionID" Type="nvarchar" MaxLength="20" />
           <Property Name="SectionName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="StockID" />
+          </Key>
+          <Property Name="StockID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="Quantitiy" Type="int" />
+          <Property Name="date" Type="date" />
         </EntityType>
         <EntityType Name="SuperDisk">
           <Key>
@@ -1258,7 +1267,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PurchaseO__Fiche__44EA3301">
+        <Association Name="FK__PurchaseO__Fiche__01F34141">
           <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
           <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1927,6 +1936,7 @@
           <EntitySet Name="SaleOrder" EntityType="Self.SaleOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SaleOrderDetail" EntityType="Self.SaleOrderDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SlidingPrice" EntityType="Self.SlidingPrice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuperDisk" EntityType="Self.SuperDisk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuperDiskP" EntityType="Self.SuperDiskP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
@@ -2063,7 +2073,7 @@
             <End Role="Customer" EntitySet="Customer" />
             <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK__PurchaseO__Fiche__44EA3301" Association="Self.FK__PurchaseO__Fiche__44EA3301">
+          <AssociationSet Name="FK__PurchaseO__Fiche__01F34141" Association="Self.FK__PurchaseO__Fiche__01F34141">
             <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
             <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
           </AssociationSet>
@@ -2320,6 +2330,7 @@
           <EntitySet Name="SaleOrders" EntityType="IMEModel.SaleOrder" />
           <EntitySet Name="SaleOrderDetails" EntityType="IMEModel.SaleOrderDetail" />
           <EntitySet Name="SlidingPrices" EntityType="IMEModel.SlidingPrice" />
+          <EntitySet Name="Stocks" EntityType="IMEModel.Stock" />
           <EntitySet Name="SuperDisks" EntityType="IMEModel.SuperDisk" />
           <EntitySet Name="SuperDiskPs" EntityType="IMEModel.SuperDiskP" />
           <EntitySet Name="Suppliers" EntityType="IMEModel.Supplier" />
@@ -2543,7 +2554,7 @@
             <End Role="PaymentTerm" EntitySet="PaymentTerms" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
-          <AssociationSet Name="FK__PurchaseO__Fiche__44EA3301" Association="IMEModel.FK__PurchaseO__Fiche__44EA3301">
+          <AssociationSet Name="FK__PurchaseO__Fiche__01F34141" Association="IMEModel.FK__PurchaseO__Fiche__01F34141">
             <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
             <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetails" />
           </AssociationSet>
@@ -3130,13 +3141,13 @@
           <Key>
             <PropertyRef Name="FicheNo" />
           </Key>
-          <Property Name="FicheNo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="CustomerID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="PurchaseOrderDate" Type="DateTime" Precision="0" />
           <Property Name="CameDate" Type="DateTime" Precision="0" />
           <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FicheNo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Customer" Relationship="IMEModel.FK__PurchaseO__Custo__420DC656" FromRole="PurchaseOrder" ToRole="Customer" />
-          <NavigationProperty Name="PurchaseOrderDetails" Relationship="IMEModel.FK__PurchaseO__Fiche__44EA3301" FromRole="PurchaseOrder" ToRole="PurchaseOrderDetail" />
+          <NavigationProperty Name="PurchaseOrderDetails" Relationship="IMEModel.FK__PurchaseO__Fiche__01F34141" FromRole="PurchaseOrder" ToRole="PurchaseOrderDetail" />
         </EntityType>
         <EntityType Name="PurchaseOrderDetail">
           <Key>
@@ -3155,7 +3166,7 @@
           <Property Name="Calibration" Type="Boolean" Nullable="false" />
           <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PurchaseOrder" Relationship="IMEModel.FK__PurchaseO__Fiche__44EA3301" FromRole="PurchaseOrderDetail" ToRole="PurchaseOrder" />
+          <NavigationProperty Name="PurchaseOrder" Relationship="IMEModel.FK__PurchaseO__Fiche__01F34141" FromRole="PurchaseOrderDetail" ToRole="PurchaseOrder" />
           <NavigationProperty Name="SaleOrder" Relationship="IMEModel.FK__PurchaseO__SaleO__46D27B73" FromRole="PurchaseOrderDetail" ToRole="SaleOrder" />
         </EntityType>
         <EntityType Name="Quotation">
@@ -3313,18 +3324,18 @@
           <Property Name="Competitor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CustomerDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CustomerStockCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
-          <Property Name="UPIME" Type="Decimal" Nullable="false" Precision="20" Scale="5" />
-          <Property Name="Margin" Type="Decimal" Nullable="false" Precision="20" Scale="5" />
-          <Property Name="UnitOfMeasure" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="UnitContent" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="UPIME" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="Margin" Type="Decimal" Precision="20" Scale="5" />
+          <Property Name="UnitOfMeasure" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UnitContent" Type="Int32" />
           <Property Name="SSM" Type="Int32" />
           <Property Name="UnitWeight" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="SaleOrderNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="DependantTable" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DependantTable" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="ItemDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Hazardous" Type="Boolean" Nullable="false" />
-          <Property Name="Calibration" Type="Boolean" Nullable="false" />
+          <Property Name="Hazardous" Type="Boolean" />
+          <Property Name="Calibration" Type="Boolean" />
           <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="ItemCost" Type="Decimal" Precision="20" Scale="5" />
           <NavigationProperty Name="SaleOrder" Relationship="IMEModel.FK__SaleOrder__SaleO__3F3159AB" FromRole="SaleOrderDetail" ToRole="SaleOrder" />
@@ -3362,6 +3373,15 @@
           <Property Name="SectionID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="SectionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DiscountValues" Relationship="IMEModel.FK__DiscountV__Arcti__6D6238AF" FromRole="SlidingPrice" ToRole="DiscountValue" />
+        </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="StockID" />
+          </Key>
+          <Property Name="StockID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Quantitiy" Type="Int32" />
+          <Property Name="date" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="SuperDisk">
           <Key>
@@ -4315,7 +4335,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PurchaseO__Fiche__44EA3301">
+        <Association Name="FK__PurchaseO__Fiche__01F34141">
           <End Type="IMEModel.PurchaseOrder" Role="PurchaseOrder" Multiplicity="0..1" />
           <End Type="IMEModel.PurchaseOrderDetail" Role="PurchaseOrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -4635,7 +4655,7 @@
           <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -5072,11 +5092,11 @@
           <EntitySetMapping Name="PurchaseOrders">
             <EntityTypeMapping TypeName="IMEModel.PurchaseOrder">
               <MappingFragment StoreEntitySet="PurchaseOrder">
+                <ScalarProperty Name="FicheNo" ColumnName="FicheNo" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
                 <ScalarProperty Name="CameDate" ColumnName="CameDate" />
                 <ScalarProperty Name="PurchaseOrderDate" ColumnName="PurchaseOrderDate" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="FicheNo" ColumnName="FicheNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -5287,6 +5307,16 @@
                 <ScalarProperty Name="ItemTypeCode" ColumnName="ItemTypeCode" />
                 <ScalarProperty Name="ArticleDescription" ColumnName="ArticleDescription" />
                 <ScalarProperty Name="ArticleNo" ColumnName="ArticleNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stocks">
+            <EntityTypeMapping TypeName="IMEModel.Stock">
+              <MappingFragment StoreEntitySet="Stock">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="Quantitiy" ColumnName="Quantitiy" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="StockID" ColumnName="StockID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

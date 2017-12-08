@@ -68,6 +68,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<SaleOrder> SaleOrders { get; set; }
         public virtual DbSet<SaleOrderDetail> SaleOrderDetails { get; set; }
         public virtual DbSet<SlidingPrice> SlidingPrices { get; set; }
+        public virtual DbSet<Stock> Stocks { get; set; }
         public virtual DbSet<SuperDisk> SuperDisks { get; set; }
         public virtual DbSet<SuperDiskP> SuperDiskPs { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
@@ -87,6 +88,5 @@ namespace LoginForm.DataSet
         public virtual DbSet<VoucherType> VoucherTypes { get; set; }
         public virtual DbSet<VoucherTypeTax> VoucherTypeTaxes { get; set; }
         public virtual DbSet<Worker> Workers { get; set; }
-        public virtual DbSet<Stock> Stocks { get; set; }
     }
 }
