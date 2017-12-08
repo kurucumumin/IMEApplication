@@ -729,7 +729,38 @@ namespace LoginForm.nsSaleOrder
                 #endregion
                 #region Qty
                 case 14:
+                    DataGridViewRow row = dgSaleItems.CurrentRow;
+                    string itemCode = row.Cells["sItemCode"].Value.ToString();
+                    int Qty;
+                    decimal cost;
+                    decimal landingCost;
+                    int unitContent = Convert.ToInt32(row.Cells["sUC"].Value);
+                    if (row.Cells[e.ColumnIndex].Value.ToString() != null && row.Cells[e.ColumnIndex].Value.ToString() != "" && Int32.TryParse(dgSaleItems.CurrentCell.Value.ToString(), out Qty))
+                    {
+                        if (Qty % unitContent == 0)
+                        {
+                            if (txtStandartWeight.Text != null && txtStandartWeight.Text != "")
+                            {
+                                txtGrossWeight.Text = (Decimal.Parse(txtStandartWeight.Text) * Qty).ToString();
+                            }
 
+                            cost = classQuotationAdd.GetCost(itemCode, Qty);
+                            row.Cells["sCost"].Value = cost;
+
+                            if (cost != -1)
+                            {
+                                landingCost = classQuotationAdd.GetLandingCost(itemCode, true, true, true);
+                                landingCost = Decimal.Parse(String.Format("{0:0.0000}", landingCost));
+                                row.Cells["sLandingCost"].Value = landingCost;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please enter multiple of '" + row.Cells["sUC"].Value.ToString() + "'.","Attention");
+                        }
+
+                        
+                    }
 
                     break;
                     #endregion
