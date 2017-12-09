@@ -8,6 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net;
+using System.Net.Mail;
+using System.Timers;
+using System.Threading;
 
 namespace LoginForm.PurchaseOrder
 {
@@ -17,6 +21,11 @@ namespace LoginForm.PurchaseOrder
         List<DataGridViewRow> rowList = new List<DataGridViewRow>();
         List<Mail> MailList = new List<Mail>();
         string fiche = "";
+        SmtpClient sc = new SmtpClient();
+        MailMessage mail = new MailMessage();
+        List<string> ccList = new List<string>();
+        List<string> toList = new List<string>();
+
         public PurchaseExportFiles()
         {
             InitializeComponent();
@@ -62,13 +71,20 @@ namespace LoginForm.PurchaseOrder
 
         private void PurchaseExportFiles_Load(object sender, EventArgs e)
         {
-            // TODO: Bu kod satırı 'iMEDataSet2.Mail' tablosuna veri yükler. Bunu gerektiği şekilde taşıyabilir, veya kaldırabilirsiniz.
             IME = new IMEEntities();
-            //this.mailTableAdapter.Fill(IME.Mails);
             #region Filler
             ToFill();
             CCFill();
             txtDate.Text = DateTime.Now.ToString();
+            for (int i = 0; i < dgCc.RowCount; i++)
+            {
+                ccList.Add(dgCc.Rows[i].Cells[1].Value.ToString());
+            }
+
+            for (int i = 0; i < dgMail.RowCount; i++)
+            {
+                toList.Add(dgCc.Rows[i].Cells[1].Value.ToString());
+            }
             #endregion
         }
 
@@ -96,7 +112,7 @@ namespace LoginForm.PurchaseOrder
             IME.SaveChanges();
 
             po = IME.PurchaseOrders.Where(x => x.FicheNo == fiche).FirstOrDefault();
-            
+
             List<PurchaseOrderDetail> podList = new List<PurchaseOrderDetail>();
 
             foreach (DataGridViewRow row in rowList)
@@ -121,6 +137,44 @@ namespace LoginForm.PurchaseOrder
             IME.SaveChanges();
 
             MessageBox.Show("PuchaseOrders is successfully added", "Success");
+
+            #region SendMail
+
+            sc.Port = 587;
+            sc.Host = "smtp.gmail.com";
+            sc.EnableSsl = true;
+
+            sc.Credentials = new NetworkCredential("kurucumumin94@gmail.com", "6231962319+**");
+
+            mail.From = new MailAddress("kurucumumin94@gmail.com", "Mümin Kurucu");
+
+            int sayac = 0;
+
+            for (int i = 0; i < toList.Count; i++)
+            {
+                mail.To.Add(toList[i]);
+                sayac = sayac + 1;
+                Wait(sayac);
+            }
+            //sayac = 0;
+            for (int i = 0; i < ccList.Count; i++)
+            {
+                mail.CC.Add(ccList[i]);
+                sayac = sayac + 1;
+                Wait(sayac);
+            }
+            #endregion
+        }
+
+        private void Wait(int sayac)
+        {
+            if (sayac % 5 == 0)
+            {
+                Thread.Sleep(TimeSpan.FromSeconds(5));
+                mail.Subject = "TeamERP"; mail.IsBodyHtml = true; mail.Body = "IME programı test mail";
+                sc.Send(mail);
+                MessageBox.Show(sayac + " E-Mails successfully sent.", "Success !");
+            }
         }
     }
 }

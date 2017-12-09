@@ -304,9 +304,6 @@
     <Compile Include="DataSet\PrintFormat.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\PurchaseInvoice.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\PurchaseOrder.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -476,6 +473,7 @@
     <Compile Include="PurchaseInvoice\frmPurchaseInvoiceLoader.Designer.cs">
       <DependentUpon>frmPurchaseInvoiceLoader.cs</DependentUpon>
     </Compile>
+    <Compile Include="PurchaseOrder\ExcelPurchaseOrder.cs" />
     <Compile Include="PurchaseOrder\frmStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -582,12 +580,6 @@
     <Compile Include="SaleOrder\SalesOrderHelper.cs" />
     <Compile Include="Services\Messages.cs" />
     <Compile Include="Services\ToolTipService.cs" />
-    <Compile Include="ShipingDetails\ShipingDetailMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ShipingDetails\ShipingDetailMain.Designer.cs">
-      <DependentUpon>ShipingDetailMain.cs</DependentUpon>
-    </Compile>
     <Compile Include="User\FormUsersMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -766,9 +758,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\FormSaleItemSearch.resx">
       <DependentUpon>FormSaleItemSearch.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ShipingDetails\ShipingDetailMain.resx">
-      <DependentUpon>ShipingDetailMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\FormUsersMain.resx">
       <DependentUpon>FormUsersMain.cs</DependentUpon>

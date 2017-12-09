@@ -133,6 +133,35 @@ namespace LoginForm.PurchaseOrder
 
             connection.Close();//Açık olan Sql bağlantısı sonlandırılıyor      
             da.Dispose(); //SqlDataApter nesnesi dispose ediliyor
+
+            #region GridColumnAyarı
+            dgPurchase.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            dgPurchase.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            dgPurchase.Columns[1].HeaderText = "Customer Name";
+            dgPurchase.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgPurchase.Columns[2].HeaderText = "Quotation";
+            dgPurchase.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgPurchase.Columns[3].HeaderText = "Sale Orders";
+            dgPurchase.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
+            dgPurchase.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dgPurchase.Columns[5].HeaderText = "Description";
+            dgPurchase.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            dgPurchase.Columns[6].HeaderText = "Unit Of";
+            dgPurchase.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            dgPurchase.Columns[7].HeaderText = "Qty";
+            dgPurchase.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            dgPurchase.Columns[8].HeaderText = "HZ";
+            dgPurchase.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            dgPurchase.Columns[9].HeaderText = "CAL";
+            dgPurchase.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            dgPurchase.Columns[10].HeaderText = "Nature";
+            dgPurchase.Columns[11].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            dgPurchase.Columns[11].HeaderText = "Bill To";
+            dgPurchase.Columns[12].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            dgPurchase.Columns[12].HeaderText = "Ship To";
+            dgPurchase.Columns[13].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            dgPurchase.Columns[13].HeaderText = "Unit";
+            #endregion
         }
 
         private void NewPurchaseOrder_Load(object sender, EventArgs e)
@@ -140,31 +169,6 @@ namespace LoginForm.PurchaseOrder
             IMEEntities IME = new IMEEntities();
             purchasecode = IME.PurchaseOrders.OrderByDescending(q => q.FicheNo).FirstOrDefault().FicheNo;
             txtOrderNumber.Text = (Int32.Parse(purchasecode) + 1).ToString();
-            #region GridColumnAyarı
-            dgPurchase.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            dgPurchase.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            dgPurchase.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dgPurchase.Columns[2].HeaderText = "Quotation";
-            dgPurchase.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dgPurchase.Columns[3].HeaderText = "Sale Orders";
-            dgPurchase.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dgPurchase.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            dgPurchase.Columns[5].HeaderText = "Qty";
-            dgPurchase.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            dgPurchase.Columns[6].HeaderText = "Nature";
-            dgPurchase.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            dgPurchase.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgPurchase.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgPurchase.Columns[9].HeaderText = "Description";
-            dgPurchase.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            dgPurchase.Columns[10].HeaderText = "HZ";
-            dgPurchase.Columns[11].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            dgPurchase.Columns[11].HeaderText = "CAL";
-            dgPurchase.Columns[12].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgPurchase.Columns[12].HeaderText = "Unit Price";
-            dgPurchase.Columns[13].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgPurchase.Columns[13].HeaderText = "Unit";
-            #endregion
         }
 
         public void ViewPurchaseOrdersDetail(string ficheNo)
@@ -208,6 +212,42 @@ namespace LoginForm.PurchaseOrder
 
             connection.Close();//Açık olan Sql bağlantısı sonlandırılıyor      
             da.Dispose(); //SqlDataApter nesnesi dispose ediliyor
+
+            #region GridColumnAyarı
+            dgPurchase.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            dgPurchase.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            dgPurchase.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dgPurchase.Columns[2].HeaderText = "Quotation";
+            dgPurchase.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dgPurchase.Columns[3].HeaderText = "Sale Orders";
+            dgPurchase.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dgPurchase.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            dgPurchase.Columns[5].HeaderText = "Qty";
+            dgPurchase.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            dgPurchase.Columns[6].HeaderText = "Nature";
+            dgPurchase.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            dgPurchase.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgPurchase.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgPurchase.Columns[9].HeaderText = "Description";
+            dgPurchase.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            dgPurchase.Columns[10].HeaderText = "HZ";
+            dgPurchase.Columns[11].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            dgPurchase.Columns[11].HeaderText = "CAL";
+            dgPurchase.Columns[12].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgPurchase.Columns[12].HeaderText = "Unit Price";
+            dgPurchase.Columns[13].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dgPurchase.Columns[13].HeaderText = "Unit";
+            #endregion
+
+            dgPurchase.ReadOnly = true;
+            btnCreate.Enabled = false;
+            txtOrderNumber.Enabled = false;
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            string PurchaseNo = dgPurchase.CurrentRow.Cells[1].Value.ToString();
+            ExcelPurchaseOrder.Export(dgPurchase, PurchaseNo);
         }
     }
 }

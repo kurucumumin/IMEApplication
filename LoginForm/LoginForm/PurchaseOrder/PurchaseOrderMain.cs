@@ -147,5 +147,41 @@ namespace LoginForm.PurchaseOrder
                 MessageBox.Show("There is no such a data");
         }
 
+        private void radioAll_CheckedChanged(object sender, EventArgs e)
+        {
+            PurchaseOrderFill(DateTime.Today, DateTime.Today.AddDays(-7));
+        }
+
+        private void radioNotSent_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioPurchase(false);
+        }
+
+        private void radioSent_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioPurchase(true);
+        }
+
+        private void RadioPurchase(bool sayac)
+        {
+            IME = new IMEEntities();
+            var adapter = (from po in IME.PurchaseOrders.Where(po => po.Invoice != null && po.Invoice == sayac)
+                           select new
+                           {
+                               po.FicheNo,
+                               po.PurchaseOrderDate,
+                               po.CustomerID,
+                               po.Customer.c_name,
+                               po.CameDate,
+                               po.Reason
+                           }).ToList();
+            dgPurchase.DataSource = adapter;
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            string PurchaseNo = dgPurchase.CurrentRow.Cells[0].Value.ToString();
+            ExcelPurchaseOrder.Export(dgPurchase, PurchaseNo);
+        }
     }
 }
