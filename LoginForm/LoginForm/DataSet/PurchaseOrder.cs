@@ -25,6 +25,7 @@ namespace LoginForm.DataSet
         public Nullable<System.DateTime> CameDate { get; set; }
         public string Reason { get; set; }
         public string FicheNo { get; set; }
+        public Nullable<bool> Invoice { get; set; }
     
         public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

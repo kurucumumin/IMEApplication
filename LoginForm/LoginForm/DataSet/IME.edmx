@@ -418,6 +418,7 @@
           <Property Name="CameDate" Type="date" />
           <Property Name="Reason" Type="nvarchar" MaxLength="50" />
           <Property Name="FicheNo" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Invoice" Type="bit" />
         </EntityType>
         <EntityType Name="PurchaseOrderDetail">
           <Key>
@@ -3146,6 +3147,7 @@
           <Property Name="CameDate" Type="DateTime" Precision="0" />
           <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="FicheNo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Invoice" Type="Boolean" />
           <NavigationProperty Name="Customer" Relationship="IMEModel.FK__PurchaseO__Custo__420DC656" FromRole="PurchaseOrder" ToRole="Customer" />
           <NavigationProperty Name="PurchaseOrderDetails" Relationship="IMEModel.FK__PurchaseO__Fiche__01F34141" FromRole="PurchaseOrder" ToRole="PurchaseOrderDetail" />
         </EntityType>
@@ -5092,6 +5094,7 @@
           <EntitySetMapping Name="PurchaseOrders">
             <EntityTypeMapping TypeName="IMEModel.PurchaseOrder">
               <MappingFragment StoreEntitySet="PurchaseOrder">
+                <ScalarProperty Name="Invoice" ColumnName="Invoice" />
                 <ScalarProperty Name="FicheNo" ColumnName="FicheNo" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
                 <ScalarProperty Name="CameDate" ColumnName="CameDate" />
