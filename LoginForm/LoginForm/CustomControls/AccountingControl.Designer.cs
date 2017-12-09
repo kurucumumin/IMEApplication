@@ -39,6 +39,7 @@
             this.panel18 = new System.Windows.Forms.Panel();
             this.panel17 = new System.Windows.Forms.Panel();
             this.panel16 = new System.Windows.Forms.Panel();
+            this.btnArea = new System.Windows.Forms.Button();
             this.panel15 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.panel14 = new System.Windows.Forms.Panel();
@@ -66,7 +67,6 @@
             this.panel23 = new System.Windows.Forms.Panel();
             this.panel22 = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
-            this.btnArea = new System.Windows.Forms.Button();
             this.tableRightPanel.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel15.SuspendLayout();
@@ -220,6 +220,22 @@
             this.panel16.Name = "panel16";
             this.panel16.Size = new System.Drawing.Size(120, 91);
             this.panel16.TabIndex = 47;
+            // 
+            // btnArea
+            // 
+            this.btnArea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnArea.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnArea.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnArea.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
+            this.btnArea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnArea.Location = new System.Drawing.Point(0, 0);
+            this.btnArea.Name = "btnArea";
+            this.btnArea.Size = new System.Drawing.Size(120, 91);
+            this.btnArea.TabIndex = 31;
+            this.btnArea.Text = "Area";
+            this.btnArea.UseVisualStyleBackColor = false;
+            this.btnArea.Click += new System.EventHandler(this.btnArea_Click);
             // 
             // panel15
             // 
@@ -512,22 +528,6 @@
             this.panel21.Name = "panel21";
             this.panel21.Size = new System.Drawing.Size(120, 91);
             this.panel21.TabIndex = 52;
-            // 
-            // btnArea
-            // 
-            this.btnArea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
-            this.btnArea.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnArea.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnArea.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
-            this.btnArea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnArea.Location = new System.Drawing.Point(0, 0);
-            this.btnArea.Name = "btnArea";
-            this.btnArea.Size = new System.Drawing.Size(120, 91);
-            this.btnArea.TabIndex = 31;
-            this.btnArea.Text = "Area";
-            this.btnArea.UseVisualStyleBackColor = false;
-            this.btnArea.Click += new System.EventHandler(this.btnArea_Click);
             // 
             // AccountingControl
             // 

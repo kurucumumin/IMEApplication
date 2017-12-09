@@ -51,12 +51,13 @@ namespace LoginForm.QuotationModule
             this.Text = "Edit Quotation";
             modifyMod = true;
             InitializeComponent();
-            dtpDate.Value = (DateTime)q1.StartDate;
-            dtpDate.MaxDate = DateTime.Today.Date;
-            cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == dtpDate.Value).ToList();
+            
+            cbCurrency.DataSource = IME.Currencies.ToList();
             cbCurrency.DisplayMember = "currencyName";
             cbCurrency.ValueMember = "currencyID";
             cbCurrency.SelectedIndex = 0;
+            dtpDate.Value = (DateTime)q1.StartDate;
+            dtpDate.MaxDate = DateTime.Today.Date;
             cbPayment.DataSource = IME.PaymentMethods.ToList();
             cbPayment.DisplayMember = "Payment";
             cbPayment.ValueMember = "ID";
@@ -115,11 +116,12 @@ namespace LoginForm.QuotationModule
                 LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
                 lblVat.Text = Utils.getManagement().VAT.ToString();
                 #region ComboboxFiller.
-                dtpDate.Value = DateTime.Now;
+                
                 cbCurrency.DataSource = IME.Currencies.ToList();
                 cbCurrency.DisplayMember = "currencyName";
                 cbCurrency.ValueMember = "currencyID";
                 cbCurrency.SelectedIndex = 0;
+                dtpDate.Value = DateTime.Now;
                 cbPayment.DataSource = IME.PaymentMethods.ToList();
                 cbPayment.DisplayMember = "Payment";
                 cbPayment.ValueMember = "ID";
@@ -166,7 +168,7 @@ namespace LoginForm.QuotationModule
             if (c != null)
             {
                 txtCustomerName.Text = c.c_name;
-                cbCurrency.SelectedIndex = cbCurrency.FindStringExact(c.CurrNameQuo);
+                if(c.CurrNameQuo!=null) cbCurrency.SelectedValue = cbCurrency.FindStringExact(c.CurrNameQuo);
                 //cbCurrType.SelectedIndex = cbCurrType.FindStringExact(c.CurrTypeQuo);
                 //if(c.MainContactID!=null) cbWorkers.SelectedIndex = (int)c.MainContactID;
                 if (c.paymentmethodID != null)
@@ -807,8 +809,9 @@ namespace LoginForm.QuotationModule
         private void ItemDetailsFiller(string ArticleNoSearch)
         {
             #region Filler
-            Rate currWeb = new Rate();
-            currWeb = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList().Where(b => b.CurType == "GBP").FirstOrDefault();
+            ExchangeRate currWeb = new ExchangeRate();
+            decimal currID = (cbCurrency.SelectedItem as Currency).currencyID;
+            currWeb = IME.ExchangeRates.Where(a=>a.Currency.currencyID==currID).OrderByDescending(b=>b.date).FirstOrDefault();
             decimal CurrValueWeb = Decimal.Parse(curr.rate.ToString());
             string ArticleNoSearch1 = ArticleNoSearch;
             try { ArticleNoSearch1 = (Int32.Parse(ArticleNoSearch)).ToString(); } catch { }
@@ -1406,7 +1409,7 @@ namespace LoginForm.QuotationModule
             try { q.Factor = Decimal.Parse(cbFactor.Text); } catch { }
             try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
             q.PaymentID = (cbPayment.SelectedItem as PaymentMethod).ID;
-            q.CurrType = (cbCurrency.SelectedItem as Rate).CurType;
+            q.CurrName = (cbCurrency.SelectedItem as Currency).currencyName;
             //q.CurrType = cbCurrType.Text;
             q.Curr = CurrValue;
 
@@ -1938,7 +1941,7 @@ namespace LoginForm.QuotationModule
 
         private void GetCurrency(DateTime date)
         {
-            var cb = (cbCurrency.SelectedItem as Currency).currencyID;
+            decimal cb = (cbCurrency.SelectedItem as Currency).currencyID;
             curr = IME.ExchangeRates.Where(a => a.currencyId == cb).OrderByDescending(b => b.date).FirstOrDefault();
 
             if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;

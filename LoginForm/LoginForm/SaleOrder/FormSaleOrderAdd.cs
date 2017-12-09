@@ -48,6 +48,7 @@ namespace LoginForm.nsSaleOrder
 
         private void FormSaleOrderAdd_Load(object sender, EventArgs e)
         {
+            
             numFactor.Value = Utils.getManagement().Factor;
             PopulateList(addedItemList, dgSaleItems);
             PopulateList(removedItemList, dgSalesDeleted);
