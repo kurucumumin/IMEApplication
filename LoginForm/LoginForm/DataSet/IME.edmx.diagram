@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2472a57249b7436ea1222efa984c51e5" Name="Diagram1" ZoomLevel="93">
+      <Diagram DiagramId="2472a57249b7436ea1222efa984c51e5" Name="Diagram1" ZoomLevel="64">
         <EntityTypeShape EntityType="IMEModel.AccountGroup" Width="1.5" PointX="5.75" PointY="3.75" />
         <EntityTypeShape EntityType="IMEModel.AccountLedger" Width="1.5" PointX="8.75" PointY="3.75" />
         <EntityTypeShape EntityType="IMEModel.Area" Width="1.5" PointX="5.75" PointY="0.875" />
@@ -146,6 +146,8 @@
         <AssociationConnector Association="IMEModel.FK__VoucherTy__vouch__69279377" />
         <AssociationConnector Association="IMEModel.AuthRole" />
         <AssociationConnector Association="IMEModel.UserAuthorization" />
+        <EntityTypeShape EntityType="IMEModel.PurchaseInvoice" Width="1.5" PointX="20.375" PointY="3.75" />
+        <EntityTypeShape EntityType="IMEModel.Stock" Width="1.5" PointX="20.375" PointY="12.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

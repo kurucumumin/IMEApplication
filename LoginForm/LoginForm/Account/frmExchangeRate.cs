@@ -85,8 +85,9 @@ namespace LoginForm
         /// </summary>
         public void Editfunction()
         {
-            ExchangeRate er = IME.ExchangeRates.Where(a => a.date == Convert.ToDateTime(txtDate.Text.Trim().ToString())).
-                    Where(b => b.currencyId == Convert.ToDecimal(cmbCurrency.SelectedValue.ToString())).FirstOrDefault();
+            decimal currencyID = Convert.ToDecimal(cmbCurrency.SelectedValue.ToString());
+            ExchangeRate er = IME.ExchangeRates.Where(a => a.date == dtpDate.Value).
+                    Where(b => b.currencyId == currencyID).FirstOrDefault();
 
             if (er != null)
             {
