@@ -147,8 +147,9 @@
         <AssociationConnector Association="IMEModel.FK__VoucherTy__vouch__69279377" />
         <AssociationConnector Association="IMEModel.AuthRole" />
         <AssociationConnector Association="IMEModel.UserAuthorization" />
-        <EntityTypeShape EntityType="IMEModel.PurchaseInvoice" Width="1.5" PointX="20.375" PointY="3.75" />
-        <EntityTypeShape EntityType="IMEModel.Stock" Width="1.5" PointX="20.375" PointY="12.75" />
+        <EntityTypeShape EntityType="IMEModel.PurchaseInvoiceDetail" Width="1.5" PointX="19.375" PointY="3.75" />
+        <EntityTypeShape EntityType="IMEModel.PurchaseInvoice" Width="1.5" PointX="17.125" PointY="47.5" />
+        <AssociationConnector Association="IMEModel.FK__PurchaseI__Purch__7A521F79" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

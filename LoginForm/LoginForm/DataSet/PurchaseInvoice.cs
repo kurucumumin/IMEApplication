@@ -14,6 +14,12 @@ namespace LoginForm.DataSet
     
     public partial class PurchaseInvoice
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PurchaseInvoice()
+        {
+            this.PurchaseInvoiceDetails = new HashSet<PurchaseInvoiceDetail>();
+        }
+    
         public int ID { get; set; }
         public string CountryCode { get; set; }
         public string OrderDate { get; set; }
@@ -34,22 +40,10 @@ namespace LoginForm.DataSet
         public string ConditionText { get; set; }
         public string ConditionValueN { get; set; }
         public string LineControl { get; set; }
-        public string PurchaseOrderNumber { get; set; }
-        public string PurchaseOrderItemNumber { get; set; }
-        public string ProductNumber { get; set; }
-        public string BillingItemNumber { get; set; }
-        public string Quantity { get; set; }
-        public string SalesUnit { get; set; }
-        public string UnitPrice { get; set; }
-        public string Discount { get; set; }
-        public string Tax { get; set; }
-        public string GoodsValue { get; set; }
-        public string Amount { get; set; }
-        public string CCCNno { get; set; }
-        public string CountryofOrigin { get; set; }
-        public string ArticleDescription { get; set; }
-        public string DeliveryNumber { get; set; }
-        public string DeliveryItemNumber { get; set; }
         public string LineControl2 { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseInvoiceDetail> PurchaseInvoiceDetails { get; set; }
     }
 }

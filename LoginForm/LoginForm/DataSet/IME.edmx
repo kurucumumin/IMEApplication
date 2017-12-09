@@ -409,15 +409,66 @@
           <Property Name="condensed" Type="varchar(max)" />
           <Property Name="lineCountAfterPrint" Type="int" />
         </EntityType>
+        <EntityType Name="PurchaseInvoice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryCode" Type="nvarchar" MaxLength="3" />
+          <Property Name="OrderDate" Type="nvarchar" MaxLength="10" />
+          <Property Name="OrderTime" Type="nvarchar" MaxLength="5" />
+          <Property Name="ShipmentReference" Type="nvarchar" MaxLength="10" />
+          <Property Name="BillingDocumentReference" Type="nvarchar" MaxLength="10" />
+          <Property Name="ShippingCondition" Type="nvarchar" MaxLength="2" />
+          <Property Name="BillingDocumentDate" Type="nvarchar" MaxLength="8" />
+          <Property Name="SupplyingECCompany" Type="nvarchar" MaxLength="4" />
+          <Property Name="CustomerReference" Type="nvarchar" MaxLength="10" />
+          <Property Name="InvoiceTaxValue" Type="nvarchar" MaxLength="18" />
+          <Property Name="InvoiceGoodsValue" Type="nvarchar" MaxLength="18" />
+          <Property Name="InvoiceNettValue" Type="nvarchar" MaxLength="18" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="3" />
+          <Property Name="AirwayBillNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="Surchargeordiscountindicator" Type="nvarchar" MaxLength="3" />
+          <Property Name="ConditionType" Type="nvarchar" MaxLength="4" />
+          <Property Name="ConditionText" Type="nvarchar" MaxLength="80" />
+          <Property Name="ConditionValueN" Type="nvarchar" MaxLength="18" />
+          <Property Name="LineControl" Type="nvarchar" MaxLength="4" />
+          <Property Name="LineControl2" Type="nvarchar" MaxLength="4" />
+          <Property Name="date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PurchaseInvoiceDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PurchaseInvoiceID" Type="int" />
+          <Property Name="purchseInvoiceLineNumber" Type="int" />
+          <Property Name="PurchaseOrderNumber" Type="nvarchar" MaxLength="30" />
+          <Property Name="PurchaseOrderItemNumber" Type="nvarchar" MaxLength="6" />
+          <Property Name="ProductNumber" Type="nvarchar" MaxLength="18" />
+          <Property Name="BillingItemNumber" Type="nvarchar" MaxLength="6" />
+          <Property Name="Quantity" Type="nvarchar" MaxLength="15" />
+          <Property Name="SalesUnit" Type="nvarchar" MaxLength="3" />
+          <Property Name="UnitPrice" Type="nvarchar" MaxLength="11" />
+          <Property Name="Discount" Type="nvarchar" MaxLength="11" />
+          <Property Name="Tax" Type="nvarchar" MaxLength="11" />
+          <Property Name="GoodsValue" Type="nvarchar" MaxLength="11" />
+          <Property Name="Amount" Type="nvarchar" MaxLength="11" />
+          <Property Name="CCCNno" Type="nvarchar" MaxLength="15" />
+          <Property Name="CountryofOrigin" Type="nvarchar" MaxLength="3" />
+          <Property Name="ArticleDescription" Type="nvarchar" MaxLength="40" />
+          <Property Name="DeliveryNumber" Type="nvarchar" MaxLength="10" />
+          <Property Name="DeliveryItemNumber" Type="nvarchar" MaxLength="6" />
+        </EntityType>
         <EntityType Name="PurchaseOrder">
           <Key>
             <PropertyRef Name="FicheNo" />
           </Key>
+          <Property Name="FicheNo" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="CustomerID" Type="nvarchar" MaxLength="15" />
           <Property Name="PurchaseOrderDate" Type="date" />
           <Property Name="CameDate" Type="date" />
           <Property Name="Reason" Type="nvarchar" MaxLength="50" />
-          <Property Name="FicheNo" Type="nvarchar" MaxLength="15" Nullable="false" />
         </EntityType>
         <EntityType Name="PurchaseOrderDetail">
           <Key>
@@ -1255,6 +1306,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PurchaseI__Purch__7A521F79">
+          <End Role="PurchaseInvoice" Type="Self.PurchaseInvoice" Multiplicity="0..1" />
+          <End Role="PurchaseInvoiceDetails" Type="Self.PurchaseInvoiceDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseInvoice">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PurchaseInvoiceDetails">
+              <PropertyRef Name="PurchaseInvoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PurchaseO__Custo__420DC656">
           <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
           <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
@@ -1267,7 +1330,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PurchaseO__Fiche__01F34141">
+        <Association Name="FK__PurchaseO__Fiche__44EA3301">
           <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
           <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1925,6 +1988,8 @@
           <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentTerm" EntityType="Self.PaymentTerm" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PrintFormat" EntityType="Self.PrintFormat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseInvoice" EntityType="Self.PurchaseInvoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseInvoiceDetails" EntityType="Self.PurchaseInvoiceDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PurchaseOrder" EntityType="Self.PurchaseOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PurchaseOrderDetail" EntityType="Self.PurchaseOrderDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Quotation" EntityType="Self.Quotation" Schema="dbo" store:Type="Tables" />
@@ -2069,11 +2134,15 @@
             <End Role="Notes" EntitySet="Notes" />
             <End Role="ItemNote" EntitySet="ItemNote" />
           </AssociationSet>
+          <AssociationSet Name="FK__PurchaseI__Purch__7A521F79" Association="Self.FK__PurchaseI__Purch__7A521F79">
+            <End Role="PurchaseInvoice" EntitySet="PurchaseInvoice" />
+            <End Role="PurchaseInvoiceDetails" EntitySet="PurchaseInvoiceDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK__PurchaseO__Custo__420DC656" Association="Self.FK__PurchaseO__Custo__420DC656">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK__PurchaseO__Fiche__01F34141" Association="Self.FK__PurchaseO__Fiche__01F34141">
+          <AssociationSet Name="FK__PurchaseO__Fiche__44EA3301" Association="Self.FK__PurchaseO__Fiche__44EA3301">
             <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
             <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
           </AssociationSet>
@@ -2665,6 +2734,12 @@
           <AssociationSet Name="UserAuthorization" Association="IMEModel.UserAuthorization">
             <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
             <End Role="Worker" EntitySet="Workers" />
+          </AssociationSet>
+          <EntitySet Name="PurchaseInvoiceDetails" EntityType="IMEModel.PurchaseInvoiceDetail" />
+          <EntitySet Name="PurchaseInvoices" EntityType="IMEModel.PurchaseInvoice" />
+          <AssociationSet Name="FK__PurchaseI__Purch__7A521F79" Association="IMEModel.FK__PurchaseI__Purch__7A521F79">
+            <End Role="PurchaseInvoice" EntitySet="PurchaseInvoices" />
+            <End Role="PurchaseInvoiceDetail" EntitySet="PurchaseInvoiceDetails" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AccountGroup">
@@ -4655,6 +4730,71 @@
           <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
         </Association>
+        <EntityType Name="PurchaseInvoiceDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PurchaseInvoiceID" Type="Int32" />
+          <Property Name="purchseInvoiceLineNumber" Type="Int32" />
+          <Property Name="PurchaseOrderNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="PurchaseOrderItemNumber" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="ProductNumber" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="BillingItemNumber" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="SalesUnit" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="UnitPrice" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Discount" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Tax" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="GoodsValue" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Amount" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="CCCNno" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CountryofOrigin" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="ArticleDescription" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DeliveryItemNumber" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PurchaseInvoice" Relationship="IMEModel.FK__PurchaseI__Purch__7A521F79" FromRole="PurchaseInvoiceDetail" ToRole="PurchaseInvoice" />
+        </EntityType>
+        <EntityType Name="PurchaseInvoice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="OrderDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="OrderTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="ShipmentReference" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BillingDocumentReference" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ShippingCondition" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="BillingDocumentDate" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="SupplyingECCompany" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerReference" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceTaxValue" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceGoodsValue" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceNettValue" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="Currency" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="AirwayBillNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Surchargeordiscountindicator" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="ConditionType" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="ConditionText" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="ConditionValueN" Type="String" MaxLength="18" FixedLength="false" Unicode="true" />
+          <Property Name="LineControl" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="LineControl2" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PurchaseInvoiceDetails" Relationship="IMEModel.FK__PurchaseI__Purch__7A521F79" FromRole="PurchaseInvoice" ToRole="PurchaseInvoiceDetail" />
+        </EntityType>
+        <Association Name="FK__PurchaseI__Purch__7A521F79">
+          <End Type="IMEModel.PurchaseInvoice" Role="PurchaseInvoice" Multiplicity="0..1" />
+          <End Type="IMEModel.PurchaseInvoiceDetail" Role="PurchaseInvoiceDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseInvoice">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PurchaseInvoiceDetail">
+              <PropertyRef Name="PurchaseInvoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5638,6 +5778,59 @@
               <ScalarProperty Name="AuthorizationID" ColumnName="AuthorizationID" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="PurchaseInvoiceDetails">
+            <EntityTypeMapping TypeName="IMEModel.PurchaseInvoiceDetail">
+              <MappingFragment StoreEntitySet="PurchaseInvoiceDetails">
+                <ScalarProperty Name="DeliveryItemNumber" ColumnName="DeliveryItemNumber" />
+                <ScalarProperty Name="DeliveryNumber" ColumnName="DeliveryNumber" />
+                <ScalarProperty Name="ArticleDescription" ColumnName="ArticleDescription" />
+                <ScalarProperty Name="CountryofOrigin" ColumnName="CountryofOrigin" />
+                <ScalarProperty Name="CCCNno" ColumnName="CCCNno" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="GoodsValue" ColumnName="GoodsValue" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="SalesUnit" ColumnName="SalesUnit" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="BillingItemNumber" ColumnName="BillingItemNumber" />
+                <ScalarProperty Name="ProductNumber" ColumnName="ProductNumber" />
+                <ScalarProperty Name="PurchaseOrderItemNumber" ColumnName="PurchaseOrderItemNumber" />
+                <ScalarProperty Name="PurchaseOrderNumber" ColumnName="PurchaseOrderNumber" />
+                <ScalarProperty Name="purchseInvoiceLineNumber" ColumnName="purchseInvoiceLineNumber" />
+                <ScalarProperty Name="PurchaseInvoiceID" ColumnName="PurchaseInvoiceID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseInvoices">
+            <EntityTypeMapping TypeName="IMEModel.PurchaseInvoice">
+              <MappingFragment StoreEntitySet="PurchaseInvoice">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="LineControl2" ColumnName="LineControl2" />
+                <ScalarProperty Name="LineControl" ColumnName="LineControl" />
+                <ScalarProperty Name="ConditionValueN" ColumnName="ConditionValueN" />
+                <ScalarProperty Name="ConditionText" ColumnName="ConditionText" />
+                <ScalarProperty Name="ConditionType" ColumnName="ConditionType" />
+                <ScalarProperty Name="Surchargeordiscountindicator" ColumnName="Surchargeordiscountindicator" />
+                <ScalarProperty Name="AirwayBillNumber" ColumnName="AirwayBillNumber" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="InvoiceNettValue" ColumnName="InvoiceNettValue" />
+                <ScalarProperty Name="InvoiceGoodsValue" ColumnName="InvoiceGoodsValue" />
+                <ScalarProperty Name="InvoiceTaxValue" ColumnName="InvoiceTaxValue" />
+                <ScalarProperty Name="CustomerReference" ColumnName="CustomerReference" />
+                <ScalarProperty Name="SupplyingECCompany" ColumnName="SupplyingECCompany" />
+                <ScalarProperty Name="BillingDocumentDate" ColumnName="BillingDocumentDate" />
+                <ScalarProperty Name="ShippingCondition" ColumnName="ShippingCondition" />
+                <ScalarProperty Name="BillingDocumentReference" ColumnName="BillingDocumentReference" />
+                <ScalarProperty Name="ShipmentReference" ColumnName="ShipmentReference" />
+                <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

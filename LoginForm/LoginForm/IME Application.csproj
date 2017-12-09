@@ -12,7 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\PC\Desktop\IMEApplication_01.12.17\</PublishUrl>
+    <PublishUrl>C:\Users\PC\Documents\IMEApplication\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>17</ApplicationRevision>
+    <ApplicationRevision>28</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -307,6 +307,9 @@
     <Compile Include="DataSet\PurchaseInvoice.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PurchaseInvoiceDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PurchaseOrder.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -470,10 +473,10 @@
     <Compile Include="Model\SaleItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PurchaseInvoice\frmPurchaseInvoiceLoader.cs">
+    <Compile Include="ModulePurchaseInvoice\frmPurchaseInvoiceLoader.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PurchaseInvoice\frmPurchaseInvoiceLoader.Designer.cs">
+    <Compile Include="ModulePurchaseInvoice\frmPurchaseInvoiceLoader.Designer.cs">
       <DependentUpon>frmPurchaseInvoiceLoader.cs</DependentUpon>
     </Compile>
     <Compile Include="PurchaseOrder\frmStock.cs">
@@ -707,7 +710,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="PurchaseInvoice\frmPurchaseInvoiceLoader.resx">
+    <EmbeddedResource Include="ModulePurchaseInvoice\frmPurchaseInvoiceLoader.resx">
       <DependentUpon>frmPurchaseInvoiceLoader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PurchaseOrder\frmStock.resx">

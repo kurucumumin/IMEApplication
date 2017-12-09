@@ -12,19 +12,19 @@ namespace LoginForm.DataSet
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
+    
     public partial class IMEEntities : DbContext
     {
         public IMEEntities()
             : base("name=IMEEntities")
         {
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
         public virtual DbSet<AccountGroup> AccountGroups { get; set; }
         public virtual DbSet<AccountLedger> AccountLedgers { get; set; }
         public virtual DbSet<Area> Areas { get; set; }
@@ -88,5 +88,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<VoucherType> VoucherTypes { get; set; }
         public virtual DbSet<VoucherTypeTax> VoucherTypeTaxes { get; set; }
         public virtual DbSet<Worker> Workers { get; set; }
+        public virtual DbSet<PurchaseInvoiceDetail> PurchaseInvoiceDetails { get; set; }
+        public virtual DbSet<PurchaseInvoice> PurchaseInvoices { get; set; }
     }
 }
