@@ -2,7 +2,6 @@
 using LoginForm.nsSaleOrder;
 using LoginForm.PurchaseOrder;
 using LoginForm.QuotationModule;
-using LoginForm.ShipingDetails;
 using LoginForm.User;
 using System;
 using System.Windows.Forms;
