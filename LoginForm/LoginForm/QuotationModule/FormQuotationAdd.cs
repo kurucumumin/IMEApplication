@@ -469,76 +469,133 @@ namespace LoginForm.QuotationModule
                     GetLandingCost(rowindex);
                     //  dgQuotationAddedItems.Rows[rowindex].Cells["dgLandingCost"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgLandingCost"].Value.ToString())).ToString();
                     dgQuotationAddedItems.Rows[rowindex].Cells["dgLandingCost"].Value = Math.Round(Convert.ToDecimal(dgQuotationAddedItems.Rows[rowindex].Cells["dgLandingCost"].Value.ToString()), 4);
-                    price = Decimal.Parse((classQuotationAdd.GetPrice(dgQuotationAddedItems.Rows[rowindex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())) * Decimal.Parse(cbFactor.Text) * Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString("G29"));
+                    decimal Currrate = 0;
+                    if (curr.rate != null) Currrate = Decimal.Parse(curr.rate.ToString());
+                    price = Decimal.Parse((classQuotationAdd.GetPrice(dgQuotationAddedItems.Rows[rowindex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())) * Decimal.Parse(cbFactor.Text)/ Currrate * Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString("G29"));
                     //price /= factor;
                     if (price > 0)
                     {
                         decimal discResult = 0;
                         //Fiyat burada
                         string articleNo = dgQuotationAddedItems.Rows[rowindex].Cells["dgProductCode"].Value.ToString();
-                        int isP = 0;
-                        if (articleNo.ToUpper().IndexOf('P') != -1) { isP = 1; }
 
-                        if (isP == 1)
+
+                        dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = price / decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString());
+                        dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = price;
+                        //SuperdiskP değilse
+                        if (articleNo.ToUpper().IndexOf('P')==-1&& Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString()) > 1)
                         {
-                            if (IME.SuperDiskPs.Where(a => a.Article_No == articleNo).ToList().Count > 0)
+                            if ((Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString()) % Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString())) != 0)
                             {
-                                if (IME.SuperDiskPs.Where(a => a.Article_No == articleNo).FirstOrDefault().Pack_Quantity > 1)
-                                {
-
-
-                                    if (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgSSM"].Value.ToString()) > 1 && Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString()) == 1)
-                                    {
-                                        if ((Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString()) % Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgSSM"].Value.ToString())) != 0)
-                                        {
-                                            MessageBox.Show("Please enter a number that is a multiple of SSM");
-                                            dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value = "";
-
-                                        }
-                                        else
-                                        {
-                                            price = price / decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString());
-                                            dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = price / decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString());
-                                            dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = price;
-                                        }
-                                    }
-                                }
-
+                                MessageBox.Show("Please enter a number that is a multiple of Unit Content");
+                                dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value = "";
+                                dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = "";
+                                dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = "";
                             }
+                            else
+                            {
+                                dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value.ToString()) / (decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString()));
+                                dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = price / (decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString()));
+                            }
+
                         }
-                        else
+                        else if ((Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString()) % Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgSSM"].Value.ToString())) != 0)
                         {
-
-                            if (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString()) > 1 && Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgSSM"].Value.ToString()) == 1)
-                            {
-                                int resultMod = (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString()) % Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString()));
-                                if ((resultMod != 0) || (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())) < Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString()))
-                                {
-                                    MessageBox.Show("Please enter a number that is a multiple of Unit Content");
-                                    dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value = "";
-                                }
-                                else
-                                {
-                                    price = price / decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString());
-                                    dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = price / decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString());
-                                    dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = price;
-                                }
-                            }
+                            MessageBox.Show("Please enter a number that is a multiple of SSM");
+                            dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value = "";
+                            dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = "";
+                            dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = "";
                         }
+
+
+
+
+                        //if (isP == 1)
+                        //{
+                        //    if (IME.SuperDiskPs.Where(a => a.Article_No == articleNo).ToList().Count > 0)
+                        //    {
+                        //        if (IME.SuperDiskPs.Where(a => a.Article_No == articleNo).FirstOrDefault().Pack_Quantity > 1)
+                        //        {
+
+
+
+                        //        }else
+                        //        {
+                        //            if (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgSSM"].Value.ToString()) > 1 && Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString()) == 1)
+                        //            {
+                        //                if ((Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString()) % Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgSSM"].Value.ToString())) != 0)
+                        //                {
+                        //                    MessageBox.Show("Please enter a number that is a multiple of SSM");
+                        //                    dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value = "";
+
+                        //                }
+                        //                else
+                        //                {
+                        //                    //price = price / decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString());
+                        //                    dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = price / decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString());
+                        //                    dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = price;
+                        //                }
+                        //            }
+
+                        //        }
+
+                        //    }
+                        //}
+                        //else
+                        //{
+
+                        //    if (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString()) > 1 && Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgSSM"].Value.ToString()) == 1)
+                        //    {
+                        //        int resultMod = (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString()) % Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString()));
+                        //        if ((resultMod != 0) || (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())) < Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString()))
+                        //        {
+                        //            MessageBox.Show("Please enter a number that is a multiple of Unit Content");
+                        //            dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value = "";
+                        //        }
+                        //        else
+                        //        {
+                        //            dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = price;
+                        //            price = price / decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString());
+                        //            dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = price / decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString());
+
+                        //        }
+                        //    }
+                        //}
 
                         //TOTAL ve UPIME belirleniyor
-                        //dataGridView3.Rows[rowindex].Cells["dgUPIME"].Value = (price / Int32.Parse(dataGridView3.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
-                        dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = (price / Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
                         discResult = decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value.ToString());
                         dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value.ToString())).ToString();
-                        dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = String.Format("{0:0.0000}", price).ToString();
+                        dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = String.Format("{0:0.0000}", dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value).ToString();
                         if (dgQuotationAddedItems.Rows[rowindex].Cells["dgDisc"].Value != null)
                         {
                             dgQuotationAddedItems.Rows[rowindex].Cells["dgDisc"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgDisc"].Value.ToString())).ToString();
                             discResult = (discResult - (discResult * decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgDisc"].Value.ToString()) / 100));
                         }
                         dgQuotationAddedItems.Rows[rowindex].Cells["dgUCUPCurr"].Value = String.Format("{0:0.0000}", discResult).ToString();
-                        ChangeCurr(rowindex);
+
+                        //Change lblsubtotal
+                        var st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
+                        if (st != null)
+                        {
+                            lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - st.Item2).ToString();
+                            SubTotal.Remove(st);
+
+                            int subtotalcol1 = 0;
+                            if (dgQuotationAddedItems.Rows[rowindex].Cells[0].Value != null) subtotalcol1 = Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString());
+                            SubTotal.Add(new Tuple<int, decimal>(subtotalcol1, Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())));
+                            st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
+                            lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + st.Item2).ToString();
+                        }
+                        else
+                        {
+                            int subtotalcol1 = 0;
+                            if (dgQuotationAddedItems.Rows[rowindex].Cells[0].Value != null) subtotalcol1 = Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString());
+                            SubTotal.Add(new Tuple<int, decimal>(subtotalcol1, Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())));
+                            st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
+                            lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + st.Item2).ToString();
+                        }
+
+                        //ChangeCurr(rowindex);
                         if (dgQuotationAddedItems.CurrentCell == null) dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[rowindex].Cells[0];
                         GetMargin();
                         dgQuotationAddedItems.Rows[rowindex].Cells["dgMargin"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgMargin"].Value.ToString())).ToString();
@@ -594,7 +651,16 @@ namespace LoginForm.QuotationModule
             {
                 if (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString()) > 1 || Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgSSM"].Value.ToString()) > 1)
                 {
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value = (((1 - ((Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString())))))) * 100).ToString("G29");
+                    if(Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString()) > 1 && (!(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString().Contains("P"))))
+                    {
+                        dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value = (((1 - (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString())*   decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString())  )))) * 100).ToString("G29");
+                    }
+                    else
+                    {
+                        dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value = (((1 - (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
+
+                    }
+                    //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value = (((1 - (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
                     if (SubTotal.Where(a => a.Item1 == Int32.Parse(dgQuotationAddedItems.CurrentRow.Cells[0].Value.ToString())).FirstOrDefault() != null)
                     {
                         var st = SubTotal.Where(a => a.Item1 == Int32.Parse(dgQuotationAddedItems.CurrentRow.Cells[0].Value.ToString())).FirstOrDefault();
@@ -625,7 +691,15 @@ namespace LoginForm.QuotationModule
                 {
                     if (dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value != null)
                     {
-                        dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
+                        if (Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUC"].Value.ToString()) > 1 && (!(dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString().Contains("P"))))
+                        {
+                            dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value = (((1 - (Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()) * decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUC"].Value.ToString()))))) * 100).ToString("G29");
+                        }
+                        else
+                        {
+                            dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value = (((1 - (Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
+
+                        }
                     }
                     if (SubTotal.Where(a => a.Item1 == Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString())).FirstOrDefault() != null)
                     {
@@ -1082,34 +1156,7 @@ namespace LoginForm.QuotationModule
             try { ItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString()); } catch { }
         }
 
-        private void cbFactor_TextChanged(object sender, EventArgs e)
-        {
-            #region Faktör Değişimi
-            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
-            {
-                bool isHZ = false;
-                if (dgQuotationAddedItems.Rows[i].Cells["HS"].Style.BackColor == Color.Red)
-                {
-                    isHZ = true;
-                }
-                else if (dgQuotationAddedItems.Rows[i].Cells["LI"].Style.BackColor == Color.Ivory)
-                {
-                    isHZ = true;
-                }
-                //else if ()//HE için
-                //{
-                    //isHZ = true;
-                //}
-                if (!isHZ)
-                {
-                GetQuotationQuantity(i);
-                GetLandingCost(i);
-                }
-            }
-            #endregion
-
-            GetAllMargin();
-        }
+        
 
         private void GetLandingCost(int Rowindex)
         {
@@ -1904,6 +1951,7 @@ namespace LoginForm.QuotationModule
             {
                 GetCurrency(dtpDate.Value);
                 ChangeCurr();
+
             }
 
         }
@@ -1942,7 +1990,7 @@ namespace LoginForm.QuotationModule
 
         private string GetCurrencySign()
         {
-            return curr.Currency.currencySymbol;
+            return curr.Currency?.currencySymbol;
         }
 
         private void ChangeCurr()
@@ -2644,6 +2692,36 @@ namespace LoginForm.QuotationModule
                     }
                 }
             }
+        }
+
+        private void cbFactor_Leave(object sender, EventArgs e)
+        {
+            #region Faktör Değişimi
+            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+            {
+                bool isHZ = false;
+                if (dgQuotationAddedItems.Rows[i].Cells["HS"].Style.BackColor == Color.Red)
+                {
+                    isHZ = true;
+                }
+                else if (dgQuotationAddedItems.Rows[i].Cells["LI"].Style.BackColor == Color.Ivory)
+                {
+                    isHZ = true;
+                }
+                //else if ()//HE için
+                //{
+                //isHZ = true;
+                //}
+                if (!isHZ)
+                {
+                    GetLandingCost(i);
+                    GetQuotationQuantity(i);
+
+                }
+            }
+            #endregion
+
+            GetAllMargin();
         }
     }
 }

@@ -210,7 +210,7 @@ namespace LoginForm.QuotationModule
             IMEEntities IME = new IMEEntities();
             SlidingPrice sp = IME.SlidingPrices.Where(a => a.ArticleNo == ArticleNo).FirstOrDefault();
             ExtendedRange er = IME.ExtendedRanges.Where(a => a.ArticleNo == ArticleNo).FirstOrDefault();
-            decimal result;
+            decimal result=-1;
             try
             {
                 //FOR TURKEY
@@ -231,8 +231,14 @@ namespace LoginForm.QuotationModule
                 //    return result = Decimal.Parse(sp.Col4Price.ToString());
                 //}
                 //else if (sp.DiscountedPrice4 != 0) { return result = Decimal.Parse(sp.Col5Price.ToString()); }
-
-                return result = Decimal.Parse(sp.Col1Price.ToString()); // FOR DUBAI
+                if (sp!=null)
+                {
+                    result = Decimal.Parse(sp.Col1Price.ToString());
+                }else if (er!=null)
+                {
+                    result = Decimal.Parse(er.Col1Price.ToString());
+                }
+                return result; // FOR DUBAI
             }
             catch { }
             if(er!=null)return result= Decimal.Parse(er.Col1Price.ToString()); // FOR DUBAI

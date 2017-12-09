@@ -42,9 +42,57 @@ namespace LoginForm
                     wordcontrol = lines[1].Split('|');
                     if (!wordcontrol[0].Contains("P"))
                     {
+                        bool isArrayTrue = true;
+                        if (columnnames[0] != "Article_No") isArrayTrue = false;
+                        if (columnnames[0] != "Article_Desc") isArrayTrue = false;
+                        if (columnnames[0] != "Pack_Code") isArrayTrue = false;
+                        if (columnnames[0] != "Pack_Quantity") isArrayTrue = false;
+                        if (columnnames[0] != "Unit_Content") isArrayTrue = false;
+                        if (columnnames[0] != "Unit_Measure") isArrayTrue = false;
+                        if (columnnames[0] != "Uk_Col_1") isArrayTrue = false;
+                        if (columnnames[0] != "Standard_Weight") isArrayTrue = false;
+                        if (columnnames[0] != "Hazardous_Ind") isArrayTrue = false;
+                        if (columnnames[0] != "Calibration_Ind") isArrayTrue = false;
+                        if (columnnames[0] != "Obsolete_Flag") isArrayTrue = false;
+                        if (columnnames[0] != "MH1") isArrayTrue = false;
+                        if (columnnames[0] != "Low_Discount_Ind") isArrayTrue = false;
+                        if (columnnames[0] != "Licensed_Ind") isArrayTrue = false;
+                        if (columnnames[0] != "Shelf_Life") isArrayTrue = false;
+                        if (columnnames[0] != "CofO") isArrayTrue = false;
+                        if (columnnames[0] != "EUR1_Indicator") isArrayTrue = false;
+                        if (columnnames[0] != "CCCN_No") isArrayTrue = false;
+                        if (columnnames[0] != "Supercede_Date") isArrayTrue = false;
+                        if (columnnames[0] != "Current_Cat_page") isArrayTrue = false;
+                        if (columnnames[0] != "Uk_Intro_Date") isArrayTrue = false;
+                        if (columnnames[0] != "Filler") isArrayTrue = false;
+                        if (columnnames[0] != "Uk_Disc_Date") isArrayTrue = false;
+                        if (columnnames[0] != "Substitute_By") isArrayTrue = false;
+                        if (columnnames[0] != "BHC_Flag") isArrayTrue = false;
+                        if (columnnames[0] != "Filler1") isArrayTrue = false;
+                        if (columnnames[0] != "Future_Sell_Price") isArrayTrue = false;
+                        if (columnnames[0] != "Int_Cat") isArrayTrue = false;
+                        if (columnnames[0] != "New_Prod_Change_Ind") isArrayTrue = false;
+                        if (columnnames[0] != "Out_of_Stock_Prohibit_change_ind") isArrayTrue = false;
+                        if (columnnames[0] != "Disc_Change_Ind") isArrayTrue = false;
+                        if (columnnames[0] != "Superceded_Change_Ind") isArrayTrue = false;
+                        if (columnnames[0] != "Pack_Size_Change_Ind") isArrayTrue = false;
+                        if (columnnames[0] != "Rolled_Product_Change_Ind") isArrayTrue = false;
+                        if (columnnames[0] != "Expiring_Product_Change_Ind") isArrayTrue = false;
+                        if (columnnames[0] != "Manufacturer") isArrayTrue = false;
+                        if (columnnames[0] != "MPN") isArrayTrue = false;
+                        if (columnnames[0] != "MH_Code_Level_1") isArrayTrue = false;
+                        if (columnnames[0] != "Height") isArrayTrue = false;
+                        if (columnnames[0] != "Width") isArrayTrue = false;
+                        if (columnnames[0] != "Length") isArrayTrue = false;
 
 
-                        while (lines.Count() > a)
+                            
+                        if (!isArrayTrue)
+                        {
+                            #region isArrayFalse
+
+
+                            while (lines.Count() > a)
                         {
                             if (a == 67)
                             {
@@ -282,7 +330,13 @@ namespace LoginForm
                             }
                             a++;
                             Superdiskitems = new SuperDisk();
+                                #endregion
+                            }
                         }
+                        else
+                    {
+                            //superdisk ADd
+                    }
                         MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
                         return 1;
                     }
