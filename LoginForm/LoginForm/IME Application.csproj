@@ -574,12 +574,6 @@
     <Compile Include="SaleOrder\SalesOrderHelper.cs" />
     <Compile Include="Services\Messages.cs" />
     <Compile Include="Services\ToolTipService.cs" />
-    <Compile Include="ShipingDetails\ShipingDetailMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ShipingDetails\ShipingDetailMain.Designer.cs">
-      <DependentUpon>ShipingDetailMain.cs</DependentUpon>
-    </Compile>
     <Compile Include="User\FormUsersMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -755,9 +749,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\FormSaleItemSearch.resx">
       <DependentUpon>FormSaleItemSearch.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ShipingDetails\ShipingDetailMain.resx">
-      <DependentUpon>ShipingDetailMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\FormUsersMain.resx">
       <DependentUpon>FormUsersMain.cs</DependentUpon>
