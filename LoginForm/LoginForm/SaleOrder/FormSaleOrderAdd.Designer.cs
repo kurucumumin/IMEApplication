@@ -133,6 +133,7 @@
             this.sDependantTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.numFactor = new System.Windows.Forms.NumericUpDown();
             this.label69 = new System.Windows.Forms.Label();
             this.lblsubtotal = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
@@ -323,7 +324,6 @@
             this.label36 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
-            this.numFactor = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.dgSalesDeleted)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -332,6 +332,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgSaleItems)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numFactor)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -344,7 +345,6 @@
             this.tabCustomerDetails.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabItemDetails.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numFactor)).BeginInit();
             this.SuspendLayout();
             // 
             // txtSection
@@ -730,6 +730,7 @@
             this.dgSaleItems.Location = new System.Drawing.Point(0, 0);
             this.dgSaleItems.Margin = new System.Windows.Forms.Padding(4);
             this.dgSaleItems.Name = "dgSaleItems";
+            this.dgSaleItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgSaleItems.Size = new System.Drawing.Size(1652, 159);
             this.dgSaleItems.TabIndex = 10;
             this.dgSaleItems.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSaleItems_CellEndEdit);
@@ -1114,6 +1115,19 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1646, 56);
             this.panel2.TabIndex = 0;
+            // 
+            // numFactor
+            // 
+            this.numFactor.DecimalPlaces = 2;
+            this.numFactor.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.numFactor.Location = new System.Drawing.Point(73, 19);
+            this.numFactor.Name = "numFactor";
+            this.numFactor.Size = new System.Drawing.Size(72, 22);
+            this.numFactor.TabIndex = 10;
             // 
             // label69
             // 
@@ -3261,19 +3275,6 @@
             this.label57.Text = "Col Qty";
             this.label57.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // numFactor
-            // 
-            this.numFactor.DecimalPlaces = 2;
-            this.numFactor.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.numFactor.Location = new System.Drawing.Point(73, 19);
-            this.numFactor.Name = "numFactor";
-            this.numFactor.Size = new System.Drawing.Size(72, 22);
-            this.numFactor.TabIndex = 10;
-            // 
             // FormSaleOrderAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -3294,6 +3295,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numFactor)).EndInit();
             this.panel1.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
@@ -3315,7 +3317,6 @@
             this.groupBox1.PerformLayout();
             this.tabItemDetails.ResumeLayout(false);
             this.tabItemDetails.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numFactor)).EndInit();
             this.ResumeLayout(false);
 
         }

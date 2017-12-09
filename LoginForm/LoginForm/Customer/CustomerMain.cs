@@ -440,13 +440,11 @@ namespace LoginForm
                 if (c.Note != null) CompanyNotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
                 if (c.customerAccountantNoteID != null) AccountingNotes.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name;
                 CreditLimit.Text = c.creditlimit.ToString();
-
             }
         }
 
         private void QuotationCustomerSearch(string search)
         {
-
             //var CustomerList = IME.Customers.Where(a => a.c_name.ToUpper().Contains(search.ToUpper())).ToList();
             //CustomerDataGrid.DataSource = CustomerList;
             string customerID = CustomerDataGrid.CurrentRow.Cells["ID"].Value.ToString();
