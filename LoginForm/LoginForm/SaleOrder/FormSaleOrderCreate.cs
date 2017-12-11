@@ -1,4 +1,5 @@
 ﻿using LoginForm.DataSet;
+using LoginForm.nmSaleOrder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -85,12 +86,18 @@ namespace LoginForm.nsSaleOrder
                 }
             }
 
-            FormSaleOrderAdd form = new FormSaleOrderAdd((Customer)lbCustomerList.SelectedItem,list);
-            form.Show();
-            this.Close();
-           // form.BringToFront();
-            
-
+            if (list.Count > 0)
+            {
+                FormSaleSale form1 = new FormSaleSale((Customer)lbCustomerList.SelectedItem, list);
+                form1.Show();
+                this.Close();
+            }
+            else
+            {
+                FormSaleSale form1 = new FormSaleSale((Customer)lbCustomerList.SelectedItem);
+                form1.Show();
+                this.Close();
+            }
         }
     }
 }
