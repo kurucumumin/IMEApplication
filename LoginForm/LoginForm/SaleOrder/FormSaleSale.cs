@@ -70,16 +70,12 @@ namespace LoginForm.nmSaleOrder
             cbRep.DataSource = IME.Workers.ToList();
             cbRep.DisplayMember = "NameLastName";
             cbRep.ValueMember = "WorkerID";
-            cbWorkers.DataSource = customer.CustomerWorkers.ToList();
-            cbWorkers.DisplayMember = "cw_name";
-            cbWorkers.ValueMember = "ID";
-            if (customer.MainContactID != null) cbWorkers.SelectedValue = (int)customer.MainContactID;
             CustomerCode.Enabled = false;
             txtCustomerName.Enabled = false;
             btnSave.Enabled = false;
             LowMarginLimit = (Decimal)Utils.getManagement().LowMarginLimit;
             modifyQuotation(items);
-            //fillCustomer();
+            fillCustomer();
             for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
             {
                 dgQuotationAddedItems.Rows[i].Cells["dgQty"].ReadOnly = false;
@@ -173,8 +169,21 @@ namespace LoginForm.nmSaleOrder
                 cbInvoiceAdress.DataSource = addressList;
                 cbDeliveryAddress.DataSource = addressList;
 
-                CustomerAddress inv = addressList.Where(x => x.AddressType.ToUpper().Contains("invoice".ToUpper())).FirstOrDefault();
-                CustomerAddress delv = addressList.Where(x => x.isDeliveryAdress == 1).FirstOrDefault();
+                CustomerAddress inv = new CustomerAddress();
+                CustomerAddress delv = new CustomerAddress();
+
+                try
+                {
+                    inv = addressList.Where(x => x.AddressType.ToUpper().Contains("invoice".ToUpper())).FirstOrDefault();
+                }
+                catch (Exception){}
+
+                try
+                {
+                    delv = addressList.Where(x => x.isDeliveryAdress == 1).FirstOrDefault();
+                }
+                catch (Exception){}
+                
 
                 if (inv != null)
                 {
@@ -190,7 +199,25 @@ namespace LoginForm.nmSaleOrder
                         cbDeliveryAddress.SelectedValue = inv.ID;
                     }
                 }
-            }  
+            }
+
+            List<CustomerWorker> customerWorkerList = customer.CustomerWorkers.ToList();
+
+            if(customerWorkerList != null)
+            {
+                cbWorkers.DataSource = customerWorkerList;
+                if (customer.MainContactID != null) cbWorkers.SelectedValue = (int)customer.MainContactID;
+                cbDeliveryContact.DataSource = customerWorkerList;
+                CustomerWorker cw = new CustomerWorker();
+                try
+                {
+                    cw = customerWorkerList.Where(x => x.ID == (int)cbWorkers.SelectedValue).FirstOrDefault();
+                }
+                catch (Exception){}
+
+                if (cw != null) { cbDeliveryContact.SelectedValue = cw.ID; }
+
+            }
             
             //cbCurrency.SelectedIndex = cbCurrency.FindStringExact(customer.CurrNameQuo);
             //cbCurrType.SelectedIndex = cbCurrType.FindStringExact(c.CurrTypeQuo);
@@ -1409,32 +1436,41 @@ namespace LoginForm.nmSaleOrder
 
         private void QuotationSave()
         {
-            SaleOrder s = new SaleOrder();
-            s.CustomerID = CustomerCode.Text;
-            s.DeliveryContactID = (int)cbDeliveryContact.SelectedValue;
-            s.ContactID = (int)cbWorkers.SelectedValue;
-            s.InvoiceAddressID = (int)cbInvoiceAdress.SelectedValue;
-            s.DeliveryAddressID = (int)cbDeliveryAddress.SelectedValue;
-            s.PaymentTermID = (int)cbPaymentTerm.SelectedValue;
-            s.currencyID = (decimal)cbCurrency.SelectedValue;
-            s.PaymentMethodID = (int)cbPayment.SelectedValue;
-            s.RepresentativeID = (int)cbRep.SelectedValue;
-            s.NoteForUs = txtNoteForUs.Text;
-            s.NoteForFinance = (chkbForFinance.Checked == true) ? 1 : 0;
-            s.NoteForCustomer = txtNoteForCustomer.Text;
-            s.OnlineConfirmationNo = txtOnlineConfirmationNo.Text;
-            s.QuotationNos = txtQuotationNo.Text;
-            s.RequestedDeliveryDate = dtpDate.Value.Date;
-            s.SaleDate = DateTime.Now;
-            s.SaleOrderNature = cbOrderNature.SelectedItem.ToString();
-            //TODO (SALEORDER) ID Formatını öğren ve ID'yi düzenle
-            s.SaleOrderNo = "SO" + (IME.SaleOrders.Count() + 1);
-            s.ShippingType = cbSMethod.SelectedItem.ToString();
-            s.TotalPrice = Convert.ToDecimal(lbltotal.Text);
-            s.Vat = Convert.ToDecimal(lblVat.Text);
+            try
+            {
+                SaleOrder s = new SaleOrder();
+                s.CustomerID = CustomerCode.Text;
+                s.DeliveryContactID = (int)cbDeliveryContact.SelectedValue;
+                s.ContactID = (int)cbWorkers.SelectedValue;
+                s.InvoiceAddressID = (int)cbInvoiceAdress.SelectedValue;
+                s.DeliveryAddressID = (int)cbDeliveryAddress.SelectedValue;
+                s.PaymentTermID = (int)cbPaymentTerm.SelectedValue;
+                s.currencyID = (decimal)cbCurrency.SelectedValue;
+                s.PaymentMethodID = (int)cbPayment.SelectedValue;
+                s.RepresentativeID = (int)cbRep.SelectedValue;
+                s.NoteForUs = txtNoteForUs.Text;
+                s.NoteForFinance = (chkbForFinance.Checked == true) ? 1 : 0;
+                s.NoteForCustomer = txtNoteForCustomer.Text;
+                s.OnlineConfirmationNo = txtOnlineConfirmationNo.Text;
+                s.QuotationNos = txtQuotationNo.Text;
+                s.RequestedDeliveryDate = dtpDate.Value.Date;
+                s.SaleDate = DateTime.Now;
+                s.SaleOrderNature = cbOrderNature.SelectedItem.ToString();
+                //TODO (SALEORDER) ID Formatını öğren ve ID'yi düzenle
+                s.SaleOrderNo = "SO" + (IME.SaleOrders.Count() + 1);
+                s.ShippingType = cbSMethod.SelectedItem.ToString();
+                s.TotalPrice = Convert.ToDecimal(lbltotal.Text);
+                s.Vat = Convert.ToDecimal(lblVat.Text);
 
-            IME.SaleOrders.Add(s);
-            IME.SaveChanges();
+                IME.SaleOrders.Add(s);
+                IME.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw;
+            }
+            
 
 
             //DataSet.Quotation q = new DataSet.Quotation();
@@ -1977,7 +2013,7 @@ namespace LoginForm.nmSaleOrder
 
         private void GetCurrency(DateTime date)
         {
-            var cb = (cbCurrency.SelectedItem as Currency).currencyID;
+            decimal cb = (cbCurrency.SelectedItem as Currency).currencyID;
             curr = IME.ExchangeRates.Where(a => a.currencyId == cb).OrderByDescending(b => b.date).FirstOrDefault();
 
             if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
@@ -2761,6 +2797,18 @@ namespace LoginForm.nmSaleOrder
             #endregion
 
             GetAllMargin();
+        }
+
+        private void btnDeliveryContactAdd_Click(object sender, EventArgs e)
+        {
+            CustomerMain f = new CustomerMain(1, CustomerCode.Text);
+            f.ShowDialog();
+        }
+
+        private void btnInvoiceAdd_Click(object sender, EventArgs e)
+        {
+            CustomerMain f = new CustomerMain(2, CustomerCode.Text);
+            f.ShowDialog();
         }
     }
 }

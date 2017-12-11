@@ -67,6 +67,26 @@ namespace LoginForm
                 tabControl1.SelectedTab = tab_contact;
                 QuotationCustomerSearch(CustomerID);
             }
+            if (x == 2)
+            {
+                CustomerDataGrid.Enabled = false;
+                txtSearch.Enabled = false;
+                Search.Enabled = false;
+                btnCreate.Enabled = false;
+                btnUpdate.Enabled = false;
+                btnContactAdd.Enabled = false;
+                btnContactCancel.Enabled = false;
+                btnContactDelete.Enabled = false;
+                btnContactDone.Enabled = false;
+                btnContactUpdate.Enabled = false;
+                AdressAdd.Enabled = true;
+                AddressUpd.Enabled = true;
+                AddressDel.Enabled = true;
+                AdressDone.Enabled = true;
+                AdressCancel.Enabled = true;
+                tabControl1.SelectedTab = tab_adresses;
+                QuotationCustomerSearch(CustomerID);
+            }
         }
 
         public CustomerMain(Boolean buttonEnabled)
@@ -445,9 +465,9 @@ namespace LoginForm
 
         private void QuotationCustomerSearch(string search)
         {
-            //var CustomerList = IME.Customers.Where(a => a.c_name.ToUpper().Contains(search.ToUpper())).ToList();
-            //CustomerDataGrid.DataSource = CustomerList;
-            string customerID = CustomerDataGrid.CurrentRow.Cells["ID"].Value.ToString();
+            var CustomerList = IME.Customers.Where(a => a.ID.ToUpper().Contains(search.ToUpper())).ToList();
+            CustomerDataGrid.DataSource = CustomerList;
+            string customerID = CustomerDataGrid.Rows[0].Cells["ID"].Value.ToString();
             Customer c = IME.Customers.Where(a => a.ID == customerID).FirstOrDefault();
             dateTimePicker1.Value = c.CreateDate.Value;
             CustomerCode.Text = c.ID;
