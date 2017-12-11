@@ -134,5 +134,24 @@ namespace LoginForm.nsSaleOrder
             }
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            IMEEntities db = new IMEEntities();
+            foreach (DataGridViewRow row in dgSales.SelectedRows)
+            {
+                string SaleID = row.Cells[1].Value.ToString();
+                SaleOrder s = db.SaleOrders.Where(x => x.SaleOrderNo == SaleID).FirstOrDefault();
+                if(s != null)
+                {
+                    if (s.SaleOrderDetails != null)
+                    {
+                        db.SaleOrderDetails.RemoveRange(s.SaleOrderDetails);
+                    }
+                    db.SaleOrders.Remove(s);
+                    db.SaveChanges();
+                }
+            }
+            BringSalesList();
+        }
     }
 }
