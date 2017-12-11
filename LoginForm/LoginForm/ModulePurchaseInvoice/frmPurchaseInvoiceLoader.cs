@@ -27,8 +27,8 @@ namespace LoginForm
 
         private void frmPurchaseInvoiceLoader_Load(object sender, EventArgs e)
         {
-
-            PurchaseInvoiceList.DataSource = IME.PurchaseInvoices.ToList();
+            dtpStartDate.Value = DateTime.Today.AddDays(-7);
+            PurchaseInvoiceList.DataSource = IME.PurchaseInvoices.Where(date => date.OrderDate > dtpStartDate.Value).Where(date => date.OrderDate < dtpFinalDate.Value.Date).ToList();
             PurchaseInvoiceList.DisplayMember = "BillingDocumentReference";
 
         }
@@ -37,7 +37,21 @@ namespace LoginForm
         {
             int PurchaseInvoiceListID = (PurchaseInvoiceList.SelectedItem as PurchaseInvoice).ID;
             PurchaseInvoiceItemList.DataSource = IME.PurchaseInvoiceDetails.Where(a=>a.PurchaseInvoiceID== PurchaseInvoiceListID).ToList();
-            PurchaseInvoiceItemList.DisplayMember = "PurchaseOrderItemNumber";
+            PurchaseInvoiceItemList.DisplayMember = "ProductNumber";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            PurchaseInvoiceList.DataSource = IME.PurchaseInvoices.Where(date => date.OrderDate > dtpStartDate.Value).Where(date => date.OrderDate < dtpFinalDate.Value.Date).ToList();
+            PurchaseInvoiceList.DisplayMember = "BillingDocumentReference";
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string[] array = new string[10];
+            array[0] = "asdasdasdasdasdasdasd";
+            array[1] = "1232132414514353415151";
+            txtCreate.newTxt(array);
         }
     }
 }

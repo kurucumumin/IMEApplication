@@ -22,7 +22,7 @@ namespace LoginForm.DataSet
     
         public int ID { get; set; }
         public string CountryCode { get; set; }
-        public string OrderDate { get; set; }
+        public Nullable<System.DateTime> OrderDate { get; set; }
         public string OrderTime { get; set; }
         public string ShipmentReference { get; set; }
         public string BillingDocumentReference { get; set; }

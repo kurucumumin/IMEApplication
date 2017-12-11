@@ -586,6 +586,7 @@
     <Compile Include="SaleOrder\SalesOrderHelper.cs" />
     <Compile Include="Services\Messages.cs" />
     <Compile Include="Services\ToolTipService.cs" />
+    <Compile Include="Services\txtCreate.cs" />
     <Compile Include="User\FormUsersMain.cs">
       <SubType>Form</SubType>
     </Compile>
