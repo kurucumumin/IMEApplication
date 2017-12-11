@@ -18,8 +18,8 @@ namespace LoginForm.nsSaleOrder
         decimal totalMargin = 0;
         decimal customerFactor = 0;
         decimal currency;
-
-
+        decimal exchangeRate = 0;
+        
         List<SaleItem> addedItemList = new List<SaleItem>();
         List<SaleItem> removedItemList = new List<SaleItem>();
 
@@ -43,6 +43,7 @@ namespace LoginForm.nsSaleOrder
             SortTheList(addedItemList);
             SortTheList(removedItemList);
             populateComboBoxes();
+            exchangeRate = (decimal)((Currency)cbCurrency.SelectedItem).ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault().rate;
             FillCustomer();
         }
 
@@ -487,16 +488,22 @@ namespace LoginForm.nsSaleOrder
                 txtUnitCount4.Text = s.Col4Break.ToString();
                 txtUnitCount5.Text = s.Col5Break.ToString();
                 txtUK1.Text = s.UK1Price.ToString();
-                txtUK2.Text = s.UK2Price.ToString();
-                txtUK3.Text = s.UK3Price.ToString();
-                txtUK4.Text = s.UK4Price.ToString();
-                txtUK5.Text = s.UK5Price.ToString();
+                //txtUK2.Text = s.UK2Price.ToString();
+                //txtUK3.Text = s.UK3Price.ToString();
+                //txtUK4.Text = s.UK4Price.ToString();
+                //txtUK5.Text = s.UK5Price.ToString();
                 txtCost1.Text = s.Cost1.ToString();
                 txtCost2.Text = s.Cost2.ToString();
                 txtCost3.Text = s.Cost3.ToString();
                 txtCost4.Text = s.Cost4.ToString();
                 txtCost5.Text = s.Cost5.ToString();
-                //txtWeb1.Text = (s.UK1Price * customerFactor) /
+                txtWeb1.Text = ((s.UK1Price * numFactor.Value) / exchangeRate).ToString();
+                decimal landingCostWithQty = classQuotationAdd.GetLandingCost(itemCode, true, true, true,Convert.ToInt32(dgSaleItems.CurrentRow.Cells[sQty.Index].Value));
+                txtMargin1.Text = ((1 - (landingCostWithQty) / (decimal.Parse(txtWeb1.Text) * 100))).ToString();
+                //txtWeb2.Text = ((s.UK2Price * numFactor.Value) / exchangeRate).ToString();
+                //txtWeb3.Text = ((s.UK3Price * numFactor.Value) / exchangeRate).ToString();
+                //txtWeb4.Text = ((s.UK4Price * numFactor.Value) / exchangeRate).ToString();
+                //txtWeb5.Text = ((s.UK5Price * numFactor.Value) / exchangeRate).ToString();
             }
         }
 
@@ -542,7 +549,7 @@ namespace LoginForm.nsSaleOrder
 
         private void dgSaleItems_Click(object sender, EventArgs e)
         {
-            if (dgSaleItems.RowCount > 0 && dgSaleItems.CurrentRow.Cells["sItemCode"].Value != null)
+            if (dgSaleItems.RowCount > 0 && dgSaleItems.CurrentRow != null && dgSaleItems.CurrentRow.Cells["sItemCode"].Value != null)
             {
                 FillItemCard(dgSaleItems.CurrentRow.Cells["sItemCode"].Value.ToString());
             }
@@ -582,7 +589,7 @@ namespace LoginForm.nsSaleOrder
 
         private void cbCurrency_SelectedValueChanged(object sender, EventArgs e)
         {
-            currency = GetCurrency(dtpDate.Value);
+            exchangeRate = (decimal)((Currency)cbCurrency.SelectedItem).ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault().rate;
         }
 
         private void ChangeCurrency()
@@ -754,6 +761,8 @@ namespace LoginForm.nsSaleOrder
                                 landingCost = Decimal.Parse(String.Format("{0:0.0000}", landingCost));
                                 row.Cells["sLandingCost"].Value = landingCost;
                             }
+
+                            decimal price = classQuotationAdd.GetPrice(itemCode, Qty) * numFactor.Value / exchangeRate * Qty ;
                         }
                         else
                         {
@@ -775,7 +784,7 @@ namespace LoginForm.nsSaleOrder
                 ItemCode = itemCode
             };
 
-            decimal exchangeRate = (decimal)((Currency)cbCurrency.SelectedItem).ExchangeRates.OrderByDescending(x => x.date).FirstOrDefault().rate;
+            
 
             //TO DO yerini Değiştir ve coefficient exchange rate e bağla
             switch (tableName)
@@ -824,7 +833,7 @@ namespace LoginForm.nsSaleOrder
                     s.Description = sdTable.Article_Desc;
                     s.Height = (decimal)sdTable.Heigh;
                     s.ItemCode = itemCode;
-                    s.LandingCost = classQuotationAdd.GetLandingCost(itemCode, true, true, true);
+                    //s.LandingCost = classQuotationAdd.GetLandingCost(itemCode, true, true, true);
                     s.Length = (decimal)sdTable.Length;
                     s.Manufacturer = sdTable.Manufacturer;
                     s.MHLevel1 = sdTable.MH_Code_Level_1;

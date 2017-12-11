@@ -20,11 +20,11 @@ namespace LoginForm.DataSet
             this.PurchaseOrderDetails = new HashSet<PurchaseOrderDetail>();
         }
     
+        public string FicheNo { get; set; }
         public string CustomerID { get; set; }
         public Nullable<System.DateTime> PurchaseOrderDate { get; set; }
         public Nullable<System.DateTime> CameDate { get; set; }
         public string Reason { get; set; }
-        public string FicheNo { get; set; }
         public Nullable<bool> Invoice { get; set; }
     
         public virtual Customer Customer { get; set; }
