@@ -167,7 +167,7 @@ namespace LoginForm
             dateTimePicker1.Value = c.CreateDate.Value;
             CustomerCode.Text = c.ID;
             AdressList.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
-            AdressList.DisplayMember = "AdressDetails";
+            AdressList.DisplayMember = "AdressTitle";
             ContactAdress.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
             ContactAdress.DisplayMember = "AdressDetails";
             CustomerName.Text = c.c_name;
@@ -438,7 +438,7 @@ namespace LoginForm
                 dateTimePicker1.Value = c.CreateDate.Value;
                 CustomerCode.Text = c.ID;
                 AdressList.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
-                AdressList.DisplayMember = "AdressDetails";
+                AdressList.DisplayMember = "AdressTitle";
                 ContactAdress.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
                 ContactAdress.DisplayMember = "AdressDetails";
                 CustomerName.Text = c.c_name;
@@ -472,7 +472,7 @@ namespace LoginForm
             dateTimePicker1.Value = c.CreateDate.Value;
             CustomerCode.Text = c.ID;
             AdressList.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
-            AdressList.DisplayMember = "AdressDetails";
+            AdressList.DisplayMember = "AdressTitle";
             ContactAdress.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
             ContactAdress.DisplayMember = "AdressDetails";
             CustomerName.Text = c.c_name;
@@ -1112,7 +1112,7 @@ namespace LoginForm
                 IME.CustomerAddresses.Remove(ca);
                 IME.SaveChanges();
                 AdressList.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
-                AdressList.DisplayMember = "AdressDetails";
+                AdressList.DisplayMember = "AdressTitle";
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -1182,7 +1182,7 @@ namespace LoginForm
             }
             AdressList.DataSource = null;
             AdressList.DataSource = IME.CustomerAddresses.Where(customerw => customerw.CustomerID == CustomerCode.Text).ToList();
-            AdressList.DisplayMember = "AdressDetails";
+            AdressList.DisplayMember = "AdressTitle";
             ContactAdress.DataSource = null;
             ContactAdress.DataSource = IME.CustomerAddresses.Where(customerw => customerw.CustomerID == CustomerCode.Text).ToList();
             ContactAdress.DisplayMember = "AdressDetails";
@@ -1215,7 +1215,7 @@ namespace LoginForm
                 CustomerDataGrid.Enabled = true;
             }
             AdressList.DataSource = IME.CustomerAddresses.Where(customerw => customerw.CustomerID == CustomerCode.Text).ToList();
-            AdressList.DisplayMember = "AdressDetails";
+            AdressList.DisplayMember = "AdressTitle";
 
             AdressAdd.Visible = true;
             AddressDel.Visible = true;

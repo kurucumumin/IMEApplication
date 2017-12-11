@@ -57,7 +57,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.dgQuotationAddedItems = new System.Windows.Forms.DataGridView();
+            this.dgSaleAddedItems = new System.Windows.Forms.DataGridView();
             this.dgNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LI = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -95,7 +95,7 @@
             this.dgCCCNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgDependantTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.dgQuotationDeleted = new System.Windows.Forms.DataGridView();
+            this.dgSaleDeleted = new System.Windows.Forms.DataGridView();
             this.No1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -142,7 +142,7 @@
             this.txtTotalMargin = new System.Windows.Forms.TextBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
-            this.cbFactor = new System.Windows.Forms.TextBox();
+            this.txtFactor = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabCustomerDetails = new System.Windows.Forms.TabPage();
             this.btnInvoiceModify = new System.Windows.Forms.Button();
@@ -319,7 +319,7 @@
             this.label52 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.txtExtraChanges = new System.Windows.Forms.TextBox();
+            this.txtExtraCharges = new System.Windows.Forms.TextBox();
             this.lblVatTotal = new System.Windows.Forms.Label();
             this.txtTotalMarge = new System.Windows.Forms.TextBox();
             this.txtTotalDis2 = new System.Windows.Forms.TextBox();
@@ -341,9 +341,9 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgQuotationAddedItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSaleAddedItems)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgQuotationDeleted)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSaleDeleted)).BeginInit();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabCustomerDetails.SuspendLayout();
@@ -392,7 +392,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.dgQuotationAddedItems);
+            this.splitContainer1.Panel1.Controls.Add(this.dgSaleAddedItems);
             this.splitContainer1.Panel1.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer1.Panel1MinSize = 80;
             // 
@@ -405,11 +405,11 @@
             this.splitContainer1.SplitterWidth = 6;
             this.splitContainer1.TabIndex = 57;
             // 
-            // dgQuotationAddedItems
+            // dgSaleAddedItems
             // 
-            this.dgQuotationAddedItems.AllowUserToAddRows = false;
-            this.dgQuotationAddedItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgQuotationAddedItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgSaleAddedItems.AllowUserToAddRows = false;
+            this.dgSaleAddedItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgSaleAddedItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgNo,
             this.HS,
             this.LI,
@@ -446,16 +446,16 @@
             this.dgCOO,
             this.dgCCCNO,
             this.dgDependantTable});
-            this.dgQuotationAddedItems.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgQuotationAddedItems.Location = new System.Drawing.Point(0, 0);
-            this.dgQuotationAddedItems.Margin = new System.Windows.Forms.Padding(4);
-            this.dgQuotationAddedItems.Name = "dgQuotationAddedItems";
-            this.dgQuotationAddedItems.Size = new System.Drawing.Size(1702, 220);
-            this.dgQuotationAddedItems.TabIndex = 9;
-            this.dgQuotationAddedItems.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotationAddedItems_CellEndEdit);
-            this.dgQuotationAddedItems.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgQuotationAddedItems_RowsAdded);
-            this.dgQuotationAddedItems.Click += new System.EventHandler(this.dgQuotationAddedItems_Click);
-            this.dgQuotationAddedItems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgQuotationAddedItems_KeyDown);
+            this.dgSaleAddedItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgSaleAddedItems.Location = new System.Drawing.Point(0, 0);
+            this.dgSaleAddedItems.Margin = new System.Windows.Forms.Padding(4);
+            this.dgSaleAddedItems.Name = "dgSaleAddedItems";
+            this.dgSaleAddedItems.Size = new System.Drawing.Size(1702, 220);
+            this.dgSaleAddedItems.TabIndex = 9;
+            this.dgSaleAddedItems.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotationAddedItems_CellEndEdit);
+            this.dgSaleAddedItems.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgQuotationAddedItems_RowsAdded);
+            this.dgSaleAddedItems.Click += new System.EventHandler(this.dgQuotationAddedItems_Click);
+            this.dgSaleAddedItems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgQuotationAddedItems_KeyDown);
             // 
             // dgNo
             // 
@@ -819,7 +819,7 @@
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.dgQuotationDeleted, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.dgSaleDeleted, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
@@ -831,11 +831,11 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1702, 262);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
-            // dgQuotationDeleted
+            // dgSaleDeleted
             // 
-            this.dgQuotationDeleted.AllowUserToOrderColumns = true;
-            this.dgQuotationDeleted.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgQuotationDeleted.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgSaleDeleted.AllowUserToOrderColumns = true;
+            this.dgSaleDeleted.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgSaleDeleted.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.No1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
@@ -871,13 +871,13 @@
             this.dgCustDescription1,
             this.dataGridViewTextBoxColumn35,
             this.dataGridViewTextBoxColumn36});
-            this.dgQuotationDeleted.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgQuotationDeleted.Location = new System.Drawing.Point(4, 64);
-            this.dgQuotationDeleted.Margin = new System.Windows.Forms.Padding(4);
-            this.dgQuotationDeleted.Name = "dgQuotationDeleted";
-            this.dgQuotationDeleted.Size = new System.Drawing.Size(1694, 194);
-            this.dgQuotationDeleted.TabIndex = 10;
-            this.dgQuotationDeleted.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
+            this.dgSaleDeleted.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgSaleDeleted.Location = new System.Drawing.Point(4, 64);
+            this.dgSaleDeleted.Margin = new System.Windows.Forms.Padding(4);
+            this.dgSaleDeleted.Name = "dgSaleDeleted";
+            this.dgSaleDeleted.Size = new System.Drawing.Size(1694, 194);
+            this.dgSaleDeleted.TabIndex = 10;
+            this.dgSaleDeleted.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
             // 
             // No1
             // 
@@ -1113,7 +1113,7 @@
             this.panel2.Controls.Add(this.txtTotalMargin);
             this.panel2.Controls.Add(this.textBox10);
             this.panel2.Controls.Add(this.label30);
-            this.panel2.Controls.Add(this.cbFactor);
+            this.panel2.Controls.Add(this.txtFactor);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 2);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1235,15 +1235,15 @@
             this.label30.TabIndex = 60;
             this.label30.Text = "Factor";
             // 
-            // cbFactor
+            // txtFactor
             // 
-            this.cbFactor.Location = new System.Drawing.Point(73, 22);
-            this.cbFactor.Margin = new System.Windows.Forms.Padding(4);
-            this.cbFactor.Name = "cbFactor";
-            this.cbFactor.Size = new System.Drawing.Size(55, 22);
-            this.cbFactor.TabIndex = 67;
-            this.cbFactor.Text = "5.5";
-            this.cbFactor.Leave += new System.EventHandler(this.cbFactor_Leave);
+            this.txtFactor.Location = new System.Drawing.Point(73, 22);
+            this.txtFactor.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFactor.Name = "txtFactor";
+            this.txtFactor.Size = new System.Drawing.Size(55, 22);
+            this.txtFactor.TabIndex = 67;
+            this.txtFactor.Text = "5.5";
+            this.txtFactor.Leave += new System.EventHandler(this.cbFactor_Leave);
             // 
             // tabControl1
             // 
@@ -3126,6 +3126,7 @@
             this.btnCreateRev.TabIndex = 48;
             this.btnCreateRev.Text = "Create Rev.";
             this.btnCreateRev.UseVisualStyleBackColor = true;
+            this.btnCreateRev.Visible = false;
             this.btnCreateRev.Click += new System.EventHandler(this.btnCreateRev_Click);
             // 
             // groupBox11
@@ -3140,7 +3141,7 @@
             this.groupBox11.Controls.Add(this.label52);
             this.groupBox11.Controls.Add(this.label4);
             this.groupBox11.Controls.Add(this.textBox7);
-            this.groupBox11.Controls.Add(this.txtExtraChanges);
+            this.groupBox11.Controls.Add(this.txtExtraCharges);
             this.groupBox11.Controls.Add(this.lblVatTotal);
             this.groupBox11.Controls.Add(this.txtTotalMarge);
             this.groupBox11.Controls.Add(this.txtTotalDis2);
@@ -3253,17 +3254,17 @@
             this.textBox7.TabIndex = 21;
             this.textBox7.Text = "Extra Charges";
             // 
-            // txtExtraChanges
+            // txtExtraCharges
             // 
-            this.txtExtraChanges.Location = new System.Drawing.Point(128, 64);
-            this.txtExtraChanges.Margin = new System.Windows.Forms.Padding(4);
-            this.txtExtraChanges.Name = "txtExtraChanges";
-            this.txtExtraChanges.Size = new System.Drawing.Size(65, 22);
-            this.txtExtraChanges.TabIndex = 20;
-            this.txtExtraChanges.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtExtraChanges.Click += new System.EventHandler(this.txtExtraChanges_Click);
-            this.txtExtraChanges.TextChanged += new System.EventHandler(this.txtExtraChanges_TextChanged);
-            this.txtExtraChanges.Leave += new System.EventHandler(this.txtExtraChanges_Leave);
+            this.txtExtraCharges.Location = new System.Drawing.Point(128, 64);
+            this.txtExtraCharges.Margin = new System.Windows.Forms.Padding(4);
+            this.txtExtraCharges.Name = "txtExtraCharges";
+            this.txtExtraCharges.Size = new System.Drawing.Size(65, 22);
+            this.txtExtraCharges.TabIndex = 20;
+            this.txtExtraCharges.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtExtraCharges.Click += new System.EventHandler(this.txtExtraChanges_Click);
+            this.txtExtraCharges.TextChanged += new System.EventHandler(this.txtExtraChanges_TextChanged);
+            this.txtExtraCharges.Leave += new System.EventHandler(this.txtExtraChanges_Leave);
             // 
             // lblVatTotal
             // 
@@ -3461,9 +3462,9 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgQuotationAddedItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSaleAddedItems)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgQuotationDeleted)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSaleDeleted)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.tabControl1.ResumeLayout(false);
@@ -3496,9 +3497,9 @@
         #endregion
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.DataGridView dgQuotationAddedItems;
+        private System.Windows.Forms.DataGridView dgSaleAddedItems;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.DataGridView dgQuotationDeleted;
+        private System.Windows.Forms.DataGridView dgSaleDeleted;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblsubtotal;
         private System.Windows.Forms.Label label35;
@@ -3519,7 +3520,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtLPONO;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox cbFactor;
+        private System.Windows.Forms.TextBox txtFactor;
         private System.Windows.Forms.TextBox txtSaleOrderNo;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -3646,7 +3647,7 @@
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox txtExtraChanges;
+        private System.Windows.Forms.TextBox txtExtraCharges;
         private System.Windows.Forms.Label lblVatTotal;
         private System.Windows.Forms.TextBox txtTotalDis2;
         private System.Windows.Forms.CheckBox chkVat;

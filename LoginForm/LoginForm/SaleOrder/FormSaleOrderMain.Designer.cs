@@ -58,6 +58,7 @@
             // btnSearchStockNumber
             // 
             this.btnSearchStockNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
+            this.btnSearchStockNumber.Enabled = false;
             this.btnSearchStockNumber.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnSearchStockNumber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearchStockNumber.Location = new System.Drawing.Point(1007, 82);
@@ -72,6 +73,7 @@
             // chcCustStockNumber
             // 
             this.chcCustStockNumber.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chcCustStockNumber.Enabled = false;
             this.chcCustStockNumber.Location = new System.Drawing.Point(1007, 54);
             this.chcCustStockNumber.Name = "chcCustStockNumber";
             this.chcCustStockNumber.Size = new System.Drawing.Size(216, 24);
@@ -81,14 +83,16 @@
             // 
             // textBox2
             // 
+            this.textBox2.Enabled = false;
             this.textBox2.Location = new System.Drawing.Point(1007, 21);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(216, 21);
+            this.textBox2.Size = new System.Drawing.Size(216, 24);
             this.textBox2.TabIndex = 25;
             // 
             // chcAllSales
             // 
             this.chcAllSales.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chcAllSales.Enabled = false;
             this.chcAllSales.Location = new System.Drawing.Point(786, 90);
             this.chcAllSales.Name = "chcAllSales";
             this.chcAllSales.Size = new System.Drawing.Size(184, 24);
@@ -98,20 +102,22 @@
             // 
             // txtSearchText
             // 
+            this.txtSearchText.Enabled = false;
             this.txtSearchText.Location = new System.Drawing.Point(786, 55);
             this.txtSearchText.Name = "txtSearchText";
-            this.txtSearchText.Size = new System.Drawing.Size(184, 21);
+            this.txtSearchText.Size = new System.Drawing.Size(184, 24);
             this.txtSearchText.TabIndex = 23;
             // 
             // cbSearch
             // 
             this.cbSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSearch.Enabled = false;
             this.cbSearch.FormattingEnabled = true;
             this.cbSearch.Items.AddRange(new object[] {
             "QUOT NUMBER"});
             this.cbSearch.Location = new System.Drawing.Point(786, 21);
             this.cbSearch.Name = "cbSearch";
-            this.cbSearch.Size = new System.Drawing.Size(184, 23);
+            this.cbSearch.Size = new System.Drawing.Size(184, 26);
             this.cbSearch.TabIndex = 22;
             // 
             // label2
@@ -119,7 +125,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(10, 90);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 15);
+            this.label2.Size = new System.Drawing.Size(69, 18);
             this.label2.TabIndex = 21;
             this.label2.Text = "End Date";
             // 
@@ -128,26 +134,28 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(10, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 15);
+            this.label1.Size = new System.Drawing.Size(74, 18);
             this.label1.TabIndex = 20;
             this.label1.Text = "Start Date";
             // 
             // datetimeEnd
             // 
             this.datetimeEnd.CustomFormat = "dd-MM-yyyy";
+            this.datetimeEnd.Enabled = false;
             this.datetimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datetimeEnd.Location = new System.Drawing.Point(100, 87);
             this.datetimeEnd.Name = "datetimeEnd";
-            this.datetimeEnd.Size = new System.Drawing.Size(133, 21);
+            this.datetimeEnd.Size = new System.Drawing.Size(133, 24);
             this.datetimeEnd.TabIndex = 19;
             // 
             // datetimeStart
             // 
             this.datetimeStart.CustomFormat = "dd-MM-yyyy";
+            this.datetimeStart.Enabled = false;
             this.datetimeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datetimeStart.Location = new System.Drawing.Point(100, 18);
             this.datetimeStart.Name = "datetimeStart";
-            this.datetimeStart.Size = new System.Drawing.Size(133, 21);
+            this.datetimeStart.Size = new System.Drawing.Size(133, 24);
             this.datetimeStart.TabIndex = 18;
             // 
             // btnDelete
@@ -166,10 +174,12 @@
             this.btnDelete.Text = "Delete";
             this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnModify
             // 
             this.btnModify.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
+            this.btnModify.Enabled = false;
             this.btnModify.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnModify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModify.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
@@ -187,6 +197,7 @@
             // btnRefreshList
             // 
             this.btnRefreshList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
+            this.btnRefreshList.Enabled = false;
             this.btnRefreshList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnRefreshList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefreshList.Image = global::LoginForm.Properties.Resources.icons8_Refresh_32;
@@ -329,7 +340,7 @@
             // 
             // FormSalesOrderMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1250, 704);
             this.Controls.Add(this.tableLayoutPanel1);

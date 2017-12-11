@@ -72,36 +72,36 @@ namespace LoginForm.nmSaleOrder
             cbRep.ValueMember = "WorkerID";
             CustomerCode.Enabled = false;
             txtCustomerName.Enabled = false;
-            btnSave.Enabled = false;
+            //btnSave.Enabled = false;
             LowMarginLimit = (Decimal)Utils.getManagement().LowMarginLimit;
             modifyQuotation(items);
             fillCustomer();
-            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+            for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
             {
-                dgQuotationAddedItems.Rows[i].Cells["dgQty"].ReadOnly = false;
-                dgQuotationAddedItems.Rows[i].Cells["dgQty"].Style = dgQuotationAddedItems.DefaultCellStyle;
+                dgSaleAddedItems.Rows[i].Cells["dgQty"].ReadOnly = false;
+                dgSaleAddedItems.Rows[i].Cells["dgQty"].Style = dgSaleAddedItems.DefaultCellStyle;
 
-                dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].ReadOnly = false;
-                dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Style = dgQuotationAddedItems.DefaultCellStyle;
+                dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].ReadOnly = false;
+                dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Style = dgSaleAddedItems.DefaultCellStyle;
 
-                dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].ReadOnly = false;
-                dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].Style = dgQuotationAddedItems.DefaultCellStyle;
+                dgSaleAddedItems.Rows[i].Cells["dgTargetUP"].ReadOnly = false;
+                dgSaleAddedItems.Rows[i].Cells["dgTargetUP"].Style = dgSaleAddedItems.DefaultCellStyle;
 
-                dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].ReadOnly = false;
-                dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].Style = dgQuotationAddedItems.DefaultCellStyle;
+                dgSaleAddedItems.Rows[i].Cells["dgCompetitor"].ReadOnly = false;
+                dgSaleAddedItems.Rows[i].Cells["dgCompetitor"].Style = dgSaleAddedItems.DefaultCellStyle;
 
-                dgQuotationAddedItems.Rows[i].Cells["dgDelivery"].ReadOnly = false;
-                dgQuotationAddedItems.Rows[i].Cells["dgDelivery"].Style = dgQuotationAddedItems.DefaultCellStyle;
+                dgSaleAddedItems.Rows[i].Cells["dgDelivery"].ReadOnly = false;
+                dgSaleAddedItems.Rows[i].Cells["dgDelivery"].Style = dgSaleAddedItems.DefaultCellStyle;
 
-                dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].ReadOnly = false;
-                dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].Style = dgQuotationAddedItems.DefaultCellStyle;
+                dgSaleAddedItems.Rows[i].Cells["dgCustStkCode"].ReadOnly = false;
+                dgSaleAddedItems.Rows[i].Cells["dgCustStkCode"].Style = dgSaleAddedItems.DefaultCellStyle;
 
-                dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].ReadOnly = false;
-                dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].Style = dgQuotationAddedItems.DefaultCellStyle;
+                dgSaleAddedItems.Rows[i].Cells["dgCustDescription"].ReadOnly = false;
+                dgSaleAddedItems.Rows[i].Cells["dgCustDescription"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                 GetMarginMark(i);
             }
-            QuotataionModifyItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells["dgProductCode"].Value.ToString(), dgQuotationAddedItems.RowCount - 1);
+            QuotataionModifyItemDetailsFiller(dgSaleAddedItems.Rows[dgSaleAddedItems.RowCount - 1].Cells["dgProductCode"].Value.ToString(), dgSaleAddedItems.RowCount - 1);
         }
 
         private void QuotationForm_Load(object sender, EventArgs e)
@@ -109,11 +109,11 @@ namespace LoginForm.nmSaleOrder
             DeletedQuotationMenu.MenuItems.Add(new MenuItem("Add to Quotation", DeletedQuotationMenu_Click));
             if (!modifyMod)
             {
-                DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
-                dgQuotationAddedItems.Rows.Add(dgRow);
+                DataGridViewRow dgRow = (DataGridViewRow)dgSaleAddedItems.RowTemplate.Clone();
+                dgSaleAddedItems.Rows.Add(dgRow);
                 txtSaleOrderNo.Text = NewQuotationID();
                 //dgQuotationAddedItems.Rows[0].Cells["dgQty"].Value = "0";
-                dgQuotationAddedItems.Rows[0].Cells[0].Value = 1.ToString();
+                dgSaleAddedItems.Rows[0].Cells[0].Value = 1.ToString();
                 LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
                 lblVat.Text = Utils.getManagement().VAT.ToString();
                 #region ComboboxFiller.
@@ -129,7 +129,7 @@ namespace LoginForm.nmSaleOrder
                 cbRep.ValueMember = "WorkerID";
                 cbRep.DisplayMember = "NameLastName";
                 cbRep.SelectedValue = Utils.getCurrentUser().WorkerID;
-                cbFactor.Text = Utils.getManagement().Factor.ToString();
+                txtFactor.Text = Utils.getManagement().Factor.ToString();
                 #endregion
             }
             GetCurrency(dtpDate.Value);
@@ -166,8 +166,8 @@ namespace LoginForm.nmSaleOrder
             List<CustomerAddress> addressList = customer.CustomerAddresses.ToList();
             if (addressList.Count != 0)
             {
-                cbInvoiceAdress.DataSource = addressList;
-                cbDeliveryAddress.DataSource = addressList;
+                cbInvoiceAdress.DataSource = addressList.ToList();
+                cbDeliveryAddress.DataSource = addressList.ToList();
 
                 CustomerAddress inv = new CustomerAddress();
                 CustomerAddress delv = new CustomerAddress();
@@ -205,9 +205,9 @@ namespace LoginForm.nmSaleOrder
 
             if(customerWorkerList != null)
             {
-                cbWorkers.DataSource = customerWorkerList;
+                cbWorkers.DataSource = customerWorkerList.ToList();
                 if (customer.MainContactID != null) cbWorkers.SelectedValue = (int)customer.MainContactID;
-                cbDeliveryContact.DataSource = customerWorkerList;
+                cbDeliveryContact.DataSource = customerWorkerList.ToList();
                 CustomerWorker cw = new CustomerWorker();
                 try
                 {
@@ -258,58 +258,58 @@ namespace LoginForm.nmSaleOrder
         private void dgQuotationAddedItems_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             #region MyRegion
-            switch (dgQuotationAddedItems.CurrentCell.ColumnIndex)
+            switch (dgSaleAddedItems.CurrentCell.ColumnIndex)
             {
                 case 0:
                     #region ID Atama
-                    if (Int32.Parse(dgQuotationAddedItems.CurrentCell.Value.ToString()) <= Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[0].Value.ToString()))
+                    if (Int32.Parse(dgSaleAddedItems.CurrentCell.Value.ToString()) <= Int32.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells[0].Value.ToString()))
                     {
-                        int currentID = dgQuotationAddedItems.CurrentCell.RowIndex;
+                        int currentID = dgSaleAddedItems.CurrentCell.RowIndex;
                         List<int> Quotation = new List<int>();
-                        for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+                        for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
                         {
-                            Quotation.Add(Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()));
+                            Quotation.Add(Int32.Parse(dgSaleAddedItems.Rows[i].Cells[0].Value.ToString()));
                         }
-                        for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+                        for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
                         {
-                            if (dgQuotationAddedItems.CurrentCell.RowIndex < Int32.Parse(dgQuotationAddedItems.CurrentCell.Value.ToString()))
+                            if (dgSaleAddedItems.CurrentCell.RowIndex < Int32.Parse(dgSaleAddedItems.CurrentCell.Value.ToString()))
                             {
                                 #region RowChange1
                                 //Üstteki bir row u aşşağıya getirmek için
-                                if (Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()) <= Int32.Parse(dgQuotationAddedItems.CurrentCell.Value.ToString()) && currentID != i && dgQuotationAddedItems.CurrentCell.RowIndex < i)
+                                if (Int32.Parse(dgSaleAddedItems.Rows[i].Cells[0].Value.ToString()) <= Int32.Parse(dgSaleAddedItems.CurrentCell.Value.ToString()) && currentID != i && dgSaleAddedItems.CurrentCell.RowIndex < i)
                                 {
                                     if (i <= Quotation.Count)
                                     {
 
-                                        dgQuotationAddedItems.Rows[i].Cells[0].Value = (i);
-                                        var st = SubTotal.Where(a => a.Item1 == Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString())).FirstOrDefault();
+                                        dgSaleAddedItems.Rows[i].Cells[0].Value = (i);
+                                        var st = SubTotal.Where(a => a.Item1 == Int32.Parse(dgSaleAddedItems.Rows[i].Cells[0].Value.ToString())).FirstOrDefault();
                                         decimal stPrice = 0;
                                         if (st != null) { stPrice = st.Item2; }
                                         SubTotal.Remove(st);
-                                        SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()), stPrice));
+                                        SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgSaleAddedItems.Rows[i].Cells[0].Value.ToString()), stPrice));
                                     }
                                 }
-                                else { dgQuotationAddedItems.Rows[i].Cells[0].Value = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()); }
+                                else { dgSaleAddedItems.Rows[i].Cells[0].Value = Int32.Parse(dgSaleAddedItems.Rows[i].Cells[0].Value.ToString()); }
                                 #endregion
                             }
                             else
                             {
                                 #region RowChange2
                                 //Üstteki bir row u aşşağıya getirmek için
-                                if (Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()) >= Int32.Parse(dgQuotationAddedItems.CurrentCell.Value.ToString()) && currentID != i && dgQuotationAddedItems.CurrentCell.RowIndex > i)
+                                if (Int32.Parse(dgSaleAddedItems.Rows[i].Cells[0].Value.ToString()) >= Int32.Parse(dgSaleAddedItems.CurrentCell.Value.ToString()) && currentID != i && dgSaleAddedItems.CurrentCell.RowIndex > i)
                                 {
                                     if (i <= Quotation.Count)
                                     {
-                                        dgQuotationAddedItems.Rows[i].Cells[0].Value = (i + 2);
-                                        var st = SubTotal.Where(a => a.Item1 == Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString())).FirstOrDefault();
+                                        dgSaleAddedItems.Rows[i].Cells[0].Value = (i + 2);
+                                        var st = SubTotal.Where(a => a.Item1 == Int32.Parse(dgSaleAddedItems.Rows[i].Cells[0].Value.ToString())).FirstOrDefault();
                                         decimal stPrice = 0;
                                         if (st != null) { stPrice = st.Item2; }
                                         SubTotal.Remove(st);
-                                        SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()), stPrice));
+                                        SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgSaleAddedItems.Rows[i].Cells[0].Value.ToString()), stPrice));
                                     }
 
                                 }
-                                else { dgQuotationAddedItems.Rows[i].Cells[0].Value = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()); }
+                                else { dgSaleAddedItems.Rows[i].Cells[0].Value = Int32.Parse(dgSaleAddedItems.Rows[i].Cells[0].Value.ToString()); }
                                 #endregion
                             }
 
@@ -317,32 +317,32 @@ namespace LoginForm.nmSaleOrder
                     }
                     #endregion
                     // if (dataGridView3.CurrentCell.RowIndex != 0) { dataGridView3.CurrentCell.Value = (dataGridView3.CurrentCell.RowIndex + 1).ToString(); }
-                    dgQuotationAddedItems.Sort(dgQuotationAddedItems.Columns["dgNo"], ListSortDirection.Ascending);
+                    dgSaleAddedItems.Sort(dgSaleAddedItems.Columns["dgNo"], ListSortDirection.Ascending);
                     break;
                 case 7://PRODUCT CODE
                     {
                         #region PRODUCT CODE
 
 
-                        if (dgQuotationAddedItems.CurrentCell.Value != null)
+                        if (dgSaleAddedItems.CurrentCell.Value != null)
                         {
                             //0100-124 => 0100124
-                            if (dgQuotationAddedItems.CurrentCell.Value.ToString().Contains("-")) { dgQuotationAddedItems.CurrentCell.Value = dgQuotationAddedItems.CurrentCell.Value.ToString().Replace("-", string.Empty).ToString(); }
-                            if (dgQuotationAddedItems.CurrentCell.Value != null && dgQuotationAddedItems.CurrentCell.Value.ToString().Length == 6 || (dgQuotationAddedItems.CurrentCell.Value.ToString().Contains("P") && dgQuotationAddedItems.CurrentCell.Value.ToString().Length == 7)) { dgQuotationAddedItems.CurrentCell.Value = 0.ToString() + dgQuotationAddedItems.CurrentCell.Value.ToString(); }
-                            var sd = classQuotationAdd.ItemGetSuperDisk(dgQuotationAddedItems.CurrentCell.Value.ToString());
-                            var sdp = classQuotationAdd.ItemGetSuperDiskP(dgQuotationAddedItems.CurrentCell.Value.ToString());
-                            var er = classQuotationAdd.ItemGetExtendedRange(dgQuotationAddedItems.CurrentCell.Value.ToString());
+                            if (dgSaleAddedItems.CurrentCell.Value.ToString().Contains("-")) { dgSaleAddedItems.CurrentCell.Value = dgSaleAddedItems.CurrentCell.Value.ToString().Replace("-", string.Empty).ToString(); }
+                            if (dgSaleAddedItems.CurrentCell.Value != null && dgSaleAddedItems.CurrentCell.Value.ToString().Length == 6 || (dgSaleAddedItems.CurrentCell.Value.ToString().Contains("P") && dgSaleAddedItems.CurrentCell.Value.ToString().Length == 7)) { dgSaleAddedItems.CurrentCell.Value = 0.ToString() + dgSaleAddedItems.CurrentCell.Value.ToString(); }
+                            var sd = classQuotationAdd.ItemGetSuperDisk(dgSaleAddedItems.CurrentCell.Value.ToString());
+                            var sdp = classQuotationAdd.ItemGetSuperDiskP(dgSaleAddedItems.CurrentCell.Value.ToString());
+                            var er = classQuotationAdd.ItemGetExtendedRange(dgSaleAddedItems.CurrentCell.Value.ToString());
                             int sdNumber; int sdPNumber; int erNumber;
-                            try { sdNumber = IME.SuperDisks.Where(a => a.Article_No.Contains(dgQuotationAddedItems.CurrentCell.Value.ToString())).Count(); } catch { sdNumber = 0; }
-                            try { sdPNumber = IME.SuperDiskPs.Where(a => a.Article_No.Contains(dgQuotationAddedItems.CurrentCell.Value.ToString())).Count(); } catch { sdPNumber = 0; }
-                            try { erNumber = IME.ExtendedRanges.Where(a => a.ArticleNo.Contains(dgQuotationAddedItems.CurrentCell.Value.ToString())).Count(); } catch { erNumber = 0; }
+                            try { sdNumber = IME.SuperDisks.Where(a => a.Article_No.Contains(dgSaleAddedItems.CurrentCell.Value.ToString())).Count(); } catch { sdNumber = 0; }
+                            try { sdPNumber = IME.SuperDiskPs.Where(a => a.Article_No.Contains(dgSaleAddedItems.CurrentCell.Value.ToString())).Count(); } catch { sdPNumber = 0; }
+                            try { erNumber = IME.ExtendedRanges.Where(a => a.ArticleNo.Contains(dgSaleAddedItems.CurrentCell.Value.ToString())).Count(); } catch { erNumber = 0; }
                             if (sdNumber != 0 || sdPNumber != 0 || erNumber != 0)
                             {
-                                if (classQuotationAdd.HasMultipleItems(dgQuotationAddedItems.CurrentCell.Value.ToString()) == 0 && ((dgQuotationAddedItems.CurrentCell.Value.ToString().Length == 7 || (dgQuotationAddedItems.CurrentCell.Value.ToString().Contains("P") && dgQuotationAddedItems.CurrentCell.Value.ToString().Length == 8))))
+                                if (classQuotationAdd.HasMultipleItems(dgSaleAddedItems.CurrentCell.Value.ToString()) == 0 && ((dgSaleAddedItems.CurrentCell.Value.ToString().Length == 7 || (dgSaleAddedItems.CurrentCell.Value.ToString().Contains("P") && dgSaleAddedItems.CurrentCell.Value.ToString().Length == 8))))
                                 {
                                     if (tabControl1.SelectedTab != tabItemDetails) { tabControl1.SelectedTab = tabItemDetails; }
                                     #region MyRegion
-                                    string itemCode = dgQuotationAddedItems.CurrentCell.Value.ToString();
+                                    string itemCode = dgSaleAddedItems.CurrentCell.Value.ToString();
 
                                     dynamic MPNList;
                                     var sd1 = IME.SuperDisks.Where(a => a.Article_No == itemCode).FirstOrDefault();
@@ -367,22 +367,22 @@ namespace LoginForm.nmSaleOrder
                                         }
                                     }
                                     #endregion
-                                    ItemDetailsFiller(dgQuotationAddedItems.CurrentCell.Value.ToString());
+                                    ItemDetailsFiller(dgSaleAddedItems.CurrentCell.Value.ToString());
                                     //LandingCost Calculation
                                     FillProductCodeItem();
-                                    dgQuotationAddedItems.CurrentRow.Cells["dgQty"].ReadOnly = false;
-                                    dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Style = dgQuotationAddedItems.DefaultCellStyle;
+                                    dgSaleAddedItems.CurrentRow.Cells["dgQty"].ReadOnly = false;
+                                    dgSaleAddedItems.CurrentRow.Cells["dgQty"].Style = dgSaleAddedItems.DefaultCellStyle;
                                 }
                                 else
                                 {
 
                                     this.Enabled = false;
-                                    FormQuotationItemSearch itemsearch = new FormQuotationItemSearch(dgQuotationAddedItems.CurrentCell.Value.ToString());
+                                    FormQuotationItemSearch itemsearch = new FormQuotationItemSearch(dgSaleAddedItems.CurrentCell.Value.ToString());
                                     itemsearch.ShowDialog();
                                     try
                                     {
                                         //Bu item daha önceden eklimi diye kontrol ediyor
-                                        DataGridViewRow row = dgQuotationAddedItems.Rows
+                                        DataGridViewRow row = dgSaleAddedItems.Rows
            .Cast<DataGridViewRow>()
            .Where(r => r.Cells["dgProductCode"].Value.ToString().Equals(classQuotationAdd.ItemCode))
            .FirstOrDefault();
@@ -398,27 +398,27 @@ namespace LoginForm.nmSaleOrder
                                         }
                                     }
                                     catch { }
-                                    dgQuotationAddedItems.CurrentCell.Value = classQuotationAdd.ItemCode;
-                                    try { sdNumber = IME.SuperDisks.Where(a => a.Article_No.Contains(dgQuotationAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { sdNumber = 0; }
-                                    try { sdPNumber = IME.SuperDiskPs.Where(a => a.Article_No.Contains(dgQuotationAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { sdPNumber = 0; }
-                                    try { erNumber = IME.ExtendedRanges.Where(a => a.ArticleNo.Contains(dgQuotationAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { erNumber = 0; }
+                                    dgSaleAddedItems.CurrentCell.Value = classQuotationAdd.ItemCode;
+                                    try { sdNumber = IME.SuperDisks.Where(a => a.Article_No.Contains(dgSaleAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { sdNumber = 0; }
+                                    try { sdPNumber = IME.SuperDiskPs.Where(a => a.Article_No.Contains(dgSaleAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { sdPNumber = 0; }
+                                    try { erNumber = IME.ExtendedRanges.Where(a => a.ArticleNo.Contains(dgSaleAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { erNumber = 0; }
                                     if (sdNumber == 1 || sdPNumber == 1 || erNumber == 1)
                                     {
-                                        if (classQuotationAdd.HasMultipleItems(dgQuotationAddedItems.CurrentCell.Value.ToString()) == 0)
+                                        if (classQuotationAdd.HasMultipleItems(dgSaleAddedItems.CurrentCell.Value.ToString()) == 0)
                                         {
                                             if (tabControl1.SelectedTab != tabItemDetails) { tabControl1.SelectedTab = tabItemDetails; }
-                                            ItemDetailsFiller(dgQuotationAddedItems.CurrentCell.Value.ToString());
+                                            ItemDetailsFiller(dgSaleAddedItems.CurrentCell.Value.ToString());
                                             //LandingCost Calculation
                                             FillProductCodeItem();
-                                            dgQuotationAddedItems.CurrentRow.Cells["dgQty"].ReadOnly = false;
-                                            dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Style = dgQuotationAddedItems.DefaultCellStyle;
+                                            dgSaleAddedItems.CurrentRow.Cells["dgQty"].ReadOnly = false;
+                                            dgSaleAddedItems.CurrentRow.Cells["dgQty"].Style = dgSaleAddedItems.DefaultCellStyle;
                                             #region DataGridClear
-                                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value = null;
-                                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgDisc"].Value = null;
-                                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = null;
-                                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUPIME"].Value = null;
-                                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = null;
-                                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotal"].Value = null;
+                                            dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value = null;
+                                            dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgDisc"].Value = null;
+                                            dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = null;
+                                            dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUPIME"].Value = null;
+                                            dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = null;
+                                            dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgTotal"].Value = null;
 
                                             CalculateSubTotal();
                                             txtSubstitutedBy.Text = null;
@@ -427,9 +427,9 @@ namespace LoginForm.nmSaleOrder
 
                                     }
                                     this.Enabled = true;
-                                    if (dgQuotationAddedItems.CurrentCell.ColumnIndex == 7) dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentRow.Index].Cells[dgQuotationAddedItems.CurrentCell.ColumnIndex + 1];
-                                    dgQuotationAddedItems.Select();
-                                    ChangeCurrnetCellTabKey(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
+                                    if (dgSaleAddedItems.CurrentCell.ColumnIndex == 7) dgSaleAddedItems.CurrentCell = dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentRow.Index].Cells[dgSaleAddedItems.CurrentCell.ColumnIndex + 1];
+                                    dgSaleAddedItems.Select();
+                                    ChangeCurrnetCellTabKey(dgSaleAddedItems.CurrentCell.ColumnIndex + 1);
                                 }
 
                             }
@@ -442,54 +442,54 @@ namespace LoginForm.nmSaleOrder
                         }
                     }
                     #endregion
-                    if (dgQuotationAddedItems.CurrentRow.Cells["dgDesc"].Value != null) ChangeCurrnetCell(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
+                    if (dgSaleAddedItems.CurrentRow.Cells["dgDesc"].Value != null) ChangeCurrnetCell(dgSaleAddedItems.CurrentCell.ColumnIndex + 1);
                     break;
                 case 14://QAUANTITY
                     #region Quantity
                     {
-                        GetQuotationQuantity(dgQuotationAddedItems.CurrentCell.RowIndex);
+                        GetQuotationQuantity(dgSaleAddedItems.CurrentCell.RowIndex);
 
-                        dgQuotationAddedItems.CurrentRow.Cells["dgUCUPCurr"].ReadOnly = false;
-                        dgQuotationAddedItems.CurrentRow.Cells["dgUCUPCurr"].Style = dgQuotationAddedItems.DefaultCellStyle;
+                        dgSaleAddedItems.CurrentRow.Cells["dgUCUPCurr"].ReadOnly = false;
+                        dgSaleAddedItems.CurrentRow.Cells["dgUCUPCurr"].Style = dgSaleAddedItems.DefaultCellStyle;
 
-                        dgQuotationAddedItems.CurrentRow.Cells["dgTargetUP"].ReadOnly = false;
-                        dgQuotationAddedItems.CurrentRow.Cells["dgTargetUP"].Style = dgQuotationAddedItems.DefaultCellStyle;
+                        dgSaleAddedItems.CurrentRow.Cells["dgTargetUP"].ReadOnly = false;
+                        dgSaleAddedItems.CurrentRow.Cells["dgTargetUP"].Style = dgSaleAddedItems.DefaultCellStyle;
 
-                        dgQuotationAddedItems.CurrentRow.Cells["dgCompetitor"].ReadOnly = false;
-                        dgQuotationAddedItems.CurrentRow.Cells["dgCompetitor"].Style = dgQuotationAddedItems.DefaultCellStyle;
+                        dgSaleAddedItems.CurrentRow.Cells["dgCompetitor"].ReadOnly = false;
+                        dgSaleAddedItems.CurrentRow.Cells["dgCompetitor"].Style = dgSaleAddedItems.DefaultCellStyle;
 
-                        dgQuotationAddedItems.CurrentRow.Cells["dgDelivery"].ReadOnly = false;
-                        dgQuotationAddedItems.CurrentRow.Cells["dgDelivery"].Style = dgQuotationAddedItems.DefaultCellStyle;
+                        dgSaleAddedItems.CurrentRow.Cells["dgDelivery"].ReadOnly = false;
+                        dgSaleAddedItems.CurrentRow.Cells["dgDelivery"].Style = dgSaleAddedItems.DefaultCellStyle;
 
-                        dgQuotationAddedItems.CurrentRow.Cells["dgCustStkCode"].ReadOnly = false;
-                        dgQuotationAddedItems.CurrentRow.Cells["dgCustStkCode"].Style = dgQuotationAddedItems.DefaultCellStyle;
+                        dgSaleAddedItems.CurrentRow.Cells["dgCustStkCode"].ReadOnly = false;
+                        dgSaleAddedItems.CurrentRow.Cells["dgCustStkCode"].Style = dgSaleAddedItems.DefaultCellStyle;
 
-                        dgQuotationAddedItems.CurrentRow.Cells["dgCustDescription"].ReadOnly = false;
-                        dgQuotationAddedItems.CurrentRow.Cells["dgCustDescription"].Style = dgQuotationAddedItems.DefaultCellStyle;
+                        dgSaleAddedItems.CurrentRow.Cells["dgCustDescription"].ReadOnly = false;
+                        dgSaleAddedItems.CurrentRow.Cells["dgCustDescription"].Style = dgSaleAddedItems.DefaultCellStyle;
 
                     }
                     //LOW MARGIN
-                    if (dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Value != null && Decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Value.ToString()) > 0) { GetMarginMark(); }
+                    if (dgSaleAddedItems.CurrentRow.Cells["dgQty"].Value != null && Decimal.Parse(dgSaleAddedItems.CurrentRow.Cells["dgQty"].Value.ToString()) > 0) { GetMarginMark(); }
                     break;
                 #endregion
                 case 21://Total
                     {
                         #region Total
-                        decimal total = decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString());
-                        decimal UcupIME = decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUPIME"].Value.ToString());
-                        dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgDisc"].Value = String.Format("{0:0.0000}", ((UcupIME - total) * (decimal)100 / UcupIME));
+                        decimal total = decimal.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString());
+                        decimal UcupIME = decimal.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUPIME"].Value.ToString());
+                        dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgDisc"].Value = String.Format("{0:0.0000}", ((UcupIME - total) * (decimal)100 / UcupIME));
                         GetMargin();
                         GetMarginMark();
                         #region Calculate Total Margin
                         try
                         {
-                            Decimal TotalMarginValue = Decimal.Parse(txtTotalMargin.Text) * (Decimal.Parse(lblsubtotal.Text) - Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotal"].Value.ToString()));
-                            TotalMarginValue = (TotalMarginValue + (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotal"].Value.ToString()) * Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value.ToString()))) / Decimal.Parse(lblsubtotal.Text);
+                            Decimal TotalMarginValue = Decimal.Parse(txtTotalMargin.Text) * (Decimal.Parse(lblsubtotal.Text) - Decimal.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgTotal"].Value.ToString()));
+                            TotalMarginValue = (TotalMarginValue + (Decimal.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgTotal"].Value.ToString()) * Decimal.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value.ToString()))) / Decimal.Parse(lblsubtotal.Text);
                             txtTotalMargin.Text = String.Format("{0:0.0000}", TotalMarginValue).ToString();
                         }
                         catch
                         {
-                            txtTotalMargin.Text = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value.ToString())).ToString();
+                            txtTotalMargin.Text = String.Format("{0:0.0000}", Decimal.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value.ToString())).ToString();
                         }
                         #endregion
                         CalculateSubTotal();
@@ -502,60 +502,60 @@ namespace LoginForm.nmSaleOrder
 
         private void GetQuotationQuantity(int rowindex)
         {
-            if (cbFactor.Text != null && cbFactor.Text != "")
+            if (txtFactor.Text != null && txtFactor.Text != "")
             {
                 #region Quantity
-                if (dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value != null)
+                if (dgSaleAddedItems.Rows[rowindex].Cells["dgQty"].Value != null)
                 {
                     #region Quantity
                     if (txtStandartWeight.Text != null && txtStandartWeight.Text != "")
                     {
-                        txtGrossWeight.Text = (Decimal.Parse(txtStandartWeight.Text) * Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
+                        txtGrossWeight.Text = (Decimal.Parse(txtStandartWeight.Text) * Decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
                     }
                     //TODO @@@Cost hesaplama
-                    dgQuotationAddedItems.Rows[rowindex].Cells["dgCost"].Value = classQuotationAdd.GetCost(dgQuotationAddedItems.Rows[rowindex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString("G29");
+                    dgSaleAddedItems.Rows[rowindex].Cells["dgCost"].Value = classQuotationAdd.GetCost(dgSaleAddedItems.Rows[rowindex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString("G29");
                     //TODO @@@LandingCost hesaplatma
-                    if (dgQuotationAddedItems.Rows[rowindex].Cells["dgCost"].Value.ToString() != "-1") { String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgCost"].Value.ToString())).ToString(); }
+                    if (dgSaleAddedItems.Rows[rowindex].Cells["dgCost"].Value.ToString() != "-1") { String.Format("{0:0.0000}", Decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgCost"].Value.ToString())).ToString(); }
                     GetLandingCost(rowindex);
                     //  dgQuotationAddedItems.Rows[rowindex].Cells["dgLandingCost"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgLandingCost"].Value.ToString())).ToString();
                     //TODO Math.Round
-                    dgQuotationAddedItems.Rows[rowindex].Cells["dgLandingCost"].Value = Math.Round(Convert.ToDecimal(dgQuotationAddedItems.Rows[rowindex].Cells["dgLandingCost"].Value.ToString()), 4);
+                    dgSaleAddedItems.Rows[rowindex].Cells["dgLandingCost"].Value = Math.Round(Convert.ToDecimal(dgSaleAddedItems.Rows[rowindex].Cells["dgLandingCost"].Value.ToString()), 4);
                     decimal Currrate = 0;
                     if (curr.rate != null) Currrate = Decimal.Parse(curr.rate.ToString());
-                    price = Decimal.Parse((classQuotationAdd.GetPrice(dgQuotationAddedItems.Rows[rowindex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())) * Decimal.Parse(cbFactor.Text)/ Currrate * Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString("G29"));
+                    price = Decimal.Parse((classQuotationAdd.GetPrice(dgSaleAddedItems.Rows[rowindex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())) * Decimal.Parse(txtFactor.Text)/ Currrate * Decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString("G29"));
                     //price /= factor;
                     if (price > 0)
                     {
                         decimal discResult = 0;
                         //Fiyat burada
-                        string articleNo = dgQuotationAddedItems.Rows[rowindex].Cells["dgProductCode"].Value.ToString();
+                        string articleNo = dgSaleAddedItems.Rows[rowindex].Cells["dgProductCode"].Value.ToString();
 
 
-                        dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = price / decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString());
-                        dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = price;
+                        dgSaleAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = price / decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString());
+                        dgSaleAddedItems.Rows[rowindex].Cells["dgTotal"].Value = price;
                         //SuperdiskP değilse
-                        if (articleNo.ToUpper().IndexOf('P')==-1&& Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString()) > 1)
+                        if (articleNo.ToUpper().IndexOf('P')==-1&& Int32.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString()) > 1)
                         {
-                            if ((Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString()) % Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString())) != 0)
+                            if ((Int32.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString()) % Int32.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString())) != 0)
                             {
                                 MessageBox.Show("Please enter a number that is a multiple of Unit Content");
-                                dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value = "";
-                                dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = "";
-                                dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = "";
+                                dgSaleAddedItems.Rows[rowindex].Cells["dgQty"].Value = "";
+                                dgSaleAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = "";
+                                dgSaleAddedItems.Rows[rowindex].Cells["dgTotal"].Value = "";
                             }
                             else
                             {
-                                dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value.ToString()) / (decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString()));
-                                dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = price / (decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString()));
+                                dgSaleAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgUPIME"].Value.ToString()) / (decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString()));
+                                dgSaleAddedItems.Rows[rowindex].Cells["dgTotal"].Value = price / (decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgUC"].Value.ToString()));
                             }
 
                         }
-                        else if ((Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString()) % Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgSSM"].Value.ToString())) != 0)
+                        else if ((Int32.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString()) % Int32.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgSSM"].Value.ToString())) != 0)
                         {
                             MessageBox.Show("Please enter a number that is a multiple of SSM");
-                            dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value = "";
-                            dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = "";
-                            dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = "";
+                            dgSaleAddedItems.Rows[rowindex].Cells["dgQty"].Value = "";
+                            dgSaleAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = "";
+                            dgSaleAddedItems.Rows[rowindex].Cells["dgTotal"].Value = "";
                         }
 
 
@@ -614,43 +614,43 @@ namespace LoginForm.nmSaleOrder
                         //}
 
                         //TOTAL ve UPIME belirleniyor
-                        discResult = decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value.ToString());
-                        dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value.ToString())).ToString();
-                        dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = String.Format("{0:0.0000}", dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value).ToString();
-                        if (dgQuotationAddedItems.Rows[rowindex].Cells["dgDisc"].Value != null)
+                        discResult = decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgUPIME"].Value.ToString());
+                        dgSaleAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgUPIME"].Value.ToString())).ToString();
+                        dgSaleAddedItems.Rows[rowindex].Cells["dgTotal"].Value = String.Format("{0:0.0000}", dgSaleAddedItems.Rows[rowindex].Cells["dgTotal"].Value).ToString();
+                        if (dgSaleAddedItems.Rows[rowindex].Cells["dgDisc"].Value != null)
                         {
-                            dgQuotationAddedItems.Rows[rowindex].Cells["dgDisc"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgDisc"].Value.ToString())).ToString();
-                            discResult = (discResult - (discResult * decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgDisc"].Value.ToString()) / 100));
+                            dgSaleAddedItems.Rows[rowindex].Cells["dgDisc"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgDisc"].Value.ToString())).ToString();
+                            discResult = (discResult - (discResult * decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgDisc"].Value.ToString()) / 100));
                         }
-                        dgQuotationAddedItems.Rows[rowindex].Cells["dgUCUPCurr"].Value = String.Format("{0:0.0000}", discResult).ToString();
+                        dgSaleAddedItems.Rows[rowindex].Cells["dgUCUPCurr"].Value = String.Format("{0:0.0000}", discResult).ToString();
 
                         //Change lblsubtotal
-                        var st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
+                        var st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgSaleAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
                         if (st != null)
                         {
                             lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - st.Item2).ToString();
                             SubTotal.Remove(st);
 
                             int subtotalcol1 = 0;
-                            if (dgQuotationAddedItems.Rows[rowindex].Cells[0].Value != null) subtotalcol1 = Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString());
-                            SubTotal.Add(new Tuple<int, decimal>(subtotalcol1, Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())));
-                            st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
+                            if (dgSaleAddedItems.Rows[rowindex].Cells[0].Value != null) subtotalcol1 = Int32.Parse(dgSaleAddedItems.Rows[rowindex].Cells[0].Value.ToString());
+                            SubTotal.Add(new Tuple<int, decimal>(subtotalcol1, Decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())));
+                            st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgSaleAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
                             lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + st.Item2).ToString();
                         }
                         else
                         {
                             int subtotalcol1 = 0;
-                            if (dgQuotationAddedItems.Rows[rowindex].Cells[0].Value != null) subtotalcol1 = Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString());
-                            SubTotal.Add(new Tuple<int, decimal>(subtotalcol1, Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())));
-                            st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
+                            if (dgSaleAddedItems.Rows[rowindex].Cells[0].Value != null) subtotalcol1 = Int32.Parse(dgSaleAddedItems.Rows[rowindex].Cells[0].Value.ToString());
+                            SubTotal.Add(new Tuple<int, decimal>(subtotalcol1, Decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())));
+                            st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgSaleAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
                             lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + st.Item2).ToString();
                         }
 
                         //ChangeCurr(rowindex);
-                        if (dgQuotationAddedItems.CurrentCell == null) dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[rowindex].Cells[0];
+                        if (dgSaleAddedItems.CurrentCell == null) dgSaleAddedItems.CurrentCell = dgSaleAddedItems.Rows[rowindex].Cells[0];
                         GetMargin();
-                        dgQuotationAddedItems.Rows[rowindex].Cells["dgMargin"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgMargin"].Value.ToString())).ToString();
-                        if (dgQuotationAddedItems.CurrentRow.Cells["dgUnitWeigt"].Value != null && dgQuotationAddedItems.CurrentRow.Cells["dgUnitWeigt"].Value != "") dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotalWeight"].Value = (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUnitWeigt"].Value.ToString()) * Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
+                        dgSaleAddedItems.Rows[rowindex].Cells["dgMargin"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgMargin"].Value.ToString())).ToString();
+                        if (dgSaleAddedItems.CurrentRow.Cells["dgUnitWeigt"].Value != null && dgSaleAddedItems.CurrentRow.Cells["dgUnitWeigt"].Value != "") dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgTotalWeight"].Value = (Decimal.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUnitWeigt"].Value.ToString()) * Int32.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
                         txtTotalMargin.Text = calculateTotalMargin().ToString();
                     }
                     else { MessageBox.Show("This product does not have price"); }
@@ -665,13 +665,13 @@ namespace LoginForm.nmSaleOrder
         {
             try
             {
-                if (Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgMargin"].Value.ToString()) < LowMarginLimit)
+                if (Decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgMargin"].Value.ToString()) < LowMarginLimit)
                 {
-                    dgQuotationAddedItems.Rows[rowindex].Cells["LM"].Style.BackColor = Color.Blue;
+                    dgSaleAddedItems.Rows[rowindex].Cells["LM"].Style.BackColor = Color.Blue;
                 }
                 else
                 {
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LM"].Style.BackColor = Color.White;
+                    dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["LM"].Style.BackColor = Color.White;
                 }
             }
             catch { }
@@ -681,13 +681,13 @@ namespace LoginForm.nmSaleOrder
         {
             try
             {
-                if (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value.ToString()) < LowMarginLimit)
+                if (Decimal.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value.ToString()) < LowMarginLimit)
                 {
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LM"].Style.BackColor = Color.Blue;
+                    dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["LM"].Style.BackColor = Color.Blue;
                 }
                 else
                 {
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LM"].Style.BackColor = Color.White;
+                    dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["LM"].Style.BackColor = Color.White;
                 }
             }
             catch { }
@@ -698,34 +698,34 @@ namespace LoginForm.nmSaleOrder
             #region Get Margin
             DateTime today = DateTime.Today;
 
-            if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value != null && dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value != "")
+            if (dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value != null && dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value != "")
             {
-                if (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString()) > 1 || Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgSSM"].Value.ToString()) > 1)
+                if (Int32.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString()) > 1 || Int32.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgSSM"].Value.ToString()) > 1)
                 {
-                    if(Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString()) > 1 && (!(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString().Contains("P"))))
+                    if(Int32.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString()) > 1 && (!(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString().Contains("P"))))
                     {
-                        dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value = (((1 - (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString())*   decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString())  )))) * 100).ToString("G29");
+                        dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value = (((1 - (Decimal.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString())*   decimal.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value.ToString())  )))) * 100).ToString("G29");
                     }
                     else
                     {
-                        dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value = (((1 - (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
+                        dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value = (((1 - (Decimal.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
 
                     }
                     //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value = (((1 - (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
-                    if (SubTotal.Where(a => a.Item1 == Int32.Parse(dgQuotationAddedItems.CurrentRow.Cells[0].Value.ToString())).FirstOrDefault() != null)
+                    if (SubTotal.Where(a => a.Item1 == Int32.Parse(dgSaleAddedItems.CurrentRow.Cells[0].Value.ToString())).FirstOrDefault() != null)
                     {
-                        var st = SubTotal.Where(a => a.Item1 == Int32.Parse(dgQuotationAddedItems.CurrentRow.Cells[0].Value.ToString())).FirstOrDefault();
+                        var st = SubTotal.Where(a => a.Item1 == Int32.Parse(dgSaleAddedItems.CurrentRow.Cells[0].Value.ToString())).FirstOrDefault();
                         SubTotal.Remove(st);
-                        SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgQuotationAddedItems.CurrentRow.Cells[0].Value.ToString()), Decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells["dgTotal"].Value.ToString())));
+                        SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgSaleAddedItems.CurrentRow.Cells[0].Value.ToString()), Decimal.Parse(dgSaleAddedItems.CurrentRow.Cells["dgTotal"].Value.ToString())));
                     }
                     else
                     {
-                        SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgQuotationAddedItems.CurrentRow.Cells[0].Value.ToString()), Decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells["dgTotal"].Value.ToString())));
+                        SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgSaleAddedItems.CurrentRow.Cells[0].Value.ToString()), Decimal.Parse(dgSaleAddedItems.CurrentRow.Cells["dgTotal"].Value.ToString())));
                     }
                 }
                 else
                 {
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
+                    dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
 
                 }
             }
@@ -736,31 +736,31 @@ namespace LoginForm.nmSaleOrder
         {
             #region Get Margin
             DateTime today = DateTime.Today;
-            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+            for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
             {
                 try
                 {
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value != null)
+                    if (dgSaleAddedItems.Rows[i].Cells["dgQty"].Value != null)
                     {
-                        if (Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUC"].Value.ToString()) > 1 && (!(dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString().Contains("P"))))
+                        if (Int32.Parse(dgSaleAddedItems.Rows[i].Cells["dgUC"].Value.ToString()) > 1 && (!(dgSaleAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString().Contains("P"))))
                         {
-                            dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value = (((1 - (Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()) * decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUC"].Value.ToString()))))) * 100).ToString("G29");
+                            dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value = (((1 - (Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()) * decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUC"].Value.ToString()))))) * 100).ToString("G29");
                         }
                         else
                         {
-                            dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value = (((1 - (Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
+                            dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value = (((1 - (Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
 
                         }
                     }
-                    if (SubTotal.Where(a => a.Item1 == Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString())).FirstOrDefault() != null)
+                    if (SubTotal.Where(a => a.Item1 == Int32.Parse(dgSaleAddedItems.Rows[i].Cells[0].Value.ToString())).FirstOrDefault() != null)
                     {
-                        var st = SubTotal.Where(a => a.Item1 == Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString())).FirstOrDefault();
+                        var st = SubTotal.Where(a => a.Item1 == Int32.Parse(dgSaleAddedItems.Rows[i].Cells[0].Value.ToString())).FirstOrDefault();
                         SubTotal.Remove(st);
-                        SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()), Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString())));
+                        SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgSaleAddedItems.Rows[i].Cells[0].Value.ToString()), Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value.ToString())));
                     }
                     else
                     {
-                        SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()), Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString())));
+                        SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgSaleAddedItems.Rows[i].Cells[0].Value.ToString()), Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value.ToString())));
                     }
                 }
                 catch { }
@@ -775,10 +775,10 @@ namespace LoginForm.nmSaleOrder
             #region FillProductCodeItem
             //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgLandingCost"].Value = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.CurrentCell.Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked,
             //    Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQtr"].Value.ToString()))).ToString("G29");
-            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgCCCNO"].Value = txtCCCN.Text;
-            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgCOO"].Value = txtCofO.Text;
-            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUnitWeigt"].Value = txtStandartWeight.Text;
-            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotalWeight"].Value = txtGrossWeight.Text;
+            dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgCCCNO"].Value = txtCCCN.Text;
+            dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgCOO"].Value = txtCofO.Text;
+            dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUnitWeigt"].Value = txtStandartWeight.Text;
+            dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgTotalWeight"].Value = txtGrossWeight.Text;
             #endregion
         }
 
@@ -891,13 +891,13 @@ namespace LoginForm.nmSaleOrder
 
             if (sd != null)
             {
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgDesc"].Value = sd.Article_Desc;
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgSSM"].Value = sd.Pack_Quantity.ToString();
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value = sd.Unit_Content.ToString();
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUOM"].Value = sd.Unit_Measure;
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMPN"].Value = sd.MPN;
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgCL"].Value = sd.Calibration_Ind;
-                dgQuotationAddedItems.CurrentRow.Cells["dgDependantTable"].Value = "sd";
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgDesc"].Value = sd.Article_Desc;
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgSSM"].Value = sd.Pack_Quantity.ToString();
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value = sd.Unit_Content.ToString();
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUOM"].Value = sd.Unit_Measure;
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgMPN"].Value = sd.MPN;
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgCL"].Value = sd.Calibration_Ind;
+                dgSaleAddedItems.CurrentRow.Cells["dgDependantTable"].Value = "sd";
                 if (sd.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sd.Standard_Weight) / (decimal)1000).ToString("G29"); } else { }
                 txtHazardousInd.Text = sd.Hazardous_Ind;
                 txtCalibrationInd.Text = sd.Calibration_Ind;
@@ -921,12 +921,12 @@ namespace LoginForm.nmSaleOrder
             }
             if (sdP != null)
             {
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgDesc"].Value = sdP.Article_Desc;
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgSSM"].Value = sdP.Pack_Quantity.ToString();
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value = sdP.Unit_Content.ToString();
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUOM"].Value = sdP.Unit_Measure;
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUOM"].Value = sdP.Unit_Measure;
-                dgQuotationAddedItems.CurrentRow.Cells["dgDependantTable"].Value = "sdp";
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgDesc"].Value = sdP.Article_Desc;
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgSSM"].Value = sdP.Pack_Quantity.ToString();
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value = sdP.Unit_Content.ToString();
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUOM"].Value = sdP.Unit_Measure;
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUOM"].Value = sdP.Unit_Measure;
+                dgSaleAddedItems.CurrentRow.Cells["dgDependantTable"].Value = "sdp";
                 //dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgPackType"].Value = sdP.Calibration_Ind.ToString();
 
                 if (sdP.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sdP.Standard_Weight) / (decimal)1000).ToString("G29"); }
@@ -944,7 +944,7 @@ namespace LoginForm.nmSaleOrder
                 txtDiscCharge.Text = sdP.Disc_Change_Ind;
                 txtExpiringPro.Text = sdP.Expiring_Product_Change_Ind;
                 txtManufacturer.Text = sdP.Manufacturer.ToString();
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMPN"].Value = sdP.MPN;
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgMPN"].Value = sdP.MPN;
                 txtMHCodeLevel1.Text = sdP.MH_Code_Level_1;
                 txtCCCN.Text = sdP.CCCN_No.ToString();
                 txtHeight.Text = ((decimal)(sdP.Heigh * ((Decimal)100))).ToString("G29");
@@ -953,12 +953,12 @@ namespace LoginForm.nmSaleOrder
             }
             if (er != null)
             {
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgDesc"].Value = er.ArticleDescription;
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUOM"].Value = er.UnitofMeasure;
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMPN"].Value = er.MPN;
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgSSM"].Value = er.PackSize;
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value = er.SalesUoM;
-                dgQuotationAddedItems.CurrentRow.Cells["dgDependantTable"].Value = "ext";
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgDesc"].Value = er.ArticleDescription;
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUOM"].Value = er.UnitofMeasure;
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgMPN"].Value = er.MPN;
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgSSM"].Value = er.PackSize;
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value = er.SalesUoM;
+                dgSaleAddedItems.CurrentRow.Cells["dgDependantTable"].Value = "ext";
 
 
                 if (txtLength.Text != "") { txtLength.Text = ((decimal)(er.ExtendedRangeLength * ((Decimal)100))).ToString("G29"); }
@@ -987,11 +987,11 @@ namespace LoginForm.nmSaleOrder
                 txtCost3.Text = er.DiscountedPrice3.ToString();
                 txtCost4.Text = er.DiscountedPrice4.ToString();
                 txtCost5.Text = er.DiscountedPrice5.ToString();
-                txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(txtFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(txtFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(txtFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(txtFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(txtFactor.Text)) / CurrValueWeb).ToString();
             }
             if (sp != null)
             {
@@ -1012,11 +1012,11 @@ namespace LoginForm.nmSaleOrder
                 txtCost3.Text = sp.DiscountedPrice3.ToString();
                 txtCost4.Text = sp.DiscountedPrice4.ToString();
                 txtCost5.Text = sp.DiscountedPrice5.ToString();
-                txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(txtFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(txtFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(txtFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(txtFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(txtFactor.Text)) / CurrValueWeb).ToString();
                 txtSupersectionName.Text = sp.SupersectionName;
             }
             if (h != null)
@@ -1047,20 +1047,20 @@ namespace LoginForm.nmSaleOrder
             if (du != null) { txtLicenceType.Text = du.LicenceType; }
             //
             #endregion
-            if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUOM"].Value == "" && dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value != null) { dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUOM"].Value = "Each"; }
+            if (dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUOM"].Value == "" && dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUC"].Value != null) { dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUOM"].Value = "Each"; }
             #region ItemMarginFiller
-            string articleNo = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString();
+            string articleNo = dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString();
             SlidingPrice sp1 = IME.SlidingPrices.Where(a => a.ArticleNo == articleNo).FirstOrDefault();
             int quantity = 0;
             if (sp1 != null) { quantity = Int32.Parse(sp1.Col1Break.ToString()); } else { quantity = Int32.Parse(er.Col1Break.ToString()); }
 
-            txtMargin1.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, quantity)).ToString("G29");
+            txtMargin1.Text = (classQuotationAdd.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, quantity)).ToString("G29");
             txtMargin1.Text = ((1 - ((Decimal.Parse(txtMargin1.Text)) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
 
             int quantity2 = 0;
             if (sp1 != null) { quantity2 = Int32.Parse(sp1.Col2Break.ToString()); } else { quantity2 = Int32.Parse(er.Col2Break.ToString()); }
 
-            txtMargin2.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, quantity2)).ToString("G29");
+            txtMargin2.Text = (classQuotationAdd.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, quantity2)).ToString("G29");
 
             if (txtWeb2.Text == "0")
             {
@@ -1073,15 +1073,15 @@ namespace LoginForm.nmSaleOrder
             {
 
                 txtMargin2.Text = ((1 - ((Decimal.Parse(txtMargin2.Text)) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
-                txtMargin3.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, Int32.Parse(sp1.Col3Break.ToString()))).ToString("G29");
+                txtMargin3.Text = (classQuotationAdd.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, Int32.Parse(sp1.Col3Break.ToString()))).ToString("G29");
                 if (Decimal.Parse(txtWeb3.Text) != 0) txtMargin3.Text = ((1 - ((Decimal.Parse(txtMargin3.Text)) / (decimal.Parse(txtWeb3.Text)))) * 100).ToString();
                 if (sp1.Col4Break != 0)
                 {
-                    txtMargin4.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, Int32.Parse(sp1.Col4Break.ToString()))).ToString("G29");
+                    txtMargin4.Text = (classQuotationAdd.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, Int32.Parse(sp1.Col4Break.ToString()))).ToString("G29");
                     txtMargin4.Text = ((1 - ((Decimal.Parse(txtMargin4.Text)) / (decimal.Parse(txtWeb4.Text)))) * 100).ToString();
                     if (sp1.Col5Break != 0)
                     {
-                        txtMargin5.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, Int32.Parse(sp1.Col5Break.ToString()))).ToString("G29");
+                        txtMargin5.Text = (classQuotationAdd.GetLandingCost(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), true, true, true, Int32.Parse(sp1.Col5Break.ToString()))).ToString("G29");
                         txtMargin5.Text = ((1 - ((Decimal.Parse(txtMargin5.Text)) / (decimal.Parse(txtWeb5.Text)))) * 100).ToString();
                     }
                 }
@@ -1095,23 +1095,23 @@ namespace LoginForm.nmSaleOrder
             if (txtLithium.Text != "")
             {
                 label64.BackColor = Color.Red;
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.Ivory;
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.Ivory;
             }
             else
             {
                 label64.BackColor = Color.White;
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.White;
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.White;
             }
             if (txtShipping.Text != "")
             {
                 label63.BackColor = Color.Red;
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["HS"].Style.BackColor = Color.Red;
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["HS"].Style.BackColor = Color.Red;
 
             }
             else
             {
                 label63.BackColor = Color.White;
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["HS"].Style.BackColor = Color.White;
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["HS"].Style.BackColor = Color.White;
             }
 
             if (txtEnvironment.Text != "")
@@ -1126,21 +1126,21 @@ namespace LoginForm.nmSaleOrder
             if (txtCalibrationInd.Text != "" && txtCalibrationInd.Text != null && txtCalibrationInd.Text != "N")
             {
                 label22.BackColor = Color.Red;
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.Green;
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.Green;
             }
             else
             {
                 label22.BackColor = Color.White;
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.White;
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.White;
             }
 
             if (txtLicenceType.Text != "" && txtLicenceType.Text != null)
             {
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.BurlyWood;
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.BurlyWood;
             }
             else
             {
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.White;
+                dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.White;
             }
 
 
@@ -1183,9 +1183,9 @@ namespace LoginForm.nmSaleOrder
             txtGrossWeight.Text = "";
             try
             {
-                if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value != null)
+                if (dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value != null)
                 {
-                    txtGrossWeight.Text = (Decimal.Parse(txtStandartWeight.Text) * Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())).ToString();
+                    txtGrossWeight.Text = (Decimal.Parse(txtStandartWeight.Text) * Decimal.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString())).ToString();
                 }
             }
             catch { }
@@ -1194,14 +1194,14 @@ namespace LoginForm.nmSaleOrder
 
         private void dgQuotationAddedItems_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            if (dgQuotationAddedItems.RowCount > 1) dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[0].Value = (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 2].Cells[0].Value.ToString()) + 1).ToString();
+            if (dgSaleAddedItems.RowCount > 1) dgSaleAddedItems.Rows[dgSaleAddedItems.RowCount - 1].Cells[0].Value = (Int32.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.RowCount - 2].Cells[0].Value.ToString()) + 1).ToString();
         }
 
         private void dgQuotationAddedItems_Click(object sender, EventArgs e)
 
         {
             ItemClear();
-            try { ItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString()); } catch { }
+            try { ItemDetailsFiller(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString()); } catch { }
         }
 
         
@@ -1210,8 +1210,8 @@ namespace LoginForm.nmSaleOrder
         {
             try
             {
-                dgQuotationAddedItems.Rows[Rowindex].Cells["dgLandingCost"].Value = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[Rowindex].Cells["dgProductCode"].Value.ToString(), true, true, true)).ToString("G29");
-                dgQuotationAddedItems.Rows[Rowindex].Cells["dgLandingCost"].Value = String.Format("{0:0.0000}", dgQuotationAddedItems.Rows[Rowindex].Cells["dgLandingCost"].Value.ToString()).ToString();
+                dgSaleAddedItems.Rows[Rowindex].Cells["dgLandingCost"].Value = (classQuotationAdd.GetLandingCost(dgSaleAddedItems.Rows[Rowindex].Cells["dgProductCode"].Value.ToString(), true, true, true)).ToString("G29");
+                dgSaleAddedItems.Rows[Rowindex].Cells["dgLandingCost"].Value = String.Format("{0:0.0000}", dgSaleAddedItems.Rows[Rowindex].Cells["dgLandingCost"].Value.ToString()).ToString();
             }
             catch { }
 
@@ -1219,24 +1219,24 @@ namespace LoginForm.nmSaleOrder
 
         private void getQuotationValues()
         {
-            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+            for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
             {
-                if (dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value != null)
+                if (dgSaleAddedItems.Rows[i].Cells["dgProductCode"].Value != null)
                 {
 
 
                     GetLandingCost(i);
-                    if (Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString()) < Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgCost"].Value.ToString()))
+                    if (Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString()) < Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgCost"].Value.ToString()))
                     {
-                        dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value = dgQuotationAddedItems.Rows[i].Cells["dgCost"].Value.ToString();
+                        dgSaleAddedItems.Rows[i].Cells["dgLandingCost"].Value = dgSaleAddedItems.Rows[i].Cells["dgCost"].Value.ToString();
                     }
                     GetAllMargin();
                     try
                     {
                         #region Get Margin
-                        if (dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value != null)
+                        if (dgSaleAddedItems.Rows[i].Cells["dgQty"].Value != null)
                         {
-                            dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
+                            dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
                         }
                         #endregion
                     }
@@ -1252,19 +1252,19 @@ namespace LoginForm.nmSaleOrder
 
         private void CalculateSubTotal()
         {
-            if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgNo"].Value != null)
+            if (dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgNo"].Value != null)
             {
 
                 #region SubTotal Calculation
-                int RowIndex = dgQuotationAddedItems.CurrentCell.RowIndex;
+                int RowIndex = dgSaleAddedItems.CurrentCell.RowIndex;
                 int rowindexSubTotal = 0;
-                if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgNo"].Value != null && dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgNo"].Value != "") Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgNo"].Value.ToString());
+                if (dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgNo"].Value != null && dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgNo"].Value != "") Int32.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgNo"].Value.ToString());
                 var tuple = SubTotal.Where(a => a.Item1 == rowindexSubTotal).FirstOrDefault();
                 if (tuple == null || tuple.Item2 == 0)
                 {
-                    if (dgQuotationAddedItems.Rows[RowIndex].Cells["dgTotal"].Value != null && dgQuotationAddedItems.Rows[RowIndex].Cells["dgTotal"].Value != "")
+                    if (dgSaleAddedItems.Rows[RowIndex].Cells["dgTotal"].Value != null && dgSaleAddedItems.Rows[RowIndex].Cells["dgTotal"].Value != "")
                     {
-                        var tuple0 = new Tuple<int, decimal>(rowindexSubTotal, Decimal.Parse(dgQuotationAddedItems.Rows[RowIndex].Cells["dgTotal"].Value.ToString()));
+                        var tuple0 = new Tuple<int, decimal>(rowindexSubTotal, Decimal.Parse(dgSaleAddedItems.Rows[RowIndex].Cells["dgTotal"].Value.ToString()));
                         SubTotal.Add(tuple0);
                         tuple = SubTotal.Where(a => a.Item1 == rowindexSubTotal).FirstOrDefault();
                         if (lblsubtotal.Text != "" && lblsubtotal.Text != null)
@@ -1285,13 +1285,13 @@ namespace LoginForm.nmSaleOrder
                     lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - (tuple.Item2)).ToString();
                     SubTotal.Remove(tuple);
 
-                    if (dgQuotationAddedItems.Rows[RowIndex].Cells["dgQty"].Value != null && dgQuotationAddedItems.Rows[RowIndex].Cells["dgQty"].Value != "")
+                    if (dgSaleAddedItems.Rows[RowIndex].Cells["dgQty"].Value != null && dgSaleAddedItems.Rows[RowIndex].Cells["dgQty"].Value != "")
                     {
-                        SubTotal.Add(new Tuple<int, decimal>(rowindexSubTotal, (Decimal.Parse(dgQuotationAddedItems.Rows[RowIndex].Cells["dgTotal"].Value.ToString()))));
-                        dgQuotationAddedItems.Rows[RowIndex].Cells["dgTotal"].Value = (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString()) * Decimal.Parse(dgQuotationAddedItems.Rows[RowIndex].Cells["dgUCUPCurr"].Value.ToString())).ToString();
+                        SubTotal.Add(new Tuple<int, decimal>(rowindexSubTotal, (Decimal.Parse(dgSaleAddedItems.Rows[RowIndex].Cells["dgTotal"].Value.ToString()))));
+                        dgSaleAddedItems.Rows[RowIndex].Cells["dgTotal"].Value = (Decimal.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value.ToString()) * Decimal.Parse(dgSaleAddedItems.Rows[RowIndex].Cells["dgUCUPCurr"].Value.ToString())).ToString();
                     }
                     decimal total = 0;
-                    try { total = decimal.Parse(dgQuotationAddedItems.Rows[RowIndex].Cells["dgTotal"].Value.ToString()); } catch { }
+                    try { total = decimal.Parse(dgSaleAddedItems.Rows[RowIndex].Cells["dgTotal"].Value.ToString()); } catch { }
                     lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + total).ToString();
                 }
                 #endregion
@@ -1349,7 +1349,7 @@ namespace LoginForm.nmSaleOrder
             }
             catch { }
             decimal extrachange = 0;
-            try { extrachange = decimal.Parse(txtExtraChanges.Text); } catch { }
+            try { extrachange = decimal.Parse(txtExtraCharges.Text); } catch { }
             lblTotalExtra.Text = (total + extrachange).ToString();
         }
 
@@ -1367,7 +1367,7 @@ namespace LoginForm.nmSaleOrder
         {
             if (e.Button == MouseButtons.Right)
             {
-                DeletedQuotationMenu.Show(dgQuotationDeleted, new Point(e.X, e.Y));
+                DeletedQuotationMenu.Show(dgSaleDeleted, new Point(e.X, e.Y));
             }
         }
 
@@ -1391,11 +1391,11 @@ namespace LoginForm.nmSaleOrder
                     if (txtTotalDis.Text != ((CurrentDis * 100) / Decimal.Parse(lblsubtotal.Text)).ToString())
                     {
                         txtTotalDis.Text = ((CurrentDis * 100) / Decimal.Parse(lblsubtotal.Text)).ToString();
-                        for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+                        for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
                         {
-                            if (dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value == null || dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value.ToString() == 0.ToString())
+                            if (dgSaleAddedItems.Rows[i].Cells["dgDisc"].Value == null || dgSaleAddedItems.Rows[i].Cells["dgDisc"].Value.ToString() == 0.ToString())
                             {
-                                dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value = txtTotalDis.Text;
+                                dgSaleAddedItems.Rows[i].Cells["dgDisc"].Value = txtTotalDis.Text;
                             }
                         }
                     }
@@ -1410,9 +1410,9 @@ namespace LoginForm.nmSaleOrder
         private bool ControlSave()
         {
             if (txtCustomerName.Text == null || txtCustomerName.Text == String.Empty) { MessageBox.Show("Please Enter a Customer"); return false; }
-            for (int i = 0; i < dgQuotationAddedItems.RowCount - 1; i++)
+            for (int i = 0; i < dgSaleAddedItems.RowCount - 1; i++)
             {
-                if (dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value != null && Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString()) < Utils.getCurrentUser().MinMarge) { MessageBox.Show("Please Check Merge of Products "); return false; }
+                if (dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value != null && Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value.ToString()) < Utils.getCurrentUser().MinMarge) { MessageBox.Show("Please Check Merge of Products "); return false; }
             }
             return true;
         }
@@ -1425,8 +1425,8 @@ namespace LoginForm.nmSaleOrder
             SaveOK = ControlSave();
             if (SaveOK)
             {
-                QuotationSave();
-                QuotationDetailsSave();
+                SaleSave();
+                //QuotationDetailsSave();
             }
 
             //}
@@ -1434,33 +1434,40 @@ namespace LoginForm.nmSaleOrder
 
         }
 
-        private void QuotationSave()
+        private void SaleSave()
         {
             try
             {
                 SaleOrder s = new SaleOrder();
-                s.CustomerID = CustomerCode.Text;
-                s.DeliveryContactID = (int)cbDeliveryContact.SelectedValue;
-                s.ContactID = (int)cbWorkers.SelectedValue;
-                s.InvoiceAddressID = (int)cbInvoiceAdress.SelectedValue;
-                s.DeliveryAddressID = (int)cbDeliveryAddress.SelectedValue;
-                s.PaymentTermID = (int)cbPaymentTerm.SelectedValue;
-                s.currencyID = (decimal)cbCurrency.SelectedValue;
-                s.PaymentMethodID = (int)cbPayment.SelectedValue;
-                s.RepresentativeID = (int)cbRep.SelectedValue;
-                s.NoteForUs = txtNoteForUs.Text;
-                s.NoteForFinance = (chkbForFinance.Checked == true) ? 1 : 0;
-                s.NoteForCustomer = txtNoteForCustomer.Text;
-                s.OnlineConfirmationNo = txtOnlineConfirmationNo.Text;
-                s.QuotationNos = txtQuotationNo.Text;
-                s.RequestedDeliveryDate = dtpDate.Value.Date;
-                s.SaleDate = DateTime.Now;
-                s.SaleOrderNature = cbOrderNature.SelectedItem.ToString();
                 //TODO (SALEORDER) ID Formatını öğren ve ID'yi düzenle
                 s.SaleOrderNo = "SO" + (IME.SaleOrders.Count() + 1);
-                s.ShippingType = cbSMethod.SelectedItem.ToString();
-                s.TotalPrice = Convert.ToDecimal(lbltotal.Text);
+                s.SaleDate = DateTime.Now;
+                s.OnlineConfirmationNo = txtOnlineConfirmationNo.Text;
+                s.QuotationNos = txtQuotationNo.Text;
+                s.PaymentTermID = (int)cbPaymentTerm.SelectedValue;
+                s.RequestedDeliveryDate = dtpRequestedDelvDate.Value.Date;
                 s.Vat = Convert.ToDecimal(lblVat.Text);
+                s.TotalPrice = Convert.ToDecimal(lbltotal.Text);
+                s.CustomerID = CustomerCode.Text;
+                s.ContactID = (int)cbWorkers.SelectedValue;
+                s.DeliveryContactID = (int)cbDeliveryContact.SelectedValue;
+                s.InvoiceAddressID = (int)cbInvoiceAdress.SelectedValue;
+                s.DeliveryAddressID = (int)cbDeliveryAddress.SelectedValue;
+                s.RepresentativeID = (int)cbRep.SelectedValue;
+                s.PaymentMethodID = (int)cbPayment.SelectedValue;
+                s.NoteForUs = txtNoteForUs.Text;
+                s.NoteForCustomer = txtNoteForCustomer.Text;
+                s.NoteForFinance = (chkbForFinance.Checked == true) ? 1 : 0;
+                s.SaleOrderNature = cbOrderNature.SelectedItem.ToString();
+                s.ShippingType = cbSMethod.SelectedItem.ToString();
+                s.currencyID = (decimal)cbCurrency.SelectedValue;
+                s.LPONO = txtLPONO.Text;
+                s.TotalMargin = Convert.ToDecimal(txtTotalMargin.Text);
+                s.Factor = Convert.ToDecimal(txtFactor.Text);
+                s.SubTotal = Convert.ToDecimal(lblsubtotal.Text);
+                s.DiscOnSubtotal = Convert.ToDecimal(txtTotalDis.Text);
+                s.ExtraCharges = Convert.ToDecimal(txtExtraCharges.Text);
+                
 
                 IME.SaleOrders.Add(s);
                 IME.SaveChanges();
@@ -1542,11 +1549,11 @@ namespace LoginForm.nmSaleOrder
             if (chkbForFinance.Checked) { q.ForFinancelIsTrue = 1; } else { q.ForFinancelIsTrue = 0; }
             q.ShippingMethodID = cbSMethod.SelectedIndex;
             try { q.DiscOnSubTotal2 = decimal.Parse(txtTotalDis2.Text); } catch { }
-            try { q.ExtraCharges = decimal.Parse(txtExtraChanges.Text); } catch { }
+            try { q.ExtraCharges = decimal.Parse(txtExtraCharges.Text); } catch { }
             if (chkVat.Checked) { q.IsVatValue = 1; } else { q.IsVatValue = 0; }
             try { q.VatValue = Decimal.Parse(lblVat.Text); } catch { }
             try { q.StartDate = dtpDate.Value; } catch { }
-            try { q.Factor = Decimal.Parse(cbFactor.Text); } catch { }
+            try { q.Factor = Decimal.Parse(txtFactor.Text); } catch { }
             //try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
             try { q.PaymentID = (cbPayment.SelectedItem as PaymentMethod).ID; } catch { }
             try { q.CurrName = (cbCurrency.SelectedItem as Rate).CurType; } catch { }
@@ -1587,57 +1594,57 @@ namespace LoginForm.nmSaleOrder
         private void QuotationDetailsSave()
         {
             IMEEntities IME = new IMEEntities();
-            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+            for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
             {
-                if (dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value != null)
+                if (dgSaleAddedItems.Rows[i].Cells["dgProductCode"].Value != null)
                 {
                     QuotationDetail qd = new QuotationDetail();
                     qd.QuotationNo = txtSaleOrderNo.Text;
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgNo"].Value != null) qd.dgNo = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgNo"].Value.ToString());
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgDesc"].Value != null) qd.CustomerDescription = dgQuotationAddedItems.Rows[i].Cells["dgDesc"].Value.ToString();
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value != null) qd.ItemCode = dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString();
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value != null) qd.Qty = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString());
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgUOM"].Value != null) qd.UnitOfMeasure = dgQuotationAddedItems.Rows[i].Cells["dgUOM"].Value.ToString();
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value != null) qd.UCUPCurr = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString());
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value != null) qd.UPIME = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString());
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value != null) qd.Disc = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value.ToString());
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value != null) qd.Total = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString());
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].Value != null) qd.TargetUP = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTargetUP"].Value.ToString());
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].Value != null) qd.Competitor = dgQuotationAddedItems.Rows[i].Cells["dgCompetitor"].Value.ToString();
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].Value != null) qd.CustomerDescription = dgQuotationAddedItems.Rows[i].Cells["dgCustDescription"].Value.ToString();
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].Value != null) qd.CustomerStockCode = dgQuotationAddedItems.Rows[i].Cells["dgCustStkCode"].Value.ToString();
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgUC"].Value != null) qd.UC = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUC"].Value.ToString());
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgSSM"].Value != null) qd.SSM = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgSSM"].Value.ToString());
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgUnitWeigt"].Value != null) qd.UnitWeight = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUnitWeigt"].Value.ToString());
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value != null) qd.Marge = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString());
-                    qd.DependantTable = dgQuotationAddedItems.Rows[i].Cells["dgDependantTable"].Value.ToString();
+                    if (dgSaleAddedItems.Rows[i].Cells["dgNo"].Value != null) qd.dgNo = Int32.Parse(dgSaleAddedItems.Rows[i].Cells["dgNo"].Value.ToString());
+                    if (dgSaleAddedItems.Rows[i].Cells["dgDesc"].Value != null) qd.CustomerDescription = dgSaleAddedItems.Rows[i].Cells["dgDesc"].Value.ToString();
+                    if (dgSaleAddedItems.Rows[i].Cells["dgProductCode"].Value != null) qd.ItemCode = dgSaleAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString();
+                    if (dgSaleAddedItems.Rows[i].Cells["dgQty"].Value != null) qd.Qty = Int32.Parse(dgSaleAddedItems.Rows[i].Cells["dgQty"].Value.ToString());
+                    if (dgSaleAddedItems.Rows[i].Cells["dgUOM"].Value != null) qd.UnitOfMeasure = dgSaleAddedItems.Rows[i].Cells["dgUOM"].Value.ToString();
+                    if (dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Value != null) qd.UCUPCurr = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString());
+                    if (dgSaleAddedItems.Rows[i].Cells["dgUPIME"].Value != null) qd.UPIME = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString());
+                    if (dgSaleAddedItems.Rows[i].Cells["dgDisc"].Value != null) qd.Disc = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgDisc"].Value.ToString());
+                    if (dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value != null) qd.Total = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value.ToString());
+                    if (dgSaleAddedItems.Rows[i].Cells["dgTargetUP"].Value != null) qd.TargetUP = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgTargetUP"].Value.ToString());
+                    if (dgSaleAddedItems.Rows[i].Cells["dgCompetitor"].Value != null) qd.Competitor = dgSaleAddedItems.Rows[i].Cells["dgCompetitor"].Value.ToString();
+                    if (dgSaleAddedItems.Rows[i].Cells["dgCustDescription"].Value != null) qd.CustomerDescription = dgSaleAddedItems.Rows[i].Cells["dgCustDescription"].Value.ToString();
+                    if (dgSaleAddedItems.Rows[i].Cells["dgCustStkCode"].Value != null) qd.CustomerStockCode = dgSaleAddedItems.Rows[i].Cells["dgCustStkCode"].Value.ToString();
+                    if (dgSaleAddedItems.Rows[i].Cells["dgUC"].Value != null) qd.UC = Int32.Parse(dgSaleAddedItems.Rows[i].Cells["dgUC"].Value.ToString());
+                    if (dgSaleAddedItems.Rows[i].Cells["dgSSM"].Value != null) qd.SSM = Int32.Parse(dgSaleAddedItems.Rows[i].Cells["dgSSM"].Value.ToString());
+                    if (dgSaleAddedItems.Rows[i].Cells["dgUnitWeigt"].Value != null) qd.UnitWeight = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUnitWeigt"].Value.ToString());
+                    if (dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value != null) qd.Marge = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value.ToString());
+                    qd.DependantTable = dgSaleAddedItems.Rows[i].Cells["dgDependantTable"].Value.ToString();
                     IME.QuotationDetails.Add(qd);
                     IME.SaveChanges();
                 }
 
             }
-            for (int i = 0; i < dgQuotationDeleted.RowCount; i++)
+            for (int i = 0; i < dgSaleDeleted.RowCount; i++)
             {
-                if (dgQuotationDeleted.Rows[i].Cells["dgProductCode1"].Value != null)
+                if (dgSaleDeleted.Rows[i].Cells["dgProductCode1"].Value != null)
                 {
                     QuotationDetail qd = new QuotationDetail();
 
-                    if (dgQuotationDeleted.Rows[i].Cells["No1"].Value != null) qd.dgNo = Int32.Parse(dgQuotationDeleted.Rows[i].Cells["No1"].Value.ToString());
-                    if (dgQuotationDeleted.Rows[i].Cells["dgDesc1"].Value != null) qd.CustomerDescription = dgQuotationDeleted.Rows[i].Cells["dgDesc1"].Value.ToString();
-                    if (dgQuotationDeleted.Rows[i].Cells["dgProductCode1"].Value != null) qd.ItemCode = dgQuotationDeleted.Rows[i].Cells["dgProductCode1"].Value.ToString();
-                    if (dgQuotationDeleted.Rows[i].Cells["dgQty1"].Value != null) qd.Qty = Int32.Parse(dgQuotationDeleted.Rows[i].Cells["dgQty1"].Value.ToString());
-                    if (dgQuotationDeleted.Rows[i].Cells["dgUCUPCurr1"].Value != null) qd.UCUPCurr = Decimal.Parse(dgQuotationDeleted.Rows[i].Cells["dgUCUPCurr1"].Value.ToString());
-                    if (dgQuotationDeleted.Rows[i].Cells["dgUOM1"].Value != null) qd.UnitOfMeasure = dgQuotationDeleted.Rows[i].Cells["dgUOM1"].Value.ToString();
-                    if (dgQuotationDeleted.Rows[i].Cells["dgDisc1"].Value != null) qd.Disc = Decimal.Parse(dgQuotationDeleted.Rows[i].Cells["dgDisc1"].Value.ToString());
-                    if (dgQuotationDeleted.Rows[i].Cells["dgUPIME1"].Value != null) qd.UCUPCurr = Decimal.Parse(dgQuotationDeleted.Rows[i].Cells["dgUPIME1"].Value.ToString());
-                    if (dgQuotationDeleted.Rows[i].Cells["dgTotal1"].Value != null) qd.Total = Decimal.Parse(dgQuotationDeleted.Rows[i].Cells["dgTotal1"].Value.ToString());
-                    if (dgQuotationDeleted.Rows[i].Cells["dgTargetUP1"].Value != null) qd.TargetUP = Decimal.Parse(dgQuotationDeleted.Rows[i].Cells["dgTargetUP1"].Value.ToString());
-                    if (dgQuotationDeleted.Rows[i].Cells["dgCompetitor1"].Value != null) qd.Competitor = dgQuotationDeleted.Rows[i].Cells["dgCompetitor1"].Value.ToString();
-                    if (dgQuotationDeleted.Rows[i].Cells["dgCustDescription1"].Value != null) qd.CustomerDescription = dgQuotationDeleted.Rows[i].Cells["dgCustDescription1"].Value.ToString();
-                    if (dgQuotationDeleted.Rows[i].Cells["dgCustomerStokCode1"].Value != null) qd.CustomerStockCode = dgQuotationDeleted.Rows[i].Cells["dgCustomerStokCode1"].Value.ToString();
-                    if (dgQuotationDeleted.Rows[i].Cells["dgSSM"].Value != null) qd.SSM = Int32.Parse(dgQuotationDeleted.Rows[i].Cells["dgSSM"].Value.ToString());
-                    if (dgQuotationDeleted.Rows[i].Cells["dgUC"].Value != null) qd.UC = Int32.Parse(dgQuotationDeleted.Rows[i].Cells["dgUC"].Value.ToString());
-                    if (dgQuotationDeleted.Rows[i].Cells["dgUnitWeigt"].Value != null) qd.UnitWeight = Decimal.Parse(dgQuotationDeleted.Rows[i].Cells["dgUnitWeigt"].Value.ToString());
+                    if (dgSaleDeleted.Rows[i].Cells["No1"].Value != null) qd.dgNo = Int32.Parse(dgSaleDeleted.Rows[i].Cells["No1"].Value.ToString());
+                    if (dgSaleDeleted.Rows[i].Cells["dgDesc1"].Value != null) qd.CustomerDescription = dgSaleDeleted.Rows[i].Cells["dgDesc1"].Value.ToString();
+                    if (dgSaleDeleted.Rows[i].Cells["dgProductCode1"].Value != null) qd.ItemCode = dgSaleDeleted.Rows[i].Cells["dgProductCode1"].Value.ToString();
+                    if (dgSaleDeleted.Rows[i].Cells["dgQty1"].Value != null) qd.Qty = Int32.Parse(dgSaleDeleted.Rows[i].Cells["dgQty1"].Value.ToString());
+                    if (dgSaleDeleted.Rows[i].Cells["dgUCUPCurr1"].Value != null) qd.UCUPCurr = Decimal.Parse(dgSaleDeleted.Rows[i].Cells["dgUCUPCurr1"].Value.ToString());
+                    if (dgSaleDeleted.Rows[i].Cells["dgUOM1"].Value != null) qd.UnitOfMeasure = dgSaleDeleted.Rows[i].Cells["dgUOM1"].Value.ToString();
+                    if (dgSaleDeleted.Rows[i].Cells["dgDisc1"].Value != null) qd.Disc = Decimal.Parse(dgSaleDeleted.Rows[i].Cells["dgDisc1"].Value.ToString());
+                    if (dgSaleDeleted.Rows[i].Cells["dgUPIME1"].Value != null) qd.UCUPCurr = Decimal.Parse(dgSaleDeleted.Rows[i].Cells["dgUPIME1"].Value.ToString());
+                    if (dgSaleDeleted.Rows[i].Cells["dgTotal1"].Value != null) qd.Total = Decimal.Parse(dgSaleDeleted.Rows[i].Cells["dgTotal1"].Value.ToString());
+                    if (dgSaleDeleted.Rows[i].Cells["dgTargetUP1"].Value != null) qd.TargetUP = Decimal.Parse(dgSaleDeleted.Rows[i].Cells["dgTargetUP1"].Value.ToString());
+                    if (dgSaleDeleted.Rows[i].Cells["dgCompetitor1"].Value != null) qd.Competitor = dgSaleDeleted.Rows[i].Cells["dgCompetitor1"].Value.ToString();
+                    if (dgSaleDeleted.Rows[i].Cells["dgCustDescription1"].Value != null) qd.CustomerDescription = dgSaleDeleted.Rows[i].Cells["dgCustDescription1"].Value.ToString();
+                    if (dgSaleDeleted.Rows[i].Cells["dgCustomerStokCode1"].Value != null) qd.CustomerStockCode = dgSaleDeleted.Rows[i].Cells["dgCustomerStokCode1"].Value.ToString();
+                    if (dgSaleDeleted.Rows[i].Cells["dgSSM"].Value != null) qd.SSM = Int32.Parse(dgSaleDeleted.Rows[i].Cells["dgSSM"].Value.ToString());
+                    if (dgSaleDeleted.Rows[i].Cells["dgUC"].Value != null) qd.UC = Int32.Parse(dgSaleDeleted.Rows[i].Cells["dgUC"].Value.ToString());
+                    if (dgSaleDeleted.Rows[i].Cells["dgUnitWeigt"].Value != null) qd.UnitWeight = Decimal.Parse(dgSaleDeleted.Rows[i].Cells["dgUnitWeigt"].Value.ToString());
                     qd.IsDeleted = 1;
                     IME.QuotationDetails.Add(qd);
                     IME.SaveChanges();
@@ -1665,7 +1672,7 @@ namespace LoginForm.nmSaleOrder
             {
                 if (item.IsDeleted == 1)
                 {
-                    DataGridViewRow row = (DataGridViewRow)dgQuotationDeleted.Rows[0].Clone();
+                    DataGridViewRow row = (DataGridViewRow)dgSaleDeleted.Rows[0].Clone();
                     row.Cells[0].Value = item.dgNo;
                     row.Cells[7].Value = item.ItemCode;
                     row.Cells[14].Value = item.Qty;
@@ -1680,12 +1687,12 @@ namespace LoginForm.nmSaleOrder
                     row.Cells[29].Value = item.UnitWeight;
                     row.Cells[30].Value = item.UnitWeight * item.Qty;
                     row.Cells[31].Value = item.CustomerStockCode;
-                    dgQuotationDeleted.Rows.Add(row);
+                    dgSaleDeleted.Rows.Add(row);
                 }
                 else
                 {
-                    DataGridViewRow row = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
-                    row.CreateCells(dgQuotationAddedItems);
+                    DataGridViewRow row = (DataGridViewRow)dgSaleAddedItems.RowTemplate.Clone();
+                    row.CreateCells(dgSaleAddedItems);
                     row.Cells[0].Value = Int32.Parse(item.dgNo.ToString());
                     row.Cells[7].Value = item.ItemCode;
                     row.Cells[14].Value = item.Qty;
@@ -1700,12 +1707,12 @@ namespace LoginForm.nmSaleOrder
                     row.Cells[29].Value = item.UnitWeight;
                     row.Cells[30].Value = item.UnitWeight * item.Qty;
                     row.Cells[31].Value = item.CustomerStockCode;
-                    dgQuotationAddedItems.Rows.Add(row);
+                    dgSaleAddedItems.Rows.Add(row);
 
                 }
             }
             //ItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString());
-            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+            for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
             {
                 GetQuotationQuantity(i);
                 GetLandingCost(i);
@@ -1723,11 +1730,11 @@ namespace LoginForm.nmSaleOrder
             //if (q.IsCustomsDuties == 1) { ckCustomsDuties.Checked = true; } else { ckCustomsDuties.Checked = false; }
             //Buraya Curr verileri gelecek
             #endregion
-            if (dgQuotationAddedItems.RowCount > 1)
+            if (dgSaleAddedItems.RowCount > 1)
             {
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[0].Value = (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 2].Cells[0].Value.ToString()) + 1).ToString();
+                dgSaleAddedItems.Rows[dgSaleAddedItems.RowCount - 1].Cells[0].Value = (Int32.Parse(dgSaleAddedItems.Rows[dgSaleAddedItems.RowCount - 2].Cells[0].Value.ToString()) + 1).ToString();
             }
-            else { dgQuotationAddedItems.Rows[0].Cells[0].Value = 1.ToString(); }
+            else { dgSaleAddedItems.Rows[0].Cells[0].Value = 1.ToString(); }
             //string q1 = q.QuotationNo;
             //if (IME.Quotations.Where(a => a.QuotationNo == q1).ToList().Count > 0)
             //{
@@ -1776,12 +1783,12 @@ namespace LoginForm.nmSaleOrder
 
             if (sd != null)
             {
-                dgQuotationAddedItems.Rows[RowIndex].Cells["dgDesc"].Value = sd.Article_Desc;
-                dgQuotationAddedItems.Rows[RowIndex].Cells["dgSSM"].Value = sd.Pack_Quantity.ToString();
-                dgQuotationAddedItems.Rows[RowIndex].Cells["dgUC"].Value = sd.Unit_Content.ToString();
-                dgQuotationAddedItems.Rows[RowIndex].Cells["dgUOM"].Value = sd.Unit_Measure;
-                dgQuotationAddedItems.Rows[RowIndex].Cells["dgMPN"].Value = sd.MPN;
-                dgQuotationAddedItems.Rows[RowIndex].Cells["dgCL"].Value = sd.Calibration_Ind;
+                dgSaleAddedItems.Rows[RowIndex].Cells["dgDesc"].Value = sd.Article_Desc;
+                dgSaleAddedItems.Rows[RowIndex].Cells["dgSSM"].Value = sd.Pack_Quantity.ToString();
+                dgSaleAddedItems.Rows[RowIndex].Cells["dgUC"].Value = sd.Unit_Content.ToString();
+                dgSaleAddedItems.Rows[RowIndex].Cells["dgUOM"].Value = sd.Unit_Measure;
+                dgSaleAddedItems.Rows[RowIndex].Cells["dgMPN"].Value = sd.MPN;
+                dgSaleAddedItems.Rows[RowIndex].Cells["dgCL"].Value = sd.Calibration_Ind;
                 if (sd.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sd.Standard_Weight) / (decimal)1000).ToString("G29"); } else { }
                 txtHazardousInd.Text = sd.Hazardous_Ind;
                 txtCalibrationInd.Text = sd.Calibration_Ind;
@@ -1805,11 +1812,11 @@ namespace LoginForm.nmSaleOrder
             }
             if (sdP != null)
             {
-                dgQuotationAddedItems.Rows[RowIndex].Cells["dgDesc"].Value = sdP.Article_Desc;
-                dgQuotationAddedItems.Rows[RowIndex].Cells["dgSSM"].Value = sdP.Pack_Quantity.ToString();
-                dgQuotationAddedItems.Rows[RowIndex].Cells["dgUC"].Value = sdP.Unit_Content.ToString();
-                dgQuotationAddedItems.Rows[RowIndex].Cells["dgUOM"].Value = sdP.Unit_Measure;
-                dgQuotationAddedItems.Rows[RowIndex].Cells["dgUOM"].Value = sdP.Unit_Measure;
+                dgSaleAddedItems.Rows[RowIndex].Cells["dgDesc"].Value = sdP.Article_Desc;
+                dgSaleAddedItems.Rows[RowIndex].Cells["dgSSM"].Value = sdP.Pack_Quantity.ToString();
+                dgSaleAddedItems.Rows[RowIndex].Cells["dgUC"].Value = sdP.Unit_Content.ToString();
+                dgSaleAddedItems.Rows[RowIndex].Cells["dgUOM"].Value = sdP.Unit_Measure;
+                dgSaleAddedItems.Rows[RowIndex].Cells["dgUOM"].Value = sdP.Unit_Measure;
                 // dgQuotationAddedItems.Rows[RowIndex].Cells["dgPackType"].Value = sdP.Calibration_Ind;
 
                 if (sdP.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sdP.Standard_Weight) / (decimal)1000).ToString("G29"); }
@@ -1827,7 +1834,7 @@ namespace LoginForm.nmSaleOrder
                 txtDiscCharge.Text = sdP.Disc_Change_Ind;
                 txtExpiringPro.Text = sdP.Expiring_Product_Change_Ind;
                 txtManufacturer.Text = sdP.Manufacturer.ToString();
-                dgQuotationAddedItems.Rows[RowIndex].Cells["dgMPN"].Value = sdP.MPN;
+                dgSaleAddedItems.Rows[RowIndex].Cells["dgMPN"].Value = sdP.MPN;
                 txtMHCodeLevel1.Text = sdP.MH_Code_Level_1;
                 txtCCCN.Text = sdP.CCCN_No.ToString();
                 txtHeight.Text = ((decimal)(sdP.Heigh * ((Decimal)100))).ToString("G29");
@@ -1836,9 +1843,9 @@ namespace LoginForm.nmSaleOrder
             }
             if (er != null)
             {
-                dgQuotationAddedItems.Rows[RowIndex].Cells["dgDesc"].Value = er.ArticleDescription;
-                dgQuotationAddedItems.Rows[RowIndex].Cells["dgUOM"].Value = er.UnitofMeasure;
-                dgQuotationAddedItems.Rows[RowIndex].Cells["dgMPN"].Value = er.MPN;
+                dgSaleAddedItems.Rows[RowIndex].Cells["dgDesc"].Value = er.ArticleDescription;
+                dgSaleAddedItems.Rows[RowIndex].Cells["dgUOM"].Value = er.UnitofMeasure;
+                dgSaleAddedItems.Rows[RowIndex].Cells["dgMPN"].Value = er.MPN;
                 if (txtLength.Text != "") { txtLength.Text = ((decimal)(er.ExtendedRangeLength * ((Decimal)100))).ToString("G29"); }
                 if (txtWidth.Text != "") { txtWidth.Text = ((decimal)(er.Width * ((Decimal)100))).ToString("G29"); }
                 if (txtHeight.Text != "") { txtHeight.Text = ((decimal)(er.Height * ((Decimal)100))).ToString("G29"); }
@@ -1860,11 +1867,11 @@ namespace LoginForm.nmSaleOrder
                 txtCost3.Text = er.DiscountedPrice3.ToString();
                 txtCost4.Text = er.DiscountedPrice4.ToString();
                 txtCost5.Text = er.DiscountedPrice5.ToString();
-                txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(txtFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(txtFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(txtFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(txtFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(txtFactor.Text)) / CurrValueWeb).ToString();
             }
             if (sp != null)
             {
@@ -1886,11 +1893,11 @@ namespace LoginForm.nmSaleOrder
                 txtCost4.Text = sp.DiscountedPrice4.ToString();
                 txtCost5.Text = sp.DiscountedPrice5.ToString();
                 txtSupersectionName.Text = sp.SupersectionName;
-                txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
-                txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(cbFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb1.Text = ((Decimal.Parse(txtUK1.Text) * Decimal.Parse(txtFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb2.Text = ((Decimal.Parse(txtUK2.Text) * Decimal.Parse(txtFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb3.Text = ((Decimal.Parse(txtUK3.Text) * Decimal.Parse(txtFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb4.Text = ((Decimal.Parse(txtUK4.Text) * Decimal.Parse(txtFactor.Text)) / CurrValueWeb).ToString();
+                txtWeb5.Text = ((Decimal.Parse(txtUK5.Text) * Decimal.Parse(txtFactor.Text)) / CurrValueWeb).ToString();
             }
             if (h != null)
             {
@@ -1970,14 +1977,14 @@ namespace LoginForm.nmSaleOrder
             if (txtLithium.Text != "")
             {
                 label64.BackColor = Color.Red;
-                dgQuotationAddedItems.Rows[RowIndex].Cells["LI"].Style.BackColor = Color.Ivory;
+                dgSaleAddedItems.Rows[RowIndex].Cells["LI"].Style.BackColor = Color.Ivory;
 
 
             }
             if (txtShipping.Text != "")
             {
                 label63.BackColor = Color.Red;
-                dgQuotationAddedItems.Rows[RowIndex].Cells["HS"].Style.BackColor = Color.Red;
+                dgSaleAddedItems.Rows[RowIndex].Cells["HS"].Style.BackColor = Color.Red;
 
             }
             if (txtEnvironment.Text != "")
@@ -1987,12 +1994,12 @@ namespace LoginForm.nmSaleOrder
             if (txtCalibrationInd.Text != "" && txtCalibrationInd.Text != null && txtCalibrationInd.Text != "N")
             {
                 label22.BackColor = Color.Red;
-                dgQuotationAddedItems.Rows[RowIndex].Cells["CL"].Style.BackColor = Color.Green;
+                dgSaleAddedItems.Rows[RowIndex].Cells["CL"].Style.BackColor = Color.Green;
             }
 
             if (txtLicenceType.Text != "" && txtLicenceType.Text != null)
             {
-                dgQuotationAddedItems.Rows[RowIndex].Cells["LC"].Style.BackColor = Color.BurlyWood;
+                dgSaleAddedItems.Rows[RowIndex].Cells["LC"].Style.BackColor = Color.BurlyWood;
             }
             #endregion
         }
@@ -2033,30 +2040,30 @@ namespace LoginForm.nmSaleOrder
 
         private void ChangeCurr(int rowindex)
         {
-            if (dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value != null)
+            if (dgSaleAddedItems.Rows[rowindex].Cells["dgQty"].Value != null)
             {
 
-                dgQuotationAddedItems.Rows[rowindex].Cells["dgUCUPCurr"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUCUPCurr"].Value.ToString())) / Currfactor).ToString();
-                dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgUPIME"].Value.ToString())) / Currfactor).ToString();
-                dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())) / Currfactor).ToString();
-                var st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
+                dgSaleAddedItems.Rows[rowindex].Cells["dgUCUPCurr"].Value = ((Decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgUCUPCurr"].Value.ToString())) / Currfactor).ToString();
+                dgSaleAddedItems.Rows[rowindex].Cells["dgUPIME"].Value = ((Decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgUPIME"].Value.ToString())) / Currfactor).ToString();
+                dgSaleAddedItems.Rows[rowindex].Cells["dgTotal"].Value = ((Decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())) / Currfactor).ToString();
+                var st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgSaleAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
                 if (st != null)
                 {
                     lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - st.Item2).ToString();
                     SubTotal.Remove(st);
 
                     int subtotalcol1 = 0;
-                    if (dgQuotationAddedItems.Rows[rowindex].Cells[0].Value != null) subtotalcol1 = Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString());
-                    SubTotal.Add(new Tuple<int, decimal>(subtotalcol1, Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())));
-                    st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
+                    if (dgSaleAddedItems.Rows[rowindex].Cells[0].Value != null) subtotalcol1 = Int32.Parse(dgSaleAddedItems.Rows[rowindex].Cells[0].Value.ToString());
+                    SubTotal.Add(new Tuple<int, decimal>(subtotalcol1, Decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())));
+                    st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgSaleAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
                     lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + st.Item2).ToString();
                 }
                 else
                 {
                     int subtotalcol1 = 0;
-                    if (dgQuotationAddedItems.Rows[rowindex].Cells[0].Value != null) subtotalcol1 = Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString());
-                    SubTotal.Add(new Tuple<int, decimal>(subtotalcol1, Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())));
-                    st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
+                    if (dgSaleAddedItems.Rows[rowindex].Cells[0].Value != null) subtotalcol1 = Int32.Parse(dgSaleAddedItems.Rows[rowindex].Cells[0].Value.ToString());
+                    SubTotal.Add(new Tuple<int, decimal>(subtotalcol1, Decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgTotal"].Value.ToString())));
+                    st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgSaleAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
                     lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + st.Item2).ToString();
                 }
             }
@@ -2091,18 +2098,18 @@ namespace LoginForm.nmSaleOrder
 
             }
             #endregion
-            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+            for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
             {
                 #region Get Margin
-                if (dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value != null && dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString() != "0")
+                if (dgSaleAddedItems.Rows[i].Cells["dgQty"].Value != null && dgSaleAddedItems.Rows[i].Cells["dgQty"].Value.ToString() != "0")
                 {
-                    dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString())) / Currfactor).ToString();
-                    dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString())) / Currfactor).ToString();
-                    dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value = ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString())) / Currfactor).ToString();
-                    var st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()))).FirstOrDefault();
+                    dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Value = ((Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString())) / Currfactor).ToString();
+                    dgSaleAddedItems.Rows[i].Cells["dgUPIME"].Value = ((Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString())) / Currfactor).ToString();
+                    dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value = ((Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value.ToString())) / Currfactor).ToString();
+                    var st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgSaleAddedItems.Rows[i].Cells[0].Value.ToString()))).FirstOrDefault();
                     SubTotal.Remove(st);
-                    SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()), Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString())));
-                    st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString()))).FirstOrDefault();
+                    SubTotal.Add(new Tuple<int, decimal>(Int32.Parse(dgSaleAddedItems.Rows[i].Cells[0].Value.ToString()), Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value.ToString())));
+                    st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgSaleAddedItems.Rows[i].Cells[0].Value.ToString()))).FirstOrDefault();
                     SubTotalTotal += st.Item2;
                 }
                 #endregion
@@ -2133,7 +2140,7 @@ namespace LoginForm.nmSaleOrder
         {
             try
             {
-                DataGridViewRow row = (DataGridViewRow)dgQuotationDeleted.CurrentRow;
+                DataGridViewRow row = (DataGridViewRow)dgSaleDeleted.CurrentRow;
                 row.Cells[1].Style.BackColor = Color.White;
                 row.Cells[2].Style.BackColor = Color.White;
                 row.Cells[3].Style.BackColor = Color.White;
@@ -2224,43 +2231,43 @@ namespace LoginForm.nmSaleOrder
 
         private void ChangeCurrnetCell(int currindex)
         {
-            int row = dgQuotationAddedItems.CurrentCell.RowIndex;
-            while (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex].ReadOnly == true)
+            int row = dgSaleAddedItems.CurrentCell.RowIndex;
+            while (dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells[currindex].ReadOnly == true)
             {
-                if (currindex == dgQuotationAddedItems.ColumnCount - 2)
+                if (currindex == dgSaleAddedItems.ColumnCount - 2)
                 {
-                    if (currindex == 14 && dgQuotationAddedItems.Rows[row].Cells[14].Value == null) break;
-                    if (dgQuotationAddedItems.RowCount - 1 == row && dgQuotationAddedItems.CurrentRow.Cells["dgDesc"].Value != null)
+                    if (currindex == 14 && dgSaleAddedItems.Rows[row].Cells[14].Value == null) break;
+                    if (dgSaleAddedItems.RowCount - 1 == row && dgSaleAddedItems.CurrentRow.Cells["dgDesc"].Value != null)
                     {
-                        DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
-                        dgQuotationAddedItems.Rows.Add(dgRow);
+                        DataGridViewRow dgRow = (DataGridViewRow)dgSaleAddedItems.RowTemplate.Clone();
+                        dgSaleAddedItems.Rows.Add(dgRow);
                     }
                     currindex = 6;
                     row++;
                 }
                 else
                 {
-                    if (currindex == 14 && dgQuotationAddedItems.Rows[row].Cells[14].Value == null) break;
+                    if (currindex == 14 && dgSaleAddedItems.Rows[row].Cells[14].Value == null) break;
                     currindex++;
                 }
             }
 
-            dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[row].Cells[currindex];
+            dgSaleAddedItems.CurrentCell = dgSaleAddedItems.Rows[row].Cells[currindex];
 
         }
 
         private void ChangeCurrnetCellTabKey(int currindex)
         {
-            int row = dgQuotationAddedItems.CurrentCell.RowIndex;
-            while (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex].ReadOnly == true)
+            int row = dgSaleAddedItems.CurrentCell.RowIndex;
+            while (dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells[currindex].ReadOnly == true)
             {
-                if (currindex == dgQuotationAddedItems.ColumnCount - 1)
+                if (currindex == dgSaleAddedItems.ColumnCount - 1)
                 {
 
-                    if (dgQuotationAddedItems.RowCount - 1 == row && dgQuotationAddedItems.CurrentRow.Cells["dgDesc"].Value != null)
+                    if (dgSaleAddedItems.RowCount - 1 == row && dgSaleAddedItems.CurrentRow.Cells["dgDesc"].Value != null)
                     {
-                        DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
-                        dgQuotationAddedItems.Rows.Add(dgRow);
+                        DataGridViewRow dgRow = (DataGridViewRow)dgSaleAddedItems.RowTemplate.Clone();
+                        dgSaleAddedItems.Rows.Add(dgRow);
                     }
                     currindex = 6;
                     row++;
@@ -2273,7 +2280,7 @@ namespace LoginForm.nmSaleOrder
             }
             try
             {
-                dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[row].Cells[currindex - 1];
+                dgSaleAddedItems.CurrentCell = dgSaleAddedItems.Rows[row].Cells[currindex - 1];
             }
             catch { }
         }
@@ -2282,29 +2289,29 @@ namespace LoginForm.nmSaleOrder
         {
             if (e.KeyCode == Keys.Tab)
             {
-                ChangeCurrnetCellTabKey(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
-                dgQuotationAddedItems.Focus();
+                ChangeCurrnetCellTabKey(dgSaleAddedItems.CurrentCell.ColumnIndex + 1);
+                dgSaleAddedItems.Focus();
             }
             else if ((e.KeyCode == Keys.Escape))
             {
-                ChangeCurrnetCell(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
-                dgQuotationAddedItems.Focus();
+                ChangeCurrnetCell(dgSaleAddedItems.CurrentCell.ColumnIndex + 1);
+                dgSaleAddedItems.Focus();
             }
             else if (e.KeyCode == Keys.Enter)
             {
-                ChangeCurrnetCell(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
-                if (dgQuotationAddedItems.CurrentRow.Index != dgQuotationAddedItems.RowCount - 1) SendKeys.Send("{UP}");
-                dgQuotationAddedItems.Focus();
+                ChangeCurrnetCell(dgSaleAddedItems.CurrentCell.ColumnIndex + 1);
+                if (dgSaleAddedItems.CurrentRow.Index != dgSaleAddedItems.RowCount - 1) SendKeys.Send("{UP}");
+                dgSaleAddedItems.Focus();
             }
             else if (e.KeyCode == Keys.Delete)
             {
-                foreach (DataGridViewRow item in dgQuotationAddedItems.SelectedRows)
+                foreach (DataGridViewRow item in dgSaleAddedItems.SelectedRows)
                 {
-                    int rownumber = Int32.Parse(dgQuotationAddedItems.Rows[item.Index].Cells["dgNo"].Value.ToString());
-                    dgQuotationDeleted.Rows.Add();
-                    for (int i = 0; i < dgQuotationAddedItems.Columns.Count - 1; i++)
+                    int rownumber = Int32.Parse(dgSaleAddedItems.Rows[item.Index].Cells["dgNo"].Value.ToString());
+                    dgSaleDeleted.Rows.Add();
+                    for (int i = 0; i < dgSaleAddedItems.Columns.Count - 1; i++)
                     {
-                        dgQuotationDeleted.Rows[dgQuotationDeleted.Rows.Count - 2].Cells[i].Value = item.Cells[i].Value;
+                        dgSaleDeleted.Rows[dgSaleDeleted.Rows.Count - 2].Cells[i].Value = item.Cells[i].Value;
                     }
 
                     var st = SubTotal.Where(a => a.Item1 == rownumber).FirstOrDefault();
@@ -2359,7 +2366,7 @@ namespace LoginForm.nmSaleOrder
 
         private void btnExcelExport_Click(object sender, EventArgs e)
         {
-            QuotationExcelExport.Export(dgQuotationAddedItems, txtSaleOrderNo.Text);
+            QuotationExcelExport.Export(dgSaleAddedItems, txtSaleOrderNo.Text);
         }
 
         private void textBox10_Click(object sender, EventArgs e)
@@ -2453,13 +2460,13 @@ namespace LoginForm.nmSaleOrder
 
         public void ChangeDataGrid()
         {
-            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+            for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
             {
-                if (dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value != null)
+                if (dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value != null)
                 {
-                    decimal total = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString()) * Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString());
-                    dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value = ((total) - (((total) * Decimal.Parse(txtTotalDis2.Text)) / Decimal.Parse(lblsubtotal.Text))).ToString();
-                    dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value = (Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString()) / Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString())).ToString();
+                    decimal total = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString()) * Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgQty"].Value.ToString());
+                    dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value = ((total) - (((total) * Decimal.Parse(txtTotalDis2.Text)) / Decimal.Parse(lblsubtotal.Text))).ToString();
+                    dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Value = (Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value.ToString()) / Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgQty"].Value.ToString())).ToString();
 
                 }
             }
@@ -2475,15 +2482,15 @@ namespace LoginForm.nmSaleOrder
                     //hz ve lithum disc dan etkilenmeyecek
                     decimal hztotal = 0;
 
-                    for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+                    for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
                     {
-                        if (dgQuotationAddedItems.Rows[i].Cells["HS"].Style.BackColor == Color.Red)
+                        if (dgSaleAddedItems.Rows[i].Cells["HS"].Style.BackColor == Color.Red)
                         {
-                            hztotal += decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value?.ToString());
+                            hztotal += decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value?.ToString());
                         }
-                        else if (dgQuotationAddedItems.Rows[i].Cells["LI"].Style.BackColor == Color.Ivory)
+                        else if (dgSaleAddedItems.Rows[i].Cells["LI"].Style.BackColor == Color.Ivory)
                         {
-                            hztotal += decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value?.ToString());
+                            hztotal += decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value?.ToString());
                         }
                         //else if ()//HE için
                         //{
@@ -2505,12 +2512,12 @@ namespace LoginForm.nmSaleOrder
         {
             decimal total = 0;
             decimal subtotal = 1;
-            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+            for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
             {
-                if (dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value != null && dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString() != string.Empty)
+                if (dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value != null && dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value.ToString() != string.Empty)
                 {
-                    decimal margin = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString());
-                    decimal price = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString());
+                    decimal margin = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value.ToString());
+                    decimal price = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value.ToString());
                     total = total + (margin * price);
                 }
             }
@@ -2520,16 +2527,16 @@ namespace LoginForm.nmSaleOrder
 
         private void getTotalDiscMargin()
         {
-            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+            for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
             {
-                if (dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value != null && dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString() != string.Empty)
+                if (dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Value != null && dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString() != string.Empty)
                 {
-                    decimal cost = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString());
-                    decimal UCUPCur = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString());
+                    decimal cost = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString());
+                    decimal UCUPCur = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString());
                     decimal disc = 0;
                     if (txtTotalDis.Text != string.Empty && txtTotalDis.Text != null) disc = decimal.Parse(txtTotalDis.Text);
                     UCUPCur = UCUPCur * (1 - (disc / 100));
-                    dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value = (1 - (cost / UCUPCur)) * 100;
+                    dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value = (1 - (cost / UCUPCur)) * 100;
                 }
             }
         }
@@ -2538,26 +2545,26 @@ namespace LoginForm.nmSaleOrder
         {
             decimal ExtraCharge = 0;
 
-            try { ExtraCharge = Decimal.Parse(txtExtraChanges.Text); } catch { }
+            try { ExtraCharge = Decimal.Parse(txtExtraCharges.Text); } catch { }
             lblTotalExtra.Text = (ExtraCharge + Decimal.Parse(lbltotal.Text)).ToString();
         }
 
         private void txtExtraChanges_Leave(object sender, EventArgs e)
         {
-            if (txtExtraChanges.Text != null && txtExtraChanges.Text != "")
+            if (txtExtraCharges.Text != null && txtExtraCharges.Text != "")
             {
-                decimal sonuc = Decimal.Parse(txtExtraChanges.Text);
+                decimal sonuc = Decimal.Parse(txtExtraCharges.Text);
                 sonuc = Math.Round(sonuc, 4);
-                txtExtraChanges.Text = sonuc.ToString();
+                txtExtraCharges.Text = sonuc.ToString();
             }
         }
 
         private void txtExtraChanges_Click(object sender, EventArgs e)
         {
-            if (txtExtraChanges.Text != null && txtExtraChanges.Text != "")
+            if (txtExtraCharges.Text != null && txtExtraCharges.Text != "")
             {
-                decimal sonuc = Decimal.Parse(txtExtraChanges.Text);
-                txtExtraChanges.Text = sonuc.ToString();
+                decimal sonuc = Decimal.Parse(txtExtraCharges.Text);
+                txtExtraCharges.Text = sonuc.ToString();
             }
         }
 
@@ -2614,8 +2621,8 @@ namespace LoginForm.nmSaleOrder
             btnProductHistory.Font = new Font(btnProductHistory.Font, btnProductHistory.Font.Style ^ FontStyle.Underline);
             btnProductHistory.Text = "Product History";
 
-            if (dgQuotationAddedItems.CurrentRow.Cells["dgProductCode"].Value != null)
-                item_code = dgQuotationAddedItems.CurrentRow.Cells["dgProductCode"].Value.ToString();
+            if (dgSaleAddedItems.CurrentRow.Cells["dgProductCode"].Value != null)
+                item_code = dgSaleAddedItems.CurrentRow.Cells["dgProductCode"].Value.ToString();
             if (item_code == null)
                 MessageBox.Show("Please Enter a Item Code", "Eror !");
             else
@@ -2631,13 +2638,13 @@ namespace LoginForm.nmSaleOrder
             if (e.ColumnIndex == 7)
             {
                 string ArticleNO = null;
-                if (dgQuotationAddedItems.CurrentCell.Value != null) ArticleNO = dgQuotationAddedItems.CurrentCell.Value.ToString();
+                if (dgSaleAddedItems.CurrentCell.Value != null) ArticleNO = dgSaleAddedItems.CurrentCell.Value.ToString();
                 FormQuotationItemSearch itemsearch = new FormQuotationItemSearch(ArticleNO);
                 itemsearch.ShowDialog();
                 try
                 {
                     //Bu item daha önceden eklimi diye kontrol ediyor
-                    DataGridViewRow row = dgQuotationAddedItems.Rows
+                    DataGridViewRow row = dgSaleAddedItems.Rows
 .Cast<DataGridViewRow>()
 .Where(r => r.Cells["dgProductCode"].Value.ToString().Equals(classQuotationAdd.ItemCode))
 .FirstOrDefault();
@@ -2654,31 +2661,31 @@ namespace LoginForm.nmSaleOrder
                 }
                 catch { }
                 int sdNumber = 0, sdPNumber = 0, erNumber = 0;
-                dgQuotationAddedItems.CurrentCell.Value = classQuotationAdd.ItemCode;
-                if (dgQuotationAddedItems.CurrentCell.Value != null)
+                dgSaleAddedItems.CurrentCell.Value = classQuotationAdd.ItemCode;
+                if (dgSaleAddedItems.CurrentCell.Value != null)
                 {
-                    try { sdNumber = IME.SuperDisks.Where(a => a.Article_No.Contains(dgQuotationAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { sdNumber = 0; }
-                    try { sdPNumber = IME.SuperDiskPs.Where(a => a.Article_No.Contains(dgQuotationAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { sdPNumber = 0; }
-                    try { erNumber = IME.ExtendedRanges.Where(a => a.ArticleNo.Contains(dgQuotationAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { erNumber = 0; }
+                    try { sdNumber = IME.SuperDisks.Where(a => a.Article_No.Contains(dgSaleAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { sdNumber = 0; }
+                    try { sdPNumber = IME.SuperDiskPs.Where(a => a.Article_No.Contains(dgSaleAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { sdPNumber = 0; }
+                    try { erNumber = IME.ExtendedRanges.Where(a => a.ArticleNo.Contains(dgSaleAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { erNumber = 0; }
                     if (sdNumber == 1 || sdPNumber == 1 || erNumber == 1)
                     {
-                        if (classQuotationAdd.HasMultipleItems(dgQuotationAddedItems.CurrentCell.Value.ToString()) == 0)
+                        if (classQuotationAdd.HasMultipleItems(dgSaleAddedItems.CurrentCell.Value.ToString()) == 0)
                         {
                             if (tabControl1.SelectedTab != tabItemDetails) { tabControl1.SelectedTab = tabItemDetails; }
-                            ItemDetailsFiller(dgQuotationAddedItems.CurrentCell.Value.ToString());
+                            ItemDetailsFiller(dgSaleAddedItems.CurrentCell.Value.ToString());
                             //LandingCost Calculation
                             FillProductCodeItem();
 
-                            dgQuotationAddedItems.CurrentRow.Cells["dgQty"].ReadOnly = false;
-                            dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Value = null;
-                            dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Style = dgQuotationAddedItems.DefaultCellStyle;
+                            dgSaleAddedItems.CurrentRow.Cells["dgQty"].ReadOnly = false;
+                            dgSaleAddedItems.CurrentRow.Cells["dgQty"].Value = null;
+                            dgSaleAddedItems.CurrentRow.Cells["dgQty"].Style = dgSaleAddedItems.DefaultCellStyle;
                             #region DataGridClear
-                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value = null;
-                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgDisc"].Value = null;
-                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = null;
-                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUPIME"].Value = null;
-                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = null;
-                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotal"].Value = null;
+                            dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value = null;
+                            dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgDisc"].Value = null;
+                            dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = null;
+                            dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUPIME"].Value = null;
+                            dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value = null;
+                            dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgTotal"].Value = null;
 
                             CalculateSubTotal();
                             txtSubstitutedBy.Text = null;
@@ -2691,12 +2698,12 @@ namespace LoginForm.nmSaleOrder
 
         private void DeletedQuotationMenu_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow item in dgQuotationDeleted.SelectedRows)
+            foreach (DataGridViewRow item in dgSaleDeleted.SelectedRows)
             {
                 if (item.Cells["dgProductCode1"].Value != null)
                 {
                     int rowindex = item.Index;
-                    int no = Int32.Parse(dgQuotationDeleted.Rows[rowindex].Cells["No1"].Value.ToString());
+                    int no = Int32.Parse(dgSaleDeleted.Rows[rowindex].Cells["No1"].Value.ToString());
                     var st = SubTotal.Where(a => a.Item1 == no).FirstOrDefault();
                     var st1 = SubDeletingTotal.Where(a => a.Item1 == no).FirstOrDefault();
                     if (st != null)
@@ -2709,61 +2716,61 @@ namespace LoginForm.nmSaleOrder
                             SubDeletingTotal.Remove(st1);
                         }
                     }
-                    int rowindex1 = dgQuotationAddedItems.RowCount;
-                    dgQuotationAddedItems.Rows.Add();
-                    for (int i = 0; i < dgQuotationDeleted.Columns.Count; i++)
+                    int rowindex1 = dgSaleAddedItems.RowCount;
+                    dgSaleAddedItems.Rows.Add();
+                    for (int i = 0; i < dgSaleDeleted.Columns.Count; i++)
                     {
-                        dgQuotationAddedItems.Rows[rowindex1].Cells[i].Value = dgQuotationDeleted.Rows[item.Index].Cells[i].Value;
+                        dgSaleAddedItems.Rows[rowindex1].Cells[i].Value = dgSaleDeleted.Rows[item.Index].Cells[i].Value;
                     }
-                    dgQuotationDeleted.Rows.Remove(dgQuotationDeleted.Rows[rowindex]);
+                    dgSaleDeleted.Rows.Remove(dgSaleDeleted.Rows[rowindex]);
 
                 }
                 else { MessageBox.Show("Please choose an item to add Quotation"); }
             }
             //dgQuotationAddedItems.Sort()
-            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+            for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
             {
-                dgQuotationAddedItems.Rows[i].Cells[0].Value = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString());
+                dgSaleAddedItems.Rows[i].Cells[0].Value = Int32.Parse(dgSaleAddedItems.Rows[i].Cells[0].Value.ToString());
             }
-            dgQuotationAddedItems.Sort(dgQuotationAddedItems.Columns[0], ListSortDirection.Ascending);
+            dgSaleAddedItems.Sort(dgSaleAddedItems.Columns[0], ListSortDirection.Ascending);
         }
 
         private void cbDeliverDiscount_CheckedChanged(object sender, EventArgs e)
         {
             if (cbDeliverDiscount.Checked)
             {
-                for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+                for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
                 {
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value != null)
+                    if (dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value != null)
                     {
-                        decimal total = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString());
+                        decimal total = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value.ToString());
                         decimal disc = 0;
                         if (txtTotalDis.Text != null && txtTotalDis.Text != string.Empty) disc = Decimal.Parse(txtTotalDis.Text);
                         //discValue = total - (total * (1 - (disc / 100)));
                         //total = total - discValue;
                         total = (total * (1 - (disc / 100)));
-                        dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value = total.ToString();
-                        dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value = (total / Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString())).ToString();
-                        decimal UCIME = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString()) * Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString());
-                        dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value = (100 - (100 * total / UCIME)).ToString();
+                        dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value = total.ToString();
+                        dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Value = (total / Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgQty"].Value.ToString())).ToString();
+                        decimal UCIME = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString()) * Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgQty"].Value.ToString());
+                        dgSaleAddedItems.Rows[i].Cells["dgDisc"].Value = (100 - (100 * total / UCIME)).ToString();
                     }
                 }
             }
             else
             {
-                for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+                for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
                 {
-                    if (dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value != null)
+                    if (dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value != null)
                     {
                         decimal total = 0;
-                        decimal lasttotal = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString());
+                        decimal lasttotal = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value.ToString());
                         decimal disc = 0;
                         if (txtTotalDis.Text != null && txtTotalDis.Text != string.Empty) disc = Decimal.Parse(txtTotalDis.Text);
                         total = lasttotal / (1 - (disc / 100));
-                        dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value = total.ToString();
-                        dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value = (total / Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString())).ToString();
-                        decimal UCIME = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString()) * Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value.ToString());
-                        dgQuotationAddedItems.Rows[i].Cells["dgDisc"].Value = (100 - (100 * total / UCIME)).ToString();
+                        dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value = total.ToString();
+                        dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Value = (total / Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgQty"].Value.ToString())).ToString();
+                        decimal UCIME = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString()) * Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgQty"].Value.ToString());
+                        dgSaleAddedItems.Rows[i].Cells["dgDisc"].Value = (100 - (100 * total / UCIME)).ToString();
                     }
                 }
             }
@@ -2772,14 +2779,14 @@ namespace LoginForm.nmSaleOrder
         private void cbFactor_Leave(object sender, EventArgs e)
         {
             #region Faktör Değişimi
-            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+            for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
             {
                 bool isHZ = false;
-                if (dgQuotationAddedItems.Rows[i].Cells["HS"].Style.BackColor == Color.Red)
+                if (dgSaleAddedItems.Rows[i].Cells["HS"].Style.BackColor == Color.Red)
                 {
                     isHZ = true;
                 }
-                else if (dgQuotationAddedItems.Rows[i].Cells["LI"].Style.BackColor == Color.Ivory)
+                else if (dgSaleAddedItems.Rows[i].Cells["LI"].Style.BackColor == Color.Ivory)
                 {
                     isHZ = true;
                 }
