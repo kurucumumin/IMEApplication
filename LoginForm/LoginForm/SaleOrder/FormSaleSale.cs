@@ -167,6 +167,31 @@ namespace LoginForm.nmSaleOrder
         {
             CustomerCode.Text = customer.ID;
             txtCustomerName.Text = customer.c_name;
+            List<CustomerAddress> addressList = customer.CustomerAddresses.ToList();
+            if (addressList.Count != 0)
+            {
+                cbInvoiceAdress.DataSource = addressList;
+                cbDeliveryAddress.DataSource = addressList;
+
+                CustomerAddress inv = addressList.Where(x => x.AddressType.ToUpper().Contains("invoice".ToUpper())).FirstOrDefault();
+                CustomerAddress delv = addressList.Where(x => x.isDeliveryAdress == 1).FirstOrDefault();
+
+                if (inv != null)
+                {
+                    cbInvoiceAdress.SelectedValue = inv.ID;
+                }
+                if (delv != null)
+                {
+                    cbDeliveryAddress.SelectedValue = delv.ID;
+                } else
+                {
+                    if (inv != null)
+                    {
+                        cbDeliveryAddress.SelectedValue = inv.ID;
+                    }
+                }
+            }  
+            
             //cbCurrency.SelectedIndex = cbCurrency.FindStringExact(customer.CurrNameQuo);
             //cbCurrType.SelectedIndex = cbCurrType.FindStringExact(c.CurrTypeQuo);
             //if(c.MainContactID!=null) cbWorkers.SelectedIndex = (int)c.MainContactID;
@@ -1384,53 +1409,81 @@ namespace LoginForm.nmSaleOrder
 
         private void QuotationSave()
         {
-            DataSet.Quotation q = new DataSet.Quotation();
-            q.QuotationNo = txtSaleOrderNo.Text;
-            q.RFQNo = txtLPONO.Text;
-            try { q.SubTotal = decimal.Parse(lblsubtotal.Text); } catch { }
-            if (chkbForFinance.Checked) { q.ForFinancelIsTrue = 1; } else { q.ForFinancelIsTrue = 0; }
-            q.ShippingMethodID = cbSMethod.SelectedIndex;
-            try { q.DiscOnSubTotal2 = decimal.Parse(txtTotalDis2.Text); } catch { }
-            try { q.ExtraCharges = decimal.Parse(txtExtraChanges.Text); } catch { }
-            if (chkVat.Checked) { q.IsVatValue = 1; } else { q.IsVatValue = 0; }
-            try { q.VatValue = Decimal.Parse(lblVat.Text); } catch { }
-            try { q.StartDate = dtpDate.Value; } catch { }
-            try { q.Factor = Decimal.Parse(cbFactor.Text); } catch { }
-            //try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
-            q.PaymentID = (cbPayment.SelectedItem as PaymentMethod).ID;
-            q.CurrType = (cbCurrency.SelectedItem as Rate).CurType;
-            //q.CurrType = cbCurrType.Text;
-            q.Curr = CurrValue;
+            SaleOrder s = new SaleOrder();
+            s.CustomerID = CustomerCode.Text;
+            s.DeliveryContactID = (int)cbDeliveryContact.SelectedValue;
+            s.ContactID = (int)cbWorkers.SelectedValue;
+            s.InvoiceAddressID = (int)cbInvoiceAdress.SelectedValue;
+            s.DeliveryAddressID = (int)cbDeliveryAddress.SelectedValue;
+            s.PaymentTermID = (int)cbPaymentTerm.SelectedValue;
+            s.currencyID = (decimal)cbCurrency.SelectedValue;
+            s.PaymentMethodID = (int)cbPayment.SelectedValue;
+            s.RepresentativeID = (int)cbRep.SelectedValue;
+            s.NoteForUs = txtNoteForUs.Text;
+            s.NoteForFinance = (chkbForFinance.Checked == true) ? 1 : 0;
+            s.NoteForCustomer = txtNoteForCustomer.Text;
+            s.OnlineConfirmationNo = txtOnlineConfirmationNo.Text;
+            s.QuotationNos = txtQuotationNo.Text;
+            s.RequestedDeliveryDate = dtpDate.Value.Date;
+            s.SaleDate = DateTime.Now;
+            s.SaleOrderNature = cbOrderNature.SelectedItem.ToString();
+            //TODO (SALEORDER) ID Formatını öğren ve ID'yi düzenle
+            s.SaleOrderNo = "SO" + (IME.SaleOrders.Count() + 1);
+            s.ShippingType = cbSMethod.SelectedItem.ToString();
+            s.TotalPrice = Convert.ToDecimal(lbltotal.Text);
+            s.Vat = Convert.ToDecimal(lblVat.Text);
 
-            q.CustomerID = CustomerCode.Text;
-            q.ShippingMethodID = cbSMethod.SelectedIndex;
-            q.QuotationMainContact = cbWorkers.SelectedIndex;
-            int Note2 = 0;
-            int Note1 = 0;
-            if (txtNoteForUs.Text != null || txtNoteForUs.Text != "")
-            {
-                Note n = new Note();
-                n.Note_name = txtNoteForUs.Text;
-                IME.Notes.Add(n);
-                IME.SaveChanges();
-                Note1 = n.ID;
-            }
-            if (txtNoteForUs.Text != null || txtNoteForUs.Text != "")
-            {
-                Note n1 = new Note();
-                n1.Note_name = txtNoteForCustomer.Text;
-                IME.Notes.Add(n1);
-                IME.SaveChanges();
-                Note2 = n1.ID;
-            }
-            if (chkbForFinance.Checked)
-            {
-                q.ForFinancelIsTrue = 1;
-            }
-            if (Note1 != 0) q.NoteForUsID = Note1;
-            if (Note2 != 0) q.NoteForCustomerID = Note2;
-            IME.Quotations.Add(q);
+            IME.SaleOrders.Add(s);
             IME.SaveChanges();
+
+
+            //DataSet.Quotation q = new DataSet.Quotation();
+            //q.QuotationNo = txtSaleOrderNo.Text;
+            //q.RFQNo = txtLPONO.Text;
+            //try { q.SubTotal = decimal.Parse(lblsubtotal.Text); } catch { }
+            //if (chkbForFinance.Checked) { q.ForFinancelIsTrue = 1; } else { q.ForFinancelIsTrue = 0; }
+            //q.ShippingMethodID = cbSMethod.SelectedIndex;
+            //try { q.DiscOnSubTotal2 = decimal.Parse(txtTotalDis2.Text); } catch { }
+            //try { q.ExtraCharges = decimal.Parse(txtExtraChanges.Text); } catch { }
+            //if (chkVat.Checked) { q.IsVatValue = 1; } else { q.IsVatValue = 0; }
+            //try { q.VatValue = Decimal.Parse(lblVat.Text); } catch { }
+            //try { q.StartDate = dtpDate.Value; } catch { }
+            //try { q.Factor = Decimal.Parse(cbFactor.Text); } catch { }
+            ////try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
+            //q.PaymentID = (cbPayment.SelectedItem as PaymentMethod).ID;
+            //q.CurrType = (cbCurrency.SelectedItem as Rate).CurType;
+            ////q.CurrType = cbCurrType.Text;
+            //q.Curr = CurrValue;
+
+            //q.CustomerID = CustomerCode.Text;
+            //q.ShippingMethodID = cbSMethod.SelectedIndex;
+            //q.QuotationMainContact = cbWorkers.SelectedIndex;
+            //int Note2 = 0;
+            //int Note1 = 0;
+            //if (txtNoteForUs.Text != null || txtNoteForUs.Text != "")
+            //{
+            //    Note n = new Note();
+            //    n.Note_name = txtNoteForUs.Text;
+            //    IME.Notes.Add(n);
+            //    IME.SaveChanges();
+            //    Note1 = n.ID;
+            //}
+            //if (txtNoteForUs.Text != null || txtNoteForUs.Text != "")
+            //{
+            //    Note n1 = new Note();
+            //    n1.Note_name = txtNoteForCustomer.Text;
+            //    IME.Notes.Add(n1);
+            //    IME.SaveChanges();
+            //    Note2 = n1.ID;
+            //}
+            //if (chkbForFinance.Checked)
+            //{
+            //    q.ForFinancelIsTrue = 1;
+            //}
+            //if (Note1 != 0) q.NoteForUsID = Note1;
+            //if (Note2 != 0) q.NoteForCustomerID = Note2;
+            //IME.Quotations.Add(q);
+            //IME.SaveChanges();
         }
 
         private void QuotationSave(string QuoNo)

@@ -29,32 +29,32 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle61 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle62 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle63 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle64 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle65 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle66 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle67 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle68 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle69 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle70 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle71 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle72 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle73 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle74 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle75 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle76 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle77 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle78 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle49 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle50 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dgQuotationAddedItems = new System.Windows.Forms.DataGridView();
@@ -132,15 +132,40 @@
             this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblCurrValue = new System.Windows.Forms.Label();
             this.btnProductHistory = new System.Windows.Forms.Button();
             this.lblsubtotal = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.textBox11 = new System.Windows.Forms.TextBox();
             this.txtTotalMargin = new System.Windows.Forms.TextBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.cbFactor = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabCustomerDetails = new System.Windows.Forms.TabPage();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.cbDeliveryContact = new System.Windows.Forms.ComboBox();
+            this.label61 = new System.Windows.Forms.Label();
+            this.btnDeliveryModify = new System.Windows.Forms.Button();
+            this.btnDeliveryAdd = new System.Windows.Forms.Button();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.cbDeliveryAddress = new System.Windows.Forms.ComboBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.txtAccountingNote = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtContactNote = new System.Windows.Forms.TextBox();
+            this.txtCustomerNote = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtpRequestedDelvDate = new System.Windows.Forms.DateTimePicker();
+            this.label68 = new System.Windows.Forms.Label();
+            this.label65 = new System.Windows.Forms.Label();
+            this.txtOnlineConfirmationNo = new System.Windows.Forms.TextBox();
+            this.txtQuotationNo = new System.Windows.Forms.TextBox();
+            this.label67 = new System.Windows.Forms.Label();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.btnViewMore = new System.Windows.Forms.Button();
             this.txtCustomerName = new System.Windows.Forms.TextBox();
@@ -152,11 +177,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtLPONO = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.cbFactor = new System.Windows.Forms.TextBox();
             this.txtSaleOrderNo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
             this.cbCurrency = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnContactAdd = new System.Windows.Forms.Button();
@@ -269,6 +292,13 @@
             this.label50 = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbPaymentTerm = new System.Windows.Forms.ComboBox();
+            this.paymentTermBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label69 = new System.Windows.Forms.Label();
+            this.cbOrderNature = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnCreateRev = new System.Windows.Forms.Button();
@@ -299,37 +329,11 @@
             this.cbSMethod = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtNoteForCustomer = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.cbDeliveryContact = new System.Windows.Forms.ComboBox();
-            this.label61 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.cbDeliveryAddress = new System.Windows.Forms.ComboBox();
-            this.txtInvoiceAddress = new System.Windows.Forms.TextBox();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.txtAccountingNote = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtContactNote = new System.Windows.Forms.TextBox();
-            this.txtCustomerNote = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.dtpRequestedDelvDate = new System.Windows.Forms.DateTimePicker();
-            this.label68 = new System.Windows.Forms.Label();
-            this.label65 = new System.Windows.Forms.Label();
-            this.txtOnlineConfirmationNo = new System.Windows.Forms.TextBox();
-            this.txtQuotationNo = new System.Windows.Forms.TextBox();
-            this.label67 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cbPaymentTerm = new System.Windows.Forms.ComboBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label69 = new System.Windows.Forms.Label();
-            this.cbOrderNature = new System.Windows.Forms.ComboBox();
-            this.lblCurrValue = new System.Windows.Forms.Label();
-            this.paymentTermBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cbInvoiceAdress = new System.Windows.Forms.ComboBox();
+            this.btnInvoiceModify = new System.Windows.Forms.Button();
+            this.btnInvoiceAdd = new System.Windows.Forms.Button();
+            this.customerAddressBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.customerWorkerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -344,13 +348,15 @@
             this.groupBox1.SuspendLayout();
             this.tabItemDetails.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.paymentTermBindingSource)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.groupBox11.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.paymentTermBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerAddressBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerWorkerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -460,9 +466,9 @@
             // HS
             // 
             this.HS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle53.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.HS.DefaultCellStyle = dataGridViewCellStyle53;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.HS.DefaultCellStyle = dataGridViewCellStyle27;
             this.HS.HeaderText = "HS";
             this.HS.Name = "HS";
             this.HS.ReadOnly = true;
@@ -472,8 +478,8 @@
             // LI
             // 
             this.LI.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle54.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.LI.DefaultCellStyle = dataGridViewCellStyle54;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.LI.DefaultCellStyle = dataGridViewCellStyle28;
             this.LI.HeaderText = "LI";
             this.LI.Name = "LI";
             this.LI.ReadOnly = true;
@@ -483,8 +489,8 @@
             // CL
             // 
             this.CL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle55.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.CL.DefaultCellStyle = dataGridViewCellStyle55;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.CL.DefaultCellStyle = dataGridViewCellStyle29;
             this.CL.HeaderText = "CL";
             this.CL.Name = "CL";
             this.CL.ReadOnly = true;
@@ -494,8 +500,8 @@
             // LC
             // 
             this.LC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle56.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.LC.DefaultCellStyle = dataGridViewCellStyle56;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.LC.DefaultCellStyle = dataGridViewCellStyle30;
             this.LC.HeaderText = "LC";
             this.LC.Name = "LC";
             this.LC.ReadOnly = true;
@@ -505,8 +511,8 @@
             // LM
             // 
             this.LM.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle57.SelectionBackColor = System.Drawing.Color.Transparent;
-            this.LM.DefaultCellStyle = dataGridViewCellStyle57;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.Transparent;
+            this.LM.DefaultCellStyle = dataGridViewCellStyle31;
             this.LM.HeaderText = "LM";
             this.LM.Name = "LM";
             this.LM.ReadOnly = true;
@@ -516,9 +522,9 @@
             // dgSupplier
             // 
             this.dgSupplier.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle58.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle58.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgSupplier.DefaultCellStyle = dataGridViewCellStyle58;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgSupplier.DefaultCellStyle = dataGridViewCellStyle32;
             this.dgSupplier.HeaderText = "Supplier";
             this.dgSupplier.Name = "dgSupplier";
             this.dgSupplier.ReadOnly = true;
@@ -534,9 +540,9 @@
             // dgBrand
             // 
             this.dgBrand.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle59.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle59.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgBrand.DefaultCellStyle = dataGridViewCellStyle59;
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgBrand.DefaultCellStyle = dataGridViewCellStyle33;
             this.dgBrand.HeaderText = "Brand";
             this.dgBrand.Name = "dgBrand";
             this.dgBrand.ReadOnly = true;
@@ -545,9 +551,9 @@
             // dgMPN
             // 
             this.dgMPN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle60.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle60.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgMPN.DefaultCellStyle = dataGridViewCellStyle60;
+            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgMPN.DefaultCellStyle = dataGridViewCellStyle34;
             this.dgMPN.HeaderText = "MPN";
             this.dgMPN.Name = "dgMPN";
             this.dgMPN.ReadOnly = true;
@@ -556,9 +562,9 @@
             // dgDesc
             // 
             this.dgDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle61.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle61.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgDesc.DefaultCellStyle = dataGridViewCellStyle61;
+            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgDesc.DefaultCellStyle = dataGridViewCellStyle35;
             this.dgDesc.HeaderText = "Description";
             this.dgDesc.Name = "dgDesc";
             this.dgDesc.ReadOnly = true;
@@ -566,9 +572,9 @@
             // 
             // dgCost
             // 
-            dataGridViewCellStyle62.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle62.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCost.DefaultCellStyle = dataGridViewCellStyle62;
+            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCost.DefaultCellStyle = dataGridViewCellStyle36;
             this.dgCost.HeaderText = "Cost (£)";
             this.dgCost.Name = "dgCost";
             this.dgCost.ReadOnly = true;
@@ -576,9 +582,9 @@
             // dgLandingCost
             // 
             this.dgLandingCost.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle63.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle63.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgLandingCost.DefaultCellStyle = dataGridViewCellStyle63;
+            dataGridViewCellStyle37.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle37.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgLandingCost.DefaultCellStyle = dataGridViewCellStyle37;
             this.dgLandingCost.HeaderText = "Landing Cost (£)";
             this.dgLandingCost.Name = "dgLandingCost";
             this.dgLandingCost.ReadOnly = true;
@@ -587,9 +593,9 @@
             // dgMargin
             // 
             this.dgMargin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle64.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle64.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgMargin.DefaultCellStyle = dataGridViewCellStyle64;
+            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgMargin.DefaultCellStyle = dataGridViewCellStyle38;
             this.dgMargin.HeaderText = "Margin";
             this.dgMargin.Name = "dgMargin";
             this.dgMargin.ReadOnly = true;
@@ -607,9 +613,9 @@
             // dgStock
             // 
             this.dgStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle65.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle65.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgStock.DefaultCellStyle = dataGridViewCellStyle65;
+            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgStock.DefaultCellStyle = dataGridViewCellStyle39;
             this.dgStock.HeaderText = "Stock";
             this.dgStock.Name = "dgStock";
             this.dgStock.ReadOnly = true;
@@ -617,9 +623,9 @@
             // 
             // dgUOM
             // 
-            dataGridViewCellStyle66.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle66.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgUOM.DefaultCellStyle = dataGridViewCellStyle66;
+            dataGridViewCellStyle40.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle40.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgUOM.DefaultCellStyle = dataGridViewCellStyle40;
             this.dgUOM.HeaderText = "UOM";
             this.dgUOM.Name = "dgUOM";
             this.dgUOM.ReadOnly = true;
@@ -627,18 +633,18 @@
             // 
             // dgSSM
             // 
-            dataGridViewCellStyle67.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle67.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgSSM.DefaultCellStyle = dataGridViewCellStyle67;
+            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgSSM.DefaultCellStyle = dataGridViewCellStyle41;
             this.dgSSM.HeaderText = "SSM";
             this.dgSSM.Name = "dgSSM";
             this.dgSSM.ReadOnly = true;
             // 
             // dgUC
             // 
-            dataGridViewCellStyle68.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle68.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgUC.DefaultCellStyle = dataGridViewCellStyle68;
+            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgUC.DefaultCellStyle = dataGridViewCellStyle42;
             this.dgUC.HeaderText = "U/C";
             this.dgUC.Name = "dgUC";
             this.dgUC.ReadOnly = true;
@@ -646,9 +652,9 @@
             // dgUPIME
             // 
             this.dgUPIME.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle69.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle69.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgUPIME.DefaultCellStyle = dataGridViewCellStyle69;
+            dataGridViewCellStyle43.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle43.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgUPIME.DefaultCellStyle = dataGridViewCellStyle43;
             this.dgUPIME.HeaderText = "U/P IME L/P ";
             this.dgUPIME.Name = "dgUPIME";
             this.dgUPIME.ReadOnly = true;
@@ -657,9 +663,9 @@
             // dgDisc
             // 
             this.dgDisc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle70.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle70.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgDisc.DefaultCellStyle = dataGridViewCellStyle70;
+            dataGridViewCellStyle44.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle44.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgDisc.DefaultCellStyle = dataGridViewCellStyle44;
             this.dgDisc.HeaderText = "Disc. (%)";
             this.dgDisc.Name = "dgDisc";
             this.dgDisc.ReadOnly = true;
@@ -676,9 +682,9 @@
             // dgTotal
             // 
             this.dgTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle71.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle71.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgTotal.DefaultCellStyle = dataGridViewCellStyle71;
+            dataGridViewCellStyle45.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle45.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgTotal.DefaultCellStyle = dataGridViewCellStyle45;
             this.dgTotal.HeaderText = "TOTAL";
             this.dgTotal.Name = "dgTotal";
             this.dgTotal.ReadOnly = true;
@@ -703,9 +709,9 @@
             // dgHZ
             // 
             this.dgHZ.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle72.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle72.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgHZ.DefaultCellStyle = dataGridViewCellStyle72;
+            dataGridViewCellStyle46.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle46.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgHZ.DefaultCellStyle = dataGridViewCellStyle46;
             this.dgHZ.HeaderText = "HZ";
             this.dgHZ.Name = "dgHZ";
             this.dgHZ.ReadOnly = true;
@@ -714,9 +720,9 @@
             // dgCL
             // 
             this.dgCL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle73.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle73.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCL.DefaultCellStyle = dataGridViewCellStyle73;
+            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCL.DefaultCellStyle = dataGridViewCellStyle47;
             this.dgCL.HeaderText = "CL";
             this.dgCL.Name = "dgCL";
             this.dgCL.ReadOnly = true;
@@ -725,9 +731,9 @@
             // dgCR
             // 
             this.dgCR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle74.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle74.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCR.DefaultCellStyle = dataGridViewCellStyle74;
+            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCR.DefaultCellStyle = dataGridViewCellStyle48;
             this.dgCR.HeaderText = "CR";
             this.dgCR.Name = "dgCR";
             this.dgCR.ReadOnly = true;
@@ -744,9 +750,9 @@
             // dgUnitWeigt
             // 
             this.dgUnitWeigt.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle75.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle75.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgUnitWeigt.DefaultCellStyle = dataGridViewCellStyle75;
+            dataGridViewCellStyle49.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle49.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgUnitWeigt.DefaultCellStyle = dataGridViewCellStyle49;
             this.dgUnitWeigt.HeaderText = "Unit Weigt (Kg)";
             this.dgUnitWeigt.Name = "dgUnitWeigt";
             this.dgUnitWeigt.ReadOnly = true;
@@ -755,9 +761,9 @@
             // dgTotalWeight
             // 
             this.dgTotalWeight.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle76.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle76.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgTotalWeight.DefaultCellStyle = dataGridViewCellStyle76;
+            dataGridViewCellStyle50.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle50.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgTotalWeight.DefaultCellStyle = dataGridViewCellStyle50;
             this.dgTotalWeight.HeaderText = "Total Weight (Kg)";
             this.dgTotalWeight.Name = "dgTotalWeight";
             this.dgTotalWeight.ReadOnly = true;
@@ -782,9 +788,9 @@
             // dgCOO
             // 
             this.dgCOO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle77.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle77.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCOO.DefaultCellStyle = dataGridViewCellStyle77;
+            dataGridViewCellStyle51.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle51.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCOO.DefaultCellStyle = dataGridViewCellStyle51;
             this.dgCOO.HeaderText = "COO";
             this.dgCOO.Name = "dgCOO";
             this.dgCOO.ReadOnly = true;
@@ -793,9 +799,9 @@
             // dgCCCNO
             // 
             this.dgCCCNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle78.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle78.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgCCCNO.DefaultCellStyle = dataGridViewCellStyle78;
+            dataGridViewCellStyle52.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle52.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgCCCNO.DefaultCellStyle = dataGridViewCellStyle52;
             this.dgCCCNO.HeaderText = "CCCNO";
             this.dgCCCNO.Name = "dgCCCNO";
             this.dgCCCNO.ReadOnly = true;
@@ -1111,6 +1117,17 @@
             this.panel2.Size = new System.Drawing.Size(1696, 56);
             this.panel2.TabIndex = 0;
             // 
+            // lblCurrValue
+            // 
+            this.lblCurrValue.AutoSize = true;
+            this.lblCurrValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblCurrValue.Location = new System.Drawing.Point(164, 24);
+            this.lblCurrValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCurrValue.Name = "lblCurrValue";
+            this.lblCurrValue.Size = new System.Drawing.Size(80, 17);
+            this.lblCurrValue.TabIndex = 79;
+            this.lblCurrValue.Text = "CurrValue";
+            // 
             // btnProductHistory
             // 
             this.btnProductHistory.Location = new System.Drawing.Point(376, 15);
@@ -1183,6 +1200,26 @@
             this.textBox10.Click += new System.EventHandler(this.textBox10_Click);
             this.textBox10.Leave += new System.EventHandler(this.textBox10_Leave);
             // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(15, 24);
+            this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(48, 17);
+            this.label30.TabIndex = 60;
+            this.label30.Text = "Factor";
+            // 
+            // cbFactor
+            // 
+            this.cbFactor.Location = new System.Drawing.Point(73, 22);
+            this.cbFactor.Margin = new System.Windows.Forms.Padding(4);
+            this.cbFactor.Name = "cbFactor";
+            this.cbFactor.Size = new System.Drawing.Size(55, 22);
+            this.cbFactor.TabIndex = 67;
+            this.cbFactor.Text = "5.5";
+            this.cbFactor.Leave += new System.EventHandler(this.cbFactor_Leave);
+            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabCustomerDetails);
@@ -1197,15 +1234,17 @@
             // 
             // tabCustomerDetails
             // 
+            this.tabCustomerDetails.Controls.Add(this.btnInvoiceModify);
+            this.tabCustomerDetails.Controls.Add(this.btnInvoiceAdd);
+            this.tabCustomerDetails.Controls.Add(this.cbInvoiceAdress);
             this.tabCustomerDetails.Controls.Add(this.button4);
             this.tabCustomerDetails.Controls.Add(this.button3);
             this.tabCustomerDetails.Controls.Add(this.cbDeliveryContact);
             this.tabCustomerDetails.Controls.Add(this.label61);
-            this.tabCustomerDetails.Controls.Add(this.button2);
-            this.tabCustomerDetails.Controls.Add(this.button1);
+            this.tabCustomerDetails.Controls.Add(this.btnDeliveryModify);
+            this.tabCustomerDetails.Controls.Add(this.btnDeliveryAdd);
             this.tabCustomerDetails.Controls.Add(this.textBox5);
             this.tabCustomerDetails.Controls.Add(this.cbDeliveryAddress);
-            this.tabCustomerDetails.Controls.Add(this.txtInvoiceAddress);
             this.tabCustomerDetails.Controls.Add(this.label45);
             this.tabCustomerDetails.Controls.Add(this.label42);
             this.tabCustomerDetails.Controls.Add(this.txtAccountingNote);
@@ -1223,6 +1262,169 @@
             this.tabCustomerDetails.TabIndex = 0;
             this.tabCustomerDetails.Text = "Customer Details";
             this.tabCustomerDetails.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(1157, 139);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(48, 28);
+            this.button4.TabIndex = 105;
+            this.button4.Text = "Mod";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(1097, 139);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(52, 28);
+            this.button3.TabIndex = 104;
+            this.button3.Text = "Add";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // cbDeliveryContact
+            // 
+            this.cbDeliveryContact.DataSource = this.customerWorkerBindingSource;
+            this.cbDeliveryContact.DisplayMember = "cw_name";
+            this.cbDeliveryContact.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDeliveryContact.FormattingEnabled = true;
+            this.cbDeliveryContact.Location = new System.Drawing.Point(853, 140);
+            this.cbDeliveryContact.Margin = new System.Windows.Forms.Padding(4);
+            this.cbDeliveryContact.Name = "cbDeliveryContact";
+            this.cbDeliveryContact.Size = new System.Drawing.Size(232, 24);
+            this.cbDeliveryContact.TabIndex = 103;
+            this.cbDeliveryContact.ValueMember = "ID";
+            // 
+            // label61
+            // 
+            this.label61.Location = new System.Drawing.Point(780, 135);
+            this.label61.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(61, 37);
+            this.label61.TabIndex = 102;
+            this.label61.Text = "Delivery Contact";
+            // 
+            // btnDeliveryModify
+            // 
+            this.btnDeliveryModify.Location = new System.Drawing.Point(1155, 49);
+            this.btnDeliveryModify.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeliveryModify.Name = "btnDeliveryModify";
+            this.btnDeliveryModify.Size = new System.Drawing.Size(48, 28);
+            this.btnDeliveryModify.TabIndex = 101;
+            this.btnDeliveryModify.Text = "Mod";
+            this.btnDeliveryModify.UseVisualStyleBackColor = true;
+            // 
+            // btnDeliveryAdd
+            // 
+            this.btnDeliveryAdd.Location = new System.Drawing.Point(1095, 49);
+            this.btnDeliveryAdd.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDeliveryAdd.Name = "btnDeliveryAdd";
+            this.btnDeliveryAdd.Size = new System.Drawing.Size(52, 28);
+            this.btnDeliveryAdd.TabIndex = 100;
+            this.btnDeliveryAdd.Text = "Add";
+            this.btnDeliveryAdd.UseVisualStyleBackColor = true;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(853, 81);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox5.Multiline = true;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(348, 48);
+            this.textBox5.TabIndex = 99;
+            this.textBox5.Text = "Teslimat adresi. Yukarıdaki combobox ta şirkete ait tüm adreslerin başlıkları çık" +
+    "ıcak. Standart olarak, eğer birşey seçilmediyse yada customer dan birşey atanmad" +
+    "ıysa invoice adres atanıcak.";
+            // 
+            // cbDeliveryAddress
+            // 
+            this.cbDeliveryAddress.DataSource = this.customerAddressBindingSource;
+            this.cbDeliveryAddress.DisplayMember = "AdressTitle";
+            this.cbDeliveryAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDeliveryAddress.FormattingEnabled = true;
+            this.cbDeliveryAddress.Location = new System.Drawing.Point(853, 50);
+            this.cbDeliveryAddress.Margin = new System.Windows.Forms.Padding(4);
+            this.cbDeliveryAddress.Name = "cbDeliveryAddress";
+            this.cbDeliveryAddress.Size = new System.Drawing.Size(232, 24);
+            this.cbDeliveryAddress.TabIndex = 98;
+            this.cbDeliveryAddress.ValueMember = "ID";
+            // 
+            // label45
+            // 
+            this.label45.Location = new System.Drawing.Point(780, 50);
+            this.label45.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(61, 37);
+            this.label45.TabIndex = 96;
+            this.label45.Text = "Delivery Address";
+            // 
+            // label42
+            // 
+            this.label42.Location = new System.Drawing.Point(780, 7);
+            this.label42.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(67, 37);
+            this.label42.TabIndex = 95;
+            this.label42.Text = "Invoice Address";
+            // 
+            // txtAccountingNote
+            // 
+            this.txtAccountingNote.Location = new System.Drawing.Point(1316, 4);
+            this.txtAccountingNote.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAccountingNote.Multiline = true;
+            this.txtAccountingNote.Name = "txtAccountingNote";
+            this.txtAccountingNote.ReadOnly = true;
+            this.txtAccountingNote.Size = new System.Drawing.Size(303, 38);
+            this.txtAccountingNote.TabIndex = 94;
+            // 
+            // label9
+            // 
+            this.label9.Location = new System.Drawing.Point(1213, 7);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(97, 37);
+            this.label9.TabIndex = 93;
+            this.label9.Text = "Accounting Note";
+            // 
+            // txtContactNote
+            // 
+            this.txtContactNote.Location = new System.Drawing.Point(1317, 121);
+            this.txtContactNote.Margin = new System.Windows.Forms.Padding(4);
+            this.txtContactNote.Multiline = true;
+            this.txtContactNote.Name = "txtContactNote";
+            this.txtContactNote.ReadOnly = true;
+            this.txtContactNote.Size = new System.Drawing.Size(301, 38);
+            this.txtContactNote.TabIndex = 92;
+            // 
+            // txtCustomerNote
+            // 
+            this.txtCustomerNote.Location = new System.Drawing.Point(1316, 62);
+            this.txtCustomerNote.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCustomerNote.Multiline = true;
+            this.txtCustomerNote.Name = "txtCustomerNote";
+            this.txtCustomerNote.ReadOnly = true;
+            this.txtCustomerNote.Size = new System.Drawing.Size(303, 40);
+            this.txtCustomerNote.TabIndex = 91;
+            // 
+            // label16
+            // 
+            this.label16.Location = new System.Drawing.Point(1213, 124);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(68, 37);
+            this.label16.TabIndex = 90;
+            this.label16.Text = "Contact Note";
+            // 
+            // label15
+            // 
+            this.label15.Location = new System.Drawing.Point(1213, 66);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(68, 37);
+            this.label15.TabIndex = 89;
+            this.label15.Text = "Customer Note";
             // 
             // groupBox1
             // 
@@ -1259,6 +1461,62 @@
             this.groupBox1.Size = new System.Drawing.Size(756, 161);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
+            // 
+            // dtpRequestedDelvDate
+            // 
+            this.dtpRequestedDelvDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpRequestedDelvDate.Location = new System.Drawing.Point(593, 132);
+            this.dtpRequestedDelvDate.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpRequestedDelvDate.Name = "dtpRequestedDelvDate";
+            this.dtpRequestedDelvDate.Size = new System.Drawing.Size(148, 22);
+            this.dtpRequestedDelvDate.TabIndex = 89;
+            this.dtpRequestedDelvDate.Value = new System.DateTime(2017, 11, 29, 14, 43, 7, 0);
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Location = new System.Drawing.Point(494, 134);
+            this.label68.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(96, 17);
+            this.label68.TabIndex = 88;
+            this.label68.Text = "Req. Dlv Date";
+            // 
+            // label65
+            // 
+            this.label65.Location = new System.Drawing.Point(494, 107);
+            this.label65.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(131, 19);
+            this.label65.TabIndex = 87;
+            this.label65.Text = "Online Conf No";
+            // 
+            // txtOnlineConfirmationNo
+            // 
+            this.txtOnlineConfirmationNo.Location = new System.Drawing.Point(632, 102);
+            this.txtOnlineConfirmationNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtOnlineConfirmationNo.Name = "txtOnlineConfirmationNo";
+            this.txtOnlineConfirmationNo.Size = new System.Drawing.Size(109, 22);
+            this.txtOnlineConfirmationNo.TabIndex = 86;
+            // 
+            // txtQuotationNo
+            // 
+            this.txtQuotationNo.Location = new System.Drawing.Point(574, 74);
+            this.txtQuotationNo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtQuotationNo.Name = "txtQuotationNo";
+            this.txtQuotationNo.ReadOnly = true;
+            this.txtQuotationNo.Size = new System.Drawing.Size(167, 22);
+            this.txtQuotationNo.TabIndex = 85;
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Location = new System.Drawing.Point(494, 74);
+            this.label67.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(61, 17);
+            this.label67.TabIndex = 84;
+            this.label67.Text = "Quot No";
             // 
             // dtpDate
             // 
@@ -1371,16 +1629,6 @@
             this.label3.TabIndex = 68;
             this.label3.Text = "LPO NO";
             // 
-            // cbFactor
-            // 
-            this.cbFactor.Location = new System.Drawing.Point(73, 22);
-            this.cbFactor.Margin = new System.Windows.Forms.Padding(4);
-            this.cbFactor.Name = "cbFactor";
-            this.cbFactor.Size = new System.Drawing.Size(55, 22);
-            this.cbFactor.TabIndex = 67;
-            this.cbFactor.Text = "5.5";
-            this.cbFactor.Leave += new System.EventHandler(this.cbFactor_Leave);
-            // 
             // txtSaleOrderNo
             // 
             this.txtSaleOrderNo.Location = new System.Drawing.Point(88, 74);
@@ -1409,16 +1657,6 @@
             this.label1.Size = new System.Drawing.Size(53, 17);
             this.label1.TabIndex = 62;
             this.label1.Text = "SO NO";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(15, 24);
-            this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(48, 17);
-            this.label30.TabIndex = 60;
-            this.label30.Text = "Factor";
             // 
             // cbCurrency
             // 
@@ -1454,6 +1692,8 @@
             // 
             // cbWorkers
             // 
+            this.cbWorkers.DataSource = this.customerWorkerBindingSource;
+            this.cbWorkers.DisplayMember = "cw_name";
             this.cbWorkers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbWorkers.FormattingEnabled = true;
             this.cbWorkers.Location = new System.Drawing.Point(248, 42);
@@ -1461,6 +1701,7 @@
             this.cbWorkers.Name = "cbWorkers";
             this.cbWorkers.Size = new System.Drawing.Size(385, 24);
             this.cbWorkers.TabIndex = 17;
+            this.cbWorkers.ValueMember = "ID";
             // 
             // label17
             // 
@@ -1592,7 +1833,7 @@
             this.tabItemDetails.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabItemDetails.Name = "tabItemDetails";
             this.tabItemDetails.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabItemDetails.Size = new System.Drawing.Size(1643, 189);
+            this.tabItemDetails.Size = new System.Drawing.Size(1708, 189);
             this.tabItemDetails.TabIndex = 1;
             this.tabItemDetails.Text = "Item Details";
             this.tabItemDetails.UseVisualStyleBackColor = true;
@@ -2708,6 +2949,81 @@
             this.panel1.Size = new System.Drawing.Size(1716, 166);
             this.panel1.TabIndex = 58;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.groupBox4.Controls.Add(this.label5);
+            this.groupBox4.Controls.Add(this.cbPaymentTerm);
+            this.groupBox4.Location = new System.Drawing.Point(859, 17);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox4.Size = new System.Drawing.Size(142, 65);
+            this.groupBox4.TabIndex = 51;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Payment Term";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(8, 11);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(0, 17);
+            this.label5.TabIndex = 9;
+            // 
+            // cbPaymentTerm
+            // 
+            this.cbPaymentTerm.DataSource = this.paymentTermBindingSource;
+            this.cbPaymentTerm.DisplayMember = "term_name";
+            this.cbPaymentTerm.FormattingEnabled = true;
+            this.cbPaymentTerm.Location = new System.Drawing.Point(8, 31);
+            this.cbPaymentTerm.Margin = new System.Windows.Forms.Padding(4);
+            this.cbPaymentTerm.Name = "cbPaymentTerm";
+            this.cbPaymentTerm.Size = new System.Drawing.Size(122, 24);
+            this.cbPaymentTerm.TabIndex = 8;
+            this.cbPaymentTerm.ValueMember = "ID";
+            // 
+            // paymentTermBindingSource
+            // 
+            this.paymentTermBindingSource.DataSource = typeof(LoginForm.DataSet.PaymentTerm);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.groupBox2.Controls.Add(this.label69);
+            this.groupBox2.Controls.Add(this.cbOrderNature);
+            this.groupBox2.Location = new System.Drawing.Point(695, 89);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Size = new System.Drawing.Size(156, 65);
+            this.groupBox2.TabIndex = 50;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Order Nature";
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Location = new System.Drawing.Point(8, 11);
+            this.label69.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(0, 17);
+            this.label69.TabIndex = 9;
+            // 
+            // cbOrderNature
+            // 
+            this.cbOrderNature.FormattingEnabled = true;
+            this.cbOrderNature.Items.AddRange(new object[] {
+            "XDOC",
+            "NORMAL"});
+            this.cbOrderNature.Location = new System.Drawing.Point(8, 31);
+            this.cbOrderNature.Margin = new System.Windows.Forms.Padding(4);
+            this.cbOrderNature.Name = "cbOrderNature";
+            this.cbOrderNature.Size = new System.Drawing.Size(128, 24);
+            this.cbOrderNature.TabIndex = 8;
+            this.cbOrderNature.Text = "XDOC";
+            // 
             // btnSave
             // 
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -3059,315 +3375,46 @@
             this.txtNoteForCustomer.Size = new System.Drawing.Size(537, 43);
             this.txtNoteForCustomer.TabIndex = 0;
             // 
-            // button4
+            // cbInvoiceAdress
             // 
-            this.button4.Location = new System.Drawing.Point(1157, 139);
-            this.button4.Margin = new System.Windows.Forms.Padding(4);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(48, 28);
-            this.button4.TabIndex = 105;
-            this.button4.Text = "Mod";
-            this.button4.UseVisualStyleBackColor = true;
+            this.cbInvoiceAdress.DataSource = this.customerAddressBindingSource;
+            this.cbInvoiceAdress.DisplayMember = "AdressTitle";
+            this.cbInvoiceAdress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbInvoiceAdress.FormattingEnabled = true;
+            this.cbInvoiceAdress.Location = new System.Drawing.Point(853, 15);
+            this.cbInvoiceAdress.Margin = new System.Windows.Forms.Padding(4);
+            this.cbInvoiceAdress.Name = "cbInvoiceAdress";
+            this.cbInvoiceAdress.Size = new System.Drawing.Size(232, 24);
+            this.cbInvoiceAdress.TabIndex = 106;
+            this.cbInvoiceAdress.ValueMember = "ID";
             // 
-            // button3
+            // btnInvoiceModify
             // 
-            this.button3.Location = new System.Drawing.Point(1097, 139);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(52, 28);
-            this.button3.TabIndex = 104;
-            this.button3.Text = "Add";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnInvoiceModify.Location = new System.Drawing.Point(1157, 16);
+            this.btnInvoiceModify.Margin = new System.Windows.Forms.Padding(4);
+            this.btnInvoiceModify.Name = "btnInvoiceModify";
+            this.btnInvoiceModify.Size = new System.Drawing.Size(48, 28);
+            this.btnInvoiceModify.TabIndex = 108;
+            this.btnInvoiceModify.Text = "Mod";
+            this.btnInvoiceModify.UseVisualStyleBackColor = true;
             // 
-            // cbDeliveryContact
+            // btnInvoiceAdd
             // 
-            this.cbDeliveryContact.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDeliveryContact.FormattingEnabled = true;
-            this.cbDeliveryContact.Location = new System.Drawing.Point(853, 140);
-            this.cbDeliveryContact.Margin = new System.Windows.Forms.Padding(4);
-            this.cbDeliveryContact.Name = "cbDeliveryContact";
-            this.cbDeliveryContact.Size = new System.Drawing.Size(232, 24);
-            this.cbDeliveryContact.TabIndex = 103;
+            this.btnInvoiceAdd.Location = new System.Drawing.Point(1097, 16);
+            this.btnInvoiceAdd.Margin = new System.Windows.Forms.Padding(4);
+            this.btnInvoiceAdd.Name = "btnInvoiceAdd";
+            this.btnInvoiceAdd.Size = new System.Drawing.Size(52, 28);
+            this.btnInvoiceAdd.TabIndex = 107;
+            this.btnInvoiceAdd.Text = "Add";
+            this.btnInvoiceAdd.UseVisualStyleBackColor = true;
             // 
-            // label61
+            // customerAddressBindingSource
             // 
-            this.label61.Location = new System.Drawing.Point(780, 135);
-            this.label61.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(61, 37);
-            this.label61.TabIndex = 102;
-            this.label61.Text = "Delivery Contact";
+            this.customerAddressBindingSource.DataSource = typeof(LoginForm.DataSet.CustomerAddress);
             // 
-            // button2
+            // customerWorkerBindingSource
             // 
-            this.button2.Location = new System.Drawing.Point(1155, 49);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(48, 28);
-            this.button2.TabIndex = 101;
-            this.button2.Text = "Mod";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(1095, 49);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(52, 28);
-            this.button1.TabIndex = 100;
-            this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(853, 81);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(348, 48);
-            this.textBox5.TabIndex = 99;
-            this.textBox5.Text = "Teslimat adresi. Yukarıdaki combobox ta şirkete ait tüm adreslerin başlıkları çık" +
-    "ıcak. Standart olarak, eğer birşey seçilmediyse yada customer dan birşey atanmad" +
-    "ıysa invoice adres atanıcak.";
-            // 
-            // cbDeliveryAddress
-            // 
-            this.cbDeliveryAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDeliveryAddress.FormattingEnabled = true;
-            this.cbDeliveryAddress.Location = new System.Drawing.Point(853, 50);
-            this.cbDeliveryAddress.Margin = new System.Windows.Forms.Padding(4);
-            this.cbDeliveryAddress.Name = "cbDeliveryAddress";
-            this.cbDeliveryAddress.Size = new System.Drawing.Size(232, 24);
-            this.cbDeliveryAddress.TabIndex = 98;
-            // 
-            // txtInvoiceAddress
-            // 
-            this.txtInvoiceAddress.Location = new System.Drawing.Point(853, 3);
-            this.txtInvoiceAddress.Margin = new System.Windows.Forms.Padding(4);
-            this.txtInvoiceAddress.Multiline = true;
-            this.txtInvoiceAddress.Name = "txtInvoiceAddress";
-            this.txtInvoiceAddress.ReadOnly = true;
-            this.txtInvoiceAddress.Size = new System.Drawing.Size(348, 40);
-            this.txtInvoiceAddress.TabIndex = 97;
-            this.txtInvoiceAddress.Text = "Şirketin adresi";
-            // 
-            // label45
-            // 
-            this.label45.Location = new System.Drawing.Point(780, 50);
-            this.label45.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(61, 37);
-            this.label45.TabIndex = 96;
-            this.label45.Text = "Delivery Address";
-            // 
-            // label42
-            // 
-            this.label42.Location = new System.Drawing.Point(780, 7);
-            this.label42.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(67, 37);
-            this.label42.TabIndex = 95;
-            this.label42.Text = "Invoice Address";
-            // 
-            // txtAccountingNote
-            // 
-            this.txtAccountingNote.Location = new System.Drawing.Point(1316, 4);
-            this.txtAccountingNote.Margin = new System.Windows.Forms.Padding(4);
-            this.txtAccountingNote.Multiline = true;
-            this.txtAccountingNote.Name = "txtAccountingNote";
-            this.txtAccountingNote.ReadOnly = true;
-            this.txtAccountingNote.Size = new System.Drawing.Size(303, 38);
-            this.txtAccountingNote.TabIndex = 94;
-            // 
-            // label9
-            // 
-            this.label9.Location = new System.Drawing.Point(1213, 7);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(97, 37);
-            this.label9.TabIndex = 93;
-            this.label9.Text = "Accounting Note";
-            // 
-            // txtContactNote
-            // 
-            this.txtContactNote.Location = new System.Drawing.Point(1317, 121);
-            this.txtContactNote.Margin = new System.Windows.Forms.Padding(4);
-            this.txtContactNote.Multiline = true;
-            this.txtContactNote.Name = "txtContactNote";
-            this.txtContactNote.ReadOnly = true;
-            this.txtContactNote.Size = new System.Drawing.Size(301, 38);
-            this.txtContactNote.TabIndex = 92;
-            // 
-            // txtCustomerNote
-            // 
-            this.txtCustomerNote.Location = new System.Drawing.Point(1316, 62);
-            this.txtCustomerNote.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCustomerNote.Multiline = true;
-            this.txtCustomerNote.Name = "txtCustomerNote";
-            this.txtCustomerNote.ReadOnly = true;
-            this.txtCustomerNote.Size = new System.Drawing.Size(303, 40);
-            this.txtCustomerNote.TabIndex = 91;
-            // 
-            // label16
-            // 
-            this.label16.Location = new System.Drawing.Point(1213, 124);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(68, 37);
-            this.label16.TabIndex = 90;
-            this.label16.Text = "Contact Note";
-            // 
-            // label15
-            // 
-            this.label15.Location = new System.Drawing.Point(1213, 66);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(68, 37);
-            this.label15.TabIndex = 89;
-            this.label15.Text = "Customer Note";
-            // 
-            // dtpRequestedDelvDate
-            // 
-            this.dtpRequestedDelvDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpRequestedDelvDate.Location = new System.Drawing.Point(593, 132);
-            this.dtpRequestedDelvDate.Margin = new System.Windows.Forms.Padding(4);
-            this.dtpRequestedDelvDate.Name = "dtpRequestedDelvDate";
-            this.dtpRequestedDelvDate.Size = new System.Drawing.Size(148, 22);
-            this.dtpRequestedDelvDate.TabIndex = 89;
-            this.dtpRequestedDelvDate.Value = new System.DateTime(2017, 11, 29, 14, 43, 7, 0);
-            // 
-            // label68
-            // 
-            this.label68.AutoSize = true;
-            this.label68.Location = new System.Drawing.Point(494, 134);
-            this.label68.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(96, 17);
-            this.label68.TabIndex = 88;
-            this.label68.Text = "Req. Dlv Date";
-            // 
-            // label65
-            // 
-            this.label65.Location = new System.Drawing.Point(494, 107);
-            this.label65.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(131, 19);
-            this.label65.TabIndex = 87;
-            this.label65.Text = "Online Conf No";
-            // 
-            // txtOnlineConfirmationNo
-            // 
-            this.txtOnlineConfirmationNo.Location = new System.Drawing.Point(632, 102);
-            this.txtOnlineConfirmationNo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtOnlineConfirmationNo.Name = "txtOnlineConfirmationNo";
-            this.txtOnlineConfirmationNo.Size = new System.Drawing.Size(109, 22);
-            this.txtOnlineConfirmationNo.TabIndex = 86;
-            // 
-            // txtQuotationNo
-            // 
-            this.txtQuotationNo.Location = new System.Drawing.Point(574, 74);
-            this.txtQuotationNo.Margin = new System.Windows.Forms.Padding(4);
-            this.txtQuotationNo.Name = "txtQuotationNo";
-            this.txtQuotationNo.ReadOnly = true;
-            this.txtQuotationNo.Size = new System.Drawing.Size(167, 22);
-            this.txtQuotationNo.TabIndex = 85;
-            // 
-            // label67
-            // 
-            this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(494, 74);
-            this.label67.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(61, 17);
-            this.label67.TabIndex = 84;
-            this.label67.Text = "Quot No";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Controls.Add(this.cbPaymentTerm);
-            this.groupBox4.Location = new System.Drawing.Point(859, 17);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Size = new System.Drawing.Size(142, 65);
-            this.groupBox4.TabIndex = 51;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Payment Term";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 11);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(0, 17);
-            this.label5.TabIndex = 9;
-            // 
-            // cbPaymentTerm
-            // 
-            this.cbPaymentTerm.DataSource = this.paymentTermBindingSource;
-            this.cbPaymentTerm.DisplayMember = "term_name";
-            this.cbPaymentTerm.FormattingEnabled = true;
-            this.cbPaymentTerm.Location = new System.Drawing.Point(8, 31);
-            this.cbPaymentTerm.Margin = new System.Windows.Forms.Padding(4);
-            this.cbPaymentTerm.Name = "cbPaymentTerm";
-            this.cbPaymentTerm.Size = new System.Drawing.Size(122, 24);
-            this.cbPaymentTerm.TabIndex = 8;
-            this.cbPaymentTerm.ValueMember = "ID";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.groupBox2.Controls.Add(this.label69);
-            this.groupBox2.Controls.Add(this.cbOrderNature);
-            this.groupBox2.Location = new System.Drawing.Point(695, 89);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(156, 65);
-            this.groupBox2.TabIndex = 50;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Order Nature";
-            // 
-            // label69
-            // 
-            this.label69.AutoSize = true;
-            this.label69.Location = new System.Drawing.Point(8, 11);
-            this.label69.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(0, 17);
-            this.label69.TabIndex = 9;
-            // 
-            // cbOrderNature
-            // 
-            this.cbOrderNature.FormattingEnabled = true;
-            this.cbOrderNature.Items.AddRange(new object[] {
-            "XDOC",
-            "NORMAL"});
-            this.cbOrderNature.Location = new System.Drawing.Point(8, 31);
-            this.cbOrderNature.Margin = new System.Windows.Forms.Padding(4);
-            this.cbOrderNature.Name = "cbOrderNature";
-            this.cbOrderNature.Size = new System.Drawing.Size(128, 24);
-            this.cbOrderNature.TabIndex = 8;
-            this.cbOrderNature.Text = "XDOC";
-            // 
-            // lblCurrValue
-            // 
-            this.lblCurrValue.AutoSize = true;
-            this.lblCurrValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblCurrValue.Location = new System.Drawing.Point(164, 24);
-            this.lblCurrValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblCurrValue.Name = "lblCurrValue";
-            this.lblCurrValue.Size = new System.Drawing.Size(80, 17);
-            this.lblCurrValue.TabIndex = 79;
-            this.lblCurrValue.Text = "CurrValue";
-            // 
-            // paymentTermBindingSource
-            // 
-            this.paymentTermBindingSource.DataSource = typeof(LoginForm.DataSet.PaymentTerm);
+            this.customerWorkerBindingSource.DataSource = typeof(LoginForm.DataSet.CustomerWorker);
             // 
             // FormSaleSale
             // 
@@ -3400,6 +3447,11 @@
             this.tabItemDetails.ResumeLayout(false);
             this.tabItemDetails.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.paymentTermBindingSource)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox11.ResumeLayout(false);
             this.groupBox11.PerformLayout();
             this.groupBox7.ResumeLayout(false);
@@ -3408,11 +3460,8 @@
             this.groupBox10.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.paymentTermBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerAddressBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerWorkerBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3666,11 +3715,10 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ComboBox cbDeliveryContact;
         private System.Windows.Forms.Label label61;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDeliveryModify;
+        private System.Windows.Forms.Button btnDeliveryAdd;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.ComboBox cbDeliveryAddress;
-        private System.Windows.Forms.TextBox txtInvoiceAddress;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.TextBox txtAccountingNote;
@@ -3693,5 +3741,10 @@
         private System.Windows.Forms.ComboBox cbOrderNature;
         private System.Windows.Forms.Label lblCurrValue;
         private System.Windows.Forms.BindingSource paymentTermBindingSource;
+        private System.Windows.Forms.Button btnInvoiceModify;
+        private System.Windows.Forms.Button btnInvoiceAdd;
+        private System.Windows.Forms.ComboBox cbInvoiceAdress;
+        private System.Windows.Forms.BindingSource customerAddressBindingSource;
+        private System.Windows.Forms.BindingSource customerWorkerBindingSource;
     }
 }
