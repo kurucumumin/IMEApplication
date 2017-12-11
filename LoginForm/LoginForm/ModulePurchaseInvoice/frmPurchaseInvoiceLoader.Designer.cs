@@ -52,6 +52,7 @@
             this.PurchaseInvoiceList.Name = "PurchaseInvoiceList";
             this.PurchaseInvoiceList.Size = new System.Drawing.Size(215, 290);
             this.PurchaseInvoiceList.TabIndex = 1;
+            this.PurchaseInvoiceList.SelectedIndexChanged += new System.EventHandler(this.PurchaseInvoiceList_SelectedIndexChanged);
             // 
             // label1
             // 

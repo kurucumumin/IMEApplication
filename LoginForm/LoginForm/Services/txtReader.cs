@@ -25,88 +25,96 @@ namespace LoginForm
             DialogResult result1 = openFileDialog1.ShowDialog();
             if (result1 == DialogResult.OK) // Test result.
             {
-                string[] lines = System.IO.File.ReadAllLines(openFileDialog1.FileName);
-                int a = 0;
-                bool isItem = false;
-                PurchaseInvoice pi = new PurchaseInvoice();
-                while (lines.Count() > a)
-                {
-                    if (lines[a] != "")
+               
+                    string[] lines = System.IO.File.ReadAllLines(openFileDialog1.FileName);
+                    int a = 0;
+                    bool isItem = false;
+                    PurchaseInvoice pi = new PurchaseInvoice();
+                    while (lines.Count() > a)
                     {
-                        if (lines[a].Substring(0, 2) == "FH")
+                        if (lines[a] != "")
                         {
-                            pi.CountryCode = lines[a].Substring(2, 3);
-                            pi.OrderDate = lines[a].Substring(5, 10);
-                            pi.OrderTime = lines[a].Substring(14, 5);
-                        }
-                        else if (lines[a].Substring(0, 2) == "IV")
-                        {
-                            pi.ShipmentReference = lines[a].Substring(2, 10);
-                            pi.BillingDocumentReference = lines[a].Substring(12, 10);
-                            pi.ShippingCondition = lines[a].Substring(22, 2);
-                            pi.BillingDocumentDate = lines[a].Substring(24, 8);
-                            pi.SupplyingECCompany = lines[a].Substring(32, 4);
-                            pi.CustomerReference = lines[a].Substring(34, 10);
-                            pi.InvoiceTaxValue = lines[a].Substring(54, 18);
-                            pi.InvoiceGoodsValue = lines[a].Substring(72, 18);
-                            pi.InvoiceNettValue = lines[a].Substring(90, 18);
-                            pi.Currency = lines[a].Substring(108, 3);
-                            pi.AirwayBillNumber = lines[a].Substring(111, 20);
+                            if (lines[a].Substring(0, 2) == "FH")
+                            {
+                                pi.CountryCode = lines[a].Substring(2, 3);
+                                pi.OrderDate = lines[a].Substring(5, 10);
+                                pi.OrderTime = lines[a].Substring(14, 5);
+                            }
+                            else if (lines[a].Substring(0, 2) == "IV")
+                            {
+                                pi.ShipmentReference = lines[a].Substring(2, 10);
+                                pi.BillingDocumentReference = lines[a].Substring(12, 10);
+                                pi.ShippingCondition = lines[a].Substring(22, 2);
+                                pi.BillingDocumentDate = lines[a].Substring(24, 8);
+                                pi.SupplyingECCompany = lines[a].Substring(32, 4);
+                                pi.CustomerReference = lines[a].Substring(34, 10);
+                                pi.InvoiceTaxValue = lines[a].Substring(54, 18);
+                                pi.InvoiceGoodsValue = lines[a].Substring(72, 18);
+                                pi.InvoiceNettValue = lines[a].Substring(90, 18);
+                                pi.Currency = lines[a].Substring(108, 3);
+                                pi.AirwayBillNumber = lines[a].Substring(111, 20);
 
+                            }
+                            else if (lines[a].Substring(0, 2) == "FT")
+                            {
+                                pi.LineControl = lines[a].Substring(2, 4);
+                            }
+                            else if (lines[a].Substring(0, 2) == "IC")
+                            {
+                                pi.Surchargeordiscountindicator = lines[a].Substring(2, 3);
+                                pi.ConditionType = lines[a].Substring(5, 4);
+                                pi.ConditionText = lines[a].Substring(9, 80);
+                                pi.ConditionValueN = lines[a].Substring(89, 18);
+                            }
+                            else if (lines[a].Substring(0, 2) == "CT")
+                            {
+                                pi.LineControl2 = lines[a].Substring(2, 4);
+                            }
                         }
-                        else if (lines[a].Substring(0, 2) == "FT")
-                        {
-                            pi.LineControl = lines[a].Substring(2, 4);
-                        }
-                        else if (lines[a].Substring(0, 2) == "IC")
-                        {
-                            pi.Surchargeordiscountindicator = lines[a].Substring(2, 3);
-                            pi.ConditionType = lines[a].Substring(5, 4);
-                            pi.ConditionText = lines[a].Substring(9, 80);
-                            pi.ConditionValueN = lines[a].Substring(89, 18);
-                        }
-                        else if (lines[a].Substring(0, 2) == "CT")
-                        {
-                            pi.LineControl2 = lines[a].Substring(2, 4);
-                        }
+                        a++;
                     }
-                    a++;
+                if (IME.PurchaseInvoices.Where(b => b.BillingDocumentReference == pi.BillingDocumentReference).FirstOrDefault()==null)
+                {
+                    IME.PurchaseInvoices.Add(pi);
+                    IME.SaveChanges();
+                    a = 0;
+
+                    while (lines.Count() > a)
+                    {
+                        if (lines[a].Substring(0, 2) == "OI")
+                        {
+                            PurchaseInvoiceDetail purchaseInvoiceDetail = new PurchaseInvoiceDetail();
+                            purchaseInvoiceDetail.PurchaseInvoiceID = pi.ID;
+                            purchaseInvoiceDetail.PurchaseOrderNumber = lines[a].Substring(2, 30);
+                            purchaseInvoiceDetail.PurchaseOrderItemNumber = lines[a].Substring(32, 6);
+                            purchaseInvoiceDetail.ProductNumber = lines[a].Substring(38, 18);
+                            purchaseInvoiceDetail.BillingItemNumber = lines[a].Substring(56, 6);
+                            purchaseInvoiceDetail.Quantity = lines[a].Substring(62, 15);
+                            purchaseInvoiceDetail.SalesUnit = lines[a].Substring(77, 3);
+                            purchaseInvoiceDetail.UnitPrice = lines[a].Substring(80, 11);
+                            purchaseInvoiceDetail.Discount = lines[a].Substring(91, 11);
+                            purchaseInvoiceDetail.Tax = lines[a].Substring(102, 11);
+                            purchaseInvoiceDetail.GoodsValue = lines[a].Substring(113, 11);
+                            purchaseInvoiceDetail.Amount = lines[a].Substring(124, 11);
+                            purchaseInvoiceDetail.CCCNno = lines[a].Substring(135, 15);
+                            purchaseInvoiceDetail.CountryofOrigin = lines[a].Substring(150, 3);
+                            purchaseInvoiceDetail.ArticleDescription = lines[a].Substring(153, 40);
+                            purchaseInvoiceDetail.DeliveryNumber = lines[a].Substring(193, 10);
+                            purchaseInvoiceDetail.DeliveryItemNumber = lines[a].Substring(203, 6);
+                            IME.PurchaseInvoiceDetails.Add(purchaseInvoiceDetail);
+                            IME.SaveChanges();
+                            isItem = true;
+                        }
+                        a++;
+                    }
+                    a = 0;
+                    MessageBox.Show("Purchase Invoice loaded succesfully");
+                }
+                else
+                {
+                    MessageBox.Show("Purchase Invoice already exist");
                 }
 
-                IME.PurchaseInvoices.Add(pi);
-                IME.SaveChanges();
-
-
-                while (lines.Count() > a)
-                {
-                    if (lines[a].Substring(0, 2) == "OI")
-                    {
-                        PurchaseInvoiceDetail purchaseInvoiceDetail = new PurchaseInvoiceDetail();
-                        purchaseInvoiceDetail.PurchaseInvoiceID = pi.ID;
-                        purchaseInvoiceDetail.PurchaseOrderNumber = lines[a].Substring(2, 30);
-                        purchaseInvoiceDetail.PurchaseOrderItemNumber = lines[a].Substring(32, 6);
-                        purchaseInvoiceDetail.ProductNumber = lines[a].Substring(38, 18);
-                        purchaseInvoiceDetail.BillingItemNumber = lines[a].Substring(56, 6);
-                        purchaseInvoiceDetail.Quantity = lines[a].Substring(62, 15);
-                        purchaseInvoiceDetail.SalesUnit = lines[a].Substring(77, 3);
-                        purchaseInvoiceDetail.UnitPrice = lines[a].Substring(80, 11);
-                        purchaseInvoiceDetail.Discount = lines[a].Substring(91, 11);
-                        purchaseInvoiceDetail.Tax = lines[a].Substring(102, 11);
-                        purchaseInvoiceDetail.GoodsValue = lines[a].Substring(113, 11);
-                        purchaseInvoiceDetail.Amount = lines[a].Substring(124, 11);
-                        purchaseInvoiceDetail.CCCNno = lines[a].Substring(135, 15);
-                        purchaseInvoiceDetail.CountryofOrigin = lines[a].Substring(150, 3);
-                        purchaseInvoiceDetail.ArticleDescription = lines[a].Substring(153, 40);
-                        purchaseInvoiceDetail.DeliveryNumber = lines[a].Substring(193, 10);
-                        purchaseInvoiceDetail.DeliveryItemNumber = lines[a].Substring(203, 6);
-                        IME.PurchaseInvoiceDetails.Add(purchaseInvoiceDetail);
-                        IME.SaveChanges();
-                        isItem = true;
-                    }
-                    a++;
-                }
-                a = 0;
-                MessageBox.Show("Purchase Invoice loaded succesfully");
 
 
             }

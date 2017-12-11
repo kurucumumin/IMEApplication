@@ -304,6 +304,12 @@
     <Compile Include="DataSet\PrintFormat.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PurchaseInvoice.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PurchaseInvoiceDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PurchaseOrder.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -465,14 +471,14 @@
       <DependentUpon>FormTermsOfPayment.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\SaleItem.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PurchaseInvoice\frmPurchaseInvoiceLoader.cs">
+    <Compile Include="ModulePurchaseInvoice\frmPurchaseInvoiceLoader.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PurchaseInvoice\frmPurchaseInvoiceLoader.Designer.cs">
+    <Compile Include="ModulePurchaseInvoice\frmPurchaseInvoiceLoader.Designer.cs">
       <DependentUpon>frmPurchaseInvoiceLoader.cs</DependentUpon>
     </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseOrder\ExcelPurchaseOrder.cs" />
     <Compile Include="PurchaseOrder\frmStock.cs">
       <SubType>Form</SubType>
@@ -689,6 +695,9 @@
     <EmbeddedResource Include="Management\FormTermsOfPayment.resx">
       <DependentUpon>FormTermsOfPayment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModulePurchaseInvoice\frmPurchaseInvoiceLoader.resx">
+      <DependentUpon>frmPurchaseInvoiceLoader.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -699,9 +708,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="PurchaseInvoice\frmPurchaseInvoiceLoader.resx">
-      <DependentUpon>frmPurchaseInvoiceLoader.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PurchaseOrder\frmStock.resx">
       <DependentUpon>frmStock.cs</DependentUpon>
     </EmbeddedResource>

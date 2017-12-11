@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class PurchaseInvoice
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +19,7 @@ namespace LoginForm.DataSet
         {
             this.PurchaseInvoiceDetails = new HashSet<PurchaseInvoiceDetail>();
         }
-
+    
         public int ID { get; set; }
         public string CountryCode { get; set; }
         public string OrderDate { get; set; }
@@ -42,7 +42,7 @@ namespace LoginForm.DataSet
         public string LineControl { get; set; }
         public string LineControl2 { get; set; }
         public Nullable<System.DateTime> date { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseInvoiceDetail> PurchaseInvoiceDetails { get; set; }
     }

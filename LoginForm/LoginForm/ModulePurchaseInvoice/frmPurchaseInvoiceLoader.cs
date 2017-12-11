@@ -27,7 +27,17 @@ namespace LoginForm
 
         private void frmPurchaseInvoiceLoader_Load(object sender, EventArgs e)
         {
-            PurchaseInvoiceItemList.DataSource = IME.PurchaseInvoices.ToList();
+
+            PurchaseInvoiceList.DataSource = IME.PurchaseInvoices.ToList();
+            PurchaseInvoiceList.DisplayMember = "BillingDocumentReference";
+
+        }
+
+        private void PurchaseInvoiceList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int PurchaseInvoiceListID = (PurchaseInvoiceList.SelectedItem as PurchaseInvoice).ID;
+            PurchaseInvoiceItemList.DataSource = IME.PurchaseInvoiceDetails.Where(a=>a.PurchaseInvoiceID== PurchaseInvoiceListID).ToList();
+            PurchaseInvoiceItemList.DisplayMember = "PurchaseOrderItemNumber";
         }
     }
 }
