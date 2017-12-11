@@ -140,7 +140,6 @@ namespace LoginForm
             AccountRepresentary.DisplayMember = "NameLastName";
             AccountRepresentary.ValueMember = "WorkerID";
             cbCountry.DataSource = IME.Countries.ToList();
-            
             cbCountry.DisplayMember = "Country_name";
             cbCountry.ValueMember = "ID";
             ContactType.DataSource = IME.ContactTypes.ToList();
