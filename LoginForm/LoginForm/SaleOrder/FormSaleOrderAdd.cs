@@ -19,8 +19,7 @@ namespace LoginForm.nsSaleOrder
         decimal customerFactor = 0;
         decimal currency;
         decimal exchangeRate = 0;
-
-
+        
         List<SaleItem> addedItemList = new List<SaleItem>();
         List<SaleItem> removedItemList = new List<SaleItem>();
 

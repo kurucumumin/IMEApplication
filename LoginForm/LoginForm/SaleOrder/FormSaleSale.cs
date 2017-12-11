@@ -115,7 +115,7 @@ namespace LoginForm.nmSaleOrder
             {
                 DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
                 dgQuotationAddedItems.Rows.Add(dgRow);
-                txtQuotationNo.Text = NewQuotationID();
+                txtSaleOrderNo.Text = NewQuotationID();
                 //dgQuotationAddedItems.Rows[0].Cells["dgQty"].Value = "0";
                 dgQuotationAddedItems.Rows[0].Cells[0].Value = 1.ToString();
                 LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
@@ -138,6 +138,8 @@ namespace LoginForm.nmSaleOrder
             }
             GetCurrency(dtpDate.Value);
             GetAutorities();
+
+            cbPaymentTerm.DataSource = IME.PaymentTerms.ToList();
         }
 
         private void GetAutorities()
@@ -1383,8 +1385,8 @@ namespace LoginForm.nmSaleOrder
         private void QuotationSave()
         {
             DataSet.Quotation q = new DataSet.Quotation();
-            q.QuotationNo = txtQuotationNo.Text;
-            q.RFQNo = txtRFQNo.Text;
+            q.QuotationNo = txtSaleOrderNo.Text;
+            q.RFQNo = txtLPONO.Text;
             try { q.SubTotal = decimal.Parse(lblsubtotal.Text); } catch { }
             if (chkbForFinance.Checked) { q.ForFinancelIsTrue = 1; } else { q.ForFinancelIsTrue = 0; }
             q.ShippingMethodID = cbSMethod.SelectedIndex;
@@ -1394,7 +1396,7 @@ namespace LoginForm.nmSaleOrder
             try { q.VatValue = Decimal.Parse(lblVat.Text); } catch { }
             try { q.StartDate = dtpDate.Value; } catch { }
             try { q.Factor = Decimal.Parse(cbFactor.Text); } catch { }
-            try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
+            //try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
             q.PaymentID = (cbPayment.SelectedItem as PaymentMethod).ID;
             q.CurrType = (cbCurrency.SelectedItem as Rate).CurType;
             //q.CurrType = cbCurrType.Text;
@@ -1435,18 +1437,18 @@ namespace LoginForm.nmSaleOrder
         {
             IMEEntities IME = new IMEEntities();
             Quotation q1 = IME.Quotations.Where(a => a.QuotationNo.Contains(QuoNo)).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
-            if (txtQuotationNo.Text.Contains("v"))
+            if (txtSaleOrderNo.Text.Contains("v"))
             {
-                int quoID = Int32.Parse(txtQuotationNo.Text.Substring(txtQuotationNo.Text.LastIndexOf('v') + 1));
-                txtQuotationNo.Text = (txtQuotationNo.Text.Substring(0, txtQuotationNo.Text.IndexOf('v') + 1) + quoID).ToString();
+                int quoID = Int32.Parse(txtSaleOrderNo.Text.Substring(txtSaleOrderNo.Text.LastIndexOf('v') + 1));
+                txtSaleOrderNo.Text = (txtSaleOrderNo.Text.Substring(0, txtSaleOrderNo.Text.IndexOf('v') + 1) + quoID).ToString();
             }
             else
             {
-                txtQuotationNo.Text = q1.QuotationNo + "v1";
+                txtSaleOrderNo.Text = q1.QuotationNo + "v1";
             }
             Quotation q = new Quotation();
-            q.QuotationNo = txtQuotationNo.Text;
-            q.RFQNo = txtRFQNo.Text;
+            q.QuotationNo = txtSaleOrderNo.Text;
+            q.RFQNo = txtLPONO.Text;
             try { q.SubTotal = decimal.Parse(lblsubtotal.Text); } catch { }
             if (chkbForFinance.Checked) { q.ForFinancelIsTrue = 1; } else { q.ForFinancelIsTrue = 0; }
             q.ShippingMethodID = cbSMethod.SelectedIndex;
@@ -1456,7 +1458,7 @@ namespace LoginForm.nmSaleOrder
             try { q.VatValue = Decimal.Parse(lblVat.Text); } catch { }
             try { q.StartDate = dtpDate.Value; } catch { }
             try { q.Factor = Decimal.Parse(cbFactor.Text); } catch { }
-            try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
+            //try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
             try { q.PaymentID = (cbPayment.SelectedItem as PaymentMethod).ID; } catch { }
             try { q.CurrName = (cbCurrency.SelectedItem as Rate).CurType; } catch { }
             q.ShippingMethodID = cbSMethod.SelectedIndex;
@@ -1501,7 +1503,7 @@ namespace LoginForm.nmSaleOrder
                 if (dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value != null)
                 {
                     QuotationDetail qd = new QuotationDetail();
-                    qd.QuotationNo = txtQuotationNo.Text;
+                    qd.QuotationNo = txtSaleOrderNo.Text;
                     if (dgQuotationAddedItems.Rows[i].Cells["dgNo"].Value != null) qd.dgNo = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgNo"].Value.ToString());
                     if (dgQuotationAddedItems.Rows[i].Cells["dgDesc"].Value != null) qd.CustomerDescription = dgQuotationAddedItems.Rows[i].Cells["dgDesc"].Value.ToString();
                     if (dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value != null) qd.ItemCode = dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString();
@@ -2102,7 +2104,7 @@ namespace LoginForm.nmSaleOrder
                 //if (txtQuotationNo.Text != newID) { txtQuotationNo.Text = newID; }
                 if (ControlSave())
                 {
-                    QuotationSave(txtQuotationNo.Text);
+                    QuotationSave(txtSaleOrderNo.Text);
                     QuotationDetailsSave();
                 }
             }
@@ -2268,7 +2270,7 @@ namespace LoginForm.nmSaleOrder
 
         private void btnExcelExport_Click(object sender, EventArgs e)
         {
-            QuotationExcelExport.Export(dgQuotationAddedItems, txtQuotationNo.Text);
+            QuotationExcelExport.Export(dgQuotationAddedItems, txtSaleOrderNo.Text);
         }
 
         private void textBox10_Click(object sender, EventArgs e)

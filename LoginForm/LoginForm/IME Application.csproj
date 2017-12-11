@@ -304,6 +304,9 @@
     <Compile Include="DataSet\PrintFormat.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PurchaseInvoice.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PurchaseOrder.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -793,6 +796,7 @@
     <None Include="Properties\DataSources\LoginForm.DataSet.CustomerCategorySubCategory.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.CustomerSubCategory.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Mail.datasource" />
+    <None Include="Properties\DataSources\LoginForm.DataSet.PaymentTerm.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.PurchaseOrder.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.PurchaseOrderDetail.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Quotation.datasource" />
