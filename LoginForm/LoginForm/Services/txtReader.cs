@@ -37,7 +37,7 @@ namespace LoginForm
                             if (lines[a].Substring(0, 2) == "FH")
                             {
                                 pi.CountryCode = lines[a].Substring(2, 3);
-                                pi.OrderDate = lines[a].Substring(5, 10);
+                                if(lines[a].Substring(5, 10)!="") pi.OrderDate = Convert.ToDateTime( lines[a].Substring(5, 10));
                                 pi.OrderTime = lines[a].Substring(14, 5);
                             }
                             else if (lines[a].Substring(0, 2) == "IV")
@@ -830,6 +830,7 @@ namespace LoginForm
             }
             return 0;
         }
+
         public static int SlidingPriceRead()
         {
             #region SlidingPrice
@@ -1073,6 +1074,7 @@ namespace LoginForm
             }
             return 0;
         }
+
         public static int DiscontinuedListRead()
         {
             IMEEntities IME = new IMEEntities();
@@ -1182,6 +1184,7 @@ namespace LoginForm
             }
             return 0;
         }
+
         public static int HazardousRead()
         {
             #region HazardousRead
@@ -1237,6 +1240,7 @@ namespace LoginForm
             }
             return 0;
         }
+
         public static int EntendedRangeRead()
         {
             #region EntendedRangeRead
@@ -1414,6 +1418,7 @@ namespace LoginForm
             }
             return 0;
         }
+
         public static int RSProRead()
         {
             #region RSPro
@@ -1961,7 +1966,6 @@ namespace LoginForm
 
         }
 
-
         public static int excelCustomerLoader_CategorySubCategotyAndWorker()
         {
             IMEEntities IME = new IMEEntities();
@@ -2010,7 +2014,6 @@ namespace LoginForm
 
         }
 
-
         public static int createNOTE(string column)
         {
             IMEEntities IME = new IMEEntities();
@@ -2022,12 +2025,6 @@ namespace LoginForm
                 IME.SaveChanges();
             return n.ID;
         }
-
-
-
-
-        
-
 
         public static void excelCustomerLoader()
         {
@@ -2154,8 +2151,6 @@ namespace LoginForm
 
         }
     }
-
-
 
     class QuotationExcelExport
     {
