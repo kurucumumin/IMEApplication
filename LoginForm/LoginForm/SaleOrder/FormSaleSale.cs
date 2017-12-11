@@ -1465,12 +1465,15 @@ namespace LoginForm.nmSaleOrder
                 s.TotalMargin = Convert.ToDecimal(txtTotalMargin.Text);
                 s.Factor = Convert.ToDecimal(txtFactor.Text);
                 s.SubTotal = Convert.ToDecimal(lblsubtotal.Text);
-                s.DiscOnSubtotal = Convert.ToDecimal(txtTotalDis.Text);
-                s.ExtraCharges = Convert.ToDecimal(txtExtraCharges.Text);
+                s.DiscOnSubtotal = (txtTotalDis.Text != null && txtTotalDis.Text != String.Empty) ? Convert.ToDecimal(txtTotalDis.Text) : 0;
+                s.ExtraCharges = (txtExtraCharges.Text != null && txtExtraCharges.Text != String.Empty) ?Convert.ToDecimal(txtExtraCharges.Text) : 0;
                 
 
                 IME.SaleOrders.Add(s);
                 IME.SaveChanges();
+
+
+                MessageBox.Show("Just SaleOrder saved");
             }
             catch (Exception ex)
             {
