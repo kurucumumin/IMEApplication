@@ -295,6 +295,9 @@
     <Compile Include="DataSet\OnSale.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PayHead.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PaymentMethod.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>

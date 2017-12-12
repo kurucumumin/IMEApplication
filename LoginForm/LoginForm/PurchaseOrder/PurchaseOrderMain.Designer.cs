@@ -45,6 +45,12 @@
             this.btnExcel = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
+            this.FicheNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PurchaseOrderDate = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
+            this.CustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.c_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CameDate = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
+            this.Reason = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPurchase)).BeginInit();
@@ -176,10 +182,18 @@
             // dgPurchase
             // 
             this.dgPurchase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgPurchase.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.FicheNo,
+            this.PurchaseOrderDate,
+            this.CustomerID,
+            this.c_name,
+            this.CameDate,
+            this.Reason});
             this.dgPurchase.Location = new System.Drawing.Point(12, 154);
             this.dgPurchase.Name = "dgPurchase";
             this.dgPurchase.Size = new System.Drawing.Size(1365, 434);
             this.dgPurchase.TabIndex = 9;
+            this.dgPurchase.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPurchase_CellEndEdit);
             // 
             // btnClose
             // 
@@ -219,6 +233,88 @@
             this.btnPrint.TabIndex = 13;
             this.btnPrint.Text = "Send To Print";
             this.btnPrint.UseVisualStyleBackColor = true;
+            // 
+            // FicheNo
+            // 
+            this.FicheNo.HeaderText = "Fiche No";
+            this.FicheNo.Name = "FicheNo";
+            // 
+            // PurchaseOrderDate
+            // 
+            this.PurchaseOrderDate.HeaderText = "Date";
+            this.PurchaseOrderDate.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            // 
+            // 
+            // 
+            this.PurchaseOrderDate.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.PurchaseOrderDate.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.PurchaseOrderDate.MonthCalendar.BackgroundStyle.Class = "";
+            this.PurchaseOrderDate.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.PurchaseOrderDate.MonthCalendar.CommandsBackgroundStyle.Class = "";
+            this.PurchaseOrderDate.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.PurchaseOrderDate.MonthCalendar.DisplayMonth = new System.DateTime(2017, 12, 1, 0, 0, 0, 0);
+            this.PurchaseOrderDate.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            this.PurchaseOrderDate.MonthCalendar.MarkedDates = new System.DateTime[0];
+            this.PurchaseOrderDate.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.PurchaseOrderDate.MonthCalendar.NavigationBackgroundStyle.Class = "";
+            this.PurchaseOrderDate.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.PurchaseOrderDate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
+            this.PurchaseOrderDate.Name = "PurchaseOrderDate";
+            // 
+            // CustomerID
+            // 
+            this.CustomerID.HeaderText = "Customer ID";
+            this.CustomerID.Name = "CustomerID";
+            // 
+            // c_name
+            // 
+            this.c_name.HeaderText = "Customer Name";
+            this.c_name.Name = "c_name";
+            // 
+            // CameDate
+            // 
+            this.CameDate.HeaderText = "CameDate";
+            this.CameDate.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
+            // 
+            // 
+            // 
+            this.CameDate.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.CameDate.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.CameDate.MonthCalendar.BackgroundStyle.Class = "";
+            this.CameDate.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.CameDate.MonthCalendar.CommandsBackgroundStyle.Class = "";
+            this.CameDate.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.CameDate.MonthCalendar.DisplayMonth = new System.DateTime(2017, 12, 1, 0, 0, 0, 0);
+            this.CameDate.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday;
+            this.CameDate.MonthCalendar.MarkedDates = new System.DateTime[0];
+            this.CameDate.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.CameDate.MonthCalendar.NavigationBackgroundStyle.Class = "";
+            this.CameDate.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.CameDate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
+            this.CameDate.Name = "CameDate";
+            // 
+            // Reason
+            // 
+            this.Reason.HeaderText = "Reason";
+            this.Reason.Name = "Reason";
             // 
             // PurchaseOrderMain
             // 
@@ -265,5 +361,11 @@
         private System.Windows.Forms.RadioButton radioNotSent;
         private System.Windows.Forms.RadioButton radioAll;
         private System.Windows.Forms.RadioButton radioSent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FicheNo;
+        private DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn PurchaseOrderDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn c_name;
+        private DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn CameDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Reason;
     }
 }

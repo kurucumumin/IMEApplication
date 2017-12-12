@@ -47,6 +47,7 @@
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.btnPurchaseOrders = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.btnSupplier = new System.Windows.Forms.Button();
@@ -66,7 +67,6 @@
             this.panel23 = new System.Windows.Forms.Panel();
             this.panel22 = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
-            this.btnPurchaseOrders = new System.Windows.Forms.Button();
             this.tableRightPanel.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel15.SuspendLayout();
@@ -319,6 +319,22 @@
             this.panel11.Size = new System.Drawing.Size(108, 89);
             this.panel11.TabIndex = 42;
             // 
+            // btnPurchaseOrders
+            // 
+            this.btnPurchaseOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnPurchaseOrders.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnPurchaseOrders.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPurchaseOrders.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
+            this.btnPurchaseOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPurchaseOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnPurchaseOrders.Location = new System.Drawing.Point(0, 0);
+            this.btnPurchaseOrders.Name = "btnPurchaseOrders";
+            this.btnPurchaseOrders.Size = new System.Drawing.Size(108, 89);
+            this.btnPurchaseOrders.TabIndex = 15;
+            this.btnPurchaseOrders.Text = "Purchase Orders";
+            this.btnPurchaseOrders.UseVisualStyleBackColor = false;
+            this.btnPurchaseOrders.Click += new System.EventHandler(this.btnPurchaseOrders_Click);
+            // 
             // panel9
             // 
             this.panel9.Controls.Add(this.panel10);
@@ -522,21 +538,6 @@
             this.panel21.Name = "panel21";
             this.panel21.Size = new System.Drawing.Size(108, 89);
             this.panel21.TabIndex = 52;
-            // 
-            // btnPurchaseOrders
-            // 
-            this.btnPurchaseOrders.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
-            this.btnPurchaseOrders.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnPurchaseOrders.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPurchaseOrders.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
-            this.btnPurchaseOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPurchaseOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnPurchaseOrders.Location = new System.Drawing.Point(0, 0);
-            this.btnPurchaseOrders.Name = "btnPurchaseOrders";
-            this.btnPurchaseOrders.Size = new System.Drawing.Size(108, 89);
-            this.btnPurchaseOrders.TabIndex = 15;
-            this.btnPurchaseOrders.Text = "Purchase Orders";
-            this.btnPurchaseOrders.UseVisualStyleBackColor = false;
             // 
             // DevelopmentControl
             // 

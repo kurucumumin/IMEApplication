@@ -48,6 +48,26 @@ namespace LoginForm.PurchaseOrder
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            IME = new IMEEntities();
+
+            #region Update Purchase Order Reason
+            for(int i = 0; i < dgPurchase.RowCount-1; i++)
+            {
+                DataGridViewRow row = dgPurchase.Rows[i];
+                string ID = row.Cells[FicheNo.Index].Value.ToString();
+                if (ID != null)
+                {
+                    var adapter = IME.PurchaseOrders.Where(a => a.FicheNo == ID).FirstOrDefault();
+                    adapter.FicheNo = row.Cells[FicheNo.Index].Value.ToString();
+                    adapter.PurchaseOrderDate = (DateTime)row.Cells[PurchaseOrderDate.Index].Value;
+                    adapter.CustomerID = row.Cells[CustomerID.Index].Value.ToString();
+                    adapter.Customer.c_name = row.Cells[c_name.Index].Value.ToString();
+                    adapter.CameDate = (DateTime)row.Cells[CameDate.Index].Value;
+                    adapter.Reason = row.Cells[Reason.Index].Value.ToString();
+                }
+            }
+            IME.SaveChanges();
+
             if (MessageBox.Show("Are You Sure To Exit Programme ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 this.Hide();
@@ -56,8 +76,10 @@ namespace LoginForm.PurchaseOrder
 
         private void PurchaseOrderMain_Load(object sender, EventArgs e)
         {
+         
             PurchaseOrderFill(DateTime.Today, DateTime.Today.AddDays(-7));
-            
+
+
         }
 
         private void PurchaseOrderFill(DateTime startDate, DateTime endDate)
@@ -75,15 +97,38 @@ namespace LoginForm.PurchaseOrder
                                p.CameDate,
                                p.Reason
                            }).ToList();
+
+            foreach (var item in adapter)
+            {
+                int rowIndex = dgPurchase.Rows.Add();
+                DataGridViewRow row = dgPurchase.Rows[rowIndex];
+
+                row.Cells[FicheNo.Index].Value = item.FicheNo;
+                row.Cells[PurchaseOrderDate.Index].Value = item.PurchaseOrderDate;
+                row.Cells[CustomerID.Index].Value = item.CustomerID;
+                row.Cells[c_name.Index].Value = item.c_name;
+                row.Cells[CameDate.Index].Value = item.CameDate;
+                row.Cells[Reason.Index].Value = item.Reason;
+            }
             #endregion
-            dgPurchase.DataSource = adapter;
-            dgPurchase.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgPurchase.Columns[0].HeaderText = "Fiche No";
-            dgPurchase.Columns[1].HeaderText = "Date";
-            dgPurchase.Columns[2].HeaderText = "Customer Code";
-            dgPurchase.Columns[3].HeaderText = "Customer Title";
-            dgPurchase.Columns[4].HeaderText = "Came Date";
-            dgPurchase.Columns[5].HeaderText = "Reason";
+            //dgPurchase.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            //dgPurchase.Columns[0].HeaderText = "Fiche No";
+            //dgPurchase.Columns[1].HeaderText = "Date";
+            //dgPurchase.Columns[2].HeaderText = "Customer Code";
+            //dgPurchase.Columns[3].HeaderText = "Customer Title";
+            //dgPurchase.Columns[4].HeaderText = "Came Date";
+            //dgPurchase.Columns[5].HeaderText = "Reason";
+            #region ReadOnly
+            //dgPurchase.Columns["FicheNo"].ReadOnly = true;
+
+            //dgPurchase.Columns["PurchaseOrderDate"].ReadOnly = true;
+
+            //dgPurchase.Columns["CustomerID"].ReadOnly = true;
+
+            //dgPurchase.Columns["c_name"].ReadOnly = true;
+
+            //dgPurchase.Columns["CameDate"].ReadOnly = true;
+            #endregion
         }
 
         private void btnPurchaseOrders_Click(object sender, EventArgs e)
@@ -182,6 +227,14 @@ namespace LoginForm.PurchaseOrder
         {
             string PurchaseNo = dgPurchase.CurrentRow.Cells[0].Value.ToString();
             ExcelPurchaseOrder.Export(dgPurchase, PurchaseNo);
+        }
+
+        private void dgPurchase_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            
+
+            #endregion
+
         }
     }
 }

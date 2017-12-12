@@ -31,14 +31,35 @@ namespace LoginForm.PurchaseOrder
         public NewPurchaseOrder(string item_code)
         {
             InitializeComponent();
+            IMEEntities IME = new IMEEntities();
+            try
+            {
+                purchasecode = IME.PurchaseOrders.OrderByDescending(q => q.FicheNo).FirstOrDefault().FicheNo;
+                txtOrderNumber.Text = (Int32.Parse(purchasecode) + 1).ToString();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Hata : " + ex); //Veritabanına bağlantı sırasında alınan bir hata varsa burada gösteriliyor
+            }
             PurchaseOrder(item_code);
         }
 
         public NewPurchaseOrder(string ficheNo, int sayac)
         {
             InitializeComponent();
+            IMEEntities IME = new IMEEntities();
             if (sayac==1)
-                ViewPurchaseOrdersDetail(ficheNo);
+
+            try
+            {
+                purchasecode = IME.PurchaseOrders.OrderByDescending(q => q.FicheNo).FirstOrDefault().FicheNo;
+                txtOrderNumber.Text = (Int32.Parse(purchasecode) + 1).ToString();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Hata : " + ex); //Veritabanına bağlantı sırasında alınan bir hata varsa burada gösteriliyor
+            }
+            ViewPurchaseOrdersDetail(ficheNo);
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -55,7 +76,7 @@ namespace LoginForm.PurchaseOrder
 
             PurchaseExportFiles form = new PurchaseExportFiles(rowList, (Int32.Parse(purchasecode)+1).ToString());
             form.ShowDialog();
-            
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -83,6 +104,7 @@ namespace LoginForm.PurchaseOrder
                 pod.Unit = sod.UnitOfMeasure;
                 pod.Hazardous = sod.Hazardous??false;
                 pod.Calibration = sod.Calibration ?? false;
+                pod.UnitPrice = sod.UPIME;
 
                 purchaseList.Add(pod);
             }
@@ -110,7 +132,7 @@ namespace LoginForm.PurchaseOrder
 
                 da.Fill(ds, "History");
 
-                if (ds.Tables[0].Rows.Count == 0)//History tablosunda herhangi bir veri yoksa (boşsa) aşağıdaki blok çalışacak     
+                if (ds.Tables[0].Rows.Count == 0)//History tablosunda herhangi bir veri yoksa (boşsa) aşağıdaki blok çalışacak
                 {
                     DialogResult dialog = new DialogResult();
                     dialog = MessageBox.Show("No Records Found", "", MessageBoxButtons.OK);
@@ -122,7 +144,7 @@ namespace LoginForm.PurchaseOrder
                 }
                 else//kayıt varsa
                 {
-                    dgPurchase.DataSource = ds.Tables["History"];//sqlCmd sorgusu ile çektiğimiz kayıtlar datagridview1 üzerinde gösteriliyor    
+                    dgPurchase.DataSource = ds.Tables["History"];//sqlCmd sorgusu ile çektiğimiz kayıtlar datagridview1 üzerinde gösteriliyor
                 }
             }
             catch (SqlException ex)
@@ -130,7 +152,7 @@ namespace LoginForm.PurchaseOrder
                 MessageBox.Show("Hata : " + ex); //Veritabanına bağlantı sırasında alınan bir hata varsa burada gösteriliyor
             }
 
-            connection.Close();//Açık olan Sql bağlantısı sonlandırılıyor      
+            connection.Close();//Açık olan Sql bağlantısı sonlandırılıyor
             da.Dispose(); //SqlDataApter nesnesi dispose ediliyor
 
             #region GridColumnAyarı
@@ -165,11 +187,18 @@ namespace LoginForm.PurchaseOrder
 
         private void NewPurchaseOrder_Load(object sender, EventArgs e)
         {
-            IMEEntities IME = new IMEEntities();
-            purchasecode = IME.PurchaseOrders.OrderByDescending(q => q.FicheNo).FirstOrDefault().FicheNo;
-            txtOrderNumber.Text = (Int32.Parse(purchasecode) + 1).ToString();
+            InitializeComponent();
+            //IMEEntities IME = new IMEEntities();
+            //try
+            //{
+            //    purchasecode = IME.PurchaseOrders.OrderByDescending(q => q.FicheNo).FirstOrDefault().FicheNo;
+            //    txtOrderNumber.Text = (Int32.Parse(purchasecode) + 1).ToString();
+            //}
+            //catch (SqlException ex)
+            //{
+            //    MessageBox.Show("Hata : " + ex); //Veritabanına bağlantı sırasında alınan bir hata varsa burada gösteriliyor
+            //}
         }
-
         public void ViewPurchaseOrdersDetail(string ficheNo)
         {
             SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-51RN2GB\LOCAL;Initial Catalog=IME;Integrated Security=True");
@@ -189,7 +218,7 @@ namespace LoginForm.PurchaseOrder
 
                 da.Fill(ds, "History");
 
-                if (ds.Tables[0].Rows.Count == 0)//History tablosunda herhangi bir veri yoksa (boşsa) aşağıdaki blok çalışacak     
+                if (ds.Tables[0].Rows.Count == 0)//History tablosunda herhangi bir veri yoksa (boşsa) aşağıdaki blok çalışacak
                 {
                     DialogResult dialog = new DialogResult();
                     dialog = MessageBox.Show("No Records Found", "", MessageBoxButtons.OK);
@@ -201,7 +230,7 @@ namespace LoginForm.PurchaseOrder
                 }
                 else//kayıt varsa
                 {
-                    dgPurchase.DataSource = ds.Tables["History"];//sqlCmd sorgusu ile çektiğimiz kayıtlar datagridview1 üzerinde gösteriliyor    
+                    dgPurchase.DataSource = ds.Tables["History"];//sqlCmd sorgusu ile çektiğimiz kayıtlar datagridview1 üzerinde gösteriliyor
                 }
             }
             catch (SqlException ex)
@@ -209,7 +238,7 @@ namespace LoginForm.PurchaseOrder
                 MessageBox.Show("Hata : " + ex); //Veritabanına bağlantı sırasında alınan bir hata varsa burada gösteriliyor
             }
 
-            connection.Close();//Açık olan Sql bağlantısı sonlandırılıyor      
+            connection.Close();//Açık olan Sql bağlantısı sonlandırılıyor
             da.Dispose(); //SqlDataApter nesnesi dispose ediliyor
 
             #region GridColumnAyarı
