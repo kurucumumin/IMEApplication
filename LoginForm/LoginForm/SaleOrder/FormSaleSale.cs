@@ -2329,13 +2329,13 @@ namespace LoginForm.nmSaleOrder
             }
             else if (e.KeyCode == Keys.Delete)
             {
-                foreach (DataGridViewRow item in dgSaleAddedItems.SelectedRows)
+                foreach (DataGridViewRow row in dgSaleAddedItems.SelectedRows)
                 {
-                    int rownumber = Int32.Parse(dgSaleAddedItems.Rows[item.Index].Cells["dgNo"].Value.ToString());
+                    int rownumber = Int32.Parse(dgSaleAddedItems.Rows[row.Index].Cells["dgNo"].Value.ToString());
                     dgSaleDeleted.Rows.Add();
-                    for (int i = 0; i < dgSaleAddedItems.Columns.Count - 1; i++)
+                    for (int i = 0; i < dgSaleAddedItems.Columns.Count; i++)
                     {
-                        dgSaleDeleted.Rows[dgSaleDeleted.Rows.Count - 2].Cells[i].Value = item.Cells[i].Value;
+                        dgSaleDeleted.Rows[dgSaleDeleted.Rows.Count - 2].Cells[i].Value = row.Cells[i].Value;
                     }
 
                     var st = SubTotal.Where(a => a.Item1 == rownumber).FirstOrDefault();
