@@ -31,35 +31,14 @@ namespace LoginForm.PurchaseOrder
         public NewPurchaseOrder(string item_code)
         {
             InitializeComponent();
-            IMEEntities IME = new IMEEntities();
-            try
-            {
-                purchasecode = IME.PurchaseOrders.OrderByDescending(q => q.FicheNo).FirstOrDefault().FicheNo;
-                txtOrderNumber.Text = (Int32.Parse(purchasecode) + 1).ToString();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Hata : " + ex); //Veritabanına bağlantı sırasında alınan bir hata varsa burada gösteriliyor
-            }
             PurchaseOrder(item_code);
         }
 
         public NewPurchaseOrder(string ficheNo, int sayac)
         {
             InitializeComponent();
-            IMEEntities IME = new IMEEntities();
             if (sayac==1)
-
-            try
-            {
-                purchasecode = IME.PurchaseOrders.OrderByDescending(q => q.FicheNo).FirstOrDefault().FicheNo;
-                txtOrderNumber.Text = (Int32.Parse(purchasecode) + 1).ToString();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Hata : " + ex); //Veritabanına bağlantı sırasında alınan bir hata varsa burada gösteriliyor
-            }
-            ViewPurchaseOrdersDetail(ficheNo);
+                ViewPurchaseOrdersDetail(ficheNo);
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -104,7 +83,6 @@ namespace LoginForm.PurchaseOrder
                 pod.Unit = sod.UnitOfMeasure;
                 pod.Hazardous = sod.Hazardous??false;
                 pod.Calibration = sod.Calibration ?? false;
-                pod.UnitPrice = sod.UPIME;
 
                 purchaseList.Add(pod);
             }
@@ -187,18 +165,11 @@ namespace LoginForm.PurchaseOrder
 
         private void NewPurchaseOrder_Load(object sender, EventArgs e)
         {
-            InitializeComponent();
-            //IMEEntities IME = new IMEEntities();
-            //try
-            //{
-            //    purchasecode = IME.PurchaseOrders.OrderByDescending(q => q.FicheNo).FirstOrDefault().FicheNo;
-            //    txtOrderNumber.Text = (Int32.Parse(purchasecode) + 1).ToString();
-            //}
-            //catch (SqlException ex)
-            //{
-            //    MessageBox.Show("Hata : " + ex); //Veritabanına bağlantı sırasında alınan bir hata varsa burada gösteriliyor
-            //}
+            IMEEntities IME = new IMEEntities();
+            purchasecode = IME.PurchaseOrders.OrderByDescending(q => q.FicheNo).FirstOrDefault().FicheNo;
+            txtOrderNumber.Text = (Int32.Parse(purchasecode) + 1).ToString();
         }
+
         public void ViewPurchaseOrdersDetail(string ficheNo)
         {
             SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-51RN2GB\LOCAL;Initial Catalog=IME;Integrated Security=True");

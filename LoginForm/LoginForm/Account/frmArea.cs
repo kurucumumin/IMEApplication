@@ -219,7 +219,11 @@ namespace LoginForm
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-                    Delete();
+            DialogResult dialogResult = MessageBox.Show("Sure", "Are you sure to delete?", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Delete();
+            }
         }
 
 

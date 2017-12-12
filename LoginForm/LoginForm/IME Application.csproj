@@ -162,6 +162,12 @@
     <Compile Include="Account\frmVoucherType.designer.cs">
       <DependentUpon>frmVoucherType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\PayRoll\frmPayHead.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmPayHead.designer.cs">
+      <DependentUpon>frmPayHead.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\AccountingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -662,6 +668,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\frmVoucherType.resx">
       <DependentUpon>frmVoucherType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmPayHead.resx">
+      <DependentUpon>frmPayHead.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountingControl.resx">
       <DependentUpon>AccountingControl.cs</DependentUpon>
