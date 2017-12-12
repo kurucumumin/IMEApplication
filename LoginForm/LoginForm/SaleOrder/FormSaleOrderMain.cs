@@ -50,8 +50,8 @@ namespace LoginForm.nsSaleOrder
                            CustomerName = cw.Customer.c_name,
                            Contact = cw.cw_name,
                            DeliveryContact = (cw1.cw_name != null) ? cw1.cw_name : "--None--",
-                           Address = ca.AdressDetails,
-                           DeliveryAddress = (ca1.AdressDetails != null) ? ca1.AdressDetails : "--None--",
+                           Address = ca.AdressTitle,
+                           DeliveryAddress = (ca1.AdressDetails != null) ? ca1.AdressTitle : "--None--",
 
                        };
             populateGrid(list.ToList());
@@ -67,7 +67,8 @@ namespace LoginForm.nsSaleOrder
         private void btnNew_Click(object sender, EventArgs e)
         {
             FormSaleOrderCreate form = new FormSaleOrderCreate();
-            form.Show();
+            form.ShowDialog();
+            BringSalesList();
         }
         private void dgSales_KeyDown(object sender, KeyEventArgs e)
         {

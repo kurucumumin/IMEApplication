@@ -1425,8 +1425,8 @@ namespace LoginForm.nmSaleOrder
             SaveOK = ControlSave();
             if (SaveOK)
             {
-                SaleSave();
-                //QuotationDetailsSave();
+                string saleOrderNo = SaleSave();
+                SaleOrderDetailsSave(saleOrderNo);
             }
 
             //}
@@ -1434,7 +1434,7 @@ namespace LoginForm.nmSaleOrder
 
         }
 
-        private void SaleSave()
+        private string SaleSave()
         {
             try
             {
@@ -1472,6 +1472,8 @@ namespace LoginForm.nmSaleOrder
                 IME.SaleOrders.Add(s);
                 IME.SaveChanges();
 
+                return s.SaleOrderNo;
+
 
                 MessageBox.Show("Just SaleOrder saved");
             }
@@ -1480,30 +1482,6 @@ namespace LoginForm.nmSaleOrder
                 MessageBox.Show(ex.ToString());
                 throw;
             }
-            
-
-
-            //DataSet.Quotation q = new DataSet.Quotation();
-            //q.QuotationNo = txtSaleOrderNo.Text;
-            //q.RFQNo = txtLPONO.Text;
-            //try { q.SubTotal = decimal.Parse(lblsubtotal.Text); } catch { }
-            //if (chkbForFinance.Checked) { q.ForFinancelIsTrue = 1; } else { q.ForFinancelIsTrue = 0; }
-            //q.ShippingMethodID = cbSMethod.SelectedIndex;
-            //try { q.DiscOnSubTotal2 = decimal.Parse(txtTotalDis2.Text); } catch { }
-            //try { q.ExtraCharges = decimal.Parse(txtExtraChanges.Text); } catch { }
-            //if (chkVat.Checked) { q.IsVatValue = 1; } else { q.IsVatValue = 0; }
-            //try { q.VatValue = Decimal.Parse(lblVat.Text); } catch { }
-            //try { q.StartDate = dtpDate.Value; } catch { }
-            //try { q.Factor = Decimal.Parse(cbFactor.Text); } catch { }
-            ////try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
-            //q.PaymentID = (cbPayment.SelectedItem as PaymentMethod).ID;
-            //q.CurrType = (cbCurrency.SelectedItem as Rate).CurType;
-            ////q.CurrType = cbCurrType.Text;
-            //q.Curr = CurrValue;
-
-            //q.CustomerID = CustomerCode.Text;
-            //q.ShippingMethodID = cbSMethod.SelectedIndex;
-            //q.QuotationMainContact = cbWorkers.SelectedIndex;
             //int Note2 = 0;
             //int Note1 = 0;
             //if (txtNoteForUs.Text != null || txtNoteForUs.Text != "")
@@ -1594,66 +1572,109 @@ namespace LoginForm.nmSaleOrder
             IME.SaveChanges();
         }
 
-        private void QuotationDetailsSave()
+        private void SaleOrderDetailsSave(string SaleNo)
         {
             IMEEntities IME = new IMEEntities();
             for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
             {
-                if (dgSaleAddedItems.Rows[i].Cells["dgProductCode"].Value != null)
+                DataGridViewRow row = dgSaleAddedItems.Rows[i];
+                if (row.Cells["dgProductCode"].Value != null)
                 {
-                    QuotationDetail qd = new QuotationDetail();
-                    qd.QuotationNo = txtSaleOrderNo.Text;
-                    if (dgSaleAddedItems.Rows[i].Cells["dgNo"].Value != null) qd.dgNo = Int32.Parse(dgSaleAddedItems.Rows[i].Cells["dgNo"].Value.ToString());
-                    if (dgSaleAddedItems.Rows[i].Cells["dgDesc"].Value != null) qd.CustomerDescription = dgSaleAddedItems.Rows[i].Cells["dgDesc"].Value.ToString();
-                    if (dgSaleAddedItems.Rows[i].Cells["dgProductCode"].Value != null) qd.ItemCode = dgSaleAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString();
-                    if (dgSaleAddedItems.Rows[i].Cells["dgQty"].Value != null) qd.Qty = Int32.Parse(dgSaleAddedItems.Rows[i].Cells["dgQty"].Value.ToString());
-                    if (dgSaleAddedItems.Rows[i].Cells["dgUOM"].Value != null) qd.UnitOfMeasure = dgSaleAddedItems.Rows[i].Cells["dgUOM"].Value.ToString();
-                    if (dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Value != null) qd.UCUPCurr = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString());
-                    if (dgSaleAddedItems.Rows[i].Cells["dgUPIME"].Value != null) qd.UPIME = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUPIME"].Value.ToString());
-                    if (dgSaleAddedItems.Rows[i].Cells["dgDisc"].Value != null) qd.Disc = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgDisc"].Value.ToString());
-                    if (dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value != null) qd.Total = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value.ToString());
-                    if (dgSaleAddedItems.Rows[i].Cells["dgTargetUP"].Value != null) qd.TargetUP = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgTargetUP"].Value.ToString());
-                    if (dgSaleAddedItems.Rows[i].Cells["dgCompetitor"].Value != null) qd.Competitor = dgSaleAddedItems.Rows[i].Cells["dgCompetitor"].Value.ToString();
-                    if (dgSaleAddedItems.Rows[i].Cells["dgCustDescription"].Value != null) qd.CustomerDescription = dgSaleAddedItems.Rows[i].Cells["dgCustDescription"].Value.ToString();
-                    if (dgSaleAddedItems.Rows[i].Cells["dgCustStkCode"].Value != null) qd.CustomerStockCode = dgSaleAddedItems.Rows[i].Cells["dgCustStkCode"].Value.ToString();
-                    if (dgSaleAddedItems.Rows[i].Cells["dgUC"].Value != null) qd.UC = Int32.Parse(dgSaleAddedItems.Rows[i].Cells["dgUC"].Value.ToString());
-                    if (dgSaleAddedItems.Rows[i].Cells["dgSSM"].Value != null) qd.SSM = Int32.Parse(dgSaleAddedItems.Rows[i].Cells["dgSSM"].Value.ToString());
-                    if (dgSaleAddedItems.Rows[i].Cells["dgUnitWeigt"].Value != null) qd.UnitWeight = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgUnitWeigt"].Value.ToString());
-                    if (dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value != null) qd.Marge = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value.ToString());
-                    qd.DependantTable = dgSaleAddedItems.Rows[i].Cells["dgDependantTable"].Value.ToString();
-                    IME.QuotationDetails.Add(qd);
+                    SaleOrderDetail sdi= new SaleOrderDetail();
+                    sdi.SaleOrderNo = SaleNo;
+                    if (row.Cells[dgNo.Index].Value != null) sdi.No = Int32.Parse(row.Cells[dgNo.Index].Value.ToString());
+                    if (row.Cells[dgProductCode.Index].Value != null) sdi.ItemCode = row.Cells[dgProductCode.Index].Value.ToString();
+                    if (row.Cells[dgQty.Index].Value != null) sdi.Quantity = Int32.Parse(row.Cells[dgQty.Index].Value.ToString());
+                    if (row.Cells[dgUCUPCurr.Index].Value != null) sdi.UCUPCurr = Decimal.Parse(row.Cells[dgUCUPCurr.Index].Value.ToString());
+                    if (row.Cells[dgDisc.Index].Value != null) sdi.Discount = Decimal.Parse(row.Cells[dgDisc.Index].Value.ToString());
+                    if (row.Cells[dgTotal.Index].Value != null) sdi.Total = Decimal.Parse(row.Cells[dgTotal.Index].Value.ToString());
+                    if (row.Cells[dgTargetUP.Index].Value != null) sdi.TargetUP = Decimal.Parse(row.Cells[dgTargetUP.Index].Value.ToString());
+                    if (row.Cells[dgCompetitor.Index].Value != null) sdi.Competitor = row.Cells[dgCompetitor.Index].Value.ToString();
+                    if (row.Cells[dgDesc.Index].Value != null) sdi.CustomerDescription = row.Cells[dgDesc.Index].Value.ToString();
+                    if (row.Cells[dgCustStkCode.Index].Value != null) sdi.CustomerStockCode = row.Cells[dgCustStkCode.Index].Value.ToString();
+                    sdi.IsDeleted = false;
+                    if (row.Cells[dgUPIME.Index].Value != null) sdi.UPIME = Decimal.Parse(row.Cells[dgUPIME.Index].Value.ToString());
+                    if (row.Cells[dgMargin.Index].Value != null) sdi.Margin = Decimal.Parse(row.Cells[dgMargin.Index].Value.ToString());
+                    if (row.Cells[dgUOM.Index].Value != null) sdi.UnitOfMeasure = row.Cells[dgUOM.Index].Value.ToString();
+                    if (row.Cells[dgUC.Index].Value != null) sdi.UnitContent = Int32.Parse(row.Cells[dgUC.Index].Value.ToString());
+                    if (row.Cells[dgSSM.Index].Value != null) sdi.SSM = Int32.Parse(row.Cells[dgSSM.Index].Value.ToString());
+                    if (row.Cells[dgUnitWeigt.Index].Value != null) sdi.UnitWeight = Decimal.Parse(row.Cells[dgUnitWeigt.Index].Value.ToString());
+                    if (row.Cells[dgDependantTable.Index].Value != null) sdi.DependantTable = row.Cells[dgDependantTable1.Index].Value.ToString();
+                    if (row.Cells[dgHZ.Index].Value != null)
+                    {
+                        sdi.Hazardous = (row.Cells[dgHZ.Index].Value.ToString() == "Y") ? true:false ;
+                    }
+                    else
+                    { sdi.Hazardous = false; }
+                    if (row.Cells[dgCL.Index].Value != null)
+                    {
+                        sdi.Calibration = (row.Cells[dgCL.Index].Value.ToString() == "Y") ? true : false;
+                    }
+                    else
+                    {
+                        sdi.Calibration = false;
+                    }
+                    if (row.Cells[dgCost.Index].Value != null)
+                    {
+                        sdi.ItemCost = Convert.ToDecimal(row.Cells[dgCost.Index].Value);
+                    }
+                        
+                    
+                    IME.SaleOrderDetails.Add(sdi);
                     IME.SaveChanges();
                 }
-
             }
             for (int i = 0; i < dgSaleDeleted.RowCount; i++)
             {
-                if (dgSaleDeleted.Rows[i].Cells["dgProductCode1"].Value != null)
+                DataGridViewRow row = dgSaleDeleted.Rows[i];
+                if (row.Cells["dgProductCode1"].Value != null)
                 {
-                    QuotationDetail qd = new QuotationDetail();
+                    SaleOrderDetail sdi = new SaleOrderDetail();
+                    sdi.SaleOrderNo = SaleNo;
+                    if (row.Cells[No1.Index].Value != null) sdi.No = Int32.Parse(row.Cells[No1.Index].Value.ToString());
+                    if (row.Cells[dgProductCode1.Index].Value != null) sdi.ItemCode = row.Cells[dgProductCode1.Index].Value.ToString();
+                    if (row.Cells[dgQty1.Index].Value != null) sdi.Quantity = Int32.Parse(row.Cells[dgQty1.Index].Value.ToString());
+                    if (row.Cells[dgUCUPCurr1.Index].Value != null) sdi.UCUPCurr = Decimal.Parse(row.Cells[dgUCUPCurr1.Index].Value.ToString());
+                    if (row.Cells[dgDisc1.Index].Value != null) sdi.Discount = Decimal.Parse(row.Cells[dgDisc1.Index].Value.ToString());
+                    if (row.Cells[dgTotal1.Index].Value != null) sdi.Total = Decimal.Parse(row.Cells[dgTotal1.Index].Value.ToString());
+                    if (row.Cells[dgTargetUP1.Index].Value != null) sdi.TargetUP = Decimal.Parse(row.Cells[dgTargetUP1.Index].Value.ToString());
+                    if (row.Cells[dgCompetitor1.Index].Value != null) sdi.Competitor = row.Cells[dgCompetitor1.Index].Value.ToString();
+                    if (row.Cells[dgCustDescription1.Index].Value != null) sdi.CustomerDescription = row.Cells[dgCustDescription1.Index].Value.ToString();
+                    if (row.Cells[dgCustomerStokCode1.Index].Value != null) sdi.CustomerStockCode = row.Cells[dgCustomerStokCode1.Index].Value.ToString();
+                    sdi.IsDeleted = true;
+                    if (row.Cells[dgUPIME1.Index].Value != null) sdi.UPIME = Decimal.Parse(row.Cells[dgUPIME1.Index].Value.ToString());
+                    if (row.Cells[dgMargin1.Index].Value != null) sdi.Margin = Decimal.Parse(row.Cells[dgMargin1.Index].Value.ToString());
+                    if (row.Cells[dgUOM1.Index].Value != null) sdi.UnitOfMeasure = row.Cells[dgUOM1.Index].Value.ToString();
+                    if (row.Cells[dgUC1.Index].Value != null) sdi.UnitContent = Int32.Parse(row.Cells[dgUC1.Index].Value.ToString());
+                    if (row.Cells[dgSSM1.Index].Value != null) sdi.SSM = Int32.Parse(row.Cells[dgSSM1.Index].Value.ToString());
+                    if (row.Cells[dgUnitWeight1.Index].Value != null) sdi.UnitWeight = Decimal.Parse(row.Cells[dgUnitWeight1.Index].Value.ToString());
+                    if (row.Cells[dgDependantTable1.Index].Value != null) sdi.DependantTable = row.Cells[dgDependantTable1.Index].Value.ToString();
 
-                    if (dgSaleDeleted.Rows[i].Cells["No1"].Value != null) qd.dgNo = Int32.Parse(dgSaleDeleted.Rows[i].Cells["No1"].Value.ToString());
-                    if (dgSaleDeleted.Rows[i].Cells["dgDesc1"].Value != null) qd.CustomerDescription = dgSaleDeleted.Rows[i].Cells["dgDesc1"].Value.ToString();
-                    if (dgSaleDeleted.Rows[i].Cells["dgProductCode1"].Value != null) qd.ItemCode = dgSaleDeleted.Rows[i].Cells["dgProductCode1"].Value.ToString();
-                    if (dgSaleDeleted.Rows[i].Cells["dgQty1"].Value != null) qd.Qty = Int32.Parse(dgSaleDeleted.Rows[i].Cells["dgQty1"].Value.ToString());
-                    if (dgSaleDeleted.Rows[i].Cells["dgUCUPCurr1"].Value != null) qd.UCUPCurr = Decimal.Parse(dgSaleDeleted.Rows[i].Cells["dgUCUPCurr1"].Value.ToString());
-                    if (dgSaleDeleted.Rows[i].Cells["dgUOM1"].Value != null) qd.UnitOfMeasure = dgSaleDeleted.Rows[i].Cells["dgUOM1"].Value.ToString();
-                    if (dgSaleDeleted.Rows[i].Cells["dgDisc1"].Value != null) qd.Disc = Decimal.Parse(dgSaleDeleted.Rows[i].Cells["dgDisc1"].Value.ToString());
-                    if (dgSaleDeleted.Rows[i].Cells["dgUPIME1"].Value != null) qd.UCUPCurr = Decimal.Parse(dgSaleDeleted.Rows[i].Cells["dgUPIME1"].Value.ToString());
-                    if (dgSaleDeleted.Rows[i].Cells["dgTotal1"].Value != null) qd.Total = Decimal.Parse(dgSaleDeleted.Rows[i].Cells["dgTotal1"].Value.ToString());
-                    if (dgSaleDeleted.Rows[i].Cells["dgTargetUP1"].Value != null) qd.TargetUP = Decimal.Parse(dgSaleDeleted.Rows[i].Cells["dgTargetUP1"].Value.ToString());
-                    if (dgSaleDeleted.Rows[i].Cells["dgCompetitor1"].Value != null) qd.Competitor = dgSaleDeleted.Rows[i].Cells["dgCompetitor1"].Value.ToString();
-                    if (dgSaleDeleted.Rows[i].Cells["dgCustDescription1"].Value != null) qd.CustomerDescription = dgSaleDeleted.Rows[i].Cells["dgCustDescription1"].Value.ToString();
-                    if (dgSaleDeleted.Rows[i].Cells["dgCustomerStokCode1"].Value != null) qd.CustomerStockCode = dgSaleDeleted.Rows[i].Cells["dgCustomerStokCode1"].Value.ToString();
-                    if (dgSaleDeleted.Rows[i].Cells["dgSSM"].Value != null) qd.SSM = Int32.Parse(dgSaleDeleted.Rows[i].Cells["dgSSM"].Value.ToString());
-                    if (dgSaleDeleted.Rows[i].Cells["dgUC"].Value != null) qd.UC = Int32.Parse(dgSaleDeleted.Rows[i].Cells["dgUC"].Value.ToString());
-                    if (dgSaleDeleted.Rows[i].Cells["dgUnitWeigt"].Value != null) qd.UnitWeight = Decimal.Parse(dgSaleDeleted.Rows[i].Cells["dgUnitWeigt"].Value.ToString());
-                    qd.IsDeleted = 1;
-                    IME.QuotationDetails.Add(qd);
+
+                    if (row.Cells[dgHZ1.Index].Value != null)
+                    {
+                        sdi.Hazardous = (row.Cells[dgHZ1.Index].Value.ToString() == "Y" ) ? true : false;
+                    }
+                    else
+                    {
+                        sdi.Hazardous = false;
+                    }
+
+                    if (row.Cells[dgCL1.Index].Value != null)
+                    {
+                        sdi.Calibration = (row.Cells[dgCL1.Index].Value.ToString() == "Y" ) ? true : false; ;
+                    }
+                    else
+                    {
+                        sdi.Calibration = false;
+                    }
+                    if (row.Cells[dgCost1.Index].Value != null) sdi.ItemCost = Convert.ToDecimal(row.Cells[dgCost1.Index].Value);
+
+                    IME.SaleOrderDetails.Add(sdi);
                     IME.SaveChanges();
                 }
             }
-            MessageBox.Show("Quotation is successfully added", "Success");
+            MessageBox.Show("Sale is successfully added", "Success");
             this.Close();
         }
 
@@ -2195,23 +2216,23 @@ namespace LoginForm.nmSaleOrder
             return q1;
         }
 
-        private void btnCreateRev_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //string newID = NewQuotationID();
-                //if (txtQuotationNo.Text != newID) { txtQuotationNo.Text = newID; }
-                if (ControlSave())
-                {
-                    QuotationSave(txtSaleOrderNo.Text);
-                    QuotationDetailsSave();
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Error Occured", "Failure");
-            }
-        }
+        //private void btnCreateRev_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        //string newID = NewQuotationID();
+        //        //if (txtQuotationNo.Text != newID) { txtQuotationNo.Text = newID; }
+        //        if (ControlSave())
+        //        {
+        //            QuotationSave(txtSaleOrderNo.Text);
+        //            QuotationDetailsSave();
+        //        }
+        //    }
+        //    catch
+        //    {
+        //        MessageBox.Show("Error Occured", "Failure");
+        //    }
+        //}
 
         private void CustomerCode_MouseDoubleClick(object sender, MouseEventArgs e)
         {
