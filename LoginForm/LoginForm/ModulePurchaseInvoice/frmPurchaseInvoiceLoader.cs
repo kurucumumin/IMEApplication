@@ -45,13 +45,5 @@ namespace LoginForm
             PurchaseInvoiceList.DataSource = IME.PurchaseInvoices.Where(date => date.OrderDate > dtpStartDate.Value).Where(date => date.OrderDate < dtpFinalDate.Value.Date).ToList();
             PurchaseInvoiceList.DisplayMember = "BillingDocumentReference";
         }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            string[] array = new string[10];
-            array[0] = "asdasdasdasdasdasdasd";
-            array[1] = "1232132414514353415151";
-            txtCreate.newTxt(array);
-        }
     }
 }

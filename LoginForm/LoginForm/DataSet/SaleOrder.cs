@@ -43,11 +43,11 @@ namespace LoginForm.DataSet
         public string ShippingType { get; set; }
         public Nullable<decimal> currencyID { get; set; }
         public string LPONO { get; set; }
-        public decimal TotalMargin { get; set; }
         public Nullable<decimal> Factor { get; set; }
         public Nullable<decimal> SubTotal { get; set; }
         public Nullable<decimal> DiscOnSubtotal { get; set; }
         public Nullable<decimal> ExtraCharges { get; set; }
+        public Nullable<decimal> TotalMargin { get; set; }
     
         public virtual Currency Currency { get; set; }
         public virtual Customer Customer { get; set; }
@@ -61,7 +61,6 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
         public virtual Worker Worker { get; set; }
-        public virtual Worker Worker1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleOrderDetail> SaleOrderDetails { get; set; }
     }

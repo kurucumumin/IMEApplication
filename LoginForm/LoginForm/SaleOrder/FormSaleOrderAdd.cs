@@ -970,5 +970,16 @@ namespace LoginForm.nsSaleOrder
         {
 
         }
+
+        private void btnExcelExport_Click(object sender, EventArgs e)
+        {
+            List<string> SaleItemList = new List<string>();
+            for (int i = 0; i < dgSaleItems.ColumnCount; i++)
+            {
+                SaleItemList.Add(dgSaleItems.Columns[i].HeaderText);
+            }
+            QuotationExport form = new QuotationExport(SaleItemList, txtSONo.Text, dgSaleItems);
+            form.ShowDialog();
+        }
     }
 }

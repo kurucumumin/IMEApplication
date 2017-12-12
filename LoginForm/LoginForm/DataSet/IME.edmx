@@ -144,6 +144,7 @@
           <Property Name="fax" Type="nvarchar" MaxLength="30" />
           <Property Name="categoryID" Type="int" />
           <Property Name="subcategoryID" Type="int" />
+          <Property Name="ThirdPartyCode" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="CustomerAddress">
           <Key>
@@ -415,6 +416,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CountryCode" Type="nvarchar" MaxLength="3" />
+          <Property Name="OrderDate" Type="datetime" />
           <Property Name="OrderTime" Type="nvarchar" MaxLength="5" />
           <Property Name="ShipmentReference" Type="nvarchar" MaxLength="10" />
           <Property Name="BillingDocumentReference" Type="nvarchar" MaxLength="10" />
@@ -434,7 +436,6 @@
           <Property Name="LineControl" Type="nvarchar" MaxLength="4" />
           <Property Name="LineControl2" Type="nvarchar" MaxLength="4" />
           <Property Name="date" Type="datetime" />
-          <Property Name="OrderDate" Type="datetime" />
         </EntityType>
         <EntityType Name="PurchaseInvoiceDetails">
           <Key>
@@ -609,11 +610,11 @@
           <Property Name="ShippingType" Type="nvarchar" MaxLength="15" />
           <Property Name="currencyID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="LPONO" Type="nvarchar" MaxLength="15" />
-          <Property Name="TotalMargin" Type="decimal" Precision="20" Scale="4" Nullable="false" />
           <Property Name="Factor" Type="decimal" Precision="20" Scale="4" />
           <Property Name="SubTotal" Type="decimal" Precision="20" Scale="4" />
           <Property Name="DiscOnSubtotal" Type="decimal" Precision="20" Scale="4" />
           <Property Name="ExtraCharges" Type="decimal" Precision="20" Scale="4" />
+          <Property Name="TotalMargin" Type="decimal" Precision="20" Scale="4" />
         </EntityType>
         <EntityType Name="SaleOrderDetail">
           <Key>
@@ -1541,18 +1542,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaleOrder__Repre__09946309">
-          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
-          <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Worker">
-              <PropertyRef Name="WorkerID" />
-            </Principal>
-            <Dependent Role="SaleOrder">
-              <PropertyRef Name="RepresentativeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__SaleOrder__Repre__22951AFD">
           <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
           <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
@@ -2229,10 +2218,6 @@
             <End Role="PaymentMethod" EntitySet="PaymentMethod" />
             <End Role="SaleOrder" EntitySet="SaleOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaleOrder__Repre__09946309" Association="Self.FK__SaleOrder__Repre__09946309">
-            <End Role="Worker" EntitySet="Worker" />
-            <End Role="SaleOrder" EntitySet="SaleOrder" />
-          </AssociationSet>
           <AssociationSet Name="FK__SaleOrder__Repre__22951AFD" Association="Self.FK__SaleOrder__Repre__22951AFD">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="SaleOrder" EntitySet="SaleOrder" />
@@ -2668,10 +2653,6 @@
             <End Role="Rate" EntitySet="Rates" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaleOrder__Repre__09946309" Association="IMEModel.FK__SaleOrder__Repre__09946309">
-            <End Role="Worker" EntitySet="Workers" />
-            <End Role="SaleOrder" EntitySet="SaleOrders" />
-          </AssociationSet>
           <AssociationSet Name="FK__SaleOrder__Repre__22951AFD" Association="IMEModel.FK__SaleOrder__Repre__22951AFD">
             <End Role="Worker" EntitySet="Workers" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
@@ -2913,6 +2894,7 @@
           <Property Name="fax" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="categoryID" Type="Int32" />
           <Property Name="subcategoryID" Type="Int32" />
+          <Property Name="ThirdPartyCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Worker" Relationship="IMEModel.FK__Customer__accoun__6EF57B66" FromRole="Customer" ToRole="Worker" />
           <NavigationProperty Name="CustomerCategory" Relationship="IMEModel.FK__Customer__catego__636EBA21" FromRole="Customer" ToRole="CustomerCategory" />
           <NavigationProperty Name="Note" Relationship="IMEModel.FK__Customer__custom__3B75D760" FromRole="Customer" ToRole="Note" />
@@ -3245,6 +3227,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CountryCode" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
           <Property Name="OrderTime" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="ShipmentReference" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="BillingDocumentReference" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
@@ -3264,7 +3247,6 @@
           <Property Name="LineControl" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
           <Property Name="LineControl2" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
           <Property Name="date" Type="DateTime" Precision="3" />
-          <Property Name="OrderDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="PurchaseInvoiceDetails" Relationship="IMEModel.FK__PurchaseI__Purch__7A521F79" FromRole="PurchaseInvoice" ToRole="PurchaseInvoiceDetail" />
         </EntityType>
         <EntityType Name="PurchaseInvoiceDetail">
@@ -3454,11 +3436,11 @@
           <Property Name="ShippingType" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="currencyID" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="LPONO" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="TotalMargin" Type="Decimal" Nullable="false" Precision="20" Scale="4" />
           <Property Name="Factor" Type="Decimal" Precision="20" Scale="4" />
           <Property Name="SubTotal" Type="Decimal" Precision="20" Scale="4" />
           <Property Name="DiscOnSubtotal" Type="Decimal" Precision="20" Scale="4" />
           <Property Name="ExtraCharges" Type="Decimal" Precision="20" Scale="4" />
+          <Property Name="TotalMargin" Type="Decimal" Precision="20" Scale="4" />
           <NavigationProperty Name="Currency" Relationship="IMEModel.FK__SaleOrder__curre__73A521EA" FromRole="SaleOrder" ToRole="Currency" />
           <NavigationProperty Name="Customer" Relationship="IMEModel.FK__SaleOrder__Custo__1CDC41A7" FromRole="SaleOrder" ToRole="Customer" />
           <NavigationProperty Name="CustomerAddress" Relationship="IMEModel.FK__SaleOrder__Deliv__21A0F6C4" FromRole="SaleOrder" ToRole="CustomerAddress" />
@@ -3469,8 +3451,7 @@
           <NavigationProperty Name="PaymentMethod" Relationship="IMEModel.FK__SaleOrder__Payme__1BE81D6E" FromRole="SaleOrder" ToRole="PaymentMethod" />
           <NavigationProperty Name="PaymentTerm" Relationship="IMEModel.FK__SaleOrder__Payme__1AF3F935" FromRole="SaleOrder" ToRole="PaymentTerm" />
           <NavigationProperty Name="PurchaseOrderDetails" Relationship="IMEModel.FK__PurchaseO__SaleO__46D27B73" FromRole="SaleOrder" ToRole="PurchaseOrderDetail" />
-          <NavigationProperty Name="Worker" Relationship="IMEModel.FK__SaleOrder__Repre__09946309" FromRole="SaleOrder" ToRole="Worker" />
-          <NavigationProperty Name="Worker1" Relationship="IMEModel.FK__SaleOrder__Repre__22951AFD" FromRole="SaleOrder" ToRole="Worker" />
+          <NavigationProperty Name="Worker" Relationship="IMEModel.FK__SaleOrder__Repre__22951AFD" FromRole="SaleOrder" ToRole="Worker" />
           <NavigationProperty Name="SaleOrderDetails" Relationship="IMEModel.FK__SaleOrder__SaleO__3F3159AB" FromRole="SaleOrder" ToRole="SaleOrderDetail" />
         </EntityType>
         <EntityType Name="SaleOrderDetail">
@@ -3881,8 +3862,7 @@
           <NavigationProperty Name="Customers2" Relationship="IMEModel.FK__Customer__repres__6E01572D" FromRole="Worker" ToRole="Customer" />
           <NavigationProperty Name="DiscountValues" Relationship="IMEModel.FK__DiscountV__Repre__6F4A8121" FromRole="Worker" ToRole="DiscountValue" />
           <NavigationProperty Name="Note" Relationship="IMEModel.FK__Worker__WorkerNo__4BAC3F29" FromRole="Worker" ToRole="Note" />
-          <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SaleOrder__Repre__09946309" FromRole="Worker" ToRole="SaleOrder" />
-          <NavigationProperty Name="SaleOrders1" Relationship="IMEModel.FK__SaleOrder__Repre__22951AFD" FromRole="Worker" ToRole="SaleOrder" />
+          <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SaleOrder__Repre__22951AFD" FromRole="Worker" ToRole="SaleOrder" />
           <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__accoun__2DB1C7EE" FromRole="Worker" ToRole="Supplier" />
           <NavigationProperty Name="Suppliers1" Relationship="IMEModel.FK__Supplier__repres__65370702" FromRole="Worker" ToRole="Supplier" />
           <NavigationProperty Name="AuthorizationValues" Relationship="IMEModel.UserAuthorization" FromRole="Worker" ToRole="AuthorizationValue" />
@@ -4559,18 +4539,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaleOrder__Repre__09946309">
-          <End Type="IMEModel.Worker" Role="Worker" Multiplicity="1" />
-          <End Type="IMEModel.SaleOrder" Role="SaleOrder" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Worker">
-              <PropertyRef Name="WorkerID" />
-            </Principal>
-            <Dependent Role="SaleOrder">
-              <PropertyRef Name="RepresentativeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__SaleOrder__Repre__22951AFD">
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="1" />
           <End Type="IMEModel.SaleOrder" Role="SaleOrder" Multiplicity="*" />
@@ -4843,7 +4811,7 @@
           <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -4959,6 +4927,7 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="IMEModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="ThirdPartyCode" ColumnName="ThirdPartyCode" />
                 <ScalarProperty Name="subcategoryID" ColumnName="subcategoryID" />
                 <ScalarProperty Name="categoryID" ColumnName="categoryID" />
                 <ScalarProperty Name="fax" ColumnName="fax" />
@@ -5280,7 +5249,6 @@
           <EntitySetMapping Name="PurchaseInvoices">
             <EntityTypeMapping TypeName="IMEModel.PurchaseInvoice">
               <MappingFragment StoreEntitySet="PurchaseInvoice">
-                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="LineControl2" ColumnName="LineControl2" />
                 <ScalarProperty Name="LineControl" ColumnName="LineControl" />
@@ -5300,6 +5268,7 @@
                 <ScalarProperty Name="BillingDocumentReference" ColumnName="BillingDocumentReference" />
                 <ScalarProperty Name="ShipmentReference" ColumnName="ShipmentReference" />
                 <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
                 <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
@@ -5464,11 +5433,11 @@
           <EntitySetMapping Name="SaleOrders">
             <EntityTypeMapping TypeName="IMEModel.SaleOrder">
               <MappingFragment StoreEntitySet="SaleOrder">
+                <ScalarProperty Name="TotalMargin" ColumnName="TotalMargin" />
                 <ScalarProperty Name="ExtraCharges" ColumnName="ExtraCharges" />
                 <ScalarProperty Name="DiscOnSubtotal" ColumnName="DiscOnSubtotal" />
                 <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
                 <ScalarProperty Name="Factor" ColumnName="Factor" />
-                <ScalarProperty Name="TotalMargin" ColumnName="TotalMargin" />
                 <ScalarProperty Name="LPONO" ColumnName="LPONO" />
                 <ScalarProperty Name="currencyID" ColumnName="currencyID" />
                 <ScalarProperty Name="ShippingType" ColumnName="ShippingType" />

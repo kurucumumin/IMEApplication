@@ -436,6 +436,7 @@ namespace LoginForm
                 Customer c = IME.Customers.Where(a => a.ID == customerID).FirstOrDefault();
                 dateTimePicker1.Value = c.CreateDate.Value;
                 CustomerCode.Text = c.ID;
+                txt3partyCode.Text = c.ThirdPartyCode;
                 AdressList.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
                 AdressList.DisplayMember = "AdressTitle";
                 ContactAdress.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
@@ -475,6 +476,7 @@ namespace LoginForm
             ContactAdress.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
             ContactAdress.DisplayMember = "AdressDetails";
             CustomerName.Text = c.c_name;
+            txt3partyCode.Text = c.ThirdPartyCode;
             Telephone.Text = c.telephone;
             ContactFAX.Text = c.fax;
             WebAdress.Text = c.webadress;
@@ -784,6 +786,7 @@ namespace LoginForm
                         c = IME.Customers.Where(a => a.ID == CustomerCode.Text).FirstOrDefault();
                         if (rb_active.Checked) { c.isactive = 1; } else { c.isactive = 0; }
                         c.c_name = CustomerName.Text;
+                        c.ThirdPartyCode = txt3partyCode.Text;
                         if (Telephone.Text != "") { c.telephone = Telephone.Text; }
                         if (txtExtNumber.Text != "") { c.extensionnumber = txtExtNumber.Text; }
                         if (CustomerFax.Text != "") { c.fax = CustomerFax.Text; }
@@ -923,6 +926,7 @@ namespace LoginForm
             WebAdress.Text = "";
             CustomerFax.Text = "";
             CustomerName.Text = "";
+            txt3partyCode.Text = "";
             AccountingNotes.Text = "";
             Telephone.Text = "";
             CustomerCode.Text = "";
@@ -1254,7 +1258,6 @@ namespace LoginForm
             if (ContactListItem.AdressID != cw_ID)
             {
                 ContactListItem.AdressID = cw_ID;
-
                 var contact1 = IME.CustomerAddresses.Where(cw => cw.ID == cw_ID).ToList();
                 foreach (var a in contact1)
                 {

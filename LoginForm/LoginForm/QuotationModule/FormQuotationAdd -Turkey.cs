@@ -2195,7 +2195,7 @@ namespace LoginForm.QuotationModule
 
         private void btnExcelExport_Click(object sender, EventArgs e)
         {
-            QuotationExcelExport.Export(dgQuotationAddedItems, txtQuotationNo.Text);
+            //QuotationExcelExport.Export(dgQuotationAddedItems, txtQuotationNo.Text);
         }
 
         private void textBox10_Click(object sender, EventArgs e)

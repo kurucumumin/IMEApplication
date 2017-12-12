@@ -454,7 +454,7 @@ namespace LoginForm.QuotationModule
 
         private void GetQuotationQuantity(int rowindex)
         {
-            if (cbFactor.Text != null && cbFactor.Text != "")
+            if (cbFactor.Text != null && cbFactor.Text != "" && dgQuotationAddedItems.Rows[rowindex].Cells[dgUPIME.Index].Value!=null && dgQuotationAddedItems.Rows[rowindex].Cells[dgUPIME.Index].Value != string.Empty)
             {
                 #region Quantity
                 if (dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value != null)
@@ -1004,106 +1004,106 @@ namespace LoginForm.QuotationModule
             string articleNo = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString();
             SlidingPrice sp1 = IME.SlidingPrices.Where(a => a.ArticleNo == articleNo).FirstOrDefault();
             int quantity = 0;
-            if (sp1 != null) { quantity = Int32.Parse(sp1.Col1Break.ToString()); } else { quantity = Int32.Parse(er.Col1Break.ToString()); }
+            if (sp1 != null) { quantity = Int32.Parse(sp1.Col1Break.ToString()); } else {if(er!=null) quantity = Int32.Parse(er.Col1Break.ToString()); }
+            if (quantity!=0) {
+                txtMargin1.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
+    , quantity)).ToString("G29");
+                txtMargin1.Text = ((1 - ((Decimal.Parse(txtMargin1.Text)) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
 
-            txtMargin1.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
-, quantity)).ToString("G29");
-            txtMargin1.Text = ((1 - ((Decimal.Parse(txtMargin1.Text)) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
+                int quantity2 = 0;
+                if (sp1 != null) { quantity2 = Int32.Parse(sp1.Col2Break.ToString()); } else { quantity2 = Int32.Parse(er.Col2Break.ToString()); }
 
-            int quantity2 = 0;
-            if (sp1 != null) { quantity2 = Int32.Parse(sp1.Col2Break.ToString()); } else { quantity2 = Int32.Parse(er.Col2Break.ToString()); }
+                txtMargin2.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
+                                 , quantity2)).ToString("G29");
 
-            txtMargin2.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
-                             , quantity2)).ToString("G29");
-
-            if (txtWeb2.Text == "0")
-            {
-                txtMargin2.Text = "";
-                txtMargin3.Text = "";
-                txtMargin4.Text = "";
-                txtMargin5.Text = "";
-            }
-            else
-            {
-
-                txtMargin2.Text = ((1 - ((Decimal.Parse(txtMargin2.Text)) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
-                txtMargin3.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked, Int32.Parse(sp1.Col3Break.ToString()))).ToString("G29");
-                if (Decimal.Parse(txtWeb3.Text) != 0) txtMargin3.Text = ((1 - ((Decimal.Parse(txtMargin3.Text)) / (decimal.Parse(txtWeb3.Text)))) * 100).ToString();
-                if (sp1.Col4Break != 0)
+                if (txtWeb2.Text == "0")
                 {
-                    txtMargin4.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
-                , Int32.Parse(sp1.Col4Break.ToString()))).ToString("G29");
-                    txtMargin4.Text = ((1 - ((Decimal.Parse(txtMargin4.Text)) / (decimal.Parse(txtWeb4.Text)))) * 100).ToString();
-                    if (sp1.Col5Break != 0)
+                    txtMargin2.Text = "";
+                    txtMargin3.Text = "";
+                    txtMargin4.Text = "";
+                    txtMargin5.Text = "";
+                }
+                else
+                {
+
+                    txtMargin2.Text = ((1 - ((Decimal.Parse(txtMargin2.Text)) / (decimal.Parse(txtWeb1.Text)))) * 100).ToString();
+                    txtMargin3.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked, Int32.Parse(sp1.Col3Break.ToString()))).ToString("G29");
+                    if (Decimal.Parse(txtWeb3.Text) != 0) txtMargin3.Text = ((1 - ((Decimal.Parse(txtMargin3.Text)) / (decimal.Parse(txtWeb3.Text)))) * 100).ToString();
+                    if (sp1.Col4Break != 0)
                     {
-                        txtMargin5.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
-                    , Int32.Parse(sp1.Col5Break.ToString()))).ToString("G29");
-                        txtMargin5.Text = ((1 - ((Decimal.Parse(txtMargin5.Text)) / (decimal.Parse(txtWeb5.Text)))) * 100).ToString();
+                        txtMargin4.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
+                    , Int32.Parse(sp1.Col4Break.ToString()))).ToString("G29");
+                        txtMargin4.Text = ((1 - ((Decimal.Parse(txtMargin4.Text)) / (decimal.Parse(txtWeb4.Text)))) * 100).ToString();
+                        if (sp1.Col5Break != 0)
+                        {
+                            txtMargin5.Text = (classQuotationAdd.GetLandingCost(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString(), ckItemCost.Checked, ckWeightCost.Checked, ckCustomsDuties.Checked
+                        , Int32.Parse(sp1.Col5Break.ToString()))).ToString("G29");
+                            txtMargin5.Text = ((1 - ((Decimal.Parse(txtMargin5.Text)) / (decimal.Parse(txtWeb5.Text)))) * 100).ToString();
+                        }
                     }
+
                 }
 
+                #endregion
+                #region Low Margin Mark
+
+
+                if (txtLithium.Text != "")
+                {
+                    label64.BackColor = Color.Red;
+                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.Ivory;
+                }
+                else
+                {
+                    label64.BackColor = Color.White;
+                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.White;
+                }
+                if (txtShipping.Text != "")
+                {
+                    label63.BackColor = Color.Red;
+                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["HS"].Style.BackColor = Color.Red;
+
+                }
+                else
+                {
+                    label63.BackColor = Color.White;
+                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["HS"].Style.BackColor = Color.White;
+                }
+
+                if (txtEnvironment.Text != "")
+                {
+                    label53.BackColor = Color.Red;
+                }
+                else
+                {
+                    label53.BackColor = Color.White;
+                }
+
+                if (txtCalibrationInd.Text != "" && txtCalibrationInd.Text != null && txtCalibrationInd.Text != "N")
+                {
+                    label22.BackColor = Color.Red;
+                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.Green;
+                }
+                else
+                {
+                    label22.BackColor = Color.White;
+                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.White;
+                }
+
+                if (txtLicenceType.Text != "" && txtLicenceType.Text != null)
+                {
+                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.BurlyWood;
+                }
+                else
+                {
+                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.White;
+                }
+
+
+
+                #endregion
+
             }
-
-            #endregion
-            #region Low Margin Mark
-
-
-            if (txtLithium.Text != "")
-            {
-                label64.BackColor = Color.Red;
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.Ivory;
-            }
-            else
-            {
-                label64.BackColor = Color.White;
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LI"].Style.BackColor = Color.White;
-            }
-            if (txtShipping.Text != "")
-            {
-                label63.BackColor = Color.Red;
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["HS"].Style.BackColor = Color.Red;
-
-            }
-            else
-            {
-                label63.BackColor = Color.White;
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["HS"].Style.BackColor = Color.White;
-            }
-
-            if (txtEnvironment.Text != "")
-            {
-                label53.BackColor = Color.Red;
-            }
-            else
-            {
-                label53.BackColor = Color.White;
-            }
-
-            if (txtCalibrationInd.Text != "" && txtCalibrationInd.Text != null && txtCalibrationInd.Text != "N")
-            {
-                label22.BackColor = Color.Red;
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.Green;
-            }
-            else
-            {
-                label22.BackColor = Color.White;
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["CL"].Style.BackColor = Color.White;
-            }
-
-            if (txtLicenceType.Text != "" && txtLicenceType.Text != null)
-            {
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.BurlyWood;
-            }
-            else
-            {
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["LC"].Style.BackColor = Color.White;
-            }
-
-
-
-            #endregion
-
-
         }
 
         private void CustomerCode_KeyDown(object sender, KeyEventArgs e)
@@ -2288,7 +2288,14 @@ namespace LoginForm.QuotationModule
 
         private void btnExcelExport_Click(object sender, EventArgs e)
         {
-            QuotationExcelExport.Export(dgQuotationAddedItems, txtQuotationNo.Text);
+            List<string> QuotationItemList = new List<string>();
+            for (int i = 0; i < dgQuotationAddedItems.ColumnCount; i++)
+            {
+                QuotationItemList.Add(dgQuotationAddedItems.Columns[i].HeaderText);
+            }
+            QuotationExport form = new QuotationExport(QuotationItemList, txtQuotationNo.Text, dgQuotationAddedItems);
+            form.ShowDialog();
+            
         }
 
         private void textBox10_Click(object sender, EventArgs e)

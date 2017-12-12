@@ -2154,7 +2154,8 @@ namespace LoginForm
 
     class QuotationExcelExport
     {
-        public static void Export(DataGridView dg,string quotationNo)
+
+        public static void Export(DataGridView dg,string quotationNo, List<bool> ischecked)
         {
             #region Copy All Items
             dg.SelectAll();
@@ -2174,13 +2175,13 @@ namespace LoginForm
             xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
             for (int j = 0; j <= dg.ColumnCount - 1; j++)
             {
-                xlWorkSheet.Cells[1, j + 1] = dg.Columns[j].Name;
+                if(ischecked[j])xlWorkSheet.Cells[1, j + 1] = dg.Columns[j].HeaderText;
             }
-            for (int i = 0; i <= dg.RowCount - 2; i++)
+            for (int i = 0; i < dg.RowCount; i++)
             {
-                for (int j = 0; j <= dg.ColumnCount - 1; j++)
+                for (int j = 0; j < dg.ColumnCount; j++)
                 {
-                    if (dg.Rows[i].Cells[j].Value != null) { xlWorkSheet.Cells[i + 2, j + 1] = dg.Rows[i].Cells[j].Value.ToString(); }
+                    if (dg.Rows[i].Cells[j].Value != null && ischecked[j]==true) { xlWorkSheet.Cells[i + 2, j + 1] = dg.Rows[i].Cells[j].Value.ToString(); }
                 }
             }
             SaveFileDialog savefile = new SaveFileDialog();

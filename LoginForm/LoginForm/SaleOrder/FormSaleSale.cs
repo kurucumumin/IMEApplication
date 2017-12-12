@@ -2369,7 +2369,7 @@ namespace LoginForm.nmSaleOrder
 
         private void btnExcelExport_Click(object sender, EventArgs e)
         {
-            QuotationExcelExport.Export(dgSaleAddedItems, txtSaleOrderNo.Text);
+            //QuotationExcelExport.Export(dgSaleAddedItems, txtSaleOrderNo.Text);
         }
 
         private void textBox10_Click(object sender, EventArgs e)
