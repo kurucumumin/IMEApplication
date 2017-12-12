@@ -1160,7 +1160,6 @@
             this.btnExcelExport.TabIndex = 3;
             this.btnExcelExport.Text = "Export To Excel";
             this.btnExcelExport.UseVisualStyleBackColor = true;
-            this.btnExcelExport.Click += new System.EventHandler(this.btnExcelExport_Click);
             // 
             // textBox11
             // 

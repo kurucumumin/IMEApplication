@@ -19,7 +19,7 @@ namespace LoginForm.nsSaleOrder
         decimal customerFactor = 0;
         decimal currency;
         decimal exchangeRate = 0;
-        
+
         List<SaleItem> addedItemList = new List<SaleItem>();
         List<SaleItem> removedItemList = new List<SaleItem>();
 
@@ -49,7 +49,7 @@ namespace LoginForm.nsSaleOrder
 
         private void FormSaleOrderAdd_Load(object sender, EventArgs e)
         {
-            
+
             numFactor.Value = Utils.getManagement().Factor;
             PopulateList(addedItemList, dgSaleItems);
             PopulateList(removedItemList, dgSalesDeleted);
@@ -769,7 +769,7 @@ namespace LoginForm.nsSaleOrder
                             MessageBox.Show("Please enter multiple of '" + row.Cells["sUC"].Value.ToString() + "'.","Attention");
                         }
 
-                        
+
                     }
 
                     break;
@@ -784,7 +784,7 @@ namespace LoginForm.nsSaleOrder
                 ItemCode = itemCode
             };
 
-            
+
 
             //TO DO yerini Değiştir ve coefficient exchange rate e bağla
             switch (tableName)
@@ -916,7 +916,7 @@ namespace LoginForm.nsSaleOrder
                     s.UC = (int)sdpTable.Unit_Content;
                     s.UKDiscDate = sdpTable.Uk_Disc_Date;
                     s.UKIntroDate = sdpTable.Uk_Intro_Date;
-                    s.UOM = (sdpTable.Unit_Measure != "") ? sdpTable.Unit_Measure : "Each"; 
+                    s.UOM = (sdpTable.Unit_Measure != "") ? sdpTable.Unit_Measure : "Each";
                     s.UPIMELP = (s.UK1Price * numFactor.Value/*Utils.getManagement().Factor*/) / exchangeRate;
                     s.Width = (decimal)sdpTable.Width;
                     s.UnitWeight = (s.Height * s.Length * s.Width) / 6000;
@@ -933,7 +933,7 @@ namespace LoginForm.nsSaleOrder
                     s.LandingCost = classQuotationAdd.GetLandingCost(s.ItemCode, true, true, true);
 
 
-                     
+
                     s.Col1Break = (int)extTable.Col1Break;
                     s.Col2Break = extTable.Col2Break;
                     s.Col3Break = extTable.Col3Break;
@@ -971,15 +971,15 @@ namespace LoginForm.nsSaleOrder
 
         }
 
-        private void btnExcelExport_Click(object sender, EventArgs e)
-        {
-            List<string> SaleItemList = new List<string>();
-            for (int i = 0; i < dgSaleItems.ColumnCount; i++)
-            {
-                SaleItemList.Add(dgSaleItems.Columns[i].HeaderText);
-            }
-            frmQuotationExport form = new frmQuotationExport(SaleItemList, txtSONo.Text, dgSaleItems);
-            form.ShowDialog();
-        }
+        //private void btnExcelExport_Click(object sender, EventArgs e)
+        //{
+        //    List<string> SaleItemList = new List<string>();
+        //    for (int i = 0; i < dgSaleItems.ColumnCount; i++)
+        //    {
+        //        SaleItemList.Add(dgSaleItems.Columns[i].HeaderText);
+        //    }
+        //    QuotationExport form = new QuotationExport(SaleItemList, txtSONo.Text, dgSaleItems);
+        //    form.ShowDialog();
+        //}
     }
 }
