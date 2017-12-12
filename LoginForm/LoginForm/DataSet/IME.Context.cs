@@ -54,6 +54,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<Management> Managements { get; set; }
         public virtual DbSet<Note> Notes { get; set; }
         public virtual DbSet<OnSale> OnSales { get; set; }
+        public virtual DbSet<PayHead> PayHeads { get; set; }
         public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
         public virtual DbSet<PaymentTerm> PaymentTerms { get; set; }
         public virtual DbSet<PrintFormat> PrintFormats { get; set; }
