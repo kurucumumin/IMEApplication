@@ -378,6 +378,16 @@
           <Property Name="SubstitutedBy" Type="int" />
           <Property Name="SubstitutedFor" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="PayHead">
+          <Key>
+            <PropertyRef Name="payHeadId" />
+          </Key>
+          <Property Name="payHeadId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="payHeadName" Type="varchar(max)" />
+          <Property Name="type" Type="varchar(max)" />
+          <Property Name="narration" Type="varchar(max)" />
+          <Property Name="extraDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="PaymentMethod">
           <Key>
             <PropertyRef Name="ID" />
@@ -620,7 +630,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ItemCode" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
           <Property Name="UCUPCurr" Type="decimal" Precision="20" Scale="5" Nullable="false" />
@@ -642,8 +652,8 @@
           <Property Name="ItemDescription" Type="nvarchar" MaxLength="50" />
           <Property Name="Hazardous" Type="bit" />
           <Property Name="Calibration" Type="bit" />
-          <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="0" />
           <Property Name="ItemCost" Type="decimal" Precision="20" Scale="5" />
+          <Property Name="No" Type="int" />
         </EntityType>
         <EntityType Name="SlidingPrice">
           <Key>
@@ -1554,7 +1564,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaleOrder__SaleO__3F3159AB">
+        <Association Name="FK__SaleOrder__SaleO__0B7CAB7B">
           <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="0..1" />
           <End Role="SaleOrderDetail" Type="Self.SaleOrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1962,6 +1972,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="PayHeadAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="payHeadName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="type" Type="varchar(max)" Mode="In" />
+          <Parameter Name="narration" Type="varchar(max)" Mode="In" />
+          <Parameter Name="extraDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="PayHeadDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="payHeadId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="PayHeadEdit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="payHeadId" Type="numeric" Mode="In" />
+          <Parameter Name="payHeadName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="type" Type="varchar(max)" Mode="In" />
+          <Parameter Name="narration" Type="varchar(max)" Mode="In" />
+          <Parameter Name="extraDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="PayHeadGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="payHeadId" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="PayHeadGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="IMEModelStoreContainer">
           <EntitySet Name="AccountGroup" EntityType="Self.AccountGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccountLedger" EntityType="Self.AccountLedger" Schema="dbo" store:Type="Tables" />
@@ -1993,6 +2023,7 @@
           <EntitySet Name="Management" EntityType="Self.Management" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OnSale" EntityType="Self.OnSale" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PayHead" EntityType="Self.PayHead" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentTerm" EntityType="Self.PaymentTerm" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PrintFormat" EntityType="Self.PrintFormat" Schema="dbo" store:Type="Tables" />
@@ -2222,7 +2253,7 @@
             <End Role="Worker" EntitySet="Worker" />
             <End Role="SaleOrder" EntitySet="SaleOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaleOrder__SaleO__3F3159AB" Association="Self.FK__SaleOrder__SaleO__3F3159AB">
+          <AssociationSet Name="FK__SaleOrder__SaleO__0B7CAB7B" Association="Self.FK__SaleOrder__SaleO__0B7CAB7B">
             <End Role="SaleOrder" EntitySet="SaleOrder" />
             <End Role="SaleOrderDetail" EntitySet="SaleOrderDetail" />
           </AssociationSet>
@@ -2393,6 +2424,7 @@
           <EntitySet Name="Managements" EntityType="IMEModel.Management" />
           <EntitySet Name="Notes" EntityType="IMEModel.Note" />
           <EntitySet Name="OnSales" EntityType="IMEModel.OnSale" />
+          <EntitySet Name="PayHeads" EntityType="IMEModel.PayHead" />
           <EntitySet Name="PaymentMethods" EntityType="IMEModel.PaymentMethod" />
           <EntitySet Name="PaymentTerms" EntityType="IMEModel.PaymentTerm" />
           <EntitySet Name="PrintFormats" EntityType="IMEModel.PrintFormat" />
@@ -2657,7 +2689,7 @@
             <End Role="Worker" EntitySet="Workers" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaleOrder__SaleO__3F3159AB" Association="IMEModel.FK__SaleOrder__SaleO__3F3159AB">
+          <AssociationSet Name="FK__SaleOrder__SaleO__0B7CAB7B" Association="IMEModel.FK__SaleOrder__SaleO__0B7CAB7B">
             <End Role="SaleOrder" EntitySet="SaleOrders" />
             <End Role="SaleOrderDetail" EntitySet="SaleOrderDetails" />
           </AssociationSet>
@@ -2749,6 +2781,26 @@
             <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
             <End Role="Worker" EntitySet="Workers" />
           </AssociationSet>
+          <FunctionImport Name="PayHeadAdd">
+            <Parameter Name="payHeadName" Mode="In" Type="String" />
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="narration" Mode="In" Type="String" />
+            <Parameter Name="extraDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="PayHeadDelete">
+          <Parameter Name="payHeadId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="PayHeadEdit">
+            <Parameter Name="payHeadId" Mode="In" Type="Decimal" />
+            <Parameter Name="payHeadName" Mode="In" Type="String" />
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="narration" Mode="In" Type="String" />
+            <Parameter Name="extraDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="PayHeadGetAll" ReturnType="Collection(IMEModel.PayHeadGetAll_Result)" />
+          <FunctionImport Name="PayHeadGet" ReturnType="Collection(IMEModel.PayHeadGet_Result)">
+            <Parameter Name="payHeadId" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="AccountGroup">
           <Key>
@@ -3182,6 +3234,16 @@
           <Property Name="SubstitutedBy" Type="Int32" />
           <Property Name="SubstitutedFor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="PayHead">
+          <Key>
+            <PropertyRef Name="payHeadId" />
+          </Key>
+          <Property Name="payHeadId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="payHeadName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="extraDate" Type="DateTime" Precision="3" />
+        </EntityType>
         <EntityType Name="PaymentMethod">
           <Key>
             <PropertyRef Name="ID" />
@@ -3452,13 +3514,13 @@
           <NavigationProperty Name="PaymentTerm" Relationship="IMEModel.FK__SaleOrder__Payme__1AF3F935" FromRole="SaleOrder" ToRole="PaymentTerm" />
           <NavigationProperty Name="PurchaseOrderDetails" Relationship="IMEModel.FK__PurchaseO__SaleO__46D27B73" FromRole="SaleOrder" ToRole="PurchaseOrderDetail" />
           <NavigationProperty Name="Worker" Relationship="IMEModel.FK__SaleOrder__Repre__22951AFD" FromRole="SaleOrder" ToRole="Worker" />
-          <NavigationProperty Name="SaleOrderDetails" Relationship="IMEModel.FK__SaleOrder__SaleO__3F3159AB" FromRole="SaleOrder" ToRole="SaleOrderDetail" />
+          <NavigationProperty Name="SaleOrderDetails" Relationship="IMEModel.FK__SaleOrder__SaleO__0B7CAB7B" FromRole="SaleOrder" ToRole="SaleOrderDetail" />
         </EntityType>
         <EntityType Name="SaleOrderDetail">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ItemCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
           <Property Name="UCUPCurr" Type="Decimal" Nullable="false" Precision="20" Scale="5" />
@@ -3480,9 +3542,9 @@
           <Property Name="ItemDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Hazardous" Type="Boolean" />
           <Property Name="Calibration" Type="Boolean" />
-          <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="ItemCost" Type="Decimal" Precision="20" Scale="5" />
-          <NavigationProperty Name="SaleOrder" Relationship="IMEModel.FK__SaleOrder__SaleO__3F3159AB" FromRole="SaleOrderDetail" ToRole="SaleOrder" />
+          <Property Name="No" Type="Int32" />
+          <NavigationProperty Name="SaleOrder" Relationship="IMEModel.FK__SaleOrder__SaleO__0B7CAB7B" FromRole="SaleOrderDetail" ToRole="SaleOrder" />
         </EntityType>
         <EntityType Name="SlidingPrice">
           <Key>
@@ -4551,7 +4613,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaleOrder__SaleO__3F3159AB">
+        <Association Name="FK__SaleOrder__SaleO__0B7CAB7B">
           <End Type="IMEModel.SaleOrder" Role="SaleOrder" Multiplicity="0..1" />
           <End Type="IMEModel.SaleOrderDetail" Role="SaleOrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -4811,6 +4873,17 @@
           <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
         </Association>
+        <ComplexType Name="PayHeadGetAll_Result">
+          <Property Type="String" Name="payHeadName" Nullable="true" />
+          <Property Type="String" Name="narration" Nullable="true" />
+          <Property Type="String" Name="type" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PayHeadGet_Result">
+          <Property Type="Decimal" Name="PayheadId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="payHeadName" Nullable="true" />
+          <Property Type="String" Name="narration" Nullable="true" />
+          <Property Type="String" Name="type" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -5211,6 +5284,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PayHeads">
+            <EntityTypeMapping TypeName="IMEModel.PayHead">
+              <MappingFragment StoreEntitySet="PayHead">
+                <ScalarProperty Name="extraDate" ColumnName="extraDate" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="payHeadName" ColumnName="payHeadName" />
+                <ScalarProperty Name="payHeadId" ColumnName="payHeadId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PaymentMethods">
             <EntityTypeMapping TypeName="IMEModel.PaymentMethod">
               <MappingFragment StoreEntitySet="PaymentMethod">
@@ -5466,8 +5550,8 @@
           <EntitySetMapping Name="SaleOrderDetails">
             <EntityTypeMapping TypeName="IMEModel.SaleOrderDetail">
               <MappingFragment StoreEntitySet="SaleOrderDetail">
+                <ScalarProperty Name="No" ColumnName="No" />
                 <ScalarProperty Name="ItemCost" ColumnName="ItemCost" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="Calibration" ColumnName="Calibration" />
                 <ScalarProperty Name="Hazardous" ColumnName="Hazardous" />
                 <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
@@ -5855,6 +5939,28 @@
               <ScalarProperty Name="AuthorizationID" ColumnName="AuthorizationID" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="PayHeadAdd" FunctionName="IMEModel.Store.PayHeadAdd" />
+          <FunctionImportMapping FunctionImportName="PayHeadDelete" FunctionName="IMEModel.Store.PayHeadDelete" />
+          <FunctionImportMapping FunctionImportName="PayHeadEdit" FunctionName="IMEModel.Store.PayHeadEdit" />
+          <FunctionImportMapping FunctionImportName="PayHeadGetAll" FunctionName="IMEModel.Store.PayHeadGetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.PayHeadGetAll_Result">
+                <ScalarProperty Name="payHeadName" ColumnName="payHeadName" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PayHeadGet" FunctionName="IMEModel.Store.PayHeadGet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.PayHeadGet_Result">
+                <ScalarProperty Name="PayheadId" ColumnName="PayheadId" />
+                <ScalarProperty Name="payHeadName" ColumnName="payHeadName" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

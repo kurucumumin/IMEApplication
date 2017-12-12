@@ -83,7 +83,6 @@ namespace LoginForm.PurchaseOrder
                 pod.Unit = sod.UnitOfMeasure;
                 pod.Hazardous = sod.Hazardous??false;
                 pod.Calibration = sod.Calibration ?? false;
-                pod.UnitPrice = sod.UnitPrice;
 
                 purchaseList.Add(pod);
             }
