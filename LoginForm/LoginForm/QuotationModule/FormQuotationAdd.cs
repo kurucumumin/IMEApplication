@@ -180,7 +180,6 @@ namespace LoginForm.QuotationModule
                 try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
                 if (c.Worker != null) cbRep.SelectedValue = c.Worker.WorkerID;
                 cbCurrency.SelectedItem = cbCurrency.FindStringExact(c.CurrNameQuo);
-                //cbCurrType.SelectedItem = cbCurrType.FindStringExact(c.CurrTypeQuo);
             }
         }
 
@@ -2231,7 +2230,7 @@ namespace LoginForm.QuotationModule
                 {
                     int rownumber = Int32.Parse(dgQuotationAddedItems.Rows[item.Index].Cells["dgNo"].Value.ToString());
                     dgQuotationDeleted.Rows.Add();
-                    for (int i = 0; i < dgQuotationAddedItems.Columns.Count - 1; i++)
+                    for (int i = 0; i < dgQuotationAddedItems.Columns.Count; i++)
                     {
                         dgQuotationDeleted.Rows[dgQuotationDeleted.Rows.Count - 2].Cells[i].Value = item.Cells[i].Value;
                     }
