@@ -978,7 +978,7 @@ namespace LoginForm.nsSaleOrder
             {
                 SaleItemList.Add(dgSaleItems.Columns[i].HeaderText);
             }
-            QuotationExport form = new QuotationExport(SaleItemList, txtSONo.Text, dgSaleItems);
+            frmQuotationExport form = new frmQuotationExport(SaleItemList, txtSONo.Text, dgSaleItems);
             form.ShowDialog();
         }
     }

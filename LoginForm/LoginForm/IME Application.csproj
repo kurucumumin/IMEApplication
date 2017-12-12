@@ -546,11 +546,11 @@
     <Compile Include="QuotationModule\FormQuotationMPN.Designer.cs">
       <DependentUpon>FormQuotationMPN.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuotationModule\QuotationExport.cs">
+    <Compile Include="QuotationModule\frmQuotationExport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QuotationModule\QuotationExport.Designer.cs">
-      <DependentUpon>QuotationExport.cs</DependentUpon>
+    <Compile Include="QuotationModule\frmQuotationExport.Designer.cs">
+      <DependentUpon>frmQuotationExport.cs</DependentUpon>
     </Compile>
     <Compile Include="QuotationModule\QuotationHelper.cs" />
     <Compile Include="QuotationModule\ViewProductHistory.cs">
@@ -754,8 +754,8 @@
     <EmbeddedResource Include="QuotationModule\FormQuotationMPN.resx">
       <DependentUpon>FormQuotationMPN.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QuotationModule\QuotationExport.resx">
-      <DependentUpon>QuotationExport.cs</DependentUpon>
+    <EmbeddedResource Include="QuotationModule\frmQuotationExport.resx">
+      <DependentUpon>frmQuotationExport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\ViewProductHistory.resx">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>

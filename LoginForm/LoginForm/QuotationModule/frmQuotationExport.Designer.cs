@@ -1,6 +1,6 @@
 ﻿namespace LoginForm.QuotationModule
 {
-    partial class QuotationExport
+    partial class frmQuotationExport
     {
         /// <summary>
         /// Required designer variable.
@@ -63,7 +63,7 @@
             this.btnClearAll.UseVisualStyleBackColor = true;
             this.btnClearAll.Click += new System.EventHandler(this.button1_Click);
             // 
-            // QuotationExport
+            // frmQuotationExport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -71,9 +71,9 @@
             this.Controls.Add(this.btnClearAll);
             this.Controls.Add(this.btnSelectAll);
             this.Controls.Add(this.ExportButton);
-            this.Name = "QuotationExport";
+            this.Name = "frmQuotationExport";
             this.Text = "QuotationExport";
-            this.Load += new System.EventHandler(this.QuotationExport_Load);
+            this.Load += new System.EventHandler(this.frmQuotationExport_Load);
             this.ResumeLayout(false);
 
         }

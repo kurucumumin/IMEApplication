@@ -2293,7 +2293,7 @@ namespace LoginForm.QuotationModule
             {
                 QuotationItemList.Add(dgQuotationAddedItems.Columns[i].HeaderText);
             }
-            QuotationExport form = new QuotationExport(QuotationItemList, txtQuotationNo.Text, dgQuotationAddedItems);
+            frmQuotationExport form = new frmQuotationExport(QuotationItemList, txtQuotationNo.Text, dgQuotationAddedItems);
             form.ShowDialog();
             
         }
