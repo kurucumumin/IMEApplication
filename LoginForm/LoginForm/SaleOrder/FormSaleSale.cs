@@ -384,16 +384,20 @@ namespace LoginForm.nmSaleOrder
            .Cast<DataGridViewRow>()
            .Where(r => r.Cells["dgProductCode"].Value.ToString().Equals(classQuotationAdd.ItemCode))
            .FirstOrDefault();
+                                    if (row != null)
+                                    {
                                         if (row.Cells["dgUCUPCurr"].Value != null)
                                         {
-                                            if (row != null) MessageBox.Show("There is already an item added this qoutation in the " + row.Cells["dgNo"].Value.ToString() + ". Row and the price " + row.Cells["dgUCUPCurr"].Value.ToString());
+                                            MessageBox.Show("There is already an item added this qoutation in the " + row.Cells["dgNo"].Value.ToString() + ". Row and the price " + row.Cells["dgUCUPCurr"].Value.ToString());
 
                                         }
                                         else
                                         {
-                                            if (row != null) MessageBox.Show("There is already an item added this qoutation in the " + row.Cells["dgNo"].Value.ToString() + ". Row");
+                                           MessageBox.Show("There is already an item added this qoutation in the " + row.Cells["dgNo"].Value.ToString() + ". Row");
 
                                         }
+                                    }
+                                        
                                     dgSaleAddedItems.CurrentCell.Value = classQuotationAdd.ItemCode;
                                     try { sdNumber = IME.SuperDisks.Where(a => a.Article_No.Contains(dgSaleAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { sdNumber = 0; }
                                     try { sdPNumber = IME.SuperDiskPs.Where(a => a.Article_No.Contains(dgSaleAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { sdPNumber = 0; }
@@ -2877,12 +2881,12 @@ namespace LoginForm.nmSaleOrder
 
             string errorMessage = errorString.ToString();
             
-            if (nullAreaList != null)
+            if (nullAreaList.Count != 0)
             {
                 MessageBox.Show(errorMessage,"Null Data");
             }
 
-            return (nullAreaList != null) ? true : false;
+            return (nullAreaList.Count != 0) ? true : false;
         }
     }
 }

@@ -92,7 +92,7 @@ namespace LoginForm.PurchaseOrder
 
         public void PurchaseOrder(string item_code)
         {
-            SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-51RN2GB\LOCAL;Initial Catalog=IME;Integrated Security=True");
+            SqlConnection connection = new SqlConnection(@"Data Source=.;Initial Catalog=IME;Integrated Security=True");
             StringBuilder history = new StringBuilder();
             history.Append("Select a.c_name,b.QuotationNos, b.SaleOrderNo, c.ItemCode, c.ItemDescription, c.UnitOfMeasure, c.Quantity, c.Hazardous, ");
             history.Append("c.Calibration, b.SaleOrderNature, d.AddressType, d.AdressTitle, c.UPIME ");

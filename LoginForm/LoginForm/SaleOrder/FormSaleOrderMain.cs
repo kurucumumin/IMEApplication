@@ -54,9 +54,9 @@ namespace LoginForm.nsSaleOrder
                            SoNO = so.SaleOrderNo,
                            CustomerName = cw.Customer.c_name,
                            Contact = cw.cw_name,
-                           DeliveryContact = (cw1.cw_name != null) ? cw1.cw_name : "--None--",
+                           DeliveryContact =cw1.cw_name,
                            Address = ca.AdressTitle,
-                           DeliveryAddress = (ca1.AdressDetails != null) ? ca1.AdressTitle : "--None--",
+                           DeliveryAddress =ca1.AdressTitle,
 
                        };
             populateGrid(list.ToList());
