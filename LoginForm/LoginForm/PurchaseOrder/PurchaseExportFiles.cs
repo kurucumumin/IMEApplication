@@ -100,6 +100,7 @@ namespace LoginForm.PurchaseOrder
 
         private void btnCreatePurchase_Click(object sender, EventArgs e)
         {
+            #region SAVE
             DataSet.PurchaseOrder po = new DataSet.PurchaseOrder();
             string s = rowList[0].Cells[3].Value.ToString();
 
@@ -138,8 +139,10 @@ namespace LoginForm.PurchaseOrder
 
             MessageBox.Show("PuchaseOrders is successfully added", "Success");
 
-            #region SendMail
 
+            #endregion
+            CreateTxt();
+            #region SendMail
             sc.Port = 587;
             sc.Host = "smtp.gmail.com";
             sc.EnableSsl = true;
@@ -164,6 +167,7 @@ namespace LoginForm.PurchaseOrder
                 Wait(sayac);
             }
             #endregion
+
         }
 
         private void Wait(int sayac)
@@ -175,6 +179,14 @@ namespace LoginForm.PurchaseOrder
                 sc.Send(mail);
                 MessageBox.Show(sayac + " E-Mails successfully sent.", "Success !");
             }
+        }
+        private void CreateTxt()
+        {
+            List<string> TXTList = new List<string>();
+            string Line1;
+            Line1 = "FH";
+            Line1 = Line1 + rowList.FirstOrDefault().Cells[ //CountryCOde
+            TXTList.Add();
         }
     }
 }
