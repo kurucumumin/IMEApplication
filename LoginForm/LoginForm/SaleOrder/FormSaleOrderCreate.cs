@@ -88,7 +88,27 @@ namespace LoginForm.nsSaleOrder
 
             if (list.Count > 0)
             {
-                FormSaleSale form1 = new FormSaleSale((Customer)lbCustomerList.SelectedItem, list);
+                
+                List<string> quotationNos = new List<string>();
+                for (int i = 0; i < list.Count; i++)
+                {
+                    if (quotationNos.Where(x=>x == list[i].QuotationNo).FirstOrDefault() == null)
+                    {
+                        quotationNos.Add(list[i].QuotationNo);
+                    }
+                }
+
+                string quotationIDs = String.Empty;
+                for (int i = 0; i < quotationNos.Count; i++)
+                {
+                    quotationIDs += quotationNos[i].ToString();
+                    if (i != quotationNos.Count - 1)
+                    {
+                        quotationIDs += " , ";
+                    }
+                }
+
+                FormSaleSale form1 = new FormSaleSale((Customer)lbCustomerList.SelectedItem, list, quotationIDs);
                 form1.Show();
                 this.Close();
             }

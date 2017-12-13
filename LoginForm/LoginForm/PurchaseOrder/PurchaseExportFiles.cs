@@ -100,7 +100,7 @@ namespace LoginForm.PurchaseOrder
 
         private void btnCreatePurchase_Click(object sender, EventArgs e)
         {
-            #region Save
+            #region SAVE
             DataSet.PurchaseOrder po = new DataSet.PurchaseOrder();
             string s = rowList[0].Cells[3].Value.ToString();
 
@@ -140,8 +140,10 @@ namespace LoginForm.PurchaseOrder
             MessageBox.Show("PuchaseOrders is successfully added", "Success");
             #endregion
 
-            #region SendMail
 
+            #endregion
+            CreateTxt();
+            #region SendMail
             sc.Port = 587;
             sc.Host = "smtp.gmail.com";
             sc.EnableSsl = true;
@@ -171,6 +173,29 @@ namespace LoginForm.PurchaseOrder
             sc.Send(mail);
             MessageBox.Show(i + " E-Mails successfully sent.", "Success !");
             #endregion
+
+        }
+
+        private void Wait(int sayac)
+        {
+            if (sayac % 5 == 0)
+            {
+                Thread.Sleep(TimeSpan.FromSeconds(5));
+                mail.Subject = "TeamERP"; mail.IsBodyHtml = true; mail.Body = "IME programı test mail";
+                Attachment attachment;
+                attachment = new Attachment(@"C:\Users\pomak\Desktop\Yeni Metin Belgesi.txt");
+                mail.Attachments.Add(attachment);
+                sc.Send(mail);
+                MessageBox.Show(sayac + " E-Mails successfully sent.", "Success !");
+            }
+        }
+        private void CreateTxt()
+        {
+            List<string> TXTList = new List<string>();
+            string Line1;
+            Line1 = "FH";
+            Line1 = Line1 + rowList.FirstOrDefault().Cells[ //CountryCOde
+            TXTList.Add();
         }
     }
 }
