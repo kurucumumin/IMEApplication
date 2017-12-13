@@ -47,7 +47,7 @@ namespace LoginForm.nmSaleOrder
             fillCustomer();
         }
 
-        public FormSaleSale(Customer cus, List<QuotationDetail> list)
+        public FormSaleSale(Customer cus, List<QuotationDetail> list, string QuotationNOs)
         {
             customer = cus;
             items = list;
@@ -55,6 +55,7 @@ namespace LoginForm.nmSaleOrder
             this.Text = "Edit Quotation";
             modifyMod = true;
             InitializeComponent();
+            txtQuotationNo.Text = QuotationNOs;
             dtpDate.Value = DateTime.Today.Date;
             dtpDate.MaxDate = DateTime.Today.Date;
             cbCurrency.DataSource = IME.Currencies.ToList();
@@ -376,8 +377,7 @@ namespace LoginForm.nmSaleOrder
                                     this.Enabled = false;
                                     FormQuotationItemSearch itemsearch = new FormQuotationItemSearch(dgSaleAddedItems.CurrentCell.Value.ToString());
                                     itemsearch.ShowDialog();
-                                    try
-                                    {
+                                    
                                         //Bu item daha önceden eklimi diye kontrol ediyor
                                         DataGridViewRow row = dgSaleAddedItems.Rows
            .Cast<DataGridViewRow>()
@@ -393,8 +393,6 @@ namespace LoginForm.nmSaleOrder
                                             if (row != null) MessageBox.Show("There is already an item added this qoutation in the " + row.Cells["dgNo"].Value.ToString() + ". Row");
 
                                         }
-                                    }
-                                    catch { }
                                     dgSaleAddedItems.CurrentCell.Value = classQuotationAdd.ItemCode;
                                     try { sdNumber = IME.SuperDisks.Where(a => a.Article_No.Contains(dgSaleAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { sdNumber = 0; }
                                     try { sdPNumber = IME.SuperDiskPs.Where(a => a.Article_No.Contains(dgSaleAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { sdPNumber = 0; }
@@ -519,7 +517,17 @@ namespace LoginForm.nmSaleOrder
                     dgSaleAddedItems.Rows[rowindex].Cells["dgLandingCost"].Value = Math.Round(Convert.ToDecimal(dgSaleAddedItems.Rows[rowindex].Cells["dgLandingCost"].Value.ToString()), 4);
                     decimal Currrate = 0;
                     if (curr.rate != null) Currrate = Decimal.Parse(curr.rate.ToString());
-                    price = Decimal.Parse((classQuotationAdd.GetPrice(dgSaleAddedItems.Rows[rowindex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())) * Decimal.Parse(txtFactor.Text)/ Currrate * Decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString("G29"));
+                    //price = Decimal.Parse((classQuotationAdd.GetPrice(dgSaleAddedItems.Rows[rowindex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())) * Decimal.Parse(txtFactor.Text)/ Currrate * Decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString("G29"));
+                    string productCode = dgSaleAddedItems.Rows[rowindex].Cells[dgProductCode.Index].Value.ToString();
+                    if (productCode.Substring(0, 1) == "0") productCode = productCode.Substring(1, productCode.Length - 1);
+                    if (IME.Hazardous.Where(a => a.ArticleNo == productCode).FirstOrDefault() != null)
+                    {
+                        price = Decimal.Parse((classQuotationAdd.GetPrice(dgSaleAddedItems.Rows[rowindex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())) * (Utils.getManagement().Factor) / Currrate * Decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString("G29"));
+                    }
+                    else
+                    {
+                        price = Decimal.Parse((classQuotationAdd.GetPrice(dgSaleAddedItems.Rows[rowindex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())) * Decimal.Parse(txtFactor.Text) / Currrate * Decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString("G29"));
+                    }
                     //price /= factor;
                     if (price > 0)
                     {
@@ -1670,8 +1678,11 @@ namespace LoginForm.nmSaleOrder
             //ItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString());
             for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
             {
-                GetQuotationQuantity(i);
+                
                 GetLandingCost(i);
+                dgSaleAddedItems.CurrentCell = dgSaleAddedItems.Rows[i].Cells[0];
+                GetMargin();
+                GetQuotationQuantity(i);
             }
             GetAllMargin();
             #endregion
@@ -2470,11 +2481,14 @@ namespace LoginForm.nmSaleOrder
             decimal subtotal = 1;
             for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
             {
-                if (dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value != null && dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value.ToString() != string.Empty)
+                if (dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value != null)
                 {
-                    decimal margin = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value.ToString());
-                    decimal price = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value.ToString());
-                    total = total + (margin * price);
+                    if (dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value != null && dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value.ToString() != string.Empty)
+                    {
+                        decimal margin = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value.ToString());
+                        decimal price = Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgTotal"].Value.ToString());
+                        total = total + (margin * price);
+                    }
                 }
             }
             if (decimal.Parse(lblsubtotal.Text) != 0) subtotal = (decimal.Parse(lblsubtotal.Text));
@@ -2766,12 +2780,16 @@ namespace LoginForm.nmSaleOrder
         {
             CustomerMain f = new CustomerMain(1, CustomerCode.Text);
             f.ShowDialog();
+            customer = IME.Customers.Where(x => x.ID == CustomerCode.Text).FirstOrDefault();
+            fillCustomer();
         }
 
         private void btnInvoiceAdd_Click(object sender, EventArgs e)
         {
             CustomerMain f = new CustomerMain(2, CustomerCode.Text);
             f.ShowDialog();
+            customer = IME.Customers.Where(x => x.ID == CustomerCode.Text).FirstOrDefault();
+            fillCustomer();
         }
     }
 }

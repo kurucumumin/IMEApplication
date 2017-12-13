@@ -41,6 +41,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgQuotations = new System.Windows.Forms.DataGridView();
+            this.QuotationNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noteForUsIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noteForCustomerIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.forFinancelIsTrueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,7 +60,6 @@
             this.isVatValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vatValueDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuotationNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rFQNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.currTypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quotationMainContactDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -270,6 +270,7 @@
             this.dgQuotations.AutoGenerateColumns = false;
             this.dgQuotations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgQuotations.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.QuotationNo,
             this.noteForUsIDDataGridViewTextBoxColumn,
             this.noteForCustomerIDDataGridViewTextBoxColumn,
             this.forFinancelIsTrueDataGridViewTextBoxColumn,
@@ -288,7 +289,6 @@
             this.isVatValueDataGridViewTextBoxColumn,
             this.vatValueDataGridViewTextBoxColumn,
             this.currNameDataGridViewTextBoxColumn,
-            this.QuotationNo,
             this.rFQNoDataGridViewTextBoxColumn,
             this.currTypeDataGridViewTextBoxColumn,
             this.quotationMainContactDataGridViewTextBoxColumn,
@@ -305,6 +305,13 @@
             this.dgQuotations.Size = new System.Drawing.Size(929, 177);
             this.dgQuotations.TabIndex = 0;
             this.dgQuotations.SelectionChanged += new System.EventHandler(this.dgQuotations_SelectionChanged);
+            // 
+            // QuotationNo
+            // 
+            this.QuotationNo.DataPropertyName = "QuotationNo";
+            this.QuotationNo.HeaderText = "QuotationNo";
+            this.QuotationNo.Name = "QuotationNo";
+            this.QuotationNo.ReadOnly = true;
             // 
             // noteForUsIDDataGridViewTextBoxColumn
             // 
@@ -431,13 +438,6 @@
             this.currNameDataGridViewTextBoxColumn.HeaderText = "CurrName";
             this.currNameDataGridViewTextBoxColumn.Name = "currNameDataGridViewTextBoxColumn";
             this.currNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // QuotationNo
-            // 
-            this.QuotationNo.DataPropertyName = "QuotationNo";
-            this.QuotationNo.HeaderText = "QuotationNo";
-            this.QuotationNo.Name = "QuotationNo";
-            this.QuotationNo.ReadOnly = true;
             // 
             // rFQNoDataGridViewTextBoxColumn
             // 
@@ -737,31 +737,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.BindingSource quotationBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn noteForUsIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn noteForCustomerIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn forFinancelIsTrueDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn shippingMethodIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn isItemCostDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn isWeightCostDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn isCustomsDutiesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn discOnSubTotal2DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn extraChargesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subTotalDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn startDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn validationDayDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn paymentIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn currDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn factorDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn isVatValueDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vatValueDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn currNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QuotationNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rFQNoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn currTypeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quotationMainContactDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn noteDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn note1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn paymentMethodDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource quotationDetailBindingSource;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridViewCheckBoxColumn chk;
@@ -782,5 +757,30 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn margeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitOfMeasureDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quotationDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QuotationNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noteForUsIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noteForCustomerIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn forFinancelIsTrueDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn shippingMethodIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn isItemCostDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn isWeightCostDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn isCustomsDutiesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn discOnSubTotal2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn extraChargesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subTotalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn startDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn validationDayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn paymentIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn factorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn isVatValueDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vatValueDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rFQNoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn currTypeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quotationMainContactDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noteDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn note1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn paymentMethodDataGridViewTextBoxColumn;
     }
 }
