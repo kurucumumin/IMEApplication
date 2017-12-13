@@ -25,7 +25,7 @@ namespace LoginForm.nmSaleOrder
         decimal price;
         List<Tuple<int, decimal>> SubTotal = new List<Tuple<int, decimal>>();
         List<Tuple<int, decimal>> SubDeletingTotal = new List<Tuple<int, decimal>>();
-        ContextMenu DeletedQuotationMenu = new ContextMenu();
+        ContextMenu DeletedSaleMenu = new ContextMenu();
         ExchangeRate curr = new ExchangeRate();
         Decimal CurrValue = 1;
         Decimal CurrValue1 = 1;
@@ -33,11 +33,8 @@ namespace LoginForm.nmSaleOrder
         decimal CurrentDis;
         decimal LowMarginLimit;
         bool modifyMod = false;
-        ToolTip aciklama = new ToolTip();
-        System.Data.DataSet ds = new System.Data.DataSet();
-        decimal round = 0;
-        decimal sonuc = 0;
-        decimal sayac = 0;
+        //ToolTip aciklama = new ToolTip();
+        //System.Data.DataSet ds = new System.Data.DataSet();
         //ExchangeRate exchangeRate;
         #endregion
 
@@ -63,7 +60,7 @@ namespace LoginForm.nmSaleOrder
             cbCurrency.DataSource = IME.Currencies.ToList();
             cbCurrency.DisplayMember = "currencyName";
             cbCurrency.ValueMember = "currencyID";
-            cbCurrency.SelectedIndex = 0;
+            cbCurrency.SelectedValue = Utils.getManagement().DefaultCurrency;
             cbPayment.DataSource = IME.PaymentMethods.ToList();
             cbPayment.DisplayMember = "Payment";
             cbPayment.ValueMember = "ID";
@@ -104,9 +101,9 @@ namespace LoginForm.nmSaleOrder
             QuotataionModifyItemDetailsFiller(dgSaleAddedItems.Rows[dgSaleAddedItems.RowCount - 1].Cells["dgProductCode"].Value.ToString(), dgSaleAddedItems.RowCount - 1);
         }
 
-        private void QuotationForm_Load(object sender, EventArgs e)
+        private void SaleSaleForm_Load(object sender, EventArgs e)
         {
-            DeletedQuotationMenu.MenuItems.Add(new MenuItem("Add to Quotation", DeletedQuotationMenu_Click));
+            DeletedSaleMenu.MenuItems.Add(new MenuItem("Add to Quotation", DeletedQuotationMenu_Click));
             if (!modifyMod)
             {
                 DataGridViewRow dgRow = (DataGridViewRow)dgSaleAddedItems.RowTemplate.Clone();
@@ -121,7 +118,7 @@ namespace LoginForm.nmSaleOrder
                 cbCurrency.DataSource = IME.Currencies.ToList();
                 cbCurrency.DisplayMember = "currencyName";
                 cbCurrency.ValueMember = "currencyID";
-                cbCurrency.SelectedIndex = 0;
+                cbCurrency.SelectedValue = Utils.getManagement().DefaultCurrency;
                 cbPayment.DataSource = IME.PaymentMethods.ToList();
                 cbPayment.DisplayMember = "Payment";
                 cbPayment.ValueMember = "ID";
@@ -1367,7 +1364,7 @@ namespace LoginForm.nmSaleOrder
         {
             if (e.Button == MouseButtons.Right)
             {
-                DeletedQuotationMenu.Show(dgSaleDeleted, new Point(e.X, e.Y));
+                DeletedSaleMenu.Show(dgSaleDeleted, new Point(e.X, e.Y));
             }
         }
 
@@ -1473,9 +1470,6 @@ namespace LoginForm.nmSaleOrder
                 IME.SaveChanges();
 
                 return s.SaleOrderNo;
-
-
-                MessageBox.Show("Just SaleOrder saved");
             }
             catch (Exception ex)
             {
@@ -1508,68 +1502,6 @@ namespace LoginForm.nmSaleOrder
             //if (Note2 != 0) q.NoteForCustomerID = Note2;
             //IME.Quotations.Add(q);
             //IME.SaveChanges();
-        }
-
-        private void QuotationSave(string QuoNo)
-        {
-            IMEEntities IME = new IMEEntities();
-            Quotation q1 = IME.Quotations.Where(a => a.QuotationNo.Contains(QuoNo)).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
-            if (txtSaleOrderNo.Text.Contains("v"))
-            {
-                int quoID = Int32.Parse(txtSaleOrderNo.Text.Substring(txtSaleOrderNo.Text.LastIndexOf('v') + 1));
-                txtSaleOrderNo.Text = (txtSaleOrderNo.Text.Substring(0, txtSaleOrderNo.Text.IndexOf('v') + 1) + quoID).ToString();
-            }
-            else
-            {
-                txtSaleOrderNo.Text = q1.QuotationNo + "v1";
-            }
-            Quotation q = new Quotation();
-            q.QuotationNo = txtSaleOrderNo.Text;
-            q.RFQNo = txtLPONO.Text;
-            try { q.SubTotal = decimal.Parse(lblsubtotal.Text); } catch { }
-            if (chkbForFinance.Checked) { q.ForFinancelIsTrue = 1; } else { q.ForFinancelIsTrue = 0; }
-            q.ShippingMethodID = cbSMethod.SelectedIndex;
-            try { q.DiscOnSubTotal2 = decimal.Parse(txtTotalDis2.Text); } catch { }
-            try { q.ExtraCharges = decimal.Parse(txtExtraCharges.Text); } catch { }
-            if (chkVat.Checked) { q.IsVatValue = 1; } else { q.IsVatValue = 0; }
-            try { q.VatValue = Decimal.Parse(lblVat.Text); } catch { }
-            try { q.StartDate = dtpDate.Value; } catch { }
-            try { q.Factor = Decimal.Parse(txtFactor.Text); } catch { }
-            //try { q.ValidationDay = Int32.Parse(txtValidation.Text); } catch { }
-            try { q.PaymentID = (cbPayment.SelectedItem as PaymentMethod).ID; } catch { }
-            try { q.CurrName = (cbCurrency.SelectedItem as Rate).CurType; } catch { }
-            q.ShippingMethodID = cbSMethod.SelectedIndex;
-            //try { q.CurrType = cbCurrType.SelectedText; } catch { }
-            try { q.Curr = CurrValue; } catch { }
-            try { q.CustomerID = CustomerCode.Text; } catch { }
-            try { q.QuotationMainContact = cbWorkers.SelectedIndex; } catch { }
-            int Note2 = 0;
-            int Note1 = 0;
-            if (txtNoteForUs.Text != null || txtNoteForUs.Text != "")
-            {
-                Note n = new Note();
-                n.Note_name = txtNoteForUs.Text;
-                IME.Notes.Add(n);
-                IME.SaveChanges();
-                Note1 = n.ID;
-            }
-            if (txtNoteForUs.Text != null || txtNoteForUs.Text != "")
-            {
-                Note n1 = new Note();
-                n1.Note_name = txtNoteForCustomer.Text;
-                IME.Notes.Add(n1);
-                IME.SaveChanges();
-                Note2 = n1.ID;
-            }
-            if (chkbForFinance.Checked)
-            {
-                q.ForFinancelIsTrue = 1;
-            }
-            if (Note1 != 0) q.NoteForUsID = Note1;
-            if (Note2 != 0) q.NoteForCustomerID = Note2;
-
-            IME.Quotations.Add(q);
-            IME.SaveChanges();
         }
 
         private void SaleOrderDetailsSave(string SaleNo)
@@ -2044,7 +1976,7 @@ namespace LoginForm.nmSaleOrder
 
         private void GetCurrency(DateTime date)
         {
-            decimal cb = (cbCurrency.SelectedItem as Currency).currencyID;
+            decimal cb = Convert.ToDecimal(cbCurrency.SelectedValue);
             curr = IME.ExchangeRates.Where(a => a.currencyId == cb).OrderByDescending(b => b.date).FirstOrDefault();
 
             if (CurrValue1 != CurrValue) CurrValue1 = CurrValue;
@@ -2053,7 +1985,7 @@ namespace LoginForm.nmSaleOrder
 
         private void cbCurrency_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbCurrency.SelectedIndex != null && cbCurrency.DataSource != null)
+            if (cbCurrency.DataSource != null && cbCurrency.SelectedIndex != null)
             {
                 GetCurrency(dtpDate.Value);
                 ChangeCurr();

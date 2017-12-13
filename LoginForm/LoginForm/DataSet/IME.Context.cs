@@ -14,20 +14,19 @@ namespace LoginForm.DataSet
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-
+    
     public partial class IMEEntities : DbContext
     {
         public IMEEntities()
             : base("name=IMEEntities")
         {
         }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
-        public virtual DbSet<PayHead> PayHeads { get; set; }
+    
         public virtual DbSet<AccountGroup> AccountGroups { get; set; }
         public virtual DbSet<AccountLedger> AccountLedgers { get; set; }
         public virtual DbSet<Area> Areas { get; set; }
@@ -57,6 +56,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<Management> Managements { get; set; }
         public virtual DbSet<Note> Notes { get; set; }
         public virtual DbSet<OnSale> OnSales { get; set; }
+        public virtual DbSet<PayHead> PayHeads { get; set; }
         public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
         public virtual DbSet<PaymentTerm> PaymentTerms { get; set; }
         public virtual DbSet<PrintFormat> PrintFormats { get; set; }
@@ -93,76 +93,71 @@ namespace LoginForm.DataSet
         public virtual DbSet<VoucherType> VoucherTypes { get; set; }
         public virtual DbSet<VoucherTypeTax> VoucherTypeTaxes { get; set; }
         public virtual DbSet<Worker> Workers { get; set; }
-
+    
         public virtual int PayHeadAdd(string payHeadName, string type, string narration, Nullable<System.DateTime> extraDate)
         {
             var payHeadNameParameter = payHeadName != null ?
                 new ObjectParameter("payHeadName", payHeadName) :
                 new ObjectParameter("payHeadName", typeof(string));
-
+    
             var typeParameter = type != null ?
                 new ObjectParameter("type", type) :
                 new ObjectParameter("type", typeof(string));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             var extraDateParameter = extraDate.HasValue ?
                 new ObjectParameter("extraDate", extraDate) :
                 new ObjectParameter("extraDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PayHeadAdd", payHeadNameParameter, typeParameter, narrationParameter, extraDateParameter);
         }
-
+    
         public virtual int PayHeadDelete(Nullable<decimal> payHeadId)
         {
             var payHeadIdParameter = payHeadId.HasValue ?
                 new ObjectParameter("payHeadId", payHeadId) :
                 new ObjectParameter("payHeadId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PayHeadDelete", payHeadIdParameter);
         }
-
+    
         public virtual int PayHeadEdit(Nullable<decimal> payHeadId, string payHeadName, string type, string narration, Nullable<System.DateTime> extraDate)
         {
             var payHeadIdParameter = payHeadId.HasValue ?
                 new ObjectParameter("payHeadId", payHeadId) :
                 new ObjectParameter("payHeadId", typeof(decimal));
-
+    
             var payHeadNameParameter = payHeadName != null ?
                 new ObjectParameter("payHeadName", payHeadName) :
                 new ObjectParameter("payHeadName", typeof(string));
-
+    
             var typeParameter = type != null ?
                 new ObjectParameter("type", type) :
                 new ObjectParameter("type", typeof(string));
-
+    
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-
+    
             var extraDateParameter = extraDate.HasValue ?
                 new ObjectParameter("extraDate", extraDate) :
                 new ObjectParameter("extraDate", typeof(System.DateTime));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PayHeadEdit", payHeadIdParameter, payHeadNameParameter, typeParameter, narrationParameter, extraDateParameter);
         }
-
-        public virtual ObjectResult<PayHeadGetAll_Result> PayHeadGetAll()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PayHeadGetAll_Result>("PayHeadGetAll");
-        }
-
+    
         public virtual ObjectResult<PayHeadGet_Result> PayHeadGet(Nullable<decimal> payHeadId)
         {
             var payHeadIdParameter = payHeadId.HasValue ?
                 new ObjectParameter("payHeadId", payHeadId) :
                 new ObjectParameter("payHeadId", typeof(decimal));
-
+    
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PayHeadGet_Result>("PayHeadGet", payHeadIdParameter);
         }
-
+    
         public virtual ObjectResult<PayHeadGetAll_Result> PayHeadGetAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PayHeadGetAll_Result>("PayHeadGetAll");
