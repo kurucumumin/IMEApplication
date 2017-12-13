@@ -149,18 +149,18 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PayHeadEdit", payHeadIdParameter, payHeadNameParameter, typeParameter, narrationParameter, extraDateParameter);
         }
     
+        public virtual ObjectResult<PayHeadGet_Result> PayHeadGet(Nullable<decimal> payHeadId)
+        {
+            var payHeadIdParameter = payHeadId.HasValue ?
+                new ObjectParameter("payHeadId", payHeadId) :
+                new ObjectParameter("payHeadId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PayHeadGet_Result>("PayHeadGet", payHeadIdParameter);
+        }
+    
         public virtual ObjectResult<PayHeadGetAll_Result> PayHeadGetAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PayHeadGetAll_Result>("PayHeadGetAll");
-        }
-    
-        public virtual ObjectResult<PayHeadGet_Result> PayHeadGet(string payHeadId)
-        {
-            var payHeadIdParameter = payHeadId != null ?
-                new ObjectParameter("payHeadId", payHeadId) :
-                new ObjectParameter("payHeadId", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PayHeadGet_Result>("PayHeadGet", payHeadIdParameter);
         }
     }
 }

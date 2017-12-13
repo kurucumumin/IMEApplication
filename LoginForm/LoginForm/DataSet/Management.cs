@@ -17,8 +17,9 @@ namespace LoginForm.DataSet
         public int ID { get; set; }
         public Nullable<decimal> LowMarginLimit { get; set; }
         public Nullable<decimal> VAT { get; set; }
-        public string DefaultCurrency { get; set; }
-        public string DefaultCurrencyType { get; set; }
+        public Nullable<decimal> DefaultCurrency { get; set; }
         public decimal Factor { get; set; }
+    
+        public virtual Currency Currency { get; set; }
     }
 }

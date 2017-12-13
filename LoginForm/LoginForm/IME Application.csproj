@@ -304,6 +304,12 @@
     <Compile Include="DataSet\PayHead.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PayHeadGetAll_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PayHeadGet_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PaymentMethod.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>

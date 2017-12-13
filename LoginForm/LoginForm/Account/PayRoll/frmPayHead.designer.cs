@@ -339,7 +339,6 @@
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "frmPayHead";
-            this.Opacity = 0.85D;
             this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Payhead";

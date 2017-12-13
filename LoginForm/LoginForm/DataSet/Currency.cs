@@ -17,6 +17,7 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Currency()
         {
+            this.Managements = new HashSet<Management>();
             this.SaleOrders = new HashSet<SaleOrder>();
             this.ExchangeRates = new HashSet<ExchangeRate>();
         }
@@ -25,8 +26,9 @@ namespace LoginForm.DataSet
         public string currencySymbol { get; set; }
         public string currencyName { get; set; }
         public string subunitName { get; set; }
-        public Nullable<bool> isDefault { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Management> Managements { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleOrder> SaleOrders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -23,7 +23,6 @@ namespace LoginForm.CustomControls
 
             cbCurrency.SelectedItem = m.DefaultCurrency;
 
-            cbCurrencyType.SelectedItem = m.DefaultCurrencyType;
 
         }
 
@@ -35,8 +34,6 @@ namespace LoginForm.CustomControls
                 Management management = IME.Managements.First();
                 management.LowMarginLimit = Convert.ToDecimal(txtLowMarginLimit.Text);
                 management.VAT = Convert.ToDecimal(txtVAT.Text);
-                management.DefaultCurrency = cbCurrency.SelectedItem as string;
-                management.DefaultCurrencyType = cbCurrencyType.SelectedItem as string;
                 management.Factor = numericFactor.Value;
                 IME.SaveChanges();
 

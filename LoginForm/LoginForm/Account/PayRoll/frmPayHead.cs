@@ -16,7 +16,7 @@ namespace LoginForm
         IMEEntities IME = new IMEEntities();
         string strPayHeadName = string.Empty;
         string strPayheadType = string.Empty;
-        int decUserId = Utils.getCurrentUser().WorkerID;
+        //int decUserId = Utils.getCurrentUser().WorkerID;
         string strFormName = "frmPayHead";
         int inNarrationCount = 0;
         decimal decPayHeadId;
@@ -97,17 +97,15 @@ namespace LoginForm
         /// </summary>
         public void GridFill()
         {
-            try
+            if (txtPayheadSearch.Text.Trim() != string.Empty)
             {
-                PayHeadSP spPayhead = new PayHeadSP();
-                DataTable dtblPayhead = new DataTable();
-                dtblPayhead = spPayhead.PayHeadSearch(txtPayheadSearch.Text.Trim());
-                dgvPayhead.DataSource = dtblPayhead;
+                dgvPayhead.DataSource = IME.PayHeadGet(decimal.Parse(txtPayheadSearch.Text.Trim()));
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show("PH4:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dgvPayhead.DataSource = IME.PayHeadGetAll();
             }
+                
         }
         /// <summary>
         /// Function to reset the form
@@ -136,25 +134,20 @@ namespace LoginForm
         /// </summary>
         public void DeleteFunction()
         {
-            try
+            DialogResult dialogResult = MessageBox.Show("Sure", "Are you sure to delete?", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                PayHeadInfo infoPayhead = new PayHeadInfo();
-                PayHeadSP spPayhead = new PayHeadSP();
-                if (spPayhead.PayHeadDeleteVoucherTypeCheckReference(decPayHeadId))
+                try
                 {
-                    Messages.ReferenceExistsMessage();
+                    MessageBox.Show("Deleted successfully");
+                    Clear();
+                    GridFill();
+                }
+                catch
+                {
+                    MessageBox.Show("You can't delete,reference exist");
                     txtPayheadName.Focus();
                 }
-                else
-                {
-                    Messages.DeletedMessage();
-                    Clear();
-                }
-                GridFill();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PH6:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         #endregion
@@ -231,29 +224,28 @@ namespace LoginForm
             {
                 if (e.RowIndex != -1)
                 {
-                    PayHeadInfo infoPayhead = new PayHeadInfo();
-                    PayHeadSP spPayhead = new PayHeadSP();
-                    infoPayhead = spPayhead.PayHeadView(Convert.ToDecimal(dgvPayhead.CurrentRow.Cells["dgvtxtPayheadId"].Value.ToString()));
-
-                    txtPayheadName.Text = infoPayhead.PayHeadName;
-                    cmbPayheadType.Text = infoPayhead.Type;
+                    PayHead p = new PayHead();
+                    decimal pID = decimal.Parse(dgvPayhead.CurrentRow.Cells["dgvtxtPayheadId"].Value.ToString());
+                    p = IME.PayHeads.Where(a => a.payHeadId == pID).FirstOrDefault();
+                    txtPayheadName.Text = p.payHeadName;
+                    cmbPayheadType.Text = p.type;
                     strPayheadType = cmbPayheadType.Text;
-                    txtPayheadNarration.Text = infoPayhead.Narration;
+                    txtPayheadNarration.Text = p.narration;
                     btnPayheadSave.Text = "Update";
                     btnPayheadDelete.Enabled = true;
-                    strPayHeadName = infoPayhead.PayHeadName;
+                    strPayHeadName = p.payHeadName;
                     decPayHeadId = Convert.ToDecimal(dgvPayhead.CurrentRow.Cells["dgvtxtPayheadId"].Value.ToString());
-                    if (spPayhead.payheadTypeCheckeferences(infoPayhead.PayHeadId, txtPayheadName.Text, cmbPayheadType.Text, txtPayheadNarration.Text))
-                    {
-                        if (e.RowIndex != -1)
-                        {
-                            cmbPayheadType.Enabled = true;
-                        }
-                    }
-                    else
-                    {
-                        cmbPayheadType.Enabled = false;
-                    }
+                    //if (spPayhead.payheadTypeCheckeferences(p.payHeadId, txtPayheadName.Text, cmbPayheadType.Text, txtPayheadNarration.Text))
+                    //{
+                    //    if (e.RowIndex != -1)
+                    //    {
+                    //        cmbPayheadType.Enabled = true;
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    cmbPayheadType.Enabled = false;
+                    //}
                 }
             }
             catch (Exception ex)

@@ -13,6 +13,7 @@ namespace LoginForm.DataSet
     
     public partial class PayHeadGetAll_Result
     {
+        public decimal PayheadId { get; set; }
         public string payHeadName { get; set; }
         public string narration { get; set; }
         public string type { get; set; }
