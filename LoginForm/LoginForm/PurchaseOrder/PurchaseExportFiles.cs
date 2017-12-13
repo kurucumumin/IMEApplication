@@ -140,8 +140,6 @@ namespace LoginForm.PurchaseOrder
             MessageBox.Show("PuchaseOrders is successfully added", "Success");
             #endregion
 
-
-            #endregion
             CreateTxt();
             #region SendMail
             sc.Port = 587;
@@ -161,8 +159,6 @@ namespace LoginForm.PurchaseOrder
             {
                 mail.To.Add(toList[i]);
             }
-            //Thread.Sleep(TimeSpan.FromSeconds(1));
-            //sc.Send(mail);
             MessageBox.Show(i + " E-Mails successfully sent.", "Success !");
 
             for (i = 0; i < ccList.Count; i++)
@@ -175,27 +171,13 @@ namespace LoginForm.PurchaseOrder
             #endregion
 
         }
-
-        private void Wait(int sayac)
-        {
-            if (sayac % 5 == 0)
-            {
-                Thread.Sleep(TimeSpan.FromSeconds(5));
-                mail.Subject = "TeamERP"; mail.IsBodyHtml = true; mail.Body = "IME programı test mail";
-                Attachment attachment;
-                attachment = new Attachment(@"C:\Users\pomak\Desktop\Yeni Metin Belgesi.txt");
-                mail.Attachments.Add(attachment);
-                sc.Send(mail);
-                MessageBox.Show(sayac + " E-Mails successfully sent.", "Success !");
-            }
-        }
         private void CreateTxt()
         {
             List<string> TXTList = new List<string>();
             string Line1;
             Line1 = "FH";
-            Line1 = Line1 + rowList.FirstOrDefault().Cells[ //CountryCOde
-            TXTList.Add();
+           // Line1 = Line1 + rowList.FirstOrDefault().Cells[ //CountryCOde
+           // TXTList.Add();
         }
     }
 }
