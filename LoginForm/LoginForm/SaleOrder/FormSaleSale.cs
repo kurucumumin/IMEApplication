@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace LoginForm.nmSaleOrder
@@ -1414,7 +1415,6 @@ namespace LoginForm.nmSaleOrder
 
         private bool ControlSave()
         {
-            if (txtCustomerName.Text == null || txtCustomerName.Text == String.Empty) { MessageBox.Show("Please Enter a Customer"); return false; }
             for (int i = 0; i < dgSaleAddedItems.RowCount - 1; i++)
             {
                 if (dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value != null && Decimal.Parse(dgSaleAddedItems.Rows[i].Cells["dgMargin"].Value.ToString()) < Utils.getCurrentUser().MinMarge) { MessageBox.Show("Please Check Merge of Products "); return false; }
@@ -1426,14 +1426,16 @@ namespace LoginForm.nmSaleOrder
         {
             //try
             //{
-            bool SaveOK = false;
-            SaveOK = ControlSave();
-            if (SaveOK)
+            if (!HasNullData())
             {
-                string saleOrderNo = SaleSave();
-                SaleOrderDetailsSave(saleOrderNo);
+                bool SaveOK = false;
+                SaveOK = ControlSave();
+                if (SaveOK)
+                {
+                    string saleOrderNo = SaleSave();
+                    SaleOrderDetailsSave(saleOrderNo);
+                }
             }
-
             //}
             //catch { MessageBox.Show("Error Occured", "Failure"); }
 
@@ -2790,6 +2792,97 @@ namespace LoginForm.nmSaleOrder
             f.ShowDialog();
             customer = IME.Customers.Where(x => x.ID == CustomerCode.Text).FirstOrDefault();
             fillCustomer();
+        }
+
+        private bool HasNullData()
+        {
+            List<string> nullAreaList = new List<string>();
+
+            if (txtSaleOrderNo.Text == null || txtSaleOrderNo.Text == String.Empty)
+            {
+                nullAreaList.Add("SaleOrderNo is Empty!");
+            }
+            if(cbPayment.SelectedValue == null)
+            {
+                nullAreaList.Add("Payment Type is Empty!");
+            }
+            if(cbCurrency.SelectedValue == null)
+            {
+                nullAreaList.Add("Currency is Empty!");
+            }
+            if (cbInvoiceAdress.SelectedValue == null)
+            {
+                nullAreaList.Add("Invoice Address is Empty!");
+            }
+            if(cbDeliveryAddress.SelectedValue == null)
+            {
+                nullAreaList.Add("Delivery Address is Empty!");
+            }
+            if(cbWorkers.SelectedValue == null)
+            {
+                nullAreaList.Add("Contact is Empty!");
+            }
+            if(cbDeliveryContact.SelectedValue == null)
+            {
+                nullAreaList.Add("Delivery Contact is Empty!");
+            }
+            if(txtFactor.Text == null || txtFactor.Text == String.Empty)
+            {
+                nullAreaList.Add("Factor is Empty!");
+            }
+            if(cbSMethod.SelectedItem == null)
+            {
+                nullAreaList.Add("Shipping Method is Empty!");
+            }
+            if(cbOrderNature.SelectedItem == null)
+            {
+                nullAreaList.Add("Order Nature is Empty!");
+            }
+            if(cbPaymentTerm.SelectedValue == null)
+            {
+                nullAreaList.Add("Payment Term is Empty!");
+            }
+            if(txtTotalDis.Text == null || txtTotalDis.Text == String.Empty)
+            {
+                nullAreaList.Add("Disc On Subtotal is Empty!");
+            }
+            if(txtExtraCharges.Text == null || txtExtraCharges.Text == String.Empty)
+            {
+                nullAreaList.Add("Extra Charges is Empty!");
+            }
+            if (dgSaleAddedItems.RowCount != 0)
+            {
+                foreach (DataGridViewRow row in dgSaleAddedItems.Rows)
+                {
+                    if(row.Cells[dgQty.Index].Value == null || row.Cells[dgQty.Index].Value.ToString() == String.Empty)
+                    {
+                        nullAreaList.Add("Check for Items' Quantities and Margins!");
+                    }
+                }
+            }
+            else
+            {
+                nullAreaList.Add("Items can not be Empty!");
+            }
+            
+            StringBuilder errorString = new StringBuilder();
+            for (int i = 0; i < nullAreaList.Count; i++)
+            {
+                errorString.Append(nullAreaList[i]);
+                if(i != nullAreaList.Count - 1)
+                {
+                    errorString.Append("\n");
+                }
+            }
+
+            string errorMessage = errorString.ToString();
+            
+            if (nullAreaList != null)
+            {
+                MessageBox.Show(errorMessage,"Null Data");
+            }
+
+            return (nullAreaList != null) ? true : false;
         }
     }
 }

@@ -140,8 +140,7 @@ namespace LoginForm.PurchaseOrder
             MessageBox.Show("PuchaseOrders is successfully added", "Success");
             #endregion
 
-
-            #endregion
+            
             CreateTxt();
             #region SendMail
             sc.Port = 587;
@@ -189,8 +188,8 @@ namespace LoginForm.PurchaseOrder
             List<string> TXTList = new List<string>();
             string Line1;
             Line1 = "FH";
-            Line1 = Line1 + rowList.FirstOrDefault().Cells[ //CountryCOde
-            TXTList.Add();
+            //Line1 = Line1 + rowList.FirstOrDefault().Cells[ //CountryCOde
+            //TXTList.Add();
         }
     }
 }
