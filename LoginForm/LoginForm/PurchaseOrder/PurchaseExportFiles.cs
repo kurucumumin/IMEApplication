@@ -145,41 +145,32 @@ namespace LoginForm.PurchaseOrder
             sc.Port = 587;
             sc.Host = "smtp.gmail.com";
             sc.EnableSsl = true;
-           
+
             sc.Credentials = new NetworkCredential("kurucumumin94@gmail.com", "6231962319+**");
 
             mail.From = new MailAddress("kurucumumin94@gmail.com", "Mümin Kurucu");
+            mail.Subject = "TeamERP"; mail.IsBodyHtml = true; mail.Body = "IME programı test mail";
+            Attachment attachment;
+            attachment = new Attachment(@"C:\Users\pomak\Desktop\Yeni Metin Belgesi.txt");
+            mail.Attachments.Add(attachment);
+            int i = 0;
 
-            int sayac = 0;
-
-            for (int i = 0; i < toList.Count; i++)
+            for (i = 0; i < toList.Count; i++)
             {
                 mail.To.Add(toList[i]);
-                sayac = sayac + 1;
-                Wait(sayac);
             }
-            //sayac = 0;
-            for (int i = 0; i < ccList.Count; i++)
+            //Thread.Sleep(TimeSpan.FromSeconds(1));
+            //sc.Send(mail);
+            MessageBox.Show(i + " E-Mails successfully sent.", "Success !");
+
+            for (i = 0; i < ccList.Count; i++)
             {
                 mail.CC.Add(ccList[i]);
-                sayac = sayac + 1;
-                Wait(sayac);
             }
+            Thread.Sleep(TimeSpan.FromSeconds(1));
+            sc.Send(mail);
+            MessageBox.Show(i + " E-Mails successfully sent.", "Success !");
             #endregion
-        }
-
-        private void Wait(int sayac)
-        {
-            if (sayac % 5 == 0)
-            {
-                Thread.Sleep(TimeSpan.FromSeconds(5));
-                mail.Subject = "TeamERP"; mail.IsBodyHtml = true; mail.Body = "IME programı test mail";
-                Attachment attachment;
-                attachment = new Attachment(@"C:\Users\pomak\Desktop\Yeni Metin Belgesi.txt");
-                mail.Attachments.Add(attachment);
-                sc.Send(mail);
-                MessageBox.Show(sayac + " E-Mails successfully sent.", "Success !");
-            }
         }
     }
 }

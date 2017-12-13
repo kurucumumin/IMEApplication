@@ -95,7 +95,7 @@ namespace LoginForm.PurchaseOrder
             SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-51RN2GB\LOCAL;Initial Catalog=IME;Integrated Security=True");
             StringBuilder history = new StringBuilder();
             history.Append("Select a.c_name,b.QuotationNos, b.SaleOrderNo, c.ItemCode, c.ItemDescription, c.UnitOfMeasure, c.Quantity, c.Hazardous, ");
-            history.Append("c.Calibration, b.SaleOrderNature, d.AddressType, d.AdressTitle, c.UnitPrice ");
+            history.Append("c.Calibration, b.SaleOrderNature, d.AddressType, d.AdressTitle, c.UPIME ");
             history.Append("from  Customer a, SaleOrder b, SaleOrderDetail c, CustomerAddress d ");
         history.Append("where b.CustomerID=a.ID and c.SaleOrderNo =b.SaleOrderNo and b.DeliveryAddressID=d.ID and b.InvoiceAddressID=d.ID ");
             history.Append("and c.SaleOrderNo=");
