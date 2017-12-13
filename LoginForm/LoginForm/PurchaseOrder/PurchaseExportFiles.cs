@@ -12,6 +12,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Timers;
 using System.Threading;
+using LoginForm.Services;
 
 namespace LoginForm.PurchaseOrder
 {
@@ -86,6 +87,11 @@ namespace LoginForm.PurchaseOrder
                 toList.Add(dgCc.Rows[i].Cells[1].Value.ToString());
             }
             #endregion
+            for (int i = 0; i < CreateTxt().Count(); i++)
+            {
+                txtMail.Text = CreateTxt()[i] + " \r\n";
+            }
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -141,7 +147,9 @@ namespace LoginForm.PurchaseOrder
             #endregion
 
 
-            CreateTxt();
+
+
+            txtCreate.newTxt(CreateTxt());
             #region SendMail
             sc.Port = 587;
             sc.Host = "smtp.gmail.com";
@@ -172,13 +180,225 @@ namespace LoginForm.PurchaseOrder
             #endregion
 
         }
-        private void CreateTxt()
+
+        private string[] CreateTxt()
         {
             List<string> TXTList = new List<string>();
             string Line1;
-            Line1 = "FH";
-           // Line1 = Line1 + rowList.FirstOrDefault().Cells[ //CountryCode
-           // TXTList.Add();
+            string s = rowList[0].Cells[3].Value.ToString();
+
+            string COO ="   ";//TO DO COUNTRYCODE
+            string OrderDate = DateTime.Today.ToShortDateString();//TransmissionDate
+            string OrderTime = DateTime.Today.ToShortTimeString();//TransmissionDate
+            string filler1 ="";
+            for (int i = 0; i < 130; i++)
+            {
+                filler1 = filler1 + " ";
+            }
+            //switch (sale.SaleOrderDetails.FirstOrDefault().DependantTable)
+            //{
+            //    case "sd":
+            //        COO = IME.SuperDisks.Where(a => a.Article_No == articleNO).FirstOrDefault().CofO;
+            //        break;
+            //    case "sdP":
+            //        COO = IME.SuperDiskPs.Where(a => a.Article_No == articleNO).FirstOrDefault().CofO;
+            //        break;
+            //    case "exd":
+            //        COO = IME.ExtendedRanges.Where(a => a.ArticleNo == articleNO).FirstOrDefault().CountryofOrigin;
+            //        break;
+            //}
+            Line1 = "FH" + COO + OrderDate + OrderTime + filler1;
+            TXTList.Add(Line1);
+            string Line2 = "";
+            string AccountNumber = "";
+            for (int i = 0; i < 10; i++)
+            {
+                AccountNumber += " ";
+            }
+            string ShiptoAccountNumber = "";
+            for (int i = 0; i < 10; i++)
+            {
+                ShiptoAccountNumber += " ";
+            }
+            string OrderNature = " ";
+            string PackType = " ";
+            string OrderNumber = "     ";
+            string CustomerDistOrderReference = "";
+            for (int i = 0; i < 30; i++)
+            {
+                CustomerDistOrderReference += " ";
+            }
+            string MethodofDespatch = "   ";
+            string AutomaticBackOrderAllowed = " ";
+            string CustomerPONumber = "";
+            for (int i = 0; i < 22; i++)
+            {
+                CustomerPONumber += " ";
+            }
+            string SupplyingCompany = "    ";
+            string RequestDelDate = "";
+            for (int i = 0; i < 8; i++)
+            {
+                RequestDelDate += " ";
+            }
+            filler1 = "";
+            for (int i = 0; i < 53; i++)
+            {
+                filler1 += " ";
+            }
+
+            Line2 = "OH" + AccountNumber+ ShiptoAccountNumber+ OrderNature+ PackType+ OrderNumber+ CustomerDistOrderReference+ MethodofDespatch+
+                AutomaticBackOrderAllowed+ CustomerPONumber+ SupplyingCompany+ RequestDelDate+filler1;
+            TXTList.Add(Line2);
+            string Line3 = "";
+            string CustomerName = "";
+            for (int i = 0; i < 35; i++)
+            {
+                CustomerName += " ";
+            }
+            string CustomerAddressLine1 = "";
+            for (int i = 0; i < 35; i++)
+            {
+                CustomerAddressLine1 += " ";
+            }
+            filler1 = "";
+            for (int i = 0; i < 78; i++)
+            {
+                filler1 += " ";
+            }
+            Line3 = "C1" + CustomerName + CustomerAddressLine1 + filler1;
+            TXTList.Add(Line3);
+            string Line4 = "";
+            string CustomerName2 = "";
+            for (int i = 0; i < 35; i++)
+            {
+                CustomerName2 += " ";
+            }
+            string CustomerAddressLine1_2 = "";
+            for (int i = 0; i < 35; i++)
+            {
+                CustomerAddressLine1_2 += " ";
+            }
+
+            Line4 = "C2" + CustomerName2 + CustomerAddressLine1_2 + filler1;
+            TXTList.Add(Line4);
+
+
+            string line5 = "";
+            string CustomerAddressLine4 = "";
+            for (int i = 0; i < 35; i++)
+            {
+                CustomerAddressLine4 += " ";
+            }
+            string ForAttentionof = "";
+            for (int i = 0; i < 30; i++)
+            {
+                ForAttentionof += " ";
+            }
+            string Postcode = "";
+            for (int i = 0; i < 9; i++)
+            {
+                Postcode += " ";
+            }
+            string Countrycode = "  ";
+            string ContacttelephoneNumber = "";
+            for (int i = 0; i < 30; i++)
+            {
+                ContacttelephoneNumber += " ";
+            }
+            filler1 = "";
+            for (int i = 0; i < 42; i++)
+            {
+                filler1 += " ";
+            }
+            line5 = "C3" + CustomerAddressLine4 + ForAttentionof+ Postcode+ Countrycode + ContacttelephoneNumber + filler1;
+            TXTList.Add(line5);
+            string Line6="";
+            string DeliveryInstruction = "";
+            for (int i = 0; i < 40; i++)
+            {
+                DeliveryInstruction += " ";
+            }
+            filler1 = "";
+            for (int i = 0; i < 108; i++)
+            {
+                filler1 += " ";
+            }
+            TXTList.Add(Line6);
+            int totalquantity = 0;
+            foreach (var item in rowList)
+            {
+                string productNumber = item.Cells["ItemCode"].Value.ToString();
+                int pn = Int32.Parse(productNumber);
+                PurchaseOrderDetail po = IME.PurchaseOrderDetails.Where(a => a.ID == pn).FirstOrDefault();
+                string itemLine = "";
+                int orderqty = 0;
+                if(po.SendQty!=null)orderqty=Int32.Parse(po.SendQty.ToString());
+                string OrderQuantity = "";
+                string zeronumber = "";
+                for (int i = 0; i < 5- orderqty.ToString().Length; i++)
+                {
+                    zeronumber += " ";
+                }
+                if (orderqty != 0)
+                {
+                    OrderQuantity = zeronumber + orderqty.ToString();
+                    totalquantity += orderqty;
+                }
+
+                string PackType1 = " ";
+                string ProductDescription;
+                ProductDescription = po.ItemDescription;
+                for (int i = 0; i < 40 - ProductDescription.ToString().Length; i++)
+                {
+                    ProductDescription += " " + ProductDescription;
+                }
+                string LocalStoresLocation="";
+                for (int i = 0; i < 20; i++)
+                {
+                    LocalStoresLocation += " ";
+                }
+                string LocalPrePickReference = "";
+                for (int i = 0; i < 40; i++)
+                {
+                    LocalPrePickReference += " ";
+                }
+                string PurchaseOrderItemNumber = "";
+                PurchaseOrderItemNumber = item.Index.ToString();
+                string ItemRequestedDeliveryDate = "";
+                for (int i = 0; i < 8; i++)
+                {
+                    ItemRequestedDeliveryDate += " ";
+                }
+                filler1 = "";
+                for (int i = 0; i < 10; i++)
+                {
+                    filler1 += " ";
+                }
+                itemLine = "OL" + productNumber + OrderQuantity + PackType1 + ProductDescription + LocalStoresLocation + LocalPrePickReference + PurchaseOrderItemNumber + ItemRequestedDeliveryDate + filler1;
+                TXTList.Add(itemLine);
+            }
+            string lineOT = "";
+            string OrderQuantityControl = "";
+            OrderQuantityControl = totalquantity.ToString();
+            for (int i = 0; i < 10-totalquantity.ToString().Length; i++)
+            {
+                OrderQuantityControl += " ";
+            }
+            string OrderLineControl = "    ";
+            filler1 = "";
+            for (int i = 0; i < 134; i++)
+            {
+                filler1 += " ";
+            }
+            lineOT = "OT" + OrderQuantityControl + OrderLineControl + filler1;
+            TXTList.Add(lineOT);
+            string lineFT;
+            OrderQuantityControl = OrderQuantityControl;//Bunun diğeri ile ne farkı var ???
+
+            lineFT = "OT" + OrderQuantityControl + OrderLineControl + filler1;
+            TXTList.Add(lineFT);
+            return TXTList.ToArray();
         }
     }
 }

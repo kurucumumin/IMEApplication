@@ -41,6 +41,8 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.txtDate = new System.Windows.Forms.MaskedTextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.txtMail = new System.Windows.Forms.TextBox();
+            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgMail)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -59,6 +61,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtMail);
             this.groupBox2.Location = new System.Drawing.Point(220, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(420, 280);
@@ -181,6 +184,15 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Date";
             // 
+            // txtMail
+            // 
+            this.txtMail.Location = new System.Drawing.Point(6, 16);
+            this.txtMail.Multiline = true;
+            this.txtMail.Name = "txtMail";
+            this.txtMail.ReadOnly = true;
+            this.txtMail.Size = new System.Drawing.Size(413, 260);
+            this.txtMail.TabIndex = 0;
+            // 
             // PurchaseExportFiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,6 +211,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PurchaseExportFiles";
             this.Load += new System.EventHandler(this.PurchaseExportFiles_Load);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgMail)).EndInit();
             this.groupBox4.ResumeLayout(false);
@@ -225,5 +239,6 @@
         private System.Windows.Forms.DataGridView dgMail;
         private System.Windows.Forms.DataGridView dgCc;
         private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.TextBox txtMail;
     }
 }
