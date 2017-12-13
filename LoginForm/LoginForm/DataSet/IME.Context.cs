@@ -27,6 +27,7 @@ namespace LoginForm.DataSet
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<PayHead> PayHeads { get; set; }
         public virtual DbSet<AccountGroup> AccountGroups { get; set; }
         public virtual DbSet<AccountLedger> AccountLedgers { get; set; }
         public virtual DbSet<Area> Areas { get; set; }
@@ -56,7 +57,6 @@ namespace LoginForm.DataSet
         public virtual DbSet<Management> Managements { get; set; }
         public virtual DbSet<Note> Notes { get; set; }
         public virtual DbSet<OnSale> OnSales { get; set; }
-        public virtual DbSet<PayHead> PayHeads { get; set; }
         public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
         public virtual DbSet<PaymentTerm> PaymentTerms { get; set; }
         public virtual DbSet<PrintFormat> PrintFormats { get; set; }
@@ -154,11 +154,11 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PayHeadGetAll_Result>("PayHeadGetAll");
         }
     
-        public virtual ObjectResult<PayHeadGet_Result> PayHeadGet(string payHeadId)
+        public virtual ObjectResult<PayHeadGet_Result> PayHeadGet(Nullable<decimal> payHeadId)
         {
-            var payHeadIdParameter = payHeadId != null ?
+            var payHeadIdParameter = payHeadId.HasValue ?
                 new ObjectParameter("payHeadId", payHeadId) :
-                new ObjectParameter("payHeadId", typeof(string));
+                new ObjectParameter("payHeadId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PayHeadGet_Result>("PayHeadGet", payHeadIdParameter);
         }

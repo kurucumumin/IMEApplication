@@ -109,7 +109,6 @@
           <Property Name="currencySymbol" Type="varchar(max)" />
           <Property Name="currencyName" Type="varchar(max)" />
           <Property Name="subunitName" Type="varchar(max)" />
-          <Property Name="isDefault" Type="bit" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -349,8 +348,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LowMarginLimit" Type="decimal" Precision="4" Scale="2" />
           <Property Name="VAT" Type="decimal" Precision="5" Scale="2" />
-          <Property Name="DefaultCurrency" Type="nvarchar" MaxLength="5" Nullable="false" />
-          <Property Name="DefaultCurrencyType" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="DefaultCurrency" Type="numeric" Precision="18" Scale="0" />
           <Property Name="Factor" Type="decimal" Precision="6" Scale="3" Nullable="false" />
         </EntityType>
         <EntityType Name="Notes">
@@ -1324,6 +1322,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Managemen__Defau__253C7D7E">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="Management" Type="Self.Management" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="currencyID" />
+            </Principal>
+            <Dependent Role="Management">
+              <PropertyRef Name="DefaultCurrency" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PurchaseI__Purch__7A521F79">
           <End Role="PurchaseInvoice" Type="Self.PurchaseInvoice" Multiplicity="0..1" />
           <End Role="PurchaseInvoiceDetails" Type="Self.PurchaseInvoiceDetails" Multiplicity="*" />
@@ -1989,7 +1999,7 @@
           <Parameter Name="extraDate" Type="datetime" Mode="In" />
         </Function>
         <Function Name="PayHeadGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="payHeadId" Type="varchar(max)" Mode="In" />
+          <Parameter Name="payHeadId" Type="numeric" Mode="In" />
         </Function>
         <Function Name="PayHeadGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="IMEModelStoreContainer">
@@ -2172,6 +2182,10 @@
           <AssociationSet Name="FK__ItemNote__NoteID__2B0A656D" Association="Self.FK__ItemNote__NoteID__2B0A656D">
             <End Role="Notes" EntitySet="Notes" />
             <End Role="ItemNote" EntitySet="ItemNote" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Managemen__Defau__253C7D7E" Association="Self.FK__Managemen__Defau__253C7D7E">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="Management" EntitySet="Management" />
           </AssociationSet>
           <AssociationSet Name="FK__PurchaseI__Purch__7A521F79" Association="Self.FK__PurchaseI__Purch__7A521F79">
             <End Role="PurchaseInvoice" EntitySet="PurchaseInvoice" />
@@ -2395,6 +2409,27 @@
     <edmx:ConceptualModels>
       <Schema Namespace="IMEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="IMEEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PayHeads" EntityType="IMEModel.PayHead" />
+          <FunctionImport Name="PayHeadAdd">
+            <Parameter Name="payHeadName" Mode="In" Type="String" />
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="narration" Mode="In" Type="String" />
+            <Parameter Name="extraDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="PayHeadDelete">
+          <Parameter Name="payHeadId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="PayHeadEdit">
+            <Parameter Name="payHeadId" Mode="In" Type="Decimal" />
+            <Parameter Name="payHeadName" Mode="In" Type="String" />
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="narration" Mode="In" Type="String" />
+            <Parameter Name="extraDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="PayHeadGetAll" ReturnType="Collection(IMEModel.PayHeadGetAll_Result)" />
+          <FunctionImport Name="PayHeadGet" ReturnType="Collection(IMEModel.PayHeadGet_Result)">
+          <Parameter Name="payHeadId" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <EntitySet Name="AccountGroups" EntityType="IMEModel.AccountGroup" />
           <EntitySet Name="AccountLedgers" EntityType="IMEModel.AccountLedger" />
           <EntitySet Name="Areas" EntityType="IMEModel.Area" />
@@ -2424,7 +2459,6 @@
           <EntitySet Name="Managements" EntityType="IMEModel.Management" />
           <EntitySet Name="Notes" EntityType="IMEModel.Note" />
           <EntitySet Name="OnSales" EntityType="IMEModel.OnSale" />
-          <EntitySet Name="PayHeads" EntityType="IMEModel.PayHead" />
           <EntitySet Name="PaymentMethods" EntityType="IMEModel.PaymentMethod" />
           <EntitySet Name="PaymentTerms" EntityType="IMEModel.PaymentTerm" />
           <EntitySet Name="PrintFormats" EntityType="IMEModel.PrintFormat" />
@@ -2492,6 +2526,10 @@
           <AssociationSet Name="FK__SupplierA__Count__3FD07829" Association="IMEModel.FK__SupplierA__Count__3FD07829">
             <End Role="Country" EntitySet="Countries" />
             <End Role="SupplierAdress" EntitySet="SupplierAdresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Managemen__Defau__253C7D7E" Association="IMEModel.FK__Managemen__Defau__253C7D7E">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="Management" EntitySet="Managements" />
           </AssociationSet>
           <AssociationSet Name="FK__SaleOrder__curre__73A521EA" Association="IMEModel.FK__SaleOrder__curre__73A521EA">
             <End Role="Currency" EntitySet="Currencies" />
@@ -2781,27 +2819,28 @@
             <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
             <End Role="Worker" EntitySet="Workers" />
           </AssociationSet>
-          <FunctionImport Name="PayHeadAdd">
-            <Parameter Name="payHeadName" Mode="In" Type="String" />
-            <Parameter Name="type" Mode="In" Type="String" />
-            <Parameter Name="narration" Mode="In" Type="String" />
-            <Parameter Name="extraDate" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="PayHeadDelete">
-          <Parameter Name="payHeadId" Mode="In" Type="Decimal" />
-          </FunctionImport>
-          <FunctionImport Name="PayHeadEdit">
-            <Parameter Name="payHeadId" Mode="In" Type="Decimal" />
-            <Parameter Name="payHeadName" Mode="In" Type="String" />
-            <Parameter Name="type" Mode="In" Type="String" />
-            <Parameter Name="narration" Mode="In" Type="String" />
-            <Parameter Name="extraDate" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="PayHeadGetAll" ReturnType="Collection(IMEModel.PayHeadGetAll_Result)" />
-          <FunctionImport Name="PayHeadGet" ReturnType="Collection(IMEModel.PayHeadGet_Result)">
-            <Parameter Name="payHeadId" Mode="In" Type="String" />
-          </FunctionImport>
         </EntityContainer>
+        <EntityType Name="PayHead">
+          <Key>
+            <PropertyRef Name="payHeadId" />
+          </Key>
+          <Property Name="payHeadId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="payHeadName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="extraDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <ComplexType Name="PayHeadGetAll_Result">
+          <Property Type="String" Name="payHeadName" Nullable="true" />
+          <Property Type="String" Name="narration" Nullable="true" />
+          <Property Type="String" Name="type" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PayHeadGet_Result">
+          <Property Type="Decimal" Name="PayheadId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="payHeadName" Nullable="true" />
+          <Property Type="String" Name="narration" Nullable="true" />
+          <Property Type="String" Name="type" Nullable="true" />
+        </ComplexType>
         <EntityType Name="AccountGroup">
           <Key>
             <PropertyRef Name="accountGroupId" />
@@ -2909,7 +2948,7 @@
           <Property Name="currencySymbol" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="currencyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="subunitName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="isDefault" Type="Boolean" />
+          <NavigationProperty Name="Managements" Relationship="IMEModel.FK__Managemen__Defau__253C7D7E" FromRole="Currency" ToRole="Management" />
           <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SaleOrder__curre__73A521EA" FromRole="Currency" ToRole="SaleOrder" />
           <NavigationProperty Name="ExchangeRates" Relationship="IMEModel.FK__tbl_Excha__curre__52442E1F" FromRole="Currency" ToRole="ExchangeRate" />
         </EntityType>
@@ -3197,9 +3236,9 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LowMarginLimit" Type="Decimal" Precision="4" Scale="2" />
           <Property Name="VAT" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="DefaultCurrency" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="DefaultCurrencyType" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DefaultCurrency" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Factor" Type="Decimal" Nullable="false" Precision="6" Scale="3" />
+          <NavigationProperty Name="Currency" Relationship="IMEModel.FK__Managemen__Defau__253C7D7E" FromRole="Management" ToRole="Currency" />
         </EntityType>
         <EntityType Name="Note">
           <Key>
@@ -3233,16 +3272,6 @@
           <Property Name="SmallOrderProtectionLevel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SubstitutedBy" Type="Int32" />
           <Property Name="SubstitutedFor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="PayHead">
-          <Key>
-            <PropertyRef Name="payHeadId" />
-          </Key>
-          <Property Name="payHeadId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="payHeadName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="extraDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="PaymentMethod">
           <Key>
@@ -4022,6 +4051,18 @@
             </Principal>
             <Dependent Role="SupplierAdress">
               <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Managemen__Defau__253C7D7E">
+          <End Type="IMEModel.Currency" Role="Currency" Multiplicity="0..1" />
+          <End Type="IMEModel.Management" Role="Management" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="currencyID" />
+            </Principal>
+            <Dependent Role="Management">
+              <PropertyRef Name="DefaultCurrency" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4873,23 +4914,45 @@
           <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
         </Association>
-        <ComplexType Name="PayHeadGetAll_Result">
-          <Property Type="String" Name="payHeadName" Nullable="true" />
-          <Property Type="String" Name="narration" Nullable="true" />
-          <Property Type="String" Name="type" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="PayHeadGet_Result">
-          <Property Type="Decimal" Name="PayheadId" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="String" Name="payHeadName" Nullable="true" />
-          <Property Type="String" Name="narration" Nullable="true" />
-          <Property Type="String" Name="type" Nullable="true" />
-        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="IMEModelStoreContainer" CdmEntityContainer="IMEEntities">
+          <EntitySetMapping Name="PayHeads">
+            <EntityTypeMapping TypeName="IMEModel.PayHead">
+              <MappingFragment StoreEntitySet="PayHead">
+                <ScalarProperty Name="extraDate" ColumnName="extraDate" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="payHeadName" ColumnName="payHeadName" />
+                <ScalarProperty Name="payHeadId" ColumnName="payHeadId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PayHeadAdd" FunctionName="IMEModel.Store.PayHeadAdd" />
+          <FunctionImportMapping FunctionImportName="PayHeadDelete" FunctionName="IMEModel.Store.PayHeadDelete" />
+          <FunctionImportMapping FunctionImportName="PayHeadEdit" FunctionName="IMEModel.Store.PayHeadEdit" />
+          <FunctionImportMapping FunctionImportName="PayHeadGetAll" FunctionName="IMEModel.Store.PayHeadGetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.PayHeadGetAll_Result">
+                <ScalarProperty Name="payHeadName" ColumnName="payHeadName" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PayHeadGet" FunctionName="IMEModel.Store.PayHeadGet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.PayHeadGet_Result">
+                <ScalarProperty Name="PayheadId" ColumnName="PayheadId" />
+                <ScalarProperty Name="payHeadName" ColumnName="payHeadName" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <EntitySetMapping Name="AccountGroups">
             <EntityTypeMapping TypeName="IMEModel.AccountGroup">
               <MappingFragment StoreEntitySet="AccountGroup">
@@ -4989,7 +5052,6 @@
           <EntitySetMapping Name="Currencies">
             <EntityTypeMapping TypeName="IMEModel.Currency">
               <MappingFragment StoreEntitySet="Currency">
-                <ScalarProperty Name="isDefault" ColumnName="isDefault" />
                 <ScalarProperty Name="subunitName" ColumnName="subunitName" />
                 <ScalarProperty Name="currencyName" ColumnName="currencyName" />
                 <ScalarProperty Name="currencySymbol" ColumnName="currencySymbol" />
@@ -5249,7 +5311,6 @@
             <EntityTypeMapping TypeName="IMEModel.Management">
               <MappingFragment StoreEntitySet="Management">
                 <ScalarProperty Name="Factor" ColumnName="Factor" />
-                <ScalarProperty Name="DefaultCurrencyType" ColumnName="DefaultCurrencyType" />
                 <ScalarProperty Name="DefaultCurrency" ColumnName="DefaultCurrency" />
                 <ScalarProperty Name="VAT" ColumnName="VAT" />
                 <ScalarProperty Name="LowMarginLimit" ColumnName="LowMarginLimit" />
@@ -5281,17 +5342,6 @@
                 <ScalarProperty Name="BulkPack" ColumnName="BulkPack" />
                 <ScalarProperty Name="AvailabletoPromiseCheck" ColumnName="AvailabletoPromiseCheck" />
                 <ScalarProperty Name="ArticleNumber" ColumnName="ArticleNumber" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PayHeads">
-            <EntityTypeMapping TypeName="IMEModel.PayHead">
-              <MappingFragment StoreEntitySet="PayHead">
-                <ScalarProperty Name="extraDate" ColumnName="extraDate" />
-                <ScalarProperty Name="narration" ColumnName="narration" />
-                <ScalarProperty Name="type" ColumnName="type" />
-                <ScalarProperty Name="payHeadName" ColumnName="payHeadName" />
-                <ScalarProperty Name="payHeadId" ColumnName="payHeadId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -5939,28 +5989,6 @@
               <ScalarProperty Name="AuthorizationID" ColumnName="AuthorizationID" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="PayHeadAdd" FunctionName="IMEModel.Store.PayHeadAdd" />
-          <FunctionImportMapping FunctionImportName="PayHeadDelete" FunctionName="IMEModel.Store.PayHeadDelete" />
-          <FunctionImportMapping FunctionImportName="PayHeadEdit" FunctionName="IMEModel.Store.PayHeadEdit" />
-          <FunctionImportMapping FunctionImportName="PayHeadGetAll" FunctionName="IMEModel.Store.PayHeadGetAll">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IMEModel.PayHeadGetAll_Result">
-                <ScalarProperty Name="payHeadName" ColumnName="payHeadName" />
-                <ScalarProperty Name="narration" ColumnName="narration" />
-                <ScalarProperty Name="type" ColumnName="type" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="PayHeadGet" FunctionName="IMEModel.Store.PayHeadGet">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IMEModel.PayHeadGet_Result">
-                <ScalarProperty Name="PayheadId" ColumnName="PayheadId" />
-                <ScalarProperty Name="payHeadName" ColumnName="payHeadName" />
-                <ScalarProperty Name="narration" ColumnName="narration" />
-                <ScalarProperty Name="type" ColumnName="type" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
