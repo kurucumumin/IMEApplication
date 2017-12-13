@@ -110,7 +110,7 @@ namespace LoginForm.nmSaleOrder
             {
                 DataGridViewRow dgRow = (DataGridViewRow)dgSaleAddedItems.RowTemplate.Clone();
                 dgSaleAddedItems.Rows.Add(dgRow);
-                txtSaleOrderNo.Text = NewQuotationID();
+                //txtSaleOrderNo.Text = NewQuotationID();
                 //dgQuotationAddedItems.Rows[0].Cells["dgQty"].Value = "0";
                 dgSaleAddedItems.Rows[0].Cells[0].Value = 1.ToString();
                 LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
@@ -1451,7 +1451,7 @@ namespace LoginForm.nmSaleOrder
             {
                 SaleOrder s = new SaleOrder();
                 //TODO (SALEORDER) ID Formatını öğren ve ID'yi düzenle
-                s.SaleOrderNo = "SO" + (IME.SaleOrders.Count() + 1);
+                s.SaleOrderNo = txtSaleOrderNo.Text;
                 s.SaleDate = DateTime.Now;
                 s.OnlineConfirmationNo = txtOnlineConfirmationNo.Text;
                 s.QuotationNos = txtQuotationNo.Text;

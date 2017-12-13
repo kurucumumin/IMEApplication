@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSearchStockNumber = new System.Windows.Forms.Button();
             this.chcCustStockNumber = new System.Windows.Forms.CheckBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -86,7 +86,7 @@
             this.textBox2.Enabled = false;
             this.textBox2.Location = new System.Drawing.Point(1007, 21);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(216, 21);
+            this.textBox2.Size = new System.Drawing.Size(216, 24);
             this.textBox2.TabIndex = 25;
             // 
             // chcAllSales
@@ -105,7 +105,7 @@
             this.txtSearchText.Enabled = false;
             this.txtSearchText.Location = new System.Drawing.Point(786, 55);
             this.txtSearchText.Name = "txtSearchText";
-            this.txtSearchText.Size = new System.Drawing.Size(184, 21);
+            this.txtSearchText.Size = new System.Drawing.Size(184, 24);
             this.txtSearchText.TabIndex = 23;
             // 
             // cbSearch
@@ -117,7 +117,7 @@
             "QUOT NUMBER"});
             this.cbSearch.Location = new System.Drawing.Point(786, 21);
             this.cbSearch.Name = "cbSearch";
-            this.cbSearch.Size = new System.Drawing.Size(184, 23);
+            this.cbSearch.Size = new System.Drawing.Size(184, 26);
             this.cbSearch.TabIndex = 22;
             // 
             // label2
@@ -125,7 +125,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(10, 90);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 15);
+            this.label2.Size = new System.Drawing.Size(69, 18);
             this.label2.TabIndex = 21;
             this.label2.Text = "End Date";
             // 
@@ -134,7 +134,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(10, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 15);
+            this.label1.Size = new System.Drawing.Size(74, 18);
             this.label1.TabIndex = 20;
             this.label1.Text = "Start Date";
             // 
@@ -145,7 +145,7 @@
             this.datetimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datetimeEnd.Location = new System.Drawing.Point(100, 87);
             this.datetimeEnd.Name = "datetimeEnd";
-            this.datetimeEnd.Size = new System.Drawing.Size(133, 21);
+            this.datetimeEnd.Size = new System.Drawing.Size(133, 24);
             this.datetimeEnd.TabIndex = 19;
             // 
             // datetimeStart
@@ -155,7 +155,7 @@
             this.datetimeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datetimeStart.Location = new System.Drawing.Point(100, 18);
             this.datetimeStart.Name = "datetimeStart";
-            this.datetimeStart.Size = new System.Drawing.Size(133, 21);
+            this.datetimeStart.Size = new System.Drawing.Size(133, 24);
             this.datetimeStart.TabIndex = 18;
             // 
             // btnDelete
@@ -197,7 +197,6 @@
             // btnRefreshList
             // 
             this.btnRefreshList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
-            this.btnRefreshList.Enabled = false;
             this.btnRefreshList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnRefreshList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefreshList.Image = global::LoginForm.Properties.Resources.icons8_Refresh_32;
@@ -212,6 +211,7 @@
             this.btnRefreshList.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnRefreshList.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnRefreshList.UseVisualStyleBackColor = false;
+            this.btnRefreshList.Click += new System.EventHandler(this.btnRefreshList_Click);
             // 
             // button4
             // 
@@ -317,14 +317,14 @@
             this.dgSales.AllowUserToDeleteRows = false;
             this.dgSales.AllowUserToOrderColumns = true;
             this.dgSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgSales.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgSales.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgSales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgSales.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgSales.Location = new System.Drawing.Point(8, 144);
@@ -340,7 +340,7 @@
             // 
             // FormSalesOrderMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1250, 704);
             this.Controls.Add(this.tableLayoutPanel1);

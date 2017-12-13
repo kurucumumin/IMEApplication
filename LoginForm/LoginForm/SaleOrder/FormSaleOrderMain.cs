@@ -160,5 +160,10 @@ namespace LoginForm.nsSaleOrder
             }
             BringSalesList();
         }
+
+        private void btnRefreshList_Click(object sender, EventArgs e)
+        {
+            BringSalesList();
+        }
     }
 }
