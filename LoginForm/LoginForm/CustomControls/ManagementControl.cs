@@ -18,22 +18,21 @@ namespace LoginForm.CustomControls
             txtLowMarginLimit.Text = Convert.ToString(m.LowMarginLimit);
             txtVAT.Text = Convert.ToString(m.VAT);
             numericFactor.Value = m.Factor;
-            
-            cbCurrency.DataSource = new IMEEntities().Rates.Where(r => r.rate_date == DateTime.Today).Select(type => type.CurType).ToList();
 
-            cbCurrency.SelectedItem = m.DefaultCurrency;
+            cbCurrency.DataSource = new IMEEntities().Currencies.ToList();
 
+            cbCurrency.SelectedValue = m.DefaultCurrency;
 
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            try
-            {
+            try          {
                 IMEEntities IME = new IMEEntities();
                 Management management = IME.Managements.First();
                 management.LowMarginLimit = Convert.ToDecimal(txtLowMarginLimit.Text);
                 management.VAT = Convert.ToDecimal(txtVAT.Text);
+                management.DefaultCurrency = Convert.ToDecimal(cbCurrency.SelectedValue);
                 management.Factor = numericFactor.Value;
                 IME.SaveChanges();
 

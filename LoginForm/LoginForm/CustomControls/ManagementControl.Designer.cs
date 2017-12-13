@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel31 = new System.Windows.Forms.Panel();
+            this.btnCategorySubCategory = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.numericFactor = new System.Windows.Forms.NumericUpDown();
             this.lblFactor = new System.Windows.Forms.Label();
-            this.cbCurrencyType = new System.Windows.Forms.ComboBox();
             this.cbCurrency = new System.Windows.Forms.ComboBox();
             this.lblDefaultCurrency = new System.Windows.Forms.Label();
             this.btnTermsOfPayment = new System.Windows.Forms.Button();
@@ -43,10 +44,11 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.txtLowMarginLimit = new System.Windows.Forms.TextBox();
             this.lblLowMarginLimit = new System.Windows.Forms.Label();
-            this.btnCategorySubCategory = new System.Windows.Forms.Button();
+            this.currencyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.panel31.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericFactor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -74,7 +76,6 @@
             this.panel31.Controls.Add(this.button1);
             this.panel31.Controls.Add(this.numericFactor);
             this.panel31.Controls.Add(this.lblFactor);
-            this.panel31.Controls.Add(this.cbCurrencyType);
             this.panel31.Controls.Add(this.cbCurrency);
             this.panel31.Controls.Add(this.lblDefaultCurrency);
             this.panel31.Controls.Add(this.btnTermsOfPayment);
@@ -90,6 +91,23 @@
             this.panel31.Name = "panel31";
             this.panel31.Size = new System.Drawing.Size(334, 553);
             this.panel31.TabIndex = 0;
+            // 
+            // btnCategorySubCategory
+            // 
+            this.btnCategorySubCategory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCategorySubCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(187)))), ((int)(((byte)(106)))));
+            this.btnCategorySubCategory.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
+            this.btnCategorySubCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCategorySubCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCategorySubCategory.Location = new System.Drawing.Point(-1, 459);
+            this.btnCategorySubCategory.Margin = new System.Windows.Forms.Padding(0);
+            this.btnCategorySubCategory.Name = "btnCategorySubCategory";
+            this.btnCategorySubCategory.Size = new System.Drawing.Size(338, 37);
+            this.btnCategorySubCategory.TabIndex = 15;
+            this.btnCategorySubCategory.Text = "Category & Sub Category";
+            this.btnCategorySubCategory.UseVisualStyleBackColor = false;
+            this.btnCategorySubCategory.Click += new System.EventHandler(this.btnCategorySubCategory_Click);
             // 
             // button1
             // 
@@ -118,7 +136,7 @@
             0,
             0,
             65536});
-            this.numericFactor.Location = new System.Drawing.Point(191, 197);
+            this.numericFactor.Location = new System.Drawing.Point(191, 162);
             this.numericFactor.Name = "numericFactor";
             this.numericFactor.Size = new System.Drawing.Size(125, 24);
             this.numericFactor.TabIndex = 13;
@@ -126,37 +144,25 @@
             // lblFactor
             // 
             this.lblFactor.AutoSize = true;
-            this.lblFactor.Location = new System.Drawing.Point(16, 199);
+            this.lblFactor.Location = new System.Drawing.Point(16, 164);
             this.lblFactor.Margin = new System.Windows.Forms.Padding(16, 0, 3, 0);
             this.lblFactor.Name = "lblFactor";
             this.lblFactor.Size = new System.Drawing.Size(51, 18);
             this.lblFactor.TabIndex = 12;
             this.lblFactor.Text = "Factor";
             // 
-            // cbCurrencyType
-            // 
-            this.cbCurrencyType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbCurrencyType.FormattingEnabled = true;
-            this.cbCurrencyType.Items.AddRange(new object[] {
-            "Buy",
-            "Eff. Buy",
-            "Sale",
-            "Eff. Sale"});
-            this.cbCurrencyType.Location = new System.Drawing.Point(191, 147);
-            this.cbCurrencyType.Name = "cbCurrencyType";
-            this.cbCurrencyType.Size = new System.Drawing.Size(125, 26);
-            this.cbCurrencyType.TabIndex = 11;
-            // 
             // cbCurrency
             // 
             this.cbCurrency.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbCurrency.DataSource = this.currencyBindingSource;
+            this.cbCurrency.DisplayMember = "currencySymbol";
             this.cbCurrency.FormattingEnabled = true;
             this.cbCurrency.Location = new System.Drawing.Point(191, 115);
             this.cbCurrency.Name = "cbCurrency";
             this.cbCurrency.Size = new System.Drawing.Size(125, 26);
             this.cbCurrency.TabIndex = 10;
+            this.cbCurrency.ValueMember = "currencyID";
             // 
             // lblDefaultCurrency
             // 
@@ -257,22 +263,9 @@
             this.lblLowMarginLimit.TabIndex = 0;
             this.lblLowMarginLimit.Text = "Low Margin Limit";
             // 
-            // btnCategorySubCategory
+            // currencyBindingSource
             // 
-            this.btnCategorySubCategory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCategorySubCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(187)))), ((int)(((byte)(106)))));
-            this.btnCategorySubCategory.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(214)))), ((int)(((byte)(167)))));
-            this.btnCategorySubCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCategorySubCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCategorySubCategory.Location = new System.Drawing.Point(-1, 459);
-            this.btnCategorySubCategory.Margin = new System.Windows.Forms.Padding(0);
-            this.btnCategorySubCategory.Name = "btnCategorySubCategory";
-            this.btnCategorySubCategory.Size = new System.Drawing.Size(338, 37);
-            this.btnCategorySubCategory.TabIndex = 15;
-            this.btnCategorySubCategory.Text = "Category & Sub Category";
-            this.btnCategorySubCategory.UseVisualStyleBackColor = false;
-            this.btnCategorySubCategory.Click += new System.EventHandler(this.btnCategorySubCategory_Click);
+            this.currencyBindingSource.DataSource = typeof(LoginForm.DataSet.Currency);
             // 
             // ManagementControl
             // 
@@ -285,6 +278,7 @@
             this.panel31.ResumeLayout(false);
             this.panel31.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericFactor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.currencyBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -300,12 +294,12 @@
         private System.Windows.Forms.TextBox txtVAT;
         private System.Windows.Forms.Label lblVAT;
         private System.Windows.Forms.Button btnTermsOfPayment;
-        private System.Windows.Forms.ComboBox cbCurrencyType;
         private System.Windows.Forms.ComboBox cbCurrency;
         private System.Windows.Forms.Label lblDefaultCurrency;
         private System.Windows.Forms.Label lblFactor;
         private System.Windows.Forms.NumericUpDown numericFactor;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnCategorySubCategory;
+        private System.Windows.Forms.BindingSource currencyBindingSource;
     }
 }
