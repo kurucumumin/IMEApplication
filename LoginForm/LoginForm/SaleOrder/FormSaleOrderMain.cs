@@ -29,7 +29,10 @@ namespace LoginForm.nsSaleOrder
 
         private void FormSalesOrderMain_Load(object sender, EventArgs e)
         {
-            BringSalesList();
+            datetimeEnd.MaxDate = DateTime.Today.Date;
+            datetimeEnd.Value = DateTime.Today.Date;
+            datetimeStart.Value = DateTime.Today.AddDays(-7);
+            BringSalesList(datetimeEnd.Value, datetimeStart.Value);
             PurchaseOrderMenu.MenuItems.Add(new MenuItem("Add to Purchase Order", PurchaseOrderMenu_Click));
         }
 
@@ -68,6 +71,11 @@ namespace LoginForm.nsSaleOrder
         {
             dgSales.DataSource = null;
             dgSales.DataSource = queryable;
+
+            foreach (DataGridViewColumn col in dgSales.Columns)
+            {
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            }
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -159,6 +167,11 @@ namespace LoginForm.nsSaleOrder
                 }
             }
             BringSalesList();
+        }
+
+        private void btnRefreshList_Click(object sender, EventArgs e)
+        {
+            BringSalesList(datetimeEnd.Value.Date, datetimeStart.Value.Date);
         }
     }
 }

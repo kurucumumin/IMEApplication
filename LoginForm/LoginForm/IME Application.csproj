@@ -562,23 +562,17 @@
     <Compile Include="QuotationModule\ViewProductHistory.Designer.cs">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="SaleOrder\FormSaleSale.cs">
+    <Compile Include="SaleOrder\FormSaleOrderAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SaleOrder\FormSaleSale.designer.cs">
-      <DependentUpon>FormSaleSale.cs</DependentUpon>
+    <Compile Include="SaleOrder\FormSaleOrderAdd.designer.cs">
+      <DependentUpon>FormSaleOrderAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="SaleOrder\FormSaleOrderCreate.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SaleOrder\FormSaleOrderCreate.Designer.cs">
       <DependentUpon>FormSaleOrderCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SaleOrder\FormSaleOrderAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SaleOrder\FormSaleOrderAdd.Designer.cs">
-      <DependentUpon>FormSaleOrderAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="SaleOrder\FormSaleOrderMain.cs">
       <SubType>Form</SubType>
@@ -763,14 +757,11 @@
     <EmbeddedResource Include="QuotationModule\ViewProductHistory.resx">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SaleOrder\FormSaleSale.resx">
-      <DependentUpon>FormSaleSale.cs</DependentUpon>
+    <EmbeddedResource Include="SaleOrder\FormSaleOrderAdd.resx">
+      <DependentUpon>FormSaleOrderAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\FormSaleOrderCreate.resx">
       <DependentUpon>FormSaleOrderCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SaleOrder\FormSaleOrderAdd.resx">
-      <DependentUpon>FormSaleOrderAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\FormSaleOrderMain.resx">
       <DependentUpon>FormSaleOrderMain.cs</DependentUpon>
