@@ -54,6 +54,7 @@ namespace LoginForm
             InitializeComponent();
             if (x == 1)
             {
+                isModify = true;
                 CustomerDataGrid.Enabled = false;
                 txtSearch.Enabled = false;
                 Search.Enabled = false;
@@ -69,6 +70,7 @@ namespace LoginForm
             }
             if (x == 2)
             {
+                isModify = true;
                 CustomerDataGrid.Enabled = false;
                 txtSearch.Enabled = false;
                 Search.Enabled = false;
