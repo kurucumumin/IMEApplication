@@ -180,7 +180,6 @@ namespace LoginForm.QuotationModule
                 try { txtAccountingNote.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name; } catch { }
                 if (c.Worker != null) cbRep.SelectedValue = c.Worker.WorkerID;
                 cbCurrency.SelectedItem = cbCurrency.FindStringExact(c.CurrNameQuo);
-                //cbCurrType.SelectedItem = cbCurrType.FindStringExact(c.CurrTypeQuo);
             }
         }
 
@@ -331,14 +330,13 @@ namespace LoginForm.QuotationModule
                                     this.Enabled = false;
                                     FormQuotationItemSearch itemsearch = new FormQuotationItemSearch(dgQuotationAddedItems.CurrentCell.Value.ToString());
                                     itemsearch.ShowDialog();
-                                    try
-                                    {
+                                    
                                         //Bu item daha önceden eklimi diye kontrol ediyor
                                         DataGridViewRow row = dgQuotationAddedItems.Rows
            .Cast<DataGridViewRow>()
            .Where(r => r.Cells["dgProductCode"].Value.ToString().Equals(classQuotationAdd.ItemCode))
            .FirstOrDefault();
-                                        if (row.Cells["dgUCUPCurr"].Value != null)
+                                        if (row!=null &&row.Cells["dgUCUPCurr"].Value != null)
                                         {
                                             if (row != null) MessageBox.Show("There is already an item added this qoutation in the " + row.Cells["dgNo"].Value.ToString() + ". Row and the price " + row.Cells["dgUCUPCurr"].Value.ToString());
 
@@ -348,8 +346,6 @@ namespace LoginForm.QuotationModule
                                             if (row != null) MessageBox.Show("There is already an item added this qoutation in the " + row.Cells["dgNo"].Value.ToString() + ". Row");
 
                                         }
-                                    }
-                                    catch { }
                                     dgQuotationAddedItems.CurrentCell.Value = classQuotationAdd.ItemCode;
                                     try { sdNumber = IME.SuperDisks.Where(a => a.Article_No.Contains(dgQuotationAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { sdNumber = 0; }
                                     try { sdPNumber = IME.SuperDiskPs.Where(a => a.Article_No.Contains(dgQuotationAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { sdPNumber = 0; }
@@ -454,7 +450,7 @@ namespace LoginForm.QuotationModule
 
         private void GetQuotationQuantity(int rowindex)
         {
-            if (cbFactor.Text != null && cbFactor.Text != "" && dgQuotationAddedItems.Rows[rowindex].Cells[dgUPIME.Index].Value!=null && dgQuotationAddedItems.Rows[rowindex].Cells[dgUPIME.Index].Value != string.Empty)
+            if (cbFactor.Text != null && cbFactor.Text != "")
             {
                 #region Quantity
                 if (dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value != null)
@@ -474,7 +470,16 @@ namespace LoginForm.QuotationModule
                     dgQuotationAddedItems.Rows[rowindex].Cells["dgLandingCost"].Value = Math.Round(Convert.ToDecimal(dgQuotationAddedItems.Rows[rowindex].Cells["dgLandingCost"].Value.ToString()), 4);
                     decimal Currrate = 0;
                     if (curr.rate != null) Currrate = Decimal.Parse(curr.rate.ToString());
-                    price = Decimal.Parse((classQuotationAdd.GetPrice(dgQuotationAddedItems.Rows[rowindex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())) * Decimal.Parse(cbFactor.Text)/ Currrate * Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString("G29"));
+                    string productCode = dgQuotationAddedItems.Rows[rowindex].Cells[dgProductCode.Index].Value.ToString();
+                    if(productCode.Substring(0,1)=="0")productCode = productCode.Substring(1, productCode.Length -1);
+                    if (IME.Hazardous.Where(a=>a.ArticleNo== productCode).FirstOrDefault() != null)
+                    {
+                        price = Decimal.Parse((classQuotationAdd.GetPrice(dgQuotationAddedItems.Rows[rowindex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())) * (Utils.getManagement().Factor) / Currrate * Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString("G29"));
+                    }
+                    else
+                    {
+                        price = Decimal.Parse((classQuotationAdd.GetPrice(dgQuotationAddedItems.Rows[rowindex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())) * Decimal.Parse(cbFactor.Text) / Currrate * Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString("G29"));
+                    }
                     //price /= factor;
                     if (price > 0)
                     {
@@ -2231,7 +2236,7 @@ namespace LoginForm.QuotationModule
                 {
                     int rownumber = Int32.Parse(dgQuotationAddedItems.Rows[item.Index].Cells["dgNo"].Value.ToString());
                     dgQuotationDeleted.Rows.Add();
-                    for (int i = 0; i < dgQuotationAddedItems.Columns.Count - 1; i++)
+                    for (int i = 0; i < dgQuotationAddedItems.Columns.Count; i++)
                     {
                         dgQuotationDeleted.Rows[dgQuotationDeleted.Rows.Count - 2].Cells[i].Value = item.Cells[i].Value;
                     }

@@ -42,7 +42,7 @@ namespace LoginForm
                 c.currencySymbol = txtSymbol.Text.Trim();
                 c.currencyName = txtName.Text.Trim();
                 c.subunitName = txtSubUnit.Text.Trim();
-                c.isDefault = false;
+                //c.isDefault = false;
                 IME.Currencies.Add(c);
                 IME.SaveChanges();
                 MessageBox.Show("Currency is saved succesfully");
@@ -75,7 +75,7 @@ namespace LoginForm
                 c.currencySymbol = txtSymbol.Text.Trim();
                 c.currencyName = txtName.Text.Trim();
                 c.subunitName = txtSubUnit.Text.Trim();
-                c.isDefault = false;
+                //c.isDefault = false;
                 IME.SaveChanges();
 
                 MessageBox.Show("Currency is updated successfully");
@@ -304,18 +304,18 @@ namespace LoginForm
             if (e.RowIndex != -1)
             {
                 decId = Convert.ToDecimal(dgvCurrency.Rows[e.RowIndex].Cells["CurrencyID"].Value.ToString());
-                if (IME.Currencies.Where(a => a.currencyID == decId).FirstOrDefault().isDefault == false)
-                {
-                    FillControls();
-                    btnDelete.Enabled = true;
-                    btnSave.Text = "Update";
-                    txtName.Focus();
-                }
-                else
-                {
-                    MessageBox.Show("Default currency cannot update or delete");
-                    Clear();
-                }
+                //if (IME.Currencies.Where(a => a.currencyID == decId).FirstOrDefault().isDefault == false)
+                //{
+                //    FillControls();
+                //    btnDelete.Enabled = true;
+                //    btnSave.Text = "Update";
+                //    txtName.Focus();
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Default currency cannot update or delete");
+                //    Clear();
+                //}
             }
         }
         /// <summary>

@@ -20,6 +20,11 @@ namespace LoginForm.nsSaleOrder
         public FormSalesOrderMain()
         {
             InitializeComponent();
+
+            if (Utils.getCurrentUser().AuthorizationValues.Where(x=>x.AuthorizationID == 1022).FirstOrDefault() == null)
+            {
+                btnDelete.Visible = false;
+            }
         }
 
         private void FormSalesOrderMain_Load(object sender, EventArgs e)
@@ -55,6 +60,7 @@ namespace LoginForm.nsSaleOrder
 
                        };
             populateGrid(list.ToList());
+
 
         }
 

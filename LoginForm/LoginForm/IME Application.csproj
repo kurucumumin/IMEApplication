@@ -162,6 +162,12 @@
     <Compile Include="Account\frmVoucherType.designer.cs">
       <DependentUpon>frmVoucherType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\PayRoll\frmPayHead.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmPayHead.designer.cs">
+      <DependentUpon>frmPayHead.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\AccountingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -296,6 +302,12 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PayHead.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PayHeadGetAll_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PayHeadGet_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PaymentMethod.cs">
@@ -663,6 +675,9 @@
     <EmbeddedResource Include="Account\frmVoucherType.resx">
       <DependentUpon>frmVoucherType.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmPayHead.resx">
+      <DependentUpon>frmPayHead.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountingControl.resx">
       <DependentUpon>AccountingControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -807,6 +822,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthorizationValue.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthRole.datasource" />
+    <None Include="Properties\DataSources\LoginForm.DataSet.Currency.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.Customer.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.CustomerAddress.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.CustomerCategory.datasource" />
