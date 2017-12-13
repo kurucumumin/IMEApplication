@@ -1322,7 +1322,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Managemen__Defau__0E591826">
+        <Association Name="FK__Managemen__Defau__253C7D7E">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="Management" Type="Self.Management" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2163,7 +2163,7 @@
             <End Role="Notes" EntitySet="Notes" />
             <End Role="ItemNote" EntitySet="ItemNote" />
           </AssociationSet>
-          <AssociationSet Name="FK__Managemen__Defau__0E591826" Association="Self.FK__Managemen__Defau__0E591826">
+          <AssociationSet Name="FK__Managemen__Defau__253C7D7E" Association="Self.FK__Managemen__Defau__253C7D7E">
             <End Role="Currency" EntitySet="Currency" />
             <End Role="Management" EntitySet="Management" />
           </AssociationSet>
@@ -2487,7 +2487,7 @@
             <End Role="Country" EntitySet="Countries" />
             <End Role="SupplierAdress" EntitySet="SupplierAdresses" />
           </AssociationSet>
-          <AssociationSet Name="FK__Managemen__Defau__0E591826" Association="IMEModel.FK__Managemen__Defau__0E591826">
+          <AssociationSet Name="FK__Managemen__Defau__253C7D7E" Association="IMEModel.FK__Managemen__Defau__253C7D7E">
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Management" EntitySet="Managements" />
           </AssociationSet>
@@ -2887,7 +2887,7 @@
           <Property Name="currencySymbol" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="currencyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="subunitName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Managements" Relationship="IMEModel.FK__Managemen__Defau__0E591826" FromRole="Currency" ToRole="Management" />
+          <NavigationProperty Name="Managements" Relationship="IMEModel.FK__Managemen__Defau__253C7D7E" FromRole="Currency" ToRole="Management" />
           <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SaleOrder__curre__73A521EA" FromRole="Currency" ToRole="SaleOrder" />
           <NavigationProperty Name="ExchangeRates" Relationship="IMEModel.FK__tbl_Excha__curre__52442E1F" FromRole="Currency" ToRole="ExchangeRate" />
         </EntityType>
@@ -3177,7 +3177,7 @@
           <Property Name="VAT" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="DefaultCurrency" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Factor" Type="Decimal" Nullable="false" Precision="6" Scale="3" />
-          <NavigationProperty Name="Currency" Relationship="IMEModel.FK__Managemen__Defau__0E591826" FromRole="Management" ToRole="Currency" />
+          <NavigationProperty Name="Currency" Relationship="IMEModel.FK__Managemen__Defau__253C7D7E" FromRole="Management" ToRole="Currency" />
         </EntityType>
         <EntityType Name="Note">
           <Key>
@@ -4003,7 +4003,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Managemen__Defau__0E591826">
+        <Association Name="FK__Managemen__Defau__253C7D7E">
           <End Type="IMEModel.Currency" Role="Currency" Multiplicity="0..1" />
           <End Type="IMEModel.Management" Role="Management" Multiplicity="*" />
           <ReferentialConstraint>

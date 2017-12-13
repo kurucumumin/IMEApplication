@@ -100,6 +100,7 @@ namespace LoginForm.PurchaseOrder
 
         private void btnCreatePurchase_Click(object sender, EventArgs e)
         {
+            #region Save
             DataSet.PurchaseOrder po = new DataSet.PurchaseOrder();
             string s = rowList[0].Cells[3].Value.ToString();
 
@@ -137,13 +138,14 @@ namespace LoginForm.PurchaseOrder
             IME.SaveChanges();
 
             MessageBox.Show("PuchaseOrders is successfully added", "Success");
+            #endregion
 
             #region SendMail
 
             sc.Port = 587;
             sc.Host = "smtp.gmail.com";
             sc.EnableSsl = true;
-
+           
             sc.Credentials = new NetworkCredential("kurucumumin94@gmail.com", "6231962319+**");
 
             mail.From = new MailAddress("kurucumumin94@gmail.com", "Mümin Kurucu");
@@ -172,6 +174,9 @@ namespace LoginForm.PurchaseOrder
             {
                 Thread.Sleep(TimeSpan.FromSeconds(5));
                 mail.Subject = "TeamERP"; mail.IsBodyHtml = true; mail.Body = "IME programı test mail";
+                Attachment attachment;
+                attachment = new Attachment(@"C:\Users\pomak\Desktop\Yeni Metin Belgesi.txt");
+                mail.Attachments.Add(attachment);
                 sc.Send(mail);
                 MessageBox.Show(sayac + " E-Mails successfully sent.", "Success !");
             }
