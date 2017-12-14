@@ -10,7 +10,9 @@
 //GNU General Public License for more details.
 //You should have received a copy of the GNU General Public License
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
+using LoginForm.Account.Services;
 using LoginForm.DataSet;
+using LoginForm.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -187,7 +189,7 @@ namespace Open_Miracle
                     //accountLedger.extra1 = string.Empty;
                     //accountLedger.extra2 = string.Empty;
                 }
-                if(AccountLedgerCheckExistence(txtLedgerName.Text.Trim().ToString(), 0) == false)
+                if(spAccountLedger.AccountLedgerCheckExistence(txtLedgerName.Text.Trim().ToString(), 0) == false)
                 {
                     db.AccountLedgers.Add(accountLedger);
                     db.SaveChanges();
@@ -326,9 +328,9 @@ namespace Open_Miracle
                     //infoAccountLedger.Extra2 = string.Empty;
                 }
                 infoAccountLedger.ledgerId = decAccountLedgerId;
-                if (AccountLedgerCheckExistence(txtLedgerName.Text.Trim(), decLedger) == false)
+                if (spAccountLedger.AccountLedgerCheckExistence(txtLedgerName.Text.Trim(), decLedger) == false)
                 {
-                    AccountLedgerEdit(infoAccountLedger);
+                    spAccountLedger.AccountLedgerEdit(infoAccountLedger);
                     LedgerPostingEdit();
                     if (cmbBillByBill.Text == "Yes" && isSundryDebtorOrCreditor)
                     {
@@ -357,244 +359,173 @@ namespace Open_Miracle
         /// </summary>
         public void SaveOrEdit()
         {
-        //    try
-        //    {
-        //        if (txtMailingName.Text.Trim() == string.Empty)
-        //        {
-        //            txtMailingName.Text = txtLedgerName.Text.Trim();
-        //        }
-        //        if (txtLedgerName.Text.Trim() == string.Empty)
-        //        {
-        //            Messages.InformationMessage("Enter ledger name");
-        //            txtLedgerName.Focus();
-        //            tbctrlLedger.SelectedTab = tbMainDetails;
-        //        }
-        //        else if (cmbGroup.SelectedIndex == -1)
-        //        {
-        //            Messages.InformationMessage("Select group name");
-        //            cmbGroup.Focus();
-        //            tbctrlLedger.SelectedTab = tbMainDetails;
-        //        }
-        //        else
-        //        {
-        //            if (btnSave.Text == "Save")
-        //            {
-        //                //Jamshi
-        //                //if (PublicVariables.isMessageAdd)
-        //                //{
-        //                //    if (Messages.SaveMessage())
-        //                //    {
-        //                //        SaveFunction();
-        //                //    }
-        //                //}
-        //                //else
-        //                //{
-        //                //    SaveFunction();
-        //                //}
-        //                if (Messages.SaveConfirmation())
-        //                {
-        //                    SaveFunction();
-        //                }
-        //                decIdForOtherForms = decLedgerId;
-        //                if (frmServiceVoucherObj != null)
-        //                {
-        //                    if (decIdForOtherForms != 0)
-        //                    {
-        //                        this.Close();
-        //                    }
-        //                    else
-        //                    {
-        //                        txtLedgerName.Focus();
-        //                    }
-        //                }
-        //                //--------Monthly Salary Voucher----------//
-        //                if (frmMonthlySalaryVoucherObj != null)
-        //                {
-        //                    if (decIdForOtherForms != 0)
-        //                    {
-        //                        this.Close();
-        //                    }
-        //                    else
-        //                    {
-        //                        txtLedgerName.Focus();
-        //                    }
-        //                }
-        //                if (frmAdvancePaymentobj != null)
-        //                {
-        //                    if (decIdForOtherForms != 0)
-        //                    {
-        //                        this.Close();
-        //                    }
-        //                    else
-        //                    {
-        //                        txtLedgerName.Focus();
-        //                    }
-        //                }
-        //                //for frmDeliveryNote 
-        //                if (frmDeliveryNoteObj != null)
-        //                {
-        //                    if (decIdForOtherForms != 0)
-        //                    {
-        //                        this.Close();
-        //                    }
-        //                    else
-        //                    {
-        //                        txtLedgerName.Focus();
-        //                    }
-        //                }
-        //                //for rejectionOut
-        //                if (frmRejectionOutObj != null)
-        //                {
-        //                    if (decIdForOtherForms != 0)
-        //                    {
-        //                        this.Close();
-        //                    }
-        //                    else
-        //                    {
-        //                        txtLedgerName.Focus();
-        //                    }
-        //                }
-        //                // for Purchase Return
-        //                if (frmPurchaseReturnObj != null)
-        //                {
-        //                    if (decIdForOtherForms != 0)
-        //                    {
-        //                        this.Close();
-        //                    }
-        //                    else
-        //                    {
-        //                        txtLedgerName.Focus();
-        //                    }
-        //                }
-        //            }
-        //            else
-        //            {
-        //                //Jamshi
-        //                //if (PublicVariables.isMessageEdit)
-        //                //{
-        //                //    if (Messages.UpdateMessage())
-        //                //    {
-        //                //        EditFunction();
-        //                //    }
-        //                //}
-        //                //else
-        //                //{
-        //                //    EditFunction();
-        //                //}
-        //                if (Messages.UpdateConfirmation())
-        //                {
-        //                    EditFunction();
-        //                }
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("AL3:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
+            try
+            {
+                if (txtMailingName.Text.Trim() == string.Empty)
+                {
+                    txtMailingName.Text = txtLedgerName.Text.Trim();
+                }
+                if (txtLedgerName.Text.Trim() == string.Empty)
+                {
+                    Messages.InformationMessage("Enter ledger name");
+                    txtLedgerName.Focus();
+                    tbctrlLedger.SelectedTab = tbMainDetails;
+                }
+                else if (cmbGroup.SelectedIndex == -1)
+                {
+                    Messages.InformationMessage("Select group name");
+                    cmbGroup.Focus();
+                    tbctrlLedger.SelectedTab = tbMainDetails;
+                }
+                else
+                {
+                    if (btnSave.Text == "Save")
+                    {
+                        //Jamshi
+                        //if (PublicVariables.isMessageAdd)
+                        //{
+                        //    if (Messages.SaveMessage())
+                        //    {
+                        //        SaveFunction();
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    SaveFunction();
+                        //}
+                        if (Messages.SaveConfirmation())
+                        {
+                            SaveFunction();
+                        }
+                        decIdForOtherForms = decLedgerId;
+                    }
+                    else
+                    {
+                        //Jamshi
+                        //if (PublicVariables.isMessageEdit)
+                        //{
+                        //    if (Messages.UpdateMessage())
+                        //    {
+                        //        EditFunction();
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    EditFunction();
+                        //}
+                        if (Messages.UpdateConfirmation())
+                        {
+                            EditFunction();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL3:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         /// <summary>
         ///Function to save ledgerposting incase of opening balance
         /// </summary>
         public void LedgerPostingAdd()
         {
-        //    try
-        //    {
-        //        string strfinancialId;
-        //        decOpeningBalance = Convert.ToDecimal(txtOpeningBalance.Text);
-        //        LedgerPostingSP spLedgerPosting = new LedgerPostingSP();
-        //        LedgerPostingInfo infoLedgerPosting = new LedgerPostingInfo();
-        //        FinancialYearSP spFinancialYear = new FinancialYearSP();
-        //        FinancialYearInfo infoFinancialYear = new FinancialYearInfo();
-        //        infoFinancialYear = spFinancialYear.FinancialYearViewForAccountLedger(1);
-        //        strfinancialId = infoFinancialYear.FromDate.ToString("dd-MMM-yyyy");
-        //        infoLedgerPosting.VoucherTypeId = 1;
-        //        infoLedgerPosting.Date = Convert.ToDateTime(strfinancialId.ToString());
-        //        infoLedgerPosting.LedgerId = decLedgerId;
-        //        infoLedgerPosting.VoucherNo = decLedgerId.ToString();
-        //        if (cmbOpeningBalanceCrOrDr.Text == "Dr")
-        //        {
-        //            infoLedgerPosting.Debit = decOpeningBalance;
-        //        }
-        //        else
-        //        {
-        //            infoLedgerPosting.Credit = decOpeningBalance;
-        //        }
-        //        infoLedgerPosting.DetailsId = 0;
-        //        infoLedgerPosting.YearId = PublicVariables._decCurrentFinancialYearId;
-        //        infoLedgerPosting.InvoiceNo = decLedgerId.ToString();
-        //        infoLedgerPosting.ChequeNo = string.Empty;
-        //        infoLedgerPosting.ChequeDate = DateTime.Now;
-        //        infoLedgerPosting.Extra1 = string.Empty;
-        //        infoLedgerPosting.Extra2 = string.Empty;
-        //        spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("AL4:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
+            IMEEntities db = new IMEEntities();
+            try
+            {
+                string strfinancialId;
+                decOpeningBalance = Convert.ToDecimal(txtOpeningBalance.Text);
+                LedgerPosting infoLedgerPosting = new LedgerPosting();
+                FinancialYear infoFinancialYear = new FinancialYear();
+                infoFinancialYear = spFinancialYear.FinancialYearViewForAccountLedger(1);
+                strfinancialId = infoFinancialYear.fromDate.Value.ToString("dd-MMM-yyyy");
+                infoLedgerPosting.voucherTypeId = 1;
+                infoLedgerPosting.date = Convert.ToDateTime(strfinancialId.ToString());
+                infoLedgerPosting.ledgerId = decLedgerId;
+                infoLedgerPosting.voucherNo = decLedgerId.ToString();
+                if (cmbOpeningBalanceCrOrDr.Text == "Dr")
+                {
+                    infoLedgerPosting.debit = decOpeningBalance;
+                }
+                else
+                {
+                    infoLedgerPosting.credit = decOpeningBalance;
+                }
+                infoLedgerPosting.detailsId = 0;
+                //TODO Yönetimden current yılı seçmeliyiz
+                infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
+                infoLedgerPosting.invoiceNo = decLedgerId.ToString();
+                infoLedgerPosting.chequeNo = string.Empty;
+                infoLedgerPosting.chequeDate = DateTime.Now;
+
+                db.LedgerPostings.Add(infoLedgerPosting);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL4:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
+
         /// <summary>
         ///Function to edit ledgerposting incase of opening balance
         /// </summary> 
         public void LedgerPostingEdit()
         {
-        //    try
-        //    {
-        //        string strfinancialId;
-        //        decOpeningBalance = Convert.ToDecimal(((txtOpeningBalance.Text == "") ? "0" : txtOpeningBalance.Text.Trim()));
-        //        LedgerPostingSP spLedgerPosting = new LedgerPostingSP();
-        //        LedgerPostingInfo infoLedgerPosting = new LedgerPostingInfo();
-        //        AccountLedgerSP spAccountLedger = new AccountLedgerSP();
-        //        FinancialYearSP spFinancialYear = new FinancialYearSP();
-        //        FinancialYearInfo infoFinancialYear = new FinancialYearInfo();
-        //        infoFinancialYear = spFinancialYear.FinancialYearViewForAccountLedger(1);
-        //        strfinancialId = infoFinancialYear.FromDate.ToString("dd-MMM-yyyy");
-        //        infoLedgerPosting.VoucherTypeId = 1;
-        //        infoLedgerPosting.Date = Convert.ToDateTime(strfinancialId.ToString());
-        //        if (cmbOpeningBalanceCrOrDr.Text == "Dr")
-        //        {
-        //            infoLedgerPosting.Debit = decOpeningBalance;
-        //        }
-        //        else
-        //        {
-        //            infoLedgerPosting.Credit = decOpeningBalance;
-        //        }
-        //        infoLedgerPosting.DetailsId = 0;
-        //        infoLedgerPosting.YearId = PublicVariables._decCurrentFinancialYearId;
-        //        infoLedgerPosting.InvoiceNo = decAccountLedgerId.ToString();
-        //        infoLedgerPosting.Extra1 = string.Empty;
-        //        infoLedgerPosting.Extra2 = string.Empty;
-        //        infoLedgerPosting.LedgerId = decAccountLedgerId;
-        //        infoLedgerPosting.VoucherNo = decAccountLedgerId.ToString();
-        //        infoLedgerPosting.ChequeNo = string.Empty;
-        //        infoLedgerPosting.ChequeDate = DateTime.Now;
-        //        DataTable dtbl = spLedgerPosting.GetLedgerPostingIds(decAccountLedgerId.ToString(), 1);
-        //        if (dtbl.Rows.Count > 0)
-        //        {
-        //            if (decOpeningBalance > 0)
-        //            {
-        //                //Edit
-        //                infoLedgerPosting.LedgerPostingId = Convert.ToDecimal(dtbl.Rows[0][0].ToString());
-        //                spLedgerPosting.LedgerPostingEdit(infoLedgerPosting);
-        //            }
-        //            else
-        //            {
-        //                //Delete
-        //                spAccountLedger.LedgerPostingDeleteByVoucherTypeAndVoucherNo(decAccountLedgerId.ToString(), 1);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            //Add new row
-        //            spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("AL5:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
+            try
+            {
+                string strfinancialId;
+                decOpeningBalance = Convert.ToDecimal(((txtOpeningBalance.Text == "") ? "0" : txtOpeningBalance.Text.Trim()));
+                LedgerPosting infoLedgerPosting = new LedgerPosting();
+                FinancialYear infoFinancialYear = new FinancialYear();
+                infoFinancialYear =spFinancialYear.FinancialYearViewForAccountLedger(1);
+                strfinancialId = infoFinancialYear.fromDate.Value.ToString("dd-MMM-yyyy");
+                infoLedgerPosting.voucherTypeId = 1;
+                infoLedgerPosting.date = Convert.ToDateTime(strfinancialId.ToString());
+                if (cmbOpeningBalanceCrOrDr.Text == "Dr")
+                {
+                    infoLedgerPosting.debit = decOpeningBalance;
+                }
+                else
+                {
+                    infoLedgerPosting.credit = decOpeningBalance;
+                }
+                infoLedgerPosting.detailsId = 0;
+                infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
+                infoLedgerPosting.invoiceNo = decAccountLedgerId.ToString();
+                infoLedgerPosting.ledgerId = decAccountLedgerId;
+                infoLedgerPosting.voucherNo = decAccountLedgerId.ToString();
+                infoLedgerPosting.chequeNo = string.Empty;
+                infoLedgerPosting.chequeDate = DateTime.Now;
+                DataTable dtbl = spLedgerPosting.GetLedgerPostingIds(decAccountLedgerId.ToString(), 1);
+                if (dtbl.Rows.Count > 0)
+                {
+                    if (decOpeningBalance > 0)
+                    {
+                        //Edit
+                        infoLedgerPosting.ledgerPostingId = Convert.ToDecimal(dtbl.Rows[0][0].ToString());
+                        spLedgerPosting.LedgerPostingEdit(infoLedgerPosting);
+                    }
+                    else
+                    {
+                        //Delete
+                        spAccountLedger.LedgerPostingDeleteByVoucherTypeAndVoucherNo(decAccountLedgerId.ToString(), 1);
+                    }
+                }
+                else
+                {
+                    //Add new row
+                    spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL5:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
+
+        
+
         /// <summary>
         ///Function to save opening balance to party balance
         /// </summary> 
@@ -3253,50 +3184,35 @@ namespace Open_Miracle
         }
         #endregion
 
-        private bool AccountLedgerCheckExistence(string LedgerName, decimal ledgerID)
+        private DataTable GetLedgerPostingIds(string v1, int v2)
         {
             IMEEntities db = new IMEEntities();
-            return (db.AccountLedgers.Where(x => x.ledgerName == LedgerName && x.ledgerId != ledgerID).FirstOrDefault() != null) ? true : false;
+            DataTable dt = new DataTable();
+            List<LedgerPosting> list = db.LedgerPostings.Where(x => x.voucherNo == v1 && x.voucherTypeId == v2).ToList();
+
+            var adaptor = (from lp in db.LedgerPostings.Where(x => x.voucherNo == v1 && x.voucherTypeId == v2)
+                           select new
+                           {
+                               lp.voucherNo,
+                               lp.voucherTypeId
+                           }).ToList();
+            dt.Columns.Add("voucherNo");
+            dt.Columns.Add("voucherTypeId");
+
+            foreach (var item in adaptor)
+            {
+                var row = dt.NewRow();
+
+                row["voucherNo"] = item.voucherNo;
+                row["voucherTypeId"] = item.voucherTypeId;
+
+                dt.Rows.Add(row);
+            }
+
+            return dt;
         }
 
-        public void AccountLedgerEdit(AccountLedger accountledgerinfo)
-        {
-            try
-            {
-                IMEEntities db = new IMEEntities();
-                AccountLedger accountledger = db.AccountLedgers.Find(accountledgerinfo);
 
-                accountledger.ledgerId = accountledgerinfo.ledgerId;
-                accountledger.accountGroupID = accountledgerinfo.accountGroupID;
-                accountledger.ledgerName = accountledgerinfo.ledgerName;
-                accountledger.openingBalance = accountledgerinfo.openingBalance;
-                accountledger.crOrDr = accountledgerinfo.crOrDr;
-                accountledger.narration = accountledgerinfo.narration;
-                accountledger.mailingName = accountledgerinfo.mailingName;
-                accountledger.phone = accountledgerinfo.phone;
-                accountledger.mobile = accountledgerinfo.mobile;
-                accountledger.email = accountledgerinfo.email;
-                accountledger.creditPeriod = accountledgerinfo.creditPeriod;
-                accountledger.creditLimit = accountledgerinfo.creditLimit;
-                accountledger.pricinglevelId = accountledgerinfo.pricinglevelId;
-                accountledger.billByBill = accountledgerinfo.billByBill;
-                accountledger.tin = accountledgerinfo.tin;
-                accountledger.cst = accountledgerinfo.cst;
-                accountledger.pan = accountledgerinfo.pan;
-                accountledger.routeId = accountledgerinfo.routeId;
-                accountledger.bankAccountNumber = accountledgerinfo.bankAccountNumber;
-                accountledger.branchName = accountledgerinfo.branchName;
-                accountledger.branchCode = accountledgerinfo.branchCode;
-                accountledger.areaId = accountledgerinfo.areaId;
-                accountledger.isDefault = accountledgerinfo.isDefault;
-
-                db.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
 
     }
 }

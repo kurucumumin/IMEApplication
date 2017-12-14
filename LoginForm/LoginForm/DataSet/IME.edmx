@@ -290,6 +290,15 @@
           <Property Name="ManufacturerCode" Type="nvarchar" MaxLength="15" />
           <Property Name="ExtendedRangeWeight" Type="int" />
         </EntityType>
+        <EntityType Name="FinancialYear">
+          <Key>
+            <PropertyRef Name="financialYearId" />
+          </Key>
+          <Property Name="financialYearId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fromDate" Type="datetime" />
+          <Property Name="toDate" Type="datetime" />
+          <Property Name="extraDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="Hazardous">
           <Key>
             <PropertyRef Name="ArticleNo" />
@@ -314,6 +323,26 @@
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="languagename" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="LedgerPosting">
+          <Key>
+            <PropertyRef Name="ledgerPostingId" />
+          </Key>
+          <Property Name="ledgerPostingId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="voucherTypeId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="voucherNo" Type="varchar(max)" />
+          <Property Name="ledgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="debit" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="credit" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="detailsId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="yearId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="invoiceNo" Type="varchar(max)" />
+          <Property Name="chequeNo" Type="varchar(max)" />
+          <Property Name="chequeDate" Type="datetime" />
+          <Property Name="extraDate" Type="datetime" />
+          <Property Name="extra1" Type="varchar(max)" />
+          <Property Name="extra2" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="LoaderDates">
           <Key>
@@ -350,6 +379,7 @@
           <Property Name="VAT" Type="decimal" Precision="5" Scale="2" />
           <Property Name="DefaultCurrency" Type="numeric" Precision="18" Scale="0" />
           <Property Name="Factor" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="CurrentFinancialYear" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Notes">
           <Key>
@@ -1322,6 +1352,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Managemen__Curre__338A9CD5">
+          <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
+          <End Role="Management" Type="Self.Management" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinancialYear">
+              <PropertyRef Name="financialYearId" />
+            </Principal>
+            <Dependent Role="Management">
+              <PropertyRef Name="CurrentFinancialYear" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Managemen__Defau__253C7D7E">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="Management" Type="Self.Management" Multiplicity="*" />
@@ -1982,6 +2024,57 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="PayHeadAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="payHeadName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="type" Type="varchar(max)" Mode="In" />
+          <Parameter Name="narration" Type="varchar(max)" Mode="In" />
+          <Parameter Name="extraDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="PayHeadDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="payHeadId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="PayHeadEdit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="payHeadId" Type="numeric" Mode="In" />
+          <Parameter Name="payHeadName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="type" Type="varchar(max)" Mode="In" />
+          <Parameter Name="narration" Type="varchar(max)" Mode="In" />
+          <Parameter Name="extraDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="PayHeadGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="payHeadId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="PayHeadGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="IMEModelStoreContainer">
           <EntitySet Name="AccountGroup" EntityType="Self.AccountGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccountLedger" EntityType="Self.AccountLedger" Schema="dbo" store:Type="Tables" />
@@ -2005,9 +2098,11 @@
           <EntitySet Name="DualUse" EntityType="Self.DualUse" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExchangeRate" EntityType="Self.ExchangeRate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ExtendedRange" EntityType="Self.ExtendedRange" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FinancialYear" EntityType="Self.FinancialYear" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hazardous" EntityType="Self.Hazardous" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemNote" EntityType="Self.ItemNote" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LedgerPosting" EntityType="Self.LedgerPosting" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoaderDates" EntityType="Self.LoaderDates" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mail" EntityType="Self.Mail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Management" EntityType="Self.Management" Schema="dbo" store:Type="Tables" />
@@ -2162,6 +2257,10 @@
           <AssociationSet Name="FK__ItemNote__NoteID__2B0A656D" Association="Self.FK__ItemNote__NoteID__2B0A656D">
             <End Role="Notes" EntitySet="Notes" />
             <End Role="ItemNote" EntitySet="ItemNote" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Managemen__Curre__338A9CD5" Association="Self.FK__Managemen__Curre__338A9CD5">
+            <End Role="FinancialYear" EntitySet="FinancialYear" />
+            <End Role="Management" EntitySet="Management" />
           </AssociationSet>
           <AssociationSet Name="FK__Managemen__Defau__253C7D7E" Association="Self.FK__Managemen__Defau__253C7D7E">
             <End Role="Currency" EntitySet="Currency" />
@@ -2389,6 +2488,56 @@
     <edmx:ConceptualModels>
       <Schema Namespace="IMEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="IMEEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="PayHeadAdd">
+            <Parameter Name="payHeadName" Mode="In" Type="String" />
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="narration" Mode="In" Type="String" />
+            <Parameter Name="extraDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="PayHeadDelete">
+          <Parameter Name="payHeadId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="PayHeadEdit">
+            <Parameter Name="payHeadId" Mode="In" Type="Decimal" />
+            <Parameter Name="payHeadName" Mode="In" Type="String" />
+            <Parameter Name="type" Mode="In" Type="String" />
+            <Parameter Name="narration" Mode="In" Type="String" />
+            <Parameter Name="extraDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="PayHeadGet" ReturnType="Collection(IMEModel.PayHeadGet_Result)">
+          <Parameter Name="payHeadId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="PayHeadGetAll" ReturnType="Collection(IMEModel.PayHeadGetAll_Result)" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
           <EntitySet Name="AccountGroups" EntityType="IMEModel.AccountGroup" />
           <EntitySet Name="AccountLedgers" EntityType="IMEModel.AccountLedger" />
           <EntitySet Name="Areas" EntityType="IMEModel.Area" />
@@ -2410,9 +2559,11 @@
           <EntitySet Name="DualUses" EntityType="IMEModel.DualUse" />
           <EntitySet Name="ExchangeRates" EntityType="IMEModel.ExchangeRate" />
           <EntitySet Name="ExtendedRanges" EntityType="IMEModel.ExtendedRange" />
+          <EntitySet Name="FinancialYears" EntityType="IMEModel.FinancialYear" />
           <EntitySet Name="Hazardous" EntityType="IMEModel.Hazardou" />
           <EntitySet Name="ItemNotes" EntityType="IMEModel.ItemNote" />
           <EntitySet Name="Languages" EntityType="IMEModel.Language" />
+          <EntitySet Name="LedgerPostings" EntityType="IMEModel.LedgerPosting" />
           <EntitySet Name="LoaderDates" EntityType="IMEModel.LoaderDate" />
           <EntitySet Name="Mails" EntityType="IMEModel.Mail" />
           <EntitySet Name="Managements" EntityType="IMEModel.Management" />
@@ -2615,6 +2766,10 @@
             <End Role="Worker" EntitySet="Workers" />
             <End Role="DiscountValue" EntitySet="DiscountValues" />
           </AssociationSet>
+          <AssociationSet Name="FK__Managemen__Curre__338A9CD5" Association="IMEModel.FK__Managemen__Curre__338A9CD5">
+            <End Role="FinancialYear" EntitySet="FinancialYears" />
+            <End Role="Management" EntitySet="Managements" />
+          </AssociationSet>
           <AssociationSet Name="FK__ItemNote__NoteID__2B0A656D" Association="IMEModel.FK__ItemNote__NoteID__2B0A656D">
             <End Role="Note" EntitySet="Notes" />
             <End Role="ItemNote" EntitySet="ItemNotes" />
@@ -2779,7 +2934,19 @@
             <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
             <End Role="Worker" EntitySet="Workers" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
+        <ComplexType Name="PayHeadGet_Result">
+          <Property Type="Decimal" Name="PayheadId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="payHeadName" Nullable="true" />
+          <Property Type="String" Name="narration" Nullable="true" />
+          <Property Type="String" Name="type" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PayHeadGetAll_Result">
+          <Property Type="Decimal" Name="PayheadId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="payHeadName" Nullable="true" />
+          <Property Type="String" Name="narration" Nullable="true" />
+          <Property Type="String" Name="type" Nullable="true" />
+        </ComplexType>
         <EntityType Name="AccountGroup">
           <Key>
             <PropertyRef Name="accountGroupId" />
@@ -3114,6 +3281,16 @@
           <Property Name="ManufacturerCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="ExtendedRangeWeight" Type="Int32" />
         </EntityType>
+        <EntityType Name="FinancialYear">
+          <Key>
+            <PropertyRef Name="financialYearId" />
+          </Key>
+          <Property Name="financialYearId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fromDate" Type="DateTime" Precision="3" />
+          <Property Name="toDate" Type="DateTime" Precision="3" />
+          <Property Name="extraDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Managements" Relationship="IMEModel.FK__Managemen__Curre__338A9CD5" FromRole="FinancialYear" ToRole="Management" />
+        </EntityType>
         <EntityType Name="Hazardou">
           <Key>
             <PropertyRef Name="ArticleNo" />
@@ -3141,6 +3318,26 @@
           <Property Name="languagename" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CustomerWorkers" Relationship="IMEModel.FK__CustomerW__langu__72C60C4A" FromRole="Language" ToRole="CustomerWorker" />
           <NavigationProperty Name="SupplierWorkers" Relationship="IMEModel.FK__SupplierW__langu__72910220" FromRole="Language" ToRole="SupplierWorker" />
+        </EntityType>
+        <EntityType Name="LedgerPosting">
+          <Key>
+            <PropertyRef Name="ledgerPostingId" />
+          </Key>
+          <Property Name="ledgerPostingId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="voucherNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="debit" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="credit" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="detailsId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="yearId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="invoiceNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="chequeNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="chequeDate" Type="DateTime" Precision="3" />
+          <Property Name="extraDate" Type="DateTime" Precision="3" />
+          <Property Name="extra1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="extra2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="LoaderDate">
           <Key>
@@ -3177,7 +3374,9 @@
           <Property Name="VAT" Type="Decimal" Precision="5" Scale="2" />
           <Property Name="DefaultCurrency" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Factor" Type="Decimal" Nullable="false" Precision="6" Scale="3" />
+          <Property Name="CurrentFinancialYear" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="Currency" Relationship="IMEModel.FK__Managemen__Defau__253C7D7E" FromRole="Management" ToRole="Currency" />
+          <NavigationProperty Name="FinancialYear" Relationship="IMEModel.FK__Managemen__Curre__338A9CD5" FromRole="Management" ToRole="FinancialYear" />
         </EntityType>
         <EntityType Name="Note">
           <Key>
@@ -4387,6 +4586,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Managemen__Curre__338A9CD5">
+          <End Type="IMEModel.FinancialYear" Role="FinancialYear" Multiplicity="0..1" />
+          <End Type="IMEModel.Management" Role="Management" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinancialYear">
+              <PropertyRef Name="financialYearId" />
+            </Principal>
+            <Dependent Role="Management">
+              <PropertyRef Name="CurrentFinancialYear" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__ItemNote__NoteID__2B0A656D">
           <End Type="IMEModel.Note" Role="Note" Multiplicity="0..1" />
           <End Type="IMEModel.ItemNote" Role="ItemNote" Multiplicity="*" />
@@ -4869,6 +5080,36 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="IMEModelStoreContainer" CdmEntityContainer="IMEEntities">
+          <FunctionImportMapping FunctionImportName="PayHeadAdd" FunctionName="IMEModel.Store.PayHeadAdd" />
+          <FunctionImportMapping FunctionImportName="PayHeadDelete" FunctionName="IMEModel.Store.PayHeadDelete" />
+          <FunctionImportMapping FunctionImportName="PayHeadEdit" FunctionName="IMEModel.Store.PayHeadEdit" />
+          <FunctionImportMapping FunctionImportName="PayHeadGet" FunctionName="IMEModel.Store.PayHeadGet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.PayHeadGet_Result">
+                <ScalarProperty Name="PayheadId" ColumnName="PayheadId" />
+                <ScalarProperty Name="payHeadName" ColumnName="payHeadName" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PayHeadGetAll" FunctionName="IMEModel.Store.PayHeadGetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.PayHeadGetAll_Result">
+                <ScalarProperty Name="PayheadId" ColumnName="PayheadId" />
+                <ScalarProperty Name="payHeadName" ColumnName="payHeadName" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="IMEModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="IMEModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="IMEModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="IMEModel.Store.sp_helpdiagramdefinition" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="IMEModel.Store.sp_helpdiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="IMEModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="IMEModel.Store.sp_upgraddiagrams" />
           <EntitySetMapping Name="AccountGroups">
             <EntityTypeMapping TypeName="IMEModel.AccountGroup">
               <MappingFragment StoreEntitySet="AccountGroup">
@@ -5167,6 +5408,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="FinancialYears">
+            <EntityTypeMapping TypeName="IMEModel.FinancialYear">
+              <MappingFragment StoreEntitySet="FinancialYear">
+                <ScalarProperty Name="extraDate" ColumnName="extraDate" />
+                <ScalarProperty Name="toDate" ColumnName="toDate" />
+                <ScalarProperty Name="fromDate" ColumnName="fromDate" />
+                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Hazardous">
             <EntityTypeMapping TypeName="IMEModel.Hazardou">
               <MappingFragment StoreEntitySet="Hazardous">
@@ -5192,6 +5443,27 @@
               <MappingFragment StoreEntitySet="Languages">
                 <ScalarProperty Name="languagename" ColumnName="languagename" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LedgerPostings">
+            <EntityTypeMapping TypeName="IMEModel.LedgerPosting">
+              <MappingFragment StoreEntitySet="LedgerPosting">
+                <ScalarProperty Name="extra2" ColumnName="extra2" />
+                <ScalarProperty Name="extra1" ColumnName="extra1" />
+                <ScalarProperty Name="extraDate" ColumnName="extraDate" />
+                <ScalarProperty Name="chequeDate" ColumnName="chequeDate" />
+                <ScalarProperty Name="chequeNo" ColumnName="chequeNo" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="yearId" ColumnName="yearId" />
+                <ScalarProperty Name="detailsId" ColumnName="detailsId" />
+                <ScalarProperty Name="credit" ColumnName="credit" />
+                <ScalarProperty Name="debit" ColumnName="debit" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="ledgerPostingId" ColumnName="ledgerPostingId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -5226,6 +5498,7 @@
           <EntitySetMapping Name="Managements">
             <EntityTypeMapping TypeName="IMEModel.Management">
               <MappingFragment StoreEntitySet="Management">
+                <ScalarProperty Name="CurrentFinancialYear" ColumnName="CurrentFinancialYear" />
                 <ScalarProperty Name="Factor" ColumnName="Factor" />
                 <ScalarProperty Name="DefaultCurrency" ColumnName="DefaultCurrency" />
                 <ScalarProperty Name="VAT" ColumnName="VAT" />
@@ -5916,7 +6189,7 @@
               <ScalarProperty Name="AuthorizationID" ColumnName="AuthorizationID" />
             </EndProperty>
           </AssociationSetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
