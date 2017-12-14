@@ -59,6 +59,8 @@ namespace LoginForm.PurchaseOrder
                                m.MailAddress
                            }).ToList();
             dgMail.DataSource = adapter;
+
+            dgMail.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void CCFill()
@@ -71,6 +73,8 @@ namespace LoginForm.PurchaseOrder
                                m.MailAddress
                            }).ToList();
             dgCc.DataSource = adapter;
+
+            dgCc.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void PurchaseExportFiles_Load(object sender, EventArgs e)
@@ -92,7 +96,7 @@ namespace LoginForm.PurchaseOrder
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            NewPurchaseOrder f = new NewPurchaseOrder();
+            PurchaseOrderMain f = new PurchaseOrderMain();
             if (MessageBox.Show("Are You Sure To Exit Programme ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 f.ShowDialog();
@@ -173,7 +177,7 @@ namespace LoginForm.PurchaseOrder
             MessageBox.Show(i + "CC E-Mails successfully sent.", "Success !");
             #endregion
 
-            FormLogin f = new FormLogin();
+            PurchaseOrderMain f = new PurchaseOrderMain();
             f.Show();
             this.Close();
 

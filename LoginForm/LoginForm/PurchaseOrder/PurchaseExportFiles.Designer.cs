@@ -30,6 +30,7 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtMail = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgMail = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -41,7 +42,6 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.txtDate = new System.Windows.Forms.MaskedTextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.txtMail = new System.Windows.Forms.TextBox();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgMail)).BeginInit();
@@ -54,7 +54,7 @@
             // 
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(202, 280);
+            this.groupBox1.Size = new System.Drawing.Size(106, 118);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "File List";
@@ -62,19 +62,28 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtMail);
-            this.groupBox2.Location = new System.Drawing.Point(220, 12);
+            this.groupBox2.Location = new System.Drawing.Point(124, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(420, 280);
+            this.groupBox2.Size = new System.Drawing.Size(679, 502);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
             // 
+            // txtMail
+            // 
+            this.txtMail.Location = new System.Drawing.Point(6, 16);
+            this.txtMail.Multiline = true;
+            this.txtMail.Name = "txtMail";
+            this.txtMail.ReadOnly = true;
+            this.txtMail.Size = new System.Drawing.Size(667, 480);
+            this.txtMail.TabIndex = 0;
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dgMail);
-            this.groupBox3.Location = new System.Drawing.Point(648, 12);
+            this.groupBox3.Location = new System.Drawing.Point(809, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(350, 139);
+            this.groupBox3.Size = new System.Drawing.Size(350, 246);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "E-Mail to";
@@ -88,15 +97,15 @@
             this.dgMail.Location = new System.Drawing.Point(3, 16);
             this.dgMail.Name = "dgMail";
             this.dgMail.ReadOnly = true;
-            this.dgMail.Size = new System.Drawing.Size(344, 120);
+            this.dgMail.Size = new System.Drawing.Size(344, 227);
             this.dgMail.TabIndex = 0;
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.dgCc);
-            this.groupBox4.Location = new System.Drawing.Point(651, 153);
+            this.groupBox4.Location = new System.Drawing.Point(812, 268);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(347, 139);
+            this.groupBox4.Size = new System.Drawing.Size(347, 246);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "E-Mail cc";
@@ -110,7 +119,7 @@
             this.dgCc.Location = new System.Drawing.Point(3, 16);
             this.dgCc.Name = "dgCc";
             this.dgCc.ReadOnly = true;
-            this.dgCc.Size = new System.Drawing.Size(341, 120);
+            this.dgCc.Size = new System.Drawing.Size(341, 227);
             this.dgCc.TabIndex = 1;
             // 
             // chkAddDate
@@ -128,7 +137,7 @@
             this.chkDefoult.AutoSize = true;
             this.chkDefoult.Checked = true;
             this.chkDefoult.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkDefoult.Location = new System.Drawing.Point(220, 320);
+            this.chkDefoult.Location = new System.Drawing.Point(217, 542);
             this.chkDefoult.Name = "chkDefoult";
             this.chkDefoult.Size = new System.Drawing.Size(92, 17);
             this.chkDefoult.TabIndex = 6;
@@ -137,7 +146,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(648, 306);
+            this.btnEdit.Location = new System.Drawing.Point(803, 530);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(128, 37);
             this.btnEdit.TabIndex = 7;
@@ -147,7 +156,7 @@
             // 
             // btnCreatePurchase
             // 
-            this.btnCreatePurchase.Location = new System.Drawing.Point(782, 306);
+            this.btnCreatePurchase.Location = new System.Drawing.Point(937, 530);
             this.btnCreatePurchase.Name = "btnCreatePurchase";
             this.btnCreatePurchase.Size = new System.Drawing.Size(128, 37);
             this.btnCreatePurchase.TabIndex = 8;
@@ -157,7 +166,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(916, 306);
+            this.btnClose.Location = new System.Drawing.Point(1071, 530);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(82, 37);
             this.btnClose.TabIndex = 9;
@@ -177,33 +186,24 @@
             // 
             this.groupBox5.Controls.Add(this.txtDate);
             this.groupBox5.Controls.Add(this.chkAddDate);
-            this.groupBox5.Location = new System.Drawing.Point(12, 298);
+            this.groupBox5.Location = new System.Drawing.Point(9, 520);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(175, 48);
             this.groupBox5.TabIndex = 11;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Date";
             // 
-            // txtMail
-            // 
-            this.txtMail.Location = new System.Drawing.Point(6, 16);
-            this.txtMail.Multiline = true;
-            this.txtMail.Name = "txtMail";
-            this.txtMail.ReadOnly = true;
-            this.txtMail.Size = new System.Drawing.Size(413, 260);
-            this.txtMail.TabIndex = 0;
-            // 
             // PurchaseExportFiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1010, 355);
+            this.ClientSize = new System.Drawing.Size(1165, 577);
             this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnCreatePurchase);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.chkDefoult);
-            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
