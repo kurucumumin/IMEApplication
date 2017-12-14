@@ -35,13 +35,15 @@ namespace LoginForm.PurchaseOrder
         {
             List<Mail> MailList = new List<Mail>();
             IME = new IMEEntities();
-            MailList = IME.Mails.ToList();
+        //    MailList = IME.Mails.ToList();
 
-            for (int i =0; i< MailList.Count; i++)
+            for (int i = 0; i < dgMail.RowCount-1; i++)
             {
-                string mail = dgMail.Rows[i].Cells[2].Value.ToString();
+                DataGridViewRow row = dgMail.Rows[i];
+                int ID = (int)row.Cells[id.Index].Value;
+                var adapter = IME.Mails.Where(a => a.id == ID).FirstOrDefault();
 
-                if (IME.Mails.Where(a=>a.MailAddress==mail).FirstOrDefault()==null)
+                if (adapter == null)
                 {
                     Mail m = new Mail();
 
@@ -54,19 +56,17 @@ namespace LoginForm.PurchaseOrder
                 }
                 else
                 {
-                    Mail m = IME.Mails.Where(a => a.MailAddress == mail).FirstOrDefault();
-                    m.FirstName = dgMail.Rows[i].Cells[1].Value.ToString();
-                    m.MailAddress = dgMail.Rows[i].Cells[2].Value.ToString();
-                    m.cc = (dgMail.Rows[i].Cells[3].Value != null) ? (bool)dgMail.Rows[i].Cells[3].Value : false;
-                    m.too = (dgMail.Rows[i].Cells[4].Value != null) ? (bool)dgMail.Rows[i].Cells[4].Value : false;
-
-                    IME.SaveChanges();
+                    adapter.FirstName = row.Cells[FirstName.Index].Value.ToString();
+                    adapter.MailAddress = row.Cells[MailAddress.Index].Value.ToString();
+                    adapter.cc = (row.Cells[cc.Index].Value != null) ? (bool)row.Cells[cc.Index].Value : false;
+                    adapter.too = (row.Cells[too.Index].Value != null) ? (bool)row.Cells[too.Index].Value : false;
                 }
             }
-
             IME.Mails.AddRange(MailList);
             IME.SaveChanges();
             MessageBox.Show("Mail is successfully added", "Success");
+
+            this.Close();
         }
 
         private void radioSpecial_CheckedChanged(object sender, EventArgs e)

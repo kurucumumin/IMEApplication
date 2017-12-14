@@ -12,33 +12,23 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class VoucherType
+    public partial class FinancialYear
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public VoucherType()
+        public FinancialYear()
         {
             this.AdvancePayments = new HashSet<AdvancePayment>();
-            this.VoucherTypeTaxes = new HashSet<VoucherTypeTax>();
+            this.Managements = new HashSet<Management>();
         }
     
-        public decimal voucherTypeId { get; set; }
-        public string voucherTypeName { get; set; }
-        public string typeOfVoucher { get; set; }
-        public string methodOfVoucherNumbering { get; set; }
-        public Nullable<bool> isTaxApplicable { get; set; }
-        public string narration { get; set; }
-        public Nullable<bool> isActive { get; set; }
-        public Nullable<bool> isDefault { get; set; }
-        public Nullable<int> masterId { get; set; }
-        public string declaration { get; set; }
-        public string heading1 { get; set; }
-        public string heading2 { get; set; }
-        public string heading3 { get; set; }
-        public string heading4 { get; set; }
+        public decimal financialYearId { get; set; }
+        public Nullable<System.DateTime> fromDate { get; set; }
+        public Nullable<System.DateTime> toDate { get; set; }
+        public Nullable<System.DateTime> extraDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AdvancePayment> AdvancePayments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VoucherTypeTax> VoucherTypeTaxes { get; set; }
+        public virtual ICollection<Management> Managements { get; set; }
     }
 }

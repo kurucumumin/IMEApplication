@@ -46,6 +46,7 @@ namespace LoginForm.PurchaseOrder
             form.ShowDialog();
             this.Show();
             ToFill(); CCFill();
+            RefreshMailList();
         }
 
         private void ToFill()
@@ -79,15 +80,7 @@ namespace LoginForm.PurchaseOrder
             ToFill();
             CCFill();
             txtDate.Text = DateTime.Now.ToString();
-            for (int i = 0; i < dgCc.RowCount; i++)
-            {
-                ccList.Add(dgCc.Rows[i].Cells[1].Value.ToString());
-            }
-
-            for (int i = 0; i < dgMail.RowCount; i++)
-            {
-                toList.Add(dgCc.Rows[i].Cells[1].Value.ToString());
-            }
+            RefreshMailList();
             #endregion
             var txt = CreateTxt();
             for (int i = 0; i < txt.Count(); i++)
@@ -162,12 +155,14 @@ namespace LoginForm.PurchaseOrder
             attachment = new Attachment(@"C:\Users\pomak\Desktop\Order.txt");
             mail.Attachments.Add(attachment);
             int i = 0;
-
+            toList.Clear();
+            ccList.Clear();
+            RefreshMailList();
             for (i = 0; i < toList.Count; i++)
             {
                 mail.To.Add(toList[i]);
             }
-            MessageBox.Show(i + " E-Mails successfully sent.", "Success !");
+            MessageBox.Show(i + "To E-Mails successfully sent.", "Success !");
 
             for (i = 0; i < ccList.Count; i++)
             {
@@ -175,7 +170,7 @@ namespace LoginForm.PurchaseOrder
             }
             Thread.Sleep(TimeSpan.FromSeconds(1));
             sc.Send(mail);
-            MessageBox.Show(i + " E-Mails successfully sent.", "Success !");
+            MessageBox.Show(i + "CC E-Mails successfully sent.", "Success !");
             #endregion
 
             FormLogin f = new FormLogin();
@@ -429,6 +424,19 @@ namespace LoginForm.PurchaseOrder
             lineFT = "FT" + OrderQuantityControl + OrderLineControl + filler1;
             TXTList.Add(lineFT);
             return TXTList.ToArray();
+        }
+
+        private void RefreshMailList()
+        {
+            for (int i = 0; i < dgCc.RowCount; i++)
+            {
+                ccList.Add(dgCc.Rows[i].Cells[1].Value.ToString());
+            }
+
+            for (int i = 0; i < dgMail.RowCount; i++)
+            {
+                toList.Add(dgMail.Rows[i].Cells[1].Value.ToString());
+            }
         }
     }
 }

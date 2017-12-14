@@ -14,6 +14,12 @@ namespace LoginForm.DataSet
     
     public partial class AccountLedger
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public AccountLedger()
+        {
+            this.AdvancePayments = new HashSet<AdvancePayment>();
+        }
+    
         public decimal ledgerId { get; set; }
         public Nullable<decimal> accountGroupID { get; set; }
         public string ledgerName { get; set; }
@@ -39,5 +45,8 @@ namespace LoginForm.DataSet
         public string branchCode { get; set; }
         public Nullable<System.DateTime> extraDate { get; set; }
         public Nullable<decimal> areaId { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AdvancePayment> AdvancePayments { get; set; }
     }
 }

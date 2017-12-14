@@ -29,6 +29,7 @@ namespace LoginForm.DataSet
     
         public virtual DbSet<AccountGroup> AccountGroups { get; set; }
         public virtual DbSet<AccountLedger> AccountLedgers { get; set; }
+        public virtual DbSet<AdvancePayment> AdvancePayments { get; set; }
         public virtual DbSet<Area> Areas { get; set; }
         public virtual DbSet<AuthorizationValue> AuthorizationValues { get; set; }
         public virtual DbSet<Capital> Capitals { get; set; }
@@ -44,10 +45,12 @@ namespace LoginForm.DataSet
         public virtual DbSet<CustomerTitle> CustomerTitles { get; set; }
         public virtual DbSet<CustomerWorker> CustomerWorkers { get; set; }
         public virtual DbSet<DailyDiscontinued> DailyDiscontinueds { get; set; }
+        public virtual DbSet<Designation> Designations { get; set; }
         public virtual DbSet<DiscountValue> DiscountValues { get; set; }
         public virtual DbSet<DualUse> DualUses { get; set; }
         public virtual DbSet<ExchangeRate> ExchangeRates { get; set; }
         public virtual DbSet<ExtendedRange> ExtendedRanges { get; set; }
+        public virtual DbSet<FinancialYear> FinancialYears { get; set; }
         public virtual DbSet<Hazardou> Hazardous { get; set; }
         public virtual DbSet<ItemNote> ItemNotes { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
@@ -55,6 +58,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<LoaderDate> LoaderDates { get; set; }
         public virtual DbSet<Mail> Mails { get; set; }
         public virtual DbSet<Management> Managements { get; set; }
+        public virtual DbSet<MonthlySalary> MonthlySalaries { get; set; }
         public virtual DbSet<Note> Notes { get; set; }
         public virtual DbSet<OnSale> OnSales { get; set; }
         public virtual DbSet<PayHead> PayHeads { get; set; }

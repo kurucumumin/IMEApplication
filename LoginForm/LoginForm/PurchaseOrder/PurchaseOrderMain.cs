@@ -39,8 +39,8 @@ namespace LoginForm.PurchaseOrder
                 MessageBox.Show("Please Enter a Fiche No", "Eror !");
             else
             {
-                
-                NewPurchaseOrder f = new NewPurchaseOrder(fish_no,1);
+
+                NewPurchaseOrder f = new NewPurchaseOrder(fish_no, 1);
                 try { this.Hide(); f.ShowDialog(); this.Show(); } catch { }
             }
             #endregion
@@ -51,7 +51,7 @@ namespace LoginForm.PurchaseOrder
             IME = new IMEEntities();
 
             #region Update Purchase Order Reason
-            for(int i = 0; i < dgPurchase.RowCount-1; i++)
+            for (int i = 0; i < dgPurchase.RowCount - 1; i++)
             {
                 DataGridViewRow row = dgPurchase.Rows[i];
                 string ID = row.Cells[FicheNo.Index].Value.ToString();
@@ -63,11 +63,17 @@ namespace LoginForm.PurchaseOrder
                     adapter.CustomerID = row.Cells[CustomerID.Index].Value.ToString();
                     adapter.Customer.c_name = row.Cells[c_name.Index].Value.ToString();
                     adapter.CameDate = (DateTime)row.Cells[CameDate.Index].Value;
-                    adapter.Reason = row.Cells[Reason.Index].Value.ToString();
+                    if (row.Cells[Reason.Index].Value == null || row.Cells[Reason.Index].Value.ToString() == "")
+                    {
+                        adapter.Reason = "";
+                    }
+                    else adapter.Reason = row.Cells[Reason.Index].Value.ToString();
+
+
                 }
             }
             IME.SaveChanges();
-
+            #endregion
             if (MessageBox.Show("Are You Sure To Exit Programme ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 this.Hide();
@@ -76,10 +82,7 @@ namespace LoginForm.PurchaseOrder
 
         private void PurchaseOrderMain_Load(object sender, EventArgs e)
         {
-         
             PurchaseOrderFill(DateTime.Today, DateTime.Today.AddDays(-7));
-
-
         }
 
         private void PurchaseOrderFill(DateTime startDate, DateTime endDate)
@@ -227,14 +230,6 @@ namespace LoginForm.PurchaseOrder
         {
             string PurchaseNo = dgPurchase.CurrentRow.Cells[0].Value.ToString();
             ExcelPurchaseOrder.Export(dgPurchase, PurchaseNo);
-        }
-
-        private void dgPurchase_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            
-
-            #endregion
-
         }
     }
 }

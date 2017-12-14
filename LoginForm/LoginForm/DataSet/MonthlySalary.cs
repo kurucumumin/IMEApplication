@@ -12,16 +12,10 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class Management
+    public partial class MonthlySalary
     {
-        public int ID { get; set; }
-        public Nullable<decimal> LowMarginLimit { get; set; }
-        public Nullable<decimal> VAT { get; set; }
-        public Nullable<decimal> DefaultCurrency { get; set; }
-        public decimal Factor { get; set; }
-        public Nullable<decimal> CurrentFinancialYear { get; set; }
-    
-        public virtual Currency Currency { get; set; }
-        public virtual FinancialYear FinancialYear { get; set; }
+        public decimal monthlySalaryId { get; set; }
+        public Nullable<System.DateTime> salaryMonth { get; set; }
+        public string narration { get; set; }
     }
 }

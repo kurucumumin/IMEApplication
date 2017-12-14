@@ -181,6 +181,8 @@
             // 
             // dgPurchase
             // 
+            this.dgPurchase.AllowUserToAddRows = false;
+            this.dgPurchase.AllowUserToDeleteRows = false;
             this.dgPurchase.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgPurchase.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FicheNo,
@@ -193,7 +195,6 @@
             this.dgPurchase.Name = "dgPurchase";
             this.dgPurchase.Size = new System.Drawing.Size(1365, 434);
             this.dgPurchase.TabIndex = 9;
-            this.dgPurchase.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPurchase_CellEndEdit);
             // 
             // btnClose
             // 
@@ -236,11 +237,15 @@
             // 
             // FicheNo
             // 
+            this.FicheNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.FicheNo.HeaderText = "Fiche No";
             this.FicheNo.Name = "FicheNo";
+            this.FicheNo.ReadOnly = true;
+            this.FicheNo.Width = 75;
             // 
             // PurchaseOrderDate
             // 
+            this.PurchaseOrderDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.PurchaseOrderDate.HeaderText = "Date";
             this.PurchaseOrderDate.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
             // 
@@ -269,19 +274,27 @@
             this.PurchaseOrderDate.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.PurchaseOrderDate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
             this.PurchaseOrderDate.Name = "PurchaseOrderDate";
+            this.PurchaseOrderDate.ReadOnly = true;
+            this.PurchaseOrderDate.Width = 55;
             // 
             // CustomerID
             // 
+            this.CustomerID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.CustomerID.HeaderText = "Customer ID";
             this.CustomerID.Name = "CustomerID";
+            this.CustomerID.ReadOnly = true;
+            this.CustomerID.Width = 90;
             // 
             // c_name
             // 
+            this.c_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.c_name.HeaderText = "Customer Name";
             this.c_name.Name = "c_name";
+            this.c_name.ReadOnly = true;
             // 
             // CameDate
             // 
+            this.CameDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.CameDate.HeaderText = "CameDate";
             this.CameDate.InputHorizontalAlignment = DevComponents.Editors.eHorizontalAlignment.Left;
             // 
@@ -310,11 +323,15 @@
             this.CameDate.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.CameDate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
             this.CameDate.Name = "CameDate";
+            this.CameDate.ReadOnly = true;
+            this.CameDate.Width = 82;
             // 
             // Reason
             // 
+            this.Reason.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Reason.HeaderText = "Reason";
             this.Reason.Name = "Reason";
+            this.Reason.Width = 69;
             // 
             // PurchaseOrderMain
             // 
