@@ -87,11 +87,12 @@ namespace LoginForm.PurchaseOrder
                 toList.Add(dgCc.Rows[i].Cells[1].Value.ToString());
             }
             #endregion
-            for (int i = 0; i < CreateTxt().Count(); i++)
+            var txt = CreateTxt();
+            for (int i = 0; i < txt.Count(); i++)
             {
-                txtMail.Text = CreateTxt()[i] + " \r\n";
+                txtMail.Text = txtMail.Text + txt[i] + "\r\n";
             }
-
+            txtCreate.newTxt(txt);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -188,8 +189,8 @@ namespace LoginForm.PurchaseOrder
             string s = rowList[0].Cells[3].Value.ToString();
 
             string COO ="   ";//TO DO COUNTRYCODE
-            string OrderDate = DateTime.Today.ToShortDateString();//TransmissionDate
-            string OrderTime = DateTime.Today.ToShortTimeString();//TransmissionDate
+            string OrderDate = DateTime.Now.ToString("dd.MM.yyyy");//TransmissionDate
+            string OrderTime = DateTime.Now.ToString("HH.mm");//TransmissionDate
             string filler1 ="";
             for (int i = 0; i < 130; i++)
             {
@@ -210,32 +211,52 @@ namespace LoginForm.PurchaseOrder
             Line1 = "FH" + COO + OrderDate + OrderTime + filler1;
             TXTList.Add(Line1);
             string Line2 = "";
-            string AccountNumber = "";
+            string AccountNumber = "";//accounting numarası
             for (int i = 0; i < 10; i++)
             {
                 AccountNumber += " ";
             }
-            string ShiptoAccountNumber = "";
-            for (int i = 0; i < 10; i++)
+            string saleOrderN = rowList.FirstOrDefault().Cells["SaleOrderNo"].Value.ToString();
+           
+            string OrderNature = "";
+            if (IME.SaleOrders.Where(a => a.SaleOrderNo == saleOrderN).FirstOrDefault().SaleOrderNature == "XDOC")
             {
-                ShiptoAccountNumber += " ";
+                OrderNature = "D";
             }
-            string OrderNature = " ";
+            else { OrderNature = "E"; }
             string PackType = " ";
             string OrderNumber = "     ";
-            string CustomerDistOrderReference = "";
+            string CustomerDistOrderReference = fiche;
+            CustomerDistOrderReference = CustomerDistOrderReference+"/DB/"+DateTime.Now.ToString("MMM") +"/"+DateTime.Now.ToString("yy");
             for (int i = 0; i < 30; i++)
             {
                 CustomerDistOrderReference += " ";
             }
-            string MethodofDespatch = "   ";
+            string MethodofDespatch = "";
+            switch (IME.SaleOrders.Where(a => a.SaleOrderNo == saleOrderN).FirstOrDefault().ShippingType)
+            {
+                case "Air Freight":
+                    MethodofDespatch = "AFT";
+                    break;
+                case "Sea Freight":
+                    MethodofDespatch = "SFT";
+                    break;
+                case "Truck":
+                    MethodofDespatch = "TRA";
+                    break;
+                case "Express":
+                    MethodofDespatch = "EXP";
+                    break;
+            }
+            
+
             string AutomaticBackOrderAllowed = " ";
             string CustomerPONumber = "";
             for (int i = 0; i < 22; i++)
             {
                 CustomerPONumber += " ";
             }
-            string SupplyingCompany = "    ";
+            string SupplyingCompany = "GB01";
             string RequestDelDate = "";
             for (int i = 0; i < 8; i++)
             {
@@ -247,14 +268,14 @@ namespace LoginForm.PurchaseOrder
                 filler1 += " ";
             }
 
-            Line2 = "OH" + AccountNumber+ ShiptoAccountNumber+ OrderNature+ PackType+ OrderNumber+ CustomerDistOrderReference+ MethodofDespatch+
+            Line2 = "OH" + AccountNumber+ AccountNumber + OrderNature+ PackType+ OrderNumber+ CustomerDistOrderReference+ MethodofDespatch+
                 AutomaticBackOrderAllowed+ CustomerPONumber+ SupplyingCompany+ RequestDelDate+filler1;
             TXTList.Add(Line2);
             string Line3 = "";
-            string CustomerName = "";
-            for (int i = 0; i < 35; i++)
+            string CustomerName = "INSTALLATIONS MIDDLE EAST";
+            for (int i = 0; i < 35- CustomerName.Length; i++)
             {
-                CustomerName += " ";
+                CustomerName = CustomerName+ " ";
             }
             string CustomerAddressLine1 = "";
             for (int i = 0; i < 35; i++)
@@ -268,41 +289,37 @@ namespace LoginForm.PurchaseOrder
             }
             Line3 = "C1" + CustomerName + CustomerAddressLine1 + filler1;
             TXTList.Add(Line3);
+            string adress = "SHEIKH MAJID BUILDING, SHOP No.4, SHEIKH ZAYED ROAD, AL QUOS AREA";
             string Line4 = "";
-            string CustomerName2 = "";
-            for (int i = 0; i < 35; i++)
+            filler1 = "";
+            for (int i = 0; i < 148-adress.Length; i++)
             {
-                CustomerName2 += " ";
+                filler1 = " ";
             }
-            string CustomerAddressLine1_2 = "";
-            for (int i = 0; i < 35; i++)
-            {
-                CustomerAddressLine1_2 += " ";
-            }
-
-            Line4 = "C2" + CustomerName2 + CustomerAddressLine1_2 + filler1;
+            Line4 = "C2" + adress + filler1;
             TXTList.Add(Line4);
 
 
             string line5 = "";
-            string CustomerAddressLine4 = "";
-            for (int i = 0; i < 35; i++)
+            string CustomerAddressLine4 = "DUBAI";
+            for (int i = 0; i < 30; i++)
             {
                 CustomerAddressLine4 += " ";
             }
-            string ForAttentionof = "";
-            for (int i = 0; i < 30; i++)
+            string saleOrderNo = rowList.FirstOrDefault().Cells["SaleOrderNo"].Value.ToString();
+            string ForAttentionof = saleOrderNo;//saleordernumber
+            for (int i = 0; i < 30-ForAttentionof.Length; i++)
             {
                 ForAttentionof += " ";
             }
-            string Postcode = "";
-            for (int i = 0; i < 9; i++)
+            string Postcode = "5253";
+            for (int i = 0; i < 5; i++)
             {
-                Postcode += " ";
+                Postcode = Postcode+" ";
             }
-            string Countrycode = "  ";
-            string ContacttelephoneNumber = "";
-            for (int i = 0; i < 30; i++)
+            string Countrycode = "AE";
+            string ContacttelephoneNumber = "3433444";
+            for (int i = 0; i < 23; i++)
             {
                 ContacttelephoneNumber += " ";
             }
@@ -324,31 +341,33 @@ namespace LoginForm.PurchaseOrder
             {
                 filler1 += " ";
             }
+            Line6 = "C4" + DeliveryInstruction + filler1;
             TXTList.Add(Line6);
             int totalquantity = 0;
+            int totalitemLine = 0;
             foreach (var item in rowList)
             {
                 string productNumber = item.Cells["ItemCode"].Value.ToString();
-                int pn = Int32.Parse(productNumber);
-                PurchaseOrderDetail po = IME.PurchaseOrderDetails.Where(a => a.ID == pn).FirstOrDefault();
+                string saleOrderNumber = item.Cells["SaleOrderNo"].Value.ToString();
+                SaleOrderDetail po = IME.SaleOrderDetails.Where(b=>b.SaleOrderNo== saleOrderNumber).Where(a => a.ItemCode == productNumber).FirstOrDefault();
+                //if (productNumber.Length == 6) productNumber = "0" + productNumber;
+                for (int i = 0; i < 18-productNumber.Length; i++)
+                {
+                    productNumber += " ";
+                }
                 string itemLine = "";
                 int orderqty = 0;
-                if(po.SendQty!=null)orderqty=Int32.Parse(po.SendQty.ToString());
-                string OrderQuantity = "";
-                string zeronumber = "";
-                for (int i = 0; i < 5- orderqty.ToString().Length; i++)
+                if(po!=null)orderqty=Int32.Parse(po.Quantity.ToString());
+                string OrderQuantity = orderqty.ToString();
+
+                for (int i = 0; i < 5-orderqty.ToString().Length; i++)
                 {
-                    zeronumber += " ";
-                }
-                if (orderqty != 0)
-                {
-                    OrderQuantity = zeronumber + orderqty.ToString();
-                    totalquantity += orderqty;
+                    OrderQuantity = "0" + OrderQuantity;
                 }
 
-                string PackType1 = " ";
-                string ProductDescription;
-                ProductDescription = po.ItemDescription;
+                string PackType1 = "S";
+                string ProductDescription="";
+                if(po.ItemDescription!=null)ProductDescription = po.ItemDescription;
                 for (int i = 0; i < 40 - ProductDescription.ToString().Length; i++)
                 {
                     ProductDescription += " " + ProductDescription;
@@ -364,8 +383,13 @@ namespace LoginForm.PurchaseOrder
                     LocalPrePickReference += " ";
                 }
                 string PurchaseOrderItemNumber = "";
-                PurchaseOrderItemNumber = item.Index.ToString();
-                string ItemRequestedDeliveryDate = "";
+                totalitemLine++;
+                PurchaseOrderItemNumber = totalitemLine.ToString();
+                for (int i = 0; i < 6-totalitemLine.ToString().Length; i++)
+                {
+                    PurchaseOrderItemNumber = "0" + PurchaseOrderItemNumber;
+                }
+                string ItemRequestedDeliveryDate = "";//boş bırakılacak
                 for (int i = 0; i < 8; i++)
                 {
                     ItemRequestedDeliveryDate += " ";
@@ -377,15 +401,20 @@ namespace LoginForm.PurchaseOrder
                 }
                 itemLine = "OL" + productNumber + OrderQuantity + PackType1 + ProductDescription + LocalStoresLocation + LocalPrePickReference + PurchaseOrderItemNumber + ItemRequestedDeliveryDate + filler1;
                 TXTList.Add(itemLine);
+                
             }
             string lineOT = "";
             string OrderQuantityControl = "";
             OrderQuantityControl = totalquantity.ToString();
             for (int i = 0; i < 10-totalquantity.ToString().Length; i++)
             {
-                OrderQuantityControl += " ";
+                OrderQuantityControl = "0"+ OrderQuantityControl;
             }
-            string OrderLineControl = "    ";
+            string OrderLineControl = totalitemLine.ToString();
+            for (int i = 0; i < 5 - totalitemLine.ToString().Length; i++)
+            {
+                OrderLineControl = "0" + OrderLineControl;
+            }
             filler1 = "";
             for (int i = 0; i < 134; i++)
             {
@@ -394,9 +423,8 @@ namespace LoginForm.PurchaseOrder
             lineOT = "OT" + OrderQuantityControl + OrderLineControl + filler1;
             TXTList.Add(lineOT);
             string lineFT;
-            OrderQuantityControl = OrderQuantityControl;//Bunun diğeri ile ne farkı var ???
 
-            lineFT = "OT" + OrderQuantityControl + OrderLineControl + filler1;
+            lineFT = "FT" + OrderQuantityControl + OrderLineControl + filler1;
             TXTList.Add(lineFT);
             return TXTList.ToArray();
         }

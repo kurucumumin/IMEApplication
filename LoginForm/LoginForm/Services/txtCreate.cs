@@ -27,10 +27,9 @@ namespace LoginForm.Services
                     while (txtArray.Count() > a)
                     {
                         tw.WriteLine(txtArray[a]);
-                        tw.Close();
                         a++;
                     }
-                    
+                    tw.Close();
                 }
                    
             }
