@@ -55,7 +55,7 @@ namespace LoginForm.PurchaseOrder
 
             PurchaseExportFiles form = new PurchaseExportFiles(rowList, (Int32.Parse(purchasecode)+1).ToString());
             form.ShowDialog();
-
+            this.Close();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

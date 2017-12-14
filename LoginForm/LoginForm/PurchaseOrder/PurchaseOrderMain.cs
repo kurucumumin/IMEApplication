@@ -148,42 +148,56 @@ namespace LoginForm.PurchaseOrder
         {
             if (search != null)
             {
-                PurchaseOrderDetail quotation;
-                var saleorder = IME.PurchaseOrderDetails.Where(a => a.SaleOrderNo == search).FirstOrDefault();
-                if (saleorder != null)
+                
+                var cname = IME.PurchaseOrders.Where(a => a.Customer.c_name == search).FirstOrDefault();
+                if (cname != null)
                 {
-                    var fichenolist = (from p in IME.PurchaseOrderDetails.Where(p => p.SaleOrderNo == search)
-                                       join po in IME.PurchaseOrders on p.PurchaseOrder.FicheNo equals po.FicheNo
+                    var fichenolist = (from p in IME.PurchaseOrders.Where(p => p.Customer.c_name == search)
                                        select new
                                        {
-                                           po.FicheNo,
-                                           po.PurchaseOrderDate,
-                                           po.CustomerID,
-                                           po.Customer.c_name,
-                                           po.CameDate,
-                                           po.Reason
+                                           p.FicheNo,
+                                           p.PurchaseOrderDate,
+                                           p.CustomerID,
+                                           p.Customer.c_name,
+                                           p.CameDate,
+                                           p.Reason
                                        }
                             ).ToList();
-                    dgPurchase.DataSource = fichenolist;
+                    #region Visible Columns
+                    dgPurchase.Columns[0].Visible = false;
+                    dgPurchase.Columns[1].Visible = false;
+                    dgPurchase.Columns[2].Visible = false;
+                    dgPurchase.Columns[3].Visible = false;
+                    dgPurchase.Columns[4].Visible = false;
+                    dgPurchase.Columns[5].Visible = false;
+                    #endregion
+                    dgPurchase.DataSource = fichenolist.ToList();
                 }
                 else
                 {
-                    quotation = IME.PurchaseOrderDetails.Where(b => b.QuotationNo == search).FirstOrDefault();
-                    if (quotation != null)
+                 var fno = IME.PurchaseOrders.Where(b => b.FicheNo == search).FirstOrDefault();
+                    if (fno != null)
                     {
-                        var fichenolist = (from p in IME.PurchaseOrderDetails.Where(p => p.QuotationNo == search)
-                                           join po in IME.PurchaseOrders on p.PurchaseOrder.FicheNo equals po.FicheNo
+                        var fichenolist = (from p in IME.PurchaseOrders.Where(p => p.FicheNo == search)
                                            select new
                                            {
-                                               po.FicheNo,
-                                               po.PurchaseOrderDate,
-                                               po.CustomerID,
-                                               po.Customer.c_name,
-                                               po.CameDate,
-                                               po.Reason
+                                               p.FicheNo,
+                                               p.PurchaseOrderDate,
+                                               p.CustomerID,
+                                               p.Customer.c_name,
+                                               p.CameDate,
+                                               p.Reason
                                            }
                              ).ToList();
-                        dgPurchase.DataSource = fichenolist;
+                        #region Visible Columns
+                        dgPurchase.Columns[0].Visible = false;
+                        dgPurchase.Columns[1].Visible = false;
+                        dgPurchase.Columns[2].Visible = false;
+                        dgPurchase.Columns[3].Visible = false;
+                        dgPurchase.Columns[4].Visible = false;
+                        dgPurchase.Columns[5].Visible = false;
+                        #endregion
+                        dgPurchase.DataSource = fichenolist.ToList();
                     }
                     else
                     {
