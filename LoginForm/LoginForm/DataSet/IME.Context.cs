@@ -51,6 +51,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<Hazardou> Hazardous { get; set; }
         public virtual DbSet<ItemNote> ItemNotes { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
+        public virtual DbSet<LedgerPosting> LedgerPostings { get; set; }
         public virtual DbSet<LoaderDate> LoaderDates { get; set; }
         public virtual DbSet<Mail> Mails { get; set; }
         public virtual DbSet<Management> Managements { get; set; }

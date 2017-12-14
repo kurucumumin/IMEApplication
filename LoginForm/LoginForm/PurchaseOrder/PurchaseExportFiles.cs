@@ -44,6 +44,8 @@ namespace LoginForm.PurchaseOrder
             this.Hide();
             MailForm form = new MailForm();
             form.ShowDialog();
+            this.Show();
+            ToFill(); CCFill();
         }
 
         private void ToFill()
@@ -147,10 +149,6 @@ namespace LoginForm.PurchaseOrder
             MessageBox.Show("PuchaseOrders is successfully added", "Success");
             #endregion
 
-
-
-
-            txtCreate.newTxt(CreateTxt());
             #region SendMail
             sc.Port = 587;
             sc.Host = "smtp.gmail.com";
@@ -161,7 +159,7 @@ namespace LoginForm.PurchaseOrder
             mail.From = new MailAddress("kurucumumin94@gmail.com", "Mümin Kurucu");
             mail.Subject = "TeamERP"; mail.IsBodyHtml = true; mail.Body = "IME programı test mail";
             Attachment attachment;
-            attachment = new Attachment(@"C:\Users\pomak\Desktop\Yeni Metin Belgesi.txt");
+            attachment = new Attachment(@"C:\Users\pomak\Desktop\Order.txt");
             mail.Attachments.Add(attachment);
             int i = 0;
 
@@ -179,6 +177,10 @@ namespace LoginForm.PurchaseOrder
             sc.Send(mail);
             MessageBox.Show(i + " E-Mails successfully sent.", "Success !");
             #endregion
+
+            FormLogin f = new FormLogin();
+            f.Show();
+            this.Close();
 
         }
 

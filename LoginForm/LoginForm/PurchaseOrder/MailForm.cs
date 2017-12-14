@@ -26,6 +26,7 @@ namespace LoginForm.PurchaseOrder
 
         private void MailForm_Load(object sender, EventArgs e)
         {
+            MailList = IME.Mails.ToList();
             FillMain();
             dgMail.Enabled = false;
         }
@@ -34,17 +35,33 @@ namespace LoginForm.PurchaseOrder
         {
             List<Mail> MailList = new List<Mail>();
             IME = new IMEEntities();
+            MailList = IME.Mails.ToList();
 
-            foreach (int rowIndex in addedMailIndex)
+            for (int i =0; i< MailList.Count; i++)
             {
-                Mail m = new Mail();
-                
-                m.FirstName = dgMail.Rows[rowIndex].Cells[1].Value.ToString();
-                m.MailAddress = dgMail.Rows[rowIndex].Cells[2].Value.ToString();
-                m.cc = (dgMail.Rows[rowIndex].Cells[3].Value != null) ? (bool)dgMail.Rows[rowIndex].Cells[3].Value : false ;
-                m.too = (dgMail.Rows[rowIndex].Cells[4].Value != null) ? (bool)dgMail.Rows[rowIndex].Cells[4].Value : false ;
+                string mail = dgMail.Rows[i].Cells[2].Value.ToString();
 
-                MailList.Add(m);
+                if (IME.Mails.Where(a=>a.MailAddress==mail).FirstOrDefault()==null)
+                {
+                    Mail m = new Mail();
+
+                    m.FirstName = dgMail.Rows[i].Cells[1].Value.ToString();
+                    m.MailAddress = dgMail.Rows[i].Cells[2].Value.ToString();
+                    m.cc = (dgMail.Rows[i].Cells[3].Value != null) ? (bool)dgMail.Rows[i].Cells[3].Value : false;
+                    m.too = (dgMail.Rows[i].Cells[4].Value != null) ? (bool)dgMail.Rows[i].Cells[4].Value : false;
+
+                    MailList.Add(m);
+                }
+                else
+                {
+                    Mail m = IME.Mails.Where(a => a.MailAddress == mail).FirstOrDefault();
+                    m.FirstName = dgMail.Rows[i].Cells[1].Value.ToString();
+                    m.MailAddress = dgMail.Rows[i].Cells[2].Value.ToString();
+                    m.cc = (dgMail.Rows[i].Cells[3].Value != null) ? (bool)dgMail.Rows[i].Cells[3].Value : false;
+                    m.too = (dgMail.Rows[i].Cells[4].Value != null) ? (bool)dgMail.Rows[i].Cells[4].Value : false;
+
+                    IME.SaveChanges();
+                }
             }
 
             IME.Mails.AddRange(MailList);
@@ -62,10 +79,10 @@ namespace LoginForm.PurchaseOrder
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            PurchaseExportFiles f = new PurchaseExportFiles();
+          //  PurchaseExportFiles f = new PurchaseExportFiles();
             if (MessageBox.Show("Are You Sure To Exit Programme ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                f.ShowDialog();
+            //    f.ShowDialog();
                 this.Close();
             }
         }

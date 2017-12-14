@@ -38,7 +38,7 @@ namespace LoginForm
         {
             if (IME.PayHeads.Where(a=>a.payHeadName==txtPayheadName.Text).FirstOrDefault()==null)
             {
-                IME.PayHeadAdd(txtPayheadName.Text, cmbPayheadType.Text, txtPayheadNarration.Text, null);
+               // IME.PayHeadAdd(txtPayheadName.Text, cmbPayheadType.Text, txtPayheadNarration.Text, null);
             }
             else
             {
@@ -54,7 +54,7 @@ namespace LoginForm
         {
             if (IME.PayHeads.Where(a=>a.payHeadName== txtPayheadName.Text.Trim()).FirstOrDefault()==null)
             {
-                IME.PayHeadEdit(decPayHeadId, txtPayheadName.Text.Trim(), cmbPayheadType.Text, txtPayheadNarration.Text.Trim(), null);
+               // IME.PayHeadEdit(decPayHeadId, txtPayheadName.Text.Trim(), cmbPayheadType.Text, txtPayheadNarration.Text.Trim(), null);
                 GridFill();
                 MessageBox.Show("Update successfully");
                 Clear();
@@ -99,11 +99,11 @@ namespace LoginForm
         {
             if (txtPayheadSearch.Text.Trim() != string.Empty)
             {
-                dgvPayhead.DataSource = IME.PayHeadGet(decimal.Parse(txtPayheadSearch.Text.Trim()));
+               // dgvPayhead.DataSource = IME.PayHeadGet(decimal.Parse(txtPayheadSearch.Text.Trim()));
             }
             else
             {
-                dgvPayhead.DataSource = IME.PayHeadGetAll();
+                //dgvPayhead.DataSource = IME.PayHeadGetAll();
             }
                 
         }
@@ -161,7 +161,7 @@ namespace LoginForm
         {
             try
             {
-                dgvPayhead.DataSource = IME.PayHeadGetAll();
+               // dgvPayhead.DataSource = IME.PayHeadGetAll();
                 btnPayheadDelete.Enabled = false;
             }
             catch (Exception ex)
