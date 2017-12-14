@@ -168,6 +168,9 @@
     <Compile Include="Account\PayRoll\frmPayHead.designer.cs">
       <DependentUpon>frmPayHead.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Services\spAccountLedger.cs" />
+    <Compile Include="Account\Services\spFinancialYear.cs" />
+    <Compile Include="Account\Services\spLedgerPosting.cs" />
     <Compile Include="CustomControls\AccountingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

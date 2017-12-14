@@ -14,19 +14,19 @@ namespace LoginForm.DataSet
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-    
+
     public partial class IMEEntities : DbContext
     {
         public IMEEntities()
             : base("name=IMEEntities")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<AccountGroup> AccountGroups { get; set; }
         public virtual DbSet<AccountLedger> AccountLedgers { get; set; }
         public virtual DbSet<AdvancePayment> AdvancePayments { get; set; }
@@ -98,174 +98,174 @@ namespace LoginForm.DataSet
         public virtual DbSet<VoucherType> VoucherTypes { get; set; }
         public virtual DbSet<VoucherTypeTax> VoucherTypeTaxes { get; set; }
         public virtual DbSet<Worker> Workers { get; set; }
-    
+
         public virtual int PayHeadAdd(string payHeadName, string type, string narration, Nullable<System.DateTime> extraDate)
         {
             var payHeadNameParameter = payHeadName != null ?
                 new ObjectParameter("payHeadName", payHeadName) :
                 new ObjectParameter("payHeadName", typeof(string));
-    
+
             var typeParameter = type != null ?
                 new ObjectParameter("type", type) :
                 new ObjectParameter("type", typeof(string));
-    
+
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-    
+
             var extraDateParameter = extraDate.HasValue ?
                 new ObjectParameter("extraDate", extraDate) :
                 new ObjectParameter("extraDate", typeof(System.DateTime));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PayHeadAdd", payHeadNameParameter, typeParameter, narrationParameter, extraDateParameter);
         }
-    
+
         public virtual int PayHeadDelete(Nullable<decimal> payHeadId)
         {
             var payHeadIdParameter = payHeadId.HasValue ?
                 new ObjectParameter("payHeadId", payHeadId) :
                 new ObjectParameter("payHeadId", typeof(decimal));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PayHeadDelete", payHeadIdParameter);
         }
-    
+
         public virtual int PayHeadEdit(Nullable<decimal> payHeadId, string payHeadName, string type, string narration, Nullable<System.DateTime> extraDate)
         {
             var payHeadIdParameter = payHeadId.HasValue ?
                 new ObjectParameter("payHeadId", payHeadId) :
                 new ObjectParameter("payHeadId", typeof(decimal));
-    
+
             var payHeadNameParameter = payHeadName != null ?
                 new ObjectParameter("payHeadName", payHeadName) :
                 new ObjectParameter("payHeadName", typeof(string));
-    
+
             var typeParameter = type != null ?
                 new ObjectParameter("type", type) :
                 new ObjectParameter("type", typeof(string));
-    
+
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-    
+
             var extraDateParameter = extraDate.HasValue ?
                 new ObjectParameter("extraDate", extraDate) :
                 new ObjectParameter("extraDate", typeof(System.DateTime));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PayHeadEdit", payHeadIdParameter, payHeadNameParameter, typeParameter, narrationParameter, extraDateParameter);
         }
-    
+
         public virtual ObjectResult<PayHeadGet_Result> PayHeadGet(Nullable<decimal> payHeadId)
         {
             var payHeadIdParameter = payHeadId.HasValue ?
                 new ObjectParameter("payHeadId", payHeadId) :
                 new ObjectParameter("payHeadId", typeof(decimal));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PayHeadGet_Result>("PayHeadGet", payHeadIdParameter);
         }
-    
+
         public virtual ObjectResult<PayHeadGetAll_Result> PayHeadGetAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PayHeadGetAll_Result>("PayHeadGetAll");
         }
-    
+
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
                 new ObjectParameter("diagramname", typeof(string));
-    
+
             var owner_idParameter = owner_id.HasValue ?
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
-    
+
             var versionParameter = version.HasValue ?
                 new ObjectParameter("version", version) :
                 new ObjectParameter("version", typeof(int));
-    
+
             var definitionParameter = definition != null ?
                 new ObjectParameter("definition", definition) :
                 new ObjectParameter("definition", typeof(byte[]));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
         }
-    
+
         public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
                 new ObjectParameter("diagramname", typeof(string));
-    
+
             var owner_idParameter = owner_id.HasValue ?
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
-    
+
             var versionParameter = version.HasValue ?
                 new ObjectParameter("version", version) :
                 new ObjectParameter("version", typeof(int));
-    
+
             var definitionParameter = definition != null ?
                 new ObjectParameter("definition", definition) :
                 new ObjectParameter("definition", typeof(byte[]));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
         }
-    
+
         public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
                 new ObjectParameter("diagramname", typeof(string));
-    
+
             var owner_idParameter = owner_id.HasValue ?
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
         }
-    
+
         public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
                 new ObjectParameter("diagramname", typeof(string));
-    
+
             var owner_idParameter = owner_id.HasValue ?
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
         }
-    
+
         public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
                 new ObjectParameter("diagramname", typeof(string));
-    
+
             var owner_idParameter = owner_id.HasValue ?
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
         }
-    
+
         public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
                 new ObjectParameter("diagramname", typeof(string));
-    
+
             var owner_idParameter = owner_id.HasValue ?
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
-    
+
             var new_diagramnameParameter = new_diagramname != null ?
                 new ObjectParameter("new_diagramname", new_diagramname) :
                 new ObjectParameter("new_diagramname", typeof(string));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
         }
-    
+
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");

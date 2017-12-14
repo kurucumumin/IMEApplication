@@ -22,13 +22,15 @@ namespace Open_Miracle
 {
     static class Messages
     {
+        static string messageBoxTitle = "IME";
+
         /// <summary>
         /// Function to display information message
         /// </summary>
         /// <param name="strMsg"></param>
         public static void InformationMessage(string strMsg)
         {
-            MessageBox.Show(strMsg, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(strMsg, messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         /// <summary>
         /// Function for warning message
@@ -36,7 +38,7 @@ namespace Open_Miracle
         /// <param name="strMsg"></param>
         public static void WarningMessage(string strMsg)
         {
-            MessageBox.Show(strMsg, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show(strMsg, messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         /// <summary>
         /// Function for error message
@@ -44,28 +46,28 @@ namespace Open_Miracle
         /// <param name="strMsg"></param>
         public static void ErrorMessage(string strMsg)
         {
-            MessageBox.Show(strMsg, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(strMsg, messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         /// <summary>
         /// Function for saved message
         /// </summary>
         public static void SavedMessage()
         {
-            MessageBox.Show("Saved successfully", "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Saved successfully", messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         /// <summary>
         /// Function for updated message
         /// </summary>
         public static void UpdatedMessage()
         {
-            MessageBox.Show("Updated successfully ", "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Updated successfully ", messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         /// <summary>
         /// Function for deleted message
         /// </summary>
         public static void DeletedMessage()
         {
-            MessageBox.Show("Deleted successfully ", "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Deleted successfully ", messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         /// <summary>
         /// Function for exception
@@ -73,28 +75,28 @@ namespace Open_Miracle
         /// <param name="strMsg"></param>
         public static void ExceptionMessage(string strMsg)
         {
-            MessageBox.Show(strMsg, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(strMsg, messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         /// <summary>
         /// Function for reference exist message
         /// </summary>
         public static void ReferenceExistsMessage()
         {
-            MessageBox.Show("You can't delete,reference exist", "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("You can't delete,reference exist", messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         /// <summary>
         /// Function for reference exist message for update
         /// </summary>
         public static void ReferenceExistsMessageForUpdate()
         {
-            MessageBox.Show("You can't update,reference exist", "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("You can't update,reference exist", messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         /// <summary>
         /// Function for no privillage message
         /// </summary>
         public static void NoPrivillageMessage()
         {
-            MessageBox.Show("You dont have the privilege", "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("You dont have the privilege", messageBoxTitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         /// <summary>
         /// Function for delete confirmation message
@@ -103,7 +105,7 @@ namespace Open_Miracle
         public static bool DeleteMessage()
         {
             bool isOk = true;
-            if (MessageBox.Show("Are you sure to delete ? ", "OpenMiracle", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            if (MessageBox.Show("Are you sure to delete ? ", messageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 isOk = false;
             }
@@ -116,7 +118,7 @@ namespace Open_Miracle
         public static bool SaveMessage()
         {
             bool isOk = true;
-            if (MessageBox.Show("Do you want to save ? ", "OpenMiracle", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            if (MessageBox.Show("Do you want to save ? ", messageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 isOk = false;
             }
@@ -129,7 +131,7 @@ namespace Open_Miracle
         public static bool UpdateMessage()
         {
             bool isOk = true;
-            if (MessageBox.Show("Do you want to update ? ", "OpenMiracle", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            if (MessageBox.Show("Do you want to update ? ", messageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 isOk = false;
             }
@@ -143,7 +145,7 @@ namespace Open_Miracle
         public static bool UpdateMessageCustom(string strMsg)
         {
             bool isOk = false;
-            if ((MessageBox.Show(strMsg, "OpenMiracle", MessageBoxButtons.YesNo, MessageBoxIcon.Question)) == DialogResult.Yes)
+            if ((MessageBox.Show(strMsg, messageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question)) == DialogResult.Yes)
             {
                 isOk = true;
             }
@@ -155,7 +157,7 @@ namespace Open_Miracle
         /// <param name="frm"></param>
         public static void CloseMessage(System.Windows.Forms.Form frm)
         {
-            if ((MessageBox.Show("Are you sure to exit ? ", "OpenMiracle", MessageBoxButtons.YesNo, MessageBoxIcon.Question)) == DialogResult.Yes)
+            if ((MessageBox.Show("Are you sure to exit ? ", messageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question)) == DialogResult.Yes)
             {
                 frm.Close();
             }
@@ -169,7 +171,7 @@ namespace Open_Miracle
             bool isOk = true;
             //if (PublicVariables.isMessageAdd)
             {
-                if (MessageBox.Show("Do you want to save ? ", "OpenMiracle", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                if (MessageBox.Show("Do you want to save ? ", messageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 {
                     isOk = false;
                 }
@@ -185,7 +187,7 @@ namespace Open_Miracle
             bool isOk = true;
             //if (PublicVariables.isMessageEdit)
             {
-                if (MessageBox.Show("Do you want to update ? ", "OpenMiracle", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                if (MessageBox.Show("Do you want to update ? ", messageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 {
                     isOk = false;
                 }
@@ -201,7 +203,7 @@ namespace Open_Miracle
             bool isOk = true;
             //if (PublicVariables.isMessageDelete)
             {
-                if (MessageBox.Show("Are you sure to delete ? ", "OpenMiracle", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                if (MessageBox.Show("Are you sure to delete ? ", messageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 {
                     isOk = false;
                 }
@@ -217,7 +219,7 @@ namespace Open_Miracle
             bool isOk = true;
             //if (PublicVariables.isMessageClose)
             {
-                if ((MessageBox.Show("Are you sure to exit ? ", "OpenMiracle", MessageBoxButtons.YesNo, MessageBoxIcon.Question)) == DialogResult.No)
+                if ((MessageBox.Show("Are you sure to exit ? ", messageBoxTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question)) == DialogResult.No)
                 {
                     isOk = false;
                 }
