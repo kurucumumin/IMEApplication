@@ -162,6 +162,15 @@
     <Compile Include="Account\frmVoucherType.designer.cs">
       <DependentUpon>frmVoucherType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\PayRoll\frmPayHead.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmPayHead.designer.cs">
+      <DependentUpon>frmPayHead.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Services\spAccountLedger.cs" />
+    <Compile Include="Account\Services\spFinancialYear.cs" />
+    <Compile Include="Account\Services\spLedgerPosting.cs" />
     <Compile Include="CustomControls\AccountingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -256,6 +265,9 @@
     <Compile Include="DataSet\ExtendedRange.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\FinancialYear.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Hazardou.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -280,6 +292,9 @@
     <Compile Include="DataSet\Language.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\LedgerPosting.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\LoaderDate.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -296,6 +311,12 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PayHead.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PayHeadGetAll_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PayHeadGet_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PaymentMethod.cs">
@@ -656,6 +677,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\frmVoucherType.resx">
       <DependentUpon>frmVoucherType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmPayHead.resx">
+      <DependentUpon>frmPayHead.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountingControl.resx">
       <DependentUpon>AccountingControl.cs</DependentUpon>
