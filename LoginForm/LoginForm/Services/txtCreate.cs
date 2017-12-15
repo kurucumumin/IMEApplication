@@ -19,8 +19,8 @@ namespace LoginForm.Services
             if (savefile.ShowDialog() == DialogResult.OK)
             {
                 string path = savefile.FileName;
-                    
-                    //TextWriter tw = new StreamWriter(@path,true);
+                File.WriteAllText(path, String.Empty);
+                //TextWriter tw = new StreamWriter(@path,true);
                 using (var tw = new StreamWriter(path, true))
                 {
                     int a = 0;

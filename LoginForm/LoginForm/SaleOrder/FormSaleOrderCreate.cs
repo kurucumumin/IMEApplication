@@ -107,16 +107,20 @@ namespace LoginForm.nsSaleOrder
                         quotationIDs += " , ";
                     }
                 }
-
-                FormSaleSale form1 = new FormSaleSale((Customer)lbCustomerList.SelectedItem, list, quotationIDs);
-                form1.Show();
                 this.Close();
+                FormSaleSale form1 = new FormSaleSale((Customer)lbCustomerList.SelectedItem, list, quotationIDs);
+                FormSalesOrderMain f = new FormSalesOrderMain();
+                f.Close();
+                form1.ShowDialog();
+
             }
             else
             {
-                FormSaleSale form1 = new FormSaleSale((Customer)lbCustomerList.SelectedItem);
-                form1.Show();
                 this.Close();
+                FormSaleSale form1 = new FormSaleSale((Customer)lbCustomerList.SelectedItem);
+                FormSalesOrderMain f = new FormSalesOrderMain();
+                f.Close();
+                form1.ShowDialog();
             }
         }
     }

@@ -64,6 +64,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<OnSale> OnSales { get; set; }
         public virtual DbSet<PartyBalance> PartyBalances { get; set; }
         public virtual DbSet<PayHead> PayHeads { get; set; }
+        public virtual DbSet<PaymentMaster> PaymentMasters { get; set; }
         public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
         public virtual DbSet<PaymentTerm> PaymentTerms { get; set; }
         public virtual DbSet<PricingLevel> PricingLevels { get; set; }

@@ -11,16 +11,14 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class VoucherType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public VoucherType()
         {
             this.AdvancePayments = new HashSet<AdvancePayment>();
-            this.LedgerPostings = new HashSet<LedgerPosting>();
-            this.PartyBalances = new HashSet<PartyBalance>();
-            this.PartyBalances1 = new HashSet<PartyBalance>();
+            this.PaymentMasters = new HashSet<PaymentMaster>();
             this.VoucherTypeTaxes = new HashSet<VoucherTypeTax>();
         }
     
@@ -38,15 +36,11 @@ namespace LoginForm.DataSet
         public string heading2 { get; set; }
         public string heading3 { get; set; }
         public string heading4 { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AdvancePayment> AdvancePayments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LedgerPosting> LedgerPostings { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PartyBalance> PartyBalances { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PartyBalance> PartyBalances1 { get; set; }
+        public virtual ICollection<PaymentMaster> PaymentMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VoucherTypeTax> VoucherTypeTaxes { get; set; }
     }

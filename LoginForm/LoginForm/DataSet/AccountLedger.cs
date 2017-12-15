@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class AccountLedger
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +21,7 @@ namespace LoginForm.DataSet
             this.LedgerPostings = new HashSet<LedgerPosting>();
             this.PartyBalances = new HashSet<PartyBalance>();
         }
-    
+
         public decimal ledgerId { get; set; }
         public Nullable<int> accountGroupID { get; set; }
         public string ledgerName { get; set; }
