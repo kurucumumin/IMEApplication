@@ -120,47 +120,57 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account\frmAccountGroup.cs">
+    <Compile Include="Account\Master\frmAccountGroup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Account\frmAccountGroup.Designer.cs">
+    <Compile Include="Account\Master\frmAccountGroup.Designer.cs">
       <DependentUpon>frmAccountGroup.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\frmAccountLedger.cs">
+    <Compile Include="Account\Master\frmAccountLedger.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Account\frmAccountLedger.designer.cs">
+    <Compile Include="Account\Master\frmAccountLedger.designer.cs">
       <DependentUpon>frmAccountLedger.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\frmArea.cs">
+    <Compile Include="Account\Master\frmArea.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Account\frmArea.designer.cs">
+    <Compile Include="Account\Master\frmArea.designer.cs">
       <DependentUpon>frmArea.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\frmCurrency.cs">
+    <Compile Include="Account\Master\frmCurrency.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Account\frmCurrency.designer.cs">
+    <Compile Include="Account\Master\frmCurrency.designer.cs">
       <DependentUpon>frmCurrency.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\frmExchangeRate.cs">
+    <Compile Include="Account\Master\frmExchangeRate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Account\frmExchangeRate.designer.cs">
+    <Compile Include="Account\Master\frmExchangeRate.designer.cs">
       <DependentUpon>frmExchangeRate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\frmTax.cs">
+    <Compile Include="Account\Master\frmTax.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Account\frmTax.designer.cs">
+    <Compile Include="Account\Master\frmTax.designer.cs">
       <DependentUpon>frmTax.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\frmVoucherType.cs">
+    <Compile Include="Account\Master\frmVoucherType.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Account\frmVoucherType.designer.cs">
+    <Compile Include="Account\Master\frmVoucherType.designer.cs">
       <DependentUpon>frmVoucherType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmAdvancePayment.cs" />
+    <Compile Include="Account\PayRoll\frmAdvancePayment.designer.cs">
+      <DependentUpon>frmAdvancePayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmBonusDeduction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmBonusDeduction.Designer.cs">
+      <DependentUpon>frmBonusDeduction.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\PayRoll\frmPayHead.cs">
       <SubType>Form</SubType>
@@ -168,12 +178,12 @@
     <Compile Include="Account\PayRoll\frmPayHead.designer.cs">
       <DependentUpon>frmPayHead.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\Services\AccountGroupSP.cs" />
-    <Compile Include="Account\Services\AccountLedgerSP.cs" />
-    <Compile Include="Account\Services\ExchangeRateSP.cs" />
-    <Compile Include="Account\Services\FinancialYearSP.cs" />
-    <Compile Include="Account\Services\LedgerPostingSP.cs" />
-    <Compile Include="Account\Services\PartyBalanceSP.cs" />
+    <Compile Include="Account\Register\frmPaymentRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Register\frmPaymentRegister.designer.cs">
+      <DependentUpon>frmPaymentRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\AccountingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -316,9 +326,6 @@
     <Compile Include="DataSet\Management.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\MonthlySalary.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\Note.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -337,13 +344,13 @@
     <Compile Include="DataSet\PayHeadGet_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PaymentMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PaymentMethod.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PaymentTerm.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\PricingLevel.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PrintFormat.cs">
@@ -386,6 +393,12 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SlidingPrice.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\sp_helpdiagrams_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Stock.cs">
@@ -629,6 +642,7 @@
       <DependentUpon>FormSaleItemSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="SaleOrder\SalesOrderHelper.cs" />
+    <Compile Include="Services\GetModifyQuotation.cs" />
     <Compile Include="Services\Messages.cs" />
     <Compile Include="Services\ToolTipService.cs" />
     <Compile Include="Services\txtCreate.cs" />
@@ -678,29 +692,38 @@
     <Compile Include="User\FormUserManagement.Designer.cs">
       <DependentUpon>FormUserManagement.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Account\frmAccountGroup.resx">
+    <EmbeddedResource Include="Account\Master\frmAccountGroup.resx">
       <DependentUpon>frmAccountGroup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Account\frmAccountLedger.resx">
+    <EmbeddedResource Include="Account\Master\frmAccountLedger.resx">
       <DependentUpon>frmAccountLedger.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Account\frmArea.resx">
+    <EmbeddedResource Include="Account\Master\frmArea.resx">
       <DependentUpon>frmArea.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Account\frmCurrency.resx">
+    <EmbeddedResource Include="Account\Master\frmCurrency.resx">
       <DependentUpon>frmCurrency.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Account\frmExchangeRate.resx">
+    <EmbeddedResource Include="Account\Master\frmExchangeRate.resx">
       <DependentUpon>frmExchangeRate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Account\frmTax.resx">
+    <EmbeddedResource Include="Account\Master\frmTax.resx">
       <DependentUpon>frmTax.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Account\frmVoucherType.resx">
+    <EmbeddedResource Include="Account\Master\frmVoucherType.resx">
       <DependentUpon>frmVoucherType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmAdvancePayment.resx">
+      <DependentUpon>frmAdvancePayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\PayRoll\frmBonusDeduction.resx">
+      <DependentUpon>frmBonusDeduction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\PayRoll\frmPayHead.resx">
       <DependentUpon>frmPayHead.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Register\frmPaymentRegister.resx">
+      <DependentUpon>frmPaymentRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountingControl.resx">
       <DependentUpon>AccountingControl.cs</DependentUpon>
