@@ -100,7 +100,11 @@ namespace LoginForm.QuotationModule
 
                 GetMarginMark(i);
             }
-            QuotataionModifyItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells["dgProductCode"].Value.ToString(), dgQuotationAddedItems.RowCount - 1);
+            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+            {
+                QuotataionModifyItemDetailsFiller(dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(), i);
+
+            }
         }
 
         private void QuotationForm_Load(object sender, EventArgs e)
@@ -422,26 +426,35 @@ namespace LoginForm.QuotationModule
                 #endregion
                 case 21://Total
                     {
-                        #region Total
-                        decimal total = decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString());
-                        decimal UcupIME = decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUPIME"].Value.ToString());
-                        dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgDisc"].Value = String.Format("{0:0.0000}", ((UcupIME - total) * (decimal)100 / UcupIME));
-                        GetMargin();
-                        GetMarginMark();
-                        #region Calculate Total Margin
-                        try
+                        //TO DO depends on authority 
+                        if (dgQuotationAddedItems.CurrentRow.Cells[dgHZ.Index].Style.BackColor == Color.White)
                         {
-                            Decimal TotalMarginValue = Decimal.Parse(txtTotalMargin.Text) * (Decimal.Parse(lblsubtotal.Text) - Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotal"].Value.ToString()));
-                            TotalMarginValue = (TotalMarginValue + (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotal"].Value.ToString()) * Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value.ToString()))) / Decimal.Parse(lblsubtotal.Text);
-                            txtTotalMargin.Text = String.Format("{0:0.0000}", TotalMarginValue).ToString();
+                            #region Total
+                            decimal total = decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString());
+                            decimal UcupIME = decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUPIME"].Value.ToString());
+                            dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgDisc"].Value = String.Format("{0:0.0000}", ((UcupIME - total) * (decimal)100 / UcupIME));
+                            GetMargin();
+                            GetMarginMark();
+                            #region Calculate Total Margin
+                            try
+                            {
+                                Decimal TotalMarginValue = Decimal.Parse(txtTotalMargin.Text) * (Decimal.Parse(lblsubtotal.Text) - Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotal"].Value.ToString()));
+                                TotalMarginValue = (TotalMarginValue + (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotal"].Value.ToString()) * Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value.ToString()))) / Decimal.Parse(lblsubtotal.Text);
+                                txtTotalMargin.Text = String.Format("{0:0.0000}", TotalMarginValue).ToString();
+                            }
+                            catch
+                            {
+                                txtTotalMargin.Text = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value.ToString())).ToString();
+                            }
+                            #endregion
+                            CalculateSubTotal();
+                            #endregion
                         }
-                        catch
+                        else
                         {
-                            txtTotalMargin.Text = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value.ToString())).ToString();
+                            dgQuotationAddedItems.CurrentRow.Cells[dgUCUPCurr.Index].Value = dgQuotationAddedItems.CurrentRow.Cells[dgUPIME.Index].Value.ToString();
+                            MessageBox.Show("Hazardous item's price cannot be chanced");
                         }
-                        #endregion
-                        CalculateSubTotal();
-                        #endregion
                     }
                     break;
             }
@@ -1638,8 +1651,12 @@ namespace LoginForm.QuotationModule
             //ItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString());
             for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
             {
-                GetQuotationQuantity(i);
+                
                 GetLandingCost(i);
+                dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[i].Cells[0];
+                GetMargin();
+                GetQuotationQuantity(i);
+
             }
             GetAllMargin();
             #endregion
@@ -1677,6 +1694,12 @@ namespace LoginForm.QuotationModule
 
         private void QuotataionModifyItemDetailsFiller(string ArticleNoSearch, int RowIndex)
         {
+            bool isLithum = false;
+            bool isShipping = false;
+            bool isEnvironment = false;
+            bool isCalibrationInd = false;
+            bool isLicenceType = false;
+
             #region Filler
             decimal CurrValueWeb = Decimal.Parse(curr.rate.ToString());
             string ArticleNoSearch1 = ArticleNoSearch;
@@ -1826,9 +1849,9 @@ namespace LoginForm.QuotationModule
             }
             if (h != null)
             {
-                if (h.Environment != null) { txtEnvironment.Text = "Y"; } else { txtEnvironment.Text = ""; }
-                if (h.Lithium != null) { txtLithium.Text = "Y"; } else { txtLithium.Text = ""; }
-                if (h.Shipping != null) { txtShipping.Text = "Y"; } else { txtShipping.Text = ""; }
+                if (h.Environment != null) { txtEnvironment.Text = "Y"; isEnvironment = true; } else { txtEnvironment.Text = ""; }
+                if (h.Lithium != null) { txtLithium.Text = "Y";  isLithum = true; } else { txtLithium.Text = ""; }
+                if (h.Shipping != null) { txtShipping.Text = "Y"; isShipping = true; } else { txtShipping.Text = ""; }
             }
             else
             {
@@ -1901,30 +1924,30 @@ namespace LoginForm.QuotationModule
             #endregion
             #region Low Margin Mark
 
-            if (txtLithium.Text != "")
+            if (isLithum)
             {
                 label64.BackColor = Color.Red;
                 dgQuotationAddedItems.Rows[RowIndex].Cells["LI"].Style.BackColor = Color.Ivory;
 
 
             }
-            if (txtShipping.Text != "")
+            if (isShipping)
             {
                 label63.BackColor = Color.Red;
                 dgQuotationAddedItems.Rows[RowIndex].Cells["HS"].Style.BackColor = Color.Red;
 
             }
-            if (txtEnvironment.Text != "")
+            if (isEnvironment)
             {
                 label53.BackColor = Color.Red;
             }
-            if (txtCalibrationInd.Text != "" && txtCalibrationInd.Text != null && txtCalibrationInd.Text != "N")
+            if (isCalibrationInd)
             {
                 label22.BackColor = Color.Red;
                 dgQuotationAddedItems.Rows[RowIndex].Cells["CL"].Style.BackColor = Color.Green;
             }
 
-            if (txtLicenceType.Text != "" && txtLicenceType.Text != null)
+            if (isLicenceType)
             {
                 dgQuotationAddedItems.Rows[RowIndex].Cells["LC"].Style.BackColor = Color.BurlyWood;
             }
@@ -2450,7 +2473,8 @@ namespace LoginForm.QuotationModule
             {
                 if (dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value != null && dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString() != string.Empty)
                 {
-                    decimal margin = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString());
+                    decimal margin=0; 
+                        if(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value!=null) margin= Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString());
                     decimal price = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString());
                     total = total + (margin * price);
                 }

@@ -14,11 +14,19 @@ namespace LoginForm.DataSet
     
     public partial class Route
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Route()
+        {
+            this.AccountLedgers = new HashSet<AccountLedger>();
+        }
+    
         public decimal routeId { get; set; }
         public string routeName { get; set; }
         public Nullable<decimal> areaId { get; set; }
         public string narration { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AccountLedger> AccountLedgers { get; set; }
         public virtual Area Area { get; set; }
     }
 }

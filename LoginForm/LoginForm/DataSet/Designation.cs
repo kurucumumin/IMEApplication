@@ -12,21 +12,23 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class ExchangeRate
+    public partial class Designation
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ExchangeRate()
+        public Designation()
         {
-            this.PartyBalances = new HashSet<PartyBalance>();
+            this.Workers = new HashSet<Worker>();
         }
     
-        public int exchangeRateID { get; set; }
-        public Nullable<decimal> currencyId { get; set; }
-        public Nullable<System.DateTime> date { get; set; }
-        public Nullable<decimal> rate { get; set; }
+        public decimal designationId { get; set; }
+        public string designationName { get; set; }
+        public Nullable<decimal> leaveDays { get; set; }
+        public Nullable<decimal> advanceAmount { get; set; }
+        public string narration { get; set; }
+        public Nullable<int> WorkerID { get; set; }
     
-        public virtual Currency Currency { get; set; }
+        public virtual Worker Worker { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PartyBalance> PartyBalances { get; set; }
+        public virtual ICollection<Worker> Workers { get; set; }
     }
 }

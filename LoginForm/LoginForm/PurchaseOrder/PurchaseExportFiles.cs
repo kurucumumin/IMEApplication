@@ -359,7 +359,7 @@ namespace LoginForm.PurchaseOrder
                 int orderqty = 0;
                 if(po!=null)orderqty=Int32.Parse(po.Quantity.ToString());
                 string OrderQuantity = orderqty.ToString();
-
+                totalquantity += orderqty;
                 for (int i = 0; i < 5-orderqty.ToString().Length; i++)
                 {
                     OrderQuantity = "0" + OrderQuantity;

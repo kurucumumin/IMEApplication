@@ -12,16 +12,16 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class Management
+    public partial class BonusDeduction
     {
-        public int ID { get; set; }
-        public Nullable<decimal> LowMarginLimit { get; set; }
-        public Nullable<decimal> VAT { get; set; }
-        public Nullable<decimal> DefaultCurrency { get; set; }
-        public decimal Factor { get; set; }
-        public Nullable<decimal> CurrentFinancialYear { get; set; }
+        public decimal bonusDeductionId { get; set; }
+        public Nullable<int> WorkerID { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
+        public Nullable<System.DateTime> month { get; set; }
+        public Nullable<decimal> bonusAmount { get; set; }
+        public Nullable<decimal> deductionAmount { get; set; }
+        public string narration { get; set; }
     
-        public virtual Currency Currency { get; set; }
-        public virtual FinancialYear FinancialYear { get; set; }
+        public virtual Worker Worker { get; set; }
     }
 }

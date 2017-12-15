@@ -12,50 +12,29 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class AccountLedger
+    public partial class FinancialYear
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AccountLedger()
+        public FinancialYear()
         {
             this.AdvancePayments = new HashSet<AdvancePayment>();
             this.LedgerPostings = new HashSet<LedgerPosting>();
+            this.Managements = new HashSet<Management>();
             this.PartyBalances = new HashSet<PartyBalance>();
             this.PaymentMasters = new HashSet<PaymentMaster>();
         }
     
-        public decimal ledgerId { get; set; }
-        public Nullable<int> accountGroupID { get; set; }
-        public string ledgerName { get; set; }
-        public Nullable<decimal> openingBalance { get; set; }
-        public Nullable<bool> isDefault { get; set; }
-        public string crOrDr { get; set; }
-        public string narration { get; set; }
-        public string mailingName { get; set; }
-        public string address { get; set; }
-        public string phone { get; set; }
-        public string mobile { get; set; }
-        public string email { get; set; }
-        public Nullable<int> creditPeriod { get; set; }
-        public Nullable<decimal> creditLimit { get; set; }
-        public Nullable<decimal> pricinglevelId { get; set; }
-        public Nullable<bool> billByBill { get; set; }
-        public string tin { get; set; }
-        public string cst { get; set; }
-        public string pan { get; set; }
-        public Nullable<decimal> routeId { get; set; }
-        public string bankAccountNumber { get; set; }
-        public string branchName { get; set; }
-        public string branchCode { get; set; }
+        public decimal financialYearId { get; set; }
+        public Nullable<System.DateTime> fromDate { get; set; }
+        public Nullable<System.DateTime> toDate { get; set; }
         public Nullable<System.DateTime> extraDate { get; set; }
-        public Nullable<decimal> areaId { get; set; }
     
-        public virtual AccountGroup AccountGroup { get; set; }
-        public virtual Area Area { get; set; }
-        public virtual Route Route { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AdvancePayment> AdvancePayments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LedgerPosting> LedgerPostings { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Management> Managements { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PartyBalance> PartyBalances { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
