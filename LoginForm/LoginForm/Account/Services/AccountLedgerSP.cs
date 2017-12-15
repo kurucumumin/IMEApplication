@@ -1,14 +1,11 @@
 ﻿using LoginForm.DataSet;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace LoginForm.Account.Services
 {
-    static class spAccountLedger
+    static class AccountLedgerSP
     {
 
         static public bool AccountLedgerCheckExistence(string LedgerName, decimal ledgerID)
@@ -72,12 +69,18 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
         }
-
-
-
-
-
-
-
+        static public void PartyBalanceDeleteByVoucherTypeVoucherNoAndReferenceType(string strVocuherNumber, decimal decVoucherTypeId)
+        {
+            IMEEntities db = new IMEEntities();
+            PartyBalance pb = db.PartyBalances.Where(x=>x.voucherNo == strVocuherNumber && x.voucherTypeId == decVoucherTypeId && x.referenceType == "New").FirstOrDefault();
+            try
+            {
+                db.PartyBalances.Remove(pb);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }

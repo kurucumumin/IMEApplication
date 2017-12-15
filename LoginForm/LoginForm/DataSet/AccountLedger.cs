@@ -18,10 +18,12 @@ namespace LoginForm.DataSet
         public AccountLedger()
         {
             this.AdvancePayments = new HashSet<AdvancePayment>();
+            this.LedgerPostings = new HashSet<LedgerPosting>();
+            this.PartyBalances = new HashSet<PartyBalance>();
         }
     
         public decimal ledgerId { get; set; }
-        public Nullable<decimal> accountGroupID { get; set; }
+        public Nullable<int> accountGroupID { get; set; }
         public string ledgerName { get; set; }
         public Nullable<decimal> openingBalance { get; set; }
         public Nullable<bool> isDefault { get; set; }
@@ -46,7 +48,14 @@ namespace LoginForm.DataSet
         public Nullable<System.DateTime> extraDate { get; set; }
         public Nullable<decimal> areaId { get; set; }
     
+        public virtual AccountGroup AccountGroup { get; set; }
+        public virtual Area Area { get; set; }
+        public virtual Route Route { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AdvancePayment> AdvancePayments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LedgerPosting> LedgerPostings { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PartyBalance> PartyBalances { get; set; }
     }
 }

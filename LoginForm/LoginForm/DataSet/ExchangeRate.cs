@@ -14,11 +14,19 @@ namespace LoginForm.DataSet
     
     public partial class ExchangeRate
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ExchangeRate()
+        {
+            this.PartyBalances = new HashSet<PartyBalance>();
+        }
+    
         public int exchangeRateID { get; set; }
         public Nullable<decimal> currencyId { get; set; }
         public Nullable<System.DateTime> date { get; set; }
         public Nullable<decimal> rate { get; set; }
     
         public virtual Currency Currency { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PartyBalance> PartyBalances { get; set; }
     }
 }

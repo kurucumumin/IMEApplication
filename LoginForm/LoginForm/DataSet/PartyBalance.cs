@@ -12,26 +12,28 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class LedgerPosting
+    public partial class PartyBalance
     {
-        public decimal ledgerPostingId { get; set; }
+        public decimal partyBalanceId { get; set; }
         public Nullable<System.DateTime> date { get; set; }
+        public Nullable<decimal> ledgerId { get; set; }
         public Nullable<decimal> voucherTypeId { get; set; }
         public string voucherNo { get; set; }
-        public Nullable<decimal> ledgerId { get; set; }
+        public Nullable<decimal> againstVoucherTypeId { get; set; }
+        public string againstVoucherNo { get; set; }
+        public string invoiceNo { get; set; }
+        public string againstInvoiceNo { get; set; }
+        public string referenceType { get; set; }
         public Nullable<decimal> debit { get; set; }
         public Nullable<decimal> credit { get; set; }
-        public Nullable<decimal> detailsId { get; set; }
-        public Nullable<decimal> yearId { get; set; }
-        public string invoiceNo { get; set; }
-        public string chequeNo { get; set; }
-        public Nullable<System.DateTime> chequeDate { get; set; }
-        public Nullable<System.DateTime> extraDate { get; set; }
-        public string extra1 { get; set; }
-        public string extra2 { get; set; }
+        public Nullable<int> creditPeriod { get; set; }
+        public Nullable<int> exchangeRateId { get; set; }
+        public Nullable<decimal> financialYearId { get; set; }
     
         public virtual AccountLedger AccountLedger { get; set; }
+        public virtual ExchangeRate ExchangeRate { get; set; }
         public virtual FinancialYear FinancialYear { get; set; }
         public virtual VoucherType VoucherType { get; set; }
+        public virtual VoucherType VoucherType1 { get; set; }
     }
 }

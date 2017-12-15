@@ -14,6 +14,12 @@ namespace LoginForm.DataSet
     
     public partial class AccountGroup
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public AccountGroup()
+        {
+            this.AccountLedgers = new HashSet<AccountLedger>();
+        }
+    
         public int accountGroupId { get; set; }
         public string accountGroupName { get; set; }
         public Nullable<int> groupUnder { get; set; }
@@ -22,5 +28,8 @@ namespace LoginForm.DataSet
         public string nature { get; set; }
         public string affectGrossProfit { get; set; }
         public Nullable<System.DateTime> AccountGroupDate { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AccountLedger> AccountLedgers { get; set; }
     }
 }

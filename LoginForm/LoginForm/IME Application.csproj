@@ -319,6 +319,9 @@
     <Compile Include="DataSet\OnSale.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PartyBalance.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PayHead.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -374,12 +377,6 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SlidingPrice.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\sp_helpdiagrams_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Stock.cs">
@@ -623,7 +620,6 @@
       <DependentUpon>FormSaleItemSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="SaleOrder\SalesOrderHelper.cs" />
-    <Compile Include="Services\GetModifyQuotation.cs" />
     <Compile Include="Services\Messages.cs" />
     <Compile Include="Services\ToolTipService.cs" />
     <Compile Include="Services\txtCreate.cs" />

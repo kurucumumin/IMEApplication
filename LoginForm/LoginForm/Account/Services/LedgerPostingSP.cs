@@ -3,19 +3,16 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace LoginForm.Account.Services
 {
-    static class spLedgerPosting
+    static class LedgerPostingSP
     {
         static public DataTable GetLedgerPostingIds(string v1, int v2)
         {
             IMEEntities db = new IMEEntities();
             DataTable dt = new DataTable();
-            List<LedgerPosting> list = db.LedgerPostings.Where(x => x.voucherNo == v1 && x.voucherTypeId == v2).ToList();
 
             var adaptor = (from lp in db.LedgerPostings.Where(x => x.voucherNo == v1 && x.voucherTypeId == v2)
                            select new
