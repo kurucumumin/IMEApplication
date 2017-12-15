@@ -31,7 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPaymentRegister));
             this.dgvPaymentRegister = new System.Windows.Forms.DataGridView();
             this.dgvtxtSlNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtvoucherNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -363,11 +362,9 @@
             this.Controls.Add(this.lblVoucherNo);
             this.Controls.Add(this.lblToDate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "frmPaymentRegister";
-            this.Opacity = 0.85D;
             this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Payment Register";
