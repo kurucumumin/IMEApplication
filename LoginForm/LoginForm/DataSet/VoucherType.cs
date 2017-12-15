@@ -21,7 +21,7 @@ namespace LoginForm.DataSet
             this.PaymentMasters = new HashSet<PaymentMaster>();
             this.VoucherTypeTaxes = new HashSet<VoucherTypeTax>();
         }
-    
+
         public decimal voucherTypeId { get; set; }
         public string voucherTypeName { get; set; }
         public string typeOfVoucher { get; set; }

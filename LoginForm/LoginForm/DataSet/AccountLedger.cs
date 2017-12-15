@@ -47,7 +47,7 @@ namespace LoginForm.DataSet
         public string branchCode { get; set; }
         public Nullable<System.DateTime> extraDate { get; set; }
         public Nullable<decimal> areaId { get; set; }
-    
+
         public virtual AccountGroup AccountGroup { get; set; }
         public virtual Area Area { get; set; }
         public virtual Route Route { get; set; }

@@ -102,6 +102,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<VoucherType> VoucherTypes { get; set; }
         public virtual DbSet<VoucherTypeTax> VoucherTypeTaxes { get; set; }
         public virtual DbSet<Worker> Workers { get; set; }
+        public virtual DbSet<PaymentMaster> PaymentMasters { get; set; }
     
         public virtual int PayHeadAdd(string payHeadName, string type, string narration, Nullable<System.DateTime> extraDate)
         {

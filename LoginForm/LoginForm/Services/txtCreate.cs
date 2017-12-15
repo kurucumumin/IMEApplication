@@ -23,9 +23,11 @@ namespace LoginForm.Services
                 //TextWriter tw = new StreamWriter(@path,true);
                 using (var tw = new StreamWriter(path, true))
                 {
+                    
                     int a = 0;
                     while (txtArray.Count() > a)
                     {
+                        
                         tw.WriteLine(txtArray[a]);
                         a++;
                     }

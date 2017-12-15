@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Designation
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,13 +19,13 @@ namespace LoginForm.DataSet
         {
             this.Workers = new HashSet<Worker>();
         }
-    
+
         public decimal designationId { get; set; }
         public string designationName { get; set; }
         public Nullable<decimal> leaveDays { get; set; }
         public Nullable<decimal> advanceAmount { get; set; }
         public string narration { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Worker> Workers { get; set; }
     }
