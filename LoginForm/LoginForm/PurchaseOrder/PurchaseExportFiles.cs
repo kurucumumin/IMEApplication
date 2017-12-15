@@ -21,7 +21,7 @@ namespace LoginForm.PurchaseOrder
         IMEEntities IME = new IMEEntities();
         List<DataGridViewRow> rowList = new List<DataGridViewRow>();
         List<Mail> MailList = new List<Mail>();
-        string fiche = "";
+        int fiche;
         SmtpClient sc = new SmtpClient();
         MailMessage mail = new MailMessage();
         List<string> ccList = new List<string>();
@@ -32,7 +32,7 @@ namespace LoginForm.PurchaseOrder
             InitializeComponent();
         }
 
-        public PurchaseExportFiles(List<DataGridViewRow> List, string ficheNo)
+        public PurchaseExportFiles(List<DataGridViewRow> List, int ficheNo)
         {
             InitializeComponent();
             rowList = List;
@@ -166,7 +166,7 @@ namespace LoginForm.PurchaseOrder
             {
                 mail.To.Add(toList[i]);
             }
-            MessageBox.Show(i + "To E-Mails successfully sent.", "Success !");
+            MessageBox.Show(i + " To E-Mails successfully sent.", "Success !");
 
             for (i = 0; i < ccList.Count; i++)
             {
@@ -174,7 +174,7 @@ namespace LoginForm.PurchaseOrder
             }
             Thread.Sleep(TimeSpan.FromSeconds(1));
             sc.Send(mail);
-            MessageBox.Show(i + "CC E-Mails successfully sent.", "Success !");
+            MessageBox.Show(i + " CC E-Mails successfully sent.", "Success !");
             #endregion
 
             PurchaseOrderMain f = new PurchaseOrderMain();
@@ -227,7 +227,7 @@ namespace LoginForm.PurchaseOrder
             else { OrderNature = "E"; }
             string PackType = " ";
             string OrderNumber = "     ";
-            string CustomerDistOrderReference = fiche;
+            string CustomerDistOrderReference = Convert.ToString(fiche);
             CustomerDistOrderReference = CustomerDistOrderReference+"/DB/"+DateTime.Now.ToString("MMM") +"/"+DateTime.Now.ToString("yy");
             for (int i = 0; i < 30; i++)
             {
@@ -360,7 +360,7 @@ namespace LoginForm.PurchaseOrder
                 int orderqty = 0;
                 if(po!=null)orderqty=Int32.Parse(po.Quantity.ToString());
                 string OrderQuantity = orderqty.ToString();
-
+                totalquantity += orderqty;
                 for (int i = 0; i < 5-orderqty.ToString().Length; i++)
                 {
                     OrderQuantity = "0" + OrderQuantity;

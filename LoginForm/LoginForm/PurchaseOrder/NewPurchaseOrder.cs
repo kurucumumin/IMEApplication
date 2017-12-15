@@ -20,7 +20,7 @@ namespace LoginForm.PurchaseOrder
         List<SaleOrderDetail> saleItemList = new List<SaleOrderDetail>();
         SqlDataAdapter da;
         System.Data.DataSet ds = new System.Data.DataSet();
-        string purchasecode = "";
+        int purchasecode;
 
 
         public NewPurchaseOrder()
@@ -34,7 +34,7 @@ namespace LoginForm.PurchaseOrder
             PurchaseOrder(item_code);
         }
 
-        public NewPurchaseOrder(string ficheNo, int sayac)
+        public NewPurchaseOrder(int ficheNo, int sayac)
         {
             InitializeComponent();
             if (sayac==1)
@@ -53,7 +53,7 @@ namespace LoginForm.PurchaseOrder
                 }
             }
 
-            PurchaseExportFiles form = new PurchaseExportFiles(rowList, (Int32.Parse(purchasecode)+1).ToString());
+            PurchaseExportFiles form = new PurchaseExportFiles(rowList, purchasecode);
             form.ShowDialog();
             this.Close();
         }
@@ -169,16 +169,17 @@ namespace LoginForm.PurchaseOrder
             if (IME.PurchaseOrders.Count() == 0)
             {
                 txtOrderNumber.Text = "1";
-                purchasecode = 1.ToString();
+                purchasecode = 1;
             }
             else
             {
                 purchasecode = IME.PurchaseOrders.OrderByDescending(q => q.FicheNo).FirstOrDefault().FicheNo;
-                txtOrderNumber.Text = (Int32.Parse(purchasecode) + 1).ToString();
+                txtOrderNumber.Text = (purchasecode + 1).ToString();
+                purchasecode = purchasecode + 1;
             }
         }
 
-        public void ViewPurchaseOrdersDetail(string ficheNo)
+        public void ViewPurchaseOrdersDetail(int ficheNo)
         {
             SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-51RN2GB\LOCAL;Initial Catalog=IME;Integrated Security=True");
             StringBuilder history = new StringBuilder();

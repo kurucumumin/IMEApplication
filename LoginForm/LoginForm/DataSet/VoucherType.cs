@@ -18,6 +18,7 @@ namespace LoginForm.DataSet
         public VoucherType()
         {
             this.AdvancePayments = new HashSet<AdvancePayment>();
+            this.PaymentMasters = new HashSet<PaymentMaster>();
             this.VoucherTypeTaxes = new HashSet<VoucherTypeTax>();
         }
     
@@ -38,6 +39,8 @@ namespace LoginForm.DataSet
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AdvancePayment> AdvancePayments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PaymentMaster> PaymentMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VoucherTypeTax> VoucherTypeTaxes { get; set; }
     }

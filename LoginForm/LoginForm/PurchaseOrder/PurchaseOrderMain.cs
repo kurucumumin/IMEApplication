@@ -15,14 +15,14 @@ namespace LoginForm.PurchaseOrder
     public partial class PurchaseOrderMain : Form
     {
         IMEEntities IME = new IMEEntities();
-        string ficheNumber;
+        int ficheNumber;
 
         public PurchaseOrderMain()
         {
             InitializeComponent();
         }
 
-        public PurchaseOrderMain(string ficheNo)
+        public PurchaseOrderMain(int ficheNo)
         {
             InitializeComponent();
             ficheNumber = ficheNo;
@@ -31,11 +31,11 @@ namespace LoginForm.PurchaseOrder
         private void btnCreate_Click(object sender, EventArgs e)
         {
             #region ProductHistory
-            string fish_no = null;
+            int fish_no =0;
 
             if (dgPurchase.CurrentRow.Cells["FicheNo"].Value != null)
-                fish_no = dgPurchase.CurrentRow.Cells["FicheNo"].Value.ToString();
-            if (fish_no == null)
+                fish_no = (int)dgPurchase.CurrentRow.Cells["FicheNo"].Value;
+            if (dgPurchase.CurrentRow.Cells["FicheNo"].Value == null)
                 MessageBox.Show("Please Enter a Fiche No", "Eror !");
             else
             {
@@ -54,11 +54,11 @@ namespace LoginForm.PurchaseOrder
             for (int i = 0; i < dgPurchase.RowCount - 1; i++)
             {
                 DataGridViewRow row = dgPurchase.Rows[i];
-                string ID = row.Cells[FicheNo.Index].Value.ToString();
-                if (ID != null)
+                int ID = (int)row.Cells[FicheNo.Index].Value;
+                if (row.Cells[FicheNo.Index].Value != null)
                 {
                     var adapter = IME.PurchaseOrders.Where(a => a.FicheNo == ID).FirstOrDefault();
-                    adapter.FicheNo = row.Cells[FicheNo.Index].Value.ToString();
+                    adapter.FicheNo = (int)row.Cells[FicheNo.Index].Value;
                     adapter.PurchaseOrderDate = (DateTime)row.Cells[PurchaseOrderDate.Index].Value;
                     adapter.CustomerID = row.Cells[CustomerID.Index].Value.ToString();
                     adapter.Customer.c_name = row.Cells[c_name.Index].Value.ToString();
@@ -175,10 +175,11 @@ namespace LoginForm.PurchaseOrder
                 }
                 else
                 {
-                 var fno = IME.PurchaseOrders.Where(b => b.FicheNo == search).FirstOrDefault();
+                    int sayac = Convert.ToInt32(search);
+                 var fno = IME.PurchaseOrders.Where(b => b.FicheNo == sayac).FirstOrDefault();
                     if (fno != null)
                     {
-                        var fichenolist = (from p in IME.PurchaseOrders.Where(p => p.FicheNo == search)
+                        var fichenolist = (from p in IME.PurchaseOrders.Where(p => p.FicheNo == sayac)
                                            select new
                                            {
                                                p.FicheNo,

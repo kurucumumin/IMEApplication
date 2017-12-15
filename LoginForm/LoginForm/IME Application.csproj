@@ -216,6 +216,9 @@
     <Compile Include="DataSet\AuthorizationValue.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\BonusDeduction.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Capital.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -334,6 +337,9 @@
     <Compile Include="DataSet\PaymentTerm.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PricingLevel.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PrintFormat.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -374,12 +380,6 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SlidingPrice.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\sp_helpdiagrams_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Stock.cs">
@@ -623,7 +623,6 @@
       <DependentUpon>FormSaleItemSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="SaleOrder\SalesOrderHelper.cs" />
-    <Compile Include="Services\GetModifyQuotation.cs" />
     <Compile Include="Services\Messages.cs" />
     <Compile Include="Services\ToolTipService.cs" />
     <Compile Include="Services\txtCreate.cs" />

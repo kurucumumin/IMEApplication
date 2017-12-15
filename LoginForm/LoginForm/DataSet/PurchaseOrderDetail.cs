@@ -21,12 +21,12 @@ namespace LoginForm.DataSet
         public Nullable<int> SendQty { get; set; }
         public string SaleOrderNature { get; set; }
         public string FrtType { get; set; }
-        public string FicheNo { get; set; }
         public string ItemDescription { get; set; }
         public bool Hazardous { get; set; }
         public bool Calibration { get; set; }
         public Nullable<decimal> UnitPrice { get; set; }
         public string Unit { get; set; }
+        public Nullable<int> FicheNo { get; set; }
     
         public virtual PurchaseOrder PurchaseOrder { get; set; }
         public virtual SaleOrder SaleOrder { get; set; }
