@@ -80,6 +80,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<RSPro> RSProes { get; set; }
         public virtual DbSet<SaleOrder> SaleOrders { get; set; }
         public virtual DbSet<SaleOrderDetail> SaleOrderDetails { get; set; }
+        public virtual DbSet<Setting> Settings { get; set; }
         public virtual DbSet<SlidingPrice> SlidingPrices { get; set; }
         public virtual DbSet<Stock> Stocks { get; set; }
         public virtual DbSet<SuperDisk> SuperDisks { get; set; }

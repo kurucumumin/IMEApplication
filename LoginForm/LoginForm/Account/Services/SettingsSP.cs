@@ -1,26 +1,29 @@
 ﻿using LoginForm.DataSet;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace LoginForm.Account.Services
 {
-    class ExchangeRateSP
+    class SettingsSP
     {
-        public decimal ExchangerateViewByCurrencyId(decimal decCurrencyId)
+        public string SettingsStatusCheck(string strSettingsName)
         {
             IMEEntities db = new IMEEntities();
 
-            decimal decExchangerateId = 0;
+            string strStatus = string.Empty;
             try
             {
-                decExchangerateId = Convert.ToDecimal(db.ExchangeRates.Where(x => x.currencyId == decCurrencyId).OrderByDescending(x => x.rate).FirstOrDefault());
+                strStatus = db.Settings.Where(x => x.settingsName == strSettingsName).FirstOrDefault().status;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-            return decExchangerateId;
+            return strStatus;
         }
     }
 }

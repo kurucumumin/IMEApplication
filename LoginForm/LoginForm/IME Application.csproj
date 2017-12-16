@@ -178,6 +178,16 @@
     <Compile Include="Account\PayRoll\frmPayHead.designer.cs">
       <DependentUpon>frmPayHead.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Services\AccountGroupSP.cs" />
+    <Compile Include="Account\Services\AccountLedgerSP.cs" />
+    <Compile Include="Account\Services\AreaSP.cs" />
+    <Compile Include="Account\Services\ExchangeRateSP.cs" />
+    <Compile Include="Account\Services\FinancialYearSP.cs" />
+    <Compile Include="Account\Services\LedgerPostingSP.cs" />
+    <Compile Include="Account\Services\PartyBalanceSP.cs" />
+    <Compile Include="Account\Services\PricingLevelSP.cs" />
+    <Compile Include="Account\Services\RouteSP.cs" />
+    <Compile Include="Account\Services\SettingsSP.cs" />
     <Compile Include="Account\Register\frmPaymentRegister.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -353,6 +363,9 @@
     <Compile Include="DataSet\PaymentTerm.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PricingLevel.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PrintFormat.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -390,6 +403,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SaleOrderDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Setting.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SlidingPrice.cs">

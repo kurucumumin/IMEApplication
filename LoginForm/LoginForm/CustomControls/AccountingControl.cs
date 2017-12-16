@@ -18,7 +18,8 @@ namespace LoginForm.CustomControls
 
         private void btnAccountLedger_Click(object sender, EventArgs e)
         {
-
+            frmAccountLedger form = new frmAccountLedger();
+            form.ShowDialog();
         }
 
         private void btnExchangeRate_Click(object sender, EventArgs e)

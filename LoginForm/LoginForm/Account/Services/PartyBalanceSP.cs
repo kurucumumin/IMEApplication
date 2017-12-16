@@ -4,9 +4,9 @@ using System.Windows;
 
 namespace LoginForm.Account.Services
 {
-    static class PartyBalanceSP
+    class PartyBalanceSP
     {
-        static public void PartyBalanceAdd(PartyBalance partybalanceinfo)
+        public void PartyBalanceAdd(PartyBalance partybalanceinfo)
         {
             IMEEntities db = new IMEEntities();
             try
