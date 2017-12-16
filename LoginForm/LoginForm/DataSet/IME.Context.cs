@@ -75,6 +75,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<Quotation> Quotations { get; set; }
         public virtual DbSet<QuotationDetail> QuotationDetails { get; set; }
         public virtual DbSet<Rate> Rates { get; set; }
+        public virtual DbSet<ReceiptMaster> ReceiptMasters { get; set; }
         public virtual DbSet<RoleValue> RoleValues { get; set; }
         public virtual DbSet<Route> Routes { get; set; }
         public virtual DbSet<RSPro> RSProes { get; set; }
