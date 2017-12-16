@@ -1,4 +1,4 @@
-﻿namespace Open_Miracle
+﻿namespace LoginForm
 {
     partial class frmAccountLedger
     {
@@ -118,7 +118,7 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnSearch.Location = new System.Drawing.Point(879, 25);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(113, 33);
             this.btnSearch.TabIndex = 2;
@@ -164,7 +164,7 @@
             this.dgvAccountLedger.EnableHeadersVisualStyles = false;
             this.dgvAccountLedger.GridColor = System.Drawing.Color.SteelBlue;
             this.dgvAccountLedger.Location = new System.Drawing.Point(51, 511);
-            this.dgvAccountLedger.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvAccountLedger.Margin = new System.Windows.Forms.Padding(4);
             this.dgvAccountLedger.MultiSelect = false;
             this.dgvAccountLedger.Name = "dgvAccountLedger";
             this.dgvAccountLedger.ReadOnly = true;
@@ -235,7 +235,7 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnDelete.Location = new System.Drawing.Point(757, 362);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(113, 33);
             this.btnDelete.TabIndex = 2;
@@ -250,7 +250,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnClose.Location = new System.Drawing.Point(879, 362);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(113, 33);
             this.btnClose.TabIndex = 3;
@@ -265,7 +265,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnSave.Location = new System.Drawing.Point(515, 362);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(113, 33);
             this.btnSave.TabIndex = 0;
@@ -281,7 +281,7 @@
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnClear.Location = new System.Drawing.Point(636, 362);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(113, 33);
             this.btnClear.TabIndex = 1;
@@ -365,9 +365,9 @@
             this.tbSecondaryDetails.Controls.Add(this.lblPricingLevel);
             this.tbSecondaryDetails.Controls.Add(this.lblMailingName);
             this.tbSecondaryDetails.Location = new System.Drawing.Point(4, 25);
-            this.tbSecondaryDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbSecondaryDetails.Margin = new System.Windows.Forms.Padding(4);
             this.tbSecondaryDetails.Name = "tbSecondaryDetails";
-            this.tbSecondaryDetails.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbSecondaryDetails.Padding = new System.Windows.Forms.Padding(4);
             this.tbSecondaryDetails.Size = new System.Drawing.Size(957, 293);
             this.tbSecondaryDetails.TabIndex = 1;
             this.tbSecondaryDetails.Text = "Secondary Details";
@@ -721,7 +721,7 @@
             this.tbMainDetails.Location = new System.Drawing.Point(4, 25);
             this.tbMainDetails.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tbMainDetails.Name = "tbMainDetails";
-            this.tbMainDetails.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbMainDetails.Padding = new System.Windows.Forms.Padding(4);
             this.tbMainDetails.Size = new System.Drawing.Size(957, 293);
             this.tbMainDetails.TabIndex = 0;
             this.tbMainDetails.Text = "Main Details";
@@ -750,15 +750,17 @@
             // 
             // btnAccountGroupAdd
             // 
+            this.btnAccountGroupAdd.BackColor = System.Drawing.SystemColors.Control;
             this.btnAccountGroupAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnAccountGroupAdd.FlatAppearance.BorderSize = 0;
             this.btnAccountGroupAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAccountGroupAdd.Location = new System.Drawing.Point(459, 49);
-            this.btnAccountGroupAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAccountGroupAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAccountGroupAdd.Name = "btnAccountGroupAdd";
             this.btnAccountGroupAdd.Size = new System.Drawing.Size(27, 25);
             this.btnAccountGroupAdd.TabIndex = 4;
-            this.btnAccountGroupAdd.UseVisualStyleBackColor = true;
+            this.btnAccountGroupAdd.Text = "+";
+            this.btnAccountGroupAdd.UseVisualStyleBackColor = false;
             this.btnAccountGroupAdd.Click += new System.EventHandler(this.btnAccountGroupAdd_Click);
             // 
             // txtOpeningBalance
@@ -806,9 +808,9 @@
             this.gbxDetails.Controls.Add(this.lblACNo);
             this.gbxDetails.ForeColor = System.Drawing.Color.White;
             this.gbxDetails.Location = new System.Drawing.Point(499, 20);
-            this.gbxDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxDetails.Margin = new System.Windows.Forms.Padding(4);
             this.gbxDetails.Name = "gbxDetails";
-            this.gbxDetails.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxDetails.Padding = new System.Windows.Forms.Padding(4);
             this.gbxDetails.Size = new System.Drawing.Size(432, 180);
             this.gbxDetails.TabIndex = 6;
             this.gbxDetails.TabStop = false;
@@ -951,7 +953,7 @@
             this.tbctrlLedger.Controls.Add(this.tbMainDetails);
             this.tbctrlLedger.Controls.Add(this.tbSecondaryDetails);
             this.tbctrlLedger.Location = new System.Drawing.Point(51, 48);
-            this.tbctrlLedger.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbctrlLedger.Margin = new System.Windows.Forms.Padding(4);
             this.tbctrlLedger.Name = "tbctrlLedger";
             this.tbctrlLedger.SelectedIndex = 0;
             this.tbctrlLedger.Size = new System.Drawing.Size(965, 322);
@@ -966,9 +968,9 @@
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(24, 16);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(1019, 411);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -983,9 +985,9 @@
             this.groupBox2.Controls.Add(this.lblGroupSearch);
             this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(24, 446);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(1019, 277);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
@@ -1004,10 +1006,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmAccountLedger";
-            this.Opacity = 0.85D;
             this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Account Ledger";

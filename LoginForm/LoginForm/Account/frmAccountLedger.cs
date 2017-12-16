@@ -13,6 +13,7 @@
 using LoginForm.Account.Services;
 using LoginForm.DataSet;
 using LoginForm.Services;
+using Open_Miracle;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,7 +22,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-namespace Open_Miracle
+namespace LoginForm
 {
     public partial class frmAccountLedger : Form
     {
@@ -189,7 +190,7 @@ namespace Open_Miracle
                     //accountLedger.extra1 = string.Empty;
                     //accountLedger.extra2 = string.Empty;
                 }
-                if(AccountLedgerSP.AccountLedgerCheckExistence(txtLedgerName.Text.Trim().ToString(), 0) == false)
+                if(new AccountLedgerSP().AccountLedgerCheckExistence(txtLedgerName.Text.Trim().ToString(), 0) == false)
                 {
                     db.AccountLedgers.Add(accountLedger);
                     db.SaveChanges();
@@ -328,9 +329,11 @@ namespace Open_Miracle
                     //infoAccountLedger.Extra2 = string.Empty;
                 }
                 infoAccountLedger.ledgerId = decAccountLedgerId;
-                if (AccountLedgerSP.AccountLedgerCheckExistence(txtLedgerName.Text.Trim(), decLedger) == false)
+
+                AccountLedgerSP spAccountLedger = new AccountLedgerSP();
+                if (spAccountLedger.AccountLedgerCheckExistence(txtLedgerName.Text.Trim(), decLedger) == false)
                 {
-                    AccountLedgerSP.AccountLedgerEdit(infoAccountLedger);
+                    spAccountLedger.AccountLedgerEdit(infoAccountLedger);
                     LedgerPostingEdit();
                     if (cmbBillByBill.Text == "Yes" && isSundryDebtorOrCreditor)
                     {
@@ -437,7 +440,7 @@ namespace Open_Miracle
                 decOpeningBalance = Convert.ToDecimal(txtOpeningBalance.Text);
                 LedgerPosting infoLedgerPosting = new LedgerPosting();
                 FinancialYear infoFinancialYear = new FinancialYear();
-                infoFinancialYear = FinancialYearSP.FinancialYearViewForAccountLedger(1);
+                infoFinancialYear = new FinancialYearSP().FinancialYearViewForAccountLedger(1);
                 strfinancialId = infoFinancialYear.fromDate.Value.ToString("dd-MMM-yyyy");
                 infoLedgerPosting.voucherTypeId = 1;
                 infoLedgerPosting.date = Convert.ToDateTime(strfinancialId.ToString());
@@ -472,13 +475,14 @@ namespace Open_Miracle
         /// </summary> 
         public void LedgerPostingEdit()
         {
+            LedgerPostingSP spledgerPosting = new LedgerPostingSP();
             try
             {
                 string strfinancialId;
                 decOpeningBalance = Convert.ToDecimal(((txtOpeningBalance.Text == "") ? "0" : txtOpeningBalance.Text.Trim()));
                 LedgerPosting infoLedgerPosting = new LedgerPosting();
                 FinancialYear infoFinancialYear = new FinancialYear();
-                infoFinancialYear =FinancialYearSP.FinancialYearViewForAccountLedger(1);
+                infoFinancialYear =new FinancialYearSP().FinancialYearViewForAccountLedger(1);
                 strfinancialId = infoFinancialYear.fromDate.Value.ToString("dd-MMM-yyyy");
                 infoLedgerPosting.voucherTypeId = 1;
                 infoLedgerPosting.date = Convert.ToDateTime(strfinancialId.ToString());
@@ -497,25 +501,25 @@ namespace Open_Miracle
                 infoLedgerPosting.voucherNo = decAccountLedgerId.ToString();
                 infoLedgerPosting.chequeNo = string.Empty;
                 infoLedgerPosting.chequeDate = DateTime.Now;
-                DataTable dtbl = LedgerPostingSP.GetLedgerPostingIds(decAccountLedgerId.ToString(), 1);
+                DataTable dtbl = spledgerPosting.GetLedgerPostingIds(decAccountLedgerId.ToString(), 1);
                 if (dtbl.Rows.Count > 0)
                 {
                     if (decOpeningBalance > 0)
                     {
                         //Edit
                         infoLedgerPosting.ledgerPostingId = Convert.ToDecimal(dtbl.Rows[0][0].ToString());
-                        LedgerPostingSP.LedgerPostingEdit(infoLedgerPosting);
+                        spledgerPosting.LedgerPostingEdit(infoLedgerPosting);
                     }
                     else
                     {
                         //Delete
-                        AccountLedgerSP.LedgerPostingDeleteByVoucherTypeAndVoucherNo(decAccountLedgerId.ToString(), 1);
+                        new AccountLedgerSP().LedgerPostingDeleteByVoucherTypeAndVoucherNo(decAccountLedgerId.ToString(), 1);
                     }
                 }
                 else
                 {
                     //Add new row
-                    LedgerPostingSP.LedgerPostingAdd(infoLedgerPosting);
+                    spledgerPosting.LedgerPostingAdd(infoLedgerPosting);
                 }
             }
             catch (Exception ex)
@@ -559,10 +563,10 @@ namespace Open_Miracle
                         infoPatryBalance.invoiceNo = "0";
                         infoPatryBalance.againstInvoiceNo = "0";
                         infoPatryBalance.creditPeriod = 0;
-                        infoPatryBalance.exchangeRateId = Convert.ToInt32(ExchangeRateSP.ExchangerateViewByCurrencyId(Convert.ToDecimal(Utils.getManagement().DefaultCurrency)));
+                        infoPatryBalance.exchangeRateId = Convert.ToInt32(new ExchangeRateSP().ExchangerateViewByCurrencyId(Convert.ToDecimal(Utils.getManagement().DefaultCurrency)));
                         infoPatryBalance.financialYearId = Utils.getManagement().CurrentFinancialYear;
                     }
-                    PartyBalanceSP.PartyBalanceAdd(infoPatryBalance);
+                    new PartyBalanceSP().PartyBalanceAdd(infoPatryBalance);
                 }
             }
             catch (Exception ex)
@@ -579,7 +583,7 @@ namespace Open_Miracle
             try
             {
                 PartyBalance infoPatryBalance = new PartyBalance();
-                AccountLedgerSP.PartyBalanceDeleteByVoucherTypeVoucherNoAndReferenceType(decAccountLedgerId.ToString(), 1);
+                new AccountLedgerSP().PartyBalanceDeleteByVoucherTypeVoucherNoAndReferenceType(decAccountLedgerId.ToString(), 1);
                 if (decOpeningBalance > 0)
                 {
                     if (cmbBillByBill.Text == "Yes")
@@ -604,10 +608,10 @@ namespace Open_Miracle
                         infoPatryBalance.invoiceNo = "0";
                         infoPatryBalance.againstInvoiceNo = "0";
                         infoPatryBalance.creditPeriod = 0;
-                        infoPatryBalance.exchangeRateId = Convert.ToInt32(ExchangeRateSP.ExchangerateViewByCurrencyId(Convert.ToDecimal(m.DefaultCurrency)));
+                        infoPatryBalance.exchangeRateId = Convert.ToInt32(new ExchangeRateSP().ExchangerateViewByCurrencyId(Convert.ToDecimal(m.DefaultCurrency)));
                         infoPatryBalance.financialYearId = m.CurrentFinancialYear;
                     }
-                    PartyBalanceSP.PartyBalanceAdd(infoPatryBalance);
+                    new PartyBalanceSP().PartyBalanceAdd(infoPatryBalance);
                 }
             }
             catch (Exception ex)
@@ -622,7 +626,7 @@ namespace Open_Miracle
         {
             try
             {
-                cmbGroup.DataSource = AccountGroupSP.AccountGroupViewAllComboFillForAccountLedger();
+                cmbGroup.DataSource = new AccountGroupSP().AccountGroupViewAllComboFillForAccountLedger();
                 cmbGroup.ValueMember = "accountGroupId";
                 cmbGroup.DisplayMember = "accountGroupName";
             }
@@ -639,7 +643,7 @@ namespace Open_Miracle
             try
             {
                 DataTable dtblAccountGroupSearch = new DataTable();
-                dtblAccountGroupSearch = AccountGroupSP.AccountGroupViewAllComboFill();
+                dtblAccountGroupSearch = new AccountGroupSP().AccountGroupViewAllComboFill();
                 DataRow dr = dtblAccountGroupSearch.NewRow();
                 dr[1] = "All";
                 dtblAccountGroupSearch.Rows.InsertAt(dr, 0);
@@ -658,148 +662,144 @@ namespace Open_Miracle
         /// </summary> 
         public void PrlicingLevelComboFill()
         {
-            //try
-            //{
-            //    PricingLevelSP spPricingLevel = new PricingLevelSP();
-            //    DataTable dtblPrlicingLevel = new DataTable();
-            //    dtblPrlicingLevel = spPricingLevel.PricelistPricingLevelViewAllForComboBox();
-            //    cmbPricingLevel.DataSource = dtblPrlicingLevel;
-            //    DataRow dr = dtblPrlicingLevel.NewRow();
-                
-            //    cmbPricingLevel.ValueMember = "pricinglevelId";
-            //    cmbPricingLevel.DisplayMember = "pricinglevelName";
-                
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("AL10:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+            try
+            {
+                DataTable dtblPrlicingLevel = new DataTable();
+                dtblPrlicingLevel = new PricingLevelSP().PricelistPricingLevelViewAllForComboBox();
+                cmbPricingLevel.DataSource = dtblPrlicingLevel;
+                DataRow dr = dtblPrlicingLevel.NewRow();
+
+                cmbPricingLevel.ValueMember = "pricinglevelId";
+                cmbPricingLevel.DisplayMember = "pricinglevelName";
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL10:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         /// <summary>
         ///Function to fill area combobox
         /// </summary> 
         public void AreaComboFill()
         {
-            //try
-            //{
-            //    AreaSP spArea = new AreaSP();
-            //    DataTable dtblArea = new DataTable();
-            //    dtblArea = spArea.AreaViewAll();
-            //    DataRow dr = dtblArea.NewRow();
-            //    cmbArea.DataSource = dtblArea;
-            //    cmbArea.ValueMember = "areaId";
-            //    cmbArea.DisplayMember = "areaName";
-            //    cmbArea.SelectedIndex = -1;
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("AL11:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+            try
+            {
+                DataTable dtblArea = new DataTable();
+                dtblArea = new AreaSP().AreaViewAll();
+                DataRow dr = dtblArea.NewRow();
+                cmbArea.DataSource = dtblArea;
+                cmbArea.ValueMember = "areaId";
+                cmbArea.DisplayMember = "areaName";
+                cmbArea.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL11:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         /// <summary>
         ///Function to fill route combobox
         /// </summary> 
         public void RouteComboFill()
         {
-            //try
-            //{
-            //    if (cmbArea.Items.Count > 0)
-            //    {
-            //        if (cmbArea.SelectedIndex != -1)
-            //        {
-            //            if (cmbArea.SelectedValue.ToString() != "System.Data.DataRowView" && cmbArea.Text != "System.Data.DataRowView")
-            //            {
-            //                RouteSP spRout = new RouteSP();
-            //                DataTable dtblRoute = new DataTable();
-            //                dtblRoute = spRout.RouteViewByArea(Convert.ToDecimal(cmbArea.SelectedValue.ToString()));
-            //                cmbRoute.DataSource = dtblRoute;
-            //                cmbRoute.ValueMember = "routeId";
-            //                cmbRoute.DisplayMember = "routeName";
-            //                cmbRoute.SelectedIndex = 0;
-            //            }
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("AL12:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+            try
+            {
+                if (cmbArea.Items.Count > 0)
+                {
+                    if (cmbArea.SelectedIndex != -1)
+                    {
+                        if (cmbArea.SelectedValue.ToString() != "System.Data.DataRowView" && cmbArea.Text != "System.Data.DataRowView")
+                        {
+                            DataTable dtblRoute = new DataTable();
+                            dtblRoute = new RouteSP().RouteViewByArea(Convert.ToDecimal(cmbArea.SelectedValue.ToString()));
+                            cmbRoute.DataSource = dtblRoute;
+                            cmbRoute.ValueMember = "routeId";
+                            cmbRoute.DisplayMember = "routeName";
+                            cmbRoute.SelectedIndex = 0;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL12:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         /// <summary>
         ///Function to clear fields
         /// </summary>         
         public void Clear()
         {
-            //try
-            //{
-            //    txtAccountNo.Clear();
-            //    txtAcNo.Clear();
-            //    txtAddress.Clear();
-            //    txtBranchName.Clear();
-            //    txtBranchCode.Clear();
-            //    txtCst.Clear();
-            //    txtEmail.Clear();
-            //    txtLedgerName.Clear();
-            //    txtLedgerNameSearch.Clear();
-            //    txtMailingName.Clear();
-            //    txtMobile.Clear();
-            //    txtNarration.Clear();
-            //    txtPan.Clear();
-            //    txtPhone.Clear();
-            //    txtTin.Clear();
-            //    AreaComboFill();
-            //    cmbArea.SelectedIndex = 0;
-            //    if (new SettingsSP().SettingsStatusCheck("BillByBill") == "Yes")
-            //    {
-            //        cmbBillByBill.Enabled = true;
-            //        cmbBillByBill.Text = "No";
-            //    }
-            //    else
-            //    {
-            //        cmbBillByBill.Enabled = false;
-            //    }
-            //    cmbGroup.SelectedIndex = -1;
-            //    cmbPricingLevel.SelectedIndex = 0;
-            //    txtOpeningBalance.Text = "0.00";
-            //    txtCreditLimit.Text = "0.00";
-            //    txtCreditPeriod.Text = "0";
-            //    cmbOpeningBalanceCrOrDr.Text = "Dr";
-            //    btnSave.Text = "Save";
-            //    txtLedgerName.ReadOnly = false;
-            //    btnDelete.Enabled = false;
-            //    tbctrlLedger.SelectedTab = tbMainDetails;
-            //    isSundryDebtorOrCreditor = false;
-            //    isBankAccount = false;
-            //    cmbGroupSearch.SelectedIndex = 0;
-            //    cmbGroup.Enabled = true;
-            //    GridFill();
-            //    txtLedgerName.Select();
-            //    gbxDetails.Visible = false;
-            //    txtOpeningBalance.Enabled = true;
-            //    cmbOpeningBalanceCrOrDr.Enabled = true;
-            //    btnAccountGroupAdd.Enabled = true;
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("AL13:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+            try
+            {
+                txtAccountNo.Clear();
+                txtAcNo.Clear();
+                txtAddress.Clear();
+                txtBranchName.Clear();
+                txtBranchCode.Clear();
+                txtCst.Clear();
+                txtEmail.Clear();
+                txtLedgerName.Clear();
+                txtLedgerNameSearch.Clear();
+                txtMailingName.Clear();
+                txtMobile.Clear();
+                txtNarration.Clear();
+                txtPan.Clear();
+                txtPhone.Clear();
+                txtTin.Clear();
+                AreaComboFill();
+                cmbArea.SelectedIndex = 0;
+                if (new SettingsSP().SettingsStatusCheck("BillByBill") == "Yes")
+                {
+                    cmbBillByBill.Enabled = true;
+                    cmbBillByBill.Text = "No";
+                }
+                else
+                {
+                    cmbBillByBill.Enabled = false;
+                }
+                cmbGroup.SelectedIndex = -1;
+                cmbPricingLevel.SelectedIndex = 0;
+                txtOpeningBalance.Text = "0.00";
+                txtCreditLimit.Text = "0.00";
+                txtCreditPeriod.Text = "0";
+                cmbOpeningBalanceCrOrDr.Text = "Dr";
+                btnSave.Text = "Save";
+                txtLedgerName.ReadOnly = false;
+                btnDelete.Enabled = false;
+                tbctrlLedger.SelectedTab = tbMainDetails;
+                isSundryDebtorOrCreditor = false;
+                isBankAccount = false;
+                cmbGroupSearch.SelectedIndex = 0;
+                cmbGroup.Enabled = true;
+                GridFill();
+                txtLedgerName.Select();
+                gbxDetails.Visible = false;
+                txtOpeningBalance.Enabled = true;
+                cmbOpeningBalanceCrOrDr.Enabled = true;
+                btnAccountGroupAdd.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL13:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         /// <summary>
         ///Function to fill datagridview
         /// </summary>        
         public void GridFill()
         {
-            //try
-            //{
-            //    DataTable dtbl = new DataTable();
-            //    AccountLedgerSP spAccountLedger = new AccountLedgerSP();
-            //    dtbl = spAccountLedger.AccountLedgerSearch(cmbGroupSearch.Text, txtLedgerNameSearch.Text.Trim());
-            //    dgvAccountLedger.DataSource = dtbl;
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("AL14:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+            try
+            {
+                DataTable dtbl = new DataTable();
+                dtbl = new AccountLedgerSP().AccountLedgerSearch(cmbGroupSearch.Text, txtLedgerNameSearch.Text.Trim());
+                dgvAccountLedger.DataSource = dtbl;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL14:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         /// <summary>
         /// Function to call this form from frmDailySalaryVoucher for creating new account ledger
@@ -1045,116 +1045,117 @@ namespace Open_Miracle
         /// </summary>
         public void Delete()
         {
-            //try
-            //{
-            //    if (!isDefault)
-            //    {
-            //        if (Messages.DeleteConfirmation())
-            //        {
-            //            AccountLedgerSP spAccountLedger = new AccountLedgerSP();
-            //            spAccountLedger.PartyBalanceDeleteByVoucherTypeVoucherNoAndReferenceType(decAccountLedgerId.ToString(), 1);
-            //            spAccountLedger.LedgerPostingDeleteByVoucherTypeAndVoucherNo(decAccountLedgerId.ToString(), 1);
-            //            if (spAccountLedger.AccountLedgerCheckReferences(decAccountLedgerId) == -1)
-            //            {
-            //                Messages.ReferenceExistsMessage();
-            //            }
-            //            else
-            //            {
-            //                Messages.DeletedMessage();
-            //                Clear();
-            //            }
-            //        }
-            //    }
-            //    else
-            //    {
-            //        Messages.InformationMessage("Can't delete build in account ledger");
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("AL25:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+            IMEEntities db = new IMEEntities();
+            try
+            {
+                if (!isDefault)
+                {
+                    if (Messages.DeleteConfirmation())
+                    {
+                        AccountLedgerSP spAccountLedger = new AccountLedgerSP();
+                        spAccountLedger.PartyBalanceDeleteByVoucherTypeVoucherNoAndReferenceType(decAccountLedgerId.ToString(), 1);
+                        spAccountLedger.LedgerPostingDeleteByVoucherTypeAndVoucherNo(decAccountLedgerId.ToString(), 1);
+                        if (spAccountLedger.AccountLedgerCheckReferences(decAccountLedgerId) == -1)
+                        {
+                            Messages.ReferenceExistsMessage();
+                        }
+                        else
+                        {
+                            Messages.DeletedMessage();
+                            Clear();
+                        }
+                    }
+                }
+                else
+                {
+                    Messages.InformationMessage("Can't delete build in account ledger");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL25:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         /// <summary>
         ///Function to fill data in to controls when click on datagridview
         /// </summary>        
         public void FillControls()
         {
-            //try
-            //{
-            //    AccountLedgerInfo infoAccountLedger = new AccountLedgerInfo();
-            //    AccountLedgerSP spAccountLedger = new AccountLedgerSP();
-            //    infoAccountLedger = spAccountLedger.AccountLedgerViewForEdit(decAccountLedgerId);
-            //    txtAccountNo.Text = infoAccountLedger.BankAccountNumber;
-            //    txtAcNo.Text = infoAccountLedger.BankAccountNumber;
-            //    txtAddress.Text = infoAccountLedger.Address;
-            //    txtBranchName.Text = infoAccountLedger.BranchName;
-            //    txtBranchCode.Text = infoAccountLedger.BranchCode;
-            //    txtCst.Text = infoAccountLedger.Cst;
-            //    txtEmail.Text = infoAccountLedger.Email;
-            //    txtLedgerName.Text = infoAccountLedger.LedgerName;
-            //    txtMailingName.Text = infoAccountLedger.MailingName;
-            //    txtMobile.Text = infoAccountLedger.Mobile;
-            //    txtNarration.Text = infoAccountLedger.Narration;
-            //    txtPan.Text = infoAccountLedger.Pan;
-            //    txtPhone.Text = infoAccountLedger.Phone;
-            //    txtTin.Text = infoAccountLedger.Tin;
-            //    txtCreditLimit.Text = infoAccountLedger.CreditLimit.ToString();
-            //    txtCreditPeriod.Text = infoAccountLedger.CreditPeriod.ToString();
-            //    cmbArea.SelectedValue = infoAccountLedger.AreaId.ToString();
-            //    if (infoAccountLedger.BillByBill)
-            //    {
-            //        cmbBillByBill.Text = "Yes";
-            //    }
-            //    else
-            //    {
-            //        cmbBillByBill.Text = "No";
-            //    }
-            //    cmbGroup.SelectedValue = infoAccountLedger.AccountGroupId.ToString();
-            //    PrlicingLevelComboFill();
-            //    cmbPricingLevel.SelectedValue = infoAccountLedger.PricinglevelId;
-            //    cmbRoute.SelectedValue = infoAccountLedger.RouteId.ToString();
-            //    decimal decBalance = infoAccountLedger.OpeningBalance;
-            //    txtOpeningBalance.Text = decBalance.ToString();
-            //    cmbOpeningBalanceCrOrDr.Text = infoAccountLedger.CrOrDr.ToString();
-            //    if (infoAccountLedger.IsDefault == true)
-            //    {
-            //        cmbGroup.Enabled = false;
-            //        txtLedgerName.ReadOnly = true;
-            //        btnAccountGroupAdd.Enabled = false;
-            //        txtLedgerName.BackColor = Color.WhiteSmoke;
-            //    }
-            //    else if (infoAccountLedger.IsDefault == false && decBalance > 0)
-            //    {
-            //        cmbGroup.Enabled = false;
-            //        btnAccountGroupAdd.Enabled = false;
-            //        txtLedgerName.ReadOnly = false;
-            //        txtLedgerName.BackColor = Color.White;
-            //    }
-            //    else
-            //    {
-            //        cmbGroup.Enabled = true;
-            //        txtLedgerName.ReadOnly = false;
-            //        txtLedgerName.BackColor = Color.White;
-            //        btnAccountGroupAdd.Enabled = true;
-            //    }
-            //    if (spAccountLedger.PartyBalanceAgainstReferenceCheck(decAccountLedgerId.ToString(), 1))
-            //    {
-            //        cmbGroup.Enabled = false;
-            //        txtLedgerName.ReadOnly = false;
-            //        txtOpeningBalance.Enabled = false;
-            //        cmbOpeningBalanceCrOrDr.Enabled = false;
-            //        cmbBillByBill.Enabled = false;
-            //        txtLedgerName.BackColor = Color.White;
-            //    }
-            //    decLedger = infoAccountLedger.LedgerId;
-            //    isDefault = infoAccountLedger.IsDefault;
-            //    tbctrlLedger.SelectedTab = tbMainDetails;
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("AL26:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+            try
+            {
+                AccountLedger infoAccountLedger = new AccountLedger();
+                AccountLedgerSP spAccountLedger = new AccountLedgerSP();
+                infoAccountLedger = spAccountLedger.AccountLedgerViewForEdit(decAccountLedgerId);
+                txtAccountNo.Text = infoAccountLedger.bankAccountNumber;
+                txtAcNo.Text = infoAccountLedger.bankAccountNumber;
+                txtAddress.Text = infoAccountLedger.address;
+                txtBranchName.Text = infoAccountLedger.branchName;
+                txtBranchCode.Text = infoAccountLedger.branchCode;
+                txtCst.Text = infoAccountLedger.cst;
+                txtEmail.Text = infoAccountLedger.email;
+                txtLedgerName.Text = infoAccountLedger.ledgerName;
+                txtMailingName.Text = infoAccountLedger.mailingName;
+                txtMobile.Text = infoAccountLedger.mobile;
+                txtNarration.Text = infoAccountLedger.narration;
+                txtPan.Text = infoAccountLedger.pan;
+                txtPhone.Text = infoAccountLedger.phone;
+                txtTin.Text = infoAccountLedger.tin;
+                txtCreditLimit.Text = infoAccountLedger.creditLimit.ToString();
+                txtCreditPeriod.Text = infoAccountLedger.creditPeriod.ToString();
+                cmbArea.SelectedValue = infoAccountLedger.areaId.ToString();
+                if ((bool)infoAccountLedger.billByBill)
+                {
+                    cmbBillByBill.Text = "Yes";
+                }
+                else
+                {
+                    cmbBillByBill.Text = "No";
+                }
+                cmbGroup.SelectedValue = infoAccountLedger.accountGroupID.ToString();
+                PrlicingLevelComboFill();
+                cmbPricingLevel.SelectedValue = infoAccountLedger.pricinglevelId;
+                cmbRoute.SelectedValue = infoAccountLedger.routeId.ToString();
+                decimal decBalance = Convert.ToDecimal(infoAccountLedger.openingBalance);
+                txtOpeningBalance.Text = decBalance.ToString();
+                cmbOpeningBalanceCrOrDr.Text = infoAccountLedger.crOrDr.ToString();
+                if (infoAccountLedger.isDefault == true)
+                {
+                    cmbGroup.Enabled = false;
+                    txtLedgerName.ReadOnly = true;
+                    btnAccountGroupAdd.Enabled = false;
+                    txtLedgerName.BackColor = Color.WhiteSmoke;
+                }
+                else if (infoAccountLedger.isDefault == false && decBalance > 0)
+                {
+                    cmbGroup.Enabled = false;
+                    btnAccountGroupAdd.Enabled = false;
+                    txtLedgerName.ReadOnly = false;
+                    txtLedgerName.BackColor = Color.White;
+                }
+                else
+                {
+                    cmbGroup.Enabled = true;
+                    txtLedgerName.ReadOnly = false;
+                    txtLedgerName.BackColor = Color.White;
+                    btnAccountGroupAdd.Enabled = true;
+                }
+                if (spAccountLedger.PartyBalanceAgainstReferenceCheck(decAccountLedgerId.ToString(), 1))
+                {
+                    cmbGroup.Enabled = false;
+                    txtLedgerName.ReadOnly = false;
+                    txtOpeningBalance.Enabled = false;
+                    cmbOpeningBalanceCrOrDr.Enabled = false;
+                    cmbBillByBill.Enabled = false;
+                    txtLedgerName.BackColor = Color.White;
+                }
+                decLedger = infoAccountLedger.ledgerId;
+                isDefault = Convert.ToBoolean(infoAccountLedger.isDefault);
+                tbctrlLedger.SelectedTab = tbMainDetails;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL26:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         /// <summary>
         /// Function to refill acountgroup combobox when returns from accountgroup form
@@ -1607,21 +1608,22 @@ namespace Open_Miracle
         /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, "Save"))
-            //    {
-            //        SaveOrEdit();
-            //    }
-            //    else
-            //    {
-            //        Messages.NoPrivillageMessage();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("AL46:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+            try
+            {
+                //TODO AuthorityCheck
+                //if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, "Save"))
+                //{
+                    SaveOrEdit();
+                //}
+                //else
+                //{
+                //    Messages.NoPrivillageMessage();
+                //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL46:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         /// <summary>
         /// On 'Search' button click
@@ -1646,51 +1648,51 @@ namespace Open_Miracle
         /// <param name="e"></param>
         private void cmbGroup_SelectedValueChanged(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    if (cmbGroup.SelectedValue != null)
-            //    {
-            //        DataTable dtbl = new DataTable();
-            //        AccountLedgerSP spAccountLedger = new AccountLedgerSP();
-            //        isSundryDebtorOrCreditor = false;
-            //        isBankAccount = false;
-            //        dtbl = spAccountLedger.AccountLedgerForSecondaryDetails();
-            //        for (int ini = 0; ini < dtbl.Rows.Count; ini++)
-            //        {
-            //            strGroup = dtbl.Rows[ini].ItemArray[0].ToString();
-            //            if (strGroup == cmbGroup.SelectedValue.ToString())
-            //            {
-            //                isSundryDebtorOrCreditor = true;
-            //            }
-            //        }
-            //        dtbl = spAccountLedger.AccountLedgerForBankDetails();
-            //        for (int ini = 0; ini < dtbl.Rows.Count; ini++)
-            //        {
-            //            strBankAccount = dtbl.Rows[ini].ItemArray[0].ToString();
-            //            if (strBankAccount == cmbGroup.SelectedValue.ToString())
-            //            {
-            //                isBankAccount = true;
-            //            }
-            //        }
-            //        if (!isBankAccount)
-            //        {
-            //            gbxDetails.Visible = false;
-            //        }
-            //        else
-            //        {
-            //            gbxDetails.Visible = true;
-            //        }
-            //        if (cmbGroup.SelectedIndex > 0)
-            //        {
-            //            string strNature = spAccountLedger.CreditOrDebitChecking(Convert.ToDecimal(cmbGroup.SelectedValue.ToString()));
-            //            cmbOpeningBalanceCrOrDr.Text = strNature.ToString();
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("AL48:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+            try
+            {
+                if (cmbGroup.SelectedValue != null)
+                {
+                    DataTable dtbl = new DataTable();
+                    AccountLedgerSP spAccountLedger = new AccountLedgerSP();
+                    isSundryDebtorOrCreditor = false;
+                    isBankAccount = false;
+                    dtbl = spAccountLedger.AccountLedgerForSecondaryDetails();
+                    for (int ini = 0; ini < dtbl.Rows.Count; ini++)
+                    {
+                        strGroup = dtbl.Rows[ini].ItemArray[0].ToString();
+                        if (strGroup == cmbGroup.SelectedValue.ToString())
+                        {
+                            isSundryDebtorOrCreditor = true;
+                        }
+                    }
+                    dtbl = spAccountLedger.AccountLedgerForBankDetails();
+                    for (int ini = 0; ini < dtbl.Rows.Count; ini++)
+                    {
+                        strBankAccount = dtbl.Rows[ini].ItemArray[0].ToString();
+                        if (strBankAccount == cmbGroup.SelectedValue.ToString())
+                        {
+                            isBankAccount = true;
+                        }
+                    }
+                    if (!isBankAccount)
+                    {
+                        gbxDetails.Visible = false;
+                    }
+                    else
+                    {
+                        gbxDetails.Visible = true;
+                    }
+                    if (cmbGroup.SelectedIndex > 0)
+                    {
+                        string strNature = spAccountLedger.CreditOrDebitChecking(Convert.ToDecimal(cmbGroup.SelectedValue.ToString()));
+                        cmbOpeningBalanceCrOrDr.Text = strNature.ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL48:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         /// <summary>
         /// On double click in Datagridview to fill the controls
@@ -1739,21 +1741,22 @@ namespace Open_Miracle
         /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, "Delete"))
-            //    {
-            //        Delete();
-            //    }
-            //    else
-            //    {
-            //        Messages.NoPrivillageMessage();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("AL51:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+            try
+            {
+                //TODO AuthorityCheck
+                //if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, "Delete"))
+                //{
+                    Delete();
+                //}
+                //else
+                //{
+                    Messages.NoPrivillageMessage();
+                //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL51:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         /// <summary>
         /// To open 'Account Group form' on New Account Group button click
@@ -1762,6 +1765,11 @@ namespace Open_Miracle
         /// <param name="e"></param>
         private void btnAccountGroupAdd_Click(object sender, EventArgs e)
         {
+            frmAccountGroup accountGroupForm = new frmAccountGroup();
+            accountGroupForm.ShowDialog();
+            cmbGroup.DataSource = new AccountGroupSP().AccountGroupViewAllComboFillForAccountLedger();
+            cmbGroup.ValueMember = "accountGroupId";
+            cmbGroup.DisplayMember = "accountGroupName";
             //try
             //{
             //    if (cmbGroup.SelectedValue != null)
@@ -2115,7 +2123,7 @@ namespace Open_Miracle
         {
             try
             {
-                if (Convert.ToDecimal(txtOpeningBalance.Text) == 0)
+                if (txtOpeningBalance.Text != String.Empty && Convert.ToDecimal(txtOpeningBalance.Text) == 0)
                 {
                     txtOpeningBalance.Text = string.Empty;
                 }
@@ -3171,36 +3179,6 @@ namespace Open_Miracle
             }
         }
         #endregion
-
-        private DataTable GetLedgerPostingIds(string v1, int v2)
-        {
-            IMEEntities db = new IMEEntities();
-            DataTable dt = new DataTable();
-            List<LedgerPosting> list = db.LedgerPostings.Where(x => x.voucherNo == v1 && x.voucherTypeId == v2).ToList();
-
-            var adaptor = (from lp in db.LedgerPostings.Where(x => x.voucherNo == v1 && x.voucherTypeId == v2)
-                           select new
-                           {
-                               lp.voucherNo,
-                               lp.voucherTypeId
-                           }).ToList();
-            dt.Columns.Add("voucherNo");
-            dt.Columns.Add("voucherTypeId");
-
-            foreach (var item in adaptor)
-            {
-                var row = dt.NewRow();
-
-                row["voucherNo"] = item.voucherNo;
-                row["voucherTypeId"] = item.voucherTypeId;
-
-                dt.Rows.Add(row);
-            }
-
-            return dt;
-        }
-
-
-
+        
     }
 }

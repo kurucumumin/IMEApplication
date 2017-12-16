@@ -9,9 +9,9 @@ using System.Windows;
 
 namespace LoginForm.Account.Services
 {
-    static class AccountGroupSP
+    class AccountGroupSP
     {
-        static public List<AccountGroup> AccountGroupViewAllComboFillForAccountLedger()
+        public List<AccountGroup> AccountGroupViewAllComboFillForAccountLedger()
         {
             IMEEntities db = new IMEEntities();
             List<AccountGroup> list = new List<AccountGroup>();
@@ -26,7 +26,7 @@ namespace LoginForm.Account.Services
             return list;
         }
 
-        static public DataTable AccountGroupViewAllComboFill()
+        public DataTable AccountGroupViewAllComboFill()
         {
             IMEEntities db = new IMEEntities();
             DataTable dt = new DataTable();

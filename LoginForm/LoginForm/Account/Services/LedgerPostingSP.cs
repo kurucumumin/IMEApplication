@@ -7,9 +7,9 @@ using System.Windows;
 
 namespace LoginForm.Account.Services
 {
-    static class LedgerPostingSP
+    class LedgerPostingSP
     {
-        static public DataTable GetLedgerPostingIds(string v1, int v2)
+        public DataTable GetLedgerPostingIds(string v1, int v2)
         {
             IMEEntities db = new IMEEntities();
             DataTable dt = new DataTable();
@@ -36,7 +36,7 @@ namespace LoginForm.Account.Services
             return dt;
         }
 
-        static public void LedgerPostingEdit(LedgerPosting ledgerpostinginfo)
+        public void LedgerPostingEdit(LedgerPosting ledgerpostinginfo)
         {
             IMEEntities db = new IMEEntities();
             LedgerPosting lp;
@@ -65,7 +65,7 @@ namespace LoginForm.Account.Services
             }
         }
 
-        static public void LedgerPostingAdd(LedgerPosting ledgerpostinginfo)
+        public void LedgerPostingAdd(LedgerPosting ledgerpostinginfo)
         {
             try
             {
