@@ -21,7 +21,7 @@ namespace LoginForm.PurchaseOrder
         SqlDataAdapter da;
         System.Data.DataSet ds = new System.Data.DataSet();
         int purchasecode;
-
+        int fiche;
 
         public NewPurchaseOrder()
         {
@@ -31,27 +31,33 @@ namespace LoginForm.PurchaseOrder
         public NewPurchaseOrder(string item_code)
         {
             InitializeComponent();
-            PurchaseOrder(item_code);
+            PurchaseOrdersDetailFill(item_code);
         }
 
         public NewPurchaseOrder(int ficheNo, int sayac)
         {
             InitializeComponent();
-            if (sayac==1)
-                ViewPurchaseOrdersDetail(ficheNo);
+
+            if (sayac == 1)
+                PurchaseOrdersDetailFill2(ficheNo);
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
+            IME = new IMEEntities();
             List<DataGridViewRow> rowList = new List<DataGridViewRow>();
 
             foreach (DataGridViewRow row in dgPurchase.Rows)
             {
-                if (row.Cells[0].Value!=null && (bool)row.Cells[0].Value == true)
+                if (row.Cells[0].Value != null && (bool)row.Cells[0].Value == true)
                 {
                     rowList.Add(row);
-                }
+                }      
             }
+
+            #region Save
+            #endregion
+
 
             PurchaseExportFiles form = new PurchaseExportFiles(rowList, purchasecode);
             form.ShowDialog();
@@ -66,101 +72,6 @@ namespace LoginForm.PurchaseOrder
                 f.ShowDialog();
                 this.Close();
             }
-        }
-
-        private void PurchaseOrderFill()
-        {
-            List<PurchaseOrderDetail> purchaseList = new List<PurchaseOrderDetail>();
-
-            foreach (SaleOrderDetail sod in saleItemList)
-            {
-                PurchaseOrderDetail pod = new PurchaseOrderDetail();
-                pod.ItemCode = sod.ItemCode;
-                pod.SaleOrderNature = sod.SaleOrder.SaleOrderNature;
-                pod.QuotationNo = sod.SaleOrder.QuotationNos;
-                pod.SaleOrderNo = sod.SaleOrderNo;
-                pod.ItemDescription = sod.ItemDescription;
-                pod.Unit = sod.UnitOfMeasure;
-                pod.Hazardous = sod.Hazardous??false;
-                pod.Calibration = sod.Calibration ?? false;
-
-                purchaseList.Add(pod);
-            }
-
-            dgPurchase.DataSource = purchaseList;
-        }
-
-        public void PurchaseOrder(string item_code)
-        {
-            SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-51RN2GB\LOCAL;Initial Catalog=IME;Integrated Security=True");
-            StringBuilder history = new StringBuilder();
-            history.Append("Select a.c_name,b.QuotationNos, b.SaleOrderNo, c.ItemCode, c.ItemDescription, c.UnitOfMeasure, c.Quantity, c.Hazardous, ");
-            history.Append("c.Calibration, b.SaleOrderNature, d.AddressType, d.AdressTitle, c.UPIME ");
-            history.Append("from  Customer a, SaleOrder b, SaleOrderDetail c, CustomerAddress d ");
-        history.Append("where b.CustomerID=a.ID and c.SaleOrderNo =b.SaleOrderNo and b.DeliveryAddressID=d.ID and b.InvoiceAddressID=d.ID ");
-            history.Append("and c.SaleOrderNo=");
-            history.Append("'");
-            history.Append(item_code);
-            history.Append("'");
-
-            try
-            {
-                connection.Open();
-                da = new SqlDataAdapter(history.ToString(), connection);//dataapter nesnesini oluşturup sqlCmd sorgu cümlesini ve sqlCon veritabanı bağlantımızı yazıyoruz
-
-                da.Fill(ds, "History");
-
-                if (ds.Tables[0].Rows.Count == 0)//History tablosunda herhangi bir veri yoksa (boşsa) aşağıdaki blok çalışacak
-                {
-                    DialogResult dialog = new DialogResult();
-                    dialog = MessageBox.Show("No Records Found", "", MessageBoxButtons.OK);
-                    if (dialog == DialogResult.OK)
-                    {
-                        this.Close();
-                        return;//kayıt olmadığı için return ile bloğun dışına çıkıyoruz
-                    }
-                }
-                else//kayıt varsa
-                {
-                    dgPurchase.DataSource = ds.Tables["History"];//sqlCmd sorgusu ile çektiğimiz kayıtlar datagridview1 üzerinde gösteriliyor
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Hata : " + ex); //Veritabanına bağlantı sırasında alınan bir hata varsa burada gösteriliyor
-            }
-
-            connection.Close();//Açık olan Sql bağlantısı sonlandırılıyor
-            da.Dispose(); //SqlDataApter nesnesi dispose ediliyor
-
-            #region GridColumnAyarı
-            dgPurchase.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            dgPurchase.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            dgPurchase.Columns[1].HeaderText = "Customer Name";
-            dgPurchase.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgPurchase.Columns[2].HeaderText = "Quotation";
-            dgPurchase.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgPurchase.Columns[3].HeaderText = "Sale Orders";
-            dgPurchase.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            dgPurchase.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dgPurchase.Columns[5].HeaderText = "Description";
-            dgPurchase.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            dgPurchase.Columns[6].HeaderText = "Unit Of";
-            dgPurchase.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            dgPurchase.Columns[7].HeaderText = "Qty";
-            dgPurchase.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            dgPurchase.Columns[8].HeaderText = "HZ";
-            dgPurchase.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            dgPurchase.Columns[9].HeaderText = "CAL";
-            dgPurchase.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            dgPurchase.Columns[10].HeaderText = "Nature";
-            dgPurchase.Columns[11].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            dgPurchase.Columns[11].HeaderText = "Bill To";
-            dgPurchase.Columns[12].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            dgPurchase.Columns[12].HeaderText = "Ship To";
-            dgPurchase.Columns[13].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            dgPurchase.Columns[13].HeaderText = "Unit";
-            #endregion
         }
 
         private void NewPurchaseOrder_Load(object sender, EventArgs e)
@@ -179,83 +90,148 @@ namespace LoginForm.PurchaseOrder
             }
         }
 
-        public void ViewPurchaseOrdersDetail(int ficheNo)
-        {
-            SqlConnection connection = new SqlConnection(@"Data Source=DESKTOP-51RN2GB\LOCAL;Initial Catalog=IME;Integrated Security=True");
-            StringBuilder history = new StringBuilder();
-            history.Append("Select ID, QuotationNo, SaleOrderNo, ItemCode, SendQty, SaleOrderNature, FrtType, ");
-            history.Append("FicheNo, ItemDescription, Hazardous, Calibration, UnitPrice, Unit ");
-            history.Append("from PurchaseOrderDetail ");
-            history.Append("where FicheNo=");
-            history.Append("'");
-            history.Append(ficheNo);
-            history.Append("'");
-
-            try
-            {
-                connection.Open();
-                da = new SqlDataAdapter(history.ToString(), connection);//dataapter nesnesini oluşturup sqlCmd sorgu cümlesini ve sqlCon veritabanı bağlantımızı yazıyoruz
-
-                da.Fill(ds, "History");
-
-                if (ds.Tables[0].Rows.Count == 0)//History tablosunda herhangi bir veri yoksa (boşsa) aşağıdaki blok çalışacak
-                {
-                    DialogResult dialog = new DialogResult();
-                    dialog = MessageBox.Show("No Records Found", "", MessageBoxButtons.OK);
-                    if (dialog == DialogResult.OK)
-                    {
-                        this.Close();
-                        return;//kayıt olmadığı için return ile bloğun dışına çıkıyoruz
-                    }
-                }
-                else//kayıt varsa
-                {
-                    dgPurchase.DataSource = ds.Tables["History"];//sqlCmd sorgusu ile çektiğimiz kayıtlar datagridview1 üzerinde gösteriliyor
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Hata : " + ex); //Veritabanına bağlantı sırasında alınan bir hata varsa burada gösteriliyor
-            }
-
-            connection.Close();//Açık olan Sql bağlantısı sonlandırılıyor
-            da.Dispose(); //SqlDataApter nesnesi dispose ediliyor
-
-            #region GridColumnAyarı
-            dgPurchase.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            dgPurchase.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            dgPurchase.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dgPurchase.Columns[2].HeaderText = "Quotation";
-            dgPurchase.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dgPurchase.Columns[3].HeaderText = "Sale Orders";
-            dgPurchase.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dgPurchase.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            dgPurchase.Columns[5].HeaderText = "Qty";
-            dgPurchase.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            dgPurchase.Columns[6].HeaderText = "Nature";
-            dgPurchase.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            dgPurchase.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgPurchase.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgPurchase.Columns[9].HeaderText = "Description";
-            dgPurchase.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            dgPurchase.Columns[10].HeaderText = "HZ";
-            dgPurchase.Columns[11].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
-            dgPurchase.Columns[11].HeaderText = "CAL";
-            dgPurchase.Columns[12].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgPurchase.Columns[12].HeaderText = "Unit Price";
-            dgPurchase.Columns[13].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dgPurchase.Columns[13].HeaderText = "Unit";
-            #endregion
-
-            dgPurchase.ReadOnly = true;
-            btnCreate.Enabled = false;
-            txtOrderNumber.Enabled = false;
-        }
-
         private void btnExcel_Click(object sender, EventArgs e)
         {
             string PurchaseNo = dgPurchase.CurrentRow.Cells[1].Value.ToString();
             ExcelPurchaseOrder.Export(dgPurchase, PurchaseNo);
+        }
+
+        private void PurchaseOrdersDetailFill(string code)
+        {
+            IME = new IMEEntities();
+
+            #region Purchase Orders Detail Fill
+            var adapter = (from p in IME.SaleOrderDetails.Where(p => p.SaleOrderNo == code)
+                           select new
+                           {
+                               p.SaleOrder.Customer.c_name,
+                               p.SaleOrder.QuotationNos,
+                               p.SaleOrderNo,
+                               p.ItemCode,
+                               p.ItemDescription,
+                               p.UPIME,
+                               p.Quantity,
+                               p.Hazardous,
+                               p.Calibration,
+                               p.SaleOrder.SaleOrderNature,
+                               p.SaleOrder.DeliveryAddressID,
+                               p.SaleOrder.InvoiceAddressID,
+                               p.ItemCost
+                           }).ToList();
+
+            foreach (var item in adapter)
+            {
+                int rowIndex = dgPurchase.Rows.Add();
+                DataGridViewRow row = dgPurchase.Rows[rowIndex];
+
+                //var addList = IME.PurchaseOrders.Where(p => p.FicheNo == purchasecode - 1).FirstOrDefault().Customer.CustomerAddresses;
+
+                //var cbCellBill = row.Cells[AddressType.Index].Value as DataGridViewComboBoxCell;
+                //cbCellBill.DataSource = addList.ToList();
+
+                //var cbCellShip = row.Cells[AdressTitle.Index].Value as DataGridViewComboBoxCell;
+                //cbCellShip.DataSource = addList.ToList();
+
+                row.Cells[c_name.Index].Value = item.c_name;
+                row.Cells[QuotationNos.Index].Value = item.QuotationNos;
+                row.Cells[SaleOrderNo.Index].Value = item.SaleOrderNo;
+                row.Cells[ItemCode.Index].Value = item.ItemCode;
+                row.Cells[ItemDescription.Index].Value = item.ItemDescription;
+                row.Cells[UnitOfMeasure.Index].Value = item.UPIME;
+                row.Cells[Quantity.Index].Value = item.Quantity;
+                row.Cells[Hazardous.Index].Value = item.Hazardous;
+                row.Cells[Calibration.Index].Value = item.Calibration;
+                row.Cells[SaleOrderNature.Index].Value = item.SaleOrderNature;
+                row.Cells[AddressType.Index].Value = item.DeliveryAddressID;
+                row.Cells[AdressTitle.Index].Value = item.InvoiceAddressID;
+                row.Cells[UPIME.Index].Value = item.ItemCost;
+                //  row.Cells[Total.Index].Value = Decimal.Parse(row.Cells[Quantity.Index].Value.ToString()) * Decimal.Parse(row.Cells[UPIME.Index].Value.ToString());
+            }
+            #endregion
+
+        }
+
+        private void PurchaseOrdersDetailFill2(int ficheNo)
+        {
+            IME = new IMEEntities();
+            #region Purchase Orders Detail Fill
+            var adapter = (from p in IME.PurchaseOrderDetails.Where(p => p.FicheNo == ficheNo)
+                           select new
+                           {
+                               p.PurchaseOrder.Customer.c_name,
+                               p.QuotationNo,
+                               p.SaleOrderNo,
+                               p.ItemCode,
+                               p.ItemDescription,
+                               p.UnitPrice,
+                               p.SendQty,
+                               p.Hazardous,
+                               p.Calibration,
+                               p.SaleOrderNature,
+                               p.SaleOrder.Customer.CurrNameQuo,
+                               p.SaleOrder.Customer.CurrNameInv,
+                               p.Unit
+                           }).ToList();
+
+            foreach (var item in adapter)
+            {
+                int rowIndex = dgPurchase.Rows.Add();
+                DataGridViewRow row = dgPurchase.Rows[rowIndex];
+
+                //var addList = IME.PurchaseOrders.Where(p => p.FicheNo == ficheNo).FirstOrDefault().Customer.CurrNameQuo;
+
+                //var cbCellBill = row.Cells[AddressType.Index].Value as DataGridViewComboBoxCell;
+                //if (cbCellBill != null)
+                //    cbCellBill.DataSource = addList.ToList();
+                //else
+                //    cbCellBill.DataSource = null;
+
+                //var addList2 = IME.PurchaseOrders.Where(p => p.FicheNo == ficheNo).FirstOrDefault().Customer.CurrNameInv;
+                //var cbCellShip = row.Cells[AdressTitle.Index].Value as DataGridViewComboBoxCell;
+                //if (cbCellShip != null)
+                //    cbCellShip.DataSource = addList2.ToList();
+                //else
+                //    cbCellShip.DataSource = null;
+
+                row.Cells[c_name.Index].Value = item.c_name;
+                row.Cells[QuotationNos.Index].Value = item.QuotationNo;
+                row.Cells[SaleOrderNo.Index].Value = item.SaleOrderNo;
+                row.Cells[ItemCode.Index].Value = item.ItemCode;
+                row.Cells[ItemDescription.Index].Value = item.ItemDescription;
+                row.Cells[UnitOfMeasure.Index].Value = item.UnitPrice;
+                row.Cells[Quantity.Index].Value = item.SendQty;
+                row.Cells[Hazardous.Index].Value = item.Hazardous;
+                row.Cells[Calibration.Index].Value = item.Calibration;
+                row.Cells[SaleOrderNature.Index].Value = item.SaleOrderNature;
+                row.Cells[AddressType.Index].Value = item.CurrNameQuo;
+                row.Cells[AdressTitle.Index].Value = item.CurrNameInv;
+                row.Cells[UPIME.Index].Value = item.Unit;
+                // row.Cells[Total.Index].Value = Decimal.Parse(row.Cells[Quantity.Index].Value.ToString()) * Decimal.Parse(row.Cells[UPIME.Index].Value.ToString());
+            }
+            #endregion
+
+        }
+
+        private void PurchaseOrderFill()
+        {
+            List<PurchaseOrderDetail> purchaseList = new List<PurchaseOrderDetail>();
+
+            foreach (SaleOrderDetail sod in saleItemList)
+            {
+                PurchaseOrderDetail pod = new PurchaseOrderDetail();
+                pod.ItemCode = sod.ItemCode;
+                pod.SaleOrderNature = sod.SaleOrder.SaleOrderNature;
+                pod.QuotationNo = sod.SaleOrder.QuotationNos;
+                pod.SaleOrderNo = sod.SaleOrderNo;
+                pod.ItemDescription = sod.ItemDescription;
+                pod.Unit = sod.UnitOfMeasure;
+                pod.Hazardous = sod.Hazardous ?? false;
+                pod.Calibration = sod.Calibration ?? false;
+
+                purchaseList.Add(pod);
+            }
+
+            dgPurchase.DataSource = purchaseList;
         }
     }
 }
