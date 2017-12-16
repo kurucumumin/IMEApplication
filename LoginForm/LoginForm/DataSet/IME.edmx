@@ -488,6 +488,22 @@
           <Property Name="narration" Type="varchar(max)" />
           <Property Name="extraDate" Type="datetime" />
         </EntityType>
+        <EntityType Name="PaymentMaster">
+          <Key>
+            <PropertyRef Name="paymentMasterId" />
+          </Key>
+          <Property Name="paymentMasterId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="voucherNo" Type="varchar(max)" />
+          <Property Name="invoiceNo" Type="varchar(max)" />
+          <Property Name="suffixPrefixId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="ledgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="totalAmount" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="narration" Type="varchar(max)" />
+          <Property Name="voucherTypeId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="userId" Type="int" />
+          <Property Name="financialYearId" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
         <EntityType Name="PaymentMethod">
           <Key>
             <PropertyRef Name="ID" />
@@ -583,12 +599,12 @@
           <Key>
             <PropertyRef Name="FicheNo" />
           </Key>
-          <Property Name="FicheNo" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="CustomerID" Type="nvarchar" MaxLength="15" />
           <Property Name="PurchaseOrderDate" Type="date" />
           <Property Name="CameDate" Type="date" />
           <Property Name="Reason" Type="nvarchar" MaxLength="50" />
           <Property Name="Invoice" Type="bit" />
+          <Property Name="FicheNo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="PurchaseOrderDetail">
           <Key>
@@ -601,12 +617,12 @@
           <Property Name="SendQty" Type="int" />
           <Property Name="SaleOrderNature" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="FrtType" Type="nvarchar" MaxLength="5" />
-          <Property Name="FicheNo" Type="nvarchar" MaxLength="15" />
           <Property Name="ItemDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Hazardous" Type="bit" Nullable="false" />
           <Property Name="Calibration" Type="bit" Nullable="false" />
           <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="0" />
           <Property Name="Unit" Type="nvarchar" MaxLength="10" />
+          <Property Name="FicheNo" Type="int" />
         </EntityType>
         <EntityType Name="Quotation">
           <Key>
@@ -673,6 +689,22 @@
           <Property Name="RateSell" Type="decimal" Precision="20" Scale="10" />
           <Property Name="RateBuyEffective" Type="decimal" Precision="20" Scale="10" />
           <Property Name="RateSellEffective" Type="decimal" Precision="20" Scale="10" />
+        </EntityType>
+        <EntityType Name="ReceiptMaster">
+          <Key>
+            <PropertyRef Name="receiptMasterId" />
+          </Key>
+          <Property Name="receiptMasterId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="voucherNo" Type="varchar(max)" />
+          <Property Name="invoiceNo" Type="varchar(max)" />
+          <Property Name="suffixPrefixId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="ledgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="totalAmount" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="narration" Type="varchar(max)" />
+          <Property Name="voucherTypeId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="userId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="financialYearId" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="RoleValue">
           <Key>
@@ -1105,7 +1137,7 @@
           <Property Name="isActive" Type="int" />
           <Property Name="desinationID" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
-        <Association Name="FK__AccountLe__accou__55DFB4D9">
+        <Association Name="FK__AccountLe__accou__59B045BD">
           <End Role="AccountGroup" Type="Self.AccountGroup" Multiplicity="0..1" />
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1117,7 +1149,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AccountLe__areaI__53F76C67">
+        <Association Name="FK__AccountLe__areaI__57C7FD4B">
           <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1129,7 +1161,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AccountLe__route__54EB90A0">
+        <Association Name="FK__AccountLe__route__58BC2184">
           <End Role="Route" Type="Self.Route" Multiplicity="0..1" />
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1141,7 +1173,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AdvancePa__emplo__375B2DB9">
+        <Association Name="FK__AdvancePa__emplo__4D4A6ED8">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="AdvancePayment" Type="Self.AdvancePayment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1153,7 +1185,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AdvancePa__finan__36670980">
+        <Association Name="FK__AdvancePa__finan__4E3E9311">
           <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
           <End Role="AdvancePayment" Type="Self.AdvancePayment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1165,7 +1197,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AdvancePa__ledge__384F51F2">
+        <Association Name="FK__AdvancePa__ledge__4F32B74A">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="AdvancePayment" Type="Self.AdvancePayment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1177,7 +1209,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AdvancePa__vouch__3943762B">
+        <Association Name="FK__AdvancePa__vouch__5026DB83">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="AdvancePayment" Type="Self.AdvancePayment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1185,7 +1217,7 @@
               <PropertyRef Name="voucherTypeId" />
             </Principal>
             <Dependent Role="AdvancePayment">
-              <PropertyRef Name="voucherNo" />
+              <PropertyRef Name="voucherTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1213,7 +1245,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__BonusDedu__Worke__6CC31A31">
+        <Association Name="FK__BonusDedu__Worke__40E497F3">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="BonusDeduction" Type="Self.BonusDeduction" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1537,7 +1569,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LedgerPos__ledge__57C7FD4B">
+        <Association Name="FK__LedgerPos__ledge__5B988E2F">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="LedgerPosting" Type="Self.LedgerPosting" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1549,7 +1581,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LedgerPos__vouch__56D3D912">
+        <Association Name="FK__LedgerPos__vouch__5AA469F6">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="LedgerPosting" Type="Self.LedgerPosting" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1561,7 +1593,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LedgerPos__yearI__58BC2184">
+        <Association Name="FK__LedgerPos__yearI__5C8CB268">
           <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
           <End Role="LedgerPosting" Type="Self.LedgerPosting" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1597,7 +1629,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PartyBala__again__511AFFBC">
+        <Association Name="FK__PartyBala__again__54EB90A0">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="PartyBalance" Type="Self.PartyBalance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1609,7 +1641,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PartyBala__excha__520F23F5">
+        <Association Name="FK__PartyBala__excha__55DFB4D9">
           <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
           <End Role="PartyBalance" Type="Self.PartyBalance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1621,7 +1653,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PartyBala__finan__5303482E">
+        <Association Name="FK__PartyBala__finan__56D3D912">
           <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
           <End Role="PartyBalance" Type="Self.PartyBalance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1633,7 +1665,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PartyBala__ledge__4F32B74A">
+        <Association Name="FK__PartyBala__ledge__5303482E">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="PartyBalance" Type="Self.PartyBalance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1645,7 +1677,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PartyBala__vouch__5026DB83">
+        <Association Name="FK__PartyBala__vouch__53F76C67">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="PartyBalance" Type="Self.PartyBalance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1653,6 +1685,54 @@
               <PropertyRef Name="voucherTypeId" />
             </Principal>
             <Dependent Role="PartyBalance">
+              <PropertyRef Name="voucherTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentMa__finan__47919582">
+          <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
+          <End Role="PaymentMaster" Type="Self.PaymentMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinancialYear">
+              <PropertyRef Name="financialYearId" />
+            </Principal>
+            <Dependent Role="PaymentMaster">
+              <PropertyRef Name="financialYearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentMa__ledge__4979DDF4">
+          <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
+          <End Role="PaymentMaster" Type="Self.PaymentMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="PaymentMaster">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentMa__userI__4A6E022D">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+          <End Role="PaymentMaster" Type="Self.PaymentMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerID" />
+            </Principal>
+            <Dependent Role="PaymentMaster">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentMa__vouch__4885B9BB">
+          <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
+          <End Role="PaymentMaster" Type="Self.PaymentMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="PaymentMaster">
               <PropertyRef Name="voucherTypeId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1681,7 +1761,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PurchaseO__Fiche__44EA3301">
+        <Association Name="FK__PurchaseO__Fiche__42CCE065">
           <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
           <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2407,6 +2487,7 @@
           <EntitySet Name="OnSale" EntityType="Self.OnSale" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PartyBalance" EntityType="Self.PartyBalance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PayHead" EntityType="Self.PayHead" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentMaster" EntityType="Self.PaymentMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentTerm" EntityType="Self.PaymentTerm" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PricingLevel" EntityType="Self.PricingLevel" Schema="dbo" store:Type="Tables" />
@@ -2418,6 +2499,7 @@
           <EntitySet Name="Quotation" EntityType="Self.Quotation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuotationDetail" EntityType="Self.QuotationDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rate" EntityType="Self.Rate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReceiptMaster" EntityType="Self.ReceiptMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleValue" EntityType="Self.RoleValue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Route" EntityType="Self.Route" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RSPro" EntityType="Self.RSPro" Schema="dbo" store:Type="Tables" />
@@ -2446,31 +2528,31 @@
           <EntitySet Name="VoucherType" EntityType="Self.VoucherType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VoucherTypeTax" EntityType="Self.VoucherTypeTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__AccountLe__accou__55DFB4D9" Association="Self.FK__AccountLe__accou__55DFB4D9">
+          <AssociationSet Name="FK__AccountLe__accou__59B045BD" Association="Self.FK__AccountLe__accou__59B045BD">
             <End Role="AccountGroup" EntitySet="AccountGroup" />
             <End Role="AccountLedger" EntitySet="AccountLedger" />
           </AssociationSet>
-          <AssociationSet Name="FK__AccountLe__areaI__53F76C67" Association="Self.FK__AccountLe__areaI__53F76C67">
+          <AssociationSet Name="FK__AccountLe__areaI__57C7FD4B" Association="Self.FK__AccountLe__areaI__57C7FD4B">
             <End Role="Area" EntitySet="Area" />
             <End Role="AccountLedger" EntitySet="AccountLedger" />
           </AssociationSet>
-          <AssociationSet Name="FK__AccountLe__route__54EB90A0" Association="Self.FK__AccountLe__route__54EB90A0">
+          <AssociationSet Name="FK__AccountLe__route__58BC2184" Association="Self.FK__AccountLe__route__58BC2184">
             <End Role="Route" EntitySet="Route" />
             <End Role="AccountLedger" EntitySet="AccountLedger" />
           </AssociationSet>
-          <AssociationSet Name="FK__AdvancePa__emplo__375B2DB9" Association="Self.FK__AdvancePa__emplo__375B2DB9">
+          <AssociationSet Name="FK__AdvancePa__emplo__4D4A6ED8" Association="Self.FK__AdvancePa__emplo__4D4A6ED8">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="AdvancePayment" EntitySet="AdvancePayment" />
           </AssociationSet>
-          <AssociationSet Name="FK__AdvancePa__finan__36670980" Association="Self.FK__AdvancePa__finan__36670980">
+          <AssociationSet Name="FK__AdvancePa__finan__4E3E9311" Association="Self.FK__AdvancePa__finan__4E3E9311">
             <End Role="FinancialYear" EntitySet="FinancialYear" />
             <End Role="AdvancePayment" EntitySet="AdvancePayment" />
           </AssociationSet>
-          <AssociationSet Name="FK__AdvancePa__ledge__384F51F2" Association="Self.FK__AdvancePa__ledge__384F51F2">
+          <AssociationSet Name="FK__AdvancePa__ledge__4F32B74A" Association="Self.FK__AdvancePa__ledge__4F32B74A">
             <End Role="AccountLedger" EntitySet="AccountLedger" />
             <End Role="AdvancePayment" EntitySet="AdvancePayment" />
           </AssociationSet>
-          <AssociationSet Name="FK__AdvancePa__vouch__3943762B" Association="Self.FK__AdvancePa__vouch__3943762B">
+          <AssociationSet Name="FK__AdvancePa__vouch__5026DB83" Association="Self.FK__AdvancePa__vouch__5026DB83">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="AdvancePayment" EntitySet="AdvancePayment" />
           </AssociationSet>
@@ -2482,7 +2564,7 @@
             <End Role="RoleValue" EntitySet="RoleValue" />
             <End Role="AuthRole" EntitySet="AuthRole" />
           </AssociationSet>
-          <AssociationSet Name="FK__BonusDedu__Worke__6CC31A31" Association="Self.FK__BonusDedu__Worke__6CC31A31">
+          <AssociationSet Name="FK__BonusDedu__Worke__40E497F3" Association="Self.FK__BonusDedu__Worke__40E497F3">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="BonusDeduction" EntitySet="BonusDeduction" />
           </AssociationSet>
@@ -2590,15 +2672,15 @@
             <End Role="Notes" EntitySet="Notes" />
             <End Role="ItemNote" EntitySet="ItemNote" />
           </AssociationSet>
-          <AssociationSet Name="FK__LedgerPos__ledge__57C7FD4B" Association="Self.FK__LedgerPos__ledge__57C7FD4B">
+          <AssociationSet Name="FK__LedgerPos__ledge__5B988E2F" Association="Self.FK__LedgerPos__ledge__5B988E2F">
             <End Role="AccountLedger" EntitySet="AccountLedger" />
             <End Role="LedgerPosting" EntitySet="LedgerPosting" />
           </AssociationSet>
-          <AssociationSet Name="FK__LedgerPos__vouch__56D3D912" Association="Self.FK__LedgerPos__vouch__56D3D912">
+          <AssociationSet Name="FK__LedgerPos__vouch__5AA469F6" Association="Self.FK__LedgerPos__vouch__5AA469F6">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="LedgerPosting" EntitySet="LedgerPosting" />
           </AssociationSet>
-          <AssociationSet Name="FK__LedgerPos__yearI__58BC2184" Association="Self.FK__LedgerPos__yearI__58BC2184">
+          <AssociationSet Name="FK__LedgerPos__yearI__5C8CB268" Association="Self.FK__LedgerPos__yearI__5C8CB268">
             <End Role="FinancialYear" EntitySet="FinancialYear" />
             <End Role="LedgerPosting" EntitySet="LedgerPosting" />
           </AssociationSet>
@@ -2610,25 +2692,41 @@
             <End Role="Currency" EntitySet="Currency" />
             <End Role="Management" EntitySet="Management" />
           </AssociationSet>
-          <AssociationSet Name="FK__PartyBala__again__511AFFBC" Association="Self.FK__PartyBala__again__511AFFBC">
+          <AssociationSet Name="FK__PartyBala__again__54EB90A0" Association="Self.FK__PartyBala__again__54EB90A0">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="PartyBalance" EntitySet="PartyBalance" />
           </AssociationSet>
-          <AssociationSet Name="FK__PartyBala__excha__520F23F5" Association="Self.FK__PartyBala__excha__520F23F5">
+          <AssociationSet Name="FK__PartyBala__excha__55DFB4D9" Association="Self.FK__PartyBala__excha__55DFB4D9">
             <End Role="ExchangeRate" EntitySet="ExchangeRate" />
             <End Role="PartyBalance" EntitySet="PartyBalance" />
           </AssociationSet>
-          <AssociationSet Name="FK__PartyBala__finan__5303482E" Association="Self.FK__PartyBala__finan__5303482E">
+          <AssociationSet Name="FK__PartyBala__finan__56D3D912" Association="Self.FK__PartyBala__finan__56D3D912">
             <End Role="FinancialYear" EntitySet="FinancialYear" />
             <End Role="PartyBalance" EntitySet="PartyBalance" />
           </AssociationSet>
-          <AssociationSet Name="FK__PartyBala__ledge__4F32B74A" Association="Self.FK__PartyBala__ledge__4F32B74A">
+          <AssociationSet Name="FK__PartyBala__ledge__5303482E" Association="Self.FK__PartyBala__ledge__5303482E">
             <End Role="AccountLedger" EntitySet="AccountLedger" />
             <End Role="PartyBalance" EntitySet="PartyBalance" />
           </AssociationSet>
-          <AssociationSet Name="FK__PartyBala__vouch__5026DB83" Association="Self.FK__PartyBala__vouch__5026DB83">
+          <AssociationSet Name="FK__PartyBala__vouch__53F76C67" Association="Self.FK__PartyBala__vouch__53F76C67">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="PartyBalance" EntitySet="PartyBalance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentMa__finan__47919582" Association="Self.FK__PaymentMa__finan__47919582">
+            <End Role="FinancialYear" EntitySet="FinancialYear" />
+            <End Role="PaymentMaster" EntitySet="PaymentMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentMa__ledge__4979DDF4" Association="Self.FK__PaymentMa__ledge__4979DDF4">
+            <End Role="AccountLedger" EntitySet="AccountLedger" />
+            <End Role="PaymentMaster" EntitySet="PaymentMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentMa__userI__4A6E022D" Association="Self.FK__PaymentMa__userI__4A6E022D">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="PaymentMaster" EntitySet="PaymentMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentMa__vouch__4885B9BB" Association="Self.FK__PaymentMa__vouch__4885B9BB">
+            <End Role="VoucherType" EntitySet="VoucherType" />
+            <End Role="PaymentMaster" EntitySet="PaymentMaster" />
           </AssociationSet>
           <AssociationSet Name="FK__PurchaseI__Purch__7A521F79" Association="Self.FK__PurchaseI__Purch__7A521F79">
             <End Role="PurchaseInvoice" EntitySet="PurchaseInvoice" />
@@ -2638,7 +2736,7 @@
             <End Role="Customer" EntitySet="Customer" />
             <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK__PurchaseO__Fiche__44EA3301" Association="Self.FK__PurchaseO__Fiche__44EA3301">
+          <AssociationSet Name="FK__PurchaseO__Fiche__42CCE065" Association="Self.FK__PurchaseO__Fiche__42CCE065">
             <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
             <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
           </AssociationSet>
@@ -2943,6 +3041,7 @@
           <EntitySet Name="OnSales" EntityType="IMEModel.OnSale" />
           <EntitySet Name="PartyBalances" EntityType="IMEModel.PartyBalance" />
           <EntitySet Name="PayHeads" EntityType="IMEModel.PayHead" />
+          <EntitySet Name="PaymentMasters" EntityType="IMEModel.PaymentMaster" />
           <EntitySet Name="PaymentMethods" EntityType="IMEModel.PaymentMethod" />
           <EntitySet Name="PaymentTerms" EntityType="IMEModel.PaymentTerm" />
           <EntitySet Name="PricingLevels" EntityType="IMEModel.PricingLevel" />
@@ -2954,6 +3053,7 @@
           <EntitySet Name="Quotations" EntityType="IMEModel.Quotation" />
           <EntitySet Name="QuotationDetails" EntityType="IMEModel.QuotationDetail" />
           <EntitySet Name="Rates" EntityType="IMEModel.Rate" />
+          <EntitySet Name="ReceiptMasters" EntityType="IMEModel.ReceiptMaster" />
           <EntitySet Name="RoleValues" EntityType="IMEModel.RoleValue" />
           <EntitySet Name="Routes" EntityType="IMEModel.Route" />
           <EntitySet Name="RSProes" EntityType="IMEModel.RSPro" />
@@ -2981,39 +3081,43 @@
           <EntitySet Name="VoucherTypes" EntityType="IMEModel.VoucherType" />
           <EntitySet Name="VoucherTypeTaxes" EntityType="IMEModel.VoucherTypeTax" />
           <EntitySet Name="Workers" EntityType="IMEModel.Worker" />
-          <AssociationSet Name="FK__AccountLe__accou__55DFB4D9" Association="IMEModel.FK__AccountLe__accou__55DFB4D9">
+          <AssociationSet Name="FK__AccountLe__accou__59B045BD" Association="IMEModel.FK__AccountLe__accou__59B045BD">
             <End Role="AccountGroup" EntitySet="AccountGroups" />
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
           </AssociationSet>
-          <AssociationSet Name="FK__AccountLe__areaI__53F76C67" Association="IMEModel.FK__AccountLe__areaI__53F76C67">
+          <AssociationSet Name="FK__AccountLe__areaI__57C7FD4B" Association="IMEModel.FK__AccountLe__areaI__57C7FD4B">
             <End Role="Area" EntitySet="Areas" />
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
           </AssociationSet>
-          <AssociationSet Name="FK__AccountLe__route__54EB90A0" Association="IMEModel.FK__AccountLe__route__54EB90A0">
+          <AssociationSet Name="FK__AccountLe__route__58BC2184" Association="IMEModel.FK__AccountLe__route__58BC2184">
             <End Role="Route" EntitySet="Routes" />
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
           </AssociationSet>
-          <AssociationSet Name="FK__AdvancePa__ledge__384F51F2" Association="IMEModel.FK__AdvancePa__ledge__384F51F2">
+          <AssociationSet Name="FK__AdvancePa__ledge__4F32B74A" Association="IMEModel.FK__AdvancePa__ledge__4F32B74A">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="AdvancePayment" EntitySet="AdvancePayments" />
           </AssociationSet>
-          <AssociationSet Name="FK__LedgerPos__ledge__57C7FD4B" Association="IMEModel.FK__LedgerPos__ledge__57C7FD4B">
+          <AssociationSet Name="FK__LedgerPos__ledge__5B988E2F" Association="IMEModel.FK__LedgerPos__ledge__5B988E2F">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="LedgerPosting" EntitySet="LedgerPostings" />
           </AssociationSet>
-          <AssociationSet Name="FK__PartyBala__ledge__4F32B74A" Association="IMEModel.FK__PartyBala__ledge__4F32B74A">
+          <AssociationSet Name="FK__PartyBala__ledge__5303482E" Association="IMEModel.FK__PartyBala__ledge__5303482E">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="PartyBalance" EntitySet="PartyBalances" />
           </AssociationSet>
-          <AssociationSet Name="FK__AdvancePa__emplo__375B2DB9" Association="IMEModel.FK__AdvancePa__emplo__375B2DB9">
+          <AssociationSet Name="FK__PaymentMa__ledge__4979DDF4" Association="IMEModel.FK__PaymentMa__ledge__4979DDF4">
+            <End Role="AccountLedger" EntitySet="AccountLedgers" />
+            <End Role="PaymentMaster" EntitySet="PaymentMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AdvancePa__emplo__4D4A6ED8" Association="IMEModel.FK__AdvancePa__emplo__4D4A6ED8">
             <End Role="Worker" EntitySet="Workers" />
             <End Role="AdvancePayment" EntitySet="AdvancePayments" />
           </AssociationSet>
-          <AssociationSet Name="FK__AdvancePa__finan__36670980" Association="IMEModel.FK__AdvancePa__finan__36670980">
+          <AssociationSet Name="FK__AdvancePa__finan__4E3E9311" Association="IMEModel.FK__AdvancePa__finan__4E3E9311">
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="AdvancePayment" EntitySet="AdvancePayments" />
           </AssociationSet>
-          <AssociationSet Name="FK__AdvancePa__vouch__3943762B" Association="IMEModel.FK__AdvancePa__vouch__3943762B">
+          <AssociationSet Name="FK__AdvancePa__vouch__5026DB83" Association="IMEModel.FK__AdvancePa__vouch__5026DB83">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="AdvancePayment" EntitySet="AdvancePayments" />
           </AssociationSet>
@@ -3021,7 +3125,7 @@
             <End Role="Area" EntitySet="Areas" />
             <End Role="Route" EntitySet="Routes" />
           </AssociationSet>
-          <AssociationSet Name="FK__BonusDedu__Worke__6CC31A31" Association="IMEModel.FK__BonusDedu__Worke__6CC31A31">
+          <AssociationSet Name="FK__BonusDedu__Worke__40E497F3" Association="IMEModel.FK__BonusDedu__Worke__40E497F3">
             <End Role="Worker" EntitySet="Workers" />
             <End Role="BonusDeduction" EntitySet="BonusDeductions" />
           </AssociationSet>
@@ -3185,11 +3289,11 @@
             <End Role="Worker" EntitySet="Workers" />
             <End Role="DiscountValue" EntitySet="DiscountValues" />
           </AssociationSet>
-          <AssociationSet Name="FK__PartyBala__excha__520F23F5" Association="IMEModel.FK__PartyBala__excha__520F23F5">
+          <AssociationSet Name="FK__PartyBala__excha__55DFB4D9" Association="IMEModel.FK__PartyBala__excha__55DFB4D9">
             <End Role="ExchangeRate" EntitySet="ExchangeRates" />
             <End Role="PartyBalance" EntitySet="PartyBalances" />
           </AssociationSet>
-          <AssociationSet Name="FK__LedgerPos__yearI__58BC2184" Association="IMEModel.FK__LedgerPos__yearI__58BC2184">
+          <AssociationSet Name="FK__LedgerPos__yearI__5C8CB268" Association="IMEModel.FK__LedgerPos__yearI__5C8CB268">
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="LedgerPosting" EntitySet="LedgerPostings" />
           </AssociationSet>
@@ -3197,9 +3301,13 @@
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="Management" EntitySet="Managements" />
           </AssociationSet>
-          <AssociationSet Name="FK__PartyBala__finan__5303482E" Association="IMEModel.FK__PartyBala__finan__5303482E">
+          <AssociationSet Name="FK__PartyBala__finan__56D3D912" Association="IMEModel.FK__PartyBala__finan__56D3D912">
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="PartyBalance" EntitySet="PartyBalances" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentMa__finan__47919582" Association="IMEModel.FK__PaymentMa__finan__47919582">
+            <End Role="FinancialYear" EntitySet="FinancialYears" />
+            <End Role="PaymentMaster" EntitySet="PaymentMasters" />
           </AssociationSet>
           <AssociationSet Name="FK__ItemNote__NoteID__2B0A656D" Association="IMEModel.FK__ItemNote__NoteID__2B0A656D">
             <End Role="Note" EntitySet="Notes" />
@@ -3209,7 +3317,7 @@
             <End Role="Language" EntitySet="Languages" />
             <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
           </AssociationSet>
-          <AssociationSet Name="FK__LedgerPos__vouch__56D3D912" Association="IMEModel.FK__LedgerPos__vouch__56D3D912">
+          <AssociationSet Name="FK__LedgerPos__vouch__5AA469F6" Association="IMEModel.FK__LedgerPos__vouch__5AA469F6">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="LedgerPosting" EntitySet="LedgerPostings" />
           </AssociationSet>
@@ -3233,13 +3341,21 @@
             <End Role="Note" EntitySet="Notes" />
             <End Role="Worker" EntitySet="Workers" />
           </AssociationSet>
-          <AssociationSet Name="FK__PartyBala__again__511AFFBC" Association="IMEModel.FK__PartyBala__again__511AFFBC">
+          <AssociationSet Name="FK__PartyBala__again__54EB90A0" Association="IMEModel.FK__PartyBala__again__54EB90A0">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="PartyBalance" EntitySet="PartyBalances" />
           </AssociationSet>
-          <AssociationSet Name="FK__PartyBala__vouch__5026DB83" Association="IMEModel.FK__PartyBala__vouch__5026DB83">
+          <AssociationSet Name="FK__PartyBala__vouch__53F76C67" Association="IMEModel.FK__PartyBala__vouch__53F76C67">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="PartyBalance" EntitySet="PartyBalances" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentMa__userI__4A6E022D" Association="IMEModel.FK__PaymentMa__userI__4A6E022D">
+            <End Role="Worker" EntitySet="Workers" />
+            <End Role="PaymentMaster" EntitySet="PaymentMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentMa__vouch__4885B9BB" Association="IMEModel.FK__PaymentMa__vouch__4885B9BB">
+            <End Role="VoucherType" EntitySet="VoucherTypes" />
+            <End Role="PaymentMaster" EntitySet="PaymentMasters" />
           </AssociationSet>
           <AssociationSet Name="FK__Quotation__Payme__035179CE" Association="IMEModel.FK__Quotation__Payme__035179CE">
             <End Role="PaymentMethod" EntitySet="PaymentMethods" />
@@ -3265,7 +3381,7 @@
             <End Role="PurchaseInvoice" EntitySet="PurchaseInvoices" />
             <End Role="PurchaseInvoiceDetail" EntitySet="PurchaseInvoiceDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__PurchaseO__Fiche__44EA3301" Association="IMEModel.FK__PurchaseO__Fiche__44EA3301">
+          <AssociationSet Name="FK__PurchaseO__Fiche__42CCE065" Association="IMEModel.FK__PurchaseO__Fiche__42CCE065">
             <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
             <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetails" />
           </AssociationSet>
@@ -3402,7 +3518,7 @@
           <Property Name="nature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="affectGrossProfit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AccountGroupDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="AccountLedgers" Relationship="IMEModel.FK__AccountLe__accou__55DFB4D9" FromRole="AccountGroup" ToRole="AccountLedger" />
+          <NavigationProperty Name="AccountLedgers" Relationship="IMEModel.FK__AccountLe__accou__59B045BD" FromRole="AccountGroup" ToRole="AccountLedger" />
         </EntityType>
         <EntityType Name="AccountLedger">
           <Key>
@@ -3433,12 +3549,13 @@
           <Property Name="branchCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="extraDate" Type="DateTime" Precision="3" />
           <Property Name="areaId" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="AccountGroup" Relationship="IMEModel.FK__AccountLe__accou__55DFB4D9" FromRole="AccountLedger" ToRole="AccountGroup" />
-          <NavigationProperty Name="Area" Relationship="IMEModel.FK__AccountLe__areaI__53F76C67" FromRole="AccountLedger" ToRole="Area" />
-          <NavigationProperty Name="Route" Relationship="IMEModel.FK__AccountLe__route__54EB90A0" FromRole="AccountLedger" ToRole="Route" />
-          <NavigationProperty Name="AdvancePayments" Relationship="IMEModel.FK__AdvancePa__ledge__384F51F2" FromRole="AccountLedger" ToRole="AdvancePayment" />
-          <NavigationProperty Name="LedgerPostings" Relationship="IMEModel.FK__LedgerPos__ledge__57C7FD4B" FromRole="AccountLedger" ToRole="LedgerPosting" />
-          <NavigationProperty Name="PartyBalances" Relationship="IMEModel.FK__PartyBala__ledge__4F32B74A" FromRole="AccountLedger" ToRole="PartyBalance" />
+          <NavigationProperty Name="AccountGroup" Relationship="IMEModel.FK__AccountLe__accou__59B045BD" FromRole="AccountLedger" ToRole="AccountGroup" />
+          <NavigationProperty Name="Area" Relationship="IMEModel.FK__AccountLe__areaI__57C7FD4B" FromRole="AccountLedger" ToRole="Area" />
+          <NavigationProperty Name="Route" Relationship="IMEModel.FK__AccountLe__route__58BC2184" FromRole="AccountLedger" ToRole="Route" />
+          <NavigationProperty Name="AdvancePayments" Relationship="IMEModel.FK__AdvancePa__ledge__4F32B74A" FromRole="AccountLedger" ToRole="AdvancePayment" />
+          <NavigationProperty Name="LedgerPostings" Relationship="IMEModel.FK__LedgerPos__ledge__5B988E2F" FromRole="AccountLedger" ToRole="LedgerPosting" />
+          <NavigationProperty Name="PartyBalances" Relationship="IMEModel.FK__PartyBala__ledge__5303482E" FromRole="AccountLedger" ToRole="PartyBalance" />
+          <NavigationProperty Name="PaymentMasters" Relationship="IMEModel.FK__PaymentMa__ledge__4979DDF4" FromRole="AccountLedger" ToRole="PaymentMaster" />
         </EntityType>
         <EntityType Name="AdvancePayment">
           <Key>
@@ -3461,10 +3578,10 @@
           <Property Name="suffixPrefixId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__AdvancePa__ledge__384F51F2" FromRole="AdvancePayment" ToRole="AccountLedger" />
-          <NavigationProperty Name="Worker" Relationship="IMEModel.FK__AdvancePa__emplo__375B2DB9" FromRole="AdvancePayment" ToRole="Worker" />
-          <NavigationProperty Name="FinancialYear" Relationship="IMEModel.FK__AdvancePa__finan__36670980" FromRole="AdvancePayment" ToRole="FinancialYear" />
-          <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__AdvancePa__vouch__3943762B" FromRole="AdvancePayment" ToRole="VoucherType" />
+          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__AdvancePa__ledge__4F32B74A" FromRole="AdvancePayment" ToRole="AccountLedger" />
+          <NavigationProperty Name="Worker" Relationship="IMEModel.FK__AdvancePa__emplo__4D4A6ED8" FromRole="AdvancePayment" ToRole="Worker" />
+          <NavigationProperty Name="FinancialYear" Relationship="IMEModel.FK__AdvancePa__finan__4E3E9311" FromRole="AdvancePayment" ToRole="FinancialYear" />
+          <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__AdvancePa__vouch__5026DB83" FromRole="AdvancePayment" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="Area">
           <Key>
@@ -3474,7 +3591,7 @@
           <Property Name="areaName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="extraDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="AccountLedgers" Relationship="IMEModel.FK__AccountLe__areaI__53F76C67" FromRole="Area" ToRole="AccountLedger" />
+          <NavigationProperty Name="AccountLedgers" Relationship="IMEModel.FK__AccountLe__areaI__57C7FD4B" FromRole="Area" ToRole="AccountLedger" />
           <NavigationProperty Name="Routes" Relationship="IMEModel.FK__Route__areaId__6FD49106" FromRole="Area" ToRole="Route" />
         </EntityType>
         <EntityType Name="AuthorizationValue">
@@ -3497,7 +3614,7 @@
           <Property Name="bonusAmount" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="deductionAmount" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Worker" Relationship="IMEModel.FK__BonusDedu__Worke__6CC31A31" FromRole="BonusDeduction" ToRole="Worker" />
+          <NavigationProperty Name="Worker" Relationship="IMEModel.FK__BonusDedu__Worke__40E497F3" FromRole="BonusDeduction" ToRole="Worker" />
         </EntityType>
         <EntityType Name="Capital">
           <Key>
@@ -3744,7 +3861,7 @@
           <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="rate" Type="Decimal" Precision="18" Scale="5" />
           <NavigationProperty Name="Currency" Relationship="IMEModel.FK__tbl_Excha__curre__52442E1F" FromRole="ExchangeRate" ToRole="Currency" />
-          <NavigationProperty Name="PartyBalances" Relationship="IMEModel.FK__PartyBala__excha__520F23F5" FromRole="ExchangeRate" ToRole="PartyBalance" />
+          <NavigationProperty Name="PartyBalances" Relationship="IMEModel.FK__PartyBala__excha__55DFB4D9" FromRole="ExchangeRate" ToRole="PartyBalance" />
         </EntityType>
         <EntityType Name="ExtendedRange">
           <Key>
@@ -3791,10 +3908,11 @@
           <Property Name="fromDate" Type="DateTime" Precision="3" />
           <Property Name="toDate" Type="DateTime" Precision="3" />
           <Property Name="extraDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="AdvancePayments" Relationship="IMEModel.FK__AdvancePa__finan__36670980" FromRole="FinancialYear" ToRole="AdvancePayment" />
-          <NavigationProperty Name="LedgerPostings" Relationship="IMEModel.FK__LedgerPos__yearI__58BC2184" FromRole="FinancialYear" ToRole="LedgerPosting" />
+          <NavigationProperty Name="AdvancePayments" Relationship="IMEModel.FK__AdvancePa__finan__4E3E9311" FromRole="FinancialYear" ToRole="AdvancePayment" />
+          <NavigationProperty Name="LedgerPostings" Relationship="IMEModel.FK__LedgerPos__yearI__5C8CB268" FromRole="FinancialYear" ToRole="LedgerPosting" />
           <NavigationProperty Name="Managements" Relationship="IMEModel.FK__Managemen__Curre__338A9CD5" FromRole="FinancialYear" ToRole="Management" />
-          <NavigationProperty Name="PartyBalances" Relationship="IMEModel.FK__PartyBala__finan__5303482E" FromRole="FinancialYear" ToRole="PartyBalance" />
+          <NavigationProperty Name="PartyBalances" Relationship="IMEModel.FK__PartyBala__finan__56D3D912" FromRole="FinancialYear" ToRole="PartyBalance" />
+          <NavigationProperty Name="PaymentMasters" Relationship="IMEModel.FK__PaymentMa__finan__47919582" FromRole="FinancialYear" ToRole="PaymentMaster" />
         </EntityType>
         <EntityType Name="Hazardou">
           <Key>
@@ -3843,9 +3961,9 @@
           <Property Name="extraDate" Type="DateTime" Precision="3" />
           <Property Name="extra1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="extra2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__LedgerPos__ledge__57C7FD4B" FromRole="LedgerPosting" ToRole="AccountLedger" />
-          <NavigationProperty Name="FinancialYear" Relationship="IMEModel.FK__LedgerPos__yearI__58BC2184" FromRole="LedgerPosting" ToRole="FinancialYear" />
-          <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__LedgerPos__vouch__56D3D912" FromRole="LedgerPosting" ToRole="VoucherType" />
+          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__LedgerPos__ledge__5B988E2F" FromRole="LedgerPosting" ToRole="AccountLedger" />
+          <NavigationProperty Name="FinancialYear" Relationship="IMEModel.FK__LedgerPos__yearI__5C8CB268" FromRole="LedgerPosting" ToRole="FinancialYear" />
+          <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__LedgerPos__vouch__5AA469F6" FromRole="LedgerPosting" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="LoaderDate">
           <Key>
@@ -3946,11 +4064,11 @@
           <Property Name="creditPeriod" Type="Int32" />
           <Property Name="exchangeRateId" Type="Int32" />
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__PartyBala__ledge__4F32B74A" FromRole="PartyBalance" ToRole="AccountLedger" />
-          <NavigationProperty Name="ExchangeRate" Relationship="IMEModel.FK__PartyBala__excha__520F23F5" FromRole="PartyBalance" ToRole="ExchangeRate" />
-          <NavigationProperty Name="FinancialYear" Relationship="IMEModel.FK__PartyBala__finan__5303482E" FromRole="PartyBalance" ToRole="FinancialYear" />
-          <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__PartyBala__again__511AFFBC" FromRole="PartyBalance" ToRole="VoucherType" />
-          <NavigationProperty Name="VoucherType1" Relationship="IMEModel.FK__PartyBala__vouch__5026DB83" FromRole="PartyBalance" ToRole="VoucherType" />
+          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__PartyBala__ledge__5303482E" FromRole="PartyBalance" ToRole="AccountLedger" />
+          <NavigationProperty Name="ExchangeRate" Relationship="IMEModel.FK__PartyBala__excha__55DFB4D9" FromRole="PartyBalance" ToRole="ExchangeRate" />
+          <NavigationProperty Name="FinancialYear" Relationship="IMEModel.FK__PartyBala__finan__56D3D912" FromRole="PartyBalance" ToRole="FinancialYear" />
+          <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__PartyBala__again__54EB90A0" FromRole="PartyBalance" ToRole="VoucherType" />
+          <NavigationProperty Name="VoucherType1" Relationship="IMEModel.FK__PartyBala__vouch__53F76C67" FromRole="PartyBalance" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="PayHead">
           <Key>
@@ -3961,6 +4079,26 @@
           <Property Name="type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="extraDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="PaymentMaster">
+          <Key>
+            <PropertyRef Name="paymentMasterId" />
+          </Key>
+          <Property Name="paymentMasterId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="voucherNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="invoiceNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="suffixPrefixId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="totalAmount" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__PaymentMa__ledge__4979DDF4" FromRole="PaymentMaster" ToRole="AccountLedger" />
+          <NavigationProperty Name="FinancialYear" Relationship="IMEModel.FK__PaymentMa__finan__47919582" FromRole="PaymentMaster" ToRole="FinancialYear" />
+          <NavigationProperty Name="Worker" Relationship="IMEModel.FK__PaymentMa__userI__4A6E022D" FromRole="PaymentMaster" ToRole="Worker" />
+          <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__PaymentMa__vouch__4885B9BB" FromRole="PaymentMaster" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="PaymentMethod">
           <Key>
@@ -4066,14 +4204,14 @@
           <Key>
             <PropertyRef Name="FicheNo" />
           </Key>
-          <Property Name="FicheNo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="CustomerID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="PurchaseOrderDate" Type="DateTime" Precision="0" />
           <Property Name="CameDate" Type="DateTime" Precision="0" />
           <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Invoice" Type="Boolean" />
+          <Property Name="FicheNo" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Customer" Relationship="IMEModel.FK__PurchaseO__Custo__420DC656" FromRole="PurchaseOrder" ToRole="Customer" />
-          <NavigationProperty Name="PurchaseOrderDetails" Relationship="IMEModel.FK__PurchaseO__Fiche__44EA3301" FromRole="PurchaseOrder" ToRole="PurchaseOrderDetail" />
+          <NavigationProperty Name="PurchaseOrderDetails" Relationship="IMEModel.FK__PurchaseO__Fiche__42CCE065" FromRole="PurchaseOrder" ToRole="PurchaseOrderDetail" />
         </EntityType>
         <EntityType Name="PurchaseOrderDetail">
           <Key>
@@ -4086,13 +4224,13 @@
           <Property Name="SendQty" Type="Int32" />
           <Property Name="SaleOrderNature" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="FrtType" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="FicheNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="ItemDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Hazardous" Type="Boolean" Nullable="false" />
           <Property Name="Calibration" Type="Boolean" Nullable="false" />
           <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="PurchaseOrder" Relationship="IMEModel.FK__PurchaseO__Fiche__44EA3301" FromRole="PurchaseOrderDetail" ToRole="PurchaseOrder" />
+          <Property Name="FicheNo" Type="Int32" />
+          <NavigationProperty Name="PurchaseOrder" Relationship="IMEModel.FK__PurchaseO__Fiche__42CCE065" FromRole="PurchaseOrderDetail" ToRole="PurchaseOrder" />
           <NavigationProperty Name="SaleOrder" Relationship="IMEModel.FK__PurchaseO__SaleO__46D27B73" FromRole="PurchaseOrderDetail" ToRole="SaleOrder" />
         </EntityType>
         <EntityType Name="Quotation">
@@ -4168,6 +4306,22 @@
           <Property Name="RateSellEffective" Type="Decimal" Precision="20" Scale="10" />
           <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__rate_I__625A9A57" FromRole="Rate" ToRole="Supplier" />
         </EntityType>
+        <EntityType Name="ReceiptMaster">
+          <Key>
+            <PropertyRef Name="receiptMasterId" />
+          </Key>
+          <Property Name="receiptMasterId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="voucherNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="invoiceNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="suffixPrefixId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="totalAmount" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="userId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
         <EntityType Name="RoleValue">
           <Key>
             <PropertyRef Name="RoleID" />
@@ -4184,7 +4338,7 @@
           <Property Name="routeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="areaId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="AccountLedgers" Relationship="IMEModel.FK__AccountLe__route__54EB90A0" FromRole="Route" ToRole="AccountLedger" />
+          <NavigationProperty Name="AccountLedgers" Relationship="IMEModel.FK__AccountLe__route__58BC2184" FromRole="Route" ToRole="AccountLedger" />
           <NavigationProperty Name="Area" Relationship="IMEModel.FK__Route__areaId__6FD49106" FromRole="Route" ToRole="Area" />
         </EntityType>
         <EntityType Name="RSPro">
@@ -4627,10 +4781,11 @@
           <Property Name="heading2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="heading3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="heading4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="AdvancePayments" Relationship="IMEModel.FK__AdvancePa__vouch__3943762B" FromRole="VoucherType" ToRole="AdvancePayment" />
-          <NavigationProperty Name="LedgerPostings" Relationship="IMEModel.FK__LedgerPos__vouch__56D3D912" FromRole="VoucherType" ToRole="LedgerPosting" />
-          <NavigationProperty Name="PartyBalances" Relationship="IMEModel.FK__PartyBala__again__511AFFBC" FromRole="VoucherType" ToRole="PartyBalance" />
-          <NavigationProperty Name="PartyBalances1" Relationship="IMEModel.FK__PartyBala__vouch__5026DB83" FromRole="VoucherType" ToRole="PartyBalance" />
+          <NavigationProperty Name="AdvancePayments" Relationship="IMEModel.FK__AdvancePa__vouch__5026DB83" FromRole="VoucherType" ToRole="AdvancePayment" />
+          <NavigationProperty Name="LedgerPostings" Relationship="IMEModel.FK__LedgerPos__vouch__5AA469F6" FromRole="VoucherType" ToRole="LedgerPosting" />
+          <NavigationProperty Name="PartyBalances" Relationship="IMEModel.FK__PartyBala__again__54EB90A0" FromRole="VoucherType" ToRole="PartyBalance" />
+          <NavigationProperty Name="PartyBalances1" Relationship="IMEModel.FK__PartyBala__vouch__53F76C67" FromRole="VoucherType" ToRole="PartyBalance" />
+          <NavigationProperty Name="PaymentMasters" Relationship="IMEModel.FK__PaymentMa__vouch__4885B9BB" FromRole="VoucherType" ToRole="PaymentMaster" />
           <NavigationProperty Name="VoucherTypeTaxes" Relationship="IMEModel.FK__VoucherTy__vouch__69279377" FromRole="VoucherType" ToRole="VoucherTypeTax" />
         </EntityType>
         <EntityType Name="VoucherTypeTax">
@@ -4659,20 +4814,21 @@
           <Property Name="Title" Type="Int32" />
           <Property Name="isActive" Type="Int32" />
           <Property Name="desinationID" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="AdvancePayments" Relationship="IMEModel.FK__AdvancePa__emplo__375B2DB9" FromRole="Worker" ToRole="AdvancePayment" />
-          <NavigationProperty Name="BonusDeductions" Relationship="IMEModel.FK__BonusDedu__Worke__6CC31A31" FromRole="Worker" ToRole="BonusDeduction" />
+          <NavigationProperty Name="AdvancePayments" Relationship="IMEModel.FK__AdvancePa__emplo__4D4A6ED8" FromRole="Worker" ToRole="AdvancePayment" />
+          <NavigationProperty Name="BonusDeductions" Relationship="IMEModel.FK__BonusDedu__Worke__40E497F3" FromRole="Worker" ToRole="BonusDeduction" />
           <NavigationProperty Name="Customers" Relationship="IMEModel.FK__Customer__accoun__6EF57B66" FromRole="Worker" ToRole="Customer" />
           <NavigationProperty Name="Customers1" Relationship="IMEModel.FK__Customer__repres__3F466844" FromRole="Worker" ToRole="Customer" />
           <NavigationProperty Name="Customers2" Relationship="IMEModel.FK__Customer__repres__6E01572D" FromRole="Worker" ToRole="Customer" />
           <NavigationProperty Name="Designation" Relationship="IMEModel.FK__Worker__desinati__3E082B48" FromRole="Worker" ToRole="Designation" />
           <NavigationProperty Name="DiscountValues" Relationship="IMEModel.FK__DiscountV__Repre__6F4A8121" FromRole="Worker" ToRole="DiscountValue" />
           <NavigationProperty Name="Note" Relationship="IMEModel.FK__Worker__WorkerNo__4BAC3F29" FromRole="Worker" ToRole="Note" />
+          <NavigationProperty Name="PaymentMasters" Relationship="IMEModel.FK__PaymentMa__userI__4A6E022D" FromRole="Worker" ToRole="PaymentMaster" />
           <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SaleOrder__Repre__22951AFD" FromRole="Worker" ToRole="SaleOrder" />
           <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__accoun__2DB1C7EE" FromRole="Worker" ToRole="Supplier" />
           <NavigationProperty Name="Suppliers1" Relationship="IMEModel.FK__Supplier__repres__65370702" FromRole="Worker" ToRole="Supplier" />
           <NavigationProperty Name="AuthorizationValues" Relationship="IMEModel.UserAuthorization" FromRole="Worker" ToRole="AuthorizationValue" />
         </EntityType>
-        <Association Name="FK__AccountLe__accou__55DFB4D9">
+        <Association Name="FK__AccountLe__accou__59B045BD">
           <End Type="IMEModel.AccountGroup" Role="AccountGroup" Multiplicity="0..1" />
           <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="*" />
           <ReferentialConstraint>
@@ -4684,7 +4840,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AccountLe__areaI__53F76C67">
+        <Association Name="FK__AccountLe__areaI__57C7FD4B">
           <End Type="IMEModel.Area" Role="Area" Multiplicity="0..1" />
           <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="*" />
           <ReferentialConstraint>
@@ -4696,7 +4852,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AccountLe__route__54EB90A0">
+        <Association Name="FK__AccountLe__route__58BC2184">
           <End Type="IMEModel.Route" Role="Route" Multiplicity="0..1" />
           <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="*" />
           <ReferentialConstraint>
@@ -4708,7 +4864,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AdvancePa__ledge__384F51F2">
+        <Association Name="FK__AdvancePa__ledge__4F32B74A">
           <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="0..1" />
           <End Type="IMEModel.AdvancePayment" Role="AdvancePayment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -4720,7 +4876,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LedgerPos__ledge__57C7FD4B">
+        <Association Name="FK__LedgerPos__ledge__5B988E2F">
           <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="0..1" />
           <End Type="IMEModel.LedgerPosting" Role="LedgerPosting" Multiplicity="*" />
           <ReferentialConstraint>
@@ -4732,7 +4888,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PartyBala__ledge__4F32B74A">
+        <Association Name="FK__PartyBala__ledge__5303482E">
           <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="0..1" />
           <End Type="IMEModel.PartyBalance" Role="PartyBalance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -4744,7 +4900,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AdvancePa__emplo__375B2DB9">
+        <Association Name="FK__PaymentMa__ledge__4979DDF4">
+          <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="0..1" />
+          <End Type="IMEModel.PaymentMaster" Role="PaymentMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="PaymentMaster">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AdvancePa__emplo__4D4A6ED8">
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="0..1" />
           <End Type="IMEModel.AdvancePayment" Role="AdvancePayment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -4756,7 +4924,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AdvancePa__finan__36670980">
+        <Association Name="FK__AdvancePa__finan__4E3E9311">
           <End Type="IMEModel.FinancialYear" Role="FinancialYear" Multiplicity="0..1" />
           <End Type="IMEModel.AdvancePayment" Role="AdvancePayment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -4768,7 +4936,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AdvancePa__vouch__3943762B">
+        <Association Name="FK__AdvancePa__vouch__5026DB83">
           <End Type="IMEModel.VoucherType" Role="VoucherType" Multiplicity="0..1" />
           <End Type="IMEModel.AdvancePayment" Role="AdvancePayment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -4776,7 +4944,7 @@
               <PropertyRef Name="voucherTypeId" />
             </Principal>
             <Dependent Role="AdvancePayment">
-              <PropertyRef Name="voucherNo" />
+              <PropertyRef Name="voucherTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4792,7 +4960,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__BonusDedu__Worke__6CC31A31">
+        <Association Name="FK__BonusDedu__Worke__40E497F3">
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="0..1" />
           <End Type="IMEModel.BonusDeduction" Role="BonusDeduction" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5284,7 +5452,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PartyBala__excha__520F23F5">
+        <Association Name="FK__PartyBala__excha__55DFB4D9">
           <End Type="IMEModel.ExchangeRate" Role="ExchangeRate" Multiplicity="0..1" />
           <End Type="IMEModel.PartyBalance" Role="PartyBalance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5296,7 +5464,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LedgerPos__yearI__58BC2184">
+        <Association Name="FK__LedgerPos__yearI__5C8CB268">
           <End Type="IMEModel.FinancialYear" Role="FinancialYear" Multiplicity="0..1" />
           <End Type="IMEModel.LedgerPosting" Role="LedgerPosting" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5320,7 +5488,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PartyBala__finan__5303482E">
+        <Association Name="FK__PartyBala__finan__56D3D912">
           <End Type="IMEModel.FinancialYear" Role="FinancialYear" Multiplicity="0..1" />
           <End Type="IMEModel.PartyBalance" Role="PartyBalance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5328,6 +5496,18 @@
               <PropertyRef Name="financialYearId" />
             </Principal>
             <Dependent Role="PartyBalance">
+              <PropertyRef Name="financialYearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentMa__finan__47919582">
+          <End Type="IMEModel.FinancialYear" Role="FinancialYear" Multiplicity="0..1" />
+          <End Type="IMEModel.PaymentMaster" Role="PaymentMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinancialYear">
+              <PropertyRef Name="financialYearId" />
+            </Principal>
+            <Dependent Role="PaymentMaster">
               <PropertyRef Name="financialYearId" />
             </Dependent>
           </ReferentialConstraint>
@@ -5356,7 +5536,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LedgerPos__vouch__56D3D912">
+        <Association Name="FK__LedgerPos__vouch__5AA469F6">
           <End Type="IMEModel.VoucherType" Role="VoucherType" Multiplicity="0..1" />
           <End Type="IMEModel.LedgerPosting" Role="LedgerPosting" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5428,7 +5608,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PartyBala__again__511AFFBC">
+        <Association Name="FK__PartyBala__again__54EB90A0">
           <End Type="IMEModel.VoucherType" Role="VoucherType" Multiplicity="0..1" />
           <End Type="IMEModel.PartyBalance" Role="PartyBalance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5440,7 +5620,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PartyBala__vouch__5026DB83">
+        <Association Name="FK__PartyBala__vouch__53F76C67">
           <End Type="IMEModel.VoucherType" Role="VoucherType" Multiplicity="0..1" />
           <End Type="IMEModel.PartyBalance" Role="PartyBalance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5448,6 +5628,30 @@
               <PropertyRef Name="voucherTypeId" />
             </Principal>
             <Dependent Role="PartyBalance">
+              <PropertyRef Name="voucherTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentMa__userI__4A6E022D">
+          <End Type="IMEModel.Worker" Role="Worker" Multiplicity="0..1" />
+          <End Type="IMEModel.PaymentMaster" Role="PaymentMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerID" />
+            </Principal>
+            <Dependent Role="PaymentMaster">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentMa__vouch__4885B9BB">
+          <End Type="IMEModel.VoucherType" Role="VoucherType" Multiplicity="0..1" />
+          <End Type="IMEModel.PaymentMaster" Role="PaymentMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="PaymentMaster">
               <PropertyRef Name="voucherTypeId" />
             </Dependent>
           </ReferentialConstraint>
@@ -5524,7 +5728,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PurchaseO__Fiche__44EA3301">
+        <Association Name="FK__PurchaseO__Fiche__42CCE065">
           <End Type="IMEModel.PurchaseOrder" Role="PurchaseOrder" Multiplicity="0..1" />
           <End Type="IMEModel.PurchaseOrderDetail" Role="PurchaseOrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6392,6 +6596,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PaymentMasters">
+            <EntityTypeMapping TypeName="IMEModel.PaymentMaster">
+              <MappingFragment StoreEntitySet="PaymentMaster">
+                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="paymentMasterId" ColumnName="paymentMasterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PaymentMethods">
             <EntityTypeMapping TypeName="IMEModel.PaymentMethod">
               <MappingFragment StoreEntitySet="PaymentMethod">
@@ -6492,24 +6713,24 @@
           <EntitySetMapping Name="PurchaseOrders">
             <EntityTypeMapping TypeName="IMEModel.PurchaseOrder">
               <MappingFragment StoreEntitySet="PurchaseOrder">
+                <ScalarProperty Name="FicheNo" ColumnName="FicheNo" />
                 <ScalarProperty Name="Invoice" ColumnName="Invoice" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
                 <ScalarProperty Name="CameDate" ColumnName="CameDate" />
                 <ScalarProperty Name="PurchaseOrderDate" ColumnName="PurchaseOrderDate" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="FicheNo" ColumnName="FicheNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PurchaseOrderDetails">
             <EntityTypeMapping TypeName="IMEModel.PurchaseOrderDetail">
               <MappingFragment StoreEntitySet="PurchaseOrderDetail">
+                <ScalarProperty Name="FicheNo" ColumnName="FicheNo" />
                 <ScalarProperty Name="Unit" ColumnName="Unit" />
                 <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="Calibration" ColumnName="Calibration" />
                 <ScalarProperty Name="Hazardous" ColumnName="Hazardous" />
                 <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
-                <ScalarProperty Name="FicheNo" ColumnName="FicheNo" />
                 <ScalarProperty Name="FrtType" ColumnName="FrtType" />
                 <ScalarProperty Name="SaleOrderNature" ColumnName="SaleOrderNature" />
                 <ScalarProperty Name="SendQty" ColumnName="SendQty" />
@@ -6586,6 +6807,23 @@
                 <ScalarProperty Name="currency" ColumnName="currency" />
                 <ScalarProperty Name="rate_date" ColumnName="rate_date" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReceiptMasters">
+            <EntityTypeMapping TypeName="IMEModel.ReceiptMaster">
+              <MappingFragment StoreEntitySet="ReceiptMaster">
+                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="receiptMasterId" ColumnName="receiptMasterId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

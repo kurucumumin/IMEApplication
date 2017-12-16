@@ -39,7 +39,7 @@ namespace LoginForm.PurchaseOrder
                 MessageBox.Show("Please Enter a Fiche No", "Eror !");
             else
             {
-
+                fish_no = (int)dgPurchase.CurrentRow.Cells["FicheNo"].Value;
                 NewPurchaseOrder f = new NewPurchaseOrder(fish_no, 1);
                 try { this.Hide(); f.ShowDialog(); this.Show(); } catch { }
             }
@@ -114,24 +114,7 @@ namespace LoginForm.PurchaseOrder
                 row.Cells[Reason.Index].Value = item.Reason;
             }
             #endregion
-            //dgPurchase.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            //dgPurchase.Columns[0].HeaderText = "Fiche No";
-            //dgPurchase.Columns[1].HeaderText = "Date";
-            //dgPurchase.Columns[2].HeaderText = "Customer Code";
-            //dgPurchase.Columns[3].HeaderText = "Customer Title";
-            //dgPurchase.Columns[4].HeaderText = "Came Date";
-            //dgPurchase.Columns[5].HeaderText = "Reason";
-            #region ReadOnly
-            //dgPurchase.Columns["FicheNo"].ReadOnly = true;
 
-            //dgPurchase.Columns["PurchaseOrderDate"].ReadOnly = true;
-
-            //dgPurchase.Columns["CustomerID"].ReadOnly = true;
-
-            //dgPurchase.Columns["c_name"].ReadOnly = true;
-
-            //dgPurchase.Columns["CameDate"].ReadOnly = true;
-            #endregion
         }
 
         private void btnPurchaseOrders_Click(object sender, EventArgs e)
