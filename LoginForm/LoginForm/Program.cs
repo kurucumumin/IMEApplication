@@ -13,7 +13,7 @@ namespace LoginForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmBonusDeduction());
+            Application.Run(new FormLogin());
         }
     }
 }
