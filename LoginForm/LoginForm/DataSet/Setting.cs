@@ -12,10 +12,10 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class Stock
+    public partial class Setting
     {
-        public int StockID { get; set; }
-        public string ItemCode { get; set; }
-        public Nullable<int> Quantitiy { get; set; }
+        public decimal settingsId { get; set; }
+        public string settingsName { get; set; }
+        public string status { get; set; }
     }
 }

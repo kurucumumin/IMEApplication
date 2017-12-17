@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class AccountLedger
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,8 +20,9 @@ namespace LoginForm.DataSet
             this.AdvancePayments = new HashSet<AdvancePayment>();
             this.LedgerPostings = new HashSet<LedgerPosting>();
             this.PartyBalances = new HashSet<PartyBalance>();
+            this.PaymentMasters = new HashSet<PaymentMaster>();
         }
-
+    
         public decimal ledgerId { get; set; }
         public Nullable<int> accountGroupID { get; set; }
         public string ledgerName { get; set; }
@@ -47,7 +48,7 @@ namespace LoginForm.DataSet
         public string branchCode { get; set; }
         public Nullable<System.DateTime> extraDate { get; set; }
         public Nullable<decimal> areaId { get; set; }
-
+    
         public virtual AccountGroup AccountGroup { get; set; }
         public virtual Area Area { get; set; }
         public virtual Route Route { get; set; }
@@ -57,5 +58,7 @@ namespace LoginForm.DataSet
         public virtual ICollection<LedgerPosting> LedgerPostings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PartyBalance> PartyBalances { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PaymentMaster> PaymentMasters { get; set; }
     }
 }
