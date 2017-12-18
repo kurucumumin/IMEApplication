@@ -31,7 +31,6 @@ namespace LoginForm.PurchaseOrder
                 Stock stock = new Stock
                 {
                     ItemCode = txtProductCode.Text,
-                    date = dtpDate.Value,
                     Quantitiy=Int32.Parse(txtQuantity.Text)
                 };
                 IME.Stocks.Add(stock);
@@ -41,7 +40,6 @@ namespace LoginForm.PurchaseOrder
             {
                 var stock = IME.Stocks.Where(a => a.StockID == stockcode).FirstOrDefault();
                 stock.ItemCode = txtProductCode.Text;
-                stock.date = dtpDate.Value;
                 stock.Quantitiy = Int32.Parse(txtQuantity.Text);
                 IME.SaveChanges();
             }
@@ -59,14 +57,13 @@ namespace LoginForm.PurchaseOrder
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            dgStock.DataSource = IME.Stocks.Where(a => a.ItemCode == ProductCodeSearch.Text).Where(b => b.date == DateSearch.Value).ToList();
+            dgStock.DataSource = IME.Stocks.Where(a => a.ItemCode == ProductCodeSearch.Text).ToList();
 
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtProductCode.Text = string.Empty;
-            dtpDate.Value = DateTime.Today;
             txtQuantity.Text = string.Empty;
         }
 

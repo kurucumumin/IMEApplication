@@ -10,12 +10,10 @@
 namespace LoginForm.DataSet
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Stock
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public int StockID { get; set; }
-        public string ItemCode { get; set; }
-        public Nullable<int> Quantitiy { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
