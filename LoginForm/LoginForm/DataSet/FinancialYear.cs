@@ -25,6 +25,7 @@ namespace LoginForm.DataSet
             this.Managements = new HashSet<Management>();
             this.PartyBalances = new HashSet<PartyBalance>();
             this.PaymentMasters = new HashSet<PaymentMaster>();
+            this.PDCPayableMasters = new HashSet<PDCPayableMaster>();
         }
     
         public decimal financialYearId { get; set; }
@@ -48,5 +49,7 @@ namespace LoginForm.DataSet
         public virtual ICollection<PartyBalance> PartyBalances { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PaymentMaster> PaymentMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PDCPayableMaster> PDCPayableMasters { get; set; }
     }
 }

@@ -178,11 +178,29 @@
     <Compile Include="Account\PayRoll\frmPayHead.designer.cs">
       <DependentUpon>frmPayHead.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Register\frmCreditNoteRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Register\frmCreditNoteRegister.designer.cs">
+      <DependentUpon>frmCreditNoteRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register\frmDebitNoteRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Register\frmDebitNoteRegister.designer.cs">
+      <DependentUpon>frmDebitNoteRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Register\frmPaymentRegister.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Account\Register\frmPaymentRegister.designer.cs">
       <DependentUpon>frmPaymentRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register\frmPDCPayableRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Register\frmPDCPayableRegister.designer.cs">
+      <DependentUpon>frmPDCPayableRegister.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\Register\frmReceiptRegister.cs">
       <SubType>Form</SubType>
@@ -194,10 +212,12 @@
     <Compile Include="Account\Services\AccountLedgerSP.cs" />
     <Compile Include="Account\Services\AreaSP.cs" />
     <Compile Include="Account\Services\CreditNoteMasterSP.cs" />
+    <Compile Include="Account\Services\DebitNoteMasterSP.cs" />
     <Compile Include="Account\Services\ExchangeRateSP.cs" />
     <Compile Include="Account\Services\FinancialYearSP.cs" />
     <Compile Include="Account\Services\LedgerPostingSP.cs" />
     <Compile Include="Account\Services\PartyBalanceSP.cs" />
+    <Compile Include="Account\Services\PDCPayableMasterSP.cs" />
     <Compile Include="Account\Services\PricingLevelSP.cs" />
     <Compile Include="Account\Services\RouteSP.cs" />
     <Compile Include="Account\Services\SettingsSP.cs" />
@@ -292,6 +312,9 @@
     <Compile Include="DataSet\DailyDiscontinued.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\DeliveryNoteMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Designation.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -329,6 +352,9 @@
       <DependentUpon>IME.edmx</DependentUpon>
     </Compile>
     <Compile Include="DataSet\ItemNote.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\JournalDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\JournalMaster.cs">
@@ -377,6 +403,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PaymentTerm.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PDCPayableMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PricingLevel.cs">
@@ -431,6 +460,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Stock.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SuffixPrefix.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SuperDisk.cs">
@@ -566,6 +598,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="PurchaseOrder\ExcelPurchaseOrder.cs" />
     <Compile Include="PurchaseOrder\frmStock.cs">
       <SubType>Form</SubType>
@@ -671,6 +708,7 @@
       <DependentUpon>FormSaleItemSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="SaleOrder\SalesOrderHelper.cs" />
+    <Compile Include="Services\DateValidation.cs" />
     <Compile Include="Services\Messages.cs" />
     <Compile Include="Services\ToolTipService.cs" />
     <Compile Include="Services\txtCreate.cs" />
@@ -750,8 +788,17 @@
     <EmbeddedResource Include="Account\PayRoll\frmPayHead.resx">
       <DependentUpon>frmPayHead.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\Register\frmCreditNoteRegister.resx">
+      <DependentUpon>frmCreditNoteRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Register\frmDebitNoteRegister.resx">
+      <DependentUpon>frmDebitNoteRegister.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\Register\frmPaymentRegister.resx">
       <DependentUpon>frmPaymentRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Register\frmPDCPayableRegister.resx">
+      <DependentUpon>frmPDCPayableRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Register\frmReceiptRegister.resx">
       <DependentUpon>frmReceiptRegister.cs</DependentUpon>
@@ -809,14 +856,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="PurchaseOrder\frmStock.resx">
       <DependentUpon>frmStock.cs</DependentUpon>
     </EmbeddedResource>
