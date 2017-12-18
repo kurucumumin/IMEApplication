@@ -178,16 +178,6 @@
     <Compile Include="Account\PayRoll\frmPayHead.designer.cs">
       <DependentUpon>frmPayHead.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\Services\AccountGroupSP.cs" />
-    <Compile Include="Account\Services\AccountLedgerSP.cs" />
-    <Compile Include="Account\Services\AreaSP.cs" />
-    <Compile Include="Account\Services\ExchangeRateSP.cs" />
-    <Compile Include="Account\Services\FinancialYearSP.cs" />
-    <Compile Include="Account\Services\LedgerPostingSP.cs" />
-    <Compile Include="Account\Services\PartyBalanceSP.cs" />
-    <Compile Include="Account\Services\PricingLevelSP.cs" />
-    <Compile Include="Account\Services\RouteSP.cs" />
-    <Compile Include="Account\Services\SettingsSP.cs" />
     <Compile Include="Account\Register\frmPaymentRegister.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,10 +192,14 @@
     </Compile>
     <Compile Include="Account\Services\AccountGroupSP.cs" />
     <Compile Include="Account\Services\AccountLedgerSP.cs" />
+    <Compile Include="Account\Services\AreaSP.cs" />
     <Compile Include="Account\Services\ExchangeRateSP.cs" />
     <Compile Include="Account\Services\FinancialYearSP.cs" />
     <Compile Include="Account\Services\LedgerPostingSP.cs" />
     <Compile Include="Account\Services\PartyBalanceSP.cs" />
+    <Compile Include="Account\Services\PricingLevelSP.cs" />
+    <Compile Include="Account\Services\RouteSP.cs" />
+    <Compile Include="Account\Services\SettingsSP.cs" />
     <Compile Include="CustomControls\AccountingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -265,6 +259,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Country.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\CreditNoteMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Currency.cs">
@@ -331,6 +328,9 @@
       <DependentUpon>IME.edmx</DependentUpon>
     </Compile>
     <Compile Include="DataSet\ItemNote.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\JournalMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Language.cs">
@@ -427,12 +427,6 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SlidingPrice.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\sp_helpdiagrams_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Stock.cs">

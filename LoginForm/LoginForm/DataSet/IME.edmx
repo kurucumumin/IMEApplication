@@ -135,6 +135,20 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Country_name" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="CreditNoteMaster">
+          <Key>
+            <PropertyRef Name="creditNoteMasterId" />
+          </Key>
+          <Property Name="creditNoteMasterId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="voucherNo" Type="varchar(max)" />
+          <Property Name="invoiceNo" Type="varchar(max)" />
+          <Property Name="suffixPrefixId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="userId" Type="int" />
+          <Property Name="totalAmount" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="narration" Type="varchar(max)" />
+          <Property Name="financialYearId" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
         <EntityType Name="Currency">
           <Key>
             <PropertyRef Name="currencyID" />
@@ -360,6 +374,21 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ArticleNo" Type="nvarchar" MaxLength="50" />
           <Property Name="NoteID" Type="int" />
+        </EntityType>
+        <EntityType Name="JournalMaster">
+          <Key>
+            <PropertyRef Name="journalMasterId" />
+          </Key>
+          <Property Name="journalMasterId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="voucherNo" Type="varchar(max)" />
+          <Property Name="invoiceNo" Type="varchar(max)" />
+          <Property Name="suffixPrefixId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="totalAmount" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="narration" Type="varchar(max)" />
+          <Property Name="userId" Type="int" />
+          <Property Name="voucherTypeId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="financialYearId" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Languages">
           <Key>
@@ -623,6 +652,7 @@
           <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="0" />
           <Property Name="Unit" Type="nvarchar" MaxLength="10" />
           <Property Name="FicheNo" Type="int" />
+          <Property Name="AccountNumber" Type="int" />
         </EntityType>
         <EntityType Name="Quotation">
           <Key>
@@ -843,7 +873,6 @@
           <Property Name="StockID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ItemCode" Type="nvarchar" MaxLength="20" />
           <Property Name="Quantitiy" Type="int" />
-          <Property Name="date" Type="date" />
         </EntityType>
         <EntityType Name="SuperDisk">
           <Key>
@@ -1137,7 +1166,7 @@
           <Property Name="isActive" Type="int" />
           <Property Name="desinationID" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
-        <Association Name="FK__AccountLe__accou__59B045BD">
+        <Association Name="FK__AccountLe__accou__5E74FADA">
           <End Role="AccountGroup" Type="Self.AccountGroup" Multiplicity="0..1" />
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1149,7 +1178,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AccountLe__areaI__57C7FD4B">
+        <Association Name="FK__AccountLe__areaI__5C8CB268">
           <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1161,7 +1190,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AccountLe__route__58BC2184">
+        <Association Name="FK__AccountLe__route__5D80D6A1">
           <End Role="Route" Type="Self.Route" Multiplicity="0..1" />
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1266,6 +1295,30 @@
             </Principal>
             <Dependent Role="City">
               <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CreditNot__finan__02B25B50">
+          <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
+          <End Role="CreditNoteMaster" Type="Self.CreditNoteMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinancialYear">
+              <PropertyRef Name="financialYearId" />
+            </Principal>
+            <Dependent Role="CreditNoteMaster">
+              <PropertyRef Name="financialYearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CreditNot__userI__01BE3717">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+          <End Role="CreditNoteMaster" Type="Self.CreditNoteMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerID" />
+            </Principal>
+            <Dependent Role="CreditNoteMaster">
+              <PropertyRef Name="userId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1569,7 +1622,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LedgerPos__ledge__5B988E2F">
+        <Association Name="FK__JournalMa__userI__7DEDA633">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+          <End Role="JournalMaster" Type="Self.JournalMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerID" />
+            </Principal>
+            <Dependent Role="JournalMaster">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__JournalMa__vouch__7EE1CA6C">
+          <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
+          <End Role="JournalMaster" Type="Self.JournalMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="JournalMaster">
+              <PropertyRef Name="voucherTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LedgerPos__ledge__605D434C">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="LedgerPosting" Type="Self.LedgerPosting" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1581,7 +1658,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LedgerPos__vouch__5AA469F6">
+        <Association Name="FK__LedgerPos__vouch__5F691F13">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="LedgerPosting" Type="Self.LedgerPosting" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1593,7 +1670,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LedgerPos__yearI__5C8CB268">
+        <Association Name="FK__LedgerPos__yearI__61516785">
           <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
           <End Role="LedgerPosting" Type="Self.LedgerPosting" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1629,7 +1706,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PartyBala__again__54EB90A0">
+        <Association Name="FK__PartyBala__again__59B045BD">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="PartyBalance" Type="Self.PartyBalance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1641,7 +1718,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PartyBala__excha__55DFB4D9">
+        <Association Name="FK__PartyBala__excha__5AA469F6">
           <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
           <End Role="PartyBalance" Type="Self.PartyBalance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1653,7 +1730,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PartyBala__finan__56D3D912">
+        <Association Name="FK__PartyBala__finan__5B988E2F">
           <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
           <End Role="PartyBalance" Type="Self.PartyBalance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1665,7 +1742,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PartyBala__ledge__5303482E">
+        <Association Name="FK__PartyBala__ledge__57C7FD4B">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="PartyBalance" Type="Self.PartyBalance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1677,7 +1754,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PartyBala__vouch__53F76C67">
+        <Association Name="FK__PartyBala__vouch__58BC2184">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="PartyBalance" Type="Self.PartyBalance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2397,6 +2474,40 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="ExtendedRangeADD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ArticleNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="Brand" Type="nvarchar" Mode="In" />
+          <Parameter Name="MPN" Type="nvarchar" Mode="In" />
+          <Parameter Name="ArticleDescription" Type="nvarchar" Mode="In" />
+          <Parameter Name="ExtendedRangeLength" Type="decimal" Mode="In" />
+          <Parameter Name="Width" Type="decimal" Mode="In" />
+          <Parameter Name="Height" Type="decimal" Mode="In" />
+          <Parameter Name="DimensionUoM" Type="nvarchar" Mode="In" />
+          <Parameter Name="WeightUoM" Type="nvarchar" Mode="In" />
+          <Parameter Name="CCCN" Type="int" Mode="In" />
+          <Parameter Name="CountryofOrigin" Type="nvarchar" Mode="In" />
+          <Parameter Name="UnitofMeasure" Type="nvarchar" Mode="In" />
+          <Parameter Name="PackSize" Type="int" Mode="In" />
+          <Parameter Name="SalesUoM" Type="int" Mode="In" />
+          <Parameter Name="CostPriceCurrency" Type="nvarchar" Mode="In" />
+          <Parameter Name="Col1Price" Type="decimal" Mode="In" />
+          <Parameter Name="Col2Price" Type="decimal" Mode="In" />
+          <Parameter Name="Col3Price" Type="decimal" Mode="In" />
+          <Parameter Name="Col4Price" Type="decimal" Mode="In" />
+          <Parameter Name="Col5Price" Type="decimal" Mode="In" />
+          <Parameter Name="Col1Break" Type="int" Mode="In" />
+          <Parameter Name="Col2Break" Type="int" Mode="In" />
+          <Parameter Name="Col3Break" Type="int" Mode="In" />
+          <Parameter Name="Col4Break" Type="int" Mode="In" />
+          <Parameter Name="Col5Break" Type="int" Mode="In" />
+          <Parameter Name="DiscountedPrice1" Type="decimal" Mode="In" />
+          <Parameter Name="DiscountedPrice2" Type="decimal" Mode="In" />
+          <Parameter Name="DiscountedPrice3" Type="decimal" Mode="In" />
+          <Parameter Name="DiscountedPrice4" Type="decimal" Mode="In" />
+          <Parameter Name="DiscountedPrice5" Type="decimal" Mode="In" />
+          <Parameter Name="ManufacturerCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="ExtendedRangeWeight" Type="int" Mode="In" />
+        </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="PayHeadAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="payHeadName" Type="varchar(max)" Mode="In" />
@@ -2418,6 +2529,36 @@
           <Parameter Name="payHeadId" Type="numeric" Mode="In" />
         </Function>
         <Function Name="PayHeadGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SlidingPriceAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ArticleNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="ArticleDescription" Type="nvarchar" Mode="In" />
+          <Parameter Name="ItemTypeCode" Type="int" Mode="In" />
+          <Parameter Name="ItemTypeDesc" Type="nvarchar" Mode="In" />
+          <Parameter Name="IntroductionDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="DiscontinuedDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="Quantity1" Type="int" Mode="In" />
+          <Parameter Name="Col1Price" Type="decimal" Mode="In" />
+          <Parameter Name="Col2Price" Type="decimal" Mode="In" />
+          <Parameter Name="Col3Price" Type="decimal" Mode="In" />
+          <Parameter Name="Col4Price" Type="decimal" Mode="In" />
+          <Parameter Name="Col5Price" Type="decimal" Mode="In" />
+          <Parameter Name="Col1Break" Type="int" Mode="In" />
+          <Parameter Name="Col2Break" Type="int" Mode="In" />
+          <Parameter Name="Col3Break" Type="int" Mode="In" />
+          <Parameter Name="Col4Break" Type="int" Mode="In" />
+          <Parameter Name="Col5Break" Type="int" Mode="In" />
+          <Parameter Name="DiscountedPrice1" Type="decimal" Mode="In" />
+          <Parameter Name="DiscountedPrice2" Type="decimal" Mode="In" />
+          <Parameter Name="DiscountedPrice3" Type="decimal" Mode="In" />
+          <Parameter Name="DiscountedPrice4" Type="decimal" Mode="In" />
+          <Parameter Name="DiscountedPrice5" Type="decimal" Mode="In" />
+          <Parameter Name="SuperSectionNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="SupersectionName" Type="nvarchar" Mode="In" />
+          <Parameter Name="BrandID" Type="nvarchar" Mode="In" />
+          <Parameter Name="Brandname" Type="nvarchar" Mode="In" />
+          <Parameter Name="SectionID" Type="nvarchar" Mode="In" />
+          <Parameter Name="SectionName" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -2448,6 +2589,92 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SuperDiskAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Article_No" Type="nvarchar" Mode="In" />
+          <Parameter Name="Article_Desc" Type="nvarchar" Mode="In" />
+          <Parameter Name="Pack_Code" Type="int" Mode="In" />
+          <Parameter Name="Pack_Quantity" Type="int" Mode="In" />
+          <Parameter Name="Unit_Content" Type="int" Mode="In" />
+          <Parameter Name="Unit_Measure" Type="nvarchar" Mode="In" />
+          <Parameter Name="Uk_Col_1" Type="decimal" Mode="In" />
+          <Parameter Name="Standard_Weight" Type="int" Mode="In" />
+          <Parameter Name="Hazardous_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="Calibration_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="Obsolete_Flag" Type="nvarchar" Mode="In" />
+          <Parameter Name="MH1" Type="nvarchar" Mode="In" />
+          <Parameter Name="Low_Discount_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="Licensed_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="Shelf_Life" Type="nvarchar" Mode="In" />
+          <Parameter Name="CofO" Type="nvarchar" Mode="In" />
+          <Parameter Name="EUR1_Indicator" Type="nvarchar" Mode="In" />
+          <Parameter Name="CCCN_No" Type="nvarchar" Mode="In" />
+          <Parameter Name="Supercede_Date" Type="nvarchar" Mode="In" />
+          <Parameter Name="Current_Cat_page" Type="nvarchar" Mode="In" />
+          <Parameter Name="Uk_Intro_Date" Type="nvarchar" Mode="In" />
+          <Parameter Name="Filler" Type="nvarchar" Mode="In" />
+          <Parameter Name="Uk_Disc_Date" Type="nvarchar" Mode="In" />
+          <Parameter Name="Substitute_By" Type="nvarchar" Mode="In" />
+          <Parameter Name="BHC_Flag" Type="nvarchar" Mode="In" />
+          <Parameter Name="Filler1" Type="nvarchar" Mode="In" />
+          <Parameter Name="Future_Sell_Price" Type="decimal" Mode="In" />
+          <Parameter Name="Int_Cat" Type="nvarchar" Mode="In" />
+          <Parameter Name="New_Prod_Change_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="Out_of_Stock_Prohibit_change_ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="Disc_Change_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="Superceded_Change_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="Pack_Size_Change_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="Rolled_Product_Change_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="Expiring_Product_Change_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="Manufacturer" Type="nvarchar" Mode="In" />
+          <Parameter Name="MPN" Type="nvarchar" Mode="In" />
+          <Parameter Name="MH_Code_Level_1" Type="nvarchar" Mode="In" />
+          <Parameter Name="Heigh" Type="decimal" Mode="In" />
+          <Parameter Name="Width" Type="decimal" Mode="In" />
+          <Parameter Name="Length" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="SuperDiskPAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Article_No" Type="nvarchar" Mode="In" />
+          <Parameter Name="Article_Desc" Type="nvarchar" Mode="In" />
+          <Parameter Name="Pack_Code" Type="int" Mode="In" />
+          <Parameter Name="Pack_Quantity" Type="int" Mode="In" />
+          <Parameter Name="Unit_Content" Type="int" Mode="In" />
+          <Parameter Name="Unit_Measure" Type="nvarchar" Mode="In" />
+          <Parameter Name="Uk_Col_1" Type="decimal" Mode="In" />
+          <Parameter Name="Standard_Weight" Type="int" Mode="In" />
+          <Parameter Name="Hazardous_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="Calibration_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="Obsolete_Flag" Type="nvarchar" Mode="In" />
+          <Parameter Name="MH1" Type="nvarchar" Mode="In" />
+          <Parameter Name="Low_Discount_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="Licensed_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="Shelf_Life" Type="nvarchar" Mode="In" />
+          <Parameter Name="CofO" Type="nvarchar" Mode="In" />
+          <Parameter Name="EUR1_Indicator" Type="nvarchar" Mode="In" />
+          <Parameter Name="CCCN_No" Type="nvarchar" Mode="In" />
+          <Parameter Name="Supercede_Date" Type="nvarchar" Mode="In" />
+          <Parameter Name="Current_Cat_page" Type="nvarchar" Mode="In" />
+          <Parameter Name="Uk_Intro_Date" Type="nvarchar" Mode="In" />
+          <Parameter Name="Filler" Type="nvarchar" Mode="In" />
+          <Parameter Name="Uk_Disc_Date" Type="nvarchar" Mode="In" />
+          <Parameter Name="Substitute_By" Type="nvarchar" Mode="In" />
+          <Parameter Name="BHC_Flag" Type="nvarchar" Mode="In" />
+          <Parameter Name="Filler1" Type="nvarchar" Mode="In" />
+          <Parameter Name="Future_Sell_Price" Type="decimal" Mode="In" />
+          <Parameter Name="Int_Cat" Type="nvarchar" Mode="In" />
+          <Parameter Name="New_Prod_Change_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="Out_of_Stock_Prohibit_change_ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="Disc_Change_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="Superceded_Change_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="Pack_Size_Change_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="Rolled_Product_Change_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="Expiring_Product_Change_Ind" Type="nvarchar" Mode="In" />
+          <Parameter Name="Manufacturer" Type="nvarchar" Mode="In" />
+          <Parameter Name="MPN" Type="nvarchar" Mode="In" />
+          <Parameter Name="MH_Code_Level_1" Type="nvarchar" Mode="In" />
+          <Parameter Name="Heigh" Type="decimal" Mode="In" />
+          <Parameter Name="Width" Type="decimal" Mode="In" />
+          <Parameter Name="Length" Type="decimal" Mode="In" />
+        </Function>
         <EntityContainer Name="IMEModelStoreContainer">
           <EntitySet Name="AccountGroup" EntityType="Self.AccountGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AccountLedger" EntityType="Self.AccountLedger" Schema="dbo" store:Type="Tables" />
@@ -2460,6 +2687,7 @@
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ContactType" EntityType="Self.ContactType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CreditNoteMaster" EntityType="Self.CreditNoteMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerAddress" EntityType="Self.CustomerAddress" Schema="dbo" store:Type="Tables" />
@@ -2477,6 +2705,7 @@
           <EntitySet Name="FinancialYear" EntityType="Self.FinancialYear" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hazardous" EntityType="Self.Hazardous" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ItemNote" EntityType="Self.ItemNote" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JournalMaster" EntityType="Self.JournalMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LedgerPosting" EntityType="Self.LedgerPosting" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoaderDates" EntityType="Self.LoaderDates" Schema="dbo" store:Type="Tables" />
@@ -2528,15 +2757,15 @@
           <EntitySet Name="VoucherType" EntityType="Self.VoucherType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VoucherTypeTax" EntityType="Self.VoucherTypeTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__AccountLe__accou__59B045BD" Association="Self.FK__AccountLe__accou__59B045BD">
+          <AssociationSet Name="FK__AccountLe__accou__5E74FADA" Association="Self.FK__AccountLe__accou__5E74FADA">
             <End Role="AccountGroup" EntitySet="AccountGroup" />
             <End Role="AccountLedger" EntitySet="AccountLedger" />
           </AssociationSet>
-          <AssociationSet Name="FK__AccountLe__areaI__57C7FD4B" Association="Self.FK__AccountLe__areaI__57C7FD4B">
+          <AssociationSet Name="FK__AccountLe__areaI__5C8CB268" Association="Self.FK__AccountLe__areaI__5C8CB268">
             <End Role="Area" EntitySet="Area" />
             <End Role="AccountLedger" EntitySet="AccountLedger" />
           </AssociationSet>
-          <AssociationSet Name="FK__AccountLe__route__58BC2184" Association="Self.FK__AccountLe__route__58BC2184">
+          <AssociationSet Name="FK__AccountLe__route__5D80D6A1" Association="Self.FK__AccountLe__route__5D80D6A1">
             <End Role="Route" EntitySet="Route" />
             <End Role="AccountLedger" EntitySet="AccountLedger" />
           </AssociationSet>
@@ -2571,6 +2800,14 @@
           <AssociationSet Name="FK__City__CountryID__51300E55" Association="Self.FK__City__CountryID__51300E55">
             <End Role="Country" EntitySet="Country" />
             <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CreditNot__finan__02B25B50" Association="Self.FK__CreditNot__finan__02B25B50">
+            <End Role="FinancialYear" EntitySet="FinancialYear" />
+            <End Role="CreditNoteMaster" EntitySet="CreditNoteMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CreditNot__userI__01BE3717" Association="Self.FK__CreditNot__userI__01BE3717">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="CreditNoteMaster" EntitySet="CreditNoteMaster" />
           </AssociationSet>
           <AssociationSet Name="FK__Customer__accoun__6EF57B66" Association="Self.FK__Customer__accoun__6EF57B66">
             <End Role="Worker" EntitySet="Worker" />
@@ -2672,15 +2909,23 @@
             <End Role="Notes" EntitySet="Notes" />
             <End Role="ItemNote" EntitySet="ItemNote" />
           </AssociationSet>
-          <AssociationSet Name="FK__LedgerPos__ledge__5B988E2F" Association="Self.FK__LedgerPos__ledge__5B988E2F">
+          <AssociationSet Name="FK__JournalMa__userI__7DEDA633" Association="Self.FK__JournalMa__userI__7DEDA633">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="JournalMaster" EntitySet="JournalMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__JournalMa__vouch__7EE1CA6C" Association="Self.FK__JournalMa__vouch__7EE1CA6C">
+            <End Role="VoucherType" EntitySet="VoucherType" />
+            <End Role="JournalMaster" EntitySet="JournalMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LedgerPos__ledge__605D434C" Association="Self.FK__LedgerPos__ledge__605D434C">
             <End Role="AccountLedger" EntitySet="AccountLedger" />
             <End Role="LedgerPosting" EntitySet="LedgerPosting" />
           </AssociationSet>
-          <AssociationSet Name="FK__LedgerPos__vouch__5AA469F6" Association="Self.FK__LedgerPos__vouch__5AA469F6">
+          <AssociationSet Name="FK__LedgerPos__vouch__5F691F13" Association="Self.FK__LedgerPos__vouch__5F691F13">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="LedgerPosting" EntitySet="LedgerPosting" />
           </AssociationSet>
-          <AssociationSet Name="FK__LedgerPos__yearI__5C8CB268" Association="Self.FK__LedgerPos__yearI__5C8CB268">
+          <AssociationSet Name="FK__LedgerPos__yearI__61516785" Association="Self.FK__LedgerPos__yearI__61516785">
             <End Role="FinancialYear" EntitySet="FinancialYear" />
             <End Role="LedgerPosting" EntitySet="LedgerPosting" />
           </AssociationSet>
@@ -2692,23 +2937,23 @@
             <End Role="Currency" EntitySet="Currency" />
             <End Role="Management" EntitySet="Management" />
           </AssociationSet>
-          <AssociationSet Name="FK__PartyBala__again__54EB90A0" Association="Self.FK__PartyBala__again__54EB90A0">
+          <AssociationSet Name="FK__PartyBala__again__59B045BD" Association="Self.FK__PartyBala__again__59B045BD">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="PartyBalance" EntitySet="PartyBalance" />
           </AssociationSet>
-          <AssociationSet Name="FK__PartyBala__excha__55DFB4D9" Association="Self.FK__PartyBala__excha__55DFB4D9">
+          <AssociationSet Name="FK__PartyBala__excha__5AA469F6" Association="Self.FK__PartyBala__excha__5AA469F6">
             <End Role="ExchangeRate" EntitySet="ExchangeRate" />
             <End Role="PartyBalance" EntitySet="PartyBalance" />
           </AssociationSet>
-          <AssociationSet Name="FK__PartyBala__finan__56D3D912" Association="Self.FK__PartyBala__finan__56D3D912">
+          <AssociationSet Name="FK__PartyBala__finan__5B988E2F" Association="Self.FK__PartyBala__finan__5B988E2F">
             <End Role="FinancialYear" EntitySet="FinancialYear" />
             <End Role="PartyBalance" EntitySet="PartyBalance" />
           </AssociationSet>
-          <AssociationSet Name="FK__PartyBala__ledge__5303482E" Association="Self.FK__PartyBala__ledge__5303482E">
+          <AssociationSet Name="FK__PartyBala__ledge__57C7FD4B" Association="Self.FK__PartyBala__ledge__57C7FD4B">
             <End Role="AccountLedger" EntitySet="AccountLedger" />
             <End Role="PartyBalance" EntitySet="PartyBalance" />
           </AssociationSet>
-          <AssociationSet Name="FK__PartyBala__vouch__53F76C67" Association="Self.FK__PartyBala__vouch__53F76C67">
+          <AssociationSet Name="FK__PartyBala__vouch__58BC2184" Association="Self.FK__PartyBala__vouch__58BC2184">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="PartyBalance" EntitySet="PartyBalance" />
           </AssociationSet>
@@ -3004,6 +3249,157 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="PaymentMasters" EntityType="IMEModel.PaymentMaster" />
+          <FunctionImport Name="ExtendedRangeADD">
+            <Parameter Name="ArticleNo" Mode="In" Type="String" />
+            <Parameter Name="Brand" Mode="In" Type="String" />
+            <Parameter Name="MPN" Mode="In" Type="String" />
+            <Parameter Name="ArticleDescription" Mode="In" Type="String" />
+            <Parameter Name="ExtendedRangeLength" Mode="In" Type="Decimal" />
+            <Parameter Name="Width" Mode="In" Type="Decimal" />
+            <Parameter Name="Height" Mode="In" Type="Decimal" />
+            <Parameter Name="DimensionUoM" Mode="In" Type="String" />
+            <Parameter Name="WeightUoM" Mode="In" Type="String" />
+            <Parameter Name="CCCN" Mode="In" Type="Int32" />
+            <Parameter Name="CountryofOrigin" Mode="In" Type="String" />
+            <Parameter Name="UnitofMeasure" Mode="In" Type="String" />
+            <Parameter Name="PackSize" Mode="In" Type="Int32" />
+            <Parameter Name="SalesUoM" Mode="In" Type="Int32" />
+            <Parameter Name="CostPriceCurrency" Mode="In" Type="String" />
+            <Parameter Name="Col1Price" Mode="In" Type="Decimal" />
+            <Parameter Name="Col2Price" Mode="In" Type="Decimal" />
+            <Parameter Name="Col3Price" Mode="In" Type="Decimal" />
+            <Parameter Name="Col4Price" Mode="In" Type="Decimal" />
+            <Parameter Name="Col5Price" Mode="In" Type="Decimal" />
+            <Parameter Name="Col1Break" Mode="In" Type="Int32" />
+            <Parameter Name="Col2Break" Mode="In" Type="Int32" />
+            <Parameter Name="Col3Break" Mode="In" Type="Int32" />
+            <Parameter Name="Col4Break" Mode="In" Type="Int32" />
+            <Parameter Name="Col5Break" Mode="In" Type="Int32" />
+            <Parameter Name="DiscountedPrice1" Mode="In" Type="Decimal" />
+            <Parameter Name="DiscountedPrice2" Mode="In" Type="Decimal" />
+            <Parameter Name="DiscountedPrice3" Mode="In" Type="Decimal" />
+            <Parameter Name="DiscountedPrice4" Mode="In" Type="Decimal" />
+            <Parameter Name="DiscountedPrice5" Mode="In" Type="Decimal" />
+            <Parameter Name="ManufacturerCode" Mode="In" Type="String" />
+            <Parameter Name="ExtendedRangeWeight" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SlidingPriceAdd">
+            <Parameter Name="ArticleNo" Mode="In" Type="String" />
+            <Parameter Name="ArticleDescription" Mode="In" Type="String" />
+            <Parameter Name="ItemTypeCode" Mode="In" Type="Int32" />
+            <Parameter Name="ItemTypeDesc" Mode="In" Type="String" />
+            <Parameter Name="IntroductionDate" Mode="In" Type="String" />
+            <Parameter Name="DiscontinuedDate" Mode="In" Type="String" />
+            <Parameter Name="Quantity1" Mode="In" Type="Int32" />
+            <Parameter Name="Col1Price" Mode="In" Type="Decimal" />
+            <Parameter Name="Col2Price" Mode="In" Type="Decimal" />
+            <Parameter Name="Col3Price" Mode="In" Type="Decimal" />
+            <Parameter Name="Col4Price" Mode="In" Type="Decimal" />
+            <Parameter Name="Col5Price" Mode="In" Type="Decimal" />
+            <Parameter Name="Col1Break" Mode="In" Type="Int32" />
+            <Parameter Name="Col2Break" Mode="In" Type="Int32" />
+            <Parameter Name="Col3Break" Mode="In" Type="Int32" />
+            <Parameter Name="Col4Break" Mode="In" Type="Int32" />
+            <Parameter Name="Col5Break" Mode="In" Type="Int32" />
+            <Parameter Name="DiscountedPrice1" Mode="In" Type="Decimal" />
+            <Parameter Name="DiscountedPrice2" Mode="In" Type="Decimal" />
+            <Parameter Name="DiscountedPrice3" Mode="In" Type="Decimal" />
+            <Parameter Name="DiscountedPrice4" Mode="In" Type="Decimal" />
+            <Parameter Name="DiscountedPrice5" Mode="In" Type="Decimal" />
+            <Parameter Name="SuperSectionNo" Mode="In" Type="String" />
+            <Parameter Name="SupersectionName" Mode="In" Type="String" />
+            <Parameter Name="BrandID" Mode="In" Type="String" />
+            <Parameter Name="Brandname" Mode="In" Type="String" />
+            <Parameter Name="SectionID" Mode="In" Type="String" />
+            <Parameter Name="SectionName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SuperDiskAdd">
+            <Parameter Name="Article_No" Mode="In" Type="String" />
+            <Parameter Name="Article_Desc" Mode="In" Type="String" />
+            <Parameter Name="Pack_Code" Mode="In" Type="Int32" />
+            <Parameter Name="Pack_Quantity" Mode="In" Type="Int32" />
+            <Parameter Name="Unit_Content" Mode="In" Type="Int32" />
+            <Parameter Name="Unit_Measure" Mode="In" Type="String" />
+            <Parameter Name="Uk_Col_1" Mode="In" Type="Decimal" />
+            <Parameter Name="Standard_Weight" Mode="In" Type="Int32" />
+            <Parameter Name="Hazardous_Ind" Mode="In" Type="String" />
+            <Parameter Name="Calibration_Ind" Mode="In" Type="String" />
+            <Parameter Name="Obsolete_Flag" Mode="In" Type="String" />
+            <Parameter Name="MH1" Mode="In" Type="String" />
+            <Parameter Name="Low_Discount_Ind" Mode="In" Type="String" />
+            <Parameter Name="Licensed_Ind" Mode="In" Type="String" />
+            <Parameter Name="Shelf_Life" Mode="In" Type="String" />
+            <Parameter Name="CofO" Mode="In" Type="String" />
+            <Parameter Name="EUR1_Indicator" Mode="In" Type="String" />
+            <Parameter Name="CCCN_No" Mode="In" Type="String" />
+            <Parameter Name="Supercede_Date" Mode="In" Type="String" />
+            <Parameter Name="Current_Cat_page" Mode="In" Type="String" />
+            <Parameter Name="Uk_Intro_Date" Mode="In" Type="String" />
+            <Parameter Name="Filler" Mode="In" Type="String" />
+            <Parameter Name="Uk_Disc_Date" Mode="In" Type="String" />
+            <Parameter Name="Substitute_By" Mode="In" Type="String" />
+            <Parameter Name="BHC_Flag" Mode="In" Type="String" />
+            <Parameter Name="Filler1" Mode="In" Type="String" />
+            <Parameter Name="Future_Sell_Price" Mode="In" Type="Decimal" />
+            <Parameter Name="Int_Cat" Mode="In" Type="String" />
+            <Parameter Name="New_Prod_Change_Ind" Mode="In" Type="String" />
+            <Parameter Name="Out_of_Stock_Prohibit_change_ind" Mode="In" Type="String" />
+            <Parameter Name="Disc_Change_Ind" Mode="In" Type="String" />
+            <Parameter Name="Superceded_Change_Ind" Mode="In" Type="String" />
+            <Parameter Name="Pack_Size_Change_Ind" Mode="In" Type="String" />
+            <Parameter Name="Rolled_Product_Change_Ind" Mode="In" Type="String" />
+            <Parameter Name="Expiring_Product_Change_Ind" Mode="In" Type="String" />
+            <Parameter Name="Manufacturer" Mode="In" Type="String" />
+            <Parameter Name="MPN" Mode="In" Type="String" />
+            <Parameter Name="MH_Code_Level_1" Mode="In" Type="String" />
+            <Parameter Name="Heigh" Mode="In" Type="Decimal" />
+            <Parameter Name="Width" Mode="In" Type="Decimal" />
+            <Parameter Name="Length" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SuperDiskPAdd">
+            <Parameter Name="Article_No" Mode="In" Type="String" />
+            <Parameter Name="Article_Desc" Mode="In" Type="String" />
+            <Parameter Name="Pack_Code" Mode="In" Type="Int32" />
+            <Parameter Name="Pack_Quantity" Mode="In" Type="Int32" />
+            <Parameter Name="Unit_Content" Mode="In" Type="Int32" />
+            <Parameter Name="Unit_Measure" Mode="In" Type="String" />
+            <Parameter Name="Uk_Col_1" Mode="In" Type="Decimal" />
+            <Parameter Name="Standard_Weight" Mode="In" Type="Int32" />
+            <Parameter Name="Hazardous_Ind" Mode="In" Type="String" />
+            <Parameter Name="Calibration_Ind" Mode="In" Type="String" />
+            <Parameter Name="Obsolete_Flag" Mode="In" Type="String" />
+            <Parameter Name="MH1" Mode="In" Type="String" />
+            <Parameter Name="Low_Discount_Ind" Mode="In" Type="String" />
+            <Parameter Name="Licensed_Ind" Mode="In" Type="String" />
+            <Parameter Name="Shelf_Life" Mode="In" Type="String" />
+            <Parameter Name="CofO" Mode="In" Type="String" />
+            <Parameter Name="EUR1_Indicator" Mode="In" Type="String" />
+            <Parameter Name="CCCN_No" Mode="In" Type="String" />
+            <Parameter Name="Supercede_Date" Mode="In" Type="String" />
+            <Parameter Name="Current_Cat_page" Mode="In" Type="String" />
+            <Parameter Name="Uk_Intro_Date" Mode="In" Type="String" />
+            <Parameter Name="Filler" Mode="In" Type="String" />
+            <Parameter Name="Uk_Disc_Date" Mode="In" Type="String" />
+            <Parameter Name="Substitute_By" Mode="In" Type="String" />
+            <Parameter Name="BHC_Flag" Mode="In" Type="String" />
+            <Parameter Name="Filler1" Mode="In" Type="String" />
+            <Parameter Name="Future_Sell_Price" Mode="In" Type="Decimal" />
+            <Parameter Name="Int_Cat" Mode="In" Type="String" />
+            <Parameter Name="New_Prod_Change_Ind" Mode="In" Type="String" />
+            <Parameter Name="Out_of_Stock_Prohibit_change_ind" Mode="In" Type="String" />
+            <Parameter Name="Disc_Change_Ind" Mode="In" Type="String" />
+            <Parameter Name="Superceded_Change_Ind" Mode="In" Type="String" />
+            <Parameter Name="Pack_Size_Change_Ind" Mode="In" Type="String" />
+            <Parameter Name="Rolled_Product_Change_Ind" Mode="In" Type="String" />
+            <Parameter Name="Expiring_Product_Change_Ind" Mode="In" Type="String" />
+            <Parameter Name="Manufacturer" Mode="In" Type="String" />
+            <Parameter Name="MPN" Mode="In" Type="String" />
+            <Parameter Name="MH_Code_Level_1" Mode="In" Type="String" />
+            <Parameter Name="Heigh" Mode="In" Type="Decimal" />
+            <Parameter Name="Width" Mode="In" Type="Decimal" />
+            <Parameter Name="Length" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <EntitySet Name="AccountGroups" EntityType="IMEModel.AccountGroup" />
           <EntitySet Name="AccountLedgers" EntityType="IMEModel.AccountLedger" />
           <EntitySet Name="AdvancePayments" EntityType="IMEModel.AdvancePayment" />
@@ -3014,6 +3410,7 @@
           <EntitySet Name="Cities" EntityType="IMEModel.City" />
           <EntitySet Name="ContactTypes" EntityType="IMEModel.ContactType" />
           <EntitySet Name="Countries" EntityType="IMEModel.Country" />
+          <EntitySet Name="CreditNoteMasters" EntityType="IMEModel.CreditNoteMaster" />
           <EntitySet Name="Currencies" EntityType="IMEModel.Currency" />
           <EntitySet Name="Customers" EntityType="IMEModel.Customer" />
           <EntitySet Name="CustomerAddresses" EntityType="IMEModel.CustomerAddress" />
@@ -3031,6 +3428,7 @@
           <EntitySet Name="FinancialYears" EntityType="IMEModel.FinancialYear" />
           <EntitySet Name="Hazardous" EntityType="IMEModel.Hazardou" />
           <EntitySet Name="ItemNotes" EntityType="IMEModel.ItemNote" />
+          <EntitySet Name="JournalMasters" EntityType="IMEModel.JournalMaster" />
           <EntitySet Name="Languages" EntityType="IMEModel.Language" />
           <EntitySet Name="LedgerPostings" EntityType="IMEModel.LedgerPosting" />
           <EntitySet Name="LoaderDates" EntityType="IMEModel.LoaderDate" />
@@ -3041,7 +3439,6 @@
           <EntitySet Name="OnSales" EntityType="IMEModel.OnSale" />
           <EntitySet Name="PartyBalances" EntityType="IMEModel.PartyBalance" />
           <EntitySet Name="PayHeads" EntityType="IMEModel.PayHead" />
-          <EntitySet Name="PaymentMasters" EntityType="IMEModel.PaymentMaster" />
           <EntitySet Name="PaymentMethods" EntityType="IMEModel.PaymentMethod" />
           <EntitySet Name="PaymentTerms" EntityType="IMEModel.PaymentTerm" />
           <EntitySet Name="PricingLevels" EntityType="IMEModel.PricingLevel" />
@@ -3081,15 +3478,15 @@
           <EntitySet Name="VoucherTypes" EntityType="IMEModel.VoucherType" />
           <EntitySet Name="VoucherTypeTaxes" EntityType="IMEModel.VoucherTypeTax" />
           <EntitySet Name="Workers" EntityType="IMEModel.Worker" />
-          <AssociationSet Name="FK__AccountLe__accou__59B045BD" Association="IMEModel.FK__AccountLe__accou__59B045BD">
+          <AssociationSet Name="FK__AccountLe__accou__5E74FADA" Association="IMEModel.FK__AccountLe__accou__5E74FADA">
             <End Role="AccountGroup" EntitySet="AccountGroups" />
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
           </AssociationSet>
-          <AssociationSet Name="FK__AccountLe__areaI__57C7FD4B" Association="IMEModel.FK__AccountLe__areaI__57C7FD4B">
+          <AssociationSet Name="FK__AccountLe__areaI__5C8CB268" Association="IMEModel.FK__AccountLe__areaI__5C8CB268">
             <End Role="Area" EntitySet="Areas" />
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
           </AssociationSet>
-          <AssociationSet Name="FK__AccountLe__route__58BC2184" Association="IMEModel.FK__AccountLe__route__58BC2184">
+          <AssociationSet Name="FK__AccountLe__route__5D80D6A1" Association="IMEModel.FK__AccountLe__route__5D80D6A1">
             <End Role="Route" EntitySet="Routes" />
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
           </AssociationSet>
@@ -3097,11 +3494,11 @@
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="AdvancePayment" EntitySet="AdvancePayments" />
           </AssociationSet>
-          <AssociationSet Name="FK__LedgerPos__ledge__5B988E2F" Association="IMEModel.FK__LedgerPos__ledge__5B988E2F">
+          <AssociationSet Name="FK__LedgerPos__ledge__605D434C" Association="IMEModel.FK__LedgerPos__ledge__605D434C">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="LedgerPosting" EntitySet="LedgerPostings" />
           </AssociationSet>
-          <AssociationSet Name="FK__PartyBala__ledge__5303482E" Association="IMEModel.FK__PartyBala__ledge__5303482E">
+          <AssociationSet Name="FK__PartyBala__ledge__57C7FD4B" Association="IMEModel.FK__PartyBala__ledge__57C7FD4B">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="PartyBalance" EntitySet="PartyBalances" />
           </AssociationSet>
@@ -3156,6 +3553,14 @@
           <AssociationSet Name="FK__SupplierA__Count__3FD07829" Association="IMEModel.FK__SupplierA__Count__3FD07829">
             <End Role="Country" EntitySet="Countries" />
             <End Role="SupplierAdress" EntitySet="SupplierAdresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CreditNot__finan__02B25B50" Association="IMEModel.FK__CreditNot__finan__02B25B50">
+            <End Role="FinancialYear" EntitySet="FinancialYears" />
+            <End Role="CreditNoteMaster" EntitySet="CreditNoteMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CreditNot__userI__01BE3717" Association="IMEModel.FK__CreditNot__userI__01BE3717">
+            <End Role="Worker" EntitySet="Workers" />
+            <End Role="CreditNoteMaster" EntitySet="CreditNoteMasters" />
           </AssociationSet>
           <AssociationSet Name="FK__Managemen__Defau__253C7D7E" Association="IMEModel.FK__Managemen__Defau__253C7D7E">
             <End Role="Currency" EntitySet="Currencies" />
@@ -3289,11 +3694,11 @@
             <End Role="Worker" EntitySet="Workers" />
             <End Role="DiscountValue" EntitySet="DiscountValues" />
           </AssociationSet>
-          <AssociationSet Name="FK__PartyBala__excha__55DFB4D9" Association="IMEModel.FK__PartyBala__excha__55DFB4D9">
+          <AssociationSet Name="FK__PartyBala__excha__5AA469F6" Association="IMEModel.FK__PartyBala__excha__5AA469F6">
             <End Role="ExchangeRate" EntitySet="ExchangeRates" />
             <End Role="PartyBalance" EntitySet="PartyBalances" />
           </AssociationSet>
-          <AssociationSet Name="FK__LedgerPos__yearI__5C8CB268" Association="IMEModel.FK__LedgerPos__yearI__5C8CB268">
+          <AssociationSet Name="FK__LedgerPos__yearI__61516785" Association="IMEModel.FK__LedgerPos__yearI__61516785">
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="LedgerPosting" EntitySet="LedgerPostings" />
           </AssociationSet>
@@ -3301,7 +3706,7 @@
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="Management" EntitySet="Managements" />
           </AssociationSet>
-          <AssociationSet Name="FK__PartyBala__finan__56D3D912" Association="IMEModel.FK__PartyBala__finan__56D3D912">
+          <AssociationSet Name="FK__PartyBala__finan__5B988E2F" Association="IMEModel.FK__PartyBala__finan__5B988E2F">
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="PartyBalance" EntitySet="PartyBalances" />
           </AssociationSet>
@@ -3313,11 +3718,19 @@
             <End Role="Note" EntitySet="Notes" />
             <End Role="ItemNote" EntitySet="ItemNotes" />
           </AssociationSet>
+          <AssociationSet Name="FK__JournalMa__userI__7DEDA633" Association="IMEModel.FK__JournalMa__userI__7DEDA633">
+            <End Role="Worker" EntitySet="Workers" />
+            <End Role="JournalMaster" EntitySet="JournalMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__JournalMa__vouch__7EE1CA6C" Association="IMEModel.FK__JournalMa__vouch__7EE1CA6C">
+            <End Role="VoucherType" EntitySet="VoucherTypes" />
+            <End Role="JournalMaster" EntitySet="JournalMasters" />
+          </AssociationSet>
           <AssociationSet Name="FK__SupplierW__langu__72910220" Association="IMEModel.FK__SupplierW__langu__72910220">
             <End Role="Language" EntitySet="Languages" />
             <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
           </AssociationSet>
-          <AssociationSet Name="FK__LedgerPos__vouch__5AA469F6" Association="IMEModel.FK__LedgerPos__vouch__5AA469F6">
+          <AssociationSet Name="FK__LedgerPos__vouch__5F691F13" Association="IMEModel.FK__LedgerPos__vouch__5F691F13">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="LedgerPosting" EntitySet="LedgerPostings" />
           </AssociationSet>
@@ -3341,11 +3754,11 @@
             <End Role="Note" EntitySet="Notes" />
             <End Role="Worker" EntitySet="Workers" />
           </AssociationSet>
-          <AssociationSet Name="FK__PartyBala__again__54EB90A0" Association="IMEModel.FK__PartyBala__again__54EB90A0">
+          <AssociationSet Name="FK__PartyBala__again__59B045BD" Association="IMEModel.FK__PartyBala__again__59B045BD">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="PartyBalance" EntitySet="PartyBalances" />
           </AssociationSet>
-          <AssociationSet Name="FK__PartyBala__vouch__53F76C67" Association="IMEModel.FK__PartyBala__vouch__53F76C67">
+          <AssociationSet Name="FK__PartyBala__vouch__58BC2184" Association="IMEModel.FK__PartyBala__vouch__58BC2184">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="PartyBalance" EntitySet="PartyBalances" />
           </AssociationSet>
@@ -3506,6 +3919,26 @@
           <Property Type="String" Name="narration" Nullable="true" />
           <Property Type="String" Name="type" Nullable="true" />
         </ComplexType>
+        <EntityType Name="PaymentMaster">
+          <Key>
+            <PropertyRef Name="paymentMasterId" />
+          </Key>
+          <Property Name="paymentMasterId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="voucherNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="invoiceNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="suffixPrefixId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="totalAmount" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__PaymentMa__ledge__4979DDF4" FromRole="PaymentMaster" ToRole="AccountLedger" />
+          <NavigationProperty Name="FinancialYear" Relationship="IMEModel.FK__PaymentMa__finan__47919582" FromRole="PaymentMaster" ToRole="FinancialYear" />
+          <NavigationProperty Name="Worker" Relationship="IMEModel.FK__PaymentMa__userI__4A6E022D" FromRole="PaymentMaster" ToRole="Worker" />
+          <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__PaymentMa__vouch__4885B9BB" FromRole="PaymentMaster" ToRole="VoucherType" />
+          </EntityType>
         <EntityType Name="AccountGroup">
           <Key>
             <PropertyRef Name="accountGroupId" />
@@ -3518,7 +3951,7 @@
           <Property Name="nature" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="affectGrossProfit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AccountGroupDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="AccountLedgers" Relationship="IMEModel.FK__AccountLe__accou__59B045BD" FromRole="AccountGroup" ToRole="AccountLedger" />
+          <NavigationProperty Name="AccountLedgers" Relationship="IMEModel.FK__AccountLe__accou__5E74FADA" FromRole="AccountGroup" ToRole="AccountLedger" />
         </EntityType>
         <EntityType Name="AccountLedger">
           <Key>
@@ -3549,12 +3982,12 @@
           <Property Name="branchCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="extraDate" Type="DateTime" Precision="3" />
           <Property Name="areaId" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="AccountGroup" Relationship="IMEModel.FK__AccountLe__accou__59B045BD" FromRole="AccountLedger" ToRole="AccountGroup" />
-          <NavigationProperty Name="Area" Relationship="IMEModel.FK__AccountLe__areaI__57C7FD4B" FromRole="AccountLedger" ToRole="Area" />
-          <NavigationProperty Name="Route" Relationship="IMEModel.FK__AccountLe__route__58BC2184" FromRole="AccountLedger" ToRole="Route" />
+          <NavigationProperty Name="AccountGroup" Relationship="IMEModel.FK__AccountLe__accou__5E74FADA" FromRole="AccountLedger" ToRole="AccountGroup" />
+          <NavigationProperty Name="Area" Relationship="IMEModel.FK__AccountLe__areaI__5C8CB268" FromRole="AccountLedger" ToRole="Area" />
+          <NavigationProperty Name="Route" Relationship="IMEModel.FK__AccountLe__route__5D80D6A1" FromRole="AccountLedger" ToRole="Route" />
           <NavigationProperty Name="AdvancePayments" Relationship="IMEModel.FK__AdvancePa__ledge__4F32B74A" FromRole="AccountLedger" ToRole="AdvancePayment" />
-          <NavigationProperty Name="LedgerPostings" Relationship="IMEModel.FK__LedgerPos__ledge__5B988E2F" FromRole="AccountLedger" ToRole="LedgerPosting" />
-          <NavigationProperty Name="PartyBalances" Relationship="IMEModel.FK__PartyBala__ledge__5303482E" FromRole="AccountLedger" ToRole="PartyBalance" />
+          <NavigationProperty Name="LedgerPostings" Relationship="IMEModel.FK__LedgerPos__ledge__605D434C" FromRole="AccountLedger" ToRole="LedgerPosting" />
+          <NavigationProperty Name="PartyBalances" Relationship="IMEModel.FK__PartyBala__ledge__57C7FD4B" FromRole="AccountLedger" ToRole="PartyBalance" />
           <NavigationProperty Name="PaymentMasters" Relationship="IMEModel.FK__PaymentMa__ledge__4979DDF4" FromRole="AccountLedger" ToRole="PaymentMaster" />
         </EntityType>
         <EntityType Name="AdvancePayment">
@@ -3591,7 +4024,7 @@
           <Property Name="areaName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="extraDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="AccountLedgers" Relationship="IMEModel.FK__AccountLe__areaI__57C7FD4B" FromRole="Area" ToRole="AccountLedger" />
+          <NavigationProperty Name="AccountLedgers" Relationship="IMEModel.FK__AccountLe__areaI__5C8CB268" FromRole="Area" ToRole="AccountLedger" />
           <NavigationProperty Name="Routes" Relationship="IMEModel.FK__Route__areaId__6FD49106" FromRole="Area" ToRole="Route" />
         </EntityType>
         <EntityType Name="AuthorizationValue">
@@ -3652,6 +4085,22 @@
           <NavigationProperty Name="Cities" Relationship="IMEModel.FK__City__CountryID__51300E55" FromRole="Country" ToRole="City" />
           <NavigationProperty Name="CustomerAddresses" Relationship="IMEModel.FK__CustomerA__Count__503BEA1C" FromRole="Country" ToRole="CustomerAddress" />
           <NavigationProperty Name="SupplierAdresses" Relationship="IMEModel.FK__SupplierA__Count__3FD07829" FromRole="Country" ToRole="SupplierAdress" />
+        </EntityType>
+        <EntityType Name="CreditNoteMaster">
+          <Key>
+            <PropertyRef Name="creditNoteMasterId" />
+          </Key>
+          <Property Name="creditNoteMasterId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="voucherNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="invoiceNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="suffixPrefixId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="totalAmount" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="FinancialYear" Relationship="IMEModel.FK__CreditNot__finan__02B25B50" FromRole="CreditNoteMaster" ToRole="FinancialYear" />
+          <NavigationProperty Name="Worker" Relationship="IMEModel.FK__CreditNot__userI__01BE3717" FromRole="CreditNoteMaster" ToRole="Worker" />
         </EntityType>
         <EntityType Name="Currency">
           <Key>
@@ -3861,7 +4310,7 @@
           <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="rate" Type="Decimal" Precision="18" Scale="5" />
           <NavigationProperty Name="Currency" Relationship="IMEModel.FK__tbl_Excha__curre__52442E1F" FromRole="ExchangeRate" ToRole="Currency" />
-          <NavigationProperty Name="PartyBalances" Relationship="IMEModel.FK__PartyBala__excha__55DFB4D9" FromRole="ExchangeRate" ToRole="PartyBalance" />
+          <NavigationProperty Name="PartyBalances" Relationship="IMEModel.FK__PartyBala__excha__5AA469F6" FromRole="ExchangeRate" ToRole="PartyBalance" />
         </EntityType>
         <EntityType Name="ExtendedRange">
           <Key>
@@ -3909,9 +4358,10 @@
           <Property Name="toDate" Type="DateTime" Precision="3" />
           <Property Name="extraDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="AdvancePayments" Relationship="IMEModel.FK__AdvancePa__finan__4E3E9311" FromRole="FinancialYear" ToRole="AdvancePayment" />
-          <NavigationProperty Name="LedgerPostings" Relationship="IMEModel.FK__LedgerPos__yearI__5C8CB268" FromRole="FinancialYear" ToRole="LedgerPosting" />
+          <NavigationProperty Name="CreditNoteMasters" Relationship="IMEModel.FK__CreditNot__finan__02B25B50" FromRole="FinancialYear" ToRole="CreditNoteMaster" />
+          <NavigationProperty Name="LedgerPostings" Relationship="IMEModel.FK__LedgerPos__yearI__61516785" FromRole="FinancialYear" ToRole="LedgerPosting" />
           <NavigationProperty Name="Managements" Relationship="IMEModel.FK__Managemen__Curre__338A9CD5" FromRole="FinancialYear" ToRole="Management" />
-          <NavigationProperty Name="PartyBalances" Relationship="IMEModel.FK__PartyBala__finan__56D3D912" FromRole="FinancialYear" ToRole="PartyBalance" />
+          <NavigationProperty Name="PartyBalances" Relationship="IMEModel.FK__PartyBala__finan__5B988E2F" FromRole="FinancialYear" ToRole="PartyBalance" />
           <NavigationProperty Name="PaymentMasters" Relationship="IMEModel.FK__PaymentMa__finan__47919582" FromRole="FinancialYear" ToRole="PaymentMaster" />
         </EntityType>
         <EntityType Name="Hazardou">
@@ -3932,6 +4382,23 @@
           <Property Name="ArticleNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NoteID" Type="Int32" />
           <NavigationProperty Name="Note" Relationship="IMEModel.FK__ItemNote__NoteID__2B0A656D" FromRole="ItemNote" ToRole="Note" />
+        </EntityType>
+        <EntityType Name="JournalMaster">
+          <Key>
+            <PropertyRef Name="journalMasterId" />
+          </Key>
+          <Property Name="journalMasterId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="voucherNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="invoiceNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="suffixPrefixId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="totalAmount" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Worker" Relationship="IMEModel.FK__JournalMa__userI__7DEDA633" FromRole="JournalMaster" ToRole="Worker" />
+          <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__JournalMa__vouch__7EE1CA6C" FromRole="JournalMaster" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="Language">
           <Key>
@@ -3961,9 +4428,9 @@
           <Property Name="extraDate" Type="DateTime" Precision="3" />
           <Property Name="extra1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="extra2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__LedgerPos__ledge__5B988E2F" FromRole="LedgerPosting" ToRole="AccountLedger" />
-          <NavigationProperty Name="FinancialYear" Relationship="IMEModel.FK__LedgerPos__yearI__5C8CB268" FromRole="LedgerPosting" ToRole="FinancialYear" />
-          <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__LedgerPos__vouch__5AA469F6" FromRole="LedgerPosting" ToRole="VoucherType" />
+          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__LedgerPos__ledge__605D434C" FromRole="LedgerPosting" ToRole="AccountLedger" />
+          <NavigationProperty Name="FinancialYear" Relationship="IMEModel.FK__LedgerPos__yearI__61516785" FromRole="LedgerPosting" ToRole="FinancialYear" />
+          <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__LedgerPos__vouch__5F691F13" FromRole="LedgerPosting" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="LoaderDate">
           <Key>
@@ -4064,11 +4531,11 @@
           <Property Name="creditPeriod" Type="Int32" />
           <Property Name="exchangeRateId" Type="Int32" />
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__PartyBala__ledge__5303482E" FromRole="PartyBalance" ToRole="AccountLedger" />
-          <NavigationProperty Name="ExchangeRate" Relationship="IMEModel.FK__PartyBala__excha__55DFB4D9" FromRole="PartyBalance" ToRole="ExchangeRate" />
-          <NavigationProperty Name="FinancialYear" Relationship="IMEModel.FK__PartyBala__finan__56D3D912" FromRole="PartyBalance" ToRole="FinancialYear" />
-          <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__PartyBala__again__54EB90A0" FromRole="PartyBalance" ToRole="VoucherType" />
-          <NavigationProperty Name="VoucherType1" Relationship="IMEModel.FK__PartyBala__vouch__53F76C67" FromRole="PartyBalance" ToRole="VoucherType" />
+          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__PartyBala__ledge__57C7FD4B" FromRole="PartyBalance" ToRole="AccountLedger" />
+          <NavigationProperty Name="ExchangeRate" Relationship="IMEModel.FK__PartyBala__excha__5AA469F6" FromRole="PartyBalance" ToRole="ExchangeRate" />
+          <NavigationProperty Name="FinancialYear" Relationship="IMEModel.FK__PartyBala__finan__5B988E2F" FromRole="PartyBalance" ToRole="FinancialYear" />
+          <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__PartyBala__again__59B045BD" FromRole="PartyBalance" ToRole="VoucherType" />
+          <NavigationProperty Name="VoucherType1" Relationship="IMEModel.FK__PartyBala__vouch__58BC2184" FromRole="PartyBalance" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="PayHead">
           <Key>
@@ -4079,26 +4546,6 @@
           <Property Name="type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="extraDate" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="PaymentMaster">
-          <Key>
-            <PropertyRef Name="paymentMasterId" />
-          </Key>
-          <Property Name="paymentMasterId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="voucherNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="invoiceNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="suffixPrefixId" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="date" Type="DateTime" Precision="3" />
-          <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="totalAmount" Type="Decimal" Precision="18" Scale="5" />
-          <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="userId" Type="Int32" />
-          <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__PaymentMa__ledge__4979DDF4" FromRole="PaymentMaster" ToRole="AccountLedger" />
-          <NavigationProperty Name="FinancialYear" Relationship="IMEModel.FK__PaymentMa__finan__47919582" FromRole="PaymentMaster" ToRole="FinancialYear" />
-          <NavigationProperty Name="Worker" Relationship="IMEModel.FK__PaymentMa__userI__4A6E022D" FromRole="PaymentMaster" ToRole="Worker" />
-          <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__PaymentMa__vouch__4885B9BB" FromRole="PaymentMaster" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="PaymentMethod">
           <Key>
@@ -4230,6 +4677,7 @@
           <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="FicheNo" Type="Int32" />
+          <Property Name="AccountNumber" Type="Int32" />
           <NavigationProperty Name="PurchaseOrder" Relationship="IMEModel.FK__PurchaseO__Fiche__42CCE065" FromRole="PurchaseOrderDetail" ToRole="PurchaseOrder" />
           <NavigationProperty Name="SaleOrder" Relationship="IMEModel.FK__PurchaseO__SaleO__46D27B73" FromRole="PurchaseOrderDetail" ToRole="SaleOrder" />
         </EntityType>
@@ -4338,7 +4786,7 @@
           <Property Name="routeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="areaId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="AccountLedgers" Relationship="IMEModel.FK__AccountLe__route__58BC2184" FromRole="Route" ToRole="AccountLedger" />
+          <NavigationProperty Name="AccountLedgers" Relationship="IMEModel.FK__AccountLe__route__5D80D6A1" FromRole="Route" ToRole="AccountLedger" />
           <NavigationProperty Name="Area" Relationship="IMEModel.FK__Route__areaId__6FD49106" FromRole="Route" ToRole="Area" />
         </EntityType>
         <EntityType Name="RSPro">
@@ -4476,7 +4924,6 @@
           <Property Name="StockID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ItemCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Quantitiy" Type="Int32" />
-          <Property Name="date" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="SuperDisk">
           <Key>
@@ -4782,9 +5229,10 @@
           <Property Name="heading3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="heading4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="AdvancePayments" Relationship="IMEModel.FK__AdvancePa__vouch__5026DB83" FromRole="VoucherType" ToRole="AdvancePayment" />
-          <NavigationProperty Name="LedgerPostings" Relationship="IMEModel.FK__LedgerPos__vouch__5AA469F6" FromRole="VoucherType" ToRole="LedgerPosting" />
-          <NavigationProperty Name="PartyBalances" Relationship="IMEModel.FK__PartyBala__again__54EB90A0" FromRole="VoucherType" ToRole="PartyBalance" />
-          <NavigationProperty Name="PartyBalances1" Relationship="IMEModel.FK__PartyBala__vouch__53F76C67" FromRole="VoucherType" ToRole="PartyBalance" />
+          <NavigationProperty Name="JournalMasters" Relationship="IMEModel.FK__JournalMa__vouch__7EE1CA6C" FromRole="VoucherType" ToRole="JournalMaster" />
+          <NavigationProperty Name="LedgerPostings" Relationship="IMEModel.FK__LedgerPos__vouch__5F691F13" FromRole="VoucherType" ToRole="LedgerPosting" />
+          <NavigationProperty Name="PartyBalances" Relationship="IMEModel.FK__PartyBala__again__59B045BD" FromRole="VoucherType" ToRole="PartyBalance" />
+          <NavigationProperty Name="PartyBalances1" Relationship="IMEModel.FK__PartyBala__vouch__58BC2184" FromRole="VoucherType" ToRole="PartyBalance" />
           <NavigationProperty Name="PaymentMasters" Relationship="IMEModel.FK__PaymentMa__vouch__4885B9BB" FromRole="VoucherType" ToRole="PaymentMaster" />
           <NavigationProperty Name="VoucherTypeTaxes" Relationship="IMEModel.FK__VoucherTy__vouch__69279377" FromRole="VoucherType" ToRole="VoucherTypeTax" />
         </EntityType>
@@ -4816,11 +5264,13 @@
           <Property Name="desinationID" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="AdvancePayments" Relationship="IMEModel.FK__AdvancePa__emplo__4D4A6ED8" FromRole="Worker" ToRole="AdvancePayment" />
           <NavigationProperty Name="BonusDeductions" Relationship="IMEModel.FK__BonusDedu__Worke__40E497F3" FromRole="Worker" ToRole="BonusDeduction" />
+          <NavigationProperty Name="CreditNoteMasters" Relationship="IMEModel.FK__CreditNot__userI__01BE3717" FromRole="Worker" ToRole="CreditNoteMaster" />
           <NavigationProperty Name="Customers" Relationship="IMEModel.FK__Customer__accoun__6EF57B66" FromRole="Worker" ToRole="Customer" />
           <NavigationProperty Name="Customers1" Relationship="IMEModel.FK__Customer__repres__3F466844" FromRole="Worker" ToRole="Customer" />
           <NavigationProperty Name="Customers2" Relationship="IMEModel.FK__Customer__repres__6E01572D" FromRole="Worker" ToRole="Customer" />
           <NavigationProperty Name="Designation" Relationship="IMEModel.FK__Worker__desinati__3E082B48" FromRole="Worker" ToRole="Designation" />
           <NavigationProperty Name="DiscountValues" Relationship="IMEModel.FK__DiscountV__Repre__6F4A8121" FromRole="Worker" ToRole="DiscountValue" />
+          <NavigationProperty Name="JournalMasters" Relationship="IMEModel.FK__JournalMa__userI__7DEDA633" FromRole="Worker" ToRole="JournalMaster" />
           <NavigationProperty Name="Note" Relationship="IMEModel.FK__Worker__WorkerNo__4BAC3F29" FromRole="Worker" ToRole="Note" />
           <NavigationProperty Name="PaymentMasters" Relationship="IMEModel.FK__PaymentMa__userI__4A6E022D" FromRole="Worker" ToRole="PaymentMaster" />
           <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SaleOrder__Repre__22951AFD" FromRole="Worker" ToRole="SaleOrder" />
@@ -4828,7 +5278,7 @@
           <NavigationProperty Name="Suppliers1" Relationship="IMEModel.FK__Supplier__repres__65370702" FromRole="Worker" ToRole="Supplier" />
           <NavigationProperty Name="AuthorizationValues" Relationship="IMEModel.UserAuthorization" FromRole="Worker" ToRole="AuthorizationValue" />
         </EntityType>
-        <Association Name="FK__AccountLe__accou__59B045BD">
+        <Association Name="FK__AccountLe__accou__5E74FADA">
           <End Type="IMEModel.AccountGroup" Role="AccountGroup" Multiplicity="0..1" />
           <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="*" />
           <ReferentialConstraint>
@@ -4840,7 +5290,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AccountLe__areaI__57C7FD4B">
+        <Association Name="FK__AccountLe__areaI__5C8CB268">
           <End Type="IMEModel.Area" Role="Area" Multiplicity="0..1" />
           <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="*" />
           <ReferentialConstraint>
@@ -4852,7 +5302,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__AccountLe__route__58BC2184">
+        <Association Name="FK__AccountLe__route__5D80D6A1">
           <End Type="IMEModel.Route" Role="Route" Multiplicity="0..1" />
           <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="*" />
           <ReferentialConstraint>
@@ -4876,7 +5326,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LedgerPos__ledge__5B988E2F">
+        <Association Name="FK__LedgerPos__ledge__605D434C">
           <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="0..1" />
           <End Type="IMEModel.LedgerPosting" Role="LedgerPosting" Multiplicity="*" />
           <ReferentialConstraint>
@@ -4888,7 +5338,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PartyBala__ledge__5303482E">
+        <Association Name="FK__PartyBala__ledge__57C7FD4B">
           <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="0..1" />
           <End Type="IMEModel.PartyBalance" Role="PartyBalance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5053,6 +5503,30 @@
             </Principal>
             <Dependent Role="SupplierAdress">
               <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CreditNot__finan__02B25B50">
+          <End Type="IMEModel.FinancialYear" Role="FinancialYear" Multiplicity="0..1" />
+          <End Type="IMEModel.CreditNoteMaster" Role="CreditNoteMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinancialYear">
+              <PropertyRef Name="financialYearId" />
+            </Principal>
+            <Dependent Role="CreditNoteMaster">
+              <PropertyRef Name="financialYearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CreditNot__userI__01BE3717">
+          <End Type="IMEModel.Worker" Role="Worker" Multiplicity="0..1" />
+          <End Type="IMEModel.CreditNoteMaster" Role="CreditNoteMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerID" />
+            </Principal>
+            <Dependent Role="CreditNoteMaster">
+              <PropertyRef Name="userId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -5452,7 +5926,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PartyBala__excha__55DFB4D9">
+        <Association Name="FK__PartyBala__excha__5AA469F6">
           <End Type="IMEModel.ExchangeRate" Role="ExchangeRate" Multiplicity="0..1" />
           <End Type="IMEModel.PartyBalance" Role="PartyBalance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5464,7 +5938,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LedgerPos__yearI__5C8CB268">
+        <Association Name="FK__LedgerPos__yearI__61516785">
           <End Type="IMEModel.FinancialYear" Role="FinancialYear" Multiplicity="0..1" />
           <End Type="IMEModel.LedgerPosting" Role="LedgerPosting" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5488,7 +5962,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PartyBala__finan__56D3D912">
+        <Association Name="FK__PartyBala__finan__5B988E2F">
           <End Type="IMEModel.FinancialYear" Role="FinancialYear" Multiplicity="0..1" />
           <End Type="IMEModel.PartyBalance" Role="PartyBalance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5524,6 +5998,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__JournalMa__userI__7DEDA633">
+          <End Type="IMEModel.Worker" Role="Worker" Multiplicity="0..1" />
+          <End Type="IMEModel.JournalMaster" Role="JournalMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerID" />
+            </Principal>
+            <Dependent Role="JournalMaster">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__JournalMa__vouch__7EE1CA6C">
+          <End Type="IMEModel.VoucherType" Role="VoucherType" Multiplicity="0..1" />
+          <End Type="IMEModel.JournalMaster" Role="JournalMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="JournalMaster">
+              <PropertyRef Name="voucherTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__SupplierW__langu__72910220">
           <End Type="IMEModel.Language" Role="Language" Multiplicity="0..1" />
           <End Type="IMEModel.SupplierWorker" Role="SupplierWorker" Multiplicity="*" />
@@ -5536,7 +6034,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LedgerPos__vouch__5AA469F6">
+        <Association Name="FK__LedgerPos__vouch__5F691F13">
           <End Type="IMEModel.VoucherType" Role="VoucherType" Multiplicity="0..1" />
           <End Type="IMEModel.LedgerPosting" Role="LedgerPosting" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5608,7 +6106,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PartyBala__again__54EB90A0">
+        <Association Name="FK__PartyBala__again__59B045BD">
           <End Type="IMEModel.VoucherType" Role="VoucherType" Multiplicity="0..1" />
           <End Type="IMEModel.PartyBalance" Role="PartyBalance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5620,7 +6118,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PartyBala__vouch__53F76C67">
+        <Association Name="FK__PartyBala__vouch__58BC2184">
           <End Type="IMEModel.VoucherType" Role="VoucherType" Multiplicity="0..1" />
           <End Type="IMEModel.PartyBalance" Role="PartyBalance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6084,6 +6582,27 @@
           <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="IMEModel.Store.sp_helpdiagrams" />
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="IMEModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="IMEModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="PaymentMasters">
+            <EntityTypeMapping TypeName="IMEModel.PaymentMaster">
+              <MappingFragment StoreEntitySet="PaymentMaster">
+                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="paymentMasterId" ColumnName="paymentMasterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ExtendedRangeADD" FunctionName="IMEModel.Store.ExtendedRangeADD" />
+          <FunctionImportMapping FunctionImportName="SlidingPriceAdd" FunctionName="IMEModel.Store.SlidingPriceAdd" />
+          <FunctionImportMapping FunctionImportName="SuperDiskAdd" FunctionName="IMEModel.Store.SuperDiskAdd" />
+          <FunctionImportMapping FunctionImportName="SuperDiskPAdd" FunctionName="IMEModel.Store.SuperDiskPAdd" />
           <EntitySetMapping Name="AccountGroups">
             <EntityTypeMapping TypeName="IMEModel.AccountGroup">
               <MappingFragment StoreEntitySet="AccountGroup">
@@ -6213,6 +6732,21 @@
               <MappingFragment StoreEntitySet="Country">
                 <ScalarProperty Name="Country_name" ColumnName="Country_name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CreditNoteMasters">
+            <EntityTypeMapping TypeName="IMEModel.CreditNoteMaster">
+              <MappingFragment StoreEntitySet="CreditNoteMaster">
+                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="creditNoteMasterId" ColumnName="creditNoteMasterId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -6459,6 +6993,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="JournalMasters">
+            <EntityTypeMapping TypeName="IMEModel.JournalMaster">
+              <MappingFragment StoreEntitySet="JournalMaster">
+                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="journalMasterId" ColumnName="journalMasterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Languages">
             <EntityTypeMapping TypeName="IMEModel.Language">
               <MappingFragment StoreEntitySet="Languages">
@@ -6596,23 +7146,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PaymentMasters">
-            <EntityTypeMapping TypeName="IMEModel.PaymentMaster">
-              <MappingFragment StoreEntitySet="PaymentMaster">
-                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
-                <ScalarProperty Name="narration" ColumnName="narration" />
-                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
-                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
-                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
-                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
-                <ScalarProperty Name="paymentMasterId" ColumnName="paymentMasterId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PaymentMethods">
             <EntityTypeMapping TypeName="IMEModel.PaymentMethod">
               <MappingFragment StoreEntitySet="PaymentMethod">
@@ -6725,6 +7258,7 @@
           <EntitySetMapping Name="PurchaseOrderDetails">
             <EntityTypeMapping TypeName="IMEModel.PurchaseOrderDetail">
               <MappingFragment StoreEntitySet="PurchaseOrderDetail">
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
                 <ScalarProperty Name="FicheNo" ColumnName="FicheNo" />
                 <ScalarProperty Name="Unit" ColumnName="Unit" />
                 <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
@@ -6967,7 +7501,6 @@
           <EntitySetMapping Name="Stocks">
             <EntityTypeMapping TypeName="IMEModel.Stock">
               <MappingFragment StoreEntitySet="Stock">
-                <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="Quantitiy" ColumnName="Quantitiy" />
                 <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
                 <ScalarProperty Name="StockID" ColumnName="StockID" />

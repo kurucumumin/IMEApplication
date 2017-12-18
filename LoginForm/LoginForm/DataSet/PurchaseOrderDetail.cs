@@ -27,6 +27,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> UnitPrice { get; set; }
         public string Unit { get; set; }
         public Nullable<int> FicheNo { get; set; }
+        public Nullable<int> AccountNumber { get; set; }
     
         public virtual PurchaseOrder PurchaseOrder { get; set; }
         public virtual SaleOrder SaleOrder { get; set; }
