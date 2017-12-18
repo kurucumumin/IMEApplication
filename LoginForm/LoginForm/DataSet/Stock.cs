@@ -17,6 +17,5 @@ namespace LoginForm.DataSet
         public int StockID { get; set; }
         public string ItemCode { get; set; }
         public Nullable<int> Quantitiy { get; set; }
-        public Nullable<System.DateTime> date { get; set; }
     }
 }

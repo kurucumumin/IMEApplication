@@ -9,7 +9,6 @@ namespace LoginForm.Account.Services
 {
     class AccountLedgerSP
     {
-
         public bool AccountLedgerCheckExistence(string LedgerName, decimal ledgerID)
         {
             IMEEntities db = new IMEEntities();
@@ -290,6 +289,100 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
             return strNature;
+        }
+        public DataTable AccountLedgerViewAll()
+        {
+            IMEEntities db = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = (from al in db.AccountLedgers
+                               select new
+                               {
+                                   al.ledgerId,
+                                   al.accountGroupID,
+                                   al.ledgerName,
+                                   al.openingBalance,
+                                   al.crOrDr,
+                                   al.narration,
+                                   al.mailingName,
+                                   al.address,
+                                   al.phone,
+                                   al.email,
+                                   al.creditPeriod,
+                                   al.creditLimit,
+                                   al.pricinglevelId,
+                                   al.billByBill,
+                                   al.tin,
+                                   al.cst,
+                                   al.pan,
+                                   al.routeId,
+                                   al.bankAccountNumber,
+                                   al.branchName,
+                                   al.branchCode,
+                                   al.extraDate
+                               }).ToList();
+
+                dtbl.Columns.Add("ledgerId");
+                dtbl.Columns.Add("accountGroupID");
+                dtbl.Columns.Add("ledgerName");
+                dtbl.Columns.Add("openingBalance");
+                dtbl.Columns.Add("crOrDr");
+                dtbl.Columns.Add("narration");
+                dtbl.Columns.Add("mailingName");
+                dtbl.Columns.Add("address");
+                dtbl.Columns.Add("phone");
+                dtbl.Columns.Add("email");
+                dtbl.Columns.Add("creditPeriod");
+                dtbl.Columns.Add("creditLimit");
+                dtbl.Columns.Add("pricinglevelId");
+                dtbl.Columns.Add("billByBill");
+                dtbl.Columns.Add("tin");
+                dtbl.Columns.Add("cst");
+                dtbl.Columns.Add("pan");
+                dtbl.Columns.Add("routeId");
+                dtbl.Columns.Add("bankAccountNumber");
+                dtbl.Columns.Add("branchName");
+                dtbl.Columns.Add("branchCode");
+                dtbl.Columns.Add("extraDate");
+
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["ledgerName"] = item.ledgerName;
+                    row["ledgerId"] = item.ledgerId;
+                    row["accountGroupID"] = item.accountGroupID;
+                    row["ledgerName"] = item.ledgerName;
+                    row["openingBalance"] = item.openingBalance;
+                    row["crOrDr"] = item.crOrDr;
+                    row["narration"] = item.narration;
+                    row["mailingName"] = item.mailingName;
+                    row["address"] = item.address;
+                    row["phone"] = item.phone;
+                    row["email"] = item.email;
+                    row["creditPeriod"] = item.creditPeriod;
+                    row["creditLimit"] = item.creditLimit;
+                    row["pricinglevelId"] = item.pricinglevelId;
+                    row["billByBill"] = item.billByBill;
+                    row["tin"] = item.tin;
+                    row["cst"] = item.cst;
+                    row["pan"] = item.pan;
+                    row["routeId"] = item.routeId;
+                    row["bankAccountNumber"] = item.bankAccountNumber;
+                    row["branchName"] = item.branchName;
+                    row["branchCode"] = item.branchCode;
+                    row["extraDate"] = item.extraDate;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
         }
 
     }
