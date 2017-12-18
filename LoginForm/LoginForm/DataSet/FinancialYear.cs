@@ -19,6 +19,8 @@ namespace LoginForm.DataSet
         {
             this.AdvancePayments = new HashSet<AdvancePayment>();
             this.CreditNoteMasters = new HashSet<CreditNoteMaster>();
+            this.DeliveryNoteMasters = new HashSet<DeliveryNoteMaster>();
+            this.JournalMasters = new HashSet<JournalMaster>();
             this.LedgerPostings = new HashSet<LedgerPosting>();
             this.Managements = new HashSet<Management>();
             this.PartyBalances = new HashSet<PartyBalance>();
@@ -34,6 +36,10 @@ namespace LoginForm.DataSet
         public virtual ICollection<AdvancePayment> AdvancePayments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CreditNoteMaster> CreditNoteMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DeliveryNoteMaster> DeliveryNoteMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<JournalMaster> JournalMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LedgerPosting> LedgerPostings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

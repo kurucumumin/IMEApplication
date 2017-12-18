@@ -47,6 +47,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<CustomerTitle> CustomerTitles { get; set; }
         public virtual DbSet<CustomerWorker> CustomerWorkers { get; set; }
         public virtual DbSet<DailyDiscontinued> DailyDiscontinueds { get; set; }
+        public virtual DbSet<DeliveryNoteMaster> DeliveryNoteMasters { get; set; }
         public virtual DbSet<Designation> Designations { get; set; }
         public virtual DbSet<DiscountValue> DiscountValues { get; set; }
         public virtual DbSet<DualUse> DualUses { get; set; }
@@ -55,6 +56,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<FinancialYear> FinancialYears { get; set; }
         public virtual DbSet<Hazardou> Hazardous { get; set; }
         public virtual DbSet<ItemNote> ItemNotes { get; set; }
+        public virtual DbSet<JournalDetail> JournalDetails { get; set; }
         public virtual DbSet<JournalMaster> JournalMasters { get; set; }
         public virtual DbSet<Language> Languages { get; set; }
         public virtual DbSet<LedgerPosting> LedgerPostings { get; set; }
@@ -87,6 +89,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<Setting> Settings { get; set; }
         public virtual DbSet<SlidingPrice> SlidingPrices { get; set; }
         public virtual DbSet<Stock> Stocks { get; set; }
+        public virtual DbSet<SuffixPrefix> SuffixPrefixes { get; set; }
         public virtual DbSet<SuperDisk> SuperDisks { get; set; }
         public virtual DbSet<SuperDiskP> SuperDiskPs { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }

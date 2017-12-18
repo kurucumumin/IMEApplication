@@ -18,6 +18,7 @@ namespace LoginForm.DataSet
         public AccountLedger()
         {
             this.AdvancePayments = new HashSet<AdvancePayment>();
+            this.DeliveryNoteMasters = new HashSet<DeliveryNoteMaster>();
             this.LedgerPostings = new HashSet<LedgerPosting>();
             this.PartyBalances = new HashSet<PartyBalance>();
             this.PaymentMasters = new HashSet<PaymentMaster>();
@@ -54,6 +55,8 @@ namespace LoginForm.DataSet
         public virtual Route Route { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AdvancePayment> AdvancePayments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DeliveryNoteMaster> DeliveryNoteMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LedgerPosting> LedgerPostings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -12,27 +12,30 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class ExchangeRate
+    public partial class SuffixPrefix
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ExchangeRate()
+        public SuffixPrefix()
         {
             this.DeliveryNoteMasters = new HashSet<DeliveryNoteMaster>();
-            this.JournalDetails = new HashSet<JournalDetail>();
-            this.PartyBalances = new HashSet<PartyBalance>();
+            this.JournalMasters = new HashSet<JournalMaster>();
         }
     
-        public int exchangeRateID { get; set; }
-        public Nullable<decimal> currencyId { get; set; }
-        public Nullable<System.DateTime> date { get; set; }
-        public Nullable<decimal> rate { get; set; }
+        public decimal suffixprefixId { get; set; }
+        public Nullable<decimal> voucherTypeId { get; set; }
+        public Nullable<System.DateTime> fromDate { get; set; }
+        public Nullable<System.DateTime> toDate { get; set; }
+        public Nullable<decimal> startIndex { get; set; }
+        public string prefix { get; set; }
+        public string suffix { get; set; }
+        public Nullable<int> widthOfNumericalPart { get; set; }
+        public Nullable<bool> prefillWithZero { get; set; }
+        public string narration { get; set; }
     
-        public virtual Currency Currency { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DeliveryNoteMaster> DeliveryNoteMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<JournalDetail> JournalDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PartyBalance> PartyBalances { get; set; }
+        public virtual ICollection<JournalMaster> JournalMasters { get; set; }
+        public virtual VoucherType VoucherType { get; set; }
     }
 }

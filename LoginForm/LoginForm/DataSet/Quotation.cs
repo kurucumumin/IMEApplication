@@ -17,6 +17,7 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Quotation()
         {
+            this.DeliveryNoteMasters = new HashSet<DeliveryNoteMaster>();
             this.QuotationDetails = new HashSet<QuotationDetail>();
         }
     
@@ -45,6 +46,8 @@ namespace LoginForm.DataSet
         public Nullable<int> QuotationMainContact { get; set; }
     
         public virtual Customer Customer { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DeliveryNoteMaster> DeliveryNoteMasters { get; set; }
         public virtual Note Note { get; set; }
         public virtual Note Note1 { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
