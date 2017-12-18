@@ -18,6 +18,7 @@ namespace LoginForm.DataSet
         public FinancialYear()
         {
             this.AdvancePayments = new HashSet<AdvancePayment>();
+            this.CreditNoteMasters = new HashSet<CreditNoteMaster>();
             this.LedgerPostings = new HashSet<LedgerPosting>();
             this.Managements = new HashSet<Management>();
             this.PartyBalances = new HashSet<PartyBalance>();
@@ -31,6 +32,8 @@ namespace LoginForm.DataSet
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AdvancePayment> AdvancePayments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CreditNoteMaster> CreditNoteMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LedgerPosting> LedgerPostings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -19,10 +19,12 @@ namespace LoginForm.DataSet
         {
             this.AdvancePayments = new HashSet<AdvancePayment>();
             this.BonusDeductions = new HashSet<BonusDeduction>();
+            this.CreditNoteMasters = new HashSet<CreditNoteMaster>();
             this.Customers = new HashSet<Customer>();
             this.Customers1 = new HashSet<Customer>();
             this.Customers2 = new HashSet<Customer>();
             this.DiscountValues = new HashSet<DiscountValue>();
+            this.JournalMasters = new HashSet<JournalMaster>();
             this.PaymentMasters = new HashSet<PaymentMaster>();
             this.SaleOrders = new HashSet<SaleOrder>();
             this.Suppliers = new HashSet<Supplier>();
@@ -48,6 +50,8 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BonusDeduction> BonusDeductions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CreditNoteMaster> CreditNoteMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers1 { get; set; }
@@ -56,6 +60,8 @@ namespace LoginForm.DataSet
         public virtual Designation Designation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DiscountValue> DiscountValues { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<JournalMaster> JournalMasters { get; set; }
         public virtual Note Note { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PaymentMaster> PaymentMasters { get; set; }
