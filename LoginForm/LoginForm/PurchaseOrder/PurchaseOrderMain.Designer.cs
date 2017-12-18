@@ -41,16 +41,16 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.dgPurchase = new System.Windows.Forms.DataGridView();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnExcel = new System.Windows.Forms.Button();
-            this.btnCreate = new System.Windows.Forms.Button();
-            this.btnPrint = new System.Windows.Forms.Button();
             this.FicheNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PurchaseOrderDate = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.CustomerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.c_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CameDate = new DevComponents.DotNetBar.Controls.DataGridViewDateTimeInputColumn();
             this.Reason = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnExcel = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPurchase)).BeginInit();
@@ -195,45 +195,7 @@
             this.dgPurchase.Name = "dgPurchase";
             this.dgPurchase.Size = new System.Drawing.Size(1365, 434);
             this.dgPurchase.TabIndex = 9;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(1280, 598);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(97, 42);
-            this.btnClose.TabIndex = 12;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnExcel
-            // 
-            this.btnExcel.Location = new System.Drawing.Point(902, 598);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(166, 42);
-            this.btnExcel.TabIndex = 11;
-            this.btnExcel.Text = "Export to Excel";
-            this.btnExcel.UseVisualStyleBackColor = true;
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
-            // 
-            // btnCreate
-            // 
-            this.btnCreate.Location = new System.Drawing.Point(1074, 598);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(97, 42);
-            this.btnCreate.TabIndex = 10;
-            this.btnCreate.Text = "Create Purchase Orders";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Location = new System.Drawing.Point(1177, 598);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(97, 42);
-            this.btnPrint.TabIndex = 13;
-            this.btnPrint.Text = "Send To Print";
-            this.btnPrint.UseVisualStyleBackColor = true;
+            this.dgPurchase.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgPurchase_DataError);
             // 
             // FicheNo
             // 
@@ -241,7 +203,7 @@
             this.FicheNo.HeaderText = "Fiche No";
             this.FicheNo.Name = "FicheNo";
             this.FicheNo.ReadOnly = true;
-            this.FicheNo.Width = 75;
+            this.FicheNo.Width = 69;
             // 
             // PurchaseOrderDate
             // 
@@ -283,7 +245,7 @@
             this.CustomerID.HeaderText = "Customer ID";
             this.CustomerID.Name = "CustomerID";
             this.CustomerID.ReadOnly = true;
-            this.CustomerID.Width = 90;
+            this.CustomerID.Width = 83;
             // 
             // c_name
             // 
@@ -332,6 +294,45 @@
             this.Reason.HeaderText = "Reason";
             this.Reason.Name = "Reason";
             this.Reason.Width = 69;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(1280, 598);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(97, 42);
+            this.btnClose.TabIndex = 12;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnExcel
+            // 
+            this.btnExcel.Location = new System.Drawing.Point(902, 598);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(166, 42);
+            this.btnExcel.TabIndex = 11;
+            this.btnExcel.Text = "Export to Excel";
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
+            // btnCreate
+            // 
+            this.btnCreate.Location = new System.Drawing.Point(1074, 598);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(97, 42);
+            this.btnCreate.TabIndex = 10;
+            this.btnCreate.Text = "Create Purchase Orders";
+            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(1177, 598);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(97, 42);
+            this.btnPrint.TabIndex = 13;
+            this.btnPrint.Text = "Send To Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
             // 
             // PurchaseOrderMain
             // 

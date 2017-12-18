@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.txtOrderNumber = new System.Windows.Forms.TextBox();
             this.dgPurchase = new System.Windows.Forms.DataGridView();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnExcel = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
+            this.customerAddressBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.SLC = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.c_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QuotationNos = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +52,7 @@
             this.UPIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgPurchase)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerAddressBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -93,6 +96,7 @@
             this.dgPurchase.Name = "dgPurchase";
             this.dgPurchase.Size = new System.Drawing.Size(1320, 556);
             this.dgPurchase.TabIndex = 10;
+            this.dgPurchase.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgPurchase_DataError);
             // 
             // btnClose
             // 
@@ -123,6 +127,10 @@
             this.btnCreate.Text = "Create an Order That is Chosen";
             this.btnCreate.UseVisualStyleBackColor = true;
             this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            // 
+            // customerAddressBindingSource
+            // 
+            this.customerAddressBindingSource.DataSource = typeof(LoginForm.DataSet.CustomerAddress);
             // 
             // SLC
             // 
@@ -186,12 +194,18 @@
             // AddressType
             // 
             this.AddressType.HeaderText = "Bill To";
+            this.AddressType.Items.AddRange(new object[] {
+            "IME GENERAL COMPONENTS",
+            "3RD PARTY"});
             this.AddressType.Name = "AddressType";
             this.AddressType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // AdressTitle
             // 
             this.AdressTitle.HeaderText = "Ship To";
+            this.AdressTitle.Items.AddRange(new object[] {
+            "IME GENERAL COMPONENTS",
+            "3RD PARTY"});
             this.AdressTitle.Name = "AdressTitle";
             // 
             // UPIME
@@ -221,6 +235,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.NewPurchaseOrder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgPurchase)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customerAddressBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -255,5 +270,6 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn AdressTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn UPIME;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.BindingSource customerAddressBindingSource;
     }
 }

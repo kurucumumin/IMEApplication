@@ -229,5 +229,18 @@ namespace LoginForm.PurchaseOrder
             string PurchaseNo = dgPurchase.CurrentRow.Cells[0].Value.ToString();
             ExcelPurchaseOrder.Export(dgPurchase, PurchaseNo);
         }
+
+        private void dgPurchase_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            if (e.Exception.Message=="DataGridViewComboBox value is not valid.")
+            {
+                object value = dgPurchase.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                if (!((DataGridViewComboBoxColumn)dgPurchase.Columns[e.ColumnIndex]).Items.Contains(value))
+                {
+                    ((DataGridViewComboBoxColumn)dgPurchase.Columns[e.ColumnIndex]).Items.Add(value);
+                    e.ThrowException = false;
+                }
+            }
+        }
     }
 }

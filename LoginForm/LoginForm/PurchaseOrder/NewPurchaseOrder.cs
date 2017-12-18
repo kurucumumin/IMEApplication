@@ -18,10 +18,7 @@ namespace LoginForm.PurchaseOrder
     {
         IMEEntities IME = new IMEEntities();
         List<SaleOrderDetail> saleItemList = new List<SaleOrderDetail>();
-        SqlDataAdapter da;
-        System.Data.DataSet ds = new System.Data.DataSet();
         int purchasecode;
-        int fiche;
 
         public NewPurchaseOrder()
         {
@@ -56,6 +53,37 @@ namespace LoginForm.PurchaseOrder
             }
 
             #region Save
+
+            for (int i = 0; i < dgPurchase.RowCount - 1; i++)
+            {
+                DataGridViewRow row = dgPurchase.Rows[i];
+                string ID = row.Cells[SaleOrderNo.Index].Value.ToString();
+                if (row.Cells[SaleOrderNo.Index].Value != null)
+                {
+                    var item = IME.PurchaseOrderDetails.Where(a => a.SaleOrderNo == ID).FirstOrDefault();
+
+                    item.PurchaseOrder.Customer.c_name = row.Cells[c_name.Index].Value.ToString();
+                    item.QuotationNo=row.Cells[QuotationNos.Index].Value.ToString();
+                    item.SaleOrderNo=row.Cells[SaleOrderNo.Index].Value.ToString();
+                    item.ItemCode=row.Cells[ItemCode.Index].Value.ToString();
+                    try{item.ItemDescription = row.Cells[ItemDescription.Index].Value.ToString();}catch (Exception){throw;}
+                    item.UnitPrice=(decimal)row.Cells[UnitOfMeasure.Index].Value;
+                    item.SendQty=(int)row.Cells[Quantity.Index].Value;
+                    item.Hazardous=(bool)row.Cells[Hazardous.Index].Value;
+                    item.Calibration=(bool)row.Cells[Calibration.Index].Value;
+                    item.SaleOrderNature=row.Cells[SaleOrderNature.Index].Value.ToString();
+                    if ((row.Cells[AddressType.Index].Value.ToString() == "IME GENERAL COMPONENTS") && (row.Cells[AdressTitle.Index].Value.ToString() == "IME GENERAL COMPONENTS"))
+                    {
+                        item.AccountNumber = 8828170;
+                    }
+                    if ((row.Cells[AddressType.Index].Value.ToString() == "3RD PARTY") && (row.Cells[AdressTitle.Index].Value.ToString() == "3RD PARTY"))
+                    {
+                        item.AccountNumber = 8894479;
+                    }
+                    item.Unit=row.Cells[UPIME.Index].Value.ToString();
+                }
+            }
+            IME.SaveChanges();
             #endregion
 
 
@@ -102,6 +130,8 @@ namespace LoginForm.PurchaseOrder
 
             #region Purchase Orders Detail Fill
             var adapter = (from p in IME.SaleOrderDetails.Where(p => p.SaleOrderNo == code)
+                           join s in IME.SaleOrders on p.SaleOrderNo equals s.SaleOrderNo
+                           join po in IME.PurchaseOrderDetails on s.SaleOrderNo equals po.SaleOrderNo
                            select new
                            {
                                p.SaleOrder.Customer.c_name,
@@ -114,8 +144,7 @@ namespace LoginForm.PurchaseOrder
                                p.Hazardous,
                                p.Calibration,
                                p.SaleOrder.SaleOrderNature,
-                               p.SaleOrder.DeliveryAddressID,
-                               p.SaleOrder.InvoiceAddressID,
+                               po.AccountNumber,
                                p.ItemCost
                            }).ToList();
 
@@ -123,14 +152,6 @@ namespace LoginForm.PurchaseOrder
             {
                 int rowIndex = dgPurchase.Rows.Add();
                 DataGridViewRow row = dgPurchase.Rows[rowIndex];
-
-                //var addList = IME.PurchaseOrders.Where(p => p.FicheNo == purchasecode - 1).FirstOrDefault().Customer.CustomerAddresses;
-
-                //var cbCellBill = row.Cells[AddressType.Index].Value as DataGridViewComboBoxCell;
-                //cbCellBill.DataSource = addList.ToList();
-
-                //var cbCellShip = row.Cells[AdressTitle.Index].Value as DataGridViewComboBoxCell;
-                //cbCellShip.DataSource = addList.ToList();
 
                 row.Cells[c_name.Index].Value = item.c_name;
                 row.Cells[QuotationNos.Index].Value = item.QuotationNos;
@@ -142,10 +163,18 @@ namespace LoginForm.PurchaseOrder
                 row.Cells[Hazardous.Index].Value = item.Hazardous;
                 row.Cells[Calibration.Index].Value = item.Calibration;
                 row.Cells[SaleOrderNature.Index].Value = item.SaleOrderNature;
-                row.Cells[AddressType.Index].Value = item.DeliveryAddressID;
-                row.Cells[AdressTitle.Index].Value = item.InvoiceAddressID;
+                if (item.AccountNumber== 8828170)
+                {
+                    row.Cells[AddressType.Index].Value = "IME GENERAL COMPONENTS";
+                    row.Cells[AdressTitle.Index].Value = "IME GENERAL COMPONENTS";
+                }
+                if (item.AccountNumber == 8894479)
+                {
+                    row.Cells[AddressType.Index].Value = "3RD PARTY";
+                    row.Cells[AdressTitle.Index].Value = "3RD PARTY";
+                }
                 row.Cells[UPIME.Index].Value = item.ItemCost;
-                //  row.Cells[Total.Index].Value = Decimal.Parse(row.Cells[Quantity.Index].Value.ToString()) * Decimal.Parse(row.Cells[UPIME.Index].Value.ToString());
+                row.Cells[Total.Index].Value = Decimal.Parse(row.Cells[Quantity.Index].Value.ToString()) * Decimal.Parse(row.Cells[UPIME.Index].Value.ToString());
             }
             #endregion
 
@@ -168,8 +197,7 @@ namespace LoginForm.PurchaseOrder
                                p.Hazardous,
                                p.Calibration,
                                p.SaleOrderNature,
-                               p.SaleOrder.Customer.CurrNameQuo,
-                               p.SaleOrder.Customer.CurrNameInv,
+                               p.AccountNumber,
                                p.Unit
                            }).ToList();
 
@@ -203,10 +231,19 @@ namespace LoginForm.PurchaseOrder
                 row.Cells[Hazardous.Index].Value = item.Hazardous;
                 row.Cells[Calibration.Index].Value = item.Calibration;
                 row.Cells[SaleOrderNature.Index].Value = item.SaleOrderNature;
-                row.Cells[AddressType.Index].Value = item.CurrNameQuo;
-                row.Cells[AdressTitle.Index].Value = item.CurrNameInv;
+                if (item.AccountNumber == 8828170)
+                {
+                    row.Cells[AddressType.Index].Value = "IME GENERAL COMPONENTS";
+                    row.Cells[AdressTitle.Index].Value = "IME GENERAL COMPONENTS";
+                }
+                if (item.AccountNumber == 8894479)
+                {
+                    row.Cells[AddressType.Index].Value = "3RD PARTY";
+                    row.Cells[AdressTitle.Index].Value = "3RD PARTY";
+                }
                 row.Cells[UPIME.Index].Value = item.Unit;
-                // row.Cells[Total.Index].Value = Decimal.Parse(row.Cells[Quantity.Index].Value.ToString()) * Decimal.Parse(row.Cells[UPIME.Index].Value.ToString());
+                Decimal sonuc = Decimal.Parse(row.Cells[Quantity.Index].Value.ToString()) * Decimal.Parse(row.Cells[UPIME.Index].Value.ToString());
+                row.Cells[Total.Index].Value = sonuc.ToString();
             }
             #endregion
 
@@ -232,6 +269,19 @@ namespace LoginForm.PurchaseOrder
             }
 
             dgPurchase.DataSource = purchaseList;
+        }
+
+        private void dgPurchase_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            if (e.Exception.Message == "DataGridViewComboBox value is not valid.")
+            {
+                object value = dgPurchase.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                if (!((DataGridViewComboBoxColumn)dgPurchase.Columns[e.ColumnIndex]).Items.Contains(value))
+                {
+                    ((DataGridViewComboBoxColumn)dgPurchase.Columns[e.ColumnIndex]).Items.Add(value);
+                    e.ThrowException = false;
+                }
+            }
         }
     }
 }
