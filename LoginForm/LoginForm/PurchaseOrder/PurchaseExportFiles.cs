@@ -26,7 +26,8 @@ namespace LoginForm.PurchaseOrder
         MailMessage mail = new MailMessage();
         List<string> ccList = new List<string>();
         List<string> toList = new List<string>();
-
+        string AccountNumber;
+        string filename;
         public PurchaseExportFiles()
         {
             InitializeComponent();
@@ -91,7 +92,9 @@ namespace LoginForm.PurchaseOrder
             {
                 txtMail.Text = txtMail.Text + txt[i] + "\r\n";
             }
-            txtCreate.newTxt(txt);
+            filename = txtCreate.newTxt(txt, AccountNumber);
+            groupBox2.Text = filename;
+            lblPicture.Text = filename;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -106,6 +109,7 @@ namespace LoginForm.PurchaseOrder
 
         private void btnCreatePurchase_Click(object sender, EventArgs e)
         {
+
             #region SAVE
             DataSet.PurchaseOrder po = new DataSet.PurchaseOrder();
             string s = rowList[0].Cells[3].Value.ToString();
@@ -130,13 +134,23 @@ namespace LoginForm.PurchaseOrder
                 pod.SaleOrderNo = row.Cells[3].Value.ToString();
                 pod.ItemCode = row.Cells[4].Value.ToString();
                 pod.ItemDescription = row.Cells[5].Value.ToString();
-                pod.Unit = row.Cells[6].Value.ToString();
+                //if (row.Cells[5].Value.ToString() == null || row.Cells[5].Value.ToString() =="") pod.ItemDescription = null;
+                //else pod.ItemDescription = row.Cells[5].Value.ToString();
+                pod.UnitPrice = (decimal)row.Cells[6].Value;
                 pod.SendQty = (int)row.Cells[7].Value;
                 pod.Hazardous = (bool)row.Cells[8].Value;
                 pod.Calibration = (bool)row.Cells[9].Value;
                 pod.SaleOrderNature = row.Cells[10].Value.ToString();
+                if ((row.Cells[11].Value.ToString() == "IME GENERAL COMPONENTS") && (row.Cells[12].Value.ToString() == "IME GENERAL COMPONENTS"))
+                {
+                    pod.AccountNumber = 8828170;
+                }
+                if ((row.Cells[11].Value.ToString() == "3RD PARTY") && (row.Cells[12].Value.ToString() == "3RD PARTY"))
+                {
+                    pod.AccountNumber = 8894479;
+                }
                 pod.FicheNo = po.FicheNo;
-
+                pod.Unit = row.Cells[13].Value.ToString();
                 podList.Add(pod);
             }
 
@@ -212,8 +226,8 @@ namespace LoginForm.PurchaseOrder
             Line1 = "FH" + COO + OrderDate + OrderTime + filler1;
             TXTList.Add(Line1);
             string Line2 = "";
-            string AccountNumber = "";//accounting numarası
-            for (int i = 0; i < 10; i++)
+            AccountNumber = "0008828170";//accounting numarası
+            for (int i = 0; i < 10 - AccountNumber.Length; i++)
             {
                 AccountNumber += " ";
             }
@@ -368,7 +382,7 @@ namespace LoginForm.PurchaseOrder
 
                 string PackType1 = "S";
                 string ProductDescription="";
-                if(po.ItemDescription!=null)ProductDescription = po.ItemDescription;
+                if (po.ItemDescription != null) ProductDescription = "";//item desc boş gönderiliyor
                 for (int i = 0; i < 40 - ProductDescription.ToString().Length; i++)
                 {
                     ProductDescription += " " + ProductDescription;

@@ -41,7 +41,7 @@ namespace Open_Miracle
             try
             {
                 DataTable dtbl = new DataTable();
-                dtbl = new DebitNoteMasterSP().DebitNoteMasterViewAllWithSlNo();
+               // dtbl = new DebitNoteMasterSP().DebitNoteMasterViewAllWithSlNo();
                 dgvDebitNoteRegister.DataSource = dtbl;
             }
             catch (Exception ex)
@@ -68,7 +68,7 @@ namespace Open_Miracle
                 }
                 string strFromDate = txtFromDate.Text;
                 DataTable dtbl = new DataTable();
-                dtbl = new DebitNoteMasterSP().DebitNoteRegisterSearch(strVoucherNo, strFromDate, strToDate);
+               // dtbl = new DebitNoteMasterSP().DebitNoteRegisterSearch(strVoucherNo, strFromDate, strToDate);
                 dgvDebitNoteRegister.DataSource = dtbl;
             }
             catch (Exception ex)
@@ -226,12 +226,12 @@ namespace Open_Miracle
         {
             try
             {
-                DateValidation obj = new DateValidation();
-                bool isInvalid = obj.DateValidationFunction(txtFromDate);
-                if (!isInvalid)
-                {
-                    txtFromDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
-                }
+               // DateValidation obj = new DateValidation();
+                //bool isInvalid = obj.DateValidationFunction(txtFromDate);
+                //if (!isInvalid)
+                //{
+                //    txtFromDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                //}
                 string date = txtFromDate.Text;
                 dtpFromDate.Value = Convert.ToDateTime(date);
             }
@@ -249,12 +249,12 @@ namespace Open_Miracle
         {
             try
             {
-                DateValidation obj = new DateValidation();
-                bool isInvalid = obj.DateValidationFunction(txtToDate);
-                if (!isInvalid)
-                {
-                    txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
-                }
+                //DateValidation obj = new DateValidation();
+                //bool isInvalid = obj.DateValidationFunction(txtToDate);
+                //if (!isInvalid)
+                //{
+                //    txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                //}
                 string date = txtToDate.Text;
                 dtpToDate.Value = Convert.ToDateTime(date);
             }

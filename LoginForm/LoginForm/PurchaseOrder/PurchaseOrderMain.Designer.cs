@@ -333,6 +333,7 @@
             this.btnPrint.TabIndex = 13;
             this.btnPrint.Text = "Send To Print";
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // PurchaseOrderMain
             // 
