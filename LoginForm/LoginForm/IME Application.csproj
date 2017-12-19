@@ -178,6 +178,18 @@
     <Compile Include="Account\PayRoll\frmPayHead.designer.cs">
       <DependentUpon>frmPayHead.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Register\frmCreditNoteRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Register\frmCreditNoteRegister.designer.cs">
+      <DependentUpon>frmCreditNoteRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register\frmDebitNoteRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Register\frmDebitNoteRegister.designer.cs">
+      <DependentUpon>frmDebitNoteRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Register\frmPaymentRegister.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,6 +258,9 @@
     <Compile Include="DataSet\AuthorizationValue.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\BankReconciliation.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\BonusDeduction.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -292,6 +307,9 @@
     <Compile Include="DataSet\DailyDiscontinued.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\DeliveryNoteMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Designation.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -329,6 +347,9 @@
       <DependentUpon>IME.edmx</DependentUpon>
     </Compile>
     <Compile Include="DataSet\ItemNote.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\JournalDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\JournalMaster.cs">
@@ -377,6 +398,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PaymentTerm.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PDCPayableMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PricingLevel.cs">
@@ -431,6 +455,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Stock.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SuffixPrefix.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SuperDisk.cs">
@@ -566,6 +593,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="PurchaseOrder\ExcelPurchaseOrder.cs" />
     <Compile Include="PurchaseOrder\frmStock.cs">
       <SubType>Form</SubType>
@@ -750,6 +782,12 @@
     <EmbeddedResource Include="Account\PayRoll\frmPayHead.resx">
       <DependentUpon>frmPayHead.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\Register\frmCreditNoteRegister.resx">
+      <DependentUpon>frmCreditNoteRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Register\frmDebitNoteRegister.resx">
+      <DependentUpon>frmDebitNoteRegister.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\Register\frmPaymentRegister.resx">
       <DependentUpon>frmPaymentRegister.cs</DependentUpon>
     </EmbeddedResource>
@@ -809,14 +847,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="PurchaseOrder\frmStock.resx">
       <DependentUpon>frmStock.cs</DependentUpon>
     </EmbeddedResource>
@@ -929,13 +962,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\resize.png" />
-    <None Include="Resources\btnBackground.png" />
-    <None Include="Resources\gradient2.jpg" />
-    <None Include="Resources\icons8-Plus-32.png" />
-    <None Include="Resources\icons8-Cancel-32.png" />
-    <None Include="Resources\icons8-Edit Property-32.png" />
-    <None Include="Resources\icons8-Refresh-32.png" />
     <Content Include="DataSet\IME.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>IME.edmx</DependentUpon>
@@ -946,7 +972,20 @@
       <DependentUpon>IME.edmx</DependentUpon>
       <LastGenOutput>IME.cs</LastGenOutput>
     </Content>
+    <Content Include="Resources\btnBackground.png" />
+    <Content Include="Resources\close_icon.jpg" />
+    <Content Include="Resources\excel_icon.png" />
+    <Content Include="Resources\gradient2.jpg" />
+    <Content Include="Resources\icons8-Cancel-32.png" />
+    <Content Include="Resources\icons8-Edit Property-32.png" />
+    <Content Include="Resources\icons8-Plus-32.png" />
+    <Content Include="Resources\icons8-Refresh-32.png" />
     <Content Include="Resources\IME.jpg" />
+    <Content Include="Resources\resize.png" />
+    <Content Include="Resources\save_icon.png" />
+    <Content Include="Resources\update-icon-Kopya.png" />
+    <Content Include="Resources\update-icon.png" />
+    <Content Include="Resources\update-icon2.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

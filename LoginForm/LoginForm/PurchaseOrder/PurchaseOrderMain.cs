@@ -76,7 +76,7 @@ namespace LoginForm.PurchaseOrder
             #endregion
             if (MessageBox.Show("Are You Sure To Exit Programme ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                this.Hide();
+                this.Close();
             }
         }
 
@@ -241,6 +241,11 @@ namespace LoginForm.PurchaseOrder
                     e.ThrowException = false;
                 }
             }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -145,7 +145,7 @@ namespace LoginForm.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap update_icon {
             get {
-                object obj = ResourceManager.GetObject("update_icon", resourceCulture);
+                object obj = ResourceManager.GetObject("update-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,19 +153,9 @@ namespace LoginForm.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
         /// </summary>
-        internal static System.Drawing.Bitmap update_icon___Kopya {
+        internal static System.Drawing.Bitmap update_icon_Kopya {
             get {
-                object obj = ResourceManager.GetObject("update_icon - Kopya", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
-        /// </summary>
-        internal static System.Drawing.Bitmap update_icon1 {
-            get {
-                object obj = ResourceManager.GetObject("update_icon1", resourceCulture);
+                object obj = ResourceManager.GetObject("update-icon-Kopya", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -175,27 +165,7 @@ namespace LoginForm.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap update_icon2 {
             get {
-                object obj = ResourceManager.GetObject("update_icon2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
-        /// </summary>
-        internal static System.Drawing.Bitmap update_icon21 {
-            get {
-                object obj = ResourceManager.GetObject("update_icon21", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap türünde yerelleştirilmiş bir kaynak arar.
-        /// </summary>
-        internal static System.Drawing.Bitmap update_icon22 {
-            get {
-                object obj = ResourceManager.GetObject("update_icon22", resourceCulture);
+                object obj = ResourceManager.GetObject("update-icon2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -205,7 +175,7 @@ namespace LoginForm.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap update_icon3 {
             get {
-                object obj = ResourceManager.GetObject("update_icon3", resourceCulture);
+                object obj = ResourceManager.GetObject("update-icon3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

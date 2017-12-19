@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PurchaseExportFiles));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtMail = new System.Windows.Forms.TextBox();
@@ -42,19 +43,25 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.txtDate = new System.Windows.Forms.MaskedTextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.picturePurchase = new System.Windows.Forms.PictureBox();
+            this.lblPicture = new System.Windows.Forms.Label();
+            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgMail)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCc)).BeginInit();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picturePurchase)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblPicture);
+            this.groupBox1.Controls.Add(this.picturePurchase);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(106, 118);
+            this.groupBox1.Size = new System.Drawing.Size(199, 229);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "File List";
@@ -62,9 +69,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtMail);
-            this.groupBox2.Location = new System.Drawing.Point(124, 12);
+            this.groupBox2.Location = new System.Drawing.Point(217, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(679, 502);
+            this.groupBox2.Size = new System.Drawing.Size(586, 502);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
@@ -75,7 +82,7 @@
             this.txtMail.Multiline = true;
             this.txtMail.Name = "txtMail";
             this.txtMail.ReadOnly = true;
-            this.txtMail.Size = new System.Drawing.Size(667, 480);
+            this.txtMail.Size = new System.Drawing.Size(574, 480);
             this.txtMail.TabIndex = 0;
             // 
             // groupBox3
@@ -193,6 +200,23 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Date";
             // 
+            // picturePurchase
+            // 
+            this.picturePurchase.Image = ((System.Drawing.Image)(resources.GetObject("picturePurchase.Image")));
+            this.picturePurchase.Location = new System.Drawing.Point(40, 16);
+            this.picturePurchase.Name = "picturePurchase";
+            this.picturePurchase.Size = new System.Drawing.Size(110, 101);
+            this.picturePurchase.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picturePurchase.TabIndex = 0;
+            this.picturePurchase.TabStop = false;
+            // 
+            // lblPicture
+            // 
+            this.lblPicture.Location = new System.Drawing.Point(6, 131);
+            this.lblPicture.Name = "lblPicture";
+            this.lblPicture.Size = new System.Drawing.Size(187, 87);
+            this.lblPicture.TabIndex = 1;
+            // 
             // PurchaseExportFiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -211,6 +235,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PurchaseExportFiles";
             this.Load += new System.EventHandler(this.PurchaseExportFiles_Load);
+            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -219,6 +244,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgCc)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picturePurchase)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,5 +266,7 @@
         private System.Windows.Forms.DataGridView dgCc;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox txtMail;
+        private System.Windows.Forms.Label lblPicture;
+        private System.Windows.Forms.PictureBox picturePurchase;
     }
 }

@@ -49,47 +49,16 @@ namespace LoginForm.PurchaseOrder
                 if (row.Cells[0].Value != null && (bool)row.Cells[0].Value == true)
                 {
                     rowList.Add(row);
-                }      
-            }
-
-            #region Save
-
-            for (int i = 0; i < dgPurchase.RowCount - 1; i++)
-            {
-                DataGridViewRow row = dgPurchase.Rows[i];
-                string ID = row.Cells[SaleOrderNo.Index].Value.ToString();
-                if (row.Cells[SaleOrderNo.Index].Value != null)
-                {
-                    var item = IME.PurchaseOrderDetails.Where(a => a.SaleOrderNo == ID).FirstOrDefault();
-
-                    item.PurchaseOrder.Customer.c_name = row.Cells[c_name.Index].Value.ToString();
-                    item.QuotationNo=row.Cells[QuotationNos.Index].Value.ToString();
-                    item.SaleOrderNo=row.Cells[SaleOrderNo.Index].Value.ToString();
-                    item.ItemCode=row.Cells[ItemCode.Index].Value.ToString();
-                    try{item.ItemDescription = row.Cells[ItemDescription.Index].Value.ToString();}catch (Exception){throw;}
-                    item.UnitPrice=(decimal)row.Cells[UnitOfMeasure.Index].Value;
-                    item.SendQty=(int)row.Cells[Quantity.Index].Value;
-                    item.Hazardous=(bool)row.Cells[Hazardous.Index].Value;
-                    item.Calibration=(bool)row.Cells[Calibration.Index].Value;
-                    item.SaleOrderNature=row.Cells[SaleOrderNature.Index].Value.ToString();
-                    if ((row.Cells[AddressType.Index].Value.ToString() == "IME GENERAL COMPONENTS") && (row.Cells[AdressTitle.Index].Value.ToString() == "IME GENERAL COMPONENTS"))
-                    {
-                        item.AccountNumber = 8828170;
-                    }
-                    if ((row.Cells[AddressType.Index].Value.ToString() == "3RD PARTY") && (row.Cells[AdressTitle.Index].Value.ToString() == "3RD PARTY"))
-                    {
-                        item.AccountNumber = 8894479;
-                    }
-                    item.Unit=row.Cells[UPIME.Index].Value.ToString();
                 }
             }
-            IME.SaveChanges();
-            #endregion
 
-
-            PurchaseExportFiles form = new PurchaseExportFiles(rowList, purchasecode);
-            form.ShowDialog();
-            this.Close();
+            if (rowList.Count != 0)
+            {
+                PurchaseExportFiles form = new PurchaseExportFiles(rowList, purchasecode);
+                form.ShowDialog();
+                this.Close();
+            }
+            else MessageBox.Show("Please select an item", "Attention", MessageBoxButtons.OKCancel);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -129,10 +98,7 @@ namespace LoginForm.PurchaseOrder
             IME = new IMEEntities();
 
             #region Purchase Orders Detail Fill
-            var adapter = (from po in IME.PurchaseOrderDetails.Where(po => po.SaleOrderNo == code)
-                           join s in IME.SaleOrders on po.SaleOrderNo equals s.SaleOrderNo
-                           join p in IME.SaleOrderDetails on s.SaleOrderNo equals p.SaleOrderNo
-                           
+            var adapter = (from p in IME.SaleOrderDetails.Where(po => po.SaleOrderNo == code)
                            select new
                            {
                                p.SaleOrder.Customer.c_name,
@@ -145,10 +111,9 @@ namespace LoginForm.PurchaseOrder
                                p.Hazardous,
                                p.Calibration,
                                p.SaleOrder.SaleOrderNature,
-                               po.AccountNumber,
                                p.ItemCost
                            }).ToList();
-
+            readOnly();
             foreach (var item in adapter)
             {
                 int rowIndex = dgPurchase.Rows.Add();
@@ -164,16 +129,8 @@ namespace LoginForm.PurchaseOrder
                 row.Cells[Hazardous.Index].Value = item.Hazardous;
                 row.Cells[Calibration.Index].Value = item.Calibration;
                 row.Cells[SaleOrderNature.Index].Value = item.SaleOrderNature;
-                if (item.AccountNumber== 8828170)
-                {
-                    row.Cells[AddressType.Index].Value = "IME GENERAL COMPONENTS";
-                    row.Cells[AdressTitle.Index].Value = "IME GENERAL COMPONENTS";
-                }
-                if (item.AccountNumber == 8894479)
-                {
-                    row.Cells[AddressType.Index].Value = "3RD PARTY";
-                    row.Cells[AdressTitle.Index].Value = "3RD PARTY";
-                }
+                row.Cells[AddressType.Index].Value = "IME GENERAL COMPONENTS";
+                row.Cells[AdressTitle.Index].Value = "IME GENERAL COMPONENTS";
                 row.Cells[UPIME.Index].Value = item.ItemCost;
                 row.Cells[Total.Index].Value = Decimal.Parse(row.Cells[Quantity.Index].Value.ToString()) * Decimal.Parse(row.Cells[UPIME.Index].Value.ToString());
             }
@@ -201,7 +158,7 @@ namespace LoginForm.PurchaseOrder
                                p.AccountNumber,
                                p.Unit
                            }).ToList();
-
+            readOnlyEnabled();
             foreach (var item in adapter)
             {
                 int rowIndex = dgPurchase.Rows.Add();
@@ -253,7 +210,7 @@ namespace LoginForm.PurchaseOrder
 
                 purchaseList.Add(pod);
             }
-
+            readOnly();
             dgPurchase.DataSource = purchaseList;
         }
 
@@ -268,6 +225,46 @@ namespace LoginForm.PurchaseOrder
                     e.ThrowException = false;
                 }
             }
+        }
+
+        private void readOnly()
+        {
+            dgPurchase.Columns[0].ReadOnly = false;
+            dgPurchase.Columns[1].ReadOnly = true;
+            dgPurchase.Columns[2].ReadOnly = true;
+            dgPurchase.Columns[3].ReadOnly = true;
+            dgPurchase.Columns[4].ReadOnly = true;
+            dgPurchase.Columns[5].ReadOnly = true;
+            dgPurchase.Columns[6].ReadOnly = true;
+            dgPurchase.Columns[7].ReadOnly = true;
+            dgPurchase.Columns[8].ReadOnly = true;
+            dgPurchase.Columns[9].ReadOnly = true;
+            dgPurchase.Columns[10].ReadOnly = false;
+            dgPurchase.Columns[11].ReadOnly = false;
+            dgPurchase.Columns[12].ReadOnly = false;
+            dgPurchase.Columns[13].ReadOnly = true;
+            dgPurchase.Columns[14].ReadOnly = true;
+        }
+
+        private void readOnlyEnabled()
+        {
+            dgPurchase.Columns[0].ReadOnly = false;
+            dgPurchase.Columns[1].ReadOnly = true;
+            dgPurchase.Columns[2].ReadOnly = true;
+            dgPurchase.Columns[3].ReadOnly = true;
+            dgPurchase.Columns[4].ReadOnly = true;
+            dgPurchase.Columns[5].ReadOnly = true;
+            dgPurchase.Columns[6].ReadOnly = true;
+            dgPurchase.Columns[7].ReadOnly = true;
+            dgPurchase.Columns[8].ReadOnly = true;
+            dgPurchase.Columns[9].ReadOnly = true;
+            dgPurchase.Columns[10].ReadOnly = true;
+            dgPurchase.Columns[11].ReadOnly = true;
+            dgPurchase.Columns[12].ReadOnly = true;
+            dgPurchase.Columns[13].ReadOnly = true;
+            dgPurchase.Columns[14].ReadOnly = true;
+            txtOrderNumber.Enabled = false;
+            btnCreate.Enabled = false;
         }
     }
 }

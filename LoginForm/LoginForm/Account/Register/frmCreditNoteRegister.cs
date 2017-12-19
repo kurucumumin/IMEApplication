@@ -157,12 +157,12 @@ namespace LoginForm
         {
             try
             {
-                DateValidation obj = new DateValidation();
-                bool isInvalid = obj.DateValidationFunction(txtFromDate);
-                if (!isInvalid)
-                {
-                    txtFromDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
-                }
+                //DateValidation obj = new DateValidation();
+              //  bool isInvalid = obj.DateValidationFunction(txtFromDate);
+                //if (!isInvalid)
+                //{
+                //    txtFromDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                //}
                 string date = txtFromDate.Text;
                 dtpFromDate.Value = Convert.ToDateTime(date);
             }
@@ -180,12 +180,12 @@ namespace LoginForm
         {
             try
             {
-                DateValidation obj = new DateValidation();
-                bool isInvalid = obj.DateValidationFunction(txtToDate);
-                if (!isInvalid)
-                {
-                    txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
-                }
+              //  DateValidation obj = new DateValidation();
+              //  bool isInvalid = obj.DateValidationFunction(txtToDate);
+                //if (!isInvalid)
+                //{
+                //    txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                //}
                 string date = txtToDate.Text;
                 dtpToDate.Value = Convert.ToDateTime(date);
             }

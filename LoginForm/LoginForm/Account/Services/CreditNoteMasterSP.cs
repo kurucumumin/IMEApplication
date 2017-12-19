@@ -26,25 +26,25 @@ namespace LoginForm.Account.Services
                                {
                                    cn.creditNoteMasterId,
                                    cn.invoiceNo,
-                                   cn.VoucherType.voucherTypeName,
+                                   //cn.VoucherType.voucherTypeName,
                                    cn.suffixPrefixId,
                                    date = cn.date.Value.Date,
                                    Amount = cn.totalAmount,
                                    cn.narration,
                                    cn.userId,
-                                   cn.voucherTypeId,
+                                   //cn.voucherTypeId,
                                    cn.financialYearId
                                }).ToList();
 
                 dtbl.Columns.Add("creditNoteMasterId");
                 dtbl.Columns.Add("invoiceNo");
-                dtbl.Columns.Add("voucherTypeName");
+                //dtbl.Columns.Add("voucherTypeName");
                 dtbl.Columns.Add("suffixPrefixId");
                 dtbl.Columns.Add("date");
                 dtbl.Columns.Add("Amount");
                 dtbl.Columns.Add("narration");
                 dtbl.Columns.Add("userId");
-                dtbl.Columns.Add("voucherTypeId");
+              //  dtbl.Columns.Add("voucherTypeId");
                 dtbl.Columns.Add("financialYearId");
 
                 foreach (var item in adaptor)
@@ -53,13 +53,13 @@ namespace LoginForm.Account.Services
 
                     row["creditNoteMasterId"] = item.creditNoteMasterId;
                     row["invoiceNo"] = item.invoiceNo;
-                    row["voucherTypeName"] = item.voucherTypeName;
+                   // row["voucherTypeName"] = item.voucherTypeName;
                     row["suffixPrefixId"] = item.suffixPrefixId;
                     row["date"] = item.date;
                     row["Amount"] = item.Amount;
                     row["narration"] = item.narration;
                     row["userId"] = item.userId;
-                    row["voucherTypeId"] = item.voucherTypeId;
+                    //row["voucherTypeId"] = item.voucherTypeId;
                     row["financialYearId"] = item.financialYearId;
 
                     dtbl.Rows.Add(row);
