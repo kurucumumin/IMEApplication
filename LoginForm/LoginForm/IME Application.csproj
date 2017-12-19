@@ -221,6 +221,14 @@
     <Compile Include="Account\Services\PricingLevelSP.cs" />
     <Compile Include="Account\Services\RouteSP.cs" />
     <Compile Include="Account\Services\SettingsSP.cs" />
+    <Compile Include="Account\Services\SuffixPrefixSP.cs" />
+    <Compile Include="Account\Services\TransactionsGeneralFill.cs" />
+    <Compile Include="Account\Transaction\frmPdcPayable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Transaction\frmPdcPayable.designer.cs">
+      <DependentUpon>frmPdcPayable.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\AccountingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -598,11 +606,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="PurchaseOrder\ExcelPurchaseOrder.cs" />
     <Compile Include="PurchaseOrder\frmStock.cs">
       <SubType>Form</SubType>
@@ -710,6 +713,7 @@
     <Compile Include="SaleOrder\SalesOrderHelper.cs" />
     <Compile Include="Services\DateValidation.cs" />
     <Compile Include="Services\Messages.cs" />
+    <Compile Include="Services\OtherDateValidationFunction.cs" />
     <Compile Include="Services\ToolTipService.cs" />
     <Compile Include="Services\txtCreate.cs" />
     <Compile Include="User\FormUsersMain.cs">
@@ -803,6 +807,9 @@
     <EmbeddedResource Include="Account\Register\frmReceiptRegister.resx">
       <DependentUpon>frmReceiptRegister.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\Transaction\frmPdcPayable.resx">
+      <DependentUpon>frmPdcPayable.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountingControl.resx">
       <DependentUpon>AccountingControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -857,7 +864,6 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="PurchaseOrder\frmStock.resx">
       <DependentUpon>frmStock.cs</DependentUpon>

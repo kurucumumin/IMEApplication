@@ -168,5 +168,116 @@ namespace LoginForm.Account.Services
             }
             return dtbl;
         }
+
+        public DataTable BankAccountComboFill()
+        {
+            IMEEntities db = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupId == 17 || x.accountGroupId == 28)
+                               select new
+                               {
+                                   AccountGroupId = ag.accountGroupId,
+                                   hierarchyLevel = 1
+                               }).ToList();
+                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == 17 || x.groupUnder == 28)
+                                select new
+                                {
+                                    AccountGroupId = ag.accountGroupId,
+                                    hierarchyLevel = 2
+                                }).ToList();
+
+                foreach (var item in adaptor2)
+                {
+                    if (!adaptor.Exists(x => x.AccountGroupId == item.AccountGroupId))
+                    {
+                        adaptor.Add(item);
+                    }
+                }
+
+                dtbl.Columns.Add("AccountGroupId");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["AccountGroupId"] = item.AccountGroupId;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+        public decimal PDCPayableMaxUnderVoucherTypePlusOne(decimal decVoucherTypeId)
+        {
+            IMEEntities db = new IMEEntities();
+            decimal max = 0;
+            try
+            {
+                List<PDCPayableMaster> list = db.PDCPayableMasters.Where(x => x.voucherTypeId == decVoucherTypeId).ToList();
+
+                foreach (PDCPayableMaster item in list)
+                {
+                    item.voucherNo = (item.voucherNo != null) ? item.voucherNo : "0"; 
+                    max = (Convert.ToDecimal(item.voucherNo) > max) ? Convert.ToDecimal(item.voucherNo) : max;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return max;
+        }
+
+        public decimal PDCPayableMasterAdd(PDCPayableMaster pdcpayablemasterinfo)
+        {
+            PDCPayableMaster pdc = pdcpayablemasterinfo;
+            decimal decIdentity = 0;
+            try
+            {
+                new IMEEntities().PDCPayableMasters.Add(pdc);
+                decIdentity = pdc.pdcPayableMasterId;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decIdentity;
+        }
+
+        public void PDCPayableMasterEdit(PDCPayableMaster pdcpayablemasterinfo)
+        {
+            IMEEntities db = new IMEEntities();
+            try
+            {
+                PDCPayableMaster pdc = db.PDCPayableMasters.Where(x => x.pdcPayableMasterId == pdcpayablemasterinfo.pdcPayableMasterId).FirstOrDefault();
+
+                pdc.voucherNo = pdcpayablemasterinfo.voucherNo;
+                pdc.invoiceNo = pdcpayablemasterinfo.invoiceNo;
+                pdc.suffixPrefixId = pdcpayablemasterinfo.suffixPrefixId;
+                pdc.date = pdcpayablemasterinfo.date;
+                pdc.ledgerId = pdcpayablemasterinfo.ledgerId;
+                pdc.amount = pdcpayablemasterinfo.amount;
+                pdc.chequeNo = pdcpayablemasterinfo.chequeNo;
+                pdc.chequeDate = pdcpayablemasterinfo.chequeDate;
+                pdc.narration = pdcpayablemasterinfo.narration;
+                pdc.userId = pdcpayablemasterinfo.userId;
+                pdc.bankId = pdcpayablemasterinfo.bankId;
+                pdc.voucherTypeId = pdcpayablemasterinfo.voucherTypeId;
+                pdc.financialYearId = pdcpayablemasterinfo.financialYearId;
+
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }

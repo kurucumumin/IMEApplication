@@ -457,24 +457,24 @@ namespace Open_Miracle
         /// <param name="e"></param>
         private void frmPDCPayableRegister_KeyDown(object sender, KeyEventArgs e)
         {
-            try
-            {
-                if (e.KeyCode == Keys.Escape)
-                {
-                    if (PublicVariables.isMessageClose)
-                    {
-                        Messages.CloseMessage(this);
-                    }
-                    else
-                    {
-                        this.Close();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PPREG19:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //try
+            //{
+            //    if (e.KeyCode == Keys.Escape)
+            //    {
+            //        if (PublicVariables.isMessageClose)
+            //        {
+            //            Messages.CloseMessage(this);
+            //        }
+            //        else
+            //        {
+            //            this.Close();
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("PPREG19:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         /// <summary>
         /// Enter key and Backspace navigation
