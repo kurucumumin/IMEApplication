@@ -206,21 +206,6 @@ namespace LoginForm.PurchaseOrder
                 int rowIndex = dgPurchase.Rows.Add();
                 DataGridViewRow row = dgPurchase.Rows[rowIndex];
 
-                //var addList = IME.PurchaseOrders.Where(p => p.FicheNo == ficheNo).FirstOrDefault().Customer.CurrNameQuo;
-
-                //var cbCellBill = row.Cells[AddressType.Index].Value as DataGridViewComboBoxCell;
-                //if (cbCellBill != null)
-                //    cbCellBill.DataSource = addList.ToList();
-                //else
-                //    cbCellBill.DataSource = null;
-
-                //var addList2 = IME.PurchaseOrders.Where(p => p.FicheNo == ficheNo).FirstOrDefault().Customer.CurrNameInv;
-                //var cbCellShip = row.Cells[AdressTitle.Index].Value as DataGridViewComboBoxCell;
-                //if (cbCellShip != null)
-                //    cbCellShip.DataSource = addList2.ToList();
-                //else
-                //    cbCellShip.DataSource = null;
-
                 row.Cells[c_name.Index].Value = item.c_name;
                 row.Cells[QuotationNos.Index].Value = item.QuotationNo;
                 row.Cells[SaleOrderNo.Index].Value = item.SaleOrderNo;
