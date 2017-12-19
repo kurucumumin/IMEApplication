@@ -161,7 +161,7 @@
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
             this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
+//            this.btnDelete.Image = global::LoginForm.Properties.Resources.icons8_Cancel_32;
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnDelete.Location = new System.Drawing.Point(602, 18);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(0);
@@ -180,7 +180,7 @@
             this.btnModify.Enabled = false;
             this.btnModify.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnModify.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnModify.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
+//            this.btnModify.Image = global::LoginForm.Properties.Resources.icons8_Edit_Property_32;
             this.btnModify.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnModify.Location = new System.Drawing.Point(506, 18);
             this.btnModify.Margin = new System.Windows.Forms.Padding(0);
@@ -197,7 +197,7 @@
             this.btnRefreshList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
             this.btnRefreshList.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnRefreshList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefreshList.Image = global::LoginForm.Properties.Resources.icons8_Refresh_32;
+//            this.btnRefreshList.Image = global::LoginForm.Properties.Resources.icons8_Refresh_32;
             this.btnRefreshList.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnRefreshList.Location = new System.Drawing.Point(237, 18);
             this.btnRefreshList.Margin = new System.Windows.Forms.Padding(0);
@@ -231,7 +231,7 @@
             this.btnNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(190)))), ((int)(((byte)(197)))));
             this.btnNew.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNew.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
+//            this.btnNew.Image = global::LoginForm.Properties.Resources.icons8_Plus_32;
             this.btnNew.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnNew.Location = new System.Drawing.Point(411, 18);
             this.btnNew.Margin = new System.Windows.Forms.Padding(0);

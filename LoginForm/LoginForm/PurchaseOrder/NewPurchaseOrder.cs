@@ -129,9 +129,10 @@ namespace LoginForm.PurchaseOrder
             IME = new IMEEntities();
 
             #region Purchase Orders Detail Fill
-            var adapter = (from p in IME.SaleOrderDetails.Where(p => p.SaleOrderNo == code)
-                           join s in IME.SaleOrders on p.SaleOrderNo equals s.SaleOrderNo
-                           join po in IME.PurchaseOrderDetails on s.SaleOrderNo equals po.SaleOrderNo
+            var adapter = (from po in IME.PurchaseOrderDetails.Where(po => po.SaleOrderNo == code)
+                           join s in IME.SaleOrders on po.SaleOrderNo equals s.SaleOrderNo
+                           join p in IME.SaleOrderDetails on s.SaleOrderNo equals p.SaleOrderNo
+                           
                            select new
                            {
                                p.SaleOrder.Customer.c_name,
