@@ -274,6 +274,9 @@
     <Compile Include="DataSet\AuthorizationValue.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\BankReconciliation.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\BonusDeduction.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -413,7 +416,13 @@
     <Compile Include="DataSet\PaymentTerm.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PDCClearanceMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PDCPayableMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PDCReceivableMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PricingLevel.cs">
@@ -711,6 +720,7 @@
       <DependentUpon>FormSaleItemSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="SaleOrder\SalesOrderHelper.cs" />
+    <Compile Include="Services\Common.cs" />
     <Compile Include="Services\DateValidation.cs" />
     <Compile Include="Services\Messages.cs" />
     <Compile Include="Services\OtherDateValidationFunction.cs" />

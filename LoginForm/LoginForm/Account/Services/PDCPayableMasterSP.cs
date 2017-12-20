@@ -279,5 +279,123 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
         }
+        public bool PDCpayableCheckExistence(string voucherNo, decimal voucherTypeId, decimal pdcPayableMasterId)
+        {
+            IMEEntities db = new IMEEntities();
+            bool isSave = false;
+            int count;
+            try
+            {
+                count = db.PDCPayableMasters.Where(
+                    x => x.voucherNo == voucherNo &&
+                    x.voucherTypeId == voucherTypeId &&
+                    x.pdcPayableMasterId != pdcPayableMasterId).Count();
+                isSave = (count > 0) ? false : true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return isSave;
+        }
+
+        public bool PDCPayableVoucherCheckRreference(decimal decMasterId, decimal voucherTypeId)
+        {
+            IMEEntities db = new IMEEntities();
+            bool isExist = false;
+            try
+            {
+                var list = from lp in db.LedgerPostings
+                           from pm in db.PDCPayableMasters.Where(x => x.pdcPayableMasterId == Convert.ToDecimal(lp.voucherNo))
+                           from br in db.BankReconciliations.Where(x => x.ledgerPostingId == lp.ledgerPostingId)
+                           where lp.voucherTypeId == voucherTypeId && pm.pdcPayableMasterId == decMasterId
+                           select new {
+                               br.reconcileId
+                           };
+
+                isExist = (list.Count() > 0) ? true : false;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            return isExist;
+        }
+
+        public DataTable LedgerPostingIdByPDCpayableId(decimal pdcMasterId)
+        {
+            IMEEntities db = new IMEEntities();
+            DataTable dtblpdcPayableId = new DataTable();
+            try
+            {
+                string voucherNo = db.PDCPayableMasters.Where(x => x.pdcPayableMasterId == pdcMasterId).FirstOrDefault().voucherNo;
+                decimal? voucherTypeID = db.PDCPayableMasters.Where(x => x.pdcPayableMasterId == pdcMasterId).FirstOrDefault().voucherTypeId;
+
+                var adaptor = (from lp in db.LedgerPostings.Where(x=>x.voucherNo == voucherNo && x.voucherTypeId == voucherTypeID)
+                               select new
+                               {
+                                   lp.ledgerPostingId
+                               }).ToList();
+
+                dtblpdcPayableId.Columns.Add("ledgerPostingId");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtblpdcPayableId.NewRow();
+
+                    row["ledgerPostingId"] = item.ledgerPostingId;
+
+                    dtblpdcPayableId.Rows.Add(row);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtblpdcPayableId;
+        }
+
+        public void PDCPayableMasterDelete(decimal PdcpayableId, decimal decVoucherTypeId, string strVoucherNo)
+        {
+            IMEEntities db = new IMEEntities();
+            try
+            {
+                List<PartyBalance> ListPb = db.PartyBalances.Where(x => (x.voucherTypeId == decVoucherTypeId && x.referenceType == "New") || (x.againstVoucherTypeId == decVoucherTypeId && x.againstVoucherNo == strVoucherNo && x.referenceType == "Against") || (x.voucherTypeId == decVoucherTypeId && x.voucherNo == strVoucherNo && x.referenceType == "OnAccount")).ToList();
+                db.PartyBalances.RemoveRange(ListPb);
+
+                decimal? ledgerPostID = db.LedgerPostings.Where(x => x.voucherTypeId == decVoucherTypeId && x.voucherNo == strVoucherNo).FirstOrDefault().ledgerPostingId;
+                List<BankReconciliation> listBr = db.BankReconciliations.Where(x => x.ledgerPostingId == ledgerPostID).ToList();
+                db.BankReconciliations.RemoveRange(listBr);
+
+                List<LedgerPosting> listLp = db.LedgerPostings.Where(x => x.voucherTypeId == decVoucherTypeId && x.voucherNo == strVoucherNo).ToList();
+                db.LedgerPostings.RemoveRange(listLp);
+
+                PDCPayableMaster pdc = db.PDCPayableMasters.Where(x => x.pdcPayableMasterId == PdcpayableId).FirstOrDefault();
+                db.PDCPayableMasters.Remove(pdc);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public bool PDCPayableReferenceCheck(decimal decMasterId, decimal decvoucherTypeId)
+        {
+            IMEEntities db = new IMEEntities();
+            bool isExist = false;
+            try
+            {
+                decimal? against = db.PDCClearanceMasters.Where(x => x.againstId == decMasterId && x.voucherTypeId == decvoucherTypeId).FirstOrDefault().againstId;
+
+                isExist = (against != null) ? true : false; 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return isExist;
+        }
     }
 }

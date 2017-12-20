@@ -32,6 +32,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<AdvancePayment> AdvancePayments { get; set; }
         public virtual DbSet<Area> Areas { get; set; }
         public virtual DbSet<AuthorizationValue> AuthorizationValues { get; set; }
+        public virtual DbSet<BankReconciliation> BankReconciliations { get; set; }
         public virtual DbSet<BonusDeduction> BonusDeductions { get; set; }
         public virtual DbSet<Capital> Capitals { get; set; }
         public virtual DbSet<City> Cities { get; set; }
@@ -71,7 +72,9 @@ namespace LoginForm.DataSet
         public virtual DbSet<PaymentMaster> PaymentMasters { get; set; }
         public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
         public virtual DbSet<PaymentTerm> PaymentTerms { get; set; }
+        public virtual DbSet<PDCClearanceMaster> PDCClearanceMasters { get; set; }
         public virtual DbSet<PDCPayableMaster> PDCPayableMasters { get; set; }
+        public virtual DbSet<PDCReceivableMaster> PDCReceivableMasters { get; set; }
         public virtual DbSet<PricingLevel> PricingLevels { get; set; }
         public virtual DbSet<PrintFormat> PrintFormats { get; set; }
         public virtual DbSet<PurchaseInvoice> PurchaseInvoices { get; set; }
