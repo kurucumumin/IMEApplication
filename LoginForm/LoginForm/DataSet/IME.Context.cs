@@ -73,6 +73,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
         public virtual DbSet<PaymentTerm> PaymentTerms { get; set; }
         public virtual DbSet<PDCPayableMaster> PDCPayableMasters { get; set; }
+        public virtual DbSet<PDCReceivableMaster> PDCReceivableMasters { get; set; }
         public virtual DbSet<PricingLevel> PricingLevels { get; set; }
         public virtual DbSet<PrintFormat> PrintFormats { get; set; }
         public virtual DbSet<PurchaseInvoice> PurchaseInvoices { get; set; }

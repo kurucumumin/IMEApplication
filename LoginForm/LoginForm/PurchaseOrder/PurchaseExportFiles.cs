@@ -170,7 +170,8 @@ namespace LoginForm.PurchaseOrder
             mail.From = new MailAddress("kurucumumin94@gmail.com", "Mümin Kurucu");
             mail.Subject = "TeamERP"; mail.IsBodyHtml = true; mail.Body = "IME programı test mail";
             Attachment attachment;
-            attachment = new Attachment(@"C:\Users\pomak\Desktop\Order.txt");
+            //attachment = new Attachment(@"C:\Users\pomak\Desktop\Order.txt");
+            attachment = new Attachment(@"C:\Users\pomak\Desktop\"+ filename+".txt");
             mail.Attachments.Add(attachment);
             int i = 0;
             toList.Clear();
@@ -229,7 +230,7 @@ namespace LoginForm.PurchaseOrder
             AccountNumber = "0008828170";//accounting numarası
             for (int i = 0; i < 10 - AccountNumber.Length; i++)
             {
-                AccountNumber += " ";
+                AccountNumber += "";
             }
             string saleOrderN = rowList.FirstOrDefault().Cells["SaleOrderNo"].Value.ToString();
            
