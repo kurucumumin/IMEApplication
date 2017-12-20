@@ -32,9 +32,6 @@ namespace LoginForm.DataSet
         public string invoiceNo { get; set; }
         public string chequeNo { get; set; }
         public Nullable<System.DateTime> chequeDate { get; set; }
-        public Nullable<System.DateTime> extraDate { get; set; }
-        public string extra1 { get; set; }
-        public string extra2 { get; set; }
     
         public virtual AccountLedger AccountLedger { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

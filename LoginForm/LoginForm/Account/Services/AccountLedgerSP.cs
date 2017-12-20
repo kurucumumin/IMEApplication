@@ -385,5 +385,102 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
+        public bool AccountGroupIdCheckSundryCreditorOnly(string strLedgerName)
+        {
+            IMEEntities db = new IMEEntities();
+            bool isSundrycredit = false;
+            try
+            {
+                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupId == 22 || x.accountGroupId == 26)
+                               select new
+                               {
+                                   AccountGroupId = ag.accountGroupId,
+                                   hierarchyLevel = 1
+                               }).ToList();
+                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == 22 || x.groupUnder == 26)
+                                select new
+                                {
+                                    AccountGroupId = ag.accountGroupId,
+                                    hierarchyLevel = 2
+                                }).ToList();
+
+                foreach (var item in adaptor2)
+                {
+                    if (!adaptor.Exists(x => x.AccountGroupId == item.AccountGroupId))
+                    {
+                        adaptor.Add(item);
+                    }
+                }
+
+                List<int> idList = new List<int>();
+                foreach (var item in adaptor)
+                {
+                    if (!idList.Contains(item.AccountGroupId)) { idList.Add(item.AccountGroupId); }
+                }
+
+                List<AccountLedger> ledgerList = new List<AccountLedger>();
+                foreach (var aGroupID in idList)
+                {
+                    var list = db.AccountLedgers.Where(x => x.ledgerName == strLedgerName && x.accountGroupID == aGroupID && x.billByBill == true).ToList();
+                    ledgerList.AddRange(list);
+                }
+
+                isSundrycredit = (ledgerList.Count() > 0) ? true : false;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return isSundrycredit;
+        }
+        public bool AccountGroupIdCheck(string strLedgerName)
+        {
+            IMEEntities db = new IMEEntities();
+            bool isSundryCreditOrDebit = false;
+            try
+            {
+                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupId == 22 || x.accountGroupId == 26)
+                               select new
+                               {
+                                   AccountGroupId = ag.accountGroupId,
+                                   hierarchyLevel = 1
+                               }).ToList();
+                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == 22 || x.groupUnder == 26)
+                                select new
+                                {
+                                    AccountGroupId = ag.accountGroupId,
+                                    hierarchyLevel = 2
+                                }).ToList();
+
+                foreach (var item in adaptor2)
+                {
+                    if (!adaptor.Exists(x => x.AccountGroupId == item.AccountGroupId))
+                    {
+                        adaptor.Add(item);
+                    }
+                }
+
+                List<int> idList = new List<int>();
+                foreach (var item in adaptor)
+                {
+                    if (!idList.Contains(item.AccountGroupId)) { idList.Add(item.AccountGroupId); }
+                }
+
+                List<AccountLedger> ledgerList = new List<AccountLedger>();
+                foreach (var aGroupID in idList)
+                {
+                    var list = db.AccountLedgers.Where(x => x.ledgerName == strLedgerName && x.accountGroupID == aGroupID && x.billByBill == true).ToList();
+                    ledgerList.AddRange(list);
+                }
+                isSundryCreditOrDebit = (ledgerList.Count() > 0) ? true : false;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return isSundryCreditOrDebit;
+        }
     }
 }
