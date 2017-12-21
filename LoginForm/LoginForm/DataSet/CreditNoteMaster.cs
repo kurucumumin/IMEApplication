@@ -23,8 +23,10 @@ namespace LoginForm.DataSet
         public Nullable<decimal> totalAmount { get; set; }
         public string narration { get; set; }
         public Nullable<decimal> financialYearId { get; set; }
+        public Nullable<decimal> voucherTypeId { get; set; }
     
         public virtual FinancialYear FinancialYear { get; set; }
         public virtual Worker Worker { get; set; }
+        public virtual VoucherType VoucherType { get; set; }
     }
 }

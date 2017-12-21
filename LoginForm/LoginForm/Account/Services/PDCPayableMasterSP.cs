@@ -223,7 +223,7 @@ namespace LoginForm.Account.Services
 
                 foreach (PDCPayableMaster item in list)
                 {
-                    item.voucherNo = (item.voucherNo != null) ? item.voucherNo : "0"; 
+                    item.voucherNo = item.voucherNo ?? "0"; 
                     max = (Convert.ToDecimal(item.voucherNo) > max) ? Convert.ToDecimal(item.voucherNo) : max;
                 }
 
@@ -396,6 +396,20 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
             return isExist;
+        }
+
+        public PDCPayableMaster PDCPayableMasterView(decimal pdcPayableMasterId)
+        {
+            PDCPayableMaster pdcpayablemasterinfo = new PDCPayableMaster();
+            try
+            {
+                pdcpayablemasterinfo = new IMEEntities().PDCPayableMasters.Where(x => x.pdcPayableMasterId == pdcPayableMasterId).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return pdcpayablemasterinfo;
         }
     }
 }

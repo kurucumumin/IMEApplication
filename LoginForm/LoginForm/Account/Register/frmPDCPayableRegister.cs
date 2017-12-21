@@ -321,7 +321,7 @@ namespace Open_Miracle
                         decimal decMasterId = Convert.ToDecimal(dgvpdcPayableRegister.Rows[e.RowIndex].Cells["dgvpdcPayableMasterId"].Value.ToString());
                         frmPdcPayable frmpdcPayableObj = new frmPdcPayable();
 
-                        frmpdcPayableObj.MdiParent = formMDI.MDIObj;
+                        //frmpdcPayableObj.MdiParent = formMDI.MDIObj;
                         frmpdcPayableObj.CallFromPDCPayableRegister(this, decMasterId);
                         txtFromDate.Focus();
 
@@ -340,20 +340,20 @@ namespace Open_Miracle
         /// <param name="e"></param>
         private void btnViewDetails_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (dgvpdcPayableRegister.CurrentRow != null)
-                {
-                    decimal decMasterId = Convert.ToDecimal(dgvpdcPayableRegister.CurrentRow.Cells["dgvpdcPayableMasterId"].Value.ToString());
-                    frmPdcPayable frmpdcPayableObj = new frmPdcPayable();
-                    frmpdcPayableObj.MdiParent = formMDI.MDIObj;
-                    frmpdcPayableObj.CallFromPDCPayableRegister(this, decMasterId);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PPREG14:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //try
+            //{
+            //    if (dgvpdcPayableRegister.CurrentRow != null)
+            //    {
+            //        decimal decMasterId = Convert.ToDecimal(dgvpdcPayableRegister.CurrentRow.Cells["dgvpdcPayableMasterId"].Value.ToString());
+            //        frmPdcPayable frmpdcPayableObj = new frmPdcPayable();
+            //        frmpdcPayableObj.MdiParent = formMDI.MDIObj;
+            //        frmpdcPayableObj.CallFromPDCPayableRegister(this, decMasterId);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("PPREG14:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         /// <summary>
         /// On 'Close' button click

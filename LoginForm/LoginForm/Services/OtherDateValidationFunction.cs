@@ -41,7 +41,7 @@ namespace Open_Miracle
             if (isFormCompany)
                 dtcurrentdate = System.DateTime.Today;
             else
-                dtcurrentdate = PublicVariables._dtCurrentDate;
+                dtcurrentdate = DateTime.Now.Date;
             bool isValid = true;
             string option = string.Empty;
             string[] date = new string[50];

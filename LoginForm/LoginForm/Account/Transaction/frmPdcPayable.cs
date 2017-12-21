@@ -61,7 +61,7 @@ namespace Open_Miracle
         DataTable dtblPartyBalance = new DataTable(); // To pass values to party balance
         bool isInEditMode = false; // Tp decide whether is edit mode of not
         //frmPartyBalance frmPartyBalanceObj = new frmPartyBalance();//To use in call from PartyBalance class
-        //frmPDCPayableRegister PDCPayableRegisterObj = null;//To use in call from PdcPayableRegister class
+        frmPDCPayableRegister PDCPayableRegisterObj = null;//To use in call from PdcPayableRegister class
         //frmPDCPayableReport PDCpayableReportObj = null;//To use in call from pdcpayableReport
         //frmBillallocation BillallocationObj = null;//To use in call from Billallocation
         //frmVoucherSearch frmVoucherSearch = null;
@@ -1026,75 +1026,74 @@ namespace Open_Miracle
         /// </summary>
         /// <param name="pdcpayableRegObj"></param>
         /// <param name="decMasterId"></param>
-        //public void CallFromPDCPayableRegister(frmPDCPayableRegister pdcpayableRegObj, decimal decMasterId)
-        //{
-        //    try
-        //    {
-        //        pdcpayableRegObj.Enabled = false;
-        //        base.Show();
-        //        isInEditMode = true;
-        //        btnDelete.Enabled = true;
-        //        PDCPayableRegisterObj = pdcpayableRegObj;
-        //        decPDCpayableEditId = decMasterId;
-        //        FillFunction();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("PP21:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromPDCPayableRegister(frmPDCPayableRegister pdcpayableRegObj, decimal decMasterId)
+        {
+            try
+            {
+                pdcpayableRegObj.Enabled = false;
+                base.Show();
+                isInEditMode = true;
+                btnDelete.Enabled = true;
+                PDCPayableRegisterObj = pdcpayableRegObj;
+                decPDCpayableEditId = decMasterId;
+                FillFunction();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PP21:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Fill function for updation
         /// </summary>
-        //public void FillFunction()
-        //{
-        //    try
-        //    {
-        //        PDCPayableMasterInfo infopdcpayable = new PDCPayableMasterInfo();
-        //        PDCPayableMasterSP spPdcpayable = new PDCPayableMasterSP();
-        //        infopdcpayable = spPdcpayable.PDCPayableMasterView(decPDCpayableEditId);
-        //        txtvoucherNo.ReadOnly = false;
-        //        strVoucherNo = infopdcpayable.VoucherNo;
-        //        strInvoiceNo = infopdcpayable.InvoiceNo;
-        //        txtvoucherNo.Text = strInvoiceNo;
-        //        decSufixprefixPdcpayableID = infopdcpayable.SuffixPrefixId;
-        //        decPDCpayableVoucherTypeId = infopdcpayable.VoucherTypeId;
-        //        VoucherTypeSP spVoucherType = new VoucherTypeSP();
-        //        isAutomatic = spVoucherType.CheckMethodOfVoucherNumbering(decPDCpayableVoucherTypeId);
-        //        if (isAutomatic)
-        //        {
-        //            txtvoucherNo.ReadOnly = true;
-        //        }
-        //        else
-        //        {
-        //            txtvoucherNo.ReadOnly = false;
-        //        }
-        //        if (infopdcpayable.PdcPayableMasterId != 0)
-        //        {
-        //            txtvoucherNo.Text = infopdcpayable.InvoiceNo;
-        //            dtpVoucherDate.Value = infopdcpayable.Date;
-        //            txtVoucherDate.Text = dtpVoucherDate.Value.ToString("dd-MMM-yyyy");
-        //            txtNarration.Text = infopdcpayable.Narration;
-        //            cmbAccountLedger.SelectedValue = infopdcpayable.LedgerId;
-        //            txtAmount.Text = infopdcpayable.Amount.ToString();
-        //            if (infopdcpayable.BankId != 0)
-        //                cmbBank.SelectedValue = infopdcpayable.BankId;
-        //            else
-        //                cmbBank.SelectedValue = string.Empty;
-        //            txtcheckNo.Text = infopdcpayable.ChequeNo;
-        //            txtChequeDate.Text = infopdcpayable.ChequeDate.ToString("dd-MMM-yyyy");
-        //            btnSave.Text = "Update";
-        //            PartyBalanceSP SpPartyBalance = new PartyBalanceSP();
-        //            DataTable dtbl1 = new DataTable();
-        //            dtbl1 = SpPartyBalance.PartyBalanceViewByVoucherNoAndVoucherType(decPDCpayableVoucherTypeId, strVoucherNo, infopdcpayable.Date);
-        //            dtblPartyBalance = dtbl1;
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("PP22:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void FillFunction()
+        {
+            try
+            {
+                PDCPayableMaster infopdcpayable = new PDCPayableMaster();
+                PDCPayableMasterSP spPdcpayable = new PDCPayableMasterSP();
+                infopdcpayable = spPdcpayable.PDCPayableMasterView(decPDCpayableEditId);
+                txtvoucherNo.ReadOnly = false;
+                strVoucherNo = infopdcpayable.voucherNo;
+                strInvoiceNo = infopdcpayable.invoiceNo;
+                txtvoucherNo.Text = strInvoiceNo;
+                decSufixprefixPdcpayableID = (decimal)infopdcpayable.suffixPrefixId;
+                decPDCpayableVoucherTypeId = (decimal)infopdcpayable.voucherTypeId;
+                isAutomatic = new VoucherTypeSP().CheckMethodOfVoucherNumbering(decPDCpayableVoucherTypeId);
+                if (isAutomatic)
+                {
+                    txtvoucherNo.ReadOnly = true;
+                }
+                else
+                {
+                    txtvoucherNo.ReadOnly = false;
+                }
+                if (infopdcpayable.pdcPayableMasterId != 0)
+                {
+                    txtvoucherNo.Text = infopdcpayable.invoiceNo;
+                    dtpVoucherDate.Value = (DateTime)infopdcpayable.date;
+                    txtVoucherDate.Text = dtpVoucherDate.Value.ToString("dd-MMM-yyyy");
+                    txtNarration.Text = infopdcpayable.narration;
+                    cmbAccountLedger.SelectedValue = infopdcpayable.ledgerId;
+                    txtAmount.Text = infopdcpayable.amount.ToString();
+                    if (infopdcpayable.bankId != 0)
+                        cmbBank.SelectedValue = infopdcpayable.bankId;
+                    else
+                        cmbBank.SelectedValue = string.Empty;
+                    txtcheckNo.Text = infopdcpayable.chequeNo;
+                    txtChequeDate.Text = infopdcpayable.chequeDate.Value.ToString("dd-MMM-yyyy");
+                    btnSave.Text = "Update";
+                    PartyBalanceSP SpPartyBalance = new PartyBalanceSP();
+                    DataTable dtbl1 = new DataTable();
+                    dtbl1 = SpPartyBalance.PartyBalanceViewByVoucherNoAndVoucherType(decPDCpayableVoucherTypeId, strVoucherNo, (DateTime)infopdcpayable.date);
+                    dtblPartyBalance = dtbl1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PP22:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Delete function
         /// </summary>

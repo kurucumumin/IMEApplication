@@ -223,6 +223,7 @@
     <Compile Include="Account\Services\SettingsSP.cs" />
     <Compile Include="Account\Services\SuffixPrefixSP.cs" />
     <Compile Include="Account\Services\TransactionsGeneralFill.cs" />
+    <Compile Include="Account\Services\VoucherTypeSP.cs" />
     <Compile Include="Account\Transaction\frmPdcPayable.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1006,6 +1007,7 @@
     <Content Include="Resources\btnBackground.png" />
     <Content Include="Resources\close_icon.jpg" />
     <Content Include="Resources\excel_icon.png" />
+    <Content Include="Resources\file.png" />
     <Content Include="Resources\gradient2.jpg" />
     <Content Include="Resources\icons8-Cancel-32.png" />
     <Content Include="Resources\icons8-Edit Property-32.png" />
