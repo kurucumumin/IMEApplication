@@ -114,9 +114,6 @@
         <AssociationConnector Association="IMEModel.FK__LedgerPos__ledge__605D434C" />
         <AssociationConnector Association="IMEModel.FK__PartyBala__ledge__57C7FD4B" />
         <AssociationConnector Association="IMEModel.FK__PaymentMa__ledge__4979DDF4" />
-        <AssociationConnector Association="IMEModel.FK__PDCCleara__ledge__5E3FF0B0" />
-        <AssociationConnector Association="IMEModel.FK__PDCPayabl__ledge__28D80438" />
-        <AssociationConnector Association="IMEModel.FK__PDCReceiv__ledge__4B2D1C3C" />
         <AssociationConnector Association="IMEModel.FK__AdvancePa__emplo__4D4A6ED8" />
         <AssociationConnector Association="IMEModel.FK__AdvancePa__finan__4E3E9311" />
         <AssociationConnector Association="IMEModel.FK__AdvancePa__vouch__5026DB83" />
@@ -180,9 +177,6 @@
         <AssociationConnector Association="IMEModel.FK__Managemen__Curre__338A9CD5" />
         <AssociationConnector Association="IMEModel.FK__PartyBala__finan__5B988E2F" />
         <AssociationConnector Association="IMEModel.FK__PaymentMa__finan__47919582" />
-        <AssociationConnector Association="IMEModel.FK__PDCCleara__finan__611C5D5B" />
-        <AssociationConnector Association="IMEModel.FK__PDCPayabl__finan__2BB470E3" />
-        <AssociationConnector Association="IMEModel.FK__PDCReceiv__finan__4E0988E7" />
         <AssociationConnector Association="IMEModel.FK__ItemNote__NoteID__2B0A656D" />
         <AssociationConnector Association="IMEModel.FK__JournalDe__journ__100C566E" />
         <AssociationConnector Association="IMEModel.FK__JournalMa__suffi__0C3BC58A" />
@@ -204,15 +198,6 @@
         <AssociationConnector Association="IMEModel.FK__Supplier__paymen__634EBE90" />
         <AssociationConnector Association="IMEModel.FK__SaleOrder__Payme__1AF3F935" />
         <AssociationConnector Association="IMEModel.FK__Supplier__paymen__6442E2C9" />
-        <AssociationConnector Association="IMEModel.FK__PDCCleara__suffi__5D4BCC77" />
-        <AssociationConnector Association="IMEModel.FK__PDCCleara__userI__60283922" />
-        <AssociationConnector Association="IMEModel.FK__PDCCleara__vouch__5F3414E9" />
-        <AssociationConnector Association="IMEModel.FK__PDCPayabl__suffi__27E3DFFF" />
-        <AssociationConnector Association="IMEModel.FK__PDCPayabl__userI__29CC2871" />
-        <AssociationConnector Association="IMEModel.FK__PDCPayabl__vouch__2AC04CAA" />
-        <AssociationConnector Association="IMEModel.FK__PDCReceiv__suffi__4A38F803" />
-        <AssociationConnector Association="IMEModel.FK__PDCReceiv__userI__4C214075" />
-        <AssociationConnector Association="IMEModel.FK__PDCReceiv__vouch__4D1564AE" />
         <AssociationConnector Association="IMEModel.FK__PurchaseI__Purch__7A521F79" />
         <AssociationConnector Association="IMEModel.FK__PurchaseO__Fiche__42CCE065" />
         <AssociationConnector Association="IMEModel.FK__PurchaseO__SaleO__46D27B73" />
