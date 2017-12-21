@@ -22,6 +22,7 @@ using System.Collections;
 using LoginForm.Account.Services;
 using LoginForm.DataSet;
 using LoginForm.Services;
+using LoginForm;
 
 namespace Open_Miracle
 {
@@ -1157,7 +1158,7 @@ namespace Open_Miracle
                 if (infopdcrecivable.pdcReceivableMasterId != 0)
                 {
                     txtVoucherNo.Text = infopdcrecivable.invoiceNo;
-                    dtpVoucherDate.Value = infopdcrecivable.date;
+                    dtpVoucherDate.Value = (DateTime)infopdcrecivable.date;
                     txtVoucherDate.Text = dtpVoucherDate.Value.ToString("dd-MMM-yyyy");
                     txtNarration.Text = infopdcrecivable.narration;
                     cmbAccountLedger.SelectedValue = infopdcrecivable.ledgerId;
@@ -1171,7 +1172,7 @@ namespace Open_Miracle
                     btnSave.Text = "Update";
                     PartyBalanceSP SpPartyBalance = new PartyBalanceSP();
                     DataTable dtbl1 = new DataTable();
-                    dtbl1 = SpPartyBalance.PartyBalanceViewByVoucherNoAndVoucherType(decPDCReceivableVoucherTypeId, strVoucherNo, infopdcrecivable.date);
+                    dtbl1 = SpPartyBalance.PartyBalanceViewByVoucherNoAndVoucherType(decPDCReceivableVoucherTypeId, strVoucherNo, (DateTime)infopdcrecivable.date);
                     dtblPartyBalance = dtbl1;
                 }
             }
@@ -1405,31 +1406,31 @@ namespace Open_Miracle
         /// <param name="e"></param>
         private void btnAgainRef_Click(object sender, EventArgs e)
         {
-            frmPartyBalance frmpartybalance = new frmPartyBalance();
-            frmpartybalance.MdiParent = formMDI.MDIObj;
-            try
-            {
-                if (!isAutomatic)
-                {
-                    if (txtVoucherNo.Text == string.Empty)
-                    {
-                        MessageBox.Show("Voucher Number Empty", "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtVoucherNo.Focus();
-                    }
-                    else
-                    {
-                        frmpartybalance.CallThisFormFromPDCReceivable(this, decLedgerIdForPartyBalance, dtblPartyBalance, decPDCReceivableVoucherTypeId, txtVoucherNo.Text, DateTime.Parse(txtVoucherDate.Text));
-                    }
-                }
-                else
-                {
-                    frmpartybalance.CallThisFormFromPDCReceivable(this, decLedgerIdForPartyBalance, dtblPartyBalance, decPDCReceivableVoucherTypeId, strVoucherNo, DateTime.Parse(txtVoucherDate.Text));
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PR34:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //frmPartyBalance frmpartybalance = new frmPartyBalance();
+            //frmpartybalance.MdiParent = formMDI.MDIObj;
+            //try
+            //{
+            //    if (!isAutomatic)
+            //    {
+            //        if (txtVoucherNo.Text == string.Empty)
+            //        {
+            //            MessageBox.Show("Voucher Number Empty", "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //            txtVoucherNo.Focus();
+            //        }
+            //        else
+            //        {
+            //            frmpartybalance.CallThisFormFromPDCReceivable(this, decLedgerIdForPartyBalance, dtblPartyBalance, decPDCReceivableVoucherTypeId, txtVoucherNo.Text, DateTime.Parse(txtVoucherDate.Text));
+            //        }
+            //    }
+            //    else
+            //    {
+            //        frmpartybalance.CallThisFormFromPDCReceivable(this, decLedgerIdForPartyBalance, dtblPartyBalance, decPDCReceivableVoucherTypeId, strVoucherNo, DateTime.Parse(txtVoucherDate.Text));
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("PR34:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         /// <summary>
         ///  Save button click, checking the user privilage and call the saveoredit function
@@ -1440,14 +1441,14 @@ namespace Open_Miracle
         {
             try
             {
-                if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnSave.Text))
-                {
+                //if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnSave.Text))
+                //{
                     SaveOrEditFunction();
-                }
-                else
-                {
-                    Messages.NoPrivillageMessage();
-                }
+                //}
+                //else
+                //{
+                //    Messages.NoPrivillageMessage();
+                //}
             }
             catch (Exception ex)
             {
@@ -1480,10 +1481,10 @@ namespace Open_Miracle
             try
             {
                 PDCReceivableMasterSP sppdcreceivable = new PDCReceivableMasterSP();
-                if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnDelete.Text))
-                {
-                    if (PublicVariables.isMessageDelete)
-                    {
+                //if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnDelete.Text))
+                //{
+                    //if (PublicVariables.isMessageDelete)
+                    //{
                         if (Messages.DeleteMessage())
                         {
                             if (isInEditMode && sppdcreceivable.PDCReceivableReferenceCheck(decPDCReceivableEditId))
@@ -1496,21 +1497,21 @@ namespace Open_Miracle
                                 txtVoucherNo.Focus();
                             }
                         }
-                    }
-                    else
-                    {
-                        if (isInEditMode && sppdcreceivable.PDCReceivableReferenceCheck(decPDCReceivableEditId))
-                        {
-                            Messages.ReferenceExistsMessage();
-                        }
-                        DeleteFunction(decPDCReceivableEditId);
-                        txtVoucherNo.Focus();
-                    }
-                }
-                else
-                {
-                    Messages.NoPrivillageMessage();
-                }
+                    //}
+                    //else
+                    //{
+                    //    if (isInEditMode && sppdcreceivable.PDCReceivableReferenceCheck(decPDCReceivableEditId))
+                    //    {
+                    //        Messages.ReferenceExistsMessage();
+                    //    }
+                    //    DeleteFunction(decPDCReceivableEditId);
+                    //    txtVoucherNo.Focus();
+                    //}
+                //}
+                //else
+                //{
+                //    Messages.NoPrivillageMessage();
+                //}
             }
             catch (Exception ex)
             {
@@ -1545,8 +1546,8 @@ namespace Open_Miracle
         {
             try
             {
-                if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnSave.Text))
-                {
+                //if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnSave.Text))
+                //{
                     if (cmbAccountLedger.SelectedValue != null)
                     {
                         strAccountLedger = cmbAccountLedger.SelectedValue.ToString();
@@ -1556,30 +1557,31 @@ namespace Open_Miracle
                         strAccountLedger = "0";
                     }
                     frmAccountLedger frmAccountLedgerObj = new frmAccountLedger();
-                    frmAccountLedgerObj.MdiParent = formMDI.MDIObj;
-                    frmAccountLedger open = Application.OpenForms["frmAccountLedger"] as frmAccountLedger;
-                    if (open == null)
-                    {
-                        frmAccountLedgerObj.WindowState = FormWindowState.Normal;
-                        frmAccountLedgerObj.MdiParent = formMDI.MDIObj;
-                        frmAccountLedgerObj.CallThisFormFromPDCreceivable(this);//Edited by Najma
-                    }
-                    else
-                    {
-                        open.MdiParent = formMDI.MDIObj;
-                        open.BringToFront();
-                        open.CallThisFormFromPDCreceivable(this);
-                        if (open.WindowState == FormWindowState.Minimized)
-                        {
-                            open.WindowState = FormWindowState.Normal;
-                        }
-                    }
-                    this.Enabled = false;
-                }
-                else
-                {
-                    MessageBox.Show("You don’t have privilege", "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                    frmAccountLedgerObj.ShowDialog();
+                    //frmAccountLedgerObj.MdiParent = formMDI.MDIObj;
+                    //frmAccountLedger open = Application.OpenForms["frmAccountLedger"] as frmAccountLedger;
+                    //if (open == null)
+                    //{
+                    //    frmAccountLedgerObj.WindowState = FormWindowState.Normal;
+                    //    frmAccountLedgerObj.MdiParent = formMDI.MDIObj;
+                    //    frmAccountLedgerObj.CallThisFormFromPDCreceivable(this);//Edited by Najma
+                    //}
+                    //else
+                    //{
+                    //    open.MdiParent = formMDI.MDIObj;
+                    //    open.BringToFront();
+                    //    open.CallThisFormFromPDCreceivable(this);
+                    //    if (open.WindowState == FormWindowState.Minimized)
+                    //    {
+                    //        open.WindowState = FormWindowState.Normal;
+                    //    }
+                    //}
+                this.Enabled = false;
+                //}
+                //else
+                //{
+                //    MessageBox.Show("You don’t have privilege", "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //}
             }
             catch (Exception ex)
             {
@@ -1595,8 +1597,8 @@ namespace Open_Miracle
         {
             try
             {
-                if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnSave.Text))
-                {
+                //if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnSave.Text))
+                //{
                     if (cmbBank.SelectedValue != null)
                     {
                         strBankID = cmbBank.SelectedValue.ToString();
@@ -1606,30 +1608,31 @@ namespace Open_Miracle
                         strBankID = "0";
                     }
                     frmAccountLedger frmAccountLedgerObj = new frmAccountLedger();
-                    frmAccountLedgerObj.MdiParent = formMDI.MDIObj;
-                    frmAccountLedger open = Application.OpenForms["frmAccountLedger"] as frmAccountLedger;
-                    if (open == null)
-                    {
-                        frmAccountLedgerObj.WindowState = FormWindowState.Normal;
-                        frmAccountLedgerObj.MdiParent = formMDI.MDIObj;
-                        frmAccountLedgerObj.CallThisFormFromPDCreceivable2(this);//Edited by Najma
-                    }
-                    else
-                    {
-                        open.MdiParent = formMDI.MDIObj;
-                        open.BringToFront();
-                        open.CallThisFormFromPDCreceivable2(this);
-                        if (open.WindowState == FormWindowState.Minimized)
-                        {
-                            open.WindowState = FormWindowState.Normal;
-                        }
-                    }
-                    this.Enabled = false;
-                }
-                else
-                {
-                    MessageBox.Show("You don’t have privilege", "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                    frmAccountLedgerObj.ShowDialog();
+                    //frmAccountLedgerObj.MdiParent = formMDI.MDIObj;
+                    //frmAccountLedger open = Application.OpenForms["frmAccountLedger"] as frmAccountLedger;
+                    //if (open == null)
+                    //{
+                    //    frmAccountLedgerObj.WindowState = FormWindowState.Normal;
+                    //    frmAccountLedgerObj.MdiParent = formMDI.MDIObj;
+                    //    frmAccountLedgerObj.CallThisFormFromPDCreceivable2(this);//Edited by Najma
+                    //}
+                    //else
+                    //{
+                    //    open.MdiParent = formMDI.MDIObj;
+                    //    open.BringToFront();
+                    //    open.CallThisFormFromPDCreceivable2(this);
+                    //    if (open.WindowState == FormWindowState.Minimized)
+                    //    {
+                    //        open.WindowState = FormWindowState.Normal;
+                    //    }
+                    //}
+                this.Enabled = false;
+                //}
+                //else
+                //{
+                //    MessageBox.Show("You don’t have privilege", "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //}
             }
             catch (Exception ex)
             {
@@ -1677,60 +1680,60 @@ namespace Open_Miracle
         /// <param name="e"></param>
         private void frmPdcReceivable_FormClosing(object sender, FormClosingEventArgs e)
         {
-            try
-            {
-                if (PDCReceivableRegisterObj != null)
-                {
-                    PDCReceivableRegisterObj.Enabled = true;
-                    PDCReceivableRegisterObj.GridSearchRegister();
-                }
-                if (PDCReceivableReportObj != null)
-                {
-                    PDCReceivableReportObj.Enabled = true;
-                    PDCReceivableReportObj.Search();
-                }
-                if (frmDayBookObj != null)
-                {
-                    frmDayBookObj.Enabled = true;
-                    frmDayBookObj.dayBookGridFill();
-                    frmDayBookObj = null;
-                }
-                if (frmAgeingObj != null)
-                {
-                    frmAgeingObj.Enabled = true;
-                    frmAgeingObj.FillGrid();
-                    frmAgeingObj = null;
-                }
-                if (frmChequeReportObj != null)
-                {
-                    frmChequeReportObj.Enabled = true;
-                    frmChequeReportObj.ChequeReportFillGrid();
-                }
-                if (frmBillallocationObj != null)
-                {
-                    frmBillallocationObj.Enabled = true;
-                    frmBillallocationObj.BillAllocationGridFill();
-                }
-                if (frmLedgerDetailsObj != null)
-                {
-                    frmLedgerDetailsObj.Enabled = true;
-                    frmLedgerDetailsObj.LedgerDetailsView();
-                }
-                if (frmAgeingObj != null)
-                {
-                    frmAgeingObj.Enabled = true;
-                    frmAgeingObj.FillGrid();
-                }
-                if (objVoucherSearch != null)
-                {
-                    objVoucherSearch.Enabled = true;
-                    objVoucherSearch.GridFill();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PP43:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //try
+            //{
+            //    if (PDCReceivableRegisterObj != null)
+            //    {
+            //        PDCReceivableRegisterObj.Enabled = true;
+            //        PDCReceivableRegisterObj.GridSearchRegister();
+            //    }
+            //    if (PDCReceivableReportObj != null)
+            //    {
+            //        PDCReceivableReportObj.Enabled = true;
+            //        PDCReceivableReportObj.Search();
+            //    }
+            //    if (frmDayBookObj != null)
+            //    {
+            //        frmDayBookObj.Enabled = true;
+            //        frmDayBookObj.dayBookGridFill();
+            //        frmDayBookObj = null;
+            //    }
+            //    if (frmAgeingObj != null)
+            //    {
+            //        frmAgeingObj.Enabled = true;
+            //        frmAgeingObj.FillGrid();
+            //        frmAgeingObj = null;
+            //    }
+            //    if (frmChequeReportObj != null)
+            //    {
+            //        frmChequeReportObj.Enabled = true;
+            //        frmChequeReportObj.ChequeReportFillGrid();
+            //    }
+            //    if (frmBillallocationObj != null)
+            //    {
+            //        frmBillallocationObj.Enabled = true;
+            //        frmBillallocationObj.BillAllocationGridFill();
+            //    }
+            //    if (frmLedgerDetailsObj != null)
+            //    {
+            //        frmLedgerDetailsObj.Enabled = true;
+            //        frmLedgerDetailsObj.LedgerDetailsView();
+            //    }
+            //    if (frmAgeingObj != null)
+            //    {
+            //        frmAgeingObj.Enabled = true;
+            //        frmAgeingObj.FillGrid();
+            //    }
+            //    if (objVoucherSearch != null)
+            //    {
+            //        objVoucherSearch.Enabled = true;
+            //        objVoucherSearch.GridFill();
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("PP43:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         #endregion
 

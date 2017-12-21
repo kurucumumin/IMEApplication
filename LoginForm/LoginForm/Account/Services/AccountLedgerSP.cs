@@ -482,5 +482,30 @@ namespace LoginForm.Account.Services
             }
             return isSundryCreditOrDebit;
         }
+
+        public bool PDCReceivableReferenceCheck(decimal decPDCReceivableMasterId)
+        {
+            IMEEntities IME = new IMEEntities();
+            bool isExist = false;
+            try
+            {
+                
+                var obj = (from rm in IME.PDCClearanceMasters.Where(r =>r.againstId == decPDCReceivableMasterId)
+                           select rm.againstId).ToList();
+
+                if (obj != null)
+                {
+                    isExist = (obj.Count() > 0) ? true : false;
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+            return isExist;
+        }
     }
 }
