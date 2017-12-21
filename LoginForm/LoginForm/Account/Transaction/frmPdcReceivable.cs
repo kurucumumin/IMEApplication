@@ -365,8 +365,8 @@ namespace Open_Miracle
                         {
                             //if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnSave.Text))
                             //{
-                                PDCReceivableMasterSP spPdcreceivable = new PDCReceivableMasterSP();
-                                if (isInEditMode && spPdcreceivable.PDCReceivableVoucherCheckRreferenceUpdating(decPDCReceivableEditId, decPDCReceivableVoucherTypeId))
+                                PDCReceivableMasterSP _spPdcreceivable = new PDCReceivableMasterSP();
+                                if (isInEditMode && _spPdcreceivable.PDCReceivableVoucherCheckRreferenceUpdating(decPDCReceivableEditId, decPDCReceivableVoucherTypeId))
                                 {
                                     MessageBox.Show("Can't update,reference exist", "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
@@ -401,33 +401,30 @@ namespace Open_Miracle
                 ObjotherdateValidation.DateValidationFunction(txtCheckDate, false);
                 DataTable dtblMaster = new DataTable();
                 PDCReceivableMasterSP spPdcReceivable = new PDCReceivableMasterSP();
-                PDCReceivableMasterInfo InfopdcRecivable = new PDCReceivableMasterInfo();
+                PDCReceivableMaster InfopdcRecivable = new PDCReceivableMaster();
                 PartyBalanceSP spPartyBalance = new PartyBalanceSP();
-                InfopdcRecivable.VoucherNo = strVoucherNo;
-                InfopdcRecivable.InvoiceNo = txtVoucherNo.Text.Trim();
-                InfopdcRecivable.Date = DateTime.Parse(txtVoucherDate.Text);
-                InfopdcRecivable.LedgerId = Convert.ToDecimal(cmbAccountLedger.SelectedValue.ToString());
-                InfopdcRecivable.Amount = decimal.Parse(txtAmount.Text);
-                InfopdcRecivable.Narration = txtNarration.Text;
+                InfopdcRecivable.voucherNo = strVoucherNo;
+                InfopdcRecivable.invoiceNo = txtVoucherNo.Text.Trim();
+                InfopdcRecivable.date = DateTime.Parse(txtVoucherDate.Text);
+                InfopdcRecivable.ledgerId = Convert.ToDecimal(cmbAccountLedger.SelectedValue.ToString());
+                InfopdcRecivable.amount = decimal.Parse(txtAmount.Text);
+                InfopdcRecivable.narration = txtNarration.Text;
                 if (txtcheckNo.Text != string.Empty)
-                    InfopdcRecivable.ChequeNo = txtcheckNo.Text;
+                    InfopdcRecivable.chequeNo = txtcheckNo.Text;
                 else
-                    InfopdcRecivable.ChequeNo = string.Empty;
+                    InfopdcRecivable.chequeNo = string.Empty;
                 if (txtCheckDate.Text != string.Empty)
-                    InfopdcRecivable.ChequeDate = Convert.ToDateTime(txtCheckDate.Text);
+                    InfopdcRecivable.chequeDate = Convert.ToDateTime(txtCheckDate.Text);
                 else
-                    InfopdcRecivable.ChequeDate = DateTime.Now;
-                InfopdcRecivable.UserId = PublicVariables._decCurrentUserId;
-                InfopdcRecivable.VoucherTypeId = decPDCReceivableVoucherTypeId;
+                    InfopdcRecivable.chequeDate = DateTime.Now;
+                InfopdcRecivable.userId = Utils.getCurrentUser().WorkerID;
+                InfopdcRecivable.voucherTypeId = decPDCReceivableVoucherTypeId;
                 if (cmbBank.SelectedValue != null && cmbBank.SelectedValue.ToString() != string.Empty)
                 {
-                    InfopdcRecivable.BankId = Convert.ToDecimal(cmbBank.SelectedValue.ToString());
+                    InfopdcRecivable.bankId = Convert.ToDecimal(cmbBank.SelectedValue.ToString());
                 }
                 else
-                    InfopdcRecivable.BankId = 0;
-                InfopdcRecivable.ExtraDate = DateTime.Now;
-                InfopdcRecivable.Extra1 = string.Empty;
-                InfopdcRecivable.Extra2 = string.Empty;
+                    InfopdcRecivable.bankId = 0;
                 if (!isInEditMode)
                 {
                     decimal decIdentity = spPdcReceivable.PDCReceivableMasterAdd(InfopdcRecivable);
@@ -451,7 +448,7 @@ namespace Open_Miracle
                 {
                     
                     decimal decIdentity = decPDCReceivableEditId;
-                    InfopdcRecivable.PdcReceivableMasterId = decPDCReceivableEditId;
+                    InfopdcRecivable.pdcReceivableMasterId = decPDCReceivableEditId;
                     spPdcReceivable.PDCReceivableMasterEdit(InfopdcRecivable);
                     LedgerPostingSP spLedgerPosting = new LedgerPostingSP();
                     spLedgerPosting.LedgerPostingDeleteByVoucherNoVoucherTypeIdAndLedgerId(strVoucherNo, decPDCReceivableVoucherTypeId, 12);
@@ -487,7 +484,7 @@ namespace Open_Miracle
             PDCReceivableMasterSP sppdcreceivable = new PDCReceivableMasterSP();
             DataTable dtblLedgerPostingId = new DataTable();
             LedgerPostingSP SpLedgerPosting = new LedgerPostingSP();
-            LedgerPostingInfo infoLedgerPosting = new LedgerPostingInfo();
+            LedgerPosting infoLedgerPosting = new LedgerPosting();
             ExchangeRateSP SpExchangRate = new ExchangeRateSP();
             decimal decOldExchange = 0;
             decimal decNewExchangeRate = 0;
@@ -505,36 +502,33 @@ namespace Open_Miracle
                 decimal decLedgerPostingId2 = Convert.ToDecimal(dtblLedgerPostingId.Rows[1]["ledgerPostingId"].ToString());
                 if (!btnAgainRef.Enabled)
                 {
-                    infoLedgerPosting.LedgerPostingId = decledgerpostingId1;
-                    infoLedgerPosting.VoucherTypeId = decPDCReceivableVoucherTypeId;
-                    infoLedgerPosting.VoucherNo = strVoucherNo;
-                    infoLedgerPosting.InvoiceNo = txtVoucherNo.Text.Trim();
-                    infoLedgerPosting.Date = PublicVariables._dtCurrentDate;
-                    infoLedgerPosting.LedgerId = Convert.ToDecimal(cmbAccountLedger.SelectedValue.ToString());
-                    infoLedgerPosting.YearId = PublicVariables._decCurrentFinancialYearId;
-                    infoLedgerPosting.Debit = 0;
-                    infoLedgerPosting.Credit = Convert.ToDecimal(txtAmount.Text);
-                    infoLedgerPosting.ChequeDate = Convert.ToDateTime(txtCheckDate.Text);
-                    infoLedgerPosting.ChequeNo = txtcheckNo.Text.Trim();
-                    infoLedgerPosting.ExtraDate = PublicVariables._dtCurrentDate;
-                    infoLedgerPosting.Extra1 = string.Empty;
-                    infoLedgerPosting.Extra2 = string.Empty;
+                    infoLedgerPosting.ledgerPostingId = decledgerpostingId1;
+                    infoLedgerPosting.voucherTypeId = decPDCReceivableVoucherTypeId;
+                    infoLedgerPosting.voucherNo = strVoucherNo;
+                    infoLedgerPosting.invoiceNo = txtVoucherNo.Text.Trim();
+                    infoLedgerPosting.date = DateTime.Now;
+                    infoLedgerPosting.ledgerId = Convert.ToDecimal(cmbAccountLedger.SelectedValue.ToString());
+                    infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
+                    infoLedgerPosting.debit = 0;
+                    infoLedgerPosting.credit = Convert.ToDecimal(txtAmount.Text);
+                    infoLedgerPosting.chequeDate = Convert.ToDateTime(txtCheckDate.Text);
+                    infoLedgerPosting.chequeNo = txtcheckNo.Text.Trim();
                     SpLedgerPosting.LedgerPostingEdit(infoLedgerPosting);
 
                 }
                 else
                 {
-                    infoLedgerPosting.LedgerPostingId = decledgerpostingId1;
-                    infoLedgerPosting.VoucherTypeId = decPDCReceivableVoucherTypeId;
-                    infoLedgerPosting.VoucherNo = strVoucherNo;
-                    infoLedgerPosting.InvoiceNo = txtVoucherNo.Text.Trim();
-                    infoLedgerPosting.Date = PublicVariables._dtCurrentDate;
-                    infoLedgerPosting.LedgerId = Convert.ToDecimal(cmbAccountLedger.SelectedValue.ToString());
-                    infoLedgerPosting.YearId = PublicVariables._decCurrentFinancialYearId;
-                    infoLedgerPosting.Debit = 0;
+                    infoLedgerPosting.ledgerPostingId = decledgerpostingId1;
+                    infoLedgerPosting.voucherTypeId = decPDCReceivableVoucherTypeId;
+                    infoLedgerPosting.voucherNo = strVoucherNo;
+                    infoLedgerPosting.invoiceNo = txtVoucherNo.Text.Trim();
+                    infoLedgerPosting.date = DateTime.Now;
+                    infoLedgerPosting.ledgerId = Convert.ToDecimal(cmbAccountLedger.SelectedValue.ToString());
+                    infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
+                    infoLedgerPosting.debit = 0;
                     foreach (DataRow dr in dtblPartyBalance.Rows)
                     {
-                        if (infoLedgerPosting.LedgerId == Convert.ToDecimal(dr["LedgerId"].ToString()))
+                        if (infoLedgerPosting.ledgerId == Convert.ToDecimal(dr["LedgerId"].ToString()))
                         {
                             decOldExchange = Convert.ToDecimal(dr["OldExchangeRate"].ToString());
                             decNewExchangeRateId = Convert.ToDecimal(dr["CurrencyId"].ToString());
@@ -544,15 +538,12 @@ namespace Open_Miracle
 
                         }
                     }
-                    infoLedgerPosting.Credit = decConvertRate;
-                    infoLedgerPosting.ChequeDate = Convert.ToDateTime(txtCheckDate.Text);
-                    infoLedgerPosting.ChequeNo = txtcheckNo.Text.Trim();
-                    infoLedgerPosting.ExtraDate = PublicVariables._dtCurrentDate;
-                    infoLedgerPosting.Extra1 = string.Empty;
-                    infoLedgerPosting.Extra2 = string.Empty;
+                    infoLedgerPosting.credit = decConvertRate;
+                    infoLedgerPosting.chequeDate = Convert.ToDateTime(txtCheckDate.Text);
+                    infoLedgerPosting.chequeNo = txtcheckNo.Text.Trim();
                     SpLedgerPosting.LedgerPostingEdit(infoLedgerPosting);
                     
-                    infoLedgerPosting.LedgerId = 12;
+                    infoLedgerPosting.ledgerId = 12;
                     foreach (DataRow dr in dtblPartyBalance.Rows)
                     {
                         if (Convert.ToDecimal(cmbAccountLedger.SelectedValue.ToString()) == Convert.ToDecimal(dr["LedgerId"].ToString()))
@@ -568,13 +559,13 @@ namespace Open_Miracle
                                 if (decForexAmount >= 0)
                                 {
 
-                                    infoLedgerPosting.Credit = decForexAmount;
-                                    infoLedgerPosting.Debit = 0;
+                                    infoLedgerPosting.credit = decForexAmount;
+                                    infoLedgerPosting.debit = 0;
                                 }
                                 else
                                 {
-                                    infoLedgerPosting.Debit = -1 * decForexAmount;
-                                    infoLedgerPosting.Credit = 0;
+                                    infoLedgerPosting.debit = -1 * decForexAmount;
+                                    infoLedgerPosting.credit = 0;
                                 }
                                 SpLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                             }
@@ -583,19 +574,16 @@ namespace Open_Miracle
                     }
                 }
 
-                infoLedgerPosting.LedgerPostingId = decLedgerPostingId2;
-                infoLedgerPosting.VoucherNo = strVoucherNo;
-                infoLedgerPosting.InvoiceNo = txtVoucherNo.Text.Trim();
-                infoLedgerPosting.Date = PublicVariables._dtCurrentDate;
-                infoLedgerPosting.LedgerId = 7;
-                infoLedgerPosting.YearId = PublicVariables._decCurrentFinancialYearId;
-                infoLedgerPosting.Debit = Convert.ToDecimal(txtAmount.Text);
-                infoLedgerPosting.Credit = 0;
-                infoLedgerPosting.ExtraDate = PublicVariables._dtCurrentDate;
-                infoLedgerPosting.ChequeDate = Convert.ToDateTime(txtCheckDate.Text);
-                infoLedgerPosting.ChequeNo = txtcheckNo.Text.Trim();
-                infoLedgerPosting.Extra1 = string.Empty;
-                infoLedgerPosting.Extra2 = string.Empty;
+                infoLedgerPosting.ledgerPostingId = decLedgerPostingId2;
+                infoLedgerPosting.voucherNo = strVoucherNo;
+                infoLedgerPosting.invoiceNo = txtVoucherNo.Text.Trim();
+                infoLedgerPosting.date = DateTime.Now;
+                infoLedgerPosting.ledgerId = 7;
+                infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
+                infoLedgerPosting.debit = Convert.ToDecimal(txtAmount.Text);
+                infoLedgerPosting.credit = 0;
+                infoLedgerPosting.chequeDate = Convert.ToDateTime(txtCheckDate.Text);
+                infoLedgerPosting.chequeNo = txtcheckNo.Text.Trim();
                 SpLedgerPosting.LedgerPostingEdit(infoLedgerPosting);
             }
             catch (Exception ex)
@@ -608,10 +596,10 @@ namespace Open_Miracle
         /// </summary>
         public void LedgerPosting()
         {
-            LedgerPostingInfo InfoPosting = new LedgerPostingInfo();
+            LedgerPosting InfoPosting = new LedgerPosting();
             LedgerPostingSP SpLedgerPosting = new LedgerPostingSP();
             AccountLedgerSP SpLedger = new AccountLedgerSP();
-            LedgerPostingInfo infoLedgerPosting = new LedgerPostingInfo();
+            LedgerPosting infoLedgerPosting = new LedgerPosting();
             ExchangeRateSP SpExchangRate = new ExchangeRateSP();
             decimal decOldExchange = 0;
             decimal decNewExchangeRate = 0;
@@ -625,33 +613,30 @@ namespace Open_Miracle
             {
                 if (!btnAgainRef.Enabled)
                 {
-                    infoLedgerPosting.VoucherTypeId = decPDCReceivableVoucherTypeId;
-                    infoLedgerPosting.VoucherNo = strVoucherNo;
-                    infoLedgerPosting.InvoiceNo = txtVoucherNo.Text.Trim();
-                    infoLedgerPosting.Date = PublicVariables._dtCurrentDate;
-                    infoLedgerPosting.LedgerId = Convert.ToDecimal(cmbAccountLedger.SelectedValue.ToString());
-                    infoLedgerPosting.YearId = PublicVariables._decCurrentFinancialYearId;
-                    infoLedgerPosting.Debit = 0;
-                    infoLedgerPosting.Credit = Convert.ToDecimal(txtAmount.Text);
-                    infoLedgerPosting.ChequeDate = Convert.ToDateTime(txtCheckDate.Text);
-                    infoLedgerPosting.ChequeNo = txtcheckNo.Text.Trim();
-                    infoLedgerPosting.ExtraDate = PublicVariables._dtCurrentDate;
-                    infoLedgerPosting.Extra1 = string.Empty;
-                    infoLedgerPosting.Extra2 = string.Empty;
+                    infoLedgerPosting.voucherTypeId = decPDCReceivableVoucherTypeId;
+                    infoLedgerPosting.voucherNo = strVoucherNo;
+                    infoLedgerPosting.invoiceNo = txtVoucherNo.Text.Trim();
+                    infoLedgerPosting.date = DateTime.Now;
+                    infoLedgerPosting.ledgerId = Convert.ToDecimal(cmbAccountLedger.SelectedValue.ToString());
+                    infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
+                    infoLedgerPosting.debit = 0;
+                    infoLedgerPosting.credit = Convert.ToDecimal(txtAmount.Text);
+                    infoLedgerPosting.chequeDate = Convert.ToDateTime(txtCheckDate.Text);
+                    infoLedgerPosting.chequeNo = txtcheckNo.Text.Trim();
                     SpLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                 }
                 else
                 {
-                    infoLedgerPosting.VoucherTypeId = decPDCReceivableVoucherTypeId;
-                    infoLedgerPosting.VoucherNo = strVoucherNo;
-                    infoLedgerPosting.InvoiceNo = txtVoucherNo.Text.Trim();
-                    infoLedgerPosting.Date = PublicVariables._dtCurrentDate;
-                    infoLedgerPosting.LedgerId = Convert.ToDecimal(cmbAccountLedger.SelectedValue.ToString());
-                    infoLedgerPosting.YearId = PublicVariables._decCurrentFinancialYearId;
-                    infoLedgerPosting.Debit = 0;
+                    infoLedgerPosting.voucherTypeId = decPDCReceivableVoucherTypeId;
+                    infoLedgerPosting.voucherNo = strVoucherNo;
+                    infoLedgerPosting.invoiceNo = txtVoucherNo.Text.Trim();
+                    infoLedgerPosting.date = DateTime.Now;
+                    infoLedgerPosting.ledgerId = Convert.ToDecimal(cmbAccountLedger.SelectedValue.ToString());
+                    infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
+                    infoLedgerPosting.debit = 0;
                     foreach (DataRow dr in dtblPartyBalance.Rows)
                     {
-                        if (infoLedgerPosting.LedgerId == Convert.ToDecimal(dr["LedgerId"].ToString()))
+                        if (infoLedgerPosting.ledgerId == Convert.ToDecimal(dr["LedgerId"].ToString()))
                         {
                             decOldExchange = Convert.ToDecimal(dr["OldExchangeRate"].ToString());
                             decNewExchangeRateId = Convert.ToDecimal(dr["CurrencyId"].ToString());
@@ -661,17 +646,14 @@ namespace Open_Miracle
 
                         }
                     }
-                    infoLedgerPosting.Credit = decConvertRate;
+                    infoLedgerPosting.credit = decConvertRate;
 
                     
-                    infoLedgerPosting.ChequeDate = Convert.ToDateTime(txtCheckDate.Text);
-                    infoLedgerPosting.ChequeNo = txtcheckNo.Text.Trim();
-                    infoLedgerPosting.ExtraDate = PublicVariables._dtCurrentDate;
-                    infoLedgerPosting.Extra1 = string.Empty;
-                    infoLedgerPosting.Extra2 = string.Empty;
+                    infoLedgerPosting.chequeDate = Convert.ToDateTime(txtCheckDate.Text);
+                    infoLedgerPosting.chequeNo = txtcheckNo.Text.Trim();
                     SpLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
 
-                    infoLedgerPosting.LedgerId = 12;
+                    infoLedgerPosting.ledgerId = 12;
                     foreach (DataRow dr in dtblPartyBalance.Rows)
                     {
                         if (Convert.ToDecimal(cmbAccountLedger.SelectedValue.ToString()) == Convert.ToDecimal(dr["LedgerId"].ToString()))
@@ -687,13 +669,13 @@ namespace Open_Miracle
                                 if (decForexAmount >= 0)
                                 {
 
-                                    infoLedgerPosting.Credit = decForexAmount;
-                                    infoLedgerPosting.Debit = 0;
+                                    infoLedgerPosting.credit = decForexAmount;
+                                    infoLedgerPosting.debit = 0;
                                 }
                                 else
                                 {
-                                    infoLedgerPosting.Debit = -1 * decForexAmount;
-                                    infoLedgerPosting.Credit = 0;
+                                    infoLedgerPosting.debit = -1 * decForexAmount;
+                                    infoLedgerPosting.credit = 0;
                                 }
                                 SpLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                             }
@@ -701,18 +683,15 @@ namespace Open_Miracle
 
                     }
                 }
-                infoLedgerPosting.LedgerId = 7;
-                infoLedgerPosting.VoucherNo = strVoucherNo;
-                infoLedgerPosting.InvoiceNo = txtVoucherNo.Text.Trim();
-                infoLedgerPosting.Date = PublicVariables._dtCurrentDate;
-                infoLedgerPosting.YearId = PublicVariables._decCurrentFinancialYearId;
-                infoLedgerPosting.Debit = Convert.ToDecimal(txtAmount.Text);
-                infoLedgerPosting.Credit = 0;
-                infoLedgerPosting.ChequeDate = Convert.ToDateTime(txtCheckDate.Text);
-                infoLedgerPosting.ChequeNo = txtcheckNo.Text.Trim();
-                infoLedgerPosting.ExtraDate = PublicVariables._dtCurrentDate;
-                infoLedgerPosting.Extra1 = string.Empty;
-                infoLedgerPosting.Extra2 = string.Empty;
+                infoLedgerPosting.ledgerId = 7;
+                infoLedgerPosting.voucherNo = strVoucherNo;
+                infoLedgerPosting.invoiceNo = txtVoucherNo.Text.Trim();
+                infoLedgerPosting.date = DateTime.Now;
+                infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
+                infoLedgerPosting.debit = Convert.ToDecimal(txtAmount.Text);
+                infoLedgerPosting.credit = 0;
+                infoLedgerPosting.chequeDate = Convert.ToDateTime(txtCheckDate.Text);
+                infoLedgerPosting.chequeNo = txtcheckNo.Text.Trim();
                 SpLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
             }
             catch (Exception ex)
@@ -749,38 +728,34 @@ namespace Open_Miracle
         {
             int inTableRowCount = dtblPartyBalance.Rows.Count;
             PartyBalanceSP spPartyBalance = new PartyBalanceSP();
-            PartyBalanceInfo InfopartyBalance = new PartyBalanceInfo();
+            PartyBalance InfopartyBalance = new PartyBalance();
             try
             {
-                InfopartyBalance.CreditPeriod = 0;//
-                InfopartyBalance.Date = dtpVoucherDate.Value;
-                InfopartyBalance.LedgerId = Convert.ToDecimal(dtblPartyBalance.Rows[inJ]["LedgerId"].ToString());
-                InfopartyBalance.ReferenceType = dtblPartyBalance.Rows[inJ]["ReferenceType"].ToString();
+                InfopartyBalance.creditPeriod = 0;//
+                InfopartyBalance.date = dtpVoucherDate.Value;
+                InfopartyBalance.ledgerId = Convert.ToDecimal(dtblPartyBalance.Rows[inJ]["LedgerId"].ToString());
+                InfopartyBalance.referenceType = dtblPartyBalance.Rows[inJ]["ReferenceType"].ToString();
                 if (dtblPartyBalance.Rows[inJ]["ReferenceType"].ToString() == "New" || dtblPartyBalance.Rows[inJ]["ReferenceType"].ToString() == "OnAccount")
                 {
-                    InfopartyBalance.AgainstInvoiceNo = dtblPartyBalance.Rows[inJ]["AgainstInvoiceNo"].ToString();
-                    InfopartyBalance.AgainstVoucherNo = dtblPartyBalance.Rows[inJ]["AgainstVoucherNo"].ToString();
-                    InfopartyBalance.AgainstVoucherTypeId = Convert.ToDecimal(dtblPartyBalance.Rows[inJ]["AgainstVoucherTypeId"].ToString());//decPaymentVoucherTypeId;
-                    InfopartyBalance.VoucherTypeId = decPDCReceivableVoucherTypeId;
-                    InfopartyBalance.InvoiceNo = strInvoiceNo;
-                    InfopartyBalance.VoucherNo = strVoucherNo;
+                    InfopartyBalance.againstInvoiceNo = dtblPartyBalance.Rows[inJ]["AgainstInvoiceNo"].ToString();
+                    InfopartyBalance.againstVoucherNo = dtblPartyBalance.Rows[inJ]["AgainstVoucherNo"].ToString();
+                    InfopartyBalance.againstVoucherTypeId = Convert.ToDecimal(dtblPartyBalance.Rows[inJ]["AgainstVoucherTypeId"].ToString());//decPaymentVoucherTypeId;
+                    InfopartyBalance.voucherTypeId = decPDCReceivableVoucherTypeId;
+                    InfopartyBalance.invoiceNo = strInvoiceNo;
+                    InfopartyBalance.voucherNo = strVoucherNo;
                 }
                 else
                 {
-                    InfopartyBalance.ExchangeRateId = Convert.ToDecimal(dtblPartyBalance.Rows[inJ]["OldExchangeRate"].ToString());
-                    InfopartyBalance.AgainstInvoiceNo = strInvoiceNo;
-                    InfopartyBalance.AgainstVoucherNo = strVoucherNo;
-                    InfopartyBalance.AgainstVoucherTypeId = decPDCReceivableVoucherTypeId;
-                    InfopartyBalance.VoucherTypeId = Convert.ToDecimal(dtblPartyBalance.Rows[inJ]["AgainstVoucherTypeId"].ToString());
-                    InfopartyBalance.VoucherNo = dtblPartyBalance.Rows[inJ]["AgainstVoucherNo"].ToString();
-                    InfopartyBalance.InvoiceNo = dtblPartyBalance.Rows[inJ]["AgainstInvoiceNo"].ToString();
+                    InfopartyBalance.againstInvoiceNo = strInvoiceNo;
+                    InfopartyBalance.againstVoucherNo = strVoucherNo;
+                    InfopartyBalance.againstVoucherTypeId = decPDCReceivableVoucherTypeId;
+                    InfopartyBalance.voucherTypeId = Convert.ToDecimal(dtblPartyBalance.Rows[inJ]["AgainstVoucherTypeId"].ToString());
+                    InfopartyBalance.voucherNo = dtblPartyBalance.Rows[inJ]["AgainstVoucherNo"].ToString();
+                    InfopartyBalance.invoiceNo = dtblPartyBalance.Rows[inJ]["AgainstInvoiceNo"].ToString();
                 }
-                InfopartyBalance.Credit = Convert.ToDecimal(dtblPartyBalance.Rows[inJ]["Amount"].ToString());
-                InfopartyBalance.Debit = 0;
-                InfopartyBalance.ExchangeRateId = Convert.ToDecimal(dtblPartyBalance.Rows[inJ]["CurrencyId"].ToString());
-                InfopartyBalance.Extra1 = string.Empty;
-                InfopartyBalance.Extra2 = string.Empty;
-                InfopartyBalance.FinancialYearId = PublicVariables._decCurrentFinancialYearId;
+                InfopartyBalance.credit = Convert.ToDecimal(dtblPartyBalance.Rows[inJ]["Amount"].ToString());
+                InfopartyBalance.debit = 0;
+                InfopartyBalance.financialYearId = Utils.getManagement().CurrentFinancialYear;
                 spPartyBalance.PartyBalanceAdd(InfopartyBalance);
             }
             catch (Exception ex)
@@ -796,39 +771,35 @@ namespace Open_Miracle
         public void PartyBalanceEdit(decimal decPartyBalanceId, int inJ)
         {
             PartyBalanceSP spPartyBalance = new PartyBalanceSP();
-            PartyBalanceInfo InfopartyBalance = new PartyBalanceInfo();
+            PartyBalance InfopartyBalance = new PartyBalance();
             try
             {
-                InfopartyBalance.PartyBalanceId = decPartyBalanceId;
-                InfopartyBalance.CreditPeriod = 0;//
-                InfopartyBalance.Date = dtpVoucherDate.Value;
-                InfopartyBalance.LedgerId = Convert.ToDecimal(dtblPartyBalance.Rows[inJ]["LedgerId"].ToString());
-                InfopartyBalance.ReferenceType = dtblPartyBalance.Rows[inJ]["ReferenceType"].ToString();
+                InfopartyBalance.partyBalanceId = decPartyBalanceId;
+                InfopartyBalance.creditPeriod = 0;//
+                InfopartyBalance.date = dtpVoucherDate.Value;
+                InfopartyBalance.ledgerId = Convert.ToDecimal(dtblPartyBalance.Rows[inJ]["LedgerId"].ToString());
+                InfopartyBalance.referenceType = dtblPartyBalance.Rows[inJ]["ReferenceType"].ToString();
                 if (dtblPartyBalance.Rows[inJ]["ReferenceType"].ToString() == "New" || dtblPartyBalance.Rows[inJ]["ReferenceType"].ToString() == "OnAccount")
                 {
-                    InfopartyBalance.AgainstInvoiceNo = dtblPartyBalance.Rows[inJ]["AgainstInvoiceNo"].ToString();
-                    InfopartyBalance.AgainstVoucherNo = dtblPartyBalance.Rows[inJ]["AgainstVoucherNo"].ToString();
-                    InfopartyBalance.AgainstVoucherTypeId = Convert.ToDecimal(dtblPartyBalance.Rows[inJ]["AgainstVoucherTypeId"].ToString());//decPaymentVoucherTypeId;
-                    InfopartyBalance.VoucherTypeId = decPDCReceivableVoucherTypeId;
-                    InfopartyBalance.InvoiceNo = strInvoiceNo;
-                    InfopartyBalance.VoucherNo = strVoucherNo;
+                    InfopartyBalance.againstInvoiceNo = dtblPartyBalance.Rows[inJ]["AgainstInvoiceNo"].ToString();
+                    InfopartyBalance.againstVoucherNo = dtblPartyBalance.Rows[inJ]["AgainstVoucherNo"].ToString();
+                    InfopartyBalance.againstVoucherTypeId = Convert.ToDecimal(dtblPartyBalance.Rows[inJ]["AgainstVoucherTypeId"].ToString());//decPaymentVoucherTypeId;
+                    InfopartyBalance.voucherTypeId = decPDCReceivableVoucherTypeId;
+                    InfopartyBalance.invoiceNo = strInvoiceNo;
+                    InfopartyBalance.voucherNo = strVoucherNo;
                 }
                 else
                 {
-                    InfopartyBalance.ExchangeRateId = Convert.ToDecimal(dtblPartyBalance.Rows[inJ]["OldExchangeRate"].ToString());
-                    InfopartyBalance.AgainstInvoiceNo = strInvoiceNo;
-                    InfopartyBalance.AgainstVoucherNo = strVoucherNo;
-                    InfopartyBalance.AgainstVoucherTypeId = decPDCReceivableVoucherTypeId;
-                    InfopartyBalance.VoucherTypeId = Convert.ToDecimal(dtblPartyBalance.Rows[inJ]["AgainstVoucherTypeId"].ToString());
-                    InfopartyBalance.VoucherNo = dtblPartyBalance.Rows[inJ]["AgainstVoucherNo"].ToString();
-                    InfopartyBalance.InvoiceNo = dtblPartyBalance.Rows[inJ]["AgainstInvoiceNo"].ToString();
+                    InfopartyBalance.againstInvoiceNo = strInvoiceNo;
+                    InfopartyBalance.againstVoucherNo = strVoucherNo;
+                    InfopartyBalance.againstVoucherTypeId = decPDCReceivableVoucherTypeId;
+                    InfopartyBalance.voucherTypeId = Convert.ToDecimal(dtblPartyBalance.Rows[inJ]["AgainstVoucherTypeId"].ToString());
+                    InfopartyBalance.voucherNo = dtblPartyBalance.Rows[inJ]["AgainstVoucherNo"].ToString();
+                    InfopartyBalance.invoiceNo = dtblPartyBalance.Rows[inJ]["AgainstInvoiceNo"].ToString();
                 }
-                InfopartyBalance.Credit = Convert.ToDecimal(dtblPartyBalance.Rows[inJ]["Amount"].ToString());
-                InfopartyBalance.Debit = 0;
-                InfopartyBalance.ExchangeRateId = Convert.ToDecimal(dtblPartyBalance.Rows[inJ]["CurrencyId"].ToString());
-                InfopartyBalance.Extra1 = string.Empty;
-                InfopartyBalance.Extra2 = string.Empty;
-                InfopartyBalance.FinancialYearId = PublicVariables._decCurrentFinancialYearId;
+                InfopartyBalance.credit = Convert.ToDecimal(dtblPartyBalance.Rows[inJ]["Amount"].ToString());
+                InfopartyBalance.debit = 0;
+                InfopartyBalance.financialYearId = Utils.getManagement().CurrentFinancialYear;
                 spPartyBalance.PartyBalanceEdit(InfopartyBalance);
             }
             catch (Exception ex)
@@ -849,9 +820,9 @@ namespace Open_Miracle
                 VoucherTypeSP spVoucherType = new VoucherTypeSP();
                 isAutomatic = spVoucherType.CheckMethodOfVoucherNumbering(decPDCReceivableVoucherTypeId);
                 SuffixPrefixSP spSuffisprefix = new SuffixPrefixSP();
-                SuffixPrefixInfo infoSuffixPrefix = new SuffixPrefixInfo();
+                SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
                 infoSuffixPrefix = spSuffisprefix.GetSuffixPrefixDetails(decPDCReceivableVoucherTypeId, dtpVoucherDate.Value);
-                decSufixprefixPdcReceivableID = infoSuffixPrefix.SuffixprefixId;
+                decSufixprefixPdcReceivableID = infoSuffixPrefix.suffixprefixId;
                 this.Text = strVoucherTypeName;
                 base.Show();
                 if (isAutomatic)
@@ -876,24 +847,24 @@ namespace Open_Miracle
         /// <param name="decAmount"></param>
         /// <param name="dtbl"></param>
         /// <param name="arrlstOfRemovedRow"></param>
-        public void CallFromPartyBalance(frmPartyBalance frmPartyBalance, decimal decAmount, DataTable dtbl, ArrayList arrlstOfRemovedRow)
-        {
-            try
-            {
-                base.Show();
-                txtAmount.Text = decAmount.ToString();
-                this.frmPartyBalanceObj = frmPartyBalance;
-                frmPartyBalance.Close();
-                frmPartyBalanceObj = null;
-                dtblPartyBalance = dtbl;
-                arrlstOfDeletedPartyBalanceRow = arrlstOfRemovedRow;
-                txtAmount.Focus();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PR16:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        //public void CallFromPartyBalance(frmPartyBalance frmPartyBalance, decimal decAmount, DataTable dtbl, ArrayList arrlstOfRemovedRow)
+        //{
+        //    try
+        //    {
+        //        base.Show();
+        //        txtAmount.Text = decAmount.ToString();
+        //        this.frmPartyBalanceObj = frmPartyBalance;
+        //        frmPartyBalance.Close();
+        //        frmPartyBalanceObj = null;
+        //        dtblPartyBalance = dtbl;
+        //        arrlstOfDeletedPartyBalanceRow = arrlstOfRemovedRow;
+        //        txtAmount.Focus();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("PR16:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
         /// <summary>
         /// Voucher no generation function based on the settings
         /// </summary>
@@ -921,11 +892,11 @@ namespace Open_Miracle
                 if (isAutomatic)
                 {
                     SuffixPrefixSP spSuffisprefix = new SuffixPrefixSP();
-                    SuffixPrefixInfo infoSuffixPrefix = new SuffixPrefixInfo();
+                    SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
                     infoSuffixPrefix = spSuffisprefix.GetSuffixPrefixDetails(decPDCReceivableVoucherTypeId, dtpVoucherDate.Value);
-                    strPrefix = infoSuffixPrefix.Prefix;
-                    strSuffix = infoSuffixPrefix.Suffix;
-                    decSufixprefixPdcReceivableID = infoSuffixPrefix.SuffixprefixId;
+                    strPrefix = infoSuffixPrefix.prefix;
+                    strSuffix = infoSuffixPrefix.suffix;
+                    decSufixprefixPdcReceivableID = infoSuffixPrefix.suffixprefixId;
                     strInvoiceNo = strPrefix + strVoucherNo + strSuffix;
                     txtVoucherNo.Text = strInvoiceNo;
                     txtVoucherNo.ReadOnly = true;
@@ -1021,29 +992,29 @@ namespace Open_Miracle
                     this.Close();
                     PDCReceivableRegisterObj.Show();
                 }
-                else if (PDCReceivableReportObj != null)
-                {
-                    this.Close();
-                    PDCReceivableReportObj.Show();
-                }
-                else if (frmLedgerDetailsObj != null)
-                {
-                    this.Close();
-                    frmLedgerDetailsObj.Show();
-                }
-                else if (objVoucherSearch != null)
-                {
-                    this.Close();
-                    objVoucherSearch.GridFill();
-                }
-                else
-                {
-                    ClearFunction();
-                }
-                if (frmDayBookObj != null)
-                {
-                    this.Close();
-                }
+                //else if (PDCReceivableReportObj != null)
+                //{
+                //    this.Close();
+                //    PDCReceivableReportObj.Show();
+                //}
+                //else if (frmLedgerDetailsObj != null)
+                //{
+                //    this.Close();
+                //    frmLedgerDetailsObj.Show();
+                //}
+                //else if (objVoucherSearch != null)
+                //{
+                //    this.Close();
+                //    objVoucherSearch.GridFill();
+                //}
+                //else
+                //{
+                //    ClearFunction();
+                //}
+                //if (frmDayBookObj != null)
+                //{
+                //    this.Close();
+                //}
             }
             catch (Exception ex)
             {
@@ -1056,19 +1027,19 @@ namespace Open_Miracle
         /// <param name="decMasterId"></param>
         public void Print(decimal decMasterId)
         {
-            try
-            {
-                DataSet dsPdcReceivable = new DataSet();
-                PDCReceivableMasterSP sppdcreceivable = new PDCReceivableMasterSP();
-                dsPdcReceivable = sppdcreceivable.PDCReceivableVoucherPrinting(decMasterId, 1);
-                frmReport frmreport = new frmReport();
-                frmreport.MdiParent = formMDI.MDIObj;
-                frmreport.PDCreceivableVoucherPrinting(dsPdcReceivable);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PR21:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //try
+            //{
+            //    DataSet dsPdcReceivable = new DataSet();
+            //    PDCReceivableMasterSP sppdcreceivable = new PDCReceivableMasterSP();
+            //    dsPdcReceivable = sppdcreceivable.PDCReceivableVoucherPrinting(decMasterId, 1);
+            //    frmReport frmreport = new frmReport();
+            //    frmreport.MdiParent = formMDI.MDIObj;
+            //    frmreport.PDCreceivableVoucherPrinting(dsPdcReceivable);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("PR21:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         /// <summary>
         /// Print function for Dotmatrix Printer
@@ -1076,86 +1047,86 @@ namespace Open_Miracle
         /// <param name="decMasterId"></param>
         public void PrintForDotMatrix(decimal decMasterId)
         {
-            try
-            {
-                DataTable dtblOtherDetails = new DataTable();
-                CompanySP spComapany = new CompanySP();
-                dtblOtherDetails = spComapany.CompanyViewForDotMatrix();
-                DataTable dtblGridDetails = new DataTable();
-                dtblGridDetails.Columns.Add("SlNo");
-                dtblGridDetails.Columns.Add("BankAccount");
-                dtblGridDetails.Columns.Add("ChequeNo");
-                dtblGridDetails.Columns.Add("ChequeDate");
-                dtblGridDetails.Columns.Add("Amount");
-                DataRow dr = dtblGridDetails.NewRow();
-                dr["SlNo"] = 1;
-                dr["ChequeNo"] = txtcheckNo.Text;
-                dr["BankAccount"] = cmbBank.Text;
-                dr["ChequeDate"] = txtCheckDate.Text;
-                dr["Amount"] = txtAmount.Text;
-                dtblGridDetails.Rows.Add(dr);
-                dtblOtherDetails.Columns.Add("voucherNo");
-                dtblOtherDetails.Columns.Add("date");
-                dtblOtherDetails.Columns.Add("ledgerName");
-                dtblOtherDetails.Columns.Add("Narration");
-                dtblOtherDetails.Columns.Add("TotalAmount");
-                dtblOtherDetails.Columns.Add("AmountInWords");
-                dtblOtherDetails.Columns.Add("Declaration");
-                dtblOtherDetails.Columns.Add("Heading1");
-                dtblOtherDetails.Columns.Add("Heading2");
-                dtblOtherDetails.Columns.Add("Heading3");
-                dtblOtherDetails.Columns.Add("Heading4");
-                dtblOtherDetails.Columns.Add("CustomerAddress");
-                DataRow dRowOther = dtblOtherDetails.Rows[0];
-                dRowOther["voucherNo"] = txtVoucherNo.Text;
-                dRowOther["date"] = txtVoucherDate.Text;
-                dRowOther["ledgerName"] = cmbAccountLedger.Text;
-                dRowOther["Narration"] = txtNarration.Text;
-                dRowOther["TotalAmount"] = txtAmount.Text;
-                dRowOther["address"] = (dtblOtherDetails.Rows[0]["address"].ToString().Replace("\n", ", ")).Replace("\r", "");
-                AccountLedgerSP spAccountLedger = new AccountLedgerSP();
-                AccountLedgerInfo infoAccountLedger = new AccountLedgerInfo();
-                infoAccountLedger = spAccountLedger.AccountLedgerView(Convert.ToDecimal(cmbAccountLedger.SelectedValue));
-                dRowOther["CustomerAddress"] = (infoAccountLedger.Address.ToString().Replace("\n", ", ")).Replace("\r", "");
-                string s = new NumToText().AmountWords(Convert.ToDecimal(txtAmount.Text), PublicVariables._decCurrencyId);
-                dRowOther["AmountInWords"] = new NumToText().AmountWords(Convert.ToDecimal(txtAmount.Text), PublicVariables._decCurrencyId);
-                VoucherTypeSP spVoucherType = new VoucherTypeSP();
-                DataTable dtblDeclaration = spVoucherType.DeclarationAndHeadingGetByVoucherTypeId(decPDCReceivableVoucherTypeId);
-                dRowOther["Declaration"] = dtblDeclaration.Rows[0]["Declaration"].ToString();
-                dRowOther["Heading1"] = dtblDeclaration.Rows[0]["Heading1"].ToString();
-                dRowOther["Heading2"] = dtblDeclaration.Rows[0]["Heading2"].ToString();
-                dRowOther["Heading3"] = dtblDeclaration.Rows[0]["Heading3"].ToString();
-                dRowOther["Heading4"] = dtblDeclaration.Rows[0]["Heading4"].ToString();
-                int inFormId = spVoucherType.FormIdGetForPrinterSettings(Convert.ToInt32(dtblDeclaration.Rows[0]["masterId"].ToString()));
-                PrintWorks.DotMatrixPrint.PrintDesign(inFormId, dtblOtherDetails, dtblGridDetails, dtblOtherDetails);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PR22:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //try
+            //{
+            //    DataTable dtblOtherDetails = new DataTable();
+            //    CompanySP spComapany = new CompanySP();
+            //    dtblOtherDetails = spComapany.CompanyViewForDotMatrix();
+            //    DataTable dtblGridDetails = new DataTable();
+            //    dtblGridDetails.Columns.Add("SlNo");
+            //    dtblGridDetails.Columns.Add("BankAccount");
+            //    dtblGridDetails.Columns.Add("ChequeNo");
+            //    dtblGridDetails.Columns.Add("ChequeDate");
+            //    dtblGridDetails.Columns.Add("Amount");
+            //    DataRow dr = dtblGridDetails.NewRow();
+            //    dr["SlNo"] = 1;
+            //    dr["ChequeNo"] = txtcheckNo.Text;
+            //    dr["BankAccount"] = cmbBank.Text;
+            //    dr["ChequeDate"] = txtCheckDate.Text;
+            //    dr["Amount"] = txtAmount.Text;
+            //    dtblGridDetails.Rows.Add(dr);
+            //    dtblOtherDetails.Columns.Add("voucherNo");
+            //    dtblOtherDetails.Columns.Add("date");
+            //    dtblOtherDetails.Columns.Add("ledgerName");
+            //    dtblOtherDetails.Columns.Add("Narration");
+            //    dtblOtherDetails.Columns.Add("TotalAmount");
+            //    dtblOtherDetails.Columns.Add("AmountInWords");
+            //    dtblOtherDetails.Columns.Add("Declaration");
+            //    dtblOtherDetails.Columns.Add("Heading1");
+            //    dtblOtherDetails.Columns.Add("Heading2");
+            //    dtblOtherDetails.Columns.Add("Heading3");
+            //    dtblOtherDetails.Columns.Add("Heading4");
+            //    dtblOtherDetails.Columns.Add("CustomerAddress");
+            //    DataRow dRowOther = dtblOtherDetails.Rows[0];
+            //    dRowOther["voucherNo"] = txtVoucherNo.Text;
+            //    dRowOther["date"] = txtVoucherDate.Text;
+            //    dRowOther["ledgerName"] = cmbAccountLedger.Text;
+            //    dRowOther["Narration"] = txtNarration.Text;
+            //    dRowOther["TotalAmount"] = txtAmount.Text;
+            //    dRowOther["address"] = (dtblOtherDetails.Rows[0]["address"].ToString().Replace("\n", ", ")).Replace("\r", "");
+            //    AccountLedgerSP spAccountLedger = new AccountLedgerSP();
+            //    AccountLedgerInfo infoAccountLedger = new AccountLedgerInfo();
+            //    infoAccountLedger = spAccountLedger.AccountLedgerView(Convert.ToDecimal(cmbAccountLedger.SelectedValue));
+            //    dRowOther["CustomerAddress"] = (infoAccountLedger.Address.ToString().Replace("\n", ", ")).Replace("\r", "");
+            //    string s = new NumToText().AmountWords(Convert.ToDecimal(txtAmount.Text), PublicVariables._decCurrencyId);
+            //    dRowOther["AmountInWords"] = new NumToText().AmountWords(Convert.ToDecimal(txtAmount.Text), PublicVariables._decCurrencyId);
+            //    VoucherTypeSP spVoucherType = new VoucherTypeSP();
+            //    DataTable dtblDeclaration = spVoucherType.DeclarationAndHeadingGetByVoucherTypeId(decPDCReceivableVoucherTypeId);
+            //    dRowOther["Declaration"] = dtblDeclaration.Rows[0]["Declaration"].ToString();
+            //    dRowOther["Heading1"] = dtblDeclaration.Rows[0]["Heading1"].ToString();
+            //    dRowOther["Heading2"] = dtblDeclaration.Rows[0]["Heading2"].ToString();
+            //    dRowOther["Heading3"] = dtblDeclaration.Rows[0]["Heading3"].ToString();
+            //    dRowOther["Heading4"] = dtblDeclaration.Rows[0]["Heading4"].ToString();
+            //    int inFormId = spVoucherType.FormIdGetForPrinterSettings(Convert.ToInt32(dtblDeclaration.Rows[0]["masterId"].ToString()));
+            //    PrintWorks.DotMatrixPrint.PrintDesign(inFormId, dtblOtherDetails, dtblGridDetails, dtblOtherDetails);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("PR22:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         /// <summary>
         /// Function to call this form from frmPDCReceivableRegister to view details and for updation 
         /// </summary>
         /// <param name="pdcreceivableRegObj"></param>
         /// <param name="decMasterId"></param>
-        public void CallFromPDCReceivableRegister(frmPDCReceivableRegister pdcreceivableRegObj, decimal decMasterId)
-        {
-            try
-            {
-                pdcreceivableRegObj.Enabled = false;
-                base.Show();
-                isInEditMode = true;
-                btnDelete.Enabled = true;
-                PDCReceivableRegisterObj = pdcreceivableRegObj;
-                decPDCReceivableEditId = decMasterId;
-                FillFunction();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PP23:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        //public void CallFromPDCReceivableRegister(frmPDCReceivableRegister pdcreceivableRegObj, decimal decMasterId)
+        //{
+        //    try
+        //    {
+        //        pdcreceivableRegObj.Enabled = false;
+        //        base.Show();
+        //        isInEditMode = true;
+        //        btnDelete.Enabled = true;
+        //        PDCReceivableRegisterObj = pdcreceivableRegObj;
+        //        decPDCReceivableEditId = decMasterId;
+        //        FillFunction();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("PP23:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
         /// <summary>
         /// Fill function to updation
         /// </summary>
@@ -1164,14 +1135,14 @@ namespace Open_Miracle
             try
             {
                 PDCReceivableMasterSP sppdcreceivable = new PDCReceivableMasterSP();
-                PDCReceivableMasterInfo infopdcrecivable = new PDCReceivableMasterInfo();
+                PDCReceivableMaster infopdcrecivable = new PDCReceivableMaster();
                 infopdcrecivable = sppdcreceivable.PDCReceivableMasterView(decPDCReceivableEditId);
                 txtVoucherNo.ReadOnly = false;
-                strVoucherNo = infopdcrecivable.VoucherNo;
-                strInvoiceNo = infopdcrecivable.InvoiceNo;
+                strVoucherNo = infopdcrecivable.voucherNo;
+                strInvoiceNo = infopdcrecivable.invoiceNo;
                 txtVoucherNo.Text = strInvoiceNo;
-                decSufixprefixPdcReceivableID = infopdcrecivable.SuffixPrefixId;
-                decPDCReceivableVoucherTypeId = infopdcrecivable.VoucherTypeId;
+                decSufixprefixPdcReceivableID = (decimal)infopdcrecivable.suffixPrefixId;
+                decPDCReceivableVoucherTypeId = (decimal)infopdcrecivable.voucherTypeId;
                 VoucherTypeSP spVoucherType = new VoucherTypeSP();
                 isAutomatic = spVoucherType.CheckMethodOfVoucherNumbering(decPDCReceivableVoucherTypeId);
                 if (isAutomatic)
@@ -1183,24 +1154,24 @@ namespace Open_Miracle
                     txtVoucherNo.ReadOnly = false;
                     lblVoucherNoManualValidator.Visible = false;
                 }
-                if (infopdcrecivable.PdcReceivableMasterId != 0)
+                if (infopdcrecivable.pdcReceivableMasterId != 0)
                 {
-                    txtVoucherNo.Text = infopdcrecivable.InvoiceNo;
-                    dtpVoucherDate.Value = infopdcrecivable.Date;
+                    txtVoucherNo.Text = infopdcrecivable.invoiceNo;
+                    dtpVoucherDate.Value = infopdcrecivable.date;
                     txtVoucherDate.Text = dtpVoucherDate.Value.ToString("dd-MMM-yyyy");
-                    txtNarration.Text = infopdcrecivable.Narration;
-                    cmbAccountLedger.SelectedValue = infopdcrecivable.LedgerId;
-                    txtAmount.Text = infopdcrecivable.Amount.ToString();
-                    if (infopdcrecivable.BankId != 0)
-                        cmbBank.SelectedValue = infopdcrecivable.BankId;
+                    txtNarration.Text = infopdcrecivable.narration;
+                    cmbAccountLedger.SelectedValue = infopdcrecivable.ledgerId;
+                    txtAmount.Text = infopdcrecivable.amount.ToString();
+                    if (infopdcrecivable.bankId != 0)
+                        cmbBank.SelectedValue = infopdcrecivable.bankId;
                     else
                         cmbBank.SelectedValue = string.Empty;
-                    txtcheckNo.Text = infopdcrecivable.ChequeNo;
-                    txtCheckDate.Text = infopdcrecivable.ChequeDate.ToString("dd-MMM-yyyy");
+                    txtcheckNo.Text = infopdcrecivable.chequeNo;
+                    txtCheckDate.Text = infopdcrecivable.chequeDate.Value.ToString("dd-MMM-yyyy");
                     btnSave.Text = "Update";
                     PartyBalanceSP SpPartyBalance = new PartyBalanceSP();
                     DataTable dtbl1 = new DataTable();
-                    dtbl1 = SpPartyBalance.PartyBalanceViewByVoucherNoAndVoucherType(decPDCReceivableVoucherTypeId, strVoucherNo, infopdcrecivable.Date);
+                    dtbl1 = SpPartyBalance.PartyBalanceViewByVoucherNoAndVoucherType(decPDCReceivableVoucherTypeId, strVoucherNo, infopdcrecivable.date);
                     dtblPartyBalance = dtbl1;
                 }
             }
@@ -1214,135 +1185,135 @@ namespace Open_Miracle
         /// </summary>
         /// <param name="pdcReceivableReport"></param>
         /// <param name="decMasterId"></param>
-        public void CallFromPdcReceivableReport(frmPDCRecievableReport pdcReceivableReport, decimal decMasterId)
-        {
-            try
-            {
-                pdcReceivableReport.Enabled = false;
-                base.Show();
-                this.PDCReceivableReportObj = pdcReceivableReport;
-                isInEditMode = true;
-                btnDelete.Enabled = true;
-                PDCReceivableReportObj = pdcReceivableReport;
-                decPDCReceivableEditId = decMasterId;
-                FillFunction();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PR25:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        //public void CallFromPdcReceivableReport(frmPDCRecievableReport pdcReceivableReport, decimal decMasterId)
+        //{
+        //    try
+        //    {
+        //        pdcReceivableReport.Enabled = false;
+        //        base.Show();
+        //        this.PDCReceivableReportObj = pdcReceivableReport;
+        //        isInEditMode = true;
+        //        btnDelete.Enabled = true;
+        //        PDCReceivableReportObj = pdcReceivableReport;
+        //        decPDCReceivableEditId = decMasterId;
+        //        FillFunction();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("PR25:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
         /// <summary>
         /// Function to call this form from frmBillallocation to view details and for updation
         /// </summary>
         /// <param name="frmBillallocation"></param>
         /// <param name="decPdcReceivableMasterId"></param>
-        public void CallFromBillAllocation(frmBillallocation frmBillallocation, decimal decPdcReceivableMasterId)
-        {
-            try
-            {
-                frmBillallocation.Enabled = false;
-                base.Show();
-                isInEditMode = true;
-                btnDelete.Enabled = true;
-                frmBillallocationObj = frmBillallocation;
-                decPDCReceivableEditId = decPdcReceivableMasterId;
-                FillFunction();
-            }
-            catch (Exception ex)
-            {
+        //public void CallFromBillAllocation(frmBillallocation frmBillallocation, decimal decPdcReceivableMasterId)
+        //{
+        //    try
+        //    {
+        //        frmBillallocation.Enabled = false;
+        //        base.Show();
+        //        isInEditMode = true;
+        //        btnDelete.Enabled = true;
+        //        frmBillallocationObj = frmBillallocation;
+        //        decPDCReceivableEditId = decPdcReceivableMasterId;
+        //        FillFunction();
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                MessageBox.Show("PR26:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        //        MessageBox.Show("PR26:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
         /// <summary>
         /// Function to call this form from frmDayBook to view details and for updation
         /// </summary>
         /// <param name="frmDayBook"></param>
         /// <param name="decPDCMasterId"></param>
-        public void callFromDayBook(frmDayBook frmDayBook, decimal decPDCMasterId)
-        {
-            try
-            {
-                frmDayBook.Enabled = false;
-                base.Show();
-                isInEditMode = true;
-                btnDelete.Enabled = true;
-                frmDayBookObj = frmDayBook;
-                decPDCReceivableEditId = decPDCMasterId;
-                FillFunction();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PR27:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        //public void callFromDayBook(frmDayBook frmDayBook, decimal decPDCMasterId)
+        //{
+        //    try
+        //    {
+        //        frmDayBook.Enabled = false;
+        //        base.Show();
+        //        isInEditMode = true;
+        //        btnDelete.Enabled = true;
+        //        frmDayBookObj = frmDayBook;
+        //        decPDCReceivableEditId = decPDCMasterId;
+        //        FillFunction();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("PR27:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
         /// <summary>
         /// Function to call this form from frmAgeingReport to view details and for updation
         /// </summary>
         /// <param name="frmAgeing"></param>
         /// <param name="decPDCMasterId"></param>
-        public void callFromAgeing(frmAgeingReport frmAgeing, decimal decPDCMasterId)
-        {
-            try
-            {
-                frmAgeing.Enabled = false;
-                base.Show();
-                isInEditMode = true;
-                btnDelete.Enabled = true;
-                frmAgeingObj = frmAgeing;
-                decPDCReceivableEditId = decPDCMasterId;
-                FillFunction();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PR28:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        //public void callFromAgeing(frmAgeingReport frmAgeing, decimal decPDCMasterId)
+        //{
+        //    try
+        //    {
+        //        frmAgeing.Enabled = false;
+        //        base.Show();
+        //        isInEditMode = true;
+        //        btnDelete.Enabled = true;
+        //        frmAgeingObj = frmAgeing;
+        //        decPDCReceivableEditId = decPDCMasterId;
+        //        FillFunction();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("PR28:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
         /// <summary>
         /// Function to call this form from frmChequeReport to view details and for updation
         /// </summary>
         /// <param name="frmChequeReport"></param>
         /// <param name="decPDCMasterId"></param>
-        public void CallFromChequeReport(frmChequeReport frmChequeReport, decimal decPDCMasterId)
-        {
-            try
-            {
-                frmChequeReport.Enabled = false;
-                base.Show();
-                isInEditMode = true;
-                btnDelete.Enabled = true;
-                frmChequeReportObj = frmChequeReport;
-                decPDCReceivableEditId = decPDCMasterId;
-                FillFunction();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PR29:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        //public void CallFromChequeReport(frmChequeReport frmChequeReport, decimal decPDCMasterId)
+        //{
+        //    try
+        //    {
+        //        frmChequeReport.Enabled = false;
+        //        base.Show();
+        //        isInEditMode = true;
+        //        btnDelete.Enabled = true;
+        //        frmChequeReportObj = frmChequeReport;
+        //        decPDCReceivableEditId = decPDCMasterId;
+        //        FillFunction();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("PR29:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
         /// <summary>
         /// Function to call this form from frmLedgerDetails to view details and for updation
         /// </summary>
         /// <param name="frmledgerdetails"></param>
         /// <param name="decMasterId"></param>
-        public void CallFromLedgerDetails(frmLedgerDetails frmledgerdetails, decimal decMasterId)
-        {
-            try
-            {
-                frmLedgerDetailsObj = frmledgerdetails;
-                frmLedgerDetailsObj.Enabled = false;
-                base.Show();
-                isInEditMode = true;
-                btnDelete.Enabled = true;
-                decPDCReceivableEditId = decMasterId;
-                FillFunction();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PR30:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        //public void CallFromLedgerDetails(frmLedgerDetails frmledgerdetails, decimal decMasterId)
+        //{
+        //    try
+        //    {
+        //        frmLedgerDetailsObj = frmledgerdetails;
+        //        frmLedgerDetailsObj.Enabled = false;
+        //        base.Show();
+        //        isInEditMode = true;
+        //        btnDelete.Enabled = true;
+        //        decPDCReceivableEditId = decMasterId;
+        //        FillFunction();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("PR30:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
         /// <summary>
         /// Function for adding datatable column to keep party balance entry's
         /// </summary>
@@ -1892,9 +1863,9 @@ namespace Open_Miracle
                     }
                     if (cmbAccountLedger.SelectedIndex != -1)
                     {
-                        frmLedgerPopupObj = new frmLedgerPopup();
-                        frmLedgerPopupObj.MdiParent = formMDI.MDIObj;
-                        frmLedgerPopupObj.CallFromPdcReceivableVoucher(this, Convert.ToDecimal(cmbAccountLedger.SelectedValue.ToString()), "Account Ledger");
+                        //frmLedgerPopupObj = new frmLedgerPopup();
+                        //frmLedgerPopupObj.MdiParent = formMDI.MDIObj;
+                        //frmLedgerPopupObj.CallFromPdcReceivableVoucher(this, Convert.ToDecimal(cmbAccountLedger.SelectedValue.ToString()), "Account Ledger");
                         this.Enabled = false;
                     }
                     else
@@ -1986,9 +1957,9 @@ namespace Open_Miracle
                     }
                     if (cmbBank.SelectedIndex != -1)
                     {
-                        frmLedgerPopupObj = new frmLedgerPopup();
-                        frmLedgerPopupObj.MdiParent = formMDI.MDIObj;
-                        frmLedgerPopupObj.CallFromPdcReceivableVoucher(this, Convert.ToDecimal(cmbBank.SelectedValue.ToString()), "Bank");
+                        //frmLedgerPopupObj = new frmLedgerPopup();
+                        //frmLedgerPopupObj.MdiParent = formMDI.MDIObj;
+                        //frmLedgerPopupObj.CallFromPdcReceivableVoucher(this, Convert.ToDecimal(cmbBank.SelectedValue.ToString()), "Bank");
                         this.Enabled = false;
                     }
                     else
@@ -2128,7 +2099,7 @@ namespace Open_Miracle
                 bool isInvalid = obj.DateValidationFunction(txtVoucherDate);
                 if (!isInvalid)
                 {
-                    txtVoucherDate.Text = PublicVariables._dtCurrentDate.ToString("dd-MMM-yyyy");
+                    txtVoucherDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
                 }
                 string date = txtVoucherDate.Text;
                 dtpVoucherDate.Value = Convert.ToDateTime(date);
@@ -2151,7 +2122,7 @@ namespace Open_Miracle
                 bool isInvalid = obj.DateValidationFunction(txtCheckDate, false);
                 if (!isInvalid)
                 {
-                    txtCheckDate.Text = PublicVariables._dtCurrentDate.ToString("dd-MMM-yyyy");
+                    txtCheckDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
                 }
                 string date = txtCheckDate.Text;
                 dtpcheckdate.Value = Convert.ToDateTime(date);

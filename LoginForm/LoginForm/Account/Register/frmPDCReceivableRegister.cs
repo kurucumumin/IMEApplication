@@ -276,34 +276,34 @@ namespace Open_Miracle
         /// <param name="e"></param>
         private void btnViewDetails_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (DgvPdCreceivable.CurrentRow != null)
-                {
-                    frmPdcReceivable frmpdcreceivableObj = new frmPdcReceivable();
-                    decimal decMasterId = Convert.ToDecimal(DgvPdCreceivable.CurrentRow.Cells["pdcReceivableMasterId"].Value.ToString());
-                    // frmPdcReceivable open = Application.OpenForms["frmPdcReceivable"] as frmPdcReceivable;
-                    //if (open == null)
-                    //{
-                    //    frmpdcreceivableObj.WindowState = FormWindowState.Normal;
-                    //    frmpdcreceivableObj.MdiParent = formMDI.MDIObj;
-                    //    frmpdcreceivableObj.CallFromPDCReceivableRegister(this, decMasterId);
-                    //    txtDate.Focus();
-                    //}
-                    //else
-                    //{
-                    frmpdcreceivableObj.CallFromPDCReceivableRegister(this, decMasterId); //TO DO: bu fonkssyonu sonra yapıcaksın.
-                        if (frmpdcreceivableObj.WindowState == FormWindowState.Minimized)
-                        {
-                        frmpdcreceivableObj.WindowState = FormWindowState.Normal;
-                        }
-                    //}
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PRREG12:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //try
+            //{
+            //    if (DgvPdCreceivable.CurrentRow != null)
+            //    {
+            //        frmPdcReceivable frmpdcreceivableObj = new frmPdcReceivable();
+            //        decimal decMasterId = Convert.ToDecimal(DgvPdCreceivable.CurrentRow.Cells["pdcReceivableMasterId"].Value.ToString());
+            //        // frmPdcReceivable open = Application.OpenForms["frmPdcReceivable"] as frmPdcReceivable;
+            //        //if (open == null)
+            //        //{
+            //        //    frmpdcreceivableObj.WindowState = FormWindowState.Normal;
+            //        //    frmpdcreceivableObj.MdiParent = formMDI.MDIObj;
+            //        //    frmpdcreceivableObj.CallFromPDCReceivableRegister(this, decMasterId);
+            //        //    txtDate.Focus();
+            //        //}
+            //        //else
+            //        //{
+            //        frmpdcreceivableObj.CallFromPDCReceivableRegister(this, decMasterId); //TO DO: bu fonkssyonu sonra yapıcaksın.
+            //            if (frmpdcreceivableObj.WindowState == FormWindowState.Minimized)
+            //            {
+            //            frmpdcreceivableObj.WindowState = FormWindowState.Normal;
+            //            }
+            //        //}
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("PRREG12:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         /// <summary>
         /// Calls corresponding voucher on cell double click in Datagridview
