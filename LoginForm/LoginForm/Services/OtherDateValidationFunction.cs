@@ -22,14 +22,14 @@ using System.Drawing;
 using System.Globalization;
 namespace Open_Miracle
 {
-   
+
     class OtherDateValidationFunction
     {
         string format = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern;
         DateTime CurrDate;
         TextBox text;
         /// <summary>
-        /// Function for date validation 
+        /// Function for date validation
         /// </summary>
         /// <param name="txt"></param>
         /// <param name="isFormCompany"></param>
@@ -216,7 +216,7 @@ namespace Open_Miracle
             return isValid;
         }
         /// <summary>
-        /// Function for date validation 
+        /// Function for date validation
         /// </summary>
         /// <param name="isValid"></param>
         /// <returns></returns>
@@ -226,7 +226,7 @@ namespace Open_Miracle
             return isValid;
         }
         /// <summary>
-        /// Function for date validation 
+        /// Function for date validation
         /// </summary>
         /// <returns></returns>
         public string SystemFormat()

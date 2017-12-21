@@ -22,5 +22,19 @@ namespace LoginForm.Account.Services
             }
             return decExchangerateId;
         }
+        public decimal GetExchangeRateByExchangeRateId(decimal decExchangeRateId)
+        {
+            IMEEntities db = new IMEEntities();
+            decimal decReturnValue = 0;
+            try
+            {
+                decReturnValue = (decimal)db.ExchangeRates.Where(x => x.exchangeRateID == decExchangeRateId).FirstOrDefault().rate;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decReturnValue;
+        }
     }
 }
