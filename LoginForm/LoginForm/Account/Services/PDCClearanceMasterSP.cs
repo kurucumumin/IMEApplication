@@ -138,7 +138,7 @@ namespace LoginForm.Account.Services
         //        }
 
 
-                
+
         //    }
         //    catch (Exception ex)
         //    {
@@ -146,5 +146,152 @@ namespace LoginForm.Account.Services
         //    }
         //    return dtblpdcPayableId;
         //}
+        public void PDCClearanceDelete(decimal PdcClearanceId, decimal decVoucherTypeId, string strVoucherNo)
+        {
+            IMEEntities db = new IMEEntities();
+
+            try
+            {
+                List<PartyBalance> pList = db.PartyBalances.Where(x => x.voucherTypeId == decVoucherTypeId && x.voucherNo == strVoucherNo && x.referenceType == "New").ToList();
+                db.PartyBalances.RemoveRange(pList);
+
+                List<LedgerPosting> lpList = db.LedgerPostings.Where(x => x.voucherTypeId == decVoucherTypeId && x.voucherNo == strVoucherNo).ToList();
+                db.LedgerPostings.RemoveRange(lpList);
+
+                PDCClearanceMaster cm = db.PDCClearanceMasters.Where(x=>x.PDCClearanceMasterId == PdcClearanceId).FirstOrDefault();
+                db.PDCClearanceMasters.Remove(cm);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public PDCClearanceMaster PDCClearanceMasterView(decimal PDCClearanceMasterId)
+        {
+            PDCClearanceMaster pdcclearancemasterinfo = new PDCClearanceMaster();
+            
+            try
+            {
+                pdcclearancemasterinfo = new IMEEntities().PDCClearanceMasters.Where(x => x.PDCClearanceMasterId == PDCClearanceMasterId).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+            }
+            return pdcclearancemasterinfo;
+        }
+
+        public DataTable PDCClearanceMasterViewAll()
+        {
+            IMEEntities db = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = (from cm in db.PDCClearanceMasters
+                               select new
+                               {
+                                   cm.PDCClearanceMasterId,
+                                   cm.voucherNo,
+                                   cm.invoiceNo,
+                                   cm.suffixPrefixId,
+                                   cm.date,
+                                   cm.ledgerId,
+                                   cm.type,
+                                   cm.againstId,
+                                   cm.voucherTypeId,
+                                   cm.narration,
+                                   cm.status,
+                                   cm.userId,
+                                   cm.financialYearId,
+                               }).ToList();
+
+                dtbl.Columns.Add("PDCClearanceMasterId");
+                dtbl.Columns.Add("voucherNo");
+                dtbl.Columns.Add("invoiceNo");
+                dtbl.Columns.Add("suffixPrefixId");
+                dtbl.Columns.Add("date");
+                dtbl.Columns.Add("ledgerId");
+                dtbl.Columns.Add("type");
+                dtbl.Columns.Add("againstId");
+                dtbl.Columns.Add("voucherTypeId");
+                dtbl.Columns.Add("narration");
+                dtbl.Columns.Add("status");
+                dtbl.Columns.Add("userId");
+                dtbl.Columns.Add("financialYearId");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["PDCClearanceMasterId"] = item.PDCClearanceMasterId;
+                    row["voucherNo"] = item.voucherNo;
+                    row["invoiceNo"] = item.invoiceNo;
+                    row["suffixPrefixId"] = item.suffixPrefixId;
+                    row["date"] = item.date;
+                    row["ledgerId"] = item.ledgerId;
+                    row["type"] = item.type;
+                    row["againstId"] = item.againstId;
+                    row["voucherTypeId"] = item.voucherTypeId;
+                    row["narration"] = item.narration;
+                    row["status"] = item.status;
+                    row["userId"] = item.userId;
+                    row["financialYearId"] = item.financialYearId;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+        public void PDCClearanceMasterEdit(PDCClearanceMaster pcm)
+        {
+            IMEEntities db = new IMEEntities();
+            PDCClearanceMaster cm = db.PDCClearanceMasters.Where(x => x.PDCClearanceMasterId == pcm.PDCClearanceMasterId).FirstOrDefault();
+            try
+            {
+                cm.voucherNo = pcm.voucherNo;
+                cm.invoiceNo = pcm.invoiceNo;
+                cm.suffixPrefixId = pcm.suffixPrefixId;
+                cm.date = pcm.date;
+                cm.ledgerId = pcm.ledgerId;
+                cm.type = pcm.type;
+                cm.againstId = pcm.againstId;
+                cm.voucherTypeId = pcm.voucherTypeId;
+                cm.narration = pcm.narration;
+                cm.status = pcm.status;
+                cm.userId = pcm.userId;
+                cm.financialYearId = pcm.financialYearId;
+
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public decimal PDCClearanceMasterAdd(PDCClearanceMaster pdcclearancemasterinfo)
+        {
+            decimal decIdentity = 0;
+            try
+            {
+                PDCClearanceMaster pcm = pdcclearancemasterinfo;
+                new IMEEntities().PDCClearanceMasters.Add(pcm);
+                decIdentity = pcm.PDCClearanceMasterId;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decIdentity;
+        }
     }
 }

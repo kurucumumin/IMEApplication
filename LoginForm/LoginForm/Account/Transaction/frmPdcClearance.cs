@@ -520,6 +520,7 @@ namespace Open_Miracle
                 PDCPayableMasterSP spPDCPayable = new PDCPayableMasterSP();
                 PDCReceivableMaster infoPDCReceivable = new PDCReceivableMaster();
                 PDCReceivableMasterSP spPDCReceivable = new PDCReceivableMasterSP();
+                Management m = Utils.getManagement();
                 strVoucherType = sppdcClearance.TypeOfVoucherReturnUnderVoucherName(cmbvouchertype.Text.ToString());
                 if (strVoucherType == "PDC Payable")
                 {
@@ -534,70 +535,61 @@ namespace Open_Miracle
                     if (strstatus == "Cleared")
                     {
 
-                        infoLedgerPosting.LedgerId = infoPDCPayable.BankId;
-                        infoLedgerPosting.Debit = 0;
-                        infoLedgerPosting.Credit = Convert.ToDecimal(txtAmount.Text.ToString());
+                        infoLedgerPosting.ledgerId = infoPDCPayable.bankId;
+                        infoLedgerPosting.debit = 0;
+                        infoLedgerPosting.credit = Convert.ToDecimal(txtAmount.Text.ToString());
                     }
                     else if (strstatus == "Bounced")
                     {
-                        infoLedgerPosting.LedgerId = infoPDCPayable.LedgerId;
-                        infoLedgerPosting.Debit = 0;
-                        infoLedgerPosting.Credit = Convert.ToDecimal(txtAmount.Text.ToString());
+                        infoLedgerPosting.ledgerId = infoPDCPayable.ledgerId;
+                        infoLedgerPosting.debit = 0;
+                        infoLedgerPosting.credit = Convert.ToDecimal(txtAmount.Text.ToString());
                     }
                     SpLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
-                    infoLedgerPosting.VoucherTypeId = decPDCclearanceVoucherTypeId;
-                    infoLedgerPosting.VoucherNo = txtvoucherNo.Text.Trim();
-                    infoLedgerPosting.Date = Convert.ToDateTime(txtVoucherDate.Text.ToString());
-                    infoLedgerPosting.YearId = PublicVariables._decCurrentFinancialYearId;
-                    infoLedgerPosting.ChequeDate = Convert.ToDateTime(txtcheckdate.Text);
-                    infoLedgerPosting.ChequeNo = txtcheckNo.Text.Trim();
-                    infoLedgerPosting.ExtraDate = PublicVariables._dtCurrentDate;
-                    infoLedgerPosting.Extra1 = string.Empty;
-                    infoLedgerPosting.Extra2 = string.Empty;
-                    infoLedgerPosting.VoucherNo = strVoucherNo;
-                    infoLedgerPosting.InvoiceNo = txtvoucherNo.Text.Trim();
-                    infoLedgerPosting.LedgerId = 6;
-                    infoLedgerPosting.Debit = Convert.ToDecimal(txtAmount.Text.ToString());
-                    infoLedgerPosting.Credit = 0;
+                    infoLedgerPosting.voucherTypeId = decPDCclearanceVoucherTypeId;
+                    infoLedgerPosting.voucherNo = txtvoucherNo.Text.Trim();
+                    infoLedgerPosting.date = Convert.ToDateTime(txtVoucherDate.Text.ToString());
+                    infoLedgerPosting.yearId = m.CurrentFinancialYear;
+                    infoLedgerPosting.chequeDate = Convert.ToDateTime(txtcheckdate.Text);
+                    infoLedgerPosting.chequeNo = txtcheckNo.Text.Trim();
+                    infoLedgerPosting.voucherNo = strVoucherNo;
+                    infoLedgerPosting.invoiceNo = txtvoucherNo.Text.Trim();
+                    infoLedgerPosting.ledgerId = 6;
+                    infoLedgerPosting.debit = Convert.ToDecimal(txtAmount.Text.ToString());
+                    infoLedgerPosting.credit = 0;
                     SpLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                 }
                 else if (strVoucherType == "PDC Receivable")
                 {
                     infoPDCReceivable = spPDCReceivable.PDCReceivableMasterView(Convert.ToDecimal(cmbInvoiceNo.SelectedValue.ToString()));
-                    infoLedgerPosting.VoucherTypeId = decPDCclearanceVoucherTypeId;
-                    infoLedgerPosting.VoucherNo = strVoucherNo;
-                    infoLedgerPosting.InvoiceNo = txtvoucherNo.Text.Trim();
-                    infoLedgerPosting.Date = PublicVariables._dtCurrentDate;
-                    infoLedgerPosting.LedgerId = 7;
-                    infoLedgerPosting.YearId = PublicVariables._decCurrentFinancialYearId;
-                    infoLedgerPosting.Debit = 0;
-                    infoLedgerPosting.Credit = Convert.ToDecimal(txtAmount.Text.ToString());
-                    infoLedgerPosting.ChequeDate = Convert.ToDateTime(txtcheckdate.Text.ToString());
-                    infoLedgerPosting.ChequeNo = txtcheckNo.Text.Trim();
-                    infoLedgerPosting.ExtraDate = PublicVariables._dtCurrentDate;
-                    infoLedgerPosting.Extra1 = string.Empty;
-                    infoLedgerPosting.Extra2 = string.Empty;
+                    infoLedgerPosting.voucherTypeId = decPDCclearanceVoucherTypeId;
+                    infoLedgerPosting.voucherNo = strVoucherNo;
+                    infoLedgerPosting.invoiceNo = txtvoucherNo.Text.Trim();
+                    infoLedgerPosting.date = DateTime.Now;
+                    infoLedgerPosting.ledgerId = 7;
+                    infoLedgerPosting.yearId = m.CurrentFinancialYear;
+                    infoLedgerPosting.debit = 0;
+                    infoLedgerPosting.credit = Convert.ToDecimal(txtAmount.Text.ToString());
+                    infoLedgerPosting.chequeDate = Convert.ToDateTime(txtcheckdate.Text.ToString());
+                    infoLedgerPosting.chequeNo = txtcheckNo.Text.Trim();
                     SpLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
-                    infoLedgerPosting.VoucherTypeId = decPDCclearanceVoucherTypeId;
-                    infoLedgerPosting.Date = PublicVariables._dtCurrentDate;
+                    infoLedgerPosting.voucherTypeId = decPDCclearanceVoucherTypeId;
+                    infoLedgerPosting.date = DateTime.Now;
                     if (strstatus == "Cleared")
                     {
-                        infoLedgerPosting.LedgerId = infoPDCReceivable.BankId;
+                        infoLedgerPosting.ledgerId = infoPDCReceivable.bankId;
                     }
                     else if (strstatus == "Bounced")
                     {
-                        infoLedgerPosting.LedgerId = infoPDCReceivable.LedgerId;
+                        infoLedgerPosting.ledgerId = infoPDCReceivable.ledgerId;
                     }
-                    infoLedgerPosting.VoucherNo = strVoucherNo;
-                    infoLedgerPosting.InvoiceNo = txtvoucherNo.Text.Trim();
-                    infoLedgerPosting.YearId = PublicVariables._decCurrentFinancialYearId;
-                    infoLedgerPosting.Debit = Convert.ToDecimal(txtAmount.Text.ToString());
-                    infoLedgerPosting.Credit = 0;
-                    infoLedgerPosting.ChequeDate = Convert.ToDateTime(txtcheckdate.Text);
-                    infoLedgerPosting.ChequeNo = txtcheckNo.Text.Trim();
-                    infoLedgerPosting.ExtraDate = PublicVariables._dtCurrentDate;
-                    infoLedgerPosting.Extra1 = string.Empty;
-                    infoLedgerPosting.Extra2 = string.Empty;
+                    infoLedgerPosting.voucherNo = strVoucherNo;
+                    infoLedgerPosting.invoiceNo = txtvoucherNo.Text.Trim();
+                    infoLedgerPosting.yearId = m.CurrentFinancialYear;
+                    infoLedgerPosting.debit = Convert.ToDecimal(txtAmount.Text.ToString());
+                    infoLedgerPosting.credit = 0;
+                    infoLedgerPosting.chequeDate = Convert.ToDateTime(txtcheckdate.Text);
+                    infoLedgerPosting.chequeNo = txtcheckNo.Text.Trim();
                     SpLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                 }
             }
@@ -613,33 +605,31 @@ namespace Open_Miracle
         {
             int inTableRowCount = dtblPartyBalance.Rows.Count;
             PartyBalanceSP spPartyBalance = new PartyBalanceSP();
-            PartyBalanceInfo InfopartyBalance = new PartyBalanceInfo();
+            PartyBalance InfopartyBalance = new PartyBalance();
             try
             {
-                InfopartyBalance.CreditPeriod = 0;
-                InfopartyBalance.Date = dtpVoucherDate.Value;
-                InfopartyBalance.LedgerId = Convert.ToDecimal(strledgerId);
-                InfopartyBalance.ReferenceType = "New";
-                InfopartyBalance.VoucherTypeId = decPDCclearanceVoucherTypeId;
-                InfopartyBalance.InvoiceNo = txtvoucherNo.Text.ToString();
-                InfopartyBalance.VoucherNo = strVoucherNo;
-                InfopartyBalance.AgainstInvoiceNo = "0";
-                InfopartyBalance.AgainstVoucherNo = "0";
-                InfopartyBalance.AgainstVoucherTypeId = 0;
-                InfopartyBalance.Extra1 = string.Empty;
-                InfopartyBalance.Extra2 = string.Empty;
-                InfopartyBalance.FinancialYearId = PublicVariables._decCurrentFinancialYearId;
-                InfopartyBalance.ExchangeRateId = 1;
+                InfopartyBalance.creditPeriod = 0;
+                InfopartyBalance.date = dtpVoucherDate.Value;
+                InfopartyBalance.ledgerId = Convert.ToDecimal(strledgerId);
+                InfopartyBalance.referenceType = "New";
+                InfopartyBalance.voucherTypeId = decPDCclearanceVoucherTypeId;
+                InfopartyBalance.invoiceNo = txtvoucherNo.Text.ToString();
+                InfopartyBalance.voucherNo = strVoucherNo;
+                InfopartyBalance.againstInvoiceNo = "0";
+                InfopartyBalance.againstVoucherNo = "0";
+                InfopartyBalance.againstVoucherTypeId = 0;
+                InfopartyBalance.financialYearId = Utils.getManagement().CurrentFinancialYear;
+                InfopartyBalance.exchangeRateId = 1;
                 if (strVoucherType == "PDC Payable")
                 {
-                    InfopartyBalance.Debit = 0;
-                    InfopartyBalance.Credit = Convert.ToDecimal(txtAmount.Text.ToString());
+                    InfopartyBalance.debit = 0;
+                    InfopartyBalance.credit = Convert.ToDecimal(txtAmount.Text.ToString());
                     spPartyBalance.PartyBalanceAdd(InfopartyBalance);
                 }
                 else if (strVoucherType == "PDC Receivable")
                 {
-                    InfopartyBalance.Debit = Convert.ToDecimal(txtAmount.Text.ToString());
-                    InfopartyBalance.Credit = 0;
+                    InfopartyBalance.debit = Convert.ToDecimal(txtAmount.Text.ToString());
+                    InfopartyBalance.credit = 0;
                     spPartyBalance.PartyBalanceAdd(InfopartyBalance);
                 }
             }
@@ -655,15 +645,15 @@ namespace Open_Miracle
         {
             try
             {
-                PDCClearanceMasterInfo infoPDCClearance = new PDCClearanceMasterInfo();
+                PDCClearanceMaster infoPDCClearance = new PDCClearanceMaster();
                 PDCClearanceMasterSP Sppdcclerance = new PDCClearanceMasterSP();
                 infoPDCClearance = Sppdcclerance.PDCClearanceMasterView(decPDCClearanceEditId);
                 VoucherTypeComboFill();
-                strVoucherNo = infoPDCClearance.VoucherNo;
-                strInvoiceNo = infoPDCClearance.InvoiceNo;
+                strVoucherNo = infoPDCClearance.voucherNo;
+                strInvoiceNo = infoPDCClearance.invoiceNo;
                 txtvoucherNo.Text = strInvoiceNo;
-                decSufixprefixPdcpayableID = infoPDCClearance.SuffixPrefixId;
-                decPDCclearanceVoucherTypeId = infoPDCClearance.VoucherTypeId;
+                decSufixprefixPdcpayableID = (decimal)infoPDCClearance.suffixPrefixId;
+                decPDCclearanceVoucherTypeId = (decimal)infoPDCClearance.voucherTypeId;
                 VoucherTypeSP spVoucherType = new VoucherTypeSP();
                 isAutomatic = spVoucherType.CheckMethodOfVoucherNumbering(decPDCclearanceVoucherTypeId);
                 if (isAutomatic)
@@ -677,13 +667,13 @@ namespace Open_Miracle
                 if (infoPDCClearance.PDCClearanceMasterId != 0)
                 {
                     PDCClearanceMasterSP sppdcClearance = new PDCClearanceMasterSP();
-                    txtvoucherNo.Text = infoPDCClearance.VoucherNo;
-                    dtpVoucherDate.Value = infoPDCClearance.Date;
+                    txtvoucherNo.Text = infoPDCClearance.voucherNo;
+                    dtpVoucherDate.Value = (DateTime)infoPDCClearance.date;
                     txtVoucherDate.Text = dtpVoucherDate.Value.ToString("dd-MMM-yyyy");
-                    txtNarration.Text = infoPDCClearance.Narration;
-                    cmbvouchertype.Text = infoPDCClearance.Type;
+                    txtNarration.Text = infoPDCClearance.narration;
+                    cmbvouchertype.Text = infoPDCClearance.type;
                     InvoiceNumberCombofill(cmbvouchertype.Text.ToString(), decMasterIdEdit);
-                    cmbStatus.Text = infoPDCClearance.Status;
+                    cmbStatus.Text = infoPDCClearance.status;
                     cmbInvoiceNo.SelectedValue = decMasterIdEdit;
                     btnSave.Text = "Update";
                 }
@@ -698,93 +688,93 @@ namespace Open_Miracle
         /// </summary>
         /// <param name="frmLedgerDetails"></param>
         /// <param name="decMasterId"></param>
-        public void CallFromLedgerDetails(frmLedgerDetails frmLedgerDetails, decimal decMasterId)
-        {
-            try
-            {
+        //public void CallFromLedgerDetails(frmLedgerDetails frmLedgerDetails, decimal decMasterId)
+        //{
+        //    try
+        //    {
 
-                base.Show();
-                frmLedgerDetailsObj = frmLedgerDetails;
-                frmLedgerDetailsObj.Enabled = false;
-                isInEditMode = true;
-                btnDelete.Enabled = true;
-                decPDCClearanceEditId = decMasterId;
-                PDCClearanceMasterSP spPDCClearance = new PDCClearanceMasterSP();
-                decMasterIdEdit = spPDCClearance.PDCClearanceAgainstIdUnderClearanceId(decPDCClearanceEditId);
-                FillFunction();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PC15:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        //        base.Show();
+        //        frmLedgerDetailsObj = frmLedgerDetails;
+        //        frmLedgerDetailsObj.Enabled = false;
+        //        isInEditMode = true;
+        //        btnDelete.Enabled = true;
+        //        decPDCClearanceEditId = decMasterId;
+        //        PDCClearanceMasterSP spPDCClearance = new PDCClearanceMasterSP();
+        //        decMasterIdEdit = spPDCClearance.PDCClearanceAgainstIdUnderClearanceId(decPDCClearanceEditId);
+        //        FillFunction();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("PC15:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
         /// <summary>
         /// Function to call this form from frmPdcClearanceRegister to view details and for updation
         /// </summary>
         /// <param name="PDCClearanceReg"></param>
         /// <param name="decMasterId"></param>
-        public void CallFromPDCClearanceRegister(frmPdcClearanceRegister PDCClearanceReg, decimal decMasterId)
-        {
-            try
-            {
-                PDCClearanceReg.Enabled = false;
-                base.Show();
-                isInEditMode = true;
-                btnDelete.Enabled = true;
-                pdcClearanceRegObj = PDCClearanceReg;
-                decPDCClearanceEditId = decMasterId;
-                PDCClearanceMasterSP spPDCClearance = new PDCClearanceMasterSP();
-                decMasterIdEdit = spPDCClearance.PDCClearanceAgainstIdUnderClearanceId(decPDCClearanceEditId);
-                FillFunction();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PC16:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        //public void CallFromPDCClearanceRegister(frmPdcClearanceRegister PDCClearanceReg, decimal decMasterId)
+        //{
+        //    try
+        //    {
+        //        PDCClearanceReg.Enabled = false;
+        //        base.Show();
+        //        isInEditMode = true;
+        //        btnDelete.Enabled = true;
+        //        pdcClearanceRegObj = PDCClearanceReg;
+        //        decPDCClearanceEditId = decMasterId;
+        //        PDCClearanceMasterSP spPDCClearance = new PDCClearanceMasterSP();
+        //        decMasterIdEdit = spPDCClearance.PDCClearanceAgainstIdUnderClearanceId(decPDCClearanceEditId);
+        //        FillFunction();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("PC16:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
         /// <summary>
         /// Function to call this form from frmPDCClearanceReport to view details and for updation
         /// </summary>
         /// <param name="PDCClearanceReport"></param>
         /// <param name="decMasterId"></param>
-        public void CallFromPDCClearanceReport(frmPDCClearanceReport PDCClearanceReport, decimal decMasterId)
-        {
-            try
-            {
-                PDCClearanceReport.Enabled = false;
-                base.Show();
-                isInEditMode = true;
-                btnDelete.Enabled = true;
-                pdcClearanceReportObj = PDCClearanceReport;
-                decPDCClearanceEditId = decMasterId;
-                PDCClearanceMasterSP spPDCClearance = new PDCClearanceMasterSP();
-                decMasterIdEdit = spPDCClearance.PDCClearanceAgainstIdUnderClearanceId(decPDCClearanceEditId);
-                FillFunction();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PC17:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        //public void CallFromPDCClearanceReport(frmPDCClearanceReport PDCClearanceReport, decimal decMasterId)
+        //{
+        //    try
+        //    {
+        //        PDCClearanceReport.Enabled = false;
+        //        base.Show();
+        //        isInEditMode = true;
+        //        btnDelete.Enabled = true;
+        //        pdcClearanceReportObj = PDCClearanceReport;
+        //        decPDCClearanceEditId = decMasterId;
+        //        PDCClearanceMasterSP spPDCClearance = new PDCClearanceMasterSP();
+        //        decMasterIdEdit = spPDCClearance.PDCClearanceAgainstIdUnderClearanceId(decPDCClearanceEditId);
+        //        FillFunction();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("PC17:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
         /// <summary>
         /// Its the function for print function
         /// </summary>
         /// <param name="decMasterId"></param>
         public void Print(decimal decMasterId)
         {
-            try
-            {
-                DataSet dsPdcClearance = new DataSet();
-                PDCClearanceMasterSP SppdcClearance = new PDCClearanceMasterSP();
-                dsPdcClearance = SppdcClearance.PDCClearanceVoucherPrinting(decMasterId, 1);
-                frmReport frmreport = new frmReport();
-                frmreport.MdiParent = formMDI.MDIObj;
-                frmreport.PDCClearancevoucherPrinting(dsPdcClearance);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PC18:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //try
+            //{
+            //    DataSet dsPdcClearance = new DataSet();
+            //    PDCClearanceMasterSP SppdcClearance = new PDCClearanceMasterSP();
+            //    dsPdcClearance = SppdcClearance.PDCClearanceVoucherPrinting(decMasterId, 1);
+            //    frmReport frmreport = new frmReport();
+            //    frmreport.MdiParent = formMDI.MDIObj;
+            //    frmreport.PDCClearancevoucherPrinting(dsPdcClearance);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("PC18:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         /// <summary>
         /// Its the function to print the curresponding details to the Dotmatrix printer
@@ -792,61 +782,60 @@ namespace Open_Miracle
         /// <param name="decMasterId"></param>
         public void PrintForDotMatrix(decimal decMasterId)
         {
-            try
-            {
-                DataTable dtblOtherDetails = new DataTable();
-                CompanySP spComapany = new CompanySP();
-                dtblOtherDetails = spComapany.CompanyViewForDotMatrix();
-                DataTable dtblGridDetails = new DataTable();
-                dtblGridDetails.Columns.Add("SlNo");
-                dtblGridDetails.Columns.Add("BankAccount");
-                dtblGridDetails.Columns.Add("ChequeNo");
-                dtblGridDetails.Columns.Add("ChequeDate");
-                dtblGridDetails.Columns.Add("Amount");
-                dtblGridDetails.Columns.Add("AccountLedger");
-                dtblGridDetails.Columns.Add("voucherNo");
-                dtblGridDetails.Columns.Add("voucherDate");
-                dtblGridDetails.Columns.Add("voucherType");
-                dtblGridDetails.Columns.Add("Narration");
-                dtblGridDetails.Columns.Add("againstInvoiceNo");
-                dtblGridDetails.Columns.Add("Status");
-                DataRow dr = dtblGridDetails.NewRow();
-                dr["SlNo"] = 1;
-                dr["ChequeNo"] = txtcheckNo.Text;
-                dr["BankAccount"] = txtBank.Text;
-                dr["ChequeDate"] = txtcheckdate.Text;
-                dr["Amount"] = txtAmount.Text;
-                dr["AccountLedger"] = txtAccountLedger.Text;
-                dr["voucherNo"] = txtvoucherNo.Text;
-                dr["voucherDate"] = txtVoucherDate.Text;
-                dr["voucherType"] = cmbvouchertype.Text;
-                dr["Narration"] = txtNarration.Text;
-                dr["againstInvoiceNo"] = cmbInvoiceNo.Text;
-                dr["Status"] = cmbStatus.Text;
-                dtblGridDetails.Rows.Add(dr);
-                dtblOtherDetails.Columns.Add("AmountInWords");
-                dtblOtherDetails.Columns.Add("Declaration");
-                dtblOtherDetails.Columns.Add("Heading1");
-                dtblOtherDetails.Columns.Add("Heading2");
-                dtblOtherDetails.Columns.Add("Heading3");
-                dtblOtherDetails.Columns.Add("Heading4");
-                DataRow dRowOther = dtblOtherDetails.Rows[0];
-                dRowOther["address"] = (dtblOtherDetails.Rows[0]["address"].ToString().Replace("\n", ", ")).Replace("\r", "");
-                dRowOther["AmountInWords"] = new NumToText().AmountWords(Convert.ToDecimal(txtAmount.Text), PublicVariables._decCurrencyId);
-                VoucherTypeSP spVoucherType = new VoucherTypeSP();
-                DataTable dtblDeclaration = spVoucherType.DeclarationAndHeadingGetByVoucherTypeId(decPDCclearanceVoucherTypeId);
-                dRowOther["Declaration"] = dtblDeclaration.Rows[0]["Declaration"].ToString();
-                dRowOther["Heading1"] = dtblDeclaration.Rows[0]["Heading1"].ToString();
-                dRowOther["Heading2"] = dtblDeclaration.Rows[0]["Heading2"].ToString();
-                dRowOther["Heading3"] = dtblDeclaration.Rows[0]["Heading3"].ToString();
-                dRowOther["Heading4"] = dtblDeclaration.Rows[0]["Heading4"].ToString();
-                int inFormId = spVoucherType.FormIdGetForPrinterSettings(Convert.ToInt32(dtblDeclaration.Rows[0]["masterId"].ToString()));
-                PrintWorks.DotMatrixPrint.PrintDesign(inFormId, dtblOtherDetails, dtblGridDetails, dtblOtherDetails);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PC19:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //try
+            //{
+            //    DataTable dtblOtherDetails = new DataTable();
+            //    dtblOtherDetails = spComapany.CompanyViewForDotMatrix();
+            //    DataTable dtblGridDetails = new DataTable();
+            //    dtblGridDetails.Columns.Add("SlNo");
+            //    dtblGridDetails.Columns.Add("BankAccount");
+            //    dtblGridDetails.Columns.Add("ChequeNo");
+            //    dtblGridDetails.Columns.Add("ChequeDate");
+            //    dtblGridDetails.Columns.Add("Amount");
+            //    dtblGridDetails.Columns.Add("AccountLedger");
+            //    dtblGridDetails.Columns.Add("voucherNo");
+            //    dtblGridDetails.Columns.Add("voucherDate");
+            //    dtblGridDetails.Columns.Add("voucherType");
+            //    dtblGridDetails.Columns.Add("Narration");
+            //    dtblGridDetails.Columns.Add("againstInvoiceNo");
+            //    dtblGridDetails.Columns.Add("Status");
+            //    DataRow dr = dtblGridDetails.NewRow();
+            //    dr["SlNo"] = 1;
+            //    dr["ChequeNo"] = txtcheckNo.Text;
+            //    dr["BankAccount"] = txtBank.Text;
+            //    dr["ChequeDate"] = txtcheckdate.Text;
+            //    dr["Amount"] = txtAmount.Text;
+            //    dr["AccountLedger"] = txtAccountLedger.Text;
+            //    dr["voucherNo"] = txtvoucherNo.Text;
+            //    dr["voucherDate"] = txtVoucherDate.Text;
+            //    dr["voucherType"] = cmbvouchertype.Text;
+            //    dr["Narration"] = txtNarration.Text;
+            //    dr["againstInvoiceNo"] = cmbInvoiceNo.Text;
+            //    dr["Status"] = cmbStatus.Text;
+            //    dtblGridDetails.Rows.Add(dr);
+            //    dtblOtherDetails.Columns.Add("AmountInWords");
+            //    dtblOtherDetails.Columns.Add("Declaration");
+            //    dtblOtherDetails.Columns.Add("Heading1");
+            //    dtblOtherDetails.Columns.Add("Heading2");
+            //    dtblOtherDetails.Columns.Add("Heading3");
+            //    dtblOtherDetails.Columns.Add("Heading4");
+            //    DataRow dRowOther = dtblOtherDetails.Rows[0];
+            //    dRowOther["address"] = (dtblOtherDetails.Rows[0]["address"].ToString().Replace("\n", ", ")).Replace("\r", "");
+            //    dRowOther["AmountInWords"] = new NumToText().AmountWords(Convert.ToDecimal(txtAmount.Text), Convert.ToDecimal(Utils.getManagement().DefaultCurrency));
+            //    VoucherTypeSP spVoucherType = new VoucherTypeSP();
+            //    DataTable dtblDeclaration = spVoucherType.DeclarationAndHeadingGetByVoucherTypeId(decPDCclearanceVoucherTypeId);
+            //    dRowOther["Declaration"] = dtblDeclaration.Rows[0]["Declaration"].ToString();
+            //    dRowOther["Heading1"] = dtblDeclaration.Rows[0]["Heading1"].ToString();
+            //    dRowOther["Heading2"] = dtblDeclaration.Rows[0]["Heading2"].ToString();
+            //    dRowOther["Heading3"] = dtblDeclaration.Rows[0]["Heading3"].ToString();
+            //    dRowOther["Heading4"] = dtblDeclaration.Rows[0]["Heading4"].ToString();
+            //    int inFormId = spVoucherType.FormIdGetForPrinterSettings(Convert.ToInt32(dtblDeclaration.Rows[0]["masterId"].ToString()));
+            //    PrintWorks.DotMatrixPrint.PrintDesign(inFormId, dtblOtherDetails, dtblGridDetails, dtblOtherDetails);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("PC19:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         /// <summary>
         /// checking the print checkbox settings 
@@ -883,33 +872,33 @@ namespace Open_Miracle
                 AccountLedgerSP SpAccountLedger = new AccountLedgerSP();
                 spPdcclearance.PDCClearanceDelete(decpdcMasterId, decPDCclearanceVoucherTypeId, strVoucherNo);
                 Messages.DeletedMessage();
-                if (pdcClearanceRegObj != null)
-                {
-                    this.Close();
-                    pdcClearanceRegObj.Show();
-                }
-                else if (pdcClearanceReportObj != null)
-                {
-                    this.Close();
-                    pdcClearanceReportObj.Show();
-                }
-                else if (objVoucherSearch != null)
-                {
-                    this.Close();
-                    objVoucherSearch.GridFill();
-                }
-                else if (frmLedgerDetailsObj != null)
-                {
-                    this.Close();
-                }
-                else if (frmDayBookObj != null)
-                {
-                    this.Close();
-                }
-                else
-                {
+                //if (pdcClearanceRegObj != null)
+                //{
+                //    this.Close();
+                //    pdcClearanceRegObj.Show();
+                //}
+                //else if (pdcClearanceReportObj != null)
+                //{
+                //    this.Close();
+                //    pdcClearanceReportObj.Show();
+                //}
+                //else if (objVoucherSearch != null)
+                //{
+                //    this.Close();
+                //    objVoucherSearch.GridFill();
+                //}
+                //else if (frmLedgerDetailsObj != null)
+                //{
+                //    this.Close();
+                //}
+                //else if (frmDayBookObj != null)
+                //{
+                //    this.Close();
+                //}
+                //else
+                //{
                     ClearFunction();
-                }
+                //}
                 
             }
             catch (Exception ex)
@@ -923,25 +912,25 @@ namespace Open_Miracle
         /// </summary>
         /// <param name="frmDayBook"></param>
         /// <param name="decMasterId"></param>
-        public void callFromDayBook(frmDayBook frmDayBook, decimal decMasterId)
-        {
-            try
-            {
-                frmDayBook.Enabled = false;
-                base.Show();
-                isInEditMode = true;
-                btnDelete.Enabled = true;
-                frmDayBookObj = frmDayBook;
-                decPDCClearanceEditId = decMasterId;
-                PDCClearanceMasterSP spPDCClearance = new PDCClearanceMasterSP();
-                decMasterIdEdit = spPDCClearance.PDCClearanceAgainstIdUnderClearanceId(decPDCClearanceEditId);
-                FillFunction();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PC22:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        //public void callFromDayBook(frmDayBook frmDayBook, decimal decMasterId)
+        //{
+        //    try
+        //    {
+        //        frmDayBook.Enabled = false;
+        //        base.Show();
+        //        isInEditMode = true;
+        //        btnDelete.Enabled = true;
+        //        frmDayBookObj = frmDayBook;
+        //        decPDCClearanceEditId = decMasterId;
+        //        PDCClearanceMasterSP spPDCClearance = new PDCClearanceMasterSP();
+        //        decMasterIdEdit = spPDCClearance.PDCClearanceAgainstIdUnderClearanceId(decPDCClearanceEditId);
+        //        FillFunction();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("PC22:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
         #endregion
 
         #region Events
@@ -1047,14 +1036,14 @@ namespace Open_Miracle
         {
             try
             {
-                if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnSave.Text))
-                {
+                //if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnSave.Text))
+                //{
                     SaveOrEditFunction();
-                }
-                else
-                {
-                    Messages.NoPrivillageMessage();
-                }
+                //}
+                //else
+                //{
+                //    Messages.NoPrivillageMessage();
+                //}
             }
             catch (Exception ex)
             {
@@ -1087,40 +1076,40 @@ namespace Open_Miracle
         /// <param name="e"></param>
         private void frmPdcClearance_FormClosing(object sender, FormClosingEventArgs e)
         {
-            try
-            {
-                if (pdcClearanceRegObj != null)
-                {
-                    pdcClearanceRegObj.Enabled = true;
-                    pdcClearanceRegObj.Search();
-                }
-                if (pdcClearanceReportObj != null)
-                {
-                    pdcClearanceReportObj.Enabled = true;
-                    pdcClearanceReportObj.ReportSearch();
-                }
-                if (objVoucherSearch != null)
-                {
-                    objVoucherSearch.Enabled = true;
-                    objVoucherSearch.GridFill();
-                }
-                if (frmDayBookObj != null)
-                {
-                    frmDayBookObj.Enabled = true;
-                    frmDayBookObj.dayBookGridFill();
-                    frmDayBookObj = null;
-                }
-                if (frmLedgerDetailsObj != null)
-                {
-                    frmLedgerDetailsObj.Enabled = true;
-                    frmLedgerDetailsObj.Activate();
-                    frmLedgerDetailsObj.LedgerDetailsView();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PC29:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //try
+            //{
+            //    if (pdcClearanceRegObj != null)
+            //    {
+            //        pdcClearanceRegObj.Enabled = true;
+            //        pdcClearanceRegObj.Search();
+            //    }
+            //    if (pdcClearanceReportObj != null)
+            //    {
+            //        pdcClearanceReportObj.Enabled = true;
+            //        pdcClearanceReportObj.ReportSearch();
+            //    }
+            //    if (objVoucherSearch != null)
+            //    {
+            //        objVoucherSearch.Enabled = true;
+            //        objVoucherSearch.GridFill();
+            //    }
+            //    if (frmDayBookObj != null)
+            //    {
+            //        frmDayBookObj.Enabled = true;
+            //        frmDayBookObj.dayBookGridFill();
+            //        frmDayBookObj = null;
+            //    }
+            //    if (frmLedgerDetailsObj != null)
+            //    {
+            //        frmLedgerDetailsObj.Enabled = true;
+            //        frmLedgerDetailsObj.Activate();
+            //        frmLedgerDetailsObj.LedgerDetailsView();
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("PC29:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         /// <summary>
         /// Delete button click, checking the user role PrivilegeCheck and call the delete function
@@ -1133,10 +1122,10 @@ namespace Open_Miracle
             try
             {
                 PDCClearanceMasterSP sppdcClearance = new PDCClearanceMasterSP();
-                if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnDelete.Text))
-                {
-                    if (PublicVariables.isMessageDelete)
-                    {
+                //if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnDelete.Text))
+                //{
+                    //if (PublicVariables.isMessageDelete)
+                    //{
                         if (Messages.DeleteMessage())
                         {
                             if (isInEditMode)
@@ -1145,20 +1134,20 @@ namespace Open_Miracle
                                 txtvoucherNo.Focus();
                             }
                         }
-                    }
-                    else
-                    {
-                        if (isInEditMode)
-                        {
-                            DeleteFunction(decPDCClearanceEditId);
-                            txtvoucherNo.Focus();
-                        }
-                    }
-                }
-                else
-                {
-                    Messages.NoPrivillageMessage();
-                }
+                    //}
+                    //else
+                    //{
+                    //    if (isInEditMode)
+                    //    {
+                    //        DeleteFunction(decPDCClearanceEditId);
+                    //        txtvoucherNo.Focus();
+                    //    }
+                    //}
+                //}
+                //else
+                //{
+                //    Messages.NoPrivillageMessage();
+                //}
             }
             catch (Exception ex)
             {
@@ -1384,7 +1373,7 @@ namespace Open_Miracle
                 bool isInvalid = obj.DateValidationFunction(txtVoucherDate);
                 if (!isInvalid)
                 {
-                    txtVoucherDate.Text = PublicVariables._dtCurrentDate.ToString("dd-MMM-yyyy");
+                    txtVoucherDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
                 }
                 string date = txtVoucherDate.Text;
                 dtpVoucherDate.Value = Convert.ToDateTime(date);
