@@ -50,7 +50,7 @@ namespace Open_Miracle
         decimal decmasterId = 0;// To keep the masterId either PDcpayable or PDCreceivable.
         string strledgerId;
         decimal decPDCClearanceEditId = 0;
-        //frmPdcClearanceRegister pdcClearanceRegObj = null;//To use in call from   frmPdcClearanceRegister
+        frmPdcClearanceRegister pdcClearanceRegObj = null;//To use in call from   frmPdcClearanceRegister
         //frmPDCClearanceReport pdcClearanceReportObj = null;//To use in call from   frmPDCClearanceReport
         //frmDayBook frmDayBookObj = null;//To use in call from frmDayBook
         DataTable dtblDetails = new DataTable();
@@ -713,25 +713,25 @@ namespace Open_Miracle
         /// </summary>
         /// <param name="PDCClearanceReg"></param>
         /// <param name="decMasterId"></param>
-        //public void CallFromPDCClearanceRegister(frmPdcClearanceRegister PDCClearanceReg, decimal decMasterId)
-        //{
-        //    try
-        //    {
-        //        PDCClearanceReg.Enabled = false;
-        //        base.Show();
-        //        isInEditMode = true;
-        //        btnDelete.Enabled = true;
-        //        pdcClearanceRegObj = PDCClearanceReg;
-        //        decPDCClearanceEditId = decMasterId;
-        //        PDCClearanceMasterSP spPDCClearance = new PDCClearanceMasterSP();
-        //        decMasterIdEdit = spPDCClearance.PDCClearanceAgainstIdUnderClearanceId(decPDCClearanceEditId);
-        //        FillFunction();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("PC16:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromPDCClearanceRegister(frmPdcClearanceRegister PDCClearanceReg, decimal decMasterId)
+        {
+            try
+            {
+                PDCClearanceReg.Enabled = false;
+                base.Show();
+                isInEditMode = true;
+                btnDelete.Enabled = true;
+                pdcClearanceRegObj = PDCClearanceReg;
+                decPDCClearanceEditId = decMasterId;
+                PDCClearanceMasterSP spPDCClearance = new PDCClearanceMasterSP();
+                decMasterIdEdit = spPDCClearance.PDCClearanceAgainstIdUnderClearanceId(decPDCClearanceEditId);
+                FillFunction();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PC16:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to call this form from frmPDCClearanceReport to view details and for updation
         /// </summary>

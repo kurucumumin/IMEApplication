@@ -817,6 +817,20 @@
           <Property Name="RateBuyEffective" Type="decimal" Precision="20" Scale="10" />
           <Property Name="RateSellEffective" Type="decimal" Precision="20" Scale="10" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ReceiptDetails">
+          <Key>
+            <PropertyRef Name="receiptDetailsId" />
+          </Key>
+          <Property Name="receiptDetailsId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="receiptMasterId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ledgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="amount" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="exchangeRateId" Type="int" />
+          <Property Name="chequeNo" Type="varchar(max)" />
+          <Property Name="chequeDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="ReceiptMaster">
           <Key>
             <PropertyRef Name="receiptMasterId" />
@@ -2382,6 +2396,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__ReceiptDe__excha__7152C524">
+          <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
+          <End Role="ReceiptDetails" Type="Self.ReceiptDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExchangeRate">
+              <PropertyRef Name="exchangeRateID" />
+            </Principal>
+            <Dependent Role="ReceiptDetails">
+              <PropertyRef Name="exchangeRateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReceiptDe__ledge__733B0D96">
+          <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
+          <End Role="ReceiptDetails" Type="Self.ReceiptDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="ReceiptDetails">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReceiptDe__recei__7246E95D">
+          <End Role="ReceiptMaster" Type="Self.ReceiptMaster" Multiplicity="0..1" />
+          <End Role="ReceiptDetails" Type="Self.ReceiptDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReceiptMaster">
+              <PropertyRef Name="receiptMasterId" />
+            </Principal>
+            <Dependent Role="ReceiptDetails">
+              <PropertyRef Name="receiptMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Route__areaId__6FD49106">
           <End Role="Area" Type="Self.Area" Multiplicity="0..1" />
           <End Role="Route" Type="Self.Route" Multiplicity="*" />
@@ -3001,6 +3051,19 @@
           <Parameter Name="payHeadId" Type="numeric" Mode="In" />
         </Function>
         <Function Name="PayHeadGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PDCClearanceFillDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="voucherTypeName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="MasterId" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="PDCClearanceRegisterSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="voucherTypeName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="ledgerName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="chequeNo" Type="varchar(max)" Mode="In" />
+          <Parameter Name="bankId" Type="decimal" Mode="In" />
+          <Parameter Name="status" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="SlidingPriceAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ArticleNo" Type="nvarchar" Mode="In" />
           <Parameter Name="ArticleDescription" Type="nvarchar" Mode="In" />
@@ -3236,6 +3299,17 @@
           <EntitySet Name="VoucherType" EntityType="Self.VoucherType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VoucherTypeTax" EntityType="Self.VoucherTypeTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReceiptDetails" EntityType="Self.ReceiptDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ReceiptDetails].[receiptDetailsId] AS [receiptDetailsId], 
+    [ReceiptDetails].[receiptMasterId] AS [receiptMasterId], 
+    [ReceiptDetails].[ledgerId] AS [ledgerId], 
+    [ReceiptDetails].[amount] AS [amount], 
+    [ReceiptDetails].[exchangeRateId] AS [exchangeRateId], 
+    [ReceiptDetails].[chequeNo] AS [chequeNo], 
+    [ReceiptDetails].[chequeDate] AS [chequeDate]
+    FROM [dbo].[ReceiptDetails] AS [ReceiptDetails]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__AccountLe__accou__5E74FADA" Association="Self.FK__AccountLe__accou__5E74FADA">
             <End Role="AccountGroup" EntitySet="AccountGroup" />
             <End Role="AccountLedger" EntitySet="AccountLedger" />
@@ -3603,6 +3677,18 @@
           <AssociationSet Name="FK__Quotation__Quota__147C05D0" Association="Self.FK__Quotation__Quota__147C05D0">
             <End Role="Quotation" EntitySet="Quotation" />
             <End Role="QuotationDetail" EntitySet="QuotationDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__excha__7152C524" Association="Self.FK__ReceiptDe__excha__7152C524">
+            <End Role="ExchangeRate" EntitySet="ExchangeRate" />
+            <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__ledge__733B0D96" Association="Self.FK__ReceiptDe__ledge__733B0D96">
+            <End Role="AccountLedger" EntitySet="AccountLedger" />
+            <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__recei__7246E95D" Association="Self.FK__ReceiptDe__recei__7246E95D">
+            <End Role="ReceiptMaster" EntitySet="ReceiptMaster" />
+            <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__Route__areaId__6FD49106" Association="Self.FK__Route__areaId__6FD49106">
             <End Role="Area" EntitySet="Area" />
@@ -3998,6 +4084,10 @@
             <Parameter Name="Width" Mode="In" Type="Decimal" />
             <Parameter Name="Length" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="PDCClearanceFillDetails" ReturnType="Collection(IMEModel.PDCClearanceFillDetails_Result)">
+            <Parameter Name="voucherTypeName" Mode="In" Type="String" />
+            <Parameter Name="MasterId" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <EntitySet Name="AccountGroups" EntityType="IMEModel.AccountGroup" />
           <EntitySet Name="AccountLedgers" EntityType="IMEModel.AccountLedger" />
           <EntitySet Name="AdvancePayments" EntityType="IMEModel.AdvancePayment" />
@@ -4084,6 +4174,7 @@
           <EntitySet Name="VoucherTypes" EntityType="IMEModel.VoucherType" />
           <EntitySet Name="VoucherTypeTaxes" EntityType="IMEModel.VoucherTypeTax" />
           <EntitySet Name="Workers" EntityType="IMEModel.Worker" />
+          <EntitySet Name="ReceiptDetails" EntityType="IMEModel.ReceiptDetail" />
           <AssociationSet Name="FK__AccountLe__accou__5E74FADA" Association="IMEModel.FK__AccountLe__accou__5E74FADA">
             <End Role="AccountGroup" EntitySet="AccountGroups" />
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
@@ -4127,6 +4218,10 @@
           <AssociationSet Name="FK__PDCReceiv__ledge__4B2D1C3C" Association="IMEModel.FK__PDCReceiv__ledge__4B2D1C3C">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="PDCReceivableMaster" EntitySet="PDCReceivableMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__ledge__733B0D96" Association="IMEModel.FK__ReceiptDe__ledge__733B0D96">
+            <End Role="AccountLedger" EntitySet="AccountLedgers" />
+            <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__AdvancePa__emplo__4D4A6ED8" Association="IMEModel.FK__AdvancePa__emplo__4D4A6ED8">
             <End Role="Worker" EntitySet="Workers" />
@@ -4360,6 +4455,10 @@
             <End Role="ExchangeRate" EntitySet="ExchangeRates" />
             <End Role="PartyBalance" EntitySet="PartyBalances" />
           </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__excha__7152C524" Association="IMEModel.FK__ReceiptDe__excha__7152C524">
+            <End Role="ExchangeRate" EntitySet="ExchangeRates" />
+            <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK__JournalMa__finan__095F58DF" Association="IMEModel.FK__JournalMa__finan__095F58DF">
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="JournalMaster" EntitySet="JournalMasters" />
@@ -4532,6 +4631,10 @@
             <End Role="Rate" EntitySet="Rates" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__recei__7246E95D" Association="IMEModel.FK__ReceiptDe__recei__7246E95D">
+            <End Role="ReceiptMaster" EntitySet="ReceiptMasters" />
+            <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK__SaleOrder__Repre__22951AFD" Association="IMEModel.FK__SaleOrder__Repre__22951AFD">
             <End Role="Worker" EntitySet="Workers" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
@@ -4632,6 +4735,15 @@
             <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
             <End Role="Worker" EntitySet="Workers" />
           </AssociationSet>
+          <FunctionImport Name="PDCClearanceRegisterSearch" ReturnType="Collection(IMEModel.PDCClearanceRegisterSearch_Result)">
+            <Parameter Name="voucherTypeName" Mode="In" Type="String" />
+            <Parameter Name="ledgerName" Mode="In" Type="String" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="chequeNo" Mode="In" Type="String" />
+            <Parameter Name="bankId" Mode="In" Type="Decimal" />
+            <Parameter Name="status" Mode="In" Type="String" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="PayHeadGet_Result">
           <Property Type="Decimal" Name="PayheadId" Nullable="false" Precision="18" Scale="0" />
@@ -4644,6 +4756,19 @@
           <Property Type="String" Name="payHeadName" Nullable="true" />
           <Property Type="String" Name="narration" Nullable="true" />
           <Property Type="String" Name="type" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PDCClearanceFillDetails_Result">
+          <Property Type="String" Name="voucherTypeName" Nullable="true" />
+          <Property Type="String" Name="voucherNo" Nullable="true" />
+          <Property Type="String" Name="date" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="ledgerId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="Narration" Nullable="true" />
+          <Property Type="String" Name="ledgerName" Nullable="true" />
+          <Property Type="String" Name="checkDate" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="chequeNo" Nullable="true" />
+          <Property Type="Decimal" Name="BankId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="Bank" Nullable="true" />
         </ComplexType>
         <EntityType Name="AccountGroup">
           <Key>
@@ -4699,6 +4824,7 @@
           <NavigationProperty Name="PDCClearanceMasters" Relationship="IMEModel.FK__PDCCleara__ledge__5E3FF0B0" FromRole="AccountLedger" ToRole="PDCClearanceMaster" />
           <NavigationProperty Name="PDCPayableMasters" Relationship="IMEModel.FK__PDCPayabl__ledge__28D80438" FromRole="AccountLedger" ToRole="PDCPayableMaster" />
           <NavigationProperty Name="PDCReceivableMasters" Relationship="IMEModel.FK__PDCReceiv__ledge__4B2D1C3C" FromRole="AccountLedger" ToRole="PDCReceivableMaster" />
+          <NavigationProperty Name="ReceiptDetails" Relationship="IMEModel.FK__ReceiptDe__ledge__733B0D96" FromRole="AccountLedger" ToRole="ReceiptDetail" />
         </EntityType>
         <EntityType Name="AdvancePayment">
           <Key>
@@ -5064,6 +5190,7 @@
           <NavigationProperty Name="DeliveryNoteMasters" Relationship="IMEModel.FK__DeliveryN__excha__16B953FD" FromRole="ExchangeRate" ToRole="DeliveryNoteMaster" />
           <NavigationProperty Name="JournalDetails" Relationship="IMEModel.FK__JournalDe__excha__0F183235" FromRole="ExchangeRate" ToRole="JournalDetail" />
           <NavigationProperty Name="PartyBalances" Relationship="IMEModel.FK__PartyBala__excha__5AA469F6" FromRole="ExchangeRate" ToRole="PartyBalance" />
+          <NavigationProperty Name="ReceiptDetails" Relationship="IMEModel.FK__ReceiptDe__excha__7152C524" FromRole="ExchangeRate" ToRole="ReceiptDetail" />
         </EntityType>
         <EntityType Name="ExtendedRange">
           <Key>
@@ -5636,6 +5763,7 @@
           <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="userId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="ReceiptDetails" Relationship="IMEModel.FK__ReceiptDe__recei__7246E95D" FromRole="ReceiptMaster" ToRole="ReceiptDetail" />
         </EntityType>
         <EntityType Name="RoleValue">
           <Key>
@@ -6176,6 +6304,21 @@
           <NavigationProperty Name="Suppliers1" Relationship="IMEModel.FK__Supplier__repres__65370702" FromRole="Worker" ToRole="Supplier" />
           <NavigationProperty Name="AuthorizationValues" Relationship="IMEModel.UserAuthorization" FromRole="Worker" ToRole="AuthorizationValue" />
         </EntityType>
+        <EntityType Name="ReceiptDetail">
+          <Key>
+            <PropertyRef Name="receiptDetailsId" />
+          </Key>
+          <Property Name="receiptDetailsId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="receiptMasterId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="amount" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="exchangeRateId" Type="Int32" />
+          <Property Name="chequeNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="chequeDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__ReceiptDe__ledge__733B0D96" FromRole="ReceiptDetail" ToRole="AccountLedger" />
+          <NavigationProperty Name="ExchangeRate" Relationship="IMEModel.FK__ReceiptDe__excha__7152C524" FromRole="ReceiptDetail" ToRole="ExchangeRate" />
+          <NavigationProperty Name="ReceiptMaster" Relationship="IMEModel.FK__ReceiptDe__recei__7246E95D" FromRole="ReceiptDetail" ToRole="ReceiptMaster" />
+        </EntityType>
         <Association Name="FK__AccountLe__accou__5E74FADA">
           <End Type="IMEModel.AccountGroup" Role="AccountGroup" Multiplicity="0..1" />
           <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="*" />
@@ -6304,6 +6447,18 @@
               <PropertyRef Name="ledgerId" />
             </Principal>
             <Dependent Role="PDCReceivableMaster">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReceiptDe__ledge__733B0D96">
+          <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="0..1" />
+          <End Type="IMEModel.ReceiptDetail" Role="ReceiptDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="ReceiptDetail">
               <PropertyRef Name="ledgerId" />
             </Dependent>
           </ReferentialConstraint>
@@ -7004,6 +7159,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__ReceiptDe__excha__7152C524">
+          <End Type="IMEModel.ExchangeRate" Role="ExchangeRate" Multiplicity="0..1" />
+          <End Type="IMEModel.ReceiptDetail" Role="ReceiptDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExchangeRate">
+              <PropertyRef Name="exchangeRateID" />
+            </Principal>
+            <Dependent Role="ReceiptDetail">
+              <PropertyRef Name="exchangeRateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__JournalMa__finan__095F58DF">
           <End Type="IMEModel.FinancialYear" Role="FinancialYear" Multiplicity="0..1" />
           <End Type="IMEModel.JournalMaster" Role="JournalMaster" Multiplicity="*" />
@@ -7520,6 +7687,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__ReceiptDe__recei__7246E95D">
+          <End Type="IMEModel.ReceiptMaster" Role="ReceiptMaster" Multiplicity="0..1" />
+          <End Type="IMEModel.ReceiptDetail" Role="ReceiptDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReceiptMaster">
+              <PropertyRef Name="receiptMasterId" />
+            </Principal>
+            <Dependent Role="ReceiptDetail">
+              <PropertyRef Name="receiptMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__SaleOrder__Repre__22951AFD">
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="1" />
           <End Type="IMEModel.SaleOrder" Role="SaleOrder" Multiplicity="*" />
@@ -7804,6 +7983,22 @@
           <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
         </Association>
+        <ComplexType Name="PDCClearanceRegisterSearch_Result">
+          <Property Type="Decimal" Name="PDCClearanceMasterId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="voucherNo" Nullable="true" />
+          <Property Type="String" Name="voucherTypeName" Nullable="true" />
+          <Property Type="Decimal" Name="suffixPrefixId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="againstId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="date" Nullable="true" />
+          <Property Type="String" Name="narration" Nullable="true" />
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="Decimal" Name="voucherTypeId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="financialYearId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="status" Nullable="true" />
+          <Property Type="String" Name="ledgerName" Nullable="true" />
+          <Property Type="String" Name="type" Nullable="true" />
+          <Property Type="Decimal" Name="amount" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -7844,6 +8039,23 @@
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="IMEModel.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="SuperDiskAdd" FunctionName="IMEModel.Store.SuperDiskAdd" />
           <FunctionImportMapping FunctionImportName="SuperDiskPAdd" FunctionName="IMEModel.Store.SuperDiskPAdd" />
+          <FunctionImportMapping FunctionImportName="PDCClearanceFillDetails" FunctionName="IMEModel.Store.PDCClearanceFillDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.PDCClearanceFillDetails_Result">
+                <ScalarProperty Name="voucherTypeName" ColumnName="voucherTypeName" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
+                <ScalarProperty Name="checkDate" ColumnName="checkDate" />
+                <ScalarProperty Name="chequeNo" ColumnName="chequeNo" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <EntitySetMapping Name="AccountGroups">
             <EntityTypeMapping TypeName="IMEModel.AccountGroup">
               <MappingFragment StoreEntitySet="AccountGroup">
@@ -9187,6 +9399,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ReceiptDetails">
+            <EntityTypeMapping TypeName="IMEModel.ReceiptDetail">
+              <MappingFragment StoreEntitySet="ReceiptDetails">
+                <ScalarProperty Name="chequeDate" ColumnName="chequeDate" />
+                <ScalarProperty Name="chequeNo" ColumnName="chequeNo" />
+                <ScalarProperty Name="exchangeRateId" ColumnName="exchangeRateId" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="receiptMasterId" ColumnName="receiptMasterId" />
+                <ScalarProperty Name="receiptDetailsId" ColumnName="receiptDetailsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <AssociationSetMapping Name="AuthRole" TypeName="IMEModel.AuthRole" StoreEntitySet="AuthRole">
             <EndProperty Name="RoleValue">
               <ScalarProperty Name="RoleID" ColumnName="RoleID" />
@@ -9203,6 +9428,26 @@
               <ScalarProperty Name="AuthorizationID" ColumnName="AuthorizationID" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="PDCClearanceRegisterSearch" FunctionName="IMEModel.Store.PDCClearanceRegisterSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.PDCClearanceRegisterSearch_Result">
+                <ScalarProperty Name="PDCClearanceMasterId" ColumnName="PDCClearanceMasterId" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="voucherTypeName" ColumnName="voucherTypeName" />
+                <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
+                <ScalarProperty Name="againstId" ColumnName="againstId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

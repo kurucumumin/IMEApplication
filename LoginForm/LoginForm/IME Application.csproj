@@ -196,6 +196,12 @@
     <Compile Include="Account\Register\frmPaymentRegister.designer.cs">
       <DependentUpon>frmPaymentRegister.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Register\frmPdcClearanceRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Register\frmPdcClearanceRegister.designer.cs">
+      <DependentUpon>frmPdcClearanceRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Register\frmPDCPayableRegister.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -425,7 +431,13 @@
     <Compile Include="DataSet\PaymentTerm.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PDCClearanceFillDetails_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PDCClearanceMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PDCClearanceRegisterSearch_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PDCPayableMaster.cs">
@@ -459,6 +471,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Rate.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ReceiptDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\ReceiptMaster.cs">
@@ -825,6 +840,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Register\frmPaymentRegister.resx">
       <DependentUpon>frmPaymentRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Register\frmPdcClearanceRegister.resx">
+      <DependentUpon>frmPdcClearanceRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Register\frmPDCPayableRegister.resx">
       <DependentUpon>frmPDCPayableRegister.cs</DependentUpon>

@@ -14,6 +14,12 @@ namespace LoginForm.DataSet
     
     public partial class ReceiptMaster
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ReceiptMaster()
+        {
+            this.ReceiptDetails = new HashSet<ReceiptDetail>();
+        }
+    
         public decimal receiptMasterId { get; set; }
         public string voucherNo { get; set; }
         public string invoiceNo { get; set; }
@@ -25,5 +31,8 @@ namespace LoginForm.DataSet
         public Nullable<decimal> voucherTypeId { get; set; }
         public Nullable<decimal> userId { get; set; }
         public Nullable<decimal> financialYearId { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ReceiptDetail> ReceiptDetails { get; set; }
     }
 }
