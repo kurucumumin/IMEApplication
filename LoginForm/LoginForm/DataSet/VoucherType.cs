@@ -31,6 +31,7 @@ namespace LoginForm.DataSet
             this.PDCReceivableMasters = new HashSet<PDCReceivableMaster>();
             this.SuffixPrefixes = new HashSet<SuffixPrefix>();
             this.VoucherTypeTaxes = new HashSet<VoucherTypeTax>();
+            this.SaleOrders = new HashSet<SaleOrder>();
         }
     
         public decimal voucherTypeId { get; set; }
@@ -76,5 +77,7 @@ namespace LoginForm.DataSet
         public virtual ICollection<SuffixPrefix> SuffixPrefixes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VoucherTypeTax> VoucherTypeTaxes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SaleOrder> SaleOrders { get; set; }
     }
 }

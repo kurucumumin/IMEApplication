@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Worker
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -35,8 +35,9 @@ namespace LoginForm.DataSet
             this.Suppliers = new HashSet<Supplier>();
             this.Suppliers1 = new HashSet<Supplier>();
             this.AuthorizationValues = new HashSet<AuthorizationValue>();
+            this.SaleOrders = new HashSet<SaleOrder>();
         }
-    
+
         public int WorkerID { get; set; }
         public string NameLastName { get; set; }
         public string UserName { get; set; }
@@ -50,7 +51,7 @@ namespace LoginForm.DataSet
         public Nullable<int> isActive { get; set; }
         public Nullable<decimal> desinationID { get; set; }
         public Nullable<decimal> designationId { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AdvancePayment> AdvancePayments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -90,5 +91,7 @@ namespace LoginForm.DataSet
         public virtual ICollection<Supplier> Suppliers1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AuthorizationValue> AuthorizationValues { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SaleOrder> SaleOrders { get; set; }
     }
 }

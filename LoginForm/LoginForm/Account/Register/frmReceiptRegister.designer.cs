@@ -31,7 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReceiptRegister));
             this.dgvReceiptRegister = new System.Windows.Forms.DataGridView();
             this.dgvtxtslno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtVoucherNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -362,7 +361,6 @@
             this.Controls.Add(this.lblVoucherNo);
             this.Controls.Add(this.lblToDate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "frmReceiptRegister";

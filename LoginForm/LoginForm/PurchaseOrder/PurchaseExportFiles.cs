@@ -92,9 +92,13 @@ namespace LoginForm.PurchaseOrder
             {
                 txtMail.Text = txtMail.Text + txt[i] + "\r\n";
             }
+<<<<<<< HEAD
             filename = txtCreate.newTxt(txt, AccountNumber);
             groupBox2.Text = filename;
             lblPicture.Text = filename;
+=======
+            txtCreate.newTxt(txt,AccountNumber);
+>>>>>>> NebiDevelop
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -228,26 +232,58 @@ namespace LoginForm.PurchaseOrder
             Line1 = "FH" + COO + OrderDate + OrderTime + filler1;
             TXTList.Add(Line1);
             string Line2 = "";
+<<<<<<< HEAD
             AccountNumber = "0008828170";//accounting numarası
             int AccountNumberlength = AccountNumber.Length;
             for (int i = 0; i < 10 - AccountNumberlength; i++)
+=======
+//            Dubai Main
+
+
+
+//Bill to: 8828170  Ship to: 8828170
+
+
+
+//Abu Dhabi
+
+
+
+//Bill to: 8828170  Ship to: 11006496
+
+//(only ship to is different for Abu Dhabi)
+
+
+
+
+
+//Dubai 3rd party : 8894479
+
+            //IME.SaleOrders.Where(a=>a.SaleOrderNo==s).FirstOrDefault().
+             AccountNumber = "0008828170";//accounting numarası
+            for (int i = 0; i < 10- AccountNumber.Length; i++)
+>>>>>>> NebiDevelop
             {
                 AccountNumber += " ";
             }
             string saleOrderN = rowList.FirstOrDefault().Cells["SaleOrderNo"].Value.ToString();
-           
+
             string OrderNature = "";
             if (orderN == "XDOC")
             {
-                OrderNature = "D";
+                OrderNature = "E";
             }
-            else { OrderNature = "E"; }
+            else { OrderNature = "D"; }
             string PackType = " ";
             string OrderNumber = "     ";
             string CustomerDistOrderReference = Convert.ToString(fiche);
             CustomerDistOrderReference = CustomerDistOrderReference+"/DB/"+DateTime.Now.ToString("MMM") +"/"+DateTime.Now.ToString("yy");
+<<<<<<< HEAD
             int CustomerDistOrderReferencelength = CustomerDistOrderReference.Length;
             for (int i = 0; i < 30- CustomerDistOrderReferencelength; i++)
+=======
+            for (int i = 0; i < 30- CustomerDistOrderReference.Length; i++)
+>>>>>>> NebiDevelop
             {
                 CustomerDistOrderReference += " ";
             }
@@ -267,7 +303,7 @@ namespace LoginForm.PurchaseOrder
                     MethodofDespatch = "EXP";
                     break;
             }
-            
+
 
             string AutomaticBackOrderAllowed = " ";
             string CustomerPONumber = "";
@@ -275,7 +311,7 @@ namespace LoginForm.PurchaseOrder
             {
                 CustomerPONumber += " ";
             }
-            string SupplyingCompany = "GB01";
+            string SupplyingCompany = "AE01";
             string RequestDelDate = "";
             for (int i = 0; i < 8; i++)
             {
@@ -367,7 +403,7 @@ namespace LoginForm.PurchaseOrder
                 }
                 Line6 = "C4" + DeliveryInstruction + filler1;
                 TXTList.Add(Line6);
-                
+
             }
             int totalquantity = 0;
             int totalitemLine = 0;
@@ -395,9 +431,14 @@ namespace LoginForm.PurchaseOrder
 
                 string PackType1 = "S";
                 string ProductDescription="";
+<<<<<<< HEAD
                 if (po.ItemDescription != null) ProductDescription = "";//item desc boş gönderiliyor
                 int ProductDescriptionlenght = ProductDescription.ToString().Length;
                 for (int i = 0; i < 40 - ProductDescriptionlenght; i++)
+=======
+                if(po.ItemDescription!=null)ProductDescription = "";//item desc boş gönderiliyor
+                for (int i = 0; i < 40 - ProductDescription.ToString().Length; i++)
+>>>>>>> NebiDevelop
                 {
                     ProductDescription = " " + ProductDescription;
                 }
@@ -431,7 +472,7 @@ namespace LoginForm.PurchaseOrder
                 }
                 itemLine = "OL" + productNumber + OrderQuantity + PackType1 + ProductDescription + LocalStoresLocation + LocalPrePickReference + PurchaseOrderItemNumber + ItemRequestedDeliveryDate + filler1;
                 TXTList.Add(itemLine);
-                
+
             }
             string lineOT = "";
             string OrderQuantityControl = "";

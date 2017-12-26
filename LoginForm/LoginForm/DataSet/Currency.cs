@@ -18,8 +18,8 @@ namespace LoginForm.DataSet
         public Currency()
         {
             this.Managements = new HashSet<Management>();
-            this.SaleOrders = new HashSet<SaleOrder>();
             this.ExchangeRates = new HashSet<ExchangeRate>();
+            this.SaleOrders = new HashSet<SaleOrder>();
         }
     
         public decimal currencyID { get; set; }
@@ -30,8 +30,8 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Management> Managements { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SaleOrder> SaleOrders { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExchangeRate> ExchangeRates { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SaleOrder> SaleOrders { get; set; }
     }
 }

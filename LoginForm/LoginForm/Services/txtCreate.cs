@@ -10,13 +10,13 @@ namespace LoginForm.Services
 {
     class txtCreate
     {
-        public static string newTxt(string[] txtArray, string AccountNumber)
+        public static void newTxt(string[] txtArray,string AccountNumber)
         {
 
             SaveFileDialog savefile = new SaveFileDialog();
             savefile.Filter = "Txt Files (*.txt)|*.txt|All files (*.txt)|*.txt";
-            string filename = "ORD_AE01_" + AccountNumber + "_" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmmss");
-            savefile.FileName = "ORD_AE01_" + AccountNumber + "_" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmmss");
+            string filename= "ORD_DB01_" + AccountNumber + "_" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmmss");
+            savefile.FileName = filename;
             //savefile.FileName = quotationNo;
             if (savefile.ShowDialog() == DialogResult.OK)
             {
@@ -38,7 +38,7 @@ namespace LoginForm.Services
 
             }
 
-            return filename;
+
         }
     }
 }
