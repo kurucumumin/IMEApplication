@@ -26,6 +26,7 @@ namespace LoginForm.PurchaseOrder
         MailMessage mail = new MailMessage();
         List<string> ccList = new List<string>();
         List<string> toList = new List<string>();
+        string AccountNumber;
 
         public PurchaseExportFiles()
         {
@@ -91,7 +92,7 @@ namespace LoginForm.PurchaseOrder
             {
                 txtMail.Text = txtMail.Text + txt[i] + "\r\n";
             }
-            txtCreate.newTxt(txt);
+            txtCreate.newTxt(txt,AccountNumber);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -212,8 +213,31 @@ namespace LoginForm.PurchaseOrder
             Line1 = "FH" + COO + OrderDate + OrderTime + filler1;
             TXTList.Add(Line1);
             string Line2 = "";
-            string AccountNumber = "";//accounting numarası
-            for (int i = 0; i < 10; i++)
+//            Dubai Main
+
+ 
+
+//Bill to: 8828170  Ship to: 8828170
+
+ 
+
+//Abu Dhabi
+
+ 
+
+//Bill to: 8828170  Ship to: 11006496
+
+//(only ship to is different for Abu Dhabi)
+
+ 
+
+ 
+
+//Dubai 3rd party : 8894479
+
+            //IME.SaleOrders.Where(a=>a.SaleOrderNo==s).FirstOrDefault().
+             AccountNumber = "0008828170";//accounting numarası
+            for (int i = 0; i < 10- AccountNumber.Length; i++)
             {
                 AccountNumber += " ";
             }
@@ -222,14 +246,14 @@ namespace LoginForm.PurchaseOrder
             string OrderNature = "";
             if (IME.SaleOrders.Where(a => a.SaleOrderNo == saleOrderN).FirstOrDefault().SaleOrderNature == "XDOC")
             {
-                OrderNature = "D";
+                OrderNature = "E";
             }
-            else { OrderNature = "E"; }
+            else { OrderNature = "D"; }
             string PackType = " ";
             string OrderNumber = "     ";
             string CustomerDistOrderReference = Convert.ToString(fiche);
             CustomerDistOrderReference = CustomerDistOrderReference+"/DB/"+DateTime.Now.ToString("MMM") +"/"+DateTime.Now.ToString("yy");
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 30- CustomerDistOrderReference.Length; i++)
             {
                 CustomerDistOrderReference += " ";
             }
@@ -257,7 +281,7 @@ namespace LoginForm.PurchaseOrder
             {
                 CustomerPONumber += " ";
             }
-            string SupplyingCompany = "GB01";
+            string SupplyingCompany = "AE01";
             string RequestDelDate = "";
             for (int i = 0; i < 8; i++)
             {
@@ -368,7 +392,7 @@ namespace LoginForm.PurchaseOrder
 
                 string PackType1 = "S";
                 string ProductDescription="";
-                if(po.ItemDescription!=null)ProductDescription = po.ItemDescription;
+                if(po.ItemDescription!=null)ProductDescription = "";//item desc boş gönderiliyor
                 for (int i = 0; i < 40 - ProductDescription.ToString().Length; i++)
                 {
                     ProductDescription += " " + ProductDescription;

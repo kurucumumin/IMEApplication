@@ -12,30 +12,27 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class ReceiptMaster
+    public partial class PDCReceivableMaster
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ReceiptMaster()
-        {
-            this.ReceiptDetails = new HashSet<ReceiptDetail>();
-            this.ReceiptDetails1 = new HashSet<ReceiptDetail1>();
-        }
-    
-        public decimal receiptMasterId { get; set; }
+        public decimal pdcReceivableMasterId { get; set; }
         public string voucherNo { get; set; }
         public string invoiceNo { get; set; }
         public Nullable<decimal> suffixPrefixId { get; set; }
         public Nullable<System.DateTime> date { get; set; }
         public Nullable<decimal> ledgerId { get; set; }
-        public Nullable<decimal> totalAmount { get; set; }
+        public Nullable<decimal> amount { get; set; }
+        public string chequeNo { get; set; }
+        public Nullable<System.DateTime> chequeDate { get; set; }
         public string narration { get; set; }
+        public Nullable<int> userId { get; set; }
+        public Nullable<decimal> bankId { get; set; }
         public Nullable<decimal> voucherTypeId { get; set; }
-        public Nullable<decimal> userId { get; set; }
         public Nullable<decimal> financialYearId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReceiptDetail> ReceiptDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReceiptDetail1> ReceiptDetails1 { get; set; }
+        public virtual AccountLedger AccountLedger { get; set; }
+        public virtual FinancialYear FinancialYear { get; set; }
+        public virtual SuffixPrefix SuffixPrefix { get; set; }
+        public virtual Worker Worker { get; set; }
+        public virtual VoucherType VoucherType { get; set; }
     }
 }

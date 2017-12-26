@@ -12,50 +12,39 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class FinancialYear
+    public partial class SuffixPrefix
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public FinancialYear()
+        public SuffixPrefix()
         {
-            this.AdvancePayments = new HashSet<AdvancePayment>();
-            this.CreditNoteMasters = new HashSet<CreditNoteMaster>();
             this.DeliveryNoteMasters = new HashSet<DeliveryNoteMaster>();
             this.JournalMasters = new HashSet<JournalMaster>();
-            this.LedgerPostings = new HashSet<LedgerPosting>();
-            this.Managements = new HashSet<Management>();
-            this.PartyBalances = new HashSet<PartyBalance>();
-            this.PaymentMasters = new HashSet<PaymentMaster>();
             this.PDCClearanceMasters = new HashSet<PDCClearanceMaster>();
             this.PDCPayableMasters = new HashSet<PDCPayableMaster>();
             this.PDCReceivableMasters = new HashSet<PDCReceivableMaster>();
         }
     
-        public decimal financialYearId { get; set; }
+        public decimal suffixprefixId { get; set; }
+        public Nullable<decimal> voucherTypeId { get; set; }
         public Nullable<System.DateTime> fromDate { get; set; }
         public Nullable<System.DateTime> toDate { get; set; }
-        public Nullable<System.DateTime> extraDate { get; set; }
+        public Nullable<decimal> startIndex { get; set; }
+        public string prefix { get; set; }
+        public string suffix { get; set; }
+        public Nullable<int> widthOfNumericalPart { get; set; }
+        public Nullable<bool> prefillWithZero { get; set; }
+        public string narration { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AdvancePayment> AdvancePayments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CreditNoteMaster> CreditNoteMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DeliveryNoteMaster> DeliveryNoteMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<JournalMaster> JournalMasters { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<LedgerPosting> LedgerPostings { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Management> Managements { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PartyBalance> PartyBalances { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PaymentMaster> PaymentMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PDCClearanceMaster> PDCClearanceMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PDCPayableMaster> PDCPayableMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PDCReceivableMaster> PDCReceivableMasters { get; set; }
+        public virtual VoucherType VoucherType { get; set; }
     }
 }

@@ -14,6 +14,12 @@ namespace LoginForm.DataSet
     
     public partial class LedgerPosting
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public LedgerPosting()
+        {
+            this.BankReconciliations = new HashSet<BankReconciliation>();
+        }
+    
         public decimal ledgerPostingId { get; set; }
         public Nullable<System.DateTime> date { get; set; }
         public Nullable<decimal> voucherTypeId { get; set; }
@@ -31,6 +37,8 @@ namespace LoginForm.DataSet
         public string extra2 { get; set; }
     
         public virtual AccountLedger AccountLedger { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BankReconciliation> BankReconciliations { get; set; }
         public virtual FinancialYear FinancialYear { get; set; }
         public virtual VoucherType VoucherType { get; set; }
     }

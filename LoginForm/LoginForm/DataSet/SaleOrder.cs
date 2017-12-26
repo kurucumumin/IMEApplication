@@ -48,6 +48,8 @@ namespace LoginForm.DataSet
         public Nullable<decimal> DiscOnSubtotal { get; set; }
         public Nullable<decimal> ExtraCharges { get; set; }
         public Nullable<decimal> TotalMargin { get; set; }
+        public Nullable<decimal> VoucherId { get; set; }
+        public Nullable<decimal> VoucherTypeId { get; set; }
     
         public virtual Currency Currency { get; set; }
         public virtual Customer Customer { get; set; }
@@ -63,5 +65,6 @@ namespace LoginForm.DataSet
         public virtual Worker Worker { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleOrderDetail> SaleOrderDetails { get; set; }
+        public virtual VoucherType VoucherType { get; set; }
     }
 }

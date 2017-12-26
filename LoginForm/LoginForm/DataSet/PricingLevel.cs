@@ -14,8 +14,17 @@ namespace LoginForm.DataSet
     
     public partial class PricingLevel
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PricingLevel()
+        {
+            this.DeliveryNoteMasters = new HashSet<DeliveryNoteMaster>();
+        }
+    
         public decimal pricinglevelId { get; set; }
         public string pricinglevelName { get; set; }
         public string narration { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DeliveryNoteMaster> DeliveryNoteMasters { get; set; }
     }
 }

@@ -10,11 +10,13 @@ namespace LoginForm.Services
 {
     class txtCreate
     {
-        public static void newTxt(string[] txtArray)
+        public static void newTxt(string[] txtArray,string AccountNumber)
         {
 
             SaveFileDialog savefile = new SaveFileDialog();
             savefile.Filter = "Txt Files (*.txt)|*.txt|All files (*.txt)|*.txt";
+            string filename= "ORD_DB01_" + AccountNumber + "_" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmmss");
+            savefile.FileName = filename;
             //savefile.FileName = quotationNo;
             if (savefile.ShowDialog() == DialogResult.OK)
             {
