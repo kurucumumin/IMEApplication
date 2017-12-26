@@ -507,5 +507,23 @@ namespace LoginForm.Account.Services
 
             return isExist;
         }
+
+        public bool AccountGroupIdCheckSundryDeptor(string strLedgerName)
+        {
+            IMEEntities IME = new IMEEntities();
+            bool isSundryDebit = false;
+            try
+            {
+                var obj = (from rm in IME.AccountLedgers.Where(r => r.ledgerName == strLedgerName && r.accountGroupID==26 && r.billByBill==true)
+                           select rm.ledgerId).ToList();
+
+                isSundryDebit=(obj.Count() > 0) ? true : false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return isSundryDebit;
+        }
     }
 }

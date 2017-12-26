@@ -214,6 +214,10 @@
     <Compile Include="Account\Register\frmReceiptRegister.designer.cs">
       <DependentUpon>frmReceiptRegister.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Search\frmVoucherSearch.cs" />
+    <Compile Include="Account\Search\frmVoucherSearch.designer.cs">
+      <DependentUpon>frmVoucherSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Services\AccountGroupSP.cs" />
     <Compile Include="Account\Services\AccountLedgerSP.cs" />
     <Compile Include="Account\Services\AreaSP.cs" />
@@ -429,6 +433,9 @@
     <Compile Include="DataSet\PaymentTerm.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PDCClearanceMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PDCPayableMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -631,6 +638,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="PurchaseOrder\ExcelPurchaseOrder.cs" />
+    <Compile Include="PurchaseOrder\FormBillTo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchaseOrder\FormBillTo.Designer.cs">
+      <DependentUpon>FormBillTo.cs</DependentUpon>
+    </Compile>
     <Compile Include="PurchaseOrder\frmStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -836,6 +849,9 @@
     <EmbeddedResource Include="Account\Register\frmReceiptRegister.resx">
       <DependentUpon>frmReceiptRegister.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\Search\frmVoucherSearch.resx">
+      <DependentUpon>frmVoucherSearch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmPdcPayable.resx">
       <DependentUpon>frmPdcPayable.cs</DependentUpon>
     </EmbeddedResource>
@@ -897,6 +913,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchaseOrder\FormBillTo.resx">
+      <DependentUpon>FormBillTo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PurchaseOrder\frmStock.resx">
       <DependentUpon>frmStock.cs</DependentUpon>

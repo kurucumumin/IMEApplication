@@ -143,6 +143,19 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Country_name" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="CreditNoteDetails">
+          <Key>
+            <PropertyRef Name="creditNoteDetailsId" />
+          </Key>
+          <Property Name="creditNoteDetailsId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creditNoteMasterId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ledgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="credit" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="debit" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="exchangeRateId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="chequeDate" Type="datetime" />
+          <Property Name="chequeNo" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="CreditNoteMaster">
           <Key>
             <PropertyRef Name="creditNoteMasterId" />
@@ -156,6 +169,7 @@
           <Property Name="totalAmount" Type="decimal" Precision="18" Scale="5" />
           <Property Name="narration" Type="varchar(max)" />
           <Property Name="financialYearId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="voucherTypeId" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Currency">
           <Key>
@@ -274,6 +288,34 @@
           <Property Name="DiscontinuationDate" Type="nvarchar" MaxLength="20" />
           <Property Name="Runon" Type="int" />
           <Property Name="Referral" Type="int" />
+        </EntityType>
+        <EntityType Name="DebitNoteDetail">
+          <Key>
+            <PropertyRef Name="debitNoteDetailsId" />
+          </Key>
+          <Property Name="debitNoteDetailsId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="debitNoteMasterId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ledgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="credit" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="debit" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="exchangeRateId" Type="int" />
+          <Property Name="chequeNo" Type="varchar(max)" />
+          <Property Name="chequeDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DebitNoteMaster">
+          <Key>
+            <PropertyRef Name="debitNoteMasterId" />
+          </Key>
+          <Property Name="debitNoteMasterId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="voucherNo" Type="varchar(max)" />
+          <Property Name="invoiceNo" Type="varchar(max)" />
+          <Property Name="suffixPrefixId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="userId" Type="int" />
+          <Property Name="totalAmount" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="narration" Type="varchar(max)" />
+          <Property Name="financialYearId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="voucherTypeId" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="DeliveryNoteMaster">
           <Key>
@@ -591,6 +633,24 @@
           <Property Name="term_name" Type="nvarchar" MaxLength="50" />
           <Property Name="timespan" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="PDCClearanceMaster">
+          <Key>
+            <PropertyRef Name="PDCClearanceMasterId" />
+          </Key>
+          <Property Name="PDCClearanceMasterId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="voucherNo" Type="varchar(max)" />
+          <Property Name="invoiceNo" Type="varchar(max)" />
+          <Property Name="suffixPrefixId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="ledgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="type" Type="varchar(max)" />
+          <Property Name="againstId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="voucherTypeId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="narration" Type="varchar(max)" />
+          <Property Name="status" Type="varchar(max)" />
+          <Property Name="userId" Type="int" />
+          <Property Name="financialYearId" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
         <EntityType Name="PDCPayableMaster">
           <Key>
             <PropertyRef Name="pdcPayableMasterId" />
@@ -800,6 +860,30 @@
           <Property Name="RateSell" Type="decimal" Precision="20" Scale="10" />
           <Property Name="RateBuyEffective" Type="decimal" Precision="20" Scale="10" />
           <Property Name="RateSellEffective" Type="decimal" Precision="20" Scale="10" />
+        </EntityType>
+        <EntityType Name="ReceiptDetail">
+          <Key>
+            <PropertyRef Name="receiptDetailsId" />
+          </Key>
+          <Property Name="receiptDetailsId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="receiptMasterId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ledgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="amount" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="exchangeRateId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="chequeNo" Type="varchar(max)" />
+          <Property Name="chequeDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ReceiptDetails">
+          <Key>
+            <PropertyRef Name="receiptDetailsId" />
+          </Key>
+          <Property Name="receiptDetailsId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="receiptMasterId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ledgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="amount" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="exchangeRateId" Type="int" />
+          <Property Name="chequeNo" Type="varchar(max)" />
+          <Property Name="chequeDate" Type="datetime" />
         </EntityType>
         <EntityType Name="ReceiptMaster">
           <Key>
@@ -1261,6 +1345,7 @@
           <Property Name="Title" Type="int" />
           <Property Name="isActive" Type="int" />
           <Property Name="desinationID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="designationId" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <Association Name="FK__AccountLe__accou__5E74FADA">
           <End Role="AccountGroup" Type="Self.AccountGroup" Multiplicity="0..1" />
@@ -1406,6 +1491,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__CreditNot__credi__62108194">
+          <End Role="CreditNoteMaster" Type="Self.CreditNoteMaster" Multiplicity="0..1" />
+          <End Role="CreditNoteDetails" Type="Self.CreditNoteDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CreditNoteMaster">
+              <PropertyRef Name="creditNoteMasterId" />
+            </Principal>
+            <Dependent Role="CreditNoteDetails">
+              <PropertyRef Name="creditNoteMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__CreditNot__finan__74643BF9">
           <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
           <End Role="CreditNoteMaster" Type="Self.CreditNoteMaster" Multiplicity="*" />
@@ -1418,6 +1515,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__CreditNot__ledge__6304A5CD">
+          <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
+          <End Role="CreditNoteDetails" Type="Self.CreditNoteDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="CreditNoteDetails">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__CreditNot__userI__737017C0">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="CreditNoteMaster" Type="Self.CreditNoteMaster" Multiplicity="*" />
@@ -1427,6 +1536,18 @@
             </Principal>
             <Dependent Role="CreditNoteMaster">
               <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CreditNot__vouch__6C8E1007">
+          <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
+          <End Role="CreditNoteMaster" Type="Self.CreditNoteMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="CreditNoteMaster">
+              <PropertyRef Name="voucherTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1679,6 +1800,66 @@
             </Principal>
             <Dependent Role="CustomerWorker">
               <PropertyRef Name="titleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DebitNote__debit__597B3B93">
+          <End Role="DebitNoteMaster" Type="Self.DebitNoteMaster" Multiplicity="0..1" />
+          <End Role="DebitNoteDetail" Type="Self.DebitNoteDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DebitNoteMaster">
+              <PropertyRef Name="debitNoteMasterId" />
+            </Principal>
+            <Dependent Role="DebitNoteDetail">
+              <PropertyRef Name="debitNoteMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DebitNote__excha__5B638405">
+          <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
+          <End Role="DebitNoteDetail" Type="Self.DebitNoteDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExchangeRate">
+              <PropertyRef Name="exchangeRateID" />
+            </Principal>
+            <Dependent Role="DebitNoteDetail">
+              <PropertyRef Name="exchangeRateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DebitNote__ledge__5A6F5FCC">
+          <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
+          <End Role="DebitNoteDetail" Type="Self.DebitNoteDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="DebitNoteDetail">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DebitNote__userI__55AAAAAF">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+          <End Role="DebitNoteMaster" Type="Self.DebitNoteMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerID" />
+            </Principal>
+            <Dependent Role="DebitNoteMaster">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DebitNote__vouch__569ECEE8">
+          <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
+          <End Role="DebitNoteMaster" Type="Self.DebitNoteMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="DebitNoteMaster">
+              <PropertyRef Name="voucherTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2066,6 +2247,66 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PDCCleara__finan__4D1564AE">
+          <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
+          <End Role="PDCClearanceMaster" Type="Self.PDCClearanceMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinancialYear">
+              <PropertyRef Name="financialYearId" />
+            </Principal>
+            <Dependent Role="PDCClearanceMaster">
+              <PropertyRef Name="financialYearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PDCCleara__ledge__4A38F803">
+          <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
+          <End Role="PDCClearanceMaster" Type="Self.PDCClearanceMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="PDCClearanceMaster">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PDCCleara__suffi__4944D3CA">
+          <End Role="SuffixPrefix" Type="Self.SuffixPrefix" Multiplicity="0..1" />
+          <End Role="PDCClearanceMaster" Type="Self.PDCClearanceMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SuffixPrefix">
+              <PropertyRef Name="suffixprefixId" />
+            </Principal>
+            <Dependent Role="PDCClearanceMaster">
+              <PropertyRef Name="suffixPrefixId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PDCCleara__userI__4C214075">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+          <End Role="PDCClearanceMaster" Type="Self.PDCClearanceMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerID" />
+            </Principal>
+            <Dependent Role="PDCClearanceMaster">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PDCCleara__vouch__4B2D1C3C">
+          <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
+          <End Role="PDCClearanceMaster" Type="Self.PDCClearanceMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="PDCClearanceMaster">
+              <PropertyRef Name="voucherTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PDCPayabl__finan__2CA8951C">
           <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
           <End Role="PDCPayableMaster" Type="Self.PDCPayableMaster" Multiplicity="*" />
@@ -2291,6 +2532,66 @@
             </Principal>
             <Dependent Role="QuotationDetail">
               <PropertyRef Name="QuotationNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReceiptDe__excha__65E11278">
+          <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
+          <End Role="ReceiptDetails" Type="Self.ReceiptDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExchangeRate">
+              <PropertyRef Name="exchangeRateID" />
+            </Principal>
+            <Dependent Role="ReceiptDetails">
+              <PropertyRef Name="exchangeRateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReceiptDe__ledge__67C95AEA">
+          <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
+          <End Role="ReceiptDetails" Type="Self.ReceiptDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="ReceiptDetails">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReceiptDe__ledge__6B99EBCE">
+          <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
+          <End Role="ReceiptDetail" Type="Self.ReceiptDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="ReceiptDetail">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReceiptDe__recei__66D536B1">
+          <End Role="ReceiptMaster" Type="Self.ReceiptMaster" Multiplicity="0..1" />
+          <End Role="ReceiptDetails" Type="Self.ReceiptDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReceiptMaster">
+              <PropertyRef Name="receiptMasterId" />
+            </Principal>
+            <Dependent Role="ReceiptDetails">
+              <PropertyRef Name="receiptMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReceiptDe__recei__6AA5C795">
+          <End Role="ReceiptMaster" Type="Self.ReceiptMaster" Multiplicity="0..1" />
+          <End Role="ReceiptDetail" Type="Self.ReceiptDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReceiptMaster">
+              <PropertyRef Name="receiptMasterId" />
+            </Principal>
+            <Dependent Role="ReceiptDetail">
+              <PropertyRef Name="receiptMasterId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2834,6 +3135,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Worker__designat__6F6A7CB2">
+          <End Role="Designation" Type="Self.Designation" Multiplicity="0..1" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Designation">
+              <PropertyRef Name="designationId" />
+            </Principal>
+            <Dependent Role="Worker">
+              <PropertyRef Name="designationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Worker__desinati__3E082B48">
           <End Role="Designation" Type="Self.Designation" Multiplicity="0..1" />
           <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
@@ -2913,6 +3226,19 @@
           <Parameter Name="payHeadId" Type="numeric" Mode="In" />
         </Function>
         <Function Name="PayHeadGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PDCClearanceFillDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="voucherTypeName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="MasterId" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="PDCClearanceRegisterSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="voucherTypeName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="ledgerName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="chequeNo" Type="varchar(max)" Mode="In" />
+          <Parameter Name="bankId" Type="decimal" Mode="In" />
+          <Parameter Name="status" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="SlidingPriceAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ArticleNo" Type="nvarchar" Mode="In" />
           <Parameter Name="ArticleDescription" Type="nvarchar" Mode="In" />
@@ -3072,6 +3398,7 @@
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ContactType" EntityType="Self.ContactType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CreditNoteDetails" EntityType="Self.CreditNoteDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CreditNoteMaster" EntityType="Self.CreditNoteMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
@@ -3082,6 +3409,8 @@
           <EntitySet Name="CustomerTitle" EntityType="Self.CustomerTitle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerWorker" EntityType="Self.CustomerWorker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DailyDiscontinued" EntityType="Self.DailyDiscontinued" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DebitNoteDetail" EntityType="Self.DebitNoteDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DebitNoteMaster" EntityType="Self.DebitNoteMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DeliveryNoteMaster" EntityType="Self.DeliveryNoteMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Designation" EntityType="Self.Designation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DiscountValues" EntityType="Self.DiscountValues" Schema="dbo" store:Type="Tables" />
@@ -3106,6 +3435,7 @@
           <EntitySet Name="PaymentMaster" EntityType="Self.PaymentMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentTerm" EntityType="Self.PaymentTerm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PDCClearanceMaster" EntityType="Self.PDCClearanceMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PDCPayableMaster" EntityType="Self.PDCPayableMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PDCReceivableMaster" EntityType="Self.PDCReceivableMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PricingLevel" EntityType="Self.PricingLevel" Schema="dbo" store:Type="Tables" />
@@ -3117,6 +3447,8 @@
           <EntitySet Name="Quotation" EntityType="Self.Quotation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuotationDetail" EntityType="Self.QuotationDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rate" EntityType="Self.Rate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReceiptDetail" EntityType="Self.ReceiptDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReceiptDetails" EntityType="Self.ReceiptDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ReceiptMaster" EntityType="Self.ReceiptMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleValue" EntityType="Self.RoleValue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Route" EntityType="Self.Route" Schema="dbo" store:Type="Tables" />
@@ -3195,12 +3527,24 @@
             <End Role="Country" EntitySet="Country" />
             <End Role="City" EntitySet="City" />
           </AssociationSet>
+          <AssociationSet Name="FK__CreditNot__credi__62108194" Association="Self.FK__CreditNot__credi__62108194">
+            <End Role="CreditNoteMaster" EntitySet="CreditNoteMaster" />
+            <End Role="CreditNoteDetails" EntitySet="CreditNoteDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK__CreditNot__finan__74643BF9" Association="Self.FK__CreditNot__finan__74643BF9">
             <End Role="FinancialYear" EntitySet="FinancialYear" />
             <End Role="CreditNoteMaster" EntitySet="CreditNoteMaster" />
           </AssociationSet>
+          <AssociationSet Name="FK__CreditNot__ledge__6304A5CD" Association="Self.FK__CreditNot__ledge__6304A5CD">
+            <End Role="AccountLedger" EntitySet="AccountLedger" />
+            <End Role="CreditNoteDetails" EntitySet="CreditNoteDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK__CreditNot__userI__737017C0" Association="Self.FK__CreditNot__userI__737017C0">
             <End Role="Worker" EntitySet="Worker" />
+            <End Role="CreditNoteMaster" EntitySet="CreditNoteMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CreditNot__vouch__6C8E1007" Association="Self.FK__CreditNot__vouch__6C8E1007">
+            <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="CreditNoteMaster" EntitySet="CreditNoteMaster" />
           </AssociationSet>
           <AssociationSet Name="FK__Customer__accoun__6EF57B66" Association="Self.FK__Customer__accoun__6EF57B66">
@@ -3286,6 +3630,26 @@
           <AssociationSet Name="FK__CustomerW__title__45F365D3" Association="Self.FK__CustomerW__title__45F365D3">
             <End Role="CustomerTitle" EntitySet="CustomerTitle" />
             <End Role="CustomerWorker" EntitySet="CustomerWorker" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DebitNote__debit__597B3B93" Association="Self.FK__DebitNote__debit__597B3B93">
+            <End Role="DebitNoteMaster" EntitySet="DebitNoteMaster" />
+            <End Role="DebitNoteDetail" EntitySet="DebitNoteDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DebitNote__excha__5B638405" Association="Self.FK__DebitNote__excha__5B638405">
+            <End Role="ExchangeRate" EntitySet="ExchangeRate" />
+            <End Role="DebitNoteDetail" EntitySet="DebitNoteDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DebitNote__ledge__5A6F5FCC" Association="Self.FK__DebitNote__ledge__5A6F5FCC">
+            <End Role="AccountLedger" EntitySet="AccountLedger" />
+            <End Role="DebitNoteDetail" EntitySet="DebitNoteDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DebitNote__userI__55AAAAAF" Association="Self.FK__DebitNote__userI__55AAAAAF">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="DebitNoteMaster" EntitySet="DebitNoteMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DebitNote__vouch__569ECEE8" Association="Self.FK__DebitNote__vouch__569ECEE8">
+            <End Role="VoucherType" EntitySet="VoucherType" />
+            <End Role="DebitNoteMaster" EntitySet="DebitNoteMaster" />
           </AssociationSet>
           <AssociationSet Name="FK__DeliveryN__excha__231F2AE2" Association="Self.FK__DeliveryN__excha__231F2AE2">
             <End Role="ExchangeRate" EntitySet="ExchangeRate" />
@@ -3415,6 +3779,26 @@
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="PaymentMaster" EntitySet="PaymentMaster" />
           </AssociationSet>
+          <AssociationSet Name="FK__PDCCleara__finan__4D1564AE" Association="Self.FK__PDCCleara__finan__4D1564AE">
+            <End Role="FinancialYear" EntitySet="FinancialYear" />
+            <End Role="PDCClearanceMaster" EntitySet="PDCClearanceMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PDCCleara__ledge__4A38F803" Association="Self.FK__PDCCleara__ledge__4A38F803">
+            <End Role="AccountLedger" EntitySet="AccountLedger" />
+            <End Role="PDCClearanceMaster" EntitySet="PDCClearanceMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PDCCleara__suffi__4944D3CA" Association="Self.FK__PDCCleara__suffi__4944D3CA">
+            <End Role="SuffixPrefix" EntitySet="SuffixPrefix" />
+            <End Role="PDCClearanceMaster" EntitySet="PDCClearanceMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PDCCleara__userI__4C214075" Association="Self.FK__PDCCleara__userI__4C214075">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="PDCClearanceMaster" EntitySet="PDCClearanceMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PDCCleara__vouch__4B2D1C3C" Association="Self.FK__PDCCleara__vouch__4B2D1C3C">
+            <End Role="VoucherType" EntitySet="VoucherType" />
+            <End Role="PDCClearanceMaster" EntitySet="PDCClearanceMaster" />
+          </AssociationSet>
           <AssociationSet Name="FK__PDCPayabl__finan__2CA8951C" Association="Self.FK__PDCPayabl__finan__2CA8951C">
             <End Role="FinancialYear" EntitySet="FinancialYear" />
             <End Role="PDCPayableMaster" EntitySet="PDCPayableMaster" />
@@ -3490,6 +3874,26 @@
           <AssociationSet Name="FK__Quotation__Quota__147C05D0" Association="Self.FK__Quotation__Quota__147C05D0">
             <End Role="Quotation" EntitySet="Quotation" />
             <End Role="QuotationDetail" EntitySet="QuotationDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__excha__65E11278" Association="Self.FK__ReceiptDe__excha__65E11278">
+            <End Role="ExchangeRate" EntitySet="ExchangeRate" />
+            <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__ledge__67C95AEA" Association="Self.FK__ReceiptDe__ledge__67C95AEA">
+            <End Role="AccountLedger" EntitySet="AccountLedger" />
+            <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__ledge__6B99EBCE" Association="Self.FK__ReceiptDe__ledge__6B99EBCE">
+            <End Role="AccountLedger" EntitySet="AccountLedger" />
+            <End Role="ReceiptDetail" EntitySet="ReceiptDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__recei__66D536B1" Association="Self.FK__ReceiptDe__recei__66D536B1">
+            <End Role="ReceiptMaster" EntitySet="ReceiptMaster" />
+            <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__recei__6AA5C795" Association="Self.FK__ReceiptDe__recei__6AA5C795">
+            <End Role="ReceiptMaster" EntitySet="ReceiptMaster" />
+            <End Role="ReceiptDetail" EntitySet="ReceiptDetail" />
           </AssociationSet>
           <AssociationSet Name="FK__Route__areaId__6FD49106" Association="Self.FK__Route__areaId__6FD49106">
             <End Role="Area" EntitySet="Area" />
@@ -3670,6 +4074,10 @@
           <AssociationSet Name="FK__VoucherTy__vouch__69279377" Association="Self.FK__VoucherTy__vouch__69279377">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="VoucherTypeTax" EntitySet="VoucherTypeTax" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Worker__designat__6F6A7CB2" Association="Self.FK__Worker__designat__6F6A7CB2">
+            <End Role="Designation" EntitySet="Designation" />
+            <End Role="Worker" EntitySet="Worker" />
           </AssociationSet>
           <AssociationSet Name="FK__Worker__desinati__3E082B48" Association="Self.FK__Worker__desinati__3E082B48">
             <End Role="Designation" EntitySet="Designation" />
@@ -3885,6 +4293,19 @@
             <Parameter Name="Width" Mode="In" Type="Decimal" />
             <Parameter Name="Length" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="PDCClearanceFillDetails" ReturnType="Collection(IMEModel.PDCClearanceFillDetails_Result)">
+            <Parameter Name="voucherTypeName" Mode="In" Type="String" />
+            <Parameter Name="MasterId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="PDCClearanceRegisterSearch" ReturnType="Collection(IMEModel.PDCClearanceRegisterSearch_Result)">
+            <Parameter Name="voucherTypeName" Mode="In" Type="String" />
+            <Parameter Name="ledgerName" Mode="In" Type="String" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="chequeNo" Mode="In" Type="String" />
+            <Parameter Name="bankId" Mode="In" Type="Decimal" />
+            <Parameter Name="status" Mode="In" Type="String" />
+          </FunctionImport>
           <EntitySet Name="AccountGroups" EntityType="IMEModel.AccountGroup" />
           <EntitySet Name="AccountLedgers" EntityType="IMEModel.AccountLedger" />
           <EntitySet Name="AdvancePayments" EntityType="IMEModel.AdvancePayment" />
@@ -3896,6 +4317,7 @@
           <EntitySet Name="Cities" EntityType="IMEModel.City" />
           <EntitySet Name="ContactTypes" EntityType="IMEModel.ContactType" />
           <EntitySet Name="Countries" EntityType="IMEModel.Country" />
+          <EntitySet Name="CreditNoteDetails" EntityType="IMEModel.CreditNoteDetail" />
           <EntitySet Name="CreditNoteMasters" EntityType="IMEModel.CreditNoteMaster" />
           <EntitySet Name="Currencies" EntityType="IMEModel.Currency" />
           <EntitySet Name="Customers" EntityType="IMEModel.Customer" />
@@ -3906,6 +4328,8 @@
           <EntitySet Name="CustomerTitles" EntityType="IMEModel.CustomerTitle" />
           <EntitySet Name="CustomerWorkers" EntityType="IMEModel.CustomerWorker" />
           <EntitySet Name="DailyDiscontinueds" EntityType="IMEModel.DailyDiscontinued" />
+          <EntitySet Name="DebitNoteDetails" EntityType="IMEModel.DebitNoteDetail" />
+          <EntitySet Name="DebitNoteMasters" EntityType="IMEModel.DebitNoteMaster" />
           <EntitySet Name="DeliveryNoteMasters" EntityType="IMEModel.DeliveryNoteMaster" />
           <EntitySet Name="Designations" EntityType="IMEModel.Designation" />
           <EntitySet Name="DiscountValues" EntityType="IMEModel.DiscountValue" />
@@ -3930,6 +4354,7 @@
           <EntitySet Name="PaymentMasters" EntityType="IMEModel.PaymentMaster" />
           <EntitySet Name="PaymentMethods" EntityType="IMEModel.PaymentMethod" />
           <EntitySet Name="PaymentTerms" EntityType="IMEModel.PaymentTerm" />
+          <EntitySet Name="PDCClearanceMasters" EntityType="IMEModel.PDCClearanceMaster" />
           <EntitySet Name="PDCPayableMasters" EntityType="IMEModel.PDCPayableMaster" />
           <EntitySet Name="PDCReceivableMasters" EntityType="IMEModel.PDCReceivableMaster" />
           <EntitySet Name="PricingLevels" EntityType="IMEModel.PricingLevel" />
@@ -3941,6 +4366,8 @@
           <EntitySet Name="Quotations" EntityType="IMEModel.Quotation" />
           <EntitySet Name="QuotationDetails" EntityType="IMEModel.QuotationDetail" />
           <EntitySet Name="Rates" EntityType="IMEModel.Rate" />
+          <EntitySet Name="ReceiptDetails" EntityType="IMEModel.ReceiptDetail" />
+          <EntitySet Name="ReceiptDetails1" EntityType="IMEModel.ReceiptDetail1" />
           <EntitySet Name="ReceiptMasters" EntityType="IMEModel.ReceiptMaster" />
           <EntitySet Name="RoleValues" EntityType="IMEModel.RoleValue" />
           <EntitySet Name="Routes" EntityType="IMEModel.Route" />
@@ -3986,6 +4413,14 @@
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="AdvancePayment" EntitySet="AdvancePayments" />
           </AssociationSet>
+          <AssociationSet Name="FK__CreditNot__ledge__6304A5CD" Association="IMEModel.FK__CreditNot__ledge__6304A5CD">
+            <End Role="AccountLedger" EntitySet="AccountLedgers" />
+            <End Role="CreditNoteDetail" EntitySet="CreditNoteDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DebitNote__ledge__5A6F5FCC" Association="IMEModel.FK__DebitNote__ledge__5A6F5FCC">
+            <End Role="AccountLedger" EntitySet="AccountLedgers" />
+            <End Role="DebitNoteDetail" EntitySet="DebitNoteDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK__DeliveryN__ledge__2136E270" Association="IMEModel.FK__DeliveryN__ledge__2136E270">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMasters" />
@@ -4002,6 +4437,10 @@
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="PaymentMaster" EntitySet="PaymentMasters" />
           </AssociationSet>
+          <AssociationSet Name="FK__PDCCleara__ledge__4A38F803" Association="IMEModel.FK__PDCCleara__ledge__4A38F803">
+            <End Role="AccountLedger" EntitySet="AccountLedgers" />
+            <End Role="PDCClearanceMaster" EntitySet="PDCClearanceMasters" />
+          </AssociationSet>
           <AssociationSet Name="FK__PDCPayabl__ledge__29CC2871" Association="IMEModel.FK__PDCPayabl__ledge__29CC2871">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="PDCPayableMaster" EntitySet="PDCPayableMasters" />
@@ -4009,6 +4448,14 @@
           <AssociationSet Name="FK__PDCReceiv__ledge__438BFA74" Association="IMEModel.FK__PDCReceiv__ledge__438BFA74">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="PDCReceivableMaster" EntitySet="PDCReceivableMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__ledge__67C95AEA" Association="IMEModel.FK__ReceiptDe__ledge__67C95AEA">
+            <End Role="AccountLedger" EntitySet="AccountLedgers" />
+            <End Role="ReceiptDetail1" EntitySet="ReceiptDetails1" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__ledge__6B99EBCE" Association="IMEModel.FK__ReceiptDe__ledge__6B99EBCE">
+            <End Role="AccountLedger" EntitySet="AccountLedgers" />
+            <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__AdvancePa__emplo__4D4A6ED8" Association="IMEModel.FK__AdvancePa__emplo__4D4A6ED8">
             <End Role="Worker" EntitySet="Workers" />
@@ -4062,12 +4509,20 @@
             <End Role="Country" EntitySet="Countries" />
             <End Role="SupplierAdress" EntitySet="SupplierAdresses" />
           </AssociationSet>
+          <AssociationSet Name="FK__CreditNot__credi__62108194" Association="IMEModel.FK__CreditNot__credi__62108194">
+            <End Role="CreditNoteMaster" EntitySet="CreditNoteMasters" />
+            <End Role="CreditNoteDetail" EntitySet="CreditNoteDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK__CreditNot__finan__74643BF9" Association="IMEModel.FK__CreditNot__finan__74643BF9">
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="CreditNoteMaster" EntitySet="CreditNoteMasters" />
           </AssociationSet>
           <AssociationSet Name="FK__CreditNot__userI__737017C0" Association="IMEModel.FK__CreditNot__userI__737017C0">
             <End Role="Worker" EntitySet="Workers" />
+            <End Role="CreditNoteMaster" EntitySet="CreditNoteMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CreditNot__vouch__6C8E1007" Association="IMEModel.FK__CreditNot__vouch__6C8E1007">
+            <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="CreditNoteMaster" EntitySet="CreditNoteMasters" />
           </AssociationSet>
           <AssociationSet Name="FK__Managemen__Defau__253C7D7E" Association="IMEModel.FK__Managemen__Defau__253C7D7E">
@@ -4190,6 +4645,22 @@
             <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
+          <AssociationSet Name="FK__DebitNote__debit__597B3B93" Association="IMEModel.FK__DebitNote__debit__597B3B93">
+            <End Role="DebitNoteMaster" EntitySet="DebitNoteMasters" />
+            <End Role="DebitNoteDetail" EntitySet="DebitNoteDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DebitNote__excha__5B638405" Association="IMEModel.FK__DebitNote__excha__5B638405">
+            <End Role="ExchangeRate" EntitySet="ExchangeRates" />
+            <End Role="DebitNoteDetail" EntitySet="DebitNoteDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DebitNote__userI__55AAAAAF" Association="IMEModel.FK__DebitNote__userI__55AAAAAF">
+            <End Role="Worker" EntitySet="Workers" />
+            <End Role="DebitNoteMaster" EntitySet="DebitNoteMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DebitNote__vouch__569ECEE8" Association="IMEModel.FK__DebitNote__vouch__569ECEE8">
+            <End Role="VoucherType" EntitySet="VoucherTypes" />
+            <End Role="DebitNoteMaster" EntitySet="DebitNoteMasters" />
+          </AssociationSet>
           <AssociationSet Name="FK__DeliveryN__excha__231F2AE2" Association="IMEModel.FK__DeliveryN__excha__231F2AE2">
             <End Role="ExchangeRate" EntitySet="ExchangeRates" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMasters" />
@@ -4218,6 +4689,10 @@
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMasters" />
           </AssociationSet>
+          <AssociationSet Name="FK__Worker__designat__6F6A7CB2" Association="IMEModel.FK__Worker__designat__6F6A7CB2">
+            <End Role="Designation" EntitySet="Designations" />
+            <End Role="Worker" EntitySet="Workers" />
+          </AssociationSet>
           <AssociationSet Name="FK__Worker__desinati__3E082B48" Association="IMEModel.FK__Worker__desinati__3E082B48">
             <End Role="Designation" EntitySet="Designations" />
             <End Role="Worker" EntitySet="Workers" />
@@ -4238,6 +4713,10 @@
             <End Role="ExchangeRate" EntitySet="ExchangeRates" />
             <End Role="PartyBalance" EntitySet="PartyBalances" />
           </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__excha__65E11278" Association="IMEModel.FK__ReceiptDe__excha__65E11278">
+            <End Role="ExchangeRate" EntitySet="ExchangeRates" />
+            <End Role="ReceiptDetail1" EntitySet="ReceiptDetails1" />
+          </AssociationSet>
           <AssociationSet Name="FK__JournalMa__finan__7B113988" Association="IMEModel.FK__JournalMa__finan__7B113988">
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="JournalMaster" EntitySet="JournalMasters" />
@@ -4257,6 +4736,10 @@
           <AssociationSet Name="FK__PaymentMa__finan__47919582" Association="IMEModel.FK__PaymentMa__finan__47919582">
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="PaymentMaster" EntitySet="PaymentMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PDCCleara__finan__4D1564AE" Association="IMEModel.FK__PDCCleara__finan__4D1564AE">
+            <End Role="FinancialYear" EntitySet="FinancialYears" />
+            <End Role="PDCClearanceMaster" EntitySet="PDCClearanceMasters" />
           </AssociationSet>
           <AssociationSet Name="FK__PDCPayabl__finan__2CA8951C" Association="IMEModel.FK__PDCPayabl__finan__2CA8951C">
             <End Role="FinancialYear" EntitySet="FinancialYears" />
@@ -4350,6 +4833,18 @@
             <End Role="PaymentTerm" EntitySet="PaymentTerms" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
+          <AssociationSet Name="FK__PDCCleara__suffi__4944D3CA" Association="IMEModel.FK__PDCCleara__suffi__4944D3CA">
+            <End Role="SuffixPrefix" EntitySet="SuffixPrefixes" />
+            <End Role="PDCClearanceMaster" EntitySet="PDCClearanceMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PDCCleara__userI__4C214075" Association="IMEModel.FK__PDCCleara__userI__4C214075">
+            <End Role="Worker" EntitySet="Workers" />
+            <End Role="PDCClearanceMaster" EntitySet="PDCClearanceMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PDCCleara__vouch__4B2D1C3C" Association="IMEModel.FK__PDCCleara__vouch__4B2D1C3C">
+            <End Role="VoucherType" EntitySet="VoucherTypes" />
+            <End Role="PDCClearanceMaster" EntitySet="PDCClearanceMasters" />
+          </AssociationSet>
           <AssociationSet Name="FK__PDCPayabl__suffi__28D80438" Association="IMEModel.FK__PDCPayabl__suffi__28D80438">
             <End Role="SuffixPrefix" EntitySet="SuffixPrefixes" />
             <End Role="PDCPayableMaster" EntitySet="PDCPayableMasters" />
@@ -4393,6 +4888,14 @@
           <AssociationSet Name="FK__Supplier__rate_I__625A9A57" Association="IMEModel.FK__Supplier__rate_I__625A9A57">
             <End Role="Rate" EntitySet="Rates" />
             <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__recei__6AA5C795" Association="IMEModel.FK__ReceiptDe__recei__6AA5C795">
+            <End Role="ReceiptMaster" EntitySet="ReceiptMasters" />
+            <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__recei__66D536B1" Association="IMEModel.FK__ReceiptDe__recei__66D536B1">
+            <End Role="ReceiptMaster" EntitySet="ReceiptMasters" />
+            <End Role="ReceiptDetail1" EntitySet="ReceiptDetails1" />
           </AssociationSet>
           <AssociationSet Name="FK__SaleOrder__Repre__22951AFD" Association="IMEModel.FK__SaleOrder__Repre__22951AFD">
             <End Role="Worker" EntitySet="Workers" />
@@ -4507,6 +5010,35 @@
           <Property Type="String" Name="narration" Nullable="true" />
           <Property Type="String" Name="type" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="PDCClearanceFillDetails_Result">
+          <Property Type="String" Name="voucherTypeName" Nullable="true" />
+          <Property Type="String" Name="voucherNo" Nullable="true" />
+          <Property Type="String" Name="date" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="ledgerId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="Narration" Nullable="true" />
+          <Property Type="String" Name="ledgerName" Nullable="true" />
+          <Property Type="String" Name="checkDate" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="chequeNo" Nullable="true" />
+          <Property Type="Decimal" Name="BankId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="Bank" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PDCClearanceRegisterSearch_Result">
+          <Property Type="Decimal" Name="PDCClearanceMasterId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="voucherNo" Nullable="true" />
+          <Property Type="String" Name="voucherTypeName" Nullable="true" />
+          <Property Type="Decimal" Name="suffixPrefixId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="againstId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="date" Nullable="true" />
+          <Property Type="String" Name="narration" Nullable="true" />
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="Decimal" Name="voucherTypeId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="financialYearId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="status" Nullable="true" />
+          <Property Type="String" Name="ledgerName" Nullable="true" />
+          <Property Type="String" Name="type" Nullable="true" />
+          <Property Type="Decimal" Name="amount" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
         <EntityType Name="AccountGroup">
           <Key>
             <PropertyRef Name="accountGroupId" />
@@ -4554,12 +5086,17 @@
           <NavigationProperty Name="Area" Relationship="IMEModel.FK__AccountLe__areaI__5C8CB268" FromRole="AccountLedger" ToRole="Area" />
           <NavigationProperty Name="Route" Relationship="IMEModel.FK__AccountLe__route__5D80D6A1" FromRole="AccountLedger" ToRole="Route" />
           <NavigationProperty Name="AdvancePayments" Relationship="IMEModel.FK__AdvancePa__ledge__4F32B74A" FromRole="AccountLedger" ToRole="AdvancePayment" />
+          <NavigationProperty Name="CreditNoteDetails" Relationship="IMEModel.FK__CreditNot__ledge__6304A5CD" FromRole="AccountLedger" ToRole="CreditNoteDetail" />
+          <NavigationProperty Name="DebitNoteDetails" Relationship="IMEModel.FK__DebitNote__ledge__5A6F5FCC" FromRole="AccountLedger" ToRole="DebitNoteDetail" />
           <NavigationProperty Name="DeliveryNoteMasters" Relationship="IMEModel.FK__DeliveryN__ledge__2136E270" FromRole="AccountLedger" ToRole="DeliveryNoteMaster" />
           <NavigationProperty Name="LedgerPostings" Relationship="IMEModel.FK__LedgerPos__ledge__605D434C" FromRole="AccountLedger" ToRole="LedgerPosting" />
           <NavigationProperty Name="PartyBalances" Relationship="IMEModel.FK__PartyBala__ledge__57C7FD4B" FromRole="AccountLedger" ToRole="PartyBalance" />
           <NavigationProperty Name="PaymentMasters" Relationship="IMEModel.FK__PaymentMa__ledge__4979DDF4" FromRole="AccountLedger" ToRole="PaymentMaster" />
+          <NavigationProperty Name="PDCClearanceMasters" Relationship="IMEModel.FK__PDCCleara__ledge__4A38F803" FromRole="AccountLedger" ToRole="PDCClearanceMaster" />
           <NavigationProperty Name="PDCPayableMasters" Relationship="IMEModel.FK__PDCPayabl__ledge__29CC2871" FromRole="AccountLedger" ToRole="PDCPayableMaster" />
           <NavigationProperty Name="PDCReceivableMasters" Relationship="IMEModel.FK__PDCReceiv__ledge__438BFA74" FromRole="AccountLedger" ToRole="PDCReceivableMaster" />
+          <NavigationProperty Name="ReceiptDetails" Relationship="IMEModel.FK__ReceiptDe__ledge__67C95AEA" FromRole="AccountLedger" ToRole="ReceiptDetail1" />
+          <NavigationProperty Name="ReceiptDetails1" Relationship="IMEModel.FK__ReceiptDe__ledge__6B99EBCE" FromRole="AccountLedger" ToRole="ReceiptDetail" />
         </EntityType>
         <EntityType Name="AdvancePayment">
           <Key>
@@ -4666,6 +5203,21 @@
           <NavigationProperty Name="CustomerAddresses" Relationship="IMEModel.FK__CustomerA__Count__503BEA1C" FromRole="Country" ToRole="CustomerAddress" />
           <NavigationProperty Name="SupplierAdresses" Relationship="IMEModel.FK__SupplierA__Count__3FD07829" FromRole="Country" ToRole="SupplierAdress" />
         </EntityType>
+        <EntityType Name="CreditNoteDetail">
+          <Key>
+            <PropertyRef Name="creditNoteDetailsId" />
+          </Key>
+          <Property Name="creditNoteDetailsId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creditNoteMasterId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="credit" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="debit" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="exchangeRateId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="chequeDate" Type="DateTime" Precision="3" />
+          <Property Name="chequeNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__CreditNot__ledge__6304A5CD" FromRole="CreditNoteDetail" ToRole="AccountLedger" />
+          <NavigationProperty Name="CreditNoteMaster" Relationship="IMEModel.FK__CreditNot__credi__62108194" FromRole="CreditNoteDetail" ToRole="CreditNoteMaster" />
+        </EntityType>
         <EntityType Name="CreditNoteMaster">
           <Key>
             <PropertyRef Name="creditNoteMasterId" />
@@ -4679,8 +5231,11 @@
           <Property Name="totalAmount" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="CreditNoteDetails" Relationship="IMEModel.FK__CreditNot__credi__62108194" FromRole="CreditNoteMaster" ToRole="CreditNoteDetail" />
           <NavigationProperty Name="FinancialYear" Relationship="IMEModel.FK__CreditNot__finan__74643BF9" FromRole="CreditNoteMaster" ToRole="FinancialYear" />
           <NavigationProperty Name="Worker" Relationship="IMEModel.FK__CreditNot__userI__737017C0" FromRole="CreditNoteMaster" ToRole="Worker" />
+          <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__CreditNot__vouch__6C8E1007" FromRole="CreditNoteMaster" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="Currency">
           <Key>
@@ -4842,6 +5397,40 @@
           <Property Name="Runon" Type="Int32" />
           <Property Name="Referral" Type="Int32" />
         </EntityType>
+        <EntityType Name="DebitNoteDetail">
+          <Key>
+            <PropertyRef Name="debitNoteDetailsId" />
+          </Key>
+          <Property Name="debitNoteDetailsId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="debitNoteMasterId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="credit" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="debit" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="exchangeRateId" Type="Int32" />
+          <Property Name="chequeNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="chequeDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__DebitNote__ledge__5A6F5FCC" FromRole="DebitNoteDetail" ToRole="AccountLedger" />
+          <NavigationProperty Name="DebitNoteMaster" Relationship="IMEModel.FK__DebitNote__debit__597B3B93" FromRole="DebitNoteDetail" ToRole="DebitNoteMaster" />
+          <NavigationProperty Name="ExchangeRate" Relationship="IMEModel.FK__DebitNote__excha__5B638405" FromRole="DebitNoteDetail" ToRole="ExchangeRate" />
+        </EntityType>
+        <EntityType Name="DebitNoteMaster">
+          <Key>
+            <PropertyRef Name="debitNoteMasterId" />
+          </Key>
+          <Property Name="debitNoteMasterId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="voucherNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="invoiceNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="suffixPrefixId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="totalAmount" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="DebitNoteDetails" Relationship="IMEModel.FK__DebitNote__debit__597B3B93" FromRole="DebitNoteMaster" ToRole="DebitNoteDetail" />
+          <NavigationProperty Name="Worker" Relationship="IMEModel.FK__DebitNote__userI__55AAAAAF" FromRole="DebitNoteMaster" ToRole="Worker" />
+          <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__DebitNote__vouch__569ECEE8" FromRole="DebitNoteMaster" ToRole="VoucherType" />
+        </EntityType>
         <EntityType Name="DeliveryNoteMaster">
           <Key>
             <PropertyRef Name="deliveryNoteMasterId" />
@@ -4881,7 +5470,8 @@
           <Property Name="leaveDays" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="advanceAmount" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Workers" Relationship="IMEModel.FK__Worker__desinati__3E082B48" FromRole="Designation" ToRole="Worker" />
+          <NavigationProperty Name="Workers" Relationship="IMEModel.FK__Worker__designat__6F6A7CB2" FromRole="Designation" ToRole="Worker" />
+          <NavigationProperty Name="Workers1" Relationship="IMEModel.FK__Worker__desinati__3E082B48" FromRole="Designation" ToRole="Worker" />
         </EntityType>
         <EntityType Name="DiscountValue">
           <Key>
@@ -4920,9 +5510,11 @@
           <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="rate" Type="Decimal" Precision="18" Scale="5" />
           <NavigationProperty Name="Currency" Relationship="IMEModel.FK__tbl_Excha__curre__52442E1F" FromRole="ExchangeRate" ToRole="Currency" />
+          <NavigationProperty Name="DebitNoteDetails" Relationship="IMEModel.FK__DebitNote__excha__5B638405" FromRole="ExchangeRate" ToRole="DebitNoteDetail" />
           <NavigationProperty Name="DeliveryNoteMasters" Relationship="IMEModel.FK__DeliveryN__excha__231F2AE2" FromRole="ExchangeRate" ToRole="DeliveryNoteMaster" />
           <NavigationProperty Name="JournalDetails" Relationship="IMEModel.FK__JournalDe__excha__00CA12DE" FromRole="ExchangeRate" ToRole="JournalDetail" />
           <NavigationProperty Name="PartyBalances" Relationship="IMEModel.FK__PartyBala__excha__5AA469F6" FromRole="ExchangeRate" ToRole="PartyBalance" />
+          <NavigationProperty Name="ReceiptDetails" Relationship="IMEModel.FK__ReceiptDe__excha__65E11278" FromRole="ExchangeRate" ToRole="ReceiptDetail1" />
         </EntityType>
         <EntityType Name="ExtendedRange">
           <Key>
@@ -4977,6 +5569,7 @@
           <NavigationProperty Name="Managements" Relationship="IMEModel.FK__Managemen__Curre__338A9CD5" FromRole="FinancialYear" ToRole="Management" />
           <NavigationProperty Name="PartyBalances" Relationship="IMEModel.FK__PartyBala__finan__5B988E2F" FromRole="FinancialYear" ToRole="PartyBalance" />
           <NavigationProperty Name="PaymentMasters" Relationship="IMEModel.FK__PaymentMa__finan__47919582" FromRole="FinancialYear" ToRole="PaymentMaster" />
+          <NavigationProperty Name="PDCClearanceMasters" Relationship="IMEModel.FK__PDCCleara__finan__4D1564AE" FromRole="FinancialYear" ToRole="PDCClearanceMaster" />
           <NavigationProperty Name="PDCPayableMasters" Relationship="IMEModel.FK__PDCPayabl__finan__2CA8951C" FromRole="FinancialYear" ToRole="PDCPayableMaster" />
           <NavigationProperty Name="PDCReceivableMasters" Relationship="IMEModel.FK__PDCReceiv__finan__4668671F" FromRole="FinancialYear" ToRole="PDCReceivableMaster" />
         </EntityType>
@@ -5224,6 +5817,29 @@
           <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SaleOrder__Payme__1AF3F935" FromRole="PaymentTerm" ToRole="SaleOrder" />
           <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__paymen__6442E2C9" FromRole="PaymentTerm" ToRole="Supplier" />
         </EntityType>
+        <EntityType Name="PDCClearanceMaster">
+          <Key>
+            <PropertyRef Name="PDCClearanceMasterId" />
+          </Key>
+          <Property Name="PDCClearanceMasterId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="voucherNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="invoiceNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="suffixPrefixId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="againstId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__PDCCleara__ledge__4A38F803" FromRole="PDCClearanceMaster" ToRole="AccountLedger" />
+          <NavigationProperty Name="FinancialYear" Relationship="IMEModel.FK__PDCCleara__finan__4D1564AE" FromRole="PDCClearanceMaster" ToRole="FinancialYear" />
+          <NavigationProperty Name="SuffixPrefix" Relationship="IMEModel.FK__PDCCleara__suffi__4944D3CA" FromRole="PDCClearanceMaster" ToRole="SuffixPrefix" />
+          <NavigationProperty Name="Worker" Relationship="IMEModel.FK__PDCCleara__userI__4C214075" FromRole="PDCClearanceMaster" ToRole="Worker" />
+          <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__PDCCleara__vouch__4B2D1C3C" FromRole="PDCClearanceMaster" ToRole="VoucherType" />
+        </EntityType>
         <EntityType Name="PDCPayableMaster">
           <Key>
             <PropertyRef Name="pdcPayableMasterId" />
@@ -5459,6 +6075,35 @@
           <Property Name="RateSellEffective" Type="Decimal" Precision="20" Scale="10" />
           <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__rate_I__625A9A57" FromRole="Rate" ToRole="Supplier" />
         </EntityType>
+        <EntityType Name="ReceiptDetail">
+          <Key>
+            <PropertyRef Name="receiptDetailsId" />
+          </Key>
+          <Property Name="receiptDetailsId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="receiptMasterId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="amount" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="exchangeRateId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="chequeNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="chequeDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__ReceiptDe__ledge__6B99EBCE" FromRole="ReceiptDetail" ToRole="AccountLedger" />
+          <NavigationProperty Name="ReceiptMaster" Relationship="IMEModel.FK__ReceiptDe__recei__6AA5C795" FromRole="ReceiptDetail" ToRole="ReceiptMaster" />
+        </EntityType>
+        <EntityType Name="ReceiptDetail1">
+          <Key>
+            <PropertyRef Name="receiptDetailsId" />
+          </Key>
+          <Property Name="receiptDetailsId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="receiptMasterId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="amount" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="exchangeRateId" Type="Int32" />
+          <Property Name="chequeNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="chequeDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__ReceiptDe__ledge__67C95AEA" FromRole="ReceiptDetail1" ToRole="AccountLedger" />
+          <NavigationProperty Name="ExchangeRate" Relationship="IMEModel.FK__ReceiptDe__excha__65E11278" FromRole="ReceiptDetail1" ToRole="ExchangeRate" />
+          <NavigationProperty Name="ReceiptMaster" Relationship="IMEModel.FK__ReceiptDe__recei__66D536B1" FromRole="ReceiptDetail1" ToRole="ReceiptMaster" />
+        </EntityType>
         <EntityType Name="ReceiptMaster">
           <Key>
             <PropertyRef Name="receiptMasterId" />
@@ -5474,6 +6119,8 @@
           <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="userId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="ReceiptDetails" Relationship="IMEModel.FK__ReceiptDe__recei__6AA5C795" FromRole="ReceiptMaster" ToRole="ReceiptDetail" />
+          <NavigationProperty Name="ReceiptDetails1" Relationship="IMEModel.FK__ReceiptDe__recei__66D536B1" FromRole="ReceiptMaster" ToRole="ReceiptDetail1" />
         </EntityType>
         <EntityType Name="RoleValue">
           <Key>
@@ -5646,6 +6293,7 @@
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="DeliveryNoteMasters" Relationship="IMEModel.FK__DeliveryN__suffi__2042BE37" FromRole="SuffixPrefix" ToRole="DeliveryNoteMaster" />
           <NavigationProperty Name="JournalMasters" Relationship="IMEModel.FK__JournalMa__suffi__7DEDA633" FromRole="SuffixPrefix" ToRole="JournalMaster" />
+          <NavigationProperty Name="PDCClearanceMasters" Relationship="IMEModel.FK__PDCCleara__suffi__4944D3CA" FromRole="SuffixPrefix" ToRole="PDCClearanceMaster" />
           <NavigationProperty Name="PDCPayableMasters" Relationship="IMEModel.FK__PDCPayabl__suffi__28D80438" FromRole="SuffixPrefix" ToRole="PDCPayableMaster" />
           <NavigationProperty Name="PDCReceivableMasters" Relationship="IMEModel.FK__PDCReceiv__suffi__4297D63B" FromRole="SuffixPrefix" ToRole="PDCReceivableMaster" />
           <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__SuffixPre__vouch__7740A8A4" FromRole="SuffixPrefix" ToRole="VoucherType" />
@@ -5954,12 +6602,15 @@
           <Property Name="heading3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="heading4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="AdvancePayments" Relationship="IMEModel.FK__AdvancePa__vouch__5026DB83" FromRole="VoucherType" ToRole="AdvancePayment" />
+          <NavigationProperty Name="CreditNoteMasters" Relationship="IMEModel.FK__CreditNot__vouch__6C8E1007" FromRole="VoucherType" ToRole="CreditNoteMaster" />
+          <NavigationProperty Name="DebitNoteMasters" Relationship="IMEModel.FK__DebitNote__vouch__569ECEE8" FromRole="VoucherType" ToRole="DebitNoteMaster" />
           <NavigationProperty Name="DeliveryNoteMasters" Relationship="IMEModel.FK__DeliveryN__vouch__1F4E99FE" FromRole="VoucherType" ToRole="DeliveryNoteMaster" />
           <NavigationProperty Name="JournalMasters" Relationship="IMEModel.FK__JournalMa__vouch__7C055DC1" FromRole="VoucherType" ToRole="JournalMaster" />
           <NavigationProperty Name="LedgerPostings" Relationship="IMEModel.FK__LedgerPos__vouch__5F691F13" FromRole="VoucherType" ToRole="LedgerPosting" />
           <NavigationProperty Name="PartyBalances" Relationship="IMEModel.FK__PartyBala__again__59B045BD" FromRole="VoucherType" ToRole="PartyBalance" />
           <NavigationProperty Name="PartyBalances1" Relationship="IMEModel.FK__PartyBala__vouch__58BC2184" FromRole="VoucherType" ToRole="PartyBalance" />
           <NavigationProperty Name="PaymentMasters" Relationship="IMEModel.FK__PaymentMa__vouch__4885B9BB" FromRole="VoucherType" ToRole="PaymentMaster" />
+          <NavigationProperty Name="PDCClearanceMasters" Relationship="IMEModel.FK__PDCCleara__vouch__4B2D1C3C" FromRole="VoucherType" ToRole="PDCClearanceMaster" />
           <NavigationProperty Name="PDCPayableMasters" Relationship="IMEModel.FK__PDCPayabl__vouch__2BB470E3" FromRole="VoucherType" ToRole="PDCPayableMaster" />
           <NavigationProperty Name="PDCReceivableMasters" Relationship="IMEModel.FK__PDCReceiv__vouch__457442E6" FromRole="VoucherType" ToRole="PDCReceivableMaster" />
           <NavigationProperty Name="SuffixPrefixes" Relationship="IMEModel.FK__SuffixPre__vouch__7740A8A4" FromRole="VoucherType" ToRole="SuffixPrefix" />
@@ -5991,18 +6642,22 @@
           <Property Name="Title" Type="Int32" />
           <Property Name="isActive" Type="Int32" />
           <Property Name="desinationID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="designationId" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="AdvancePayments" Relationship="IMEModel.FK__AdvancePa__emplo__4D4A6ED8" FromRole="Worker" ToRole="AdvancePayment" />
           <NavigationProperty Name="BonusDeductions" Relationship="IMEModel.FK__BonusDedu__Worke__40E497F3" FromRole="Worker" ToRole="BonusDeduction" />
           <NavigationProperty Name="CreditNoteMasters" Relationship="IMEModel.FK__CreditNot__userI__737017C0" FromRole="Worker" ToRole="CreditNoteMaster" />
           <NavigationProperty Name="Customers" Relationship="IMEModel.FK__Customer__accoun__6EF57B66" FromRole="Worker" ToRole="Customer" />
           <NavigationProperty Name="Customers1" Relationship="IMEModel.FK__Customer__repres__3F466844" FromRole="Worker" ToRole="Customer" />
           <NavigationProperty Name="Customers2" Relationship="IMEModel.FK__Customer__repres__6E01572D" FromRole="Worker" ToRole="Customer" />
+          <NavigationProperty Name="DebitNoteMasters" Relationship="IMEModel.FK__DebitNote__userI__55AAAAAF" FromRole="Worker" ToRole="DebitNoteMaster" />
           <NavigationProperty Name="DeliveryNoteMasters" Relationship="IMEModel.FK__DeliveryN__userI__24134F1B" FromRole="Worker" ToRole="DeliveryNoteMaster" />
-          <NavigationProperty Name="Designation" Relationship="IMEModel.FK__Worker__desinati__3E082B48" FromRole="Worker" ToRole="Designation" />
+          <NavigationProperty Name="Designation" Relationship="IMEModel.FK__Worker__designat__6F6A7CB2" FromRole="Worker" ToRole="Designation" />
+          <NavigationProperty Name="Designation1" Relationship="IMEModel.FK__Worker__desinati__3E082B48" FromRole="Worker" ToRole="Designation" />
           <NavigationProperty Name="DiscountValues" Relationship="IMEModel.FK__DiscountV__Repre__6F4A8121" FromRole="Worker" ToRole="DiscountValue" />
           <NavigationProperty Name="JournalMasters" Relationship="IMEModel.FK__JournalMa__userI__7CF981FA" FromRole="Worker" ToRole="JournalMaster" />
           <NavigationProperty Name="Note" Relationship="IMEModel.FK__Worker__WorkerNo__4BAC3F29" FromRole="Worker" ToRole="Note" />
           <NavigationProperty Name="PaymentMasters" Relationship="IMEModel.FK__PaymentMa__userI__4A6E022D" FromRole="Worker" ToRole="PaymentMaster" />
+          <NavigationProperty Name="PDCClearanceMasters" Relationship="IMEModel.FK__PDCCleara__userI__4C214075" FromRole="Worker" ToRole="PDCClearanceMaster" />
           <NavigationProperty Name="PDCPayableMasters" Relationship="IMEModel.FK__PDCPayabl__userI__2AC04CAA" FromRole="Worker" ToRole="PDCPayableMaster" />
           <NavigationProperty Name="PDCReceivableMasters" Relationship="IMEModel.FK__PDCReceiv__userI__44801EAD" FromRole="Worker" ToRole="PDCReceivableMaster" />
           <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SaleOrder__Repre__22951AFD" FromRole="Worker" ToRole="SaleOrder" />
@@ -6058,6 +6713,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__CreditNot__ledge__6304A5CD">
+          <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="0..1" />
+          <End Type="IMEModel.CreditNoteDetail" Role="CreditNoteDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="CreditNoteDetail">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DebitNote__ledge__5A6F5FCC">
+          <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="0..1" />
+          <End Type="IMEModel.DebitNoteDetail" Role="DebitNoteDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="DebitNoteDetail">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__DeliveryN__ledge__2136E270">
           <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="0..1" />
           <End Type="IMEModel.DeliveryNoteMaster" Role="DeliveryNoteMaster" Multiplicity="*" />
@@ -6106,6 +6785,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PDCCleara__ledge__4A38F803">
+          <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="0..1" />
+          <End Type="IMEModel.PDCClearanceMaster" Role="PDCClearanceMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="PDCClearanceMaster">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PDCPayabl__ledge__29CC2871">
           <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="0..1" />
           <End Type="IMEModel.PDCPayableMaster" Role="PDCPayableMaster" Multiplicity="*" />
@@ -6126,6 +6817,30 @@
               <PropertyRef Name="ledgerId" />
             </Principal>
             <Dependent Role="PDCReceivableMaster">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReceiptDe__ledge__67C95AEA">
+          <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="0..1" />
+          <End Type="IMEModel.ReceiptDetail1" Role="ReceiptDetail1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="ReceiptDetail1">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReceiptDe__ledge__6B99EBCE">
+          <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="0..1" />
+          <End Type="IMEModel.ReceiptDetail" Role="ReceiptDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="ReceiptDetail">
               <PropertyRef Name="ledgerId" />
             </Dependent>
           </ReferentialConstraint>
@@ -6286,6 +7001,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__CreditNot__credi__62108194">
+          <End Type="IMEModel.CreditNoteMaster" Role="CreditNoteMaster" Multiplicity="0..1" />
+          <End Type="IMEModel.CreditNoteDetail" Role="CreditNoteDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CreditNoteMaster">
+              <PropertyRef Name="creditNoteMasterId" />
+            </Principal>
+            <Dependent Role="CreditNoteDetail">
+              <PropertyRef Name="creditNoteMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__CreditNot__finan__74643BF9">
           <End Type="IMEModel.FinancialYear" Role="FinancialYear" Multiplicity="0..1" />
           <End Type="IMEModel.CreditNoteMaster" Role="CreditNoteMaster" Multiplicity="*" />
@@ -6307,6 +7034,18 @@
             </Principal>
             <Dependent Role="CreditNoteMaster">
               <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CreditNot__vouch__6C8E1007">
+          <End Type="IMEModel.VoucherType" Role="VoucherType" Multiplicity="0..1" />
+          <End Type="IMEModel.CreditNoteMaster" Role="CreditNoteMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="CreditNoteMaster">
+              <PropertyRef Name="voucherTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6670,6 +7409,54 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__DebitNote__debit__597B3B93">
+          <End Type="IMEModel.DebitNoteMaster" Role="DebitNoteMaster" Multiplicity="0..1" />
+          <End Type="IMEModel.DebitNoteDetail" Role="DebitNoteDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DebitNoteMaster">
+              <PropertyRef Name="debitNoteMasterId" />
+            </Principal>
+            <Dependent Role="DebitNoteDetail">
+              <PropertyRef Name="debitNoteMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DebitNote__excha__5B638405">
+          <End Type="IMEModel.ExchangeRate" Role="ExchangeRate" Multiplicity="0..1" />
+          <End Type="IMEModel.DebitNoteDetail" Role="DebitNoteDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExchangeRate">
+              <PropertyRef Name="exchangeRateID" />
+            </Principal>
+            <Dependent Role="DebitNoteDetail">
+              <PropertyRef Name="exchangeRateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DebitNote__userI__55AAAAAF">
+          <End Type="IMEModel.Worker" Role="Worker" Multiplicity="0..1" />
+          <End Type="IMEModel.DebitNoteMaster" Role="DebitNoteMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerID" />
+            </Principal>
+            <Dependent Role="DebitNoteMaster">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DebitNote__vouch__569ECEE8">
+          <End Type="IMEModel.VoucherType" Role="VoucherType" Multiplicity="0..1" />
+          <End Type="IMEModel.DebitNoteMaster" Role="DebitNoteMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="DebitNoteMaster">
+              <PropertyRef Name="voucherTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__DeliveryN__excha__231F2AE2">
           <End Type="IMEModel.ExchangeRate" Role="ExchangeRate" Multiplicity="0..1" />
           <End Type="IMEModel.DeliveryNoteMaster" Role="DeliveryNoteMaster" Multiplicity="*" />
@@ -6754,6 +7541,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Worker__designat__6F6A7CB2">
+          <End Type="IMEModel.Designation" Role="Designation" Multiplicity="0..1" />
+          <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Designation">
+              <PropertyRef Name="designationId" />
+            </Principal>
+            <Dependent Role="Worker">
+              <PropertyRef Name="designationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Worker__desinati__3E082B48">
           <End Type="IMEModel.Designation" Role="Designation" Multiplicity="0..1" />
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
@@ -6814,6 +7613,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__ReceiptDe__excha__65E11278">
+          <End Type="IMEModel.ExchangeRate" Role="ExchangeRate" Multiplicity="0..1" />
+          <End Type="IMEModel.ReceiptDetail1" Role="ReceiptDetail1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExchangeRate">
+              <PropertyRef Name="exchangeRateID" />
+            </Principal>
+            <Dependent Role="ReceiptDetail1">
+              <PropertyRef Name="exchangeRateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__JournalMa__finan__7B113988">
           <End Type="IMEModel.FinancialYear" Role="FinancialYear" Multiplicity="0..1" />
           <End Type="IMEModel.JournalMaster" Role="JournalMaster" Multiplicity="*" />
@@ -6870,6 +7681,18 @@
               <PropertyRef Name="financialYearId" />
             </Principal>
             <Dependent Role="PaymentMaster">
+              <PropertyRef Name="financialYearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PDCCleara__finan__4D1564AE">
+          <End Type="IMEModel.FinancialYear" Role="FinancialYear" Multiplicity="0..1" />
+          <End Type="IMEModel.PDCClearanceMaster" Role="PDCClearanceMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinancialYear">
+              <PropertyRef Name="financialYearId" />
+            </Principal>
+            <Dependent Role="PDCClearanceMaster">
               <PropertyRef Name="financialYearId" />
             </Dependent>
           </ReferentialConstraint>
@@ -7150,6 +7973,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PDCCleara__suffi__4944D3CA">
+          <End Type="IMEModel.SuffixPrefix" Role="SuffixPrefix" Multiplicity="0..1" />
+          <End Type="IMEModel.PDCClearanceMaster" Role="PDCClearanceMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SuffixPrefix">
+              <PropertyRef Name="suffixprefixId" />
+            </Principal>
+            <Dependent Role="PDCClearanceMaster">
+              <PropertyRef Name="suffixPrefixId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PDCCleara__userI__4C214075">
+          <End Type="IMEModel.Worker" Role="Worker" Multiplicity="0..1" />
+          <End Type="IMEModel.PDCClearanceMaster" Role="PDCClearanceMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerID" />
+            </Principal>
+            <Dependent Role="PDCClearanceMaster">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PDCCleara__vouch__4B2D1C3C">
+          <End Type="IMEModel.VoucherType" Role="VoucherType" Multiplicity="0..1" />
+          <End Type="IMEModel.PDCClearanceMaster" Role="PDCClearanceMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="PDCClearanceMaster">
+              <PropertyRef Name="voucherTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PDCPayabl__suffi__28D80438">
           <End Type="IMEModel.SuffixPrefix" Role="SuffixPrefix" Multiplicity="0..1" />
           <End Type="IMEModel.PDCPayableMaster" Role="PDCPayableMaster" Multiplicity="*" />
@@ -7279,6 +8138,30 @@
             </Principal>
             <Dependent Role="Supplier">
               <PropertyRef Name="rate_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReceiptDe__recei__6AA5C795">
+          <End Type="IMEModel.ReceiptMaster" Role="ReceiptMaster" Multiplicity="0..1" />
+          <End Type="IMEModel.ReceiptDetail" Role="ReceiptDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReceiptMaster">
+              <PropertyRef Name="receiptMasterId" />
+            </Principal>
+            <Dependent Role="ReceiptDetail">
+              <PropertyRef Name="receiptMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReceiptDe__recei__66D536B1">
+          <End Type="IMEModel.ReceiptMaster" Role="ReceiptMaster" Multiplicity="0..1" />
+          <End Type="IMEModel.ReceiptDetail1" Role="ReceiptDetail1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReceiptMaster">
+              <PropertyRef Name="receiptMasterId" />
+            </Principal>
+            <Dependent Role="ReceiptDetail1">
+              <PropertyRef Name="receiptMasterId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7606,6 +8489,43 @@
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="IMEModel.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="SuperDiskAdd" FunctionName="IMEModel.Store.SuperDiskAdd" />
           <FunctionImportMapping FunctionImportName="SuperDiskPAdd" FunctionName="IMEModel.Store.SuperDiskPAdd" />
+          <FunctionImportMapping FunctionImportName="PDCClearanceFillDetails" FunctionName="IMEModel.Store.PDCClearanceFillDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.PDCClearanceFillDetails_Result">
+                <ScalarProperty Name="voucherTypeName" ColumnName="voucherTypeName" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
+                <ScalarProperty Name="checkDate" ColumnName="checkDate" />
+                <ScalarProperty Name="chequeNo" ColumnName="chequeNo" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="Bank" ColumnName="Bank" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PDCClearanceRegisterSearch" FunctionName="IMEModel.Store.PDCClearanceRegisterSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.PDCClearanceRegisterSearch_Result">
+                <ScalarProperty Name="PDCClearanceMasterId" ColumnName="PDCClearanceMasterId" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="voucherTypeName" ColumnName="voucherTypeName" />
+                <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
+                <ScalarProperty Name="againstId" ColumnName="againstId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <EntitySetMapping Name="AccountGroups">
             <EntityTypeMapping TypeName="IMEModel.AccountGroup">
               <MappingFragment StoreEntitySet="AccountGroup">
@@ -7747,9 +8667,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CreditNoteDetails">
+            <EntityTypeMapping TypeName="IMEModel.CreditNoteDetail">
+              <MappingFragment StoreEntitySet="CreditNoteDetails">
+                <ScalarProperty Name="chequeNo" ColumnName="chequeNo" />
+                <ScalarProperty Name="chequeDate" ColumnName="chequeDate" />
+                <ScalarProperty Name="exchangeRateId" ColumnName="exchangeRateId" />
+                <ScalarProperty Name="debit" ColumnName="debit" />
+                <ScalarProperty Name="credit" ColumnName="credit" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="creditNoteMasterId" ColumnName="creditNoteMasterId" />
+                <ScalarProperty Name="creditNoteDetailsId" ColumnName="creditNoteDetailsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="CreditNoteMasters">
             <EntityTypeMapping TypeName="IMEModel.CreditNoteMaster">
               <MappingFragment StoreEntitySet="CreditNoteMaster">
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
                 <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
                 <ScalarProperty Name="narration" ColumnName="narration" />
                 <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
@@ -7886,6 +8821,36 @@
                 <ScalarProperty Name="DiscontinuationDate" ColumnName="DiscontinuationDate" />
                 <ScalarProperty Name="ReasonDescription" ColumnName="ReasonDescription" />
                 <ScalarProperty Name="ArticleNo" ColumnName="ArticleNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DebitNoteDetails">
+            <EntityTypeMapping TypeName="IMEModel.DebitNoteDetail">
+              <MappingFragment StoreEntitySet="DebitNoteDetail">
+                <ScalarProperty Name="chequeDate" ColumnName="chequeDate" />
+                <ScalarProperty Name="chequeNo" ColumnName="chequeNo" />
+                <ScalarProperty Name="exchangeRateId" ColumnName="exchangeRateId" />
+                <ScalarProperty Name="debit" ColumnName="debit" />
+                <ScalarProperty Name="credit" ColumnName="credit" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="debitNoteMasterId" ColumnName="debitNoteMasterId" />
+                <ScalarProperty Name="debitNoteDetailsId" ColumnName="debitNoteDetailsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DebitNoteMasters">
+            <EntityTypeMapping TypeName="IMEModel.DebitNoteMaster">
+              <MappingFragment StoreEntitySet="DebitNoteMaster">
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="debitNoteMasterId" ColumnName="debitNoteMasterId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -8229,6 +9194,25 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PDCClearanceMasters">
+            <EntityTypeMapping TypeName="IMEModel.PDCClearanceMaster">
+              <MappingFragment StoreEntitySet="PDCClearanceMaster">
+                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="againstId" ColumnName="againstId" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="PDCClearanceMasterId" ColumnName="PDCClearanceMasterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PDCPayableMasters">
             <EntityTypeMapping TypeName="IMEModel.PDCPayableMaster">
               <MappingFragment StoreEntitySet="PDCPayableMaster">
@@ -8447,6 +9431,32 @@
                 <ScalarProperty Name="currency" ColumnName="currency" />
                 <ScalarProperty Name="rate_date" ColumnName="rate_date" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReceiptDetails">
+            <EntityTypeMapping TypeName="IMEModel.ReceiptDetail">
+              <MappingFragment StoreEntitySet="ReceiptDetail">
+                <ScalarProperty Name="chequeDate" ColumnName="chequeDate" />
+                <ScalarProperty Name="chequeNo" ColumnName="chequeNo" />
+                <ScalarProperty Name="exchangeRateId" ColumnName="exchangeRateId" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="receiptMasterId" ColumnName="receiptMasterId" />
+                <ScalarProperty Name="receiptDetailsId" ColumnName="receiptDetailsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReceiptDetails1">
+            <EntityTypeMapping TypeName="IMEModel.ReceiptDetail1">
+              <MappingFragment StoreEntitySet="ReceiptDetails">
+                <ScalarProperty Name="chequeDate" ColumnName="chequeDate" />
+                <ScalarProperty Name="chequeNo" ColumnName="chequeNo" />
+                <ScalarProperty Name="exchangeRateId" ColumnName="exchangeRateId" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="receiptMasterId" ColumnName="receiptMasterId" />
+                <ScalarProperty Name="receiptDetailsId" ColumnName="receiptDetailsId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -8917,6 +9927,7 @@
           <EntitySetMapping Name="Workers">
             <EntityTypeMapping TypeName="IMEModel.Worker">
               <MappingFragment StoreEntitySet="Worker">
+                <ScalarProperty Name="designationId" ColumnName="designationId" />
                 <ScalarProperty Name="desinationID" ColumnName="desinationID" />
                 <ScalarProperty Name="isActive" ColumnName="isActive" />
                 <ScalarProperty Name="Title" ColumnName="Title" />

@@ -46,7 +46,7 @@
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hazardous = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Calibration = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.SaleOrderNature = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaleOrderNature = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.AddressType = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.AdressTitle = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.UPIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -187,9 +187,11 @@
             // SaleOrderNature
             // 
             this.SaleOrderNature.HeaderText = "Nature";
+            this.SaleOrderNature.Items.AddRange(new object[] {
+            "XDOC",
+            "NORMAL"});
             this.SaleOrderNature.Name = "SaleOrderNature";
             this.SaleOrderNature.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.SaleOrderNature.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // AddressType
             // 
@@ -255,6 +257,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn saleOrderNatureDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn frtTypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ıtemDescDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource customerAddressBindingSource;
         private System.Windows.Forms.DataGridViewCheckBoxColumn SLC;
         private System.Windows.Forms.DataGridViewTextBoxColumn c_name;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuotationNos;
@@ -265,11 +268,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Hazardous;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Calibration;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SaleOrderNature;
+        private System.Windows.Forms.DataGridViewComboBoxColumn SaleOrderNature;
         private System.Windows.Forms.DataGridViewComboBoxColumn AddressType;
         private System.Windows.Forms.DataGridViewComboBoxColumn AdressTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn UPIME;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
-        private System.Windows.Forms.BindingSource customerAddressBindingSource;
     }
 }

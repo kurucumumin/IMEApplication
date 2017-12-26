@@ -14,6 +14,12 @@ namespace LoginForm.DataSet
     
     public partial class CreditNoteMaster
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CreditNoteMaster()
+        {
+            this.CreditNoteDetails = new HashSet<CreditNoteDetail>();
+        }
+    
         public decimal creditNoteMasterId { get; set; }
         public string voucherNo { get; set; }
         public string invoiceNo { get; set; }
@@ -25,6 +31,8 @@ namespace LoginForm.DataSet
         public Nullable<decimal> financialYearId { get; set; }
         public Nullable<decimal> voucherTypeId { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CreditNoteDetail> CreditNoteDetails { get; set; }
         public virtual FinancialYear FinancialYear { get; set; }
         public virtual Worker Worker { get; set; }
         public virtual VoucherType VoucherType { get; set; }

@@ -203,7 +203,8 @@ namespace LoginForm.PurchaseOrder
             List<string> TXTList = new List<string>();
             string Line1;
             string s = rowList[0].Cells[3].Value.ToString();
-
+            string orderN= rowList[0].Cells[10].Value.ToString();
+            string billTo = rowList[0].Cells[11].Value.ToString();
             string COO ="   ";//TO DO COUNTRYCODE
             string OrderDate = DateTime.Now.ToString("dd.MM.yyyy");//TransmissionDate
             string OrderTime = DateTime.Now.ToString("HH.mm");//TransmissionDate
@@ -228,14 +229,15 @@ namespace LoginForm.PurchaseOrder
             TXTList.Add(Line1);
             string Line2 = "";
             AccountNumber = "0008828170";//accounting numarası
-            for (int i = 0; i < 10 - AccountNumber.Length; i++)
+            int AccountNumberlength = AccountNumber.Length;
+            for (int i = 0; i < 10 - AccountNumberlength; i++)
             {
-                AccountNumber += "";
+                AccountNumber += " ";
             }
             string saleOrderN = rowList.FirstOrDefault().Cells["SaleOrderNo"].Value.ToString();
            
             string OrderNature = "";
-            if (IME.SaleOrders.Where(a => a.SaleOrderNo == saleOrderN).FirstOrDefault().SaleOrderNature == "XDOC")
+            if (orderN == "XDOC")
             {
                 OrderNature = "D";
             }
@@ -244,7 +246,8 @@ namespace LoginForm.PurchaseOrder
             string OrderNumber = "     ";
             string CustomerDistOrderReference = Convert.ToString(fiche);
             CustomerDistOrderReference = CustomerDistOrderReference+"/DB/"+DateTime.Now.ToString("MMM") +"/"+DateTime.Now.ToString("yy");
-            for (int i = 0; i < 30; i++)
+            int CustomerDistOrderReferencelength = CustomerDistOrderReference.Length;
+            for (int i = 0; i < 30- CustomerDistOrderReferencelength; i++)
             {
                 CustomerDistOrderReference += " ";
             }
@@ -287,78 +290,85 @@ namespace LoginForm.PurchaseOrder
             Line2 = "OH" + AccountNumber+ AccountNumber + OrderNature+ PackType+ OrderNumber+ CustomerDistOrderReference+ MethodofDespatch+
                 AutomaticBackOrderAllowed+ CustomerPONumber+ SupplyingCompany+ RequestDelDate+filler1;
             TXTList.Add(Line2);
-            string Line3 = "";
-            string CustomerName = "INSTALLATIONS MIDDLE EAST";
-            for (int i = 0; i < 35- CustomerName.Length; i++)
+            if (OrderNature=="D")
             {
-                CustomerName = CustomerName+ " ";
-            }
-            string CustomerAddressLine1 = "";
-            for (int i = 0; i < 35; i++)
-            {
-                CustomerAddressLine1 += " ";
-            }
-            filler1 = "";
-            for (int i = 0; i < 78; i++)
-            {
-                filler1 += " ";
-            }
-            Line3 = "C1" + CustomerName + CustomerAddressLine1 + filler1;
-            TXTList.Add(Line3);
-            string adress = "SHEIKH MAJID BUILDING, SHOP No.4, SHEIKH ZAYED ROAD, AL QUOS AREA";
-            string Line4 = "";
-            filler1 = "";
-            for (int i = 0; i < 148-adress.Length; i++)
-            {
-                filler1 = " ";
-            }
-            Line4 = "C2" + adress + filler1;
-            TXTList.Add(Line4);
+                string Line3 = "";
+                string CustomerName = "INSTALLATIONS MIDDLE EAST";
+                int CustomerNamelength = CustomerName.Length;
+                for (int i = 0; i < 35 - CustomerNamelength; i++)
+                {
+                    CustomerName = CustomerName + " ";
+                }
+                string CustomerAddressLine1 = "";
+                for (int i = 0; i < 35; i++)
+                {
+                    CustomerAddressLine1 += " ";
+                }
+                filler1 = "";
+                for (int i = 0; i < 78; i++)
+                {
+                    filler1 += " ";
+                }
+                Line3 = "C1" + CustomerName + CustomerAddressLine1 + filler1;
+                TXTList.Add(Line3);
+                string adress = "SHEIKH MAJID BUILDING, SHOP No.4, SHEIKH ZAYED ROAD, AL QUOS AREA";
+                string Line4 = "";
+                filler1 = "";
+                int adresslenght = adress.Length;
+                for (int i = 0; i < 148 - adresslenght; i++)
+                {
+                    filler1 = " ";
+                }
+                Line4 = "C2" + adress + filler1;
+                TXTList.Add(Line4);
 
 
-            string line5 = "";
-            string CustomerAddressLine4 = "DUBAI";
-            for (int i = 0; i < 30; i++)
-            {
-                CustomerAddressLine4 += " ";
+                string line5 = "";
+                string CustomerAddressLine4 = "DUBAI";
+                for (int i = 0; i < 30; i++)
+                {
+                    CustomerAddressLine4 += " ";
+                }
+                string saleOrderNo = rowList.FirstOrDefault().Cells["SaleOrderNo"].Value.ToString();
+                string ForAttentionof = saleOrderNo;//saleordernumber
+                int forattentionoflenght = ForAttentionof.Length;
+                for (int i = 0; i < 30 - forattentionoflenght; i++)
+                {
+                    ForAttentionof += " ";
+                }
+                string Postcode = "5253";
+                for (int i = 0; i < 5; i++)
+                {
+                    Postcode = Postcode + " ";
+                }
+                string Countrycode = "AE";
+                string ContacttelephoneNumber = "3433444";
+                for (int i = 0; i < 23; i++)
+                {
+                    ContacttelephoneNumber += " ";
+                }
+                filler1 = "";
+                for (int i = 0; i < 42; i++)
+                {
+                    filler1 += " ";
+                }
+                line5 = "C3" + CustomerAddressLine4 + ForAttentionof + Postcode + Countrycode + ContacttelephoneNumber + filler1;
+                TXTList.Add(line5);
+                string Line6 = "";
+                string DeliveryInstruction = "0";
+                for (int i = 0; i < 39; i++)
+                {
+                    DeliveryInstruction += " ";
+                }
+                filler1 = "";
+                for (int i = 0; i < 108; i++)
+                {
+                    filler1 += " ";
+                }
+                Line6 = "C4" + DeliveryInstruction + filler1;
+                TXTList.Add(Line6);
+                
             }
-            string saleOrderNo = rowList.FirstOrDefault().Cells["SaleOrderNo"].Value.ToString();
-            string ForAttentionof = saleOrderNo;//saleordernumber
-            for (int i = 0; i < 30-ForAttentionof.Length; i++)
-            {
-                ForAttentionof += " ";
-            }
-            string Postcode = "5253";
-            for (int i = 0; i < 5; i++)
-            {
-                Postcode = Postcode+" ";
-            }
-            string Countrycode = "AE";
-            string ContacttelephoneNumber = "3433444";
-            for (int i = 0; i < 23; i++)
-            {
-                ContacttelephoneNumber += " ";
-            }
-            filler1 = "";
-            for (int i = 0; i < 42; i++)
-            {
-                filler1 += " ";
-            }
-            line5 = "C3" + CustomerAddressLine4 + ForAttentionof+ Postcode+ Countrycode + ContacttelephoneNumber + filler1;
-            TXTList.Add(line5);
-            string Line6="";
-            string DeliveryInstruction = "";
-            for (int i = 0; i < 40; i++)
-            {
-                DeliveryInstruction += " ";
-            }
-            filler1 = "";
-            for (int i = 0; i < 108; i++)
-            {
-                filler1 += " ";
-            }
-            Line6 = "C4" + DeliveryInstruction + filler1;
-            TXTList.Add(Line6);
             int totalquantity = 0;
             int totalitemLine = 0;
             foreach (var item in rowList)
@@ -367,7 +377,8 @@ namespace LoginForm.PurchaseOrder
                 string saleOrderNumber = item.Cells["SaleOrderNo"].Value.ToString();
                 SaleOrderDetail po = IME.SaleOrderDetails.Where(b=>b.SaleOrderNo== saleOrderNumber).Where(a => a.ItemCode == productNumber).FirstOrDefault();
                 //if (productNumber.Length == 6) productNumber = "0" + productNumber;
-                for (int i = 0; i < 18-productNumber.Length; i++)
+                int productnumberlenght = productNumber.Length;
+                for (int i = 0; i < 18- productnumberlenght; i++)
                 {
                     productNumber += " ";
                 }
@@ -376,7 +387,8 @@ namespace LoginForm.PurchaseOrder
                 if(po!=null)orderqty=Int32.Parse(po.Quantity.ToString());
                 string OrderQuantity = orderqty.ToString();
                 totalquantity += orderqty;
-                for (int i = 0; i < 5-orderqty.ToString().Length; i++)
+                int orderqtylenght = orderqty.ToString().Length;
+                for (int i = 0; i < 5- orderqtylenght; i++)
                 {
                     OrderQuantity = "0" + OrderQuantity;
                 }
@@ -384,9 +396,10 @@ namespace LoginForm.PurchaseOrder
                 string PackType1 = "S";
                 string ProductDescription="";
                 if (po.ItemDescription != null) ProductDescription = "";//item desc boş gönderiliyor
-                for (int i = 0; i < 40 - ProductDescription.ToString().Length; i++)
+                int ProductDescriptionlenght = ProductDescription.ToString().Length;
+                for (int i = 0; i < 40 - ProductDescriptionlenght; i++)
                 {
-                    ProductDescription += " " + ProductDescription;
+                    ProductDescription = " " + ProductDescription;
                 }
                 string LocalStoresLocation="";
                 for (int i = 0; i < 20; i++)
@@ -401,7 +414,8 @@ namespace LoginForm.PurchaseOrder
                 string PurchaseOrderItemNumber = "";
                 totalitemLine++;
                 PurchaseOrderItemNumber = totalitemLine.ToString();
-                for (int i = 0; i < 6-totalitemLine.ToString().Length; i++)
+                int totalitemLinelen = totalitemLine.ToString().Length;
+                for (int i = 0; i < 6- totalitemLinelen; i++)
                 {
                     PurchaseOrderItemNumber = "0" + PurchaseOrderItemNumber;
                 }
@@ -422,12 +436,14 @@ namespace LoginForm.PurchaseOrder
             string lineOT = "";
             string OrderQuantityControl = "";
             OrderQuantityControl = totalquantity.ToString();
-            for (int i = 0; i < 10-totalquantity.ToString().Length; i++)
+            int totalquantitylenght = totalquantity.ToString().Length;
+            for (int i = 0; i < 10- totalquantitylenght; i++)
             {
                 OrderQuantityControl = "0"+ OrderQuantityControl;
             }
             string OrderLineControl = totalitemLine.ToString();
-            for (int i = 0; i < 5 - totalitemLine.ToString().Length; i++)
+            int totalitemLinelenght = totalitemLine.ToString().Length;
+            for (int i = 0; i < 5 - totalitemLinelenght; i++)
             {
                 OrderLineControl = "0" + OrderLineControl;
             }

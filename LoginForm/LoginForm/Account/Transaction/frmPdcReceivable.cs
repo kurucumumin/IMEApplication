@@ -71,6 +71,26 @@ namespace Open_Miracle
         {
             InitializeComponent();
         }
+
+        public frmPdcReceivable(string item_code)
+        {
+            InitializeComponent();
+
+            try
+            {
+                decPDCReceivableEditId = Convert.ToDecimal(item_code);
+                btnClear.Text = "New";
+                btnSave.Text = "Update";
+                btnDelete.Enabled = true;
+                FillFunction();
+                this.Activate();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PR3:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         /// <summary>
         /// CashorBank Account ComboFill
         /// </summary>

@@ -10,27 +10,24 @@ using System.Windows.Forms;
 using LoginForm.DataSet;
 using LoginForm.Services;
 
-namespace LoginForm.Invoice
+namespace LoginForm.PurchaseOrder
 {
-    public partial class InvoiceMain : Form
+    public partial class FormBillTo : Form
     {
         IMEEntities IME = new IMEEntities();
+        List<Mail> MailList = new List<Mail>();
+        List<int> addedBillIndex = new List<int>();
 
-        public InvoiceMain()
+        public FormBillTo()
         {
             InitializeComponent();
         }
 
-        public InvoiceMain(string item_code)
+        private void dgBillTo_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            InitializeComponent();
-        }
-
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Are You Sure To Exit Programme ?", "Exit", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (e.RowIndex + 1 > MailList.Count)
             {
-                this.Close();
+                addedBillIndex.Add(e.RowIndex - 1);
             }
         }
     }

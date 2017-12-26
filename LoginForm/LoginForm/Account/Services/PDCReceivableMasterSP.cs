@@ -290,6 +290,24 @@ namespace LoginForm.Services
             return pdcreceivablemasterinfo;
         }
 
-        
+        public bool PDCReceivableReferenceCheck(decimal decPDCReceivableMasterId)
+        {
+            IMEEntities IME = new IMEEntities();
+            bool isExist = false;
+            try
+            {
+                var adapter = (from pr in IME.PDCClearanceMasters.Where(p => p.againstId == decPDCReceivableMasterId)
+                               select new { pr.againstId }).ToList();
+
+                isExist = (adapter != null) ? true : false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return isExist;
+        }
+
+
     }
 }

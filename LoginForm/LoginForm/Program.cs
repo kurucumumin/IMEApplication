@@ -1,6 +1,7 @@
 ﻿using LoginForm.Invoice;
 using LoginForm.nsSaleOrder;
 using LoginForm.PurchaseOrder;
+using LoginForm.QuotationModule;
 using System;
 using System.Windows.Forms;
 

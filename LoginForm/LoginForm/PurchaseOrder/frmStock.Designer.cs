@@ -108,7 +108,6 @@
             this.dgStock.Name = "dgStock";
             this.dgStock.Size = new System.Drawing.Size(608, 192);
             this.dgStock.TabIndex = 2;
-            this.dgStock.DoubleClick += new System.EventHandler(this.dgStock_DoubleClick);
             // 
             // btnSave
             // 

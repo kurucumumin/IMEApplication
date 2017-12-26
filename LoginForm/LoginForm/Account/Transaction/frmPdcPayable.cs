@@ -80,6 +80,26 @@ namespace Open_Miracle
         {
             InitializeComponent();
         }
+
+        public frmPdcPayable(string item_code)
+        {
+            InitializeComponent();
+
+            try
+            {
+                base.Show();
+                decPDCpayableEditId = Convert.ToDecimal(item_code);
+                btnClear.Text = "New";
+                btnSave.Text = "Update";
+                btnDelete.Enabled = true;
+                FillFunction();
+                this.Activate();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PP2:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to call this form from VoucherType Selection form
         /// </summary>

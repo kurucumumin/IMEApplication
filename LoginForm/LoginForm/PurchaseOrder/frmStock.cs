@@ -16,6 +16,7 @@ namespace LoginForm.PurchaseOrder
         #region Definitions
         IMEEntities IME = new IMEEntities();
         int stockcode;
+        string itemcode;
         #endregion
 
 
@@ -57,8 +58,15 @@ namespace LoginForm.PurchaseOrder
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            dgStock.DataSource = IME.Stocks.Where(a => a.ItemCode == ProductCodeSearch.Text).ToList();
-
+            if (ProductCodeSearch.Text == itemcode)
+            {
+                dgStock.DataSource = IME.Stocks.Where(a => a.ItemCode == itemcode).ToList();
+            }
+            else
+            {
+                dgStock.DataSource = IME.Stocks.Where(a => a.ItemCode == ProductCodeSearch.Text).ToList();
+            }
+            
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -67,9 +75,13 @@ namespace LoginForm.PurchaseOrder
             txtQuantity.Text = string.Empty;
         }
 
-        private void dgStock_DoubleClick(object sender, EventArgs e)
+
+        public frmStock(string voucherSearcheCode)
         {
-            
+            InitializeComponent();
+
+            itemcode = voucherSearcheCode;
+            ProductCodeSearch.Text = itemcode;
         }
     }
 }
