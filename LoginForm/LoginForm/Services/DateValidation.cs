@@ -22,7 +22,7 @@ using System.Drawing;
 using System.Globalization;
 using LoginForm.Services;
 
-namespace Open_Miracle
+namespace LoginForm.Services
 {
     class DateValidation
     {

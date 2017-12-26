@@ -24,7 +24,7 @@ using LoginForm.DataSet;
 using LoginForm.Services;
 using LoginForm;
 
-namespace Open_Miracle
+namespace LoginForm
 {
     public partial class frmPdcReceivable : Form
     {
@@ -1005,7 +1005,8 @@ namespace Open_Miracle
                 }
                 else
                 {
-                    Messages.InformationMessage("Reference exist. Cannot delete");
+                    
+                   Services.Messages.InformationMessage("Reference exist. Cannot delete");
                     txtVoucherDate.Focus();
                 }
                 if (PDCReceivableRegisterObj != null)

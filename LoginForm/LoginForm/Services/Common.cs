@@ -19,7 +19,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-namespace Open_Miracle
+namespace LoginForm.Services
 {
     class Common
     {

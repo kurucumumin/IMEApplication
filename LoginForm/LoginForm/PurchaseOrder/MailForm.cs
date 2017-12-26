@@ -16,7 +16,7 @@ namespace LoginForm.PurchaseOrder
     {
         IMEEntities IME = new IMEEntities();
         List<Mail> MailList = new List<Mail>();
-        List<int> addedBillIndex = new List<int>();
+        List<int> addedMailIndex = new List<int>();
 
         public MailForm()
         {
