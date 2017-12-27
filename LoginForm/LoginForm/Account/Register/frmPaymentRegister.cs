@@ -261,41 +261,37 @@ namespace LoginForm
                 MessageBox.Show("PREG15:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        /// <summary>
-        /// Calls corresponding PaymentVoucher on cell doubleclick in datagridview for updation
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void btnviewDetails_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    if (dgvPaymentRegister.CurrentRow != null)
-            //    {
-            //        if (dgvPaymentRegister.CurrentRow.Cells["dgvtxtpaymentMasterId"].Value != null && dgvPaymentRegister.CurrentRow.Cells["dgvtxtpaymentMasterId"].Value.ToString() != string.Empty)
-            //        {
-            //            //frmPaymentVoucher frmPaymentVoucherObj = new frmPaymentVoucher();
-            //            //frmPaymentVoucher open = Application.OpenForms["frmPaymentVoucher"] as frmPaymentVoucher;
-            //            decimal decPaymentmasterId = Convert.ToDecimal(dgvPaymentRegister.CurrentRow.Cells["dgvtxtpaymentMasterId"].Value.ToString());
-                        
-                           
-            //                frmPaymentVoucherObj.CallFromPaymentRegister(this, decPaymentmasterId);
-                       
-            //                open.MdiParent = formMDI.MDIObj;
-            //                open.BringToFront();
-            //                open.CallFromPaymentRegister(this, decPaymentmasterId);
-            //                if (open.WindowState == FormWindowState.Minimized)
-            //                {
-            //                    open.WindowState = FormWindowState.Normal;
-            //                }
-                        
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("PREG16:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+            try
+            {
+                if (dgvPaymentRegister.CurrentRow != null)
+                {
+                    if (dgvPaymentRegister.CurrentRow.Cells["dgvtxtpaymentMasterId"].Value != null && dgvPaymentRegister.CurrentRow.Cells["dgvtxtpaymentMasterId"].Value.ToString() != string.Empty)
+                    {
+                        //frmPaymentVoucher frmPaymentVoucherObj = new frmPaymentVoucher();
+                        //frmPaymentVoucher open = Application.OpenForms["frmPaymentVoucher"] as frmPaymentVoucher;
+                        decimal decPaymentmasterId = Convert.ToDecimal(dgvPaymentRegister.CurrentRow.Cells["dgvtxtpaymentMasterId"].Value.ToString());
+
+                        // TO DO CALL frmPaymentVoucher 
+                        //frmPaymentVoucherObj.CallFromPaymentRegister(this, decPaymentmasterId);
+
+                        //open.MdiParent = formMDI.MDIObj;
+                        //open.BringToFront();
+                        //open.CallFromPaymentRegister(this, decPaymentmasterId);
+                        //if (open.WindowState == FormWindowState.Minimized)
+                        //{
+                        //    open.WindowState = FormWindowState.Normal;
+                        //}
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PREG16:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         
         #endregion

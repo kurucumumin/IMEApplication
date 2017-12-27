@@ -222,7 +222,9 @@
     <Compile Include="Account\Register\frmReceiptRegister.designer.cs">
       <DependentUpon>frmReceiptRegister.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\Search\frmVoucherSearch.cs" />
+    <Compile Include="Account\Search\frmVoucherSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Account\Search\frmVoucherSearch.designer.cs">
       <DependentUpon>frmVoucherSearch.cs</DependentUpon>
     </Compile>
@@ -606,6 +608,7 @@
     <Compile Include="DataSet\Worker.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\WorkerApp.cs" />
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
