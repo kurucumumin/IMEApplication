@@ -46,6 +46,7 @@ namespace LoginForm.Account.Services
             }
             return inEffect;
         }
+
         public void PartyBalanceEdit(PartyBalance pb)
         {
             IMEEntities db = new IMEEntities();
@@ -74,6 +75,7 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
         }
+
         public bool PartyBalanceCheckReference(decimal decVoucherTypeId, string strVoucherNo)
         {
             IMEEntities db = new IMEEntities();
@@ -159,6 +161,20 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
             return dtbl;
+        }
+
+        public void PartyBalanceDelete(decimal PartyBalanceId)
+        {
+            IMEEntities IME = new IMEEntities();
+            try
+            {
+                List<PartyBalance> listLp = IME.PartyBalances.Where(x => x.partyBalanceId == PartyBalanceId).ToList();
+                IME.PartyBalances.RemoveRange(listLp);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
     }

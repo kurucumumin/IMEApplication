@@ -317,7 +317,7 @@ namespace LoginForm.PurchaseOrder
                 int adresslenght = adress.Length;
                 for (int i = 0; i < 148 - adresslenght; i++)
                 {
-                    filler1 = " ";
+                    filler1 += " ";
                 }
                 Line4 = "C2" + adress + filler1;
                 TXTList.Add(Line4);

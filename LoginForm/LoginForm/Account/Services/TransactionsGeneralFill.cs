@@ -61,5 +61,41 @@ namespace LoginForm.Account.Services
             
             return dt;
         }
+
+        public DataTable CurrencyComboByDate(DateTime date)
+        {
+            IMEEntities db = new IMEEntities();
+            DataTable dt = new DataTable();
+            try
+            {
+                var adaptor = (from c in db.Currencies
+                               from e in db.ExchangeRates.Where(x => x.currencyId == c.currencyID)
+                               where e.date==date || e.exchangeRateID==1
+                               select new
+                               {
+                                   c.currencyName,
+                                   c.currencySymbol,
+                                   e.exchangeRateID
+                               }).ToList();
+
+                dt.Columns.Add("currencyName"+ "|" + "currencySymbol");
+                dt.Columns.Add("exchangeRateID");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dt.NewRow();
+
+                    row["currencyName" + "|" + "currencySymbol"] = item.currencyName+ "|" +item.currencySymbol;
+                    row["exchangeRateID"] = item.exchangeRateID;
+
+                    dt.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dt;
+        }
     }
 }

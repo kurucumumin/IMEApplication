@@ -67,6 +67,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<LoaderDate> LoaderDates { get; set; }
         public virtual DbSet<Mail> Mails { get; set; }
         public virtual DbSet<Management> Managements { get; set; }
+        public virtual DbSet<Master> Masters { get; set; }
         public virtual DbSet<MonthlySalary> MonthlySalaries { get; set; }
         public virtual DbSet<Note> Notes { get; set; }
         public virtual DbSet<OnSale> OnSales { get; set; }
@@ -93,6 +94,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<RoleValue> RoleValues { get; set; }
         public virtual DbSet<Route> Routes { get; set; }
         public virtual DbSet<RSPro> RSProes { get; set; }
+        public virtual DbSet<SalaryVoucherMaster> SalaryVoucherMasters { get; set; }
         public virtual DbSet<SaleOrder> SaleOrders { get; set; }
         public virtual DbSet<SaleOrderDetail> SaleOrderDetails { get; set; }
         public virtual DbSet<Setting> Settings { get; set; }
@@ -118,6 +120,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<VoucherType> VoucherTypes { get; set; }
         public virtual DbSet<VoucherTypeTax> VoucherTypeTaxes { get; set; }
         public virtual DbSet<Worker> Workers { get; set; }
+        public virtual DbSet<SalaryVoucherDetail> SalaryVoucherDetails { get; set; }
     
         public virtual int ExtendedRangeADD(string articleNo, string brand, string mPN, string articleDescription, Nullable<decimal> extendedRangeLength, Nullable<decimal> width, Nullable<decimal> height, string dimensionUoM, string weightUoM, Nullable<int> cCCN, string countryofOrigin, string unitofMeasure, Nullable<int> packSize, Nullable<int> salesUoM, string costPriceCurrency, Nullable<decimal> col1Price, Nullable<decimal> col2Price, Nullable<decimal> col3Price, Nullable<decimal> col4Price, Nullable<decimal> col5Price, Nullable<int> col1Break, Nullable<int> col2Break, Nullable<int> col3Break, Nullable<int> col4Break, Nullable<int> col5Break, Nullable<decimal> discountedPrice1, Nullable<decimal> discountedPrice2, Nullable<decimal> discountedPrice3, Nullable<decimal> discountedPrice4, Nullable<decimal> discountedPrice5, string manufacturerCode, Nullable<int> extendedRangeWeight)
         {

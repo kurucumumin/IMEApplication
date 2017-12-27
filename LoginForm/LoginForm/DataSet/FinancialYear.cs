@@ -28,6 +28,7 @@ namespace LoginForm.DataSet
             this.PDCClearanceMasters = new HashSet<PDCClearanceMaster>();
             this.PDCPayableMasters = new HashSet<PDCPayableMaster>();
             this.PDCReceivableMasters = new HashSet<PDCReceivableMaster>();
+            this.SalaryVoucherMasters = new HashSet<SalaryVoucherMaster>();
         }
     
         public decimal financialYearId { get; set; }
@@ -57,5 +58,7 @@ namespace LoginForm.DataSet
         public virtual ICollection<PDCPayableMaster> PDCPayableMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PDCReceivableMaster> PDCReceivableMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalaryVoucherMaster> SalaryVoucherMasters { get; set; }
     }
 }

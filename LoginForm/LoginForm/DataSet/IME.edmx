@@ -539,6 +539,23 @@
           <Property Name="Factor" Type="decimal" Precision="6" Scale="3" Nullable="false" />
           <Property Name="CurrentFinancialYear" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
+        <EntityType Name="Master">
+          <Key>
+            <PropertyRef Name="masterId" />
+          </Key>
+          <Property Name="masterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="formName" Type="int" />
+          <Property Name="isTwoLineForHedder" Type="bit" />
+          <Property Name="isTwoLineForDetails" Type="bit" />
+          <Property Name="pageSize1" Type="int" />
+          <Property Name="pageSizeOther" Type="int" />
+          <Property Name="blankLneForFooter" Type="int" />
+          <Property Name="footerLocation" Type="varchar(max)" />
+          <Property Name="lineCountBetweenTwo" Type="int" />
+          <Property Name="pitch" Type="varchar(max)" />
+          <Property Name="condensed" Type="varchar(max)" />
+          <Property Name="lineCountAfterPrint" Type="int" />
+        </EntityType>
         <EntityType Name="MonthlySalary">
           <Key>
             <PropertyRef Name="monthlySalaryId" />
@@ -929,6 +946,38 @@
           <Property Name="Height" Type="nvarchar" MaxLength="15" />
           <Property Name="GrossWeight" Type="nvarchar" MaxLength="15" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SalaryVoucherDetail">
+          <Key>
+            <PropertyRef Name="salaryVoucherDetailsId" />
+          </Key>
+          <Property Name="salaryVoucherDetailsId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="salaryVoucherMasterId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="employeeId" Type="int" />
+          <Property Name="bonus" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="deduction" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="advance" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="lop" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="salary" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SalaryVoucherMaster">
+          <Key>
+            <PropertyRef Name="salaryVoucherMasterId" />
+          </Key>
+          <Property Name="salaryVoucherMasterId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ledgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="voucherNo" Type="varchar(max)" />
+          <Property Name="invoiceNo" Type="varchar(max)" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="month" Type="datetime" />
+          <Property Name="totalAmount" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="narration" Type="varchar(max)" />
+          <Property Name="suffixPrefixId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="voucherTypeId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="financialYearId" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
         <EntityType Name="SaleOrder">
           <Key>
             <PropertyRef Name="SaleOrderNo" />
@@ -960,6 +1009,8 @@
           <Property Name="DiscOnSubtotal" Type="decimal" Precision="20" Scale="4" />
           <Property Name="ExtraCharges" Type="decimal" Precision="20" Scale="4" />
           <Property Name="TotalMargin" Type="decimal" Precision="20" Scale="4" />
+          <Property Name="VoucherId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="VoucherTypeId" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="SaleOrderDetail">
           <Key>
@@ -2607,6 +2658,78 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__SalaryVou__emplo__78F3E6EC">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+          <End Role="SalaryVoucherDetail" Type="Self.SalaryVoucherDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerID" />
+            </Principal>
+            <Dependent Role="SalaryVoucherDetail">
+              <PropertyRef Name="employeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalaryVou__finan__733B0D96">
+          <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
+          <End Role="SalaryVoucherMaster" Type="Self.SalaryVoucherMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinancialYear">
+              <PropertyRef Name="financialYearId" />
+            </Principal>
+            <Dependent Role="SalaryVoucherMaster">
+              <PropertyRef Name="financialYearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalaryVou__ledge__76177A41">
+          <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
+          <End Role="SalaryVoucherMaster" Type="Self.SalaryVoucherMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="SalaryVoucherMaster">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalaryVou__salar__77FFC2B3">
+          <End Role="SalaryVoucherMaster" Type="Self.SalaryVoucherMaster" Multiplicity="0..1" />
+          <End Role="SalaryVoucherDetail" Type="Self.SalaryVoucherDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalaryVoucherMaster">
+              <PropertyRef Name="salaryVoucherMasterId" />
+            </Principal>
+            <Dependent Role="SalaryVoucherDetail">
+              <PropertyRef Name="salaryVoucherMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalaryVou__suffi__75235608">
+          <End Role="SuffixPrefix" Type="Self.SuffixPrefix" Multiplicity="0..1" />
+          <End Role="SalaryVoucherMaster" Type="Self.SalaryVoucherMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SuffixPrefix">
+              <PropertyRef Name="suffixprefixId" />
+            </Principal>
+            <Dependent Role="SalaryVoucherMaster">
+              <PropertyRef Name="suffixPrefixId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalaryVou__vouch__742F31CF">
+          <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
+          <End Role="SalaryVoucherMaster" Type="Self.SalaryVoucherMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="SalaryVoucherMaster">
+              <PropertyRef Name="voucherTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__SaleOrder__Conta__1DD065E0">
           <End Role="CustomerWorker" Type="Self.CustomerWorker" Multiplicity="1" />
           <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
@@ -2736,6 +2859,18 @@
             </Principal>
             <Dependent Role="SaleOrderDetail">
               <PropertyRef Name="SaleOrderNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SaleOrder__Vouch__705EA0EB">
+          <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
+          <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="SaleOrder">
+              <PropertyRef Name="VoucherTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3427,6 +3562,7 @@
           <EntitySet Name="LoaderDates" EntityType="Self.LoaderDates" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mail" EntityType="Self.Mail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Management" EntityType="Self.Management" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Master" EntityType="Self.Master" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MonthlySalary" EntityType="Self.MonthlySalary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OnSale" EntityType="Self.OnSale" Schema="dbo" store:Type="Tables" />
@@ -3453,6 +3589,7 @@
           <EntitySet Name="RoleValue" EntityType="Self.RoleValue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Route" EntityType="Self.Route" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RSPro" EntityType="Self.RSPro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalaryVoucherMaster" EntityType="Self.SalaryVoucherMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SaleOrder" EntityType="Self.SaleOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SaleOrderDetail" EntityType="Self.SaleOrderDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
@@ -3479,6 +3616,19 @@
           <EntitySet Name="VoucherType" EntityType="Self.VoucherType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VoucherTypeTax" EntityType="Self.VoucherTypeTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalaryVoucherDetail" EntityType="Self.SalaryVoucherDetail" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId], 
+    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId], 
+    [SalaryVoucherDetail].[employeeId] AS [employeeId], 
+    [SalaryVoucherDetail].[bonus] AS [bonus], 
+    [SalaryVoucherDetail].[deduction] AS [deduction], 
+    [SalaryVoucherDetail].[advance] AS [advance], 
+    [SalaryVoucherDetail].[lop] AS [lop], 
+    [SalaryVoucherDetail].[salary] AS [salary], 
+    [SalaryVoucherDetail].[status] AS [status]
+    FROM [dbo].[SalaryVoucherDetail] AS [SalaryVoucherDetail]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__AccountLe__accou__5E74FADA" Association="Self.FK__AccountLe__accou__5E74FADA">
             <End Role="AccountGroup" EntitySet="AccountGroup" />
             <End Role="AccountLedger" EntitySet="AccountLedger" />
@@ -3899,6 +4049,30 @@
             <End Role="Area" EntitySet="Area" />
             <End Role="Route" EntitySet="Route" />
           </AssociationSet>
+          <AssociationSet Name="FK__SalaryVou__emplo__78F3E6EC" Association="Self.FK__SalaryVou__emplo__78F3E6EC">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="SalaryVoucherDetail" EntitySet="SalaryVoucherDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalaryVou__finan__733B0D96" Association="Self.FK__SalaryVou__finan__733B0D96">
+            <End Role="FinancialYear" EntitySet="FinancialYear" />
+            <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalaryVou__ledge__76177A41" Association="Self.FK__SalaryVou__ledge__76177A41">
+            <End Role="AccountLedger" EntitySet="AccountLedger" />
+            <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalaryVou__salar__77FFC2B3" Association="Self.FK__SalaryVou__salar__77FFC2B3">
+            <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMaster" />
+            <End Role="SalaryVoucherDetail" EntitySet="SalaryVoucherDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalaryVou__suffi__75235608" Association="Self.FK__SalaryVou__suffi__75235608">
+            <End Role="SuffixPrefix" EntitySet="SuffixPrefix" />
+            <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalaryVou__vouch__742F31CF" Association="Self.FK__SalaryVou__vouch__742F31CF">
+            <End Role="VoucherType" EntitySet="VoucherType" />
+            <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMaster" />
+          </AssociationSet>
           <AssociationSet Name="FK__SaleOrder__Conta__1DD065E0" Association="Self.FK__SaleOrder__Conta__1DD065E0">
             <End Role="CustomerWorker" EntitySet="CustomerWorker" />
             <End Role="SaleOrder" EntitySet="SaleOrder" />
@@ -3942,6 +4116,10 @@
           <AssociationSet Name="FK__SaleOrder__SaleO__0B7CAB7B" Association="Self.FK__SaleOrder__SaleO__0B7CAB7B">
             <End Role="SaleOrder" EntitySet="SaleOrder" />
             <End Role="SaleOrderDetail" EntitySet="SaleOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SaleOrder__Vouch__705EA0EB" Association="Self.FK__SaleOrder__Vouch__705EA0EB">
+            <End Role="VoucherType" EntitySet="VoucherType" />
+            <End Role="SaleOrder" EntitySet="SaleOrder" />
           </AssociationSet>
           <AssociationSet Name="FK__SuffixPre__vouch__7740A8A4" Association="Self.FK__SuffixPre__vouch__7740A8A4">
             <End Role="VoucherType" EntitySet="VoucherType" />
@@ -4346,6 +4524,7 @@
           <EntitySet Name="LoaderDates" EntityType="IMEModel.LoaderDate" />
           <EntitySet Name="Mails" EntityType="IMEModel.Mail" />
           <EntitySet Name="Managements" EntityType="IMEModel.Management" />
+          <EntitySet Name="Masters" EntityType="IMEModel.Master" />
           <EntitySet Name="MonthlySalaries" EntityType="IMEModel.MonthlySalary" />
           <EntitySet Name="Notes" EntityType="IMEModel.Note" />
           <EntitySet Name="OnSales" EntityType="IMEModel.OnSale" />
@@ -4372,6 +4551,7 @@
           <EntitySet Name="RoleValues" EntityType="IMEModel.RoleValue" />
           <EntitySet Name="Routes" EntityType="IMEModel.Route" />
           <EntitySet Name="RSProes" EntityType="IMEModel.RSPro" />
+          <EntitySet Name="SalaryVoucherMasters" EntityType="IMEModel.SalaryVoucherMaster" />
           <EntitySet Name="SaleOrders" EntityType="IMEModel.SaleOrder" />
           <EntitySet Name="SaleOrderDetails" EntityType="IMEModel.SaleOrderDetail" />
           <EntitySet Name="Settings" EntityType="IMEModel.Setting" />
@@ -4397,6 +4577,7 @@
           <EntitySet Name="VoucherTypes" EntityType="IMEModel.VoucherType" />
           <EntitySet Name="VoucherTypeTaxes" EntityType="IMEModel.VoucherTypeTax" />
           <EntitySet Name="Workers" EntityType="IMEModel.Worker" />
+          <EntitySet Name="SalaryVoucherDetails" EntityType="IMEModel.SalaryVoucherDetail" />
           <AssociationSet Name="FK__AccountLe__accou__5E74FADA" Association="IMEModel.FK__AccountLe__accou__5E74FADA">
             <End Role="AccountGroup" EntitySet="AccountGroups" />
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
@@ -4456,6 +4637,10 @@
           <AssociationSet Name="FK__ReceiptDe__ledge__6B99EBCE" Association="IMEModel.FK__ReceiptDe__ledge__6B99EBCE">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalaryVou__ledge__76177A41" Association="IMEModel.FK__SalaryVou__ledge__76177A41">
+            <End Role="AccountLedger" EntitySet="AccountLedgers" />
+            <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMasters" />
           </AssociationSet>
           <AssociationSet Name="FK__AdvancePa__emplo__4D4A6ED8" Association="IMEModel.FK__AdvancePa__emplo__4D4A6ED8">
             <End Role="Worker" EntitySet="Workers" />
@@ -4749,6 +4934,10 @@
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="PDCReceivableMaster" EntitySet="PDCReceivableMasters" />
           </AssociationSet>
+          <AssociationSet Name="FK__SalaryVou__finan__733B0D96" Association="IMEModel.FK__SalaryVou__finan__733B0D96">
+            <End Role="FinancialYear" EntitySet="FinancialYears" />
+            <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMasters" />
+          </AssociationSet>
           <AssociationSet Name="FK__ItemNote__NoteID__2B0A656D" Association="IMEModel.FK__ItemNote__NoteID__2B0A656D">
             <End Role="Note" EntitySet="Notes" />
             <End Role="ItemNote" EntitySet="ItemNotes" />
@@ -4897,6 +5086,18 @@
             <End Role="ReceiptMaster" EntitySet="ReceiptMasters" />
             <End Role="ReceiptDetail1" EntitySet="ReceiptDetails1" />
           </AssociationSet>
+          <AssociationSet Name="FK__SalaryVou__salar__77FFC2B3" Association="IMEModel.FK__SalaryVou__salar__77FFC2B3">
+            <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMasters" />
+            <End Role="SalaryVoucherDetail" EntitySet="SalaryVoucherDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalaryVou__suffi__75235608" Association="IMEModel.FK__SalaryVou__suffi__75235608">
+            <End Role="SuffixPrefix" EntitySet="SuffixPrefixes" />
+            <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalaryVou__vouch__742F31CF" Association="IMEModel.FK__SalaryVou__vouch__742F31CF">
+            <End Role="VoucherType" EntitySet="VoucherTypes" />
+            <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMasters" />
+          </AssociationSet>
           <AssociationSet Name="FK__SaleOrder__Repre__22951AFD" Association="IMEModel.FK__SaleOrder__Repre__22951AFD">
             <End Role="Worker" EntitySet="Workers" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
@@ -4904,6 +5105,10 @@
           <AssociationSet Name="FK__SaleOrder__SaleO__0B7CAB7B" Association="IMEModel.FK__SaleOrder__SaleO__0B7CAB7B">
             <End Role="SaleOrder" EntitySet="SaleOrders" />
             <End Role="SaleOrderDetail" EntitySet="SaleOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SaleOrder__Vouch__705EA0EB" Association="IMEModel.FK__SaleOrder__Vouch__705EA0EB">
+            <End Role="VoucherType" EntitySet="VoucherTypes" />
+            <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
           <AssociationSet Name="FK__SuffixPre__vouch__7740A8A4" Association="IMEModel.FK__SuffixPre__vouch__7740A8A4">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
@@ -4988,6 +5193,10 @@
           <AssociationSet Name="FK__VoucherTy__vouch__69279377" Association="IMEModel.FK__VoucherTy__vouch__69279377">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="VoucherTypeTax" EntitySet="VoucherTypeTaxes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalaryVou__emplo__78F3E6EC" Association="IMEModel.FK__SalaryVou__emplo__78F3E6EC">
+            <End Role="Worker" EntitySet="Workers" />
+            <End Role="SalaryVoucherDetail" EntitySet="SalaryVoucherDetails" />
           </AssociationSet>
           <AssociationSet Name="AuthRole" Association="IMEModel.AuthRole">
             <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
@@ -5097,6 +5306,7 @@
           <NavigationProperty Name="PDCReceivableMasters" Relationship="IMEModel.FK__PDCReceiv__ledge__438BFA74" FromRole="AccountLedger" ToRole="PDCReceivableMaster" />
           <NavigationProperty Name="ReceiptDetails" Relationship="IMEModel.FK__ReceiptDe__ledge__67C95AEA" FromRole="AccountLedger" ToRole="ReceiptDetail1" />
           <NavigationProperty Name="ReceiptDetails1" Relationship="IMEModel.FK__ReceiptDe__ledge__6B99EBCE" FromRole="AccountLedger" ToRole="ReceiptDetail" />
+          <NavigationProperty Name="SalaryVoucherMasters" Relationship="IMEModel.FK__SalaryVou__ledge__76177A41" FromRole="AccountLedger" ToRole="SalaryVoucherMaster" />
         </EntityType>
         <EntityType Name="AdvancePayment">
           <Key>
@@ -5572,6 +5782,7 @@
           <NavigationProperty Name="PDCClearanceMasters" Relationship="IMEModel.FK__PDCCleara__finan__4D1564AE" FromRole="FinancialYear" ToRole="PDCClearanceMaster" />
           <NavigationProperty Name="PDCPayableMasters" Relationship="IMEModel.FK__PDCPayabl__finan__2CA8951C" FromRole="FinancialYear" ToRole="PDCPayableMaster" />
           <NavigationProperty Name="PDCReceivableMasters" Relationship="IMEModel.FK__PDCReceiv__finan__4668671F" FromRole="FinancialYear" ToRole="PDCReceivableMaster" />
+          <NavigationProperty Name="SalaryVoucherMasters" Relationship="IMEModel.FK__SalaryVou__finan__733B0D96" FromRole="FinancialYear" ToRole="SalaryVoucherMaster" />
         </EntityType>
         <EntityType Name="Hazardou">
           <Key>
@@ -5698,6 +5909,23 @@
           <Property Name="CurrentFinancialYear" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="Currency" Relationship="IMEModel.FK__Managemen__Defau__253C7D7E" FromRole="Management" ToRole="Currency" />
           <NavigationProperty Name="FinancialYear" Relationship="IMEModel.FK__Managemen__Curre__338A9CD5" FromRole="Management" ToRole="FinancialYear" />
+        </EntityType>
+        <EntityType Name="Master">
+          <Key>
+            <PropertyRef Name="masterId" />
+          </Key>
+          <Property Name="masterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="formName" Type="Int32" />
+          <Property Name="isTwoLineForHedder" Type="Boolean" />
+          <Property Name="isTwoLineForDetails" Type="Boolean" />
+          <Property Name="pageSize1" Type="Int32" />
+          <Property Name="pageSizeOther" Type="Int32" />
+          <Property Name="blankLneForFooter" Type="Int32" />
+          <Property Name="footerLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="lineCountBetweenTwo" Type="Int32" />
+          <Property Name="pitch" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="condensed" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="lineCountAfterPrint" Type="Int32" />
         </EntityType>
         <EntityType Name="MonthlySalary">
           <Key>
@@ -6153,6 +6381,27 @@
           <Property Name="Height" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="GrossWeight" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="SalaryVoucherMaster">
+          <Key>
+            <PropertyRef Name="salaryVoucherMasterId" />
+          </Key>
+          <Property Name="salaryVoucherMasterId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="voucherNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="invoiceNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="month" Type="DateTime" Precision="3" />
+          <Property Name="totalAmount" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="suffixPrefixId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__SalaryVou__ledge__76177A41" FromRole="SalaryVoucherMaster" ToRole="AccountLedger" />
+          <NavigationProperty Name="FinancialYear" Relationship="IMEModel.FK__SalaryVou__finan__733B0D96" FromRole="SalaryVoucherMaster" ToRole="FinancialYear" />
+          <NavigationProperty Name="SalaryVoucherDetails" Relationship="IMEModel.FK__SalaryVou__salar__77FFC2B3" FromRole="SalaryVoucherMaster" ToRole="SalaryVoucherDetail" />
+          <NavigationProperty Name="SuffixPrefix" Relationship="IMEModel.FK__SalaryVou__suffi__75235608" FromRole="SalaryVoucherMaster" ToRole="SuffixPrefix" />
+          <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__SalaryVou__vouch__742F31CF" FromRole="SalaryVoucherMaster" ToRole="VoucherType" />
+        </EntityType>
         <EntityType Name="SaleOrder">
           <Key>
             <PropertyRef Name="SaleOrderNo" />
@@ -6184,6 +6433,8 @@
           <Property Name="DiscOnSubtotal" Type="Decimal" Precision="20" Scale="4" />
           <Property Name="ExtraCharges" Type="Decimal" Precision="20" Scale="4" />
           <Property Name="TotalMargin" Type="Decimal" Precision="20" Scale="4" />
+          <Property Name="VoucherId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="VoucherTypeId" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="Currency" Relationship="IMEModel.FK__SaleOrder__curre__73A521EA" FromRole="SaleOrder" ToRole="Currency" />
           <NavigationProperty Name="Customer" Relationship="IMEModel.FK__SaleOrder__Custo__1CDC41A7" FromRole="SaleOrder" ToRole="Customer" />
           <NavigationProperty Name="CustomerAddress" Relationship="IMEModel.FK__SaleOrder__Deliv__21A0F6C4" FromRole="SaleOrder" ToRole="CustomerAddress" />
@@ -6196,6 +6447,7 @@
           <NavigationProperty Name="PurchaseOrderDetails" Relationship="IMEModel.FK__PurchaseO__SaleO__46D27B73" FromRole="SaleOrder" ToRole="PurchaseOrderDetail" />
           <NavigationProperty Name="Worker" Relationship="IMEModel.FK__SaleOrder__Repre__22951AFD" FromRole="SaleOrder" ToRole="Worker" />
           <NavigationProperty Name="SaleOrderDetails" Relationship="IMEModel.FK__SaleOrder__SaleO__0B7CAB7B" FromRole="SaleOrder" ToRole="SaleOrderDetail" />
+          <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__SaleOrder__Vouch__705EA0EB" FromRole="SaleOrder" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="SaleOrderDetail">
           <Key>
@@ -6296,6 +6548,7 @@
           <NavigationProperty Name="PDCClearanceMasters" Relationship="IMEModel.FK__PDCCleara__suffi__4944D3CA" FromRole="SuffixPrefix" ToRole="PDCClearanceMaster" />
           <NavigationProperty Name="PDCPayableMasters" Relationship="IMEModel.FK__PDCPayabl__suffi__28D80438" FromRole="SuffixPrefix" ToRole="PDCPayableMaster" />
           <NavigationProperty Name="PDCReceivableMasters" Relationship="IMEModel.FK__PDCReceiv__suffi__4297D63B" FromRole="SuffixPrefix" ToRole="PDCReceivableMaster" />
+          <NavigationProperty Name="SalaryVoucherMasters" Relationship="IMEModel.FK__SalaryVou__suffi__75235608" FromRole="SuffixPrefix" ToRole="SalaryVoucherMaster" />
           <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__SuffixPre__vouch__7740A8A4" FromRole="SuffixPrefix" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="SuperDisk">
@@ -6613,6 +6866,8 @@
           <NavigationProperty Name="PDCClearanceMasters" Relationship="IMEModel.FK__PDCCleara__vouch__4B2D1C3C" FromRole="VoucherType" ToRole="PDCClearanceMaster" />
           <NavigationProperty Name="PDCPayableMasters" Relationship="IMEModel.FK__PDCPayabl__vouch__2BB470E3" FromRole="VoucherType" ToRole="PDCPayableMaster" />
           <NavigationProperty Name="PDCReceivableMasters" Relationship="IMEModel.FK__PDCReceiv__vouch__457442E6" FromRole="VoucherType" ToRole="PDCReceivableMaster" />
+          <NavigationProperty Name="SalaryVoucherMasters" Relationship="IMEModel.FK__SalaryVou__vouch__742F31CF" FromRole="VoucherType" ToRole="SalaryVoucherMaster" />
+          <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SaleOrder__Vouch__705EA0EB" FromRole="VoucherType" ToRole="SaleOrder" />
           <NavigationProperty Name="SuffixPrefixes" Relationship="IMEModel.FK__SuffixPre__vouch__7740A8A4" FromRole="VoucherType" ToRole="SuffixPrefix" />
           <NavigationProperty Name="VoucherTypeTaxes" Relationship="IMEModel.FK__VoucherTy__vouch__69279377" FromRole="VoucherType" ToRole="VoucherTypeTax" />
         </EntityType>
@@ -6663,7 +6918,24 @@
           <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SaleOrder__Repre__22951AFD" FromRole="Worker" ToRole="SaleOrder" />
           <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__accoun__2DB1C7EE" FromRole="Worker" ToRole="Supplier" />
           <NavigationProperty Name="Suppliers1" Relationship="IMEModel.FK__Supplier__repres__65370702" FromRole="Worker" ToRole="Supplier" />
+          <NavigationProperty Name="SalaryVoucherDetails" Relationship="IMEModel.FK__SalaryVou__emplo__78F3E6EC" FromRole="Worker" ToRole="SalaryVoucherDetail" />
           <NavigationProperty Name="AuthorizationValues" Relationship="IMEModel.UserAuthorization" FromRole="Worker" ToRole="AuthorizationValue" />
+        </EntityType>
+        <EntityType Name="SalaryVoucherDetail">
+          <Key>
+            <PropertyRef Name="salaryVoucherDetailsId" />
+          </Key>
+          <Property Name="salaryVoucherDetailsId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="salaryVoucherMasterId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="employeeId" Type="Int32" />
+          <Property Name="bonus" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="deduction" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="advance" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="lop" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="salary" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SalaryVoucherMaster" Relationship="IMEModel.FK__SalaryVou__salar__77FFC2B3" FromRole="SalaryVoucherDetail" ToRole="SalaryVoucherMaster" />
+          <NavigationProperty Name="Worker" Relationship="IMEModel.FK__SalaryVou__emplo__78F3E6EC" FromRole="SalaryVoucherDetail" ToRole="Worker" />
         </EntityType>
         <Association Name="FK__AccountLe__accou__5E74FADA">
           <End Type="IMEModel.AccountGroup" Role="AccountGroup" Multiplicity="0..1" />
@@ -6841,6 +7113,18 @@
               <PropertyRef Name="ledgerId" />
             </Principal>
             <Dependent Role="ReceiptDetail">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalaryVou__ledge__76177A41">
+          <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="0..1" />
+          <End Type="IMEModel.SalaryVoucherMaster" Role="SalaryVoucherMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="SalaryVoucherMaster">
               <PropertyRef Name="ledgerId" />
             </Dependent>
           </ReferentialConstraint>
@@ -7721,6 +8005,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__SalaryVou__finan__733B0D96">
+          <End Type="IMEModel.FinancialYear" Role="FinancialYear" Multiplicity="0..1" />
+          <End Type="IMEModel.SalaryVoucherMaster" Role="SalaryVoucherMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinancialYear">
+              <PropertyRef Name="financialYearId" />
+            </Principal>
+            <Dependent Role="SalaryVoucherMaster">
+              <PropertyRef Name="financialYearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__ItemNote__NoteID__2B0A656D">
           <End Type="IMEModel.Note" Role="Note" Multiplicity="0..1" />
           <End Type="IMEModel.ItemNote" Role="ItemNote" Multiplicity="*" />
@@ -8165,6 +8461,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__SalaryVou__salar__77FFC2B3">
+          <End Type="IMEModel.SalaryVoucherMaster" Role="SalaryVoucherMaster" Multiplicity="0..1" />
+          <End Type="IMEModel.SalaryVoucherDetail" Role="SalaryVoucherDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalaryVoucherMaster">
+              <PropertyRef Name="salaryVoucherMasterId" />
+            </Principal>
+            <Dependent Role="SalaryVoucherDetail">
+              <PropertyRef Name="salaryVoucherMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalaryVou__suffi__75235608">
+          <End Type="IMEModel.SuffixPrefix" Role="SuffixPrefix" Multiplicity="0..1" />
+          <End Type="IMEModel.SalaryVoucherMaster" Role="SalaryVoucherMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SuffixPrefix">
+              <PropertyRef Name="suffixprefixId" />
+            </Principal>
+            <Dependent Role="SalaryVoucherMaster">
+              <PropertyRef Name="suffixPrefixId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalaryVou__vouch__742F31CF">
+          <End Type="IMEModel.VoucherType" Role="VoucherType" Multiplicity="0..1" />
+          <End Type="IMEModel.SalaryVoucherMaster" Role="SalaryVoucherMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="SalaryVoucherMaster">
+              <PropertyRef Name="voucherTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__SaleOrder__Repre__22951AFD">
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="1" />
           <End Type="IMEModel.SaleOrder" Role="SaleOrder" Multiplicity="*" />
@@ -8186,6 +8518,18 @@
             </Principal>
             <Dependent Role="SaleOrderDetail">
               <PropertyRef Name="SaleOrderNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SaleOrder__Vouch__705EA0EB">
+          <End Type="IMEModel.VoucherType" Role="VoucherType" Multiplicity="0..1" />
+          <End Type="IMEModel.SaleOrder" Role="SaleOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="SaleOrder">
+              <PropertyRef Name="VoucherTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -8438,6 +8782,18 @@
             </Principal>
             <Dependent Role="VoucherTypeTax">
               <PropertyRef Name="voucherTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalaryVou__emplo__78F3E6EC">
+          <End Type="IMEModel.Worker" Role="Worker" Multiplicity="0..1" />
+          <End Type="IMEModel.SalaryVoucherDetail" Role="SalaryVoucherDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerID" />
+            </Principal>
+            <Dependent Role="SalaryVoucherDetail">
+              <PropertyRef Name="employeeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -9092,6 +9448,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Masters">
+            <EntityTypeMapping TypeName="IMEModel.Master">
+              <MappingFragment StoreEntitySet="Master">
+                <ScalarProperty Name="lineCountAfterPrint" ColumnName="lineCountAfterPrint" />
+                <ScalarProperty Name="condensed" ColumnName="condensed" />
+                <ScalarProperty Name="pitch" ColumnName="pitch" />
+                <ScalarProperty Name="lineCountBetweenTwo" ColumnName="lineCountBetweenTwo" />
+                <ScalarProperty Name="footerLocation" ColumnName="footerLocation" />
+                <ScalarProperty Name="blankLneForFooter" ColumnName="blankLneForFooter" />
+                <ScalarProperty Name="pageSizeOther" ColumnName="pageSizeOther" />
+                <ScalarProperty Name="pageSize1" ColumnName="pageSize1" />
+                <ScalarProperty Name="isTwoLineForDetails" ColumnName="isTwoLineForDetails" />
+                <ScalarProperty Name="isTwoLineForHedder" ColumnName="isTwoLineForHedder" />
+                <ScalarProperty Name="formName" ColumnName="formName" />
+                <ScalarProperty Name="masterId" ColumnName="masterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="MonthlySalaries">
             <EntityTypeMapping TypeName="IMEModel.MonthlySalary">
               <MappingFragment StoreEntitySet="MonthlySalary">
@@ -9508,9 +9882,28 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="SalaryVoucherMasters">
+            <EntityTypeMapping TypeName="IMEModel.SalaryVoucherMaster">
+              <MappingFragment StoreEntitySet="SalaryVoucherMaster">
+                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="salaryVoucherMasterId" ColumnName="salaryVoucherMasterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="SaleOrders">
             <EntityTypeMapping TypeName="IMEModel.SaleOrder">
               <MappingFragment StoreEntitySet="SaleOrder">
+                <ScalarProperty Name="VoucherTypeId" ColumnName="VoucherTypeId" />
+                <ScalarProperty Name="VoucherId" ColumnName="VoucherId" />
                 <ScalarProperty Name="TotalMargin" ColumnName="TotalMargin" />
                 <ScalarProperty Name="ExtraCharges" ColumnName="ExtraCharges" />
                 <ScalarProperty Name="DiscOnSubtotal" ColumnName="DiscOnSubtotal" />
@@ -9940,6 +10333,21 @@
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="NameLastName" ColumnName="NameLastName" />
                 <ScalarProperty Name="WorkerID" ColumnName="WorkerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalaryVoucherDetails">
+            <EntityTypeMapping TypeName="IMEModel.SalaryVoucherDetail">
+              <MappingFragment StoreEntitySet="SalaryVoucherDetail">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="lop" ColumnName="lop" />
+                <ScalarProperty Name="advance" ColumnName="advance" />
+                <ScalarProperty Name="deduction" ColumnName="deduction" />
+                <ScalarProperty Name="bonus" ColumnName="bonus" />
+                <ScalarProperty Name="employeeId" ColumnName="employeeId" />
+                <ScalarProperty Name="salaryVoucherMasterId" ColumnName="salaryVoucherMasterId" />
+                <ScalarProperty Name="salaryVoucherDetailsId" ColumnName="salaryVoucherDetailsId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
