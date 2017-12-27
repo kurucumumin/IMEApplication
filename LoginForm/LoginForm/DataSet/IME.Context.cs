@@ -68,6 +68,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<LoaderDate> LoaderDates { get; set; }
         public virtual DbSet<Mail> Mails { get; set; }
         public virtual DbSet<Management> Managements { get; set; }
+        public virtual DbSet<Master> Masters { get; set; }
         public virtual DbSet<MonthlySalary> MonthlySalaries { get; set; }
         public virtual DbSet<Note> Notes { get; set; }
         public virtual DbSet<OnSale> OnSales { get; set; }

@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
+using System.Windows.Forms;
 
 namespace LoginForm.Account.Services
 {
@@ -134,6 +134,154 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
             return dtbl;
+        }
+
+        public decimal DebitNoteMasterGetMaxPlusOne(decimal decVoucherTypeId)
+        {
+            IMEEntities IME = new IMEEntities();
+            decimal max = 0;
+            try
+            {
+                decimal? adapter = (from dn in IME.DebitNoteMasters.Where(p => p.voucherTypeId == decVoucherTypeId)
+                                    select new { dn.voucherNo }).Max(x => Convert.ToDecimal(x.voucherNo));
+
+                max = (adapter != null) ? (decimal)adapter : 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return max + 1;
+        }
+
+        public int DebitNoteMasterGetMax(decimal decVoucherTypeId)
+        {
+            IMEEntities IME = new IMEEntities();
+            int max = 0;
+            try
+            {
+                int? adapter = (from dn in IME.DebitNoteMasters.Where(p => p.voucherTypeId == decVoucherTypeId)
+                                    select new { dn.voucherNo }).Max(x => Convert.ToInt32(x.voucherNo));
+
+                max = (adapter != null) ? (int)adapter : 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return max;
+        }
+
+        public bool DebitNoteVoucherCheckExistance(string strInvoiceNo, decimal VoucherTypeId, decimal decMasterId)
+        {
+            IMEEntities IME = new IMEEntities();
+            bool trueOrfalse = false;
+            try
+            {
+                decimal? adapter = (from dn in IME.DebitNoteMasters.Where(p => p.invoiceNo == strInvoiceNo && p.voucherTypeId==VoucherTypeId && p.debitNoteMasterId !=decMasterId)
+                                select new { dn.invoiceNo }).Count();
+                trueOrfalse = (adapter >0) ? true : false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return trueOrfalse;
+        }
+
+        public void DebitNoteVoucherDelete(decimal decDebitNoteMasterId, decimal decVoucherTypeId, string strVoucherNo)
+        {
+            IMEEntities db = new IMEEntities();
+
+            try
+            {
+                List<PartyBalance> ListPb = db.PartyBalances.Where(x => (x.voucherTypeId == decVoucherTypeId && x.referenceType == "New") || (x.againstVoucherTypeId == decVoucherTypeId && x.againstVoucherNo == strVoucherNo && x.referenceType == "Against") || (x.voucherTypeId == decVoucherTypeId && x.voucherNo == strVoucherNo && x.referenceType == "OnAccount")).ToList();
+                db.PartyBalances.RemoveRange(ListPb);
+
+                decimal? ledgerPostID = db.LedgerPostings.Where(x => x.voucherTypeId == decVoucherTypeId && x.voucherNo == strVoucherNo).FirstOrDefault().ledgerPostingId;
+
+                List<BankReconciliation> listBr = db.BankReconciliations.Where(x => x.ledgerPostingId == ledgerPostID).ToList();
+                db.BankReconciliations.RemoveRange(listBr);
+
+                List<LedgerPosting> listLp = db.LedgerPostings.Where(x => x.voucherTypeId == decVoucherTypeId && x.voucherNo == strVoucherNo).ToList();
+                db.LedgerPostings.RemoveRange(listLp);
+
+                DebitNoteDetail dn = db.DebitNoteDetails.Where(x => x.debitNoteMasterId == decDebitNoteMasterId).FirstOrDefault();
+                db.DebitNoteDetails.Remove(dn);
+
+                DebitNoteMaster dm = db.DebitNoteMasters.Where(x => x.debitNoteMasterId == decDebitNoteMasterId).FirstOrDefault();
+                db.DebitNoteMasters.Remove(dm);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("DNM:2" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        public decimal DebitNoteMasterAdd(DebitNoteMaster debitnotemasterinfo)
+        {
+            DebitNoteMaster pdc = debitnotemasterinfo;
+            decimal decDebitNoteMasterId = 0;
+            try
+            {
+                new IMEEntities().DebitNoteMasters.Add(pdc);
+                decDebitNoteMasterId = pdc.debitNoteMasterId;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decDebitNoteMasterId;
+
+
+            
+        }
+
+        public decimal DebitNoteMasterEdit(DebitNoteMaster debitnotemasterinfo)
+        {
+            IMEEntities IME = new IMEEntities();
+            decimal decEffectRow = 0;
+            try
+            {
+                DebitNoteMaster debitnotemaster = IME.DebitNoteMasters.Where(a => debitnotemasterinfo.debitNoteMasterId == a.debitNoteMasterId).FirstOrDefault();
+
+
+                debitnotemaster.voucherNo = debitnotemasterinfo.voucherNo;
+                debitnotemaster.invoiceNo = debitnotemasterinfo.invoiceNo;
+                debitnotemaster.suffixPrefixId = debitnotemasterinfo.suffixPrefixId;
+                debitnotemaster.date = debitnotemasterinfo.date;
+                debitnotemaster.userId = debitnotemasterinfo.userId;
+                debitnotemaster.totalAmount = debitnotemasterinfo.totalAmount;
+                debitnotemaster.narration = debitnotemasterinfo.narration;
+                debitnotemaster.financialYearId = debitnotemasterinfo.financialYearId;
+                debitnotemaster.voucherTypeId = debitnotemasterinfo.voucherTypeId;
+
+                IME.SaveChanges();
+
+                decEffectRow = 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decEffectRow;
+        }
+
+        public DebitNoteMaster DebitNoteMasterView(decimal debitNoteMasterId)
+        {
+            IMEEntities IME = new IMEEntities();
+            DebitNoteMaster debitnotemasterinfo = new DebitNoteMaster();
+            
+            try
+            {
+                debitnotemasterinfo = IME.DebitNoteMasters.Where(rm => rm.debitNoteMasterId == debitNoteMasterId).FirstOrDefault();
+            }
+            
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return debitnotemasterinfo;
         }
     }
 }

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Windows;
+using System.Windows.Forms;
 
 namespace LoginForm.Account.Services
 {
@@ -78,6 +78,7 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
         }
+
         public void LedgerPostingDeleteByVoucherNoVoucherTypeIdAndLedgerId(string strVoucherNo, decimal decVoucherTypeId, decimal decLedgerId)
         {
             IMEEntities db = new IMEEntities();
@@ -93,6 +94,40 @@ namespace LoginForm.Account.Services
             }
         }
 
+        public void LedgerPostDeleteByDetailsId(decimal decDetailsId, string strVoucherNo, decimal decVoucherTypeId)
+        {
+            IMEEntities IME = new IMEEntities();
 
+            try
+            {
+                decimal ledgerPostingId = IME.LedgerPostings.Where(x => x.voucherNo == strVoucherNo && x.voucherTypeId == decVoucherTypeId && x.detailsId == decDetailsId).FirstOrDefault().ledgerPostingId;
+
+                List<LedgerPosting> listLp = IME.LedgerPostings.Where(x => x.voucherNo == strVoucherNo && x.voucherTypeId == decVoucherTypeId && x.detailsId==decDetailsId).ToList();
+                IME.LedgerPostings.RemoveRange(listLp);
+
+                List<BankReconciliation> listBr = IME.BankReconciliations.Where(x => x.ledgerPostingId == ledgerPostingId).ToList();
+                IME.BankReconciliations.RemoveRange(listBr);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public decimal LedgerPostingIdFromDetailsId(decimal decDetailsId, string strVoucherNo, decimal decVoucherTypeId)
+        {
+            IMEEntities IME = new IMEEntities();
+            decimal decLedgerPostingId = 0;
+            
+            try
+            {
+                decLedgerPostingId = IME.LedgerPostings.Where(x => x.detailsId == decDetailsId && x.voucherNo == strVoucherNo && x.voucherTypeId == decVoucherTypeId).FirstOrDefault().ledgerPostingId;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("LPSP:1" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            return decLedgerPostingId;
+        }
     }
 }

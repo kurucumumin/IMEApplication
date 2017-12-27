@@ -70,6 +70,7 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
         }
+
         public void PartyBalanceDeleteByVoucherTypeVoucherNoAndReferenceType(string strVocuherNumber, decimal decVoucherTypeId)
         {
             IMEEntities db = new IMEEntities();
@@ -290,6 +291,7 @@ namespace LoginForm.Account.Services
             }
             return strNature;
         }
+
         public DataTable AccountLedgerViewAll()
         {
             IMEEntities db = new IMEEntities();
@@ -434,6 +436,7 @@ namespace LoginForm.Account.Services
             }
             return isSundrycredit;
         }
+
         public bool AccountGroupIdCheck(string strLedgerName)
         {
             IMEEntities db = new IMEEntities();
@@ -524,6 +527,34 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
             return isSundryDebit;
+        }
+
+        public decimal CheckLedgerBalance(decimal decledgerId)
+        {
+            IMEEntities IME = new IMEEntities();
+            decimal inBalance = 0;
+            decimal inBalance1 = 0;
+            decimal inBalance2 = 0;
+            try
+            {
+                decimal? adapter = (from dn in IME.LedgerPostings.Where(p => p.ledgerId == decledgerId)
+                                    select new { dn.debit }).Sum(x => Convert.ToDecimal(x.debit));
+
+                decimal? adapter2 = (from dn in IME.LedgerPostings.Where(p => p.ledgerId == decledgerId)
+                                    select new { dn.credit }).Sum(x => Convert.ToDecimal(x.credit));
+
+                
+
+                inBalance1 = (adapter != null) ? (decimal)adapter : 0;
+                inBalance2 = (adapter2 != null) ? (decimal)adapter2 : 0;
+                inBalance = inBalance1 - inBalance2;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return inBalance;
         }
     }
 }

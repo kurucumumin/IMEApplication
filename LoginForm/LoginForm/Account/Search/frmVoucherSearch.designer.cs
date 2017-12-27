@@ -45,6 +45,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dgvVoucherSearch = new System.Windows.Forms.DataGridView();
+            this.btnViewDetails = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.txtFromDate = new System.Windows.Forms.TextBox();
+            this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpToDate = new System.Windows.Forms.DateTimePicker();
+            this.txtToDate = new System.Windows.Forms.TextBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VoucherType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,42 +59,34 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ledgerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnViewDetails = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.txtFromDate = new System.Windows.Forms.TextBox();
-            this.dtpFromDate = new System.Windows.Forms.DateTimePicker();
-            this.dtpToDate = new System.Windows.Forms.DateTimePicker();
-            this.txtToDate = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVoucherSearch)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.SystemColors.Control;
+
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.ForeColor = System.Drawing.Color.Black;
+            this.btnSearch.ForeColor = System.Drawing.Color.White;
             this.btnSearch.Location = new System.Drawing.Point(578, 90);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(85, 27);
             this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             this.btnSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnSearch_KeyDown);
             // 
             // btnReset
             // 
-            this.btnReset.BackColor = System.Drawing.SystemColors.Control;
             this.btnReset.FlatAppearance.BorderSize = 0;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset.ForeColor = System.Drawing.Color.Black;
+            this.btnReset.ForeColor = System.Drawing.Color.White;
             this.btnReset.Location = new System.Drawing.Point(669, 90);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(85, 27);
             this.btnReset.TabIndex = 7;
             this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             this.btnReset.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnReset_KeyDown);
             // 
@@ -246,6 +244,75 @@
             this.dgvVoucherSearch.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVoucherSearch_CellDoubleClick);
             this.dgvVoucherSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvVoucherSearch_KeyDown);
             // 
+            // btnViewDetails
+            // 
+            this.btnViewDetails.FlatAppearance.BorderSize = 0;
+            this.btnViewDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewDetails.ForeColor = System.Drawing.Color.White;
+            this.btnViewDetails.Location = new System.Drawing.Point(606, 560);
+            this.btnViewDetails.Name = "btnViewDetails";
+            this.btnViewDetails.Size = new System.Drawing.Size(85, 27);
+            this.btnViewDetails.TabIndex = 8;
+            this.btnViewDetails.Text = "View Details";
+            this.btnViewDetails.UseVisualStyleBackColor = true;
+            this.btnViewDetails.Click += new System.EventHandler(this.btnViewDetails_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(697, 560);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(85, 27);
+            this.btnClose.TabIndex = 1187;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // txtFromDate
+            // 
+            this.txtFromDate.Location = new System.Drawing.Point(126, 15);
+            this.txtFromDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtFromDate.Name = "txtFromDate";
+            this.txtFromDate.Size = new System.Drawing.Size(180, 20);
+            this.txtFromDate.TabIndex = 0;
+            this.txtFromDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFromDate_KeyDown);
+            this.txtFromDate.Leave += new System.EventHandler(this.txtFromDate_Leave);
+            // 
+            // dtpFromDate
+            // 
+            this.dtpFromDate.CustomFormat = "dd-MMM-yyyy";
+            this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFromDate.Location = new System.Drawing.Point(304, 15);
+            this.dtpFromDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.dtpFromDate.Name = "dtpFromDate";
+            this.dtpFromDate.Size = new System.Drawing.Size(22, 20);
+            this.dtpFromDate.TabIndex = 1193;
+            this.dtpFromDate.ValueChanged += new System.EventHandler(this.dtpFromDate_ValueChanged);
+            // 
+            // dtpToDate
+            // 
+            this.dtpToDate.CustomFormat = "dd-MMM-yyyy";
+            this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpToDate.Location = new System.Drawing.Point(757, 15);
+            this.dtpToDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.dtpToDate.Name = "dtpToDate";
+            this.dtpToDate.Size = new System.Drawing.Size(22, 20);
+            this.dtpToDate.TabIndex = 1195;
+            this.dtpToDate.ValueChanged += new System.EventHandler(this.dtpToDate_ValueChanged);
+            // 
+            // txtToDate
+            // 
+            this.txtToDate.Location = new System.Drawing.Point(578, 15);
+            this.txtToDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtToDate.Name = "txtToDate";
+            this.txtToDate.Size = new System.Drawing.Size(180, 20);
+            this.txtToDate.TabIndex = 1;
+            this.txtToDate.TextChanged += new System.EventHandler(this.txtToDate_TextChanged);
+            this.txtToDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtToDate_KeyDown);
+            this.txtToDate.Leave += new System.EventHandler(this.txtToDate_Leave);
+            // 
             // Column1
             // 
             this.Column1.DataPropertyName = "Sl No";
@@ -312,77 +379,6 @@
             this.amount.Name = "amount";
             this.amount.ReadOnly = true;
             this.amount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // btnViewDetails
-            // 
-            this.btnViewDetails.BackColor = System.Drawing.SystemColors.Control;
-            this.btnViewDetails.FlatAppearance.BorderSize = 0;
-            this.btnViewDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewDetails.ForeColor = System.Drawing.Color.Black;
-            this.btnViewDetails.Location = new System.Drawing.Point(606, 560);
-            this.btnViewDetails.Name = "btnViewDetails";
-            this.btnViewDetails.Size = new System.Drawing.Size(85, 27);
-            this.btnViewDetails.TabIndex = 8;
-            this.btnViewDetails.Text = "View Details";
-            this.btnViewDetails.UseVisualStyleBackColor = false;
-            this.btnViewDetails.Click += new System.EventHandler(this.btnViewDetails_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.SystemColors.Control;
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnClose.Location = new System.Drawing.Point(697, 560);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(85, 27);
-            this.btnClose.TabIndex = 1187;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // txtFromDate
-            // 
-            this.txtFromDate.Location = new System.Drawing.Point(126, 15);
-            this.txtFromDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.txtFromDate.Name = "txtFromDate";
-            this.txtFromDate.Size = new System.Drawing.Size(180, 20);
-            this.txtFromDate.TabIndex = 0;
-            this.txtFromDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFromDate_KeyDown);
-            this.txtFromDate.Leave += new System.EventHandler(this.txtFromDate_Leave);
-            // 
-            // dtpFromDate
-            // 
-            this.dtpFromDate.CustomFormat = "dd-MMM-yyyy";
-            this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFromDate.Location = new System.Drawing.Point(304, 15);
-            this.dtpFromDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.dtpFromDate.Name = "dtpFromDate";
-            this.dtpFromDate.Size = new System.Drawing.Size(22, 20);
-            this.dtpFromDate.TabIndex = 1193;
-            this.dtpFromDate.ValueChanged += new System.EventHandler(this.dtpFromDate_ValueChanged);
-            // 
-            // dtpToDate
-            // 
-            this.dtpToDate.CustomFormat = "dd-MMM-yyyy";
-            this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpToDate.Location = new System.Drawing.Point(757, 15);
-            this.dtpToDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.dtpToDate.Name = "dtpToDate";
-            this.dtpToDate.Size = new System.Drawing.Size(22, 20);
-            this.dtpToDate.TabIndex = 1195;
-            this.dtpToDate.ValueChanged += new System.EventHandler(this.dtpToDate_ValueChanged);
-            // 
-            // txtToDate
-            // 
-            this.txtToDate.Location = new System.Drawing.Point(578, 15);
-            this.txtToDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.txtToDate.Name = "txtToDate";
-            this.txtToDate.Size = new System.Drawing.Size(180, 20);
-            this.txtToDate.TabIndex = 1;
-            this.txtToDate.TextChanged += new System.EventHandler(this.txtToDate_TextChanged);
-            this.txtToDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtToDate_KeyDown);
-            this.txtToDate.Leave += new System.EventHandler(this.txtToDate_Leave);
             // 
             // frmVoucherSearch
             // 
