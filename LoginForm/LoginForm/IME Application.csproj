@@ -162,9 +162,7 @@
     <Compile Include="Account\Master\frmVoucherType.designer.cs">
       <DependentUpon>frmVoucherType.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\PayRoll\frmAdvancePayment.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Account\PayRoll\frmAdvancePayment.cs" />
     <Compile Include="Account\PayRoll\frmAdvancePayment.designer.cs">
       <DependentUpon>frmAdvancePayment.cs</DependentUpon>
     </Compile>
@@ -192,12 +190,6 @@
     <Compile Include="Account\Register\frmDebitNoteRegister.designer.cs">
       <DependentUpon>frmDebitNoteRegister.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\Register\frmJournalRegister.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Account\Register\frmJournalRegister.designer.cs">
-      <DependentUpon>frmJournalRegister.cs</DependentUpon>
-    </Compile>
     <Compile Include="Account\Register\frmPaymentRegister.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,18 +214,24 @@
     <Compile Include="Account\Register\frmReceiptRegister.designer.cs">
       <DependentUpon>frmReceiptRegister.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\Search\frmVoucherSearch.cs" />
+    <Compile Include="Account\Search\frmVoucherSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Account\Search\frmVoucherSearch.designer.cs">
       <DependentUpon>frmVoucherSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\Services\AccountGroupSP.cs" />
     <Compile Include="Account\Services\AccountLedgerSP.cs" />
     <Compile Include="Account\Services\AreaSP.cs" />
+    <Compile Include="Account\Services\BankReconciliationSP.cs" />
     <Compile Include="Account\Services\CreditNoteMasterSP.cs" />
+    <Compile Include="Account\Services\DebitNoteDetailsInfo.cs" />
+    <Compile Include="Account\Services\DebitNoteDetailsSP.cs" />
     <Compile Include="Account\Services\DebitNoteMasterSP.cs" />
     <Compile Include="Account\Services\ExchangeRateSP.cs" />
     <Compile Include="Account\Services\FinancialYearSP.cs" />
     <Compile Include="Account\Services\LedgerPostingSP.cs" />
+    <Compile Include="Account\Services\NumToText.cs" />
     <Compile Include="Account\Services\PartyBalanceSP.cs" />
     <Compile Include="Account\Services\PDCPayableMasterSP.cs" />
     <Compile Include="Account\Services\PricingLevelSP.cs" />
@@ -242,11 +240,11 @@
     <Compile Include="Account\Services\SuffixPrefixSP.cs" />
     <Compile Include="Account\Services\TransactionsGeneralFill.cs" />
     <Compile Include="Account\Services\VoucherTypeSP.cs" />
-    <Compile Include="Account\Transaction\frmJournalVoucher.cs">
+    <Compile Include="Account\Transaction\frmDebitNote.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Account\Transaction\frmJournalVoucher.designer.cs">
-      <DependentUpon>frmJournalVoucher.cs</DependentUpon>
+    <Compile Include="Account\Transaction\frmDebitNote.designer.cs">
+      <DependentUpon>frmDebitNote.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\Transaction\frmPdcPayable.cs">
       <SubType>Form</SubType>
@@ -375,9 +373,6 @@
     <Compile Include="DataSet\DualUse.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\Employee.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\ExchangeRate.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -427,6 +422,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Management.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Master.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\MonthlySalary.cs">
@@ -537,12 +535,6 @@
     <Compile Include="DataSet\SlidingPrice.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\sp_helpdiagrams_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\Stock.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -606,6 +598,7 @@
     <Compile Include="DataSet\Worker.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\WorkerApp.cs" />
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -886,9 +879,6 @@
     <EmbeddedResource Include="Account\Register\frmDebitNoteRegister.resx">
       <DependentUpon>frmDebitNoteRegister.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Account\Register\frmJournalRegister.resx">
-      <DependentUpon>frmJournalRegister.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Account\Register\frmPaymentRegister.resx">
       <DependentUpon>frmPaymentRegister.cs</DependentUpon>
     </EmbeddedResource>
@@ -904,8 +894,8 @@
     <EmbeddedResource Include="Account\Search\frmVoucherSearch.resx">
       <DependentUpon>frmVoucherSearch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Account\Transaction\frmJournalVoucher.resx">
-      <DependentUpon>frmJournalVoucher.cs</DependentUpon>
+    <EmbeddedResource Include="Account\Transaction\frmDebitNote.resx">
+      <DependentUpon>frmDebitNote.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmPdcPayable.resx">
       <DependentUpon>frmPdcPayable.cs</DependentUpon>
