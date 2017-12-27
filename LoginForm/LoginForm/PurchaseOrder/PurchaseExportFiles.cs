@@ -92,13 +92,11 @@ namespace LoginForm.PurchaseOrder
             {
                 txtMail.Text = txtMail.Text + txt[i] + "\r\n";
             }
-<<<<<<< HEAD
+
             filename = txtCreate.newTxt(txt, AccountNumber);
             groupBox2.Text = filename;
             lblPicture.Text = filename;
-=======
             txtCreate.newTxt(txt,AccountNumber);
->>>>>>> NebiDevelop
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -232,37 +230,11 @@ namespace LoginForm.PurchaseOrder
             Line1 = "FH" + COO + OrderDate + OrderTime + filler1;
             TXTList.Add(Line1);
             string Line2 = "";
-<<<<<<< HEAD
+
             AccountNumber = "0008828170";//accounting numarası
             int AccountNumberlength = AccountNumber.Length;
             for (int i = 0; i < 10 - AccountNumberlength; i++)
-=======
-//            Dubai Main
 
-
-
-//Bill to: 8828170  Ship to: 8828170
-
-
-
-//Abu Dhabi
-
-
-
-//Bill to: 8828170  Ship to: 11006496
-
-//(only ship to is different for Abu Dhabi)
-
-
-
-
-
-//Dubai 3rd party : 8894479
-
-            //IME.SaleOrders.Where(a=>a.SaleOrderNo==s).FirstOrDefault().
-             AccountNumber = "0008828170";//accounting numarası
-            for (int i = 0; i < 10- AccountNumber.Length; i++)
->>>>>>> NebiDevelop
             {
                 AccountNumber += " ";
             }
@@ -278,12 +250,9 @@ namespace LoginForm.PurchaseOrder
             string OrderNumber = "     ";
             string CustomerDistOrderReference = Convert.ToString(fiche);
             CustomerDistOrderReference = CustomerDistOrderReference+"/DB/"+DateTime.Now.ToString("MMM") +"/"+DateTime.Now.ToString("yy");
-<<<<<<< HEAD
             int CustomerDistOrderReferencelength = CustomerDistOrderReference.Length;
             for (int i = 0; i < 30- CustomerDistOrderReferencelength; i++)
-=======
-            for (int i = 0; i < 30- CustomerDistOrderReference.Length; i++)
->>>>>>> NebiDevelop
+
             {
                 CustomerDistOrderReference += " ";
             }
@@ -353,7 +322,7 @@ namespace LoginForm.PurchaseOrder
                 int adresslenght = adress.Length;
                 for (int i = 0; i < 148 - adresslenght; i++)
                 {
-                    filler1 = " ";
+                    filler1 = filler1 + " ";
                 }
                 Line4 = "C2" + adress + filler1;
                 TXTList.Add(Line4);
@@ -431,14 +400,10 @@ namespace LoginForm.PurchaseOrder
 
                 string PackType1 = "S";
                 string ProductDescription="";
-<<<<<<< HEAD
                 if (po.ItemDescription != null) ProductDescription = "";//item desc boş gönderiliyor
                 int ProductDescriptionlenght = ProductDescription.ToString().Length;
                 for (int i = 0; i < 40 - ProductDescriptionlenght; i++)
-=======
-                if(po.ItemDescription!=null)ProductDescription = "";//item desc boş gönderiliyor
-                for (int i = 0; i < 40 - ProductDescription.ToString().Length; i++)
->>>>>>> NebiDevelop
+
                 {
                     ProductDescription = " " + ProductDescription;
                 }

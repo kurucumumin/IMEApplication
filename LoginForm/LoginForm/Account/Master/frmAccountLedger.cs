@@ -878,26 +878,26 @@ namespace LoginForm
         /// </summary>
         /// <param name="frmadvancepayment"></param>
         /// //TODO OpenMiracle Function
-        //public void CallFromAdvancePayment(frmAdvancePayment frmadvancepayment)
-        //{
-        //    try
-        //    {
-        //        dgvAccountLedger.Enabled = false;
-        //        txtLedgerNameSearch.Enabled = false;
-        //        btnSearch.Enabled = false;
-        //        cmbGroupSearch.Enabled = false;
-        //        dgvAccountLedger.Enabled = false;
-        //        lblLedgerNameSearch.Enabled = false;
-        //        lblGroupSearch.Enabled = false;
-        //        this.frmAdvancePaymentobj = frmadvancepayment;
-        //        base.Show();
-        //        txtLedgerName.Focus();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("AL18:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromAdvancePayment(frmAdvancePayment frmadvancepayment)
+        {
+            try
+            {
+                dgvAccountLedger.Enabled = false;
+                txtLedgerNameSearch.Enabled = false;
+                btnSearch.Enabled = false;
+                cmbGroupSearch.Enabled = false;
+                dgvAccountLedger.Enabled = false;
+                lblLedgerNameSearch.Enabled = false;
+                lblGroupSearch.Enabled = false;
+                //this.frmAdvancePaymentobj = frmadvancepayment;
+                base.Show();
+                txtLedgerName.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL18:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to call this form from frmContraVoucher for creating new account ledger
         /// </summary>

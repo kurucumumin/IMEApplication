@@ -51,5 +51,11 @@ namespace LoginForm.CustomControls
             frmArea form = new frmArea();
             form.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frmJournalVoucher form = new frmJournalVoucher();
+            form.ShowDialog();
+        }
     }
 }

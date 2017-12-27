@@ -67,7 +67,9 @@
             this.panel23 = new System.Windows.Forms.Panel();
             this.panel22 = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.tableRightPanel.SuspendLayout();
+            this.panel17.SuspendLayout();
             this.panel16.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel14.SuspendLayout();
@@ -119,7 +121,7 @@
             this.tableRightPanel.Controls.Add(this.panel21, 2, 3);
             this.tableRightPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableRightPanel.Location = new System.Drawing.Point(0, 0);
-            this.tableRightPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableRightPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableRightPanel.Name = "tableRightPanel";
             this.tableRightPanel.RowCount = 5;
             this.tableRightPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
@@ -127,98 +129,99 @@
             this.tableRightPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableRightPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableRightPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableRightPanel.Size = new System.Drawing.Size(1000, 588);
+            this.tableRightPanel.Size = new System.Drawing.Size(750, 478);
             this.tableRightPanel.TabIndex = 3;
             // 
             // panel30
             // 
             this.panel30.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel30.Location = new System.Drawing.Point(3, 470);
-            this.panel30.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel30.Location = new System.Drawing.Point(2, 382);
+            this.panel30.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel30.Name = "panel30";
-            this.panel30.Size = new System.Drawing.Size(160, 116);
+            this.panel30.Size = new System.Drawing.Size(120, 94);
             this.panel30.TabIndex = 61;
             // 
             // panel29
             // 
             this.panel29.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel29.Location = new System.Drawing.Point(169, 470);
-            this.panel29.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel29.Location = new System.Drawing.Point(126, 382);
+            this.panel29.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel29.Name = "panel29";
-            this.panel29.Size = new System.Drawing.Size(160, 116);
+            this.panel29.Size = new System.Drawing.Size(120, 94);
             this.panel29.TabIndex = 60;
             // 
             // panel28
             // 
             this.panel28.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel28.Location = new System.Drawing.Point(667, 470);
-            this.panel28.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel28.Location = new System.Drawing.Point(498, 382);
+            this.panel28.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel28.Name = "panel28";
-            this.panel28.Size = new System.Drawing.Size(160, 116);
+            this.panel28.Size = new System.Drawing.Size(120, 94);
             this.panel28.TabIndex = 59;
             // 
             // panel27
             // 
             this.panel27.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel27.Location = new System.Drawing.Point(833, 470);
-            this.panel27.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel27.Location = new System.Drawing.Point(622, 382);
+            this.panel27.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel27.Name = "panel27";
-            this.panel27.Size = new System.Drawing.Size(164, 116);
+            this.panel27.Size = new System.Drawing.Size(126, 94);
             this.panel27.TabIndex = 58;
             // 
             // panel26
             // 
             this.panel26.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel26.Location = new System.Drawing.Point(335, 470);
-            this.panel26.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel26.Location = new System.Drawing.Point(250, 382);
+            this.panel26.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(160, 116);
+            this.panel26.Size = new System.Drawing.Size(120, 94);
             this.panel26.TabIndex = 57;
             // 
             // panel25
             // 
             this.panel25.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel25.Location = new System.Drawing.Point(501, 470);
-            this.panel25.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel25.Location = new System.Drawing.Point(374, 382);
+            this.panel25.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel25.Name = "panel25";
-            this.panel25.Size = new System.Drawing.Size(160, 116);
+            this.panel25.Size = new System.Drawing.Size(120, 94);
             this.panel25.TabIndex = 56;
             // 
             // panel20
             // 
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel20.Location = new System.Drawing.Point(169, 353);
-            this.panel20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel20.Location = new System.Drawing.Point(126, 287);
+            this.panel20.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel20.Name = "panel20";
-            this.panel20.Size = new System.Drawing.Size(160, 113);
+            this.panel20.Size = new System.Drawing.Size(120, 91);
             this.panel20.TabIndex = 51;
             // 
             // panel18
             // 
             this.panel18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel18.Location = new System.Drawing.Point(833, 236);
-            this.panel18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel18.Location = new System.Drawing.Point(622, 192);
+            this.panel18.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(164, 113);
+            this.panel18.Size = new System.Drawing.Size(126, 91);
             this.panel18.TabIndex = 49;
             // 
             // panel17
             // 
+            this.panel17.Controls.Add(this.button2);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(667, 236);
-            this.panel17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel17.Location = new System.Drawing.Point(498, 192);
+            this.panel17.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(160, 113);
+            this.panel17.Size = new System.Drawing.Size(120, 91);
             this.panel17.TabIndex = 48;
             // 
             // panel16
             // 
             this.panel16.Controls.Add(this.btnArea);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel16.Location = new System.Drawing.Point(501, 236);
-            this.panel16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel16.Location = new System.Drawing.Point(374, 192);
+            this.panel16.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(160, 113);
+            this.panel16.Size = new System.Drawing.Size(120, 91);
             this.panel16.TabIndex = 47;
             // 
             // btnArea
@@ -230,9 +233,8 @@
             this.btnArea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnArea.Location = new System.Drawing.Point(0, 0);
-            this.btnArea.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnArea.Name = "btnArea";
-            this.btnArea.Size = new System.Drawing.Size(160, 113);
+            this.btnArea.Size = new System.Drawing.Size(120, 91);
             this.btnArea.TabIndex = 31;
             this.btnArea.Text = "Area";
             this.btnArea.UseVisualStyleBackColor = false;
@@ -242,10 +244,10 @@
             // 
             this.panel15.Controls.Add(this.button1);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel15.Location = new System.Drawing.Point(335, 236);
-            this.panel15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel15.Location = new System.Drawing.Point(250, 192);
+            this.panel15.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(160, 113);
+            this.panel15.Size = new System.Drawing.Size(120, 91);
             this.panel15.TabIndex = 46;
             // 
             // button1
@@ -257,9 +259,8 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(160, 113);
+            this.button1.Size = new System.Drawing.Size(120, 91);
             this.button1.TabIndex = 30;
             this.button1.Text = "Currency";
             this.button1.UseVisualStyleBackColor = false;
@@ -269,10 +270,10 @@
             // 
             this.panel14.Controls.Add(this.btnVoucherType);
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel14.Location = new System.Drawing.Point(169, 236);
-            this.panel14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel14.Location = new System.Drawing.Point(126, 192);
+            this.panel14.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(160, 113);
+            this.panel14.Size = new System.Drawing.Size(120, 91);
             this.panel14.TabIndex = 45;
             // 
             // btnVoucherType
@@ -284,9 +285,8 @@
             this.btnVoucherType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVoucherType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVoucherType.Location = new System.Drawing.Point(0, 0);
-            this.btnVoucherType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnVoucherType.Name = "btnVoucherType";
-            this.btnVoucherType.Size = new System.Drawing.Size(160, 113);
+            this.btnVoucherType.Size = new System.Drawing.Size(120, 91);
             this.btnVoucherType.TabIndex = 29;
             this.btnVoucherType.Text = "VoucherType";
             this.btnVoucherType.UseVisualStyleBackColor = false;
@@ -295,29 +295,29 @@
             // panel13
             // 
             this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel13.Location = new System.Drawing.Point(3, 236);
-            this.panel13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel13.Location = new System.Drawing.Point(2, 192);
+            this.panel13.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(160, 113);
+            this.panel13.Size = new System.Drawing.Size(120, 91);
             this.panel13.TabIndex = 44;
             // 
             // panel12
             // 
             this.panel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel12.Location = new System.Drawing.Point(833, 119);
-            this.panel12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel12.Location = new System.Drawing.Point(622, 97);
+            this.panel12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(164, 113);
+            this.panel12.Size = new System.Drawing.Size(126, 91);
             this.panel12.TabIndex = 43;
             // 
             // panel11
             // 
             this.panel11.Controls.Add(this.btnTax);
             this.panel11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel11.Location = new System.Drawing.Point(667, 119);
-            this.panel11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel11.Location = new System.Drawing.Point(498, 97);
+            this.panel11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(160, 113);
+            this.panel11.Size = new System.Drawing.Size(120, 91);
             this.panel11.TabIndex = 42;
             // 
             // btnTax
@@ -329,9 +329,8 @@
             this.btnTax.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTax.Location = new System.Drawing.Point(0, 0);
-            this.btnTax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnTax.Name = "btnTax";
-            this.btnTax.Size = new System.Drawing.Size(160, 113);
+            this.btnTax.Size = new System.Drawing.Size(120, 91);
             this.btnTax.TabIndex = 4;
             this.btnTax.Text = "Tax";
             this.btnTax.UseVisualStyleBackColor = false;
@@ -341,10 +340,10 @@
             // 
             this.panel9.Controls.Add(this.panel10);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel9.Location = new System.Drawing.Point(501, 119);
-            this.panel9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel9.Location = new System.Drawing.Point(374, 97);
+            this.panel9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(160, 113);
+            this.panel9.Size = new System.Drawing.Size(120, 91);
             this.panel9.TabIndex = 41;
             // 
             // panel10
@@ -352,9 +351,9 @@
             this.panel10.Controls.Add(this.btnExchangeRate);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel10.Location = new System.Drawing.Point(0, 0);
-            this.panel10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(160, 113);
+            this.panel10.Size = new System.Drawing.Size(120, 91);
             this.panel10.TabIndex = 33;
             // 
             // btnExchangeRate
@@ -366,9 +365,8 @@
             this.btnExchangeRate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExchangeRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExchangeRate.Location = new System.Drawing.Point(0, 0);
-            this.btnExchangeRate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExchangeRate.Name = "btnExchangeRate";
-            this.btnExchangeRate.Size = new System.Drawing.Size(160, 113);
+            this.btnExchangeRate.Size = new System.Drawing.Size(120, 91);
             this.btnExchangeRate.TabIndex = 31;
             this.btnExchangeRate.Text = "Exchange Rate";
             this.btnExchangeRate.UseVisualStyleBackColor = false;
@@ -378,10 +376,10 @@
             // 
             this.panel8.Controls.Add(this.btnAccountLedger);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(335, 119);
-            this.panel8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel8.Location = new System.Drawing.Point(250, 97);
+            this.panel8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(160, 113);
+            this.panel8.Size = new System.Drawing.Size(120, 91);
             this.panel8.TabIndex = 40;
             // 
             // btnAccountLedger
@@ -393,9 +391,8 @@
             this.btnAccountLedger.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAccountLedger.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAccountLedger.Location = new System.Drawing.Point(0, 0);
-            this.btnAccountLedger.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAccountLedger.Name = "btnAccountLedger";
-            this.btnAccountLedger.Size = new System.Drawing.Size(160, 113);
+            this.btnAccountLedger.Size = new System.Drawing.Size(120, 91);
             this.btnAccountLedger.TabIndex = 30;
             this.btnAccountLedger.Text = "Account Ledger";
             this.btnAccountLedger.UseVisualStyleBackColor = false;
@@ -405,10 +402,10 @@
             // 
             this.panel7.Controls.Add(this.btnAccountGroup);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel7.Location = new System.Drawing.Point(169, 119);
-            this.panel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel7.Location = new System.Drawing.Point(126, 97);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(160, 113);
+            this.panel7.Size = new System.Drawing.Size(120, 91);
             this.panel7.TabIndex = 39;
             // 
             // btnAccountGroup
@@ -420,9 +417,8 @@
             this.btnAccountGroup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAccountGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAccountGroup.Location = new System.Drawing.Point(0, 0);
-            this.btnAccountGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAccountGroup.Name = "btnAccountGroup";
-            this.btnAccountGroup.Size = new System.Drawing.Size(160, 113);
+            this.btnAccountGroup.Size = new System.Drawing.Size(120, 91);
             this.btnAccountGroup.TabIndex = 28;
             this.btnAccountGroup.Text = "Account Group";
             this.btnAccountGroup.UseVisualStyleBackColor = false;
@@ -431,121 +427,138 @@
             // panel6
             // 
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(3, 119);
-            this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel6.Location = new System.Drawing.Point(2, 97);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(160, 113);
+            this.panel6.Size = new System.Drawing.Size(120, 91);
             this.panel6.TabIndex = 38;
             // 
             // panel5
             // 
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(833, 2);
-            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel5.Location = new System.Drawing.Point(622, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(164, 113);
+            this.panel5.Size = new System.Drawing.Size(126, 91);
             this.panel5.TabIndex = 37;
             // 
             // panel4
             // 
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(667, 2);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel4.Location = new System.Drawing.Point(498, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(160, 113);
+            this.panel4.Size = new System.Drawing.Size(120, 91);
             this.panel4.TabIndex = 36;
             // 
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(501, 2);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Location = new System.Drawing.Point(374, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(160, 113);
+            this.panel3.Size = new System.Drawing.Size(120, 91);
             this.panel3.TabIndex = 35;
             // 
             // panel2
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(335, 2);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel2.Location = new System.Drawing.Point(250, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(160, 113);
+            this.panel2.Size = new System.Drawing.Size(120, 91);
             this.panel2.TabIndex = 34;
             // 
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(169, 2);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(126, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(160, 113);
+            this.panel1.Size = new System.Drawing.Size(120, 91);
             this.panel1.TabIndex = 33;
             // 
             // dock1
             // 
             this.dock1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dock1.Location = new System.Drawing.Point(3, 2);
-            this.dock1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dock1.Location = new System.Drawing.Point(2, 2);
+            this.dock1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dock1.Name = "dock1";
-            this.dock1.Size = new System.Drawing.Size(160, 113);
+            this.dock1.Size = new System.Drawing.Size(120, 91);
             this.dock1.TabIndex = 32;
             // 
             // panel19
             // 
             this.panel19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel19.Location = new System.Drawing.Point(3, 353);
-            this.panel19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel19.Location = new System.Drawing.Point(2, 287);
+            this.panel19.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(160, 113);
+            this.panel19.Size = new System.Drawing.Size(120, 91);
             this.panel19.TabIndex = 50;
             // 
             // panel24
             // 
             this.panel24.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel24.Location = new System.Drawing.Point(833, 353);
-            this.panel24.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel24.Location = new System.Drawing.Point(622, 287);
+            this.panel24.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(164, 113);
+            this.panel24.Size = new System.Drawing.Size(126, 91);
             this.panel24.TabIndex = 55;
             // 
             // panel23
             // 
             this.panel23.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel23.Location = new System.Drawing.Point(667, 353);
-            this.panel23.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel23.Location = new System.Drawing.Point(498, 287);
+            this.panel23.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(160, 113);
+            this.panel23.Size = new System.Drawing.Size(120, 91);
             this.panel23.TabIndex = 54;
             // 
             // panel22
             // 
             this.panel22.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel22.Location = new System.Drawing.Point(501, 353);
-            this.panel22.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel22.Location = new System.Drawing.Point(374, 287);
+            this.panel22.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(160, 113);
+            this.panel22.Size = new System.Drawing.Size(120, 91);
             this.panel22.TabIndex = 53;
             // 
             // panel21
             // 
             this.panel21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel21.Location = new System.Drawing.Point(335, 353);
-            this.panel21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel21.Location = new System.Drawing.Point(250, 287);
+            this.panel21.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel21.Name = "panel21";
-            this.panel21.Size = new System.Drawing.Size(160, 113);
+            this.panel21.Size = new System.Drawing.Size(120, 91);
             this.panel21.TabIndex = 52;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(0, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(120, 91);
+            this.button2.TabIndex = 32;
+            this.button2.Text = "Journal Voucher";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // AccountingControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
             this.Controls.Add(this.tableRightPanel);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AccountingControl";
-            this.Size = new System.Drawing.Size(1000, 588);
+            this.Size = new System.Drawing.Size(750, 478);
             this.tableRightPanel.ResumeLayout(false);
+            this.panel17.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
@@ -599,5 +612,6 @@
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnArea;
+        private System.Windows.Forms.Button button2;
     }
 }

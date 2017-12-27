@@ -268,7 +268,6 @@ namespace LoginForm
         /// <param name="e"></param>
         private void btnviewDetails_Click(object sender, EventArgs e)
         {
-            //TO DO Payment Voucher yazılacak
             //try
             //{
             //    if (dgvPaymentRegister.CurrentRow != null)

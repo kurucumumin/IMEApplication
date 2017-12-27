@@ -14,7 +14,7 @@ namespace LoginForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmJournalVoucher());
+            Application.Run(new FormLogin());
         }
     }
 }

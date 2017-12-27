@@ -12,29 +12,31 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class AdvancePayment
+    public partial class SalaryVoucherMaster
     {
-        public decimal advancePaymentId { get; set; }
-        public Nullable<int> employeeId { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public SalaryVoucherMaster()
+        {
+            this.SalaryVoucherDetails = new HashSet<SalaryVoucherDetail>();
+        }
+    
+        public decimal salaryVoucherMasterId { get; set; }
         public Nullable<decimal> ledgerId { get; set; }
         public string voucherNo { get; set; }
         public string invoiceNo { get; set; }
         public Nullable<System.DateTime> date { get; set; }
-        public Nullable<decimal> amount { get; set; }
-        public Nullable<System.DateTime> salaryMonth { get; set; }
-        public string chequenumber { get; set; }
-        public Nullable<System.DateTime> chequeDate { get; set; }
+        public Nullable<System.DateTime> month { get; set; }
+        public Nullable<decimal> totalAmount { get; set; }
         public string narration { get; set; }
-        public Nullable<System.DateTime> extraDate { get; set; }
-        public string extra1 { get; set; }
-        public string extra2 { get; set; }
         public Nullable<decimal> suffixPrefixId { get; set; }
         public Nullable<decimal> voucherTypeId { get; set; }
         public Nullable<decimal> financialYearId { get; set; }
     
         public virtual AccountLedger AccountLedger { get; set; }
-        public virtual Worker Worker { get; set; }
         public virtual FinancialYear FinancialYear { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalaryVoucherDetail> SalaryVoucherDetails { get; set; }
+        public virtual SuffixPrefix SuffixPrefix { get; set; }
         public virtual VoucherType VoucherType { get; set; }
     }
 }

@@ -174,8 +174,9 @@ namespace LoginForm
             if( VoucherNumberGeneration(decJournalVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpVoucherDate.Value, tableName)!="") strVoucherNo = VoucherNumberGeneration(decJournalVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpVoucherDate.Value, tableName).ToString() ;
             //strVoucherNo = obj.VoucherNumberAutomaicGeneration(decJournalVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpVoucherDate.Value, tableName);
 
-             
-            decimal decJournalVoucherTypeIdmax = IME.JournalMasters.Where(a => a.voucherTypeId == decJournalVoucherTypeId).Select(b => b.voucherNo).ToList().Select(decimal.Parse).ToList().Max();
+
+            decimal decJournalVoucherTypeIdmax = 0;
+            if(IME.JournalMasters.Where(a => a.voucherTypeId == decJournalVoucherTypeId).Select(b => b.voucherNo).ToList().Count()!=0) decJournalVoucherTypeIdmax= IME.JournalMasters.Where(a => a.voucherTypeId == decJournalVoucherTypeId).Select(b => b.voucherNo).ToList().Select(decimal.Parse).ToList().Max();
             if (Convert.ToDecimal(strVoucherNo) != decJournalVoucherTypeIdmax+1)
                 {
                     strVoucherNo = decJournalVoucherTypeIdmax.ToString();
@@ -294,8 +295,7 @@ namespace LoginForm
         /// </summary>
         public void AccountLedgerComboFill()
         {
-            try
-            {
+
                 List<AccountLedger> AccountLedgerList = new List<AccountLedger>();
                 AccountLedger AccountLedger = new AccountLedger();
                 AccountLedger.ledgerName = "";
@@ -305,24 +305,15 @@ namespace LoginForm
                 dgvcmbAccountLedger.ValueMember = "ledgerId";
                 dgvcmbAccountLedger.DisplayMember = "ledgerName";
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV7:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
 
 
         public void DrOrCrComboFill()
         {
-            try
-            {
+
                 dgvcmbDrOrCr.Items.AddRange("Dr", "Cr");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV8:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
 
 
@@ -349,8 +340,6 @@ namespace LoginForm
 
         public void CallFromJournalRegister(frmJournalRegister frmJournalObj, decimal decMasterId)
         {
-            try
-            {
                 base.Show();
                 journalRegisterObj = frmJournalObj;
                 journalRegisterObj.Enabled = false;
@@ -358,11 +347,7 @@ namespace LoginForm
                 btnDelete.Enabled = true;
                 decJournalMasterIdForEdit = decMasterId;
                 FillFunction();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV10:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+   
         }
 
         /// <summary>
@@ -371,8 +356,7 @@ namespace LoginForm
         public void SlNo()
         {
             int inRowNo = 1;
-            try
-            {
+
                 foreach (DataGridViewRow dr in dgvJournalVoucher.Rows)
                 {
                     dr.Cells["dgvtxtSlNo"].Value = inRowNo;
@@ -382,11 +366,7 @@ namespace LoginForm
                         break;
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV11:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+
         }
 
         /// <summary>
@@ -641,8 +621,7 @@ namespace LoginForm
         /// </summary>
         public void Save()
         {
-            try
-            {
+
                 decimal decTotalDebit = 0;
                 decimal decTotalCredit = 0;
 
@@ -757,11 +736,7 @@ namespace LoginForm
                 //}
 
                 //===================================================================//
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV14:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+   
         }
 
         /// <summary>
@@ -770,8 +745,6 @@ namespace LoginForm
         /// <param name="decJournalMasterId"></param>
         public void EditFunction(decimal decJournalMasterId)
         {
-            try
-            {
                 ArrayList arrlstOfRowToRemove = new ArrayList();
                 int inReadyForSave = 0;
                 int inIsRowToRemove = 0;
@@ -935,11 +908,7 @@ namespace LoginForm
                         MessageBox.Show("There is no row to save");
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV15:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+
 
         }
 
@@ -949,13 +918,7 @@ namespace LoginForm
         /// <param name="decJournalMasterId"></param>
         public void Edit(decimal decJournalMasterId)
         {
-            try
-            {
-                //JournalMasterSP spJournalMaster = new JournalMasterSP();
-                //JournalMasterInfo infoJournalMaster = new JournalMasterInfo();
-                //JournalDetailsSP spJournalDetails = new JournalDetailsSP();
-                //JournalDetailsInfo infoJournalDetails = new JournalDetailsInfo();
-                //ExchangeRateSP spExchangeRate = new ExchangeRateSP();
+
 
                 JournalMaster JournalMaster = IME.JournalMasters.Where(a => a.journalMasterId == decJournalMasterId).FirstOrDefault();
 
@@ -1122,12 +1085,6 @@ namespace LoginForm
 
                 //}
 
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV16:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
 
         /// <summary>
@@ -1135,8 +1092,6 @@ namespace LoginForm
         /// </summary>
         public void SaveOrEditFunction()
         {
-            try
-            {
 
                 if (!isEditMode)
                 {
@@ -1196,11 +1151,7 @@ namespace LoginForm
                     }
                 }
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV17:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
 
 
@@ -1268,8 +1219,7 @@ namespace LoginForm
 
         public void DeleteFunction(decimal decJournalMasterId)
         {
-            try
-            {
+
 
                 if (IME.PartyBalances.Where(a => a.voucherNo == strVoucherNo).Where(b => b.voucherTypeId == decJournalVoucherTypeId).Where(c => c.againstVoucherTypeId != 0).Where(d => d.againstVoucherNo != "0").Select(e => e.partyBalanceId).Distinct().Count() <= 0)
                 {
@@ -1311,11 +1261,7 @@ namespace LoginForm
                     MessageBox.Show("Reference exist. Cannot delete");
                     txtDate.Focus();
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV19:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+
 
         }
 
@@ -1487,8 +1433,6 @@ namespace LoginForm
             decimal decNewExchangeRate = 0;
             decimal decNewExchangeRateId = 0;
             decimal decOldExchangeId = 0;
-            try
-            {
                 if (!dgvJournalVoucher.Rows[inA].Cells["dgvtxtAmount"].ReadOnly)
                 {
                     LedgerPosting LedgerPosting = IME.LedgerPostings.Where(a => a.ledgerPostingId == decLedgerPostingId).FirstOrDefault();
@@ -1630,11 +1574,7 @@ namespace LoginForm
                     }
 
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV21:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+
 
         }
 
@@ -1751,8 +1691,7 @@ namespace LoginForm
         {
             int inTableRowCount = dtblPartyBalance.Rows.Count;
 
-            try
-            {
+
                 for (int inJ = 0; inJ < inTableRowCount; inJ++)
                 {
                     if (dgvJournalVoucher.Rows[inRowIndex].Cells["dgvcmbAccountLedger"].Value.ToString() == dtblPartyBalance.Rows[inJ]["LedgerId"].ToString())
@@ -1768,11 +1707,7 @@ namespace LoginForm
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV24:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+
 
         }
 
@@ -1782,8 +1717,6 @@ namespace LoginForm
         /// <param name="e"></param>
         public void CheckColumnMissing(DataGridViewCellEventArgs e)
         {
-            try
-            {
                 if (dgvJournalVoucher.CurrentRow != null)
                 {
                     if (!isValueChanged)
@@ -1824,11 +1757,7 @@ namespace LoginForm
                     }
                     isValueChanged = false;
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV25:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+
         }
 
         /// <summary>
@@ -1836,8 +1765,6 @@ namespace LoginForm
         /// </summary>
         public void RemoveRow()
         {
-            try
-            {
                 int inRowCount = dgvJournalVoucher.RowCount;
                 if (inRowCount > 1)
                 {
@@ -1877,11 +1804,7 @@ namespace LoginForm
                         SlNo();
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV26:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+
         }
 
         
@@ -1987,8 +1910,6 @@ namespace LoginForm
 
         public void CallFromAccountLedger(decimal decLedgerId)
         {
-            try
-            {
                 if (decLedgerId != 0)
                 {
                     //AccountLedgerSP spAccountLedger = new AccountLedgerSP();
@@ -2002,11 +1923,7 @@ namespace LoginForm
                 dgvJournalVoucher.Focus();
                 this.Enabled = true;
                 this.BringToFront();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV30:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
 
         /// <summary>
@@ -2014,8 +1931,6 @@ namespace LoginForm
         /// </summary>
         public void VoucherDate()
         {
-            try
-            {
                 dtpVoucherDate.MinDate = (DateTime)Utils.getManagement().FinancialYear.fromDate;
                 dtpVoucherDate.MaxDate = (DateTime)Utils.getManagement().FinancialYear.toDate;
 
@@ -2029,11 +1944,7 @@ namespace LoginForm
                 dtpVoucherDate.Value = Convert.ToDateTime(txtDate.Text);
                 txtDate.Focus();
                 txtDate.SelectAll();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV31 " + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
 
         /// <summary>
@@ -2074,15 +1985,10 @@ namespace LoginForm
 
         private void keypresseventEnable(object sender, KeyPressEventArgs e)
         {
-            try
-            {
+            
                 e.Handled = false;
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV34:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
 
         /// <summary>
@@ -2090,18 +1996,12 @@ namespace LoginForm
         /// </summary>
         public void DeletePartyBalanceOfRemovedRow()
         {
-            try
-            {
                 foreach (object obj in arrlstOfDeletedPartyBalanceRow)
                 {
                     string str = Convert.ToString(obj);
                     IME.PartyBalances.Where(a => a.partyBalanceId == Convert.ToDecimal(str));
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV35:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+
 
         }
 
@@ -2452,30 +2352,20 @@ namespace LoginForm
         /// <param name="e"></param>
         private void dtpVoucherDate_ValueChanged(object sender, EventArgs e)
         {
-            try
-            {
+
                 DateTime date = this.dtpVoucherDate.Value;
                 this.txtDate.Text = date.ToString("dd-MMM-yyyy");
                 CurrencyComboFill();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV41:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
 
 
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            try
-            {
+
                 SaveOrEdit();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV43:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
 
         /// <summary>
@@ -2485,8 +2375,7 @@ namespace LoginForm
         /// <param name="e"></param>
         private void dgvJournalVoucher_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
+
                 if (dgvJournalVoucher.Rows[e.RowIndex].Cells[e.ColumnIndex] is DataGridViewComboBoxCell)
                 {
                     dgvJournalVoucher.EditMode = DataGridViewEditMode.EditOnEnter;
@@ -2495,11 +2384,7 @@ namespace LoginForm
                 {
                     dgvJournalVoucher.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV44:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
 
         /// <summary>
@@ -2523,9 +2408,6 @@ namespace LoginForm
         /// <param name="e"></param>
         private void frmJournalVoucher_Load(object sender, EventArgs e)
         {
-            try
-            {
-
                 AccountLedgerComboFill();
                 DrOrCrComboFill();
                 clear();
@@ -2552,11 +2434,6 @@ namespace LoginForm
                 arrlstOfDeletedPartyBalanceRow = new ArrayList();
 
                 /***********************************************************/
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV46:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
 
         }
 
@@ -2578,8 +2455,7 @@ namespace LoginForm
         /// <param name="e"></param>
         private void lnklblRemove_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            try
-            {
+
                 if (dgvJournalVoucher.RowCount > 1)
                 {
                     if (MessageBox.Show("Do you want to remove current row ?", "OpenMiracle", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -2587,18 +2463,13 @@ namespace LoginForm
                         RemoveRow();
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV48:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
 
 
         private void dgvJournalVoucher_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
+
                 if (e.RowIndex != -1 && e.ColumnIndex != -1)
                 {
                     DebitAndCreditTotal();
@@ -2717,11 +2588,7 @@ namespace LoginForm
                     //==========================================================================//
 
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV50:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
 
         /// <summary>
@@ -2844,14 +2711,9 @@ namespace LoginForm
         /// <param name="e"></param>
         private void dgvJournalVoucher_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            try
-            {
+
                 SlNo();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV53:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
 
         /// <summary>
@@ -2861,17 +2723,12 @@ namespace LoginForm
         /// <param name="e"></param>
         private void dgvJournalVoucher_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
-            try
-            {
+
                 if (dgvJournalVoucher.IsCurrentCellDirty)
                 {
                     dgvJournalVoucher.CommitEdit(DataGridViewDataErrorContexts.Commit);
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV54:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
 
 
@@ -2882,8 +2739,6 @@ namespace LoginForm
         /// <param name="e"></param>
         private void dgvJournalVoucher_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
                 if (e.RowIndex >= 0)
                 {
                     if (dgvJournalVoucher.CurrentCell.ColumnIndex == dgvJournalVoucher.Columns["dgvbtnAgainst"].Index)
@@ -2926,11 +2781,7 @@ namespace LoginForm
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV55:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
 
 
@@ -3043,17 +2894,10 @@ namespace LoginForm
         /// <param name="e"></param>
         private void txtVoucherNo_KeyDown(object sender, KeyEventArgs e)
         {
-            try
-            {
                 if (e.KeyCode == Keys.Enter)
                 {
                     txtDate.Focus();
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV59:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
 
         /// <summary>
@@ -3063,8 +2907,6 @@ namespace LoginForm
         /// <param name="e"></param>
         private void txtDate_KeyDown(object sender, KeyEventArgs e)
         {
-            try
-            {
                 if (e.KeyCode == Keys.Enter)
                 {
                     dgvJournalVoucher.Focus();
@@ -3081,11 +2923,7 @@ namespace LoginForm
 
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV60:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+           
         }
 
         /// <summary>
@@ -3095,8 +2933,6 @@ namespace LoginForm
         /// <param name="e"></param>
         private void txtNarration_KeyDown(object sender, KeyEventArgs e)
         {
-            try
-            {
                 if (e.KeyCode == Keys.Back)
                 {
                     if (txtNarration.Text.Trim() == string.Empty || txtNarration.SelectionStart == 0)
@@ -3112,11 +2948,6 @@ namespace LoginForm
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV61:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
 
         /// <summary>
@@ -3126,8 +2957,6 @@ namespace LoginForm
         /// <param name="e"></param>
         private void txtNarration_KeyPress(object sender, KeyPressEventArgs e)
         {
-            try
-            {
                 if (e.KeyChar == 13)
                 {
                     inNarrationCount++;
@@ -3141,11 +2970,7 @@ namespace LoginForm
                 {
                     inNarrationCount = 0;
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV62:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
 
         /// <summary>
@@ -3155,19 +2980,13 @@ namespace LoginForm
         /// <param name="e"></param>
         private void btnSave_KeyUp(object sender, KeyEventArgs e)
         {
-            try
-            {
                 if (e.KeyCode == Keys.Back)
                 {
                     txtNarration.Focus();
                     txtNarration.SelectionStart = 0;
                     txtNarration.SelectionLength = 0;
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV63:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+
         }
 
         /// <summary>
@@ -3177,17 +2996,11 @@ namespace LoginForm
         /// <param name="e"></param>
         private void btnClear_KeyUp(object sender, KeyEventArgs e)
         {
-            try
-            {
                 if (e.KeyCode == Keys.Back)
                 {
                     btnSave.Focus();
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV64:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+
         }
 
         /// <summary>
@@ -3197,8 +3010,7 @@ namespace LoginForm
         /// <param name="e"></param>
         private void btnDelete_KeyUp(object sender, KeyEventArgs e)
         {
-            try
-            {
+
                 if (e.KeyCode == Keys.Back)
                 {
                     if (btnDelete.Enabled)
@@ -3210,11 +3022,7 @@ namespace LoginForm
                         btnClear.Focus();
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV65:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+           
         }
 
         /// <summary>
@@ -3224,8 +3032,6 @@ namespace LoginForm
         /// <param name="e"></param>
         private void dgvJournalVoucher_KeyDown(object sender, KeyEventArgs e)
         {
-            try
-            {
                 int inDgvJournalRowCount = dgvJournalVoucher.Rows.Count;
                 if (e.KeyCode == Keys.Enter)
                 {
@@ -3247,11 +3053,7 @@ namespace LoginForm
                     }
                 }
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("JV66:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+
         }
 
         #endregion

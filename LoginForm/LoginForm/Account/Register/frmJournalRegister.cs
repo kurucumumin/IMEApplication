@@ -191,35 +191,29 @@ namespace LoginForm
         private void btnViewDetails_Click(object sender, EventArgs e)
         {
             //TO DO open JournalRegister for detail
-            //try
-            //{
-            //    if (dgvJournalRegister.CurrentRow != null)
-            //    {
-            //        frmJournalVoucher frmJournalVoucherObj = new frmJournalVoucher();
-            //        frmJournalVoucher open = Application.OpenForms["frmJournalVoucher"] as frmJournalVoucher;
-            //        decimal decMasterId = Convert.ToDecimal(dgvJournalRegister.CurrentRow.Cells["dgvtxtJournalMasterId"].Value.ToString());
-            //        if (open == null)
-            //        {
-            //            frmJournalVoucherObj.WindowState = FormWindowState.Normal;
-            //            frmJournalVoucherObj.MdiParent = formMDI.MDIObj;
-            //            frmJournalVoucherObj.CallFromJournalRegister(this, decMasterId);
-            //        }
-            //        else
-            //        {
-            //            open.MdiParent = formMDI.MDIObj;
-            //            open.BringToFront();
-            //            open.CallFromJournalRegister(this, decMasterId);
-            //            if (open.WindowState == FormWindowState.Minimized)
-            //            {
-            //                open.WindowState = FormWindowState.Normal;
-            //            }
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("JREG8:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+
+            if (dgvJournalRegister.CurrentRow != null)
+            {
+                frmJournalVoucher frmJournalVoucherObj = new frmJournalVoucher();
+                FormLogin formLogin = new FormLogin();
+                frmJournalVoucher open = Application.OpenForms["frmJournalVoucher"] as frmJournalVoucher;
+                decimal decMasterId = Convert.ToDecimal(dgvJournalRegister.CurrentRow.Cells["dgvtxtJournalMasterId"].Value.ToString());
+                if (open == null)
+                {
+                    frmJournalVoucherObj.WindowState = FormWindowState.Normal;
+                    frmJournalVoucherObj.CallFromJournalRegister(this, decMasterId);
+                }
+                else
+                {
+                    open.BringToFront();
+                    open.CallFromJournalRegister(this, decMasterId);
+                    if (open.WindowState == FormWindowState.Minimized)
+                    {
+                        open.WindowState = FormWindowState.Normal;
+                    }
+                }
+            }
+
         }
         /// <summary>
         /// On 'Close' button click
