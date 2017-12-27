@@ -29,10 +29,9 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDebitNote));
             this.btnClose = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -50,7 +49,7 @@
             this.lblNarration = new System.Windows.Forms.Label();
             this.txtNarration = new System.Windows.Forms.TextBox();
             this.lnklblRemove = new System.Windows.Forms.LinkLabel();
-            this.dgvDebitNote =  new System.Windows.Forms.DataGridViewEnter();
+            this.dgvDebitNote = new System.Windows.Forms.DataGridView();
             this.dgvtxtSlNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcmbAccountLedger = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dgvcmbDrOrCr = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -61,62 +60,65 @@
             this.dgvtxtChequeDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtDetailsId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtLedgerPostingId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtpVoucherDate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDebitNote)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
             // 
+            this.btnClose.BackColor = System.Drawing.SystemColors.Control;
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.ForeColor = System.Drawing.Color.Black;
             this.btnClose.Location = new System.Drawing.Point(693, 551);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(85, 27);
             this.btnClose.TabIndex = 8;
             this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnDelete
             // 
+            this.btnDelete.BackColor = System.Drawing.SystemColors.Control;
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.ForeColor = System.Drawing.Color.Black;
             this.btnDelete.Location = new System.Drawing.Point(602, 551);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(85, 27);
             this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             this.btnDelete.KeyUp += new System.Windows.Forms.KeyEventHandler(this.btnDelete_KeyUp);
             // 
             // btnSave
             // 
+            this.btnSave.BackColor = System.Drawing.SystemColors.Control;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.ForeColor = System.Drawing.Color.Black;
             this.btnSave.Location = new System.Drawing.Point(420, 551);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(85, 27);
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             this.btnSave.KeyUp += new System.Windows.Forms.KeyEventHandler(this.btnSave_KeyUp);
             // 
             // btnClear
             // 
+            this.btnClear.BackColor = System.Drawing.SystemColors.Control;
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.ForeColor = System.Drawing.Color.White;
+            this.btnClear.ForeColor = System.Drawing.Color.Black;
             this.btnClear.Location = new System.Drawing.Point(511, 551);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(85, 27);
             this.btnClear.TabIndex = 6;
             this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             this.btnClear.KeyUp += new System.Windows.Forms.KeyEventHandler(this.btnClear_KeyUp);
             // 
@@ -257,7 +259,7 @@
             this.dgvDebitNote.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
@@ -276,40 +278,30 @@
             this.dgvtxtChequeDate,
             this.dgvtxtDetailsId,
             this.dgvtxtLedgerPostingId});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(202)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDebitNote.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(202)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDebitNote.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDebitNote.EnableHeadersVisualStyles = false;
-            this.dgvDebitNote.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvDebitNote.Location = new System.Drawing.Point(18, 43);
+            this.dgvDebitNote.Location = new System.Drawing.Point(14, 43);
             this.dgvDebitNote.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.dgvDebitNote.MultiSelect = false;
             this.dgvDebitNote.Name = "dgvDebitNote";
             this.dgvDebitNote.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDebitNote.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDebitNote.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvDebitNote.Size = new System.Drawing.Size(764, 434);
             this.dgvDebitNote.TabIndex = 2;
-            this.dgvDebitNote.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvDebitNote_CellBeginEdit);
-            this.dgvDebitNote.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDebitNote_CellClick);
-            this.dgvDebitNote.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDebitNote_CellEnter);
-            this.dgvDebitNote.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDebitNote_CellValueChanged);
-            this.dgvDebitNote.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvDebitNote_CurrentCellDirtyStateChanged);
-            this.dgvDebitNote.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvDebitNote_DataError);
-            this.dgvDebitNote.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvDebitNote_EditingControlShowing);
-            this.dgvDebitNote.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvDebitNote_RowsAdded);
-            this.dgvDebitNote.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvDebitNote_KeyDown);
             // 
             // dgvtxtSlNo
             // 
@@ -317,7 +309,6 @@
             this.dgvtxtSlNo.HeaderText = "SlNo";
             this.dgvtxtSlNo.Name = "dgvtxtSlNo";
             this.dgvtxtSlNo.ReadOnly = true;
-            this.dgvtxtSlNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvtxtSlNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dgvtxtSlNo.Width = 90;
             // 
@@ -326,14 +317,12 @@
             this.dgvcmbAccountLedger.DataPropertyName = "ledgerId";
             this.dgvcmbAccountLedger.HeaderText = "Account Ledger";
             this.dgvcmbAccountLedger.Name = "dgvcmbAccountLedger";
-            this.dgvcmbAccountLedger.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvcmbAccountLedger.Width = 90;
             // 
             // dgvcmbDrOrCr
             // 
             this.dgvcmbDrOrCr.HeaderText = "Dr/Cr";
             this.dgvcmbDrOrCr.Name = "dgvcmbDrOrCr";
-            this.dgvcmbDrOrCr.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvcmbDrOrCr.Width = 90;
             // 
             // dgvbtnAgainst
@@ -343,18 +332,13 @@
             this.dgvbtnAgainst.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvbtnAgainst.HeaderText = "Against";
             this.dgvbtnAgainst.Name = "dgvbtnAgainst";
-            this.dgvbtnAgainst.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvbtnAgainst.Text = "";
             this.dgvbtnAgainst.Width = 91;
             // 
             // dgvtxtAmount
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtAmount.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvtxtAmount.HeaderText = "Amount";
             this.dgvtxtAmount.MaxInputLength = 13;
             this.dgvtxtAmount.Name = "dgvtxtAmount";
-            this.dgvtxtAmount.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvtxtAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dgvtxtAmount.Width = 90;
             // 
@@ -362,13 +346,12 @@
             // 
             this.dgvcmbCurrency.HeaderText = "Currency";
             this.dgvcmbCurrency.Name = "dgvcmbCurrency";
-            this.dgvcmbCurrency.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvcmbCurrency.Width = 90;
             // 
             // dgvtxtChequeNo
             // 
             this.dgvtxtChequeNo.DataPropertyName = "chequeNo";
-            this.dgvtxtChequeNo.HeaderText = "Cheque No.";
+            this.dgvtxtChequeNo.HeaderText = "Cheque No";
             this.dgvtxtChequeNo.Name = "dgvtxtChequeNo";
             this.dgvtxtChequeNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dgvtxtChequeNo.Width = 90;
@@ -396,21 +379,13 @@
             this.dgvtxtLedgerPostingId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dgvtxtLedgerPostingId.Visible = false;
             // 
-            // dtpVoucherDate
-            // 
-            this.dtpVoucherDate.Location = new System.Drawing.Point(761, 15);
-            this.dtpVoucherDate.Name = "dtpVoucherDate";
-            this.dtpVoucherDate.Size = new System.Drawing.Size(21, 20);
-            this.dtpVoucherDate.TabIndex = 661;
-            this.dtpVoucherDate.ValueChanged += new System.EventHandler(this.dtpVoucherDate_ValueChanged);
-            // 
             // frmDebitNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
             this.ClientSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.dtpVoucherDate);
+            this.Controls.Add(this.dgvDebitNote);
             this.Controls.Add(this.txtDate);
             this.Controls.Add(this.lblVoucherDate);
             this.Controls.Add(this.lblVoucherNo);
@@ -423,7 +398,6 @@
             this.Controls.Add(this.lblNarration);
             this.Controls.Add(this.txtNarration);
             this.Controls.Add(this.lnklblRemove);
-            this.Controls.Add(this.dgvDebitNote);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
@@ -438,8 +412,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Debit Note";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmDebitNote_FormClosing);
-            this.Load += new System.EventHandler(this.frmDebitNote_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmDebitNote_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDebitNote)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -464,8 +436,7 @@
         private System.Windows.Forms.Label lblNarration;
         private System.Windows.Forms.TextBox txtNarration;
         private System.Windows.Forms.LinkLabel lnklblRemove;
-        private dgv.DataGridViewEnter dgvDebitNote;
-        private System.Windows.Forms.DateTimePicker dtpVoucherDate;
+        private System.Windows.Forms.DataGridView dgvDebitNote;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSlNo;
         private System.Windows.Forms.DataGridViewComboBoxColumn dgvcmbAccountLedger;
         private System.Windows.Forms.DataGridViewComboBoxColumn dgvcmbDrOrCr;
@@ -476,5 +447,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtChequeDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtDetailsId;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtLedgerPostingId;
+        // private dgv.DataGridViewEnter dgvDebitNote;
+        private System.Windows.Forms.DateTimePicker dtpVoucherDate;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSlNo;
+        //private System.Windows.Forms.DataGridViewComboBoxColumn dgvcmbAccountLedger;
+        //private System.Windows.Forms.DataGridViewComboBoxColumn dgvcmbDrOrCr;
+        //private System.Windows.Forms.DataGridViewButtonColumn dgvbtnAgainst;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtAmount;
+        //private System.Windows.Forms.DataGridViewComboBoxColumn dgvcmbCurrency;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtChequeNo;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtChequeDate;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtDetailsId;
+        //private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtLedgerPostingId;
+        //private System.Windows.Forms.DataGridView dgvDebitNote;
     }
 }

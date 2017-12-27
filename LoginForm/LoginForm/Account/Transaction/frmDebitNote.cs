@@ -215,7 +215,7 @@ namespace LoginForm
 
                 //infoComapany = spCompany.CompanyView(1);
                 //DateTime dtVoucherDate = infoComapany.CurrentDate;
-                //dtpVoucherDate.Value = dtVoucherDate;
+               // dtpVoucherDate.Value = dtVoucherDate;
                 txtDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
                 dtpVoucherDate.Value = Convert.ToDateTime(txtDate.Text);
                 txtDate.Focus();
@@ -1838,7 +1838,7 @@ namespace LoginForm
                                 decCredit = decConvertRate;
                             }
                         }
-                        infoDebitNoteDetails.exchangeRateId = Convert.ToDecimal(dgvDebitNote.Rows[inI].Cells["dgvcmbCurrency"].Value.ToString());
+                        infoDebitNoteDetails.exchangeRateId = Convert.ToInt32(dgvDebitNote.Rows[inI].Cells["dgvcmbCurrency"].Value.ToString());
                         if (dgvDebitNote.Rows[inI].Cells["dgvtxtChequeNo"].Value != null && dgvDebitNote.Rows[inI].Cells["dgvtxtChequeNo"].Value.ToString() != string.Empty)
                         {
                             infoDebitNoteDetails.chequeNo = dgvDebitNote.Rows[inI].Cells["dgvtxtChequeNo"].Value.ToString();
@@ -2062,7 +2062,7 @@ namespace LoginForm
                                 decDebit = Convert.ToDecimal(infoDebitNoteDetails.debit);
                                 decCredit = decConvertRate;
                             }
-                            infoDebitNoteDetails.exchangeRateId = Convert.ToDecimal(dgvDebitNote.Rows[inI].Cells["dgvcmbCurrency"].Value.ToString());
+                            infoDebitNoteDetails.exchangeRateId = Convert.ToInt32(dgvDebitNote.Rows[inI].Cells["dgvcmbCurrency"].Value.ToString());
                             if (dgvDebitNote.Rows[inI].Cells["dgvtxtChequeNo"].Value != null && dgvDebitNote.Rows[inI].Cells["dgvtxtChequeNo"].Value.ToString() != string.Empty)
                             {
                                 infoDebitNoteDetails.chequeNo = dgvDebitNote.Rows[inI].Cells["dgvtxtChequeNo"].Value.ToString();

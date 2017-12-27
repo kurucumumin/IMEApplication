@@ -96,7 +96,6 @@ namespace LoginForm.PurchaseOrder
             filename = txtCreate.newTxt(txt, AccountNumber);
             groupBox2.Text = filename;
             lblPicture.Text = filename;
-            txtCreate.newTxt(txt,AccountNumber);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -449,7 +448,7 @@ namespace LoginForm.PurchaseOrder
             }
             string OrderLineControl = totalitemLine.ToString();
             int totalitemLinelenght = totalitemLine.ToString().Length;
-            for (int i = 0; i < 5 - totalitemLinelenght; i++)
+            for (int i = 0; i < 4 - totalitemLinelenght; i++)
             {
                 OrderLineControl = "0" + OrderLineControl;
             }
