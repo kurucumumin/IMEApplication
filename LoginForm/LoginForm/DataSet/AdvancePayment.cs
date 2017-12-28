@@ -17,7 +17,7 @@ namespace LoginForm.DataSet
         public decimal advancePaymentId { get; set; }
         public Nullable<int> employeeId { get; set; }
         public Nullable<decimal> ledgerId { get; set; }
-        public Nullable<decimal> voucherNo { get; set; }
+        public string voucherNo { get; set; }
         public string invoiceNo { get; set; }
         public Nullable<System.DateTime> date { get; set; }
         public Nullable<decimal> amount { get; set; }

@@ -12,30 +12,31 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class ReceiptMaster
+    public partial class SalaryVoucherMaster
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ReceiptMaster()
+        public SalaryVoucherMaster()
         {
-            this.ReceiptDetails = new HashSet<ReceiptDetail>();
-            this.ReceiptDetails1 = new HashSet<ReceiptDetail1>();
+            this.SalaryVoucherDetails = new HashSet<SalaryVoucherDetail>();
         }
     
-        public decimal receiptMasterId { get; set; }
+        public decimal salaryVoucherMasterId { get; set; }
+        public Nullable<decimal> ledgerId { get; set; }
         public string voucherNo { get; set; }
         public string invoiceNo { get; set; }
-        public Nullable<decimal> suffixPrefixId { get; set; }
         public Nullable<System.DateTime> date { get; set; }
-        public Nullable<decimal> ledgerId { get; set; }
+        public Nullable<System.DateTime> month { get; set; }
         public Nullable<decimal> totalAmount { get; set; }
         public string narration { get; set; }
+        public Nullable<decimal> suffixPrefixId { get; set; }
         public Nullable<decimal> voucherTypeId { get; set; }
-        public Nullable<decimal> userId { get; set; }
         public Nullable<decimal> financialYearId { get; set; }
     
+        public virtual AccountLedger AccountLedger { get; set; }
+        public virtual FinancialYear FinancialYear { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReceiptDetail> ReceiptDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReceiptDetail1> ReceiptDetails1 { get; set; }
+        public virtual ICollection<SalaryVoucherDetail> SalaryVoucherDetails { get; set; }
+        public virtual SuffixPrefix SuffixPrefix { get; set; }
+        public virtual VoucherType VoucherType { get; set; }
     }
 }

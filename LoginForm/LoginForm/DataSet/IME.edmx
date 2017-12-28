@@ -55,7 +55,7 @@
           <Property Name="advancePaymentId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="employeeId" Type="int" />
           <Property Name="ledgerId" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="voucherNo" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="voucherNo" Type="varchar(max)" />
           <Property Name="invoiceNo" Type="varchar(max)" />
           <Property Name="date" Type="datetime" />
           <Property Name="amount" Type="numeric" Precision="18" Scale="5" />
@@ -142,6 +142,19 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Country_name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CreditNoteDetails">
+          <Key>
+            <PropertyRef Name="creditNoteDetailsId" />
+          </Key>
+          <Property Name="creditNoteDetailsId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="creditNoteMasterId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ledgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="credit" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="debit" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="exchangeRateId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="chequeDate" Type="datetime" />
+          <Property Name="chequeNo" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="CreditNoteMaster">
           <Key>
@@ -275,6 +288,34 @@
           <Property Name="DiscontinuationDate" Type="nvarchar" MaxLength="20" />
           <Property Name="Runon" Type="int" />
           <Property Name="Referral" Type="int" />
+        </EntityType>
+        <EntityType Name="DebitNoteDetail">
+          <Key>
+            <PropertyRef Name="debitNoteDetailsId" />
+          </Key>
+          <Property Name="debitNoteDetailsId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="debitNoteMasterId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ledgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="credit" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="debit" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="exchangeRateId" Type="int" />
+          <Property Name="chequeNo" Type="varchar(max)" />
+          <Property Name="chequeDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DebitNoteMaster">
+          <Key>
+            <PropertyRef Name="debitNoteMasterId" />
+          </Key>
+          <Property Name="debitNoteMasterId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="voucherNo" Type="varchar(max)" />
+          <Property Name="invoiceNo" Type="varchar(max)" />
+          <Property Name="suffixPrefixId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="userId" Type="int" />
+          <Property Name="totalAmount" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="narration" Type="varchar(max)" />
+          <Property Name="financialYearId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="voucherTypeId" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="DeliveryNoteMaster">
           <Key>
@@ -494,6 +535,23 @@
           <Property Name="DefaultCurrency" Type="numeric" Precision="18" Scale="0" />
           <Property Name="Factor" Type="decimal" Precision="6" Scale="3" Nullable="false" />
           <Property Name="CurrentFinancialYear" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Master">
+          <Key>
+            <PropertyRef Name="masterId" />
+          </Key>
+          <Property Name="masterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="formName" Type="int" />
+          <Property Name="isTwoLineForHedder" Type="bit" />
+          <Property Name="isTwoLineForDetails" Type="bit" />
+          <Property Name="pageSize1" Type="int" />
+          <Property Name="pageSizeOther" Type="int" />
+          <Property Name="blankLneForFooter" Type="int" />
+          <Property Name="footerLocation" Type="varchar(max)" />
+          <Property Name="lineCountBetweenTwo" Type="int" />
+          <Property Name="pitch" Type="varchar(max)" />
+          <Property Name="condensed" Type="varchar(max)" />
+          <Property Name="lineCountAfterPrint" Type="int" />
         </EntityType>
         <EntityType Name="MonthlySalary">
           <Key>
@@ -817,8 +875,18 @@
           <Property Name="RateBuyEffective" Type="decimal" Precision="20" Scale="10" />
           <Property Name="RateSellEffective" Type="decimal" Precision="20" Scale="10" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ReceiptDetail">
+          <Key>
+            <PropertyRef Name="receiptDetailsId" />
+          </Key>
+          <Property Name="receiptDetailsId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="receiptMasterId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ledgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="amount" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="exchangeRateId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="chequeNo" Type="varchar(max)" />
+          <Property Name="chequeDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="ReceiptDetails">
           <Key>
             <PropertyRef Name="receiptDetailsId" />
@@ -875,6 +943,38 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <Property Name="Height" Type="nvarchar" MaxLength="15" />
           <Property Name="GrossWeight" Type="nvarchar" MaxLength="15" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="SalaryVoucherDetail">
+          <Key>
+            <PropertyRef Name="salaryVoucherDetailsId" />
+          </Key>
+          <Property Name="salaryVoucherDetailsId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="salaryVoucherMasterId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="employeeId" Type="int" />
+          <Property Name="bonus" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="deduction" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="advance" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="lop" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="salary" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="status" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SalaryVoucherMaster">
+          <Key>
+            <PropertyRef Name="salaryVoucherMasterId" />
+          </Key>
+          <Property Name="salaryVoucherMasterId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ledgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="voucherNo" Type="varchar(max)" />
+          <Property Name="invoiceNo" Type="varchar(max)" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="month" Type="datetime" />
+          <Property Name="totalAmount" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="narration" Type="varchar(max)" />
+          <Property Name="suffixPrefixId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="voucherTypeId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="financialYearId" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
         <EntityType Name="SaleOrder">
           <Key>
             <PropertyRef Name="SaleOrderNo" />
@@ -906,6 +1006,8 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <Property Name="DiscOnSubtotal" Type="decimal" Precision="20" Scale="4" />
           <Property Name="ExtraCharges" Type="decimal" Precision="20" Scale="4" />
           <Property Name="TotalMargin" Type="decimal" Precision="20" Scale="4" />
+          <Property Name="VoucherId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="VoucherTypeId" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="SaleOrderDetail">
           <Key>
@@ -1291,6 +1393,7 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <Property Name="Title" Type="int" />
           <Property Name="isActive" Type="int" />
           <Property Name="desinationID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="designationId" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <Association Name="FK__AccountLe__accou__5E74FADA">
           <End Role="AccountGroup" Type="Self.AccountGroup" Multiplicity="0..1" />
@@ -1436,6 +1539,18 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__CreditNot__credi__027D5126">
+          <End Role="CreditNoteMaster" Type="Self.CreditNoteMaster" Multiplicity="0..1" />
+          <End Role="CreditNoteDetails" Type="Self.CreditNoteDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CreditNoteMaster">
+              <PropertyRef Name="creditNoteMasterId" />
+            </Principal>
+            <Dependent Role="CreditNoteDetails">
+              <PropertyRef Name="creditNoteMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__CreditNot__finan__7EE1CA6C">
           <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
           <End Role="CreditNoteMaster" Type="Self.CreditNoteMaster" Multiplicity="*" />
@@ -1445,6 +1560,18 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             </Principal>
             <Dependent Role="CreditNoteMaster">
               <PropertyRef Name="financialYearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CreditNot__ledge__0371755F">
+          <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
+          <End Role="CreditNoteDetails" Type="Self.CreditNoteDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="CreditNoteDetails">
+              <PropertyRef Name="ledgerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1721,6 +1848,66 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             </Principal>
             <Dependent Role="CustomerWorker">
               <PropertyRef Name="titleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DebitNote__debit__79E80B25">
+          <End Role="DebitNoteMaster" Type="Self.DebitNoteMaster" Multiplicity="0..1" />
+          <End Role="DebitNoteDetail" Type="Self.DebitNoteDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DebitNoteMaster">
+              <PropertyRef Name="debitNoteMasterId" />
+            </Principal>
+            <Dependent Role="DebitNoteDetail">
+              <PropertyRef Name="debitNoteMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DebitNote__excha__7BD05397">
+          <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
+          <End Role="DebitNoteDetail" Type="Self.DebitNoteDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExchangeRate">
+              <PropertyRef Name="exchangeRateID" />
+            </Principal>
+            <Dependent Role="DebitNoteDetail">
+              <PropertyRef Name="exchangeRateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DebitNote__ledge__7ADC2F5E">
+          <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
+          <End Role="DebitNoteDetail" Type="Self.DebitNoteDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="DebitNoteDetail">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DebitNote__userI__76177A41">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+          <End Role="DebitNoteMaster" Type="Self.DebitNoteMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerID" />
+            </Principal>
+            <Dependent Role="DebitNoteMaster">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DebitNote__vouch__770B9E7A">
+          <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
+          <End Role="DebitNoteMaster" Type="Self.DebitNoteMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="DebitNoteMaster">
+              <PropertyRef Name="voucherTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2396,7 +2583,7 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReceiptDe__excha__7152C524">
+        <Association Name="FK__ReceiptDe__excha__064DE20A">
           <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
           <End Role="ReceiptDetails" Type="Self.ReceiptDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2408,7 +2595,7 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReceiptDe__ledge__733B0D96">
+        <Association Name="FK__ReceiptDe__ledge__08362A7C">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="ReceiptDetails" Type="Self.ReceiptDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2420,7 +2607,19 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReceiptDe__recei__7246E95D">
+        <Association Name="FK__ReceiptDe__ledge__0C06BB60">
+          <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
+          <End Role="ReceiptDetail" Type="Self.ReceiptDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="ReceiptDetail">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReceiptDe__recei__07420643">
           <End Role="ReceiptMaster" Type="Self.ReceiptMaster" Multiplicity="0..1" />
           <End Role="ReceiptDetails" Type="Self.ReceiptDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2428,6 +2627,18 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
               <PropertyRef Name="receiptMasterId" />
             </Principal>
             <Dependent Role="ReceiptDetails">
+              <PropertyRef Name="receiptMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReceiptDe__recei__0B129727">
+          <End Role="ReceiptMaster" Type="Self.ReceiptMaster" Multiplicity="0..1" />
+          <End Role="ReceiptDetail" Type="Self.ReceiptDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReceiptMaster">
+              <PropertyRef Name="receiptMasterId" />
+            </Principal>
+            <Dependent Role="ReceiptDetail">
               <PropertyRef Name="receiptMasterId" />
             </Dependent>
           </ReferentialConstraint>
@@ -2441,6 +2652,78 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             </Principal>
             <Dependent Role="Route">
               <PropertyRef Name="areaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalaryVou__emplo__1D314762">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+          <End Role="SalaryVoucherDetail" Type="Self.SalaryVoucherDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerID" />
+            </Principal>
+            <Dependent Role="SalaryVoucherDetail">
+              <PropertyRef Name="employeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalaryVou__finan__17786E0C">
+          <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
+          <End Role="SalaryVoucherMaster" Type="Self.SalaryVoucherMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinancialYear">
+              <PropertyRef Name="financialYearId" />
+            </Principal>
+            <Dependent Role="SalaryVoucherMaster">
+              <PropertyRef Name="financialYearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalaryVou__ledge__1A54DAB7">
+          <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
+          <End Role="SalaryVoucherMaster" Type="Self.SalaryVoucherMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="SalaryVoucherMaster">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalaryVou__salar__1C3D2329">
+          <End Role="SalaryVoucherMaster" Type="Self.SalaryVoucherMaster" Multiplicity="0..1" />
+          <End Role="SalaryVoucherDetail" Type="Self.SalaryVoucherDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalaryVoucherMaster">
+              <PropertyRef Name="salaryVoucherMasterId" />
+            </Principal>
+            <Dependent Role="SalaryVoucherDetail">
+              <PropertyRef Name="salaryVoucherMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalaryVou__suffi__1960B67E">
+          <End Role="SuffixPrefix" Type="Self.SuffixPrefix" Multiplicity="0..1" />
+          <End Role="SalaryVoucherMaster" Type="Self.SalaryVoucherMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SuffixPrefix">
+              <PropertyRef Name="suffixprefixId" />
+            </Principal>
+            <Dependent Role="SalaryVoucherMaster">
+              <PropertyRef Name="suffixPrefixId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalaryVou__vouch__186C9245">
+          <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
+          <End Role="SalaryVoucherMaster" Type="Self.SalaryVoucherMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="SalaryVoucherMaster">
+              <PropertyRef Name="voucherTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2573,6 +2856,18 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             </Principal>
             <Dependent Role="SaleOrderDetail">
               <PropertyRef Name="SaleOrderNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SaleOrder__Vouch__149C0161">
+          <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
+          <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="SaleOrder">
+              <PropertyRef Name="VoucherTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2972,6 +3267,18 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Worker__designat__0CFADF99">
+          <End Role="Designation" Type="Self.Designation" Multiplicity="0..1" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Designation">
+              <PropertyRef Name="designationId" />
+            </Principal>
+            <Dependent Role="Worker">
+              <PropertyRef Name="designationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Worker__desinati__3E082B48">
           <End Role="Designation" Type="Self.Designation" Multiplicity="0..1" />
           <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
@@ -3223,6 +3530,7 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ContactType" EntityType="Self.ContactType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CreditNoteDetails" EntityType="Self.CreditNoteDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CreditNoteMaster" EntityType="Self.CreditNoteMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
@@ -3233,6 +3541,8 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <EntitySet Name="CustomerTitle" EntityType="Self.CustomerTitle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CustomerWorker" EntityType="Self.CustomerWorker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DailyDiscontinued" EntityType="Self.DailyDiscontinued" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DebitNoteDetail" EntityType="Self.DebitNoteDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DebitNoteMaster" EntityType="Self.DebitNoteMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DeliveryNoteMaster" EntityType="Self.DeliveryNoteMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Designation" EntityType="Self.Designation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DiscountValues" EntityType="Self.DiscountValues" Schema="dbo" store:Type="Tables" />
@@ -3249,6 +3559,7 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <EntitySet Name="LoaderDates" EntityType="Self.LoaderDates" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mail" EntityType="Self.Mail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Management" EntityType="Self.Management" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Master" EntityType="Self.Master" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MonthlySalary" EntityType="Self.MonthlySalary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OnSale" EntityType="Self.OnSale" Schema="dbo" store:Type="Tables" />
@@ -3269,10 +3580,13 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <EntitySet Name="Quotation" EntityType="Self.Quotation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuotationDetail" EntityType="Self.QuotationDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rate" EntityType="Self.Rate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReceiptDetail" EntityType="Self.ReceiptDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReceiptDetails" EntityType="Self.ReceiptDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ReceiptMaster" EntityType="Self.ReceiptMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleValue" EntityType="Self.RoleValue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Route" EntityType="Self.Route" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RSPro" EntityType="Self.RSPro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalaryVoucherMaster" EntityType="Self.SalaryVoucherMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SaleOrder" EntityType="Self.SaleOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SaleOrderDetail" EntityType="Self.SaleOrderDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
@@ -3299,16 +3613,18 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <EntitySet Name="VoucherType" EntityType="Self.VoucherType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VoucherTypeTax" EntityType="Self.VoucherTypeTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ReceiptDetails" EntityType="Self.ReceiptDetails" store:Type="Tables" store:Schema="dbo">
+          <EntitySet Name="SalaryVoucherDetail" EntityType="Self.SalaryVoucherDetail" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [ReceiptDetails].[receiptDetailsId] AS [receiptDetailsId], 
-    [ReceiptDetails].[receiptMasterId] AS [receiptMasterId], 
-    [ReceiptDetails].[ledgerId] AS [ledgerId], 
-    [ReceiptDetails].[amount] AS [amount], 
-    [ReceiptDetails].[exchangeRateId] AS [exchangeRateId], 
-    [ReceiptDetails].[chequeNo] AS [chequeNo], 
-    [ReceiptDetails].[chequeDate] AS [chequeDate]
-    FROM [dbo].[ReceiptDetails] AS [ReceiptDetails]</DefiningQuery>
+    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId], 
+    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId], 
+    [SalaryVoucherDetail].[employeeId] AS [employeeId], 
+    [SalaryVoucherDetail].[bonus] AS [bonus], 
+    [SalaryVoucherDetail].[deduction] AS [deduction], 
+    [SalaryVoucherDetail].[advance] AS [advance], 
+    [SalaryVoucherDetail].[lop] AS [lop], 
+    [SalaryVoucherDetail].[salary] AS [salary], 
+    [SalaryVoucherDetail].[status] AS [status]
+    FROM [dbo].[SalaryVoucherDetail] AS [SalaryVoucherDetail]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__AccountLe__accou__5E74FADA" Association="Self.FK__AccountLe__accou__5E74FADA">
             <End Role="AccountGroup" EntitySet="AccountGroup" />
@@ -3358,9 +3674,17 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             <End Role="Country" EntitySet="Country" />
             <End Role="City" EntitySet="City" />
           </AssociationSet>
+          <AssociationSet Name="FK__CreditNot__credi__027D5126" Association="Self.FK__CreditNot__credi__027D5126">
+            <End Role="CreditNoteMaster" EntitySet="CreditNoteMaster" />
+            <End Role="CreditNoteDetails" EntitySet="CreditNoteDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK__CreditNot__finan__7EE1CA6C" Association="Self.FK__CreditNot__finan__7EE1CA6C">
             <End Role="FinancialYear" EntitySet="FinancialYear" />
             <End Role="CreditNoteMaster" EntitySet="CreditNoteMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CreditNot__ledge__0371755F" Association="Self.FK__CreditNot__ledge__0371755F">
+            <End Role="AccountLedger" EntitySet="AccountLedger" />
+            <End Role="CreditNoteDetails" EntitySet="CreditNoteDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__CreditNot__userI__7DEDA633" Association="Self.FK__CreditNot__userI__7DEDA633">
             <End Role="Worker" EntitySet="Worker" />
@@ -3453,6 +3777,26 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <AssociationSet Name="FK__CustomerW__title__45F365D3" Association="Self.FK__CustomerW__title__45F365D3">
             <End Role="CustomerTitle" EntitySet="CustomerTitle" />
             <End Role="CustomerWorker" EntitySet="CustomerWorker" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DebitNote__debit__79E80B25" Association="Self.FK__DebitNote__debit__79E80B25">
+            <End Role="DebitNoteMaster" EntitySet="DebitNoteMaster" />
+            <End Role="DebitNoteDetail" EntitySet="DebitNoteDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DebitNote__excha__7BD05397" Association="Self.FK__DebitNote__excha__7BD05397">
+            <End Role="ExchangeRate" EntitySet="ExchangeRate" />
+            <End Role="DebitNoteDetail" EntitySet="DebitNoteDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DebitNote__ledge__7ADC2F5E" Association="Self.FK__DebitNote__ledge__7ADC2F5E">
+            <End Role="AccountLedger" EntitySet="AccountLedger" />
+            <End Role="DebitNoteDetail" EntitySet="DebitNoteDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DebitNote__userI__76177A41" Association="Self.FK__DebitNote__userI__76177A41">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="DebitNoteMaster" EntitySet="DebitNoteMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DebitNote__vouch__770B9E7A" Association="Self.FK__DebitNote__vouch__770B9E7A">
+            <End Role="VoucherType" EntitySet="VoucherType" />
+            <End Role="DebitNoteMaster" EntitySet="DebitNoteMaster" />
           </AssociationSet>
           <AssociationSet Name="FK__DeliveryN__excha__16B953FD" Association="Self.FK__DeliveryN__excha__16B953FD">
             <End Role="ExchangeRate" EntitySet="ExchangeRate" />
@@ -3678,21 +4022,53 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             <End Role="Quotation" EntitySet="Quotation" />
             <End Role="QuotationDetail" EntitySet="QuotationDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__excha__7152C524" Association="Self.FK__ReceiptDe__excha__7152C524">
+          <AssociationSet Name="FK__ReceiptDe__excha__064DE20A" Association="Self.FK__ReceiptDe__excha__064DE20A">
             <End Role="ExchangeRate" EntitySet="ExchangeRate" />
             <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__ledge__733B0D96" Association="Self.FK__ReceiptDe__ledge__733B0D96">
+          <AssociationSet Name="FK__ReceiptDe__ledge__08362A7C" Association="Self.FK__ReceiptDe__ledge__08362A7C">
             <End Role="AccountLedger" EntitySet="AccountLedger" />
             <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__recei__7246E95D" Association="Self.FK__ReceiptDe__recei__7246E95D">
+          <AssociationSet Name="FK__ReceiptDe__ledge__0C06BB60" Association="Self.FK__ReceiptDe__ledge__0C06BB60">
+            <End Role="AccountLedger" EntitySet="AccountLedger" />
+            <End Role="ReceiptDetail" EntitySet="ReceiptDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__recei__07420643" Association="Self.FK__ReceiptDe__recei__07420643">
             <End Role="ReceiptMaster" EntitySet="ReceiptMaster" />
             <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__recei__0B129727" Association="Self.FK__ReceiptDe__recei__0B129727">
+            <End Role="ReceiptMaster" EntitySet="ReceiptMaster" />
+            <End Role="ReceiptDetail" EntitySet="ReceiptDetail" />
           </AssociationSet>
           <AssociationSet Name="FK__Route__areaId__6FD49106" Association="Self.FK__Route__areaId__6FD49106">
             <End Role="Area" EntitySet="Area" />
             <End Role="Route" EntitySet="Route" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalaryVou__emplo__1D314762" Association="Self.FK__SalaryVou__emplo__1D314762">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="SalaryVoucherDetail" EntitySet="SalaryVoucherDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalaryVou__finan__17786E0C" Association="Self.FK__SalaryVou__finan__17786E0C">
+            <End Role="FinancialYear" EntitySet="FinancialYear" />
+            <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalaryVou__ledge__1A54DAB7" Association="Self.FK__SalaryVou__ledge__1A54DAB7">
+            <End Role="AccountLedger" EntitySet="AccountLedger" />
+            <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalaryVou__salar__1C3D2329" Association="Self.FK__SalaryVou__salar__1C3D2329">
+            <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMaster" />
+            <End Role="SalaryVoucherDetail" EntitySet="SalaryVoucherDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalaryVou__suffi__1960B67E" Association="Self.FK__SalaryVou__suffi__1960B67E">
+            <End Role="SuffixPrefix" EntitySet="SuffixPrefix" />
+            <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalaryVou__vouch__186C9245" Association="Self.FK__SalaryVou__vouch__186C9245">
+            <End Role="VoucherType" EntitySet="VoucherType" />
+            <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMaster" />
           </AssociationSet>
           <AssociationSet Name="FK__SaleOrder__Conta__1DD065E0" Association="Self.FK__SaleOrder__Conta__1DD065E0">
             <End Role="CustomerWorker" EntitySet="CustomerWorker" />
@@ -3737,6 +4113,10 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <AssociationSet Name="FK__SaleOrder__SaleO__0B7CAB7B" Association="Self.FK__SaleOrder__SaleO__0B7CAB7B">
             <End Role="SaleOrder" EntitySet="SaleOrder" />
             <End Role="SaleOrderDetail" EntitySet="SaleOrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SaleOrder__Vouch__149C0161" Association="Self.FK__SaleOrder__Vouch__149C0161">
+            <End Role="VoucherType" EntitySet="VoucherType" />
+            <End Role="SaleOrder" EntitySet="SaleOrder" />
           </AssociationSet>
           <AssociationSet Name="FK__SuffixPre__vouch__0682EC34" Association="Self.FK__SuffixPre__vouch__0682EC34">
             <End Role="VoucherType" EntitySet="VoucherType" />
@@ -3869,6 +4249,10 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <AssociationSet Name="FK__VoucherTy__vouch__69279377" Association="Self.FK__VoucherTy__vouch__69279377">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="VoucherTypeTax" EntitySet="VoucherTypeTax" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Worker__designat__0CFADF99" Association="Self.FK__Worker__designat__0CFADF99">
+            <End Role="Designation" EntitySet="Designation" />
+            <End Role="Worker" EntitySet="Worker" />
           </AssociationSet>
           <AssociationSet Name="FK__Worker__desinati__3E082B48" Association="Self.FK__Worker__desinati__3E082B48">
             <End Role="Designation" EntitySet="Designation" />
@@ -4088,6 +4472,15 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             <Parameter Name="voucherTypeName" Mode="In" Type="String" />
             <Parameter Name="MasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="PDCClearanceRegisterSearch" ReturnType="Collection(IMEModel.PDCClearanceRegisterSearch_Result)">
+            <Parameter Name="voucherTypeName" Mode="In" Type="String" />
+            <Parameter Name="ledgerName" Mode="In" Type="String" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="chequeNo" Mode="In" Type="String" />
+            <Parameter Name="bankId" Mode="In" Type="Decimal" />
+            <Parameter Name="status" Mode="In" Type="String" />
+          </FunctionImport>
           <EntitySet Name="AccountGroups" EntityType="IMEModel.AccountGroup" />
           <EntitySet Name="AccountLedgers" EntityType="IMEModel.AccountLedger" />
           <EntitySet Name="AdvancePayments" EntityType="IMEModel.AdvancePayment" />
@@ -4099,6 +4492,7 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <EntitySet Name="Cities" EntityType="IMEModel.City" />
           <EntitySet Name="ContactTypes" EntityType="IMEModel.ContactType" />
           <EntitySet Name="Countries" EntityType="IMEModel.Country" />
+          <EntitySet Name="CreditNoteDetails" EntityType="IMEModel.CreditNoteDetail" />
           <EntitySet Name="CreditNoteMasters" EntityType="IMEModel.CreditNoteMaster" />
           <EntitySet Name="Currencies" EntityType="IMEModel.Currency" />
           <EntitySet Name="Customers" EntityType="IMEModel.Customer" />
@@ -4109,6 +4503,8 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <EntitySet Name="CustomerTitles" EntityType="IMEModel.CustomerTitle" />
           <EntitySet Name="CustomerWorkers" EntityType="IMEModel.CustomerWorker" />
           <EntitySet Name="DailyDiscontinueds" EntityType="IMEModel.DailyDiscontinued" />
+          <EntitySet Name="DebitNoteDetails" EntityType="IMEModel.DebitNoteDetail" />
+          <EntitySet Name="DebitNoteMasters" EntityType="IMEModel.DebitNoteMaster" />
           <EntitySet Name="DeliveryNoteMasters" EntityType="IMEModel.DeliveryNoteMaster" />
           <EntitySet Name="Designations" EntityType="IMEModel.Designation" />
           <EntitySet Name="DiscountValues" EntityType="IMEModel.DiscountValue" />
@@ -4125,6 +4521,7 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <EntitySet Name="LoaderDates" EntityType="IMEModel.LoaderDate" />
           <EntitySet Name="Mails" EntityType="IMEModel.Mail" />
           <EntitySet Name="Managements" EntityType="IMEModel.Management" />
+          <EntitySet Name="Masters" EntityType="IMEModel.Master" />
           <EntitySet Name="MonthlySalaries" EntityType="IMEModel.MonthlySalary" />
           <EntitySet Name="Notes" EntityType="IMEModel.Note" />
           <EntitySet Name="OnSales" EntityType="IMEModel.OnSale" />
@@ -4145,10 +4542,13 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <EntitySet Name="Quotations" EntityType="IMEModel.Quotation" />
           <EntitySet Name="QuotationDetails" EntityType="IMEModel.QuotationDetail" />
           <EntitySet Name="Rates" EntityType="IMEModel.Rate" />
+          <EntitySet Name="ReceiptDetails" EntityType="IMEModel.ReceiptDetail" />
+          <EntitySet Name="ReceiptDetails1" EntityType="IMEModel.ReceiptDetail1" />
           <EntitySet Name="ReceiptMasters" EntityType="IMEModel.ReceiptMaster" />
           <EntitySet Name="RoleValues" EntityType="IMEModel.RoleValue" />
           <EntitySet Name="Routes" EntityType="IMEModel.Route" />
           <EntitySet Name="RSProes" EntityType="IMEModel.RSPro" />
+          <EntitySet Name="SalaryVoucherMasters" EntityType="IMEModel.SalaryVoucherMaster" />
           <EntitySet Name="SaleOrders" EntityType="IMEModel.SaleOrder" />
           <EntitySet Name="SaleOrderDetails" EntityType="IMEModel.SaleOrderDetail" />
           <EntitySet Name="Settings" EntityType="IMEModel.Setting" />
@@ -4174,7 +4574,7 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <EntitySet Name="VoucherTypes" EntityType="IMEModel.VoucherType" />
           <EntitySet Name="VoucherTypeTaxes" EntityType="IMEModel.VoucherTypeTax" />
           <EntitySet Name="Workers" EntityType="IMEModel.Worker" />
-          <EntitySet Name="ReceiptDetails" EntityType="IMEModel.ReceiptDetail" />
+          <EntitySet Name="SalaryVoucherDetails" EntityType="IMEModel.SalaryVoucherDetail" />
           <AssociationSet Name="FK__AccountLe__accou__5E74FADA" Association="IMEModel.FK__AccountLe__accou__5E74FADA">
             <End Role="AccountGroup" EntitySet="AccountGroups" />
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
@@ -4190,6 +4590,14 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <AssociationSet Name="FK__AdvancePa__ledge__4F32B74A" Association="IMEModel.FK__AdvancePa__ledge__4F32B74A">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="AdvancePayment" EntitySet="AdvancePayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CreditNot__ledge__0371755F" Association="IMEModel.FK__CreditNot__ledge__0371755F">
+            <End Role="AccountLedger" EntitySet="AccountLedgers" />
+            <End Role="CreditNoteDetail" EntitySet="CreditNoteDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DebitNote__ledge__7ADC2F5E" Association="IMEModel.FK__DebitNote__ledge__7ADC2F5E">
+            <End Role="AccountLedger" EntitySet="AccountLedgers" />
+            <End Role="DebitNoteDetail" EntitySet="DebitNoteDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__DeliveryN__ledge__14D10B8B" Association="IMEModel.FK__DeliveryN__ledge__14D10B8B">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
@@ -4219,9 +4627,17 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="PDCReceivableMaster" EntitySet="PDCReceivableMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__ledge__733B0D96" Association="IMEModel.FK__ReceiptDe__ledge__733B0D96">
+          <AssociationSet Name="FK__ReceiptDe__ledge__08362A7C" Association="IMEModel.FK__ReceiptDe__ledge__08362A7C">
+            <End Role="AccountLedger" EntitySet="AccountLedgers" />
+            <End Role="ReceiptDetail1" EntitySet="ReceiptDetails1" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__ledge__0C06BB60" Association="IMEModel.FK__ReceiptDe__ledge__0C06BB60">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalaryVou__ledge__1A54DAB7" Association="IMEModel.FK__SalaryVou__ledge__1A54DAB7">
+            <End Role="AccountLedger" EntitySet="AccountLedgers" />
+            <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMasters" />
           </AssociationSet>
           <AssociationSet Name="FK__AdvancePa__emplo__4D4A6ED8" Association="IMEModel.FK__AdvancePa__emplo__4D4A6ED8">
             <End Role="Worker" EntitySet="Workers" />
@@ -4274,6 +4690,10 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <AssociationSet Name="FK__SupplierA__Count__3FD07829" Association="IMEModel.FK__SupplierA__Count__3FD07829">
             <End Role="Country" EntitySet="Countries" />
             <End Role="SupplierAdress" EntitySet="SupplierAdresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CreditNot__credi__027D5126" Association="IMEModel.FK__CreditNot__credi__027D5126">
+            <End Role="CreditNoteMaster" EntitySet="CreditNoteMasters" />
+            <End Role="CreditNoteDetail" EntitySet="CreditNoteDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__CreditNot__finan__7EE1CA6C" Association="IMEModel.FK__CreditNot__finan__7EE1CA6C">
             <End Role="FinancialYear" EntitySet="FinancialYears" />
@@ -4407,6 +4827,22 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
+          <AssociationSet Name="FK__DebitNote__debit__79E80B25" Association="IMEModel.FK__DebitNote__debit__79E80B25">
+            <End Role="DebitNoteMaster" EntitySet="DebitNoteMasters" />
+            <End Role="DebitNoteDetail" EntitySet="DebitNoteDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DebitNote__excha__7BD05397" Association="IMEModel.FK__DebitNote__excha__7BD05397">
+            <End Role="ExchangeRate" EntitySet="ExchangeRates" />
+            <End Role="DebitNoteDetail" EntitySet="DebitNoteDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DebitNote__userI__76177A41" Association="IMEModel.FK__DebitNote__userI__76177A41">
+            <End Role="Worker" EntitySet="Workers" />
+            <End Role="DebitNoteMaster" EntitySet="DebitNoteMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DebitNote__vouch__770B9E7A" Association="IMEModel.FK__DebitNote__vouch__770B9E7A">
+            <End Role="VoucherType" EntitySet="VoucherTypes" />
+            <End Role="DebitNoteMaster" EntitySet="DebitNoteMasters" />
+          </AssociationSet>
           <AssociationSet Name="FK__DeliveryN__excha__16B953FD" Association="IMEModel.FK__DeliveryN__excha__16B953FD">
             <End Role="ExchangeRate" EntitySet="ExchangeRates" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMasters" />
@@ -4435,6 +4871,10 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMasters" />
           </AssociationSet>
+          <AssociationSet Name="FK__Worker__designat__0CFADF99" Association="IMEModel.FK__Worker__designat__0CFADF99">
+            <End Role="Designation" EntitySet="Designations" />
+            <End Role="Worker" EntitySet="Workers" />
+          </AssociationSet>
           <AssociationSet Name="FK__Worker__desinati__3E082B48" Association="IMEModel.FK__Worker__desinati__3E082B48">
             <End Role="Designation" EntitySet="Designations" />
             <End Role="Worker" EntitySet="Workers" />
@@ -4455,9 +4895,9 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             <End Role="ExchangeRate" EntitySet="ExchangeRates" />
             <End Role="PartyBalance" EntitySet="PartyBalances" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__excha__7152C524" Association="IMEModel.FK__ReceiptDe__excha__7152C524">
+          <AssociationSet Name="FK__ReceiptDe__excha__064DE20A" Association="IMEModel.FK__ReceiptDe__excha__064DE20A">
             <End Role="ExchangeRate" EntitySet="ExchangeRates" />
-            <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
+            <End Role="ReceiptDetail1" EntitySet="ReceiptDetails1" />
           </AssociationSet>
           <AssociationSet Name="FK__JournalMa__finan__095F58DF" Association="IMEModel.FK__JournalMa__finan__095F58DF">
             <End Role="FinancialYear" EntitySet="FinancialYears" />
@@ -4490,6 +4930,10 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <AssociationSet Name="FK__PDCReceiv__finan__4E0988E7" Association="IMEModel.FK__PDCReceiv__finan__4E0988E7">
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="PDCReceivableMaster" EntitySet="PDCReceivableMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalaryVou__finan__17786E0C" Association="IMEModel.FK__SalaryVou__finan__17786E0C">
+            <End Role="FinancialYear" EntitySet="FinancialYears" />
+            <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMasters" />
           </AssociationSet>
           <AssociationSet Name="FK__ItemNote__NoteID__2B0A656D" Association="IMEModel.FK__ItemNote__NoteID__2B0A656D">
             <End Role="Note" EntitySet="Notes" />
@@ -4631,9 +5075,25 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             <End Role="Rate" EntitySet="Rates" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__recei__7246E95D" Association="IMEModel.FK__ReceiptDe__recei__7246E95D">
+          <AssociationSet Name="FK__ReceiptDe__recei__0B129727" Association="IMEModel.FK__ReceiptDe__recei__0B129727">
             <End Role="ReceiptMaster" EntitySet="ReceiptMasters" />
             <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__recei__07420643" Association="IMEModel.FK__ReceiptDe__recei__07420643">
+            <End Role="ReceiptMaster" EntitySet="ReceiptMasters" />
+            <End Role="ReceiptDetail1" EntitySet="ReceiptDetails1" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalaryVou__salar__1C3D2329" Association="IMEModel.FK__SalaryVou__salar__1C3D2329">
+            <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMasters" />
+            <End Role="SalaryVoucherDetail" EntitySet="SalaryVoucherDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalaryVou__suffi__1960B67E" Association="IMEModel.FK__SalaryVou__suffi__1960B67E">
+            <End Role="SuffixPrefix" EntitySet="SuffixPrefixes" />
+            <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalaryVou__vouch__186C9245" Association="IMEModel.FK__SalaryVou__vouch__186C9245">
+            <End Role="VoucherType" EntitySet="VoucherTypes" />
+            <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMasters" />
           </AssociationSet>
           <AssociationSet Name="FK__SaleOrder__Repre__22951AFD" Association="IMEModel.FK__SaleOrder__Repre__22951AFD">
             <End Role="Worker" EntitySet="Workers" />
@@ -4642,6 +5102,10 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <AssociationSet Name="FK__SaleOrder__SaleO__0B7CAB7B" Association="IMEModel.FK__SaleOrder__SaleO__0B7CAB7B">
             <End Role="SaleOrder" EntitySet="SaleOrders" />
             <End Role="SaleOrderDetail" EntitySet="SaleOrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SaleOrder__Vouch__149C0161" Association="IMEModel.FK__SaleOrder__Vouch__149C0161">
+            <End Role="VoucherType" EntitySet="VoucherTypes" />
+            <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
           <AssociationSet Name="FK__SuffixPre__vouch__0682EC34" Association="IMEModel.FK__SuffixPre__vouch__0682EC34">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
@@ -4727,6 +5191,10 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="VoucherTypeTax" EntitySet="VoucherTypeTaxes" />
           </AssociationSet>
+          <AssociationSet Name="FK__SalaryVou__emplo__1D314762" Association="IMEModel.FK__SalaryVou__emplo__1D314762">
+            <End Role="Worker" EntitySet="Workers" />
+            <End Role="SalaryVoucherDetail" EntitySet="SalaryVoucherDetails" />
+          </AssociationSet>
           <AssociationSet Name="AuthRole" Association="IMEModel.AuthRole">
             <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
             <End Role="RoleValue" EntitySet="RoleValues" />
@@ -4735,15 +5203,6 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
             <End Role="Worker" EntitySet="Workers" />
           </AssociationSet>
-          <FunctionImport Name="PDCClearanceRegisterSearch" ReturnType="Collection(IMEModel.PDCClearanceRegisterSearch_Result)">
-            <Parameter Name="voucherTypeName" Mode="In" Type="String" />
-            <Parameter Name="ledgerName" Mode="In" Type="String" />
-            <Parameter Name="toDate" Mode="In" Type="DateTime" />
-            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
-            <Parameter Name="chequeNo" Mode="In" Type="String" />
-            <Parameter Name="bankId" Mode="In" Type="Decimal" />
-            <Parameter Name="status" Mode="In" Type="String" />
-          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="PayHeadGet_Result">
           <Property Type="Decimal" Name="PayheadId" Nullable="false" Precision="18" Scale="0" />
@@ -4769,6 +5228,22 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <Property Type="String" Name="chequeNo" Nullable="true" />
           <Property Type="Decimal" Name="BankId" Nullable="true" Precision="18" Scale="0" />
           <Property Type="String" Name="Bank" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PDCClearanceRegisterSearch_Result">
+          <Property Type="Decimal" Name="PDCClearanceMasterId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="voucherNo" Nullable="true" />
+          <Property Type="String" Name="voucherTypeName" Nullable="true" />
+          <Property Type="Decimal" Name="suffixPrefixId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="againstId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="date" Nullable="true" />
+          <Property Type="String" Name="narration" Nullable="true" />
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="Decimal" Name="voucherTypeId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="financialYearId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="status" Nullable="true" />
+          <Property Type="String" Name="ledgerName" Nullable="true" />
+          <Property Type="String" Name="type" Nullable="true" />
+          <Property Type="Decimal" Name="amount" Nullable="true" Precision="18" Scale="2" />
         </ComplexType>
         <EntityType Name="AccountGroup">
           <Key>
@@ -4817,6 +5292,8 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <NavigationProperty Name="Area" Relationship="IMEModel.FK__AccountLe__areaI__5C8CB268" FromRole="AccountLedger" ToRole="Area" />
           <NavigationProperty Name="Route" Relationship="IMEModel.FK__AccountLe__route__5D80D6A1" FromRole="AccountLedger" ToRole="Route" />
           <NavigationProperty Name="AdvancePayments" Relationship="IMEModel.FK__AdvancePa__ledge__4F32B74A" FromRole="AccountLedger" ToRole="AdvancePayment" />
+          <NavigationProperty Name="CreditNoteDetails" Relationship="IMEModel.FK__CreditNot__ledge__0371755F" FromRole="AccountLedger" ToRole="CreditNoteDetail" />
+          <NavigationProperty Name="DebitNoteDetails" Relationship="IMEModel.FK__DebitNote__ledge__7ADC2F5E" FromRole="AccountLedger" ToRole="DebitNoteDetail" />
           <NavigationProperty Name="DeliveryNoteMasters" Relationship="IMEModel.FK__DeliveryN__ledge__14D10B8B" FromRole="AccountLedger" ToRole="DeliveryNoteMaster" />
           <NavigationProperty Name="LedgerPostings" Relationship="IMEModel.FK__LedgerPos__ledge__605D434C" FromRole="AccountLedger" ToRole="LedgerPosting" />
           <NavigationProperty Name="PartyBalances" Relationship="IMEModel.FK__PartyBala__ledge__57C7FD4B" FromRole="AccountLedger" ToRole="PartyBalance" />
@@ -4824,7 +5301,9 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <NavigationProperty Name="PDCClearanceMasters" Relationship="IMEModel.FK__PDCCleara__ledge__5E3FF0B0" FromRole="AccountLedger" ToRole="PDCClearanceMaster" />
           <NavigationProperty Name="PDCPayableMasters" Relationship="IMEModel.FK__PDCPayabl__ledge__28D80438" FromRole="AccountLedger" ToRole="PDCPayableMaster" />
           <NavigationProperty Name="PDCReceivableMasters" Relationship="IMEModel.FK__PDCReceiv__ledge__4B2D1C3C" FromRole="AccountLedger" ToRole="PDCReceivableMaster" />
-          <NavigationProperty Name="ReceiptDetails" Relationship="IMEModel.FK__ReceiptDe__ledge__733B0D96" FromRole="AccountLedger" ToRole="ReceiptDetail" />
+          <NavigationProperty Name="ReceiptDetails" Relationship="IMEModel.FK__ReceiptDe__ledge__08362A7C" FromRole="AccountLedger" ToRole="ReceiptDetail1" />
+          <NavigationProperty Name="ReceiptDetails1" Relationship="IMEModel.FK__ReceiptDe__ledge__0C06BB60" FromRole="AccountLedger" ToRole="ReceiptDetail" />
+          <NavigationProperty Name="SalaryVoucherMasters" Relationship="IMEModel.FK__SalaryVou__ledge__1A54DAB7" FromRole="AccountLedger" ToRole="SalaryVoucherMaster" />
         </EntityType>
         <EntityType Name="AdvancePayment">
           <Key>
@@ -4833,7 +5312,7 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <Property Name="advancePaymentId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="employeeId" Type="Int32" />
           <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="voucherNo" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="voucherNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="invoiceNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="amount" Type="Decimal" Precision="18" Scale="5" />
@@ -4931,6 +5410,21 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <NavigationProperty Name="CustomerAddresses" Relationship="IMEModel.FK__CustomerA__Count__503BEA1C" FromRole="Country" ToRole="CustomerAddress" />
           <NavigationProperty Name="SupplierAdresses" Relationship="IMEModel.FK__SupplierA__Count__3FD07829" FromRole="Country" ToRole="SupplierAdress" />
         </EntityType>
+        <EntityType Name="CreditNoteDetail">
+          <Key>
+            <PropertyRef Name="creditNoteDetailsId" />
+          </Key>
+          <Property Name="creditNoteDetailsId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="creditNoteMasterId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="credit" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="debit" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="exchangeRateId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="chequeDate" Type="DateTime" Precision="3" />
+          <Property Name="chequeNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__CreditNot__ledge__0371755F" FromRole="CreditNoteDetail" ToRole="AccountLedger" />
+          <NavigationProperty Name="CreditNoteMaster" Relationship="IMEModel.FK__CreditNot__credi__027D5126" FromRole="CreditNoteDetail" ToRole="CreditNoteMaster" />
+        </EntityType>
         <EntityType Name="CreditNoteMaster">
           <Key>
             <PropertyRef Name="creditNoteMasterId" />
@@ -4945,6 +5439,7 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="CreditNoteDetails" Relationship="IMEModel.FK__CreditNot__credi__027D5126" FromRole="CreditNoteMaster" ToRole="CreditNoteDetail" />
           <NavigationProperty Name="FinancialYear" Relationship="IMEModel.FK__CreditNot__finan__7EE1CA6C" FromRole="CreditNoteMaster" ToRole="FinancialYear" />
           <NavigationProperty Name="Worker" Relationship="IMEModel.FK__CreditNot__userI__7DEDA633" FromRole="CreditNoteMaster" ToRole="Worker" />
           <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__CreditNot__vouch__03A67F89" FromRole="CreditNoteMaster" ToRole="VoucherType" />
@@ -5109,6 +5604,40 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <Property Name="Runon" Type="Int32" />
           <Property Name="Referral" Type="Int32" />
         </EntityType>
+        <EntityType Name="DebitNoteDetail">
+          <Key>
+            <PropertyRef Name="debitNoteDetailsId" />
+          </Key>
+          <Property Name="debitNoteDetailsId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="debitNoteMasterId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="credit" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="debit" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="exchangeRateId" Type="Int32" />
+          <Property Name="chequeNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="chequeDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__DebitNote__ledge__7ADC2F5E" FromRole="DebitNoteDetail" ToRole="AccountLedger" />
+          <NavigationProperty Name="DebitNoteMaster" Relationship="IMEModel.FK__DebitNote__debit__79E80B25" FromRole="DebitNoteDetail" ToRole="DebitNoteMaster" />
+          <NavigationProperty Name="ExchangeRate" Relationship="IMEModel.FK__DebitNote__excha__7BD05397" FromRole="DebitNoteDetail" ToRole="ExchangeRate" />
+        </EntityType>
+        <EntityType Name="DebitNoteMaster">
+          <Key>
+            <PropertyRef Name="debitNoteMasterId" />
+          </Key>
+          <Property Name="debitNoteMasterId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="voucherNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="invoiceNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="suffixPrefixId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="totalAmount" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="DebitNoteDetails" Relationship="IMEModel.FK__DebitNote__debit__79E80B25" FromRole="DebitNoteMaster" ToRole="DebitNoteDetail" />
+          <NavigationProperty Name="Worker" Relationship="IMEModel.FK__DebitNote__userI__76177A41" FromRole="DebitNoteMaster" ToRole="Worker" />
+          <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__DebitNote__vouch__770B9E7A" FromRole="DebitNoteMaster" ToRole="VoucherType" />
+        </EntityType>
         <EntityType Name="DeliveryNoteMaster">
           <Key>
             <PropertyRef Name="deliveryNoteMasterId" />
@@ -5148,7 +5677,8 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <Property Name="leaveDays" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="advanceAmount" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Workers" Relationship="IMEModel.FK__Worker__desinati__3E082B48" FromRole="Designation" ToRole="Worker" />
+          <NavigationProperty Name="Workers" Relationship="IMEModel.FK__Worker__designat__0CFADF99" FromRole="Designation" ToRole="Worker" />
+          <NavigationProperty Name="Workers1" Relationship="IMEModel.FK__Worker__desinati__3E082B48" FromRole="Designation" ToRole="Worker" />
         </EntityType>
         <EntityType Name="DiscountValue">
           <Key>
@@ -5187,10 +5717,11 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="rate" Type="Decimal" Precision="18" Scale="5" />
           <NavigationProperty Name="Currency" Relationship="IMEModel.FK__tbl_Excha__curre__52442E1F" FromRole="ExchangeRate" ToRole="Currency" />
+          <NavigationProperty Name="DebitNoteDetails" Relationship="IMEModel.FK__DebitNote__excha__7BD05397" FromRole="ExchangeRate" ToRole="DebitNoteDetail" />
           <NavigationProperty Name="DeliveryNoteMasters" Relationship="IMEModel.FK__DeliveryN__excha__16B953FD" FromRole="ExchangeRate" ToRole="DeliveryNoteMaster" />
           <NavigationProperty Name="JournalDetails" Relationship="IMEModel.FK__JournalDe__excha__0F183235" FromRole="ExchangeRate" ToRole="JournalDetail" />
           <NavigationProperty Name="PartyBalances" Relationship="IMEModel.FK__PartyBala__excha__5AA469F6" FromRole="ExchangeRate" ToRole="PartyBalance" />
-          <NavigationProperty Name="ReceiptDetails" Relationship="IMEModel.FK__ReceiptDe__excha__7152C524" FromRole="ExchangeRate" ToRole="ReceiptDetail" />
+          <NavigationProperty Name="ReceiptDetails" Relationship="IMEModel.FK__ReceiptDe__excha__064DE20A" FromRole="ExchangeRate" ToRole="ReceiptDetail1" />
         </EntityType>
         <EntityType Name="ExtendedRange">
           <Key>
@@ -5248,6 +5779,7 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <NavigationProperty Name="PDCClearanceMasters" Relationship="IMEModel.FK__PDCCleara__finan__611C5D5B" FromRole="FinancialYear" ToRole="PDCClearanceMaster" />
           <NavigationProperty Name="PDCPayableMasters" Relationship="IMEModel.FK__PDCPayabl__finan__2BB470E3" FromRole="FinancialYear" ToRole="PDCPayableMaster" />
           <NavigationProperty Name="PDCReceivableMasters" Relationship="IMEModel.FK__PDCReceiv__finan__4E0988E7" FromRole="FinancialYear" ToRole="PDCReceivableMaster" />
+          <NavigationProperty Name="SalaryVoucherMasters" Relationship="IMEModel.FK__SalaryVou__finan__17786E0C" FromRole="FinancialYear" ToRole="SalaryVoucherMaster" />
         </EntityType>
         <EntityType Name="Hazardou">
           <Key>
@@ -5371,6 +5903,23 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <Property Name="CurrentFinancialYear" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="Currency" Relationship="IMEModel.FK__Managemen__Defau__253C7D7E" FromRole="Management" ToRole="Currency" />
           <NavigationProperty Name="FinancialYear" Relationship="IMEModel.FK__Managemen__Curre__338A9CD5" FromRole="Management" ToRole="FinancialYear" />
+        </EntityType>
+        <EntityType Name="Master">
+          <Key>
+            <PropertyRef Name="masterId" />
+          </Key>
+          <Property Name="masterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="formName" Type="Int32" />
+          <Property Name="isTwoLineForHedder" Type="Boolean" />
+          <Property Name="isTwoLineForDetails" Type="Boolean" />
+          <Property Name="pageSize1" Type="Int32" />
+          <Property Name="pageSizeOther" Type="Int32" />
+          <Property Name="blankLneForFooter" Type="Int32" />
+          <Property Name="footerLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="lineCountBetweenTwo" Type="Int32" />
+          <Property Name="pitch" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="condensed" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="lineCountAfterPrint" Type="Int32" />
         </EntityType>
         <EntityType Name="MonthlySalary">
           <Key>
@@ -5748,6 +6297,35 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <Property Name="RateSellEffective" Type="Decimal" Precision="20" Scale="10" />
           <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__rate_I__625A9A57" FromRole="Rate" ToRole="Supplier" />
         </EntityType>
+        <EntityType Name="ReceiptDetail">
+          <Key>
+            <PropertyRef Name="receiptDetailsId" />
+          </Key>
+          <Property Name="receiptDetailsId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="receiptMasterId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="amount" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="exchangeRateId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="chequeNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="chequeDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__ReceiptDe__ledge__0C06BB60" FromRole="ReceiptDetail" ToRole="AccountLedger" />
+          <NavigationProperty Name="ReceiptMaster" Relationship="IMEModel.FK__ReceiptDe__recei__0B129727" FromRole="ReceiptDetail" ToRole="ReceiptMaster" />
+        </EntityType>
+        <EntityType Name="ReceiptDetail1">
+          <Key>
+            <PropertyRef Name="receiptDetailsId" />
+          </Key>
+          <Property Name="receiptDetailsId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="receiptMasterId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="amount" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="exchangeRateId" Type="Int32" />
+          <Property Name="chequeNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="chequeDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__ReceiptDe__ledge__08362A7C" FromRole="ReceiptDetail1" ToRole="AccountLedger" />
+          <NavigationProperty Name="ExchangeRate" Relationship="IMEModel.FK__ReceiptDe__excha__064DE20A" FromRole="ReceiptDetail1" ToRole="ExchangeRate" />
+          <NavigationProperty Name="ReceiptMaster" Relationship="IMEModel.FK__ReceiptDe__recei__07420643" FromRole="ReceiptDetail1" ToRole="ReceiptMaster" />
+        </EntityType>
         <EntityType Name="ReceiptMaster">
           <Key>
             <PropertyRef Name="receiptMasterId" />
@@ -5763,7 +6341,8 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="userId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="ReceiptDetails" Relationship="IMEModel.FK__ReceiptDe__recei__7246E95D" FromRole="ReceiptMaster" ToRole="ReceiptDetail" />
+          <NavigationProperty Name="ReceiptDetails" Relationship="IMEModel.FK__ReceiptDe__recei__0B129727" FromRole="ReceiptMaster" ToRole="ReceiptDetail" />
+          <NavigationProperty Name="ReceiptDetails1" Relationship="IMEModel.FK__ReceiptDe__recei__07420643" FromRole="ReceiptMaster" ToRole="ReceiptDetail1" />
         </EntityType>
         <EntityType Name="RoleValue">
           <Key>
@@ -5796,6 +6375,27 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <Property Name="Height" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="GrossWeight" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="SalaryVoucherMaster">
+          <Key>
+            <PropertyRef Name="salaryVoucherMasterId" />
+          </Key>
+          <Property Name="salaryVoucherMasterId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="voucherNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="invoiceNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="month" Type="DateTime" Precision="3" />
+          <Property Name="totalAmount" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="suffixPrefixId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__SalaryVou__ledge__1A54DAB7" FromRole="SalaryVoucherMaster" ToRole="AccountLedger" />
+          <NavigationProperty Name="FinancialYear" Relationship="IMEModel.FK__SalaryVou__finan__17786E0C" FromRole="SalaryVoucherMaster" ToRole="FinancialYear" />
+          <NavigationProperty Name="SalaryVoucherDetails" Relationship="IMEModel.FK__SalaryVou__salar__1C3D2329" FromRole="SalaryVoucherMaster" ToRole="SalaryVoucherDetail" />
+          <NavigationProperty Name="SuffixPrefix" Relationship="IMEModel.FK__SalaryVou__suffi__1960B67E" FromRole="SalaryVoucherMaster" ToRole="SuffixPrefix" />
+          <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__SalaryVou__vouch__186C9245" FromRole="SalaryVoucherMaster" ToRole="VoucherType" />
+        </EntityType>
         <EntityType Name="SaleOrder">
           <Key>
             <PropertyRef Name="SaleOrderNo" />
@@ -5827,6 +6427,8 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <Property Name="DiscOnSubtotal" Type="Decimal" Precision="20" Scale="4" />
           <Property Name="ExtraCharges" Type="Decimal" Precision="20" Scale="4" />
           <Property Name="TotalMargin" Type="Decimal" Precision="20" Scale="4" />
+          <Property Name="VoucherId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="VoucherTypeId" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="Currency" Relationship="IMEModel.FK__SaleOrder__curre__73A521EA" FromRole="SaleOrder" ToRole="Currency" />
           <NavigationProperty Name="Customer" Relationship="IMEModel.FK__SaleOrder__Custo__1CDC41A7" FromRole="SaleOrder" ToRole="Customer" />
           <NavigationProperty Name="CustomerAddress" Relationship="IMEModel.FK__SaleOrder__Deliv__21A0F6C4" FromRole="SaleOrder" ToRole="CustomerAddress" />
@@ -5839,6 +6441,7 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <NavigationProperty Name="PurchaseOrderDetails" Relationship="IMEModel.FK__PurchaseO__SaleO__46D27B73" FromRole="SaleOrder" ToRole="PurchaseOrderDetail" />
           <NavigationProperty Name="Worker" Relationship="IMEModel.FK__SaleOrder__Repre__22951AFD" FromRole="SaleOrder" ToRole="Worker" />
           <NavigationProperty Name="SaleOrderDetails" Relationship="IMEModel.FK__SaleOrder__SaleO__0B7CAB7B" FromRole="SaleOrder" ToRole="SaleOrderDetail" />
+          <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__SaleOrder__Vouch__149C0161" FromRole="SaleOrder" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="SaleOrderDetail">
           <Key>
@@ -5939,6 +6542,7 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <NavigationProperty Name="PDCClearanceMasters" Relationship="IMEModel.FK__PDCCleara__suffi__5D4BCC77" FromRole="SuffixPrefix" ToRole="PDCClearanceMaster" />
           <NavigationProperty Name="PDCPayableMasters" Relationship="IMEModel.FK__PDCPayabl__suffi__27E3DFFF" FromRole="SuffixPrefix" ToRole="PDCPayableMaster" />
           <NavigationProperty Name="PDCReceivableMasters" Relationship="IMEModel.FK__PDCReceiv__suffi__4A38F803" FromRole="SuffixPrefix" ToRole="PDCReceivableMaster" />
+          <NavigationProperty Name="SalaryVoucherMasters" Relationship="IMEModel.FK__SalaryVou__suffi__1960B67E" FromRole="SuffixPrefix" ToRole="SalaryVoucherMaster" />
           <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__SuffixPre__vouch__0682EC34" FromRole="SuffixPrefix" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="SuperDisk">
@@ -6246,6 +6850,7 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <Property Name="heading4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="AdvancePayments" Relationship="IMEModel.FK__AdvancePa__vouch__5026DB83" FromRole="VoucherType" ToRole="AdvancePayment" />
           <NavigationProperty Name="CreditNoteMasters" Relationship="IMEModel.FK__CreditNot__vouch__03A67F89" FromRole="VoucherType" ToRole="CreditNoteMaster" />
+          <NavigationProperty Name="DebitNoteMasters" Relationship="IMEModel.FK__DebitNote__vouch__770B9E7A" FromRole="VoucherType" ToRole="DebitNoteMaster" />
           <NavigationProperty Name="DeliveryNoteMasters" Relationship="IMEModel.FK__DeliveryN__vouch__12E8C319" FromRole="VoucherType" ToRole="DeliveryNoteMaster" />
           <NavigationProperty Name="JournalMasters" Relationship="IMEModel.FK__JournalMa__vouch__0A537D18" FromRole="VoucherType" ToRole="JournalMaster" />
           <NavigationProperty Name="LedgerPostings" Relationship="IMEModel.FK__LedgerPos__vouch__5F691F13" FromRole="VoucherType" ToRole="LedgerPosting" />
@@ -6255,6 +6860,8 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <NavigationProperty Name="PDCClearanceMasters" Relationship="IMEModel.FK__PDCCleara__vouch__5F3414E9" FromRole="VoucherType" ToRole="PDCClearanceMaster" />
           <NavigationProperty Name="PDCPayableMasters" Relationship="IMEModel.FK__PDCPayabl__vouch__2AC04CAA" FromRole="VoucherType" ToRole="PDCPayableMaster" />
           <NavigationProperty Name="PDCReceivableMasters" Relationship="IMEModel.FK__PDCReceiv__vouch__4D1564AE" FromRole="VoucherType" ToRole="PDCReceivableMaster" />
+          <NavigationProperty Name="SalaryVoucherMasters" Relationship="IMEModel.FK__SalaryVou__vouch__186C9245" FromRole="VoucherType" ToRole="SalaryVoucherMaster" />
+          <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SaleOrder__Vouch__149C0161" FromRole="VoucherType" ToRole="SaleOrder" />
           <NavigationProperty Name="SuffixPrefixes" Relationship="IMEModel.FK__SuffixPre__vouch__0682EC34" FromRole="VoucherType" ToRole="SuffixPrefix" />
           <NavigationProperty Name="VoucherTypeTaxes" Relationship="IMEModel.FK__VoucherTy__vouch__69279377" FromRole="VoucherType" ToRole="VoucherTypeTax" />
         </EntityType>
@@ -6284,14 +6891,17 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <Property Name="Title" Type="Int32" />
           <Property Name="isActive" Type="Int32" />
           <Property Name="desinationID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="designationId" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="AdvancePayments" Relationship="IMEModel.FK__AdvancePa__emplo__4D4A6ED8" FromRole="Worker" ToRole="AdvancePayment" />
           <NavigationProperty Name="BonusDeductions" Relationship="IMEModel.FK__BonusDedu__Worke__40E497F3" FromRole="Worker" ToRole="BonusDeduction" />
           <NavigationProperty Name="CreditNoteMasters" Relationship="IMEModel.FK__CreditNot__userI__7DEDA633" FromRole="Worker" ToRole="CreditNoteMaster" />
           <NavigationProperty Name="Customers" Relationship="IMEModel.FK__Customer__accoun__6EF57B66" FromRole="Worker" ToRole="Customer" />
           <NavigationProperty Name="Customers1" Relationship="IMEModel.FK__Customer__repres__3F466844" FromRole="Worker" ToRole="Customer" />
           <NavigationProperty Name="Customers2" Relationship="IMEModel.FK__Customer__repres__6E01572D" FromRole="Worker" ToRole="Customer" />
+          <NavigationProperty Name="DebitNoteMasters" Relationship="IMEModel.FK__DebitNote__userI__76177A41" FromRole="Worker" ToRole="DebitNoteMaster" />
           <NavigationProperty Name="DeliveryNoteMasters" Relationship="IMEModel.FK__DeliveryN__userI__17AD7836" FromRole="Worker" ToRole="DeliveryNoteMaster" />
-          <NavigationProperty Name="Designation" Relationship="IMEModel.FK__Worker__desinati__3E082B48" FromRole="Worker" ToRole="Designation" />
+          <NavigationProperty Name="Designation" Relationship="IMEModel.FK__Worker__designat__0CFADF99" FromRole="Worker" ToRole="Designation" />
+          <NavigationProperty Name="Designation1" Relationship="IMEModel.FK__Worker__desinati__3E082B48" FromRole="Worker" ToRole="Designation" />
           <NavigationProperty Name="DiscountValues" Relationship="IMEModel.FK__DiscountV__Repre__6F4A8121" FromRole="Worker" ToRole="DiscountValue" />
           <NavigationProperty Name="JournalMasters" Relationship="IMEModel.FK__JournalMa__userI__0B47A151" FromRole="Worker" ToRole="JournalMaster" />
           <NavigationProperty Name="Note" Relationship="IMEModel.FK__Worker__WorkerNo__4BAC3F29" FromRole="Worker" ToRole="Note" />
@@ -6302,22 +6912,24 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <NavigationProperty Name="SaleOrders" Relationship="IMEModel.FK__SaleOrder__Repre__22951AFD" FromRole="Worker" ToRole="SaleOrder" />
           <NavigationProperty Name="Suppliers" Relationship="IMEModel.FK__Supplier__accoun__2DB1C7EE" FromRole="Worker" ToRole="Supplier" />
           <NavigationProperty Name="Suppliers1" Relationship="IMEModel.FK__Supplier__repres__65370702" FromRole="Worker" ToRole="Supplier" />
+          <NavigationProperty Name="SalaryVoucherDetails" Relationship="IMEModel.FK__SalaryVou__emplo__1D314762" FromRole="Worker" ToRole="SalaryVoucherDetail" />
           <NavigationProperty Name="AuthorizationValues" Relationship="IMEModel.UserAuthorization" FromRole="Worker" ToRole="AuthorizationValue" />
         </EntityType>
-        <EntityType Name="ReceiptDetail">
+        <EntityType Name="SalaryVoucherDetail">
           <Key>
-            <PropertyRef Name="receiptDetailsId" />
+            <PropertyRef Name="salaryVoucherDetailsId" />
           </Key>
-          <Property Name="receiptDetailsId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="receiptMasterId" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="amount" Type="Decimal" Precision="18" Scale="5" />
-          <Property Name="exchangeRateId" Type="Int32" />
-          <Property Name="chequeNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="chequeDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__ReceiptDe__ledge__733B0D96" FromRole="ReceiptDetail" ToRole="AccountLedger" />
-          <NavigationProperty Name="ExchangeRate" Relationship="IMEModel.FK__ReceiptDe__excha__7152C524" FromRole="ReceiptDetail" ToRole="ExchangeRate" />
-          <NavigationProperty Name="ReceiptMaster" Relationship="IMEModel.FK__ReceiptDe__recei__7246E95D" FromRole="ReceiptDetail" ToRole="ReceiptMaster" />
+          <Property Name="salaryVoucherDetailsId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="salaryVoucherMasterId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="employeeId" Type="Int32" />
+          <Property Name="bonus" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="deduction" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="advance" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="lop" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="salary" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SalaryVoucherMaster" Relationship="IMEModel.FK__SalaryVou__salar__1C3D2329" FromRole="SalaryVoucherDetail" ToRole="SalaryVoucherMaster" />
+          <NavigationProperty Name="Worker" Relationship="IMEModel.FK__SalaryVou__emplo__1D314762" FromRole="SalaryVoucherDetail" ToRole="Worker" />
         </EntityType>
         <Association Name="FK__AccountLe__accou__5E74FADA">
           <End Type="IMEModel.AccountGroup" Role="AccountGroup" Multiplicity="0..1" />
@@ -6363,6 +6975,30 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
               <PropertyRef Name="ledgerId" />
             </Principal>
             <Dependent Role="AdvancePayment">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CreditNot__ledge__0371755F">
+          <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="0..1" />
+          <End Type="IMEModel.CreditNoteDetail" Role="CreditNoteDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="CreditNoteDetail">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DebitNote__ledge__7ADC2F5E">
+          <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="0..1" />
+          <End Type="IMEModel.DebitNoteDetail" Role="DebitNoteDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="DebitNoteDetail">
               <PropertyRef Name="ledgerId" />
             </Dependent>
           </ReferentialConstraint>
@@ -6451,7 +7087,19 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReceiptDe__ledge__733B0D96">
+        <Association Name="FK__ReceiptDe__ledge__08362A7C">
+          <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="0..1" />
+          <End Type="IMEModel.ReceiptDetail1" Role="ReceiptDetail1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="ReceiptDetail1">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReceiptDe__ledge__0C06BB60">
           <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="0..1" />
           <End Type="IMEModel.ReceiptDetail" Role="ReceiptDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6459,6 +7107,18 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
               <PropertyRef Name="ledgerId" />
             </Principal>
             <Dependent Role="ReceiptDetail">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalaryVou__ledge__1A54DAB7">
+          <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="0..1" />
+          <End Type="IMEModel.SalaryVoucherMaster" Role="SalaryVoucherMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="SalaryVoucherMaster">
               <PropertyRef Name="ledgerId" />
             </Dependent>
           </ReferentialConstraint>
@@ -6616,6 +7276,18 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             </Principal>
             <Dependent Role="SupplierAdress">
               <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CreditNot__credi__027D5126">
+          <End Type="IMEModel.CreditNoteMaster" Role="CreditNoteMaster" Multiplicity="0..1" />
+          <End Type="IMEModel.CreditNoteDetail" Role="CreditNoteDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CreditNoteMaster">
+              <PropertyRef Name="creditNoteMasterId" />
+            </Principal>
+            <Dependent Role="CreditNoteDetail">
+              <PropertyRef Name="creditNoteMasterId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7015,6 +7687,54 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__DebitNote__debit__79E80B25">
+          <End Type="IMEModel.DebitNoteMaster" Role="DebitNoteMaster" Multiplicity="0..1" />
+          <End Type="IMEModel.DebitNoteDetail" Role="DebitNoteDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DebitNoteMaster">
+              <PropertyRef Name="debitNoteMasterId" />
+            </Principal>
+            <Dependent Role="DebitNoteDetail">
+              <PropertyRef Name="debitNoteMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DebitNote__excha__7BD05397">
+          <End Type="IMEModel.ExchangeRate" Role="ExchangeRate" Multiplicity="0..1" />
+          <End Type="IMEModel.DebitNoteDetail" Role="DebitNoteDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExchangeRate">
+              <PropertyRef Name="exchangeRateID" />
+            </Principal>
+            <Dependent Role="DebitNoteDetail">
+              <PropertyRef Name="exchangeRateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DebitNote__userI__76177A41">
+          <End Type="IMEModel.Worker" Role="Worker" Multiplicity="0..1" />
+          <End Type="IMEModel.DebitNoteMaster" Role="DebitNoteMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerID" />
+            </Principal>
+            <Dependent Role="DebitNoteMaster">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DebitNote__vouch__770B9E7A">
+          <End Type="IMEModel.VoucherType" Role="VoucherType" Multiplicity="0..1" />
+          <End Type="IMEModel.DebitNoteMaster" Role="DebitNoteMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="DebitNoteMaster">
+              <PropertyRef Name="voucherTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__DeliveryN__excha__16B953FD">
           <End Type="IMEModel.ExchangeRate" Role="ExchangeRate" Multiplicity="0..1" />
           <End Type="IMEModel.DeliveryNoteMaster" Role="DeliveryNoteMaster" Multiplicity="*" />
@@ -7099,6 +7819,18 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Worker__designat__0CFADF99">
+          <End Type="IMEModel.Designation" Role="Designation" Multiplicity="0..1" />
+          <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Designation">
+              <PropertyRef Name="designationId" />
+            </Principal>
+            <Dependent Role="Worker">
+              <PropertyRef Name="designationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Worker__desinati__3E082B48">
           <End Type="IMEModel.Designation" Role="Designation" Multiplicity="0..1" />
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
@@ -7159,14 +7891,14 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReceiptDe__excha__7152C524">
+        <Association Name="FK__ReceiptDe__excha__064DE20A">
           <End Type="IMEModel.ExchangeRate" Role="ExchangeRate" Multiplicity="0..1" />
-          <End Type="IMEModel.ReceiptDetail" Role="ReceiptDetail" Multiplicity="*" />
+          <End Type="IMEModel.ReceiptDetail1" Role="ReceiptDetail1" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ExchangeRate">
               <PropertyRef Name="exchangeRateID" />
             </Principal>
-            <Dependent Role="ReceiptDetail">
+            <Dependent Role="ReceiptDetail1">
               <PropertyRef Name="exchangeRateId" />
             </Dependent>
           </ReferentialConstraint>
@@ -7263,6 +7995,18 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
               <PropertyRef Name="financialYearId" />
             </Principal>
             <Dependent Role="PDCReceivableMaster">
+              <PropertyRef Name="financialYearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalaryVou__finan__17786E0C">
+          <End Type="IMEModel.FinancialYear" Role="FinancialYear" Multiplicity="0..1" />
+          <End Type="IMEModel.SalaryVoucherMaster" Role="SalaryVoucherMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinancialYear">
+              <PropertyRef Name="financialYearId" />
+            </Principal>
+            <Dependent Role="SalaryVoucherMaster">
               <PropertyRef Name="financialYearId" />
             </Dependent>
           </ReferentialConstraint>
@@ -7687,7 +8431,7 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReceiptDe__recei__7246E95D">
+        <Association Name="FK__ReceiptDe__recei__0B129727">
           <End Type="IMEModel.ReceiptMaster" Role="ReceiptMaster" Multiplicity="0..1" />
           <End Type="IMEModel.ReceiptDetail" Role="ReceiptDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7696,6 +8440,54 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             </Principal>
             <Dependent Role="ReceiptDetail">
               <PropertyRef Name="receiptMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReceiptDe__recei__07420643">
+          <End Type="IMEModel.ReceiptMaster" Role="ReceiptMaster" Multiplicity="0..1" />
+          <End Type="IMEModel.ReceiptDetail1" Role="ReceiptDetail1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReceiptMaster">
+              <PropertyRef Name="receiptMasterId" />
+            </Principal>
+            <Dependent Role="ReceiptDetail1">
+              <PropertyRef Name="receiptMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalaryVou__salar__1C3D2329">
+          <End Type="IMEModel.SalaryVoucherMaster" Role="SalaryVoucherMaster" Multiplicity="0..1" />
+          <End Type="IMEModel.SalaryVoucherDetail" Role="SalaryVoucherDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalaryVoucherMaster">
+              <PropertyRef Name="salaryVoucherMasterId" />
+            </Principal>
+            <Dependent Role="SalaryVoucherDetail">
+              <PropertyRef Name="salaryVoucherMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalaryVou__suffi__1960B67E">
+          <End Type="IMEModel.SuffixPrefix" Role="SuffixPrefix" Multiplicity="0..1" />
+          <End Type="IMEModel.SalaryVoucherMaster" Role="SalaryVoucherMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SuffixPrefix">
+              <PropertyRef Name="suffixprefixId" />
+            </Principal>
+            <Dependent Role="SalaryVoucherMaster">
+              <PropertyRef Name="suffixPrefixId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalaryVou__vouch__186C9245">
+          <End Type="IMEModel.VoucherType" Role="VoucherType" Multiplicity="0..1" />
+          <End Type="IMEModel.SalaryVoucherMaster" Role="SalaryVoucherMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="SalaryVoucherMaster">
+              <PropertyRef Name="voucherTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7720,6 +8512,18 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             </Principal>
             <Dependent Role="SaleOrderDetail">
               <PropertyRef Name="SaleOrderNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SaleOrder__Vouch__149C0161">
+          <End Type="IMEModel.VoucherType" Role="VoucherType" Multiplicity="0..1" />
+          <End Type="IMEModel.SaleOrder" Role="SaleOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="SaleOrder">
+              <PropertyRef Name="VoucherTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7975,6 +8779,18 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__SalaryVou__emplo__1D314762">
+          <End Type="IMEModel.Worker" Role="Worker" Multiplicity="0..1" />
+          <End Type="IMEModel.SalaryVoucherDetail" Role="SalaryVoucherDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerID" />
+            </Principal>
+            <Dependent Role="SalaryVoucherDetail">
+              <PropertyRef Name="employeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="AuthRole">
           <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
           <End Type="IMEModel.RoleValue" Role="RoleValue" Multiplicity="*" />
@@ -7983,22 +8799,6 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
         </Association>
-        <ComplexType Name="PDCClearanceRegisterSearch_Result">
-          <Property Type="Decimal" Name="PDCClearanceMasterId" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="String" Name="voucherNo" Nullable="true" />
-          <Property Type="String" Name="voucherTypeName" Nullable="true" />
-          <Property Type="Decimal" Name="suffixPrefixId" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="againstId" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="String" Name="date" Nullable="true" />
-          <Property Type="String" Name="narration" Nullable="true" />
-          <Property Type="Int32" Name="userId" Nullable="true" />
-          <Property Type="Decimal" Name="voucherTypeId" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="financialYearId" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="String" Name="status" Nullable="true" />
-          <Property Type="String" Name="ledgerName" Nullable="true" />
-          <Property Type="String" Name="type" Nullable="true" />
-          <Property Type="Decimal" Name="amount" Nullable="true" Precision="18" Scale="2" />
-        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -8053,6 +8853,26 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
                 <ScalarProperty Name="chequeNo" ColumnName="chequeNo" />
                 <ScalarProperty Name="BankId" ColumnName="BankId" />
                 <ScalarProperty Name="Bank" ColumnName="Bank" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PDCClearanceRegisterSearch" FunctionName="IMEModel.Store.PDCClearanceRegisterSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.PDCClearanceRegisterSearch_Result">
+                <ScalarProperty Name="PDCClearanceMasterId" ColumnName="PDCClearanceMasterId" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="voucherTypeName" ColumnName="voucherTypeName" />
+                <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
+                <ScalarProperty Name="againstId" ColumnName="againstId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -8197,6 +9017,20 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CreditNoteDetails">
+            <EntityTypeMapping TypeName="IMEModel.CreditNoteDetail">
+              <MappingFragment StoreEntitySet="CreditNoteDetails">
+                <ScalarProperty Name="chequeNo" ColumnName="chequeNo" />
+                <ScalarProperty Name="chequeDate" ColumnName="chequeDate" />
+                <ScalarProperty Name="exchangeRateId" ColumnName="exchangeRateId" />
+                <ScalarProperty Name="debit" ColumnName="debit" />
+                <ScalarProperty Name="credit" ColumnName="credit" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="creditNoteMasterId" ColumnName="creditNoteMasterId" />
+                <ScalarProperty Name="creditNoteDetailsId" ColumnName="creditNoteDetailsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="CreditNoteMasters">
             <EntityTypeMapping TypeName="IMEModel.CreditNoteMaster">
               <MappingFragment StoreEntitySet="CreditNoteMaster">
@@ -8337,6 +9171,36 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
                 <ScalarProperty Name="DiscontinuationDate" ColumnName="DiscontinuationDate" />
                 <ScalarProperty Name="ReasonDescription" ColumnName="ReasonDescription" />
                 <ScalarProperty Name="ArticleNo" ColumnName="ArticleNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DebitNoteDetails">
+            <EntityTypeMapping TypeName="IMEModel.DebitNoteDetail">
+              <MappingFragment StoreEntitySet="DebitNoteDetail">
+                <ScalarProperty Name="chequeDate" ColumnName="chequeDate" />
+                <ScalarProperty Name="chequeNo" ColumnName="chequeNo" />
+                <ScalarProperty Name="exchangeRateId" ColumnName="exchangeRateId" />
+                <ScalarProperty Name="debit" ColumnName="debit" />
+                <ScalarProperty Name="credit" ColumnName="credit" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="debitNoteMasterId" ColumnName="debitNoteMasterId" />
+                <ScalarProperty Name="debitNoteDetailsId" ColumnName="debitNoteDetailsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DebitNoteMasters">
+            <EntityTypeMapping TypeName="IMEModel.DebitNoteMaster">
+              <MappingFragment StoreEntitySet="DebitNoteMaster">
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="debitNoteMasterId" ColumnName="debitNoteMasterId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -8572,6 +9436,24 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
                 <ScalarProperty Name="VAT" ColumnName="VAT" />
                 <ScalarProperty Name="LowMarginLimit" ColumnName="LowMarginLimit" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Masters">
+            <EntityTypeMapping TypeName="IMEModel.Master">
+              <MappingFragment StoreEntitySet="Master">
+                <ScalarProperty Name="lineCountAfterPrint" ColumnName="lineCountAfterPrint" />
+                <ScalarProperty Name="condensed" ColumnName="condensed" />
+                <ScalarProperty Name="pitch" ColumnName="pitch" />
+                <ScalarProperty Name="lineCountBetweenTwo" ColumnName="lineCountBetweenTwo" />
+                <ScalarProperty Name="footerLocation" ColumnName="footerLocation" />
+                <ScalarProperty Name="blankLneForFooter" ColumnName="blankLneForFooter" />
+                <ScalarProperty Name="pageSizeOther" ColumnName="pageSizeOther" />
+                <ScalarProperty Name="pageSize1" ColumnName="pageSize1" />
+                <ScalarProperty Name="isTwoLineForDetails" ColumnName="isTwoLineForDetails" />
+                <ScalarProperty Name="isTwoLineForHedder" ColumnName="isTwoLineForHedder" />
+                <ScalarProperty Name="formName" ColumnName="formName" />
+                <ScalarProperty Name="masterId" ColumnName="masterId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -8917,6 +9799,32 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ReceiptDetails">
+            <EntityTypeMapping TypeName="IMEModel.ReceiptDetail">
+              <MappingFragment StoreEntitySet="ReceiptDetail">
+                <ScalarProperty Name="chequeDate" ColumnName="chequeDate" />
+                <ScalarProperty Name="chequeNo" ColumnName="chequeNo" />
+                <ScalarProperty Name="exchangeRateId" ColumnName="exchangeRateId" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="receiptMasterId" ColumnName="receiptMasterId" />
+                <ScalarProperty Name="receiptDetailsId" ColumnName="receiptDetailsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReceiptDetails1">
+            <EntityTypeMapping TypeName="IMEModel.ReceiptDetail1">
+              <MappingFragment StoreEntitySet="ReceiptDetails">
+                <ScalarProperty Name="chequeDate" ColumnName="chequeDate" />
+                <ScalarProperty Name="chequeNo" ColumnName="chequeNo" />
+                <ScalarProperty Name="exchangeRateId" ColumnName="exchangeRateId" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="receiptMasterId" ColumnName="receiptMasterId" />
+                <ScalarProperty Name="receiptDetailsId" ColumnName="receiptDetailsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ReceiptMasters">
             <EntityTypeMapping TypeName="IMEModel.ReceiptMaster">
               <MappingFragment StoreEntitySet="ReceiptMaster">
@@ -8965,9 +9873,28 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="SalaryVoucherMasters">
+            <EntityTypeMapping TypeName="IMEModel.SalaryVoucherMaster">
+              <MappingFragment StoreEntitySet="SalaryVoucherMaster">
+                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="month" ColumnName="month" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="salaryVoucherMasterId" ColumnName="salaryVoucherMasterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="SaleOrders">
             <EntityTypeMapping TypeName="IMEModel.SaleOrder">
               <MappingFragment StoreEntitySet="SaleOrder">
+                <ScalarProperty Name="VoucherTypeId" ColumnName="VoucherTypeId" />
+                <ScalarProperty Name="VoucherId" ColumnName="VoucherId" />
                 <ScalarProperty Name="TotalMargin" ColumnName="TotalMargin" />
                 <ScalarProperty Name="ExtraCharges" ColumnName="ExtraCharges" />
                 <ScalarProperty Name="DiscOnSubtotal" ColumnName="DiscOnSubtotal" />
@@ -9384,6 +10311,7 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
           <EntitySetMapping Name="Workers">
             <EntityTypeMapping TypeName="IMEModel.Worker">
               <MappingFragment StoreEntitySet="Worker">
+                <ScalarProperty Name="designationId" ColumnName="designationId" />
                 <ScalarProperty Name="desinationID" ColumnName="desinationID" />
                 <ScalarProperty Name="isActive" ColumnName="isActive" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -9399,16 +10327,18 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ReceiptDetails">
-            <EntityTypeMapping TypeName="IMEModel.ReceiptDetail">
-              <MappingFragment StoreEntitySet="ReceiptDetails">
-                <ScalarProperty Name="chequeDate" ColumnName="chequeDate" />
-                <ScalarProperty Name="chequeNo" ColumnName="chequeNo" />
-                <ScalarProperty Name="exchangeRateId" ColumnName="exchangeRateId" />
-                <ScalarProperty Name="amount" ColumnName="amount" />
-                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
-                <ScalarProperty Name="receiptMasterId" ColumnName="receiptMasterId" />
-                <ScalarProperty Name="receiptDetailsId" ColumnName="receiptDetailsId" />
+          <EntitySetMapping Name="SalaryVoucherDetails">
+            <EntityTypeMapping TypeName="IMEModel.SalaryVoucherDetail">
+              <MappingFragment StoreEntitySet="SalaryVoucherDetail">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="lop" ColumnName="lop" />
+                <ScalarProperty Name="advance" ColumnName="advance" />
+                <ScalarProperty Name="deduction" ColumnName="deduction" />
+                <ScalarProperty Name="bonus" ColumnName="bonus" />
+                <ScalarProperty Name="employeeId" ColumnName="employeeId" />
+                <ScalarProperty Name="salaryVoucherMasterId" ColumnName="salaryVoucherMasterId" />
+                <ScalarProperty Name="salaryVoucherDetailsId" ColumnName="salaryVoucherDetailsId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -9428,26 +10358,6 @@ warning 6002: The table/view 'IME.dbo.ReceiptDetails' does not have a primary ke
               <ScalarProperty Name="AuthorizationID" ColumnName="AuthorizationID" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="PDCClearanceRegisterSearch" FunctionName="IMEModel.Store.PDCClearanceRegisterSearch">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IMEModel.PDCClearanceRegisterSearch_Result">
-                <ScalarProperty Name="PDCClearanceMasterId" ColumnName="PDCClearanceMasterId" />
-                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
-                <ScalarProperty Name="voucherTypeName" ColumnName="voucherTypeName" />
-                <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
-                <ScalarProperty Name="againstId" ColumnName="againstId" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="narration" ColumnName="narration" />
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
-                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
-                <ScalarProperty Name="type" ColumnName="type" />
-                <ScalarProperty Name="amount" ColumnName="amount" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

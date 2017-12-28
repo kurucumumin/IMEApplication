@@ -18,6 +18,7 @@ namespace LoginForm.DataSet
         public Designation()
         {
             this.Workers = new HashSet<Worker>();
+            this.Workers1 = new HashSet<Worker>();
         }
     
         public decimal designationId { get; set; }
@@ -28,5 +29,7 @@ namespace LoginForm.DataSet
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Worker> Workers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Worker> Workers1 { get; set; }
     }
 }

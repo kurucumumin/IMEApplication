@@ -12,17 +12,18 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class ReceiptDetail
+    public partial class CreditNoteDetail
     {
-        public decimal receiptDetailsId { get; set; }
-        public Nullable<decimal> receiptMasterId { get; set; }
+        public decimal creditNoteDetailsId { get; set; }
+        public Nullable<decimal> creditNoteMasterId { get; set; }
         public Nullable<decimal> ledgerId { get; set; }
-        public Nullable<decimal> amount { get; set; }
+        public Nullable<decimal> credit { get; set; }
+        public Nullable<decimal> debit { get; set; }
         public Nullable<decimal> exchangeRateId { get; set; }
-        public string chequeNo { get; set; }
         public Nullable<System.DateTime> chequeDate { get; set; }
+        public string chequeNo { get; set; }
     
         public virtual AccountLedger AccountLedger { get; set; }
-        public virtual ReceiptMaster ReceiptMaster { get; set; }
+        public virtual CreditNoteMaster CreditNoteMaster { get; set; }
     }
 }
