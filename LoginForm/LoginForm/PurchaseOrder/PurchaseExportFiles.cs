@@ -279,7 +279,7 @@ namespace LoginForm.PurchaseOrder
             {
                 CustomerPONumber += " ";
             }
-            string SupplyingCompany = "AE01";
+            string SupplyingCompany = "GB01";
             string RequestDelDate = "";
             for (int i = 0; i < 8; i++)
             {

@@ -44,7 +44,7 @@ namespace LoginForm
         decimal decLedgerId = 0;
         decimal decEmployeeId = 0;
         decimal decVoucherTypeId = 0;
-        int inCurrenRowIndex = 0;
+       // int inCurrenRowIndex = 0;
         VoucherTypeSP spVoucherType = new VoucherTypeSP();
         #endregion
         #region Functions
@@ -140,13 +140,13 @@ namespace LoginForm
                     else
                     {
                         this.Close();
-                        frmStock f = new frmStock(item_code);
-                        f.ShowDialog();
+                        //frmStock f = new frmStock(item_code);
+                        //f.ShowDialog();
                     }
                 }
                 else
                 {
-                    frmStock f = new frmStock(item_code);
+                   // frmStock f = new frmStock(item_code);
                 }
             }
             catch (Exception ex)

@@ -162,8 +162,10 @@
     <Compile Include="Account\Master\frmVoucherType.designer.cs">
       <DependentUpon>frmVoucherType.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\PayRoll\frmAdvancePayment.cs" />
-    <Compile Include="Account\PayRoll\frmAdvancePayment.designer.cs">
+    <Compile Include="Account\PayRoll\frmAdvancePayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\PayRoll\frmAdvancePayment.Designer.cs">
       <DependentUpon>frmAdvancePayment.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\PayRoll\frmBonusDeduction.cs">
@@ -220,6 +222,36 @@
     <Compile Include="Account\Register\frmReceiptRegister.designer.cs">
       <DependentUpon>frmReceiptRegister.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Reminder\frmOverduePurchaseOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reminder\frmOverduePurchaseOrder.designer.cs">
+      <DependentUpon>frmOverduePurchaseOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Reminder\frmOverdueSalesOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reminder\frmOverdueSalesOrder.designer.cs">
+      <DependentUpon>frmOverdueSalesOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Reminder\frmReminderPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reminder\frmReminderPopUp.Designer.cs">
+      <DependentUpon>frmReminderPopUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Reminder\frmShortExpiry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reminder\frmShortExpiry.designer.cs">
+      <DependentUpon>frmShortExpiry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Reminder\frmStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reminder\frmStock.designer.cs">
+      <DependentUpon>frmStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Search\frmVoucherSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,6 +273,7 @@
     <Compile Include="Account\Services\PartyBalanceSP.cs" />
     <Compile Include="Account\Services\PDCPayableMasterSP.cs" />
     <Compile Include="Account\Services\PricingLevelSP.cs" />
+    <Compile Include="Account\Services\ReminderSP.cs" />
     <Compile Include="Account\Services\RouteSP.cs" />
     <Compile Include="Account\Services\SettingsSP.cs" />
     <Compile Include="Account\Services\SuffixPrefixSP.cs" />
@@ -908,6 +941,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Register\frmReceiptRegister.resx">
       <DependentUpon>frmReceiptRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reminder\frmOverduePurchaseOrder.resx">
+      <DependentUpon>frmOverduePurchaseOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reminder\frmOverdueSalesOrder.resx">
+      <DependentUpon>frmOverdueSalesOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reminder\frmReminderPopUp.resx">
+      <DependentUpon>frmReminderPopUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reminder\frmShortExpiry.resx">
+      <DependentUpon>frmShortExpiry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reminder\frmStock.resx">
+      <DependentUpon>frmStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Search\frmVoucherSearch.resx">
       <DependentUpon>frmVoucherSearch.cs</DependentUpon>

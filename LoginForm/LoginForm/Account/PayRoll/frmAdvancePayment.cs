@@ -97,30 +97,30 @@ namespace LoginForm
                             if (decAdvancePaymentsId != -1)
                             {
                                 //TO DO CHeck again
-//                                IF @IsAutomatic != 'false'
-// BEGIN
-// SET @UpdatedVoucherNo = (SELECT ISNULL(MAX(CAST(voucherNo AS NUMERIC(18, 0))), 0) + 1
-// FROM tbl_AdvancePayment
-// WHERE voucherTypeId = @voucherTypeId)
+                                //                                IF @IsAutomatic != 'false'
+                                // BEGIN
+                                // SET @UpdatedVoucherNo = (SELECT ISNULL(MAX(CAST(voucherNo AS NUMERIC(18, 0))), 0) + 1
+                                // FROM tbl_AdvancePayment
+                                // WHERE voucherTypeId = @voucherTypeId)
 
-//			IF @UpdatedVoucherNo != CAST(@voucherNo AS DECIMAL(18, 0))
+                                //			IF @UpdatedVoucherNo != CAST(@voucherNo AS DECIMAL(18, 0))
 
-//             BEGIN
-//                SET @UpdatedVoucherNo = dbo.VoucherNumberGeneration(@voucherTypeId, @date, 'AdvancePayment', @UpdatedVoucherNo - 1)
+                                //             BEGIN
+                                //                SET @UpdatedVoucherNo = dbo.VoucherNumberGeneration(@voucherTypeId, @date, 'AdvancePayment', @UpdatedVoucherNo - 1)
 
-//                SET @voucherNo = @UpdatedVoucherNo
+                                //                SET @voucherNo = @UpdatedVoucherNo
 
-//                SET @UpdatedInvoiceNo = dbo.InvoiceNumberGeneration(@voucherTypeId, @UpdatedVoucherNo, @date)
+                                //                SET @UpdatedInvoiceNo = dbo.InvoiceNumberGeneration(@voucherTypeId, @UpdatedVoucherNo, @date)
 
-//                SET @invoiceNo = @UpdatedInvoiceNo
+                                //                SET @invoiceNo = @UpdatedInvoiceNo
 
-//             END
-//END
+                                //             END
+                                //END
 
 
                                 DataTable dtbl = new DataTable();
                                 //TO DO anlamadım???
-                                
+
 
                                 if (isAutomatic)
                                 {
@@ -310,9 +310,9 @@ namespace LoginForm
                     {
                         if (!isAutomatic)
                         {
-                            if (IME.AdvancePayments.Where(a=>a.voucherNo== txtAdvanceVoucherNo.Text.Trim()).Where(b=>b.voucherTypeId== decPaymentVoucherTypeId)
-                                .Where(c=>c.advancePaymentId== decAdvancePaymentEditId) ==null)
-                            { 
+                            if (IME.AdvancePayments.Where(a => a.voucherNo == txtAdvanceVoucherNo.Text.Trim()).Where(b => b.voucherTypeId == decPaymentVoucherTypeId)
+                                .Where(c => c.advancePaymentId == decAdvancePaymentEditId) == null)
+                            {
                                 EditFunction();
                                 MessageBox.Show("Edited succesfully");
                             }
@@ -409,9 +409,9 @@ namespace LoginForm
                 decimal decLedgerPostingId = 0;
                 //LedgerPostingSP spLedgerPosting = new LedgerPostingSP();
                 //LedgerPostingInfo infoLedgerPosting = new LedgerPostingInfo();
-                
+
                 List<LedgerPosting> LedgerPostingList = IME.LedgerPostings.Where(a => a.voucherNo == strVoucherNo).Where(b => b.voucherTypeId == decAdvancePaymentId).ToList();
-                
+
                 int ini = 0;
                 foreach (var dr in LedgerPostingList)
                 {
@@ -495,44 +495,44 @@ namespace LoginForm
         /// </summary>
         public void fillFunction()
         {
-                AdvancePayment AdvancePayment = new AdvancePayment();
-                AdvancePayment = IME.AdvancePayments.Where(a => a.advancePaymentId == decAdvancePaymentEditId).FirstOrDefault();
-                strVoucherNo = AdvancePayment.voucherNo;
-                txtAdvanceVoucherNo.Text = AdvancePayment.invoiceNo;
-                strInvoiceNo = AdvancePayment.invoiceNo;
-                cmbEmployee.SelectedValue = AdvancePayment.employeeId.ToString();
-                dtpSalaryMonth.Value = Convert.ToDateTime(AdvancePayment.salaryMonth.ToString());
-                txtDate.Text = ((DateTime)AdvancePayment.date).ToString("dd-MMM-yyyy");
-                txtChequeDate.Text = ((DateTime)AdvancePayment.date).ToString("dd-MMM-yyyy");
-                cmbCashOrBank.SelectedValue = AdvancePayment.ledgerId.ToString();
-                txtCheckNo.Text = AdvancePayment.chequenumber;
-                txtAmount.Text = AdvancePayment.amount.ToString();
-                txtNarration.Text = AdvancePayment.narration;
-                btnAdvancePaymentSave.Text = "Update";
-                btnAdvancePaymentDelete.Enabled = true;
-                decAdvancePaymentsId = decAdvancePaymentId;
-                decPaymentVoucherTypeId = (decimal)AdvancePayment.voucherTypeId;
-                decPaymentSuffixPrefixId = (decimal)AdvancePayment.suffixPrefixId;
-                if (IME.VoucherTypes.Where(a => a.voucherTypeId == decPaymentVoucherTypeId).FirstOrDefault().methodOfVoucherNumbering == "Automatic")
-                {
-                    isAutomatic =true;
-                }
-                else
-                {
-                    isAutomatic =false;
-                }
-                
-                if (isAutomatic)
-                {
-                    txtAdvanceVoucherNo.Enabled = false;
-                }
-                else
-                {
-                    txtAdvanceVoucherNo.Enabled = true;
-                }
+            AdvancePayment AdvancePayment = new AdvancePayment();
+            AdvancePayment = IME.AdvancePayments.Where(a => a.advancePaymentId == decAdvancePaymentEditId).FirstOrDefault();
+            strVoucherNo = AdvancePayment.voucherNo;
+            txtAdvanceVoucherNo.Text = AdvancePayment.invoiceNo;
+            strInvoiceNo = AdvancePayment.invoiceNo;
+            cmbEmployee.SelectedValue = AdvancePayment.employeeId.ToString();
+            dtpSalaryMonth.Value = Convert.ToDateTime(AdvancePayment.salaryMonth.ToString());
+            txtDate.Text = ((DateTime)AdvancePayment.date).ToString("dd-MMM-yyyy");
+            txtChequeDate.Text = ((DateTime)AdvancePayment.date).ToString("dd-MMM-yyyy");
+            cmbCashOrBank.SelectedValue = AdvancePayment.ledgerId.ToString();
+            txtCheckNo.Text = AdvancePayment.chequenumber;
+            txtAmount.Text = AdvancePayment.amount.ToString();
+            txtNarration.Text = AdvancePayment.narration;
+            btnAdvancePaymentSave.Text = "Update";
+            btnAdvancePaymentDelete.Enabled = true;
+            decAdvancePaymentsId = decAdvancePaymentId;
+            decPaymentVoucherTypeId = (decimal)AdvancePayment.voucherTypeId;
+            decPaymentSuffixPrefixId = (decimal)AdvancePayment.suffixPrefixId;
+            if (IME.VoucherTypes.Where(a => a.voucherTypeId == decPaymentVoucherTypeId).FirstOrDefault().methodOfVoucherNumbering == "Automatic")
+            {
+                isAutomatic = true;
+            }
+            else
+            {
+                isAutomatic = false;
+            }
+
+            if (isAutomatic)
+            {
+                txtAdvanceVoucherNo.Enabled = false;
+            }
+            else
+            {
+                txtAdvanceVoucherNo.Enabled = true;
+            }
 
         }
-       
+
 
 
         //public void CallFromAdvanceRegister(decimal decAdvancePaymentId, frmAdvanceRegister frm)
@@ -551,7 +551,7 @@ namespace LoginForm
         //        MessageBox.Show("AP9:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
         //    }
         //}
-       
+
 
 
         //public void CallFromDayBook(frmDayBook frmDayBook, decimal decMasterId)
@@ -712,7 +712,7 @@ namespace LoginForm
             decimal decJournalVoucherTypeIdmax = 0;
             if (IME.AdvancePayments.Where(a => a.voucherTypeId == decPaymentVoucherTypeId).Select(b => b.voucherNo).ToList().Count() != 0) decJournalVoucherTypeIdmax = IME.JournalMasters.Where(a => a.voucherTypeId == decPaymentVoucherTypeId).Select(b => b.voucherNo).ToList().Select(decimal.Parse).ToList().Max();
 
-            if (Convert.ToDecimal(strVoucherNo) != decJournalVoucherTypeIdmax+1)
+            if (Convert.ToDecimal(strVoucherNo) != decJournalVoucherTypeIdmax + 1)
             {
                 strVoucherNo = decJournalVoucherTypeIdmax.ToString();
                 strVoucherNo = VoucherNumberGeneration(decPaymentVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpSalaryMonth.Value, strAdvancePayment);
@@ -871,7 +871,7 @@ namespace LoginForm
         public void ReturnFromAccountLedgerForm(decimal decId)
         {
             List<AccountLedger> AccountLedgerpList = new List<AccountLedger>();
-            AccountLedgerpList.AddRange(IME.AccountLedgers.Where(b=>b.AccountGroup.accountGroupName== "Bank Account"));
+            AccountLedgerpList.AddRange(IME.AccountLedgers.Where(b => b.AccountGroup.accountGroupName == "Bank Account"));
             AccountLedgerpList.AddRange(IME.AccountLedgers.Where(b => b.AccountGroup.accountGroupName == "Cash-in Hand"));
             AccountLedgerpList.AddRange(IME.AccountLedgers.Where(b => b.AccountGroup.accountGroupName == "Bank OD A/C"));
             cmbCashOrBank.DataSource = AccountLedgerpList;
