@@ -162,7 +162,9 @@
     <Compile Include="Account\Master\frmVoucherType.designer.cs">
       <DependentUpon>frmVoucherType.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\PayRoll\frmAdvancePayment.cs" />
+    <Compile Include="Account\PayRoll\frmAdvancePayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Account\PayRoll\frmAdvancePayment.designer.cs">
       <DependentUpon>frmAdvancePayment.cs</DependentUpon>
     </Compile>
@@ -189,6 +191,12 @@
     </Compile>
     <Compile Include="Account\Register\frmDebitNoteRegister.designer.cs">
       <DependentUpon>frmDebitNoteRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register\frmJournalRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Register\frmJournalRegister.designer.cs">
+      <DependentUpon>frmJournalRegister.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\Register\frmPaymentRegister.cs">
       <SubType>Form</SubType>
@@ -245,6 +253,18 @@
     </Compile>
     <Compile Include="Account\Transaction\frmDebitNote.designer.cs">
       <DependentUpon>frmDebitNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Transaction\frmJournalVoucher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Transaction\frmJournalVoucher.designer.cs">
+      <DependentUpon>frmJournalVoucher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Transaction\frmPaymentVoucher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Transaction\frmPaymentVoucher.designer.cs">
+      <DependentUpon>frmPaymentVoucher.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\Transaction\frmPdcPayable.cs">
       <SubType>Form</SubType>
@@ -373,6 +393,7 @@
     <Compile Include="DataSet\DualUse.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\Employee.cs" />
     <Compile Include="DataSet\ExchangeRate.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -535,6 +556,8 @@
     <Compile Include="DataSet\SlidingPrice.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\sp_helpdiagramdefinition_Result.cs" />
+    <Compile Include="DataSet\sp_helpdiagrams_Result.cs" />
     <Compile Include="DataSet\Stock.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -879,6 +902,9 @@
     <EmbeddedResource Include="Account\Register\frmDebitNoteRegister.resx">
       <DependentUpon>frmDebitNoteRegister.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\Register\frmJournalRegister.resx">
+      <DependentUpon>frmJournalRegister.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\Register\frmPaymentRegister.resx">
       <DependentUpon>frmPaymentRegister.cs</DependentUpon>
     </EmbeddedResource>
@@ -896,6 +922,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmDebitNote.resx">
       <DependentUpon>frmDebitNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Transaction\frmJournalVoucher.resx">
+      <DependentUpon>frmJournalVoucher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Transaction\frmPaymentVoucher.resx">
+      <DependentUpon>frmPaymentVoucher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmPdcPayable.resx">
       <DependentUpon>frmPdcPayable.cs</DependentUpon>

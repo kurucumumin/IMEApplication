@@ -449,7 +449,7 @@ namespace LoginForm.PurchaseOrder
             }
             string OrderLineControl = totalitemLine.ToString();
             int totalitemLinelenght = totalitemLine.ToString().Length;
-            for (int i = 0; i < 5 - totalitemLinelenght; i++)
+            for (int i = 0; i < 4 - totalitemLinelenght; i++)
             {
                 OrderLineControl = "0" + OrderLineControl;
             }

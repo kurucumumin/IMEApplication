@@ -256,6 +256,11 @@
         <AssociationConnector Association="IMEModel.FK__SalaryVou__emplo__064DE20A" />
         <AssociationConnector Association="IMEModel.AuthRole" />
         <AssociationConnector Association="IMEModel.UserAuthorization" />
+        <EntityTypeShape EntityType="IMEModel.Master" Width="1.5" PointX="5.375" PointY="14.75" />
+        <EntityTypeShape EntityType="IMEModel.PaymentDetail" Width="1.5" PointX="31.5" PointY="52.625" />
+        <AssociationConnector Association="IMEModel.FK__PaymentDe__ledge__0C06BB60" />
+        <AssociationConnector Association="IMEModel.FK__PaymentDe__excha__0CFADF99" />
+        <AssociationConnector Association="IMEModel.FK__PaymentDe__payme__0B129727" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

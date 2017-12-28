@@ -580,6 +580,23 @@
           <Property Name="Factor" Type="decimal" Precision="6" Scale="3" Nullable="false" />
           <Property Name="CurrentFinancialYear" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
+        <EntityType Name="Master">
+          <Key>
+            <PropertyRef Name="masterId" />
+          </Key>
+          <Property Name="masterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="formName" Type="int" />
+          <Property Name="isTwoLineForHedder" Type="bit" />
+          <Property Name="isTwoLineForDetails" Type="bit" />
+          <Property Name="pageSize1" Type="int" />
+          <Property Name="pageSizeOther" Type="int" />
+          <Property Name="blankLneForFooter" Type="int" />
+          <Property Name="footerLocation" Type="varchar(max)" />
+          <Property Name="lineCountBetweenTwo" Type="int" />
+          <Property Name="pitch" Type="varchar(max)" />
+          <Property Name="condensed" Type="varchar(max)" />
+          <Property Name="lineCountAfterPrint" Type="int" />
+        </EntityType>
         <EntityType Name="MonthlySalary">
           <Key>
             <PropertyRef Name="monthlySalaryId" />
@@ -642,6 +659,18 @@
           <Property Name="type" Type="varchar(max)" />
           <Property Name="narration" Type="varchar(max)" />
           <Property Name="extraDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PaymentDetail">
+          <Key>
+            <PropertyRef Name="paymentDetailsId" />
+          </Key>
+          <Property Name="paymentDetailsId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="paymentMasterId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ledgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="amount" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="exchangeRateId" Type="int" />
+          <Property Name="chequeNo" Type="varchar(max)" />
+          <Property Name="chequeDate" Type="datetime" />
         </EntityType>
         <EntityType Name="PaymentMaster">
           <Key>
@@ -2274,6 +2303,42 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PaymentDe__excha__0CFADF99">
+          <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
+          <End Role="PaymentDetail" Type="Self.PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExchangeRate">
+              <PropertyRef Name="exchangeRateID" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="exchangeRateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__ledge__0C06BB60">
+          <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
+          <End Role="PaymentDetail" Type="Self.PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__payme__0B129727">
+          <End Role="PaymentMaster" Type="Self.PaymentMaster" Multiplicity="0..1" />
+          <End Role="PaymentDetail" Type="Self.PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMaster">
+              <PropertyRef Name="paymentMasterId" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="paymentMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PaymentMa__finan__47919582">
           <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
           <End Role="PaymentMaster" Type="Self.PaymentMaster" Multiplicity="*" />
@@ -3587,11 +3652,13 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <EntitySet Name="LoaderDates" EntityType="Self.LoaderDates" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mail" EntityType="Self.Mail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Management" EntityType="Self.Management" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Master" EntityType="Self.Master" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MonthlySalary" EntityType="Self.MonthlySalary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notes" EntityType="Self.Notes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OnSale" EntityType="Self.OnSale" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PartyBalance" EntityType="Self.PartyBalance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PayHead" EntityType="Self.PayHead" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentDetail" EntityType="Self.PaymentDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentMaster" EntityType="Self.PaymentMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentTerm" EntityType="Self.PaymentTerm" Schema="dbo" store:Type="Tables" />
@@ -3641,15 +3708,15 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <EntitySet Name="VoucherTypeTax" EntityType="Self.VoucherTypeTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SalaryVoucherDetail" EntityType="Self.SalaryVoucherDetail" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId],
-    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId],
-    [SalaryVoucherDetail].[employeeId] AS [employeeId],
-    [SalaryVoucherDetail].[bonus] AS [bonus],
-    [SalaryVoucherDetail].[deduction] AS [deduction],
-    [SalaryVoucherDetail].[advance] AS [advance],
-    [SalaryVoucherDetail].[lop] AS [lop],
-    [SalaryVoucherDetail].[salary] AS [salary],
+            <DefiningQuery>SELECT 
+    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId], 
+    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId], 
+    [SalaryVoucherDetail].[employeeId] AS [employeeId], 
+    [SalaryVoucherDetail].[bonus] AS [bonus], 
+    [SalaryVoucherDetail].[deduction] AS [deduction], 
+    [SalaryVoucherDetail].[advance] AS [advance], 
+    [SalaryVoucherDetail].[lop] AS [lop], 
+    [SalaryVoucherDetail].[salary] AS [salary], 
     [SalaryVoucherDetail].[status] AS [status]
     FROM [dbo].[SalaryVoucherDetail] AS [SalaryVoucherDetail]</DefiningQuery>
           </EntitySet>
@@ -3936,6 +4003,18 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <AssociationSet Name="FK__PartyBala__vouch__58BC2184" Association="Self.FK__PartyBala__vouch__58BC2184">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="PartyBalance" EntitySet="PartyBalance" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__excha__0CFADF99" Association="Self.FK__PaymentDe__excha__0CFADF99">
+            <End Role="ExchangeRate" EntitySet="ExchangeRate" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__ledge__0C06BB60" Association="Self.FK__PaymentDe__ledge__0C06BB60">
+            <End Role="AccountLedger" EntitySet="AccountLedger" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__payme__0B129727" Association="Self.FK__PaymentDe__payme__0B129727">
+            <End Role="PaymentMaster" EntitySet="PaymentMaster" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetail" />
           </AssociationSet>
           <AssociationSet Name="FK__PaymentMa__finan__47919582" Association="Self.FK__PaymentMa__finan__47919582">
             <End Role="FinancialYear" EntitySet="FinancialYear" />
@@ -5230,6 +5309,20 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
             <End Role="Worker" EntitySet="Workers" />
           </AssociationSet>
+          <EntitySet Name="Masters" EntityType="IMEModel.Master" />
+          <EntitySet Name="PaymentDetails" EntityType="IMEModel.PaymentDetail" />
+          <AssociationSet Name="FK__PaymentDe__ledge__0C06BB60" Association="IMEModel.FK__PaymentDe__ledge__0C06BB60">
+            <End Role="AccountLedger" EntitySet="AccountLedgers" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__excha__0CFADF99" Association="IMEModel.FK__PaymentDe__excha__0CFADF99">
+            <End Role="ExchangeRate" EntitySet="ExchangeRates" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__payme__0B129727" Association="IMEModel.FK__PaymentDe__payme__0B129727">
+            <End Role="PaymentMaster" EntitySet="PaymentMasters" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="PayHeadGet_Result">
           <Property Type="Decimal" Name="PayheadId" Nullable="false" Precision="18" Scale="0" />
@@ -5342,6 +5435,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <NavigationProperty Name="ReceiptDetails" Relationship="IMEModel.FK__ReceiptDe__ledge__75235608" FromRole="AccountLedger" ToRole="ReceiptDetail1" />
           <NavigationProperty Name="ReceiptDetails1" Relationship="IMEModel.FK__ReceiptDe__ledge__78F3E6EC" FromRole="AccountLedger" ToRole="ReceiptDetail" />
           <NavigationProperty Name="SalaryVoucherMasters" Relationship="IMEModel.FK__SalaryVou__ledge__0371755F" FromRole="AccountLedger" ToRole="SalaryVoucherMaster" />
+          <NavigationProperty Name="PaymentDetails" Relationship="IMEModel.FK__PaymentDe__ledge__0C06BB60" FromRole="AccountLedger" ToRole="PaymentDetail" />
         </EntityType>
         <EntityType Name="AdvancePayment">
           <Key>
@@ -5801,6 +5895,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <NavigationProperty Name="JournalDetails" Relationship="IMEModel.FK__JournalDe__excha__00CA12DE" FromRole="ExchangeRate" ToRole="JournalDetail" />
           <NavigationProperty Name="PartyBalances" Relationship="IMEModel.FK__PartyBala__excha__5AA469F6" FromRole="ExchangeRate" ToRole="PartyBalance" />
           <NavigationProperty Name="ReceiptDetails" Relationship="IMEModel.FK__ReceiptDe__excha__733B0D96" FromRole="ExchangeRate" ToRole="ReceiptDetail1" />
+          <NavigationProperty Name="PaymentDetails" Relationship="IMEModel.FK__PaymentDe__excha__0CFADF99" FromRole="ExchangeRate" ToRole="PaymentDetail" />
         </EntityType>
         <EntityType Name="ExtendedRange">
           <Key>
@@ -6081,6 +6176,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <NavigationProperty Name="FinancialYear" Relationship="IMEModel.FK__PaymentMa__finan__47919582" FromRole="PaymentMaster" ToRole="FinancialYear" />
           <NavigationProperty Name="Worker" Relationship="IMEModel.FK__PaymentMa__userI__4A6E022D" FromRole="PaymentMaster" ToRole="Worker" />
           <NavigationProperty Name="VoucherType" Relationship="IMEModel.FK__PaymentMa__vouch__4885B9BB" FromRole="PaymentMaster" ToRole="VoucherType" />
+          <NavigationProperty Name="PaymentDetails" Relationship="IMEModel.FK__PaymentDe__payme__0B129727" FromRole="PaymentMaster" ToRole="PaymentDetail" />
         </EntityType>
         <EntityType Name="PaymentMethod">
           <Key>
@@ -8864,6 +8960,74 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
         </Association>
+        <EntityType Name="Master">
+          <Key>
+            <PropertyRef Name="masterId" />
+          </Key>
+          <Property Name="masterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="formName" Type="Int32" />
+          <Property Name="isTwoLineForHedder" Type="Boolean" />
+          <Property Name="isTwoLineForDetails" Type="Boolean" />
+          <Property Name="pageSize1" Type="Int32" />
+          <Property Name="pageSizeOther" Type="Int32" />
+          <Property Name="blankLneForFooter" Type="Int32" />
+          <Property Name="footerLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="lineCountBetweenTwo" Type="Int32" />
+          <Property Name="pitch" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="condensed" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="lineCountAfterPrint" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PaymentDetail">
+          <Key>
+            <PropertyRef Name="paymentDetailsId" />
+          </Key>
+          <Property Name="paymentDetailsId" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="paymentMasterId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="amount" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="exchangeRateId" Type="Int32" />
+          <Property Name="chequeNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="chequeDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AccountLedger" Relationship="IMEModel.FK__PaymentDe__ledge__0C06BB60" FromRole="PaymentDetail" ToRole="AccountLedger" />
+          <NavigationProperty Name="ExchangeRate" Relationship="IMEModel.FK__PaymentDe__excha__0CFADF99" FromRole="PaymentDetail" ToRole="ExchangeRate" />
+          <NavigationProperty Name="PaymentMaster" Relationship="IMEModel.FK__PaymentDe__payme__0B129727" FromRole="PaymentDetail" ToRole="PaymentMaster" />
+        </EntityType>
+        <Association Name="FK__PaymentDe__ledge__0C06BB60">
+          <End Type="IMEModel.AccountLedger" Role="AccountLedger" Multiplicity="0..1" />
+          <End Type="IMEModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__excha__0CFADF99">
+          <End Type="IMEModel.ExchangeRate" Role="ExchangeRate" Multiplicity="0..1" />
+          <End Type="IMEModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExchangeRate">
+              <PropertyRef Name="exchangeRateID" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="exchangeRateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__payme__0B129727">
+          <End Type="IMEModel.PaymentMaster" Role="PaymentMaster" Multiplicity="0..1" />
+          <End Type="IMEModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMaster">
+              <PropertyRef Name="paymentMasterId" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="paymentMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -10467,6 +10631,37 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               <ScalarProperty Name="AuthorizationID" ColumnName="AuthorizationID" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Masters">
+            <EntityTypeMapping TypeName="IMEModel.Master">
+              <MappingFragment StoreEntitySet="Master">
+                <ScalarProperty Name="lineCountAfterPrint" ColumnName="lineCountAfterPrint" />
+                <ScalarProperty Name="condensed" ColumnName="condensed" />
+                <ScalarProperty Name="pitch" ColumnName="pitch" />
+                <ScalarProperty Name="lineCountBetweenTwo" ColumnName="lineCountBetweenTwo" />
+                <ScalarProperty Name="footerLocation" ColumnName="footerLocation" />
+                <ScalarProperty Name="blankLneForFooter" ColumnName="blankLneForFooter" />
+                <ScalarProperty Name="pageSizeOther" ColumnName="pageSizeOther" />
+                <ScalarProperty Name="pageSize1" ColumnName="pageSize1" />
+                <ScalarProperty Name="isTwoLineForDetails" ColumnName="isTwoLineForDetails" />
+                <ScalarProperty Name="isTwoLineForHedder" ColumnName="isTwoLineForHedder" />
+                <ScalarProperty Name="formName" ColumnName="formName" />
+                <ScalarProperty Name="masterId" ColumnName="masterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentDetails">
+            <EntityTypeMapping TypeName="IMEModel.PaymentDetail">
+              <MappingFragment StoreEntitySet="PaymentDetail">
+                <ScalarProperty Name="chequeDate" ColumnName="chequeDate" />
+                <ScalarProperty Name="chequeNo" ColumnName="chequeNo" />
+                <ScalarProperty Name="exchangeRateId" ColumnName="exchangeRateId" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="paymentMasterId" ColumnName="paymentMasterId" />
+                <ScalarProperty Name="paymentDetailsId" ColumnName="paymentDetailsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
