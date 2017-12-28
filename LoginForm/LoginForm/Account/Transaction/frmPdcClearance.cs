@@ -519,7 +519,6 @@ namespace Open_Miracle
                 PDCPayableMaster infoPDCPayable = new PDCPayableMaster();
                 PDCPayableMasterSP spPDCPayable = new PDCPayableMasterSP();
                 PDCReceivableMaster infoPDCReceivable = new PDCReceivableMaster();
-                PDCReceivableMasterSP spPDCReceivable = new PDCReceivableMasterSP();
                 Management m = Utils.getManagement();
                 strVoucherType = sppdcClearance.TypeOfVoucherReturnUnderVoucherName(cmbvouchertype.Text.ToString());
                 if (strVoucherType == "PDC Payable")
@@ -561,7 +560,7 @@ namespace Open_Miracle
                 }
                 else if (strVoucherType == "PDC Receivable")
                 {
-                    infoPDCReceivable = spPDCReceivable.PDCReceivableMasterView(Convert.ToDecimal(cmbInvoiceNo.SelectedValue.ToString()));
+                    infoPDCReceivable = new PDCReceivableMasterSP().PDCReceivableMasterView(Convert.ToDecimal(cmbInvoiceNo.SelectedValue.ToString()));
                     infoLedgerPosting.voucherTypeId = decPDCclearanceVoucherTypeId;
                     infoLedgerPosting.voucherNo = strVoucherNo;
                     infoLedgerPosting.invoiceNo = txtvoucherNo.Text.Trim();
@@ -723,8 +722,7 @@ namespace Open_Miracle
                 btnDelete.Enabled = true;
                 pdcClearanceRegObj = PDCClearanceReg;
                 decPDCClearanceEditId = decMasterId;
-                PDCClearanceMasterSP spPDCClearance = new PDCClearanceMasterSP();
-                decMasterIdEdit = spPDCClearance.PDCClearanceAgainstIdUnderClearanceId(decPDCClearanceEditId);
+                decMasterIdEdit = new PDCClearanceMasterSP().PDCClearanceAgainstIdUnderClearanceId(decPDCClearanceEditId);
                 FillFunction();
             }
             catch (Exception ex)
