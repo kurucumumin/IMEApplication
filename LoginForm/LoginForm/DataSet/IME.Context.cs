@@ -55,7 +55,6 @@ namespace LoginForm.DataSet
         public virtual DbSet<Designation> Designations { get; set; }
         public virtual DbSet<DiscountValue> DiscountValues { get; set; }
         public virtual DbSet<DualUse> DualUses { get; set; }
-        public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<ExchangeRate> ExchangeRates { get; set; }
         public virtual DbSet<ExtendedRange> ExtendedRanges { get; set; }
         public virtual DbSet<FinancialYear> FinancialYears { get; set; }
@@ -543,7 +542,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        public virtual int sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
@@ -553,10 +552,10 @@ namespace LoginForm.DataSet
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        public virtual int sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
@@ -566,7 +565,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
         }
     
         public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
@@ -927,52 +926,6 @@ namespace LoginForm.DataSet
                 new ObjectParameter("Length", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SuperDiskPAdd", article_NoParameter, article_DescParameter, pack_CodeParameter, pack_QuantityParameter, unit_ContentParameter, unit_MeasureParameter, uk_Col_1Parameter, standard_WeightParameter, hazardous_IndParameter, calibration_IndParameter, obsolete_FlagParameter, mH1Parameter, low_Discount_IndParameter, licensed_IndParameter, shelf_LifeParameter, cofOParameter, eUR1_IndicatorParameter, cCCN_NoParameter, supercede_DateParameter, current_Cat_pageParameter, uk_Intro_DateParameter, fillerParameter, uk_Disc_DateParameter, substitute_ByParameter, bHC_FlagParameter, filler1Parameter, future_Sell_PriceParameter, int_CatParameter, new_Prod_Change_IndParameter, out_of_Stock_Prohibit_change_indParameter, disc_Change_IndParameter, superceded_Change_IndParameter, pack_Size_Change_IndParameter, rolled_Product_Change_IndParameter, expiring_Product_Change_IndParameter, manufacturerParameter, mPNParameter, mH_Code_Level_1Parameter, heighParameter, widthParameter, lengthParameter);
-        }
-    
-        public virtual ObjectResult<PDCClearanceFillDetails_Result> PDCClearanceFillDetails(string voucherTypeName, Nullable<decimal> masterId)
-        {
-            var voucherTypeNameParameter = voucherTypeName != null ?
-                new ObjectParameter("voucherTypeName", voucherTypeName) :
-                new ObjectParameter("voucherTypeName", typeof(string));
-    
-            var masterIdParameter = masterId.HasValue ?
-                new ObjectParameter("MasterId", masterId) :
-                new ObjectParameter("MasterId", typeof(decimal));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PDCClearanceFillDetails_Result>("PDCClearanceFillDetails", voucherTypeNameParameter, masterIdParameter);
-        }
-    
-        public virtual ObjectResult<PDCClearanceRegisterSearch_Result> PDCClearanceRegisterSearch(string voucherTypeName, string ledgerName, Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate, string chequeNo, Nullable<decimal> bankId, string status)
-        {
-            var voucherTypeNameParameter = voucherTypeName != null ?
-                new ObjectParameter("voucherTypeName", voucherTypeName) :
-                new ObjectParameter("voucherTypeName", typeof(string));
-    
-            var ledgerNameParameter = ledgerName != null ?
-                new ObjectParameter("ledgerName", ledgerName) :
-                new ObjectParameter("ledgerName", typeof(string));
-    
-            var toDateParameter = toDate.HasValue ?
-                new ObjectParameter("toDate", toDate) :
-                new ObjectParameter("toDate", typeof(System.DateTime));
-    
-            var fromDateParameter = fromDate.HasValue ?
-                new ObjectParameter("fromDate", fromDate) :
-                new ObjectParameter("fromDate", typeof(System.DateTime));
-    
-            var chequeNoParameter = chequeNo != null ?
-                new ObjectParameter("chequeNo", chequeNo) :
-                new ObjectParameter("chequeNo", typeof(string));
-    
-            var bankIdParameter = bankId.HasValue ?
-                new ObjectParameter("bankId", bankId) :
-                new ObjectParameter("bankId", typeof(decimal));
-    
-            var statusParameter = status != null ?
-                new ObjectParameter("status", status) :
-                new ObjectParameter("status", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PDCClearanceRegisterSearch_Result>("PDCClearanceRegisterSearch", voucherTypeNameParameter, ledgerNameParameter, toDateParameter, fromDateParameter, chequeNoParameter, bankIdParameter, statusParameter);
         }
     }
 }
