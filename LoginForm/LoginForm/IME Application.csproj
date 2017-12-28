@@ -204,6 +204,12 @@
     <Compile Include="Account\Register\frmPaymentRegister.designer.cs">
       <DependentUpon>frmPaymentRegister.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Register\frmPdcClearanceRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Register\frmPdcClearanceRegister.designer.cs">
+      <DependentUpon>frmPdcClearanceRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Register\frmPDCPayableRegister.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +269,7 @@
     <Compile Include="Account\Services\AreaSP.cs" />
     <Compile Include="Account\Services\BankReconciliationSP.cs" />
     <Compile Include="Account\Services\CreditNoteMasterSP.cs" />
+    <Compile Include="Account\Services\CurrencySP.cs" />
     <Compile Include="Account\Services\DebitNoteDetailsInfo.cs" />
     <Compile Include="Account\Services\DebitNoteDetailsSP.cs" />
     <Compile Include="Account\Services\DebitNoteMasterSP.cs" />
@@ -271,6 +278,7 @@
     <Compile Include="Account\Services\LedgerPostingSP.cs" />
     <Compile Include="Account\Services\NumToText.cs" />
     <Compile Include="Account\Services\PartyBalanceSP.cs" />
+    <Compile Include="Account\Services\PDCClearanceMasterSP.cs" />
     <Compile Include="Account\Services\PDCPayableMasterSP.cs" />
     <Compile Include="Account\Services\PricingLevelSP.cs" />
     <Compile Include="Account\Services\ReminderSP.cs" />
@@ -291,6 +299,12 @@
     <Compile Include="Account\Transaction\frmJournalVoucher.designer.cs">
       <DependentUpon>frmJournalVoucher.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Transaction\frmPdcClearance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Transaction\frmPdcClearance.designer.cs">
+      <DependentUpon>frmPdcClearance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Transaction\frmPdcPayable.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -302,6 +316,12 @@
     </Compile>
     <Compile Include="Account\Transaction\frmPdcReceivable.designer.cs">
       <DependentUpon>frmPdcReceivable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Transaction\frmReceiptVoucher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Transaction\frmReceiptVoucher.designer.cs">
+      <DependentUpon>frmReceiptVoucher.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\AccountingControl.cs">
       <SubType>UserControl</SubType>
@@ -418,7 +438,6 @@
     <Compile Include="DataSet\DualUse.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\Employee.cs" />
     <Compile Include="DataSet\ExchangeRate.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -581,8 +600,6 @@
     <Compile Include="DataSet\SlidingPrice.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\sp_helpdiagramdefinition_Result.cs" />
-    <Compile Include="DataSet\sp_helpdiagrams_Result.cs" />
     <Compile Include="DataSet\Stock.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -933,6 +950,9 @@
     <EmbeddedResource Include="Account\Register\frmPaymentRegister.resx">
       <DependentUpon>frmPaymentRegister.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\Register\frmPdcClearanceRegister.resx">
+      <DependentUpon>frmPdcClearanceRegister.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\Register\frmPDCPayableRegister.resx">
       <DependentUpon>frmPDCPayableRegister.cs</DependentUpon>
     </EmbeddedResource>
@@ -966,11 +986,17 @@
     <EmbeddedResource Include="Account\Transaction\frmJournalVoucher.resx">
       <DependentUpon>frmJournalVoucher.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\Transaction\frmPdcClearance.resx">
+      <DependentUpon>frmPdcClearance.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmPdcPayable.resx">
       <DependentUpon>frmPdcPayable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmPdcReceivable.resx">
       <DependentUpon>frmPdcReceivable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Transaction\frmReceiptVoucher.resx">
+      <DependentUpon>frmReceiptVoucher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountingControl.resx">
       <DependentUpon>AccountingControl.cs</DependentUpon>

@@ -203,5 +203,45 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        public void CashOrBankComboFill(ComboBox cmbCashOrBank, bool isAll)
+        {
+            IMEEntities db = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupName == "Cash-in Hand" || x.accountGroupName == "Bank Account" || x.accountGroupName == "Bank OD A/C") 
+                               select new
+                               {
+                                   AccountGroupId = ag.accountGroupId,
+                                   hierarchyLevel = 1
+                               }).ToList();
+                List<int> IDs = adaptor.Select(x => x.AccountGroupId).ToList();
+
+                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == IDs[0] || x.groupUnder == IDs[1] || x.groupUnder == IDs[2] )
+                                select new
+                                {
+                                    AccountGroupId = ag.accountGroupId,
+                                    hierarchyLevel = 2
+                                }).ToList();
+
+                foreach (var item in adaptor2)
+                {
+                    if (!adaptor.Exists(x => x.AccountGroupId == item.AccountGroupId))
+                    {
+                        adaptor.Add(item);
+                    }
+                }
+
+                cmbCashOrBank.DataSource = dtbl;
+                cmbCashOrBank.ValueMember = "ledgerId";
+                cmbCashOrBank.DisplayMember = "ledgerName";
+                cmbCashOrBank.SelectedIndex = -1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }
