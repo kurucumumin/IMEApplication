@@ -14,6 +14,12 @@ namespace LoginForm.DataSet
     
     public partial class PaymentMaster
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PaymentMaster()
+        {
+            this.PaymentDetails = new HashSet<PaymentDetail>();
+        }
+    
         public decimal paymentMasterId { get; set; }
         public string voucherNo { get; set; }
         public string invoiceNo { get; set; }
@@ -30,5 +36,7 @@ namespace LoginForm.DataSet
         public virtual FinancialYear FinancialYear { get; set; }
         public virtual Worker Worker { get; set; }
         public virtual VoucherType VoucherType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PaymentDetail> PaymentDetails { get; set; }
     }
 }
