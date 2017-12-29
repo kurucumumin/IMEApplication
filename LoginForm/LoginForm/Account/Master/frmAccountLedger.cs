@@ -1195,11 +1195,8 @@ namespace LoginForm
                 MessageBox.Show("AL27:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        /// <summary>
-        /// Function to call this form from frmPaymentVoucher for creating new account ledger
-        /// </summary>
-        /// <param name="frmPaymentVoucherObj"></param>
-        /// <param name="strComboType"></param>     
+
+  
         //TODO OpenMiracle Function
         //public void CallFromPaymentVoucher(frmPaymentVoucher frmPaymentVoucherObj, string strComboType)
         //{
@@ -1769,47 +1766,38 @@ namespace LoginForm
             cmbGroup.DataSource = new AccountGroupSP().AccountGroupViewAllComboFillForAccountLedger();
             cmbGroup.ValueMember = "accountGroupId";
             cmbGroup.DisplayMember = "accountGroupName";
-            //try
-            //{
-            //    if (cmbGroup.SelectedValue != null)
-            //    {
-            //        strGroupName = cmbGroup.SelectedValue.ToString();
-            //    }
-            //    else
-            //    {
-            //        strGroupName = string.Empty;
-            //    }
-            //    frmAccountGroup frmAccountGroup = new frmAccountGroup();
-            //    frmAccountGroup.MdiParent = formMDI.MDIObj;
-            //    frmAccountGroup open = Application.OpenForms["frmAccountGroup"] as frmAccountGroup;
-            //    if (open == null)
-            //    {
-            //        frmAccountGroup.WindowState = FormWindowState.Normal;
-            //        frmAccountGroup.MdiParent = formMDI.MDIObj;
-            //        frmAccountGroup.CallFromAccountLedger(this);
-            //    }
-            //    else
-            //    {
-            //        open.MdiParent = formMDI.MDIObj;
-            //        open.CallFromAccountLedger(this);
-            //        open.BringToFront();
-            //        if (open.WindowState == FormWindowState.Minimized)
-            //        {
-            //            open.WindowState = FormWindowState.Normal;
-            //        }
-            //    }
-            //    this.Enabled = false;
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("AL52:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
-        }
-        /// <summary>
-        ///On Form closing
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+            
+                if (cmbGroup.SelectedValue != null)
+                {
+                    strGroupName = cmbGroup.SelectedValue.ToString();
+                }
+                else
+                {
+                    strGroupName = string.Empty;
+                }
+                //frmAccountGroup frmAccountGroup = new frmAccountGroup();
+                //frmAccountGroup.MdiParent = f.MdiParent; 
+                //frmAccountGroup open = Application.OpenForms["frmAccountGroup"] as frmAccountGroup;
+                //if (open == null)
+                //{
+                //    frmAccountGroup.WindowState = FormWindowState.Normal;
+                //frmAccountGroup.MdiParent = f.MdiParent;
+                //    frmAccountGroup.CallFromAccountLedger(this);
+                //}
+                //else
+                //{
+                //open.MdiParent =  f.MdiParent;
+                //    open.CallFromAccountLedger(this);
+                //    open.BringToFront();
+                //    if (open.WindowState == FormWindowState.Minimized)
+                //    {
+                //        open.WindowState = FormWindowState.Normal;
+                //    }
+                //}
+                this.Enabled = false;
+            }
+
+
         private void frmAccountLedger_FormClosing(object sender, FormClosingEventArgs e)
         {
             //try
@@ -1970,11 +1958,8 @@ namespace LoginForm
             //    MessageBox.Show("AL53:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             //}
         }
-        /// <summary>
-        /// On 'CreditPeriod'textbox leave
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
+
         private void txtCreditPeriod_Leave(object sender, EventArgs e)
         {
             try
@@ -1993,11 +1978,8 @@ namespace LoginForm
                 MessageBox.Show("AL54:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        /// <summary>
-        /// On 'Credit limit' textbox leave
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
+
         private void txtCreditLimit_Leave(object sender, EventArgs e)
         {
             try
@@ -2016,11 +1998,8 @@ namespace LoginForm
                 MessageBox.Show("AL55:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        /// <summary>
-        /// On selecting 'Secondary details' tab
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
+
         private void tbctrlLedger_Selecting(object sender, TabControlCancelEventArgs e)
         {
             try

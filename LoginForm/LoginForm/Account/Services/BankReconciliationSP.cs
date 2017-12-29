@@ -19,10 +19,6 @@ namespace LoginForm.Account.Services
             dtblBank.Columns["Sl No"].AutoIncrement = true;
             dtblBank.Columns["Sl No"].AutoIncrementSeed = 1;
             dtblBank.Columns["Sl No"].AutoIncrementStep = 1;
-            IMEEntities IME = new IMEEntities();
-            var BankReconciliation = IME.BankReconciliations.Where(a => a.statementDate > dtFromDate).Where(b => b.statementDate < dtToDate);
-            var result = IME.LedgerPostings.Where(a => a.AccountLedger.ledgerId == decLedgerId).Where(b => b.AccountLedger.AccountGroup.accountGroupName == "Bank Account").Where(c => c.BankReconciliations == BankReconciliation);
-
             dtblBank.Columns.Add("date");
             dtblBank.Columns.Add("ledgerName");
             dtblBank.Columns.Add("voucherTypeName");
@@ -33,22 +29,48 @@ namespace LoginForm.Account.Services
             dtblBank.Columns.Add("debit");
             dtblBank.Columns.Add("credit");
             dtblBank.Columns.Add("statementDate");
+            IMEEntities IME = new IMEEntities();
+
+            var result = (from lp in IME.LedgerPostings
+                          join vt in IME.VoucherTypes on lp.voucherTypeId equals vt.voucherTypeId
+                          join al in IME.AccountLedgers on lp.ledgerId equals al.ledgerId
+                          join br in IME.BankReconciliations on lp.ledgerPostingId equals br.ledgerPostingId into a
+                          from br in a.DefaultIfEmpty() //RIGHT JOIN
+                          where al.AccountGroup.accountGroupName == "Bank Account"
+                          where lp.ledgerId == decLedgerId
+                          where br.statementDate > dtFromDate
+                          where br.statementDate < dtToDate
+                          select new
+                          {
+                              lp.date,
+                              al.ledgerName,
+                              vt.voucherTypeName,
+                              lp.ledgerPostingId,
+                              lp.voucherNo,
+                              lp.chequeNo,
+                              lp.chequeDate,
+                              lp.debit,
+                              lp.credit,
+                              br.statementDate
+                          }
+                );
+
+           
 
             foreach (var item in result)
             {
                 var row = dtblBank.NewRow();
 
                 row["date"] = item.date;
-                row["ledgerName"] = item.AccountLedger.ledgerName;
-                row["voucherTypeName"] = item.VoucherType.voucherTypeName;
+                row["ledgerName"] = item.ledgerName;
+                row["voucherTypeName"] = item.voucherTypeName;
                 row["ledgerPostingId"] = item.ledgerPostingId;
                 row["voucherNo"] = item.voucherNo;
                 row["chequeNo"] = item.chequeNo;
                 row["chequeDate"] = item.chequeDate;
                 row["debit"] = item.debit;
                 row["credit"] = item.credit;
-                row["statementDate"] = item.BankReconciliations.Select(a => a.statementDate);
-
+                row["statementDate"] = item.statementDate;
                 dtblBank.Rows.Add(row);
             }
 

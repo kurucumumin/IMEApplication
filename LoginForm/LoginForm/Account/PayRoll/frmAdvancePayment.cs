@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using LoginForm.Services;
 using LoginForm.DataSet;
+using LoginForm.Account.Services;
 
 namespace LoginForm
 {
@@ -870,13 +871,8 @@ namespace LoginForm
         //programdan bak
         public void ReturnFromAccountLedgerForm(decimal decId)
         {
-            List<AccountLedger> AccountLedgerpList = new List<AccountLedger>();
-            AccountLedgerpList.AddRange(IME.AccountLedgers.Where(b => b.AccountGroup.accountGroupName == "Bank Account"));
-            AccountLedgerpList.AddRange(IME.AccountLedgers.Where(b => b.AccountGroup.accountGroupName == "Cash-in Hand"));
-            AccountLedgerpList.AddRange(IME.AccountLedgers.Where(b => b.AccountGroup.accountGroupName == "Bank OD A/C"));
-            cmbCashOrBank.DataSource = AccountLedgerpList;
-            cmbCashOrBank.ValueMember = "ledgerId";
-            cmbCashOrBank.DisplayMember = "ledgerName";
+            TransactionsGeneralFill obj = new TransactionsGeneralFill();
+            obj.CashOrBankComboFill(cmbCashOrBank, false);
             cmbCashOrBank.SelectedValue = decId.ToString();
             if (decId.ToString() != "0")
             {
@@ -1072,25 +1068,7 @@ namespace LoginForm
                 }
 
                 frmAccountLedger frmaccountledger = new frmAccountLedger();
-                //frmaccountledger.MdiParent = formMDI.MDIObj;
-
-                //frmAccountLedger open = Application.OpenForms["frmAccountLedger"] as frmAccountLedger;
-                //if (open == null)
-                //{
-                //    frmaccountledger.WindowState = FormWindowState.Normal;
-                //    frmaccountledger.MdiParent = formMDI.MDIObj;
-                //    frmaccountledger.CallFromAdvancePayment(this);
-                //}
-                //else
-                //{
-                //    open.MdiParent = formMDI.MDIObj;
-                //    open.BringToFront();
-                //    open.CallFromAdvancePayment(this);
-                //    if (open.WindowState == FormWindowState.Minimized)
-                //    {
-                //        open.WindowState = FormWindowState.Normal;
-                //    }
-                //}
+                frmaccountledger.ShowDialog();
 
                 this.Enabled = false;
 
@@ -1286,11 +1264,8 @@ namespace LoginForm
 
 
         }
-        /// <summary>
-        /// Enter key and backspace navigation
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
+
         private void txtAmount_KeyDown(object sender, KeyEventArgs e)
         {
             try
@@ -1347,11 +1322,8 @@ namespace LoginForm
                 MessageBox.Show("AP41:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        /// <summary>
-        /// Enter key and backspace  navigation and calls frmLedgerPopup to create new Ledger
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        
+
         private void cmbCashOrBank_KeyDown(object sender, KeyEventArgs e)
         {
 
