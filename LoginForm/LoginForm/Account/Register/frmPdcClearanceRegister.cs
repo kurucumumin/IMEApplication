@@ -1,15 +1,4 @@
-﻿//This is a source code or part of OpenMiracle project
-//Copyright (C) 2013  Cybrosys Technologies Pvt.Ltd
-//This program is free software: you can redistribute it and/or modify
-//it under the terms of the GNU General Public License as published by
-//the Free Software Foundation, either version 3 of the License, or
-//(at your option) any later version.
-//This program is distributed in the hope that it will be useful,
-//but WITHOUT ANY WARRANTY; without even the implied warranty of
-//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//GNU General Public License for more details.
-//You should have received a copy of the GNU General Public License
-//along with this program.  If not, see <http://www.gnu.org/licenses/>.
+﻿
 using LoginForm.Account.Services;
 using LoginForm.DataSet;
 using LoginForm.Services;
@@ -21,7 +10,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-namespace Open_Miracle
+namespace LoginForm.Account
 {
     public partial class frmPdcClearanceRegister : Form
     {
@@ -266,24 +255,24 @@ namespace Open_Miracle
                 {
                     decimal decMasterId = Convert.ToDecimal(dgvClearanceSearch.CurrentRow.Cells["PDCClearanceMasterId"].Value.ToString());
                     decimal decAgainstId = Convert.ToDecimal(dgvClearanceSearch.CurrentRow.Cells["AgainstId"].Value.ToString());
-                    frmPdcClearance frmpdcclerance = new frmPdcClearance();
-                    frmPdcClearance open = Application.OpenForms["frmPdcClearance"] as frmPdcClearance;
-                    if (open == null)
-                    {
-                        frmpdcclerance = new frmPdcClearance();
-                        frmpdcclerance.WindowState = FormWindowState.Normal;
-                        //frmpdcclerance.MdiParent = formMDI.MDIObj;
-                        frmpdcclerance.CallFromPDCClearanceRegister(this, decMasterId);
-                        txtFromDate.Focus();
-                    }
-                    else
-                    {
-                        open.CallFromPDCClearanceRegister(this, decMasterId);
-                        if (open.WindowState == FormWindowState.Minimized)
-                        {
-                            open.WindowState = FormWindowState.Normal;
-                        }
-                    }
+                    //frmPdcClearance frmpdcclerance = new frmPdcClearance();
+                    //frmPdcClearance open = Application.OpenForms["frmPdcClearance"] as frmPdcClearance;
+                    //if (open == null)
+                    //{
+                    //   // frmpdcclerance = new frmPdcClearance();
+                    //    //frmpdcclerance.WindowState = FormWindowState.Normal;
+                    //    //frmpdcclerance.MdiParent = formMDI.MDIObj;
+                    //  //  frmpdcclerance.CallFromPDCClearanceRegister(this, decMasterId);
+                    //    txtFromDate.Focus();
+                    //}
+                    //else
+                    //{
+                    //    //open.CallFromPDCClearanceRegister(this, decMasterId);
+                    //    //if (open.WindowState == FormWindowState.Minimized)
+                    //    //{
+                    //    //    open.WindowState = FormWindowState.Normal;
+                    //    //}
+                    //}
                 }
             }
             catch (Exception ex)
