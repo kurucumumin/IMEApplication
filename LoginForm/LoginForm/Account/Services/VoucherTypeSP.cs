@@ -204,5 +204,71 @@ namespace LoginForm.Account.Services
             }
             return dtbl;
         }
+
+        public DataTable VoucherTypeViewAll()
+        {
+            IMEEntities db = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = (from cm in db.VoucherTypes
+                               select new
+                               {
+                                   cm.voucherTypeId,
+                                   cm.voucherTypeName,
+                                   cm.typeOfVoucher,
+                                   cm.methodOfVoucherNumbering,
+                                   cm.isTaxApplicable,
+                                   cm.narration,
+                                   cm.isActive,
+                                   cm.masterId,
+                                   cm.declaration,
+                                   cm.heading1,
+                                   cm.heading2,
+                                   cm.heading3,
+                                   cm.heading4
+                               }).ToList();
+
+                dtbl.Columns.Add("voucherTypeId");
+                dtbl.Columns.Add("voucherTypeName");
+                dtbl.Columns.Add("typeOfVoucher");
+                dtbl.Columns.Add("methodOfVoucherNumbering");
+                dtbl.Columns.Add("isTaxApplicable");
+                dtbl.Columns.Add("narration");
+                dtbl.Columns.Add("isActive");
+                dtbl.Columns.Add("masterId");
+                dtbl.Columns.Add("declaration");
+                dtbl.Columns.Add("heading1");
+                dtbl.Columns.Add("heading2");
+                dtbl.Columns.Add("heading3");
+                dtbl.Columns.Add("heading4");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["voucherTypeId"] = item.voucherTypeId;
+                    row["voucherTypeName"] = item.voucherTypeName;
+                    row["typeOfVoucher"] = item.typeOfVoucher;
+                    row["methodOfVoucherNumbering"] = item.methodOfVoucherNumbering;
+                    row["isTaxApplicable"] = item.isTaxApplicable;
+                    row["narration"] = item.narration;
+                    row["isActive"] = item.isActive;
+                    row["masterId"] = item.masterId;
+                    row["declaration"] = item.declaration;
+                    row["heading1"] = item.heading1;
+                    row["heading2"] = item.heading2;
+                    row["heading3"] = item.heading3;
+                    row["heading4"] = item.heading4;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
     }
 }

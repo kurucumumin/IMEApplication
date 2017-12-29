@@ -218,5 +218,70 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        public DataTable BankOrCashComboFill(bool isAll)
+        {
+            IMEEntities db = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("SlNo", typeof(decimal));
+            dtbl.Columns["SlNo"].AutoIncrement = true;
+            dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
+            dtbl.Columns["SlNo"].AutoIncrementStep = 1;
+            try
+            {
+                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupId == 27 || x.accountGroupId == 28 || x.accountGroupId == 17)
+                               select new
+                               {
+                                   AccountGroupId = ag.accountGroupId,
+                                   hierarchyLevel = 1
+                               }).ToList();
+                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == 27 || x.groupUnder == 28 || x.accountGroupId == 17)
+                                select new
+                                {
+                                    AccountGroupId = ag.accountGroupId,
+                                    hierarchyLevel = 2
+                                }).ToList();
+
+                foreach (var item in adaptor2)
+                {
+                    if (!adaptor.Exists(x => x.AccountGroupId == item.AccountGroupId))
+                    {
+                        adaptor.Add(item);
+                    }
+                }
+
+                dtbl.Columns.Add("AccountGroupId");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["AccountGroupId"] = item.AccountGroupId;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+        public DataTable AccountLedgerComboFill()
+        {
+            IMEEntities db = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                AccountLedgerSP spaccountledger = new AccountLedgerSP();
+                dtbl = spaccountledger.AccountLedgerViewAll();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("TGF:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            return dtbl;
+        }
     }
 }
