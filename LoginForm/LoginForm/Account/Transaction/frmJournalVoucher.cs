@@ -44,7 +44,7 @@ namespace LoginForm
         public string strVocherNo;
         int inUpdatingRowIndexForPartyRemove = -1;
         decimal decUpdatingLedgerForPartyremove = 0;
-
+        frmJournalReport frmJournalReportObj = null;
         #endregion
 
         #region Functions
@@ -1963,25 +1963,23 @@ namespace LoginForm
         }
 
 
-        //public void CallFromJournalReport(frmJournalReport frmJournalReport, decimal decJournalMasterId)
-        //{
-        //    try
-        //    {
-        //        frmJournalReport.Enabled = false;
-        //        base.Show();
-        //        isEditMode = true;
-        //        btnDelete.Enabled = true;
-        //        frmJournalReportObj = frmJournalReport;
-        //        decJournalMasterIdForEdit = decJournalMasterId;
-        //        FillFunction();
-
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("JV33:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromJournalReport(frmJournalReport frmJournalReport, decimal decJournalMasterId)
+        {
+            try
+            {
+                frmJournalReport.Enabled = false;
+                base.Show();
+                isEditMode = true;
+                btnDelete.Enabled = true;
+                frmJournalReportObj = frmJournalReport;
+                decJournalMasterIdForEdit = decJournalMasterId;
+                FillFunction();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("JV33:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
         private void keypresseventEnable(object sender, KeyPressEventArgs e)
         {
