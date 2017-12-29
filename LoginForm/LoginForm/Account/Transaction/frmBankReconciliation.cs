@@ -148,7 +148,6 @@ namespace LoginForm
         /// </summary>
         public void saveOrEdit()
         {
-
                 BankReconciliation infoBankReconciliation = new BankReconciliation();
                 BankReconciliationSP spBankReconciliation = new BankReconciliationSP();
                 foreach (DataGridViewRow dgv in dgvBankReconciliation.Rows)

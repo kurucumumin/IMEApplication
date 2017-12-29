@@ -17,7 +17,7 @@ namespace LoginForm
         string strAccountGroupName;
         int inNarrationCount;
         decimal decAccountGroupId;
-        
+        frmAccountLedger frmAccountLedgerobj;
         decimal decIdForOtherForms = 0;
         decimal decAccountGroupIdForEdit;
         int inId;
@@ -216,19 +216,19 @@ namespace LoginForm
         ///  Function to call this form from account group register
         /// </summary>
         /// <param name="frmAccountledger"></param>
-        //public void CallFromAccountLedger(frmAccountLedger frmAccountledger)
-        //{
-        //    try
-        //    {
-        //        gbxAccountGroupSearch.Enabled = false;
-        //        this.frmAccountLedgerobj = frmAccountledger;
-        //        base.Show();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("AG11:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromAccountLedger(frmAccountLedger frmAccountledger)
+        {
+            try
+            {
+                gbxAccountGroupSearch.Enabled = false;
+                this.frmAccountLedgerobj = frmAccountledger;
+                base.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AG11:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         #endregion
         #region Events
         /// <summary>

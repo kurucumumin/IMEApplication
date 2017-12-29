@@ -64,15 +64,17 @@
             // 
             // btnLedgerAdd
             // 
+            this.btnLedgerAdd.BackColor = System.Drawing.SystemColors.Control;
             this.btnLedgerAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnLedgerAdd.FlatAppearance.BorderSize = 0;
             this.btnLedgerAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLedgerAdd.ForeColor = System.Drawing.Color.White;
+            this.btnLedgerAdd.ForeColor = System.Drawing.Color.Black;
             this.btnLedgerAdd.Location = new System.Drawing.Point(358, 42);
             this.btnLedgerAdd.Name = "btnLedgerAdd";
             this.btnLedgerAdd.Size = new System.Drawing.Size(21, 20);
             this.btnLedgerAdd.TabIndex = 3;
-            this.btnLedgerAdd.UseVisualStyleBackColor = true;
+            this.btnLedgerAdd.Text = "+";
+            this.btnLedgerAdd.UseVisualStyleBackColor = false;
             this.btnLedgerAdd.Click += new System.EventHandler(this.btnLedgerAdd_Click);
             // 
             // lblTotal
@@ -348,6 +350,7 @@
             // 
             this.dgvbtnAgainst.HeaderText = "Against";
             this.dgvbtnAgainst.Name = "dgvbtnAgainst";
+            this.dgvbtnAgainst.Text = "Against";
             // 
             // dgvtxtAmount
             // 
