@@ -168,5 +168,41 @@ namespace LoginForm.Account.Services
             }
             return frmId;
         }
+
+        public DataTable VoucherTypeSelectionComboFill(string strVoucherType)
+        {
+            IMEEntities db = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("SlNo", typeof(decimal));
+            dtbl.Columns["SlNo"].AutoIncrement = true;
+            dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
+            dtbl.Columns["SlNo"].AutoIncrementStep = 1;
+
+            try
+            {
+                var adaptor = (from x in db.VoucherTypes
+                               where x.typeOfVoucher == strVoucherType && x.isActive == true
+                               select new { x.voucherTypeId, x.voucherTypeName }).ToList();
+
+
+                dtbl.Columns.Add("voucherTypeId");
+                dtbl.Columns.Add("voucherTypeName");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["voucherTypeId"] = item.voucherTypeId;
+                    row["voucherTypeName"] = item.voucherTypeName;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
     }
 }

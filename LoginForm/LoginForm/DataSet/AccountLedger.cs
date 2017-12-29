@@ -23,6 +23,7 @@ namespace LoginForm.DataSet
             this.DeliveryNoteMasters = new HashSet<DeliveryNoteMaster>();
             this.LedgerPostings = new HashSet<LedgerPosting>();
             this.PartyBalances = new HashSet<PartyBalance>();
+            this.PaymentDetails = new HashSet<PaymentDetail>();
             this.PaymentMasters = new HashSet<PaymentMaster>();
             this.PDCClearanceMasters = new HashSet<PDCClearanceMaster>();
             this.PDCPayableMasters = new HashSet<PDCPayableMaster>();
@@ -73,6 +74,8 @@ namespace LoginForm.DataSet
         public virtual ICollection<LedgerPosting> LedgerPostings { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PartyBalance> PartyBalances { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PaymentDetail> PaymentDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PaymentMaster> PaymentMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
