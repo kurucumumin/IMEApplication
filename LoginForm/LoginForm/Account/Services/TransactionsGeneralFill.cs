@@ -243,5 +243,20 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        public DataTable AccountLedgerComboFill()
+        {
+            DataTable dtbl = new DataTable();
+            try
+            {
+                AccountLedgerSP spaccountledger = new AccountLedgerSP();
+                dtbl = spaccountledger.AccountLedgerViewAll();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("TGF:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            return dtbl;
+        }
     }
 }

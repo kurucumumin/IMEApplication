@@ -129,5 +129,29 @@ namespace LoginForm.Account.Services
             }
             return decLedgerPostingId;
         }
+
+        public void LedgerPostingEditByVoucherTypeAndVoucherNo(LedgerPosting lpi)
+        {
+            IMEEntities db = new IMEEntities();
+            try
+            {
+                LedgerPosting lp = db.LedgerPostings.Where(x => x.voucherNo == lpi.voucherNo && x.voucherTypeId == lpi.voucherTypeId).FirstOrDefault();
+
+                lp.date = lpi.date;
+                lp.ledgerId = lpi.ledgerId;
+                lp.debit = lpi.debit;
+                lp.credit = lpi.credit;
+                lp.yearId = lpi.yearId;
+                lp.invoiceNo = lpi.invoiceNo;
+                lp.chequeNo = lpi.chequeNo;
+                lp.chequeDate = lpi.chequeDate;
+
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }

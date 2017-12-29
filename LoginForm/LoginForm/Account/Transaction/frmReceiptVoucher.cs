@@ -465,8 +465,8 @@ namespace Open_Miracle
                 Management m = Utils.getManagement();
                 ReceiptMaster InfoReceiptMaster = new ReceiptMaster();
                 ReceiptMasterSP SpReceiptMaster = new ReceiptMasterSP();
-                ReceiptDetail InfoReceiptDetails = new ReceiptDetails();
-                ReceiptDetailsSP SpReceiptDetails = new ReceiptDetailsSP();
+                ReceiptDetail InfoReceiptDetails = new ReceiptDetail();
+                ReceiptDetailSP SpReceiptDetails = new ReceiptDetailSP();
                 PartyBalanceSP SpPartyBalance = new PartyBalanceSP();
                 PartyBalance InfopartyBalance = new PartyBalance();
                 InfoReceiptMaster.date = dtpDate.Value;
@@ -499,7 +499,7 @@ namespace Open_Miracle
                     if (dgvReceiptVoucher.Rows[inI].HeaderCell.Value.ToString() != "X")
                     {
                         InfoReceiptDetails.amount = Convert.ToDecimal(dgvReceiptVoucher.Rows[inI].Cells["dgvtxtAmount"].Value.ToString());
-                        InfoReceiptDetails.exchangeRateId = Convert.ToDecimal(dgvReceiptVoucher.Rows[inI].Cells["dgvcmbCurrency"].Value.ToString());
+                        InfoReceiptDetails.exchangeRateId = Convert.ToInt32(dgvReceiptVoucher.Rows[inI].Cells["dgvcmbCurrency"].Value.ToString());
                         InfoReceiptDetails.ledgerId = Convert.ToDecimal(dgvReceiptVoucher.Rows[inI].Cells["dgvcmbAccountLedger"].Value.ToString());
                         InfoReceiptDetails.receiptMasterId = decReceiptMasterId;
                         if (dgvReceiptVoucher.Rows[inI].Cells["dgvcmbAccountLedger"].Value != null && dgvReceiptVoucher.Rows[inI].Cells["dgvcmbAccountLedger"].Value.ToString() != string.Empty)
@@ -572,7 +572,7 @@ namespace Open_Miracle
                 ReceiptMaster InfoReceiptMaster = new ReceiptMaster();
                 ReceiptMasterSP SpReceiptMaster = new ReceiptMasterSP();
                 ReceiptDetail InfoReceiptDetails = new ReceiptDetail();
-                ReceiptDetailsSP SpReceiptDetails = new ReceiptDetailsSP();
+                ReceiptDetailSP SpReceiptDetails = new ReceiptDetailSP();
                 LedgerPostingSP SpLedgerPosting = new LedgerPostingSP();
                 LedgerPosting InfoLegerPosting = new LedgerPosting();
                 PartyBalance InfopartyBalance = new PartyBalance();
@@ -615,7 +615,7 @@ namespace Open_Miracle
                 for (int inI = 0; inI < inRowCount - 1; inI++)
                 {
                     InfoReceiptDetails.amount = Convert.ToDecimal(dgvReceiptVoucher.Rows[inI].Cells["dgvtxtAmount"].Value.ToString());
-                    InfoReceiptDetails.exchangeRateId = Convert.ToDecimal(dgvReceiptVoucher.Rows[inI].Cells["dgvcmbCurrency"].Value.ToString());
+                    InfoReceiptDetails.exchangeRateId = Convert.ToInt32(dgvReceiptVoucher.Rows[inI].Cells["dgvcmbCurrency"].Value.ToString());
                     InfoReceiptDetails.receiptMasterId = InfoReceiptMaster.receiptMasterId;
                     if (dgvReceiptVoucher.Rows[inI].Cells["dgvcmbAccountLedger"].Value != null && dgvReceiptVoucher.Rows[inI].Cells["dgvcmbAccountLedger"].Value.ToString() != string.Empty)
                     {
@@ -825,7 +825,8 @@ namespace Open_Miracle
                 dRowOther["Heading3"] = dtblDeclaration.Rows[0]["Heading3"].ToString();
                 dRowOther["Heading4"] = dtblDeclaration.Rows[0]["Heading4"].ToString();
                 int inFormId = spVoucherType.FormIdGetForPrinterSettings(Convert.ToInt32(dtblDeclaration.Rows[0]["masterId"].ToString()));
-                DotMatrixPrint.PrintDesign(inFormId, dtblOtherDetails, dtblGridDetails, dtblOtherDetails);
+                //TO DO Print
+                //DotMatrixPrint.PrintDesign(inFormId, dtblOtherDetails, dtblGridDetails, dtblOtherDetails);
             }
             catch (Exception ex)
             {
@@ -1753,14 +1754,14 @@ namespace Open_Miracle
                 ReceiptMaster InfoReceiptMaster = new ReceiptMaster();
                 ReceiptMasterSP SpReceiptMaster = new ReceiptMasterSP();
                 ReceiptDetail InfoReceiptDetails = new ReceiptDetail();
-                ReceiptDetailsSP SpReceiptDetails = new ReceiptDetailsSP();
+                ReceiptDetailSP SpReceiptDetails = new ReceiptDetailSP();
                 PartyBalanceSP SpPartyBalance = new PartyBalanceSP();
                 LedgerPostingSP SpLedgerPosting = new LedgerPostingSP();
                 VoucherTypeSP SpVoucherType = new VoucherTypeSP();
                 AccountGroupSP spAccountGroup = new AccountGroupSP();
                 AccountLedgerSP SpAccountLedger = new AccountLedgerSP();
                 InfoReceiptMaster = SpReceiptMaster.ReceiptMasterViewByMasterId(decRecieptmasterId);
-                isAutomatic = SpVoucherType.CheckMethodOfVoucherNumbering(InfoReceiptMaster.voucherTypeId);
+                isAutomatic = SpVoucherType.CheckMethodOfVoucherNumbering(Convert.ToDecimal(InfoReceiptMaster.voucherTypeId));
                 if (isAutomatic)
                 {
                     txtVoucherNo.ReadOnly = true;
@@ -1813,7 +1814,7 @@ namespace Open_Miracle
                     dgvReceiptVoucher.Rows[inI].HeaderCell.Value = string.Empty;
                 }
                 DataTable dtbl1 = new DataTable();
-                dtbl1 = SpPartyBalance.PartyBalanceViewByVoucherNoAndVoucherType(decReceiptVoucherTypeId, strVoucherNo, InfoReceiptMaster.date);
+                dtbl1 = SpPartyBalance.PartyBalanceViewByVoucherNoAndVoucherType(decReceiptVoucherTypeId, strVoucherNo, Convert.ToDateTime(InfoReceiptMaster.date));
                 dtblPartyBalance = dtbl1;
                 isValueChange = true;
             }
@@ -1883,16 +1884,17 @@ namespace Open_Miracle
         /// <param name="e"></param>
         private void frmReceiptVoucher_Load(object sender, EventArgs e)
         {
+            Management m = Utils.getManagement();
             try
             {
                 Clear();
                 btnDelete.Enabled = false;
-                dtpDate.Value = PublicVariables._dtCurrentDate;
-                dtpDate.MinDate = PublicVariables._dtFromDate;
-                dtpDate.MaxDate = PublicVariables._dtToDate;
+                dtpDate.Value = DateTime.Now.Date;
+                dtpDate.MinDate = Convert.ToDateTime(m.FinancialYear.fromDate);
+                dtpDate.MaxDate = Convert.ToDateTime(m.FinancialYear.toDate);
                 dtpDate.CustomFormat = "dd-MMMM-yyyy";
                 BankOrCashComboFill();
-                txtDate.Text = PublicVariables._dtCurrentDate.ToString("dd-MMM-yyyy");
+                txtDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
                 GridLedgerComboFill();
                 DataTableForPartyBalance();
             }
@@ -1914,7 +1916,7 @@ namespace Open_Miracle
                 DateValidationObj.DateValidationFunction(txtDate);
                 if (txtDate.Text == string.Empty)
                 {
-                    txtDate.Text = PublicVariables._dtCurrentDate.ToString("dd-MMM-yyyy");
+                    txtDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
                 }
                 string strDate = txtDate.Text;
                 dtpDate.Value = Convert.ToDateTime(strDate.ToString());
@@ -1931,40 +1933,40 @@ namespace Open_Miracle
         /// <param name="e"></param>
         private void btnLedgerAdd_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (cmbCashOrBank.SelectedValue != null)
-                {
-                    strLedgerId = cmbCashOrBank.SelectedValue.ToString();
-                }
-                else
-                {
-                    strLedgerId = string.Empty;
-                }
-                frmAccountLedger frmAccountLedgerObj = new frmAccountLedger();
-                frmAccountLedgerObj.MdiParent = formMDI.MDIObj;
-                frmAccountLedger open = Application.OpenForms["frmAccountLedger"] as frmAccountLedger;
-                if (open == null)
-                {
-                    frmAccountLedgerObj.WindowState = FormWindowState.Normal;
-                    frmAccountLedgerObj.MdiParent = formMDI.MDIObj;
-                    frmAccountLedgerObj.CallFromReceiptVoucher(this, "CashOrBank");
-                }
-                else
-                {
-                    open.MdiParent = formMDI.MDIObj;
-                    open.BringToFront();
-                    open.CallFromReceiptVoucher(this, "CashOrBank");
-                    if (open.WindowState == FormWindowState.Minimized)
-                    {
-                        open.WindowState = FormWindowState.Normal;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("RV39:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //try
+            //{
+            //    if (cmbCashOrBank.SelectedValue != null)
+            //    {
+            //        strLedgerId = cmbCashOrBank.SelectedValue.ToString();
+            //    }
+            //    else
+            //    {
+            //        strLedgerId = string.Empty;
+            //    }
+            //    frmAccountLedger frmAccountLedgerObj = new frmAccountLedger();
+            //    frmAccountLedgerObj.MdiParent = formMDI.MDIObj;
+            //    frmAccountLedger open = Application.OpenForms["frmAccountLedger"] as frmAccountLedger;
+            //    if (open == null)
+            //    {
+            //        frmAccountLedgerObj.WindowState = FormWindowState.Normal;
+            //        frmAccountLedgerObj.MdiParent = formMDI.MDIObj;
+            //        frmAccountLedgerObj.CallFromReceiptVoucher(this, "CashOrBank");
+            //    }
+            //    else
+            //    {
+            //        open.MdiParent = formMDI.MDIObj;
+            //        open.BringToFront();
+            //        open.CallFromReceiptVoucher(this, "CashOrBank");
+            //        if (open.WindowState == FormWindowState.Minimized)
+            //        {
+            //            open.WindowState = FormWindowState.Normal;
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("RV39:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         /// <summary>
         /// Basic calculations in grid cell value change
@@ -2055,7 +2057,7 @@ namespace Open_Miracle
                             }
                             else
                             {
-                                dgvReceiptVoucher.Rows[e.RowIndex].Cells["dgvtxtChequeDate"].Value = PublicVariables._dtCurrentDate.ToString("dd-MMM-yyyy");
+                                dgvReceiptVoucher.Rows[e.RowIndex].Cells["dgvtxtChequeDate"].Value = DateTime.Now.ToString("dd-MMM-yyyy");
                             }
                         }
                     }
@@ -2075,14 +2077,14 @@ namespace Open_Miracle
         {
             try
             {
-                if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnSave.Text))
-                {
+                //if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnSave.Text))
+                //{
                     SaveOrEdit();
-                }
-                else
-                {
-                    Messages.NoPrivillageMessage();
-                }
+                //}
+                //else
+                //{
+                //    Messages.NoPrivillageMessage();
+                //}
             }
             catch (Exception ex)
             {
@@ -2104,20 +2106,20 @@ namespace Open_Miracle
                     if (dgvReceiptVoucher.CurrentCell.ColumnIndex == dgvReceiptVoucher.Columns["dgvbtnAgainst"].Index)
                     {
                         decimal decI = Convert.ToDecimal(SpAccountLedger.AccountGroupIdCheck(dgvReceiptVoucher.CurrentRow.Cells["dgvcmbAccountLedger"].FormattedValue.ToString()));
-                        if (decI > 0)
-                        {
-                            frmPartyBalanceObj = new frmPartyBalance();
-                            frmPartyBalanceObj.MdiParent = formMDI.MDIObj;
-                            decimal decLedgerId = Convert.ToDecimal(dgvReceiptVoucher.CurrentRow.Cells["dgvcmbAccountLedger"].Value.ToString());
-                            if (!isAutomatic)
-                            {
-                                frmPartyBalanceObj.CallFromReceiptVoucher(this, decLedgerId, dtblPartyBalance, decReceiptVoucherTypeId, txtVoucherNo.Text, Convert.ToDateTime(txtDate.Text), arrlstOfDeletedPartyBalanceRow);
-                            }
-                            else
-                            {
-                                frmPartyBalanceObj.CallFromReceiptVoucher(this, decLedgerId, dtblPartyBalance, decReceiptVoucherTypeId, strVoucherNo, Convert.ToDateTime(txtDate.Text), arrlstOfDeletedPartyBalanceRow);
-                            }
-                        }
+                        //if (decI > 0)
+                        //{
+                        //    frmPartyBalanceObj = new frmPartyBalance();
+                        //    frmPartyBalanceObj.MdiParent = formMDI.MDIObj;
+                        //    decimal decLedgerId = Convert.ToDecimal(dgvReceiptVoucher.CurrentRow.Cells["dgvcmbAccountLedger"].Value.ToString());
+                        //    if (!isAutomatic)
+                        //    {
+                        //        frmPartyBalanceObj.CallFromReceiptVoucher(this, decLedgerId, dtblPartyBalance, decReceiptVoucherTypeId, txtVoucherNo.Text, Convert.ToDateTime(txtDate.Text), arrlstOfDeletedPartyBalanceRow);
+                        //    }
+                        //    else
+                        //    {
+                        //        frmPartyBalanceObj.CallFromReceiptVoucher(this, decLedgerId, dtblPartyBalance, decReceiptVoucherTypeId, strVoucherNo, Convert.ToDateTime(txtDate.Text), arrlstOfDeletedPartyBalanceRow);
+                        //    }
+                        //}
                     }
                 }
             }
@@ -2220,27 +2222,27 @@ namespace Open_Miracle
         {
             try
             {
-                if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnDelete.Text))
-                {
+                //if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnDelete.Text))
+                //{
                     if (btnSave.Text == "Update")
                     {
-                        if (PublicVariables.isMessageDelete)
-                        {
+                        //if (PublicVariables.isMessageDelete)
+                        //{
                             if (Messages.DeleteMessage())
                             {
                                 Delete(decRecieptmasterId);
                             }
-                        }
-                        else
-                        {
-                            Delete(decRecieptmasterId);
-                        }
+                        //}
+                        //else
+                        //{
+                        //    Delete(decRecieptmasterId);
+                        //}
                     }
-                }
-                else
-                {
-                    Messages.NoPrivillageMessage();
-                }
+                //}
+                //else
+                //{
+                //    Messages.NoPrivillageMessage();
+                //}
             }
             catch (Exception ex)
             {
@@ -2353,21 +2355,21 @@ namespace Open_Miracle
             try
             {
                 Clear();
-                if (frmAgeingObj != null)
-                {
-                    frmAgeingObj.Close();
-                    frmAgeingObj = null;
-                }
-                if (frmBillallocationObj != null)
-                {
-                    frmBillallocationObj.Close();
-                    frmBillallocationObj = null;
-                }
-                if (frmChequeReportObj != null)
-                {
-                    frmChequeReportObj.Close();
-                    frmChequeReportObj = null;
-                }
+                //if (frmAgeingObj != null)
+                //{
+                //    frmAgeingObj.Close();
+                //    frmAgeingObj = null;
+                //}
+                //if (frmBillallocationObj != null)
+                //{
+                //    frmBillallocationObj.Close();
+                //    frmBillallocationObj = null;
+                //}
+                //if (frmChequeReportObj != null)
+                //{
+                //    frmChequeReportObj.Close();
+                //    frmChequeReportObj = null;
+                //}
             }
             catch (Exception ex)
             {
@@ -2383,14 +2385,14 @@ namespace Open_Miracle
         {
             try
             {
-                if (PublicVariables.isMessageClose)
-                {
+                //if (PublicVariables.isMessageClose)
+                //{
                     Messages.CloseMessage(this);
-                }
-                else
-                {
-                    this.Close();
-                }
+                //}
+                //else
+                //{
+                //    this.Close();
+                //}
             }
             catch (Exception ex)
             {
@@ -2406,42 +2408,42 @@ namespace Open_Miracle
         {
             try
             {
-                if (frmReceiptReportObj != null)
-                {
-                    frmReceiptReportObj.Enabled = true;
-                    frmReceiptReportObj.CallFromReceiptVoucher(this);
-                }
-                if (frmReceiptRegisterObj != null)
-                {
-                    frmReceiptRegisterObj.Enabled = true;
-                    frmReceiptRegisterObj.CallFromReceiptVoucher(this);
-                }
-                if (frmBillallocationObj != null)
-                {
-                    frmBillallocationObj.Enabled = true;
-                    frmBillallocationObj.BillAllocationGridFill();
-                }
-                if (frmDayBookObj != null)
-                {
-                    frmDayBookObj.Enabled = true;
-                    frmDayBookObj.dayBookGridFill();
-                    frmDayBookObj = null;
-                }
-                if (frmChequeReportObj != null)
-                {
-                    frmChequeReportObj.Enabled = true;
-                    frmChequeReportObj.ChequeReportFillGrid();
-                }
-                if (frmAgeingObj != null)
-                {
-                    frmAgeingObj.Enabled = true;
-                    frmAgeingObj.FillGrid();
-                }
-                if (frmLedgerDetailsObj != null)
-                {
-                    frmLedgerDetailsObj.Enabled = true;
-                    frmLedgerDetailsObj.LedgerDetailsView();
-                }
+                //if (frmReceiptReportObj != null)
+                //{
+                //    frmReceiptReportObj.Enabled = true;
+                //    frmReceiptReportObj.CallFromReceiptVoucher(this);
+                //}
+                //if (frmReceiptRegisterObj != null)
+                //{
+                //    frmReceiptRegisterObj.Enabled = true;
+                //    frmReceiptRegisterObj.CallFromReceiptVoucher(this);
+                //}
+                //if (frmBillallocationObj != null)
+                //{
+                //    frmBillallocationObj.Enabled = true;
+                //    frmBillallocationObj.BillAllocationGridFill();
+                //}
+                //if (frmDayBookObj != null)
+                //{
+                //    frmDayBookObj.Enabled = true;
+                //    frmDayBookObj.dayBookGridFill();
+                //    frmDayBookObj = null;
+                //}
+                //if (frmChequeReportObj != null)
+                //{
+                //    frmChequeReportObj.Enabled = true;
+                //    frmChequeReportObj.ChequeReportFillGrid();
+                //}
+                //if (frmAgeingObj != null)
+                //{
+                //    frmAgeingObj.Enabled = true;
+                //    frmAgeingObj.FillGrid();
+                //}
+                //if (frmLedgerDetailsObj != null)
+                //{
+                //    frmLedgerDetailsObj.Enabled = true;
+                //    frmLedgerDetailsObj.LedgerDetailsView();
+                //}
                 if (frmVoucherSearch != null)
                 {
                     frmVoucherSearch.Enabled = true;

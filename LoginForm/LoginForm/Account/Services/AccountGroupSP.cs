@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
+using System.Windows.Forms;
 
 namespace LoginForm.Account.Services
 {
@@ -72,6 +72,26 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
             return dt;
+        }
+
+        public bool AccountGroupwithLedgerId(decimal decLedgerId)
+        {
+            IMEEntities db = new IMEEntities();
+            bool isExist = false;
+            try
+            {
+                decimal groupId = db.AccountGroups.Where(x => x.accountGroupName.Contains("Bank Account")).Select(x=>x.accountGroupId).FirstOrDefault();
+
+                var adaptor = db.AccountLedgers.Where(x => x.ledgerId == decLedgerId && x.accountGroupID == groupId).ToList();
+
+                isExist = (adaptor.Count() > 0) ? true : false;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AGSP :2" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            return isExist;
         }
     }
 }

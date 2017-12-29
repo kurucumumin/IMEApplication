@@ -281,6 +281,8 @@
     <Compile Include="Account\Services\PDCClearanceMasterSP.cs" />
     <Compile Include="Account\Services\PDCPayableMasterSP.cs" />
     <Compile Include="Account\Services\PricingLevelSP.cs" />
+    <Compile Include="Account\Services\ReceiptDetailSP.cs" />
+    <Compile Include="Account\Services\ReceiptMasterSP.cs" />
     <Compile Include="Account\Services\ReminderSP.cs" />
     <Compile Include="Account\Services\RouteSP.cs" />
     <Compile Include="Account\Services\SettingsSP.cs" />
@@ -565,9 +567,6 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\ReceiptDetail.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ReceiptDetail1.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\ReceiptMaster.cs">
@@ -857,8 +856,10 @@
     <Compile Include="SaleOrder\SalesOrderHelper.cs" />
     <Compile Include="Services\Common.cs" />
     <Compile Include="Services\DateValidation.cs" />
+    <Compile Include="Services\dgv.cs" />
     <Compile Include="Services\Messages.cs" />
     <Compile Include="Account\Services\PDCReceivableMasterSP.cs" />
+    <Compile Include="Services\NumToText.cs" />
     <Compile Include="Services\OtherDateValidationFunction.cs" />
     <Compile Include="Services\ToolTipService.cs" />
     <Compile Include="Services\txtCreate.cs" />

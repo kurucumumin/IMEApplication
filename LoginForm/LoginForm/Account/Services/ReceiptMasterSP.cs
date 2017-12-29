@@ -51,5 +51,99 @@ namespace LoginForm.Account.Services
                 MessageBox.Show("RMSP :5" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        public decimal ReceiptMasterGetMax(decimal decVoucherTypeId)
+        {
+            decimal decMax = 0;
+            try
+            {
+                decMax = new IMEEntities().ReceiptMasters.Where(x => x.voucherTypeId == decVoucherTypeId).Select(x => Convert.ToInt32(x.voucherNo)).Max();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decMax;
+        }
+
+        public decimal ReceiptMasterAdd(ReceiptMaster receiptmasterinfo)
+        {
+            IMEEntities db = new IMEEntities();
+            decimal decRecieptMasterId = 0;
+
+            try
+            {
+                db.ReceiptMasters.Add(receiptmasterinfo);
+                decRecieptMasterId = receiptmasterinfo.receiptMasterId;
+
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decRecieptMasterId;
+        }
+
+        public decimal ReceiptMasterEdit(ReceiptMaster rmc)
+        {
+            IMEEntities db = new IMEEntities();
+            decimal decRecieptMasterId = 0;
+            try
+            {
+                ReceiptMaster rp = db.ReceiptMasters.Where(x => x.receiptMasterId == rmc.receiptMasterId).FirstOrDefault();
+
+                rp.voucherNo = rmc.voucherNo;
+                rp.invoiceNo = rmc.invoiceNo;
+                rp.suffixPrefixId = rmc.suffixPrefixId;
+                rp.date = rmc.date;
+                rp.ledgerId = rmc.ledgerId;
+                rp.totalAmount = rmc.totalAmount;
+                rp.narration = rmc.narration;
+                rp.voucherTypeId = rmc.voucherTypeId;
+                rp.userId = rmc.userId;
+                rp.financialYearId = rmc.financialYearId;
+
+                db.SaveChanges();
+
+                decRecieptMasterId = rp.receiptMasterId;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decRecieptMasterId;
+        }
+
+        public bool ReceiptVoucherCheckExistence(string strvoucherNo, decimal decvoucherTypeId, decimal decMasterId)
+        {
+            IMEEntities db = new IMEEntities();
+            bool trueOrfalse = false;
+            try
+            {
+                var adaptor = db.ReceiptMasters.Where(x => x.voucherNo == strvoucherNo && x.voucherTypeId == decvoucherTypeId && x.receiptMasterId != decMasterId).ToList();
+
+                trueOrfalse = (adaptor.Count() > 0) ? false : true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return trueOrfalse;
+        }
+        public ReceiptMaster ReceiptMasterViewByMasterId(decimal decReceiptMastertId)
+        {
+            IMEEntities db = new IMEEntities();
+            ReceiptMaster InfoReceiptMaster = new ReceiptMaster();
+            try
+            {
+                InfoReceiptMaster = db.ReceiptMasters.Where(x => x.receiptMasterId == decReceiptMastertId).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return InfoReceiptMaster;
+        }
     }
 }

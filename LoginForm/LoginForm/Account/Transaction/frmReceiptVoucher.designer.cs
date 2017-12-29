@@ -170,7 +170,6 @@
             // 
             // btnClose
             // 
-            this.btnClose.BackgroundImage = global::Open_Miracle.Properties.Resources.button;
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.White;
@@ -184,7 +183,6 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.BackgroundImage = global::Open_Miracle.Properties.Resources.button_delete;
             this.btnDelete.Enabled = false;
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -199,7 +197,6 @@
             // 
             // btnClear
             // 
-            this.btnClear.BackgroundImage = global::Open_Miracle.Properties.Resources.button;
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.White;
@@ -213,7 +210,6 @@
             // 
             // btnSave
             // 
-            this.btnSave.BackgroundImage = global::Open_Miracle.Properties.Resources.button;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.White;
@@ -249,7 +245,6 @@
             // 
             // btnLedgerAdd
             // 
-            this.btnLedgerAdd.BackgroundImage = global::Open_Miracle.Properties.Resources.button_add;
             this.btnLedgerAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnLedgerAdd.FlatAppearance.BorderSize = 0;
             this.btnLedgerAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
