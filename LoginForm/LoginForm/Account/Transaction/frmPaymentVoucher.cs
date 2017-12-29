@@ -1681,13 +1681,8 @@ namespace LoginForm
         {
             try
             {
-                DataTable dtbl = new DataTable();
                 TransactionsGeneralFill Obj = new TransactionsGeneralFill();
-                dtbl =  Obj.BankOrCashComboFill(false);
-                cmbBankorCash.DataSource = dtbl;
-                cmbBankorCash.ValueMember = "ledgerId";
-                cmbBankorCash.DisplayMember = "ledgerName";
-                cmbBankorCash.SelectedIndex = -1;
+                Obj.CashOrBankComboFill(cmbBankorCash, false);
             }
             catch (Exception ex)
             {

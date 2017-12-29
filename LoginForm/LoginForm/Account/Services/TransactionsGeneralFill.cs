@@ -98,6 +98,21 @@ namespace LoginForm.Account.Services
             return dt;
         }
 
+        public void CashOrBankComboFill(ComboBox cmbCashOrBank, bool isAll)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            List<AccountGroup> AccountGroupList = new List<AccountGroup>();
+            AccountGroupList.Add(IME.AccountGroups.Where(a=>a.accountGroupName== "Cash -in Hand").FirstOrDefault());
+            AccountGroupList.Add(IME.AccountGroups.Where(a => a.accountGroupName == "Bank Account").FirstOrDefault());
+            AccountGroupList.Add(IME.AccountGroups.Where(a => a.accountGroupName == "Bank OD A/ C").FirstOrDefault());
+                cmbCashOrBank.DataSource = IME.AccountLedgers.Where(a => a.AccountGroup.groupUnder == AccountGroupList[0].accountGroupId || a.AccountGroup.groupUnder == AccountGroupList[1].accountGroupId || a.AccountGroup.groupUnder == AccountGroupList[2].accountGroupId);
+                cmbCashOrBank.ValueMember = "ledgerId";
+                cmbCashOrBank.DisplayMember = "ledgerName";
+                cmbCashOrBank.SelectedIndex = -1;
+        }
+
+
         public void CashOrPartyComboFill(ComboBox cmbCashOrParty, bool isAll)
         {
             IMEEntities db = new IMEEntities();
