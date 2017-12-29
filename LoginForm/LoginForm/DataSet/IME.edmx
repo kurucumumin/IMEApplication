@@ -498,6 +498,9 @@
           <Property Name="invoiceNo" Type="varchar(max)" />
           <Property Name="chequeNo" Type="varchar(max)" />
           <Property Name="chequeDate" Type="datetime" />
+          <Property Name="extraDate" Type="datetime" />
+          <Property Name="extra1" Type="varchar(max)" />
+          <Property Name="extra2" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="LoaderDates">
           <Key>
@@ -615,6 +618,18 @@
           <Property Name="type" Type="varchar(max)" />
           <Property Name="narration" Type="varchar(max)" />
           <Property Name="extraDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PaymentDetail">
+          <Key>
+            <PropertyRef Name="paymentDetailsId" />
+          </Key>
+          <Property Name="paymentDetailsId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="paymentMasterId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ledgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="amount" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="exchangeRateId" Type="int" />
+          <Property Name="chequeNo" Type="varchar(max)" />
+          <Property Name="chequeDate" Type="datetime" />
         </EntityType>
         <EntityType Name="PaymentMaster">
           <Key>
@@ -1503,7 +1518,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__BankRecon__ledge__3726238F">
+        <Association Name="FK__BankRecon__ledge__2F8501C7">
           <End Role="LedgerPosting" Type="Self.LedgerPosting" Multiplicity="0..1" />
           <End Role="BankReconciliation" Type="Self.BankReconciliation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1539,7 +1554,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CreditNot__credi__027D5126">
+        <Association Name="FK__CreditNot__credi__6F6A7CB2">
           <End Role="CreditNoteMaster" Type="Self.CreditNoteMaster" Multiplicity="0..1" />
           <End Role="CreditNoteDetails" Type="Self.CreditNoteDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1551,7 +1566,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CreditNot__finan__7EE1CA6C">
+        <Association Name="FK__CreditNot__finan__74643BF9">
           <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
           <End Role="CreditNoteMaster" Type="Self.CreditNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1563,7 +1578,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CreditNot__ledge__0371755F">
+        <Association Name="FK__CreditNot__ledge__705EA0EB">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="CreditNoteDetails" Type="Self.CreditNoteDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1575,7 +1590,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CreditNot__userI__7DEDA633">
+        <Association Name="FK__CreditNot__userI__737017C0">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="CreditNoteMaster" Type="Self.CreditNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1587,7 +1602,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CreditNot__vouch__03A67F89">
+        <Association Name="FK__CreditNot__vouch__79E80B25">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="CreditNoteMaster" Type="Self.CreditNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1851,7 +1866,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DebitNote__debit__79E80B25">
+        <Association Name="FK__DebitNote__debit__66D536B1">
           <End Role="DebitNoteMaster" Type="Self.DebitNoteMaster" Multiplicity="0..1" />
           <End Role="DebitNoteDetail" Type="Self.DebitNoteDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1863,7 +1878,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DebitNote__excha__7BD05397">
+        <Association Name="FK__DebitNote__excha__68BD7F23">
           <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
           <End Role="DebitNoteDetail" Type="Self.DebitNoteDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1875,7 +1890,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DebitNote__ledge__7ADC2F5E">
+        <Association Name="FK__DebitNote__ledge__67C95AEA">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="DebitNoteDetail" Type="Self.DebitNoteDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1887,7 +1902,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DebitNote__userI__76177A41">
+        <Association Name="FK__DebitNote__userI__6304A5CD">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="DebitNoteMaster" Type="Self.DebitNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1899,7 +1914,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DebitNote__vouch__770B9E7A">
+        <Association Name="FK__DebitNote__vouch__63F8CA06">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="DebitNoteMaster" Type="Self.DebitNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1911,7 +1926,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryN__excha__16B953FD">
+        <Association Name="FK__DeliveryN__excha__231F2AE2">
           <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
           <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1923,7 +1938,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryN__finan__1995C0A8">
+        <Association Name="FK__DeliveryN__finan__25FB978D">
           <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
           <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1935,7 +1950,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryN__ledge__14D10B8B">
+        <Association Name="FK__DeliveryN__ledge__2136E270">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1947,7 +1962,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryN__prici__15C52FC4">
+        <Association Name="FK__DeliveryN__prici__222B06A9">
           <End Role="PricingLevel" Type="Self.PricingLevel" Multiplicity="0..1" />
           <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1959,7 +1974,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryN__quota__18A19C6F">
+        <Association Name="FK__DeliveryN__quota__25077354">
           <End Role="Quotation" Type="Self.Quotation" Multiplicity="0..1" />
           <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1971,7 +1986,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryN__suffi__13DCE752">
+        <Association Name="FK__DeliveryN__suffi__2042BE37">
           <End Role="SuffixPrefix" Type="Self.SuffixPrefix" Multiplicity="0..1" />
           <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1983,7 +1998,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryN__userI__17AD7836">
+        <Association Name="FK__DeliveryN__userI__24134F1B">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1995,7 +2010,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryN__vouch__12E8C319">
+        <Association Name="FK__DeliveryN__vouch__1F4E99FE">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2055,7 +2070,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__JournalDe__excha__0F183235">
+        <Association Name="FK__JournalDe__excha__00CA12DE">
           <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
           <End Role="JournalDetail" Type="Self.JournalDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2067,7 +2082,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__JournalDe__journ__100C566E">
+        <Association Name="FK__JournalDe__journ__01BE3717">
           <End Role="JournalMaster" Type="Self.JournalMaster" Multiplicity="0..1" />
           <End Role="JournalDetail" Type="Self.JournalDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2079,7 +2094,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__JournalMa__finan__095F58DF">
+        <Association Name="FK__JournalMa__finan__7B113988">
           <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
           <End Role="JournalMaster" Type="Self.JournalMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2091,7 +2106,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__JournalMa__suffi__0C3BC58A">
+        <Association Name="FK__JournalMa__suffi__7DEDA633">
           <End Role="SuffixPrefix" Type="Self.SuffixPrefix" Multiplicity="0..1" />
           <End Role="JournalMaster" Type="Self.JournalMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2103,7 +2118,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__JournalMa__userI__0B47A151">
+        <Association Name="FK__JournalMa__userI__7CF981FA">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="JournalMaster" Type="Self.JournalMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2115,7 +2130,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__JournalMa__vouch__0A537D18">
+        <Association Name="FK__JournalMa__vouch__7C055DC1">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="JournalMaster" Type="Self.JournalMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2247,6 +2262,42 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PaymentDe__excha__0CFADF99">
+          <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
+          <End Role="PaymentDetail" Type="Self.PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExchangeRate">
+              <PropertyRef Name="exchangeRateID" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="exchangeRateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__ledge__0C06BB60">
+          <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
+          <End Role="PaymentDetail" Type="Self.PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__payme__0B129727">
+          <End Role="PaymentMaster" Type="Self.PaymentMaster" Multiplicity="0..1" />
+          <End Role="PaymentDetail" Type="Self.PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMaster">
+              <PropertyRef Name="paymentMasterId" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="paymentMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PaymentMa__finan__47919582">
           <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
           <End Role="PaymentMaster" Type="Self.PaymentMaster" Multiplicity="*" />
@@ -2295,7 +2346,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCCleara__finan__611C5D5B">
+        <Association Name="FK__PDCCleara__finan__3CDEFCE5">
           <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
           <End Role="PDCClearanceMaster" Type="Self.PDCClearanceMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2307,7 +2358,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCCleara__ledge__5E3FF0B0">
+        <Association Name="FK__PDCCleara__ledge__3A02903A">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="PDCClearanceMaster" Type="Self.PDCClearanceMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2319,7 +2370,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCCleara__suffi__5D4BCC77">
+        <Association Name="FK__PDCCleara__suffi__390E6C01">
           <End Role="SuffixPrefix" Type="Self.SuffixPrefix" Multiplicity="0..1" />
           <End Role="PDCClearanceMaster" Type="Self.PDCClearanceMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2331,7 +2382,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCCleara__userI__60283922">
+        <Association Name="FK__PDCCleara__userI__3BEAD8AC">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="PDCClearanceMaster" Type="Self.PDCClearanceMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2343,7 +2394,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCCleara__vouch__5F3414E9">
+        <Association Name="FK__PDCCleara__vouch__3AF6B473">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="PDCClearanceMaster" Type="Self.PDCClearanceMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2355,7 +2406,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCPayabl__finan__2BB470E3">
+        <Association Name="FK__PDCPayabl__finan__2CA8951C">
           <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
           <End Role="PDCPayableMaster" Type="Self.PDCPayableMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2367,7 +2418,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCPayabl__ledge__28D80438">
+        <Association Name="FK__PDCPayabl__ledge__29CC2871">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="PDCPayableMaster" Type="Self.PDCPayableMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2379,7 +2430,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCPayabl__suffi__27E3DFFF">
+        <Association Name="FK__PDCPayabl__suffi__28D80438">
           <End Role="SuffixPrefix" Type="Self.SuffixPrefix" Multiplicity="0..1" />
           <End Role="PDCPayableMaster" Type="Self.PDCPayableMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2391,7 +2442,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCPayabl__userI__29CC2871">
+        <Association Name="FK__PDCPayabl__userI__2AC04CAA">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="PDCPayableMaster" Type="Self.PDCPayableMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2403,7 +2454,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCPayabl__vouch__2AC04CAA">
+        <Association Name="FK__PDCPayabl__vouch__2BB470E3">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="PDCPayableMaster" Type="Self.PDCPayableMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2415,7 +2466,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCReceiv__finan__4E0988E7">
+        <Association Name="FK__PDCReceiv__finan__3631FF56">
           <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
           <End Role="PDCReceivableMaster" Type="Self.PDCReceivableMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2427,7 +2478,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCReceiv__ledge__4B2D1C3C">
+        <Association Name="FK__PDCReceiv__ledge__335592AB">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="PDCReceivableMaster" Type="Self.PDCReceivableMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2439,7 +2490,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCReceiv__suffi__4A38F803">
+        <Association Name="FK__PDCReceiv__suffi__32616E72">
           <End Role="SuffixPrefix" Type="Self.SuffixPrefix" Multiplicity="0..1" />
           <End Role="PDCReceivableMaster" Type="Self.PDCReceivableMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2451,7 +2502,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCReceiv__userI__4C214075">
+        <Association Name="FK__PDCReceiv__userI__3449B6E4">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="PDCReceivableMaster" Type="Self.PDCReceivableMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2463,7 +2514,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCReceiv__vouch__4D1564AE">
+        <Association Name="FK__PDCReceiv__vouch__353DDB1D">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="PDCReceivableMaster" Type="Self.PDCReceivableMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2583,7 +2634,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReceiptDe__excha__064DE20A">
+        <Association Name="FK__ReceiptDe__excha__733B0D96">
           <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
           <End Role="ReceiptDetails" Type="Self.ReceiptDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2595,7 +2646,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReceiptDe__ledge__08362A7C">
+        <Association Name="FK__ReceiptDe__ledge__75235608">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="ReceiptDetails" Type="Self.ReceiptDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2607,7 +2658,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReceiptDe__ledge__0C06BB60">
+        <Association Name="FK__ReceiptDe__ledge__78F3E6EC">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="ReceiptDetail" Type="Self.ReceiptDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2619,7 +2670,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReceiptDe__recei__07420643">
+        <Association Name="FK__ReceiptDe__recei__742F31CF">
           <End Role="ReceiptMaster" Type="Self.ReceiptMaster" Multiplicity="0..1" />
           <End Role="ReceiptDetails" Type="Self.ReceiptDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2631,7 +2682,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReceiptDe__recei__0B129727">
+        <Association Name="FK__ReceiptDe__recei__77FFC2B3">
           <End Role="ReceiptMaster" Type="Self.ReceiptMaster" Multiplicity="0..1" />
           <End Role="ReceiptDetail" Type="Self.ReceiptDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2655,7 +2706,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalaryVou__emplo__1D314762">
+        <Association Name="FK__SalaryVou__emplo__064DE20A">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="SalaryVoucherDetail" Type="Self.SalaryVoucherDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2667,7 +2718,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalaryVou__finan__17786E0C">
+        <Association Name="FK__SalaryVou__finan__009508B4">
           <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
           <End Role="SalaryVoucherMaster" Type="Self.SalaryVoucherMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2679,7 +2730,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalaryVou__ledge__1A54DAB7">
+        <Association Name="FK__SalaryVou__ledge__0371755F">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="SalaryVoucherMaster" Type="Self.SalaryVoucherMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2691,7 +2742,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalaryVou__salar__1C3D2329">
+        <Association Name="FK__SalaryVou__salar__0559BDD1">
           <End Role="SalaryVoucherMaster" Type="Self.SalaryVoucherMaster" Multiplicity="0..1" />
           <End Role="SalaryVoucherDetail" Type="Self.SalaryVoucherDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2703,7 +2754,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalaryVou__suffi__1960B67E">
+        <Association Name="FK__SalaryVou__suffi__027D5126">
           <End Role="SuffixPrefix" Type="Self.SuffixPrefix" Multiplicity="0..1" />
           <End Role="SalaryVoucherMaster" Type="Self.SalaryVoucherMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2715,7 +2766,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalaryVou__vouch__186C9245">
+        <Association Name="FK__SalaryVou__vouch__01892CED">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="SalaryVoucherMaster" Type="Self.SalaryVoucherMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2859,7 +2910,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaleOrder__Vouch__149C0161">
+        <Association Name="FK__SaleOrder__Vouch__7DB89C09">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -2871,7 +2922,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SuffixPre__vouch__0682EC34">
+        <Association Name="FK__SuffixPre__vouch__7740A8A4">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="SuffixPrefix" Type="Self.SuffixPrefix" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3267,7 +3318,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Worker__designat__0CFADF99">
+        <Association Name="FK__Worker__designat__7CC477D0">
           <End Role="Designation" Type="Self.Designation" Multiplicity="0..1" />
           <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3565,6 +3616,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <EntitySet Name="OnSale" EntityType="Self.OnSale" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PartyBalance" EntityType="Self.PartyBalance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PayHead" EntityType="Self.PayHead" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentDetail" EntityType="Self.PaymentDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentMaster" EntityType="Self.PaymentMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentTerm" EntityType="Self.PaymentTerm" Schema="dbo" store:Type="Tables" />
@@ -3614,15 +3666,15 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <EntitySet Name="VoucherTypeTax" EntityType="Self.VoucherTypeTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SalaryVoucherDetail" EntityType="Self.SalaryVoucherDetail" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId],
-    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId],
-    [SalaryVoucherDetail].[employeeId] AS [employeeId],
-    [SalaryVoucherDetail].[bonus] AS [bonus],
-    [SalaryVoucherDetail].[deduction] AS [deduction],
-    [SalaryVoucherDetail].[advance] AS [advance],
-    [SalaryVoucherDetail].[lop] AS [lop],
-    [SalaryVoucherDetail].[salary] AS [salary],
+            <DefiningQuery>SELECT 
+    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId], 
+    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId], 
+    [SalaryVoucherDetail].[employeeId] AS [employeeId], 
+    [SalaryVoucherDetail].[bonus] AS [bonus], 
+    [SalaryVoucherDetail].[deduction] AS [deduction], 
+    [SalaryVoucherDetail].[advance] AS [advance], 
+    [SalaryVoucherDetail].[lop] AS [lop], 
+    [SalaryVoucherDetail].[salary] AS [salary], 
     [SalaryVoucherDetail].[status] AS [status]
     FROM [dbo].[SalaryVoucherDetail] AS [SalaryVoucherDetail]</DefiningQuery>
           </EntitySet>
@@ -3662,7 +3714,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="RoleValue" EntitySet="RoleValue" />
             <End Role="AuthRole" EntitySet="AuthRole" />
           </AssociationSet>
-          <AssociationSet Name="FK__BankRecon__ledge__3726238F" Association="Self.FK__BankRecon__ledge__3726238F">
+          <AssociationSet Name="FK__BankRecon__ledge__2F8501C7" Association="Self.FK__BankRecon__ledge__2F8501C7">
             <End Role="LedgerPosting" EntitySet="LedgerPosting" />
             <End Role="BankReconciliation" EntitySet="BankReconciliation" />
           </AssociationSet>
@@ -3674,23 +3726,23 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="Country" EntitySet="Country" />
             <End Role="City" EntitySet="City" />
           </AssociationSet>
-          <AssociationSet Name="FK__CreditNot__credi__027D5126" Association="Self.FK__CreditNot__credi__027D5126">
+          <AssociationSet Name="FK__CreditNot__credi__6F6A7CB2" Association="Self.FK__CreditNot__credi__6F6A7CB2">
             <End Role="CreditNoteMaster" EntitySet="CreditNoteMaster" />
             <End Role="CreditNoteDetails" EntitySet="CreditNoteDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__CreditNot__finan__7EE1CA6C" Association="Self.FK__CreditNot__finan__7EE1CA6C">
+          <AssociationSet Name="FK__CreditNot__finan__74643BF9" Association="Self.FK__CreditNot__finan__74643BF9">
             <End Role="FinancialYear" EntitySet="FinancialYear" />
             <End Role="CreditNoteMaster" EntitySet="CreditNoteMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__CreditNot__ledge__0371755F" Association="Self.FK__CreditNot__ledge__0371755F">
+          <AssociationSet Name="FK__CreditNot__ledge__705EA0EB" Association="Self.FK__CreditNot__ledge__705EA0EB">
             <End Role="AccountLedger" EntitySet="AccountLedger" />
             <End Role="CreditNoteDetails" EntitySet="CreditNoteDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__CreditNot__userI__7DEDA633" Association="Self.FK__CreditNot__userI__7DEDA633">
+          <AssociationSet Name="FK__CreditNot__userI__737017C0" Association="Self.FK__CreditNot__userI__737017C0">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="CreditNoteMaster" EntitySet="CreditNoteMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__CreditNot__vouch__03A67F89" Association="Self.FK__CreditNot__vouch__03A67F89">
+          <AssociationSet Name="FK__CreditNot__vouch__79E80B25" Association="Self.FK__CreditNot__vouch__79E80B25">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="CreditNoteMaster" EntitySet="CreditNoteMaster" />
           </AssociationSet>
@@ -3778,55 +3830,55 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="CustomerTitle" EntitySet="CustomerTitle" />
             <End Role="CustomerWorker" EntitySet="CustomerWorker" />
           </AssociationSet>
-          <AssociationSet Name="FK__DebitNote__debit__79E80B25" Association="Self.FK__DebitNote__debit__79E80B25">
+          <AssociationSet Name="FK__DebitNote__debit__66D536B1" Association="Self.FK__DebitNote__debit__66D536B1">
             <End Role="DebitNoteMaster" EntitySet="DebitNoteMaster" />
             <End Role="DebitNoteDetail" EntitySet="DebitNoteDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__DebitNote__excha__7BD05397" Association="Self.FK__DebitNote__excha__7BD05397">
+          <AssociationSet Name="FK__DebitNote__excha__68BD7F23" Association="Self.FK__DebitNote__excha__68BD7F23">
             <End Role="ExchangeRate" EntitySet="ExchangeRate" />
             <End Role="DebitNoteDetail" EntitySet="DebitNoteDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__DebitNote__ledge__7ADC2F5E" Association="Self.FK__DebitNote__ledge__7ADC2F5E">
+          <AssociationSet Name="FK__DebitNote__ledge__67C95AEA" Association="Self.FK__DebitNote__ledge__67C95AEA">
             <End Role="AccountLedger" EntitySet="AccountLedger" />
             <End Role="DebitNoteDetail" EntitySet="DebitNoteDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__DebitNote__userI__76177A41" Association="Self.FK__DebitNote__userI__76177A41">
+          <AssociationSet Name="FK__DebitNote__userI__6304A5CD" Association="Self.FK__DebitNote__userI__6304A5CD">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="DebitNoteMaster" EntitySet="DebitNoteMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__DebitNote__vouch__770B9E7A" Association="Self.FK__DebitNote__vouch__770B9E7A">
+          <AssociationSet Name="FK__DebitNote__vouch__63F8CA06" Association="Self.FK__DebitNote__vouch__63F8CA06">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="DebitNoteMaster" EntitySet="DebitNoteMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryN__excha__16B953FD" Association="Self.FK__DeliveryN__excha__16B953FD">
+          <AssociationSet Name="FK__DeliveryN__excha__231F2AE2" Association="Self.FK__DeliveryN__excha__231F2AE2">
             <End Role="ExchangeRate" EntitySet="ExchangeRate" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryN__finan__1995C0A8" Association="Self.FK__DeliveryN__finan__1995C0A8">
+          <AssociationSet Name="FK__DeliveryN__finan__25FB978D" Association="Self.FK__DeliveryN__finan__25FB978D">
             <End Role="FinancialYear" EntitySet="FinancialYear" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryN__ledge__14D10B8B" Association="Self.FK__DeliveryN__ledge__14D10B8B">
+          <AssociationSet Name="FK__DeliveryN__ledge__2136E270" Association="Self.FK__DeliveryN__ledge__2136E270">
             <End Role="AccountLedger" EntitySet="AccountLedger" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryN__prici__15C52FC4" Association="Self.FK__DeliveryN__prici__15C52FC4">
+          <AssociationSet Name="FK__DeliveryN__prici__222B06A9" Association="Self.FK__DeliveryN__prici__222B06A9">
             <End Role="PricingLevel" EntitySet="PricingLevel" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryN__quota__18A19C6F" Association="Self.FK__DeliveryN__quota__18A19C6F">
+          <AssociationSet Name="FK__DeliveryN__quota__25077354" Association="Self.FK__DeliveryN__quota__25077354">
             <End Role="Quotation" EntitySet="Quotation" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryN__suffi__13DCE752" Association="Self.FK__DeliveryN__suffi__13DCE752">
+          <AssociationSet Name="FK__DeliveryN__suffi__2042BE37" Association="Self.FK__DeliveryN__suffi__2042BE37">
             <End Role="SuffixPrefix" EntitySet="SuffixPrefix" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryN__userI__17AD7836" Association="Self.FK__DeliveryN__userI__17AD7836">
+          <AssociationSet Name="FK__DeliveryN__userI__24134F1B" Association="Self.FK__DeliveryN__userI__24134F1B">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryN__vouch__12E8C319" Association="Self.FK__DeliveryN__vouch__12E8C319">
+          <AssociationSet Name="FK__DeliveryN__vouch__1F4E99FE" Association="Self.FK__DeliveryN__vouch__1F4E99FE">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMaster" />
           </AssociationSet>
@@ -3846,27 +3898,27 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="Notes" EntitySet="Notes" />
             <End Role="ItemNote" EntitySet="ItemNote" />
           </AssociationSet>
-          <AssociationSet Name="FK__JournalDe__excha__0F183235" Association="Self.FK__JournalDe__excha__0F183235">
+          <AssociationSet Name="FK__JournalDe__excha__00CA12DE" Association="Self.FK__JournalDe__excha__00CA12DE">
             <End Role="ExchangeRate" EntitySet="ExchangeRate" />
             <End Role="JournalDetail" EntitySet="JournalDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__JournalDe__journ__100C566E" Association="Self.FK__JournalDe__journ__100C566E">
+          <AssociationSet Name="FK__JournalDe__journ__01BE3717" Association="Self.FK__JournalDe__journ__01BE3717">
             <End Role="JournalMaster" EntitySet="JournalMaster" />
             <End Role="JournalDetail" EntitySet="JournalDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__JournalMa__finan__095F58DF" Association="Self.FK__JournalMa__finan__095F58DF">
+          <AssociationSet Name="FK__JournalMa__finan__7B113988" Association="Self.FK__JournalMa__finan__7B113988">
             <End Role="FinancialYear" EntitySet="FinancialYear" />
             <End Role="JournalMaster" EntitySet="JournalMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__JournalMa__suffi__0C3BC58A" Association="Self.FK__JournalMa__suffi__0C3BC58A">
+          <AssociationSet Name="FK__JournalMa__suffi__7DEDA633" Association="Self.FK__JournalMa__suffi__7DEDA633">
             <End Role="SuffixPrefix" EntitySet="SuffixPrefix" />
             <End Role="JournalMaster" EntitySet="JournalMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__JournalMa__userI__0B47A151" Association="Self.FK__JournalMa__userI__0B47A151">
+          <AssociationSet Name="FK__JournalMa__userI__7CF981FA" Association="Self.FK__JournalMa__userI__7CF981FA">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="JournalMaster" EntitySet="JournalMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__JournalMa__vouch__0A537D18" Association="Self.FK__JournalMa__vouch__0A537D18">
+          <AssociationSet Name="FK__JournalMa__vouch__7C055DC1" Association="Self.FK__JournalMa__vouch__7C055DC1">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="JournalMaster" EntitySet="JournalMaster" />
           </AssociationSet>
@@ -3910,6 +3962,18 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="PartyBalance" EntitySet="PartyBalance" />
           </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__excha__0CFADF99" Association="Self.FK__PaymentDe__excha__0CFADF99">
+            <End Role="ExchangeRate" EntitySet="ExchangeRate" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__ledge__0C06BB60" Association="Self.FK__PaymentDe__ledge__0C06BB60">
+            <End Role="AccountLedger" EntitySet="AccountLedger" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__payme__0B129727" Association="Self.FK__PaymentDe__payme__0B129727">
+            <End Role="PaymentMaster" EntitySet="PaymentMaster" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetail" />
+          </AssociationSet>
           <AssociationSet Name="FK__PaymentMa__finan__47919582" Association="Self.FK__PaymentMa__finan__47919582">
             <End Role="FinancialYear" EntitySet="FinancialYear" />
             <End Role="PaymentMaster" EntitySet="PaymentMaster" />
@@ -3926,63 +3990,63 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="PaymentMaster" EntitySet="PaymentMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCCleara__finan__611C5D5B" Association="Self.FK__PDCCleara__finan__611C5D5B">
+          <AssociationSet Name="FK__PDCCleara__finan__3CDEFCE5" Association="Self.FK__PDCCleara__finan__3CDEFCE5">
             <End Role="FinancialYear" EntitySet="FinancialYear" />
             <End Role="PDCClearanceMaster" EntitySet="PDCClearanceMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCCleara__ledge__5E3FF0B0" Association="Self.FK__PDCCleara__ledge__5E3FF0B0">
+          <AssociationSet Name="FK__PDCCleara__ledge__3A02903A" Association="Self.FK__PDCCleara__ledge__3A02903A">
             <End Role="AccountLedger" EntitySet="AccountLedger" />
             <End Role="PDCClearanceMaster" EntitySet="PDCClearanceMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCCleara__suffi__5D4BCC77" Association="Self.FK__PDCCleara__suffi__5D4BCC77">
+          <AssociationSet Name="FK__PDCCleara__suffi__390E6C01" Association="Self.FK__PDCCleara__suffi__390E6C01">
             <End Role="SuffixPrefix" EntitySet="SuffixPrefix" />
             <End Role="PDCClearanceMaster" EntitySet="PDCClearanceMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCCleara__userI__60283922" Association="Self.FK__PDCCleara__userI__60283922">
+          <AssociationSet Name="FK__PDCCleara__userI__3BEAD8AC" Association="Self.FK__PDCCleara__userI__3BEAD8AC">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="PDCClearanceMaster" EntitySet="PDCClearanceMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCCleara__vouch__5F3414E9" Association="Self.FK__PDCCleara__vouch__5F3414E9">
+          <AssociationSet Name="FK__PDCCleara__vouch__3AF6B473" Association="Self.FK__PDCCleara__vouch__3AF6B473">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="PDCClearanceMaster" EntitySet="PDCClearanceMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCPayabl__finan__2BB470E3" Association="Self.FK__PDCPayabl__finan__2BB470E3">
+          <AssociationSet Name="FK__PDCPayabl__finan__2CA8951C" Association="Self.FK__PDCPayabl__finan__2CA8951C">
             <End Role="FinancialYear" EntitySet="FinancialYear" />
             <End Role="PDCPayableMaster" EntitySet="PDCPayableMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCPayabl__ledge__28D80438" Association="Self.FK__PDCPayabl__ledge__28D80438">
+          <AssociationSet Name="FK__PDCPayabl__ledge__29CC2871" Association="Self.FK__PDCPayabl__ledge__29CC2871">
             <End Role="AccountLedger" EntitySet="AccountLedger" />
             <End Role="PDCPayableMaster" EntitySet="PDCPayableMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCPayabl__suffi__27E3DFFF" Association="Self.FK__PDCPayabl__suffi__27E3DFFF">
+          <AssociationSet Name="FK__PDCPayabl__suffi__28D80438" Association="Self.FK__PDCPayabl__suffi__28D80438">
             <End Role="SuffixPrefix" EntitySet="SuffixPrefix" />
             <End Role="PDCPayableMaster" EntitySet="PDCPayableMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCPayabl__userI__29CC2871" Association="Self.FK__PDCPayabl__userI__29CC2871">
+          <AssociationSet Name="FK__PDCPayabl__userI__2AC04CAA" Association="Self.FK__PDCPayabl__userI__2AC04CAA">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="PDCPayableMaster" EntitySet="PDCPayableMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCPayabl__vouch__2AC04CAA" Association="Self.FK__PDCPayabl__vouch__2AC04CAA">
+          <AssociationSet Name="FK__PDCPayabl__vouch__2BB470E3" Association="Self.FK__PDCPayabl__vouch__2BB470E3">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="PDCPayableMaster" EntitySet="PDCPayableMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCReceiv__finan__4E0988E7" Association="Self.FK__PDCReceiv__finan__4E0988E7">
+          <AssociationSet Name="FK__PDCReceiv__finan__3631FF56" Association="Self.FK__PDCReceiv__finan__3631FF56">
             <End Role="FinancialYear" EntitySet="FinancialYear" />
             <End Role="PDCReceivableMaster" EntitySet="PDCReceivableMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCReceiv__ledge__4B2D1C3C" Association="Self.FK__PDCReceiv__ledge__4B2D1C3C">
+          <AssociationSet Name="FK__PDCReceiv__ledge__335592AB" Association="Self.FK__PDCReceiv__ledge__335592AB">
             <End Role="AccountLedger" EntitySet="AccountLedger" />
             <End Role="PDCReceivableMaster" EntitySet="PDCReceivableMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCReceiv__suffi__4A38F803" Association="Self.FK__PDCReceiv__suffi__4A38F803">
+          <AssociationSet Name="FK__PDCReceiv__suffi__32616E72" Association="Self.FK__PDCReceiv__suffi__32616E72">
             <End Role="SuffixPrefix" EntitySet="SuffixPrefix" />
             <End Role="PDCReceivableMaster" EntitySet="PDCReceivableMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCReceiv__userI__4C214075" Association="Self.FK__PDCReceiv__userI__4C214075">
+          <AssociationSet Name="FK__PDCReceiv__userI__3449B6E4" Association="Self.FK__PDCReceiv__userI__3449B6E4">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="PDCReceivableMaster" EntitySet="PDCReceivableMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCReceiv__vouch__4D1564AE" Association="Self.FK__PDCReceiv__vouch__4D1564AE">
+          <AssociationSet Name="FK__PDCReceiv__vouch__353DDB1D" Association="Self.FK__PDCReceiv__vouch__353DDB1D">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="PDCReceivableMaster" EntitySet="PDCReceivableMaster" />
           </AssociationSet>
@@ -4022,23 +4086,23 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="Quotation" EntitySet="Quotation" />
             <End Role="QuotationDetail" EntitySet="QuotationDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__excha__064DE20A" Association="Self.FK__ReceiptDe__excha__064DE20A">
+          <AssociationSet Name="FK__ReceiptDe__excha__733B0D96" Association="Self.FK__ReceiptDe__excha__733B0D96">
             <End Role="ExchangeRate" EntitySet="ExchangeRate" />
             <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__ledge__08362A7C" Association="Self.FK__ReceiptDe__ledge__08362A7C">
+          <AssociationSet Name="FK__ReceiptDe__ledge__75235608" Association="Self.FK__ReceiptDe__ledge__75235608">
             <End Role="AccountLedger" EntitySet="AccountLedger" />
             <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__ledge__0C06BB60" Association="Self.FK__ReceiptDe__ledge__0C06BB60">
+          <AssociationSet Name="FK__ReceiptDe__ledge__78F3E6EC" Association="Self.FK__ReceiptDe__ledge__78F3E6EC">
             <End Role="AccountLedger" EntitySet="AccountLedger" />
             <End Role="ReceiptDetail" EntitySet="ReceiptDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__recei__07420643" Association="Self.FK__ReceiptDe__recei__07420643">
+          <AssociationSet Name="FK__ReceiptDe__recei__742F31CF" Association="Self.FK__ReceiptDe__recei__742F31CF">
             <End Role="ReceiptMaster" EntitySet="ReceiptMaster" />
             <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__recei__0B129727" Association="Self.FK__ReceiptDe__recei__0B129727">
+          <AssociationSet Name="FK__ReceiptDe__recei__77FFC2B3" Association="Self.FK__ReceiptDe__recei__77FFC2B3">
             <End Role="ReceiptMaster" EntitySet="ReceiptMaster" />
             <End Role="ReceiptDetail" EntitySet="ReceiptDetail" />
           </AssociationSet>
@@ -4046,27 +4110,27 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="Area" EntitySet="Area" />
             <End Role="Route" EntitySet="Route" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalaryVou__emplo__1D314762" Association="Self.FK__SalaryVou__emplo__1D314762">
+          <AssociationSet Name="FK__SalaryVou__emplo__064DE20A" Association="Self.FK__SalaryVou__emplo__064DE20A">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="SalaryVoucherDetail" EntitySet="SalaryVoucherDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalaryVou__finan__17786E0C" Association="Self.FK__SalaryVou__finan__17786E0C">
+          <AssociationSet Name="FK__SalaryVou__finan__009508B4" Association="Self.FK__SalaryVou__finan__009508B4">
             <End Role="FinancialYear" EntitySet="FinancialYear" />
             <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalaryVou__ledge__1A54DAB7" Association="Self.FK__SalaryVou__ledge__1A54DAB7">
+          <AssociationSet Name="FK__SalaryVou__ledge__0371755F" Association="Self.FK__SalaryVou__ledge__0371755F">
             <End Role="AccountLedger" EntitySet="AccountLedger" />
             <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalaryVou__salar__1C3D2329" Association="Self.FK__SalaryVou__salar__1C3D2329">
+          <AssociationSet Name="FK__SalaryVou__salar__0559BDD1" Association="Self.FK__SalaryVou__salar__0559BDD1">
             <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMaster" />
             <End Role="SalaryVoucherDetail" EntitySet="SalaryVoucherDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalaryVou__suffi__1960B67E" Association="Self.FK__SalaryVou__suffi__1960B67E">
+          <AssociationSet Name="FK__SalaryVou__suffi__027D5126" Association="Self.FK__SalaryVou__suffi__027D5126">
             <End Role="SuffixPrefix" EntitySet="SuffixPrefix" />
             <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalaryVou__vouch__186C9245" Association="Self.FK__SalaryVou__vouch__186C9245">
+          <AssociationSet Name="FK__SalaryVou__vouch__01892CED" Association="Self.FK__SalaryVou__vouch__01892CED">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMaster" />
           </AssociationSet>
@@ -4114,11 +4178,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="SaleOrder" EntitySet="SaleOrder" />
             <End Role="SaleOrderDetail" EntitySet="SaleOrderDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaleOrder__Vouch__149C0161" Association="Self.FK__SaleOrder__Vouch__149C0161">
+          <AssociationSet Name="FK__SaleOrder__Vouch__7DB89C09" Association="Self.FK__SaleOrder__Vouch__7DB89C09">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="SaleOrder" EntitySet="SaleOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK__SuffixPre__vouch__0682EC34" Association="Self.FK__SuffixPre__vouch__0682EC34">
+          <AssociationSet Name="FK__SuffixPre__vouch__7740A8A4" Association="Self.FK__SuffixPre__vouch__7740A8A4">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="SuffixPrefix" EntitySet="SuffixPrefix" />
           </AssociationSet>
@@ -4250,7 +4314,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="VoucherTypeTax" EntitySet="VoucherTypeTax" />
           </AssociationSet>
-          <AssociationSet Name="FK__Worker__designat__0CFADF99" Association="Self.FK__Worker__designat__0CFADF99">
+          <AssociationSet Name="FK__Worker__designat__7CC477D0" Association="Self.FK__Worker__designat__7CC477D0">
             <End Role="Designation" EntitySet="Designation" />
             <End Role="Worker" EntitySet="Worker" />
           </AssociationSet>
@@ -4315,18 +4379,19 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <NavigationProperty Name="Area" Relationship="Self.FK__AccountLe__areaI__5C8CB268" FromRole="AccountLedger" ToRole="Area" />
           <NavigationProperty Name="Route" Relationship="Self.FK__AccountLe__route__5D80D6A1" FromRole="AccountLedger" ToRole="Route" />
           <NavigationProperty Name="AdvancePayments" Relationship="Self.FK__AdvancePa__ledge__4F32B74A" FromRole="AccountLedger" ToRole="AdvancePayment" />
-          <NavigationProperty Name="CreditNoteDetails" Relationship="Self.FK__CreditNot__ledge__0371755F" FromRole="AccountLedger" ToRole="CreditNoteDetails" />
-          <NavigationProperty Name="DebitNoteDetails" Relationship="Self.FK__DebitNote__ledge__7ADC2F5E" FromRole="AccountLedger" ToRole="DebitNoteDetail" />
-          <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__ledge__14D10B8B" FromRole="AccountLedger" ToRole="DeliveryNoteMaster" />
+          <NavigationProperty Name="CreditNoteDetails" Relationship="Self.FK__CreditNot__ledge__705EA0EB" FromRole="AccountLedger" ToRole="CreditNoteDetails" />
+          <NavigationProperty Name="DebitNoteDetails" Relationship="Self.FK__DebitNote__ledge__67C95AEA" FromRole="AccountLedger" ToRole="DebitNoteDetail" />
+          <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__ledge__2136E270" FromRole="AccountLedger" ToRole="DeliveryNoteMaster" />
           <NavigationProperty Name="LedgerPostings" Relationship="Self.FK__LedgerPos__ledge__605D434C" FromRole="AccountLedger" ToRole="LedgerPosting" />
           <NavigationProperty Name="PartyBalances" Relationship="Self.FK__PartyBala__ledge__57C7FD4B" FromRole="AccountLedger" ToRole="PartyBalance" />
+          <NavigationProperty Name="PaymentDetails" Relationship="Self.FK__PaymentDe__ledge__0C06BB60" FromRole="AccountLedger" ToRole="PaymentDetail" />
           <NavigationProperty Name="PaymentMasters" Relationship="Self.FK__PaymentMa__ledge__4979DDF4" FromRole="AccountLedger" ToRole="PaymentMaster" />
-          <NavigationProperty Name="PDCClearanceMasters" Relationship="Self.FK__PDCCleara__ledge__5E3FF0B0" FromRole="AccountLedger" ToRole="PDCClearanceMaster" />
-          <NavigationProperty Name="PDCPayableMasters" Relationship="Self.FK__PDCPayabl__ledge__28D80438" FromRole="AccountLedger" ToRole="PDCPayableMaster" />
-          <NavigationProperty Name="PDCReceivableMasters" Relationship="Self.FK__PDCReceiv__ledge__4B2D1C3C" FromRole="AccountLedger" ToRole="PDCReceivableMaster" />
-          <NavigationProperty Name="ReceiptDetails" Relationship="Self.FK__ReceiptDe__ledge__08362A7C" FromRole="AccountLedger" ToRole="ReceiptDetails" />
-          <NavigationProperty Name="ReceiptDetails1" Relationship="Self.FK__ReceiptDe__ledge__0C06BB60" FromRole="AccountLedger" ToRole="ReceiptDetail" />
-          <NavigationProperty Name="SalaryVoucherMasters" Relationship="Self.FK__SalaryVou__ledge__1A54DAB7" FromRole="AccountLedger" ToRole="SalaryVoucherMaster" />
+          <NavigationProperty Name="PDCClearanceMasters" Relationship="Self.FK__PDCCleara__ledge__3A02903A" FromRole="AccountLedger" ToRole="PDCClearanceMaster" />
+          <NavigationProperty Name="PDCPayableMasters" Relationship="Self.FK__PDCPayabl__ledge__29CC2871" FromRole="AccountLedger" ToRole="PDCPayableMaster" />
+          <NavigationProperty Name="PDCReceivableMasters" Relationship="Self.FK__PDCReceiv__ledge__335592AB" FromRole="AccountLedger" ToRole="PDCReceivableMaster" />
+          <NavigationProperty Name="ReceiptDetails" Relationship="Self.FK__ReceiptDe__ledge__75235608" FromRole="AccountLedger" ToRole="ReceiptDetails" />
+          <NavigationProperty Name="ReceiptDetails1" Relationship="Self.FK__ReceiptDe__ledge__78F3E6EC" FromRole="AccountLedger" ToRole="ReceiptDetail" />
+          <NavigationProperty Name="SalaryVoucherMasters" Relationship="Self.FK__SalaryVou__ledge__0371755F" FromRole="AccountLedger" ToRole="SalaryVoucherMaster" />
         </EntityType>
         <EntityType Name="AdvancePayment">
           <Key>
@@ -4381,7 +4446,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="reconcileId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ledgerPostingId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="statementDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="LedgerPosting" Relationship="Self.FK__BankRecon__ledge__3726238F" FromRole="BankReconciliation" ToRole="LedgerPosting" />
+          <NavigationProperty Name="LedgerPosting" Relationship="Self.FK__BankRecon__ledge__2F8501C7" FromRole="BankReconciliation" ToRole="LedgerPosting" />
         </EntityType>
         <EntityType Name="BonusDeduction">
           <Key>
@@ -4445,8 +4510,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="exchangeRateId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="chequeDate" Type="DateTime" Precision="3" />
           <Property Name="chequeNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__CreditNot__ledge__0371755F" FromRole="CreditNoteDetails" ToRole="AccountLedger" />
-          <NavigationProperty Name="CreditNoteMaster" Relationship="Self.FK__CreditNot__credi__027D5126" FromRole="CreditNoteDetails" ToRole="CreditNoteMaster" />
+          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__CreditNot__ledge__705EA0EB" FromRole="CreditNoteDetails" ToRole="AccountLedger" />
+          <NavigationProperty Name="CreditNoteMaster" Relationship="Self.FK__CreditNot__credi__6F6A7CB2" FromRole="CreditNoteDetails" ToRole="CreditNoteMaster" />
         </EntityType>
         <EntityType Name="CreditNoteMaster">
           <Key>
@@ -4462,10 +4527,10 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="CreditNoteDetails" Relationship="Self.FK__CreditNot__credi__027D5126" FromRole="CreditNoteMaster" ToRole="CreditNoteDetails" />
-          <NavigationProperty Name="FinancialYear" Relationship="Self.FK__CreditNot__finan__7EE1CA6C" FromRole="CreditNoteMaster" ToRole="FinancialYear" />
-          <NavigationProperty Name="Worker" Relationship="Self.FK__CreditNot__userI__7DEDA633" FromRole="CreditNoteMaster" ToRole="Worker" />
-          <NavigationProperty Name="VoucherType" Relationship="Self.FK__CreditNot__vouch__03A67F89" FromRole="CreditNoteMaster" ToRole="VoucherType" />
+          <NavigationProperty Name="CreditNoteDetails" Relationship="Self.FK__CreditNot__credi__6F6A7CB2" FromRole="CreditNoteMaster" ToRole="CreditNoteDetails" />
+          <NavigationProperty Name="FinancialYear" Relationship="Self.FK__CreditNot__finan__74643BF9" FromRole="CreditNoteMaster" ToRole="FinancialYear" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__CreditNot__userI__737017C0" FromRole="CreditNoteMaster" ToRole="Worker" />
+          <NavigationProperty Name="VoucherType" Relationship="Self.FK__CreditNot__vouch__79E80B25" FromRole="CreditNoteMaster" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="Currency">
           <Key>
@@ -4639,9 +4704,9 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="exchangeRateId" Type="Int32" />
           <Property Name="chequeNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="chequeDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__DebitNote__ledge__7ADC2F5E" FromRole="DebitNoteDetail" ToRole="AccountLedger" />
-          <NavigationProperty Name="DebitNoteMaster" Relationship="Self.FK__DebitNote__debit__79E80B25" FromRole="DebitNoteDetail" ToRole="DebitNoteMaster" />
-          <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__DebitNote__excha__7BD05397" FromRole="DebitNoteDetail" ToRole="ExchangeRate" />
+          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__DebitNote__ledge__67C95AEA" FromRole="DebitNoteDetail" ToRole="AccountLedger" />
+          <NavigationProperty Name="DebitNoteMaster" Relationship="Self.FK__DebitNote__debit__66D536B1" FromRole="DebitNoteDetail" ToRole="DebitNoteMaster" />
+          <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__DebitNote__excha__68BD7F23" FromRole="DebitNoteDetail" ToRole="ExchangeRate" />
         </EntityType>
         <EntityType Name="DebitNoteMaster">
           <Key>
@@ -4657,9 +4722,9 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="DebitNoteDetails" Relationship="Self.FK__DebitNote__debit__79E80B25" FromRole="DebitNoteMaster" ToRole="DebitNoteDetail" />
-          <NavigationProperty Name="Worker" Relationship="Self.FK__DebitNote__userI__76177A41" FromRole="DebitNoteMaster" ToRole="Worker" />
-          <NavigationProperty Name="VoucherType" Relationship="Self.FK__DebitNote__vouch__770B9E7A" FromRole="DebitNoteMaster" ToRole="VoucherType" />
+          <NavigationProperty Name="DebitNoteDetails" Relationship="Self.FK__DebitNote__debit__66D536B1" FromRole="DebitNoteMaster" ToRole="DebitNoteDetail" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__DebitNote__userI__6304A5CD" FromRole="DebitNoteMaster" ToRole="Worker" />
+          <NavigationProperty Name="VoucherType" Relationship="Self.FK__DebitNote__vouch__63F8CA06" FromRole="DebitNoteMaster" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="DeliveryNoteMaster">
           <Key>
@@ -4682,14 +4747,14 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="transportationCompany" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="quotationMasterId" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__DeliveryN__ledge__14D10B8B" FromRole="DeliveryNoteMaster" ToRole="AccountLedger" />
-          <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__DeliveryN__excha__16B953FD" FromRole="DeliveryNoteMaster" ToRole="ExchangeRate" />
-          <NavigationProperty Name="FinancialYear" Relationship="Self.FK__DeliveryN__finan__1995C0A8" FromRole="DeliveryNoteMaster" ToRole="FinancialYear" />
-          <NavigationProperty Name="PricingLevel" Relationship="Self.FK__DeliveryN__prici__15C52FC4" FromRole="DeliveryNoteMaster" ToRole="PricingLevel" />
-          <NavigationProperty Name="Quotation" Relationship="Self.FK__DeliveryN__quota__18A19C6F" FromRole="DeliveryNoteMaster" ToRole="Quotation" />
-          <NavigationProperty Name="SuffixPrefix" Relationship="Self.FK__DeliveryN__suffi__13DCE752" FromRole="DeliveryNoteMaster" ToRole="SuffixPrefix" />
-          <NavigationProperty Name="Worker" Relationship="Self.FK__DeliveryN__userI__17AD7836" FromRole="DeliveryNoteMaster" ToRole="Worker" />
-          <NavigationProperty Name="VoucherType" Relationship="Self.FK__DeliveryN__vouch__12E8C319" FromRole="DeliveryNoteMaster" ToRole="VoucherType" />
+          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__DeliveryN__ledge__2136E270" FromRole="DeliveryNoteMaster" ToRole="AccountLedger" />
+          <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__DeliveryN__excha__231F2AE2" FromRole="DeliveryNoteMaster" ToRole="ExchangeRate" />
+          <NavigationProperty Name="FinancialYear" Relationship="Self.FK__DeliveryN__finan__25FB978D" FromRole="DeliveryNoteMaster" ToRole="FinancialYear" />
+          <NavigationProperty Name="PricingLevel" Relationship="Self.FK__DeliveryN__prici__222B06A9" FromRole="DeliveryNoteMaster" ToRole="PricingLevel" />
+          <NavigationProperty Name="Quotation" Relationship="Self.FK__DeliveryN__quota__25077354" FromRole="DeliveryNoteMaster" ToRole="Quotation" />
+          <NavigationProperty Name="SuffixPrefix" Relationship="Self.FK__DeliveryN__suffi__2042BE37" FromRole="DeliveryNoteMaster" ToRole="SuffixPrefix" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__DeliveryN__userI__24134F1B" FromRole="DeliveryNoteMaster" ToRole="Worker" />
+          <NavigationProperty Name="VoucherType" Relationship="Self.FK__DeliveryN__vouch__1F4E99FE" FromRole="DeliveryNoteMaster" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="Designation">
           <Key>
@@ -4700,7 +4765,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="leaveDays" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="advanceAmount" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Workers" Relationship="Self.FK__Worker__designat__0CFADF99" FromRole="Designation" ToRole="Worker" />
+          <NavigationProperty Name="Workers" Relationship="Self.FK__Worker__designat__7CC477D0" FromRole="Designation" ToRole="Worker" />
           <NavigationProperty Name="Workers1" Relationship="Self.FK__Worker__desinati__3E082B48" FromRole="Designation" ToRole="Worker" />
         </EntityType>
         <EntityType Name="DiscountValue">
@@ -4740,11 +4805,12 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="rate" Type="Decimal" Precision="18" Scale="5" />
           <NavigationProperty Name="Currency" Relationship="Self.FK__tbl_Excha__curre__52442E1F" FromRole="ExchangeRate" ToRole="Currency" />
-          <NavigationProperty Name="DebitNoteDetails" Relationship="Self.FK__DebitNote__excha__7BD05397" FromRole="ExchangeRate" ToRole="DebitNoteDetail" />
-          <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__excha__16B953FD" FromRole="ExchangeRate" ToRole="DeliveryNoteMaster" />
-          <NavigationProperty Name="JournalDetails" Relationship="Self.FK__JournalDe__excha__0F183235" FromRole="ExchangeRate" ToRole="JournalDetail" />
+          <NavigationProperty Name="DebitNoteDetails" Relationship="Self.FK__DebitNote__excha__68BD7F23" FromRole="ExchangeRate" ToRole="DebitNoteDetail" />
+          <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__excha__231F2AE2" FromRole="ExchangeRate" ToRole="DeliveryNoteMaster" />
+          <NavigationProperty Name="JournalDetails" Relationship="Self.FK__JournalDe__excha__00CA12DE" FromRole="ExchangeRate" ToRole="JournalDetail" />
           <NavigationProperty Name="PartyBalances" Relationship="Self.FK__PartyBala__excha__5AA469F6" FromRole="ExchangeRate" ToRole="PartyBalance" />
-          <NavigationProperty Name="ReceiptDetails" Relationship="Self.FK__ReceiptDe__excha__064DE20A" FromRole="ExchangeRate" ToRole="ReceiptDetails" />
+          <NavigationProperty Name="PaymentDetails" Relationship="Self.FK__PaymentDe__excha__0CFADF99" FromRole="ExchangeRate" ToRole="PaymentDetail" />
+          <NavigationProperty Name="ReceiptDetails" Relationship="Self.FK__ReceiptDe__excha__733B0D96" FromRole="ExchangeRate" ToRole="ReceiptDetails" />
         </EntityType>
         <EntityType Name="ExtendedRange">
           <Key>
@@ -4792,17 +4858,17 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="toDate" Type="DateTime" Precision="3" />
           <Property Name="extraDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="AdvancePayments" Relationship="Self.FK__AdvancePa__finan__4E3E9311" FromRole="FinancialYear" ToRole="AdvancePayment" />
-          <NavigationProperty Name="CreditNoteMasters" Relationship="Self.FK__CreditNot__finan__7EE1CA6C" FromRole="FinancialYear" ToRole="CreditNoteMaster" />
-          <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__finan__1995C0A8" FromRole="FinancialYear" ToRole="DeliveryNoteMaster" />
-          <NavigationProperty Name="JournalMasters" Relationship="Self.FK__JournalMa__finan__095F58DF" FromRole="FinancialYear" ToRole="JournalMaster" />
+          <NavigationProperty Name="CreditNoteMasters" Relationship="Self.FK__CreditNot__finan__74643BF9" FromRole="FinancialYear" ToRole="CreditNoteMaster" />
+          <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__finan__25FB978D" FromRole="FinancialYear" ToRole="DeliveryNoteMaster" />
+          <NavigationProperty Name="JournalMasters" Relationship="Self.FK__JournalMa__finan__7B113988" FromRole="FinancialYear" ToRole="JournalMaster" />
           <NavigationProperty Name="LedgerPostings" Relationship="Self.FK__LedgerPos__yearI__61516785" FromRole="FinancialYear" ToRole="LedgerPosting" />
           <NavigationProperty Name="Managements" Relationship="Self.FK__Managemen__Curre__338A9CD5" FromRole="FinancialYear" ToRole="Management" />
           <NavigationProperty Name="PartyBalances" Relationship="Self.FK__PartyBala__finan__5B988E2F" FromRole="FinancialYear" ToRole="PartyBalance" />
           <NavigationProperty Name="PaymentMasters" Relationship="Self.FK__PaymentMa__finan__47919582" FromRole="FinancialYear" ToRole="PaymentMaster" />
-          <NavigationProperty Name="PDCClearanceMasters" Relationship="Self.FK__PDCCleara__finan__611C5D5B" FromRole="FinancialYear" ToRole="PDCClearanceMaster" />
-          <NavigationProperty Name="PDCPayableMasters" Relationship="Self.FK__PDCPayabl__finan__2BB470E3" FromRole="FinancialYear" ToRole="PDCPayableMaster" />
-          <NavigationProperty Name="PDCReceivableMasters" Relationship="Self.FK__PDCReceiv__finan__4E0988E7" FromRole="FinancialYear" ToRole="PDCReceivableMaster" />
-          <NavigationProperty Name="SalaryVoucherMasters" Relationship="Self.FK__SalaryVou__finan__17786E0C" FromRole="FinancialYear" ToRole="SalaryVoucherMaster" />
+          <NavigationProperty Name="PDCClearanceMasters" Relationship="Self.FK__PDCCleara__finan__3CDEFCE5" FromRole="FinancialYear" ToRole="PDCClearanceMaster" />
+          <NavigationProperty Name="PDCPayableMasters" Relationship="Self.FK__PDCPayabl__finan__2CA8951C" FromRole="FinancialYear" ToRole="PDCPayableMaster" />
+          <NavigationProperty Name="PDCReceivableMasters" Relationship="Self.FK__PDCReceiv__finan__3631FF56" FromRole="FinancialYear" ToRole="PDCReceivableMaster" />
+          <NavigationProperty Name="SalaryVoucherMasters" Relationship="Self.FK__SalaryVou__finan__009508B4" FromRole="FinancialYear" ToRole="SalaryVoucherMaster" />
         </EntityType>
         <EntityType Name="Hazardou">
           <Key>
@@ -4835,8 +4901,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="exchangeRateId" Type="Int32" />
           <Property Name="chequeNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="chequeDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__JournalDe__excha__0F183235" FromRole="JournalDetail" ToRole="ExchangeRate" />
-          <NavigationProperty Name="JournalMaster" Relationship="Self.FK__JournalDe__journ__100C566E" FromRole="JournalDetail" ToRole="JournalMaster" />
+          <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__JournalDe__excha__00CA12DE" FromRole="JournalDetail" ToRole="ExchangeRate" />
+          <NavigationProperty Name="JournalMaster" Relationship="Self.FK__JournalDe__journ__01BE3717" FromRole="JournalDetail" ToRole="JournalMaster" />
         </EntityType>
         <EntityType Name="JournalMaster">
           <Key>
@@ -4852,11 +4918,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="userId" Type="Int32" />
           <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="FinancialYear" Relationship="Self.FK__JournalMa__finan__095F58DF" FromRole="JournalMaster" ToRole="FinancialYear" />
-          <NavigationProperty Name="JournalDetails" Relationship="Self.FK__JournalDe__journ__100C566E" FromRole="JournalMaster" ToRole="JournalDetail" />
-          <NavigationProperty Name="SuffixPrefix" Relationship="Self.FK__JournalMa__suffi__0C3BC58A" FromRole="JournalMaster" ToRole="SuffixPrefix" />
-          <NavigationProperty Name="Worker" Relationship="Self.FK__JournalMa__userI__0B47A151" FromRole="JournalMaster" ToRole="Worker" />
-          <NavigationProperty Name="VoucherType" Relationship="Self.FK__JournalMa__vouch__0A537D18" FromRole="JournalMaster" ToRole="VoucherType" />
+          <NavigationProperty Name="FinancialYear" Relationship="Self.FK__JournalMa__finan__7B113988" FromRole="JournalMaster" ToRole="FinancialYear" />
+          <NavigationProperty Name="JournalDetails" Relationship="Self.FK__JournalDe__journ__01BE3717" FromRole="JournalMaster" ToRole="JournalDetail" />
+          <NavigationProperty Name="SuffixPrefix" Relationship="Self.FK__JournalMa__suffi__7DEDA633" FromRole="JournalMaster" ToRole="SuffixPrefix" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__JournalMa__userI__7CF981FA" FromRole="JournalMaster" ToRole="Worker" />
+          <NavigationProperty Name="VoucherType" Relationship="Self.FK__JournalMa__vouch__7C055DC1" FromRole="JournalMaster" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="Language">
           <Key>
@@ -4883,8 +4949,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="invoiceNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="chequeNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="chequeDate" Type="DateTime" Precision="3" />
+          <Property Name="extraDate" Type="DateTime" Precision="3" />
+          <Property Name="extra1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="extra2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="AccountLedger" Relationship="Self.FK__LedgerPos__ledge__605D434C" FromRole="LedgerPosting" ToRole="AccountLedger" />
-          <NavigationProperty Name="BankReconciliations" Relationship="Self.FK__BankRecon__ledge__3726238F" FromRole="LedgerPosting" ToRole="BankReconciliation" />
+          <NavigationProperty Name="BankReconciliations" Relationship="Self.FK__BankRecon__ledge__2F8501C7" FromRole="LedgerPosting" ToRole="BankReconciliation" />
           <NavigationProperty Name="FinancialYear" Relationship="Self.FK__LedgerPos__yearI__61516785" FromRole="LedgerPosting" ToRole="FinancialYear" />
           <NavigationProperty Name="VoucherType" Relationship="Self.FK__LedgerPos__vouch__5F691F13" FromRole="LedgerPosting" ToRole="VoucherType" />
         </EntityType>
@@ -5020,6 +5089,21 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="extraDate" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="PaymentDetail">
+          <Key>
+            <PropertyRef Name="paymentDetailsId" />
+          </Key>
+          <Property Name="paymentDetailsId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="paymentMasterId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="amount" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="exchangeRateId" Type="Int32" />
+          <Property Name="chequeNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="chequeDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__PaymentDe__ledge__0C06BB60" FromRole="PaymentDetail" ToRole="AccountLedger" />
+          <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__PaymentDe__excha__0CFADF99" FromRole="PaymentDetail" ToRole="ExchangeRate" />
+          <NavigationProperty Name="PaymentMaster" Relationship="Self.FK__PaymentDe__payme__0B129727" FromRole="PaymentDetail" ToRole="PaymentMaster" />
+        </EntityType>
         <EntityType Name="PaymentMaster">
           <Key>
             <PropertyRef Name="paymentMasterId" />
@@ -5037,6 +5121,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="AccountLedger" Relationship="Self.FK__PaymentMa__ledge__4979DDF4" FromRole="PaymentMaster" ToRole="AccountLedger" />
           <NavigationProperty Name="FinancialYear" Relationship="Self.FK__PaymentMa__finan__47919582" FromRole="PaymentMaster" ToRole="FinancialYear" />
+          <NavigationProperty Name="PaymentDetails" Relationship="Self.FK__PaymentDe__payme__0B129727" FromRole="PaymentMaster" ToRole="PaymentDetail" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__PaymentMa__userI__4A6E022D" FromRole="PaymentMaster" ToRole="Worker" />
           <NavigationProperty Name="VoucherType" Relationship="Self.FK__PaymentMa__vouch__4885B9BB" FromRole="PaymentMaster" ToRole="VoucherType" />
         </EntityType>
@@ -5079,11 +5164,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="status" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="userId" Type="Int32" />
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__PDCCleara__ledge__5E3FF0B0" FromRole="PDCClearanceMaster" ToRole="AccountLedger" />
-          <NavigationProperty Name="FinancialYear" Relationship="Self.FK__PDCCleara__finan__611C5D5B" FromRole="PDCClearanceMaster" ToRole="FinancialYear" />
-          <NavigationProperty Name="SuffixPrefix" Relationship="Self.FK__PDCCleara__suffi__5D4BCC77" FromRole="PDCClearanceMaster" ToRole="SuffixPrefix" />
-          <NavigationProperty Name="Worker" Relationship="Self.FK__PDCCleara__userI__60283922" FromRole="PDCClearanceMaster" ToRole="Worker" />
-          <NavigationProperty Name="VoucherType" Relationship="Self.FK__PDCCleara__vouch__5F3414E9" FromRole="PDCClearanceMaster" ToRole="VoucherType" />
+          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__PDCCleara__ledge__3A02903A" FromRole="PDCClearanceMaster" ToRole="AccountLedger" />
+          <NavigationProperty Name="FinancialYear" Relationship="Self.FK__PDCCleara__finan__3CDEFCE5" FromRole="PDCClearanceMaster" ToRole="FinancialYear" />
+          <NavigationProperty Name="SuffixPrefix" Relationship="Self.FK__PDCCleara__suffi__390E6C01" FromRole="PDCClearanceMaster" ToRole="SuffixPrefix" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__PDCCleara__userI__3BEAD8AC" FromRole="PDCClearanceMaster" ToRole="Worker" />
+          <NavigationProperty Name="VoucherType" Relationship="Self.FK__PDCCleara__vouch__3AF6B473" FromRole="PDCClearanceMaster" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="PDCPayableMaster">
           <Key>
@@ -5103,11 +5188,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="bankId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__PDCPayabl__ledge__28D80438" FromRole="PDCPayableMaster" ToRole="AccountLedger" />
-          <NavigationProperty Name="FinancialYear" Relationship="Self.FK__PDCPayabl__finan__2BB470E3" FromRole="PDCPayableMaster" ToRole="FinancialYear" />
-          <NavigationProperty Name="SuffixPrefix" Relationship="Self.FK__PDCPayabl__suffi__27E3DFFF" FromRole="PDCPayableMaster" ToRole="SuffixPrefix" />
-          <NavigationProperty Name="Worker" Relationship="Self.FK__PDCPayabl__userI__29CC2871" FromRole="PDCPayableMaster" ToRole="Worker" />
-          <NavigationProperty Name="VoucherType" Relationship="Self.FK__PDCPayabl__vouch__2AC04CAA" FromRole="PDCPayableMaster" ToRole="VoucherType" />
+          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__PDCPayabl__ledge__29CC2871" FromRole="PDCPayableMaster" ToRole="AccountLedger" />
+          <NavigationProperty Name="FinancialYear" Relationship="Self.FK__PDCPayabl__finan__2CA8951C" FromRole="PDCPayableMaster" ToRole="FinancialYear" />
+          <NavigationProperty Name="SuffixPrefix" Relationship="Self.FK__PDCPayabl__suffi__28D80438" FromRole="PDCPayableMaster" ToRole="SuffixPrefix" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__PDCPayabl__userI__2AC04CAA" FromRole="PDCPayableMaster" ToRole="Worker" />
+          <NavigationProperty Name="VoucherType" Relationship="Self.FK__PDCPayabl__vouch__2BB470E3" FromRole="PDCPayableMaster" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="PDCReceivableMaster">
           <Key>
@@ -5127,11 +5212,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="bankId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__PDCReceiv__ledge__4B2D1C3C" FromRole="PDCReceivableMaster" ToRole="AccountLedger" />
-          <NavigationProperty Name="FinancialYear" Relationship="Self.FK__PDCReceiv__finan__4E0988E7" FromRole="PDCReceivableMaster" ToRole="FinancialYear" />
-          <NavigationProperty Name="SuffixPrefix" Relationship="Self.FK__PDCReceiv__suffi__4A38F803" FromRole="PDCReceivableMaster" ToRole="SuffixPrefix" />
-          <NavigationProperty Name="Worker" Relationship="Self.FK__PDCReceiv__userI__4C214075" FromRole="PDCReceivableMaster" ToRole="Worker" />
-          <NavigationProperty Name="VoucherType" Relationship="Self.FK__PDCReceiv__vouch__4D1564AE" FromRole="PDCReceivableMaster" ToRole="VoucherType" />
+          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__PDCReceiv__ledge__335592AB" FromRole="PDCReceivableMaster" ToRole="AccountLedger" />
+          <NavigationProperty Name="FinancialYear" Relationship="Self.FK__PDCReceiv__finan__3631FF56" FromRole="PDCReceivableMaster" ToRole="FinancialYear" />
+          <NavigationProperty Name="SuffixPrefix" Relationship="Self.FK__PDCReceiv__suffi__32616E72" FromRole="PDCReceivableMaster" ToRole="SuffixPrefix" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__PDCReceiv__userI__3449B6E4" FromRole="PDCReceivableMaster" ToRole="Worker" />
+          <NavigationProperty Name="VoucherType" Relationship="Self.FK__PDCReceiv__vouch__353DDB1D" FromRole="PDCReceivableMaster" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="PricingLevel">
           <Key>
@@ -5140,7 +5225,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="pricinglevelId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="pricinglevelName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__prici__15C52FC4" FromRole="PricingLevel" ToRole="DeliveryNoteMaster" />
+          <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__prici__222B06A9" FromRole="PricingLevel" ToRole="DeliveryNoteMaster" />
         </EntityType>
         <EntityType Name="PrintFormat">
           <Key>
@@ -5274,7 +5359,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="CurrType" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="QuotationMainContact" Type="Int32" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__Quotation__Custo__00750D23" FromRole="Quotation" ToRole="Customer" />
-          <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__quota__18A19C6F" FromRole="Quotation" ToRole="DeliveryNoteMaster" />
+          <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__quota__25077354" FromRole="Quotation" ToRole="DeliveryNoteMaster" />
           <NavigationProperty Name="Note" Relationship="Self.FK__Quotation__NoteF__0169315C" FromRole="Quotation" ToRole="Notes" />
           <NavigationProperty Name="Note1" Relationship="Self.FK__Quotation__NoteF__025D5595" FromRole="Quotation" ToRole="Notes" />
           <NavigationProperty Name="PaymentMethod" Relationship="Self.FK__Quotation__Payme__035179CE" FromRole="Quotation" ToRole="PaymentMethod" />
@@ -5331,8 +5416,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="exchangeRateId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="chequeNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="chequeDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__ReceiptDe__ledge__0C06BB60" FromRole="ReceiptDetail" ToRole="AccountLedger" />
-          <NavigationProperty Name="ReceiptMaster" Relationship="Self.FK__ReceiptDe__recei__0B129727" FromRole="ReceiptDetail" ToRole="ReceiptMaster" />
+          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__ReceiptDe__ledge__78F3E6EC" FromRole="ReceiptDetail" ToRole="AccountLedger" />
+          <NavigationProperty Name="ReceiptMaster" Relationship="Self.FK__ReceiptDe__recei__77FFC2B3" FromRole="ReceiptDetail" ToRole="ReceiptMaster" />
         </EntityType>
         <EntityType Name="ReceiptDetail1">
           <Key>
@@ -5345,9 +5430,9 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="exchangeRateId" Type="Int32" />
           <Property Name="chequeNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="chequeDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__ReceiptDe__ledge__08362A7C" FromRole="ReceiptDetails" ToRole="AccountLedger" />
-          <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__ReceiptDe__excha__064DE20A" FromRole="ReceiptDetails" ToRole="ExchangeRate" />
-          <NavigationProperty Name="ReceiptMaster" Relationship="Self.FK__ReceiptDe__recei__07420643" FromRole="ReceiptDetails" ToRole="ReceiptMaster" />
+          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__ReceiptDe__ledge__75235608" FromRole="ReceiptDetails" ToRole="AccountLedger" />
+          <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__ReceiptDe__excha__733B0D96" FromRole="ReceiptDetails" ToRole="ExchangeRate" />
+          <NavigationProperty Name="ReceiptMaster" Relationship="Self.FK__ReceiptDe__recei__742F31CF" FromRole="ReceiptDetails" ToRole="ReceiptMaster" />
         </EntityType>
         <EntityType Name="ReceiptMaster">
           <Key>
@@ -5364,8 +5449,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="userId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="ReceiptDetails" Relationship="Self.FK__ReceiptDe__recei__0B129727" FromRole="ReceiptMaster" ToRole="ReceiptDetail" />
-          <NavigationProperty Name="ReceiptDetails1" Relationship="Self.FK__ReceiptDe__recei__07420643" FromRole="ReceiptMaster" ToRole="ReceiptDetails" />
+          <NavigationProperty Name="ReceiptDetails" Relationship="Self.FK__ReceiptDe__recei__77FFC2B3" FromRole="ReceiptMaster" ToRole="ReceiptDetail" />
+          <NavigationProperty Name="ReceiptDetails1" Relationship="Self.FK__ReceiptDe__recei__742F31CF" FromRole="ReceiptMaster" ToRole="ReceiptDetails" />
         </EntityType>
         <EntityType Name="RoleValue">
           <Key>
@@ -5413,11 +5498,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="suffixPrefixId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__SalaryVou__ledge__1A54DAB7" FromRole="SalaryVoucherMaster" ToRole="AccountLedger" />
-          <NavigationProperty Name="FinancialYear" Relationship="Self.FK__SalaryVou__finan__17786E0C" FromRole="SalaryVoucherMaster" ToRole="FinancialYear" />
-          <NavigationProperty Name="SalaryVoucherDetails" Relationship="Self.FK__SalaryVou__salar__1C3D2329" FromRole="SalaryVoucherMaster" ToRole="SalaryVoucherDetail" />
-          <NavigationProperty Name="SuffixPrefix" Relationship="Self.FK__SalaryVou__suffi__1960B67E" FromRole="SalaryVoucherMaster" ToRole="SuffixPrefix" />
-          <NavigationProperty Name="VoucherType" Relationship="Self.FK__SalaryVou__vouch__186C9245" FromRole="SalaryVoucherMaster" ToRole="VoucherType" />
+          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__SalaryVou__ledge__0371755F" FromRole="SalaryVoucherMaster" ToRole="AccountLedger" />
+          <NavigationProperty Name="FinancialYear" Relationship="Self.FK__SalaryVou__finan__009508B4" FromRole="SalaryVoucherMaster" ToRole="FinancialYear" />
+          <NavigationProperty Name="SalaryVoucherDetails" Relationship="Self.FK__SalaryVou__salar__0559BDD1" FromRole="SalaryVoucherMaster" ToRole="SalaryVoucherDetail" />
+          <NavigationProperty Name="SuffixPrefix" Relationship="Self.FK__SalaryVou__suffi__027D5126" FromRole="SalaryVoucherMaster" ToRole="SuffixPrefix" />
+          <NavigationProperty Name="VoucherType" Relationship="Self.FK__SalaryVou__vouch__01892CED" FromRole="SalaryVoucherMaster" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="SaleOrder">
           <Key>
@@ -5464,7 +5549,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <NavigationProperty Name="PurchaseOrderDetails" Relationship="Self.FK__PurchaseO__SaleO__46D27B73" FromRole="SaleOrder" ToRole="PurchaseOrderDetail" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__SaleOrder__Repre__22951AFD" FromRole="SaleOrder" ToRole="Worker" />
           <NavigationProperty Name="SaleOrderDetails" Relationship="Self.FK__SaleOrder__SaleO__0B7CAB7B" FromRole="SaleOrder" ToRole="SaleOrderDetail" />
-          <NavigationProperty Name="VoucherType" Relationship="Self.FK__SaleOrder__Vouch__149C0161" FromRole="SaleOrder" ToRole="VoucherType" />
+          <NavigationProperty Name="VoucherType" Relationship="Self.FK__SaleOrder__Vouch__7DB89C09" FromRole="SaleOrder" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="SaleOrderDetail">
           <Key>
@@ -5560,13 +5645,13 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="widthOfNumericalPart" Type="Int32" />
           <Property Name="prefillWithZero" Type="Boolean" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__suffi__13DCE752" FromRole="SuffixPrefix" ToRole="DeliveryNoteMaster" />
-          <NavigationProperty Name="JournalMasters" Relationship="Self.FK__JournalMa__suffi__0C3BC58A" FromRole="SuffixPrefix" ToRole="JournalMaster" />
-          <NavigationProperty Name="PDCClearanceMasters" Relationship="Self.FK__PDCCleara__suffi__5D4BCC77" FromRole="SuffixPrefix" ToRole="PDCClearanceMaster" />
-          <NavigationProperty Name="PDCPayableMasters" Relationship="Self.FK__PDCPayabl__suffi__27E3DFFF" FromRole="SuffixPrefix" ToRole="PDCPayableMaster" />
-          <NavigationProperty Name="PDCReceivableMasters" Relationship="Self.FK__PDCReceiv__suffi__4A38F803" FromRole="SuffixPrefix" ToRole="PDCReceivableMaster" />
-          <NavigationProperty Name="SalaryVoucherMasters" Relationship="Self.FK__SalaryVou__suffi__1960B67E" FromRole="SuffixPrefix" ToRole="SalaryVoucherMaster" />
-          <NavigationProperty Name="VoucherType" Relationship="Self.FK__SuffixPre__vouch__0682EC34" FromRole="SuffixPrefix" ToRole="VoucherType" />
+          <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__suffi__2042BE37" FromRole="SuffixPrefix" ToRole="DeliveryNoteMaster" />
+          <NavigationProperty Name="JournalMasters" Relationship="Self.FK__JournalMa__suffi__7DEDA633" FromRole="SuffixPrefix" ToRole="JournalMaster" />
+          <NavigationProperty Name="PDCClearanceMasters" Relationship="Self.FK__PDCCleara__suffi__390E6C01" FromRole="SuffixPrefix" ToRole="PDCClearanceMaster" />
+          <NavigationProperty Name="PDCPayableMasters" Relationship="Self.FK__PDCPayabl__suffi__28D80438" FromRole="SuffixPrefix" ToRole="PDCPayableMaster" />
+          <NavigationProperty Name="PDCReceivableMasters" Relationship="Self.FK__PDCReceiv__suffi__32616E72" FromRole="SuffixPrefix" ToRole="PDCReceivableMaster" />
+          <NavigationProperty Name="SalaryVoucherMasters" Relationship="Self.FK__SalaryVou__suffi__027D5126" FromRole="SuffixPrefix" ToRole="SalaryVoucherMaster" />
+          <NavigationProperty Name="VoucherType" Relationship="Self.FK__SuffixPre__vouch__7740A8A4" FromRole="SuffixPrefix" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="SuperDisk">
           <Key>
@@ -5872,20 +5957,20 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="heading3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="heading4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="AdvancePayments" Relationship="Self.FK__AdvancePa__vouch__5026DB83" FromRole="VoucherType" ToRole="AdvancePayment" />
-          <NavigationProperty Name="CreditNoteMasters" Relationship="Self.FK__CreditNot__vouch__03A67F89" FromRole="VoucherType" ToRole="CreditNoteMaster" />
-          <NavigationProperty Name="DebitNoteMasters" Relationship="Self.FK__DebitNote__vouch__770B9E7A" FromRole="VoucherType" ToRole="DebitNoteMaster" />
-          <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__vouch__12E8C319" FromRole="VoucherType" ToRole="DeliveryNoteMaster" />
-          <NavigationProperty Name="JournalMasters" Relationship="Self.FK__JournalMa__vouch__0A537D18" FromRole="VoucherType" ToRole="JournalMaster" />
+          <NavigationProperty Name="CreditNoteMasters" Relationship="Self.FK__CreditNot__vouch__79E80B25" FromRole="VoucherType" ToRole="CreditNoteMaster" />
+          <NavigationProperty Name="DebitNoteMasters" Relationship="Self.FK__DebitNote__vouch__63F8CA06" FromRole="VoucherType" ToRole="DebitNoteMaster" />
+          <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__vouch__1F4E99FE" FromRole="VoucherType" ToRole="DeliveryNoteMaster" />
+          <NavigationProperty Name="JournalMasters" Relationship="Self.FK__JournalMa__vouch__7C055DC1" FromRole="VoucherType" ToRole="JournalMaster" />
           <NavigationProperty Name="LedgerPostings" Relationship="Self.FK__LedgerPos__vouch__5F691F13" FromRole="VoucherType" ToRole="LedgerPosting" />
           <NavigationProperty Name="PartyBalances" Relationship="Self.FK__PartyBala__again__59B045BD" FromRole="VoucherType" ToRole="PartyBalance" />
           <NavigationProperty Name="PartyBalances1" Relationship="Self.FK__PartyBala__vouch__58BC2184" FromRole="VoucherType" ToRole="PartyBalance" />
           <NavigationProperty Name="PaymentMasters" Relationship="Self.FK__PaymentMa__vouch__4885B9BB" FromRole="VoucherType" ToRole="PaymentMaster" />
-          <NavigationProperty Name="PDCClearanceMasters" Relationship="Self.FK__PDCCleara__vouch__5F3414E9" FromRole="VoucherType" ToRole="PDCClearanceMaster" />
-          <NavigationProperty Name="PDCPayableMasters" Relationship="Self.FK__PDCPayabl__vouch__2AC04CAA" FromRole="VoucherType" ToRole="PDCPayableMaster" />
-          <NavigationProperty Name="PDCReceivableMasters" Relationship="Self.FK__PDCReceiv__vouch__4D1564AE" FromRole="VoucherType" ToRole="PDCReceivableMaster" />
-          <NavigationProperty Name="SalaryVoucherMasters" Relationship="Self.FK__SalaryVou__vouch__186C9245" FromRole="VoucherType" ToRole="SalaryVoucherMaster" />
-          <NavigationProperty Name="SaleOrders" Relationship="Self.FK__SaleOrder__Vouch__149C0161" FromRole="VoucherType" ToRole="SaleOrder" />
-          <NavigationProperty Name="SuffixPrefixes" Relationship="Self.FK__SuffixPre__vouch__0682EC34" FromRole="VoucherType" ToRole="SuffixPrefix" />
+          <NavigationProperty Name="PDCClearanceMasters" Relationship="Self.FK__PDCCleara__vouch__3AF6B473" FromRole="VoucherType" ToRole="PDCClearanceMaster" />
+          <NavigationProperty Name="PDCPayableMasters" Relationship="Self.FK__PDCPayabl__vouch__2BB470E3" FromRole="VoucherType" ToRole="PDCPayableMaster" />
+          <NavigationProperty Name="PDCReceivableMasters" Relationship="Self.FK__PDCReceiv__vouch__353DDB1D" FromRole="VoucherType" ToRole="PDCReceivableMaster" />
+          <NavigationProperty Name="SalaryVoucherMasters" Relationship="Self.FK__SalaryVou__vouch__01892CED" FromRole="VoucherType" ToRole="SalaryVoucherMaster" />
+          <NavigationProperty Name="SaleOrders" Relationship="Self.FK__SaleOrder__Vouch__7DB89C09" FromRole="VoucherType" ToRole="SaleOrder" />
+          <NavigationProperty Name="SuffixPrefixes" Relationship="Self.FK__SuffixPre__vouch__7740A8A4" FromRole="VoucherType" ToRole="SuffixPrefix" />
           <NavigationProperty Name="VoucherTypeTaxes" Relationship="Self.FK__VoucherTy__vouch__69279377" FromRole="VoucherType" ToRole="VoucherTypeTax" />
         </EntityType>
         <EntityType Name="VoucherTypeTax">
@@ -5917,25 +6002,25 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="designationId" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="AdvancePayments" Relationship="Self.FK__AdvancePa__emplo__4D4A6ED8" FromRole="Worker" ToRole="AdvancePayment" />
           <NavigationProperty Name="BonusDeductions" Relationship="Self.FK__BonusDedu__Worke__40E497F3" FromRole="Worker" ToRole="BonusDeduction" />
-          <NavigationProperty Name="CreditNoteMasters" Relationship="Self.FK__CreditNot__userI__7DEDA633" FromRole="Worker" ToRole="CreditNoteMaster" />
+          <NavigationProperty Name="CreditNoteMasters" Relationship="Self.FK__CreditNot__userI__737017C0" FromRole="Worker" ToRole="CreditNoteMaster" />
           <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__accoun__6EF57B66" FromRole="Worker" ToRole="Customer" />
           <NavigationProperty Name="Customers1" Relationship="Self.FK__Customer__repres__3F466844" FromRole="Worker" ToRole="Customer" />
           <NavigationProperty Name="Customers2" Relationship="Self.FK__Customer__repres__6E01572D" FromRole="Worker" ToRole="Customer" />
-          <NavigationProperty Name="DebitNoteMasters" Relationship="Self.FK__DebitNote__userI__76177A41" FromRole="Worker" ToRole="DebitNoteMaster" />
-          <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__userI__17AD7836" FromRole="Worker" ToRole="DeliveryNoteMaster" />
-          <NavigationProperty Name="Designation" Relationship="Self.FK__Worker__designat__0CFADF99" FromRole="Worker" ToRole="Designation" />
+          <NavigationProperty Name="DebitNoteMasters" Relationship="Self.FK__DebitNote__userI__6304A5CD" FromRole="Worker" ToRole="DebitNoteMaster" />
+          <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__userI__24134F1B" FromRole="Worker" ToRole="DeliveryNoteMaster" />
+          <NavigationProperty Name="Designation" Relationship="Self.FK__Worker__designat__7CC477D0" FromRole="Worker" ToRole="Designation" />
           <NavigationProperty Name="Designation1" Relationship="Self.FK__Worker__desinati__3E082B48" FromRole="Worker" ToRole="Designation" />
           <NavigationProperty Name="DiscountValues" Relationship="Self.FK__DiscountV__Repre__6F4A8121" FromRole="Worker" ToRole="DiscountValues" />
-          <NavigationProperty Name="JournalMasters" Relationship="Self.FK__JournalMa__userI__0B47A151" FromRole="Worker" ToRole="JournalMaster" />
+          <NavigationProperty Name="JournalMasters" Relationship="Self.FK__JournalMa__userI__7CF981FA" FromRole="Worker" ToRole="JournalMaster" />
           <NavigationProperty Name="Note" Relationship="Self.FK__Worker__WorkerNo__4BAC3F29" FromRole="Worker" ToRole="Notes" />
           <NavigationProperty Name="PaymentMasters" Relationship="Self.FK__PaymentMa__userI__4A6E022D" FromRole="Worker" ToRole="PaymentMaster" />
-          <NavigationProperty Name="PDCClearanceMasters" Relationship="Self.FK__PDCCleara__userI__60283922" FromRole="Worker" ToRole="PDCClearanceMaster" />
-          <NavigationProperty Name="PDCPayableMasters" Relationship="Self.FK__PDCPayabl__userI__29CC2871" FromRole="Worker" ToRole="PDCPayableMaster" />
-          <NavigationProperty Name="PDCReceivableMasters" Relationship="Self.FK__PDCReceiv__userI__4C214075" FromRole="Worker" ToRole="PDCReceivableMaster" />
+          <NavigationProperty Name="PDCClearanceMasters" Relationship="Self.FK__PDCCleara__userI__3BEAD8AC" FromRole="Worker" ToRole="PDCClearanceMaster" />
+          <NavigationProperty Name="PDCPayableMasters" Relationship="Self.FK__PDCPayabl__userI__2AC04CAA" FromRole="Worker" ToRole="PDCPayableMaster" />
+          <NavigationProperty Name="PDCReceivableMasters" Relationship="Self.FK__PDCReceiv__userI__3449B6E4" FromRole="Worker" ToRole="PDCReceivableMaster" />
           <NavigationProperty Name="SaleOrders" Relationship="Self.FK__SaleOrder__Repre__22951AFD" FromRole="Worker" ToRole="SaleOrder" />
           <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__accoun__2DB1C7EE" FromRole="Worker" ToRole="Supplier" />
           <NavigationProperty Name="Suppliers1" Relationship="Self.FK__Supplier__repres__65370702" FromRole="Worker" ToRole="Supplier" />
-          <NavigationProperty Name="SalaryVoucherDetails" Relationship="Self.FK__SalaryVou__emplo__1D314762" FromRole="Worker" ToRole="SalaryVoucherDetail" />
+          <NavigationProperty Name="SalaryVoucherDetails" Relationship="Self.FK__SalaryVou__emplo__064DE20A" FromRole="Worker" ToRole="SalaryVoucherDetail" />
           <NavigationProperty Name="AuthorizationValues" Relationship="Self.UserAuthorization" FromRole="Worker" ToRole="AuthorizationValue" />
         </EntityType>
         <EntityType Name="SalaryVoucherDetail">
@@ -5951,8 +6036,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="lop" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="salary" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="SalaryVoucherMaster" Relationship="Self.FK__SalaryVou__salar__1C3D2329" FromRole="SalaryVoucherDetail" ToRole="SalaryVoucherMaster" />
-          <NavigationProperty Name="Worker" Relationship="Self.FK__SalaryVou__emplo__1D314762" FromRole="SalaryVoucherDetail" ToRole="Worker" />
+          <NavigationProperty Name="SalaryVoucherMaster" Relationship="Self.FK__SalaryVou__salar__0559BDD1" FromRole="SalaryVoucherDetail" ToRole="SalaryVoucherMaster" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__SalaryVou__emplo__064DE20A" FromRole="SalaryVoucherDetail" ToRole="Worker" />
         </EntityType>
         <Association Name="FK__AccountLe__accou__5E74FADA">
           <End Role="AccountGroup" Type="Self.AccountGroup" Multiplicity="0..1" />
@@ -6002,7 +6087,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CreditNot__ledge__0371755F">
+        <Association Name="FK__CreditNot__ledge__705EA0EB">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="CreditNoteDetails" Type="Self.CreditNoteDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6014,7 +6099,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DebitNote__ledge__7ADC2F5E">
+        <Association Name="FK__DebitNote__ledge__67C95AEA">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="DebitNoteDetail" Type="Self.DebitNoteDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6026,7 +6111,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryN__ledge__14D10B8B">
+        <Association Name="FK__DeliveryN__ledge__2136E270">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6062,6 +6147,18 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PaymentDe__ledge__0C06BB60">
+          <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
+          <End Role="PaymentDetail" Type="Self.PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountLedger">
+              <PropertyRef Name="ledgerId" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PaymentMa__ledge__4979DDF4">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="PaymentMaster" Type="Self.PaymentMaster" Multiplicity="*" />
@@ -6074,7 +6171,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCCleara__ledge__5E3FF0B0">
+        <Association Name="FK__PDCCleara__ledge__3A02903A">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="PDCClearanceMaster" Type="Self.PDCClearanceMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6086,7 +6183,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCPayabl__ledge__28D80438">
+        <Association Name="FK__PDCPayabl__ledge__29CC2871">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="PDCPayableMaster" Type="Self.PDCPayableMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6098,7 +6195,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCReceiv__ledge__4B2D1C3C">
+        <Association Name="FK__PDCReceiv__ledge__335592AB">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="PDCReceivableMaster" Type="Self.PDCReceivableMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6110,7 +6207,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReceiptDe__ledge__08362A7C">
+        <Association Name="FK__ReceiptDe__ledge__75235608">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="ReceiptDetails" Type="Self.ReceiptDetail1" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6122,7 +6219,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReceiptDe__ledge__0C06BB60">
+        <Association Name="FK__ReceiptDe__ledge__78F3E6EC">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="ReceiptDetail" Type="Self.ReceiptDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6134,7 +6231,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalaryVou__ledge__1A54DAB7">
+        <Association Name="FK__SalaryVou__ledge__0371755F">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="SalaryVoucherMaster" Type="Self.SalaryVoucherMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6194,7 +6291,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__BankRecon__ledge__3726238F">
+        <Association Name="FK__BankRecon__ledge__2F8501C7">
           <End Role="LedgerPosting" Type="Self.LedgerPosting" Multiplicity="0..1" />
           <End Role="BankReconciliation" Type="Self.BankReconciliation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6302,7 +6399,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CreditNot__credi__027D5126">
+        <Association Name="FK__CreditNot__credi__6F6A7CB2">
           <End Role="CreditNoteMaster" Type="Self.CreditNoteMaster" Multiplicity="0..1" />
           <End Role="CreditNoteDetails" Type="Self.CreditNoteDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6314,7 +6411,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CreditNot__finan__7EE1CA6C">
+        <Association Name="FK__CreditNot__finan__74643BF9">
           <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
           <End Role="CreditNoteMaster" Type="Self.CreditNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6326,7 +6423,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CreditNot__userI__7DEDA633">
+        <Association Name="FK__CreditNot__userI__737017C0">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="CreditNoteMaster" Type="Self.CreditNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6338,7 +6435,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CreditNot__vouch__03A67F89">
+        <Association Name="FK__CreditNot__vouch__79E80B25">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="CreditNoteMaster" Type="Self.CreditNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6710,7 +6807,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DebitNote__debit__79E80B25">
+        <Association Name="FK__DebitNote__debit__66D536B1">
           <End Role="DebitNoteMaster" Type="Self.DebitNoteMaster" Multiplicity="0..1" />
           <End Role="DebitNoteDetail" Type="Self.DebitNoteDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6722,7 +6819,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DebitNote__excha__7BD05397">
+        <Association Name="FK__DebitNote__excha__68BD7F23">
           <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
           <End Role="DebitNoteDetail" Type="Self.DebitNoteDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6734,7 +6831,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DebitNote__userI__76177A41">
+        <Association Name="FK__DebitNote__userI__6304A5CD">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="DebitNoteMaster" Type="Self.DebitNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6746,7 +6843,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DebitNote__vouch__770B9E7A">
+        <Association Name="FK__DebitNote__vouch__63F8CA06">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="DebitNoteMaster" Type="Self.DebitNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6758,7 +6855,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryN__excha__16B953FD">
+        <Association Name="FK__DeliveryN__excha__231F2AE2">
           <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
           <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6770,7 +6867,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryN__finan__1995C0A8">
+        <Association Name="FK__DeliveryN__finan__25FB978D">
           <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
           <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6782,7 +6879,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryN__prici__15C52FC4">
+        <Association Name="FK__DeliveryN__prici__222B06A9">
           <End Role="PricingLevel" Type="Self.PricingLevel" Multiplicity="0..1" />
           <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6794,7 +6891,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryN__quota__18A19C6F">
+        <Association Name="FK__DeliveryN__quota__25077354">
           <End Role="Quotation" Type="Self.Quotation" Multiplicity="0..1" />
           <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6806,7 +6903,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryN__suffi__13DCE752">
+        <Association Name="FK__DeliveryN__suffi__2042BE37">
           <End Role="SuffixPrefix" Type="Self.SuffixPrefix" Multiplicity="0..1" />
           <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6818,7 +6915,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryN__userI__17AD7836">
+        <Association Name="FK__DeliveryN__userI__24134F1B">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6830,7 +6927,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryN__vouch__12E8C319">
+        <Association Name="FK__DeliveryN__vouch__1F4E99FE">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="DeliveryNoteMaster" Type="Self.DeliveryNoteMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6842,7 +6939,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Worker__designat__0CFADF99">
+        <Association Name="FK__Worker__designat__7CC477D0">
           <End Role="Designation" Type="Self.Designation" Multiplicity="0..1" />
           <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6890,7 +6987,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__JournalDe__excha__0F183235">
+        <Association Name="FK__JournalDe__excha__00CA12DE">
           <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
           <End Role="JournalDetail" Type="Self.JournalDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6914,7 +7011,19 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReceiptDe__excha__064DE20A">
+        <Association Name="FK__PaymentDe__excha__0CFADF99">
+          <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
+          <End Role="PaymentDetail" Type="Self.PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExchangeRate">
+              <PropertyRef Name="exchangeRateID" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="exchangeRateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ReceiptDe__excha__733B0D96">
           <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
           <End Role="ReceiptDetails" Type="Self.ReceiptDetail1" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6926,7 +7035,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__JournalMa__finan__095F58DF">
+        <Association Name="FK__JournalMa__finan__7B113988">
           <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
           <End Role="JournalMaster" Type="Self.JournalMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6986,7 +7095,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCCleara__finan__611C5D5B">
+        <Association Name="FK__PDCCleara__finan__3CDEFCE5">
           <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
           <End Role="PDCClearanceMaster" Type="Self.PDCClearanceMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6998,7 +7107,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCPayabl__finan__2BB470E3">
+        <Association Name="FK__PDCPayabl__finan__2CA8951C">
           <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
           <End Role="PDCPayableMaster" Type="Self.PDCPayableMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7010,7 +7119,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCReceiv__finan__4E0988E7">
+        <Association Name="FK__PDCReceiv__finan__3631FF56">
           <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
           <End Role="PDCReceivableMaster" Type="Self.PDCReceivableMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7022,7 +7131,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalaryVou__finan__17786E0C">
+        <Association Name="FK__SalaryVou__finan__009508B4">
           <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
           <End Role="SalaryVoucherMaster" Type="Self.SalaryVoucherMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7046,7 +7155,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__JournalDe__journ__100C566E">
+        <Association Name="FK__JournalDe__journ__01BE3717">
           <End Role="JournalMaster" Type="Self.JournalMaster" Multiplicity="0..1" />
           <End Role="JournalDetail" Type="Self.JournalDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7058,7 +7167,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__JournalMa__suffi__0C3BC58A">
+        <Association Name="FK__JournalMa__suffi__7DEDA633">
           <End Role="SuffixPrefix" Type="Self.SuffixPrefix" Multiplicity="0..1" />
           <End Role="JournalMaster" Type="Self.JournalMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7070,7 +7179,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__JournalMa__userI__0B47A151">
+        <Association Name="FK__JournalMa__userI__7CF981FA">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="JournalMaster" Type="Self.JournalMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7082,7 +7191,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__JournalMa__vouch__0A537D18">
+        <Association Name="FK__JournalMa__vouch__7C055DC1">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="JournalMaster" Type="Self.JournalMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7202,6 +7311,18 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PaymentDe__payme__0B129727">
+          <End Role="PaymentMaster" Type="Self.PaymentMaster" Multiplicity="0..1" />
+          <End Role="PaymentDetail" Type="Self.PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMaster">
+              <PropertyRef Name="paymentMasterId" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="paymentMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PaymentMa__userI__4A6E022D">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="PaymentMaster" Type="Self.PaymentMaster" Multiplicity="*" />
@@ -7286,7 +7407,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCCleara__suffi__5D4BCC77">
+        <Association Name="FK__PDCCleara__suffi__390E6C01">
           <End Role="SuffixPrefix" Type="Self.SuffixPrefix" Multiplicity="0..1" />
           <End Role="PDCClearanceMaster" Type="Self.PDCClearanceMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7298,7 +7419,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCCleara__userI__60283922">
+        <Association Name="FK__PDCCleara__userI__3BEAD8AC">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="PDCClearanceMaster" Type="Self.PDCClearanceMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7310,7 +7431,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCCleara__vouch__5F3414E9">
+        <Association Name="FK__PDCCleara__vouch__3AF6B473">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="PDCClearanceMaster" Type="Self.PDCClearanceMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7322,7 +7443,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCPayabl__suffi__27E3DFFF">
+        <Association Name="FK__PDCPayabl__suffi__28D80438">
           <End Role="SuffixPrefix" Type="Self.SuffixPrefix" Multiplicity="0..1" />
           <End Role="PDCPayableMaster" Type="Self.PDCPayableMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7334,7 +7455,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCPayabl__userI__29CC2871">
+        <Association Name="FK__PDCPayabl__userI__2AC04CAA">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="PDCPayableMaster" Type="Self.PDCPayableMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7346,7 +7467,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCPayabl__vouch__2AC04CAA">
+        <Association Name="FK__PDCPayabl__vouch__2BB470E3">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="PDCPayableMaster" Type="Self.PDCPayableMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7358,7 +7479,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCReceiv__suffi__4A38F803">
+        <Association Name="FK__PDCReceiv__suffi__32616E72">
           <End Role="SuffixPrefix" Type="Self.SuffixPrefix" Multiplicity="0..1" />
           <End Role="PDCReceivableMaster" Type="Self.PDCReceivableMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7370,7 +7491,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCReceiv__userI__4C214075">
+        <Association Name="FK__PDCReceiv__userI__3449B6E4">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="PDCReceivableMaster" Type="Self.PDCReceivableMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7382,7 +7503,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PDCReceiv__vouch__4D1564AE">
+        <Association Name="FK__PDCReceiv__vouch__353DDB1D">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="PDCReceivableMaster" Type="Self.PDCReceivableMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7454,7 +7575,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReceiptDe__recei__0B129727">
+        <Association Name="FK__ReceiptDe__recei__77FFC2B3">
           <End Role="ReceiptMaster" Type="Self.ReceiptMaster" Multiplicity="0..1" />
           <End Role="ReceiptDetail" Type="Self.ReceiptDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7466,7 +7587,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReceiptDe__recei__07420643">
+        <Association Name="FK__ReceiptDe__recei__742F31CF">
           <End Role="ReceiptMaster" Type="Self.ReceiptMaster" Multiplicity="0..1" />
           <End Role="ReceiptDetails" Type="Self.ReceiptDetail1" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7478,7 +7599,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalaryVou__salar__1C3D2329">
+        <Association Name="FK__SalaryVou__salar__0559BDD1">
           <End Role="SalaryVoucherMaster" Type="Self.SalaryVoucherMaster" Multiplicity="0..1" />
           <End Role="SalaryVoucherDetail" Type="Self.SalaryVoucherDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7490,7 +7611,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalaryVou__suffi__1960B67E">
+        <Association Name="FK__SalaryVou__suffi__027D5126">
           <End Role="SuffixPrefix" Type="Self.SuffixPrefix" Multiplicity="0..1" />
           <End Role="SalaryVoucherMaster" Type="Self.SalaryVoucherMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7502,7 +7623,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalaryVou__vouch__186C9245">
+        <Association Name="FK__SalaryVou__vouch__01892CED">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="SalaryVoucherMaster" Type="Self.SalaryVoucherMaster" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7538,7 +7659,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SaleOrder__Vouch__149C0161">
+        <Association Name="FK__SaleOrder__Vouch__7DB89C09">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7550,7 +7671,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SuffixPre__vouch__0682EC34">
+        <Association Name="FK__SuffixPre__vouch__7740A8A4">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="SuffixPrefix" Type="Self.SuffixPrefix" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7802,7 +7923,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalaryVou__emplo__1D314762">
+        <Association Name="FK__SalaryVou__emplo__064DE20A">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="SalaryVoucherDetail" Type="Self.SalaryVoucherDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7869,6 +7990,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <EntitySet Name="OnSales" EntityType="Self.OnSale" />
           <EntitySet Name="PartyBalances" EntityType="Self.PartyBalance" />
           <EntitySet Name="PayHeads" EntityType="Self.PayHead" />
+          <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetail" />
           <EntitySet Name="PaymentMasters" EntityType="Self.PaymentMaster" />
           <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethod" />
           <EntitySet Name="PaymentTerms" EntityType="Self.PaymentTerm" />
@@ -7933,15 +8055,15 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="AdvancePayment" EntitySet="AdvancePayments" />
           </AssociationSet>
-          <AssociationSet Name="FK__CreditNot__ledge__0371755F" Association="Self.FK__CreditNot__ledge__0371755F">
+          <AssociationSet Name="FK__CreditNot__ledge__705EA0EB" Association="Self.FK__CreditNot__ledge__705EA0EB">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="CreditNoteDetails" EntitySet="CreditNoteDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__DebitNote__ledge__7ADC2F5E" Association="Self.FK__DebitNote__ledge__7ADC2F5E">
+          <AssociationSet Name="FK__DebitNote__ledge__67C95AEA" Association="Self.FK__DebitNote__ledge__67C95AEA">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="DebitNoteDetail" EntitySet="DebitNoteDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryN__ledge__14D10B8B" Association="Self.FK__DeliveryN__ledge__14D10B8B">
+          <AssociationSet Name="FK__DeliveryN__ledge__2136E270" Association="Self.FK__DeliveryN__ledge__2136E270">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMasters" />
           </AssociationSet>
@@ -7953,31 +8075,35 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="PartyBalance" EntitySet="PartyBalances" />
           </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__ledge__0C06BB60" Association="Self.FK__PaymentDe__ledge__0C06BB60">
+            <End Role="AccountLedger" EntitySet="AccountLedgers" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK__PaymentMa__ledge__4979DDF4" Association="Self.FK__PaymentMa__ledge__4979DDF4">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="PaymentMaster" EntitySet="PaymentMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCCleara__ledge__5E3FF0B0" Association="Self.FK__PDCCleara__ledge__5E3FF0B0">
+          <AssociationSet Name="FK__PDCCleara__ledge__3A02903A" Association="Self.FK__PDCCleara__ledge__3A02903A">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="PDCClearanceMaster" EntitySet="PDCClearanceMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCPayabl__ledge__28D80438" Association="Self.FK__PDCPayabl__ledge__28D80438">
+          <AssociationSet Name="FK__PDCPayabl__ledge__29CC2871" Association="Self.FK__PDCPayabl__ledge__29CC2871">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="PDCPayableMaster" EntitySet="PDCPayableMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCReceiv__ledge__4B2D1C3C" Association="Self.FK__PDCReceiv__ledge__4B2D1C3C">
+          <AssociationSet Name="FK__PDCReceiv__ledge__335592AB" Association="Self.FK__PDCReceiv__ledge__335592AB">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="PDCReceivableMaster" EntitySet="PDCReceivableMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__ledge__08362A7C" Association="Self.FK__ReceiptDe__ledge__08362A7C">
+          <AssociationSet Name="FK__ReceiptDe__ledge__75235608" Association="Self.FK__ReceiptDe__ledge__75235608">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="ReceiptDetails" EntitySet="ReceiptDetails1" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__ledge__0C06BB60" Association="Self.FK__ReceiptDe__ledge__0C06BB60">
+          <AssociationSet Name="FK__ReceiptDe__ledge__78F3E6EC" Association="Self.FK__ReceiptDe__ledge__78F3E6EC">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalaryVou__ledge__1A54DAB7" Association="Self.FK__SalaryVou__ledge__1A54DAB7">
+          <AssociationSet Name="FK__SalaryVou__ledge__0371755F" Association="Self.FK__SalaryVou__ledge__0371755F">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMasters" />
           </AssociationSet>
@@ -7997,7 +8123,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="Area" EntitySet="Areas" />
             <End Role="Route" EntitySet="Routes" />
           </AssociationSet>
-          <AssociationSet Name="FK__BankRecon__ledge__3726238F" Association="Self.FK__BankRecon__ledge__3726238F">
+          <AssociationSet Name="FK__BankRecon__ledge__2F8501C7" Association="Self.FK__BankRecon__ledge__2F8501C7">
             <End Role="LedgerPosting" EntitySet="LedgerPostings" />
             <End Role="BankReconciliation" EntitySet="BankReconciliations" />
           </AssociationSet>
@@ -8033,19 +8159,19 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="Country" EntitySet="Countries" />
             <End Role="SupplierAdresses" EntitySet="SupplierAdresses" />
           </AssociationSet>
-          <AssociationSet Name="FK__CreditNot__credi__027D5126" Association="Self.FK__CreditNot__credi__027D5126">
+          <AssociationSet Name="FK__CreditNot__credi__6F6A7CB2" Association="Self.FK__CreditNot__credi__6F6A7CB2">
             <End Role="CreditNoteMaster" EntitySet="CreditNoteMasters" />
             <End Role="CreditNoteDetails" EntitySet="CreditNoteDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__CreditNot__finan__7EE1CA6C" Association="Self.FK__CreditNot__finan__7EE1CA6C">
+          <AssociationSet Name="FK__CreditNot__finan__74643BF9" Association="Self.FK__CreditNot__finan__74643BF9">
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="CreditNoteMaster" EntitySet="CreditNoteMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__CreditNot__userI__7DEDA633" Association="Self.FK__CreditNot__userI__7DEDA633">
+          <AssociationSet Name="FK__CreditNot__userI__737017C0" Association="Self.FK__CreditNot__userI__737017C0">
             <End Role="Worker" EntitySet="Workers" />
             <End Role="CreditNoteMaster" EntitySet="CreditNoteMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__CreditNot__vouch__03A67F89" Association="Self.FK__CreditNot__vouch__03A67F89">
+          <AssociationSet Name="FK__CreditNot__vouch__79E80B25" Association="Self.FK__CreditNot__vouch__79E80B25">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="CreditNoteMaster" EntitySet="CreditNoteMasters" />
           </AssociationSet>
@@ -8169,51 +8295,51 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
-          <AssociationSet Name="FK__DebitNote__debit__79E80B25" Association="Self.FK__DebitNote__debit__79E80B25">
+          <AssociationSet Name="FK__DebitNote__debit__66D536B1" Association="Self.FK__DebitNote__debit__66D536B1">
             <End Role="DebitNoteMaster" EntitySet="DebitNoteMasters" />
             <End Role="DebitNoteDetail" EntitySet="DebitNoteDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__DebitNote__excha__7BD05397" Association="Self.FK__DebitNote__excha__7BD05397">
+          <AssociationSet Name="FK__DebitNote__excha__68BD7F23" Association="Self.FK__DebitNote__excha__68BD7F23">
             <End Role="ExchangeRate" EntitySet="ExchangeRates" />
             <End Role="DebitNoteDetail" EntitySet="DebitNoteDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__DebitNote__userI__76177A41" Association="Self.FK__DebitNote__userI__76177A41">
+          <AssociationSet Name="FK__DebitNote__userI__6304A5CD" Association="Self.FK__DebitNote__userI__6304A5CD">
             <End Role="Worker" EntitySet="Workers" />
             <End Role="DebitNoteMaster" EntitySet="DebitNoteMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__DebitNote__vouch__770B9E7A" Association="Self.FK__DebitNote__vouch__770B9E7A">
+          <AssociationSet Name="FK__DebitNote__vouch__63F8CA06" Association="Self.FK__DebitNote__vouch__63F8CA06">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="DebitNoteMaster" EntitySet="DebitNoteMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryN__excha__16B953FD" Association="Self.FK__DeliveryN__excha__16B953FD">
+          <AssociationSet Name="FK__DeliveryN__excha__231F2AE2" Association="Self.FK__DeliveryN__excha__231F2AE2">
             <End Role="ExchangeRate" EntitySet="ExchangeRates" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryN__finan__1995C0A8" Association="Self.FK__DeliveryN__finan__1995C0A8">
+          <AssociationSet Name="FK__DeliveryN__finan__25FB978D" Association="Self.FK__DeliveryN__finan__25FB978D">
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryN__prici__15C52FC4" Association="Self.FK__DeliveryN__prici__15C52FC4">
+          <AssociationSet Name="FK__DeliveryN__prici__222B06A9" Association="Self.FK__DeliveryN__prici__222B06A9">
             <End Role="PricingLevel" EntitySet="PricingLevels" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryN__quota__18A19C6F" Association="Self.FK__DeliveryN__quota__18A19C6F">
+          <AssociationSet Name="FK__DeliveryN__quota__25077354" Association="Self.FK__DeliveryN__quota__25077354">
             <End Role="Quotation" EntitySet="Quotations" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryN__suffi__13DCE752" Association="Self.FK__DeliveryN__suffi__13DCE752">
+          <AssociationSet Name="FK__DeliveryN__suffi__2042BE37" Association="Self.FK__DeliveryN__suffi__2042BE37">
             <End Role="SuffixPrefix" EntitySet="SuffixPrefixes" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryN__userI__17AD7836" Association="Self.FK__DeliveryN__userI__17AD7836">
+          <AssociationSet Name="FK__DeliveryN__userI__24134F1B" Association="Self.FK__DeliveryN__userI__24134F1B">
             <End Role="Worker" EntitySet="Workers" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryN__vouch__12E8C319" Association="Self.FK__DeliveryN__vouch__12E8C319">
+          <AssociationSet Name="FK__DeliveryN__vouch__1F4E99FE" Association="Self.FK__DeliveryN__vouch__1F4E99FE">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="DeliveryNoteMaster" EntitySet="DeliveryNoteMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__Worker__designat__0CFADF99" Association="Self.FK__Worker__designat__0CFADF99">
+          <AssociationSet Name="FK__Worker__designat__7CC477D0" Association="Self.FK__Worker__designat__7CC477D0">
             <End Role="Designation" EntitySet="Designations" />
             <End Role="Worker" EntitySet="Workers" />
           </AssociationSet>
@@ -8229,7 +8355,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="Worker" EntitySet="Workers" />
             <End Role="DiscountValues" EntitySet="DiscountValues" />
           </AssociationSet>
-          <AssociationSet Name="FK__JournalDe__excha__0F183235" Association="Self.FK__JournalDe__excha__0F183235">
+          <AssociationSet Name="FK__JournalDe__excha__00CA12DE" Association="Self.FK__JournalDe__excha__00CA12DE">
             <End Role="ExchangeRate" EntitySet="ExchangeRates" />
             <End Role="JournalDetail" EntitySet="JournalDetails" />
           </AssociationSet>
@@ -8237,11 +8363,15 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="ExchangeRate" EntitySet="ExchangeRates" />
             <End Role="PartyBalance" EntitySet="PartyBalances" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__excha__064DE20A" Association="Self.FK__ReceiptDe__excha__064DE20A">
+          <AssociationSet Name="FK__PaymentDe__excha__0CFADF99" Association="Self.FK__PaymentDe__excha__0CFADF99">
+            <End Role="ExchangeRate" EntitySet="ExchangeRates" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ReceiptDe__excha__733B0D96" Association="Self.FK__ReceiptDe__excha__733B0D96">
             <End Role="ExchangeRate" EntitySet="ExchangeRates" />
             <End Role="ReceiptDetails" EntitySet="ReceiptDetails1" />
           </AssociationSet>
-          <AssociationSet Name="FK__JournalMa__finan__095F58DF" Association="Self.FK__JournalMa__finan__095F58DF">
+          <AssociationSet Name="FK__JournalMa__finan__7B113988" Association="Self.FK__JournalMa__finan__7B113988">
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="JournalMaster" EntitySet="JournalMasters" />
           </AssociationSet>
@@ -8261,19 +8391,19 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="PaymentMaster" EntitySet="PaymentMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCCleara__finan__611C5D5B" Association="Self.FK__PDCCleara__finan__611C5D5B">
+          <AssociationSet Name="FK__PDCCleara__finan__3CDEFCE5" Association="Self.FK__PDCCleara__finan__3CDEFCE5">
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="PDCClearanceMaster" EntitySet="PDCClearanceMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCPayabl__finan__2BB470E3" Association="Self.FK__PDCPayabl__finan__2BB470E3">
+          <AssociationSet Name="FK__PDCPayabl__finan__2CA8951C" Association="Self.FK__PDCPayabl__finan__2CA8951C">
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="PDCPayableMaster" EntitySet="PDCPayableMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCReceiv__finan__4E0988E7" Association="Self.FK__PDCReceiv__finan__4E0988E7">
+          <AssociationSet Name="FK__PDCReceiv__finan__3631FF56" Association="Self.FK__PDCReceiv__finan__3631FF56">
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="PDCReceivableMaster" EntitySet="PDCReceivableMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalaryVou__finan__17786E0C" Association="Self.FK__SalaryVou__finan__17786E0C">
+          <AssociationSet Name="FK__SalaryVou__finan__009508B4" Association="Self.FK__SalaryVou__finan__009508B4">
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMasters" />
           </AssociationSet>
@@ -8281,19 +8411,19 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="Notes" EntitySet="Notes" />
             <End Role="ItemNote" EntitySet="ItemNotes" />
           </AssociationSet>
-          <AssociationSet Name="FK__JournalDe__journ__100C566E" Association="Self.FK__JournalDe__journ__100C566E">
+          <AssociationSet Name="FK__JournalDe__journ__01BE3717" Association="Self.FK__JournalDe__journ__01BE3717">
             <End Role="JournalMaster" EntitySet="JournalMasters" />
             <End Role="JournalDetail" EntitySet="JournalDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__JournalMa__suffi__0C3BC58A" Association="Self.FK__JournalMa__suffi__0C3BC58A">
+          <AssociationSet Name="FK__JournalMa__suffi__7DEDA633" Association="Self.FK__JournalMa__suffi__7DEDA633">
             <End Role="SuffixPrefix" EntitySet="SuffixPrefixes" />
             <End Role="JournalMaster" EntitySet="JournalMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__JournalMa__userI__0B47A151" Association="Self.FK__JournalMa__userI__0B47A151">
+          <AssociationSet Name="FK__JournalMa__userI__7CF981FA" Association="Self.FK__JournalMa__userI__7CF981FA">
             <End Role="Worker" EntitySet="Workers" />
             <End Role="JournalMaster" EntitySet="JournalMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__JournalMa__vouch__0A537D18" Association="Self.FK__JournalMa__vouch__0A537D18">
+          <AssociationSet Name="FK__JournalMa__vouch__7C055DC1" Association="Self.FK__JournalMa__vouch__7C055DC1">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="JournalMaster" EntitySet="JournalMasters" />
           </AssociationSet>
@@ -8333,6 +8463,10 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="PartyBalance" EntitySet="PartyBalances" />
           </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__payme__0B129727" Association="Self.FK__PaymentDe__payme__0B129727">
+            <End Role="PaymentMaster" EntitySet="PaymentMasters" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK__PaymentMa__userI__4A6E022D" Association="Self.FK__PaymentMa__userI__4A6E022D">
             <End Role="Worker" EntitySet="Workers" />
             <End Role="PaymentMaster" EntitySet="PaymentMasters" />
@@ -8361,39 +8495,39 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="PaymentTerm" EntitySet="PaymentTerms" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCCleara__suffi__5D4BCC77" Association="Self.FK__PDCCleara__suffi__5D4BCC77">
+          <AssociationSet Name="FK__PDCCleara__suffi__390E6C01" Association="Self.FK__PDCCleara__suffi__390E6C01">
             <End Role="SuffixPrefix" EntitySet="SuffixPrefixes" />
             <End Role="PDCClearanceMaster" EntitySet="PDCClearanceMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCCleara__userI__60283922" Association="Self.FK__PDCCleara__userI__60283922">
+          <AssociationSet Name="FK__PDCCleara__userI__3BEAD8AC" Association="Self.FK__PDCCleara__userI__3BEAD8AC">
             <End Role="Worker" EntitySet="Workers" />
             <End Role="PDCClearanceMaster" EntitySet="PDCClearanceMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCCleara__vouch__5F3414E9" Association="Self.FK__PDCCleara__vouch__5F3414E9">
+          <AssociationSet Name="FK__PDCCleara__vouch__3AF6B473" Association="Self.FK__PDCCleara__vouch__3AF6B473">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="PDCClearanceMaster" EntitySet="PDCClearanceMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCPayabl__suffi__27E3DFFF" Association="Self.FK__PDCPayabl__suffi__27E3DFFF">
+          <AssociationSet Name="FK__PDCPayabl__suffi__28D80438" Association="Self.FK__PDCPayabl__suffi__28D80438">
             <End Role="SuffixPrefix" EntitySet="SuffixPrefixes" />
             <End Role="PDCPayableMaster" EntitySet="PDCPayableMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCPayabl__userI__29CC2871" Association="Self.FK__PDCPayabl__userI__29CC2871">
+          <AssociationSet Name="FK__PDCPayabl__userI__2AC04CAA" Association="Self.FK__PDCPayabl__userI__2AC04CAA">
             <End Role="Worker" EntitySet="Workers" />
             <End Role="PDCPayableMaster" EntitySet="PDCPayableMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCPayabl__vouch__2AC04CAA" Association="Self.FK__PDCPayabl__vouch__2AC04CAA">
+          <AssociationSet Name="FK__PDCPayabl__vouch__2BB470E3" Association="Self.FK__PDCPayabl__vouch__2BB470E3">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="PDCPayableMaster" EntitySet="PDCPayableMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCReceiv__suffi__4A38F803" Association="Self.FK__PDCReceiv__suffi__4A38F803">
+          <AssociationSet Name="FK__PDCReceiv__suffi__32616E72" Association="Self.FK__PDCReceiv__suffi__32616E72">
             <End Role="SuffixPrefix" EntitySet="SuffixPrefixes" />
             <End Role="PDCReceivableMaster" EntitySet="PDCReceivableMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCReceiv__userI__4C214075" Association="Self.FK__PDCReceiv__userI__4C214075">
+          <AssociationSet Name="FK__PDCReceiv__userI__3449B6E4" Association="Self.FK__PDCReceiv__userI__3449B6E4">
             <End Role="Worker" EntitySet="Workers" />
             <End Role="PDCReceivableMaster" EntitySet="PDCReceivableMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__PDCReceiv__vouch__4D1564AE" Association="Self.FK__PDCReceiv__vouch__4D1564AE">
+          <AssociationSet Name="FK__PDCReceiv__vouch__353DDB1D" Association="Self.FK__PDCReceiv__vouch__353DDB1D">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="PDCReceivableMaster" EntitySet="PDCReceivableMasters" />
           </AssociationSet>
@@ -8417,23 +8551,23 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="Rate" EntitySet="Rates" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__recei__0B129727" Association="Self.FK__ReceiptDe__recei__0B129727">
+          <AssociationSet Name="FK__ReceiptDe__recei__77FFC2B3" Association="Self.FK__ReceiptDe__recei__77FFC2B3">
             <End Role="ReceiptMaster" EntitySet="ReceiptMasters" />
             <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__recei__07420643" Association="Self.FK__ReceiptDe__recei__07420643">
+          <AssociationSet Name="FK__ReceiptDe__recei__742F31CF" Association="Self.FK__ReceiptDe__recei__742F31CF">
             <End Role="ReceiptMaster" EntitySet="ReceiptMasters" />
             <End Role="ReceiptDetails" EntitySet="ReceiptDetails1" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalaryVou__salar__1C3D2329" Association="Self.FK__SalaryVou__salar__1C3D2329">
+          <AssociationSet Name="FK__SalaryVou__salar__0559BDD1" Association="Self.FK__SalaryVou__salar__0559BDD1">
             <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMasters" />
             <End Role="SalaryVoucherDetail" EntitySet="SalaryVoucherDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalaryVou__suffi__1960B67E" Association="Self.FK__SalaryVou__suffi__1960B67E">
+          <AssociationSet Name="FK__SalaryVou__suffi__027D5126" Association="Self.FK__SalaryVou__suffi__027D5126">
             <End Role="SuffixPrefix" EntitySet="SuffixPrefixes" />
             <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalaryVou__vouch__186C9245" Association="Self.FK__SalaryVou__vouch__186C9245">
+          <AssociationSet Name="FK__SalaryVou__vouch__01892CED" Association="Self.FK__SalaryVou__vouch__01892CED">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMasters" />
           </AssociationSet>
@@ -8445,11 +8579,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="SaleOrder" EntitySet="SaleOrders" />
             <End Role="SaleOrderDetail" EntitySet="SaleOrderDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__SaleOrder__Vouch__149C0161" Association="Self.FK__SaleOrder__Vouch__149C0161">
+          <AssociationSet Name="FK__SaleOrder__Vouch__7DB89C09" Association="Self.FK__SaleOrder__Vouch__7DB89C09">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
           </AssociationSet>
-          <AssociationSet Name="FK__SuffixPre__vouch__0682EC34" Association="Self.FK__SuffixPre__vouch__0682EC34">
+          <AssociationSet Name="FK__SuffixPre__vouch__7740A8A4" Association="Self.FK__SuffixPre__vouch__7740A8A4">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="SuffixPrefix" EntitySet="SuffixPrefixes" />
           </AssociationSet>
@@ -8533,7 +8667,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="VoucherTypeTax" EntitySet="VoucherTypeTaxes" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalaryVou__emplo__1D314762" Association="Self.FK__SalaryVou__emplo__1D314762">
+          <AssociationSet Name="FK__SalaryVou__emplo__064DE20A" Association="Self.FK__SalaryVou__emplo__064DE20A">
             <End Role="Worker" EntitySet="Workers" />
             <End Role="SalaryVoucherDetail" EntitySet="SalaryVoucherDetails" />
           </AssociationSet>
@@ -8658,11 +8792,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition">
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(IMEModel.sp_helpdiagramdefinition_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams">
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(IMEModel.sp_helpdiagrams_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -8799,6 +8933,17 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="ledgerName" Nullable="true" />
           <Property Type="String" Name="type" Nullable="true" />
           <Property Type="Decimal" Name="amount" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -9326,6 +9471,9 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
                 <ScalarProperty Name="chequeNo" ColumnName="chequeNo" />
                 <ScalarProperty Name="chequeDate" ColumnName="chequeDate" />
+                <ScalarProperty Name="extraDate" ColumnName="extraDate" />
+                <ScalarProperty Name="extra1" ColumnName="extra1" />
+                <ScalarProperty Name="extra2" ColumnName="extra2" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -9452,6 +9600,19 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="narration" ColumnName="narration" />
                 <ScalarProperty Name="extraDate" ColumnName="extraDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentDetails">
+            <EntityTypeMapping TypeName="IMEModel.PaymentDetail">
+              <MappingFragment StoreEntitySet="PaymentDetail">
+                <ScalarProperty Name="paymentDetailsId" ColumnName="paymentDetailsId" />
+                <ScalarProperty Name="paymentMasterId" ColumnName="paymentMasterId" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="exchangeRateId" ColumnName="exchangeRateId" />
+                <ScalarProperty Name="chequeNo" ColumnName="chequeNo" />
+                <ScalarProperty Name="chequeDate" ColumnName="chequeDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -10353,8 +10514,25 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="IMEModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="IMEModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="IMEModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="IMEModel.Store.sp_helpdiagramdefinition" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="IMEModel.Store.sp_helpdiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="IMEModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="IMEModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="IMEModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="IMEModel.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="SuperDiskAdd" FunctionName="IMEModel.Store.SuperDiskAdd" />
