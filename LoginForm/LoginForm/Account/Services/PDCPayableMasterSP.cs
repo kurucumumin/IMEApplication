@@ -238,11 +238,13 @@ namespace LoginForm.Account.Services
 
         public decimal PDCPayableMasterAdd(PDCPayableMaster pdcpayablemasterinfo)
         {
+            IMEEntities db = new IMEEntities();
             PDCPayableMaster pdc = pdcpayablemasterinfo;
             decimal decIdentity = 0;
             try
             {
-                new IMEEntities().PDCPayableMasters.Add(pdc);
+                db.PDCPayableMasters.Add(pdc);
+                db.SaveChanges();
                 decIdentity = pdc.pdcPayableMasterId;
             }
             catch (Exception ex)
@@ -366,16 +368,20 @@ namespace LoginForm.Account.Services
             {
                 List<PartyBalance> ListPb = db.PartyBalances.Where(x => (x.voucherTypeId == decVoucherTypeId && x.referenceType == "New") || (x.againstVoucherTypeId == decVoucherTypeId && x.againstVoucherNo == strVoucherNo && x.referenceType == "Against") || (x.voucherTypeId == decVoucherTypeId && x.voucherNo == strVoucherNo && x.referenceType == "OnAccount")).ToList();
                 db.PartyBalances.RemoveRange(ListPb);
+                db.SaveChanges();
 
                 decimal? ledgerPostID = db.LedgerPostings.Where(x => x.voucherTypeId == decVoucherTypeId && x.voucherNo == strVoucherNo).FirstOrDefault().ledgerPostingId;
                 List<BankReconciliation> listBr = db.BankReconciliations.Where(x => x.ledgerPostingId == ledgerPostID).ToList();
                 db.BankReconciliations.RemoveRange(listBr);
+                db.SaveChanges();
 
                 List<LedgerPosting> listLp = db.LedgerPostings.Where(x => x.voucherTypeId == decVoucherTypeId && x.voucherNo == strVoucherNo).ToList();
                 db.LedgerPostings.RemoveRange(listLp);
+                db.SaveChanges();
 
                 PDCPayableMaster pdc = db.PDCPayableMasters.Where(x => x.pdcPayableMasterId == PdcpayableId).FirstOrDefault();
                 db.PDCPayableMasters.Remove(pdc);
+                db.SaveChanges();
             }
             catch (Exception ex)
             {

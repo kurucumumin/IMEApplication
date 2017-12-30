@@ -37,14 +37,17 @@ namespace LoginForm.Account.Services
 
                 List<LedgerPosting> postingList = db.LedgerPostings.Where(x => x.voucherTypeId == decVoucherTypeId && x.voucherNo == strVoucherNo).ToList();
                 db.LedgerPostings.RemoveRange(postingList);
+                db.SaveChanges();
 
 
                 List<ReceiptDetail> receiptDList = db.ReceiptDetails.Where(x => x.receiptMasterId == decReceiptMasterId).ToList();
                 db.ReceiptDetails.RemoveRange(receiptDList);
+                db.SaveChanges();
 
 
                 List<ReceiptMaster> receiptMList = db.ReceiptMasters.Where(x => x.receiptMasterId == decReceiptMasterId).ToList();
                 db.ReceiptMasters.RemoveRange(receiptMList);
+                db.SaveChanges();
             }
             catch (Exception ex)
             {

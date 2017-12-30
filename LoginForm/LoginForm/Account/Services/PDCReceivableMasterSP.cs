@@ -257,16 +257,20 @@ namespace LoginForm.Services
                  (x.againstVoucherTypeId == decVoucherTypeId && x.againstVoucherNo == strVoucherNo && x.referenceType == "Against")
                   || (x.voucherTypeId == decVoucherTypeId && x.voucherNo == strVoucherNo && x.referenceType == "OnAccount")).ToList();
                 db.PartyBalances.RemoveRange(ListPb);
+                db.SaveChanges();
 
                 List<decimal> listLedgerPostID = db.LedgerPostings.Where(x => x.voucherTypeId == decVoucherTypeId && x.voucherNo == strVoucherNo).Select(y => y.ledgerPostingId).ToList();
                 List<BankReconciliation> listBr = db.BankReconciliations.Where(x => listLedgerPostID.Contains((decimal)x.ledgerPostingId)).ToList();
                 db.BankReconciliations.RemoveRange(listBr);
+                db.SaveChanges();
 
                 List<LedgerPosting> listLp = db.LedgerPostings.Where(x => x.voucherTypeId == decVoucherTypeId && x.voucherNo == strVoucherNo).ToList();
                 db.LedgerPostings.RemoveRange(listLp);
+                db.SaveChanges();
 
                 PDCReceivableMaster pdc = db.PDCReceivableMasters.Where(x => x.pdcReceivableMasterId == PdcReceivableId).FirstOrDefault();
                 db.PDCReceivableMasters.Remove(pdc);
+                db.SaveChanges();
             }
             catch (Exception ex)
             {

@@ -72,7 +72,6 @@ namespace LoginForm.Account.Services
             try
             {
                 StrTypeOfVoucher= IME.VoucherTypes.Where(x => x.voucherTypeName == strvoucherTypeName).FirstOrDefault().typeOfVoucher;
-
             }
             catch (Exception ex)
             {
@@ -92,7 +91,7 @@ namespace LoginForm.Account.Services
             dtbl.Columns["Sl No"].AutoIncrementStep = 1;
             try
             {
-                
+                // TO DO : Algoritma / İşlem eksik, tamamlanacak
             }
             catch (Exception ex)
             {

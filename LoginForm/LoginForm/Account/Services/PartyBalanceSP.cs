@@ -170,6 +170,7 @@ namespace LoginForm.Account.Services
             {
                 List<PartyBalance> listLp = IME.PartyBalances.Where(x => x.partyBalanceId == PartyBalanceId).ToList();
                 IME.PartyBalances.RemoveRange(listLp);
+                IME.SaveChanges();
             }
             catch (Exception ex)
             {

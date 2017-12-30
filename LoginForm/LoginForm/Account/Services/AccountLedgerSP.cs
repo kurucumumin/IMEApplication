@@ -78,6 +78,8 @@ namespace LoginForm.Account.Services
             try
             {
                 db.PartyBalances.Remove(pb);
+
+                db.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -137,6 +139,8 @@ namespace LoginForm.Account.Services
 
         public decimal AccountLedgerCheckReferences(decimal decledgerId)
         {
+
+            // Referance tablo kontrolleri eklenecek
             IMEEntities db = new IMEEntities();
             decimal decReturnValue = -1;
             try
@@ -498,7 +502,6 @@ namespace LoginForm.Account.Services
             bool isExist = false;
             try
             {
-                
                 var obj = (from rm in IME.PDCClearanceMasters.Where(r =>r.againstId == decPDCReceivableMasterId)
                            select rm.againstId).ToList();
 

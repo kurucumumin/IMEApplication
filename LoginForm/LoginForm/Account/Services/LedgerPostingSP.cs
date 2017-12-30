@@ -104,9 +104,11 @@ namespace LoginForm.Account.Services
 
                 List<LedgerPosting> listLp = IME.LedgerPostings.Where(x => x.voucherNo == strVoucherNo && x.voucherTypeId == decVoucherTypeId && x.detailsId==decDetailsId).ToList();
                 IME.LedgerPostings.RemoveRange(listLp);
+                IME.SaveChanges();
 
                 List<BankReconciliation> listBr = IME.BankReconciliations.Where(x => x.ledgerPostingId == ledgerPostingId).ToList();
                 IME.BankReconciliations.RemoveRange(listBr);
+                IME.SaveChanges();
             }
             catch (Exception ex)
             {
