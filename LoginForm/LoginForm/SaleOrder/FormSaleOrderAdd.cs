@@ -2922,5 +2922,17 @@ namespace LoginForm.nmSaleOrder
 
             return (nullAreaList.Count != 0) ? true : false;
         }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "txt files (*.txt)|*.txt";
+            DialogResult result = openFileDialog1.ShowDialog();
+
+            if(result == DialogResult.OK)
+            {
+                
+            }
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using LoginForm.DataSet;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -147,6 +148,71 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
             return InfoReceiptMaster;
+        }
+
+        public DataTable ReceiptReportSearch(DateTime dtpFromDate, DateTime dtpToDate, decimal decLedgerId, decimal decVoucherTypeId, decimal decCashOrBankId)
+        {
+            IMEEntities db = new IMEEntities();
+
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("SL.NO", typeof(decimal));
+            dtbl.Columns["SL.NO"].AutoIncrement = true;
+            dtbl.Columns["SL.NO"].AutoIncrementSeed = 1;
+            dtbl.Columns["SL.NO"].AutoIncrementStep = 1;
+            try
+            {
+                var adaptor = (from R in db.ReceiptMasters
+                               from A in db.AccountLedgers.Where(x => x.ledgerId == R.ledgerId)
+                               from D in db.ReceiptDetails.Where(x => x.receiptMasterId == R.receiptMasterId)
+                               from V in db.VoucherTypes.Where(x => x.voucherTypeId == R.voucherTypeId)
+                               from U in db.Workers.Where(x => x.WorkerID == R.userId)
+                               where
+                                     (R.date > dtpFromDate && R.date < dtpToDate) &&
+                                     (R.voucherTypeId == ((decVoucherTypeId == 0) ? R.voucherTypeId : (decimal)decVoucherTypeId)) &&
+                                     (D.ledgerId == ((decLedgerId == 0) ? D.ledgerId : decLedgerId)) &&
+                                     (R.ledgerId == ((decCashOrBankId == 0) ? R.ledgerId : decCashOrBankId))
+                               select new
+                               {
+                                   R.receiptMasterId,
+                                   V.voucherTypeName,
+                                   R.voucherNo,
+                                   date = Convert.ToString(R.date),
+                                   A.ledgerName,
+                                   R.totalAmount,
+                                   U.UserName,
+                                   R.narration
+                               }).OrderByDescending(x => x.receiptMasterId).ToList();
+
+                dtbl.Columns.Add("receiptMasterId");
+                dtbl.Columns.Add("voucherTypeName");
+                dtbl.Columns.Add("voucherNo");
+                dtbl.Columns.Add("date");
+                dtbl.Columns.Add("ledgerName");
+                dtbl.Columns.Add("totalAmount");
+                dtbl.Columns.Add("UserName");
+                dtbl.Columns.Add("narration");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["receiptMasterId"] = item.receiptMasterId;
+                    row["voucherTypeName"] = item.voucherTypeName;
+                    row["voucherNo"] = item.voucherNo;
+                    row["date"] = item.date;
+                    row["ledgerName"] = item.ledgerName;
+                    row["totalAmount"] = item.totalAmount;
+                    row["UserName"] = item.UserName;
+                    row["narration"] = item.narration;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
         }
     }
 }

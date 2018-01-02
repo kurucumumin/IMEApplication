@@ -598,6 +598,9 @@
     <Compile Include="DataSet\PDCReceivableMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PdcReceivableReportSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PricingLevel.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -628,9 +631,6 @@
     <Compile Include="DataSet\ReceiptDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\ReceiptDetail1.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\ReceiptMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -659,12 +659,6 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SlidingPrice.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\sp_helpdiagrams_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Stock.cs">
@@ -923,11 +917,14 @@
     <Compile Include="SaleOrder\SalesOrderHelper.cs" />
     <Compile Include="Services\Common.cs" />
     <Compile Include="Services\DateValidation.cs" />
+    <Compile Include="Services\dgv.cs" />
     <Compile Include="Services\Messages.cs" />
     <Compile Include="Account\Services\PDCReceivableMasterSP.cs" />
+    <Compile Include="Services\NumToText.cs" />
     <Compile Include="Services\OtherDateValidationFunction.cs" />
     <Compile Include="Services\ToolTipService.cs" />
     <Compile Include="Services\txtCreate.cs" />
+    <Compile Include="Services\XmlToObject.cs" />
     <Compile Include="User\FormUsersMain.cs">
       <SubType>Form</SubType>
     </Compile>
