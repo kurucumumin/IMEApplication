@@ -122,7 +122,7 @@ namespace LoginForm
         {
             try
             {
-                ReceiptMasterSP SpPaymentMaster = new ReceiptMasterSP();
+                //ReceiptMasterSP SpPaymentMaster = new ReceiptMasterSP();
                 DataTable dtbl = new DataTable();
                 if (cmbLedger.Items.Count != 0 && cmbVoucherType.Items.Count != 0 && cmbCashOrBank.Items.Count != 0)
                 {
@@ -130,7 +130,7 @@ namespace LoginForm
                     {
                         if (txtFromDate.Text.Trim() != string.Empty && txtToDate.Text.Trim() != string.Empty)
                         {
-                            dtbl = SpPaymentMaster.ReceiptReportSearch(Convert.ToDateTime(dtpFromDate.Value.ToString()), Convert.ToDateTime(dtpToDate.Value.ToString()), Convert.ToDecimal(cmbLedger.SelectedValue), Convert.ToDecimal(cmbVoucherType.SelectedValue), Convert.ToDecimal(cmbCashOrBank.SelectedValue));
+                            //dtbl = SpPaymentMaster.ReceiptReportSearch(Convert.ToDateTime(dtpFromDate.Value.ToString()), Convert.ToDateTime(dtpToDate.Value.ToString()), Convert.ToDecimal(cmbLedger.SelectedValue), Convert.ToDecimal(cmbVoucherType.SelectedValue), Convert.ToDecimal(cmbCashOrBank.SelectedValue));
                             dgvReceiptReport.DataSource = dtbl;
                         }
                     }
@@ -165,17 +165,17 @@ namespace LoginForm
         /// Function to call this form from frmReceiptVoucher for updation
         /// </summary>
         /// <param name="frmReceiptVoucher"></param>
-        public void CallFromReceiptVoucher(frmReceiptVoucher frmReceiptVoucher)
-        {
-            try
-            {
-                GridFill();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("RRP7:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        //public void CallFromReceiptVoucher(frmReceiptVoucher frmReceiptVoucher)
+        //{
+        //    try
+        //    {
+        //        GridFill();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("RRP7:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
         #endregion
         #region Events
         /// <summary>
@@ -291,26 +291,26 @@ namespace LoginForm
                     {
                         if (dgvReceiptReport.CurrentRow.Cells["dgvtxtReceiptMasterId"].Value != null && dgvReceiptReport.CurrentRow.Cells["dgvtxtReceiptMasterId"].Value.ToString() != string.Empty)
                         {
-                            frmReceiptVoucher frmReceiptVoucherObj = new frmReceiptVoucher();
-                           // frmReceiptVoucherObj.MdiParent = formMDI.MDIObj;
-                            decimal decReceiptmasterId = Convert.ToDecimal(dgvReceiptReport.CurrentRow.Cells["dgvtxtreceiptMasterId"].Value.ToString());
-                            frmReceiptVoucher open = Application.OpenForms["frmReceiptVoucher"] as frmReceiptVoucher;
-                            if (open == null)
-                            {
-                                frmReceiptVoucherObj.WindowState = FormWindowState.Normal;
-                               // frmReceiptVoucherObj.MdiParent = formMDI.MDIObj;
-                                frmReceiptVoucherObj.CallFromReceiptReport(this, decReceiptmasterId);
-                            }
-                            else
-                            {
-                               // open.MdiParent = formMDI.MDIObj;
-                                open.BringToFront();
-                                open.CallFromReceiptReport(this, decReceiptmasterId);
-                                if (open.WindowState == FormWindowState.Minimized)
-                                {
-                                    open.WindowState = FormWindowState.Normal;
-                                }
-                            }
+                           // frmReceiptVoucher frmReceiptVoucherObj = new frmReceiptVoucher();
+                           //// frmReceiptVoucherObj.MdiParent = formMDI.MDIObj;
+                           // decimal decReceiptmasterId = Convert.ToDecimal(dgvReceiptReport.CurrentRow.Cells["dgvtxtreceiptMasterId"].Value.ToString());
+                           // frmReceiptVoucher open = Application.OpenForms["frmReceiptVoucher"] as frmReceiptVoucher;
+                            //if (open == null)
+                            //{
+                            //    frmReceiptVoucherObj.WindowState = FormWindowState.Normal;
+                            //   // frmReceiptVoucherObj.MdiParent = formMDI.MDIObj;
+                            //    frmReceiptVoucherObj.CallFromReceiptReport(this, decReceiptmasterId);
+                            //}
+                            //else
+                            //{
+                            //   // open.MdiParent = formMDI.MDIObj;
+                            //    open.BringToFront();
+                            //    open.CallFromReceiptReport(this, decReceiptmasterId);
+                            //    if (open.WindowState == FormWindowState.Minimized)
+                            //    {
+                            //        open.WindowState = FormWindowState.Normal;
+                            //    }
+                            //}
                         }
                     }
                 }

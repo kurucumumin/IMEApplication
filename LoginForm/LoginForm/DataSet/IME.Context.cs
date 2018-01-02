@@ -124,6 +124,62 @@ namespace LoginForm.DataSet
         public virtual DbSet<Worker> Workers { get; set; }
         public virtual DbSet<SalaryVoucherDetail> SalaryVoucherDetails { get; set; }
     
+        public virtual ObjectResult<ArticleSearch_Result> ArticleSearch(string articleNo)
+        {
+            var articleNoParameter = articleNo != null ?
+                new ObjectParameter("articleNo", articleNo) :
+                new ObjectParameter("articleNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ArticleSearch_Result>("ArticleSearch", articleNoParameter);
+        }
+    
+        public virtual ObjectResult<ArticleSearchWithAll_Result> ArticleSearchWithAll(string articleNo, string articleDesc, string mPNNo, string note)
+        {
+            var articleNoParameter = articleNo != null ?
+                new ObjectParameter("articleNo", articleNo) :
+                new ObjectParameter("articleNo", typeof(string));
+    
+            var articleDescParameter = articleDesc != null ?
+                new ObjectParameter("articleDesc", articleDesc) :
+                new ObjectParameter("articleDesc", typeof(string));
+    
+            var mPNNoParameter = mPNNo != null ?
+                new ObjectParameter("MPNNo", mPNNo) :
+                new ObjectParameter("MPNNo", typeof(string));
+    
+            var noteParameter = note != null ?
+                new ObjectParameter("note", note) :
+                new ObjectParameter("note", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ArticleSearchWithAll_Result>("ArticleSearchWithAll", articleNoParameter, articleDescParameter, mPNNoParameter, noteParameter);
+        }
+    
+        public virtual ObjectResult<ArticleSearchwithMPN_Result> ArticleSearchwithMPN(string mPNNo)
+        {
+            var mPNNoParameter = mPNNo != null ?
+                new ObjectParameter("MPNNo", mPNNo) :
+                new ObjectParameter("MPNNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ArticleSearchwithMPN_Result>("ArticleSearchwithMPN", mPNNoParameter);
+        }
+    
+        public virtual ObjectResult<BankReconciliationFillUnrecon_Result> BankReconciliationFillUnrecon(Nullable<decimal> ledgerId, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var ledgerIdParameter = ledgerId.HasValue ?
+                new ObjectParameter("ledgerId", ledgerId) :
+                new ObjectParameter("ledgerId", typeof(decimal));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BankReconciliationFillUnrecon_Result>("BankReconciliationFillUnrecon", ledgerIdParameter, fromDateParameter, toDateParameter);
+        }
+    
         public virtual int ExtendedRangeADD(string articleNo, string brand, string mPN, string articleDescription, Nullable<decimal> extendedRangeLength, Nullable<decimal> width, Nullable<decimal> height, string dimensionUoM, string weightUoM, Nullable<int> cCCN, string countryofOrigin, string unitofMeasure, Nullable<int> packSize, Nullable<int> salesUoM, string costPriceCurrency, Nullable<decimal> col1Price, Nullable<decimal> col2Price, Nullable<decimal> col3Price, Nullable<decimal> col4Price, Nullable<decimal> col5Price, Nullable<int> col1Break, Nullable<int> col2Break, Nullable<int> col3Break, Nullable<int> col4Break, Nullable<int> col5Break, Nullable<decimal> discountedPrice1, Nullable<decimal> discountedPrice2, Nullable<decimal> discountedPrice3, Nullable<decimal> discountedPrice4, Nullable<decimal> discountedPrice5, string manufacturerCode, Nullable<int> extendedRangeWeight)
         {
             var articleNoParameter = articleNo != null ?
@@ -928,23 +984,6 @@ namespace LoginForm.DataSet
                 new ObjectParameter("Length", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SuperDiskPAdd", article_NoParameter, article_DescParameter, pack_CodeParameter, pack_QuantityParameter, unit_ContentParameter, unit_MeasureParameter, uk_Col_1Parameter, standard_WeightParameter, hazardous_IndParameter, calibration_IndParameter, obsolete_FlagParameter, mH1Parameter, low_Discount_IndParameter, licensed_IndParameter, shelf_LifeParameter, cofOParameter, eUR1_IndicatorParameter, cCCN_NoParameter, supercede_DateParameter, current_Cat_pageParameter, uk_Intro_DateParameter, fillerParameter, uk_Disc_DateParameter, substitute_ByParameter, bHC_FlagParameter, filler1Parameter, future_Sell_PriceParameter, int_CatParameter, new_Prod_Change_IndParameter, out_of_Stock_Prohibit_change_indParameter, disc_Change_IndParameter, superceded_Change_IndParameter, pack_Size_Change_IndParameter, rolled_Product_Change_IndParameter, expiring_Product_Change_IndParameter, manufacturerParameter, mPNParameter, mH_Code_Level_1Parameter, heighParameter, widthParameter, lengthParameter);
-        }
-    
-        public virtual ObjectResult<BankReconciliationFillUnrecon_Result> BankReconciliationFillUnrecon(Nullable<decimal> ledgerId, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
-        {
-            var ledgerIdParameter = ledgerId.HasValue ?
-                new ObjectParameter("ledgerId", ledgerId) :
-                new ObjectParameter("ledgerId", typeof(decimal));
-    
-            var fromDateParameter = fromDate.HasValue ?
-                new ObjectParameter("fromDate", fromDate) :
-                new ObjectParameter("fromDate", typeof(System.DateTime));
-    
-            var toDateParameter = toDate.HasValue ?
-                new ObjectParameter("toDate", toDate) :
-                new ObjectParameter("toDate", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BankReconciliationFillUnrecon_Result>("BankReconciliationFillUnrecon", ledgerIdParameter, fromDateParameter, toDateParameter);
         }
     }
 }
