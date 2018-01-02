@@ -104,9 +104,11 @@ namespace LoginForm.Account.Services
 
                 List<LedgerPosting> listLp = IME.LedgerPostings.Where(x => x.voucherNo == strVoucherNo && x.voucherTypeId == decVoucherTypeId && x.detailsId==decDetailsId).ToList();
                 IME.LedgerPostings.RemoveRange(listLp);
+                IME.SaveChanges();
 
                 List<BankReconciliation> listBr = IME.BankReconciliations.Where(x => x.ledgerPostingId == ledgerPostingId).ToList();
                 IME.BankReconciliations.RemoveRange(listBr);
+                IME.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -128,6 +130,30 @@ namespace LoginForm.Account.Services
                 MessageBox.Show("LPSP:1" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             return decLedgerPostingId;
+        }
+
+        public void LedgerPostingEditByVoucherTypeAndVoucherNo(LedgerPosting lpi)
+        {
+            IMEEntities db = new IMEEntities();
+            try
+            {
+                LedgerPosting lp = db.LedgerPostings.Where(x => x.voucherNo == lpi.voucherNo && x.voucherTypeId == lpi.voucherTypeId).FirstOrDefault();
+
+                lp.date = lpi.date;
+                lp.ledgerId = lpi.ledgerId;
+                lp.debit = lpi.debit;
+                lp.credit = lpi.credit;
+                lp.yearId = lpi.yearId;
+                lp.invoiceNo = lpi.invoiceNo;
+                lp.chequeNo = lpi.chequeNo;
+                lp.chequeDate = lpi.chequeDate;
+
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

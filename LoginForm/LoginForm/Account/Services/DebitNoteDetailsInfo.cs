@@ -9,6 +9,8 @@ namespace LoginForm.Account.Services
 
     class DebitNoteDetailsInfo
     {
+
+        // TO DO : Class veritabanından getirilmeli
         private decimal _debitNoteDetailsId;
         private decimal _debitNoteMasterId;
         private decimal _ledgerId;

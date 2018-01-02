@@ -58,7 +58,7 @@ namespace LoginForm.Account.Services
             {
                 MessageBox.Show(ex.ToString());
             }
-            
+
             return dt;
         }
 
@@ -219,23 +219,21 @@ namespace LoginForm.Account.Services
             }
         }
 
-        public DataTable BankOrCashComboFill(bool isAll)
+        public void CashOrBankComboFill(ComboBox cmbCashOrBank, bool isAll)
         {
             IMEEntities db = new IMEEntities();
             DataTable dtbl = new DataTable();
-            dtbl.Columns.Add("SlNo", typeof(decimal));
-            dtbl.Columns["SlNo"].AutoIncrement = true;
-            dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
-            dtbl.Columns["SlNo"].AutoIncrementStep = 1;
             try
             {
-                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupId == 27 || x.accountGroupId == 28 || x.accountGroupId == 17)
+                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupName == "Cash-in Hand" || x.accountGroupName == "Bank Account" || x.accountGroupName == "Bank OD A/C")
                                select new
                                {
                                    AccountGroupId = ag.accountGroupId,
                                    hierarchyLevel = 1
                                }).ToList();
-                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == 27 || x.groupUnder == 28 || x.accountGroupId == 17)
+                List<int> IDs = adaptor.Select(x => x.AccountGroupId).ToList();
+
+                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == IDs[0] || x.groupUnder == IDs[1] || x.groupUnder == IDs[2] )
                                 select new
                                 {
                                     AccountGroupId = ag.accountGroupId,
@@ -250,27 +248,19 @@ namespace LoginForm.Account.Services
                     }
                 }
 
-                dtbl.Columns.Add("AccountGroupId");
-
-                foreach (var item in adaptor)
-                {
-                    var row = dtbl.NewRow();
-
-                    row["AccountGroupId"] = item.AccountGroupId;
-
-                    dtbl.Rows.Add(row);
-                }
+                cmbCashOrBank.DataSource = dtbl;
+                cmbCashOrBank.ValueMember = "ledgerId";
+                cmbCashOrBank.DisplayMember = "ledgerName";
+                cmbCashOrBank.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-            return dtbl;
         }
 
         public DataTable AccountLedgerComboFill()
         {
-            IMEEntities db = new IMEEntities();
             DataTable dtbl = new DataTable();
             try
             {

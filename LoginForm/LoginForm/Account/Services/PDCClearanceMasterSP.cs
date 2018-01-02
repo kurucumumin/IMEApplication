@@ -283,12 +283,15 @@ namespace LoginForm.Account.Services
             {
                 List<PartyBalance> pList = db.PartyBalances.Where(x => x.voucherTypeId == decVoucherTypeId && x.voucherNo == strVoucherNo && x.referenceType == "New").ToList();
                 db.PartyBalances.RemoveRange(pList);
+                db.SaveChanges();
 
                 List<LedgerPosting> lpList = db.LedgerPostings.Where(x => x.voucherTypeId == decVoucherTypeId && x.voucherNo == strVoucherNo).ToList();
                 db.LedgerPostings.RemoveRange(lpList);
+                db.SaveChanges();
 
                 PDCClearanceMaster cm = db.PDCClearanceMasters.Where(x=>x.PDCClearanceMasterId == PdcClearanceId).FirstOrDefault();
                 db.PDCClearanceMasters.Remove(cm);
+                db.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -409,11 +412,13 @@ namespace LoginForm.Account.Services
 
         public decimal PDCClearanceMasterAdd(PDCClearanceMaster pdcclearancemasterinfo)
         {
+            IMEEntities db = new IMEEntities();
             decimal decIdentity = 0;
             try
             {
                 PDCClearanceMaster pcm = pdcclearancemasterinfo;
-                new IMEEntities().PDCClearanceMasters.Add(pcm);
+                db.PDCClearanceMasters.Add(pcm);
+                db.SaveChanges();
                 decIdentity = pcm.PDCClearanceMasterId;
             }
             catch (Exception ex)

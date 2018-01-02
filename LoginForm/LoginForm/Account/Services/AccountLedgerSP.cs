@@ -78,6 +78,8 @@ namespace LoginForm.Account.Services
             try
             {
                 db.PartyBalances.Remove(pb);
+
+                db.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -137,6 +139,8 @@ namespace LoginForm.Account.Services
 
         public decimal AccountLedgerCheckReferences(decimal decledgerId)
         {
+
+            // Referance tablo kontrolleri eklenecek
             IMEEntities db = new IMEEntities();
             decimal decReturnValue = -1;
             try
@@ -185,13 +189,15 @@ namespace LoginForm.Account.Services
             DataTable dtbl = new DataTable();
             try
             {
-                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupId == 22 || x.accountGroupId == 26)
+                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupName == "Sundry Creditors" || x.accountGroupName == "Sundry Debtors")
                                 select new
                                 {
                                     AccountGroupId = ag.accountGroupId,
                                     hierarchyLevel = 1
                                }).ToList();
-                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == 22 || x.groupUnder == 26)
+
+                List<int> IDs = adaptor.Select(x => x.AccountGroupId).ToList();
+                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == IDs[0] || x.groupUnder == IDs[1])
                                 select new
                                 {
                                     AccountGroupId = ag.accountGroupId,
@@ -230,13 +236,14 @@ namespace LoginForm.Account.Services
             DataTable dtbl = new DataTable();
             try
             {
-                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupId == 17 || x.accountGroupId == 28)
+                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupName == "Bank OD A/C" || x.accountGroupName == "Bank Account")
                                select new
                                {
                                    AccountGroupId = ag.accountGroupId,
                                    hierarchyLevel = 1
                                }).ToList();
-                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == 17 || x.groupUnder == 28)
+                List<int> IDs = adaptor.Select(x => x.AccountGroupId).ToList();
+                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == IDs[0] || x.groupUnder == IDs[1])
                                 select new
                                 {
                                     AccountGroupId = ag.accountGroupId,
@@ -393,13 +400,15 @@ namespace LoginForm.Account.Services
             bool isSundrycredit = false;
             try
             {
-                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupId == 22 || x.accountGroupId == 26)
+                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupName == "Sundry Creditors" || x.accountGroupName == "Sundry Debtors")
                                select new
                                {
                                    AccountGroupId = ag.accountGroupId,
                                    hierarchyLevel = 1
                                }).ToList();
-                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == 22 || x.groupUnder == 26)
+
+                List<int> IDs = adaptor.Select(x => x.AccountGroupId).ToList();
+                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == IDs[0] || x.groupUnder == IDs[1])
                                 select new
                                 {
                                     AccountGroupId = ag.accountGroupId,
@@ -443,13 +452,14 @@ namespace LoginForm.Account.Services
             bool isSundryCreditOrDebit = false;
             try
             {
-                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupId == 22 || x.accountGroupId == 26)
+                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupName == "Sundry Creditors" || x.accountGroupName == "Sundry Debtors")
                                select new
                                {
                                    AccountGroupId = ag.accountGroupId,
                                    hierarchyLevel = 1
                                }).ToList();
-                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == 22 || x.groupUnder == 26)
+                List<int> IDs = adaptor.Select(x => x.AccountGroupId).ToList();
+                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == IDs[0] || x.groupUnder == IDs[1])
                                 select new
                                 {
                                     AccountGroupId = ag.accountGroupId,
@@ -492,7 +502,6 @@ namespace LoginForm.Account.Services
             bool isExist = false;
             try
             {
-                
                 var obj = (from rm in IME.PDCClearanceMasters.Where(r =>r.againstId == decPDCReceivableMasterId)
                            select rm.againstId).ToList();
 
@@ -517,7 +526,7 @@ namespace LoginForm.Account.Services
             bool isSundryDebit = false;
             try
             {
-                var obj = (from rm in IME.AccountLedgers.Where(r => r.ledgerName == strLedgerName && r.accountGroupID==26 && r.billByBill==true)
+                var obj = (from rm in IME.AccountLedgers.Where(r => r.ledgerName == strLedgerName && r.AccountGroup.accountGroupName== "Sundry Debtors" && r.billByBill==true)
                            select rm.ledgerId).ToList();
 
                 isSundryDebit=(obj.Count() > 0) ? true : false;
