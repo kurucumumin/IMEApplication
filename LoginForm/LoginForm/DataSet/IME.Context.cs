@@ -14,19 +14,19 @@ namespace LoginForm.DataSet
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-    
+
     public partial class IMEEntities : DbContext
     {
         public IMEEntities()
             : base("name=IMEEntities")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<AccountGroup> AccountGroups { get; set; }
         public virtual DbSet<AccountLedger> AccountLedgers { get; set; }
         public virtual DbSet<AdvancePayment> AdvancePayments { get; set; }
@@ -122,821 +122,821 @@ namespace LoginForm.DataSet
         public virtual DbSet<VoucherTypeTax> VoucherTypeTaxes { get; set; }
         public virtual DbSet<Worker> Workers { get; set; }
         public virtual DbSet<SalaryVoucherDetail> SalaryVoucherDetails { get; set; }
-    
+
         public virtual ObjectResult<ArticleSearch_Result> ArticleSearch(string articleNo)
         {
             var articleNoParameter = articleNo != null ?
                 new ObjectParameter("articleNo", articleNo) :
                 new ObjectParameter("articleNo", typeof(string));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ArticleSearch_Result>("ArticleSearch", articleNoParameter);
         }
-    
+
         public virtual ObjectResult<ArticleSearchWithAll_Result> ArticleSearchWithAll(string articleNo, string articleDesc, string mPNNo, string note)
         {
             var articleNoParameter = articleNo != null ?
                 new ObjectParameter("articleNo", articleNo) :
                 new ObjectParameter("articleNo", typeof(string));
-    
+
             var articleDescParameter = articleDesc != null ?
                 new ObjectParameter("articleDesc", articleDesc) :
                 new ObjectParameter("articleDesc", typeof(string));
-    
+
             var mPNNoParameter = mPNNo != null ?
                 new ObjectParameter("MPNNo", mPNNo) :
                 new ObjectParameter("MPNNo", typeof(string));
-    
+
             var noteParameter = note != null ?
                 new ObjectParameter("note", note) :
                 new ObjectParameter("note", typeof(string));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ArticleSearchWithAll_Result>("ArticleSearchWithAll", articleNoParameter, articleDescParameter, mPNNoParameter, noteParameter);
         }
-    
+
         public virtual ObjectResult<ArticleSearchwithMPN_Result> ArticleSearchwithMPN(string mPNNo)
         {
             var mPNNoParameter = mPNNo != null ?
                 new ObjectParameter("MPNNo", mPNNo) :
                 new ObjectParameter("MPNNo", typeof(string));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ArticleSearchwithMPN_Result>("ArticleSearchwithMPN", mPNNoParameter);
         }
-    
+
         public virtual ObjectResult<BankReconciliationFillUnrecon_Result> BankReconciliationFillUnrecon(Nullable<decimal> ledgerId, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-    
+
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-    
+
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BankReconciliationFillUnrecon_Result>("BankReconciliationFillUnrecon", ledgerIdParameter, fromDateParameter, toDateParameter);
         }
-    
+
         public virtual int ExtendedRangeADD(string articleNo, string brand, string mPN, string articleDescription, Nullable<decimal> extendedRangeLength, Nullable<decimal> width, Nullable<decimal> height, string dimensionUoM, string weightUoM, Nullable<int> cCCN, string countryofOrigin, string unitofMeasure, Nullable<int> packSize, Nullable<int> salesUoM, string costPriceCurrency, Nullable<decimal> col1Price, Nullable<decimal> col2Price, Nullable<decimal> col3Price, Nullable<decimal> col4Price, Nullable<decimal> col5Price, Nullable<int> col1Break, Nullable<int> col2Break, Nullable<int> col3Break, Nullable<int> col4Break, Nullable<int> col5Break, Nullable<decimal> discountedPrice1, Nullable<decimal> discountedPrice2, Nullable<decimal> discountedPrice3, Nullable<decimal> discountedPrice4, Nullable<decimal> discountedPrice5, string manufacturerCode, Nullable<int> extendedRangeWeight)
         {
             var articleNoParameter = articleNo != null ?
                 new ObjectParameter("ArticleNo", articleNo) :
                 new ObjectParameter("ArticleNo", typeof(string));
-    
+
             var brandParameter = brand != null ?
                 new ObjectParameter("Brand", brand) :
                 new ObjectParameter("Brand", typeof(string));
-    
+
             var mPNParameter = mPN != null ?
                 new ObjectParameter("MPN", mPN) :
                 new ObjectParameter("MPN", typeof(string));
-    
+
             var articleDescriptionParameter = articleDescription != null ?
                 new ObjectParameter("ArticleDescription", articleDescription) :
                 new ObjectParameter("ArticleDescription", typeof(string));
-    
+
             var extendedRangeLengthParameter = extendedRangeLength.HasValue ?
                 new ObjectParameter("ExtendedRangeLength", extendedRangeLength) :
                 new ObjectParameter("ExtendedRangeLength", typeof(decimal));
-    
+
             var widthParameter = width.HasValue ?
                 new ObjectParameter("Width", width) :
                 new ObjectParameter("Width", typeof(decimal));
-    
+
             var heightParameter = height.HasValue ?
                 new ObjectParameter("Height", height) :
                 new ObjectParameter("Height", typeof(decimal));
-    
+
             var dimensionUoMParameter = dimensionUoM != null ?
                 new ObjectParameter("DimensionUoM", dimensionUoM) :
                 new ObjectParameter("DimensionUoM", typeof(string));
-    
+
             var weightUoMParameter = weightUoM != null ?
                 new ObjectParameter("WeightUoM", weightUoM) :
                 new ObjectParameter("WeightUoM", typeof(string));
-    
+
             var cCCNParameter = cCCN.HasValue ?
                 new ObjectParameter("CCCN", cCCN) :
                 new ObjectParameter("CCCN", typeof(int));
-    
+
             var countryofOriginParameter = countryofOrigin != null ?
                 new ObjectParameter("CountryofOrigin", countryofOrigin) :
                 new ObjectParameter("CountryofOrigin", typeof(string));
-    
+
             var unitofMeasureParameter = unitofMeasure != null ?
                 new ObjectParameter("UnitofMeasure", unitofMeasure) :
                 new ObjectParameter("UnitofMeasure", typeof(string));
-    
+
             var packSizeParameter = packSize.HasValue ?
                 new ObjectParameter("PackSize", packSize) :
                 new ObjectParameter("PackSize", typeof(int));
-    
+
             var salesUoMParameter = salesUoM.HasValue ?
                 new ObjectParameter("SalesUoM", salesUoM) :
                 new ObjectParameter("SalesUoM", typeof(int));
-    
+
             var costPriceCurrencyParameter = costPriceCurrency != null ?
                 new ObjectParameter("CostPriceCurrency", costPriceCurrency) :
                 new ObjectParameter("CostPriceCurrency", typeof(string));
-    
+
             var col1PriceParameter = col1Price.HasValue ?
                 new ObjectParameter("Col1Price", col1Price) :
                 new ObjectParameter("Col1Price", typeof(decimal));
-    
+
             var col2PriceParameter = col2Price.HasValue ?
                 new ObjectParameter("Col2Price", col2Price) :
                 new ObjectParameter("Col2Price", typeof(decimal));
-    
+
             var col3PriceParameter = col3Price.HasValue ?
                 new ObjectParameter("Col3Price", col3Price) :
                 new ObjectParameter("Col3Price", typeof(decimal));
-    
+
             var col4PriceParameter = col4Price.HasValue ?
                 new ObjectParameter("Col4Price", col4Price) :
                 new ObjectParameter("Col4Price", typeof(decimal));
-    
+
             var col5PriceParameter = col5Price.HasValue ?
                 new ObjectParameter("Col5Price", col5Price) :
                 new ObjectParameter("Col5Price", typeof(decimal));
-    
+
             var col1BreakParameter = col1Break.HasValue ?
                 new ObjectParameter("Col1Break", col1Break) :
                 new ObjectParameter("Col1Break", typeof(int));
-    
+
             var col2BreakParameter = col2Break.HasValue ?
                 new ObjectParameter("Col2Break", col2Break) :
                 new ObjectParameter("Col2Break", typeof(int));
-    
+
             var col3BreakParameter = col3Break.HasValue ?
                 new ObjectParameter("Col3Break", col3Break) :
                 new ObjectParameter("Col3Break", typeof(int));
-    
+
             var col4BreakParameter = col4Break.HasValue ?
                 new ObjectParameter("Col4Break", col4Break) :
                 new ObjectParameter("Col4Break", typeof(int));
-    
+
             var col5BreakParameter = col5Break.HasValue ?
                 new ObjectParameter("Col5Break", col5Break) :
                 new ObjectParameter("Col5Break", typeof(int));
-    
+
             var discountedPrice1Parameter = discountedPrice1.HasValue ?
                 new ObjectParameter("DiscountedPrice1", discountedPrice1) :
                 new ObjectParameter("DiscountedPrice1", typeof(decimal));
-    
+
             var discountedPrice2Parameter = discountedPrice2.HasValue ?
                 new ObjectParameter("DiscountedPrice2", discountedPrice2) :
                 new ObjectParameter("DiscountedPrice2", typeof(decimal));
-    
+
             var discountedPrice3Parameter = discountedPrice3.HasValue ?
                 new ObjectParameter("DiscountedPrice3", discountedPrice3) :
                 new ObjectParameter("DiscountedPrice3", typeof(decimal));
-    
+
             var discountedPrice4Parameter = discountedPrice4.HasValue ?
                 new ObjectParameter("DiscountedPrice4", discountedPrice4) :
                 new ObjectParameter("DiscountedPrice4", typeof(decimal));
-    
+
             var discountedPrice5Parameter = discountedPrice5.HasValue ?
                 new ObjectParameter("DiscountedPrice5", discountedPrice5) :
                 new ObjectParameter("DiscountedPrice5", typeof(decimal));
-    
+
             var manufacturerCodeParameter = manufacturerCode != null ?
                 new ObjectParameter("ManufacturerCode", manufacturerCode) :
                 new ObjectParameter("ManufacturerCode", typeof(string));
-    
+
             var extendedRangeWeightParameter = extendedRangeWeight.HasValue ?
                 new ObjectParameter("ExtendedRangeWeight", extendedRangeWeight) :
                 new ObjectParameter("ExtendedRangeWeight", typeof(int));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ExtendedRangeADD", articleNoParameter, brandParameter, mPNParameter, articleDescriptionParameter, extendedRangeLengthParameter, widthParameter, heightParameter, dimensionUoMParameter, weightUoMParameter, cCCNParameter, countryofOriginParameter, unitofMeasureParameter, packSizeParameter, salesUoMParameter, costPriceCurrencyParameter, col1PriceParameter, col2PriceParameter, col3PriceParameter, col4PriceParameter, col5PriceParameter, col1BreakParameter, col2BreakParameter, col3BreakParameter, col4BreakParameter, col5BreakParameter, discountedPrice1Parameter, discountedPrice2Parameter, discountedPrice3Parameter, discountedPrice4Parameter, discountedPrice5Parameter, manufacturerCodeParameter, extendedRangeWeightParameter);
         }
-    
+
         public virtual int PayHeadAdd(string payHeadName, string type, string narration, Nullable<System.DateTime> extraDate)
         {
             var payHeadNameParameter = payHeadName != null ?
                 new ObjectParameter("payHeadName", payHeadName) :
                 new ObjectParameter("payHeadName", typeof(string));
-    
+
             var typeParameter = type != null ?
                 new ObjectParameter("type", type) :
                 new ObjectParameter("type", typeof(string));
-    
+
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-    
+
             var extraDateParameter = extraDate.HasValue ?
                 new ObjectParameter("extraDate", extraDate) :
                 new ObjectParameter("extraDate", typeof(System.DateTime));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PayHeadAdd", payHeadNameParameter, typeParameter, narrationParameter, extraDateParameter);
         }
-    
+
         public virtual int PayHeadDelete(Nullable<decimal> payHeadId)
         {
             var payHeadIdParameter = payHeadId.HasValue ?
                 new ObjectParameter("payHeadId", payHeadId) :
                 new ObjectParameter("payHeadId", typeof(decimal));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PayHeadDelete", payHeadIdParameter);
         }
-    
+
         public virtual int PayHeadEdit(Nullable<decimal> payHeadId, string payHeadName, string type, string narration, Nullable<System.DateTime> extraDate)
         {
             var payHeadIdParameter = payHeadId.HasValue ?
                 new ObjectParameter("payHeadId", payHeadId) :
                 new ObjectParameter("payHeadId", typeof(decimal));
-    
+
             var payHeadNameParameter = payHeadName != null ?
                 new ObjectParameter("payHeadName", payHeadName) :
                 new ObjectParameter("payHeadName", typeof(string));
-    
+
             var typeParameter = type != null ?
                 new ObjectParameter("type", type) :
                 new ObjectParameter("type", typeof(string));
-    
+
             var narrationParameter = narration != null ?
                 new ObjectParameter("narration", narration) :
                 new ObjectParameter("narration", typeof(string));
-    
+
             var extraDateParameter = extraDate.HasValue ?
                 new ObjectParameter("extraDate", extraDate) :
                 new ObjectParameter("extraDate", typeof(System.DateTime));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PayHeadEdit", payHeadIdParameter, payHeadNameParameter, typeParameter, narrationParameter, extraDateParameter);
         }
-    
+
         public virtual ObjectResult<PayHeadGet_Result> PayHeadGet(Nullable<decimal> payHeadId)
         {
             var payHeadIdParameter = payHeadId.HasValue ?
                 new ObjectParameter("payHeadId", payHeadId) :
                 new ObjectParameter("payHeadId", typeof(decimal));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PayHeadGet_Result>("PayHeadGet", payHeadIdParameter);
         }
-    
+
         public virtual ObjectResult<PayHeadGetAll_Result> PayHeadGetAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PayHeadGetAll_Result>("PayHeadGetAll");
         }
-    
+
         public virtual ObjectResult<PDCClearanceFillDetails_Result> PDCClearanceFillDetails(string voucherTypeName, Nullable<decimal> masterId)
         {
             var voucherTypeNameParameter = voucherTypeName != null ?
                 new ObjectParameter("voucherTypeName", voucherTypeName) :
                 new ObjectParameter("voucherTypeName", typeof(string));
-    
+
             var masterIdParameter = masterId.HasValue ?
                 new ObjectParameter("MasterId", masterId) :
                 new ObjectParameter("MasterId", typeof(decimal));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PDCClearanceFillDetails_Result>("PDCClearanceFillDetails", voucherTypeNameParameter, masterIdParameter);
         }
-    
+
         public virtual ObjectResult<PDCClearanceRegisterSearch_Result> PDCClearanceRegisterSearch(string voucherTypeName, string ledgerName, Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate, string chequeNo, Nullable<decimal> bankId, string status)
         {
             var voucherTypeNameParameter = voucherTypeName != null ?
                 new ObjectParameter("voucherTypeName", voucherTypeName) :
                 new ObjectParameter("voucherTypeName", typeof(string));
-    
+
             var ledgerNameParameter = ledgerName != null ?
                 new ObjectParameter("ledgerName", ledgerName) :
                 new ObjectParameter("ledgerName", typeof(string));
-    
+
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-    
+
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-    
+
             var chequeNoParameter = chequeNo != null ?
                 new ObjectParameter("chequeNo", chequeNo) :
                 new ObjectParameter("chequeNo", typeof(string));
-    
+
             var bankIdParameter = bankId.HasValue ?
                 new ObjectParameter("bankId", bankId) :
                 new ObjectParameter("bankId", typeof(decimal));
-    
+
             var statusParameter = status != null ?
                 new ObjectParameter("status", status) :
                 new ObjectParameter("status", typeof(string));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PDCClearanceRegisterSearch_Result>("PDCClearanceRegisterSearch", voucherTypeNameParameter, ledgerNameParameter, toDateParameter, fromDateParameter, chequeNoParameter, bankIdParameter, statusParameter);
         }
-    
+
         public virtual int SlidingPriceAdd(string articleNo, string articleDescription, Nullable<int> itemTypeCode, string itemTypeDesc, string introductionDate, string discontinuedDate, Nullable<int> quantity1, Nullable<decimal> col1Price, Nullable<decimal> col2Price, Nullable<decimal> col3Price, Nullable<decimal> col4Price, Nullable<decimal> col5Price, Nullable<int> col1Break, Nullable<int> col2Break, Nullable<int> col3Break, Nullable<int> col4Break, Nullable<int> col5Break, Nullable<decimal> discountedPrice1, Nullable<decimal> discountedPrice2, Nullable<decimal> discountedPrice3, Nullable<decimal> discountedPrice4, Nullable<decimal> discountedPrice5, string superSectionNo, string supersectionName, string brandID, string brandname, string sectionID, string sectionName)
         {
             var articleNoParameter = articleNo != null ?
                 new ObjectParameter("ArticleNo", articleNo) :
                 new ObjectParameter("ArticleNo", typeof(string));
-    
+
             var articleDescriptionParameter = articleDescription != null ?
                 new ObjectParameter("ArticleDescription", articleDescription) :
                 new ObjectParameter("ArticleDescription", typeof(string));
-    
+
             var itemTypeCodeParameter = itemTypeCode.HasValue ?
                 new ObjectParameter("ItemTypeCode", itemTypeCode) :
                 new ObjectParameter("ItemTypeCode", typeof(int));
-    
+
             var itemTypeDescParameter = itemTypeDesc != null ?
                 new ObjectParameter("ItemTypeDesc", itemTypeDesc) :
                 new ObjectParameter("ItemTypeDesc", typeof(string));
-    
+
             var introductionDateParameter = introductionDate != null ?
                 new ObjectParameter("IntroductionDate", introductionDate) :
                 new ObjectParameter("IntroductionDate", typeof(string));
-    
+
             var discontinuedDateParameter = discontinuedDate != null ?
                 new ObjectParameter("DiscontinuedDate", discontinuedDate) :
                 new ObjectParameter("DiscontinuedDate", typeof(string));
-    
+
             var quantity1Parameter = quantity1.HasValue ?
                 new ObjectParameter("Quantity1", quantity1) :
                 new ObjectParameter("Quantity1", typeof(int));
-    
+
             var col1PriceParameter = col1Price.HasValue ?
                 new ObjectParameter("Col1Price", col1Price) :
                 new ObjectParameter("Col1Price", typeof(decimal));
-    
+
             var col2PriceParameter = col2Price.HasValue ?
                 new ObjectParameter("Col2Price", col2Price) :
                 new ObjectParameter("Col2Price", typeof(decimal));
-    
+
             var col3PriceParameter = col3Price.HasValue ?
                 new ObjectParameter("Col3Price", col3Price) :
                 new ObjectParameter("Col3Price", typeof(decimal));
-    
+
             var col4PriceParameter = col4Price.HasValue ?
                 new ObjectParameter("Col4Price", col4Price) :
                 new ObjectParameter("Col4Price", typeof(decimal));
-    
+
             var col5PriceParameter = col5Price.HasValue ?
                 new ObjectParameter("Col5Price", col5Price) :
                 new ObjectParameter("Col5Price", typeof(decimal));
-    
+
             var col1BreakParameter = col1Break.HasValue ?
                 new ObjectParameter("Col1Break", col1Break) :
                 new ObjectParameter("Col1Break", typeof(int));
-    
+
             var col2BreakParameter = col2Break.HasValue ?
                 new ObjectParameter("Col2Break", col2Break) :
                 new ObjectParameter("Col2Break", typeof(int));
-    
+
             var col3BreakParameter = col3Break.HasValue ?
                 new ObjectParameter("Col3Break", col3Break) :
                 new ObjectParameter("Col3Break", typeof(int));
-    
+
             var col4BreakParameter = col4Break.HasValue ?
                 new ObjectParameter("Col4Break", col4Break) :
                 new ObjectParameter("Col4Break", typeof(int));
-    
+
             var col5BreakParameter = col5Break.HasValue ?
                 new ObjectParameter("Col5Break", col5Break) :
                 new ObjectParameter("Col5Break", typeof(int));
-    
+
             var discountedPrice1Parameter = discountedPrice1.HasValue ?
                 new ObjectParameter("DiscountedPrice1", discountedPrice1) :
                 new ObjectParameter("DiscountedPrice1", typeof(decimal));
-    
+
             var discountedPrice2Parameter = discountedPrice2.HasValue ?
                 new ObjectParameter("DiscountedPrice2", discountedPrice2) :
                 new ObjectParameter("DiscountedPrice2", typeof(decimal));
-    
+
             var discountedPrice3Parameter = discountedPrice3.HasValue ?
                 new ObjectParameter("DiscountedPrice3", discountedPrice3) :
                 new ObjectParameter("DiscountedPrice3", typeof(decimal));
-    
+
             var discountedPrice4Parameter = discountedPrice4.HasValue ?
                 new ObjectParameter("DiscountedPrice4", discountedPrice4) :
                 new ObjectParameter("DiscountedPrice4", typeof(decimal));
-    
+
             var discountedPrice5Parameter = discountedPrice5.HasValue ?
                 new ObjectParameter("DiscountedPrice5", discountedPrice5) :
                 new ObjectParameter("DiscountedPrice5", typeof(decimal));
-    
+
             var superSectionNoParameter = superSectionNo != null ?
                 new ObjectParameter("SuperSectionNo", superSectionNo) :
                 new ObjectParameter("SuperSectionNo", typeof(string));
-    
+
             var supersectionNameParameter = supersectionName != null ?
                 new ObjectParameter("SupersectionName", supersectionName) :
                 new ObjectParameter("SupersectionName", typeof(string));
-    
+
             var brandIDParameter = brandID != null ?
                 new ObjectParameter("BrandID", brandID) :
                 new ObjectParameter("BrandID", typeof(string));
-    
+
             var brandnameParameter = brandname != null ?
                 new ObjectParameter("Brandname", brandname) :
                 new ObjectParameter("Brandname", typeof(string));
-    
+
             var sectionIDParameter = sectionID != null ?
                 new ObjectParameter("SectionID", sectionID) :
                 new ObjectParameter("SectionID", typeof(string));
-    
+
             var sectionNameParameter = sectionName != null ?
                 new ObjectParameter("SectionName", sectionName) :
                 new ObjectParameter("SectionName", typeof(string));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SlidingPriceAdd", articleNoParameter, articleDescriptionParameter, itemTypeCodeParameter, itemTypeDescParameter, introductionDateParameter, discontinuedDateParameter, quantity1Parameter, col1PriceParameter, col2PriceParameter, col3PriceParameter, col4PriceParameter, col5PriceParameter, col1BreakParameter, col2BreakParameter, col3BreakParameter, col4BreakParameter, col5BreakParameter, discountedPrice1Parameter, discountedPrice2Parameter, discountedPrice3Parameter, discountedPrice4Parameter, discountedPrice5Parameter, superSectionNoParameter, supersectionNameParameter, brandIDParameter, brandnameParameter, sectionIDParameter, sectionNameParameter);
         }
-    
+
         public virtual int SuperDiskAdd(string article_No, string article_Desc, Nullable<int> pack_Code, Nullable<int> pack_Quantity, Nullable<int> unit_Content, string unit_Measure, Nullable<decimal> uk_Col_1, Nullable<int> standard_Weight, string hazardous_Ind, string calibration_Ind, string obsolete_Flag, string mH1, string low_Discount_Ind, string licensed_Ind, string shelf_Life, string cofO, string eUR1_Indicator, string cCCN_No, string supercede_Date, string current_Cat_page, string uk_Intro_Date, string filler, string uk_Disc_Date, string substitute_By, string bHC_Flag, string filler1, Nullable<decimal> future_Sell_Price, string int_Cat, string new_Prod_Change_Ind, string out_of_Stock_Prohibit_change_ind, string disc_Change_Ind, string superceded_Change_Ind, string pack_Size_Change_Ind, string rolled_Product_Change_Ind, string expiring_Product_Change_Ind, string manufacturer, string mPN, string mH_Code_Level_1, Nullable<decimal> heigh, Nullable<decimal> width, Nullable<decimal> length)
         {
             var article_NoParameter = article_No != null ?
                 new ObjectParameter("Article_No", article_No) :
                 new ObjectParameter("Article_No", typeof(string));
-    
+
             var article_DescParameter = article_Desc != null ?
                 new ObjectParameter("Article_Desc", article_Desc) :
                 new ObjectParameter("Article_Desc", typeof(string));
-    
+
             var pack_CodeParameter = pack_Code.HasValue ?
                 new ObjectParameter("Pack_Code", pack_Code) :
                 new ObjectParameter("Pack_Code", typeof(int));
-    
+
             var pack_QuantityParameter = pack_Quantity.HasValue ?
                 new ObjectParameter("Pack_Quantity", pack_Quantity) :
                 new ObjectParameter("Pack_Quantity", typeof(int));
-    
+
             var unit_ContentParameter = unit_Content.HasValue ?
                 new ObjectParameter("Unit_Content", unit_Content) :
                 new ObjectParameter("Unit_Content", typeof(int));
-    
+
             var unit_MeasureParameter = unit_Measure != null ?
                 new ObjectParameter("Unit_Measure", unit_Measure) :
                 new ObjectParameter("Unit_Measure", typeof(string));
-    
+
             var uk_Col_1Parameter = uk_Col_1.HasValue ?
                 new ObjectParameter("Uk_Col_1", uk_Col_1) :
                 new ObjectParameter("Uk_Col_1", typeof(decimal));
-    
+
             var standard_WeightParameter = standard_Weight.HasValue ?
                 new ObjectParameter("Standard_Weight", standard_Weight) :
                 new ObjectParameter("Standard_Weight", typeof(int));
-    
+
             var hazardous_IndParameter = hazardous_Ind != null ?
                 new ObjectParameter("Hazardous_Ind", hazardous_Ind) :
                 new ObjectParameter("Hazardous_Ind", typeof(string));
-    
+
             var calibration_IndParameter = calibration_Ind != null ?
                 new ObjectParameter("Calibration_Ind", calibration_Ind) :
                 new ObjectParameter("Calibration_Ind", typeof(string));
-    
+
             var obsolete_FlagParameter = obsolete_Flag != null ?
                 new ObjectParameter("Obsolete_Flag", obsolete_Flag) :
                 new ObjectParameter("Obsolete_Flag", typeof(string));
-    
+
             var mH1Parameter = mH1 != null ?
                 new ObjectParameter("MH1", mH1) :
                 new ObjectParameter("MH1", typeof(string));
-    
+
             var low_Discount_IndParameter = low_Discount_Ind != null ?
                 new ObjectParameter("Low_Discount_Ind", low_Discount_Ind) :
                 new ObjectParameter("Low_Discount_Ind", typeof(string));
-    
+
             var licensed_IndParameter = licensed_Ind != null ?
                 new ObjectParameter("Licensed_Ind", licensed_Ind) :
                 new ObjectParameter("Licensed_Ind", typeof(string));
-    
+
             var shelf_LifeParameter = shelf_Life != null ?
                 new ObjectParameter("Shelf_Life", shelf_Life) :
                 new ObjectParameter("Shelf_Life", typeof(string));
-    
+
             var cofOParameter = cofO != null ?
                 new ObjectParameter("CofO", cofO) :
                 new ObjectParameter("CofO", typeof(string));
-    
+
             var eUR1_IndicatorParameter = eUR1_Indicator != null ?
                 new ObjectParameter("EUR1_Indicator", eUR1_Indicator) :
                 new ObjectParameter("EUR1_Indicator", typeof(string));
-    
+
             var cCCN_NoParameter = cCCN_No != null ?
                 new ObjectParameter("CCCN_No", cCCN_No) :
                 new ObjectParameter("CCCN_No", typeof(string));
-    
+
             var supercede_DateParameter = supercede_Date != null ?
                 new ObjectParameter("Supercede_Date", supercede_Date) :
                 new ObjectParameter("Supercede_Date", typeof(string));
-    
+
             var current_Cat_pageParameter = current_Cat_page != null ?
                 new ObjectParameter("Current_Cat_page", current_Cat_page) :
                 new ObjectParameter("Current_Cat_page", typeof(string));
-    
+
             var uk_Intro_DateParameter = uk_Intro_Date != null ?
                 new ObjectParameter("Uk_Intro_Date", uk_Intro_Date) :
                 new ObjectParameter("Uk_Intro_Date", typeof(string));
-    
+
             var fillerParameter = filler != null ?
                 new ObjectParameter("Filler", filler) :
                 new ObjectParameter("Filler", typeof(string));
-    
+
             var uk_Disc_DateParameter = uk_Disc_Date != null ?
                 new ObjectParameter("Uk_Disc_Date", uk_Disc_Date) :
                 new ObjectParameter("Uk_Disc_Date", typeof(string));
-    
+
             var substitute_ByParameter = substitute_By != null ?
                 new ObjectParameter("Substitute_By", substitute_By) :
                 new ObjectParameter("Substitute_By", typeof(string));
-    
+
             var bHC_FlagParameter = bHC_Flag != null ?
                 new ObjectParameter("BHC_Flag", bHC_Flag) :
                 new ObjectParameter("BHC_Flag", typeof(string));
-    
+
             var filler1Parameter = filler1 != null ?
                 new ObjectParameter("Filler1", filler1) :
                 new ObjectParameter("Filler1", typeof(string));
-    
+
             var future_Sell_PriceParameter = future_Sell_Price.HasValue ?
                 new ObjectParameter("Future_Sell_Price", future_Sell_Price) :
                 new ObjectParameter("Future_Sell_Price", typeof(decimal));
-    
+
             var int_CatParameter = int_Cat != null ?
                 new ObjectParameter("Int_Cat", int_Cat) :
                 new ObjectParameter("Int_Cat", typeof(string));
-    
+
             var new_Prod_Change_IndParameter = new_Prod_Change_Ind != null ?
                 new ObjectParameter("New_Prod_Change_Ind", new_Prod_Change_Ind) :
                 new ObjectParameter("New_Prod_Change_Ind", typeof(string));
-    
+
             var out_of_Stock_Prohibit_change_indParameter = out_of_Stock_Prohibit_change_ind != null ?
                 new ObjectParameter("Out_of_Stock_Prohibit_change_ind", out_of_Stock_Prohibit_change_ind) :
                 new ObjectParameter("Out_of_Stock_Prohibit_change_ind", typeof(string));
-    
+
             var disc_Change_IndParameter = disc_Change_Ind != null ?
                 new ObjectParameter("Disc_Change_Ind", disc_Change_Ind) :
                 new ObjectParameter("Disc_Change_Ind", typeof(string));
-    
+
             var superceded_Change_IndParameter = superceded_Change_Ind != null ?
                 new ObjectParameter("Superceded_Change_Ind", superceded_Change_Ind) :
                 new ObjectParameter("Superceded_Change_Ind", typeof(string));
-    
+
             var pack_Size_Change_IndParameter = pack_Size_Change_Ind != null ?
                 new ObjectParameter("Pack_Size_Change_Ind", pack_Size_Change_Ind) :
                 new ObjectParameter("Pack_Size_Change_Ind", typeof(string));
-    
+
             var rolled_Product_Change_IndParameter = rolled_Product_Change_Ind != null ?
                 new ObjectParameter("Rolled_Product_Change_Ind", rolled_Product_Change_Ind) :
                 new ObjectParameter("Rolled_Product_Change_Ind", typeof(string));
-    
+
             var expiring_Product_Change_IndParameter = expiring_Product_Change_Ind != null ?
                 new ObjectParameter("Expiring_Product_Change_Ind", expiring_Product_Change_Ind) :
                 new ObjectParameter("Expiring_Product_Change_Ind", typeof(string));
-    
+
             var manufacturerParameter = manufacturer != null ?
                 new ObjectParameter("Manufacturer", manufacturer) :
                 new ObjectParameter("Manufacturer", typeof(string));
-    
+
             var mPNParameter = mPN != null ?
                 new ObjectParameter("MPN", mPN) :
                 new ObjectParameter("MPN", typeof(string));
-    
+
             var mH_Code_Level_1Parameter = mH_Code_Level_1 != null ?
                 new ObjectParameter("MH_Code_Level_1", mH_Code_Level_1) :
                 new ObjectParameter("MH_Code_Level_1", typeof(string));
-    
+
             var heighParameter = heigh.HasValue ?
                 new ObjectParameter("Heigh", heigh) :
                 new ObjectParameter("Heigh", typeof(decimal));
-    
+
             var widthParameter = width.HasValue ?
                 new ObjectParameter("Width", width) :
                 new ObjectParameter("Width", typeof(decimal));
-    
+
             var lengthParameter = length.HasValue ?
                 new ObjectParameter("Length", length) :
                 new ObjectParameter("Length", typeof(decimal));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SuperDiskAdd", article_NoParameter, article_DescParameter, pack_CodeParameter, pack_QuantityParameter, unit_ContentParameter, unit_MeasureParameter, uk_Col_1Parameter, standard_WeightParameter, hazardous_IndParameter, calibration_IndParameter, obsolete_FlagParameter, mH1Parameter, low_Discount_IndParameter, licensed_IndParameter, shelf_LifeParameter, cofOParameter, eUR1_IndicatorParameter, cCCN_NoParameter, supercede_DateParameter, current_Cat_pageParameter, uk_Intro_DateParameter, fillerParameter, uk_Disc_DateParameter, substitute_ByParameter, bHC_FlagParameter, filler1Parameter, future_Sell_PriceParameter, int_CatParameter, new_Prod_Change_IndParameter, out_of_Stock_Prohibit_change_indParameter, disc_Change_IndParameter, superceded_Change_IndParameter, pack_Size_Change_IndParameter, rolled_Product_Change_IndParameter, expiring_Product_Change_IndParameter, manufacturerParameter, mPNParameter, mH_Code_Level_1Parameter, heighParameter, widthParameter, lengthParameter);
         }
-    
+
         public virtual int SuperDiskPAdd(string article_No, string article_Desc, Nullable<int> pack_Code, Nullable<int> pack_Quantity, Nullable<int> unit_Content, string unit_Measure, Nullable<decimal> uk_Col_1, Nullable<int> standard_Weight, string hazardous_Ind, string calibration_Ind, string obsolete_Flag, string mH1, string low_Discount_Ind, string licensed_Ind, string shelf_Life, string cofO, string eUR1_Indicator, string cCCN_No, string supercede_Date, string current_Cat_page, string uk_Intro_Date, string filler, string uk_Disc_Date, string substitute_By, string bHC_Flag, string filler1, Nullable<decimal> future_Sell_Price, string int_Cat, string new_Prod_Change_Ind, string out_of_Stock_Prohibit_change_ind, string disc_Change_Ind, string superceded_Change_Ind, string pack_Size_Change_Ind, string rolled_Product_Change_Ind, string expiring_Product_Change_Ind, string manufacturer, string mPN, string mH_Code_Level_1, Nullable<decimal> heigh, Nullable<decimal> width, Nullable<decimal> length)
         {
             var article_NoParameter = article_No != null ?
                 new ObjectParameter("Article_No", article_No) :
                 new ObjectParameter("Article_No", typeof(string));
-    
+
             var article_DescParameter = article_Desc != null ?
                 new ObjectParameter("Article_Desc", article_Desc) :
                 new ObjectParameter("Article_Desc", typeof(string));
-    
+
             var pack_CodeParameter = pack_Code.HasValue ?
                 new ObjectParameter("Pack_Code", pack_Code) :
                 new ObjectParameter("Pack_Code", typeof(int));
-    
+
             var pack_QuantityParameter = pack_Quantity.HasValue ?
                 new ObjectParameter("Pack_Quantity", pack_Quantity) :
                 new ObjectParameter("Pack_Quantity", typeof(int));
-    
+
             var unit_ContentParameter = unit_Content.HasValue ?
                 new ObjectParameter("Unit_Content", unit_Content) :
                 new ObjectParameter("Unit_Content", typeof(int));
-    
+
             var unit_MeasureParameter = unit_Measure != null ?
                 new ObjectParameter("Unit_Measure", unit_Measure) :
                 new ObjectParameter("Unit_Measure", typeof(string));
-    
+
             var uk_Col_1Parameter = uk_Col_1.HasValue ?
                 new ObjectParameter("Uk_Col_1", uk_Col_1) :
                 new ObjectParameter("Uk_Col_1", typeof(decimal));
-    
+
             var standard_WeightParameter = standard_Weight.HasValue ?
                 new ObjectParameter("Standard_Weight", standard_Weight) :
                 new ObjectParameter("Standard_Weight", typeof(int));
-    
+
             var hazardous_IndParameter = hazardous_Ind != null ?
                 new ObjectParameter("Hazardous_Ind", hazardous_Ind) :
                 new ObjectParameter("Hazardous_Ind", typeof(string));
-    
+
             var calibration_IndParameter = calibration_Ind != null ?
                 new ObjectParameter("Calibration_Ind", calibration_Ind) :
                 new ObjectParameter("Calibration_Ind", typeof(string));
-    
+
             var obsolete_FlagParameter = obsolete_Flag != null ?
                 new ObjectParameter("Obsolete_Flag", obsolete_Flag) :
                 new ObjectParameter("Obsolete_Flag", typeof(string));
-    
+
             var mH1Parameter = mH1 != null ?
                 new ObjectParameter("MH1", mH1) :
                 new ObjectParameter("MH1", typeof(string));
-    
+
             var low_Discount_IndParameter = low_Discount_Ind != null ?
                 new ObjectParameter("Low_Discount_Ind", low_Discount_Ind) :
                 new ObjectParameter("Low_Discount_Ind", typeof(string));
-    
+
             var licensed_IndParameter = licensed_Ind != null ?
                 new ObjectParameter("Licensed_Ind", licensed_Ind) :
                 new ObjectParameter("Licensed_Ind", typeof(string));
-    
+
             var shelf_LifeParameter = shelf_Life != null ?
                 new ObjectParameter("Shelf_Life", shelf_Life) :
                 new ObjectParameter("Shelf_Life", typeof(string));
-    
+
             var cofOParameter = cofO != null ?
                 new ObjectParameter("CofO", cofO) :
                 new ObjectParameter("CofO", typeof(string));
-    
+
             var eUR1_IndicatorParameter = eUR1_Indicator != null ?
                 new ObjectParameter("EUR1_Indicator", eUR1_Indicator) :
                 new ObjectParameter("EUR1_Indicator", typeof(string));
-    
+
             var cCCN_NoParameter = cCCN_No != null ?
                 new ObjectParameter("CCCN_No", cCCN_No) :
                 new ObjectParameter("CCCN_No", typeof(string));
-    
+
             var supercede_DateParameter = supercede_Date != null ?
                 new ObjectParameter("Supercede_Date", supercede_Date) :
                 new ObjectParameter("Supercede_Date", typeof(string));
-    
+
             var current_Cat_pageParameter = current_Cat_page != null ?
                 new ObjectParameter("Current_Cat_page", current_Cat_page) :
                 new ObjectParameter("Current_Cat_page", typeof(string));
-    
+
             var uk_Intro_DateParameter = uk_Intro_Date != null ?
                 new ObjectParameter("Uk_Intro_Date", uk_Intro_Date) :
                 new ObjectParameter("Uk_Intro_Date", typeof(string));
-    
+
             var fillerParameter = filler != null ?
                 new ObjectParameter("Filler", filler) :
                 new ObjectParameter("Filler", typeof(string));
-    
+
             var uk_Disc_DateParameter = uk_Disc_Date != null ?
                 new ObjectParameter("Uk_Disc_Date", uk_Disc_Date) :
                 new ObjectParameter("Uk_Disc_Date", typeof(string));
-    
+
             var substitute_ByParameter = substitute_By != null ?
                 new ObjectParameter("Substitute_By", substitute_By) :
                 new ObjectParameter("Substitute_By", typeof(string));
-    
+
             var bHC_FlagParameter = bHC_Flag != null ?
                 new ObjectParameter("BHC_Flag", bHC_Flag) :
                 new ObjectParameter("BHC_Flag", typeof(string));
-    
+
             var filler1Parameter = filler1 != null ?
                 new ObjectParameter("Filler1", filler1) :
                 new ObjectParameter("Filler1", typeof(string));
-    
+
             var future_Sell_PriceParameter = future_Sell_Price.HasValue ?
                 new ObjectParameter("Future_Sell_Price", future_Sell_Price) :
                 new ObjectParameter("Future_Sell_Price", typeof(decimal));
-    
+
             var int_CatParameter = int_Cat != null ?
                 new ObjectParameter("Int_Cat", int_Cat) :
                 new ObjectParameter("Int_Cat", typeof(string));
-    
+
             var new_Prod_Change_IndParameter = new_Prod_Change_Ind != null ?
                 new ObjectParameter("New_Prod_Change_Ind", new_Prod_Change_Ind) :
                 new ObjectParameter("New_Prod_Change_Ind", typeof(string));
-    
+
             var out_of_Stock_Prohibit_change_indParameter = out_of_Stock_Prohibit_change_ind != null ?
                 new ObjectParameter("Out_of_Stock_Prohibit_change_ind", out_of_Stock_Prohibit_change_ind) :
                 new ObjectParameter("Out_of_Stock_Prohibit_change_ind", typeof(string));
-    
+
             var disc_Change_IndParameter = disc_Change_Ind != null ?
                 new ObjectParameter("Disc_Change_Ind", disc_Change_Ind) :
                 new ObjectParameter("Disc_Change_Ind", typeof(string));
-    
+
             var superceded_Change_IndParameter = superceded_Change_Ind != null ?
                 new ObjectParameter("Superceded_Change_Ind", superceded_Change_Ind) :
                 new ObjectParameter("Superceded_Change_Ind", typeof(string));
-    
+
             var pack_Size_Change_IndParameter = pack_Size_Change_Ind != null ?
                 new ObjectParameter("Pack_Size_Change_Ind", pack_Size_Change_Ind) :
                 new ObjectParameter("Pack_Size_Change_Ind", typeof(string));
-    
+
             var rolled_Product_Change_IndParameter = rolled_Product_Change_Ind != null ?
                 new ObjectParameter("Rolled_Product_Change_Ind", rolled_Product_Change_Ind) :
                 new ObjectParameter("Rolled_Product_Change_Ind", typeof(string));
-    
+
             var expiring_Product_Change_IndParameter = expiring_Product_Change_Ind != null ?
                 new ObjectParameter("Expiring_Product_Change_Ind", expiring_Product_Change_Ind) :
                 new ObjectParameter("Expiring_Product_Change_Ind", typeof(string));
-    
+
             var manufacturerParameter = manufacturer != null ?
                 new ObjectParameter("Manufacturer", manufacturer) :
                 new ObjectParameter("Manufacturer", typeof(string));
-    
+
             var mPNParameter = mPN != null ?
                 new ObjectParameter("MPN", mPN) :
                 new ObjectParameter("MPN", typeof(string));
-    
+
             var mH_Code_Level_1Parameter = mH_Code_Level_1 != null ?
                 new ObjectParameter("MH_Code_Level_1", mH_Code_Level_1) :
                 new ObjectParameter("MH_Code_Level_1", typeof(string));
-    
+
             var heighParameter = heigh.HasValue ?
                 new ObjectParameter("Heigh", heigh) :
                 new ObjectParameter("Heigh", typeof(decimal));
-    
+
             var widthParameter = width.HasValue ?
                 new ObjectParameter("Width", width) :
                 new ObjectParameter("Width", typeof(decimal));
-    
+
             var lengthParameter = length.HasValue ?
                 new ObjectParameter("Length", length) :
                 new ObjectParameter("Length", typeof(decimal));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SuperDiskPAdd", article_NoParameter, article_DescParameter, pack_CodeParameter, pack_QuantityParameter, unit_ContentParameter, unit_MeasureParameter, uk_Col_1Parameter, standard_WeightParameter, hazardous_IndParameter, calibration_IndParameter, obsolete_FlagParameter, mH1Parameter, low_Discount_IndParameter, licensed_IndParameter, shelf_LifeParameter, cofOParameter, eUR1_IndicatorParameter, cCCN_NoParameter, supercede_DateParameter, current_Cat_pageParameter, uk_Intro_DateParameter, fillerParameter, uk_Disc_DateParameter, substitute_ByParameter, bHC_FlagParameter, filler1Parameter, future_Sell_PriceParameter, int_CatParameter, new_Prod_Change_IndParameter, out_of_Stock_Prohibit_change_indParameter, disc_Change_IndParameter, superceded_Change_IndParameter, pack_Size_Change_IndParameter, rolled_Product_Change_IndParameter, expiring_Product_Change_IndParameter, manufacturerParameter, mPNParameter, mH_Code_Level_1Parameter, heighParameter, widthParameter, lengthParameter);
         }
-    
+
         public virtual ObjectResult<BankReconciliationFillUnrecon_Result> BankReconciliationFillUnrecon(Nullable<decimal> ledgerId, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
                 new ObjectParameter("ledgerId", typeof(decimal));
-    
+
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-    
+
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BankReconciliationFillUnrecon_Result>("BankReconciliationFillUnrecon", ledgerIdParameter, fromDateParameter, toDateParameter);
         }
-    
+
         public virtual ObjectResult<PdcReceivableReportSearch_Result> PdcReceivableReportSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string voucherTypeName, string ledgerName, Nullable<System.DateTime> chequeDateFrom, Nullable<System.DateTime> chequeDateTo, string status, string chequeNo, string voucherNo)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
-    
+
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
-    
+
             var voucherTypeNameParameter = voucherTypeName != null ?
                 new ObjectParameter("voucherTypeName", voucherTypeName) :
                 new ObjectParameter("voucherTypeName", typeof(string));
-    
+
             var ledgerNameParameter = ledgerName != null ?
                 new ObjectParameter("ledgerName", ledgerName) :
                 new ObjectParameter("ledgerName", typeof(string));
-    
+
             var chequeDateFromParameter = chequeDateFrom.HasValue ?
                 new ObjectParameter("chequeDateFrom", chequeDateFrom) :
                 new ObjectParameter("chequeDateFrom", typeof(System.DateTime));
-    
+
             var chequeDateToParameter = chequeDateTo.HasValue ?
                 new ObjectParameter("chequeDateTo", chequeDateTo) :
                 new ObjectParameter("chequeDateTo", typeof(System.DateTime));
-    
+
             var statusParameter = status != null ?
                 new ObjectParameter("status", status) :
                 new ObjectParameter("status", typeof(string));
-    
+
             var chequeNoParameter = chequeNo != null ?
                 new ObjectParameter("chequeNo", chequeNo) :
                 new ObjectParameter("chequeNo", typeof(string));
-    
+
             var voucherNoParameter = voucherNo != null ?
                 new ObjectParameter("voucherNo", voucherNo) :
                 new ObjectParameter("voucherNo", typeof(string));
-    
+
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PdcReceivableReportSearch_Result>("PdcReceivableReportSearch", fromDateParameter, toDateParameter, voucherTypeNameParameter, ledgerNameParameter, chequeDateFromParameter, chequeDateToParameter, statusParameter, chequeNoParameter, voucherNoParameter);
         }
     }

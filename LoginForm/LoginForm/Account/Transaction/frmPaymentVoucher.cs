@@ -1503,24 +1503,22 @@ namespace LoginForm
         /// </summary>
         /// <param name="frmPaymentReport"></param>
         /// <param name="decmasterId"></param>
-        //public void CallFromPaymentReport(frmPaymentReport frmPaymentReport, decimal decmasterId)
-        //{
-        //    try
-        //    {
-        //        base.Show();
-        //        this.frmPaymentReportObj = frmPaymentReport;
-        //        frmPaymentReportObj.Enabled = false;
-        //        btnDelete.Enabled = true;
-        //        btnSave.Text = "Update";
-        //        decPaymentmasterId = decmasterId;
+        public void CallFromPaymentReport(frmPaymentReport frmPaymentReport, decimal decmasterId)
+        {
+            try
+            {
+                base.Show();
+                btnDelete.Enabled = true;
+                btnSave.Text = "Update";
+                decPaymentmasterId = decmasterId;
 
-        //        FillFunction();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("PV26:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+                FillFunction();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PV26:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Remove function when click Link button
         /// </summary>

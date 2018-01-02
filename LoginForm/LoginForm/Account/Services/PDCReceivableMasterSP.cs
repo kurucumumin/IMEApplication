@@ -312,6 +312,281 @@ namespace LoginForm.Services
             return isExist;
         }
 
+        public DataTable PdcReceivableReportSearch(DateTime dtFromdate, DateTime dtToDate, string strVoucherType, string strLedgerName, DateTime dtcheckfromdate, DateTime dtCheckdateto, string strchequeNo, string strvoucherNo, string strstatus)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("SlNo", typeof(decimal));
+            dtbl.Columns["SlNo"].AutoIncrement = true;
+            dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
+            dtbl.Columns["SlNo"].AutoIncrementStep = 1;
+            try
+            {
+                #region Linq Hali
+                // if (strstatus == "All")
+                //{
+                //    var adaptor = (from c in IME.PDCReceivableMasters
+                //                   from v in IME.VoucherTypes.Where(x => x.voucherTypeId == c.voucherTypeId)
+                //                   from w in IME.Workers.Where(x => x.WorkerID == c.userId)
+                //                   from al in IME.AccountLedgers.Where(x => x.ledgerId == c.ledgerId)
+                //                   where
+                //                          (c.date > Convert.ToDateTime(dtFromdate) && c.date < Convert.ToDateTime(dtToDate)) &&
+                //                          (c.chequeDate > Convert.ToDateTime(dtcheckfromdate) && c.chequeDate < Convert.ToDateTime(dtCheckdateto)) &&
+                //                          (c.voucherNo == ((strvoucherNo == "") ? c.voucherNo : strvoucherNo + '%')) &&
+                //                          (v.voucherTypeName == ((strVoucherType == "All") ? v.voucherTypeName : strVoucherType)) &&
+                //                          (c.chequeNo == ((strchequeNo == "") ? c.chequeNo : strchequeNo + '%')) &&
+                //                          (al.ledgerName == ((strLedgerName == "All") ? al.ledgerName : strLedgerName))
+                //                   select new
+                //                   {
+                //                       c.pdcReceivableMasterId,
+                //                       v.voucherTypeName,
+                //                       c.voucherNo,
+                //                       date = c.date.ToString(),
+                //                       al.ledgerName,
+                //                       c.chequeNo,
+                //                       checkDate = c.chequeDate.ToString(),
+                //                       amount = Convert.ToDecimal(c.amount),
+                //                       c.narration,
+                //                       w.UserName
+                //                   }).OrderByDescending(x => x.pdcReceivableMasterId).Distinct().ToList();
 
+                //    dtbl.Columns.Add("pdcReceivableMasterId");
+                //    dtbl.Columns.Add("voucherTypeName");
+                //    dtbl.Columns.Add("voucherNo");
+                //    dtbl.Columns.Add("date");
+                //    dtbl.Columns.Add("ledgerName");
+                //    dtbl.Columns.Add("chequeNo");
+                //    dtbl.Columns.Add("checkDate");
+                //    dtbl.Columns.Add("amount");
+                //    dtbl.Columns.Add("narration");
+                //    dtbl.Columns.Add("UserName");
+
+                //    foreach (var item in adaptor)
+                //    {
+                //        var row = dtbl.NewRow();
+
+                //        row["pdcReceivableMasterId"] = item.pdcReceivableMasterId;
+                //        row["voucherTypeName"] = item.voucherTypeName;
+                //        row["voucherNo"] = item.voucherNo;
+                //        row["date"] = item.date;
+                //        row["ledgerName"] = item.ledgerName;
+                //        row["chequeNo"] = item.chequeNo;
+                //        row["checkDate"] = item.checkDate;
+                //        row["amount"] = item.amount;
+                //        row["narration"] = item.narration;
+                //        row["UserName"] = item.UserName;
+
+                //        dtbl.Rows.Add(row);
+                //    }
+                //}
+                // else if(strstatus == "Pending")
+                //{
+                //    var adaptor = (from c in IME.PDCReceivableMasters
+                //                   from v in IME.VoucherTypes.Where(x => x.voucherTypeId == c.voucherTypeId)
+                //                   from w in IME.Workers.Where(x => x.WorkerID == c.userId)
+                //                   from al in IME.AccountLedgers.Where(x => x.ledgerId == c.ledgerId)
+
+                //                   where
+                //                          (c.date > Convert.ToDateTime(dtFromdate) && c.date < Convert.ToDateTime(dtToDate)) &&
+                //                          (c.chequeDate > Convert.ToDateTime(dtcheckfromdate) && c.chequeDate < Convert.ToDateTime(dtCheckdateto)) &&
+                //                          (c.voucherNo == ((strvoucherNo == "") ? c.voucherNo : strvoucherNo + '%')) &&
+                //                          (v.voucherTypeName == ((strVoucherType == "All") ? v.voucherTypeName : strVoucherType)) &&
+                //                          (c.chequeNo == ((strchequeNo == "") ? c.chequeNo : strchequeNo + '%')) &&
+                //                          (al.ledgerName == ((strLedgerName == "All") ? al.ledgerName : strLedgerName))
+                //                   select new
+                //                   {
+                //                       c.pdcReceivableMasterId,
+                //                       v.voucherTypeName,
+                //                       c.voucherNo,
+                //                       date = c.date.ToString(),
+                //                       al.ledgerName,
+                //                       c.chequeNo,
+                //                       checkDate = c.chequeDate.ToString(),
+                //                       amount = Convert.ToDecimal(c.amount),
+                //                       c.narration,
+                //                       w.UserName
+                //                   }).OrderByDescending(x => x.pdcReceivableMasterId).Distinct().ToList();
+
+                //    dtbl.Columns.Add("pdcReceivableMasterId");
+                //    dtbl.Columns.Add("voucherTypeName");
+                //    dtbl.Columns.Add("voucherNo");
+                //    dtbl.Columns.Add("date");
+                //    dtbl.Columns.Add("ledgerName");
+                //    dtbl.Columns.Add("chequeNo");
+                //    dtbl.Columns.Add("checkDate");
+                //    dtbl.Columns.Add("amount");
+                //    dtbl.Columns.Add("narration");
+                //    dtbl.Columns.Add("UserName");
+
+                //    foreach (var item in adaptor)
+                //    {
+                //        var row = dtbl.NewRow();
+
+                //        row["pdcReceivableMasterId"] = item.pdcReceivableMasterId;
+                //        row["voucherTypeName"] = item.voucherTypeName;
+                //        row["voucherNo"] = item.voucherNo;
+                //        row["date"] = item.date;
+                //        row["ledgerName"] = item.ledgerName;
+                //        row["chequeNo"] = item.chequeNo;
+                //        row["checkDate"] = item.checkDate;
+                //        row["amount"] = item.amount;
+                //        row["narration"] = item.narration;
+                //        row["UserName"] = item.UserName;
+
+                //        dtbl.Rows.Add(row);
+                //    }
+                //}
+                // else if (strstatus == "Cleared")
+                //{
+                //    var adaptor = (from c in IME.PDCReceivableMasters
+                //                   from v in IME.VoucherTypes.Where(x => x.voucherTypeId == c.voucherTypeId)
+                //                   from w in IME.Workers.Where(x => x.WorkerID == c.userId)
+                //                   from al in IME.AccountLedgers.Where(x => x.ledgerId == c.ledgerId)
+                //                   where
+                //                          (c.date > Convert.ToDateTime(dtFromdate) && c.date < Convert.ToDateTime(dtToDate)) &&
+                //                          (c.chequeDate > Convert.ToDateTime(dtcheckfromdate) && c.chequeDate < Convert.ToDateTime(dtCheckdateto)) &&
+                //                          (c.voucherNo == ((strvoucherNo == "") ? c.voucherNo : strvoucherNo + '%')) &&
+                //                          (v.voucherTypeName == ((strVoucherType == "All") ? v.voucherTypeName : strVoucherType)) &&
+                //                          (c.chequeNo == ((strchequeNo == "") ? c.chequeNo : strchequeNo + '%')) &&
+                //                          (al.ledgerName == ((strLedgerName == "All") ? al.ledgerName : strLedgerName))
+                //                   select new
+                //                   {
+                //                       c.pdcReceivableMasterId,
+                //                       v.voucherTypeName,
+                //                       c.voucherNo,
+                //                       date = c.date.ToString(),
+                //                       al.ledgerName,
+                //                       c.chequeNo,
+                //                       checkDate = c.chequeDate.ToString(),
+                //                       amount = Convert.ToDecimal(c.amount),
+                //                       c.narration,
+                //                       w.UserName
+                //                   }).OrderByDescending(x => x.pdcReceivableMasterId).Distinct().ToList();
+
+                //    dtbl.Columns.Add("pdcReceivableMasterId");
+                //    dtbl.Columns.Add("voucherTypeName");
+                //    dtbl.Columns.Add("voucherNo");
+                //    dtbl.Columns.Add("date");
+                //    dtbl.Columns.Add("ledgerName");
+                //    dtbl.Columns.Add("chequeNo");
+                //    dtbl.Columns.Add("checkDate");
+                //    dtbl.Columns.Add("amount");
+                //    dtbl.Columns.Add("narration");
+                //    dtbl.Columns.Add("UserName");
+
+                //    foreach (var item in adaptor)
+                //    {
+                //        var row = dtbl.NewRow();
+
+                //        row["pdcReceivableMasterId"] = item.pdcReceivableMasterId;
+                //        row["voucherTypeName"] = item.voucherTypeName;
+                //        row["voucherNo"] = item.voucherNo;
+                //        row["date"] = item.date;
+                //        row["ledgerName"] = item.ledgerName;
+                //        row["chequeNo"] = item.chequeNo;
+                //        row["checkDate"] = item.checkDate;
+                //        row["amount"] = item.amount;
+                //        row["narration"] = item.narration;
+                //        row["UserName"] = item.UserName;
+
+                //        dtbl.Rows.Add(row);
+                //    }
+                //}
+                // else if (strstatus == "Bounced")
+                //{
+                //    var adaptor = (from c in IME.PDCReceivableMasters
+                //                   from v in IME.VoucherTypes.Where(x => x.voucherTypeId == c.voucherTypeId)
+                //                   from w in IME.Workers.Where(x => x.WorkerID == c.userId)
+                //                   from al in IME.AccountLedgers.Where(x => x.ledgerId == c.ledgerId)
+                //                   where
+                //                          (c.date > Convert.ToDateTime(dtFromdate) && c.date < Convert.ToDateTime(dtToDate)) &&
+                //                          (c.chequeDate > Convert.ToDateTime(dtcheckfromdate) && c.chequeDate < Convert.ToDateTime(dtCheckdateto)) &&
+                //                          (c.voucherNo == ((strvoucherNo == "") ? c.voucherNo : strvoucherNo + '%')) &&
+                //                          (v.voucherTypeName == ((strVoucherType == "All") ? v.voucherTypeName : strVoucherType)) &&
+                //                          (c.chequeNo == ((strchequeNo == "") ? c.chequeNo : strchequeNo + '%')) &&
+                //                          (al.ledgerName == ((strLedgerName == "All") ? al.ledgerName : strLedgerName))
+                //                   select new
+                //                   {
+                //                       c.pdcReceivableMasterId,
+                //                       v.voucherTypeName,
+                //                       c.voucherNo,
+                //                       date = c.date.ToString(),
+                //                       al.ledgerName,
+                //                       c.chequeNo,
+                //                       checkDate = c.chequeDate.ToString(),
+                //                       amount = Convert.ToDecimal(c.amount),
+                //                       c.narration,
+                //                       w.UserName
+                //                   }).OrderByDescending(x => x.pdcReceivableMasterId).Distinct().ToList();
+
+                //    dtbl.Columns.Add("pdcReceivableMasterId");
+                //    dtbl.Columns.Add("voucherTypeName");
+                //    dtbl.Columns.Add("voucherNo");
+                //    dtbl.Columns.Add("date");
+                //    dtbl.Columns.Add("ledgerName");
+                //    dtbl.Columns.Add("chequeNo");
+                //    dtbl.Columns.Add("checkDate");
+                //    dtbl.Columns.Add("amount");
+                //    dtbl.Columns.Add("narration");
+                //    dtbl.Columns.Add("UserName");
+
+                //    foreach (var item in adaptor)
+                //    {
+                //        var row = dtbl.NewRow();
+
+                //        row["pdcReceivableMasterId"] = item.pdcReceivableMasterId;
+                //        row["voucherTypeName"] = item.voucherTypeName;
+                //        row["voucherNo"] = item.voucherNo;
+                //        row["date"] = item.date;
+                //        row["ledgerName"] = item.ledgerName;
+                //        row["chequeNo"] = item.chequeNo;
+                //        row["checkDate"] = item.checkDate;
+                //        row["amount"] = item.amount;
+                //        row["narration"] = item.narration;
+                //        row["UserName"] = item.UserName;
+
+                //        dtbl.Rows.Add(row);
+                //    }
+                //}
+                #endregion
+
+                var adaptor = IME.PdcReceivableReportSearch(dtFromdate, dtToDate, strVoucherType, strLedgerName, dtcheckfromdate, dtCheckdateto,strchequeNo,strvoucherNo,strstatus);
+
+                dtbl.Columns.Add("pdcReceivableMasterId");
+                dtbl.Columns.Add("voucherTypeName");
+                dtbl.Columns.Add("voucherNo");
+                dtbl.Columns.Add("date");
+                dtbl.Columns.Add("ledgerName");
+                dtbl.Columns.Add("chequeNo");
+                dtbl.Columns.Add("checkDate");
+                dtbl.Columns.Add("amount");
+                dtbl.Columns.Add("Narration");
+                dtbl.Columns.Add("userName");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["pdcReceivableMasterId"] = item.pdcReceivableMasterId;
+                    row["voucherTypeName"] = item.voucherTypeName;
+                    row["voucherNo"] = item.voucherNo;
+                    row["date"] = item.date;
+                    row["ledgerName"] = item.ledgerName;
+                    row["chequeNo"] = item.chequeNo;
+                    row["checkDate"] = item.checkDate;
+                    row["amount"] = item.amount;
+                    row["narration"] = item.Narration;
+                    row["UserName"] = item.userName;
+
+                    dtbl.Rows.Add(row);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
     }
 }

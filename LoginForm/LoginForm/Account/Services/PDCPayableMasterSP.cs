@@ -419,5 +419,53 @@ namespace LoginForm.Account.Services
             }
             return pdcpayablemasterinfo;
         }
+
+        public DataTable PdcPayableReportSearch(DateTime dtFromdate, DateTime dtToDate, string strVoucherType, string strLedgerName, DateTime dtcheckfromdate, DateTime dtCheckdateto, string strchequeNo, string strvoucherNo, string strstatus)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("SlNo", typeof(decimal));
+            dtbl.Columns["SlNo"].AutoIncrement = true;
+            dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
+            dtbl.Columns["SlNo"].AutoIncrementStep = 1;
+            try
+            {
+                var adaptor = IME.PdcPayableReportSearch(dtFromdate, dtToDate, strVoucherType, strLedgerName, dtcheckfromdate, dtCheckdateto, strchequeNo, strvoucherNo, strstatus);
+
+                dtbl.Columns.Add("pdcPayableMasterId");
+                dtbl.Columns.Add("voucherTypeName");
+                dtbl.Columns.Add("invoiceNo");
+                dtbl.Columns.Add("date");
+                dtbl.Columns.Add("ledgerName");
+                dtbl.Columns.Add("chequeNo");
+                dtbl.Columns.Add("checkDate");
+                dtbl.Columns.Add("amount");
+                dtbl.Columns.Add("Narration");
+                dtbl.Columns.Add("userName");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["pdcReceivableMasterId"] = item.pdcPayableMasterId;
+                    row["voucherTypeName"] = item.voucherTypeName;
+                    row["invoiceNo"] = item.invoiceNo;
+                    row["date"] = item.date;
+                    row["ledgerName"] = item.ledgerName;
+                    row["chequeNo"] = item.chequeNo;
+                    row["checkDate"] = item.checkDate;
+                    row["amount"] = item.amount;
+                    row["narration"] = item.Narration;
+                    row["UserName"] = item.userName;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
     }
 }
