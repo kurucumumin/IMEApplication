@@ -34,7 +34,7 @@ namespace Open_Miracle
         //frmLedgerPopup frmLedgerPopupObj = new frmLedgerPopup();//to use in call from ledger popup function
         frmAccountLedger frmAccountLedgerObj = new frmAccountLedger();//to use in call from account ledger function
         frmReceiptRegister frmReceiptRegisterObj = null;//to use in call from Receipt register function
-        //frmReceiptReport frmReceiptReportObj = null;//to use in call from Receipt report function
+        frmReceiptReport frmReceiptReportObj = null;//to use in call from Receipt report function
         //frmDayBook frmDayBookObj = null;//to use in call from DayBook function
         //frmAgeingReport frmAgeingObj = null;//to use in call from DayBook function
         //frmChequeReport frmChequeReportObj = null; //to use in call from CheueReport function
@@ -886,24 +886,24 @@ namespace Open_Miracle
         /// </summary>
         /// <param name="frmReceiptReport"></param>
         /// <param name="decmasterId"></param>
-        //public void CallFromReceiptReport(frmReceiptReport frmReceiptReport, decimal decmasterId)
-        //{
-        //    try
-        //    {
-        //        base.Show();
-        //        btnDelete.Enabled = true;
-        //        this.frmReceiptReportObj = frmReceiptReport;
-        //        frmReceiptReportObj.Enabled = false;
-        //        btnDelete.Enabled = true;
-        //        btnSave.Text = "Update";
-        //        decRecieptmasterId = decmasterId;
-        //        FillFunction();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("RV18:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromReceiptReport(frmReceiptReport frmReceiptReport, decimal decmasterId)
+        {
+            try
+            {
+                base.Show();
+                btnDelete.Enabled = true;
+                this.frmReceiptReportObj = frmReceiptReport;
+                frmReceiptReportObj.Enabled = false;
+                btnDelete.Enabled = true;
+                btnSave.Text = "Update";
+                decRecieptmasterId = decmasterId;
+                FillFunction();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("RV18:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Total Amount Calculation 
         /// </summary>

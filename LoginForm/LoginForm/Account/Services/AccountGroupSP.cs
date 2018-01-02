@@ -25,19 +25,6 @@ namespace LoginForm.Account.Services
             }
             return list;
         }
-
-        public bool AccountGroupwithLedgerId(decimal decLedgerId)
-        {
-            IMEEntities IME = new IMEEntities();
-            int accountgroupID = IME.AccountGroups.Where(a => a.accountGroupName.Contains("Bank Account")).FirstOrDefault().accountGroupId;
-            if(IME.AccountLedgers.Where(a=>a.ledgerId== decLedgerId).Where(b=>b.accountGroupID==accountgroupID) !=null)
-            {
-                return true;
-            }
-            return false;
-        }
-
-
         public DataTable AccountGroupViewAllComboFill()
         {
             IMEEntities db = new IMEEntities();
