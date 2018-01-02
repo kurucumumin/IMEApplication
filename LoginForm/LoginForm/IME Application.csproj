@@ -408,6 +408,15 @@
     <Compile Include="DataSet\Area.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\ArticleSearchWithAll_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ArticleSearchwithMPN_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ArticleSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\AuthorizationValue.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -427,6 +436,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\classExchangeRate.cs" />
+    <Compile Include="DataSet\Company.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\ContactType.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -878,7 +890,6 @@
     <Compile Include="QuotationModule\frmQuotationExport.Designer.cs">
       <DependentUpon>frmQuotationExport.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuotationModule\QuotationHelper.cs" />
     <Compile Include="QuotationModule\ViewProductHistory.cs">
       <SubType>Form</SubType>
     </Compile>

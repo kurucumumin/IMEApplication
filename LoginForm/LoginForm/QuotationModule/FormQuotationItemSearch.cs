@@ -25,41 +25,36 @@ namespace LoginForm.QuotationModule
                 txtQuotationItemCode.Text = ArticleCode;
                 dgQuotationItemSearch.Select();
             }
-
-        }
-
-        private void txtQuotationItemCode_TextChanged(object sender, EventArgs e)
-        {
-                var gridAdapterPC = QuotationHelper.BringItems(txtQuotationItemCode.Text, false);
+            var gridAdapterPC = IME.ArticleSearch(txtQuotationItemCode.Text).ToList();
 
             dgQuotationItemSearch.DataSource = gridAdapterPC;
-            if (gridAdapterPC.Count == 0)
+            if (gridAdapterPC.Count() == 0)
             {
                 MessageBox.Show("There is no such a data");
             }
+
+
         }
 
-        private void dgQuotationItemSearch_DoubleClick(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            if (dgQuotationItemSearch.DataSource != null)
+            string QuotationNote = null;
+            string QuotationMPN = null;
+            string QuotationArticleDesc = null;
+            string QuotationItemCode = null;
+
+            if (txtQuotationNote.Text != "") QuotationNote = txtQuotationNote.Text;
+            if (txtQuotationMPN.Text != "") QuotationMPN = txtQuotationMPN.Text;
+            if (txtQuotationArticleDesc.Text != "") QuotationArticleDesc = txtQuotationArticleDesc.Text;
+            if (txtQuotationItemCode.Text != "") QuotationItemCode = txtQuotationItemCode.Text;
+
+            var gridAdapterPC = IME.ArticleSearchWithAll(QuotationItemCode, QuotationArticleDesc, QuotationMPN, QuotationNote).ToList();
+
+            dgQuotationItemSearch.DataSource = gridAdapterPC;
+            if (gridAdapterPC.Count() == 0)
             {
-                var MPNItemList = QuotationHelper.BringItems(dgQuotationItemSearch.CurrentRow.Cells[2].Value.ToString(), true);
-
-                if (MPNItemList.Count > 1)
-                {
-                    FormQuotationMPN form = new FormQuotationMPN(MPNItemList);
-                    form.ShowDialog();
-                }
-                else
-                {
-                    classQuotationAdd.ItemCode = dgQuotationItemSearch
-                        .Rows[dgQuotationItemSearch.CurrentCell.RowIndex]
-                        .Cells[0].Value.ToString();
-                }
-
-
+                MessageBox.Show("There is no such a data");
             }
-            this.Close();
         }
 
         private void dgQuotationItemSearch_KeyDown(object sender, KeyEventArgs e)
@@ -69,8 +64,8 @@ namespace LoginForm.QuotationModule
                 if (dgQuotationItemSearch.DataSource != null)
                 {
                     classQuotationAdd.ItemCode = dgQuotationItemSearch.Rows[dgQuotationItemSearch.CurrentCell.RowIndex].Cells[0].Value.ToString();
-
-                    var MPNItemList = QuotationHelper.BringItems(dgQuotationItemSearch.CurrentRow.Cells[2].Value.ToString(), true);
+                    
+                    var MPNItemList = IME.ArticleSearchwithMPN(dgQuotationItemSearch.CurrentRow.Cells[2].Value.ToString()).ToList();
                     if (MPNItemList.Count > 1)
                     {
                         FormQuotationMPN form = new FormQuotationMPN(MPNItemList);
@@ -81,150 +76,22 @@ namespace LoginForm.QuotationModule
             }
         }
 
-        private void txtQuotationArticleDesc_TextChanged(object sender, EventArgs e)
+        private void dgQuotationItemSearch_DoubleClick(object sender, EventArgs e)
         {
-            #region List Birleştirme
-            string txtSelected = txtQuotationArticleDesc.Text;
-            var gridAdapterPC = (from a in IME.SuperDisks.Where(a => a.Article_Desc.Contains(txtSelected))
-                                 join customerworker in IME.ItemNotes on a.Article_No equals customerworker.ArticleNo into customerworkeres
-                                 let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
-                                 select new
-                                 {
-                                     ArticleNo = a.Article_No,
-                                     ArticleDesc = a.Article_Desc,
-                                     a.MPN,
-                                     customerworker.Note.Note_name,
-                                 }
-                         ).ToList();
-            var list2 = (from a in IME.SuperDiskPs.Where(a => a.Article_Desc.Contains(txtSelected))
-                         join customerworker in IME.ItemNotes on a.Article_No equals customerworker.ArticleNo into customerworkeres
-                         let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
-                         select new
-                         {
-                             ArticleNo = a.Article_No,
-                             ArticleDesc = a.Article_Desc,
-                             a.MPN,
-                             customerworker.Note.Note_name,
-                             //a.CofO,
-                             //a.Pack_Code
-                         }
-        ).ToList();
-            var list3 = (from a in IME.ExtendedRanges.Where(a => a.ArticleDescription.Contains(txtSelected))
-                         join customerworker in IME.ItemNotes on a.ArticleNo equals customerworker.ArticleNo into customerworkeres
-                         let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
-                         select new
-                         {
-                             ArticleNo = a.ArticleNo,
-                             ArticleDesc = a.ArticleDescription,
-                             a.MPN,
-                             customerworker.Note.Note_name
-                         }
-                        ).ToList();
-            gridAdapterPC.AddRange(list2);
-            gridAdapterPC.AddRange(list3);
-            //
-            #endregion
-            dgQuotationItemSearch.DataSource = gridAdapterPC;
-            if (gridAdapterPC.Count == 0)
-            {
-                MessageBox.Show("There is no such a data");
-            }
-        }
+                if (dgQuotationItemSearch.DataSource != null)
+                {
+                if (dgQuotationItemSearch.CurrentRow.Cells[2].Value.ToString()!="") {
+                    classQuotationAdd.ItemCode = dgQuotationItemSearch.Rows[dgQuotationItemSearch.CurrentCell.RowIndex].Cells[0].Value.ToString();
 
-        private void txtQuotationMPN_TextChanged(object sender, EventArgs e)
-        {
-            #region List Birleştirme
-            string txtSelected = txtQuotationMPN.Text;
-            var gridAdapterPC = (from a in IME.SuperDisks.Where(a => a.MPN.Contains(txtSelected))
-                                 join customerworker in IME.ItemNotes on a.Article_No equals customerworker.ArticleNo into customerworkeres
-                                 let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
-                                 select new
-                                 {
-                                     ArticleNo = a.Article_No,
-                                     ArticleDesc = a.Article_Desc,
-                                     a.MPN,
-                                     customerworker.Note.Note_name,
-                                 }
-                         ).ToList();
-            var list2 = (from a in IME.SuperDiskPs.Where(a => a.MPN.Contains(txtSelected))
-                         join customerworker in IME.ItemNotes on a.Article_No equals customerworker.ArticleNo into customerworkeres
-                         let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
-                         select new
-                         {
-                             ArticleNo = a.Article_No,
-                             ArticleDesc = a.Article_Desc,
-                             a.MPN,
-                             customerworker.Note.Note_name,
-                             //a.CofO,
-                             //a.Pack_Code
-                         }
-        ).ToList();
-            var list3 = (from a in IME.ExtendedRanges.Where(a => a.MPN.Contains(txtSelected))
-                         join customerworker in IME.ItemNotes on a.ArticleNo equals customerworker.ArticleNo into customerworkeres
-                         let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
-                         select new
-                         {
-                             ArticleNo = a.ArticleNo,
-                             ArticleDesc = a.ArticleDescription,
-                             a.MPN,
-                             customerworker.Note.Note_name
-                         }
-                        ).ToList();
-            gridAdapterPC.AddRange(list2);
-            gridAdapterPC.AddRange(list3);
-            //
-            #endregion
-            dgQuotationItemSearch.DataSource = gridAdapterPC;
-            if (gridAdapterPC.Count == 0)
-            {
-                MessageBox.Show("There is no such a data");
-            }
+                    var MPNItemList = IME.ArticleSearchwithMPN(dgQuotationItemSearch.CurrentRow.Cells[2].Value.ToString()).ToList();
+                    if (MPNItemList.Count > 1)
+                    {
+                        FormQuotationMPN form = new FormQuotationMPN(MPNItemList);
+                        form.ShowDialog();
+                    }
+                }
+                }
+                this.Close();
         }
-
-        private void txtQuotationNote_TextChanged(object sender, EventArgs e)
-        {
-            #region List Birleştirme
-            string txtSelected = txtQuotationNote.Text;
-            var gridAdapterPC = (from a in IME.ItemNotes.Where(a => a.ArticleNo.Contains(txtSelected))
-                                 join sp in IME.SuperDisks on a.ArticleNo equals sp.Article_No
-                                 select new
-                                 {
-                                     ArticleNo = a.ArticleNo,
-                                     ArticleDesc = sp.Article_Desc,
-                                     sp.MPN,
-                                     a.Note.Note_name,
-                                 }
-                              ).ToList();
-            var list2 = (from a in IME.ItemNotes.Where(a => a.ArticleNo.Contains(txtSelected))
-                         join sp in IME.SuperDiskPs on a.ArticleNo equals sp.Article_No
-                         select new
-                         {
-                             ArticleNo = a.ArticleNo,
-                             ArticleDesc = sp.Article_Desc,
-                             sp.MPN,
-                             a.Note.Note_name,
-                         }
-                        ).ToList();
-            var list3 = (from a in IME.ItemNotes.Where(a => a.ArticleNo.Contains(txtSelected))
-                         join sp in IME.ExtendedRanges on a.ArticleNo equals sp.ArticleNo
-                         select new
-                         {
-                             ArticleNo = a.ArticleNo,
-                             ArticleDesc = sp.ArticleNo,
-                             sp.MPN,
-                             a.Note.Note_name,
-                         }
-                        ).ToList();
-            gridAdapterPC.AddRange(list2);
-            gridAdapterPC.AddRange(list3);
-            //
-            #endregion
-            dgQuotationItemSearch.DataSource = gridAdapterPC;
-            if (gridAdapterPC.Count == 0)
-            {
-                MessageBox.Show("There is no such a data");
-            }
-        }
-
     }
 }

@@ -378,21 +378,21 @@ namespace LoginForm.nmSaleOrder
                                     var sd1 = IME.SuperDisks.Where(a => a.Article_No == itemCode).FirstOrDefault();
                                     if (sd1 == null)
                                     {
-                                        MPNList = QuotationHelper.BringItems(itemCode, true);
+                                        MPNList = IME.ArticleSearch(itemCode);
                                     }
                                     else
                                     {
                                         var sdP1 = IME.SuperDiskPs.Where(a => a.Article_No == itemCode).FirstOrDefault();
                                         if (sdP1 == null)
                                         {
-                                            MPNList = QuotationHelper.BringItems(itemCode, true);
+                                            MPNList = IME.ArticleSearch(itemCode);
                                         }
                                         else
                                         {
                                             var er1 = IME.ExtendedRanges.Where(a => a.ArticleNo == itemCode).FirstOrDefault();
                                             if (er1 == null)
                                             {
-                                                MPNList = QuotationHelper.BringItems(itemCode, true);
+                                                MPNList = IME.ArticleSearch(itemCode);
                                             }
                                         }
                                     }
