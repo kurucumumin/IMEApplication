@@ -1,24 +1,4 @@
-﻿//This is a source code or part of OpenMiracle project
-//Copyright (C) 2013  Cybrosys Technologies Pvt.Ltd
-
-//This program is free software: you can redistribute it and/or modify
-//it under the terms of the GNU General Public License as published by
-//the Free Software Foundation, either version 3 of the License, or
-//(at your option) any later version.
-
-//This program is distributed in the hope that it will be useful,
-//but WITHOUT ANY WARRANTY; without even the implied warranty of
-//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//GNU General Public License for more details.
-
-//You should have received a copy of the GNU General Public License
-//along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-using LoginForm.Account;
-using LoginForm.Account.Services;
-using LoginForm.DataSet;
-using LoginForm.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,8 +6,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Collections;
+using LoginForm.DataSet;
+using LoginForm.Account.Services;
+using LoginForm.Account;
+using LoginForm.Services;
+using LoginForm;
 
-namespace Open_Miracle
+namespace LoginForm
 {
     public partial class frmPdcClearance : Form
     {
@@ -736,25 +722,25 @@ namespace Open_Miracle
         /// </summary>
         /// <param name="PDCClearanceReport"></param>
         /// <param name="decMasterId"></param>
-        //public void CallFromPDCClearanceReport(frmPDCClearanceReport PDCClearanceReport, decimal decMasterId)
-        //{
-        //    try
-        //    {
-        //        PDCClearanceReport.Enabled = false;
-        //        base.Show();
-        //        isInEditMode = true;
-        //        btnDelete.Enabled = true;
-        //        pdcClearanceReportObj = PDCClearanceReport;
-        //        decPDCClearanceEditId = decMasterId;
-        //        PDCClearanceMasterSP spPDCClearance = new PDCClearanceMasterSP();
-        //        decMasterIdEdit = spPDCClearance.PDCClearanceAgainstIdUnderClearanceId(decPDCClearanceEditId);
-        //        FillFunction();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("PC17:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromPDCClearanceReport(frmPDCClearanceReport PDCClearanceReport, decimal decMasterId)
+        {
+            try
+            {
+                PDCClearanceReport.Enabled = false;
+                base.Show();
+                isInEditMode = true;
+                btnDelete.Enabled = true;
+                //pdcClearanceReportObj = PDCClearanceReport;
+                decPDCClearanceEditId = decMasterId;
+                PDCClearanceMasterSP spPDCClearance = new PDCClearanceMasterSP();
+                decMasterIdEdit = spPDCClearance.PDCClearanceAgainstIdUnderClearanceId(decPDCClearanceEditId);
+                FillFunction();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PC17:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Its the function for print function
         /// </summary>

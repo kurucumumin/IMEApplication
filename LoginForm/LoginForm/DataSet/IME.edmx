@@ -3388,6 +3388,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="BankReconciliationFillUnrecon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ledgerId" Type="numeric" Mode="In" />
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="ExtendedRangeADD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ArticleNo" Type="nvarchar" Mode="In" />
           <Parameter Name="Brand" Type="nvarchar" Mode="In" />
@@ -3455,6 +3460,28 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Parameter Name="chequeNo" Type="varchar(max)" Mode="In" />
           <Parameter Name="bankId" Type="decimal" Mode="In" />
           <Parameter Name="status" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="PdcPayableReportSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+          <Parameter Name="voucherTypeName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="ledgerName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="chequeDateFrom" Type="datetime" Mode="In" />
+          <Parameter Name="chequeDateTo" Type="datetime" Mode="In" />
+          <Parameter Name="status" Type="varchar" Mode="In" />
+          <Parameter Name="chequeNo" Type="varchar(max)" Mode="In" />
+          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="PdcReceivableReportSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+          <Parameter Name="voucherTypeName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="ledgerName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="chequeDateFrom" Type="datetime" Mode="In" />
+          <Parameter Name="chequeDateTo" Type="datetime" Mode="In" />
+          <Parameter Name="status" Type="varchar" Mode="In" />
+          <Parameter Name="chequeNo" Type="varchar(max)" Mode="In" />
+          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="SlidingPriceAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ArticleNo" Type="nvarchar" Mode="In" />
@@ -4589,6 +4616,17 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="PdcReceivableReportSearch" ReturnType="Collection(IMEModel.PdcReceivableReportSearch_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="voucherTypeName" Mode="In" Type="String" />
+            <Parameter Name="ledgerName" Mode="In" Type="String" />
+            <Parameter Name="chequeDateFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="chequeDateTo" Mode="In" Type="DateTime" />
+            <Parameter Name="status" Mode="In" Type="String" />
+            <Parameter Name="chequeNo" Mode="In" Type="String" />
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
+          </FunctionImport>
           <EntitySet Name="AccountGroups" EntityType="IMEModel.AccountGroup" />
           <EntitySet Name="AccountLedgers" EntityType="IMEModel.AccountLedger" />
           <EntitySet Name="AdvancePayments" EntityType="IMEModel.AdvancePayment" />
@@ -5329,7 +5367,23 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
             <End Role="Worker" EntitySet="Workers" />
           </AssociationSet>
-        </EntityContainer>
+          <FunctionImport Name="BankReconciliationFillUnrecon1" ReturnType="Collection(IMEModel.BankReconciliationFillUnrecon1_Result)">
+            <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="PdcPayableReportSearch" ReturnType="Collection(IMEModel.PdcPayableReportSearch_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="voucherTypeName" Mode="In" Type="String" />
+            <Parameter Name="ledgerName" Mode="In" Type="String" />
+            <Parameter Name="chequeDateFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="chequeDateTo" Mode="In" Type="DateTime" />
+            <Parameter Name="status" Mode="In" Type="String" />
+            <Parameter Name="chequeNo" Mode="In" Type="String" />
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
+          </FunctionImport>
+          </EntityContainer>
         <ComplexType Name="PayHeadGet_Result">
           <Property Type="Decimal" Name="PayheadId" Nullable="false" Precision="18" Scale="0" />
           <Property Type="String" Name="payHeadName" Nullable="true" />
@@ -5392,6 +5446,18 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="chequeDate" Nullable="true" MaxLength="20" />
           <Property Type="Decimal" Name="debit" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="credit" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="PdcReceivableReportSearch_Result">
+          <Property Type="Decimal" Name="pdcReceivableMasterId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="voucherTypeName" Nullable="true" />
+          <Property Type="String" Name="voucherNo" Nullable="true" />
+          <Property Type="String" Name="date" Nullable="true" />
+          <Property Type="String" Name="ledgerName" Nullable="true" />
+          <Property Type="String" Name="chequeNo" Nullable="true" />
+          <Property Type="String" Name="checkDate" Nullable="true" />
+          <Property Type="Decimal" Name="amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="Narration" Nullable="true" />
+          <Property Type="String" Name="userName" Nullable="false" MaxLength="25" />
         </ComplexType>
         <EntityType Name="AccountGroup">
           <Key>
@@ -9040,7 +9106,30 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <End Type="IMEModel.AuthorizationValue" Role="AuthorizationValue" Multiplicity="*" />
           <End Type="IMEModel.Worker" Role="Worker" Multiplicity="*" />
         </Association>
-      </Schema>
+        <ComplexType Name="BankReconciliationFillUnrecon1_Result">
+          <Property Type="String" Name="date" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ledgerName" Nullable="true" />
+          <Property Type="String" Name="voucherTypeName" Nullable="true" />
+          <Property Type="Decimal" Name="ledgerPostingId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="voucherNo" Nullable="true" />
+          <Property Type="String" Name="chequeNo" Nullable="true" />
+          <Property Type="String" Name="chequeDate" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="debit" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="credit" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="PdcPayableReportSearch_Result">
+          <Property Type="Decimal" Name="pdcPayableMasterId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="voucherTypeName" Nullable="true" />
+          <Property Type="String" Name="invoiceNo" Nullable="true" />
+          <Property Type="String" Name="date" Nullable="true" />
+          <Property Type="String" Name="ledgerName" Nullable="true" />
+          <Property Type="String" Name="chequeNo" Nullable="true" />
+          <Property Type="String" Name="checkDate" Nullable="true" />
+          <Property Type="Decimal" Name="amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="Narration" Nullable="true" />
+          <Property Type="String" Name="userName" Nullable="false" MaxLength="25" />
+        </ComplexType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -9134,6 +9223,22 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="IMEModel.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="SuperDiskAdd" FunctionName="IMEModel.Store.SuperDiskAdd" />
           <FunctionImportMapping FunctionImportName="SuperDiskPAdd" FunctionName="IMEModel.Store.SuperDiskPAdd" />
+          <FunctionImportMapping FunctionImportName="PdcReceivableReportSearch" FunctionName="IMEModel.Store.PdcReceivableReportSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.PdcReceivableReportSearch_Result">
+                <ScalarProperty Name="pdcReceivableMasterId" ColumnName="pdcReceivableMasterId" />
+                <ScalarProperty Name="voucherTypeName" ColumnName="voucherTypeName" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
+                <ScalarProperty Name="chequeNo" ColumnName="chequeNo" />
+                <ScalarProperty Name="checkDate" ColumnName="checkDate" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <EntitySetMapping Name="AccountGroups">
             <EntityTypeMapping TypeName="IMEModel.AccountGroup">
               <MappingFragment StoreEntitySet="AccountGroup">
@@ -10655,7 +10760,38 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               <ScalarProperty Name="AuthorizationID" ColumnName="AuthorizationID" />
             </EndProperty>
           </AssociationSetMapping>
-        </EntityContainerMapping>
+          <FunctionImportMapping FunctionImportName="BankReconciliationFillUnrecon1" FunctionName="IMEModel.Store.BankReconciliationFillUnrecon">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.BankReconciliationFillUnrecon1_Result">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
+                <ScalarProperty Name="voucherTypeName" ColumnName="voucherTypeName" />
+                <ScalarProperty Name="ledgerPostingId" ColumnName="ledgerPostingId" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="chequeNo" ColumnName="chequeNo" />
+                <ScalarProperty Name="chequeDate" ColumnName="chequeDate" />
+                <ScalarProperty Name="debit" ColumnName="debit" />
+                <ScalarProperty Name="credit" ColumnName="credit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PdcPayableReportSearch" FunctionName="IMEModel.Store.PdcPayableReportSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.PdcPayableReportSearch_Result">
+                <ScalarProperty Name="pdcPayableMasterId" ColumnName="pdcPayableMasterId" />
+                <ScalarProperty Name="voucherTypeName" ColumnName="voucherTypeName" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
+                <ScalarProperty Name="chequeNo" ColumnName="chequeNo" />
+                <ScalarProperty Name="checkDate" ColumnName="checkDate" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

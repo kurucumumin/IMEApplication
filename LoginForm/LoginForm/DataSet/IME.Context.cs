@@ -946,5 +946,104 @@ namespace LoginForm.DataSet
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BankReconciliationFillUnrecon_Result>("BankReconciliationFillUnrecon", ledgerIdParameter, fromDateParameter, toDateParameter);
         }
+    
+        public virtual ObjectResult<PdcReceivableReportSearch_Result> PdcReceivableReportSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string voucherTypeName, string ledgerName, Nullable<System.DateTime> chequeDateFrom, Nullable<System.DateTime> chequeDateTo, string status, string chequeNo, string voucherNo)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var voucherTypeNameParameter = voucherTypeName != null ?
+                new ObjectParameter("voucherTypeName", voucherTypeName) :
+                new ObjectParameter("voucherTypeName", typeof(string));
+    
+            var ledgerNameParameter = ledgerName != null ?
+                new ObjectParameter("ledgerName", ledgerName) :
+                new ObjectParameter("ledgerName", typeof(string));
+    
+            var chequeDateFromParameter = chequeDateFrom.HasValue ?
+                new ObjectParameter("chequeDateFrom", chequeDateFrom) :
+                new ObjectParameter("chequeDateFrom", typeof(System.DateTime));
+    
+            var chequeDateToParameter = chequeDateTo.HasValue ?
+                new ObjectParameter("chequeDateTo", chequeDateTo) :
+                new ObjectParameter("chequeDateTo", typeof(System.DateTime));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("status", status) :
+                new ObjectParameter("status", typeof(string));
+    
+            var chequeNoParameter = chequeNo != null ?
+                new ObjectParameter("chequeNo", chequeNo) :
+                new ObjectParameter("chequeNo", typeof(string));
+    
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PdcReceivableReportSearch_Result>("PdcReceivableReportSearch", fromDateParameter, toDateParameter, voucherTypeNameParameter, ledgerNameParameter, chequeDateFromParameter, chequeDateToParameter, statusParameter, chequeNoParameter, voucherNoParameter);
+        }
+    
+        public virtual ObjectResult<BankReconciliationFillUnrecon1_Result> BankReconciliationFillUnrecon1(Nullable<decimal> ledgerId, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var ledgerIdParameter = ledgerId.HasValue ?
+                new ObjectParameter("ledgerId", ledgerId) :
+                new ObjectParameter("ledgerId", typeof(decimal));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BankReconciliationFillUnrecon1_Result>("BankReconciliationFillUnrecon1", ledgerIdParameter, fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<PdcPayableReportSearch_Result> PdcPayableReportSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string voucherTypeName, string ledgerName, Nullable<System.DateTime> chequeDateFrom, Nullable<System.DateTime> chequeDateTo, string status, string chequeNo, string voucherNo)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var voucherTypeNameParameter = voucherTypeName != null ?
+                new ObjectParameter("voucherTypeName", voucherTypeName) :
+                new ObjectParameter("voucherTypeName", typeof(string));
+    
+            var ledgerNameParameter = ledgerName != null ?
+                new ObjectParameter("ledgerName", ledgerName) :
+                new ObjectParameter("ledgerName", typeof(string));
+    
+            var chequeDateFromParameter = chequeDateFrom.HasValue ?
+                new ObjectParameter("chequeDateFrom", chequeDateFrom) :
+                new ObjectParameter("chequeDateFrom", typeof(System.DateTime));
+    
+            var chequeDateToParameter = chequeDateTo.HasValue ?
+                new ObjectParameter("chequeDateTo", chequeDateTo) :
+                new ObjectParameter("chequeDateTo", typeof(System.DateTime));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("status", status) :
+                new ObjectParameter("status", typeof(string));
+    
+            var chequeNoParameter = chequeNo != null ?
+                new ObjectParameter("chequeNo", chequeNo) :
+                new ObjectParameter("chequeNo", typeof(string));
+    
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PdcPayableReportSearch_Result>("PdcPayableReportSearch", fromDateParameter, toDateParameter, voucherTypeNameParameter, ledgerNameParameter, chequeDateFromParameter, chequeDateToParameter, statusParameter, chequeNoParameter, voucherNoParameter);
+        }
     }
 }

@@ -1163,24 +1163,24 @@ namespace LoginForm
         /// </summary>
         /// <param name="pdcpayableReportObj"></param>
         /// <param name="decMasterId"></param>
-        //public void CallFromPdcPayableReport(frmPDCPayableReport pdcpayableReportObj, decimal decMasterId)
-        //{
-        //    try
-        //    {
-        //        pdcpayableReportObj.Enabled = false;
-        //        base.Show();
-        //        this.PDCpayableReportObj = pdcpayableReportObj;
-        //        isInEditMode = true;
-        //        btnDelete.Enabled = true;
-        //        PDCpayableReportObj = pdcpayableReportObj;
-        //        decPDCpayableEditId = decMasterId;
-        //        FillFunction();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("PP24:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromPdcPayableReport(frmPDCPayableReport pdcpayableReportObj, decimal decMasterId)
+        {
+            try
+            {
+                pdcpayableReportObj.Enabled = false;
+                base.Show();
+               // this.PDCpayableReportObj = pdcpayableReportObj;
+                isInEditMode = true;
+                btnDelete.Enabled = true;
+                //PDCpayableReportObj = pdcpayableReportObj;
+                decPDCpayableEditId = decMasterId;
+                FillFunction();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PP24:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to call frmLedgerPopup form to select and view Ledger
         /// </summary>

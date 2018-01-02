@@ -1207,24 +1207,24 @@ namespace LoginForm
         /// </summary>
         /// <param name="pdcReceivableReport"></param>
         /// <param name="decMasterId"></param>
-        //public void CallFromPdcReceivableReport(frmPDCRecievableReport pdcReceivableReport, decimal decMasterId)
-        //{
-        //    try
-        //    {
-        //        pdcReceivableReport.Enabled = false;
-        //        base.Show();
-        //        this.PDCReceivableReportObj = pdcReceivableReport;
-        //        isInEditMode = true;
-        //        btnDelete.Enabled = true;
-        //        PDCReceivableReportObj = pdcReceivableReport;
-        //        decPDCReceivableEditId = decMasterId;
-        //        FillFunction();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("PR25:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromPdcReceivableReport(frmPDCRecievableReport pdcReceivableReport, decimal decMasterId)
+        {
+            try
+            {
+                pdcReceivableReport.Enabled = false;
+                base.Show();
+                //this.PDCReceivableReportObj = pdcReceivableReport;
+                isInEditMode = true;
+                btnDelete.Enabled = true;
+               // PDCReceivableReportObj = pdcReceivableReport;
+                decPDCReceivableEditId = decMasterId;
+                FillFunction();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PR25:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to call this form from frmBillallocation to view details and for updation
         /// </summary>
