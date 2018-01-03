@@ -112,7 +112,6 @@ namespace LoginForm.Account.Services
         //        cmbCashOrBank.SelectedIndex = -1;
         //}
 
-
         public void CashOrPartyComboFill(ComboBox cmbCashOrParty, bool isAll)
         {
             IMEEntities db = new IMEEntities();

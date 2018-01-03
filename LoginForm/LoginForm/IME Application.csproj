@@ -270,6 +270,30 @@
     <Compile Include="Account\Reports\frmJournalReport.designer.cs">
       <DependentUpon>frmJournalReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Reports\frmPaymentReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reports\frmPaymentReport.designer.cs">
+      <DependentUpon>frmPaymentReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Reports\frmPDCClearanceReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reports\frmPDCClearanceReport.designer.cs">
+      <DependentUpon>frmPDCClearanceReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Reports\frmPDCPayableReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reports\frmPDCPayableReport.designer.cs">
+      <DependentUpon>frmPDCPayableReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Reports\frmPDCRecievableReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reports\frmPDCRecievableReport.designer.cs">
+      <DependentUpon>frmPDCRecievableReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Reports\frmReceiptReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -300,6 +324,7 @@
     <Compile Include="Account\Services\LedgerPostingSP.cs" />
     <Compile Include="Account\Services\NumToText.cs" />
     <Compile Include="Account\Services\PartyBalanceSP.cs" />
+    <Compile Include="Account\Services\PaymentMasterSP.cs" />
     <Compile Include="Account\Services\PDCClearanceMasterSP.cs" />
     <Compile Include="Account\Services\PDCPayableMasterSP.cs" />
     <Compile Include="Account\Services\PricingLevelSP.cs" />
@@ -423,6 +448,7 @@
     <Compile Include="DataSet\BankReconciliation.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\BankReconciliationFillUnrecon1_Result.cs" />
     <Compile Include="DataSet\BankReconciliationFillUnrecon_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -632,6 +658,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\ReceiptDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ReceiptDetail1.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\ReceiptMaster.cs">
@@ -1049,6 +1078,18 @@
     <EmbeddedResource Include="Account\Reports\frmJournalReport.resx">
       <DependentUpon>frmJournalReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reports\frmPaymentReport.resx">
+      <DependentUpon>frmPaymentReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reports\frmPDCClearanceReport.resx">
+      <DependentUpon>frmPDCClearanceReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reports\frmPDCPayableReport.resx">
+      <DependentUpon>frmPDCPayableReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reports\frmPDCRecievableReport.resx">
+      <DependentUpon>frmPDCRecievableReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\Reports\frmReceiptReport.resx">
       <DependentUpon>frmReceiptReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -1218,6 +1259,7 @@
     <None Include="DataSet\IME.edmx.diagram">
       <DependentUpon>IME.edmx</DependentUpon>
     </None>
+    <None Include="DataSet\IME.edmx.diagram~RF5230d270.TMP" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthorizationValue.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthRole.datasource" />
