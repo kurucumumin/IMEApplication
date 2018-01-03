@@ -56,6 +56,7 @@
             this.txtQuotationItemCode.Name = "txtQuotationItemCode";
             this.txtQuotationItemCode.Size = new System.Drawing.Size(125, 20);
             this.txtQuotationItemCode.TabIndex = 1;
+            this.txtQuotationItemCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQuotationItemCode_KeyDown);
             // 
             // dgQuotationItemSearch
             // 
@@ -73,6 +74,7 @@
             this.txtQuotationArticleDesc.Name = "txtQuotationArticleDesc";
             this.txtQuotationArticleDesc.Size = new System.Drawing.Size(125, 20);
             this.txtQuotationArticleDesc.TabIndex = 3;
+            this.txtQuotationArticleDesc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQuotationItemCode_KeyDown);
             // 
             // txtQuotationMPN
             // 
@@ -80,6 +82,7 @@
             this.txtQuotationMPN.Name = "txtQuotationMPN";
             this.txtQuotationMPN.Size = new System.Drawing.Size(125, 20);
             this.txtQuotationMPN.TabIndex = 4;
+            this.txtQuotationMPN.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQuotationItemCode_KeyDown);
             // 
             // txtQuotationNote
             // 
@@ -87,6 +90,7 @@
             this.txtQuotationNote.Name = "txtQuotationNote";
             this.txtQuotationNote.Size = new System.Drawing.Size(125, 20);
             this.txtQuotationNote.TabIndex = 5;
+            this.txtQuotationNote.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtQuotationItemCode_KeyDown);
             // 
             // label2
             // 
@@ -143,6 +147,7 @@
             this.Name = "FormQuotationItemSearch";
             this.Text = "FormQuotationItemSearch";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FormQuotationItemSearch_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgQuotationItemSearch)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

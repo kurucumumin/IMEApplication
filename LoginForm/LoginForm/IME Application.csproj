@@ -595,6 +595,9 @@
     <Compile Include="DataSet\PDCPayableMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PdcPayableReportSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PDCReceivableMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
