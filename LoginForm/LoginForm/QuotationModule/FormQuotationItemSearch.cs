@@ -38,6 +38,11 @@ namespace LoginForm.QuotationModule
 
         private void button1_Click(object sender, EventArgs e)
         {
+            itemsearch();
+        }
+
+        private void itemsearch()
+        {
             string QuotationNote = null;
             string QuotationMPN = null;
             string QuotationArticleDesc = null;
@@ -63,9 +68,9 @@ namespace LoginForm.QuotationModule
             {
                 if (dgQuotationItemSearch.DataSource != null)
                 {
-                    classQuotationAdd.ItemCode = dgQuotationItemSearch.Rows[dgQuotationItemSearch.CurrentCell.RowIndex].Cells[0].Value.ToString();
+                    classQuotationAdd.ItemCode = dgQuotationItemSearch.Rows[dgQuotationItemSearch.CurrentCell.RowIndex].Cells["Article_No"].Value.ToString();
                     
-                    var MPNItemList = IME.ArticleSearchwithMPN(dgQuotationItemSearch.CurrentRow.Cells[2].Value.ToString()).ToList();
+                    var MPNItemList = IME.ArticleSearchwithMPN(dgQuotationItemSearch.CurrentRow.Cells["MPN"].Value.ToString()).ToList();
                     if (MPNItemList.Count > 1)
                     {
                         FormQuotationMPN form = new FormQuotationMPN(MPNItemList);
@@ -81,7 +86,7 @@ namespace LoginForm.QuotationModule
                 if (dgQuotationItemSearch.DataSource != null)
                 {
                 if (dgQuotationItemSearch.CurrentRow.Cells[2].Value.ToString()!="") {
-                    classQuotationAdd.ItemCode = dgQuotationItemSearch.Rows[dgQuotationItemSearch.CurrentCell.RowIndex].Cells[0].Value.ToString();
+                    classQuotationAdd.ItemCode = dgQuotationItemSearch.Rows[dgQuotationItemSearch.CurrentCell.RowIndex].Cells["Article_No"].Value.ToString();
 
                     var MPNItemList = IME.ArticleSearchwithMPN(dgQuotationItemSearch.CurrentRow.Cells[2].Value.ToString()).ToList();
                     if (MPNItemList.Count > 1)
@@ -91,7 +96,21 @@ namespace LoginForm.QuotationModule
                     }
                 }
                 }
-                this.Close();
+            classQuotationAdd.ItemCode = dgQuotationItemSearch.Rows[dgQuotationItemSearch.CurrentCell.RowIndex].Cells["Article_No"].Value.ToString();
+            this.Close();
+        }
+
+        private void FormQuotationItemSearch_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtQuotationItemCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode==Keys.Tab)
+            {
+                itemsearch();
+            }
         }
     }
 }

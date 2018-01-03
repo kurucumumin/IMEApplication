@@ -18,6 +18,7 @@ namespace LoginForm.DataSet
         public ReceiptMaster()
         {
             this.ReceiptDetails = new HashSet<ReceiptDetail>();
+            this.ReceiptDetails1 = new HashSet<ReceiptDetail1>();
         }
     
         public decimal receiptMasterId { get; set; }
@@ -34,5 +35,7 @@ namespace LoginForm.DataSet
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReceiptDetail> ReceiptDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ReceiptDetail1> ReceiptDetails1 { get; set; }
     }
 }

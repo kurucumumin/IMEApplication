@@ -2765,7 +2765,7 @@
             // lblTotalExtra
             // 
             this.lblTotalExtra.AutoSize = true;
-            this.lblTotalExtra.Location = new System.Drawing.Point(193, 57);
+            this.lblTotalExtra.Location = new System.Drawing.Point(175, 57);
             this.lblTotalExtra.Name = "lblTotalExtra";
             this.lblTotalExtra.Size = new System.Drawing.Size(28, 13);
             this.lblTotalExtra.TabIndex = 57;
@@ -2803,7 +2803,7 @@
             // lbltotal
             // 
             this.lbltotal.AutoSize = true;
-            this.lbltotal.Location = new System.Drawing.Point(193, 38);
+            this.lbltotal.Location = new System.Drawing.Point(175, 38);
             this.lbltotal.Name = "lbltotal";
             this.lbltotal.Size = new System.Drawing.Size(28, 13);
             this.lbltotal.TabIndex = 53;
@@ -2851,7 +2851,7 @@
             // lblVatTotal
             // 
             this.lblVatTotal.AutoSize = true;
-            this.lblVatTotal.Location = new System.Drawing.Point(193, 78);
+            this.lblVatTotal.Location = new System.Drawing.Point(175, 78);
             this.lblVatTotal.Name = "lblVatTotal";
             this.lblVatTotal.Size = new System.Drawing.Size(28, 13);
             this.lblVatTotal.TabIndex = 18;
@@ -2899,7 +2899,7 @@
             // lblGrossTotal
             // 
             this.lblGrossTotal.AutoSize = true;
-            this.lblGrossTotal.Location = new System.Drawing.Point(193, 97);
+            this.lblGrossTotal.Location = new System.Drawing.Point(175, 97);
             this.lblGrossTotal.Name = "lblGrossTotal";
             this.lblGrossTotal.Size = new System.Drawing.Size(28, 13);
             this.lblGrossTotal.TabIndex = 12;

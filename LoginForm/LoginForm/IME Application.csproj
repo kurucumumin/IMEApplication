@@ -595,7 +595,13 @@
     <Compile Include="DataSet\PDCPayableMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PdcPayableReportSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PDCReceivableMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PdcReceivableReportSearch_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PricingLevel.cs">
@@ -923,8 +929,10 @@
     <Compile Include="SaleOrder\SalesOrderHelper.cs" />
     <Compile Include="Services\Common.cs" />
     <Compile Include="Services\DateValidation.cs" />
+    <Compile Include="Services\dgv.cs" />
     <Compile Include="Services\Messages.cs" />
     <Compile Include="Account\Services\PDCReceivableMasterSP.cs" />
+    <Compile Include="Services\NumToText.cs" />
     <Compile Include="Services\OtherDateValidationFunction.cs" />
     <Compile Include="Services\ToolTipService.cs" />
     <Compile Include="Services\txtCreate.cs" />

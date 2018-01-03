@@ -91,6 +91,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<QuotationDetail> QuotationDetails { get; set; }
         public virtual DbSet<Rate> Rates { get; set; }
         public virtual DbSet<ReceiptDetail> ReceiptDetails { get; set; }
+        public virtual DbSet<ReceiptDetail1> ReceiptDetails1 { get; set; }
         public virtual DbSet<ReceiptMaster> ReceiptMasters { get; set; }
         public virtual DbSet<RoleValue> RoleValues { get; set; }
         public virtual DbSet<Route> Routes { get; set; }
@@ -130,6 +131,24 @@ namespace LoginForm.DataSet
                 new ObjectParameter("articleNo", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ArticleSearch_Result>("ArticleSearch", articleNoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> ArticleSearchCheckExistence(string articleNo)
+        {
+            var articleNoParameter = articleNo != null ?
+                new ObjectParameter("articleNo", articleNo) :
+                new ObjectParameter("articleNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ArticleSearchCheckExistence", articleNoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> ArticleSearchHasMultipleItems(string articleNo)
+        {
+            var articleNoParameter = articleNo != null ?
+                new ObjectParameter("articleNo", articleNo) :
+                new ObjectParameter("articleNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ArticleSearchHasMultipleItems", articleNoParameter);
         }
     
         public virtual ObjectResult<ArticleSearchWithAll_Result> ArticleSearchWithAll(string articleNo, string articleDesc, string mPNNo, string note)
@@ -427,6 +446,88 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PDCClearanceRegisterSearch_Result>("PDCClearanceRegisterSearch", voucherTypeNameParameter, ledgerNameParameter, toDateParameter, fromDateParameter, chequeNoParameter, bankIdParameter, statusParameter);
         }
     
+        public virtual ObjectResult<PdcPayableReportSearch_Result> PdcPayableReportSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string voucherTypeName, string ledgerName, Nullable<System.DateTime> chequeDateFrom, Nullable<System.DateTime> chequeDateTo, string status, string chequeNo, string voucherNo)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var voucherTypeNameParameter = voucherTypeName != null ?
+                new ObjectParameter("voucherTypeName", voucherTypeName) :
+                new ObjectParameter("voucherTypeName", typeof(string));
+    
+            var ledgerNameParameter = ledgerName != null ?
+                new ObjectParameter("ledgerName", ledgerName) :
+                new ObjectParameter("ledgerName", typeof(string));
+    
+            var chequeDateFromParameter = chequeDateFrom.HasValue ?
+                new ObjectParameter("chequeDateFrom", chequeDateFrom) :
+                new ObjectParameter("chequeDateFrom", typeof(System.DateTime));
+    
+            var chequeDateToParameter = chequeDateTo.HasValue ?
+                new ObjectParameter("chequeDateTo", chequeDateTo) :
+                new ObjectParameter("chequeDateTo", typeof(System.DateTime));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("status", status) :
+                new ObjectParameter("status", typeof(string));
+    
+            var chequeNoParameter = chequeNo != null ?
+                new ObjectParameter("chequeNo", chequeNo) :
+                new ObjectParameter("chequeNo", typeof(string));
+    
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PdcPayableReportSearch_Result>("PdcPayableReportSearch", fromDateParameter, toDateParameter, voucherTypeNameParameter, ledgerNameParameter, chequeDateFromParameter, chequeDateToParameter, statusParameter, chequeNoParameter, voucherNoParameter);
+        }
+    
+        public virtual ObjectResult<PdcReceivableReportSearch_Result> PdcReceivableReportSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string voucherTypeName, string ledgerName, Nullable<System.DateTime> chequeDateFrom, Nullable<System.DateTime> chequeDateTo, string status, string chequeNo, string voucherNo)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var voucherTypeNameParameter = voucherTypeName != null ?
+                new ObjectParameter("voucherTypeName", voucherTypeName) :
+                new ObjectParameter("voucherTypeName", typeof(string));
+    
+            var ledgerNameParameter = ledgerName != null ?
+                new ObjectParameter("ledgerName", ledgerName) :
+                new ObjectParameter("ledgerName", typeof(string));
+    
+            var chequeDateFromParameter = chequeDateFrom.HasValue ?
+                new ObjectParameter("chequeDateFrom", chequeDateFrom) :
+                new ObjectParameter("chequeDateFrom", typeof(System.DateTime));
+    
+            var chequeDateToParameter = chequeDateTo.HasValue ?
+                new ObjectParameter("chequeDateTo", chequeDateTo) :
+                new ObjectParameter("chequeDateTo", typeof(System.DateTime));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("status", status) :
+                new ObjectParameter("status", typeof(string));
+    
+            var chequeNoParameter = chequeNo != null ?
+                new ObjectParameter("chequeNo", chequeNo) :
+                new ObjectParameter("chequeNo", typeof(string));
+    
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PdcReceivableReportSearch_Result>("PdcReceivableReportSearch", fromDateParameter, toDateParameter, voucherTypeNameParameter, ledgerNameParameter, chequeDateFromParameter, chequeDateToParameter, statusParameter, chequeNoParameter, voucherNoParameter);
+        }
+    
         public virtual int SlidingPriceAdd(string articleNo, string articleDescription, Nullable<int> itemTypeCode, string itemTypeDesc, string introductionDate, string discontinuedDate, Nullable<int> quantity1, Nullable<decimal> col1Price, Nullable<decimal> col2Price, Nullable<decimal> col3Price, Nullable<decimal> col4Price, Nullable<decimal> col5Price, Nullable<int> col1Break, Nullable<int> col2Break, Nullable<int> col3Break, Nullable<int> col4Break, Nullable<int> col5Break, Nullable<decimal> discountedPrice1, Nullable<decimal> discountedPrice2, Nullable<decimal> discountedPrice3, Nullable<decimal> discountedPrice4, Nullable<decimal> discountedPrice5, string superSectionNo, string supersectionName, string brandID, string brandname, string sectionID, string sectionName)
         {
             var articleNoParameter = articleNo != null ?
@@ -542,6 +643,109 @@ namespace LoginForm.DataSet
                 new ObjectParameter("SectionName", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SlidingPriceAdd", articleNoParameter, articleDescriptionParameter, itemTypeCodeParameter, itemTypeDescParameter, introductionDateParameter, discontinuedDateParameter, quantity1Parameter, col1PriceParameter, col2PriceParameter, col3PriceParameter, col4PriceParameter, col5PriceParameter, col1BreakParameter, col2BreakParameter, col3BreakParameter, col4BreakParameter, col5BreakParameter, discountedPrice1Parameter, discountedPrice2Parameter, discountedPrice3Parameter, discountedPrice4Parameter, discountedPrice5Parameter, superSectionNoParameter, supersectionNameParameter, brandIDParameter, brandnameParameter, sectionIDParameter, sectionNameParameter);
+        }
+    
+        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var new_diagramnameParameter = new_diagramname != null ?
+                new ObjectParameter("new_diagramname", new_diagramname) :
+                new ObjectParameter("new_diagramname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
+        }
+    
+        public virtual int sp_upgraddiagrams()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     
         public virtual int SuperDiskAdd(string article_No, string article_Desc, Nullable<int> pack_Code, Nullable<int> pack_Quantity, Nullable<int> unit_Content, string unit_Measure, Nullable<decimal> uk_Col_1, Nullable<int> standard_Weight, string hazardous_Ind, string calibration_Ind, string obsolete_Flag, string mH1, string low_Discount_Ind, string licensed_Ind, string shelf_Life, string cofO, string eUR1_Indicator, string cCCN_No, string supercede_Date, string current_Cat_page, string uk_Intro_Date, string filler, string uk_Disc_Date, string substitute_By, string bHC_Flag, string filler1, Nullable<decimal> future_Sell_Price, string int_Cat, string new_Prod_Change_Ind, string out_of_Stock_Prohibit_change_ind, string disc_Change_Ind, string superceded_Change_Ind, string pack_Size_Change_Ind, string rolled_Product_Change_Ind, string expiring_Product_Change_Ind, string manufacturer, string mPN, string mH_Code_Level_1, Nullable<decimal> heigh, Nullable<decimal> width, Nullable<decimal> length)
