@@ -16,9 +16,9 @@ namespace LoginForm
         IMEEntities IME = new IMEEntities();
         string strAccountGroupName;
         int inNarrationCount;
-        decimal decAccountGroupId;
+       // decimal decAccountGroupId;
         frmAccountLedger frmAccountLedgerobj;
-        decimal decIdForOtherForms = 0;
+        //decimal decIdForOtherForms = 0;
         decimal decAccountGroupIdForEdit;
         int inId;
         bool isDefault;
