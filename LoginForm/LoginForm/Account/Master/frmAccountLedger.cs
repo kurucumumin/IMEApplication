@@ -454,7 +454,6 @@ namespace LoginForm
                     infoLedgerPosting.credit = decOpeningBalance;
                 }
                 infoLedgerPosting.detailsId = 0;
-                //TODO Yönetimden current yılı seçmeliyiz
                 infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
                 infoLedgerPosting.invoiceNo = decLedgerId.ToString();
                 infoLedgerPosting.chequeNo = string.Empty;

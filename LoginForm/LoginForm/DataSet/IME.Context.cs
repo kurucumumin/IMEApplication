@@ -33,7 +33,10 @@ namespace LoginForm.DataSet
         public virtual DbSet<Area> Areas { get; set; }
         public virtual DbSet<AuthorizationValue> AuthorizationValues { get; set; }
         public virtual DbSet<BankReconciliation> BankReconciliations { get; set; }
+        public virtual DbSet<Batch> Batches { get; set; }
         public virtual DbSet<BonusDeduction> BonusDeductions { get; set; }
+        public virtual DbSet<BudgetDetail> BudgetDetails { get; set; }
+        public virtual DbSet<BudgetMaster> BudgetMasters { get; set; }
         public virtual DbSet<Capital> Capitals { get; set; }
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
@@ -59,6 +62,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<ExchangeRate> ExchangeRates { get; set; }
         public virtual DbSet<ExtendedRange> ExtendedRanges { get; set; }
         public virtual DbSet<FinancialYear> FinancialYears { get; set; }
+        public virtual DbSet<Godown> Godowns { get; set; }
         public virtual DbSet<Hazardou> Hazardous { get; set; }
         public virtual DbSet<ItemNote> ItemNotes { get; set; }
         public virtual DbSet<JournalDetail> JournalDetails { get; set; }
@@ -89,6 +93,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
         public virtual DbSet<Quotation> Quotations { get; set; }
         public virtual DbSet<QuotationDetail> QuotationDetails { get; set; }
+        public virtual DbSet<Rack> Racks { get; set; }
         public virtual DbSet<Rate> Rates { get; set; }
         public virtual DbSet<ReceiptDetail> ReceiptDetails { get; set; }
         public virtual DbSet<ReceiptMaster> ReceiptMasters { get; set; }
@@ -118,6 +123,8 @@ namespace LoginForm.DataSet
         public virtual DbSet<Tax> Taxes { get; set; }
         public virtual DbSet<TaxDetail> TaxDetails { get; set; }
         public virtual DbSet<Town> Towns { get; set; }
+        public virtual DbSet<Unit> Units { get; set; }
+        public virtual DbSet<UnitConvertion> UnitConvertions { get; set; }
         public virtual DbSet<VoucherType> VoucherTypes { get; set; }
         public virtual DbSet<VoucherTypeTax> VoucherTypeTaxes { get; set; }
         public virtual DbSet<Worker> Workers { get; set; }
@@ -130,6 +137,24 @@ namespace LoginForm.DataSet
                 new ObjectParameter("articleNo", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ArticleSearch_Result>("ArticleSearch", articleNoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> ArticleSearchCheckExistence(string articleNo)
+        {
+            var articleNoParameter = articleNo != null ?
+                new ObjectParameter("articleNo", articleNo) :
+                new ObjectParameter("articleNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ArticleSearchCheckExistence", articleNoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> ArticleSearchHasMultipleItems(string articleNo)
+        {
+            var articleNoParameter = articleNo != null ?
+                new ObjectParameter("articleNo", articleNo) :
+                new ObjectParameter("articleNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ArticleSearchHasMultipleItems", articleNoParameter);
         }
     
         public virtual ObjectResult<ArticleSearchWithAll_Result> ArticleSearchWithAll(string articleNo, string articleDesc, string mPNNo, string note)
@@ -177,6 +202,19 @@ namespace LoginForm.DataSet
                 new ObjectParameter("toDate", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BankReconciliationFillUnrecon_Result>("BankReconciliationFillUnrecon", ledgerIdParameter, fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<BudgetVariance_Result> BudgetVariance(Nullable<decimal> budgetMasterId, string type)
+        {
+            var budgetMasterIdParameter = budgetMasterId.HasValue ?
+                new ObjectParameter("budgetMasterId", budgetMasterId) :
+                new ObjectParameter("budgetMasterId", typeof(decimal));
+    
+            var typeParameter = type != null ?
+                new ObjectParameter("type", type) :
+                new ObjectParameter("type", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BudgetVariance_Result>("BudgetVariance", budgetMasterIdParameter, typeParameter);
         }
     
         public virtual int ExtendedRangeADD(string articleNo, string brand, string mPN, string articleDescription, Nullable<decimal> extendedRangeLength, Nullable<decimal> width, Nullable<decimal> height, string dimensionUoM, string weightUoM, Nullable<int> cCCN, string countryofOrigin, string unitofMeasure, Nullable<int> packSize, Nullable<int> salesUoM, string costPriceCurrency, Nullable<decimal> col1Price, Nullable<decimal> col2Price, Nullable<decimal> col3Price, Nullable<decimal> col4Price, Nullable<decimal> col5Price, Nullable<int> col1Break, Nullable<int> col2Break, Nullable<int> col3Break, Nullable<int> col4Break, Nullable<int> col5Break, Nullable<decimal> discountedPrice1, Nullable<decimal> discountedPrice2, Nullable<decimal> discountedPrice3, Nullable<decimal> discountedPrice4, Nullable<decimal> discountedPrice5, string manufacturerCode, Nullable<int> extendedRangeWeight)
@@ -425,6 +463,88 @@ namespace LoginForm.DataSet
                 new ObjectParameter("status", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PDCClearanceRegisterSearch_Result>("PDCClearanceRegisterSearch", voucherTypeNameParameter, ledgerNameParameter, toDateParameter, fromDateParameter, chequeNoParameter, bankIdParameter, statusParameter);
+        }
+    
+        public virtual ObjectResult<PdcPayableReportSearch_Result> PdcPayableReportSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string voucherTypeName, string ledgerName, Nullable<System.DateTime> chequeDateFrom, Nullable<System.DateTime> chequeDateTo, string status, string chequeNo, string voucherNo)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var voucherTypeNameParameter = voucherTypeName != null ?
+                new ObjectParameter("voucherTypeName", voucherTypeName) :
+                new ObjectParameter("voucherTypeName", typeof(string));
+    
+            var ledgerNameParameter = ledgerName != null ?
+                new ObjectParameter("ledgerName", ledgerName) :
+                new ObjectParameter("ledgerName", typeof(string));
+    
+            var chequeDateFromParameter = chequeDateFrom.HasValue ?
+                new ObjectParameter("chequeDateFrom", chequeDateFrom) :
+                new ObjectParameter("chequeDateFrom", typeof(System.DateTime));
+    
+            var chequeDateToParameter = chequeDateTo.HasValue ?
+                new ObjectParameter("chequeDateTo", chequeDateTo) :
+                new ObjectParameter("chequeDateTo", typeof(System.DateTime));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("status", status) :
+                new ObjectParameter("status", typeof(string));
+    
+            var chequeNoParameter = chequeNo != null ?
+                new ObjectParameter("chequeNo", chequeNo) :
+                new ObjectParameter("chequeNo", typeof(string));
+    
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PdcPayableReportSearch_Result>("PdcPayableReportSearch", fromDateParameter, toDateParameter, voucherTypeNameParameter, ledgerNameParameter, chequeDateFromParameter, chequeDateToParameter, statusParameter, chequeNoParameter, voucherNoParameter);
+        }
+    
+        public virtual ObjectResult<PdcReceivableReportSearch_Result> PdcReceivableReportSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string voucherTypeName, string ledgerName, Nullable<System.DateTime> chequeDateFrom, Nullable<System.DateTime> chequeDateTo, string status, string chequeNo, string voucherNo)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var voucherTypeNameParameter = voucherTypeName != null ?
+                new ObjectParameter("voucherTypeName", voucherTypeName) :
+                new ObjectParameter("voucherTypeName", typeof(string));
+    
+            var ledgerNameParameter = ledgerName != null ?
+                new ObjectParameter("ledgerName", ledgerName) :
+                new ObjectParameter("ledgerName", typeof(string));
+    
+            var chequeDateFromParameter = chequeDateFrom.HasValue ?
+                new ObjectParameter("chequeDateFrom", chequeDateFrom) :
+                new ObjectParameter("chequeDateFrom", typeof(System.DateTime));
+    
+            var chequeDateToParameter = chequeDateTo.HasValue ?
+                new ObjectParameter("chequeDateTo", chequeDateTo) :
+                new ObjectParameter("chequeDateTo", typeof(System.DateTime));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("status", status) :
+                new ObjectParameter("status", typeof(string));
+    
+            var chequeNoParameter = chequeNo != null ?
+                new ObjectParameter("chequeNo", chequeNo) :
+                new ObjectParameter("chequeNo", typeof(string));
+    
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PdcReceivableReportSearch_Result>("PdcReceivableReportSearch", fromDateParameter, toDateParameter, voucherTypeNameParameter, ledgerNameParameter, chequeDateFromParameter, chequeDateToParameter, statusParameter, chequeNoParameter, voucherNoParameter);
         }
     
         public virtual int SlidingPriceAdd(string articleNo, string articleDescription, Nullable<int> itemTypeCode, string itemTypeDesc, string introductionDate, string discontinuedDate, Nullable<int> quantity1, Nullable<decimal> col1Price, Nullable<decimal> col2Price, Nullable<decimal> col3Price, Nullable<decimal> col4Price, Nullable<decimal> col5Price, Nullable<int> col1Break, Nullable<int> col2Break, Nullable<int> col3Break, Nullable<int> col4Break, Nullable<int> col5Break, Nullable<decimal> discountedPrice1, Nullable<decimal> discountedPrice2, Nullable<decimal> discountedPrice3, Nullable<decimal> discountedPrice4, Nullable<decimal> discountedPrice5, string superSectionNo, string supersectionName, string brandID, string brandname, string sectionID, string sectionName)
@@ -880,64 +1000,6 @@ namespace LoginForm.DataSet
                 new ObjectParameter("Length", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SuperDiskPAdd", article_NoParameter, article_DescParameter, pack_CodeParameter, pack_QuantityParameter, unit_ContentParameter, unit_MeasureParameter, uk_Col_1Parameter, standard_WeightParameter, hazardous_IndParameter, calibration_IndParameter, obsolete_FlagParameter, mH1Parameter, low_Discount_IndParameter, licensed_IndParameter, shelf_LifeParameter, cofOParameter, eUR1_IndicatorParameter, cCCN_NoParameter, supercede_DateParameter, current_Cat_pageParameter, uk_Intro_DateParameter, fillerParameter, uk_Disc_DateParameter, substitute_ByParameter, bHC_FlagParameter, filler1Parameter, future_Sell_PriceParameter, int_CatParameter, new_Prod_Change_IndParameter, out_of_Stock_Prohibit_change_indParameter, disc_Change_IndParameter, superceded_Change_IndParameter, pack_Size_Change_IndParameter, rolled_Product_Change_IndParameter, expiring_Product_Change_IndParameter, manufacturerParameter, mPNParameter, mH_Code_Level_1Parameter, heighParameter, widthParameter, lengthParameter);
-        }
-    
-        public virtual ObjectResult<BankReconciliationFillUnrecon_Result> BankReconciliationFillUnrecon(Nullable<decimal> ledgerId, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
-        {
-            var ledgerIdParameter = ledgerId.HasValue ?
-                new ObjectParameter("ledgerId", ledgerId) :
-                new ObjectParameter("ledgerId", typeof(decimal));
-    
-            var fromDateParameter = fromDate.HasValue ?
-                new ObjectParameter("fromDate", fromDate) :
-                new ObjectParameter("fromDate", typeof(System.DateTime));
-    
-            var toDateParameter = toDate.HasValue ?
-                new ObjectParameter("toDate", toDate) :
-                new ObjectParameter("toDate", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BankReconciliationFillUnrecon_Result>("BankReconciliationFillUnrecon", ledgerIdParameter, fromDateParameter, toDateParameter);
-        }
-    
-        public virtual ObjectResult<PdcReceivableReportSearch_Result> PdcReceivableReportSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string voucherTypeName, string ledgerName, Nullable<System.DateTime> chequeDateFrom, Nullable<System.DateTime> chequeDateTo, string status, string chequeNo, string voucherNo)
-        {
-            var fromDateParameter = fromDate.HasValue ?
-                new ObjectParameter("fromDate", fromDate) :
-                new ObjectParameter("fromDate", typeof(System.DateTime));
-    
-            var toDateParameter = toDate.HasValue ?
-                new ObjectParameter("toDate", toDate) :
-                new ObjectParameter("toDate", typeof(System.DateTime));
-    
-            var voucherTypeNameParameter = voucherTypeName != null ?
-                new ObjectParameter("voucherTypeName", voucherTypeName) :
-                new ObjectParameter("voucherTypeName", typeof(string));
-    
-            var ledgerNameParameter = ledgerName != null ?
-                new ObjectParameter("ledgerName", ledgerName) :
-                new ObjectParameter("ledgerName", typeof(string));
-    
-            var chequeDateFromParameter = chequeDateFrom.HasValue ?
-                new ObjectParameter("chequeDateFrom", chequeDateFrom) :
-                new ObjectParameter("chequeDateFrom", typeof(System.DateTime));
-    
-            var chequeDateToParameter = chequeDateTo.HasValue ?
-                new ObjectParameter("chequeDateTo", chequeDateTo) :
-                new ObjectParameter("chequeDateTo", typeof(System.DateTime));
-    
-            var statusParameter = status != null ?
-                new ObjectParameter("status", status) :
-                new ObjectParameter("status", typeof(string));
-    
-            var chequeNoParameter = chequeNo != null ?
-                new ObjectParameter("chequeNo", chequeNo) :
-                new ObjectParameter("chequeNo", typeof(string));
-    
-            var voucherNoParameter = voucherNo != null ?
-                new ObjectParameter("voucherNo", voucherNo) :
-                new ObjectParameter("voucherNo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PdcReceivableReportSearch_Result>("PdcReceivableReportSearch", fromDateParameter, toDateParameter, voucherTypeNameParameter, ledgerNameParameter, chequeDateFromParameter, chequeDateToParameter, statusParameter, chequeNoParameter, voucherNoParameter);
         }
     }
 }
