@@ -140,7 +140,7 @@ namespace LoginForm
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Lgin Form", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(ex.Message, "LoginForm", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 return base.ProcessRightKey(keyData);
                 {
@@ -193,7 +193,7 @@ namespace LoginForm
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(ex.Message, "LoginForm", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }

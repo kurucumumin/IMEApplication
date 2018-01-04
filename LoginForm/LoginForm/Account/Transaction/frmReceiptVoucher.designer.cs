@@ -52,7 +52,7 @@
             this.btnLedgerAdd = new System.Windows.Forms.Button();
             this.txtDate = new System.Windows.Forms.TextBox();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
-            this.dgvReceiptVoucher = new Open_Miracle.dgv.DataGridViewEnter();
+            this.dgvReceiptVoucher = new System.Windows.Forms.DataGridView();
             this.dgvtxtSlNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtreceiptMasterId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtreceiptDetailsId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -489,7 +489,7 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblVoucherNo;
         private System.Windows.Forms.TextBox txtVoucherNo;
-        private dgv.DataGridViewEnter dgvReceiptVoucher;
+        private System.Windows.Forms.DataGridView dgvReceiptVoucher;
         private System.Windows.Forms.Button btnLedgerAdd;
         private System.Windows.Forms.TextBox txtDate;
         private System.Windows.Forms.DateTimePicker dtpDate;
