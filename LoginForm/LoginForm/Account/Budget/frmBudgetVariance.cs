@@ -1,16 +1,4 @@
-﻿//This is a source code or part of OpenMiracle project
-//Copyright (C) 2013  Cybrosys Technologies Pvt.Ltd
-//This program is free software: you can redistribute it and/or modify
-//it under the terms of the GNU General Public License as published by
-//the Free Software Foundation, either version 3 of the License, or
-//(at your option) any later version.
-//This program is distributed in the hope that it will be useful,
-//but WITHOUT ANY WARRANTY; without even the implied warranty of
-//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//GNU General Public License for more details.
-//You should have received a copy of the GNU General Public License
-//along with this program.  If not, see <http://www.gnu.org/licenses/>.
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,7 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-namespace Open_Miracle
+using System.Collections;
+using LoginForm.Services;
+using LoginForm.Account.Services;
+using LoginForm.Account;
+
+namespace LoginForm
 {
     public partial class frmBudgetVariance : Form
     {
@@ -135,10 +128,10 @@ namespace Open_Miracle
         /// Function to create datasets
         /// </summary>
         /// <returns></returns>
-        public DataSet getdataset()
+        public System.Data.DataSet getdataset()
         {
             FinancialStatementSP spfinancial = new FinancialStatementSP();
-            DataSet dsBudget = new DataSet();
+            System.Data.DataSet dsBudget = new System.Data.DataSet();
             try
             {
                 DataTable dtblbudget = GetDataTable();
@@ -160,17 +153,17 @@ namespace Open_Miracle
         /// <param name="toDate"></param>
         public void Print(DateTime fromDate, DateTime toDate)
         {
-            try
-            {
-                DataSet dsBudget = getdataset();
-                frmReport frmReport = new frmReport();
-                frmReport.MdiParent = formMDI.MDIObj;
-                frmReport.Budget(dsBudget);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("BV:05" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //try
+            //{
+            //    DataSet dsBudget = getdataset();
+            //    frmReport frmReport = new frmReport();
+            //    frmReport.MdiParent = formMDI.MDIObj;
+            //    frmReport.Budget(dsBudget);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("BV:05" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         #endregion
         #region EVENTS
@@ -218,7 +211,7 @@ namespace Open_Miracle
             {
                 if (dgvBudgetVariance.Rows.Count > 0)
                 {
-                    Print(PublicVariables._dtFromDate, PublicVariables._dtToDate);
+                    Print(Convert.ToDateTime(Utils.getManagement().FinancialYear.fromDate),Convert.ToDateTime(Utils.getManagement().FinancialYear.toDate));
                 }
                 else
                 {
@@ -243,14 +236,14 @@ namespace Open_Miracle
             {
                 if (e.KeyChar == 27)
                 {
-                    if (PublicVariables.isMessageClose)
-                    {
+                    //if (PublicVariables.isMessageClose)
+                    //{
                         Messages.CloseMessage(this);
-                    }
-                    else
-                    {
+                    //}
+                    //else
+                    //{
                         this.Close();
-                    }
+                    //}
                 }
             }
             catch (Exception ex)

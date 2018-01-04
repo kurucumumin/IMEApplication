@@ -33,7 +33,10 @@ namespace LoginForm.DataSet
         public virtual DbSet<Area> Areas { get; set; }
         public virtual DbSet<AuthorizationValue> AuthorizationValues { get; set; }
         public virtual DbSet<BankReconciliation> BankReconciliations { get; set; }
+        public virtual DbSet<Batch> Batches { get; set; }
         public virtual DbSet<BonusDeduction> BonusDeductions { get; set; }
+        public virtual DbSet<BudgetDetail> BudgetDetails { get; set; }
+        public virtual DbSet<BudgetMaster> BudgetMasters { get; set; }
         public virtual DbSet<Capital> Capitals { get; set; }
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
@@ -59,6 +62,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<ExchangeRate> ExchangeRates { get; set; }
         public virtual DbSet<ExtendedRange> ExtendedRanges { get; set; }
         public virtual DbSet<FinancialYear> FinancialYears { get; set; }
+        public virtual DbSet<Godown> Godowns { get; set; }
         public virtual DbSet<Hazardou> Hazardous { get; set; }
         public virtual DbSet<ItemNote> ItemNotes { get; set; }
         public virtual DbSet<JournalDetail> JournalDetails { get; set; }
@@ -89,6 +93,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
         public virtual DbSet<Quotation> Quotations { get; set; }
         public virtual DbSet<QuotationDetail> QuotationDetails { get; set; }
+        public virtual DbSet<Rack> Racks { get; set; }
         public virtual DbSet<Rate> Rates { get; set; }
         public virtual DbSet<ReceiptDetail> ReceiptDetails { get; set; }
         public virtual DbSet<ReceiptDetail1> ReceiptDetails1 { get; set; }
@@ -99,6 +104,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<SalaryVoucherMaster> SalaryVoucherMasters { get; set; }
         public virtual DbSet<SaleOrder> SaleOrders { get; set; }
         public virtual DbSet<SaleOrderDetail> SaleOrderDetails { get; set; }
+        public virtual DbSet<SalesMaster> SalesMasters { get; set; }
         public virtual DbSet<Setting> Settings { get; set; }
         public virtual DbSet<SlidingPrice> SlidingPrices { get; set; }
         public virtual DbSet<Stock> Stocks { get; set; }
@@ -119,10 +125,95 @@ namespace LoginForm.DataSet
         public virtual DbSet<Tax> Taxes { get; set; }
         public virtual DbSet<TaxDetail> TaxDetails { get; set; }
         public virtual DbSet<Town> Towns { get; set; }
+        public virtual DbSet<Unit> Units { get; set; }
+        public virtual DbSet<UnitConvertion> UnitConvertions { get; set; }
         public virtual DbSet<VoucherType> VoucherTypes { get; set; }
         public virtual DbSet<VoucherTypeTax> VoucherTypeTaxes { get; set; }
         public virtual DbSet<Worker> Workers { get; set; }
         public virtual DbSet<SalaryVoucherDetail> SalaryVoucherDetails { get; set; }
+    
+        public virtual ObjectResult<ArticleSearch_Result> ArticleSearch(string articleNo)
+        {
+            var articleNoParameter = articleNo != null ?
+                new ObjectParameter("articleNo", articleNo) :
+                new ObjectParameter("articleNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ArticleSearch_Result>("ArticleSearch", articleNoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> ArticleSearchCheckExistence(string articleNo)
+        {
+            var articleNoParameter = articleNo != null ?
+                new ObjectParameter("articleNo", articleNo) :
+                new ObjectParameter("articleNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ArticleSearchCheckExistence", articleNoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> ArticleSearchHasMultipleItems(string articleNo)
+        {
+            var articleNoParameter = articleNo != null ?
+                new ObjectParameter("articleNo", articleNo) :
+                new ObjectParameter("articleNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ArticleSearchHasMultipleItems", articleNoParameter);
+        }
+    
+        public virtual ObjectResult<ArticleSearchWithAll_Result> ArticleSearchWithAll(string articleNo, string articleDesc, string mPNNo, string note)
+        {
+            var articleNoParameter = articleNo != null ?
+                new ObjectParameter("articleNo", articleNo) :
+                new ObjectParameter("articleNo", typeof(string));
+    
+            var articleDescParameter = articleDesc != null ?
+                new ObjectParameter("articleDesc", articleDesc) :
+                new ObjectParameter("articleDesc", typeof(string));
+    
+            var mPNNoParameter = mPNNo != null ?
+                new ObjectParameter("MPNNo", mPNNo) :
+                new ObjectParameter("MPNNo", typeof(string));
+    
+            var noteParameter = note != null ?
+                new ObjectParameter("note", note) :
+                new ObjectParameter("note", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ArticleSearchWithAll_Result>("ArticleSearchWithAll", articleNoParameter, articleDescParameter, mPNNoParameter, noteParameter);
+        }
+    
+        public virtual ObjectResult<ArticleSearchwithMPN_Result> ArticleSearchwithMPN(string mPNNo)
+        {
+            var mPNNoParameter = mPNNo != null ?
+                new ObjectParameter("MPNNo", mPNNo) :
+                new ObjectParameter("MPNNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ArticleSearchwithMPN_Result>("ArticleSearchwithMPN", mPNNoParameter);
+        }
+    
+        public virtual ObjectResult<BankReconciliationFillUnrecon_Result> BankReconciliationFillUnrecon(Nullable<decimal> ledgerId, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var ledgerIdParameter = ledgerId.HasValue ?
+                new ObjectParameter("ledgerId", ledgerId) :
+                new ObjectParameter("ledgerId", typeof(decimal));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BankReconciliationFillUnrecon_Result>("BankReconciliationFillUnrecon", ledgerIdParameter, fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<BudgetVariance_Result> BudgetVariance(Nullable<decimal> budgetMasterId)
+        {
+            var budgetMasterIdParameter = budgetMasterId.HasValue ?
+                new ObjectParameter("budgetMasterId", budgetMasterId) :
+                new ObjectParameter("budgetMasterId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BudgetVariance_Result>("BudgetVariance", budgetMasterIdParameter);
+        }
     
         public virtual int ExtendedRangeADD(string articleNo, string brand, string mPN, string articleDescription, Nullable<decimal> extendedRangeLength, Nullable<decimal> width, Nullable<decimal> height, string dimensionUoM, string weightUoM, Nullable<int> cCCN, string countryofOrigin, string unitofMeasure, Nullable<int> packSize, Nullable<int> salesUoM, string costPriceCurrency, Nullable<decimal> col1Price, Nullable<decimal> col2Price, Nullable<decimal> col3Price, Nullable<decimal> col4Price, Nullable<decimal> col5Price, Nullable<int> col1Break, Nullable<int> col2Break, Nullable<int> col3Break, Nullable<int> col4Break, Nullable<int> col5Break, Nullable<decimal> discountedPrice1, Nullable<decimal> discountedPrice2, Nullable<decimal> discountedPrice3, Nullable<decimal> discountedPrice4, Nullable<decimal> discountedPrice5, string manufacturerCode, Nullable<int> extendedRangeWeight)
         {
@@ -370,6 +461,88 @@ namespace LoginForm.DataSet
                 new ObjectParameter("status", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PDCClearanceRegisterSearch_Result>("PDCClearanceRegisterSearch", voucherTypeNameParameter, ledgerNameParameter, toDateParameter, fromDateParameter, chequeNoParameter, bankIdParameter, statusParameter);
+        }
+    
+        public virtual ObjectResult<PdcPayableReportSearch_Result> PdcPayableReportSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string voucherTypeName, string ledgerName, Nullable<System.DateTime> chequeDateFrom, Nullable<System.DateTime> chequeDateTo, string status, string chequeNo, string voucherNo)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var voucherTypeNameParameter = voucherTypeName != null ?
+                new ObjectParameter("voucherTypeName", voucherTypeName) :
+                new ObjectParameter("voucherTypeName", typeof(string));
+    
+            var ledgerNameParameter = ledgerName != null ?
+                new ObjectParameter("ledgerName", ledgerName) :
+                new ObjectParameter("ledgerName", typeof(string));
+    
+            var chequeDateFromParameter = chequeDateFrom.HasValue ?
+                new ObjectParameter("chequeDateFrom", chequeDateFrom) :
+                new ObjectParameter("chequeDateFrom", typeof(System.DateTime));
+    
+            var chequeDateToParameter = chequeDateTo.HasValue ?
+                new ObjectParameter("chequeDateTo", chequeDateTo) :
+                new ObjectParameter("chequeDateTo", typeof(System.DateTime));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("status", status) :
+                new ObjectParameter("status", typeof(string));
+    
+            var chequeNoParameter = chequeNo != null ?
+                new ObjectParameter("chequeNo", chequeNo) :
+                new ObjectParameter("chequeNo", typeof(string));
+    
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PdcPayableReportSearch_Result>("PdcPayableReportSearch", fromDateParameter, toDateParameter, voucherTypeNameParameter, ledgerNameParameter, chequeDateFromParameter, chequeDateToParameter, statusParameter, chequeNoParameter, voucherNoParameter);
+        }
+    
+        public virtual ObjectResult<PdcReceivableReportSearch_Result> PdcReceivableReportSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string voucherTypeName, string ledgerName, Nullable<System.DateTime> chequeDateFrom, Nullable<System.DateTime> chequeDateTo, string status, string chequeNo, string voucherNo)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var voucherTypeNameParameter = voucherTypeName != null ?
+                new ObjectParameter("voucherTypeName", voucherTypeName) :
+                new ObjectParameter("voucherTypeName", typeof(string));
+    
+            var ledgerNameParameter = ledgerName != null ?
+                new ObjectParameter("ledgerName", ledgerName) :
+                new ObjectParameter("ledgerName", typeof(string));
+    
+            var chequeDateFromParameter = chequeDateFrom.HasValue ?
+                new ObjectParameter("chequeDateFrom", chequeDateFrom) :
+                new ObjectParameter("chequeDateFrom", typeof(System.DateTime));
+    
+            var chequeDateToParameter = chequeDateTo.HasValue ?
+                new ObjectParameter("chequeDateTo", chequeDateTo) :
+                new ObjectParameter("chequeDateTo", typeof(System.DateTime));
+    
+            var statusParameter = status != null ?
+                new ObjectParameter("status", status) :
+                new ObjectParameter("status", typeof(string));
+    
+            var chequeNoParameter = chequeNo != null ?
+                new ObjectParameter("chequeNo", chequeNo) :
+                new ObjectParameter("chequeNo", typeof(string));
+    
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PdcReceivableReportSearch_Result>("PdcReceivableReportSearch", fromDateParameter, toDateParameter, voucherTypeNameParameter, ledgerNameParameter, chequeDateFromParameter, chequeDateToParameter, statusParameter, chequeNoParameter, voucherNoParameter);
         }
     
         public virtual int SlidingPriceAdd(string articleNo, string articleDescription, Nullable<int> itemTypeCode, string itemTypeDesc, string introductionDate, string discontinuedDate, Nullable<int> quantity1, Nullable<decimal> col1Price, Nullable<decimal> col2Price, Nullable<decimal> col3Price, Nullable<decimal> col4Price, Nullable<decimal> col5Price, Nullable<int> col1Break, Nullable<int> col2Break, Nullable<int> col3Break, Nullable<int> col4Break, Nullable<int> col5Break, Nullable<decimal> discountedPrice1, Nullable<decimal> discountedPrice2, Nullable<decimal> discountedPrice3, Nullable<decimal> discountedPrice4, Nullable<decimal> discountedPrice5, string superSectionNo, string supersectionName, string brandID, string brandname, string sectionID, string sectionName)
@@ -825,265 +998,6 @@ namespace LoginForm.DataSet
                 new ObjectParameter("Length", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SuperDiskPAdd", article_NoParameter, article_DescParameter, pack_CodeParameter, pack_QuantityParameter, unit_ContentParameter, unit_MeasureParameter, uk_Col_1Parameter, standard_WeightParameter, hazardous_IndParameter, calibration_IndParameter, obsolete_FlagParameter, mH1Parameter, low_Discount_IndParameter, licensed_IndParameter, shelf_LifeParameter, cofOParameter, eUR1_IndicatorParameter, cCCN_NoParameter, supercede_DateParameter, current_Cat_pageParameter, uk_Intro_DateParameter, fillerParameter, uk_Disc_DateParameter, substitute_ByParameter, bHC_FlagParameter, filler1Parameter, future_Sell_PriceParameter, int_CatParameter, new_Prod_Change_IndParameter, out_of_Stock_Prohibit_change_indParameter, disc_Change_IndParameter, superceded_Change_IndParameter, pack_Size_Change_IndParameter, rolled_Product_Change_IndParameter, expiring_Product_Change_IndParameter, manufacturerParameter, mPNParameter, mH_Code_Level_1Parameter, heighParameter, widthParameter, lengthParameter);
-        }
-    
-        public virtual ObjectResult<BankReconciliationFillUnrecon_Result> BankReconciliationFillUnrecon(Nullable<decimal> ledgerId, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
-        {
-            var ledgerIdParameter = ledgerId.HasValue ?
-                new ObjectParameter("ledgerId", ledgerId) :
-                new ObjectParameter("ledgerId", typeof(decimal));
-    
-            var fromDateParameter = fromDate.HasValue ?
-                new ObjectParameter("fromDate", fromDate) :
-                new ObjectParameter("fromDate", typeof(System.DateTime));
-    
-            var toDateParameter = toDate.HasValue ?
-                new ObjectParameter("toDate", toDate) :
-                new ObjectParameter("toDate", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BankReconciliationFillUnrecon_Result>("BankReconciliationFillUnrecon", ledgerIdParameter, fromDateParameter, toDateParameter);
-        }
-    
-        public virtual ObjectResult<PdcReceivableReportSearch_Result> PdcReceivableReportSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string voucherTypeName, string ledgerName, Nullable<System.DateTime> chequeDateFrom, Nullable<System.DateTime> chequeDateTo, string status, string chequeNo, string voucherNo)
-        {
-            var fromDateParameter = fromDate.HasValue ?
-                new ObjectParameter("fromDate", fromDate) :
-                new ObjectParameter("fromDate", typeof(System.DateTime));
-    
-            var toDateParameter = toDate.HasValue ?
-                new ObjectParameter("toDate", toDate) :
-                new ObjectParameter("toDate", typeof(System.DateTime));
-    
-            var voucherTypeNameParameter = voucherTypeName != null ?
-                new ObjectParameter("voucherTypeName", voucherTypeName) :
-                new ObjectParameter("voucherTypeName", typeof(string));
-    
-            var ledgerNameParameter = ledgerName != null ?
-                new ObjectParameter("ledgerName", ledgerName) :
-                new ObjectParameter("ledgerName", typeof(string));
-    
-            var chequeDateFromParameter = chequeDateFrom.HasValue ?
-                new ObjectParameter("chequeDateFrom", chequeDateFrom) :
-                new ObjectParameter("chequeDateFrom", typeof(System.DateTime));
-    
-            var chequeDateToParameter = chequeDateTo.HasValue ?
-                new ObjectParameter("chequeDateTo", chequeDateTo) :
-                new ObjectParameter("chequeDateTo", typeof(System.DateTime));
-    
-            var statusParameter = status != null ?
-                new ObjectParameter("status", status) :
-                new ObjectParameter("status", typeof(string));
-    
-            var chequeNoParameter = chequeNo != null ?
-                new ObjectParameter("chequeNo", chequeNo) :
-                new ObjectParameter("chequeNo", typeof(string));
-    
-            var voucherNoParameter = voucherNo != null ?
-                new ObjectParameter("voucherNo", voucherNo) :
-                new ObjectParameter("voucherNo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PdcReceivableReportSearch_Result>("PdcReceivableReportSearch", fromDateParameter, toDateParameter, voucherTypeNameParameter, ledgerNameParameter, chequeDateFromParameter, chequeDateToParameter, statusParameter, chequeNoParameter, voucherNoParameter);
-        }
-    
-        public virtual ObjectResult<PdcPayableReportSearch_Result> PdcPayableReportSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string voucherTypeName, string ledgerName, Nullable<System.DateTime> chequeDateFrom, Nullable<System.DateTime> chequeDateTo, string status, string chequeNo, string voucherNo)
-        {
-            var fromDateParameter = fromDate.HasValue ?
-                new ObjectParameter("fromDate", fromDate) :
-                new ObjectParameter("fromDate", typeof(System.DateTime));
-    
-            var toDateParameter = toDate.HasValue ?
-                new ObjectParameter("toDate", toDate) :
-                new ObjectParameter("toDate", typeof(System.DateTime));
-    
-            var voucherTypeNameParameter = voucherTypeName != null ?
-                new ObjectParameter("voucherTypeName", voucherTypeName) :
-                new ObjectParameter("voucherTypeName", typeof(string));
-    
-            var ledgerNameParameter = ledgerName != null ?
-                new ObjectParameter("ledgerName", ledgerName) :
-                new ObjectParameter("ledgerName", typeof(string));
-    
-            var chequeDateFromParameter = chequeDateFrom.HasValue ?
-                new ObjectParameter("chequeDateFrom", chequeDateFrom) :
-                new ObjectParameter("chequeDateFrom", typeof(System.DateTime));
-    
-            var chequeDateToParameter = chequeDateTo.HasValue ?
-                new ObjectParameter("chequeDateTo", chequeDateTo) :
-                new ObjectParameter("chequeDateTo", typeof(System.DateTime));
-    
-            var statusParameter = status != null ?
-                new ObjectParameter("status", status) :
-                new ObjectParameter("status", typeof(string));
-    
-            var chequeNoParameter = chequeNo != null ?
-                new ObjectParameter("chequeNo", chequeNo) :
-                new ObjectParameter("chequeNo", typeof(string));
-    
-            var voucherNoParameter = voucherNo != null ?
-                new ObjectParameter("voucherNo", voucherNo) :
-                new ObjectParameter("voucherNo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PdcPayableReportSearch_Result>("PdcPayableReportSearch", fromDateParameter, toDateParameter, voucherTypeNameParameter, ledgerNameParameter, chequeDateFromParameter, chequeDateToParameter, statusParameter, chequeNoParameter, voucherNoParameter);
-        }
-    
-        public virtual ObjectResult<ArticleSearch_Result> ArticleSearch(string articleNo)
-        {
-            var articleNoParameter = articleNo != null ?
-                new ObjectParameter("articleNo", articleNo) :
-                new ObjectParameter("articleNo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ArticleSearch_Result>("ArticleSearch", articleNoParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<int>> ArticleSearchCheckExistence(string articleNo)
-        {
-            var articleNoParameter = articleNo != null ?
-                new ObjectParameter("articleNo", articleNo) :
-                new ObjectParameter("articleNo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ArticleSearchCheckExistence", articleNoParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<int>> ArticleSearchHasMultipleItems(string articleNo)
-        {
-            var articleNoParameter = articleNo != null ?
-                new ObjectParameter("articleNo", articleNo) :
-                new ObjectParameter("articleNo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("ArticleSearchHasMultipleItems", articleNoParameter);
-        }
-    
-        public virtual ObjectResult<ArticleSearchWithAll_Result> ArticleSearchWithAll(string articleNo, string articleDesc, string mPNNo, string note)
-        {
-            var articleNoParameter = articleNo != null ?
-                new ObjectParameter("articleNo", articleNo) :
-                new ObjectParameter("articleNo", typeof(string));
-    
-            var articleDescParameter = articleDesc != null ?
-                new ObjectParameter("articleDesc", articleDesc) :
-                new ObjectParameter("articleDesc", typeof(string));
-    
-            var mPNNoParameter = mPNNo != null ?
-                new ObjectParameter("MPNNo", mPNNo) :
-                new ObjectParameter("MPNNo", typeof(string));
-    
-            var noteParameter = note != null ?
-                new ObjectParameter("note", note) :
-                new ObjectParameter("note", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ArticleSearchWithAll_Result>("ArticleSearchWithAll", articleNoParameter, articleDescParameter, mPNNoParameter, noteParameter);
-        }
-    
-        public virtual ObjectResult<ArticleSearchwithMPN_Result> ArticleSearchwithMPN(string mPNNo)
-        {
-            var mPNNoParameter = mPNNo != null ?
-                new ObjectParameter("MPNNo", mPNNo) :
-                new ObjectParameter("MPNNo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ArticleSearchwithMPN_Result>("ArticleSearchwithMPN", mPNNoParameter);
-        }
-    
-        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
-        }
-    
-        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
-        }
-    
-        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual int sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual int sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var new_diagramnameParameter = new_diagramname != null ?
-                new ObjectParameter("new_diagramname", new_diagramname) :
-                new ObjectParameter("new_diagramname", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
-        }
-    
-        public virtual int sp_upgraddiagrams()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     }
 }

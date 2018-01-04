@@ -50,6 +50,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> TotalMargin { get; set; }
         public Nullable<decimal> VoucherId { get; set; }
         public Nullable<decimal> VoucherTypeId { get; set; }
+        public Nullable<decimal> VoucherNo { get; set; }
     
         public virtual Currency Currency { get; set; }
         public virtual Customer Customer { get; set; }

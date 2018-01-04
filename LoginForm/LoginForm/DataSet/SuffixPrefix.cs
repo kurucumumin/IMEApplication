@@ -23,6 +23,7 @@ namespace LoginForm.DataSet
             this.PDCPayableMasters = new HashSet<PDCPayableMaster>();
             this.PDCReceivableMasters = new HashSet<PDCReceivableMaster>();
             this.SalaryVoucherMasters = new HashSet<SalaryVoucherMaster>();
+            this.SalesMasters = new HashSet<SalesMaster>();
         }
     
         public decimal suffixprefixId { get; set; }
@@ -48,6 +49,8 @@ namespace LoginForm.DataSet
         public virtual ICollection<PDCReceivableMaster> PDCReceivableMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalaryVoucherMaster> SalaryVoucherMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesMaster> SalesMasters { get; set; }
         public virtual VoucherType VoucherType { get; set; }
     }
 }

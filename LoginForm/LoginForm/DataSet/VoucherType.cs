@@ -31,6 +31,7 @@ namespace LoginForm.DataSet
             this.PDCReceivableMasters = new HashSet<PDCReceivableMaster>();
             this.SalaryVoucherMasters = new HashSet<SalaryVoucherMaster>();
             this.SaleOrders = new HashSet<SaleOrder>();
+            this.SalesMasters = new HashSet<SalesMaster>();
             this.SuffixPrefixes = new HashSet<SuffixPrefix>();
             this.VoucherTypeTaxes = new HashSet<VoucherTypeTax>();
         }
@@ -78,6 +79,8 @@ namespace LoginForm.DataSet
         public virtual ICollection<SalaryVoucherMaster> SalaryVoucherMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleOrder> SaleOrders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesMaster> SalesMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SuffixPrefix> SuffixPrefixes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

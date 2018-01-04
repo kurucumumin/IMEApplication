@@ -6,8 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Collections;
 using LoginForm.DataSet;
 using LoginForm.Services;
+using LoginForm.Account.Services;
+using LoginForm.Account;
+
 namespace LoginForm
 {
     public partial class frmBudget : Form
@@ -18,9 +22,9 @@ namespace LoginForm
         /// </summary>
         ArrayList lstArrOfRemove = new ArrayList();
         BudgetMasterSP spBudgetMaster = new BudgetMasterSP();
-        BudgetMasterInfo infoBudgetMaster = new BudgetMasterInfo();
+        BudgetMaster infoBudgetMaster = new BudgetMaster();
         BudgetDetailsSP spBudgetDetails = new BudgetDetailsSP();
-        BudgetDetailsInfo infoBudgetDetails = new BudgetDetailsInfo();
+        BudgetDetail infoBudgetDetails = new BudgetDetail();
         decimal decBudgetMasterIdentity = 0;
         decimal decBudgetId;
         decimal decTxtTotalDebit = 0;
@@ -46,14 +50,14 @@ namespace LoginForm
         {
             try
             {
-                dtpFromDate.Value = PublicVariables._dtCurrentDate;
-                dtpFromDate.MinDate = PublicVariables._dtFromDate;
-                dtpFromDate.MaxDate = PublicVariables._dtToDate;
-                dtpToDate.Value = PublicVariables._dtCurrentDate;
-                dtpToDate.MinDate = PublicVariables._dtFromDate;
-                dtpToDate.MaxDate = PublicVariables._dtToDate;
-                txtFromDate.Text = PublicVariables._dtCurrentDate.ToString("dd-MMM-yyyy");
-                txtToDate.Text = PublicVariables._dtCurrentDate.ToString("dd-MMM-yyyy");
+                dtpFromDate.Value = Convert.ToDateTime(Utils.getManagement().FinancialYear.fromDate.Value.ToString("dd-MMM-yyyy"));
+                dtpFromDate.MinDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.fromDate);
+                dtpFromDate.MaxDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.toDate);
+                dtpToDate.Value = Convert.ToDateTime(DateTime.Now.ToString("dd-MMM-yyyy"));
+                dtpToDate.MinDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.fromDate);
+                dtpToDate.MaxDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.toDate);
+                txtFromDate.Text = Utils.getManagement().FinancialYear.fromDate.Value.ToString("dd-MMM-yyyy");
+                txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
                 cmbType.SelectedIndex = 0;
                 btnSave.Text = "Save";
                 btnClear.Text = "Clear";
@@ -207,8 +211,8 @@ namespace LoginForm
                             }
                         }
                     }
-                    txtTotalDr.Text = Math.Round(decTxtTotalDebit, PublicVariables._inNoOfDecimalPlaces).ToString();
-                    txtTotalCr.Text = Math.Round(decTxtTotalCredit, PublicVariables._inNoOfDecimalPlaces).ToString(); ;
+                    txtTotalDr.Text = Math.Round(decTxtTotalDebit).ToString();
+                    txtTotalCr.Text = Math.Round(decTxtTotalCredit).ToString(); ;
                 }
             }
             catch (Exception ex)
@@ -225,14 +229,14 @@ namespace LoginForm
             {
                 dgvBudget.Rows.Clear();
                 infoBudgetMaster = spBudgetMaster.BudgetMasterView(decBudgetMasterIdentity);
-                txtBudgetName.Text = infoBudgetMaster.BudgetName;
-                cmbType.Text = infoBudgetMaster.Type;
-                txtTotalCr.Text = infoBudgetMaster.TotalCr.ToString();
-                txtTotalDr.Text = infoBudgetMaster.TotalDr.ToString();
-                txtFromDate.Text = infoBudgetMaster.FromDate.ToString("dd-MMM-yyyy");
-                txtToDate.Text = infoBudgetMaster.ToDate.ToString("dd-MMM-yyyy");
-                txtNarration.Text = infoBudgetMaster.Narration;
-                decBudgetId = infoBudgetMaster.BudgetMasterId;
+                txtBudgetName.Text = infoBudgetMaster.budgetName;
+                cmbType.Text = infoBudgetMaster.type;
+                txtTotalCr.Text = infoBudgetMaster.totalCr.ToString();
+                txtTotalDr.Text = infoBudgetMaster.totalDr.ToString();
+                txtFromDate.Text = infoBudgetMaster.fromDate.Value.ToString("dd-MMM-yyyy");
+                txtToDate.Text =infoBudgetMaster.toDate.Value.ToString("dd-MMM-yyyy");
+                txtNarration.Text = infoBudgetMaster.narration;
+                decBudgetId = infoBudgetMaster.budgetMasterId;
                 DataTable dtbl = new DataTable();
                 dtbl = spBudgetDetails.BudgetDetailsViewByMasterId(decBudgetMasterIdentity);
                 for (int i = 0; i < dtbl.Rows.Count; i++)
@@ -272,28 +276,24 @@ namespace LoginForm
                 decimal decTotalCredit = 0;
                 decTotalDebit = Convert.ToDecimal(txtTotalDr.Text.Trim());
                 decTotalCredit = Convert.ToDecimal(txtTotalCr.Text.Trim());
-                infoBudgetMaster.BudgetName = txtBudgetName.Text.Trim();
+                infoBudgetMaster.budgetName = txtBudgetName.Text.Trim();
                 if (cmbType.Text == "Account Ledger")
                 {
-                    infoBudgetMaster.Type = cmbType.Text;
+                    infoBudgetMaster.type = cmbType.Text;
                 }
                 if (cmbType.Text == "Account Group")
                 {
-                    infoBudgetMaster.Type = cmbType.Text;
+                    infoBudgetMaster.type = cmbType.Text;
                 }
-                infoBudgetMaster.FromDate = Convert.ToDateTime(txtFromDate.Text);
-                infoBudgetMaster.ToDate = Convert.ToDateTime(txtToDate.Text);
-                infoBudgetMaster.TotalCr = decTotalCredit;
-                infoBudgetMaster.TotalDr = decTotalDebit;
-                infoBudgetMaster.Narration = txtNarration.Text.Trim();
-                infoBudgetMaster.Extra1 = string.Empty;
-                infoBudgetMaster.Extra2 = string.Empty;
+                infoBudgetMaster.fromDate = Convert.ToDateTime(txtFromDate.Text);
+                infoBudgetMaster.toDate = Convert.ToDateTime(txtToDate.Text);
+                infoBudgetMaster.totalCr = decTotalCredit;
+                infoBudgetMaster.totalDr = decTotalDebit;
+                infoBudgetMaster.narration = txtNarration.Text.Trim();
                 {
                     decBudgetMasterIdentity = spBudgetMaster.BudgetMasterAdd(infoBudgetMaster);
                 }
-                infoBudgetDetails.BudgetMasterId = decBudgetMasterIdentity;
-                infoBudgetDetails.Extra1 = string.Empty;
-                infoBudgetDetails.Extra2 = string.Empty;
+                infoBudgetDetails.budgetMasterId = decBudgetMasterIdentity;
                 decimal decDebit = 0;
                 decimal decCredit = 0;
                 int inRowCount = dgvBudget.RowCount;
@@ -301,7 +301,7 @@ namespace LoginForm
                 {
                     if (dgvBudget.Rows[inI].Cells["dgvcmbParticular"].Value != null && dgvBudget.Rows[inI].Cells["dgvcmbParticular"].Value.ToString() != string.Empty)
                     {
-                        infoBudgetDetails.Particular = Convert.ToString(dgvBudget.Rows[inI].Cells["dgvcmbParticular"].FormattedValue.ToString());
+                        infoBudgetDetails.particular = Convert.ToString(dgvBudget.Rows[inI].Cells["dgvcmbParticular"].FormattedValue.ToString());
                     }
                     if (dgvBudget.Rows[inI].Cells["dgvcmbDrOrCr"].Value != null && dgvBudget.Rows[inI].Cells["dgvcmbDrOrCr"].Value.ToString() != string.Empty)
                     {
@@ -311,15 +311,15 @@ namespace LoginForm
                             decTxtTotalCredit = decTxtTotalCredit + decAmount;
                             if (dgvBudget.Rows[inI].Cells["dgvcmbDrOrCr"].Value.ToString() == "Dr")
                             {
-                                infoBudgetDetails.Debit = Convert.ToDecimal(dgvBudget.Rows[inI].Cells["dgvtxtAmount"].Value.ToString());
-                                infoBudgetDetails.Credit = 0;
-                                decCredit = infoBudgetDetails.Credit;
+                                infoBudgetDetails.debit = Convert.ToDecimal(dgvBudget.Rows[inI].Cells["dgvtxtAmount"].Value.ToString());
+                                infoBudgetDetails.credit = 0;
+                                decCredit = Convert.ToDecimal(infoBudgetDetails.credit);
                             }
                             else
                             {
-                                infoBudgetDetails.Credit = Convert.ToDecimal(dgvBudget.Rows[inI].Cells["dgvtxtAmount"].Value.ToString());
-                                infoBudgetDetails.Debit = 0;
-                                decDebit = infoBudgetDetails.Debit;
+                                infoBudgetDetails.credit = Convert.ToDecimal(dgvBudget.Rows[inI].Cells["dgvtxtAmount"].Value.ToString());
+                                infoBudgetDetails.debit = 0;
+                                decDebit = Convert.ToDecimal(infoBudgetDetails.debit);
                             }
                             spBudgetDetails.BudgetDetailsAdd(infoBudgetDetails);
                         }
@@ -342,16 +342,14 @@ namespace LoginForm
             try
             {
                 BudgetDetailsDeleteByBudgetDetailsId();
-                infoBudgetMaster.BudgetMasterId = decBudgetMasterIdentity;
-                infoBudgetMaster.BudgetName = txtBudgetName.Text.Trim();
-                infoBudgetMaster.Type = cmbType.Text;
-                infoBudgetMaster.FromDate = Convert.ToDateTime(txtFromDate.Text.ToString());
-                infoBudgetMaster.ToDate = Convert.ToDateTime(txtToDate.Text.ToString());
-                infoBudgetMaster.TotalCr = Convert.ToDecimal(txtTotalCr.Text.ToString());
-                infoBudgetMaster.TotalDr = Convert.ToDecimal(txtTotalDr.Text.ToString());
-                infoBudgetMaster.Narration = txtNarration.Text.Trim();
-                infoBudgetMaster.Extra1 = string.Empty;
-                infoBudgetMaster.Extra2 = string.Empty;
+                infoBudgetMaster.budgetMasterId = decBudgetMasterIdentity;
+                infoBudgetMaster.budgetName = txtBudgetName.Text.Trim();
+                infoBudgetMaster.type = cmbType.Text;
+                infoBudgetMaster.fromDate = Convert.ToDateTime(txtFromDate.Text.ToString());
+                infoBudgetMaster.toDate = Convert.ToDateTime(txtToDate.Text.ToString());
+                infoBudgetMaster.totalCr = Convert.ToDecimal(txtTotalCr.Text.ToString());
+                infoBudgetMaster.totalDr = Convert.ToDecimal(txtTotalDr.Text.ToString());
+                infoBudgetMaster.narration = txtNarration.Text.Trim();
                 spBudgetMaster.BudgetMasterEdit(infoBudgetMaster);
                 decimal decDebit = 0;
                 decimal decCredit = 0;
@@ -360,61 +358,57 @@ namespace LoginForm
                 {
                     if (dgvBudget.Rows[inI].Cells["budgetDetailsId"].Value == null || dgvBudget.Rows[inI].Cells["budgetDetailsId"].Value.ToString() == string.Empty)
                     {
-                        infoBudgetDetails.BudgetMasterId = decBudgetMasterIdentity;
+                        infoBudgetDetails.budgetMasterId = decBudgetMasterIdentity;
                         if (dgvBudget.Rows[inI].Cells["dgvcmbParticular"].Value != null && dgvBudget.Rows[inI].Cells["dgvcmbParticular"].Value.ToString() != string.Empty)
                         {
-                            infoBudgetDetails.Particular = Convert.ToString(dgvBudget.Rows[inI].Cells["dgvcmbParticular"].FormattedValue.ToString());
+                            infoBudgetDetails.particular = Convert.ToString(dgvBudget.Rows[inI].Cells["dgvcmbParticular"].FormattedValue.ToString());
                         }
                         if (dgvBudget.Rows[inI].Cells["dgvcmbDrOrCr"].Value != null && dgvBudget.Rows[inI].Cells["dgvcmbDrOrCr"].Value.ToString() != string.Empty)
                         {
                             decAmount = Convert.ToDecimal(dgvBudget.Rows[inI].Cells["dgvtxtAmount"].Value.ToString());
                             if (dgvBudget.Rows[inI].Cells["dgvcmbDrOrCr"].Value.ToString() == "Dr")
                             {
-                                infoBudgetDetails.Debit = Convert.ToDecimal(dgvBudget.Rows[inI].Cells["dgvtxtAmount"].Value.ToString());
-                                infoBudgetDetails.Credit = 0;
+                                infoBudgetDetails.debit = Convert.ToDecimal(dgvBudget.Rows[inI].Cells["dgvtxtAmount"].Value.ToString());
+                                infoBudgetDetails.credit = 0;
                                 decDebit = decTxtTotalDebit + decAmount;
-                                decCredit = infoBudgetDetails.Credit;
+                                decCredit = Convert.ToDecimal(infoBudgetDetails.credit);
                             }
                             else
                             {
-                                infoBudgetDetails.Credit = Convert.ToDecimal(dgvBudget.Rows[inI].Cells["dgvtxtAmount"].Value.ToString());
-                                infoBudgetDetails.Debit = 0;
+                                infoBudgetDetails.credit = Convert.ToDecimal(dgvBudget.Rows[inI].Cells["dgvtxtAmount"].Value.ToString());
+                                infoBudgetDetails.debit = 0;
                                 decCredit = decTxtTotalCredit + decAmount;
-                                decDebit = infoBudgetDetails.Debit;
+                                decDebit = Convert.ToDecimal(infoBudgetDetails.debit);
                             }
                         }
-                        infoBudgetDetails.Extra1 = string.Empty;
-                        infoBudgetDetails.Extra2 = string.Empty;
                         spBudgetDetails.BudgetDetailsAdd(infoBudgetDetails);
                     }
                     else
                     {
-                        infoBudgetDetails.BudgetMasterId = decBudgetMasterIdentity;
-                        infoBudgetDetails.BudgetDetailsId = Convert.ToDecimal(dgvBudget.Rows[inI].Cells["budgetDetailsId"].Value);
+                        infoBudgetDetails.budgetMasterId = decBudgetMasterIdentity;
+                        infoBudgetDetails.budgetDetailsId = Convert.ToDecimal(dgvBudget.Rows[inI].Cells["budgetDetailsId"].Value);
                         if (dgvBudget.Rows[inI].Cells["dgvcmbParticular"].Value != null && dgvBudget.Rows[inI].Cells["dgvcmbParticular"].Value.ToString() != string.Empty)
                         {
-                            infoBudgetDetails.Particular = Convert.ToString(dgvBudget.Rows[inI].Cells["dgvcmbParticular"].FormattedValue.ToString());
+                            infoBudgetDetails.particular = Convert.ToString(dgvBudget.Rows[inI].Cells["dgvcmbParticular"].FormattedValue.ToString());
                         }
                         if (dgvBudget.Rows[inI].Cells["dgvcmbDrOrCr"].Value != null && dgvBudget.Rows[inI].Cells["dgvcmbDrOrCr"].Value.ToString() != string.Empty)
                         {
                             decAmount = Convert.ToDecimal(dgvBudget.Rows[inI].Cells["dgvtxtAmount"].Value.ToString());
                             if (dgvBudget.Rows[inI].Cells["dgvcmbDrOrCr"].Value.ToString() == "Dr")
                             {
-                                infoBudgetDetails.Debit = Convert.ToDecimal(dgvBudget.Rows[inI].Cells["dgvtxtAmount"].Value.ToString());
-                                infoBudgetDetails.Credit = 0;
+                                infoBudgetDetails.debit = Convert.ToDecimal(dgvBudget.Rows[inI].Cells["dgvtxtAmount"].Value.ToString());
+                                infoBudgetDetails.credit = 0;
                                 decDebit = decTxtTotalDebit + decAmount;
-                                decCredit = infoBudgetDetails.Credit;
+                                decCredit = Convert.ToDecimal(infoBudgetDetails.credit);
                             }
                             else
                             {
-                                infoBudgetDetails.Credit = Convert.ToDecimal(dgvBudget.Rows[inI].Cells["dgvtxtAmount"].Value.ToString());
-                                infoBudgetDetails.Debit = 0;
+                                infoBudgetDetails.credit = Convert.ToDecimal(dgvBudget.Rows[inI].Cells["dgvtxtAmount"].Value.ToString());
+                                infoBudgetDetails.debit = 0;
                                 decCredit = decTxtTotalCredit + decAmount;
-                                decDebit = infoBudgetDetails.Debit;
+                                decDebit = Convert.ToDecimal(infoBudgetDetails.debit);
                             }
                         }
-                        infoBudgetDetails.Extra1 = string.Empty;
-                        infoBudgetDetails.Extra2 = string.Empty;
                         spBudgetDetails.BudgetDetailsEdit(infoBudgetDetails);
                     }
                 }
@@ -601,32 +595,32 @@ namespace LoginForm
                                     }
                                     else
                                     {
-                                        if (PublicVariables.isMessageAdd)
-                                        {
+                                        //if (PublicVariables.isMessageAdd)
+                                        //{
                                             if (Messages.SaveMessage())
                                             {
                                                 SaveFunction();
                                             }
-                                        }
-                                        else
-                                        {
+                                        //}
+                                        //else
+                                        //{
                                             SaveFunction();
-                                        }
+                                       // }
                                     }
                                 }
                                 else
                                 {
-                                    if (PublicVariables.isMessageEdit)
-                                    {
+                                    //if (PublicVariables.isMessageEdit)
+                                    //{
                                         if (Messages.UpdateMessage())
                                         {
                                             EditFunction();
                                         }
-                                    }
-                                    else
-                                    {
+                                    //}
+                                    //else
+                                    //{
                                         EditFunction();
-                                    }
+                                   // }
                                 }
                             }
                         }
@@ -644,17 +638,17 @@ namespace LoginForm
         {
             try
             {
-                if (PublicVariables.isMessageDelete)
-                {
+                //if (PublicVariables.isMessageDelete)
+                //{
                     if (Messages.DeleteMessage())
                     {
                         DeleteFunction();
                     }
-                }
-                else
-                {
+                //}
+                //else
+                //{
                     DeleteFunction();
-                }
+                //}
             }
             catch (Exception ex)
             {
@@ -740,7 +734,7 @@ namespace LoginForm
             }
             catch (Exception ex)
             {
-                MessageBox.Show("BU19:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("BU19:" + ex.Message, "LoginForm", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         /// <summary>
@@ -756,7 +750,7 @@ namespace LoginForm
                 bool isInvalid = objVal.DateValidationFunction(txtToDate);
                 if (!isInvalid)
                 {
-                    txtToDate.Text = PublicVariables._dtCurrentDate.ToString("dd-MMM-yyyy");
+                    txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
                 }
                 dtpToDate.Value = Convert.ToDateTime(txtToDate.Text);
             }
@@ -864,16 +858,16 @@ namespace LoginForm
         {
             try
             {
-                if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnSave.Text))
-                {
-                    {
+                //if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnSave.Text))
+                //{
+                //    {
                         SaveOrEdit();
-                    }
-                }
-                else
-                {
+                //    }
+                //}
+                //else
+                //{
                     Messages.NoPrivillageMessage();
-                }
+               // }
             }
             catch (Exception ex)
             {
@@ -905,14 +899,14 @@ namespace LoginForm
         {
             try
             {
-                if (PublicVariables.isMessageClose)
-                {
+                //if (PublicVariables.isMessageClose)
+                //{
                     Messages.CloseMessage(this);
-                }
-                else
-                {
+                //}
+                //else
+                //{
                     this.Close();
-                }
+               // }
             }
             catch (Exception ex)
             {
@@ -985,14 +979,14 @@ namespace LoginForm
         {
             try
             {
-                if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, "Delete"))
-                {
+                //if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, "Delete"))
+                //{
                     Delete();
-                }
-                else
-                {
+                //}
+                //else
+                //{
                     Messages.NoPrivillageMessage();
-                }
+                //}
             }
             catch (Exception ex)
             {
@@ -1332,14 +1326,14 @@ namespace LoginForm
             {
                 if (e.KeyCode == Keys.Escape)
                 {
-                    if (PublicVariables.isMessageClose)
-                    {
+                    //if (PublicVariables.isMessageClose)
+                    //{
                         Messages.CloseMessage(this);
-                    }
-                    else
-                    {
+                    //}
+                    //else
+                    //{
                         this.Close();
-                    }
+                   // }
                 }
                 if (e.Control && e.KeyCode == Keys.S)
                 {
@@ -1582,7 +1576,7 @@ namespace LoginForm
                 obj.DateValidationFunction(txtFromDate);
                 if (txtFromDate.Text == string.Empty)
                 {
-                    txtFromDate.Text = PublicVariables._dtCurrentDate.ToString("dd-MMM-yyyy");
+                    txtFromDate.Text = Utils.getManagement().FinancialYear.fromDate.Value.ToString("dd-MMM-yyyy");
                 }
                 //---for change date in Date time picker----//
                 string strdate = txtFromDate.Text;

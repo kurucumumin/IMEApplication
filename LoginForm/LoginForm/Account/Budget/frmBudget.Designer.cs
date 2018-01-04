@@ -59,7 +59,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.txtNarration = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.dgvBudget = new dgv.DataGridViewEnter();
+            this.dgvBudget = new System.Windows.Forms.DataGridView();
             this.dgvtxtSlNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.budgetDetailsId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.check = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -787,7 +787,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtBudgetNameSearch;
         private System.Windows.Forms.Label label9;
-        private dgv.DataGridViewEnter dgvBudget;
+        private System.Windows.Forms.DataGridView dgvBudget;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel lnklblRemove;

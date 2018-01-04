@@ -120,6 +120,18 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\Budget\frmBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Budget\frmBudget.Designer.cs">
+      <DependentUpon>frmBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Budget\frmBudgetVariance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Budget\frmBudgetVariance.Designer.cs">
+      <DependentUpon>frmBudgetVariance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Master\frmAccountGroup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -310,6 +322,8 @@
     <Compile Include="Account\Services\AccountLedgerSP.cs" />
     <Compile Include="Account\Services\AreaSP.cs" />
     <Compile Include="Account\Services\BankReconciliationSP.cs" />
+    <Compile Include="Account\Services\BudgetDetailsSP.cs" />
+    <Compile Include="Account\Services\BudgetMasterSP.cs" />
     <Compile Include="Account\Services\CompanySP.cs" />
     <Compile Include="Account\Services\CreditNoteDetailsSP.cs" />
     <Compile Include="Account\Services\CreditNoteMasterSP.cs" />
@@ -319,6 +333,7 @@
     <Compile Include="Account\Services\DebitNoteMasterSP.cs" />
     <Compile Include="Account\Services\ExchangeRateSP.cs" />
     <Compile Include="Account\Services\ExportNew.cs" />
+    <Compile Include="Account\Services\FinancialStatementSP.cs" />
     <Compile Include="Account\Services\FinancialYearSP.cs" />
     <Compile Include="Account\Services\JournalMasterSP.cs" />
     <Compile Include="Account\Services\LedgerPostingSP.cs" />
@@ -705,6 +720,9 @@
     <Compile Include="DataSet\SaleOrderDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\SalesMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Setting.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1027,6 +1045,12 @@
     <Compile Include="User\FormUserManagement.Designer.cs">
       <DependentUpon>FormUserManagement.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Account\Budget\frmBudget.resx">
+      <DependentUpon>frmBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Budget\frmBudgetVariance.resx">
+      <DependentUpon>frmBudgetVariance.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\Master\frmAccountGroup.resx">
       <DependentUpon>frmAccountGroup.cs</DependentUpon>
     </EmbeddedResource>
