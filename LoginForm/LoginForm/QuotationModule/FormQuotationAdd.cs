@@ -2845,5 +2845,33 @@ namespace LoginForm.QuotationModule
 
             GetAllMargin();
         }
+
+        private void btnImportFromXML_Click(object sender, EventArgs e)
+        {
+            XmlToQuotation xml;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "xml files (*.xml)|*.xml";
+            DialogResult result = openFileDialog.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                xml = new XmlToQuotation(openFileDialog.FileName);
+
+                int index = 0;
+                List<XmlProduct> productList = xml.XmlGetProductInfo();
+                foreach (XmlProduct product in productList)
+                {
+                    if (index + 1 != productList.Count())
+                    {
+                        dgQuotationAddedItems.Rows.Add();
+                    }
+                    DataGridViewCell cell = dgQuotationAddedItems.Rows[index].Cells[dgProductCode.Index];
+                    cell.Value = product.StockCode;
+                    dgQuotationAddedItems.CurrentCell = cell;
+                    ItemDetailsFiller(product.StockCode);
+                    index++;
+                }
+            }
+        }
     }
 }
