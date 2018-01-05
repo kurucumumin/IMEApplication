@@ -11,15 +11,9 @@ namespace LoginForm.DataSet
 {
     using System;
     
-    public partial class BudgetVariance_Result
+    public partial class GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result
     {
-        public Nullable<long> Sl_NO { get; set; }
-        public string particular { get; set; }
-        public Nullable<decimal> BudgetDr { get; set; }
-        public Nullable<decimal> ActualDr { get; set; }
-        public Nullable<decimal> VarianceDr { get; set; }
-        public Nullable<decimal> BudgetCr { get; set; }
-        public Nullable<decimal> ActualCr { get; set; }
-        public Nullable<decimal> VarianceCr { get; set; }
+        public string QuotationNo { get; set; }
+        public string invoiceNo { get; set; }
     }
 }

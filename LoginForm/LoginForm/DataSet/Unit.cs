@@ -17,6 +17,10 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Unit()
         {
+            this.DeliveryNoteDetails = new HashSet<DeliveryNoteDetail>();
+            this.PurchaseDetails = new HashSet<PurchaseDetail>();
+            this.RejectionInDetails = new HashSet<RejectionInDetail>();
+            this.SalesDetails = new HashSet<SalesDetail>();
             this.UnitConvertions = new HashSet<UnitConvertion>();
         }
     
@@ -26,6 +30,14 @@ namespace LoginForm.DataSet
         public Nullable<int> noOfDecimalplaces { get; set; }
         public string formalName { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DeliveryNoteDetail> DeliveryNoteDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseDetail> PurchaseDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RejectionInDetail> RejectionInDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesDetail> SalesDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UnitConvertion> UnitConvertions { get; set; }
     }

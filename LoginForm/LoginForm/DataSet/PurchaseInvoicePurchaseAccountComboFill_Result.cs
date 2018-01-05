@@ -11,16 +11,9 @@ namespace LoginForm.DataSet
 {
     using System;
     
-    public partial class BankReconciliationFillUnrecon1_Result
+    public partial class PurchaseInvoicePurchaseAccountComboFill_Result
     {
-        public string date { get; set; }
         public string ledgerName { get; set; }
-        public string voucherTypeName { get; set; }
-        public decimal ledgerPostingId { get; set; }
-        public string voucherNo { get; set; }
-        public string chequeNo { get; set; }
-        public string chequeDate { get; set; }
-        public Nullable<decimal> debit { get; set; }
-        public Nullable<decimal> credit { get; set; }
+        public decimal ledgerId { get; set; }
     }
 }

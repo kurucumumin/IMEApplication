@@ -17,6 +17,9 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PurchaseOrder()
         {
+            this.PurchaseDetails = new HashSet<PurchaseDetail>();
+            this.PurchaseMasters = new HashSet<PurchaseMaster>();
+            this.PurchaseMasters1 = new HashSet<PurchaseMaster>();
             this.PurchaseOrderDetails = new HashSet<PurchaseOrderDetail>();
         }
     
@@ -24,11 +27,20 @@ namespace LoginForm.DataSet
         public Nullable<System.DateTime> PurchaseOrderDate { get; set; }
         public Nullable<System.DateTime> CameDate { get; set; }
         public string Reason { get; set; }
-        public Nullable<bool> Invoice { get; set; }
         public int FicheNo { get; set; }
+        public Nullable<int> exchangeRateID { get; set; }
+        public Nullable<int> userId { get; set; }
     
         public virtual Customer Customer { get; set; }
+        public virtual ExchangeRate ExchangeRate { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseDetail> PurchaseDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseMaster> PurchaseMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseMaster> PurchaseMasters1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
+        public virtual Worker Worker { get; set; }
     }
 }

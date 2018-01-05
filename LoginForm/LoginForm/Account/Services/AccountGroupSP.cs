@@ -105,38 +105,5 @@ namespace LoginForm.Account.Services
             }
             return isExist;
         }
-
-        public DataTable GroupNameViewForComboFill()
-        {
-            IMEEntities IME = new IMEEntities();
-            DataTable dt = new DataTable();
-            try
-            {
-                var adaptor = (from ac in IME.AccountGroups
-                               select new
-                               {
-                                   ac.accountGroupId,
-                                   ac.accountGroupName
-                               }).ToList();
-
-                dt.Columns.Add("accountGroupId");
-                dt.Columns.Add("accountGroupName");
-
-                foreach (var item in adaptor)
-                {
-                    var row = dt.NewRow();
-
-                    row["accountGroupId"] = item.accountGroupId;
-                    row["accountGroupName"] = item.accountGroupName;
-
-                    dt.Rows.Add(row);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            return dt;
-        }
     }
 }

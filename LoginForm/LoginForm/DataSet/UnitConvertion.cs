@@ -14,12 +14,26 @@ namespace LoginForm.DataSet
     
     public partial class UnitConvertion
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public UnitConvertion()
+        {
+            this.PurchaseDetails = new HashSet<PurchaseDetail>();
+            this.RejectionInDetails = new HashSet<RejectionInDetail>();
+            this.SalesDetails = new HashSet<SalesDetail>();
+        }
+    
         public decimal unitconversionId { get; set; }
         public Nullable<decimal> productId { get; set; }
         public Nullable<decimal> unitId { get; set; }
         public Nullable<decimal> conversionRate { get; set; }
         public string quantities { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseDetail> PurchaseDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RejectionInDetail> RejectionInDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesDetail> SalesDetails { get; set; }
         public virtual Unit Unit { get; set; }
     }
 }

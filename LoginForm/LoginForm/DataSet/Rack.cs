@@ -14,11 +14,28 @@ namespace LoginForm.DataSet
     
     public partial class Rack
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Rack()
+        {
+            this.DeliveryNoteDetails = new HashSet<DeliveryNoteDetail>();
+            this.PurchaseDetails = new HashSet<PurchaseDetail>();
+            this.RejectionInDetails = new HashSet<RejectionInDetail>();
+            this.SalesDetails = new HashSet<SalesDetail>();
+        }
+    
         public decimal rackId { get; set; }
         public string rackName { get; set; }
         public Nullable<decimal> godownId { get; set; }
         public string narration { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DeliveryNoteDetail> DeliveryNoteDetails { get; set; }
         public virtual Godown Godown { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseDetail> PurchaseDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RejectionInDetail> RejectionInDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesDetail> SalesDetails { get; set; }
     }
 }

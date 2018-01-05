@@ -14,6 +14,15 @@ namespace LoginForm.DataSet
     
     public partial class Batch
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Batch()
+        {
+            this.DeliveryNoteDetails = new HashSet<DeliveryNoteDetail>();
+            this.PurchaseDetails = new HashSet<PurchaseDetail>();
+            this.RejectionInDetails = new HashSet<RejectionInDetail>();
+            this.SalesDetails = new HashSet<SalesDetail>();
+        }
+    
         public decimal batchId { get; set; }
         public string batchNo { get; set; }
         public Nullable<decimal> productId { get; set; }
@@ -22,5 +31,14 @@ namespace LoginForm.DataSet
         public Nullable<System.DateTime> manufacturingDate { get; set; }
         public Nullable<System.DateTime> expiryDate { get; set; }
         public string narration { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DeliveryNoteDetail> DeliveryNoteDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseDetail> PurchaseDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RejectionInDetail> RejectionInDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesDetail> SalesDetails { get; set; }
     }
 }

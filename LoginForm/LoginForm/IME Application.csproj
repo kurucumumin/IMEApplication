@@ -322,8 +322,7 @@
     <Compile Include="Account\Services\AccountLedgerSP.cs" />
     <Compile Include="Account\Services\AreaSP.cs" />
     <Compile Include="Account\Services\BankReconciliationSP.cs" />
-    <Compile Include="Account\Services\BudgetDetailsSP.cs" />
-    <Compile Include="Account\Services\BudgetMasterSP.cs" />
+    <Compile Include="Account\Services\BatchSP.cs" />
     <Compile Include="Account\Services\CompanySP.cs" />
     <Compile Include="Account\Services\CreditNoteDetailsSP.cs" />
     <Compile Include="Account\Services\CreditNoteMasterSP.cs" />
@@ -331,10 +330,11 @@
     <Compile Include="Account\Services\DebitNoteDetailsInfo.cs" />
     <Compile Include="Account\Services\DebitNoteDetailsSP.cs" />
     <Compile Include="Account\Services\DebitNoteMasterSP.cs" />
+    <Compile Include="Account\Services\DeliveryNoteMasterSP.cs" />
     <Compile Include="Account\Services\ExchangeRateSP.cs" />
     <Compile Include="Account\Services\ExportNew.cs" />
-    <Compile Include="Account\Services\FinancialStatementSP.cs" />
     <Compile Include="Account\Services\FinancialYearSP.cs" />
+    <Compile Include="Account\Services\GoDownSP.cs" />
     <Compile Include="Account\Services\JournalMasterSP.cs" />
     <Compile Include="Account\Services\LedgerPostingSP.cs" />
     <Compile Include="Account\Services\NumToText.cs" />
@@ -342,15 +342,31 @@
     <Compile Include="Account\Services\PaymentMasterSP.cs" />
     <Compile Include="Account\Services\PDCClearanceMasterSP.cs" />
     <Compile Include="Account\Services\PDCPayableMasterSP.cs" />
+    <Compile Include="Account\Services\PDCReceivableMasterSP.cs" />
     <Compile Include="Account\Services\PricingLevelSP.cs" />
+    <Compile Include="Account\Services\ProductSP.cs" />
+    <Compile Include="Account\Services\PurchaseMasterSP.cs" />
+    <Compile Include="Account\Services\PurchaseOrderDetailsSP.cs" />
+    <Compile Include="Account\Services\PurchaseOrderMasterSP.cs" />
+    <Compile Include="Account\Services\RackSP.cs" />
     <Compile Include="Account\Services\ReceiptDetailSP.cs" />
     <Compile Include="Account\Services\ReceiptMasterSP.cs" />
     <Compile Include="Account\Services\ReminderSP.cs" />
     <Compile Include="Account\Services\RouteSP.cs" />
+    <Compile Include="Account\Services\SalesDetailsSP.cs" />
+    <Compile Include="Account\Services\SalesMasterSP.cs" />
+    <Compile Include="Account\Services\SalesOrderDetailsSP.cs" />
+    <Compile Include="Account\Services\SalesOrderMasterSP.cs" />
+    <Compile Include="Account\Services\SalesQuotationDetailsSP.cs" />
+    <Compile Include="Account\Services\SalesQuotationMasterSP.cs" />
+    <Compile Include="Account\Services\ServiceMasterSP.cs" />
     <Compile Include="Account\Services\SettingsSP.cs" />
     <Compile Include="Account\Services\spBankReconciliation.cs" />
     <Compile Include="Account\Services\SuffixPrefixSP.cs" />
+    <Compile Include="Account\Services\TaxInfo.cs" />
+    <Compile Include="Account\Services\TaxSP.cs" />
     <Compile Include="Account\Services\TransactionsGeneralFill.cs" />
+    <Compile Include="Account\Services\UnitSP.cs" />
     <Compile Include="Account\Services\VoucherTypeSP.cs" />
     <Compile Include="Account\Transaction\frmBankReconciliation.cs">
       <SubType>Form</SubType>
@@ -400,6 +416,12 @@
     <Compile Include="Account\Transaction\frmPdcReceivable.designer.cs">
       <DependentUpon>frmPdcReceivable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Transaction\frmPurchaseInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Transaction\frmPurchaseInvoice.designer.cs">
+      <DependentUpon>frmPurchaseInvoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Transaction\frmReceiptVoucher.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -442,6 +464,9 @@
     <Compile Include="DataSet\AccountLedger.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\AccountLedgerSearchForServiceAccountUnderIncome_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\AdvancePayment.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -463,7 +488,6 @@
     <Compile Include="DataSet\BankReconciliation.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\BankReconciliationFillUnrecon1_Result.cs" />
     <Compile Include="DataSet\BankReconciliationFillUnrecon_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -477,9 +501,6 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\BudgetMaster.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\BudgetVariance_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Capital.cs">
@@ -537,6 +558,9 @@
     <Compile Include="DataSet\DebitNoteMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\DeliveryNoteDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\DeliveryNoteMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -556,6 +580,15 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\FinancialYear.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Godown.cs">
@@ -589,6 +622,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Language.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\LedgerPopupSearch_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\LedgerPosting.cs">
@@ -666,10 +702,19 @@
     <Compile Include="DataSet\PrintFormat.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PurchaseDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PurchaseInvoice.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PurchaseInvoiceDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PurchaseInvoicePurchaseAccountComboFill_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PurchaseMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PurchaseOrder.cs">
@@ -693,10 +738,13 @@
     <Compile Include="DataSet\ReceiptDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\ReceiptDetail1.cs">
+    <Compile Include="DataSet\ReceiptMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\ReceiptMaster.cs">
+    <Compile Include="DataSet\RejectionInDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\RejectionInMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\RoleValue.cs">
@@ -720,7 +768,16 @@
     <Compile Include="DataSet\SaleOrderDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\SalesDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\SalesMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalesReturnDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalesReturnMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Setting.cs">
@@ -993,7 +1050,6 @@
     <Compile Include="Services\DateValidation.cs" />
     <Compile Include="Services\dgv.cs" />
     <Compile Include="Services\Messages.cs" />
-    <Compile Include="Account\Services\PDCReceivableMasterSP.cs" />
     <Compile Include="Services\NumToText.cs" />
     <Compile Include="Services\OtherDateValidationFunction.cs" />
     <Compile Include="Services\ToolTipService.cs" />
@@ -1168,6 +1224,9 @@
     <EmbeddedResource Include="Account\Transaction\frmPdcReceivable.resx">
       <DependentUpon>frmPdcReceivable.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\Transaction\frmPurchaseInvoice.resx">
+      <DependentUpon>frmPurchaseInvoice.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmReceiptVoucher.resx">
       <DependentUpon>frmReceiptVoucher.cs</DependentUpon>
     </EmbeddedResource>
@@ -1307,7 +1366,6 @@
     <None Include="DataSet\IME.edmx.diagram">
       <DependentUpon>IME.edmx</DependentUpon>
     </None>
-    <None Include="DataSet\IME.edmx.diagram~RF5230d270.TMP" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthorizationValue.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthRole.datasource" />
@@ -1356,6 +1414,7 @@
     <Content Include="Resources\btnBackground.png" />
     <Content Include="Resources\close_icon.jpg" />
     <Content Include="Resources\excel_icon.png" />
+    <Content Include="Resources\file.png" />
     <Content Include="Resources\gradient2.jpg" />
     <Content Include="Resources\icons8-Cancel-32.png" />
     <Content Include="Resources\icons8-Edit Property-32.png" />

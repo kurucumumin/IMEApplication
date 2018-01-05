@@ -17,8 +17,10 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Quotation()
         {
+            this.DeliveryNoteDetails = new HashSet<DeliveryNoteDetail>();
             this.DeliveryNoteMasters = new HashSet<DeliveryNoteMaster>();
             this.QuotationDetails = new HashSet<QuotationDetail>();
+            this.SalesMasters = new HashSet<SalesMaster>();
         }
     
         public string CustomerID { get; set; }
@@ -44,8 +46,14 @@ namespace LoginForm.DataSet
         public string RFQNo { get; set; }
         public string CurrType { get; set; }
         public Nullable<int> QuotationMainContact { get; set; }
+        public Nullable<decimal> ledgerId { get; set; }
+        public Nullable<decimal> voucherTypeId { get; set; }
+        public Nullable<bool> approved { get; set; }
+        public string invoiceNo { get; set; }
     
         public virtual Customer Customer { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DeliveryNoteDetail> DeliveryNoteDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DeliveryNoteMaster> DeliveryNoteMasters { get; set; }
         public virtual Note Note { get; set; }
@@ -53,5 +61,8 @@ namespace LoginForm.DataSet
         public virtual PaymentMethod PaymentMethod { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<QuotationDetail> QuotationDetails { get; set; }
+        public virtual VoucherType VoucherType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesMaster> SalesMasters { get; set; }
     }
 }

@@ -28,10 +28,12 @@ namespace LoginForm.DataSet
             this.PDCClearanceMasters = new HashSet<PDCClearanceMaster>();
             this.PDCPayableMasters = new HashSet<PDCPayableMaster>();
             this.PDCReceivableMasters = new HashSet<PDCReceivableMaster>();
-            this.ReceiptDetails = new HashSet<ReceiptDetail1>();
-            this.ReceiptDetails1 = new HashSet<ReceiptDetail>();
+            this.PurchaseMasters = new HashSet<PurchaseMaster>();
+            this.PurchaseMasters1 = new HashSet<PurchaseMaster>();
+            this.ReceiptDetails = new HashSet<ReceiptDetail>();
+            this.RejectionInMasters = new HashSet<RejectionInMaster>();
             this.SalaryVoucherMasters = new HashSet<SalaryVoucherMaster>();
-            this.SalesMasters = new HashSet<SalesMaster>();
+            this.SaleOrders = new HashSet<SaleOrder>();
         }
     
         public decimal ledgerId { get; set; }
@@ -86,12 +88,16 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PDCReceivableMaster> PDCReceivableMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReceiptDetail1> ReceiptDetails { get; set; }
+        public virtual ICollection<PurchaseMaster> PurchaseMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ReceiptDetail> ReceiptDetails1 { get; set; }
+        public virtual ICollection<PurchaseMaster> PurchaseMasters1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ReceiptDetail> ReceiptDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RejectionInMaster> RejectionInMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalaryVoucherMaster> SalaryVoucherMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SalesMaster> SalesMasters { get; set; }
+        public virtual ICollection<SaleOrder> SaleOrders { get; set; }
     }
 }

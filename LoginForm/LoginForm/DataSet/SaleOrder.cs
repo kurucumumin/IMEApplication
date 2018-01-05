@@ -19,6 +19,7 @@ namespace LoginForm.DataSet
         {
             this.PurchaseOrderDetails = new HashSet<PurchaseOrderDetail>();
             this.SaleOrderDetails = new HashSet<SaleOrderDetail>();
+            this.SalesReturnMasters = new HashSet<SalesReturnMaster>();
         }
     
         public string SaleOrderNo { get; set; }
@@ -41,7 +42,6 @@ namespace LoginForm.DataSet
         public Nullable<int> NoteForFinance { get; set; }
         public string SaleOrderNature { get; set; }
         public string ShippingType { get; set; }
-        public Nullable<decimal> currencyID { get; set; }
         public string LPONO { get; set; }
         public Nullable<decimal> Factor { get; set; }
         public Nullable<decimal> SubTotal { get; set; }
@@ -51,14 +51,19 @@ namespace LoginForm.DataSet
         public Nullable<decimal> VoucherId { get; set; }
         public Nullable<decimal> VoucherTypeId { get; set; }
         public Nullable<decimal> VoucherNo { get; set; }
+        public Nullable<decimal> ledgerId { get; set; }
+        public Nullable<bool> cancelled { get; set; }
+        public string invoiceNo { get; set; }
+        public Nullable<int> exchangeRateID { get; set; }
     
-        public virtual Currency Currency { get; set; }
+        public virtual AccountLedger AccountLedger { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual CustomerAddress CustomerAddress { get; set; }
         public virtual CustomerAddress CustomerAddress1 { get; set; }
         public virtual CustomerWorker CustomerWorker { get; set; }
         public virtual CustomerWorker CustomerWorker1 { get; set; }
         public virtual CustomerWorker CustomerWorker2 { get; set; }
+        public virtual ExchangeRate ExchangeRate { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
         public virtual PaymentTerm PaymentTerm { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -67,5 +72,7 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleOrderDetail> SaleOrderDetails { get; set; }
         public virtual VoucherType VoucherType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesReturnMaster> SalesReturnMasters { get; set; }
     }
 }
