@@ -269,5 +269,12 @@ namespace LoginForm.Account.Services
             }
             return dtbl;
         }
+
+        public VoucherType VoucherTypeView(decimal voucherTypeId)
+        {
+            IMEEntities IME = new IMEEntities();
+            VoucherType vt = IME.VoucherTypes.Where(a => a.voucherTypeId == voucherTypeId).FirstOrDefault();
+            return vt;
+        }
     }
 }

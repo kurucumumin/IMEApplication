@@ -17,5 +17,12 @@ namespace LoginForm.DataSet
         public int StockID { get; set; }
         public string ItemCode { get; set; }
         public Nullable<int> Quantitiy { get; set; }
+        public Nullable<decimal> BatchId { get; set; }
+        public Nullable<decimal> againstVoucherTypeId { get; set; }
+        public string againstVoucherNo { get; set; }
+        public Nullable<decimal> voucherTypeId { get; set; }
+        public string voucherNo { get; set; }
+    
+        public virtual VoucherType VoucherType { get; set; }
     }
 }

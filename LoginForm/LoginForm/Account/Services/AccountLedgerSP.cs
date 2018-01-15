@@ -15,6 +15,35 @@ namespace LoginForm.Account.Services
             return (db.AccountLedgers.Where(x => x.ledgerName == LedgerName && x.ledgerId != ledgerID).FirstOrDefault() != null) ? true : false;
         }
 
+        public DataTable AccountLedgerViewForAdditionalCost()
+        {
+            DataTable dtbl = new DataTable();
+            IMEEntities IME = new IMEEntities();
+
+            var accountGroup = IME.AccountGroups.Where(a => a.accountGroupName == "Indirect Expenses").ToList();
+            var adaptor = (from al in IME.AccountLedgers
+                           from ac in accountGroup
+                           where (al.accountGroupID==ac.accountGroupId)
+                           select new
+                           {
+                               al.ledgerName,
+                               al.ledgerId
+                           }).ToList();
+
+            dtbl.Columns.Add("ledgerName");
+            dtbl.Columns.Add("ledgerId");
+
+            foreach (var item in adaptor)
+            {
+                var row = dtbl.NewRow();
+                row["ledgerName"] = item.ledgerName;
+                row["ledgerId"] = item.ledgerId;
+                dtbl.Rows.Add(row);
+            }
+
+            return dtbl;
+        }
+
         public void AccountLedgerEdit(AccountLedger accountledgerinfo)
         {
             try

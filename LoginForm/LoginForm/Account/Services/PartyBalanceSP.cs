@@ -10,6 +10,12 @@ namespace LoginForm.Account.Services
 {
     class PartyBalanceSP
     {
+        public void PartyBalanceEditByVoucherNoVoucherTypeIdAndReferenceType(PartyBalanceInfo infoPartyBalance)
+        {
+            IMEEntities IME = new IMEEntities();
+            IME.PartyBalanceEditByVoucherNoVoucherTypeIdAndReferenceType(infoPartyBalance.Date, infoPartyBalance.LedgerId, infoPartyBalance.VoucherTypeId, infoPartyBalance.VoucherNo, infoPartyBalance.AgainstVoucherTypeId, infoPartyBalance.AgainstVoucherNo, infoPartyBalance.InvoiceNo, infoPartyBalance.AgainstInvoiceNo, infoPartyBalance.ReferenceType, infoPartyBalance.Debit, infoPartyBalance.Credit, infoPartyBalance.CreditPeriod, infoPartyBalance.ExchangeRateId, infoPartyBalance.FinancialYearId, infoPartyBalance.ExtraDate, infoPartyBalance.Extra1, infoPartyBalance.Extra2);
+        }
+
         public void PartyBalanceAdd(PartyBalance partybalanceinfo)
         {
             IMEEntities db = new IMEEntities();
@@ -176,6 +182,21 @@ namespace LoginForm.Account.Services
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        public decimal PartyBalanceAmountViewForSalesInvoice(string strVoucherNo, decimal decVoucherTypeId, string strReferenceType)
+        {
+            decimal decAmount = 0;
+
+            IMEEntities IME = new IMEEntities();
+            if(IME.PartyBalances.Where(a=>a.voucherNo==strVoucherNo).Where(a=>a.voucherTypeId==decVoucherTypeId).Where(c=>c.referenceType==strReferenceType)!=null)
+            {
+                foreach (var item in IME.PartyBalances.Where(a => a.voucherNo == strVoucherNo).Where(a => a.voucherTypeId == decVoucherTypeId).Where(c => c.referenceType == strReferenceType))
+                {
+                    decAmount = decAmount + (decimal)item.credit;
+                }
+            }
+            return decAmount;
         }
 
     }

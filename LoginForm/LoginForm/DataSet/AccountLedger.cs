@@ -17,20 +17,28 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public AccountLedger()
         {
+            this.AdditionalCosts = new HashSet<AdditionalCost>();
             this.AdvancePayments = new HashSet<AdvancePayment>();
             this.CreditNoteDetails = new HashSet<CreditNoteDetail>();
             this.DebitNoteDetails = new HashSet<DebitNoteDetail>();
             this.DeliveryNoteMasters = new HashSet<DeliveryNoteMaster>();
             this.LedgerPostings = new HashSet<LedgerPosting>();
+            this.MaterialReceiptMasters = new HashSet<MaterialReceiptMaster>();
             this.PartyBalances = new HashSet<PartyBalance>();
             this.PaymentDetails = new HashSet<PaymentDetail>();
             this.PaymentMasters = new HashSet<PaymentMaster>();
             this.PDCClearanceMasters = new HashSet<PDCClearanceMaster>();
             this.PDCPayableMasters = new HashSet<PDCPayableMaster>();
             this.PDCReceivableMasters = new HashSet<PDCReceivableMaster>();
+            this.PurchaseMasters = new HashSet<PurchaseMaster>();
+            this.PurchaseOrders = new HashSet<PurchaseOrder>();
+            this.PurchaseReturnMasters = new HashSet<PurchaseReturnMaster>();
             this.ReceiptDetails = new HashSet<ReceiptDetail1>();
             this.ReceiptDetails1 = new HashSet<ReceiptDetail>();
+            this.RejectionOutMasters = new HashSet<RejectionOutMaster>();
+            this.RejectionInMasters = new HashSet<RejectionInMaster>();
             this.SalaryVoucherMasters = new HashSet<SalaryVoucherMaster>();
+            this.SaleOrders = new HashSet<SaleOrder>();
         }
     
         public decimal ledgerId { get; set; }
@@ -63,6 +71,8 @@ namespace LoginForm.DataSet
         public virtual Area Area { get; set; }
         public virtual Route Route { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AdditionalCost> AdditionalCosts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AdvancePayment> AdvancePayments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CreditNoteDetail> CreditNoteDetails { get; set; }
@@ -72,6 +82,8 @@ namespace LoginForm.DataSet
         public virtual ICollection<DeliveryNoteMaster> DeliveryNoteMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LedgerPosting> LedgerPostings { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MaterialReceiptMaster> MaterialReceiptMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PartyBalance> PartyBalances { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -85,10 +97,22 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PDCReceivableMaster> PDCReceivableMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseMaster> PurchaseMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseOrder> PurchaseOrders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseReturnMaster> PurchaseReturnMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReceiptDetail1> ReceiptDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReceiptDetail> ReceiptDetails1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RejectionOutMaster> RejectionOutMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RejectionInMaster> RejectionInMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalaryVoucherMaster> SalaryVoucherMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SaleOrder> SaleOrders { get; set; }
     }
 }

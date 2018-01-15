@@ -1502,7 +1502,7 @@ namespace LoginForm.nmSaleOrder
                 s.NoteForFinance = (chkbForFinance.Checked == true) ? 1 : 0;
                 s.SaleOrderNature = cbOrderNature.SelectedItem.ToString();
                 s.ShippingType = cbSMethod.SelectedItem.ToString();
-                s.currencyID = (decimal)cbCurrency.SelectedValue;
+                //s.currencyID = (int)cbCurrency.SelectedValue;
                 s.LPONO = txtLPONO.Text;
                 s.TotalMargin = Convert.ToDecimal(txtTotalMargin.Text);
                 s.Factor = Convert.ToDecimal(txtFactor.Text);
