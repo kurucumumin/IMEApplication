@@ -51,7 +51,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtBillDiscount = new System.Windows.Forms.TextBox();
             this.lblBillDiscount = new System.Windows.Forms.Label();
-            this.dgvSalesInvoiceTax = new Open_Miracle.dgv.DataGridViewEnter();
+            this.dgvSalesInvoiceTax = new System.Windows.Forms.DataGridView();
             this.dgvtxtTSlno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtTtaxId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvTxtTtaxName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,7 +80,7 @@
             this.lblNarration = new System.Windows.Forms.Label();
             this.txtInvoiceNo = new System.Windows.Forms.TextBox();
             this.lblInvoiceNo = new System.Windows.Forms.Label();
-            this.dgvSalesInvoice = new Open_Miracle.dgv.DataGridViewEnter();
+            this.dgvSalesInvoice = new System.Windows.Forms.DataGridView();
             this.dgvtxtSalesInvoiceSlno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtSalesInvoiceSalesDetailsId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtSalesInvoiceProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -122,7 +122,7 @@
             this.txtCustomer = new System.Windows.Forms.TextBox();
             this.lblCustomer = new System.Windows.Forms.Label();
             this.lblTotalQuantity = new System.Windows.Forms.Label();
-            this.dgvSalesInvoiceLedger = new Open_Miracle.dgv.DataGridViewEnter();
+            this.dgvSalesInvoiceLedger = new System.Windows.Forms.DataGridView();
             this.dgvtxtAditionalCostSlno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtAdditionalCostId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvCmbAdditionalCostledgerName = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -1617,8 +1617,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoiceInvoiceNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoiceVoucherTypeId;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSalesInvoiceAmount;
-        private Open_Miracle.dgv.DataGridViewEnter dgvSalesInvoice;
-        private Open_Miracle.dgv.DataGridViewEnter dgvSalesInvoiceLedger;
-        private Open_Miracle.dgv.DataGridViewEnter dgvSalesInvoiceTax;
+        private System.Windows.Forms.DataGridView dgvSalesInvoice;
+        private System.Windows.Forms.DataGridView dgvSalesInvoiceLedger;
+        private System.Windows.Forms.DataGridView dgvSalesInvoiceTax;
     }
 }

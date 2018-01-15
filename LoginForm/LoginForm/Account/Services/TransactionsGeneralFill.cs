@@ -413,37 +413,37 @@ namespace LoginForm.Account.Services
             }
         }
 
-        public DataTable PricingLevelViewAll(ComboBox cmbPricingLevel, bool isAll)
-        {
-            IMEEntities IME = new IMEEntities();
-            DataTable dtbl = new DataTable();
-            dtbl.Columns.Add("SlNo", typeof(decimal));
-            dtbl.Columns["SlNo"].AutoIncrement = true;
-            dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
-            dtbl.Columns["SlNo"].AutoIncrementStep = 1;
-            try
-            {
-                var adaptor = IME.PricingLevelViewAll();
+        //public DataTable PricingLevelViewAll(ComboBox cmbPricingLevel, bool isAll)
+        //{
+        //    IMEEntities IME = new IMEEntities();
+        //    DataTable dtbl = new DataTable();
+        //    dtbl.Columns.Add("SlNo", typeof(decimal));
+        //    dtbl.Columns["SlNo"].AutoIncrement = true;
+        //    dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
+        //    dtbl.Columns["SlNo"].AutoIncrementStep = 1;
+        //    try
+        //    {
+        //        var adaptor = IME.PricingLevelViewAll();
 
 
-                dtbl.Columns.Add("pricinglevelId");
-                dtbl.Columns.Add("pricinglevelName");
+        //        dtbl.Columns.Add("pricinglevelId");
+        //        dtbl.Columns.Add("pricinglevelName");
 
-                foreach (var item in adaptor)
-                {
-                    var row = dtbl.NewRow();
+        //        foreach (var item in adaptor)
+        //        {
+        //            var row = dtbl.NewRow();
 
-                    row["pricinglevelId"] = item.pricinglevelId;
-                    row["pricinglevelName"] = item.pricinglevelName;
+        //            row["pricinglevelId"] = item.pricinglevelId;
+        //            row["pricinglevelName"] = item.pricinglevelName;
 
-                    dtbl.Rows.Add(row);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            return dtbl;
-        }
+        //            dtbl.Rows.Add(row);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.ToString());
+        //    }
+        //    return dtbl;
+        //}
     }
 }

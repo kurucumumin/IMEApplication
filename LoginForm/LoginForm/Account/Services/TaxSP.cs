@@ -285,43 +285,8 @@ namespace LoginForm.Account.Services
             }
             return dtbl;
           }
-              IMEEntities IME = new IMEEntities();
-              DataTable dt = new DataTable();
-              var adaptor = (from TX in IME.Taxes
-                             from VTX in IME.VoucherTypeTaxes
-                             from al in IME.AccountLedgers
-                             where (TX.taxName ==al.ledgerName) && (VTX.voucherTypeId== decVoucherTypeId)
-                             &&(TX.isActive==true)
-                             select new
-                             {
-                                 TX.TaxID,
-                                 al.ledgerId,
-                                 TX.taxName,
-                                 TX.ApplicationOn,
-                                 TX.CalculatingMode,
-                                 TX.Rate
-                             }).ToList();
 
-              dt.Columns.Add("TaxID");
-              dt.Columns.Add("ledgerId");
-              dt.Columns.Add("taxName");
-              dt.Columns.Add("ApplicationOn");
-              dt.Columns.Add("CalculatingMode");
-              dt.Columns.Add("Rate");
-
-              foreach (var item in adaptor)
-              {
-                  var row = dt.NewRow();
-                  row["TaxID"] = item.TaxID;
-                  row["ledgerId"] = item.ledgerId;
-                  row["taxName"] = item.taxName;
-                  row["ApplicationOn"] = item.ApplicationOn;
-                  row["CalculatingMode"] = item.CalculatingMode;
-                  row["Rate"] = item.Rate;
-                  dt.Rows.Add(row);
-              }
-              return dt;
-          }
+              
 
           public TaxInfo TaxViewByProductId(string strProductCode)
           {
@@ -427,20 +392,20 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
-        public TaxInfo TaxView(decimal taxId)
-        {
-            TaxInfo taxinfo = new TaxInfo();
-            IMEEntities IME = new IMEEntities();
-            var tax = IME.Taxes.Where(a => a.TaxID == taxId).FirstOrDefault();
-            taxinfo.TaxId = tax.TaxID;
-            taxinfo.TaxName = tax.taxName;
-            taxinfo.ApplicableOn = tax.ApplicationOn;
-            taxinfo.Rate = (decimal)tax.Rate;
-            taxinfo.CalculatingMode = tax.CalculatingMode;
-            taxinfo.Narration = tax.narration;
-            taxinfo.IsActive = (bool)tax.isActive;
-            return taxinfo;
-        }
+        //public TaxInfo TaxView(decimal taxId)
+        //{
+        //    TaxInfo taxinfo = new TaxInfo();
+        //    IMEEntities IME = new IMEEntities();
+        //    var tax = IME.Taxes.Where(a => a.TaxID == taxId).FirstOrDefault();
+        //    taxinfo.TaxId = tax.TaxID;
+        //    taxinfo.TaxName = tax.taxName;
+        //    taxinfo.ApplicableOn = tax.ApplicationOn;
+        //    taxinfo.Rate = (decimal)tax.Rate;
+        //    taxinfo.CalculatingMode = tax.CalculatingMode;
+        //    taxinfo.Narration = tax.narration;
+        //    taxinfo.IsActive = (bool)tax.isActive;
+        //    return taxinfo;
+        //}
 
 
     }

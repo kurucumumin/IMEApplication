@@ -13,7 +13,7 @@ namespace LoginForm.Account.Services
     class StockPostingSP
     {
 
-        public decimal StockCheckForProductSale(decimal decProductId, decimal decBatchId)
+        public decimal StockCheckForProductSale(string decProductId, decimal decBatchId)
         {
             IMEEntities IME = new IMEEntities();
             decimal decStock = 0;

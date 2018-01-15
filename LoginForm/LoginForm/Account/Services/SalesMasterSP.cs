@@ -475,11 +475,6 @@ namespace LoginForm.Account.Services
                     row["debit"] = item.debit;
                     row["Credit"] = item.credit;
                     dtbl.Rows.Add(row);
-            >>>>>>> NebiDevelop
-                }
-                return dtbl;
-            }
-
             }
             return dtbl;
         }
