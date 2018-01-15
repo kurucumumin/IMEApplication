@@ -174,6 +174,12 @@
     <Compile Include="Account\Master\frmVoucherType.designer.cs">
       <DependentUpon>frmVoucherType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Other\frmLedgerPopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Other\frmLedgerPopup.designer.cs">
+      <DependentUpon>frmLedgerPopup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\PayRoll\frmAdvancePayment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -312,6 +318,18 @@
     <Compile Include="Account\Reports\frmReceiptReport.designer.cs">
       <DependentUpon>frmReceiptReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Reports\frmSalesReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reports\frmSalesReport.Designer.cs">
+      <DependentUpon>frmSalesReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Reports\frmSalesReturnReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reports\frmSalesReturnReport.Designer.cs">
+      <DependentUpon>frmSalesReturnReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Search\frmVoucherSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -322,6 +340,7 @@
     <Compile Include="Account\Services\AccountLedgerSP.cs" />
     <Compile Include="Account\Services\AreaSP.cs" />
     <Compile Include="Account\Services\BankReconciliationSP.cs" />
+    <Compile Include="Account\Services\BatchSP.cs" />
     <Compile Include="Account\Services\BudgetDetailsSP.cs" />
     <Compile Include="Account\Services\BudgetMasterSP.cs" />
     <Compile Include="Account\Services\CompanySP.cs" />
@@ -335,6 +354,7 @@
     <Compile Include="Account\Services\ExportNew.cs" />
     <Compile Include="Account\Services\FinancialStatementSP.cs" />
     <Compile Include="Account\Services\FinancialYearSP.cs" />
+    <Compile Include="Account\Services\GodownSP.cs" />
     <Compile Include="Account\Services\JournalMasterSP.cs" />
     <Compile Include="Account\Services\LedgerPostingSP.cs" />
     <Compile Include="Account\Services\NumToText.cs" />
@@ -343,14 +363,32 @@
     <Compile Include="Account\Services\PDCClearanceMasterSP.cs" />
     <Compile Include="Account\Services\PDCPayableMasterSP.cs" />
     <Compile Include="Account\Services\PricingLevelSP.cs" />
+    <Compile Include="Account\Services\ProductInfo.cs" />
+    <Compile Include="Account\Services\ProductSP.cs" />
+    <Compile Include="Account\Services\PurchaseDetailsSP.cs" />
+    <Compile Include="Account\Services\PurchaseMasterSP.cs" />
+    <Compile Include="Account\Services\PurchaseReturnBilltaxSP.cs" />
+    <Compile Include="Account\Services\PurchaseReturnDetailsSP.cs" />
+    <Compile Include="Account\Services\PurchaseReturnMasterSP.cs" />
+    <Compile Include="Account\Services\RackSP.cs" />
     <Compile Include="Account\Services\ReceiptDetailSP.cs" />
     <Compile Include="Account\Services\ReceiptMasterSP.cs" />
     <Compile Include="Account\Services\ReminderSP.cs" />
     <Compile Include="Account\Services\RouteSP.cs" />
+    <Compile Include="Account\Services\SalesDetailsSP.cs" />
+    <Compile Include="Account\Services\SalesMasterSP.cs" />
+    <Compile Include="Account\Services\SalesReturnBillTaxSP.cs" />
+    <Compile Include="Account\Services\SalesReturnDetailsSP.cs" />
+    <Compile Include="Account\Services\SalesReturnMasterSP.cs" />
     <Compile Include="Account\Services\SettingsSP.cs" />
     <Compile Include="Account\Services\spBankReconciliation.cs" />
+    <Compile Include="Account\Services\StockPostingSP.cs" />
     <Compile Include="Account\Services\SuffixPrefixSP.cs" />
+    <Compile Include="Account\Services\TaxDetailsSP.cs" />
+    <Compile Include="Account\Services\TaxSP.cs" />
     <Compile Include="Account\Services\TransactionsGeneralFill.cs" />
+    <Compile Include="Account\Services\UnitConvertionSP.cs" />
+    <Compile Include="Account\Services\UnitSP.cs" />
     <Compile Include="Account\Services\VoucherTypeSP.cs" />
     <Compile Include="Account\Transaction\frmBankReconciliation.cs">
       <SubType>Form</SubType>
@@ -400,11 +438,27 @@
     <Compile Include="Account\Transaction\frmPdcReceivable.designer.cs">
       <DependentUpon>frmPdcReceivable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Transaction\frmPurchaseReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Transaction\frmPurchaseReturn.Designer.cs">
+      <DependentUpon>frmPurchaseReturn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Transaction\frmReceiptVoucher.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Account\Transaction\frmReceiptVoucher.designer.cs">
       <DependentUpon>frmReceiptVoucher.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Transaction\frmSalesInvoice.cs" />
+    <Compile Include="Account\Transaction\frmSalesInvoice.Designer.cs">
+      <DependentUpon>frmSalesInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Transaction\frmSalesReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Transaction\frmSalesReturn.Designer.cs">
+      <DependentUpon>frmSalesReturn.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\AccountingControl.cs">
       <SubType>UserControl</SubType>
@@ -442,6 +496,24 @@
     <Compile Include="DataSet\AccountLedger.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\AccountLedgerSearchForServiceAccountUnderIncome_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\AccountLedgerViewAllForComboBox_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\AccountLedgerViewForAdditionalCost_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\AccountLedgerView_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\AdditionalCost.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\AdditionalCostViewAllByVoucherTypeIdAndVoucherNo_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\AdvancePayment.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -463,7 +535,6 @@
     <Compile Include="DataSet\BankReconciliation.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\BankReconciliationFillUnrecon1_Result.cs" />
     <Compile Include="DataSet\BankReconciliationFillUnrecon_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -537,6 +608,9 @@
     <Compile Include="DataSet\DebitNoteMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\DeliveryNoteDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\DeliveryNoteMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -556,6 +630,30 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\FinancialYear.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\GetInvoiceNoCorrespondingtoLedgerInRegister_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\GetInvoiceNoCorrespondingtoLedger_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\GetMaterialReceiptNoCorrespondingtoLedgerByNotInCurrPI_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\GetOrderNoCorrespondingtoLedgerByNotInCurrPI_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\GetPurchaseReturnInvoiceNoCorrespondingtoLedger_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Godown.cs">
@@ -591,6 +689,9 @@
     <Compile Include="DataSet\Language.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\LedgerPopupSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\LedgerPosting.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -604,6 +705,21 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Master.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\MaterialReceiptDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\MaterialReceiptDetailsViewByMaterialReceiptMasterIdWithRemainingByNotInCurrPI_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\MaterialReceiptMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\MaterialReceiptMasterViewByReceiptMasterId_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\MaterialReceiptMasterView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\MonthlySalary.cs">
@@ -663,7 +779,46 @@
     <Compile Include="DataSet\PricingLevel.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PricingLevelViewAll_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PrintFormat.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ProductCodeAndBarcodeByBatchId_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ProductViewAll_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\productviewbybarcodeforSR_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ProductViewByCode_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ProductViewByName_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\productviewbyproductcodeforSR_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\productviewbyproductNameforSR_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PurchaseBillTax.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PurchaseBillTaxViewAllByPurchaseMasterId_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PurchaseDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PurchaseDetailsViewByPurchaseMasterIdWithRemaining_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PurchaseDetailsViewByPurchaseMasterId_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PurchaseInvoice.cs">
@@ -672,10 +827,40 @@
     <Compile Include="DataSet\PurchaseInvoiceDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PurchaseInvoicePurchaseAccountComboFill_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PurchaseMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PurchaseOrder.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PurchaseOrderDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PurchaseOrderDetailsViewByOrderMasterIdWithRemainingByNotInCurrPI_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PurchaseOrderMasterViewByOrderMasterId_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PurchaseReturnBilltax.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PurchaseReturnDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PurchaseReturnDetailsViewByMasterId_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PurchaseReturnMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PurchaseReturnMasterViewAllByPurchaseMasterId_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PurchaseReturnViewByPurchaseReturnMasterId_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Quotation.cs">
@@ -699,6 +884,18 @@
     <Compile Include="DataSet\ReceiptMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\RejectionInDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\RejectionInMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\RejectionOutDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\RejectionOutMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\RoleValue.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -720,7 +917,46 @@
     <Compile Include="DataSet\SaleOrderDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\SalesAccountComboFill_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalesDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalesInvoiceAdditionalCostViewByVoucherNoUnderVoucherType_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalesInvoiceDetailsViewByBarcodeForSI_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalesInvoiceDetailsViewByProductCodeForSI_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\SalesMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalesMasterViewForComboFillSelection_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalesMasterView_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalesReturnBillTax.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalesReturnDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalesReturnGrideFillNew_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalesReturnInvoiceNoComboFill_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalesReturnMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalesReturnReportGrideFill_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Setting.cs">
@@ -730,6 +966,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Stock.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\StockPosting.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SuffixPrefix.cs">
@@ -780,10 +1019,25 @@
     <Compile Include="DataSet\TaxDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\TaxViewAllByVoucherTypeIdApplicaleForProduct_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\TaxViewAllByVoucherTypeIdForPurchaseInvoice_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\TaxViewAllByVoucherTypeId_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\tbl_SalesBillTax.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Town.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Unit.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\UnitConversionIdAndConRateViewallByProductId_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\UnitConvertion.cs">
@@ -793,6 +1047,12 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\VoucherTypeTax.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\VoucherTypeViewAllByLedgerId_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\VoucherTypeView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Worker.cs">
@@ -1072,6 +1332,9 @@
     <EmbeddedResource Include="Account\Master\frmVoucherType.resx">
       <DependentUpon>frmVoucherType.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\Other\frmLedgerPopup.resx">
+      <DependentUpon>frmLedgerPopup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\PayRoll\frmAdvancePayment.resx">
       <DependentUpon>frmAdvancePayment.cs</DependentUpon>
     </EmbeddedResource>
@@ -1141,6 +1404,12 @@
     <EmbeddedResource Include="Account\Reports\frmReceiptReport.resx">
       <DependentUpon>frmReceiptReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reports\frmSalesReport.resx">
+      <DependentUpon>frmSalesReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reports\frmSalesReturnReport.resx">
+      <DependentUpon>frmSalesReturnReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\Search\frmVoucherSearch.resx">
       <DependentUpon>frmVoucherSearch.cs</DependentUpon>
     </EmbeddedResource>
@@ -1168,8 +1437,17 @@
     <EmbeddedResource Include="Account\Transaction\frmPdcReceivable.resx">
       <DependentUpon>frmPdcReceivable.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\Transaction\frmPurchaseReturn.resx">
+      <DependentUpon>frmPurchaseReturn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmReceiptVoucher.resx">
       <DependentUpon>frmReceiptVoucher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Transaction\frmSalesInvoice.resx">
+      <DependentUpon>frmSalesInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Transaction\frmSalesReturn.resx">
+      <DependentUpon>frmSalesReturn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountingControl.resx">
       <DependentUpon>AccountingControl.cs</DependentUpon>
@@ -1307,7 +1585,6 @@
     <None Include="DataSet\IME.edmx.diagram">
       <DependentUpon>IME.edmx</DependentUpon>
     </None>
-    <None Include="DataSet\IME.edmx.diagram~RF5230d270.TMP" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthorizationValue.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthRole.datasource" />

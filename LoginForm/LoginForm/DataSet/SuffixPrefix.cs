@@ -19,11 +19,19 @@ namespace LoginForm.DataSet
         {
             this.DeliveryNoteMasters = new HashSet<DeliveryNoteMaster>();
             this.JournalMasters = new HashSet<JournalMaster>();
+            this.MaterialReceiptMasters = new HashSet<MaterialReceiptMaster>();
             this.PDCClearanceMasters = new HashSet<PDCClearanceMaster>();
             this.PDCPayableMasters = new HashSet<PDCPayableMaster>();
             this.PDCReceivableMasters = new HashSet<PDCReceivableMaster>();
+            this.PurchaseMasters = new HashSet<PurchaseMaster>();
+            this.PurchaseOrders = new HashSet<PurchaseOrder>();
+            this.PurchaseReturnMasters = new HashSet<PurchaseReturnMaster>();
+            this.Quotations = new HashSet<Quotation>();
+            this.RejectionInMasters = new HashSet<RejectionInMaster>();
+            this.RejectionOutMasters = new HashSet<RejectionOutMaster>();
             this.SalaryVoucherMasters = new HashSet<SalaryVoucherMaster>();
             this.SalesMasters = new HashSet<SalesMaster>();
+            this.SalesReturnMasters = new HashSet<SalesReturnMaster>();
         }
     
         public decimal suffixprefixId { get; set; }
@@ -42,15 +50,31 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<JournalMaster> JournalMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MaterialReceiptMaster> MaterialReceiptMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PDCClearanceMaster> PDCClearanceMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PDCPayableMaster> PDCPayableMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PDCReceivableMaster> PDCReceivableMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseMaster> PurchaseMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseOrder> PurchaseOrders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseReturnMaster> PurchaseReturnMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Quotation> Quotations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RejectionInMaster> RejectionInMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RejectionOutMaster> RejectionOutMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalaryVoucherMaster> SalaryVoucherMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesMaster> SalesMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesReturnMaster> SalesReturnMasters { get; set; }
         public virtual VoucherType VoucherType { get; set; }
     }
 }

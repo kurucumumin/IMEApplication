@@ -81,7 +81,7 @@ namespace LoginForm.PurchaseOrder
             }
             else
             {
-                purchasecode = IME.PurchaseOrders.OrderByDescending(q => q.FicheNo).FirstOrDefault().FicheNo;
+                purchasecode = Convert.ToInt32(IME.PurchaseOrders.OrderByDescending(q => q.FicheNo).FirstOrDefault().FicheNo);
                 txtOrderNumber.Text = (purchasecode + 1).ToString();
                 purchasecode = purchasecode + 1;
             }
@@ -142,7 +142,7 @@ namespace LoginForm.PurchaseOrder
         {
             IME = new IMEEntities();
             #region Purchase Orders Detail Fill
-            var adapter = (from p in IME.PurchaseOrderDetails.Where(p => p.FicheNo == ficheNo)
+            var adapter = (from p in IME.PurchaseOrderDetails.Where(p => p.FicheNo == ficheNo.ToString())
                            select new
                            {
                                p.PurchaseOrder.Customer.c_name,

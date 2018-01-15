@@ -57,8 +57,8 @@ namespace LoginForm.PurchaseOrder
                 int ID = (int)row.Cells[FicheNo.Index].Value;
                 if (row.Cells[FicheNo.Index].Value != null)
                 {
-                    var adapter = IME.PurchaseOrders.Where(a => a.FicheNo == ID).FirstOrDefault();
-                    adapter.FicheNo = (int)row.Cells[FicheNo.Index].Value;
+                    var adapter = IME.PurchaseOrders.Where(a => Convert.ToInt32(a.FicheNo) == ID).FirstOrDefault();
+                    adapter.FicheNo = row.Cells[FicheNo.Index].Value.ToString();
                     adapter.PurchaseOrderDate = (DateTime)row.Cells[PurchaseOrderDate.Index].Value;
                     adapter.CustomerID = row.Cells[CustomerID.Index].Value.ToString();
                     adapter.Customer.c_name = row.Cells[c_name.Index].Value.ToString();
@@ -159,10 +159,10 @@ namespace LoginForm.PurchaseOrder
                 else
                 {
                     int sayac = Convert.ToInt32(search);
-                 var fno = IME.PurchaseOrders.Where(b => b.FicheNo == sayac).FirstOrDefault();
+                 var fno = IME.PurchaseOrders.Where(b => Convert.ToInt32(b.FicheNo) == sayac).FirstOrDefault();
                     if (fno != null)
                     {
-                        var fichenolist = (from p in IME.PurchaseOrders.Where(p => p.FicheNo == sayac)
+                        var fichenolist = (from p in IME.PurchaseOrders.Where(p => Convert.ToInt32(p.FicheNo) == sayac)
                                            select new
                                            {
                                                p.FicheNo,
@@ -211,7 +211,8 @@ namespace LoginForm.PurchaseOrder
         private void RadioPurchase(bool sayac)
         {
             IME = new IMEEntities();
-            var adapter = (from po in IME.PurchaseOrders.Where(po => po.Invoice != null && po.Invoice == sayac)
+            var adapter = (from po in IME.PurchaseOrders
+                           //.Where(po => po.Invoice != null && po.Invoice == sayac)
                            select new
                            {
                                po.FicheNo,

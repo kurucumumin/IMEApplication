@@ -1,4 +1,4 @@
-﻿namespace Open_Miracle
+﻿namespace LoginForm
 {
     partial class frmReceiptVoucher
     {

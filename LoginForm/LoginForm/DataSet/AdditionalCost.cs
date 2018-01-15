@@ -10,17 +10,18 @@
 namespace LoginForm.DataSet
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class BankReconciliationFillUnrecon1_Result
+    public partial class AdditionalCost
     {
-        public string date { get; set; }
-        public string ledgerName { get; set; }
-        public string voucherTypeName { get; set; }
-        public decimal ledgerPostingId { get; set; }
+        public decimal additionalCostId { get; set; }
+        public Nullable<decimal> voucherTypeId { get; set; }
         public string voucherNo { get; set; }
-        public string chequeNo { get; set; }
-        public string chequeDate { get; set; }
+        public Nullable<decimal> ledgerId { get; set; }
         public Nullable<decimal> debit { get; set; }
         public Nullable<decimal> credit { get; set; }
+    
+        public virtual AccountLedger AccountLedger { get; set; }
+        public virtual VoucherType VoucherType { get; set; }
     }
 }

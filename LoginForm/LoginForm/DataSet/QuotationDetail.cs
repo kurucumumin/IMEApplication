@@ -14,6 +14,13 @@ namespace LoginForm.DataSet
     
     public partial class QuotationDetail
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public QuotationDetail()
+        {
+            this.SaleOrderDetails = new HashSet<SaleOrderDetail>();
+            this.SalesDetails = new HashSet<SalesDetail>();
+        }
+    
         public int ID { get; set; }
         public Nullable<int> dgNo { get; set; }
         public string ItemCode { get; set; }
@@ -34,7 +41,12 @@ namespace LoginForm.DataSet
         public Nullable<int> SSM { get; set; }
         public Nullable<decimal> UnitWeight { get; set; }
         public string DependantTable { get; set; }
+        public Nullable<decimal> unitConversionId { get; set; }
     
         public virtual Quotation Quotation { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SaleOrderDetail> SaleOrderDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesDetail> SalesDetails { get; set; }
     }
 }

@@ -11,9 +11,9 @@ namespace LoginForm.DataSet
 {
     using System;
     
-    public partial class sp_helpdiagramdefinition_Result
+    public partial class TaxViewAllByVoucherTypeIdApplicaleForProduct_Result
     {
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int taxId { get; set; }
+        public string taxName { get; set; }
     }
 }

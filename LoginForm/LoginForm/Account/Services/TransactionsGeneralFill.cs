@@ -331,5 +331,93 @@ namespace LoginForm.Account.Services
             }
             return dtbl;
         }
+
+        public bool StatusOfPrintAfterSave()
+        {
+            IMEEntities IME = new IMEEntities();
+            string strStatus = "";
+            bool isTrue = false;
+            try
+            {
+
+                strStatus = IME.Settings.Where(x => x.settingsName == "TickPrintAfterSave").FirstOrDefault().settingsName;
+
+                isTrue = (strStatus==null) ? false : true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return isTrue;
+        }
+
+        public void SalesAccountComboFill(ComboBox cmbSalesAccount, bool isAll)
+        {
+            IMEEntities IME = new IMEEntities();
+
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("SlNo", typeof(decimal));
+            dtbl.Columns["SlNo"].AutoIncrement = true;
+            dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
+            dtbl.Columns["SlNo"].AutoIncrementStep = 1;
+            try
+            {
+                var adaptor = IME.SalesAccountComboFill();
+
+                dtbl.Columns.Add("ledgerName");
+                dtbl.Columns.Add("ledgerId");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["ledgerName"] = item.ledgerName;
+                    row["ledgerId"] = item.ledgerId;
+
+                    dtbl.Rows.Add(row);
+                }
+                cmbSalesAccount.DataSource = dtbl;
+                cmbSalesAccount.ValueMember = "ledgerId";
+                cmbSalesAccount.DisplayMember = "ledgerName";
+                cmbSalesAccount.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public DataTable PricingLevelViewAll(ComboBox cmbPricingLevel, bool isAll)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("SlNo", typeof(decimal));
+            dtbl.Columns["SlNo"].AutoIncrement = true;
+            dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
+            dtbl.Columns["SlNo"].AutoIncrementStep = 1;
+            try
+            {
+                var adaptor = IME.PricingLevelViewAll();
+
+
+                dtbl.Columns.Add("pricinglevelId");
+                dtbl.Columns.Add("pricinglevelName");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["pricinglevelId"] = item.pricinglevelId;
+                    row["pricinglevelName"] = item.pricinglevelName;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
     }
 }

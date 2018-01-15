@@ -155,5 +155,39 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        public void LedgerPostingAndPartyBalanceDeleteByVoucherTypeIdAndLedgerIdAndVoucherNo(decimal voucherTypeId, string voucherNo, string invoiceNo)
+        {
+            IMEEntities db = new IMEEntities();
+            try
+            {
+                LedgerPosting lp = db.LedgerPostings.Where(x => x.voucherNo == voucherNo && x.voucherTypeId == voucherTypeId && x.invoiceNo == invoiceNo).FirstOrDefault();
+                db.LedgerPostings.Remove(lp);
+                db.SaveChanges();
+
+                PartyBalance pb = db.PartyBalances.Where(x => x.againstVoucherNo == voucherNo && x.againstVoucherTypeId == voucherTypeId && x.againstInvoiceNo == invoiceNo).FirstOrDefault();
+                db.PartyBalances.Remove(pb);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public void LedgerPostDelete(string strVoucherNo, decimal decVoucherTypeId)
+        {
+            IMEEntities db = new IMEEntities();
+            try
+            {
+                LedgerPosting lp = db.LedgerPostings.Where(x => x.voucherNo == strVoucherNo && x.voucherTypeId == decVoucherTypeId).FirstOrDefault();
+                db.LedgerPostings.Remove(lp);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }

@@ -14,6 +14,14 @@ namespace LoginForm.DataSet
     
     public partial class DeliveryNoteMaster
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public DeliveryNoteMaster()
+        {
+            this.DeliveryNoteDetails = new HashSet<DeliveryNoteDetail>();
+            this.RejectionInMasters = new HashSet<RejectionInMaster>();
+            this.SalesMasters = new HashSet<SalesMaster>();
+        }
+    
         public decimal deliveryNoteMasterId { get; set; }
         public string voucherNo { get; set; }
         public string invoiceNo { get; set; }
@@ -33,6 +41,8 @@ namespace LoginForm.DataSet
         public Nullable<decimal> financialYearId { get; set; }
     
         public virtual AccountLedger AccountLedger { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DeliveryNoteDetail> DeliveryNoteDetails { get; set; }
         public virtual ExchangeRate ExchangeRate { get; set; }
         public virtual FinancialYear FinancialYear { get; set; }
         public virtual PricingLevel PricingLevel { get; set; }
@@ -40,5 +50,9 @@ namespace LoginForm.DataSet
         public virtual SuffixPrefix SuffixPrefix { get; set; }
         public virtual Worker Worker { get; set; }
         public virtual VoucherType VoucherType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RejectionInMaster> RejectionInMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesMaster> SalesMasters { get; set; }
     }
 }

@@ -14,6 +14,12 @@ namespace LoginForm.DataSet
     
     public partial class SaleOrderDetail
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public SaleOrderDetail()
+        {
+            this.SalesReturnDetails = new HashSet<SalesReturnDetail>();
+        }
+    
         public int ID { get; set; }
         public string ItemCode { get; set; }
         public int Quantity { get; set; }
@@ -38,7 +44,13 @@ namespace LoginForm.DataSet
         public Nullable<bool> Calibration { get; set; }
         public Nullable<decimal> ItemCost { get; set; }
         public Nullable<int> No { get; set; }
+        public Nullable<decimal> unitConversionId { get; set; }
+        public Nullable<decimal> deliveryNoteDetailsId { get; set; }
+        public Nullable<int> quotationDetailsId { get; set; }
     
+        public virtual QuotationDetail QuotationDetail { get; set; }
         public virtual SaleOrder SaleOrder { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesReturnDetail> SalesReturnDetails { get; set; }
     }
 }

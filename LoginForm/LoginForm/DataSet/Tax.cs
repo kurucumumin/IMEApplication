@@ -17,6 +17,10 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Tax()
         {
+            this.PurchaseDetails = new HashSet<PurchaseDetail>();
+            this.PurchaseReturnDetails = new HashSet<PurchaseReturnDetail>();
+            this.PurchaseReturnDetails1 = new HashSet<PurchaseReturnDetail>();
+            this.SalesDetails = new HashSet<SalesDetail>();
             this.TaxDetails = new HashSet<TaxDetail>();
             this.VoucherTypeTaxes = new HashSet<VoucherTypeTax>();
         }
@@ -29,6 +33,14 @@ namespace LoginForm.DataSet
         public Nullable<bool> isActive { get; set; }
         public int TaxID { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseDetail> PurchaseDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseReturnDetail> PurchaseReturnDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseReturnDetail> PurchaseReturnDetails1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesDetail> SalesDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TaxDetail> TaxDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
