@@ -21,7 +21,7 @@ namespace LoginForm.DataSet
         public string againstVoucherNo { get; set; }
         public Nullable<decimal> voucherTypeId { get; set; }
         public string voucherNo { get; set; }
-    
+
         public virtual VoucherType VoucherType { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class PurchaseReturnDetail
     {
         public decimal purchaseReturnDetailsId { get; set; }
@@ -32,7 +32,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> amount { get; set; }
         public Nullable<int> slNo { get; set; }
         public Nullable<int> purchaseDetailsId { get; set; }
-    
+
         public virtual Batch Batch { get; set; }
         public virtual Godown Godown { get; set; }
         public virtual PurchaseOrderDetail PurchaseOrderDetail { get; set; }

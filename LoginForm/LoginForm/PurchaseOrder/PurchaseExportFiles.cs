@@ -21,7 +21,7 @@ namespace LoginForm.PurchaseOrder
         IMEEntities IME = new IMEEntities();
         List<DataGridViewRow> rowList = new List<DataGridViewRow>();
         List<Mail> MailList = new List<Mail>();
-        int fiche;
+        string fiche;
         SmtpClient sc = new SmtpClient();
         MailMessage mail = new MailMessage();
         List<string> ccList = new List<string>();
@@ -33,7 +33,7 @@ namespace LoginForm.PurchaseOrder
             InitializeComponent();
         }
 
-        public PurchaseExportFiles(List<DataGridViewRow> List, int ficheNo)
+        public PurchaseExportFiles(List<DataGridViewRow> List, string ficheNo)
         {
             InitializeComponent();
             rowList = List;

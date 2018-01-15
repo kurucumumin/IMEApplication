@@ -69,7 +69,7 @@ namespace LoginForm.Account.Services
             {
                 decResult = IME.StockPostingDeleteByagainstVoucherTypeIdAndagainstVoucherNoAndVoucherNoAndVoucherType(decAgainstVoucherTypeId,strAgainstVoucherNo,strVoucherNo,decVoucherTypeId);
 
-                
+
             }
             catch (Exception ex)
             {

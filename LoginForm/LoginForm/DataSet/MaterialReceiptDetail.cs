@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class MaterialReceiptDetail
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +19,7 @@ namespace LoginForm.DataSet
         {
             this.RejectionOutDetails = new HashSet<RejectionOutDetail>();
         }
-    
+
         public decimal materialReceiptDetailsId { get; set; }
         public Nullable<decimal> materialReceiptMasterId { get; set; }
         public Nullable<decimal> productId { get; set; }
@@ -33,7 +33,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> rackId { get; set; }
         public Nullable<decimal> amount { get; set; }
         public Nullable<int> slno { get; set; }
-    
+
         public virtual Batch Batch { get; set; }
         public virtual Godown Godown { get; set; }
         public virtual MaterialReceiptMaster MaterialReceiptMaster { get; set; }

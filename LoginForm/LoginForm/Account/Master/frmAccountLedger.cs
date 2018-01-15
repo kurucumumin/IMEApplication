@@ -56,7 +56,7 @@ namespace LoginForm
         //frmCreditNote frmCreditNoteObj = null;
         //frmRejectionOut frmRejectionOutObj;
         //frmDeliveryNote frmDeliveryNoteObj;
-        //frmSalesInvoice frmSalesInvoiceObj;
+        frmSalesInvoice frmSalesInvoiceObj;
         //frmPurchaseInvoice frmPurchaseInvoiceObj = null;
         frmPurchaseReturn frmPurchaseReturnObj;
         //frmSalesQuotation frmSalesQuotationObj;
@@ -954,26 +954,26 @@ namespace LoginForm
         /// <param name="isFromCorParty"></param>
         /// <param name="isFromSA"></param>
         /// //TODO OpenMiracle Function
-        //public void callFromSalesInvoice(frmSalesInvoice frmSalesInvoice, bool isFromCorParty, bool isFromSA)
-        //{
-        //    try
-        //    {
-        //        isFromSalesReturnCashOrPartyCombo = isFromCorParty;
-        //        isFromSalesReturnSalesAccountCombo = isFromSA;
-        //        txtLedgerNameSearch.Enabled = false;
-        //        btnSearch.Enabled = false;
-        //        cmbGroupSearch.Enabled = false;
-        //        dgvAccountLedger.Enabled = false;
-        //        lblLedgerNameSearch.Enabled = false;
-        //        lblGroupSearch.Enabled = false;
-        //        this.frmSalesInvoiceObj = frmSalesInvoice;
-        //        base.Show();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("AL21:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void callFromSalesInvoice(frmSalesInvoice frmSalesInvoice, bool isFromCorParty, bool isFromSA)
+        {
+            try
+            {
+                isFromSalesReturnCashOrPartyCombo = isFromCorParty;
+                isFromSalesReturnSalesAccountCombo = isFromSA;
+                txtLedgerNameSearch.Enabled = false;
+                btnSearch.Enabled = false;
+                cmbGroupSearch.Enabled = false;
+                dgvAccountLedger.Enabled = false;
+                lblLedgerNameSearch.Enabled = false;
+                lblGroupSearch.Enabled = false;
+                this.frmSalesInvoiceObj = frmSalesInvoice;
+                base.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL21:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to call this form from frmJournalVoucher for creating new account ledger
         /// </summary>

@@ -185,7 +185,7 @@
 //                {
 //                    txtDate.Select();
 //                }
-                
+
 //                txtTotalAmount.Text = "0.00";
 //                txtGrandTotal.Text = "0.00";
 //                lblTotalQuantitydisplay.Text = "0";
@@ -634,7 +634,7 @@
 //            }
 //        }
 //        /// <summary>
-//        /// Function to call this form from frmVoucherSearch to view details and for updation 
+//        /// Function to call this form from frmVoucherSearch to view details and for updation
 //        /// </summary>
 //        /// <param name="frm"></param>
 //        /// <param name="decId"></param>
@@ -653,7 +653,7 @@
 //            }
 //        }
 //        /// <summary>
-//        /// Function to call this form from frmDayBook to view details and for updation 
+//        /// Function to call this form from frmDayBook to view details and for updation
 //        /// </summary>
 //        /// <param name="frmDayBook"></param>
 //        /// <param name="decMasterId"></param>
@@ -675,7 +675,7 @@
 //            }
 //        }
 //        /// <summary>
-//        /// Function to call this form from frmVatReturnReport to view details and for updation 
+//        /// Function to call this form from frmVatReturnReport to view details and for updation
 //        /// </summary>
 //        /// <param name="frmVatRetnRpot"></param>
 //        /// <param name="decMasterId"></param>
@@ -729,7 +729,7 @@
 //            }
 //        }
 //        /// <summary>
-//        /// Function to fill Account ledger combobox while return from Account ledger creation when creating new ledger 
+//        /// Function to fill Account ledger combobox while return from Account ledger creation when creating new ledger
 //        /// </summary>
 //        /// <param name="decAccountLedgerId"></param>
 //        public void ReturnFromAccountLedger(decimal decAccountLedgerId)
@@ -760,7 +760,7 @@
 //            }
 //        }
 //        /// <summary>
-//        /// Function to fill Account ledger combobox while return from Account ledger creation when creating new ledger 
+//        /// Function to fill Account ledger combobox while return from Account ledger creation when creating new ledger
 //        /// </summary>
 //        /// <param name="decSalesAccountId"></param>
 //        public void ReturnFromSalesAccount(decimal decSalesAccountId)
@@ -791,7 +791,7 @@
 //            }
 //        }
 //        /// <summary>
-//        /// Function to fill Pricing level combobox while return from Pricing level creation when creating new ledger 
+//        /// Function to fill Pricing level combobox while return from Pricing level creation when creating new ledger
 //        /// </summary>
 //        /// <param name="decPricingLevelId"></param>
 //        public void ReturnFromPricingLevel(decimal decPricingLevelId)
@@ -2626,7 +2626,7 @@
 //            return isOk;
 //        }
 //        /// <summary>
-//        /// To get Total Net Amount For LedgerPosting 
+//        /// To get Total Net Amount For LedgerPosting
 //        /// </summary>
 //        /// <returns></returns>
 //        public decimal TotalNetAmountForLedgerPosting()
@@ -4929,7 +4929,7 @@
 //            return dgvSalesInvoice.Rows.Count > 1 ? true : false;
 //        }
 //        /// <summary>
-//        /// Function to fill Sales invoice grid while return from Product creation when creating Product 
+//        /// Function to fill Sales invoice grid while return from Product creation when creating Product
 //        /// </summary>
 //        /// <param name="decProductId"></param>
 //        public void ReturnFromProductCreation(decimal decProductId)
@@ -5263,7 +5263,7 @@
 //            }
 //        }
 //        /// <summary>
-//        /// To create a new Salesman from this button click 
+//        /// To create a new Salesman from this button click
 //        /// </summary>
 //        /// <param name="sender"></param>
 //        /// <param name="e"></param>
@@ -5346,7 +5346,7 @@
 //            }
 //        }
 //        /// <summary>
-//        /// To create a new PricingLevel from this button click 
+//        /// To create a new PricingLevel from this button click
 //        /// </summary>
 //        /// <param name="sender"></param>
 //        /// <param name="e"></param>
@@ -6299,7 +6299,7 @@
 //        }
 //        /// <summary>
 //        /// "e"></param>
-//        /// private void cmbVoucherType combo index change 
+//        /// private void cmbVoucherType combo index change
 //        /// </summary>
 //        /// <param name="sender"></param>
 //        /// <param name="e"></param>

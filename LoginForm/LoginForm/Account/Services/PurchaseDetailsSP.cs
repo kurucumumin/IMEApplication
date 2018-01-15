@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+
 namespace LoginForm.Account.Services
 {
     class PurchaseDetailsSP
@@ -103,7 +105,6 @@ namespace LoginForm.Account.Services
             }
             return dtbl;
         }
-
 
     }
 }

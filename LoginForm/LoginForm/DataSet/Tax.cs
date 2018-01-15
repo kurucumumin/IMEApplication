@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Tax
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,7 +24,7 @@ namespace LoginForm.DataSet
             this.TaxDetails = new HashSet<TaxDetail>();
             this.VoucherTypeTaxes = new HashSet<VoucherTypeTax>();
         }
-    
+
         public string taxName { get; set; }
         public string ApplicationOn { get; set; }
         public Nullable<decimal> Rate { get; set; }
@@ -32,7 +32,7 @@ namespace LoginForm.DataSet
         public string narration { get; set; }
         public Nullable<bool> isActive { get; set; }
         public int TaxID { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseDetail> PurchaseDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

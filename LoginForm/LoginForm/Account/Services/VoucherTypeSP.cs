@@ -51,7 +51,7 @@ namespace LoginForm.Account.Services
                     var row = dtbl.NewRow();
 
                     row["voucherTypeName"] = item.voucherTypeName;
-                    
+
                     dtbl.Rows.Add(row);
                 }
                 cmbVoucherType.DataSource = dtbl;
@@ -97,7 +97,7 @@ namespace LoginForm.Account.Services
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
             return dtbl;
         }
 
@@ -273,19 +273,8 @@ namespace LoginForm.Account.Services
         public VoucherType VoucherTypeView(decimal voucherTypeId)
         {
             IMEEntities IME = new IMEEntities();
-            VoucherType vouchertypeinfo = new VoucherType();
-            try
-            {
-                vouchertypeinfo = IME.VoucherTypes.Where(x=> x.voucherTypeId==voucherTypeId).FirstOrDefault();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            return vouchertypeinfo;
+            VoucherType vt = IME.VoucherTypes.Where(a => a.voucherTypeId == voucherTypeId).FirstOrDefault();
+            return vt;
         }
-
-
     }
 }

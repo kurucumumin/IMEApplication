@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class UnitConvertion
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,13 +25,13 @@ namespace LoginForm.DataSet
             this.RejectionOutDetails = new HashSet<RejectionOutDetail>();
             this.SalesDetails = new HashSet<SalesDetail>();
         }
-    
+
         public decimal unitconversionId { get; set; }
         public string productId { get; set; }
         public Nullable<decimal> unitId { get; set; }
         public Nullable<decimal> conversionRate { get; set; }
         public string quantities { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MaterialReceiptDetail> MaterialReceiptDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace LoginForm.Account.Services
 {
     class SalesDetailsSP
@@ -190,6 +191,207 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
             return dtbl;
+
+            public DataTable SalesInvoiceDetailsViewByProductNameForSI(decimal decVoucherTypeId, string strProductName)
+            {
+                DataTable dtbl = new DataTable();
+                DataTable dt = new DataTable();
+                IMEEntities IME = new IMEEntities();
+                var adaptor= IME.SalesInvoiceDetailsViewByProductNameForSI(decVoucherTypeId, strProductName);
+                dt.Columns.Add("salesDetailsId");
+                dt.Columns.Add("salesOrderDetailsId");
+                dt.Columns.Add("salesQuotationDetailsId");
+                dt.Columns.Add("deliveryNoteDetailsId");
+                dt.Columns.Add("barcode");
+                dt.Columns.Add("Article_No");
+                dt.Columns.Add("Article_Desc");
+                dt.Columns.Add("unitConversionId");
+                dt.Columns.Add("batchId");
+                dt.Columns.Add("discountPercent");
+                dt.Columns.Add("discount");
+                dt.Columns.Add("netvalue");
+                dt.Columns.Add("discount");
+                dt.Columns.Add("taxId");
+                dt.Columns.Add("taxAmount");
+                dt.Columns.Add("amount");
+                dt.Columns.Add("Article_No");
+                dt.Columns.Add("Article_Desc");
+                dt.Columns.Add("unitConversionId");
+                dt.Columns.Add("conversionRate");
+                dt.Columns.Add("batchId");
+                dt.Columns.Add("taxId");
+                //
+                foreach (var item in adaptor)
+                {
+                    var row = dt.NewRow();
+                    row["salesDetailsId"] = item.salesOrderDetailsId;
+                    row["salesOrderDetailsId"] = item.salesOrderDetailsId;
+                    row["salesQuotationDetailsId"] = item.salesQuotationDetailsId;
+                    row["deliveryNoteDetailsId"] = item.deliveryNoteDetailsId;
+                    row["barcode"] = item.barcode;
+                    row["Article_No"] = item.Article_No;
+                    row["Article_Desc"] = item.Article_Desc;
+                    row["unitConversionId"] = item.unitConversionId;
+                    row["batchId"] = item.batchId;
+                    row["discountPercent"] = item.discountPercent;
+                    row["discount"] = item.discount;
+                    row["taxId"] = item.taxId;
+                    row["taxAmount"] = item.taxAmount;
+                    row["amount"] = item.Amount;
+                    row["Article_No"] = item.Article_No;
+                    row["Article_Desc"] = item.Article_Desc;
+                    row["unitConversionId"] = item.unitConversionId;
+                    row["conversionRate"] = item.conversionRate;
+                    row["batchId"] = item.batchId;
+                    row["taxId"] = item.taxId;
+                    dt.Rows.Add(row);
+                }
+
+                return dt;
+            }
+
+
+
+            public DataTable SalesInvoiceDetailsViewByBarcodeForSI(decimal decVoucherTypeId, string strBarcode)
+            {
+                DataTable dtbl = new DataTable();
+                IMEEntities IME = new IMEEntities();
+
+                return dtbl;
+            }
+
+            public DataTable SalesInvoiceDetailsViewByProductCodeForSI(decimal decVoucherTypeId, string strProductCode)
+            {
+                DataTable dt = new DataTable();
+                IMEEntities IME = new IMEEntities();
+                var adaptor=IME.SalesInvoiceDetailsViewByProductCodeForSI(decVoucherTypeId, strProductCode);
+                dt.Columns.Add("salseDetailsId");
+                dt.Columns.Add("salesOrderDetailsId");
+                dt.Columns.Add("salesQuotationDetailsId");
+                dt.Columns.Add("deliveryNoteDetailsId");
+                dt.Columns.Add("barcode");
+                dt.Columns.Add("Article_No");
+                dt.Columns.Add("Article_Desc");
+                dt.Columns.Add("unitConversionId");
+                dt.Columns.Add("conversionRate");
+                dt.Columns.Add("discountPercent");
+                dt.Columns.Add("netvalue");
+                dt.Columns.Add("discount");
+                dt.Columns.Add("taxId");
+                dt.Columns.Add("taxAmount");
+                dt.Columns.Add("amount");
+                //
+                foreach (var item in adaptor)
+                {
+                    var row = dt.NewRow();
+
+                    row["salseDetailsId"] = item.salseDetailsId;
+                    row["salesOrderDetailsId"] = item.salesOrderDetailsId;
+                    row["salesQuotationDetailsId"] = item.salesQuotationDetailsId;
+                    row["deliveryNoteDetailsId"] = item.deliveryNoteDetailsId;
+                    row["barcode"] = item.barcode;
+                    row["Article_No"] = item.Article_No;
+                    row["Article_Desc"] = item.Article_Desc;
+                    row["unitConversionId"] =  item.unitConversionId;
+                    row["conversionRate"] = item.conversionRate;
+                    row["discountPercent"] = item.discountPercent;
+                    row["netvalue"] = item.netvalue;
+                    row["discount"] = item.discount;
+                    row["taxId"] = item.taxId;
+                    row["taxAmount"] = item.taxAmount;
+                    row["amount"] = item.Amount;
+                    dt.Rows.Add(row);
+                }
+
+                return dt;
+            }
+
+            public void SalesDetailsEdit(SalesDetailsInfo salesdetailsinfo)
+            {
+                IMEEntities IME = new IMEEntities();
+                IME.SalesDetailsEdit(salesdetailsinfo.SalesDetailsId, salesdetailsinfo.SalesMasterId, salesdetailsinfo.DeliveryNoteDetailsId, salesdetailsinfo.OrderDetailsId, salesdetailsinfo.QuotationDetailsId, salesdetailsinfo.ProductId, salesdetailsinfo.Qty, salesdetailsinfo.Rate, salesdetailsinfo.UnitId, salesdetailsinfo.UnitConversionId, salesdetailsinfo.Discount, salesdetailsinfo.TaxId, salesdetailsinfo.BatchId, salesdetailsinfo.GodownId, salesdetailsinfo.RackId, salesdetailsinfo.TaxAmount, salesdetailsinfo.GrossAmount, salesdetailsinfo.NetAmount, salesdetailsinfo.Amount, salesdetailsinfo.SlNo, salesdetailsinfo.ExtraDate, salesdetailsinfo.Extra1, salesdetailsinfo.Extra2);
+                    //SqlCommand sccmd = new SqlCommand("SalesDetailsEdit", sqlcon);
+
+            }
+
+            public void SalesDetailsDelete(decimal SalesDetailsId)
+            {
+                IMEEntities IME = new IMEEntities();
+                IME.SalesDetailsDelete(SalesDetailsId);
+            }
+
+            public decimal SalesInvoiceReciptVoucherDetailsAgainstSI(decimal decvoucherTypeId, string strvoucherNo)
+            {
+                //decimal decBalAmount = 0;
+                IMEEntities IME = new IMEEntities();
+                var decBalAmount = IME.SalesInvoiceReciptVoucherDetailsAgainstSI(decvoucherTypeId, strvoucherNo);
+                return decimal.Parse(decBalAmount.ToString());
+            }
+
+            public DataTable SalesInvoiceSalesDetailsViewBySalesMasterId(decimal dcSalesMasterId)
+            {
+                DataTable dt = new DataTable();
+                IMEEntities IME = new IMEEntities();
+
+                return dt;
+            }
+
+            public void SalesDetailsAdd(SalesDetailsInfo salesdetailsinfo)
+            {
+                IMEEntities IME = new IMEEntities();
+                SalesDetail sd = new SalesDetail();
+                sd.amount = salesdetailsinfo.Amount;
+                sd.batchId = salesdetailsinfo.BatchId;
+                sd.deliveryNoteDetailsId = salesdetailsinfo.DeliveryNoteDetailsId;
+                sd.discount = salesdetailsinfo.Discount;
+                sd.godownId = salesdetailsinfo.GodownId;
+                sd.grossAmount = salesdetailsinfo.GrossAmount;
+                sd.netAmount = salesdetailsinfo.NetAmount;
+                sd.orderDetailsId = salesdetailsinfo.OrderDetailsId;
+                sd.productId = salesdetailsinfo.ProductId;
+                sd.qty = salesdetailsinfo.Qty;
+                sd.quotationDetailsId = salesdetailsinfo.QuotationDetailsId;
+                sd.rackId = salesdetailsinfo.RackId;
+                sd.rate = salesdetailsinfo.Rate;
+                sd.salesDetailsId = salesdetailsinfo.SalesDetailsId;
+                sd.salesMasterId = salesdetailsinfo.SalesMasterId;
+                sd.slNo = salesdetailsinfo.SlNo;
+                sd.taxAmount = salesdetailsinfo.TaxAmount;
+                sd.taxId = salesdetailsinfo.TaxId;
+                sd.unitConversionId = salesdetailsinfo.UnitConversionId;
+                sd.unitId = salesdetailsinfo.UnitId;
+                IME.SalesDetails.Add(sd);
+                IME.SaveChanges();
+
+
+            }
+
+            public DataTable VoucherTypesBasedOnTypeOfVouchers(string typeOfVouchers)
+            {
+                IMEEntities db = new IMEEntities();
+                DataTable dt = new DataTable();
+                var adaptor = (from vt in db.VoucherTypes
+                               where (vt.typeOfVoucher== typeOfVouchers)
+                               select new
+                               {
+                                   vt.voucherTypeId,
+                                   vt.voucherTypeName,
+                                   vt.typeOfVoucher
+                               }).ToList();
+                dt.Columns.Add("voucherTypeId");
+                dt.Columns.Add("voucherTypeName");
+                dt.Columns.Add("typeOfVoucher");
+                foreach (var item in adaptor)
+                {
+                    var row = dt.NewRow();
+
+                    row["voucherTypeId"] = item.voucherTypeId;
+                    row["voucherTypeName"] = item.voucherTypeName;
+                    row["voucherTypeName"] = item.voucherTypeName;
+                    dt.Rows.Add(row);
+                }
+                return dt;
+            }
         }
 
     }

@@ -9,6 +9,26 @@ namespace LoginForm.Account.Services
 {
     class LedgerPostingSP
     {
+        public void LedgerPostingEditByVoucherTypeAndVoucherNoAndLedgerId(LedgerPosting infoLedgerPosting)
+        {
+            IMEEntities IME = new IMEEntities();
+            IME.LedgerPostingEditByVoucherTypeAndVoucherNoAndLedgerid(infoLedgerPosting.date, infoLedgerPosting.voucherTypeId, infoLedgerPosting.voucherNo, infoLedgerPosting.ledgerId, infoLedgerPosting.debit.ToString(), infoLedgerPosting.credit.ToString(), infoLedgerPosting.detailsId, infoLedgerPosting.yearId, infoLedgerPosting.invoiceNo, infoLedgerPosting.chequeNo, infoLedgerPosting.chequeDate, infoLedgerPosting.extra1, infoLedgerPosting.extra2);
+        }
+
+
+        public void LedgerPostingDeleteByVoucherTypeIdAndLedgerIdAndVoucherNoAndExtra(decimal voucherTypeId, decimal decLedgerId, string strVoucherNo, string strAddCash)
+        {
+            IMEEntities IME = new IMEEntities();
+            IME.LedgerPostingDeleteByVoucherTypeIdAndLedgerIdAndVoucherNoAndExtra(voucherTypeId,
+                decLedgerId,strVoucherNo);
+        }
+
+        public void LedgerPostDelete(string strVoucherNo, decimal decVoucherTypeId)
+        {
+            IMEEntities IME = new IMEEntities();
+            IME.LedgerPostDelete(decVoucherTypeId, strVoucherNo);
+        }
+        
         public DataTable GetLedgerPostingIds(string v1, int v2)
         {
             IMEEntities db = new IMEEntities();

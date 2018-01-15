@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Unit
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -28,13 +28,13 @@ namespace LoginForm.DataSet
             this.StockPostings = new HashSet<StockPosting>();
             this.UnitConvertions = new HashSet<UnitConvertion>();
         }
-    
+
         public decimal unitId { get; set; }
         public string unitName { get; set; }
         public string narration { get; set; }
         public Nullable<int> noOfDecimalplaces { get; set; }
         public string formalName { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DeliveryNoteDetail> DeliveryNoteDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

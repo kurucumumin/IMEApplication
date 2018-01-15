@@ -6,7 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Data;
+using System.Data.SqlClient;
+using LoginForm.DataSet;
+using LoginForm.Services;
 
 namespace LoginForm.Account.Services
 {
@@ -17,46 +20,46 @@ namespace LoginForm.Account.Services
             //TODO check Again
             decimal decRate = 0;
             IMEEntities IME = new IMEEntities();
-            decRate = (decimal)IME.ExchangeRates.Where(a => a.currencyId == currencyID).OrderByDescending(a => a.date).FirstOrDefault().rate;
+            decRate = (decimal)IME.ExchangeRates.Where(a=>a.currencyId== currencyID).OrderByDescending(a=>a.date).FirstOrDefault().rate;
             return decRate;
         }
 
         public DataTable ProductViewAll()
         {
             IMEEntities IME = new IMEEntities();
-            DataTable dtbl = new DataTable();
-            dtbl.Columns.Add("SlNo", typeof(decimal));
-            dtbl.Columns["SlNo"].AutoIncrement = true;
-            dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
-            dtbl.Columns["SlNo"].AutoIncrementStep = 1;
-            try
-            {
+DataTable dt = new DataTable();
 
-                var adaptor = IME.ProductViewAll();
+var adaptor = IME.ArticleSelectAll();
 
-                dtbl.Columns.Add("Article_No");
-                dtbl.Columns.Add("Article_Desc");
-                dtbl.Columns.Add("Unit_Measure");
-                dtbl.Columns.Add("Brandname");
+dt.Columns.Add("Article_Desc");
+dt.Columns.Add("Article_No");
+dt.Columns.Add("Unit_Measure");
+dt.Columns.Add("Standard_Weight");
+dt.Columns.Add("CofO");
+dt.Columns.Add("MPN");
+dt.Columns.Add("Manufacturer");
+dt.Columns.Add("Heigh");
+dt.Columns.Add("Width");
+dt.Columns.Add("Length");
 
-                foreach (var item in adaptor)
-                {
-                    var row = dtbl.NewRow();
 
-                    row["Article_No"] = item.Article_No;
-                    row["Article_Desc"] = item.Article_Desc;
-                    row["Unit_Measure"] = item.Unit_Measure;
-                    row["Brandname"] = item.Brandname;
+foreach (var item in adaptor)
+{
+    var row = dt.NewRow();
+    row["Article_Desc"] = item.Article_Desc;
+    row["Article_No"] = item.Article_No;
+    row["Unit_Measure"] = item.Unit_Measure;
+    row["Standard_Weight"] = item.Standard_Weight;
+    row["CofO"] = item.CofO;
+    row["MPN"] = item.MPN;
+    row["Manufacturer"] = item.Manufacturer;
+    row["Heigh"] = item.Heigh;
+    row["Width"] = item.Width;
+    row["Length"] = item.Length;
 
-                    dtbl.Rows.Add(row);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            return dtbl;
+    dt.Rows.Add(row);
+}
+return dt;
         }
 
         public string ProductCodeViewByProductName(string productName)
@@ -175,7 +178,7 @@ namespace LoginForm.Account.Services
             {
                 MessageBox.Show(ex.ToString());
             }
-            
+
             return dtbl;
         }
 
@@ -183,7 +186,7 @@ namespace LoginForm.Account.Services
         {
             IMEEntities IME = new IMEEntities();
             ProductInfo productinfo = new ProductInfo();
-            
+
             try
             {
 
@@ -218,7 +221,7 @@ namespace LoginForm.Account.Services
         {
             IMEEntities IME = new IMEEntities();
             ProductInfo productinfo = new ProductInfo();
-            
+
             try
             {
                 var a = IME.ProductViewByName(strproductName).FirstOrDefault();

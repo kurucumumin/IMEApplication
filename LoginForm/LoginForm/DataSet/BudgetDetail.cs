@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class BudgetDetail
     {
         public decimal budgetDetailsId { get; set; }
@@ -19,7 +19,7 @@ namespace LoginForm.DataSet
         public string particular { get; set; }
         public Nullable<decimal> credit { get; set; }
         public Nullable<decimal> debit { get; set; }
-    
+
         public virtual BudgetMaster BudgetMaster { get; set; }
     }
 }

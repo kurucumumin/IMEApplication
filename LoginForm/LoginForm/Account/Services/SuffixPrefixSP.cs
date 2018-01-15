@@ -10,6 +10,8 @@ namespace LoginForm.Account.Services
 {
     class SuffixPrefixSP
     {
+
+
         public SuffixPrefix GetSuffixPrefixDetails(decimal vouchertypeId, DateTime date)
         {
             IMEEntities db = new IMEEntities();

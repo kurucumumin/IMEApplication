@@ -11,6 +11,30 @@ namespace LoginForm.Account.Services
 {
     class TransactionsGeneralFill
     {
+        public DataTable PricingLevelViewAll(ComboBox cmbPricingLevel, bool isAll)
+        {
+            IMEEntities db = new IMEEntities();
+            DataTable dt = new DataTable();
+            var adaptor = (from w in db.PricingLevels
+                           select new
+                           {
+                               w.pricinglevelId,
+                               UserName = (w.pricinglevelName == "NA") ? "1" : w.pricinglevelName
+                           }).ToList();
+            dt.Columns.Add("pricinglevelId");
+            dt.Columns.Add("UserName");
+
+            foreach (var item in adaptor)
+            {
+                var row = dt.NewRow();
+
+                row["WorkerID"] = item.pricinglevelId;
+                row["UserName"] = item.UserName;
+                dt.Rows.Add(row);
+            }
+            return dt;
+        }
+
         public string VoucherNumberAutomaicGeneration(decimal VoucherTypeId, decimal txtBox, DateTime date, string tableName)
         {
             IMEEntities db = new IMEEntities();
@@ -175,16 +199,18 @@ namespace LoginForm.Account.Services
             dtbl.Columns["SlNo"].AutoIncrementStep = 1;
             try
             {
-                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupId == 27 || x.accountGroupId == 26)
+                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupName == "Cash -in Hand" || x.accountGroupName == "Sundry Debtors")
                                select new
                                {
                                    AccountGroupId = ag.accountGroupId,
+                                   AccountGroupName = ag.accountGroupName,
                                    hierarchyLevel = 1
                                }).ToList();
-                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == 27 || x.groupUnder == 26)
+                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.accountGroupName == "Cash -in Hand" || x.accountGroupName == "Sundry Debtors")
                                 select new
                                 {
                                     AccountGroupId = ag.accountGroupId,
+                                    AccountGroupName = ag.accountGroupName,
                                     hierarchyLevel = 2
                                 }).ToList();
 
@@ -197,13 +223,13 @@ namespace LoginForm.Account.Services
                 }
 
                 dtbl.Columns.Add("AccountGroupId");
-
+                dtbl.Columns.Add("AccountGroupName");
                 foreach (var item in adaptor)
                 {
                     var row = dtbl.NewRow();
 
                     row["AccountGroupId"] = item.AccountGroupId;
-
+                    row["AccountGroupName"] = item.AccountGroupName;
                     dtbl.Rows.Add(row);
                 }
 

@@ -83,7 +83,7 @@ namespace LoginForm.nmSaleOrder
         {
             customer = cus;
             items = list;
-            
+
             this.Text = "Edit Quotation";
             modifyMod = true;
             InitializeComponent();
@@ -213,7 +213,7 @@ namespace LoginForm.nmSaleOrder
                     delv = addressList.Where(x => x.isDeliveryAdress == 1).FirstOrDefault();
                 }
                 catch (Exception){}
-                
+
 
                 if (inv != null)
                 {
@@ -248,7 +248,7 @@ namespace LoginForm.nmSaleOrder
                 if (cw != null) { cbDeliveryContact.SelectedValue = cw.ID; }
 
             }
-            
+
             //cbCurrency.SelectedIndex = cbCurrency.FindStringExact(customer.CurrNameQuo);
             //cbCurrType.SelectedIndex = cbCurrType.FindStringExact(c.CurrTypeQuo);
             //if(c.MainContactID!=null) cbWorkers.SelectedIndex = (int)c.MainContactID;
@@ -409,7 +409,7 @@ namespace LoginForm.nmSaleOrder
                                     this.Enabled = false;
                                     FormQuotationItemSearch itemsearch = new FormQuotationItemSearch(dgSaleAddedItems.CurrentCell.Value.ToString());
                                     itemsearch.ShowDialog();
-                                    
+
                                         //Bu item daha önceden eklimi diye kontrol ediyor
                                         DataGridViewRow row = dgSaleAddedItems.Rows
            .Cast<DataGridViewRow>()
@@ -428,7 +428,7 @@ namespace LoginForm.nmSaleOrder
 
                                         }
                                     }
-                                        
+
                                     dgSaleAddedItems.CurrentCell.Value = classQuotationAdd.ItemCode;
                                     try { sdNumber = IME.SuperDisks.Where(a => a.Article_No.Contains(dgSaleAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { sdNumber = 0; }
                                     try { sdPNumber = IME.SuperDiskPs.Where(a => a.Article_No.Contains(dgSaleAddedItems.CurrentCell.Value.ToString())).ToList().Count; } catch { sdPNumber = 0; }
@@ -894,7 +894,7 @@ namespace LoginForm.nmSaleOrder
             txtMargin5.Text = "";
             #endregion
         }
-        
+
 
         private void ItemDetailsFiller(string ArticleNoSearch)
         {
@@ -1245,7 +1245,7 @@ namespace LoginForm.nmSaleOrder
             try { ItemDetailsFiller(dgSaleAddedItems.Rows[dgSaleAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString()); } catch { }
         }
 
-        
+
 
         private void GetLandingCost(int Rowindex)
         {
@@ -1502,14 +1502,14 @@ namespace LoginForm.nmSaleOrder
                 s.NoteForFinance = (chkbForFinance.Checked == true) ? 1 : 0;
                 s.SaleOrderNature = cbOrderNature.SelectedItem.ToString();
                 s.ShippingType = cbSMethod.SelectedItem.ToString();
-                //s.currencyID = (decimal)cbCurrency.SelectedValue;
+
                 s.LPONO = txtLPONO.Text;
                 s.TotalMargin = Convert.ToDecimal(txtTotalMargin.Text);
                 s.Factor = Convert.ToDecimal(txtFactor.Text);
                 s.SubTotal = Convert.ToDecimal(lblsubtotal.Text);
                 s.DiscOnSubtotal = (txtTotalDis.Text != null && txtTotalDis.Text != String.Empty) ? Convert.ToDecimal(txtTotalDis.Text) : 0;
                 s.ExtraCharges = (txtExtraCharges.Text != null && txtExtraCharges.Text != String.Empty) ?Convert.ToDecimal(txtExtraCharges.Text) : 0;
-                
+
 
                 IME.SaleOrders.Add(s);
                 IME.SaveChanges();
@@ -1597,8 +1597,8 @@ namespace LoginForm.nmSaleOrder
                     {
                         sdi.ItemCost = Convert.ToDecimal(row.Cells[dgCost.Index].Value);
                     }
-                        
-                    
+
+
                     IME.SaleOrderDetails.Add(sdi);
                     IME.SaveChanges();
                 }
@@ -1718,7 +1718,7 @@ namespace LoginForm.nmSaleOrder
             //ItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString());
             for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
             {
-                
+
                 GetLandingCost(i);
                 dgSaleAddedItems.CurrentCell = dgSaleAddedItems.Rows[i].Cells[0];
                 GetMargin();
@@ -2902,7 +2902,7 @@ namespace LoginForm.nmSaleOrder
             {
                 nullAreaList.Add("Items can not be Empty!");
             }
-            
+
             StringBuilder errorString = new StringBuilder();
             for (int i = 0; i < nullAreaList.Count; i++)
             {
@@ -2914,7 +2914,7 @@ namespace LoginForm.nmSaleOrder
             }
 
             string errorMessage = errorString.ToString();
-            
+
             if (nullAreaList.Count != 0)
             {
                 MessageBox.Show(errorMessage,"Null Data");
