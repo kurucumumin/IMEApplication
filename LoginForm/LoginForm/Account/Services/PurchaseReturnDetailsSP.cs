@@ -54,7 +54,7 @@ namespace LoginForm.Account.Services
                 pdc.netAmount = pi.netAmount;
                 pdc.amount = pi.amount;
                 pdc.slNo = pi.slNo;
-                
+
 
                 IME.SaveChanges();
             }

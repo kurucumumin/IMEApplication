@@ -1,4 +1,4 @@
-﻿using LoginForm.DataSet;
+using LoginForm.DataSet;
 using System;
 using System.Collections.Generic;
 using System.Data;

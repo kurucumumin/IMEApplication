@@ -15,7 +15,7 @@ namespace LoginForm.Account.Services
         public DataTable SalesInvoiceGridfillAgainestQuotation(string decQuotationMasterId)
         {
             DataTable dt = new DataTable();
-            //Quotation,quotationdetail,exchangerate,currency 
+            //Quotation,quotationdetail,exchangerate,currency
             IMEEntities IME = new IMEEntities();
             var q = IME.QuotationDetails.Where(a => a.QuotationNo == decQuotationMasterId);
             dt.Columns.Add("quotationMasterId");

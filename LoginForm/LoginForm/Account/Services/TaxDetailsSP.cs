@@ -14,23 +14,27 @@ namespace LoginForm.Account.Services
     {
         public DataTable TaxDetailsViewallByTaxId(decimal decTaxId)
         {
-            IMEEntities IME = new IMEEntities();
-            DataTable dt = new DataTable();
-            var adaptor = (from TXD in IME.TaxDetails
-                           where (TXD.taxID == decTaxId)
-                           select new
-                           {
-                               TXD.SelectedtaxID,
-                           }).ToList();
-
-            dt.Columns.Add("SelectedtaxID");
-            foreach (var item in adaptor)
+            IMEEntities db = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
             {
-                var row = dt.NewRow();
-                row["SelectedtaxID"] = item.SelectedtaxID;
-                dt.Rows.Add(row);
+                var adaptor = db.TaxDetailsViewallByTaxId(decTaxId);
+
+                dtbl.Columns.Add("selectedtaxId");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+                    row["selectedtaxId"] = item.selectedtaxId;
+
+                    dtbl.Rows.Add(row);
+                }
             }
-            return dt;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
         }
     }
 }

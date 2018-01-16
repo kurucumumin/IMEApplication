@@ -1,12 +1,12 @@
-﻿using System;
+﻿using LoginForm.DataSet;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data;
-using System.Data.SqlClient;
-using LoginForm.DataSet;
+
 
 namespace LoginForm.Account.Services
 {
@@ -14,25 +14,26 @@ namespace LoginForm.Account.Services
     {
         public DataTable UnitViewAll()
         {
+            DataTable dtbl = new DataTable();
             IMEEntities IME = new IMEEntities();
-            DataTable dt = new DataTable();
-            var adaptor = (from u in IME.Units
+            var adaptor = (from a in IME.Units
                            select new
                            {
-                               u.unitId,
-                               u.unitName,
-                               u.narration,
-                               u.noOfDecimalplaces
+                               a.unitId,
+                               a.unitName,
+                               a.narration,
+                               a.noOfDecimalplaces
+
                            }).ToList();
 
-            dt.Columns.Add("unitId");
-            dt.Columns.Add("unitName");
-            dt.Columns.Add("narration");
-            dt.Columns.Add("noOfDecimalplaces");
+            dtbl.Columns.Add("unitId");
+            dtbl.Columns.Add("unitName");
+            dtbl.Columns.Add("narration");
+            dtbl.Columns.Add("noOfDecimalplaces");
 
             foreach (var item in adaptor)
             {
-                var row = dt.NewRow();
+                var row = dtbl.NewRow();
                 row["unitId"] = item.unitId;
                 row["unitName"] = item.unitName;
                 row["narration"] = item.narration;

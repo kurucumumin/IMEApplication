@@ -1,4 +1,4 @@
-using LoginForm.DataSet;
+﻿using LoginForm.DataSet;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -102,11 +102,11 @@ namespace LoginForm.Account.Services
 
         public string ProductBatchBarcodeViewByBatchId(decimal decBathId)
         {
-            IMEEntities IME = new IMEEntities();
+            IMEEntities db = new IMEEntities();
             string barCode = string.Empty;
             try
             {
-                barCode = Convert.ToString(IME.Batches.Where(x => x.batchId == decBathId).FirstOrDefault().barcode);
+                barCode = db.ProductBatchBarcodeViewByBatchId(decBathId);
             }
             catch (Exception ex)
             {

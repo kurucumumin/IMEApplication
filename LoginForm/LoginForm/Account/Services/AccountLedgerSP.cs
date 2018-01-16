@@ -581,7 +581,7 @@ namespace LoginForm.Account.Services
                 decimal? adapter2 = (from dn in IME.LedgerPostings.Where(p => p.ledgerId == decledgerId)
                                     select new { dn.credit }).Sum(x => Convert.ToDecimal(x.credit));
 
-                
+
 
                 inBalance1 = (adapter != null) ? (decimal)adapter : 0;
                 inBalance2 = (adapter2 != null) ? (decimal)adapter2 : 0;
@@ -597,29 +597,20 @@ namespace LoginForm.Account.Services
 
         public DataTable AccountLedgerViewAllForComboBox()
         {
-            IMEEntities IME = new IMEEntities();
+            IMEEntities db = new IMEEntities();
             DataTable dtbl = new DataTable();
             try
             {
-                var adaptor = (from ac in IME.AccountLedgers
-                               select new
-                               {
-                                   ac.ledgerId,
-                                   ac.ledgerName
-                               }).ToList();
-
+                var adaptor = db.AccountLedgerViewAllForComboBox();
 
                 dtbl.Columns.Add("ledgerId");
                 dtbl.Columns.Add("ledgerName");
 
-
                 foreach (var item in adaptor)
                 {
-                    var row = dtbl.NewRow();
-
+                    DataRow row = dtbl.NewRow();
                     row["ledgerId"] = item.ledgerId;
                     row["ledgerName"] = item.ledgerName;
-                    
 
                     dtbl.Rows.Add(row);
                 }
@@ -711,7 +702,6 @@ namespace LoginForm.Account.Services
             AccountLedger accountledgerinfo = new AccountLedger();
             try
             {
-
                 accountledgerinfo = IME.AccountLedgers.Where(x => x.ledgerId == ledgerId).FirstOrDefault();
             }
             catch (Exception ex)
@@ -720,6 +710,45 @@ namespace LoginForm.Account.Services
             }
             return accountledgerinfo;
         }
+        public AccountLedger AccountLedgerView(decimal ledgerId)
+        {
+            IMEEntities db = new IMEEntities();
+            AccountLedger accountledgerinfo = new AccountLedger();
+            try
+            {
+                AccountLedger a = db.AccountLedgerView(ledgerId);
 
+                accountledgerinfo.ledgerId = a.ledgerId;
+                accountledgerinfo.accountGroupID = a.accountGroupID;
+                accountledgerinfo.ledgerName = a.ledgerName;
+                accountledgerinfo.openingBalance = a.openingBalance;
+                accountledgerinfo.crOrDr = a.crOrDr;
+                accountledgerinfo.narration = a.narration;
+                accountledgerinfo.mailingName = a.mailingName;
+                accountledgerinfo.address = a.address;
+                accountledgerinfo.phone = a.phone;
+                accountledgerinfo.mobile = a.mobile;
+                accountledgerinfo.email = a.email;
+                accountledgerinfo.creditPeriod = a.creditPeriod;
+                accountledgerinfo.creditLimit = a.creditLimit;
+                accountledgerinfo.pricinglevelId = a.pricinglevelId;
+                accountledgerinfo.billByBill = a.billByBill;
+                accountledgerinfo.tin = a.tin;
+                accountledgerinfo.cst = a.cst;
+                accountledgerinfo.pan = a.pan;
+                accountledgerinfo.routeId = a.routeId;
+                accountledgerinfo.bankAccountNumber = a.bankAccountNumber;
+                accountledgerinfo.branchName = a.branchName;
+                accountledgerinfo.branchCode = a.branchCode;
+                accountledgerinfo.extraDate = a.extraDate;
+                accountledgerinfo.areaId = a.areaId;
+                accountledgerinfo.isDefault = a.isDefault;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return accountledgerinfo;
+          }
     }
 }

@@ -1,4 +1,4 @@
-﻿using LoginForm.DataSet;
+using LoginForm.DataSet;
 using LoginForm.Services;
 using System;
 using System.Collections.Generic;
@@ -91,6 +91,29 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
             return decStock;
+        }
+
+        public decimal StockPostingDeleteForSalesInvoiceAgainstDeliveryNote(decimal decAgainstVoucherTypeId, string strAgainstVoucherNo, string strVoucherNo, decimal decVoucherTypeId)
+        {
+            IMEEntities db = new IMEEntities();
+            decimal decResult = 0;
+            try
+            {
+                int ineffeftedRow = db.StockPostingDeleteForSalesInvoiceAgainstDeliveryNote(decAgainstVoucherTypeId, strAgainstVoucherNo, strVoucherNo, decVoucherTypeId);
+                if (ineffeftedRow > 0)
+                {
+                    decResult = 1;
+                }
+                else
+                {
+                    decResult = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decResult;
         }
     }
 }

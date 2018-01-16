@@ -40,11 +40,12 @@ namespace LoginForm.Account.Services
 
         public decimal ExchangeRateViewByExchangeRateId(decimal decExchangeRateId)
         {
-            IMEEntities IME = new IMEEntities();
+            IMEEntities db = new IMEEntities();
             decimal exchangeRate = 0;
             try
             {
-                exchangeRate = (decimal)IME.ExchangeRates.Where(e=> e.exchangeRateID == decExchangeRateId).FirstOrDefault().rate;
+                exchangeRate = db.ExchangeRateViewByExchangeRateId(decExchangeRateId);
+
             }
             catch (Exception ex)
             {
