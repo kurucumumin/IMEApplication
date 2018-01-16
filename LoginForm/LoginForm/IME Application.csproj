@@ -965,7 +965,9 @@
     <Compile Include="DataSet\SalesInvoiceDetailsViewByProductCodeForSI_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\SalesInvoiceDetailsViewByProductNameForSI_Result.cs" />
+    <Compile Include="DataSet\SalesInvoiceDetailsViewByProductNameForSI_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\SalesInvoiceSalesBillTaxViewAllBySalesMasterId_Result.cs" />
     <Compile Include="DataSet\SalesInvoiceSalesDetailsViewBySalesMasterId_Result.cs" />
     <Compile Include="DataSet\SalesMaster.cs">
