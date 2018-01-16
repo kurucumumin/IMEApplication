@@ -15,6 +15,35 @@ namespace LoginForm.Account.Services
             return (db.AccountLedgers.Where(x => x.ledgerName == LedgerName && x.ledgerId != ledgerID).FirstOrDefault() != null) ? true : false;
         }
 
+        public DataTable AccountLedgerViewForAdditionalCost()
+        {
+            DataTable dtbl = new DataTable();
+            IMEEntities IME = new IMEEntities();
+
+            var accountGroup = IME.AccountGroups.Where(a => a.accountGroupName == "Indirect Expenses").ToList();
+            var adaptor = (from al in IME.AccountLedgers
+                           from ac in accountGroup
+                           where (al.accountGroupID==ac.accountGroupId)
+                           select new
+                           {
+                               al.ledgerName,
+                               al.ledgerId
+                           }).ToList();
+
+            dtbl.Columns.Add("ledgerName");
+            dtbl.Columns.Add("ledgerId");
+
+            foreach (var item in adaptor)
+            {
+                var row = dtbl.NewRow();
+                row["ledgerName"] = item.ledgerName;
+                row["ledgerId"] = item.ledgerId;
+                dtbl.Rows.Add(row);
+            }
+
+            return dtbl;
+        }
+
         public void AccountLedgerEdit(AccountLedger accountledgerinfo)
         {
             try
@@ -552,7 +581,7 @@ namespace LoginForm.Account.Services
                 decimal? adapter2 = (from dn in IME.LedgerPostings.Where(p => p.ledgerId == decledgerId)
                                     select new { dn.credit }).Sum(x => Convert.ToDecimal(x.credit));
 
-                
+
 
                 inBalance1 = (adapter != null) ? (decimal)adapter : 0;
                 inBalance2 = (adapter2 != null) ? (decimal)adapter2 : 0;
@@ -593,6 +622,94 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
+        public DataTable LedgerPopupSearch(String strledgername, String straccountgroupname, decimal decId1, decimal decId2)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("Sl No", typeof(decimal));
+            dtbl.Columns["Sl No"].AutoIncrement = true;
+            dtbl.Columns["Sl No"].AutoIncrementSeed = 1;
+            dtbl.Columns["Sl No"].AutoIncrementStep = 1;
+            try
+            {
+                var adaptor = IME.LedgerPopupSearch(strledgername, straccountgroupname, decId1, decId2);
+
+                dtbl.Columns.Add("ledgerId");
+                dtbl.Columns.Add("ledgerName");
+                dtbl.Columns.Add("Balance");
+                dtbl.Columns.Add("accountGroupId");
+
+
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["ledgerId"] = item.ledgerId;
+                    row["ledgerName"] = item.ledgerName;
+                    row["Balance"] = item.Balance;
+                    row["accountGroupId"] = item.accountGroupId;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+        public DataTable LedgerPopupSearchForServiceAccountsUnderIncome()
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("Sl No", typeof(decimal));
+            dtbl.Columns["Sl No"].AutoIncrement = true;
+            dtbl.Columns["Sl No"].AutoIncrementSeed = 1;
+            dtbl.Columns["Sl No"].AutoIncrementStep = 1;
+            try
+            {
+                var adaptor = IME.AccountLedgerSearchForServiceAccountUnderIncome();
+
+                dtbl.Columns.Add("ledgerId");
+                dtbl.Columns.Add("accountGroupId");
+                dtbl.Columns.Add("ledgerName");
+                dtbl.Columns.Add("Balance");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["ledgerId"] = item.ledgerId;
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["ledgerName"] = item.ledgerName;
+                    row["Balance"] = item.Balance;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+        public AccountLedger AccountLedgerView(decimal ledgerId)
+        {
+            IMEEntities IME = new IMEEntities();
+            AccountLedger accountledgerinfo = new AccountLedger();
+            try
+            {
+                accountledgerinfo = IME.AccountLedgers.Where(x => x.ledgerId == ledgerId).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return accountledgerinfo;
+        }
         public AccountLedger AccountLedgerView(decimal ledgerId)
         {
             IMEEntities db = new IMEEntities();
@@ -632,6 +749,6 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
             return accountledgerinfo;
-        }
+          }
     }
 }

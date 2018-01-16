@@ -15,14 +15,11 @@ namespace LoginForm.Account.Services
             IMEEntities db = new IMEEntities();
 
             string strStatus = string.Empty;
-            try
-            {
+            if(db.Settings.Where(x => x.settingsName == strSettingsName).FirstOrDefault()!=null)
+            { 
                 strStatus = db.Settings.Where(x => x.settingsName == strSettingsName).FirstOrDefault().status;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            
             return strStatus;
         }
     }

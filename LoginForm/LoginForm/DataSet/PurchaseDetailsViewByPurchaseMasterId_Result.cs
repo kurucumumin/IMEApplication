@@ -10,13 +10,13 @@
 namespace LoginForm.DataSet
 {
     using System;
-    
+
     public partial class PurchaseDetailsViewByPurchaseMasterId_Result
     {
         public decimal purchaseDetailsId { get; set; }
         public Nullable<int> purchaseOrderDetailsId { get; set; }
         public Nullable<decimal> materialReceiptDetailsId { get; set; }
-        public Nullable<decimal> productId { get; set; }
+        public string productId { get; set; }
         public string barcode { get; set; }
         public string productCode { get; set; }
         public string productName { get; set; }

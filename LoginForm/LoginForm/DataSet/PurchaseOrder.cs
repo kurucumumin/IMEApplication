@@ -19,7 +19,6 @@ namespace LoginForm.DataSet
         {
             this.MaterialReceiptMasters = new HashSet<MaterialReceiptMaster>();
             this.PurchaseMasters = new HashSet<PurchaseMaster>();
-            this.PurchaseMasters1 = new HashSet<PurchaseMaster>();
             this.PurchaseOrderDetails = new HashSet<PurchaseOrderDetail>();
         }
     
@@ -48,8 +47,6 @@ namespace LoginForm.DataSet
         public virtual ICollection<MaterialReceiptMaster> MaterialReceiptMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseMaster> PurchaseMasters { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PurchaseMaster> PurchaseMasters1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
         public virtual SuffixPrefix SuffixPrefix { get; set; }

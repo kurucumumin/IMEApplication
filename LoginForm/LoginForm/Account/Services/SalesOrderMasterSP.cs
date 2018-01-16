@@ -6,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data;
+using System.Data.SqlClient;
+using LoginForm.DataSet;
 
 namespace LoginForm.Account.Services
 {
@@ -13,19 +16,50 @@ namespace LoginForm.Account.Services
     {
         public DataTable GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI(decimal decLedgerId, decimal decSalesMasterId, decimal decVoucherTypeId)
         {
-            DataTable dtbl = new DataTable();
-            IMEEntities IME = new IMEEntities();
-            var result = IME.GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI(decLedgerId, decSalesMasterId, decVoucherTypeId);
-            dtbl.Columns.Add("SaleOrderNo");
-            dtbl.Columns.Add("invoiceNo");
-            foreach (var item in result)
+
+            //GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI
+                IMEEntities IME = new IMEEntities();
+            DataTable dt = new DataTable();
+
+            var adaptor = IME.GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI(decLedgerId, decSalesMasterId, decVoucherTypeId);
+            dt.Columns.Add("invoiceNo");
+            dt.Columns.Add("SaleOrderNo");
+
+            foreach (var item in adaptor)
             {
-                var row = dtbl.NewRow();
-                row["SaleOrderNo"] = item.SaleOrderNo;
+                var row = dt.NewRow();
                 row["invoiceNo"] = item.invoiceNo;
-                dtbl.Rows.Add(row);
+                row["SaleOrderNo"] = item.SaleOrderNo;
+
+                                dt.Rows.Add(row);
             }
-            return dtbl;
+            return dt;
+        }
+
+        public DataTable SalesInvoiceGridfillAgainestSalesOrder(string strOrderMasterId)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dt = new DataTable();
+
+            var adaptor = IME.SaleOrders.Where(a => a.SaleOrderNo == strOrderMasterId);
+            dt.Columns.Add("invoiceNo");
+            dt.Columns.Add("SaleOrderNo");
+
+            foreach (var item in adaptor)
+            {
+                var row = dt.NewRow();
+                row["invoiceNo"] = item.SaleOrderNo;
+                row["SaleOrderNo"] = item.VoucherNo;
+                row["SaleOrderNo"] = item.suffixPrefixId;
+                row["SaleOrderNo"] = item.ledgerId;
+                row["SaleOrderNo"] = item.exchangeRateID;
+                row["SaleOrderNo"] = item.ExchangeRate.currencyId;
+                row["SaleOrderNo"] = item.Worker.WorkerID;
+                row["SaleOrderNo"] = item.pricingLevelId;
+
+                dt.Rows.Add(row);
+            }
+            return dt;
         }
     }
 }

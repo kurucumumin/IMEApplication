@@ -21,8 +21,6 @@ namespace LoginForm.DataSet
             this.MaterialReceiptDetails = new HashSet<MaterialReceiptDetail>();
             this.PurchaseDetails = new HashSet<PurchaseDetail>();
             this.PurchaseReturnDetails = new HashSet<PurchaseReturnDetail>();
-            this.PurchaseReturnDetails1 = new HashSet<PurchaseReturnDetail>();
-            this.PurchaseReturnDetails2 = new HashSet<PurchaseReturnDetail>();
             this.RejectionInDetails = new HashSet<RejectionInDetail>();
             this.RejectionOutDetails = new HashSet<RejectionOutDetail>();
             this.SalesDetails = new HashSet<SalesDetail>();
@@ -46,10 +44,6 @@ namespace LoginForm.DataSet
         public virtual ICollection<PurchaseDetail> PurchaseDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseReturnDetail> PurchaseReturnDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PurchaseReturnDetail> PurchaseReturnDetails1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PurchaseReturnDetail> PurchaseReturnDetails2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RejectionInDetail> RejectionInDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

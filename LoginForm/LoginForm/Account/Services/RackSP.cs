@@ -1,4 +1,4 @@
-﻿using LoginForm.DataSet;
+using LoginForm.DataSet;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -37,7 +37,7 @@ namespace LoginForm.Account.Services
             try
             {
                 var adaptor = db.Racks.ToList();
-                
+
                 dtbl.Columns.Add("rackId");
                 dtbl.Columns.Add("rackName");
                 dtbl.Columns.Add("godownId");

@@ -19,8 +19,6 @@ namespace LoginForm.DataSet
         {
             this.PurchaseReturnDetails = new HashSet<PurchaseReturnDetail>();
             this.PurchaseReturnDetails1 = new HashSet<PurchaseReturnDetail>();
-            this.PurchaseReturnDetails2 = new HashSet<PurchaseReturnDetail>();
-            this.PurchaseReturnDetails3 = new HashSet<PurchaseReturnDetail>();
         }
     
         public decimal purchaseReturnMasterId { get; set; }
@@ -44,26 +42,15 @@ namespace LoginForm.DataSet
         public Nullable<int> exchangeRateId { get; set; }
     
         public virtual AccountLedger AccountLedger { get; set; }
-        public virtual AccountLedger AccountLedger1 { get; set; }
         public virtual ExchangeRate ExchangeRate { get; set; }
-        public virtual ExchangeRate ExchangeRate1 { get; set; }
         public virtual FinancialYear FinancialYear { get; set; }
-        public virtual FinancialYear FinancialYear1 { get; set; }
         public virtual PurchaseMaster PurchaseMaster { get; set; }
-        public virtual PurchaseMaster PurchaseMaster1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseReturnDetail> PurchaseReturnDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseReturnDetail> PurchaseReturnDetails1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PurchaseReturnDetail> PurchaseReturnDetails2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PurchaseReturnDetail> PurchaseReturnDetails3 { get; set; }
         public virtual SuffixPrefix SuffixPrefix { get; set; }
-        public virtual SuffixPrefix SuffixPrefix1 { get; set; }
         public virtual Worker Worker { get; set; }
-        public virtual Worker Worker1 { get; set; }
         public virtual VoucherType VoucherType { get; set; }
-        public virtual VoucherType VoucherType1 { get; set; }
     }
 }

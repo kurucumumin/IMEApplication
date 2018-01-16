@@ -87,5 +87,22 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
         }
+        public void AdditionalCostEditByVoucherTypeIdAndVoucherNo(AdditionalCostInfo additionalcostinfo)
+        {
+            IMEEntities IME = new IMEEntities();
+            IME.AdditionalCostEditByVoucherTypeIdAndVoucherNo(additionalcostinfo.VoucherTypeId, additionalcostinfo.VoucherNo, additionalcostinfo.LedgerId, additionalcostinfo.Debit, additionalcostinfo.Credit, additionalcostinfo.ExtraDate, additionalcostinfo.Extra1, additionalcostinfo.Extra2);
+        }
+
+        public void AdditionalCostDelete(decimal AdditionalCostId)
+        {
+            IMEEntities IME = new IMEEntities();
+            IME.AdditionalCostDelete(AdditionalCostId);
+        }
+
+        public void AdditionalCostAdd(AdditionalCostInfo additionalcostinfo)
+        {
+            IMEEntities IME = new IMEEntities();
+            IME.AdditionalCostAdd(additionalcostinfo.VoucherTypeId, additionalcostinfo.VoucherNo, additionalcostinfo.LedgerId,additionalcostinfo.Debit, additionalcostinfo.Credit);
+        }
     }
 }

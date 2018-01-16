@@ -22,6 +22,7 @@ namespace LoginForm.Account.Services
             }
             return decExchangerateId;
         }
+
         public decimal GetExchangeRateByExchangeRateId(decimal decExchangeRateId)
         {
             IMEEntities db = new IMEEntities();
@@ -44,7 +45,7 @@ namespace LoginForm.Account.Services
             try
             {
                 exchangeRate = db.ExchangeRateViewByExchangeRateId(decExchangeRateId);
-                
+
             }
             catch (Exception ex)
             {

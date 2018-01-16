@@ -11,23 +11,26 @@ namespace LoginForm.Account.Services
 {
     class DeliveryNoteMasterSP
     {
+
         public DataTable GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI(decimal decLedgerId, decimal decSalesMasterId, decimal decVoucherTypeId)
         {
-            DataTable dtbl = new DataTable();
-
             IMEEntities IME = new IMEEntities();
-            var result = IME.GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI(decLedgerId, decSalesMasterId, decVoucherTypeId);
-            dtbl.Columns.Add("deliveryNoteMasterId");
-            dtbl.Columns.Add("invoiceNo");
-            foreach (var item in result)
+            DataTable dt = new DataTable();
+            var adaptor = IME.GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI(decLedgerId, decSalesMasterId, decVoucherTypeId);
+
+            dt.Columns.Add("deliveryNoteMasterId");
+            dt.Columns.Add("invoiceNo");
+
+
+            foreach (var item in adaptor)
             {
-                var row = dtbl.NewRow();
+                var row = dt.NewRow();
                 row["deliveryNoteMasterId"] = item.deliveryNoteMasterId;
                 row["invoiceNo"] = item.invoiceNo;
-                dtbl.Rows.Add(row);
+                dt.Rows.Add(row);
             }
-
-            return dtbl;
+            return dt;
         }
+
     }
 }

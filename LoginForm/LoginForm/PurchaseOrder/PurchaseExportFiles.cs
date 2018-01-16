@@ -21,7 +21,7 @@ namespace LoginForm.PurchaseOrder
         IMEEntities IME = new IMEEntities();
         List<DataGridViewRow> rowList = new List<DataGridViewRow>();
         List<Mail> MailList = new List<Mail>();
-        int fiche;
+        string fiche;
         SmtpClient sc = new SmtpClient();
         MailMessage mail = new MailMessage();
         List<string> ccList = new List<string>();
@@ -33,7 +33,7 @@ namespace LoginForm.PurchaseOrder
             InitializeComponent();
         }
 
-        public PurchaseExportFiles(List<DataGridViewRow> List, int ficheNo)
+        public PurchaseExportFiles(List<DataGridViewRow> List, string ficheNo)
         {
             InitializeComponent();
             rowList = List;
@@ -115,7 +115,7 @@ namespace LoginForm.PurchaseOrder
             DataSet.PurchaseOrder po = new DataSet.PurchaseOrder();
             string s = rowList[0].Cells[3].Value.ToString();
 
-            po.FicheNo = fiche;
+            po.FicheNo = fiche.ToString();
             po.CustomerID = IME.SaleOrders.Where(a => a.SaleOrderNo == s).FirstOrDefault().CustomerID;
             po.PurchaseOrderDate = DateTime.Today.Date;
             po.CameDate = IME.SaleOrders.Where(a => a.SaleOrderNo == s).FirstOrDefault().SaleDate;
@@ -123,7 +123,7 @@ namespace LoginForm.PurchaseOrder
             IME.PurchaseOrders.Add(po);
             IME.SaveChanges();
 
-            po = IME.PurchaseOrders.Where(x => x.FicheNo == fiche).FirstOrDefault();
+            po = IME.PurchaseOrders.Where(x => x.FicheNo == fiche.ToString()).FirstOrDefault();
 
             List<PurchaseOrderDetail> podList = new List<PurchaseOrderDetail>();
 

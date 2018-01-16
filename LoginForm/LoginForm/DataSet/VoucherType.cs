@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class VoucherType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -31,10 +31,8 @@ namespace LoginForm.DataSet
             this.PDCPayableMasters = new HashSet<PDCPayableMaster>();
             this.PDCReceivableMasters = new HashSet<PDCReceivableMaster>();
             this.PurchaseMasters = new HashSet<PurchaseMaster>();
-            this.PurchaseMasters1 = new HashSet<PurchaseMaster>();
             this.PurchaseOrders = new HashSet<PurchaseOrder>();
             this.PurchaseReturnMasters = new HashSet<PurchaseReturnMaster>();
-            this.PurchaseReturnMasters1 = new HashSet<PurchaseReturnMaster>();
             this.Quotations = new HashSet<Quotation>();
             this.RejectionInMasters = new HashSet<RejectionInMaster>();
             this.RejectionOutMasters = new HashSet<RejectionOutMaster>();
@@ -48,7 +46,7 @@ namespace LoginForm.DataSet
             this.AdditionalCosts = new HashSet<AdditionalCost>();
             this.VoucherTypeTaxes = new HashSet<VoucherTypeTax>();
         }
-    
+
         public decimal voucherTypeId { get; set; }
         public string voucherTypeName { get; set; }
         public string typeOfVoucher { get; set; }
@@ -63,7 +61,7 @@ namespace LoginForm.DataSet
         public string heading2 { get; set; }
         public string heading3 { get; set; }
         public string heading4 { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AdvancePayment> AdvancePayments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -93,13 +91,9 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseMaster> PurchaseMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PurchaseMaster> PurchaseMasters1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseOrder> PurchaseOrders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseReturnMaster> PurchaseReturnMasters { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PurchaseReturnMaster> PurchaseReturnMasters1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Quotation> Quotations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -51,7 +51,7 @@ namespace LoginForm.Account.Services
                     var row = dtbl.NewRow();
 
                     row["voucherTypeName"] = item.voucherTypeName;
-                    
+
                     dtbl.Rows.Add(row);
                 }
                 cmbVoucherType.DataSource = dtbl;
@@ -97,7 +97,7 @@ namespace LoginForm.Account.Services
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
             return dtbl;
         }
 

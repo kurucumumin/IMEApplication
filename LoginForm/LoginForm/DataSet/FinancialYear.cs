@@ -30,9 +30,7 @@ namespace LoginForm.DataSet
             this.PDCPayableMasters = new HashSet<PDCPayableMaster>();
             this.PDCReceivableMasters = new HashSet<PDCReceivableMaster>();
             this.PurchaseMasters = new HashSet<PurchaseMaster>();
-            this.PurchaseMasters1 = new HashSet<PurchaseMaster>();
             this.PurchaseReturnMasters = new HashSet<PurchaseReturnMaster>();
-            this.PurchaseReturnMasters1 = new HashSet<PurchaseReturnMaster>();
             this.RejectionOutMasters = new HashSet<RejectionOutMaster>();
             this.SalaryVoucherMasters = new HashSet<SalaryVoucherMaster>();
             this.SalesMasters = new HashSet<SalesMaster>();
@@ -71,11 +69,7 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseMaster> PurchaseMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PurchaseMaster> PurchaseMasters1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseReturnMaster> PurchaseReturnMasters { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PurchaseReturnMaster> PurchaseReturnMasters1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RejectionOutMaster> RejectionOutMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

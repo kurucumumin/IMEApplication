@@ -11,7 +11,30 @@ namespace LoginForm.Account.Services
 {
     class TransactionsGeneralFill
     {
-        
+        public DataTable PricingLevelViewAll(ComboBox cmbPricingLevel, bool isAll)
+        {
+            IMEEntities db = new IMEEntities();
+            DataTable dt = new DataTable();
+            var adaptor = (from w in db.PricingLevels
+                           select new
+                           {
+                               w.pricinglevelId,
+                               UserName = (w.pricinglevelName == "NA") ? "1" : w.pricinglevelName
+                           }).ToList();
+            dt.Columns.Add("pricinglevelId");
+            dt.Columns.Add("UserName");
+
+            foreach (var item in adaptor)
+            {
+                var row = dt.NewRow();
+
+                row["WorkerID"] = item.pricinglevelId;
+                row["UserName"] = item.UserName;
+                dt.Rows.Add(row);
+            }
+            return dt;
+        }
+
         public string VoucherNumberAutomaicGeneration(decimal VoucherTypeId, decimal txtBox, DateTime date, string tableName)
         {
             IMEEntities db = new IMEEntities();
@@ -204,16 +227,18 @@ namespace LoginForm.Account.Services
             dtbl.Columns["SlNo"].AutoIncrementStep = 1;
             try
             {
-                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupId == 27 || x.accountGroupId == 26)
+                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupName == "Cash -in Hand" || x.accountGroupName == "Sundry Debtors")
                                select new
                                {
                                    AccountGroupId = ag.accountGroupId,
+                                   AccountGroupName = ag.accountGroupName,
                                    hierarchyLevel = 1
                                }).ToList();
-                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == 27 || x.groupUnder == 26)
+                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.accountGroupName == "Cash -in Hand" || x.accountGroupName == "Sundry Debtors")
                                 select new
                                 {
                                     AccountGroupId = ag.accountGroupId,
+                                    AccountGroupName = ag.accountGroupName,
                                     hierarchyLevel = 2
                                 }).ToList();
 
@@ -226,13 +251,13 @@ namespace LoginForm.Account.Services
                 }
 
                 dtbl.Columns.Add("AccountGroupId");
-
+                dtbl.Columns.Add("AccountGroupName");
                 foreach (var item in adaptor)
                 {
                     var row = dtbl.NewRow();
 
                     row["AccountGroupId"] = item.AccountGroupId;
-
+                    row["AccountGroupName"] = item.AccountGroupName;
                     dtbl.Rows.Add(row);
                 }
 
@@ -298,6 +323,63 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
+        public bool StatusOfPrintAfterSave()
+        {
+            IMEEntities IME = new IMEEntities();
+            string strStatus = "";
+            bool isTrue = false;
+            try
+            {
+
+                strStatus = IME.Settings.Where(x => x.settingsName == "TickPrintAfterSave").FirstOrDefault().settingsName;
+
+                isTrue = (strStatus==null) ? false : true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return isTrue;
+        }
+
+        public void SalesAccountComboFill(ComboBox cmbSalesAccount, bool isAll)
+        {
+            IMEEntities IME = new IMEEntities();
+
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("SlNo", typeof(decimal));
+            dtbl.Columns["SlNo"].AutoIncrement = true;
+            dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
+            dtbl.Columns["SlNo"].AutoIncrementStep = 1;
+            try
+            {
+                var adaptor = IME.SalesAccountComboFill();
+
+                dtbl.Columns.Add("ledgerName");
+                dtbl.Columns.Add("ledgerId");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["ledgerName"] = item.ledgerName;
+                    row["ledgerId"] = item.ledgerId;
+
+                    dtbl.Rows.Add(row);
+                }
+                cmbSalesAccount.DataSource = dtbl;
+                cmbSalesAccount.ValueMember = "ledgerId";
+                cmbSalesAccount.DisplayMember = "ledgerName";
+                cmbSalesAccount.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+                return isTrue;
+            }
+        }
+
         public DataTable AccountLedgerComboFill()
         {
             DataTable dtbl = new DataTable();
@@ -334,11 +416,13 @@ namespace LoginForm.Account.Services
             {
                 MessageBox.Show(ex.ToString());
             }
-            return isTrue;
+                return isTrue;
+            }
         }
-        //public DataTable BankOrCashComboFill(bool isAll)
+
+        //public DataTable PricingLevelViewAll(ComboBox cmbPricingLevel, bool isAll)
         //{
-        //    IMEEntities db = new IMEEntities();
+        //    IMEEntities IME = new IMEEntities();
         //    DataTable dtbl = new DataTable();
         //    dtbl.Columns.Add("SlNo", typeof(decimal));
         //    dtbl.Columns["SlNo"].AutoIncrement = true;
@@ -346,34 +430,18 @@ namespace LoginForm.Account.Services
         //    dtbl.Columns["SlNo"].AutoIncrementStep = 1;
         //    try
         //    {
-        //        var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupId == 27 || x.accountGroupId == 28 || x.accountGroupId == 17)
-        //                       select new
-        //                       {
-        //                           AccountGroupId = ag.accountGroupId,
-        //                           hierarchyLevel = 1
-        //                       }).ToList();
-        //        var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == 27 || x.groupUnder == 28 || x.accountGroupId == 17)
-        //                        select new
-        //                        {
-        //                            AccountGroupId = ag.accountGroupId,
-        //                            hierarchyLevel = 2
-        //                        }).ToList();
+        //        var adaptor = IME.PricingLevelViewAll();
 
-        //        foreach (var item in adaptor2)
-        //        {
-        //            if (!adaptor.Exists(x => x.AccountGroupId == item.AccountGroupId))
-        //            {
-        //                adaptor.Add(item);
-        //            }
-        //        }
 
-        //        dtbl.Columns.Add("AccountGroupId");
+        //        dtbl.Columns.Add("pricinglevelId");
+        //        dtbl.Columns.Add("pricinglevelName");
 
         //        foreach (var item in adaptor)
         //        {
         //            var row = dtbl.NewRow();
 
-        //            row["AccountGroupId"] = item.AccountGroupId;
+        //            row["pricinglevelId"] = item.pricinglevelId;
+        //            row["pricinglevelName"] = item.pricinglevelName;
 
         //            dtbl.Rows.Add(row);
         //        }

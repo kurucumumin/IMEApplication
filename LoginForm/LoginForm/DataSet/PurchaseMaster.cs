@@ -19,7 +19,6 @@ namespace LoginForm.DataSet
         {
             this.PurchaseDetails = new HashSet<PurchaseDetail>();
             this.PurchaseReturnMasters = new HashSet<PurchaseReturnMaster>();
-            this.PurchaseReturnMasters1 = new HashSet<PurchaseReturnMaster>();
         }
     
         public decimal purchaseMasterId { get; set; }
@@ -48,26 +47,16 @@ namespace LoginForm.DataSet
         public Nullable<decimal> financialYearId { get; set; }
     
         public virtual AccountLedger AccountLedger { get; set; }
-        public virtual AccountLedger AccountLedger1 { get; set; }
         public virtual ExchangeRate ExchangeRate { get; set; }
-        public virtual ExchangeRate ExchangeRate1 { get; set; }
         public virtual FinancialYear FinancialYear { get; set; }
-        public virtual FinancialYear FinancialYear1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseDetail> PurchaseDetails { get; set; }
         public virtual ReceiptMaster ReceiptMaster { get; set; }
-        public virtual ReceiptMaster ReceiptMaster1 { get; set; }
         public virtual PurchaseOrder PurchaseOrder { get; set; }
-        public virtual PurchaseOrder PurchaseOrder1 { get; set; }
         public virtual SuffixPrefix SuffixPrefix { get; set; }
-        public virtual SuffixPrefix SuffixPrefix1 { get; set; }
         public virtual Worker Worker { get; set; }
-        public virtual Worker Worker1 { get; set; }
         public virtual VoucherType VoucherType { get; set; }
-        public virtual VoucherType VoucherType1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseReturnMaster> PurchaseReturnMasters { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PurchaseReturnMaster> PurchaseReturnMasters1 { get; set; }
     }
 }

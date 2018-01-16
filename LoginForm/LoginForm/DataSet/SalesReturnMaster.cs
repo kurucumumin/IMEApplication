@@ -30,7 +30,6 @@ namespace LoginForm.DataSet
         public Nullable<decimal> ledgerId { get; set; }
         public Nullable<decimal> salesAccount { get; set; }
         public Nullable<decimal> pricinglevelId { get; set; }
-        public Nullable<decimal> employeeId { get; set; }
         public string narration { get; set; }
         public Nullable<int> exchangeRateId { get; set; }
         public Nullable<decimal> taxAmount { get; set; }

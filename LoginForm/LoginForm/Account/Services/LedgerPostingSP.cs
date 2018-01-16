@@ -9,6 +9,26 @@ namespace LoginForm.Account.Services
 {
     class LedgerPostingSP
     {
+        public void LedgerPostingEditByVoucherTypeAndVoucherNoAndLedgerId(LedgerPosting infoLedgerPosting)
+        {
+            IMEEntities IME = new IMEEntities();
+            IME.LedgerPostingEditByVoucherTypeAndVoucherNoAndLedgerid(infoLedgerPosting.date, infoLedgerPosting.voucherTypeId, infoLedgerPosting.voucherNo, infoLedgerPosting.ledgerId, infoLedgerPosting.debit.ToString(), infoLedgerPosting.credit.ToString(), infoLedgerPosting.detailsId, infoLedgerPosting.yearId, infoLedgerPosting.invoiceNo, infoLedgerPosting.chequeNo, infoLedgerPosting.chequeDate, infoLedgerPosting.extra1, infoLedgerPosting.extra2);
+        }
+
+
+        public void LedgerPostingDeleteByVoucherTypeIdAndLedgerIdAndVoucherNoAndExtra(decimal voucherTypeId, decimal decLedgerId, string strVoucherNo, string strAddCash)
+        {
+            IMEEntities IME = new IMEEntities();
+            IME.LedgerPostingDeleteByVoucherTypeIdAndLedgerIdAndVoucherNoAndExtra(voucherTypeId,
+                decLedgerId,strVoucherNo);
+        }
+
+        public void LedgerPostDelete(string strVoucherNo, decimal decVoucherTypeId)
+        {
+            IMEEntities IME = new IMEEntities();
+            IME.LedgerPostDelete(decVoucherTypeId, strVoucherNo);
+        }
+
         public DataTable GetLedgerPostingIds(string v1, int v2)
         {
             IMEEntities db = new IMEEntities();
@@ -57,7 +77,7 @@ namespace LoginForm.Account.Services
                 lp.chequeDate = ledgerpostinginfo.chequeDate;
 
                 db.SaveChanges();
-                
+
             }
             catch (Exception ex)
             {
@@ -120,7 +140,7 @@ namespace LoginForm.Account.Services
         {
             IMEEntities IME = new IMEEntities();
             decimal decLedgerPostingId = 0;
-            
+
             try
             {
                 decLedgerPostingId = IME.LedgerPostings.Where(x => x.detailsId == decDetailsId && x.voucherNo == strVoucherNo && x.voucherTypeId == decVoucherTypeId).FirstOrDefault().ledgerPostingId;
@@ -155,17 +175,51 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
         }
-        public void LedgerPostDelete(string strVoucherNo, decimal decVoucherTypeId)
+
+        public void LedgerPostingAndPartyBalanceDeleteByVoucherTypeIdAndLedgerIdAndVoucherNo(decimal voucherTypeId, string voucherNo, string invoiceNo)
         {
-            IMEEntities db = new IMEEntities();
-            try
+          IMEEntities db = new IMEEntities();
+          try
             {
-                db.LedgerPostDelete(decVoucherTypeId,strVoucherNo);
+              LedgerPosting lp = db.LedgerPostings.Where(x => x.voucherNo == voucherNo && x.voucherTypeId == voucherTypeId && x.invoiceNo == invoiceNo).FirstOrDefault();
+              db.LedgerPostings.Remove(lp);
+              db.SaveChanges();
+
+              PartyBalance pb = db.PartyBalances.Where(x => x.againstVoucherNo == voucherNo && x.againstVoucherTypeId == voucherTypeId && x.againstInvoiceNo == invoiceNo).FirstOrDefault();
+              db.PartyBalances.Remove(pb);
+              db.SaveChanges();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
         }
+        public void LedgerPostDelete(string strVoucherNo, decimal decVoucherTypeId)
+        {
+            IMEEntities db = new IMEEntities();
+            try
+            {
+              db.LedgerPostDelete(decVoucherTypeId,strVoucherNo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        //public void LedgerPostDelete(string strVoucherNo, decimal decVoucherTypeId)
+        //{
+        //    IMEEntities db = new IMEEntities();
+        //    try
+        //    {
+        //        LedgerPosting lp = db.LedgerPostings.Where(x => x.voucherNo == strVoucherNo && x.voucherTypeId == decVoucherTypeId).FirstOrDefault();
+        //        db.LedgerPostings.Remove(lp);
+        //        db.SaveChanges();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.ToString());
+        //    }
+        //}
     }
 }

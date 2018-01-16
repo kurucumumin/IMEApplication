@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class PurchaseReturnDetail
     {
         public decimal purchaseReturnDetailsId { get; set; }
@@ -31,32 +31,17 @@ namespace LoginForm.DataSet
         public Nullable<decimal> netAmount { get; set; }
         public Nullable<decimal> amount { get; set; }
         public Nullable<int> slNo { get; set; }
-        public Nullable<decimal> purchaseDetailsId { get; set; }
-    
+        public Nullable<int> purchaseDetailsId { get; set; }
+
         public virtual Batch Batch { get; set; }
-        public virtual Batch Batch1 { get; set; }
-        public virtual Batch Batch2 { get; set; }
         public virtual Godown Godown { get; set; }
-        public virtual Godown Godown1 { get; set; }
-        public virtual Godown Godown2 { get; set; }
-        public virtual PurchaseDetail PurchaseDetail { get; set; }
-        public virtual PurchaseDetail PurchaseDetail1 { get; set; }
+        public virtual PurchaseOrderDetail PurchaseOrderDetail { get; set; }
         public virtual PurchaseReturnMaster PurchaseReturnMaster { get; set; }
         public virtual PurchaseReturnMaster PurchaseReturnMaster1 { get; set; }
-        public virtual PurchaseReturnMaster PurchaseReturnMaster2 { get; set; }
-        public virtual PurchaseReturnMaster PurchaseReturnMaster3 { get; set; }
         public virtual Rack Rack { get; set; }
-        public virtual Rack Rack1 { get; set; }
-        public virtual Rack Rack2 { get; set; }
         public virtual Tax Tax { get; set; }
         public virtual Tax Tax1 { get; set; }
-        public virtual Tax Tax2 { get; set; }
-        public virtual Tax Tax3 { get; set; }
         public virtual UnitConvertion UnitConvertion { get; set; }
-        public virtual UnitConvertion UnitConvertion1 { get; set; }
-        public virtual UnitConvertion UnitConvertion2 { get; set; }
         public virtual Unit Unit { get; set; }
-        public virtual Unit Unit1 { get; set; }
-        public virtual Unit Unit2 { get; set; }
     }
 }

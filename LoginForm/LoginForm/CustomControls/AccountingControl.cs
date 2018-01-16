@@ -57,5 +57,11 @@ namespace LoginForm.CustomControls
             frmJournalVoucher form = new frmJournalVoucher();
             form.ShowDialog();
         }
+
+        private void btnSalesInvoice_Click(object sender, EventArgs e)
+        {
+            frmSalesInvoice form = new frmSalesInvoice();
+            form.ShowDialog();
+        }
     }
 }

@@ -56,9 +56,9 @@ namespace LoginForm
         //frmCreditNote frmCreditNoteObj = null;
         //frmRejectionOut frmRejectionOutObj;
         //frmDeliveryNote frmDeliveryNoteObj;
-        //frmSalesInvoice frmSalesInvoiceObj;
+        frmSalesInvoice frmSalesInvoiceObj;
         //frmPurchaseInvoice frmPurchaseInvoiceObj = null;
-        //frmPurchaseReturn frmPurchaseReturnObj;
+        frmPurchaseReturn frmPurchaseReturnObj;
         //frmSalesQuotation frmSalesQuotationObj;
         //frmPdcPayable frmPdcpayableObj;
         //frmPdcPayable frmPdcpayableObj2;
@@ -954,26 +954,26 @@ namespace LoginForm
         /// <param name="isFromCorParty"></param>
         /// <param name="isFromSA"></param>
         /// //TODO OpenMiracle Function
-        //public void callFromSalesInvoice(frmSalesInvoice frmSalesInvoice, bool isFromCorParty, bool isFromSA)
-        //{
-        //    try
-        //    {
-        //        isFromSalesReturnCashOrPartyCombo = isFromCorParty;
-        //        isFromSalesReturnSalesAccountCombo = isFromSA;
-        //        txtLedgerNameSearch.Enabled = false;
-        //        btnSearch.Enabled = false;
-        //        cmbGroupSearch.Enabled = false;
-        //        dgvAccountLedger.Enabled = false;
-        //        lblLedgerNameSearch.Enabled = false;
-        //        lblGroupSearch.Enabled = false;
-        //        this.frmSalesInvoiceObj = frmSalesInvoice;
-        //        base.Show();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("AL21:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void callFromSalesInvoice(frmSalesInvoice frmSalesInvoice, bool isFromCorParty, bool isFromSA)
+        {
+            try
+            {
+                isFromSalesReturnCashOrPartyCombo = isFromCorParty;
+                isFromSalesReturnSalesAccountCombo = isFromSA;
+                txtLedgerNameSearch.Enabled = false;
+                btnSearch.Enabled = false;
+                cmbGroupSearch.Enabled = false;
+                dgvAccountLedger.Enabled = false;
+                lblLedgerNameSearch.Enabled = false;
+                lblGroupSearch.Enabled = false;
+                this.frmSalesInvoiceObj = frmSalesInvoice;
+                base.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL21:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to call this form from frmJournalVoucher for creating new account ledger
         /// </summary>
@@ -1195,7 +1195,7 @@ namespace LoginForm
             }
         }
 
-  
+
         //TODO OpenMiracle Function
         //public void CallFromPaymentVoucher(frmPaymentVoucher frmPaymentVoucherObj, string strComboType)
         //{
@@ -1372,26 +1372,26 @@ namespace LoginForm
         /// </summary>
         /// <param name="frmPurchaseReturnObj"></param>     
         ///TODO OpenMiracle Function
-        //public void CallFromPurchaseReturn(frmPurchaseReturn frmPurchaseReturnObj, bool isFromCashOrParty, bool isFromPurchaseAccount)
-        //{
-        //    try
-        //    {
-        //        isFromPurchaseReturnCashOrPartyCombo = isFromCashOrParty;
-        //        isFromPurchaseReturnPurchaseAccountCombo = isFromPurchaseAccount;
-        //        dgvAccountLedger.Enabled = false;
-        //        this.frmPurchaseReturnObj = frmPurchaseReturnObj;
-        //        base.Show();
-        //        dgvAccountLedger.Enabled = false;
-        //        txtLedgerNameSearch.Enabled = false;
-        //        cmbGroupSearch.Enabled = false;
-        //        btnSearch.Enabled = false;
-        //    }
-        //    catch (Exception ex)
-        //    {
+        public void CallFromPurchaseReturn(frmPurchaseReturn frmPurchaseReturnObj, bool isFromCashOrParty, bool isFromPurchaseAccount)
+        {
+            try
+            {
+                isFromPurchaseReturnCashOrPartyCombo = isFromCashOrParty;
+                isFromPurchaseReturnPurchaseAccountCombo = isFromPurchaseAccount;
+                dgvAccountLedger.Enabled = false;
+                this.frmPurchaseReturnObj = frmPurchaseReturnObj;
+                base.Show();
+                dgvAccountLedger.Enabled = false;
+                txtLedgerNameSearch.Enabled = false;
+                cmbGroupSearch.Enabled = false;
+                btnSearch.Enabled = false;
+            }
+            catch (Exception ex)
+            {
 
-        //        MessageBox.Show("AL36:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+                MessageBox.Show("AL36:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to call this form from frmSalesQuotation for creating new account ledger
         /// </summary>
@@ -1875,17 +1875,17 @@ namespace LoginForm
             //    {
             //        frmDeliveryNoteObj.ReturnFromAccountLedger(decIdForOtherForms);
             //    }
-            //    if (frmPurchaseReturnObj != null)
-            //    {
-            //        if (isFromPurchaseReturnCashOrPartyCombo)
-            //        {
-            //            frmPurchaseReturnObj.ReturnFromAccountLedger(decIdForOtherForms);
-            //        }
-            //        if (isFromPurchaseReturnPurchaseAccountCombo)
-            //        {
-            //            frmPurchaseReturnObj.ReturnFromAccountLedgerOfPurchaseAccount(decIdForOtherForms);
-            //        }
-            //    }
+            if (frmPurchaseReturnObj != null)
+            {
+                if (isFromPurchaseReturnCashOrPartyCombo)
+                {
+                    frmPurchaseReturnObj.ReturnFromAccountLedger(decIdForOtherForms);
+                }
+                if (isFromPurchaseReturnPurchaseAccountCombo)
+                {
+                    frmPurchaseReturnObj.ReturnFromAccountLedgerOfPurchaseAccount(decIdForOtherForms);
+                }
+            }
             //    if (frmSalesOrderObj != null)
             //    {
             //        frmSalesOrderObj.ReturnFromAccountLedgerForm(decIdForOtherForms);

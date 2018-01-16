@@ -18,7 +18,7 @@ namespace LoginForm.PurchaseOrder
     {
         IMEEntities IME = new IMEEntities();
         List<SaleOrderDetail> saleItemList = new List<SaleOrderDetail>();
-        int purchasecode;
+        string purchasecode;
 
         public NewPurchaseOrder()
         {
@@ -31,7 +31,7 @@ namespace LoginForm.PurchaseOrder
             PurchaseOrdersDetailFill(item_code);
         }
 
-        public NewPurchaseOrder(int ficheNo, int sayac)
+        public NewPurchaseOrder(string ficheNo, int sayac)
         {
             InitializeComponent();
 
@@ -77,13 +77,13 @@ namespace LoginForm.PurchaseOrder
             if (IME.PurchaseOrders.Count() == 0)
             {
                 txtOrderNumber.Text = "1";
-                purchasecode = 1;
+                purchasecode = "1";
             }
             else
             {
                 purchasecode = IME.PurchaseOrders.OrderByDescending(q => q.FicheNo).FirstOrDefault().FicheNo;
-                txtOrderNumber.Text = (purchasecode + 1).ToString();
-                purchasecode = purchasecode + 1;
+                txtOrderNumber.Text = (Int32.Parse(purchasecode) + 1).ToString();
+                purchasecode = (Int32.Parse(purchasecode) + 1).ToString();
             }
         }
 
@@ -138,11 +138,11 @@ namespace LoginForm.PurchaseOrder
 
         }
 
-        private void PurchaseOrdersDetailFill2(int ficheNo)
+        private void PurchaseOrdersDetailFill2(string ficheNo)
         {
             IME = new IMEEntities();
             #region Purchase Orders Detail Fill
-            var adapter = (from p in IME.PurchaseOrderDetails.Where(p => p.FicheNo == ficheNo)
+            var adapter = (from p in IME.PurchaseOrderDetails.Where(p => p.FicheNo == ficheNo.ToString())
                            select new
                            {
                                p.PurchaseOrder.Customer.c_name,

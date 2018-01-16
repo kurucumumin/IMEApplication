@@ -14,6 +14,12 @@ namespace LoginForm.DataSet
     
     public partial class BudgetMaster
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public BudgetMaster()
+        {
+            this.BudgetDetails = new HashSet<BudgetDetail>();
+        }
+
         public decimal budgetMasterId { get; set; }
         public string budgetName { get; set; }
         public string type { get; set; }
@@ -22,5 +28,8 @@ namespace LoginForm.DataSet
         public Nullable<System.DateTime> fromDate { get; set; }
         public Nullable<System.DateTime> toDate { get; set; }
         public string narration { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BudgetDetail> BudgetDetails { get; set; }
     }
 }
