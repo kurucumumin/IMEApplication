@@ -6,9 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data;
 using System.Data.SqlClient;
-using LoginForm.DataSet;
 using LoginForm.Services;
 
 namespace LoginForm.Account.Services
@@ -291,7 +289,7 @@ return dt;
 
             try
             {
-                var p = db.ProductView(productId);
+                var p = db.ProductView(productId).FirstOrDefault();
 
                 productinfo.ProductCode = p.Article_No;
                 productinfo.ProductName = p.Article_Desc;

@@ -195,7 +195,7 @@ namespace LoginForm.Account.Services
 
             public DataTable SalesInvoiceDetailsViewByProductNameForSI(decimal decVoucherTypeId, string strProductName)
             {
-                DataTable dtbl = new DataTable();
+                
                 DataTable dt = new DataTable();
                 IMEEntities IME = new IMEEntities();
                 var adaptor= IME.SalesInvoiceDetailsViewByProductNameForSI(decVoucherTypeId, strProductName);
@@ -221,7 +221,7 @@ namespace LoginForm.Account.Services
                 dt.Columns.Add("conversionRate");
                 dt.Columns.Add("batchId");
                 dt.Columns.Add("taxId");
-                //
+                
                 foreach (var item in adaptor)
                 {
                     var row = dt.NewRow();
@@ -394,6 +394,10 @@ namespace LoginForm.Account.Services
                 return dt;
             }
         }
+<<<<<<< HEAD
 
     }
 
+=======
+}
+>>>>>>> f283cd7dc6457d880103b07201658c2a17522329
