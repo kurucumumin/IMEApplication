@@ -19,7 +19,6 @@ namespace LoginForm.DataSet
         {
             this.PurchaseOrderDetails = new HashSet<PurchaseOrderDetail>();
             this.SaleOrderDetails = new HashSet<SaleOrderDetail>();
-            this.SalesReturnMasters = new HashSet<SalesReturnMaster>();
         }
     
         public string SaleOrderNo { get; set; }
@@ -55,6 +54,7 @@ namespace LoginForm.DataSet
         public Nullable<bool> cancelled { get; set; }
         public string invoiceNo { get; set; }
         public Nullable<int> exchangeRateID { get; set; }
+        public Nullable<decimal> pricingLevelId { get; set; }
     
         public virtual AccountLedger AccountLedger { get; set; }
         public virtual Customer Customer { get; set; }
@@ -72,7 +72,5 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleOrderDetail> SaleOrderDetails { get; set; }
         public virtual VoucherType VoucherType { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SalesReturnMaster> SalesReturnMasters { get; set; }
     }
 }

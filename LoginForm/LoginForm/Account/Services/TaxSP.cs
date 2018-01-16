@@ -77,5 +77,59 @@ namespace LoginForm.Account.Services
 
             return dtbl;
         }
+
+        public DataTable TaxViewAllByVoucherTypeIdForPurchaseInvoice(decimal decVoucherTypeId)
+        {
+            IMEEntities db = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = db.TaxViewAllByVoucherTypeIdForPurchaseInvoice(decVoucherTypeId);
+
+                dtbl.Columns.Add("purchaseBillTaxId");
+                dtbl.Columns.Add("taxId");
+                dtbl.Columns.Add("ledgerId");
+                dtbl.Columns.Add("taxName");
+                dtbl.Columns.Add("ApplicationOn");
+                dtbl.Columns.Add("calculatingMode");
+                dtbl.Columns.Add("rate");
+                dtbl.Columns.Add("taxAmount");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+
+                    row["purchaseBillTaxId"] = item.purchaseBillTaxId;
+                    row["taxId"] = item.taxId;
+                    row["ledgerId"] = item.ledgerId;
+                    row["taxName"] = item.taxName;
+                    row["ApplicationOn"] = item.ApplicationOn;
+                    row["calculatingMode"] = item.calculatingMode;
+                    row["rate"] = item.rate;
+                    row["taxAmount"] = item.taxAmount;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+        public Tax TaxView(decimal taxId)
+        {
+            Tax taxinfo = new Tax();
+            try
+            {
+                taxinfo = new IMEEntities().Taxes.Where(x => x.TaxID == taxId).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return taxinfo;
+        }
     }
 }

@@ -17,7 +17,9 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SalesMaster()
         {
+            this.SalesBillTaxes = new HashSet<SalesBillTax>();
             this.SalesDetails = new HashSet<SalesDetail>();
+            this.SalesReturnMasters = new HashSet<SalesReturnMaster>();
         }
     
         public decimal salesMasterId { get; set; }
@@ -55,9 +57,13 @@ namespace LoginForm.DataSet
         public virtual PricingLevel PricingLevel { get; set; }
         public virtual Quotation Quotation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesBillTax> SalesBillTaxes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesDetail> SalesDetails { get; set; }
         public virtual SuffixPrefix SuffixPrefix { get; set; }
         public virtual VoucherType VoucherType { get; set; }
         public virtual Worker Worker { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesReturnMaster> SalesReturnMasters { get; set; }
     }
 }

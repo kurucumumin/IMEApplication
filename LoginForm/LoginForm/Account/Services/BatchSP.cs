@@ -12,21 +12,29 @@ namespace LoginForm.Account.Services
 {
     class BatchSP
     {
-        public DataTable BatchNamesCorrespondingToProduct(decimal decproductId)
+        public DataTable BatchNamesCorrespondingToProduct(string decproductId)
         {
-            DataTable dtbl = new DataTable();
             IMEEntities IME = new IMEEntities();
-            var Batches = IME.Batches.Where(a => a.productId == decproductId).ToList();
-            dtbl.Columns.Add("batchId");
-            dtbl.Columns.Add("batchNo");
-            foreach (var item in Batches)
+            DataTable dt = new DataTable();
+            var adaptor = (from b in IME.Batches
+                           where b.productId == decproductId
+                           select new
+                           {
+                               b.batchId,
+                               b.batchNo
+                           }).ToList();
+
+            dt.Columns.Add("batchId");
+            dt.Columns.Add("batchNo");
+
+            foreach (var item in adaptor)
             {
-                var row = dtbl.NewRow();
+                var row = dt.NewRow();
                 row["batchId"] = item.batchId;
                 row["batchNo"] = item.batchNo;
-                dtbl.Rows.Add(row);
+                dt.Rows.Add(row);
             }
-            return dtbl;
+            return dt;
         }
 
         public DataTable BatchViewAll()
@@ -54,5 +62,34 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
+        public decimal BatchIdViewByProductId(decimal decProductId)
+        {
+            IMEEntities db = new IMEEntities();
+            decimal decBatchId = 0;
+            try
+            {
+                decBatchId = Convert.ToDecimal(db.BatchIdViewByProductId(decProductId));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decBatchId;
+        }
+
+        public string ProductBatchBarcodeViewByBatchId(decimal decBathId)
+        {
+            IMEEntities db = new IMEEntities();
+            string barCode = string.Empty;
+            try
+            {
+                barCode = db.ProductBatchBarcodeViewByBatchId(decBathId);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return barCode;
+        }
     }
 }

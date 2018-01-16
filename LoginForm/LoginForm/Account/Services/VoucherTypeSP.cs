@@ -269,5 +269,34 @@ namespace LoginForm.Account.Services
             }
             return dtbl;
         }
+
+        public VoucherType VoucherTypeView(decimal voucherTypeId)
+        {
+            IMEEntities db = new IMEEntities();
+            VoucherType vouchertypeinfo = new VoucherType();
+            try
+            {
+                var adaptor = db.VoucherTypeView(voucherTypeId);
+
+                vouchertypeinfo.voucherTypeId = adaptor.Voucher;
+                vouchertypeinfo.voucherTypeName = adaptor.voucherTypeName;
+                vouchertypeinfo.typeOfVoucher = adaptor.typeOfVoucher;
+                vouchertypeinfo.methodOfVoucherNumbering = adaptor.methodOfVoucherNumbering;
+                vouchertypeinfo.isTaxApplicable = adaptor.isTaxApplicable;
+                vouchertypeinfo.narration = adaptor.narration;
+                vouchertypeinfo.isActive = adaptor.isActive;
+                vouchertypeinfo.masterId = adaptor.masterId;
+                vouchertypeinfo.declaration = adaptor.declaration;
+                vouchertypeinfo.heading1 = adaptor.heading1;
+                vouchertypeinfo.heading2 = adaptor.heading2;
+                vouchertypeinfo.heading3 = adaptor.heading3;
+                vouchertypeinfo.heading4 = adaptor.heading4;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return vouchertypeinfo;
+        }
     }
 }

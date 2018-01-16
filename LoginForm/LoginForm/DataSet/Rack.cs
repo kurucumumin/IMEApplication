@@ -18,9 +18,15 @@ namespace LoginForm.DataSet
         public Rack()
         {
             this.DeliveryNoteDetails = new HashSet<DeliveryNoteDetail>();
+            this.MaterialReceiptDetails = new HashSet<MaterialReceiptDetail>();
             this.PurchaseDetails = new HashSet<PurchaseDetail>();
+            this.PurchaseReturnDetails = new HashSet<PurchaseReturnDetail>();
+            this.PurchaseReturnDetails1 = new HashSet<PurchaseReturnDetail>();
+            this.PurchaseReturnDetails2 = new HashSet<PurchaseReturnDetail>();
             this.RejectionInDetails = new HashSet<RejectionInDetail>();
+            this.RejectionOutDetails = new HashSet<RejectionOutDetail>();
             this.SalesDetails = new HashSet<SalesDetail>();
+            this.StockPostings = new HashSet<StockPosting>();
         }
     
         public decimal rackId { get; set; }
@@ -32,10 +38,22 @@ namespace LoginForm.DataSet
         public virtual ICollection<DeliveryNoteDetail> DeliveryNoteDetails { get; set; }
         public virtual Godown Godown { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MaterialReceiptDetail> MaterialReceiptDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseDetail> PurchaseDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseReturnDetail> PurchaseReturnDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseReturnDetail> PurchaseReturnDetails1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseReturnDetail> PurchaseReturnDetails2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RejectionInDetail> RejectionInDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RejectionOutDetail> RejectionOutDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesDetail> SalesDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StockPosting> StockPostings { get; set; }
     }
 }

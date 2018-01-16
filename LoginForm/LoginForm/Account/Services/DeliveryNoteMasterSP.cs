@@ -17,13 +17,13 @@ namespace LoginForm.Account.Services
 
             IMEEntities IME = new IMEEntities();
             var result = IME.GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI(decLedgerId, decSalesMasterId, decVoucherTypeId);
-            dtbl.Columns.Add("SaleOrderNo");
+            dtbl.Columns.Add("deliveryNoteMasterId");
             dtbl.Columns.Add("invoiceNo");
             foreach (var item in result)
             {
                 var row = dtbl.NewRow();
-                row["SaleOrderNo"] = item.SaleOrderNo;
-                row["invoiceNo"] = item.SaleOrderNo;
+                row["deliveryNoteMasterId"] = item.deliveryNoteMasterId;
+                row["invoiceNo"] = item.invoiceNo;
                 dtbl.Rows.Add(row);
             }
 

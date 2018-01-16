@@ -18,6 +18,8 @@ namespace LoginForm.DataSet
         public PurchaseMaster()
         {
             this.PurchaseDetails = new HashSet<PurchaseDetail>();
+            this.PurchaseReturnMasters = new HashSet<PurchaseReturnMaster>();
+            this.PurchaseReturnMasters1 = new HashSet<PurchaseReturnMaster>();
         }
     
         public decimal purchaseMasterId { get; set; }
@@ -33,7 +35,7 @@ namespace LoginForm.DataSet
         public Nullable<int> exchangeRateId { get; set; }
         public string narration { get; set; }
         public Nullable<decimal> purchaseAccount { get; set; }
-        public Nullable<int> purchaseOrderMasterId { get; set; }
+        public string purchaseOrderMasterId { get; set; }
         public Nullable<decimal> materialReceiptMasterId { get; set; }
         public Nullable<decimal> additionalCost { get; set; }
         public Nullable<decimal> totalTax { get; set; }
@@ -63,5 +65,9 @@ namespace LoginForm.DataSet
         public virtual Worker Worker1 { get; set; }
         public virtual VoucherType VoucherType { get; set; }
         public virtual VoucherType VoucherType1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseReturnMaster> PurchaseReturnMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseReturnMaster> PurchaseReturnMasters1 { get; set; }
     }
 }

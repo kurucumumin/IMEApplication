@@ -14,6 +14,13 @@ namespace LoginForm.DataSet
     
     public partial class PurchaseDetail
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PurchaseDetail()
+        {
+            this.PurchaseReturnDetails = new HashSet<PurchaseReturnDetail>();
+            this.PurchaseReturnDetails1 = new HashSet<PurchaseReturnDetail>();
+        }
+    
         public decimal purchaseDetailsId { get; set; }
         public Nullable<decimal> purchaseMasterId { get; set; }
         public Nullable<decimal> receiptDetailsId { get; set; }
@@ -36,12 +43,15 @@ namespace LoginForm.DataSet
     
         public virtual Batch Batch { get; set; }
         public virtual Godown Godown { get; set; }
-        public virtual PurchaseOrder PurchaseOrder { get; set; }
         public virtual PurchaseMaster PurchaseMaster { get; set; }
         public virtual Rack Rack { get; set; }
         public virtual ReceiptDetail ReceiptDetail { get; set; }
         public virtual Tax Tax { get; set; }
         public virtual UnitConvertion UnitConvertion { get; set; }
         public virtual Unit Unit { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseReturnDetail> PurchaseReturnDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseReturnDetail> PurchaseReturnDetails1 { get; set; }
     }
 }

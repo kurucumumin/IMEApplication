@@ -177,6 +177,19 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
         }
+        public decimal PartyBalanceAmountViewByVoucherNoVoucherTypeIdAndReferenceType(string strVoucherNo, decimal decVoucherTypeId, string strReferenceType)
+        {
+            decimal decAmount = 0;
+            try
+            {
+                decAmount = new IMEEntities().PartyBalanceAmountViewByVoucherNoVoucherTypeIdAndReferenceType();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decAmount;
+        }
 
     }
 }

@@ -29,5 +29,36 @@ namespace LoginForm.Account.Services
             }
             return dtbl;
         }
+
+        public DataTable RackViewAll()
+        {
+            IMEEntities db = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = db.Racks.ToList();
+                
+                dtbl.Columns.Add("rackId");
+                dtbl.Columns.Add("rackName");
+                dtbl.Columns.Add("godownId");
+                dtbl.Columns.Add("narration");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+                    row["rackId"] = item.rackId;
+                    row["rackName"] = item.rackName;
+                    row["godownId"] = item.godownId;
+                    row["narration"] = item.narration;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
     }
 }

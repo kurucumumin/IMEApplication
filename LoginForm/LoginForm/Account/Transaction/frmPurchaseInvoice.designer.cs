@@ -34,8 +34,8 @@ namespace Open_Miracle
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPurchaseInvoice));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -44,11 +44,10 @@ namespace Open_Miracle
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTotalAmount = new System.Windows.Forms.Label();
             this.txtTotalAmount = new System.Windows.Forms.TextBox();
             this.lblLRNo = new System.Windows.Forms.Label();
@@ -82,7 +81,7 @@ namespace Open_Miracle
             this.lblNarration = new System.Windows.Forms.Label();
             this.txtVoucherNo = new System.Windows.Forms.TextBox();
             this.lblVoucherNo = new System.Windows.Forms.Label();
-            this.dgvProductDetails = new dgv.DataGridViewEnter();
+            this.dgvProductDetails = new System.Windows.Forms.DataGridView();
             this.dgvtxtSlNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtPurchaseDetailsId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtPurchaseOrderDetailsId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -97,7 +96,6 @@ namespace Open_Miracle
             this.dgvcmbGodown = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dgvcmbRack = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dgvcmbBatch = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dgvtxtRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtGrossValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtDiscountPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -115,7 +113,7 @@ namespace Open_Miracle
             this.lblDays = new System.Windows.Forms.Label();
             this.cmbOrderNo = new System.Windows.Forms.ComboBox();
             this.lblOrderNo = new System.Windows.Forms.Label();
-            this.dgvAdditionalCost = new dgv.DataGridViewEnter();
+            this.dgvAdditionalCost = new System.Windows.Forms.DataGridView();
             this.dgvtxtSlNoAdditionalCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtAdditionalCostId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcmbLedger = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -143,7 +141,6 @@ namespace Open_Miracle
             this.lblVoucherDateValidator = new System.Windows.Forms.Label();
             this.lblInvoiceDateValidator = new System.Windows.Forms.Label();
             this.lblCurrencyValidator = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdditionalCost)).BeginInit();
@@ -355,7 +352,7 @@ namespace Open_Miracle
             this.cbxPrintAfterSave.AutoSize = true;
             this.cbxPrintAfterSave.ForeColor = System.Drawing.Color.White;
             this.cbxPrintAfterSave.Location = new System.Drawing.Point(24, 710);
-            this.cbxPrintAfterSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxPrintAfterSave.Margin = new System.Windows.Forms.Padding(4);
             this.cbxPrintAfterSave.Name = "cbxPrintAfterSave";
             this.cbxPrintAfterSave.Size = new System.Drawing.Size(126, 21);
             this.cbxPrintAfterSave.TabIndex = 20;
@@ -415,13 +412,13 @@ namespace Open_Miracle
             // lblCashOrParty
             // 
             this.lblCashOrParty.AutoSize = true;
-            this.lblCashOrParty.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblCashOrParty.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblCashOrParty.Location = new System.Drawing.Point(27, 85);
             this.lblCashOrParty.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
             this.lblCashOrParty.Name = "lblCashOrParty";
-            this.lblCashOrParty.Size = new System.Drawing.Size(85, 17);
+            this.lblCashOrParty.Size = new System.Drawing.Size(95, 17);
             this.lblCashOrParty.TabIndex = 952;
-            this.lblCashOrParty.Text = "Cash / Party";
+            this.lblCashOrParty.Text = "Vendor Name";
             // 
             // lblVendorInvoiceNo
             // 
@@ -442,7 +439,7 @@ namespace Open_Miracle
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Location = new System.Drawing.Point(936, 698);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(113, 33);
             this.btnClose.TabIndex = 24;
@@ -458,7 +455,7 @@ namespace Open_Miracle
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.Color.White;
             this.btnDelete.Location = new System.Drawing.Point(815, 698);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(113, 33);
             this.btnDelete.TabIndex = 23;
@@ -474,7 +471,7 @@ namespace Open_Miracle
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(572, 698);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(113, 33);
             this.btnSave.TabIndex = 21;
@@ -490,7 +487,7 @@ namespace Open_Miracle
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.White;
             this.btnClear.Location = new System.Drawing.Point(693, 698);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(113, 33);
             this.btnClear.TabIndex = 22;
@@ -584,7 +581,6 @@ namespace Open_Miracle
             this.dgvcmbGodown,
             this.dgvcmbRack,
             this.dgvcmbBatch,
-            this.dgvtxtRate,
             this.dgvtxtGrossValue,
             this.dgvtxtDiscountPercent,
             this.dgvtxtDiscount,
@@ -592,28 +588,28 @@ namespace Open_Miracle
             this.dgvcmbTax,
             this.dgvtxtTaxAmount,
             this.dgvtxtAmount});
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(202)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProductDetails.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(202)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProductDetails.DefaultCellStyle = dataGridViewCellStyle12;
             this.dgvProductDetails.EnableHeadersVisualStyles = false;
             this.dgvProductDetails.GridColor = System.Drawing.Color.SteelBlue;
             this.dgvProductDetails.Location = new System.Drawing.Point(24, 214);
             this.dgvProductDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 12);
             this.dgvProductDetails.Name = "dgvProductDetails";
             this.dgvProductDetails.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvProductDetails.Size = new System.Drawing.Size(1020, 204);
             this.dgvProductDetails.TabIndex = 13;
             this.dgvProductDetails.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductDetails_CellEndEdit);
@@ -733,53 +729,45 @@ namespace Open_Miracle
             this.dgvcmbBatch.HeaderText = "Batch";
             this.dgvcmbBatch.Name = "dgvcmbBatch";
             // 
-            // dgvtxtRate
-            // 
-            this.dgvtxtRate.DataPropertyName = "rate";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtRate.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvtxtRate.HeaderText = "Rate";
-            this.dgvtxtRate.MaxInputLength = 8;
-            this.dgvtxtRate.Name = "dgvtxtRate";
-            this.dgvtxtRate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dgvtxtRate.Width = 130;
-            // 
             // dgvtxtGrossValue
             // 
             this.dgvtxtGrossValue.DataPropertyName = "grossValue";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtGrossValue.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtGrossValue.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvtxtGrossValue.HeaderText = "Gross Value";
             this.dgvtxtGrossValue.Name = "dgvtxtGrossValue";
             this.dgvtxtGrossValue.ReadOnly = true;
             this.dgvtxtGrossValue.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtxtGrossValue.Visible = false;
             this.dgvtxtGrossValue.Width = 130;
             // 
             // dgvtxtDiscountPercent
             // 
             this.dgvtxtDiscountPercent.DataPropertyName = "discountPercent";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtDiscountPercent.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtDiscountPercent.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvtxtDiscountPercent.HeaderText = "Discount %";
             this.dgvtxtDiscountPercent.MaxInputLength = 13;
             this.dgvtxtDiscountPercent.Name = "dgvtxtDiscountPercent";
             this.dgvtxtDiscountPercent.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtxtDiscountPercent.Visible = false;
             // 
             // dgvtxtDiscount
             // 
             this.dgvtxtDiscount.DataPropertyName = "discount";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtDiscount.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtDiscount.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvtxtDiscount.HeaderText = "Discount";
             this.dgvtxtDiscount.MaxInputLength = 13;
             this.dgvtxtDiscount.Name = "dgvtxtDiscount";
             this.dgvtxtDiscount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtxtDiscount.Visible = false;
             // 
             // dgvtxtNetValue
             // 
             this.dgvtxtNetValue.DataPropertyName = "netvalue";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtNetValue.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtNetValue.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvtxtNetValue.HeaderText = "Net Value";
             this.dgvtxtNetValue.Name = "dgvtxtNetValue";
             this.dgvtxtNetValue.ReadOnly = true;
@@ -796,8 +784,8 @@ namespace Open_Miracle
             // dgvtxtTaxAmount
             // 
             this.dgvtxtTaxAmount.DataPropertyName = "taxAmount";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtTaxAmount.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtTaxAmount.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvtxtTaxAmount.HeaderText = "Tax Amount";
             this.dgvtxtTaxAmount.Name = "dgvtxtTaxAmount";
             this.dgvtxtTaxAmount.ReadOnly = true;
@@ -806,8 +794,8 @@ namespace Open_Miracle
             // dgvtxtAmount
             // 
             this.dgvtxtAmount.DataPropertyName = "amount";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtAmount.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtAmount.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvtxtAmount.HeaderText = "Amount";
             this.dgvtxtAmount.Name = "dgvtxtAmount";
             this.dgvtxtAmount.ReadOnly = true;
@@ -837,6 +825,7 @@ namespace Open_Miracle
             // cmbPurchaseMode
             // 
             this.cmbPurchaseMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPurchaseMode.ForeColor = System.Drawing.Color.Maroon;
             this.cmbPurchaseMode.FormattingEnabled = true;
             this.cmbPurchaseMode.Items.AddRange(new object[] {
             "NA",
@@ -848,12 +837,12 @@ namespace Open_Miracle
             this.cmbPurchaseMode.Size = new System.Drawing.Size(265, 24);
             this.cmbPurchaseMode.TabIndex = 7;
             this.cmbPurchaseMode.SelectedIndexChanged += new System.EventHandler(this.cmbPurchaseMode_SelectedIndexChanged);
-            this.cmbPurchaseMode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbPurchaseMode_KeyDown);
+            this.cmbPurchaseMode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBillDiscount_KeyDown);
             // 
             // lblPurchaseMode
             // 
             this.lblPurchaseMode.AutoSize = true;
-            this.lblPurchaseMode.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblPurchaseMode.ForeColor = System.Drawing.Color.Maroon;
             this.lblPurchaseMode.Location = new System.Drawing.Point(27, 117);
             this.lblPurchaseMode.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
             this.lblPurchaseMode.Name = "lblPurchaseMode";
@@ -908,6 +897,7 @@ namespace Open_Miracle
             // cmbOrderNo
             // 
             this.cmbOrderNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbOrderNo.ForeColor = System.Drawing.Color.Maroon;
             this.cmbOrderNo.FormattingEnabled = true;
             this.cmbOrderNo.Location = new System.Drawing.Point(167, 144);
             this.cmbOrderNo.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
@@ -920,7 +910,7 @@ namespace Open_Miracle
             // lblOrderNo
             // 
             this.lblOrderNo.AutoSize = true;
-            this.lblOrderNo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblOrderNo.ForeColor = System.Drawing.Color.Maroon;
             this.lblOrderNo.Location = new System.Drawing.Point(27, 149);
             this.lblOrderNo.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
             this.lblOrderNo.Name = "lblOrderNo";
@@ -935,14 +925,14 @@ namespace Open_Miracle
             this.dgvAdditionalCost.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvAdditionalCost.BackgroundColor = System.Drawing.Color.White;
             this.dgvAdditionalCost.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAdditionalCost.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAdditionalCost.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dgvAdditionalCost.ColumnHeadersHeight = 25;
             this.dgvAdditionalCost.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvAdditionalCost.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -950,14 +940,14 @@ namespace Open_Miracle
             this.dgvtxtAdditionalCostId,
             this.dgvcmbLedger,
             this.dgvtxtAdditionalCostAmount});
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(202)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAdditionalCost.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(202)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAdditionalCost.DefaultCellStyle = dataGridViewCellStyle17;
             this.dgvAdditionalCost.EnableHeadersVisualStyles = false;
             this.dgvAdditionalCost.GridColor = System.Drawing.Color.SteelBlue;
             this.dgvAdditionalCost.Location = new System.Drawing.Point(24, 427);
@@ -975,8 +965,8 @@ namespace Open_Miracle
             // 
             // dgvtxtSlNoAdditionalCost
             // 
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSlNoAdditionalCost.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSlNoAdditionalCost.DefaultCellStyle = dataGridViewCellStyle15;
             this.dgvtxtSlNoAdditionalCost.FillWeight = 60.9137F;
             this.dgvtxtSlNoAdditionalCost.HeaderText = "Sl No";
             this.dgvtxtSlNoAdditionalCost.Name = "dgvtxtSlNoAdditionalCost";
@@ -1002,8 +992,8 @@ namespace Open_Miracle
             // dgvtxtAdditionalCostAmount
             // 
             this.dgvtxtAdditionalCostAmount.DataPropertyName = "amount";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtAdditionalCostAmount.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtAdditionalCostAmount.DefaultCellStyle = dataGridViewCellStyle16;
             this.dgvtxtAdditionalCostAmount.FillWeight = 119.5432F;
             this.dgvtxtAdditionalCostAmount.HeaderText = "Amount";
             this.dgvtxtAdditionalCostAmount.MaxInputLength = 11;
@@ -1275,16 +1265,6 @@ namespace Open_Miracle
             this.lblCurrencyValidator.TabIndex = 1153;
             this.lblCurrencyValidator.Text = "*";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(741, 190);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(181, 17);
-            this.label1.TabIndex = 345568;
-            this.label1.Text = "Vendor Name will be added";
-            // 
             // frmPurchaseInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1292,7 +1272,6 @@ namespace Open_Miracle
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
             this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(1068, 741);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblCurrencyValidator);
             this.Controls.Add(this.lblInvoiceDateValidator);
             this.Controls.Add(this.lblVoucherDateValidator);
@@ -1355,7 +1334,7 @@ namespace Open_Miracle
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmPurchaseInvoice";
             this.Opacity = 0.85D;
@@ -1441,8 +1420,8 @@ namespace Open_Miracle
         private System.Windows.Forms.Label lblVoucherDateValidator;
         private System.Windows.Forms.Label lblInvoiceDateValidator;
         private System.Windows.Forms.Label lblCurrencyValidator;
-        private dgv.DataGridViewEnter dgvProductDetails;
-        private dgv.DataGridViewEnter dgvAdditionalCost;
+        private System.Windows.Forms.DataGridView dgvProductDetails;
+        private System.Windows.Forms.DataGridView dgvAdditionalCost;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSlNoAdditionalCost;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtAdditionalCostId;
         private System.Windows.Forms.DataGridViewComboBoxColumn dgvcmbLedger;
@@ -1461,7 +1440,6 @@ namespace Open_Miracle
         private System.Windows.Forms.DataGridViewComboBoxColumn dgvcmbGodown;
         private System.Windows.Forms.DataGridViewComboBoxColumn dgvcmbRack;
         private System.Windows.Forms.DataGridViewComboBoxColumn dgvcmbBatch;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtRate;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtGrossValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtDiscountPercent;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtDiscount;
@@ -1469,6 +1447,5 @@ namespace Open_Miracle
         private System.Windows.Forms.DataGridViewComboBoxColumn dgvcmbTax;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtTaxAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtAmount;
-        private System.Windows.Forms.Label label1;
     }
 }

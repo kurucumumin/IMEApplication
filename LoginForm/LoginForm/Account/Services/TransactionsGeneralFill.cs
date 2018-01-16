@@ -312,6 +312,30 @@ namespace LoginForm.Account.Services
             }
             return dtbl;
         }
+
+        public bool StatusOfPrintAfterSave()
+        {
+            IMEEntities db = new IMEEntities();
+            string strStatus = "";
+            bool isTrue = false;
+            try
+            {
+                strStatus = db.PrintAfterSave();
+                if (strStatus == "Yes")
+                {
+                    isTrue = true;
+                }
+                else
+                {
+                    isTrue = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return isTrue;
+        }
         //public DataTable BankOrCashComboFill(bool isAll)
         //{
         //    IMEEntities db = new IMEEntities();

@@ -36,5 +36,21 @@ namespace LoginForm.Account.Services
             }
             return decReturnValue;
         }
+
+        public decimal ExchangeRateViewByExchangeRateId(decimal decExchangeRateId)
+        {
+            IMEEntities db = new IMEEntities();
+            decimal exchangeRate = 0;
+            try
+            {
+                exchangeRate = db.ExchangeRateViewByExchangeRateId(decExchangeRateId);
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return exchangeRate;
+        }
     }
 }

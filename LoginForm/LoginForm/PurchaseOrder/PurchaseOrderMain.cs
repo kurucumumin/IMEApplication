@@ -54,11 +54,11 @@ namespace LoginForm.PurchaseOrder
             for (int i = 0; i < dgPurchase.RowCount - 1; i++)
             {
                 DataGridViewRow row = dgPurchase.Rows[i];
-                int ID = (int)row.Cells[FicheNo.Index].Value;
+                string ID = row.Cells[FicheNo.Index].Value.ToString();
                 if (row.Cells[FicheNo.Index].Value != null)
                 {
                     var adapter = IME.PurchaseOrders.Where(a => a.FicheNo == ID).FirstOrDefault();
-                    adapter.FicheNo = (int)row.Cells[FicheNo.Index].Value;
+                    adapter.FicheNo = ID;
                     adapter.PurchaseOrderDate = (DateTime)row.Cells[PurchaseOrderDate.Index].Value;
                     adapter.CustomerID = row.Cells[CustomerID.Index].Value.ToString();
                     adapter.Customer.c_name = row.Cells[c_name.Index].Value.ToString();
@@ -158,11 +158,10 @@ namespace LoginForm.PurchaseOrder
                 }
                 else
                 {
-                    int sayac = Convert.ToInt32(search);
-                 var fno = IME.PurchaseOrders.Where(b => b.FicheNo == sayac).FirstOrDefault();
+                 var fno = IME.PurchaseOrders.Where(b => b.FicheNo == search).FirstOrDefault();
                     if (fno != null)
                     {
-                        var fichenolist = (from p in IME.PurchaseOrders.Where(p => p.FicheNo == sayac)
+                        var fichenolist = (from p in IME.PurchaseOrders.Where(p => p.FicheNo == search)
                                            select new
                                            {
                                                p.FicheNo,

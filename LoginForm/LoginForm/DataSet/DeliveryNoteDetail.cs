@@ -36,6 +36,7 @@ namespace LoginForm.DataSet
         public Nullable<int> slNo { get; set; }
     
         public virtual Batch Batch { get; set; }
+        public virtual DeliveryNoteMaster DeliveryNoteMaster { get; set; }
         public virtual Godown Godown { get; set; }
         public virtual Quotation Quotation { get; set; }
         public virtual Rack Rack { get; set; }

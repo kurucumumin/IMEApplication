@@ -17,6 +17,7 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SalesReturnMaster()
         {
+            this.SalesReturnBillTaxes = new HashSet<SalesReturnBillTax>();
             this.SalesReturnDetails = new HashSet<SalesReturnDetail>();
         }
     
@@ -25,7 +26,7 @@ namespace LoginForm.DataSet
         public string invoiceNo { get; set; }
         public Nullable<decimal> voucherTypeId { get; set; }
         public Nullable<decimal> suffixPrefixId { get; set; }
-        public string salesMasterId { get; set; }
+        public Nullable<decimal> salesMasterId { get; set; }
         public Nullable<decimal> ledgerId { get; set; }
         public Nullable<decimal> salesAccount { get; set; }
         public Nullable<decimal> pricinglevelId { get; set; }
@@ -45,7 +46,9 @@ namespace LoginForm.DataSet
         public virtual ExchangeRate ExchangeRate { get; set; }
         public virtual FinancialYear FinancialYear { get; set; }
         public virtual PricingLevel PricingLevel { get; set; }
-        public virtual SaleOrder SaleOrder { get; set; }
+        public virtual SalesMaster SalesMaster { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesReturnBillTax> SalesReturnBillTaxes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesReturnDetail> SalesReturnDetails { get; set; }
         public virtual SuffixPrefix SuffixPrefix { get; set; }

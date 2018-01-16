@@ -50,17 +50,26 @@ namespace LoginForm.DataSet
         public Nullable<decimal> voucherTypeId { get; set; }
         public Nullable<bool> approved { get; set; }
         public string invoiceNo { get; set; }
+        public string voucherNo { get; set; }
+        public Nullable<int> RepresentativeID { get; set; }
+        public Nullable<int> RepresentativeID2 { get; set; }
+        public Nullable<int> ExchangeRateID { get; set; }
+        public Nullable<decimal> suffixPrefixId { get; set; }
     
         public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DeliveryNoteDetail> DeliveryNoteDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DeliveryNoteMaster> DeliveryNoteMasters { get; set; }
+        public virtual ExchangeRate ExchangeRate { get; set; }
         public virtual Note Note { get; set; }
         public virtual Note Note1 { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<QuotationDetail> QuotationDetails { get; set; }
+        public virtual Worker Worker { get; set; }
+        public virtual Worker Worker1 { get; set; }
+        public virtual SuffixPrefix SuffixPrefix { get; set; }
         public virtual VoucherType VoucherType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesMaster> SalesMasters { get; set; }

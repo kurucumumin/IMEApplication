@@ -11,16 +11,13 @@
 //You should have received a copy of the GNU General Public License
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Collections;
 using LoginForm.Account.Services;
 using LoginForm;
+using LoginForm.Services;
 using LoginForm.DataSet;
 
 namespace Open_Miracle
@@ -342,7 +339,7 @@ namespace Open_Miracle
                                 }
                                 else if (cmbPurchaseMode.Text == "Against MaterialReceipt")
                                 {
-                                    dtbl = spPurchaseMaster.GetMaterialReceiptNoCorrespondingtoLedgerByNotInCurrPI(Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString()), decPurchaseMasterId,
+                                    dtbl = spPurchaseMaster.GetMaterialReceiptNoCorrespondingtoLedgerByNotInCurrPI(cmbCashOrParty.SelectedValue.ToString(), decPurchaseMasterId.ToString(),
                                         Convert.ToDecimal(cmbVoucherType.SelectedValue.ToString()));
                                     DataRow drow = dtbl.NewRow();
                                     drow["materialReceiptMasterId"] = 0;
@@ -471,7 +468,7 @@ namespace Open_Miracle
         /// <param name="decProductId"></param>
         /// <param name="inRow"></param>
         /// <param name="inColumn"></param>
-        public void BatchComboFill(decimal decProductId, int inRow, int inColumn)
+        public void BatchComboFill(string decProductId, int inRow, int inColumn)
         {
             try
             {
@@ -537,10 +534,10 @@ namespace Open_Miracle
         {
             try
             {
-                //UnitAllComboFill();
-                //GodownComboFill();
-                //RackAllComboFill();
-                //BatchAllComboFill();
+                UnitAllComboFill();
+                GodownComboFill();
+                RackAllComboFill();
+                BatchAllComboFill();
                 TaxCombofill();
             }
             catch (Exception ex)
@@ -555,12 +552,12 @@ namespace Open_Miracle
         {
             try
             {
-                //DataTable dtblMaster = new DataTable();
-                //DataTable dtblDetails = new DataTable();
-                //PurchaseOrderMasterSP spPurchaseOrderMaster = new PurchaseOrderMasterSP();
-                //PurchaseOrderDetailsSP spPurchaseOrderDetails = new PurchaseOrderDetailsSP();
-                //BatchSP spBatch = new BatchSP();
-                decimal decPurchaseOrderMasterId = 0;
+                DataTable dtblMaster = new DataTable();
+                DataTable dtblDetails = new DataTable();
+                PurchaseOrderMasterSP spPurchaseOrderMaster = new PurchaseOrderMasterSP();
+                PurchaseOrderDetailsSP spPurchaseOrderDetails = new PurchaseOrderDetailsSP();
+                BatchSP spBatch = new BatchSP();
+                string decPurchaseOrderMasterId = "";
                 decimal decBatchId = 0;
                 if (!isEditFill)
                 {
@@ -569,7 +566,7 @@ namespace Open_Miracle
                         if (cmbCashOrParty.SelectedValue.ToString() != "System.Data.DataRowView" && cmbCashOrParty.Text != "System.Data.DataRowView")
                         {
                             GridComboFill();
-                            decPurchaseOrderMasterId = Convert.ToDecimal(cmbOrderNo.SelectedValue.ToString());
+                            decPurchaseOrderMasterId = cmbOrderNo.SelectedValue.ToString();
                             dtblMaster = spPurchaseOrderMaster.PurchaseOrderMasterViewByOrderMasterId(decPurchaseOrderMasterId);
                             if (dtblMaster.Rows.Count > 0)
                             {
@@ -608,7 +605,7 @@ namespace Open_Miracle
 
                                     dgvProductDetails.Rows[i].Cells["dgvcmbGodown"].Value = 1m;
                                     dgvProductDetails.Rows[i].Cells["dgvcmbRack"].Value = 1m;
-                                    BatchComboFill(Convert.ToDecimal(dr["productId"].ToString()), i, dgvProductDetails.Rows[i].Cells["dgvcmbBatch"].ColumnIndex);
+                                    BatchComboFill(dr["productId"].ToString(), i, dgvProductDetails.Rows[i].Cells["dgvcmbBatch"].ColumnIndex);
                                     decBatchId = spBatch.BatchIdViewByProductId(Convert.ToDecimal(dr["productId"].ToString()));
                                     dgvProductDetails.Rows[i].Cells["dgvcmbBatch"].Value = decBatchId;
                                     dgvProductDetails.Rows[i].Cells["dgvtxtRate"].Value = dr["rate"].ToString();
@@ -701,7 +698,7 @@ namespace Open_Miracle
 
                                     dgvProductDetails.Rows[i].Cells["dgvcmbGodown"].Value = Convert.ToDecimal(dr["godownId"].ToString()); ;
                                     dgvProductDetails.Rows[i].Cells["dgvcmbRack"].Value = Convert.ToDecimal(dr["rackId"].ToString()); ;
-                                    BatchComboFill(Convert.ToDecimal(dr["productId"].ToString()), i, dgvProductDetails.Rows[i].Cells["dgvcmbBatch"].ColumnIndex);
+                                    BatchComboFill(dr["productId"].ToString(), i, dgvProductDetails.Rows[i].Cells["dgvcmbBatch"].ColumnIndex);
                                     dgvProductDetails.Rows[i].Cells["dgvcmbBatch"].Value = Convert.ToDecimal(dr["batchId"].ToString());
                                     dgvProductDetails.Rows[i].Cells["dgvtxtRate"].Value = dr["rate"].ToString();
                                     dgvProductDetails.Rows[i].Cells["dgvtxtGrossValue"].Value = dr["grossValue"].ToString();
@@ -921,7 +918,7 @@ namespace Open_Miracle
                                 {
                                     decAdditionalCost = Convert.ToDecimal(dgrow.Cells["dgvtxtAdditionalCostAmount"].Value.ToString());
                                     decTotalAdditionalCost = decTotalAdditionalCost + decAdditionalCost;
-                                    decAdditionalCost = Math.Round(decAdditionalCost, PublicVariables._inNoOfDecimalPlaces);
+                                    decAdditionalCost = Math.Round(decAdditionalCost, 2);
                                     dgrow.Cells["dgvtxtAdditionalCostAmount"].Value = decAdditionalCost;
                                 }
                             }
@@ -930,7 +927,7 @@ namespace Open_Miracle
                 }
                 if (decTotalAdditionalCost == 0)
                 {
-                    lblAdditionalCostAmount.Text = Math.Round(000.00, PublicVariables._inNoOfDecimalPlaces).ToString();
+                    lblAdditionalCostAmount.Text = Math.Round(000.00, 2).ToString();
                 }
                 else
                 {
@@ -972,7 +969,7 @@ namespace Open_Miracle
                 }
                 if (decTotalTax == 0)
                 {
-                    lblTaxAmount.Text = Math.Round(000.00, PublicVariables._inNoOfDecimalPlaces).ToString();
+                    lblTaxAmount.Text = Math.Round(000.00, 2).ToString();
                 }
                 else
                 {
@@ -1032,7 +1029,7 @@ namespace Open_Miracle
                                 }
                             }
                             decDefaultAmount = decAmount * 1;
-                            dgvTaxRow.Cells["dgvtxtTotalTax"].Value = Math.Round(decDefaultAmount, PublicVariables._inNoOfDecimalPlaces);
+                            dgvTaxRow.Cells["dgvtxtTotalTax"].Value = Math.Round(decDefaultAmount, 2);
                             decAmount = 0;
                         }
                     }
@@ -1058,13 +1055,13 @@ namespace Open_Miracle
             decimal decTaxId = 0;
             decimal decAmount = 0;
             decimal decTotalAmount = 0;
-            decimal decProductId = 0;
+            string decProductId = String.Empty;
             decimal decDefaultTotalAmount = 0;
             decimal decProductRate = 0;
             decimal decQuantity = 0;
             ProductInfo infoProduct = new ProductInfo();
             ProductSP spProduct = new ProductSP();
-            TaxInfo infotax = new TaxInfo();
+            Tax infotax = new Tax();
             TaxSP spTax = new TaxSP();
             ExchangeRateSP spExchangeRate = new ExchangeRateSP();
             try
@@ -1090,7 +1087,7 @@ namespace Open_Miracle
                                 }
                             }
                             decGrossValue = decProductRate * decQuantity;
-                            dgrow.Cells["dgvtxtGrossValue"].Value = Math.Round(decGrossValue, PublicVariables._inNoOfDecimalPlaces);
+                            dgrow.Cells["dgvtxtGrossValue"].Value = Math.Round(decGrossValue, 4);
                             if (dgrow.Cells["dgvtxtDiscountPercent"].Value != null)
                             {
                                 if (dgrow.Cells["dgvtxtDiscountPercent"].Value.ToString() != string.Empty)
@@ -1125,7 +1122,7 @@ namespace Open_Miracle
                             /*------------------------------Discount Calculation-----------------------------------*/
                             if (decGrossValue >= decDiscount)
                             {
-                                dgrow.Cells["dgvtxtDiscount"].Value = Math.Round(decDiscount, PublicVariables._inNoOfDecimalPlaces);
+                                dgrow.Cells["dgvtxtDiscount"].Value = Math.Round(decDiscount, 4);
                             }
                             else
                             {
@@ -1134,7 +1131,7 @@ namespace Open_Miracle
                                 decDiscount = 0;
                             }
                             decNetValue = decGrossValue - decDiscount;
-                            dgrow.Cells["dgvtxtNetValue"].Value = Math.Round(decNetValue, PublicVariables._inNoOfDecimalPlaces);
+                            dgrow.Cells["dgvtxtNetValue"].Value = Math.Round(decNetValue, 4);
                             /*------------------------------Tax Calculation-----------------------------------*/
                             if (dgvcmbTax.Visible)
                             {
@@ -1145,7 +1142,7 @@ namespace Open_Miracle
                                     {
                                         decTaxId = Convert.ToDecimal(dgrow.Cells["dgvcmbTax"].Value.ToString());
                                         infotax = spTax.TaxView(decTaxId);
-                                        decTaxPercent = infotax.Rate;
+                                        decTaxPercent = Convert.ToDecimal(infotax.Rate);
                                     }
                                     else
                                     {
@@ -1156,7 +1153,7 @@ namespace Open_Miracle
                                 {
                                     decTaxPercent = 0;
                                 }
-                                decProductId = Convert.ToDecimal(dgrow.Cells["dgvtxtProductId"].Value.ToString());
+                                decProductId = dgrow.Cells["dgvtxtProductId"].Value.ToString();
                                 infoProduct = spProduct.ProductView(decProductId);
                                 if (infoProduct.TaxapplicableOn == "MRP")
                                 {
@@ -1166,13 +1163,13 @@ namespace Open_Miracle
                                 {
                                     decTaxAmount = decNetValue * decTaxPercent / 100;
                                 }
-                                dgrow.Cells["dgvtxtTaxAmount"].Value = Math.Round(decTaxAmount, PublicVariables._inNoOfDecimalPlaces);
+                                dgrow.Cells["dgvtxtTaxAmount"].Value = Math.Round(decTaxAmount, 4);
                             }
                             decAmount = decNetValue + decTaxAmount;
-                            dgrow.Cells["dgvtxtAmount"].Value = Math.Round(decAmount, PublicVariables._inNoOfDecimalPlaces);
+                            dgrow.Cells["dgvtxtAmount"].Value = Math.Round(decAmount, 4);
                             decTotalAmount = decTotalAmount + decAmount;
                             decDefaultTotalAmount = decTotalAmount * 1;
-                            txtTotalAmount.Text = Math.Round(decDefaultTotalAmount, PublicVariables._inNoOfDecimalPlaces).ToString();
+                            txtTotalAmount.Text = Math.Round(decDefaultTotalAmount, 4).ToString();
                             if (dgvTax.Visible)
                             {
                                 TotalTaxAmount();
@@ -1295,7 +1292,7 @@ namespace Open_Miracle
                             {
                                 decTaxRate = Convert.ToDecimal(dgvRow.Cells["dgvtxtTaxRate"].Value.ToString());
                                 decTaxOnBill = (decTotalAmount * decTaxRate / 100);
-                                dgvRow.Cells["dgvtxtTotalTax"].Value = Math.Round(decTaxOnBill, PublicVariables._inNoOfDecimalPlaces);
+                                dgvRow.Cells["dgvtxtTotalTax"].Value = Math.Round(decTaxOnBill, 4);
                                 decTotalTaxOnBill = decTotalTaxOnBill + decTaxOnBill;
                             }
                         }
@@ -1322,7 +1319,7 @@ namespace Open_Miracle
                                                 decTaxRate = Convert.ToDecimal(dgvRow1.Cells["dgvtxtTaxRate"].Value.ToString());
                                                 decTotalAmount = Convert.ToDecimal(dgvRow2.Cells["dgvtxtTotalTax"].Value.ToString());
                                                 decTaxOnTax = (decTotalAmount * decTaxRate / 100);
-                                                dgvRow1.Cells["dgvtxtTotalTax"].Value = Math.Round(decTaxOnTax, PublicVariables._inNoOfDecimalPlaces);
+                                                dgvRow1.Cells["dgvtxtTotalTax"].Value = Math.Round(decTaxOnTax, 4);
                                                 decTotalTaxOnTax = decTotalTaxOnTax + decTaxOnTax;
                                             }
                                         }
@@ -1381,12 +1378,12 @@ namespace Open_Miracle
                 decGrandTotal = decTotalAmount + decAdditionalCost + decTaxAmount - decBillDiscount;
                 if (decGrandTotal >= 0)
                 {
-                    txtGrandTotal.Text = Math.Round(decGrandTotal, PublicVariables._inNoOfDecimalPlaces).ToString();
+                    txtGrandTotal.Text = Math.Round(decGrandTotal, 4).ToString();
                 }
                 else
                 {
-                    txtBillDiscount.Text = Math.Round(0.00, PublicVariables._inNoOfDecimalPlaces).ToString();
-                    txtGrandTotal.Text = Math.Round(decTotalAmount, PublicVariables._inNoOfDecimalPlaces).ToString();
+                    txtBillDiscount.Text = Math.Round(0.00, 4).ToString();
+                    txtGrandTotal.Text = Math.Round(decTotalAmount, 4).ToString();
                 }
             }
             catch (Exception ex)
@@ -1449,7 +1446,7 @@ namespace Open_Miracle
                                         if (dgvrow.Cells["dgvtxtQuantity"].Value.ToString() != "0" && dgvrow.Cells["dgvtxtQuantity"].Value.ToString() != string.Empty)
                                         {
                                             decQtyPurchaseInvoice = Convert.ToDecimal(dgvrow.Cells["dgvtxtQuantity"].Value.ToString());
-                                            decQtyPurchaseReturn = Math.Round(spPurchaseReturnDetails.PurchaseReturnDetailsQtyViewByPurchaseDetailsId(decPurchaseDetailsId), PublicVariables._inNoOfDecimalPlaces);
+                                            decQtyPurchaseReturn = Math.Round(spPurchaseReturnDetails.PurchaseReturnDetailsQtyViewByPurchaseDetailsId(decPurchaseDetailsId), 4);
                                             if (decQtyPurchaseInvoice >= decQtyPurchaseReturn)
                                             {
                                                 inF1 = 1;
@@ -1612,17 +1609,17 @@ namespace Open_Miracle
                                     }
                                     else
                                     {
-                                        if (PublicVariables.isMessageAdd)
-                                        {
+                                        //if (PublicVariables.isMessageAdd)
+                                        //{
                                             if (Messages.SaveMessage())
                                             {
                                                 Save();
                                             }
-                                        }
-                                        else
-                                        {
-                                            Save();
-                                        }
+                                        //}
+                                        //else
+                                        //{
+                                        //    Save();
+                                        //}
                                     }
                                 }
                                 if (btnSave.Text == "Update")
@@ -1637,17 +1634,17 @@ namespace Open_Miracle
                                         }
                                         else
                                         {
-                                            if (PublicVariables.isMessageEdit)
-                                            {
+                                            //if (PublicVariables.isMessageEdit)
+                                            //{
                                                 if (Messages.UpdateMessage())
                                                 {
                                                     Edit();
                                                 }
-                                            }
-                                            else
-                                            {
-                                                Edit();
-                                            }
+                                            //}
+                                            //else
+                                            //{
+                                            //    Edit();
+                                            //}
                                         }
                                     }
                                 }
@@ -1671,82 +1668,79 @@ namespace Open_Miracle
         public void Save()
         {
             decimal decPurchaseMasterId = 0;
-            PurchaseMasterInfo infoPurchaseMaster = new PurchaseMasterInfo();
+            PurchaseMaster infoPurchaseMaster = new PurchaseMaster();
             PurchaseMasterSP spPurchaseMaster = new PurchaseMasterSP();
-            PurchaseDetailsInfo infoPurchaseDetails = new PurchaseDetailsInfo();
-            PurchaseDetailsSP spPurchaseDetails = new PurchaseDetailsSP();
-            MaterialReceiptMasterInfo infoMaterialReceiptMaster = new MaterialReceiptMasterInfo();
+            PurchaseDetail infoPurchaseDetails = new PurchaseDetail();
+            //PurchaseDetailsSP spPurchaseDetails = new PurchaseDetailsSP();
+            MaterialReceiptMaster infoMaterialReceiptMaster = new MaterialReceiptMaster();
             MaterialReceiptMasterSP spMaterialReceiptMaster = new MaterialReceiptMasterSP();
-            PurchaseOrderMasterInfo infoPurchaseOrderMaster = new PurchaseOrderMasterInfo();
+            PurchaseOrder infoPurchaseOrderMaster = new PurchaseOrder();
             PurchaseOrderMasterSP spPurchaseOrderMaster = new PurchaseOrderMasterSP();
-            StockPostingInfo infoStockPosting = new StockPostingInfo();
+            StockPosting infoStockPosting = new StockPosting();
             StockPostingSP spStockPosting = new StockPostingSP();
-            LedgerPostingInfo infoLedgerPosting = new LedgerPostingInfo();
+            LedgerPosting infoLedgerPosting = new LedgerPosting();
             LedgerPostingSP spLedgerPosting = new LedgerPostingSP();
-            PartyBalanceInfo infoPartyBalance = new PartyBalanceInfo();
+            PartyBalance infoPartyBalance = new PartyBalance();
             PartyBalanceSP spPartyBalance = new PartyBalanceSP();
-            AdditionalCostInfo infoAdditionalCost = new AdditionalCostInfo();
+            AdditionalCost infoAdditionalCost = new AdditionalCost();
             AdditionalCostSP spAdditionalCost = new AdditionalCostSP();
-            PurchaseBillTaxInfo infoPurchaseBillTax = new PurchaseBillTaxInfo();
+            PurchaseBillTax infoPurchaseBillTax = new PurchaseBillTax();
             PurchaseBillTaxSP spPurchaseBillTax = new PurchaseBillTaxSP();
-            AccountLedgerInfo infoAccountLedger = new AccountLedgerInfo();
+            AccountLedger infoAccountLedger = new AccountLedger();
             AccountLedgerSP spAccountLedger = new AccountLedgerSP();
             UnitConvertionSP spUnitConvertion = new UnitConvertionSP();
             ExchangeRateSP spExchangeRate = new ExchangeRateSP();
             try
             {
                 /*-----------------------------------------Purchase Master Add----------------------------------------------------*/
-                infoPurchaseMaster.AdditionalCost = Convert.ToDecimal(lblAdditionalCostAmount.Text);
-                infoPurchaseMaster.BillDiscount = Convert.ToDecimal(txtBillDiscount.Text);
-                infoPurchaseMaster.CreditPeriod = txtCreditPeriod.Text;
-                infoPurchaseMaster.Date = Convert.ToDateTime(txtVoucherDate.Text);
-                infoPurchaseMaster.ExchangeRateId = Convert.ToDecimal(cmbCurrency.SelectedValue.ToString());
-                infoPurchaseMaster.FinancialYearId = PublicVariables._decCurrentFinancialYearId;
-                infoPurchaseMaster.GrandTotal = Convert.ToDecimal(txtGrandTotal.Text);
-                infoPurchaseMaster.InvoiceNo = txtVoucherNo.Text.Trim();
+                infoPurchaseMaster.additionalCost = Convert.ToDecimal(lblAdditionalCostAmount.Text);
+                infoPurchaseMaster.billDiscount = Convert.ToDecimal(txtBillDiscount.Text);
+                infoPurchaseMaster.creditPeriod = txtCreditPeriod.Text;
+                infoPurchaseMaster.date = Convert.ToDateTime(txtVoucherDate.Text);
+                infoPurchaseMaster.exchangeRateId = Convert.ToInt32(cmbCurrency.SelectedValue.ToString());
+                infoPurchaseMaster.financialYearId = Utils.getManagement().CurrentFinancialYear;
+                infoPurchaseMaster.grandTotal = Convert.ToDecimal(txtGrandTotal.Text);
+                infoPurchaseMaster.invoiceNo = txtVoucherNo.Text.Trim();
                 if (isAutomatic)
                 {
-                    infoPurchaseMaster.SuffixPrefixId = decPurchaseInvoiceSuffixPrefixId;
-                    infoPurchaseMaster.VoucherNo = strVoucherNo;
+                    infoPurchaseMaster.suffixPrefixId = decPurchaseInvoiceSuffixPrefixId;
+                    infoPurchaseMaster.voucherNo = strVoucherNo;
                 }
                 else
                 {
-                    infoPurchaseMaster.SuffixPrefixId = 0;
-                    infoPurchaseMaster.VoucherNo = strVoucherNo;
+                    infoPurchaseMaster.suffixPrefixId = 0;
+                    infoPurchaseMaster.voucherNo = strVoucherNo;
                 }
-                infoPurchaseMaster.LedgerId = Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString());
-                infoPurchaseMaster.LrNo = txtLRNo.Text;
+                infoPurchaseMaster.ledgerId = Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString());
+                infoPurchaseMaster.lrNo = txtLRNo.Text;
                 if (cmbPurchaseMode.Text == "Against MaterialReceipt")
                 {
-                    infoPurchaseMaster.MaterialReceiptMasterId = Convert.ToDecimal(cmbOrderNo.SelectedValue.ToString());
+                    infoPurchaseMaster.materialReceiptMasterId = Convert.ToDecimal(cmbOrderNo.SelectedValue.ToString());
                 }
                 else
                 {
-                    infoPurchaseMaster.MaterialReceiptMasterId = 0;
+                    infoPurchaseMaster.materialReceiptMasterId = 0;
                 }
-                infoPurchaseMaster.Narration = txtNarration.Text;
-                infoPurchaseMaster.PurchaseAccount = Convert.ToDecimal(cmbPurchaseAccount.SelectedValue.ToString());
+                infoPurchaseMaster.narration = txtNarration.Text;
+                infoPurchaseMaster.purchaseAccount = Convert.ToDecimal(cmbPurchaseAccount.SelectedValue.ToString());
                 if (cmbPurchaseMode.Text == "Against PurchaseOrder")
                 {
-                    infoPurchaseMaster.PurchaseOrderMasterId = Convert.ToDecimal(cmbOrderNo.SelectedValue.ToString());
+                    infoPurchaseMaster.purchaseOrderMasterId = cmbOrderNo.SelectedValue.ToString();
                 }
                 else
                 {
-                    infoPurchaseMaster.PurchaseOrderMasterId = 0;
+                    infoPurchaseMaster.purchaseOrderMasterId = "0";
                 }
-                infoPurchaseMaster.TotalAmount = Convert.ToDecimal(txtTotalAmount.Text);
-                infoPurchaseMaster.TotalTax = Convert.ToDecimal(lblTaxAmount.Text);
-                infoPurchaseMaster.TransportationCompany = txtTransportationCompany.Text;
-                infoPurchaseMaster.UserId = PublicVariables._decCurrentUserId;
-                infoPurchaseMaster.VendorInvoiceDate = Convert.ToDateTime(txtInvoiceDate.Text);
-                infoPurchaseMaster.VendorInvoiceNo = txtVendorInvoiceNo.Text;
-                infoPurchaseMaster.VoucherTypeId = decPurchaseInvoiceVoucherTypeId;
-                infoPurchaseMaster.Extra1 = string.Empty;
-                infoPurchaseMaster.Extra2 = string.Empty;
-                infoPurchaseMaster.ExtraDate = Convert.ToDateTime(DateTime.Now);
+                infoPurchaseMaster.totalAmount = Convert.ToDecimal(txtTotalAmount.Text);
+                infoPurchaseMaster.totalTax = Convert.ToDecimal(lblTaxAmount.Text);
+                infoPurchaseMaster.transportationCompany = txtTransportationCompany.Text;
+                infoPurchaseMaster.userId = Utils.getCurrentUser().WorkerID;
+                infoPurchaseMaster.vendorInvoiceDate = Convert.ToDateTime(txtInvoiceDate.Text);
+                infoPurchaseMaster.vendorInvoiceNo = txtVendorInvoiceNo.Text;
+                infoPurchaseMaster.voucherTypeId = decPurchaseInvoiceVoucherTypeId;
                 decPurchaseMasterId = spPurchaseMaster.PurchaseMasterAdd(infoPurchaseMaster);
-                infoPurchaseOrderMaster = spPurchaseOrderMaster.PurchaseOrderMasterView(infoPurchaseMaster.PurchaseOrderMasterId);
-                infoMaterialReceiptMaster = spMaterialReceiptMaster.MaterialReceiptMasterView(infoPurchaseMaster.MaterialReceiptMasterId);
+                infoPurchaseOrderMaster = spPurchaseOrderMaster.PurchaseOrderMasterView(infoPurchaseMaster.purchaseOrderMasterId);
+                infoMaterialReceiptMaster = spMaterialReceiptMaster.MaterialReceiptMasterView(Convert.ToDecimal(infoPurchaseMaster.materialReceiptMasterId));
                 foreach (DataGridViewRow dgvrow in dgvProductDetails.Rows)
                 {
                     if (dgvrow.Cells["dgvtxtProductId"].Value != null)
@@ -1754,134 +1748,118 @@ namespace Open_Miracle
                         if (dgvrow.Cells["dgvtxtProductId"].Value.ToString() != string.Empty)
                         {
                             /*-----------------------------------------Purchase Details Add----------------------------------------------------*/
-                            infoPurchaseDetails.Amount = Convert.ToDecimal(dgvrow.Cells["dgvtxtAmount"].Value.ToString());
-                            infoPurchaseDetails.BatchId = Convert.ToDecimal(dgvrow.Cells["dgvcmbBatch"].Value.ToString());
-                            infoPurchaseDetails.Discount = Convert.ToDecimal(dgvrow.Cells["dgvtxtDiscount"].Value.ToString());
-                            infoPurchaseDetails.GodownId = Convert.ToDecimal(dgvrow.Cells["dgvcmbGodown"].Value.ToString());
-                            infoPurchaseDetails.GrossAmount = Convert.ToDecimal(dgvrow.Cells["dgvtxtGrossValue"].Value.ToString());
-                            infoPurchaseDetails.NetAmount = Convert.ToDecimal(dgvrow.Cells["dgvtxtNetValue"].Value.ToString());
-                            infoPurchaseDetails.OrderDetailsId = Convert.ToDecimal(dgvrow.Cells["dgvtxtPurchaseOrderDetailsId"].Value.ToString());
-                            infoPurchaseDetails.ProductId = Convert.ToDecimal(dgvrow.Cells["dgvtxtProductId"].Value.ToString());
-                            infoPurchaseDetails.PurchaseMasterId = decPurchaseMasterId;
-                            infoPurchaseDetails.Qty = Convert.ToDecimal(dgvrow.Cells["dgvtxtQuantity"].Value.ToString());
-                            infoPurchaseDetails.RackId = Convert.ToDecimal(dgvrow.Cells["dgvcmbRack"].Value.ToString());
-                            infoPurchaseDetails.Rate = Convert.ToDecimal(dgvrow.Cells["dgvtxtRate"].Value.ToString());
-                            infoPurchaseDetails.ReceiptDetailsId = Convert.ToDecimal(dgvrow.Cells["dgvtxtMaterialReceiptDetailsId"].Value.ToString());
-                            infoPurchaseDetails.SlNo = Convert.ToInt32(dgvrow.Cells["dgvtxtSlNo"].Value.ToString());
-                            infoPurchaseDetails.TaxAmount = Convert.ToDecimal(dgvrow.Cells["dgvtxtTaxAmount"].Value.ToString());
-                            infoPurchaseDetails.TaxId = Convert.ToDecimal(dgvrow.Cells["dgvcmbTax"].Value.ToString());
-                            infoPurchaseDetails.UnitConversionId = Convert.ToDecimal(dgvrow.Cells["dgvtxtUnitConversionId"].Value.ToString());
-                            infoPurchaseDetails.UnitId = Convert.ToDecimal(dgvrow.Cells["dgvcmbUnit"].Value.ToString());
-                            infoPurchaseDetails.Extra1 = string.Empty;
-                            infoPurchaseDetails.Extra2 = string.Empty;
-                            infoPurchaseDetails.ExtraDate = Convert.ToDateTime(DateTime.Today);
-                            spPurchaseDetails.PurchaseDetailsAdd(infoPurchaseDetails);
+                            infoPurchaseDetails.amount = Convert.ToDecimal(dgvrow.Cells["dgvtxtAmount"].Value.ToString());
+                            infoPurchaseDetails.batchId = Convert.ToDecimal(dgvrow.Cells["dgvcmbBatch"].Value.ToString());
+                            infoPurchaseDetails.discount = Convert.ToDecimal(dgvrow.Cells["dgvtxtDiscount"].Value.ToString());
+                            infoPurchaseDetails.godownId = Convert.ToDecimal(dgvrow.Cells["dgvcmbGodown"].Value.ToString());
+                            infoPurchaseDetails.grossAmount = Convert.ToDecimal(dgvrow.Cells["dgvtxtGrossValue"].Value.ToString());
+                            infoPurchaseDetails.netAmount = Convert.ToDecimal(dgvrow.Cells["dgvtxtNetValue"].Value.ToString());
+                            infoPurchaseDetails.orderDetailsId = Convert.ToInt32(dgvrow.Cells["dgvtxtPurchaseOrderDetailsId"].Value.ToString());
+                            infoPurchaseDetails.productId = Convert.ToDecimal(dgvrow.Cells["dgvtxtProductId"].Value.ToString());
+                            infoPurchaseDetails.purchaseMasterId = decPurchaseMasterId;
+                            infoPurchaseDetails.qty = Convert.ToDecimal(dgvrow.Cells["dgvtxtQuantity"].Value.ToString());
+                            infoPurchaseDetails.rackId = Convert.ToDecimal(dgvrow.Cells["dgvcmbRack"].Value.ToString());
+                            infoPurchaseDetails.rate = Convert.ToDecimal(dgvrow.Cells["dgvtxtRate"].Value.ToString());
+                            infoPurchaseDetails.receiptDetailsId = Convert.ToDecimal(dgvrow.Cells["dgvtxtMaterialReceiptDetailsId"].Value.ToString());
+                            infoPurchaseDetails.slNo = Convert.ToInt32(dgvrow.Cells["dgvtxtSlNo"].Value.ToString());
+                            infoPurchaseDetails.taxAmount = Convert.ToDecimal(dgvrow.Cells["dgvtxtTaxAmount"].Value.ToString());
+                            infoPurchaseDetails.taxId = Convert.ToInt32(dgvrow.Cells["dgvcmbTax"].Value.ToString());
+                            infoPurchaseDetails.unitConversionId = Convert.ToDecimal(dgvrow.Cells["dgvtxtUnitConversionId"].Value.ToString());
+                            infoPurchaseDetails.unitId = Convert.ToDecimal(dgvrow.Cells["dgvcmbUnit"].Value.ToString());
                             /*-----------------------------------------Stock Posting----------------------------------------------------*/
-                            infoStockPosting.BatchId = infoPurchaseDetails.BatchId;
-                            infoStockPosting.Date = infoPurchaseMaster.Date;
-                            infoStockPosting.FinancialYearId = PublicVariables._decCurrentFinancialYearId;
-                            infoStockPosting.GodownId = infoPurchaseDetails.GodownId;
-                            infoStockPosting.InwardQty = infoPurchaseDetails.Qty; /// spUnitConvertion.UnitConversionRateByUnitConversionId(infoPurchaseDetails.UnitConversionId);
-                            infoStockPosting.OutwardQty = 0;
-                            infoStockPosting.ProductId = infoPurchaseDetails.ProductId;
-                            infoStockPosting.RackId = infoPurchaseDetails.RackId;
-                            infoStockPosting.Rate = infoPurchaseDetails.Rate;
-                            infoStockPosting.UnitId = infoPurchaseDetails.UnitId;
-                            if (infoPurchaseDetails.OrderDetailsId != 0)
+                            infoStockPosting.batchId = infoPurchaseDetails.batchId;
+                            infoStockPosting.date = infoPurchaseMaster.date;
+                            infoStockPosting.financialYearId = Utils.getManagement().CurrentFinancialYear;
+                            infoStockPosting.godownId = infoPurchaseDetails.godownId;
+                            infoStockPosting.inwardQty = infoPurchaseDetails.qty; /// spUnitConvertion.UnitConversionRateByUnitConversionId(infoPurchaseDetails.UnitConversionId);
+                            infoStockPosting.outwardQty = 0;
+                            infoStockPosting.productId = infoPurchaseDetails.productId;
+                            infoStockPosting.rackId = infoPurchaseDetails.rackId;
+                            infoStockPosting.rate = infoPurchaseDetails.rate;
+                            infoStockPosting.unitId = infoPurchaseDetails.unitId;
+                            if (infoPurchaseDetails.orderDetailsId != 0)
                             {
-                                infoStockPosting.InvoiceNo = infoPurchaseMaster.InvoiceNo;
-                                infoStockPosting.VoucherNo = infoPurchaseMaster.VoucherNo;
-                                infoStockPosting.VoucherTypeId = infoPurchaseMaster.VoucherTypeId;
-                                infoStockPosting.AgainstInvoiceNo = "NA";
-                                infoStockPosting.AgainstVoucherNo = "NA";
-                                infoStockPosting.AgainstVoucherTypeId = 0;
+                                infoStockPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
+                                infoStockPosting.voucherNo = infoPurchaseMaster.voucherNo;
+                                infoStockPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
+                                infoStockPosting.againstInvoiceNo = "NA";
+                                infoStockPosting.againstVoucherNo = "NA";
+                                infoStockPosting.againstVoucherTypeId = 0;
                             }
-                            else if (infoPurchaseDetails.ReceiptDetailsId != 0)
+                            else if (infoPurchaseDetails.receiptDetailsId != 0)
                             {
-                                infoStockPosting.InvoiceNo = infoPurchaseMaster.InvoiceNo;
-                                infoStockPosting.VoucherNo = infoPurchaseMaster.VoucherNo;
-                                infoStockPosting.VoucherTypeId = infoPurchaseMaster.VoucherTypeId;
-                                infoStockPosting.AgainstInvoiceNo = "NA";
-                                infoStockPosting.AgainstVoucherNo = "NA";
-                                infoStockPosting.AgainstVoucherTypeId = 0;
+                                infoStockPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
+                                infoStockPosting.voucherNo = infoPurchaseMaster.voucherNo;
+                                infoStockPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
+                                infoStockPosting.againstInvoiceNo = "NA";
+                                infoStockPosting.againstVoucherNo = "NA";
+                                infoStockPosting.againstVoucherTypeId = 0;
                             }
-                            else if (infoPurchaseDetails.OrderDetailsId == 0 && infoPurchaseDetails.ReceiptDetailsId == 0)
+                            else if (infoPurchaseDetails.orderDetailsId == 0 && infoPurchaseDetails.receiptDetailsId == 0)
                             {
-                                infoStockPosting.InvoiceNo = infoPurchaseMaster.InvoiceNo;
-                                infoStockPosting.VoucherNo = infoPurchaseMaster.VoucherNo;
-                                infoStockPosting.VoucherTypeId = infoPurchaseMaster.VoucherTypeId;
-                                infoStockPosting.AgainstInvoiceNo = "NA";
-                                infoStockPosting.AgainstVoucherNo = "NA";
-                                infoStockPosting.AgainstVoucherTypeId = 0;
+                                infoStockPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
+                                infoStockPosting.voucherNo = infoPurchaseMaster.voucherNo;
+                                infoStockPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
+                                infoStockPosting.againstInvoiceNo = "NA";
+                                infoStockPosting.againstVoucherNo = "NA";
+                                infoStockPosting.againstVoucherTypeId = 0;
                             }
-                            infoStockPosting.Extra1 = string.Empty;
-                            infoStockPosting.Extra2 = string.Empty;
-                            infoStockPosting.ExtraDate = Convert.ToDateTime(DateTime.Today);
                             spStockPosting.StockPostingAdd(infoStockPosting);
-                            if (infoPurchaseDetails.ReceiptDetailsId != 0)
+                            if (infoPurchaseDetails.receiptDetailsId != 0)
                             {
-                                infoStockPosting.InvoiceNo = infoMaterialReceiptMaster.InvoiceNo;
-                                infoStockPosting.VoucherNo = infoMaterialReceiptMaster.VoucherNo;
-                                infoStockPosting.VoucherTypeId = infoMaterialReceiptMaster.VoucherTypeId;
-                                infoStockPosting.AgainstInvoiceNo = infoPurchaseMaster.InvoiceNo;
-                                infoStockPosting.AgainstVoucherNo = infoPurchaseMaster.VoucherNo;
-                                infoStockPosting.AgainstVoucherTypeId = infoPurchaseMaster.VoucherTypeId;
-                                infoStockPosting.InwardQty = 0;
-                                infoStockPosting.OutwardQty = infoPurchaseDetails.Qty;/// spUnitConvertion.UnitConversionRateByUnitConversionId(infoPurchaseDetails.UnitConversionId);
+                                infoStockPosting.invoiceNo = infoMaterialReceiptMaster.invoiceNo;
+                                infoStockPosting.voucherNo = infoMaterialReceiptMaster.voucherNo;
+                                infoStockPosting.voucherTypeId = infoMaterialReceiptMaster.voucherTypeId;
+                                infoStockPosting.againstInvoiceNo = infoPurchaseMaster.invoiceNo;
+                                infoStockPosting.againstVoucherNo = infoPurchaseMaster.voucherNo;
+                                infoStockPosting.againstVoucherTypeId = infoPurchaseMaster.voucherTypeId;
+                                infoStockPosting.inwardQty = 0;
+                                infoStockPosting.outwardQty = infoPurchaseDetails.qty;/// spUnitConvertion.UnitConversionRateByUnitConversionId(infoPurchaseDetails.UnitConversionId);
                                 spStockPosting.StockPostingAdd(infoStockPosting);
                             }
                         }
                     }
                 }
                 /*-----------------------------------------Ledger Posting----------------------------------------------------*/
-                infoLedgerPosting.Credit = Convert.ToDecimal(txtGrandTotal.Text) * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
-                infoLedgerPosting.Debit = 0;
-                infoLedgerPosting.Date = Convert.ToDateTime(PublicVariables._dtCurrentDate);
-                infoLedgerPosting.DetailsId = 0;
-                infoLedgerPosting.InvoiceNo = infoPurchaseMaster.InvoiceNo;
-                infoLedgerPosting.LedgerId = infoPurchaseMaster.LedgerId;
-                infoLedgerPosting.VoucherNo = infoPurchaseMaster.VoucherNo;
-                infoLedgerPosting.VoucherTypeId = infoPurchaseMaster.VoucherTypeId;
-                infoLedgerPosting.YearId = PublicVariables._decCurrentFinancialYearId;
-                infoLedgerPosting.ChequeDate = DateTime.Now;
-                infoLedgerPosting.ChequeNo = string.Empty;
-                infoLedgerPosting.Extra1 = string.Empty;
-                infoLedgerPosting.Extra2 = string.Empty;
-                infoLedgerPosting.ExtraDate = DateTime.Now;
+                infoLedgerPosting.credit = Convert.ToDecimal(txtGrandTotal.Text) * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
+                infoLedgerPosting.debit = 0;
+                infoLedgerPosting.date = Convert.ToDateTime(DateTime.Now);
+                infoLedgerPosting.detailsId = 0;
+                infoLedgerPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
+                infoLedgerPosting.ledgerId = infoPurchaseMaster.ledgerId;
+                infoLedgerPosting.voucherNo = infoPurchaseMaster.voucherNo;
+                infoLedgerPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
+                infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
+                infoLedgerPosting.chequeDate = DateTime.Now;
+                infoLedgerPosting.chequeNo = string.Empty;
                 spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                 decimal decBilldiscount = Convert.ToDecimal(txtBillDiscount.Text.ToString());
                 if (decBilldiscount > 0)
                 {
-                    infoLedgerPosting.Credit = decBilldiscount * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
-                    infoLedgerPosting.Debit = 0;
-                    infoLedgerPosting.Date = Convert.ToDateTime(PublicVariables._dtCurrentDate);
-                    infoLedgerPosting.DetailsId = 0;
-                    infoLedgerPosting.InvoiceNo = infoPurchaseMaster.InvoiceNo;
-                    infoLedgerPosting.LedgerId = 9;//ledger id of discount received
-                    infoLedgerPosting.VoucherNo = infoPurchaseMaster.VoucherNo;
-                    infoLedgerPosting.VoucherTypeId = infoPurchaseMaster.VoucherTypeId;
-                    infoLedgerPosting.YearId = PublicVariables._decCurrentFinancialYearId;
-                    infoLedgerPosting.ChequeDate = DateTime.Now;
-                    infoLedgerPosting.ChequeNo = string.Empty;
-                    infoLedgerPosting.Extra1 = string.Empty;
-                    infoLedgerPosting.Extra2 = string.Empty;
-                    infoLedgerPosting.ExtraDate = DateTime.Now;
+                    infoLedgerPosting.credit = decBilldiscount * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
+                    infoLedgerPosting.debit = 0;
+                    infoLedgerPosting.date = Convert.ToDateTime(DateTime.Now);
+                    infoLedgerPosting.detailsId = 0;
+                    infoLedgerPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
+                    infoLedgerPosting.ledgerId = 9;//ledger id of discount received
+                    infoLedgerPosting.voucherNo = infoPurchaseMaster.voucherNo;
+                    infoLedgerPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
+                    infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
+                    infoLedgerPosting.chequeDate = DateTime.Now;
+                    infoLedgerPosting.chequeNo = string.Empty;
                     spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                 }
-                infoLedgerPosting.Credit = 0;
-                infoLedgerPosting.Debit = TotalNetAmount(); //* spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
-                infoLedgerPosting.Date = Convert.ToDateTime(PublicVariables._dtCurrentDate);
-                infoLedgerPosting.DetailsId = 0;
-                infoLedgerPosting.InvoiceNo = infoPurchaseMaster.InvoiceNo;
-                infoLedgerPosting.LedgerId = infoPurchaseMaster.PurchaseAccount;//ledger posting of purchase account
-                infoLedgerPosting.VoucherNo = infoPurchaseMaster.VoucherNo;
-                infoLedgerPosting.VoucherTypeId = infoPurchaseMaster.VoucherTypeId;
-                infoLedgerPosting.YearId = PublicVariables._decCurrentFinancialYearId;
-                infoLedgerPosting.ChequeDate = DateTime.Now;
-                infoLedgerPosting.ChequeNo = string.Empty;
-                infoLedgerPosting.Extra1 = string.Empty;
-                infoLedgerPosting.Extra2 = string.Empty;
-                infoLedgerPosting.ExtraDate = DateTime.Now;
+                infoLedgerPosting.credit = 0;
+                infoLedgerPosting.debit = TotalNetAmount(); //* spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
+                infoLedgerPosting.date = Convert.ToDateTime(DateTime.Now);
+                infoLedgerPosting.detailsId = 0;
+                infoLedgerPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
+                infoLedgerPosting.ledgerId = infoPurchaseMaster.purchaseAccount;//ledger posting of purchase account
+                infoLedgerPosting.voucherNo = infoPurchaseMaster.voucherNo;
+                infoLedgerPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
+                infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
+                infoLedgerPosting.chequeDate = DateTime.Now;
+                infoLedgerPosting.chequeNo = string.Empty;
                 spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                 foreach (DataGridViewRow dgvrow in dgvAdditionalCost.Rows)
                 {
@@ -1894,30 +1872,24 @@ namespace Open_Miracle
                                 if (dgvrow.Cells["dgvtxtAdditionalCostAmount"].Value.ToString() != string.Empty)
                                 {
                                     /*-----------------------------------------Additional Cost Add----------------------------------------------------*/
-                                    infoAdditionalCost.Credit = 0;
-                                    infoAdditionalCost.Debit = Convert.ToDecimal(dgvrow.Cells["dgvtxtAdditionalCostAmount"].Value.ToString());
-                                    infoAdditionalCost.LedgerId = Convert.ToDecimal(dgvrow.Cells["dgvcmbLedger"].Value.ToString());
-                                    infoAdditionalCost.VoucherNo = infoPurchaseMaster.VoucherNo;
-                                    infoAdditionalCost.VoucherTypeId = infoPurchaseMaster.VoucherTypeId;
-                                    infoAdditionalCost.Extra1 = string.Empty;
-                                    infoAdditionalCost.Extra2 = string.Empty;
-                                    infoAdditionalCost.ExtraDate = DateTime.Now;
+                                    infoAdditionalCost.credit = 0;
+                                    infoAdditionalCost.debit = Convert.ToDecimal(dgvrow.Cells["dgvtxtAdditionalCostAmount"].Value.ToString());
+                                    infoAdditionalCost.ledgerId = Convert.ToDecimal(dgvrow.Cells["dgvcmbLedger"].Value.ToString());
+                                    infoAdditionalCost.voucherNo = infoPurchaseMaster.voucherNo;
+                                    infoAdditionalCost.voucherTypeId = infoPurchaseMaster.voucherTypeId;
                                     spAdditionalCost.AdditionalCostAdd(infoAdditionalCost);
                                     /*-----------------------------------------Additional Cost Ledger Posting----------------------------------------------------*/
-                                    infoLedgerPosting.Credit = 0;
-                                    infoLedgerPosting.Debit = infoAdditionalCost.Debit * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
-                                    infoLedgerPosting.Date = Convert.ToDateTime(PublicVariables._dtCurrentDate);
-                                    infoLedgerPosting.DetailsId = 0;
-                                    infoLedgerPosting.InvoiceNo = infoPurchaseMaster.InvoiceNo;
-                                    infoLedgerPosting.LedgerId = infoAdditionalCost.LedgerId;
-                                    infoLedgerPosting.VoucherNo = infoPurchaseMaster.VoucherNo;
-                                    infoLedgerPosting.VoucherTypeId = infoPurchaseMaster.VoucherTypeId;
-                                    infoLedgerPosting.YearId = PublicVariables._decCurrentFinancialYearId;
-                                    infoLedgerPosting.ChequeDate = DateTime.Now;
-                                    infoLedgerPosting.ChequeNo = string.Empty;
-                                    infoLedgerPosting.Extra1 = string.Empty;
-                                    infoLedgerPosting.Extra2 = string.Empty;
-                                    infoLedgerPosting.ExtraDate = DateTime.Now;
+                                    infoLedgerPosting.credit = 0;
+                                    infoLedgerPosting.debit = infoAdditionalCost.debit * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
+                                    infoLedgerPosting.date = Convert.ToDateTime(DateTime.Now);
+                                    infoLedgerPosting.detailsId = 0;
+                                    infoLedgerPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
+                                    infoLedgerPosting.ledgerId = infoAdditionalCost.ledgerId;
+                                    infoLedgerPosting.voucherNo = infoPurchaseMaster.voucherNo;
+                                    infoLedgerPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
+                                    infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
+                                    infoLedgerPosting.chequeDate = DateTime.Now;
+                                    infoLedgerPosting.chequeNo = string.Empty;
                                     spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                                 }
                             }
@@ -1933,57 +1905,48 @@ namespace Open_Miracle
                             if (dgvrow.Cells["dgvtxtTaxId"].Value.ToString() != string.Empty)
                             {
                                 /*-----------------------------------------PurchaseBillTax Add----------------------------------------------------*/
-                                infoPurchaseBillTax.PurchaseMasterId = decPurchaseMasterId;
-                                infoPurchaseBillTax.TaxAmount = Convert.ToDecimal(dgvrow.Cells["dgvtxtTotalTax"].Value.ToString());
-                                infoPurchaseBillTax.TaxId = Convert.ToDecimal(dgvrow.Cells["dgvtxtTaxId"].Value.ToString());
-                                infoPurchaseBillTax.Extra1 = string.Empty;
-                                infoPurchaseBillTax.Extra2 = string.Empty;
-                                infoPurchaseBillTax.ExtraDate = DateTime.Now;
+                                infoPurchaseBillTax.purchaseMasterId = decPurchaseMasterId;
+                                infoPurchaseBillTax.taxAmount = Convert.ToDecimal(dgvrow.Cells["dgvtxtTotalTax"].Value.ToString());
+                                infoPurchaseBillTax.taxId = Convert.ToDecimal(dgvrow.Cells["dgvtxtTaxId"].Value.ToString());
                                 spPurchaseBillTax.PurchaseBillTaxAdd(infoPurchaseBillTax);
                                 /*-----------------------------------------Tax Ledger Posting----------------------------------------------------*/
-                                infoLedgerPosting.Credit = 0;
-                                infoLedgerPosting.Debit = infoPurchaseBillTax.TaxAmount * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
-                                infoLedgerPosting.Date = Convert.ToDateTime(PublicVariables._dtCurrentDate);
-                                infoLedgerPosting.DetailsId = 0;
-                                infoLedgerPosting.InvoiceNo = infoPurchaseMaster.InvoiceNo;
-                                infoLedgerPosting.LedgerId = Convert.ToDecimal(dgvrow.Cells["dgvtxtLedgerId"].Value.ToString());
-                                infoLedgerPosting.VoucherNo = infoPurchaseMaster.VoucherNo;
-                                infoLedgerPosting.VoucherTypeId = infoPurchaseMaster.VoucherTypeId;
-                                infoLedgerPosting.YearId = PublicVariables._decCurrentFinancialYearId;
-                                infoLedgerPosting.ChequeDate = DateTime.Now;
-                                infoLedgerPosting.ChequeNo = string.Empty;
-                                infoLedgerPosting.Extra1 = string.Empty;
-                                infoLedgerPosting.Extra2 = string.Empty;
-                                infoLedgerPosting.ExtraDate = DateTime.Now;
+                                infoLedgerPosting.credit = 0;
+                                infoLedgerPosting.debit = infoPurchaseBillTax.taxAmount * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
+                                infoLedgerPosting.date = Convert.ToDateTime(DateTime.Now);
+                                infoLedgerPosting.detailsId = 0;
+                                infoLedgerPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
+                                infoLedgerPosting.ledgerId = Convert.ToDecimal(dgvrow.Cells["dgvtxtLedgerId"].Value.ToString());
+                                infoLedgerPosting.voucherNo = infoPurchaseMaster.voucherNo;
+                                infoLedgerPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
+                                infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
+                                infoLedgerPosting.chequeDate = DateTime.Now;
+                                infoLedgerPosting.chequeNo = string.Empty;
                                 spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                             }
                         }
                     }
                 }
                 /*-----------------------------------------PartyBalance Posting----------------------------------------------------*/
-                infoAccountLedger = spAccountLedger.AccountLedgerView(infoPurchaseMaster.LedgerId);
-                if (infoAccountLedger.BillByBill == true)
+                infoAccountLedger = spAccountLedger.AccountLedgerView(Convert.ToDecimal(infoPurchaseMaster.ledgerId));
+                if (infoAccountLedger.billByBill == true)
                 {
-                    infoPartyBalance.Credit = Convert.ToDecimal(txtGrandTotal.Text);
-                    infoPartyBalance.Debit = 0;
+                    infoPartyBalance.credit = Convert.ToDecimal(txtGrandTotal.Text);
+                    infoPartyBalance.debit = 0;
                     if (txtCreditPeriod.Text != string.Empty)
                     {
-                        infoPartyBalance.CreditPeriod = Convert.ToInt32(txtCreditPeriod.Text);
+                        infoPartyBalance.creditPeriod = Convert.ToInt32(txtCreditPeriod.Text);
                     }
-                    infoPartyBalance.Date = Convert.ToDateTime(txtVoucherDate.Text);
-                    infoPartyBalance.ExchangeRateId = infoPurchaseMaster.ExchangeRateId;
-                    infoPartyBalance.FinancialYearId = PublicVariables._decCurrentFinancialYearId;
-                    infoPartyBalance.LedgerId = infoPurchaseMaster.LedgerId;
-                    infoPartyBalance.ReferenceType = "NEW";
-                    infoPartyBalance.InvoiceNo = infoPurchaseMaster.InvoiceNo;
-                    infoPartyBalance.VoucherNo = infoPurchaseMaster.VoucherNo;
-                    infoPartyBalance.VoucherTypeId = infoPurchaseMaster.VoucherTypeId;
-                    infoPartyBalance.AgainstInvoiceNo = "NA";
-                    infoPartyBalance.AgainstVoucherNo = "NA";
-                    infoPartyBalance.AgainstVoucherTypeId = 0;
-                    infoPartyBalance.Extra1 = string.Empty;
-                    infoPartyBalance.Extra2 = string.Empty;
-                    infoPartyBalance.ExtraDate = DateTime.Now;
+                    infoPartyBalance.date = Convert.ToDateTime(txtVoucherDate.Text);
+                    infoPartyBalance.exchangeRateId = infoPurchaseMaster.exchangeRateId;
+                    infoPartyBalance.financialYearId = Utils.getManagement().CurrentFinancialYear;
+                    infoPartyBalance.ledgerId = infoPurchaseMaster.ledgerId;
+                    infoPartyBalance.referenceType = "NEW";
+                    infoPartyBalance.invoiceNo = infoPurchaseMaster.invoiceNo;
+                    infoPartyBalance.voucherNo = infoPurchaseMaster.voucherNo;
+                    infoPartyBalance.voucherTypeId = infoPurchaseMaster.voucherTypeId;
+                    infoPartyBalance.againstInvoiceNo = "NA";
+                    infoPartyBalance.againstVoucherNo = "NA";
+                    infoPartyBalance.againstVoucherTypeId = 0;
                     spPartyBalance.PartyBalanceAdd(infoPartyBalance);
                 }
                 Messages.SavedMessage();
@@ -2010,95 +1973,92 @@ namespace Open_Miracle
         /// </summary>
         public void Edit()
         {
-            PurchaseMasterInfo infoPurchaseMaster = new PurchaseMasterInfo();
+            PurchaseMaster infoPurchaseMaster = new PurchaseMaster();
             PurchaseMasterSP spPurchaseMaster = new PurchaseMasterSP();
-            PurchaseDetailsInfo infoPurchaseDetails = new PurchaseDetailsInfo();
+            PurchaseDetail infoPurchaseDetails = new PurchaseDetail();
             PurchaseDetailsSP spPurchaseDetails = new PurchaseDetailsSP();
-            MaterialReceiptMasterInfo infoMaterialReceiptMaster = new MaterialReceiptMasterInfo();
+            MaterialReceiptMaster infoMaterialReceiptMaster = new MaterialReceiptMaster();
             MaterialReceiptMasterSP spMaterialReceiptMaster = new MaterialReceiptMasterSP();
-            PurchaseOrderMasterInfo infoPurchaseOrderMaster = new PurchaseOrderMasterInfo();
+            PurchaseOrder infoPurchaseOrderMaster = new PurchaseOrder();
             PurchaseOrderMasterSP spPurchaseOrderMaster = new PurchaseOrderMasterSP();
-            StockPostingInfo infoStockPosting = new StockPostingInfo();
+            StockPosting infoStockPosting = new StockPosting();
             StockPostingSP spStockPosting = new StockPostingSP();
-            LedgerPostingInfo infoLedgerPosting = new LedgerPostingInfo();
+            LedgerPosting infoLedgerPosting = new LedgerPosting();
             LedgerPostingSP spLedgerPosting = new LedgerPostingSP();
-            PartyBalanceInfo infoPartyBalance = new PartyBalanceInfo();
+            PartyBalance infoPartyBalance = new PartyBalance();
             PartyBalanceSP spPartyBalance = new PartyBalanceSP();
-            AdditionalCostInfo infoAdditionalCost = new AdditionalCostInfo();
+            AdditionalCost infoAdditionalCost = new AdditionalCost();
             AdditionalCostSP spAdditionalCost = new AdditionalCostSP();
-            PurchaseBillTaxInfo infoPurchaseBillTax = new PurchaseBillTaxInfo();
+            PurchaseBillTax infoPurchaseBillTax = new PurchaseBillTax();
             PurchaseBillTaxSP spPurchaseBillTax = new PurchaseBillTaxSP();
-            AccountLedgerInfo infoAccountLedger = new AccountLedgerInfo();
+            AccountLedger infoAccountLedger = new AccountLedger();
             AccountLedgerSP spAccountLedger = new AccountLedgerSP();
             UnitConvertionSP spUnitConvertion = new UnitConvertionSP();
             ExchangeRateSP spExchangeRate = new ExchangeRateSP();
             /*---------------------------------Deleting previous stock posting, Ledger posting, partybalanceposting---------------------------------------*/
             infoPurchaseMaster = spPurchaseMaster.PurchaseMasterView(decPurchaseMasterId);
-            if (infoPurchaseMaster.MaterialReceiptMasterId != 0)
+            if (infoPurchaseMaster.materialReceiptMasterId != 0)
             {
-                infoMaterialReceiptMaster = spMaterialReceiptMaster.MaterialReceiptMasterView(infoPurchaseMaster.MaterialReceiptMasterId);
+                infoMaterialReceiptMaster = spMaterialReceiptMaster.MaterialReceiptMasterView(Convert.ToDecimal(infoPurchaseMaster.materialReceiptMasterId));
                 spStockPosting.StockPostingDeleteForSalesInvoiceAgainstDeliveryNote
-                    (infoPurchaseMaster.VoucherTypeId, infoPurchaseMaster.VoucherNo,
-                    infoMaterialReceiptMaster.VoucherNo, infoMaterialReceiptMaster.VoucherTypeId);
+                    (Convert.ToDecimal(infoPurchaseMaster.voucherTypeId), infoPurchaseMaster.voucherNo,
+                    infoMaterialReceiptMaster.voucherNo, Convert.ToDecimal(infoMaterialReceiptMaster.voucherTypeId));
             }
             spStockPosting.StockPostingDeleteByagainstVoucherTypeIdAndagainstVoucherNoAndVoucherNoAndVoucherType
-                    (0, "NA", infoPurchaseMaster.VoucherNo, infoPurchaseMaster.VoucherTypeId);
+                    (0, "NA", infoPurchaseMaster.voucherNo, Convert.ToDecimal(infoPurchaseMaster.voucherTypeId));
             try
             {
                 RemoveDelete();
                 /*-----------------------------------------Purchase Master Edit----------------------------------------------------*/
-                infoPurchaseMaster.AdditionalCost = Convert.ToDecimal(lblAdditionalCostAmount.Text);
-                infoPurchaseMaster.BillDiscount = Convert.ToDecimal(txtBillDiscount.Text);
-                infoPurchaseMaster.CreditPeriod = txtCreditPeriod.Text;
-                infoPurchaseMaster.Date = Convert.ToDateTime(txtVoucherDate.Text);
-                infoPurchaseMaster.ExchangeRateId = Convert.ToDecimal(cmbCurrency.SelectedValue.ToString());
-                infoPurchaseMaster.FinancialYearId = PublicVariables._decCurrentFinancialYearId;
-                infoPurchaseMaster.GrandTotal = Convert.ToDecimal(txtGrandTotal.Text);
-                infoPurchaseMaster.InvoiceNo = txtVoucherNo.Text;
+                infoPurchaseMaster.additionalCost = Convert.ToDecimal(lblAdditionalCostAmount.Text);
+                infoPurchaseMaster.billDiscount = Convert.ToDecimal(txtBillDiscount.Text);
+                infoPurchaseMaster.creditPeriod = txtCreditPeriod.Text;
+                infoPurchaseMaster.date = Convert.ToDateTime(txtVoucherDate.Text);
+                infoPurchaseMaster.exchangeRateId = Convert.ToInt32(cmbCurrency.SelectedValue.ToString());
+                infoPurchaseMaster.financialYearId = Utils.getManagement().CurrentFinancialYear;
+                infoPurchaseMaster.grandTotal = Convert.ToDecimal(txtGrandTotal.Text);
+                infoPurchaseMaster.invoiceNo = txtVoucherNo.Text;
                 if (isAutomatic)
                 {
-                    infoPurchaseMaster.SuffixPrefixId = decPurchaseInvoiceSuffixPrefixId;
-                    infoPurchaseMaster.VoucherNo = strVoucherNo;
+                    infoPurchaseMaster.suffixPrefixId = decPurchaseInvoiceSuffixPrefixId;
+                    infoPurchaseMaster.voucherNo = strVoucherNo;
                 }
                 else
                 {
-                    infoPurchaseMaster.SuffixPrefixId = 0;
-                    infoPurchaseMaster.VoucherNo = strVoucherNo;
+                    infoPurchaseMaster.suffixPrefixId = 0;
+                    infoPurchaseMaster.voucherNo = strVoucherNo;
                 }
-                infoPurchaseMaster.LedgerId = Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString());
-                infoPurchaseMaster.LrNo = txtLRNo.Text;
+                infoPurchaseMaster.ledgerId = Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString());
+                infoPurchaseMaster.lrNo = txtLRNo.Text;
                 if (cmbPurchaseMode.Text == "Against MaterialReceipt")
                 {
-                    infoPurchaseMaster.MaterialReceiptMasterId = Convert.ToDecimal(cmbOrderNo.SelectedValue.ToString());
+                    infoPurchaseMaster.materialReceiptMasterId = Convert.ToDecimal(cmbOrderNo.SelectedValue.ToString());
                 }
                 else
                 {
-                    infoPurchaseMaster.MaterialReceiptMasterId = 0;
+                    infoPurchaseMaster.materialReceiptMasterId = 0;
                 }
-                infoPurchaseMaster.Narration = txtNarration.Text;
-                infoPurchaseMaster.PurchaseAccount = Convert.ToDecimal(cmbPurchaseAccount.SelectedValue.ToString());
+                infoPurchaseMaster.narration = txtNarration.Text;
+                infoPurchaseMaster.purchaseAccount = Convert.ToDecimal(cmbPurchaseAccount.SelectedValue.ToString());
                 if (cmbPurchaseMode.Text == "Against PurchaseOrder")
                 {
-                    infoPurchaseMaster.PurchaseOrderMasterId = Convert.ToDecimal(cmbOrderNo.SelectedValue.ToString());
+                    infoPurchaseMaster.purchaseOrderMasterId = cmbOrderNo.SelectedValue.ToString();
                 }
                 else
                 {
-                    infoPurchaseMaster.PurchaseOrderMasterId = 0;
+                    infoPurchaseMaster.purchaseOrderMasterId = "0";
                 }
-                infoPurchaseMaster.TotalAmount = Convert.ToDecimal(txtTotalAmount.Text);
-                infoPurchaseMaster.TotalTax = Convert.ToDecimal(lblTaxAmount.Text);
-                infoPurchaseMaster.TransportationCompany = txtTransportationCompany.Text;
-                infoPurchaseMaster.UserId = PublicVariables._decCurrentUserId;
-                infoPurchaseMaster.VendorInvoiceDate = Convert.ToDateTime(txtInvoiceDate.Text);
-                infoPurchaseMaster.VendorInvoiceNo = txtVendorInvoiceNo.Text;
-                infoPurchaseMaster.VoucherTypeId = decPurchaseInvoiceVoucherTypeId;
-                infoPurchaseMaster.Extra1 = string.Empty;
-                infoPurchaseMaster.Extra2 = string.Empty;
-                infoPurchaseMaster.ExtraDate = Convert.ToDateTime(DateTime.Now);
-                infoPurchaseMaster.PurchaseMasterId = decPurchaseMasterId;
+                infoPurchaseMaster.totalAmount = Convert.ToDecimal(txtTotalAmount.Text);
+                infoPurchaseMaster.totalTax = Convert.ToDecimal(lblTaxAmount.Text);
+                infoPurchaseMaster.transportationCompany = txtTransportationCompany.Text;
+                infoPurchaseMaster.userId = Utils.getCurrentUser().WorkerID;
+                infoPurchaseMaster.vendorInvoiceDate = Convert.ToDateTime(txtInvoiceDate.Text);
+                infoPurchaseMaster.vendorInvoiceNo = txtVendorInvoiceNo.Text;
+                infoPurchaseMaster.voucherTypeId = decPurchaseInvoiceVoucherTypeId;
+                infoPurchaseMaster.purchaseMasterId = decPurchaseMasterId;
                 spPurchaseMaster.PurchaseMasterEdit(infoPurchaseMaster);
-                infoPurchaseOrderMaster = spPurchaseOrderMaster.PurchaseOrderMasterView(infoPurchaseMaster.PurchaseOrderMasterId);
-                infoMaterialReceiptMaster = spMaterialReceiptMaster.MaterialReceiptMasterView(infoPurchaseMaster.MaterialReceiptMasterId);
+                infoPurchaseOrderMaster = spPurchaseOrderMaster.PurchaseOrderMasterView(infoPurchaseMaster.purchaseOrderMasterId);
+                infoMaterialReceiptMaster = spMaterialReceiptMaster.MaterialReceiptMasterView(Convert.ToDecimal(infoPurchaseMaster.materialReceiptMasterId));
                 spLedgerPosting.LedgerPostDelete(strVoucherNo, decPurchaseInvoiceVoucherTypeId);
                 spAccountLedger.PartyBalanceDeleteByVoucherTypeVoucherNoAndReferenceType(strVoucherNo, decPurchaseInvoiceVoucherTypeId);
                 foreach (DataGridViewRow dgvrow in dgvProductDetails.Rows)
@@ -2108,27 +2068,24 @@ namespace Open_Miracle
                         if (dgvrow.Cells["dgvtxtProductId"].Value.ToString() != string.Empty)
                         {
                             /*-----------------------------------------Purchase Details Add----------------------------------------------------*/
-                            infoPurchaseDetails.Amount = Convert.ToDecimal(dgvrow.Cells["dgvtxtAmount"].Value.ToString());
-                            infoPurchaseDetails.BatchId = Convert.ToDecimal(dgvrow.Cells["dgvcmbBatch"].Value.ToString());
-                            infoPurchaseDetails.Discount = Convert.ToDecimal(dgvrow.Cells["dgvtxtDiscount"].Value.ToString());
-                            infoPurchaseDetails.GodownId = Convert.ToDecimal(dgvrow.Cells["dgvcmbGodown"].Value.ToString());
-                            infoPurchaseDetails.GrossAmount = Convert.ToDecimal(dgvrow.Cells["dgvtxtGrossValue"].Value.ToString());
-                            infoPurchaseDetails.NetAmount = Convert.ToDecimal(dgvrow.Cells["dgvtxtNetValue"].Value.ToString());
-                            infoPurchaseDetails.OrderDetailsId = Convert.ToDecimal(dgvrow.Cells["dgvtxtPurchaseOrderDetailsId"].Value.ToString());
-                            infoPurchaseDetails.ProductId = Convert.ToDecimal(dgvrow.Cells["dgvtxtProductId"].Value.ToString());
-                            infoPurchaseDetails.PurchaseMasterId = decPurchaseMasterId;
-                            infoPurchaseDetails.Qty = Convert.ToDecimal(dgvrow.Cells["dgvtxtQuantity"].Value.ToString());
-                            infoPurchaseDetails.RackId = Convert.ToDecimal(dgvrow.Cells["dgvcmbRack"].Value.ToString());
-                            infoPurchaseDetails.Rate = Convert.ToDecimal(dgvrow.Cells["dgvtxtRate"].Value.ToString());
-                            infoPurchaseDetails.ReceiptDetailsId = Convert.ToDecimal(dgvrow.Cells["dgvtxtMaterialReceiptDetailsId"].Value.ToString());
-                            infoPurchaseDetails.SlNo = Convert.ToInt32(dgvrow.Cells["dgvtxtSlNo"].Value.ToString());
-                            infoPurchaseDetails.TaxAmount = Convert.ToDecimal(dgvrow.Cells["dgvtxtTaxAmount"].Value.ToString());
-                            infoPurchaseDetails.TaxId = Convert.ToDecimal(dgvrow.Cells["dgvcmbTax"].Value.ToString());
-                            infoPurchaseDetails.UnitConversionId = Convert.ToDecimal(dgvrow.Cells["dgvtxtUnitConversionId"].Value.ToString());
-                            infoPurchaseDetails.UnitId = Convert.ToDecimal(dgvrow.Cells["dgvcmbUnit"].Value.ToString());
-                            infoPurchaseDetails.Extra1 = string.Empty;
-                            infoPurchaseDetails.Extra2 = string.Empty;
-                            infoPurchaseDetails.ExtraDate = Convert.ToDateTime(DateTime.Today);
+                            infoPurchaseDetails.amount = Convert.ToDecimal(dgvrow.Cells["dgvtxtAmount"].Value.ToString());
+                            infoPurchaseDetails.batchId = Convert.ToDecimal(dgvrow.Cells["dgvcmbBatch"].Value.ToString());
+                            infoPurchaseDetails.discount = Convert.ToDecimal(dgvrow.Cells["dgvtxtDiscount"].Value.ToString());
+                            infoPurchaseDetails.godownId = Convert.ToDecimal(dgvrow.Cells["dgvcmbGodown"].Value.ToString());
+                            infoPurchaseDetails.grossAmount = Convert.ToDecimal(dgvrow.Cells["dgvtxtGrossValue"].Value.ToString());
+                            infoPurchaseDetails.netAmount = Convert.ToDecimal(dgvrow.Cells["dgvtxtNetValue"].Value.ToString());
+                            infoPurchaseDetails.orderDetailsId = Convert.ToInt32(dgvrow.Cells["dgvtxtPurchaseOrderDetailsId"].Value.ToString());
+                            infoPurchaseDetails.productId = Convert.ToDecimal(dgvrow.Cells["dgvtxtProductId"].Value.ToString());
+                            infoPurchaseDetails.purchaseMasterId = decPurchaseMasterId;
+                            infoPurchaseDetails.qty = Convert.ToDecimal(dgvrow.Cells["dgvtxtQuantity"].Value.ToString());
+                            infoPurchaseDetails.rackId = Convert.ToDecimal(dgvrow.Cells["dgvcmbRack"].Value.ToString());
+                            infoPurchaseDetails.rate = Convert.ToDecimal(dgvrow.Cells["dgvtxtRate"].Value.ToString());
+                            infoPurchaseDetails.receiptDetailsId = Convert.ToDecimal(dgvrow.Cells["dgvtxtMaterialReceiptDetailsId"].Value.ToString());
+                            infoPurchaseDetails.slNo = Convert.ToInt32(dgvrow.Cells["dgvtxtSlNo"].Value.ToString());
+                            infoPurchaseDetails.taxAmount = Convert.ToDecimal(dgvrow.Cells["dgvtxtTaxAmount"].Value.ToString());
+                            infoPurchaseDetails.taxId = Convert.ToInt32(dgvrow.Cells["dgvcmbTax"].Value.ToString());
+                            infoPurchaseDetails.unitConversionId = Convert.ToDecimal(dgvrow.Cells["dgvtxtUnitConversionId"].Value.ToString());
+                            infoPurchaseDetails.unitId = Convert.ToDecimal(dgvrow.Cells["dgvcmbUnit"].Value.ToString());
                             if (dgvrow.Cells["dgvtxtPurchaseDetailsId"].Value != null)
                             {
                                 if (dgvrow.Cells["dgvtxtPurchaseDetailsId"].Value.ToString() == "0" || dgvrow.Cells["dgvtxtPurchaseDetailsId"].Value.ToString() == string.Empty)
@@ -2137,7 +2094,7 @@ namespace Open_Miracle
                                 }
                                 else
                                 {
-                                    infoPurchaseDetails.PurchaseDetailsId = Convert.ToDecimal(dgvrow.Cells["dgvtxtPurchaseDetailsId"].Value.ToString());
+                                    infoPurchaseDetails.purchaseDetailsId = Convert.ToDecimal(dgvrow.Cells["dgvtxtPurchaseDetailsId"].Value.ToString());
                                     spPurchaseDetails.PurchaseDetailsEdit(infoPurchaseDetails);
                                 }
                             }
@@ -2145,111 +2102,100 @@ namespace Open_Miracle
                             {
                                 spPurchaseDetails.PurchaseDetailsAdd(infoPurchaseDetails);
                             }
-                            infoStockPosting.BatchId = infoPurchaseDetails.BatchId;
-                            infoStockPosting.Date = infoPurchaseMaster.Date;
-                            infoStockPosting.FinancialYearId = PublicVariables._decCurrentFinancialYearId;
-                            infoStockPosting.GodownId = infoPurchaseDetails.GodownId;
-                            infoStockPosting.InwardQty = infoPurchaseDetails.Qty; /// spUnitConvertion.UnitConversionRateByUnitConversionId(infoPurchaseDetails.UnitConversionId);
-                            infoStockPosting.OutwardQty = 0;
-                            infoStockPosting.ProductId = infoPurchaseDetails.ProductId;
-                            infoStockPosting.RackId = infoPurchaseDetails.RackId;
-                            infoStockPosting.Rate = infoPurchaseDetails.Rate;
-                            infoStockPosting.UnitId = infoPurchaseDetails.UnitId;
-                            if (infoPurchaseDetails.OrderDetailsId != 0)
+                            infoStockPosting.batchId = infoPurchaseDetails.batchId;
+                            infoStockPosting.date = infoPurchaseMaster.date;
+                            infoStockPosting.financialYearId = Utils.getManagement().CurrentFinancialYear;
+                            infoStockPosting.godownId = infoPurchaseDetails.godownId;
+                            infoStockPosting.inwardQty = infoPurchaseDetails.qty; /// spUnitConvertion.UnitConversionRateByUnitConversionId(infoPurchaseDetails.UnitConversionId);
+                            infoStockPosting.outwardQty = 0;
+                            infoStockPosting.productId = infoPurchaseDetails.productId;
+                            infoStockPosting.rackId = infoPurchaseDetails.rackId;
+                            infoStockPosting.rate = infoPurchaseDetails.rate;
+                            infoStockPosting.unitId = infoPurchaseDetails.unitId;
+                            if (infoPurchaseDetails.orderDetailsId != 0)
                             {
-                                infoStockPosting.InvoiceNo = infoPurchaseMaster.InvoiceNo;
-                                infoStockPosting.VoucherNo = infoPurchaseMaster.VoucherNo;
-                                infoStockPosting.VoucherTypeId = infoPurchaseMaster.VoucherTypeId;
-                                infoStockPosting.AgainstInvoiceNo = "NA";
-                                infoStockPosting.AgainstVoucherNo = "NA";
-                                infoStockPosting.AgainstVoucherTypeId = 0;
+                                infoStockPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
+                                infoStockPosting.voucherNo = infoPurchaseMaster.voucherNo;
+                                infoStockPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
+                                infoStockPosting.againstInvoiceNo = "NA";
+                                infoStockPosting.againstVoucherNo = "NA";
+                                infoStockPosting.againstVoucherTypeId = 0;
                             }
-                            else if (infoPurchaseDetails.ReceiptDetailsId != 0)
+                            else if (infoPurchaseDetails.receiptDetailsId != 0)
                             {
-                                infoStockPosting.InvoiceNo = infoPurchaseMaster.InvoiceNo;
-                                infoStockPosting.VoucherNo = infoPurchaseMaster.VoucherNo;
-                                infoStockPosting.VoucherTypeId = infoPurchaseMaster.VoucherTypeId;
-                                infoStockPosting.AgainstInvoiceNo = "NA";
-                                infoStockPosting.AgainstVoucherNo = "NA";
-                                infoStockPosting.AgainstVoucherTypeId = 0;
+                                infoStockPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
+                                infoStockPosting.voucherNo = infoPurchaseMaster.voucherNo;
+                                infoStockPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
+                                infoStockPosting.againstInvoiceNo = "NA";
+                                infoStockPosting.againstVoucherNo = "NA";
+                                infoStockPosting.againstVoucherTypeId = 0;
                             }
-                            else if (infoPurchaseDetails.OrderDetailsId == 0 && infoPurchaseDetails.ReceiptDetailsId == 0)
+                            else if (infoPurchaseDetails.orderDetailsId == 0 && infoPurchaseDetails.receiptDetailsId == 0)
                             {
-                                infoStockPosting.InvoiceNo = infoPurchaseMaster.InvoiceNo;
-                                infoStockPosting.VoucherNo = infoPurchaseMaster.VoucherNo;
-                                infoStockPosting.VoucherTypeId = infoPurchaseMaster.VoucherTypeId;
-                                infoStockPosting.AgainstInvoiceNo = "NA";
-                                infoStockPosting.AgainstVoucherNo = "NA";
-                                infoStockPosting.AgainstVoucherTypeId = 0;
+                                infoStockPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
+                                infoStockPosting.voucherNo = infoPurchaseMaster.voucherNo;
+                                infoStockPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
+                                infoStockPosting.againstInvoiceNo = "NA";
+                                infoStockPosting.againstVoucherNo = "NA";
+                                infoStockPosting.againstVoucherTypeId = 0;
                             }
-                            infoStockPosting.Extra1 = string.Empty;
-                            infoStockPosting.Extra2 = string.Empty;
-                            infoStockPosting.ExtraDate = Convert.ToDateTime(DateTime.Today);
                             spStockPosting.StockPostingAdd(infoStockPosting);
-                            if (infoPurchaseDetails.ReceiptDetailsId != 0)
+                            if (infoPurchaseDetails.receiptDetailsId != 0)
                             {
-                                infoStockPosting.InvoiceNo = infoMaterialReceiptMaster.InvoiceNo;
-                                infoStockPosting.VoucherNo = infoMaterialReceiptMaster.VoucherNo;
-                                infoStockPosting.VoucherTypeId = infoMaterialReceiptMaster.VoucherTypeId;
-                                infoStockPosting.AgainstInvoiceNo = infoPurchaseMaster.InvoiceNo;
-                                infoStockPosting.AgainstVoucherNo = infoPurchaseMaster.VoucherNo;
-                                infoStockPosting.AgainstVoucherTypeId = infoPurchaseMaster.VoucherTypeId;
-                                infoStockPosting.InwardQty = 0;
-                                infoStockPosting.OutwardQty = infoPurchaseDetails.Qty; /// spUnitConvertion.UnitConversionRateByUnitConversionId(infoPurchaseDetails.UnitConversionId);
+                                infoStockPosting.invoiceNo = infoMaterialReceiptMaster.invoiceNo;
+                                infoStockPosting.voucherNo = infoMaterialReceiptMaster.voucherNo;
+                                infoStockPosting.voucherTypeId = infoMaterialReceiptMaster.voucherTypeId;
+                                infoStockPosting.againstInvoiceNo = infoPurchaseMaster.invoiceNo;
+                                infoStockPosting.againstVoucherNo = infoPurchaseMaster.voucherNo;
+                                infoStockPosting.againstVoucherTypeId = infoPurchaseMaster.voucherTypeId;
+                                infoStockPosting.inwardQty = 0;
+                                infoStockPosting.outwardQty = infoPurchaseDetails.qty; /// spUnitConvertion.UnitConversionRateByUnitConversionId(infoPurchaseDetails.UnitConversionId);
                                 spStockPosting.StockPostingAdd(infoStockPosting);
                             }
                         }
                     }
                 }
                 /*-----------------------------------------Ledger Posting----------------------------------------------------*/
-                infoLedgerPosting.Credit = Convert.ToDecimal(txtGrandTotal.Text) * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
-                infoLedgerPosting.Debit = 0;
-                infoLedgerPosting.Date = Convert.ToDateTime(PublicVariables._dtCurrentDate);
-                infoLedgerPosting.DetailsId = 0;
-                infoLedgerPosting.InvoiceNo = infoPurchaseMaster.InvoiceNo;
-                infoLedgerPosting.LedgerId = infoPurchaseMaster.LedgerId;
-                infoLedgerPosting.VoucherNo = infoPurchaseMaster.VoucherNo;
-                infoLedgerPosting.VoucherTypeId = infoPurchaseMaster.VoucherTypeId;
-                infoLedgerPosting.YearId = PublicVariables._decCurrentFinancialYearId;
-                infoLedgerPosting.ChequeDate = DateTime.Now;
-                infoLedgerPosting.ChequeNo = string.Empty;
-                infoLedgerPosting.Extra1 = string.Empty;
-                infoLedgerPosting.Extra2 = string.Empty;
-                infoLedgerPosting.ExtraDate = DateTime.Now;
+                infoLedgerPosting.credit = Convert.ToDecimal(txtGrandTotal.Text) * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
+                infoLedgerPosting.debit = 0;
+                infoLedgerPosting.date = Convert.ToDateTime(DateTime.Now);
+                infoLedgerPosting.detailsId = 0;
+                infoLedgerPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
+                infoLedgerPosting.ledgerId = infoPurchaseMaster.ledgerId;
+                infoLedgerPosting.voucherNo = infoPurchaseMaster.voucherNo;
+                infoLedgerPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
+                infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
+                infoLedgerPosting.chequeDate = DateTime.Now;
+                infoLedgerPosting.chequeNo = string.Empty;
                 spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                 decimal DecBillDiscount = Convert.ToDecimal(txtBillDiscount.Text.Trim().ToString());
                 if (DecBillDiscount > 0)
                 {
-                    infoLedgerPosting.Credit = DecBillDiscount * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
-                    infoLedgerPosting.Debit = 0;
-                    infoLedgerPosting.Date = Convert.ToDateTime(PublicVariables._dtCurrentDate);
-                    infoLedgerPosting.DetailsId = 0;
-                    infoLedgerPosting.InvoiceNo = infoPurchaseMaster.InvoiceNo;
-                    infoLedgerPosting.LedgerId = 9;//ledger id of discount received ledger
-                    infoLedgerPosting.VoucherNo = infoPurchaseMaster.VoucherNo;
-                    infoLedgerPosting.VoucherTypeId = infoPurchaseMaster.VoucherTypeId;
-                    infoLedgerPosting.YearId = PublicVariables._decCurrentFinancialYearId;
-                    infoLedgerPosting.ChequeDate = DateTime.Now;
-                    infoLedgerPosting.ChequeNo = string.Empty;
-                    infoLedgerPosting.Extra1 = string.Empty;
-                    infoLedgerPosting.Extra2 = string.Empty;
-                    infoLedgerPosting.ExtraDate = DateTime.Now;
+                    infoLedgerPosting.credit = DecBillDiscount * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
+                    infoLedgerPosting.debit = 0;
+                    infoLedgerPosting.date = Convert.ToDateTime(DateTime.Now);
+                    infoLedgerPosting.detailsId = 0;
+                    infoLedgerPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
+                    //TODO Ledger ID vermek yerine Adından ID'ye ulaşmak lazım
+                    infoLedgerPosting.ledgerId = 9;//ledger id of discount received ledger
+                    infoLedgerPosting.voucherNo = infoPurchaseMaster.voucherNo;
+                    infoLedgerPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
+                    infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
+                    infoLedgerPosting.chequeDate = DateTime.Now;
+                    infoLedgerPosting.chequeNo = string.Empty;
                     spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                 }
-                infoLedgerPosting.Credit = 0;
-                infoLedgerPosting.Debit = TotalNetAmount();// * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
-                infoLedgerPosting.Date = Convert.ToDateTime(PublicVariables._dtCurrentDate);
-                infoLedgerPosting.DetailsId = 0;
-                infoLedgerPosting.InvoiceNo = infoPurchaseMaster.InvoiceNo;
-                infoLedgerPosting.LedgerId = infoPurchaseMaster.PurchaseAccount;
-                infoLedgerPosting.VoucherNo = infoPurchaseMaster.VoucherNo;
-                infoLedgerPosting.VoucherTypeId = infoPurchaseMaster.VoucherTypeId;
-                infoLedgerPosting.YearId = PublicVariables._decCurrentFinancialYearId;
-                infoLedgerPosting.ChequeDate = DateTime.Now;
-                infoLedgerPosting.ChequeNo = string.Empty;
-                infoLedgerPosting.Extra1 = string.Empty;
-                infoLedgerPosting.Extra2 = string.Empty;
-                infoLedgerPosting.ExtraDate = DateTime.Now;
+                infoLedgerPosting.credit = 0;
+                infoLedgerPosting.debit = TotalNetAmount();// * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
+                infoLedgerPosting.date = Convert.ToDateTime(DateTime.Now);
+                infoLedgerPosting.detailsId = 0;
+                infoLedgerPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
+                infoLedgerPosting.ledgerId = infoPurchaseMaster.purchaseAccount;
+                infoLedgerPosting.voucherNo = infoPurchaseMaster.voucherNo;
+                infoLedgerPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
+                infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
+                infoLedgerPosting.chequeDate = DateTime.Now;
+                infoLedgerPosting.chequeNo = string.Empty;
                 spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                 foreach (DataGridViewRow dgvrow in dgvAdditionalCost.Rows)
                 {
@@ -2262,19 +2208,16 @@ namespace Open_Miracle
                                 if (dgvrow.Cells["dgvtxtAdditionalCostAmount"].Value.ToString() != string.Empty)
                                 {
                                     /*-----------------------------------------Additional Cost Add----------------------------------------------------*/
-                                    infoAdditionalCost.Credit = 0;
-                                    infoAdditionalCost.Debit = Convert.ToDecimal(dgvrow.Cells["dgvtxtAdditionalCostAmount"].Value.ToString());
-                                    infoAdditionalCost.LedgerId = Convert.ToDecimal(dgvrow.Cells["dgvcmbLedger"].Value.ToString());
-                                    infoAdditionalCost.VoucherNo = infoPurchaseMaster.VoucherNo;
-                                    infoAdditionalCost.VoucherTypeId = infoPurchaseMaster.VoucherTypeId;
-                                    infoAdditionalCost.Extra1 = string.Empty;
-                                    infoAdditionalCost.Extra2 = string.Empty;
-                                    infoAdditionalCost.ExtraDate = DateTime.Now;
+                                    infoAdditionalCost.credit = 0;
+                                    infoAdditionalCost.debit = Convert.ToDecimal(dgvrow.Cells["dgvtxtAdditionalCostAmount"].Value.ToString());
+                                    infoAdditionalCost.ledgerId = Convert.ToDecimal(dgvrow.Cells["dgvcmbLedger"].Value.ToString());
+                                    infoAdditionalCost.voucherNo = infoPurchaseMaster.voucherNo;
+                                    infoAdditionalCost.voucherTypeId = infoPurchaseMaster.voucherTypeId;
                                     if (dgvrow.Cells["dgvtxtAdditionalCostId"].Value != null)
                                     {
                                         if (dgvrow.Cells["dgvtxtAdditionalCostId"].Value.ToString() != string.Empty && dgvrow.Cells["dgvtxtAdditionalCostId"].Value.ToString() != string.Empty)
                                         {
-                                            infoAdditionalCost.AdditionalCostId = Convert.ToDecimal(dgvrow.Cells["dgvtxtAdditionalCostId"].Value.ToString());
+                                            infoAdditionalCost.additionalCostId = Convert.ToDecimal(dgvrow.Cells["dgvtxtAdditionalCostId"].Value.ToString());
                                             spAdditionalCost.AdditionalCostEdit(infoAdditionalCost);
                                         }
                                         else
@@ -2287,20 +2230,17 @@ namespace Open_Miracle
                                         spAdditionalCost.AdditionalCostAdd(infoAdditionalCost);
                                     }
                                     /*-----------------------------------------Additional Cost Ledger Posting----------------------------------------------------*/
-                                    infoLedgerPosting.Credit = 0;
-                                    infoLedgerPosting.Debit = infoAdditionalCost.Debit * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
-                                    infoLedgerPosting.Date = Convert.ToDateTime(PublicVariables._dtCurrentDate);
-                                    infoLedgerPosting.DetailsId = 0;
-                                    infoLedgerPosting.InvoiceNo = infoPurchaseMaster.InvoiceNo;
-                                    infoLedgerPosting.LedgerId = infoAdditionalCost.LedgerId;
-                                    infoLedgerPosting.VoucherNo = infoPurchaseMaster.VoucherNo;
-                                    infoLedgerPosting.VoucherTypeId = infoPurchaseMaster.VoucherTypeId;
-                                    infoLedgerPosting.YearId = PublicVariables._decCurrentFinancialYearId;
-                                    infoLedgerPosting.ChequeDate = DateTime.Now;
-                                    infoLedgerPosting.ChequeNo = string.Empty;
-                                    infoLedgerPosting.Extra1 = string.Empty;
-                                    infoLedgerPosting.Extra2 = string.Empty;
-                                    infoLedgerPosting.ExtraDate = DateTime.Now;
+                                    infoLedgerPosting.credit = 0;
+                                    infoLedgerPosting.debit = infoAdditionalCost.debit * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
+                                    infoLedgerPosting.date = Convert.ToDateTime(DateTime.Now);
+                                    infoLedgerPosting.detailsId = 0;
+                                    infoLedgerPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
+                                    infoLedgerPosting.ledgerId = infoAdditionalCost.ledgerId;
+                                    infoLedgerPosting.voucherNo = infoPurchaseMaster.voucherNo;
+                                    infoLedgerPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
+                                    infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
+                                    infoLedgerPosting.chequeDate = DateTime.Now;
+                                    infoLedgerPosting.chequeNo = string.Empty;
                                     spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                                 }
                             }
@@ -2316,17 +2256,14 @@ namespace Open_Miracle
                             if (dgvrow.Cells["dgvtxtTaxId"].Value.ToString() != string.Empty)
                             {
                                 /*-----------------------------------------PurchaseBillTax Add----------------------------------------------------*/
-                                infoPurchaseBillTax.PurchaseMasterId = decPurchaseMasterId;
-                                infoPurchaseBillTax.TaxAmount = Convert.ToDecimal(dgvrow.Cells["dgvtxtTotalTax"].Value.ToString());
-                                infoPurchaseBillTax.TaxId = Convert.ToDecimal(dgvrow.Cells["dgvtxtTaxId"].Value.ToString());
-                                infoPurchaseBillTax.Extra1 = string.Empty;
-                                infoPurchaseBillTax.Extra2 = string.Empty;
-                                infoPurchaseBillTax.ExtraDate = DateTime.Now;
+                                infoPurchaseBillTax.purchaseMasterId = decPurchaseMasterId;
+                                infoPurchaseBillTax.taxAmount = Convert.ToDecimal(dgvrow.Cells["dgvtxtTotalTax"].Value.ToString());
+                                infoPurchaseBillTax.taxId = Convert.ToDecimal(dgvrow.Cells["dgvtxtTaxId"].Value.ToString());
                                 if (dgvrow.Cells["dgvtxtPurchaseBillTaxId"].Value != null)
                                 {
                                     if (dgvrow.Cells["dgvtxtPurchaseBillTaxId"].Value.ToString() != string.Empty && dgvrow.Cells["dgvtxtPurchaseBillTaxId"].Value.ToString() != "0")
                                     {
-                                        infoPurchaseBillTax.PurchaseBillTaxId = Convert.ToDecimal(dgvrow.Cells["dgvtxtPurchaseBillTaxId"].Value.ToString());
+                                        infoPurchaseBillTax.purchaseBillTaxId = Convert.ToDecimal(dgvrow.Cells["dgvtxtPurchaseBillTaxId"].Value.ToString());
                                         spPurchaseBillTax.PurchaseBillTaxEdit(infoPurchaseBillTax);
                                     }
                                     else
@@ -2339,49 +2276,43 @@ namespace Open_Miracle
                                     spPurchaseBillTax.PurchaseBillTaxAdd(infoPurchaseBillTax);
                                 }
                                 /*-----------------------------------------Tax Ledger Posting----------------------------------------------------*/
-                                infoLedgerPosting.Credit = 0;
-                                infoLedgerPosting.Debit = infoPurchaseBillTax.TaxAmount * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
-                                infoLedgerPosting.Date = Convert.ToDateTime(PublicVariables._dtCurrentDate);
-                                infoLedgerPosting.DetailsId = 0;
-                                infoLedgerPosting.InvoiceNo = infoPurchaseMaster.InvoiceNo;
-                                infoLedgerPosting.LedgerId = Convert.ToDecimal(dgvrow.Cells["dgvtxtLedgerId"].Value.ToString());
-                                infoLedgerPosting.VoucherNo = infoPurchaseMaster.VoucherNo;
-                                infoLedgerPosting.VoucherTypeId = infoPurchaseMaster.VoucherTypeId;
-                                infoLedgerPosting.YearId = PublicVariables._decCurrentFinancialYearId;
-                                infoLedgerPosting.ChequeDate = DateTime.Now;
-                                infoLedgerPosting.ChequeNo = string.Empty;
-                                infoLedgerPosting.Extra1 = string.Empty;
-                                infoLedgerPosting.Extra2 = string.Empty;
-                                infoLedgerPosting.ExtraDate = DateTime.Now;
+                                infoLedgerPosting.credit = 0;
+                                infoLedgerPosting.debit = infoPurchaseBillTax.taxAmount * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
+                                infoLedgerPosting.date = Convert.ToDateTime(DateTime.Now);
+                                infoLedgerPosting.detailsId = 0;
+                                infoLedgerPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
+                                infoLedgerPosting.ledgerId = Convert.ToDecimal(dgvrow.Cells["dgvtxtLedgerId"].Value.ToString());
+                                infoLedgerPosting.voucherNo = infoPurchaseMaster.voucherNo;
+                                infoLedgerPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
+                                infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
+                                infoLedgerPosting.chequeDate = DateTime.Now;
+                                infoLedgerPosting.chequeNo = string.Empty;
                                 spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                             }
                         }
                     }
                 }
                 /*-----------------------------------------PartyBalance Posting----------------------------------------------------*/
-                infoAccountLedger = spAccountLedger.AccountLedgerView(infoPurchaseMaster.LedgerId);
-                if (infoAccountLedger.BillByBill == true)
+                infoAccountLedger = spAccountLedger.AccountLedgerView(Convert.ToDecimal(infoPurchaseMaster.ledgerId));
+                if (infoAccountLedger.billByBill == true)
                 {
-                    infoPartyBalance.Credit = Convert.ToDecimal(txtGrandTotal.Text);
-                    infoPartyBalance.Debit = 0;
+                    infoPartyBalance.credit = Convert.ToDecimal(txtGrandTotal.Text);
+                    infoPartyBalance.debit = 0;
                     if (txtCreditPeriod.Text != string.Empty)
                     {
-                        infoPartyBalance.CreditPeriod = Convert.ToInt32(txtCreditPeriod.Text);
+                        infoPartyBalance.creditPeriod = Convert.ToInt32(txtCreditPeriod.Text);
                     }
-                    infoPartyBalance.Date = Convert.ToDateTime(txtVoucherDate.Text);
-                    infoPartyBalance.ExchangeRateId = infoPurchaseMaster.ExchangeRateId;
-                    infoPartyBalance.FinancialYearId = PublicVariables._decCurrentFinancialYearId;
-                    infoPartyBalance.LedgerId = infoPurchaseMaster.LedgerId;
-                    infoPartyBalance.ReferenceType = "New";
-                    infoPartyBalance.InvoiceNo = infoPurchaseMaster.InvoiceNo;
-                    infoPartyBalance.VoucherNo = infoPurchaseMaster.VoucherNo;
-                    infoPartyBalance.VoucherTypeId = infoPurchaseMaster.VoucherTypeId;
-                    infoPartyBalance.AgainstInvoiceNo = "NA";
-                    infoPartyBalance.AgainstVoucherNo = "NA";
-                    infoPartyBalance.AgainstVoucherTypeId = 0;
-                    infoPartyBalance.Extra1 = string.Empty;
-                    infoPartyBalance.Extra2 = string.Empty;
-                    infoPartyBalance.ExtraDate = DateTime.Now;
+                    infoPartyBalance.date = Convert.ToDateTime(txtVoucherDate.Text);
+                    infoPartyBalance.exchangeRateId = infoPurchaseMaster.exchangeRateId;
+                    infoPartyBalance.financialYearId = Utils.getManagement().CurrentFinancialYear;
+                    infoPartyBalance.ledgerId = infoPurchaseMaster.ledgerId;
+                    infoPartyBalance.referenceType = "New";
+                    infoPartyBalance.invoiceNo = infoPurchaseMaster.invoiceNo;
+                    infoPartyBalance.voucherNo = infoPurchaseMaster.voucherNo;
+                    infoPartyBalance.voucherTypeId = infoPurchaseMaster.voucherTypeId;
+                    infoPartyBalance.againstInvoiceNo = "NA";
+                    infoPartyBalance.againstVoucherNo = "NA";
+                    infoPartyBalance.againstVoucherTypeId = 0;
                     spPartyBalance.PartyBalanceAdd(infoPartyBalance);
                 }
                 Messages.UpdatedMessage();
@@ -2448,23 +2379,23 @@ namespace Open_Miracle
             LedgerPostingSP spLedgerPosting = new LedgerPostingSP();
             PurchaseOrderMasterSP spPurchaseOrderMaster = new PurchaseOrderMasterSP();
             MaterialReceiptMasterSP spMaterialReceiptMaster = new MaterialReceiptMasterSP();
-            PurchaseOrderMasterInfo infoPurchaseOrderMaster = new PurchaseOrderMasterInfo();
-            MaterialReceiptMasterInfo infoMaterialReceiptMaster = new MaterialReceiptMasterInfo();
-            PurchaseMasterInfo infoPurchaseMaster = new PurchaseMasterInfo();
+            PurchaseOrder infoPurchaseOrderMaster = new PurchaseOrder();
+            MaterialReceiptMaster infoMaterialReceiptMaster = new MaterialReceiptMaster();
+            PurchaseMaster infoPurchaseMaster = new PurchaseMaster();
             /*---------------------------------Deleting previous stock posting, Ledger posting, partybalanceposting---------------------------------------*/
             infoPurchaseMaster = spPurchaseMaster.PurchaseMasterView(decPurchaseMasterId);
-            if (infoPurchaseMaster.MaterialReceiptMasterId != 0)
+            if (infoPurchaseMaster.materialReceiptMasterId != 0)
             {
-                infoMaterialReceiptMaster = spMaterialReceiptMaster.MaterialReceiptMasterView(infoPurchaseMaster.MaterialReceiptMasterId);
+                infoMaterialReceiptMaster = spMaterialReceiptMaster.MaterialReceiptMasterView(Convert.ToDecimal(infoPurchaseMaster.materialReceiptMasterId));
                 spStockPosting.StockPostingDeleteForSalesInvoiceAgainstDeliveryNote
-                    (infoPurchaseMaster.VoucherTypeId, infoPurchaseMaster.VoucherNo,
-                    infoMaterialReceiptMaster.VoucherNo, infoMaterialReceiptMaster.VoucherTypeId);
+                    (Convert.ToDecimal(infoPurchaseMaster.voucherTypeId), infoPurchaseMaster.voucherNo,
+                    infoMaterialReceiptMaster.voucherNo, Convert.ToDecimal(infoMaterialReceiptMaster.voucherTypeId));
             }
             spStockPosting.StockPostingDeleteByagainstVoucherTypeIdAndagainstVoucherNoAndVoucherNoAndVoucherType
-                    (0, "NA", infoPurchaseMaster.VoucherNo, infoPurchaseMaster.VoucherTypeId);
+                    (0, "NA", infoPurchaseMaster.voucherNo, Convert.ToDecimal(infoPurchaseMaster.voucherTypeId));
             //-------------------------------------------------
             decimal decPurchaseDetailsId = 0;
-            decimal decPurchaseOrderMasterId = 0;
+            string decPurchaseOrderMasterId = "";
             decimal decMaterialReceiptMasterId = 0;
             decimal decAdditionalCostId = 0;
             decimal decPurchaseBillTaxId = 0;
@@ -2523,7 +2454,7 @@ namespace Open_Miracle
                         }
                         if (cmbPurchaseMode.Text == "Against PurchaseOrder")
                         {
-                            decPurchaseOrderMasterId = Convert.ToDecimal(cmbOrderNo.SelectedValue.ToString());
+                            decPurchaseOrderMasterId = cmbOrderNo.SelectedValue.ToString();
                             infoPurchaseOrderMaster = spPurchaseOrderMaster.PurchaseOrderMasterView(decPurchaseOrderMasterId);
                         }
                         else if (cmbPurchaseMode.Text == "Against MaterialReceipt")
@@ -2532,17 +2463,17 @@ namespace Open_Miracle
                             infoMaterialReceiptMaster = spMaterialReceiptMaster.MaterialReceiptMasterView(decMaterialReceiptMasterId);
                         }
                         spLedgerPosting.LedgerPostDelete(strVoucherNo, decPurchaseInvoiceVoucherTypeId);
-                        if (infoPurchaseOrderMaster.PurchaseOrderMasterId != 0)
+                        if (infoPurchaseOrderMaster.FicheNo != "0")
                         {
                             spStockPosting.StockPostingDeleteByagainstVoucherTypeIdAndagainstVoucherNoAndVoucherNoAndVoucherType
                                 (decPurchaseInvoiceVoucherTypeId, strVoucherNo,
-                                infoPurchaseOrderMaster.VoucherNo, infoPurchaseOrderMaster.VoucherTypeId);
+                                infoPurchaseOrderMaster.voucherNo, Convert.ToDecimal(infoPurchaseOrderMaster.voucherTypeId));
                         }
-                        else if (infoMaterialReceiptMaster.MaterialReceiptMasterId != 0)
+                        else if (infoMaterialReceiptMaster.materialReceiptMasterId != 0)
                         {
                             spStockPosting.StockPostingDeleteByagainstVoucherTypeIdAndagainstVoucherNoAndVoucherNoAndVoucherType
                                 (decPurchaseInvoiceVoucherTypeId, strVoucherNo,
-                                infoMaterialReceiptMaster.VoucherNo, infoMaterialReceiptMaster.VoucherTypeId);
+                                infoMaterialReceiptMaster.voucherNo, Convert.ToDecimal(infoMaterialReceiptMaster.voucherTypeId));
                         }
                         spStockPosting.StockPostingDeleteByagainstVoucherTypeIdAndagainstVoucherNoAndVoucherNoAndVoucherType
                                 (0, "NA", strVoucherNo, decPurchaseInvoiceVoucherTypeId);
@@ -2722,9 +2653,9 @@ namespace Open_Miracle
                 {
                     dgvAdditionalCost.Rows.Clear();
                 }
-                lblTaxAmount.Text = Math.Round(000.00, PublicVariables._inNoOfDecimalPlaces).ToString();
+                lblTaxAmount.Text = Math.Round(000.00, 4).ToString();
                 AdditionalCostGridFill();
-                lblAdditionalCostAmount.Text = Math.Round(000.00, PublicVariables._inNoOfDecimalPlaces).ToString();
+                lblAdditionalCostAmount.Text = Math.Round(000.00, 4).ToString();
             }
             catch (Exception ex)
             {
@@ -2740,8 +2671,8 @@ namespace Open_Miracle
             {
                 decPurchaseMasterId = 0;
                 VoucherNumberGeneration();
-                dtpVoucherDate.Value = PublicVariables._dtCurrentDate;
-                dtpInvoiceDate.Value = PublicVariables._dtCurrentDate;
+                dtpVoucherDate.Value = DateTime.Now;
+                dtpInvoiceDate.Value = DateTime.Now;
                 cmbPurchaseMode.SelectedIndex = 0;
                 txtVendorInvoiceNo.Text = string.Empty;
                 cmbCashOrParty.SelectedIndex = 0;
@@ -2750,10 +2681,10 @@ namespace Open_Miracle
                 txtNarration.Text = string.Empty;
                 txtTransportationCompany.Text = string.Empty;
                 txtLRNo.Text = string.Empty;
-                lblAdditionalCostAmount.Text = Math.Round(0.00, PublicVariables._inNoOfDecimalPlaces).ToString();
-                lblTaxAmount.Text = Math.Round(0.00, PublicVariables._inNoOfDecimalPlaces).ToString();
-                txtTotalAmount.Text = Math.Round(0.00, PublicVariables._inNoOfDecimalPlaces).ToString();
-                txtBillDiscount.Text = Math.Round(0.00, PublicVariables._inNoOfDecimalPlaces).ToString();
+                lblAdditionalCostAmount.Text = Math.Round(0.00, 4).ToString();
+                lblTaxAmount.Text = Math.Round(0.00, 4).ToString();
+                txtTotalAmount.Text = Math.Round(0.00, 4).ToString();
+                txtBillDiscount.Text = Math.Round(0.00, 4).ToString();
                 if (!isAutomatic)
                 {
                     txtVoucherNo.Clear();
@@ -2796,29 +2727,29 @@ namespace Open_Miracle
         /// <param name="frmLedgerPopup"></param>
         /// <param name="decId"></param>
         /// <param name="strComboTypes"></param>
-        public void CallFromLedgerPopup(frmLedgerPopup frmLedgerPopup, decimal decId, string strComboTypes) //PopUp
+        public void CallFromLedgerPopup(/*frmLedgerPopup frmLedgerPopup, decimal decId, string strComboTypes*/) //PopUp
         {
-            try
-            {
-                base.Show();
-                this.frmLedgerPopupObj = frmLedgerPopup;
-                if (strComboTypes == "CashOrSundryCreditors")
-                {
-                    TransactionGeneralFillObj.CashOrPartyComboFill(cmbCashOrParty, false);
-                    cmbCashOrParty.SelectedValue = decId;
-                }
-                else if (strComboTypes == "PurchaseAccount")
-                {
-                    PurchaseAccountComboFill();
-                    cmbPurchaseAccount.SelectedValue = decId;
-                }
-                frmLedgerPopupObj.Close();
-                frmLedgerPopupObj = null;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PI47:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //try
+            //{
+            //    base.Show();
+            //    this.frmLedgerPopupObj = frmLedgerPopup;
+            //    if (strComboTypes == "CashOrSundryCreditors")
+            //    {
+            //        TransactionGeneralFillObj.CashOrPartyComboFill(cmbCashOrParty, false);
+            //        cmbCashOrParty.SelectedValue = decId;
+            //    }
+            //    else if (strComboTypes == "PurchaseAccount")
+            //    {
+            //        PurchaseAccountComboFill();
+            //        cmbPurchaseAccount.SelectedValue = decId;
+            //    }
+            //    frmLedgerPopupObj.Close();
+            //    frmLedgerPopupObj = null;
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("PI47:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         /// <summary>
         /// Function to call frmProductSearch form to select and view product
@@ -2826,31 +2757,31 @@ namespace Open_Miracle
         /// <param name="frmProductSearchPopup"></param>
         /// <param name="decproductId"></param>
         /// <param name="decCurrentRowIndex"></param>
-        public void CallFromProductSearchPopup(frmProductSearchPopup frmProductSearchPopup, decimal decproductId, decimal decCurrentRowIndex)
+        public void CallFromProductSearchPopup(/*frmProductSearchPopup frmProductSearchPopup, decimal decproductId, decimal decCurrentRowIndex*/)
         {
-            ProductSP spProduct = new ProductSP();
-            ProductInfo infoProduct = new ProductInfo();
-            try
-            {
-                base.Show();
-                this.frmProductSearchPopupObj = frmProductSearchPopup;
-                if (decproductId != 0)
-                {
-                    int inCurrentRowIndex = dgvProductDetails.CurrentRow.Index;
-                    dgvProductDetails.Rows.Add();
-                    infoProduct = spProduct.ProductView(decproductId);
-                    strProductCode = infoProduct.ProductCode;
-                    ProductDetailsFill(strProductCode, inCurrentRowIndex, "ProductCode");
-                    SerialNo();
-                    frmProductSearchPopupObj.Close();
-                    frmProductSearchPopupObj = null;
+            //ProductSP spProduct = new ProductSP();
+            //ProductInfo infoProduct = new ProductInfo();
+            //try
+            //{
+            //    base.Show();
+            //    this.frmProductSearchPopupObj = frmProductSearchPopup;
+            //    if (decproductId != 0)
+            //    {
+            //        int inCurrentRowIndex = dgvProductDetails.CurrentRow.Index;
+            //        dgvProductDetails.Rows.Add();
+            //        infoProduct = spProduct.ProductView(decproductId);
+            //        strProductCode = infoProduct.ProductCode;
+            //        ProductDetailsFill(strProductCode, inCurrentRowIndex, "ProductCode");
+            //        SerialNo();
+            //        frmProductSearchPopupObj.Close();
+            //        frmProductSearchPopupObj = null;
 
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PI48:" + ex.Message, "Open Miracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("PI48:" + ex.Message, "Open Miracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         /// <summary>
         /// Function to fill the product details
@@ -2885,7 +2816,7 @@ namespace Open_Miracle
                     UnitComboFill(decProductId, inRowIndex, dgvProductDetails.Columns["dgvcmbUnit"].Index);
                     GodownComboFill();
                     RackComboFill(decGodownId, inRowIndex, dgvProductDetails.Columns["dgvcmbRack"].Index);
-                    BatchComboFill(decProductId, inRowIndex, dgvProductDetails.Columns["dgvcmbBatch"].Index);
+                    BatchComboFill(decProductId.ToString(), inRowIndex, dgvProductDetails.Columns["dgvcmbBatch"].Index);
                     dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtPurchaseDetailsId"].Value = dtbl.Rows[0]["purchaseDetailsId"];
                     dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtPurchaseOrderDetailsId"].Value = dtbl.Rows[0]["purchaseOrderDetailsId"];
                     dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtMaterialReceiptDetailsId"].Value = dtbl.Rows[0]["materialReceiptDetailsId"];
@@ -3095,54 +3026,54 @@ namespace Open_Miracle
         /// </summary>
         /// <param name="frmPurchaseInvoiceRegister"></param>
         /// <param name="decPurchaseInvoiceMasterId"></param>
-        public void CallFromPurchaseInvoiceRegister(frmPurchaseInvoiceRegister frmPurchaseInvoiceRegister, decimal decPurchaseInvoiceMasterId)
+        public void CallFromPurchaseInvoiceRegister(/*frmPurchaseInvoiceRegister frmPurchaseInvoiceRegister, decimal decPurchaseInvoiceMasterId*/)
         {
-            try
-            {
-                base.Show();
-                frmPurchaseInvoiceRegister.Enabled = false;
-                this.frmPurchaseInvoiceRegisterObj = frmPurchaseInvoiceRegister;
-                decPurchaseMasterId = decPurchaseInvoiceMasterId;
-                FillRegisterOrReport();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PI53:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //try
+            //{
+            //    base.Show();
+            //    frmPurchaseInvoiceRegister.Enabled = false;
+            //    this.frmPurchaseInvoiceRegisterObj = frmPurchaseInvoiceRegister;
+            //    decPurchaseMasterId = decPurchaseInvoiceMasterId;
+            //    FillRegisterOrReport();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("PI53:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         /// <summary>
         /// Function to call this form from frmPurchaseInvoicereport to view details and for updation
         /// </summary>
         /// <param name="frmPurchaseReport"></param>
         /// <param name="decPurchaseInvoiceMasterId"></param>
-        public void CallFromPurchaseReport(frmPurchaseReport frmPurchaseReport, decimal decPurchaseInvoiceMasterId)
+        public void CallFromPurchaseReport(/*frmPurchaseReport frmPurchaseReport, decimal decPurchaseInvoiceMasterId*/)
         {
-            try
-            {
-                base.Show();
-                frmPurchaseReport.Enabled = false;
-                this.frmPurchaseReportObj = frmPurchaseReport;
-                decPurchaseMasterId = decPurchaseInvoiceMasterId;
-                FillRegisterOrReport();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PI54:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //try
+            //{
+            //    base.Show();
+            //    frmPurchaseReport.Enabled = false;
+            //    this.frmPurchaseReportObj = frmPurchaseReport;
+            //    decPurchaseMasterId = decPurchaseInvoiceMasterId;
+            //    FillRegisterOrReport();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("PI54:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         /// <summary>
         /// Function to fill the details while calling from register or report
         /// </summary>
         public void FillRegisterOrReport()
         {
-            PurchaseMasterInfo infoPurchaseMaster = new PurchaseMasterInfo();
+            PurchaseMaster infoPurchaseMaster = new PurchaseMaster();
             PurchaseMasterSP spPurchaseMaster = new PurchaseMasterSP();
-            PurchaseOrderMasterInfo infoPurchaseOrderMaster = new PurchaseOrderMasterInfo();
+            PurchaseOrder infoPurchaseOrderMaster = new PurchaseOrder();
             PurchaseOrderMasterSP spPurchaseOrderMaster = new PurchaseOrderMasterSP();
-            MaterialReceiptMasterInfo infoMaterialReceiptMaster = new MaterialReceiptMasterInfo();
+            MaterialReceiptMaster infoMaterialReceiptMaster = new MaterialReceiptMaster();
             MaterialReceiptMasterSP spMaterialReceiptMaster = new MaterialReceiptMasterSP();
             VoucherTypeSP spVoucherType = new VoucherTypeSP();
-            VoucherTypeInfo infoVoucherType = new VoucherTypeInfo();
+            VoucherType infoVoucherType = new VoucherType();
             AccountLedgerSP spAccountLedger = new AccountLedgerSP();
             bool isPartyBalanceRef = false;
             try
@@ -3152,12 +3083,12 @@ namespace Open_Miracle
                 btnDelete.Enabled = true;
                 txtVoucherNo.ReadOnly = true;
                 infoPurchaseMaster = spPurchaseMaster.PurchaseMasterView(decPurchaseMasterId);
-                strVoucherNo = infoPurchaseMaster.VoucherNo;
-                decPurchaseInvoiceVoucherTypeId = infoPurchaseMaster.VoucherTypeId;
-                decPurchaseInvoiceSuffixPrefixId = infoPurchaseMaster.SuffixPrefixId;
+                strVoucherNo = infoPurchaseMaster.voucherNo;
+                decPurchaseInvoiceVoucherTypeId = Convert.ToDecimal(infoPurchaseMaster.voucherTypeId);
+                decPurchaseInvoiceSuffixPrefixId = Convert.ToDecimal(infoPurchaseMaster.suffixPrefixId);
                 isAutomatic = spVoucherType.CheckMethodOfVoucherNumbering(decPurchaseInvoiceVoucherTypeId);
                 infoVoucherType = spVoucherType.VoucherTypeView(decPurchaseInvoiceVoucherTypeId);
-                this.Text = infoVoucherType.VoucherTypeName;
+                this.Text = infoVoucherType.voucherTypeName;
                 if (isAutomatic)
                 {
                     txtVoucherDate.Focus();
@@ -3166,42 +3097,42 @@ namespace Open_Miracle
                 {
                     txtVoucherNo.Focus();
                 }
-                txtVoucherNo.Text = infoPurchaseMaster.InvoiceNo;
-                txtVendorInvoiceNo.Text = infoPurchaseMaster.VendorInvoiceNo;
-                dtpVoucherDate.Value = infoPurchaseMaster.Date;
-                dtpInvoiceDate.Value = infoPurchaseMaster.VendorInvoiceDate;
-                cmbCashOrParty.SelectedValue = infoPurchaseMaster.LedgerId;
-                if (infoPurchaseMaster.PurchaseOrderMasterId == 0 && infoPurchaseMaster.MaterialReceiptMasterId == 0)
+                txtVoucherNo.Text = infoPurchaseMaster.invoiceNo;
+                txtVendorInvoiceNo.Text = infoPurchaseMaster.vendorInvoiceNo;
+                dtpVoucherDate.Value = Convert.ToDateTime(infoPurchaseMaster.date);
+                dtpInvoiceDate.Value = Convert.ToDateTime(infoPurchaseMaster.vendorInvoiceDate);
+                cmbCashOrParty.SelectedValue = infoPurchaseMaster.ledgerId;
+                if (infoPurchaseMaster.purchaseOrderMasterId == "0" && infoPurchaseMaster.materialReceiptMasterId == 0)
                 {
                     cmbPurchaseMode.SelectedItem = "NA";
                 }
-                else if (infoPurchaseMaster.PurchaseOrderMasterId != 0 && infoPurchaseMaster.MaterialReceiptMasterId == 0)
+                else if (infoPurchaseMaster.purchaseOrderMasterId != "0" && infoPurchaseMaster.materialReceiptMasterId == 0)
                 {
                     cmbPurchaseMode.SelectedItem = "Against PurchaseOrder";
-                    infoPurchaseOrderMaster = spPurchaseOrderMaster.PurchaseOrderMasterView(infoPurchaseMaster.PurchaseOrderMasterId);
-                    cmbVoucherType.SelectedValue = infoPurchaseOrderMaster.VoucherTypeId;
+                    infoPurchaseOrderMaster = spPurchaseOrderMaster.PurchaseOrderMasterView(infoPurchaseMaster.purchaseOrderMasterId);
+                    cmbVoucherType.SelectedValue = infoPurchaseOrderMaster.voucherTypeId;
                     OrderComboFill();
-                    cmbOrderNo.SelectedValue = infoPurchaseMaster.PurchaseOrderMasterId;
+                    cmbOrderNo.SelectedValue = infoPurchaseMaster.purchaseOrderMasterId;
                 }
-                else if (infoPurchaseMaster.PurchaseOrderMasterId == 0 && infoPurchaseMaster.MaterialReceiptMasterId != 0)
+                else if (infoPurchaseMaster.purchaseOrderMasterId == "0" && infoPurchaseMaster.materialReceiptMasterId != 0)
                 {
                     cmbPurchaseMode.SelectedItem = "Against MaterialReceipt";
-                    infoMaterialReceiptMaster = spMaterialReceiptMaster.MaterialReceiptMasterView(infoPurchaseMaster.MaterialReceiptMasterId);
-                    cmbVoucherType.SelectedValue = infoMaterialReceiptMaster.VoucherTypeId;
+                    infoMaterialReceiptMaster = spMaterialReceiptMaster.MaterialReceiptMasterView(Convert.ToDecimal(infoPurchaseMaster.materialReceiptMasterId));
+                    cmbVoucherType.SelectedValue = infoMaterialReceiptMaster.voucherTypeId;
                     OrderComboFill();
-                    cmbOrderNo.SelectedValue = infoPurchaseMaster.MaterialReceiptMasterId;
+                    cmbOrderNo.SelectedValue = infoPurchaseMaster.materialReceiptMasterId;
                 }
-                cmbPurchaseAccount.SelectedValue = infoPurchaseMaster.PurchaseAccount;
-                txtCreditPeriod.Text = infoPurchaseMaster.CreditPeriod;
-                cmbCurrency.SelectedValue = infoPurchaseMaster.ExchangeRateId;
-                txtNarration.Text = infoPurchaseMaster.Narration;
-                lblAdditionalCostAmount.Text = Math.Round(infoPurchaseMaster.AdditionalCost, PublicVariables._inNoOfDecimalPlaces).ToString();
-                lblTaxAmount.Text = Math.Round(infoPurchaseMaster.TotalTax, PublicVariables._inNoOfDecimalPlaces).ToString();
-                txtTotalAmount.Text = Math.Round(infoPurchaseMaster.TotalAmount, PublicVariables._inNoOfDecimalPlaces).ToString();
-                txtBillDiscount.Text = Math.Round(infoPurchaseMaster.BillDiscount, PublicVariables._inNoOfDecimalPlaces).ToString();
-                txtLRNo.Text = infoPurchaseMaster.LrNo;
-                txtTransportationCompany.Text = infoPurchaseMaster.TransportationCompany;
-                txtGrandTotal.Text = Math.Round(infoPurchaseMaster.GrandTotal, PublicVariables._inNoOfDecimalPlaces).ToString();
+                cmbPurchaseAccount.SelectedValue = infoPurchaseMaster.purchaseAccount;
+                txtCreditPeriod.Text = infoPurchaseMaster.creditPeriod;
+                cmbCurrency.SelectedValue = infoPurchaseMaster.exchangeRateId;
+                txtNarration.Text = infoPurchaseMaster.narration;
+                lblAdditionalCostAmount.Text = Math.Round(Convert.ToDecimal(infoPurchaseMaster.additionalCost), 4).ToString();
+                lblTaxAmount.Text = Math.Round(Convert.ToDecimal(infoPurchaseMaster.totalTax), 4).ToString();
+                txtTotalAmount.Text = Math.Round(Convert.ToDecimal(infoPurchaseMaster.totalAmount), 4).ToString();
+                txtBillDiscount.Text = Math.Round(Convert.ToDecimal(infoPurchaseMaster.billDiscount), 4).ToString();
+                txtLRNo.Text = infoPurchaseMaster.lrNo;
+                txtTransportationCompany.Text = infoPurchaseMaster.transportationCompany;
+                txtGrandTotal.Text = Math.Round(Convert.ToDecimal(infoPurchaseMaster.grandTotal), 4).ToString();
                 PurchaseDetailsFill();
                 TaxGridFill();
                 AdditionalCostGridFill();
@@ -3252,7 +3183,7 @@ namespace Open_Miracle
 
                     dgvProductDetails.Rows[i].Cells["dgvcmbGodown"].Value = 1m;
                     dgvProductDetails.Rows[i].Cells["dgvcmbRack"].Value = 1m;
-                    BatchComboFill(Convert.ToDecimal(dr["productId"].ToString()), i, dgvProductDetails.Rows[i].Cells["dgvcmbBatch"].ColumnIndex);
+                    BatchComboFill(dr["productId"].ToString(), i, dgvProductDetails.Rows[i].Cells["dgvcmbBatch"].ColumnIndex);
                     dgvProductDetails.Rows[i].Cells["dgvcmbBatch"].Value = Convert.ToDecimal(dr["batchId"].ToString());
                     dgvProductDetails.Rows[i].Cells["dgvtxtRate"].Value = dr["rate"].ToString();
                     dgvProductDetails.Rows[i].Cells["dgvtxtGrossValue"].Value = dr["grossValue"].ToString();
@@ -3290,28 +3221,29 @@ namespace Open_Miracle
         /// <param name="decMasterId"></param>
         public void Print(decimal decMasterId)
         {
-            try
-            {
-                PurchaseMasterSP spPurchaseMaster = new PurchaseMasterSP();
-                decimal decPurchaseOrderMasterId = 0;
-                decimal decMaterialReceiptMasterId = 0;
-                if (cmbPurchaseMode.Text == "Against PurchaseOrder")
-                {
-                    decPurchaseOrderMasterId = Convert.ToDecimal(cmbOrderNo.SelectedValue.ToString());
-                }
-                else if (cmbPurchaseMode.Text == "Against MaterialReceipt")
-                {
-                    decMaterialReceiptMasterId = Convert.ToDecimal(cmbOrderNo.SelectedValue.ToString());
-                }
-                DataSet dsPurchaseInvoice = spPurchaseMaster.PurchaseInvoicePrinting(1, decPurchaseOrderMasterId, decMaterialReceiptMasterId, decMasterId);
-                frmReport frmReport = new frmReport();
-                frmReport.MdiParent = formMDI.MDIObj;
-                frmReport.PurchaseInvoicePrinting(dsPurchaseInvoice);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PI57:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //TODO: Print Function
+            //try
+            //{
+            //    PurchaseMasterSP spPurchaseMaster = new PurchaseMasterSP();
+            //    decimal decPurchaseOrderMasterId = 0;
+            //    decimal decMaterialReceiptMasterId = 0;
+            //    if (cmbPurchaseMode.Text == "Against PurchaseOrder")
+            //    {
+            //        decPurchaseOrderMasterId = Convert.ToDecimal(cmbOrderNo.SelectedValue.ToString());
+            //    }
+            //    else if (cmbPurchaseMode.Text == "Against MaterialReceipt")
+            //    {
+            //        decMaterialReceiptMasterId = Convert.ToDecimal(cmbOrderNo.SelectedValue.ToString());
+            //    }
+            //    DataSet dsPurchaseInvoice = spPurchaseMaster.PurchaseInvoicePrinting(1, decPurchaseOrderMasterId, decMaterialReceiptMasterId, decMasterId);
+            //    frmReport frmReport = new frmReport();
+            //    frmReport.MdiParent = formMDI.MDIObj;
+            //    frmReport.PurchaseInvoicePrinting(dsPurchaseInvoice);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("PI57:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         /// <summary>
         /// Function to print for dotmatrix
@@ -3454,12 +3386,12 @@ namespace Open_Miracle
                 dRowOther["VoucherType"] = cmbVoucherType.Text;
                 dRowOther["address"] = (dtblOtherDetails.Rows[0]["address"].ToString().Replace("\n", ", ")).Replace("\r", "");
                 AccountLedgerSP spAccountLedger = new AccountLedgerSP();
-                AccountLedgerInfo infoAccountLedger = new AccountLedgerInfo();
+                AccountLedger infoAccountLedger = new AccountLedger();
                 infoAccountLedger = spAccountLedger.AccountLedgerView(Convert.ToDecimal(cmbCashOrParty.SelectedValue));
-                dRowOther["CustomerAddress"] = (infoAccountLedger.Address.ToString().Replace("\n", ", ")).Replace("\r", "");
-                dRowOther["CustomerTIN"] = infoAccountLedger.Tin;
-                dRowOther["CustomerCST"] = infoAccountLedger.Cst;
-                dRowOther["AmountInWords"] = new NumToText().AmountWords(Convert.ToDecimal(txtGrandTotal.Text), PublicVariables._decCurrencyId);
+                dRowOther["CustomerAddress"] = (infoAccountLedger.address.ToString().Replace("\n", ", ")).Replace("\r", "");
+                dRowOther["CustomerTIN"] = infoAccountLedger.tin;
+                dRowOther["CustomerCST"] = infoAccountLedger.cst;
+                dRowOther["AmountInWords"] = new NumToText().AmountWords(Convert.ToDecimal(txtGrandTotal.Text), Convert.ToDecimal(Utils.getManagement().DefaultCurrency));
                 VoucherTypeSP spVoucherType = new VoucherTypeSP();
                 DataTable dtblDeclaration = spVoucherType.DeclarationAndHeadingGetByVoucherTypeId(decPurchaseInvoiceVoucherTypeId);
                 dRowOther["Declaration"] = dtblDeclaration.Rows[0]["Declaration"].ToString();
@@ -3468,7 +3400,7 @@ namespace Open_Miracle
                 dRowOther["Heading3"] = dtblDeclaration.Rows[0]["Heading3"].ToString();
                 dRowOther["Heading4"] = dtblDeclaration.Rows[0]["Heading4"].ToString();
                 int inFormId = spVoucherType.FormIdGetForPrinterSettings(Convert.ToInt32(dtblDeclaration.Rows[0]["masterId"].ToString()));
-                PrintWorks.DotMatrixPrint.PrintDesign(inFormId, dtblOtherDetails, dtblGridDetails, dtblOtherDetails);
+                //DotMatrixPrint.PrintDesign(inFormId, dtblOtherDetails, dtblGridDetails, dtblOtherDetails);
             }
             catch (Exception ex)
             {
@@ -3479,7 +3411,7 @@ namespace Open_Miracle
         /// Function to fill product Details while return from Product creation when creating new Product 
         /// </summary>
         /// <param name="decProductId"></param>
-        public void ReturnFromProductCreation(decimal decProductId)
+        public void ReturnFromProductCreation(string decProductId)
         {
             ProductInfo infoProduct = new ProductInfo();
             ProductSP spProduct = new ProductSP();
@@ -3487,7 +3419,7 @@ namespace Open_Miracle
             {
                 this.Enabled = true;
                 this.BringToFront();
-                if (decProductId != 0)
+                if (decProductId != null && decProductId.Length > 0)
                 {
                     int inCurrentRowIndex = dgvProductDetails.CurrentRow.Index;
                     dgvProductDetails.Rows.Add();
@@ -3507,100 +3439,100 @@ namespace Open_Miracle
         /// </summary>
         /// <param name="frmDayBook"></param>
         /// <param name="decMasterId"></param>
-        public void callFromDayBook(frmDayBook frmDayBook, decimal decMasterId)
+        public void callFromDayBook(/*frmDayBook frmDayBook, decimal decMasterId*/)
         {
-            try
-            {
-                base.Show();
-                frmDayBook.Enabled = false;
-                this.frmDayBookObj = frmDayBook;
-                decPurchaseMasterId = decMasterId;
-                FillRegisterOrReport();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PI60:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //try
+            //{
+            //    base.Show();
+            //    frmDayBook.Enabled = false;
+            //    this.frmDayBookObj = frmDayBook;
+            //    decPurchaseMasterId = decMasterId;
+            //    FillRegisterOrReport();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("PI60:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         /// <summary>
         /// Function to call this form from frmAgeingReport to view details and for updation
         /// </summary>
         /// <param name="frmAgeing"></param>
         /// <param name="decMasterId"></param>
-        public void callFromAgeing(frmAgeingReport frmAgeing, decimal decMasterId)
+        public void callFromAgeing(/*frmAgeingReport frmAgeing, decimal decMasterId*/)
         {
-            try
-            {
-                base.Show();
-                frmAgeing.Enabled = false;
-                this.frmAgeingObj = frmAgeing;
-                decPurchaseMasterId = decMasterId;
-                FillRegisterOrReport();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PI61:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //try
+            //{
+            //    base.Show();
+            //    frmAgeing.Enabled = false;
+            //    this.frmAgeingObj = frmAgeing;
+            //    decPurchaseMasterId = decMasterId;
+            //    FillRegisterOrReport();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("PI61:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         /// <summary>
         /// Function to call this form from frmVoucherWiseProductSearch to view details and for updation
         /// </summary>
         /// <param name="frmVoucherwiseProductSearch"></param>
         /// <param name="decmasterId"></param>
-        public void CallFromVoucherWiseProductSearch(frmVoucherWiseProductSearch frmVoucherwiseProductSearch, decimal decmasterId)
+        public void CallFromVoucherWiseProductSearch(/*frmVoucherWiseProductSearch frmVoucherwiseProductSearch, decimal decmasterId*/)
         {
-            try
-            {
-                base.Show();
-                frmVoucherwiseProductSearch.Enabled = false;
-                objVoucherProduct = frmVoucherwiseProductSearch;
-                decPurchaseMasterId = decmasterId;
-                FillRegisterOrReport();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PI62:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //try
+            //{
+            //    base.Show();
+            //    frmVoucherwiseProductSearch.Enabled = false;
+            //    objVoucherProduct = frmVoucherwiseProductSearch;
+            //    decPurchaseMasterId = decmasterId;
+            //    FillRegisterOrReport();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("PI62:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         /// <summary>
         /// Function to call this form from frmLedgerDetails to view details and for updation
         /// </summary>
         /// <param name="LedgerDetailsObj"></param>
         /// <param name="decMasterId"></param>
-        public void CallFromLedgerDetails(frmLedgerDetails LedgerDetailsObj, decimal decMasterId)
+        public void CallFromLedgerDetails(/*frmLedgerDetails LedgerDetailsObj, decimal decMasterId*/)
         {
-            try
-            {
-                base.Show();
-                frmLedgerDetailsObj = LedgerDetailsObj;
-                frmLedgerDetailsObj.Enabled = false;
-                decPurchaseMasterId = decMasterId;
-                FillRegisterOrReport();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PI63:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //try
+            //{
+            //    base.Show();
+            //    frmLedgerDetailsObj = LedgerDetailsObj;
+            //    frmLedgerDetailsObj.Enabled = false;
+            //    decPurchaseMasterId = decMasterId;
+            //    FillRegisterOrReport();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("PI63:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         /// <summary>
         /// Function to call this form from frmVatReturnReport to view details and for updation
         /// </summary>
         /// <param name="frmvatReturnReportobj"></param>
         /// <param name="decMasterId"></param>
-        public void CallFromVatReturnReport(frmVatReturnReport frmvatReturnReportobj, decimal decMasterId)
+        public void CallFromVatReturnReport(/*frmVatReturnReport frmvatReturnReportobj, decimal decMasterId*/)
         {
-            try
-            {
-                base.Show();
-                frmvatReturnReportobj = vatReturnReportobj;
-                frmvatReturnReportobj.Enabled = false;
-                decPurchaseMasterId = decMasterId;
-                FillRegisterOrReport();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PI64:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //try
+            //{
+            //    base.Show();
+            //    frmvatReturnReportobj = vatReturnReportobj;
+            //    frmvatReturnReportobj.Enabled = false;
+            //    decPurchaseMasterId = decMasterId;
+            //    FillRegisterOrReport();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("PI64:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         /// <summary>
         /// Function to call this form from frmVoucherSearch to view details and for updation
@@ -3632,14 +3564,17 @@ namespace Open_Miracle
         {
             try
             {
+                FinancialYear f = Utils.getManagement().FinancialYear;
+
                 CashOrPartyComboFill();
                 PurchaseAccountComboFill();
-                dtpVoucherDate.MinDate = PublicVariables._dtFromDate;
-                dtpVoucherDate.MaxDate = PublicVariables._dtToDate;
-                dtpInvoiceDate.MinDate = PublicVariables._dtFromDate;
-                dtpInvoiceDate.MaxDate = PublicVariables._dtToDate;
-                dtpVoucherDate.Value = PublicVariables._dtCurrentDate;
-                dtpInvoiceDate.Value = PublicVariables._dtCurrentDate;
+                dtpVoucherDate.MinDate = (DateTime)f.fromDate;
+                dtpVoucherDate.MaxDate = (DateTime)f.toDate;
+                dtpVoucherDate.Value = DateTime.Now;
+                dtpInvoiceDate.MinDate = (DateTime)f.fromDate;
+                dtpInvoiceDate.MaxDate = (DateTime)f.toDate;
+                dtpVoucherDate.Value = DateTime.Now;
+                dtpInvoiceDate.Value = DateTime.Now;
                 CurrencyComboFill();
                 Clear();
                 SettingsStatusCheck();
@@ -3660,54 +3595,54 @@ namespace Open_Miracle
         {
             try
             {
-                if (frmPurchaseInvoiceRegisterObj != null)
-                {
-                    frmPurchaseInvoiceRegisterObj.Enabled = true;
-                    frmPurchaseInvoiceRegisterObj.GridFill();
-                    frmPurchaseInvoiceRegisterObj = null;
-                }
-                if (frmPurchaseReportObj != null)
-                {
-                    frmPurchaseReportObj.Enabled = true;
-                    frmPurchaseReportObj.GridFill();
-                    frmPurchaseReportObj = null;
-                }
-                if (frmDayBookObj != null)
-                {
-                    frmDayBookObj.Enabled = true;
-                    frmDayBookObj.dayBookGridFill();
-                    frmDayBookObj = null;
-                }
-                if (frmLedgerDetailsObj != null)
-                {
-                    frmLedgerDetailsObj.Enabled = true;
-                    frmLedgerDetailsObj.LedgerDetailsView();
-                    frmLedgerDetailsObj = null;
-                }
-                if (objVoucherProduct != null)
-                {
-                    objVoucherProduct.Enabled = true;
-                    objVoucherProduct.FillGrid();
-                    objVoucherProduct = null;
-                }
+                //if (frmPurchaseInvoiceRegisterObj != null)
+                //{
+                //    frmPurchaseInvoiceRegisterObj.Enabled = true;
+                //    frmPurchaseInvoiceRegisterObj.GridFill();
+                //    frmPurchaseInvoiceRegisterObj = null;
+                //}
+                //if (frmPurchaseReportObj != null)
+                //{
+                //    frmPurchaseReportObj.Enabled = true;
+                //    frmPurchaseReportObj.GridFill();
+                //    frmPurchaseReportObj = null;
+                //}
+                //if (frmDayBookObj != null)
+                //{
+                //    frmDayBookObj.Enabled = true;
+                //    frmDayBookObj.dayBookGridFill();
+                //    frmDayBookObj = null;
+                //}
+                //if (frmLedgerDetailsObj != null)
+                //{
+                //    frmLedgerDetailsObj.Enabled = true;
+                //    frmLedgerDetailsObj.LedgerDetailsView();
+                //    frmLedgerDetailsObj = null;
+                //}
+                //if (objVoucherProduct != null)
+                //{
+                //    objVoucherProduct.Enabled = true;
+                //    objVoucherProduct.FillGrid();
+                //    objVoucherProduct = null;
+                //}
                 if (objVoucherSearch != null)
                 {
                     objVoucherSearch.Enabled = true;
                     objVoucherSearch.GridFill();
                     objVoucherSearch = null;
                 }
-                if (frmAgeingObj != null)
-                {
-                    frmAgeingObj.Enabled = true;
-                    frmAgeingObj.FillGrid();
-                    frmAgeingObj = null;
-                }
-                if (vatReturnReportobj != null)
-                {
-                    vatReturnReportobj.Enabled = true;
-                    vatReturnReportobj.GridFill();
-                    vatReturnReportobj = null;
-                }
+                //if (frmAgeingObj != null)
+                //{
+                //    frmAgeingObj.Enabled = true;
+                //    frmAgeingObj.FillGrid();
+                //    frmAgeingObj = null;
+                //}
+                //if (vatReturnReportobj != null)
+                //{
+                //    vatReturnReportobj.Enabled = true;
+                //    vatReturnReportobj.GridFill();
+                //    vatReturnReportobj = null;
+                //}
             }
             catch (Exception ex)
             {
@@ -3776,19 +3711,19 @@ namespace Open_Miracle
                 }
                 if (e.KeyCode == Keys.C && Control.ModifierKeys == Keys.Alt)
                 {
-                    if (dgvProductDetails.CurrentCell != null)
-                    {
-                        if (dgvProductDetails.CurrentCell == dgvProductDetails.CurrentRow.Cells["dgvtxtProductName"] || dgvProductDetails.CurrentCell == dgvProductDetails.CurrentRow.Cells["dgvtxtProductName"])
-                        {
-                            //SendKeys.Send("{F10}");
-                            if (dgvProductDetails.Columns[dgvProductDetails.CurrentCell.ColumnIndex].Name == "dgvtxtProductName" || dgvProductDetails.Columns[dgvProductDetails.CurrentCell.ColumnIndex].Name == "dgvtxtProductName")
-                            {
-                                frmProductCreation frmProductCreationObj = new frmProductCreation();
-                                frmProductCreationObj.MdiParent = formMDI.MDIObj;
-                                frmProductCreationObj.CallFromPurchaseInvoice(this);
-                            }
-                        }
-                    }
+                    //if (dgvProductDetails.CurrentCell != null)
+                    //{
+                    //    if (dgvProductDetails.CurrentCell == dgvProductDetails.CurrentRow.Cells["dgvtxtProductName"] || dgvProductDetails.CurrentCell == dgvProductDetails.CurrentRow.Cells["dgvtxtProductName"])
+                    //    {
+                    //        //SendKeys.Send("{F10}");
+                    //        if (dgvProductDetails.Columns[dgvProductDetails.CurrentCell.ColumnIndex].Name == "dgvtxtProductName" || dgvProductDetails.Columns[dgvProductDetails.CurrentCell.ColumnIndex].Name == "dgvtxtProductName")
+                    //        {
+                    //            frmProductCreation frmProductCreationObj = new frmProductCreation();
+                    //            frmProductCreationObj.MdiParent = formMDI.MDIObj;
+                    //            frmProductCreationObj.CallFromPurchaseInvoice(this);
+                    //        }
+                    //    }
+                    //}
                 }
             }
             catch (Exception ex)
@@ -3828,7 +3763,7 @@ namespace Open_Miracle
                 bool isInvalid = obj.DateValidationFunction(txtVoucherDate);
                 if (!isInvalid)
                 {
-                    txtVoucherDate.Text = PublicVariables._dtCurrentDate.ToString("dd-MMM-yyyy");
+                    txtVoucherDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
                 }
                 string date = txtVoucherDate.Text;
                 dtpVoucherDate.Value = Convert.ToDateTime(date);
@@ -3871,7 +3806,7 @@ namespace Open_Miracle
                     bool isInvalid = obj.DateValidationFunction(txtInvoiceDate);
                     if (!isInvalid)
                     {
-                        txtInvoiceDate.Text = PublicVariables._dtCurrentDate.ToString("dd-MMM-yyyy");
+                        txtInvoiceDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
                     }
                     string date = txtInvoiceDate.Text;
                     dtpInvoiceDate.Value = Convert.ToDateTime(date);
@@ -3895,7 +3830,7 @@ namespace Open_Miracle
                 bool isInvalid = obj.DateValidationFunction(txtInvoiceDate);
                 if (!isInvalid)
                 {
-                    txtInvoiceDate.Text = PublicVariables._dtCurrentDate.ToString("dd-MMM-yyyy");
+                    txtInvoiceDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
                 }
                 string date = txtInvoiceDate.Text;
                 dtpInvoiceDate.Value = Convert.ToDateTime(date);
@@ -4110,7 +4045,7 @@ namespace Open_Miracle
                                         {
                                             decProductRate = Convert.ToDecimal(dgvProductDetails.CurrentRow.Cells["dgvtxtRate"].Value.ToString());
                                             decProductRate = decProductRate * decOldConversionRate / decNewConversionRate;
-                                            dgvProductDetails.CurrentRow.Cells["dgvtxtRate"].Value = Math.Round(decProductRate, PublicVariables._inNoOfDecimalPlaces);
+                                            dgvProductDetails.CurrentRow.Cells["dgvtxtRate"].Value = Math.Round(decProductRate, 4);
                                         }
                                     }
                                 }
@@ -4189,7 +4124,7 @@ namespace Open_Miracle
                         }
                     }
                 }
-                txtTotalAmount.Text = Math.Round(decGridTotalAmount, PublicVariables._inNoOfDecimalPlaces).ToString();
+                txtTotalAmount.Text = Math.Round(decGridTotalAmount, 4).ToString();
                 if (txtTotalAmount.Text.Split('.')[0].Length > 13)
                 {
                     MessageBox.Show("Amount exeed than limit");
@@ -4219,13 +4154,13 @@ namespace Open_Miracle
             decimal decTaxId = 0;
             decimal decAmount = 0;
             decimal decTotalAmount = 0;
-            decimal decProductId = 0;
+            string decProductId = String.Empty;
             decimal decDefaultTotalAmount = 0;
             decimal decProductRate = 0;
             decimal decQuantity = 0;
             ProductInfo infoProduct = new ProductInfo();
             ProductSP spProduct = new ProductSP();
-            TaxInfo infotax = new TaxInfo();
+            Tax infotax = new Tax();
             TaxSP spTax = new TaxSP();
             ExchangeRateSP spExchangeRate = new ExchangeRateSP();
             try
@@ -4249,7 +4184,7 @@ namespace Open_Miracle
                             }
                         }
                         decGrossValue = decProductRate * decQuantity;
-                        dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtGrossValue"].Value = Math.Round(decGrossValue, PublicVariables._inNoOfDecimalPlaces);
+                        dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtGrossValue"].Value = Math.Round(decGrossValue, 4);
                         if (dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtDiscountPercent"].Value != null)
                         {
                             if (dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtDiscountPercent"].Value.ToString() != string.Empty)
@@ -4284,7 +4219,7 @@ namespace Open_Miracle
                         /*------------------------------Discount Calculation-----------------------------------*/
                         if (decGrossValue >= decDiscount)
                         {
-                            dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtDiscount"].Value = Math.Round(decDiscount, PublicVariables._inNoOfDecimalPlaces);
+                            dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtDiscount"].Value = Math.Round(decDiscount, 4);
                         }
                         else
                         {
@@ -4293,7 +4228,7 @@ namespace Open_Miracle
                             decDiscount = 0;
                         }
                         decNetValue = decGrossValue - decDiscount;
-                        dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtNetValue"].Value = Math.Round(decNetValue, PublicVariables._inNoOfDecimalPlaces);
+                        dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtNetValue"].Value = Math.Round(decNetValue, 4);
                         /*------------------------------Tax Calculation-----------------------------------*/
                         if (dgvcmbTax.Visible)
                         {
@@ -4304,7 +4239,7 @@ namespace Open_Miracle
                                 {
                                     decTaxId = Convert.ToDecimal(dgvProductDetails.Rows[inRowIndex].Cells["dgvcmbTax"].Value.ToString());
                                     infotax = spTax.TaxView(decTaxId);
-                                    decTaxPercent = infotax.Rate;
+                                    decTaxPercent = Convert.ToDecimal(infotax.Rate);
                                 }
                                 else
                                 {
@@ -4315,7 +4250,7 @@ namespace Open_Miracle
                             {
                                 decTaxPercent = 0;
                             }
-                            decProductId = Convert.ToDecimal(dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtProductId"].Value.ToString());
+                            decProductId = dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtProductId"].Value.ToString();
                             infoProduct = spProduct.ProductView(decProductId);
                             if (infoProduct.TaxapplicableOn == "MRP")
                             {
@@ -4325,10 +4260,10 @@ namespace Open_Miracle
                             {
                                 decTaxAmount = decNetValue * decTaxPercent / 100;
                             }
-                            dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtTaxAmount"].Value = Math.Round(decTaxAmount, PublicVariables._inNoOfDecimalPlaces);
+                            dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtTaxAmount"].Value = Math.Round(decTaxAmount, 4);
                         }
                         decAmount = decNetValue + decTaxAmount;
-                        dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtAmount"].Value = Math.Round(decAmount, PublicVariables._inNoOfDecimalPlaces);
+                        dgvProductDetails.Rows[inRowIndex].Cells["dgvtxtAmount"].Value = Math.Round(decAmount, 4);
                         decTotalAmount = decTotalAmount + decAmount;
                         decDefaultTotalAmount = decTotalAmount * 1;
                         //CalculateTotalAmount();
@@ -4429,7 +4364,7 @@ namespace Open_Miracle
                                                 {
                                                     decDiscount = decGrossValue * decDiscountPercent / 100;
                                                 }
-                                                dgvProductDetails.Rows[e.RowIndex].Cells["dgvtxtDiscount"].Value = Math.Round(decDiscount, PublicVariables._inNoOfDecimalPlaces);
+                                                dgvProductDetails.Rows[e.RowIndex].Cells["dgvtxtDiscount"].Value = Math.Round(decDiscount, /*4*/2);
                                             }
                                         }
                                     }
@@ -4451,7 +4386,7 @@ namespace Open_Miracle
                                                 {
                                                     decDiscountPercent = decDiscount * 100 / decGrossValue;
                                                 }
-                                                dgvProductDetails.Rows[e.RowIndex].Cells["dgvtxtDiscountPercent"].Value = Math.Round(decDiscountPercent, PublicVariables._inNoOfDecimalPlaces);
+                                                dgvProductDetails.Rows[e.RowIndex].Cells["dgvtxtDiscountPercent"].Value = Math.Round(decDiscountPercent, /*4*/2);
                                             }
                                         }
                                     }
@@ -4812,7 +4747,7 @@ namespace Open_Miracle
             {
                 if (txtBillDiscount.Text == string.Empty)
                 {
-                    txtBillDiscount.Text = Math.Round(0.00, PublicVariables._inNoOfDecimalPlaces).ToString();
+                    txtBillDiscount.Text = Math.Round(0.00, /*4*/2).ToString();
                 }
             }
             catch (Exception ex)
@@ -4861,14 +4796,14 @@ namespace Open_Miracle
         {
             try
             {
-                if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnSave.Text))
-                {
+                //if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnSave.Text))
+                //{
                     SaveOrEdit();
-                }
-                else
-                {
-                    Messages.NoPrivillageMessage();
-                }
+                //}
+                //else
+                //{
+                //    Messages.NoPrivillageMessage();
+                //}
             }
             catch (Exception ex)
             {
@@ -4884,24 +4819,24 @@ namespace Open_Miracle
         {
             try
             {
-                if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, "Delete"))
-                {
-                    if (PublicVariables.isMessageDelete)
-                    {
+                //if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, "Delete"))
+                //{
+                    //if (PublicVariables.isMessageDelete)
+                    //{
                         if (Messages.DeleteMessage())
                         {
                             Delete();
                         }
-                    }
-                    else
-                    {
-                        Delete();
-                    }
-                }
-                else
-                {
-                    Messages.NoPrivillageMessage();
-                }
+                    //}
+                    //else
+                    //{
+                    //    Delete();
+                    //}
+                //}
+                //else
+                //{
+                //    Messages.NoPrivillageMessage();
+                //}
             }
             catch (Exception ex)
             {
@@ -4937,46 +4872,46 @@ namespace Open_Miracle
             try
             {
                 Clear();
-                if (frmAgeingObj != null)
-                {
-                    frmAgeingObj.Close();
-                    frmAgeingObj = null;
-                }
-                if (frmDayBookObj != null)
-                {
-                    frmDayBookObj.Close();
-                    frmDayBookObj = null;
-                }
-                if (frmLedgerDetailsObj != null)
-                {
-                    frmLedgerDetailsObj.Close();
-                    frmLedgerDetailsObj = null;
-                }
-                if (frmLedgerPopupObj != null)
-                {
-                    frmLedgerPopupObj.Close();
-                    frmLedgerPopupObj = null;
-                }
-                if (frmProductSearchPopupObj != null)
-                {
-                    frmProductSearchPopupObj.Close();
-                    frmProductSearchPopupObj = null;
-                }
-                if (frmPurchaseInvoiceRegisterObj != null)
-                {
-                    frmPurchaseInvoiceRegisterObj.Close();
-                    frmPurchaseInvoiceRegisterObj = null;
-                }
-                if (frmPurchaseReportObj != null)
-                {
-                    frmPurchaseReportObj.Close();
-                    frmPurchaseReportObj = null;
-                }
-                if (vatReturnReportobj != null)
-                {
-                    vatReturnReportobj.Close();
-                    vatReturnReportobj = null;
-                }
+                //if (frmAgeingObj != null)
+                //{
+                //    frmAgeingObj.Close();
+                //    frmAgeingObj = null;
+                //}
+                //if (frmDayBookObj != null)
+                //{
+                //    frmDayBookObj.Close();
+                //    frmDayBookObj = null;
+                //}
+                //if (frmLedgerDetailsObj != null)
+                //{
+                //    frmLedgerDetailsObj.Close();
+                //    frmLedgerDetailsObj = null;
+                //}
+                //if (frmLedgerPopupObj != null)
+                //{
+                //    frmLedgerPopupObj.Close();
+                //    frmLedgerPopupObj = null;
+                //}
+                //if (frmProductSearchPopupObj != null)
+                //{
+                //    frmProductSearchPopupObj.Close();
+                //    frmProductSearchPopupObj = null;
+                //}
+                //if (frmPurchaseInvoiceRegisterObj != null)
+                //{
+                //    frmPurchaseInvoiceRegisterObj.Close();
+                //    frmPurchaseInvoiceRegisterObj = null;
+                //}
+                //if (frmPurchaseReportObj != null)
+                //{
+                //    frmPurchaseReportObj.Close();
+                //    frmPurchaseReportObj = null;
+                //}
+                //if (vatReturnReportobj != null)
+                //{
+                //    vatReturnReportobj.Close();
+                //    vatReturnReportobj = null;
+                //}
                 if (objVoucherSearch != null)
                 {
                     objVoucherSearch.Close();
@@ -5185,16 +5120,17 @@ namespace Open_Miracle
                 }
                 if (e.KeyCode == Keys.F && Control.ModifierKeys == Keys.Control) //Pop Up
                 {
-                    if (cmbCashOrParty.SelectedIndex != -1)
-                    {
-                        frmLedgerPopup frmLedgerPopupObj = new frmLedgerPopup();
-                        frmLedgerPopupObj.MdiParent = formMDI.MDIObj;
-                        frmLedgerPopupObj.CallFromPurchaseInvoice(this, Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString()), "CashOrSundryCreditors");
-                    }
-                    else
-                    {
-                        Messages.InformationMessage("Select any cash or party");
-                    }
+                    //TODO LedgerPopup
+                    //if (cmbCashOrParty.SelectedIndex != -1)
+                    //{
+                    //    frmLedgerPopup frmLedgerPopupObj = new frmLedgerPopup();
+                    //    frmLedgerPopupObj.MdiParent = formMDI.MDIObj;
+                    //    frmLedgerPopupObj.CallFromPurchaseInvoice(this, Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString()), "CashOrSundryCreditors");
+                    //}
+                    //else
+                    //{
+                    //    Messages.InformationMessage("Select any cash or party");
+                    //}
                 }
             }
             catch (Exception ex)
@@ -5235,28 +5171,7 @@ namespace Open_Miracle
         /// <param name="e"></param>
         private void cmbPurchaseMode_KeyDown(object sender, KeyEventArgs e)
         {
-            try
-            {
-                if (e.KeyCode == Keys.Enter)
-                {
-                    if (cmbVoucherType.Visible)
-                    {
-                        cmbVoucherType.Focus();
-                    }
-                    else
-                    {
-                        cmbPurchaseAccount.Focus();
-                    }
-                }
-                if (e.KeyCode == Keys.Back)
-                {
-                    txtCreditPeriod.Focus();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("PI114:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+
         }
         /// <summary>
         /// Enterkey and backspace navigation of cmbVoucherType
@@ -5339,9 +5254,10 @@ namespace Open_Miracle
                 {
                     if (cmbCashOrParty.SelectedIndex != -1)
                     {
-                        frmLedgerPopup frmLedgerPopupObj = new frmLedgerPopup();
-                        frmLedgerPopupObj.MdiParent = formMDI.MDIObj;
-                        frmLedgerPopupObj.CallFromPurchaseInvoice(this, Convert.ToDecimal(cmbPurchaseAccount.SelectedValue.ToString()), "PurchaseAccount");
+                        //TODO LedgerPopUp
+                        //frmLedgerPopup frmLedgerPopupObj = new frmLedgerPopup();
+                        //frmLedgerPopupObj.MdiParent = formMDI.MDIObj;
+                        //frmLedgerPopupObj.CallFromPurchaseInvoice(this, Convert.ToDecimal(cmbPurchaseAccount.SelectedValue.ToString()), "PurchaseAccount");
                     }
                     else
                     {
@@ -5410,16 +5326,17 @@ namespace Open_Miracle
                 {
                     if (dgvProductDetails.Columns[dgvProductDetails.CurrentCell.ColumnIndex].Name == "dgvtxtProductName" || dgvProductDetails.Columns[dgvProductDetails.CurrentCell.ColumnIndex].Name == "dgvtxtProductCode")
                     {
-                        frmProductSearchPopup frmProductSearchPopupObj = new frmProductSearchPopup();
-                        frmProductSearchPopupObj.MdiParent = formMDI.MDIObj;
-                        if (dgvProductDetails.CurrentRow.Cells["dgvtxtProductCode"].Value != null || dgvProductDetails.CurrentRow.Cells["dgvtxtProductName"].Value != null)
-                        {
-                            frmProductSearchPopupObj.CallFromPurchaseInvoice(this, dgvProductDetails.CurrentRow.Index, dgvProductDetails.CurrentRow.Cells["dgvtxtProductCode"].Value.ToString());
-                        }
-                        else
-                        {
-                            frmProductSearchPopupObj.CallFromPurchaseInvoice(this, dgvProductDetails.CurrentRow.Index, string.Empty);
-                        }
+                        //TODO Product SearchPopUp
+                        //frmProductSearchPopup frmProductSearchPopupObj = new frmProductSearchPopup();
+                        //frmProductSearchPopupObj.MdiParent = formMDI.MDIObj;
+                        //if (dgvProductDetails.CurrentRow.Cells["dgvtxtProductCode"].Value != null || dgvProductDetails.CurrentRow.Cells["dgvtxtProductName"].Value != null)
+                        //{
+                        //    frmProductSearchPopupObj.CallFromPurchaseInvoice(this, dgvProductDetails.CurrentRow.Index, dgvProductDetails.CurrentRow.Cells["dgvtxtProductCode"].Value.ToString());
+                        //}
+                        //else
+                        //{
+                        //    frmProductSearchPopupObj.CallFromPurchaseInvoice(this, dgvProductDetails.CurrentRow.Index, string.Empty);
+                        //}
                     }
                 }
                 if (e.KeyCode == Keys.C && Control.ModifierKeys == Keys.Alt) //Product Creation
@@ -5427,9 +5344,9 @@ namespace Open_Miracle
                     SendKeys.Send("{f10}");
                     if (dgvProductDetails.Columns[dgvProductDetails.CurrentCell.ColumnIndex].Name == "dgvtxtProductName" || dgvProductDetails.Columns[dgvProductDetails.CurrentCell.ColumnIndex].Name == "dgvtxtProductCode")
                     {
-                        frmProductCreation frmProductCreationObj = new frmProductCreation();
-                        frmProductCreationObj.MdiParent = formMDI.MDIObj;
-                        frmProductCreationObj.CallFromPurchaseInvoice(this);
+                        //frmProductCreation frmProductCreationObj = new frmProductCreation();
+                        //frmProductCreationObj.MdiParent = formMDI.MDIObj;
+                        //frmProductCreationObj.CallFromPurchaseInvoice(this);
                     }
                 }
                 if (e.KeyCode == Keys.Escape)

@@ -155,5 +155,17 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
         }
+        public void LedgerPostDelete(string strVoucherNo, decimal decVoucherTypeId)
+        {
+            IMEEntities db = new IMEEntities();
+            try
+            {
+                db.LedgerPostDelete(decVoucherTypeId,strVoucherNo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }
