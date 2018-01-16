@@ -162,7 +162,7 @@ namespace LoginForm.PurchaseOrder
                  var fno = IME.PurchaseOrders.Where(b => b.FicheNo == sayac).FirstOrDefault();
                     if (fno != null)
                     {
-                        var fichenolist = (from p in IME.PurchaseOrders.Where(p => Convert.ToInt32(p.FicheNo) == sayac)
+                        var fichenolist = (from p in IME.PurchaseOrders.Where(p => p.FicheNo == sayac)
                                            select new
                                            {
                                                p.FicheNo,

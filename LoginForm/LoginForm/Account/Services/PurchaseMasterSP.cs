@@ -113,20 +113,20 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
-        public PurchaseMaster PurchaseMasterView(Decimal purchaseMasterId)
-        {
-            IMEEntities IME = new IMEEntities();
-            PurchaseMaster purchasemasterinfo = new PurchaseMaster();
-            try
-            {
-                purchasemasterinfo = IME.PurchaseMasters.Where(x => x.purchaseMasterId == purchaseMasterId).FirstOrDefault();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            return purchasemasterinfo;
-        }
+        //public PurchaseMaster PurchaseMasterView(Decimal purchaseMasterId)
+        //{
+        //    IMEEntities IME = new IMEEntities();
+        //    PurchaseMaster purchasemasterinfo = new PurchaseMaster();
+        //    try
+        //    {
+        //        purchasemasterinfo = IME.PurchaseMasters.Where(x => x.purchaseMasterId == purchaseMasterId).FirstOrDefault();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.ToString());
+        //    }
+        //    return purchasemasterinfo;
+        //}
         public DataTable GetMaterialReceiptNoCorrespondingtoLedgerByNotInCurrPI(string decLedgerId, string decPurchaseMasterId, decimal decVoucherTypeId)
         {
             IMEEntities db = new IMEEntities();
@@ -231,7 +231,7 @@ namespace LoginForm.Account.Services
             int inRef = 0;
             try
             {
-                inRef = new IMEEntities().PurchaseInvoiceVoucherNoCheckExistance();
+                inRef = Convert.ToInt32(new IMEEntities().PurchaseInvoiceVoucherNoCheckExistance(strInvoiceNo, strVoucherNo, decVoucherTypeId, decPurchaseMasterId));
             }
             catch (Exception ex)
             {
@@ -245,7 +245,7 @@ namespace LoginForm.Account.Services
             decimal decPurchaseMasterId = 0;
             try
             {
-                decPurchaseMasterId = new IMEEntities().PurchaseMasterAdd(p.voucherNo,
+                decPurchaseMasterId = Convert.ToDecimal(new IMEEntities().PurchaseMasterAdd(p.voucherNo,
                     p.invoiceNo,
                     p.suffixPrefixId,
                     p.voucherTypeId,
@@ -267,7 +267,7 @@ namespace LoginForm.Account.Services
                     p.userId,
                     p.lrNo,
                     p.transportationCompany,
-                    p.financialYearId);
+                    p.financialYearId));
             }
             catch (Exception ex)
             {
@@ -282,7 +282,7 @@ namespace LoginForm.Account.Services
             PurchaseMaster purchasemasterinfo = new PurchaseMaster();
             try
             {
-                PurchaseMaster p = db.PurchaseMasterView(purchaseMasterId);
+                var p = db.PurchaseMasterView(purchaseMasterId);
 
                 purchasemasterinfo.purchaseMasterId = p.purchaseMasterId;
                 purchasemasterinfo.voucherNo = p.voucherNo;

@@ -38,9 +38,9 @@ namespace LoginForm.Account.Services
                 row["unitName"] = item.unitName;
                 row["narration"] = item.narration;
                 row["noOfDecimalplaces"] = item.noOfDecimalplaces;
-                dt.Rows.Add(row);
+                dtbl.Rows.Add(row);
             }
-            return dt;
+            return dtbl;
         }
 
         public DataTable UnitViewAllByProductId(string decProductId)

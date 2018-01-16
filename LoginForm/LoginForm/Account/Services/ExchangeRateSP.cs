@@ -44,7 +44,7 @@ namespace LoginForm.Account.Services
             decimal exchangeRate = 0;
             try
             {
-                exchangeRate = db.ExchangeRateViewByExchangeRateId(decExchangeRateId);
+                exchangeRate = Convert.ToDecimal(db.ExchangeRateViewByExchangeRateId(decExchangeRateId));
 
             }
             catch (Exception ex)

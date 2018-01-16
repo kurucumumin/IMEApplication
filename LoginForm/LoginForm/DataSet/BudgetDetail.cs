@@ -19,7 +19,7 @@ namespace LoginForm.DataSet
         public string particular { get; set; }
         public Nullable<decimal> credit { get; set; }
         public Nullable<decimal> debit { get; set; }
-
+    
         public virtual BudgetMaster BudgetMaster { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class SalesMaster
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +21,7 @@ namespace LoginForm.DataSet
             this.SalesReturnMasters = new HashSet<SalesReturnMaster>();
             this.tbl_SalesBillTax = new HashSet<tbl_SalesBillTax>();
         }
-
+    
         public decimal salesMasterId { get; set; }
         public string voucherNo { get; set; }
         public string invoiceNo { get; set; }
@@ -49,7 +49,7 @@ namespace LoginForm.DataSet
         public Nullable<bool> POS { get; set; }
         public Nullable<decimal> counterId { get; set; }
         public Nullable<decimal> financialYearId { get; set; }
-
+    
         public virtual DeliveryNoteMaster DeliveryNoteMaster { get; set; }
         public virtual ExchangeRate ExchangeRate { get; set; }
         public virtual FinancialYear FinancialYear { get; set; }

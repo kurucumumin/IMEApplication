@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class AccountLedger
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -40,7 +40,7 @@ namespace LoginForm.DataSet
             this.SalaryVoucherMasters = new HashSet<SalaryVoucherMaster>();
             this.SaleOrders = new HashSet<SaleOrder>();
         }
-
+    
         public decimal ledgerId { get; set; }
         public Nullable<int> accountGroupID { get; set; }
         public string ledgerName { get; set; }
@@ -66,7 +66,7 @@ namespace LoginForm.DataSet
         public string branchCode { get; set; }
         public Nullable<System.DateTime> extraDate { get; set; }
         public Nullable<decimal> areaId { get; set; }
-
+    
         public virtual AccountGroup AccountGroup { get; set; }
         public virtual Area Area { get; set; }
         public virtual Route Route { get; set; }

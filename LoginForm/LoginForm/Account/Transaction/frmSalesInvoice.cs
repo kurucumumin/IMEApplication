@@ -1081,7 +1081,7 @@ namespace LoginForm
             try
             {
                 DateTime dtcurrentDate = DateTime.Now; ;
-                decimal decNodecplaces = 4;
+                
                 decPricingLevelId = Convert.ToDecimal(cmbPricingLevel.SelectedValue.ToString());
 
                 decimal decRate = spProduct.SalesInvoiceProductRateForSales((int)cmbCurrency.SelectedValue);

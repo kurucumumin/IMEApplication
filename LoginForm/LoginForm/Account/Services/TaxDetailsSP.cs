@@ -18,14 +18,14 @@ namespace LoginForm.Account.Services
             DataTable dtbl = new DataTable();
             try
             {
-                var adaptor = db.TaxDetailsViewallByTaxId(decTaxId);
+                var adaptor = db.TaxDetailsViewAllByTaxId(decTaxId).ToList();
 
                 dtbl.Columns.Add("selectedtaxId");
 
                 foreach (var item in adaptor)
                 {
                     DataRow row = dtbl.NewRow();
-                    row["selectedtaxId"] = item.selectedtaxId;
+                    row["selectedtaxId"] = item;
 
                     dtbl.Rows.Add(row);
                 }
