@@ -29,18 +29,18 @@ namespace LoginForm.Account.Services
             dt.Columns.Add("calculatingMode");
             dt.Columns.Add("rate");
             dt.Columns.Add("taxAmount");
-            foreach (var item in adaptor)
-            {
-                var row = dt.NewRow();
-                row["taxId"] = item.taxId;
-                row["ledgerId"] = item.ledgerId;
-                row["taxName"] = item.taxName;
-                row["ApplicationOn"] = item.ApplicationOn;
-                row["calculatingMode"] = item.calculatingMode;
-                row["rate"] = item.rate;
-                row["taxAmount"] = item.taxAmount;
-                dt.Rows.Add(row);
-            }
+            //foreach (var item in adaptor)
+            //{
+            //    var row = dt.NewRow();
+            //    row["taxId"] = item.taxId;
+            //    row["ledgerId"] = item.ledgerId;
+            //    row["taxName"] = item.taxName;
+            //    row["ApplicationOn"] = item.ApplicationOn;
+            //    row["calculatingMode"] = item.calculatingMode;
+            //    row["rate"] = item.rate;
+            //    row["taxAmount"] = item.taxAmount;
+            //    dt.Rows.Add(row);
+            //}
             return dt;
         }
 
@@ -48,11 +48,11 @@ namespace LoginForm.Account.Services
         {
             decimal dcSalesBillTaxId = 0;
             IMEEntities IME = new IMEEntities();
-            SalesBillTax sbt = new SalesBillTax();
+            tbl_SalesBillTax sbt = new tbl_SalesBillTax();
             sbt.taxId= salesbilltaxinfo.TaxId;
             sbt.taxAmount = salesbilltaxinfo.TaxAmount;
             sbt.salesMasterId = salesbilltaxinfo.SalesMasterId;
-            IME.SalesBillTaxes.Add(sbt);
+            IME.tbl_SalesBillTax.Add(sbt);
             dcSalesBillTaxId = sbt.salesBillTaxId;
             return dcSalesBillTaxId;
         }

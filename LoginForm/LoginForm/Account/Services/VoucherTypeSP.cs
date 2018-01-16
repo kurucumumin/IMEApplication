@@ -276,15 +276,14 @@ namespace LoginForm.Account.Services
             VoucherType vouchertypeinfo = new VoucherType();
             try
             {
-                var adaptor = db.VoucherTypeView(voucherTypeId);
+                var adaptor = db.VoucherTypeView(voucherTypeId).FirstOrDefault();
 
-                vouchertypeinfo.voucherTypeId = adaptor.Voucher;
+                vouchertypeinfo.voucherTypeId = adaptor.voucherTypeId;
                 vouchertypeinfo.voucherTypeName = adaptor.voucherTypeName;
                 vouchertypeinfo.typeOfVoucher = adaptor.typeOfVoucher;
                 vouchertypeinfo.methodOfVoucherNumbering = adaptor.methodOfVoucherNumbering;
                 vouchertypeinfo.isTaxApplicable = adaptor.isTaxApplicable;
-                vouchertypeinfo.narration = adaptor.narration;
-                vouchertypeinfo.isActive = adaptor.isActive;
+                vouchertypeinfo.isActive = Convert.ToBoolean(adaptor.isActive);
                 vouchertypeinfo.masterId = adaptor.masterId;
                 vouchertypeinfo.declaration = adaptor.declaration;
                 vouchertypeinfo.heading1 = adaptor.heading1;

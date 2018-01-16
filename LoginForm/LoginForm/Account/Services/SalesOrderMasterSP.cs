@@ -6,9 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data;
 using System.Data.SqlClient;
-using LoginForm.DataSet;
 
 namespace LoginForm.Account.Services
 {
@@ -44,18 +42,22 @@ namespace LoginForm.Account.Services
             var adaptor = IME.SaleOrders.Where(a => a.SaleOrderNo == strOrderMasterId);
             dt.Columns.Add("invoiceNo");
             dt.Columns.Add("SaleOrderNo");
+            dt.Columns.Add("ledgerId");
+            dt.Columns.Add("exchangeRateID");
+            dt.Columns.Add("currencyId");
+            dt.Columns.Add("WorkerID");
+            dt.Columns.Add("pricingLevelId");
 
             foreach (var item in adaptor)
             {
                 var row = dt.NewRow();
-                row["invoiceNo"] = item.SaleOrderNo;
-                row["SaleOrderNo"] = item.VoucherNo;
-                row["SaleOrderNo"] = item.suffixPrefixId;
-                row["SaleOrderNo"] = item.ledgerId;
-                row["SaleOrderNo"] = item.exchangeRateID;
-                row["SaleOrderNo"] = item.ExchangeRate.currencyId;
-                row["SaleOrderNo"] = item.Worker.WorkerID;
-                row["SaleOrderNo"] = item.pricingLevelId;
+                row["invoiceNo"] = item.invoiceNo;
+                row["SaleOrderNo"] = item.SaleOrderNo;
+                row["ledgerId"] = item.ledgerId;
+                row["exchangeRateID"] = item.exchangeRateID;
+                row["currencyId"] = item.ExchangeRate.currencyId;
+                row["WorkerID"] = item.Worker.WorkerID;
+                row["pricingLevelId"] = item.pricingLevelId;
 
                 dt.Rows.Add(row);
             }

@@ -384,7 +384,7 @@ namespace Open_Miracle
         /// <param name="decProductId"></param>
         /// <param name="inRow"></param>
         /// <param name="inColumn"></param>
-        public void UnitComboFill(decimal decProductId, int inRow, int inColumn)
+        public void UnitComboFill(string decProductId, int inRow, int inColumn)
         {
             try
             {
@@ -599,7 +599,7 @@ namespace Open_Miracle
                                     dgvProductDetails.Rows[i].Cells["dgvtxtProductCode"].Value = dr["productCode"].ToString();
                                     dgvProductDetails.Rows[i].Cells["dgvtxtProductName"].Value = dr["productName"].ToString();
                                     dgvProductDetails.Rows[i].Cells["dgvtxtQuantity"].Value = dr["qty"].ToString();
-                                    UnitComboFill(Convert.ToDecimal(dr["productId"].ToString()), i, dgvProductDetails.Rows[i].Cells["dgvcmbUnit"].ColumnIndex);
+                                    UnitComboFill(dr["productId"].ToString(), i, dgvProductDetails.Rows[i].Cells["dgvcmbUnit"].ColumnIndex);
                                     dgvProductDetails.Rows[i].Cells["dgvtxtUnitConversionId"].Value = dr["unitConversionId"].ToString();
                                     dgvProductDetails.Rows[i].Cells["dgvcmbUnit"].Value = Convert.ToDecimal(dr["unitId"].ToString());
 
@@ -692,7 +692,7 @@ namespace Open_Miracle
                                     dgvProductDetails.Rows[i].Cells["dgvtxtProductCode"].Value = dr["productCode"].ToString();
                                     dgvProductDetails.Rows[i].Cells["dgvtxtProductName"].Value = dr["productName"].ToString();
                                     dgvProductDetails.Rows[i].Cells["dgvtxtQuantity"].Value = dr["qty"].ToString();
-                                    UnitComboFill(Convert.ToDecimal(dr["productId"].ToString()), i, dgvProductDetails.Rows[i].Cells["dgvcmbUnit"].ColumnIndex);
+                                    UnitComboFill(dr["productId"].ToString(), i, dgvProductDetails.Rows[i].Cells["dgvcmbUnit"].ColumnIndex);
                                     dgvProductDetails.Rows[i].Cells["dgvtxtUnitConversionId"].Value = dr["unitConversionId"].ToString();
                                     dgvProductDetails.Rows[i].Cells["dgvcmbUnit"].Value = Convert.ToDecimal(dr["unitId"].ToString());
 
@@ -1755,7 +1755,7 @@ namespace Open_Miracle
                             infoPurchaseDetails.grossAmount = Convert.ToDecimal(dgvrow.Cells["dgvtxtGrossValue"].Value.ToString());
                             infoPurchaseDetails.netAmount = Convert.ToDecimal(dgvrow.Cells["dgvtxtNetValue"].Value.ToString());
                             infoPurchaseDetails.orderDetailsId = Convert.ToInt32(dgvrow.Cells["dgvtxtPurchaseOrderDetailsId"].Value.ToString());
-                            infoPurchaseDetails.productId = Convert.ToDecimal(dgvrow.Cells["dgvtxtProductId"].Value.ToString());
+                            infoPurchaseDetails.productId = dgvrow.Cells["dgvtxtProductId"].Value.ToString();
                             infoPurchaseDetails.purchaseMasterId = decPurchaseMasterId;
                             infoPurchaseDetails.qty = Convert.ToDecimal(dgvrow.Cells["dgvtxtQuantity"].Value.ToString());
                             infoPurchaseDetails.rackId = Convert.ToDecimal(dgvrow.Cells["dgvcmbRack"].Value.ToString());
@@ -1773,7 +1773,7 @@ namespace Open_Miracle
                             infoStockPosting.godownId = infoPurchaseDetails.godownId;
                             infoStockPosting.inwardQty = infoPurchaseDetails.qty; /// spUnitConvertion.UnitConversionRateByUnitConversionId(infoPurchaseDetails.UnitConversionId);
                             infoStockPosting.outwardQty = 0;
-                            infoStockPosting.productId = infoPurchaseDetails.productId;
+                            infoStockPosting.productId = Convert.ToDecimal(infoPurchaseDetails.productId);
                             infoStockPosting.rackId = infoPurchaseDetails.rackId;
                             infoStockPosting.rate = infoPurchaseDetails.rate;
                             infoStockPosting.unitId = infoPurchaseDetails.unitId;
@@ -2075,7 +2075,7 @@ namespace Open_Miracle
                             infoPurchaseDetails.grossAmount = Convert.ToDecimal(dgvrow.Cells["dgvtxtGrossValue"].Value.ToString());
                             infoPurchaseDetails.netAmount = Convert.ToDecimal(dgvrow.Cells["dgvtxtNetValue"].Value.ToString());
                             infoPurchaseDetails.orderDetailsId = Convert.ToInt32(dgvrow.Cells["dgvtxtPurchaseOrderDetailsId"].Value.ToString());
-                            infoPurchaseDetails.productId = Convert.ToDecimal(dgvrow.Cells["dgvtxtProductId"].Value.ToString());
+                            infoPurchaseDetails.productId = dgvrow.Cells["dgvtxtProductId"].Value.ToString();
                             infoPurchaseDetails.purchaseMasterId = decPurchaseMasterId;
                             infoPurchaseDetails.qty = Convert.ToDecimal(dgvrow.Cells["dgvtxtQuantity"].Value.ToString());
                             infoPurchaseDetails.rackId = Convert.ToDecimal(dgvrow.Cells["dgvcmbRack"].Value.ToString());
@@ -2108,7 +2108,7 @@ namespace Open_Miracle
                             infoStockPosting.godownId = infoPurchaseDetails.godownId;
                             infoStockPosting.inwardQty = infoPurchaseDetails.qty; /// spUnitConvertion.UnitConversionRateByUnitConversionId(infoPurchaseDetails.UnitConversionId);
                             infoStockPosting.outwardQty = 0;
-                            infoStockPosting.productId = infoPurchaseDetails.productId;
+                            infoStockPosting.productId = Convert.ToDecimal(infoPurchaseDetails.productId);
                             infoStockPosting.rackId = infoPurchaseDetails.rackId;
                             infoStockPosting.rate = infoPurchaseDetails.rate;
                             infoStockPosting.unitId = infoPurchaseDetails.unitId;
@@ -2791,7 +2791,7 @@ namespace Open_Miracle
         /// <param name="strFillMode"></param>
         public void ProductDetailsFill(string strProduct, int inRowIndex, string strFillMode)
         {
-            decimal decProductId = 0;
+            string decProductId = "";
             decimal decGodownId = 0;
             PurchaseDetailsSP spPurchaseDetails = new PurchaseDetailsSP();
             DataTable dtbl = new DataTable();
@@ -2811,7 +2811,7 @@ namespace Open_Miracle
                 }
                 if (dtbl.Rows.Count >= 1)
                 {
-                    decProductId = Convert.ToDecimal(dtbl.Rows[0]["productId"]);
+                    decProductId = dtbl.Rows[0]["productId"].ToString();
                     decGodownId = Convert.ToDecimal(dtbl.Rows[0]["godownId"]);
                     UnitComboFill(decProductId, inRowIndex, dgvProductDetails.Columns["dgvcmbUnit"].Index);
                     GodownComboFill();
@@ -3177,7 +3177,7 @@ namespace Open_Miracle
                     dgvProductDetails.Rows[i].Cells["dgvtxtProductCode"].Value = dr["productCode"].ToString();
                     dgvProductDetails.Rows[i].Cells["dgvtxtProductName"].Value = dr["productName"].ToString();
                     dgvProductDetails.Rows[i].Cells["dgvtxtQuantity"].Value = dr["qty"].ToString();
-                    UnitComboFill(Convert.ToDecimal(dr["productId"].ToString()), i, dgvProductDetails.Rows[i].Cells["dgvcmbUnit"].ColumnIndex);
+                    UnitComboFill(dr["productId"].ToString(), i, dgvProductDetails.Rows[i].Cells["dgvcmbUnit"].ColumnIndex);
                     dgvProductDetails.Rows[i].Cells["dgvtxtUnitConversionId"].Value = dr["unitConversionId"].ToString();
                     dgvProductDetails.Rows[i].Cells["dgvcmbUnit"].Value = Convert.ToDecimal(dr["unitId"].ToString());
 

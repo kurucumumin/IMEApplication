@@ -13,12 +13,12 @@ namespace LoginForm.Account.Services
     class BatchSP
     {
         IMEEntities IME = new IMEEntities();
-        public string ProductBatchBarcodeViewByBatchId(decimal decBathId)
-        {
-            string barCode = string.Empty;
-            if (IME.Batches.Where(a => a.batchId == decBathId).FirstOrDefault() != null) barCode = IME.Batches.Where(a => a.batchId == decBathId).FirstOrDefault().barcode;
-            return barCode;
-        }
+        //public string ProductBatchBarcodeViewByBatchId(decimal decBathId)
+        //{
+        //    string barCode = string.Empty;
+        //    if (IME.Batches.Where(a => a.batchId == decBathId).FirstOrDefault() != null) barCode = IME.Batches.Where(a => a.batchId == decBathId).FirstOrDefault().barcode;
+        //    return barCode;
+        //}
 
         public DataTable BatchNamesCorrespondingToProduct(string decproductId)
         {
@@ -106,7 +106,7 @@ namespace LoginForm.Account.Services
             string barCode = string.Empty;
             try
             {
-                barCode = db.ProductBatchBarcodeViewByBatchId(decBathId);
+                barCode = Convert.ToString(db.ProductBatchBarcodeViewByBatchId(decBathId));
             }
             catch (Exception ex)
             {

@@ -436,37 +436,32 @@ namespace LoginForm.Account.Services
 
             }
 
-            public DataTable VoucherTypesBasedOnTypeOfVouchers(string typeOfVouchers)
-            {
-                IMEEntities db = new IMEEntities();
-                DataTable dt = new DataTable();
-                var adaptor = (from vt in db.VoucherTypes
-                               where (vt.typeOfVoucher== typeOfVouchers)
-                               select new
-                               {
-                                   vt.voucherTypeId,
-                                   vt.voucherTypeName,
-                                   vt.typeOfVoucher
-                               }).ToList();
-                dt.Columns.Add("voucherTypeId");
-                dt.Columns.Add("voucherTypeName");
-                dt.Columns.Add("typeOfVoucher");
-                foreach (var item in adaptor)
-                {
-                    var row = dt.NewRow();
+            //public DataTable VoucherTypesBasedOnTypeOfVouchers(string typeOfVouchers)
+            //{
+            //    IMEEntities db = new IMEEntities();
+            //    DataTable dt = new DataTable();
+            //    var adaptor = (from vt in db.VoucherTypes
+            //                   where (vt.typeOfVoucher== typeOfVouchers)
+            //                   select new
+            //                   {
+            //                       vt.voucherTypeId,
+            //                       vt.voucherTypeName,
+            //                       vt.typeOfVoucher
+            //                   }).ToList();
+            //    dt.Columns.Add("voucherTypeId");
+            //    dt.Columns.Add("voucherTypeName");
+            //    dt.Columns.Add("typeOfVoucher");
+            //    foreach (var item in adaptor)
+            //    {
+            //        var row = dt.NewRow();
 
-                    row["voucherTypeId"] = item.voucherTypeId;
-                    row["voucherTypeName"] = item.voucherTypeName;
-                    row["voucherTypeName"] = item.voucherTypeName;
-                    dt.Rows.Add(row);
-                }
-                return dt;
-            }
+            //        row["voucherTypeId"] = item.voucherTypeId;
+            //        row["voucherTypeName"] = item.voucherTypeName;
+            //        row["voucherTypeName"] = item.voucherTypeName;
+            //        dt.Rows.Add(row);
+            //    }
+            //    return dt;
+            //}
         }
-<<<<<<< HEAD
 
-    }
-
-=======
 }
->>>>>>> f283cd7dc6457d880103b07201658c2a17522329

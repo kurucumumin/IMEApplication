@@ -10,16 +10,10 @@
 namespace LoginForm.DataSet
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class BudgetDetail
+    public partial class GroupNameViewForComboFill_Result
     {
-        public decimal budgetDetailsId { get; set; }
-        public Nullable<decimal> budgetMasterId { get; set; }
-        public string particular { get; set; }
-        public Nullable<decimal> credit { get; set; }
-        public Nullable<decimal> debit { get; set; }
-    
-        public virtual BudgetMaster BudgetMaster { get; set; }
+        public int accountGroupId { get; set; }
+        public string accountGroupName { get; set; }
     }
 }

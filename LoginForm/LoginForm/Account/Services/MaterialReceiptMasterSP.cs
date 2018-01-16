@@ -71,7 +71,7 @@ namespace LoginForm.Account.Services
             MaterialReceiptMaster mr = new MaterialReceiptMaster();
             try
             {
-                MaterialReceiptMaster m = db.MaterialReceiptMasterView(materialReceiptMasterId);
+                var m = db.MaterialReceiptMasterView(materialReceiptMasterId).FirstOrDefault();
 
                 mr.materialReceiptMasterId = m.materialReceiptMasterId;
                 mr.voucherNo = m.voucherNo;

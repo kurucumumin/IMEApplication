@@ -402,7 +402,7 @@ namespace LoginForm.Account.Services
                     row["netvalue"] = item.netvalue;
                     row["taxId"] = item.taxId;
                     row["taxAmount"] = item.taxAmount;
-                    row["Amount"] = item.Amount;
+                    row["Amount"] = item.amount;
 
                     dtbl.Rows.Add(row);
                 }

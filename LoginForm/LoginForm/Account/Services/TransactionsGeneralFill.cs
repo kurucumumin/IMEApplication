@@ -122,32 +122,30 @@ namespace LoginForm.Account.Services
             return dt;
         }
 
-        public DataTable PricingLevelViewAll(ComboBox cmbPricingLevel, bool isAll)
-        {
-            IMEEntities IME = new IMEEntities();
-            DataTable dtbl = new DataTable();
-            try
-            {
-                var adaptor = (from a in IME.PricingLevels
-                               select new
-                               {
-                                   a.pricinglevelId,a.pricinglevelName
-                               }).ToList();
+        //public DataTable PricingLevelViewAll(ComboBox cmbPricingLevel, bool isAll)
+        //{
+        //    IMEEntities IME = new IMEEntities();
+        //    DataTable dtbl = new DataTable();
+        //    try
+        //    {
+        //        var adaptor = (from a in IME.PricingLevels
+        //                       select new
+        //                       {
+        //                           a.pricinglevelId,a.pricinglevelName
+        //                       }).ToList();
 
-                dtbl.Columns.Add("pricinglevelId");
-                dtbl.Columns.Add("pricinglevelName");
-                cmbPricingLevel.DataSource = dtbl;
-                cmbPricingLevel.DisplayMember = "pricinglevelName";
-                cmbPricingLevel.ValueMember = "pricinglevelId";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            return dtbl;
-        }
-
-
+        //        dtbl.Columns.Add("pricinglevelId");
+        //        dtbl.Columns.Add("pricinglevelName");
+        //        cmbPricingLevel.DataSource = dtbl;
+        //        cmbPricingLevel.DisplayMember = "pricinglevelName";
+        //        cmbPricingLevel.ValueMember = "pricinglevelId";
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.ToString());
+        //    }
+        //    return dtbl;
+        //}
 
         public void CashOrBankComboFill(ComboBox cmbCashOrBank, bool isAll)
         {
@@ -376,9 +374,8 @@ namespace LoginForm.Account.Services
             {
                 MessageBox.Show(ex.ToString());
             }
-                return isTrue;
+                //return isTrue;
             }
-        }
 
         public DataTable AccountLedgerComboFill()
         {
@@ -395,62 +392,29 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
-        public bool StatusOfPrintAfterSave()
-        {
-            IMEEntities db = new IMEEntities();
-            string strStatus = "";
-            bool isTrue = false;
-            try
-            {
-                strStatus = db.PrintAfterSave();
-                if (strStatus == "Yes")
-                {
-                    isTrue = true;
-                }
-                else
-                {
-                    isTrue = false;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-                return isTrue;
-            }
-        }
-
-        //public DataTable PricingLevelViewAll(ComboBox cmbPricingLevel, bool isAll)
+        //public bool StatusOfPrintAfterSave()
         //{
-        //    IMEEntities IME = new IMEEntities();
-        //    DataTable dtbl = new DataTable();
-        //    dtbl.Columns.Add("SlNo", typeof(decimal));
-        //    dtbl.Columns["SlNo"].AutoIncrement = true;
-        //    dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
-        //    dtbl.Columns["SlNo"].AutoIncrementStep = 1;
+        //    IMEEntities db = new IMEEntities();
+        //    string strStatus = "";
+        //    bool isTrue = false;
         //    try
         //    {
-        //        var adaptor = IME.PricingLevelViewAll();
-
-
-        //        dtbl.Columns.Add("pricinglevelId");
-        //        dtbl.Columns.Add("pricinglevelName");
-
-        //        foreach (var item in adaptor)
+        //        strStatus = db.PrintAfterSave();
+        //        if (strStatus == "Yes")
         //        {
-        //            var row = dtbl.NewRow();
-
-        //            row["pricinglevelId"] = item.pricinglevelId;
-        //            row["pricinglevelName"] = item.pricinglevelName;
-
-        //            dtbl.Rows.Add(row);
+        //            isTrue = true;
+        //        }
+        //        else
+        //        {
+        //            isTrue = false;
         //        }
         //    }
         //    catch (Exception ex)
         //    {
         //        MessageBox.Show(ex.ToString());
         //    }
-        //    return dtbl;
+        //    return isTrue;
         //}
     }
+   
 }

@@ -696,30 +696,30 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
-        public AccountLedger AccountLedgerView(decimal ledgerId)
-        {
-            IMEEntities IME = new IMEEntities();
-            AccountLedger accountledgerinfo = new AccountLedger();
-            try
-            {
-                accountledgerinfo = IME.AccountLedgers.Where(x => x.ledgerId == ledgerId).FirstOrDefault();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            return accountledgerinfo;
-        }
+        //public AccountLedger AccountLedgerView(decimal ledgerId)
+        //{
+        //    IMEEntities IME = new IMEEntities();
+        //    AccountLedger accountledgerinfo = new AccountLedger();
+        //    try
+        //    {
+        //        accountledgerinfo = IME.AccountLedgers.Where(x => x.ledgerId == ledgerId).FirstOrDefault();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.ToString());
+        //    }
+        //    return accountledgerinfo;
+        //}
         public AccountLedger AccountLedgerView(decimal ledgerId)
         {
             IMEEntities db = new IMEEntities();
             AccountLedger accountledgerinfo = new AccountLedger();
             try
             {
-                AccountLedger a = db.AccountLedgerView(ledgerId);
+                var a = db.AccountLedgerView(ledgerId).FirstOrDefault();
 
                 accountledgerinfo.ledgerId = a.ledgerId;
-                accountledgerinfo.accountGroupID = a.accountGroupID;
+                accountledgerinfo.accountGroupID = a.accountGroupId;
                 accountledgerinfo.ledgerName = a.ledgerName;
                 accountledgerinfo.openingBalance = a.openingBalance;
                 accountledgerinfo.crOrDr = a.crOrDr;

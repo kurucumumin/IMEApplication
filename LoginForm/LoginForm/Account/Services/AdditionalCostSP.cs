@@ -93,11 +93,11 @@ namespace LoginForm.Account.Services
             IME.AdditionalCostEditByVoucherTypeIdAndVoucherNo(additionalcostinfo.VoucherTypeId, additionalcostinfo.VoucherNo, additionalcostinfo.LedgerId, additionalcostinfo.Debit, additionalcostinfo.Credit, additionalcostinfo.ExtraDate, additionalcostinfo.Extra1, additionalcostinfo.Extra2);
         }
 
-        public void AdditionalCostDelete(decimal AdditionalCostId)
-        {
-            IMEEntities IME = new IMEEntities();
-            IME.AdditionalCostDelete(AdditionalCostId);
-        }
+        //public void AdditionalCostDelete(decimal AdditionalCostId)
+        //{
+        //    IMEEntities IME = new IMEEntities();
+        //    IME.AdditionalCostDelete(AdditionalCostId);
+        //}
 
         public void AdditionalCostAdd(AdditionalCostInfo additionalcostinfo)
         {

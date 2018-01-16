@@ -105,5 +105,31 @@ namespace LoginForm.Account.Services
             }
             return isExist;
         }
+
+        public DataTable GroupNameViewForComboFill()
+        {
+            IMEEntities db = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = db.GroupNameViewForComboFill();
+
+                dtbl.Columns.Add("accountGroupId");
+                dtbl.Columns.Add("accountGroupName");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["accountGroupName"] = item.accountGroupName;
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
     }
 }
