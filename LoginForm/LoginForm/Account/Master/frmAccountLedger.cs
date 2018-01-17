@@ -211,11 +211,11 @@ namespace LoginForm
                     txtLedgerName.Focus();
                 }
             }
-        catch (Exception ex)
-        {
-            MessageBox.Show("AL1:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL1:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
-}
         /// <summary>
         ///Function to edit account ledger
         /// </summary>

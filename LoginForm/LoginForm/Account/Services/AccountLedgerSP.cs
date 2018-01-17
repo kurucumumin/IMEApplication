@@ -116,7 +116,7 @@ namespace LoginForm.Account.Services
             }
         }
 
-        public DataTable AccountLedgerSearch(String straccountgroupname, String strledgername)
+        public DataTable AccountLedgerSearch(string straccountgroupname, string strledgername)
         {
             IMEEntities db = new IMEEntities();
             DataTable dtbl = new DataTable();
@@ -135,7 +135,7 @@ namespace LoginForm.Account.Services
                                {
                                    al.ledgerName,
                                    al.AccountGroup.accountGroupName,
-                                   openingBalance = Math.Round((decimal)al.openingBalance, 2),
+                                   al.openingBalance,
                                    al.crOrDr,
                                    al.ledgerId
                                }).ToList();
@@ -226,7 +226,9 @@ namespace LoginForm.Account.Services
                                }).ToList();
 
                 List<int> IDs = adaptor.Select(x => x.AccountGroupId).ToList();
-                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == IDs[0] || x.groupUnder == IDs[1])
+                int ID1 = IDs[0];
+                int ID2 = IDs[1];
+                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == ID1 || x.groupUnder == ID2)
                                 select new
                                 {
                                     AccountGroupId = ag.accountGroupId,
@@ -272,7 +274,9 @@ namespace LoginForm.Account.Services
                                    hierarchyLevel = 1
                                }).ToList();
                 List<int> IDs = adaptor.Select(x => x.AccountGroupId).ToList();
-                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == IDs[0] || x.groupUnder == IDs[1])
+                int ID1 = IDs[0];
+                int ID2 = IDs[1];
+                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == ID1 || x.groupUnder == ID2)
                                 select new
                                 {
                                     AccountGroupId = ag.accountGroupId,
