@@ -486,13 +486,16 @@ namespace LoginForm.Account.Services
             try
             {
                 var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupName == "Sundry Creditors" || x.accountGroupName == "Sundry Debtors")
+                               
                                select new
                                {
                                    AccountGroupId = ag.accountGroupId,
                                    hierarchyLevel = 1
                                }).ToList();
                 List<int> IDs = adaptor.Select(x => x.AccountGroupId).ToList();
-                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == IDs[0] || x.groupUnder == IDs[1])
+                int AccountGroupsID1 = IDs[0];
+                int AccountGroupsID2 = IDs[1];
+                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == AccountGroupsID1 || x.groupUnder == AccountGroupsID2)
                                 select new
                                 {
                                     AccountGroupId = ag.accountGroupId,

@@ -614,9 +614,9 @@ namespace LoginForm
         {
             try
             {
-                cmbEmployee.DataSource = IME.Workers.Where(a => a.isActive == 1);
-                cmbEmployee.ValueMember = "EmployeeId";
-                cmbEmployee.DisplayMember = "EmployeeName";
+                cmbEmployee.DataSource = IME.Workers.Where(a => a.isActive == 1).ToList();
+                cmbEmployee.ValueMember = "WorkerID";
+                cmbEmployee.DisplayMember = "UserName";
                 cmbEmployee.SelectedIndex = -1;
             }
             catch (Exception ex)
@@ -950,8 +950,8 @@ namespace LoginForm
             dtpSalaryMonth.Text = DateTime.Today.ToString("dd-MMM-yyyy");
             dtpDate.Text = DateTime.Today.ToString("dd-MMM-yyyy");
             dtpCheckDate.Text = DateTime.Today.ToString("dd-MMM-yyyy");
-            //TransactionsGeneralFill obj = new TransactionsGeneralFill();
-            //obj.CashOrBankComboFill(cmbCashOrBank, false);
+            TransactionsGeneralFill obj = new TransactionsGeneralFill();
+            obj.CashOrBankComboFill(cmbCashOrBank, false);
             EmployeeComboFill();
             btnAdvancePaymentDelete.Enabled = false;
             Clear();
@@ -1111,11 +1111,11 @@ namespace LoginForm
         /// <param name="e"></param>
         private void frmAdvancePayment_KeyPress(object sender, KeyPressEventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Sure", "Are you sure to close this page?", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                this.Close();
-            }
+            //DialogResult dialogResult = MessageBox.Show("Sure", "Are you sure to close this page?", MessageBoxButtons.YesNo);
+            //if (dialogResult == DialogResult.Yes)
+            //{
+            //    this.Close();
+            //}
         }
         /// <summary>
         /// Decimal validation

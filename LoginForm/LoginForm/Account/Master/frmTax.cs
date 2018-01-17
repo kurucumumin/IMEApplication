@@ -427,11 +427,11 @@ namespace LoginForm
                 {
                     bool strCmbActiveSearch = false;
                     if (strCmbActiveSearchText == "True") { strCmbActiveSearch = true; }
-                    dgvTaxSearch.DataSource = IME.Taxes.Where(a => a.ApplicationOn == cmbApplicableForSearch.Text).Where(b => b.taxName == txtTaxNameSearch.Text.Trim()).Where(c => c.CalculatingMode == cmbCalculationModeSearch.Text).Where(d => d.isActive == strCmbActiveSearch).ToList();
+                    dgvTaxSearch.DataSource = IME.Taxes.Where(a => a.ApplicationOn == cmbApplicableForSearch.Text).Where(b => b.taxName.Contains( txtTaxNameSearch.Text.Trim())).Where(c => c.CalculatingMode == cmbCalculationModeSearch.Text).Where(d => d.isActive == strCmbActiveSearch).ToList();
                 }
                 else
                 {
-                    dgvTaxSearch.DataSource = IME.Taxes.Where(a => a.ApplicationOn == cmbApplicableForSearch.Text.Trim()).Where(b => b.taxName == txtTaxNameSearch.Text.Trim()).Where(c => c.CalculatingMode == cmbCalculationModeSearch.Text.Trim()).ToList();
+                    dgvTaxSearch.DataSource = IME.Taxes.Where(a => a.ApplicationOn == cmbApplicableForSearch.Text.Trim()).Where(b => b.taxName.Contains( txtTaxNameSearch.Text.Trim())).Where(c => c.CalculatingMode == cmbCalculationModeSearch.Text.Trim()).ToList();
                 }
                 int inRowCount = dgvTaxSearch.RowCount;
                 for (int i = 0; i <= inRowCount - 1; i++)
