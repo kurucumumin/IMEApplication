@@ -47,8 +47,6 @@ namespace LoginForm
         /// </summary>
         public void Clear()
         {
-            try
-            {
                 dtpFromDate.Value = Convert.ToDateTime(Utils.getManagement().FinancialYear.fromDate.Value.ToString("dd-MMM-yyyy"));
                 dtpFromDate.MinDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.fromDate);
                 dtpFromDate.MaxDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.toDate);
@@ -67,11 +65,7 @@ namespace LoginForm
                 txtTotalDr.Clear();
                 dgvBudget.Rows.Clear();
                 txtBudgetName.Focus();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("BU1:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
         /// <summary>
         /// function to fill particular combo in datagridview
@@ -269,8 +263,7 @@ namespace LoginForm
         /// </summary>
         public void SaveFunction()
         {
-            try
-            {
+           
                 decimal decTotalDebit = 0;
                 decimal decTotalCredit = 0;
                 decTotalDebit = Convert.ToDecimal(txtTotalDr.Text.Trim());
@@ -327,11 +320,7 @@ namespace LoginForm
                 Messages.SavedMessage();
                 Clear();
                 GridFill();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("BU10:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
         /// <summary>
         /// function to edit
@@ -534,8 +523,6 @@ namespace LoginForm
         /// </summary>
         public void SaveOrEdit()
         {
-            try
-            {
                 dgvBudget.ClearSelection();
                 int inRow = dgvBudget.RowCount;
                 if (txtBudgetName.Text.Trim() == string.Empty)
@@ -624,19 +611,13 @@ namespace LoginForm
                             }
                         }
                     }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("BU14:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+           
         }
         /// <summary>
         /// function to call delete
         /// </summary>
         public void Delete()
         {
-            try
-            {
                 //if (PublicVariables.isMessageDelete)
                 //{
                     if (Messages.DeleteMessage())
@@ -648,19 +629,13 @@ namespace LoginForm
                 //{
                     DeleteFunction();
                 //}
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("BU15:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
         /// <summary>
         /// function to delete
         /// </summary>
         public void DeleteFunction()
         {
-            try
-            {
                 if (spBudgetMaster.BudgetMasterDelete(decBudgetMasterIdentity) == -1)
                 {
                     Messages.ReferenceExistsMessage();
@@ -671,11 +646,7 @@ namespace LoginForm
                     Clear();
                     GridFill();
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("BU16:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
         /// <summary>
         /// function to remove a row from the datagridview
@@ -724,17 +695,10 @@ namespace LoginForm
         /// <param name="e"></param>
         private void frmBudget_Load(object sender, EventArgs e)
         {
-            try
-            {
                 Clear();
                 DrOrCrComboFill();
                 cmbTypeSearch.SelectedIndex = 0;
                 GridFill();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("BU19:" + ex.Message, "LoginForm", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
         /// <summary>
         /// 'date' textbox leave
@@ -855,8 +819,7 @@ namespace LoginForm
         /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
-            try
-            {
+           
                 //if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnSave.Text))
                 //{
                 //    {
@@ -867,11 +830,7 @@ namespace LoginForm
                 //{
                     Messages.NoPrivillageMessage();
                // }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("BU26:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+           
         }
         /// <summary>
         /// On 'Clear' button click
@@ -976,8 +935,7 @@ namespace LoginForm
         /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            try
-            {
+           
                 //if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, "Delete"))
                 //{
                     Delete();
@@ -986,11 +944,7 @@ namespace LoginForm
                 //{
                     Messages.NoPrivillageMessage();
                 //}
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("BU32:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+           
         }
         /// <summary>
         ///filling particulars combo On'Type' Combo selected value change
@@ -1296,8 +1250,7 @@ namespace LoginForm
         /// <param name="e"></param>
         private void dgvBudget_CellEnter_1(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
+            
                 if (dgvBudget.Rows[e.RowIndex].Cells[e.ColumnIndex] is DataGridViewComboBoxCell)
                 {
                     dgvBudget.EditMode = DataGridViewEditMode.EditOnEnter;
@@ -1306,11 +1259,7 @@ namespace LoginForm
                 {
                     dgvBudget.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("BU40:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
         #endregion
         #region Navigation

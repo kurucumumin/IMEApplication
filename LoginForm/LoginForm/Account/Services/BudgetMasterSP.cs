@@ -151,23 +151,17 @@ namespace LoginForm.Account.Services
             BudgetDetail db = new BudgetDetail();
             BudgetMaster db2 = new BudgetMaster();
             decimal decReturnValue = 0;
-            try
-            {
-                db2 = IME.BudgetMasters.Where(x => x.budgetMasterId == BudgetMasterId).FirstOrDefault();
-                IME.BudgetMasters.Remove(db2);
+
+            IME.BudgetDetails.RemoveRange(IME.BudgetDetails.Where(a => a.budgetMasterId == BudgetMasterId));
+            IME.SaveChanges();
+            db2 = IME.BudgetMasters.Where(x => x.budgetMasterId == BudgetMasterId).FirstOrDefault();
+            
+            IME.BudgetMasters.Remove(db2);
 
                 IME.SaveChanges();
 
-                db = IME.BudgetDetails.Where(x => x.budgetMasterId == BudgetMasterId).FirstOrDefault();
-                IME.BudgetDetails.Remove(db);
-
-                IME.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                decReturnValue = -1;
-                MessageBox.Show(ex.ToString());
-            }
+                
+           
             return decReturnValue;
         }
 

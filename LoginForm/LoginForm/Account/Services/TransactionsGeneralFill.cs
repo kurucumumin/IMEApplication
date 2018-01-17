@@ -156,10 +156,34 @@ namespace LoginForm.Account.Services
             IMEEntities IME = new IMEEntities();
             DataTable dtbl = new DataTable();
             List<AccountGroup> AccountGroupList = new List<AccountGroup>();
-            AccountGroupList.Add(IME.AccountGroups.Where(a => a.accountGroupName == "Cash -in Hand").FirstOrDefault());
-            AccountGroupList.Add(IME.AccountGroups.Where(a => a.accountGroupName == "Bank Account").FirstOrDefault());
-            AccountGroupList.Add(IME.AccountGroups.Where(a => a.accountGroupName == "Bank OD A/ C").FirstOrDefault());
-            cmbCashOrBank.DataSource = IME.AccountLedgers.Where(a => a.AccountGroup.groupUnder == AccountGroupList[0].accountGroupId || a.AccountGroup.groupUnder == AccountGroupList[1].accountGroupId || a.AccountGroup.groupUnder == AccountGroupList[2].accountGroupId);
+
+            var adaptor = (from ag in IME.AccountGroups
+                           where ((ag.accountGroupName == "Cash-in Hand") || (ag.accountGroupName == "Bank Account") || (ag.accountGroupName == "Bank OD A/C")) || (ag.groupUnder == ag.accountGroupId)
+                           select new
+                           {
+                               ag.accountGroupId,
+                               //LedgerName = ag.ledgerName,
+                               //LedgerId=ag.ledgerId
+                           }).ToList();
+
+            List<AccountLedger> alList = new List<AccountLedger>();
+
+            foreach (var item in adaptor)
+            {
+                alList.AddRange(IME.AccountLedgers.Where(a => a.accountGroupID == item.accountGroupId));
+            }
+            dtbl.Columns.Add("LedgerName");
+            dtbl.Columns.Add("LedgerId");
+            foreach (var item in alList)
+            {
+                var row = dtbl.NewRow();
+                row["LedgerName"] = item.ledgerName;
+                row["LedgerId"] = item.ledgerId;
+                dtbl.Rows.Add(row);
+            }
+
+
+            cmbCashOrBank.DataSource = dtbl;
             cmbCashOrBank.ValueMember = "ledgerId";
             cmbCashOrBank.DisplayMember = "ledgerName";
             cmbCashOrBank.SelectedIndex = -1;
