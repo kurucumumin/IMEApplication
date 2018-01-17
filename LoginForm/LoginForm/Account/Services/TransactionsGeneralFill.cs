@@ -159,7 +159,7 @@ namespace LoginForm.Account.Services
             AccountGroupList.Add(IME.AccountGroups.Where(a => a.accountGroupName == "Cash -in Hand").FirstOrDefault());
             AccountGroupList.Add(IME.AccountGroups.Where(a => a.accountGroupName == "Bank Account").FirstOrDefault());
             AccountGroupList.Add(IME.AccountGroups.Where(a => a.accountGroupName == "Bank OD A/ C").FirstOrDefault());
-            cmbCashOrBank.DataSource = IME.AccountLedgers.Where(a => a.AccountGroup.groupUnder == AccountGroupList[0].accountGroupId || a.AccountGroup.groupUnder == AccountGroupList[1].accountGroupId || a.AccountGroup.groupUnder == AccountGroupList[2].accountGroupId);
+            cmbCashOrBank.DataSource = IME.AccountLedgers.Where(a => a.AccountGroup.groupUnder == AccountGroupList[0].accountGroupId || a.AccountGroup.groupUnder == AccountGroupList[1].accountGroupId || a.AccountGroup.groupUnder == AccountGroupList[2].accountGroupId).ToList();
             cmbCashOrBank.ValueMember = "ledgerId";
             cmbCashOrBank.DisplayMember = "ledgerName";
             cmbCashOrBank.SelectedIndex = -1;
