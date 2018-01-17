@@ -86,7 +86,7 @@ namespace LoginForm.Account.Services
             cmbSalesMan.ValueMember = "WorkerID";
             cmbSalesMan.DisplayMember = "NameLastName";
             return dt;
-           
+
 
         }
 
@@ -306,7 +306,7 @@ namespace LoginForm.Account.Services
             dtbl.Columns["SlNo"].AutoIncrement = true;
             dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
             dtbl.Columns["SlNo"].AutoIncrementStep = 1;
-           
+
                 var adaptor = (from ag in db.AccountGroups
                                where ((ag.accountGroupName== "Cash-in Hand") || (ag.accountGroupName == "Bank Account") ||(ag.accountGroupName == "Bank OD A/C")) || (ag.groupUnder==ag.accountGroupId)
                                select new
@@ -316,8 +316,8 @@ namespace LoginForm.Account.Services
                                    //LedgerId=ag.ledgerId
                                }).ToList();
 
-            List<AccountLedger> alList = new List<AccountLedger>();         
-                
+            List<AccountLedger> alList = new List<AccountLedger>();
+
             foreach (var item in adaptor)
             {
                 alList.AddRange(db.AccountLedgers.Where(a => a.accountGroupID == item.accountGroupId));
@@ -331,7 +331,7 @@ namespace LoginForm.Account.Services
                 row["LedgerId"] = item.ledgerId;
                 dtbl.Rows.Add(row);
                 }
-                        
+
             return dtbl;
         }
 
@@ -430,5 +430,5 @@ namespace LoginForm.Account.Services
         //    return isTrue;
         //}
     }
-   
+
 }
