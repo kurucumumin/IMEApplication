@@ -140,10 +140,10 @@
             // 
             this.cbxPrintAfterSave.AutoSize = true;
             this.cbxPrintAfterSave.ForeColor = System.Drawing.Color.White;
-            this.cbxPrintAfterSave.Location = new System.Drawing.Point(20, 566);
-            this.cbxPrintAfterSave.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cbxPrintAfterSave.Location = new System.Drawing.Point(27, 697);
+            this.cbxPrintAfterSave.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cbxPrintAfterSave.Name = "cbxPrintAfterSave";
-            this.cbxPrintAfterSave.Size = new System.Drawing.Size(97, 17);
+            this.cbxPrintAfterSave.Size = new System.Drawing.Size(126, 21);
             this.cbxPrintAfterSave.TabIndex = 19;
             this.cbxPrintAfterSave.Text = "Print after save";
             this.cbxPrintAfterSave.UseVisualStyleBackColor = true;
@@ -155,9 +155,10 @@
             this.btnSalesReturnClose.FlatAppearance.BorderSize = 0;
             this.btnSalesReturnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalesReturnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnSalesReturnClose.Location = new System.Drawing.Point(697, 560);
+            this.btnSalesReturnClose.Location = new System.Drawing.Point(929, 689);
+            this.btnSalesReturnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSalesReturnClose.Name = "btnSalesReturnClose";
-            this.btnSalesReturnClose.Size = new System.Drawing.Size(85, 27);
+            this.btnSalesReturnClose.Size = new System.Drawing.Size(113, 33);
             this.btnSalesReturnClose.TabIndex = 23;
             this.btnSalesReturnClose.Text = "Close";
             this.btnSalesReturnClose.UseVisualStyleBackColor = false;
@@ -169,9 +170,10 @@
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.Color.Black;
-            this.btnDelete.Location = new System.Drawing.Point(606, 560);
+            this.btnDelete.Location = new System.Drawing.Point(808, 689);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(85, 27);
+            this.btnDelete.Size = new System.Drawing.Size(113, 33);
             this.btnDelete.TabIndex = 22;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -183,9 +185,10 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(424, 560);
+            this.btnSave.Location = new System.Drawing.Point(565, 689);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(85, 27);
+            this.btnSave.Size = new System.Drawing.Size(113, 33);
             this.btnSave.TabIndex = 20;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -198,9 +201,10 @@
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.Black;
-            this.btnClear.Location = new System.Drawing.Point(515, 560);
+            this.btnClear.Location = new System.Drawing.Point(687, 689);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(85, 27);
+            this.btnClear.Size = new System.Drawing.Size(113, 33);
             this.btnClear.TabIndex = 21;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
@@ -208,11 +212,11 @@
             // 
             // txtGrandTotal
             // 
-            this.txtGrandTotal.Location = new System.Drawing.Point(570, 535);
-            this.txtGrandTotal.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtGrandTotal.Location = new System.Drawing.Point(760, 658);
+            this.txtGrandTotal.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtGrandTotal.Name = "txtGrandTotal";
             this.txtGrandTotal.ReadOnly = true;
-            this.txtGrandTotal.Size = new System.Drawing.Size(200, 20);
+            this.txtGrandTotal.Size = new System.Drawing.Size(265, 22);
             this.txtGrandTotal.TabIndex = 80706;
             this.txtGrandTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -220,10 +224,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label4.Location = new System.Drawing.Point(462, 539);
-            this.label4.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label4.Location = new System.Drawing.Point(616, 663);
+            this.label4.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 13);
+            this.label4.Size = new System.Drawing.Size(84, 17);
             this.label4.TabIndex = 678;
             this.label4.Text = "Grand Total";
             // 
@@ -231,10 +235,10 @@
             // 
             this.lnklblRemove.AutoSize = true;
             this.lnklblRemove.LinkColor = System.Drawing.Color.Yellow;
-            this.lnklblRemove.Location = new System.Drawing.Point(733, 347);
-            this.lnklblRemove.Margin = new System.Windows.Forms.Padding(5);
+            this.lnklblRemove.Location = new System.Drawing.Point(977, 427);
+            this.lnklblRemove.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lnklblRemove.Name = "lnklblRemove";
-            this.lnklblRemove.Size = new System.Drawing.Size(47, 13);
+            this.lnklblRemove.Size = new System.Drawing.Size(60, 17);
             this.lnklblRemove.TabIndex = 677;
             this.lnklblRemove.TabStop = true;
             this.lnklblRemove.Text = "Remove";
@@ -242,11 +246,11 @@
             // 
             // txtNarration
             // 
-            this.txtNarration.Location = new System.Drawing.Point(570, 432);
-            this.txtNarration.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtNarration.Location = new System.Drawing.Point(760, 532);
+            this.txtNarration.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtNarration.Multiline = true;
             this.txtNarration.Name = "txtNarration";
-            this.txtNarration.Size = new System.Drawing.Size(200, 50);
+            this.txtNarration.Size = new System.Drawing.Size(265, 61);
             this.txtNarration.TabIndex = 17;
             this.txtNarration.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNarration_KeyDown);
             // 
@@ -254,19 +258,19 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(471, 432);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label1.Location = new System.Drawing.Point(628, 532);
+            this.label1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 13);
+            this.label1.Size = new System.Drawing.Size(67, 17);
             this.label1.TabIndex = 675;
             this.label1.Text = "Narration";
             // 
             // txtReturnNo
             // 
-            this.txtReturnNo.Location = new System.Drawing.Point(121, 15);
-            this.txtReturnNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtReturnNo.Location = new System.Drawing.Point(161, 18);
+            this.txtReturnNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtReturnNo.Name = "txtReturnNo";
-            this.txtReturnNo.Size = new System.Drawing.Size(200, 20);
+            this.txtReturnNo.Size = new System.Drawing.Size(265, 22);
             this.txtReturnNo.TabIndex = 0;
             this.txtReturnNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtReturnNo_KeyDown);
             // 
@@ -274,10 +278,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label7.Location = new System.Drawing.Point(20, 19);
-            this.label7.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label7.Location = new System.Drawing.Point(27, 23);
+            this.label7.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 13);
+            this.label7.Size = new System.Drawing.Size(77, 17);
             this.label7.TabIndex = 673;
             this.label7.Text = "Return No.";
             // 
@@ -336,8 +340,8 @@
             this.dgvSalesReturn.EnableHeadersVisualStyles = false;
             this.dgvSalesReturn.GridColor = System.Drawing.Color.SteelBlue;
             this.dgvSalesReturn.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dgvSalesReturn.Location = new System.Drawing.Point(12, 142);
-            this.dgvSalesReturn.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
+            this.dgvSalesReturn.Location = new System.Drawing.Point(16, 175);
+            this.dgvSalesReturn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 12);
             this.dgvSalesReturn.Name = "dgvSalesReturn";
             dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
@@ -348,7 +352,7 @@
             dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvSalesReturn.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgvSalesReturn.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvSalesReturn.Size = new System.Drawing.Size(770, 201);
+            this.dgvSalesReturn.Size = new System.Drawing.Size(1027, 247);
             this.dgvSalesReturn.TabIndex = 13;
             this.dgvSalesReturn.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSalesReturn_CellEndEdit);
             this.dgvSalesReturn.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSalesReturn_CellEnter);
@@ -578,10 +582,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(468, 19);
-            this.label3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label3.Location = new System.Drawing.Point(624, 23);
+            this.label3.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 13);
+            this.label3.Size = new System.Drawing.Size(38, 17);
             this.label3.TabIndex = 670;
             this.label3.Text = "Date";
             // 
@@ -589,10 +593,10 @@
             // 
             this.cmbCashOrParty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCashOrParty.FormattingEnabled = true;
-            this.cmbCashOrParty.Location = new System.Drawing.Point(121, 40);
-            this.cmbCashOrParty.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbCashOrParty.Location = new System.Drawing.Point(161, 49);
+            this.cmbCashOrParty.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbCashOrParty.Name = "cmbCashOrParty";
-            this.cmbCashOrParty.Size = new System.Drawing.Size(200, 21);
+            this.cmbCashOrParty.Size = new System.Drawing.Size(265, 24);
             this.cmbCashOrParty.TabIndex = 2;
             this.cmbCashOrParty.SelectedIndexChanged += new System.EventHandler(this.cmbCashOrParty_SelectedIndexChanged);
             this.cmbCashOrParty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbCashOrParty_KeyDown);
@@ -601,10 +605,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label5.Location = new System.Drawing.Point(20, 43);
-            this.label5.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label5.Location = new System.Drawing.Point(27, 53);
+            this.label5.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(66, 13);
+            this.label5.Size = new System.Drawing.Size(85, 17);
             this.label5.TabIndex = 685;
             this.label5.Text = "Cash / Party";
             // 
@@ -612,10 +616,10 @@
             // 
             this.cmbInvoiceNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbInvoiceNo.FormattingEnabled = true;
-            this.cmbInvoiceNo.Location = new System.Drawing.Point(570, 66);
-            this.cmbInvoiceNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbInvoiceNo.Location = new System.Drawing.Point(760, 81);
+            this.cmbInvoiceNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbInvoiceNo.Name = "cmbInvoiceNo";
-            this.cmbInvoiceNo.Size = new System.Drawing.Size(173, 21);
+            this.cmbInvoiceNo.Size = new System.Drawing.Size(229, 24);
             this.cmbInvoiceNo.TabIndex = 7;
             this.cmbInvoiceNo.SelectedIndexChanged += new System.EventHandler(this.cmbInvoiceNo_SelectedIndexChanged);
             this.cmbInvoiceNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbInvoiceNo_KeyDown);
@@ -624,10 +628,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label6.Location = new System.Drawing.Point(468, 70);
-            this.label6.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label6.Location = new System.Drawing.Point(624, 86);
+            this.label6.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 13);
+            this.label6.Size = new System.Drawing.Size(78, 17);
             this.label6.TabIndex = 687;
             this.label6.Text = "Invoice No.";
             // 
@@ -635,10 +639,10 @@
             // 
             this.cmbSalesAccount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSalesAccount.FormattingEnabled = true;
-            this.cmbSalesAccount.Location = new System.Drawing.Point(570, 92);
-            this.cmbSalesAccount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbSalesAccount.Location = new System.Drawing.Point(760, 113);
+            this.cmbSalesAccount.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbSalesAccount.Name = "cmbSalesAccount";
-            this.cmbSalesAccount.Size = new System.Drawing.Size(173, 21);
+            this.cmbSalesAccount.Size = new System.Drawing.Size(229, 24);
             this.cmbSalesAccount.TabIndex = 10;
             this.cmbSalesAccount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbSalesAccount_KeyDown);
             // 
@@ -646,10 +650,10 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label8.Location = new System.Drawing.Point(468, 96);
-            this.label8.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label8.Location = new System.Drawing.Point(624, 118);
+            this.label8.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(53, 13);
+            this.label8.Size = new System.Drawing.Size(66, 17);
             this.label8.TabIndex = 689;
             this.label8.Text = "Sales a/c";
             // 
@@ -657,10 +661,10 @@
             // 
             this.cmbPricingLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPricingLevel.FormattingEnabled = true;
-            this.cmbPricingLevel.Location = new System.Drawing.Point(121, 92);
-            this.cmbPricingLevel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbPricingLevel.Location = new System.Drawing.Point(161, 113);
+            this.cmbPricingLevel.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbPricingLevel.Name = "cmbPricingLevel";
-            this.cmbPricingLevel.Size = new System.Drawing.Size(200, 21);
+            this.cmbPricingLevel.Size = new System.Drawing.Size(265, 24);
             this.cmbPricingLevel.TabIndex = 8;
             this.cmbPricingLevel.SelectedIndexChanged += new System.EventHandler(this.cmbPricingLevel_SelectedIndexChanged);
             this.cmbPricingLevel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbPricingLevel_KeyDown);
@@ -669,10 +673,10 @@
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label10.Location = new System.Drawing.Point(20, 95);
-            this.label10.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label10.Location = new System.Drawing.Point(27, 117);
+            this.label10.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(68, 13);
+            this.label10.Size = new System.Drawing.Size(89, 17);
             this.label10.TabIndex = 693;
             this.label10.Text = "Pricing Level";
             // 
@@ -680,10 +684,10 @@
             // 
             this.cmbSalesMan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSalesMan.FormattingEnabled = true;
-            this.cmbSalesMan.Location = new System.Drawing.Point(570, 40);
-            this.cmbSalesMan.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbSalesMan.Location = new System.Drawing.Point(760, 49);
+            this.cmbSalesMan.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbSalesMan.Name = "cmbSalesMan";
-            this.cmbSalesMan.Size = new System.Drawing.Size(173, 21);
+            this.cmbSalesMan.Size = new System.Drawing.Size(229, 24);
             this.cmbSalesMan.TabIndex = 4;
             this.cmbSalesMan.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbSalesMan_KeyDown);
             // 
@@ -691,10 +695,10 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label11.Location = new System.Drawing.Point(468, 44);
-            this.label11.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label11.Location = new System.Drawing.Point(624, 54);
+            this.label11.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(57, 13);
+            this.label11.Size = new System.Drawing.Size(74, 17);
             this.label11.TabIndex = 695;
             this.label11.Text = "Sales Man";
             // 
@@ -732,8 +736,8 @@
             this.dgvSalesReturn2.DefaultCellStyle = dataGridViewCellStyle20;
             this.dgvSalesReturn2.EnableHeadersVisualStyles = false;
             this.dgvSalesReturn2.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvSalesReturn2.Location = new System.Drawing.Point(12, 383);
-            this.dgvSalesReturn2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.dgvSalesReturn2.Location = new System.Drawing.Point(16, 471);
+            this.dgvSalesReturn2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.dgvSalesReturn2.Name = "dgvSalesReturn2";
             this.dgvSalesReturn2.ReadOnly = true;
             dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -745,7 +749,7 @@
             dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvSalesReturn2.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.dgvSalesReturn2.RowHeadersVisible = false;
-            this.dgvSalesReturn2.Size = new System.Drawing.Size(328, 111);
+            this.dgvSalesReturn2.Size = new System.Drawing.Size(437, 137);
             this.dgvSalesReturn2.TabIndex = 14;
             // 
             // SNo
@@ -801,11 +805,11 @@
             // 
             // txtTotalAmount
             // 
-            this.txtTotalAmount.Location = new System.Drawing.Point(570, 485);
-            this.txtTotalAmount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtTotalAmount.Location = new System.Drawing.Point(760, 597);
+            this.txtTotalAmount.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtTotalAmount.Name = "txtTotalAmount";
             this.txtTotalAmount.ReadOnly = true;
-            this.txtTotalAmount.Size = new System.Drawing.Size(200, 20);
+            this.txtTotalAmount.Size = new System.Drawing.Size(265, 22);
             this.txtTotalAmount.TabIndex = 46456;
             this.txtTotalAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtTotalAmount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTotalAmount_KeyPress);
@@ -814,19 +818,19 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label12.Location = new System.Drawing.Point(460, 489);
-            this.label12.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label12.Location = new System.Drawing.Point(613, 602);
+            this.label12.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(70, 13);
+            this.label12.Size = new System.Drawing.Size(92, 17);
             this.label12.TabIndex = 698;
             this.label12.Text = "Total Amount";
             // 
             // txtTransportationComp
             // 
-            this.txtTransportationComp.Location = new System.Drawing.Point(570, 382);
-            this.txtTransportationComp.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtTransportationComp.Location = new System.Drawing.Point(760, 470);
+            this.txtTransportationComp.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtTransportationComp.Name = "txtTransportationComp";
-            this.txtTransportationComp.Size = new System.Drawing.Size(200, 20);
+            this.txtTransportationComp.Size = new System.Drawing.Size(265, 22);
             this.txtTransportationComp.TabIndex = 15;
             this.txtTransportationComp.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTransportationComp_KeyDown);
             // 
@@ -834,19 +838,19 @@
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label13.Location = new System.Drawing.Point(436, 386);
-            this.label13.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label13.Location = new System.Drawing.Point(581, 475);
+            this.label13.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(108, 13);
+            this.label13.Size = new System.Drawing.Size(145, 17);
             this.label13.TabIndex = 700;
             this.label13.Text = "Transportation Comp.";
             // 
             // txtLRNo
             // 
-            this.txtLRNo.Location = new System.Drawing.Point(570, 407);
-            this.txtLRNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtLRNo.Location = new System.Drawing.Point(760, 501);
+            this.txtLRNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtLRNo.Name = "txtLRNo";
-            this.txtLRNo.Size = new System.Drawing.Size(200, 20);
+            this.txtLRNo.Size = new System.Drawing.Size(265, 22);
             this.txtLRNo.TabIndex = 16;
             this.txtLRNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLRNo_KeyDown);
             // 
@@ -854,10 +858,10 @@
             // 
             this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label14.Location = new System.Drawing.Point(480, 411);
-            this.label14.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label14.Location = new System.Drawing.Point(640, 506);
+            this.label14.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(41, 13);
+            this.label14.Size = new System.Drawing.Size(52, 17);
             this.label14.TabIndex = 702;
             this.label14.Text = "LR No.";
             // 
@@ -868,10 +872,10 @@
             this.btnSalesMan.FlatAppearance.BorderSize = 0;
             this.btnSalesMan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalesMan.ForeColor = System.Drawing.Color.White;
-            this.btnSalesMan.Location = new System.Drawing.Point(759, 40);
-            this.btnSalesMan.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.btnSalesMan.Location = new System.Drawing.Point(1012, 49);
+            this.btnSalesMan.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.btnSalesMan.Name = "btnSalesMan";
-            this.btnSalesMan.Size = new System.Drawing.Size(21, 20);
+            this.btnSalesMan.Size = new System.Drawing.Size(28, 25);
             this.btnSalesMan.TabIndex = 5;
             this.btnSalesMan.UseVisualStyleBackColor = true;
             this.btnSalesMan.Click += new System.EventHandler(this.btnSalesMan_Click);
@@ -882,10 +886,10 @@
             this.btnPricingLevel.FlatAppearance.BorderSize = 0;
             this.btnPricingLevel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPricingLevel.ForeColor = System.Drawing.Color.White;
-            this.btnPricingLevel.Location = new System.Drawing.Point(348, 92);
-            this.btnPricingLevel.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.btnPricingLevel.Location = new System.Drawing.Point(464, 113);
+            this.btnPricingLevel.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.btnPricingLevel.Name = "btnPricingLevel";
-            this.btnPricingLevel.Size = new System.Drawing.Size(21, 20);
+            this.btnPricingLevel.Size = new System.Drawing.Size(28, 25);
             this.btnPricingLevel.TabIndex = 9;
             this.btnPricingLevel.UseVisualStyleBackColor = true;
             this.btnPricingLevel.Click += new System.EventHandler(this.btnPricingLevel_Click);
@@ -896,10 +900,10 @@
             this.btnCashOrParty.FlatAppearance.BorderSize = 0;
             this.btnCashOrParty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCashOrParty.ForeColor = System.Drawing.Color.White;
-            this.btnCashOrParty.Location = new System.Drawing.Point(348, 40);
-            this.btnCashOrParty.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.btnCashOrParty.Location = new System.Drawing.Point(464, 49);
+            this.btnCashOrParty.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.btnCashOrParty.Name = "btnCashOrParty";
-            this.btnCashOrParty.Size = new System.Drawing.Size(21, 20);
+            this.btnCashOrParty.Size = new System.Drawing.Size(28, 25);
             this.btnCashOrParty.TabIndex = 3;
             this.btnCashOrParty.UseVisualStyleBackColor = true;
             this.btnCashOrParty.Click += new System.EventHandler(this.btnCashOrParty_Click);
@@ -910,10 +914,10 @@
             this.btnSalesAcct.FlatAppearance.BorderSize = 0;
             this.btnSalesAcct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalesAcct.ForeColor = System.Drawing.Color.White;
-            this.btnSalesAcct.Location = new System.Drawing.Point(759, 92);
-            this.btnSalesAcct.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.btnSalesAcct.Location = new System.Drawing.Point(1012, 113);
+            this.btnSalesAcct.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.btnSalesAcct.Name = "btnSalesAcct";
-            this.btnSalesAcct.Size = new System.Drawing.Size(21, 20);
+            this.btnSalesAcct.Size = new System.Drawing.Size(28, 25);
             this.btnSalesAcct.TabIndex = 11;
             this.btnSalesAcct.UseVisualStyleBackColor = true;
             this.btnSalesAcct.Click += new System.EventHandler(this.btnSalesAcct_Click);
@@ -922,29 +926,29 @@
             // 
             this.lblTotalTax.AutoSize = true;
             this.lblTotalTax.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblTotalTax.Location = new System.Drawing.Point(155, 507);
-            this.lblTotalTax.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblTotalTax.Location = new System.Drawing.Point(207, 624);
+            this.lblTotalTax.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblTotalTax.Name = "lblTotalTax";
-            this.lblTotalTax.Size = new System.Drawing.Size(91, 13);
+            this.lblTotalTax.Size = new System.Drawing.Size(119, 17);
             this.lblTotalTax.TabIndex = 738;
             this.lblTotalTax.Text = "Total Tax Amount";
             // 
             // txtDate
             // 
-            this.txtDate.Location = new System.Drawing.Point(570, 15);
-            this.txtDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtDate.Location = new System.Drawing.Point(760, 18);
+            this.txtDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtDate.Name = "txtDate";
-            this.txtDate.Size = new System.Drawing.Size(184, 20);
+            this.txtDate.Size = new System.Drawing.Size(244, 22);
             this.txtDate.TabIndex = 1;
             this.txtDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDate_KeyDown);
             this.txtDate.Leave += new System.EventHandler(this.txtDate_Leave);
             // 
             // dtpDate
             // 
-            this.dtpDate.Location = new System.Drawing.Point(753, 15);
-            this.dtpDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.dtpDate.Location = new System.Drawing.Point(1004, 18);
+            this.dtpDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(19, 20);
+            this.dtpDate.Size = new System.Drawing.Size(24, 22);
             this.dtpDate.TabIndex = 741;
             this.dtpDate.ValueChanged += new System.EventHandler(this.dtpDate_ValueChanged);
             // 
@@ -952,10 +956,10 @@
             // 
             this.lblTaxAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTaxAmount.ForeColor = System.Drawing.Color.Yellow;
-            this.lblTaxAmount.Location = new System.Drawing.Point(241, 497);
-            this.lblTaxAmount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblTaxAmount.Location = new System.Drawing.Point(321, 612);
+            this.lblTaxAmount.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblTaxAmount.Name = "lblTaxAmount";
-            this.lblTaxAmount.Size = new System.Drawing.Size(99, 13);
+            this.lblTaxAmount.Size = new System.Drawing.Size(132, 16);
             this.lblTaxAmount.TabIndex = 742;
             this.lblTaxAmount.Text = "0.00";
             this.lblTaxAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -964,20 +968,20 @@
             // 
             this.lblBillDiscount.AutoSize = true;
             this.lblBillDiscount.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblBillDiscount.Location = new System.Drawing.Point(460, 514);
-            this.lblBillDiscount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblBillDiscount.Location = new System.Drawing.Point(613, 633);
+            this.lblBillDiscount.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblBillDiscount.Name = "lblBillDiscount";
-            this.lblBillDiscount.Size = new System.Drawing.Size(65, 13);
+            this.lblBillDiscount.Size = new System.Drawing.Size(85, 17);
             this.lblBillDiscount.TabIndex = 1147;
             this.lblBillDiscount.Text = "Bill Discount";
             // 
             // txtBillDiscount
             // 
-            this.txtBillDiscount.Location = new System.Drawing.Point(570, 510);
-            this.txtBillDiscount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtBillDiscount.Location = new System.Drawing.Point(760, 628);
+            this.txtBillDiscount.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtBillDiscount.MaxLength = 10;
             this.txtBillDiscount.Name = "txtBillDiscount";
-            this.txtBillDiscount.Size = new System.Drawing.Size(200, 20);
+            this.txtBillDiscount.Size = new System.Drawing.Size(265, 22);
             this.txtBillDiscount.TabIndex = 18;
             this.txtBillDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtBillDiscount.TextChanged += new System.EventHandler(this.txtBillDiscount_TextChanged);
@@ -990,10 +994,10 @@
             // 
             this.lblCurrency.AutoSize = true;
             this.lblCurrency.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblCurrency.Location = new System.Drawing.Point(20, 121);
-            this.lblCurrency.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblCurrency.Location = new System.Drawing.Point(27, 149);
+            this.lblCurrency.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblCurrency.Name = "lblCurrency";
-            this.lblCurrency.Size = new System.Drawing.Size(49, 13);
+            this.lblCurrency.Size = new System.Drawing.Size(65, 17);
             this.lblCurrency.TabIndex = 1149;
             this.lblCurrency.Text = "Currency";
             // 
@@ -1001,10 +1005,10 @@
             // 
             this.cmbCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCurrency.FormattingEnabled = true;
-            this.cmbCurrency.Location = new System.Drawing.Point(121, 118);
-            this.cmbCurrency.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbCurrency.Location = new System.Drawing.Point(161, 145);
+            this.cmbCurrency.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbCurrency.Name = "cmbCurrency";
-            this.cmbCurrency.Size = new System.Drawing.Size(200, 21);
+            this.cmbCurrency.Size = new System.Drawing.Size(265, 24);
             this.cmbCurrency.TabIndex = 12;
             this.cmbCurrency.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbCurrency_KeyDown);
             // 
@@ -1012,10 +1016,10 @@
             // 
             this.lblVoucherType.AutoSize = true;
             this.lblVoucherType.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblVoucherType.Location = new System.Drawing.Point(20, 69);
-            this.lblVoucherType.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblVoucherType.Location = new System.Drawing.Point(27, 85);
+            this.lblVoucherType.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblVoucherType.Name = "lblVoucherType";
-            this.lblVoucherType.Size = new System.Drawing.Size(71, 13);
+            this.lblVoucherType.Size = new System.Drawing.Size(93, 17);
             this.lblVoucherType.TabIndex = 1150;
             this.lblVoucherType.Text = "VoucherType";
             // 
@@ -1023,10 +1027,10 @@
             // 
             this.cmbVoucherType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbVoucherType.FormattingEnabled = true;
-            this.cmbVoucherType.Location = new System.Drawing.Point(121, 66);
-            this.cmbVoucherType.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbVoucherType.Location = new System.Drawing.Point(161, 81);
+            this.cmbVoucherType.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbVoucherType.Name = "cmbVoucherType";
-            this.cmbVoucherType.Size = new System.Drawing.Size(200, 21);
+            this.cmbVoucherType.Size = new System.Drawing.Size(265, 24);
             this.cmbVoucherType.TabIndex = 6;
             this.cmbVoucherType.SelectedIndexChanged += new System.EventHandler(this.cmbVoucherType_SelectedIndexChanged);
             this.cmbVoucherType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbVoucherType_KeyDown);
@@ -1035,10 +1039,10 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(329, 19);
-            this.label9.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label9.Location = new System.Drawing.Point(439, 23);
+            this.label9.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(11, 13);
+            this.label9.Size = new System.Drawing.Size(13, 17);
             this.label9.TabIndex = 8903;
             this.label9.Text = "*";
             // 
@@ -1046,10 +1050,10 @@
             // 
             this.label15.AutoSize = true;
             this.label15.ForeColor = System.Drawing.Color.Red;
-            this.label15.Location = new System.Drawing.Point(329, 44);
-            this.label15.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label15.Location = new System.Drawing.Point(439, 54);
+            this.label15.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(11, 13);
+            this.label15.Size = new System.Drawing.Size(13, 17);
             this.label15.TabIndex = 8904;
             this.label15.Text = "*";
             // 
@@ -1057,20 +1061,20 @@
             // 
             this.label16.AutoSize = true;
             this.label16.ForeColor = System.Drawing.Color.Red;
-            this.label16.Location = new System.Drawing.Point(746, 96);
-            this.label16.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label16.Location = new System.Drawing.Point(995, 118);
+            this.label16.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(11, 13);
+            this.label16.Size = new System.Drawing.Size(13, 17);
             this.label16.TabIndex = 8905;
             this.label16.Text = "*";
             // 
             // frmSalesReturn
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1067, 738);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label9);
@@ -1122,10 +1126,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmSalesReturn";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sales Return";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSalesReturn_FormClosing);

@@ -69,9 +69,10 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnClose.Location = new System.Drawing.Point(693, 551);
+            this.btnClose.Location = new System.Drawing.Point(924, 678);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(85, 27);
+            this.btnClose.Size = new System.Drawing.Size(113, 33);
             this.btnClose.TabIndex = 8;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -83,9 +84,10 @@
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.Color.Black;
-            this.btnDelete.Location = new System.Drawing.Point(602, 551);
+            this.btnDelete.Location = new System.Drawing.Point(803, 678);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(85, 27);
+            this.btnDelete.Size = new System.Drawing.Size(113, 33);
             this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -98,9 +100,10 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(420, 551);
+            this.btnSave.Location = new System.Drawing.Point(560, 678);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(85, 27);
+            this.btnSave.Size = new System.Drawing.Size(113, 33);
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -113,9 +116,10 @@
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.Black;
-            this.btnClear.Location = new System.Drawing.Point(511, 551);
+            this.btnClear.Location = new System.Drawing.Point(681, 678);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(85, 27);
+            this.btnClear.Size = new System.Drawing.Size(113, 33);
             this.btnClear.TabIndex = 6;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
@@ -124,9 +128,10 @@
             // 
             // txtDate
             // 
-            this.txtDate.Location = new System.Drawing.Point(575, 15);
+            this.txtDate.Location = new System.Drawing.Point(767, 18);
+            this.txtDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDate.Name = "txtDate";
-            this.txtDate.Size = new System.Drawing.Size(207, 20);
+            this.txtDate.Size = new System.Drawing.Size(275, 22);
             this.txtDate.TabIndex = 1;
             this.txtDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDate_KeyDown);
             this.txtDate.Leave += new System.EventHandler(this.txtDate_Leave);
@@ -135,10 +140,10 @@
             // 
             this.lblVoucherDate.AutoSize = true;
             this.lblVoucherDate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblVoucherDate.Location = new System.Drawing.Point(482, 17);
-            this.lblVoucherDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblVoucherDate.Location = new System.Drawing.Point(643, 21);
+            this.lblVoucherDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblVoucherDate.Name = "lblVoucherDate";
-            this.lblVoucherDate.Size = new System.Drawing.Size(73, 13);
+            this.lblVoucherDate.Size = new System.Drawing.Size(95, 17);
             this.lblVoucherDate.TabIndex = 660;
             this.lblVoucherDate.Text = "Voucher Date";
             // 
@@ -146,19 +151,19 @@
             // 
             this.lblVoucherNo.AutoSize = true;
             this.lblVoucherNo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblVoucherNo.Location = new System.Drawing.Point(19, 19);
-            this.lblVoucherNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblVoucherNo.Location = new System.Drawing.Point(25, 23);
+            this.lblVoucherNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblVoucherNo.Name = "lblVoucherNo";
-            this.lblVoucherNo.Size = new System.Drawing.Size(67, 13);
+            this.lblVoucherNo.Size = new System.Drawing.Size(87, 17);
             this.lblVoucherNo.TabIndex = 659;
             this.lblVoucherNo.Text = "Voucher No.";
             // 
             // txtVoucherNo
             // 
-            this.txtVoucherNo.Location = new System.Drawing.Point(114, 15);
-            this.txtVoucherNo.Margin = new System.Windows.Forms.Padding(5);
+            this.txtVoucherNo.Location = new System.Drawing.Point(152, 18);
+            this.txtVoucherNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.txtVoucherNo.Name = "txtVoucherNo";
-            this.txtVoucherNo.Size = new System.Drawing.Size(207, 20);
+            this.txtVoucherNo.Size = new System.Drawing.Size(275, 22);
             this.txtVoucherNo.TabIndex = 0;
             this.txtVoucherNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVoucherNo_KeyDown);
             // 
@@ -166,20 +171,20 @@
             // 
             this.lblCreditTotal.AutoSize = true;
             this.lblCreditTotal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblCreditTotal.Location = new System.Drawing.Point(485, 527);
-            this.lblCreditTotal.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblCreditTotal.Location = new System.Drawing.Point(647, 649);
+            this.lblCreditTotal.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblCreditTotal.Name = "lblCreditTotal";
-            this.lblCreditTotal.Size = new System.Drawing.Size(61, 13);
+            this.lblCreditTotal.Size = new System.Drawing.Size(81, 17);
             this.lblCreditTotal.TabIndex = 656;
             this.lblCreditTotal.Text = "Credit Total";
             // 
             // txtCreditTotal
             // 
-            this.txtCreditTotal.Location = new System.Drawing.Point(580, 523);
-            this.txtCreditTotal.Margin = new System.Windows.Forms.Padding(5);
+            this.txtCreditTotal.Location = new System.Drawing.Point(773, 644);
+            this.txtCreditTotal.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.txtCreditTotal.Name = "txtCreditTotal";
             this.txtCreditTotal.ReadOnly = true;
-            this.txtCreditTotal.Size = new System.Drawing.Size(200, 20);
+            this.txtCreditTotal.Size = new System.Drawing.Size(265, 22);
             this.txtCreditTotal.TabIndex = 655;
             this.txtCreditTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -187,20 +192,20 @@
             // 
             this.lblDebitTotal.AutoSize = true;
             this.lblDebitTotal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblDebitTotal.Location = new System.Drawing.Point(485, 502);
-            this.lblDebitTotal.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblDebitTotal.Location = new System.Drawing.Point(647, 618);
+            this.lblDebitTotal.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblDebitTotal.Name = "lblDebitTotal";
-            this.lblDebitTotal.Size = new System.Drawing.Size(59, 13);
+            this.lblDebitTotal.Size = new System.Drawing.Size(77, 17);
             this.lblDebitTotal.TabIndex = 654;
             this.lblDebitTotal.Text = "Debit Total";
             // 
             // txtDebitTotal
             // 
-            this.txtDebitTotal.Location = new System.Drawing.Point(580, 498);
-            this.txtDebitTotal.Margin = new System.Windows.Forms.Padding(5);
+            this.txtDebitTotal.Location = new System.Drawing.Point(773, 613);
+            this.txtDebitTotal.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.txtDebitTotal.Name = "txtDebitTotal";
             this.txtDebitTotal.ReadOnly = true;
-            this.txtDebitTotal.Size = new System.Drawing.Size(200, 20);
+            this.txtDebitTotal.Size = new System.Drawing.Size(265, 22);
             this.txtDebitTotal.TabIndex = 653;
             this.txtDebitTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -208,10 +213,10 @@
             // 
             this.cbxPrintAfterSave.AutoSize = true;
             this.cbxPrintAfterSave.ForeColor = System.Drawing.Color.White;
-            this.cbxPrintAfterSave.Location = new System.Drawing.Point(20, 568);
-            this.cbxPrintAfterSave.Margin = new System.Windows.Forms.Padding(5);
+            this.cbxPrintAfterSave.Location = new System.Drawing.Point(27, 699);
+            this.cbxPrintAfterSave.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.cbxPrintAfterSave.Name = "cbxPrintAfterSave";
-            this.cbxPrintAfterSave.Size = new System.Drawing.Size(97, 17);
+            this.cbxPrintAfterSave.Size = new System.Drawing.Size(126, 21);
             this.cbxPrintAfterSave.TabIndex = 4;
             this.cbxPrintAfterSave.Text = "Print after save";
             this.cbxPrintAfterSave.UseVisualStyleBackColor = true;
@@ -220,20 +225,20 @@
             // 
             this.lblNarration.AutoSize = true;
             this.lblNarration.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblNarration.Location = new System.Drawing.Point(17, 502);
-            this.lblNarration.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblNarration.Location = new System.Drawing.Point(23, 618);
+            this.lblNarration.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblNarration.Name = "lblNarration";
-            this.lblNarration.Size = new System.Drawing.Size(50, 13);
+            this.lblNarration.Size = new System.Drawing.Size(67, 17);
             this.lblNarration.TabIndex = 651;
             this.lblNarration.Text = "Narration";
             // 
             // txtNarration
             // 
-            this.txtNarration.Location = new System.Drawing.Point(91, 498);
-            this.txtNarration.Margin = new System.Windows.Forms.Padding(5);
+            this.txtNarration.Location = new System.Drawing.Point(121, 613);
+            this.txtNarration.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.txtNarration.Multiline = true;
             this.txtNarration.Name = "txtNarration";
-            this.txtNarration.Size = new System.Drawing.Size(200, 60);
+            this.txtNarration.Size = new System.Drawing.Size(265, 73);
             this.txtNarration.TabIndex = 3;
             this.txtNarration.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNarration_KeyDown);
             this.txtNarration.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNarration_KeyPress);
@@ -242,10 +247,10 @@
             // 
             this.lnklblRemove.AutoSize = true;
             this.lnklblRemove.LinkColor = System.Drawing.Color.Yellow;
-            this.lnklblRemove.Location = new System.Drawing.Point(734, 480);
-            this.lnklblRemove.Margin = new System.Windows.Forms.Padding(5);
+            this.lnklblRemove.Location = new System.Drawing.Point(979, 591);
+            this.lnklblRemove.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lnklblRemove.Name = "lnklblRemove";
-            this.lnklblRemove.Size = new System.Drawing.Size(47, 13);
+            this.lnklblRemove.Size = new System.Drawing.Size(60, 17);
             this.lnklblRemove.TabIndex = 650;
             this.lnklblRemove.TabStop = true;
             this.lnklblRemove.Text = "Remove";
@@ -287,8 +292,8 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvDebitNote.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvDebitNote.EnableHeadersVisualStyles = false;
-            this.dgvDebitNote.Location = new System.Drawing.Point(14, 43);
-            this.dgvDebitNote.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.dgvDebitNote.Location = new System.Drawing.Point(19, 53);
+            this.dgvDebitNote.Margin = new System.Windows.Forms.Padding(4, 4, 4, 0);
             this.dgvDebitNote.MultiSelect = false;
             this.dgvDebitNote.Name = "dgvDebitNote";
             this.dgvDebitNote.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -300,7 +305,7 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvDebitNote.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvDebitNote.Size = new System.Drawing.Size(764, 434);
+            this.dgvDebitNote.Size = new System.Drawing.Size(1019, 534);
             this.dgvDebitNote.TabIndex = 2;
             // 
             // dgvtxtSlNo
@@ -381,10 +386,10 @@
             // 
             // frmDebitNote
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1067, 738);
             this.Controls.Add(this.dgvDebitNote);
             this.Controls.Add(this.txtDate);
             this.Controls.Add(this.lblVoucherDate);
@@ -405,10 +410,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmDebitNote";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Debit Note";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmDebitNote_FormClosing);

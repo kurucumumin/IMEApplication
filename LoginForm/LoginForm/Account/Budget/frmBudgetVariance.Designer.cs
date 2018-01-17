@@ -57,10 +57,10 @@
             // 
             this.cmbBudget.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBudget.FormattingEnabled = true;
-            this.cmbBudget.Location = new System.Drawing.Point(126, 10);
-            this.cmbBudget.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.cmbBudget.Location = new System.Drawing.Point(168, 12);
+            this.cmbBudget.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
             this.cmbBudget.Name = "cmbBudget";
-            this.cmbBudget.Size = new System.Drawing.Size(200, 21);
+            this.cmbBudget.Size = new System.Drawing.Size(265, 24);
             this.cmbBudget.TabIndex = 0;
             this.cmbBudget.SelectedIndexChanged += new System.EventHandler(this.cmbBudget_SelectedIndexChanged);
             // 
@@ -70,9 +70,10 @@
             this.btnPrint.FlatAppearance.BorderSize = 0;
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrint.ForeColor = System.Drawing.Color.Black;
-            this.btnPrint.Location = new System.Drawing.Point(697, 560);
+            this.btnPrint.Location = new System.Drawing.Point(929, 689);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(85, 27);
+            this.btnPrint.Size = new System.Drawing.Size(113, 33);
             this.btnPrint.TabIndex = 4;
             this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = false;
@@ -82,10 +83,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label3.Location = new System.Drawing.Point(15, 14);
-            this.label3.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.label3.Location = new System.Drawing.Point(20, 17);
+            this.label3.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 13);
+            this.label3.Size = new System.Drawing.Size(53, 17);
             this.label3.TabIndex = 160;
             this.label3.Text = "Budget";
             // 
@@ -127,7 +128,8 @@
             this.dgvBudgetVariance.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvBudgetVariance.EnableHeadersVisualStyles = false;
             this.dgvBudgetVariance.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvBudgetVariance.Location = new System.Drawing.Point(18, 54);
+            this.dgvBudgetVariance.Location = new System.Drawing.Point(24, 66);
+            this.dgvBudgetVariance.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvBudgetVariance.Name = "dgvBudgetVariance";
             this.dgvBudgetVariance.ReadOnly = true;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -140,7 +142,7 @@
             this.dgvBudgetVariance.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvBudgetVariance.RowHeadersVisible = false;
             this.dgvBudgetVariance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBudgetVariance.Size = new System.Drawing.Size(764, 500);
+            this.dgvBudgetVariance.Size = new System.Drawing.Size(1019, 615);
             this.dgvBudgetVariance.TabIndex = 3;
             // 
             // dgvtxtSlNo
@@ -213,10 +215,10 @@
             // 
             // frmBudgetVariance
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1067, 738);
             this.Controls.Add(this.cmbBudget);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.label3);
@@ -224,10 +226,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmBudgetVariance";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Budget Variance";
             this.Load += new System.EventHandler(this.frmBudgetVariance_Load);

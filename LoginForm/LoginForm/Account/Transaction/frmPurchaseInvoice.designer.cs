@@ -1337,7 +1337,6 @@ namespace Open_Miracle
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmPurchaseInvoice";
-            this.Opacity = 0.85D;
             this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Purchase Invoice";

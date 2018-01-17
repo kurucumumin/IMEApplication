@@ -72,10 +72,10 @@
             this.lblBrand.AutoSize = true;
             this.lblBrand.BackColor = System.Drawing.Color.Transparent;
             this.lblBrand.ForeColor = System.Drawing.Color.White;
-            this.lblBrand.Location = new System.Drawing.Point(18, 45);
-            this.lblBrand.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblBrand.Location = new System.Drawing.Point(24, 55);
+            this.lblBrand.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblBrand.Name = "lblBrand";
-            this.lblBrand.Size = new System.Drawing.Size(35, 13);
+            this.lblBrand.Size = new System.Drawing.Size(46, 17);
             this.lblBrand.TabIndex = 3;
             this.lblBrand.Text = "Brand";
             // 
@@ -84,10 +84,10 @@
             this.lblProductGroup.AutoSize = true;
             this.lblProductGroup.BackColor = System.Drawing.Color.Transparent;
             this.lblProductGroup.ForeColor = System.Drawing.Color.White;
-            this.lblProductGroup.Location = new System.Drawing.Point(18, 19);
-            this.lblProductGroup.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblProductGroup.Location = new System.Drawing.Point(24, 23);
+            this.lblProductGroup.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblProductGroup.Name = "lblProductGroup";
-            this.lblProductGroup.Size = new System.Drawing.Size(76, 13);
+            this.lblProductGroup.Size = new System.Drawing.Size(101, 17);
             this.lblProductGroup.TabIndex = 1;
             this.lblProductGroup.Text = "Product Group";
             // 
@@ -95,10 +95,10 @@
             // 
             this.cmbGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGroup.FormattingEnabled = true;
-            this.cmbGroup.Location = new System.Drawing.Point(124, 15);
-            this.cmbGroup.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbGroup.Location = new System.Drawing.Point(165, 18);
+            this.cmbGroup.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbGroup.Name = "cmbGroup";
-            this.cmbGroup.Size = new System.Drawing.Size(200, 21);
+            this.cmbGroup.Size = new System.Drawing.Size(265, 24);
             this.cmbGroup.TabIndex = 0;
             this.cmbGroup.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbGroup_KeyDown);
             // 
@@ -107,10 +107,10 @@
             this.lblModelNo.AutoSize = true;
             this.lblModelNo.BackColor = System.Drawing.Color.Transparent;
             this.lblModelNo.ForeColor = System.Drawing.Color.White;
-            this.lblModelNo.Location = new System.Drawing.Point(18, 71);
-            this.lblModelNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblModelNo.Location = new System.Drawing.Point(24, 87);
+            this.lblModelNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblModelNo.Name = "lblModelNo";
-            this.lblModelNo.Size = new System.Drawing.Size(53, 13);
+            this.lblModelNo.Size = new System.Drawing.Size(68, 17);
             this.lblModelNo.TabIndex = 5;
             this.lblModelNo.Text = "Model No";
             // 
@@ -119,10 +119,10 @@
             this.lblGodown.AutoSize = true;
             this.lblGodown.BackColor = System.Drawing.Color.Transparent;
             this.lblGodown.ForeColor = System.Drawing.Color.White;
-            this.lblGodown.Location = new System.Drawing.Point(18, 97);
-            this.lblGodown.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblGodown.Location = new System.Drawing.Point(24, 119);
+            this.lblGodown.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblGodown.Name = "lblGodown";
-            this.lblGodown.Size = new System.Drawing.Size(47, 13);
+            this.lblGodown.Size = new System.Drawing.Size(60, 17);
             this.lblGodown.TabIndex = 7;
             this.lblGodown.Text = "Godown";
             // 
@@ -131,10 +131,10 @@
             this.lblRack.AutoSize = true;
             this.lblRack.BackColor = System.Drawing.Color.Transparent;
             this.lblRack.ForeColor = System.Drawing.Color.White;
-            this.lblRack.Location = new System.Drawing.Point(18, 123);
-            this.lblRack.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblRack.Location = new System.Drawing.Point(24, 151);
+            this.lblRack.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblRack.Name = "lblRack";
-            this.lblRack.Size = new System.Drawing.Size(33, 13);
+            this.lblRack.Size = new System.Drawing.Size(40, 17);
             this.lblRack.TabIndex = 15;
             this.lblRack.Text = "Rack";
             // 
@@ -143,10 +143,10 @@
             this.lblTax.AutoSize = true;
             this.lblTax.BackColor = System.Drawing.Color.Transparent;
             this.lblTax.ForeColor = System.Drawing.Color.White;
-            this.lblTax.Location = new System.Drawing.Point(391, 75);
-            this.lblTax.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblTax.Location = new System.Drawing.Point(521, 92);
+            this.lblTax.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblTax.Name = "lblTax";
-            this.lblTax.Size = new System.Drawing.Size(25, 13);
+            this.lblTax.Size = new System.Drawing.Size(31, 17);
             this.lblTax.TabIndex = 13;
             this.lblTax.Text = "Tax";
             // 
@@ -155,10 +155,10 @@
             this.lblSize.AutoSize = true;
             this.lblSize.BackColor = System.Drawing.Color.Transparent;
             this.lblSize.ForeColor = System.Drawing.Color.White;
-            this.lblSize.Location = new System.Drawing.Point(391, 49);
-            this.lblSize.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblSize.Location = new System.Drawing.Point(521, 60);
+            this.lblSize.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblSize.Name = "lblSize";
-            this.lblSize.Size = new System.Drawing.Size(27, 13);
+            this.lblSize.Size = new System.Drawing.Size(35, 17);
             this.lblSize.TabIndex = 11;
             this.lblSize.Text = "Size";
             // 
@@ -167,10 +167,10 @@
             this.lblProductName.AutoSize = true;
             this.lblProductName.BackColor = System.Drawing.Color.Transparent;
             this.lblProductName.ForeColor = System.Drawing.Color.White;
-            this.lblProductName.Location = new System.Drawing.Point(391, 23);
-            this.lblProductName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblProductName.Location = new System.Drawing.Point(521, 28);
+            this.lblProductName.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblProductName.Name = "lblProductName";
-            this.lblProductName.Size = new System.Drawing.Size(75, 13);
+            this.lblProductName.Size = new System.Drawing.Size(98, 17);
             this.lblProductName.TabIndex = 9;
             this.lblProductName.Text = "Product Name";
             // 
@@ -178,10 +178,10 @@
             // 
             this.rbtnNegativestock.AutoSize = true;
             this.rbtnNegativestock.ForeColor = System.Drawing.Color.White;
-            this.rbtnNegativestock.Location = new System.Drawing.Point(580, 90);
-            this.rbtnNegativestock.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.rbtnNegativestock.Location = new System.Drawing.Point(773, 111);
+            this.rbtnNegativestock.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.rbtnNegativestock.Name = "rbtnNegativestock";
-            this.rbtnNegativestock.Size = new System.Drawing.Size(99, 17);
+            this.rbtnNegativestock.Size = new System.Drawing.Size(124, 21);
             this.rbtnNegativestock.TabIndex = 8;
             this.rbtnNegativestock.TabStop = true;
             this.rbtnNegativestock.Text = "Negative Stock";
@@ -192,10 +192,10 @@
             // 
             this.rbtnMin.AutoSize = true;
             this.rbtnMin.ForeColor = System.Drawing.Color.White;
-            this.rbtnMin.Location = new System.Drawing.Point(686, 90);
-            this.rbtnMin.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.rbtnMin.Location = new System.Drawing.Point(915, 111);
+            this.rbtnMin.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.rbtnMin.Name = "rbtnMin";
-            this.rbtnMin.Size = new System.Drawing.Size(98, 17);
+            this.rbtnMin.Size = new System.Drawing.Size(126, 21);
             this.rbtnMin.TabIndex = 9;
             this.rbtnMin.TabStop = true;
             this.rbtnMin.Text = "Minimum  Level";
@@ -206,10 +206,10 @@
             // 
             this.rbtnReorder.AutoSize = true;
             this.rbtnReorder.ForeColor = System.Drawing.Color.White;
-            this.rbtnReorder.Location = new System.Drawing.Point(536, 114);
-            this.rbtnReorder.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.rbtnReorder.Location = new System.Drawing.Point(715, 140);
+            this.rbtnReorder.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.rbtnReorder.Name = "rbtnReorder";
-            this.rbtnReorder.Size = new System.Drawing.Size(92, 17);
+            this.rbtnReorder.Size = new System.Drawing.Size(119, 21);
             this.rbtnReorder.TabIndex = 10;
             this.rbtnReorder.TabStop = true;
             this.rbtnReorder.Text = "Reorder Level";
@@ -220,10 +220,10 @@
             // 
             this.rbtnMax.AutoSize = true;
             this.rbtnMax.ForeColor = System.Drawing.Color.White;
-            this.rbtnMax.Location = new System.Drawing.Point(642, 114);
-            this.rbtnMax.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.rbtnMax.Location = new System.Drawing.Point(856, 140);
+            this.rbtnMax.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.rbtnMax.Name = "rbtnMax";
-            this.rbtnMax.Size = new System.Drawing.Size(98, 17);
+            this.rbtnMax.Size = new System.Drawing.Size(125, 21);
             this.rbtnMax.TabIndex = 11;
             this.rbtnMax.TabStop = true;
             this.rbtnMax.Text = "Maximum Level";
@@ -236,9 +236,10 @@
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.ForeColor = System.Drawing.Color.Black;
-            this.btnSearch.Location = new System.Drawing.Point(536, 137);
+            this.btnSearch.Location = new System.Drawing.Point(715, 169);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(85, 27);
+            this.btnSearch.Size = new System.Drawing.Size(113, 33);
             this.btnSearch.TabIndex = 13;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
@@ -251,9 +252,10 @@
             this.btnReset.FlatAppearance.BorderSize = 0;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.ForeColor = System.Drawing.Color.Black;
-            this.btnReset.Location = new System.Drawing.Point(629, 137);
+            this.btnReset.Location = new System.Drawing.Point(839, 169);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(85, 27);
+            this.btnReset.Size = new System.Drawing.Size(113, 33);
             this.btnReset.TabIndex = 14;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
@@ -295,13 +297,13 @@
             this.dgvStock.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvStock.EnableHeadersVisualStyles = false;
             this.dgvStock.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvStock.Location = new System.Drawing.Point(21, 170);
-            this.dgvStock.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
+            this.dgvStock.Location = new System.Drawing.Point(28, 209);
+            this.dgvStock.Margin = new System.Windows.Forms.Padding(4, 4, 4, 12);
             this.dgvStock.Name = "dgvStock";
             this.dgvStock.ReadOnly = true;
             this.dgvStock.RowHeadersVisible = false;
             this.dgvStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStock.Size = new System.Drawing.Size(759, 377);
+            this.dgvStock.Size = new System.Drawing.Size(1012, 464);
             this.dgvStock.TabIndex = 15;
             this.dgvStock.TabStop = false;
             // 
@@ -376,9 +378,10 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnClose.Location = new System.Drawing.Point(697, 560);
+            this.btnClose.Location = new System.Drawing.Point(929, 689);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(85, 27);
+            this.btnClose.Size = new System.Drawing.Size(113, 33);
             this.btnClose.TabIndex = 15;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -388,10 +391,10 @@
             // 
             this.cmbBrand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBrand.FormattingEnabled = true;
-            this.cmbBrand.Location = new System.Drawing.Point(124, 41);
-            this.cmbBrand.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbBrand.Location = new System.Drawing.Point(165, 50);
+            this.cmbBrand.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbBrand.Name = "cmbBrand";
-            this.cmbBrand.Size = new System.Drawing.Size(200, 21);
+            this.cmbBrand.Size = new System.Drawing.Size(265, 24);
             this.cmbBrand.TabIndex = 2;
             this.cmbBrand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbBrand_KeyDown);
             // 
@@ -399,10 +402,10 @@
             // 
             this.cmbModelNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbModelNo.FormattingEnabled = true;
-            this.cmbModelNo.Location = new System.Drawing.Point(124, 67);
-            this.cmbModelNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbModelNo.Location = new System.Drawing.Point(165, 82);
+            this.cmbModelNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbModelNo.Name = "cmbModelNo";
-            this.cmbModelNo.Size = new System.Drawing.Size(200, 21);
+            this.cmbModelNo.Size = new System.Drawing.Size(265, 24);
             this.cmbModelNo.TabIndex = 4;
             this.cmbModelNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbModelNo_KeyDown);
             // 
@@ -410,10 +413,10 @@
             // 
             this.cmbGodown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGodown.FormattingEnabled = true;
-            this.cmbGodown.Location = new System.Drawing.Point(124, 93);
-            this.cmbGodown.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbGodown.Location = new System.Drawing.Point(165, 114);
+            this.cmbGodown.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbGodown.Name = "cmbGodown";
-            this.cmbGodown.Size = new System.Drawing.Size(200, 21);
+            this.cmbGodown.Size = new System.Drawing.Size(265, 24);
             this.cmbGodown.TabIndex = 6;
             this.cmbGodown.SelectedIndexChanged += new System.EventHandler(this.cmbGodown_SelectedIndexChanged);
             this.cmbGodown.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbGodown_KeyDown);
@@ -422,10 +425,10 @@
             // 
             this.cmbRack.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRack.FormattingEnabled = true;
-            this.cmbRack.Location = new System.Drawing.Point(124, 119);
-            this.cmbRack.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbRack.Location = new System.Drawing.Point(165, 146);
+            this.cmbRack.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbRack.Name = "cmbRack";
-            this.cmbRack.Size = new System.Drawing.Size(200, 21);
+            this.cmbRack.Size = new System.Drawing.Size(265, 24);
             this.cmbRack.TabIndex = 12;
             this.cmbRack.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbRack_KeyDown);
             // 
@@ -433,10 +436,10 @@
             // 
             this.cmbTax.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTax.FormattingEnabled = true;
-            this.cmbTax.Location = new System.Drawing.Point(536, 67);
-            this.cmbTax.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbTax.Location = new System.Drawing.Point(715, 82);
+            this.cmbTax.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbTax.Name = "cmbTax";
-            this.cmbTax.Size = new System.Drawing.Size(244, 21);
+            this.cmbTax.Size = new System.Drawing.Size(324, 24);
             this.cmbTax.TabIndex = 5;
             this.cmbTax.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbTax_KeyDown);
             // 
@@ -444,10 +447,10 @@
             // 
             this.cmbSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSize.FormattingEnabled = true;
-            this.cmbSize.Location = new System.Drawing.Point(536, 41);
-            this.cmbSize.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbSize.Location = new System.Drawing.Point(715, 50);
+            this.cmbSize.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbSize.Name = "cmbSize";
-            this.cmbSize.Size = new System.Drawing.Size(244, 21);
+            this.cmbSize.Size = new System.Drawing.Size(324, 24);
             this.cmbSize.TabIndex = 3;
             this.cmbSize.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbSize_KeyDown);
             // 
@@ -455,10 +458,10 @@
             // 
             this.cmbProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProduct.FormattingEnabled = true;
-            this.cmbProduct.Location = new System.Drawing.Point(536, 15);
-            this.cmbProduct.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbProduct.Location = new System.Drawing.Point(715, 18);
+            this.cmbProduct.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbProduct.Name = "cmbProduct";
-            this.cmbProduct.Size = new System.Drawing.Size(244, 21);
+            this.cmbProduct.Size = new System.Drawing.Size(324, 24);
             this.cmbProduct.TabIndex = 1;
             this.cmbProduct.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProduct_KeyDown);
             // 
@@ -466,10 +469,10 @@
             // 
             this.rbtnAll.AutoSize = true;
             this.rbtnAll.ForeColor = System.Drawing.Color.White;
-            this.rbtnAll.Location = new System.Drawing.Point(536, 90);
-            this.rbtnAll.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.rbtnAll.Location = new System.Drawing.Point(715, 111);
+            this.rbtnAll.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.rbtnAll.Name = "rbtnAll";
-            this.rbtnAll.Size = new System.Drawing.Size(36, 17);
+            this.rbtnAll.Size = new System.Drawing.Size(44, 21);
             this.rbtnAll.TabIndex = 7;
             this.rbtnAll.TabStop = true;
             this.rbtnAll.Text = "All";
@@ -478,10 +481,10 @@
             // 
             // frmStock
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1067, 738);
             this.Controls.Add(this.rbtnAll);
             this.Controls.Add(this.cmbRack);
             this.Controls.Add(this.cmbTax);
@@ -510,10 +513,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmStock";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Stock";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmStock_FormClosing);

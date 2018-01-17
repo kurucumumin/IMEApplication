@@ -52,9 +52,10 @@
             this.btnclose.FlatAppearance.BorderSize = 0;
             this.btnclose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnclose.ForeColor = System.Drawing.Color.White;
-            this.btnclose.Location = new System.Drawing.Point(697, 560);
+            this.btnclose.Location = new System.Drawing.Point(929, 689);
+            this.btnclose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnclose.Name = "btnclose";
-            this.btnclose.Size = new System.Drawing.Size(85, 27);
+            this.btnclose.Size = new System.Drawing.Size(113, 33);
             this.btnclose.TabIndex = 1;
             this.btnclose.Text = "Close";
             this.btnclose.UseVisualStyleBackColor = true;
@@ -96,13 +97,13 @@
             this.dgvOverdueSalesOrder.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvOverdueSalesOrder.EnableHeadersVisualStyles = false;
             this.dgvOverdueSalesOrder.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvOverdueSalesOrder.Location = new System.Drawing.Point(18, 41);
-            this.dgvOverdueSalesOrder.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.dgvOverdueSalesOrder.Location = new System.Drawing.Point(24, 50);
+            this.dgvOverdueSalesOrder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.dgvOverdueSalesOrder.Name = "dgvOverdueSalesOrder";
             this.dgvOverdueSalesOrder.ReadOnly = true;
             this.dgvOverdueSalesOrder.RowHeadersVisible = false;
             this.dgvOverdueSalesOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOverdueSalesOrder.Size = new System.Drawing.Size(764, 514);
+            this.dgvOverdueSalesOrder.Size = new System.Drawing.Size(1019, 633);
             this.dgvOverdueSalesOrder.TabIndex = 2;
             this.dgvOverdueSalesOrder.TabStop = false;
             // 
@@ -184,30 +185,30 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(20, 19);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label2.Location = new System.Drawing.Point(27, 23);
+            this.label2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 13);
+            this.label2.Size = new System.Drawing.Size(116, 17);
             this.label2.TabIndex = 1148;
             this.label2.Text = "Account Leadger";
             // 
             // cmbAccountLeadger
             // 
             this.cmbAccountLeadger.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAccountLeadger.Location = new System.Drawing.Point(126, 15);
-            this.cmbAccountLeadger.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbAccountLeadger.Location = new System.Drawing.Point(168, 18);
+            this.cmbAccountLeadger.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbAccountLeadger.Name = "cmbAccountLeadger";
-            this.cmbAccountLeadger.Size = new System.Drawing.Size(200, 21);
+            this.cmbAccountLeadger.Size = new System.Drawing.Size(265, 24);
             this.cmbAccountLeadger.TabIndex = 0;
             this.cmbAccountLeadger.SelectedIndexChanged += new System.EventHandler(this.cmbAccountLeadger_SelectedIndexChanged);
             this.cmbAccountLeadger.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbAccountLeadger_KeyDown);
             // 
             // frmOverdueSalesOrder
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1067, 738);
             this.Controls.Add(this.btnclose);
             this.Controls.Add(this.dgvOverdueSalesOrder);
             this.Controls.Add(this.cmbAccountLeadger);
@@ -215,10 +216,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmOverdueSalesOrder";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Overdue Sales Order";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmOverdueSalesOrder_FormClosing);

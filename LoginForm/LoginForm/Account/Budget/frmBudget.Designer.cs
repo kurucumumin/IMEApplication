@@ -121,9 +121,11 @@
             this.groupBox2.Controls.Add(this.txtBudgetName);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(18, 13);
+            this.groupBox2.Location = new System.Drawing.Point(24, 16);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(764, 344);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Size = new System.Drawing.Size(1019, 423);
             this.groupBox2.TabIndex = 1147;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Budget";
@@ -133,10 +135,10 @@
             this.lnklblRemove.AutoSize = true;
             this.lnklblRemove.ForeColor = System.Drawing.Color.Yellow;
             this.lnklblRemove.LinkColor = System.Drawing.Color.Yellow;
-            this.lnklblRemove.Location = new System.Drawing.Point(696, 234);
-            this.lnklblRemove.Margin = new System.Windows.Forms.Padding(5);
+            this.lnklblRemove.Location = new System.Drawing.Point(928, 288);
+            this.lnklblRemove.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.lnklblRemove.Name = "lnklblRemove";
-            this.lnklblRemove.Size = new System.Drawing.Size(47, 13);
+            this.lnklblRemove.Size = new System.Drawing.Size(60, 17);
             this.lnklblRemove.TabIndex = 993;
             this.lnklblRemove.TabStop = true;
             this.lnklblRemove.Text = "Remove";
@@ -146,9 +148,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(747, 28);
+            this.label3.Location = new System.Drawing.Point(996, 34);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(11, 13);
+            this.label3.Size = new System.Drawing.Size(13, 17);
             this.label3.TabIndex = 120;
             this.label3.Text = "*";
             // 
@@ -156,18 +159,19 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(326, 25);
+            this.label1.Location = new System.Drawing.Point(435, 31);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(11, 13);
+            this.label1.Size = new System.Drawing.Size(13, 17);
             this.label1.TabIndex = 119;
             this.label1.Text = "*";
             // 
             // txtToDate
             // 
-            this.txtToDate.Location = new System.Drawing.Point(545, 46);
-            this.txtToDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtToDate.Location = new System.Drawing.Point(727, 57);
+            this.txtToDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtToDate.Name = "txtToDate";
-            this.txtToDate.Size = new System.Drawing.Size(178, 20);
+            this.txtToDate.Size = new System.Drawing.Size(236, 22);
             this.txtToDate.TabIndex = 3;
             this.txtToDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtToDate_KeyDown);
             this.txtToDate.Leave += new System.EventHandler(this.txtToDate_Leave);
@@ -176,19 +180,19 @@
             // 
             this.dtpToDate.CustomFormat = "dd-MMM-yyyy";
             this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpToDate.Location = new System.Drawing.Point(723, 46);
-            this.dtpToDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.dtpToDate.Location = new System.Drawing.Point(964, 57);
+            this.dtpToDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.dtpToDate.Name = "dtpToDate";
-            this.dtpToDate.Size = new System.Drawing.Size(22, 20);
+            this.dtpToDate.Size = new System.Drawing.Size(28, 22);
             this.dtpToDate.TabIndex = 118;
             this.dtpToDate.ValueChanged += new System.EventHandler(this.dtpToDate_ValueChanged);
             // 
             // txtFromDate
             // 
-            this.txtFromDate.Location = new System.Drawing.Point(120, 46);
-            this.txtFromDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtFromDate.Location = new System.Drawing.Point(160, 57);
+            this.txtFromDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtFromDate.Name = "txtFromDate";
-            this.txtFromDate.Size = new System.Drawing.Size(178, 20);
+            this.txtFromDate.Size = new System.Drawing.Size(236, 22);
             this.txtFromDate.TabIndex = 2;
             this.txtFromDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFromDate_KeyDown);
             this.txtFromDate.Leave += new System.EventHandler(this.txtFromDate_Leave);
@@ -197,10 +201,10 @@
             // 
             this.dtpFromDate.CustomFormat = "dd-MMM-yyyy";
             this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFromDate.Location = new System.Drawing.Point(298, 46);
-            this.dtpFromDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.dtpFromDate.Location = new System.Drawing.Point(397, 57);
+            this.dtpFromDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.dtpFromDate.Name = "dtpFromDate";
-            this.dtpFromDate.Size = new System.Drawing.Size(22, 20);
+            this.dtpFromDate.Size = new System.Drawing.Size(28, 22);
             this.dtpFromDate.TabIndex = 115;
             this.dtpFromDate.ValueChanged += new System.EventHandler(this.dtpFromDate_ValueChanged);
             // 
@@ -210,9 +214,10 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnClose.Location = new System.Drawing.Point(660, 303);
+            this.btnClose.Location = new System.Drawing.Point(880, 373);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(85, 27);
+            this.btnClose.Size = new System.Drawing.Size(113, 33);
             this.btnClose.TabIndex = 9;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -224,9 +229,10 @@
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.Color.Black;
-            this.btnDelete.Location = new System.Drawing.Point(569, 303);
+            this.btnDelete.Location = new System.Drawing.Point(759, 373);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(85, 27);
+            this.btnDelete.Size = new System.Drawing.Size(113, 33);
             this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -238,9 +244,10 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(387, 303);
+            this.btnSave.Location = new System.Drawing.Point(516, 373);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(85, 27);
+            this.btnSave.Size = new System.Drawing.Size(113, 33);
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -251,10 +258,10 @@
             // 
             this.txtTotalCr.Enabled = false;
             this.txtTotalCr.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalCr.Location = new System.Drawing.Point(545, 280);
-            this.txtTotalCr.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtTotalCr.Location = new System.Drawing.Point(727, 345);
+            this.txtTotalCr.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtTotalCr.Name = "txtTotalCr";
-            this.txtTotalCr.Size = new System.Drawing.Size(200, 20);
+            this.txtTotalCr.Size = new System.Drawing.Size(265, 23);
             this.txtTotalCr.TabIndex = 107;
             this.txtTotalCr.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -264,9 +271,10 @@
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(478, 303);
+            this.btnClear.Location = new System.Drawing.Point(637, 373);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(85, 27);
+            this.btnClear.Size = new System.Drawing.Size(113, 33);
             this.btnClear.TabIndex = 7;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -276,10 +284,10 @@
             // 
             this.label16.AutoSize = true;
             this.label16.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label16.Location = new System.Drawing.Point(457, 284);
-            this.label16.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label16.Location = new System.Drawing.Point(609, 350);
+            this.label16.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(44, 13);
+            this.label16.Size = new System.Drawing.Size(58, 17);
             this.label16.TabIndex = 105;
             this.label16.Text = "Total Cr";
             // 
@@ -287,10 +295,10 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label8.Location = new System.Drawing.Point(457, 284);
-            this.label8.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label8.Location = new System.Drawing.Point(609, 350);
+            this.label8.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 13);
+            this.label8.Size = new System.Drawing.Size(58, 17);
             this.label8.TabIndex = 106;
             this.label8.Text = "Total Cr";
             // 
@@ -298,10 +306,10 @@
             // 
             this.label15.AutoSize = true;
             this.label15.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label15.Location = new System.Drawing.Point(457, 262);
-            this.label15.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label15.Location = new System.Drawing.Point(609, 322);
+            this.label15.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(45, 13);
+            this.label15.Size = new System.Drawing.Size(59, 17);
             this.label15.TabIndex = 102;
             this.label15.Text = "Total Dr";
             // 
@@ -309,10 +317,10 @@
             // 
             this.txtTotalDr.Enabled = false;
             this.txtTotalDr.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalDr.Location = new System.Drawing.Point(545, 255);
-            this.txtTotalDr.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtTotalDr.Location = new System.Drawing.Point(727, 314);
+            this.txtTotalDr.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtTotalDr.Name = "txtTotalDr";
-            this.txtTotalDr.Size = new System.Drawing.Size(200, 20);
+            this.txtTotalDr.Size = new System.Drawing.Size(265, 23);
             this.txtTotalDr.TabIndex = 104;
             this.txtTotalDr.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -320,20 +328,20 @@
             // 
             this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label14.Location = new System.Drawing.Point(16, 255);
-            this.label14.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label14.Location = new System.Drawing.Point(21, 314);
+            this.label14.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(50, 13);
+            this.label14.Size = new System.Drawing.Size(67, 17);
             this.label14.TabIndex = 98;
             this.label14.Text = "Narration";
             // 
             // txtNarration
             // 
-            this.txtNarration.Location = new System.Drawing.Point(127, 255);
-            this.txtNarration.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtNarration.Location = new System.Drawing.Point(169, 314);
+            this.txtNarration.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtNarration.Multiline = true;
             this.txtNarration.Name = "txtNarration";
-            this.txtNarration.Size = new System.Drawing.Size(250, 85);
+            this.txtNarration.Size = new System.Drawing.Size(332, 104);
             this.txtNarration.TabIndex = 5;
             this.txtNarration.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNarration_KeyDown);
             this.txtNarration.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNarration_KeyPress);
@@ -342,10 +350,10 @@
             // 
             this.label13.AutoSize = true;
             this.label13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label13.Location = new System.Drawing.Point(436, 50);
-            this.label13.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label13.Location = new System.Drawing.Point(581, 62);
+            this.label13.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(46, 13);
+            this.label13.Size = new System.Drawing.Size(59, 17);
             this.label13.TabIndex = 94;
             this.label13.Text = "To Date";
             // 
@@ -382,7 +390,8 @@
             this.dgvBudget.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvBudget.EnableHeadersVisualStyles = false;
             this.dgvBudget.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvBudget.Location = new System.Drawing.Point(18, 81);
+            this.dgvBudget.Location = new System.Drawing.Point(24, 100);
+            this.dgvBudget.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvBudget.Name = "dgvBudget";
             this.dgvBudget.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -393,7 +402,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvBudget.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvBudget.Size = new System.Drawing.Size(727, 150);
+            this.dgvBudget.Size = new System.Drawing.Size(969, 185);
             this.dgvBudget.TabIndex = 4;
             this.dgvBudget.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvBudget_CellBeginEdit);
             this.dgvBudget.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBudget_CellEnter_1);
@@ -454,10 +463,10 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label12.Location = new System.Drawing.Point(15, 50);
-            this.label12.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label12.Location = new System.Drawing.Point(20, 62);
+            this.label12.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(56, 13);
+            this.label12.Size = new System.Drawing.Size(74, 17);
             this.label12.TabIndex = 93;
             this.label12.Text = "From Date";
             // 
@@ -468,10 +477,10 @@
             this.cmbType.Items.AddRange(new object[] {
             "Account Ledger",
             "Account Group"});
-            this.cmbType.Location = new System.Drawing.Point(545, 21);
-            this.cmbType.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbType.Location = new System.Drawing.Point(727, 26);
+            this.cmbType.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbType.Name = "cmbType";
-            this.cmbType.Size = new System.Drawing.Size(200, 21);
+            this.cmbType.Size = new System.Drawing.Size(265, 24);
             this.cmbType.TabIndex = 1;
             this.cmbType.SelectedValueChanged += new System.EventHandler(this.cmbType_SelectedValueChanged);
             this.cmbType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbType_KeyDown);
@@ -480,19 +489,19 @@
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label11.Location = new System.Drawing.Point(435, 25);
-            this.label11.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label11.Location = new System.Drawing.Point(580, 31);
+            this.label11.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(31, 13);
+            this.label11.Size = new System.Drawing.Size(40, 17);
             this.label11.TabIndex = 88;
             this.label11.Text = "Type";
             // 
             // txtBudgetName
             // 
-            this.txtBudgetName.Location = new System.Drawing.Point(120, 21);
-            this.txtBudgetName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtBudgetName.Location = new System.Drawing.Point(160, 26);
+            this.txtBudgetName.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtBudgetName.Name = "txtBudgetName";
-            this.txtBudgetName.Size = new System.Drawing.Size(200, 20);
+            this.txtBudgetName.Size = new System.Drawing.Size(265, 22);
             this.txtBudgetName.TabIndex = 0;
             this.txtBudgetName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBudgetName_KeyDown);
             // 
@@ -500,10 +509,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(15, 25);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label2.Location = new System.Drawing.Point(20, 31);
+            this.label2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 13);
+            this.label2.Size = new System.Drawing.Size(94, 17);
             this.label2.TabIndex = 87;
             this.label2.Text = "Budget Name";
             // 
@@ -517,9 +526,11 @@
             this.Search.Controls.Add(this.txtBudgetNameSearch);
             this.Search.Controls.Add(this.label9);
             this.Search.ForeColor = System.Drawing.Color.White;
-            this.Search.Location = new System.Drawing.Point(18, 366);
+            this.Search.Location = new System.Drawing.Point(24, 450);
+            this.Search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Search.Name = "Search";
-            this.Search.Size = new System.Drawing.Size(764, 224);
+            this.Search.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Search.Size = new System.Drawing.Size(1019, 276);
             this.Search.TabIndex = 1148;
             this.Search.TabStop = false;
             this.Search.Text = "Search";
@@ -560,7 +571,8 @@
             this.dgvRegister.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvRegister.EnableHeadersVisualStyles = false;
             this.dgvRegister.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvRegister.Location = new System.Drawing.Point(19, 78);
+            this.dgvRegister.Location = new System.Drawing.Point(25, 96);
+            this.dgvRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvRegister.Name = "dgvRegister";
             this.dgvRegister.ReadOnly = true;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -573,7 +585,7 @@
             this.dgvRegister.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvRegister.RowHeadersVisible = false;
             this.dgvRegister.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRegister.Size = new System.Drawing.Size(726, 127);
+            this.dgvRegister.Size = new System.Drawing.Size(968, 156);
             this.dgvRegister.TabIndex = 4;
             this.dgvRegister.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRegister_CellDoubleClick);
             // 
@@ -659,9 +671,10 @@
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(545, 45);
+            this.btnSearch.Location = new System.Drawing.Point(727, 55);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(85, 27);
+            this.btnSearch.Size = new System.Drawing.Size(113, 33);
             this.btnSearch.TabIndex = 2;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -673,9 +686,10 @@
             this.btnClearSearch.FlatAppearance.BorderSize = 0;
             this.btnClearSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearSearch.ForeColor = System.Drawing.Color.White;
-            this.btnClearSearch.Location = new System.Drawing.Point(636, 45);
+            this.btnClearSearch.Location = new System.Drawing.Point(848, 55);
+            this.btnClearSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClearSearch.Name = "btnClearSearch";
-            this.btnClearSearch.Size = new System.Drawing.Size(85, 27);
+            this.btnClearSearch.Size = new System.Drawing.Size(113, 33);
             this.btnClearSearch.TabIndex = 3;
             this.btnClearSearch.Text = "Clear";
             this.btnClearSearch.UseVisualStyleBackColor = true;
@@ -688,10 +702,10 @@
             this.cmbTypeSearch.Items.AddRange(new object[] {
             "Account Ledger",
             "Account Group"});
-            this.cmbTypeSearch.Location = new System.Drawing.Point(545, 21);
-            this.cmbTypeSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbTypeSearch.Location = new System.Drawing.Point(727, 26);
+            this.cmbTypeSearch.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbTypeSearch.Name = "cmbTypeSearch";
-            this.cmbTypeSearch.Size = new System.Drawing.Size(200, 21);
+            this.cmbTypeSearch.Size = new System.Drawing.Size(265, 24);
             this.cmbTypeSearch.TabIndex = 1;
             this.cmbTypeSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbTypeSearch_KeyDown);
             // 
@@ -699,19 +713,19 @@
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label10.Location = new System.Drawing.Point(435, 25);
-            this.label10.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label10.Location = new System.Drawing.Point(580, 31);
+            this.label10.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(31, 13);
+            this.label10.Size = new System.Drawing.Size(40, 17);
             this.label10.TabIndex = 85;
             this.label10.Text = "Type";
             // 
             // txtBudgetNameSearch
             // 
-            this.txtBudgetNameSearch.Location = new System.Drawing.Point(126, 17);
-            this.txtBudgetNameSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtBudgetNameSearch.Location = new System.Drawing.Point(168, 21);
+            this.txtBudgetNameSearch.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtBudgetNameSearch.Name = "txtBudgetNameSearch";
-            this.txtBudgetNameSearch.Size = new System.Drawing.Size(200, 20);
+            this.txtBudgetNameSearch.Size = new System.Drawing.Size(265, 22);
             this.txtBudgetNameSearch.TabIndex = 0;
             this.txtBudgetNameSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBudgetNameSearch_KeyDown);
             // 
@@ -719,28 +733,28 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label9.Location = new System.Drawing.Point(16, 21);
-            this.label9.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label9.Location = new System.Drawing.Point(21, 26);
+            this.label9.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(72, 13);
+            this.label9.Size = new System.Drawing.Size(94, 17);
             this.label9.TabIndex = 83;
             this.label9.Text = "Budget Name";
             // 
             // frmBudget
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1067, 738);
             this.Controls.Add(this.Search);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmBudget";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Budget";
             this.Load += new System.EventHandler(this.frmBudget_Load);

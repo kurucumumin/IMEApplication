@@ -79,12 +79,12 @@
             this.dgvOverduePurchaseOrder.Enabled = false;
             this.dgvOverduePurchaseOrder.EnableHeadersVisualStyles = false;
             this.dgvOverduePurchaseOrder.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvOverduePurchaseOrder.Location = new System.Drawing.Point(18, 48);
-            this.dgvOverduePurchaseOrder.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.dgvOverduePurchaseOrder.Location = new System.Drawing.Point(24, 59);
+            this.dgvOverduePurchaseOrder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.dgvOverduePurchaseOrder.Name = "dgvOverduePurchaseOrder";
             this.dgvOverduePurchaseOrder.RowHeadersVisible = false;
             this.dgvOverduePurchaseOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOverduePurchaseOrder.Size = new System.Drawing.Size(764, 504);
+            this.dgvOverduePurchaseOrder.Size = new System.Drawing.Size(1019, 620);
             this.dgvOverduePurchaseOrder.TabIndex = 2;
             this.dgvOverduePurchaseOrder.TabStop = false;
             // 
@@ -145,9 +145,10 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnClose.Location = new System.Drawing.Point(697, 560);
+            this.btnClose.Location = new System.Drawing.Point(929, 689);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(85, 27);
+            this.btnClose.Size = new System.Drawing.Size(113, 33);
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -156,10 +157,10 @@
             // cmbAccountLedger
             // 
             this.cmbAccountLedger.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAccountLedger.Location = new System.Drawing.Point(126, 15);
-            this.cmbAccountLedger.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbAccountLedger.Location = new System.Drawing.Point(168, 18);
+            this.cmbAccountLedger.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbAccountLedger.Name = "cmbAccountLedger";
-            this.cmbAccountLedger.Size = new System.Drawing.Size(200, 21);
+            this.cmbAccountLedger.Size = new System.Drawing.Size(265, 24);
             this.cmbAccountLedger.TabIndex = 0;
             this.cmbAccountLedger.SelectedIndexChanged += new System.EventHandler(this.cmbAccountLedger_SelectedIndexChanged);
             this.cmbAccountLedger.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbAccountLedger_KeyDown);
@@ -168,30 +169,30 @@
             // 
             this.lblAccountLedger.AutoSize = true;
             this.lblAccountLedger.ForeColor = System.Drawing.Color.White;
-            this.lblAccountLedger.Location = new System.Drawing.Point(20, 19);
-            this.lblAccountLedger.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblAccountLedger.Location = new System.Drawing.Point(27, 23);
+            this.lblAccountLedger.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblAccountLedger.Name = "lblAccountLedger";
-            this.lblAccountLedger.Size = new System.Drawing.Size(83, 13);
+            this.lblAccountLedger.Size = new System.Drawing.Size(108, 17);
             this.lblAccountLedger.TabIndex = 1150;
             this.lblAccountLedger.Text = "Account Ledger";
             // 
             // frmOverduePurchaseOrder
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1067, 738);
             this.Controls.Add(this.cmbAccountLedger);
             this.Controls.Add(this.lblAccountLedger);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.dgvOverduePurchaseOrder);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmOverduePurchaseOrder";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Overdue Purchase Order";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmOverduePurchaseOrder_FormClosing);

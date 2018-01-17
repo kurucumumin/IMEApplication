@@ -102,13 +102,13 @@
             this.DgvPdCreceivable.DefaultCellStyle = dataGridViewCellStyle3;
             this.DgvPdCreceivable.EnableHeadersVisualStyles = false;
             this.DgvPdCreceivable.GridColor = System.Drawing.Color.SteelBlue;
-            this.DgvPdCreceivable.Location = new System.Drawing.Point(18, 97);
-            this.DgvPdCreceivable.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.DgvPdCreceivable.Location = new System.Drawing.Point(24, 119);
+            this.DgvPdCreceivable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.DgvPdCreceivable.Name = "DgvPdCreceivable";
             this.DgvPdCreceivable.ReadOnly = true;
             this.DgvPdCreceivable.RowHeadersVisible = false;
             this.DgvPdCreceivable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvPdCreceivable.Size = new System.Drawing.Size(764, 455);
+            this.DgvPdCreceivable.Size = new System.Drawing.Size(1019, 560);
             this.DgvPdCreceivable.TabIndex = 6;
             this.DgvPdCreceivable.TabStop = false;
             this.DgvPdCreceivable.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvPdCreceivable_CellDoubleClick);
@@ -230,9 +230,10 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnClose.Location = new System.Drawing.Point(697, 560);
+            this.btnClose.Location = new System.Drawing.Point(929, 689);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(85, 27);
+            this.btnClose.Size = new System.Drawing.Size(113, 33);
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -244,9 +245,10 @@
             this.btnViewDetails.FlatAppearance.BorderSize = 0;
             this.btnViewDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewDetails.ForeColor = System.Drawing.Color.Black;
-            this.btnViewDetails.Location = new System.Drawing.Point(606, 560);
+            this.btnViewDetails.Location = new System.Drawing.Point(808, 689);
+            this.btnViewDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnViewDetails.Name = "btnViewDetails";
-            this.btnViewDetails.Size = new System.Drawing.Size(85, 27);
+            this.btnViewDetails.Size = new System.Drawing.Size(113, 33);
             this.btnViewDetails.TabIndex = 6;
             this.btnViewDetails.Text = "View Details";
             this.btnViewDetails.UseVisualStyleBackColor = false;
@@ -258,9 +260,10 @@
             this.btnRefresh.FlatAppearance.BorderSize = 0;
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefresh.ForeColor = System.Drawing.Color.Black;
-            this.btnRefresh.Location = new System.Drawing.Point(580, 64);
+            this.btnRefresh.Location = new System.Drawing.Point(773, 79);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(85, 27);
+            this.btnRefresh.Size = new System.Drawing.Size(113, 33);
             this.btnRefresh.TabIndex = 4;
             this.btnRefresh.Text = "Search";
             this.btnRefresh.UseVisualStyleBackColor = false;
@@ -272,9 +275,10 @@
             this.btnReset.FlatAppearance.BorderSize = 0;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.ForeColor = System.Drawing.Color.Black;
-            this.btnReset.Location = new System.Drawing.Point(675, 64);
+            this.btnReset.Location = new System.Drawing.Point(900, 79);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(85, 27);
+            this.btnReset.Size = new System.Drawing.Size(113, 33);
             this.btnReset.TabIndex = 5;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = false;
@@ -284,10 +288,10 @@
             // 
             this.cmbAccountLedger.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAccountLedger.FormattingEnabled = true;
-            this.cmbAccountLedger.Location = new System.Drawing.Point(126, 40);
-            this.cmbAccountLedger.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.cmbAccountLedger.Location = new System.Drawing.Point(168, 49);
+            this.cmbAccountLedger.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.cmbAccountLedger.Name = "cmbAccountLedger";
-            this.cmbAccountLedger.Size = new System.Drawing.Size(192, 21);
+            this.cmbAccountLedger.Size = new System.Drawing.Size(255, 24);
             this.cmbAccountLedger.TabIndex = 2;
             this.cmbAccountLedger.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbAccountLedger_KeyDown);
             // 
@@ -295,19 +299,19 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(20, 44);
-            this.label3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label3.Location = new System.Drawing.Point(27, 54);
+            this.label3.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 13);
+            this.label3.Size = new System.Drawing.Size(108, 17);
             this.label3.TabIndex = 1241;
             this.label3.Text = "Account Ledger";
             // 
             // txtvoucherNo
             // 
-            this.txtvoucherNo.Location = new System.Drawing.Point(580, 40);
-            this.txtvoucherNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtvoucherNo.Location = new System.Drawing.Point(773, 49);
+            this.txtvoucherNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtvoucherNo.Name = "txtvoucherNo";
-            this.txtvoucherNo.Size = new System.Drawing.Size(199, 20);
+            this.txtvoucherNo.Size = new System.Drawing.Size(264, 22);
             this.txtvoucherNo.TabIndex = 3;
             this.txtvoucherNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtvoucherNo_KeyDown);
             // 
@@ -315,10 +319,10 @@
             // 
             this.lblVoucherNo.AutoSize = true;
             this.lblVoucherNo.ForeColor = System.Drawing.Color.White;
-            this.lblVoucherNo.Location = new System.Drawing.Point(474, 44);
-            this.lblVoucherNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblVoucherNo.Location = new System.Drawing.Point(632, 54);
+            this.lblVoucherNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblVoucherNo.Name = "lblVoucherNo";
-            this.lblVoucherNo.Size = new System.Drawing.Size(64, 13);
+            this.lblVoucherNo.Size = new System.Drawing.Size(83, 17);
             this.lblVoucherNo.TabIndex = 1239;
             this.lblVoucherNo.Text = "Voucher No";
             // 
@@ -326,10 +330,10 @@
             // 
             this.lblfromDate.AutoSize = true;
             this.lblfromDate.ForeColor = System.Drawing.Color.White;
-            this.lblfromDate.Location = new System.Drawing.Point(20, 19);
-            this.lblfromDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblfromDate.Location = new System.Drawing.Point(27, 23);
+            this.lblfromDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblfromDate.Name = "lblfromDate";
-            this.lblfromDate.Size = new System.Drawing.Size(56, 13);
+            this.lblfromDate.Size = new System.Drawing.Size(74, 17);
             this.lblfromDate.TabIndex = 1237;
             this.lblfromDate.Text = "From Date";
             // 
@@ -337,10 +341,10 @@
             // 
             this.lblTodate.AutoSize = true;
             this.lblTodate.ForeColor = System.Drawing.Color.White;
-            this.lblTodate.Location = new System.Drawing.Point(472, 19);
-            this.lblTodate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.lblTodate.Location = new System.Drawing.Point(629, 23);
+            this.lblTodate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.lblTodate.Name = "lblTodate";
-            this.lblTodate.Size = new System.Drawing.Size(46, 13);
+            this.lblTodate.Size = new System.Drawing.Size(59, 17);
             this.lblTodate.TabIndex = 1235;
             this.lblTodate.Text = "To Date";
             // 
@@ -348,19 +352,19 @@
             // 
             this.dtpDate.CustomFormat = "dd-MMM-yyyy";
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDate.Location = new System.Drawing.Point(299, 15);
-            this.dtpDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.dtpDate.Location = new System.Drawing.Point(399, 18);
+            this.dtpDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(19, 20);
+            this.dtpDate.Size = new System.Drawing.Size(24, 22);
             this.dtpDate.TabIndex = 1276;
             this.dtpDate.ValueChanged += new System.EventHandler(this.dtpDate_ValueChanged);
             // 
             // txtDate
             // 
-            this.txtDate.Location = new System.Drawing.Point(126, 15);
-            this.txtDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtDate.Location = new System.Drawing.Point(168, 18);
+            this.txtDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtDate.Name = "txtDate";
-            this.txtDate.Size = new System.Drawing.Size(173, 20);
+            this.txtDate.Size = new System.Drawing.Size(229, 22);
             this.txtDate.TabIndex = 0;
             this.txtDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDate_KeyDown);
             this.txtDate.Leave += new System.EventHandler(this.txtDate_Leave);
@@ -369,29 +373,29 @@
             // 
             this.dtpTodate.CustomFormat = "dd-MMM-yyyy";
             this.dtpTodate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpTodate.Location = new System.Drawing.Point(758, 15);
-            this.dtpTodate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.dtpTodate.Location = new System.Drawing.Point(1011, 18);
+            this.dtpTodate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.dtpTodate.Name = "dtpTodate";
-            this.dtpTodate.Size = new System.Drawing.Size(21, 20);
+            this.dtpTodate.Size = new System.Drawing.Size(27, 22);
             this.dtpTodate.TabIndex = 1278;
             this.dtpTodate.ValueChanged += new System.EventHandler(this.dtpTodate_ValueChanged);
             // 
             // txtToDate
             // 
-            this.txtToDate.Location = new System.Drawing.Point(580, 15);
-            this.txtToDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtToDate.Location = new System.Drawing.Point(773, 18);
+            this.txtToDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtToDate.Name = "txtToDate";
-            this.txtToDate.Size = new System.Drawing.Size(180, 20);
+            this.txtToDate.Size = new System.Drawing.Size(239, 22);
             this.txtToDate.TabIndex = 1;
             this.txtToDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtToDate_KeyDown);
             this.txtToDate.Leave += new System.EventHandler(this.txtToDate_Leave);
             // 
             // frmPDCReceivableRegister
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1067, 738);
             this.Controls.Add(this.dtpTodate);
             this.Controls.Add(this.txtToDate);
             this.Controls.Add(this.dtpDate);
@@ -410,10 +414,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmPDCReceivableRegister";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PDC Receivable Register";
             this.Load += new System.EventHandler(this.frmPDCReceivableRegister_Load);

@@ -69,9 +69,10 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(697, 560);
+            this.btnClose.Location = new System.Drawing.Point(929, 689);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(85, 27);
+            this.btnClose.Size = new System.Drawing.Size(113, 33);
             this.btnClose.TabIndex = 6;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -82,9 +83,10 @@
             this.btnViewDetails.FlatAppearance.BorderSize = 0;
             this.btnViewDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewDetails.ForeColor = System.Drawing.Color.White;
-            this.btnViewDetails.Location = new System.Drawing.Point(606, 560);
+            this.btnViewDetails.Location = new System.Drawing.Point(808, 689);
+            this.btnViewDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnViewDetails.Name = "btnViewDetails";
-            this.btnViewDetails.Size = new System.Drawing.Size(85, 27);
+            this.btnViewDetails.Size = new System.Drawing.Size(113, 33);
             this.btnViewDetails.TabIndex = 5;
             this.btnViewDetails.Text = "View Details";
             this.btnViewDetails.UseVisualStyleBackColor = true;
@@ -95,9 +97,10 @@
             this.btnRefresh.FlatAppearance.BorderSize = 0;
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefresh.ForeColor = System.Drawing.Color.White;
-            this.btnRefresh.Location = new System.Drawing.Point(566, 42);
+            this.btnRefresh.Location = new System.Drawing.Point(755, 52);
+            this.btnRefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(85, 27);
+            this.btnRefresh.Size = new System.Drawing.Size(113, 33);
             this.btnRefresh.TabIndex = 3;
             this.btnRefresh.Text = "Search";
             this.btnRefresh.UseVisualStyleBackColor = true;
@@ -108,9 +111,10 @@
             this.btnReset.FlatAppearance.BorderSize = 0;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.ForeColor = System.Drawing.Color.White;
-            this.btnReset.Location = new System.Drawing.Point(657, 40);
+            this.btnReset.Location = new System.Drawing.Point(876, 49);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(85, 27);
+            this.btnReset.Size = new System.Drawing.Size(113, 33);
             this.btnReset.TabIndex = 4;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
@@ -120,10 +124,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(20, 44);
-            this.label5.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label5.Location = new System.Drawing.Point(27, 54);
+            this.label5.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 13);
+            this.label5.Size = new System.Drawing.Size(83, 17);
             this.label5.TabIndex = 1281;
             this.label5.Text = "Voucher No";
             // 
@@ -131,10 +135,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(455, 19);
-            this.label4.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label4.Location = new System.Drawing.Point(607, 23);
+            this.label4.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 13);
+            this.label4.Size = new System.Drawing.Size(59, 17);
             this.label4.TabIndex = 1290;
             this.label4.Text = "To Date";
             // 
@@ -142,46 +146,48 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(20, 19);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label2.Location = new System.Drawing.Point(27, 23);
+            this.label2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 13);
+            this.label2.Size = new System.Drawing.Size(74, 17);
             this.label2.TabIndex = 1292;
             this.label2.Text = "From Date";
             // 
             // txtFromDate
             // 
             this.txtFromDate.Enabled = false;
-            this.txtFromDate.Location = new System.Drawing.Point(120, 15);
-            this.txtFromDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtFromDate.Location = new System.Drawing.Point(160, 18);
+            this.txtFromDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtFromDate.Name = "txtFromDate";
-            this.txtFromDate.Size = new System.Drawing.Size(180, 20);
+            this.txtFromDate.Size = new System.Drawing.Size(239, 22);
             this.txtFromDate.TabIndex = 0;
             this.txtFromDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFromDate_KeyDown);
             // 
             // dtpFromDate
             // 
-            this.dtpFromDate.Location = new System.Drawing.Point(299, 15);
+            this.dtpFromDate.Location = new System.Drawing.Point(399, 18);
+            this.dtpFromDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpFromDate.Name = "dtpFromDate";
-            this.dtpFromDate.Size = new System.Drawing.Size(21, 20);
+            this.dtpFromDate.Size = new System.Drawing.Size(27, 22);
             this.dtpFromDate.TabIndex = 1295;
             this.dtpFromDate.ValueChanged += new System.EventHandler(this.dtpFromDate_ValueChanged);
             // 
             // txtToDate
             // 
             this.txtToDate.Enabled = false;
-            this.txtToDate.Location = new System.Drawing.Point(564, 15);
-            this.txtToDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtToDate.Location = new System.Drawing.Point(752, 18);
+            this.txtToDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtToDate.Name = "txtToDate";
-            this.txtToDate.Size = new System.Drawing.Size(200, 20);
+            this.txtToDate.Size = new System.Drawing.Size(265, 22);
             this.txtToDate.TabIndex = 1;
             this.txtToDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtToDate_KeyDown);
             // 
             // dtpToDate
             // 
-            this.dtpToDate.Location = new System.Drawing.Point(761, 15);
+            this.dtpToDate.Location = new System.Drawing.Point(1015, 18);
+            this.dtpToDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpToDate.Name = "dtpToDate";
-            this.dtpToDate.Size = new System.Drawing.Size(21, 20);
+            this.dtpToDate.Size = new System.Drawing.Size(27, 22);
             this.dtpToDate.TabIndex = 1297;
             this.dtpToDate.ValueChanged += new System.EventHandler(this.dtpToDate_ValueChanged);
             // 
@@ -231,13 +237,13 @@
             this.dgvJournalRegister.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvJournalRegister.EnableHeadersVisualStyles = false;
             this.dgvJournalRegister.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvJournalRegister.Location = new System.Drawing.Point(18, 73);
-            this.dgvJournalRegister.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.dgvJournalRegister.Location = new System.Drawing.Point(24, 90);
+            this.dgvJournalRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
             this.dgvJournalRegister.Name = "dgvJournalRegister";
             this.dgvJournalRegister.ReadOnly = true;
             this.dgvJournalRegister.RowHeadersVisible = false;
             this.dgvJournalRegister.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvJournalRegister.Size = new System.Drawing.Size(764, 480);
+            this.dgvJournalRegister.Size = new System.Drawing.Size(1019, 591);
             this.dgvJournalRegister.TabIndex = 7;
             this.dgvJournalRegister.TabStop = false;
             this.dgvJournalRegister.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvJournalRegister_CellDoubleClick);
@@ -385,19 +391,19 @@
             // 
             // txtVoucherNo
             // 
-            this.txtVoucherNo.Location = new System.Drawing.Point(120, 40);
-            this.txtVoucherNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtVoucherNo.Location = new System.Drawing.Point(160, 49);
+            this.txtVoucherNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
             this.txtVoucherNo.Name = "txtVoucherNo";
-            this.txtVoucherNo.Size = new System.Drawing.Size(200, 20);
+            this.txtVoucherNo.Size = new System.Drawing.Size(265, 22);
             this.txtVoucherNo.TabIndex = 2;
             this.txtVoucherNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVoucherNo_KeyDown);
             // 
             // frmJournalRegister
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1067, 738);
             this.Controls.Add(this.dtpToDate);
             this.Controls.Add(this.txtToDate);
             this.Controls.Add(this.dtpFromDate);
@@ -414,10 +420,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmJournalRegister";
-            this.Opacity = 0.85D;
-            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
+            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Journal Register";
             this.Load += new System.EventHandler(this.frmJournalRegister_Load);

@@ -74,7 +74,7 @@
             this.btnclose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnclose.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnclose.Location = new System.Drawing.Point(929, 689);
-            this.btnclose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnclose.Margin = new System.Windows.Forms.Padding(4);
             this.btnclose.Name = "btnclose";
             this.btnclose.Size = new System.Drawing.Size(113, 33);
             this.btnclose.TabIndex = 7;
@@ -89,7 +89,7 @@
             this.btnViewDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewDetails.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnViewDetails.Location = new System.Drawing.Point(808, 689);
-            this.btnViewDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnViewDetails.Margin = new System.Windows.Forms.Padding(4);
             this.btnViewDetails.Name = "btnViewDetails";
             this.btnViewDetails.Size = new System.Drawing.Size(113, 33);
             this.btnViewDetails.TabIndex = 6;
@@ -168,7 +168,7 @@
             this.btnrefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnrefresh.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnrefresh.Location = new System.Drawing.Point(772, 78);
-            this.btnrefresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnrefresh.Margin = new System.Windows.Forms.Padding(4);
             this.btnrefresh.Name = "btnrefresh";
             this.btnrefresh.Size = new System.Drawing.Size(113, 33);
             this.btnrefresh.TabIndex = 4;
@@ -183,7 +183,7 @@
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnReset.Location = new System.Drawing.Point(893, 78);
-            this.btnReset.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(4);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(113, 33);
             this.btnReset.TabIndex = 5;
@@ -466,10 +466,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmPDCPayableRegister";
-            this.Opacity = 0.85D;
             this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PDC Payable Register";

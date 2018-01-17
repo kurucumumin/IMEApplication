@@ -41,13 +41,13 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableMain = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.controlTransactionsReports = new LoginForm.CustomControls.TransactionsReports();
             this.controlRegisterReminderSearchOther = new LoginForm.CustomControls.RegisterReminderSearchOther();
             this.controlBudgetMasterPayroll = new LoginForm.CustomControls.BudgetMasterPayroll();
             this.controlDevelopment = new LoginForm.CustomControls.DevelopmentControl();
             this.controlLoader = new LoginForm.CustomControls.LoaderControl();
             this.controlManagement = new LoginForm.CustomControls.ManagementControl();
             this.controlAccounting = new LoginForm.CustomControls.AccountingControl();
+            this.controlTransactionsReports = new LoginForm.CustomControls.TransactionsReports();
             this.tableLeftPanel.SuspendLayout();
             this.gbMainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -238,28 +238,19 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.controlRegisterReminderSearchOther);
-            this.panel1.Controls.Add(this.controlBudgetMasterPayroll);
             this.panel1.Controls.Add(this.controlDevelopment);
             this.panel1.Controls.Add(this.controlLoader);
             this.panel1.Controls.Add(this.controlManagement);
             this.panel1.Controls.Add(this.controlAccounting);
             this.panel1.Controls.Add(this.controlTransactionsReports);
+            this.panel1.Controls.Add(this.controlRegisterReminderSearchOther);
+            this.panel1.Controls.Add(this.controlBudgetMasterPayroll);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(225, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(834, 633);
             this.panel1.TabIndex = 1;
-            // 
-            // controlTransactionsReports
-            // 
-            this.controlTransactionsReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
-            this.controlTransactionsReports.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.controlTransactionsReports.Location = new System.Drawing.Point(0, 0);
-            this.controlTransactionsReports.Name = "controlTransactionsReports";
-            this.controlTransactionsReports.Size = new System.Drawing.Size(834, 633);
-            this.controlTransactionsReports.TabIndex = 6;
             // 
             // controlRegisterReminderSearchOther
             // 
@@ -318,6 +309,15 @@
             this.controlAccounting.Name = "controlAccounting";
             this.controlAccounting.Size = new System.Drawing.Size(834, 633);
             this.controlAccounting.TabIndex = 3;
+            // 
+            // controlTransactionsReports
+            // 
+            this.controlTransactionsReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.controlTransactionsReports.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.controlTransactionsReports.Location = new System.Drawing.Point(0, 0);
+            this.controlTransactionsReports.Name = "controlTransactionsReports";
+            this.controlTransactionsReports.Size = new System.Drawing.Size(834, 633);
+            this.controlTransactionsReports.TabIndex = 6;
             // 
             // FormMain
             // 
