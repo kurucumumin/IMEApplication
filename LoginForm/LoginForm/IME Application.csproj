@@ -479,7 +479,9 @@
     <Compile Include="Account\Transaction\frmReceiptVoucher.designer.cs">
       <DependentUpon>frmReceiptVoucher.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\Transaction\frmSalesInvoice.cs" />
+    <Compile Include="Account\Transaction\frmSalesInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Account\Transaction\frmSalesInvoice.Designer.cs">
       <DependentUpon>frmSalesInvoice.cs</DependentUpon>
     </Compile>
