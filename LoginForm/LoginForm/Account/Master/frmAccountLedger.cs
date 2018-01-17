@@ -46,27 +46,27 @@ namespace LoginForm
         //frmDailySalaryVoucher frmDailysalaryvoucherobj;
         //frmMonthlySalaryVoucher frmMonthlySalaryVoucherObj;
         //frmContraVoucher frmContraVoucherObj;
-        //frmPaymentVoucher frmPaymentVoucherObj;
-        //frmReceiptVoucher frmReceiptVoucherObj;
-        //frmJournalVoucher frmJournalVoucherObj;
+        frmPaymentVoucher frmPaymentVoucherObj;
+        frmReceiptVoucher frmReceiptVoucherObj;
+        frmJournalVoucher frmJournalVoucherObj;
         //frmPurchaseOrder frmPurchaseOrderObj;
         //frmServiceVoucher frmServiceVoucherObj;
         //frmMaterialReceipt frmMaterialReceptObj = null;
-        //frmDebitNote frmDebitNoteObj = null;
-        //frmCreditNote frmCreditNoteObj = null;
+        frmDebitNote frmDebitNoteObj = null;
+        frmCreditNote frmCreditNoteObj = null;
         //frmRejectionOut frmRejectionOutObj;
         //frmDeliveryNote frmDeliveryNoteObj;
         frmSalesInvoice frmSalesInvoiceObj;
         //frmPurchaseInvoice frmPurchaseInvoiceObj = null;
         frmPurchaseReturn frmPurchaseReturnObj;
         //frmSalesQuotation frmSalesQuotationObj;
-        //frmPdcPayable frmPdcpayableObj;
-        //frmPdcPayable frmPdcpayableObj2;
+        frmPdcPayable frmPdcpayableObj;
+        frmPdcPayable frmPdcpayableObj2;
         //frmSalesOrder frmSalesOrderObj;
-        //frmSalesReturn frmSalesReturnObj;
+        frmSalesReturn frmSalesReturnObj;
         //frmRejectionIn frmRejectionInObj;
-        //frmPdcReceivable frmpdcreceivableObj;
-        //frmPdcReceivable frmpdcreceivableObj2;
+        frmPdcReceivable frmpdcreceivableObj;
+        frmPdcReceivable frmpdcreceivableObj2;
         //frmPOS frmPOSObj;
         bool isFromSalesReturnCashOrPartyCombo = false;
         bool isFromSalesReturnSalesAccountCombo = false;
@@ -855,22 +855,22 @@ namespace LoginForm
         /// <param name="frmReceiptVoucher"></param>
         /// <param name="strComboType"></param>
         /// //TODO OpenMiracle Function
-        //public void CallFromReceiptVoucher(frmReceiptVoucher frmReceiptVoucher, string strComboType)
-        //{
-        //    try
-        //    {
-        //        base.Show();
-        //        strComboTypes = strComboType;
-        //        this.frmReceiptVoucherObj = frmReceiptVoucher;
-        //        frmReceiptVoucherObj.Enabled = false;
-        //        groupBox2.Enabled = false;
-        //        dgvAccountLedger.Enabled = false;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("AL17:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromReceiptVoucher(frmReceiptVoucher frmReceiptVoucher, string strComboType)
+        {
+            try
+            {
+                base.Show();
+                strComboTypes = strComboType;
+                this.frmReceiptVoucherObj = frmReceiptVoucher;
+                frmReceiptVoucherObj.Enabled = false;
+                groupBox2.Enabled = false;
+                dgvAccountLedger.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL17:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to call this form from frmAdvancePayment for creating new account ledger
         /// </summary>
@@ -927,26 +927,26 @@ namespace LoginForm
         /// <param name="isFromCorParty"></param>
         /// <param name="isFromSA"></param>
         /// //TODO OpenMiracle Function
-        //public void CallFromSalesReturn(frmSalesReturn frmSalesReturn, bool isFromCorParty, bool isFromSA)
-        //{
-        //    try
-        //    {
-        //        isFromSalesReturnCashOrPartyCombo = isFromCorParty;
-        //        isFromSalesReturnSalesAccountCombo = isFromSA;
-        //        dgvAccountLedger.Enabled = false;
-        //        txtLedgerNameSearch.Enabled = false;
-        //        cmbGroupSearch.Enabled = false;
-        //        btnSearch.Enabled = false;
-        //        lblLedgerNameSearch.Enabled = false;
-        //        lblGroupSearch.Enabled = false;
-        //        this.frmSalesReturnObj = frmSalesReturn;
-        //        base.Show();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("AL20:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromSalesReturn(frmSalesReturn frmSalesReturn, bool isFromCorParty, bool isFromSA)
+        {
+            try
+            {
+                isFromSalesReturnCashOrPartyCombo = isFromCorParty;
+                isFromSalesReturnSalesAccountCombo = isFromSA;
+                dgvAccountLedger.Enabled = false;
+                txtLedgerNameSearch.Enabled = false;
+                cmbGroupSearch.Enabled = false;
+                btnSearch.Enabled = false;
+                lblLedgerNameSearch.Enabled = false;
+                lblGroupSearch.Enabled = false;
+                this.frmSalesReturnObj = frmSalesReturn;
+                base.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL20:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to call this form from frmSalesInvoice for creating new account ledger
         /// </summary>
@@ -980,20 +980,20 @@ namespace LoginForm
         /// <param name="journalVoucherObj"></param>
         /// <param name="strLedgerName"></param>
         //TODO OpenMiracle Function
-        //public void CallFromJournalVoucher(frmJournalVoucher journalVoucherObj, string strLedgerName)
-        //{
-        //    try
-        //    {
-        //        base.Show();
-        //        this.frmJournalVoucherObj = journalVoucherObj;
-        //        frmJournalVoucherObj.Enabled = false;
-        //        dgvAccountLedger.Enabled = false;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("AL22:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromJournalVoucher(frmJournalVoucher journalVoucherObj, string strLedgerName)
+        {
+            try
+            {
+                base.Show();
+                this.frmJournalVoucherObj = journalVoucherObj;
+                frmJournalVoucherObj.Enabled = false;
+                dgvAccountLedger.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL22:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to call this form from frmPurchaseOrder for creating new account ledger
         /// </summary>
@@ -1197,28 +1197,28 @@ namespace LoginForm
 
 
         //TODO OpenMiracle Function
-        //public void CallFromPaymentVoucher(frmPaymentVoucher frmPaymentVoucherObj, string strComboType)
-        //{
-        //    try
-        //    {
-        //        strComboTypes = strComboType;
-        //        dgvAccountLedger.Enabled = false;
-        //        txtLedgerNameSearch.Enabled = false;
-        //        btnSearch.Enabled = false;
-        //        cmbGroupSearch.Enabled = false;
-        //        dgvAccountLedger.Enabled = false;
-        //        lblLedgerNameSearch.Enabled = false;
-        //        lblGroupSearch.Enabled = false;
-        //        base.Show();
-        //        this.frmPaymentVoucherObj = frmPaymentVoucherObj;
-        //        frmPaymentVoucherObj.Enabled = false;
-        //        txtLedgerName.Focus();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("AL28:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromPaymentVoucher(frmPaymentVoucher frmPaymentVoucherObj, string strComboType)
+        {
+            try
+            {
+                strComboTypes = strComboType;
+                dgvAccountLedger.Enabled = false;
+                txtLedgerNameSearch.Enabled = false;
+                btnSearch.Enabled = false;
+                cmbGroupSearch.Enabled = false;
+                dgvAccountLedger.Enabled = false;
+                lblLedgerNameSearch.Enabled = false;
+                lblGroupSearch.Enabled = false;
+                base.Show();
+                this.frmPaymentVoucherObj = frmPaymentVoucherObj;
+                frmPaymentVoucherObj.Enabled = false;
+                txtLedgerName.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL28:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to call this form from frmServiceVoucher for creating new account ledger
         /// </summary>
@@ -1267,19 +1267,19 @@ namespace LoginForm
         /// <param name="frmCreditNoteObj"></param>
         /// <param name="strLedgerName"></param>     
         //TODO OpenMiracle Function
-        //public void CallFromCreditNote(frmCreditNote frmCreditNoteObj, string strLedgerName)
-        //{
-        //    try
-        //    {
-        //        base.Show();
-        //        this.frmCreditNoteObj = frmCreditNoteObj;
-        //        frmCreditNoteObj.Enabled = false;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("AL31:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromCreditNote(frmCreditNote frmCreditNoteObj, string strLedgerName)
+        {
+            try
+            {
+                base.Show();
+                this.frmCreditNoteObj = frmCreditNoteObj;
+                frmCreditNoteObj.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL31:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to call this form from frmMaterialReceipt for creating new account ledger
         /// </summary>

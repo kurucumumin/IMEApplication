@@ -19,7 +19,7 @@ namespace LoginForm
         #region Public Variables
         //frmCurrencyDetails frmCurrencyObj = new frmCurrencyDetails();//to use in call from currency function
         //frmPartyBalance frmPartyBalanceObj = new frmPartyBalance();//to use in call from perty balance function
-        //frmLedgerPopup frmLedgerPopupObj = new frmLedgerPopup();//to use in call from ledger popup function
+        frmLedgerPopup frmLedgerPopupObj = new frmLedgerPopup();//to use in call from ledger popup function
         frmAccountLedger frmAccountLedgerObj = new frmAccountLedger();//to use in call from account ledger function
         frmReceiptRegister frmReceiptRegisterObj = null;//to use in call from Receipt register function
         frmReceiptReport frmReceiptReportObj = null;//to use in call from Receipt report function
@@ -1575,32 +1575,32 @@ namespace LoginForm
         /// <param name="frmLedgerPopup"></param>
         /// <param name="decId"></param>
         /// <param name="str"></param>
-        //public void CallFromLedgerPopup(frmLedgerPopup frmLedgerPopup, decimal decId, string str)
-        //{
-        //    try
-        //    {
-        //        this.Enabled = true;
-        //        this.frmLedgerPopupObj = frmLedgerPopup;
-        //        if (str == "CashOrBank")
-        //        {
-        //            TransactionsGeneralFill obj = new TransactionsGeneralFill();
-        //            obj.CashOrBankComboFill(cmbCashOrBank, false);
-        //            cmbCashOrBank.SelectedValue = decId;
-        //            cmbCashOrBank.Focus();
-        //        }
-        //        else
-        //        {
-        //            dgvReceiptVoucher.CurrentRow.Cells["dgvcmbAccountLedger"].Value = decId;
-        //            dgvReceiptVoucher.Focus();
-        //        }
-        //        frmLedgerPopupObj.Close();
-        //        frmLedgerPopupObj = null;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("RV28:" + ex.Message, "Open Miracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromLedgerPopup(frmLedgerPopup frmLedgerPopup, decimal decId, string str)
+        {
+            try
+            {
+                this.Enabled = true;
+                this.frmLedgerPopupObj = frmLedgerPopup;
+                if (str == "CashOrBank")
+                {
+                    TransactionsGeneralFill obj = new TransactionsGeneralFill();
+                    obj.CashOrBankComboFill(cmbCashOrBank, false);
+                    cmbCashOrBank.SelectedValue = decId;
+                    cmbCashOrBank.Focus();
+                }
+                else
+                {
+                    dgvReceiptVoucher.CurrentRow.Cells["dgvcmbAccountLedger"].Value = decId;
+                    dgvReceiptVoucher.Focus();
+                }
+                frmLedgerPopupObj.Close();
+                frmLedgerPopupObj = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("RV28:" + ex.Message, "Open Miracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to fill Account ledger combobox while return from Account ledger creation when creating new ledger 
         /// </summary>

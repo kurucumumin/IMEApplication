@@ -18,8 +18,8 @@ namespace LoginForm.Account
         /// <summary>
         /// Public Varaible declaration part
         /// </summary>
-        //frmLedgerPopup frmLedgerPopupObj = new frmLedgerPopup();
-        //frmReminderPopUp frmReminderPopupObj = null;
+        frmLedgerPopup frmLedgerPopupObj;
+        frmReminderPopUp frmReminderPopupObj = null;
         #endregion
         #region Functions
         /// <summary>
@@ -71,19 +71,19 @@ namespace LoginForm.Account
         /// Function to call this from from frmReminderPopUp form to view details
         /// </summary>
         /// <param name="frmReminderPopup"></param>
-        //public void CallFromReminder(frmReminderPopUp frmReminderPopup)
-        //{
-        //    try
-        //    {
-        //        base.Show();
-        //        frmReminderPopupObj = frmReminderPopup;
-        //        frmReminderPopupObj.Enabled = false;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("ODPO:3" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromReminder(frmReminderPopUp frmReminderPopup)
+        {
+            try
+            {
+                base.Show();
+                frmReminderPopupObj = frmReminderPopup;
+                frmReminderPopupObj.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ODPO:3" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         #endregion
         #region Events
         /// <summary>

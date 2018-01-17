@@ -63,12 +63,12 @@ namespace LoginForm
         /// Function to call this form from PaymentVoucher when Updation is Completed
         /// </summary>
         /// <param name="frmPaymentVoucher"></param>
-        //public void CallFromPaymentVoucher()
-        //{
+        public void CallFromPaymentVoucher()
+        {
 
-        //        gridfill();
-            
-        //}
+            gridfill();
+
+        }
         #endregion
         #region Events
         /// <summary>

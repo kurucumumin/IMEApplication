@@ -37,6 +37,8 @@ namespace LoginForm
         string strEmployeeId;
         string strAdvancePayment = "AdvancePayment";
         bool isAutomatic = false;
+        frmVoucherSearch objVoucherSearch ;
+        frmLedgerPopup frmLedgerPopupObj ;
         int inNarrationCount = 0;
 
         #endregion
@@ -168,13 +170,13 @@ namespace LoginForm
         }
 
 
-        //public void CallThisFormFromVoucherSearch(frmVoucherSearch frm, decimal decId)
-        //{
-        //        this.objVoucherSearch = frm;
-        //        decAdvancePaymentEditId = decId;
-        //        fillFunction();
+        public void CallThisFormFromVoucherSearch(frmVoucherSearch frm, decimal decId)
+        {
+            this.objVoucherSearch = frm;
+            decAdvancePaymentEditId = decId;
+            fillFunction();
 
-        //}
+        }
 
         public void EditFunction()
         {
@@ -895,24 +897,24 @@ namespace LoginForm
         /// </summary>
         /// <param name="frmLedgerPopup"></param>
         /// <param name="decId"></param>
-        //public void CallFromLedgerPopup(frmLedgerPopup frmLedgerPopup, decimal decId) //PopUp
-        //{
-        //    try
-        //    {
-        //        base.Show();
-        //        this.frmLedgerPopupObj = frmLedgerPopup;
-        //        TransactionsGeneralFill obj = new TransactionsGeneralFill();
-        //        obj.CashOrBankComboFill(cmbCashOrBank, false);
-        //        cmbCashOrBank.SelectedValue = decId;
-        //        cmbCashOrBank.Focus();
-        //        frmLedgerPopupObj.Close();
-        //        frmLedgerPopupObj = null;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("AP20:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromLedgerPopup(frmLedgerPopup frmLedgerPopup, decimal decId) //PopUp
+        {
+            try
+            {
+                base.Show();
+                this.frmLedgerPopupObj = frmLedgerPopup;
+                TransactionsGeneralFill obj = new TransactionsGeneralFill();
+                obj.CashOrBankComboFill(cmbCashOrBank, false);
+                cmbCashOrBank.SelectedValue = decId;
+                cmbCashOrBank.Focus();
+                frmLedgerPopupObj.Close();
+                frmLedgerPopupObj = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AP20:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to call this form from frmLedgerDetails to view details for updation
         /// </summary>

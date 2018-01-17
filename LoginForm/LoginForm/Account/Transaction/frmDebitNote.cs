@@ -1728,20 +1728,20 @@ namespace LoginForm
         /// </summary>
         /// <param name="decId"></param>
         /// <param name="frmLedgerPopUpObj"></param>
-        //public void CallFromLedgerPopup(decimal decId, frmLedgerPopup frmLedgerPopUpObj) //PopUp
-        //{
-        //    try
-        //    {
-        //        frmLedgerPopUpObj.Close();
-        //        dgvDebitNote.CurrentRow.Cells["dgvcmbAccountLedger"].Value = decId;
-        //        dgvDebitNote.Focus();
+        public void CallFromLedgerPopup(decimal decId, frmLedgerPopup frmLedgerPopUpObj) //PopUp
+        {
+            try
+            {
+                frmLedgerPopUpObj.Close();
+                dgvDebitNote.CurrentRow.Cells["dgvcmbAccountLedger"].Value = decId;
+                dgvDebitNote.Focus();
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("DRNT29:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("DRNT29:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
         /// <summary>
         /// Function to load the voucher to edit or delete while calling from the DebitNote report

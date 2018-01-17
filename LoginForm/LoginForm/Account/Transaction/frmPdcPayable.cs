@@ -43,14 +43,14 @@ namespace LoginForm
         bool isWorkLedgerIndexChange = true;
         string strPrefix = string.Empty;
         string strSuffix = string.Empty;
-        //frmLedgerPopup frmLedgerPopupObj = new frmLedgerPopup();//to use in call from ledger popup function
+        frmLedgerPopup frmLedgerPopupObj = new frmLedgerPopup();//to use in call from ledger popup function
         DataTable dtblPartyBalance = new DataTable(); // To pass values to party balance
         bool isInEditMode = false; // Tp decide whether is edit mode of not
         //frmPartyBalance frmPartyBalanceObj = new frmPartyBalance();//To use in call from PartyBalance class
         frmPDCPayableRegister PDCPayableRegisterObj = null;//To use in call from PdcPayableRegister class
-        //frmPDCPayableReport PDCpayableReportObj = null;//To use in call from pdcpayableReport
+        frmPDCPayableReport PDCpayableReportObj = null;//To use in call from pdcpayableReport
         //frmBillallocation BillallocationObj = null;//To use in call from Billallocation
-        //frmVoucherSearch frmVoucherSearch = null;
+        frmVoucherSearch frmVoucherSearch = null;
         //frmDayBook frmDayBookObj = null;//To use in call from frmDayBook
         //frmAgeingReport frmAgeingObj = null;//To use in call from frmDayBook
         //frmLedgerDetails frmLedgerDetailsObj;
@@ -91,57 +91,57 @@ namespace LoginForm
         /// </summary>
         /// <param name="decVoucherTypeId"></param>
         /// <param name="strVoucherTypeName"></param>
-        //public void CallFromVoucherTypeSelection(decimal decVoucherTypeId, string strVoucherTypeName)
-        //{
-        //    try
-        //    {
-        //        decPDCpayableVoucherTypeId = decVoucherTypeId;
-        //        VoucherTypeSP spVoucherType = new VoucherTypeSP();
-        //        isAutomatic = spVoucherType.CheckMethodOfVoucherNumbering(decPDCpayableVoucherTypeId);
-        //        SuffixPrefixSP spSuffisprefix = new SuffixPrefixSP();
-        //        SuffixPrefixInfo infoSuffixPrefix = new SuffixPrefixInfo();
-        //        infoSuffixPrefix = spSuffisprefix.GetSuffixPrefixDetails(decPDCpayableVoucherTypeId, dtpVoucherDate.Value);
-        //        decSufixprefixPdcpayableID = infoSuffixPrefix.SuffixprefixId;
-        //        this.Text = strVoucherTypeName;
-        //        base.Show();
-        //        if (isAutomatic)
-        //        {
-        //            txtVoucherDate.Focus();
-        //        }
-        //        else
-        //        {
-        //            txtvoucherNo.Focus();
-        //        }
-        //        ClearFunction();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("PP1:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromVoucherTypeSelection(decimal decVoucherTypeId, string strVoucherTypeName)
+        {
+            try
+            {
+                decPDCpayableVoucherTypeId = decVoucherTypeId;
+                VoucherTypeSP spVoucherType = new VoucherTypeSP();
+                isAutomatic = spVoucherType.CheckMethodOfVoucherNumbering(decPDCpayableVoucherTypeId);
+                SuffixPrefixSP spSuffisprefix = new SuffixPrefixSP();
+                SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
+                infoSuffixPrefix = spSuffisprefix.GetSuffixPrefixDetails(decPDCpayableVoucherTypeId, dtpVoucherDate.Value);
+                decSufixprefixPdcpayableID = infoSuffixPrefix.suffixprefixId;
+                this.Text = strVoucherTypeName;
+                base.Show();
+                if (isAutomatic)
+                {
+                    txtVoucherDate.Focus();
+                }
+                else
+                {
+                    txtvoucherNo.Focus();
+                }
+                ClearFunction();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PP1:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         ///// <summary>
         ///// Function to call this form from frmVoucherSearch to view details and for updation 
         ///// </summary>
         ///// <param name="frm"></param>
         ///// <param name="decId"></param>
-        //public void CallThisFormFromVoucherSearch(frmVoucherSearch frm, decimal decId)
-        //{
-        //    try
-        //    {
-        //        base.Show();
-        //        this.frmVoucherSearch = frm;
-        //        decPDCpayableEditId = decId;
-        //        btnClear.Text = "New";
-        //        btnSave.Text = "Update";
-        //        btnDelete.Enabled = true;
-        //        FillFunction();
-        //        this.Activate();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("PP2:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallThisFormFromVoucherSearch(frmVoucherSearch frm, decimal decId)
+        {
+            try
+            {
+                base.Show();
+                this.frmVoucherSearch = frm;
+                decPDCpayableEditId = decId;
+                btnClear.Text = "New";
+                btnSave.Text = "Update";
+                btnDelete.Enabled = true;
+                FillFunction();
+                this.Activate();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PP2:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Voucher no generation function based on the settings
         /// </summary>
@@ -1187,30 +1187,30 @@ namespace LoginForm
         /// <param name="frmLedgerPopup"></param>
         /// <param name="decId"></param>
         /// <param name="strComboType"></param>
-        //public void CallFromLedgerPopup(frmLedgerPopup frmLedgerPopup, decimal decId, string strComboType) //   Ledger pop up
-        //{
-        //    try
-        //    {
-        //        base.Show();
-        //        this.frmLedgerPopupObj = frmLedgerPopup;
-        //        if (strComboType == "Account Ledger")
-        //        {
-        //            cmbAccountNameFill();
-        //            cmbAccountLedger.SelectedValue = decId;
-        //        }
-        //        else if (strComboType == "Bank")
-        //        {
-        //            cmbBankAccountFill();
-        //            cmbBank.SelectedValue = decId;
-        //        }
-        //        frmLedgerPopupObj.Close();
-        //        frmLedgerPopupObj = null;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("PP25:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromLedgerPopup(frmLedgerPopup frmLedgerPopup, decimal decId, string strComboType) //   Ledger pop up
+        {
+            try
+            {
+                base.Show();
+                this.frmLedgerPopupObj = frmLedgerPopup;
+                if (strComboType == "Account Ledger")
+                {
+                    cmbAccountNameFill();
+                    cmbAccountLedger.SelectedValue = decId;
+                }
+                else if (strComboType == "Bank")
+                {
+                    cmbBankAccountFill();
+                    cmbBank.SelectedValue = decId;
+                }
+                frmLedgerPopupObj.Close();
+                frmLedgerPopupObj = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PP25:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to call this form from frmBillallocation to view details and for updation
         /// </summary>

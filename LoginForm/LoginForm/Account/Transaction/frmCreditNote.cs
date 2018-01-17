@@ -68,7 +68,7 @@ namespace LoginForm
         {
             InitializeComponent();
         }
-        
+
         /// <summary>
         /// It is a function for vouchertypeselection form to select perticular voucher and open the form under the vouchertype
         /// </summary>
@@ -104,24 +104,24 @@ namespace LoginForm
         /// </summary>
         /// <param name="frm"></param>
         /// <param name="decId"></param>
-        //public void CallThisFormFromVoucherSearch(frmVoucherSearch frm, decimal decId)
-        //{
-        //    // Function to call form voucher Search
-        //    try
-        //    {
-        //        this.objVoucherSearch = frm;
-        //        decCreditNoteMasterIdForEdit = decId;
-        //        btnSave.Text = "Update";
-        //        btnDelete.Enabled = true;
-        //        isEditMode = true;
-        //        FillFunction();
+        public void CallThisFormFromVoucherSearch(frmVoucherSearch frm, decimal decId)
+        {
+            // Function to call form voucher Search
+            try
+            {
+                this.objVoucherSearch = frm;
+                decCreditNoteMasterIdForEdit = decId;
+                btnSave.Text = "Update";
+                btnDelete.Enabled = true;
+                isEditMode = true;
+                FillFunction();
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("CRNT:02" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("CRNT:02" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
         /// <summary>
         /// Function to clear the fields
@@ -354,19 +354,19 @@ namespace LoginForm
         /// </summary>
         /// <param name="decId"></param>
         /// <param name="frmLedgerPopUp"></param>
-        //public void CallFromLedgerPopup(decimal decId, frmLedgerPopup frmLedgerPopUp) //PopUp
-        //{
-        //    try
-        //    {
-        //        frmLedgerPopUp.Close();
-        //        dgvCreditNote.CurrentRow.Cells["dgvcmbAccountLedger"].Value = decId;
-        //        dgvCreditNote.Focus();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("CRNT:10" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromLedgerPopup(decimal decId, frmLedgerPopup frmLedgerPopUp) //PopUp
+        {
+            try
+            {
+                frmLedgerPopUp.Close();
+                dgvCreditNote.CurrentRow.Cells["dgvcmbAccountLedger"].Value = decId;
+                dgvCreditNote.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("CRNT:10" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
         /// <summary>
         /// Function to load the voucher to edit or delete while calling from the creditnote register 
@@ -2295,7 +2295,7 @@ namespace LoginForm
                 MessageBox.Show("CRNT:37" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-       
+
         /// <summary>
         /// Function to load the form while calling from DayBook form
         /// </summary>
@@ -2343,7 +2343,7 @@ namespace LoginForm
         //        MessageBox.Show("CRNT:39" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
         //    }
         //}
-        
+
         /// <summary>
         /// Function to select the ledger while from ledgerpopup
         /// </summary>
@@ -2361,7 +2361,7 @@ namespace LoginForm
         //        decCreditNoteMasterIdForEdit = decMasterId;
         //        FillFunction();
 
-        //                    }
+        //    }
         //    catch (Exception ex)
         //    {
         //        MessageBox.Show("CRNT:40:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);

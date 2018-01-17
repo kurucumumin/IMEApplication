@@ -41,7 +41,7 @@ namespace LoginForm
         //frmPDCClearanceReport pdcClearanceReportObj = null;//To use in call from   frmPDCClearanceReport
         //frmDayBook frmDayBookObj = null;//To use in call from frmDayBook
         DataTable dtblDetails = new DataTable();
-        //frmVoucherSearch objVoucherSearch = null;
+        frmVoucherSearch objVoucherSearch = null;
         decimal decMasterIdEdit = 0;
         int inKeyPrsCount = 0;
         //frmLedgerDetails frmLedgerDetailsObj;
@@ -140,20 +140,20 @@ namespace LoginForm
         /// </summary>
         /// <param name="frm"></param>
         /// <param name="decId"></param>
-        //public void CallFromVoucherSearch(frmVoucherSearch frm, decimal decId)
-        //{
-        //    try
-        //    {
-        //        base.Show();
-        //        objVoucherSearch = frm;
-        //        decPDCClearanceEditId = decId;
-        //        FillFunction();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("PC4:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromVoucherSearch(frmVoucherSearch frm, decimal decId)
+        {
+            try
+            {
+                base.Show();
+                objVoucherSearch = frm;
+                decPDCClearanceEditId = decId;
+                FillFunction();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PC4:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// The form will be reset here
         /// </summary>

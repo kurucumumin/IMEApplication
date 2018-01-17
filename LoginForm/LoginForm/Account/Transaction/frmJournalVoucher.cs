@@ -239,31 +239,31 @@ namespace LoginForm
         //}
 
 
-        //public void CallFromLedgerPopup(decimal decId, frmLedgerPopup frmLedgerPopUpObj) //PopUp
-        //{
-        //    try
-        //    {
-        //        frmLedgerPopUpObj.Close();
-        //        dgvJournalVoucher.CurrentRow.Cells["dgvcmbAccountLedger"].Value = decId;
-        //        dgvJournalVoucher.Focus();
+        public void CallFromLedgerPopup(decimal decId, frmLedgerPopup frmLedgerPopUpObj) //PopUp
+        {
+            try
+            {
+                frmLedgerPopUpObj.Close();
+                dgvJournalVoucher.CurrentRow.Cells["dgvcmbAccountLedger"].Value = decId;
+                dgvJournalVoucher.Focus();
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("JV4:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("JV4:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
 
-        //public void CallThisFormFromVoucherSearch(frmVoucherSearch frm, decimal decId)
-        //{
-        //    // Function to call form voucher Search
+        public void CallThisFormFromVoucherSearch(frmVoucherSearch frm, decimal decId)
+        {
+            // Function to call form voucher Search
 
-        //        decJournalMasterIdForEdit = decId;
-        //        isEditMode = true;
-        //        btnDelete.Enabled = true;
-        //        FillFunction();
-        //}
+            decJournalMasterIdForEdit = decId;
+            isEditMode = true;
+            btnDelete.Enabled = true;
+            FillFunction();
+        }
 
         /// <summary>
         /// Function to fill the currency combo box

@@ -47,7 +47,7 @@ namespace Open_Miracle
         ArrayList arrlstRemoveAdditionalCost = new ArrayList();
         TransactionsGeneralFill TransactionGeneralFillObj = new TransactionsGeneralFill();
         SettingsSP spSettings = new SettingsSP();
-        //frmLedgerPopup frmLedgerPopupObj = null;
+        frmLedgerPopup frmLedgerPopupObj = null;
         //frmProductSearchPopup frmProductSearchPopupObj = null;
         //frmPurchaseInvoiceRegister frmPurchaseInvoiceRegisterObj = null;
         //frmPurchaseReport frmPurchaseReportObj = null;
@@ -2727,29 +2727,29 @@ namespace Open_Miracle
         /// <param name="frmLedgerPopup"></param>
         /// <param name="decId"></param>
         /// <param name="strComboTypes"></param>
-        public void CallFromLedgerPopup(/*frmLedgerPopup frmLedgerPopup, decimal decId, string strComboTypes*/) //PopUp
+        public void CallFromLedgerPopup(frmLedgerPopup frmLedgerPopup, decimal decId, string strComboTypes)
         {
-            //try
-            //{
-            //    base.Show();
-            //    this.frmLedgerPopupObj = frmLedgerPopup;
-            //    if (strComboTypes == "CashOrSundryCreditors")
-            //    {
-            //        TransactionGeneralFillObj.CashOrPartyComboFill(cmbCashOrParty, false);
-            //        cmbCashOrParty.SelectedValue = decId;
-            //    }
-            //    else if (strComboTypes == "PurchaseAccount")
-            //    {
-            //        PurchaseAccountComboFill();
-            //        cmbPurchaseAccount.SelectedValue = decId;
-            //    }
-            //    frmLedgerPopupObj.Close();
-            //    frmLedgerPopupObj = null;
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("PI47:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+            try
+            {
+                base.Show();
+                this.frmLedgerPopupObj = frmLedgerPopup;
+                if (strComboTypes == "CashOrSundryCreditors")
+                {
+                    TransactionGeneralFillObj.CashOrPartyComboFill(cmbCashOrParty, false);
+                    cmbCashOrParty.SelectedValue = decId;
+                }
+                else if (strComboTypes == "PurchaseAccount")
+                {
+                    PurchaseAccountComboFill();
+                    cmbPurchaseAccount.SelectedValue = decId;
+                }
+                frmLedgerPopupObj.Close();
+                frmLedgerPopupObj = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PI47:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         /// <summary>
         /// Function to call frmProductSearch form to select and view product

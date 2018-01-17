@@ -165,17 +165,17 @@ namespace LoginForm
         /// Function to call this form from frmReceiptVoucher for updation
         /// </summary>
         /// <param name="frmReceiptVoucher"></param>
-        //public void CallFromReceiptVoucher(frmReceiptVoucher frmReceiptVoucher)
-        //{
-        //    try
-        //    {
-        //        GridFill();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("RRP7:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromReceiptVoucher(frmReceiptVoucher frmReceiptVoucher)
+        {
+            try
+            {
+                GridFill();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("RRP7:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         #endregion
         #region Events
         /// <summary>
