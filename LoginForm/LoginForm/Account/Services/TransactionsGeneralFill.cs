@@ -283,41 +283,29 @@ namespace LoginForm.Account.Services
             dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
             dtbl.Columns["SlNo"].AutoIncrementStep = 1;
            
-                var adaptor = (from ag in db.AccountLedgers.Where(x => x.AccountGroup.accountGroupName == "Cash-in Hand" || x.AccountGroup.accountGroupName == "Bank Account" || x.AccountGroup.accountGroupName == "Bank OD A/C")
-                               where (ag.AccountGroup.groupUnder==ag.accountGroupID)
+                var adaptor = (from ag in db.AccountGroups
+                               where ((ag.accountGroupName== "Cash-in Hand") || (ag.accountGroupName == "Bank Account") ||(ag.accountGroupName == "Bank OD A/C")) || (ag.groupUnder==ag.accountGroupId)
                                select new
                                {
-                                   ag.accountGroupID,
-                                   LedgerName = ag.ledgerName,
-                                   LedgerId=ag.ledgerId
+                                   ag.accountGroupId,
+                                   //LedgerName = ag.ledgerName,
+                                   //LedgerId=ag.ledgerId
                                }).ToList();
-                //List<int?> IDs = adaptor.Select(x => x.accountGroupID).ToList();
 
-                //var adaptor2 = (from ag in db.AccountLedgers.Where(x => x.AccountGroup.groupUnder == IDs[0])
-                //                select new
-                //                {
-                //                    ag.accountGroupID,
-                //                    LedgerName = ag.ledgerName,
-                //                    LedgerId = ag.ledgerId
-                //                }).ToList();
-
-                //foreach (var item in adaptor2)
-                //{
-                //    if (!adaptor.Exists(x => x.accountGroupID == item.accountGroupID))
-                //    {
-                //        adaptor.Add(item);
-                //    }
-                //}
-
-                dtbl.Columns.Add("LedgerName");
+            List<AccountLedger> alList = new List<AccountLedger>();         
+                
+            foreach (var item in adaptor)
+            {
+                alList.AddRange(db.AccountLedgers.Where(a => a.accountGroupID == item.accountGroupId));
+            }
+            dtbl.Columns.Add("LedgerName");
                 dtbl.Columns.Add("LedgerId");
-                foreach (var item in adaptor)
+                foreach (var item in alList)
                 {
-                    var row = dtbl.NewRow();
-
-                    row["LedgerName"] = item.LedgerName;
-                    row["LedgerId"] = item.LedgerId;
-                    dtbl.Rows.Add(row);
+                var row = dtbl.NewRow();
+                row["LedgerName"] = item.ledgerName;
+                row["LedgerId"] = item.ledgerId;
+                dtbl.Rows.Add(row);
                 }
                         
             return dtbl;
