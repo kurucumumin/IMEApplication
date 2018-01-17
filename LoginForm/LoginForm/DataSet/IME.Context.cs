@@ -1136,6 +1136,11 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductViewAll_Result>("ProductViewAll");
         }
     
+        public virtual ObjectResult<ProductViewAllForComboBox_Result> ProductViewAllForComboBox()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductViewAllForComboBox_Result>("ProductViewAllForComboBox");
+        }
+    
         public virtual ObjectResult<productviewbybarcodeforSR_Result> productviewbybarcodeforSR(Nullable<decimal> voucherTypeId, string barcode)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
@@ -1863,6 +1868,15 @@ namespace LoginForm.DataSet
                 new ObjectParameter("purchaseReturnMasterId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PurchaseReturnViewByPurchaseReturnMasterId_Result>("PurchaseReturnViewByPurchaseReturnMasterId", purchaseReturnMasterIdParameter);
+        }
+    
+        public virtual ObjectResult<RackFillForStock_Result> RackFillForStock(Nullable<decimal> godownId)
+        {
+            var godownIdParameter = godownId.HasValue ?
+                new ObjectParameter("godownId", godownId) :
+                new ObjectParameter("godownId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RackFillForStock_Result>("RackFillForStock", godownIdParameter);
         }
     
         public virtual ObjectResult<SalesAccountComboFill_Result> SalesAccountComboFill()
@@ -3159,6 +3173,11 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherTypeId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxViewAllByVoucherTypeIdForPurchaseInvoice_Result>("TaxViewAllByVoucherTypeIdForPurchaseInvoice", voucherTypeIdParameter);
+        }
+    
+        public virtual ObjectResult<TaxViewAllForProduct_Result> TaxViewAllForProduct()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxViewAllForProduct_Result>("TaxViewAllForProduct");
         }
     
         public virtual ObjectResult<UnitConversionIdAndConRateViewallByProductId_Result> UnitConversionIdAndConRateViewallByProductId(string productId)

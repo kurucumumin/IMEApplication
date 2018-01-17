@@ -10,7 +10,7 @@
 namespace LoginForm.DataSet
 {
     using System;
-
+    
     public partial class PurchaseDetailsViewByPurchaseMasterId_Result
     {
         public decimal purchaseDetailsId { get; set; }

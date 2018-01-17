@@ -64,5 +64,20 @@ namespace LoginForm
         {
             controlAccounting.BringToFront();
         }
+
+        private void btnBudgetMasterPayroll_Click(object sender, EventArgs e)
+        {
+            controlBudgetMasterPayroll.BringToFront();
+        }
+
+        private void btnRegisterReminderSearchOther_Click(object sender, EventArgs e)
+        {
+            controlRegisterReminderSearchOther.BringToFront();
+        }
+
+        private void brnTransactionsReports_Click(object sender, EventArgs e)
+        {
+            controlTransactionsReports.BringToFront();
+        }
     }
 }
