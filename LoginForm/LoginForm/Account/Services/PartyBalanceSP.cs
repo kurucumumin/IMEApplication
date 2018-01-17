@@ -188,7 +188,7 @@ namespace LoginForm.Account.Services
             decimal decAmount = 0;
             try
             {
-                decAmount = new IMEEntities().PartyBalanceAmountViewByVoucherNoVoucherTypeIdAndReferenceType();
+                decAmount = Convert.ToDecimal(new IMEEntities().PartyBalanceAmountViewByVoucherNoVoucherTypeIdAndReferenceType(strVoucherNo, decVoucherTypeId, strReferenceType));
             }
             catch (Exception ex)
             {

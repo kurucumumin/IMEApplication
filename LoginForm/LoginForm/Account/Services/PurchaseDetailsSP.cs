@@ -189,25 +189,30 @@ namespace LoginForm.Account.Services
             IMEEntities db = new IMEEntities();
             try
             {
-                db.PurchaseDetailsEdit(
-                    pd.purchaseMasterId,
-                    pd.receiptDetailsId,
-                    pd.orderDetailsId,
-                    pd.productId,
-                    pd.qty,
-                    pd.rate,
-                    pd.unitId,
-                    pd.unitConversionId,
-                    pd.discount,
-                    pd.taxId,
-                    pd.batchId,
-                    pd.godownId,
-                    pd.rackId,
-                    pd.taxAmount,
-                    pd.grossAmount,
-                    pd.netAmount,
-                    pd.amount,
-                    pd.slNo);
+                PurchaseDetail pm = db.PurchaseDetails.Where(x => x.purchaseDetailsId == pd.purchaseDetailsId).FirstOrDefault();
+
+                pm.purchaseMasterId = pd.purchaseMasterId;
+                pm.receiptDetailsId = pd.receiptDetailsId;
+                pm.orderDetailsId = pd.orderDetailsId;
+                pm.productId = pd.productId;
+                pm.qty = pd.qty;
+                pm.unitId = pd.unitId;
+                pm.unitConversionId = pd.unitConversionId;
+                pm.discount= pd.discount;
+                pm.taxId = pd.taxId;
+                pm.batchId = pd.batchId;
+                pm.godownId = pd.godownId;
+                pm.rackId = pd.rackId;
+                pm.taxAmount = pd.taxAmount;
+                pm.grossAmount = pd.grossAmount;
+                pm.netAmount = pd.netAmount;
+                pm.amount = pd.amount;
+                pm.slNo = pd.slNo;
+
+
+                db.SaveChanges();
+
+                
             }
             catch (Exception ex)
             {

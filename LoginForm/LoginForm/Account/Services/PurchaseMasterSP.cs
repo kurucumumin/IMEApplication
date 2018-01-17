@@ -217,7 +217,7 @@ namespace LoginForm.Account.Services
             int inQty = 0;
             try
             {
-                inQty = new IMEEntities().PurchaseMasterReferenceCheck(decPurchaseMasterId, decPurchaseDetailsId);
+                inQty = Convert.ToInt32(new IMEEntities().PurchaseMasterReferenceCheck(decPurchaseMasterId, decPurchaseDetailsId));
             }
             catch (Exception ex)
             {
@@ -282,7 +282,7 @@ namespace LoginForm.Account.Services
             PurchaseMaster purchasemasterinfo = new PurchaseMaster();
             try
             {
-                var p = db.PurchaseMasterView(purchaseMasterId);
+                var p = db.PurchaseMasterView(purchaseMasterId).FirstOrDefault();
 
                 purchasemasterinfo.purchaseMasterId = p.purchaseMasterId;
                 purchasemasterinfo.voucherNo = p.voucherNo;

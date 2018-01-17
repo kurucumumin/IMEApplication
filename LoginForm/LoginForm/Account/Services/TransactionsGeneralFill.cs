@@ -262,7 +262,7 @@ namespace LoginForm.Account.Services
                 cmbCashOrParty.DataSource = dtbl;
                 cmbCashOrParty.ValueMember = "AccountGroupId";
                 cmbCashOrParty.DisplayMember = "AccountGroupName";
-                cmbCashOrParty.SelectedIndex = 0;
+                cmbCashOrParty.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
