@@ -21,7 +21,7 @@ namespace LoginForm.Account.Services
                                w.pricinglevelId,
                                UserName = (w.pricinglevelName == "NA") ? "1" : w.pricinglevelName
                            }).ToList();
-            dt.Columns.Add("pricinglevelId");
+            dt.Columns.Add("WorkerID");
             dt.Columns.Add("UserName");
 
             foreach (var item in adaptor)
@@ -58,22 +58,22 @@ namespace LoginForm.Account.Services
             try
             {
                 var adaptor = (from w in db.Workers
-                               from d in db.Designations.Where(x=> x.designationId==1 && x.designationId==w.designationId)
+                               from d in db.Designations.Where(x=> x.designationName== "Sale" && x.designationId==w.designationId)
                                 select new
                                {
                                    w.WorkerID,
-                                   UserName = (w.UserName == "NA") ? "1" : w.UserName
-                               }).ToList();
+                                    NameLastName = (w.NameLastName == "NA") ? "1" : w.NameLastName
+                                }).ToList();
 
                 dt.Columns.Add("WorkerID");
-                dt.Columns.Add("UserName");
+                dt.Columns.Add("NameLastName");
 
                 foreach (var item in adaptor)
                 {
                     var row = dt.NewRow();
 
                     row["WorkerID"] = item.WorkerID;
-                    row["UserName"] = item.UserName;
+                    row["NameLastName"] = item.NameLastName;
 
                     dt.Rows.Add(row);
                 }
@@ -82,8 +82,12 @@ namespace LoginForm.Account.Services
             {
                 MessageBox.Show(ex.ToString());
             }
-
+            cmbSalesMan.DataSource = dt;
+            cmbSalesMan.ValueMember = "WorkerID";
+            cmbSalesMan.DisplayMember = "NameLastName";
             return dt;
+           
+
         }
 
         public DataTable CurrencyComboByDate(DateTime date)
@@ -93,7 +97,7 @@ namespace LoginForm.Account.Services
             try
             {
                 var adaptor = (from c in db.Currencies
-                               from e in db.ExchangeRates.Where(x => x.currencyId == c.currencyID)
+                               from e in db.ExchangeRates.Where(a=>a.date<date)
                                where e.date==date || e.exchangeRateID==1
                                select new
                                {
@@ -102,14 +106,14 @@ namespace LoginForm.Account.Services
                                    e.exchangeRateID
                                }).ToList();
 
-                dt.Columns.Add("currencyName"+ "|" + "currencySymbol");
+                dt.Columns.Add("currencyName");
                 dt.Columns.Add("exchangeRateID");
 
                 foreach (var item in adaptor)
                 {
                     var row = dt.NewRow();
 
-                    row["currencyName" + "|" + "currencySymbol"] = item.currencyName+ "|" +item.currencySymbol;
+                    row["currencyName"] = item.currencyName+ "|" +item.currencySymbol;
                     row["exchangeRateID"] = item.exchangeRateID;
 
                     dt.Rows.Add(row);
@@ -278,46 +282,44 @@ namespace LoginForm.Account.Services
             dtbl.Columns["SlNo"].AutoIncrement = true;
             dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
             dtbl.Columns["SlNo"].AutoIncrementStep = 1;
-            try
-            {
-                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupId == 27 || x.accountGroupId == 28 || x.accountGroupId == 17)
+           
+                var adaptor = (from ag in db.AccountLedgers.Where(x => x.AccountGroup.accountGroupName == "Cash-in Hand" || x.AccountGroup.accountGroupName == "Bank Account" || x.AccountGroup.accountGroupName == "Bank OD A/C")
+                               where (ag.AccountGroup.groupUnder==ag.accountGroupID)
                                select new
                                {
-                                   AccountGroupId = ag.accountGroupId,
-                                   hierarchyLevel = 1
+                                   ag.accountGroupID,
+                                   LedgerName = ag.ledgerName,
+                                   LedgerId=ag.ledgerId
                                }).ToList();
-                List<int> IDs = adaptor.Select(x => x.AccountGroupId).ToList();
+                //List<int?> IDs = adaptor.Select(x => x.accountGroupID).ToList();
 
-                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == IDs[0] || x.groupUnder == IDs[1] || x.groupUnder == IDs[2])
-                                select new
-                                {
-                                    AccountGroupId = ag.accountGroupId,
-                                    hierarchyLevel = 2
-                                }).ToList();
+                //var adaptor2 = (from ag in db.AccountLedgers.Where(x => x.AccountGroup.groupUnder == IDs[0])
+                //                select new
+                //                {
+                //                    ag.accountGroupID,
+                //                    LedgerName = ag.ledgerName,
+                //                    LedgerId = ag.ledgerId
+                //                }).ToList();
 
-                foreach (var item in adaptor2)
-                {
-                    if (!adaptor.Exists(x => x.AccountGroupId == item.AccountGroupId))
-                    {
-                        adaptor.Add(item);
-                    }
-                }
+                //foreach (var item in adaptor2)
+                //{
+                //    if (!adaptor.Exists(x => x.accountGroupID == item.accountGroupID))
+                //    {
+                //        adaptor.Add(item);
+                //    }
+                //}
 
-                dtbl.Columns.Add("AccountGroupId");
-
+                dtbl.Columns.Add("LedgerName");
+                dtbl.Columns.Add("LedgerId");
                 foreach (var item in adaptor)
                 {
                     var row = dtbl.NewRow();
 
-                    row["AccountGroupId"] = item.AccountGroupId;
-
+                    row["LedgerName"] = item.LedgerName;
+                    row["LedgerId"] = item.LedgerId;
                     dtbl.Rows.Add(row);
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+                        
             return dtbl;
         }
 

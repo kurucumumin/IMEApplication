@@ -208,7 +208,15 @@ namespace LoginForm.Account.Services
         {
             IMEEntities IME = new IMEEntities();
             DataTable dtbl = new DataTable();
-            var VoucherType = IME.VoucherTypes.Where(a => a.typeOfVoucher == typeOfVouchers).ToList();
+            List<VoucherType> VoucherType = new List<DataSet.VoucherType>();
+            if(typeOfVouchers!= "")
+            {
+                VoucherType = IME.VoucherTypes.Where(a => a.typeOfVoucher == typeOfVouchers).ToList();
+            }
+            else
+            {
+                VoucherType = IME.VoucherTypes.ToList();
+            }
             dtbl.Columns.Add("voucherTypeId");
             dtbl.Columns.Add("voucherTypeName");
             dtbl.Columns.Add("typeOfVoucher");

@@ -73,8 +73,6 @@ namespace LoginForm
         /// </summary>
         public void Clear()
         {
-            try
-            {
                 TransactionsGeneralFill obj = new TransactionsGeneralFill();
                 SalesMasterSP spSalesMaster = new SalesMasterSP();
                 if (isAutomatic)
@@ -123,13 +121,13 @@ namespace LoginForm
                 {
                     cbxPrintAfterSave.Checked = false;
                 }
-                cmbPricingLevel.SelectedIndex = 0;
-                cmbSalesAccount.SelectedIndex = 0;
-                cmbCashOrParty.SelectedIndex = 0;
-                cmbSalesMan.SelectedIndex = 0;
-                cmbSalesMode.SelectedIndex = 0;
-                cmbDrorCr.SelectedIndex = 0;
-                cmbCashOrbank.SelectedIndex = 0;
+                cmbPricingLevel.SelectedIndex = -1;
+                cmbSalesAccount.SelectedIndex = -1;
+                cmbCashOrParty.SelectedIndex = -1;
+                cmbSalesMan.SelectedIndex = -1;
+                cmbSalesMode.SelectedIndex = -1;
+                cmbDrorCr.SelectedIndex = -1;
+                cmbCashOrbank.SelectedIndex = -1;
                 cmbCurrency.Enabled = true;
                 txtCustomer.Text = cmbCashOrParty.Text;
                 txtTransportCompany.Text = string.Empty;
@@ -179,11 +177,7 @@ namespace LoginForm
                 txtTotalAmount.Text = "0.00";
                 txtGrandTotal.Text = "0.00";
                 lblTotalQuantitydisplay.Text = "0";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("SI : 01" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+           
         }
         /// <summary>
         /// Checking the settings and arrange the form controlls based on settings
@@ -322,18 +316,13 @@ namespace LoginForm
         public bool PrintAfetrSave()
         {
             bool isTick = false;
-            try
-            {
                 if (IME.Settings.Where(a => a.settingsName == "TickPrintAfterSave").FirstOrDefault().status == "Yes")
                 {
                     isTick = true;
                 }
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("SI: 03" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
+            
             return isTick;
         }
         /// <summary>
@@ -386,14 +375,8 @@ namespace LoginForm
         /// </summary>
         public void PricingLevelComboFill()
         {
-            try
-            {
                 TransactionGeneralFillObj.PricingLevelViewAll(cmbPricingLevel, false);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("SI: 07" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
         /// <summary>
         /// Cash and bank combofill function
@@ -402,17 +385,12 @@ namespace LoginForm
         {
             DataTable dtbl = new DataTable();
             TransactionsGeneralFill spSalesDetails = new TransactionsGeneralFill();
-            try
-            {
+            
                 dtbl = spSalesDetails.BankOrCashComboFill(true);
                 cmbCashOrbank.DataSource = dtbl;
                 cmbCashOrbank.ValueMember = "ledgerId";
                 cmbCashOrbank.DisplayMember = "ledgerName";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("SI: 08" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
         }
         /// <summary>
         /// Vouchertype combofill function
@@ -966,7 +944,7 @@ namespace LoginForm
                 cmbCurrency.DataSource = dtbl;
                 cmbCurrency.DisplayMember = "currencyName";
                 cmbCurrency.ValueMember = "exchangeRateId";
-                cmbCurrency.SelectedValue = 1m;
+                cmbCurrency.SelectedValue = 1;
                 if (spSettings.SettingsStatusCheck("MultiCurrency") == "Yes")
                 {
                     cmbCurrency.Enabled = true;
@@ -2420,22 +2398,17 @@ namespace LoginForm
         public void FillProducts(bool isProductName, DataGridViewTextBoxEditingControl editControl)
         {
             ProductSP spProduct = new ProductSP();
-            try
-            {
+           
                 DataTable dtblProducts = new DataTable();
                 dtblProducts = spProduct.ProductViewAll();
                 ProductNames = new AutoCompleteStringCollection();
                 ProductCodes = new AutoCompleteStringCollection();
                 foreach (DataRow dr in dtblProducts.Rows)
                 {
-                    ProductNames.Add(dr["productName"].ToString());
-                    ProductCodes.Add(dr["productCode"].ToString());
+                    ProductNames.Add(dr["Article_Desc"].ToString());
+                    ProductCodes.Add(dr["Article_No"].ToString());
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("SI: 61" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+           
         }
         /// <summary>
         /// To validation of Qty, Rate and Discount as Decimal values
@@ -4990,16 +4963,10 @@ namespace LoginForm
 
         private void frmSalesInvoice_Load(object sender, EventArgs e)
         {
-            try
-            {
                 SalesInvoiceSettingsCheck();
                 formLoadDefaultFunctions();
                 Clear();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("SI: 91" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+           
         }
 
 
@@ -5195,8 +5162,7 @@ namespace LoginForm
 
         private void cmbCashOrParty_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
+            
                 GetSalesDetailsIdToDelete();
                 AccountLedgerSP SpAccountLedger = new AccountLedgerSP();
                 AccountLedger InfoAccountLedger = new AccountLedger();
@@ -5206,7 +5172,11 @@ namespace LoginForm
                     {
                         if (cmbCashOrParty.SelectedValue.ToString() != "System.Data.DataRowView" && cmbCashOrParty.Text != "System.Data.DataRowView")
                         {
-                            InfoAccountLedger = IME.AccountLedgers.Where(a => a.ledgerId == (Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString()))).FirstOrDefault();
+                        decimal deccmbCashOrParty = (Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString()));
+
+                            InfoAccountLedger = IME.AccountLedgers.Where(a => a.accountGroupID == deccmbCashOrParty).FirstOrDefault();
+                        if (InfoAccountLedger!=null)
+                        {
                             txtCustomer.Text = InfoAccountLedger.ledgerName;
                             cmbPricingLevel.SelectedValue = InfoAccountLedger.pricinglevelId == 0 ? 1 : InfoAccountLedger.pricinglevelId;
                             if (InfoAccountLedger.pricinglevelId == 0)
@@ -5215,6 +5185,8 @@ namespace LoginForm
                             }
                             txtCreditPeriod.Text = InfoAccountLedger.creditPeriod.ToString();
                         }
+                            
+                        }
                     }
                 }
                 else if (cmbSalesMode.SelectedIndex != 0)
@@ -5222,11 +5194,7 @@ namespace LoginForm
                     Clear();
                 }
                 againstOrderComboFill();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("SI: 98" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
 
 
