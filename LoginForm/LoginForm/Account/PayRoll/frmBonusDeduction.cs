@@ -115,7 +115,7 @@ namespace LoginForm
                 dtpMonth.Format = DateTimePickerFormat.Custom;
                 dtpMonth.CustomFormat = "MMMM/yyyy";
                 dtpDate.MinDate = DateTime.Now.AddYears(-1);
-                dtpDate.MaxDate = DateTime.Now;
+                dtpDate.MaxDate = DateTime.Now.AddMonths(2);
                 txtDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
                 cmbEmployeeCode.SelectedIndex = -1;
                 txtBonusAmount.Clear();
