@@ -950,8 +950,8 @@ namespace LoginForm
             dtpSalaryMonth.Text = DateTime.Today.ToString("dd-MMM-yyyy");
             dtpDate.Text = DateTime.Today.ToString("dd-MMM-yyyy");
             dtpCheckDate.Text = DateTime.Today.ToString("dd-MMM-yyyy");
-            //TransactionsGeneralFill obj = new TransactionsGeneralFill();
-            //obj.CashOrBankComboFill(cmbCashOrBank, false);
+            TransactionsGeneralFill obj = new TransactionsGeneralFill();
+            obj.CashOrBankComboFill(cmbCashOrBank, false);
             EmployeeComboFill();
             btnAdvancePaymentDelete.Enabled = false;
             Clear();
