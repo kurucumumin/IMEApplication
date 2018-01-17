@@ -479,7 +479,9 @@
     <Compile Include="Account\Transaction\frmReceiptVoucher.designer.cs">
       <DependentUpon>frmReceiptVoucher.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\Transaction\frmSalesInvoice.cs" />
+    <Compile Include="Account\Transaction\frmSalesInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Account\Transaction\frmSalesInvoice.Designer.cs">
       <DependentUpon>frmSalesInvoice.cs</DependentUpon>
     </Compile>
@@ -691,6 +693,7 @@
     <Compile Include="DataSet\Godown.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\GroupNameViewForComboFill_Result.cs" />
     <Compile Include="DataSet\Hazardou.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -878,6 +881,7 @@
     <Compile Include="DataSet\PurchaseMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PurchaseMasterView_Result.cs" />
     <Compile Include="DataSet\PurchaseOrder.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>

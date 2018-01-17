@@ -282,7 +282,7 @@ namespace LoginForm.Account.Services
             PurchaseMaster purchasemasterinfo = new PurchaseMaster();
             try
             {
-                var p = db.PurchaseMasterView(purchaseMasterId);
+                var p = db.PurchaseMasterView(purchaseMasterId).FirstOrDefault();
 
                 purchasemasterinfo.purchaseMasterId = p.purchaseMasterId;
                 purchasemasterinfo.voucherNo = p.voucherNo;

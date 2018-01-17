@@ -147,7 +147,7 @@ namespace LoginForm.Account.Services
             {
                 decimal decQty = 0;
                 IMEEntities IME = new IMEEntities();
-            decQty= IME.SalesInvoiceQuantityDetailsAgainstSalesReturn(decvoucherTypeId, strvoucherNo);
+            decQty= Convert.ToDecimal(IME.SalesInvoiceQuantityDetailsAgainstSalesReturn(decvoucherTypeId, strvoucherNo));
                 return decQty;
             }
 
