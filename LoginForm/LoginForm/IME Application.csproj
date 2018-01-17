@@ -691,6 +691,9 @@
     <Compile Include="DataSet\Godown.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\GroupNameViewForComboFill_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Hazardou.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -838,7 +841,9 @@
     <Compile Include="DataSet\productviewbyproductNameforSR_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\ProductViewWithID_Result.cs" />
+    <Compile Include="DataSet\ProductViewWithID_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\ProductView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -878,6 +883,9 @@
     <Compile Include="DataSet\PurchaseMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PurchaseMasterView_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PurchaseOrder.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -890,7 +898,9 @@
     <Compile Include="DataSet\PurchaseOrderMasterViewByOrderMasterId_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\PurchaseOrderMasterView_Result.cs" />
+    <Compile Include="DataSet\PurchaseOrderMasterView_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PurchaseReturnBilltax.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>

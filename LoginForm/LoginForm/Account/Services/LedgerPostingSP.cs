@@ -12,7 +12,7 @@ namespace LoginForm.Account.Services
         public void LedgerPostingEditByVoucherTypeAndVoucherNoAndLedgerId(LedgerPosting infoLedgerPosting)
         {
             IMEEntities IME = new IMEEntities();
-            IME.LedgerPostingEditByVoucherTypeAndVoucherNoAndLedgerid(infoLedgerPosting.date, infoLedgerPosting.voucherTypeId, infoLedgerPosting.voucherNo, infoLedgerPosting.ledgerId, infoLedgerPosting.debit.ToString(), infoLedgerPosting.credit.ToString(), infoLedgerPosting.detailsId, infoLedgerPosting.yearId, infoLedgerPosting.invoiceNo, infoLedgerPosting.chequeNo, infoLedgerPosting.chequeDate, infoLedgerPosting.extra1, infoLedgerPosting.extra2);
+            IME.LedgerPostingEditByVoucherTypeAndVoucherNoAndLedgerid(infoLedgerPosting.date, infoLedgerPosting.voucherTypeId, infoLedgerPosting.voucherNo, infoLedgerPosting.ledgerId, infoLedgerPosting.debit.ToString(), infoLedgerPosting.credit.ToString(), infoLedgerPosting.detailsId, infoLedgerPosting.yearId, infoLedgerPosting.invoiceNo, infoLedgerPosting.chequeNo, infoLedgerPosting.chequeDate);
         }
 
 

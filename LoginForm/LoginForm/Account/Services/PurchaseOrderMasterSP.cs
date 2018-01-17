@@ -64,7 +64,7 @@ namespace LoginForm.Account.Services
             DataSet.PurchaseOrder p = new DataSet.PurchaseOrder();
             try
             {
-                var po = new IMEEntities().PurchaseOrderMasterView(purchaseOrderMasterId);
+                var po = new IMEEntities().PurchaseOrderMasterView(Convert.ToDecimal(purchaseOrderMasterId)).FirstOrDefault();
 
                 p.voucherNo = po.voucherNo;
                 p.invoiceNo = po.invoiceNo;
