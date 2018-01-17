@@ -93,16 +93,16 @@ namespace LoginForm.Account
         {
             try
             {
-                //DataTable dtbl = new DataTable();
-                //TaxSP spTax = new TaxSP();
-                //dtbl = spTax.TaxViewAllForProduct();
-                //DataRow dr = dtbl.NewRow();
-                //dr["taxname"] = "All";
-                //dr["taxId"] = 0;
-                //dtbl.Rows.InsertAt(dr, 0);
-                //cmbTax.DataSource = dtbl;
-                //cmbTax.DisplayMember = "taxName";
-                //cmbTax.ValueMember = "taxId";
+                DataTable dtbl = new DataTable();
+                TaxSP spTax = new TaxSP();
+                dtbl = spTax.TaxViewAllForProduct();
+                DataRow dr = dtbl.NewRow();
+                dr["taxname"] = "All";
+                dr["taxId"] = 0;
+                dtbl.Rows.InsertAt(dr, 0);
+                cmbTax.DataSource = dtbl;
+                cmbTax.DisplayMember = "taxName";
+                cmbTax.ValueMember = "taxId";
             }
             catch (Exception ex)
             {
@@ -208,16 +208,16 @@ namespace LoginForm.Account
         {
             try
             {
-               // ProductSP spproduct = new ProductSP();
+                ProductSP spproduct = new ProductSP();
                 DataTable dtblProductName = new DataTable();
-                //dtblProductName = spproduct.ProductViewAllForComboBox();
-                //DataRow dr = dtblProductName.NewRow();
-                //dr["ProductName"] = "All";
-                //dr["ProductId"] = 0;
-                //dtblProductName.Rows.InsertAt(dr, 0);
-                //cmbProduct.DataSource = dtblProductName;
-                //cmbProduct.ValueMember = "productId";
-                //cmbProduct.DisplayMember = "productName";
+                dtblProductName = spproduct.ProductViewAllForComboBox();
+                DataRow dr = dtblProductName.NewRow();
+                dr["ProductName"] = "All";
+                dr["ProductId"] = 0;
+                dtblProductName.Rows.InsertAt(dr, 0);
+                cmbProduct.DataSource = dtblProductName;
+                cmbProduct.ValueMember = "productId";
+                cmbProduct.DisplayMember = "productName";
             }
             catch (Exception ex)
             {
@@ -229,23 +229,23 @@ namespace LoginForm.Account
         /// </summary>
         public void RackComboFill()
         {
-            //try
-            //{
-            //    //RackSP spRack = new RackSP();
-            //    DataTable dtbl = new DataTable();
-            //    dtbl = spRack.RackViewAll();
-            //    DataRow dr = dtbl.NewRow();
-            //    dr["rackName"] = "All";
-            //    dr["rackId"] = 0;
-            //    dtbl.Rows.InsertAt(dr, 0);
-            //    cmbRack.DataSource = dtbl;
-            //    cmbRack.DisplayMember = "rackName";
-            //    cmbRack.ValueMember = "rackId";
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("SE:10" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+            try
+            {
+                RackSP spRack = new RackSP();
+                DataTable dtbl = new DataTable();
+                dtbl = spRack.RackViewAll();
+                DataRow dr = dtbl.NewRow();
+                dr["rackName"] = "All";
+                dr["rackId"] = 0;
+                dtbl.Rows.InsertAt(dr, 0);
+                cmbRack.DataSource = dtbl;
+                cmbRack.DisplayMember = "rackName";
+                cmbRack.ValueMember = "rackId";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("SE:10" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         /// <summary>
         /// Function to call this form frmReminderPopUp form to view details

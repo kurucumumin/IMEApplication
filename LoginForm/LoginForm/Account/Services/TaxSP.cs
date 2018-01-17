@@ -167,61 +167,43 @@ namespace LoginForm.Account.Services
           return dtbl;
       }
 
-        //public Tax TaxView(decimal taxId)
-        //{
-        //    IMEEntities IME = new IMEEntities();
-        //    Tax taxinfo = new Tax();
-        //    DataTable dtbl = new DataTable();
-        //    dtbl.Columns.Add("SlNo", typeof(decimal));
-        //    dtbl.Columns["SlNo"].AutoIncrement = true;
-        //    dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
-        //    dtbl.Columns["SlNo"].AutoIncrementStep = 1;
-        //    try
-        //    {
-        //        var adaptor = (from t in IME.Taxes
-        //                   where t.TaxID == taxId
-        //                   select new
-        //                   {
-        //                       t.TaxID,
-        //                       t.taxName,
-        //                       t.ApplicationOn,
-        //                       t.Rate,
-        //                       t.CalculatingMode,
-        //                       t.narration,
-        //                       t.isActive
-        //                   }).ToList();
+        public DataTable TaxViewAllForProduct()
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = (IME.TaxViewAllForProduct()).ToList();
 
-        //        dtbl.Columns.Add("TaxID");
-        //        dtbl.Columns.Add("taxName");
-        //        dtbl.Columns.Add("ApplicationOn");
-        //        dtbl.Columns.Add("Rate");
-        //        dtbl.Columns.Add("CalculatingMode");
-        //        dtbl.Columns.Add("narration");
-        //        dtbl.Columns.Add("isActive");
+                dtbl.Columns.Add("TaxID");
+                dtbl.Columns.Add("taxName");
+                dtbl.Columns.Add("ApplicationOn");
+                dtbl.Columns.Add("Rate");
+                dtbl.Columns.Add("CalculatingMode");
+                dtbl.Columns.Add("narration");
+                dtbl.Columns.Add("isActive");
 
-        //        foreach (var item in adaptor)
-        //        {
-        //            var row = dtbl.NewRow();
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
 
-        //            row["TaxID"] = item.TaxID;
-        //            row["taxName"] = item.taxName;
-        //            row["ApplicationOn"] = item.ApplicationOn;
-        //            row["Rate"] = item.Rate;
-        //            row["CalculatingMode"] = item.CalculatingMode;
-        //            row["narration"] = item.narration;
-        //            row["isActive"] = item.isActive;
+                    row["TaxID"] = item.taxId;
+                    row["taxName"] = item.taxName;
+                    row["ApplicationOn"] = item.ApplicationOn;
+                    row["Rate"] = item.rate;
+                    row["CalculatingMode"] = item.calculatingMode;
+                    row["narration"] = item.narration;
+                    row["isActive"] = item.isActive;
 
-        //            dtbl.Rows.Add(row);
-        //        }
-
-        //        taxinfo= IME.Taxes.Where(x => x.TaxID == taxId).FirstOrDefault();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.ToString());
-        //    }
-        //    return taxinfo;
-        //}
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
 
         public DataTable TaxViewAll()
         {

@@ -58,16 +58,16 @@ namespace LoginForm.Account
         {
             try
             {
-                //DataTable dtbl = new DataTable();
-                //TaxSP spTax = new TaxSP();
-                //dtbl = spTax.TaxViewAllForProduct();
-                //DataRow dr = dtbl.NewRow();
-                //dr["taxname"] = "All";
-                //dr["taxId"] = 0;
-                //dtbl.Rows.InsertAt(dr, 0);
-                //cmbTax.DataSource = dtbl;
-                //cmbTax.DisplayMember = "taxName";
-                //cmbTax.ValueMember = "taxId";
+                DataTable dtbl = new DataTable();
+                TaxSP spTax = new TaxSP();
+                dtbl = spTax.TaxViewAllForProduct();
+                DataRow dr = dtbl.NewRow();
+                dr["taxname"] = "All";
+                dr["taxId"] = 0;
+                dtbl.Rows.InsertAt(dr, 0);
+                cmbTax.DataSource = dtbl;
+                cmbTax.DisplayMember = "taxName";
+                cmbTax.ValueMember = "taxId";
             }
             catch (Exception ex)
             {
@@ -173,16 +173,16 @@ namespace LoginForm.Account
         {
             try
             {
-                //ProductSP spproduct = new ProductSP();
-                //DataTable dtblProductName = new DataTable();
-                //dtblProductName = spproduct.ProductViewAllForComboBox();
-                //DataRow dr = dtblProductName.NewRow();
-                //dr["ProductName"] = "All";
-                //dr["ProductId"] = 0;
-                //dtblProductName.Rows.InsertAt(dr, 0);
-                //cmbProduct.DataSource = dtblProductName;
-                //cmbProduct.ValueMember = "productId";
-                //cmbProduct.DisplayMember = "productName";
+                ProductSP spproduct = new ProductSP();
+                DataTable dtblProductName = new DataTable();
+                dtblProductName = spproduct.ProductViewAllForComboBox();
+                DataRow dr = dtblProductName.NewRow();
+                dr["ProductName"] = "All";
+                dr["ProductId"] = 0;
+                dtblProductName.Rows.InsertAt(dr, 0);
+                cmbProduct.DataSource = dtblProductName;
+                cmbProduct.ValueMember = "productId";
+                cmbProduct.DisplayMember = "productName";
             }
             catch (Exception ex)
             {
@@ -196,15 +196,15 @@ namespace LoginForm.Account
         {
             try
             {
-                //RackSP spRack = new RackSP();
-                //DataTable dtbl = new DataTable();
-                //if (cmbGodown.SelectedValue.ToString() != "System.Data.DataRowView")
-                //{
-                //    dtbl = spRack.RackFillForStock(Convert.ToDecimal(cmbGodown.SelectedValue.ToString()));
-                //    cmbRack.DataSource = dtbl;
-                //    cmbRack.DisplayMember = "rackName";
-                //    cmbRack.ValueMember = "rackId";
-                //}
+                RackSP spRack = new RackSP();
+                DataTable dtbl = new DataTable();
+                if (cmbGodown.SelectedValue.ToString() != "System.Data.DataRowView")
+                {
+                    dtbl = spRack.RackFillForStock(Convert.ToDecimal(cmbGodown.SelectedValue.ToString()));
+                    cmbRack.DataSource = dtbl;
+                    cmbRack.DisplayMember = "rackName";
+                    cmbRack.ValueMember = "rackId";
+                }
             }
             catch (Exception ex)
             {
@@ -218,19 +218,19 @@ namespace LoginForm.Account
         {
             try
             {
-                //RackSP spRack = new RackSP();
-                //DataTable dtbl = new DataTable();
-                //if (cmbGodown.SelectedValue.ToString() != "System.Data.DataRowView")
-                //{
-                //    dtbl = spRack.RackFillForStock(Convert.ToDecimal(cmbGodown.SelectedValue.ToString()));
-                //    DataRow dr = dtbl.NewRow();
-                //    dr["rackName"] = "All";
-                //    dr["rackId"] = 0;
-                //    dtbl.Rows.InsertAt(dr, 0);
-                //    cmbRack.DataSource = dtbl;
-                //    cmbRack.DisplayMember = "rackName";
-                //    cmbRack.ValueMember = "rackId";
-                //}
+                RackSP spRack = new RackSP();
+                DataTable dtbl = new DataTable();
+                if (cmbGodown.SelectedValue.ToString() != "System.Data.DataRowView")
+                {
+                    dtbl = spRack.RackFillForStock(Convert.ToDecimal(cmbGodown.SelectedValue.ToString()));
+                    DataRow dr = dtbl.NewRow();
+                    dr["rackName"] = "All";
+                    dr["rackId"] = 0;
+                    dtbl.Rows.InsertAt(dr, 0);
+                    cmbRack.DataSource = dtbl;
+                    cmbRack.DisplayMember = "rackName";
+                    cmbRack.ValueMember = "rackId";
+                }
             }
             catch (Exception ex)
             {

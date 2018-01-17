@@ -313,6 +313,35 @@ namespace LoginForm.Account.Services
             return productinfo;
         }
 
-       
+        public DataTable ProductViewAllForComboBox()
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = (IME.ProductViewAllForComboBox()).ToList();
+
+                dtbl.Columns.Add("Article_No");
+                dtbl.Columns.Add("Article_Desc");
+                
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["Article_No"] = item.Article_No;
+                    row["Article_Desc"] = item.Article_Desc;
+                    
+
+                    dtbl.Rows.Add(row);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
     }
 }

@@ -825,6 +825,9 @@
     <Compile Include="DataSet\ProductCodeAndBarcodeByBatchId_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\ProductViewAllForComboBox_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\ProductViewAll_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -928,6 +931,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Rack.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\RackFillForStock_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Rate.cs">
@@ -1090,6 +1096,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\TaxViewAllByVoucherTypeId_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\TaxViewAllForProduct_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\tbl_SalesBillTax.cs">
