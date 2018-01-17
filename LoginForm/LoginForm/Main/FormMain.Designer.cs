@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.tableLeftPanel = new System.Windows.Forms.TableLayoutPanel();
             this.gbMainMenu = new System.Windows.Forms.GroupBox();
+            this.brnTransactionsReports = new System.Windows.Forms.Button();
+            this.btnRegisterReminderSearchOther = new System.Windows.Forms.Button();
+            this.btnBudgetMasterPayroll = new System.Windows.Forms.Button();
             this.btnAccounting = new System.Windows.Forms.Button();
             this.btnManagement = new System.Windows.Forms.Button();
             this.btnDevelopment = new System.Windows.Forms.Button();
@@ -38,6 +41,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tableMain = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.controlTransactionsReports = new LoginForm.CustomControls.TransactionsReports();
+            this.controlRegisterReminderSearchOther = new LoginForm.CustomControls.RegisterReminderSearchOther();
+            this.controlBudgetMasterPayroll = new LoginForm.CustomControls.BudgetMasterPayroll();
             this.controlDevelopment = new LoginForm.CustomControls.DevelopmentControl();
             this.controlLoader = new LoginForm.CustomControls.LoaderControl();
             this.controlManagement = new LoginForm.CustomControls.ManagementControl();
@@ -64,7 +70,7 @@
             this.tableLeftPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 169F));
             this.tableLeftPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLeftPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
-            this.tableLeftPanel.Size = new System.Drawing.Size(219, 467);
+            this.tableLeftPanel.Size = new System.Drawing.Size(219, 629);
             this.tableLeftPanel.TabIndex = 0;
             // 
             // gbMainMenu
@@ -72,6 +78,9 @@
             this.gbMainMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbMainMenu.AutoSize = true;
+            this.gbMainMenu.Controls.Add(this.brnTransactionsReports);
+            this.gbMainMenu.Controls.Add(this.btnRegisterReminderSearchOther);
+            this.gbMainMenu.Controls.Add(this.btnBudgetMasterPayroll);
             this.gbMainMenu.Controls.Add(this.btnAccounting);
             this.gbMainMenu.Controls.Add(this.btnManagement);
             this.gbMainMenu.Controls.Add(this.btnDevelopment);
@@ -81,15 +90,64 @@
             this.gbMainMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gbMainMenu.Name = "gbMainMenu";
             this.gbMainMenu.Padding = new System.Windows.Forms.Padding(0, 4, 0, 8);
-            this.gbMainMenu.Size = new System.Drawing.Size(213, 232);
+            this.gbMainMenu.Size = new System.Drawing.Size(213, 382);
             this.gbMainMenu.TabIndex = 32;
             this.gbMainMenu.TabStop = false;
             this.gbMainMenu.Text = "Menu";
+            // 
+            // brnTransactionsReports
+            // 
+            this.brnTransactionsReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(199)))), ((int)(((byte)(132)))));
+            this.brnTransactionsReports.Dock = System.Windows.Forms.DockStyle.Top;
+            this.brnTransactionsReports.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.brnTransactionsReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.brnTransactionsReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.brnTransactionsReports.Location = new System.Drawing.Point(0, 324);
+            this.brnTransactionsReports.Margin = new System.Windows.Forms.Padding(0);
+            this.brnTransactionsReports.Name = "brnTransactionsReports";
+            this.brnTransactionsReports.Size = new System.Drawing.Size(213, 50);
+            this.brnTransactionsReports.TabIndex = 38;
+            this.brnTransactionsReports.Text = "TransactionsReports";
+            this.brnTransactionsReports.UseVisualStyleBackColor = false;
+            this.brnTransactionsReports.Click += new System.EventHandler(this.brnTransactionsReports_Click);
+            // 
+            // btnRegisterReminderSearchOther
+            // 
+            this.btnRegisterReminderSearchOther.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(199)))), ((int)(((byte)(132)))));
+            this.btnRegisterReminderSearchOther.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRegisterReminderSearchOther.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.btnRegisterReminderSearchOther.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegisterReminderSearchOther.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegisterReminderSearchOther.Location = new System.Drawing.Point(0, 274);
+            this.btnRegisterReminderSearchOther.Margin = new System.Windows.Forms.Padding(0);
+            this.btnRegisterReminderSearchOther.Name = "btnRegisterReminderSearchOther";
+            this.btnRegisterReminderSearchOther.Size = new System.Drawing.Size(213, 50);
+            this.btnRegisterReminderSearchOther.TabIndex = 37;
+            this.btnRegisterReminderSearchOther.Text = "RegisterReminderSearchOther";
+            this.btnRegisterReminderSearchOther.UseVisualStyleBackColor = false;
+            this.btnRegisterReminderSearchOther.Click += new System.EventHandler(this.btnRegisterReminderSearchOther_Click);
+            // 
+            // btnBudgetMasterPayroll
+            // 
+            this.btnBudgetMasterPayroll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(199)))), ((int)(((byte)(132)))));
+            this.btnBudgetMasterPayroll.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBudgetMasterPayroll.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
+            this.btnBudgetMasterPayroll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBudgetMasterPayroll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBudgetMasterPayroll.Location = new System.Drawing.Point(0, 224);
+            this.btnBudgetMasterPayroll.Margin = new System.Windows.Forms.Padding(0);
+            this.btnBudgetMasterPayroll.Name = "btnBudgetMasterPayroll";
+            this.btnBudgetMasterPayroll.Size = new System.Drawing.Size(213, 50);
+            this.btnBudgetMasterPayroll.TabIndex = 36;
+            this.btnBudgetMasterPayroll.Text = "BudgetMasterPayroll";
+            this.btnBudgetMasterPayroll.UseVisualStyleBackColor = false;
+            this.btnBudgetMasterPayroll.Click += new System.EventHandler(this.btnBudgetMasterPayroll_Click);
             // 
             // btnAccounting
             // 
             this.btnAccounting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(199)))), ((int)(((byte)(132)))));
             this.btnAccounting.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAccounting.Enabled = false;
             this.btnAccounting.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(242)))), ((int)(((byte)(253)))));
             this.btnAccounting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAccounting.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -175,21 +233,51 @@
             this.tableMain.Name = "tableMain";
             this.tableMain.RowCount = 1;
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableMain.Size = new System.Drawing.Size(995, 471);
+            this.tableMain.Size = new System.Drawing.Size(1059, 633);
             this.tableMain.TabIndex = 0;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.controlRegisterReminderSearchOther);
+            this.panel1.Controls.Add(this.controlBudgetMasterPayroll);
             this.panel1.Controls.Add(this.controlDevelopment);
             this.panel1.Controls.Add(this.controlLoader);
             this.panel1.Controls.Add(this.controlManagement);
             this.panel1.Controls.Add(this.controlAccounting);
+            this.panel1.Controls.Add(this.controlTransactionsReports);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(225, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(770, 471);
+            this.panel1.Size = new System.Drawing.Size(834, 633);
             this.panel1.TabIndex = 1;
+            // 
+            // controlTransactionsReports
+            // 
+            this.controlTransactionsReports.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.controlTransactionsReports.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.controlTransactionsReports.Location = new System.Drawing.Point(0, 0);
+            this.controlTransactionsReports.Name = "controlTransactionsReports";
+            this.controlTransactionsReports.Size = new System.Drawing.Size(834, 633);
+            this.controlTransactionsReports.TabIndex = 6;
+            // 
+            // controlRegisterReminderSearchOther
+            // 
+            this.controlRegisterReminderSearchOther.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.controlRegisterReminderSearchOther.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.controlRegisterReminderSearchOther.Location = new System.Drawing.Point(0, 0);
+            this.controlRegisterReminderSearchOther.Name = "controlRegisterReminderSearchOther";
+            this.controlRegisterReminderSearchOther.Size = new System.Drawing.Size(834, 633);
+            this.controlRegisterReminderSearchOther.TabIndex = 5;
+            // 
+            // controlBudgetMasterPayroll
+            // 
+            this.controlBudgetMasterPayroll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(229)))), ((int)(((byte)(252)))));
+            this.controlBudgetMasterPayroll.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.controlBudgetMasterPayroll.Location = new System.Drawing.Point(0, 0);
+            this.controlBudgetMasterPayroll.Name = "controlBudgetMasterPayroll";
+            this.controlBudgetMasterPayroll.Size = new System.Drawing.Size(834, 633);
+            this.controlBudgetMasterPayroll.TabIndex = 4;
             // 
             // controlDevelopment
             // 
@@ -199,7 +287,7 @@
             this.controlDevelopment.Margin = new System.Windows.Forms.Padding(0);
             this.controlDevelopment.MinimumSize = new System.Drawing.Size(0, 544);
             this.controlDevelopment.Name = "controlDevelopment";
-            this.controlDevelopment.Size = new System.Drawing.Size(770, 544);
+            this.controlDevelopment.Size = new System.Drawing.Size(834, 633);
             this.controlDevelopment.TabIndex = 1;
             // 
             // controlLoader
@@ -209,7 +297,7 @@
             this.controlLoader.Location = new System.Drawing.Point(0, 0);
             this.controlLoader.Margin = new System.Windows.Forms.Padding(2);
             this.controlLoader.Name = "controlLoader";
-            this.controlLoader.Size = new System.Drawing.Size(770, 471);
+            this.controlLoader.Size = new System.Drawing.Size(834, 633);
             this.controlLoader.TabIndex = 0;
             // 
             // controlManagement
@@ -218,7 +306,7 @@
             this.controlManagement.Location = new System.Drawing.Point(0, 0);
             this.controlManagement.Margin = new System.Windows.Forms.Padding(2);
             this.controlManagement.Name = "controlManagement";
-            this.controlManagement.Size = new System.Drawing.Size(770, 471);
+            this.controlManagement.Size = new System.Drawing.Size(834, 633);
             this.controlManagement.TabIndex = 2;
             // 
             // controlAccounting
@@ -228,14 +316,14 @@
             this.controlAccounting.Location = new System.Drawing.Point(0, 0);
             this.controlAccounting.Margin = new System.Windows.Forms.Padding(2);
             this.controlAccounting.Name = "controlAccounting";
-            this.controlAccounting.Size = new System.Drawing.Size(770, 471);
+            this.controlAccounting.Size = new System.Drawing.Size(834, 633);
             this.controlAccounting.TabIndex = 3;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(995, 471);
+            this.ClientSize = new System.Drawing.Size(1059, 633);
             this.Controls.Add(this.tableMain);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -271,5 +359,11 @@
         private System.Windows.Forms.Button btnManagement;
         private System.Windows.Forms.Button btnAccounting;
         private CustomControls.AccountingControl controlAccounting;
+        private System.Windows.Forms.Button brnTransactionsReports;
+        private System.Windows.Forms.Button btnRegisterReminderSearchOther;
+        private System.Windows.Forms.Button btnBudgetMasterPayroll;
+        private CustomControls.RegisterReminderSearchOther controlRegisterReminderSearchOther;
+        private CustomControls.BudgetMasterPayroll controlBudgetMasterPayroll;
+        private CustomControls.TransactionsReports controlTransactionsReports;
     }
 }

@@ -491,6 +491,24 @@
     <Compile Include="Account\Transaction\frmSalesReturn.Designer.cs">
       <DependentUpon>frmSalesReturn.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\BudgetMasterPayroll.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\BudgetMasterPayroll.designer.cs">
+      <DependentUpon>BudgetMasterPayroll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\RegisterReminderSearchOther.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\RegisterReminderSearchOther.designer.cs">
+      <DependentUpon>RegisterReminderSearchOther.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\TransactionsReports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\AccountCustomControl\TransactionsReports.designer.cs">
+      <DependentUpon>TransactionsReports.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\AccountingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1524,6 +1542,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmSalesReturn.resx">
       <DependentUpon>frmSalesReturn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\AccountCustomControl\BudgetMasterPayroll.resx">
+      <DependentUpon>BudgetMasterPayroll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\AccountCustomControl\RegisterReminderSearchOther.resx">
+      <DependentUpon>RegisterReminderSearchOther.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\AccountCustomControl\TransactionsReports.resx">
+      <DependentUpon>TransactionsReports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountingControl.resx">
       <DependentUpon>AccountingControl.cs</DependentUpon>
