@@ -10,15 +10,10 @@
 namespace LoginForm.DataSet
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class tbl_SalesBillTax
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public decimal salesBillTaxId { get; set; }
-        public Nullable<decimal> salesMasterId { get; set; }
-        public Nullable<decimal> taxId { get; set; }
-        public Nullable<decimal> taxAmount { get; set; }
-    
-        public virtual SalesMaster SalesMaster { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

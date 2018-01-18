@@ -6504,25 +6504,25 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <EntitySet Name="VoucherTypeTax" EntityType="Self.VoucherTypeTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdditionalCost" EntityType="Self.AdditionalCost" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [AdditionalCost].[additionalCostId] AS [additionalCostId], 
-    [AdditionalCost].[voucherTypeId] AS [voucherTypeId], 
-    [AdditionalCost].[voucherNo] AS [voucherNo], 
-    [AdditionalCost].[ledgerId] AS [ledgerId], 
-    [AdditionalCost].[debit] AS [debit], 
+            <DefiningQuery>SELECT
+    [AdditionalCost].[additionalCostId] AS [additionalCostId],
+    [AdditionalCost].[voucherTypeId] AS [voucherTypeId],
+    [AdditionalCost].[voucherNo] AS [voucherNo],
+    [AdditionalCost].[ledgerId] AS [ledgerId],
+    [AdditionalCost].[debit] AS [debit],
     [AdditionalCost].[credit] AS [credit]
     FROM [dbo].[AdditionalCost] AS [AdditionalCost]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="SalaryVoucherDetail" EntityType="Self.SalaryVoucherDetail" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId], 
-    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId], 
-    [SalaryVoucherDetail].[employeeId] AS [employeeId], 
-    [SalaryVoucherDetail].[bonus] AS [bonus], 
-    [SalaryVoucherDetail].[deduction] AS [deduction], 
-    [SalaryVoucherDetail].[advance] AS [advance], 
-    [SalaryVoucherDetail].[lop] AS [lop], 
-    [SalaryVoucherDetail].[salary] AS [salary], 
+            <DefiningQuery>SELECT
+    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId],
+    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId],
+    [SalaryVoucherDetail].[employeeId] AS [employeeId],
+    [SalaryVoucherDetail].[bonus] AS [bonus],
+    [SalaryVoucherDetail].[deduction] AS [deduction],
+    [SalaryVoucherDetail].[advance] AS [advance],
+    [SalaryVoucherDetail].[lop] AS [lop],
+    [SalaryVoucherDetail].[salary] AS [salary],
     [SalaryVoucherDetail].[status] AS [status]
     FROM [dbo].[SalaryVoucherDetail] AS [SalaryVoucherDetail]</DefiningQuery>
           </EntitySet>

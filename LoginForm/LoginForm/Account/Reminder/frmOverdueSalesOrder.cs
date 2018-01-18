@@ -48,19 +48,13 @@ namespace LoginForm.Account
         /// </summary>
         public void OverDueSalesOrderGridFill()
         {
-            try
-            {
-                ReminderSP spReminder = new ReminderSP();
-                if (cmbAccountLeadger.SelectedValue.ToString() != "System.Data.DataRowView" && cmbAccountLeadger.Text != "System.Data.DataRowView")
+            ReminderSP spReminder = new ReminderSP();
+                if (cmbAccountLeadger.SelectedValue!=null && cmbAccountLeadger.SelectedValue.ToString() != "System.Data.DataRowView" && cmbAccountLeadger.Text != "System.Data.DataRowView")
                 {
                     decimal decLedgerId = decimal.Parse(cmbAccountLeadger.SelectedValue.ToString());
                     dgvOverdueSalesOrder.DataSource = spReminder.OverdueSalesOrderCorrespondingAccountLedger(decLedgerId);
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("ODSO2:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
         /// <summary>
         /// Function to call this form from frmReminderPopUp to view details
@@ -89,31 +83,15 @@ namespace LoginForm.Account
         /// <param name="e"></param>
         private void frmOverdueSalesOrder_Load(object sender, EventArgs e)
         {
-            try
-            {
+
                 AccountLedgerComboFill();
                 OverDueSalesOrderGridFill();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("ODSO4:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
-        /// <summary>
-        /// Fills Datagridview on cmbAccountLeadger combobox SelectedIndexChanged
-        /// </summary>
-        /// <param name="sender"></param>
+ 
         /// <param name="e"></param>
         private void cmbAccountLeadger_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
                 OverDueSalesOrderGridFill();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("ODSO5:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
         /// <summary>
         /// Enables the object of other forms on Formclosing

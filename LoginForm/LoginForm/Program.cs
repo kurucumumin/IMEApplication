@@ -4,6 +4,7 @@ using LoginForm.PurchaseOrder;
 using LoginForm.QuotationModule;
 using System;
 using System.Windows.Forms;
+using LoginForm.Account;
 
 namespace LoginForm
 {
@@ -14,7 +15,7 @@ namespace LoginForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormLogin());
+            Application.Run(new frmLedgerPopup());
         }
     }
 }

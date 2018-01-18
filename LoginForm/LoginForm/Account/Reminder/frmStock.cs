@@ -102,18 +102,24 @@ namespace LoginForm.Account
         /// </summary>
         public void GroupComboFill()
         {
-            try
-            {
-                //DataTable dtbl = new DataTable();
-                //ProductGroupSP spProductGroup = new ProductGroupSP();
-                //dtbl = spProductGroup.ProductGroupViewAll();
-                //DataRow dr = dtbl.NewRow();
-                //dr["groupName"] = "All";
-                //dr["groupId"] = 0;
-                //dtbl.Rows.InsertAt(dr, 0);
-                //cmbGroup.DataSource = dtbl;
-                //cmbGroup.DisplayMember = "groupName";
-                //cmbGroup.ValueMember = "groupId";
+            try { 
+            //{
+            //    DataTable dtbl = new DataTable();
+            //    IMEEntities IME = new IMEEntities();
+            //    foreach (var item in IME.Stocks.ToList())
+            //    {
+            //        DataRow dr1 = dtbl.NewRow();
+            //        dr1["groupName"] = item.ItemCode;
+            //        dr1["groupId"] = item.ItemCode;
+            //    }
+                
+            //    DataRow dr = dtbl.NewRow();
+            //    dr["groupName"] = "All";
+            //    dr["groupId"] = 0;
+            //    dtbl.Rows.InsertAt(dr, 0);
+            //    cmbGroup.DataSource = dtbl;
+            //    cmbGroup.DisplayMember = "groupName";
+            //    cmbGroup.ValueMember = "groupId";
             }
             catch (Exception ex)
             {
@@ -171,23 +177,27 @@ namespace LoginForm.Account
         /// </summary>
         public void ProductNameComboFill()
         {
-            try
+
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("productName");
+            dtbl.Columns.Add("productId");
+            IMEEntities IME = new IMEEntities();
+            foreach (var item in IME.Stocks.ToList())
             {
-                ProductSP spproduct = new ProductSP();
-                DataTable dtblProductName = new DataTable();
-                dtblProductName = spproduct.ProductViewAllForComboBox();
-                DataRow dr = dtblProductName.NewRow();
-                dr["ProductName"] = "All";
-                dr["ProductId"] = 0;
-                dtblProductName.Rows.InsertAt(dr, 0);
-                cmbProduct.DataSource = dtblProductName;
-                cmbProduct.ValueMember = "productId";
-                cmbProduct.DisplayMember = "productName";
+                DataRow dr1 = dtbl.NewRow();
+                dr1["productName"] = item.ItemCode;
+                dr1["productId"] = item.ItemCode;
+                dtbl.Rows.Add(dr1);
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("ST:7" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+
+            DataRow dr = dtbl.NewRow();
+            dr["productName"] = "All";
+            dr["productId"] = 0;
+            dtbl.Rows.InsertAt(dr, 0);
+            cmbGroup.DataSource = dtbl;
+            cmbGroup.DisplayMember = "productName";
+            cmbGroup.ValueMember = "productId";
+
         }
         /// <summary>
         /// Function to fill Rack combobox
@@ -216,30 +226,21 @@ namespace LoginForm.Account
         /// </summary>
         public void RackComboFillForLoad()
         {
-            try
-            {
-                RackSP spRack = new RackSP();
-                DataTable dtbl = new DataTable();
-                if (cmbGodown.SelectedValue.ToString() != "System.Data.DataRowView")
-                {
-                    dtbl = spRack.RackFillForStock(Convert.ToDecimal(cmbGodown.SelectedValue.ToString()));
-                    DataRow dr = dtbl.NewRow();
-                    dr["rackName"] = "All";
-                    dr["rackId"] = 0;
-                    dtbl.Rows.InsertAt(dr, 0);
-                    cmbRack.DataSource = dtbl;
-                    cmbRack.DisplayMember = "rackName";
-                    cmbRack.ValueMember = "rackId";
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("ST:9" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+                //RackSP spRack = new RackSP();
+                //DataTable dtbl = new DataTable();
+                //if (cmbGodown.SelectedValue.ToString() != "System.Data.DataRowView")
+                //{
+                //    dtbl = spRack.RackFillForStock(Convert.ToDecimal(cmbGodown.SelectedValue.ToString()));
+                //    DataRow dr = dtbl.NewRow();
+                //    dr["rackName"] = "All";
+                //    dr["rackId"] = 0;
+                //    dtbl.Rows.InsertAt(dr, 0);
+                //    cmbRack.DataSource = dtbl;
+                //    cmbRack.DisplayMember = "rackName";
+                //    cmbRack.ValueMember = "rackId";
+                //}
         }
-        /// <summary>
-        /// Function to reset form
-        /// </summary>
+
         public void clear()
         {
             try
@@ -263,9 +264,7 @@ namespace LoginForm.Account
         /// </summary>
         public void gridfill()
         {
-            try
-            {
-                DataTable dtbl = new DataTable();
+            
                 string strCriteria = string.Empty;
                 if (rbtnAll.Checked)
                 {
@@ -287,18 +286,42 @@ namespace LoginForm.Account
                 {
                     strCriteria = "Reorder Level";
                 }
-                ReminderSP SpRemainder = new ReminderSP();
-               //// dtbl = SpRemainder.StockSearch(Convert.ToDecimal(cmbGroup.SelectedValue),
-               //     Convert.ToDecimal(cmbProduct.SelectedValue), Convert.ToDecimal(cmbBrand.SelectedValue),
-               //     Convert.ToDecimal(cmbSize.SelectedValue), Convert.ToDecimal(cmbModelNo.SelectedValue),
-               //     Convert.ToDecimal(cmbTax.SelectedValue), Convert.ToDecimal(cmbGodown.SelectedValue),
-               //     Convert.ToDecimal(cmbRack.SelectedValue), strCriteria);
-               // dgvStock.DataSource = dtbl;
-            }
-            catch (Exception ex)
+               
+            DataTable dtbl = new DataTable();
+
+            dtbl.Columns.Add("CurrentStock");
+            dtbl.Columns.Add("SlNo", typeof(decimal));
+            dtbl.Columns["SlNo"].AutoIncrement = true;
+            dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
+            dtbl.Columns["SlNo"].AutoIncrementStep = 1;
+            dtbl.Columns.Add("productCode");
+            dtbl.Columns.Add("productName");
+            dtbl.Columns.Add("brandName");
+            dtbl.Columns.Add("modelNo");
+            dtbl.Columns.Add("salesRate");
+            IMEEntities IME = new IMEEntities();
+            foreach (var item in IME.Stocks.ToList())
             {
-                MessageBox.Show("ST:11" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //TODO dataset den sonra tekrar bak
+                DataRow dr1 = dtbl.NewRow();
+               // dr1["productName"] = item.ItemDesc;
+                dr1["productCode"] = item.ItemCode;
+                dr1["CurrentStock"] = item.Quantitiy;
+                //dr1["brandName"]=item
+                //dr1["salesRate"] = item.rate;
+                dtbl.Rows.Add(dr1);
             }
+
+
+
+            
+                //dtbl = SpRemainder.StockSearch(Convert.ToDecimal(cmbGroup.SelectedValue),
+                //    Convert.ToDecimal(cmbProduct.SelectedValue), Convert.ToDecimal(cmbBrand.SelectedValue),
+                //    Convert.ToDecimal(cmbSize.SelectedValue), Convert.ToDecimal(cmbModelNo.SelectedValue),
+                //    Convert.ToDecimal(cmbTax.SelectedValue), Convert.ToDecimal(cmbGodown.SelectedValue),
+                //    Convert.ToDecimal(cmbRack.SelectedValue), strCriteria);
+               // dgvStock.DataSource = dtbl;
+            
         }
         /// <summary>
         /// Function to call this form from frmReminderPopUp to view details
@@ -389,8 +412,7 @@ namespace LoginForm.Account
         /// <param name="e"></param>
         private void frmStock_Load(object sender, EventArgs e)
         {
-            try
-            {
+            
                 rbtnAll.Checked = true;
                 BrandComboFill();
                 TaxComboFill();
@@ -402,11 +424,7 @@ namespace LoginForm.Account
                 RackComboFillForLoad();
                 cmbGroup.Focus();
                 gridfill();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("ST:16" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
         /// <summary>
         /// On 'Search' button click fills Datagridview

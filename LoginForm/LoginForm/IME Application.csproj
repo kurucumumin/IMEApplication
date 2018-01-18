@@ -1012,7 +1012,9 @@
     <Compile Include="DataSet\SalesAccountComboFill_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\SalesBillTax.cs" />
+    <Compile Include="DataSet\SalesBillTax.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\SalesDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1028,8 +1030,6 @@
     <Compile Include="DataSet\SalesInvoiceDetailsViewByProductNameForSI_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\SalesInvoiceSalesBillTaxViewAllBySalesMasterId_Result.cs" />
-    <Compile Include="DataSet\SalesInvoiceSalesDetailsViewBySalesMasterId_Result.cs" />
     <Compile Include="DataSet\SalesMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1061,6 +1061,12 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SlidingPrice.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\sp_helpdiagrams_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Stock.cs">
@@ -1127,9 +1133,6 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\TaxViewAllForProduct_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\tbl_SalesBillTax.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Town.cs">
