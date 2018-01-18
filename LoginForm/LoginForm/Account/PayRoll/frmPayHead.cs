@@ -1,4 +1,7 @@
-﻿using System;
+﻿using LoginForm.Account.Services;
+using LoginForm.DataSet;
+using LoginForm.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,8 +9,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using LoginForm.DataSet;
-using LoginForm.Services;
 namespace LoginForm
 {
     public partial class frmPayHead : Form
@@ -16,8 +17,6 @@ namespace LoginForm
         IMEEntities IME = new IMEEntities();
         string strPayHeadName = string.Empty;
         string strPayheadType = string.Empty;
-        //int decUserId = Utils.getCurrentUser().WorkerID;
-        string strFormName = "frmPayHead";
         int inNarrationCount = 0;
         decimal decPayHeadId;
 
@@ -38,7 +37,8 @@ namespace LoginForm
         {
             if (IME.PayHeads.Where(a=>a.payHeadName==txtPayheadName.Text).FirstOrDefault()==null)
             {
-               // IME.PayHeadAdd(txtPayheadName.Text, cmbPayheadType.Text, txtPayheadNarration.Text, null);
+                IME.PayHeadAdd(txtPayheadName.Text, cmbPayheadType.Text, txtPayheadNarration.Text, null);
+                MessageBox.Show("Save successfully");
             }
             else
             {
@@ -54,7 +54,7 @@ namespace LoginForm
         {
             if (IME.PayHeads.Where(a=>a.payHeadName== txtPayheadName.Text.Trim()).FirstOrDefault()==null)
             {
-               // IME.PayHeadEdit(decPayHeadId, txtPayheadName.Text.Trim(), cmbPayheadType.Text, txtPayheadNarration.Text.Trim(), null);
+                IME.PayHeadEdit(decPayHeadId, txtPayheadName.Text.Trim(), cmbPayheadType.Text, txtPayheadNarration.Text.Trim(), null);
                 GridFill();
                 MessageBox.Show("Update successfully");
                 Clear();
@@ -97,13 +97,18 @@ namespace LoginForm
         /// </summary>
         public void GridFill()
         {
+            PayHeadSP spPayhead = new PayHeadSP();
+            DataTable dtblPayhead = new DataTable();
+
             if (txtPayheadSearch.Text.Trim() != string.Empty)
             {
-               // dgvPayhead.DataSource = IME.PayHeadGet(decimal.Parse(txtPayheadSearch.Text.Trim()));
+                dtblPayhead = spPayhead.PayHeadGetSearch(txtPayheadSearch.Text.Trim());
+                dgvPayhead.DataSource = dtblPayhead;
             }
             else
             {
-                //dgvPayhead.DataSource = IME.PayHeadGetAll();
+                dtblPayhead = spPayhead.PayHeadGetSearchAll(txtPayheadSearch.Text.Trim());
+                dgvPayhead.DataSource = dtblPayhead;
             }
                 
         }
