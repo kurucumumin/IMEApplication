@@ -33,19 +33,26 @@ namespace LoginForm
         /// </summary>
         public void GridFill()
         {
-            try
-            {
+                
                 DataTable dtbl = new DataTable();
                 BudgetMasterSP spbudgetmaster = new BudgetMasterSP();
                 dgvBudgetVariance.Rows.Clear();
-                decimal decId = Convert.ToDecimal(cmbBudget.SelectedValue.ToString());
+                
+                decimal decId;
+            if (cmbBudget.SelectedValue.ToString()!="Select")
+            {
+                decId = Convert.ToDecimal(cmbBudget.SelectedValue.ToString());
                 dtbl = spbudgetmaster.BudgetVariance(decId);
+            }                
+                
                 decimal decrindx = dgvBudgetVariance.Rows.Count;
                 int index = 0;
+            if (dtbl != null)
+            {
                 foreach (DataRow rw in dtbl.Rows)
                 {
                     dgvBudgetVariance.Rows.Add();
-                    dgvBudgetVariance.Rows[index].Cells["dgvtxtSlNo"].Value = rw["Sl NO"].ToString();
+                    dgvBudgetVariance.Rows[index].Cells["dgvtxtSlNo"].Value = rw[0].ToString();
                     dgvBudgetVariance.Rows[index].Cells["dgvtxtParticulars"].Value = rw["Particular"].ToString();
                     dgvBudgetVariance.Rows[index].Cells["dgvtxtBudgetDr"].Value = rw["BudgetDr"].ToString();
                     dgvBudgetVariance.Rows[index].Cells["dgvtxtActualDr"].Value = rw["ActualDr"].ToString();
@@ -55,10 +62,6 @@ namespace LoginForm
                     dgvBudgetVariance.Rows[index].Cells["dgvtxtVarianceCr"].Value = rw["VarianceCr"].ToString();
                     index++;
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("BV:01" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         /// <summary>
@@ -71,14 +74,15 @@ namespace LoginForm
                 BudgetMasterSP spBudgetMaster = new BudgetMasterSP();
                 DataTable dtbl = new DataTable();
                 dtbl = spBudgetMaster.BudgetViewAll();
-                DataRow drow = dtbl.NewRow();
-                drow[0] = 0;
-                drow[1] = "Select";
-                drow[2] = 0;
-                drow[3] = 0;
-                dtbl.Rows.InsertAt(drow, 0);
+                //DataRow drow = dtbl.NewRow();
+                //drow[0] = 0;
+                //drow[1] = "Select";
+                //drow[2] = 0;
+                //drow[3] = 0;
+                //dtbl.Rows.InsertAt(drow, 0);
                 cmbBudget.ValueMember = "budgetMasterId";
                 cmbBudget.DisplayMember = "budgetName";
+                
                 cmbBudget.DataSource = dtbl;
             }
             catch (Exception ex)
@@ -174,15 +178,9 @@ namespace LoginForm
         /// <param name="e"></param>
         private void frmBudgetVariance_Load(object sender, EventArgs e)
         {
-            try
-            {
-                BudgetComboFill();
+                           BudgetComboFill();
                 GridFill();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("BV:06" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+           
         }
         /// <summary>
         /// Function to fill datagridview on 'Budget' combo selected index change
@@ -191,14 +189,9 @@ namespace LoginForm
         /// <param name="e"></param>
         private void cmbBudget_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
+            
                 GridFill();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("BV:07" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
         /// <summary>
         /// On 'print' button click

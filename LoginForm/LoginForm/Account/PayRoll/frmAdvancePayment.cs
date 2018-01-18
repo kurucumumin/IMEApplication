@@ -811,8 +811,8 @@ namespace LoginForm
             {
                 decEmployeeId = Convert.ToDecimal(cmbEmployee.SelectedValue.ToString());
             }
-            decEmployeesalary = (decimal)IME.Workers.Where(a => a.WorkerID == decEmployeeId).FirstOrDefault().Designation.advanceAmount;
-
+            //decEmployeesalary = (decimal)IME.Workers.Where(a => a.WorkerID == decEmployeeId).FirstOrDefault().Designation.advanceAmount;
+            decEmployeesalary = (decimal)IME.Workers.Where(a => a.WorkerID == decEmployeeId).FirstOrDefault().WorkerID;
 
             decimal txtamountvalue = 0;
             if (txtAmount.Text != string.Empty)
@@ -840,8 +840,8 @@ namespace LoginForm
                 bool isBankAcocunt = false;
                 //AccountGroupSP SpGroup = new AccountGroupSP();
                 List<AccountLedger> AccountLedgerList = new List<AccountLedger>();
-                AccountLedgerList.Add(IME.AccountLedgers.Where(a => a.AccountGroup.accountGroupName == "Cash -in Hand").FirstOrDefault());
-                AccountLedgerList.AddRange(
+                AccountLedgerList.Add(IME.AccountLedgers.Where(a => a.ledgerId == decLedger).FirstOrDefault());
+                 AccountLedgerList.AddRange(
                     IME.AccountLedgers.Where(a => a.AccountGroup.groupUnder == IME.AccountLedgers.Where(b => b.AccountGroup.accountGroupName == "Cash -in Hand").FirstOrDefault().accountGroupID)
                     );
                 //-------- Checking whether the selected legder is under bank----------//

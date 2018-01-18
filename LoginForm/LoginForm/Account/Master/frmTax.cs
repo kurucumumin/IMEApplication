@@ -431,7 +431,15 @@ namespace LoginForm
                 }
                 else
                 {
-                    dgvTaxSearch.DataSource = IME.Taxes.Where(a => a.ApplicationOn == cmbApplicableForSearch.Text.Trim()).Where(b => b.taxName.Contains( txtTaxNameSearch.Text.Trim())).Where(c => c.CalculatingMode == cmbCalculationModeSearch.Text.Trim()).ToList();
+                    if (txtTaxNameSearch.Text.Trim()=="")
+                    {
+                        dgvTaxSearch.DataSource = IME.Taxes.ToList();
+                    }
+                    else
+                    {
+                        dgvTaxSearch.DataSource = IME.Taxes.Where(b => b.taxName.Contains(txtTaxNameSearch.Text.Trim())).ToList();
+                    }
+                    
                 }
                 int inRowCount = dgvTaxSearch.RowCount;
                 for (int i = 0; i <= inRowCount - 1; i++)
