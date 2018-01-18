@@ -16,9 +16,9 @@ namespace LoginForm
         IMEEntities IME = new IMEEntities();
         string strAccountGroupName;
         int inNarrationCount;
-       // decimal decAccountGroupId;
+        //decimal decAccountGroupId;
         frmAccountLedger frmAccountLedgerobj;
-        //decimal decIdForOtherForms = 0;
+        decimal decIdForOtherForms = 0;
         decimal decAccountGroupIdForEdit;
         int inId;
         bool isDefault;
@@ -122,43 +122,42 @@ namespace LoginForm
         /// </summary>
         public void Save()
         {
-           
-                    //strAccountGroupName = btnSave.Text == "Save" ? string.Empty : strAccountGroupName;
-                    if (txtAccountGroupName.Text.Trim() == string.Empty)
-                    {
-                        MessageBox.Show("Enter account group name");
-                        txtAccountGroupName.Focus();
-                    }
-                    else if (cmbGroupUnder.SelectedIndex == -1)
-                    {
-                        MessageBox.Show("Select under");
+
+            //strAccountGroupName = btnSave.Text == "Save" ? string.Empty : strAccountGroupName;
+            if (txtAccountGroupName.Text.Trim() == string.Empty)
+            {
+                MessageBox.Show("Enter account group name");
+                txtAccountGroupName.Focus();
+            }
+            else if (cmbGroupUnder.SelectedIndex == -1)
+            {
+                MessageBox.Show("Select under");
                 cmbGroupUnder.Focus();
-                    }
-                    else if (cmbNature.SelectedIndex == -1)
-                    {
-                MessageBox.Show("Select nature");  
+            }
+            else if (cmbNature.SelectedIndex == -1)
+            {
+                MessageBox.Show("Select nature");
                 cmbNature.Focus();
-                    }
-                    else
-                    {
-                        AccountGroup ag = new AccountGroup();
-                        ag.accountGroupName= txtAccountGroupName.Text.Trim();
-                        ag.groupUnder = Int32.Parse(cmbGroupUnder.SelectedValue.ToString());
-                        ag.nature = cmbNature.SelectedItem.ToString();
-                        if (cmbAffectGrossProfit.SelectedIndex == -1)
-                        {
-                            ag.affectGrossProfit = "No";
-                        }
-                        else
-                        {
-                            ag.affectGrossProfit = cmbAffectGrossProfit.SelectedItem.ToString();
-                        }
-                        ag.narration = txtNarration.Text.Trim();
-                        IME.AccountGroups.Add(ag);
-                        IME.SaveChanges();
-                        GridFill();
-                       
-                    }
+            }
+            else
+            {
+                AccountGroup ag = new AccountGroup();
+                ag.accountGroupName = txtAccountGroupName.Text.Trim();
+                ag.groupUnder = Int32.Parse(cmbGroupUnder.SelectedValue.ToString());
+                ag.nature = cmbNature.SelectedItem.ToString();
+                if (cmbAffectGrossProfit.SelectedIndex == -1)
+                {
+                    ag.affectGrossProfit = "No";
+                }
+                else
+                {
+                    ag.affectGrossProfit = cmbAffectGrossProfit.SelectedItem.ToString();
+                }
+                ag.narration = txtNarration.Text.Trim();
+                IME.AccountGroups.Add(ag);
+                IME.SaveChanges();
+                GridFill();
+            }
         }
         /// <summary>
         /// Function to delete account group
@@ -387,7 +386,6 @@ namespace LoginForm
                         if (decAffectGrossProfit == 0)
                         {
                             cmbAffectGrossProfit.Text = "No";
-
                         }
                         else
                         {
@@ -488,7 +486,17 @@ namespace LoginForm
         
         private void frmAccountGroup_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            try
+            {
+                if (frmAccountLedgerobj != null)
+                {
+                    frmAccountLedgerobj.ReturnFromAccountGroupForm(decIdForOtherForms);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AG26:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         private void cmbGroupUnder_SelectedIndexChanged(object sender, EventArgs e)
         {
