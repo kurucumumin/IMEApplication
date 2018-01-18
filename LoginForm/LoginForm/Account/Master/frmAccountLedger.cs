@@ -13,6 +13,7 @@
 using LoginForm.Account.Services;
 using LoginForm.DataSet;
 using LoginForm.Services;
+using Open_Miracle;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -42,7 +43,7 @@ namespace LoginForm
         bool isDefault;
         decimal decIdForOtherForms = 0;
         string strComboTypes = string.Empty;
-        //frmAdvancePayment frmAdvancePaymentobj;
+        frmAdvancePayment frmAdvancePaymentobj;
         //frmDailySalaryVoucher frmDailysalaryvoucherobj;
         //frmMonthlySalaryVoucher frmMonthlySalaryVoucherObj;
         //frmContraVoucher frmContraVoucherObj;
@@ -57,7 +58,7 @@ namespace LoginForm
         //frmRejectionOut frmRejectionOutObj;
         //frmDeliveryNote frmDeliveryNoteObj;
         frmSalesInvoice frmSalesInvoiceObj;
-        //frmPurchaseInvoice frmPurchaseInvoiceObj = null;
+        frmPurchaseInvoice frmPurchaseInvoiceObj = null;
         frmPurchaseReturn frmPurchaseReturnObj;
         //frmSalesQuotation frmSalesQuotationObj;
         frmPdcPayable frmPdcpayableObj;
@@ -1655,7 +1656,7 @@ namespace LoginForm
                     for (int ini = 0; ini < dtbl.Rows.Count; ini++)
                     {
                         strGroup = dtbl.Rows[ini].ItemArray[0].ToString();
-                        if (strGroup == ((AccountGroup)(cmbGroup.SelectedValue)).accountGroupId.ToString())
+                        if (strGroup == cmbGroup.SelectedValue.ToString())
                         {
                             isSundryDebtorOrCreditor = true;
                         }
@@ -1774,26 +1775,26 @@ namespace LoginForm
                 {
                     strGroupName = string.Empty;
                 }
-                //frmAccountGroup frmAccountGroup = new frmAccountGroup();
-                //frmAccountGroup.MdiParent = f.MdiParent; 
-                //frmAccountGroup open = Application.OpenForms["frmAccountGroup"] as frmAccountGroup;
-                //if (open == null)
-                //{
-                //    frmAccountGroup.WindowState = FormWindowState.Normal;
-                //frmAccountGroup.MdiParent = f.MdiParent;
-                //    frmAccountGroup.CallFromAccountLedger(this);
-                //}
-                //else
-                //{
-                //open.MdiParent =  f.MdiParent;
-                //    open.CallFromAccountLedger(this);
-                //    open.BringToFront();
-                //    if (open.WindowState == FormWindowState.Minimized)
-                //    {
-                //        open.WindowState = FormWindowState.Normal;
-                //    }
-                //}
-                this.Enabled = false;
+                frmAccountGroup frmAccountGroup = new frmAccountGroup();
+                frmAccountGroup.MdiParent = FormMain.MDIObj;
+                frmAccountGroup open = Application.OpenForms["frmAccountGroup"] as frmAccountGroup;
+                if (open == null)
+                {
+                    frmAccountGroup.WindowState = FormWindowState.Normal;
+                    frmAccountGroup.MdiParent = FormMain.MDIObj;
+                    frmAccountGroup.CallFromAccountLedger(this);
+                }
+                else
+                {
+                    open.MdiParent = FormMain.MDIObj;
+                    open.CallFromAccountLedger(this);
+                    open.BringToFront();
+                    if (open.WindowState == FormWindowState.Minimized)
+                    {
+                        open.WindowState = FormWindowState.Normal;
+                    }
+                }
+            this.Enabled = false;
             }
 
 

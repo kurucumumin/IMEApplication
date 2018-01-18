@@ -8,6 +8,8 @@ namespace LoginForm
 {
     public partial class FormMain : Form
     {
+        public static FormMain MDIObj;
+
         public FormMain()
         {
             InitializeComponent();
