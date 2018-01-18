@@ -151,7 +151,7 @@ namespace LoginForm
                     accountLedger.pan = txtPan.Text.Trim();
                     if (cmbArea.SelectedIndex <= 0)
                     {
-                        accountLedger.areaId = 1;
+                        accountLedger.areaId = 2;
                     }
                     else
                     {
@@ -184,8 +184,8 @@ namespace LoginForm
                     accountLedger.tin = string.Empty;
                     accountLedger.cst = string.Empty;
                     accountLedger.pan = string.Empty;
-                    accountLedger.routeId = 1;
-                    accountLedger.areaId = 1;
+                    accountLedger.routeId = 2;
+                    accountLedger.areaId = 2;
                     //accountLedger.extra1 = string.Empty;
                     //accountLedger.extra2 = string.Empty;
                 }
@@ -1655,7 +1655,7 @@ namespace LoginForm
                     for (int ini = 0; ini < dtbl.Rows.Count; ini++)
                     {
                         strGroup = dtbl.Rows[ini].ItemArray[0].ToString();
-                        if (strGroup == cmbGroup.SelectedValue.ToString())
+                        if (strGroup == ((AccountGroup)(cmbGroup.SelectedValue)).accountGroupId.ToString())
                         {
                             isSundryDebtorOrCreditor = true;
                         }
