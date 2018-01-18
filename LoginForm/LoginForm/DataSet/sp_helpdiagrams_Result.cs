@@ -11,14 +11,12 @@ namespace LoginForm.DataSet
 {
     using System;
     
-    public partial class SalesInvoiceSalesBillTaxViewAllBySalesMasterId_Result
+    public partial class sp_helpdiagrams_Result
     {
-        public int taxId { get; set; }
-        public decimal ledgerId { get; set; }
-        public string taxName { get; set; }
-        public string ApplicationOn { get; set; }
-        public string calculatingMode { get; set; }
-        public Nullable<decimal> rate { get; set; }
-        public Nullable<decimal> taxAmount { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

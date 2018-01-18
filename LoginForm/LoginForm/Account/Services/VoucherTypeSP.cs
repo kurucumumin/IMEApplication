@@ -33,25 +33,21 @@ namespace LoginForm.Account.Services
         public void voucherTypeComboFill(ComboBox cmbVoucherType, bool isAll)
         {
             IMEEntities IME = new IMEEntities();
-
             DataTable dtbl = new DataTable();
             dtbl.Columns.Add("SlNo", typeof(decimal));
             dtbl.Columns["SlNo"].AutoIncrement = true;
             dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
             dtbl.Columns["SlNo"].AutoIncrementStep = 1;
-            try
-            {
-                var adaptor = (from vt in IME.VoucherTypes.Where(x => x.voucherTypeId != 1 && x.voucherTypeId != 2)
-                               select new { vt.voucherTypeName }).ToList();
+                var adaptor = (from vt in IME.VoucherTypes.Where(x => x.voucherTypeName != "Opening Balance" && x.voucherTypeName != "Opening Balance")
+                               select new { vt.voucherTypeName,vt.voucherTypeId }).ToList();
 
                 dtbl.Columns.Add("voucherTypeName");
-
-                foreach (var item in adaptor)
+            dtbl.Columns.Add("voucherTypeId");
+            foreach (var item in adaptor)
                 {
                     var row = dtbl.NewRow();
-
+                    row["voucherTypeId"] = item.voucherTypeId;
                     row["voucherTypeName"] = item.voucherTypeName;
-
                     dtbl.Rows.Add(row);
                 }
                 cmbVoucherType.DataSource = dtbl;
@@ -59,11 +55,6 @@ namespace LoginForm.Account.Services
                 cmbVoucherType.DisplayMember = "voucherTypeName";
                 cmbVoucherType.SelectedIndex = 0;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
 
         public string TypeOfVoucherView(string strvoucherTypeName)
         {
@@ -83,21 +74,13 @@ namespace LoginForm.Account.Services
         public DataTable VoucherSearchFill(DateTime fromDate, DateTime toDate, decimal decVoucherTypeId, string strVoucherNo, decimal decLedgerId, decimal decEmployeeId)
         {
             IMEEntities IME = new IMEEntities();
-
             DataTable dtbl = new DataTable();
             dtbl.Columns.Add("Sl No");
             dtbl.Columns["Sl No"].AutoIncrement = true;
             dtbl.Columns["Sl No"].AutoIncrementSeed = 1;
             dtbl.Columns["Sl No"].AutoIncrementStep = 1;
-            try
-            {
-                // TO DO : Algoritma / İşlem eksik, tamamlanacak
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
+            
+                // TODO : Algoritma / İşlem eksik, tamamlanacak
             return dtbl;
         }
 

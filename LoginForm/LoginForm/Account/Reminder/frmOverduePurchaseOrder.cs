@@ -34,23 +34,16 @@ namespace LoginForm.Account
         /// </summary>
         private void AccountLedgerComboFill()
         {
-            try
-            {
+            
                 TransactionsGeneralFill TransactionsGeneralFillObj = new TransactionsGeneralFill();
                 TransactionsGeneralFillObj.CashOrPartyComboFill(cmbAccountLedger, true);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("ODPO:1" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+           
         }
         /// <summary>
         /// Function to fill Datagridview
         /// </summary>
         private void OverDuePurchaseOrderGridFill()
         {
-            try
-            {
                 ReminderSP spReminder = new ReminderSP();
                 if (cmbAccountLedger.SelectedValue.ToString() != "System.Data.DataRowView" && cmbAccountLedger.Text != "System.Data.DataRowView")
                 {
@@ -61,11 +54,7 @@ namespace LoginForm.Account
                     dgvOverduePurchaseOrder.Columns["MR_OrderMasterId"].Visible = false;
                     dgvOverduePurchaseOrder.Columns["ledgerId"].Visible = false;
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("ODPO:2" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
         /// <summary>
         /// Function to call this from from frmReminderPopUp form to view details
@@ -93,16 +82,11 @@ namespace LoginForm.Account
         /// <param name="e"></param>
         private void frmOverduePurchaseOrder_Load(object sender, EventArgs e)
         {
-            try
-            {
+            
                 AccountLedgerComboFill();
                 OverDuePurchaseOrderGridFill();
                 cmbAccountLedger.Select();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("ODPO:4" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
         /// <summary>
         /// Fills datagridview on AccountLedger combobox SelectedIndexChanged
@@ -111,14 +95,8 @@ namespace LoginForm.Account
         /// <param name="e"></param>
         private void cmbAccountLedger_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
                 OverDuePurchaseOrderGridFill();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("ODPO:5" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
         /// <summary>
         /// On 'Close' button click

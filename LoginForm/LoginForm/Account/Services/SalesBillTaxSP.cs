@@ -48,11 +48,11 @@ namespace LoginForm.Account.Services
         {
             decimal dcSalesBillTaxId = 0;
             IMEEntities IME = new IMEEntities();
-            tbl_SalesBillTax sbt = new tbl_SalesBillTax();
+            SalesBillTax sbt = new SalesBillTax();
             sbt.taxId= salesbilltaxinfo.TaxId;
             sbt.taxAmount = salesbilltaxinfo.TaxAmount;
             sbt.salesMasterId = salesbilltaxinfo.SalesMasterId;
-            IME.tbl_SalesBillTax.Add(sbt);
+            IME.SalesBillTaxes.Add(sbt);
             dcSalesBillTaxId = sbt.salesBillTaxId;
             return dcSalesBillTaxId;
         }

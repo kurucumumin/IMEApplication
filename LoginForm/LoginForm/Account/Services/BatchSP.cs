@@ -32,14 +32,19 @@ namespace LoginForm.Account.Services
                                b.batchNo
                            }).ToList();
 
-            dt.Columns.Add("batchId");
-            dt.Columns.Add("batchNo");
+            dt.Columns.Add("PurchaseOrderMasterId");
+            dt.Columns.Add("InvoicedMasterId");
+            dt.Columns.Add("MR_OrderMasterId");
+            dt.Columns.Add("ledgerId");
+            
 
             foreach (var item in adaptor)
             {
                 var row = dt.NewRow();
-                row["batchId"] = item.batchId;
-                row["batchNo"] = item.batchNo;
+                row["PurchaseOrderMasterId"] = item.batchId;
+                row["InvoicedMasterId"] = item.batchNo;
+                row["MR_OrderMasterId"] = item.batchNo;
+                row["ledgerId"] = item.batchNo;
                 dt.Rows.Add(row);
             }
             return dt;

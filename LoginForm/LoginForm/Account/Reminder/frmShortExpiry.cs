@@ -51,17 +51,11 @@ namespace LoginForm.Account
         }
         public void gridfill()
         {
-            try
-            {
                 DataTable dtbl = new DataTable();
                 ReminderSP SpRemainder = new ReminderSP();
-                dtbl = SpRemainder.ShortExpiryReminderGridFill(Convert.ToDecimal(cmbProductGroup.SelectedValue.ToString()), Convert.ToDecimal(cmbProduct.SelectedValue.ToString()), Convert.ToDecimal(cmbBrand.SelectedValue.ToString()), Convert.ToDecimal(cmbSize.SelectedValue.ToString()), Convert.ToDecimal(cmbModelno.SelectedValue.ToString()), Convert.ToDecimal(cmbTax.SelectedValue.ToString()), Convert.ToDecimal(cmbGodown.SelectedValue.ToString()), Convert.ToDecimal(cmbRack.SelectedValue.ToString()));
+                if(cmbProductGroup.SelectedValue!=null) dtbl = SpRemainder.ShortExpiryReminderGridFill(Convert.ToDecimal(cmbProductGroup.SelectedValue.ToString()), Convert.ToDecimal(cmbProduct.SelectedValue.ToString()), Convert.ToDecimal(cmbBrand.SelectedValue.ToString()), Convert.ToDecimal(cmbSize.SelectedValue.ToString()), Convert.ToDecimal(cmbModelno.SelectedValue.ToString()), Convert.ToDecimal(cmbTax.SelectedValue.ToString()), Convert.ToDecimal(cmbGodown.SelectedValue.ToString()), Convert.ToDecimal(cmbRack.SelectedValue.ToString()));
                 dgvProductExpiry.DataSource = dtbl;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("SE:2" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+           
         }
         /// <summary>
         /// Function to fill Brand combobox
@@ -206,23 +200,17 @@ namespace LoginForm.Account
         /// </summary>
         public void ProductNameComboFill()
         {
-            try
-            {
-                ProductSP spproduct = new ProductSP();
-                DataTable dtblProductName = new DataTable();
-                dtblProductName = spproduct.ProductViewAllForComboBox();
-                DataRow dr = dtblProductName.NewRow();
-                dr["ProductName"] = "All";
-                dr["ProductId"] = 0;
-                dtblProductName.Rows.InsertAt(dr, 0);
-                cmbProduct.DataSource = dtblProductName;
-                cmbProduct.ValueMember = "productId";
-                cmbProduct.DisplayMember = "productName";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("SE:9" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+                //ProductSP spproduct = new ProductSP();
+                //DataTable dtblProductName = new DataTable();
+                //dtblProductName = spproduct.ProductViewAllForComboBox();
+                //DataRow dr = dtblProductName.NewRow();
+                //dr["Article_Desc"] = "All";
+                //dr["Article_No"] = 0;
+                //dtblProductName.Rows.InsertAt(dr, 0);
+                //cmbProduct.DataSource = dtblProductName;
+                //cmbProduct.ValueMember = "Article_No";
+                //cmbProduct.DisplayMember = "Article_Desc";
+            
         }
         /// <summary>
         /// Function to fill rack combobox
@@ -276,8 +264,6 @@ namespace LoginForm.Account
         /// <param name="e"></param>
         private void frmShortExpiry_Load(object sender, EventArgs e)
         {
-            try
-            {
                 BrandComboFill();
                 TaxComboFill();
                 ModelNoComboFill();
@@ -288,11 +274,7 @@ namespace LoginForm.Account
                 RackComboFill();
                 cmbProductGroup.Focus();
                 gridfill();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("SE:12" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            
         }
         /// <summary>
         /// On 'close' button click

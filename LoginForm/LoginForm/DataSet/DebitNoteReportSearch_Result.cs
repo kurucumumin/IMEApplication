@@ -10,15 +10,15 @@
 namespace LoginForm.DataSet
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class tbl_SalesBillTax
+    public partial class DebitNoteReportSearch_Result
     {
-        public decimal salesBillTaxId { get; set; }
-        public Nullable<decimal> salesMasterId { get; set; }
-        public Nullable<decimal> taxId { get; set; }
-        public Nullable<decimal> taxAmount { get; set; }
-    
-        public virtual SalesMaster SalesMaster { get; set; }
+        public decimal debitNoteMasterId { get; set; }
+        public string voucherTypeName { get; set; }
+        public string voucherNo { get; set; }
+        public string date { get; set; }
+        public Nullable<decimal> totalAmount { get; set; }
+        public string narration { get; set; }
+        public string userName { get; set; }
     }
 }

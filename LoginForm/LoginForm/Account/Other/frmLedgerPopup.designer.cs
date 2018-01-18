@@ -33,14 +33,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLedgerPopup));
             this.lblGroup = new System.Windows.Forms.Label();
             this.dgvLedgerPopup = new System.Windows.Forms.DataGridView();
+            this.txtLedgerName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbAccountGroup = new System.Windows.Forms.ComboBox();
             this.Col = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtLedgerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtAccountGroupId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtLedgerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtOpeningBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtLedgerName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbAccountGroup = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLedgerPopup)).BeginInit();
             this.SuspendLayout();
             // 
@@ -102,11 +102,43 @@
             this.dgvLedgerPopup.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvLedgerPopup_KeyDown);
             this.dgvLedgerPopup.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvLedgerPopup_KeyUp);
             // 
+            // txtLedgerName
+            // 
+            this.txtLedgerName.Location = new System.Drawing.Point(107, 15);
+            this.txtLedgerName.Margin = new System.Windows.Forms.Padding(5);
+            this.txtLedgerName.Name = "txtLedgerName";
+            this.txtLedgerName.Size = new System.Drawing.Size(200, 20);
+            this.txtLedgerName.TabIndex = 1;
+            this.txtLedgerName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLedgerName_KeyDown);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Location = new System.Drawing.Point(20, 19);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Name";
+            // 
+            // cmbAccountGroup
+            // 
+            this.cmbAccountGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAccountGroup.FormattingEnabled = true;
+            this.cmbAccountGroup.Location = new System.Drawing.Point(107, 40);
+            this.cmbAccountGroup.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
+            this.cmbAccountGroup.Name = "cmbAccountGroup";
+            this.cmbAccountGroup.Size = new System.Drawing.Size(200, 21);
+            this.cmbAccountGroup.TabIndex = 2;
+            this.cmbAccountGroup.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbAccountGroup_KeyDown);
+            // 
             // Col
             // 
             this.Col.DataPropertyName = "Sl No";
             this.Col.HeaderText = "Sl No";
             this.Col.Name = "Col";
+            this.Col.ReadOnly = true;
             this.Col.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // dgvtxtLedgerId
@@ -138,37 +170,6 @@
             this.dgvtxtOpeningBalance.HeaderText = "Balance";
             this.dgvtxtOpeningBalance.Name = "dgvtxtOpeningBalance";
             this.dgvtxtOpeningBalance.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // txtLedgerName
-            // 
-            this.txtLedgerName.Location = new System.Drawing.Point(107, 15);
-            this.txtLedgerName.Margin = new System.Windows.Forms.Padding(5);
-            this.txtLedgerName.Name = "txtLedgerName";
-            this.txtLedgerName.Size = new System.Drawing.Size(200, 20);
-            this.txtLedgerName.TabIndex = 1;
-            this.txtLedgerName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLedgerName_KeyDown);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(20, 19);
-            this.label1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Name";
-            // 
-            // cmbAccountGroup
-            // 
-            this.cmbAccountGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbAccountGroup.FormattingEnabled = true;
-            this.cmbAccountGroup.Location = new System.Drawing.Point(107, 40);
-            this.cmbAccountGroup.Margin = new System.Windows.Forms.Padding(5, 0, 5, 5);
-            this.cmbAccountGroup.Name = "cmbAccountGroup";
-            this.cmbAccountGroup.Size = new System.Drawing.Size(200, 21);
-            this.cmbAccountGroup.TabIndex = 2;
-            this.cmbAccountGroup.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbAccountGroup_KeyDown);
             // 
             // frmLedgerPopup
             // 

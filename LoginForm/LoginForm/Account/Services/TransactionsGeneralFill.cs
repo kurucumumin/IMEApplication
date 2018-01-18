@@ -198,18 +198,18 @@ namespace LoginForm.Account.Services
             dtbl.Columns["SlNo"].AutoIncrement = true;
             dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
             dtbl.Columns["SlNo"].AutoIncrementStep = 1;
-            try
-            {
-                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupId == 27 || x.accountGroupId == 22)
+                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupName == "Cash-in Hand" || x.accountGroupName == "Sundry Creditors")
                                select new
                                {
                                    AccountGroupId = ag.accountGroupId,
+                                    ag.accountGroupName,
                                    hierarchyLevel = 1
                                }).ToList();
-                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == 27 || x.groupUnder == 22)
+                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.accountGroupName == "Cash-in Hand" || x.accountGroupName == "Sundry Creditors")
                                 select new
                                 {
                                     AccountGroupId = ag.accountGroupId,
+                                    ag.accountGroupName,
                                     hierarchyLevel = 2
                                 }).ToList();
 
@@ -222,25 +222,21 @@ namespace LoginForm.Account.Services
                 }
 
                 dtbl.Columns.Add("AccountGroupId");
-
+                dtbl.Columns.Add("accountGroupName");
                 foreach (var item in adaptor)
                 {
                     var row = dtbl.NewRow();
 
                     row["AccountGroupId"] = item.AccountGroupId;
-
+                    row["accountGroupName"] = item.accountGroupName;
                     dtbl.Rows.Add(row);
                 }
 
                 cmbCashOrParty.DataSource = dtbl;
                 cmbCashOrParty.ValueMember = "AccountGroupId";
-                cmbCashOrParty.DisplayMember = "AccountGroupName";
+                cmbCashOrParty.DisplayMember = "accountGroupName";
                 cmbCashOrParty.SelectedIndex = 0;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+           
         }
 
         public void CashOrPartyUnderSundryDrComboFill(ComboBox cmbCashOrParty, bool isAll)
