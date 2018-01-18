@@ -134,6 +134,7 @@ namespace LoginForm
                 CreditNoteMasterSP spMaster = new CreditNoteMasterSP();
 
                 //-----------------------------------VoucherNo automatic generation-------------------------------------------//
+                
 
                 if (strVoucherNo == string.Empty)
                 {
@@ -2231,7 +2232,9 @@ namespace LoginForm
                 txtVoucherNo.Text = strInvoiceNo;
                 decCreditNoteSuffixPrefixId = (decimal)infoCreditNoteMaster.suffixPrefixId;
                 decCreditNoteVoucherTypeId = (decimal)infoCreditNoteMaster.voucherTypeId;
-                dtpVoucherDate.Value = Convert.ToDateTime(infoCreditNoteMaster.date);
+                //dtpVoucherDate.Value = Convert.ToDateTime(infoCreditNoteMaster.date.Value.ToString("dd-MMM-yyyy"));
+                txtDate.Text= infoCreditNoteMaster.date.Value.ToString("dd-MMM-yyyy");
+
 
                 VoucherTypeSP spVoucherType = new VoucherTypeSP();
                 isAutomatic = spVoucherType.CheckMethodOfVoucherNumbering(decCreditNoteVoucherTypeId);

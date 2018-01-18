@@ -5583,6 +5583,12 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Parameter Name="fromDate" Type="datetime" Mode="In" />
           <Parameter Name="toDate" Type="datetime" Mode="In" />
         </Function>
+        <Function Name="DebitNoteReportSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+          <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
+          <Parameter Name="ledgerId" Type="numeric" Mode="In" />
+        </Function>
         <Function Name="ExchangeRateViewByExchangeRateId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="exchangeRateId" Type="numeric" Mode="In" />
         </Function>
@@ -6359,6 +6365,12 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
         <Function Name="TaxViewAllForProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="UnitConversionIdAndConRateViewallByProductId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="productId" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="VoucherNumberAutomaicGeneration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="voucherTypeId" Type="decimal" Mode="In" />
+          <Parameter Name="date" Type="datetime" Mode="In" />
+          <Parameter Name="tab_name" Type="varchar" Mode="In" />
+          <Parameter Name="txtBox" Type="decimal" Mode="In" />
         </Function>
         <Function Name="VoucherTypeView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
@@ -15111,6 +15123,12 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="DebitNoteReportSearch" ReturnType="Collection(IMEModel.DebitNoteReportSearch_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="ExchangeRateViewByExchangeRateId" ReturnType="Collection(Decimal)">
             <Parameter Name="exchangeRateId" Mode="In" Type="Decimal" />
           </FunctionImport>
@@ -15887,6 +15905,12 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImport Name="UnitConversionIdAndConRateViewallByProductId" ReturnType="Collection(IMEModel.UnitConversionIdAndConRateViewallByProductId_Result)">
             <Parameter Name="productId" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="VoucherNumberAutomaicGeneration" ReturnType="Collection(Decimal)">
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="tab_name" Mode="In" Type="String" />
+            <Parameter Name="txtBox" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="VoucherTypeView" ReturnType="Collection(IMEModel.VoucherTypeView_Result)">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
@@ -16024,6 +16048,15 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="Int32" Name="userId" Nullable="true" />
           <Property Type="Decimal" Name="voucherTypeId" Nullable="true" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="financialYearId" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="DebitNoteReportSearch_Result">
+          <Property Type="Decimal" Name="debitNoteMasterId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="voucherTypeName" Nullable="true" />
+          <Property Type="String" Name="voucherNo" Nullable="true" />
+          <Property Type="String" Name="date" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="totalAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="narration" Nullable="true" />
+          <Property Type="String" Name="userName" Nullable="false" MaxLength="25" />
         </ComplexType>
         <ComplexType Name="GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result">
           <Property Type="Decimal" Name="deliveryNoteMasterId" Nullable="false" Precision="18" Scale="0" />
@@ -19008,6 +19041,19 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DebitNoteReportSearch" FunctionName="IMEModel.Store.DebitNoteReportSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.DebitNoteReportSearch_Result">
+                <ScalarProperty Name="debitNoteMasterId" ColumnName="debitNoteMasterId" />
+                <ScalarProperty Name="voucherTypeName" ColumnName="voucherTypeName" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ExchangeRateViewByExchangeRateId" FunctionName="IMEModel.Store.ExchangeRateViewByExchangeRateId" />
           <FunctionImportMapping FunctionImportName="ExtendedRangeADD" FunctionName="IMEModel.Store.ExtendedRangeADD" />
           <FunctionImportMapping FunctionImportName="GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI" FunctionName="IMEModel.Store.GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI">
@@ -20013,6 +20059,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="VoucherNumberAutomaicGeneration" FunctionName="IMEModel.Store.VoucherNumberAutomaicGeneration" />
           <FunctionImportMapping FunctionImportName="VoucherTypeView" FunctionName="IMEModel.Store.VoucherTypeView">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.VoucherTypeView_Result">

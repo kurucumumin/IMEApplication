@@ -42,7 +42,7 @@ namespace LoginForm
             try
             {
                 DataTable dtbl = new DataTable();
-               // dtbl = new DebitNoteMasterSP().DebitNoteMasterViewAllWithSlNo();
+                dtbl = new DebitNoteMasterSP().DebitNoteMasterViewAllWithSlNo();
                 dgvDebitNoteRegister.DataSource = dtbl;
             }
             catch (Exception ex)
@@ -69,7 +69,7 @@ namespace LoginForm
                 }
                 string strFromDate = txtFromDate.Text;
                 DataTable dtbl = new DataTable();
-               // dtbl = new DebitNoteMasterSP().DebitNoteRegisterSearch(strVoucherNo, strFromDate, strToDate);
+                dtbl = new DebitNoteMasterSP().DebitNoteRegisterSearch(strVoucherNo, strFromDate, strToDate);
                 dgvDebitNoteRegister.DataSource = dtbl;
             }
             catch (Exception ex)
@@ -111,7 +111,7 @@ namespace LoginForm
             try
             {
                 FinancialYearDate();
-                SearchRegister();
+                //SearchRegister();
             }
             catch (Exception ex)
             {
@@ -163,37 +163,36 @@ namespace LoginForm
         /// <param name="e"></param>
         private void btnViewDetails_Click(object sender, EventArgs e)
         {
-            //TODO @@Fonksiyonu aç ViewDetail
-            //try
-            //{
-            //    if (dgvDebitNoteRegister.CurrentRow != null)
-            //    {
-            //        decimal decMasterId = Convert.ToDecimal(dgvDebitNoteRegister.CurrentRow.Cells["dgvtxtDebitNoteMasterId"].Value.ToString());
-            //        frmDebitNote frmDebitNoteObj = new frmDebitNote();
-            //        frmDebitNoteObj.MdiParent = formMDI.MDIObj;
-            //        frmDebitNote open = Application.OpenForms["frmDebitNote"] as frmDebitNote;
-            //        if (open == null)
-            //        {
-            //            frmDebitNoteObj.WindowState = FormWindowState.Normal;
-            //            frmDebitNoteObj.MdiParent = formMDI.MDIObj;
-            //            frmDebitNoteObj.CallFromDebitNoteRegister(this, decMasterId);
-            //        }
-            //        else
-            //        {
-            //            open.MdiParent = formMDI.MDIObj;
-            //            open.BringToFront();
-            //            open.CallFromDebitNoteRegister(this, decMasterId);
-            //            if (open.WindowState == FormWindowState.Minimized)
-            //            {
-            //                open.WindowState = FormWindowState.Normal;
-            //            }
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("DNTREG7:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+           
+            try
+            {
+                if (dgvDebitNoteRegister.CurrentRow != null)
+                {
+                    decimal decMasterId = Convert.ToDecimal(dgvDebitNoteRegister.CurrentRow.Cells["dgvtxtDebitNoteMasterId"].Value.ToString());
+                    frmDebitNote frmDebitNoteObj = new frmDebitNote();
+                    frmDebitNote open = Application.OpenForms["frmDebitNote"] as frmDebitNote;
+                    if (open == null)
+                    {
+                        frmDebitNoteObj.WindowState = FormWindowState.Normal;
+                        //frmDebitNoteObj.MdiParent = formMDI.MDIObj;
+                        frmDebitNoteObj.CallFromDebitNoteRegister(this, decMasterId);
+                    }
+                    else
+                    {
+                        //open.MdiParent = formMDI.MDIObj;
+                        open.BringToFront();
+                        open.CallFromDebitNoteRegister(this, decMasterId);
+                        if (open.WindowState == FormWindowState.Minimized)
+                        {
+                            open.WindowState = FormWindowState.Normal;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("DNTREG7:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         /// <summary>
         /// On 'Close' button click
