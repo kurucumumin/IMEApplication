@@ -23,18 +23,29 @@ namespace LoginForm
         #endregion
 
         #region Functions
-        /// <summary>
-        /// combo fill function of dotmatrix
-        /// </summary>
+
         public void DotMatrixComboFill()
         {
-            //dr[0] = 0;
-            //dr[1] = "Not Applicable";
-            //dtbl.Rows.InsertAt(dr, 0);
-            cmbDotMatrix.DataSource = IME.PrintFormats.ToList();
-                cmbDotMatrix.ValueMember = "ID";
-                cmbDotMatrix.DisplayMember = "formName";
-                cmbDotMatrix.SelectedIndex = -1;
+            DataTable dtbl = new DataTable();
+            
+            dtbl.Columns.Add("masterId");
+            dtbl.Columns.Add("formName");
+            foreach (var item in IME.PrintFormats.ToList())
+            {
+                var row = dtbl.NewRow();
+
+                row["masterId"] = item.ID;
+                row["formName"] = item.formName;
+                dtbl.Rows.Add(row);
+            }
+            DataRow dr = dtbl.NewRow();
+            dr[0] = 0;
+            dr[1] = "Not Applicable";
+            dtbl.Rows.InsertAt(dr, 0);
+            cmbDotMatrix.DataSource = dtbl;
+            cmbDotMatrix.ValueMember = "masterId";
+            cmbDotMatrix.DisplayMember = "formName";
+            cmbDotMatrix.SelectedIndex = -1;
         }
 
         public void Clear()
@@ -73,9 +84,7 @@ namespace LoginForm
                 MessageBox.Show("VT01:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        /// <summary>
-        /// checking the invalid entry's for save or update
-        /// </summary>
+
         public void SaveOrEdit()
         {
                 if (txtVoucherName.Text.Trim() == string.Empty)
@@ -249,6 +258,8 @@ namespace LoginForm
 
         }
 
+
+
         public void VoucherTypeComboFill()
         {
                 cmbTypeOfVoucher.DataSource = IME.VoucherTypes.ToList();
@@ -260,10 +271,10 @@ namespace LoginForm
 
         public void VoucherTypeSearchComboFill()
         {
-                cmbTypeOfVoucher.DataSource = IME.VoucherTypes.ToList();
-                cmbTypeOfVoucher.ValueMember = "voucherTypeId";
-                cmbTypeOfVoucher.DisplayMember = "typeOfVoucher";
-                cmbTypeOfVoucher.SelectedIndex = -1;
+                cmbTypeOfVoucherSearch.DataSource = IME.VoucherTypes.ToList();
+            cmbTypeOfVoucherSearch.ValueMember = "voucherTypeId";
+            cmbTypeOfVoucherSearch.DisplayMember = "typeOfVoucher";
+            cmbTypeOfVoucherSearch.SelectedIndex = -1;
         }
 
 
