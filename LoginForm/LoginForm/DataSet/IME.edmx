@@ -5578,6 +5578,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
         <Function Name="BudgetVariance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="budgetMasterId" Type="numeric" Mode="In" />
         </Function>
+        <Function Name="CreditNoteRegisterSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="ExchangeRateViewByExchangeRateId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="exchangeRateId" Type="numeric" Mode="In" />
         </Function>
@@ -5688,6 +5693,9 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
         </Function>
         <Function Name="MaterialReceiptMasterViewByReceiptMasterId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MaterialReceiptMasterId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="OverduePurchaseOrdersCorrespondingAccountLedger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="accountLedgerId" Type="decimal" Mode="In" />
         </Function>
         <Function Name="PartyBalanceAmountViewByVoucherNoVoucherTypeIdAndReferenceType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
@@ -15098,6 +15106,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImport Name="BudgetVariance" ReturnType="Collection(IMEModel.BudgetVariance_Result)">
             <Parameter Name="budgetMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="CreditNoteRegisterSearch" ReturnType="Collection(IMEModel.CreditNoteRegisterSearch_Result)">
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="ExchangeRateViewByExchangeRateId" ReturnType="Collection(Decimal)">
             <Parameter Name="exchangeRateId" Mode="In" Type="Decimal" />
           </FunctionImport>
@@ -15207,6 +15220,9 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           </FunctionImport>
           <FunctionImport Name="MaterialReceiptMasterViewByReceiptMasterId" ReturnType="Collection(IMEModel.MaterialReceiptMasterViewByReceiptMasterId_Result)">
             <Parameter Name="MaterialReceiptMasterId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="OverduePurchaseOrdersCorrespondingAccountLedger" ReturnType="Collection(IMEModel.OverduePurchaseOrdersCorrespondingAccountLedger_Result)">
+            <Parameter Name="accountLedgerId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PartyBalanceAmountViewByVoucherNoVoucherTypeIdAndReferenceType" ReturnType="Collection(Decimal)">
             <Parameter Name="voucherNo" Mode="In" Type="String" />
@@ -15997,6 +16013,18 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="Decimal" Name="ActualCr" Nullable="true" Precision="28" Scale="2" />
           <Property Type="Decimal" Name="VarianceCr" Nullable="true" Precision="28" Scale="2" />
         </ComplexType>
+        <ComplexType Name="CreditNoteRegisterSearch_Result">
+          <Property Type="Decimal" Name="creditNoteMasterId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="invoiceNo" Nullable="true" />
+          <Property Type="String" Name="voucherTypeName" Nullable="true" />
+          <Property Type="Decimal" Name="suffixPrefixId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="date" Nullable="true" MaxLength="20" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="narration" Nullable="true" />
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="Decimal" Name="voucherTypeId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="financialYearId" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
         <ComplexType Name="GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result">
           <Property Type="Decimal" Name="deliveryNoteMasterId" Nullable="false" Precision="18" Scale="0" />
           <Property Type="String" Name="invoiceNo" Nullable="true" />
@@ -16095,6 +16123,17 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="transportationCompany" Nullable="true" />
           <Property Type="Decimal" Name="currencyId" Nullable="true" Precision="18" Scale="0" />
           <Property Type="String" Name="Refer" Nullable="true" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="OverduePurchaseOrdersCorrespondingAccountLedger_Result">
+          <Property Type="String" Name="FicheNo" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="OrderNO" Nullable="true" />
+          <Property Type="String" Name="date" Nullable="true" />
+          <Property Type="Decimal" Name="ledgerId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="ledgerName" Nullable="true" />
+          <Property Type="String" Name="dueDate" Nullable="true" />
+          <Property Type="Decimal" Name="totalAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="InvoicedMasterId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MR_OrderMasterId" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="PayHeadGet_Result">
           <Property Type="Decimal" Name="PayheadId" Nullable="false" Precision="18" Scale="0" />
@@ -18953,6 +18992,22 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CreditNoteRegisterSearch" FunctionName="IMEModel.Store.CreditNoteRegisterSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.CreditNoteRegisterSearch_Result">
+                <ScalarProperty Name="creditNoteMasterId" ColumnName="creditNoteMasterId" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="voucherTypeName" ColumnName="voucherTypeName" />
+                <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ExchangeRateViewByExchangeRateId" FunctionName="IMEModel.Store.ExchangeRateViewByExchangeRateId" />
           <FunctionImportMapping FunctionImportName="ExtendedRangeADD" FunctionName="IMEModel.Store.ExtendedRangeADD" />
           <FunctionImportMapping FunctionImportName="GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI" FunctionName="IMEModel.Store.GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI">
@@ -19106,6 +19161,21 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="transportationCompany" ColumnName="transportationCompany" />
                 <ScalarProperty Name="currencyId" ColumnName="currencyId" />
                 <ScalarProperty Name="Refer" ColumnName="Refer" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="OverduePurchaseOrdersCorrespondingAccountLedger" FunctionName="IMEModel.Store.OverduePurchaseOrdersCorrespondingAccountLedger">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.OverduePurchaseOrdersCorrespondingAccountLedger_Result">
+                <ScalarProperty Name="FicheNo" ColumnName="FicheNo" />
+                <ScalarProperty Name="OrderNO" ColumnName="OrderNO" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
+                <ScalarProperty Name="dueDate" ColumnName="dueDate" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="InvoicedMasterId" ColumnName="InvoicedMasterId" />
+                <ScalarProperty Name="MR_OrderMasterId" ColumnName="MR_OrderMasterId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
