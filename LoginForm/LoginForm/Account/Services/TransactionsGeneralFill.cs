@@ -41,8 +41,7 @@ namespace LoginForm.Account.Services
             string strVoucherNo = string.Empty;
             try
             {
-                //TODO Create VoucherNO and Return
-                strVoucherNo = "12345";
+                strVoucherNo = db.VoucherNumberAutomaicGeneration(VoucherTypeId, date, tableName, txtBox).ToString();
             }
             catch (Exception ex)
             {
@@ -97,7 +96,7 @@ namespace LoginForm.Account.Services
             try
             {
                 var adaptor = (from c in db.Currencies
-                               from e in db.ExchangeRates.Where(a=>a.date<date)
+                               from e in db.ExchangeRates.Where(a=>a.currencyId==c.currencyID)
                                where e.date==date || e.exchangeRateID==1
                                select new
                                {
@@ -107,6 +106,7 @@ namespace LoginForm.Account.Services
                                }).ToList();
 
                 dt.Columns.Add("currencyName");
+                dt.Columns.Add("currencySymbol");
                 dt.Columns.Add("exchangeRateID");
 
                 foreach (var item in adaptor)

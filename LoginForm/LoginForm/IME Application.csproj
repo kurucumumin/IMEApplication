@@ -664,6 +664,9 @@
     <Compile Include="DataSet\DebitNoteMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\DebitNoteReportSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\DeliveryNoteDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>

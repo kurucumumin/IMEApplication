@@ -92,7 +92,7 @@ namespace LoginForm
             try
             {
                 FinancialYearDate();
-                //SearchRegister();
+                SearchRegister();
             }
             catch (Exception ex)
             {
@@ -279,36 +279,36 @@ namespace LoginForm
         /// <param name="e"></param>
         private void btnViewDetails_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    if (dgvCreditNoteRegister.CurrentRow != null)
-            //    {
-            //        decimal decMasterId = Convert.ToDecimal(dgvCreditNoteRegister.CurrentRow.Cells["dgvtxtCreditNoteMasterId"].Value.ToString());
-            //        frmCreditNote frmCreditNoteObj = new frmCreditNote();
-            //        frmCreditNoteObj.MdiParent = formMDI.MDIObj;
-            //        frmCreditNote open = Application.OpenForms["frmCreditNote"] as frmCreditNote;
-            //        if (open == null)
-            //        {
-            //            frmCreditNoteObj.WindowState = FormWindowState.Normal;
-            //            frmCreditNoteObj.MdiParent = formMDI.MDIObj;
-            //            frmCreditNoteObj.CallFromCreditNoteRegister(this, decMasterId);
-            //        }
-            //        else
-            //        {
-            //            open.MdiParent = formMDI.MDIObj;
-            //            open.BringToFront();
-            //            open.CallFromCreditNoteRegister(this, decMasterId);
-            //            if (open.WindowState == FormWindowState.Minimized)
-            //            {
-            //                open.WindowState = FormWindowState.Normal;
-            //            }
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("CRNTREG12:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+            try
+            {
+                if (dgvCreditNoteRegister.CurrentRow != null)
+                {
+                    decimal decMasterId = Convert.ToDecimal(dgvCreditNoteRegister.CurrentRow.Cells["dgvtxtCreditNoteMasterId"].Value.ToString());
+                    frmCreditNote frmCreditNoteObj = new frmCreditNote();
+                    //frmCreditNoteObj.MdiParent = formMDI.MDIObj;
+                    frmCreditNote open = Application.OpenForms["frmCreditNote"] as frmCreditNote;
+                    if (open == null)
+                    {
+                        frmCreditNoteObj.WindowState = FormWindowState.Normal;
+                      //  frmCreditNoteObj.MdiParent = formMDI.MDIObj;
+                        frmCreditNoteObj.CallFromCreditNoteRegister(this, decMasterId);
+                    }
+                    else
+                    {
+                        //open.MdiParent = formMDI.MDIObj;
+                        open.BringToFront();
+                        open.CallFromCreditNoteRegister(this, decMasterId);
+                        if (open.WindowState == FormWindowState.Minimized)
+                        {
+                            open.WindowState = FormWindowState.Normal;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("CRNTREG12:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         /// <summary>
         /// Commits edit on CurrentCellDirtyStateChanged
