@@ -49,5 +49,28 @@ namespace LoginForm.Account.Services
             }
             return dt;
         }
+
+        /// <summary>
+        /// Fuinction to get fill area
+        /// </summary>
+        /// <param name="decAreaId"></param>
+        /// <returns></returns>
+        public Area AreaFill(decimal decAreaId)
+        {
+            Area infoArea = new Area();
+            try
+            {
+                var adaptor = new IMEEntities().AreaWithNarrationView(decAreaId).FirstOrDefault();
+
+                infoArea.areaId = adaptor.areaId;
+                infoArea.areaName = adaptor.areaName;
+                infoArea.narration = adaptor.narration;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return infoArea;
+        }
     }
 }
