@@ -628,6 +628,9 @@
     <Compile Include="DataSet\CreditNoteMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\CreditNoteRegisterSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Currency.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -785,6 +788,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\OnSale.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\OverduePurchaseOrdersCorrespondingAccountLedger_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PartyBalance.cs">

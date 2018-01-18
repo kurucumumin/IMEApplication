@@ -21,30 +21,49 @@ namespace LoginForm.Account.Services
             dtbl.Columns["SlNo"].AutoIncrementStep = 1;
             try
             {
-                var adaptor = (from cn in db.CreditNoteMasters.Where(x => x.voucherNo.StartsWith(strVoucherNo) && (x.date > DateTime.Parse(strFromDate) && x.date < DateTime.Parse(strToDate))).OrderBy(y=>y.creditNoteMasterId)
-                               select new
-                               {
-                                   cn.creditNoteMasterId,
-                                   cn.invoiceNo,
-                                   //cn.VoucherType.voucherTypeName,
-                                   cn.suffixPrefixId,
-                                   date = cn.date.Value.Date,
-                                   Amount = cn.totalAmount,
-                                   cn.narration,
-                                   cn.userId,
-                                   //cn.voucherTypeId,
-                                   cn.financialYearId
-                               }).ToList();
+                //var adaptor = (from cn in db.CreditNoteMasters.Where(x => x.voucherNo.StartsWith(strVoucherNo) && (x.date > DateTime.Parse(strFromDate) && x.date < DateTime.Parse(strToDate))).OrderBy(y=>y.creditNoteMasterId)
+                //               select new
+                //               {
+                //                   cn.creditNoteMasterId,
+                //                   cn.invoiceNo,
+                //                   //cn.VoucherType.voucherTypeName,
+                //                   cn.suffixPrefixId,
+                //                   date = cn.date.Value.Date,
+                //                   Amount = cn.totalAmount,
+                //                   cn.narration,
+                //                   cn.userId,
+                //                   //cn.voucherTypeId,
+                //                   cn.financialYearId
+                //               }).ToList();
+
+                //var adaptor = (from cn in db.CreditNoteMasters
+                //               from vt in db.VoucherTypes.Where(x =>x.voucherTypeId==cn.voucherTypeId)
+                //               where cn.voucherNo.StartsWith(strVoucherNo) && (cn.date > DateTime.Parse(strFromDate) && cn.date < DateTime.Parse(strToDate))
+                //               select new
+                //               {
+                //                   cn.creditNoteMasterId,
+                //                   cn.invoiceNo,
+                //                   cn.VoucherType.voucherTypeName,
+                //                   cn.suffixPrefixId,
+                //                   date = cn.date.Value.Date,
+                //                   Amount = cn.totalAmount,
+                //                   cn.narration,
+                //                   cn.userId,
+                //                   cn.voucherTypeId,
+                //                   cn.financialYearId
+                //               }).OrderBy(y=> y.creditNoteMasterId).ToList();
+
+                var adaptor = db.CreditNoteRegisterSearch(strVoucherNo, Convert.ToDateTime(strFromDate), Convert.ToDateTime(strToDate)).ToList();
 
                 dtbl.Columns.Add("creditNoteMasterId");
                 dtbl.Columns.Add("invoiceNo");
-                //dtbl.Columns.Add("voucherTypeName");
+                dtbl.Columns.Add("voucherTypeName");
                 dtbl.Columns.Add("suffixPrefixId");
                 dtbl.Columns.Add("date");
                 dtbl.Columns.Add("Amount");
                 dtbl.Columns.Add("narration");
                 dtbl.Columns.Add("userId");
-              //  dtbl.Columns.Add("voucherTypeId");
+                dtbl.Columns.Add("voucherTypeId");
                 dtbl.Columns.Add("financialYearId");
 
                 foreach (var item in adaptor)
@@ -53,13 +72,13 @@ namespace LoginForm.Account.Services
 
                     row["creditNoteMasterId"] = item.creditNoteMasterId;
                     row["invoiceNo"] = item.invoiceNo;
-                   // row["voucherTypeName"] = item.voucherTypeName;
+                    row["voucherTypeName"] = item.voucherTypeName;
                     row["suffixPrefixId"] = item.suffixPrefixId;
                     row["date"] = item.date;
                     row["Amount"] = item.Amount;
                     row["narration"] = item.narration;
                     row["userId"] = item.userId;
-                    //row["voucherTypeId"] = item.voucherTypeId;
+                    row["voucherTypeId"] = item.voucherTypeId;
                     row["financialYearId"] = item.financialYearId;
 
                     dtbl.Rows.Add(row);
