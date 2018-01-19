@@ -570,6 +570,12 @@
     <Compile Include="DataSet\Area.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\AreaOnlyViewAll_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\AreaWithNarrationView_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\ArticleSearchWithAll_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -748,6 +754,9 @@
     <Compile Include="DataSet\JournalMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\JournalRegisterSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Language.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -812,6 +821,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PaymentMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PaymentMasterSearch_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PaymentMethod.cs">

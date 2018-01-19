@@ -34,7 +34,17 @@ namespace LoginForm
 
         public void AreaGridfill()
         {
-            dgvArea.DataSource = IME.Areas.ToList();
+            try
+            {
+                DataTable dtbl = new DataTable();
+                AreaSP spArea = new AreaSP();
+                dtbl = spArea.AreaOnlyViewAll();
+                dgvArea.DataSource = dtbl;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AR1" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         public void RouteNACreateUnderTheArea()
