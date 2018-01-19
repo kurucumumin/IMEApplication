@@ -289,20 +289,6 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AdditionalCostViewAllByVoucherTypeIdAndVoucherNo_Result>("AdditionalCostViewAllByVoucherTypeIdAndVoucherNo", voucherTypeIdParameter, voucherNoParameter);
         }
     
-        public virtual ObjectResult<AreaOnlyViewAll_Result> AreaOnlyViewAll()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AreaOnlyViewAll_Result>("AreaOnlyViewAll");
-        }
-    
-        public virtual ObjectResult<AreaWithNarrationView_Result> AreaWithNarrationView(Nullable<decimal> areaId)
-        {
-            var areaIdParameter = areaId.HasValue ?
-                new ObjectParameter("areaId", areaId) :
-                new ObjectParameter("areaId", typeof(decimal));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AreaWithNarrationView_Result>("AreaWithNarrationView", areaIdParameter);
-        }
-    
         public virtual ObjectResult<ArticleSearch_Result> ArticleSearch(string articleNo)
         {
             var articleNoParameter = articleNo != null ?
@@ -1033,27 +1019,6 @@ namespace LoginForm.DataSet
         public virtual ObjectResult<PayHeadGetAll_Result> PayHeadGetAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PayHeadGetAll_Result>("PayHeadGetAll");
-        }
-    
-        public virtual ObjectResult<PaymentMasterSearch_Result> PaymentMasterSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string ledgerId, string voucherNo)
-        {
-            var fromDateParameter = fromDate.HasValue ?
-                new ObjectParameter("FromDate", fromDate) :
-                new ObjectParameter("FromDate", typeof(System.DateTime));
-    
-            var toDateParameter = toDate.HasValue ?
-                new ObjectParameter("ToDate", toDate) :
-                new ObjectParameter("ToDate", typeof(System.DateTime));
-    
-            var ledgerIdParameter = ledgerId != null ?
-                new ObjectParameter("ledgerId", ledgerId) :
-                new ObjectParameter("ledgerId", typeof(string));
-    
-            var voucherNoParameter = voucherNo != null ?
-                new ObjectParameter("voucherNo", voucherNo) :
-                new ObjectParameter("voucherNo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PaymentMasterSearch_Result>("PaymentMasterSearch", fromDateParameter, toDateParameter, ledgerIdParameter, voucherNoParameter);
         }
     
         public virtual ObjectResult<PDCClearanceFillDetails_Result> PDCClearanceFillDetails(string voucherTypeName, Nullable<decimal> masterId)
