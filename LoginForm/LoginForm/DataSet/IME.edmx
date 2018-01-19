@@ -1426,15 +1426,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="deliveryNoteDetailsId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="quotationDetailsId" Type="int" />
         </EntityType>
-        <EntityType Name="SalesBillTax">
-          <Key>
-            <PropertyRef Name="salesBillTaxId" />
-          </Key>
-          <Property Name="salesBillTaxId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="salesMasterId" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="taxId" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="taxAmount" Type="decimal" Precision="18" Scale="5" />
-        </EntityType>
         <EntityType Name="SalesDetails">
           <Key>
             <PropertyRef Name="salesDetailsId" />
@@ -1873,6 +1864,15 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="taxID" Type="int" />
           <Property Name="SelectedtaxID" Type="int" />
           <Property Name="taxDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_SalesBillTax">
+          <Key>
+            <PropertyRef Name="salesBillTaxId" />
+          </Key>
+          <Property Name="salesBillTaxId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="salesMasterId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="taxId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="taxAmount" Type="decimal" Precision="18" Scale="5" />
         </EntityType>
         <EntityType Name="Town">
           <Key>
@@ -4979,7 +4979,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Stock__currencyI__2156DE01">
+        <Association Name="FK__Stock__currencyI__2AE0483B">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5401,12 +5401,12 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
         </Association>
         <Association Name="FK__tbl_Sales__sales__5AF96FB1">
           <End Role="SalesMaster" Type="Self.SalesMaster" Multiplicity="0..1" />
-          <End Role="SalesBillTax" Type="Self.SalesBillTax" Multiplicity="*" />
+          <End Role="tbl_SalesBillTax" Type="Self.tbl_SalesBillTax" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SalesMaster">
               <PropertyRef Name="salesMasterId" />
             </Principal>
-            <Dependent Role="SalesBillTax">
+            <Dependent Role="tbl_SalesBillTax">
               <PropertyRef Name="salesMasterId" />
             </Dependent>
           </ReferentialConstraint>
@@ -5556,6 +5556,10 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
         <Function Name="AdditionalCostViewAllByVoucherTypeIdAndVoucherNo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
           <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="AreaOnlyViewAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="AreaWithNarrationView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="areaId" Type="numeric" Mode="In" />
         </Function>
         <Function Name="ArticleSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="articleNo" Type="nvarchar" Mode="In" />
@@ -5767,6 +5771,12 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Parameter Name="payHeadId" Type="numeric" Mode="In" />
         </Function>
         <Function Name="PayHeadGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PaymentMasterSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FromDate" Type="datetime" Mode="In" />
+          <Parameter Name="ToDate" Type="datetime" Mode="In" />
+          <Parameter Name="ledgerId" Type="varchar" Mode="In" />
+          <Parameter Name="voucherNo" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="PDCClearanceFillDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherTypeName" Type="varchar(max)" Mode="In" />
           <Parameter Name="MasterId" Type="decimal" Mode="In" />
@@ -6490,7 +6500,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <EntitySet Name="SalaryVoucherMaster" EntityType="Self.SalaryVoucherMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SaleOrder" EntityType="Self.SaleOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SaleOrderDetail" EntityType="Self.SaleOrderDetail" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SalesBillTax" EntityType="Self.SalesBillTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SalesDetails" EntityType="Self.SalesDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SalesMaster" EntityType="Self.SalesMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SalesReturnBillTax" EntityType="Self.SalesReturnBillTax" Schema="dbo" store:Type="Tables" />
@@ -6516,6 +6525,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tax" EntityType="Self.Tax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaxDetail" EntityType="Self.TaxDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_SalesBillTax" EntityType="Self.tbl_SalesBillTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Town" EntityType="Self.Town" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Unit" EntityType="Self.Unit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UnitConvertion" EntityType="Self.UnitConvertion" Schema="dbo" store:Type="Tables" />
@@ -6524,25 +6534,25 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <EntitySet Name="VoucherTypeTax" EntityType="Self.VoucherTypeTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdditionalCost" EntityType="Self.AdditionalCost" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [AdditionalCost].[additionalCostId] AS [additionalCostId], 
-    [AdditionalCost].[voucherTypeId] AS [voucherTypeId], 
-    [AdditionalCost].[voucherNo] AS [voucherNo], 
-    [AdditionalCost].[ledgerId] AS [ledgerId], 
-    [AdditionalCost].[debit] AS [debit], 
+            <DefiningQuery>SELECT
+    [AdditionalCost].[additionalCostId] AS [additionalCostId],
+    [AdditionalCost].[voucherTypeId] AS [voucherTypeId],
+    [AdditionalCost].[voucherNo] AS [voucherNo],
+    [AdditionalCost].[ledgerId] AS [ledgerId],
+    [AdditionalCost].[debit] AS [debit],
     [AdditionalCost].[credit] AS [credit]
     FROM [dbo].[AdditionalCost] AS [AdditionalCost]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="SalaryVoucherDetail" EntityType="Self.SalaryVoucherDetail" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId], 
-    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId], 
-    [SalaryVoucherDetail].[employeeId] AS [employeeId], 
-    [SalaryVoucherDetail].[bonus] AS [bonus], 
-    [SalaryVoucherDetail].[deduction] AS [deduction], 
-    [SalaryVoucherDetail].[advance] AS [advance], 
-    [SalaryVoucherDetail].[lop] AS [lop], 
-    [SalaryVoucherDetail].[salary] AS [salary], 
+            <DefiningQuery>SELECT
+    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId],
+    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId],
+    [SalaryVoucherDetail].[employeeId] AS [employeeId],
+    [SalaryVoucherDetail].[bonus] AS [bonus],
+    [SalaryVoucherDetail].[deduction] AS [deduction],
+    [SalaryVoucherDetail].[advance] AS [advance],
+    [SalaryVoucherDetail].[lop] AS [lop],
+    [SalaryVoucherDetail].[salary] AS [salary],
     [SalaryVoucherDetail].[status] AS [status]
     FROM [dbo].[SalaryVoucherDetail] AS [SalaryVoucherDetail]</DefiningQuery>
           </EntitySet>
@@ -7554,7 +7564,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="SalesReturnMaster" EntitySet="SalesReturnMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__Stock__currencyI__2156DE01" Association="Self.FK__Stock__currencyI__2156DE01">
+          <AssociationSet Name="FK__Stock__currencyI__2AE0483B" Association="Self.FK__Stock__currencyI__2AE0483B">
             <End Role="Currency" EntitySet="Currency" />
             <End Role="Stock" EntitySet="Stock" />
           </AssociationSet>
@@ -7696,7 +7706,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           </AssociationSet>
           <AssociationSet Name="FK__tbl_Sales__sales__5AF96FB1" Association="Self.FK__tbl_Sales__sales__5AF96FB1">
             <End Role="SalesMaster" EntitySet="SalesMaster" />
-            <End Role="SalesBillTax" EntitySet="SalesBillTax" />
+            <End Role="tbl_SalesBillTax" EntitySet="tbl_SalesBillTax" />
           </AssociationSet>
           <AssociationSet Name="FK__Town__CityID__2EFAF1E2" Association="Self.FK__Town__CityID__2EFAF1E2">
             <End Role="City" EntitySet="City" />
@@ -8027,7 +8037,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="subunitName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Companies" Relationship="Self.FK__Company__currenc__0371755F" FromRole="Currency" ToRole="Company" />
           <NavigationProperty Name="Managements" Relationship="Self.FK__Managemen__Defau__253C7D7E" FromRole="Currency" ToRole="Management" />
-          <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__currencyI__2156DE01" FromRole="Currency" ToRole="Stock" />
+          <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__currencyI__2AE0483B" FromRole="Currency" ToRole="Stock" />
           <NavigationProperty Name="ExchangeRates" Relationship="Self.FK__tbl_Excha__curre__52442E1F" FromRole="Currency" ToRole="ExchangeRate" />
         </EntityType>
         <EntityType Name="Customer">
@@ -9523,16 +9533,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <NavigationProperty Name="SaleOrder" Relationship="Self.FK__SaleOrder__SaleO__0B7CAB7B" FromRole="SaleOrderDetail" ToRole="SaleOrder" />
           <NavigationProperty Name="SalesReturnDetails" Relationship="Self.FK__SalesRetu__sales__54817C4C" FromRole="SaleOrderDetail" ToRole="SalesReturnDetails" />
         </EntityType>
-        <EntityType Name="SalesBillTax">
-          <Key>
-            <PropertyRef Name="salesBillTaxId" />
-          </Key>
-          <Property Name="salesBillTaxId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="salesMasterId" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="taxId" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="taxAmount" Type="Decimal" Precision="18" Scale="5" />
-          <NavigationProperty Name="SalesMaster" Relationship="Self.FK__tbl_Sales__sales__5AF96FB1" FromRole="SalesBillTax" ToRole="SalesMaster" />
-        </EntityType>
         <EntityType Name="SalesDetail">
           <Key>
             <PropertyRef Name="salesDetailsId" />
@@ -9604,12 +9604,12 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <NavigationProperty Name="LedgerPosting" Relationship="Self.FK__SalesMast__ledge__7211DF33" FromRole="SalesMaster" ToRole="LedgerPosting" />
           <NavigationProperty Name="PricingLevel" Relationship="Self.FK__SalesMast__prici__7306036C" FromRole="SalesMaster" ToRole="PricingLevel" />
           <NavigationProperty Name="Quotation" Relationship="Self.FK__SalesMast__quota__79B300FB" FromRole="SalesMaster" ToRole="Quotation" />
-          <NavigationProperty Name="SalesBillTaxes" Relationship="Self.FK__tbl_Sales__sales__5AF96FB1" FromRole="SalesMaster" ToRole="SalesBillTax" />
           <NavigationProperty Name="SalesDetails" Relationship="Self.FK__SalesDeta__sales__192BAC54" FromRole="SalesMaster" ToRole="SalesDetails" />
           <NavigationProperty Name="SuffixPrefix" Relationship="Self.FK__SalesMast__suffi__711DBAFA" FromRole="SalesMaster" ToRole="SuffixPrefix" />
           <NavigationProperty Name="VoucherType" Relationship="Self.FK__SalesMast__vouch__702996C1" FromRole="SalesMaster" ToRole="VoucherType" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__SalesMast__Worke__77CAB889" FromRole="SalesMaster" ToRole="Worker" />
           <NavigationProperty Name="SalesReturnMasters" Relationship="Self.FK__SalesRetu__sales__38A457AD" FromRole="SalesMaster" ToRole="SalesReturnMaster" />
+          <NavigationProperty Name="tbl_SalesBillTax" Relationship="Self.FK__tbl_Sales__sales__5AF96FB1" FromRole="SalesMaster" ToRole="tbl_SalesBillTax" />
         </EntityType>
         <EntityType Name="SalesReturnBillTax">
           <Key>
@@ -9736,7 +9736,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="ItemDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Rate" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="currencyID" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="Currency" Relationship="Self.FK__Stock__currencyI__2156DE01" FromRole="Stock" ToRole="Currency" />
+          <NavigationProperty Name="Currency" Relationship="Self.FK__Stock__currencyI__2AE0483B" FromRole="Stock" ToRole="Currency" />
           <NavigationProperty Name="VoucherType" Relationship="Self.FK__Stock__voucherTy__47E69B3D" FromRole="Stock" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="StockPosting">
@@ -10074,6 +10074,16 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="SelectedtaxID" Type="Int32" />
           <Property Name="taxDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Tax" Relationship="Self.FK__TaxDetail__taxID__72B0FDB1" FromRole="TaxDetail" ToRole="Tax" />
+        </EntityType>
+        <EntityType Name="tbl_SalesBillTax">
+          <Key>
+            <PropertyRef Name="salesBillTaxId" />
+          </Key>
+          <Property Name="salesBillTaxId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="salesMasterId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="taxId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="taxAmount" Type="Decimal" Precision="18" Scale="5" />
+          <NavigationProperty Name="SalesMaster" Relationship="Self.FK__tbl_Sales__sales__5AF96FB1" FromRole="tbl_SalesBillTax" ToRole="SalesMaster" />
         </EntityType>
         <EntityType Name="Town">
           <Key>
@@ -10896,7 +10906,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Stock__currencyI__2156DE01">
+        <Association Name="FK__Stock__currencyI__2AE0483B">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
           <ReferentialConstraint>
@@ -13284,18 +13294,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tbl_Sales__sales__5AF96FB1">
-          <End Role="SalesMaster" Type="Self.SalesMaster" Multiplicity="0..1" />
-          <End Role="SalesBillTax" Type="Self.SalesBillTax" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SalesMaster">
-              <PropertyRef Name="salesMasterId" />
-            </Principal>
-            <Dependent Role="SalesBillTax">
-              <PropertyRef Name="salesMasterId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__SalesDeta__sales__192BAC54">
           <End Role="SalesMaster" Type="Self.SalesMaster" Multiplicity="0..1" />
           <End Role="SalesDetails" Type="Self.SalesDetail" Multiplicity="*" />
@@ -13388,6 +13386,18 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               <PropertyRef Name="salesMasterId" />
             </Principal>
             <Dependent Role="SalesReturnMaster">
+              <PropertyRef Name="salesMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbl_Sales__sales__5AF96FB1">
+          <End Role="SalesMaster" Type="Self.SalesMaster" Multiplicity="0..1" />
+          <End Role="tbl_SalesBillTax" Type="Self.tbl_SalesBillTax" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalesMaster">
+              <PropertyRef Name="salesMasterId" />
+            </Principal>
+            <Dependent Role="tbl_SalesBillTax">
               <PropertyRef Name="salesMasterId" />
             </Dependent>
           </ReferentialConstraint>
@@ -13875,7 +13885,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <EntitySet Name="SalaryVoucherMasters" EntityType="Self.SalaryVoucherMaster" />
           <EntitySet Name="SaleOrders" EntityType="Self.SaleOrder" />
           <EntitySet Name="SaleOrderDetails" EntityType="Self.SaleOrderDetail" />
-          <EntitySet Name="SalesBillTaxes" EntityType="Self.SalesBillTax" />
           <EntitySet Name="SalesDetails" EntityType="Self.SalesDetail" />
           <EntitySet Name="SalesMasters" EntityType="Self.SalesMaster" />
           <EntitySet Name="SalesReturnBillTaxes" EntityType="Self.SalesReturnBillTax" />
@@ -13901,6 +13910,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Taxes" EntityType="Self.Tax" />
           <EntitySet Name="TaxDetails" EntityType="Self.TaxDetail" />
+          <EntitySet Name="tbl_SalesBillTax" EntityType="Self.tbl_SalesBillTax" />
           <EntitySet Name="Towns" EntityType="Self.Town" />
           <EntitySet Name="Units" EntityType="Self.Unit" />
           <EntitySet Name="UnitConvertions" EntityType="Self.UnitConvertion" />
@@ -14121,7 +14131,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Management" EntitySet="Managements" />
           </AssociationSet>
-          <AssociationSet Name="FK__Stock__currencyI__2156DE01" Association="Self.FK__Stock__currencyI__2156DE01">
+          <AssociationSet Name="FK__Stock__currencyI__2AE0483B" Association="Self.FK__Stock__currencyI__2AE0483B">
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Stock" EntitySet="Stocks" />
           </AssociationSet>
@@ -14917,10 +14927,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="SaleOrderDetail" EntitySet="SaleOrderDetails" />
             <End Role="SalesReturnDetails" EntitySet="SalesReturnDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__tbl_Sales__sales__5AF96FB1" Association="Self.FK__tbl_Sales__sales__5AF96FB1">
-            <End Role="SalesMaster" EntitySet="SalesMasters" />
-            <End Role="SalesBillTax" EntitySet="SalesBillTaxes" />
-          </AssociationSet>
           <AssociationSet Name="FK__SalesDeta__sales__192BAC54" Association="Self.FK__SalesDeta__sales__192BAC54">
             <End Role="SalesMaster" EntitySet="SalesMasters" />
             <End Role="SalesDetails" EntitySet="SalesDetails" />
@@ -14952,6 +14958,10 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <AssociationSet Name="FK__SalesRetu__sales__38A457AD" Association="Self.FK__SalesRetu__sales__38A457AD">
             <End Role="SalesMaster" EntitySet="SalesMasters" />
             <End Role="SalesReturnMaster" EntitySet="SalesReturnMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbl_Sales__sales__5AF96FB1" Association="Self.FK__tbl_Sales__sales__5AF96FB1">
+            <End Role="SalesMaster" EntitySet="SalesMasters" />
+            <End Role="tbl_SalesBillTax" EntitySet="tbl_SalesBillTax" />
           </AssociationSet>
           <AssociationSet Name="FK__SalesRetu__sales__46F27704" Association="Self.FK__SalesRetu__sales__46F27704">
             <End Role="SalesReturnMaster" EntitySet="SalesReturnMasters" />
@@ -15126,6 +15136,10 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImport Name="AdditionalCostViewAllByVoucherTypeIdAndVoucherNo" ReturnType="Collection(IMEModel.AdditionalCostViewAllByVoucherTypeIdAndVoucherNo_Result)">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherNo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AreaOnlyViewAll" ReturnType="Collection(IMEModel.AreaOnlyViewAll_Result)" />
+          <FunctionImport Name="AreaWithNarrationView" ReturnType="Collection(IMEModel.AreaWithNarrationView_Result)">
+            <Parameter Name="areaId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="ArticleSearch" ReturnType="Collection(IMEModel.ArticleSearch_Result)">
             <Parameter Name="articleNo" Mode="In" Type="String" />
@@ -15336,6 +15350,12 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="payHeadId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PayHeadGetAll" ReturnType="Collection(IMEModel.PayHeadGetAll_Result)" />
+          <FunctionImport Name="PaymentMasterSearch" ReturnType="Collection(IMEModel.PaymentMasterSearch_Result)">
+            <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ledgerId" Mode="In" Type="String" />
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="PDCClearanceFillDetails" ReturnType="Collection(IMEModel.PDCClearanceFillDetails_Result)">
             <Parameter Name="voucherTypeName" Mode="In" Type="String" />
             <Parameter Name="MasterId" Mode="In" Type="Decimal" />
@@ -15682,7 +15702,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="routeId" Mode="In" Type="Decimal" />
             <Parameter Name="productCode" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="SalesInvoiceSalesBillTaxViewAllBySalesMasterId" ReturnType="Collection(IMEModel.SalesInvoiceSalesBillTaxViewAllBySalesMasterId_Result)">
+          <FunctionImport Name="SalesInvoiceSalesBillTaxViewAllBySalesMasterId">
             <Parameter Name="SalesMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalesMasterAdd" ReturnType="Collection(Decimal)">
@@ -15819,11 +15839,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(IMEModel.sp_helpdiagramdefinition_Result)">
+          <FunctionImport Name="sp_helpdiagramdefinition">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(IMEModel.sp_helpdiagrams_Result)">
+          <FunctionImport Name="sp_helpdiagrams">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -16013,6 +16033,15 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="Decimal" Name="additionalCostId" Nullable="false" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="ledgerId" Nullable="true" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="amount" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="AreaOnlyViewAll_Result">
+          <Property Type="Decimal" Name="areaId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="areaName" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="AreaWithNarrationView_Result">
+          <Property Type="Decimal" Name="areaId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="areaName" Nullable="true" />
+          <Property Type="String" Name="narration" Nullable="true" />
         </ComplexType>
         <ComplexType Name="ArticleSearch_Result">
           <Property Type="String" Name="Article_No" Nullable="false" MaxLength="50" />
@@ -16242,6 +16271,16 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="payHeadName" Nullable="true" />
           <Property Type="String" Name="narration" Nullable="true" />
           <Property Type="String" Name="type" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PaymentMasterSearch_Result">
+          <Property Type="Decimal" Name="paymentMasterId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="invoiceNo" Nullable="true" />
+          <Property Type="String" Name="voucherTypeName" Nullable="true" />
+          <Property Type="String" Name="date" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="totalAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="ledgerName" Nullable="true" />
+          <Property Type="String" Name="narration" Nullable="true" />
+          <Property Type="Decimal" Name="voucherTypeId" Nullable="true" Precision="18" Scale="0" />
         </ComplexType>
         <ComplexType Name="PDCClearanceFillDetails_Result">
           <Property Type="String" Name="voucherTypeName" Nullable="true" />
@@ -16697,15 +16736,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="Decimal" Name="taxAmount" Nullable="true" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="Amount" Nullable="true" Precision="18" Scale="0" />
         </ComplexType>
-        <ComplexType Name="SalesInvoiceSalesBillTaxViewAllBySalesMasterId_Result">
-          <Property Type="Int32" Name="taxId" Nullable="false" />
-          <Property Type="Decimal" Name="ledgerId" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="String" Name="taxName" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="ApplicationOn" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="calculatingMode" Nullable="true" MaxLength="50" />
-          <Property Type="Decimal" Name="rate" Nullable="true" Precision="20" Scale="5" />
-          <Property Type="Decimal" Name="taxAmount" Nullable="true" Precision="18" Scale="2" />
-        </ComplexType>
         <ComplexType Name="SalesMasterView_Result">
           <Property Type="Decimal" Name="salesMasterId" Nullable="false" Precision="18" Scale="0" />
           <Property Type="String" Name="voucherNo" Nullable="true" />
@@ -16795,17 +16825,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="userName" Nullable="false" MaxLength="25" />
           <Property Type="String" Name="ledgerName" Nullable="true" />
           <Property Type="Decimal" Name="grandTotal" Nullable="true" Precision="18" Scale="2" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
         <ComplexType Name="TaxViewAllByVoucherTypeId_Result">
           <Property Type="Int32" Name="taxId" Nullable="false" />
@@ -18343,16 +18362,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SalesBillTaxes">
-            <EntityTypeMapping TypeName="IMEModel.SalesBillTax">
-              <MappingFragment StoreEntitySet="SalesBillTax">
-                <ScalarProperty Name="salesBillTaxId" ColumnName="salesBillTaxId" />
-                <ScalarProperty Name="salesMasterId" ColumnName="salesMasterId" />
-                <ScalarProperty Name="taxId" ColumnName="taxId" />
-                <ScalarProperty Name="taxAmount" ColumnName="taxAmount" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SalesDetails">
             <EntityTypeMapping TypeName="IMEModel.SalesDetail">
               <MappingFragment StoreEntitySet="SalesDetails">
@@ -18817,6 +18826,16 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SalesBillTax">
+            <EntityTypeMapping TypeName="IMEModel.tbl_SalesBillTax">
+              <MappingFragment StoreEntitySet="tbl_SalesBillTax">
+                <ScalarProperty Name="salesBillTaxId" ColumnName="salesBillTaxId" />
+                <ScalarProperty Name="salesMasterId" ColumnName="salesMasterId" />
+                <ScalarProperty Name="taxId" ColumnName="taxId" />
+                <ScalarProperty Name="taxAmount" ColumnName="taxAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Towns">
             <EntityTypeMapping TypeName="IMEModel.Town">
               <MappingFragment StoreEntitySet="Town">
@@ -19006,6 +19025,23 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="additionalCostId" ColumnName="additionalCostId" />
                 <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
                 <ScalarProperty Name="amount" ColumnName="amount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AreaOnlyViewAll" FunctionName="IMEModel.Store.AreaOnlyViewAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.AreaOnlyViewAll_Result">
+                <ScalarProperty Name="areaId" ColumnName="areaId" />
+                <ScalarProperty Name="areaName" ColumnName="areaName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AreaWithNarrationView" FunctionName="IMEModel.Store.AreaWithNarrationView">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.AreaWithNarrationView_Result">
+                <ScalarProperty Name="areaId" ColumnName="areaId" />
+                <ScalarProperty Name="areaName" ColumnName="areaName" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -19350,6 +19386,20 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="payHeadName" ColumnName="payHeadName" />
                 <ScalarProperty Name="narration" ColumnName="narration" />
                 <ScalarProperty Name="type" ColumnName="type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PaymentMasterSearch" FunctionName="IMEModel.Store.PaymentMasterSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.PaymentMasterSearch_Result">
+                <ScalarProperty Name="paymentMasterId" ColumnName="paymentMasterId" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="voucherTypeName" ColumnName="voucherTypeName" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -19975,19 +20025,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImportMapping FunctionImportName="SalesInvoiceReciptVoucherDetailsAgainstSI" FunctionName="IMEModel.Store.SalesInvoiceReciptVoucherDetailsAgainstSI" />
           <FunctionImportMapping FunctionImportName="SalesInvoiceReferenceCheckForEdit" FunctionName="IMEModel.Store.SalesInvoiceReferenceCheckForEdit" />
           <FunctionImportMapping FunctionImportName="SalesInvoiceReportFill" FunctionName="IMEModel.Store.SalesInvoiceReportFill" />
-          <FunctionImportMapping FunctionImportName="SalesInvoiceSalesBillTaxViewAllBySalesMasterId" FunctionName="IMEModel.Store.SalesInvoiceSalesBillTaxViewAllBySalesMasterId">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IMEModel.SalesInvoiceSalesBillTaxViewAllBySalesMasterId_Result">
-                <ScalarProperty Name="taxId" ColumnName="taxId" />
-                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
-                <ScalarProperty Name="taxName" ColumnName="taxName" />
-                <ScalarProperty Name="ApplicationOn" ColumnName="ApplicationOn" />
-                <ScalarProperty Name="calculatingMode" ColumnName="calculatingMode" />
-                <ScalarProperty Name="rate" ColumnName="rate" />
-                <ScalarProperty Name="taxAmount" ColumnName="taxAmount" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SalesInvoiceSalesBillTaxViewAllBySalesMasterId" FunctionName="IMEModel.Store.SalesInvoiceSalesBillTaxViewAllBySalesMasterId" />
           <FunctionImportMapping FunctionImportName="SalesMasterAdd" FunctionName="IMEModel.Store.SalesMasterAdd" />
           <FunctionImportMapping FunctionImportName="SalesMasterEdit" FunctionName="IMEModel.Store.SalesMasterEdit" />
           <FunctionImportMapping FunctionImportName="SalesMasterView" FunctionName="IMEModel.Store.SalesMasterView">
@@ -20105,25 +20143,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="IMEModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="IMEModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="IMEModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="IMEModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IMEModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="IMEModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IMEModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="IMEModel.Store.sp_helpdiagramdefinition" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="IMEModel.Store.sp_helpdiagrams" />
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="IMEModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="IMEModel.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="StockCheckForProductSale" FunctionName="IMEModel.Store.StockCheckForProductSale" />

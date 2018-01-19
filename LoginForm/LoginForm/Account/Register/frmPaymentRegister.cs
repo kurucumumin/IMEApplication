@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 using LoginForm.Services;
+using LoginForm.Account.Services;
+
 namespace LoginForm
 {
     public partial class frmPaymentRegister : Form
@@ -21,43 +23,55 @@ namespace LoginForm
         }
         public void LedgerComboFill()
         {
-                DataTable dtbl = new DataTable();
-            
-                DataRow dr = dtbl.NewRow();
-                dr[0] = "All";
-                dr[1] = "Cash";
-                dtbl.Rows.InsertAt(dr, 0);
-                cmbAccountLedger.DataSource = dtbl;
-            
+            DataTable dtbl = new DataTable();
+
+            dtbl.Columns.Add("All");
+            dtbl.Columns.Add("Cash");
+            DataRow dr = dtbl.NewRow();
+            dr[0] = "All";
+            dr[1] = "Cash";
+            dtbl.Rows.InsertAt(dr, 0);
+            cmbAccountLedger.DataSource = dtbl;
+
         }
 
         public void Clear()
         {
-            
-                dtpFromDate.Value = DateTime.Today;
-                dtpToDate.Value = DateTime.Today;
-                LedgerComboFill();
-                txtVoucherNo.Text = string.Empty;
-                gridfill();
-                txtFromDate.Focus();
-            
+
+            dtpFromDate.Value = DateTime.Today;
+            dtpToDate.Value = DateTime.Today;
+            LedgerComboFill();
+            txtVoucherNo.Text = string.Empty;
+            gridfill();
+            txtFromDate.Focus();
+
         }
         /// <summary>
         /// Function to fill Datagridview
         /// </summary>
         public void gridfill()
         {
+            try
+            {
+                PaymentMasterSP SpPaymentMaster = new PaymentMasterSP();
+                PaymentMaster infoPaymentMaster = new PaymentMaster();
                 DataTable dtbl = new DataTable();
                 if (cmbAccountLedger.Items.Count > 0)
                 {
-                    
+                    if (cmbAccountLedger.SelectedValue.ToString() != "System.Data.DataRowView")
+                    {
                         if (txtFromDate.Text.Trim() != string.Empty && txtToDate.Text.Trim() != string.Empty)
                         {
-                        dgvPaymentRegister.DataSource = IME.PaymentMasters.Where(a => a.date > Convert.ToDateTime(dtpFromDate.Value.ToString())).Where
-                            (b => b.date < Convert.ToDateTime(dtpToDate.Value.ToString())).Where(c => c.ledgerId == Convert.ToDecimal(cmbAccountLedger.SelectedValue))
-                            .Where(d => d.voucherTypeId == decimal.Parse(txtVoucherNo.Text)).ToList();
+                            dtbl = SpPaymentMaster.PaymentMasterSearch(Convert.ToDateTime(dtpFromDate.Value.ToString()), Convert.ToDateTime(dtpToDate.Value.ToString()), Convert.ToDecimal(cmbAccountLedger.SelectedValue), txtVoucherNo.Text);
+                            dgvPaymentRegister.DataSource = dtbl;
                         }
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PREG4:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         /// <summary>
         /// Function to call this form from PaymentVoucher when Updation is Completed
@@ -139,16 +153,16 @@ namespace LoginForm
         /// <param name="e"></param>
         private void txtToDate_Leave(object sender, EventArgs e)
         {
-            
-                
-                if (txtToDate.Text == string.Empty)
-                {
-                    txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
-                }
-                //---for change date in Date time picker----//
-                string strdate = txtToDate.Text;
-                dtpToDate.Value = Convert.ToDateTime(strdate.ToString());
-           
+
+
+            if (txtToDate.Text == string.Empty)
+            {
+                txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+            }
+            //---for change date in Date time picker----//
+            string strdate = txtToDate.Text;
+            dtpToDate.Value = Convert.ToDateTime(strdate.ToString());
+
         }
         /// <summary>
         /// Date validation
@@ -157,15 +171,15 @@ namespace LoginForm
         /// <param name="e"></param>
         private void txtFromDate_Leave(object sender, EventArgs e)
         {
-           
-                if (txtFromDate.Text == string.Empty)
-                {
-                    txtFromDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
-                }
-                //---for change date in Date time picker----//
-                string strdate = txtFromDate.Text;
-                dtpFromDate.Value = Convert.ToDateTime(strdate.ToString());
-            
+
+            if (txtFromDate.Text == string.Empty)
+            {
+                txtFromDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+            }
+            //---for change date in Date time picker----//
+            string strdate = txtFromDate.Text;
+            dtpFromDate.Value = Convert.ToDateTime(strdate.ToString());
+
         }
         /// <summary>
         /// Fills txtFromDate textbox on dtpFromDate datetimepicker ValueChanged
@@ -221,7 +235,7 @@ namespace LoginForm
         /// <param name="e"></param>
         private void btnReset_Click(object sender, EventArgs e)
         {
-                Clear();
+            Clear();
         }
         /// <summary>
         /// On 'Search' button click
@@ -293,7 +307,7 @@ namespace LoginForm
                 MessageBox.Show("PREG16:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        
+
         #endregion
         #region Navigation
         /// <summary>
@@ -396,14 +410,7 @@ namespace LoginForm
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void frmPaymentRegister_KeyDown(object sender, KeyEventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show("Sure", "Are you sure to close this page?", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                this.Close();
-            }
-        }
+        
         /// <summary>
         /// Enter key and Backspace navigation
         /// </summary>

@@ -480,228 +480,288 @@ namespace LoginForm.Account.Services
             return max;
         }
 
+        //public DataTable PDCClearanceRegisterSearch(DateTime dtFromdate, DateTime dtTodate, string strLedgerName, string voucherTypeName, string strchequeNo, decimal decBankId, string strstatus)
+        //{
+        //    IMEEntities db = new IMEEntities();
+
+        //    DataTable dtbl = new DataTable();
+        //    dtbl.Columns.Add("SlNo", typeof(decimal));
+        //    dtbl.Columns["SlNo"].AutoIncrement = true;
+        //    dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
+        //    dtbl.Columns["SlNo"].AutoIncrementStep = 1;
+
+        //    try
+        //    {
+        //        if (voucherTypeName == "All")
+        //        {
+        //            var adaptor = (from pdcm in db.PDCClearanceMasters
+        //                           from pdpm in db.PDCPayableMasters.Where(x => x.pdcPayableMasterId == pdcm.againstId).DefaultIfEmpty()
+        //                           from pdrm in db.PDCReceivableMasters.Where(x => x.pdcReceivableMasterId == pdcm.againstId).DefaultIfEmpty()
+        //                           from al in db.AccountLedgers.Where(x => x.ledgerId == pdcm.ledgerId)
+        //                           from vt in db.VoucherTypes.Where(x => x.voucherTypeName == pdcm.type)
+        //                           where
+        //                                 (pdcm.date > dtFromdate && pdcm.date < dtTodate) &&
+        //                                 (al.ledgerName == ((strLedgerName == "All") ? al.ledgerName : strLedgerName)) &&
+        //                                 (vt.voucherTypeName == ((voucherTypeName == "All") ? vt.voucherTypeName : voucherTypeName)) &&
+        //                                 ((strchequeNo == "") ? (pdpm.chequeNo == pdpm.chequeNo) : (pdpm.chequeNo.StartsWith(strchequeNo))) &&
+        //                                 (pdpm.bankId == ((decBankId == 0) ? pdpm.bankId : decBankId)) &&
+        //                                 (pdcm.status == ((strstatus == "All") ? pdcm.status : strstatus))
+        //                           select new
+        //                           {
+        //                               pdcm.PDCClearanceMasterId,
+        //                               voucherNo = pdcm.invoiceNo,
+        //                               vt.voucherTypeName,
+        //                               pdcm.suffixPrefixId,
+        //                               pdcm.againstId,
+        //                               date = pdcm.date.Value.ToShortDateString(),
+        //                               pdcm.narration,
+        //                               pdcm.userId,
+        //                               pdcm.voucherTypeId,
+        //                               pdcm.financialYearId,
+        //                               pdcm.status,
+        //                               al.ledgerName,
+        //                               pdcm.type,
+        //                               amount = (vt.typeOfVoucher == "PDC Payable") ? pdpm.amount : pdrm.amount
+        //                           }).ToList();
+
+        //            dtbl.Columns.Add("PDCClearanceMasterId");
+        //            dtbl.Columns.Add("voucherNo");
+        //            dtbl.Columns.Add("voucherTypeName");
+        //            dtbl.Columns.Add("suffixPrefixId");
+        //            dtbl.Columns.Add("againstId");
+        //            dtbl.Columns.Add("date");
+        //            dtbl.Columns.Add("narration");
+        //            dtbl.Columns.Add("userId");
+        //            dtbl.Columns.Add("voucherTypeId");
+        //            dtbl.Columns.Add("financialYearId");
+        //            dtbl.Columns.Add("status");
+        //            dtbl.Columns.Add("ledgerName");
+        //            dtbl.Columns.Add("type");
+        //            dtbl.Columns.Add("amount");
+
+
+        //            foreach (var item in adaptor)
+        //            {
+        //                var row = dtbl.NewRow();
+
+        //                row["PDCClearanceMasterId"] = item.PDCClearanceMasterId;
+        //                row["voucherNo"] = item.voucherNo;
+        //                row["voucherTypeName"] = item.voucherTypeName;
+        //                row["suffixPrefixId"] = item.suffixPrefixId;
+        //                row["againstId"] = item.againstId;
+        //                row["date"] = item.date;
+        //                row["narration"] = item.narration;
+        //                row["userId"] = item.userId;
+        //                row["voucherTypeId"] = item.voucherTypeId;
+        //                row["financialYearId"] = item.financialYearId;
+        //                row["status"] = item.status;
+        //                row["ledgerName"] = item.ledgerName;
+        //                row["type"] = item.type;
+        //                row["amount"] = item.amount;
+
+        //                dtbl.Rows.Add(row);
+        //            }
+
+        //        } else if (db.VoucherTypes.Where(x => x.typeOfVoucher == "PDC Payable" && x.voucherTypeName == voucherTypeName).Select(x=>x.voucherTypeName).FirstOrDefault() != null)
+        //        {
+        //            var adaptor = (from pdc in db.PDCPayableMasters
+        //                           from pdcl in db.PDCClearanceMasters.Where(x => x.againstId == pdc.pdcPayableMasterId)
+        //                           from al in db.AccountLedgers.Where(x => x.ledgerId == pdc.ledgerId)
+        //                           from vt in db.VoucherTypes.Where(x => x.voucherTypeName == pdcl.type)
+
+        //                           where (pdcl.date > dtFromdate && pdcl.date < dtTodate) &&
+        //                                 (al.ledgerName == ((strLedgerName == "All") ? al.ledgerName : strLedgerName)) &&
+        //                                 (vt.voucherTypeName == ((voucherTypeName == "All") ? vt.voucherTypeName : voucherTypeName)) &&
+        //                                 ((strchequeNo == "") ? (pdc.chequeNo == pdc.chequeNo) : (pdc.chequeNo.StartsWith(strchequeNo))) &&
+        //                                 (pdc.bankId == ((decBankId == 0) ? pdc.bankId : decBankId)) &&
+        //                                 (pdcl.status == ((strstatus == "All") ? pdcl.status : strstatus))
+        //                           select new
+        //                           {
+        //                               pdc.pdcPayableMasterId,
+        //                               pdc.amount,
+        //                               pdcl.PDCClearanceMasterId,
+        //                               voucherNo = pdcl.invoiceNo,
+        //                               pdcl.againstId,
+        //                               pdcl.suffixPrefixId,
+        //                               date = pdcl.date.ToString(),
+        //                               pdcl.narration,
+        //                               pdcl.userId,
+        //                               pdcl.voucherTypeId,
+        //                               pdcl.financialYearId,
+        //                               pdcl.status,
+        //                               al.ledgerName,
+        //                               pdcl.type
+        //                           }).ToList();
+
+        //            dtbl.Columns.Add("pdcPayableMasterId");
+        //            dtbl.Columns.Add("amount");
+        //            dtbl.Columns.Add("PDCClearanceMasterId");
+        //            dtbl.Columns.Add("voucherNo");
+        //            dtbl.Columns.Add("againstId");
+        //            dtbl.Columns.Add("suffixPrefixId");
+        //            dtbl.Columns.Add("date");
+        //            dtbl.Columns.Add("narration");
+        //            dtbl.Columns.Add("userId");
+        //            dtbl.Columns.Add("voucherTypeId");
+        //            dtbl.Columns.Add("financialYearId");
+        //            dtbl.Columns.Add("status");
+        //            dtbl.Columns.Add("ledgerName");
+        //            dtbl.Columns.Add("type");
+
+
+        //            foreach (var item in adaptor)
+        //            {
+        //                var row = dtbl.NewRow();
+
+        //                row["pdcPayableMasterId"] = item.pdcPayableMasterId;
+        //                row["amount"] = item.amount;
+        //                row["PDCClearanceMasterId"] = item.PDCClearanceMasterId;
+        //                row["voucherNo"] = item.voucherNo;
+        //                row["againstId"] = item.againstId;
+        //                row["suffixPrefixId"] = item.suffixPrefixId;
+        //                row["date"] = item.date;
+        //                row["narration"] = item.narration;
+        //                row["userId"] = item.userId;
+        //                row["voucherTypeId"] = item.voucherTypeId;
+        //                row["financialYearId"] = item.financialYearId;
+        //                row["status"] = item.status;
+        //                row["ledgerName"] = item.ledgerName;
+        //                row["type"] = item.type;
+
+        //                dtbl.Rows.Add(row);
+        //            }
+
+
+        //        } else if (db.VoucherTypes.Where(x=>x.typeOfVoucher== "PDC Receivable" && x.voucherTypeName == voucherTypeName).Select(x=>x.voucherTypeName).FirstOrDefault() != null)
+        //        {
+        //            var adaptor = (from pdcr in db.PDCReceivableMasters
+        //                           from pdcl in db.PDCClearanceMasters.Where(x => x.againstId == pdcr.pdcReceivableMasterId)
+        //                           from al in db.AccountLedgers.Where(x => x.ledgerId == pdcr.pdcReceivableMasterId)
+        //                           from vt in db.VoucherTypes.Where(x => x.voucherTypeName == pdcl.type)
+
+        //                           where (pdcl.date > dtFromdate && pdcl.date < dtTodate) &&
+        //                                 (al.ledgerName == ((strLedgerName == "All ") ? al.ledgerName : strLedgerName)) &&
+        //                                 (vt.voucherTypeName == ((voucherTypeName == "All") ? vt.voucherTypeName : voucherTypeName)) &&
+        //                                 ((strchequeNo == "") ? (pdcr.chequeNo == pdcr.chequeNo) : (pdcr.chequeNo.StartsWith(strchequeNo))) &&
+        //                                 (pdcr.bankId == ((decBankId == 0) ? pdcr.bankId : decBankId)) &&
+        //                                 (pdcl.status == ((strstatus == "All") ? pdcl.status : strstatus))
+
+        //                           select new
+        //                           {
+        //                               pdcr.pdcReceivableMasterId,
+        //                               pdcr.amount,
+        //                               pdcl.PDCClearanceMasterId,
+        //                               pdcl.againstId,
+        //                               voucherNo = pdcl.invoiceNo,
+        //                               pdcl.suffixPrefixId,
+        //                               date = pdcl.date.ToString(),
+        //                               pdcl.narration,
+        //                               pdcl.userId,
+        //                               pdcl.voucherTypeId,
+        //                               pdcl.financialYearId,
+        //                               pdcl.status,
+        //                               al.ledgerName,
+        //                               pdcl.type
+        //                           }).ToList();
+
+        //            dtbl.Columns.Add("pdcReceivableMasterId");
+        //            dtbl.Columns.Add("amount");
+        //            dtbl.Columns.Add("PDCClearanceMasterId");
+        //            dtbl.Columns.Add("againstId");
+        //            dtbl.Columns.Add("voucherNo");
+        //            dtbl.Columns.Add("suffixPrefixId");
+        //            dtbl.Columns.Add("date");
+        //            dtbl.Columns.Add("narration");
+        //            dtbl.Columns.Add("userId");
+        //            dtbl.Columns.Add("voucherTypeId");
+        //            dtbl.Columns.Add("financialYearId");
+        //            dtbl.Columns.Add("status");
+        //            dtbl.Columns.Add("ledgerName");
+        //            dtbl.Columns.Add("type");
+
+
+        //            foreach (var item in adaptor)
+        //            {
+        //                var row = dtbl.NewRow();
+
+        //                row["pdcReceivableMasterId"] = item.pdcReceivableMasterId;
+        //                row["amount"] = item.amount;
+        //                row["PDCClearanceMasterId"] = item.PDCClearanceMasterId;
+        //                row["againstId"] = item.againstId;
+        //                row["voucherNo"] = item.voucherNo;
+        //                row["suffixPrefixId"] = item.suffixPrefixId;
+        //                row["date"] = item.date;
+        //                row["narration"] = item.narration;
+        //                row["userId"] = item.userId;
+        //                row["voucherTypeId"] = item.voucherTypeId;
+        //                row["financialYearId"] = item.financialYearId;
+        //                row["status"] = item.status;
+        //                row["ledgerName"] = item.ledgerName;
+        //                row["type"] = item.type;
+
+        //                dtbl.Rows.Add(row);
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.ToString());
+        //    }
+        //    return dtbl;
+        //}
         public DataTable PDCClearanceRegisterSearch(DateTime dtFromdate, DateTime dtTodate, string strLedgerName, string voucherTypeName, string strchequeNo, decimal decBankId, string strstatus)
         {
-            IMEEntities db = new IMEEntities();
 
+            IMEEntities db = new IMEEntities();
             DataTable dtbl = new DataTable();
             dtbl.Columns.Add("SlNo", typeof(decimal));
             dtbl.Columns["SlNo"].AutoIncrement = true;
             dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
             dtbl.Columns["SlNo"].AutoIncrementStep = 1;
-            
+
             try
             {
-                if (voucherTypeName == "All")
+                var adaptor = db.PDCClearanceRegisterSearch(voucherTypeName,strLedgerName,dtTodate,dtFromdate,strchequeNo,decBankId,strstatus).ToList();
+
+
+                dtbl.Columns.Add("PDCClearanceMasterId");
+                dtbl.Columns.Add("voucherNo");
+                dtbl.Columns.Add("voucherTypeName");
+                dtbl.Columns.Add("suffixPrefixId");
+                dtbl.Columns.Add("againstId");
+                dtbl.Columns.Add("date");
+                dtbl.Columns.Add("narration");
+                dtbl.Columns.Add("userId");
+                dtbl.Columns.Add("voucherTypeId");
+                dtbl.Columns.Add("financialYearId");
+                dtbl.Columns.Add("status");
+                dtbl.Columns.Add("ledgerName");
+                dtbl.Columns.Add("type");
+                dtbl.Columns.Add("amount");
+
+
+                foreach (var item in adaptor)
                 {
-                    var adaptor = (from pdcm in db.PDCClearanceMasters
-                                   from pdpm in db.PDCPayableMasters.Where(x => x.pdcPayableMasterId == pdcm.againstId).DefaultIfEmpty()
-                                   from pdrm in db.PDCReceivableMasters.Where(x => x.pdcReceivableMasterId == pdcm.againstId).DefaultIfEmpty()
-                                   from al in db.AccountLedgers.Where(x => x.ledgerId == pdcm.ledgerId)
-                                   from vt in db.VoucherTypes.Where(x => x.voucherTypeName == pdcm.type)
-                                   where
-                                         (pdcm.date > dtFromdate && pdcm.date < dtTodate) &&
-                                         (al.ledgerName == ((strLedgerName == "All") ? al.ledgerName : strLedgerName)) &&
-                                         (vt.voucherTypeName == ((voucherTypeName == "All") ? vt.voucherTypeName : voucherTypeName)) &&
-                                         ((strchequeNo == "") ? (pdpm.chequeNo == pdpm.chequeNo) : (pdpm.chequeNo.StartsWith(strchequeNo))) &&
-                                         (pdpm.bankId == ((decBankId == 0) ? pdpm.bankId : decBankId)) &&
-                                         (pdcm.status == ((strstatus == "All") ? pdcm.status : strstatus))
-                                   select new
-                                   {
-                                       pdcm.PDCClearanceMasterId,
-                                       voucherNo = pdcm.invoiceNo,
-                                       vt.voucherTypeName,
-                                       pdcm.suffixPrefixId,
-                                       pdcm.againstId,
-                                       date = pdcm.date.Value.ToShortDateString(),
-                                       pdcm.narration,
-                                       pdcm.userId,
-                                       pdcm.voucherTypeId,
-                                       pdcm.financialYearId,
-                                       pdcm.status,
-                                       al.ledgerName,
-                                       pdcm.type,
-                                       amount = (vt.typeOfVoucher == "PDC Payable") ? pdpm.amount : pdrm.amount
-                                   }).ToList();
+                    var row = dtbl.NewRow();
 
-                    dtbl.Columns.Add("PDCClearanceMasterId");
-                    dtbl.Columns.Add("voucherNo");
-                    dtbl.Columns.Add("voucherTypeName");
-                    dtbl.Columns.Add("suffixPrefixId");
-                    dtbl.Columns.Add("againstId");
-                    dtbl.Columns.Add("date");
-                    dtbl.Columns.Add("narration");
-                    dtbl.Columns.Add("userId");
-                    dtbl.Columns.Add("voucherTypeId");
-                    dtbl.Columns.Add("financialYearId");
-                    dtbl.Columns.Add("status");
-                    dtbl.Columns.Add("ledgerName");
-                    dtbl.Columns.Add("type");
-                    dtbl.Columns.Add("amount");
+                    row["PDCClearanceMasterId"] = item.PDCClearanceMasterId;
+                    row["voucherNo"] = item.voucherNo;
+                    row["voucherTypeName"] = item.voucherTypeName;
+                    row["suffixPrefixId"] = item.suffixPrefixId;
+                    row["againstId"] = item.againstId;
+                    row["date"] = item.date;
+                    row["narration"] = item.narration;
+                    row["userId"] = item.userId;
+                    row["voucherTypeId"] = item.voucherTypeId;
+                    row["financialYearId"] = item.financialYearId;
+                    row["status"] = item.status;
+                    row["ledgerName"] = item.ledgerName;
+                    row["type"] = item.type;
+                    row["amount"] = item.amount;
 
-
-                    foreach (var item in adaptor)
-                    {
-                        var row = dtbl.NewRow();
-
-                        row["PDCClearanceMasterId"] = item.PDCClearanceMasterId;
-                        row["voucherNo"] = item.voucherNo;
-                        row["voucherTypeName"] = item.voucherTypeName;
-                        row["suffixPrefixId"] = item.suffixPrefixId;
-                        row["againstId"] = item.againstId;
-                        row["date"] = item.date;
-                        row["narration"] = item.narration;
-                        row["userId"] = item.userId;
-                        row["voucherTypeId"] = item.voucherTypeId;
-                        row["financialYearId"] = item.financialYearId;
-                        row["status"] = item.status;
-                        row["ledgerName"] = item.ledgerName;
-                        row["type"] = item.type;
-                        row["amount"] = item.amount;
-                        
-                        dtbl.Rows.Add(row);
-                    }
-                    
-                } else if (db.VoucherTypes.Where(x => x.typeOfVoucher == "PDC Payable" && x.voucherTypeName == voucherTypeName).Select(x=>x.voucherTypeName).FirstOrDefault() != null)
-                {
-                    var adaptor = (from pdc in db.PDCPayableMasters
-                                   from pdcl in db.PDCClearanceMasters.Where(x => x.againstId == pdc.pdcPayableMasterId)
-                                   from al in db.AccountLedgers.Where(x => x.ledgerId == pdc.ledgerId)
-                                   from vt in db.VoucherTypes.Where(x => x.voucherTypeName == pdcl.type)
-
-                                   where (pdcl.date > dtFromdate && pdcl.date < dtTodate) &&
-                                         (al.ledgerName == ((strLedgerName == "All") ? al.ledgerName : strLedgerName)) &&
-                                         (vt.voucherTypeName == ((voucherTypeName == "All") ? vt.voucherTypeName : voucherTypeName)) &&
-                                         ((strchequeNo == "") ? (pdc.chequeNo == pdc.chequeNo) : (pdc.chequeNo.StartsWith(strchequeNo))) &&
-                                         (pdc.bankId == ((decBankId == 0) ? pdc.bankId : decBankId)) &&
-                                         (pdcl.status == ((strstatus == "All") ? pdcl.status : strstatus))
-                                   select new
-                                   {
-                                       pdc.pdcPayableMasterId,
-                                       pdc.amount,
-                                       pdcl.PDCClearanceMasterId,
-                                       voucherNo = pdcl.invoiceNo,
-                                       pdcl.againstId,
-                                       pdcl.suffixPrefixId,
-                                       date = pdcl.date.ToString(),
-                                       pdcl.narration,
-                                       pdcl.userId,
-                                       pdcl.voucherTypeId,
-                                       pdcl.financialYearId,
-                                       pdcl.status,
-                                       al.ledgerName,
-                                       pdcl.type
-                                   }).ToList();
-
-                    dtbl.Columns.Add("pdcPayableMasterId");
-                    dtbl.Columns.Add("amount");
-                    dtbl.Columns.Add("PDCClearanceMasterId");
-                    dtbl.Columns.Add("voucherNo");
-                    dtbl.Columns.Add("againstId");
-                    dtbl.Columns.Add("suffixPrefixId");
-                    dtbl.Columns.Add("date");
-                    dtbl.Columns.Add("narration");
-                    dtbl.Columns.Add("userId");
-                    dtbl.Columns.Add("voucherTypeId");
-                    dtbl.Columns.Add("financialYearId");
-                    dtbl.Columns.Add("status");
-                    dtbl.Columns.Add("ledgerName");
-                    dtbl.Columns.Add("type");
-
-
-                    foreach (var item in adaptor)
-                    {
-                        var row = dtbl.NewRow();
-
-                        row["pdcPayableMasterId"] = item.pdcPayableMasterId;
-                        row["amount"] = item.amount;
-                        row["PDCClearanceMasterId"] = item.PDCClearanceMasterId;
-                        row["voucherNo"] = item.voucherNo;
-                        row["againstId"] = item.againstId;
-                        row["suffixPrefixId"] = item.suffixPrefixId;
-                        row["date"] = item.date;
-                        row["narration"] = item.narration;
-                        row["userId"] = item.userId;
-                        row["voucherTypeId"] = item.voucherTypeId;
-                        row["financialYearId"] = item.financialYearId;
-                        row["status"] = item.status;
-                        row["ledgerName"] = item.ledgerName;
-                        row["type"] = item.type;
-
-                        dtbl.Rows.Add(row);
-                    }
-
-
-                } else if (db.VoucherTypes.Where(x=>x.typeOfVoucher== "PDC Receivable" && x.voucherTypeName == voucherTypeName).Select(x=>x.voucherTypeName).FirstOrDefault() != null)
-                {
-                    var adaptor = (from pdcr in db.PDCReceivableMasters
-                                   from pdcl in db.PDCClearanceMasters.Where(x => x.againstId == pdcr.pdcReceivableMasterId)
-                                   from al in db.AccountLedgers.Where(x => x.ledgerId == pdcr.pdcReceivableMasterId)
-                                   from vt in db.VoucherTypes.Where(x => x.voucherTypeName == pdcl.type)
-
-                                   where (pdcl.date > dtFromdate && pdcl.date < dtTodate) &&
-                                         (al.ledgerName == ((strLedgerName == "All ") ? al.ledgerName : strLedgerName)) &&
-                                         (vt.voucherTypeName == ((voucherTypeName == "All") ? vt.voucherTypeName : voucherTypeName)) &&
-                                         ((strchequeNo == "") ? (pdcr.chequeNo == pdcr.chequeNo) : (pdcr.chequeNo.StartsWith(strchequeNo))) &&
-                                         (pdcr.bankId == ((decBankId == 0) ? pdcr.bankId : decBankId)) &&
-                                         (pdcl.status == ((strstatus == "All") ? pdcl.status : strstatus))
-
-                                   select new
-                                   {
-                                       pdcr.pdcReceivableMasterId,
-                                       pdcr.amount,
-                                       pdcl.PDCClearanceMasterId,
-                                       pdcl.againstId,
-                                       voucherNo = pdcl.invoiceNo,
-                                       pdcl.suffixPrefixId,
-                                       date = pdcl.date.ToString(),
-                                       pdcl.narration,
-                                       pdcl.userId,
-                                       pdcl.voucherTypeId,
-                                       pdcl.financialYearId,
-                                       pdcl.status,
-                                       al.ledgerName,
-                                       pdcl.type
-                                   }).ToList();
-
-                    dtbl.Columns.Add("pdcReceivableMasterId");
-                    dtbl.Columns.Add("amount");
-                    dtbl.Columns.Add("PDCClearanceMasterId");
-                    dtbl.Columns.Add("againstId");
-                    dtbl.Columns.Add("voucherNo");
-                    dtbl.Columns.Add("suffixPrefixId");
-                    dtbl.Columns.Add("date");
-                    dtbl.Columns.Add("narration");
-                    dtbl.Columns.Add("userId");
-                    dtbl.Columns.Add("voucherTypeId");
-                    dtbl.Columns.Add("financialYearId");
-                    dtbl.Columns.Add("status");
-                    dtbl.Columns.Add("ledgerName");
-                    dtbl.Columns.Add("type");
-
-
-                    foreach (var item in adaptor)
-                    {
-                        var row = dtbl.NewRow();
-
-                        row["pdcReceivableMasterId"] = item.pdcReceivableMasterId;
-                        row["amount"] = item.amount;
-                        row["PDCClearanceMasterId"] = item.PDCClearanceMasterId;
-                        row["againstId"] = item.againstId;
-                        row["voucherNo"] = item.voucherNo;
-                        row["suffixPrefixId"] = item.suffixPrefixId;
-                        row["date"] = item.date;
-                        row["narration"] = item.narration;
-                        row["userId"] = item.userId;
-                        row["voucherTypeId"] = item.voucherTypeId;
-                        row["financialYearId"] = item.financialYearId;
-                        row["status"] = item.status;
-                        row["ledgerName"] = item.ledgerName;
-                        row["type"] = item.type;
-
-                        dtbl.Rows.Add(row);
-                    }
+                    dtbl.Rows.Add(row);
                 }
+
             }
             catch (Exception ex)
             {

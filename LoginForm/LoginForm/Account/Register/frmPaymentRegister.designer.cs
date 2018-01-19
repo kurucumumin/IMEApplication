@@ -188,54 +188,58 @@
             // 
             // btnClose
             // 
+            this.btnClose.BackColor = System.Drawing.SystemColors.Control;
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.ForeColor = System.Drawing.Color.Black;
             this.btnClose.Location = new System.Drawing.Point(697, 560);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(85, 27);
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnviewDetails
             // 
+            this.btnviewDetails.BackColor = System.Drawing.SystemColors.Control;
             this.btnviewDetails.FlatAppearance.BorderSize = 0;
             this.btnviewDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnviewDetails.ForeColor = System.Drawing.Color.White;
+            this.btnviewDetails.ForeColor = System.Drawing.Color.Black;
             this.btnviewDetails.Location = new System.Drawing.Point(606, 560);
             this.btnviewDetails.Name = "btnviewDetails";
             this.btnviewDetails.Size = new System.Drawing.Size(85, 27);
             this.btnviewDetails.TabIndex = 6;
             this.btnviewDetails.Text = "View Details";
-            this.btnviewDetails.UseVisualStyleBackColor = true;
+            this.btnviewDetails.UseVisualStyleBackColor = false;
             this.btnviewDetails.Click += new System.EventHandler(this.btnviewDetails_Click);
             // 
             // btnRefresh
             // 
+            this.btnRefresh.BackColor = System.Drawing.SystemColors.Control;
             this.btnRefresh.FlatAppearance.BorderSize = 0;
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefresh.ForeColor = System.Drawing.Color.White;
+            this.btnRefresh.ForeColor = System.Drawing.Color.Black;
             this.btnRefresh.Location = new System.Drawing.Point(581, 65);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(85, 27);
             this.btnRefresh.TabIndex = 4;
             this.btnRefresh.Text = "Search";
-            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.UseVisualStyleBackColor = false;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnReset
             // 
+            this.btnReset.BackColor = System.Drawing.SystemColors.Control;
             this.btnReset.FlatAppearance.BorderSize = 0;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset.ForeColor = System.Drawing.Color.White;
+            this.btnReset.ForeColor = System.Drawing.Color.Black;
             this.btnReset.Location = new System.Drawing.Point(672, 65);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(85, 27);
             this.btnReset.TabIndex = 5;
             this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.UseVisualStyleBackColor = false;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // cmbAccountLedger
@@ -369,7 +373,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Payment Register";
             this.Load += new System.EventHandler(this.frmPaymentRegister_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmPaymentRegister_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPaymentRegister)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
