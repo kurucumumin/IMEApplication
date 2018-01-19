@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using LoginForm.DataSet;
+using LoginForm.Account.Services;
+
 namespace LoginForm
 {
     public partial class frmJournalRegister : Form
@@ -90,7 +92,9 @@ namespace LoginForm
                 {
                     strFromDate = txtFromDate.Text;
                 }
-                dgvJournalRegister.DataSource = IME.JournalMasters.Where(b => b.voucherNo.Contains(strVoucherNo)).Where(c => c.date > DateTime.Parse(strFromDate)).Where(d => d.date > DateTime.Parse(strToDate)).ToList().OrderByDescending(e => e.journalMasterId);
+
+            JournalMasterSP spjournalMasterSp = new JournalMasterSP();
+            dgvJournalRegister.DataSource = spjournalMasterSp.JournalRegisterSearch(strVoucherNo, strFromDate, strToDate);
         }
         /// <summary>
         /// Function to fill the Dates

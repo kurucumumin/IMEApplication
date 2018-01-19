@@ -14,8 +14,10 @@ namespace LoginForm.Account.Services
     {
         public BrandInfo BrandView(decimal brandId)
         {
+            IMEEntities IME = new IMEEntities();
             BrandInfo brandinfo = new BrandInfo();
-           //TODO useless brand function
+
+            //TO DO: Yapılacaklar !!!!!
 
             return brandinfo;
         }

@@ -102,6 +102,8 @@ namespace LoginForm.Account
                 cmbBank.DataSource = null;
                 DataTable dtblBank = sppdcpayble.BankAccountComboFill();
                 DataRow dr = dtblBank.NewRow();
+                dtblBank.Columns.Add("ledgerId");
+                dtblBank.Columns.Add("ledgerName");
                 dr["ledgerId"] = 0;
                 dr["ledgerName"] = "All";
                 dtblBank.Rows.InsertAt(dr, 0);
@@ -156,18 +158,21 @@ namespace LoginForm.Account
                 dtpFromDate.Value = dtFromDate;
                 txtFromDate.Text = dtFromDate.ToString("dd-MMM-yyyy");
                 dtpFromDate.Value = Convert.ToDateTime(txtFromDate.Text);
+
                 dtpTodate.MinDate = (DateTime)f.fromDate;
                 dtpTodate.MaxDate = (DateTime)f.toDate;
                 DateTime dtToDate = DateTime.Now;
                 dtpTodate.Value = dtToDate;
                 txtToDate.Text = dtToDate.ToString("dd-MMM-yyyy");
                 dtpTodate.Value = Convert.ToDateTime(txtToDate.Text);
+
                 dtpCheckdate.MinDate = (DateTime)f.fromDate;
-                dtpCheckdate.MaxDate = (DateTime)f.fromDate;
+                dtpCheckdate.MaxDate = (DateTime)f.toDate;
                 DateTime dtCheckDate = DateTime.Now;
                 dtpCheckdate.Value = dtCheckDate;
-                txtCheckDate.Text = dtToDate.ToString("dd-MMM-yyyy");
+                txtCheckDate.Text = dtCheckDate.ToString("dd-MMM-yyyy");
                 dtpCheckdate.Value = Convert.ToDateTime(txtCheckDate.Text);
+
             }
             catch (Exception ex)
             {
