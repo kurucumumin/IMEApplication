@@ -224,8 +224,7 @@ namespace LoginForm
         {
             try
             {
-                //        AccountLedgerInfo infoAccountLedger = new AccountLedgerInfo();
-                //        AccountLedgerSP spAccountLedger = new AccountLedgerSP();
+                //AccountLedgerSP spAccountLedger = new AccountLedgerSP();
                 AccountLedger infoAccountLedger = new AccountLedger();
                 infoAccountLedger.ledgerName = txtLedgerName.Text.Trim();
                 infoAccountLedger.accountGroupID = Convert.ToInt32(cmbGroup.SelectedValue.ToString());
@@ -341,7 +340,7 @@ namespace LoginForm
                     }
                     else
                     {
-                        //spAccountLedger.PartyBalanceDeleteByVoucherTypeVoucherNoAndReferenceType(decAccountLedgerId.ToString(), 1);
+                        spAccountLedger.PartyBalanceDeleteByVoucherTypeVoucherNoAndReferenceType(decAccountLedgerId.ToString(), 1);
                     }
                     Messages.UpdatedMessage();
                     Clear();
@@ -1746,7 +1745,7 @@ namespace LoginForm
                 //}
                 //else
                 //{
-                    Messages.NoPrivillageMessage();
+                    //Messages.NoPrivillageMessage();
                 //}
             }
             catch (Exception ex)

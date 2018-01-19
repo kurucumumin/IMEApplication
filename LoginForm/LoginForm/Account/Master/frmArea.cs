@@ -6,7 +6,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using LoginForm.Account.Services;
 using LoginForm.DataSet;
+using LoginForm.Services;
+
 namespace LoginForm
 {
     public partial class frmArea : Form
@@ -31,17 +34,27 @@ namespace LoginForm
 
         public void AreaGridfill()
         {
-                dgvArea.DataSource = IME.Areas.ToList();
+            try
+            {
+                DataTable dtbl = new DataTable();
+                AreaSP spArea = new AreaSP();
+                dtbl = spArea.AreaOnlyViewAll();
+                dgvArea.DataSource = dtbl;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AR1" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         public void RouteNACreateUnderTheArea()
         {
             Route r = new Route();
             r.routeName = "NA";
-            r.areaId= decAreaId;
+            r.areaId = decAreaId;
             r.narration = txtNarration.Text.Trim();
             IME.Routes.Add(r);
-            IME.SaveChanges();            
+            IME.SaveChanges();
         }
 
         public void SaveOrEdit()
@@ -67,6 +80,22 @@ namespace LoginForm
                             IME.Areas.Add(area);
                             IME.SaveChanges();
 
+                            AreaGridfill();
+                            Messages.SavedMessage();
+                            Clear();
+                            decIdForOtherForms = decAreaId;
+                            //if (frmRouteObj != null)
+                            //{
+                            //    this.Close();
+                            //}
+                            //if (frmCustomerobj != null)
+                            //{
+                            //    this.Close();
+                            //}
+                            //if (frmSupplierobj != null)
+                            //{
+                            //    this.Close();
+                            //}
                         }
                         else
                         {
@@ -82,17 +111,17 @@ namespace LoginForm
                         DialogResult dialogResult = MessageBox.Show("Sure", "Are you sure to update?", MessageBoxButtons.YesNo);
                         if (dialogResult == DialogResult.Yes)
                         {
-                        
-                        if (IME.Areas.Where(a => a.areaId == decAreaId).Where(b => b.areaName == txtAreaName.Text.Trim()).FirstOrDefault() == null)
+
+                            if (IME.Areas.Where(a => a.areaId == decAreaId).Where(b => b.areaName == txtAreaName.Text.Trim()).FirstOrDefault() == null)
                             {
                                 Area area = IME.Areas.Where(a => a.areaId == decAreaId).FirstOrDefault();
                                 area.areaName = txtAreaName.Text.Trim();
                                 area.narration = txtNarration.Text.Trim();
                                 area.areaId = decAreaId;
                                 IME.SaveChanges();
-                                    AreaGridfill();
+                                AreaGridfill();
                                 MessageBox.Show("Area updated successfully");
-                                    Clear();
+                                Clear();
                             }
                             else
                             {
@@ -116,31 +145,31 @@ namespace LoginForm
             {
                 this.Close();
 
-               
-                    try
-                    {
-                        IME.Areas.Remove(IME.Areas.Where(a => a.areaId == decAreaId).FirstOrDefault());
-                    }
-                    catch
-                    {
+
+                try
+                {
+                    IME.Areas.Remove(IME.Areas.Where(a => a.areaId == decAreaId).FirstOrDefault());
+                }
+                catch
+                {
                     MessageBox.Show("Area deleted successfully");
-                        Clear();
-                    }
-                
+                    Clear();
+                }
+
             }
-           
+
         }
 
 
         public void Clear()
         {
-                txtAreaName.Text = string.Empty;
-                txtNarration.Text = string.Empty;
-                txtAreaName.Focus();
-                btnSave.Text = "Save";
-                btnDelete.Enabled = false;
-                AreaGridfill();
-            
+            txtAreaName.Text = string.Empty;
+            txtNarration.Text = string.Empty;
+            txtAreaName.Focus();
+            btnSave.Text = "Save";
+            btnDelete.Enabled = false;
+            AreaGridfill();
+
         }
 
 
@@ -202,18 +231,18 @@ namespace LoginForm
 
         private void frmArea_Load(object sender, EventArgs e)
         {
-                Clear();
+            Clear();
         }
 
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-                    SaveOrEdit();
+            SaveOrEdit();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-                Clear();
+            Clear();
         }
 
 
@@ -229,52 +258,61 @@ namespace LoginForm
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-                    this.Close();
+            this.Close();
 
         }
 
 
         private void frmArea_FormClosing(object sender, FormClosingEventArgs e)
         {
-                //if (frmCustomerobj != null)
-                //{
-                //    frmCustomerobj.ReturnFromAreaForm(decIdForOtherForms);
-                //}
-                //if (frmRouteObj != null)
-                //{
-                //    frmRouteObj.ReturnFromAreaForm(decIdForOtherForms);
-                //    frmRouteObj.Enabled = true;
-                //}
-                //if (frmSupplierobj != null)
-                //{
-                //    frmSupplierobj.ReturnFromAreaForm(decIdForOtherForms);
-                //}
+            //if (frmCustomerobj != null)
+            //{
+            //    frmCustomerobj.ReturnFromAreaForm(decIdForOtherForms);
+            //}
+            //if (frmRouteObj != null)
+            //{
+            //    frmRouteObj.ReturnFromAreaForm(decIdForOtherForms);
+            //    frmRouteObj.Enabled = true;
+            //}
+            //if (frmSupplierobj != null)
+            //{
+            //    frmSupplierobj.ReturnFromAreaForm(decIdForOtherForms);
+            //}
 
         }
 
 
         private void dgvArea_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            try
+            {
                 if (e.RowIndex != -1)
                 {
+
                     string strArea = dgvArea.CurrentRow.Cells["dgvtxtarea"].Value.ToString();
                     if (strArea != "NA")
                     {
-                    decimal areaID = Convert.ToDecimal(dgvArea.CurrentRow.Cells["areaId"].Value.ToString());
-                    Area area = IME.Areas.Where(a => a.areaId == areaID).FirstOrDefault();
-                        txtAreaName.Text = area.areaName;
-                        txtNarration.Text = area.narration;
+                        Area infoArea = new Area();
+                        AreaSP spArea = new AreaSP();
+                        infoArea = spArea.AreaFill(Convert.ToDecimal(dgvArea.CurrentRow.Cells[1].Value.ToString()));
+                        txtAreaName.Text = infoArea.areaName;
+                        txtNarration.Text = infoArea.narration;
                         btnSave.Text = "Update";
                         btnDelete.Enabled = true;
                         txtAreaName.Focus();
-                        decAreaId = Convert.ToDecimal(dgvArea.CurrentRow.Cells["areaId"].Value.ToString());
+                        decAreaId = Convert.ToDecimal(dgvArea.CurrentRow.Cells[1].Value.ToString());
                     }
                     else
                     {
-                    MessageBox.Show("NA Area cannot update or delete");
+                        Messages.WarningMessage("NA Area cannot update or delete");
                         Clear();
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AR16" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
 
@@ -392,28 +430,28 @@ namespace LoginForm
 
         private void frmArea_KeyDown(object sender, KeyEventArgs e)
         {
-                //if (e.KeyCode == Keys.Escape)
-                //{
-                //    if (PublicVariables.isMessageClose)
-                //    {
-                //        Messages.CloseMessage(this);
-                //    }
-                //    else
-                //    {
-                //        this.Close();
-                //    }
-                //}
-                if (e.KeyCode == Keys.S && Control.ModifierKeys == Keys.Control)
+            //if (e.KeyCode == Keys.Escape)
+            //{
+            //    if (PublicVariables.isMessageClose)
+            //    {
+            //        Messages.CloseMessage(this);
+            //    }
+            //    else
+            //    {
+            //        this.Close();
+            //    }
+            //}
+            if (e.KeyCode == Keys.S && Control.ModifierKeys == Keys.Control)
+            {
+                btnSave_Click(sender, e);
+            }
+            if (e.KeyCode == Keys.D && Control.ModifierKeys == Keys.Control)
+            {
+                if (btnDelete.Enabled == true)
                 {
-                    btnSave_Click(sender, e);
+                    btnDelete_Click(sender, e);
                 }
-                if (e.KeyCode == Keys.D && Control.ModifierKeys == Keys.Control)
-                {
-                    if (btnDelete.Enabled == true)
-                    {
-                        btnDelete_Click(sender, e);
-                    }
-                }
+            }
         }
 
         private void dgvArea_KeyDown(object sender, KeyEventArgs e)

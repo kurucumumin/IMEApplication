@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using LoginForm.DataSet;
+using LoginForm.Services;
+
 namespace LoginForm
 {
     public partial class frmCurrency : Form
@@ -304,18 +306,18 @@ namespace LoginForm
             if (e.RowIndex != -1)
             {
                 decId = Convert.ToDecimal(dgvCurrency.Rows[e.RowIndex].Cells["CurrencyID"].Value.ToString());
-                //if (IME.Currencies.Where(a => a.currencyID == decId).FirstOrDefault().isDefault == false)
-                //{
-                //    FillControls();
-                //    btnDelete.Enabled = true;
-                //    btnSave.Text = "Update";
-                //    txtName.Focus();
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Default currency cannot update or delete");
-                //    Clear();
-                //}
+                if (IME.Currencies.Where(a => a.currencyID == decId).FirstOrDefault().currencyID != Utils.getManagement().DefaultCurrency)
+                {
+                    FillControls();
+                    btnDelete.Enabled = true;
+                    btnSave.Text = "Update";
+                    txtName.Focus();
+                }
+                else
+                {
+                    MessageBox.Show("Default currency cannot update or delete");
+                    Clear();
+                }
             }
         }
         /// <summary>

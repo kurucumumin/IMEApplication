@@ -49,5 +49,65 @@ namespace LoginForm.Account.Services
             }
             return dt;
         }
+
+        /// <summary>
+        /// Fuinction to get fill area
+        /// </summary>
+        /// <param name="decAreaId"></param>
+        /// <returns></returns>
+        public Area AreaFill(decimal decAreaId)
+        {
+            Area infoArea = new Area();
+            try
+            {
+                //var adaptor = new IMEEntities().AreaWithNarrationView(decAreaId).FirstOrDefault();
+
+                //infoArea.areaId = adaptor.areaId;
+                //infoArea.areaName = adaptor.areaName;
+                //infoArea.narration = adaptor.narration;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return infoArea;
+        }
+
+        /// <summary>
+        /// Function to get Area Only View All
+        /// </summary>
+        /// <returns></returns>
+        public DataTable AreaOnlyViewAll()
+        {
+            IMEEntities db = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("Sl.No", typeof(decimal));
+            dtbl.Columns["Sl.No"].AutoIncrement = true;
+            dtbl.Columns["Sl.No"].AutoIncrementSeed = 1;
+            dtbl.Columns["Sl.No"].AutoIncrementStep = 1;
+            try
+            {
+                var adaptor = db.AreaOnlyViewAll().ToList();
+
+                dtbl.Columns.Add("areaId");
+                dtbl.Columns.Add("areaName");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+
+                    row["areaId"] = item.areaId;
+                    row["areaName"] = item.areaName;
+
+                    dtbl.Rows.Add(row);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
     }
 }

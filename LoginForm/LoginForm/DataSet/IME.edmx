@@ -4979,7 +4979,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Stock__currencyI__2AE0483B">
+        <Association Name="FK__Stock__currencyI__29EC2402">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
           <ReferentialConstraint>
@@ -6534,25 +6534,25 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <EntitySet Name="VoucherTypeTax" EntityType="Self.VoucherTypeTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdditionalCost" EntityType="Self.AdditionalCost" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [AdditionalCost].[additionalCostId] AS [additionalCostId],
-    [AdditionalCost].[voucherTypeId] AS [voucherTypeId],
-    [AdditionalCost].[voucherNo] AS [voucherNo],
-    [AdditionalCost].[ledgerId] AS [ledgerId],
-    [AdditionalCost].[debit] AS [debit],
+            <DefiningQuery>SELECT 
+    [AdditionalCost].[additionalCostId] AS [additionalCostId], 
+    [AdditionalCost].[voucherTypeId] AS [voucherTypeId], 
+    [AdditionalCost].[voucherNo] AS [voucherNo], 
+    [AdditionalCost].[ledgerId] AS [ledgerId], 
+    [AdditionalCost].[debit] AS [debit], 
     [AdditionalCost].[credit] AS [credit]
     FROM [dbo].[AdditionalCost] AS [AdditionalCost]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="SalaryVoucherDetail" EntityType="Self.SalaryVoucherDetail" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId],
-    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId],
-    [SalaryVoucherDetail].[employeeId] AS [employeeId],
-    [SalaryVoucherDetail].[bonus] AS [bonus],
-    [SalaryVoucherDetail].[deduction] AS [deduction],
-    [SalaryVoucherDetail].[advance] AS [advance],
-    [SalaryVoucherDetail].[lop] AS [lop],
-    [SalaryVoucherDetail].[salary] AS [salary],
+            <DefiningQuery>SELECT 
+    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId], 
+    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId], 
+    [SalaryVoucherDetail].[employeeId] AS [employeeId], 
+    [SalaryVoucherDetail].[bonus] AS [bonus], 
+    [SalaryVoucherDetail].[deduction] AS [deduction], 
+    [SalaryVoucherDetail].[advance] AS [advance], 
+    [SalaryVoucherDetail].[lop] AS [lop], 
+    [SalaryVoucherDetail].[salary] AS [salary], 
     [SalaryVoucherDetail].[status] AS [status]
     FROM [dbo].[SalaryVoucherDetail] AS [SalaryVoucherDetail]</DefiningQuery>
           </EntitySet>
@@ -7564,7 +7564,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="SalesReturnMaster" EntitySet="SalesReturnMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__Stock__currencyI__2AE0483B" Association="Self.FK__Stock__currencyI__2AE0483B">
+          <AssociationSet Name="FK__Stock__currencyI__29EC2402" Association="Self.FK__Stock__currencyI__29EC2402">
             <End Role="Currency" EntitySet="Currency" />
             <End Role="Stock" EntitySet="Stock" />
           </AssociationSet>
@@ -8037,7 +8037,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="subunitName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Companies" Relationship="Self.FK__Company__currenc__0371755F" FromRole="Currency" ToRole="Company" />
           <NavigationProperty Name="Managements" Relationship="Self.FK__Managemen__Defau__253C7D7E" FromRole="Currency" ToRole="Management" />
-          <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__currencyI__2AE0483B" FromRole="Currency" ToRole="Stock" />
+          <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__currencyI__29EC2402" FromRole="Currency" ToRole="Stock" />
           <NavigationProperty Name="ExchangeRates" Relationship="Self.FK__tbl_Excha__curre__52442E1F" FromRole="Currency" ToRole="ExchangeRate" />
         </EntityType>
         <EntityType Name="Customer">
@@ -9736,7 +9736,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="ItemDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Rate" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="currencyID" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="Currency" Relationship="Self.FK__Stock__currencyI__2AE0483B" FromRole="Stock" ToRole="Currency" />
+          <NavigationProperty Name="Currency" Relationship="Self.FK__Stock__currencyI__29EC2402" FromRole="Stock" ToRole="Currency" />
           <NavigationProperty Name="VoucherType" Relationship="Self.FK__Stock__voucherTy__47E69B3D" FromRole="Stock" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="StockPosting">
@@ -10906,7 +10906,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Stock__currencyI__2AE0483B">
+        <Association Name="FK__Stock__currencyI__29EC2402">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
           <ReferentialConstraint>
@@ -14131,7 +14131,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Management" EntitySet="Managements" />
           </AssociationSet>
-          <AssociationSet Name="FK__Stock__currencyI__2AE0483B" Association="Self.FK__Stock__currencyI__2AE0483B">
+          <AssociationSet Name="FK__Stock__currencyI__29EC2402" Association="Self.FK__Stock__currencyI__29EC2402">
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Stock" EntitySet="Stocks" />
           </AssociationSet>
