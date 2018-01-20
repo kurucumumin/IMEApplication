@@ -280,5 +280,40 @@ namespace LoginForm.Account.Services
             }
             return vouchertypeinfo;
         }
+
+        public DataTable VoucherTypeSearch(string strVoucherName, string strTypeOfvoucher)
+        {
+            IMEEntities db = new IMEEntities();
+            DataTable dtblSearch = new DataTable();
+            try
+            {
+                dtblSearch.Columns.Add("SlNo", typeof(decimal));
+                dtblSearch.Columns["SlNo"].AutoIncrement = true;
+                dtblSearch.Columns["SlNo"].AutoIncrementSeed = 1;
+                dtblSearch.Columns["SlNo"].AutoIncrementStep = 1;
+
+                var adaptor = db.VoucherTypeSearch(strVoucherName,strTypeOfvoucher).ToList();
+
+                dtblSearch.Columns.Add("voucherTypeId");
+                dtblSearch.Columns.Add("voucherTypeName");
+                dtblSearch.Columns.Add("typeOfVoucher");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtblSearch.NewRow();
+
+                    row["voucherTypeId"] = item.voucherTypeId;
+                    row["voucherTypeName"] = item.voucherTypeName;
+                    row["typeOfVoucher"] = item.typeOfVoucher;
+
+                    dtblSearch.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtblSearch;
+        }
     }
 }

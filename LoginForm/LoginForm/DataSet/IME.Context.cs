@@ -289,6 +289,11 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AdditionalCostViewAllByVoucherTypeIdAndVoucherNo_Result>("AdditionalCostViewAllByVoucherTypeIdAndVoucherNo", voucherTypeIdParameter, voucherNoParameter);
         }
     
+        public virtual ObjectResult<AreaOnlyViewAll_Result> AreaOnlyViewAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AreaOnlyViewAll_Result>("AreaOnlyViewAll");
+        }
+    
         public virtual ObjectResult<ArticleSearch_Result> ArticleSearch(string articleNo)
         {
             var articleNoParameter = articleNo != null ?
@@ -2749,7 +2754,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        public virtual int sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
@@ -2759,10 +2764,10 @@ namespace LoginForm.DataSet
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        public virtual int sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
@@ -2772,7 +2777,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
         }
     
         public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
@@ -3244,6 +3249,11 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxViewAllForProduct_Result>("TaxViewAllForProduct");
         }
     
+        public virtual ObjectResult<TaxViewAllForVoucherType_Result> TaxViewAllForVoucherType()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxViewAllForVoucherType_Result>("TaxViewAllForVoucherType");
+        }
+    
         public virtual ObjectResult<UnitConversionIdAndConRateViewallByProductId_Result> UnitConversionIdAndConRateViewallByProductId(string productId)
         {
             var productIdParameter = productId != null ?
@@ -3272,6 +3282,19 @@ namespace LoginForm.DataSet
                 new ObjectParameter("txtBox", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("VoucherNumberAutomaicGeneration", voucherTypeIdParameter, dateParameter, tab_nameParameter, txtBoxParameter);
+        }
+    
+        public virtual ObjectResult<VoucherTypeSearch_Result> VoucherTypeSearch(string voucherTypeName, string typeOfVoucher)
+        {
+            var voucherTypeNameParameter = voucherTypeName != null ?
+                new ObjectParameter("voucherTypeName", voucherTypeName) :
+                new ObjectParameter("voucherTypeName", typeof(string));
+    
+            var typeOfVoucherParameter = typeOfVoucher != null ?
+                new ObjectParameter("typeOfVoucher", typeOfVoucher) :
+                new ObjectParameter("typeOfVoucher", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VoucherTypeSearch_Result>("VoucherTypeSearch", voucherTypeNameParameter, typeOfVoucherParameter);
         }
     
         public virtual ObjectResult<VoucherTypeView_Result> VoucherTypeView(Nullable<decimal> voucherTypeId)

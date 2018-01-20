@@ -57,8 +57,8 @@ namespace LoginForm.Account.Services
 
             var adaptor = (from TX in IME.Taxes
                            from VTX in IME.VoucherTypeTaxes
-                           where (TX.TaxID==VTX.taxId)&& (VTX.voucherTypeId == decVoucherTypeId) && (TX.ApplicationOn == "Product")
-                           && ( TX.isActive == true)
+                           where (TX.TaxID == VTX.taxId) && (VTX.voucherTypeId == decVoucherTypeId) && (TX.ApplicationOn == "Product")
+                           && (TX.isActive == true)
                            select new
                            {
                                TX.TaxID,
@@ -163,9 +163,9 @@ namespace LoginForm.Account.Services
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-              }
-          return dtbl;
-      }
+            }
+            return dtbl;
+        }
 
         public DataTable TaxViewAllForProduct()
         {
@@ -360,7 +360,7 @@ namespace LoginForm.Account.Services
             DataTable dtbl = new DataTable();
             try
             {
-                var adaptor = (IME.TaxDetails.Where(x=> x.taxID==decTaxId)).ToList();
+                var adaptor = (IME.TaxDetails.Where(x => x.taxID == decTaxId)).ToList();
 
 
                 dtbl.Columns.Add("taxDetailsID");
@@ -385,44 +385,78 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
             return dtbl;
-          }
+        }
 
+        public TaxInfo TaxViewByProductId(string strProductCode)
+        {
+            TaxInfo taxInfo = new TaxInfo();
+            //TODO Ürün bazında vergilendirme
+            //SqlDataReader sdrreader = null;
+            //try
+            //{
+            //    if (sqlcon.State == ConnectionState.Closed)
+            //    {
+            //        sqlcon.Open();
+            //    }
+            //    SqlCommand sccmd = new SqlCommand("TaxViewByProductId", sqlcon);
+            //    sccmd.CommandType = CommandType.StoredProcedure;
+            //    SqlParameter sprmparam = new SqlParameter();
+            //    sprmparam = sccmd.Parameters.Add("@productId", SqlDbType.VarChar);
+            //    sprmparam.Value = strProductCode;
+            //    sdrreader = sccmd.ExecuteReader();
+            //    while (sdrreader.Read())
+            //    {
+            //        taxInfo.TaxId = Convert.ToDecimal(sdrreader["taxId"].ToString());
+            //        taxInfo.TaxName = sdrreader["taxName"].ToString();
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.ToString());
+            //}
+            //finally
+            //{
+            //    sdrreader.Close();
+            //    sqlcon.Close();
+            //}
+            return taxInfo;
 
+        }
 
-          public TaxInfo TaxViewByProductId(string strProductCode)
-          {
-              TaxInfo taxInfo = new TaxInfo();
-              //TODO TaxViewByProductId
-              //SqlDataReader sdrreader = null;
-              //try
-              //{
-              //    if (sqlcon.State == ConnectionState.Closed)
-              //    {
-              //        sqlcon.Open();
-              //    }
-              //    SqlCommand sccmd = new SqlCommand("TaxViewByProductId", sqlcon);
-              //    sccmd.CommandType = CommandType.StoredProcedure;
-              //    SqlParameter sprmparam = new SqlParameter();
-              //    sprmparam = sccmd.Parameters.Add("@productId", SqlDbType.VarChar);
-              //    sprmparam.Value = strProductCode;
-              //    sdrreader = sccmd.ExecuteReader();
-              //    while (sdrreader.Read())
-              //    {
-              //        taxInfo.TaxId = Convert.ToDecimal(sdrreader["taxId"].ToString());
-              //        taxInfo.TaxName = sdrreader["taxName"].ToString();
-              //    }
-              //}
-              //catch (Exception ex)
-              //{
-              //    MessageBox.Show(ex.ToString());
-              //}
-              //finally
-              //{
-              //    sdrreader.Close();
-              //    sqlcon.Close();
-              //}
-              return taxInfo;
+        public DataTable TaxViewAllForVoucherType()
+        {
+            IMEEntities db = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                dtbl.Columns.Add("SlNo", typeof(decimal));
+                dtbl.Columns["SlNo"].AutoIncrement = true;
+                dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
+                dtbl.Columns["SlNo"].AutoIncrementStep = 1;
 
+                dtbl.Columns.Add("taxId");
+                dtbl.Columns.Add("taxName");
+                dtbl.Columns.Add("applicableOn");
+
+                var adaptor = db.TaxViewAllForVoucherType();
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+
+                    row["taxId"] = item.taxId;
+                    row["taxName"] = item.taxName;
+                    row["applicableOn"] = item.applicableOn;
+
+                    dtbl.Rows.Add(row);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
         }
 
         //public DataTable TaxViewAllByVoucherTypeIdApplicaleForProduct(decimal decVoucherTypeId)

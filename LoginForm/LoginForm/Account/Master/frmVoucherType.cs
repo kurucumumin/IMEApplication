@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using LoginForm.Account.Services;
 using LoginForm.DataSet;
 namespace LoginForm
 {
@@ -247,14 +248,24 @@ namespace LoginForm
             {
                 MessageBox.Show("Voucher name already exists");
             }
-
-
         }
 
         public void SearchGridFill()
         {
 
-                dgvVoucherType.DataSource = IME.VoucherTypes.Where(a => a.voucherTypeName == txtVoucherNameSearch.Text.Trim()).Where(b => b.typeOfVoucher == cmbTypeOfVoucherSearch.Text).ToList();
+            try
+            {
+                VoucherTypeSP spVoucherType = new VoucherTypeSP();
+                DataTable dtblSearch = new DataTable();
+                dtblSearch = spVoucherType.VoucherTypeSearch(txtVoucherNameSearch.Text.Trim(), cmbTypeOfVoucherSearch.Text);
+                dgvVoucherType.DataSource = dtblSearch;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("VT05:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            //dgvVoucherType.DataSource = IME.VoucherTypes.Where(a => a.voucherTypeName == txtVoucherNameSearch.Text.Trim()).Where(b => b.typeOfVoucher == cmbTypeOfVoucherSearch.Text).ToList();
 
         }
 
@@ -280,7 +291,17 @@ namespace LoginForm
 
         public void TaxGridFill()
         {
-            dgvApplicableTaxes.DataSource = IME.Taxes.ToList();
+            try
+            {
+                TaxSP spTax = new TaxSP();
+                DataTable dtblTax = new DataTable();
+                dtblTax = spTax.TaxViewAllForVoucherType();
+                dgvApplicableTaxes.DataSource = dtblTax;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("VT08:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         public void SearchClear()
