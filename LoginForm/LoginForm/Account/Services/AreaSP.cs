@@ -60,11 +60,11 @@ namespace LoginForm.Account.Services
             Area infoArea = new Area();
             try
             {
-                //var adaptor = new IMEEntities().AreaWithNarrationView(decAreaId).FirstOrDefault();
+                var adaptor = new IMEEntities().AreaWithNarrationView(decAreaId).FirstOrDefault();
 
-                //infoArea.areaId = adaptor.areaId;
-                //infoArea.areaName = adaptor.areaName;
-                //infoArea.narration = adaptor.narration;
+                infoArea.areaId = adaptor.areaId;
+                infoArea.areaName = adaptor.areaName;
+                infoArea.narration = adaptor.narration;
             }
             catch (Exception ex)
             {

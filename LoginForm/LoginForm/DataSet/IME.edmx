@@ -5558,6 +5558,9 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="AreaOnlyViewAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="AreaWithNarrationView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="areaId" Type="numeric" Mode="In" />
+        </Function>
         <Function Name="ArticleSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="articleNo" Type="nvarchar" Mode="In" />
         </Function>
@@ -5593,6 +5596,9 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
         </Function>
         <Function Name="BudgetVariance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="budgetMasterId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="CheckForDefaultVoucherType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
         </Function>
         <Function Name="CreditNoteRegisterSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
@@ -5674,6 +5680,9 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
         <Function Name="GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ledgerId" Type="varchar" Mode="In" />
           <Parameter Name="salesMasterId" Type="varchar" Mode="In" />
+          <Parameter Name="voucherTypeId" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="GetTaxIdForTaxSelection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherTypeId" Type="decimal" Mode="In" />
         </Function>
         <Function Name="GroupNameViewForComboFill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -15134,6 +15143,9 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="voucherNo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="AreaOnlyViewAll" ReturnType="Collection(IMEModel.AreaOnlyViewAll_Result)" />
+          <FunctionImport Name="AreaWithNarrationView" ReturnType="Collection(IMEModel.AreaWithNarrationView_Result)">
+            <Parameter Name="areaId" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="ArticleSearch" ReturnType="Collection(IMEModel.ArticleSearch_Result)">
             <Parameter Name="articleNo" Mode="In" Type="String" />
           </FunctionImport>
@@ -15169,6 +15181,9 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           </FunctionImport>
           <FunctionImport Name="BudgetVariance" ReturnType="Collection(IMEModel.BudgetVariance_Result)">
             <Parameter Name="budgetMasterId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="CheckForDefaultVoucherType" ReturnType="Collection(Int32)">
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="CreditNoteRegisterSearch" ReturnType="Collection(IMEModel.CreditNoteRegisterSearch_Result)">
             <Parameter Name="voucherNo" Mode="In" Type="String" />
@@ -15249,6 +15264,9 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImport Name="GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI" ReturnType="Collection(IMEModel.GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result)">
             <Parameter Name="ledgerId" Mode="In" Type="String" />
             <Parameter Name="salesMasterId" Mode="In" Type="String" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="GetTaxIdForTaxSelection" ReturnType="Collection(Int32)">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="GroupNameViewForComboFill" ReturnType="Collection(IMEModel.GroupNameViewForComboFill_Result)" />
@@ -16029,6 +16047,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
         <ComplexType Name="AreaOnlyViewAll_Result">
           <Property Type="Decimal" Name="areaId" Nullable="false" Precision="18" Scale="0" />
           <Property Type="String" Name="areaName" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="AreaWithNarrationView_Result">
+          <Property Type="Decimal" Name="areaId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="areaName" Nullable="true" />
+          <Property Type="String" Name="narration" Nullable="true" />
         </ComplexType>
         <ComplexType Name="ArticleSearch_Result">
           <Property Type="String" Name="Article_No" Nullable="false" MaxLength="50" />
@@ -19032,6 +19055,15 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AreaWithNarrationView" FunctionName="IMEModel.Store.AreaWithNarrationView">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.AreaWithNarrationView_Result">
+                <ScalarProperty Name="areaId" ColumnName="areaId" />
+                <ScalarProperty Name="areaName" ColumnName="areaName" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ArticleSearch" FunctionName="IMEModel.Store.ArticleSearch">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.ArticleSearch_Result">
@@ -19134,6 +19166,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CheckForDefaultVoucherType" FunctionName="IMEModel.Store.CheckForDefaultVoucherType" />
           <FunctionImportMapping FunctionImportName="CreditNoteRegisterSearch" FunctionName="IMEModel.Store.CreditNoteRegisterSearch">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.CreditNoteRegisterSearch_Result">
@@ -19229,6 +19262,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetTaxIdForTaxSelection" FunctionName="IMEModel.Store.GetTaxIdForTaxSelection" />
           <FunctionImportMapping FunctionImportName="GroupNameViewForComboFill" FunctionName="IMEModel.Store.GroupNameViewForComboFill">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.GroupNameViewForComboFill_Result">

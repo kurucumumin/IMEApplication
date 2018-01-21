@@ -315,5 +315,66 @@ namespace LoginForm.Account.Services
             }
             return dtblSearch;
         }
+        /// <summary>
+        /// Function to get tax id for tax selection based on parameter
+        /// </summary>
+        /// <param name="decVoucherTypeId"></param>
+        /// <returns></returns>
+        public DataTable GetTaxIdForTaxSelection(decimal decVoucherTypeId)
+        {
+            IMEEntities db = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = db.GetTaxIdForTaxSelection(decVoucherTypeId).ToList();
+
+                dtbl.Columns.Add("taxId");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+
+                    row["taxId"] = item.Value;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+        /// <summary>
+        /// Function to  Check For Default VoucherType based on parameter
+        /// </summary>
+        /// <param name="decVoucherTypeId"></param>
+        /// <returns></returns>
+        public bool CheckForDefaultVoucherType(decimal decVoucherTypeId)
+        {
+            IMEEntities db = new IMEEntities();
+            bool isDefault = true;
+            try
+            {
+                object obj = db.CheckForDefaultVoucherType(decVoucherTypeId);
+                if (obj != null)
+                {
+                    if (obj.ToString() == "1")
+                    {
+                        isDefault = true;
+                    }
+                    else
+                    {
+                        isDefault = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return isDefault;
+        }
     }
 }

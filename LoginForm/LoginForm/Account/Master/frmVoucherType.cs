@@ -477,19 +477,22 @@ namespace LoginForm
                     {
                         dgvApplicableTaxes.Rows[i].Cells["dgvcbxSelect"].Value = false;
                     }
+
+                    VoucherTypeSP spVoucherType = new VoucherTypeSP();
+                    VoucherType infoVoucherType = new VoucherType();
                     decVoucherTypeId = Convert.ToDecimal(dgvVoucherType.CurrentRow.Cells["dgvtxtvoucherTypeId"].Value.ToString());
-                    VoucherType vt = IME.VoucherTypes.Where(a => a.voucherTypeId == decVoucherTypeId).FirstOrDefault();
-                    txtVoucherName.Text = vt.voucherTypeName;
-                    cmbTypeOfVoucher.Text = vt.typeOfVoucher;
-                    cmbMethodOfvoucherNumbering.Text = vt.methodOfVoucherNumbering;
-                    txtNarration.Text = vt.narration;
-                    txtDeclaration.Text = vt.declaration;
-                    cmbDotMatrix.SelectedValue = vt.masterId;
-                    txtHeading1.Text = vt.heading1;
-                    txtHeading2.Text = vt.heading2;
-                    txtHeading3.Text = vt.heading3;
-                    txtHeading4.Text = vt.heading4;
-                    if (vt.isActive==true)
+                    infoVoucherType = spVoucherType.VoucherTypeView(decVoucherTypeId);
+                    txtVoucherName.Text = infoVoucherType.voucherTypeName;
+                    cmbTypeOfVoucher.Text = infoVoucherType.typeOfVoucher;
+                    cmbMethodOfvoucherNumbering.Text = infoVoucherType.methodOfVoucherNumbering;
+                    txtNarration.Text = infoVoucherType.narration;
+                    txtDeclaration.Text = infoVoucherType.declaration;
+                    cmbDotMatrix.SelectedValue = infoVoucherType.masterId;
+                    txtHeading1.Text = infoVoucherType.heading1;
+                    txtHeading2.Text = infoVoucherType.heading2;
+                    txtHeading3.Text = infoVoucherType.heading3;
+                    txtHeading4.Text = infoVoucherType.heading4;
+                    if ((bool)infoVoucherType.isActive)
                     {
                         cbxActive.Checked = true;
                     }
@@ -497,13 +500,11 @@ namespace LoginForm
                     {
                         cbxActive.Checked = false;
                     }
-                    //dgvApplicableTaxes.DataSource = IME.VoucherTypeTaxes.Where(a => a.voucherTypeId == decVoucherTypeId).ToList();
-
-                    var vtt = IME.VoucherTypeTaxes.Where(a => a.voucherTypeId == decVoucherTypeId).ToList();
-
-                    foreach (var dr in vtt)
+                    DataTable dtbl = new DataTable();
+                    dtbl = spVoucherType.GetTaxIdForTaxSelection(decVoucherTypeId);
+                    foreach (DataRow dr in dtbl.Rows)
                     {
-                        string strTaxId = dr.taxId.ToString();
+                        string strTaxId = dr["taxId"].ToString();
 
                         for (int i = 0; i < inRowCount; i++)
                         {
@@ -515,8 +516,7 @@ namespace LoginForm
 
 
                     }
-
-                    if (IME.VoucherTypes.Where(a => a.voucherTypeId == decVoucherTypeId).FirstOrDefault().isActive == false)
+                    if (spVoucherType.CheckForDefaultVoucherType(decVoucherTypeId) == false)
                     {
                         txtVoucherName.Enabled = true;
                         cmbTypeOfVoucher.Enabled = true;
