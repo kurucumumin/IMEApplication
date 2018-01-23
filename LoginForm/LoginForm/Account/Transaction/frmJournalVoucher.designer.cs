@@ -49,6 +49,7 @@
             this.dgvtxtSlNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvcmbAccountLedger = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.dgvcmbDrOrCr = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dgvtxtAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvbtnAgainst = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dgvcmbCurrency = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.chequeNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -263,6 +264,7 @@
             this.dgvtxtSlNo,
             this.dgvcmbAccountLedger,
             this.dgvcmbDrOrCr,
+            this.dgvtxtAmount,
             this.dgvbtnAgainst,
             this.dgvcmbCurrency,
             this.chequeNo,
@@ -289,6 +291,14 @@
             // 
             this.dgvcmbDrOrCr.HeaderText = "Dr/Cr";
             this.dgvcmbDrOrCr.Name = "dgvcmbDrOrCr";
+            // 
+            // dgvtxtAmount
+            // 
+            this.dgvtxtAmount.HeaderText = "Amount";
+            this.dgvtxtAmount.MaxInputLength = 8;
+            this.dgvtxtAmount.Name = "dgvtxtAmount";
+            this.dgvtxtAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtxtAmount.Width = 103;
             // 
             // dgvbtnAgainst
             // 
@@ -384,6 +394,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSlNo;
         private System.Windows.Forms.DataGridViewComboBoxColumn dgvcmbAccountLedger;
         private System.Windows.Forms.DataGridViewComboBoxColumn dgvcmbDrOrCr;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtAmount;
         private System.Windows.Forms.DataGridViewButtonColumn dgvbtnAgainst;
         private System.Windows.Forms.DataGridViewComboBoxColumn dgvcmbCurrency;
         private System.Windows.Forms.DataGridViewTextBoxColumn chequeNo;

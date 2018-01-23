@@ -32,7 +32,7 @@ namespace LoginForm
         decimal decLedgerId = 0;
         decimal decEmployeeId = 0;
         decimal decVoucherTypeId = 0;
-       // int inCurrenRowIndex = 0;
+        int inCurrenRowIndex = 0;
         VoucherTypeSP spVoucherType = new VoucherTypeSP();
         #endregion
         #region Functions
@@ -1095,10 +1095,11 @@ namespace LoginForm
             {
 
                 txtFromDate.Focus();
-                dtpFromDate.Value = DateTime.Now;
-                dtpFromDate.MinDate = (DateTime)Utils.getManagement().FinancialYear.fromDate;
-                dtpFromDate.MaxDate = (DateTime)Utils.getManagement().FinancialYear.fromDate;
-                dtpToDate.Value = DateTime.Now;
+                dtpFromDate.Value = Convert.ToDateTime(Utils.getManagement().FinancialYear.fromDate.Value.ToString("dd-MMM-yyyy"));
+                dtpFromDate.MinDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.fromDate);
+                dtpFromDate.MaxDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.toDate);
+                txtFromDate.Text = Utils.getManagement().FinancialYear.fromDate.Value.ToString("dd-MMM-yyyy");
+                dtpToDate.Value = Convert.ToDateTime(DateTime.Now.ToString("dd-MMM-yyyy"));
                 dtpToDate.MinDate = (DateTime)Utils.getManagement().FinancialYear.fromDate;
                 dtpToDate.MaxDate = (DateTime)Utils.getManagement().FinancialYear.fromDate;
                 txtVoucherNo.Text = string.Empty;
@@ -1161,17 +1162,20 @@ namespace LoginForm
         {
             try
             {
-                DateValidation objVal = new DateValidation();
-                bool isInvalid = objVal.DateValidationFunction(txtFromDate);
-                if (!isInvalid)
+                DateValidation obj = new DateValidation();
+                obj.DateValidationFunction(txtFromDate);
+                if (txtFromDate.Text == string.Empty)
                 {
-                    txtFromDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtFromDate.Text = Utils.getManagement().FinancialYear.fromDate.Value.ToString("dd-MMM-yyyy");
                 }
-                dtpFromDate.Value = Convert.ToDateTime(txtFromDate.Text);
+                //---for change date in Date time picker----//
+                string strdate = txtFromDate.Text;
+                dtpFromDate.Value = Convert.ToDateTime(strdate.ToString());
+                //------------------//
             }
             catch (Exception ex)
             {
-                MessageBox.Show("VS44:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("BU50:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         /// <summary>
@@ -1271,23 +1275,23 @@ namespace LoginForm
         /// <param name="e"></param>
         private void txtToDate_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                if (txtToDate.Text == string.Empty && !txtToDate.Focused)
-                {
-                    DateValidation objVal = new DateValidation();
-                    bool isInvalid = objVal.DateValidationFunction(txtToDate);
-                    if (!isInvalid)
-                    {
-                        txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
-                    }
-                    dtpToDate.Value = Convert.ToDateTime(txtToDate.Text);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("VS50:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //try
+            //{
+            //    if (txtToDate.Text == string.Empty && !txtToDate.Focused)
+            //    {
+            //        DateValidation objVal = new DateValidation();
+            //        bool isInvalid = objVal.DateValidationFunction(txtToDate);
+            //        if (!isInvalid)
+            //        {
+            //            txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+            //        }
+            //        dtpToDate.Value = Convert.ToDateTime(txtToDate.Text);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("VS50:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
         /// <summary>
         /// Search button click, call the gridfill function
@@ -1332,111 +1336,111 @@ namespace LoginForm
         private void btnViewDetails_Click(object sender, EventArgs e)
         {
             //TODO @@Fonksiyonu aç ViewDetail
-            //try
-            //{
-            //    if (dgvVoucherSearch.Rows.Count > 0)
-            //    {
-            //        if (dgvVoucherSearch.CurrentRow.Cells["Id"].Value.ToString() != null && dgvVoucherSearch.CurrentRow.Cells["Id"].Value.ToString() != string.Empty)
-            //        {
-            //            if (dgvVoucherSearch.CurrentRow != null)
-            //            {
-            //                inCurrenRowIndex = dgvVoucherSearch.CurrentRow.Index;
-            //                bool isNotDo = false;
-            //                string strTypeofVoucher = spVoucherType.TypeOfVoucherView(dgvVoucherSearch.CurrentRow.Cells["VoucherType"].Value.ToString());
-            //                switch (strTypeofVoucher)
-            //                {
-            //                    case "Physical Stock":
-            //                        GotoPhysicalStock();
-            //                        break;
-            //                    case "Credit Note":
-            //                        GotoCrditNote();
-            //                        break;
-            //                    case "Debit Note":
-            //                        GotoDebitNote();
-            //                        break;
-            //                    case "Advance Payment":
-            //                        GotoAdvancePayment();
-            //                        break;
-            //                    case "Daily Salary Voucher":
-            //                        GotoDailySalaryVoucher();
-            //                        break;
-            //                    case "Monthly Salary Voucher":
-            //                        GotoMonthlySalaryVoucher();
-            //                        break;
-            //                    case "Stock Journal":
-            //                        GotoStockJournal();
-            //                        break;
-            //                    case "Contra Voucher":
-            //                        GotoContraVoucher();
-            //                        break;
-            //                    case "Payment Voucher":
-            //                        GotoPaymentVoucher();
-            //                        break;
-            //                    case "Receipt Voucher":
-            //                        GotoReceiptVoucher();
-            //                        break;
-            //                    case "Journal Voucher":
-            //                        GotoJournalVoucher();
-            //                        break;
-            //                    case "PDC Payable":
-            //                        GotoPDCPayable();
-            //                        break;
-            //                    case "PDC Receivable":
-            //                        GotoPDCReceivable();
-            //                        break;
-            //                    case "PDC Clearance":
-            //                        GotoPDCClearance();
-            //                        break;
-            //                    case "Purchase Order":
-            //                        GotoPurchaseOrder();
-            //                        break;
-            //                    case "Material Receipt":
-            //                        GotoMaterialReceipt();
-            //                        break;
-            //                    case "Rejection Out":
-            //                        GotoRejectionOut();
-            //                        break;
-            //                    case "Purchase Return":
-            //                        GotoPurchaseReturn();
-            //                        break;
-            //                    case "Sales Quotation":
-            //                        GotoSalesQuotation();
-            //                        break;
-            //                    case "Sales Order":
-            //                        GotoSalesOrder();
-            //                        break;
-            //                    case "Delivery Note":
-            //                        GotoDeliveryNote();
-            //                        break;
-            //                    case "Rejection In":
-            //                        GotoRejectionIn();
-            //                        break;
-            //                    case "Sales Return":
-            //                        GotoSalesReturn();
-            //                        break;
-            //                    case "Purchase Invoice":
-            //                        GotoPurchaseInvoice();
-            //                        break;
-            //                    case "Sales Invoice":
-            //                        GotoSalesInvoice();
-            //                        break;
-            //                    case "Service Voucher":
-            //                        GotoServiceVoucher();
-            //                        break;
-            //                    default:
-            //                        isNotDo = true;
-            //                        break;
-            //                }
-            //                if (!isNotDo)
-            //                    this.Enabled = false;
-            //            }
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("VS53:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+            try
+            {
+                if (dgvVoucherSearch.Rows.Count > 0)
+                {
+                    if (dgvVoucherSearch.CurrentRow.Cells["Id"].Value.ToString() != null && dgvVoucherSearch.CurrentRow.Cells["Id"].Value.ToString() != string.Empty)
+                    {
+                        if (dgvVoucherSearch.CurrentRow != null)
+                        {
+                            inCurrenRowIndex = dgvVoucherSearch.CurrentRow.Index;
+                            bool isNotDo = false;
+                            string strTypeofVoucher = spVoucherType.TypeOfVoucherView(dgvVoucherSearch.CurrentRow.Cells["VoucherType"].Value.ToString());
+                            switch (strTypeofVoucher)
+                            {
+                                //case "Physical Stock":
+                                //    GotoPhysicalStock();
+                                //    break;
+                                //case "Credit Note":
+                                //    GotoCrditNote();
+                                //    break;
+                                //case "Debit Note":
+                                //    GotoDebitNote();
+                                //    break;
+                                //case "Advance Payment":
+                                //    GotoAdvancePayment();
+                                //    break;
+                                //case "Daily Salary Voucher":
+                                //    GotoDailySalaryVoucher();
+                                //    break;
+                                //case "Monthly Salary Voucher":
+                                //    GotoMonthlySalaryVoucher();
+                                //    break;
+                                case "Stock Journal":
+                                    GotoStockJournal();
+                                    break;
+                                //case "Contra Voucher":
+                                //    GotoContraVoucher();
+                                //    break;
+                                //case "Payment Voucher":
+                                //    GotoPaymentVoucher();
+                                //    break;
+                                //case "Receipt Voucher":
+                                //    GotoReceiptVoucher();
+                                //    break;
+                                //case "Journal Voucher":
+                                //    GotoJournalVoucher();
+                                //    break;
+                                case "PDC Payable":
+                                    GotoPDCPayable();
+                                    break;
+                                case "PDC Receivable":
+                                    GotoPDCReceivable();
+                                    break;
+                                //case "PDC Clearance":
+                                //    GotoPDCClearance();
+                                //    break;
+                                case "Purchase Order":
+                                    GotoPurchaseOrder();
+                                    break;
+                                //case "Material Receipt":
+                                //    GotoMaterialReceipt();
+                                //    break;
+                                //case "Rejection Out":
+                                //    GotoRejectionOut();
+                                //    break;
+                                //case "Purchase Return":
+                                //    GotoPurchaseReturn();
+                                //    break;
+                                case "Sales Quotation":
+                                    GotoSalesQuotation();
+                                    break;
+                                case "Sales Order":
+                                    GotoSalesOrder();
+                                    break;
+                                //case "Delivery Note":
+                                //    GotoDeliveryNote();
+                                //    break;
+                                //case "Rejection In":
+                                //    GotoRejectionIn();
+                                //    break;
+                                //case "Sales Return":
+                                //    GotoSalesReturn();
+                                //    break;
+                                case "Purchase Invoice":
+                                    GotoPurchaseInvoice();
+                                    break;
+                                //case "Sales Invoice":
+                                //    GotoSalesInvoice();
+                                //    break;
+                                //case "Service Voucher":
+                                //    GotoServiceVoucher();
+                                //    break;
+                                default:
+                                    isNotDo = true;
+                                    break;
+                            }
+                            if (!isNotDo)
+                                this.Enabled = false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("VS53:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         #endregion Events
         #region Navigation
@@ -1451,13 +1455,23 @@ namespace LoginForm
             {
                 if (e.KeyCode == Keys.Enter)
                 {
+                    txtToDate.SelectionStart = txtToDate.Text.Length;
                     txtToDate.Focus();
-                    txtToDate.SelectionStart = txtToDate.TextLength;
+                }
+                if (e.KeyCode == Keys.Back)
+                {
+                    if (txtFromDate.SelectionLength != 11)
+                    {
+                        if (txtFromDate.Text == string.Empty || txtFromDate.SelectionStart == 0)
+                        {
+                            cmbVoucherType.Focus();
+                        }
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("VS54:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("BU44 :" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         /// <summary>
