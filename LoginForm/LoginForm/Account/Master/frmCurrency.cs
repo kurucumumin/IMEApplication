@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using LoginForm.Account.Services;
 using LoginForm.DataSet;
 using LoginForm.Services;
 
@@ -170,22 +171,34 @@ namespace LoginForm
 
         public void GridFill()
         {
-            if (txtNameSearch.Text.Trim() == "" && txtSymbolSearch.Text.Trim() != "")
+            try
             {
-                dgvCurrency.DataSource = IME.Currencies.Where(b => b.currencySymbol.Contains(txtSymbolSearch.Text.Trim())).ToList();
+                CurrencySP spCurrency = new CurrencySP();
+                DataTable dtblCurrency = new DataTable();
+                dtblCurrency = spCurrency.CurrencySearch(txtNameSearch.Text.Trim(), txtSymbolSearch.Text.Trim());
+                dgvCurrency.DataSource = dtblCurrency;
             }
-            else if (txtSymbolSearch.Text.Trim() == "" && txtNameSearch.Text.Trim() != "")
+            catch (Exception ex)
             {
-                dgvCurrency.DataSource = IME.Currencies.Where(a => a.currencyName.Contains(txtNameSearch.Text.Trim())).ToList();
+                MessageBox.Show("C7:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (txtNameSearch.Text.Trim() == "" && txtNameSearch.Text.Trim() == "")
-            {
-                dgvCurrency.DataSource = IME.Currencies.ToList();
-            }
-            else
-            {
-                dgvCurrency.DataSource = IME.Currencies.Where(a => a.currencyName.Contains(txtNameSearch.Text.Trim())).Where(b => b.currencySymbol.Contains(txtSymbolSearch.Text.Trim())).ToList();
-            }
+
+            //if (txtNameSearch.Text.Trim() == "" && txtSymbolSearch.Text.Trim() != "")
+            //{
+            //    dgvCurrency.DataSource = IME.Currencies.Where(b => b.currencySymbol.Contains(txtSymbolSearch.Text.Trim())).ToList();
+            //}
+            //else if (txtSymbolSearch.Text.Trim() == "" && txtNameSearch.Text.Trim() != "")
+            //{
+            //    dgvCurrency.DataSource = IME.Currencies.Where(a => a.currencyName.Contains(txtNameSearch.Text.Trim())).ToList();
+            //}
+            //else if (txtNameSearch.Text.Trim() == "" && txtNameSearch.Text.Trim() == "")
+            //{
+            //    dgvCurrency.DataSource = IME.Currencies.ToList();
+            //}
+            //else
+            //{
+            //    dgvCurrency.DataSource = IME.Currencies.Where(a => a.currencyName.Contains(txtNameSearch.Text.Trim())).Where(b => b.currencySymbol.Contains(txtSymbolSearch.Text.Trim())).ToList();
+            //}
         }
 
         public void DeleteFunction()

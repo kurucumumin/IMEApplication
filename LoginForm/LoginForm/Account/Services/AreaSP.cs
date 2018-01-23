@@ -60,11 +60,11 @@ namespace LoginForm.Account.Services
             Area infoArea = new Area();
             try
             {
-                //var adaptor = new IMEEntities().AreaWithNarrationView(decAreaId).FirstOrDefault();
+                var adaptor = new IMEEntities().AreaWithNarrationView(decAreaId).FirstOrDefault();
 
-                //infoArea.areaId = adaptor.areaId;
-                //infoArea.areaName = adaptor.areaName;
-                //infoArea.narration = adaptor.narration;
+                infoArea.areaId = adaptor.areaId;
+                infoArea.areaName = adaptor.areaName;
+                infoArea.narration = adaptor.narration;
             }
             catch (Exception ex)
             {
@@ -108,6 +108,25 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
             return dtbl;
+        }
+
+        /// <summary>
+        /// Function to check references to delete a area
+        /// </summary>
+        /// <param name="AreaId"></param>
+        /// <returns></returns>
+        public decimal AreaDeleteReference(decimal AreaId)
+        {
+            decimal decReturnValue = 0;
+            try
+            {
+                decReturnValue = Convert.ToDecimal(new IMEEntities().AreaDeleteReference(AreaId));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decReturnValue;
         }
     }
 }

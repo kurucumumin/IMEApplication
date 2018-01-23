@@ -6479,17 +6479,16 @@ namespace LoginForm
                     {
                         cmbCashOrParty.DropDownStyle = ComboBoxStyle.DropDownList;
                     }
-                    //if (cmbCashOrParty.SelectedIndex != -1)
-                    //{
-                    // TODO Ledger Popup
-                    //    frmLedgerPopup frmLedgerPopupObj = new frmLedgerPopup();
-                    //    frmLedgerPopupObj.MdiParent = formMDI.MDIObj;
-                    //    frmLedgerPopupObj.CallFromSalesInvoice(this, Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString()), "CashOrSundryDeptors");
-                    //}
-                    //else
-                    //{
-                    //    Messages.InformationMessage("Select any cash or party");
-                    //}
+                    if (cmbCashOrParty.SelectedIndex != -1)
+                    {
+                        frmLedgerPopup frmLedgerPopupObj = new frmLedgerPopup();
+                        frmLedgerPopupObj.MdiParent = FormMain.MDIObj;
+                        frmLedgerPopupObj.CallFromSalesInvoice(this, Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString()), "CashOrSundryDeptors");
+                    }
+                    else
+                    {
+                        Messages.InformationMessage("Select any cash or party");
+                    }
                 }
             }
             catch (Exception ex)
@@ -6526,20 +6525,19 @@ namespace LoginForm
                     SendKeys.Send("{F10}");
                     btnNewSalesAccount_Click(sender, e);
                 }
-                //if (e.KeyCode == Keys.F && Control.ModifierKeys == Keys.Control) //Pop Up
-                //{
-                //    if (cmbSalesAccount.SelectedIndex != -1)
-                //    {
-                //        //TODO LedgerPopUp
-                //        frmLedgerPopup frmLedgerPopupObj = new frmLedgerPopup();
-                //        frmLedgerPopupObj.MdiParent = formMDI.MDIObj;
-                //        frmLedgerPopupObj.CallFromSalesInvoice(this, Convert.ToDecimal(cmbSalesAccount.SelectedValue.ToString()), "SalesAccount");
-                //    }
-                //    else
-                //    {
-                //        Messages.InformationMessage("Select any Sales Account");
-                //    }
-                //}
+                if (e.KeyCode == Keys.F && Control.ModifierKeys == Keys.Control) //Pop Up
+                {
+                    if (cmbSalesAccount.SelectedIndex != -1)
+                    {
+                        frmLedgerPopup frmLedgerPopupObj = new frmLedgerPopup();
+                        frmLedgerPopupObj.MdiParent = FormMain.MDIObj;
+                        frmLedgerPopupObj.CallFromSalesInvoice(this, Convert.ToDecimal(cmbSalesAccount.SelectedValue.ToString()), "SalesAccount");
+                    }
+                    else
+                    {
+                        Messages.InformationMessage("Select any Sales Account");
+                    }
+                }
             }
             catch (Exception ex)
             {

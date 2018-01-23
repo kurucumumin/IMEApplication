@@ -487,7 +487,7 @@ namespace LoginForm
                     cmbMethodOfvoucherNumbering.Text = infoVoucherType.methodOfVoucherNumbering;
                     txtNarration.Text = infoVoucherType.narration;
                     txtDeclaration.Text = infoVoucherType.declaration;
-                    cmbDotMatrix.SelectedValue = infoVoucherType.masterId;
+                    cmbDotMatrix.SelectedValue = Convert.ToInt32(infoVoucherType.masterId);
                     txtHeading1.Text = infoVoucherType.heading1;
                     txtHeading2.Text = infoVoucherType.heading2;
                     txtHeading3.Text = infoVoucherType.heading3;

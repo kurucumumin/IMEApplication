@@ -140,19 +140,25 @@ namespace LoginForm
 
         public void Delete()
         {
-            DialogResult dialogResult = MessageBox.Show("Sure", "Are you sure to delete?", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            try
             {
-                try
+                if (Messages.DeleteConfirmation())
                 {
-                    IME.Areas.Remove(IME.Areas.Where(a => a.areaId == decAreaId).FirstOrDefault());
+                    AreaSP spArea = new AreaSP();
+                    if (spArea.AreaDeleteReference(decAreaId) <= 0)
+                    {
+                        Messages.ReferenceExistsMessage();
+                    }
+                    else
+                    {
+                        Messages.DeletedMessage();
+                        Clear();
+                    }
                 }
-                catch
-                {
-                    MessageBox.Show("Area deleted successfully");
-                    Clear();
-                }
-                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AR4" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

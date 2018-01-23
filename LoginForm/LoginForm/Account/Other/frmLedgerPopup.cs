@@ -14,6 +14,7 @@ using LoginForm.Services;
 using LoginForm;
 using LoginForm.PurchaseOrder;
 using LoginForm.QuotationModule;
+using Open_Miracle;
 
 namespace LoginForm
 {
@@ -44,7 +45,7 @@ namespace LoginForm
         //FormSaleOrderMain frmSalesOrderObj = null;
         frmSalesReturn frmSalesReturnObj = null;
         frmPurchaseReturn frmPurchaseReturnObj = null;
-        //frmPurchaseInvoice frmPurchaseInvoiceObj = null;
+        frmPurchaseInvoice frmPurchaseInvoiceObj = null;
         //frmRejectionOut frmRejectionOutObj = null;
         //frmRejectionIn frmRejectionInObj;
         //frmMaterialReceipt frmMaterialReceiptObj = null;
@@ -443,28 +444,28 @@ namespace LoginForm
         /// <param name="frmPurchaseInvoice"></param>
         /// <param name="decId"></param>
         /// <param name="strComboType"></param>
-        //public void CallFromPurchaseInvoice(frmPurchaseInvoice frmPurchaseInvoice, decimal decId, string strComboType) //PopUp
-        //{
-        //    try
-        //    {
-        //        strComboTypes = strComboType;
-        //        base.Show();
-        //        this.frmPurchaseInvoiceObj = frmPurchaseInvoice;
-        //        int inRowCount = dgvLedgerPopup.Rows.Count;
-        //        for (int i = 0; i < inRowCount; i++)
-        //        {
-        //            if (Convert.ToDecimal(dgvLedgerPopup.Rows[i].Cells["dgvtxtLedgerId"].Value.ToString()) == decId)
-        //            {
-        //                dgvLedgerPopup.Rows[i].DefaultCellStyle.BackColor = Color.MediumSeaGreen;
-        //            }
-        //        }
-        //        txtLedgerName.Focus();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("LP15:" + ex.Message, "Open Miracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromPurchaseInvoice(frmPurchaseInvoice frmPurchaseInvoice, decimal decId, string strComboType) //PopUp
+        {
+            try
+            {
+                strComboTypes = strComboType;
+                base.Show();
+                this.frmPurchaseInvoiceObj = frmPurchaseInvoice;
+                int inRowCount = dgvLedgerPopup.Rows.Count;
+                for (int i = 0; i < inRowCount; i++)
+                {
+                    if (Convert.ToDecimal(dgvLedgerPopup.Rows[i].Cells["dgvtxtLedgerId"].Value.ToString()) == decId)
+                    {
+                        dgvLedgerPopup.Rows[i].DefaultCellStyle.BackColor = Color.MediumSeaGreen;
+                    }
+                }
+                txtLedgerName.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("LP15:" + ex.Message, "Open Miracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
         /// <summary>
         /// Function to call this form from frmMaterialReceipt 
