@@ -5120,17 +5120,16 @@ namespace Open_Miracle
                 }
                 if (e.KeyCode == Keys.F && Control.ModifierKeys == Keys.Control) //Pop Up
                 {
-                    //TODO LedgerPopup
-                    //if (cmbCashOrParty.SelectedIndex != -1)
-                    //{
-                    //    frmLedgerPopup frmLedgerPopupObj = new frmLedgerPopup();
-                    //    frmLedgerPopupObj.MdiParent = formMDI.MDIObj;
-                    //    frmLedgerPopupObj.CallFromPurchaseInvoice(this, Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString()), "CashOrSundryCreditors");
-                    //}
-                    //else
-                    //{
-                    //    Messages.InformationMessage("Select any cash or party");
-                    //}
+                    if (cmbCashOrParty.SelectedIndex != -1)
+                    {
+                        frmLedgerPopup frmLedgerPopupObj = new frmLedgerPopup();
+                        frmLedgerPopupObj.MdiParent = FormMain.MDIObj;
+                        frmLedgerPopupObj.CallFromPurchaseInvoice(this, Convert.ToDecimal(cmbCashOrParty.SelectedValue.ToString()), "CashOrSundryCreditors");
+                    }
+                    else
+                    {
+                        Messages.InformationMessage("Select any cash or party");
+                    }
                 }
             }
             catch (Exception ex)
@@ -5254,10 +5253,9 @@ namespace Open_Miracle
                 {
                     if (cmbCashOrParty.SelectedIndex != -1)
                     {
-                        //TODO LedgerPopUp
-                        //frmLedgerPopup frmLedgerPopupObj = new frmLedgerPopup();
-                        //frmLedgerPopupObj.MdiParent = formMDI.MDIObj;
-                        //frmLedgerPopupObj.CallFromPurchaseInvoice(this, Convert.ToDecimal(cmbPurchaseAccount.SelectedValue.ToString()), "PurchaseAccount");
+                        frmLedgerPopup frmLedgerPopupObj = new frmLedgerPopup();
+                        frmLedgerPopupObj.MdiParent = FormMain.MDIObj;
+                        frmLedgerPopupObj.CallFromPurchaseInvoice(this, Convert.ToDecimal(cmbPurchaseAccount.SelectedValue.ToString()), "PurchaseAccount");
                     }
                     else
                     {

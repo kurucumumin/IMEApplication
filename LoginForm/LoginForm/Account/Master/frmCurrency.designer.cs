@@ -44,13 +44,13 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgvCurrency = new System.Windows.Forms.DataGridView();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnClearSearch = new System.Windows.Forms.Button();
             this.txtSymbolSearch = new System.Windows.Forms.TextBox();
             this.txtNameSearch = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.dgvCurrency = new System.Windows.Forms.DataGridView();
             this.dgvtxtCurrencyId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SlNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,9 +77,9 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(24, 16);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(1019, 207);
             this.groupBox1.TabIndex = 137;
             this.groupBox1.TabStop = false;
@@ -114,7 +114,7 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.Color.Black;
             this.btnDelete.Location = new System.Drawing.Point(393, 153);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(113, 33);
             this.btnDelete.TabIndex = 7;
@@ -129,7 +129,7 @@
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.Black;
             this.btnClose.Location = new System.Drawing.Point(515, 153);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(113, 33);
             this.btnClose.TabIndex = 8;
@@ -193,7 +193,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.Black;
             this.btnSave.Location = new System.Drawing.Point(151, 153);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(113, 33);
             this.btnSave.TabIndex = 5;
@@ -209,7 +209,7 @@
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.Black;
             this.btnClear.Location = new System.Drawing.Point(272, 153);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(4);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(113, 33);
             this.btnClear.TabIndex = 6;
@@ -239,13 +239,58 @@
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(24, 242);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(1019, 480);
             this.groupBox2.TabIndex = 1165;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Search";
+            // 
+            // dgvCurrency
+            // 
+            this.dgvCurrency.AllowUserToAddRows = false;
+            this.dgvCurrency.AllowUserToDeleteRows = false;
+            this.dgvCurrency.AllowUserToResizeColumns = false;
+            this.dgvCurrency.AllowUserToResizeRows = false;
+            this.dgvCurrency.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCurrency.BackgroundColor = System.Drawing.Color.White;
+            this.dgvCurrency.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCurrency.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvCurrency.ColumnHeadersHeight = 25;
+            this.dgvCurrency.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvCurrency.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvtxtCurrencyId,
+            this.SlNo,
+            this.dgvtxtName,
+            this.dgvtxtSymbol,
+            this.dgvtxtdecimalplaces});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(231)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCurrency.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvCurrency.EnableHeadersVisualStyles = false;
+            this.dgvCurrency.GridColor = System.Drawing.Color.SteelBlue;
+            this.dgvCurrency.Location = new System.Drawing.Point(28, 83);
+            this.dgvCurrency.Margin = new System.Windows.Forms.Padding(0);
+            this.dgvCurrency.MultiSelect = false;
+            this.dgvCurrency.Name = "dgvCurrency";
+            this.dgvCurrency.ReadOnly = true;
+            this.dgvCurrency.RowHeadersVisible = false;
+            this.dgvCurrency.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCurrency.Size = new System.Drawing.Size(960, 368);
+            this.dgvCurrency.TabIndex = 144;
             // 
             // btnSearch
             // 
@@ -254,7 +299,7 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.ForeColor = System.Drawing.Color.Black;
             this.btnSearch.Location = new System.Drawing.Point(720, 46);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(128, 33);
             this.btnSearch.TabIndex = 2;
@@ -270,7 +315,7 @@
             this.btnClearSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearSearch.ForeColor = System.Drawing.Color.Black;
             this.btnClearSearch.Location = new System.Drawing.Point(856, 46);
-            this.btnClearSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClearSearch.Margin = new System.Windows.Forms.Padding(4);
             this.btnClearSearch.Name = "btnClearSearch";
             this.btnClearSearch.Size = new System.Drawing.Size(129, 33);
             this.btnClearSearch.TabIndex = 3;
@@ -319,51 +364,6 @@
             this.label8.TabIndex = 142;
             this.label8.Text = "Name";
             // 
-            // dgvCurrency
-            // 
-            this.dgvCurrency.AllowUserToAddRows = false;
-            this.dgvCurrency.AllowUserToDeleteRows = false;
-            this.dgvCurrency.AllowUserToResizeColumns = false;
-            this.dgvCurrency.AllowUserToResizeRows = false;
-            this.dgvCurrency.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCurrency.BackgroundColor = System.Drawing.Color.White;
-            this.dgvCurrency.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCurrency.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvCurrency.ColumnHeadersHeight = 25;
-            this.dgvCurrency.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvCurrency.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgvtxtCurrencyId,
-            this.SlNo,
-            this.dgvtxtName,
-            this.dgvtxtSymbol,
-            this.dgvtxtdecimalplaces});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(231)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCurrency.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvCurrency.EnableHeadersVisualStyles = false;
-            this.dgvCurrency.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvCurrency.Location = new System.Drawing.Point(28, 83);
-            this.dgvCurrency.Margin = new System.Windows.Forms.Padding(0);
-            this.dgvCurrency.MultiSelect = false;
-            this.dgvCurrency.Name = "dgvCurrency";
-            this.dgvCurrency.ReadOnly = true;
-            this.dgvCurrency.RowHeadersVisible = false;
-            this.dgvCurrency.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCurrency.Size = new System.Drawing.Size(960, 368);
-            this.dgvCurrency.TabIndex = 144;
-            // 
             // dgvtxtCurrencyId
             // 
             this.dgvtxtCurrencyId.DataPropertyName = "currencyId";
@@ -404,6 +404,7 @@
             this.dgvtxtdecimalplaces.Name = "dgvtxtdecimalplaces";
             this.dgvtxtdecimalplaces.ReadOnly = true;
             this.dgvtxtdecimalplaces.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtxtdecimalplaces.Visible = false;
             // 
             // frmCurrency
             // 
@@ -416,7 +417,7 @@
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmCurrency";
             this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);

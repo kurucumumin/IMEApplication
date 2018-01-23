@@ -266,6 +266,8 @@ namespace LoginForm.Account.Services
                 vouchertypeinfo.typeOfVoucher = adaptor.typeOfVoucher;
                 vouchertypeinfo.methodOfVoucherNumbering = adaptor.methodOfVoucherNumbering;
                 vouchertypeinfo.isTaxApplicable = adaptor.isTaxApplicable;
+                //TODO Nebi ile karşılaştır, yorumu aç
+                //vouchertypeinfo.narration = adaptor.narration;
                 vouchertypeinfo.isActive = Convert.ToBoolean(adaptor.isActive);
                 vouchertypeinfo.masterId = adaptor.masterId;
                 vouchertypeinfo.declaration = adaptor.declaration;
