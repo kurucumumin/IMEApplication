@@ -468,10 +468,16 @@ namespace LoginForm.Account.Services
 
         public decimal PDCClearanceMaxUnderVoucherTypePlusOne(decimal decVoucherTypeId)
         {
+            IMEEntities IME = new IMEEntities();
             decimal max = 0;
             try
             {
-                max = new IMEEntities().PDCClearanceMasters.Where(p => p.voucherTypeId == decVoucherTypeId).Select(y => Convert.ToDecimal(y.voucherNo)).Max();
+                max = IME.PDCClearanceMasters.Where(p => p.voucherTypeId == decVoucherTypeId).Select(y => Convert.ToDecimal(y.voucherNo)).Max();
+
+            //max= (from dn in IME.PDCClearanceMasters.Where(p => p.voucherTypeId == decVoucherTypeId)
+            //     select new { dn.voucherNo }).Max(x => Convert.ToDecimal(x.voucherNo));
+             max    = (max != 0 && max.ToString() != null) ? max : 0;
+            
             }
             catch (Exception ex)
             {

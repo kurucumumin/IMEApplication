@@ -34,7 +34,8 @@ namespace LoginForm.Services
 
         public static Management getManagement()
         {
-            return new IMEEntities().Managements.FirstOrDefault();
+            IMEEntities IME = new IMEEntities();
+            return IME.Managements.ToList().FirstOrDefault();
         }
     }
 }

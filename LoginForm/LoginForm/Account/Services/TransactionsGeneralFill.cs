@@ -42,6 +42,10 @@ namespace LoginForm.Account.Services
             try
             {
                 strVoucherNo = db.VoucherNumberAutomaicGeneration(VoucherTypeId, date, tableName, txtBox).ToString();
+                if (strVoucherNo == "System.Data.Entity.Core.Objects.ObjectResult`1[System.Nullable`1[System.Decimal]]")
+                {
+                    strVoucherNo = "0";
+                }
             }
             catch (Exception ex)
             {
