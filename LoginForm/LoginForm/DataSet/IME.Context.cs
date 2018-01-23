@@ -474,7 +474,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("ExchangeRateViewByExchangeRateId", exchangeRateIdParameter);
         }
     
-        public virtual int ExtendedRangeADD(string articleNo, string brand, string mPN, string articleDescription, Nullable<decimal> extendedRangeLength, Nullable<decimal> width, Nullable<decimal> height, string dimensionUoM, string weightUoM, Nullable<int> cCCN, string countryofOrigin, string unitofMeasure, Nullable<int> packSize, Nullable<int> salesUoM, string costPriceCurrency, Nullable<decimal> col1Price, Nullable<decimal> col2Price, Nullable<decimal> col3Price, Nullable<decimal> col4Price, Nullable<decimal> col5Price, Nullable<int> col1Break, Nullable<int> col2Break, Nullable<int> col3Break, Nullable<int> col4Break, Nullable<int> col5Break, Nullable<decimal> discountedPrice1, Nullable<decimal> discountedPrice2, Nullable<decimal> discountedPrice3, Nullable<decimal> discountedPrice4, Nullable<decimal> discountedPrice5, string manufacturerCode, Nullable<int> extendedRangeWeight)
+        public virtual int ExtendedRangeADD(string articleNo, string brand, string mPN, string articleDescription, Nullable<decimal> extendedRangeLength, Nullable<decimal> width, Nullable<decimal> height, string dimensionUoM, string weightUoM, Nullable<int> cCCN, string countryofOrigin, string unitofMeasure, Nullable<int> packSize, Nullable<int> salesUoM, string costPriceCurrency, Nullable<decimal> col1Price, Nullable<decimal> col2Price, Nullable<decimal> col3Price, Nullable<decimal> col4Price, Nullable<decimal> col5Price, Nullable<int> col1Break, Nullable<int> col2Break, Nullable<int> col3Break, Nullable<int> col4Break, Nullable<int> col5Break, Nullable<decimal> discountedPrice1, Nullable<decimal> discountedPrice2, Nullable<decimal> discountedPrice3, Nullable<decimal> discountedPrice4, Nullable<decimal> discountedPrice5, string manufacturerCode, Nullable<decimal> extendedRangeWeight)
         {
             var articleNoParameter = articleNo != null ?
                 new ObjectParameter("ArticleNo", articleNo) :
@@ -602,7 +602,7 @@ namespace LoginForm.DataSet
     
             var extendedRangeWeightParameter = extendedRangeWeight.HasValue ?
                 new ObjectParameter("ExtendedRangeWeight", extendedRangeWeight) :
-                new ObjectParameter("ExtendedRangeWeight", typeof(int));
+                new ObjectParameter("ExtendedRangeWeight", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ExtendedRangeADD", articleNoParameter, brandParameter, mPNParameter, articleDescriptionParameter, extendedRangeLengthParameter, widthParameter, heightParameter, dimensionUoMParameter, weightUoMParameter, cCCNParameter, countryofOriginParameter, unitofMeasureParameter, packSizeParameter, salesUoMParameter, costPriceCurrencyParameter, col1PriceParameter, col2PriceParameter, col3PriceParameter, col4PriceParameter, col5PriceParameter, col1BreakParameter, col2BreakParameter, col3BreakParameter, col4BreakParameter, col5BreakParameter, discountedPrice1Parameter, discountedPrice2Parameter, discountedPrice3Parameter, discountedPrice4Parameter, discountedPrice5Parameter, manufacturerCodeParameter, extendedRangeWeightParameter);
         }

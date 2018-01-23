@@ -143,9 +143,6 @@ namespace LoginForm
             DialogResult dialogResult = MessageBox.Show("Sure", "Are you sure to delete?", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                this.Close();
-
-
                 try
                 {
                     IME.Areas.Remove(IME.Areas.Where(a => a.areaId == decAreaId).FirstOrDefault());
@@ -155,9 +152,8 @@ namespace LoginForm
                     MessageBox.Show("Area deleted successfully");
                     Clear();
                 }
-
+                this.Close();
             }
-
         }
 
 
