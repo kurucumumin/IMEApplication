@@ -87,20 +87,20 @@ namespace LoginForm.Account.Services
             dtbl.Columns["Sl.No"].AutoIncrementStep = 1;
             try
             {
-                var adaptor = db.AreaOnlyViewAll().ToList();
+                //var adaptor = db.AreaOnlyViewAll().ToList();
 
-                dtbl.Columns.Add("areaId");
-                dtbl.Columns.Add("areaName");
+                //dtbl.Columns.Add("areaId");
+                //dtbl.Columns.Add("areaName");
 
-                foreach (var item in adaptor)
-                {
-                    DataRow row = dtbl.NewRow();
+                //foreach (var item in adaptor)
+                //{
+                //    DataRow row = dtbl.NewRow();
 
-                    row["areaId"] = item.areaId;
-                    row["areaName"] = item.areaName;
+                //    row["areaId"] = item.areaId;
+                //    row["areaName"] = item.areaName;
 
-                    dtbl.Rows.Add(row);
-                }
+                //    dtbl.Rows.Add(row);
+                //}
 
             }
             catch (Exception ex)

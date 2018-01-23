@@ -1101,7 +1101,7 @@ namespace LoginForm
                 txtFromDate.Text = Utils.getManagement().FinancialYear.fromDate.Value.ToString("dd-MMM-yyyy");
                 dtpToDate.Value = Convert.ToDateTime(DateTime.Now.ToString("dd-MMM-yyyy"));
                 dtpToDate.MinDate = (DateTime)Utils.getManagement().FinancialYear.fromDate;
-                dtpToDate.MaxDate = (DateTime)Utils.getManagement().FinancialYear.fromDate;
+                dtpToDate.MaxDate = (DateTime)Utils.getManagement().FinancialYear.toDate;
                 txtVoucherNo.Text = string.Empty;
                 AccountLedgerComboFill();
                 ComboSalesManFill();
@@ -1210,7 +1210,7 @@ namespace LoginForm
             try
             {
                 DateTime date = this.dtpFromDate.Value;
-                this.txtFromDate.Text = date.ToString("dd-MMM-yyyy");
+                txtFromDate.Text = date.ToString("dd-MMM-yyyy");
                 txtFromDate.Focus();
             }
             catch (Exception ex)
