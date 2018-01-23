@@ -508,7 +508,7 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="DiscountedPrice4" Type="decimal" Precision="18" Scale="3" />
           <Property Name="DiscountedPrice5" Type="decimal" Precision="18" Scale="3" />
           <Property Name="ManufacturerCode" Type="nvarchar" MaxLength="15" />
-          <Property Name="ExtendedRangeWeight" Type="int" />
+          <Property Name="ExtendedRangeWeight" Type="decimal" Precision="13" Scale="5" />
         </EntityType>
         <EntityType Name="FinancialYear">
           <Key>
@@ -4979,7 +4979,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Stock__currencyI__2156DE01">
+        <Association Name="FK__Stock__currencyI__2AE0483B">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5646,7 +5646,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Parameter Name="DiscountedPrice4" Type="decimal" Mode="In" />
           <Parameter Name="DiscountedPrice5" Type="decimal" Mode="In" />
           <Parameter Name="ManufacturerCode" Type="nvarchar" Mode="In" />
-          <Parameter Name="ExtendedRangeWeight" Type="int" Mode="In" />
+          <Parameter Name="ExtendedRangeWeight" Type="decimal" Mode="In" />
         </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -5777,6 +5777,12 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Parameter Name="payHeadId" Type="numeric" Mode="In" />
         </Function>
         <Function Name="PayHeadGetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PaymentMasterSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FromDate" Type="datetime" Mode="In" />
+          <Parameter Name="ToDate" Type="datetime" Mode="In" />
+          <Parameter Name="ledgerId" Type="varchar" Mode="In" />
+          <Parameter Name="voucherNo" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="PDCClearanceFillDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherTypeName" Type="varchar(max)" Mode="In" />
           <Parameter Name="MasterId" Type="decimal" Mode="In" />
@@ -6539,25 +6545,25 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <EntitySet Name="VoucherTypeTax" EntityType="Self.VoucherTypeTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdditionalCost" EntityType="Self.AdditionalCost" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [AdditionalCost].[additionalCostId] AS [additionalCostId],
-    [AdditionalCost].[voucherTypeId] AS [voucherTypeId],
-    [AdditionalCost].[voucherNo] AS [voucherNo],
-    [AdditionalCost].[ledgerId] AS [ledgerId],
-    [AdditionalCost].[debit] AS [debit],
+            <DefiningQuery>SELECT 
+    [AdditionalCost].[additionalCostId] AS [additionalCostId], 
+    [AdditionalCost].[voucherTypeId] AS [voucherTypeId], 
+    [AdditionalCost].[voucherNo] AS [voucherNo], 
+    [AdditionalCost].[ledgerId] AS [ledgerId], 
+    [AdditionalCost].[debit] AS [debit], 
     [AdditionalCost].[credit] AS [credit]
     FROM [dbo].[AdditionalCost] AS [AdditionalCost]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="SalaryVoucherDetail" EntityType="Self.SalaryVoucherDetail" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId],
-    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId],
-    [SalaryVoucherDetail].[employeeId] AS [employeeId],
-    [SalaryVoucherDetail].[bonus] AS [bonus],
-    [SalaryVoucherDetail].[deduction] AS [deduction],
-    [SalaryVoucherDetail].[advance] AS [advance],
-    [SalaryVoucherDetail].[lop] AS [lop],
-    [SalaryVoucherDetail].[salary] AS [salary],
+            <DefiningQuery>SELECT 
+    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId], 
+    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId], 
+    [SalaryVoucherDetail].[employeeId] AS [employeeId], 
+    [SalaryVoucherDetail].[bonus] AS [bonus], 
+    [SalaryVoucherDetail].[deduction] AS [deduction], 
+    [SalaryVoucherDetail].[advance] AS [advance], 
+    [SalaryVoucherDetail].[lop] AS [lop], 
+    [SalaryVoucherDetail].[salary] AS [salary], 
     [SalaryVoucherDetail].[status] AS [status]
     FROM [dbo].[SalaryVoucherDetail] AS [SalaryVoucherDetail]</DefiningQuery>
           </EntitySet>
@@ -7569,7 +7575,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="SalesReturnMaster" EntitySet="SalesReturnMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__Stock__currencyI__2156DE01" Association="Self.FK__Stock__currencyI__2156DE01">
+          <AssociationSet Name="FK__Stock__currencyI__2AE0483B" Association="Self.FK__Stock__currencyI__2AE0483B">
             <End Role="Currency" EntitySet="Currency" />
             <End Role="Stock" EntitySet="Stock" />
           </AssociationSet>
@@ -8042,7 +8048,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="subunitName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Companies" Relationship="Self.FK__Company__currenc__0371755F" FromRole="Currency" ToRole="Company" />
           <NavigationProperty Name="Managements" Relationship="Self.FK__Managemen__Defau__253C7D7E" FromRole="Currency" ToRole="Management" />
-          <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__currencyI__2156DE01" FromRole="Currency" ToRole="Stock" />
+          <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__currencyI__2AE0483B" FromRole="Currency" ToRole="Stock" />
           <NavigationProperty Name="ExchangeRates" Relationship="Self.FK__tbl_Excha__curre__52442E1F" FromRole="Currency" ToRole="ExchangeRate" />
         </EntityType>
         <EntityType Name="Customer">
@@ -8386,7 +8392,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="DiscountedPrice4" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="DiscountedPrice5" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="ManufacturerCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="ExtendedRangeWeight" Type="Int32" />
+          <Property Name="ExtendedRangeWeight" Type="Decimal" Precision="13" Scale="5" />
         </EntityType>
         <EntityType Name="FinancialYear">
           <Key>
@@ -9751,7 +9757,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="ItemDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Rate" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="currencyID" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="Currency" Relationship="Self.FK__Stock__currencyI__2156DE01" FromRole="Stock" ToRole="Currency" />
+          <NavigationProperty Name="Currency" Relationship="Self.FK__Stock__currencyI__2AE0483B" FromRole="Stock" ToRole="Currency" />
           <NavigationProperty Name="VoucherType" Relationship="Self.FK__Stock__voucherTy__47E69B3D" FromRole="Stock" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="StockPosting">
@@ -10911,7 +10917,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Stock__currencyI__2156DE01">
+        <Association Name="FK__Stock__currencyI__2AE0483B">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
           <ReferentialConstraint>
@@ -14136,7 +14142,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Management" EntitySet="Managements" />
           </AssociationSet>
-          <AssociationSet Name="FK__Stock__currencyI__2156DE01" Association="Self.FK__Stock__currencyI__2156DE01">
+          <AssociationSet Name="FK__Stock__currencyI__2AE0483B" Association="Self.FK__Stock__currencyI__2AE0483B">
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Stock" EntitySet="Stocks" />
           </AssociationSet>
@@ -15231,7 +15237,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="DiscountedPrice4" Mode="In" Type="Decimal" />
             <Parameter Name="DiscountedPrice5" Mode="In" Type="Decimal" />
             <Parameter Name="ManufacturerCode" Mode="In" Type="String" />
-            <Parameter Name="ExtendedRangeWeight" Mode="In" Type="Int32" />
+            <Parameter Name="ExtendedRangeWeight" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI" ReturnType="Collection(IMEModel.GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result)">
             <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
@@ -15361,6 +15367,12 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="payHeadId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PayHeadGetAll" ReturnType="Collection(IMEModel.PayHeadGetAll_Result)" />
+          <FunctionImport Name="PaymentMasterSearch" ReturnType="Collection(IMEModel.PaymentMasterSearch_Result)">
+            <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ledgerId" Mode="In" Type="String" />
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="PDCClearanceFillDetails" ReturnType="Collection(IMEModel.PDCClearanceFillDetails_Result)">
             <Parameter Name="voucherTypeName" Mode="In" Type="String" />
             <Parameter Name="MasterId" Mode="In" Type="Decimal" />
@@ -16281,6 +16293,16 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="payHeadName" Nullable="true" />
           <Property Type="String" Name="narration" Nullable="true" />
           <Property Type="String" Name="type" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PaymentMasterSearch_Result">
+          <Property Type="Decimal" Name="paymentMasterId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="invoiceNo" Nullable="true" />
+          <Property Type="String" Name="voucherTypeName" Nullable="true" />
+          <Property Type="String" Name="date" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="totalAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="ledgerName" Nullable="true" />
+          <Property Type="String" Name="narration" Nullable="true" />
+          <Property Type="Decimal" Name="voucherTypeId" Nullable="true" Precision="18" Scale="0" />
         </ComplexType>
         <ComplexType Name="PDCClearanceFillDetails_Result">
           <Property Type="String" Name="voucherTypeName" Nullable="true" />
@@ -19407,6 +19429,20 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="payHeadName" ColumnName="payHeadName" />
                 <ScalarProperty Name="narration" ColumnName="narration" />
                 <ScalarProperty Name="type" ColumnName="type" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PaymentMasterSearch" FunctionName="IMEModel.Store.PaymentMasterSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.PaymentMasterSearch_Result">
+                <ScalarProperty Name="paymentMasterId" ColumnName="paymentMasterId" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="voucherTypeName" ColumnName="voucherTypeName" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

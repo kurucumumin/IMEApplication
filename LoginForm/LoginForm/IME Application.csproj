@@ -823,6 +823,9 @@
     <Compile Include="DataSet\PaymentMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PaymentMasterSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PaymentMethod.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1713,6 +1716,10 @@
     <None Include="DataSet\IME.edmx.diagram">
       <DependentUpon>IME.edmx</DependentUpon>
     </None>
+    <None Include="DataSet\TaxViewAllForVoucherType_Result.cs~1e5d01ceac4ea91d61f203195324fb4bce8266fd" />
+    <None Include="DataSet\TaxViewAllForVoucherType_Result.cs~HEAD" />
+    <None Include="DataSet\VoucherTypeSearch_Result.cs~1e5d01ceac4ea91d61f203195324fb4bce8266fd" />
+    <None Include="DataSet\VoucherTypeSearch_Result.cs~HEAD" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthorizationValue.datasource" />
     <None Include="Properties\DataSources\LoginForm.DataSet.AuthRole.datasource" />

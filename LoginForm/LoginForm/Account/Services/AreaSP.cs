@@ -60,11 +60,11 @@ namespace LoginForm.Account.Services
             Area infoArea = new Area();
             try
             {
-                var adaptor = new IMEEntities().AreaWithNarrationView(decAreaId).FirstOrDefault();
+                //var adaptor = new IMEEntities().AreaWithNarrationView(decAreaId).FirstOrDefault();
 
-                infoArea.areaId = adaptor.areaId;
-                infoArea.areaName = adaptor.areaName;
-                infoArea.narration = adaptor.narration;
+                //infoArea.areaId = adaptor.areaId;
+                //infoArea.areaName = adaptor.areaName;
+                //infoArea.narration = adaptor.narration;
             }
             catch (Exception ex)
             {
@@ -87,20 +87,20 @@ namespace LoginForm.Account.Services
             dtbl.Columns["Sl.No"].AutoIncrementStep = 1;
             try
             {
-                //var adaptor = db.AreaOnlyViewAll().ToList();
+                var adaptor = db.AreaOnlyViewAll().ToList();
 
-                //dtbl.Columns.Add("areaId");
-                //dtbl.Columns.Add("areaName");
+                dtbl.Columns.Add("areaId");
+                dtbl.Columns.Add("areaName");
 
-                //foreach (var item in adaptor)
-                //{
-                //    DataRow row = dtbl.NewRow();
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
 
-                //    row["areaId"] = item.areaId;
-                //    row["areaName"] = item.areaName;
+                    row["areaId"] = item.areaId;
+                    row["areaName"] = item.areaName;
 
-                //    dtbl.Rows.Add(row);
-                //}
+                    dtbl.Rows.Add(row);
+                }
 
             }
             catch (Exception ex)
