@@ -289,6 +289,15 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AdditionalCostViewAllByVoucherTypeIdAndVoucherNo_Result>("AdditionalCostViewAllByVoucherTypeIdAndVoucherNo", voucherTypeIdParameter, voucherNoParameter);
         }
     
+        public virtual int AreaDeleteReference(Nullable<decimal> areaId)
+        {
+            var areaIdParameter = areaId.HasValue ?
+                new ObjectParameter("areaId", areaId) :
+                new ObjectParameter("areaId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AreaDeleteReference", areaIdParameter);
+        }
+    
         public virtual ObjectResult<AreaOnlyViewAll_Result> AreaOnlyViewAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AreaOnlyViewAll_Result>("AreaOnlyViewAll");
@@ -1987,6 +1996,232 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PurchaseReturnViewByPurchaseReturnMasterId_Result>("PurchaseReturnViewByPurchaseReturnMasterId", purchaseReturnMasterIdParameter);
         }
     
+        public virtual int QuotationADD(string customerID, Nullable<int> noteForUsID, Nullable<int> noteForCustomerID, Nullable<int> forFinancelIsTrue, Nullable<int> shippingMethodID, Nullable<int> isItemCost, Nullable<int> isWeightCost, Nullable<int> isCustomsDuties, Nullable<decimal> discOnSubTotal2, Nullable<decimal> extraCharges, Nullable<decimal> subTotal, Nullable<System.DateTime> startDate, Nullable<int> validationDay, Nullable<int> paymentID, Nullable<decimal> curr, Nullable<decimal> factor, Nullable<int> isVatValue, Nullable<decimal> vatValue, string currName, string quotationNo, string rFQNo, string currType, Nullable<int> quotationMainContact, Nullable<decimal> ledgerId, Nullable<decimal> voucherTypeId, Nullable<bool> approved, string invoiceNo, string voucherNo, Nullable<int> representativeID, Nullable<int> representativeID2, Nullable<int> exchangeRateID, Nullable<decimal> suffixPrefixId, Nullable<System.DateTime> deliveryDate, Nullable<decimal> grossTotal)
+        {
+            var customerIDParameter = customerID != null ?
+                new ObjectParameter("CustomerID", customerID) :
+                new ObjectParameter("CustomerID", typeof(string));
+    
+            var noteForUsIDParameter = noteForUsID.HasValue ?
+                new ObjectParameter("NoteForUsID", noteForUsID) :
+                new ObjectParameter("NoteForUsID", typeof(int));
+    
+            var noteForCustomerIDParameter = noteForCustomerID.HasValue ?
+                new ObjectParameter("NoteForCustomerID", noteForCustomerID) :
+                new ObjectParameter("NoteForCustomerID", typeof(int));
+    
+            var forFinancelIsTrueParameter = forFinancelIsTrue.HasValue ?
+                new ObjectParameter("ForFinancelIsTrue", forFinancelIsTrue) :
+                new ObjectParameter("ForFinancelIsTrue", typeof(int));
+    
+            var shippingMethodIDParameter = shippingMethodID.HasValue ?
+                new ObjectParameter("ShippingMethodID", shippingMethodID) :
+                new ObjectParameter("ShippingMethodID", typeof(int));
+    
+            var isItemCostParameter = isItemCost.HasValue ?
+                new ObjectParameter("IsItemCost", isItemCost) :
+                new ObjectParameter("IsItemCost", typeof(int));
+    
+            var isWeightCostParameter = isWeightCost.HasValue ?
+                new ObjectParameter("IsWeightCost", isWeightCost) :
+                new ObjectParameter("IsWeightCost", typeof(int));
+    
+            var isCustomsDutiesParameter = isCustomsDuties.HasValue ?
+                new ObjectParameter("IsCustomsDuties", isCustomsDuties) :
+                new ObjectParameter("IsCustomsDuties", typeof(int));
+    
+            var discOnSubTotal2Parameter = discOnSubTotal2.HasValue ?
+                new ObjectParameter("DiscOnSubTotal2", discOnSubTotal2) :
+                new ObjectParameter("DiscOnSubTotal2", typeof(decimal));
+    
+            var extraChargesParameter = extraCharges.HasValue ?
+                new ObjectParameter("ExtraCharges", extraCharges) :
+                new ObjectParameter("ExtraCharges", typeof(decimal));
+    
+            var subTotalParameter = subTotal.HasValue ?
+                new ObjectParameter("SubTotal", subTotal) :
+                new ObjectParameter("SubTotal", typeof(decimal));
+    
+            var startDateParameter = startDate.HasValue ?
+                new ObjectParameter("StartDate", startDate) :
+                new ObjectParameter("StartDate", typeof(System.DateTime));
+    
+            var validationDayParameter = validationDay.HasValue ?
+                new ObjectParameter("ValidationDay", validationDay) :
+                new ObjectParameter("ValidationDay", typeof(int));
+    
+            var paymentIDParameter = paymentID.HasValue ?
+                new ObjectParameter("PaymentID", paymentID) :
+                new ObjectParameter("PaymentID", typeof(int));
+    
+            var currParameter = curr.HasValue ?
+                new ObjectParameter("Curr", curr) :
+                new ObjectParameter("Curr", typeof(decimal));
+    
+            var factorParameter = factor.HasValue ?
+                new ObjectParameter("Factor", factor) :
+                new ObjectParameter("Factor", typeof(decimal));
+    
+            var isVatValueParameter = isVatValue.HasValue ?
+                new ObjectParameter("IsVatValue", isVatValue) :
+                new ObjectParameter("IsVatValue", typeof(int));
+    
+            var vatValueParameter = vatValue.HasValue ?
+                new ObjectParameter("VatValue", vatValue) :
+                new ObjectParameter("VatValue", typeof(decimal));
+    
+            var currNameParameter = currName != null ?
+                new ObjectParameter("CurrName", currName) :
+                new ObjectParameter("CurrName", typeof(string));
+    
+            var quotationNoParameter = quotationNo != null ?
+                new ObjectParameter("QuotationNo", quotationNo) :
+                new ObjectParameter("QuotationNo", typeof(string));
+    
+            var rFQNoParameter = rFQNo != null ?
+                new ObjectParameter("RFQNo", rFQNo) :
+                new ObjectParameter("RFQNo", typeof(string));
+    
+            var currTypeParameter = currType != null ?
+                new ObjectParameter("CurrType", currType) :
+                new ObjectParameter("CurrType", typeof(string));
+    
+            var quotationMainContactParameter = quotationMainContact.HasValue ?
+                new ObjectParameter("QuotationMainContact", quotationMainContact) :
+                new ObjectParameter("QuotationMainContact", typeof(int));
+    
+            var ledgerIdParameter = ledgerId.HasValue ?
+                new ObjectParameter("ledgerId", ledgerId) :
+                new ObjectParameter("ledgerId", typeof(decimal));
+    
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            var approvedParameter = approved.HasValue ?
+                new ObjectParameter("approved", approved) :
+                new ObjectParameter("approved", typeof(bool));
+    
+            var invoiceNoParameter = invoiceNo != null ?
+                new ObjectParameter("invoiceNo", invoiceNo) :
+                new ObjectParameter("invoiceNo", typeof(string));
+    
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            var representativeIDParameter = representativeID.HasValue ?
+                new ObjectParameter("RepresentativeID", representativeID) :
+                new ObjectParameter("RepresentativeID", typeof(int));
+    
+            var representativeID2Parameter = representativeID2.HasValue ?
+                new ObjectParameter("RepresentativeID2", representativeID2) :
+                new ObjectParameter("RepresentativeID2", typeof(int));
+    
+            var exchangeRateIDParameter = exchangeRateID.HasValue ?
+                new ObjectParameter("ExchangeRateID", exchangeRateID) :
+                new ObjectParameter("ExchangeRateID", typeof(int));
+    
+            var suffixPrefixIdParameter = suffixPrefixId.HasValue ?
+                new ObjectParameter("suffixPrefixId", suffixPrefixId) :
+                new ObjectParameter("suffixPrefixId", typeof(decimal));
+    
+            var deliveryDateParameter = deliveryDate.HasValue ?
+                new ObjectParameter("DeliveryDate", deliveryDate) :
+                new ObjectParameter("DeliveryDate", typeof(System.DateTime));
+    
+            var grossTotalParameter = grossTotal.HasValue ?
+                new ObjectParameter("GrossTotal", grossTotal) :
+                new ObjectParameter("GrossTotal", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("QuotationADD", customerIDParameter, noteForUsIDParameter, noteForCustomerIDParameter, forFinancelIsTrueParameter, shippingMethodIDParameter, isItemCostParameter, isWeightCostParameter, isCustomsDutiesParameter, discOnSubTotal2Parameter, extraChargesParameter, subTotalParameter, startDateParameter, validationDayParameter, paymentIDParameter, currParameter, factorParameter, isVatValueParameter, vatValueParameter, currNameParameter, quotationNoParameter, rFQNoParameter, currTypeParameter, quotationMainContactParameter, ledgerIdParameter, voucherTypeIdParameter, approvedParameter, invoiceNoParameter, voucherNoParameter, representativeIDParameter, representativeID2Parameter, exchangeRateIDParameter, suffixPrefixIdParameter, deliveryDateParameter, grossTotalParameter);
+        }
+    
+        public virtual int QuotationDetailsADD(Nullable<int> dgNo, string itemCode, Nullable<int> qty, Nullable<decimal> uCUPCurr, Nullable<decimal> disc, Nullable<decimal> total, Nullable<decimal> targetUP, string competitor, string customerDescription, string customerStockCode, Nullable<int> isDeleted, string quotationNo, Nullable<decimal> uPIME, Nullable<decimal> marge, string unitOfMeasure, Nullable<int> uC, Nullable<int> sSM, Nullable<decimal> unitWeight, string dependantTable, Nullable<decimal> unitConversionId)
+        {
+            var dgNoParameter = dgNo.HasValue ?
+                new ObjectParameter("dgNo", dgNo) :
+                new ObjectParameter("dgNo", typeof(int));
+    
+            var itemCodeParameter = itemCode != null ?
+                new ObjectParameter("ItemCode", itemCode) :
+                new ObjectParameter("ItemCode", typeof(string));
+    
+            var qtyParameter = qty.HasValue ?
+                new ObjectParameter("Qty", qty) :
+                new ObjectParameter("Qty", typeof(int));
+    
+            var uCUPCurrParameter = uCUPCurr.HasValue ?
+                new ObjectParameter("UCUPCurr", uCUPCurr) :
+                new ObjectParameter("UCUPCurr", typeof(decimal));
+    
+            var discParameter = disc.HasValue ?
+                new ObjectParameter("Disc", disc) :
+                new ObjectParameter("Disc", typeof(decimal));
+    
+            var totalParameter = total.HasValue ?
+                new ObjectParameter("Total", total) :
+                new ObjectParameter("Total", typeof(decimal));
+    
+            var targetUPParameter = targetUP.HasValue ?
+                new ObjectParameter("TargetUP", targetUP) :
+                new ObjectParameter("TargetUP", typeof(decimal));
+    
+            var competitorParameter = competitor != null ?
+                new ObjectParameter("Competitor", competitor) :
+                new ObjectParameter("Competitor", typeof(string));
+    
+            var customerDescriptionParameter = customerDescription != null ?
+                new ObjectParameter("CustomerDescription", customerDescription) :
+                new ObjectParameter("CustomerDescription", typeof(string));
+    
+            var customerStockCodeParameter = customerStockCode != null ?
+                new ObjectParameter("CustomerStockCode", customerStockCode) :
+                new ObjectParameter("CustomerStockCode", typeof(string));
+    
+            var isDeletedParameter = isDeleted.HasValue ?
+                new ObjectParameter("IsDeleted", isDeleted) :
+                new ObjectParameter("IsDeleted", typeof(int));
+    
+            var quotationNoParameter = quotationNo != null ?
+                new ObjectParameter("QuotationNo", quotationNo) :
+                new ObjectParameter("QuotationNo", typeof(string));
+    
+            var uPIMEParameter = uPIME.HasValue ?
+                new ObjectParameter("UPIME", uPIME) :
+                new ObjectParameter("UPIME", typeof(decimal));
+    
+            var margeParameter = marge.HasValue ?
+                new ObjectParameter("Marge", marge) :
+                new ObjectParameter("Marge", typeof(decimal));
+    
+            var unitOfMeasureParameter = unitOfMeasure != null ?
+                new ObjectParameter("UnitOfMeasure", unitOfMeasure) :
+                new ObjectParameter("UnitOfMeasure", typeof(string));
+    
+            var uCParameter = uC.HasValue ?
+                new ObjectParameter("UC", uC) :
+                new ObjectParameter("UC", typeof(int));
+    
+            var sSMParameter = sSM.HasValue ?
+                new ObjectParameter("SSM", sSM) :
+                new ObjectParameter("SSM", typeof(int));
+    
+            var unitWeightParameter = unitWeight.HasValue ?
+                new ObjectParameter("UnitWeight", unitWeight) :
+                new ObjectParameter("UnitWeight", typeof(decimal));
+    
+            var dependantTableParameter = dependantTable != null ?
+                new ObjectParameter("DependantTable", dependantTable) :
+                new ObjectParameter("DependantTable", typeof(string));
+    
+            var unitConversionIdParameter = unitConversionId.HasValue ?
+                new ObjectParameter("unitConversionId", unitConversionId) :
+                new ObjectParameter("unitConversionId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("QuotationDetailsADD", dgNoParameter, itemCodeParameter, qtyParameter, uCUPCurrParameter, discParameter, totalParameter, targetUPParameter, competitorParameter, customerDescriptionParameter, customerStockCodeParameter, isDeletedParameter, quotationNoParameter, uPIMEParameter, margeParameter, unitOfMeasureParameter, uCParameter, sSMParameter, unitWeightParameter, dependantTableParameter, unitConversionIdParameter);
+        }
+    
         public virtual ObjectResult<RackFillForStock_Result> RackFillForStock(Nullable<decimal> godownId)
         {
             var godownIdParameter = godownId.HasValue ?
@@ -2802,7 +3037,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual int sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
@@ -2812,10 +3047,10 @@ namespace LoginForm.DataSet
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual int sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
@@ -2825,7 +3060,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
         }
     
         public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)

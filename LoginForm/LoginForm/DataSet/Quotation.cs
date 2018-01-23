@@ -55,6 +55,8 @@ namespace LoginForm.DataSet
         public Nullable<int> RepresentativeID2 { get; set; }
         public Nullable<int> ExchangeRateID { get; set; }
         public Nullable<decimal> suffixPrefixId { get; set; }
+        public Nullable<System.DateTime> DeliveryDate { get; set; }
+        public Nullable<decimal> GrossTotal { get; set; }
     
         public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

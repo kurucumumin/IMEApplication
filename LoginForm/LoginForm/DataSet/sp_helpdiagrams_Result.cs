@@ -11,10 +11,12 @@ namespace LoginForm.DataSet
 {
     using System;
     
-    public partial class TaxViewAllForVoucherType_Result
+    public partial class sp_helpdiagrams_Result
     {
-        public int taxId { get; set; }
-        public string taxName { get; set; }
-        public string applicableOn { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

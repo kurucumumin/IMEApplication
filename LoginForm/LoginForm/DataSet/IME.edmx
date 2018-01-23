@@ -1129,6 +1129,8 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="RepresentativeID2" Type="int" />
           <Property Name="ExchangeRateID" Type="int" />
           <Property Name="suffixPrefixId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="DeliveryDate" Type="datetime" />
+          <Property Name="GrossTotal" Type="decimal" Precision="18" Scale="4" />
         </EntityType>
         <EntityType Name="QuotationDetail">
           <Key>
@@ -4979,7 +4981,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Stock__currencyI__2AE0483B">
+        <Association Name="FK__Stock__currencyI__2156DE01">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5557,6 +5559,9 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
           <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="AreaDeleteReference" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="areaId" Type="numeric" Mode="In" />
+        </Function>
         <Function Name="AreaOnlyViewAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="AreaWithNarrationView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="areaId" Type="numeric" Mode="In" />
@@ -6042,6 +6047,64 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
         </Function>
         <Function Name="PurchaseReturnViewByPurchaseReturnMasterId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="purchaseReturnMasterId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="QuotationADD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CustomerID" Type="nvarchar" Mode="In" />
+          <Parameter Name="NoteForUsID" Type="int" Mode="In" />
+          <Parameter Name="NoteForCustomerID" Type="int" Mode="In" />
+          <Parameter Name="ForFinancelIsTrue" Type="int" Mode="In" />
+          <Parameter Name="ShippingMethodID" Type="int" Mode="In" />
+          <Parameter Name="IsItemCost" Type="int" Mode="In" />
+          <Parameter Name="IsWeightCost" Type="int" Mode="In" />
+          <Parameter Name="IsCustomsDuties" Type="int" Mode="In" />
+          <Parameter Name="DiscOnSubTotal2" Type="decimal" Mode="In" />
+          <Parameter Name="ExtraCharges" Type="decimal" Mode="In" />
+          <Parameter Name="SubTotal" Type="decimal" Mode="In" />
+          <Parameter Name="StartDate" Type="date" Mode="In" />
+          <Parameter Name="ValidationDay" Type="int" Mode="In" />
+          <Parameter Name="PaymentID" Type="int" Mode="In" />
+          <Parameter Name="Curr" Type="decimal" Mode="In" />
+          <Parameter Name="Factor" Type="decimal" Mode="In" />
+          <Parameter Name="IsVatValue" Type="int" Mode="In" />
+          <Parameter Name="VatValue" Type="decimal" Mode="In" />
+          <Parameter Name="CurrName" Type="nvarchar" Mode="In" />
+          <Parameter Name="QuotationNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="RFQNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="CurrType" Type="nvarchar" Mode="In" />
+          <Parameter Name="QuotationMainContact" Type="int" Mode="In" />
+          <Parameter Name="ledgerId" Type="numeric" Mode="In" />
+          <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
+          <Parameter Name="approved" Type="bit" Mode="In" />
+          <Parameter Name="invoiceNo" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="voucherNo" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="RepresentativeID" Type="int" Mode="In" />
+          <Parameter Name="RepresentativeID2" Type="int" Mode="In" />
+          <Parameter Name="ExchangeRateID" Type="int" Mode="In" />
+          <Parameter Name="suffixPrefixId" Type="numeric" Mode="In" />
+          <Parameter Name="DeliveryDate" Type="datetime" Mode="In" />
+          <Parameter Name="GrossTotal" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="QuotationDetailsADD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dgNo" Type="int" Mode="In" />
+          <Parameter Name="ItemCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="Qty" Type="int" Mode="In" />
+          <Parameter Name="UCUPCurr" Type="decimal" Mode="In" />
+          <Parameter Name="Disc" Type="decimal" Mode="In" />
+          <Parameter Name="Total" Type="decimal" Mode="In" />
+          <Parameter Name="TargetUP" Type="decimal" Mode="In" />
+          <Parameter Name="Competitor" Type="nvarchar" Mode="In" />
+          <Parameter Name="CustomerDescription" Type="nvarchar" Mode="In" />
+          <Parameter Name="CustomerStockCode" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsDeleted" Type="int" Mode="In" />
+          <Parameter Name="QuotationNo" Type="nvarchar" Mode="In" />
+          <Parameter Name="UPIME" Type="decimal" Mode="In" />
+          <Parameter Name="Marge" Type="decimal" Mode="In" />
+          <Parameter Name="UnitOfMeasure" Type="nvarchar" Mode="In" />
+          <Parameter Name="UC" Type="int" Mode="In" />
+          <Parameter Name="SSM" Type="int" Mode="In" />
+          <Parameter Name="UnitWeight" Type="decimal" Mode="In" />
+          <Parameter Name="DependantTable" Type="nvarchar" Mode="In" />
+          <Parameter Name="unitConversionId" Type="numeric" Mode="In" />
         </Function>
         <Function Name="RackFillForStock" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="godownId" Type="numeric" Mode="In" />
@@ -7575,7 +7638,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="SalesReturnMaster" EntitySet="SalesReturnMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__Stock__currencyI__2AE0483B" Association="Self.FK__Stock__currencyI__2AE0483B">
+          <AssociationSet Name="FK__Stock__currencyI__2156DE01" Association="Self.FK__Stock__currencyI__2156DE01">
             <End Role="Currency" EntitySet="Currency" />
             <End Role="Stock" EntitySet="Stock" />
           </AssociationSet>
@@ -8048,7 +8111,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="subunitName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Companies" Relationship="Self.FK__Company__currenc__0371755F" FromRole="Currency" ToRole="Company" />
           <NavigationProperty Name="Managements" Relationship="Self.FK__Managemen__Defau__253C7D7E" FromRole="Currency" ToRole="Management" />
-          <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__currencyI__2AE0483B" FromRole="Currency" ToRole="Stock" />
+          <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__currencyI__2156DE01" FromRole="Currency" ToRole="Stock" />
           <NavigationProperty Name="ExchangeRates" Relationship="Self.FK__tbl_Excha__curre__52442E1F" FromRole="Currency" ToRole="ExchangeRate" />
         </EntityType>
         <EntityType Name="Customer">
@@ -9176,6 +9239,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="RepresentativeID2" Type="Int32" />
           <Property Name="ExchangeRateID" Type="Int32" />
           <Property Name="suffixPrefixId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
+          <Property Name="GrossTotal" Type="Decimal" Precision="18" Scale="4" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__Quotation__Custo__00750D23" FromRole="Quotation" ToRole="Customer" />
           <NavigationProperty Name="DeliveryNoteDetails" Relationship="Self.FK__DeliveryN__quota__39CD8610" FromRole="Quotation" ToRole="DeliveryNoteDetail" />
           <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__quota__25077354" FromRole="Quotation" ToRole="DeliveryNoteMaster" />
@@ -9757,7 +9822,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="ItemDesc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Rate" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="currencyID" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="Currency" Relationship="Self.FK__Stock__currencyI__2AE0483B" FromRole="Stock" ToRole="Currency" />
+          <NavigationProperty Name="Currency" Relationship="Self.FK__Stock__currencyI__2156DE01" FromRole="Stock" ToRole="Currency" />
           <NavigationProperty Name="VoucherType" Relationship="Self.FK__Stock__voucherTy__47E69B3D" FromRole="Stock" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="StockPosting">
@@ -10917,7 +10982,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Stock__currencyI__2AE0483B">
+        <Association Name="FK__Stock__currencyI__2156DE01">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
           <ReferentialConstraint>
@@ -14142,7 +14207,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Management" EntitySet="Managements" />
           </AssociationSet>
-          <AssociationSet Name="FK__Stock__currencyI__2AE0483B" Association="Self.FK__Stock__currencyI__2AE0483B">
+          <AssociationSet Name="FK__Stock__currencyI__2156DE01" Association="Self.FK__Stock__currencyI__2156DE01">
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Stock" EntitySet="Stocks" />
           </AssociationSet>
@@ -15148,6 +15213,9 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherNo" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="AreaDeleteReference">
+            <Parameter Name="areaId" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="AreaOnlyViewAll" ReturnType="Collection(IMEModel.AreaOnlyViewAll_Result)" />
           <FunctionImport Name="AreaWithNarrationView" ReturnType="Collection(IMEModel.AreaWithNarrationView_Result)">
             <Parameter Name="areaId" Mode="In" Type="Decimal" />
@@ -15633,6 +15701,64 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImport Name="PurchaseReturnViewByPurchaseReturnMasterId" ReturnType="Collection(IMEModel.PurchaseReturnViewByPurchaseReturnMasterId_Result)">
             <Parameter Name="purchaseReturnMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="QuotationADD">
+            <Parameter Name="CustomerID" Mode="In" Type="String" />
+            <Parameter Name="NoteForUsID" Mode="In" Type="Int32" />
+            <Parameter Name="NoteForCustomerID" Mode="In" Type="Int32" />
+            <Parameter Name="ForFinancelIsTrue" Mode="In" Type="Int32" />
+            <Parameter Name="ShippingMethodID" Mode="In" Type="Int32" />
+            <Parameter Name="IsItemCost" Mode="In" Type="Int32" />
+            <Parameter Name="IsWeightCost" Mode="In" Type="Int32" />
+            <Parameter Name="IsCustomsDuties" Mode="In" Type="Int32" />
+            <Parameter Name="DiscOnSubTotal2" Mode="In" Type="Decimal" />
+            <Parameter Name="ExtraCharges" Mode="In" Type="Decimal" />
+            <Parameter Name="SubTotal" Mode="In" Type="Decimal" />
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ValidationDay" Mode="In" Type="Int32" />
+            <Parameter Name="PaymentID" Mode="In" Type="Int32" />
+            <Parameter Name="Curr" Mode="In" Type="Decimal" />
+            <Parameter Name="Factor" Mode="In" Type="Decimal" />
+            <Parameter Name="IsVatValue" Mode="In" Type="Int32" />
+            <Parameter Name="VatValue" Mode="In" Type="Decimal" />
+            <Parameter Name="CurrName" Mode="In" Type="String" />
+            <Parameter Name="QuotationNo" Mode="In" Type="String" />
+            <Parameter Name="RFQNo" Mode="In" Type="String" />
+            <Parameter Name="CurrType" Mode="In" Type="String" />
+            <Parameter Name="QuotationMainContact" Mode="In" Type="Int32" />
+            <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="approved" Mode="In" Type="Boolean" />
+            <Parameter Name="invoiceNo" Mode="In" Type="String" />
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
+            <Parameter Name="RepresentativeID" Mode="In" Type="Int32" />
+            <Parameter Name="RepresentativeID2" Mode="In" Type="Int32" />
+            <Parameter Name="ExchangeRateID" Mode="In" Type="Int32" />
+            <Parameter Name="suffixPrefixId" Mode="In" Type="Decimal" />
+            <Parameter Name="DeliveryDate" Mode="In" Type="DateTime" />
+            <Parameter Name="GrossTotal" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="QuotationDetailsADD">
+            <Parameter Name="dgNo" Mode="In" Type="Int32" />
+            <Parameter Name="ItemCode" Mode="In" Type="String" />
+            <Parameter Name="Qty" Mode="In" Type="Int32" />
+            <Parameter Name="UCUPCurr" Mode="In" Type="Decimal" />
+            <Parameter Name="Disc" Mode="In" Type="Decimal" />
+            <Parameter Name="Total" Mode="In" Type="Decimal" />
+            <Parameter Name="TargetUP" Mode="In" Type="Decimal" />
+            <Parameter Name="Competitor" Mode="In" Type="String" />
+            <Parameter Name="CustomerDescription" Mode="In" Type="String" />
+            <Parameter Name="CustomerStockCode" Mode="In" Type="String" />
+            <Parameter Name="IsDeleted" Mode="In" Type="Int32" />
+            <Parameter Name="QuotationNo" Mode="In" Type="String" />
+            <Parameter Name="UPIME" Mode="In" Type="Decimal" />
+            <Parameter Name="Marge" Mode="In" Type="Decimal" />
+            <Parameter Name="UnitOfMeasure" Mode="In" Type="String" />
+            <Parameter Name="UC" Mode="In" Type="Int32" />
+            <Parameter Name="SSM" Mode="In" Type="Int32" />
+            <Parameter Name="UnitWeight" Mode="In" Type="Decimal" />
+            <Parameter Name="DependantTable" Mode="In" Type="String" />
+            <Parameter Name="unitConversionId" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="RackFillForStock" ReturnType="Collection(IMEModel.RackFillForStock_Result)">
             <Parameter Name="godownId" Mode="In" Type="Decimal" />
           </FunctionImport>
@@ -15856,11 +15982,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition">
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(IMEModel.sp_helpdiagramdefinition_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams">
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(IMEModel.sp_helpdiagrams_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -16856,6 +16982,17 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="userName" Nullable="false" MaxLength="25" />
           <Property Type="String" Name="ledgerName" Nullable="true" />
           <Property Type="Decimal" Name="grandTotal" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
         <ComplexType Name="TaxViewAllByVoucherTypeId_Result">
           <Property Type="Int32" Name="taxId" Nullable="false" />
@@ -18104,6 +18241,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="RepresentativeID2" ColumnName="RepresentativeID2" />
                 <ScalarProperty Name="ExchangeRateID" ColumnName="ExchangeRateID" />
                 <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="GrossTotal" ColumnName="GrossTotal" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -19069,6 +19208,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AreaDeleteReference" FunctionName="IMEModel.Store.AreaDeleteReference" />
           <FunctionImportMapping FunctionImportName="AreaOnlyViewAll" FunctionName="IMEModel.Store.AreaOnlyViewAll">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.AreaOnlyViewAll_Result">
@@ -19968,6 +20108,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="QuotationADD" FunctionName="IMEModel.Store.QuotationADD" />
+          <FunctionImportMapping FunctionImportName="QuotationDetailsADD" FunctionName="IMEModel.Store.QuotationDetailsADD" />
           <FunctionImportMapping FunctionImportName="RackFillForStock" FunctionName="IMEModel.Store.RackFillForStock">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.RackFillForStock_Result">
@@ -20198,8 +20340,25 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="IMEModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="IMEModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="IMEModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="IMEModel.Store.sp_helpdiagramdefinition" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="IMEModel.Store.sp_helpdiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="IMEModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="IMEModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="IMEModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="IMEModel.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="StockCheckForProductSale" FunctionName="IMEModel.Store.StockCheckForProductSale" />

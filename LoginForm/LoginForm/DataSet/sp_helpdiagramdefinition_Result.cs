@@ -11,10 +11,9 @@ namespace LoginForm.DataSet
 {
     using System;
     
-    public partial class VoucherTypeSearch_Result
+    public partial class sp_helpdiagramdefinition_Result
     {
-        public decimal voucherTypeId { get; set; }
-        public string voucherTypeName { get; set; }
-        public string typeOfVoucher { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
