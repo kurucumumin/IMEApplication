@@ -58,6 +58,8 @@ namespace LoginForm.Account.Services
                     row["currencySymbol"] = item.currencySymbol;
                     row["currencyName"] = item.currencyName;
                     row["noOfDecimalPlaces"] = "";
+
+                    dtbl.Rows.Add(row);
                 }
 
             }

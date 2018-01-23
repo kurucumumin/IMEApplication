@@ -318,7 +318,7 @@ namespace LoginForm
         {
             if (e.RowIndex != -1)
             {
-                decId = Convert.ToDecimal(dgvCurrency.Rows[e.RowIndex].Cells["CurrencyID"].Value.ToString());
+                decId = Convert.ToDecimal(dgvCurrency.Rows[e.RowIndex].Cells["dgvtxtCurrencyId"].Value.ToString());
                 if (IME.Currencies.Where(a => a.currencyID == decId).FirstOrDefault().currencyID != Utils.getManagement().DefaultCurrency)
                 {
                     FillControls();

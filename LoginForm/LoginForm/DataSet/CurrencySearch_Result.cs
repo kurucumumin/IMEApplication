@@ -11,12 +11,11 @@ namespace LoginForm.DataSet
 {
     using System;
     
-    public partial class sp_helpdiagrams_Result
+    public partial class CurrencySearch_Result
     {
-        public string Database { get; set; }
-        public string Name { get; set; }
-        public int ID { get; set; }
-        public string Owner { get; set; }
-        public int OwnerID { get; set; }
+        public decimal currencyId { get; set; }
+        public string currencySymbol { get; set; }
+        public string currencyName { get; set; }
+        public Nullable<int> noOfDecimalPlaces { get; set; }
     }
 }

@@ -45,17 +45,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvCurrency = new System.Windows.Forms.DataGridView();
+            this.dgvtxtCurrencyId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SlNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxtName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxtSymbol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxtdecimalplaces = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnClearSearch = new System.Windows.Forms.Button();
             this.txtSymbolSearch = new System.Windows.Forms.TextBox();
             this.txtNameSearch = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.dgvtxtCurrencyId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SlNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxtName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxtSymbol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxtdecimalplaces = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCurrency)).BeginInit();
@@ -291,6 +291,49 @@
             this.dgvCurrency.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCurrency.Size = new System.Drawing.Size(960, 368);
             this.dgvCurrency.TabIndex = 144;
+            this.dgvCurrency.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCurrency_CellDoubleClick);
+            // 
+            // dgvtxtCurrencyId
+            // 
+            this.dgvtxtCurrencyId.DataPropertyName = "currencyId";
+            this.dgvtxtCurrencyId.HeaderText = "CurrencyId";
+            this.dgvtxtCurrencyId.Name = "dgvtxtCurrencyId";
+            this.dgvtxtCurrencyId.ReadOnly = true;
+            this.dgvtxtCurrencyId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtxtCurrencyId.Visible = false;
+            // 
+            // SlNo
+            // 
+            this.SlNo.DataPropertyName = "SL.NO";
+            this.SlNo.HeaderText = "Sl No";
+            this.SlNo.Name = "SlNo";
+            this.SlNo.ReadOnly = true;
+            this.SlNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dgvtxtName
+            // 
+            this.dgvtxtName.DataPropertyName = "currencyName";
+            this.dgvtxtName.HeaderText = "Name";
+            this.dgvtxtName.Name = "dgvtxtName";
+            this.dgvtxtName.ReadOnly = true;
+            this.dgvtxtName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dgvtxtSymbol
+            // 
+            this.dgvtxtSymbol.DataPropertyName = "currencySymbol";
+            this.dgvtxtSymbol.HeaderText = "Symbol";
+            this.dgvtxtSymbol.Name = "dgvtxtSymbol";
+            this.dgvtxtSymbol.ReadOnly = true;
+            this.dgvtxtSymbol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dgvtxtdecimalplaces
+            // 
+            this.dgvtxtdecimalplaces.DataPropertyName = "noofDecimalPlaces";
+            this.dgvtxtdecimalplaces.HeaderText = "No. of Decimal Places";
+            this.dgvtxtdecimalplaces.Name = "dgvtxtdecimalplaces";
+            this.dgvtxtdecimalplaces.ReadOnly = true;
+            this.dgvtxtdecimalplaces.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtxtdecimalplaces.Visible = false;
             // 
             // btnSearch
             // 
@@ -363,48 +406,6 @@
             this.label8.Size = new System.Drawing.Size(45, 17);
             this.label8.TabIndex = 142;
             this.label8.Text = "Name";
-            // 
-            // dgvtxtCurrencyId
-            // 
-            this.dgvtxtCurrencyId.DataPropertyName = "currencyId";
-            this.dgvtxtCurrencyId.HeaderText = "CurrencyId";
-            this.dgvtxtCurrencyId.Name = "dgvtxtCurrencyId";
-            this.dgvtxtCurrencyId.ReadOnly = true;
-            this.dgvtxtCurrencyId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dgvtxtCurrencyId.Visible = false;
-            // 
-            // SlNo
-            // 
-            this.SlNo.DataPropertyName = "SL.NO";
-            this.SlNo.HeaderText = "Sl No";
-            this.SlNo.Name = "SlNo";
-            this.SlNo.ReadOnly = true;
-            this.SlNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dgvtxtName
-            // 
-            this.dgvtxtName.DataPropertyName = "currencyName";
-            this.dgvtxtName.HeaderText = "Name";
-            this.dgvtxtName.Name = "dgvtxtName";
-            this.dgvtxtName.ReadOnly = true;
-            this.dgvtxtName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dgvtxtSymbol
-            // 
-            this.dgvtxtSymbol.DataPropertyName = "currencySymbol";
-            this.dgvtxtSymbol.HeaderText = "Symbol";
-            this.dgvtxtSymbol.Name = "dgvtxtSymbol";
-            this.dgvtxtSymbol.ReadOnly = true;
-            this.dgvtxtSymbol.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dgvtxtdecimalplaces
-            // 
-            this.dgvtxtdecimalplaces.DataPropertyName = "noofDecimalPlaces";
-            this.dgvtxtdecimalplaces.HeaderText = "No. of Decimal Places";
-            this.dgvtxtdecimalplaces.Name = "dgvtxtdecimalplaces";
-            this.dgvtxtdecimalplaces.ReadOnly = true;
-            this.dgvtxtdecimalplaces.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dgvtxtdecimalplaces.Visible = false;
             // 
             // frmCurrency
             // 
