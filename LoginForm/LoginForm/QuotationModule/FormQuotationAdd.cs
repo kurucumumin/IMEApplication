@@ -439,6 +439,7 @@ namespace LoginForm.QuotationModule
                 case 14://QAUANTITY
                     #region Quantity
                     {
+                        if (LandingCost.Enabled == false) LandingCost.Enabled = true;
                         GetQuotationQuantity(dgQuotationAddedItems.CurrentCell.RowIndex);
 
                         dgQuotationAddedItems.CurrentRow.Cells["dgUCUPCurr"].ReadOnly = false;
@@ -1263,28 +1264,31 @@ namespace LoginForm.QuotationModule
 
         private void getQuotationValues()
         {
-            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+            if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgQty"].Value != null)
             {
-                if (dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value != null)
+                for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
                 {
+                    if (dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value != null)
+                    {
 
 
-                    GetLandingCost(i);
-                    if (Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString()) < Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgCost"].Value.ToString()))
-                    {
-                        dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value = dgQuotationAddedItems.Rows[i].Cells["dgCost"].Value.ToString();
-                    }
-                    GetAllMargin();
-                    try
-                    {
-                        #region Get Margin
-                        if (dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value != null)
+                        GetLandingCost(i);
+                        if (Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString()) < Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgCost"].Value.ToString()))
                         {
-                            dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
+                            dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value = dgQuotationAddedItems.Rows[i].Cells["dgCost"].Value.ToString();
                         }
-                        #endregion
+                        GetAllMargin();
+                        try
+                        {
+                            #region Get Margin
+                            if (dgQuotationAddedItems.Rows[i].Cells["dgQty"].Value != null)
+                            {
+                                dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
+                            }
+                            #endregion
+                        }
+                        catch { }
                     }
-                    catch { }
                 }
             }
         }
@@ -1662,6 +1666,7 @@ namespace LoginForm.QuotationModule
         private void modifyQuotation(Quotation q)
         {
             #region QuotationLoader
+            LandingCost.Enabled = true;
             txtQuotationNo.Text = q.QuotationNo;
             txtRFQNo.Text = q.RFQNo;
             CustomerCode.Text = q.Customer.ID;

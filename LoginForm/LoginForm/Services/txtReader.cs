@@ -1136,6 +1136,30 @@ namespace LoginForm
             int UptCounter = 0;
             //Show the dialog and get result.
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+           //Excel.Application excel = new Excel.Application();
+            //openFileDialog1.FileName = "*.xls";
+            //if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            //{
+            //    Excel.Workbook theWorkbook = excel.Workbooks.Open(
+            //       openFileDialog1.FileName, 0, true, 5,
+            //        "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false,
+            //        0, true);
+            //    Excel.Sheets sheets = theWorkbook.Worksheets;
+            //    Excel.Worksheet worksheet = (Excel.Worksheet)sheets.get_Item(1);
+            //    for (int i = 1; i <= 10; i++)
+            //    {
+            //        Excel.Range range = worksheet.get_Range("A" + i.ToString(), "J" + i.ToString());
+            //        System.Array myvalues = (System.Array)range.Cells.Value;
+
+            //    }
+            //}
+
+
+
+            //
+
+
             openFileDialog1.Filter = "txt files (*.xlsx)|*.xlsx";
             DialogResult result1 = openFileDialog1.ShowDialog();
             if (result1 == DialogResult.OK)
@@ -1296,199 +1320,161 @@ namespace LoginForm
 
         public static int EntendedRangeRead()
         {
-            #region EntendedRangeRead
+            //try
+            //{
+                            
             IMEEntities IME = new IMEEntities();
-            int UptCounter = 0;
+            //Excel Read
             int AddedCounter = 0;
+            int UptCounter = 0;
             //Show the dialog and get result.
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "xlsx files (*.xlsx,*.xls)| *.xlsx;*.xls";
-            DialogResult result1 = openFileDialog1.ShowDialog();
-            if (result1 == DialogResult.OK)
+
+            Excel.Application excel = new Excel.Application();
+            openFileDialog1.FileName = "*.xls";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                try
-                {
-                    Excel.Application excel = new Excel.Application();
-                    Workbook wb = excel.Workbooks.Open(openFileDialog1.FileName);
-                    Worksheet ws = wb.Worksheets[1];
-                    int ColumnNumber = 2;
-                    //verilerin bşaldığı yeri bulan kısım
-                    while (ws.Cells[ColumnNumber - 1, 1].Text == "") { ColumnNumber++; }
-                    //
-                    //row sayısını bulan code
-                    int TotalRowNumber = ws.UsedRange.Rows.Count;
-
-
-
-
-                    List<string> Columns = new List<string>();
-                    int RowNumber = 1;
-                    //column ların isimlerini alıyor
-                    //COLUMNS
-                    bool isextendedRange = true;
-                    if (ws.Cells[1, 1].Text != "ArticleNo") isextendedRange = false;
-                    if (ws.Cells[1, 2].Text != "Manufacturer Code") isextendedRange = false;
-                    if (ws.Cells[1, 3].Text != "Brand") isextendedRange = false;
-                    if (ws.Cells[1, 4].Text != "MPN") isextendedRange = false;
-                    if (ws.Cells[1, 5].Text != "ArticleDescription (40 Char Description)") isextendedRange = false;
-                    if (ws.Cells[1, 6].Text != "Length") isextendedRange = false;
-                    if (ws.Cells[1, 7].Text != "Width") isextendedRange = false;
-                    if (ws.Cells[1, 8].Text != "Height") isextendedRange = false;
-                    if (ws.Cells[1, 9].Text != "Dimension UoM") isextendedRange = false;
-                    if (ws.Cells[1, 10].Text != "Weight") isextendedRange = false;
-                    if (ws.Cells[1, 11].Text != "Weight UoM") isextendedRange = false;
-                    if (ws.Cells[1, 12].Text != "CCCN") isextendedRange = false;
-                    if (ws.Cells[1, 13].Text != "Country of Origin") isextendedRange = false;
-                    if (ws.Cells[1, 14].Text != "Unit of Measure") isextendedRange = false;
-                    if (ws.Cells[1, 15].Text != "Pack Size") isextendedRange = false;
-                    if (ws.Cells[1, 16].Text != "(Sales UoM)") isextendedRange = false;
-                    if (ws.Cells[1, 17].Text != "Cost price currency") isextendedRange = false;
-                    if (ws.Cells[1, 18].Text != "Col1Price") isextendedRange = false;
-                    if (ws.Cells[1, 19].Text != "Col1Break") isextendedRange = false;
-                    if (ws.Cells[1, 20].Text != "Col2Price") isextendedRange = false;
-                    if (ws.Cells[1, 21].Text != "Col2Break") isextendedRange = false;
-                    if (ws.Cells[1, 22].Text != "Col3Price") isextendedRange = false;
-                    if (ws.Cells[1, 23].Text != "Col3Break") isextendedRange = false;
-                    if (ws.Cells[1, 24].Text != "Col4Price") isextendedRange = false;
-                    if (ws.Cells[1, 25].Text != "Col4Break") isextendedRange = false;
-                    if (ws.Cells[1, 26].Text != "Col5Price") isextendedRange = false;
-                    if (ws.Cells[1, 27].Text != "Col5Break") isextendedRange = false;
-                    if (ws.Cells[1, 28].Text != "DiscountedPrice1") isextendedRange = false;
-                    if (ws.Cells[1, 29].Text != "DiscountedPrice2") isextendedRange = false;
-                    if (ws.Cells[1, 30].Text != "DiscountedPrice3") isextendedRange = false;
-                    if (ws.Cells[1, 31].Text != "DiscountedPrice4") isextendedRange = false;
-                    if (ws.Cells[1, 32].Text != "DiscountedPrice5") isextendedRange = false;
-
-
-                    while (ws.Cells[ColumnNumber - 1, RowNumber].Text != "" || RowNumber < 33)
-                    {
-                        Columns.Add(ws.Cells[ColumnNumber - 1, RowNumber].Text);
-                        RowNumber++;
-                    }
-                    //
-                    string ArticleNumb = ws.Cells[ColumnNumber, 1].Text;
+                Excel.Workbook theWorkbook = excel.Workbooks.Open(
+                   openFileDialog1.FileName, 0, true, 5,
+                    "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false,
+                    0, true);
+                Excel.Sheets sheets = theWorkbook.Worksheets;
+                Excel.Worksheet worksheet = (Excel.Worksheet)sheets.get_Item(1);
+                //for (int i = 1; i <= 10; i++)
+                //{
+                Excel.Range last = worksheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing);
+                Excel.Range range = worksheet.get_Range("A1", last);
+                    Array myvalues = range.Cells.Value;
                     
+                    #region MyRegion
+                    bool isextendedRange = true;
+                Worksheet ws = theWorkbook.Worksheets[1];
+                if (ws.Cells[1, 1].Text != "ArticleNo") isextendedRange = false;
+                if (ws.Cells[1, 2].Text != "Manufacturer Code") isextendedRange = false;
+                if (ws.Cells[1, 3].Text != "Brand") isextendedRange = false;
+                if (ws.Cells[1, 4].Text != "MPN") isextendedRange = false;
+                if (ws.Cells[1, 5].Text != "ArticleDescription (40 Char Description)") isextendedRange = false;
+                if (ws.Cells[1, 6].Text != "Length") isextendedRange = false;
+                if (ws.Cells[1, 7].Text != "Width") isextendedRange = false;
+                if (ws.Cells[1, 8].Text != "Height") isextendedRange = false;
+                if (ws.Cells[1, 9].Text != "Dimension UoM") isextendedRange = false;
+                if (ws.Cells[1, 10].Text != "Weight") isextendedRange = false;
+                if (ws.Cells[1, 11].Text != "Weight UoM") isextendedRange = false;
+                if (ws.Cells[1, 12].Text != "CCCN") isextendedRange = false;
+                if (ws.Cells[1, 13].Text != "Country of Origin") isextendedRange = false;
+                if (ws.Cells[1, 14].Text != "Unit of Measure") isextendedRange = false;
+                if (ws.Cells[1, 15].Text != "Pack Size") isextendedRange = false;
+                if (ws.Cells[1, 16].Text != "(Sales UoM)") isextendedRange = false;
+                if (ws.Cells[1, 17].Text != "Cost price currency") isextendedRange = false;
+                if (ws.Cells[1, 18].Text != "Col1Price") isextendedRange = false;
+                if (ws.Cells[1, 19].Text != "Col1Break") isextendedRange = false;
+                if (ws.Cells[1, 20].Text != "Col2Price") isextendedRange = false;
+                if (ws.Cells[1, 21].Text != "Col2Break") isextendedRange = false;
+                if (ws.Cells[1, 22].Text != "Col3Price") isextendedRange = false;
+                if (ws.Cells[1, 23].Text != "Col3Break") isextendedRange = false;
+                if (ws.Cells[1, 24].Text != "Col4Price") isextendedRange = false;
+                if (ws.Cells[1, 25].Text != "Col4Break") isextendedRange = false;
+                if (ws.Cells[1, 26].Text != "Col5Price") isextendedRange = false;
+                if (ws.Cells[1, 27].Text != "Col5Break") isextendedRange = false;
+                if (ws.Cells[1, 28].Text != "DiscountedPrice1") isextendedRange = false;
+                if (ws.Cells[1, 29].Text != "DiscountedPrice2") isextendedRange = false;
+                if (ws.Cells[1, 30].Text != "DiscountedPrice3") isextendedRange = false;
+                if (ws.Cells[1, 31].Text != "DiscountedPrice4") isextendedRange = false;
+                if (ws.Cells[1, 32].Text != "DiscountedPrice5") isextendedRange = false;
+                #endregion
 
-
-                    if (!isextendedRange)
+                if (isextendedRange)
+                {
+                    
+                        for (int i = 2; i <= (myvalues.Length/32); i++)                         
                     {
-                        while (ArticleNumb != "")
-                        {
+                            
                             ExtendedRange extendedRange = new ExtendedRange();
-                            //FILLER
-                            //Bu kod extendedranges için bir tane nesenyi dolduruyor
-                            int Rownb = 1;
-
-
-                            while (ws.Cells[ColumnNumber, Rownb].Text != "" || Rownb < (Columns.Count - 1))
+                            //string[,] myvalues = null;
+                            extendedRange.ArticleNo = ((object[,])myvalues)[i, 1].ToString();
+                            if (((object[,])myvalues)[i, 2]!= null) { extendedRange.ManufacturerCode = ((object[,])myvalues)[i, 2].ToString(); }
+                            if (((object[,])myvalues)[i, 3] != null)
                             {
-                                switch (Columns[Rownb - 1])
-                                {
-                                    case "ArticleNo":
-                                        extendedRange.ArticleNo = ws.Cells[ColumnNumber, Rownb].Text;
-                                        break;
-                                    case "Manufacturer Code":
-                                        if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.ManufacturerCode = ws.Cells[ColumnNumber, Rownb].Text; }
-                                        break;
-                                    case "Brand":
-                                        extendedRange.Brand = ws.Cells[ColumnNumber, Rownb].Text;
-                                        break;
-                                    case "MPN":
-                                        extendedRange.MPN = ws.Cells[ColumnNumber, Rownb].Text;
-                                        break;
-                                    case "ArticleDescription (40 Char Description)":
-                                        extendedRange.ArticleDescription = ws.Cells[ColumnNumber, Rownb].Text;
-                                        break;
-                                    case "Length":
-                                        if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.ExtendedRangeLength = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
-                                        break;
-                                    case "Width":
-                                        if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.Width = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
-                                        break;
-                                    case "Height":
-                                        if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.Height = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
-                                        break;
-                                    case "Dimension UoM":
-                                        extendedRange.DimensionUoM = ws.Cells[ColumnNumber, Rownb].Text;
-                                        break;
-                                    case "Weight":
-                                        if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.ExtendedRangeWeight = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
-                                        break;
-                                    case "Weight UoM":
-                                        extendedRange.WeightUoM = ws.Cells[ColumnNumber, Rownb].Text;
-                                        break;
-                                    case "CCCN":
-                                        if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.CCCN = Int32.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
-                                        break;
-                                    case "Country of Origin":
-                                        extendedRange.CountryofOrigin = ws.Cells[ColumnNumber, Rownb].Text;
-                                        break;
-                                    case "Unit of Measure":
-                                        extendedRange.UnitofMeasure = ws.Cells[ColumnNumber, Rownb].Text;
-                                        break;
-                                    case "Pack Size":
-                                        if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.PackSize = Int32.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
-                                        break;
-                                    case "(Sales UoM)":
-                                        if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.SalesUoM = Int32.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
-                                        break;
-                                    case "Cost price currency":
-                                        extendedRange.CostPriceCurrency = ws.Cells[ColumnNumber, Rownb].Text;
-                                        break;
-                                    case "Col1Price":
-                                        if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.Col1Price = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
-                                        break;
-                                    case "Col2Price":
-                                        if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.Col2Price = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
-                                        break;
-                                    case "Col3Price":
-                                        if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.Col3Price = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
-                                        break;
-                                    case "Col4Price":
-                                        if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.Col4Price = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
-                                        break;
-                                    case "Col5Price":
-                                        if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.Col5Price = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
-                                        break;
-                                    case "Col1Break":
-                                        if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.Col1Break = Int32.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
-                                        break;
-                                    case "Col2Break":
-                                        if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.Col2Break = Int32.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
-                                        break;
-                                    case "Col3Break":
-                                        if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.Col3Break = Int32.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
-                                        break;
-                                    case "Col4Break":
-                                        if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.Col4Break = Int32.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
-                                        break;
-                                    case "Col5Break":
-                                        if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.Col5Break = Int32.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
-                                        break;
-                                    case "DiscountedPrice1":
-                                        if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.DiscountedPrice1 = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
-                                        break;
-                                    case "DiscountedPrice2":
-                                        if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.DiscountedPrice2 = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
-                                        break;
-                                    case "DiscountedPrice3":
-                                        if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.DiscountedPrice3 = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
-                                        break;
-                                    case "DiscountedPrice4":
-                                        if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.DiscountedPrice4 = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
-                                        break;
-                                    case "DiscountedPrice5":
-                                        if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.DiscountedPrice5 = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
-                                        break;
-                                    case "":
-                                        break;
-                                }
-                                Rownb++;
+                                extendedRange.Brand = ((object[,])myvalues)[i, 3].ToString();
                             }
-                            //Yeni bir dosya eklemek için
+                            if (((object[,])myvalues)[i, 4] != null)
+                            {
+                                extendedRange.MPN = ((object[,])myvalues)[i, 4].ToString();
+                            }
+                            if (((object[,])myvalues)[i, 5] != null)
+                            {
+                                extendedRange.ArticleDescription = ((object[,])myvalues)[i, 5].ToString();
+                            }
+
+                            if (((object[,])myvalues)[i, 6] != null) { extendedRange.ExtendedRangeLength = Decimal.Parse(((object[,])myvalues)[i, 6].ToString()); }
+
+                            if (((object[,])myvalues)[i, 7] != null) { extendedRange.Width = Decimal.Parse(((object[,])myvalues)[i, 7].ToString()); }
+
+                            if (((object[,])myvalues)[i, 8] !=null) { extendedRange.Height = Decimal.Parse(((object[,])myvalues)[i, 8].ToString()); }
+
+                            if (((object[,])myvalues)[i, 9] != null)
+                            {
+                                extendedRange.DimensionUoM = ((object[,])myvalues)[i, 9].ToString();
+                            }
+
+                            if (((object[,])myvalues)[i, 10] != null) { extendedRange.ExtendedRangeWeight = Decimal.Parse(((object[,])myvalues)[i, 10].ToString()); }
+
+                            if (((object[,])myvalues)[i, 11] != null)
+                            {
+                                extendedRange.WeightUoM = ((object[,])myvalues)[i, 11].ToString();
+                            }
+
+                            if (((object[,])myvalues)[i, 12] != null) { extendedRange.CCCN = Int32.Parse(((object[,])myvalues)[i, 12].ToString()); }
+
+                            if (((object[,])myvalues)[i, 13] != null)
+                            {
+                                extendedRange.CountryofOrigin = ((object[,])myvalues)[i, 13].ToString();
+                            }
+                            if (((object[,])myvalues)[i, 14] != null)
+                            {
+                                extendedRange.UnitofMeasure = ((object[,])myvalues)[i, 14].ToString();
+                            }
+
+                            if (((object[,])myvalues)[i, 15] != null) { extendedRange.PackSize = Int32.Parse(((object[,])myvalues)[i, 15].ToString()); }
+
+                            if (((object[,])myvalues)[i, 16] != null) { extendedRange.SalesUoM = Int32.Parse(((object[,])myvalues)[i, 16].ToString()); }
+
+                            if (((object[,])myvalues)[i, 17] != null)
+                            {
+                                extendedRange.CostPriceCurrency = ((object[,])myvalues)[i, 17].ToString();
+                            }
+
+                            if (((object[,])myvalues)[i, 18] != null) { extendedRange.Col1Price = Decimal.Parse(((object[,])myvalues)[i, 18].ToString()); }
+
+                            if (((object[,])myvalues)[i, 20] != null) { extendedRange.Col2Price = Decimal.Parse(((object[,])myvalues)[i, 20].ToString()); }
+
+                            if (((object[,])myvalues)[i, 22] != null) { extendedRange.Col3Price = Decimal.Parse(((object[,])myvalues)[i, 22].ToString()); }
+
+                            if (((object[,])myvalues)[i, 24] != null) { extendedRange.Col4Price = Decimal.Parse(((object[,])myvalues)[i, 24].ToString()); }
+
+                            if (((object[,])myvalues)[i, 26] != null) { extendedRange.Col5Price = Decimal.Parse(((object[,])myvalues)[i, 26].ToString()); }
+
+                            if (((object[,])myvalues)[i, 19] != null) { extendedRange.Col1Break = Int32.Parse(((object[,])myvalues)[i, 19].ToString()); }
+
+                            if (((object[,])myvalues)[i, 21] != null) { extendedRange.Col2Break = Int32.Parse(((object[,])myvalues)[i, 21].ToString()); }
+
+                            if (((object[,])myvalues)[i, 23] != null) { extendedRange.Col3Break = Int32.Parse(((object[,])myvalues)[i, 23].ToString()); }
+
+                            if (((object[,])myvalues)[i, 25] != null) { extendedRange.Col4Break = Int32.Parse(((object[,])myvalues)[i, 25].ToString()); }
+
+                            if (((object[,])myvalues)[i, 27] != null) { extendedRange.Col5Break = Int32.Parse(((object[,])myvalues)[i, 27].ToString()); }
+                            if (((object[,])myvalues)[i, 28] != null) { extendedRange.DiscountedPrice1 = Decimal.Parse(((object[,])myvalues)[i, 28].ToString()); }
+                            if (((object[,])myvalues)[i, 29] != null) { extendedRange.DiscountedPrice2 = Decimal.Parse(((object[,])myvalues)[i, 29].ToString()); }
+                            if (((object[,])myvalues)[i, 30] != null) { extendedRange.DiscountedPrice3 = Decimal.Parse(((object[,])myvalues)[i, 30].ToString()); }
+                            if (((object[,])myvalues)[i, 31] != null) { extendedRange.DiscountedPrice4 = Decimal.Parse(((object[,])myvalues)[i, 31].ToString()); }
+                            if (((object[,])myvalues)[i, 32] != null)
+                            {
+                                extendedRange.DiscountedPrice5 = Decimal.Parse(((object[,])myvalues)[i, 32].ToString());
+                            }
+
+
 
                             IME.ExtendedRangeADD(
-
                                 extendedRange.ArticleNo
                , extendedRange.Brand
                , extendedRange.MPN
@@ -1524,135 +1510,488 @@ namespace LoginForm
 
 
                                 );
-
-
-                            extendedRange = new ExtendedRange();
-                            ColumnNumber++;
-                            ArticleNumb = ws.Cells[ColumnNumber, 1].Text;
-                        }
-                    }
-                    else
+                            }
+                        
+                }
+                else
+                {
+                    for (int i = 2; i <= (myvalues.Length / 32); i++)
                     {
                         ExtendedRange extendedRange = new ExtendedRange();
-                        //FILLER
-                        //Bu kod extendedranges için bir tane nesenyi dolduruyor
-                        int Rownb = 1;
-
-
-                        while (ws.Cells[ColumnNumber, 1].Text != "")
+                        for (int j = 0; j < 32; j++)
                         {
                             
-                                
-                                    extendedRange.ArticleNo = ws.Cells[ColumnNumber, 1].Text;
-                                    if (ws.Cells[ColumnNumber, 2].Text != "") { extendedRange.ManufacturerCode = ws.Cells[ColumnNumber, 2].Text; }
-                                    extendedRange.Brand = ws.Cells[ColumnNumber, 3].Text;
-                                    extendedRange.MPN = ws.Cells[ColumnNumber, 4].Text;
-                                    extendedRange.ArticleDescription = ws.Cells[ColumnNumber, 5].Text;
-                            
-                                    if (ws.Cells[ColumnNumber, 6].Text != "") { extendedRange.ExtendedRangeLength = Decimal.Parse(ws.Cells[ColumnNumber, 6].Text); }
-                           
-                                    if (ws.Cells[ColumnNumber, 7].Text != "") { extendedRange.Width = Decimal.Parse(ws.Cells[ColumnNumber, 7].Text); }
-                           
-                                    if (ws.Cells[ColumnNumber, 8].Text != "") { extendedRange.Height = Decimal.Parse(ws.Cells[ColumnNumber, 8].Text); }
-                           
-                                    extendedRange.DimensionUoM = ws.Cells[ColumnNumber, 9].Text;
-                           
-                                    if (ws.Cells[ColumnNumber, 10].Text != "") { extendedRange.ExtendedRangeWeight = Decimal.Parse(ws.Cells[ColumnNumber, 10].Text); }
-                            
-                                    extendedRange.WeightUoM = ws.Cells[ColumnNumber, 11].Text;
-
-                                    if (ws.Cells[ColumnNumber, 12].Text != "") { extendedRange.CCCN = Int32.Parse(ws.Cells[ColumnNumber, 12].Text); }
-
-                                    extendedRange.CountryofOrigin = ws.Cells[ColumnNumber, 13].Text;
-                                    extendedRange.UnitofMeasure = ws.Cells[ColumnNumber, 14].Text;
-
-                                    if (ws.Cells[ColumnNumber, 15].Text != "") { extendedRange.PackSize = Int32.Parse(ws.Cells[ColumnNumber, 15].Text); }
-
-                                    if (ws.Cells[ColumnNumber, 16].Text != "") { extendedRange.SalesUoM = Int32.Parse(ws.Cells[ColumnNumber, 16].Text); }
-
-                                    extendedRange.CostPriceCurrency = ws.Cells[ColumnNumber, 17].Text;
-
-                                    if (ws.Cells[ColumnNumber, 18].Text != "") { extendedRange.Col1Price = Decimal.Parse(ws.Cells[ColumnNumber, 18].Text); }
-
-                                    if (ws.Cells[ColumnNumber, 19].Text != "") { extendedRange.Col2Price = Decimal.Parse(ws.Cells[ColumnNumber, 19].Text); }
-
-                                    if (ws.Cells[ColumnNumber, 20].Text != "") { extendedRange.Col3Price = Decimal.Parse(ws.Cells[ColumnNumber, 20].Text); }
-
-                                    if (ws.Cells[ColumnNumber, 21].Text != "") { extendedRange.Col4Price = Decimal.Parse(ws.Cells[ColumnNumber, 21].Text); }
-  
-                                    if (ws.Cells[ColumnNumber, 22].Text != "") { extendedRange.Col5Price = Decimal.Parse(ws.Cells[ColumnNumber, 22].Text); }
-
-                                    if (ws.Cells[ColumnNumber, 23].Text != "") { extendedRange.Col1Break = Int32.Parse(ws.Cells[ColumnNumber, 23].Text); }
-
-                                    if (ws.Cells[ColumnNumber, 24].Text != "") { extendedRange.Col2Break = Int32.Parse(ws.Cells[ColumnNumber, 24].Text); }
-
-                                    if (ws.Cells[ColumnNumber, 25].Text != "") { extendedRange.Col3Break = Int32.Parse(ws.Cells[ColumnNumber, 25].Text); }
-
-                                    if (ws.Cells[ColumnNumber, 26].Text != "") { extendedRange.Col4Break = Int32.Parse(ws.Cells[ColumnNumber, 26].Text); }
-
-                                    if (ws.Cells[ColumnNumber, 27].Text != "") { extendedRange.Col5Break = Int32.Parse(ws.Cells[ColumnNumber, 27].Text); }
-                                    if (ws.Cells[ColumnNumber, 28].Text != "") { extendedRange.DiscountedPrice1 = Decimal.Parse(ws.Cells[ColumnNumber, 28].Text); }
-                                    if (ws.Cells[ColumnNumber, 29].Text != "") { extendedRange.DiscountedPrice2 = Decimal.Parse(ws.Cells[ColumnNumber, 29].Text); }
-                                    if (ws.Cells[ColumnNumber, 30].Text != "") { extendedRange.DiscountedPrice3 = Decimal.Parse(ws.Cells[ColumnNumber, 30].Text); }
-                                    if (ws.Cells[ColumnNumber, 31].Text != "") { extendedRange.DiscountedPrice4 = Decimal.Parse(ws.Cells[ColumnNumber, 31].Text); }
-                                    if (ws.Cells[ColumnNumber, 32].Text != "") { extendedRange.DiscountedPrice5 = Decimal.Parse(ws.Cells[ColumnNumber, 32].Text); }
-
-
-
-                            //Yeni bir dosya eklemek için
-
-                            IME.ExtendedRangeADD(
-
-                                extendedRange.ArticleNo
-               , extendedRange.Brand
-               , extendedRange.MPN
-               , extendedRange.ArticleDescription
-               , extendedRange.ExtendedRangeLength
-               , extendedRange.Width
-               , extendedRange.Height
-               , extendedRange.DimensionUoM
-               , extendedRange.WeightUoM
-               , extendedRange.CCCN
-               , extendedRange.CountryofOrigin
-               , extendedRange.UnitofMeasure
-               , extendedRange.PackSize
-               , extendedRange.SalesUoM
-               , extendedRange.CostPriceCurrency
-               , extendedRange.Col1Price
-               , extendedRange.Col2Price
-               , extendedRange.Col3Price
-               , extendedRange.Col4Price
-               , extendedRange.Col5Price
-               , extendedRange.Col1Break
-               , extendedRange.Col2Break
-               , extendedRange.Col3Break
-               , extendedRange.Col4Break
-               , extendedRange.Col5Break
-               , extendedRange.DiscountedPrice1
-               , extendedRange.DiscountedPrice2
-               , extendedRange.DiscountedPrice3
-               , extendedRange.DiscountedPrice4
-               , extendedRange.DiscountedPrice5
-               , extendedRange.ManufacturerCode
-               , extendedRange.ExtendedRangeWeight
-
-
-                                );
-
-
-                            extendedRange = new ExtendedRange();
-                            ColumnNumber++;
-                            ArticleNumb = ws.Cells[ColumnNumber, 1].Text;
+                            switch (((object[,])myvalues)[1, j].ToString())
+                            {
+                                case "ArticleNo":
+                                    extendedRange.ArticleNo = ((object[,])myvalues)[i, j].ToString();
+                                    break;
+                                case "Manufacturer Code":
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.ManufacturerCode = ((object[,])myvalues)[i, j].ToString(); }
+                                    break;
+                                case "Brand":
+                                    extendedRange.Brand = ((object[,])myvalues)[i, j].ToString();
+                                    break;
+                                case "MPN":
+                                    extendedRange.MPN = ((object[,])myvalues)[i, j].ToString();
+                                    break;
+                                case "ArticleDescription (40 Char Description)":
+                                    extendedRange.ArticleDescription = ((object[,])myvalues)[i, j].ToString();
+                                    break;
+                                case "Length":
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.ExtendedRangeLength = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    break;
+                                case "Width":
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.Width = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    break;
+                                case "Height":
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.Height = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    break;
+                                case "Dimension UoM":
+                                    extendedRange.DimensionUoM = ((object[,])myvalues)[i, j].ToString();
+                                    break;
+                                case "Weight":
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.ExtendedRangeWeight = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    break;
+                                case "Weight UoM":
+                                    extendedRange.WeightUoM = ((object[,])myvalues)[i, j].ToString();
+                                    break;
+                                case "CCCN":
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.CCCN = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    break;
+                                case "Country of Origin":
+                                    extendedRange.CountryofOrigin = ((object[,])myvalues)[i, j].ToString();
+                                    break;
+                                case "Unit of Measure":
+                                    extendedRange.UnitofMeasure = ((object[,])myvalues)[i, j].ToString();
+                                    break;
+                                case "Pack Size":
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.PackSize = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    break;
+                                case "(Sales UoM)":
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.SalesUoM = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    break;
+                                case "Cost price currency":
+                                    extendedRange.CostPriceCurrency = ((object[,])myvalues)[i, j].ToString();
+                                    break;
+                                case "Col1Price":
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.Col1Price = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    break;
+                                case "Col2Price":
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.Col2Price = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    break;
+                                case "Col3Price":
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.Col3Price = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    break;
+                                case "Col4Price":
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.Col4Price = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    break;
+                                case "Col5Price":
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.Col5Price = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    break;
+                                case "Col1Break":
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.Col1Break = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    break;
+                                case "Col2Break":
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.Col2Break = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    break;
+                                case "Col3Break":
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.Col3Break = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    break;
+                                case "Col4Break":
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.Col4Break = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    break;
+                                case "Col5Break":
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.Col5Break = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    break;
+                                case "DiscountedPrice1":
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.DiscountedPrice1 = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    break;
+                                case "DiscountedPrice2":
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.DiscountedPrice2 = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    break;
+                                case "DiscountedPrice3":
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.DiscountedPrice3 = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    break;
+                                case "DiscountedPrice4":
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.DiscountedPrice4 = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    break;
+                                case "DiscountedPrice5":
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.DiscountedPrice5 = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    break;
+                                case "":
+                                    break;
+                            }
                         }
                     }
-                        
-                    MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
-                    #endregion
-                    return 1;
                 }
-                catch { MessageBox.Show("This document does not proper to load here"); return 0; }
-            }
-            return 0;
+
+                }
+
+
+
+
+                //
+
+
+
+                #region EntendedRangeReadOLD
+                //IMEEntities IME = new IMEEntities();
+                //int UptCounter = 0;
+                //int AddedCounter = 0;
+                ////Show the dialog and get result.
+                //OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                //openFileDialog1.Filter = "xlsx files (*.xlsx,*.xls)| *.xlsx;*.xls";
+                //DialogResult result1 = openFileDialog1.ShowDialog();
+                //if (result1 == DialogResult.OK)
+                //{
+                //    try
+                //    {
+                //        Excel.Application excel = new Excel.Application();
+                //        Workbook wb = excel.Workbooks.Open(openFileDialog1.FileName);
+                //        Worksheet ws = wb.Worksheets[1];
+                //        int ColumnNumber = 2;
+                //        
+                //        while (ws.Cells[ColumnNumber - 1, 1].Text == "") { ColumnNumber++; }
+                //        //
+                //        //row sayısını bulan code
+                //        int TotalRowNumber = ws.UsedRange.Rows.Count;
+
+
+
+
+                //        List<string> Columns = new List<string>();
+                //        int RowNumber = 1;
+                //        //column ların isimlerini alıyor
+                //        //COLUMNS
+                //        bool isextendedRange = true;
+                //        if (ws.Cells[1, 1].Text != "ArticleNo") isextendedRange = false;
+                //        if (ws.Cells[1, 2].Text != "Manufacturer Code") isextendedRange = false;
+                //        if (ws.Cells[1, 3].Text != "Brand") isextendedRange = false;
+                //        if (ws.Cells[1, 4].Text != "MPN") isextendedRange = false;
+                //        if (ws.Cells[1, 5].Text != "ArticleDescription (40 Char Description)") isextendedRange = false;
+                //        if (ws.Cells[1, 6].Text != "Length") isextendedRange = false;
+                //        if (ws.Cells[1, 7].Text != "Width") isextendedRange = false;
+                //        if (ws.Cells[1, 8].Text != "Height") isextendedRange = false;
+                //        if (ws.Cells[1, 9].Text != "Dimension UoM") isextendedRange = false;
+                //        if (ws.Cells[1, 10].Text != "Weight") isextendedRange = false;
+                //        if (ws.Cells[1, 11].Text != "Weight UoM") isextendedRange = false;
+                //        if (ws.Cells[1, 12].Text != "CCCN") isextendedRange = false;
+                //        if (ws.Cells[1, 13].Text != "Country of Origin") isextendedRange = false;
+                //        if (ws.Cells[1, 14].Text != "Unit of Measure") isextendedRange = false;
+                //        if (ws.Cells[1, 15].Text != "Pack Size") isextendedRange = false;
+                //        if (ws.Cells[1, 16].Text != "(Sales UoM)") isextendedRange = false;
+                //        if (ws.Cells[1, 17].Text != "Cost price currency") isextendedRange = false;
+                //        if (ws.Cells[1, 18].Text != "Col1Price") isextendedRange = false;
+                //        if (ws.Cells[1, 19].Text != "Col1Break") isextendedRange = false;
+                //        if (ws.Cells[1, 20].Text != "Col2Price") isextendedRange = false;
+                //        if (ws.Cells[1, 21].Text != "Col2Break") isextendedRange = false;
+                //        if (ws.Cells[1, 22].Text != "Col3Price") isextendedRange = false;
+                //        if (ws.Cells[1, 23].Text != "Col3Break") isextendedRange = false;
+                //        if (ws.Cells[1, 24].Text != "Col4Price") isextendedRange = false;
+                //        if (ws.Cells[1, 25].Text != "Col4Break") isextendedRange = false;
+                //        if (ws.Cells[1, 26].Text != "Col5Price") isextendedRange = false;
+                //        if (ws.Cells[1, 27].Text != "Col5Break") isextendedRange = false;
+                //        if (ws.Cells[1, 28].Text != "DiscountedPrice1") isextendedRange = false;
+                //        if (ws.Cells[1, 29].Text != "DiscountedPrice2") isextendedRange = false;
+                //        if (ws.Cells[1, 30].Text != "DiscountedPrice3") isextendedRange = false;
+                //        if (ws.Cells[1, 31].Text != "DiscountedPrice4") isextendedRange = false;
+                //        if (ws.Cells[1, 32].Text != "DiscountedPrice5") isextendedRange = false;
+
+
+                //        while (ws.Cells[ColumnNumber - 1, RowNumber].Text != "" || RowNumber < 33)
+                //        {
+                //            Columns.Add(ws.Cells[ColumnNumber - 1, RowNumber].Text);
+                //            RowNumber++;
+                //        }
+                //        //
+                //        string ArticleNumb = ws.Cells[ColumnNumber, 1].Text;
+
+
+
+                //        if (!isextendedRange)
+                //        {
+                //            while (ArticleNumb != "")
+                //            {
+                //                ExtendedRange extendedRange = new ExtendedRange();
+                //                //FILLER
+                //                //Bu kod extendedranges için bir tane nesenyi dolduruyor
+                //                int Rownb = 1;
+
+
+                //                while (ws.Cells[ColumnNumber, Rownb].Text != "" || Rownb < (Columns.Count - 1))
+                //                {
+                //                    switch (Columns[Rownb - 1])
+                //                    {
+                //                        case "ArticleNo":
+                //                            extendedRange.ArticleNo = ws.Cells[ColumnNumber, Rownb].Text;
+                //                            break;
+                //                        case "Manufacturer Code":
+                //                            if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.ManufacturerCode = ws.Cells[ColumnNumber, Rownb].Text; }
+                //                            break;
+                //                        case "Brand":
+                //                            extendedRange.Brand = ws.Cells[ColumnNumber, Rownb].Text;
+                //                            break;
+                //                        case "MPN":
+                //                            extendedRange.MPN = ws.Cells[ColumnNumber, Rownb].Text;
+                //                            break;
+                //                        case "ArticleDescription (40 Char Description)":
+                //                            extendedRange.ArticleDescription = ws.Cells[ColumnNumber, Rownb].Text;
+                //                            break;
+                //                        case "Length":
+                //                            if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.ExtendedRangeLength = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
+                //                            break;
+                //                        case "Width":
+                //                            if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.Width = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
+                //                            break;
+                //                        case "Height":
+                //                            if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.Height = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
+                //                            break;
+                //                        case "Dimension UoM":
+                //                            extendedRange.DimensionUoM = ws.Cells[ColumnNumber, Rownb].Text;
+                //                            break;
+                //                        case "Weight":
+                //                            if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.ExtendedRangeWeight = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
+                //                            break;
+                //                        case "Weight UoM":
+                //                            extendedRange.WeightUoM = ws.Cells[ColumnNumber, Rownb].Text;
+                //                            break;
+                //                        case "CCCN":
+                //                            if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.CCCN = Int32.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
+                //                            break;
+                //                        case "Country of Origin":
+                //                            extendedRange.CountryofOrigin = ws.Cells[ColumnNumber, Rownb].Text;
+                //                            break;
+                //                        case "Unit of Measure":
+                //                            extendedRange.UnitofMeasure = ws.Cells[ColumnNumber, Rownb].Text;
+                //                            break;
+                //                        case "Pack Size":
+                //                            if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.PackSize = Int32.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
+                //                            break;
+                //                        case "(Sales UoM)":
+                //                            if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.SalesUoM = Int32.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
+                //                            break;
+                //                        case "Cost price currency":
+                //                            extendedRange.CostPriceCurrency = ws.Cells[ColumnNumber, Rownb].Text;
+                //                            break;
+                //                        case "Col1Price":
+                //                            if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.Col1Price = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
+                //                            break;
+                //                        case "Col2Price":
+                //                            if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.Col2Price = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
+                //                            break;
+                //                        case "Col3Price":
+                //                            if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.Col3Price = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
+                //                            break;
+                //                        case "Col4Price":
+                //                            if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.Col4Price = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
+                //                            break;
+                //                        case "Col5Price":
+                //                            if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.Col5Price = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
+                //                            break;
+                //                        case "Col1Break":
+                //                            if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.Col1Break = Int32.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
+                //                            break;
+                //                        case "Col2Break":
+                //                            if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.Col2Break = Int32.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
+                //                            break;
+                //                        case "Col3Break":
+                //                            if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.Col3Break = Int32.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
+                //                            break;
+                //                        case "Col4Break":
+                //                            if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.Col4Break = Int32.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
+                //                            break;
+                //                        case "Col5Break":
+                //                            if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.Col5Break = Int32.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
+                //                            break;
+                //                        case "DiscountedPrice1":
+                //                            if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.DiscountedPrice1 = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
+                //                            break;
+                //                        case "DiscountedPrice2":
+                //                            if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.DiscountedPrice2 = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
+                //                            break;
+                //                        case "DiscountedPrice3":
+                //                            if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.DiscountedPrice3 = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
+                //                            break;
+                //                        case "DiscountedPrice4":
+                //                            if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.DiscountedPrice4 = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
+                //                            break;
+                //                        case "DiscountedPrice5":
+                //                            if (ws.Cells[ColumnNumber, Rownb].Text != "") { extendedRange.DiscountedPrice5 = Decimal.Parse(ws.Cells[ColumnNumber, Rownb].Text); }
+                //                            break;
+                //                        case "":
+                //                            break;
+                //                    }
+                //                    Rownb++;
+                //                }
+                //                //Yeni bir dosya eklemek için
+
+                //                IME.ExtendedRangeADD(
+
+                //                    extendedRange.ArticleNo
+                //   , extendedRange.Brand
+                //   , extendedRange.MPN
+                //   , extendedRange.ArticleDescription
+                //   , extendedRange.ExtendedRangeLength
+                //   , extendedRange.Width
+                //   , extendedRange.Height
+                //   , extendedRange.DimensionUoM
+                //   , extendedRange.WeightUoM
+                //   , extendedRange.CCCN
+                //   , extendedRange.CountryofOrigin
+                //   , extendedRange.UnitofMeasure
+                //   , extendedRange.PackSize
+                //   , extendedRange.SalesUoM
+                //   , extendedRange.CostPriceCurrency
+                //   , extendedRange.Col1Price
+                //   , extendedRange.Col2Price
+                //   , extendedRange.Col3Price
+                //   , extendedRange.Col4Price
+                //   , extendedRange.Col5Price
+                //   , extendedRange.Col1Break
+                //   , extendedRange.Col2Break
+                //   , extendedRange.Col3Break
+                //   , extendedRange.Col4Break
+                //   , extendedRange.Col5Break
+                //   , extendedRange.DiscountedPrice1
+                //   , extendedRange.DiscountedPrice2
+                //   , extendedRange.DiscountedPrice3
+                //   , extendedRange.DiscountedPrice4
+                //   , extendedRange.DiscountedPrice5
+                //   , extendedRange.ManufacturerCode
+                //   , extendedRange.ExtendedRangeWeight
+
+
+                //                    );
+
+
+                //                extendedRange = new ExtendedRange();
+                //                ColumnNumber++;
+                //                ArticleNumb = ws.Cells[ColumnNumber, 1].Text;
+                //            }
+                //        }
+                //        else
+                //        {
+                //            ExtendedRange extendedRange = new ExtendedRange();
+                //            //FILLER
+                //            //Bu kod extendedranges için bir tane nesenyi dolduruyor
+                //            int Rownb = 1;
+
+
+                //            while (ws.Cells[ColumnNumber, 1].Text != "")
+                //            {
+
+
+                //                        extendedRange.ArticleNo = ws.Cells[ColumnNumber, 1].Text;
+                //                        if (ws.Cells[ColumnNumber, 2].Text != "") { extendedRange.ManufacturerCode = ws.Cells[ColumnNumber, 2].Text; }
+                //                        extendedRange.Brand = ws.Cells[ColumnNumber, 3].Text;
+                //                        extendedRange.MPN = ws.Cells[ColumnNumber, 4].Text;
+                //                        extendedRange.ArticleDescription = ws.Cells[ColumnNumber, 5].Text;
+
+                //                        if (ws.Cells[ColumnNumber, 6].Text != "") { extendedRange.ExtendedRangeLength = Decimal.Parse(ws.Cells[ColumnNumber, 6].Text); }
+
+                //                        if (ws.Cells[ColumnNumber, 7].Text != "") { extendedRange.Width = Decimal.Parse(ws.Cells[ColumnNumber, 7].Text); }
+
+                //                        if (ws.Cells[ColumnNumber, 8].Text != "") { extendedRange.Height = Decimal.Parse(ws.Cells[ColumnNumber, 8].Text); }
+
+                //                        extendedRange.DimensionUoM = ws.Cells[ColumnNumber, 9].Text;
+
+                //                        if (ws.Cells[ColumnNumber, 10].Text != "") { extendedRange.ExtendedRangeWeight = Decimal.Parse(ws.Cells[ColumnNumber, 10].Text); }
+
+                //                        extendedRange.WeightUoM = ws.Cells[ColumnNumber, 11].Text;
+
+                //                        if (ws.Cells[ColumnNumber, 12].Text != "") { extendedRange.CCCN = Int32.Parse(ws.Cells[ColumnNumber, 12].Text); }
+
+                //                        extendedRange.CountryofOrigin = ws.Cells[ColumnNumber, 13].Text;
+                //                        extendedRange.UnitofMeasure = ws.Cells[ColumnNumber, 14].Text;
+
+                //                        if (ws.Cells[ColumnNumber, 15].Text != "") { extendedRange.PackSize = Int32.Parse(ws.Cells[ColumnNumber, 15].Text); }
+
+                //                        if (ws.Cells[ColumnNumber, 16].Text != "") { extendedRange.SalesUoM = Int32.Parse(ws.Cells[ColumnNumber, 16].Text); }
+
+                //                        extendedRange.CostPriceCurrency = ws.Cells[ColumnNumber, 17].Text;
+
+                //                        if (ws.Cells[ColumnNumber, 18].Text != "") { extendedRange.Col1Price = Decimal.Parse(ws.Cells[ColumnNumber, 18].Text); }
+
+                //                        if (ws.Cells[ColumnNumber, 19].Text != "") { extendedRange.Col2Price = Decimal.Parse(ws.Cells[ColumnNumber, 19].Text); }
+
+                //                        if (ws.Cells[ColumnNumber, 20].Text != "") { extendedRange.Col3Price = Decimal.Parse(ws.Cells[ColumnNumber, 20].Text); }
+
+                //                        if (ws.Cells[ColumnNumber, 21].Text != "") { extendedRange.Col4Price = Decimal.Parse(ws.Cells[ColumnNumber, 21].Text); }
+
+                //                        if (ws.Cells[ColumnNumber, 22].Text != "") { extendedRange.Col5Price = Decimal.Parse(ws.Cells[ColumnNumber, 22].Text); }
+
+                //                        if (ws.Cells[ColumnNumber, 23].Text != "") { extendedRange.Col1Break = Int32.Parse(ws.Cells[ColumnNumber, 23].Text); }
+
+                //                        if (ws.Cells[ColumnNumber, 24].Text != "") { extendedRange.Col2Break = Int32.Parse(ws.Cells[ColumnNumber, 24].Text); }
+
+                //                        if (ws.Cells[ColumnNumber, 25].Text != "") { extendedRange.Col3Break = Int32.Parse(ws.Cells[ColumnNumber, 25].Text); }
+
+                //                        if (ws.Cells[ColumnNumber, 26].Text != "") { extendedRange.Col4Break = Int32.Parse(ws.Cells[ColumnNumber, 26].Text); }
+
+                //                        if (ws.Cells[ColumnNumber, 27].Text != "") { extendedRange.Col5Break = Int32.Parse(ws.Cells[ColumnNumber, 27].Text); }
+                //                        if (ws.Cells[ColumnNumber, 28].Text != "") { extendedRange.DiscountedPrice1 = Decimal.Parse(ws.Cells[ColumnNumber, 28].Text); }
+                //                        if (ws.Cells[ColumnNumber, 29].Text != "") { extendedRange.DiscountedPrice2 = Decimal.Parse(ws.Cells[ColumnNumber, 29].Text); }
+                //                        if (ws.Cells[ColumnNumber, 30].Text != "") { extendedRange.DiscountedPrice3 = Decimal.Parse(ws.Cells[ColumnNumber, 30].Text); }
+                //                        if (ws.Cells[ColumnNumber, 31].Text != "") { extendedRange.DiscountedPrice4 = Decimal.Parse(ws.Cells[ColumnNumber, 31].Text); }
+                //                        if (ws.Cells[ColumnNumber, 32].Text != "") { extendedRange.DiscountedPrice5 = Decimal.Parse(ws.Cells[ColumnNumber, 32].Text); }
+
+
+
+                //                //Yeni bir dosya eklemek için
+
+                //                IME.ExtendedRangeADD(
+
+                //                    extendedRange.ArticleNo
+                //   , extendedRange.Brand
+                //   , extendedRange.MPN
+                //   , extendedRange.ArticleDescription
+                //   , extendedRange.ExtendedRangeLength
+                //   , extendedRange.Width
+                //   , extendedRange.Height
+                //   , extendedRange.DimensionUoM
+                //   , extendedRange.WeightUoM
+                //   , extendedRange.CCCN
+                //   , extendedRange.CountryofOrigin
+                //   , extendedRange.UnitofMeasure
+                //   , extendedRange.PackSize
+                //   , extendedRange.SalesUoM
+                //   , extendedRange.CostPriceCurrency
+                //   , extendedRange.Col1Price
+                //   , extendedRange.Col2Price
+                //   , extendedRange.Col3Price
+                //   , extendedRange.Col4Price
+                //   , extendedRange.Col5Price
+                //   , extendedRange.Col1Break
+                //   , extendedRange.Col2Break
+                //   , extendedRange.Col3Break
+                //   , extendedRange.Col4Break
+                //   , extendedRange.Col5Break
+                //   , extendedRange.DiscountedPrice1
+                //   , extendedRange.DiscountedPrice2
+                //   , extendedRange.DiscountedPrice3
+                //   , extendedRange.DiscountedPrice4
+                //   , extendedRange.DiscountedPrice5
+                //   , extendedRange.ManufacturerCode
+                //   , extendedRange.ExtendedRangeWeight
+
+
+                //                    );
+
+
+                //                extendedRange = new ExtendedRange();
+                //                ColumnNumber++;
+                //                ArticleNumb = ws.Cells[ColumnNumber, 1].Text;
+                //            }
+                //        }
+
+                //        MessageBox.Show(AddedCounter + " items are Added, " + UptCounter + " items are Updated");
+                #endregion
+
+
+                return 1;
+            //}
+            //catch { MessageBox.Show("This document does not proper to load here"); return 0; }
         }
 
         public static int RSProRead()

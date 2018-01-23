@@ -289,6 +289,20 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AdditionalCostViewAllByVoucherTypeIdAndVoucherNo_Result>("AdditionalCostViewAllByVoucherTypeIdAndVoucherNo", voucherTypeIdParameter, voucherNoParameter);
         }
     
+        public virtual ObjectResult<AreaOnlyViewAll_Result> AreaOnlyViewAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AreaOnlyViewAll_Result>("AreaOnlyViewAll");
+        }
+    
+        public virtual ObjectResult<AreaWithNarrationView_Result> AreaWithNarrationView(Nullable<decimal> areaId)
+        {
+            var areaIdParameter = areaId.HasValue ?
+                new ObjectParameter("areaId", areaId) :
+                new ObjectParameter("areaId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AreaWithNarrationView_Result>("AreaWithNarrationView", areaIdParameter);
+        }
+    
         public virtual ObjectResult<ArticleSearch_Result> ArticleSearch(string articleNo)
         {
             var articleNoParameter = articleNo != null ?
@@ -404,6 +418,15 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BudgetVariance_Result>("BudgetVariance", budgetMasterIdParameter);
         }
     
+        public virtual ObjectResult<Nullable<int>> CheckForDefaultVoucherType(Nullable<decimal> voucherTypeId)
+        {
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("CheckForDefaultVoucherType", voucherTypeIdParameter);
+        }
+    
         public virtual ObjectResult<CreditNoteRegisterSearch_Result> CreditNoteRegisterSearch(string voucherNo, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var voucherNoParameter = voucherNo != null ?
@@ -451,7 +474,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("ExchangeRateViewByExchangeRateId", exchangeRateIdParameter);
         }
     
-        public virtual int ExtendedRangeADD(string articleNo, string brand, string mPN, string articleDescription, Nullable<decimal> extendedRangeLength, Nullable<decimal> width, Nullable<decimal> height, string dimensionUoM, string weightUoM, Nullable<int> cCCN, string countryofOrigin, string unitofMeasure, Nullable<int> packSize, Nullable<int> salesUoM, string costPriceCurrency, Nullable<decimal> col1Price, Nullable<decimal> col2Price, Nullable<decimal> col3Price, Nullable<decimal> col4Price, Nullable<decimal> col5Price, Nullable<int> col1Break, Nullable<int> col2Break, Nullable<int> col3Break, Nullable<int> col4Break, Nullable<int> col5Break, Nullable<decimal> discountedPrice1, Nullable<decimal> discountedPrice2, Nullable<decimal> discountedPrice3, Nullable<decimal> discountedPrice4, Nullable<decimal> discountedPrice5, string manufacturerCode, Nullable<int> extendedRangeWeight)
+        public virtual int ExtendedRangeADD(string articleNo, string brand, string mPN, string articleDescription, Nullable<decimal> extendedRangeLength, Nullable<decimal> width, Nullable<decimal> height, string dimensionUoM, string weightUoM, Nullable<int> cCCN, string countryofOrigin, string unitofMeasure, Nullable<int> packSize, Nullable<int> salesUoM, string costPriceCurrency, Nullable<decimal> col1Price, Nullable<decimal> col2Price, Nullable<decimal> col3Price, Nullable<decimal> col4Price, Nullable<decimal> col5Price, Nullable<int> col1Break, Nullable<int> col2Break, Nullable<int> col3Break, Nullable<int> col4Break, Nullable<int> col5Break, Nullable<decimal> discountedPrice1, Nullable<decimal> discountedPrice2, Nullable<decimal> discountedPrice3, Nullable<decimal> discountedPrice4, Nullable<decimal> discountedPrice5, string manufacturerCode, Nullable<decimal> extendedRangeWeight)
         {
             var articleNoParameter = articleNo != null ?
                 new ObjectParameter("ArticleNo", articleNo) :
@@ -579,7 +602,7 @@ namespace LoginForm.DataSet
     
             var extendedRangeWeightParameter = extendedRangeWeight.HasValue ?
                 new ObjectParameter("ExtendedRangeWeight", extendedRangeWeight) :
-                new ObjectParameter("ExtendedRangeWeight", typeof(int));
+                new ObjectParameter("ExtendedRangeWeight", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ExtendedRangeADD", articleNoParameter, brandParameter, mPNParameter, articleDescriptionParameter, extendedRangeLengthParameter, widthParameter, heightParameter, dimensionUoMParameter, weightUoMParameter, cCCNParameter, countryofOriginParameter, unitofMeasureParameter, packSizeParameter, salesUoMParameter, costPriceCurrencyParameter, col1PriceParameter, col2PriceParameter, col3PriceParameter, col4PriceParameter, col5PriceParameter, col1BreakParameter, col2BreakParameter, col3BreakParameter, col4BreakParameter, col5BreakParameter, discountedPrice1Parameter, discountedPrice2Parameter, discountedPrice3Parameter, discountedPrice4Parameter, discountedPrice5Parameter, manufacturerCodeParameter, extendedRangeWeightParameter);
         }
@@ -694,6 +717,15 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherTypeId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result>("GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI", ledgerIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> GetTaxIdForTaxSelection(Nullable<decimal> voucherTypeId)
+        {
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GetTaxIdForTaxSelection", voucherTypeIdParameter);
         }
     
         public virtual ObjectResult<GroupNameViewForComboFill_Result> GroupNameViewForComboFill()
@@ -1019,6 +1051,27 @@ namespace LoginForm.DataSet
         public virtual ObjectResult<PayHeadGetAll_Result> PayHeadGetAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PayHeadGetAll_Result>("PayHeadGetAll");
+        }
+    
+        public virtual ObjectResult<PaymentMasterSearch_Result> PaymentMasterSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string ledgerId, string voucherNo)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("FromDate", fromDate) :
+                new ObjectParameter("FromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("ToDate", toDate) :
+                new ObjectParameter("ToDate", typeof(System.DateTime));
+    
+            var ledgerIdParameter = ledgerId != null ?
+                new ObjectParameter("ledgerId", ledgerId) :
+                new ObjectParameter("ledgerId", typeof(string));
+    
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PaymentMasterSearch_Result>("PaymentMasterSearch", fromDateParameter, toDateParameter, ledgerIdParameter, voucherNoParameter);
         }
     
         public virtual ObjectResult<PDCClearanceFillDetails_Result> PDCClearanceFillDetails(string voucherTypeName, Nullable<decimal> masterId)
@@ -3244,6 +3297,11 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxViewAllForProduct_Result>("TaxViewAllForProduct");
         }
     
+        public virtual ObjectResult<TaxViewAllForVoucherType_Result> TaxViewAllForVoucherType()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxViewAllForVoucherType_Result>("TaxViewAllForVoucherType");
+        }
+    
         public virtual ObjectResult<UnitConversionIdAndConRateViewallByProductId_Result> UnitConversionIdAndConRateViewallByProductId(string productId)
         {
             var productIdParameter = productId != null ?
@@ -3272,6 +3330,19 @@ namespace LoginForm.DataSet
                 new ObjectParameter("txtBox", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("VoucherNumberAutomaicGeneration", voucherTypeIdParameter, dateParameter, tab_nameParameter, txtBoxParameter);
+        }
+    
+        public virtual ObjectResult<VoucherTypeSearch_Result> VoucherTypeSearch(string voucherTypeName, string typeOfVoucher)
+        {
+            var voucherTypeNameParameter = voucherTypeName != null ?
+                new ObjectParameter("voucherTypeName", voucherTypeName) :
+                new ObjectParameter("voucherTypeName", typeof(string));
+    
+            var typeOfVoucherParameter = typeOfVoucher != null ?
+                new ObjectParameter("typeOfVoucher", typeOfVoucher) :
+                new ObjectParameter("typeOfVoucher", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VoucherTypeSearch_Result>("VoucherTypeSearch", voucherTypeNameParameter, typeOfVoucherParameter);
         }
     
         public virtual ObjectResult<VoucherTypeView_Result> VoucherTypeView(Nullable<decimal> voucherTypeId)
