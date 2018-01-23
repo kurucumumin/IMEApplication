@@ -196,6 +196,7 @@
             this.dgPurchase.Size = new System.Drawing.Size(1365, 434);
             this.dgPurchase.TabIndex = 9;
             this.dgPurchase.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgPurchase_DataError);
+            this.dgPurchase.DoubleClick += new System.EventHandler(this.dgPurchase_DoubleClick);
             // 
             // FicheNo
             // 
@@ -333,7 +334,6 @@
             this.btnPrint.TabIndex = 13;
             this.btnPrint.Text = "Send To Print";
             this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // PurchaseOrderMain
             // 

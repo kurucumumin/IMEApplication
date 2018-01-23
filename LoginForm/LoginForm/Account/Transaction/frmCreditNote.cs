@@ -90,7 +90,7 @@ namespace LoginForm
         //        strSuffix = infoSuffixPrefix.Suffix;
         //        this.Text = strVoucherTypeName;
         //        base.Show();
-        //        clear();
+        //        Clear();
         //    }
         //    catch (Exception ex)
         //    {
@@ -126,30 +126,39 @@ namespace LoginForm
         /// <summary>
         /// Function to clear the fields
         /// </summary>
-        public void clear()
+        public void Clear()
         {
             try
             {
                 TransactionsGeneralFill obj = new TransactionsGeneralFill();
                 CreditNoteMasterSP spMaster = new CreditNoteMasterSP();
-
+                //MessageBox.Show(DateTime.Now.ToString());
+                //dtpVoucherDate.Value = DateTime.Now;
                 //-----------------------------------VoucherNo automatic generation-------------------------------------------//
-                
+
 
                 if (strVoucherNo == string.Empty)
                 {
                     strVoucherNo = "0"; //strMax;
                 }
-                strVoucherNo = obj.VoucherNumberAutomaicGeneration(decCreditNoteVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpVoucherDate.Value, strTableName);
+                if (dtpVoucherDate != null)
+                {
+                    strVoucherNo = obj.VoucherNumberAutomaicGeneration(decCreditNoteVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpVoucherDate.Value, strTableName);
+                }
+                else
+                {
+                    strVoucherNo = obj.VoucherNumberAutomaicGeneration(decCreditNoteVoucherTypeId, Convert.ToDecimal(strVoucherNo), DateTime.Now, strTableName);
+                }
+                
 
                 if (Convert.ToDecimal(strVoucherNo) != spMaster.CreditNoteMasterGetMaxPlusOne(decCreditNoteVoucherTypeId))
                 {
                     strVoucherNo = spMaster.CreditNoteMasterGetMax(decCreditNoteVoucherTypeId).ToString();
-                    strVoucherNo = obj.VoucherNumberAutomaicGeneration(decCreditNoteVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpVoucherDate.Value, strTableName);
+                    strVoucherNo = obj.VoucherNumberAutomaicGeneration(decCreditNoteVoucherTypeId, Convert.ToDecimal(strVoucherNo), DateTime.Now, strTableName);
                     if (spMaster.CreditNoteMasterGetMax(decCreditNoteVoucherTypeId).ToString() == "0")
                     {
                         strVoucherNo = "0";
-                        strVoucherNo = obj.VoucherNumberAutomaicGeneration(decCreditNoteVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpVoucherDate.Value, strTableName);
+                        strVoucherNo = obj.VoucherNumberAutomaicGeneration(decCreditNoteVoucherTypeId, Convert.ToDecimal(strVoucherNo), DateTime.Now, strTableName);
                     }
                 }
 
@@ -259,16 +268,17 @@ namespace LoginForm
         {
             try
             {
-                DataTable dtbl = new DataTable();
-                TransactionsGeneralFill TransactionGeneralFillObj = new TransactionsGeneralFill();
-                dtbl = TransactionGeneralFillObj.CurrencyComboByDate(Convert.ToDateTime(txtDate.Text));
-                DataRow dr = dtbl.NewRow();
-                dr[0] = string.Empty;
-                dr[1] = 0;
-                dtbl.Rows.InsertAt(dr, 0);
-                dgvcmbCurrency.DataSource = dtbl;
+                IMEEntities IME = new IMEEntities();
+                //DataTable dtbl = new DataTable();
+                //TransactionsGeneralFill TransactionGeneralFillObj = new TransactionsGeneralFill();
+                //dtbl = TransactionGeneralFillObj.CurrencyComboByDate(Convert.ToDateTime(txtDate.Text));
+                //DataRow dr = dtbl.NewRow();
+                //dr[0] = string.Empty;
+                //dr[1] = 0;
+                //dtbl.Rows.InsertAt(dr, 0);
+                dgvcmbCurrency.DataSource = IME.Currencies.ToList();
+                dgvcmbCurrency.ValueMember = "currencyId";
                 dgvcmbCurrency.DisplayMember = "currencyName";
-                dgvcmbCurrency.ValueMember = "exchangeRateId";
 
                 SettingsSP spSettings = new SettingsSP();
                 if (spSettings.SettingsStatusCheck("MultiCurrency") == "Yes")
@@ -778,7 +788,7 @@ namespace LoginForm
                                             if (Messages.SaveMessage())
                                             {
                                                 Save();
-                                                clear();
+                                                Clear();
                                             }
                                             else
                                             {
@@ -789,7 +799,7 @@ namespace LoginForm
                                         //{
 
                                             Save();
-                                            clear();
+                                            Clear();
 
                                         //}
                                     }
@@ -1605,7 +1615,7 @@ namespace LoginForm
                     //}
                     else
                     {
-                        clear();
+                        Clear();
                     }
                 }
                 else
@@ -1671,8 +1681,9 @@ namespace LoginForm
         /// </summary>
         public void VoucherDate()
         {
-            try
-            {
+            //try
+            //{
+                dtpVoucherDate.Value = Convert.ToDateTime(Utils.getManagement().FinancialYear.fromDate.Value.ToString("dd-MMM-yyyy"));
                 dtpVoucherDate.MinDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.fromDate);
                 dtpVoucherDate.MaxDate = (DateTime)Utils.getManagement().FinancialYear.toDate;
                 //Company infoComapany = new CompanyInfo();
@@ -1681,14 +1692,13 @@ namespace LoginForm
                 //DateTime dtVoucherDate = infoComapany.CurrentDate;
                 //dtpVoucherDate.Value = dtVoucherDate;
                 txtDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
-                dtpVoucherDate.Value = Convert.ToDateTime(txtDate.Text);
                 txtDate.Focus();
                 txtDate.SelectAll();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("CRNT:27" + ex.Message, "Open Miracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("CRNT:27" + ex.Message, "Open Miracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
 
         /// <summary>
@@ -2181,7 +2191,7 @@ namespace LoginForm
                 }
                 else
                 {
-                    clear();
+                    Clear();
                 }
                 
             }
@@ -2232,7 +2242,7 @@ namespace LoginForm
                 txtVoucherNo.Text = strInvoiceNo;
                 decCreditNoteSuffixPrefixId = (decimal)infoCreditNoteMaster.suffixPrefixId;
                 decCreditNoteVoucherTypeId = (decimal)infoCreditNoteMaster.voucherTypeId;
-                //dtpVoucherDate.Value = Convert.ToDateTime(infoCreditNoteMaster.date.Value.ToString("dd-MMM-yyyy"));
+                dtpVoucherDate.Value = Convert.ToDateTime(infoCreditNoteMaster.date.Value.ToString("dd-MMM-yyyy"));
                 txtDate.Text= infoCreditNoteMaster.date.Value.ToString("dd-MMM-yyyy");
 
 
@@ -2630,9 +2640,10 @@ namespace LoginForm
         {
             try
             {
+                //InitializeComponent();
                 AccountLedgerComboFill();
                 DrOrCrComboFill();
-                clear();
+                Clear();
                 CurrencyComboFill();
                 DebitAndCreditTotal();
 
@@ -2670,7 +2681,7 @@ namespace LoginForm
         {
             try
             {
-                clear();
+                Clear();
                 //if (frmAgeingObj != null)
                 //{
                 //    frmAgeingObj.Close();
@@ -3352,12 +3363,12 @@ namespace LoginForm
                             if (dgvCreditNote.CurrentRow.Cells["dgvcmbAccountLedger"].Value != null && dgvCreditNote.CurrentRow.Cells["dgvcmbAccountLedger"].Value.ToString() != string.Empty)
                             {
                                 string strLedgerName = dgvCreditNote.CurrentRow.Cells["dgvcmbAccountLedger"].FormattedValue.ToString();
-                              //  accounLedgerObj.CallFromCreditNote(this, strLedgerName);
+                                accounLedgerObj.CallFromCreditNote(this, strLedgerName);
                             }
                             else
                             {
                                 string strLedgerName = string.Empty;
-                              //  accounLedgerObj.CallFromCreditNote(this, strLedgerName);
+                                accounLedgerObj.CallFromCreditNote(this, strLedgerName);
                             }
 
                         }
@@ -3367,7 +3378,7 @@ namespace LoginForm
 
                         if (e.KeyCode == Keys.F && Control.ModifierKeys == Keys.Control)//Ledger popup
                         {
-                            //frmLedgerPopup frmLedgerPopupObj = new frmLedgerPopup();
+                            frmLedgerPopup frmLedgerPopupObj = new frmLedgerPopup();
                             //frmLedgerPopupObj.MdiParent = formMDI.MDIObj;
                             btnSave.Focus();
                             dgvCreditNote.Focus();
@@ -3376,7 +3387,7 @@ namespace LoginForm
                                 btnSave.Focus();
                                 dgvCreditNote.Focus();
                                 decLedgerIdForPopUp = Convert.ToDecimal(dgvCreditNote.CurrentRow.Cells["dgvcmbAccountLedger"].Value.ToString());
-                              //  frmLedgerPopupObj.CallFromCreditNote(this, decLedgerIdForPopUp, string.Empty);
+                                frmLedgerPopupObj.CallFromCreditNote(this, decLedgerIdForPopUp, string.Empty);
 
                             }
 
@@ -3391,7 +3402,7 @@ namespace LoginForm
                             //frmCurrencyObj.MdiParent = formMDI.MDIObj;
                             if (dgvCreditNote.CurrentRow.Cells["dgvcmbCurrency"].Value != null && dgvCreditNote.CurrentRow.Cells["dgvcmbCurrency"].Value.ToString() != string.Empty)
                             {
-                            //    frmCurrencyObj.CallFromCreditNote(this, Convert.ToDecimal(dgvCreditNote.CurrentRow.Cells["dgvcmbCurrency"].Value.ToString()));
+                               // frmCurrencyObj.CallFromCreditNote(this, Convert.ToDecimal(dgvCreditNote.CurrentRow.Cells["dgvcmbCurrency"].Value.ToString()));
                             }
                         }
                     }

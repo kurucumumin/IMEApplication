@@ -103,6 +103,7 @@
             this.Controls.Add(this.btnRefresh);
             this.Name = "InvoiceMain";
             this.Text = "InvoiceMain";
+            this.Load += new System.EventHandler(this.InvoiceMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgRefresh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

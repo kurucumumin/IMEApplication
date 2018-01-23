@@ -33,5 +33,10 @@ namespace LoginForm.Invoice
                 this.Close();
             }
         }
+
+        private void InvoiceMain_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
