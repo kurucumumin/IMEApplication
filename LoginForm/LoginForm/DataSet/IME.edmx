@@ -16891,7 +16891,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
         <ComplexType Name="TaxViewAllForVoucherType_Result">
           <Property Type="Int32" Name="taxId" Nullable="false" />
           <Property Type="String" Name="taxName" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="ApplicationOn" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="applicableOn" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="UnitConversionIdAndConRateViewallByProductId_Result">
           <Property Type="Decimal" Name="unitId" Nullable="false" Precision="18" Scale="0" />
@@ -20261,7 +20261,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               <ComplexTypeMapping TypeName="IMEModel.TaxViewAllForVoucherType_Result">
                 <ScalarProperty Name="taxId" ColumnName="taxId" />
                 <ScalarProperty Name="taxName" ColumnName="taxName" />
-                <ScalarProperty Name="ApplicationOn" ColumnName="ApplicationOn" />
+                <ScalarProperty Name="applicableOn" ColumnName="applicableOn" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
