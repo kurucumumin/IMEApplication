@@ -1349,38 +1349,37 @@ namespace LoginForm
                     #region MyRegion
                     bool isextendedRange = true;
                 Worksheet ws = theWorkbook.Worksheets[1];
-                if (ws.Cells[1, 1].Text != "ArticleNo") isextendedRange = false;
-                if (ws.Cells[1, 2].Text != "Manufacturer Code") isextendedRange = false;
-                if (ws.Cells[1, 3].Text != "Brand") isextendedRange = false;
-                if (ws.Cells[1, 4].Text != "MPN") isextendedRange = false;
-                if (ws.Cells[1, 5].Text != "ArticleDescription (40 Char Description)") isextendedRange = false;
-                if (ws.Cells[1, 6].Text != "Length") isextendedRange = false;
-                if (ws.Cells[1, 7].Text != "Width") isextendedRange = false;
-                if (ws.Cells[1, 8].Text != "Height") isextendedRange = false;
-                if (ws.Cells[1, 9].Text != "Dimension UoM") isextendedRange = false;
-                if (ws.Cells[1, 10].Text != "Weight") isextendedRange = false;
-                if (ws.Cells[1, 11].Text != "Weight UoM") isextendedRange = false;
-                if (ws.Cells[1, 12].Text != "CCCN") isextendedRange = false;
-                if (ws.Cells[1, 13].Text != "Country of Origin") isextendedRange = false;
-                if (ws.Cells[1, 14].Text != "Unit of Measure") isextendedRange = false;
-                if (ws.Cells[1, 15].Text != "Pack Size") isextendedRange = false;
-                if (ws.Cells[1, 16].Text != "(Sales UoM)") isextendedRange = false;
-                if (ws.Cells[1, 17].Text != "Cost price currency") isextendedRange = false;
-                if (ws.Cells[1, 18].Text != "Col1Price") isextendedRange = false;
-                if (ws.Cells[1, 19].Text != "Col1Break") isextendedRange = false;
-                if (ws.Cells[1, 20].Text != "Col2Price") isextendedRange = false;
-                if (ws.Cells[1, 21].Text != "Col2Break") isextendedRange = false;
-                if (ws.Cells[1, 22].Text != "Col3Price") isextendedRange = false;
-                if (ws.Cells[1, 23].Text != "Col3Break") isextendedRange = false;
-                if (ws.Cells[1, 24].Text != "Col4Price") isextendedRange = false;
-                if (ws.Cells[1, 25].Text != "Col4Break") isextendedRange = false;
-                if (ws.Cells[1, 26].Text != "Col5Price") isextendedRange = false;
-                if (ws.Cells[1, 27].Text != "Col5Break") isextendedRange = false;
-                if (ws.Cells[1, 28].Text != "DiscountedPrice1") isextendedRange = false;
-                if (ws.Cells[1, 29].Text != "DiscountedPrice2") isextendedRange = false;
-                if (ws.Cells[1, 30].Text != "DiscountedPrice3") isextendedRange = false;
-                if (ws.Cells[1, 31].Text != "DiscountedPrice4") isextendedRange = false;
-                if (ws.Cells[1, 32].Text != "DiscountedPrice5") isextendedRange = false;
+                if (((object[,])myvalues)[1, 1].ToString() != "ArticleNo") isextendedRange = false;
+                if (((object[,])myvalues)[1, 2].ToString() != "Manufacturer Code") isextendedRange = false;
+                if (((object[,])myvalues)[1, 3].ToString() != "MPN") isextendedRange = false;
+                if (((object[,])myvalues)[1, 5].ToString() != "ArticleDescription (40 Char Description)") isextendedRange = false;
+                if (((object[,])myvalues)[1, 6].ToString() != "Length") isextendedRange = false;
+                if (((object[,])myvalues)[1, 7].ToString() != "Width") isextendedRange = false;
+                if (((object[,])myvalues)[1, 8].ToString() != "Height") isextendedRange = false;
+                if (((object[,])myvalues)[1, 9].ToString() != "Dimension UoM") isextendedRange = false;
+                if (((object[,])myvalues)[1, 10].ToString() != "Weight") isextendedRange = false;
+                if (((object[,])myvalues)[1, 11].ToString() != "Weight UoM") isextendedRange = false;
+                if (((object[,])myvalues)[1, 12].ToString() != "CCCN") isextendedRange = false;
+                if (((object[,])myvalues)[1, 13].ToString() != "Country of Origin") isextendedRange = false;
+                if (((object[,])myvalues)[1, 14].ToString() != "Unit of Measure") isextendedRange = false;
+                if (((object[,])myvalues)[1, 15].ToString() != "Pack Size") isextendedRange = false;
+                if (((object[,])myvalues)[1, 16].ToString() != "(Sales UoM)") isextendedRange = false;
+                if (((object[,])myvalues)[1, 17].ToString() != "Cost price currency") isextendedRange = false;
+                if (((object[,])myvalues)[1, 18].ToString() != "Col1Price") isextendedRange = false;
+                if (((object[,])myvalues)[1, 19].ToString() != "Col1Break") isextendedRange = false;
+                if (((object[,])myvalues)[1, 20].ToString() != "Col2Price") isextendedRange = false;
+                if (((object[,])myvalues)[1, 21].ToString() != "Col2Break") isextendedRange = false;
+                if (((object[,])myvalues)[1, 22].ToString() != "Col3Price") isextendedRange = false;
+                if (((object[,])myvalues)[1, 23].ToString() != "Col3Break") isextendedRange = false;
+                if (((object[,])myvalues)[1, 24].ToString() != "Col4Price") isextendedRange = false;
+                if (((object[,])myvalues)[1, 25].ToString() != "Col4Break") isextendedRange = false;
+                if (((object[,])myvalues)[1, 26].ToString() != "Col5Price") isextendedRange = false;
+                if (((object[,])myvalues)[1, 27].ToString() != "Col5Break") isextendedRange = false;
+                if (((object[,])myvalues)[1, 28].ToString() != "DiscountedPrice1") isextendedRange = false;
+                if (((object[,])myvalues)[1, 29].ToString() != "DiscountedPrice2") isextendedRange = false;
+                if (((object[,])myvalues)[1, 30].ToString() != "DiscountedPrice3") isextendedRange = false;
+                if (((object[,])myvalues)[1, 31].ToString() != "DiscountedPrice4") isextendedRange = false;
+                if (((object[,])myvalues)[1, 32].ToString() != "DiscountedPrice5") isextendedRange = false;
                 #endregion
 
                 if (isextendedRange)
@@ -2724,6 +2723,239 @@ namespace LoginForm
             }
 
         }
+
+        public static void QuotationMaster()
+        {
+            IMEEntities IME = new IMEEntities();
+            Excel.Application excel = new Excel.Application();
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "txt files (*.xlsx)|*.xlsx";
+            DialogResult result1 = openFileDialog1.ShowDialog();
+            if (result1 == DialogResult.OK)
+            {
+                Excel.Workbook theWorkbook = excel.Workbooks.Open(
+                   openFileDialog1.FileName, 0, true, 5,
+                    "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false,
+                    0, true);
+                Excel.Sheets sheets = theWorkbook.Worksheets;
+                Excel.Worksheet worksheet = (Excel.Worksheet)sheets.get_Item(1);
+                //for (int i = 1; i <= 10; i++)
+                //{
+                Excel.Range last = worksheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing);
+                Excel.Range range = worksheet.get_Range("A1", last);
+                Array myvalues = range.Cells.Value;
+
+
+                //Quotation Master
+                int ColumnNumber = 2;
+                for (int i = 2; i <= (myvalues.Length / 32); i++)
+                {
+
+                    Quotation q = new Quotation();
+                    //string[,] myvalues = null;
+                    if (((object[,])myvalues)[i, 1] != null) { q.QuotationNo = ((object[,])myvalues)[i, 1].ToString(); }
+                    if (((object[,])myvalues)[i, 2] != null) { q.StartDate = (DateTime)(Convert.ToDateTime(((object[,])myvalues)[i, 2].ToString())); }
+                    //if (((object[,])myvalues)[i, 3] != null)
+                    //{
+                    //    q.Brand = ((object[,])myvalues)[i, 3].ToString();
+                    //}
+                    if (((object[,])myvalues)[i, 4] != null)
+                    {
+                        q.CustomerID = ((object[,])myvalues)[i, 4].ToString();
+                    }
+                    //if (((object[,])myvalues)[i, 5] != null)
+                    //{
+                    //    q.ArticleDescription = ((object[,])myvalues)[i, 5].ToString();
+                    //}
+
+                    //if (((object[,])myvalues)[i, 6] != null) { q.qLength = Decimal.Parse(((object[,])myvalues)[i, 6].ToString()); }
+
+                    //if (((object[,])myvalues)[i, 7] != null) { q.DelivertDate = Convert.ToDateTime(((object[,])myvalues)[i, 7].ToString()); }
+
+                    //if (((object[,])myvalues)[i, 8] != null) { q.Height = Decimal.Parse(((object[,])myvalues)[i, 8].ToString()); }
+
+                    //if (((object[,])myvalues)[i, 9] != null)
+                    //{
+                    //    q.DimensionUoM = ((object[,])myvalues)[i, 9].ToString();
+                    //}
+
+                    //if (((object[,])myvalues)[i, 10] != null) { q.qWeight = Decimal.Parse(((object[,])myvalues)[i, 10].ToString()); }
+
+                    //if (((object[,])myvalues)[i, 11] != null)
+                    //{
+                    //    q.WeightUoM = ((object[,])myvalues)[i, 11].ToString();
+                    //}
+
+                    //if (((object[,])myvalues)[i, 12] != null) { q.CCCN = Int32.Parse(((object[,])myvalues)[i, 12].ToString()); }
+
+                    //if (((object[,])myvalues)[i, 13] != null)
+                    //{
+                    //    q.CountryofOrigin = ((object[,])myvalues)[i, 13].ToString();
+                    //}
+                    //if (((object[,])myvalues)[i, 14] != null)
+                    //{
+                    //    q.UnitofMeasure = ((object[,])myvalues)[i, 14].ToString();
+                    //}q.grosstotal
+
+                    //if (((object[,])myvalues)[i, 15] != null) { q.PackSize = Int32.Parse(((object[,])myvalues)[i, 15].ToString()); }
+
+                    if (((object[,])myvalues)[i, 16] != null) { q.DiscOnSubTotal2 = decimal.Parse(((object[,])myvalues)[i, 16].ToString()); }
+
+                    if (((object[,])myvalues)[i, 17] != null)
+                    {
+                        q.RepresentativeID = IME.Workers.Where(a=>a.UserName== (((object[,])myvalues)[i, 17].ToString())).FirstOrDefault().WorkerID;
+                    }
+
+                    //if (((object[,])myvalues)[i, 18] != null) { q.Col1Price = Decimal.Parse(((object[,])myvalues)[i, 18].ToString()); }
+
+                    //if (((object[,])myvalues)[i, 20] != null) { q.Col2Price = Decimal.Parse(((object[,])myvalues)[i, 20].ToString()); }
+
+                    //if (((object[,])myvalues)[i, 22] != null) { q.Col3Price = Decimal.Parse(((object[,])myvalues)[i, 22].ToString()); }
+
+                    //if (((object[,])myvalues)[i, 24] != null) { q.Col4Price = Decimal.Parse(((object[,])myvalues)[i, 24].ToString()); }
+
+                    //if (((object[,])myvalues)[i, 26] != null) { q.Col5Price = Decimal.Parse(((object[,])myvalues)[i, 26].ToString()); }
+
+                    //if (((object[,])myvalues)[i, 19] != null) { q.Col1Break = Int32.Parse(((object[,])myvalues)[i, 19].ToString()); }
+
+                    //if (((object[,])myvalues)[i, 21] != null) { q.Col2Break = Int32.Parse(((object[,])myvalues)[i, 21].ToString()); }
+
+                    //if (((object[,])myvalues)[i, 23] != null) { q.Col3Break = Int32.Parse(((object[,])myvalues)[i, 23].ToString()); }
+
+                    //if (((object[,])myvalues)[i, 25] != null) { q.Col4Break = Int32.Parse(((object[,])myvalues)[i, 25].ToString()); }
+
+                    //if (((object[,])myvalues)[i, 27] != null) { q.Col5Break = Int32.Parse(((object[,])myvalues)[i, 27].ToString()); }
+                    //if (((object[,])myvalues)[i, 28] != null) { q.DiscountedPrice1 = Decimal.Parse(((object[,])myvalues)[i, 28].ToString()); }
+                    //if (((object[,])myvalues)[i, 29] != null) { q.DiscountedPrice2 = Decimal.Parse(((object[,])myvalues)[i, 29].ToString()); }
+
+                    IME.QuotationADD(
+                        q.CustomerID,
+    q.NoteForUsID,
+    q.NoteForCustomerID,
+    q.ForFinancelIsTrue,
+    q.ShippingMethodID,
+    q.IsItemCost,
+    q.IsWeightCost,
+    q.IsCustomsDuties,
+    q.DiscOnSubTotal2,
+    q.ExtraCharges,
+    q.SubTotal,
+    q.StartDate,
+    q.ValidationDay,
+    q.PaymentID,
+    q.Curr,
+    q.Factor,
+    q.IsVatValue,
+    q.VatValue,
+    q.CurrName,
+    q.QuotationNo,
+    q.RFQNo,
+    q.CurrType,
+    q.QuotationMainContact,
+    q.ledgerId,
+    q.voucherTypeId,
+    q.approved,
+    q.invoiceNo,
+    q.voucherNo,
+    q.RepresentativeID,
+    q.RepresentativeID2,
+    q.ExchangeRateID,
+    q.suffixPrefixId,
+    q.DeliveryDate,
+    q.GrossTotal
+                        );
+                }
+
+            }
+        }
+
+        public static void QuotationDetail()
+        {
+            IMEEntities IME = new IMEEntities();
+
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "txt files (*.xlsx)|*.xlsx";
+            Excel.Application excel = new Excel.Application();
+            DialogResult result1 = openFileDialog1.ShowDialog();
+            if (result1 == DialogResult.OK)
+            {
+                Excel.Workbook theWorkbook = excel.Workbooks.Open(
+                   openFileDialog1.FileName, 0, true, 5,
+                    "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false,
+                    0, true);
+                Excel.Sheets sheets = theWorkbook.Worksheets;
+                Excel.Worksheet worksheet = (Excel.Worksheet)sheets.get_Item(1);
+                //for (int i = 1; i <= 10; i++)
+                //{
+                Excel.Range last = worksheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing);
+                Excel.Range range = worksheet.get_Range("A1", last);
+                Array myvalues = range.Cells.Value;
+
+
+                //Quotation Master
+                int ColumnNumber = 2;
+                for (int i = 2; i <= (myvalues.Length / 32); i++)
+                {
+
+                    QuotationDetail q = new QuotationDetail();
+                    //string[,] myvalues = null;
+                    if (((object[,])myvalues)[i, 1] != null) { q.QuotationNo = ((object[,])myvalues)[i, 1].ToString(); }
+                    //if (((object[,])myvalues)[i, 2] != null) { q. = (DateTime)(Convert.ToDateTime(((object[,])myvalues)[i, 2].ToString())); }
+                    if (((object[,])myvalues)[i, 3] != null)
+                    {
+                        q.QuotationNo = ((object[,])myvalues)[i, 3].ToString();
+                    }
+                    if (((object[,])myvalues)[i, 4] != null)
+                    {
+                        q.ItemCode = ((object[,])myvalues)[i, 4].ToString();
+                    }
+                    if (((object[,])myvalues)[i, 5] != null)
+                    {
+                        q.Qty = Convert.ToInt32(((object[,])myvalues)[i, 5].ToString());
+                    }
+
+                    //if (((object[,])myvalues)[i, 6] != null) { q.qLength = Decimal.Parse(((object[,])myvalues)[i, 6].ToString()); }
+
+                    //if (((object[,])myvalues)[i, 7] != null) { q.DelivertDate = Convert.ToDateTime(((object[,])myvalues)[i, 7].ToString()); }
+
+                    //if (((object[,])myvalues)[i, 8] != null) { q.Height = Decimal.Parse(((object[,])myvalues)[i, 8].ToString()); }
+
+                    if (((object[,])myvalues)[i, 9] != null)
+                    {
+                        q.UC = Convert.ToInt32(((object[,])myvalues)[i, 9].ToString());
+                    }
+
+                    /*if (((object[,])myvalues)[i, 10] != null) { q. = Decimal.Parse(((object[,])myvalues)[i, 10].ToString()); }*/
+
+                    //if (((object[,])myvalues)[i, 11] != null)
+                    //{
+                    //    q.WeightUoM = ((object[,])myvalues)[i, 11].ToString();
+                    //}
+
+                    //if (((object[,])myvalues)[i, 12] != null) { q.CCCN = Int32.Parse(((object[,])myvalues)[i, 12].ToString()); }
+
+                    if (((object[,])myvalues)[i, 13] != null)
+                    {
+                        q.UnitOfMeasure = ((object[,])myvalues)[i, 13].ToString();
+                    }
+                    if (((object[,])myvalues)[i, 14] != null)
+                    {
+                        q.SSM = Convert.ToInt32(((object[,])myvalues)[i, 14].ToString());
+                    }
+
+
+                    if (((object[,])myvalues)[i, 15] != null) { q.UnitWeight = decimal.Parse(((object[,])myvalues)[i, 15].ToString()); }
+
+                    //if (((object[,])myvalues)[i, 16] != null) { q. = decimal.Parse(((object[,])myvalues)[i, 16].ToString()); }
+
+
+
+                    IME.QuotationDetailsADD(q.dgNo,q.ItemCode,q.Qty,q.UCUPCurr,q.Disc,q.Total,q.TargetUP,q.Competitor,q.CustomerDescription,q.CustomerStockCode,q.IsDeleted,q.QuotationNo,q.UPIME,q.Marge,q.UnitOfMeasure,q.UC,q.SSM,q.UnitWeight,q.DependantTable,q.unitConversionId);
+                }
+
+            }
+        }
+
     }
 
     class QuotationExcelExport

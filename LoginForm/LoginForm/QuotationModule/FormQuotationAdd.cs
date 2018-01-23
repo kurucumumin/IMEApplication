@@ -1488,6 +1488,7 @@ namespace LoginForm.QuotationModule
             q.QuotationNo = txtQuotationNo.Text;
             q.RFQNo = txtRFQNo.Text;
             try { q.SubTotal = decimal.Parse(lblsubtotal.Text); } catch { }
+            try { q.GrossTotal = decimal.Parse(lblGrossTotal.Text); } catch { }
             if (chkbForFinance.Checked) { q.ForFinancelIsTrue = 1; } else { q.ForFinancelIsTrue = 0; }
             if (ckItemCost.Checked) { q.IsItemCost = 1; } else { q.IsItemCost = 0; }
             if (ckWeightCost.Checked) { q.IsWeightCost = 1; } else { q.IsWeightCost = 0; }
