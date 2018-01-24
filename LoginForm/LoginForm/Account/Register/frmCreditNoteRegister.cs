@@ -66,14 +66,21 @@ namespace LoginForm
         {
             try
             {
-                dtpFromDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                if(DateTime.Now.AddDays(-7).Year != DateTime.Now.Year)
+                {
+                    dtpFromDate.Text = new DateTime(DateTime.Now.Year,1,1).ToString("dd-MMM-yyyy");
+                }
+                else
+                {
+                    dtpFromDate.Text = DateTime.Now.AddDays(-7).ToString("dd-MMM-yyyy");
+                }
                 dtpToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
                 dtpFromDate.MinDate = (DateTime)m.FinancialYear.fromDate;
                 dtpFromDate.MaxDate = (DateTime)m.FinancialYear.toDate;
                 dtpFromDate.Value = Convert.ToDateTime(txtFromDate.Text);
                 dtpToDate.MinDate = (DateTime)m.FinancialYear.fromDate;
                 dtpToDate.MaxDate = (DateTime)m.FinancialYear.toDate;
-                dtpToDate.Value = Convert.ToDateTime(txtFromDate.Text);
+                //dtpToDate.Value = Convert.ToDateTime(txtFromDate.Text);
             }
             catch (Exception ex)
             {
@@ -224,8 +231,16 @@ namespace LoginForm
         {
             try
             {
-                dtpFromDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                //dtpFromDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
                 dtpToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                if (DateTime.Now.AddDays(-7).Year != DateTime.Now.Year)
+                {
+                    dtpFromDate.Text = new DateTime(DateTime.Now.Year, 1, 1).ToString("dd-MMM-yyyy");
+                }
+                else
+                {
+                    dtpFromDate.Text = DateTime.Now.AddDays(-7).ToString("dd-MMM-yyyy");
+                }
                 txtVoucherNo.Text = string.Empty;
                 txtFromDate.Focus();
             }
