@@ -820,7 +820,7 @@ namespace LoginForm.Account.Services
                                from v in IME.VoucherTypes.Where(x => x.voucherTypeName == c.type)
                                from w in IME.AccountLedgers.Where(x => x.ledgerId == c.ledgerId)
                                where
-                                      (c.date > Convert.ToDateTime(dtFromdate) && c.date < Convert.ToDateTime(dtTodate)) &&
+                                      (c.date > (dtFromdate) && c.date < dtTodate) &&
                                       ((voucherNo == "") ? c.invoiceNo == c.invoiceNo : c.invoiceNo.StartsWith(voucherNo)) &&
                                       (w.ledgerName == ((strLedgerName == "All") ? w.ledgerName : strLedgerName)) &&
                                       (c.type == ((voucherTypeName == "All") ? c.type : voucherTypeName))
@@ -834,7 +834,7 @@ namespace LoginForm.Account.Services
                                    c.userId,
                                    c.voucherTypeId,
                                    c.type,
-                                   amount = (v.typeOfVoucher== ((v.typeOfVoucher== "PDC Payable") ? Convert.ToString(pm.amount) : Convert.ToString(pm.amount)) || (v.typeOfVoucher == "PDC Receivable") ? Convert.ToString(cd.amount) : Convert.ToString(cd.amount)),
+                                   amount = cd.amount,
                                    c.status,
                                    w.ledgerName
                                }).ToList();

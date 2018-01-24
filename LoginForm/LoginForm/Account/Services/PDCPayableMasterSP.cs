@@ -173,44 +173,52 @@ namespace LoginForm.Account.Services
         {
             IMEEntities db = new IMEEntities();
             DataTable dtbl = new DataTable();
-            try
-            {
-                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupId == 17 || x.accountGroupId == 28)
-                               select new
-                               {
-                                   AccountGroupId = ag.accountGroupId,
-                                   hierarchyLevel = 1
-                               }).ToList();
-                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == 17 || x.groupUnder == 28)
-                                select new
-                                {
-                                    AccountGroupId = ag.accountGroupId,
-                                    hierarchyLevel = 2
-                                }).ToList();
+            //try
+            //{
+            //    var adaptor = (from l in db.AccountLedgers
+            //        from ag in db.AccountGroups
+            //        where (ag.accountGroupName == "Bank OD A / C" || ag.accountGroupName == "Bank Account") && (l.accountGroupID==ag.accountGroupId)
+            //                   select new
+            //                   {
+            //                       ag.accountGroupId,
+            //                       l.ledgerId,
+            //                       l.ledgerName,
+            //                       hierarchyLevel = 1
+            //                   }).ToList();
+            //    var adaptor2 = (from l in db.AccountLedgers
+            //                    from ag in db.AccountGroups
+            //                    where (ag.accountGroupName == "Bank OD A / C" || ag.accountGroupName == "Bank Account") && (l.accountGroupID == ag.accountGroupId)
+            //                    select new
+            //                    {
+            //                        ag.accountGroupId,
+            //                        l.ledgerId,
+            //                        l.ledgerName,
+            //                        hierarchyLevel = 2
+            //                    }).ToList();
 
-                foreach (var item in adaptor2)
-                {
-                    if (!adaptor.Exists(x => x.AccountGroupId == item.AccountGroupId))
-                    {
-                        adaptor.Add(item);
-                    }
-                }
+            //    foreach (var item in adaptor2)
+            //    {
+            //        if (!adaptor.Exists(x => x.AccountGroupId == item.))
+            //        {
+            //            adaptor.Add(item);
+            //        }
+            //    }
 
-                dtbl.Columns.Add("AccountGroupId");
+            //    dtbl.Columns.Add("AccountGroupId");
 
-                foreach (var item in adaptor)
-                {
-                    var row = dtbl.NewRow();
+            //    foreach (var item in adaptor)
+            //    {
+            //        var row = dtbl.NewRow();
 
-                    row["AccountGroupId"] = item.AccountGroupId;
+            //        row["AccountGroupId"] = item.AccountGroupId;
 
-                    dtbl.Rows.Add(row);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            //        dtbl.Rows.Add(row);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.ToString());
+            //}
             return dtbl;
         }
 

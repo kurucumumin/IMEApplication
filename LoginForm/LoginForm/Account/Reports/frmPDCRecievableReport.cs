@@ -175,7 +175,7 @@ namespace LoginForm
                 }
                 DataTable dtblPDCReport = new DataTable();
                 PDCReceivableMasterSP sppdcreceivable = new PDCReceivableMasterSP();
-                dtblPDCReport = sppdcreceivable.PdcReceivableReportSearch(Convert.ToDateTime(dtpFrmDate.Value.ToString()), Convert.ToDateTime(dtpToDate.Value.ToString()), cmbVouchertype.Text.ToString(), cmbAccountLedger.Text.ToString(), Convert.ToDateTime(dtpCheckDateFrom.Value.ToString()), Convert.ToDateTime(dtpCheckDateTo.Value.ToString()), txtCheckNo.Text.Trim(), txtVoucherNo.Text.Trim(), cmbStatus.Text.Trim());
+                dtblPDCReport = sppdcreceivable.PdcReceivableReportSearch(dtpFrmDate.Value, dtpToDate.Value, cmbVouchertype.Text.ToString(), cmbAccountLedger.Text.ToString(), (dtpCheckDateFrom.Value), dtpCheckDateTo.Value, txtCheckNo.Text.Trim(), txtVoucherNo.Text.Trim(), cmbStatus.Text.Trim());
                 dgvPdcReceivableSearch.DataSource = dtblPDCReport;
             }
             catch (Exception ex)
