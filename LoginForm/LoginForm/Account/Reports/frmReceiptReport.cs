@@ -54,8 +54,8 @@ namespace LoginForm
                 TransactionsGeneralFill Obj = new TransactionsGeneralFill();
                 dtbl = Obj.BankOrCashComboFill(false);
                 DataRow dr = dtbl.NewRow();
-                dr[1] = 0;
-                dr[0] = "All";
+                dr[0] = 0;
+                dr[1] = "All";
                 dtbl.Rows.InsertAt(dr, 0);
                 cmbCashOrBank.DataSource = dtbl;
                 cmbCashOrBank.ValueMember = "ledgerId";
@@ -122,7 +122,7 @@ namespace LoginForm
         {
             try
             {
-                //ReceiptMasterSP SpPaymentMaster = new ReceiptMasterSP();
+                ReceiptMasterSP SpPaymentMaster = new ReceiptMasterSP();
                 DataTable dtbl = new DataTable();
                 if (cmbLedger.Items.Count != 0 && cmbVoucherType.Items.Count != 0 && cmbCashOrBank.Items.Count != 0)
                 {
@@ -130,7 +130,7 @@ namespace LoginForm
                     {
                         if (txtFromDate.Text.Trim() != string.Empty && txtToDate.Text.Trim() != string.Empty)
                         {
-                            //dtbl = SpPaymentMaster.ReceiptReportSearch(Convert.ToDateTime(dtpFromDate.Value.ToString()), Convert.ToDateTime(dtpToDate.Value.ToString()), Convert.ToDecimal(cmbLedger.SelectedValue), Convert.ToDecimal(cmbVoucherType.SelectedValue), Convert.ToDecimal(cmbCashOrBank.SelectedValue));
+                            dtbl = SpPaymentMaster.ReceiptReportSearch(Convert.ToDateTime(dtpFromDate.Value.ToString()), Convert.ToDateTime(dtpToDate.Value.ToString()), Convert.ToDecimal(cmbLedger.SelectedValue), Convert.ToDecimal(cmbVoucherType.SelectedValue), Convert.ToDecimal(cmbCashOrBank.SelectedValue));
                             dgvReceiptReport.DataSource = dtbl;
                         }
                     }

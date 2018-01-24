@@ -52,7 +52,7 @@ namespace LoginForm
                 dtbl = Obj.BankOrCashComboFill(false);
                 DataRow dr = dtbl.NewRow();
                 dr[0] = 0;
-                dr[2] = "All";
+                dr[1] = "All";
                 dtbl.Rows.InsertAt(dr, 0);
                 cmbBankOrCash.DataSource = dtbl;
                 cmbBankOrCash.ValueMember = "ledgerId";
@@ -100,7 +100,7 @@ namespace LoginForm
                 dtbl = SpVoucherType.VoucherTypeViewAll();
                 DataRow dr = dtbl.NewRow();
                 dr[0] = 0;
-                dr[2] = "All";
+                dr[1] = "All";
                 dtbl.Rows.InsertAt(dr, 0);
                 cmbVoucherType.DataSource = dtbl;
                 cmbVoucherType.ValueMember = "voucherTypeId";

@@ -68,7 +68,7 @@
             // lblVoucherNo
             // 
             this.lblVoucherNo.AutoSize = true;
-            this.lblVoucherNo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblVoucherNo.ForeColor = System.Drawing.Color.White;
             this.lblVoucherNo.Location = new System.Drawing.Point(472, 44);
             this.lblVoucherNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblVoucherNo.Name = "lblVoucherNo";
@@ -79,7 +79,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(20, 44);
             this.label6.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.label6.Name = "label6";
@@ -312,7 +312,7 @@
             // lblAccountLedger
             // 
             this.lblAccountLedger.AutoSize = true;
-            this.lblAccountLedger.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblAccountLedger.ForeColor = System.Drawing.Color.White;
             this.lblAccountLedger.Location = new System.Drawing.Point(20, 70);
             this.lblAccountLedger.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblAccountLedger.Name = "lblAccountLedger";
