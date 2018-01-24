@@ -130,7 +130,7 @@ namespace LoginForm
                     {
                         if (txtFromDate.Text.Trim() != string.Empty && txtToDate.Text.Trim() != string.Empty)
                         {
-                            dtbl = SpPaymentMaster.ReceiptReportSearch(Convert.ToDateTime(dtpFromDate.Value.ToString()), Convert.ToDateTime(dtpToDate.Value.ToString()), Convert.ToDecimal(cmbLedger.SelectedValue), Convert.ToDecimal(cmbVoucherType.SelectedValue), Convert.ToDecimal(cmbCashOrBank.SelectedValue));
+                            dtbl = SpPaymentMaster.ReceiptReportSearch(DateTime.Parse(dtpFromDate.Value.ToString()), DateTime.Parse(dtpToDate.Value.ToString()), Convert.ToDecimal(cmbLedger.SelectedValue), Convert.ToDecimal(cmbVoucherType.SelectedValue), Convert.ToDecimal(cmbCashOrBank.SelectedValue));
                             dgvReceiptReport.DataSource = dtbl;
                         }
                     }

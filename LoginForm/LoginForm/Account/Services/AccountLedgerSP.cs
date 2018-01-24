@@ -370,7 +370,7 @@ namespace LoginForm.Account.Services
 
                     row["ledgerName"] = item.ledgerName;
                     row["ledgerId"] = item.ledgerId;
-                    row["accountGroupID"] = item.accountGroupID;
+                    row["accountGroupID"] = item.accountGroupId;
                     row["ledgerName"] = item.ledgerName;
                     row["openingBalance"] = item.openingBalance;
                     row["crOrDr"] = item.crOrDr;
@@ -390,7 +390,7 @@ namespace LoginForm.Account.Services
                     row["bankAccountNumber"] = item.bankAccountNumber;
                     row["branchName"] = item.branchName;
                     row["branchCode"] = item.branchCode;
-                    row["extraDate"] = item.extraDate;
+                    //row["extraDate"] = item.extraDate;
 
                     dtbl.Rows.Add(row);
                 }

@@ -417,7 +417,7 @@ namespace LoginForm.Account.Services
             dtbl.Columns["SlNo"].AutoIncrementStep = 1;
             try
             {
-                var adaptor = IME.PdcPayableReportSearch(dtFromdate, dtToDate, strVoucherType, strLedgerName, dtcheckfromdate, dtCheckdateto, strchequeNo, strvoucherNo, strstatus);
+                var adaptor = IME.PdcPayableReportSearch(dtFromdate, dtToDate, strVoucherType, strLedgerName, dtcheckfromdate, dtCheckdateto, strstatus, strchequeNo, strvoucherNo );
 
                 dtbl.Columns.Add("pdcPayableMasterId");
                 dtbl.Columns.Add("voucherTypeName");

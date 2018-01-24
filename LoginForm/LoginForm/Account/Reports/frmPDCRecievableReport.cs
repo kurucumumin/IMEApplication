@@ -95,11 +95,11 @@ namespace LoginForm
                 txtVoucherNo.Clear();
                 txtCheckNo.Clear();
                 txtFromDate.Focus();
-                Search();
                 cmbStatus.SelectedIndex = 0;
                 txtFromDate.SelectionStart = txtFromDate.TextLength;
                 FinancialYearDate();
                 txtFromDate.Select();
+                Search();
             }
             catch (Exception ex)
             {
@@ -235,7 +235,7 @@ namespace LoginForm
             {
                 DateTime date = this.dtpFrmDate.Value;
                 this.txtFromDate.Text = date.ToString("dd-MMM-yyyy");
-                Search();
+                //Search();
             }
             catch (Exception ex)
             {
@@ -287,7 +287,7 @@ namespace LoginForm
             {
                 DateTime date = this.dtpCheckDateTo.Value;
                 this.txtCheckDateTo.Text = date.ToString("dd-MMM-yyyy");
-                Search();
+                //Search();
             }
             catch (Exception ex)
             {

@@ -56,12 +56,12 @@ namespace LoginForm
                 dtpToDate.MaxDate = Utils.getManagement().FinancialYear.toDate.Value;
                 cmbVoucherType.SelectedIndex = 0;
                 cmbCashOrParty.SelectedIndex = 0;
-                cmbArea.SelectedIndex = 0;
-                cmbModelNo.SelectedIndex = 0;
-                cmbRoute.SelectedIndex = 0;
-                cmbSalesMan.SelectedIndex = 0;
-                cmbSalesMode.SelectedIndex = 0;
-                cmbStatus.SelectedIndex = 0;
+                if(cmbArea.DataSource!=null)cmbArea.SelectedIndex = 0;
+                if (cmbModelNo.DataSource != null) cmbModelNo.SelectedIndex = 0;
+                if (cmbRoute.DataSource != null) cmbRoute.SelectedIndex = 0;
+                if (cmbSalesMan.DataSource != null) cmbSalesMan.SelectedIndex = 0;
+                if (cmbSalesMode.DataSource != null) cmbSalesMode.SelectedIndex = 0;
+                if (cmbStatus.DataSource != null) cmbStatus.SelectedIndex = 0;
                 txtProductCode.Text = string.Empty;
                 txtVoucherNo.Text = string.Empty;
                 txtProductName.Text = string.Empty;
