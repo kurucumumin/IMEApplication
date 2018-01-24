@@ -221,11 +221,11 @@ namespace LoginForm.Services
             decimal max = 0;
             try
             {
-                max = Convert.ToDecimal(new IMEEntities().PDCReceivableMaxUnderVoucherType(decVoucherTypeId));
-                //decimal? adapter = (from pr in IME.PDCReceivableMasters.Where(p => p.voucherTypeId == decVoucherTypeId)
-                //               select new { pr.voucherNo }).Max(x => Convert.ToDecimal(x.voucherNo));
+                //max = Convert.ToDecimal(new IMEEntities().PDCReceivableMaxUnderVoucherType(decVoucherTypeId));
+                decimal? adapter = (from pr in IME.PDCReceivableMasters.Where(p => p.voucherTypeId == decVoucherTypeId)
+                                    select new { pr.voucherNo }).Max(x => Convert.ToDecimal(x.voucherNo));
 
-                //max = (adapter != null) ? (decimal)adapter : 0;
+                max = (adapter != null) ? (decimal)adapter : 0;
             }
             catch (Exception ex)
             {

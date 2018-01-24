@@ -300,7 +300,7 @@ namespace LoginForm.Account.Services
             DataTable dtbl = new DataTable();
             try
             {
-                var adaptor = new IMEEntities().CashOrBankComboFill(isAll).ToList();
+                var adaptor = new IMEEntities().CashOrBankComboFill().ToList();
 
                 dtbl.Columns.Add("ledgerName");
                 dtbl.Columns.Add("ledgerId");
