@@ -129,9 +129,10 @@ namespace LoginForm
         {
             try
             {
+                DateTime dt = Convert.ToDateTime(txtDate.Text);
                 var adapter = (from a in IME.Currencies
-                               join b in IME.ExchangeRates  on a.currencyID equals b.currencyId
-                               where b.date== Convert.ToDateTime(txtDate.Text)
+                               from b in IME.ExchangeRates.Where(x=>x.currencyId == a.currencyID)
+                               where b.date == dt
                                where b.exchangeRateID==1
                                select new
                                {
