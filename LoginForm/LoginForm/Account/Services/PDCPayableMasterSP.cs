@@ -22,7 +22,7 @@ namespace LoginForm.Account.Services
             try
             {
                 var adaptor = (from pdc in db.PDCPayableMasters.Where(x=>
-                (x.date > dtFromdate && x.date < dtTodate) && 
+                (x.date > dtFromdate && x.date < dtTodate) &&
                 ((strVoucherNo == String.Empty) ? x.invoiceNo == x.invoiceNo : x.invoiceNo.StartsWith(strVoucherNo)) &&
                 (strLedgerName == "All") ? x.AccountLedger.ledgerName == x.AccountLedger.ledgerName : x.AccountLedger.ledgerName == strLedgerName).
                 OrderByDescending(y=>y.pdcPayableMasterId)
@@ -211,7 +211,7 @@ namespace LoginForm.Account.Services
 
                 foreach (PDCPayableMaster item in list)
                 {
-                    item.voucherNo = item.voucherNo ?? "0"; 
+                    item.voucherNo = item.voucherNo ?? "0";
                     max = (Convert.ToDecimal(item.voucherNo) > max) ? Convert.ToDecimal(item.voucherNo) : max;
                 }
 
@@ -384,7 +384,7 @@ namespace LoginForm.Account.Services
             {
                 decimal? against = db.PDCClearanceMasters.Where(x => x.againstId == decMasterId && x.voucherTypeId == decvoucherTypeId).FirstOrDefault().againstId;
 
-                isExist = (against != null) ? true : false; 
+                isExist = (against != null) ? true : false;
             }
             catch (Exception ex)
             {
