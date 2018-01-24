@@ -469,42 +469,42 @@ namespace LoginForm.Account.Services
             dtbl.Columns["SL.NO"].AutoIncrement = true;
             dtbl.Columns["SL.NO"].AutoIncrementSeed = 1;
             dtbl.Columns["SL.NO"].AutoIncrementStep = 1;
-            //try
-            //{
-            //    var adaptor = IME.PaymentMasterSearch(dtpFromDate, dtpToDate, decledgerId, strvoucherNo).ToList();
+            try
+            {
+                var adaptor = IME.PaymentMasterSearch(dtpFromDate, dtpToDate, decledgerId.ToString(), strvoucherNo).ToList();
 
-            //    dtbl.Columns.Add("paymentMasterId");
-            //    dtbl.Columns.Add("invoiceNo");
-            //    dtbl.Columns.Add("voucherTypeName");
-            //    dtbl.Columns.Add("date");
-            //    dtbl.Columns.Add("totalAmount");
-            //    dtbl.Columns.Add("ledgerName");
-            //    dtbl.Columns.Add("narration");
-            //    dtbl.Columns.Add("voucherTypeId");
-                
+                dtbl.Columns.Add("paymentMasterId");
+                dtbl.Columns.Add("invoiceNo");
+                dtbl.Columns.Add("voucherTypeName");
+                dtbl.Columns.Add("date");
+                dtbl.Columns.Add("totalAmount");
+                dtbl.Columns.Add("ledgerName");
+                dtbl.Columns.Add("narration");
+                dtbl.Columns.Add("voucherTypeId");
 
-            //    foreach (var item in adaptor)
-            //    {
-            //        var row = dtbl.NewRow();
 
-            //        row["paymentMasterId"] = item.paymentMasterId;
-            //        row["invoiceNo"] = item.invoiceNo;
-            //        row["voucherTypeName"] = item.voucherTypeName;
-            //        row["date"] = item.date;
-            //        row["totalAmount"] = item.totalAmount;
-            //        row["ledgerName"] = item.ledgerName;
-            //        row["narration"] = item.narration;
-            //        row["voucherTypeId"] = item.voucherTypeId;
-                    
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
 
-            //        dtbl.Rows.Add(row);
-            //    }
+                    row["paymentMasterId"] = item.paymentMasterId;
+                    row["invoiceNo"] = item.invoiceNo;
+                    row["voucherTypeName"] = item.voucherTypeName;
+                    row["date"] = item.date;
+                    row["totalAmount"] = item.totalAmount;
+                    row["ledgerName"] = item.ledgerName;
+                    row["narration"] = item.narration;
+                    row["voucherTypeId"] = item.voucherTypeId;
 
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.ToString());
-            //}
+
+                    dtbl.Rows.Add(row);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
             return dtbl;
         }
     }

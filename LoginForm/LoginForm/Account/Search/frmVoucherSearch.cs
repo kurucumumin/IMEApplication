@@ -1335,7 +1335,7 @@ namespace LoginForm
         /// <param name="e"></param>
         private void btnViewDetails_Click(object sender, EventArgs e)
         {
-            //TODO @@Fonksiyonu aç ViewDetail
+            
             try
             {
                 if (dgvVoucherSearch.Rows.Count > 0)

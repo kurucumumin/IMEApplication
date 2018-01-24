@@ -23,15 +23,23 @@ namespace LoginForm
         }
         public void LedgerComboFill()
         {
-            DataTable dtbl = new DataTable();
-
-            dtbl.Columns.Add("All");
-            dtbl.Columns.Add("Cash");
-            DataRow dr = dtbl.NewRow();
-            dr[0] = "All";
-            dr[1] = "Cash";
-            dtbl.Rows.InsertAt(dr, 0);
-            cmbAccountLedger.DataSource = dtbl;
+            try
+            {
+                DataTable dtbl = new DataTable();
+                TransactionsGeneralFill obj = new TransactionsGeneralFill();
+                dtbl = obj.BankOrCashComboFill(false);
+                DataRow dr = dtbl.NewRow();
+                dr[1] = "All";
+                dr[2] = "Cash";
+                dtbl.Rows.InsertAt(dr, 0);
+                cmbAccountLedger.DataSource = dtbl;
+                cmbAccountLedger.DisplayMember = "ledgerName";
+                cmbAccountLedger.ValueMember = "ledgerId";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PREG2:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
         }
 

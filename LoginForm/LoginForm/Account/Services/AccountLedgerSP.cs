@@ -583,10 +583,10 @@ namespace LoginForm.Account.Services
             try
             {
                 decimal? adapter = (from dn in IME.LedgerPostings.Where(p => p.ledgerId == decledgerId)
-                                    select new { dn.debit }).Sum(x => Convert.ToDecimal(x.debit));
+                                    select new { dn.debit }).Sum(x => x.debit);
 
                 decimal? adapter2 = (from dn in IME.LedgerPostings.Where(p => p.ledgerId == decledgerId)
-                                    select new { dn.credit }).Sum(x => Convert.ToDecimal(x.credit));
+                                    select new { dn.credit }).Sum(x => x.credit);
 
 
 

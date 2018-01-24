@@ -74,30 +74,30 @@ namespace LoginForm
         /// </summary>
         /// <param name="decVoucherTypeId"></param>
         /// <param name="strVoucherTypeName"></param>
-        //public void CallFromVoucherTypeSelection(decimal decVoucherTypeId, string strVoucherTypeName)
-        //{
-        //    try
-        //    {
-        //        decCreditNoteVoucherTypeId = decVoucherTypeId;
-        //        VoucherTypeSP spVoucherType = new VoucherTypeSP();
-        //        isAutomatic = spVoucherType.CheckMethodOfVoucherNumbering(decCreditNoteVoucherTypeId);
-        //        SuffixPrefixSP spSuffisprefix = new SuffixPrefixSP();
-        //        SuffixPrefixInfo infoSuffixPrefix = new SuffixPrefixInfo();
+        public void CallFromVoucherTypeSelection(decimal decVoucherTypeId, string strVoucherTypeName)
+        {
+            try
+            {
+                decCreditNoteVoucherTypeId = decVoucherTypeId;
+                VoucherTypeSP spVoucherType = new VoucherTypeSP();
+                isAutomatic = spVoucherType.CheckMethodOfVoucherNumbering(decCreditNoteVoucherTypeId);
+                SuffixPrefixSP spSuffisprefix = new SuffixPrefixSP();
+                SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
 
-        //        infoSuffixPrefix = spSuffisprefix.GetSuffixPrefixDetails(decCreditNoteVoucherTypeId, dtpVoucherDate.Value);
-        //        decCreditNoteSuffixPrefixId = infoSuffixPrefix.SuffixprefixId;
-        //        strPrefix = infoSuffixPrefix.Prefix;
-        //        strSuffix = infoSuffixPrefix.Suffix;
-        //        this.Text = strVoucherTypeName;
-        //        base.Show();
-        //        Clear();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("CRNT:01" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
+                infoSuffixPrefix = spSuffisprefix.GetSuffixPrefixDetails(decCreditNoteVoucherTypeId, dtpVoucherDate.Value);
+                decCreditNoteSuffixPrefixId = infoSuffixPrefix.suffixprefixId;
+                strPrefix = infoSuffixPrefix.prefix;
+                strSuffix = infoSuffixPrefix.suffix;
+                this.Text = strVoucherTypeName;
+                base.Show();
+                Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("CRNT:01" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
-        //}
+        }
 
         /// <summary>
         /// Load the form while calling from the voucherSearch in editmode
@@ -410,9 +410,10 @@ namespace LoginForm
         /// </summary>
         public void SlNo()
         {
+            int inRowNo = 1;
             try
             {
-                int inRowNo = 1;
+                
                 foreach (DataGridViewRow dr in dgvCreditNote.Rows)
                 {
                     dr.Cells["dgvtxtSlNo"].Value = inRowNo;
@@ -1681,24 +1682,26 @@ namespace LoginForm
         /// </summary>
         public void VoucherDate()
         {
-            //try
-            //{
-                dtpVoucherDate.Value = Convert.ToDateTime(Utils.getManagement().FinancialYear.fromDate.Value.ToString("dd-MMM-yyyy"));
-                dtpVoucherDate.MinDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.fromDate);
-                dtpVoucherDate.MaxDate = (DateTime)Utils.getManagement().FinancialYear.toDate;
+            Management m = Utils.getManagement();
+            try
+            {
+                
+                dtpVoucherDate.MinDate = (DateTime)m.FinancialYear.fromDate;
+                dtpVoucherDate.MaxDate = (DateTime)m.FinancialYear.toDate;
                 //Company infoComapany = new CompanyInfo();
                 //CompanySP spCompany = new CompanySP();
                 //infoComapany = spCompany.CompanyView(1);
                 //DateTime dtVoucherDate = infoComapany.CurrentDate;
                 //dtpVoucherDate.Value = dtVoucherDate;
                 txtDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                dtpVoucherDate.Value = Convert.ToDateTime(txtDate.Text);
                 txtDate.Focus();
                 txtDate.SelectAll();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("CRNT:27" + ex.Message, "Open Miracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("CRNT:27" + ex.Message, "Open Miracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         /// <summary>
