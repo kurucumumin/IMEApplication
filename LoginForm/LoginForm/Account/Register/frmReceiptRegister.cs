@@ -76,11 +76,15 @@ namespace LoginForm
 
                     if (txtFromDate.Text.Trim() != string.Empty && txtToDate.Text.Trim() != string.Empty)
                     {
-                        dgvReceiptRegister.DataSource = IME.ReceiptMasters.Where(
-                            a=>a.date> frmdate).Where(
-                            b=>b.date < todate).Where(
-                            c=>c.voucherNo== txtVoucherNo.Text
-                            ).ToList();
+                        dgvReceiptRegister.DataSource = (from r in IME.ReceiptMasters
+                                                         where (r.date > frmdate) && (r.date < todate) && (r.voucherNo== txtVoucherNo.Text)
+                                                         select new {
+                                                             r.voucherNo,
+                                                             r.voucherTypeId,
+                                                             r.date,
+                                                             r.totalAmount,
+                                                             r.narration
+                                                         }).ToList();
                     }
         }
 

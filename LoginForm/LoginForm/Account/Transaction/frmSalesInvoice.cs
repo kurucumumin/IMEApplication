@@ -24,6 +24,7 @@ namespace LoginForm
         frmVoucherSearch objVoucherSearch = null;
         frmAccountLedger frmAccountLedgerObj = new frmAccountLedger();
         TransactionsGeneralFill TransactionGeneralFillObj = new TransactionsGeneralFill();
+        frmLedgerPopup frmLedgerPopUpObj = new frmLedgerPopup();
         DataGridViewTextBoxEditingControl TextBoxControl;
         AutoCompleteStringCollection ProductNames = new AutoCompleteStringCollection();
         AutoCompleteStringCollection ProductCodes = new AutoCompleteStringCollection();
@@ -2205,30 +2206,30 @@ namespace LoginForm
         /// <param name="frmLedgerPopup"></param>
         /// <param name="decId"></param>
         /// <param name="strComboTypes"></param>
-        //public void CallFromLedgerPopup(frmLedgerPopup frmLedgerPopup, decimal decId, string strComboTypes) //PopUp
-        //{
-        //    try
-        //    {
-        //        this.Enabled = true;
-        //        this.frmLedgerPopUpObj = frmLedgerPopup;
-        //        if (strComboTypes == "CashOrSundryDeptors")
-        //        {
-        //            CashorPartyComboFill(cmbCashOrParty);
-        //            cmbCashOrParty.SelectedValue = decId;
-        //        }
-        //        else if (strComboTypes == "SalesAccount")
-        //        {
-        //            SalesAccountComboFill(cmbSalesAccount);
-        //            cmbSalesAccount.SelectedValue = decId;
-        //        }
-        //        frmLedgerPopUpObj.Close();
-        //        frmLedgerPopUpObj = null;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("SI: 57" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromLedgerPopup(frmLedgerPopup frmLedgerPopup, decimal decId, string strComboTypes) //PopUp
+        {
+            try
+            {
+                this.Enabled = true;
+                this.frmLedgerPopUpObj = frmLedgerPopup;
+                if (strComboTypes == "CashOrSundryDeptors")
+                {
+                    CashorPartyComboFill(cmbCashOrParty);
+                    cmbCashOrParty.SelectedValue = decId;
+                }
+                else if (strComboTypes == "SalesAccount")
+                {
+                    SalesAccountComboFill(cmbSalesAccount);
+                    cmbSalesAccount.SelectedValue = decId;
+                }
+                frmLedgerPopUpObj.Close();
+                frmLedgerPopUpObj = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("SI: 57" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to call frmEmployeePopup form to select and view Employee
         /// </summary>
@@ -2405,8 +2406,8 @@ namespace LoginForm
                 ProductCodes = new AutoCompleteStringCollection();
                 foreach (DataRow dr in dtblProducts.Rows)
                 {
-                    ProductNames.Add(dr["Article_Desc"].ToString());
-                    ProductCodes.Add(dr["Article_No"].ToString());
+                    ProductNames.Add(dr["productName"].ToString());
+                    ProductCodes.Add(dr["productCode"].ToString());
                 }
            
         }
