@@ -338,32 +338,7 @@ namespace LoginForm.Account.Services
             DataTable dtbl = new DataTable();
             try
             {
-                var adaptor = (from al in db.AccountLedgers
-                               select new
-                               {
-                                   al.ledgerId,
-                                   al.accountGroupID,
-                                   al.ledgerName,
-                                   al.openingBalance,
-                                   al.crOrDr,
-                                   al.narration,
-                                   al.mailingName,
-                                   al.address,
-                                   al.phone,
-                                   al.email,
-                                   al.creditPeriod,
-                                   al.creditLimit,
-                                   al.pricinglevelId,
-                                   al.billByBill,
-                                   al.tin,
-                                   al.cst,
-                                   al.pan,
-                                   al.routeId,
-                                   al.bankAccountNumber,
-                                   al.branchName,
-                                   al.branchCode,
-                                   al.extraDate
-                               }).ToList();
+                var adaptor = db.AccountLedgerViewAll().ToList();
 
                 dtbl.Columns.Add("ledgerId");
                 dtbl.Columns.Add("accountGroupID");

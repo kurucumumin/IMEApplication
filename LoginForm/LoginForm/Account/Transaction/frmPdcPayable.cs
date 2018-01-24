@@ -225,7 +225,7 @@ namespace LoginForm
                 cmbBank.DataSource = dtblBank;
                 cmbBank.DisplayMember = "ledgerName";
                 cmbBank.ValueMember = "ledgerId";
-                //cmbBank.SelectedIndex = -1;
+                cmbBank.SelectedIndex = -1;
             }
             catch (Exception ex)
             {

@@ -466,20 +466,17 @@ namespace LoginForm.Account.Services
             return max;
         }
 
+        /// <summary>
+        /// Function to fill PDCClearanceMax UnderVoucherType PlusOne
+        /// </summary>
+        /// <param name="decVoucherTypeId"></param>
+        /// <returns></returns>
         public decimal PDCClearanceMaxUnderVoucherTypePlusOne(decimal decVoucherTypeId)
         {
-            IMEEntities IME = new IMEEntities();
             decimal max = 0;
             try
             {
-                decimal decVoucherNo = Convert.ToDecimal(IME.PDCClearanceMasters.FirstOrDefault().voucherNo);
-
-                //max = IME.PDCClearanceMasters.Where(p => p.voucherTypeId == decVoucherTypeId).Select(y => decVoucherNo).Max();
-
-                max = (from dn in IME.PDCClearanceMasters.Where(p => p.voucherTypeId == decVoucherTypeId)
-                       select new { dn.voucherNo }).Max(x => decVoucherNo);
-                max    = (max != 0 && max.ToString() != null) ? max : 0;
-            
+                max = Convert.ToDecimal(new IMEEntities().PDCClearanceMaxUnderVoucherType(decVoucherTypeId));
             }
             catch (Exception ex)
             {
