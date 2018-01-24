@@ -45,7 +45,6 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtDate = new System.Windows.Forms.TextBox();
             this.lblVoucherDate = new System.Windows.Forms.Label();
             this.lblVoucherNo = new System.Windows.Forms.Label();
             this.txtVoucherNo = new System.Windows.Forms.TextBox();
@@ -60,6 +59,8 @@
             this.dgvtxtChequeDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtDetailsId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvtxtLedgerPostingId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtDate = new System.Windows.Forms.TextBox();
+            this.dtpVoucherDate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCreditNote)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,20 +68,20 @@
             // 
             this.lblCreditTotal.AutoSize = true;
             this.lblCreditTotal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblCreditTotal.Location = new System.Drawing.Point(647, 662);
-            this.lblCreditTotal.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.lblCreditTotal.Location = new System.Drawing.Point(485, 538);
+            this.lblCreditTotal.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblCreditTotal.Name = "lblCreditTotal";
-            this.lblCreditTotal.Size = new System.Drawing.Size(81, 17);
+            this.lblCreditTotal.Size = new System.Drawing.Size(61, 13);
             this.lblCreditTotal.TabIndex = 643;
             this.lblCreditTotal.Text = "Credit Total";
             // 
             // txtCreditTotal
             // 
             this.txtCreditTotal.Enabled = false;
-            this.txtCreditTotal.Location = new System.Drawing.Point(773, 657);
-            this.txtCreditTotal.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.txtCreditTotal.Location = new System.Drawing.Point(580, 534);
+            this.txtCreditTotal.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.txtCreditTotal.Name = "txtCreditTotal";
-            this.txtCreditTotal.Size = new System.Drawing.Size(265, 22);
+            this.txtCreditTotal.Size = new System.Drawing.Size(200, 20);
             this.txtCreditTotal.TabIndex = 242;
             this.txtCreditTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -88,20 +89,20 @@
             // 
             this.lblDebitTotal.AutoSize = true;
             this.lblDebitTotal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblDebitTotal.Location = new System.Drawing.Point(647, 631);
-            this.lblDebitTotal.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.lblDebitTotal.Location = new System.Drawing.Point(485, 513);
+            this.lblDebitTotal.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblDebitTotal.Name = "lblDebitTotal";
-            this.lblDebitTotal.Size = new System.Drawing.Size(77, 17);
+            this.lblDebitTotal.Size = new System.Drawing.Size(59, 13);
             this.lblDebitTotal.TabIndex = 641;
             this.lblDebitTotal.Text = "Debit Total";
             // 
             // txtDebitTotal
             // 
             this.txtDebitTotal.Enabled = false;
-            this.txtDebitTotal.Location = new System.Drawing.Point(773, 626);
-            this.txtDebitTotal.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.txtDebitTotal.Location = new System.Drawing.Point(580, 509);
+            this.txtDebitTotal.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.txtDebitTotal.Name = "txtDebitTotal";
-            this.txtDebitTotal.Size = new System.Drawing.Size(265, 22);
+            this.txtDebitTotal.Size = new System.Drawing.Size(200, 20);
             this.txtDebitTotal.TabIndex = 436;
             this.txtDebitTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -109,10 +110,10 @@
             // 
             this.cbxPrintAfterSave.AutoSize = true;
             this.cbxPrintAfterSave.ForeColor = System.Drawing.Color.White;
-            this.cbxPrintAfterSave.Location = new System.Drawing.Point(27, 689);
-            this.cbxPrintAfterSave.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.cbxPrintAfterSave.Location = new System.Drawing.Point(20, 560);
+            this.cbxPrintAfterSave.Margin = new System.Windows.Forms.Padding(5);
             this.cbxPrintAfterSave.Name = "cbxPrintAfterSave";
-            this.cbxPrintAfterSave.Size = new System.Drawing.Size(126, 21);
+            this.cbxPrintAfterSave.Size = new System.Drawing.Size(97, 17);
             this.cbxPrintAfterSave.TabIndex = 4;
             this.cbxPrintAfterSave.Text = "Print after save";
             this.cbxPrintAfterSave.UseVisualStyleBackColor = true;
@@ -123,20 +124,20 @@
             this.lblNarration.AutoSize = true;
             this.lblNarration.Enabled = false;
             this.lblNarration.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblNarration.Location = new System.Drawing.Point(27, 604);
-            this.lblNarration.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.lblNarration.Location = new System.Drawing.Point(20, 491);
+            this.lblNarration.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblNarration.Name = "lblNarration";
-            this.lblNarration.Size = new System.Drawing.Size(67, 17);
+            this.lblNarration.Size = new System.Drawing.Size(50, 13);
             this.lblNarration.TabIndex = 638;
             this.lblNarration.Text = "Narration";
             // 
             // txtNarration
             // 
-            this.txtNarration.Location = new System.Drawing.Point(145, 604);
-            this.txtNarration.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.txtNarration.Location = new System.Drawing.Point(109, 491);
+            this.txtNarration.Margin = new System.Windows.Forms.Padding(5);
             this.txtNarration.Multiline = true;
             this.txtNarration.Name = "txtNarration";
-            this.txtNarration.Size = new System.Drawing.Size(265, 61);
+            this.txtNarration.Size = new System.Drawing.Size(200, 50);
             this.txtNarration.TabIndex = 3;
             this.txtNarration.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNarration_KeyDown);
             this.txtNarration.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNarration_KeyPress);
@@ -145,10 +146,10 @@
             // 
             this.lnklblRemove.AutoSize = true;
             this.lnklblRemove.LinkColor = System.Drawing.Color.Yellow;
-            this.lnklblRemove.Location = new System.Drawing.Point(977, 604);
-            this.lnklblRemove.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.lnklblRemove.Location = new System.Drawing.Point(733, 491);
+            this.lnklblRemove.Margin = new System.Windows.Forms.Padding(5);
             this.lnklblRemove.Name = "lnklblRemove";
-            this.lnklblRemove.Size = new System.Drawing.Size(60, 17);
+            this.lnklblRemove.Size = new System.Drawing.Size(47, 13);
             this.lnklblRemove.TabIndex = 637;
             this.lnklblRemove.TabStop = true;
             this.lnklblRemove.Text = "Remove";
@@ -160,10 +161,9 @@
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.Black;
-            this.btnClose.Location = new System.Drawing.Point(929, 689);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Location = new System.Drawing.Point(697, 560);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(113, 33);
+            this.btnClose.Size = new System.Drawing.Size(85, 27);
             this.btnClose.TabIndex = 8;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -175,10 +175,9 @@
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.Color.Black;
-            this.btnDelete.Location = new System.Drawing.Point(808, 689);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDelete.Location = new System.Drawing.Point(606, 560);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(113, 33);
+            this.btnDelete.Size = new System.Drawing.Size(85, 27);
             this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -191,10 +190,9 @@
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.Black;
-            this.btnClear.Location = new System.Drawing.Point(687, 689);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClear.Location = new System.Drawing.Point(515, 560);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(113, 33);
+            this.btnClear.Size = new System.Drawing.Size(85, 27);
             this.btnClear.TabIndex = 6;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
@@ -207,34 +205,23 @@
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.Black;
-            this.btnSave.Location = new System.Drawing.Point(565, 689);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Location = new System.Drawing.Point(424, 560);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(113, 33);
+            this.btnSave.Size = new System.Drawing.Size(85, 27);
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             this.btnSave.KeyUp += new System.Windows.Forms.KeyEventHandler(this.btnSave_KeyUp);
             // 
-            // txtDate
-            // 
-            this.txtDate.Location = new System.Drawing.Point(743, 18);
-            this.txtDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
-            this.txtDate.Name = "txtDate";
-            this.txtDate.Size = new System.Drawing.Size(275, 22);
-            this.txtDate.TabIndex = 1;
-            this.txtDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDate_KeyDown);
-            this.txtDate.Leave += new System.EventHandler(this.txtDate_Leave);
-            // 
             // lblVoucherDate
             // 
             this.lblVoucherDate.AutoSize = true;
             this.lblVoucherDate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblVoucherDate.Location = new System.Drawing.Point(619, 23);
-            this.lblVoucherDate.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.lblVoucherDate.Location = new System.Drawing.Point(464, 19);
+            this.lblVoucherDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblVoucherDate.Name = "lblVoucherDate";
-            this.lblVoucherDate.Size = new System.Drawing.Size(95, 17);
+            this.lblVoucherDate.Size = new System.Drawing.Size(73, 13);
             this.lblVoucherDate.TabIndex = 647;
             this.lblVoucherDate.Text = "Voucher Date";
             // 
@@ -242,19 +229,19 @@
             // 
             this.lblVoucherNo.AutoSize = true;
             this.lblVoucherNo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblVoucherNo.Location = new System.Drawing.Point(27, 23);
-            this.lblVoucherNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.lblVoucherNo.Location = new System.Drawing.Point(20, 19);
+            this.lblVoucherNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblVoucherNo.Name = "lblVoucherNo";
-            this.lblVoucherNo.Size = new System.Drawing.Size(87, 17);
+            this.lblVoucherNo.Size = new System.Drawing.Size(67, 13);
             this.lblVoucherNo.TabIndex = 646;
             this.lblVoucherNo.Text = "Voucher No.";
             // 
             // txtVoucherNo
             // 
-            this.txtVoucherNo.Location = new System.Drawing.Point(157, 18);
-            this.txtVoucherNo.Margin = new System.Windows.Forms.Padding(7, 6, 7, 0);
+            this.txtVoucherNo.Location = new System.Drawing.Point(118, 15);
+            this.txtVoucherNo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.txtVoucherNo.Name = "txtVoucherNo";
-            this.txtVoucherNo.Size = new System.Drawing.Size(275, 22);
+            this.txtVoucherNo.Size = new System.Drawing.Size(207, 20);
             this.txtVoucherNo.TabIndex = 0;
             this.txtVoucherNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVoucherNo_KeyDown);
             // 
@@ -295,8 +282,8 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvCreditNote.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCreditNote.EnableHeadersVisualStyles = false;
-            this.dgvCreditNote.Location = new System.Drawing.Point(27, 52);
-            this.dgvCreditNote.Margin = new System.Windows.Forms.Padding(4, 4, 4, 0);
+            this.dgvCreditNote.Location = new System.Drawing.Point(20, 42);
+            this.dgvCreditNote.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.dgvCreditNote.MultiSelect = false;
             this.dgvCreditNote.Name = "dgvCreditNote";
             this.dgvCreditNote.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -308,7 +295,7 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvCreditNote.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvCreditNote.Size = new System.Drawing.Size(1019, 534);
+            this.dgvCreditNote.Size = new System.Drawing.Size(764, 434);
             this.dgvCreditNote.TabIndex = 648;
             // 
             // dgvtxtSlNo
@@ -379,14 +366,30 @@
             this.dgvtxtLedgerPostingId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dgvtxtLedgerPostingId.Visible = false;
             // 
+            // txtDate
+            // 
+            this.txtDate.Location = new System.Drawing.Point(547, 12);
+            this.txtDate.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
+            this.txtDate.Name = "txtDate";
+            this.txtDate.Size = new System.Drawing.Size(207, 20);
+            this.txtDate.TabIndex = 649;
+            // 
+            // dtpVoucherDate
+            // 
+            this.dtpVoucherDate.Location = new System.Drawing.Point(748, 13);
+            this.dtpVoucherDate.Name = "dtpVoucherDate";
+            this.dtpVoucherDate.Size = new System.Drawing.Size(21, 20);
+            this.dtpVoucherDate.TabIndex = 650;
+            // 
             // frmCreditNote
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
-            this.ClientSize = new System.Drawing.Size(1067, 738);
-            this.Controls.Add(this.dgvCreditNote);
+            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.dtpVoucherDate);
             this.Controls.Add(this.txtDate);
+            this.Controls.Add(this.dgvCreditNote);
             this.Controls.Add(this.lblVoucherDate);
             this.Controls.Add(this.lblVoucherNo);
             this.Controls.Add(this.txtVoucherNo);
@@ -405,10 +408,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "frmCreditNote";
-            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
+            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Credit Note";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCreditNote_FormClosing);
@@ -433,8 +435,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnSave;
-        //private dgv.DataGridViewEnter dgvCreditNote;
-        private System.Windows.Forms.TextBox txtDate;
         private System.Windows.Forms.Label lblVoucherDate;
         private System.Windows.Forms.Label lblVoucherNo;
         private System.Windows.Forms.TextBox txtVoucherNo;
@@ -449,6 +449,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtChequeDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtDetailsId;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtLedgerPostingId;
+       // private System.Windows.Forms.DateTimePicker dtpVoucherDate;
+        private System.Windows.Forms.TextBox txtDate;
         private System.Windows.Forms.DateTimePicker dtpVoucherDate;
         //private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSlNo;
         //private System.Windows.Forms.DataGridViewComboBoxColumn dgvcmbAccountLedger;
