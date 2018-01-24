@@ -210,17 +210,22 @@ namespace LoginForm.Services
             return dtblpdcReceivableId;
         }
 
+        /// <summary>
+        /// Function to  get PDCReceivable Max UnderVoucherType PlusOne
+        /// </summary>
+        /// <param name="decVoucherTypeId"></param>
+        /// <returns></returns>
         public decimal PDCReceivableMaxUnderVoucherTypePlusOne(decimal decVoucherTypeId)
         {
             IMEEntities IME = new IMEEntities();
             decimal max = 0;
             try
             {
-                decimal? adapter = (from pr in IME.PDCReceivableMasters.Where(p => p.voucherTypeId == decVoucherTypeId)
-                               select new { pr.voucherNo }).Max(x => Convert.ToDecimal(x.voucherNo));
+                max = Convert.ToDecimal(new IMEEntities().PDCReceivableMaxUnderVoucherType(decVoucherTypeId));
+                //decimal? adapter = (from pr in IME.PDCReceivableMasters.Where(p => p.voucherTypeId == decVoucherTypeId)
+                //               select new { pr.voucherNo }).Max(x => Convert.ToDecimal(x.voucherNo));
 
-                max = (adapter != null) ? (decimal)adapter : 0;
-
+                //max = (adapter != null) ? (decimal)adapter : 0;
             }
             catch (Exception ex)
             {

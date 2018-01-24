@@ -124,25 +124,25 @@ namespace LoginForm
         //    }
         //}
 
-
+        /// <summary>
+        /// Currency Combofill function
+        /// </summary>
         public void GridCurrencyComboFill()
         {
             try
             {
-                DateTime dt = Convert.ToDateTime(txtDate.Text);
-                var adapter = (from a in IME.Currencies
-                               from b in IME.ExchangeRates.Where(x=>x.currencyId == a.currencyID)
-                               where b.date == dt
-                               where b.exchangeRateID==1
-                               select new
-                               {
-                                   currencyName=a.currencyName + "|" +a.currencySymbol,
-                                   b.exchangeRateID
-                               }).ToList();
-                dgvcmbCurrency.DataSource = adapter;
+                DataTable dtbl = new DataTable();
+                TransactionsGeneralFill Obj = new TransactionsGeneralFill();
+                dtbl = Obj.CurrencyComboByDate(Convert.ToDateTime(txtDate.Text));
+                DataRow dr = dtbl.NewRow();
+                dr["exchangeRateId"] = "0";
+                dr["currencyName"] = string.Empty;
+                dtbl.Rows.InsertAt(dr, 0);
+                dgvcmbCurrency.DataSource = dtbl;
                 dgvcmbCurrency.DisplayMember = "currencyName";
-                dgvcmbCurrency.ValueMember = "exchangeRateId";             
-                if (IME.Settings.Where(a => a.settingsName == "MultiCurrency").FirstOrDefault().status == "Yes")
+                dgvcmbCurrency.ValueMember = "exchangeRateId";
+                SettingsSP spSettings = new SettingsSP();
+                if (spSettings.SettingsStatusCheck("MultiCurrency") == "Yes")
                 {
                     dgvcmbCurrency.ReadOnly = false;
                 }
@@ -156,6 +156,35 @@ namespace LoginForm
             {
                 MessageBox.Show("PV5:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            //try
+            //{
+            //    DateTime dt = Convert.ToDateTime(txtDate.Text);
+            //    var adapter = (from a in IME.Currencies
+            //                   from b in IME.ExchangeRates.Where(x=>x.currencyId == a.currencyID)
+            //                   where b.date == dt
+            //                   where b.exchangeRateID==1
+            //                   select new
+            //                   {
+            //                       currencyName=a.currencyName + "|" +a.currencySymbol,
+            //                       b.exchangeRateID
+            //                   }).ToList();
+            //    dgvcmbCurrency.DataSource = adapter;
+            //    dgvcmbCurrency.DisplayMember = "currencyName";
+            //    dgvcmbCurrency.ValueMember = "exchangeRateId";             
+            //    if (IME.Settings.Where(a => a.settingsName == "MultiCurrency").FirstOrDefault().status == "Yes")
+            //    {
+            //        dgvcmbCurrency.ReadOnly = false;
+            //    }
+            //    else
+            //    {
+            //        dgvcmbCurrency.ReadOnly = true;
+
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("PV5:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
 
         //public void CallFromLedgerPopup(frmLedgerPopup frmLedgerPopup, decimal decId, string str)
@@ -1697,7 +1726,7 @@ namespace LoginForm
             {
                 DataTable dtbl = new DataTable();
                 TransactionsGeneralFill obj = new TransactionsGeneralFill();
-                dtbl.Rows.Add(IME.AccountLedgers);
+                dtbl = obj.AccountLedgerComboFill();
                 DataRow dr = dtbl.NewRow();
                 dr["ledgerId"] = "0";
                 dr["ledgerName"] = string.Empty;

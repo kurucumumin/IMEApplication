@@ -207,7 +207,7 @@ namespace LoginForm
             try
             {
                 dtpVoucherDate.MinDate = (DateTime)m.FinancialYear.fromDate;
-                dtpVoucherDate.MaxDate = dtpVoucherDate.MinDate = (DateTime)m.FinancialYear.toDate;
+                dtpVoucherDate.MaxDate = (DateTime)m.FinancialYear.toDate;
                 DateTime dtVoucherDate = DateTime.Now;
                 dtpVoucherDate.Value = dtVoucherDate;
                 txtVoucherDate.Text = dtVoucherDate.ToString("dd-MMM-yyyy");

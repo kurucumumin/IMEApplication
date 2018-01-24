@@ -166,6 +166,11 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerView_Result>("AccountLedgerView", ledgerIdParameter);
         }
     
+        public virtual ObjectResult<AccountLedgerViewAll_Result> AccountLedgerViewAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerViewAll_Result>("AccountLedgerViewAll");
+        }
+    
         public virtual ObjectResult<AccountLedgerViewAllForComboBox_Result> AccountLedgerViewAllForComboBox()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerViewAllForComboBox_Result>("AccountLedgerViewAllForComboBox");
@@ -374,6 +379,11 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ArticleSelectAll_Result>("ArticleSelectAll");
         }
     
+        public virtual ObjectResult<BankAccountComboFill_Result> BankAccountComboFill()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BankAccountComboFill_Result>("BankAccountComboFill");
+        }
+    
         public virtual ObjectResult<BankReconciliationFillUnrecon_Result> BankReconciliationFillUnrecon(Nullable<decimal> ledgerId, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var ledgerIdParameter = ledgerId.HasValue ?
@@ -427,6 +437,11 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BudgetVariance_Result>("BudgetVariance", budgetMasterIdParameter);
         }
     
+        public virtual ObjectResult<CashOrBankComboFill_Result> CashOrBankComboFill()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CashOrBankComboFill_Result>("CashOrBankComboFill");
+        }
+    
         public virtual ObjectResult<Nullable<int>> CheckForDefaultVoucherType(Nullable<decimal> voucherTypeId)
         {
             var voucherTypeIdParameter = voucherTypeId.HasValue ?
@@ -451,6 +466,15 @@ namespace LoginForm.DataSet
                 new ObjectParameter("toDate", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CreditNoteRegisterSearch_Result>("CreditNoteRegisterSearch", voucherNoParameter, fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<CurrencyComboByDate_Result> CurrencyComboByDate(Nullable<System.DateTime> date)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CurrencyComboByDate_Result>("CurrencyComboByDate", dateParameter);
         }
     
         public virtual ObjectResult<CurrencySearch_Result> CurrencySearch(string currencyName, string currencySymbol)
@@ -1107,6 +1131,15 @@ namespace LoginForm.DataSet
                 new ObjectParameter("MasterId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PDCClearanceFillDetails_Result>("PDCClearanceFillDetails", voucherTypeNameParameter, masterIdParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> PDCClearanceMaxUnderVoucherType(Nullable<decimal> voucherTypeId)
+        {
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("PDCClearanceMaxUnderVoucherType", voucherTypeIdParameter);
         }
     
         public virtual ObjectResult<PDCClearanceRegisterSearch_Result> PDCClearanceRegisterSearch(string voucherTypeName, string ledgerName, Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate, string chequeNo, Nullable<decimal> bankId, string status)

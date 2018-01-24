@@ -169,40 +169,27 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
+        /// <summary>
+        /// Function to fill bank combobox
+        /// </summary>
+        /// <returns></returns>
         public DataTable BankAccountComboFill()
         {
             IMEEntities db = new IMEEntities();
             DataTable dtbl = new DataTable();
             try
             {
-                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupId == 17 || x.accountGroupId == 28)
-                               select new
-                               {
-                                   AccountGroupId = ag.accountGroupId,
-                                   hierarchyLevel = 1
-                               }).ToList();
-                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.groupUnder == 17 || x.groupUnder == 28)
-                                select new
-                                {
-                                    AccountGroupId = ag.accountGroupId,
-                                    hierarchyLevel = 2
-                                }).ToList();
+                var adaptor = new IMEEntities().BankAccountComboFill().ToList();
 
-                foreach (var item in adaptor2)
-                {
-                    if (!adaptor.Exists(x => x.AccountGroupId == item.AccountGroupId))
-                    {
-                        adaptor.Add(item);
-                    }
-                }
-
-                dtbl.Columns.Add("AccountGroupId");
+                dtbl.Columns.Add("ledgerName");
+                dtbl.Columns.Add("ledgerId");
 
                 foreach (var item in adaptor)
                 {
                     var row = dtbl.NewRow();
 
-                    row["AccountGroupId"] = item.AccountGroupId;
+                    row["ledgerName"] = item.ledgerName;
+                    row["ledgerId"] = item.ledgerId;
 
                     dtbl.Rows.Add(row);
                 }

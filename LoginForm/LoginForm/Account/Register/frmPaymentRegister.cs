@@ -29,8 +29,8 @@ namespace LoginForm
                 TransactionsGeneralFill obj = new TransactionsGeneralFill();
                 dtbl = obj.BankOrCashComboFill(false);
                 DataRow dr = dtbl.NewRow();
-                dr[1] = "All";
-                dr[2] = "Cash";
+                dr[0] = "All";
+                dr[1] = 0;
                 dtbl.Rows.InsertAt(dr, 0);
                 cmbAccountLedger.DataSource = dtbl;
                 cmbAccountLedger.DisplayMember = "ledgerName";
@@ -70,7 +70,7 @@ namespace LoginForm
                     {
                         if (txtFromDate.Text.Trim() != string.Empty && txtToDate.Text.Trim() != string.Empty)
                         {
-                            dtbl = SpPaymentMaster.PaymentMasterSearch(Convert.ToDateTime(dtpFromDate.Value.ToString()), Convert.ToDateTime(dtpToDate.Value.ToString()), Convert.ToDecimal(cmbAccountLedger.SelectedValue), txtVoucherNo.Text);
+                            dtbl = SpPaymentMaster.PaymentMasterSearch(dtpFromDate.Value, dtpToDate.Value, Convert.ToDecimal(cmbAccountLedger.SelectedValue), txtVoucherNo.Text);
                             dgvPaymentRegister.DataSource = dtbl;
                         }
                     }

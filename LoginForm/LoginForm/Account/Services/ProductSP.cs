@@ -29,8 +29,8 @@ namespace LoginForm.Account.Services
 
             var adaptor = IME.ArticleSelectAll();
 
-            dt.Columns.Add("Article_Desc");
-            dt.Columns.Add("Article_No");
+            dt.Columns.Add("productName");
+            dt.Columns.Add("productCode");
             dt.Columns.Add("Unit_Measure");
             dt.Columns.Add("Standard_Weight");
             dt.Columns.Add("CofO");
@@ -44,8 +44,8 @@ namespace LoginForm.Account.Services
             foreach (var item in adaptor)
             {
                 var row = dt.NewRow();
-                row["Article_Desc"] = item.Article_Desc;
-                row["Article_No"] = item.Article_No;
+                row["productName"] = item.Article_Desc;
+                row["productCode"] = item.Article_No;
                 row["Unit_Measure"] = item.Unit_Measure;
                 row["Standard_Weight"] = item.Standard_Weight;
                 row["CofO"] = item.CofO;

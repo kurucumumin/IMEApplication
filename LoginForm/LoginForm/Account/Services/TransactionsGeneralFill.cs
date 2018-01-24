@@ -96,38 +96,30 @@ namespace LoginForm.Account.Services
         public DataTable CurrencyComboByDate(DateTime date)
         {
             IMEEntities db = new IMEEntities();
-            DataTable dt = new DataTable();
+            DataTable dtbl = new DataTable();
             try
             {
-                var adaptor = (from c in db.Currencies
-                               from e in db.ExchangeRates.Where(a=>a.currencyId==c.currencyID)
-                               where e.date==date || e.exchangeRateID==1
-                               select new
-                               {
-                                   c.currencyName,
-                                   c.currencySymbol,
-                                   e.exchangeRateID
-                               }).ToList();
+                var adaptor = db.CurrencyComboByDate(date).ToList();
 
-                dt.Columns.Add("currencyName");
-                dt.Columns.Add("currencySymbol");
-                dt.Columns.Add("exchangeRateID");
+                dtbl.Columns.Add("currencyName");
+                dtbl.Columns.Add("exchangeRateId");
 
                 foreach (var item in adaptor)
                 {
-                    var row = dt.NewRow();
+                    DataRow row = dtbl.NewRow();
 
-                    row["currencyName"] = item.currencyName+ "|" +item.currencySymbol;
-                    row["exchangeRateID"] = item.exchangeRateID;
+                    row["currencyName"] = item.currencyName;
+                    row["exchangeRateId"] = item.exchangeRateId;
 
-                    dt.Rows.Add(row);
+                    dtbl.Rows.Add(row);
                 }
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-            return dt;
+            return dtbl;
         }
 
         //public DataTable PricingLevelViewAll(ComboBox cmbPricingLevel, bool isAll)
@@ -298,40 +290,35 @@ namespace LoginForm.Account.Services
             }
         }
 
+        /// <summary>
+        /// Function to fill All cash/Bank ledgers for Combobox
+        /// </summary>
+        /// <param name="isAll"></param>
+        /// <returns></returns>
         public DataTable BankOrCashComboFill(bool isAll)
         {
-            IMEEntities db = new IMEEntities();
             DataTable dtbl = new DataTable();
-            dtbl.Columns.Add("SlNo", typeof(decimal));
-            dtbl.Columns["SlNo"].AutoIncrement = true;
-            dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
-            dtbl.Columns["SlNo"].AutoIncrementStep = 1;
-
-                var adaptor = (from ag in db.AccountGroups
-                               where ((ag.accountGroupName== "Cash-in Hand") || (ag.accountGroupName == "Bank Account") ||(ag.accountGroupName == "Bank OD A/C")) || (ag.groupUnder==ag.accountGroupId)
-                               select new
-                               {
-                                   ag.accountGroupId,
-                                   //LedgerName = ag.ledgerName,
-                                   //LedgerId=ag.ledgerId
-                               }).ToList();
-
-            List<AccountLedger> alList = new List<AccountLedger>();
-
-            foreach (var item in adaptor)
+            try
             {
-                alList.AddRange(db.AccountLedgers.Where(a => a.accountGroupID == item.accountGroupId));
-            }
-            dtbl.Columns.Add("LedgerName");
-                dtbl.Columns.Add("LedgerId");
-                foreach (var item in alList)
-                {
-                var row = dtbl.NewRow();
-                row["LedgerName"] = item.ledgerName;
-                row["LedgerId"] = item.ledgerId;
-                dtbl.Rows.Add(row);
-                }
+                var adaptor = new IMEEntities().CashOrBankComboFill(isAll).ToList();
 
+                dtbl.Columns.Add("ledgerName");
+                dtbl.Columns.Add("ledgerId");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+
+                    row["ledgerName"] = item.ledgerName;
+                    row["ledgerId"] = item.ledgerId;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
             return dtbl;
         }
 
