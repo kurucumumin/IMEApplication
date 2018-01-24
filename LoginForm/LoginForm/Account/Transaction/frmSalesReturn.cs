@@ -866,8 +866,8 @@ namespace LoginForm
                 dtpDate.Value = DateTime.Now;
                 txtDate.Text = dtpDate.Value.ToString("dd-MMM-yyyy");
                 cmbCashOrParty.SelectedIndex = 0;
-                cmbSalesAccount.SelectedIndex = 0;
-                cmbPricingLevel.SelectedIndex = 0;
+                cmbSalesAccount.SelectedIndex = -1;
+                cmbPricingLevel.SelectedIndex = -1;
                 cmbSalesMan.SelectedIndex = 1;
                 cmbVoucherType.SelectedIndex = 0;
                 txtBillDiscount.Clear();

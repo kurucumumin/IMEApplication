@@ -24,6 +24,7 @@ namespace LoginForm
         frmAccountLedger frmAccountLedgerObj = new frmAccountLedger();//to use in call from account ledger function
         frmPaymentRegister frmPaymentRegisterObj = null;//to use in call from payment register function
         DataTable dtblPartyBalance = new DataTable();//to store party balance entries while clicking btn_Save in payment voucher
+        frmLedgerPopup frmLedgerPopupObj = new frmLedgerPopup();//to use in call from ledger popup function
         string strVoucherNo = string.Empty;//to save voucher no into tbl_payment master
         string strInvoiceNo = string.Empty;//to save invoice no into tbl_payment master 
         string tableName = "PaymentMaster";//to get the table name in voucher type selection
@@ -187,51 +188,51 @@ namespace LoginForm
             //}
         }
 
-        //public void CallFromLedgerPopup(frmLedgerPopup frmLedgerPopup, decimal decId, string str)
-        //{
-        //    try
-        //    {
-        //        this.Enabled = true;
-        //        if (str == "CashOrBank")
-        //        {
-        //            TransactionsGeneralFill obj = new TransactionsGeneralFill();
-        //            obj.CashOrBankComboFill(cmbBankorCash, false);
-        //            cmbBankorCash.SelectedValue = decId;
-        //            cmbBankorCash.Focus();
-        //        }
-        //        else
-        //        {
-        //            dgvPaymentVoucher.CurrentRow.Cells["dgvcmbAccountLedger"].Value = decId;
-        //            dgvPaymentVoucher.Focus();
-        //        }
-        //        frmLedgerPopupObj.Close();
-        //        frmLedgerPopupObj = null;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("PV6:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromLedgerPopup(frmLedgerPopup frmLedgerPopup, decimal decId, string str)
+        {
+            try
+            {
+                this.Enabled = true;
+                if (str == "CashOrBank")
+                {
+                    TransactionsGeneralFill obj = new TransactionsGeneralFill();
+                    obj.CashOrBankComboFill(cmbBankorCash, false);
+                    cmbBankorCash.SelectedValue = decId;
+                    cmbBankorCash.Focus();
+                }
+                else
+                {
+                    dgvPaymentVoucher.CurrentRow.Cells["dgvcmbAccountLedger"].Value = decId;
+                    dgvPaymentVoucher.Focus();
+                }
+                frmLedgerPopupObj.Close();
+                frmLedgerPopupObj = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PV6:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
-        //public void CallThisFormFromVoucherSearch(frmVoucherSearch frm, decimal decId)
-        //{
-        //    try
-        //    {
-        //        this._frmVoucherSearch = frm;
-        //        decPaymentmasterId = decId;
-        //        btnClear.Text = "New";
-        //        btnSave.Text = "Update";
-        //        btnDelete.Enabled = true;
-        //        FillFunction();
-        //        this.Activate();
-        //        this.BringToFront();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("PV7:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
-       
+        public void CallThisFormFromVoucherSearch(frmVoucherSearch frm, decimal decId)
+        {
+            try
+            {
+                this._frmVoucherSearch = frm;
+                decPaymentmasterId = decId;
+                btnClear.Text = "New";
+                btnSave.Text = "Update";
+                btnDelete.Enabled = true;
+                FillFunction();
+                this.Activate();
+                this.BringToFront();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PV7:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         //public void CallFromPartyBalance(frmPartyBalance frmPartyBalance, decimal decId, DataTable dtbl, ArrayList arrlstOfRemovedRow)
         //{
         //    try
@@ -248,7 +249,7 @@ namespace LoginForm
         //        MessageBox.Show("PV8:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
         //    }
         //}
-       
+
         public void Clear()
         {
             try
@@ -1097,35 +1098,35 @@ namespace LoginForm
                 IME.PaymentMasters.RemoveRange(IME.PaymentMasters.Where(a => a.paymentMasterId == decPaymentmasterId));
 
                     MessageBox.Show("Deleted successfully ");
-                    //if (frmPaymentRegisterObj != null)
-                    //{
-                    //    this.Close();
-                    //    frmPaymentRegisterObj.CallFromPaymentVoucher(this);
-                    //}
-                    //else if (frmPaymentReportObj != null)
-                    //{
-                    //    this.Close();
-                    //    frmPaymentReportObj.CallFromPaymentVoucher(this);
-                    //}
-                    //else if (frmLedgerDetailsObj != null)
-                    //{
-                    //    this.Close();
-                    //}
-                    //if (_frmVoucherSearch != null)
-                    //{
-                    //    this.Close();
-                    //    _frmVoucherSearch.GridFill();
-                    //}
-                    //if (frmDayBookObj != null)
-                    //{
-                    //    this.Close();
-                    //}
-                    //if (frmBillallocationObj != null)
-                    //{
-                    //    this.Close();
-                    //}
-
+                //if (frmPaymentRegisterObj != null)
+                //{
+                //    this.Close();
+                //    frmPaymentRegisterObj.CallFromPaymentVoucher(this);
+                //}
+                //else if (frmPaymentReportObj != null)
+                //{
+                //    this.Close();
+                //    frmPaymentReportObj.CallFromPaymentVoucher(this);
+                //}
+                //else if (frmLedgerDetailsObj != null)
+                //{
+                //    this.Close();
+                //}
+                if (_frmVoucherSearch != null)
+                {
+                    this.Close();
+                    _frmVoucherSearch.GridFill();
                 }
+                //if (frmDayBookObj != null)
+                //{
+                //    this.Close();
+                //}
+                //if (frmBillallocationObj != null)
+                //{
+                //    this.Close();
+                //}
+
+            }
                 else
                 {
                     Messages.InformationMessage("Reference exist. Cannot delete");

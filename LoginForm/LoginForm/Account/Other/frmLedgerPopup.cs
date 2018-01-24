@@ -1182,20 +1182,20 @@ namespace LoginForm
                 //    }
                 //}
 
-                //if (frmPurchaseInvoiceObj != null)
-                //{
-                //    frmPurchaseInvoiceObj = Application.OpenForms["frmPurchaseInvoice"] as frmPurchaseInvoice;
-                //    if (frmPurchaseInvoiceObj == null)
-                //    {
-                //        frmPurchaseInvoiceObj = new frmPurchaseInvoice();
-                //        frmPurchaseInvoiceObj.MdiParent = formMDI.MDIObj;
-                //        frmPurchaseInvoiceObj.Show();
-                //    }
-                //    else
-                //    {
-                //        frmPurchaseInvoiceObj.Activate();
-                //    }
-                //}
+                if (frmPurchaseInvoiceObj != null)
+                {
+                    frmPurchaseInvoiceObj = Application.OpenForms["frmPurchaseInvoice"] as frmPurchaseInvoice;
+                    if (frmPurchaseInvoiceObj == null)
+                    {
+                        frmPurchaseInvoiceObj = new frmPurchaseInvoice();
+                        //frmPurchaseInvoiceObj.MdiParent = formMDI.MDIObj;
+                        frmPurchaseInvoiceObj.Show();
+                    }
+                    else
+                    {
+                        frmPurchaseInvoiceObj.Activate();
+                    }
+                }
                 //if (frmServiceVoucherObj != null)
                 //{
                 //    frmServiceVoucherObj.Enabled = true;
@@ -1246,7 +1246,7 @@ namespace LoginForm
                     {
                         if (dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Selected)
                         {
-                            //frmAdvancePaymentObj.CallFromLedgerPopup(this, Convert.ToDecimal(dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Value.ToString()));
+                            frmAdvancePaymentObj.CallFromLedgerPopup(this, Convert.ToDecimal(dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Value.ToString()));
                         }
                     }
                     //if (frmMonthlySalaryVoucherObj != null)
@@ -1267,7 +1267,7 @@ namespace LoginForm
                     {
                         if (dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Selected)
                         {
-                            //frmPaymentVoucherObj.CallFromLedgerPopup(this, Convert.ToDecimal(dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Value.ToString()), strComboTypes);
+                            frmPaymentVoucherObj.CallFromLedgerPopup(this, Convert.ToDecimal(dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Value.ToString()), strComboTypes);
                         }
                     }
 
@@ -1275,7 +1275,7 @@ namespace LoginForm
                     {
                         if (dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Selected)
                         {
-                            //frmReceiptVoucherObj.CallFromLedgerPopup(this, Convert.ToDecimal(dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Value.ToString()), strComboTypes);
+                            frmReceiptVoucherObj.CallFromLedgerPopup(this, Convert.ToDecimal(dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Value.ToString()), strComboTypes);
                         }
                     }
                     //if (frmServiceVoucherObj != null)
@@ -1297,7 +1297,7 @@ namespace LoginForm
                     {
                         if (dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Selected)
                         {
-                            //frmJournalVoucherObj.CallFromLedgerPopup(Convert.ToDecimal(dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Value.ToString()), this);
+                            frmJournalVoucherObj.CallFromLedgerPopup(Convert.ToDecimal(dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Value.ToString()), this);
 
                         }
                     }
@@ -1312,14 +1312,14 @@ namespace LoginForm
                     {
                         if (dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Selected)
                         {
-                            //frmDebitNoteObj.CallFromLedgerPopup(Convert.ToDecimal(dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Value.ToString()), this);
+                            frmDebitNoteObj.CallFromLedgerPopup(Convert.ToDecimal(dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Value.ToString()), this);
                         }
                     }
                     if (frmCreditNoteObj != null)
                     {
                         if (dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Selected)
                         {
-                            //frmCreditNoteObj.CallFromLedgerPopup(Convert.ToDecimal(dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Value.ToString()), this);
+                            frmCreditNoteObj.CallFromLedgerPopup(Convert.ToDecimal(dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Value.ToString()), this);
                         }
                     }
                     if (frmsalesQuotationObj != null)
@@ -1376,14 +1376,14 @@ namespace LoginForm
                     //    }
                     //}
 
-                    //if (frmPurchaseInvoiceObj != null)
-                    //{
-                    //    if (dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Selected)
-                    //    {
-                    //        frmPurchaseInvoiceObj.CallFromLedgerPopup(this, Convert.ToDecimal(dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Value.ToString()), strComboTypes);
-                    //        this.Close();
-                    //    }
-                    //}
+                    if (frmPurchaseInvoiceObj != null)
+                    {
+                        if (dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Selected)
+                        {
+                            frmPurchaseInvoiceObj.CallFromLedgerPopup(this, Convert.ToDecimal(dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Value.ToString()), strComboTypes);
+                            this.Close();
+                        }
+                    }
 
 
                     if (frmPurchaseReturnObj != null)
@@ -1400,7 +1400,7 @@ namespace LoginForm
                     {
                         if (dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Selected)
                         {
-                            //frmPdcPayableObj.CallFromLedgerPopup(this, Convert.ToDecimal(dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Value.ToString()), strComboTypes);
+                            frmPdcPayableObj.CallFromLedgerPopup(this, Convert.ToDecimal(dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Value.ToString()), strComboTypes);
                             this.Close();
                         }
                     }
@@ -1409,20 +1409,20 @@ namespace LoginForm
                     {
                         if (dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Selected)
                         {
-                            //frmpdReceivableObj.CallFromLedgerPopup(this, Convert.ToDecimal(dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Value.ToString()), strComboTypes);
+                            frmpdReceivableObj.CallFromLedgerPopup(this, Convert.ToDecimal(dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Value.ToString()), strComboTypes);
                             this.Close();
                         }
                     }
 
 
-                    //if (frmSalesInvoiceObj != null)
-                    //{
-                    //    if (dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Selected)
-                    //    {
-                    //        frmSalesInvoiceObj.CallFromLedgerPopup(this, Convert.ToDecimal(dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Value.ToString()), strComboTypes);
-                    //        this.Close();
-                    //    }
-                    //}
+                    if (frmSalesInvoiceObj != null)
+                    {
+                        if (dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Selected)
+                        {
+                            frmSalesInvoiceObj.CallFromLedgerPopup(this, Convert.ToDecimal(dgvLedgerPopup.CurrentRow.Cells["dgvtxtLedgerId"].Value.ToString()), strComboTypes);
+                            this.Close();
+                        }
+                    }
 
                     if (frmSalesReturnObj != null)
                     {

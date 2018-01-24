@@ -35,7 +35,7 @@ namespace LoginForm
         string strBankNameText = string.Empty;
         ArrayList arrlstOfDeletedPartyBalanceRow;
         decimal decPDCReceivableEditId = 0;
-        //frmLedgerPopup frmLedgerPopupObj = new frmLedgerPopup();//to use in call from ledger popup function
+        frmLedgerPopup frmLedgerPopupObj = new frmLedgerPopup();//to use in call from ledger popup function
         DataTable dtblPartyBalance = new DataTable(); // To pass values to party balance
         bool isInEditMode = false; // Tp decide whether is edit mode of not
         string strBankID = string.Empty;
@@ -254,30 +254,30 @@ namespace LoginForm
         /// <param name="frmLedgerPopup"></param>
         /// <param name="decId"></param>
         /// <param name="strComboType"></param>
-        //public void CallFromLedgerPopup(frmLedgerPopup frmLedgerPopup, decimal decId, string strComboType) //   Ledger pop up
-        //{
-        //    try
-        //    {
-        //        base.Show();
-        //        //this.frmLedgerPopupObj = frmLedgerPopup;
-        //        if (strComboType == "Account Ledger")
-        //        {
-        //            cmbAccountNameFill();  
-        //            cmbAccountLedger.SelectedValue = decId;
-        //        }
-        //        else if (strComboType == "Bank")
-        //        {
-        //            cmbBankAccountFill();
-        //            cmbBank.SelectedValue = decId;
-        //        }
-        //        //frmLedgerPopupObj.Close();
-        //        //frmLedgerPopupObj = null;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("PR7:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromLedgerPopup(frmLedgerPopup frmLedgerPopup, decimal decId, string strComboType) //   Ledger pop up
+        {
+            try
+            {
+                base.Show();
+                this.frmLedgerPopupObj = frmLedgerPopup;
+                if (strComboType == "Account Ledger")
+                {
+                    cmbAccountNameFill();
+                    cmbAccountLedger.SelectedValue = decId;
+                }
+                else if (strComboType == "Bank")
+                {
+                    cmbBankAccountFill();
+                    cmbBank.SelectedValue = decId;
+                }
+                frmLedgerPopupObj.Close();
+                frmLedgerPopupObj = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("PR7:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Save or edit function, Checking all invalid entrys to save or edit
         /// </summary>
@@ -1876,9 +1876,9 @@ namespace LoginForm
                     }
                     if (cmbAccountLedger.SelectedIndex != -1)
                     {
-                        //frmLedgerPopupObj = new frmLedgerPopup();
-                        //frmLedgerPopupObj.MdiParent = formMDI.MDIObj;
-                        //frmLedgerPopupObj.CallFromPdcReceivableVoucher(this, Convert.ToDecimal(cmbAccountLedger.SelectedValue.ToString()), "Account Ledger");
+                        frmLedgerPopupObj = new frmLedgerPopup();
+                       // frmLedgerPopupObj.MdiParent = formMDI.MDIObj;
+                        frmLedgerPopupObj.CallFromPdcReceivableVoucher(this, Convert.ToDecimal(cmbAccountLedger.SelectedValue.ToString()), "Account Ledger");
                         this.Enabled = false;
                     }
                     else
@@ -1970,9 +1970,9 @@ namespace LoginForm
                     }
                     if (cmbBank.SelectedIndex != -1)
                     {
-                        //frmLedgerPopupObj = new frmLedgerPopup();
+                        frmLedgerPopupObj = new frmLedgerPopup();
                         //frmLedgerPopupObj.MdiParent = formMDI.MDIObj;
-                        //frmLedgerPopupObj.CallFromPdcReceivableVoucher(this, Convert.ToDecimal(cmbBank.SelectedValue.ToString()), "Bank");
+                        frmLedgerPopupObj.CallFromPdcReceivableVoucher(this, Convert.ToDecimal(cmbBank.SelectedValue.ToString()), "Bank");
                         this.Enabled = false;
                     }
                     else

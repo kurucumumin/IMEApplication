@@ -103,8 +103,8 @@ namespace LoginForm.Account
                 DataTable dtblBank = new DataTable();
                 dtblBank = sppdcpayble.BankAccountComboFill();
                 DataRow dr = dtblBank.NewRow();
-                dtblBank.Columns.Add("ledgerId");
-                dtblBank.Columns.Add("ledgerName");
+                //dtblBank.Columns.Add("ledgerId");
+                //dtblBank.Columns.Add("ledgerName");
                 dr["ledgerId"] = 0;
                 dr["ledgerName"] = "All";
                 dtblBank.Rows.InsertAt(dr, 0);
