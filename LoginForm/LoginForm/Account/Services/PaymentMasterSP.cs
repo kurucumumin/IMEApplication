@@ -24,7 +24,7 @@ namespace LoginForm.Account.Services
                                from w in IME.Workers.Where(x => x.WorkerID == c.userId)
                                from cd in IME.PaymentDetails.Where(x => x.paymentMasterId == c.paymentMasterId)
                                where
-                                      (c.date > Convert.ToDateTime(dtpFromDate) && c.date < Convert.ToDateTime(dtpToDate)) &&
+                                      (c.date >dtpFromDate && c.date < dtpToDate) &&
                                       (c.voucherTypeId == ((decVoucherTypeId == 0) ? c.voucherTypeId : decVoucherTypeId)) &&
                                       (cd.ledgerId == ((decLedgerId == 0) ? cd.ledgerId : decLedgerId))
                                select new
@@ -33,7 +33,395 @@ namespace LoginForm.Account.Services
                                    v.voucherTypeName,
                                    c.voucherNo,
                                    date = c.date.ToString(),
-                                   totalAmount = Convert.ToDecimal(c.totalAmount),
+                                   totalAmount = c.totalAmount,
+                                   c.narration,
+                                   w.UserName,
+                                   c.AccountLedger.ledgerName
+                               }).OrderByDescending(x => x.paymentMasterId).Distinct().ToList();
+
+
+
+                dtbl.Columns.Add("paymentMasterId");
+                dtbl.Columns.Add("voucherTypeName");
+                dtbl.Columns.Add("voucherNo");
+                dtbl.Columns.Add("date");
+                dtbl.Columns.Add("totalAmount");
+                dtbl.Columns.Add("narration");
+                dtbl.Columns.Add("UserName");
+                dtbl.Columns.Add("ledgerName");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["paymentMasterId"] = item.paymentMasterId;
+                    row["voucherTypeName"] = item.voucherTypeName;
+                    row["voucherNo"] = item.voucherNo;
+                    row["date"] = item.date;
+                    row["totalAmount"] = item.totalAmount;
+                    row["narration"] = item.narration;
+                    row["UserName"] = item.UserName;
+                    row["ledgerName"] = item.ledgerName;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+        public DataTable PaymentReportSearch(DateTime dtpFromDate, DateTime dtpToDate)
+        {
+            IMEEntities IME = new IMEEntities();
+
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("SL.NO", typeof(decimal));
+            dtbl.Columns["SL.NO"].AutoIncrement = true;
+            dtbl.Columns["SL.NO"].AutoIncrementSeed = 1;
+            dtbl.Columns["SL.NO"].AutoIncrementStep = 1;
+            try
+            {
+                var adaptor = (from c in IME.PaymentMasters
+                               from w in IME.Workers
+                               from cd in IME.PaymentDetails.Where(x => x.paymentMasterId == c.paymentMasterId)
+                               where
+                                      (c.date > dtpFromDate && c.date < dtpToDate)
+                                      && w.WorkerID==c.userId
+                               select new
+                               {
+                                   c.paymentMasterId,
+                                   c.VoucherType.voucherTypeName,
+                                   c.voucherNo,
+                                   date = c.date.ToString(),
+                                   totalAmount = c.totalAmount,
+                                   c.narration,
+                                   w.UserName,
+                                   c.AccountLedger.ledgerName
+                               })
+                               .OrderByDescending(x => x.paymentMasterId).Distinct()
+                               .ToList();
+                dtbl.Columns.Add("paymentMasterId");
+                dtbl.Columns.Add("voucherTypeName");
+                dtbl.Columns.Add("voucherNo");
+                dtbl.Columns.Add("date");
+                dtbl.Columns.Add("totalAmount");
+                dtbl.Columns.Add("narration");
+                dtbl.Columns.Add("UserName");
+                dtbl.Columns.Add("ledgerName");
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["paymentMasterId"] = item.paymentMasterId;
+                    row["voucherTypeName"] = item.voucherTypeName;
+                    row["voucherNo"] = item.voucherNo;
+                    row["date"] = item.date;
+                    row["totalAmount"] = item.totalAmount;
+                    row["narration"] = item.narration;
+                    row["UserName"] = item.UserName;
+                    row["ledgerName"] = item.ledgerName;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+        public DataTable PaymentReportSearchwithBankAndVoucherType(DateTime dtpFromDate, DateTime dtpToDate, decimal decVoucherTypeId, decimal decCashOrBankId)
+        {
+            
+                IMEEntities IME = new IMEEntities();
+
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("SL.NO", typeof(decimal));
+            dtbl.Columns["SL.NO"].AutoIncrement = true;
+            dtbl.Columns["SL.NO"].AutoIncrementSeed = 1;
+            dtbl.Columns["SL.NO"].AutoIncrementStep = 1;
+            try
+            {
+                var adaptor = (from c in IME.PaymentMasters
+                               from v in IME.VoucherTypes.Where(x => x.voucherTypeId == c.voucherTypeId)
+                               from w in IME.Workers.Where(x => x.WorkerID == c.userId)
+                               from cd in IME.PaymentDetails.Where(x => x.paymentMasterId == c.paymentMasterId)
+                               where
+                                      (c.date > dtpFromDate && c.date < dtpToDate) &&
+                                      (c.voucherTypeId == ((decVoucherTypeId == 0) ? c.voucherTypeId : decVoucherTypeId))
+                               select new
+                               {
+                                   c.paymentMasterId,
+                                   v.voucherTypeName,
+                                   c.voucherNo,
+                                   date = c.date.ToString(),
+                                   totalAmount = c.totalAmount,
+                                   c.narration,
+                                   w.UserName,
+                                   c.AccountLedger.ledgerName
+                               }).OrderByDescending(x => x.paymentMasterId).Distinct().ToList();
+
+
+
+                dtbl.Columns.Add("paymentMasterId");
+                dtbl.Columns.Add("voucherTypeName");
+                dtbl.Columns.Add("voucherNo");
+                dtbl.Columns.Add("date");
+                dtbl.Columns.Add("totalAmount");
+                dtbl.Columns.Add("narration");
+                dtbl.Columns.Add("UserName");
+                dtbl.Columns.Add("ledgerName");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["paymentMasterId"] = item.paymentMasterId;
+                    row["voucherTypeName"] = item.voucherTypeName;
+                    row["voucherNo"] = item.voucherNo;
+                    row["date"] = item.date;
+                    row["totalAmount"] = item.totalAmount;
+                    row["narration"] = item.narration;
+                    row["UserName"] = item.UserName;
+                    row["ledgerName"] = item.ledgerName;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+        public DataTable PaymentReportSearchWithVoucherType(DateTime dtpFromDate, DateTime dtpToDate,  decimal decVoucherTypeId)
+        {
+            IMEEntities IME = new IMEEntities();
+
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("SL.NO", typeof(decimal));
+            dtbl.Columns["SL.NO"].AutoIncrement = true;
+            dtbl.Columns["SL.NO"].AutoIncrementSeed = 1;
+            dtbl.Columns["SL.NO"].AutoIncrementStep = 1;
+            try
+            {
+                var adaptor = (from c in IME.PaymentMasters
+                               from v in IME.VoucherTypes.Where(x => x.voucherTypeId == c.voucherTypeId)
+                               from w in IME.Workers.Where(x => x.WorkerID == c.userId)
+                               from cd in IME.PaymentDetails.Where(x => x.paymentMasterId == c.paymentMasterId)
+                               where
+                                      (c.date > dtpFromDate && c.date <dtpToDate) &&
+                                      (c.voucherTypeId == ((decVoucherTypeId == 0) ? c.voucherTypeId : decVoucherTypeId))
+                                     
+                               select new
+                               {
+                                   c.paymentMasterId,
+                                   v.voucherTypeName,
+                                   c.voucherNo,
+                                   date = c.date.ToString(),
+                                   totalAmount = c.totalAmount,
+                                   c.narration,
+                                   w.UserName,
+                                   c.AccountLedger.ledgerName
+                               }).OrderByDescending(x => x.paymentMasterId).Distinct().ToList();
+
+
+
+                dtbl.Columns.Add("paymentMasterId");
+                dtbl.Columns.Add("voucherTypeName");
+                dtbl.Columns.Add("voucherNo");
+                dtbl.Columns.Add("date");
+                dtbl.Columns.Add("totalAmount");
+                dtbl.Columns.Add("narration");
+                dtbl.Columns.Add("UserName");
+                dtbl.Columns.Add("ledgerName");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["paymentMasterId"] = item.paymentMasterId;
+                    row["voucherTypeName"] = item.voucherTypeName;
+                    row["voucherNo"] = item.voucherNo;
+                    row["date"] = item.date;
+                    row["totalAmount"] = item.totalAmount;
+                    row["narration"] = item.narration;
+                    row["UserName"] = item.UserName;
+                    row["ledgerName"] = item.ledgerName;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+
+        public DataTable PaymentReportSearchWithLedgerAndBank(DateTime dtpFromDate, DateTime dtpToDate, decimal decLedgerId, decimal decCashOrBankId)
+        {
+            IMEEntities IME = new IMEEntities();
+
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("SL.NO", typeof(decimal));
+            dtbl.Columns["SL.NO"].AutoIncrement = true;
+            dtbl.Columns["SL.NO"].AutoIncrementSeed = 1;
+            dtbl.Columns["SL.NO"].AutoIncrementStep = 1;
+            try
+            {
+                var adaptor = (from c in IME.PaymentMasters
+                               
+                               from w in IME.Workers.Where(x => x.WorkerID == c.userId)
+                               from cd in IME.PaymentDetails.Where(x => x.paymentMasterId == c.paymentMasterId)
+                               where
+                                      (c.date > dtpFromDate && c.date <dtpToDate) &&
+                                     
+                                      (cd.ledgerId == ((decLedgerId == 0) ? cd.ledgerId : decLedgerId))
+                               select new
+                               {
+                                   c.paymentMasterId,
+                                   c.VoucherType.voucherTypeName,
+                                   c.voucherNo,
+                                   date = c.date.ToString(),
+                                   totalAmount =c.totalAmount,
+                                   c.narration,
+                                   w.UserName,
+                                   c.AccountLedger.ledgerName
+                               }).OrderByDescending(x => x.paymentMasterId).Distinct().ToList();
+
+
+
+                dtbl.Columns.Add("paymentMasterId");
+                dtbl.Columns.Add("voucherTypeName");
+                dtbl.Columns.Add("voucherNo");
+                dtbl.Columns.Add("date");
+                dtbl.Columns.Add("totalAmount");
+                dtbl.Columns.Add("narration");
+                dtbl.Columns.Add("UserName");
+                dtbl.Columns.Add("ledgerName");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["paymentMasterId"] = item.paymentMasterId;
+                    row["voucherTypeName"] = item.voucherTypeName;
+                    row["voucherNo"] = item.voucherNo;
+                    row["date"] = item.date;
+                    row["totalAmount"] = item.totalAmount;
+                    row["narration"] = item.narration;
+                    row["UserName"] = item.UserName;
+                    row["ledgerName"] = item.ledgerName;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+        
+            public DataTable PaymentReportSearchwithBank(DateTime dtpFromDate, DateTime dtpToDate, decimal decCashOrBankId)
+        {
+            IMEEntities IME = new IMEEntities();
+
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("SL.NO", typeof(decimal));
+            dtbl.Columns["SL.NO"].AutoIncrement = true;
+            dtbl.Columns["SL.NO"].AutoIncrementSeed = 1;
+            dtbl.Columns["SL.NO"].AutoIncrementStep = 1;
+            try
+            {
+                var adaptor = (from c in IME.PaymentMasters
+                               
+                               from w in IME.Workers.Where(x => x.WorkerID == c.userId)
+                               from cd in IME.PaymentDetails.Where(x => x.paymentMasterId == c.paymentMasterId)
+                               where
+                                      (c.date >dtpFromDate && c.date <dtpToDate)                                       
+                               select new
+                               {
+                                   c.paymentMasterId,
+                                   c.VoucherType.voucherTypeName,
+                                   c.voucherNo,
+                                   date = c.date.ToString(),
+                                   totalAmount = c.totalAmount,
+                                   c.narration,
+                                   w.UserName,
+                                   c.AccountLedger.ledgerName
+                               }).OrderByDescending(x => x.paymentMasterId).Distinct().ToList();
+
+
+
+                dtbl.Columns.Add("paymentMasterId");
+                dtbl.Columns.Add("voucherTypeName");
+                dtbl.Columns.Add("voucherNo");
+                dtbl.Columns.Add("date");
+                dtbl.Columns.Add("totalAmount");
+                dtbl.Columns.Add("narration");
+                dtbl.Columns.Add("UserName");
+                dtbl.Columns.Add("ledgerName");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["paymentMasterId"] = item.paymentMasterId;
+                    row["voucherTypeName"] = item.voucherTypeName;
+                    row["voucherNo"] = item.voucherNo;
+                    row["date"] = item.date;
+                    row["totalAmount"] = item.totalAmount;
+                    row["narration"] = item.narration;
+                    row["UserName"] = item.UserName;
+                    row["ledgerName"] = item.ledgerName;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+        
+
+            public DataTable PaymentReportSearchWithLedger(DateTime dtpFromDate, DateTime dtpToDate, decimal decLedgerId)
+        {
+            IMEEntities IME = new IMEEntities();
+
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("SL.NO", typeof(decimal));
+            dtbl.Columns["SL.NO"].AutoIncrement = true;
+            dtbl.Columns["SL.NO"].AutoIncrementSeed = 1;
+            dtbl.Columns["SL.NO"].AutoIncrementStep = 1;
+            try
+            {
+                var adaptor = (from c in IME.PaymentMasters
+                              
+                               from w in IME.Workers.Where(x => x.WorkerID == c.userId)
+                               from cd in IME.PaymentDetails.Where(x => x.paymentMasterId == c.paymentMasterId)
+                               where
+                                      (c.date > dtpFromDate && c.date < dtpToDate) &&
+
+                                      (cd.ledgerId == ((decLedgerId == 0) ? cd.ledgerId : decLedgerId))
+                               select new
+                               {
+                                   c.paymentMasterId,
+                                   c.VoucherType.voucherTypeName,
+                                   c.voucherNo,
+                                   date = c.date.ToString(),
+                                   totalAmount =c.totalAmount,
                                    c.narration,
                                    w.UserName,
                                    c.AccountLedger.ledgerName

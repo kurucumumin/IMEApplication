@@ -91,6 +91,71 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
+        public DataTable CreditNoteReportSearchWithLedgerId(string strFromDate, string strToDate, decimal  decLedgerId)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("SlNo", typeof(decimal));
+            dtbl.Columns["SlNo"].AutoIncrement = true;
+            dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
+            dtbl.Columns["SlNo"].AutoIncrementStep = 1;
+            DateTime fromDate = Convert.ToDateTime(strFromDate);
+            DateTime ToDate = Convert.ToDateTime(strToDate);
+
+            try
+            {
+
+                var adaptor = (from c in IME.CreditNoteMasters
+                               from w in IME.Workers.Where(x => x.WorkerID == c.userId)
+                               from cd in IME.CreditNoteDetails.Where(x => x.creditNoteMasterId == c.creditNoteMasterId)
+                               from al in IME.AccountLedgers.Where(x => x.ledgerId == cd.ledgerId)
+                               where
+                               (c.date > fromDate && c.date < ToDate) 
+                               &&
+                               (cd.ledgerId == ((decLedgerId == 0) ? cd.ledgerId : decLedgerId))
+                               select new
+                               {
+                                   c.creditNoteMasterId,
+                                   c.VoucherType.voucherTypeName,
+                                   c.voucherNo,
+                                   date = c.date.ToString(),
+                                   totalAmount = c.totalAmount,
+                                   c.narration,
+                                   w.UserName
+                               }).
+                               OrderByDescending(x => x.creditNoteMasterId).Distinct().
+                               ToList();
+                dtbl.Columns.Add("creditNoteMasterId");
+                dtbl.Columns.Add("voucherTypeName");
+                dtbl.Columns.Add("voucherNo");
+                dtbl.Columns.Add("date");
+                dtbl.Columns.Add("totalAmount");
+                dtbl.Columns.Add("narration");
+                dtbl.Columns.Add("UserName");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["creditNoteMasterId"] = item.creditNoteMasterId;
+                    row["voucherTypeName"] = item.voucherTypeName;
+                    row["voucherNo"] = item.voucherNo;
+                    row["date"] = item.date;
+                    row["totalAmount"] = item.totalAmount;
+                    row["narration"] = item.narration;
+                    row["UserName"] = item.UserName;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+        
         public DataTable CreditNoteReportSearch(string strFromDate, string strToDate, decimal decVoucherTypeId, decimal decLedgerId)
         {
             IMEEntities IME = new IMEEntities();
@@ -99,6 +164,8 @@ namespace LoginForm.Account.Services
             dtbl.Columns["SlNo"].AutoIncrement = true;
             dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
             dtbl.Columns["SlNo"].AutoIncrementStep = 1;
+            DateTime fromDate = Convert.ToDateTime(strFromDate);
+            DateTime ToDate = Convert.ToDateTime(strToDate);
 
             try
             {
@@ -109,20 +176,88 @@ namespace LoginForm.Account.Services
                                from cd in IME.CreditNoteDetails.Where(x => x.creditNoteMasterId == c.creditNoteMasterId)
                                from al in IME.AccountLedgers.Where(x => x.ledgerId == cd.ledgerId)
                                where
-                                      (c.date > Convert.ToDateTime(strFromDate) && c.date < Convert.ToDateTime(strToDate)) &&
-                                      (c.voucherTypeId == ((decVoucherTypeId == 0) ? c.voucherTypeId : decVoucherTypeId)) &&
-                                      (cd.ledgerId == ((decLedgerId == 0) ? cd.ledgerId : decLedgerId))
+                               (c.date > fromDate && c.date < ToDate) &&
+                               (c.voucherTypeId == ((decVoucherTypeId == 0) ? c.voucherTypeId : decVoucherTypeId)) &&
+                               (cd.ledgerId == ((decLedgerId == 0) ? cd.ledgerId : decLedgerId))
                                select new
                                {
                                    c.creditNoteMasterId,
                                    v.voucherTypeName,
                                    c.voucherNo,
                                    date = c.date.ToString(),
-                                   totalAmount = Convert.ToDecimal(c.totalAmount),
+                                   totalAmount = c.totalAmount,
                                    c.narration,
                                    w.UserName
-                               }).OrderByDescending(x => x.creditNoteMasterId).Distinct().ToList();
+                               }).
+                               OrderByDescending(x => x.creditNoteMasterId).Distinct().
+                               ToList();
                                     
+
+
+                dtbl.Columns.Add("creditNoteMasterId");
+                dtbl.Columns.Add("voucherTypeName");
+                dtbl.Columns.Add("voucherNo");
+                dtbl.Columns.Add("date");
+                dtbl.Columns.Add("totalAmount");
+                dtbl.Columns.Add("narration");
+                dtbl.Columns.Add("UserName");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["creditNoteMasterId"] = item.creditNoteMasterId;
+                    row["voucherTypeName"] = item.voucherTypeName;
+                    row["voucherNo"] = item.voucherNo;
+                    row["date"] = item.date;
+                    row["totalAmount"] = item.totalAmount;
+                    row["narration"] = item.narration;
+                    row["UserName"] = item.UserName;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+        public DataTable CreditNoteReportSearchwithVoucherTypeId(string strFromDate, string strToDate, decimal decVoucherTypeId)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("SlNo", typeof(decimal));
+            dtbl.Columns["SlNo"].AutoIncrement = true;
+            dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
+            dtbl.Columns["SlNo"].AutoIncrementStep = 1;
+            DateTime fromDate = Convert.ToDateTime(strFromDate);
+            DateTime ToDate = Convert.ToDateTime(strToDate);
+
+            try
+            {
+
+                var adaptor = (from c in IME.CreditNoteMasters
+                               from v in IME.VoucherTypes.Where(x => x.voucherTypeId == c.voucherTypeId)
+                               from w in IME.Workers.Where(x => x.WorkerID == c.userId)
+                               from cd in IME.CreditNoteDetails.Where(x => x.creditNoteMasterId == c.creditNoteMasterId)
+                               where
+                               (c.date > fromDate && c.date < ToDate) &&
+                               (c.voucherTypeId == ((decVoucherTypeId == 0) ? c.voucherTypeId : decVoucherTypeId))
+                               select new
+                               {
+                                   c.creditNoteMasterId,
+                                   v.voucherTypeName,
+                                   c.voucherNo,
+                                   date = c.date.ToString(),
+                                   totalAmount = c.totalAmount,
+                                   c.narration,
+                                   w.UserName
+                               }).
+                               OrderByDescending(x => x.creditNoteMasterId).Distinct().
+                               ToList();
+
 
 
                 dtbl.Columns.Add("creditNoteMasterId");

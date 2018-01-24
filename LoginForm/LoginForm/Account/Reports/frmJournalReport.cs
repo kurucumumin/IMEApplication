@@ -58,7 +58,8 @@ namespace LoginForm
                 dtblVouchetType = spVoucherType.VoucherTypeSelectionComboFill("Journal Voucher");
                 DataRow dr = dtblVouchetType.NewRow();
                 dr[0] = 0;
-                dr[1] = "ALL";
+                dr[2] = "ALL";
+                
                 dtblVouchetType.Rows.InsertAt(dr, 0);
                 cmbVoucherType.DataSource = dtblVouchetType;
                 cmbVoucherType.ValueMember = "voucherTypeId";
@@ -77,8 +78,9 @@ namespace LoginForm
         {
             try
             {
-                DataTable dtbl = new DataTable();
                 AccountLedgerSP spaccountledger = new AccountLedgerSP();
+                DataTable dtbl = new DataTable();
+                
                 dtbl = spaccountledger.AccountLedgerViewAll();
                 DataRow dr = dtbl.NewRow();
                 dr[0] = 0;
@@ -88,6 +90,11 @@ namespace LoginForm
                 cmbAccountLedger.ValueMember = "ledgerId";
                 cmbAccountLedger.DisplayMember = "ledgerName";
                 cmbAccountLedger.SelectedIndex = 0;
+
+
+                
+
+
             }
             catch (Exception ex)
             {
@@ -138,7 +145,7 @@ namespace LoginForm
                 
                 if (cmbVoucherType.Items.Count != 0 && cmbAccountLedger.Items.Count != 0)
                 {
-                    if ((cmbAccountLedger.SelectedValue.ToString() != "System.Data.DataRowView") && (cmbVoucherType.SelectedValue.ToString() != "System.Data.DataRowView"))
+                    if (cmbAccountLedger.SelectedIndex != 0 && cmbVoucherType.SelectedIndex!=0 && (cmbAccountLedger.SelectedValue.ToString() != "System.Data.DataRowView") && (cmbVoucherType.SelectedValue.ToString() != "System.Data.DataRowView"))
                     {
                         if (txtFromDate.Text.Trim() != string.Empty && txtToDate.Text.Trim() != string.Empty)
                         {
@@ -150,6 +157,45 @@ namespace LoginForm
                             JournalMasterSP spJournalMaster = new JournalMasterSP();
                             dtblJournalReport = spJournalMaster.JournalReportSearch(strFromDate, strToDate, decVoucherTypeId, decLedgerId);
                             dgvJournalReport.DataSource = dtblJournalReport;
+                        }
+                    }else
+                    {
+                        if(cmbAccountLedger.SelectedIndex == 0 && cmbVoucherType.SelectedIndex == 0)
+                        {
+                            string strFromDate = txtFromDate.Text;
+                            string strToDate = txtToDate.Text;
+                            //decimal decVoucherTypeId = Convert.ToDecimal(cmbVoucherType.SelectedValue.ToString());
+                            //decimal decLedgerId = Convert.ToDecimal(cmbAccountLedger.SelectedValue.ToString());
+                            DataTable dtblJournalReport = new DataTable();
+                            JournalMasterSP spJournalMaster = new JournalMasterSP();
+                            dtblJournalReport = spJournalMaster.JournalReportSearch(strFromDate, strToDate);
+                            dgvJournalReport.DataSource = dtblJournalReport;
+                            
+                        }
+                        else
+                        {
+                            if(cmbAccountLedger.SelectedIndex == 0)
+                            {
+                                string strFromDate = txtFromDate.Text;
+                                string strToDate = txtToDate.Text;
+                                decimal decVoucherTypeId = Convert.ToDecimal(cmbVoucherType.SelectedValue.ToString());
+                                //decimal decLedgerId = Convert.ToDecimal(cmbAccountLedger.SelectedValue.ToString());
+                                DataTable dtblJournalReport = new DataTable();
+                                JournalMasterSP spJournalMaster = new JournalMasterSP();
+                                dtblJournalReport = spJournalMaster.JournalReportSearchwithVoucherTypeId(strFromDate, strToDate,decVoucherTypeId);
+                                dgvJournalReport.DataSource = dtblJournalReport;
+                            }
+                            else
+                            {
+                                string strFromDate = txtFromDate.Text;
+                                string strToDate = txtToDate.Text;
+                                //decimal decVoucherTypeId = Convert.ToDecimal(cmbVoucherType.SelectedValue.ToString());
+                                decimal decLedgerId = Convert.ToDecimal(cmbAccountLedger.SelectedValue.ToString());
+                                DataTable dtblJournalReport = new DataTable();
+                                JournalMasterSP spJournalMaster = new JournalMasterSP();
+                                dtblJournalReport = spJournalMaster.JournalReportSearchLedgerId(strFromDate, strToDate,decLedgerId);
+                                dgvJournalReport.DataSource = dtblJournalReport;
+                            }
                         }
                     }
                 }
@@ -336,11 +382,8 @@ namespace LoginForm
                 MessageBox.Show("CF:14" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        /// <summary>
-        /// Print button click, call the print function
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+       
+
         private void btnPrint_Click(object sender, EventArgs e)
         {
             try
