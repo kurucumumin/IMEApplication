@@ -472,11 +472,13 @@ namespace LoginForm.Account.Services
             decimal max = 0;
             try
             {
-                max = Convert.ToDecimal(IME.PDCClearanceMasters.Where(p => p.voucherTypeId == decVoucherTypeId).Select(y => Convert.ToDecimal(y.voucherNo)).Max());
+                decimal decVoucherNo = Convert.ToDecimal(IME.PDCClearanceMasters.FirstOrDefault().voucherNo);
 
-            //max= (from dn in IME.PDCClearanceMasters.Where(p => p.voucherTypeId == decVoucherTypeId)
-            //     select new { dn.voucherNo }).Max(x => Convert.ToDecimal(x.voucherNo));
-             max    = (max != 0 && max.ToString() != null) ? max : 0;
+                //max = IME.PDCClearanceMasters.Where(p => p.voucherTypeId == decVoucherTypeId).Select(y => decVoucherNo).Max();
+
+                max = (from dn in IME.PDCClearanceMasters.Where(p => p.voucherTypeId == decVoucherTypeId)
+                       select new { dn.voucherNo }).Max(x => decVoucherNo);
+                max    = (max != 0 && max.ToString() != null) ? max : 0;
             
             }
             catch (Exception ex)

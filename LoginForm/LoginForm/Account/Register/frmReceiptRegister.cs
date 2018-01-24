@@ -9,6 +9,8 @@ using System.Text;
 using System.Windows.Forms;
 using LoginForm.DataSet;
 using LoginForm.Services;
+using LoginForm.Account.Services;
+
 namespace LoginForm
 {
     public partial class frmReceiptRegister : Form
@@ -31,23 +33,23 @@ namespace LoginForm
         {
 
             //tüm ledgerlar var ve All var
-            //try
-            //{
-            //    DataTable dtbl = new DataTable();
-            //    TransactionsGeneralFill obj = new TransactionsGeneralFill();
-            //    dtbl = obj.AccountLedgerComboFill();
-            //    DataRow dr = dtbl.NewRow();
-            //    dr[0] = 0;
-            //    dr[2] = "All";
-            //    dtbl.Rows.InsertAt(dr, 0);
-            //    cmbAccountLedger.DataSource = dtbl;
-            //    cmbAccountLedger.DisplayMember = "ledgerName";
-            //    cmbAccountLedger.ValueMember = "ledgerId";
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("RR2:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //}
+            try
+            {
+                DataTable dtbl = new DataTable();
+                TransactionsGeneralFill obj = new TransactionsGeneralFill();
+                dtbl = obj.AccountLedgerComboFill();
+                DataRow dr = dtbl.NewRow();
+                dr[0] = 0;
+                dr[2] = "All";
+                dtbl.Rows.InsertAt(dr, 0);
+                cmbAccountLedger.DataSource = dtbl;
+                cmbAccountLedger.DisplayMember = "ledgerName";
+                cmbAccountLedger.ValueMember = "ledgerId";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("RR2:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         public void Clear()
@@ -69,12 +71,14 @@ namespace LoginForm
 
         public void gridfill()
         {
-           
+            DateTime frmdate = Convert.ToDateTime(dtpFromDate.Value.ToString());
+            DateTime todate = Convert.ToDateTime(dtpToDate.Value.ToString());
+
                     if (txtFromDate.Text.Trim() != string.Empty && txtToDate.Text.Trim() != string.Empty)
                     {
                         dgvReceiptRegister.DataSource = IME.ReceiptMasters.Where(
-                            a=>a.date> Convert.ToDateTime(dtpFromDate.Value.ToString())).Where(
-                            b=>b.date < Convert.ToDateTime(dtpToDate.Value.ToString())).Where(
+                            a=>a.date> frmdate).Where(
+                            b=>b.date < todate).Where(
                             c=>c.voucherNo== txtVoucherNo.Text
                             ).ToList();
                     }
