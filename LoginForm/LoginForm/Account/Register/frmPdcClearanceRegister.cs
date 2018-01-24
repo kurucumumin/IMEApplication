@@ -100,7 +100,8 @@ namespace LoginForm.Account
             {
                 PDCPayableMasterSP sppdcpayble = new PDCPayableMasterSP();
                 cmbBank.DataSource = null;
-                DataTable dtblBank = sppdcpayble.BankAccountComboFill();
+                DataTable dtblBank = new DataTable();
+                dtblBank = sppdcpayble.BankAccountComboFill();
                 DataRow dr = dtblBank.NewRow();
                 dtblBank.Columns.Add("ledgerId");
                 dtblBank.Columns.Add("ledgerName");

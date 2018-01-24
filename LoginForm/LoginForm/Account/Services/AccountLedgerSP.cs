@@ -361,7 +361,6 @@ namespace LoginForm.Account.Services
                 dtbl.Columns.Add("bankAccountNumber");
                 dtbl.Columns.Add("branchName");
                 dtbl.Columns.Add("branchCode");
-                dtbl.Columns.Add("extraDate");
 
 
                 foreach (var item in adaptor)
@@ -370,7 +369,7 @@ namespace LoginForm.Account.Services
 
                     row["ledgerName"] = item.ledgerName;
                     row["ledgerId"] = item.ledgerId;
-                    row["accountGroupID"] = item.accountGroupID;
+                    row["accountGroupID"] = item.accountGroupId;
                     row["ledgerName"] = item.ledgerName;
                     row["openingBalance"] = item.openingBalance;
                     row["crOrDr"] = item.crOrDr;
@@ -390,7 +389,6 @@ namespace LoginForm.Account.Services
                     row["bankAccountNumber"] = item.bankAccountNumber;
                     row["branchName"] = item.branchName;
                     row["branchCode"] = item.branchCode;
-                    row["extraDate"] = item.extraDate;
 
                     dtbl.Rows.Add(row);
                 }
