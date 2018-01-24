@@ -176,7 +176,7 @@ namespace LoginForm.Account.Services
                                    R.receiptMasterId,
                                    V.voucherTypeName,
                                    R.voucherNo,
-                                   date = Convert.ToString(R.date),
+                                   date = R.date,
                                    A.ledgerName,
                                    R.totalAmount,
                                    U.UserName,

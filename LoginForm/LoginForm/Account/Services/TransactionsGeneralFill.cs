@@ -302,16 +302,17 @@ namespace LoginForm.Account.Services
             {
                 var adaptor = new IMEEntities().CashOrBankComboFill().ToList();
 
-                dtbl.Columns.Add("ledgerName");
+                
                 dtbl.Columns.Add("ledgerId");
+                dtbl.Columns.Add("ledgerName");
 
                 foreach (var item in adaptor)
                 {
                     DataRow row = dtbl.NewRow();
 
-                    row["ledgerName"] = item.ledgerName;
+                   
                     row["ledgerId"] = item.ledgerId;
-
+                    row["ledgerName"] = item.ledgerName;
                     dtbl.Rows.Add(row);
                 }
             }

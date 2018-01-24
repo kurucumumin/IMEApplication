@@ -206,7 +206,7 @@ namespace LoginForm.Services
             {
                 MessageBox.Show(ex.ToString());
             }
-           
+
             return dtblpdcReceivableId;
         }
 
@@ -221,7 +221,7 @@ namespace LoginForm.Services
             decimal max = 0;
             try
             {
-                // max = Convert.ToDecimal(new IMEEntities().PDCReceivableMaxUnderVoucherType(decVoucherTypeId));
+                //max = Convert.ToDecimal(new IMEEntities().PDCReceivableMaxUnderVoucherType(decVoucherTypeId));
                 decimal? adapter = (from pr in IME.PDCReceivableMasters.Where(p => p.voucherTypeId == decVoucherTypeId)
                                     select new { pr.voucherNo }).Max(x => Convert.ToDecimal(x.voucherNo));
 
@@ -555,7 +555,7 @@ namespace LoginForm.Services
                 //}
                 #endregion
 
-                var adaptor = IME.PdcReceivableReportSearch(dtFromdate, dtToDate, strVoucherType, strLedgerName, dtcheckfromdate, dtCheckdateto,strchequeNo,strvoucherNo,strstatus);
+                var adaptor = IME.PdcReceivableReportSearch(dtFromdate, dtToDate, strVoucherType, strLedgerName, dtcheckfromdate, dtCheckdateto, strstatus,strchequeNo, strvoucherNo);
 
                 dtbl.Columns.Add("pdcReceivableMasterId");
                 dtbl.Columns.Add("voucherTypeName");

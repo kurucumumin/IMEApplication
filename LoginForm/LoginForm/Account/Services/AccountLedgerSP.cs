@@ -459,7 +459,7 @@ namespace LoginForm.Account.Services
             try
             {
                 var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupName == "Sundry Creditors" || x.accountGroupName == "Sundry Debtors")
-                               
+
                                select new
                                {
                                    AccountGroupId = ag.accountGroupId,
