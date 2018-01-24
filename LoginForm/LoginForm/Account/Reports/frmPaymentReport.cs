@@ -51,8 +51,8 @@ namespace LoginForm
                 TransactionsGeneralFill Obj = new TransactionsGeneralFill();
                 dtbl = Obj.BankOrCashComboFill(false);
                 DataRow dr = dtbl.NewRow();
-                dr[1] = 0;
-                dr[0] = "All";
+                dr[0] = 0;
+                dr[2] = "All";
                 dtbl.Rows.InsertAt(dr, 0);
                 cmbBankOrCash.DataSource = dtbl;
                 cmbBankOrCash.ValueMember = "ledgerId";
@@ -100,7 +100,7 @@ namespace LoginForm
                 dtbl = SpVoucherType.VoucherTypeViewAll();
                 DataRow dr = dtbl.NewRow();
                 dr[0] = 0;
-                dr[1] = "All";
+                dr[2] = "All";
                 dtbl.Rows.InsertAt(dr, 0);
                 cmbVoucherType.DataSource = dtbl;
                 cmbVoucherType.ValueMember = "voucherTypeId";
@@ -123,12 +123,58 @@ namespace LoginForm
                 DataTable dtbl = new DataTable();
                 if (cmbLedger.Items.Count != 0 && cmbVoucherType.Items.Count != 0 && cmbBankOrCash.Items.Count != 0)
                 {
-                    if ((cmbLedger.SelectedValue.ToString() != "System.Data.DataRowView") && (cmbVoucherType.SelectedValue.ToString() != "System.Data.DataRowView" ) && (cmbBankOrCash.SelectedValue.ToString() != "System.Data.DataRowView"))
+                    if (cmbVoucherType.SelectedIndex!=0&&cmbBankOrCash.SelectedIndex!=0 &&cmbLedger.SelectedIndex!=0&&(cmbLedger.SelectedValue.ToString() != "System.Data.DataRowView") && (cmbVoucherType.SelectedValue.ToString() != "System.Data.DataRowView" ) && (cmbBankOrCash.SelectedValue.ToString() != "System.Data.DataRowView"))
                     {
                         if (txtFromDate.Text.Trim() != string.Empty && txtToDate.Text.Trim() != string.Empty)
                         {
                             dtbl = SpPaymentMaster.PaymentReportSearch(Convert.ToDateTime(dtpFromDate.Value.ToString()), Convert.ToDateTime(dtpToDate.Value.ToString()), Convert.ToDecimal(cmbLedger.SelectedValue), Convert.ToDecimal(cmbVoucherType.SelectedValue), Convert.ToDecimal(cmbBankOrCash.SelectedValue));
                             dgvPaymentReport.DataSource = dtbl;
+                        }
+                    }
+                    else
+                    {
+                        if(cmbVoucherType.SelectedIndex ==0 && cmbBankOrCash.SelectedIndex == 0 && cmbLedger.SelectedIndex == 0)//all comboboxes are ALL
+                        {
+                            dtbl = SpPaymentMaster.PaymentReportSearch(Convert.ToDateTime(dtpFromDate.Value.ToString()), Convert.ToDateTime(dtpToDate.Value.ToString()));
+                            dgvPaymentReport.DataSource = dtbl;
+                        }
+                        else
+                        {
+                            if(cmbVoucherType.SelectedIndex == 0)
+                            {
+                                if (cmbBankOrCash.SelectedIndex == 0)//bankorcash and vouchertype are ALL
+                                {
+                                    dtbl = SpPaymentMaster.PaymentReportSearchwithBankAndVoucherType(Convert.ToDateTime(dtpFromDate.Value.ToString()), Convert.ToDateTime(dtpToDate.Value.ToString()), Convert.ToDecimal(cmbVoucherType.SelectedValue), Convert.ToDecimal(cmbBankOrCash.SelectedValue));
+                                    dgvPaymentReport.DataSource = dtbl;
+                                }
+                                else//vouchertype ALL
+                                {
+                                    dtbl = SpPaymentMaster.PaymentReportSearchWithVoucherType(Convert.ToDateTime(dtpFromDate.Value.ToString()), Convert.ToDateTime(dtpToDate.Value.ToString()), Convert.ToDecimal(cmbVoucherType.SelectedValue));
+                                    dgvPaymentReport.DataSource = dtbl;
+                                }
+                            }
+                            else
+                            {
+                                if (cmbBankOrCash.SelectedIndex == 0)
+                                {
+                                    if (cmbLedger.SelectedIndex==0)//ledger and bank are ALL
+                                    {
+                                        dtbl = SpPaymentMaster.PaymentReportSearchWithLedgerAndBank(Convert.ToDateTime(dtpFromDate.Value.ToString()), Convert.ToDateTime(dtpToDate.Value.ToString()), Convert.ToDecimal(cmbLedger.SelectedValue),  Convert.ToDecimal(cmbBankOrCash.SelectedValue));
+                                        dgvPaymentReport.DataSource = dtbl;
+
+                                    }
+                                    else//bank is ALL
+                                    {
+                                        dtbl = SpPaymentMaster.PaymentReportSearchwithBank(Convert.ToDateTime(dtpFromDate.Value.ToString()), Convert.ToDateTime(dtpToDate.Value.ToString()), Convert.ToDecimal(cmbBankOrCash.SelectedValue));
+                                        dgvPaymentReport.DataSource = dtbl;
+                                    }
+                                }
+                                else//ledger is ALL
+                                {
+                                    dtbl = SpPaymentMaster.PaymentReportSearchWithLedger(Convert.ToDateTime(dtpFromDate.Value.ToString()), Convert.ToDateTime(dtpToDate.Value.ToString()), Convert.ToDecimal(cmbLedger.SelectedValue));
+                                    dgvPaymentReport.DataSource = dtbl;
+                                }
+                            } 
                         }
                     }
                 }

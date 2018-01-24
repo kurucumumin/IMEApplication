@@ -59,7 +59,7 @@ namespace LoginForm
                 dtblVouchetType = spVoucherType.VoucherTypeSelectionComboFill("Credit Note");
                 DataRow dr = dtblVouchetType.NewRow();
                 dr[0] = 0;
-                dr[1] = "ALL";
+                dr[2] = "ALL";
                 dtblVouchetType.Rows.InsertAt(dr, 0);
                 cmbVoucherType.DataSource = dtblVouchetType;
                 cmbVoucherType.ValueMember = "voucherTypeId";
@@ -143,7 +143,7 @@ namespace LoginForm
                 {
                     if ((cmbAccountLedger.SelectedValue.ToString() != "System.Data.DataRowView") && (cmbVoucherType.SelectedValue.ToString() != "System.Data.DataRowView"))
                     {
-                        if (txtFromDate.Text.Trim() != string.Empty && txtToDate.Text.Trim() != string.Empty)
+                        if (cmbAccountLedger.SelectedIndex!=0 && cmbVoucherType.SelectedIndex!= 0  && txtFromDate.Text.Trim() != string.Empty && txtToDate.Text.Trim() != string.Empty)
                         {
                             string strFromDate = txtFromDate.Text;
                             string strToDate = txtToDate.Text;
@@ -154,6 +154,32 @@ namespace LoginForm
                             CreditNoteMasterSP spCreditNoteMaster = new CreditNoteMasterSP();
                             dtblCreditNoteReport = spCreditNoteMaster.CreditNoteReportSearch(strFromDate, strToDate, decVoucherTypeId, decLedgerId);
                             dgvCreditNoteReport.DataSource = dtblCreditNoteReport;
+                        }
+                        else
+                        {
+                            if ( cmbVoucherType.SelectedIndex == 0 && txtFromDate.Text.Trim() != string.Empty && txtToDate.Text.Trim() != string.Empty)
+                            {
+                                string strFromDate = txtFromDate.Text;
+                                string strToDate = txtToDate.Text;
+                                decimal decLedgerId = Convert.ToDecimal(cmbAccountLedger.SelectedValue.ToString());
+
+                                DataTable dtblCreditNoteReport = new DataTable();
+                                CreditNoteMasterSP spCreditNoteMaster = new CreditNoteMasterSP();
+                                dtblCreditNoteReport = spCreditNoteMaster.CreditNoteReportSearchWithLedgerId(strFromDate, strToDate, decLedgerId);
+                                dgvCreditNoteReport.DataSource = dtblCreditNoteReport;
+                            }
+                            else
+                            {
+                                string strFromDate = txtFromDate.Text;
+                                string strToDate = txtToDate.Text;
+                                decimal decVoucherTypeId = Convert.ToDecimal(cmbVoucherType.SelectedValue.ToString());
+
+                                DataTable dtblCreditNoteReport = new DataTable();
+                                CreditNoteMasterSP spCreditNoteMaster = new CreditNoteMasterSP();
+                                dtblCreditNoteReport = spCreditNoteMaster.CreditNoteReportSearchwithVoucherTypeId(strFromDate, strToDate, decVoucherTypeId);
+                                dgvCreditNoteReport.DataSource = dtblCreditNoteReport;
+                            }
+
                         }
                     }
                 }
