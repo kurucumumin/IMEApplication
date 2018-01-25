@@ -461,7 +461,7 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
-        public DataTable PaymentMasterSearch(DateTime dtpFromDate, DateTime dtpToDate, decimal decledgerId, string strvoucherNo)
+        public DataTable PaymentMasterSearch(DateTime dtpFromDate, DateTime dtpToDate, string decledgerId, string strvoucherNo)
         {
             IMEEntities IME = new IMEEntities();
             DataTable dtbl = new DataTable();
@@ -471,7 +471,7 @@ namespace LoginForm.Account.Services
             dtbl.Columns["SL.NO"].AutoIncrementStep = 1;
             try
             {
-                var adaptor = IME.PaymentMasterSearch(dtpFromDate, dtpToDate, decledgerId.ToString(), strvoucherNo).ToList();
+                var adaptor = IME.PaymentMasterSearch(dtpFromDate, dtpToDate, decledgerId, strvoucherNo).ToList();
 
                 dtbl.Columns.Add("paymentMasterId");
                 dtbl.Columns.Add("invoiceNo");

@@ -70,8 +70,8 @@ namespace LoginForm
                     {
                         if (txtFromDate.Text.Trim() != string.Empty && txtToDate.Text.Trim() != string.Empty)
                         {
-                            dtbl = SpPaymentMaster.PaymentMasterSearch(dtpFromDate.Value, dtpToDate.Value, Convert.ToDecimal(cmbAccountLedger.SelectedValue), txtVoucherNo.Text);
-                            dgvPaymentRegister.DataSource = dtbl;
+                                dtbl = SpPaymentMaster.PaymentMasterSearch(dtpFromDate.Value, dtpToDate.Value, (cmbAccountLedger.SelectedValue).ToString(), txtVoucherNo.Text);
+                                dgvPaymentRegister.DataSource = dtbl;
                         }
                     }
                 }
