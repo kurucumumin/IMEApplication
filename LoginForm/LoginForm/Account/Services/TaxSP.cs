@@ -436,7 +436,7 @@ namespace LoginForm.Account.Services
 
                 dtbl.Columns.Add("taxId");
                 dtbl.Columns.Add("taxName");
-                dtbl.Columns.Add("ApplicationOn");
+                dtbl.Columns.Add("applicableOn");
 
                 var adaptor = db.TaxViewAllForVoucherType();
 
@@ -446,11 +446,11 @@ namespace LoginForm.Account.Services
 
                     row["taxId"] = item.taxId;
                     row["taxName"] = item.taxName;
-                    row["ApplicationOn"] = item.applicableOn;
+                    row["applicableOn"] = item.applicableOn;
 
                     dtbl.Rows.Add(row);
                 }
-                
+
             }
             catch (Exception ex)
             {

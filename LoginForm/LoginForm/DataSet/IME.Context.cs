@@ -232,6 +232,24 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("AccountGroupNatureUnderGroup", accountGroupIdParameter);
         }
 
+        public virtual int AccountGroupReferenceDelete(Nullable<decimal> accountGroupId)
+        {
+            var accountGroupIdParameter = accountGroupId.HasValue ?
+                new ObjectParameter("accountGroupId", accountGroupId) :
+                new ObjectParameter("accountGroupId", typeof(decimal));
+
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AccountGroupReferenceDelete", accountGroupIdParameter);
+        }
+
+        public virtual ObjectResult<AccountGroupView_Result> AccountGroupView(Nullable<decimal> accountGroupId)
+        {
+            var accountGroupIdParameter = accountGroupId.HasValue ?
+                new ObjectParameter("accountGroupId", accountGroupId) :
+                new ObjectParameter("accountGroupId", typeof(decimal));
+
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountGroupView_Result>("AccountGroupView", accountGroupIdParameter);
+        }
+
         public virtual ObjectResult<AccountGroupViewForUpdate_Result> AccountGroupViewForUpdate(Nullable<decimal> accountGroupId)
         {
             var accountGroupIdParameter = accountGroupId.HasValue ?

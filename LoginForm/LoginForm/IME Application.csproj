@@ -546,6 +546,9 @@
     <Compile Include="DataSet\AccountGroupViewForUpdate_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\AccountGroupView_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\AccountLedger.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1271,11 +1274,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs" />
     <Compile Include="PurchaseOrder\ExcelPurchaseOrder.cs" />
     <Compile Include="PurchaseOrder\FormBillTo.cs">
       <SubType>Form</SubType>
@@ -1649,11 +1648,7 @@
     <EmbeddedResource Include="ModulePurchaseInvoice\frmPurchaseInvoiceLoader.resx">
       <DependentUpon>frmPurchaseInvoiceLoader.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx" />
     <EmbeddedResource Include="PurchaseOrder\FormBillTo.resx">
       <DependentUpon>FormBillTo.cs</DependentUpon>
     </EmbeddedResource>
@@ -1780,16 +1775,44 @@
       <LastGenOutput>IME.cs</LastGenOutput>
     </Content>
     <Content Include="Resources\btnBackground.png" />
+    <None Include="Resources\updated.png" />
+    <None Include="Resources\btn_close_msg.png" />
+    <None Include="Resources\btn_customize.jpg" />
+    <None Include="Resources\button.png" />
+    <None Include="Resources\button_add.png" />
+    <None Include="Resources\button_delete.png" />
+    <None Include="Resources\button_delete1.png" />
+    <None Include="Resources\button_disabled.png" />
+    <None Include="Resources\close.png" />
     <Content Include="Resources\close_icon.jpg" />
+    <None Include="Resources\cybrosys_technologies.png" />
     <Content Include="Resources\excel_icon.png" />
+    <Content Include="Resources\file.png" />
+    <None Include="Resources\form_header.png" />
     <Content Include="Resources\gradient2.jpg" />
+    <None Include="Resources\icon.ico" />
     <Content Include="Resources\icons8-Cancel-32.png" />
     <Content Include="Resources\icons8-Edit Property-32.png" />
     <Content Include="Resources\icons8-Plus-32.png" />
     <Content Include="Resources\icons8-Refresh-32.png" />
     <Content Include="Resources\IME.jpg" />
+    <None Include="Resources\mdi copy.jpg" />
+    <None Include="Resources\mdi.jpg" />
+    <None Include="Resources\mdi2.jpg" />
+    <None Include="Resources\mdi3.jpg" />
+    <None Include="Resources\open_miracle_corner_bg.png" />
+    <None Include="Resources\open_miracle_mdi.jpg" />
+    <None Include="Resources\open_miracle_title.jpg" />
+    <None Include="Resources\open_miracle_tm.png" />
+    <None Include="Resources\open_miracle_water_mark.png" />
+    <None Include="Resources\openmiracale_aboutus.png" />
+    <None Include="Resources\openmiracle.com.png" />
     <Content Include="Resources\resize.png" />
+    <None Include="Resources\sap hide.bmp" />
     <Content Include="Resources\save_icon.png" />
+    <None Include="Resources\side_bar_miracle.jpg" />
+    <None Include="Resources\test_bg.jpg" />
+    <None Include="Resources\top_bg_cor.jpg" />
     <Content Include="Resources\update-icon-Kopya.png" />
     <Content Include="Resources\update-icon.png" />
     <Content Include="Resources\update-icon2.png" />

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using LoginForm.Account.Services;
 using LoginForm.DataSet;
 using LoginForm.Services;
 namespace LoginForm
@@ -16,7 +17,7 @@ namespace LoginForm
         IMEEntities IME = new IMEEntities();
         string strAccountGroupName;
         int inNarrationCount;
-        //decimal decAccountGroupId;
+        decimal decAccountGroupId;
         frmAccountLedger frmAccountLedgerobj;
         decimal decIdForOtherForms = 0;
         decimal decAccountGroupIdForEdit;
@@ -51,11 +52,24 @@ namespace LoginForm
             }
         }
 
+        /// <summary>
+        /// Function to fill account group combo
+        /// </summary>
         public void GroupUnderComboFill()
         {
-                cmbGroupUnder.DataSource = IME.AccountGroups.ToList() ;
+            try
+            {
+                AccountGroupSP spAccountGroup = new AccountGroupSP();
+                DataTable dtblEmployeeCode = new DataTable();
+                dtblEmployeeCode = spAccountGroup.AccountGroupViewAllComboFill();
+                cmbGroupUnder.DataSource = dtblEmployeeCode;
                 cmbGroupUnder.ValueMember = "accountGroupId";
                 cmbGroupUnder.DisplayMember = "accountGroupName";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AG2:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         /// <summary>
         /// Function to fill account group combo for Search
@@ -168,26 +182,26 @@ namespace LoginForm
             {
                 if (isDefault == true)
                 {
-                    //Messages.InformationMessage("Can't delete build in account group");
+                    Messages.InformationMessage("Can't delete build in account group");
                 }
                 //else if (PublicVariables.isMessageDelete)
                 //{
-                //else if (Messages.DeleteConfirmation())
-                //{
-                //    AccountGroupInfo InfoAccountGroup = new AccountGroupInfo();
-                //    AccountGroupSP spAccountGroup = new AccountGroupSP();
-                //    if ((spAccountGroup.AccountGroupReferenceDelete(decAccountGroupIdForEdit) == -1))
-                //    {
-                //        Messages.ReferenceExistsMessage();
-                //    }
-                //    else
-                //    {
-                //        Messages.DeletedMessage();
-                //        btnSave.Text = "Save";
-                //        btnDelete.Enabled = false;
-                //        Clear();
-                //    }
-                //}
+                else if (Messages.DeleteConfirmation())
+                {
+                    //AccountGroup InfoAccountGroup = new AccountGroup();
+                    AccountGroupSP spAccountGroup = new AccountGroupSP();
+                    if ((spAccountGroup.AccountGroupReferenceDelete(decAccountGroupIdForEdit) == -1))
+                    {
+                        Messages.ReferenceExistsMessage();
+                    }
+                    else
+                    {
+                        Messages.DeletedMessage();
+                        btnSave.Text = "Save";
+                        btnDelete.Enabled = false;
+                        Clear();
+                    }
+                }
                 //}
                 //else
                 //{
@@ -303,16 +317,125 @@ namespace LoginForm
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
-            if (ControlID(txtAccountGroupName.Text))
+            try
             {
-                Edit();
+                //if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnSave.Text))
+                //{
+                    SaveOrEdit();
+                //}
+                //else
+                //{
+                //    Messages.NoPrivillageMessage();
+                //}
             }
-            else
+            catch (Exception ex)
             {
-                Save();
+                MessageBox.Show("AG17:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            //if (ControlID(txtAccountGroupName.Text))
+            //{
+            //    Edit();
+            //}
+            //else
+            //{
+            //    Save();
+            //}
 
+        }
+
+        /// <summary>
+        /// Function to save and edit account group
+        /// </summary>
+        public void SaveOrEdit()
+        {
+            try
+            {
+                strAccountGroupName = btnSave.Text == "Save" ? string.Empty : strAccountGroupName;
+                if (CheckExistanceOfGroupName() == false)
+                {
+                    if (txtAccountGroupName.Text.Trim() == string.Empty)
+                    {
+                        Messages.InformationMessage("Enter account group name");
+                        txtAccountGroupName.Focus();
+                    }
+                    else if (cmbGroupUnder.SelectedIndex == -1)
+                    {
+                        Messages.InformationMessage("Select under");
+                        cmbGroupUnder.Focus();
+                    }
+                    else if (cmbNature.SelectedIndex == -1)
+                    {
+                        Messages.InformationMessage("Select nature");
+                        cmbNature.Focus();
+                    }
+                    else
+                    {
+                        AccountGroup infoAccountGroup = new AccountGroup();
+                        AccountGroupSP spAccountGroup = new AccountGroupSP();
+                        infoAccountGroup.accountGroupName = txtAccountGroupName.Text.Trim();
+                        infoAccountGroup.groupUnder = Convert.ToInt32(cmbGroupUnder.SelectedValue.ToString());
+                        infoAccountGroup.nature = cmbNature.SelectedItem.ToString();
+                        if (cmbAffectGrossProfit.SelectedIndex == -1)
+                        {
+                            infoAccountGroup.affectGrossProfit = "No";
+                        }
+                        else
+                        {
+                            infoAccountGroup.affectGrossProfit = cmbAffectGrossProfit.SelectedItem.ToString();
+                        }
+                        infoAccountGroup.isDefault = false;
+                        infoAccountGroup.narration = txtNarration.Text.Trim();
+                        if (btnSave.Text == "Save")
+                        {
+                            if (Messages.SaveConfirmation())
+                            {
+                                decAccountGroupId = spAccountGroup.AccountGroupAddWithIdentity(infoAccountGroup);
+                                Messages.SavedMessage();
+                                decIdForOtherForms = decAccountGroupId;
+                                if (frmAccountLedgerobj != null)
+                                {
+                                    this.Close();
+                                }
+                                GridFill();
+                                Clear();
+                            }
+                        }
+                        else
+                        {
+                            if (isDefault == true)
+                            {
+                                Messages.InformationMessage("Can't update build in account group");
+                            }
+                            else if (txtAccountGroupName.Text.Trim().ToLower() != cmbGroupUnder.Text.ToLower())
+                            {
+                                if (Messages.UpdateConfirmation())
+                                {
+                                    infoAccountGroup.accountGroupId = Convert.ToInt32(decAccountGroupIdForEdit);
+                                    if (spAccountGroup.AccountGroupUpdate(infoAccountGroup))
+                                    {
+                                        Messages.UpdatedMessage();
+                                    }
+                                    GridFill();
+                                    Clear();
+                                }
+                            }
+                            else
+                            {
+                                Messages.InformationMessage(" Can't save under same group");
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    Messages.InformationMessage(" Account group already exist");
+                    txtAccountGroupName.Focus();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AG8:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void Edit()
@@ -362,30 +485,35 @@ namespace LoginForm
 
         private void dgvAccountGroup_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            try
+            {
                 if (e.RowIndex != -1)
                 {
-                int agID = Int32.Parse(dgvAccountGroup.Rows[e.RowIndex].Cells[1].Value.ToString());
-                    AccountGroup ag = IME.AccountGroups.Where(a => a.accountGroupId == agID).FirstOrDefault();
-                    bool Isdefault = (bool)ag.isDefault;
-                    txtAccountGroupName.Text = ag.accountGroupName;
-                    cmbGroupUnder.SelectedValue = ag.groupUnder.ToString();
-                    string strNature = IME.AccountGroups.Where(a => a.accountGroupId == agID).FirstOrDefault().nature;
+                    AccountGroup InfoAccountGroup = new AccountGroup();
+                    AccountGroupSP spAccountGroup = new AccountGroupSP();
+                    InfoAccountGroup = spAccountGroup.AccountGroupViewForUpdate(Convert.ToDecimal(dgvAccountGroup.CurrentRow.Cells["dgvtxtAccountGroupId"].Value.ToString()));
+                    bool Isdefault = (bool)InfoAccountGroup.isDefault;
+                    txtAccountGroupName.Text = InfoAccountGroup.accountGroupName;
+                    cmbGroupUnder.SelectedValue = InfoAccountGroup.groupUnder.ToString();
+                    decimal decAccountGroupId = Convert.ToDecimal(cmbGroupUnder.SelectedValue.ToString());
+                    string strNature = spAccountGroup.AccountGroupNatureUnderGroup(decAccountGroupId);
                     if (strNature != "NA")
                     {
-                        cmbNature.Text = ag.nature;
+                        cmbNature.Text = InfoAccountGroup.nature;
                         cmbNature.Enabled = false;
                     }
                     else
                     {
-                        cmbNature.Text = ag.nature;
+                        cmbNature.Text = InfoAccountGroup.nature;
                         cmbNature.Enabled = true;
                     }
                     if (Isdefault)
                     {
-                        decimal decAffectGrossProfit = Convert.ToDecimal(ag.affectGrossProfit);
+                        decimal decAffectGrossProfit = Convert.ToDecimal(InfoAccountGroup.affectGrossProfit);
                         if (decAffectGrossProfit == 0)
                         {
                             cmbAffectGrossProfit.Text = "No";
+
                         }
                         else
                         {
@@ -394,16 +522,16 @@ namespace LoginForm
                     }
                     else
                     {
-                        cmbAffectGrossProfit.Text = ag.affectGrossProfit;
+                        cmbAffectGrossProfit.Text = InfoAccountGroup.affectGrossProfit;
                     }
-                    txtNarration.Text = ag.narration;
+                    txtNarration.Text = InfoAccountGroup.narration;
                     btnSave.Text = "Update";
                     txtAccountGroupName.Focus();
                     btnDelete.Enabled = true;
-                    strAccountGroupName = ag.accountGroupName;
-                    decAccountGroupIdForEdit = Convert.ToDecimal(dgvAccountGroup.CurrentRow.Cells[1].Value.ToString());
-                    inId = Convert.ToInt32(ag.accountGroupId.ToString());
-                    isDefault = Convert.ToBoolean(ag.isDefault);
+                    strAccountGroupName = InfoAccountGroup.accountGroupName;
+                    decAccountGroupIdForEdit = Convert.ToDecimal(dgvAccountGroup.CurrentRow.Cells["dgvtxtAccountGroupId"].Value.ToString());
+                    inId = Convert.ToInt32(InfoAccountGroup.accountGroupId.ToString());
+                    isDefault = Convert.ToBoolean(InfoAccountGroup.isDefault);
 
                     if (isDefault == true && strNature != "NA")
                     {
@@ -425,7 +553,7 @@ namespace LoginForm
                     }
                     if (isDefault == false)
                     {
-                        if (IME.AccountGroups.Where(a=>a.accountGroupId == inId).FirstOrDefault() == null)
+                        if (spAccountGroup.AccountGroupCheckExistenceOfUnderGroup(Convert.ToDecimal(inId.ToString())) == false)
                         {
                             cmbAffectGrossProfit.Enabled = false;
                             cmbGroupUnder.Enabled = false;
@@ -442,13 +570,116 @@ namespace LoginForm
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AG18:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            if (e.RowIndex != -1)
+            {
+                int agID = Int32.Parse(dgvAccountGroup.Rows[e.RowIndex].Cells[1].Value.ToString());
+                AccountGroup ag = IME.AccountGroups.Where(a => a.accountGroupId == agID).FirstOrDefault();
+                bool Isdefault = (bool)ag.isDefault;
+                txtAccountGroupName.Text = ag.accountGroupName;
+                cmbGroupUnder.SelectedValue = ag.groupUnder.ToString();
+                string strNature = IME.AccountGroups.Where(a => a.accountGroupId == agID).FirstOrDefault().nature;
+                if (strNature != "NA")
+                {
+                    cmbNature.Text = ag.nature;
+                    cmbNature.Enabled = false;
+                }
+                else
+                {
+                    cmbNature.Text = ag.nature;
+                    cmbNature.Enabled = true;
+                }
+                if (Isdefault)
+                {
+                    decimal decAffectGrossProfit = Convert.ToDecimal(ag.affectGrossProfit);
+                    if (decAffectGrossProfit == 0)
+                    {
+                        cmbAffectGrossProfit.Text = "No";
+                    }
+                    else
+                    {
+                        cmbAffectGrossProfit.Text = "Yes";
+                    }
+                }
+                else
+                {
+                    cmbAffectGrossProfit.Text = ag.affectGrossProfit;
+                }
+                txtNarration.Text = ag.narration;
+                btnSave.Text = "Update";
+                txtAccountGroupName.Focus();
+                btnDelete.Enabled = true;
+                strAccountGroupName = ag.accountGroupName;
+                decAccountGroupIdForEdit = Convert.ToDecimal(dgvAccountGroup.CurrentRow.Cells[1].Value.ToString());
+                inId = Convert.ToInt32(ag.accountGroupId.ToString());
+                isDefault = Convert.ToBoolean(ag.isDefault);
+
+                if (isDefault == true && strNature != "NA")
+                {
+                    txtAccountGroupName.Enabled = false;
+                    cmbAffectGrossProfit.Enabled = false;
+                    cmbGroupUnder.Enabled = false;
+                    cmbNature.Enabled = false;
+                }
+                else
+                {
+                    if (strNature == "NA")
+                    {
+                        txtAccountGroupName.Enabled = true;
+                        cmbAffectGrossProfit.Enabled = true;
+                        cmbGroupUnder.Enabled = true;
+                        cmbNature.Enabled = true;
+                    }
+
+                }
+                if (isDefault == false)
+                {
+                    if (IME.AccountGroups.Where(a => a.accountGroupId == inId).FirstOrDefault() == null)
+                    {
+                        cmbAffectGrossProfit.Enabled = false;
+                        cmbGroupUnder.Enabled = false;
+                        cmbNature.Enabled = false;
+                    }
+                    else
+                    {
+                        if (strNature == "NA")
+                        {
+                            cmbAffectGrossProfit.Enabled = true;
+                            cmbGroupUnder.Enabled = true;
+                            cmbNature.Enabled = true;
+                        }
+                    }
+                }
+            }
 
         }
 
+        /// <summary>
+        /// On 'Delete' button click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            AccountGroup ag = IME.AccountGroups.Where(a => a.accountGroupName == txtAccountGroupName.Text).FirstOrDefault();
-            IME.AccountGroups.Remove(ag);
+            try
+            {
+                //if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnDelete.Text))
+                //{
+                    Delete();
+                //}
+                //else
+                //{
+                //    Messages.NoPrivillageMessage();
+                //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AG19:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -500,44 +731,45 @@ namespace LoginForm
         }
         private void cmbGroupUnder_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    if (cmbGroupUnder.SelectedValue != null && cmbGroupUnder.SelectedValue.ToString() != "System.Data.DataRowView")
-            //    {
-            //        decimal decAccountGroupId = Convert.ToDecimal(cmbGroupUnder.SelectedValue.ToString());
-            //        AccountGroupSP spAccountGroup = new AccountGroupSP();
-            //        AccountGroupInfo infoAccountGroup = new AccountGroupInfo();
-            //        infoAccountGroup = spAccountGroup.AccountGroupView(decAccountGroupId);
-            //        string strNature = infoAccountGroup.Nature;
-            //        string strIsAffectGrossProfit = infoAccountGroup.AffectGrossProfit;
-            //        // string strNature = spAccountGroup.AccountGroupNatureUnderGroup(decAccountGroupId);
-            //        if (strNature != "NA")
-            //        {
-            //            cmbNature.Text = strNature;
-            //            if (infoAccountGroup.AffectGrossProfit == "1")
-            //            {
-            //                cmbAffectGrossProfit.SelectedIndex = 0;
-            //            }
-            //            else
-            //            {
-            //                cmbAffectGrossProfit.SelectedIndex = 1;
-            //            }
-            //            cmbNature.Enabled = false;
-            //            cmbAffectGrossProfit.Enabled = false;
+            try
+            {
+                if (cmbGroupUnder.SelectedValue != null && cmbGroupUnder.SelectedValue.ToString() != "System.Data.DataRowView")
+                {
+                    decimal decAccountGroupId = Convert.ToDecimal(cmbGroupUnder.SelectedValue.ToString());
+                    AccountGroupSP spAccountGroup = new AccountGroupSP();
+                    AccountGroup infoAccountGroup = new AccountGroup();
+                    infoAccountGroup = spAccountGroup.AccountGroupView(decAccountGroupId);
+                    string strNature = infoAccountGroup.nature;
+                    string strIsAffectGrossProfit = infoAccountGroup.affectGrossProfit;
+                    // string strNature = spAccountGroup.AccountGroupNatureUnderGroup(decAccountGroupId);
+                    if (strNature != "NA")
+                    {
+                        cmbNature.Text = strNature;
+                        if (infoAccountGroup.affectGrossProfit == "1")
+                        {
+                            cmbAffectGrossProfit.SelectedIndex = 0;
+                        }
+                        else
+                        {
+                            cmbAffectGrossProfit.SelectedIndex = 1;
+                        }
+                        cmbNature.Enabled = false;
+                        cmbAffectGrossProfit.Enabled = false;
 
-            //        }
-            //        else
-            //        {
-            //            cmbNature.Enabled = true;
-            //            cmbAffectGrossProfit.Enabled = true;
-            //            //    }
-            //        }
-            //    }
-            //catch (Exception)
-            //{
+                    }
+                    else
+                    {
+                        cmbNature.Enabled = true;
+                        cmbAffectGrossProfit.Enabled = true;
+                        //    }
+                    }
+                }
+            }
+            catch (Exception)
+            {
 
 
-            //}
+            }
             if (txtAccountGroupName.Text != null && txtAccountGroupName.Text != string.Empty)
             {
 

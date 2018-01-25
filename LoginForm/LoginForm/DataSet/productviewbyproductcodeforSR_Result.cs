@@ -14,16 +14,11 @@ namespace LoginForm.DataSet
     public partial class productviewbyproductcodeforSR_Result
     {
         public string Article_No { get; set; }
-        public string barcode { get; set; }
         public string Article_Desc { get; set; }
         public Nullable<decimal> qty { get; set; }
-        public decimal unitConversionId { get; set; }
-        public Nullable<decimal> conversionRate { get; set; }
-        public decimal batchId { get; set; }
         public Nullable<decimal> discountPercent { get; set; }
         public Nullable<decimal> discount { get; set; }
         public Nullable<decimal> netvalue { get; set; }
-        public int taxId { get; set; }
         public Nullable<decimal> taxAmount { get; set; }
         public Nullable<decimal> amount { get; set; }
     }

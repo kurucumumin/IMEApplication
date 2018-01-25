@@ -147,22 +147,32 @@ namespace LoginForm.Account.Services
 
         public decimal BudgetMasterDelete(decimal BudgetMasterId)
         {
-            IMEEntities IME = new IMEEntities();
-            BudgetDetail db = new BudgetDetail();
-            BudgetMaster db2 = new BudgetMaster();
             decimal decReturnValue = 0;
-
-            IME.BudgetDetails.RemoveRange(IME.BudgetDetails.Where(a => a.budgetMasterId == BudgetMasterId));
-            IME.SaveChanges();
-            db2 = IME.BudgetMasters.Where(x => x.budgetMasterId == BudgetMasterId).FirstOrDefault();
-            
-            IME.BudgetMasters.Remove(db2);
-
-                IME.SaveChanges();
-
-                
-           
+            try
+            {
+                decReturnValue = Convert.ToDecimal(new IMEEntities().BudgetDetailsDeleteWithMasterId(BudgetMasterId));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
             return decReturnValue;
+            //IMEEntities IME = new IMEEntities();
+            //BudgetDetail db = new BudgetDetail();
+            //BudgetMaster db2 = new BudgetMaster();
+            //decimal decReturnValue = 0;
+
+            //IME.BudgetDetails.RemoveRange(IME.BudgetDetails.Where(a => a.budgetMasterId == BudgetMasterId));
+            //IME.SaveChanges();
+            //db2 = IME.BudgetMasters.Where(x => x.budgetMasterId == BudgetMasterId).FirstOrDefault();
+
+            //IME.BudgetMasters.Remove(db2);
+
+            //    IME.SaveChanges();
+
+
+
+            //return decReturnValue;
         }
 
         public DataTable BudgetVariance(decimal decbudgetId)
