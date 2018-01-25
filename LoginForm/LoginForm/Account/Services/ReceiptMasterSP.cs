@@ -62,8 +62,10 @@ namespace LoginForm.Account.Services
             decimal decMax = 0;
             try
             {
-                int sayi = Convert.ToInt32(IME.ReceiptMasters.FirstOrDefault().voucherNo);
-                decMax = IME.ReceiptMasters.Where(x => x.voucherTypeId == decVoucherTypeId).Select(x => sayi).Max();
+               
+                var adapter = IME.ReceiptMasters.Where(x => x.voucherTypeId == decVoucherTypeId).Select(x => x.voucherNo).Max();
+
+                decMax = (adapter != null) ? Convert.ToDecimal(adapter) : 0;
             }
             catch (Exception ex)
             {
