@@ -1416,7 +1416,7 @@ namespace LoginForm
                                 extendedRange.DimensionUoM = ((object[,])myvalues)[i, 9].ToString();
                             }
 
-                            if (((object[,])myvalues)[i, 10] != null) { extendedRange.ExtendedRangeWeight = Decimal.Parse(((object[,])myvalues)[i, 10].ToString()); }
+                            if (((object[,])myvalues)[i, 10] != null) { extendedRange.ExtendedRangeWeight = int.Parse(((object[,])myvalues)[i, 10].ToString()); }
 
                             if (((object[,])myvalues)[i, 11] != null)
                             {
@@ -1550,7 +1550,7 @@ namespace LoginForm
                                     extendedRange.DimensionUoM = ((object[,])myvalues)[i, j].ToString();
                                     break;
                                 case "Weight":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.ExtendedRangeWeight = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.ExtendedRangeWeight = int.Parse(((object[,])myvalues)[i, j].ToString()); }
                                     break;
                                 case "Weight UoM":
                                     extendedRange.WeightUoM = ((object[,])myvalues)[i, j].ToString();

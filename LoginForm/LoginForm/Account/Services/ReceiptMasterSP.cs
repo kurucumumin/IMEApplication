@@ -58,10 +58,12 @@ namespace LoginForm.Account.Services
 
         public decimal ReceiptMasterGetMax(decimal decVoucherTypeId)
         {
+            IMEEntities IME = new IMEEntities();
             decimal decMax = 0;
             try
             {
-                decMax = new IMEEntities().ReceiptMasters.Where(x => x.voucherTypeId == decVoucherTypeId).Select(x => Convert.ToInt32(x.voucherNo)).Max();
+                int sayi = Convert.ToInt32(IME.ReceiptMasters.FirstOrDefault().voucherNo);
+                decMax = IME.ReceiptMasters.Where(x => x.voucherTypeId == decVoucherTypeId).Select(x => sayi).Max();
             }
             catch (Exception ex)
             {

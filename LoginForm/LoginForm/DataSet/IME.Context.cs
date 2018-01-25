@@ -152,6 +152,86 @@ namespace LoginForm.DataSet
         public virtual DbSet<AdditionalCost> AdditionalCosts { get; set; }
         public virtual DbSet<SalaryVoucherDetail> SalaryVoucherDetails { get; set; }
     
+        public virtual ObjectResult<Nullable<decimal>> AccountGroupAddWithIdentity(string accountGroupName, string groupUnder, string narration, Nullable<bool> isDefault, string nature, string affectGrossProfit)
+        {
+            var accountGroupNameParameter = accountGroupName != null ?
+                new ObjectParameter("accountGroupName", accountGroupName) :
+                new ObjectParameter("accountGroupName", typeof(string));
+    
+            var groupUnderParameter = groupUnder != null ?
+                new ObjectParameter("groupUnder", groupUnder) :
+                new ObjectParameter("groupUnder", typeof(string));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            var isDefaultParameter = isDefault.HasValue ?
+                new ObjectParameter("isDefault", isDefault) :
+                new ObjectParameter("isDefault", typeof(bool));
+    
+            var natureParameter = nature != null ?
+                new ObjectParameter("nature", nature) :
+                new ObjectParameter("nature", typeof(string));
+    
+            var affectGrossProfitParameter = affectGrossProfit != null ?
+                new ObjectParameter("affectGrossProfit", affectGrossProfit) :
+                new ObjectParameter("affectGrossProfit", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("AccountGroupAddWithIdentity", accountGroupNameParameter, groupUnderParameter, narrationParameter, isDefaultParameter, natureParameter, affectGrossProfitParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> AccountGroupCheckExistenceOfUnderGroup(Nullable<decimal> accountGroupId)
+        {
+            var accountGroupIdParameter = accountGroupId.HasValue ?
+                new ObjectParameter("accountGroupId", accountGroupId) :
+                new ObjectParameter("accountGroupId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("AccountGroupCheckExistenceOfUnderGroup", accountGroupIdParameter);
+        }
+    
+        public virtual int AccountGroupEdit(Nullable<decimal> accountGroupId, string accountGroupName, string groupUnder, string narration, Nullable<bool> isDefault, string nature, string affectGrossProfit)
+        {
+            var accountGroupIdParameter = accountGroupId.HasValue ?
+                new ObjectParameter("accountGroupId", accountGroupId) :
+                new ObjectParameter("accountGroupId", typeof(decimal));
+    
+            var accountGroupNameParameter = accountGroupName != null ?
+                new ObjectParameter("accountGroupName", accountGroupName) :
+                new ObjectParameter("accountGroupName", typeof(string));
+    
+            var groupUnderParameter = groupUnder != null ?
+                new ObjectParameter("groupUnder", groupUnder) :
+                new ObjectParameter("groupUnder", typeof(string));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            var isDefaultParameter = isDefault.HasValue ?
+                new ObjectParameter("isDefault", isDefault) :
+                new ObjectParameter("isDefault", typeof(bool));
+    
+            var natureParameter = nature != null ?
+                new ObjectParameter("nature", nature) :
+                new ObjectParameter("nature", typeof(string));
+    
+            var affectGrossProfitParameter = affectGrossProfit != null ?
+                new ObjectParameter("affectGrossProfit", affectGrossProfit) :
+                new ObjectParameter("affectGrossProfit", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AccountGroupEdit", accountGroupIdParameter, accountGroupNameParameter, groupUnderParameter, narrationParameter, isDefaultParameter, natureParameter, affectGrossProfitParameter);
+        }
+    
+        public virtual ObjectResult<AccountGroupViewForUpdate_Result> AccountGroupViewForUpdate(Nullable<decimal> accountGroupId)
+        {
+            var accountGroupIdParameter = accountGroupId.HasValue ?
+                new ObjectParameter("accountGroupId", accountGroupId) :
+                new ObjectParameter("accountGroupId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountGroupViewForUpdate_Result>("AccountGroupViewForUpdate", accountGroupIdParameter);
+        }
+    
         public virtual ObjectResult<AccountLedgerSearchForServiceAccountUnderIncome_Result> AccountLedgerSearchForServiceAccountUnderIncome()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerSearchForServiceAccountUnderIncome_Result>("AccountLedgerSearchForServiceAccountUnderIncome");
@@ -426,6 +506,15 @@ namespace LoginForm.DataSet
                 new ObjectParameter("productId", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("BatchViewByProductId", productIdParameter);
+        }
+    
+        public virtual int BudgetDetailsDeleteWithMasterId(Nullable<decimal> budgetMasterId)
+        {
+            var budgetMasterIdParameter = budgetMasterId.HasValue ?
+                new ObjectParameter("budgetMasterId", budgetMasterId) :
+                new ObjectParameter("budgetMasterId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("BudgetDetailsDeleteWithMasterId", budgetMasterIdParameter);
         }
     
         public virtual ObjectResult<BudgetVariance_Result> BudgetVariance(Nullable<decimal> budgetMasterId)
@@ -3083,7 +3172,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        public virtual int sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
@@ -3093,10 +3182,10 @@ namespace LoginForm.DataSet
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
         }
     
-        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        public virtual int sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
                 new ObjectParameter("diagramname", diagramname) :
@@ -3106,7 +3195,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("owner_id", owner_id) :
                 new ObjectParameter("owner_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
         }
     
         public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)

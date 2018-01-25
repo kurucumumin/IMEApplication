@@ -75,8 +75,15 @@ namespace LoginForm.Account.Services
             decimal decVoucherNoMax = 0;
             try
             {
-
-                decVoucherNoMax = Convert.ToDecimal(db.PurchaseMasterVoucherMax(decVoucherTypeId));
+                if (decVoucherTypeId==0)
+                {
+                    decVoucherNoMax = 0;
+                }
+                else
+                {
+                    decVoucherNoMax = Convert.ToDecimal(db.PurchaseMasterVoucherMax(decVoucherTypeId));
+                }
+                
             }
             catch (Exception ex)
             {
