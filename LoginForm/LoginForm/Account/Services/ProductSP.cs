@@ -91,6 +91,7 @@ namespace LoginForm.Account.Services
             DataTable dtbl = new DataTable();
             try
             {
+                // TODO buradaki prosedure de tax dikkate alınmadı buna sonra tekrar bakılacak
                 var adaptor = IME.productviewbyproductNameforSR(productName);
 
                 dtbl.Columns.Add("Article_No");
@@ -142,6 +143,7 @@ namespace LoginForm.Account.Services
 
             try
             {
+                // TODO buradaki prosedure de tax dikkate alınmadı buna sonra tekrar bakılacak
                 var adaptor = IME.productviewbyproductcodeforSR(productCode);
 
                 dtbl.Columns.Add("Article_No");
