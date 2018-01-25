@@ -36,6 +36,10 @@
             this.txtAccountGroupNameSearch = new System.Windows.Forms.TextBox();
             this.lblAccountGroupNameSearch = new System.Windows.Forms.Label();
             this.dgvAccountGroup = new System.Windows.Forms.DataGridView();
+            this.dgvtxtSlNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxtAccountGroupId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxtGroupName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxtUnderGroup = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbNature = new System.Windows.Forms.ComboBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -55,7 +59,6 @@
             this.lblGroupUnderMandatory = new System.Windows.Forms.Label();
             this.lblNatureMandatory = new System.Windows.Forms.Label();
             this.lblAccountNameMandatory = new System.Windows.Forms.Label();
-            this.dgvtxtSlNo = new DevComponents.DotNetBar.Controls.DataGridViewIntegerInputColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccountGroup)).BeginInit();
             this.gbxAccountGroupSearch.SuspendLayout();
             this.gbxAccountGroup.SuspendLayout();
@@ -82,7 +85,7 @@
             this.cmbGroupUnderSearch.Location = new System.Drawing.Point(557, 18);
             this.cmbGroupUnderSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.cmbGroupUnderSearch.Name = "cmbGroupUnderSearch";
-            this.cmbGroupUnderSearch.Size = new System.Drawing.Size(200, 21);
+            this.cmbGroupUnderSearch.Size = new System.Drawing.Size(200, 24);
             this.cmbGroupUnderSearch.TabIndex = 1;
             this.cmbGroupUnderSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbGroupUnderSearch_KeyDown);
             this.cmbGroupUnderSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbGroupUnderSearch_KeyPress);
@@ -95,7 +98,7 @@
             this.lblGroupUnderSearch.Location = new System.Drawing.Point(447, 22);
             this.lblGroupUnderSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblGroupUnderSearch.Name = "lblGroupUnderSearch";
-            this.lblGroupUnderSearch.Size = new System.Drawing.Size(36, 13);
+            this.lblGroupUnderSearch.Size = new System.Drawing.Size(47, 17);
             this.lblGroupUnderSearch.TabIndex = 122;
             this.lblGroupUnderSearch.Text = "Under";
             // 
@@ -104,7 +107,7 @@
             this.txtAccountGroupNameSearch.Location = new System.Drawing.Point(116, 18);
             this.txtAccountGroupNameSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.txtAccountGroupNameSearch.Name = "txtAccountGroupNameSearch";
-            this.txtAccountGroupNameSearch.Size = new System.Drawing.Size(200, 20);
+            this.txtAccountGroupNameSearch.Size = new System.Drawing.Size(200, 22);
             this.txtAccountGroupNameSearch.TabIndex = 0;
             this.txtAccountGroupNameSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAccountGroupNameSearch_KeyDown);
             // 
@@ -115,7 +118,7 @@
             this.lblAccountGroupNameSearch.Location = new System.Drawing.Point(12, 22);
             this.lblAccountGroupNameSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblAccountGroupNameSearch.Name = "lblAccountGroupNameSearch";
-            this.lblAccountGroupNameSearch.Size = new System.Drawing.Size(35, 13);
+            this.lblAccountGroupNameSearch.Size = new System.Drawing.Size(45, 17);
             this.lblAccountGroupNameSearch.TabIndex = 120;
             this.lblAccountGroupNameSearch.Text = "Name";
             // 
@@ -139,7 +142,10 @@
             this.dgvAccountGroup.ColumnHeadersHeight = 25;
             this.dgvAccountGroup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvAccountGroup.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgvtxtSlNo});
+            this.dgvtxtSlNo,
+            this.dgvtxtAccountGroupId,
+            this.dgvtxtGroupName,
+            this.dgvtxtUnderGroup});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -160,11 +166,43 @@
             this.dgvAccountGroup.Size = new System.Drawing.Size(742, 351);
             this.dgvAccountGroup.TabIndex = 3;
             this.dgvAccountGroup.TabStop = false;
-            this.dgvAccountGroup.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAccountGroup_CellClick);
             this.dgvAccountGroup.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAccountGroup_CellDoubleClick);
             this.dgvAccountGroup.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvAccountGroup_DataBindingComplete);
             this.dgvAccountGroup.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvAccountGroup_KeyDown);
             this.dgvAccountGroup.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dgvAccountGroup_KeyUp);
+            // 
+            // dgvtxtSlNo
+            // 
+            this.dgvtxtSlNo.DataPropertyName = "Sl No";
+            this.dgvtxtSlNo.HeaderText = "Sl No";
+            this.dgvtxtSlNo.Name = "dgvtxtSlNo";
+            this.dgvtxtSlNo.ReadOnly = true;
+            this.dgvtxtSlNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dgvtxtAccountGroupId
+            // 
+            this.dgvtxtAccountGroupId.DataPropertyName = "accountGroupId";
+            this.dgvtxtAccountGroupId.HeaderText = "AccountGroupId";
+            this.dgvtxtAccountGroupId.Name = "dgvtxtAccountGroupId";
+            this.dgvtxtAccountGroupId.ReadOnly = true;
+            this.dgvtxtAccountGroupId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtxtAccountGroupId.Visible = false;
+            // 
+            // dgvtxtGroupName
+            // 
+            this.dgvtxtGroupName.DataPropertyName = "accountGroupName";
+            this.dgvtxtGroupName.HeaderText = "Group Name";
+            this.dgvtxtGroupName.Name = "dgvtxtGroupName";
+            this.dgvtxtGroupName.ReadOnly = true;
+            this.dgvtxtGroupName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dgvtxtUnderGroup
+            // 
+            this.dgvtxtUnderGroup.DataPropertyName = "Under";
+            this.dgvtxtUnderGroup.HeaderText = "Under";
+            this.dgvtxtUnderGroup.Name = "dgvtxtUnderGroup";
+            this.dgvtxtUnderGroup.ReadOnly = true;
+            this.dgvtxtUnderGroup.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // cmbNature
             // 
@@ -177,7 +215,7 @@
             this.cmbNature.Location = new System.Drawing.Point(122, 42);
             this.cmbNature.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.cmbNature.Name = "cmbNature";
-            this.cmbNature.Size = new System.Drawing.Size(200, 21);
+            this.cmbNature.Size = new System.Drawing.Size(200, 24);
             this.cmbNature.TabIndex = 2;
             this.cmbNature.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbNature_KeyDown);
             this.cmbNature.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbNature_KeyPress);
@@ -259,7 +297,7 @@
             this.lblNarration.Location = new System.Drawing.Point(12, 68);
             this.lblNarration.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblNarration.Name = "lblNarration";
-            this.lblNarration.Size = new System.Drawing.Size(50, 13);
+            this.lblNarration.Size = new System.Drawing.Size(67, 17);
             this.lblNarration.TabIndex = 112;
             this.lblNarration.Text = "Narration";
             // 
@@ -270,7 +308,7 @@
             this.lblNature.Location = new System.Drawing.Point(12, 46);
             this.lblNature.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblNature.Name = "lblNature";
-            this.lblNature.Size = new System.Drawing.Size(39, 13);
+            this.lblNature.Size = new System.Drawing.Size(51, 17);
             this.lblNature.TabIndex = 111;
             this.lblNature.Text = "Nature";
             // 
@@ -279,7 +317,7 @@
             this.txtAccountGroupName.Location = new System.Drawing.Point(122, 17);
             this.txtAccountGroupName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.txtAccountGroupName.Name = "txtAccountGroupName";
-            this.txtAccountGroupName.Size = new System.Drawing.Size(200, 20);
+            this.txtAccountGroupName.Size = new System.Drawing.Size(200, 22);
             this.txtAccountGroupName.TabIndex = 0;
             this.txtAccountGroupName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAccountGroupName_KeyDown);
             // 
@@ -290,7 +328,7 @@
             this.lblAccountGroupName.Location = new System.Drawing.Point(12, 21);
             this.lblAccountGroupName.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblAccountGroupName.Name = "lblAccountGroupName";
-            this.lblAccountGroupName.Size = new System.Drawing.Size(35, 13);
+            this.lblAccountGroupName.Size = new System.Drawing.Size(45, 17);
             this.lblAccountGroupName.TabIndex = 109;
             this.lblAccountGroupName.Text = "Name";
             // 
@@ -301,7 +339,7 @@
             this.cmbGroupUnder.Location = new System.Drawing.Point(546, 17);
             this.cmbGroupUnder.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.cmbGroupUnder.Name = "cmbGroupUnder";
-            this.cmbGroupUnder.Size = new System.Drawing.Size(200, 21);
+            this.cmbGroupUnder.Size = new System.Drawing.Size(200, 24);
             this.cmbGroupUnder.TabIndex = 1;
             this.cmbGroupUnder.SelectedIndexChanged += new System.EventHandler(this.cmbGroupUnder_SelectedIndexChanged);
             this.cmbGroupUnder.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbGroupUnder_KeyDown);
@@ -313,7 +351,7 @@
             this.lblGroupUnder.Location = new System.Drawing.Point(436, 21);
             this.lblGroupUnder.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblGroupUnder.Name = "lblGroupUnder";
-            this.lblGroupUnder.Size = new System.Drawing.Size(36, 13);
+            this.lblGroupUnder.Size = new System.Drawing.Size(47, 17);
             this.lblGroupUnder.TabIndex = 125;
             this.lblGroupUnder.Text = "Under";
             // 
@@ -326,7 +364,7 @@
             this.cmbAffectGrossProfit.Location = new System.Drawing.Point(546, 42);
             this.cmbAffectGrossProfit.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.cmbAffectGrossProfit.Name = "cmbAffectGrossProfit";
-            this.cmbAffectGrossProfit.Size = new System.Drawing.Size(200, 21);
+            this.cmbAffectGrossProfit.Size = new System.Drawing.Size(200, 24);
             this.cmbAffectGrossProfit.TabIndex = 3;
             this.cmbAffectGrossProfit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbAffectGrossProfit_KeyDown);
             this.cmbAffectGrossProfit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbAffectGrossProfit_KeyPress);
@@ -338,7 +376,7 @@
             this.lblAffectGrossProfit.Location = new System.Drawing.Point(436, 46);
             this.lblAffectGrossProfit.Margin = new System.Windows.Forms.Padding(5, 5, 5, 0);
             this.lblAffectGrossProfit.Name = "lblAffectGrossProfit";
-            this.lblAffectGrossProfit.Size = new System.Drawing.Size(92, 13);
+            this.lblAffectGrossProfit.Size = new System.Drawing.Size(123, 17);
             this.lblAffectGrossProfit.TabIndex = 127;
             this.lblAffectGrossProfit.Text = "Affect Gross Profit";
             // 
@@ -387,7 +425,7 @@
             this.lblGroupUnderMandatory.ForeColor = System.Drawing.Color.Red;
             this.lblGroupUnderMandatory.Location = new System.Drawing.Point(749, 21);
             this.lblGroupUnderMandatory.Name = "lblGroupUnderMandatory";
-            this.lblGroupUnderMandatory.Size = new System.Drawing.Size(11, 13);
+            this.lblGroupUnderMandatory.Size = new System.Drawing.Size(13, 17);
             this.lblGroupUnderMandatory.TabIndex = 128;
             this.lblGroupUnderMandatory.Text = "*";
             // 
@@ -397,7 +435,7 @@
             this.lblNatureMandatory.ForeColor = System.Drawing.Color.Red;
             this.lblNatureMandatory.Location = new System.Drawing.Point(326, 46);
             this.lblNatureMandatory.Name = "lblNatureMandatory";
-            this.lblNatureMandatory.Size = new System.Drawing.Size(11, 13);
+            this.lblNatureMandatory.Size = new System.Drawing.Size(13, 17);
             this.lblNatureMandatory.TabIndex = 128;
             this.lblNatureMandatory.Text = "*";
             // 
@@ -407,18 +445,9 @@
             this.lblAccountNameMandatory.ForeColor = System.Drawing.Color.Red;
             this.lblAccountNameMandatory.Location = new System.Drawing.Point(326, 21);
             this.lblAccountNameMandatory.Name = "lblAccountNameMandatory";
-            this.lblAccountNameMandatory.Size = new System.Drawing.Size(11, 13);
+            this.lblAccountNameMandatory.Size = new System.Drawing.Size(13, 17);
             this.lblAccountNameMandatory.TabIndex = 128;
             this.lblAccountNameMandatory.Text = "*";
-            // 
-            // dgvtxtSlNo
-            // 
-            this.dgvtxtSlNo.DataPropertyName = "Sl No";
-            this.dgvtxtSlNo.HeaderText = "Sl No";
-            this.dgvtxtSlNo.Name = "dgvtxtSlNo";
-            this.dgvtxtSlNo.ReadOnly = true;
-            this.dgvtxtSlNo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvtxtSlNo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // frmAccountGroup
             // 
@@ -473,6 +502,9 @@
         private System.Windows.Forms.Label lblGroupUnderMandatory;
         private System.Windows.Forms.Label lblNatureMandatory;
         private System.Windows.Forms.Label lblAccountNameMandatory;
-        private DevComponents.DotNetBar.Controls.DataGridViewIntegerInputColumn dgvtxtSlNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtSlNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtAccountGroupId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtGroupName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtUnderGroup;
     }
 }

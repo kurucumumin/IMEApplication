@@ -11,12 +11,14 @@ namespace LoginForm.DataSet
 {
     using System;
     
-    public partial class sp_helpdiagrams_Result
+    public partial class AccountGroupViewForUpdate_Result
     {
-        public string Database { get; set; }
-        public string Name { get; set; }
-        public int ID { get; set; }
-        public string Owner { get; set; }
-        public int OwnerID { get; set; }
+        public int accountGroupId { get; set; }
+        public string accountGroupName { get; set; }
+        public Nullable<int> groupUnder { get; set; }
+        public string narration { get; set; }
+        public Nullable<bool> isDefault { get; set; }
+        public string nature { get; set; }
+        public string affectGrossProfit { get; set; }
     }
 }

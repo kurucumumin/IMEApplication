@@ -26,11 +26,78 @@ namespace LoginForm.Account.Services
             return list;
         }
 
+        /// <summary>
+        /// Function to insert values to account group table and return the Curresponding row's Id
+        /// </summary>
+        /// <param name="a"></param>
+        /// <returns></returns>
+        public decimal AccountGroupAddWithIdentity(AccountGroup a)
+        {
+            decimal decAccountGroupId = 0;
+            try
+            {
+                object obj = new IMEEntities().AccountGroupAddWithIdentity
+                    (a.accountGroupName,
+                    a.groupUnder.ToString(),
+                    a.narration,
+                    a.isDefault,
+                    a.nature,
+                    a.affectGrossProfit);
+                if (obj != null)
+                {
+                    decAccountGroupId = decimal.Parse(obj.ToString());
+                }
+                else
+                {
+                    decAccountGroupId = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decAccountGroupId;
+        }
+
+        /// <summary>
+        /// Account group Update based on the condition
+        /// </summary>
+        /// <param name="accountgroupinfo"></param>
+        /// <returns></returns>
+        public bool AccountGroupUpdate(AccountGroup a)
+        {
+            bool isEdit = false;
+            try
+            {
+                
+                int inAffectedRows = new IMEEntities().AccountGroupEdit(a.accountGroupId,
+                    a.accountGroupName,
+                    a.groupUnder.ToString(),
+                    a.narration,
+                    a.isDefault,
+                    a.nature,
+                    a.affectGrossProfit);
+                if (inAffectedRows > 0)
+                {
+                    isEdit = true;
+                }
+                else
+                {
+                    isEdit = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return isEdit;
+        }
+
         //public bool AccountGroupwithLedgerId(decimal decLedgerId)
         //{
         //    IMEEntities IME = new IMEEntities();
         //    int accountgroupID = IME.AccountGroups.Where(a => a.accountGroupName.Contains("Bank Account")).FirstOrDefault().accountGroupId;
-        //    if(IME.AccountLedgers.Where(a=>a.ledgerId== decLedgerId).Where(b=>b.accountGroupID==accountgroupID) !=null)
+        //    if (IME.AccountLedgers.Where(a => a.ledgerId == decLedgerId).Where(b => b.accountGroupID == accountgroupID) != null)
         //    {
         //        return true;
         //    }
@@ -130,6 +197,119 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
             return dtbl;
+        }
+
+        /// <summary>
+        /// Function to get particular values from account group table based on the parameter for update
+        /// </summary>
+        /// <param name="decAccountGroupId"></param>
+        /// <returns></returns>
+        public AccountGroup AccountGroupViewForUpdate(decimal decAccountGroupId)
+        {
+            AccountGroup accountgroupinfo = new AccountGroup();
+            try
+            {
+                var a = new IMEEntities().AccountGroupViewForUpdate(decAccountGroupId).FirstOrDefault();
+
+                accountgroupinfo.accountGroupId = a.accountGroupId;
+                accountgroupinfo.accountGroupName = a.accountGroupName;
+                accountgroupinfo.groupUnder = a.groupUnder;
+                accountgroupinfo.narration = a.narration;
+                accountgroupinfo.isDefault = a.isDefault;
+                accountgroupinfo.nature = a.nature;
+                accountgroupinfo.affectGrossProfit = a.affectGrossProfit;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return accountgroupinfo;
+        }
+
+        /// <summary>
+        /// Function to get Account Group CheckExistence Of Under Group
+        /// </summary>
+        /// <param name="decAccountGroupId"></param>
+        /// <returns></returns>
+        public bool AccountGroupCheckExistenceOfUnderGroup(decimal decAccountGroupId)
+        {
+            bool isDelete = false;
+            try
+            {
+                var obj = new IMEEntities().AccountGroupCheckExistenceOfUnderGroup(decAccountGroupId).FirstOrDefault();
+                if (obj != null)
+                {
+                    if (int.Parse(obj.ToString()) == 1)
+                    {
+                        isDelete = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return isDelete;
+        }
+
+        public string AccountGroupNatureUnderGroup(decimal decAccountGroupId)
+        {
+            string strNature = string.Empty;
+            try
+            {
+                strNature = new IMEEntities().AccountGroupNatureUnderGroup(decAccountGroupId).ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return strNature;
+        }
+
+        /// <summary>
+        /// Function to get Account Group Reference Delete
+        /// </summary>
+        /// <param name="AccountGroupId"></param>
+        /// <returns></returns>
+        public decimal AccountGroupReferenceDelete(decimal AccountGroupId)
+        {
+            decimal decReturnValue = 0;
+            try
+            {
+                decReturnValue = Convert.ToDecimal(new IMEEntities().AccountGroupReferenceDelete(AccountGroupId).ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decReturnValue;
+        }
+
+        /// <summary>
+        /// Function to get particular values from account group table based on the parameter
+        /// </summary>
+        /// <param name="accountGroupId"></param>
+        /// <returns></returns>
+        public AccountGroup AccountGroupView(decimal accountGroupId)
+        {
+            AccountGroup accountgroupinfo = new AccountGroup();
+            try
+            {
+                var adaptor = new IMEEntities().AccountGroupView(accountGroupId).FirstOrDefault();
+
+                accountgroupinfo.accountGroupId = adaptor.accountGroupId;
+                accountgroupinfo.accountGroupName = adaptor.accountGroupName;
+                accountgroupinfo.groupUnder = adaptor.groupUnder;
+                accountgroupinfo.narration = adaptor.narration;
+                accountgroupinfo.isDefault = adaptor.isDefault;
+                accountgroupinfo.nature = adaptor.nature;
+                accountgroupinfo.affectGrossProfit = adaptor.affectGrossProfit;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return accountgroupinfo;
         }
     }
 }
