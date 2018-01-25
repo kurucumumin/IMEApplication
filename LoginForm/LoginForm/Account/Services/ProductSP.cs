@@ -95,12 +95,8 @@ namespace LoginForm.Account.Services
                 var adaptor = IME.productviewbyproductNameforSR(productName);
 
                 dtbl.Columns.Add("Article_No");
-                dtbl.Columns.Add("barcode");
                 dtbl.Columns.Add("Article_Desc");
                 dtbl.Columns.Add("qty");
-                dtbl.Columns.Add("unitConversionId");
-                dtbl.Columns.Add("conversionRate");
-                dtbl.Columns.Add("batchId");
                 dtbl.Columns.Add("discountPercent");
                 dtbl.Columns.Add("discount");
                 dtbl.Columns.Add("netvalue");
@@ -113,12 +109,8 @@ namespace LoginForm.Account.Services
                     var row = dtbl.NewRow();
 
                     row["Article_No"] = item.Article_No;
-                    row["barcode"] = item.barcode;
                     row["Article_Desc"] = item.Article_Desc;
                     row["qty"] = item.qty;
-                    row["unitConversionId"] = item.unitConversionId;
-                    row["conversionRate"] = item.conversionRate;
-                    row["batchId"] = item.batchId;
                     row["discountPercent"] = item.discountPercent;
                     row["discount"] = item.discount;
                     row["netvalue"] = item.netvalue;
@@ -147,16 +139,11 @@ namespace LoginForm.Account.Services
                 var adaptor = IME.productviewbyproductcodeforSR(productCode);
 
                 dtbl.Columns.Add("Article_No");
-                dtbl.Columns.Add("barcode");
                 dtbl.Columns.Add("Article_Desc");
                 dtbl.Columns.Add("qty");
-                dtbl.Columns.Add("unitConversionId");
-                dtbl.Columns.Add("conversionRate");
-                dtbl.Columns.Add("batchId");
                 dtbl.Columns.Add("discountPercent");
                 dtbl.Columns.Add("discount");
                 dtbl.Columns.Add("netvalue");
-                dtbl.Columns.Add("taxId");
                 dtbl.Columns.Add("taxAmount");
                 dtbl.Columns.Add("amount");
 
@@ -165,16 +152,11 @@ namespace LoginForm.Account.Services
                     var row = dtbl.NewRow();
 
                     row["Article_No"] = item.Article_No;
-                    row["barcode"] = item.barcode;
                     row["Article_Desc"] = item.Article_Desc;
                     row["qty"] = item.qty;
-                    row["unitConversionId"] = item.unitConversionId;
-                    row["conversionRate"] = item.conversionRate;
-                    row["batchId"] = item.batchId;
                     row["discountPercent"] = item.discountPercent;
                     row["discount"] = item.discount;
                     row["netvalue"] = item.netvalue;
-                    row["taxId"] = item.taxId;
                     row["taxAmount"] = item.taxAmount;
                     row["amount"] = item.amount;
 
