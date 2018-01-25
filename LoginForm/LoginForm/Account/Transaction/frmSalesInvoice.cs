@@ -24,7 +24,6 @@ namespace LoginForm
         frmVoucherSearch objVoucherSearch = null;
         frmAccountLedger frmAccountLedgerObj = new frmAccountLedger();
         TransactionsGeneralFill TransactionGeneralFillObj = new TransactionsGeneralFill();
-        frmLedgerPopup frmLedgerPopUpObj = new frmLedgerPopup();
         DataGridViewTextBoxEditingControl TextBoxControl;
         AutoCompleteStringCollection ProductNames = new AutoCompleteStringCollection();
         AutoCompleteStringCollection ProductCodes = new AutoCompleteStringCollection();
@@ -53,6 +52,7 @@ namespace LoginForm
         bool isValueChanged = false;
         bool isAutomatic = false;//to check whether the voucher number is automatically generated or not
         bool isValueChange = true;
+        frmLedgerPopup frmLedgerPopUpObj = new frmLedgerPopup();
         bool isFromEditMode = false;
         bool isFromSalesAccountCombo = false;       // for add new new account via button click
         bool isFromCashOrPartyCombo = false;        // for add new new account via button click
@@ -2406,8 +2406,8 @@ namespace LoginForm
                 ProductCodes = new AutoCompleteStringCollection();
                 foreach (DataRow dr in dtblProducts.Rows)
                 {
-                    ProductNames.Add(dr["productName"].ToString());
-                    ProductCodes.Add(dr["productCode"].ToString());
+                    ProductNames.Add(dr["Article_Desc"].ToString());
+                    ProductCodes.Add(dr["Article_No"].ToString());
                 }
            
         }
