@@ -1416,14 +1416,30 @@ namespace LoginForm
                                 extendedRange.DimensionUoM = ((object[,])myvalues)[i, 9].ToString();
                             }
 
-                            if (((object[,])myvalues)[i, 10] != null) { extendedRange.ExtendedRangeWeight = Decimal.Parse(((object[,])myvalues)[i, 10].ToString()); }
+                            if (((object[,])myvalues)[i, 10] != null)
+
+                        {
+                            string weight = ((object[,])myvalues)[i, 10].ToString();
+                            if (extendedRange.WeightUoM == "KG")
+                            {
+                                extendedRange.ExtendedRangeWeight= Int32.Parse((Convert.ToDecimal(weight) / 1000).ToString());
+                            }
+                            else
+                            {
+                                extendedRange.ExtendedRangeWeight = Int32.Parse(weight);
+                            }
+
+                        }
 
                             if (((object[,])myvalues)[i, 11] != null)
                             {
                                 extendedRange.WeightUoM = ((object[,])myvalues)[i, 11].ToString();
                             }
 
-                            if (((object[,])myvalues)[i, 12] != null) { extendedRange.CCCN = Int32.Parse(((object[,])myvalues)[i, 12].ToString()); }
+                            if (((object[,])myvalues)[i, 12] != null) {
+                           extendedRange.CCCN = Int32.Parse(((object[,])myvalues)[i, 12].ToString());
+
+                        }
 
                             if (((object[,])myvalues)[i, 13] != null)
                             {
@@ -1550,7 +1566,7 @@ namespace LoginForm
                                     extendedRange.DimensionUoM = ((object[,])myvalues)[i, j].ToString();
                                     break;
                                 case "Weight":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.ExtendedRangeWeight = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.ExtendedRangeWeight = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
                                     break;
                                 case "Weight UoM":
                                     extendedRange.WeightUoM = ((object[,])myvalues)[i, j].ToString();

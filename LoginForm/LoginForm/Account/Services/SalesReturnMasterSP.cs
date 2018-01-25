@@ -114,15 +114,15 @@ namespace LoginForm.Account.Services
                     var row = dtbl.NewRow();
 
                     row["salesReturnMasterId"] = item.salesReturnMasterId;
-                    row["voucherNo"] = item.voucherNo;
-                    row["invoiceNo"] = item.invoiceNo;
-                    row["voucherTypeId"] = item.voucherTypeId;
-                    row["salesMasterId"] = item.salesMasterId;
-                    row["voucherTypeName"] = item.voucherTypeName;
-                    row["date"] = item.date;
-                    row["UserName"] = item.userName;
-                    row["ledgerName"] = item.ledgerName;
-                    row["grandTotal"] = item.grandTotal;
+                     row["voucherNo"] = item.voucherNo;
+                   row["invoiceNo"] = item.invoiceNo;
+                     row["voucherTypeId"] = item.voucherTypeId;
+                   row["salesMasterId"] = item.salesMasterId;
+                   row["voucherTypeName"] = item.voucherTypeName;
+                   row["date"] = item.date;
+                   row["UserName"] = item.userName;
+                     row["ledgerName"] = item.ledgerName;
+                     row["grandTotal"] = item.grandTotal;
                     dtbl.Rows.Add(row);
                 }
             }
@@ -474,7 +474,7 @@ namespace LoginForm.Account.Services
                                select new
                                {
                                    v.voucherTypeId,
-                                   v.voucherTypeName
+                                   voucherTypeName=v.voucherTypeName
                                }).ToList();
 
                 dtbl.Columns.Add("voucherTypeId");
@@ -504,7 +504,7 @@ namespace LoginForm.Account.Services
             decimal max = 0;
             try
             {
-                max = IME.SalesReturnMasters.Where(x => x.voucherTypeId == decVoucherTypeId).Select(x => Convert.ToDecimal(x.voucherNo)).Max();
+                if (IME.SalesReturnMasters.Where(x => x.voucherTypeId == decVoucherTypeId).FirstOrDefault()!=null) max = IME.SalesReturnMasters.Where(x => x.voucherTypeId == decVoucherTypeId).Select(x => Convert.ToDecimal(x.voucherNo)).Max();
             }
             catch (Exception ex)
             {

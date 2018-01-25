@@ -152,6 +152,95 @@ namespace LoginForm.DataSet
         public virtual DbSet<AdditionalCost> AdditionalCosts { get; set; }
         public virtual DbSet<SalaryVoucherDetail> SalaryVoucherDetails { get; set; }
     
+        public virtual ObjectResult<Nullable<decimal>> AccountGroupAddWithIdentity(string accountGroupName, string groupUnder, string narration, Nullable<bool> isDefault, string nature, string affectGrossProfit)
+        {
+            var accountGroupNameParameter = accountGroupName != null ?
+                new ObjectParameter("accountGroupName", accountGroupName) :
+                new ObjectParameter("accountGroupName", typeof(string));
+    
+            var groupUnderParameter = groupUnder != null ?
+                new ObjectParameter("groupUnder", groupUnder) :
+                new ObjectParameter("groupUnder", typeof(string));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            var isDefaultParameter = isDefault.HasValue ?
+                new ObjectParameter("isDefault", isDefault) :
+                new ObjectParameter("isDefault", typeof(bool));
+    
+            var natureParameter = nature != null ?
+                new ObjectParameter("nature", nature) :
+                new ObjectParameter("nature", typeof(string));
+    
+            var affectGrossProfitParameter = affectGrossProfit != null ?
+                new ObjectParameter("affectGrossProfit", affectGrossProfit) :
+                new ObjectParameter("affectGrossProfit", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("AccountGroupAddWithIdentity", accountGroupNameParameter, groupUnderParameter, narrationParameter, isDefaultParameter, natureParameter, affectGrossProfitParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> AccountGroupCheckExistenceOfUnderGroup(Nullable<decimal> accountGroupId)
+        {
+            var accountGroupIdParameter = accountGroupId.HasValue ?
+                new ObjectParameter("accountGroupId", accountGroupId) :
+                new ObjectParameter("accountGroupId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("AccountGroupCheckExistenceOfUnderGroup", accountGroupIdParameter);
+        }
+    
+        public virtual int AccountGroupEdit(Nullable<decimal> accountGroupId, string accountGroupName, string groupUnder, string narration, Nullable<bool> isDefault, string nature, string affectGrossProfit)
+        {
+            var accountGroupIdParameter = accountGroupId.HasValue ?
+                new ObjectParameter("accountGroupId", accountGroupId) :
+                new ObjectParameter("accountGroupId", typeof(decimal));
+    
+            var accountGroupNameParameter = accountGroupName != null ?
+                new ObjectParameter("accountGroupName", accountGroupName) :
+                new ObjectParameter("accountGroupName", typeof(string));
+    
+            var groupUnderParameter = groupUnder != null ?
+                new ObjectParameter("groupUnder", groupUnder) :
+                new ObjectParameter("groupUnder", typeof(string));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            var isDefaultParameter = isDefault.HasValue ?
+                new ObjectParameter("isDefault", isDefault) :
+                new ObjectParameter("isDefault", typeof(bool));
+    
+            var natureParameter = nature != null ?
+                new ObjectParameter("nature", nature) :
+                new ObjectParameter("nature", typeof(string));
+    
+            var affectGrossProfitParameter = affectGrossProfit != null ?
+                new ObjectParameter("affectGrossProfit", affectGrossProfit) :
+                new ObjectParameter("affectGrossProfit", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AccountGroupEdit", accountGroupIdParameter, accountGroupNameParameter, groupUnderParameter, narrationParameter, isDefaultParameter, natureParameter, affectGrossProfitParameter);
+        }
+    
+        public virtual ObjectResult<string> AccountGroupNatureUnderGroup(Nullable<decimal> accountGroupId)
+        {
+            var accountGroupIdParameter = accountGroupId.HasValue ?
+                new ObjectParameter("accountGroupId", accountGroupId) :
+                new ObjectParameter("accountGroupId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("AccountGroupNatureUnderGroup", accountGroupIdParameter);
+        }
+    
+        public virtual ObjectResult<AccountGroupViewForUpdate_Result> AccountGroupViewForUpdate(Nullable<decimal> accountGroupId)
+        {
+            var accountGroupIdParameter = accountGroupId.HasValue ?
+                new ObjectParameter("accountGroupId", accountGroupId) :
+                new ObjectParameter("accountGroupId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountGroupViewForUpdate_Result>("AccountGroupViewForUpdate", accountGroupIdParameter);
+        }
+    
         public virtual ObjectResult<AccountLedgerSearchForServiceAccountUnderIncome_Result> AccountLedgerSearchForServiceAccountUnderIncome()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerSearchForServiceAccountUnderIncome_Result>("AccountLedgerSearchForServiceAccountUnderIncome");
@@ -426,6 +515,15 @@ namespace LoginForm.DataSet
                 new ObjectParameter("productId", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("BatchViewByProductId", productIdParameter);
+        }
+    
+        public virtual int BudgetDetailsDeleteWithMasterId(Nullable<decimal> budgetMasterId)
+        {
+            var budgetMasterIdParameter = budgetMasterId.HasValue ?
+                new ObjectParameter("budgetMasterId", budgetMasterId) :
+                new ObjectParameter("budgetMasterId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("BudgetDetailsDeleteWithMasterId", budgetMasterIdParameter);
         }
     
         public virtual ObjectResult<BudgetVariance_Result> BudgetVariance(Nullable<decimal> budgetMasterId)
@@ -1357,30 +1455,22 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("ProductViewByPartNoOrBarcode", partNoParameter, barcodeParameter);
         }
     
-        public virtual ObjectResult<productviewbyproductcodeforSR_Result> productviewbyproductcodeforSR(Nullable<decimal> voucherTypeId, string productCode)
+        public virtual ObjectResult<productviewbyproductcodeforSR_Result> productviewbyproductcodeforSR(string productCode)
         {
-            var voucherTypeIdParameter = voucherTypeId.HasValue ?
-                new ObjectParameter("voucherTypeId", voucherTypeId) :
-                new ObjectParameter("voucherTypeId", typeof(decimal));
-    
             var productCodeParameter = productCode != null ?
                 new ObjectParameter("productCode", productCode) :
                 new ObjectParameter("productCode", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<productviewbyproductcodeforSR_Result>("productviewbyproductcodeforSR", voucherTypeIdParameter, productCodeParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<productviewbyproductcodeforSR_Result>("productviewbyproductcodeforSR", productCodeParameter);
         }
     
-        public virtual ObjectResult<productviewbyproductNameforSR_Result> productviewbyproductNameforSR(Nullable<decimal> voucherTypeId, string productName)
+        public virtual ObjectResult<productviewbyproductNameforSR_Result> productviewbyproductNameforSR(string productName)
         {
-            var voucherTypeIdParameter = voucherTypeId.HasValue ?
-                new ObjectParameter("voucherTypeId", voucherTypeId) :
-                new ObjectParameter("voucherTypeId", typeof(decimal));
-    
             var productNameParameter = productName != null ?
                 new ObjectParameter("productName", productName) :
                 new ObjectParameter("productName", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<productviewbyproductNameforSR_Result>("productviewbyproductNameforSR", voucherTypeIdParameter, productNameParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<productviewbyproductNameforSR_Result>("productviewbyproductNameforSR", productNameParameter);
         }
     
         public virtual ObjectResult<ProductViewWithID_Result> ProductViewWithID(string productID)

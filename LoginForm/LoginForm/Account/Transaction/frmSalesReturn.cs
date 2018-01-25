@@ -486,7 +486,7 @@ namespace LoginForm
             {
                 if (cmbVoucherType.SelectedIndex != -1)
                 {
-                    if (cmbVoucherType.SelectedValue.ToString() != "System.Data.DataRowView" && cmbCashOrParty.Text != "System.Data.DataRowView" && isFiilCheck)
+                    if (cmbSalesMan.DataSource!=null &&  cmbVoucherType.SelectedValue.ToString() != "System.Data.DataRowView" && cmbCashOrParty.Text != "System.Data.DataRowView" && isFiilCheck)
                     {
                         cmbInvoiceNo.Text = string.Empty;
                         cmbSalesAccount.SelectedIndex = -1;
@@ -865,9 +865,9 @@ namespace LoginForm
                 dtpDate.MaxDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.toDate);
                 dtpDate.Value = DateTime.Now;
                 txtDate.Text = dtpDate.Value.ToString("dd-MMM-yyyy");
-                cmbCashOrParty.SelectedIndex = 0;
+                if(cmbCashOrParty.DataSource!=null) cmbCashOrParty.SelectedIndex = 0;
                 cmbSalesAccount.SelectedIndex = 0;
-                cmbPricingLevel.SelectedIndex = 0;
+                if(cmbPricingLevel.DataSource!=null) cmbPricingLevel.SelectedIndex = 0;
                 cmbSalesMan.SelectedIndex = 1;
                 cmbVoucherType.SelectedIndex = 0;
                 txtBillDiscount.Clear();
@@ -3344,6 +3344,7 @@ namespace LoginForm
                 SalesReturnMasterSP spmaster = new SalesReturnMasterSP();
                 dtbl = spmaster.vouchertypecompofill();
                 cmbVoucherType.DataSource = dtbl;
+                //cmbVoucherType.SelectedIndex = -1;
                 cmbVoucherType.ValueMember = "voucherTypeId";
                 cmbVoucherType.DisplayMember = "voucherTypeName";
             }

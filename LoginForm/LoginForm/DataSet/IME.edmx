@@ -508,7 +508,7 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="DiscountedPrice4" Type="decimal" Precision="18" Scale="3" />
           <Property Name="DiscountedPrice5" Type="decimal" Precision="18" Scale="3" />
           <Property Name="ManufacturerCode" Type="nvarchar" MaxLength="15" />
-          <Property Name="ExtendedRangeWeight" Type="decimal" Precision="13" Scale="5" />
+          <Property Name="ExtendedRangeWeight" Type="int" />
         </EntityType>
         <EntityType Name="FinancialYear">
           <Key>
@@ -5521,6 +5521,32 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="AccountGroupAddWithIdentity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="accountGroupName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="groupUnder" Type="varchar(max)" Mode="In" />
+          <Parameter Name="narration" Type="varchar(max)" Mode="In" />
+          <Parameter Name="isDefault" Type="bit" Mode="In" />
+          <Parameter Name="nature" Type="varchar(max)" Mode="In" />
+          <Parameter Name="affectGrossProfit" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="AccountGroupCheckExistenceOfUnderGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="accountGroupId" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="AccountGroupEdit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="accountGroupId" Type="numeric" Mode="In" />
+          <Parameter Name="accountGroupName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="groupUnder" Type="varchar(max)" Mode="In" />
+          <Parameter Name="narration" Type="varchar(max)" Mode="In" />
+          <Parameter Name="isDefault" Type="bit" Mode="In" />
+          <Parameter Name="nature" Type="varchar(max)" Mode="In" />
+          <Parameter Name="affectGrossProfit" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="AccountGroupNatureUnderGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="accountGroupId" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="AccountGroupViewForUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="accountGroupId" Type="numeric" Mode="In" />
+        </Function>
         <Function Name="AccountLedgerSearchForServiceAccountUnderIncome" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="AccountLedgerView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ledgerId" Type="numeric" Mode="In" />
@@ -5600,6 +5626,9 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
         </Function>
         <Function Name="BatchViewByProductId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="productId" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="BudgetDetailsDeleteWithMasterId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="budgetMasterId" Type="numeric" Mode="In" />
         </Function>
         <Function Name="BudgetVariance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="budgetMasterId" Type="numeric" Mode="In" />
@@ -5821,7 +5850,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Parameter Name="ledgerName" Type="varchar(max)" Mode="In" />
           <Parameter Name="chequeDateFrom" Type="datetime" Mode="In" />
           <Parameter Name="chequeDateTo" Type="datetime" Mode="In" />
-          <Parameter Name="status" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="varchar(max)" Mode="In" />
           <Parameter Name="chequeNo" Type="varchar(max)" Mode="In" />
           <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
         </Function>
@@ -5832,7 +5861,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Parameter Name="ledgerName" Type="varchar(max)" Mode="In" />
           <Parameter Name="chequeDateFrom" Type="datetime" Mode="In" />
           <Parameter Name="chequeDateTo" Type="datetime" Mode="In" />
-          <Parameter Name="status" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="varchar(max)" Mode="In" />
           <Parameter Name="chequeNo" Type="varchar(max)" Mode="In" />
           <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
         </Function>
@@ -5867,11 +5896,9 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Parameter Name="barcode" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="productviewbyproductcodeforSR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
           <Parameter Name="productCode" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="productviewbyproductNameforSR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
           <Parameter Name="productName" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="ProductViewWithID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -8468,7 +8495,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="DiscountedPrice4" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="DiscountedPrice5" Type="Decimal" Precision="18" Scale="3" />
           <Property Name="ManufacturerCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="ExtendedRangeWeight" Type="Decimal" Precision="13" Scale="5" />
+          <Property Name="ExtendedRangeWeight" Type="Int32" />
         </EntityType>
         <EntityType Name="FinancialYear">
           <Key>
@@ -15188,6 +15215,32 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
             <End Role="Worker" EntitySet="Workers" />
           </AssociationSet>
+          <FunctionImport Name="AccountGroupAddWithIdentity" ReturnType="Collection(Decimal)">
+            <Parameter Name="accountGroupName" Mode="In" Type="String" />
+            <Parameter Name="groupUnder" Mode="In" Type="String" />
+            <Parameter Name="narration" Mode="In" Type="String" />
+            <Parameter Name="isDefault" Mode="In" Type="Boolean" />
+            <Parameter Name="nature" Mode="In" Type="String" />
+            <Parameter Name="affectGrossProfit" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AccountGroupCheckExistenceOfUnderGroup" ReturnType="Collection(Int32)">
+            <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="AccountGroupEdit">
+            <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
+            <Parameter Name="accountGroupName" Mode="In" Type="String" />
+            <Parameter Name="groupUnder" Mode="In" Type="String" />
+            <Parameter Name="narration" Mode="In" Type="String" />
+            <Parameter Name="isDefault" Mode="In" Type="Boolean" />
+            <Parameter Name="nature" Mode="In" Type="String" />
+            <Parameter Name="affectGrossProfit" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AccountGroupNatureUnderGroup" ReturnType="Collection(String)">
+            <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="AccountGroupViewForUpdate" ReturnType="Collection(IMEModel.AccountGroupViewForUpdate_Result)">
+            <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="AccountLedgerSearchForServiceAccountUnderIncome" ReturnType="Collection(IMEModel.AccountLedgerSearchForServiceAccountUnderIncome_Result)" />
           <FunctionImport Name="AccountLedgerView" ReturnType="Collection(IMEModel.AccountLedgerView_Result)">
             <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
@@ -15267,6 +15320,9 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           </FunctionImport>
           <FunctionImport Name="BatchViewByProductId" ReturnType="Collection(Decimal)">
             <Parameter Name="productId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="BudgetDetailsDeleteWithMasterId">
+            <Parameter Name="budgetMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="BudgetVariance" ReturnType="Collection(IMEModel.BudgetVariance_Result)">
             <Parameter Name="budgetMasterId" Mode="In" Type="Decimal" />
@@ -15533,11 +15589,9 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="barcode" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="productviewbyproductcodeforSR" ReturnType="Collection(IMEModel.productviewbyproductcodeforSR_Result)">
-            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
             <Parameter Name="productCode" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="productviewbyproductNameforSR" ReturnType="Collection(IMEModel.productviewbyproductNameforSR_Result)">
-            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
             <Parameter Name="productName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ProductViewWithID" ReturnType="Collection(IMEModel.ProductViewWithID_Result)">
@@ -16162,6 +16216,15 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="AccountGroupViewForUpdate_Result">
+          <Property Type="Int32" Name="accountGroupId" Nullable="false" />
+          <Property Type="String" Name="accountGroupName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="groupUnder" Nullable="true" />
+          <Property Type="String" Name="narration" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="isDefault" Nullable="true" />
+          <Property Type="String" Name="nature" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="affectGrossProfit" Nullable="true" MaxLength="50" />
+        </ComplexType>
         <ComplexType Name="AccountLedgerSearchForServiceAccountUnderIncome_Result">
           <Property Type="Decimal" Name="ledgerId" Nullable="false" Precision="18" Scale="0" />
           <Property Type="Int32" Name="accountGroupId" Nullable="true" />
@@ -19205,6 +19268,23 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               <ScalarProperty Name="WorkerID" ColumnName="WorkerID" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="AccountGroupAddWithIdentity" FunctionName="IMEModel.Store.AccountGroupAddWithIdentity" />
+          <FunctionImportMapping FunctionImportName="AccountGroupCheckExistenceOfUnderGroup" FunctionName="IMEModel.Store.AccountGroupCheckExistenceOfUnderGroup" />
+          <FunctionImportMapping FunctionImportName="AccountGroupEdit" FunctionName="IMEModel.Store.AccountGroupEdit" />
+          <FunctionImportMapping FunctionImportName="AccountGroupNatureUnderGroup" FunctionName="IMEModel.Store.AccountGroupNatureUnderGroup" />
+          <FunctionImportMapping FunctionImportName="AccountGroupViewForUpdate" FunctionName="IMEModel.Store.AccountGroupViewForUpdate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.AccountGroupViewForUpdate_Result">
+                <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
+                <ScalarProperty Name="accountGroupName" ColumnName="accountGroupName" />
+                <ScalarProperty Name="groupUnder" ColumnName="groupUnder" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="isDefault" ColumnName="isDefault" />
+                <ScalarProperty Name="nature" ColumnName="nature" />
+                <ScalarProperty Name="affectGrossProfit" ColumnName="affectGrossProfit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="AccountLedgerSearchForServiceAccountUnderIncome" FunctionName="IMEModel.Store.AccountLedgerSearchForServiceAccountUnderIncome">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.AccountLedgerSearchForServiceAccountUnderIncome_Result">
@@ -19416,6 +19496,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImportMapping FunctionImportName="BarcodeViewByBatchId" FunctionName="IMEModel.Store.BarcodeViewByBatchId" />
           <FunctionImportMapping FunctionImportName="BatchIdViewByProductId" FunctionName="IMEModel.Store.BatchIdViewByProductId" />
           <FunctionImportMapping FunctionImportName="BatchViewByProductId" FunctionName="IMEModel.Store.BatchViewByProductId" />
+          <FunctionImportMapping FunctionImportName="BudgetDetailsDeleteWithMasterId" FunctionName="IMEModel.Store.BudgetDetailsDeleteWithMasterId" />
           <FunctionImportMapping FunctionImportName="BudgetVariance" FunctionName="IMEModel.Store.BudgetVariance">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.BudgetVariance_Result">
