@@ -18,14 +18,14 @@ namespace LoginForm
         public static void PurchaseInvoicetxtReader()
         {
             IMEEntities IME = new IMEEntities();
-            
+
             //Show the dialog and get result.
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.Filter = "txt files (*.txt)|*.txt";
             DialogResult result1 = openFileDialog1.ShowDialog();
             if (result1 == DialogResult.OK) // Test result.
             {
-               
+
                     string[] lines = System.IO.File.ReadAllLines(openFileDialog1.FileName);
                     int a = 0;
                     bool isItem = false;
@@ -1113,7 +1113,7 @@ namespace LoginForm
            , Superdiskitems.SectionName
                           );
 
-                        
+
                         a++;
                         Superdiskitems = new SlidingPrice();
                     }
@@ -1322,7 +1322,7 @@ namespace LoginForm
         {
             //try
             //{
-                            
+
             IMEEntities IME = new IMEEntities();
             //Excel Read
             int AddedCounter = 0;
@@ -1345,7 +1345,7 @@ namespace LoginForm
                 Excel.Range last = worksheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing);
                 Excel.Range range = worksheet.get_Range("A1", last);
                     Array myvalues = range.Cells.Value;
-                    
+
                     #region MyRegion
                     bool isextendedRange = true;
                 Worksheet ws = theWorkbook.Worksheets[1];
@@ -1384,10 +1384,10 @@ namespace LoginForm
 
                 if (isextendedRange)
                 {
-                    
-                        for (int i = 2; i <= (myvalues.Length/32); i++)                         
+
+                        for (int i = 2; i <= (myvalues.Length/32); i++)
                     {
-                            
+
                             ExtendedRange extendedRange = new ExtendedRange();
                             //string[,] myvalues = null;
                             extendedRange.ArticleNo = ((object[,])myvalues)[i, 1].ToString();
@@ -1416,14 +1416,30 @@ namespace LoginForm
                                 extendedRange.DimensionUoM = ((object[,])myvalues)[i, 9].ToString();
                             }
 
-                            if (((object[,])myvalues)[i, 10] != null) { extendedRange.ExtendedRangeWeight = int.Parse(((object[,])myvalues)[i, 10].ToString()); }
+                            if (((object[,])myvalues)[i, 10] != null)
+
+                        {
+                            string weight = ((object[,])myvalues)[i, 10].ToString();
+                            if (extendedRange.WeightUoM == "KG")
+                            {
+                                extendedRange.ExtendedRangeWeight= Int32.Parse((Convert.ToDecimal(weight) / 1000).ToString());
+                            }
+                            else
+                            {
+                                extendedRange.ExtendedRangeWeight = Int32.Parse(weight);
+                            }
+
+                        }
 
                             if (((object[,])myvalues)[i, 11] != null)
                             {
                                 extendedRange.WeightUoM = ((object[,])myvalues)[i, 11].ToString();
                             }
 
-                            if (((object[,])myvalues)[i, 12] != null) { extendedRange.CCCN = Int32.Parse(((object[,])myvalues)[i, 12].ToString()); }
+                            if (((object[,])myvalues)[i, 12] != null) {
+                           extendedRange.CCCN = Int32.Parse(((object[,])myvalues)[i, 12].ToString());
+
+                        }
 
                             if (((object[,])myvalues)[i, 13] != null)
                             {
@@ -1510,7 +1526,7 @@ namespace LoginForm
 
                                 );
                             }
-                        
+
                 }
                 else
                 {
@@ -1519,7 +1535,7 @@ namespace LoginForm
                         ExtendedRange extendedRange = new ExtendedRange();
                         for (int j = 0; j < 32; j++)
                         {
-                            
+
                             switch (((object[,])myvalues)[1, j].ToString())
                             {
                                 case "ArticleNo":
@@ -1550,7 +1566,7 @@ namespace LoginForm
                                     extendedRange.DimensionUoM = ((object[,])myvalues)[i, j].ToString();
                                     break;
                                 case "Weight":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.ExtendedRangeWeight = int.Parse(((object[,])myvalues)[i, j].ToString()); }
+                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.ExtendedRangeWeight = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
                                     break;
                                 case "Weight UoM":
                                     extendedRange.WeightUoM = ((object[,])myvalues)[i, j].ToString();
@@ -1650,7 +1666,7 @@ namespace LoginForm
                 //        Workbook wb = excel.Workbooks.Open(openFileDialog1.FileName);
                 //        Worksheet ws = wb.Worksheets[1];
                 //        int ColumnNumber = 2;
-                //        
+                //
                 //        while (ws.Cells[ColumnNumber - 1, 1].Text == "") { ColumnNumber++; }
                 //        //
                 //        //row sayısını bulan code
@@ -2264,7 +2280,7 @@ namespace LoginForm
                             c = IME.Cities.Where(a => a.City_name == Countryname).FirstOrDefault();
                         }
 
-                        int cityID = c.ID; 
+                        int cityID = c.ID;
                         town.CityID = cityID;
                         IME.Towns.Add(town);
                         IME.SaveChanges();
@@ -2409,7 +2425,7 @@ namespace LoginForm
             return 0;
 
         }
-                
+
         public static int excelCustomerCategory1()
         {
             IMEEntities IME = new IMEEntities();
@@ -2658,7 +2674,7 @@ namespace LoginForm
 
                         c.telephone = ws.Cells[ColumnNumber, 8].Text;
                         c.fax = ws.Cells[ColumnNumber, 9].Text;
-                        
+
                         string termName = ws.Cells[ColumnNumber, 15].Text;
                         if (termName != null && IME.PaymentTerms.Where(a => a.term_name.Trim() == termName.Trim()).FirstOrDefault() != null)
                         {
@@ -3009,6 +3025,6 @@ namespace LoginForm
             #endregion
 
         }
-        
+
     }
 }

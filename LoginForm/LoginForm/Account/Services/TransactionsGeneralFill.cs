@@ -245,14 +245,15 @@ namespace LoginForm.Account.Services
             dtbl.Columns["SlNo"].AutoIncrementStep = 1;
             try
             {
-                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupName == "Cash -in Hand" || x.accountGroupName == "Sundry Debtors")
+                var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupName == "Cash-in Hand" || x.accountGroupName == "Sundry Debtors")
                                select new
                                {
                                    AccountGroupId = ag.accountGroupId,
                                    AccountGroupName = ag.accountGroupName,
                                    hierarchyLevel = 1
                                }).ToList();
-                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.accountGroupName == "Cash -in Hand" || x.accountGroupName == "Sundry Debtors")
+                var adaptor2 = (from ag in db.AccountGroups.Where(x => x.accountGroupName == "Cash-in Hand" || x.accountGroupName == "Sundry Debtors")
+                                where ag.groupUnder==ag.accountGroupId
                                 select new
                                 {
                                     AccountGroupId = ag.accountGroupId,

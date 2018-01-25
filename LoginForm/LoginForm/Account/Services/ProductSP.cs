@@ -39,24 +39,31 @@ namespace LoginForm.Account.Services
             dt.Columns.Add("Heigh");
             dt.Columns.Add("Width");
             dt.Columns.Add("Length");
-
-
-            foreach (var item in adaptor)
+            string a;
+            try
             {
-                var row = dt.NewRow();
-                row["productName"] = item.Article_Desc;
-                row["productCode"] = item.Article_No;
-                row["Unit_Measure"] = item.Unit_Measure;
-                row["Standard_Weight"] = item.Standard_Weight;
-                row["CofO"] = item.CofO;
-                row["MPN"] = item.MPN;
-                row["Manufacturer"] = item.Manufacturer;
-                row["Heigh"] = item.Heigh;
-                row["Width"] = item.Width;
-                row["Length"] = item.Length;
+                foreach (var item in adaptor)
+                {
+                    var row = dt.NewRow();
+                    if(item.Article_No== "2550043343")
+                    {
+                        
+                    }
+                    row["productName"] = item.Article_Desc;
+                     row["productCode"] = item.Article_No;
+                    row["Unit_Measure"] = item.Unit_Measure;
+                    row["Standard_Weight"] = item.Standard_Weight;
+                    row["CofO"] = item.CofO;
+                    row["MPN"] = item.MPN;
+                    row["Manufacturer"] = item.Manufacturer;
+                    row["Heigh"] = item.Heigh;
+                    row["Width"] = item.Width;
+                    row["Length"] = item.Length;
 
-                dt.Rows.Add(row);
+                    dt.Rows.Add(row);
+                }
             }
+            catch(Exception e) { }
             return dt;
         }
 
@@ -84,7 +91,7 @@ namespace LoginForm.Account.Services
             DataTable dtbl = new DataTable();
             try
             {
-                var adaptor = IME.productviewbyproductNameforSR(vouchertypeId,productName);
+                var adaptor = IME.productviewbyproductNameforSR(productName);
 
                 dtbl.Columns.Add("Article_No");
                 dtbl.Columns.Add("barcode");
@@ -135,7 +142,7 @@ namespace LoginForm.Account.Services
 
             try
             {
-                var adaptor = IME.productviewbyproductcodeforSR(decProductcode,productCode);
+                var adaptor = IME.productviewbyproductcodeforSR(productCode);
 
                 dtbl.Columns.Add("Article_No");
                 dtbl.Columns.Add("barcode");
