@@ -865,15 +865,11 @@ namespace LoginForm
                 dtpDate.MaxDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.toDate);
                 dtpDate.Value = DateTime.Now;
                 txtDate.Text = dtpDate.Value.ToString("dd-MMM-yyyy");
-<<<<<<< HEAD
-                cmbCashOrParty.SelectedIndex = 0;
-                cmbSalesAccount.SelectedIndex = -1;
-                cmbPricingLevel.SelectedIndex = -1;
-=======
+
                 if(cmbCashOrParty.DataSource!=null) cmbCashOrParty.SelectedIndex = 0;
                 cmbSalesAccount.SelectedIndex = 0;
                 if(cmbPricingLevel.DataSource!=null) cmbPricingLevel.SelectedIndex = 0;
->>>>>>> NebiDevelop
+
                 cmbSalesMan.SelectedIndex = 1;
                 cmbVoucherType.SelectedIndex = 0;
                 txtBillDiscount.Clear();

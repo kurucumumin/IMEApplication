@@ -473,10 +473,14 @@ namespace LoginForm.Account.Services
         /// <returns></returns>
         public decimal PDCClearanceMaxUnderVoucherTypePlusOne(decimal decVoucherTypeId)
         {
+            IMEEntities IME = new IMEEntities();
             decimal max = 0;
             try
             {
-                max = Convert.ToDecimal(new IMEEntities().PDCClearanceMaxUnderVoucherType(decVoucherTypeId));
+                if (decVoucherTypeId!=0)
+                {
+                    max = Convert.ToDecimal(IME.PDCClearanceMaxUnderVoucherType(decVoucherTypeId));
+                }
             }
             catch (Exception ex)
             {
