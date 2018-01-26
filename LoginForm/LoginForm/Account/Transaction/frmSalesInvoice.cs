@@ -2406,8 +2406,8 @@ namespace LoginForm
                 ProductCodes = new AutoCompleteStringCollection();
                 foreach (DataRow dr in dtblProducts.Rows)
                 {
-                    ProductNames.Add(dr["Article_Desc"].ToString());
-                    ProductCodes.Add(dr["Article_No"].ToString());
+                    ProductNames.Add(dr["productName"].ToString());
+                    ProductCodes.Add(dr["productCode"].ToString());
                 }
            
         }
