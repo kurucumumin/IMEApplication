@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using LoginForm.Account.Services;
 using LoginForm.DataSet;
 using LoginForm.Services;
 
@@ -395,7 +396,17 @@ namespace LoginForm
         /// </summary>
         public void TaxSelectionGridFill()
         {
-            dgvTaxSelection.DataSource = IME.Taxes.Where(a => a.ApplicationOn == "Product").Where(b => b.TaxID > 0).ToList();
+            try
+            {
+                TaxSP spTax = new TaxSP();
+                DataTable dtblTax = new DataTable();
+                dtblTax = spTax.TaxViewAllForTaxSelection();
+                dgvTaxSelection.DataSource = dtblTax;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("TC8:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
         /// <summary>
         /// tax search grid fill
@@ -405,8 +416,8 @@ namespace LoginForm
             string strCmbActiveSearchText = string.Empty;
             try
             {
-                //DataTable dtblTaxSearch = new DataTable();
-                //TaxSP spTax = new TaxSP();
+                DataTable dtblTaxSearch = new DataTable();
+                TaxSP spTax = new TaxSP();
                 if (cmbActiveSearch.Text == "Yes")
                 {
                     strCmbActiveSearchText = "True";
@@ -419,28 +430,8 @@ namespace LoginForm
                 {
                     strCmbActiveSearchText = "All";
                 }
-
-                //dtblTaxSearch = spTax.TaxSearch(txtTaxNameSearch.Text.Trim(), cmbApplicableForSearch.Text, cmbCalculationModeSearch.Text, strCmbActiveSearchText);
-
-
-                if (strCmbActiveSearchText != "All")
-                {
-                    bool strCmbActiveSearch = false;
-                    if (strCmbActiveSearchText == "True") { strCmbActiveSearch = true; }
-                    dgvTaxSearch.DataSource = IME.Taxes.Where(a => a.ApplicationOn == cmbApplicableForSearch.Text).Where(b => b.taxName.Contains( txtTaxNameSearch.Text.Trim())).Where(c => c.CalculatingMode == cmbCalculationModeSearch.Text).Where(d => d.isActive == strCmbActiveSearch).ToList();
-                }
-                else
-                {
-                    if (txtTaxNameSearch.Text.Trim()=="")
-                    {
-                        dgvTaxSearch.DataSource = IME.Taxes.ToList();
-                    }
-                    else
-                    {
-                        dgvTaxSearch.DataSource = IME.Taxes.Where(b => b.taxName.Contains(txtTaxNameSearch.Text.Trim())).ToList();
-                    }
-                    
-                }
+                dtblTaxSearch = spTax.TaxSearch(txtTaxNameSearch.Text.Trim(), cmbApplicableForSearch.Text, cmbCalculationModeSearch.Text, strCmbActiveSearchText);
+                dgvTaxSearch.DataSource = dtblTaxSearch;
                 int inRowCount = dgvTaxSearch.RowCount;
                 for (int i = 0; i <= inRowCount - 1; i++)
                 {

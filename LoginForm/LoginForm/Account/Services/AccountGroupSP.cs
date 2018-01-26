@@ -11,19 +11,45 @@ namespace LoginForm.Account.Services
 {
     class AccountGroupSP
     {
-        public List<AccountGroup> AccountGroupViewAllComboFillForAccountLedger()
+        /// <summary>
+        /// Function to get details of Account Group ViewAll ComboFill For AccountLedger
+        /// </summary>
+        /// <returns></returns>
+        public DataTable AccountGroupViewAllComboFillForAccountLedger()
         {
-            IMEEntities db = new IMEEntities();
-            List<AccountGroup> list = new List<AccountGroup>();
+            DataTable dtbl = new DataTable();
             try
             {
-                list = db.AccountGroups.ToList();
+                var adaptor = new IMEEntities().AccountGroupViewAllComboFillForAccountLedger().ToList();
+
+                dtbl.Columns.Add("accountGroupId");
+                dtbl.Columns.Add("accountGroupName");
+                dtbl.Columns.Add("groupUnder");
+                dtbl.Columns.Add("narration");
+                dtbl.Columns.Add("isDefault");
+                dtbl.Columns.Add("nature");
+                dtbl.Columns.Add("affectGrossProfit");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["accountGroupName"] = item.accountGroupName;
+                    row["groupUnder"] = item.groupUnder;
+                    row["narration"] = item.narration;
+                    row["isDefault"] = item.isDefault;
+                    row["nature"] = item.nature;
+                    row["affectGrossProfit"] = item.affectGrossProfit;
+
+                    dtbl.Rows.Add(row);
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-            return list;
+            return dtbl;
         }
 
         /// <summary>

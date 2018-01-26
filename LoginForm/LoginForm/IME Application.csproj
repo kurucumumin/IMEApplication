@@ -12,7 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\PC\Desktop\IMEApp\</PublishUrl>
+    <PublishUrl>C:\Users\cm_gn\Desktop\Shaji\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>42</ApplicationRevision>
+    <ApplicationRevision>43</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -541,6 +541,9 @@
       <DependentUpon>FormTownAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="DataSet\AccountGroup.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\AccountGroupViewAllComboFillForAccountLedger_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\AccountGroupViewForUpdate_Result.cs">
@@ -1153,6 +1156,9 @@
     <Compile Include="DataSet\TaxDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\TaxSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\TaxViewAllByVoucherTypeIdApplicaleForProduct_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1163,6 +1169,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\TaxViewAllForProduct_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\TaxViewAllForTaxSelection_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\TaxViewAllForVoucherType_Result.cs">
@@ -1722,12 +1731,12 @@
       <DependentUpon>FormUserManagement.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
+    <None Include="DataSet\AccountGroupViewForUpdate_Result.cs~Cem-Develop" />
+    <None Include="DataSet\AccountGroupViewForUpdate_Result.cs~HEAD" />
     <EntityDeploy Include="DataSet\IME.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>IME.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DataSet\AccountGroupViewForUpdate_Result.cs~Cem-Develop" />
-    <None Include="DataSet\AccountGroupViewForUpdate_Result.cs~HEAD" />
     <None Include="DataSet\IME.edmx.diagram">
       <DependentUpon>IME.edmx</DependentUpon>
     </None>
