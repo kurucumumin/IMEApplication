@@ -387,6 +387,37 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
+        /// <summary>
+        /// Function to view Tax for Selection
+        /// </summary>
+        /// <returns></returns>
+        public DataTable TaxViewAllForTaxSelection()
+        {
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = new IMEEntities().TaxViewAllForTaxSelection().ToList();
+
+                dtbl.Columns.Add("taxId");
+                dtbl.Columns.Add("taxName");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+
+                    row["taxId"] = item.taxId;
+                    row["taxName"] = item.taxName;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
         public TaxInfo TaxViewByProductId(string strProductCode)
         {
             TaxInfo taxInfo = new TaxInfo();
@@ -457,6 +488,52 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
             return dtbl;
+        }
+
+        /// <summary>
+        /// Function for tax search based on parameter
+        /// </summary>
+        /// <param name="strTaxName"></param>
+        /// <param name="strApplicableOn"></param>
+        /// <param name="strCalculatingMode"></param>
+        /// <param name="strActive"></param>
+        /// <returns></returns>
+        public DataTable TaxSearch(String strTaxName, String strApplicableOn, String c, string strActive)
+        {
+            DataTable dtblTaxSearch = new DataTable();
+            dtblTaxSearch.Columns.Add("Sl No", typeof(decimal));
+            dtblTaxSearch.Columns["Sl No"].AutoIncrement = true;
+            dtblTaxSearch.Columns["Sl No"].AutoIncrementSeed = 1;
+            dtblTaxSearch.Columns["Sl No"].AutoIncrementStep = 1;
+
+            dtblTaxSearch.Columns.Add("taxId");
+            dtblTaxSearch.Columns.Add("taxName");
+            dtblTaxSearch.Columns.Add("applicableOn");
+            dtblTaxSearch.Columns.Add("calculatingMode");
+            dtblTaxSearch.Columns.Add("isActive");
+
+            try
+            {
+                var adaptor = new IMEEntities().TaxSearch(strTaxName, strApplicableOn, c, strActive).ToList();
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtblTaxSearch.NewRow();
+
+                    row["taxId"] = item.taxId;
+                    row["taxName"] = item.taxName;
+                    row["applicableOn"] = item.applicableOn;
+                    row["calculatingMode"] = item.calculatingMode;
+                    row["isActive"] = item.isActive;
+
+                    dtblTaxSearch.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtblTaxSearch;
         }
 
         //public DataTable TaxViewAllByVoucherTypeIdApplicaleForProduct(decimal decVoucherTypeId)

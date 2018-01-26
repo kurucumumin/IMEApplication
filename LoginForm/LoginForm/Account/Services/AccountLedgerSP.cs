@@ -89,10 +89,7 @@ namespace LoginForm.Account.Services
             LedgerPosting lp = new LedgerPosting();
             try
             {
-                lp = db.LedgerPostings.Where(x => x.voucherNo == strVocuherNumber && x.voucherTypeId == (decimal)decvoucherTypeId).FirstOrDefault();
-                db.LedgerPostings.Remove(lp);
-
-                db.SaveChanges();
+                new IMEEntities().LedgerPostingDeleteByVoucherTypeAndVoucherNo(strVocuherNumber, decvoucherTypeId);
             }
             catch (Exception ex)
             {
@@ -102,13 +99,10 @@ namespace LoginForm.Account.Services
 
         public void PartyBalanceDeleteByVoucherTypeVoucherNoAndReferenceType(string strVocuherNumber, decimal decVoucherTypeId)
         {
-            IMEEntities db = new IMEEntities();
-            PartyBalance pb = db.PartyBalances.Where(x=>x.voucherNo == strVocuherNumber && x.voucherTypeId == decVoucherTypeId && x.referenceType == "New").FirstOrDefault();
+            
             try
             {
-                db.PartyBalances.Remove(pb);
-
-                db.SaveChanges();
+                new IMEEntities().PartyBalanceDeleteByVoucherTypeVoucherNoAndReferenceType(strVocuherNumber, decVoucherTypeId);
             }
             catch (Exception ex)
             {
