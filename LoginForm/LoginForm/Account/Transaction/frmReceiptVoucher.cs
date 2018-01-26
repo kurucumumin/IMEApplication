@@ -242,6 +242,7 @@ namespace LoginForm
                     }
 
                     SuffixPrefixSP spSuffisprefix = new SuffixPrefixSP();
+
                     SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
                     infoSuffixPrefix = spSuffisprefix.GetSuffixPrefixDetails(decReceiptVoucherTypeId, dtpDate.Value);
                     if (infoSuffixPrefix !=null)
