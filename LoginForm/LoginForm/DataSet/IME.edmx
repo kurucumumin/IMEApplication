@@ -508,7 +508,7 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="DiscountedPrice4" Type="decimal" Precision="18" Scale="5" />
           <Property Name="DiscountedPrice5" Type="decimal" Precision="18" Scale="5" />
           <Property Name="ManufacturerCode" Type="nvarchar" MaxLength="15" />
-          <Property Name="ExtendedRangeWeight" Type="decimal" Precision="10" Scale="5" />
+          <Property Name="ExtendedRangeWeight" Type="decimal" Precision="18" Scale="5" />
         </EntityType>
         <EntityType Name="FinancialYear">
           <Key>
@@ -5541,9 +5541,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Parameter Name="nature" Type="varchar(max)" Mode="In" />
           <Parameter Name="affectGrossProfit" Type="varchar(max)" Mode="In" />
         </Function>
-        <Function Name="AccountGroupNatureUnderGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="accountGroupId" Type="decimal" Mode="In" />
-        </Function>
         <Function Name="AccountGroupReferenceDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="accountGroupId" Type="numeric" Mode="In" />
         </Function>
@@ -8517,7 +8514,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="DiscountedPrice4" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="DiscountedPrice5" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="ManufacturerCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="ExtendedRangeWeight" Type="Decimal" Precision="10" Scale="5" />
+          <Property Name="ExtendedRangeWeight" Type="Decimal" Precision="18" Scale="5" />
         </EntityType>
         <EntityType Name="FinancialYear">
           <Key>
@@ -15257,9 +15254,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="nature" Mode="In" Type="String" />
             <Parameter Name="affectGrossProfit" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="AccountGroupNatureUnderGroup" ReturnType="Collection(String)">
-            <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
-          </FunctionImport>
           <FunctionImport Name="AccountGroupReferenceDelete">
             <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
           </FunctionImport>
@@ -19324,7 +19318,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImportMapping FunctionImportName="AccountGroupAddWithIdentity" FunctionName="IMEModel.Store.AccountGroupAddWithIdentity" />
           <FunctionImportMapping FunctionImportName="AccountGroupCheckExistenceOfUnderGroup" FunctionName="IMEModel.Store.AccountGroupCheckExistenceOfUnderGroup" />
           <FunctionImportMapping FunctionImportName="AccountGroupEdit" FunctionName="IMEModel.Store.AccountGroupEdit" />
-          <FunctionImportMapping FunctionImportName="AccountGroupNatureUnderGroup" FunctionName="IMEModel.Store.AccountGroupNatureUnderGroup" />
           <FunctionImportMapping FunctionImportName="AccountGroupReferenceDelete" FunctionName="IMEModel.Store.AccountGroupReferenceDelete" />
           <FunctionImportMapping FunctionImportName="AccountGroupView" FunctionName="IMEModel.Store.AccountGroupView">
             <ResultMapping>
