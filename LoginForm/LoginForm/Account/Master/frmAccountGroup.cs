@@ -35,20 +35,20 @@ namespace LoginForm
         /// </summary>
         public void GridFill()
         {
-
+            try
+            {
                 DataTable dtblAccountName = new DataTable();
+                AccountGroupSP spAccountGroup = new AccountGroupSP();
                 if (cmbGroupUnderSearch.Text.Trim() == string.Empty)
                 {
                     cmbGroupUnderSearch.Text = "All";
                 }
-            if (cmbGroupUnderSearch.Text != "All")
-            {
-                dgvAccountGroup.DataSource = IME.AccountGroups.Where(a => a.accountGroupName.Contains(txtAccountGroupNameSearch.Text)).Where(b => b.groupUnder == IME.AccountGroups.Where(a => a.accountGroupName == cmbGroupUnderSearch.Text).FirstOrDefault().accountGroupId).ToList();
+                dtblAccountName = spAccountGroup.AccountGroupSearch(txtAccountGroupNameSearch.Text.Trim(), cmbGroupUnderSearch.Text);
+                dgvAccountGroup.DataSource = dtblAccountName;
             }
-            else
+            catch (Exception ex)
             {
-                dgvAccountGroup.DataSource = IME.AccountGroups.Where(a => a.accountGroupName.Contains(txtAccountGroupNameSearch.Text)).ToList();
-
+                MessageBox.Show("AG1:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

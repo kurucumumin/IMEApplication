@@ -223,6 +223,15 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AccountGroupEdit", accountGroupIdParameter, accountGroupNameParameter, groupUnderParameter, narrationParameter, isDefaultParameter, natureParameter, affectGrossProfitParameter);
         }
 
+        public virtual ObjectResult<string> AccountGroupNatureUnderGroup(Nullable<decimal> accountGroupId)
+        {
+            var accountGroupIdParameter = accountGroupId.HasValue ?
+                new ObjectParameter("accountGroupId", accountGroupId) :
+                new ObjectParameter("accountGroupId", typeof(decimal));
+
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("AccountGroupNatureUnderGroup", accountGroupIdParameter);
+        }
+
         public virtual int AccountGroupReferenceDelete(Nullable<decimal> accountGroupId)
         {
             var accountGroupIdParameter = accountGroupId.HasValue ?
@@ -230,6 +239,19 @@ namespace LoginForm.DataSet
                 new ObjectParameter("accountGroupId", typeof(decimal));
 
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AccountGroupReferenceDelete", accountGroupIdParameter);
+        }
+
+        public virtual ObjectResult<AccountGroupSearch_Result> AccountGroupSearch(string accountGroupName, string under)
+        {
+            var accountGroupNameParameter = accountGroupName != null ?
+                new ObjectParameter("AccountGroupName", accountGroupName) :
+                new ObjectParameter("AccountGroupName", typeof(string));
+
+            var underParameter = under != null ?
+                new ObjectParameter("Under", under) :
+                new ObjectParameter("Under", typeof(string));
+
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountGroupSearch_Result>("AccountGroupSearch", accountGroupNameParameter, underParameter);
         }
 
         public virtual ObjectResult<AccountGroupView_Result> AccountGroupView(Nullable<decimal> accountGroupId)
