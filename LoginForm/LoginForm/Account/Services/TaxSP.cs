@@ -118,7 +118,7 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
-        public Tax TaxView(decimal taxId)
+        public Tax TaxView(int taxId)
         {
             Tax taxinfo = new Tax();
             try
@@ -477,7 +477,7 @@ namespace LoginForm.Account.Services
 
                     row["taxId"] = item.taxId;
                     row["taxName"] = item.taxName;
-                    row["ApplicationOn"] = item.ApplicationOn;
+                    row["ApplicationOn"] = item.applicableOn;
 
                     dtbl.Rows.Add(row);
                 }
@@ -534,6 +534,37 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
             return dtblTaxSearch;
+        }
+
+        /// <summary>
+        /// Function to view TaxId For Tax Selection Update based on parameter
+        /// </summary>
+        /// <param name="decTaxId"></param>
+        /// <returns></returns>
+        public DataTable TaxIdForTaxSelectionUpdate(decimal decTaxId)
+        {
+            IMEEntities db = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = db.TaxIdForTaxSelectionUpdate(decTaxId).ToList();
+
+                dtbl.Columns.Add("selectedtaxId");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+
+                    row["selectedtaxId"] = item.Value;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
         }
 
         //public DataTable TaxViewAllByVoucherTypeIdApplicaleForProduct(decimal decVoucherTypeId)

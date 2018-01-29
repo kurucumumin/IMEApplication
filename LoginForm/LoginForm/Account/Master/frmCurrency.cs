@@ -15,7 +15,6 @@ namespace LoginForm
     public partial class frmCurrency : Form
     {
         #region Public Variables
-        IMEEntities IME = new IMEEntities();
         /// <summary>
         /// Public varaible declaration part
         /// </summary>
@@ -39,6 +38,7 @@ namespace LoginForm
         /// </summary>
         public void SaveFunction()
         {
+            IMEEntities IME = new IMEEntities();
             if (IME.Currencies.Where(a => a.currencyName == txtName.Text.Trim()).FirstOrDefault() == null)
             {
                 Currency c = new Currency();
@@ -62,35 +62,26 @@ namespace LoginForm
         /// </summary>
         public void EditFunction()
         {
-
-            //infoCurrency.CurrencySymbol = txtSymbol.Text.Trim();
-            //infoCurrency.CurrencyName = txtName.Text.Trim();
-            //infoCurrency.SubunitName = txtSubUnit.Text.Trim();
+            Currency infoCurrency = new Currency();
+            CurrencySP spCurrency = new CurrencySP();
+            infoCurrency.currencySymbol = txtSymbol.Text.Trim();
+            infoCurrency.currencyName = txtName.Text.Trim();
+            infoCurrency.subunitName = txtSubUnit.Text.Trim();
             //infoCurrency.NoOfDecimalPlaces = Convert.ToInt32(txtDecimalPlaces.Text.Trim());
             //infoCurrency.Narration = txtNarration.Text.Trim();
-            //infoCurrency.IsDefault = false;
-            //infoCurrency.Extra1 = String.Empty;
-            //infoCurrency.Extra2 = String.Empty;
-            //infoCurrency.CurrencyId = decId;
-            if (IME.Currencies.Where(a => a.currencyName == txtName.Text.Trim()).Where(b=>b.currencySymbol==txtSymbol.Text.Trim()).FirstOrDefault() == null)
+            infoCurrency.currencyID = decId;
+            if (spCurrency.CurrencyNameCheckExistence(txtName.Text.Trim(), txtSymbol.Text.Trim(), decCurrencyId) == false)
             {
-                Currency c = IME.Currencies.Where(a => a.currencyID == decId).FirstOrDefault();
-                c.currencySymbol = txtSymbol.Text.Trim();
-                c.currencyName = txtName.Text.Trim();
-                c.subunitName = txtSubUnit.Text.Trim();
-                //c.isDefault = false;
-                IME.SaveChanges();
-
-                MessageBox.Show("Currency is updated successfully");
+                spCurrency.CurrencyEdit(infoCurrency);
+                Messages.UpdatedMessage();
                 SearchClear();
                 Clear();
             }
             else
             {
-                MessageBox.Show("Currency name already exist");
+                Messages.InformationMessage("Currency name already exist");
                 txtName.Focus();
             }
-
         }
         /// <summary>
         /// FUNCTION TO CALL SAVE OR EDIT
@@ -126,7 +117,7 @@ namespace LoginForm
         /// </summary>
         public void FillControls()
         {
-            var c = IME.Currencies.Where(a => a.currencyID == decId).FirstOrDefault();
+            var c = new IMEEntities().Currencies.Where(a => a.currencyID == decId).FirstOrDefault();
             txtName.Text = c.currencyName;
             txtSymbol.Text = c.currencySymbol;
             txtSubUnit.Text = c.subunitName;
@@ -203,6 +194,7 @@ namespace LoginForm
 
         public void DeleteFunction()
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 var c = IME.Currencies.Where(a => a.currencyID == decId).FirstOrDefault();
@@ -223,7 +215,10 @@ namespace LoginForm
 
         public void Delete()
         {
-            DeleteFunction();
+            if (Messages.DeleteMessage())
+            {
+                DeleteFunction();
+            }
         }
 
 
@@ -319,7 +314,7 @@ namespace LoginForm
             if (e.RowIndex != -1)
             {
                 decId = Convert.ToDecimal(dgvCurrency.Rows[e.RowIndex].Cells["dgvtxtCurrencyId"].Value.ToString());
-                if (IME.Currencies.Where(a => a.currencyID == decId).FirstOrDefault().currencyID != Utils.getManagement().DefaultCurrency)
+                if (new IMEEntities().Currencies.Where(a => a.currencyID == decId).FirstOrDefault().currencyID != Utils.getManagement().DefaultCurrency)
                 {
                     FillControls();
                     btnDelete.Enabled = true;

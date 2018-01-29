@@ -996,7 +996,7 @@ namespace LoginForm
                 decimal decTotalAmnt = 0;
                 decimal decdgvtxtgrossValue = 0, decDiscountCalc = 0, decNetAmount = 0;
                 decimal decTaxPercent = 0;
-                decimal decTaxId = 0;
+                int decTaxId = 0;
                 DataGridViewRow dgrow = dgvPurchaseReturn.Rows[inIndexOfRow];
                 ProductInfo infoProduct = new ProductInfo();
                 ProductSP spProduct = new ProductSP();
@@ -1048,7 +1048,7 @@ namespace LoginForm
                     {
                         if (dgrow.Cells["dgvcmbTax"].Value != null && dgrow.Cells["dgvcmbTax"].Value.ToString() != string.Empty && dgrow.Cells["dgvcmbTax"].Value.ToString() != "NA")
                         {
-                            decTaxId = Convert.ToDecimal(dgrow.Cells["dgvcmbTax"].Value.ToString());
+                            decTaxId = Convert.ToInt32(dgrow.Cells["dgvcmbTax"].Value.ToString());
                             infotax = spTax.TaxView(decTaxId);
                             decTaxPercent = (decimal)infotax.Rate;
                             if (decTaxPercent != 0)

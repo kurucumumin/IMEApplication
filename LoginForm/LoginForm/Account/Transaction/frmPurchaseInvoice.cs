@@ -1052,7 +1052,7 @@ namespace Open_Miracle
             decimal decNetValue = 0;
             decimal decTaxAmount = 0;
             decimal decTaxPercent = 0;
-            decimal decTaxId = 0;
+            int decTaxId = 0;
             decimal decAmount = 0;
             decimal decTotalAmount = 0;
             string decProductId = String.Empty;
@@ -1140,7 +1140,7 @@ namespace Open_Miracle
                                     if (dgrow.Cells["dgvcmbTax"].Value.ToString() != string.Empty &&
                                         dgrow.Cells["dgvcmbTax"].Value.ToString() != "0")
                                     {
-                                        decTaxId = Convert.ToDecimal(dgrow.Cells["dgvcmbTax"].Value.ToString());
+                                        decTaxId = Convert.ToInt32(dgrow.Cells["dgvcmbTax"].Value.ToString());
                                         infotax = spTax.TaxView(decTaxId);
                                         decTaxPercent = Convert.ToDecimal(infotax.Rate);
                                     }
@@ -4151,7 +4151,7 @@ namespace Open_Miracle
             decimal decNetValue = 0;
             decimal decTaxAmount = 0;
             decimal decTaxPercent = 0;
-            decimal decTaxId = 0;
+            int decTaxId = 0;
             decimal decAmount = 0;
             decimal decTotalAmount = 0;
             string decProductId = String.Empty;
@@ -4237,7 +4237,7 @@ namespace Open_Miracle
                                 if (dgvProductDetails.Rows[inRowIndex].Cells["dgvcmbTax"].Value.ToString() != string.Empty &&
                                     dgvProductDetails.Rows[inRowIndex].Cells["dgvcmbTax"].Value.ToString() != "0")
                                 {
-                                    decTaxId = Convert.ToDecimal(dgvProductDetails.Rows[inRowIndex].Cells["dgvcmbTax"].Value.ToString());
+                                    decTaxId = Convert.ToInt32(dgvProductDetails.Rows[inRowIndex].Cells["dgvcmbTax"].Value.ToString());
                                     infotax = spTax.TaxView(decTaxId);
                                     decTaxPercent = Convert.ToDecimal(infotax.Rate);
                                 }

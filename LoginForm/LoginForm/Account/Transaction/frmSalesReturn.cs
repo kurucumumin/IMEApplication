@@ -2887,7 +2887,7 @@ namespace LoginForm
             {
                 if (dcNetAmount != 0 && dgvCmbTax.Visible && dgvSalesReturn.Rows[inRowIndex].Cells["dgvCmbTax"].Value != null)
                 {
-                    Tax InfoTaxMaster = SpTax.TaxView(Convert.ToDecimal(dgvSalesReturn.Rows[inRowIndex].Cells["dgvCmbTax"].Value.ToString()));
+                    Tax InfoTaxMaster = SpTax.TaxView(Convert.ToInt32(dgvSalesReturn.Rows[inRowIndex].Cells["dgvCmbTax"].Value.ToString()));
                     dcVatAmount = Math.Round((Convert.ToDecimal(dcNetAmount * InfoTaxMaster.Rate) / (100)), 4);
                     dgvSalesReturn.Rows[inRowIndex].Cells["dgvTextTaxAmount"].Value = dcVatAmount;
                 }
@@ -3618,7 +3618,7 @@ namespace LoginForm
                     dcNetValue = Convert.ToDecimal(dgvSalesReturn.Rows[inIndexOfRow].Cells["dgvTextNetValue"].Value.ToString());
                     if (dcNetValue != 0 && dgvSalesReturn.Columns["dgvCmbTax"].Visible && (dgvSalesReturn.Rows[inIndexOfRow].Cells["dgvCmbTax"].Value == null ? "" : dgvSalesReturn.Rows[inIndexOfRow].Cells["dgvCmbTax"].Value.ToString()) != "")
                     {
-                        Tax InfoTaxMaster = SpTax.TaxView(Convert.ToDecimal(dgvSalesReturn.Rows[inIndexOfRow].Cells["dgvCmbTax"].Value.ToString()));
+                        Tax InfoTaxMaster = SpTax.TaxView(Convert.ToInt32(dgvSalesReturn.Rows[inIndexOfRow].Cells["dgvCmbTax"].Value.ToString()));
                         dTaxAmt = Math.Round(((decimal)(dcNetValue * InfoTaxMaster.Rate) / (100)), 4);
                         dgvSalesReturn.Rows[inIndexOfRow].Cells["dgvTextTaxAmount"].Value = dTaxAmt.ToString();
                     }

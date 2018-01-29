@@ -33,6 +33,7 @@ namespace LoginForm.DataSet
         public string ArticleDescription { get; set; }
         public string DeliveryNumber { get; set; }
         public string DeliveryItemNumber { get; set; }
+        public Nullable<decimal> Rate { get; set; }
     
         public virtual PurchaseInvoice PurchaseInvoice { get; set; }
     }

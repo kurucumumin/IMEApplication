@@ -15,6 +15,6 @@ namespace LoginForm.DataSet
     {
         public int taxId { get; set; }
         public string taxName { get; set; }
-        public string ApplicationOn { get; set; }
+        public string applicableOn { get; set; }
     }
 }

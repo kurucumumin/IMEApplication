@@ -726,5 +726,24 @@ namespace LoginForm.Account.Services
             }
             return accountledgerinfo;
           }
+
+        /// <summary>
+        /// Account ledger Id get by name
+        /// </summary>
+        /// <param name="strLedgerName"></param>
+        /// <returns></returns>
+        public decimal AccountLedgerIdGetByName(string strLedgerName)
+        {
+            decimal decLedgerId = 0;
+            try
+            {
+                decLedgerId = Convert.ToDecimal(new IMEEntities().AccountLedgerIdGetByName(strLedgerName).FirstOrDefault());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decLedgerId;
+        }
     }
 }

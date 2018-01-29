@@ -1504,7 +1504,7 @@ namespace LoginForm
                     dcNetValue = Convert.ToDecimal(dgvSalesInvoice.Rows[inIndexOfRow].Cells["dgvtxtSalesInvoiceNetAmount"].Value.ToString());
                     if (dcNetValue != 0 && dgvSalesInvoice.Columns["dgvcmbSalesInvoiceTaxName"].Visible && (dgvSalesInvoice.Rows[inIndexOfRow].Cells["dgvcmbSalesInvoiceTaxName"].Value == null ? "" : dgvSalesInvoice.Rows[inIndexOfRow].Cells["dgvcmbSalesInvoiceTaxName"].Value.ToString()) != "")
                     {
-                        Tax InfoTaxMaster = SpTax.TaxView(Convert.ToDecimal(dgvSalesInvoice.Rows[inIndexOfRow].Cells["dgvcmbSalesInvoiceTaxName"].Value.ToString()));
+                        Tax InfoTaxMaster = SpTax.TaxView(Convert.ToInt32(dgvSalesInvoice.Rows[inIndexOfRow].Cells["dgvcmbSalesInvoiceTaxName"].Value.ToString()));
                         dTaxAmt = Math.Round(((dcNetValue * (decimal)InfoTaxMaster.Rate) / (100)), 4);
                         dgvSalesInvoice.Rows[inIndexOfRow].Cells["dgvtxtSalesInvoiceTaxAmount"].Value = dTaxAmt.ToString();
                     }

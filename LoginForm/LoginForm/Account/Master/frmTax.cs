@@ -450,63 +450,122 @@ namespace LoginForm
                 MessageBox.Show("TC9:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
         /// <summary>
         /// fill the curresponding details for update
         /// </summary>
         public void TaxSelectionFillForUpdate()
         {
-            int inRowCount = dgvTaxSelection.RowCount;
-            for (int i = 0; i < inRowCount; i++)
+            try
             {
-                dgvTaxSelection.Rows[i].Cells["dgvcbxSelect"].Value = false;
-            }
-            decTaxId = Convert.ToInt32(dgvTaxSearch.CurrentRow.Cells["dgvtxtTaxIdSearch"].Value.ToString());
-            Tax infoTax = IME.Taxes.Where(a => a.TaxID == decTaxId).FirstOrDefault();
-            if (infoTax != null)
-            {
-
-            }
-
-            //TaxInfo infoTax = new TaxInfo();
-            //TaxSP spTax = new TaxSP();
-            //TaxDetailsInfo infoTaxDetails = new TaxDetailsInfo();
-            //TaxDetailsSP spTaxDetails = new TaxDetailsSP();
-            //infoTax = spTax.TaxView(decTaxId);
-            txtTaxName.Text = infoTax.taxName;
-            txtRate.Text = infoTax.Rate.ToString();
-            cmbApplicableFor.Text = infoTax.ApplicationOn;
-            cmbCalculationMode.Text = infoTax.CalculatingMode;
-            txtNarration.Text = infoTax.narration;
-            if (infoTax.isActive.ToString() == "True")
-            {
-                cbxActive.Checked = true;
-            }
-            else
-            {
-                cbxActive.Checked = false;
-            }
-            strTaxName = infoTax.taxName;
-            decTaxIdForEdit = infoTax.TaxID;
-            btnSave.Text = "Update";
-            btnDelete.Enabled = true;
-            IME.SaveChanges();
-            var selectedtaxID = IME.TaxDetails.Where(a => a.taxID == decTaxId).Select(b => b.SelectedtaxID).ToList();
-            foreach (var dr in selectedtaxID)
-            {
-                string strTaxId = dr.ToString();
+                int inRowCount = dgvTaxSelection.RowCount;
                 for (int i = 0; i < inRowCount; i++)
                 {
-                    if (dgvTaxSelection.Rows[i].Cells["dgvtxtTaxId"].Value.ToString() == strTaxId)
+                    dgvTaxSelection.Rows[i].Cells["dgvcbxSelect"].Value = false;
+                }
+                decTaxId = Convert.ToInt32(dgvTaxSearch.CurrentRow.Cells["dgvtxtTaxIdSearch"].Value.ToString());
+                Tax infoTax = new Tax();
+                TaxSP spTax = new TaxSP();
+                TaxDetail infoTaxDetails = new TaxDetail();
+                TaxDetailsSP spTaxDetails = new TaxDetailsSP();
+                infoTax = spTax.TaxView(decTaxId);
+                txtTaxName.Text = infoTax.taxName;
+                txtRate.Text = infoTax.Rate.ToString();
+                cmbApplicableFor.Text = infoTax.ApplicationOn;
+                cmbCalculationMode.Text = infoTax.CalculatingMode;
+                txtNarration.Text = infoTax.narration;
+                if (infoTax.isActive.ToString() == "True")
+                {
+                    cbxActive.Checked = true;
+                }
+                else
+                {
+                    cbxActive.Checked = false;
+                }
+                strTaxName = infoTax.taxName;
+                decTaxIdForEdit = infoTax.TaxID;
+                btnSave.Text = "Update";
+                btnDelete.Enabled = true;
+                DataTable dtbl = new DataTable();
+                dtbl = spTax.TaxIdForTaxSelectionUpdate(decTaxId);
+                foreach (DataRow dr in dtbl.Rows)
+                {
+                    string strTaxId = dr["selectedtaxId"].ToString();
+                    for (int i = 0; i < inRowCount; i++)
                     {
-                        dgvTaxSelection.Rows[i].Cells["dgvcbxSelect"].Value = true;
+                        if (dgvTaxSelection.Rows[i].Cells["dgvtxtTaxId"].Value.ToString() == strTaxId)
+                        {
+                            dgvTaxSelection.Rows[i].Cells["dgvcbxSelect"].Value = true;
+                        }
                     }
                 }
+
+                AccountLedgerSP spAccountLedger = new AccountLedgerSP();
+                decLedgerId = spAccountLedger.AccountLedgerIdGetByName(txtTaxName.Text);
             }
-            AccountLedger al = new AccountLedger();
-            decLedgerId = IME.AccountLedgers.Where(a => a.ledgerName == txtTaxName.Text).FirstOrDefault().ledgerId;
-
-
+            catch (Exception ex)
+            {
+                MessageBox.Show("TC10:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
+
+        ///// <summary>
+        ///// fill the curresponding details for update
+        ///// </summary>
+        //public void TaxSelectionFillForUpdate()
+        //{
+        //    int inRowCount = dgvTaxSelection.RowCount;
+        //    for (int i = 0; i < inRowCount; i++)
+        //    {
+        //        dgvTaxSelection.Rows[i].Cells["dgvcbxSelect"].Value = false;
+        //    }
+        //    decTaxId = Convert.ToInt32(dgvTaxSearch.CurrentRow.Cells["dgvtxtTaxIdSearch"].Value.ToString());
+        //    Tax infoTax = IME.Taxes.Where(a => a.TaxID == decTaxId).FirstOrDefault();
+        //    if (infoTax != null)
+        //    {
+
+        //    }
+
+        //    //TaxInfo infoTax = new TaxInfo();
+        //    //TaxSP spTax = new TaxSP();
+        //    //TaxDetailsInfo infoTaxDetails = new TaxDetailsInfo();
+        //    //TaxDetailsSP spTaxDetails = new TaxDetailsSP();
+        //    //infoTax = spTax.TaxView(decTaxId);
+        //    txtTaxName.Text = infoTax.taxName;
+        //    txtRate.Text = infoTax.Rate.ToString();
+        //    cmbApplicableFor.Text = infoTax.ApplicationOn;
+        //    cmbCalculationMode.Text = infoTax.CalculatingMode;
+        //    txtNarration.Text = infoTax.narration;
+        //    if (infoTax.isActive.ToString() == "True")
+        //    {
+        //        cbxActive.Checked = true;
+        //    }
+        //    else
+        //    {
+        //        cbxActive.Checked = false;
+        //    }
+        //    strTaxName = infoTax.taxName;
+        //    decTaxIdForEdit = infoTax.TaxID;
+        //    btnSave.Text = "Update";
+        //    btnDelete.Enabled = true;
+        //    IME.SaveChanges();
+        //    var selectedtaxID = IME.TaxDetails.Where(a => a.taxID == decTaxId).Select(b => b.SelectedtaxID).ToList();
+        //    foreach (var dr in selectedtaxID)
+        //    {
+        //        string strTaxId = dr.ToString();
+        //        for (int i = 0; i < inRowCount; i++)
+        //        {
+        //            if (dgvTaxSelection.Rows[i].Cells["dgvtxtTaxId"].Value.ToString() == strTaxId)
+        //            {
+        //                dgvTaxSelection.Rows[i].Cells["dgvcbxSelect"].Value = true;
+        //            }
+        //        }
+        //    }
+        //    AccountLedger al = new AccountLedger();
+        //    decLedgerId = IME.AccountLedgers.Where(a => a.ledgerName == txtTaxName.Text).FirstOrDefault().ledgerId;
+
+
+        //}
         /// <summary>
         /// delete function
         /// </summary>
