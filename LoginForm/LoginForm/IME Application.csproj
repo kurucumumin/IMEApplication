@@ -543,6 +543,9 @@
     <Compile Include="DataSet\AccountGroup.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\AccountGroupSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\AccountGroupViewAllComboFillForAccountLedger_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>

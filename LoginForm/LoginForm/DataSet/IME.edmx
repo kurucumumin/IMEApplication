@@ -5541,8 +5541,15 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Parameter Name="nature" Type="varchar(max)" Mode="In" />
           <Parameter Name="affectGrossProfit" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="AccountGroupNatureUnderGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="accountGroupId" Type="decimal" Mode="In" />
+        </Function>
         <Function Name="AccountGroupReferenceDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="accountGroupId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="AccountGroupSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AccountGroupName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Under" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="AccountGroupView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="accountGroupId" Type="numeric" Mode="In" />
@@ -15254,8 +15261,15 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="nature" Mode="In" Type="String" />
             <Parameter Name="affectGrossProfit" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="AccountGroupNatureUnderGroup" ReturnType="Collection(String)">
+            <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="AccountGroupReferenceDelete">
             <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="AccountGroupSearch" ReturnType="Collection(IMEModel.AccountGroupSearch_Result)">
+            <Parameter Name="AccountGroupName" Mode="In" Type="String" />
+            <Parameter Name="Under" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="AccountGroupView" ReturnType="Collection(IMEModel.AccountGroupView_Result)">
             <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
@@ -16254,6 +16268,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="AccountGroupSearch_Result">
+          <Property Type="Int32" Name="AccountGroupId" Nullable="false" />
+          <Property Type="String" Name="AccountGroupName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Under" Nullable="true" MaxLength="50" />
+        </ComplexType>
         <ComplexType Name="AccountGroupView_Result">
           <Property Type="Int32" Name="accountGroupId" Nullable="false" />
           <Property Type="String" Name="accountGroupName" Nullable="true" MaxLength="50" />
@@ -19318,7 +19337,17 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImportMapping FunctionImportName="AccountGroupAddWithIdentity" FunctionName="IMEModel.Store.AccountGroupAddWithIdentity" />
           <FunctionImportMapping FunctionImportName="AccountGroupCheckExistenceOfUnderGroup" FunctionName="IMEModel.Store.AccountGroupCheckExistenceOfUnderGroup" />
           <FunctionImportMapping FunctionImportName="AccountGroupEdit" FunctionName="IMEModel.Store.AccountGroupEdit" />
+          <FunctionImportMapping FunctionImportName="AccountGroupNatureUnderGroup" FunctionName="IMEModel.Store.AccountGroupNatureUnderGroup" />
           <FunctionImportMapping FunctionImportName="AccountGroupReferenceDelete" FunctionName="IMEModel.Store.AccountGroupReferenceDelete" />
+          <FunctionImportMapping FunctionImportName="AccountGroupSearch" FunctionName="IMEModel.Store.AccountGroupSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.AccountGroupSearch_Result">
+                <ScalarProperty Name="AccountGroupId" ColumnName="AccountGroupId" />
+                <ScalarProperty Name="AccountGroupName" ColumnName="AccountGroupName" />
+                <ScalarProperty Name="Under" ColumnName="Under" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="AccountGroupView" FunctionName="IMEModel.Store.AccountGroupView">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.AccountGroupView_Result">
