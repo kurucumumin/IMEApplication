@@ -482,7 +482,7 @@ namespace LoginForm
                 FinancialYear infoFinancialYear = new FinancialYear();
                 infoFinancialYear =new FinancialYearSP().FinancialYearViewForAccountLedger(1);
                 strfinancialId = infoFinancialYear.fromDate.Value.ToString("dd-MMM-yyyy");
-                infoLedgerPosting.voucherTypeId = 1;
+                infoLedgerPosting.voucherTypeId = 2;
                 infoLedgerPosting.date = Convert.ToDateTime(strfinancialId.ToString());
                 if (cmbOpeningBalanceCrOrDr.Text == "Dr")
                 {
@@ -1109,7 +1109,7 @@ namespace LoginForm
                 {
                     cmbBillByBill.Text = "No";
                 }
-                cmbGroup.SelectedValue = infoAccountLedger.accountGroupID.ToString();
+                cmbGroup.SelectedValue = infoAccountLedger.accountGroupID;
                 PrlicingLevelComboFill();
                 cmbPricingLevel.SelectedValue = infoAccountLedger.pricinglevelId;
                 cmbRoute.SelectedValue = infoAccountLedger.routeId.ToString();

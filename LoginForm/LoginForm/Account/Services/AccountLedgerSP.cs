@@ -44,38 +44,40 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
-        public void AccountLedgerEdit(AccountLedger accountledgerinfo)
+        public void AccountLedgerEdit(AccountLedger ac)
         {
+            if (ac == null)
+            {
+                throw new ArgumentNullException(nameof(ac));
+            }
+
             try
             {
-                IMEEntities db = new IMEEntities();
-                AccountLedger accountledger = db.AccountLedgers.Find(accountledgerinfo);
-
-                accountledger.ledgerId = accountledgerinfo.ledgerId;
-                accountledger.accountGroupID = accountledgerinfo.accountGroupID;
-                accountledger.ledgerName = accountledgerinfo.ledgerName;
-                accountledger.openingBalance = accountledgerinfo.openingBalance;
-                accountledger.crOrDr = accountledgerinfo.crOrDr;
-                accountledger.narration = accountledgerinfo.narration;
-                accountledger.mailingName = accountledgerinfo.mailingName;
-                accountledger.phone = accountledgerinfo.phone;
-                accountledger.mobile = accountledgerinfo.mobile;
-                accountledger.email = accountledgerinfo.email;
-                accountledger.creditPeriod = accountledgerinfo.creditPeriod;
-                accountledger.creditLimit = accountledgerinfo.creditLimit;
-                accountledger.pricinglevelId = accountledgerinfo.pricinglevelId;
-                accountledger.billByBill = accountledgerinfo.billByBill;
-                accountledger.tin = accountledgerinfo.tin;
-                accountledger.cst = accountledgerinfo.cst;
-                accountledger.pan = accountledgerinfo.pan;
-                accountledger.routeId = accountledgerinfo.routeId;
-                accountledger.bankAccountNumber = accountledgerinfo.bankAccountNumber;
-                accountledger.branchName = accountledgerinfo.branchName;
-                accountledger.branchCode = accountledgerinfo.branchCode;
-                accountledger.areaId = accountledgerinfo.areaId;
-                accountledger.isDefault = accountledgerinfo.isDefault;
-
-                db.SaveChanges();
+                new IMEEntities().AccountLedgerEdit(
+                    ac.ledgerId,
+                    ac.accountGroupID,
+                    ac.ledgerName,
+                    ac.openingBalance,
+                    ac.crOrDr,
+                    ac.narration,
+                    ac.mailingName,
+                    ac.address,
+                    ac.isDefault,
+                    ac.phone,
+                    ac.mobile,
+                    ac.email,
+                    ac.creditPeriod,
+                    ac.creditLimit,
+                    ac.pricinglevelId,
+                    ac.billByBill,
+                    ac.tin,
+                    ac.cst,
+                    ac.pan,
+                    ac.routeId,
+                    ac.bankAccountNumber,
+                    ac.branchName,
+                    ac.branchCode,
+                    ac.areaId);
             }
             catch (Exception ex)
             {
