@@ -338,7 +338,7 @@ namespace LoginForm
         /// <param name="index"></param>
         /// <param name="decProductId"></param>
         /// <param name="decBatchId"></param>
-        public void getProductRate(int index, string decProductId, decimal decBatchId)
+        public void getProductRate(int index, string decProductId)
         {
             ProductInfo infoProduct = new ProductInfo();
             ProductSP spProdut = new ProductSP();
@@ -1026,9 +1026,12 @@ namespace LoginForm
                 UnitSP spUnit = new UnitSP();
                 dtbl = spUnit.UnitViewAllByProductId(decProductId);
                 DataGridViewComboBoxCell dgvcmbUnitCell = (DataGridViewComboBoxCell)dgvSalesReturn.Rows[inRow].Cells[inColumn];
-                dgvcmbUnitCell.DataSource = dtbl;
-                dgvcmbUnitCell.DisplayMember = "unitName";
-                dgvcmbUnitCell.ValueMember = "unitId";
+                if (dtbl != null)
+                {
+                    dgvcmbUnitCell.DataSource = dtbl;
+                    dgvcmbUnitCell.DisplayMember = "unitName";
+                    dgvcmbUnitCell.ValueMember = "unitId";
+                }
             }
             catch (Exception ex)
             {
@@ -3535,31 +3538,32 @@ namespace LoginForm
                     DGVGodownComboFill();
 
                     //  SerialNo();
-                    dgvSalesReturn.Rows[inRowIndex].Cells["productId"].Value = dtbl.Rows[0]["productId"];
-                    string decProductId = dgvSalesReturn.Rows[inRowIndex].Cells["productId"].Value.ToString();
-                    dgvSalesReturn.Rows[inRowIndex].Cells["dgvTextBarcode"].Value = dtbl.Rows[0]["barcode"];
-                    dgvSalesReturn.Rows[inRowIndex].Cells["dgvTextProductCode"].Value = dtbl.Rows[0]["productCode"];
-                    dgvSalesReturn.Rows[inRowIndex].Cells["dgvTextProductName"].Value = dtbl.Rows[0]["productName"];
+                    dgvSalesReturn.Rows[inRowIndex].Cells["productId"].Value = dtbl.Rows[0]["Article_No"];
+                    string decProductId = dtbl.Rows[0]["Article_No"].ToString();
+                    //dgvSalesReturn.Rows[inRowIndex].Cells["dgvTextBarcode"].Value = dtbl.Rows[0]["barcode"];
+                    dgvSalesReturn.Rows[inRowIndex].Cells["dgvTextProductCode"].Value = dtbl.Rows[0]["Article_No"];
+                    dgvSalesReturn.Rows[inRowIndex].Cells["dgvTextProductName"].Value = dtbl.Rows[0]["Article_Desc"];
                     // dgvSalesReturn.Rows[inRowIndex].Cells["dgvTextQty"].Value = dtbl.Rows[0]["qty"];
-                    dgvSalesReturn.Rows[inRowIndex].Cells["dgvTextQty"].Value = string.Empty;
-                    UnitComboFill(decProductId, inRowIndex, dgvSalesReturn.Rows[inRowIndex].Cells["dgvCmbUnit"].ColumnIndex);
-                    dgvSalesReturn.Rows[inRowIndex].Cells["dgvCmbUnit"].Value = Convert.ToDecimal(dtbl.Rows[0]["unitId"].ToString());
-                    dgvSalesReturn.Rows[inRowIndex].Cells["unitConversionId"].Value = dtbl.Rows[0]["unitConversionId"];
-                    dgvSalesReturn.Rows[inRowIndex].Cells["dgvCmbGodown"].Value = Convert.ToDecimal(dtbl.Rows[0]["godownId"].ToString());
-                    RackComboFill(Convert.ToDecimal(dtbl.Rows[0]["godownId"].ToString()), inRowIndex, dgvSalesReturn.CurrentRow.Cells["dgvCmbRack"].ColumnIndex);
-                    dgvSalesReturn.Rows[inRowIndex].Cells["dgvCmbRack"].Value = Convert.ToDecimal(dtbl.Rows[0]["rackId"].ToString());
-                    BatchComboFill(Convert.ToDecimal(decProductId), inRowIndex, dgvSalesReturn.Rows[inRowIndex].Cells["dgvCmbBatch"].ColumnIndex);
-                    dgvSalesReturn.Rows[inRowIndex].Cells["dgvCmbBatch"].Value = Convert.ToDecimal(dtbl.Rows[0]["batchId"].ToString());
-                    decimal decBatchId = Convert.ToDecimal(dgvSalesReturn.Rows[inRowIndex].Cells["dgvCmbBatch"].Value.ToString());
-                    dgvSalesReturn.Rows[inRowIndex].Cells["dgvTextRate"].Value = Math.Round(Convert.ToDecimal(dtbl.Rows[0]["salesRate"].ToString()), 4);
-                    getProductRate(inRowIndex, decProductId, decBatchId);
+                    dgvSalesReturn.Rows[inRowIndex].Cells["dgvTextQty"].Value = dtbl.Rows[0]["qty"];
+                    //UnitComboFill(decProductId, inRowIndex, dgvSalesReturn.Rows[inRowIndex].Cells["dgvCmbUnit"].ColumnIndex);
+                    // bunlar gerekli mi?
+                    //dgvSalesReturn.Rows[inRowIndex].Cells["dgvCmbUnit"].Value = Convert.ToDecimal(dtbl.Rows[0]["unitId"].ToString());
+                    ////if (dtbl.Rows[0]["unitConversionId"] != null) dgvSalesReturn.Rows[inRowIndex].Cells["unitConversionId"].Value = dtbl.Rows[0]["unitConversionId"];
+                    // dgvSalesReturn.Rows[inRowIndex].Cells["dgvCmbGodown"].Value = Convert.ToDecimal(dtbl.Rows[0]["godownId"].ToString());
+                    //RackComboFill(Convert.ToDecimal(dtbl.Rows[0]["godownId"].ToString()), inRowIndex, dgvSalesReturn.CurrentRow.Cells["dgvCmbRack"].ColumnIndex);
+                    //if (dtbl.Rows[0]["dgvCmbRack"] != null) dgvSalesReturn.Rows[inRowIndex].Cells["dgvCmbRack"].Value = Convert.ToDecimal(dtbl.Rows[0]["rackId"].ToString());
+                    //BatchComboFill(Convert.ToDecimal(decProductId), inRowIndex, dgvSalesReturn.Rows[inRowIndex].Cells["dgvCmbBatch"].ColumnIndex);
+                    //if (dtbl.Rows[0]["batchId"] != null) dgvSalesReturn.Rows[inRowIndex].Cells["dgvCmbBatch"].Value = Convert.ToDecimal(dtbl.Rows[0]["batchId"].ToString());
+                    //decimal decBatchId = Convert.ToDecimal(dgvSalesReturn.Rows[inRowIndex].Cells["dgvCmbBatch"].Value.ToString());
+                    //if (dtbl.Rows[0]["salesRate"] != null) dgvSalesReturn.Rows[inRowIndex].Cells["dgvTextRate"].Value = Math.Round(Convert.ToDecimal(dtbl.Rows[0]["salesRate"].ToString()), 4);
+                    getProductRate(inRowIndex, decProductId);
                     TaxGridFill();
-                    dgvSalesReturn.Rows[inRowIndex].Cells["dgvCmbTax"].Value = Convert.ToDecimal(dtbl.Rows[0]["taxId"].ToString());
-                    dgvSalesReturn.Rows[inRowIndex].Cells["conversionRate"].Value = dtbl.Rows[0]["conversionRate"];
-                    dgvSalesReturn.Rows[inRowIndex].Cells["dgvTextDiscountPercentage"].Value = dtbl.Rows[0]["discountPercent"].ToString();
-                    dgvSalesReturn.Rows[inRowIndex].Cells["dgvTextDiscountAmount"].Value = Math.Round(Convert.ToDecimal(dtbl.Rows[0]["discount"]), 4);
-                    dgvSalesReturn.Rows[inRowIndex].Cells["dgvTextDiscountAmount"].ReadOnly = true;
-                    dgvSalesReturn.Rows[inRowIndex].Cells["dgvTextNetValue"].Value = Math.Round(Convert.ToDecimal(dtbl.Rows[0]["netvalue"]), 4);
+                    if (dtbl.Rows[0]["taxId"] != null) dgvSalesReturn.Rows[inRowIndex].Cells["dgvCmbTax"].Value = Convert.ToDecimal(dtbl.Rows[0]["taxId"].ToString());
+                    if (dtbl.Rows[0]["conversionRate"] != null) dgvSalesReturn.Rows[inRowIndex].Cells["conversionRate"].Value = dtbl.Rows[0]["conversionRate"];
+                    if (dtbl.Rows[0]["discountPercent"] != null) dgvSalesReturn.Rows[inRowIndex].Cells["dgvTextDiscountPercentage"].Value = dtbl.Rows[0]["discountPercent"].ToString();
+                    if (dtbl.Rows[0]["cdiscount"] != null) dgvSalesReturn.Rows[inRowIndex].Cells["dgvTextDiscountAmount"].Value = Math.Round(Convert.ToDecimal(dtbl.Rows[0]["discount"]), 4);
+                     dgvSalesReturn.Rows[inRowIndex].Cells["dgvTextDiscountAmount"].ReadOnly = true;
+                    if (dtbl.Rows[0]["netvalue"] != null) dgvSalesReturn.Rows[inRowIndex].Cells["dgvTextNetValue"].Value = Math.Round(Convert.ToDecimal(dtbl.Rows[0]["netvalue"]), 4);
                     GrossValueCalculation(inRowIndex);
                     DiscountCalculationfordiscountpercentage(inRowIndex, 12);
                     DiscountCalculation(inRowIndex, 13);
@@ -3956,7 +3960,7 @@ namespace LoginForm
         /// <param name="e"></param>
         private void dgvSalesReturn_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            string strProductcode = string.Empty;
+                string strProductcode = string.Empty;
             string strbarcode = string.Empty;
             string strproductname = string.Empty;
             try
@@ -4204,7 +4208,7 @@ namespace LoginForm
                                 {
                                     decProductId = dgvRow.Cells["productId"].Value.ToString();
                                     decBatchId = Convert.ToDecimal(dgvRow.Cells["dgvcmbBatch"].Value.ToString());
-                                    getProductRate(inRowIndex, decProductId, decBatchId);
+                                    getProductRate(inRowIndex, decProductId);
                                 }
                                 else
                                 {

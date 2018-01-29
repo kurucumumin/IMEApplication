@@ -1485,6 +1485,12 @@ namespace LoginForm.QuotationModule
         private void QuotationSave()
         {
             DataSet.Quotation q = new DataSet.Quotation();
+            string qNo = txtQuotationNo.Text;
+            
+            if(IME.Quotations.Where(a => a.QuotationNo == qNo).FirstOrDefault() != null)
+            {
+                NewQuotationID();
+            }
             q.QuotationNo = txtQuotationNo.Text;
             q.RFQNo = txtRFQNo.Text;
             try { q.SubTotal = decimal.Parse(lblsubtotal.Text); } catch { }
@@ -2185,7 +2191,7 @@ namespace LoginForm.QuotationModule
             IMEEntities IME = new IMEEntities();
             //List<Quotation> quotList = IME.Quotations.Where(q => q.QuotationNo == DateTime.Now.Year).toList();
             //int ID;
-            Quotation quo = IME.Quotations.OrderByDescending(q => q.QuotationNo).FirstOrDefault();
+            Quotation quo = IME.Quotations.Where(a => a.StartDate.Value.Year == DateTime.Now.Year).OrderByDescending(q => q.QuotationNo).FirstOrDefault();
             string q1;
             if (quo == null)
             {
