@@ -11,10 +11,9 @@ namespace LoginForm.DataSet
 {
     using System;
     
-    public partial class TaxViewAllForVoucherType_Result
+    public partial class TaxViewAllForTaxSelection_Result
     {
         public int taxId { get; set; }
         public string taxName { get; set; }
-        public string ApplicationOn { get; set; }
     }
 }

@@ -294,11 +294,12 @@ namespace LoginForm.Account
             dtbl.Columns["SlNo"].AutoIncrement = true;
             dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
             dtbl.Columns["SlNo"].AutoIncrementStep = 1;
+
             dtbl.Columns.Add("productCode");
             dtbl.Columns.Add("productName");
-            dtbl.Columns.Add("brandName");
-            dtbl.Columns.Add("modelNo");
-            dtbl.Columns.Add("salesRate");
+            //dtbl.Columns.Add("brandName");
+            //dtbl.Columns.Add("modelNo");
+            //dtbl.Columns.Add("salesRate");
             IMEEntities IME = new IMEEntities();
             foreach (var item in IME.Stocks.ToList())
             {
@@ -320,7 +321,7 @@ namespace LoginForm.Account
                 //    Convert.ToDecimal(cmbSize.SelectedValue), Convert.ToDecimal(cmbModelNo.SelectedValue),
                 //    Convert.ToDecimal(cmbTax.SelectedValue), Convert.ToDecimal(cmbGodown.SelectedValue),
                 //    Convert.ToDecimal(cmbRack.SelectedValue), strCriteria);
-               // dgvStock.DataSource = dtbl;
+               dgvStock.DataSource = dtbl;
             
         }
         /// <summary>

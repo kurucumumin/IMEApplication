@@ -11,10 +11,14 @@ namespace LoginForm.DataSet
 {
     using System;
     
-    public partial class TaxViewAllForVoucherType_Result
+    public partial class AccountGroupViewAllComboFillForAccountLedger_Result
     {
-        public int taxId { get; set; }
-        public string taxName { get; set; }
-        public string ApplicationOn { get; set; }
+        public int accountGroupId { get; set; }
+        public string accountGroupName { get; set; }
+        public Nullable<int> groupUnder { get; set; }
+        public string narration { get; set; }
+        public Nullable<bool> isDefault { get; set; }
+        public string nature { get; set; }
+        public string affectGrossProfit { get; set; }
     }
 }
