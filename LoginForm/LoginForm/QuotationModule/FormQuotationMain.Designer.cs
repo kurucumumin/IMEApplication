@@ -40,8 +40,8 @@
             this.cbSearch = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.datetimeEnd = new System.Windows.Forms.DateTimePicker();
             this.datetimeStart = new System.Windows.Forms.DateTimePicker();
+            this.datetimeEnd = new System.Windows.Forms.DateTimePicker();
             this.btnDeleteQuotation = new System.Windows.Forms.Button();
             this.btnModifyQuotation = new System.Windows.Forms.Button();
             this.btnRefreshList = new System.Windows.Forms.Button();
@@ -109,8 +109,8 @@
             this.panel1.Controls.Add(this.cbSearch);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.datetimeEnd);
             this.panel1.Controls.Add(this.datetimeStart);
+            this.panel1.Controls.Add(this.datetimeEnd);
             this.panel1.Controls.Add(this.btnDeleteQuotation);
             this.panel1.Controls.Add(this.btnModifyQuotation);
             this.panel1.Controls.Add(this.btnRefreshList);
@@ -149,7 +149,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(895, 19);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(192, 24);
+            this.textBox2.Size = new System.Drawing.Size(192, 21);
             this.textBox2.TabIndex = 25;
             // 
             // chcAllQuots
@@ -166,7 +166,7 @@
             // 
             this.txtSearchText.Location = new System.Drawing.Point(699, 49);
             this.txtSearchText.Name = "txtSearchText";
-            this.txtSearchText.Size = new System.Drawing.Size(164, 24);
+            this.txtSearchText.Size = new System.Drawing.Size(164, 21);
             this.txtSearchText.TabIndex = 23;
             this.txtSearchText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchText_KeyPress);
             // 
@@ -178,7 +178,7 @@
             "QUOT NUMBER"});
             this.cbSearch.Location = new System.Drawing.Point(699, 19);
             this.cbSearch.Name = "cbSearch";
-            this.cbSearch.Size = new System.Drawing.Size(164, 26);
+            this.cbSearch.Size = new System.Drawing.Size(164, 23);
             this.cbSearch.TabIndex = 22;
             // 
             // label2
@@ -186,7 +186,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(9, 80);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 18);
+            this.label2.Size = new System.Drawing.Size(58, 15);
             this.label2.TabIndex = 21;
             this.label2.Text = "End Date";
             // 
@@ -195,27 +195,27 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 18);
+            this.label1.Size = new System.Drawing.Size(61, 15);
             this.label1.TabIndex = 20;
             this.label1.Text = "Start Date";
-            // 
-            // datetimeEnd
-            // 
-            this.datetimeEnd.CustomFormat = "dd-MM-yyyy";
-            this.datetimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.datetimeEnd.Location = new System.Drawing.Point(89, 77);
-            this.datetimeEnd.Name = "datetimeEnd";
-            this.datetimeEnd.Size = new System.Drawing.Size(119, 24);
-            this.datetimeEnd.TabIndex = 19;
             // 
             // datetimeStart
             // 
             this.datetimeStart.CustomFormat = "dd-MM-yyyy";
             this.datetimeStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.datetimeStart.Location = new System.Drawing.Point(89, 16);
+            this.datetimeStart.Location = new System.Drawing.Point(73, 14);
             this.datetimeStart.Name = "datetimeStart";
-            this.datetimeStart.Size = new System.Drawing.Size(119, 24);
-            this.datetimeStart.TabIndex = 18;
+            this.datetimeStart.Size = new System.Drawing.Size(119, 21);
+            this.datetimeStart.TabIndex = 19;
+            // 
+            // datetimeEnd
+            // 
+            this.datetimeEnd.CustomFormat = "dd-MM-yyyy";
+            this.datetimeEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.datetimeEnd.Location = new System.Drawing.Point(73, 80);
+            this.datetimeEnd.Name = "datetimeEnd";
+            this.datetimeEnd.Size = new System.Drawing.Size(119, 21);
+            this.datetimeEnd.TabIndex = 18;
             // 
             // btnDeleteQuotation
             // 
@@ -333,7 +333,7 @@
             // 
             // FormQuotationMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1236, 696);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -360,10 +360,10 @@
         private System.Windows.Forms.Button btnDeleteQuotation;
         private System.Windows.Forms.Button btnModifyQuotation;
         private System.Windows.Forms.Button btnNewQuotation;
-        private System.Windows.Forms.DateTimePicker datetimeStart;
+        private System.Windows.Forms.DateTimePicker datetimeEnd;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker datetimeEnd;
+        private System.Windows.Forms.DateTimePicker datetimeStart;
         private System.Windows.Forms.Button btnRefreshList;
         private System.Windows.Forms.CheckBox chcAllQuots;
         private System.Windows.Forms.TextBox txtSearchText;
