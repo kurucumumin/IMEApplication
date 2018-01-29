@@ -2195,6 +2195,7 @@ namespace LoginForm.QuotationModule
             string q1;
             if (quo == null)
             {
+               
                 q1 = DateTime.Now.Year.ToString() + "/1";
             }
             else

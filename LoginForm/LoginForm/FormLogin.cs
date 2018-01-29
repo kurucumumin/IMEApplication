@@ -31,6 +31,7 @@ namespace LoginForm
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            DateTime time = Convert.ToDateTime(IME.CurrentDate());
             #region LoginBlock
             string UserName = txtID.Text;
             string PW = Utils.MD5Hash(txtPassWord.Text);
@@ -74,6 +75,7 @@ namespace LoginForm
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
+            
             //txtReader.excelCustomerCategory1();
             //Rate DolarRate1 = new Rate();
             //DolarRate1 = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).FirstOrDefault();
