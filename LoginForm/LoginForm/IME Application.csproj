@@ -543,6 +543,9 @@
     <Compile Include="DataSet\AccountGroup.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\AccountGroupSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\AccountGroupViewAllComboFillForAccountLedger_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1731,8 +1734,6 @@
       <DependentUpon>FormUserManagement.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
-    <None Include="DataSet\AccountGroupViewForUpdate_Result.cs~Cem-Develop" />
-    <None Include="DataSet\AccountGroupViewForUpdate_Result.cs~HEAD" />
     <EntityDeploy Include="DataSet\IME.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>IME.Designer.cs</LastGenOutput>

@@ -241,6 +241,19 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AccountGroupReferenceDelete", accountGroupIdParameter);
         }
     
+        public virtual ObjectResult<AccountGroupSearch_Result> AccountGroupSearch(string accountGroupName, string under)
+        {
+            var accountGroupNameParameter = accountGroupName != null ?
+                new ObjectParameter("AccountGroupName", accountGroupName) :
+                new ObjectParameter("AccountGroupName", typeof(string));
+    
+            var underParameter = under != null ?
+                new ObjectParameter("Under", under) :
+                new ObjectParameter("Under", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountGroupSearch_Result>("AccountGroupSearch", accountGroupNameParameter, underParameter);
+        }
+    
         public virtual ObjectResult<AccountGroupView_Result> AccountGroupView(Nullable<decimal> accountGroupId)
         {
             var accountGroupIdParameter = accountGroupId.HasValue ?

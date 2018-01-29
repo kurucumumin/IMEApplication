@@ -337,5 +337,45 @@ namespace LoginForm.Account.Services
             }
             return accountgroupinfo;
         }
+
+        /// <summary>
+        /// Function to Account Group Search based on the parameter
+        /// </summary>
+        /// <param name="strAccountGroupName"></param>
+        /// <param name="strGroupUnder"></param>
+        /// <returns></returns>
+        public DataTable AccountGroupSearch(string strAccountGroupName, string strGroupUnder)
+        {
+            DataTable dtblAccountGroup = new DataTable();
+            dtblAccountGroup.Columns.Add("Sl No", typeof(int));
+            dtblAccountGroup.Columns["Sl No"].AutoIncrement = true;
+            dtblAccountGroup.Columns["Sl No"].AutoIncrementSeed = 1;
+            dtblAccountGroup.Columns["Sl No"].AutoIncrementStep = 1;
+
+            dtblAccountGroup.Columns.Add("AccountGroupId");
+            dtblAccountGroup.Columns.Add("AccountGroupName");
+            dtblAccountGroup.Columns.Add("Under");
+            
+            try
+            {
+                var adaptor = new IMEEntities().AccountGroupSearch(strAccountGroupName, strGroupUnder).ToList();
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtblAccountGroup.NewRow();
+
+                    row["AccountGroupId"] = item.AccountGroupId;
+                    row["AccountGroupName"] = item.AccountGroupName;
+                    row["Under"] = item.Under;
+
+                    dtblAccountGroup.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return dtblAccountGroup;
+        }
     }
 }
