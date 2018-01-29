@@ -3757,11 +3757,7 @@ namespace LoginForm
                 MessageBox.Show("SR78:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        /// <summary>
-        /// Form load call the clear function
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void frmSalesReturn_Load(object sender, EventArgs e)
         {
             try
@@ -5857,7 +5853,7 @@ namespace LoginForm
                                         DiscountCalculation(e.RowIndex, e.ColumnIndex);
                                         TaxAmountCalculation(e.RowIndex);
                                         TotalAmountCalculation();
-                                        //TotalAmtCalculation();
+                                        TotalAmtCalculation();
                                         taxamountfill();
                                         TotalAmountCalculationForSaveOrEdit();
                                         TotalBillTaxCalculation();

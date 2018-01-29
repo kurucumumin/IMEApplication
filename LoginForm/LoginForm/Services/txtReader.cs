@@ -1344,306 +1344,338 @@ namespace LoginForm
                 //{
                 Excel.Range last = worksheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing);
                 Excel.Range range = worksheet.get_Range("A1", last);
-                    Array myvalues = range.Cells.Value;
+                Array myvalues = range.Cells.Value;
 
-                    #region MyRegion
-                    bool isextendedRange = true;
-                Worksheet ws = theWorkbook.Worksheets[1];
-                if (((object[,])myvalues)[1, 1].ToString() != "ArticleNo") isextendedRange = false;
-                if (((object[,])myvalues)[1, 2].ToString() != "Manufacturer Code") isextendedRange = false;
-                if (((object[,])myvalues)[1, 3].ToString() != "MPN") isextendedRange = false;
-                if (((object[,])myvalues)[1, 5].ToString() != "ArticleDescription (40 Char Description)") isextendedRange = false;
-                if (((object[,])myvalues)[1, 6].ToString() != "Length") isextendedRange = false;
-                if (((object[,])myvalues)[1, 7].ToString() != "Width") isextendedRange = false;
-                if (((object[,])myvalues)[1, 8].ToString() != "Height") isextendedRange = false;
-                if (((object[,])myvalues)[1, 9].ToString() != "Dimension UoM") isextendedRange = false;
-                if (((object[,])myvalues)[1, 10].ToString() != "Weight") isextendedRange = false;
-                if (((object[,])myvalues)[1, 11].ToString() != "Weight UoM") isextendedRange = false;
-                if (((object[,])myvalues)[1, 12].ToString() != "CCCN") isextendedRange = false;
-                if (((object[,])myvalues)[1, 13].ToString() != "Country of Origin") isextendedRange = false;
-                if (((object[,])myvalues)[1, 14].ToString() != "Unit of Measure") isextendedRange = false;
-                if (((object[,])myvalues)[1, 15].ToString() != "Pack Size") isextendedRange = false;
-                if (((object[,])myvalues)[1, 16].ToString() != "(Sales UoM)") isextendedRange = false;
-                if (((object[,])myvalues)[1, 17].ToString() != "Cost price currency") isextendedRange = false;
-                if (((object[,])myvalues)[1, 18].ToString() != "Col1Price") isextendedRange = false;
-                if (((object[,])myvalues)[1, 19].ToString() != "Col1Break") isextendedRange = false;
-                if (((object[,])myvalues)[1, 20].ToString() != "Col2Price") isextendedRange = false;
-                if (((object[,])myvalues)[1, 21].ToString() != "Col2Break") isextendedRange = false;
-                if (((object[,])myvalues)[1, 22].ToString() != "Col3Price") isextendedRange = false;
-                if (((object[,])myvalues)[1, 23].ToString() != "Col3Break") isextendedRange = false;
-                if (((object[,])myvalues)[1, 24].ToString() != "Col4Price") isextendedRange = false;
-                if (((object[,])myvalues)[1, 25].ToString() != "Col4Break") isextendedRange = false;
-                if (((object[,])myvalues)[1, 26].ToString() != "Col5Price") isextendedRange = false;
-                if (((object[,])myvalues)[1, 27].ToString() != "Col5Break") isextendedRange = false;
-                if (((object[,])myvalues)[1, 28].ToString() != "DiscountedPrice1") isextendedRange = false;
-                if (((object[,])myvalues)[1, 29].ToString() != "DiscountedPrice2") isextendedRange = false;
-                if (((object[,])myvalues)[1, 30].ToString() != "DiscountedPrice3") isextendedRange = false;
-                if (((object[,])myvalues)[1, 31].ToString() != "DiscountedPrice4") isextendedRange = false;
-                if (((object[,])myvalues)[1, 32].ToString() != "DiscountedPrice5") isextendedRange = false;
+                #region MyRegion
+                //    bool isextendedRange = true;
+                //Worksheet ws = theWorkbook.Worksheets[1];
+                //if (((object[,])myvalues)[1, 1].ToString() != "ArticleNo") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 2].ToString() != "Manufacturer Code") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 3].ToString() != "Brand") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 4].ToString() != "MPN") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 5].ToString() != "ArticleDescription (40 Char Description)") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 6].ToString() != "Length") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 7].ToString() != "Width") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 8].ToString() != "Height") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 9].ToString() != "Dimension UoM") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 10].ToString() != "Weight") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 11].ToString() != "Weight UoM") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 12].ToString() != "CCCN") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 13].ToString() != "Country of Origin") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 14].ToString() != "Unit of Measure") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 15].ToString() != "Pack Size") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 16].ToString() != "(Sales UoM)") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 17].ToString() != "Cost price currency") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 18].ToString() != "Col1Price") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 19].ToString() != "Col1Break") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 20].ToString() != "Col2Price") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 21].ToString() != "Col2Break") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 22].ToString() != "Col3Price") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 23].ToString() != "Col3Break") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 24].ToString() != "Col4Price") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 25].ToString() != "Col4Break") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 26].ToString() != "Col5Price") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 27].ToString() != "Col5Break") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 28].ToString() != "DiscountedPrice1") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 29].ToString() != "DiscountedPrice2") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 30].ToString() != "DiscountedPrice3") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 31].ToString() != "DiscountedPrice4") isextendedRange = false;
+                //if (((object[,])myvalues)[1, 32].ToString() != "DiscountedPrice5") isextendedRange = false;
                 #endregion
 
-                if (isextendedRange)
+                //if (isextendedRange)
+                //{
+
+                for (int i = 2; i <= (myvalues.Length / 32); i++)
                 {
 
-                        for (int i = 2; i <= (myvalues.Length/32); i++)
+                    ExtendedRange extendedRange = new ExtendedRange();
+                    //string[,] myvalues = null;
+                    extendedRange.ArticleNo = ((object[,])myvalues)[i, 1].ToString();
+                    if (((object[,])myvalues)[i, 2] != null) { extendedRange.ManufacturerCode = ((object[,])myvalues)[i, 2].ToString(); }
+                    if (((object[,])myvalues)[i, 3] != null)
                     {
-
-                            ExtendedRange extendedRange = new ExtendedRange();
-                            //string[,] myvalues = null;
-                            extendedRange.ArticleNo = ((object[,])myvalues)[i, 1].ToString();
-                            if (((object[,])myvalues)[i, 2]!= null) { extendedRange.ManufacturerCode = ((object[,])myvalues)[i, 2].ToString(); }
-                            if (((object[,])myvalues)[i, 3] != null)
-                            {
-                                extendedRange.Brand = ((object[,])myvalues)[i, 3].ToString();
-                            }
-                            if (((object[,])myvalues)[i, 4] != null)
-                            {
-                                extendedRange.MPN = ((object[,])myvalues)[i, 4].ToString();
-                            }
-                            if (((object[,])myvalues)[i, 5] != null)
-                            {
-                                extendedRange.ArticleDescription = ((object[,])myvalues)[i, 5].ToString();
-                            }
-
-                            if (((object[,])myvalues)[i, 6] != null) { extendedRange.ExtendedRangeLength = Decimal.Parse(((object[,])myvalues)[i, 6].ToString()); }
-
-                            if (((object[,])myvalues)[i, 7] != null) { extendedRange.Width = Decimal.Parse(((object[,])myvalues)[i, 7].ToString()); }
-
-                            if (((object[,])myvalues)[i, 8] !=null) { extendedRange.Height = Decimal.Parse(((object[,])myvalues)[i, 8].ToString()); }
-
-                            if (((object[,])myvalues)[i, 9] != null)
-                            {
-                                extendedRange.DimensionUoM = ((object[,])myvalues)[i, 9].ToString();
-                            }
-
-                            if (((object[,])myvalues)[i, 10] != null)
-
-                        {
-                            string weight = ((object[,])myvalues)[i, 10].ToString();
-                            if (extendedRange.WeightUoM == "KG")
-                            {
-                                extendedRange.ExtendedRangeWeight= Int32.Parse((Convert.ToDecimal(weight) / 1000).ToString());
-                            }
-                            else
-                            {
-                                extendedRange.ExtendedRangeWeight = Int32.Parse(weight);
-                            }
-
-                        }
-
-                            if (((object[,])myvalues)[i, 11] != null)
-                            {
-                                extendedRange.WeightUoM = ((object[,])myvalues)[i, 11].ToString();
-                            }
-
-                            if (((object[,])myvalues)[i, 12] != null) {
-                           extendedRange.CCCN = Int32.Parse(((object[,])myvalues)[i, 12].ToString());
-
-                        }
-
-                            if (((object[,])myvalues)[i, 13] != null)
-                            {
-                                extendedRange.CountryofOrigin = ((object[,])myvalues)[i, 13].ToString();
-                            }
-                            if (((object[,])myvalues)[i, 14] != null)
-                            {
-                                extendedRange.UnitofMeasure = ((object[,])myvalues)[i, 14].ToString();
-                            }
-
-                            if (((object[,])myvalues)[i, 15] != null) { extendedRange.PackSize = Int32.Parse(((object[,])myvalues)[i, 15].ToString()); }
-
-                            if (((object[,])myvalues)[i, 16] != null) { extendedRange.SalesUoM = Int32.Parse(((object[,])myvalues)[i, 16].ToString()); }
-
-                            if (((object[,])myvalues)[i, 17] != null)
-                            {
-                                extendedRange.CostPriceCurrency = ((object[,])myvalues)[i, 17].ToString();
-                            }
-
-                            if (((object[,])myvalues)[i, 18] != null) { extendedRange.Col1Price = Decimal.Parse(((object[,])myvalues)[i, 18].ToString()); }
-
-                            if (((object[,])myvalues)[i, 20] != null) { extendedRange.Col2Price = Decimal.Parse(((object[,])myvalues)[i, 20].ToString()); }
-
-                            if (((object[,])myvalues)[i, 22] != null) { extendedRange.Col3Price = Decimal.Parse(((object[,])myvalues)[i, 22].ToString()); }
-
-                            if (((object[,])myvalues)[i, 24] != null) { extendedRange.Col4Price = Decimal.Parse(((object[,])myvalues)[i, 24].ToString()); }
-
-                            if (((object[,])myvalues)[i, 26] != null) { extendedRange.Col5Price = Decimal.Parse(((object[,])myvalues)[i, 26].ToString()); }
-
-                            if (((object[,])myvalues)[i, 19] != null) { extendedRange.Col1Break = Int32.Parse(((object[,])myvalues)[i, 19].ToString()); }
-
-                            if (((object[,])myvalues)[i, 21] != null) { extendedRange.Col2Break = Int32.Parse(((object[,])myvalues)[i, 21].ToString()); }
-
-                            if (((object[,])myvalues)[i, 23] != null) { extendedRange.Col3Break = Int32.Parse(((object[,])myvalues)[i, 23].ToString()); }
-
-                            if (((object[,])myvalues)[i, 25] != null) { extendedRange.Col4Break = Int32.Parse(((object[,])myvalues)[i, 25].ToString()); }
-
-                            if (((object[,])myvalues)[i, 27] != null) { extendedRange.Col5Break = Int32.Parse(((object[,])myvalues)[i, 27].ToString()); }
-                            if (((object[,])myvalues)[i, 28] != null) { extendedRange.DiscountedPrice1 = Decimal.Parse(((object[,])myvalues)[i, 28].ToString()); }
-                            if (((object[,])myvalues)[i, 29] != null) { extendedRange.DiscountedPrice2 = Decimal.Parse(((object[,])myvalues)[i, 29].ToString()); }
-                            if (((object[,])myvalues)[i, 30] != null) { extendedRange.DiscountedPrice3 = Decimal.Parse(((object[,])myvalues)[i, 30].ToString()); }
-                            if (((object[,])myvalues)[i, 31] != null) { extendedRange.DiscountedPrice4 = Decimal.Parse(((object[,])myvalues)[i, 31].ToString()); }
-                            if (((object[,])myvalues)[i, 32] != null)
-                            {
-                                extendedRange.DiscountedPrice5 = Decimal.Parse(((object[,])myvalues)[i, 32].ToString());
-                            }
-
-
-
-                            IME.ExtendedRangeADD(
-                                extendedRange.ArticleNo
-               , extendedRange.Brand
-               , extendedRange.MPN
-               , extendedRange.ArticleDescription
-               , extendedRange.ExtendedRangeLength
-               , extendedRange.Width
-               , extendedRange.Height
-               , extendedRange.DimensionUoM
-               , extendedRange.WeightUoM
-               , extendedRange.CCCN
-               , extendedRange.CountryofOrigin
-               , extendedRange.UnitofMeasure
-               , extendedRange.PackSize
-               , extendedRange.SalesUoM
-               , extendedRange.CostPriceCurrency
-               , extendedRange.Col1Price
-               , extendedRange.Col2Price
-               , extendedRange.Col3Price
-               , extendedRange.Col4Price
-               , extendedRange.Col5Price
-               , extendedRange.Col1Break
-               , extendedRange.Col2Break
-               , extendedRange.Col3Break
-               , extendedRange.Col4Break
-               , extendedRange.Col5Break
-               , extendedRange.DiscountedPrice1
-               , extendedRange.DiscountedPrice2
-               , extendedRange.DiscountedPrice3
-               , extendedRange.DiscountedPrice4
-               , extendedRange.DiscountedPrice5
-               , extendedRange.ManufacturerCode
-               , extendedRange.ExtendedRangeWeight
-
-
-                                );
-                            }
-
-                }
-                else
-                {
-                    for (int i = 2; i <= (myvalues.Length / 32); i++)
-                    {
-                        ExtendedRange extendedRange = new ExtendedRange();
-                        for (int j = 0; j < 32; j++)
-                        {
-
-                            switch (((object[,])myvalues)[1, j].ToString())
-                            {
-                                case "ArticleNo":
-                                    extendedRange.ArticleNo = ((object[,])myvalues)[i, j].ToString();
-                                    break;
-                                case "Manufacturer Code":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.ManufacturerCode = ((object[,])myvalues)[i, j].ToString(); }
-                                    break;
-                                case "Brand":
-                                    extendedRange.Brand = ((object[,])myvalues)[i, j].ToString();
-                                    break;
-                                case "MPN":
-                                    extendedRange.MPN = ((object[,])myvalues)[i, j].ToString();
-                                    break;
-                                case "ArticleDescription (40 Char Description)":
-                                    extendedRange.ArticleDescription = ((object[,])myvalues)[i, j].ToString();
-                                    break;
-                                case "Length":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.ExtendedRangeLength = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
-                                    break;
-                                case "Width":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.Width = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
-                                    break;
-                                case "Height":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.Height = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
-                                    break;
-                                case "Dimension UoM":
-                                    extendedRange.DimensionUoM = ((object[,])myvalues)[i, j].ToString();
-                                    break;
-                                case "Weight":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.ExtendedRangeWeight = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
-                                    break;
-                                case "Weight UoM":
-                                    extendedRange.WeightUoM = ((object[,])myvalues)[i, j].ToString();
-                                    break;
-                                case "CCCN":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.CCCN = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
-                                    break;
-                                case "Country of Origin":
-                                    extendedRange.CountryofOrigin = ((object[,])myvalues)[i, j].ToString();
-                                    break;
-                                case "Unit of Measure":
-                                    extendedRange.UnitofMeasure = ((object[,])myvalues)[i, j].ToString();
-                                    break;
-                                case "Pack Size":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.PackSize = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
-                                    break;
-                                case "(Sales UoM)":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.SalesUoM = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
-                                    break;
-                                case "Cost price currency":
-                                    extendedRange.CostPriceCurrency = ((object[,])myvalues)[i, j].ToString();
-                                    break;
-                                case "Col1Price":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.Col1Price = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
-                                    break;
-                                case "Col2Price":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.Col2Price = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
-                                    break;
-                                case "Col3Price":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.Col3Price = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
-                                    break;
-                                case "Col4Price":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.Col4Price = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
-                                    break;
-                                case "Col5Price":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.Col5Price = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
-                                    break;
-                                case "Col1Break":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.Col1Break = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
-                                    break;
-                                case "Col2Break":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.Col2Break = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
-                                    break;
-                                case "Col3Break":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.Col3Break = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
-                                    break;
-                                case "Col4Break":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.Col4Break = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
-                                    break;
-                                case "Col5Break":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.Col5Break = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
-                                    break;
-                                case "DiscountedPrice1":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.DiscountedPrice1 = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
-                                    break;
-                                case "DiscountedPrice2":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.DiscountedPrice2 = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
-                                    break;
-                                case "DiscountedPrice3":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.DiscountedPrice3 = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
-                                    break;
-                                case "DiscountedPrice4":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.DiscountedPrice4 = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
-                                    break;
-                                case "DiscountedPrice5":
-                                    if (((object[,])myvalues)[i, j].ToString() != "") { extendedRange.DiscountedPrice5 = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
-                                    break;
-                                case "":
-                                    break;
-                            }
-                        }
+                        extendedRange.Brand = ((object[,])myvalues)[i, 3].ToString();
                     }
+                    if (((object[,])myvalues)[i, 4] != null)
+                    {
+                        extendedRange.MPN = ((object[,])myvalues)[i, 4].ToString();
+                    }
+                    if (((object[,])myvalues)[i, 5] != null)
+                    {
+                        extendedRange.ArticleDescription = ((object[,])myvalues)[i, 5].ToString();
+                    }
+
+                    if (((object[,])myvalues)[i, 6] != null) { extendedRange.ExtendedRangeLength = Decimal.Parse(((object[,])myvalues)[i, 6].ToString()); }
+
+                    if (((object[,])myvalues)[i, 7] != null) { extendedRange.Width = Decimal.Parse(((object[,])myvalues)[i, 7].ToString()); }
+
+                    if (((object[,])myvalues)[i, 8] != null) { extendedRange.Height = Decimal.Parse(((object[,])myvalues)[i, 8].ToString()); }
+
+                    if (((object[,])myvalues)[i, 9] != null)
+                    {
+                        extendedRange.DimensionUoM = ((object[,])myvalues)[i, 9].ToString();
+                    }
+
+                    if (((object[,])myvalues)[i, 10] != null)
+
+                    {
+
+                        extendedRange.ExtendedRangeWeight = decimal.Parse(((object[,])myvalues)[i, 10].ToString());
+
+
+                    }
+
+                    if (((object[,])myvalues)[i, 11] != null)
+                    {
+                        extendedRange.WeightUoM = ((object[,])myvalues)[i, 11].ToString();
+                    }
+
+                    if (((object[,])myvalues)[i, 12] != null)
+                    {
+                        extendedRange.CCCN = Int32.Parse(((object[,])myvalues)[i, 12].ToString());
+
+                    }
+
+                    if (((object[,])myvalues)[i, 13] != null)
+                    {
+                        extendedRange.CountryofOrigin = ((object[,])myvalues)[i, 13].ToString();
+                    }
+                    if (((object[,])myvalues)[i, 14] != null)
+                    {
+                        extendedRange.UnitofMeasure = ((object[,])myvalues)[i, 14].ToString();
+                    }
+
+                    if (((object[,])myvalues)[i, 15] != null) { extendedRange.PackSize = Int32.Parse(((object[,])myvalues)[i, 15].ToString()); }
+
+                    if (((object[,])myvalues)[i, 16] != null) { extendedRange.SalesUoM = Int32.Parse(((object[,])myvalues)[i, 16].ToString()); }
+
+                    if (((object[,])myvalues)[i, 17] != null)
+                    {
+                        extendedRange.CostPriceCurrency = ((object[,])myvalues)[i, 17].ToString();
+                    }
+
+                    if (((object[,])myvalues)[i, 18] != null) { extendedRange.Col1Price = Decimal.Parse(((object[,])myvalues)[i, 18].ToString()); }
+
+                    if (((object[,])myvalues)[i, 20] != null) { extendedRange.Col2Price = Decimal.Parse(((object[,])myvalues)[i, 20].ToString()); }
+
+                    if (((object[,])myvalues)[i, 22] != null) { extendedRange.Col3Price = Decimal.Parse(((object[,])myvalues)[i, 22].ToString()); }
+
+                    if (((object[,])myvalues)[i, 24] != null) { extendedRange.Col4Price = Decimal.Parse(((object[,])myvalues)[i, 24].ToString()); }
+
+                    if (((object[,])myvalues)[i, 26] != null) { extendedRange.Col5Price = Decimal.Parse(((object[,])myvalues)[i, 26].ToString()); }
+
+                    if (((object[,])myvalues)[i, 19] != null) { extendedRange.Col1Break = Int32.Parse(((object[,])myvalues)[i, 19].ToString()); }
+
+                    if (((object[,])myvalues)[i, 21] != null) { extendedRange.Col2Break = Int32.Parse(((object[,])myvalues)[i, 21].ToString()); }
+
+                    if (((object[,])myvalues)[i, 23] != null) { extendedRange.Col3Break = Int32.Parse(((object[,])myvalues)[i, 23].ToString()); }
+
+                    if (((object[,])myvalues)[i, 25] != null) { extendedRange.Col4Break = Int32.Parse(((object[,])myvalues)[i, 25].ToString()); }
+
+                    if (((object[,])myvalues)[i, 27] != null) { extendedRange.Col5Break = Int32.Parse(((object[,])myvalues)[i, 27].ToString()); }
+                    if (((object[,])myvalues)[i, 28] != null) { extendedRange.DiscountedPrice1 = Decimal.Parse(((object[,])myvalues)[i, 28].ToString()); }
+                    if (((object[,])myvalues)[i, 29] != null) { extendedRange.DiscountedPrice2 = Decimal.Parse(((object[,])myvalues)[i, 29].ToString()); }
+                    if (((object[,])myvalues)[i, 30] != null) { extendedRange.DiscountedPrice3 = Decimal.Parse(((object[,])myvalues)[i, 30].ToString()); }
+                    if (((object[,])myvalues)[i, 31] != null) { extendedRange.DiscountedPrice4 = Decimal.Parse(((object[,])myvalues)[i, 31].ToString()); }
+                    if (((object[,])myvalues)[i, 32] != null)
+                    {
+                        extendedRange.DiscountedPrice5 = Decimal.Parse(((object[,])myvalues)[i, 32].ToString());
+                    }
+
+
+
+                    IME.ExtendedRangeADD(
+                        extendedRange.ArticleNo
+       , extendedRange.Brand
+       , extendedRange.MPN
+       , extendedRange.ArticleDescription
+       , extendedRange.ExtendedRangeLength
+       , extendedRange.Width
+       , extendedRange.Height
+       , extendedRange.DimensionUoM
+       , extendedRange.WeightUoM
+       , extendedRange.CCCN
+       , extendedRange.CountryofOrigin
+       , extendedRange.UnitofMeasure
+       , extendedRange.PackSize
+       , extendedRange.SalesUoM
+       , extendedRange.CostPriceCurrency
+       , extendedRange.Col1Price
+       , extendedRange.Col2Price
+       , extendedRange.Col3Price
+       , extendedRange.Col4Price
+       , extendedRange.Col5Price
+       , extendedRange.Col1Break
+       , extendedRange.Col2Break
+       , extendedRange.Col3Break
+       , extendedRange.Col4Break
+       , extendedRange.Col5Break
+       , extendedRange.DiscountedPrice1
+       , extendedRange.DiscountedPrice2
+       , extendedRange.DiscountedPrice3
+       , extendedRange.DiscountedPrice4
+       , extendedRange.DiscountedPrice5
+       , extendedRange.ManufacturerCode
+       , extendedRange.ExtendedRangeWeight
+
+
+                        );
                 }
 
-                }
+                //}
+                //else
+                //{
+                //    for (int i = 2; i <= (myvalues.Length / 32); i++)
+                //    {
+                //        ExtendedRange extendedRange = new ExtendedRange();
+                //        for (int j = 1; j < 32; j++)
+                //        {
+
+                //            switch (((object[,])myvalues)[1, j].ToString())
+                //            {
+                //                    case "ArticleNo":
+                //                        extendedRange.ArticleNo = ((object[,])myvalues)[i, j].ToString();
+                //                        break;
+                //                    case "Manufacturer Code":
+                //                        if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") { extendedRange.ManufacturerCode = ((object[,])myvalues)[i, j].ToString(); }
+                //        break;
+                //                case "Brand":
+                //                        if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") extendedRange.Brand = ((object[,])myvalues)[i, j].ToString();
+                //        break;
+                //                case "MPN":
+                //                        if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") extendedRange.MPN = ((object[,])myvalues)[i, j].ToString();
+                //        break;
+                //                case "ArticleDescription (40 Char Description)":
+                //                        if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "")extendedRange.ArticleDescription = ((object[,])myvalues)[i, j].ToString();
+                //        break;
+                //                case "Length":
+                //                    if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") { extendedRange.ExtendedRangeLength = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                //        break;
+                //                case "Width":
+                //                    if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") { extendedRange.Width = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                //        break;
+                //                case "Height":
+                //                    if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") { extendedRange.Height = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                //        break;
+                //                case "Dimension UoM":
+                //                        if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "" ) extendedRange.DimensionUoM = ((object[,])myvalues)[i, j].ToString();
+                //        break;
+                //                case "Weight":
+                //                    if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") { extendedRange.ExtendedRangeWeight = decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                //        break;
+                //                case "Weight UoM":
+                //                        if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") extendedRange.WeightUoM = ((object[,])myvalues)[i, j].ToString();
+                //        break;
+                //                case "CCCN":
+                //                    if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") { extendedRange.CCCN = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
+                //        break;
+                //                case "Country of Origin":
+                //                        if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") extendedRange.CountryofOrigin = ((object[,])myvalues)[i, j].ToString();
+                //        break;
+                //                case "Unit of Measure":
+                //                        if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") extendedRange.UnitofMeasure = ((object[,])myvalues)[i, j].ToString();
+                //        break;
+                //                case "Pack Size":
+                //                    if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") { extendedRange.PackSize = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
+                //        break;
+                //                case "(Sales UoM)":
+                //                    if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") { extendedRange.SalesUoM = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
+                //        break;
+                //                case "Cost price currency":
+                //                        if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") extendedRange.CostPriceCurrency = ((object[,])myvalues)[i, j].ToString();
+                //        break;
+                //                case "Col1Price":
+                //                    if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") { extendedRange.Col1Price = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                //        break;
+                //                case "Col2Price":
+                //                    if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") { extendedRange.Col2Price = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                //        break;
+                //                case "Col3Price":
+                //                    if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") { extendedRange.Col3Price = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                //        break;
+                //                case "Col4Price":
+                //                    if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") { extendedRange.Col4Price = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                //        break;
+                //                case "Col5Price":
+                //                    if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") { extendedRange.Col5Price = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                //        break;
+                //                case "Col1Break":
+                //                    if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") { extendedRange.Col1Break = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
+                //        break;
+                //                case "Col2Break":
+                //                    if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") { extendedRange.Col2Break = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
+                //        break;
+                //                case "Col3Break":
+                //                    if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") { extendedRange.Col3Break = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
+                //        break;
+                //                case "Col4Break":
+                //                    if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") { extendedRange.Col4Break = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
+                //        break;
+                //                case "Col5Break":
+                //                    if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") { extendedRange.Col5Break = Int32.Parse(((object[,])myvalues)[i, j].ToString()); }
+                //        break;
+                //                case "DiscountedPrice1":
+                //                    if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") { extendedRange.DiscountedPrice1 = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                //        break;
+                //                case "DiscountedPrice2":
+                //                    if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") { extendedRange.DiscountedPrice2 = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                //        break;
+                //                case "DiscountedPrice3":
+                //                    if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") { extendedRange.DiscountedPrice3 = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                //        break;
+                //                case "DiscountedPrice4":
+                //                    if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") { extendedRange.DiscountedPrice4 = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                //        break;
+                //                case "DiscountedPrice5":
+                //                    if (((object[,])myvalues)[i, j] != null && ((object[,])myvalues)[i, j] != "") { extendedRange.DiscountedPrice5 = Decimal.Parse(((object[,])myvalues)[i, j].ToString()); }
+                //        break;
+                //                case "":
+                //                    break;
+
+                //    }
 
 
+                //}
+                //            IME.ExtendedRangeADD(
+                //                   extendedRange.ArticleNo
+                //  , extendedRange.Brand
+                //  , extendedRange.MPN
+                //  , extendedRange.ArticleDescription
+                //  , extendedRange.ExtendedRangeLength
+                //  , extendedRange.Width
+                //  , extendedRange.Height
+                //  , extendedRange.DimensionUoM
+                //  , extendedRange.WeightUoM
+                //  , extendedRange.CCCN
+                //  , extendedRange.CountryofOrigin
+                //  , extendedRange.UnitofMeasure
+                //  , extendedRange.PackSize
+                //  , extendedRange.SalesUoM
+                //  , extendedRange.CostPriceCurrency
+                //  , extendedRange.Col1Price
+                //  , extendedRange.Col2Price
+                //  , extendedRange.Col3Price
+                //  , extendedRange.Col4Price
+                //  , extendedRange.Col5Price
+                //  , extendedRange.Col1Break
+                //  , extendedRange.Col2Break
+                //  , extendedRange.Col3Break
+                //  , extendedRange.Col4Break
+                //  , extendedRange.Col5Break
+                //  , extendedRange.DiscountedPrice1
+                //  , extendedRange.DiscountedPrice2
+                //  , extendedRange.DiscountedPrice3
+                //  , extendedRange.DiscountedPrice4
+                //  , extendedRange.DiscountedPrice5
+                //  , extendedRange.ManufacturerCode
+                //  , extendedRange.ExtendedRangeWeight);
+                //        }
+                //}
+
+                //}
+
+            }
 
 
                 //

@@ -100,17 +100,13 @@ namespace LoginForm.Account.Services
             try
             {
                 var adaptor = db.CurrencyComboByDate(date).ToList();
-
                 dtbl.Columns.Add("currencyName");
                 dtbl.Columns.Add("exchangeRateId");
-
                 foreach (var item in adaptor)
                 {
                     DataRow row = dtbl.NewRow();
-
                     row["currencyName"] = item.currencyName;
                     row["exchangeRateId"] = item.exchangeRateId;
-
                     dtbl.Rows.Add(row);
                 }
 

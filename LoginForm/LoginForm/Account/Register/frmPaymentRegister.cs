@@ -29,12 +29,13 @@ namespace LoginForm
                 TransactionsGeneralFill obj = new TransactionsGeneralFill();
                 dtbl = obj.BankOrCashComboFill(false);
                 DataRow dr = dtbl.NewRow();
-                dr[0] = "All";
-                dr[1] = 0;
+                dr[1] = "All";
+                dr[0] = 0;
                 dtbl.Rows.InsertAt(dr, 0);
                 cmbAccountLedger.DataSource = dtbl;
-                cmbAccountLedger.DisplayMember = "ledgerName";
                 cmbAccountLedger.ValueMember = "ledgerId";
+                cmbAccountLedger.DisplayMember = "ledgerName";
+                
             }
             catch (Exception ex)
             {
