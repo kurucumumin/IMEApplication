@@ -47,7 +47,7 @@ namespace LoginForm.Account.Services
                     var row = dt.NewRow();
                     if(item.Article_No== "2550043343")
                     {
-                        
+
                     }
                     row["productName"] = item.Article_Desc;
                      row["productCode"] = item.Article_No;
@@ -152,11 +152,17 @@ namespace LoginForm.Account.Services
                     var row = dtbl.NewRow();
 
                     row["Article_No"] = item.Article_No;
+
+                    //row["barcode"] = item.barcode;
                     row["Article_Desc"] = item.Article_Desc;
                     row["qty"] = item.qty;
+                    //row["unitConversionId"] = item.unitConversionId;
+                    //row["conversionRate"] = item.conversionRate;
+                    //row["batchId"] = item.batchId;
                     row["discountPercent"] = item.discountPercent;
                     row["discount"] = item.discount;
                     row["netvalue"] = item.netvalue;
+                    //row["taxId"] = item.taxId;
                     row["taxAmount"] = item.taxAmount;
                     row["amount"] = item.amount;
 
@@ -314,7 +320,7 @@ namespace LoginForm.Account.Services
 
                 dtbl.Columns.Add("Article_No");
                 dtbl.Columns.Add("Article_Desc");
-                
+
 
                 foreach (var item in adaptor)
                 {
@@ -322,7 +328,7 @@ namespace LoginForm.Account.Services
 
                     row["Article_No"] = item.Article_No;
                     row["Article_Desc"] = item.Article_Desc;
-                    
+
 
                     dtbl.Rows.Add(row);
                 }
