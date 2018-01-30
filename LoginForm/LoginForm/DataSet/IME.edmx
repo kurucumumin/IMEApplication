@@ -15427,6 +15427,22 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherNo" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="AdvancePaymentAddWithIdentity" ReturnType="Collection(IMEModel.AdvancePaymentAddWithIdentity_Result)">
+            <Parameter Name="employeeId" Mode="In" Type="Decimal" />
+            <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
+            <Parameter Name="invoiceNo" Mode="In" Type="String" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="amount" Mode="In" Type="Decimal" />
+            <Parameter Name="salaryMonth" Mode="In" Type="DateTime" />
+            <Parameter Name="chequenumber" Mode="In" Type="String" />
+            <Parameter Name="chequeDate" Mode="In" Type="DateTime" />
+            <Parameter Name="narration" Mode="In" Type="String" />
+            <Parameter Name="suffixPrefixId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="financialYearId" Mode="In" Type="Decimal" />
+            <Parameter Name="IsAutomatic" Mode="In" Type="Boolean" />
+          </FunctionImport>
           <FunctionImport Name="AreaDeleteReference">
             <Parameter Name="areaId" Mode="In" Type="Decimal" />
           </FunctionImport>
@@ -15477,6 +15493,14 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImport Name="CashOrBankComboFill" ReturnType="Collection(IMEModel.CashOrBankComboFill_Result)" />
           <FunctionImport Name="CheckForDefaultVoucherType" ReturnType="Collection(Int32)">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="CheckSalaryAlreadyPaidOrNot" ReturnType="Collection(String)">
+            <Parameter Name="employeeId" Mode="In" Type="Decimal" />
+            <Parameter Name="month" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="CheckSalaryAlreadyPaidOrNotForAdvancePayment" ReturnType="Collection(String)">
+            <Parameter Name="employeeId" Mode="In" Type="Decimal" />
+            <Parameter Name="month" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="CreditNoteRegisterSearch" ReturnType="Collection(IMEModel.CreditNoteRegisterSearch_Result)">
             <Parameter Name="voucherNo" Mode="In" Type="String" />
@@ -16493,6 +16517,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="Decimal" Name="additionalCostId" Nullable="false" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="ledgerId" Nullable="true" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="amount" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="AdvancePaymentAddWithIdentity_Result">
+          <Property Type="Decimal" Name="Identity" Nullable="true" Precision="38" Scale="0" />
+          <Property Type="String" Name="UpdatedVoucherNo" Nullable="true" />
+          <Property Type="String" Name="UpdatedInvoiceNo" Nullable="true" />
         </ComplexType>
         <ComplexType Name="AreaOnlyViewAll_Result">
           <Property Type="Decimal" Name="areaId" Nullable="false" Precision="18" Scale="0" />
@@ -19628,6 +19657,15 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AdvancePaymentAddWithIdentity" FunctionName="IMEModel.Store.AdvancePaymentAddWithIdentity">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.AdvancePaymentAddWithIdentity_Result">
+                <ScalarProperty Name="Identity" ColumnName="Identity" />
+                <ScalarProperty Name="UpdatedVoucherNo" ColumnName="UpdatedVoucherNo" />
+                <ScalarProperty Name="UpdatedInvoiceNo" ColumnName="UpdatedInvoiceNo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="AreaDeleteReference" FunctionName="IMEModel.Store.AreaDeleteReference" />
           <FunctionImportMapping FunctionImportName="AreaOnlyViewAll" FunctionName="IMEModel.Store.AreaOnlyViewAll">
             <ResultMapping>
@@ -19766,6 +19804,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="CheckForDefaultVoucherType" FunctionName="IMEModel.Store.CheckForDefaultVoucherType" />
+          <FunctionImportMapping FunctionImportName="CheckSalaryAlreadyPaidOrNot" FunctionName="IMEModel.Store.CheckSalaryAlreadyPaidOrNot" />
+          <FunctionImportMapping FunctionImportName="CheckSalaryAlreadyPaidOrNotForAdvancePayment" FunctionName="IMEModel.Store.CheckSalaryAlreadyPaidOrNotForAdvancePayment" />
           <FunctionImportMapping FunctionImportName="CreditNoteRegisterSearch" FunctionName="IMEModel.Store.CreditNoteRegisterSearch">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.CreditNoteRegisterSearch_Result">
