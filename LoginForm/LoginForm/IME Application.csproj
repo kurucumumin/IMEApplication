@@ -340,6 +340,7 @@
     <Compile Include="Account\Services\AccountLedgerSP.cs" />
     <Compile Include="Account\Services\AdditionalCostInfo.cs" />
     <Compile Include="Account\Services\AdditionalCostSP.cs" />
+    <Compile Include="Account\Services\AdvancePaymentSP.cs" />
     <Compile Include="Account\Services\AreaSP.cs" />
     <Compile Include="Account\Services\BankReconciliationSP.cs" />
     <Compile Include="Account\Services\BatchSP.cs" />
@@ -365,6 +366,7 @@
     <Compile Include="Account\Services\LedgerPostingSP.cs" />
     <Compile Include="Account\Services\MaterialReceiptDetailsSP.cs" />
     <Compile Include="Account\Services\MaterialReceiptMasterSP.cs" />
+    <Compile Include="Account\Services\MonthlySalarySP.cs" />
     <Compile Include="Account\Services\NumToText.cs" />
     <Compile Include="Account\Services\PartyBalanceInfo.cs" />
     <Compile Include="Account\Services\PartyBalanceSP.cs" />
@@ -580,6 +582,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\AdvancePayment.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\AdvancePaymentAddWithIdentity_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Area.cs">
