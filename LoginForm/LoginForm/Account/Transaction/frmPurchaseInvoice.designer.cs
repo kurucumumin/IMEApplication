@@ -34,8 +34,12 @@ namespace Open_Miracle
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPurchaseInvoice));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -44,10 +48,7 @@ namespace Open_Miracle
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTotalAmount = new System.Windows.Forms.Label();
             this.txtTotalAmount = new System.Windows.Forms.TextBox();
             this.lblLRNo = new System.Windows.Forms.Label();
@@ -82,27 +83,6 @@ namespace Open_Miracle
             this.txtVoucherNo = new System.Windows.Forms.TextBox();
             this.lblVoucherNo = new System.Windows.Forms.Label();
             this.dgvProductDetails = new System.Windows.Forms.DataGridView();
-            this.dgvtxtSlNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxtPurchaseDetailsId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxtPurchaseOrderDetailsId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxtMaterialReceiptDetailsId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxtProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxtBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxtProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxtProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxtQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxtUnitConversionId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcmbUnit = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dgvcmbGodown = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dgvcmbRack = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dgvcmbBatch = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dgvtxtGrossValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxtDiscountPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxtDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxtNetValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcmbTax = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dgvtxtTaxAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvtxtAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblVoucherDate = new System.Windows.Forms.Label();
             this.txtVendorInvoiceNo = new System.Windows.Forms.TextBox();
             this.cmbPurchaseMode = new System.Windows.Forms.ComboBox();
@@ -141,6 +121,28 @@ namespace Open_Miracle
             this.lblVoucherDateValidator = new System.Windows.Forms.Label();
             this.lblInvoiceDateValidator = new System.Windows.Forms.Label();
             this.lblCurrencyValidator = new System.Windows.Forms.Label();
+            this.dgvtxtSlNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxtPurchaseDetailsId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxtPurchaseOrderDetailsId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxtMaterialReceiptDetailsId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxtProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxtBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxtProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxtProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxtQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxtUnitConversionId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcmbUnit = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dgvcmbGodown = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dgvcmbRack = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dgvcmbBatch = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dgvtxtRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxtGrossValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxtDiscountPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxtDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxtNetValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvcmbTax = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.dgvtxtTaxAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvtxtAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdditionalCost)).BeginInit();
@@ -150,21 +152,21 @@ namespace Open_Miracle
             // 
             this.lblTotalAmount.AutoSize = true;
             this.lblTotalAmount.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblTotalAmount.Location = new System.Drawing.Point(624, 607);
-            this.lblTotalAmount.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.lblTotalAmount.Location = new System.Drawing.Point(468, 493);
+            this.lblTotalAmount.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(92, 17);
+            this.lblTotalAmount.Size = new System.Drawing.Size(70, 13);
             this.lblTotalAmount.TabIndex = 968;
             this.lblTotalAmount.Text = "Total Amount";
             // 
             // txtTotalAmount
             // 
-            this.txtTotalAmount.Location = new System.Drawing.Point(797, 602);
-            this.txtTotalAmount.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.txtTotalAmount.Location = new System.Drawing.Point(598, 489);
+            this.txtTotalAmount.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.txtTotalAmount.Name = "txtTotalAmount";
             this.txtTotalAmount.ReadOnly = true;
             this.txtTotalAmount.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtTotalAmount.Size = new System.Drawing.Size(251, 22);
+            this.txtTotalAmount.Size = new System.Drawing.Size(189, 20);
             this.txtTotalAmount.TabIndex = 6756;
             this.txtTotalAmount.TextChanged += new System.EventHandler(this.txtTotalAmount_TextChanged);
             // 
@@ -172,19 +174,19 @@ namespace Open_Miracle
             // 
             this.lblLRNo.AutoSize = true;
             this.lblLRNo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblLRNo.Location = new System.Drawing.Point(624, 545);
-            this.lblLRNo.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.lblLRNo.Location = new System.Drawing.Point(468, 443);
+            this.lblLRNo.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.lblLRNo.Name = "lblLRNo";
-            this.lblLRNo.Size = new System.Drawing.Size(52, 17);
+            this.lblLRNo.Size = new System.Drawing.Size(41, 13);
             this.lblLRNo.TabIndex = 966;
             this.lblLRNo.Text = "LR No.";
             // 
             // txtLRNo
             // 
-            this.txtLRNo.Location = new System.Drawing.Point(795, 540);
-            this.txtLRNo.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.txtLRNo.Location = new System.Drawing.Point(596, 439);
+            this.txtLRNo.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.txtLRNo.Name = "txtLRNo";
-            this.txtLRNo.Size = new System.Drawing.Size(251, 22);
+            this.txtLRNo.Size = new System.Drawing.Size(189, 20);
             this.txtLRNo.TabIndex = 17;
             this.txtLRNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLRNo_KeyDown);
             // 
@@ -192,19 +194,19 @@ namespace Open_Miracle
             // 
             this.lblTransportationCompany.AutoSize = true;
             this.lblTransportationCompany.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblTransportationCompany.Location = new System.Drawing.Point(624, 514);
-            this.lblTransportationCompany.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.lblTransportationCompany.Location = new System.Drawing.Point(468, 418);
+            this.lblTransportationCompany.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.lblTransportationCompany.Name = "lblTransportationCompany";
-            this.lblTransportationCompany.Size = new System.Drawing.Size(164, 17);
+            this.lblTransportationCompany.Size = new System.Drawing.Size(122, 13);
             this.lblTransportationCompany.TabIndex = 964;
             this.lblTransportationCompany.Text = "Transportation Company";
             // 
             // txtTransportationCompany
             // 
-            this.txtTransportationCompany.Location = new System.Drawing.Point(795, 510);
-            this.txtTransportationCompany.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.txtTransportationCompany.Location = new System.Drawing.Point(596, 414);
+            this.txtTransportationCompany.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.txtTransportationCompany.Name = "txtTransportationCompany";
-            this.txtTransportationCompany.Size = new System.Drawing.Size(251, 22);
+            this.txtTransportationCompany.Size = new System.Drawing.Size(189, 20);
             this.txtTransportationCompany.TabIndex = 16;
             this.txtTransportationCompany.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTransportationCompany_KeyDown);
             // 
@@ -247,12 +249,12 @@ namespace Open_Miracle
             this.dgvTax.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvTax.EnableHeadersVisualStyles = false;
             this.dgvTax.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvTax.Location = new System.Drawing.Point(24, 566);
-            this.dgvTax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
+            this.dgvTax.Location = new System.Drawing.Point(18, 460);
+            this.dgvTax.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
             this.dgvTax.Name = "dgvTax";
             this.dgvTax.ReadOnly = true;
             this.dgvTax.RowHeadersVisible = false;
-            this.dgvTax.Size = new System.Drawing.Size(591, 112);
+            this.dgvTax.Size = new System.Drawing.Size(443, 91);
             this.dgvTax.TabIndex = 18;
             this.dgvTax.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvTax_RowsAdded);
             // 
@@ -340,10 +342,10 @@ namespace Open_Miracle
             // 
             this.lblCreditPeriod.AutoSize = true;
             this.lblCreditPeriod.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblCreditPeriod.Location = new System.Drawing.Point(645, 85);
-            this.lblCreditPeriod.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.lblCreditPeriod.Location = new System.Drawing.Point(484, 69);
+            this.lblCreditPeriod.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.lblCreditPeriod.Name = "lblCreditPeriod";
-            this.lblCreditPeriod.Size = new System.Drawing.Size(90, 17);
+            this.lblCreditPeriod.Size = new System.Drawing.Size(67, 13);
             this.lblCreditPeriod.TabIndex = 960;
             this.lblCreditPeriod.Text = "Credit Period";
             // 
@@ -351,10 +353,9 @@ namespace Open_Miracle
             // 
             this.cbxPrintAfterSave.AutoSize = true;
             this.cbxPrintAfterSave.ForeColor = System.Drawing.Color.White;
-            this.cbxPrintAfterSave.Location = new System.Drawing.Point(24, 710);
-            this.cbxPrintAfterSave.Margin = new System.Windows.Forms.Padding(4);
+            this.cbxPrintAfterSave.Location = new System.Drawing.Point(18, 577);
             this.cbxPrintAfterSave.Name = "cbxPrintAfterSave";
-            this.cbxPrintAfterSave.Size = new System.Drawing.Size(126, 21);
+            this.cbxPrintAfterSave.Size = new System.Drawing.Size(97, 17);
             this.cbxPrintAfterSave.TabIndex = 20;
             this.cbxPrintAfterSave.Text = "Print after save";
             this.cbxPrintAfterSave.UseVisualStyleBackColor = true;
@@ -364,10 +365,10 @@ namespace Open_Miracle
             // 
             this.lblInvoiceDate.AutoSize = true;
             this.lblInvoiceDate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblInvoiceDate.Location = new System.Drawing.Point(645, 54);
-            this.lblInvoiceDate.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.lblInvoiceDate.Location = new System.Drawing.Point(484, 44);
+            this.lblInvoiceDate.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.lblInvoiceDate.Name = "lblInvoiceDate";
-            this.lblInvoiceDate.Size = new System.Drawing.Size(86, 17);
+            this.lblInvoiceDate.Size = new System.Drawing.Size(68, 13);
             this.lblInvoiceDate.TabIndex = 957;
             this.lblInvoiceDate.Text = "Invoice Date";
             // 
@@ -375,20 +376,20 @@ namespace Open_Miracle
             // 
             this.lblBillDiscount.AutoSize = true;
             this.lblBillDiscount.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblBillDiscount.Location = new System.Drawing.Point(624, 638);
-            this.lblBillDiscount.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.lblBillDiscount.Location = new System.Drawing.Point(468, 518);
+            this.lblBillDiscount.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.lblBillDiscount.Name = "lblBillDiscount";
-            this.lblBillDiscount.Size = new System.Drawing.Size(85, 17);
+            this.lblBillDiscount.Size = new System.Drawing.Size(65, 13);
             this.lblBillDiscount.TabIndex = 956;
             this.lblBillDiscount.Text = "Bill Discount";
             // 
             // txtBillDiscount
             // 
-            this.txtBillDiscount.Location = new System.Drawing.Point(797, 633);
-            this.txtBillDiscount.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.txtBillDiscount.Location = new System.Drawing.Point(598, 514);
+            this.txtBillDiscount.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.txtBillDiscount.Name = "txtBillDiscount";
             this.txtBillDiscount.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtBillDiscount.Size = new System.Drawing.Size(251, 22);
+            this.txtBillDiscount.Size = new System.Drawing.Size(189, 20);
             this.txtBillDiscount.TabIndex = 19;
             this.txtBillDiscount.Text = "0";
             this.txtBillDiscount.TextChanged += new System.EventHandler(this.txtBillDiscount_TextChanged);
@@ -401,10 +402,10 @@ namespace Open_Miracle
             // 
             this.cmbCashOrParty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCashOrParty.FormattingEnabled = true;
-            this.cmbCashOrParty.Location = new System.Drawing.Point(167, 80);
-            this.cmbCashOrParty.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.cmbCashOrParty.Location = new System.Drawing.Point(125, 65);
+            this.cmbCashOrParty.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.cmbCashOrParty.Name = "cmbCashOrParty";
-            this.cmbCashOrParty.Size = new System.Drawing.Size(265, 24);
+            this.cmbCashOrParty.Size = new System.Drawing.Size(200, 21);
             this.cmbCashOrParty.TabIndex = 4;
             this.cmbCashOrParty.SelectedIndexChanged += new System.EventHandler(this.cmbCashOrParty_SelectedIndexChanged);
             this.cmbCashOrParty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbCashOrParty_KeyDown);
@@ -413,10 +414,10 @@ namespace Open_Miracle
             // 
             this.lblCashOrParty.AutoSize = true;
             this.lblCashOrParty.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblCashOrParty.Location = new System.Drawing.Point(27, 85);
-            this.lblCashOrParty.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.lblCashOrParty.Location = new System.Drawing.Point(20, 69);
+            this.lblCashOrParty.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.lblCashOrParty.Name = "lblCashOrParty";
-            this.lblCashOrParty.Size = new System.Drawing.Size(95, 17);
+            this.lblCashOrParty.Size = new System.Drawing.Size(72, 13);
             this.lblCashOrParty.TabIndex = 952;
             this.lblCashOrParty.Text = "Vendor Name";
             // 
@@ -424,10 +425,10 @@ namespace Open_Miracle
             // 
             this.lblVendorInvoiceNo.AutoSize = true;
             this.lblVendorInvoiceNo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblVendorInvoiceNo.Location = new System.Drawing.Point(27, 54);
-            this.lblVendorInvoiceNo.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.lblVendorInvoiceNo.Location = new System.Drawing.Point(20, 44);
+            this.lblVendorInvoiceNo.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.lblVendorInvoiceNo.Name = "lblVendorInvoiceNo";
-            this.lblVendorInvoiceNo.Size = new System.Drawing.Size(128, 17);
+            this.lblVendorInvoiceNo.Size = new System.Drawing.Size(99, 13);
             this.lblVendorInvoiceNo.TabIndex = 950;
             this.lblVendorInvoiceNo.Text = "Vendor Invoice No.";
             // 
@@ -438,10 +439,9 @@ namespace Open_Miracle
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(936, 698);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClose.Location = new System.Drawing.Point(702, 567);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(113, 33);
+            this.btnClose.Size = new System.Drawing.Size(85, 27);
             this.btnClose.TabIndex = 24;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -454,10 +454,9 @@ namespace Open_Miracle
             this.btnDelete.FlatAppearance.BorderSize = 0;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(815, 698);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDelete.Location = new System.Drawing.Point(611, 567);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(113, 33);
+            this.btnDelete.Size = new System.Drawing.Size(85, 27);
             this.btnDelete.TabIndex = 23;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -470,10 +469,9 @@ namespace Open_Miracle
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(572, 698);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSave.Location = new System.Drawing.Point(429, 567);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(113, 33);
+            this.btnSave.Size = new System.Drawing.Size(85, 27);
             this.btnSave.TabIndex = 21;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -486,10 +484,9 @@ namespace Open_Miracle
             this.btnClear.FlatAppearance.BorderSize = 0;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(693, 698);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClear.Location = new System.Drawing.Point(520, 567);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(113, 33);
+            this.btnClear.Size = new System.Drawing.Size(85, 27);
             this.btnClear.TabIndex = 22;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -501,10 +498,10 @@ namespace Open_Miracle
             this.lnklblRemove.AutoSize = true;
             this.lnklblRemove.ForeColor = System.Drawing.Color.Yellow;
             this.lnklblRemove.LinkColor = System.Drawing.Color.Yellow;
-            this.lnklblRemove.Location = new System.Drawing.Point(985, 421);
-            this.lnklblRemove.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.lnklblRemove.Location = new System.Drawing.Point(739, 342);
+            this.lnklblRemove.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.lnklblRemove.Name = "lnklblRemove";
-            this.lnklblRemove.Size = new System.Drawing.Size(60, 17);
+            this.lnklblRemove.Size = new System.Drawing.Size(47, 13);
             this.lnklblRemove.TabIndex = 254;
             this.lnklblRemove.TabStop = true;
             this.lnklblRemove.Text = "Remove";
@@ -512,11 +509,11 @@ namespace Open_Miracle
             // 
             // txtNarration
             // 
-            this.txtNarration.Location = new System.Drawing.Point(795, 442);
-            this.txtNarration.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.txtNarration.Location = new System.Drawing.Point(596, 359);
+            this.txtNarration.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.txtNarration.Multiline = true;
             this.txtNarration.Name = "txtNarration";
-            this.txtNarration.Size = new System.Drawing.Size(251, 61);
+            this.txtNarration.Size = new System.Drawing.Size(189, 50);
             this.txtNarration.TabIndex = 15;
             this.txtNarration.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNarration_KeyDown);
             // 
@@ -524,19 +521,19 @@ namespace Open_Miracle
             // 
             this.lblNarration.AutoSize = true;
             this.lblNarration.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblNarration.Location = new System.Drawing.Point(624, 442);
-            this.lblNarration.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.lblNarration.Location = new System.Drawing.Point(468, 359);
+            this.lblNarration.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.lblNarration.Name = "lblNarration";
-            this.lblNarration.Size = new System.Drawing.Size(67, 17);
+            this.lblNarration.Size = new System.Drawing.Size(50, 13);
             this.lblNarration.TabIndex = 943;
             this.lblNarration.Text = "Narration";
             // 
             // txtVoucherNo
             // 
-            this.txtVoucherNo.Location = new System.Drawing.Point(167, 18);
-            this.txtVoucherNo.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.txtVoucherNo.Location = new System.Drawing.Point(125, 15);
+            this.txtVoucherNo.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.txtVoucherNo.Name = "txtVoucherNo";
-            this.txtVoucherNo.Size = new System.Drawing.Size(265, 22);
+            this.txtVoucherNo.Size = new System.Drawing.Size(200, 20);
             this.txtVoucherNo.TabIndex = 0;
             this.txtVoucherNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVoucherNo_KeyDown);
             // 
@@ -544,10 +541,10 @@ namespace Open_Miracle
             // 
             this.lblVoucherNo.AutoSize = true;
             this.lblVoucherNo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblVoucherNo.Location = new System.Drawing.Point(27, 23);
-            this.lblVoucherNo.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            this.lblVoucherNo.Location = new System.Drawing.Point(20, 19);
+            this.lblVoucherNo.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.lblVoucherNo.Name = "lblVoucherNo";
-            this.lblVoucherNo.Size = new System.Drawing.Size(87, 17);
+            this.lblVoucherNo.Size = new System.Drawing.Size(67, 13);
             this.lblVoucherNo.TabIndex = 941;
             this.lblVoucherNo.Text = "Voucher No.";
             // 
@@ -581,6 +578,7 @@ namespace Open_Miracle
             this.dgvcmbGodown,
             this.dgvcmbRack,
             this.dgvcmbBatch,
+            this.dgvtxtRate,
             this.dgvtxtGrossValue,
             this.dgvtxtDiscountPercent,
             this.dgvtxtDiscount,
@@ -588,29 +586,29 @@ namespace Open_Miracle
             this.dgvcmbTax,
             this.dgvtxtTaxAmount,
             this.dgvtxtAmount});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(202)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProductDetails.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(202)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProductDetails.DefaultCellStyle = dataGridViewCellStyle13;
             this.dgvProductDetails.EnableHeadersVisualStyles = false;
             this.dgvProductDetails.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvProductDetails.Location = new System.Drawing.Point(24, 214);
-            this.dgvProductDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 12);
+            this.dgvProductDetails.Location = new System.Drawing.Point(18, 174);
+            this.dgvProductDetails.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.dgvProductDetails.Name = "dgvProductDetails";
             this.dgvProductDetails.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
-            this.dgvProductDetails.Size = new System.Drawing.Size(1020, 204);
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductDetails.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            this.dgvProductDetails.Size = new System.Drawing.Size(765, 166);
             this.dgvProductDetails.TabIndex = 13;
             this.dgvProductDetails.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductDetails_CellEndEdit);
             this.dgvProductDetails.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductDetails_CellEnter);
@@ -619,6 +617,469 @@ namespace Open_Miracle
             this.dgvProductDetails.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvProductDetails_DataError);
             this.dgvProductDetails.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvProductDetails_EditingControlShowing);
             this.dgvProductDetails.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvProductDetails_KeyDown);
+            // 
+            // lblVoucherDate
+            // 
+            this.lblVoucherDate.AutoSize = true;
+            this.lblVoucherDate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblVoucherDate.Location = new System.Drawing.Point(484, 19);
+            this.lblVoucherDate.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.lblVoucherDate.Name = "lblVoucherDate";
+            this.lblVoucherDate.Size = new System.Drawing.Size(73, 13);
+            this.lblVoucherDate.TabIndex = 938;
+            this.lblVoucherDate.Text = "Voucher Date";
+            // 
+            // txtVendorInvoiceNo
+            // 
+            this.txtVendorInvoiceNo.Location = new System.Drawing.Point(125, 40);
+            this.txtVendorInvoiceNo.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.txtVendorInvoiceNo.Name = "txtVendorInvoiceNo";
+            this.txtVendorInvoiceNo.Size = new System.Drawing.Size(200, 20);
+            this.txtVendorInvoiceNo.TabIndex = 2;
+            this.txtVendorInvoiceNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVendorInvoiceNo_KeyDown);
+            // 
+            // cmbPurchaseMode
+            // 
+            this.cmbPurchaseMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPurchaseMode.ForeColor = System.Drawing.Color.Maroon;
+            this.cmbPurchaseMode.FormattingEnabled = true;
+            this.cmbPurchaseMode.Items.AddRange(new object[] {
+            "NA",
+            "Against PurchaseOrder",
+            "Against MaterialReceipt"});
+            this.cmbPurchaseMode.Location = new System.Drawing.Point(125, 91);
+            this.cmbPurchaseMode.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.cmbPurchaseMode.Name = "cmbPurchaseMode";
+            this.cmbPurchaseMode.Size = new System.Drawing.Size(200, 21);
+            this.cmbPurchaseMode.TabIndex = 7;
+            this.cmbPurchaseMode.SelectedIndexChanged += new System.EventHandler(this.cmbPurchaseMode_SelectedIndexChanged);
+            this.cmbPurchaseMode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBillDiscount_KeyDown);
+            // 
+            // lblPurchaseMode
+            // 
+            this.lblPurchaseMode.AutoSize = true;
+            this.lblPurchaseMode.ForeColor = System.Drawing.Color.Maroon;
+            this.lblPurchaseMode.Location = new System.Drawing.Point(20, 95);
+            this.lblPurchaseMode.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.lblPurchaseMode.Name = "lblPurchaseMode";
+            this.lblPurchaseMode.Size = new System.Drawing.Size(82, 13);
+            this.lblPurchaseMode.TabIndex = 970;
+            this.lblPurchaseMode.Text = "Purchase Mode";
+            // 
+            // cmbPurchaseAccount
+            // 
+            this.cmbPurchaseAccount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPurchaseAccount.FormattingEnabled = true;
+            this.cmbPurchaseAccount.Location = new System.Drawing.Point(572, 117);
+            this.cmbPurchaseAccount.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.cmbPurchaseAccount.Name = "cmbPurchaseAccount";
+            this.cmbPurchaseAccount.Size = new System.Drawing.Size(169, 21);
+            this.cmbPurchaseAccount.TabIndex = 10;
+            this.cmbPurchaseAccount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbPurchaseAccount_KeyDown);
+            // 
+            // lblPurchaseAccount
+            // 
+            this.lblPurchaseAccount.AutoSize = true;
+            this.lblPurchaseAccount.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblPurchaseAccount.Location = new System.Drawing.Point(484, 121);
+            this.lblPurchaseAccount.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.lblPurchaseAccount.Name = "lblPurchaseAccount";
+            this.lblPurchaseAccount.Size = new System.Drawing.Size(72, 13);
+            this.lblPurchaseAccount.TabIndex = 972;
+            this.lblPurchaseAccount.Text = "Purchase a/c";
+            // 
+            // txtCreditPeriod
+            // 
+            this.txtCreditPeriod.Location = new System.Drawing.Point(572, 65);
+            this.txtCreditPeriod.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.txtCreditPeriod.MaxLength = 3;
+            this.txtCreditPeriod.Name = "txtCreditPeriod";
+            this.txtCreditPeriod.Size = new System.Drawing.Size(169, 20);
+            this.txtCreditPeriod.TabIndex = 6;
+            this.txtCreditPeriod.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCreditPeriod_KeyDown);
+            this.txtCreditPeriod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCreditPeriod_KeyPress);
+            // 
+            // lblDays
+            // 
+            this.lblDays.AutoSize = true;
+            this.lblDays.ForeColor = System.Drawing.Color.Yellow;
+            this.lblDays.Location = new System.Drawing.Point(742, 69);
+            this.lblDays.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.lblDays.Name = "lblDays";
+            this.lblDays.Size = new System.Drawing.Size(31, 13);
+            this.lblDays.TabIndex = 975;
+            this.lblDays.Text = "Days";
+            // 
+            // cmbOrderNo
+            // 
+            this.cmbOrderNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbOrderNo.ForeColor = System.Drawing.Color.Maroon;
+            this.cmbOrderNo.FormattingEnabled = true;
+            this.cmbOrderNo.Location = new System.Drawing.Point(125, 117);
+            this.cmbOrderNo.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.cmbOrderNo.Name = "cmbOrderNo";
+            this.cmbOrderNo.Size = new System.Drawing.Size(200, 21);
+            this.cmbOrderNo.TabIndex = 9;
+            this.cmbOrderNo.SelectedValueChanged += new System.EventHandler(this.cmbOrderNo_SelectedValueChanged);
+            this.cmbOrderNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbOrderNo_KeyDown);
+            // 
+            // lblOrderNo
+            // 
+            this.lblOrderNo.AutoSize = true;
+            this.lblOrderNo.ForeColor = System.Drawing.Color.Maroon;
+            this.lblOrderNo.Location = new System.Drawing.Point(20, 121);
+            this.lblOrderNo.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.lblOrderNo.Name = "lblOrderNo";
+            this.lblOrderNo.Size = new System.Drawing.Size(53, 13);
+            this.lblOrderNo.TabIndex = 976;
+            this.lblOrderNo.Text = "Order No.";
+            // 
+            // dgvAdditionalCost
+            // 
+            this.dgvAdditionalCost.AllowUserToResizeColumns = false;
+            this.dgvAdditionalCost.AllowUserToResizeRows = false;
+            this.dgvAdditionalCost.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvAdditionalCost.BackgroundColor = System.Drawing.Color.White;
+            this.dgvAdditionalCost.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAdditionalCost.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            this.dgvAdditionalCost.ColumnHeadersHeight = 25;
+            this.dgvAdditionalCost.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvAdditionalCost.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvtxtSlNoAdditionalCost,
+            this.dgvtxtAdditionalCostId,
+            this.dgvcmbLedger,
+            this.dgvtxtAdditionalCostAmount});
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(202)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAdditionalCost.DefaultCellStyle = dataGridViewCellStyle18;
+            this.dgvAdditionalCost.EnableHeadersVisualStyles = false;
+            this.dgvAdditionalCost.GridColor = System.Drawing.Color.SteelBlue;
+            this.dgvAdditionalCost.Location = new System.Drawing.Point(18, 347);
+            this.dgvAdditionalCost.Margin = new System.Windows.Forms.Padding(3, 3, 3, 5);
+            this.dgvAdditionalCost.Name = "dgvAdditionalCost";
+            this.dgvAdditionalCost.RowHeadersVisible = false;
+            this.dgvAdditionalCost.Size = new System.Drawing.Size(443, 89);
+            this.dgvAdditionalCost.TabIndex = 14;
+            this.dgvAdditionalCost.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvAdditionalCost_CellBeginEdit);
+            this.dgvAdditionalCost.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdditionalCost_CellEnter);
+            this.dgvAdditionalCost.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvAdditionalCost_CurrentCellDirtyStateChanged);
+            this.dgvAdditionalCost.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvAdditionalCost_DataError);
+            this.dgvAdditionalCost.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvAdditionalCost_EditingControlShowing);
+            this.dgvAdditionalCost.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvAdditionalCost_KeyDown);
+            // 
+            // dgvtxtSlNoAdditionalCost
+            // 
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtSlNoAdditionalCost.DefaultCellStyle = dataGridViewCellStyle16;
+            this.dgvtxtSlNoAdditionalCost.FillWeight = 60.9137F;
+            this.dgvtxtSlNoAdditionalCost.HeaderText = "Sl No";
+            this.dgvtxtSlNoAdditionalCost.Name = "dgvtxtSlNoAdditionalCost";
+            this.dgvtxtSlNoAdditionalCost.ReadOnly = true;
+            this.dgvtxtSlNoAdditionalCost.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dgvtxtAdditionalCostId
+            // 
+            this.dgvtxtAdditionalCostId.DataPropertyName = "additionalCostId";
+            this.dgvtxtAdditionalCostId.HeaderText = "Additional Cost ID";
+            this.dgvtxtAdditionalCostId.Name = "dgvtxtAdditionalCostId";
+            this.dgvtxtAdditionalCostId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtxtAdditionalCostId.Visible = false;
+            // 
+            // dgvcmbLedger
+            // 
+            this.dgvcmbLedger.DataPropertyName = "ledgerId";
+            this.dgvcmbLedger.FillWeight = 119.5432F;
+            this.dgvcmbLedger.HeaderText = "A/c Ledger";
+            this.dgvcmbLedger.Name = "dgvcmbLedger";
+            this.dgvcmbLedger.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dgvtxtAdditionalCostAmount
+            // 
+            this.dgvtxtAdditionalCostAmount.DataPropertyName = "amount";
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtAdditionalCostAmount.DefaultCellStyle = dataGridViewCellStyle17;
+            this.dgvtxtAdditionalCostAmount.FillWeight = 119.5432F;
+            this.dgvtxtAdditionalCostAmount.HeaderText = "Amount";
+            this.dgvtxtAdditionalCostAmount.MaxInputLength = 11;
+            this.dgvtxtAdditionalCostAmount.Name = "dgvtxtAdditionalCostAmount";
+            this.dgvtxtAdditionalCostAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // lblTotalTaxAmount
+            // 
+            this.lblTotalTaxAmount.AutoSize = true;
+            this.lblTotalTaxAmount.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblTotalTaxAmount.Location = new System.Drawing.Point(223, 554);
+            this.lblTotalTaxAmount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblTotalTaxAmount.Name = "lblTotalTaxAmount";
+            this.lblTotalTaxAmount.Size = new System.Drawing.Size(91, 13);
+            this.lblTotalTaxAmount.TabIndex = 984;
+            this.lblTotalTaxAmount.Text = "Total Tax Amount";
+            // 
+            // lblGrandTotal
+            // 
+            this.lblGrandTotal.AutoSize = true;
+            this.lblGrandTotal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblGrandTotal.Location = new System.Drawing.Point(468, 543);
+            this.lblGrandTotal.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblGrandTotal.Name = "lblGrandTotal";
+            this.lblGrandTotal.Size = new System.Drawing.Size(63, 13);
+            this.lblGrandTotal.TabIndex = 986;
+            this.lblGrandTotal.Text = "Grand Total";
+            // 
+            // txtGrandTotal
+            // 
+            this.txtGrandTotal.Location = new System.Drawing.Point(598, 539);
+            this.txtGrandTotal.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.txtGrandTotal.Name = "txtGrandTotal";
+            this.txtGrandTotal.ReadOnly = true;
+            this.txtGrandTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtGrandTotal.Size = new System.Drawing.Size(189, 20);
+            this.txtGrandTotal.TabIndex = 67658;
+            // 
+            // lblTaxAmount
+            // 
+            this.lblTaxAmount.AutoSize = true;
+            this.lblTaxAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTaxAmount.ForeColor = System.Drawing.Color.Yellow;
+            this.lblTaxAmount.Location = new System.Drawing.Point(333, 552);
+            this.lblTaxAmount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblTaxAmount.Name = "lblTaxAmount";
+            this.lblTaxAmount.Size = new System.Drawing.Size(52, 16);
+            this.lblTaxAmount.TabIndex = 988;
+            this.lblTaxAmount.Text = "000.00";
+            this.lblTaxAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblTaxAmount.TextChanged += new System.EventHandler(this.lblTaxAmount_TextChanged);
+            // 
+            // lblAdditionalCostAmount
+            // 
+            this.lblAdditionalCostAmount.AutoSize = true;
+            this.lblAdditionalCostAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdditionalCostAmount.ForeColor = System.Drawing.Color.Yellow;
+            this.lblAdditionalCostAmount.Location = new System.Drawing.Point(333, 438);
+            this.lblAdditionalCostAmount.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblAdditionalCostAmount.Name = "lblAdditionalCostAmount";
+            this.lblAdditionalCostAmount.Size = new System.Drawing.Size(52, 16);
+            this.lblAdditionalCostAmount.TabIndex = 990;
+            this.lblAdditionalCostAmount.Text = "000.00";
+            this.lblAdditionalCostAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblAdditionalCostAmount.TextChanged += new System.EventHandler(this.lblAdditionalCostAmount_TextChanged);
+            // 
+            // lblTotalAdditionalCost
+            // 
+            this.lblTotalAdditionalCost.AutoSize = true;
+            this.lblTotalAdditionalCost.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblTotalAdditionalCost.Location = new System.Drawing.Point(203, 441);
+            this.lblTotalAdditionalCost.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblTotalAdditionalCost.Name = "lblTotalAdditionalCost";
+            this.lblTotalAdditionalCost.Size = new System.Drawing.Size(104, 13);
+            this.lblTotalAdditionalCost.TabIndex = 989;
+            this.lblTotalAdditionalCost.Text = "Total Additional Cost";
+            // 
+            // btnAddCashOrParty
+            // 
+            this.btnAddCashOrParty.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddCashOrParty.BackgroundImage")));
+            this.btnAddCashOrParty.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnAddCashOrParty.FlatAppearance.BorderSize = 0;
+            this.btnAddCashOrParty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddCashOrParty.ForeColor = System.Drawing.Color.White;
+            this.btnAddCashOrParty.Location = new System.Drawing.Point(348, 65);
+            this.btnAddCashOrParty.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.btnAddCashOrParty.Name = "btnAddCashOrParty";
+            this.btnAddCashOrParty.Size = new System.Drawing.Size(21, 20);
+            this.btnAddCashOrParty.TabIndex = 5;
+            this.btnAddCashOrParty.UseVisualStyleBackColor = true;
+            this.btnAddCashOrParty.Click += new System.EventHandler(this.btnAddCashOrParty_Click);
+            // 
+            // btnAddPurchaseAccount
+            // 
+            this.btnAddPurchaseAccount.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddPurchaseAccount.BackgroundImage")));
+            this.btnAddPurchaseAccount.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnAddPurchaseAccount.FlatAppearance.BorderSize = 0;
+            this.btnAddPurchaseAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddPurchaseAccount.ForeColor = System.Drawing.Color.White;
+            this.btnAddPurchaseAccount.Location = new System.Drawing.Point(755, 117);
+            this.btnAddPurchaseAccount.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.btnAddPurchaseAccount.Name = "btnAddPurchaseAccount";
+            this.btnAddPurchaseAccount.Size = new System.Drawing.Size(21, 20);
+            this.btnAddPurchaseAccount.TabIndex = 11;
+            this.btnAddPurchaseAccount.UseVisualStyleBackColor = true;
+            this.btnAddPurchaseAccount.Click += new System.EventHandler(this.btnAddPurchaseAccount_Click);
+            // 
+            // txtVoucherDate
+            // 
+            this.txtVoucherDate.Location = new System.Drawing.Point(572, 15);
+            this.txtVoucherDate.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.txtVoucherDate.Name = "txtVoucherDate";
+            this.txtVoucherDate.Size = new System.Drawing.Size(200, 20);
+            this.txtVoucherDate.TabIndex = 1;
+            this.txtVoucherDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVoucherDate_KeyDown);
+            this.txtVoucherDate.Leave += new System.EventHandler(this.txtVoucherDate_Leave);
+            // 
+            // dtpVoucherDate
+            // 
+            this.dtpVoucherDate.Location = new System.Drawing.Point(751, 15);
+            this.dtpVoucherDate.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.dtpVoucherDate.Name = "dtpVoucherDate";
+            this.dtpVoucherDate.Size = new System.Drawing.Size(21, 20);
+            this.dtpVoucherDate.TabIndex = 1053;
+            this.dtpVoucherDate.ValueChanged += new System.EventHandler(this.dtpVoucherDate_ValueChanged);
+            // 
+            // txtInvoiceDate
+            // 
+            this.txtInvoiceDate.Location = new System.Drawing.Point(572, 40);
+            this.txtInvoiceDate.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.txtInvoiceDate.Name = "txtInvoiceDate";
+            this.txtInvoiceDate.Size = new System.Drawing.Size(200, 20);
+            this.txtInvoiceDate.TabIndex = 3;
+            this.txtInvoiceDate.TextChanged += new System.EventHandler(this.txtInvoiceDate_TextChanged);
+            this.txtInvoiceDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtInvoiceDate_KeyDown);
+            this.txtInvoiceDate.Leave += new System.EventHandler(this.txtInvoiceDate_Leave);
+            // 
+            // dtpInvoiceDate
+            // 
+            this.dtpInvoiceDate.Location = new System.Drawing.Point(751, 40);
+            this.dtpInvoiceDate.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.dtpInvoiceDate.Name = "dtpInvoiceDate";
+            this.dtpInvoiceDate.Size = new System.Drawing.Size(21, 20);
+            this.dtpInvoiceDate.TabIndex = 1055;
+            this.dtpInvoiceDate.ValueChanged += new System.EventHandler(this.dtpInvoiceDate_ValueChanged);
+            // 
+            // lblCurrency
+            // 
+            this.lblCurrency.AutoSize = true;
+            this.lblCurrency.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblCurrency.Location = new System.Drawing.Point(20, 147);
+            this.lblCurrency.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.lblCurrency.Name = "lblCurrency";
+            this.lblCurrency.Size = new System.Drawing.Size(49, 13);
+            this.lblCurrency.TabIndex = 976;
+            this.lblCurrency.Text = "Currency";
+            // 
+            // cmbCurrency
+            // 
+            this.cmbCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCurrency.FormattingEnabled = true;
+            this.cmbCurrency.Location = new System.Drawing.Point(125, 143);
+            this.cmbCurrency.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.cmbCurrency.Name = "cmbCurrency";
+            this.cmbCurrency.Size = new System.Drawing.Size(200, 21);
+            this.cmbCurrency.TabIndex = 12;
+            this.cmbCurrency.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbCurrency_KeyDown);
+            // 
+            // cmbVoucherType
+            // 
+            this.cmbVoucherType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbVoucherType.FormattingEnabled = true;
+            this.cmbVoucherType.Location = new System.Drawing.Point(572, 91);
+            this.cmbVoucherType.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.cmbVoucherType.Name = "cmbVoucherType";
+            this.cmbVoucherType.Size = new System.Drawing.Size(200, 21);
+            this.cmbVoucherType.TabIndex = 8;
+            this.cmbVoucherType.SelectedValueChanged += new System.EventHandler(this.cmbVoucherType_SelectedValueChanged);
+            this.cmbVoucherType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbVoucherType_KeyDown);
+            // 
+            // lblVoucherType
+            // 
+            this.lblVoucherType.AutoSize = true;
+            this.lblVoucherType.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblVoucherType.Location = new System.Drawing.Point(484, 95);
+            this.lblVoucherType.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.lblVoucherType.Name = "lblVoucherType";
+            this.lblVoucherType.Size = new System.Drawing.Size(74, 13);
+            this.lblVoucherType.TabIndex = 976;
+            this.lblVoucherType.Text = "Voucher Type";
+            // 
+            // lnklblAdditionalRemove
+            // 
+            this.lnklblAdditionalRemove.AutoSize = true;
+            this.lnklblAdditionalRemove.ForeColor = System.Drawing.Color.Yellow;
+            this.lnklblAdditionalRemove.LinkColor = System.Drawing.Color.Yellow;
+            this.lnklblAdditionalRemove.Location = new System.Drawing.Point(19, 440);
+            this.lnklblAdditionalRemove.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
+            this.lnklblAdditionalRemove.Name = "lnklblAdditionalRemove";
+            this.lnklblAdditionalRemove.Size = new System.Drawing.Size(47, 13);
+            this.lnklblAdditionalRemove.TabIndex = 345567;
+            this.lnklblAdditionalRemove.TabStop = true;
+            this.lnklblAdditionalRemove.Text = "Remove";
+            this.lnklblAdditionalRemove.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblAdditionalRemove_LinkClicked);
+            // 
+            // lblVoucherNoValidator
+            // 
+            this.lblVoucherNoValidator.AutoSize = true;
+            this.lblVoucherNoValidator.ForeColor = System.Drawing.Color.Red;
+            this.lblVoucherNoValidator.Location = new System.Drawing.Point(330, 19);
+            this.lblVoucherNoValidator.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblVoucherNoValidator.Name = "lblVoucherNoValidator";
+            this.lblVoucherNoValidator.Size = new System.Drawing.Size(11, 13);
+            this.lblVoucherNoValidator.TabIndex = 1147;
+            this.lblVoucherNoValidator.Text = "*";
+            // 
+            // lblCashOrPartyValidator
+            // 
+            this.lblCashOrPartyValidator.AutoSize = true;
+            this.lblCashOrPartyValidator.ForeColor = System.Drawing.Color.Red;
+            this.lblCashOrPartyValidator.Location = new System.Drawing.Point(330, 69);
+            this.lblCashOrPartyValidator.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblCashOrPartyValidator.Name = "lblCashOrPartyValidator";
+            this.lblCashOrPartyValidator.Size = new System.Drawing.Size(11, 13);
+            this.lblCashOrPartyValidator.TabIndex = 1149;
+            this.lblCashOrPartyValidator.Text = "*";
+            // 
+            // lblPurchaseAccountValidator
+            // 
+            this.lblPurchaseAccountValidator.AutoSize = true;
+            this.lblPurchaseAccountValidator.ForeColor = System.Drawing.Color.Red;
+            this.lblPurchaseAccountValidator.Location = new System.Drawing.Point(743, 121);
+            this.lblPurchaseAccountValidator.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblPurchaseAccountValidator.Name = "lblPurchaseAccountValidator";
+            this.lblPurchaseAccountValidator.Size = new System.Drawing.Size(11, 13);
+            this.lblPurchaseAccountValidator.TabIndex = 1150;
+            this.lblPurchaseAccountValidator.Text = "*";
+            // 
+            // lblVoucherDateValidator
+            // 
+            this.lblVoucherDateValidator.AutoSize = true;
+            this.lblVoucherDateValidator.ForeColor = System.Drawing.Color.Red;
+            this.lblVoucherDateValidator.Location = new System.Drawing.Point(777, 19);
+            this.lblVoucherDateValidator.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblVoucherDateValidator.Name = "lblVoucherDateValidator";
+            this.lblVoucherDateValidator.Size = new System.Drawing.Size(11, 13);
+            this.lblVoucherDateValidator.TabIndex = 1151;
+            this.lblVoucherDateValidator.Text = "*";
+            // 
+            // lblInvoiceDateValidator
+            // 
+            this.lblInvoiceDateValidator.AutoSize = true;
+            this.lblInvoiceDateValidator.ForeColor = System.Drawing.Color.Red;
+            this.lblInvoiceDateValidator.Location = new System.Drawing.Point(777, 44);
+            this.lblInvoiceDateValidator.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblInvoiceDateValidator.Name = "lblInvoiceDateValidator";
+            this.lblInvoiceDateValidator.Size = new System.Drawing.Size(11, 13);
+            this.lblInvoiceDateValidator.TabIndex = 1152;
+            this.lblInvoiceDateValidator.Text = "*";
+            // 
+            // lblCurrencyValidator
+            // 
+            this.lblCurrencyValidator.AutoSize = true;
+            this.lblCurrencyValidator.ForeColor = System.Drawing.Color.Red;
+            this.lblCurrencyValidator.Location = new System.Drawing.Point(333, 147);
+            this.lblCurrencyValidator.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.lblCurrencyValidator.Name = "lblCurrencyValidator";
+            this.lblCurrencyValidator.Size = new System.Drawing.Size(11, 13);
+            this.lblCurrencyValidator.TabIndex = 1153;
+            this.lblCurrencyValidator.Text = "*";
             // 
             // dgvtxtSlNo
             // 
@@ -729,11 +1190,22 @@ namespace Open_Miracle
             this.dgvcmbBatch.HeaderText = "Batch";
             this.dgvcmbBatch.Name = "dgvcmbBatch";
             // 
+            // dgvtxtRate
+            // 
+            this.dgvtxtRate.DataPropertyName = "rate";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtRate.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvtxtRate.HeaderText = "Rate";
+            this.dgvtxtRate.MaxInputLength = 8;
+            this.dgvtxtRate.Name = "dgvtxtRate";
+            this.dgvtxtRate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dgvtxtRate.Width = 130;
+            // 
             // dgvtxtGrossValue
             // 
             this.dgvtxtGrossValue.DataPropertyName = "grossValue";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtGrossValue.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtGrossValue.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvtxtGrossValue.HeaderText = "Gross Value";
             this.dgvtxtGrossValue.Name = "dgvtxtGrossValue";
             this.dgvtxtGrossValue.ReadOnly = true;
@@ -744,8 +1216,8 @@ namespace Open_Miracle
             // dgvtxtDiscountPercent
             // 
             this.dgvtxtDiscountPercent.DataPropertyName = "discountPercent";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtDiscountPercent.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtDiscountPercent.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvtxtDiscountPercent.HeaderText = "Discount %";
             this.dgvtxtDiscountPercent.MaxInputLength = 13;
             this.dgvtxtDiscountPercent.Name = "dgvtxtDiscountPercent";
@@ -755,8 +1227,8 @@ namespace Open_Miracle
             // dgvtxtDiscount
             // 
             this.dgvtxtDiscount.DataPropertyName = "discount";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtDiscount.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtDiscount.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvtxtDiscount.HeaderText = "Discount";
             this.dgvtxtDiscount.MaxInputLength = 13;
             this.dgvtxtDiscount.Name = "dgvtxtDiscount";
@@ -766,8 +1238,8 @@ namespace Open_Miracle
             // dgvtxtNetValue
             // 
             this.dgvtxtNetValue.DataPropertyName = "netvalue";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtNetValue.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtNetValue.DefaultCellStyle = dataGridViewCellStyle10;
             this.dgvtxtNetValue.HeaderText = "Net Value";
             this.dgvtxtNetValue.Name = "dgvtxtNetValue";
             this.dgvtxtNetValue.ReadOnly = true;
@@ -784,8 +1256,8 @@ namespace Open_Miracle
             // dgvtxtTaxAmount
             // 
             this.dgvtxtTaxAmount.DataPropertyName = "taxAmount";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtTaxAmount.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtTaxAmount.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvtxtTaxAmount.HeaderText = "Tax Amount";
             this.dgvtxtTaxAmount.Name = "dgvtxtTaxAmount";
             this.dgvtxtTaxAmount.ReadOnly = true;
@@ -794,484 +1266,21 @@ namespace Open_Miracle
             // dgvtxtAmount
             // 
             this.dgvtxtAmount.DataPropertyName = "amount";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtAmount.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.dgvtxtAmount.DefaultCellStyle = dataGridViewCellStyle12;
             this.dgvtxtAmount.HeaderText = "Amount";
             this.dgvtxtAmount.Name = "dgvtxtAmount";
             this.dgvtxtAmount.ReadOnly = true;
             this.dgvtxtAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dgvtxtAmount.Width = 130;
             // 
-            // lblVoucherDate
-            // 
-            this.lblVoucherDate.AutoSize = true;
-            this.lblVoucherDate.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblVoucherDate.Location = new System.Drawing.Point(645, 23);
-            this.lblVoucherDate.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.lblVoucherDate.Name = "lblVoucherDate";
-            this.lblVoucherDate.Size = new System.Drawing.Size(95, 17);
-            this.lblVoucherDate.TabIndex = 938;
-            this.lblVoucherDate.Text = "Voucher Date";
-            // 
-            // txtVendorInvoiceNo
-            // 
-            this.txtVendorInvoiceNo.Location = new System.Drawing.Point(167, 49);
-            this.txtVendorInvoiceNo.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.txtVendorInvoiceNo.Name = "txtVendorInvoiceNo";
-            this.txtVendorInvoiceNo.Size = new System.Drawing.Size(265, 22);
-            this.txtVendorInvoiceNo.TabIndex = 2;
-            this.txtVendorInvoiceNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVendorInvoiceNo_KeyDown);
-            // 
-            // cmbPurchaseMode
-            // 
-            this.cmbPurchaseMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPurchaseMode.ForeColor = System.Drawing.Color.Maroon;
-            this.cmbPurchaseMode.FormattingEnabled = true;
-            this.cmbPurchaseMode.Items.AddRange(new object[] {
-            "NA",
-            "Against PurchaseOrder",
-            "Against MaterialReceipt"});
-            this.cmbPurchaseMode.Location = new System.Drawing.Point(167, 112);
-            this.cmbPurchaseMode.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.cmbPurchaseMode.Name = "cmbPurchaseMode";
-            this.cmbPurchaseMode.Size = new System.Drawing.Size(265, 24);
-            this.cmbPurchaseMode.TabIndex = 7;
-            this.cmbPurchaseMode.SelectedIndexChanged += new System.EventHandler(this.cmbPurchaseMode_SelectedIndexChanged);
-            this.cmbPurchaseMode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBillDiscount_KeyDown);
-            // 
-            // lblPurchaseMode
-            // 
-            this.lblPurchaseMode.AutoSize = true;
-            this.lblPurchaseMode.ForeColor = System.Drawing.Color.Maroon;
-            this.lblPurchaseMode.Location = new System.Drawing.Point(27, 117);
-            this.lblPurchaseMode.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.lblPurchaseMode.Name = "lblPurchaseMode";
-            this.lblPurchaseMode.Size = new System.Drawing.Size(107, 17);
-            this.lblPurchaseMode.TabIndex = 970;
-            this.lblPurchaseMode.Text = "Purchase Mode";
-            // 
-            // cmbPurchaseAccount
-            // 
-            this.cmbPurchaseAccount.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPurchaseAccount.FormattingEnabled = true;
-            this.cmbPurchaseAccount.Location = new System.Drawing.Point(763, 144);
-            this.cmbPurchaseAccount.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.cmbPurchaseAccount.Name = "cmbPurchaseAccount";
-            this.cmbPurchaseAccount.Size = new System.Drawing.Size(224, 24);
-            this.cmbPurchaseAccount.TabIndex = 10;
-            this.cmbPurchaseAccount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbPurchaseAccount_KeyDown);
-            // 
-            // lblPurchaseAccount
-            // 
-            this.lblPurchaseAccount.AutoSize = true;
-            this.lblPurchaseAccount.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblPurchaseAccount.Location = new System.Drawing.Point(645, 149);
-            this.lblPurchaseAccount.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.lblPurchaseAccount.Name = "lblPurchaseAccount";
-            this.lblPurchaseAccount.Size = new System.Drawing.Size(91, 17);
-            this.lblPurchaseAccount.TabIndex = 972;
-            this.lblPurchaseAccount.Text = "Purchase a/c";
-            // 
-            // txtCreditPeriod
-            // 
-            this.txtCreditPeriod.Location = new System.Drawing.Point(763, 80);
-            this.txtCreditPeriod.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.txtCreditPeriod.MaxLength = 3;
-            this.txtCreditPeriod.Name = "txtCreditPeriod";
-            this.txtCreditPeriod.Size = new System.Drawing.Size(224, 22);
-            this.txtCreditPeriod.TabIndex = 6;
-            this.txtCreditPeriod.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCreditPeriod_KeyDown);
-            this.txtCreditPeriod.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCreditPeriod_KeyPress);
-            // 
-            // lblDays
-            // 
-            this.lblDays.AutoSize = true;
-            this.lblDays.ForeColor = System.Drawing.Color.Yellow;
-            this.lblDays.Location = new System.Drawing.Point(989, 85);
-            this.lblDays.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.lblDays.Name = "lblDays";
-            this.lblDays.Size = new System.Drawing.Size(40, 17);
-            this.lblDays.TabIndex = 975;
-            this.lblDays.Text = "Days";
-            // 
-            // cmbOrderNo
-            // 
-            this.cmbOrderNo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbOrderNo.ForeColor = System.Drawing.Color.Maroon;
-            this.cmbOrderNo.FormattingEnabled = true;
-            this.cmbOrderNo.Location = new System.Drawing.Point(167, 144);
-            this.cmbOrderNo.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.cmbOrderNo.Name = "cmbOrderNo";
-            this.cmbOrderNo.Size = new System.Drawing.Size(265, 24);
-            this.cmbOrderNo.TabIndex = 9;
-            this.cmbOrderNo.SelectedValueChanged += new System.EventHandler(this.cmbOrderNo_SelectedValueChanged);
-            this.cmbOrderNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbOrderNo_KeyDown);
-            // 
-            // lblOrderNo
-            // 
-            this.lblOrderNo.AutoSize = true;
-            this.lblOrderNo.ForeColor = System.Drawing.Color.Maroon;
-            this.lblOrderNo.Location = new System.Drawing.Point(27, 149);
-            this.lblOrderNo.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.lblOrderNo.Name = "lblOrderNo";
-            this.lblOrderNo.Size = new System.Drawing.Size(71, 17);
-            this.lblOrderNo.TabIndex = 976;
-            this.lblOrderNo.Text = "Order No.";
-            // 
-            // dgvAdditionalCost
-            // 
-            this.dgvAdditionalCost.AllowUserToResizeColumns = false;
-            this.dgvAdditionalCost.AllowUserToResizeRows = false;
-            this.dgvAdditionalCost.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvAdditionalCost.BackgroundColor = System.Drawing.Color.White;
-            this.dgvAdditionalCost.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(133)))), ((int)(((byte)(163)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(117)))), ((int)(((byte)(150)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAdditionalCost.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
-            this.dgvAdditionalCost.ColumnHeadersHeight = 25;
-            this.dgvAdditionalCost.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dgvAdditionalCost.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgvtxtSlNoAdditionalCost,
-            this.dgvtxtAdditionalCostId,
-            this.dgvcmbLedger,
-            this.dgvtxtAdditionalCostAmount});
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(238)))), ((int)(((byte)(218)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(123)))), ((int)(((byte)(202)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAdditionalCost.DefaultCellStyle = dataGridViewCellStyle17;
-            this.dgvAdditionalCost.EnableHeadersVisualStyles = false;
-            this.dgvAdditionalCost.GridColor = System.Drawing.Color.SteelBlue;
-            this.dgvAdditionalCost.Location = new System.Drawing.Point(24, 427);
-            this.dgvAdditionalCost.Margin = new System.Windows.Forms.Padding(4, 4, 4, 6);
-            this.dgvAdditionalCost.Name = "dgvAdditionalCost";
-            this.dgvAdditionalCost.RowHeadersVisible = false;
-            this.dgvAdditionalCost.Size = new System.Drawing.Size(591, 110);
-            this.dgvAdditionalCost.TabIndex = 14;
-            this.dgvAdditionalCost.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvAdditionalCost_CellBeginEdit);
-            this.dgvAdditionalCost.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdditionalCost_CellEnter);
-            this.dgvAdditionalCost.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvAdditionalCost_CurrentCellDirtyStateChanged);
-            this.dgvAdditionalCost.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvAdditionalCost_DataError);
-            this.dgvAdditionalCost.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgvAdditionalCost_EditingControlShowing);
-            this.dgvAdditionalCost.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvAdditionalCost_KeyDown);
-            // 
-            // dgvtxtSlNoAdditionalCost
-            // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtSlNoAdditionalCost.DefaultCellStyle = dataGridViewCellStyle15;
-            this.dgvtxtSlNoAdditionalCost.FillWeight = 60.9137F;
-            this.dgvtxtSlNoAdditionalCost.HeaderText = "Sl No";
-            this.dgvtxtSlNoAdditionalCost.Name = "dgvtxtSlNoAdditionalCost";
-            this.dgvtxtSlNoAdditionalCost.ReadOnly = true;
-            this.dgvtxtSlNoAdditionalCost.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dgvtxtAdditionalCostId
-            // 
-            this.dgvtxtAdditionalCostId.DataPropertyName = "additionalCostId";
-            this.dgvtxtAdditionalCostId.HeaderText = "Additional Cost ID";
-            this.dgvtxtAdditionalCostId.Name = "dgvtxtAdditionalCostId";
-            this.dgvtxtAdditionalCostId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dgvtxtAdditionalCostId.Visible = false;
-            // 
-            // dgvcmbLedger
-            // 
-            this.dgvcmbLedger.DataPropertyName = "ledgerId";
-            this.dgvcmbLedger.FillWeight = 119.5432F;
-            this.dgvcmbLedger.HeaderText = "A/c Ledger";
-            this.dgvcmbLedger.Name = "dgvcmbLedger";
-            this.dgvcmbLedger.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dgvtxtAdditionalCostAmount
-            // 
-            this.dgvtxtAdditionalCostAmount.DataPropertyName = "amount";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.dgvtxtAdditionalCostAmount.DefaultCellStyle = dataGridViewCellStyle16;
-            this.dgvtxtAdditionalCostAmount.FillWeight = 119.5432F;
-            this.dgvtxtAdditionalCostAmount.HeaderText = "Amount";
-            this.dgvtxtAdditionalCostAmount.MaxInputLength = 11;
-            this.dgvtxtAdditionalCostAmount.Name = "dgvtxtAdditionalCostAmount";
-            this.dgvtxtAdditionalCostAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // lblTotalTaxAmount
-            // 
-            this.lblTotalTaxAmount.AutoSize = true;
-            this.lblTotalTaxAmount.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblTotalTaxAmount.Location = new System.Drawing.Point(297, 682);
-            this.lblTotalTaxAmount.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.lblTotalTaxAmount.Name = "lblTotalTaxAmount";
-            this.lblTotalTaxAmount.Size = new System.Drawing.Size(119, 17);
-            this.lblTotalTaxAmount.TabIndex = 984;
-            this.lblTotalTaxAmount.Text = "Total Tax Amount";
-            // 
-            // lblGrandTotal
-            // 
-            this.lblGrandTotal.AutoSize = true;
-            this.lblGrandTotal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblGrandTotal.Location = new System.Drawing.Point(624, 668);
-            this.lblGrandTotal.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.lblGrandTotal.Name = "lblGrandTotal";
-            this.lblGrandTotal.Size = new System.Drawing.Size(84, 17);
-            this.lblGrandTotal.TabIndex = 986;
-            this.lblGrandTotal.Text = "Grand Total";
-            // 
-            // txtGrandTotal
-            // 
-            this.txtGrandTotal.Location = new System.Drawing.Point(797, 663);
-            this.txtGrandTotal.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.txtGrandTotal.Name = "txtGrandTotal";
-            this.txtGrandTotal.ReadOnly = true;
-            this.txtGrandTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtGrandTotal.Size = new System.Drawing.Size(251, 22);
-            this.txtGrandTotal.TabIndex = 67658;
-            // 
-            // lblTaxAmount
-            // 
-            this.lblTaxAmount.AutoSize = true;
-            this.lblTaxAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTaxAmount.ForeColor = System.Drawing.Color.Yellow;
-            this.lblTaxAmount.Location = new System.Drawing.Point(444, 679);
-            this.lblTaxAmount.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.lblTaxAmount.Name = "lblTaxAmount";
-            this.lblTaxAmount.Size = new System.Drawing.Size(64, 20);
-            this.lblTaxAmount.TabIndex = 988;
-            this.lblTaxAmount.Text = "000.00";
-            this.lblTaxAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblTaxAmount.TextChanged += new System.EventHandler(this.lblTaxAmount_TextChanged);
-            // 
-            // lblAdditionalCostAmount
-            // 
-            this.lblAdditionalCostAmount.AutoSize = true;
-            this.lblAdditionalCostAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdditionalCostAmount.ForeColor = System.Drawing.Color.Yellow;
-            this.lblAdditionalCostAmount.Location = new System.Drawing.Point(444, 539);
-            this.lblAdditionalCostAmount.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.lblAdditionalCostAmount.Name = "lblAdditionalCostAmount";
-            this.lblAdditionalCostAmount.Size = new System.Drawing.Size(64, 20);
-            this.lblAdditionalCostAmount.TabIndex = 990;
-            this.lblAdditionalCostAmount.Text = "000.00";
-            this.lblAdditionalCostAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblAdditionalCostAmount.TextChanged += new System.EventHandler(this.lblAdditionalCostAmount_TextChanged);
-            // 
-            // lblTotalAdditionalCost
-            // 
-            this.lblTotalAdditionalCost.AutoSize = true;
-            this.lblTotalAdditionalCost.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblTotalAdditionalCost.Location = new System.Drawing.Point(271, 543);
-            this.lblTotalAdditionalCost.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.lblTotalAdditionalCost.Name = "lblTotalAdditionalCost";
-            this.lblTotalAdditionalCost.Size = new System.Drawing.Size(138, 17);
-            this.lblTotalAdditionalCost.TabIndex = 989;
-            this.lblTotalAdditionalCost.Text = "Total Additional Cost";
-            // 
-            // btnAddCashOrParty
-            // 
-            this.btnAddCashOrParty.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddCashOrParty.BackgroundImage")));
-            this.btnAddCashOrParty.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnAddCashOrParty.FlatAppearance.BorderSize = 0;
-            this.btnAddCashOrParty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddCashOrParty.ForeColor = System.Drawing.Color.White;
-            this.btnAddCashOrParty.Location = new System.Drawing.Point(464, 80);
-            this.btnAddCashOrParty.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.btnAddCashOrParty.Name = "btnAddCashOrParty";
-            this.btnAddCashOrParty.Size = new System.Drawing.Size(28, 25);
-            this.btnAddCashOrParty.TabIndex = 5;
-            this.btnAddCashOrParty.UseVisualStyleBackColor = true;
-            this.btnAddCashOrParty.Click += new System.EventHandler(this.btnAddCashOrParty_Click);
-            // 
-            // btnAddPurchaseAccount
-            // 
-            this.btnAddPurchaseAccount.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAddPurchaseAccount.BackgroundImage")));
-            this.btnAddPurchaseAccount.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnAddPurchaseAccount.FlatAppearance.BorderSize = 0;
-            this.btnAddPurchaseAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddPurchaseAccount.ForeColor = System.Drawing.Color.White;
-            this.btnAddPurchaseAccount.Location = new System.Drawing.Point(1007, 144);
-            this.btnAddPurchaseAccount.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.btnAddPurchaseAccount.Name = "btnAddPurchaseAccount";
-            this.btnAddPurchaseAccount.Size = new System.Drawing.Size(28, 25);
-            this.btnAddPurchaseAccount.TabIndex = 11;
-            this.btnAddPurchaseAccount.UseVisualStyleBackColor = true;
-            this.btnAddPurchaseAccount.Click += new System.EventHandler(this.btnAddPurchaseAccount_Click);
-            // 
-            // txtVoucherDate
-            // 
-            this.txtVoucherDate.Location = new System.Drawing.Point(763, 18);
-            this.txtVoucherDate.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.txtVoucherDate.Name = "txtVoucherDate";
-            this.txtVoucherDate.Size = new System.Drawing.Size(265, 22);
-            this.txtVoucherDate.TabIndex = 1;
-            this.txtVoucherDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtVoucherDate_KeyDown);
-            this.txtVoucherDate.Leave += new System.EventHandler(this.txtVoucherDate_Leave);
-            // 
-            // dtpVoucherDate
-            // 
-            this.dtpVoucherDate.Location = new System.Drawing.Point(1001, 18);
-            this.dtpVoucherDate.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.dtpVoucherDate.Name = "dtpVoucherDate";
-            this.dtpVoucherDate.Size = new System.Drawing.Size(27, 22);
-            this.dtpVoucherDate.TabIndex = 1053;
-            this.dtpVoucherDate.ValueChanged += new System.EventHandler(this.dtpVoucherDate_ValueChanged);
-            // 
-            // txtInvoiceDate
-            // 
-            this.txtInvoiceDate.Location = new System.Drawing.Point(763, 49);
-            this.txtInvoiceDate.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.txtInvoiceDate.Name = "txtInvoiceDate";
-            this.txtInvoiceDate.Size = new System.Drawing.Size(265, 22);
-            this.txtInvoiceDate.TabIndex = 3;
-            this.txtInvoiceDate.TextChanged += new System.EventHandler(this.txtInvoiceDate_TextChanged);
-            this.txtInvoiceDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtInvoiceDate_KeyDown);
-            this.txtInvoiceDate.Leave += new System.EventHandler(this.txtInvoiceDate_Leave);
-            // 
-            // dtpInvoiceDate
-            // 
-            this.dtpInvoiceDate.Location = new System.Drawing.Point(1001, 49);
-            this.dtpInvoiceDate.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.dtpInvoiceDate.Name = "dtpInvoiceDate";
-            this.dtpInvoiceDate.Size = new System.Drawing.Size(27, 22);
-            this.dtpInvoiceDate.TabIndex = 1055;
-            this.dtpInvoiceDate.ValueChanged += new System.EventHandler(this.dtpInvoiceDate_ValueChanged);
-            // 
-            // lblCurrency
-            // 
-            this.lblCurrency.AutoSize = true;
-            this.lblCurrency.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblCurrency.Location = new System.Drawing.Point(27, 181);
-            this.lblCurrency.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.lblCurrency.Name = "lblCurrency";
-            this.lblCurrency.Size = new System.Drawing.Size(65, 17);
-            this.lblCurrency.TabIndex = 976;
-            this.lblCurrency.Text = "Currency";
-            // 
-            // cmbCurrency
-            // 
-            this.cmbCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCurrency.FormattingEnabled = true;
-            this.cmbCurrency.Location = new System.Drawing.Point(167, 176);
-            this.cmbCurrency.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.cmbCurrency.Name = "cmbCurrency";
-            this.cmbCurrency.Size = new System.Drawing.Size(265, 24);
-            this.cmbCurrency.TabIndex = 12;
-            this.cmbCurrency.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbCurrency_KeyDown);
-            // 
-            // cmbVoucherType
-            // 
-            this.cmbVoucherType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbVoucherType.FormattingEnabled = true;
-            this.cmbVoucherType.Location = new System.Drawing.Point(763, 112);
-            this.cmbVoucherType.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.cmbVoucherType.Name = "cmbVoucherType";
-            this.cmbVoucherType.Size = new System.Drawing.Size(265, 24);
-            this.cmbVoucherType.TabIndex = 8;
-            this.cmbVoucherType.SelectedValueChanged += new System.EventHandler(this.cmbVoucherType_SelectedValueChanged);
-            this.cmbVoucherType.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbVoucherType_KeyDown);
-            // 
-            // lblVoucherType
-            // 
-            this.lblVoucherType.AutoSize = true;
-            this.lblVoucherType.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblVoucherType.Location = new System.Drawing.Point(645, 117);
-            this.lblVoucherType.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.lblVoucherType.Name = "lblVoucherType";
-            this.lblVoucherType.Size = new System.Drawing.Size(97, 17);
-            this.lblVoucherType.TabIndex = 976;
-            this.lblVoucherType.Text = "Voucher Type";
-            // 
-            // lnklblAdditionalRemove
-            // 
-            this.lnklblAdditionalRemove.AutoSize = true;
-            this.lnklblAdditionalRemove.ForeColor = System.Drawing.Color.Yellow;
-            this.lnklblAdditionalRemove.LinkColor = System.Drawing.Color.Yellow;
-            this.lnklblAdditionalRemove.Location = new System.Drawing.Point(25, 542);
-            this.lnklblAdditionalRemove.Margin = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            this.lnklblAdditionalRemove.Name = "lnklblAdditionalRemove";
-            this.lnklblAdditionalRemove.Size = new System.Drawing.Size(60, 17);
-            this.lnklblAdditionalRemove.TabIndex = 345567;
-            this.lnklblAdditionalRemove.TabStop = true;
-            this.lnklblAdditionalRemove.Text = "Remove";
-            this.lnklblAdditionalRemove.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnklblAdditionalRemove_LinkClicked);
-            // 
-            // lblVoucherNoValidator
-            // 
-            this.lblVoucherNoValidator.AutoSize = true;
-            this.lblVoucherNoValidator.ForeColor = System.Drawing.Color.Red;
-            this.lblVoucherNoValidator.Location = new System.Drawing.Point(440, 23);
-            this.lblVoucherNoValidator.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.lblVoucherNoValidator.Name = "lblVoucherNoValidator";
-            this.lblVoucherNoValidator.Size = new System.Drawing.Size(13, 17);
-            this.lblVoucherNoValidator.TabIndex = 1147;
-            this.lblVoucherNoValidator.Text = "*";
-            // 
-            // lblCashOrPartyValidator
-            // 
-            this.lblCashOrPartyValidator.AutoSize = true;
-            this.lblCashOrPartyValidator.ForeColor = System.Drawing.Color.Red;
-            this.lblCashOrPartyValidator.Location = new System.Drawing.Point(440, 85);
-            this.lblCashOrPartyValidator.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.lblCashOrPartyValidator.Name = "lblCashOrPartyValidator";
-            this.lblCashOrPartyValidator.Size = new System.Drawing.Size(13, 17);
-            this.lblCashOrPartyValidator.TabIndex = 1149;
-            this.lblCashOrPartyValidator.Text = "*";
-            // 
-            // lblPurchaseAccountValidator
-            // 
-            this.lblPurchaseAccountValidator.AutoSize = true;
-            this.lblPurchaseAccountValidator.ForeColor = System.Drawing.Color.Red;
-            this.lblPurchaseAccountValidator.Location = new System.Drawing.Point(991, 149);
-            this.lblPurchaseAccountValidator.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.lblPurchaseAccountValidator.Name = "lblPurchaseAccountValidator";
-            this.lblPurchaseAccountValidator.Size = new System.Drawing.Size(13, 17);
-            this.lblPurchaseAccountValidator.TabIndex = 1150;
-            this.lblPurchaseAccountValidator.Text = "*";
-            // 
-            // lblVoucherDateValidator
-            // 
-            this.lblVoucherDateValidator.AutoSize = true;
-            this.lblVoucherDateValidator.ForeColor = System.Drawing.Color.Red;
-            this.lblVoucherDateValidator.Location = new System.Drawing.Point(1036, 23);
-            this.lblVoucherDateValidator.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.lblVoucherDateValidator.Name = "lblVoucherDateValidator";
-            this.lblVoucherDateValidator.Size = new System.Drawing.Size(13, 17);
-            this.lblVoucherDateValidator.TabIndex = 1151;
-            this.lblVoucherDateValidator.Text = "*";
-            // 
-            // lblInvoiceDateValidator
-            // 
-            this.lblInvoiceDateValidator.AutoSize = true;
-            this.lblInvoiceDateValidator.ForeColor = System.Drawing.Color.Red;
-            this.lblInvoiceDateValidator.Location = new System.Drawing.Point(1036, 54);
-            this.lblInvoiceDateValidator.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.lblInvoiceDateValidator.Name = "lblInvoiceDateValidator";
-            this.lblInvoiceDateValidator.Size = new System.Drawing.Size(13, 17);
-            this.lblInvoiceDateValidator.TabIndex = 1152;
-            this.lblInvoiceDateValidator.Text = "*";
-            // 
-            // lblCurrencyValidator
-            // 
-            this.lblCurrencyValidator.AutoSize = true;
-            this.lblCurrencyValidator.ForeColor = System.Drawing.Color.Red;
-            this.lblCurrencyValidator.Location = new System.Drawing.Point(444, 181);
-            this.lblCurrencyValidator.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.lblCurrencyValidator.Name = "lblCurrencyValidator";
-            this.lblCurrencyValidator.Size = new System.Drawing.Size(13, 17);
-            this.lblCurrencyValidator.TabIndex = 1153;
-            this.lblCurrencyValidator.Text = "*";
-            // 
             // frmPurchaseInvoice
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(111)))), ((int)(((byte)(155)))));
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(1068, 741);
+            this.ClientSize = new System.Drawing.Size(801, 602);
             this.Controls.Add(this.lblCurrencyValidator);
             this.Controls.Add(this.lblInvoiceDateValidator);
             this.Controls.Add(this.lblVoucherDateValidator);
@@ -1334,10 +1343,9 @@ namespace Open_Miracle
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "frmPurchaseInvoice";
-            this.Padding = new System.Windows.Forms.Padding(20, 12, 20, 12);
+            this.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Purchase Invoice";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmPurchaseInvoice_FormClosing);
@@ -1439,6 +1447,7 @@ namespace Open_Miracle
         private System.Windows.Forms.DataGridViewComboBoxColumn dgvcmbGodown;
         private System.Windows.Forms.DataGridViewComboBoxColumn dgvcmbRack;
         private System.Windows.Forms.DataGridViewComboBoxColumn dgvcmbBatch;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtRate;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtGrossValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtDiscountPercent;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvtxtDiscount;
