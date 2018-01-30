@@ -31,7 +31,7 @@ namespace LoginForm
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            DateTime time = Convert.ToDateTime(IME.CurrentDate());
+            DateTime time = Convert.ToDateTime(IME.CurrentDate().First());
             #region LoginBlock
             string UserName = txtID.Text;
             string PW = Utils.MD5Hash(txtPassWord.Text);
