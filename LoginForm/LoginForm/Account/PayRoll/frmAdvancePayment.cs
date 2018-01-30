@@ -804,33 +804,65 @@ namespace LoginForm
             return "";
         }
 
+        //public void VoucherNoGeneration()
+        //{
+        //    TransactionsGeneralFill obj = new TransactionsGeneralFill();
+        //    AdvancePaymentSP spAdvancePayment = new AdvancePaymentSP();
+        //    if (strVoucherNo == string.Empty)
+        //    {
+        //        strVoucherNo = "0";
+        //    }
+        //    strVoucherNo = VoucherNumberGeneration(decPaymentVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpSalaryMonth.Value, strAdvancePayment);
+        //    decimal decJournalVoucherTypeIdmax = 0;
+        //    if (IME.AdvancePayments.Where(a => a.voucherTypeId == decPaymentVoucherTypeId).Select(b => b.voucherNo).ToList().Count() != 0) decJournalVoucherTypeIdmax = IME.JournalMasters.Where(a => a.voucherTypeId == decPaymentVoucherTypeId).Select(b => b.voucherNo).ToList().Select(decimal.Parse).ToList().Max();
+
+        //    if (Convert.ToDecimal(strVoucherNo) != decJournalVoucherTypeIdmax + 1)
+        //    {
+        //        strVoucherNo = decJournalVoucherTypeIdmax.ToString();
+        //        strVoucherNo = VoucherNumberGeneration(decPaymentVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpSalaryMonth.Value, strAdvancePayment);
+        //        if (decJournalVoucherTypeIdmax == 0)
+        //        {
+        //            strVoucherNo = "0";
+        //            strVoucherNo = VoucherNumberGeneration(decPaymentVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpSalaryMonth.Value, strAdvancePayment);
+        //        }
+        //    }
+        //    if (isAutomatic)
+        //    {
+        //        SuffixPrefix SuffixPrefix = IME.SuffixPrefixes.Where(a => a.voucherTypeId == decPaymentVoucherTypeId).Where(b => b.fromDate < dtpDate.Value).Where(c => c.toDate > dtpDate.Value).FirstOrDefault();
+        //        strPrefix = SuffixPrefix.prefix;
+        //        strSuffix = SuffixPrefix.suffix;
+        //        strInvoiceNo = strPrefix + strVoucherNo + strSuffix;
+        //        txtAdvanceVoucherNo.Text = strInvoiceNo;
+        //        txtAdvanceVoucherNo.Enabled = false;
+        //    }
+        //}
+
         public void VoucherNoGeneration()
         {
-            //TransactionsGeneralFill obj = new TransactionsGeneralFill();
-            //AdvancePaymentSP spAdvancePayment = new AdvancePaymentSP();
+            TransactionsGeneralFill obj = new TransactionsGeneralFill();
+            AdvancePaymentSP spAdvancePayment = new AdvancePaymentSP();
             if (strVoucherNo == string.Empty)
             {
                 strVoucherNo = "0";
             }
-            strVoucherNo = VoucherNumberGeneration(decPaymentVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpSalaryMonth.Value, strAdvancePayment);
-            decimal decJournalVoucherTypeIdmax = 0;
-            if (IME.AdvancePayments.Where(a => a.voucherTypeId == decPaymentVoucherTypeId).Select(b => b.voucherNo).ToList().Count() != 0) decJournalVoucherTypeIdmax = IME.JournalMasters.Where(a => a.voucherTypeId == decPaymentVoucherTypeId).Select(b => b.voucherNo).ToList().Select(decimal.Parse).ToList().Max();
-
-            if (Convert.ToDecimal(strVoucherNo) != decJournalVoucherTypeIdmax + 1)
+            strVoucherNo = obj.VoucherNumberAutomaicGeneration(decPaymentVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpSalaryMonth.Value, strAdvancePayment);
+            if (Convert.ToDecimal(strVoucherNo) != spAdvancePayment.AdvancePaymentGetMaxPlusOne(decPaymentVoucherTypeId))
             {
-                strVoucherNo = decJournalVoucherTypeIdmax.ToString();
-                strVoucherNo = VoucherNumberGeneration(decPaymentVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpSalaryMonth.Value, strAdvancePayment);
-                if (decJournalVoucherTypeIdmax == 0)
+                strVoucherNo = spAdvancePayment.AdvancePaymentGetMax(decPaymentVoucherTypeId).ToString();
+                strVoucherNo = obj.VoucherNumberAutomaicGeneration(decPaymentVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpSalaryMonth.Value, strAdvancePayment);
+                if (spAdvancePayment.AdvancePaymentGetMax(decPaymentVoucherTypeId) == "0")
                 {
                     strVoucherNo = "0";
-                    strVoucherNo = VoucherNumberGeneration(decPaymentVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpSalaryMonth.Value, strAdvancePayment);
+                    strVoucherNo = obj.VoucherNumberAutomaicGeneration(decPaymentVoucherTypeId, Convert.ToDecimal(strVoucherNo), dtpSalaryMonth.Value, strAdvancePayment);
                 }
             }
             if (isAutomatic)
             {
-                SuffixPrefix SuffixPrefix = IME.SuffixPrefixes.Where(a => a.voucherTypeId == decPaymentVoucherTypeId).Where(b => b.fromDate < dtpDate.Value).Where(c => c.toDate > dtpDate.Value).FirstOrDefault();
-                strPrefix = SuffixPrefix.prefix;
-                strSuffix = SuffixPrefix.suffix;
+                SuffixPrefixSP spSuffixPrefix = new SuffixPrefixSP();
+                SuffixPrefix infoSuffixPrefix = new SuffixPrefix();
+                infoSuffixPrefix = spSuffixPrefix.GetSuffixPrefixDetails(decPaymentVoucherTypeId, dtpDate.Value);
+                strPrefix = infoSuffixPrefix.prefix;
+                strSuffix = infoSuffixPrefix.suffix;
                 strInvoiceNo = strPrefix + strVoucherNo + strSuffix;
                 txtAdvanceVoucherNo.Text = strInvoiceNo;
                 txtAdvanceVoucherNo.Enabled = false;

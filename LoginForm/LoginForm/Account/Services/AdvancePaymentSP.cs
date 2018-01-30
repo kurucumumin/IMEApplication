@@ -29,7 +29,6 @@ namespace LoginForm.Account.Services
             return isPaid;
         }
 
-
         public DataTable AdvancePaymentAddWithIdentity(AdvancePayment advancepaymentinfo, bool IsAutomatic)
         {
             IMEEntities IME = new IMEEntities();
@@ -70,5 +69,35 @@ namespace LoginForm.Account.Services
 
         }
 
+        public decimal AdvancePaymentGetMaxPlusOne(decimal decVoucherTypeId)
+        {
+            IMEEntities IME = new IMEEntities();
+            decimal Max = 0;
+            try
+            {
+               Max= Convert.ToDecimal(IME.AdvancePayments.Where(a => a.voucherTypeId == decVoucherTypeId).Select(b => b.voucherNo).ToList().Max());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            
+            return Max + 1;
+        }
+
+        public string AdvancePaymentGetMax(decimal decVoucherTypeId)
+        {
+            IMEEntities IME = new IMEEntities();
+            string Max = "0";
+            try
+            {
+                Max = IME.AdvancePayments.Where(a => a.voucherTypeId == decVoucherTypeId).Select(b => b.voucherNo).ToList().Max();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return Max;
+        }
     }
 }
