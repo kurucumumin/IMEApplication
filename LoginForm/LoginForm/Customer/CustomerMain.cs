@@ -425,12 +425,78 @@ namespace LoginForm
         {
             if(searchtxt==null|| searchtxt == "")
             {
-                var CustomerList = IME.Customers.Take(100).Where(a => a.c_name.Contains(searchtxt)).ToList();
+                var CustomerList =(from c in IME.Customers.Take(100).Where(a => a.c_name.Contains(searchtxt))
+                                   select new
+                                   {
+                                       c.ID,
+                                       CustomerName = c.c_name,
+                                       Disc = c.discountrate,
+                                       PaymentMethod = c.PaymentMethod.Payment,
+                                       CrediLimit = c.creditlimit,
+                                       Web = c.webadress,
+                                       PaymentTerm = c.PaymentTerm.term_name,
+                                       Representative = c.representaryID,
+                                       NoteName = c.Note.Note_name,
+                                       Representative2 = c.representary2ID,
+                                       AccountRepresentative = c.accountrepresentaryID,
+                                       IsActive=c.isactive,
+                                       RateInvoice = c.rateIDinvoice,
+                                       TaxOffice = c.taxoffice,
+                                       TaxNumber = c.taxnumber,
+                                       MainContact = c.MainContactID,
+                                       CurTypeInvoice = c.CurrTypeInv,
+                                       CurNameInvoice = c.CurrNameInv,
+                                       CurTypeQuo = c.CurrTypeQuo,
+                                       CurNameQuo = c.CurrNameQuo,
+                                       AccountNote = c.customerAccountantNoteID,
+                                       ExtensionNumber = c.extensionnumber,
+                                       Factor = c.factor,
+                                       CreditDay = c.creditDay,
+                                       CreateDate = c.CreateDate,
+                                       Telephone = c.telephone,
+                                       Fax = c.fax,
+                                       Category = c.categoryID,
+                                       SubCategory = c.subcategoryID,
+                                       ThirdPartyCode = c.ThirdPartyCode,
+                                   }).ToList();
                 CustomerDataGrid.DataSource = CustomerList;
             }
             else
             {
-                var CustomerList = IME.Customers.Where(a => a.c_name.Contains(searchtxt)).ToList();
+                var CustomerList = (from c in IME.Customers.Take(100).Where(a => a.c_name.Contains(searchtxt))
+                                    select new
+                                    {
+                                        c.ID,
+                                        CustomerName = c.c_name,
+                                        Disc = c.discountrate,
+                                        PaymentMethod = c.PaymentMethod.Payment,
+                                        CrediLimit = c.creditlimit,
+                                        Web = c.webadress,
+                                        PaymentTerm = c.PaymentTerm.term_name,
+                                        Representative = c.representaryID,
+                                        NoteName = c.Note.Note_name,
+                                        Representative2 = c.representary2ID,
+                                        AccountRepresentative = c.accountrepresentaryID,
+                                        IsActive = c.isactive,
+                                        RateInvoice = c.rateIDinvoice,
+                                        TaxOffice = c.taxoffice,
+                                        TaxNumber = c.taxnumber,
+                                        MainContact = c.MainContactID,
+                                        CurTypeInvoice = c.CurrTypeInv,
+                                        CurNameInvoice = c.CurrNameInv,
+                                        CurTypeQuo = c.CurrTypeQuo,
+                                        CurNameQuo = c.CurrNameQuo,
+                                        AccountNote = c.customerAccountantNoteID,
+                                        ExtensionNumber = c.extensionnumber,
+                                        Factor = c.factor,
+                                        CreditDay = c.creditDay,
+                                        CreateDate = c.CreateDate,
+                                        Telephone = c.telephone,
+                                        Fax = c.fax,
+                                        Category = c.categoryID,
+                                        SubCategory = c.subcategoryID,
+                                        ThirdPartyCode = c.ThirdPartyCode,
+                                    }).ToList();
                 CustomerDataGrid.DataSource = CustomerList;
             }
             if (CustomerDataGrid.RowCount!=0) {
