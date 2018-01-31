@@ -553,7 +553,7 @@ namespace LoginForm.Item
 
         private void Number_TextChanged(object sender, EventArgs e)
         {
-            if (!(txtQuantitiy.Text==string.Empty|| Int32.Parse(txtQuantitiy.Text)==0)) {
+            if ((txtStockNo.Text!="" && txtStockNo.Text!=null) &&(!(txtQuantitiy.Text==string.Empty|| Int32.Parse(txtQuantitiy.Text)==0))) {
                 if ((Int32.Parse(txtQuantitiy.Text) < Int32.Parse(txtUnitCount2.Text) && Int32.Parse(txtUnitCount1.Text) != 0) || Int32.Parse(txtUnitCount2.Text) == 0)
                 {
                     txtUnitPrice.Text = txtUK1.Text;
