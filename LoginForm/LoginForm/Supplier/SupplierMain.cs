@@ -46,15 +46,15 @@ namespace LoginForm
             cmbsub.DataSource = IME.SupplierSubCategories.ToList();
             cmbsub.DisplayMember = "subcategoryname";
             cmbsub.ValueMember = "ID";
+ 
+            cmbCurrenyt.DataSource = IME.Currencies.ToList();
+            cmbCurrenyt.DisplayMember = "currencyName";
+            cmbCurrenyt.ValueMember = "currencyId";
 
-            cmbCurrenyt.DataSource = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList();
-            cmbCurrenyt.DisplayMember = "CurType";
-            cmbCurrenyt.ValueMember = "ID"; 
+            cmbInvoiceCur.DataSource = IME.Currencies.ToList();
+            cmbInvoiceCur.DisplayMember = "currencyName";
+            cmbInvoiceCur.ValueMember = "currencyId";
 
-            cmbInvoiceCur.DataSource = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList();
-            cmbInvoiceCur.DisplayMember = "CurType";
-            cmbInvoiceCur.ValueMember = "ID";
-                     
             cmbrepresentative.DataSource = IME.Workers.ToList();
             cmbrepresentative.DisplayMember = "NameLastName";
             cmbrepresentative.ValueMember = "WorkerID";
@@ -1127,6 +1127,7 @@ namespace LoginForm
                 int saID = ((AdressList).SelectedItem as SupplierAdress).ID;
                 ca = IME.SupplierAdresses.Where(a => a.ID == saID).FirstOrDefault();
             }
+            else { ca = null; }
 
             if (ca != null)
             {
@@ -1135,6 +1136,7 @@ namespace LoginForm
                 ca.CityID = ((cmbcity).SelectedItem as City).ID;
                 ca.TownID = ((cmbtown).SelectedItem as Town).ID;
                 ca.AdressDetails = txtCompanyAddress.Text;
+
                 IME.SaveChanges();
             }
             else
