@@ -138,10 +138,5 @@ namespace LoginForm
                 btnLogin.PerformClick();
             }
         }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }
