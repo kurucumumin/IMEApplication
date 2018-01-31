@@ -146,8 +146,10 @@ namespace LoginForm.QuotationModule
 
         private void BringQuotationList(DateTime startDate, DateTime endDate)
         {
+            
             IMEEntities IME = new IMEEntities();
-
+            DateTime time = Convert.ToDateTime(IME.CurrentDate().FirtsOrDefault());
+            MessageBox.Show(time.ToString());
             var list = from q in IME.Quotations
                        join c in IME.Customers on q.CustomerID equals c.ID
                        where q.StartDate >= endDate && q.StartDate <= startDate

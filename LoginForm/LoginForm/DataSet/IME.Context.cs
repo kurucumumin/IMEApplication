@@ -529,6 +529,67 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AdditionalCostViewAllByVoucherTypeIdAndVoucherNo_Result>("AdditionalCostViewAllByVoucherTypeIdAndVoucherNo", voucherTypeIdParameter, voucherNoParameter);
         }
     
+        public virtual ObjectResult<AdvancePaymentAddWithIdentity_Result> AdvancePaymentAddWithIdentity(Nullable<decimal> employeeId, Nullable<decimal> ledgerId, string voucherNo, string invoiceNo, Nullable<System.DateTime> date, Nullable<decimal> amount, Nullable<System.DateTime> salaryMonth, string chequenumber, Nullable<System.DateTime> chequeDate, string narration, Nullable<decimal> suffixPrefixId, Nullable<decimal> voucherTypeId, Nullable<decimal> financialYearId, Nullable<bool> isAutomatic)
+        {
+            var employeeIdParameter = employeeId.HasValue ?
+                new ObjectParameter("employeeId", employeeId) :
+                new ObjectParameter("employeeId", typeof(decimal));
+    
+            var ledgerIdParameter = ledgerId.HasValue ?
+                new ObjectParameter("ledgerId", ledgerId) :
+                new ObjectParameter("ledgerId", typeof(decimal));
+    
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            var invoiceNoParameter = invoiceNo != null ?
+                new ObjectParameter("invoiceNo", invoiceNo) :
+                new ObjectParameter("invoiceNo", typeof(string));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var amountParameter = amount.HasValue ?
+                new ObjectParameter("amount", amount) :
+                new ObjectParameter("amount", typeof(decimal));
+    
+            var salaryMonthParameter = salaryMonth.HasValue ?
+                new ObjectParameter("salaryMonth", salaryMonth) :
+                new ObjectParameter("salaryMonth", typeof(System.DateTime));
+    
+            var chequenumberParameter = chequenumber != null ?
+                new ObjectParameter("chequenumber", chequenumber) :
+                new ObjectParameter("chequenumber", typeof(string));
+    
+            var chequeDateParameter = chequeDate.HasValue ?
+                new ObjectParameter("chequeDate", chequeDate) :
+                new ObjectParameter("chequeDate", typeof(System.DateTime));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            var suffixPrefixIdParameter = suffixPrefixId.HasValue ?
+                new ObjectParameter("suffixPrefixId", suffixPrefixId) :
+                new ObjectParameter("suffixPrefixId", typeof(decimal));
+    
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            var financialYearIdParameter = financialYearId.HasValue ?
+                new ObjectParameter("financialYearId", financialYearId) :
+                new ObjectParameter("financialYearId", typeof(decimal));
+    
+            var isAutomaticParameter = isAutomatic.HasValue ?
+                new ObjectParameter("IsAutomatic", isAutomatic) :
+                new ObjectParameter("IsAutomatic", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AdvancePaymentAddWithIdentity_Result>("AdvancePaymentAddWithIdentity", employeeIdParameter, ledgerIdParameter, voucherNoParameter, invoiceNoParameter, dateParameter, amountParameter, salaryMonthParameter, chequenumberParameter, chequeDateParameter, narrationParameter, suffixPrefixIdParameter, voucherTypeIdParameter, financialYearIdParameter, isAutomaticParameter);
+        }
+    
         public virtual int AreaDeleteReference(Nullable<decimal> areaId)
         {
             var areaIdParameter = areaId.HasValue ?
@@ -693,6 +754,32 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherTypeId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("CheckForDefaultVoucherType", voucherTypeIdParameter);
+        }
+    
+        public virtual ObjectResult<string> CheckSalaryAlreadyPaidOrNot(Nullable<decimal> employeeId, Nullable<System.DateTime> month)
+        {
+            var employeeIdParameter = employeeId.HasValue ?
+                new ObjectParameter("employeeId", employeeId) :
+                new ObjectParameter("employeeId", typeof(decimal));
+    
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("CheckSalaryAlreadyPaidOrNot", employeeIdParameter, monthParameter);
+        }
+    
+        public virtual ObjectResult<string> CheckSalaryAlreadyPaidOrNotForAdvancePayment(Nullable<decimal> employeeId, Nullable<System.DateTime> month)
+        {
+            var employeeIdParameter = employeeId.HasValue ?
+                new ObjectParameter("employeeId", employeeId) :
+                new ObjectParameter("employeeId", typeof(decimal));
+    
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("CheckSalaryAlreadyPaidOrNotForAdvancePayment", employeeIdParameter, monthParameter);
         }
     
         public virtual ObjectResult<CreditNoteRegisterSearch_Result> CreditNoteRegisterSearch(string voucherNo, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
