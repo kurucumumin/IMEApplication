@@ -8,16 +8,18 @@ namespace LoginForm.QuotationModule
 {
     public partial class FormQuotationMain : Form
     {
+        DateTime dateNow;
+
         public FormQuotationMain()
         {
             InitializeComponent();
-            datetimeEnd.Value = DateTime.Now.AddDays(-7);
-            BringQuotationList();
+            dateNow = Convert.ToDateTime(new IMEEntities().CurrentDate().First());
+            dtpFromDate.Value = DateTime.Now.AddMonths(-1);
         }
 
         private void btnNewQuotation_Click(object sender, EventArgs e)
         {
-            var a = datetimeStart.Value;
+            var a = dtpFromDate.Value;
             this.Hide();
             FormQuotationAdd quotationForm = new FormQuotationAdd();
             quotationForm.ShowDialog();
@@ -26,7 +28,7 @@ namespace LoginForm.QuotationModule
 
         private void btnRefreshList_Click(object sender, EventArgs e)
         {
-            BringQuotationList(datetimeStart.Value, datetimeEnd.Value);
+            BringQuotationList(dtpFromDate.Value, dtpToDate.Value);
         }
 
         private void dgQuotation_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -141,16 +143,16 @@ namespace LoginForm.QuotationModule
         private void BringQuotationList()
         {
             IMEEntities IME = new IMEEntities();
-            BringQuotationList(DateTime.Today, DateTime.Today.AddDays(-7));
+            BringQuotationList(dateNow.AddMonths(-1), dateNow);
         }
 
-        private void BringQuotationList(DateTime startDate, DateTime endDate)
+        private void BringQuotationList(DateTime fromDate, DateTime toDate)
         {
             IMEEntities IME = new IMEEntities();
 
             var list = from q in IME.Quotations
                        join c in IME.Customers on q.CustomerID equals c.ID
-                       where q.StartDate >= endDate && q.StartDate <= startDate
+                       where q.StartDate >= fromDate && q.StartDate <= toDate
                        select new
                        {
                            Date = q.StartDate,

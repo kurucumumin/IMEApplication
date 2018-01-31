@@ -58,7 +58,8 @@ namespace LoginForm.QuotationModule
             dgQuotationItemSearch.DataSource = gridAdapterPC;
             if (gridAdapterPC.Count() == 0)
             {
-                MessageBox.Show("There is no such a data");
+                //MessageBox.Show("There is no such a data");
+                MessageBox.Show("Product not found!");
             }
         }
 
