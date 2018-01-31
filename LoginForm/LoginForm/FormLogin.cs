@@ -46,9 +46,9 @@ namespace LoginForm
             //}
             //catch (Exception ex)
             //{
-                 
+
             //}
-           
+
             //WorkerApp.ID = Logged.WorkerID;
             if (Logged != null)
             {
@@ -58,7 +58,7 @@ namespace LoginForm
                     FormMain formMain = new FormMain();
                     this.Hide();
                    formMain.ShowDialog();
-                    
+
                     this.Close();
                 }
                 else
@@ -75,7 +75,7 @@ namespace LoginForm
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
-            
+
             //txtReader.excelCustomerCategory1();
             //Rate DolarRate1 = new Rate();
             //DolarRate1 = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).FirstOrDefault();
