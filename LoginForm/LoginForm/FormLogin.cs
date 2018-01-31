@@ -41,7 +41,7 @@ namespace LoginForm
                 Logged = IME.Workers
                .Where(uName => uName.UserName == UserName)
                .Where(pw => pw.UserPass == PW)
-               .Where(status => status.isActive == 1)
+               //.Where(status => status.isActive == 1)S
                .FirstOrDefault();
             //}
             //catch (Exception ex)
