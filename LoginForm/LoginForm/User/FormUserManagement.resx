@@ -121,19 +121,16 @@
   <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="clbUserAuthorityList.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="clbUserAuthorityList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 31</value>
+    <value>12, 52</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="clbUserAuthorityList.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="clbUserAuthorityList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>288, 645</value>
+    <value>288, 613</value>
   </data>
   <data name="clbUserAuthorityList.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -186,20 +183,17 @@
   <metadata name="roleValueBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>517, 17</value>
   </metadata>
-  <data name="lbRoles.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
   <data name="lbRoles.ItemHeight" type="System.Int32, mscorlib">
     <value>20</value>
   </data>
   <data name="lbRoles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 31</value>
+    <value>12, 51</value>
   </data>
   <data name="lbRoles.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="lbRoles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>287, 645</value>
+    <value>287, 624</value>
   </data>
   <data name="lbRoles.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -249,17 +243,44 @@
   <data name="&gt;&gt;gbRoles.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="clbAuthorities.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="chcAllAuth.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chcAllAuth.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="chcAllAuth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 25</value>
+  </data>
+  <data name="chcAllAuth.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 24</value>
+  </data>
+  <data name="chcAllAuth.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="chcAllAuth.Text" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="&gt;&gt;chcAllAuth.Name" xml:space="preserve">
+    <value>chcAllAuth</value>
+  </data>
+  <data name="&gt;&gt;chcAllAuth.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chcAllAuth.Parent" xml:space="preserve">
+    <value>gbAuthorities</value>
+  </data>
+  <data name="&gt;&gt;chcAllAuth.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="clbAuthorities.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 31</value>
+    <value>12, 52</value>
   </data>
   <data name="clbAuthorities.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
   <data name="clbAuthorities.Size" type="System.Drawing.Size, System.Drawing">
-    <value>287, 645</value>
+    <value>287, 613</value>
   </data>
   <data name="clbAuthorities.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -274,7 +295,7 @@
     <value>gbAuthorities</value>
   </data>
   <data name="&gt;&gt;clbAuthorities.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="gbAuthorities.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>

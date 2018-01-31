@@ -331,7 +331,7 @@ namespace LoginForm.User
             clbUserAuthorityList.DisplayMember = "AuthorizationValue1";
 
 
-            CheckAllItemsListBox(clbUserAuthorityList);
+            CheckAllItemsListBox(clbUserAuthorityList, true);
         }
 
         private void chcChangePassword_CheckedChanged(object sender, EventArgs e)
@@ -357,6 +357,7 @@ namespace LoginForm.User
             }
 
             matchAuthorities();
+            chcAllAuth.Checked = false;
         }
 
         private void matchAuthorities()
@@ -383,14 +384,14 @@ namespace LoginForm.User
             clbUserAuthorityList.DataSource = authList;
             clbUserAuthorityList.DisplayMember = "AuthorizationValue1";
 
-            CheckAllItemsListBox(clbUserAuthorityList);
+            CheckAllItemsListBox(clbUserAuthorityList, true);
         }
 
-        private void CheckAllItemsListBox(CheckedListBox listBox)
+        private void CheckAllItemsListBox(CheckedListBox listBox, bool state)
         {
             for (int i = 0; i < listBox.Items.Count; i++)
             {
-                listBox.SetItemChecked(i, true);
+                listBox.SetItemChecked(i, state);
             }
         }
 
@@ -448,6 +449,54 @@ namespace LoginForm.User
                 decimal discountRate = numericDiscountRate.Value;
 
                 numericFactor.Value = (Utils.getManagement().Factor - ((discountRate * Utils.getManagement().Factor) / 100));
+            }
+        }
+
+        private void chcAllAuth_Click(object sender, EventArgs e)
+        {
+            if (chcAllAuth.Checked == true)
+            {
+                //tüm otoriteleri işaretle
+                SelectAllChangeState(clbAuthorities, true);
+            }
+            else
+            {
+                //tüm otoriteleri kaldır
+                SelectAllChangeState(clbAuthorities, false);
+            }
+        }
+
+        void SelectAllChangeState(CheckedListBox listBox, bool state)
+        {
+            for (int i = 0; i < listBox.Items.Count; i++)
+            {
+                listBox.SetItemChecked(i, state);
+                X(listBox, i);
+            }
+        }
+
+        void X(CheckedListBox listBox,int index)
+        {
+            bool state = clbAuthorities.GetItemChecked(index);
+            
+            if (state)
+            {
+                if (!authList.Exists(x=>x.AuthorizationID == ((AuthorizationValue)(clbAuthorities.Items[index])).AuthorizationID))
+                {
+                    authList.Add((AuthorizationValue)clbAuthorities.Items[index]);
+                    RefreshUserAuthList();
+                }
+            }
+            else if (!state)
+            {
+                for (int i = 0; i < clbUserAuthorityList.Items.Count; i++)
+                {
+                    if (((AuthorizationValue)clbAuthorities.Items[index]).AuthorizationID == ((AuthorizationValue)clbUserAuthorityList.Items[i]).AuthorizationID)
+                    {
+                        authList.Remove((AuthorizationValue)clbUserAuthorityList.Items[i]);
+                        RefreshUserAuthList();
+                    }
+                }
             }
         }
     }

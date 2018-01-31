@@ -37,6 +37,7 @@
             this.lbRoles = new System.Windows.Forms.ListBox();
             this.roleValueBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gbAuthorities = new System.Windows.Forms.GroupBox();
+            this.chcAllAuth = new System.Windows.Forms.CheckBox();
             this.clbAuthorities = new System.Windows.Forms.CheckedListBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
@@ -102,8 +103,8 @@
             // clbUserAuthorityList
             // 
             this.clbUserAuthorityList.CheckOnClick = true;
-            resources.ApplyResources(this.clbUserAuthorityList, "clbUserAuthorityList");
             this.clbUserAuthorityList.FormattingEnabled = true;
+            resources.ApplyResources(this.clbUserAuthorityList, "clbUserAuthorityList");
             this.clbUserAuthorityList.Name = "clbUserAuthorityList";
             this.clbUserAuthorityList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.clbUserAuthorityList_MouseClick);
             // 
@@ -118,8 +119,8 @@
             // 
             this.lbRoles.DataSource = this.roleValueBindingSource;
             this.lbRoles.DisplayMember = "roleName";
-            resources.ApplyResources(this.lbRoles, "lbRoles");
             this.lbRoles.FormattingEnabled = true;
+            resources.ApplyResources(this.lbRoles, "lbRoles");
             this.lbRoles.Name = "lbRoles";
             this.lbRoles.ValueMember = "RoleID";
             this.lbRoles.SelectedIndexChanged += new System.EventHandler(this.lbRoles_SelectedIndexChanged);
@@ -130,16 +131,24 @@
             // 
             // gbAuthorities
             // 
+            this.gbAuthorities.Controls.Add(this.chcAllAuth);
             this.gbAuthorities.Controls.Add(this.clbAuthorities);
             resources.ApplyResources(this.gbAuthorities, "gbAuthorities");
             this.gbAuthorities.Name = "gbAuthorities";
             this.gbAuthorities.TabStop = false;
             // 
+            // chcAllAuth
+            // 
+            resources.ApplyResources(this.chcAllAuth, "chcAllAuth");
+            this.chcAllAuth.Name = "chcAllAuth";
+            this.chcAllAuth.UseVisualStyleBackColor = true;
+            this.chcAllAuth.Click += new System.EventHandler(this.chcAllAuth_Click);
+            // 
             // clbAuthorities
             // 
             this.clbAuthorities.CheckOnClick = true;
-            resources.ApplyResources(this.clbAuthorities, "clbAuthorities");
             this.clbAuthorities.FormattingEnabled = true;
+            resources.ApplyResources(this.clbAuthorities, "clbAuthorities");
             this.clbAuthorities.Name = "clbAuthorities";
             this.clbAuthorities.MouseClick += new System.Windows.Forms.MouseEventHandler(this.clbAuthorities_MouseClick);
             // 
@@ -388,6 +397,7 @@
             this.gbRoles.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.roleValueBindingSource)).EndInit();
             this.gbAuthorities.ResumeLayout(false);
+            this.gbAuthorities.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.gbUserInfo.ResumeLayout(false);
             this.gbUserInfo.PerformLayout();
@@ -442,5 +452,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown numericDiscountRate;
+        private System.Windows.Forms.CheckBox chcAllAuth;
     }
 }

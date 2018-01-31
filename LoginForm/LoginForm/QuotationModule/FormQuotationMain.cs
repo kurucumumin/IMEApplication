@@ -150,7 +150,7 @@ namespace LoginForm.QuotationModule
         {
             
             IMEEntities IME = new IMEEntities();
-            DateTime time = Convert.ToDateTime(IME.CurrentDate().FirtsOrDefault());
+            DateTime time = Convert.ToDateTime(IME.CurrentDate().First());
             MessageBox.Show(time.ToString());
             var list = from q in IME.Quotations
                        join c in IME.Customers on q.CustomerID equals c.ID
