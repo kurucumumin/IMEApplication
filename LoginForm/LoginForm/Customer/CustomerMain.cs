@@ -127,12 +127,12 @@ namespace LoginForm
             MainCategory.DataSource = IME.CustomerCategories.ToList();
             MainCategory.DisplayMember = "categoryname";
             MainCategory.ValueMember = "ID";
-            QuoCurrencyName.DataSource = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList();
-            QuoCurrencyName.DisplayMember = "CurType";
-            QuoCurrencyName.ValueMember = "ID";
-            InvCurrencyName.DataSource = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).ToList();
-            InvCurrencyName.DisplayMember = "CurType";
-            InvCurrencyName.ValueMember = "ID";
+            QuoCurrencyName.DataSource = IME.Currencies.ToList();
+            QuoCurrencyName.DisplayMember = "currencyName";
+            QuoCurrencyName.ValueMember = "currencyId";
+            InvCurrencyName.DataSource = IME.Currencies.ToList();
+            InvCurrencyName.DisplayMember = "currencyName";
+            InvCurrencyName.ValueMember = "currencyId";
             TermsofPayments.DataSource = IME.PaymentTerms.OrderBy(p => p.timespan).ToList();
             TermsofPayments.DisplayMember = "term_name";
             TermsofPayments.ValueMember = "ID";
