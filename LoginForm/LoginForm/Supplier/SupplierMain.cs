@@ -602,12 +602,59 @@ namespace LoginForm
         {
             if (searchtxt == null || searchtxt == "")
             {
-                var SupplierList = IME.Suppliers.Take(100).Where(a => a.s_name.Contains(searchtxt)).ToList();
+                var SupplierList =(from c in IME.Suppliers.Where(a => a.s_name.Contains(searchtxt))
+                                   select new {
+                                       c.ID,
+                                       CustomerName = c.s_name,
+                                       Telephone = c.telephone,
+                                       PaymentMethod = c.PaymentMethod.Payment,
+                                       Fax = c.fax,
+                                       CrediLimit = c.creditlimit,
+                                       Web = c.webadress,
+                                       PaymentTerm = c.PaymentTerm.term_name,
+                                       WorkerName = c.Worker.NameLastName,
+                                       CurType = c.Rate.CurType,
+                                       TaxOffice = c.taxoffice,
+                                       TaxNumber = c.taxnumber,
+                                       Representative = c.accountrepresentaryID,
+                                       NoteName = c.Note.Note_name,
+                                       MainContact = c.MainContactID,
+                                       BankName = c.SupplierBank.bankname,
+                                       PoBox = c.PoBox,
+                                       Disc = c.discountrate,
+                                       Iban = c.iban,
+                                       BrancCoe = c.branchcode,
+                                       AccountNumber = c.accountnumber
+                                   }).ToList();
                 dgSupplier.DataSource = SupplierList;
             }
             else
             {
-                var SupplierList = IME.Suppliers.Where(a => a.s_name.Contains(searchtxt)).ToList();
+                var SupplierList = (from c in IME.Suppliers.Where(a => a.s_name.Contains(searchtxt))
+                                    select new
+                                    {
+                                        c.ID,
+                                        CustomerName = c.s_name,
+                                        Telephone = c.telephone,
+                                        PaymentMethod = c.PaymentMethod.Payment,
+                                        Fax = c.fax,
+                                        CrediLimit = c.creditlimit,
+                                        Web = c.webadress,
+                                        PaymentTerm = c.PaymentTerm.term_name,
+                                        WorkerName = c.Worker.NameLastName,
+                                        CurType = c.Rate.CurType,
+                                        TaxOffice = c.taxoffice,
+                                        TaxNumber = c.taxnumber,
+                                        Representative = c.accountrepresentaryID,
+                                        NoteName = c.Note.Note_name,
+                                        MainContact = c.MainContactID,
+                                        BankName = c.SupplierBank.bankname,
+                                        PoBox = c.PoBox,
+                                        Disc = c.discountrate,
+                                        Iban = c.iban,
+                                        BrancCoe = c.branchcode,
+                                        AccountNumber = c.accountnumber
+                                    }).ToList();
                 dgSupplier.DataSource = SupplierList;
             }
             if (dgSupplier.RowCount != 0)

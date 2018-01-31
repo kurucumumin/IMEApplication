@@ -181,7 +181,7 @@ namespace LoginForm
             this.tabinfo.Controls.Add(this.label2);
             this.tabinfo.Location = new System.Drawing.Point(4, 25);
             this.tabinfo.Name = "tabinfo";
-            this.tabinfo.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabinfo.Padding = new System.Windows.Forms.Padding(3);
             this.tabinfo.Size = new System.Drawing.Size(911, 176);
             this.tabinfo.TabIndex = 0;
             this.tabinfo.Text = "Info";
@@ -358,7 +358,7 @@ namespace LoginForm
             this.tabaccount.Controls.Add(this.label7);
             this.tabaccount.Location = new System.Drawing.Point(4, 25);
             this.tabaccount.Name = "tabaccount";
-            this.tabaccount.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabaccount.Padding = new System.Windows.Forms.Padding(3);
             this.tabaccount.Size = new System.Drawing.Size(911, 176);
             this.tabaccount.TabIndex = 1;
             this.tabaccount.Text = "Account";
@@ -516,7 +516,7 @@ namespace LoginForm
             this.tabadres.Controls.Add(this.label16);
             this.tabadres.Location = new System.Drawing.Point(4, 25);
             this.tabadres.Name = "tabadres";
-            this.tabadres.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabadres.Padding = new System.Windows.Forms.Padding(3);
             this.tabadres.Size = new System.Drawing.Size(911, 176);
             this.tabadres.TabIndex = 2;
             this.tabadres.Text = "Company Address";
@@ -777,7 +777,7 @@ namespace LoginForm
             this.tabcountact.Controls.Add(this.label26);
             this.tabcountact.Location = new System.Drawing.Point(4, 25);
             this.tabcountact.Name = "tabcountact";
-            this.tabcountact.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabcountact.Padding = new System.Windows.Forms.Padding(3);
             this.tabcountact.Size = new System.Drawing.Size(911, 176);
             this.tabcountact.TabIndex = 3;
             this.tabcountact.Text = "Contact";
@@ -1151,10 +1151,13 @@ namespace LoginForm
             // 
             // dgSupplier
             // 
+            this.dgSupplier.AllowUserToAddRows = false;
+            this.dgSupplier.AllowUserToDeleteRows = false;
             this.dgSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgSupplier.Location = new System.Drawing.Point(3, 283);
             this.dgSupplier.Name = "dgSupplier";
+            this.dgSupplier.ReadOnly = true;
             this.dgSupplier.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgSupplier.Size = new System.Drawing.Size(919, 184);
             this.dgSupplier.TabIndex = 1;
@@ -1230,7 +1233,7 @@ namespace LoginForm
             this.tableLayoutPanel1.Controls.Add(this.tabgenel, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 211F));
@@ -1248,7 +1251,7 @@ namespace LoginForm
             this.panel1.Controls.Add(this.btnnew);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(2, 213);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(921, 65);
             this.panel1.TabIndex = 2;
