@@ -1394,6 +1394,7 @@
             this.btnDeliveryAdd.TabIndex = 100;
             this.btnDeliveryAdd.Text = "Add";
             this.btnDeliveryAdd.UseVisualStyleBackColor = true;
+            this.btnDeliveryAdd.Click += new System.EventHandler(this.btnDeliveryAdd_Click);
             // 
             // textBox5
             // 

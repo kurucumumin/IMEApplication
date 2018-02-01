@@ -2922,5 +2922,13 @@ namespace LoginForm.nmSaleOrder
 
             return (nullAreaList.Count != 0) ? true : false;
         }
+
+        private void btnDeliveryAdd_Click(object sender, EventArgs e)
+        {
+            CustomerMain f = new CustomerMain(2, CustomerCode.Text);
+            f.ShowDialog();
+            customer = IME.Customers.Where(x => x.ID == CustomerCode.Text).FirstOrDefault();
+            fillCustomer();
+        }
     }
 }
