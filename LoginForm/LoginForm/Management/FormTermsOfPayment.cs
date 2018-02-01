@@ -1,6 +1,8 @@
 ﻿using LoginForm.DataSet;
+using LoginForm.Services;
 using System;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -48,7 +50,7 @@ namespace LoginForm.ManagementModule
                     }
 
                     term.timespan = Convert.ToInt32(ts.TotalSeconds);
-                    term.term_name = cbCount.Text + " " + cbType.Text + " " + txtNote.Text;
+                    term.term_name = txtNote.Text;
 
                     IME.PaymentTerms.Add(term);
                     IME.SaveChanges();
@@ -59,7 +61,7 @@ namespace LoginForm.ManagementModule
                 }
                 catch (FormatException ex)
                 {
-                    MessageBox.Show("Count must be an integer number.");
+                    MessageBox.Show("ToP2:Count must be an integer number.");
                 }
             }
             else
@@ -83,8 +85,8 @@ namespace LoginForm.ManagementModule
                     }
 
                     term.timespan = Convert.ToInt32(ts.TotalSeconds);
-                    term.term_name = cbCount.Text + " " + cbType.Text + " " + txtNote.Text;
-                    
+                    term.term_name = txtNote.Text;
+
                     IME.SaveChanges();
 
                     changeMode(false);
@@ -93,11 +95,11 @@ namespace LoginForm.ManagementModule
                 }
                 catch (FormatException ex)
                 {
-                    MessageBox.Show("Count must be an integer number.");
+                    MessageBox.Show("ToP3:Count must be an integer number.");
                 }
                 editMode = false;
             }
-            
+
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -140,20 +142,12 @@ namespace LoginForm.ManagementModule
 
         private void populateForm(PaymentTerm term)
         {
-            string[] tokens = term.term_name.Split(new char[] { ' ' }, 3);
+            TimeSpan span = new TimeSpan(term.timespan * 100);
+            int days = Convert.ToInt32(span.TotalDays * 100000);
+            txtNote.Text = term.term_name;
 
-
-            cbCount.Text = tokens[0];
-            cbType.SelectedItem = tokens[1];
-
-            if (tokens.Count() == 3)
-            {
-                txtNote.Text = tokens[2];
-            }
-            else
-            {
-                txtNote.Text = String.Empty;
-            }
+            cbCount.Text = days.ToString();
+            cbType.Text = "Days";
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -166,6 +160,11 @@ namespace LoginForm.ManagementModule
 
         private void populateListBox()
         {
+            //TODO CEEMMMMMMM
+            //lbPaymentList.DataSource = new IMEEntities().OrderBy(p => p.OrderNo).PaymentTerms.ToList();
+            //lbPaymentList.DisplayMember = "term_name";
+            //lbPaymentList.ValueMember = "ID";
+
             cbCount.SelectedIndex = 0;
             cbType.SelectedIndex = 0;
 
@@ -175,17 +174,46 @@ namespace LoginForm.ManagementModule
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Selected term will be deleted! Do you confirm?", " Delete", MessageBoxButtons.OKCancel);
+            //DialogResult result = MessageBox.Show("Selected term will be deleted! Do you confirm?", " Delete", MessageBoxButtons.OKCancel);
 
-            if (result == DialogResult.OK)
+            if (/*result == DialogResult.OK*/Messages.DeleteMessage())
             {
-                IMEEntities IME = new IMEEntities();
-                PaymentTerm term = IME.PaymentTerms.Where(t => t.ID == selectedTerm.ID).First();
-                IME.PaymentTerms.Remove(term);
-                IME.SaveChanges();
+                try
+                {
+                    IMEEntities IME = new IMEEntities();
+                    PaymentTerm term = IME.PaymentTerms.Where(t => t.ID == selectedTerm.ID).First();
+                    IME.PaymentTerms.Remove(term);
+                    IME.SaveChanges();
 
-                populateListBox();
+                    populateListBox();
+                }
+                catch (Exception ex)
+                {
+                    Messages.ErrorMessage("ToP1: There was an error while deleting the data. Try later.");
+                    throw;
+                }
             }
+        }
+
+        private void lbPaymentList_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (this.lbPaymentList.SelectedItem == null) return;
+            this.lbPaymentList.DoDragDrop(this.lbPaymentList.SelectedItem, DragDropEffects.Move);
+        }
+
+        private void lbPaymentList_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+        }
+
+        private void lbPaymentList_DragDrop(object sender, DragEventArgs e)
+        {
+            Point point = lbPaymentList.PointToClient(new Point(e.X, e.Y));
+            int index = this.lbPaymentList.IndexFromPoint(point);
+            if (index < 0) index = this.lbPaymentList.Items.Count-1;
+            object data = e.Data.GetData(typeof(DateTime));
+            this.lbPaymentList.Items.Remove(data);
+            this.lbPaymentList.Items.Insert(index, data);
         }
     }
 }

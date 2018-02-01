@@ -1773,7 +1773,7 @@ namespace LoginForm
             ProductInfo infoproduct = new ProductInfo();
             SalesMasterSP spSalesMaster = new SalesMasterSP();
             BrandInfo InfoBrand = new BrandInfo();
-            TaxInfo infoTax = new TaxInfo();
+            Tax infoTax = new Tax();
             TaxSP SPTax = new TaxSP();
             try
             {
@@ -1832,7 +1832,7 @@ namespace LoginForm
                         InfoBrand = new BrandSP().BrandView(infoproduct.BrandId);
                         dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoiceBrand"].Value = InfoBrand.BrandName;
                         infoTax = SPTax.TaxViewByProductId(Convert.ToDecimal(dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoiceProductId"].Value).ToString());
-                        dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvcmbSalesInvoiceTaxName"].Value = infoTax.TaxId;
+                        dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvcmbSalesInvoiceTaxName"].Value = infoTax.TaxID;
                         isValueChange = false;
                         dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoicembUnitName"].Value = Convert.ToDecimal(drowDetails["unitId"].ToString());
                         dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoicembUnitName"].ReadOnly = true;
@@ -1883,7 +1883,7 @@ namespace LoginForm
             ProductInfo infoproduct = new ProductInfo();
             SalesMasterSP spSalesMaster = new SalesMasterSP();
             BrandInfo InfoBrand = new BrandInfo();
-            TaxInfo infoTax = new TaxInfo();
+            Tax infoTax = new Tax();
             TaxSP SPTax = new TaxSP();
             try
             {
@@ -1941,7 +1941,7 @@ namespace LoginForm
                         InfoBrand = new BrandSP().BrandView(infoproduct.BrandId);
                         dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoiceBrand"].Value = InfoBrand.BrandName;
                         infoTax = SPTax.TaxViewByProductId(Convert.ToDecimal(dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoiceProductId"].Value).ToString());
-                        dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvcmbSalesInvoiceTaxName"].Value = infoTax.TaxId;
+                        dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvcmbSalesInvoiceTaxName"].Value = infoTax.TaxID;
                         dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoiceUnitConversionId"].Value = drowDetails["unitConversionId"].ToString();
                         isValueChange = false;
                         dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoicembUnitName"].Value = Convert.ToDecimal(drowDetails["unitId"].ToString());
@@ -1993,7 +1993,7 @@ namespace LoginForm
             ProductInfo infoproduct = new ProductInfo();
             SalesMasterSP spSalesMaster = new SalesMasterSP();
             BrandInfo InfoBrand = new BrandInfo();
-            TaxInfo infoTax = new TaxInfo();
+            Tax infoTax = new Tax();
             TaxSP SPTax = new TaxSP();
             try
             {
@@ -2042,7 +2042,7 @@ namespace LoginForm
                         InfoBrand = new BrandSP().BrandView(infoproduct.BrandId);
                         dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoiceBrand"].Value = InfoBrand.BrandName;
                         infoTax = SPTax.TaxViewByProductId(Convert.ToDecimal(dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoiceProductId"].Value).ToString());
-                        dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvcmbSalesInvoiceTaxName"].Value = infoTax.TaxId;
+                        dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvcmbSalesInvoiceTaxName"].Value = infoTax.TaxID;
                         isValueChange = false;
                         dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoicembUnitName"].Value = Convert.ToDecimal(drowDetails["unitId"].ToString());
                         dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoicembUnitName"].ReadOnly = true;

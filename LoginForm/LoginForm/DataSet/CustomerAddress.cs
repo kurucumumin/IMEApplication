@@ -26,8 +26,8 @@ namespace LoginForm.DataSet
         public Nullable<int> ContactID { get; set; }
         public string PostCode { get; set; }
         public string AdressDetails { get; set; }
-        public Nullable<int> isDeliveryAdress { get; set; }
-        public Nullable<int> isIMEOffice { get; set; }
+        public Nullable<bool> isDeliveryAddress { get; set; }
+        public Nullable<bool> isInvoiceAddress { get; set; }
         public Nullable<int> TownID { get; set; }
         public Nullable<int> CityID { get; set; }
         public Nullable<int> CountryID { get; set; }
