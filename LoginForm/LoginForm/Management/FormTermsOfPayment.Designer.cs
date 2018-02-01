@@ -50,10 +50,10 @@
             this.lbPaymentList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lbPaymentList.FormattingEnabled = true;
-            this.lbPaymentList.ItemHeight = 15;
+            this.lbPaymentList.ItemHeight = 18;
             this.lbPaymentList.Location = new System.Drawing.Point(14, 33);
             this.lbPaymentList.Name = "lbPaymentList";
-            this.lbPaymentList.Size = new System.Drawing.Size(260, 214);
+            this.lbPaymentList.Size = new System.Drawing.Size(260, 202);
             this.lbPaymentList.TabIndex = 0;
             this.lbPaymentList.SelectedIndexChanged += new System.EventHandler(this.lbPaymentList_SelectedIndexChanged);
             // 
@@ -66,9 +66,9 @@
             "Days",
             "Weeks",
             "Months"});
-            this.cbType.Location = new System.Drawing.Point(773, 43);
+            this.cbType.Location = new System.Drawing.Point(773, 123);
             this.cbType.Name = "cbType";
-            this.cbType.Size = new System.Drawing.Size(206, 23);
+            this.cbType.Size = new System.Drawing.Size(206, 26);
             this.cbType.TabIndex = 3;
             // 
             // label1
@@ -77,7 +77,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(14, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.Size = new System.Drawing.Size(101, 17);
             this.label1.TabIndex = 4;
             this.label1.Text = "Payment List";
             // 
@@ -85,9 +85,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(457, 20);
+            this.label2.Location = new System.Drawing.Point(457, 100);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.Size = new System.Drawing.Size(50, 17);
             this.label2.TabIndex = 5;
             this.label2.Text = "Count";
             // 
@@ -95,9 +95,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(770, 20);
+            this.label3.Location = new System.Drawing.Point(770, 100);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.Size = new System.Drawing.Size(44, 17);
             this.label3.TabIndex = 6;
             this.label3.Text = "Type";
             // 
@@ -105,7 +105,7 @@
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSave.Enabled = false;
-            this.btnSave.Location = new System.Drawing.Point(460, 181);
+            this.btnSave.Location = new System.Drawing.Point(753, 201);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(110, 34);
             this.btnSave.TabIndex = 7;
@@ -135,16 +135,16 @@
             "7",
             "14",
             "30"});
-            this.cbCount.Location = new System.Drawing.Point(460, 43);
+            this.cbCount.Location = new System.Drawing.Point(460, 123);
             this.cbCount.Name = "cbCount";
-            this.cbCount.Size = new System.Drawing.Size(307, 23);
+            this.cbCount.Size = new System.Drawing.Size(307, 26);
             this.cbCount.TabIndex = 9;
             // 
             // txtNote
             // 
             this.txtNote.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNote.Location = new System.Drawing.Point(460, 95);
+            this.txtNote.Location = new System.Drawing.Point(460, 33);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.ReadOnly = true;
@@ -161,11 +161,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(457, 72);
+            this.label4.Location = new System.Drawing.Point(457, 10);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 13);
+            this.label4.Size = new System.Drawing.Size(90, 17);
             this.label4.TabIndex = 12;
-            this.label4.Text = "Note";
+            this.label4.Text = "Description";
             // 
             // btnEdit
             // 
@@ -191,7 +191,7 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancel.Enabled = false;
-            this.btnCancel.Location = new System.Drawing.Point(576, 181);
+            this.btnCancel.Location = new System.Drawing.Point(869, 201);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(110, 34);
             this.btnCancel.TabIndex = 15;
@@ -201,7 +201,7 @@
             // 
             // FormTermsOfPayment
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1028, 278);
             this.Controls.Add(this.btnCancel);
