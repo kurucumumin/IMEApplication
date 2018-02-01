@@ -171,6 +171,7 @@ namespace LoginForm
             txtcode.Text = c.ID;
             AdressList.DataSource = IME.SupplierAdresses.Where(customera => customera.SupplierID == txtcode.Text).ToList();
             AdressList.DisplayMember = "AdressDetails";
+            AdressList.ValueMember = "ID";
             //ContactAdress.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
             //ContactAdress.DisplayMember = "AdressDetails";
             txtname.Text = c.s_name;
@@ -184,7 +185,7 @@ namespace LoginForm
             listContact.DataSource = IME.SupplierWorkers.Where(customerw => customerw.supplierID == txtcode.Text).ToList();
             listContact.DisplayMember = "cw_name";
             cmbMainContact.DataSource = IME.SupplierWorkers.Where(customerw => customerw.supplierID == txtcode.Text).ToList();
-            cmbMainContact.DisplayMember = "cw_name";
+            cmbMainContact.DisplayMember = "sw_name";
             if (c.Note != null) txtnotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
             if (c.SupplierNoteID != null) txtAccountNotes.Text = IME.Notes.Where(a => a.ID == c.SupplierNoteID).FirstOrDefault().Note_name;
            
@@ -254,6 +255,8 @@ namespace LoginForm
             txtContactName.Enabled = false;
             txtContactMail.Enabled = false;
             txtContactPhone.Enabled = false;
+            txtExtNumber.Enabled = false;
+
             txtContactAddress.Enabled = false;
             txtContactMobile.Enabled = false;
             txtContactfax.Enabled = false;
@@ -298,6 +301,7 @@ namespace LoginForm
             txtContactMail.Enabled = true;
             txtContactAddress.Enabled = true;
             txtContactPhone.Enabled = true;
+            txtExtNumber.Enabled = true;
             txtContactMobile.Enabled = true;
             txtContactfax.Enabled = true;
             txtContactNotes.Enabled = true;
@@ -351,6 +355,7 @@ namespace LoginForm
             txtCompanyAddress.Enabled = false;
 
             txtContactPhone.Enabled = false;
+            txtExtNumber.Enabled = false;
             txtContactMobile.Enabled = false;
             txtContactfax.Enabled = false;
             cmblanguage.Enabled = false;
@@ -414,7 +419,7 @@ namespace LoginForm
             cmbcity.Enabled = true;
             cmbtown.Enabled = true;
             txtCompanyAddress.Enabled = true;
-
+            txtExtNumber.Enabled = true;
             txtContactPhone.Enabled = true;
             txtContactMobile.Enabled = true;
             txtContactfax.Enabled = true;
@@ -674,7 +679,7 @@ namespace LoginForm
                 listContact.DataSource = IME.SupplierWorkers.Where(customerw => customerw.supplierID == txtcode.Text).ToList();
                 listContact.DisplayMember = "cw_name";
                 cmbMainContact.DataSource = IME.SupplierWorkers.Where(customerw => customerw.supplierID == txtcode.Text).ToList();
-                cmbMainContact.DisplayMember = "cw_name";
+                cmbMainContact.DisplayMember = "sw_name";
                 if (c.Note != null) txtnotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
                 if (c.SupplierNoteID != null) txtAccountNotes.Text = IME.Notes.Where(a => a.ID == c.SupplierNoteID).FirstOrDefault().Note_name;
             }
@@ -783,7 +788,7 @@ namespace LoginForm
                             listContact.DataSource = IME.SupplierWorkers.Where(supplierw => supplierw.supplierID == txtcode.Text).ToList();
                             listContact.DisplayMember = "sw_name";
                             cmbMainContact.DataSource = IME.SupplierWorkers.Where(customerw => customerw.supplierID == txtcode.Text).ToList();
-                            cmbMainContact.DisplayMember = "cw_name";
+                            cmbMainContact.DisplayMember = "sw_name";
                         }
                     }
             }
@@ -840,7 +845,7 @@ namespace LoginForm
                                 listContact.DataSource = IME.SupplierWorkers.Where(supplierw => supplierw.supplierID == txtcode.Text).ToList();
                                 listContact.DisplayMember = "sw_name";
                                 cmbMainContact.DataSource = IME.SupplierWorkers.Where(supplierw => supplierw.supplierID == txtcode.Text).ToList();
-                                cmbMainContact.DisplayMember = "cw_name";
+                                cmbMainContact.DisplayMember = "sw_name";
                             }
                             else { MessageBox.Show("Please choose a contact to update"); }
 
@@ -868,7 +873,7 @@ namespace LoginForm
                 listContact.DisplayMember = "sw_name";
                 cmbMainContact.DataSource = null;
                 cmbMainContact.DataSource = IME.SupplierWorkers.Where(supplierw => supplierw.supplierID == txtcode.Text).ToList();
-                cmbMainContact.DisplayMember = "cw_name";
+                cmbMainContact.DisplayMember = "sw_name";
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -1194,6 +1199,7 @@ namespace LoginForm
                 ca.CityID = ((cmbcity).SelectedItem as City).ID;
                 ca.TownID = ((cmbtown).SelectedItem as Town).ID;
                 ca.AdressDetails = txtCompanyAddress.Text;
+                
                 IME.SupplierAdresses.Add(ca);
                 IME.SaveChanges();
             }
@@ -1238,7 +1244,7 @@ namespace LoginForm
             #region AdressList
             //contact daki list box a tıklandığında contact ın bilgileri tıklanan göre doldurulmasıse
             int cw_ID = 0;
-            try { cw_ID = ((SupplierAdress)((ListBox)sender).SelectedItem).ID; } catch { cw_ID = 0; }
+            try { cw_ID = ((SupplierAdress)((ListBox)sender).SelectedValue).ID; } catch { cw_ID = 0; }
             try
             {
                 if (ContactListItem.AdressID != cw_ID)
@@ -1264,8 +1270,9 @@ namespace LoginForm
         {
             try
             {
-                cmbcity.DataSource = IME.Cities.Where(a => a.CountryID == ((Country)(cmbcounrty).SelectedItem).ID).ToList();
+                cmbcity.DataSource = IME.Cities.Where(a => a.CountryID == (int)(cmbcounrty.SelectedValue)).ToList();
                 cmbcity.DisplayMember = "City_name";
+                cmbcity.ValueMember = "ID";
             }
             catch { }
         }
@@ -1274,8 +1281,9 @@ namespace LoginForm
         {
             try
             {
-                cmbtown.DataSource = IME.Towns.Where(a => a.CityID == ((City)(cmbcity).SelectedItem).ID).ToList();
+                cmbtown.DataSource = IME.Towns.Where(a => a.CityID == ((int)(cmbcity).SelectedValue)).ToList();
                 cmbtown.DisplayMember = "Town_name";
+                cmbtown.ValueMember = "ID";
             }
             catch { }
         }
@@ -1416,6 +1424,7 @@ namespace LoginForm
         {
             cmbrepresentative.DataSource = IME.Workers.ToList();
             cmbrepresentative.DisplayMember = "NameLastName";
+            cmbrepresentative.ValueMember = "ID";
         }
     }
 

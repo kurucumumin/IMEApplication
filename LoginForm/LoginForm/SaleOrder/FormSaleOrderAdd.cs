@@ -140,6 +140,7 @@ namespace LoginForm.nmSaleOrder
             if (!modifyMod)
             {
                 DataGridViewRow dgRow = (DataGridViewRow)dgSaleAddedItems.RowTemplate.Clone();
+                
                 dgSaleAddedItems.Rows.Add(dgRow);
                 //txtSaleOrderNo.Text = NewQuotationID();
                 //dgQuotationAddedItems.Rows[0].Cells["dgQty"].Value = "0";
@@ -1672,8 +1673,10 @@ namespace LoginForm.nmSaleOrder
             cbCurrency.SelectedIndex = 1;
             //cbCurrType.SelectedItem = q.CurrType;
             cbWorkers.SelectedValue = (customer.MainContactID != null) ? customer.MainContactID : cbWorkers.SelectedValue;
+            int rowcount = 0;
             foreach (var item in itemList)
             {
+                
                 if (item.IsDeleted == 1)
                 {
                     DataGridViewRow row = (DataGridViewRow)dgSaleDeleted.Rows[0].Clone();
@@ -1712,7 +1715,10 @@ namespace LoginForm.nmSaleOrder
                     row.Cells[30].Value = item.UnitWeight * item.Qty;
                     row.Cells[31].Value = item.CustomerStockCode;
                     dgSaleAddedItems.Rows.Add(row);
-
+                    dgSaleAddedItems.CurrentCell = dgSaleAddedItems.Rows[rowcount].Cells[0];
+                    rowcount++;
+                    ItemDetailsFiller(item.ItemCode);
+                    ItemClear();
                 }
             }
             //ItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString());
@@ -1756,6 +1762,9 @@ namespace LoginForm.nmSaleOrder
             //}
             //txtQuotationNo.Text = q1;
         }
+
+
+       
 
         private void QuotataionModifyItemDetailsFiller(string ArticleNoSearch, int RowIndex)
         {
