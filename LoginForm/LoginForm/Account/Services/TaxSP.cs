@@ -418,9 +418,9 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
-        public TaxInfo TaxViewByProductId(string strProductCode)
+        public Tax TaxViewByProductId(string strProductCode)
         {
-            TaxInfo taxInfo = new TaxInfo();
+            Tax taxInfo = new Tax();
             //TODO Ürün bazında vergilendirme
             //SqlDataReader sdrreader = null;
             //try
@@ -477,7 +477,7 @@ namespace LoginForm.Account.Services
 
                     row["taxId"] = item.taxId;
                     row["taxName"] = item.taxName;
-                    row["applicableOn"] = item.ApplicationOn;
+                    row["applicableOn"] = item.applicableOn;
 
                     dtbl.Rows.Add(row);
                 }

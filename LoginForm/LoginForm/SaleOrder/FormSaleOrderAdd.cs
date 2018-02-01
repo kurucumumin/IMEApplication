@@ -210,7 +210,7 @@ namespace LoginForm.nmSaleOrder
 
                 try
                 {
-                    delv = addressList.Where(x => x.isDeliveryAdress == 1).FirstOrDefault();
+                    delv = addressList.Where(x => x.isDeliveryAddress == true).FirstOrDefault();
                 }
                 catch (Exception){}
 

@@ -295,8 +295,8 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="ContactID" Type="int" />
           <Property Name="PostCode" Type="nvarchar" MaxLength="50" />
           <Property Name="AdressDetails" Type="nvarchar" MaxLength="200" />
-          <Property Name="isDeliveryAdress" Type="int" />
-          <Property Name="isIMEOffice" Type="int" />
+          <Property Name="isDeliveryAddress" Type="bit" />
+          <Property Name="isInvoiceAddress" Type="bit" />
           <Property Name="TownID" Type="int" />
           <Property Name="CityID" Type="int" />
           <Property Name="CountryID" Type="int" />
@@ -797,6 +797,7 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="term_name" Type="nvarchar" MaxLength="50" />
           <Property Name="timespan" Type="int" Nullable="false" />
+          <Property Name="OrderNo" Type="int" />
         </EntityType>
         <EntityType Name="PDCClearanceMaster">
           <Key>
@@ -1762,6 +1763,10 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="iban" Type="nvarchar" MaxLength="40" />
           <Property Name="branchcode" Type="nvarchar" MaxLength="40" />
           <Property Name="accountnumber" Type="nvarchar" MaxLength="40" />
+          <Property Name="CurrTypeInv" Type="nvarchar" MaxLength="15" />
+          <Property Name="CurrNameInv" Type="nvarchar" MaxLength="15" />
+          <Property Name="CurrTypeQuo" Type="nvarchar" MaxLength="15" />
+          <Property Name="CurrNameQuo" Type="nvarchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="SupplierAdresses">
           <Key>
@@ -8319,8 +8324,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="ContactID" Type="Int32" />
           <Property Name="PostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AdressDetails" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="isDeliveryAdress" Type="Int32" />
-          <Property Name="isIMEOffice" Type="Int32" />
+          <Property Name="isDeliveryAddress" Type="Boolean" />
+          <Property Name="isInvoiceAddress" Type="Boolean" />
           <Property Name="TownID" Type="Int32" />
           <Property Name="CityID" Type="Int32" />
           <Property Name="CountryID" Type="Int32" />
@@ -8976,6 +8981,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="term_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="timespan" Type="Int32" Nullable="false" />
+          <Property Name="OrderNo" Type="Int32" />
           <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__paymen__3E52440B" FromRole="PaymentTerm" ToRole="Customer" />
           <NavigationProperty Name="SaleOrders" Relationship="Self.FK__SaleOrder__Payme__1AF3F935" FromRole="PaymentTerm" ToRole="SaleOrder" />
           <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__paymen__6442E2C9" FromRole="PaymentTerm" ToRole="Supplier" />
@@ -10147,6 +10153,10 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="iban" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="branchcode" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
           <Property Name="accountnumber" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="CurrTypeInv" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CurrNameInv" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CurrTypeQuo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CurrNameQuo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Note" Relationship="Self.FK__Supplier__Suppli__09746778" FromRole="Supplier" ToRole="Notes" />
           <NavigationProperty Name="PaymentMethod" Relationship="Self.FK__Supplier__paymen__634EBE90" FromRole="Supplier" ToRole="PaymentMethod" />
           <NavigationProperty Name="PaymentTerm" Relationship="Self.FK__Supplier__paymen__6442E2C9" FromRole="Supplier" ToRole="PaymentTerm" />
@@ -16253,11 +16263,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(IMEModel.sp_helpdiagramdefinition_Result)">
+          <FunctionImport Name="sp_helpdiagramdefinition">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(IMEModel.sp_helpdiagrams_Result)">
+          <FunctionImport Name="sp_helpdiagrams">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -16544,7 +16554,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="Decimal" Name="Heigh" Nullable="true" Precision="20" Scale="5" />
           <Property Type="Decimal" Name="Width" Nullable="true" Precision="20" Scale="5" />
           <Property Type="Decimal" Name="Length" Nullable="true" Precision="20" Scale="5" />
-          <Property Type="String" Name="t" Nullable="false" MaxLength="3" />
         </ComplexType>
         <ComplexType Name="ArticleSearchWithAll_Result">
           <Property Type="String" Name="Article_No" Nullable="false" MaxLength="50" />
@@ -17339,17 +17348,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="ledgerName" Nullable="true" />
           <Property Type="Decimal" Name="grandTotal" Nullable="true" Precision="18" Scale="2" />
         </ComplexType>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
         <ComplexType Name="TaxSearch_Result">
           <Property Type="Int32" Name="taxId" Nullable="false" />
           <Property Type="String" Name="taxName" Nullable="true" MaxLength="100" />
@@ -17395,7 +17393,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
         <ComplexType Name="TaxViewAllForVoucherType_Result">
           <Property Type="Int32" Name="taxId" Nullable="false" />
           <Property Type="String" Name="taxName" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="ApplicationOn" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="applicableOn" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="UnitConversionIdAndConRateViewallByProductId_Result">
           <Property Type="Decimal" Name="unitId" Nullable="false" Precision="18" Scale="0" />
@@ -17720,8 +17718,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="ContactID" ColumnName="ContactID" />
                 <ScalarProperty Name="PostCode" ColumnName="PostCode" />
                 <ScalarProperty Name="AdressDetails" ColumnName="AdressDetails" />
-                <ScalarProperty Name="isDeliveryAdress" ColumnName="isDeliveryAdress" />
-                <ScalarProperty Name="isIMEOffice" ColumnName="isIMEOffice" />
+                <ScalarProperty Name="isDeliveryAddress" ColumnName="isDeliveryAddress" />
+                <ScalarProperty Name="isInvoiceAddress" ColumnName="isInvoiceAddress" />
                 <ScalarProperty Name="TownID" ColumnName="TownID" />
                 <ScalarProperty Name="CityID" ColumnName="CityID" />
                 <ScalarProperty Name="CountryID" ColumnName="CountryID" />
@@ -18260,6 +18258,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="term_name" ColumnName="term_name" />
                 <ScalarProperty Name="timespan" ColumnName="timespan" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -19255,6 +19254,10 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="iban" ColumnName="iban" />
                 <ScalarProperty Name="branchcode" ColumnName="branchcode" />
                 <ScalarProperty Name="accountnumber" ColumnName="accountnumber" />
+                <ScalarProperty Name="CurrTypeInv" ColumnName="CurrTypeInv" />
+                <ScalarProperty Name="CurrNameInv" ColumnName="CurrNameInv" />
+                <ScalarProperty Name="CurrTypeQuo" ColumnName="CurrTypeQuo" />
+                <ScalarProperty Name="CurrNameQuo" ColumnName="CurrNameQuo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -19699,7 +19702,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="Heigh" ColumnName="Heigh" />
                 <ScalarProperty Name="Width" ColumnName="Width" />
                 <ScalarProperty Name="Length" ColumnName="Length" />
-                <ScalarProperty Name="t" ColumnName="t" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -20839,25 +20841,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="IMEModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="IMEModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="IMEModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="IMEModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IMEModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="IMEModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IMEModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="IMEModel.Store.sp_helpdiagramdefinition" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="IMEModel.Store.sp_helpdiagrams" />
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="IMEModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="IMEModel.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="StockCheckForProductSale" FunctionName="IMEModel.Store.StockCheckForProductSale" />
@@ -20939,7 +20924,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               <ComplexTypeMapping TypeName="IMEModel.TaxViewAllForVoucherType_Result">
                 <ScalarProperty Name="taxId" ColumnName="taxId" />
                 <ScalarProperty Name="taxName" ColumnName="taxName" />
-                <ScalarProperty Name="ApplicationOn" ColumnName="ApplicationOn" />
+                <ScalarProperty Name="applicableOn" ColumnName="applicableOn" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

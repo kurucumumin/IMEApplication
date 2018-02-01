@@ -25,6 +25,7 @@ namespace LoginForm.DataSet
         public int ID { get; set; }
         public string term_name { get; set; }
         public int timespan { get; set; }
+        public Nullable<int> OrderNo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }

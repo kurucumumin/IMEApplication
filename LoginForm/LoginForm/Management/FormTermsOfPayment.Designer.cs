@@ -56,6 +56,9 @@
             this.lbPaymentList.Size = new System.Drawing.Size(260, 202);
             this.lbPaymentList.TabIndex = 0;
             this.lbPaymentList.SelectedIndexChanged += new System.EventHandler(this.lbPaymentList_SelectedIndexChanged);
+            this.lbPaymentList.DragDrop += new System.Windows.Forms.DragEventHandler(this.lbPaymentList_DragDrop);
+            this.lbPaymentList.DragOver += new System.Windows.Forms.DragEventHandler(this.lbPaymentList_DragOver);
+            this.lbPaymentList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbPaymentList_MouseDown);
             // 
             // cbType
             // 
@@ -218,7 +221,7 @@
             this.Controls.Add(this.cbType);
             this.Controls.Add(this.lbPaymentList);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MinimumSize = new System.Drawing.Size(806, 317);
+            this.MinimumSize = new System.Drawing.Size(1046, 325);
             this.Name = "FormTermsOfPayment";
             this.Text = "FormTermsOfPayment";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

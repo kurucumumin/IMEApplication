@@ -1209,17 +1209,17 @@ namespace LoginForm
                 ca.CountryID = ((cbCountry).SelectedItem as Country).ID;
                 ca.CityID = ((cbCity).SelectedItem as City).ID;
                 //AddresType
-                ca.isIMEOffice = 0;
+                ca.isInvoiceAddress = false;
                 if (cbIMEOffice.Checked == false)
                 {
-                    ca.isIMEOffice = 1;
+                    ca.isInvoiceAddress = true;
                 }
                 ca.AdressTitle = txtAdressTitle.Text;
 
                 ca.PostCode = PostCode.Text;
                 ca.AdressDetails = AddressDetails.Text;
-                if (cbIMEOffice.Checked) { ca.isDeliveryAdress = 1; } else { ca.isDeliveryAdress = 0; }
-                if (cbDafultDeliveryAdress.Checked) { ca.isIMEOffice = 1; } else { ca.isIMEOffice = 0; }
+                if (cbIMEOffice.Checked) { ca.isDeliveryAddress = true; } else { ca.isDeliveryAddress = false; }
+                if (cbDafultDeliveryAdress.Checked) { ca.isInvoiceAddress = true; } else { ca.isInvoiceAddress = false; }
                 IME.SaveChanges();
             }
             else
@@ -1232,15 +1232,15 @@ namespace LoginForm
                 ca.CityID = ((cbCity).SelectedItem as City).ID;
                 ca.AdressTitle = txtAdressTitle.Text;
                 //AddresType
-                ca.isIMEOffice = 0;
+                ca.isInvoiceAddress = false;
                 if (cbIMEOffice.Checked == false)
                 {
-                    ca.isIMEOffice = 1;
+                    ca.isInvoiceAddress = true;
                 }
                 ca.PostCode = PostCode.Text;
                 ca.AdressDetails = AddressDetails.Text;
-                if (cbIMEOffice.Checked) { ca.isDeliveryAdress = 1; } else { ca.isDeliveryAdress = 0; }
-                if (cbDafultDeliveryAdress.Checked) { ca.isIMEOffice = 1; } else { ca.isIMEOffice = 0; }
+                if (cbIMEOffice.Checked) { ca.isDeliveryAddress = true; } else { ca.isDeliveryAddress = false; }
+                if (cbDafultDeliveryAdress.Checked) { ca.isInvoiceAddress = true; } else { ca.isInvoiceAddress = false; }
                 IME.CustomerAddresses.Add(ca);
                 IME.SaveChanges();
             }
@@ -1329,8 +1329,8 @@ namespace LoginForm
                 var contact1 = IME.CustomerAddresses.Where(cw => cw.ID == cw_ID).ToList();
                 foreach (var a in contact1)
                 {
-                    if (a.isDeliveryAdress == 1) { cbIMEOffice.Checked = true; } else { cbIMEOffice.Checked = false; }
-                    if (a.isIMEOffice == 1) { cbDafultDeliveryAdress.Checked = true; } else { cbDafultDeliveryAdress.Checked = false; }
+                    if ((bool)a.isDeliveryAddress) { cbIMEOffice.Checked = true; } else { cbIMEOffice.Checked = false; }
+                    if ((bool)a.isInvoiceAddress) { cbDafultDeliveryAdress.Checked = true; } else { cbDafultDeliveryAdress.Checked = false; }
                     txtAdressTitle.Text = a.AdressTitle;
                     cbCountry.SelectedItem = a.Country;
                     if (a.City != null) cbCity.SelectedIndex = cbCity.FindStringExact(a.City.City_name);

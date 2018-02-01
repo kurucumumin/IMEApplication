@@ -2,6 +2,7 @@
 using LoginForm.Services;
 using System;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -192,6 +193,27 @@ namespace LoginForm.ManagementModule
                     throw;
                 }
             }
+        }
+
+        private void lbPaymentList_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (this.lbPaymentList.SelectedItem == null) return;
+            this.lbPaymentList.DoDragDrop(this.lbPaymentList.SelectedItem, DragDropEffects.Move);
+        }
+
+        private void lbPaymentList_DragOver(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Move;
+        }
+
+        private void lbPaymentList_DragDrop(object sender, DragEventArgs e)
+        {
+            Point point = lbPaymentList.PointToClient(new Point(e.X, e.Y));
+            int index = this.lbPaymentList.IndexFromPoint(point);
+            if (index < 0) index = this.lbPaymentList.Items.Count-1;
+            object data = e.Data.GetData(typeof(DateTime));
+            this.lbPaymentList.Items.Remove(data);
+            this.lbPaymentList.Items.Insert(index, data);
         }
     }
 }
