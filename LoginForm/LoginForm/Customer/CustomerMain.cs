@@ -1327,8 +1327,8 @@ namespace LoginForm
                 var contact1 = IME.CustomerAddresses.Where(cw => cw.ID == cw_ID).ToList();
                 foreach (var a in contact1)
                 {
-                    if ((bool)a.isDeliveryAddress) { cbIMEOffice.Checked = true; } else { cbIMEOffice.Checked = false; }
-                    if ((bool)a.isInvoiceAddress) { cbDafultDeliveryAdress.Checked = true; } else { cbDafultDeliveryAdress.Checked = false; }
+                    if (a.isDeliveryAddress == null || !(bool)a.isDeliveryAddress) { cbIMEOffice.Checked = false;  } else { cbIMEOffice.Checked = true; }
+                    if (a.isInvoiceAddress == null || !(bool)a.isInvoiceAddress) { cbDafultDeliveryAdress.Checked = false;  } else { cbDafultDeliveryAdress.Checked = true; }
                     txtAdressTitle.Text = a.AdressTitle;
                     cbCountry.SelectedItem = a.Country;
                     if (a.City != null) cbCity.SelectedIndex = cbCity.FindStringExact(a.City.City_name);
