@@ -148,7 +148,7 @@ namespace LoginForm.QuotationModule
 
         private void BringQuotationList(DateTime fromDate, DateTime toDate)
         {
-
+            
             IMEEntities IME = new IMEEntities();
            // DateTime time = Convert.ToDateTime(IME.CurrentDate().FirtsOrDefault());
           //  MessageBox.Show(time.ToString());
@@ -178,6 +178,16 @@ namespace LoginForm.QuotationModule
             {
                 btnDeleteQuotation.PerformClick();
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            QuotationExcelExport.QuotationMainExport(dgQuotation, dtpFromDate.Value, dtpToDate.Value);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

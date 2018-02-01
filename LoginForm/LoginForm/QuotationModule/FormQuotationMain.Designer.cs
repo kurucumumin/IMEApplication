@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgQuotation = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -78,14 +78,14 @@
             this.dgQuotation.AllowUserToDeleteRows = false;
             this.dgQuotation.AllowUserToOrderColumns = true;
             this.dgQuotation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgQuotation.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgQuotation.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgQuotation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgQuotation.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgQuotation.Location = new System.Drawing.Point(8, 129);
@@ -149,7 +149,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(895, 19);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(192, 24);
+            this.textBox2.Size = new System.Drawing.Size(192, 21);
             this.textBox2.TabIndex = 25;
             // 
             // chcAllQuots
@@ -166,7 +166,7 @@
             // 
             this.txtSearchText.Location = new System.Drawing.Point(699, 49);
             this.txtSearchText.Name = "txtSearchText";
-            this.txtSearchText.Size = new System.Drawing.Size(164, 24);
+            this.txtSearchText.Size = new System.Drawing.Size(164, 21);
             this.txtSearchText.TabIndex = 23;
             this.txtSearchText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchText_KeyPress);
             // 
@@ -178,7 +178,7 @@
             "QUOT NUMBER"});
             this.cbSearch.Location = new System.Drawing.Point(699, 19);
             this.cbSearch.Name = "cbSearch";
-            this.cbSearch.Size = new System.Drawing.Size(164, 26);
+            this.cbSearch.Size = new System.Drawing.Size(164, 23);
             this.cbSearch.TabIndex = 22;
             // 
             // label2
@@ -186,7 +186,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(9, 80);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(26, 18);
+            this.label2.Size = new System.Drawing.Size(21, 15);
             this.label2.TabIndex = 21;
             this.label2.Text = "To";
             // 
@@ -195,7 +195,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(9, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 18);
+            this.label1.Size = new System.Drawing.Size(36, 15);
             this.label1.TabIndex = 20;
             this.label1.Text = "From";
             // 
@@ -205,7 +205,7 @@
             this.dtpFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFromDate.Location = new System.Drawing.Point(73, 14);
             this.dtpFromDate.Name = "dtpFromDate";
-            this.dtpFromDate.Size = new System.Drawing.Size(119, 24);
+            this.dtpFromDate.Size = new System.Drawing.Size(119, 21);
             this.dtpFromDate.TabIndex = 19;
             // 
             // dtpToDate
@@ -214,7 +214,7 @@
             this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpToDate.Location = new System.Drawing.Point(73, 80);
             this.dtpToDate.Name = "dtpToDate";
-            this.dtpToDate.Size = new System.Drawing.Size(119, 24);
+            this.dtpToDate.Size = new System.Drawing.Size(119, 21);
             this.dtpToDate.TabIndex = 18;
             // 
             // btnDeleteQuotation
@@ -315,6 +315,8 @@
             this.button5.TabIndex = 8;
             this.button5.Text = "Print";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Visible = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -330,10 +332,11 @@
             this.button4.TabIndex = 7;
             this.button4.Text = "Export to Excel";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // FormQuotationMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1236, 696);
             this.Controls.Add(this.tableLayoutPanel1);

@@ -123,5 +123,22 @@ namespace LoginForm.nsSaleOrder
                 form1.ShowDialog();
             }
         }
+
+        private void btnSelectAll_Click(object sender, EventArgs e)
+        {
+
+            for (int i = 0; i < dgItems.Rows.Count; i++)
+            {
+                dgItems.Rows[i].Cells[chk.Index].Value = true;
+            }
+        }
+
+        private void btnClearAll_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < dgItems.Rows.Count; i++)
+            {
+                dgItems.Rows[i].Cells[chk.Index].Value = false;
+            }
+        }
     }
 }

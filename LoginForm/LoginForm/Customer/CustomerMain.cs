@@ -21,13 +21,13 @@ namespace LoginForm
         public CustomerMain()
         {
             InitializeComponent();
-
+            
         }
 
         public CustomerMain(Boolean buttonEnabled, string CustomerID)
         {
             //Qoutation Customer Details
-
+            
             InitializeComponent();
             if (buttonEnabled)
             {
@@ -248,13 +248,11 @@ namespace LoginForm
 
         private void MainCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-
             int c_categoryID;
-            try { c_categoryID = ((CustomerCategory)((ComboBox)sender).SelectedItem).ID; } catch { c_categoryID = 0; }
+            try { c_categoryID = ((CustomerCategory)((ComboBox)sender).SelectedValue).ID; } catch { c_categoryID = 0; }
             SubCategory.DataSource = IME.CustomerSubCategories.Where(b => b.categoryID == c_categoryID).ToList();
             SubCategory.DisplayMember = "subcategoryname";
-
+            SubCategory.ValueMember = "ID";
         }
 
         private void Search_Click(object sender, EventArgs e)
