@@ -2524,7 +2524,7 @@ namespace LoginForm
                     ArticleNumb = ws.Cells[ColumnNumber, 4].Text;
                     if (IME.CustomerSubCategories.Where(a => a.subcategoryname == ArticleNumb).FirstOrDefault() == null && ArticleNumb != null)
                     {
-                        CustomerSubCategory town = new CustomerSubCategory();
+                        DataSet.CustomerSubCategory town = new DataSet.CustomerSubCategory();
                         town.subcategoryname = ArticleNumb;
                         string Countryname = ws.Cells[ColumnNumber, 1].Text;
                         CustomerCategory c = IME.CustomerCategories.Where(a => a.categoryname == Countryname).FirstOrDefault();

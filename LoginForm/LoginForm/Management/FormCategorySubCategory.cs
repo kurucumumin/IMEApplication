@@ -83,7 +83,7 @@ namespace LoginForm.ManagementModule
         {
             if (txtSubCategory.Text != null && txtSubCategory.Text != String.Empty)
             {
-                CustomerSubCategory ccat = db.CustomerSubCategories.Where(c => c.subcategoryname.Equals(txtSubCategory.Text, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
+                DataSet.CustomerSubCategory ccat = db.CustomerSubCategories.Where(c => c.subcategoryname.Equals(txtSubCategory.Text, StringComparison.OrdinalIgnoreCase)).FirstOrDefault();
 
                 if (ccat != null)
                 {
@@ -93,7 +93,7 @@ namespace LoginForm.ManagementModule
                 {
                     try
                     {
-                        CustomerSubCategory sub = new CustomerSubCategory();
+                        DataSet.CustomerSubCategory sub = new DataSet.CustomerSubCategory();
                         sub.subcategoryname = txtSubCategory.Text;
                         sub.categoryID = (int)lbCategory.SelectedValue;
                         db.CustomerSubCategories.Add(sub);
@@ -153,7 +153,7 @@ namespace LoginForm.ManagementModule
                 {
                     try
                     {
-                        db.CustomerSubCategories.Remove((CustomerSubCategory)lbSubCategory.SelectedItem);
+                        db.CustomerSubCategories.Remove((DataSet.CustomerSubCategory)lbSubCategory.SelectedItem);
                         db.SaveChanges();
 
                         lbSubCategory.DataSource = ((CustomerCategory)lbCategory.SelectedItem).CustomerSubCategories.ToList();

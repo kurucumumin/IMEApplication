@@ -296,10 +296,14 @@ namespace LoginForm
                 btnContactDelete.Enabled = true;
                 btnContactUpdate.Enabled = true;
             }
+            else
+            {
+                btnContactDelete.Enabled = false;
+                btnContactUpdate.Enabled = false;
+            }
 
             btnContactAdd.Enabled = false;
-            btnContactDelete.Enabled = false;
-            btnContactUpdate.Enabled = false;
+            
             btnCreate.Enabled = true;
             btnUpdate.Enabled = true;
 
@@ -650,8 +654,7 @@ namespace LoginForm
                 IME.SaveChanges();
                 cw.customerNoteID = n.ID;
                 IME.CustomerWorkers.Add(cw);
-                IME.SaveChanges();
-                contactTabEnableFalse();
+                IME.SaveChanges();   
                 if (btnCreate.Text == "CREATE")
                 {
                     txtSearch.Enabled = true;
@@ -663,6 +666,7 @@ namespace LoginForm
                 //catch { MessageBox.Show("Contact is NOT successfull"); }
                 cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
                 cbMainContact.DisplayMember = "cw_name";
+                contactTabEnableFalse();
             }
             else
             {
@@ -1618,12 +1622,14 @@ namespace LoginForm
 
         private void btnAddMainCategory_Click(object sender, EventArgs e)
         {
-
+            CustomerMainCategory form = new CustomerMainCategory();
+            form.ShowDialog();
         }
 
         private void btnAddSubcategory_Click(object sender, EventArgs e)
         {
-
+            CustomerSubCategory form = new CustomerSubCategory();
+            form.ShowDialog();
         }
     }
 }

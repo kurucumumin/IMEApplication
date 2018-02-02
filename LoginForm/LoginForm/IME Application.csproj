@@ -518,6 +518,12 @@
     <Compile Include="CustomControls\AccountingControl.Designer.cs">
       <DependentUpon>AccountingControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Customer\CustomerMainCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerMainCategory.designer.cs">
+      <DependentUpon>CustomerMainCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customer\CustomerDepartmentAdd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -529,6 +535,12 @@
     </Compile>
     <Compile Include="Customer\CustomerMain.designer.cs">
       <DependentUpon>CustomerMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\CustomerSubCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer\CustomerSubCategory.designer.cs">
+      <DependentUpon>CustomerSubCategory.cs</DependentUpon>
     </Compile>
     <Compile Include="Customer\CustomerPositionAdd.cs">
       <SubType>Form</SubType>
@@ -1617,11 +1629,17 @@
     <EmbeddedResource Include="CustomControls\AccountingControl.resx">
       <DependentUpon>AccountingControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Customer\CustomerMainCategory.resx">
+      <DependentUpon>CustomerMainCategory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Customer\CustomerDepartmentAdd.resx">
       <DependentUpon>CustomerDepartmentAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customer\CustomerMain.resx">
       <DependentUpon>CustomerMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer\CustomerSubCategory.resx">
+      <DependentUpon>CustomerSubCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customer\CustomerPositionAdd.resx">
       <DependentUpon>CustomerPositionAdd.cs</DependentUpon>
