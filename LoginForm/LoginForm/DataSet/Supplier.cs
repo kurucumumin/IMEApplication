@@ -43,6 +43,10 @@ namespace LoginForm.DataSet
         public string iban { get; set; }
         public string branchcode { get; set; }
         public string accountnumber { get; set; }
+        public string CurrTypeInv { get; set; }
+        public string CurrNameInv { get; set; }
+        public string CurrTypeQuo { get; set; }
+        public string CurrNameQuo { get; set; }
     
         public virtual Note Note { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }

@@ -24,6 +24,5 @@ namespace LoginForm.DataSet
         public Nullable<decimal> Heigh { get; set; }
         public Nullable<decimal> Width { get; set; }
         public Nullable<decimal> Length { get; set; }
-        public string t { get; set; }
     }
 }

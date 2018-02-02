@@ -2,6 +2,7 @@
 using LoginForm.nsSaleOrder;
 using LoginForm.PurchaseOrder;
 using LoginForm.QuotationModule;
+using LoginForm.Supplier;
 using LoginForm.User;
 using System;
 using System.Windows.Forms;
@@ -29,7 +30,7 @@ namespace LoginForm.CustomControls
 
         private void btnSupplier_Click(object sender, EventArgs e)
         {
-            SupplierMain supplierMain = new SupplierMain();
+            MainSupplier supplierMain = new MainSupplier();
             supplierMain.ShowDialog();
         }
 

@@ -1110,12 +1110,6 @@
     <Compile Include="DataSet\SlidingPrice.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\sp_helpdiagrams_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\Stock.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1418,6 +1412,12 @@
     <Compile Include="Services\ToolTipService.cs" />
     <Compile Include="Services\txtCreate.cs" />
     <Compile Include="Services\XmlToObject.cs" />
+    <Compile Include="Supplier\MainSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier\MainSupplier.Designer.cs">
+      <DependentUpon>MainSupplier.cs</DependentUpon>
+    </Compile>
     <Compile Include="User\FormUsersMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1725,6 +1725,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\FormSaleItemSearch.resx">
       <DependentUpon>FormSaleItemSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplier\MainSupplier.resx">
+      <DependentUpon>MainSupplier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\FormUsersMain.resx">
       <DependentUpon>FormUsersMain.cs</DependentUpon>

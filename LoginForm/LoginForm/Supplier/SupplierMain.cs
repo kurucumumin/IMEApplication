@@ -166,7 +166,7 @@ namespace LoginForm
         private void supplierClicksearch()
         {
             string supplierID = dgSupplier.CurrentRow.Cells["ID"].Value.ToString();
-            Supplier c = IME.Suppliers.Where(a => a.ID == supplierID).FirstOrDefault();
+           DataSet.Supplier c = IME.Suppliers.Where(a => a.ID == supplierID).FirstOrDefault();
            // dateTimePicker1.Value = c.CreateDate.Value;
             txtcode.Text = c.ID;
             AdressList.DataSource = IME.SupplierAdresses.Where(customera => customera.SupplierID == txtcode.Text).ToList();
@@ -660,7 +660,7 @@ namespace LoginForm
             if (dgSupplier.RowCount != 0)
             {
                 string supplierID = dgSupplier.CurrentRow.Cells["ID"].Value.ToString();
-                Supplier c = IME.Suppliers.Where(a => a.ID == supplierID).FirstOrDefault();
+                DataSet.Supplier c = IME.Suppliers.Where(a => a.ID == supplierID).FirstOrDefault();
                 txtcode.Text = c.ID;
                 AdressList.DataSource = IME.SupplierAdresses.Where(customera => customera.SupplierID == txtcode.Text).ToList();
                 AdressList.DisplayMember = "AdressDetails";
@@ -938,7 +938,7 @@ namespace LoginForm
                 //
                 listContact.DataSource = null;
                 txtcode.Text = suppliercode;
-                Supplier s = new Supplier();
+                DataSet.Supplier s = new DataSet.Supplier();
                 s.ID = txtcode.Text;
                 IME.Suppliers.Add(s);
                 IME.SaveChanges();
@@ -964,7 +964,7 @@ namespace LoginForm
                         btnnew.Text = "Add";
                         btnupdate.Text = "Modify";
 
-                        Supplier s = new Supplier();
+                        DataSet.Supplier s = new DataSet.Supplier();
                         s = IME.Suppliers.Where(a => a.ID == txtcode.Text).FirstOrDefault();
                         s.s_name = txtname.Text;
                         try { if (txtdiscount.Text != "") { s.discountrate = Int32.Parse(txtdiscount.Text); } } catch { };
@@ -1086,7 +1086,7 @@ namespace LoginForm
                     //üstteki işlem adresses için de yapılmalı
                     //
 
-                    Supplier s = new Supplier();
+                    DataSet.Supplier s = new DataSet.Supplier();
                     s = IME.Suppliers.Where(a => a.ID == txtcode.Text).FirstOrDefault();
                     IME.Suppliers.Remove(s);
                     IME.SaveChanges();
