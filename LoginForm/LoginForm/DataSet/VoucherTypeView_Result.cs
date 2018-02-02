@@ -18,7 +18,8 @@ namespace LoginForm.DataSet
         public string typeOfVoucher { get; set; }
         public string methodOfVoucherNumbering { get; set; }
         public Nullable<bool> isTaxApplicable { get; set; }
-        public string isActive { get; set; }
+        public string narration { get; set; }
+        public Nullable<bool> isActive { get; set; }
         public Nullable<int> masterId { get; set; }
         public string declaration { get; set; }
         public string heading1 { get; set; }

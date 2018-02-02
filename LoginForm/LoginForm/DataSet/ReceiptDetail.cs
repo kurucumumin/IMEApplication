@@ -24,11 +24,12 @@ namespace LoginForm.DataSet
         public Nullable<decimal> receiptMasterId { get; set; }
         public Nullable<decimal> ledgerId { get; set; }
         public Nullable<decimal> amount { get; set; }
-        public Nullable<decimal> exchangeRateId { get; set; }
+        public Nullable<int> exchangeRateId { get; set; }
         public string chequeNo { get; set; }
         public Nullable<System.DateTime> chequeDate { get; set; }
     
         public virtual AccountLedger AccountLedger { get; set; }
+        public virtual ExchangeRate ExchangeRate { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseDetail> PurchaseDetails { get; set; }
         public virtual ReceiptMaster ReceiptMaster { get; set; }

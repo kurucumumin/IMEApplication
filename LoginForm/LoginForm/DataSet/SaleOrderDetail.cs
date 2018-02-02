@@ -37,7 +37,6 @@ namespace LoginForm.DataSet
         public Nullable<int> UnitContent { get; set; }
         public Nullable<int> SSM { get; set; }
         public Nullable<decimal> UnitWeight { get; set; }
-        public string SaleOrderNo { get; set; }
         public string DependantTable { get; set; }
         public string ItemDescription { get; set; }
         public Nullable<bool> Hazardous { get; set; }
@@ -47,6 +46,7 @@ namespace LoginForm.DataSet
         public Nullable<decimal> unitConversionId { get; set; }
         public Nullable<decimal> deliveryNoteDetailsId { get; set; }
         public Nullable<int> quotationDetailsId { get; set; }
+        public Nullable<decimal> SaleOrderID { get; set; }
     
         public virtual QuotationDetail QuotationDetail { get; set; }
         public virtual SaleOrder SaleOrder { get; set; }
