@@ -821,7 +821,7 @@ namespace LoginForm
                 ContactList.DataSource = null;
                 CustomerCode.Text = custmrcode;
                 Customer newCustomer = new Customer();
-                newCustomer.CreateDate = DateTime.Now.Date;
+                newCustomer.CreateDate = Convert.ToDateTime(IME.CurrentDate().First()).Date;
                 newCustomer.ID = CustomerCode.Text;
                 IME.Customers.Add(newCustomer);
                 IME.SaveChanges();

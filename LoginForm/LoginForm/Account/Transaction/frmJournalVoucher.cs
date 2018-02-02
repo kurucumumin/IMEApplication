@@ -208,7 +208,7 @@ namespace LoginForm
 
                 dgvJournalVoucher.Rows.Clear();
                 VoucherDate();
-                dtpVoucherDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                dtpVoucherDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 txtDebitTotal.Text = string.Empty;
                 txtCreditTotal.Text = string.Empty;
                 txtNarration.Text = string.Empty;
@@ -708,7 +708,7 @@ namespace LoginForm
                         }
                         else
                         {
-                            JournalDetail.chequeDate = DateTime.Now;
+                            JournalDetail.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                         }
                         IME.JournalDetails.Add(JournalDetail);
                         decimal decJournalDetailsId = JournalDetail.journalDetailsId;
@@ -1028,7 +1028,7 @@ namespace LoginForm
                         }
                         else
                         {
-                            JournalDetail.chequeDate = DateTime.Now;
+                            JournalDetail.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                         }
                         if (dgvJournalVoucher.Rows[inI].Cells["dgvtxtDetailsId"].Value != null && dgvJournalVoucher.Rows[inI].Cells["dgvtxtDetailsId"].Value.ToString() != string.Empty)
                         {
@@ -1279,7 +1279,7 @@ namespace LoginForm
                 if (!dgvJournalVoucher.Rows[inA].Cells["dgvtxtAmount"].ReadOnly)
                 {
 
-                    LedgerPosting.date = DateTime.Now;
+                    LedgerPosting.date = Convert.ToDateTime(IME.CurrentDate().First());
                     LedgerPosting.voucherTypeId = decJournalVoucherTypeId;
                     LedgerPosting.voucherNo = strVoucherNo;
                     LedgerPosting.detailsId = decDetailsId;
@@ -1294,13 +1294,13 @@ namespace LoginForm
                             LedgerPosting.chequeDate = Convert.ToDateTime(dgvJournalVoucher.Rows[inA].Cells["dgvtxtChequeDate"].Value.ToString());
                         }
                         else
-                            LedgerPosting.chequeDate = DateTime.Now;
+                            LedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
 
                     }
                     else
                     {
                         LedgerPosting.chequeNo = string.Empty;
-                        LedgerPosting.chequeDate = DateTime.Now;
+                        LedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     }
 
 
@@ -1311,7 +1311,7 @@ namespace LoginForm
                 }
                 else
                 {
-                    LedgerPosting.date = DateTime.Now;
+                    LedgerPosting.date = Convert.ToDateTime(IME.CurrentDate().First());
                     LedgerPosting.voucherTypeId = decJournalVoucherTypeId;
                     LedgerPosting.voucherNo = strVoucherNo;
                     LedgerPosting.detailsId = decDetailsId;
@@ -1326,13 +1326,13 @@ namespace LoginForm
                             LedgerPosting.chequeDate = Convert.ToDateTime(dgvJournalVoucher.Rows[inA].Cells["dgvtxtChequeDate"].Value.ToString());
                         }
                         else
-                            LedgerPosting.chequeDate = DateTime.Now;
+                            LedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
 
                     }
                     else
                     {
                         LedgerPosting.chequeNo = string.Empty;
-                        LedgerPosting.chequeDate = DateTime.Now;
+                        LedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     }
 
 
@@ -1437,7 +1437,7 @@ namespace LoginForm
                 if (!dgvJournalVoucher.Rows[inA].Cells["dgvtxtAmount"].ReadOnly)
                 {
                     LedgerPosting LedgerPosting = IME.LedgerPostings.Where(a => a.ledgerPostingId == decLedgerPostingId).FirstOrDefault();
-                    LedgerPosting.date = DateTime.Now;
+                    LedgerPosting.date = Convert.ToDateTime(IME.CurrentDate().First());
                     LedgerPosting.voucherTypeId = decJournalVoucherTypeId;
                     LedgerPosting.voucherNo = strVoucherNo;
                     LedgerPosting.detailsId = decDetailsId;
@@ -1452,13 +1452,13 @@ namespace LoginForm
                             LedgerPosting.chequeDate = Convert.ToDateTime(dgvJournalVoucher.Rows[inA].Cells["dgvtxtChequeDate"].Value.ToString());
                         }
                         else
-                            LedgerPosting.chequeDate = DateTime.Now;
+                            LedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
 
                     }
                     else
                     {
                         LedgerPosting.chequeNo = string.Empty;
-                        LedgerPosting.chequeDate = DateTime.Now;
+                        LedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     }
 
 
@@ -1473,7 +1473,7 @@ namespace LoginForm
                 {
                     LedgerPosting LedgerPosting = new LedgerPosting();
                     LedgerPosting.ledgerPostingId = decLedgerPostingId;
-                    LedgerPosting.date = DateTime.Now;
+                    LedgerPosting.date = Convert.ToDateTime(IME.CurrentDate().First());
                     LedgerPosting.voucherTypeId = decJournalVoucherTypeId;
                     LedgerPosting.voucherNo = strVoucherNo;
                     LedgerPosting.detailsId = decDetailsId;
@@ -1488,13 +1488,13 @@ namespace LoginForm
                             LedgerPosting.chequeDate = Convert.ToDateTime(dgvJournalVoucher.Rows[inA].Cells["dgvtxtChequeDate"].Value.ToString());
                         }
                         else
-                            LedgerPosting.chequeDate = DateTime.Now;
+                            LedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
 
                     }
                     else
                     {
                         LedgerPosting.chequeNo = string.Empty;
-                        LedgerPosting.chequeDate = DateTime.Now;
+                        LedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     }
 
                     LedgerPosting.ledgerId = decLedgerId;
@@ -1939,7 +1939,7 @@ namespace LoginForm
                 //CompanySP spCompany = new CompanySP();
 
                 //infoComapany = spCompany.CompanyView(1);
-                DateTime dtVoucherDate = DateTime.Now;
+                DateTime dtVoucherDate = Convert.ToDateTime(IME.CurrentDate().First());
                 dtpVoucherDate.Value = dtVoucherDate;
                 txtDate.Text = dtVoucherDate.ToString("dd-MMM-yyyy");
                 dtpVoucherDate.Value = Convert.ToDateTime(txtDate.Text);
@@ -2577,7 +2577,7 @@ namespace LoginForm
 
                     //-----------------------------------Chequedate validation----------------------------------//
                     
-                            dgvJournalVoucher.Rows[e.RowIndex].Cells["dgvtxtChequeDate"].Value = DateTime.Now.ToString("dd-MMM-yyyy");
+                            dgvJournalVoucher.Rows[e.RowIndex].Cells["dgvtxtChequeDate"].Value = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                         
                     //=========================================================================================//
                     //---------------------check column missing---------------------------------//

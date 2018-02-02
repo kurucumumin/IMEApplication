@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Globalization;
+using LoginForm.DataSet;
 namespace LoginForm.Services
 {
 
@@ -24,12 +25,13 @@ namespace LoginForm.Services
         /// <returns></returns>
         public bool DateValidationFunction(TextBox txt, bool isFormCompany)
         {
+            IMEEntities IME = new IMEEntities();
             // While creating comany no curent date
             DateTime dtcurrentdate;
             if (isFormCompany)
                 dtcurrentdate = System.DateTime.Today;
             else
-                dtcurrentdate = DateTime.Now.Date;
+                dtcurrentdate = Convert.ToDateTime(IME.CurrentDate().First()).Date;
             bool isValid = true;
             string option = string.Empty;
             string[] date = new string[50];

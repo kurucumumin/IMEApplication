@@ -39,7 +39,7 @@ namespace LoginForm.QuotationModule
         public FormQuotationAddTurkey()
         {
             InitializeComponent();
-            dtpDate.Value = DateTime.Now;
+            dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
             dtpDate.Enabled = false;
         }
 
@@ -114,7 +114,7 @@ namespace LoginForm.QuotationModule
                 LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
                 lblVat.Text = Utils.getManagement().VAT.ToString();
                 #region ComboboxFiller.
-                dtpDate.Value = DateTime.Now;
+                dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
                 cbCurrency.DataSource = IME.Rates.Where(a => a.rate_date == dtpDate.Value.Date).ToList();
                 cbCurrency.DisplayMember = "CurType";
                 cbCurrency.ValueMember = "ID";
@@ -1988,13 +1988,13 @@ namespace LoginForm.QuotationModule
         private string NewQuotationID()
         {
             IMEEntities IME = new IMEEntities();
-            //List<Quotation> quotList = IME.Quotations.Where(q => q.QuotationNo == DateTime.Now.Year).toList();
+            //List<Quotation> quotList = IME.Quotations.Where(q => q.QuotationNo == Convert.ToDateTime(IME.CurrentDate().First()).Year).toList();
             //int ID;
             Quotation quo = IME.Quotations.OrderByDescending(q => q.QuotationNo).FirstOrDefault();
             string q1;
             if (quo == null)
             {
-                q1 = DateTime.Now.Year.ToString() + "/1";
+                q1 = Convert.ToDateTime(IME.CurrentDate().First()).Year.ToString() + "/1";
             }
             else
             {
@@ -2015,7 +2015,7 @@ namespace LoginForm.QuotationModule
                     {
                         int quoID = Int32.Parse(q1.Substring(quo.QuotationNo.LastIndexOf('/') + 1)) + 1;
 
-                        q1 = DateTime.Now.Year.ToString() + "/" + quoID.ToString();
+                        q1 = Convert.ToDateTime(IME.CurrentDate().First()).Year.ToString() + "/" + quoID.ToString();
                     }
                 }
             }

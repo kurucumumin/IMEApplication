@@ -50,11 +50,11 @@ namespace LoginForm
                 dtpFromDate.Value = Convert.ToDateTime(Utils.getManagement().FinancialYear.fromDate.Value.ToString("dd-MMM-yyyy"));
                 dtpFromDate.MinDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.fromDate);
                 dtpFromDate.MaxDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.toDate);
-                dtpToDate.Value = Convert.ToDateTime(DateTime.Now.ToString("dd-MMM-yyyy"));
+                dtpToDate.Value = Convert.ToDateTime(Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy"));
                 dtpToDate.MinDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.fromDate);
                 dtpToDate.MaxDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.toDate);
                 txtFromDate.Text = Utils.getManagement().FinancialYear.fromDate.Value.ToString("dd-MMM-yyyy");
-                txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                txtToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 cmbType.SelectedIndex = 0;
                 btnSave.Text = "Save";
                 btnClear.Text = "Clear";
@@ -713,7 +713,7 @@ namespace LoginForm
                 bool isInvalid = objVal.DateValidationFunction(txtToDate);
                 if (!isInvalid)
                 {
-                    txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 }
                 dtpToDate.Value = Convert.ToDateTime(txtToDate.Text);
             }

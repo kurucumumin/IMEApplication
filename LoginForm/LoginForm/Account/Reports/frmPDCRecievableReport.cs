@@ -83,13 +83,14 @@ namespace LoginForm
         /// </summary>
         public void Clear()
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 AccountLedgerComboFill();
                 VoucherTypeComboFill();
                 cmbAccountLedger.SelectedIndex = -1;
                 dtpFrmDate.Value = Convert.ToDateTime(Utils.getManagement().FinancialYear.fromDate.Value.ToString("dd-MMM-yyyy"));
-                dtpToDate.Value = Convert.ToDateTime(DateTime.Now.ToString("dd-MMM-yyyy"));
+                dtpToDate.Value = Convert.ToDateTime(Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy"));
                 dtpCheckDateFrom.Text = Utils.getManagement().FinancialYear.fromDate.Value.ToString("dd-MMM-yyyy");
                 dtpCheckDateTo.Text = Utils.getManagement().FinancialYear.toDate.Value.ToString("dd-MMM-yyyy"); ;
                 txtVoucherNo.Clear();
@@ -301,6 +302,7 @@ namespace LoginForm
         /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 DateValidation ObjValidation = new DateValidation();
@@ -308,7 +310,7 @@ namespace LoginForm
                 if (Convert.ToDateTime(txtToDate.Text) < Convert.ToDateTime(txtFromDate.Text))
                 {
                     MessageBox.Show("todate should be greater than fromdate", "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                     txtFromDate.Text = Utils.getManagement().FinancialYear.fromDate.Value.ToString("dd-MMM-yyyy");
                     Search();
                 }
@@ -403,13 +405,14 @@ namespace LoginForm
         /// <param name="e"></param>
         private void txtToDate_Leave(object sender, EventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 DateValidation obj = new DateValidation();
                 obj.DateValidationFunction(txtToDate);
                 if (txtToDate.Text == string.Empty)
                 {
-                    txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 }
                 string strdate = txtToDate.Text;
                 dtpToDate.Value = Convert.ToDateTime(strdate.ToString());
@@ -449,13 +452,14 @@ namespace LoginForm
         /// <param name="e"></param>
         private void txtCheckDateTo_Leave(object sender, EventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 DateValidation obj = new DateValidation();
                 obj.DateValidationFunction(txtCheckDateTo);
                 if (txtCheckDateTo.Text == string.Empty)
                 {
-                    txtCheckDateTo.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtCheckDateTo.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 }
                 string strdate = txtCheckDateTo.Text;
                 dtpCheckDateTo.Value = Convert.ToDateTime(strdate.ToString());

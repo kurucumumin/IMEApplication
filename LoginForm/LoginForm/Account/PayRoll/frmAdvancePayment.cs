@@ -201,7 +201,7 @@ namespace LoginForm
                         AdvancePayment.narration = txtNarration.Text.Trim();
                         AdvancePayment.voucherTypeId = decPaymentVoucherTypeId;
                         AdvancePayment.suffixPrefixId = decPaymentSuffixPrefixId;
-                        AdvancePayment.financialYearId = IME.FinancialYears.Where(a => a.fromDate <= DateTime.Now).Where(b => b.toDate >= DateTime.Now).FirstOrDefault().financialYearId;
+                        AdvancePayment.financialYearId = IME.FinancialYears.Where(a => a.fromDate <= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate >= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().financialYearId;
                         IME.SaveChanges();
                         LedgerUpdate();
                         Messages.UpdatedMessage();
@@ -360,7 +360,7 @@ namespace LoginForm
             {
                 LedgerPosting.voucherNo = txtAdvanceVoucherNo.Text.Trim();
             }
-            LedgerPosting.date = DateTime.Now;
+            LedgerPosting.date = Convert.ToDateTime(IME.CurrentDate().First());
             LedgerPosting.ledgerId = Convert.ToDecimal(cmbCashOrBank.SelectedValue.ToString());
             LedgerPosting.detailsId = decAdvancePaymentId;
             if (isAutomatic)
@@ -371,12 +371,12 @@ namespace LoginForm
             {
                 LedgerPosting.invoiceNo = txtAdvanceVoucherNo.Text.Trim();
             }
-            LedgerPosting.yearId = IME.FinancialYears.Where(a => a.fromDate <= DateTime.Now).Where(b => b.toDate >= DateTime.Now).FirstOrDefault().financialYearId;
+            LedgerPosting.yearId = IME.FinancialYears.Where(a => a.fromDate <= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate >= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().financialYearId;
             LedgerPosting.debit = Convert.ToDecimal(txtAmount.Text.ToString());
             LedgerPosting.credit = 0;
 
             LedgerPosting.chequeNo = string.Empty;
-            LedgerPosting.chequeDate = DateTime.Now;
+            LedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
             IME.LedgerPostings.Add(LedgerPosting);
 
         }
@@ -401,7 +401,7 @@ namespace LoginForm
                     {
                         LedgerPosting LedgerPosting = IME.LedgerPostings.Where(a => a.ledgerPostingId == Convert.ToDecimal(dr.ledgerPostingId.ToString())).FirstOrDefault();
                         LedgerPosting.ledgerPostingId = decLedgerPostingId;
-                        LedgerPosting.date = DateTime.Now;
+                        LedgerPosting.date = Convert.ToDateTime(IME.CurrentDate().First());
                         if (isAutomatic)
                         {
                             LedgerPosting.voucherNo = strVoucherNo;
@@ -425,9 +425,9 @@ namespace LoginForm
                         }
 
                         LedgerPosting.chequeNo = string.Empty;
-                        LedgerPosting.chequeDate = DateTime.Now;
+                        LedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
 
-                        LedgerPosting.yearId = IME.FinancialYears.Where(a => a.fromDate <= DateTime.Now).Where(b => b.toDate >= DateTime.Now).FirstOrDefault().financialYearId;
+                        LedgerPosting.yearId = IME.FinancialYears.Where(a => a.fromDate <= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate >= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().financialYearId;
                         IME.SaveChanges();
                     }
                     if (ini == 1)
@@ -435,7 +435,7 @@ namespace LoginForm
                         LedgerPosting LedgerPosting = IME.LedgerPostings.Where(a => a.ledgerPostingId == Convert.ToDecimal(dr.ledgerPostingId.ToString())).FirstOrDefault();
                         decLedgerPostingId = Convert.ToDecimal(dr.ledgerPostingId.ToString());
                         LedgerPosting.ledgerPostingId = decLedgerPostingId;
-                        LedgerPosting.date = DateTime.Now;
+                        LedgerPosting.date = Convert.ToDateTime(IME.CurrentDate().First());
                         if (isAutomatic)
                         {
                             LedgerPosting.voucherNo = strVoucherNo;
@@ -459,9 +459,9 @@ namespace LoginForm
                         }
 
                         LedgerPosting.chequeNo = string.Empty;
-                        LedgerPosting.chequeDate = DateTime.Now;
+                        LedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
 
-                        LedgerPosting.yearId = IME.FinancialYears.Where(a => a.fromDate <= DateTime.Now).Where(b => b.toDate >= DateTime.Now).FirstOrDefault().financialYearId;
+                        LedgerPosting.yearId = IME.FinancialYears.Where(a => a.fromDate <= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate >= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().financialYearId;
                         IME.SaveChanges();
                     }
                 }
@@ -764,11 +764,11 @@ namespace LoginForm
             cmbEmployee.SelectedIndex = -1;
             txtCheckNo.Clear();
             txtNarration.Clear();
-            dtpDate.Value = DateTime.Now;
-            dtpSalaryMonth.Value = DateTime.Now;
+            dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
+            dtpSalaryMonth.Value = Convert.ToDateTime(IME.CurrentDate().First());
             txtAmount.Clear();
             cmbCashOrBank.SelectedIndex = -1;
-            dtpCheckDate.Value = DateTime.Now;
+            dtpCheckDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
             btnAdvancePaymentSave.Text = "Save";
             btnAdvancePaymentDelete.Enabled = false;
 
@@ -1013,7 +1013,7 @@ namespace LoginForm
         private void btnAdvancePaymentSave_Click(object sender, EventArgs e)
         {
             decimal decAmount = 0;
-            if (Convert.ToDateTime(dtpSalaryMonth.Text) >= Convert.ToDateTime(DateTime.Now.ToString("MMM-yyyy")))
+            if (Convert.ToDateTime(dtpSalaryMonth.Text) >= Convert.ToDateTime(Convert.ToDateTime(IME.CurrentDate().First()).ToString("MMM-yyyy")))
             {
                 if (txtAmount.Text.Trim() != "")
                 {
@@ -1160,7 +1160,7 @@ namespace LoginForm
                 objDateValidation.DateValidationFunction(txtDate);
                 if (txtDate.Text == string.Empty)
                 {
-                    txtDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 }
                 dtpDate.Value = Convert.ToDateTime(txtDate.Text);
                 if (btnAdvancePaymentSave.Text != "Update")
@@ -1187,7 +1187,7 @@ namespace LoginForm
                 bool isInvalid = obj.DateValidationFunction(txtChequeDate);
                 if (!isInvalid)
                 {
-                    txtChequeDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtChequeDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 }
             }
             catch (Exception ex)

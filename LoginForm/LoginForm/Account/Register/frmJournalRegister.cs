@@ -29,8 +29,8 @@ namespace LoginForm
         {
             try
             {
-                txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
-                txtFromDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                txtToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
+                txtFromDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 DateTime dt;
                 DateTime.TryParse(txtToDate.Text, out dt);
                 dtpToDate.Value = dt;
@@ -48,8 +48,8 @@ namespace LoginForm
         {
             try
             {
-                dtpFromDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
-                dtpToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                dtpFromDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
+                dtpToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 txtVoucherNo.Text = string.Empty;
                 txtFromDate.Focus();
                 SearchRegister();
@@ -78,7 +78,7 @@ namespace LoginForm
                 string strFromDate = string.Empty;
                 if (txtToDate.Text == string.Empty)
                 {
-                    strToDate = DateTime.Now.ToString();
+                    strToDate = Convert.ToDateTime(IME.CurrentDate().First()).ToString();
                 }
                 else
                 {
@@ -86,7 +86,7 @@ namespace LoginForm
                 }
                 if (txtFromDate.Text == string.Empty)
                 {
-                    strFromDate = DateTime.Now.ToString();
+                    strFromDate = Convert.ToDateTime(IME.CurrentDate().First()).ToString();
                 }
                 else
                 {
@@ -111,8 +111,8 @@ namespace LoginForm
                 //DateTime dtFromDate = infoComapany.CurrentDate;
                 //dtpFromDate.Value = dtFromDate;
                 //txtFromDate.Text = dtFromDate.ToString("dd-MMM-yyyy");
-                dtpFromDate.Value = DateTime.Now;
-                txtFromDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                dtpFromDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
+                txtFromDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 dtpFromDate.Value = Convert.ToDateTime(txtFromDate.Text);
                 dtpToDate.MinDate = DateTime.Today.AddMonths(-9);
                 dtpToDate.MaxDate = DateTime.Today.AddMonths(3);
@@ -120,7 +120,7 @@ namespace LoginForm
                 //DateTime dtToDate = infoComapany.CurrentDate;
                 //dtpToDate.Value = dtToDate;
                 //dtpToDate.Text = dtToDate.ToString("dd-MMM-yyyy");
-                dtpToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                dtpToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 dtpToDate.Value = Convert.ToDateTime(txtFromDate.Text);
             }
             catch (Exception ex)
@@ -140,8 +140,8 @@ namespace LoginForm
             try
             {
                 FinancialYearDate();
-                dtpFromDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
-                dtpToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                dtpFromDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
+                dtpToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 SearchRegister();
             }
             catch (Exception ex)

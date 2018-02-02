@@ -84,7 +84,7 @@ namespace LoginForm.PurchaseOrder
             #region Filler
             ToFill();
             CCFill();
-            txtDate.Text = DateTime.Now.ToString();
+            txtDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString();
             RefreshMailList();
             #endregion
             var txt = CreateTxt();
@@ -207,8 +207,8 @@ namespace LoginForm.PurchaseOrder
             string orderN= rowList[0].Cells[10].Value.ToString();
             string billTo = rowList[0].Cells[11].Value.ToString();
             string COO ="   ";//TO DO COUNTRYCODE
-            string OrderDate = DateTime.Now.ToString("dd.MM.yyyy");//TransmissionDate
-            string OrderTime = DateTime.Now.ToString("HH.mm");//TransmissionDate
+            string OrderDate = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd.MM.yyyy");//TransmissionDate
+            string OrderTime = Convert.ToDateTime(IME.CurrentDate().First()).ToString("HH.mm");//TransmissionDate
             string filler1 ="";
             for (int i = 0; i < 130; i++)
             {
@@ -248,7 +248,7 @@ namespace LoginForm.PurchaseOrder
             string PackType = " ";
             string OrderNumber = "     ";
             string CustomerDistOrderReference = Convert.ToString(fiche);
-            CustomerDistOrderReference = CustomerDistOrderReference+"/DB/"+DateTime.Now.ToString("MMM") +"/"+DateTime.Now.ToString("yy");
+            CustomerDistOrderReference = CustomerDistOrderReference+"/DB/"+Convert.ToDateTime(IME.CurrentDate().First()).ToString("MMM") +"/"+Convert.ToDateTime(IME.CurrentDate().First()).ToString("yy");
             int CustomerDistOrderReferencelength = CustomerDistOrderReference.Length;
             for (int i = 0; i < 30- CustomerDistOrderReferencelength; i++)
 

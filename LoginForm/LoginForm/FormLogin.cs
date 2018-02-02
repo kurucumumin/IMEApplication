@@ -90,7 +90,7 @@ namespace LoginForm
             //    DolarRate.RateSell = RateForDolar.ExchangeSell;
             //    DolarRate.RateSellEffective = RateForDolar.ExchangeSellEffective;
             //    DolarRate.RateBuyEffective = RateForDolar.ExchangeBuyEffective;
-            //    DolarRate.rate_date = DateTime.Now.Date;
+            //    DolarRate.rate_date = Convert.ToDateTime(IME.CurrentDate().First()).Date;
             //    IME.Rates.Add(DolarRate);
             //    IME.SaveChanges();
             //    Rate SterlinRate = new Rate();
@@ -101,7 +101,7 @@ namespace LoginForm
             //    SterlinRate.RateSell = RateforSterlin.ExchangeSell;
             //    SterlinRate.RateSellEffective = RateforSterlin.ExchangeSellEffective;
             //    SterlinRate.RateBuyEffective = RateforSterlin.ExchangeBuyEffective;
-            //    SterlinRate.rate_date = DateTime.Now.Date;
+            //    SterlinRate.rate_date = Convert.ToDateTime(IME.CurrentDate().First()).Date;
             //    IME.Rates.Add(SterlinRate);
             //    IME.SaveChanges();
             //}

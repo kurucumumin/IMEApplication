@@ -30,13 +30,14 @@ namespace LoginForm
         /// </summary>
         public void Clear()
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 FinancialYearDate();
                 VoucherTypeComboLoad();
                 AccountLedgerComboFill();
                 dtpFromDate.Text = Utils.getManagement().FinancialYear.fromDate.Value.ToString("dd-MMM-yyyy");
-                dtpToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                dtpToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 txtFromDate.Focus();
                 txtFromDate.Select();
                 
@@ -315,13 +316,14 @@ namespace LoginForm
         /// <param name="e"></param>
         private void txtToDate_Leave(object sender, EventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 DateValidation obj = new DateValidation();
                 bool isInvalid = obj.DateValidationFunction(txtToDate);
                 if (!isInvalid)
                 {
-                    txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 }
                 string date = txtToDate.Text;
                 dtpToDate.Value = Convert.ToDateTime(date);
@@ -355,6 +357,7 @@ namespace LoginForm
         /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 DateValidation ObjValidation = new DateValidation();
@@ -362,7 +365,7 @@ namespace LoginForm
                 if (Convert.ToDateTime(txtToDate.Text) < Convert.ToDateTime(txtFromDate.Text))
                 {
                     MessageBox.Show("todate should be greater than fromdate", "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                     txtFromDate.Text = Utils.getManagement().FinancialYear.fromDate.Value.ToString("dd-MMM-yyyy");
                     DateTime dt;
                     DateTime.TryParse(txtToDate.Text, out dt);

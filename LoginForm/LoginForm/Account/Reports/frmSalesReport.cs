@@ -40,6 +40,7 @@ namespace LoginForm
         /// </summary>
         public void Clear()
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 VoucherTypeComboFill();
@@ -51,7 +52,7 @@ namespace LoginForm
                 dtpFrmDate.Value = Utils.getManagement().FinancialYear.fromDate.Value;
                 dtpFrmDate.MinDate = Utils.getManagement().FinancialYear.fromDate.Value;
                 dtpFrmDate.MaxDate = Utils.getManagement().FinancialYear.toDate.Value;
-                dtpToDate.Value = DateTime.Now;
+                dtpToDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
                 dtpToDate.MinDate = Utils.getManagement().FinancialYear.fromDate.Value;
                 dtpToDate.MaxDate = Utils.getManagement().FinancialYear.toDate.Value;
                 cmbVoucherType.SelectedIndex = 0;
@@ -379,13 +380,14 @@ namespace LoginForm
         }
         private void txtTodate_Leave(object sender, EventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 DateValidation obj = new DateValidation();
                 obj.DateValidationFunction(txtTodate);
                 if (txtTodate.Text == string.Empty)
                 {
-                    txtTodate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtTodate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 }
                 string strdate = txtTodate.Text;
                 dtpToDate.Value = Convert.ToDateTime(strdate.ToString());

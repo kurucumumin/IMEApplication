@@ -12,9 +12,10 @@ namespace LoginForm.QuotationModule
 
         public FormQuotationMain()
         {
+            IMEEntities IME = new IMEEntities();
             InitializeComponent();
             dateNow = Convert.ToDateTime(new IMEEntities().CurrentDate().First());
-            dtpFromDate.Value = DateTime.Now.AddMonths(-1);
+            dtpFromDate.Value = Convert.ToDateTime(IME.CurrentDate().First()).AddMonths(-1);
         }
 
         private void btnNewQuotation_Click(object sender, EventArgs e)

@@ -457,7 +457,7 @@ namespace LoginForm
                 infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
                 infoLedgerPosting.invoiceNo = decLedgerId.ToString();
                 infoLedgerPosting.chequeNo = string.Empty;
-                infoLedgerPosting.chequeDate = DateTime.Now;
+                infoLedgerPosting.chequeDate = Convert.ToDateTime(db.CurrentDate().First());
 
                 db.LedgerPostings.Add(infoLedgerPosting);
                 db.SaveChanges();
@@ -477,6 +477,7 @@ namespace LoginForm
             try
             {
                 string strfinancialId;
+                IMEEntities IME = new IMEEntities();
                 decOpeningBalance = Convert.ToDecimal(((txtOpeningBalance.Text == "") ? "0" : txtOpeningBalance.Text.Trim()));
                 LedgerPosting infoLedgerPosting = new LedgerPosting();
                 FinancialYear infoFinancialYear = new FinancialYear();
@@ -498,7 +499,7 @@ namespace LoginForm
                 infoLedgerPosting.ledgerId = decAccountLedgerId;
                 infoLedgerPosting.voucherNo = decAccountLedgerId.ToString();
                 infoLedgerPosting.chequeNo = string.Empty;
-                infoLedgerPosting.chequeDate = DateTime.Now;
+                infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                 DataTable dtbl = spledgerPosting.GetLedgerPostingIds(decAccountLedgerId.ToString(), 1);
                 if (dtbl.Rows.Count > 0)
                 {
@@ -536,12 +537,13 @@ namespace LoginForm
             try
             {
                 PartyBalance infoPatryBalance = new PartyBalance();
+                IMEEntities IME = new IMEEntities();
                 AccountLedger spLedger = new AccountLedger();
                 if (decOpeningBalance > 0)
                 {
                     if (cmbBillByBill.Text == "Yes")
                     {
-                        infoPatryBalance.date = DateTime.Now;
+                        infoPatryBalance.date = Convert.ToDateTime(IME.CurrentDate().First());
                         infoPatryBalance.ledgerId = decLedgerId;
                         infoPatryBalance.voucherTypeId = 1;
                         infoPatryBalance.voucherNo = decLedgerId.ToString();
@@ -578,6 +580,7 @@ namespace LoginForm
         public void PartyBalanceEdit()
         {
             Management m = Utils.getManagement();
+            IMEEntities IME = new IMEEntities();
             try
             {
                 PartyBalance infoPatryBalance = new PartyBalance();
@@ -586,7 +589,7 @@ namespace LoginForm
                 {
                     if (cmbBillByBill.Text == "Yes")
                     {
-                        infoPatryBalance.date = DateTime.Now.Date;
+                        infoPatryBalance.date = Convert.ToDateTime(IME.CurrentDate().First()).Date;
                         infoPatryBalance.ledgerId = decAccountLedgerId;
                         infoPatryBalance.voucherTypeId = 1;
                         infoPatryBalance.voucherNo = decAccountLedgerId.ToString();

@@ -34,6 +34,7 @@ namespace LoginForm.Account.Services
 
         public void ExportExcel(DataGridView dgv, string rptName, int inFirstRow, int inFirstCol, string Format, object dtFromDate, object dtToDate, string header)//, string credit, string debit, string closing)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 if (CheckWhetherOfficeInstalled())
@@ -127,7 +128,7 @@ namespace LoginForm.Account.Services
                     range.Font.Bold = true;
 
                     range = ws.get_Range("I5", "I5");
-                    range.Value2 = DateTime.Now.Date.ToString("dd-MMM-yyyy");
+                    range.Value2 = Convert.ToDateTime(IME.CurrentDate().First()).Date.ToString("dd-MMM-yyyy");
                     range.Font.Bold = true;
 
 

@@ -111,12 +111,12 @@ namespace LoginForm
         public void LoadFunction()
         {
                 EmployeeCodeComboFill();
-                dtpDate.Value = DateTime.Now;
+                dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
                 dtpMonth.Format = DateTimePickerFormat.Custom;
                 dtpMonth.CustomFormat = "MMMM/yyyy";
-                dtpDate.MinDate = DateTime.Now.AddYears(-1);
-                dtpDate.MaxDate = DateTime.Now.AddMonths(2);
-                txtDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                dtpDate.MinDate = Convert.ToDateTime(IME.CurrentDate().First()).AddYears(-1);
+                dtpDate.MaxDate = Convert.ToDateTime(IME.CurrentDate().First()).AddMonths(2);
+                txtDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 cmbEmployeeCode.SelectedIndex = -1;
                 txtBonusAmount.Clear();
                 txtDeductionAmount.Clear();
@@ -250,7 +250,7 @@ namespace LoginForm
 
         private void txtDate_Leave(object sender, EventArgs e)
         {
-                    txtDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
         }
 
         private void txtDeductionAmount_KeyPress(object sender, KeyPressEventArgs e)

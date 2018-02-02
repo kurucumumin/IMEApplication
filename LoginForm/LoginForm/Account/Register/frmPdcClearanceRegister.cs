@@ -35,8 +35,8 @@ namespace LoginForm.Account
         {
             try
             {
-                dtpFromDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
-                dtpTodate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                dtpFromDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
+                dtpTodate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 txtCheckno.Text = string.Empty;
                 AccountLedgerComboFill();
                 VoucherTypeComboFill();
@@ -60,8 +60,8 @@ namespace LoginForm.Account
         /// </summary>
         public void SetDate()
         {
-            txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
-            txtFromDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+            txtToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
+            txtFromDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
             DateTime dt;
             DateTime.TryParse(txtToDate.Text, out dt);
             dtpTodate.Value = dt;
@@ -155,21 +155,21 @@ namespace LoginForm.Account
             {
                 dtpFromDate.MinDate = (DateTime)f.fromDate;
                 dtpFromDate.MaxDate = (DateTime)f.toDate;
-                DateTime dtFromDate = DateTime.Now;
+                DateTime dtFromDate = Convert.ToDateTime(IME.CurrentDate().First());
                 dtpFromDate.Value = dtFromDate;
                 txtFromDate.Text = dtFromDate.ToString("dd-MMM-yyyy");
                 dtpFromDate.Value = Convert.ToDateTime(txtFromDate.Text);
 
                 dtpTodate.MinDate = (DateTime)f.fromDate;
                 dtpTodate.MaxDate = (DateTime)f.toDate;
-                DateTime dtToDate = DateTime.Now;
+                DateTime dtToDate = Convert.ToDateTime(IME.CurrentDate().First());
                 dtpTodate.Value = dtToDate;
                 txtToDate.Text = dtToDate.ToString("dd-MMM-yyyy");
                 dtpTodate.Value = Convert.ToDateTime(txtToDate.Text);
 
                 dtpCheckdate.MinDate = (DateTime)f.fromDate;
                 dtpCheckdate.MaxDate = (DateTime)f.toDate;
-                DateTime dtCheckDate = DateTime.Now;
+                DateTime dtCheckDate = Convert.ToDateTime(IME.CurrentDate().First());
                 dtpCheckdate.Value = dtCheckDate;
                 txtCheckDate.Text = dtCheckDate.ToString("dd-MMM-yyyy");
                 dtpCheckdate.Value = Convert.ToDateTime(txtCheckDate.Text);
@@ -299,7 +299,7 @@ namespace LoginForm.Account
                 obj.DateValidationFunction(txtFromDate);
                 if (txtFromDate.Text == string.Empty)
                 {
-                    txtFromDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtFromDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 }
                 
                 string strdate = txtFromDate.Text;
@@ -309,12 +309,12 @@ namespace LoginForm.Account
                     if (Convert.ToDateTime(txtToDate.Text) < Convert.ToDateTime(txtFromDate.Text))
                     {
                         MessageBox.Show("Todate should be greater than fromdate", "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtFromDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                        txtFromDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                     }
                 }
                 else if (txtFromDate.Text == string.Empty)
                 {
-                    txtFromDate.Text = DateTime.Now.ToString();
+                    txtFromDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString();
                 }
             }
             catch (Exception ex)
@@ -335,7 +335,7 @@ namespace LoginForm.Account
                 bool isInvalid = obj.DateValidationFunction(txtToDate);
                 if (!isInvalid)
                 {
-                    txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 }
                 string date = txtToDate.Text;
                 dtpTodate.Value = Convert.ToDateTime(date);
@@ -344,12 +344,12 @@ namespace LoginForm.Account
                     if (Convert.ToDateTime(txtToDate.Text) < Convert.ToDateTime(txtFromDate.Text))
                     {
                         MessageBox.Show("Todate should be greater than fromdate", "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                        txtToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                     }
                 }
                 else if (txtToDate.Text == string.Empty)
                 {
-                    txtToDate.Text = DateTime.Now.ToString();
+                    txtToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString();
                 }
             }
             catch (Exception ex)
@@ -370,7 +370,7 @@ namespace LoginForm.Account
                 bool isInvalid = obj.DateValidationFunction(txtCheckDate);
                 if (!isInvalid)
                 {
-                    txtCheckDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtCheckDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 }
                 string date = txtToDate.Text;
                 dtpCheckdate.Value = Convert.ToDateTime(date);

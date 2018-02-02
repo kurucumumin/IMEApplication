@@ -36,10 +36,10 @@ namespace LoginForm
                 /*-------date setting at the time of loading--------*/
                 dtpStatementFrom.MinDate = (DateTime)Utils.getManagement().FinancialYear.fromDate;
                 dtpStatementFrom.MaxDate = (DateTime)Utils.getManagement().FinancialYear.toDate;
-                dtpStatementFrom.Value = DateTime.Now;
+                dtpStatementFrom.Value = Convert.ToDateTime(IME.CurrentDate().First());
                 dtpStatrmentTo.MinDate = (DateTime)Utils.getManagement().FinancialYear.fromDate;
                 dtpStatrmentTo.MaxDate = (DateTime)Utils.getManagement().FinancialYear.toDate;
-                dtpStatrmentTo.Value = DateTime.Now;
+                dtpStatrmentTo.Value = Convert.ToDateTime(IME.CurrentDate().First());
                 /*--------------------------------------------------*/
                 txtBalanceBankCr.Text = string.Empty;
                 txtBalanceBankDr.Text = string.Empty;
@@ -335,7 +335,7 @@ namespace LoginForm
                 obj.DateValidationFunction(txtStatementFrom);
                 if (txtStatementFrom.Text == string.Empty)
                 {
-                    txtStatementFrom.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtStatementFrom.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 }
                 dtpStatementFrom.Value = Convert.ToDateTime(txtStatementFrom.Text);
             }
@@ -374,7 +374,7 @@ namespace LoginForm
                 obj.DateValidationFunction(txtStatementTo);
                 if (txtStatementTo.Text == string.Empty)
                 {
-                    txtStatementTo.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtStatementTo.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 }
                 dtpStatrmentTo.Value = Convert.ToDateTime(txtStatementTo.Text);
             }
@@ -473,7 +473,7 @@ namespace LoginForm
                             }
                             else
                             {
-                                dgvBankReconciliation.Rows[e.RowIndex].Cells["dgvtxtStatementDate"].Value = DateTime.Now.ToString("dd-MMM-yyyy");
+                                dgvBankReconciliation.Rows[e.RowIndex].Cells["dgvtxtStatementDate"].Value = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                             }
                         }
                     }

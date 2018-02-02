@@ -1,6 +1,7 @@
 ﻿using LoginForm.DataSet;
 using System;
 using System.Xml;
+using System.Linq;
 
 namespace LoginForm.Services
 {
@@ -23,6 +24,7 @@ namespace LoginForm.Services
         }
          public classExchangeRate GetExchangeRateforDolar()
         {
+            IMEEntities IME = new IMEEntities();
             classExchangeRate RateForDolar = new classExchangeRate();
             string today = "http://www.tcmb.gov.tr/kurlar/today.xml";
 
@@ -31,7 +33,7 @@ namespace LoginForm.Services
 
             string Name = "USD";
             DateTime TodayDate = new DateTime();
-            TodayDate = DateTime.Now.Date;
+            TodayDate = Convert.ToDateTime(IME.CurrentDate().First()).Date;
             string BuyUSDEffective = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/BanknoteBuying").InnerXml;
             string SellUSDEffective = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/BanknoteSelling").InnerXml;
             string BuyUSD = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/ForexBuying").InnerXml;
@@ -58,7 +60,7 @@ namespace LoginForm.Services
 
         public classExchangeRate GetExchangeRateforSterlin()
         {
-
+            IMEEntities IME = new IMEEntities();
             classExchangeRate RateforSterlin = new classExchangeRate();
             string today = "http://www.tcmb.gov.tr/kurlar/today.xml";
 
@@ -67,7 +69,7 @@ namespace LoginForm.Services
 
             string Name = "GBP";
             DateTime TodayDate = new DateTime();
-            TodayDate = DateTime.Now.Date;
+            TodayDate = Convert.ToDateTime(IME.CurrentDate().First()).Date;
             string BuySTReffective = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='GBP']/BanknoteBuying").InnerXml;
             string SellSTREffective = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='GBP']/BanknoteSelling").InnerXml;
             string BuySTR = xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='GBP']/ForexBuying").InnerXml;

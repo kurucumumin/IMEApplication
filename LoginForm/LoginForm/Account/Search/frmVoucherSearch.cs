@@ -1099,7 +1099,7 @@ namespace LoginForm
                 dtpFromDate.MinDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.fromDate);
                 dtpFromDate.MaxDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.toDate);
                 txtFromDate.Text = Utils.getManagement().FinancialYear.fromDate.Value.ToString("dd-MMM-yyyy");
-                dtpToDate.Value = Convert.ToDateTime(DateTime.Now.ToString("dd-MMM-yyyy"));
+                dtpToDate.Value = Convert.ToDateTime(Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy"));
                 dtpToDate.MinDate = (DateTime)Utils.getManagement().FinancialYear.fromDate;
                 dtpToDate.MaxDate = (DateTime)Utils.getManagement().FinancialYear.toDate;
                 txtVoucherNo.Text = string.Empty;
@@ -1191,7 +1191,7 @@ namespace LoginForm
                 bool isInvalid = objVal.DateValidationFunction(txtToDate);
                 if (!isInvalid)
                 {
-                    txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 }
                 dtpToDate.Value = Convert.ToDateTime(txtToDate.Text);
             }
@@ -1283,7 +1283,7 @@ namespace LoginForm
             //        bool isInvalid = objVal.DateValidationFunction(txtToDate);
             //        if (!isInvalid)
             //        {
-            //            txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+            //            txtToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
             //        }
             //        dtpToDate.Value = Convert.ToDateTime(txtToDate.Text);
             //    }

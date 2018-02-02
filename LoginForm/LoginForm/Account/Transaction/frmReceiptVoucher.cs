@@ -211,6 +211,7 @@ namespace LoginForm
         /// </summary>
         public void Clear()
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 TransactionsGeneralFill obj = new TransactionsGeneralFill();
@@ -263,7 +264,7 @@ namespace LoginForm
                 FinancialYear f = Utils.getManagement().FinancialYear;
                 dtpDate.MinDate = Convert.ToDateTime(f.fromDate);
                 dtpDate.MaxDate = Convert.ToDateTime(f.toDate);
-                dtpDate.Value = DateTime.Now.Date;
+                dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First()).Date;
                 cmbCashOrBank.SelectedIndex = -1;
                 txtNarration.Text = string.Empty;
                 txtTotal.Text = string.Empty;
@@ -450,6 +451,7 @@ namespace LoginForm
         /// </summary>
         public void Save()
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 int inGridRowCount = dgvReceiptVoucher.RowCount;
@@ -508,13 +510,13 @@ namespace LoginForm
                             }
                             else
                             {
-                                InfoReceiptDetails.chequeDate = DateTime.Now;
+                                InfoReceiptDetails.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                             }
                         }
                         else
                         {
                             InfoReceiptDetails.chequeNo = string.Empty;
-                            InfoReceiptDetails.chequeDate = DateTime.Now;
+                            InfoReceiptDetails.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                         }
                         decimal decReceiptDetailsId = SpReceiptDetails.ReceiptDetailsAdd(InfoReceiptDetails);
                         if (decReceiptDetailsId != 0)
@@ -557,6 +559,7 @@ namespace LoginForm
         /// <param name="decMasterId"></param>
         public void Edit(decimal decMasterId)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 int inRowCount = dgvReceiptVoucher.RowCount;
@@ -623,13 +626,13 @@ namespace LoginForm
                         }
                         else
                         {
-                            InfoReceiptDetails.chequeDate = DateTime.Now;
+                            InfoReceiptDetails.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                         }
                     }
                     else
                     {
                         InfoReceiptDetails.chequeNo = string.Empty;
-                        InfoReceiptDetails.chequeDate = DateTime.Now;
+                        InfoReceiptDetails.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     }
                     if (dgvReceiptVoucher.Rows[inI].Cells["dgvtxtReceiptDetailsId"].Value == null || dgvReceiptVoucher.Rows[inI].Cells["dgvtxtReceiptDetailsId"].Value.ToString() == string.Empty)//if new rows are added
                     {
@@ -960,6 +963,7 @@ namespace LoginForm
         /// </summary>
         public void MasterLedgerPosting()
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 LedgerPosting InfoLedgerPosting = new LedgerPosting();
@@ -971,7 +975,7 @@ namespace LoginForm
                 InfoLedgerPosting.detailsId = 0;
                 InfoLedgerPosting.invoiceNo = strInvoiceNo;
                 InfoLedgerPosting.chequeNo = string.Empty;
-                InfoLedgerPosting.chequeDate = DateTime.Now;
+                InfoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                 InfoLedgerPosting.ledgerId = Convert.ToDecimal(cmbCashOrBank.SelectedValue.ToString());
                 if (!isAutomatic)
                 {
@@ -995,6 +999,7 @@ namespace LoginForm
         /// </summary>
         public void MasterLedgerPostingEdit()
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 LedgerPosting InfoLedgerPosting = new LedgerPosting();
@@ -1006,7 +1011,7 @@ namespace LoginForm
                 InfoLedgerPosting.detailsId = 0;
                 InfoLedgerPosting.invoiceNo = strInvoiceNo;
                 InfoLedgerPosting.chequeNo = string.Empty;
-                InfoLedgerPosting.chequeDate = DateTime.Now;
+                InfoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                 InfoLedgerPosting.ledgerId = Convert.ToDecimal(cmbCashOrBank.SelectedValue.ToString());
                 if (!isAutomatic)
                 {
@@ -1032,6 +1037,7 @@ namespace LoginForm
         /// <param name="decreceiptDetailsId"></param>
         public void DetailsLedgerPosting(int inA, decimal decreceiptDetailsId)
         {
+            IMEEntities IME = new IMEEntities();
             LedgerPosting InfoLedgerPosting = new LedgerPosting();
             LedgerPostingSP SpLedgerPosting = new LedgerPostingSP();
             ExchangeRateSP SpExchangRate = new ExchangeRateSP();
@@ -1069,12 +1075,12 @@ namespace LoginForm
                             InfoLedgerPosting.chequeDate = Convert.ToDateTime(dgvReceiptVoucher.Rows[inA].Cells["dgvtxtChequeDate"].Value.ToString());
                         }
                         else
-                            InfoLedgerPosting.chequeDate = DateTime.Now;
+                            InfoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     }
                     else
                     {
                         InfoLedgerPosting.chequeNo = string.Empty;
-                        InfoLedgerPosting.chequeDate = DateTime.Now;
+                        InfoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     }
 
 
@@ -1105,12 +1111,12 @@ namespace LoginForm
                             InfoLedgerPosting.chequeDate = Convert.ToDateTime(dgvReceiptVoucher.Rows[inA].Cells["dgvtxtChequeDate"].Value.ToString());
                         }
                         else
-                            InfoLedgerPosting.chequeDate = DateTime.Now;
+                            InfoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     }
                     else
                     {
                         InfoLedgerPosting.chequeNo = string.Empty;
-                        InfoLedgerPosting.chequeDate = DateTime.Now;
+                        InfoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     }
 
                     foreach (DataRow dr in dtblPartyBalance.Rows)
@@ -1180,6 +1186,7 @@ namespace LoginForm
         /// <param name="decreceiptDetailsId"></param>
         public void DetailsLedgerPostingEdit(int inA, decimal decLedgerPostingId, decimal decreceiptDetailsId)
         {
+            IMEEntities IME = new IMEEntities();
             LedgerPosting InfoLedgerPosting = new LedgerPosting();
             LedgerPostingSP SpLedgerPosting = new LedgerPostingSP();
             ExchangeRateSP SpExchangRate = new ExchangeRateSP();
@@ -1209,12 +1216,12 @@ namespace LoginForm
                             InfoLedgerPosting.chequeDate = Convert.ToDateTime(dgvReceiptVoucher.Rows[inA].Cells["dgvtxtChequeDate"].Value.ToString());
                         }
                         else
-                            InfoLedgerPosting.chequeDate = DateTime.Now;
+                            InfoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     }
                     else
                     {
                         InfoLedgerPosting.chequeNo = string.Empty;
-                        InfoLedgerPosting.chequeDate = DateTime.Now;
+                        InfoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     }
                     InfoLedgerPosting.ledgerId = Convert.ToDecimal(dgvReceiptVoucher.Rows[inA].Cells["dgvcmbAccountLedger"].Value.ToString());
                     if (!isAutomatic)
@@ -1249,12 +1256,12 @@ namespace LoginForm
                             InfoLedgerPosting.chequeDate = Convert.ToDateTime(dgvReceiptVoucher.Rows[inA].Cells["dgvtxtChequeDate"].Value.ToString());
                         }
                         else
-                            InfoLedgerPosting.chequeDate = DateTime.Now;
+                            InfoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     }
                     else
                     {
                         InfoLedgerPosting.chequeNo = string.Empty;
-                        InfoLedgerPosting.chequeDate = DateTime.Now;
+                        InfoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     }
                     foreach (DataRow dr in dtblPartyBalance.Rows)
                     {
@@ -1877,17 +1884,18 @@ namespace LoginForm
         /// <param name="e"></param>
         private void frmReceiptVoucher_Load(object sender, EventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             Management m = Utils.getManagement();
             try
             {
                 Clear();
                 btnDelete.Enabled = false;
-                dtpDate.Value = DateTime.Now.Date;
+                dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First()).Date;
                 dtpDate.MinDate = Convert.ToDateTime(m.FinancialYear.fromDate);
                 dtpDate.MaxDate = Convert.ToDateTime(m.FinancialYear.toDate);
                 dtpDate.CustomFormat = "dd-MMMM-yyyy";
                 BankOrCashComboFill();
-                txtDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                txtDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 GridLedgerComboFill();
                 DataTableForPartyBalance();
             }
@@ -1903,13 +1911,14 @@ namespace LoginForm
         /// <param name="e"></param>
         private void txtDate_Leave(object sender, EventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 DateValidation DateValidationObj = new DateValidation();
                 DateValidationObj.DateValidationFunction(txtDate);
                 if (txtDate.Text == string.Empty)
                 {
-                    txtDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 }
                 string strDate = txtDate.Text;
                 dtpDate.Value = Convert.ToDateTime(strDate.ToString());
@@ -1968,6 +1977,7 @@ namespace LoginForm
         /// <param name="e"></param>
         private void dgvReceiptVoucher_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 if (isValueChange)
@@ -2050,7 +2060,7 @@ namespace LoginForm
                             }
                             else
                             {
-                                dgvReceiptVoucher.Rows[e.RowIndex].Cells["dgvtxtChequeDate"].Value = DateTime.Now.ToString("dd-MMM-yyyy");
+                                dgvReceiptVoucher.Rows[e.RowIndex].Cells["dgvtxtChequeDate"].Value = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                             }
                         }
                     }

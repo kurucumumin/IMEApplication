@@ -175,7 +175,7 @@ namespace LoginForm
 
                 dgvDebitNote.Rows.Clear();
                 VoucherDate();
-                dtpVoucherDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                dtpVoucherDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 txtDebitTotal.Text = string.Empty;
                 txtCreditTotal.Text = string.Empty;
                 btnSave.Text = "Save";
@@ -216,7 +216,7 @@ namespace LoginForm
                 //infoComapany = spCompany.CompanyView(1);
                 //DateTime dtVoucherDate = infoComapany.CurrentDate;
                // dtpVoucherDate.Value = dtVoucherDate;
-                txtDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                txtDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 dtpVoucherDate.Value = Convert.ToDateTime(txtDate.Text);
                 txtDate.Focus();
                 txtDate.SelectAll();
@@ -1175,7 +1175,7 @@ namespace LoginForm
             {
                 if (!dgvDebitNote.Rows[inA].Cells["dgvtxtAmount"].ReadOnly)
                 {
-                    infoLedgerPosting.date = DateTime.Now;
+                    infoLedgerPosting.date = Convert.ToDateTime(IME.CurrentDate().First());
                     infoLedgerPosting.voucherTypeId = decDebitNoteVoucherTypeId;
                     infoLedgerPosting.voucherNo = strVoucherNo;
                     infoLedgerPosting.detailsId = decDetailsId;
@@ -1190,13 +1190,13 @@ namespace LoginForm
                             infoLedgerPosting.chequeDate = Convert.ToDateTime(dgvDebitNote.Rows[inA].Cells["dgvtxtChequeDate"].Value.ToString());
                         }
                         else
-                            infoLedgerPosting.chequeDate = DateTime.Now;
+                            infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
 
                     }
                     else
                     {
                         infoLedgerPosting.chequeNo = string.Empty;
-                        infoLedgerPosting.chequeDate = DateTime.Now;
+                        infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     }
 
                     infoLedgerPosting.ledgerId = decId;
@@ -1207,7 +1207,7 @@ namespace LoginForm
                 }
                 else
                 {
-                    infoLedgerPosting.date = DateTime.Now;
+                    infoLedgerPosting.date = Convert.ToDateTime(IME.CurrentDate().First());
                     infoLedgerPosting.voucherTypeId = decDebitNoteVoucherTypeId;
                     infoLedgerPosting.voucherNo = strVoucherNo;
                     infoLedgerPosting.detailsId = decDetailsId;
@@ -1222,13 +1222,13 @@ namespace LoginForm
                             infoLedgerPosting.chequeDate = Convert.ToDateTime(dgvDebitNote.Rows[inA].Cells["dgvtxtChequeDate"].Value.ToString());
                         }
                         else
-                            infoLedgerPosting.chequeDate = DateTime.Now;
+                            infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
 
                     }
                     else
                     {
                         infoLedgerPosting.chequeNo = string.Empty;
-                        infoLedgerPosting.chequeDate = DateTime.Now;
+                        infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     }
 
                     infoLedgerPosting.ledgerId = decId;
@@ -1340,7 +1340,7 @@ namespace LoginForm
                 if (!dgvDebitNote.Rows[inA].Cells["dgvtxtAmount"].ReadOnly)
                 {
                     infoLedgerPosting.ledgerPostingId = decLedgerPostingId;
-                    infoLedgerPosting.date = DateTime.Now;
+                    infoLedgerPosting.date = Convert.ToDateTime(IME.CurrentDate().First());
                     infoLedgerPosting.voucherTypeId = decDebitNoteVoucherTypeId;
                     infoLedgerPosting.voucherNo = strVoucherNo;
                     infoLedgerPosting.detailsId = decDetailsId;
@@ -1355,13 +1355,13 @@ namespace LoginForm
                             infoLedgerPosting.chequeDate = Convert.ToDateTime(dgvDebitNote.Rows[inA].Cells["dgvtxtChequeDate"].Value.ToString());
                         }
                         else
-                            infoLedgerPosting.chequeDate = DateTime.Now;
+                            infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
 
                     }
                     else
                     {
                         infoLedgerPosting.chequeNo = string.Empty;
-                        infoLedgerPosting.chequeDate = DateTime.Now;
+                        infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     }
 
                     infoLedgerPosting.ledgerId = decLedgerId;
@@ -1373,7 +1373,7 @@ namespace LoginForm
                 else
                 {
                     infoLedgerPosting.ledgerPostingId = decLedgerPostingId;
-                    infoLedgerPosting.date = DateTime.Now;
+                    infoLedgerPosting.date = Convert.ToDateTime(IME.CurrentDate().First());
                     infoLedgerPosting.voucherTypeId = decDebitNoteVoucherTypeId;
                     infoLedgerPosting.voucherNo = strVoucherNo;
                     infoLedgerPosting.detailsId = decDetailsId;
@@ -1388,13 +1388,13 @@ namespace LoginForm
                             infoLedgerPosting.chequeDate = Convert.ToDateTime(dgvDebitNote.Rows[inA].Cells["dgvtxtChequeDate"].Value.ToString());
                         }
                         else
-                            infoLedgerPosting.chequeDate = DateTime.Now;
+                            infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
 
                     }
                     else
                     {
                         infoLedgerPosting.chequeNo = string.Empty;
-                        infoLedgerPosting.chequeDate = DateTime.Now;
+                        infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     }
 
                     infoLedgerPosting.ledgerId = decLedgerId;
@@ -1853,7 +1853,7 @@ namespace LoginForm
                         }
                         else
                         {
-                            infoDebitNoteDetails.chequeDate = DateTime.Now;
+                            infoDebitNoteDetails.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                         }
                         decimal decDebitNoteDetailsId = spDebitNoteDetails.DebitNoteDetailsAdd(infoDebitNoteDetails);
 
@@ -2077,7 +2077,7 @@ namespace LoginForm
                             }
                             else
                             {
-                                infoDebitNoteDetails.chequeDate = DateTime.Now;
+                                infoDebitNoteDetails.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                             }
                             if (dgvDebitNote.Rows[inI].Cells["dgvtxtDetailsId"].Value != null && dgvDebitNote.Rows[inI].Cells["dgvtxtDetailsId"].Value.ToString() != string.Empty)
                             {
@@ -2452,7 +2452,7 @@ namespace LoginForm
                 bool isInvalid = obj.DateValidationFunction(txtDate);
                 if (!isInvalid)
                 {
-                    txtDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 }
                 string date = txtDate.Text;
                 dtpVoucherDate.Value = Convert.ToDateTime(date);
@@ -2602,7 +2602,7 @@ namespace LoginForm
                         bool isInvalid = obj.DateValidationFunction(txtDate1);
                         if (!isInvalid)
                         {
-                            dgvDebitNote.Rows[e.RowIndex].Cells["dgvtxtChequeDate"].Value = DateTime.Now.ToString("dd-MMM-yyyy");
+                            dgvDebitNote.Rows[e.RowIndex].Cells["dgvtxtChequeDate"].Value = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                         }
                         else
                         {

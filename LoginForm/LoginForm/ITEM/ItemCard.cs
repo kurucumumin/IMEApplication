@@ -668,5 +668,10 @@ namespace LoginForm.Item
                 }
             }
         }
+
+        private void ItemCard_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

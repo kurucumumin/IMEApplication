@@ -346,7 +346,7 @@ namespace LoginForm
             decimal decRateForPricingLevel = 0;
             try
             {
-                DateTime dtcurrentDate = DateTime.Now;
+                DateTime dtcurrentDate = Convert.ToDateTime(IME.CurrentDate().First());
                 decPricingLevelId = Convert.ToDecimal(cmbPricingLevel.SelectedValue.ToString());
                 decRateForPricingLevel = spProdut.SalesInvoiceProductRateForSales(Convert.ToInt32(cmbCurrency.SelectedValue));
                 infoProduct = spProdut.ProductView(decProductId);
@@ -863,7 +863,7 @@ namespace LoginForm
                     cbxPrintAfterSave.Checked = false;
                 }
                 dtpDate.MaxDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.toDate);
-                dtpDate.Value = DateTime.Now;
+                dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
                 txtDate.Text = dtpDate.Value.ToString("dd-MMM-yyyy");
 
                 if(cmbCashOrParty.DataSource!=null) cmbCashOrParty.SelectedIndex = 0;
@@ -1389,7 +1389,7 @@ namespace LoginForm
                 TaxGridFill();
                 dtpDate.MinDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.fromDate.ToString());
                 dtpDate.MaxDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.toDate.ToString());
-                dtpDate.Value = DateTime.Now;
+                dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
                 cmbCashOrParty.SelectedIndex = -1;
                 cmbSalesAccount.SelectedIndex = -1;
                 cmbPricingLevel.SelectedIndex = -1;
@@ -3750,7 +3750,7 @@ namespace LoginForm
                 obj.DateValidationFunction(txtDate);
                 if (txtDate.Text == string.Empty)
                 {
-                    txtDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 }
                 string strdate = txtDate.Text;
                 dtpDate.Value = Convert.ToDateTime(strdate.ToString());
