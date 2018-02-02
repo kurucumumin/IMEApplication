@@ -1,16 +1,4 @@
-﻿//This is a source code or part of OpenMiracle project
-//Copyright (C) 2013  Cybrosys Technologies Pvt.Ltd
-//This program is free software: you can redistribute it and/or modify
-//it under the terms of the GNU General Public License as published by
-//the Free Software Foundation, either version 3 of the License, or
-//(at your option) any later version.
-//This program is distributed in the hope that it will be useful,
-//but WITHOUT ANY WARRANTY; without even the implied warranty of
-//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//GNU General Public License for more details.
-//You should have received a copy of the GNU General Public License
-//along with this program.  If not, see <http://www.gnu.org/licenses/>.
-using System;
+﻿using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
@@ -19,8 +7,13 @@ using LoginForm.Account.Services;
 using LoginForm;
 using LoginForm.Services;
 using LoginForm.DataSet;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data.SqlClient;
+using System.Linq;
 
-namespace Open_Miracle
+
+namespace LoginForm
 {
     public partial class frmPurchaseInvoice : Form
     {
@@ -1667,6 +1660,7 @@ namespace Open_Miracle
         /// </summary>
         public void Save()
         {
+            IMEEntities IME = new IMEEntities();
             decimal decPurchaseMasterId = 0;
             PurchaseMaster infoPurchaseMaster = new PurchaseMaster();
             PurchaseMasterSP spPurchaseMaster = new PurchaseMasterSP();
@@ -1674,7 +1668,7 @@ namespace Open_Miracle
             //PurchaseDetailsSP spPurchaseDetails = new PurchaseDetailsSP();
             MaterialReceiptMaster infoMaterialReceiptMaster = new MaterialReceiptMaster();
             MaterialReceiptMasterSP spMaterialReceiptMaster = new MaterialReceiptMasterSP();
-            PurchaseOrder infoPurchaseOrderMaster = new PurchaseOrder();
+            DataSet.PurchaseOrder infoPurchaseOrderMaster = new DataSet.PurchaseOrder();
             PurchaseOrderMasterSP spPurchaseOrderMaster = new PurchaseOrderMasterSP();
             StockPosting infoStockPosting = new StockPosting();
             StockPostingSP spStockPosting = new StockPostingSP();
@@ -1823,14 +1817,14 @@ namespace Open_Miracle
                 /*-----------------------------------------Ledger Posting----------------------------------------------------*/
                 infoLedgerPosting.credit = Convert.ToDecimal(txtGrandTotal.Text) * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
                 infoLedgerPosting.debit = 0;
-                infoLedgerPosting.date = Convert.ToDateTime(DateTime.Now);
+                infoLedgerPosting.date = Convert.ToDateTime(Convert.ToDateTime(IME.CurrentDate().First()));
                 infoLedgerPosting.detailsId = 0;
                 infoLedgerPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
                 infoLedgerPosting.ledgerId = infoPurchaseMaster.ledgerId;
                 infoLedgerPosting.voucherNo = infoPurchaseMaster.voucherNo;
                 infoLedgerPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
                 infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
-                infoLedgerPosting.chequeDate = DateTime.Now;
+                infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                 infoLedgerPosting.chequeNo = string.Empty;
                 spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                 decimal decBilldiscount = Convert.ToDecimal(txtBillDiscount.Text.ToString());
@@ -1838,27 +1832,27 @@ namespace Open_Miracle
                 {
                     infoLedgerPosting.credit = decBilldiscount * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
                     infoLedgerPosting.debit = 0;
-                    infoLedgerPosting.date = Convert.ToDateTime(DateTime.Now);
+                    infoLedgerPosting.date =Convert.ToDateTime(IME.CurrentDate().First());
                     infoLedgerPosting.detailsId = 0;
                     infoLedgerPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
                     infoLedgerPosting.ledgerId = 9;//ledger id of discount received
                     infoLedgerPosting.voucherNo = infoPurchaseMaster.voucherNo;
                     infoLedgerPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
                     infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
-                    infoLedgerPosting.chequeDate = DateTime.Now;
+                    infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     infoLedgerPosting.chequeNo = string.Empty;
                     spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                 }
                 infoLedgerPosting.credit = 0;
                 infoLedgerPosting.debit = TotalNetAmount(); //* spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
-                infoLedgerPosting.date = Convert.ToDateTime(DateTime.Now);
+                infoLedgerPosting.date = Convert.ToDateTime(Convert.ToDateTime(IME.CurrentDate().First()));
                 infoLedgerPosting.detailsId = 0;
                 infoLedgerPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
                 infoLedgerPosting.ledgerId = infoPurchaseMaster.purchaseAccount;//ledger posting of purchase account
                 infoLedgerPosting.voucherNo = infoPurchaseMaster.voucherNo;
                 infoLedgerPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
                 infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
-                infoLedgerPosting.chequeDate = DateTime.Now;
+                infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                 infoLedgerPosting.chequeNo = string.Empty;
                 spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                 foreach (DataGridViewRow dgvrow in dgvAdditionalCost.Rows)
@@ -1881,14 +1875,14 @@ namespace Open_Miracle
                                     /*-----------------------------------------Additional Cost Ledger Posting----------------------------------------------------*/
                                     infoLedgerPosting.credit = 0;
                                     infoLedgerPosting.debit = infoAdditionalCost.debit * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
-                                    infoLedgerPosting.date = Convert.ToDateTime(DateTime.Now);
+                                    infoLedgerPosting.date = Convert.ToDateTime(Convert.ToDateTime(IME.CurrentDate().First()));
                                     infoLedgerPosting.detailsId = 0;
                                     infoLedgerPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
                                     infoLedgerPosting.ledgerId = infoAdditionalCost.ledgerId;
                                     infoLedgerPosting.voucherNo = infoPurchaseMaster.voucherNo;
                                     infoLedgerPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
                                     infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
-                                    infoLedgerPosting.chequeDate = DateTime.Now;
+                                    infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                                     infoLedgerPosting.chequeNo = string.Empty;
                                     spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                                 }
@@ -1912,14 +1906,14 @@ namespace Open_Miracle
                                 /*-----------------------------------------Tax Ledger Posting----------------------------------------------------*/
                                 infoLedgerPosting.credit = 0;
                                 infoLedgerPosting.debit = infoPurchaseBillTax.taxAmount * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
-                                infoLedgerPosting.date = Convert.ToDateTime(DateTime.Now);
+                                infoLedgerPosting.date = Convert.ToDateTime(Convert.ToDateTime(IME.CurrentDate().First()));
                                 infoLedgerPosting.detailsId = 0;
                                 infoLedgerPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
                                 infoLedgerPosting.ledgerId = Convert.ToDecimal(dgvrow.Cells["dgvtxtLedgerId"].Value.ToString());
                                 infoLedgerPosting.voucherNo = infoPurchaseMaster.voucherNo;
                                 infoLedgerPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
                                 infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
-                                infoLedgerPosting.chequeDate = DateTime.Now;
+                                infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                                 infoLedgerPosting.chequeNo = string.Empty;
                                 spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                             }
@@ -1973,13 +1967,14 @@ namespace Open_Miracle
         /// </summary>
         public void Edit()
         {
+            IMEEntities IME = new IMEEntities();
             PurchaseMaster infoPurchaseMaster = new PurchaseMaster();
             PurchaseMasterSP spPurchaseMaster = new PurchaseMasterSP();
             PurchaseDetail infoPurchaseDetails = new PurchaseDetail();
             PurchaseDetailsSP spPurchaseDetails = new PurchaseDetailsSP();
             MaterialReceiptMaster infoMaterialReceiptMaster = new MaterialReceiptMaster();
             MaterialReceiptMasterSP spMaterialReceiptMaster = new MaterialReceiptMasterSP();
-            PurchaseOrder infoPurchaseOrderMaster = new PurchaseOrder();
+            DataSet.PurchaseOrder infoPurchaseOrderMaster = new DataSet.PurchaseOrder();
             PurchaseOrderMasterSP spPurchaseOrderMaster = new PurchaseOrderMasterSP();
             StockPosting infoStockPosting = new StockPosting();
             StockPostingSP spStockPosting = new StockPostingSP();
@@ -2158,14 +2153,14 @@ namespace Open_Miracle
                 /*-----------------------------------------Ledger Posting----------------------------------------------------*/
                 infoLedgerPosting.credit = Convert.ToDecimal(txtGrandTotal.Text) * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
                 infoLedgerPosting.debit = 0;
-                infoLedgerPosting.date = Convert.ToDateTime(DateTime.Now);
+                infoLedgerPosting.date = Convert.ToDateTime(Convert.ToDateTime(IME.CurrentDate().First()));
                 infoLedgerPosting.detailsId = 0;
                 infoLedgerPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
                 infoLedgerPosting.ledgerId = infoPurchaseMaster.ledgerId;
                 infoLedgerPosting.voucherNo = infoPurchaseMaster.voucherNo;
                 infoLedgerPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
                 infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
-                infoLedgerPosting.chequeDate = DateTime.Now;
+                infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                 infoLedgerPosting.chequeNo = string.Empty;
                 spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                 decimal DecBillDiscount = Convert.ToDecimal(txtBillDiscount.Text.Trim().ToString());
@@ -2173,7 +2168,7 @@ namespace Open_Miracle
                 {
                     infoLedgerPosting.credit = DecBillDiscount * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
                     infoLedgerPosting.debit = 0;
-                    infoLedgerPosting.date = Convert.ToDateTime(DateTime.Now);
+                    infoLedgerPosting.date = Convert.ToDateTime(Convert.ToDateTime(IME.CurrentDate().First()));
                     infoLedgerPosting.detailsId = 0;
                     infoLedgerPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
                     //TODO Ledger ID vermek yerine Adından ID'ye ulaşmak lazım
@@ -2181,20 +2176,20 @@ namespace Open_Miracle
                     infoLedgerPosting.voucherNo = infoPurchaseMaster.voucherNo;
                     infoLedgerPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
                     infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
-                    infoLedgerPosting.chequeDate = DateTime.Now;
+                    infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     infoLedgerPosting.chequeNo = string.Empty;
                     spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                 }
                 infoLedgerPosting.credit = 0;
                 infoLedgerPosting.debit = TotalNetAmount();// * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
-                infoLedgerPosting.date = Convert.ToDateTime(DateTime.Now);
+                infoLedgerPosting.date = Convert.ToDateTime(Convert.ToDateTime(IME.CurrentDate().First()));
                 infoLedgerPosting.detailsId = 0;
                 infoLedgerPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
                 infoLedgerPosting.ledgerId = infoPurchaseMaster.purchaseAccount;
                 infoLedgerPosting.voucherNo = infoPurchaseMaster.voucherNo;
                 infoLedgerPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
                 infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
-                infoLedgerPosting.chequeDate = DateTime.Now;
+                infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                 infoLedgerPosting.chequeNo = string.Empty;
                 spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                 foreach (DataGridViewRow dgvrow in dgvAdditionalCost.Rows)
@@ -2232,14 +2227,14 @@ namespace Open_Miracle
                                     /*-----------------------------------------Additional Cost Ledger Posting----------------------------------------------------*/
                                     infoLedgerPosting.credit = 0;
                                     infoLedgerPosting.debit = infoAdditionalCost.debit * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
-                                    infoLedgerPosting.date = Convert.ToDateTime(DateTime.Now);
+                                    infoLedgerPosting.date = Convert.ToDateTime(Convert.ToDateTime(IME.CurrentDate().First()));
                                     infoLedgerPosting.detailsId = 0;
                                     infoLedgerPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
                                     infoLedgerPosting.ledgerId = infoAdditionalCost.ledgerId;
                                     infoLedgerPosting.voucherNo = infoPurchaseMaster.voucherNo;
                                     infoLedgerPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
                                     infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
-                                    infoLedgerPosting.chequeDate = DateTime.Now;
+                                    infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                                     infoLedgerPosting.chequeNo = string.Empty;
                                     spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                                 }
@@ -2278,14 +2273,14 @@ namespace Open_Miracle
                                 /*-----------------------------------------Tax Ledger Posting----------------------------------------------------*/
                                 infoLedgerPosting.credit = 0;
                                 infoLedgerPosting.debit = infoPurchaseBillTax.taxAmount * spExchangeRate.ExchangeRateViewByExchangeRateId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
-                                infoLedgerPosting.date = Convert.ToDateTime(DateTime.Now);
+                                infoLedgerPosting.date = Convert.ToDateTime(Convert.ToDateTime(IME.CurrentDate().First()));
                                 infoLedgerPosting.detailsId = 0;
                                 infoLedgerPosting.invoiceNo = infoPurchaseMaster.invoiceNo;
                                 infoLedgerPosting.ledgerId = Convert.ToDecimal(dgvrow.Cells["dgvtxtLedgerId"].Value.ToString());
                                 infoLedgerPosting.voucherNo = infoPurchaseMaster.voucherNo;
                                 infoLedgerPosting.voucherTypeId = infoPurchaseMaster.voucherTypeId;
                                 infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
-                                infoLedgerPosting.chequeDate = DateTime.Now;
+                                infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                                 infoLedgerPosting.chequeNo = string.Empty;
                                 spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                             }
@@ -2379,7 +2374,7 @@ namespace Open_Miracle
             LedgerPostingSP spLedgerPosting = new LedgerPostingSP();
             PurchaseOrderMasterSP spPurchaseOrderMaster = new PurchaseOrderMasterSP();
             MaterialReceiptMasterSP spMaterialReceiptMaster = new MaterialReceiptMasterSP();
-            PurchaseOrder infoPurchaseOrderMaster = new PurchaseOrder();
+            DataSet.PurchaseOrder infoPurchaseOrderMaster = new DataSet.PurchaseOrder();
             MaterialReceiptMaster infoMaterialReceiptMaster = new MaterialReceiptMaster();
             PurchaseMaster infoPurchaseMaster = new PurchaseMaster();
             /*---------------------------------Deleting previous stock posting, Ledger posting, partybalanceposting---------------------------------------*/
@@ -2667,12 +2662,13 @@ namespace Open_Miracle
         /// </summary>
         public void ClearMaster()
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 decPurchaseMasterId = 0;
                 VoucherNumberGeneration();
-                dtpVoucherDate.Value = DateTime.Now;
-                dtpInvoiceDate.Value = DateTime.Now;
+                dtpVoucherDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
+                dtpInvoiceDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
                 cmbPurchaseMode.SelectedIndex = 0;
                 txtVendorInvoiceNo.Text = string.Empty;
                 cmbCashOrParty.SelectedIndex = 0;
@@ -3068,7 +3064,7 @@ namespace Open_Miracle
         {
             PurchaseMaster infoPurchaseMaster = new PurchaseMaster();
             PurchaseMasterSP spPurchaseMaster = new PurchaseMasterSP();
-            PurchaseOrder infoPurchaseOrderMaster = new PurchaseOrder();
+            DataSet.PurchaseOrder infoPurchaseOrderMaster = new DataSet.PurchaseOrder();
             PurchaseOrderMasterSP spPurchaseOrderMaster = new PurchaseOrderMasterSP();
             MaterialReceiptMaster infoMaterialReceiptMaster = new MaterialReceiptMaster();
             MaterialReceiptMasterSP spMaterialReceiptMaster = new MaterialReceiptMasterSP();
@@ -3564,17 +3560,18 @@ namespace Open_Miracle
         {
             try
             {
+                IMEEntities IME = new IMEEntities();
                 FinancialYear f = Utils.getManagement().FinancialYear;
 
                 CashOrPartyComboFill();
                 PurchaseAccountComboFill();
                 dtpVoucherDate.MinDate = (DateTime)f.fromDate;
                 dtpVoucherDate.MaxDate = (DateTime)f.toDate;
-                dtpVoucherDate.Value = DateTime.Now;
+                dtpVoucherDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
                 dtpInvoiceDate.MinDate = (DateTime)f.fromDate;
                 dtpInvoiceDate.MaxDate = (DateTime)f.toDate;
-                dtpVoucherDate.Value = DateTime.Now;
-                dtpInvoiceDate.Value = DateTime.Now;
+                dtpVoucherDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
+                dtpInvoiceDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
                 CurrencyComboFill();
                 Clear();
                 SettingsStatusCheck();
@@ -3757,13 +3754,14 @@ namespace Open_Miracle
         /// <param name="e"></param>
         private void txtVoucherDate_Leave(object sender, EventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 DateValidation obj = new DateValidation();
                 bool isInvalid = obj.DateValidationFunction(txtVoucherDate);
                 if (!isInvalid)
                 {
-                    txtVoucherDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtVoucherDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 }
                 string date = txtVoucherDate.Text;
                 dtpVoucherDate.Value = Convert.ToDateTime(date);
@@ -3798,6 +3796,7 @@ namespace Open_Miracle
         /// <param name="e"></param>
         private void txtInvoiceDate_TextChanged(object sender, EventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 if (txtInvoiceDate.Text == string.Empty && !txtInvoiceDate.Focused)
@@ -3806,7 +3805,7 @@ namespace Open_Miracle
                     bool isInvalid = obj.DateValidationFunction(txtInvoiceDate);
                     if (!isInvalid)
                     {
-                        txtInvoiceDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                        txtInvoiceDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                     }
                     string date = txtInvoiceDate.Text;
                     dtpInvoiceDate.Value = Convert.ToDateTime(date);
@@ -3824,13 +3823,14 @@ namespace Open_Miracle
         /// <param name="e"></param>
         private void txtInvoiceDate_Leave(object sender, EventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 DateValidation obj = new DateValidation();
                 bool isInvalid = obj.DateValidationFunction(txtInvoiceDate);
                 if (!isInvalid)
                 {
-                    txtInvoiceDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtInvoiceDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 }
                 string date = txtInvoiceDate.Text;
                 dtpInvoiceDate.Value = Convert.ToDateTime(date);

@@ -1,6 +1,6 @@
 ﻿using LoginForm;
 
-namespace Open_Miracle
+namespace LoginForm
 {
     partial class frmPurchaseInvoice
     {

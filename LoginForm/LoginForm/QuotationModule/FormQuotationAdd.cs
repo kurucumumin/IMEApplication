@@ -40,7 +40,7 @@ namespace LoginForm.QuotationModule
         public FormQuotationAdd()
         {
             InitializeComponent();
-            dtpDate.Value = DateTime.Now;
+            dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
             dtpDate.Enabled = false;
         }
 
@@ -162,7 +162,7 @@ namespace LoginForm.QuotationModule
                 cbCurrency.DisplayMember = "currencyName";
                 cbCurrency.ValueMember = "currencyID";
                 cbCurrency.SelectedIndex = 0;
-                dtpDate.Value = DateTime.Now;
+                dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
                 cbPayment.DataSource = IME.PaymentMethods.ToList();
                 cbPayment.DisplayMember = "Payment";
                 cbPayment.ValueMember = "ID";
@@ -510,9 +510,9 @@ namespace LoginForm.QuotationModule
                 if (ArticleCode.Substring(0, 1) == "0") ArticleCode = ArticleCode.Substring(1, ArticleCode.Length - 1);
                 dd = IME.DailyDiscontinueds.Where(a => a.ArticleNo == ArticleCode).FirstOrDefault();
             }
-            if (dd!=null&& Convert.ToDateTime(dd.DiscontinuationDate) < DateTime.Now.AddDays(90))
+            if (dd!=null&& Convert.ToDateTime(dd.DiscontinuationDate) < Convert.ToDateTime(IME.CurrentDate().First()).AddDays(90))
             {
-                if (Convert.ToDateTime(dd.DiscontinuationDate) > DateTime.Now)
+                if (Convert.ToDateTime(dd.DiscontinuationDate) > Convert.ToDateTime(IME.CurrentDate().First()))
                 {
                         MessageBox.Show("This item will be discontinued " + dd.DiscontinuationDate);
                 }
@@ -2189,14 +2189,14 @@ namespace LoginForm.QuotationModule
         private string NewQuotationID()
         {
             IMEEntities IME = new IMEEntities();
-            //List<Quotation> quotList = IME.Quotations.Where(q => q.QuotationNo == DateTime.Now.Year).toList();
+            //List<Quotation> quotList = IME.Quotations.Where(q => q.QuotationNo == Convert.ToDateTime(IME.CurrentDate().First()).Year).toList();
             //int ID;
-            Quotation quo = IME.Quotations.Where(a => a.StartDate.Value.Year == DateTime.Now.Year).OrderByDescending(q => q.QuotationNo).FirstOrDefault();
+            Quotation quo = IME.Quotations.Where(a => a.StartDate.Value.Year == Convert.ToDateTime(IME.CurrentDate().First()).Year).OrderByDescending(q => q.QuotationNo).FirstOrDefault();
             string q1;
             if (quo == null)
             {
                
-                q1 = DateTime.Now.Year.ToString() + "/1";
+                q1 = Convert.ToDateTime(IME.CurrentDate().First()).Year.ToString() + "/1";
             }
             else
             {
@@ -2217,7 +2217,7 @@ namespace LoginForm.QuotationModule
                     {
                         int quoID = Int32.Parse(q1.Substring(quo.QuotationNo.LastIndexOf('/') + 1)) + 1;
 
-                        q1 = DateTime.Now.Year.ToString() + "/" + quoID.ToString();
+                        q1 = Convert.ToDateTime(IME.CurrentDate().First()).Year.ToString() + "/" + quoID.ToString();
                     }
                 }
             }

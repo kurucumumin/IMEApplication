@@ -217,7 +217,7 @@ namespace LoginForm
                                 taxDetail = new TaxDetail();
                                 taxDetail.taxID = decTaxId;
                                 taxDetail.SelectedtaxID = Convert.ToInt32(dgvRow.Cells["dgvtxtTaxId"].Value.ToString());//dgvRow.Cells[0].Value.ToString();
-                                taxDetail.taxDate = DateTime.Now;
+                                taxDetail.taxDate = Convert.ToDateTime(IME.CurrentDate().First());
                                 IME.TaxDetails.Add(taxDetail);
                             }
                         }
@@ -278,7 +278,7 @@ namespace LoginForm
                             taxDetail = new TaxDetail();
                             taxDetail.taxID = decTaxId;
                             taxDetail.SelectedtaxID = Convert.ToInt32(dgvRow.Cells["dgvtxtTaxId"].Value.ToString());//dgvRow.Cells[0].Value.ToString();
-                            taxDetail.taxDate = DateTime.Now;
+                            taxDetail.taxDate = Convert.ToDateTime(IME.CurrentDate().First());
                             IME.TaxDetails.Add(taxDetail);
                         }
                     }
@@ -645,7 +645,7 @@ namespace LoginForm
             accountLedger.bankAccountNumber = string.Empty;
             accountLedger.branchName = string.Empty;
             accountLedger.branchCode = string.Empty;
-            accountLedger.extraDate = DateTime.Now;
+            accountLedger.extraDate = Convert.ToDateTime(IME.CurrentDate().First());
             accountLedger.areaId = 1;
             IME.AccountLedgers.Add(accountLedger);
             IME.SaveChanges();
@@ -680,7 +680,7 @@ namespace LoginForm
                 accountLedger.bankAccountNumber = string.Empty;
                 accountLedger.branchName = string.Empty;
                 accountLedger.branchCode = string.Empty;
-                accountLedger.extraDate = DateTime.Now;
+                accountLedger.extraDate = Convert.ToDateTime(IME.CurrentDate().First());
                 accountLedger.areaId = 1;
                 IME.SaveChanges();
             }

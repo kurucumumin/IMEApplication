@@ -43,7 +43,7 @@ namespace LoginForm.nmSaleOrder
         {
             InitializeComponent();
             customer = cus;
-            dtpDate.Value = DateTime.Now;
+            dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
             dtpDate.Enabled = false;
             fillCustomer();
         }
@@ -148,7 +148,7 @@ namespace LoginForm.nmSaleOrder
                 LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
                 lblVat.Text = Utils.getManagement().VAT.ToString();
                 #region ComboboxFiller.
-                dtpDate.Value = DateTime.Now;
+                dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
                 cbCurrency.DataSource = IME.Currencies.ToList();
                 cbCurrency.DisplayMember = "currencyName";
                 cbCurrency.ValueMember = "currencyID";
@@ -1484,7 +1484,7 @@ namespace LoginForm.nmSaleOrder
                 SaleOrder s = new SaleOrder();
                 //TODO (SALEORDER) ID Formatını öğren ve ID'yi düzenle
                 s.SaleOrderNo = txtSaleOrderNo.Text;
-                s.SaleDate = DateTime.Now;
+                s.SaleDate = Convert.ToDateTime(IME.CurrentDate().First());
                 s.OnlineConfirmationNo = txtOnlineConfirmationNo.Text;
                 s.QuotationNos = txtQuotationNo.Text;
                 s.PaymentTermID = (int)cbPaymentTerm.SelectedValue;
@@ -2174,13 +2174,13 @@ namespace LoginForm.nmSaleOrder
         private string NewQuotationID()
         {
             IMEEntities IME = new IMEEntities();
-            //List<Quotation> quotList = IME.Quotations.Where(q => q.QuotationNo == DateTime.Now.Year).toList();
+            //List<Quotation> quotList = IME.Quotations.Where(q => q.QuotationNo == Convert.ToDateTime(IME.CurrentDate().First()).Year).toList();
             //int ID;
             Quotation quo = IME.Quotations.OrderByDescending(q => q.QuotationNo).FirstOrDefault();
             string q1;
             if (quo == null)
             {
-                q1 = DateTime.Now.Year.ToString() + "/1";
+                q1 = Convert.ToDateTime(IME.CurrentDate().First()).Year.ToString() + "/1";
             }
             else
             {
@@ -2201,7 +2201,7 @@ namespace LoginForm.nmSaleOrder
                     {
                         int quoID = Int32.Parse(q1.Substring(quo.QuotationNo.LastIndexOf('/') + 1)) + 1;
 
-                        q1 = DateTime.Now.Year.ToString() + "/" + quoID.ToString();
+                        q1 = Convert.ToDateTime(IME.CurrentDate().First()).Year.ToString() + "/" + quoID.ToString();
                     }
                 }
             }

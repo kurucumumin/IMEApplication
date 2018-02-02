@@ -166,7 +166,7 @@ namespace LoginForm
 
             if (txtToDate.Text == string.Empty)
             {
-                txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                txtToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
             }
             //---for change date in Date time picker----//
             string strdate = txtToDate.Text;
@@ -183,7 +183,7 @@ namespace LoginForm
 
             if (txtFromDate.Text == string.Empty)
             {
-                txtFromDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                txtFromDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
             }
             //---for change date in Date time picker----//
             string strdate = txtFromDate.Text;
@@ -260,8 +260,8 @@ namespace LoginForm
                     if (Convert.ToDateTime(txtToDate.Text) < Convert.ToDateTime(txtFromDate.Text))
                     {
                         MessageBox.Show("To date should be greater than fromdate", "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
-                        txtFromDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                        txtToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
+                        txtFromDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                         DateTime dt;
                         DateTime.TryParse(txtToDate.Text, out dt);
                         dtpToDate.Value = dt;
@@ -270,8 +270,8 @@ namespace LoginForm
                 }
                 else if (txtFromDate.Text == string.Empty)
                 {
-                    txtFromDate.Text = DateTime.Now.ToString();
-                    txtToDate.Text = DateTime.Now.ToString();
+                    txtFromDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString();
+                    txtToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString();
                     DateTime dt;
                     DateTime.TryParse(txtToDate.Text, out dt);
                     dtpToDate.Value = dt;

@@ -45,11 +45,11 @@ namespace LoginForm
                 dtpFromDate.Value = Utils.getManagement().FinancialYear.fromDate.Value;
                 dtpFromDate.MaxDate = Utils.getManagement().FinancialYear.toDate.Value;
                 dtpFromDate.MinDate = Utils.getManagement().FinancialYear.fromDate.Value;
-                dtpToDate.Value = DateTime.Now;
+                dtpToDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
                 dtpToDate.MaxDate = Utils.getManagement().FinancialYear.toDate.Value;
                 dtpToDate.MinDate = Utils.getManagement().FinancialYear.fromDate.Value;
                 dtpFromDate.Text = Utils.getManagement().FinancialYear.fromDate.Value.ToString("dd-MMM-yyyy");
-                dtpToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                dtpToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 txtProductCode.Clear();
                 txtVoucherNo.Clear();
                 dgvsalesReturnReport.Enabled = true;
@@ -236,7 +236,7 @@ namespace LoginForm
                 if (Convert.ToDateTime(txtToDate.Text) < Convert.ToDateTime(txtFromDate.Text))
                 {
                     MessageBox.Show("todate should be greater than fromdate", "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                     txtFromDate.Text = Utils.getManagement().FinancialYear.fromDate.Value.ToString("dd-MMM-yyyy");
                     DateTime dt;
                     DateTime.TryParse(txtToDate.Text, out dt);
@@ -375,7 +375,7 @@ namespace LoginForm
                 bool isInvalid = objVal.DateValidationFunction(txtToDate);
                 if (!isInvalid)
                 {
-                    txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 }
                 dtpToDate.Value = Convert.ToDateTime(txtToDate.Text);
             }

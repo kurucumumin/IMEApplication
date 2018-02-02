@@ -5,18 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-
+using LoginForm.DataSet;
 namespace LoginForm.Services
 {
     class txtCreate
     {
         public static string newTxt(string[] txtArray, string AccountNumber)
         {
-
+            IMEEntities IME = new IMEEntities();
             SaveFileDialog savefile = new SaveFileDialog();
             savefile.Filter = "Txt Files (*.txt)|*.txt|All files (*.txt)|*.txt";
-            string filename = "ORD_AE01_" + AccountNumber + "_" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmmss");
-            savefile.FileName = "ORD_AE01_" + AccountNumber + "_" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmmss");
+            string filename = "ORD_AE01_" + AccountNumber + "_" + Convert.ToDateTime(IME.CurrentDate().First()).ToString("yyyyMMdd") + "_" + Convert.ToDateTime(IME.CurrentDate().First()).ToString("HHmmss");
+            savefile.FileName = "ORD_AE01_" + AccountNumber + "_" + Convert.ToDateTime(IME.CurrentDate().First()).ToString("yyyyMMdd") + "_" + Convert.ToDateTime(IME.CurrentDate().First()).ToString("HHmmss");
             //savefile.FileName = quotationNo;
             if (savefile.ShowDialog() == DialogResult.OK)
             {

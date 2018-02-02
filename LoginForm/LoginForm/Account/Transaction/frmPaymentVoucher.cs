@@ -300,9 +300,9 @@ namespace LoginForm
                     txtVoucherNo.Text = string.Empty;
                     txtVoucherNo.ReadOnly = false;
                 }
-                dtpDate.MinDate = DateTime.Now.AddMonths(-8);
-                dtpDate.MaxDate = DateTime.Now.AddMonths(3);
-                dtpDate.Value = DateTime.Now;
+                dtpDate.MinDate = Convert.ToDateTime(IME.CurrentDate().First()).AddMonths(-8);
+                dtpDate.MaxDate = Convert.ToDateTime(IME.CurrentDate().First()).AddMonths(3);
+                dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
                 cmbBankorCash.SelectedIndex = -1;
                 txtNarration.Text = string.Empty;
                 txtTotal.Text = string.Empty;
@@ -662,7 +662,7 @@ namespace LoginForm
             PartyBalance.date = dtpDate.Value;
             PartyBalance.debit = Convert.ToDecimal(dtblPartyBalance.Rows[inJ]["Amount"].ToString());
             PartyBalance.exchangeRateId = Convert.ToInt32(dtblPartyBalance.Rows[inJ]["CurrencyId"].ToString());
-            PartyBalance.financialYearId = IME.FinancialYears.Where(a => a.fromDate >= DateTime.Now).Where(b => b.toDate <= DateTime.Now).FirstOrDefault().financialYearId;
+            PartyBalance.financialYearId = IME.FinancialYears.Where(a => a.fromDate >= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate <= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().financialYearId;
             PartyBalance.ledgerId = Convert.ToDecimal(dtblPartyBalance.Rows[inJ]["LedgerId"].ToString());
             PartyBalance.referenceType = dtblPartyBalance.Rows[inJ]["ReferenceType"].ToString();
             if (dtblPartyBalance.Rows[inJ]["ReferenceType"].ToString() == "New" || dtblPartyBalance.Rows[inJ]["ReferenceType"].ToString() == "OnAccount")
@@ -741,7 +741,7 @@ namespace LoginForm
                 DateValidation objVal = new DateValidation();
                 TextBox txtDate1 = new TextBox();
                 PaymentMaster.date = dtpDate.Value;
-                PaymentMaster.financialYearId = IME.FinancialYears.Where(a => a.fromDate >= DateTime.Now).Where(b => b.toDate <= DateTime.Now).FirstOrDefault().financialYearId;
+                PaymentMaster.financialYearId = IME.FinancialYears.Where(a => a.fromDate >= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate <= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().financialYearId;
                 PaymentMaster.invoiceNo = txtVoucherNo.Text.Trim(); ;
                 PaymentMaster.ledgerId = Convert.ToDecimal(cmbBankorCash.SelectedValue.ToString());
                 PaymentMaster.narration = txtNarration.Text.Trim();
@@ -782,13 +782,13 @@ namespace LoginForm
                             }
                             else
                             {
-                                PaymentDetail.chequeDate = DateTime.Now;
+                                PaymentDetail.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                             }
                         }
                         else
                         {
                             PaymentDetail.chequeNo = string.Empty;
-                            PaymentDetail.chequeDate = DateTime.Now;
+                            PaymentDetail.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                         }
                         IME.PaymentDetails.Add(PaymentDetail);
                         IME.SaveChanges();
@@ -841,7 +841,7 @@ namespace LoginForm
                 //BankReconciliationSP SpBankReconcilation = new BankReconciliationSP();
                 PaymentMaster PaymentMaster = IME.PaymentMasters.Where(a => a.paymentMasterId == decMasterId).FirstOrDefault();
                 PaymentMaster.date = dtpDate.Value;
-                PaymentMaster.financialYearId = IME.FinancialYears.Where(a => a.fromDate >= DateTime.Now).Where(b => b.toDate <= DateTime.Now).FirstOrDefault().financialYearId;
+                PaymentMaster.financialYearId = IME.FinancialYears.Where(a => a.fromDate >= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate <= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().financialYearId;
                 PaymentMaster.invoiceNo = txtVoucherNo.Text.Trim();
                 PaymentMaster.ledgerId = Convert.ToDecimal(cmbBankorCash.SelectedValue.ToString());
                 PaymentMaster.narration = txtNarration.Text.Trim();
@@ -901,13 +901,13 @@ namespace LoginForm
                                 }
                                 else
                                 {
-                                    PaymentDetail.chequeDate = DateTime.Now;
+                                    PaymentDetail.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                                 }
                             }
                             else
                             {
                                 PaymentDetail.chequeNo = string.Empty;
-                                PaymentDetail.chequeDate = DateTime.Now;
+                                PaymentDetail.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                             }
                             PaymentDetail.paymentMasterId = decPaymentMasterId;
 
@@ -953,13 +953,13 @@ namespace LoginForm
                                 }
                                 else
                                 {
-                                    PaymentDetail.chequeDate = DateTime.Now;
+                                    PaymentDetail.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                                 }
                             }
                             else
                             {
                                 PaymentDetail.chequeNo = string.Empty;
-                                PaymentDetail.chequeDate = DateTime.Now;
+                                PaymentDetail.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                             }
                             PaymentDetail.paymentMasterId = decPaymentMasterId;
 
@@ -1169,7 +1169,7 @@ namespace LoginForm
             LedgerPosting.detailsId = 0;
             LedgerPosting.invoiceNo = strInvoiceNo;
             LedgerPosting.chequeNo = string.Empty;
-            LedgerPosting.chequeDate = DateTime.Now;
+            LedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
             LedgerPosting.ledgerId = Convert.ToDecimal(cmbBankorCash.SelectedValue.ToString());
                 if (!isAutomatic)
                 {
@@ -1180,7 +1180,7 @@ namespace LoginForm
                 LedgerPosting.voucherNo = strVoucherNo;
                 }
             LedgerPosting.voucherTypeId = decPaymentVoucherTypeId;
-            LedgerPosting.yearId = IME.FinancialYears.Where(a => a.fromDate >= DateTime.Now).Where(b => b.toDate <= DateTime.Now).FirstOrDefault().financialYearId;
+            LedgerPosting.yearId = IME.FinancialYears.Where(a => a.fromDate >= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate <= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().financialYearId;
             IME.LedgerPostings.Add(LedgerPosting);
         }
 
@@ -1205,7 +1205,7 @@ namespace LoginForm
             LedgerPosting.detailsId = 0;
             LedgerPosting.invoiceNo = strInvoiceNo;
             LedgerPosting.chequeNo = string.Empty;
-            LedgerPosting.chequeDate = DateTime.Now;
+            LedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
             LedgerPosting.ledgerId = Convert.ToDecimal(cmbBankorCash.SelectedValue.ToString());
             if (!isAutomatic)
             {
@@ -1216,7 +1216,7 @@ namespace LoginForm
                 LedgerPosting.voucherNo = strVoucherNo;
             }
             LedgerPosting.voucherTypeId = decPaymentVoucherTypeId;
-            LedgerPosting.yearId = IME.FinancialYears.Where(a => a.fromDate >= DateTime.Now).Where(b => b.toDate <= DateTime.Now).FirstOrDefault().financialYearId;
+            LedgerPosting.yearId = IME.FinancialYears.Where(a => a.fromDate >= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate <= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().financialYearId;
             IME.SaveChanges();
         }
 
@@ -1252,13 +1252,13 @@ namespace LoginForm
                             LedgerPosting.chequeDate = Convert.ToDateTime(dgvPaymentVoucher.Rows[inA].Cells["dgvtxtChequeDate"].Value.ToString());
                         }
                         else
-                            LedgerPosting.chequeDate = DateTime.Now;
+                            LedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
 
                     }
                     else
                     {
                         LedgerPosting.chequeNo = string.Empty;
-                        LedgerPosting.chequeDate = DateTime.Now;
+                        LedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     }
                     LedgerPosting.ledgerId = Convert.ToDecimal(dgvPaymentVoucher.Rows[inA].Cells["dgvcmbAccountLedger"].Value.ToString());
                     if (!isAutomatic)
@@ -1270,7 +1270,7 @@ namespace LoginForm
                         LedgerPosting.voucherNo = strVoucherNo;
                     }
                     LedgerPosting.voucherTypeId = decPaymentVoucherTypeId;
-                    LedgerPosting.yearId = IME.FinancialYears.Where(a => a.fromDate >= DateTime.Now).Where(b => b.toDate <= DateTime.Now).FirstOrDefault().financialYearId;
+                    LedgerPosting.yearId = IME.FinancialYears.Where(a => a.fromDate >= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate <= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().financialYearId;
                     IME.LedgerPostings.Add(LedgerPosting);
                     IME.SaveChanges();
                 }
@@ -1279,7 +1279,7 @@ namespace LoginForm
                     LedgerPosting.date = dtpDate.Value;
                     LedgerPosting.invoiceNo = strInvoiceNo;
                     LedgerPosting.voucherTypeId = decPaymentVoucherTypeId;
-                    LedgerPosting.yearId = IME.FinancialYears.Where(a => a.fromDate >= DateTime.Now).Where(b => b.toDate <= DateTime.Now).FirstOrDefault().financialYearId;
+                    LedgerPosting.yearId = IME.FinancialYears.Where(a => a.fromDate >= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate <= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().financialYearId;
                     LedgerPosting.credit = 0;
                     LedgerPosting.ledgerId = Convert.ToDecimal(dgvPaymentVoucher.Rows[inA].Cells["dgvcmbAccountLedger"].Value.ToString());
                     LedgerPosting.voucherNo = strVoucherNo;
@@ -1293,12 +1293,12 @@ namespace LoginForm
                             LedgerPosting.chequeDate = Convert.ToDateTime(dgvPaymentVoucher.Rows[inA].Cells["dgvtxtChequeDate"].Value.ToString());
                         }
                         else
-                            LedgerPosting.chequeDate = DateTime.Now;
+                            LedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     }
                     else
                     {
                         LedgerPosting.chequeNo = string.Empty;
-                        LedgerPosting.chequeDate = DateTime.Now;
+                        LedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     }
 
                     foreach (DataRow dr in dtblPartyBalance.Rows)
@@ -1388,16 +1388,16 @@ namespace LoginForm
                             LedgerPosting.chequeDate = Convert.ToDateTime(dgvPaymentVoucher.Rows[inA].Cells["dgvtxtChequeDate"].Value.ToString());
                         }
                         else
-                            LedgerPosting.chequeDate = DateTime.Now;
+                            LedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     }
                     else
                     {
                         LedgerPosting.chequeNo = string.Empty;
-                        LedgerPosting.chequeDate = DateTime.Now;
+                        LedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     }
 
                     LedgerPosting.voucherTypeId = decPaymentVoucherTypeId;
-                    LedgerPosting.yearId = IME.FinancialYears.Where(a => a.fromDate >= DateTime.Now).Where(b => b.toDate <= DateTime.Now).FirstOrDefault().financialYearId;
+                    LedgerPosting.yearId = IME.FinancialYears.Where(a => a.fromDate >= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate <= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().financialYearId;
                     LedgerPosting.ledgerPostingId = decLedgerPostingId;
                     ledgerPostingEdit(LedgerPosting);
                 }
@@ -1407,7 +1407,7 @@ namespace LoginForm
 
                     LedgerPosting.invoiceNo = strInvoiceNo;
                     LedgerPosting.voucherTypeId = decPaymentVoucherTypeId;
-                    LedgerPosting.yearId = IME.FinancialYears.Where(a => a.fromDate >= DateTime.Now).Where(b => b.toDate <= DateTime.Now).FirstOrDefault().financialYearId; ;
+                    LedgerPosting.yearId = IME.FinancialYears.Where(a => a.fromDate >= Convert.ToDateTime(IME.CurrentDate().First())).Where(b => b.toDate <= Convert.ToDateTime(IME.CurrentDate().First())).FirstOrDefault().financialYearId; ;
                     LedgerPosting.credit = 0;
                     LedgerPosting.ledgerId = Convert.ToDecimal(dgvPaymentVoucher.Rows[inA].Cells["dgvcmbAccountLedger"].Value.ToString());
                     LedgerPosting.voucherNo = strVoucherNo;
@@ -1421,12 +1421,12 @@ namespace LoginForm
                             LedgerPosting.chequeDate = Convert.ToDateTime(dgvPaymentVoucher.Rows[inA].Cells["dgvtxtChequeDate"].Value.ToString());
                         }
                         else
-                            LedgerPosting.chequeDate = DateTime.Now;
+                            LedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     }
                     else
                     {
                         LedgerPosting.chequeNo = string.Empty;
-                        LedgerPosting.chequeDate = DateTime.Now;
+                        LedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     }
 
                     foreach (DataRow dr in dtblPartyBalance.Rows)
@@ -1964,9 +1964,9 @@ namespace LoginForm
             try
             {
 
-                dtpDate.Value = DateTime.Now;
-                dtpDate.MinDate = DateTime.Now.AddMonths(-8);
-                dtpDate.MaxDate = DateTime.Now.AddMonths(3);
+                dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
+                dtpDate.MinDate = Convert.ToDateTime(IME.CurrentDate().First()).AddMonths(-8);
+                dtpDate.MaxDate = Convert.ToDateTime(IME.CurrentDate().First()).AddMonths(3);
                 dtpDate.CustomFormat = "dd-MMMM-yyyy";
                 Clear();
                 CashOrBankComboFill();
@@ -2068,7 +2068,7 @@ namespace LoginForm
                 obj.DateValidationFunction(txtDate);
                 if (txtDate.Text == string.Empty)
                 {
-                    txtDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 }
                 dtpDate.Value = Convert.ToDateTime(txtDate.Text);
             }
@@ -2239,7 +2239,7 @@ namespace LoginForm
                         }
                         else
                         {
-                            dgvPaymentVoucher.Rows[e.RowIndex].Cells["dgvtxtChequeDate"].Value = DateTime.Now.ToString("dd-MMM-yyyy");
+                            dgvPaymentVoucher.Rows[e.RowIndex].Cells["dgvtxtChequeDate"].Value = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                         }
                     }
                 }

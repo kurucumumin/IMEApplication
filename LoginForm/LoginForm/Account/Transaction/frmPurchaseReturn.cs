@@ -465,6 +465,7 @@ namespace LoginForm
         /// </summary>
         public void Clear()
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 if (isAutomatic)
@@ -477,7 +478,7 @@ namespace LoginForm
                     txtReturnNo.Text = string.Empty;
                     txtReturnNo.ReadOnly = false;
                 }
-                dtpDate.Value = DateTime.Now;
+                dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
                 dtpDate.MinDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.fromDate);
                 dtpDate.MaxDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.toDate);
                 CashOrPartyComboFill();
@@ -1676,6 +1677,7 @@ namespace LoginForm
         {
             try
             {
+                IMEEntities IME = new IMEEntities();
                 PurchaseMasterSP SPPurchaseMaster = new PurchaseMasterSP();
                 PurchaseReturnMasterSP SPPurchaseReturnMaster = new PurchaseReturnMasterSP();
                 PurchaseReturnDetailsSP SPPurchaseReturnDetails = new PurchaseReturnDetailsSP();
@@ -1764,7 +1766,7 @@ namespace LoginForm
                 infoLedgerPosting.voucherTypeId = infoPurchaseReturnMaster.voucherTypeId;
                 infoLedgerPosting.voucherNo = infoPurchaseReturnMaster.voucherNo;
                 infoLedgerPosting.chequeNo = string.Empty;
-                infoLedgerPosting.chequeDate = DateTime.Now;
+                infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                 infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
                 infoLedgerPosting.invoiceNo = infoPurchaseReturnMaster.invoiceNo;
                 infoLedgerPosting.ledgerId = infoPurchaseReturnMaster.purchaseAccount;
@@ -2799,11 +2801,12 @@ namespace LoginForm
         /// <param name="e"></param>
         private void frmPurchaseReturn_Load(object sender, EventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 Clear();
                 PurchaseReturnSettingsCheck();
-                dtpDate.Value = DateTime.Now;
+                dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
                 dtpDate.MinDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.fromDate);
                 dtpDate.MaxDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.toDate);
                 FillProducts(false, null);
@@ -2820,6 +2823,7 @@ namespace LoginForm
         /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
+
             try
             {
                 //if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnSave.Text))
@@ -2960,13 +2964,14 @@ namespace LoginForm
         /// <param name="e"></param>
         private void txtDate_Leave(object sender, EventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 DateValidation obj = new DateValidation();
                 bool isInvalid = obj.DateValidationFunction(txtDate);
                 if (!isInvalid)
                 {
-                    txtDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 }
                 string date = txtDate.Text;
                 dtpDate.Value = Convert.ToDateTime(date);

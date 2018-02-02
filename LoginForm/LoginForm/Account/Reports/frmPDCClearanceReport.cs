@@ -317,13 +317,14 @@ namespace LoginForm
         /// <param name="e"></param>
         private void txtToDate_Leave(object sender, EventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 DateValidation obj = new DateValidation();
                 obj.DateValidationFunction(txtToDate);
                 if (txtToDate.Text == string.Empty)
                 {
-                    txtToDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 }
                 string strdate = txtToDate.Text;
                 dtpToDate.Value = Convert.ToDateTime(strdate.ToString());

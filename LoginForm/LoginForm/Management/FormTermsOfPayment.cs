@@ -39,13 +39,13 @@ namespace LoginForm.ManagementModule
                     switch (cbType.Text)
                     {
                         case "Days":
-                            ts = DateTime.Now.AddDays(int.Parse(cbCount.Text)) - DateTime.Now;
+                            ts = Convert.ToDateTime(IME.CurrentDate().First()).AddDays(int.Parse(cbCount.Text)) - Convert.ToDateTime(IME.CurrentDate().First());
                             break;
                         case "Weeks":
-                            ts = DateTime.Now.AddDays(int.Parse(cbCount.Text) * 7) - DateTime.Now;
+                            ts = Convert.ToDateTime(IME.CurrentDate().First()).AddDays(int.Parse(cbCount.Text) * 7) - Convert.ToDateTime(IME.CurrentDate().First());
                             break;
                         case "Months":
-                            ts = DateTime.Now.AddMonths(int.Parse(cbCount.Text)) - DateTime.Now;
+                            ts = Convert.ToDateTime(IME.CurrentDate().First()).AddMonths(int.Parse(cbCount.Text)) - Convert.ToDateTime(IME.CurrentDate().First());
                             break;
                     }
 
@@ -74,13 +74,13 @@ namespace LoginForm.ManagementModule
                     switch (cbType.Text)
                     {
                         case "Days":
-                            ts = DateTime.Now.AddDays(int.Parse(cbCount.Text)) - DateTime.Now;
+                            ts = Convert.ToDateTime(IME.CurrentDate().First()).AddDays(int.Parse(cbCount.Text)) - Convert.ToDateTime(IME.CurrentDate().First());
                             break;
                         case "Weeks":
-                            ts = DateTime.Now.AddDays(int.Parse(cbCount.Text) * 7) - DateTime.Now;
+                            ts = Convert.ToDateTime(IME.CurrentDate().First()).AddDays(int.Parse(cbCount.Text) * 7) - Convert.ToDateTime(IME.CurrentDate().First());
                             break;
                         case "Months":
-                            ts = DateTime.Now.AddMonths(int.Parse(cbCount.Text)) - DateTime.Now;
+                            ts = Convert.ToDateTime(IME.CurrentDate().First()).AddMonths(int.Parse(cbCount.Text)) - Convert.ToDateTime(IME.CurrentDate().First());
                             break;
                     }
 

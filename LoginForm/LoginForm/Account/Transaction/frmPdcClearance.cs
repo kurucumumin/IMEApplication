@@ -159,12 +159,13 @@ namespace LoginForm
         /// </summary>
         public void ClearFunction()
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 VoucherNumberGeneration();
                 VoucherTypeComboFill();
                 FinancialYearDate();
-                txtVoucherDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                txtVoucherDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 cmbInvoiceNo.DataSource = null;
                 detailsclear();
                 cmbStatus.SelectedIndex = -1;
@@ -289,12 +290,13 @@ namespace LoginForm
         /// </summary>
         public void FinancialYearDate()
         {
+            IMEEntities IME = new IMEEntities();
             FinancialYear fy = Utils.getManagement().FinancialYear;
             try
             {
                 dtpVoucherDate.MinDate = (DateTime)fy.fromDate;
                 dtpVoucherDate.MaxDate = (DateTime)fy.toDate;
-                DateTime dtVoucherDate = DateTime.Now.Date;
+                DateTime dtVoucherDate = Convert.ToDateTime(IME.CurrentDate().First()).Date;
                 dtpVoucherDate.Value = dtVoucherDate;
                 txtVoucherDate.Text = dtVoucherDate.ToString("dd-MMM-yyyy");
                 dtpVoucherDate.Value = Convert.ToDateTime(txtVoucherDate.Text);
@@ -398,6 +400,7 @@ namespace LoginForm
         /// </summary>
         public void SaveFunction()
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 DateValidation Objdatevalidation = new DateValidation();
@@ -422,7 +425,7 @@ namespace LoginForm
                 if (txtVoucherDate.Text != string.Empty)
                     infoPdcclearance.date = Convert.ToDateTime(txtVoucherDate.Text);
                 else
-                    infoPdcclearance.date = DateTime.Now;
+                    infoPdcclearance.date = Convert.ToDateTime(IME.CurrentDate().First());
                 infoPdcclearance.ledgerId = decimal.Parse(strledgerId.ToString());
                 infoPdcclearance.againstId = decmasterId;
                 infoPdcclearance.userId = Utils.getCurrentUser().WorkerID;
@@ -495,6 +498,7 @@ namespace LoginForm
         /// </summary>
         public void LedgerPostingAdd()
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 string strstatus = cmbStatus.Text.ToString();
@@ -551,7 +555,7 @@ namespace LoginForm
                     infoLedgerPosting.voucherTypeId = decPDCclearanceVoucherTypeId;
                     infoLedgerPosting.voucherNo = strVoucherNo;
                     infoLedgerPosting.invoiceNo = txtvoucherNo.Text.Trim();
-                    infoLedgerPosting.date = DateTime.Now;
+                    infoLedgerPosting.date = Convert.ToDateTime(IME.CurrentDate().First());
                     infoLedgerPosting.ledgerId = 7;
                     infoLedgerPosting.yearId = m.CurrentFinancialYear;
                     infoLedgerPosting.debit = 0;
@@ -560,7 +564,7 @@ namespace LoginForm
                     infoLedgerPosting.chequeNo = txtcheckNo.Text.Trim();
                     SpLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                     infoLedgerPosting.voucherTypeId = decPDCclearanceVoucherTypeId;
-                    infoLedgerPosting.date = DateTime.Now;
+                    infoLedgerPosting.date = Convert.ToDateTime(IME.CurrentDate().First());
                     if (strstatus == "Cleared")
                     {
                         infoLedgerPosting.ledgerId = infoPDCReceivable.bankId;
@@ -1352,13 +1356,14 @@ namespace LoginForm
         /// <param name="e"></param>
         private void txtVoucherDate_Leave(object sender, EventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 DateValidation obj = new DateValidation();
                 bool isInvalid = obj.DateValidationFunction(txtVoucherDate);
                 if (!isInvalid)
                 {
-                    txtVoucherDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                    txtVoucherDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
                 }
                 string date = txtVoucherDate.Text;
                 dtpVoucherDate.Value = Convert.ToDateTime(date);

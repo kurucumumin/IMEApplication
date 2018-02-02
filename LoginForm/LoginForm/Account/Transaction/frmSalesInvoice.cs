@@ -142,9 +142,9 @@ namespace LoginForm
                 lblLedgerTotalAmount.Text = "0.00";
                 btnSave.Text = "Save";
                 btnDelete.Enabled = false;
-                dtpDate.MinDate = DateTime.Now.AddMonths(-8); ;
-                dtpDate.MaxDate = DateTime.Now.AddMonths(3);
-                dtpDate.Value = DateTime.Now; ;
+                dtpDate.MinDate = Convert.ToDateTime(IME.CurrentDate().First()).AddMonths(-8); ;
+                dtpDate.MaxDate = Convert.ToDateTime(IME.CurrentDate().First()).AddMonths(3);
+                dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First()); ;
                 txtDate.Text = dtpDate.Value.ToString("dd-MMM-yyyy");
                 dgvSalesInvoiceLedger.Rows.Clear();
                 isFromEditMode = false;
@@ -466,10 +466,10 @@ namespace LoginForm
         {
 
 
-            dtpDate.MinDate = DateTime.Now.AddMonths(-8);
-            dtpDate.MaxDate = DateTime.Now.AddMonths(3);
+            dtpDate.MinDate = Convert.ToDateTime(IME.CurrentDate().First()).AddMonths(-8);
+            dtpDate.MaxDate = Convert.ToDateTime(IME.CurrentDate().First()).AddMonths(3);
             dtpDate.CustomFormat = "dd-MMMM-yyyy";
-            dtpDate.Value = DateTime.Now;
+            dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
             lblSalesModeOrderNo.Visible = false;
             cmbSalesModeOrderNo.Visible = false;
             CashorPartyComboFill(cmbCashOrParty);
@@ -1059,7 +1059,7 @@ namespace LoginForm
             decimal decPricingLevelId = 0;
             try
             {
-                DateTime dtcurrentDate = DateTime.Now; ;
+                DateTime dtcurrentDate = Convert.ToDateTime(IME.CurrentDate().First()); ;
                 
                 decPricingLevelId = Convert.ToDecimal(cmbPricingLevel.SelectedValue.ToString());
 
@@ -2980,13 +2980,13 @@ namespace LoginForm
                 InfoSalesMaster.TransportationCompany = txtTransportCompany.Text.Trim();
                 InfoSalesMaster.POS = false;
                 InfoSalesMaster.CounterId = 0;
-                InfoSalesMaster.ExtraDate = DateTime.Now;
+                InfoSalesMaster.ExtraDate = Convert.ToDateTime(IME.CurrentDate().First());
                 InfoSalesMaster.Extra1 = string.Empty;
                 InfoSalesMaster.Extra2 = string.Empty;
                 decimal decSalesMasterId = spSalesMaster.SalesMasterAdd(InfoSalesMaster);
                 int inRowCount = dgvSalesInvoice.RowCount;
                 InfoSalesDetails.SalesMasterId = decSalesMasterId;
-                InfoSalesDetails.ExtraDate = DateTime.Now;
+                InfoSalesDetails.ExtraDate = Convert.ToDateTime(IME.CurrentDate().First());
                 InfoSalesDetails.Extra1 = string.Empty;
                 InfoSalesDetails.Extra2 = string.Empty;
                 string strAgainstInvoiceN0 = txtInvoiceNo.Text.Trim();
@@ -3080,7 +3080,7 @@ namespace LoginForm
                             }
                             infoStockPosting.Rate = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceRate"].Value.ToString());
                             infoStockPosting.FinancialYearId = (decimal)Utils.getManagement().CurrentFinancialYear;
-                            infoStockPosting.ExtraDate = DateTime.Now;
+                            infoStockPosting.ExtraDate = Convert.ToDateTime(IME.CurrentDate().First());
                             infoStockPosting.Extra1 = string.Empty;
                             infoStockPosting.Extra2 = string.Empty;
                             if (dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceDeliveryNoteDetailsId"].Value != null)
@@ -3118,7 +3118,7 @@ namespace LoginForm
                 {
                     int inTaxRowCount = dgvSalesInvoiceTax.RowCount;
                     infoSalesBillTax.SalesMasterId = decSalesMasterId;
-                    infoSalesBillTax.ExtraDate = DateTime.Now;
+                    infoSalesBillTax.ExtraDate = Convert.ToDateTime(IME.CurrentDate().First());
                     infoSalesBillTax.Extra1 = string.Empty;
                     infoSalesBillTax.Extra2 = string.Empty;
                     for (int inI = 0; inI < inTaxRowCount; inI++)
@@ -3141,7 +3141,7 @@ namespace LoginForm
                 int inAddRowCount = dgvSalesInvoiceLedger.RowCount;
                 infoAdditionalCost.VoucherTypeId = DecSalesInvoiceVoucherTypeId;
                 infoAdditionalCost.VoucherNo = strVoucherNo;
-                infoAdditionalCost.ExtraDate = DateTime.Now;
+                infoAdditionalCost.ExtraDate = Convert.ToDateTime(IME.CurrentDate().First());
                 infoAdditionalCost.Extra1 = string.Empty;
                 infoAdditionalCost.Extra2 = string.Empty;
                 for (int inI = 0; inI < inAddRowCount; inI++)
@@ -3177,7 +3177,7 @@ namespace LoginForm
                         infoAdditionalCost.LedgerId = decCAshOrBankId;
                         infoAdditionalCost.VoucherTypeId = DecSalesInvoiceVoucherTypeId;
                         infoAdditionalCost.VoucherNo = strVoucherNo;
-                        infoAdditionalCost.ExtraDate = DateTime.Now;
+                        infoAdditionalCost.ExtraDate = Convert.ToDateTime(IME.CurrentDate().First());
                         infoAdditionalCost.Extra1 = string.Empty;
                         infoAdditionalCost.Extra2 = string.Empty;
                         spAdditionalCost.AdditionalCostAdd(infoAdditionalCost);
@@ -3197,7 +3197,7 @@ namespace LoginForm
                             infoAdditionalCost.LedgerId = decCAshOrBankId;
                             infoAdditionalCost.VoucherTypeId = DecSalesInvoiceVoucherTypeId;
                             infoAdditionalCost.VoucherNo = strVoucherNo;
-                            infoAdditionalCost.ExtraDate = DateTime.Now;
+                            infoAdditionalCost.ExtraDate = Convert.ToDateTime(IME.CurrentDate().First());
                             infoAdditionalCost.Extra1 = string.Empty;
                             infoAdditionalCost.Extra2 = string.Empty;
                             spAdditionalCost.AdditionalCostAdd(infoAdditionalCost);
@@ -3258,7 +3258,7 @@ namespace LoginForm
                 infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
                 infoLedgerPosting.detailsId = 0;
                 infoLedgerPosting.chequeNo = string.Empty;
-                infoLedgerPosting.chequeDate = DateTime.Now;
+                infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                 spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                 decTotalAmount = TotalNetAmountForLedgerPosting();
                 decRate = (decimal)IME.ExchangeRates.Where(a => a.exchangeRateID == Convert.ToInt32(cmbCurrency.SelectedValue.ToString())).FirstOrDefault().rate;
@@ -3273,7 +3273,7 @@ namespace LoginForm
                 infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
                 infoLedgerPosting.detailsId = 0;
                 infoLedgerPosting.chequeNo = string.Empty;
-                infoLedgerPosting.chequeDate = DateTime.Now;
+                infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                 spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                 decimal decBillDis = 0;
                 decBillDis = Convert.ToDecimal(txtBillDiscount.Text.Trim().ToString());
@@ -3291,7 +3291,7 @@ namespace LoginForm
                     infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
                     infoLedgerPosting.detailsId = 0;
                     infoLedgerPosting.chequeNo = string.Empty;
-                    infoLedgerPosting.chequeDate = DateTime.Now;
+                    infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                 }
                 if (dgvSalesInvoice.Columns["dgvcmbSalesInvoiceTaxName"].Visible)
@@ -3316,7 +3316,7 @@ namespace LoginForm
                                 infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
                                 infoLedgerPosting.detailsId = 0;
                                 infoLedgerPosting.chequeNo = string.Empty;
-                                infoLedgerPosting.chequeDate = DateTime.Now;
+                                infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                                 spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                             }
                         }
@@ -3344,7 +3344,7 @@ namespace LoginForm
                                 infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
                                 infoLedgerPosting.detailsId = 0;
                                 infoLedgerPosting.chequeNo = string.Empty;
-                                infoLedgerPosting.chequeDate = DateTime.Now;
+                                infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                                 spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                             }
                         }
@@ -3367,7 +3367,7 @@ namespace LoginForm
                         infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
                         infoLedgerPosting.detailsId = 0;
                         infoLedgerPosting.chequeNo = string.Empty;
-                        infoLedgerPosting.chequeDate = DateTime.Now;
+                        infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                         spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                     }
                 }
@@ -3393,7 +3393,7 @@ namespace LoginForm
                                 infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
                                 infoLedgerPosting.detailsId = 0;
                                 infoLedgerPosting.chequeNo = string.Empty;
-                                infoLedgerPosting.chequeDate = DateTime.Now;
+                                infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                                 spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                             }
                         }
@@ -4108,7 +4108,7 @@ namespace LoginForm
                     if (dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceSalesDetailsId"].Value == null || dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceSalesDetailsId"].Value.ToString() == string.Empty || dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceSalesDetailsId"].Value.ToString() == "0")   // here check the  row added or editing current row
                     {
                         InfoSalesDetails.SalesMasterId = decSalesInvoiceIdToEdit;
-                        InfoSalesDetails.ExtraDate = DateTime.Now;
+                        InfoSalesDetails.ExtraDate = Convert.ToDateTime(IME.CurrentDate().First());
                         InfoSalesDetails.Extra1 = string.Empty;
                         InfoSalesDetails.Extra2 = string.Empty;
                         if (dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceProductName"].Value != null && dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceProductName"].Value.ToString() != string.Empty)
@@ -4247,7 +4247,7 @@ namespace LoginForm
                         InfoSalesDetails.GrossAmount = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceGrossValue"].Value.ToString());
                         InfoSalesDetails.NetAmount = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceNetAmount"].Value.ToString());
                         InfoSalesDetails.Amount = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceAmount"].Value.ToString());
-                        InfoSalesDetails.ExtraDate = DateTime.Now;
+                        InfoSalesDetails.ExtraDate = Convert.ToDateTime(IME.CurrentDate().First());
                         InfoSalesDetails.Extra1 = string.Empty;
                         InfoSalesDetails.Extra2 = string.Empty;
                         if (dgvSalesInvoice.Rows[inI].Cells["dgvtxtSISalesOrderDetailsId"].Value != null)
@@ -4307,7 +4307,7 @@ namespace LoginForm
                     //    }
                     //    infoStockPosting.Rate = Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceRate"].Value.ToString());
                     //    infoStockPosting.FinancialYearId =(decimal)Utils.getManagement().CurrentFinancialYear;
-                    //    infoStockPosting.ExtraDate = DateTime.Now;
+                    //    infoStockPosting.ExtraDate = Convert.ToDateTime(IME.CurrentDate().First());
                     //    infoStockPosting.Extra1 = string.Empty;
                     //    infoStockPosting.Extra2 = string.Empty;
                     //    if (dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceDeliveryNoteDetailsId"].Value != null)
@@ -4344,7 +4344,7 @@ namespace LoginForm
                 {
                     infoAdditionalCost.VoucherNo = txtInvoiceNo.Text;
                 }
-                infoAdditionalCost.ExtraDate = DateTime.Now;
+                infoAdditionalCost.ExtraDate = Convert.ToDateTime(IME.CurrentDate().First());
                 infoAdditionalCost.Extra1 = string.Empty;
                 infoAdditionalCost.Extra2 = string.Empty;
                 for (int inIAdc = 0; inIAdc < inAddRowCount; inIAdc++)
@@ -4385,7 +4385,7 @@ namespace LoginForm
                     infoAdditionalCost.LedgerId = decCAshOrPartyId;
                     infoAdditionalCost.VoucherTypeId = DecSalesInvoiceVoucherTypeId;
                     infoAdditionalCost.VoucherNo = strVoucherNo;
-                    infoAdditionalCost.ExtraDate = DateTime.Now;
+                    infoAdditionalCost.ExtraDate = Convert.ToDateTime(IME.CurrentDate().First());
                     infoAdditionalCost.Extra1 = string.Empty;
                     infoAdditionalCost.Extra2 = string.Empty;
                     spAdditionalCost.AdditionalCostEditByVoucherTypeIdAndVoucherNo(infoAdditionalCost);
@@ -4400,7 +4400,7 @@ namespace LoginForm
                     infoAdditionalCost.LedgerId = decCAshOrBankId;
                     infoAdditionalCost.VoucherTypeId = DecSalesInvoiceVoucherTypeId;
                     infoAdditionalCost.VoucherNo = strVoucherNo;
-                    infoAdditionalCost.ExtraDate = DateTime.Now;
+                    infoAdditionalCost.ExtraDate = Convert.ToDateTime(IME.CurrentDate().First());
                     infoAdditionalCost.Extra1 = string.Empty;
                     infoAdditionalCost.Extra2 = string.Empty;
                     spAdditionalCost.AdditionalCostEditByVoucherTypeIdAndVoucherNo(infoAdditionalCost);
@@ -4452,7 +4452,7 @@ namespace LoginForm
                         infoPartyBalance.CreditPeriod = Convert.ToInt32(txtCreditPeriod.Text.ToString());
                         infoPartyBalance.ExchangeRateId = Convert.ToDecimal(cmbCurrency.SelectedValue);
                         infoPartyBalance.FinancialYearId = (decimal)Utils.getManagement().CurrentFinancialYear;
-                        infoPartyBalance.ExtraDate = DateTime.Now;
+                        infoPartyBalance.ExtraDate = Convert.ToDateTime(IME.CurrentDate().First());
                         infoPartyBalance.Extra1 = string.Empty;
                         infoPartyBalance.Extra2 = string.Empty;
                         spPartyBalance.PartyBalanceEditByVoucherNoVoucherTypeIdAndReferenceType(infoPartyBalance);
@@ -4491,7 +4491,7 @@ namespace LoginForm
                 infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
                 infoLedgerPosting.detailsId = 0;
                 infoLedgerPosting.chequeNo = string.Empty;
-                infoLedgerPosting.chequeDate = DateTime.Now;
+                infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                 spLedgerPosting.LedgerPostingEditByVoucherTypeAndVoucherNoAndLedgerId(infoLedgerPosting);
                 decTotalAmount = TotalNetAmountForLedgerPosting();
                 decRate = (decimal)IME.ExchangeRates.Where(a => a.exchangeRateID == Convert.ToInt32(cmbCurrency.SelectedValue.ToString())).FirstOrDefault().rate;
@@ -4506,7 +4506,7 @@ namespace LoginForm
                 infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
                 infoLedgerPosting.detailsId = 0;
                 infoLedgerPosting.chequeNo = string.Empty;
-                infoLedgerPosting.chequeDate = DateTime.Now;
+                infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                 spLedgerPosting.LedgerPostingEditByVoucherTypeAndVoucherNoAndLedgerId(infoLedgerPosting);
                 decimal decBillDis = 0;
                 decBillDis = Convert.ToDecimal(txtBillDiscount.Text.Trim().ToString());
@@ -4524,7 +4524,7 @@ namespace LoginForm
                     infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
                     infoLedgerPosting.detailsId = 0;
                     infoLedgerPosting.chequeNo = string.Empty;
-                    infoLedgerPosting.chequeDate = DateTime.Now;
+                    infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                     spLedgerPosting.LedgerPostingEditByVoucherTypeAndVoucherNoAndLedgerId(infoLedgerPosting);
                 }
                 if (dgvSalesInvoice.Columns["dgvcmbSalesInvoiceTaxName"].Visible)
@@ -4549,7 +4549,7 @@ namespace LoginForm
                                 infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
                                 infoLedgerPosting.detailsId = 0;
                                 infoLedgerPosting.chequeNo = string.Empty;
-                                infoLedgerPosting.chequeDate = DateTime.Now;
+                                infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                                 spLedgerPosting.LedgerPostingEditByVoucherTypeAndVoucherNoAndLedgerId(infoLedgerPosting);
                             }
                         }
@@ -4577,7 +4577,7 @@ namespace LoginForm
                                 infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
                                 infoLedgerPosting.detailsId = 0;
                                 infoLedgerPosting.chequeNo = string.Empty;
-                                infoLedgerPosting.chequeDate = DateTime.Now;
+                                infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                                 spLedgerPosting.LedgerPostingEditByVoucherTypeAndVoucherNoAndLedgerId(infoLedgerPosting);
                             }
                         }
@@ -4600,7 +4600,7 @@ namespace LoginForm
                         infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
                         infoLedgerPosting.detailsId = 0;
                         infoLedgerPosting.chequeNo = string.Empty;
-                        infoLedgerPosting.chequeDate = DateTime.Now;
+                        infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                         spLedgerPosting.LedgerPostingAdd(infoLedgerPosting);
                     }
                     else
@@ -4621,7 +4621,7 @@ namespace LoginForm
                         infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
                         infoLedgerPosting.detailsId = 0;
                         infoLedgerPosting.chequeNo = string.Empty;
-                        infoLedgerPosting.chequeDate = DateTime.Now;
+                        infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                         spLedgerPosting.LedgerPostingEditByVoucherTypeAndVoucherNoAndLedgerId(infoLedgerPosting);
                     }
                 }
@@ -4650,7 +4650,7 @@ namespace LoginForm
                                 infoLedgerPosting.yearId = Utils.getManagement().CurrentFinancialYear;
                                 infoLedgerPosting.detailsId = 0;
                                 infoLedgerPosting.chequeNo = string.Empty;
-                                infoLedgerPosting.chequeDate = DateTime.Now;
+                                infoLedgerPosting.chequeDate = Convert.ToDateTime(IME.CurrentDate().First());
                                 spLedgerPosting.LedgerPostingEditByVoucherTypeAndVoucherNoAndLedgerId(infoLedgerPosting);
                             }
                         }
@@ -5032,7 +5032,7 @@ namespace LoginForm
         {
             try
             {
-                txtDate.Text = DateTime.Now.ToString("dd-MMM-yyyy");
+                txtDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
 
                 string strdate = txtDate.Text;
                 dtpDate.Value = Convert.ToDateTime(strdate.ToString());
