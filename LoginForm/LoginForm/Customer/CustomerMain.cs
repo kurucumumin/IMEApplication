@@ -173,6 +173,7 @@ namespace LoginForm
             ContactAdress.DisplayMember = "AdressDetails";
             CustomerName.Text = c.c_name;
             Telephone.Text = c.telephone;
+            if(c.payment_termID!=null) TermsofPayments.SelectedValue = c.payment_termID;
             ContactFAX.Text = c.fax;
             WebAdress.Text = c.webadress;
             if (c.Worker2 != null) Represantative2.SelectedValue = c.Worker2.WorkerID;
