@@ -40,6 +40,7 @@ namespace LoginForm
         /// </summary>
         public void Clear()
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 dtpFromDate.Value = Utils.getManagement().FinancialYear.fromDate.Value;
@@ -231,6 +232,7 @@ namespace LoginForm
         /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 if (Convert.ToDateTime(txtToDate.Text) < Convert.ToDateTime(txtFromDate.Text))
@@ -369,6 +371,7 @@ namespace LoginForm
         /// <param name="e"></param>
         private void txtToDate_Leave(object sender, EventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 DateValidation objVal = new DateValidation();

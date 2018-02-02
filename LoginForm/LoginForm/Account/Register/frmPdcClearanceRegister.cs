@@ -33,6 +33,7 @@ namespace LoginForm.Account
         /// </summary>
         public void InitialDataSettings()
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 dtpFromDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
@@ -60,6 +61,7 @@ namespace LoginForm.Account
         /// </summary>
         public void SetDate()
         {
+            IMEEntities IME = new IMEEntities();
             txtToDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
             txtFromDate.Text = Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy");
             DateTime dt;
@@ -150,6 +152,7 @@ namespace LoginForm.Account
         /// </summary>
         public void FinancialYearDate()
         {
+            IMEEntities IME = new IMEEntities();
             FinancialYear f = LoginForm.Services.Utils.getManagement().FinancialYear;
             try
             {
@@ -293,6 +296,7 @@ namespace LoginForm.Account
         /// <param name="e"></param>
         private void txtFromDate_Leave(object sender, EventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 DateValidation obj = new DateValidation();
@@ -329,6 +333,7 @@ namespace LoginForm.Account
         /// <param name="e"></param>
         private void txtToDate_Leave(object sender, EventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 DateValidation obj = new DateValidation();
@@ -364,6 +369,7 @@ namespace LoginForm.Account
         /// <param name="e"></param>
         private void txtCheckDate_Leave(object sender, EventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 DateValidation obj = new DateValidation();

@@ -47,7 +47,8 @@ namespace LoginForm
         /// </summary>
         public void Clear()
         {
-                dtpFromDate.Value = Convert.ToDateTime(Utils.getManagement().FinancialYear.fromDate.Value.ToString("dd-MMM-yyyy"));
+            IMEEntities IME = new IMEEntities();
+            dtpFromDate.Value = Convert.ToDateTime(Utils.getManagement().FinancialYear.fromDate.Value.ToString("dd-MMM-yyyy"));
                 dtpFromDate.MinDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.fromDate);
                 dtpFromDate.MaxDate = Convert.ToDateTime(Utils.getManagement().FinancialYear.toDate);
                 dtpToDate.Value = Convert.ToDateTime(Convert.ToDateTime(IME.CurrentDate().First()).ToString("dd-MMM-yyyy"));
@@ -707,6 +708,7 @@ namespace LoginForm
         /// <param name="e"></param>
         private void txtToDate_Leave(object sender, EventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 DateValidation objVal = new DateValidation();

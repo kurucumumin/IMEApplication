@@ -340,6 +340,7 @@ namespace LoginForm
         /// <param name="decBatchId"></param>
         public void getProductRate(int index, string decProductId)
         {
+            IMEEntities IME = new IMEEntities();
             ProductInfo infoProduct = new ProductInfo();
             ProductSP spProdut = new ProductSP();
             decimal decPricingLevelId = 0;
@@ -827,6 +828,7 @@ namespace LoginForm
 
         public void clear()
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 if (isAutomatic || !isAutomatic)
@@ -1380,6 +1382,7 @@ namespace LoginForm
         /// </summary>
         public void ClearToCallFromSaesReturnRegister()
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 CashOrPartyUnderSundryDebitorComboFill(cmbCashOrParty);
@@ -3744,6 +3747,7 @@ namespace LoginForm
         /// <param name="e"></param>
         private void txtDate_Leave(object sender, EventArgs e)
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
                 DateValidation obj = new DateValidation();
@@ -3764,6 +3768,7 @@ namespace LoginForm
 
         private void frmSalesReturn_Load(object sender, EventArgs e)
         {
+          
             try
             {
                 if (isAutomatic)
