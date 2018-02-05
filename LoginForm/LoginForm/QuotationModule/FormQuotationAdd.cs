@@ -2191,7 +2191,8 @@ namespace LoginForm.QuotationModule
             IMEEntities IME = new IMEEntities();
             //List<Quotation> quotList = IME.Quotations.Where(q => q.QuotationNo == Convert.ToDateTime(IME.CurrentDate().First()).Year).toList();
             //int ID;
-            Quotation quo = IME.Quotations.Where(a => a.StartDate.Value.Year == Convert.ToDateTime(IME.CurrentDate().First()).Year).OrderByDescending(q => q.QuotationNo).FirstOrDefault();
+            int year = ((DateTime)(IME.CurrentDate().First())).Year;
+            Quotation quo = IME.Quotations.Where(a => a.StartDate.Value.Year == year).OrderByDescending(q => q.QuotationNo).FirstOrDefault();
             string q1;
             if (quo == null)
             {
@@ -2882,6 +2883,13 @@ namespace LoginForm.QuotationModule
                     cell.Value = product.StockCode;
                     dgQuotationAddedItems.CurrentCell = cell;
                     ItemDetailsFiller(product.StockCode);
+                    DataGridViewCell curCell = dgQuotationAddedItems.Rows[cell.RowIndex].Cells[dgQty.Index];
+                    dgQuotationAddedItems.CurrentCell = curCell;
+                    //dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].ReadOnly = false;
+                    //dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Style = dgQuotationAddedItems.DefaultCellStyle;
+                    curCell.Value = product.Quantity;
+                    dgQuotationAddedItems_CellEndEdit(null, null);
+                    SendKeys.Send("{TAB}");
                     index++;
                 }
             }
