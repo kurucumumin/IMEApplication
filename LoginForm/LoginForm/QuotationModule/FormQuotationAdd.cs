@@ -87,7 +87,7 @@ namespace LoginForm.QuotationModule
             this.Text = "Edit Quotation";
             modifyMod = true;
             InitializeComponent();
-            
+
             cbCurrency.DataSource = IME.Currencies.ToList();
             cbCurrency.DisplayMember = "currencyName";
             cbCurrency.ValueMember = "currencyID";
@@ -157,7 +157,7 @@ namespace LoginForm.QuotationModule
                 LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
                 lblVat.Text = Utils.getManagement().VAT.ToString();
                 #region ComboboxFiller.
-                
+
                 cbCurrency.DataSource = IME.Currencies.ToList();
                 cbCurrency.DisplayMember = "currencyName";
                 cbCurrency.ValueMember = "currencyID";
@@ -318,7 +318,7 @@ namespace LoginForm.QuotationModule
 
                         if (dgQuotationAddedItems.CurrentCell.Value != null)
                         {
-                            #region Itemcode Format 
+                            #region Itemcode Format
  if (dgQuotationAddedItems.CurrentCell.Value.ToString().Contains("-")) { dgQuotationAddedItems.CurrentCell.Value = dgQuotationAddedItems.CurrentCell.Value.ToString().Replace("-", string.Empty).ToString(); }
                             if (dgQuotationAddedItems.CurrentCell.Value != null && dgQuotationAddedItems.CurrentCell.Value.ToString().Length == 6 || (dgQuotationAddedItems.CurrentCell.Value.ToString().Contains("P") && dgQuotationAddedItems.CurrentCell.Value.ToString().Length == 7)) { dgQuotationAddedItems.CurrentCell.Value = 0.ToString() + dgQuotationAddedItems.CurrentCell.Value.ToString(); }
                             //0100-124 => 0100124
@@ -330,7 +330,7 @@ namespace LoginForm.QuotationModule
                                 {
                                     if (tabControl1.SelectedTab != tabItemDetails) { tabControl1.SelectedTab = tabItemDetails; }
                                     #region MyRegion
-                                    
+
                                     //var MPNList = IME.ArticleSearchWithAll(itemCode);
                                     //burası yeniden yazılacak
                                     //dynamic MPNList;
@@ -372,7 +372,7 @@ namespace LoginForm.QuotationModule
                                     this.Enabled = false;
                                     FormQuotationItemSearch itemsearch = new FormQuotationItemSearch(dgQuotationAddedItems.CurrentCell.Value.ToString());
                                     itemsearch.ShowDialog();
-                                    
+
                                         //Bu item daha önceden eklimi diye kontrol ediyor
                                         DataGridViewRow row = dgQuotationAddedItems.Rows
            .Cast<DataGridViewRow>()
@@ -467,7 +467,7 @@ namespace LoginForm.QuotationModule
                 #endregion
                 case 21://Total
                     {
-                        //TO DO depends on authority 
+                        //TO DO depends on authority
                         if (dgQuotationAddedItems.CurrentRow.Cells[dgHZ.Index].Style.BackColor == Color.White)
                         {
                             #region Total
@@ -893,7 +893,7 @@ namespace LoginForm.QuotationModule
             txtMargin5.Text = "";
             #endregion
         }
-        
+
 
         private void ItemDetailsFiller(string ArticleNoSearch)
         {
@@ -1248,7 +1248,7 @@ namespace LoginForm.QuotationModule
             try { ItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString()); } catch { }
         }
 
-        
+
 
         private void GetLandingCost(int Rowindex)
         {
@@ -1486,7 +1486,7 @@ namespace LoginForm.QuotationModule
         {
             DataSet.Quotation q = new DataSet.Quotation();
             string qNo = txtQuotationNo.Text;
-            
+
             if(IME.Quotations.Where(a => a.QuotationNo == qNo).FirstOrDefault() != null)
             {
                 NewQuotationID();
@@ -1732,7 +1732,7 @@ namespace LoginForm.QuotationModule
             //ItemDetailsFiller(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgProductCode"].Value.ToString());
             for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
             {
-                
+
                 GetLandingCost(i);
                 dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[i].Cells[0];
                 GetMargin();
@@ -2191,13 +2191,12 @@ namespace LoginForm.QuotationModule
             IMEEntities IME = new IMEEntities();
             //List<Quotation> quotList = IME.Quotations.Where(q => q.QuotationNo == Convert.ToDateTime(IME.CurrentDate().First()).Year).toList();
             //int ID;
-            //Quotation quo = IME.Quotations.Where(a => a.StartDate.Value.Year == Convert.ToDateTime(IME.CurrentDate().First()).Year).OrderByDescending(q => q.QuotationNo).FirstOrDefault();
-            DateTime year = (DateTime)IME.CurrentDate().First();
-            Quotation quo = IME.Quotations.Where(a => a.StartDate.Value.Year == year.Year).OrderByDescending(q => q.QuotationNo).FirstOrDefault();
+            int year = ((DateTime)(IME.CurrentDate().First())).Year;
+            Quotation quo = IME.Quotations.Where(a => a.StartDate.Value.Year == year).OrderByDescending(q => q.QuotationNo).FirstOrDefault();
             string q1;
             if (quo == null)
             {
-               
+
                 q1 = Convert.ToDateTime(IME.CurrentDate().First()).Year.ToString() + "/1";
             }
             else
@@ -2420,7 +2419,7 @@ namespace LoginForm.QuotationModule
             }
             frmQuotationExport form = new frmQuotationExport(QuotationItemList, txtQuotationNo.Text, dgQuotationAddedItems);
             form.ShowDialog();
-            
+
         }
 
         private void textBox10_Click(object sender, EventArgs e)
@@ -2570,7 +2569,7 @@ namespace LoginForm.QuotationModule
             {
                 if (dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value != null && dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString() != string.Empty)
                 {
-                    decimal margin=0; 
+                    decimal margin=0;
                         if(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value!=null) margin= Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString());
                     decimal price = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgTotal"].Value.ToString());
                     total = total + (margin * price);
@@ -2884,6 +2883,13 @@ namespace LoginForm.QuotationModule
                     cell.Value = product.StockCode;
                     dgQuotationAddedItems.CurrentCell = cell;
                     ItemDetailsFiller(product.StockCode);
+                    DataGridViewCell curCell = dgQuotationAddedItems.Rows[cell.RowIndex].Cells[dgQty.Index];
+                    dgQuotationAddedItems.CurrentCell = curCell;
+                    //dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].ReadOnly = false;
+                    //dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Style = dgQuotationAddedItems.DefaultCellStyle;
+                    curCell.Value = product.Quantity;
+                    dgQuotationAddedItems_CellEndEdit(null, null);
+                    SendKeys.Send("{TAB}");
                     index++;
                 }
             }
