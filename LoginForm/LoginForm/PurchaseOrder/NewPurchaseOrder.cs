@@ -25,7 +25,7 @@ namespace LoginForm.PurchaseOrder
             InitializeComponent();
         }
 
-        public NewPurchaseOrder(string item_code)
+        public NewPurchaseOrder(decimal item_code)
         {
             InitializeComponent();
             PurchaseOrdersDetailFill(item_code);
@@ -54,7 +54,8 @@ namespace LoginForm.PurchaseOrder
 
             if (rowList.Count != 0)
             {
-                PurchaseExportFiles form = new PurchaseExportFiles(rowList, purchasecode);
+                //PurchaseExportFiles form = new PurchaseExportFiles(rowList, purchasecode);
+                PurchaseExportFiles form = new PurchaseExportFiles(rowList, txtOrderNumber.Text);
                 form.ShowDialog();
                 this.Close();
             }
@@ -93,17 +94,17 @@ namespace LoginForm.PurchaseOrder
             ExcelPurchaseOrder.Export(dgPurchase, PurchaseNo);
         }
 
-        private void PurchaseOrdersDetailFill(string code)
+        private void PurchaseOrdersDetailFill(decimal code)
         {
             IME = new IMEEntities();
 
             #region Purchase Orders Detail Fill
-            var adapter = (from p in IME.SaleOrderDetails.Where(po => po.SaleOrderNo == code)
+            var adapter = (from p in IME.SaleOrderDetails.Where(po => po.SaleOrderID == code)
                            select new
                            {
                                p.SaleOrder.Customer.c_name,
-                               p.SaleOrder.QuotationNos,
-                               p.SaleOrderNo,
+                               p.QuotationDetail.QuotationNo,
+                               p.SaleOrderID,
                                p.ItemCode,
                                p.ItemDescription,
                                p.UPIME,
@@ -111,7 +112,7 @@ namespace LoginForm.PurchaseOrder
                                p.Hazardous,
                                p.Calibration,
                                p.SaleOrder.SaleOrderNature,
-                               p.ItemCost
+                               p.ItemCost,
                            }).ToList();
             readOnly();
             foreach (var item in adapter)
@@ -120,8 +121,9 @@ namespace LoginForm.PurchaseOrder
                 DataGridViewRow row = dgPurchase.Rows[rowIndex];
 
                 row.Cells[c_name.Index].Value = item.c_name;
-                row.Cells[QuotationNos.Index].Value = item.QuotationNos;
-                row.Cells[SaleOrderNo.Index].Value = item.SaleOrderNo;
+                row.Cells[QuotationNos.Index].Value = item.QuotationNo;
+                //SaleOrderID için kontrol et
+                row.Cells[SaleOrderNo.Index].Value = item.SaleOrderID;
                 row.Cells[ItemCode.Index].Value = item.ItemCode;
                 row.Cells[ItemDescription.Index].Value = item.ItemDescription;
                 row.Cells[UnitOfMeasure.Index].Value = item.UPIME;
@@ -132,6 +134,7 @@ namespace LoginForm.PurchaseOrder
                 row.Cells[AddressType.Index].Value = "IME GENERAL COMPONENTS";
                 row.Cells[AdressTitle.Index].Value = "IME GENERAL COMPONENTS";
                 row.Cells[UPIME.Index].Value = item.ItemCost;
+                row.Cells[SaleID.Index].Value = item.SaleOrderID;
                 row.Cells[Total.Index].Value = Decimal.Parse(row.Cells[Quantity.Index].Value.ToString()) * Decimal.Parse(row.Cells[UPIME.Index].Value.ToString());
             }
             #endregion
@@ -147,7 +150,7 @@ namespace LoginForm.PurchaseOrder
                            {
                                p.PurchaseOrder.Customer.c_name,
                                p.QuotationNo,
-                               p.SaleOrderNo,
+                               p.SaleOrderID,
                                p.ItemCode,
                                p.ItemDescription,
                                p.UnitPrice,
@@ -166,7 +169,8 @@ namespace LoginForm.PurchaseOrder
 
                 row.Cells[c_name.Index].Value = item.c_name;
                 row.Cells[QuotationNos.Index].Value = item.QuotationNo;
-                row.Cells[SaleOrderNo.Index].Value = item.SaleOrderNo;
+                //SaleOrderID için kontrol et
+                //row.Cells[SaleOrderNo.Index].Value = item.SaleOrderID;
                 row.Cells[ItemCode.Index].Value = item.ItemCode;
                 row.Cells[ItemDescription.Index].Value = item.ItemDescription;
                 row.Cells[UnitOfMeasure.Index].Value = item.UnitPrice;
@@ -174,6 +178,7 @@ namespace LoginForm.PurchaseOrder
                 row.Cells[Hazardous.Index].Value = item.Hazardous;
                 row.Cells[Calibration.Index].Value = item.Calibration;
                 row.Cells[SaleOrderNature.Index].Value = item.SaleOrderNature;
+                row.Cells[SaleID.Index].Value = item.SaleOrderID;
                 if (item.AccountNumber == 8828170)
                 {
                     row.Cells[AddressType.Index].Value = "IME GENERAL COMPONENTS";
@@ -201,8 +206,8 @@ namespace LoginForm.PurchaseOrder
                 PurchaseOrderDetail pod = new PurchaseOrderDetail();
                 pod.ItemCode = sod.ItemCode;
                 pod.SaleOrderNature = sod.SaleOrder.SaleOrderNature;
-                pod.QuotationNo = sod.SaleOrder.QuotationNos;
-                pod.SaleOrderNo = sod.SaleOrderNo;
+                pod.QuotationNo = sod.QuotationDetail.QuotationNo;
+                pod.SaleOrderID = sod.SaleOrderID;
                 pod.ItemDescription = sod.ItemDescription;
                 pod.Unit = sod.UnitOfMeasure;
                 pod.Hazardous = sod.Hazardous ?? false;

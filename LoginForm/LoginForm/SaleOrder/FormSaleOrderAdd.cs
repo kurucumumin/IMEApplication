@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace LoginForm.nmSaleOrder
 {
-    public partial class FormSaleSale : Form
+    public partial class FormSaleOrderAdd : Form
     {
         #region Definitions
         Customer customer;
@@ -39,7 +39,7 @@ namespace LoginForm.nmSaleOrder
         //ExchangeRate exchangeRate;
         #endregion
 
-        public FormSaleSale(Customer cus)
+        public FormSaleOrderAdd(Customer cus)
         {
             InitializeComponent();
             customer = cus;
@@ -48,7 +48,7 @@ namespace LoginForm.nmSaleOrder
             fillCustomer();
         }
 
-        public FormSaleSale(string item_code)
+        public FormSaleOrderAdd(string item_code)
         {
             InitializeComponent();
             for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
@@ -79,7 +79,7 @@ namespace LoginForm.nmSaleOrder
             QuotataionModifyItemDetailsFiller(item_code, dgSaleAddedItems.RowCount - 1);
         }
 
-        public FormSaleSale(Customer cus, List<QuotationDetail> list, string QuotationNOs)
+        public FormSaleOrderAdd(Customer cus, List<QuotationDetail> list, string QuotationNOs)
         {
             customer = cus;
             items = list;
@@ -1464,11 +1464,9 @@ namespace LoginForm.nmSaleOrder
             //{
             if (!HasNullData())
             {
-                bool SaveOK = false;
-                SaveOK = ControlSave();
-                if (SaveOK)
+                if (ControlSave())
                 {
-                    string saleOrderNo = SaleSave();
+                    decimal saleOrderNo = SaleSave();
                     SaleOrderDetailsSave(saleOrderNo);
                 }
             }
@@ -1477,7 +1475,7 @@ namespace LoginForm.nmSaleOrder
 
         }
 
-        private string SaleSave()
+        private decimal SaleSave()
         {
             try
             {
@@ -1515,7 +1513,7 @@ namespace LoginForm.nmSaleOrder
                 IME.SaleOrders.Add(s);
                 IME.SaveChanges();
 
-                return s.SaleOrderNo;
+                return s.SaleOrderID;
             }
             catch (Exception ex)
             {
@@ -1550,7 +1548,7 @@ namespace LoginForm.nmSaleOrder
             //IME.SaveChanges();
         }
 
-        private void SaleOrderDetailsSave(string SaleNo)
+        private void SaleOrderDetailsSave(decimal SaleID)
         {
             IMEEntities IME = new IMEEntities();
             for (int i = 0; i < dgSaleAddedItems.RowCount; i++)
@@ -1559,8 +1557,9 @@ namespace LoginForm.nmSaleOrder
                 if (row.Cells["dgProductCode"].Value != null)
                 {
                     SaleOrderDetail sdi= new SaleOrderDetail();
-                    sdi.SaleOrderNo = SaleNo;
+                    sdi.SaleOrderID = SaleID;
                     if (row.Cells[dgNo.Index].Value != null) sdi.No = Int32.Parse(row.Cells[dgNo.Index].Value.ToString());
+                    if (row.Cells[QuoDetailNo.Index].Value != null) sdi.quotationDetailsId = Int32.Parse(row.Cells[QuoDetailNo.Index].Value.ToString());
                     if (row.Cells[dgProductCode.Index].Value != null) sdi.ItemCode = row.Cells[dgProductCode.Index].Value.ToString();
                     if (row.Cells[dgQty.Index].Value != null) sdi.Quantity = Int32.Parse(row.Cells[dgQty.Index].Value.ToString());
                     if (row.Cells[dgUCUPCurr.Index].Value != null) sdi.UCUPCurr = Decimal.Parse(row.Cells[dgUCUPCurr.Index].Value.ToString());
@@ -1610,7 +1609,7 @@ namespace LoginForm.nmSaleOrder
                 if (row.Cells["dgProductCode1"].Value != null)
                 {
                     SaleOrderDetail sdi = new SaleOrderDetail();
-                    sdi.SaleOrderNo = SaleNo;
+                    sdi.SaleOrderID = SaleID;
                     if (row.Cells[No1.Index].Value != null) sdi.No = Int32.Parse(row.Cells[No1.Index].Value.ToString());
                     if (row.Cells[dgProductCode1.Index].Value != null) sdi.ItemCode = row.Cells[dgProductCode1.Index].Value.ToString();
                     if (row.Cells[dgDescription1.Index].Value != null) sdi.ItemDescription = row.Cells[dgDescription1.Index].Value.ToString();
@@ -1694,6 +1693,7 @@ namespace LoginForm.nmSaleOrder
                     row.Cells[29].Value = item.UnitWeight;
                     row.Cells[30].Value = item.UnitWeight * item.Qty;
                     row.Cells[31].Value = item.CustomerStockCode;
+                    row.Cells[QuoDetailNo.Index].Value = item.ID;
                     dgSaleDeleted.Rows.Add(row);
                 }
                 else
@@ -1714,6 +1714,7 @@ namespace LoginForm.nmSaleOrder
                     row.Cells[29].Value = item.UnitWeight;
                     row.Cells[30].Value = item.UnitWeight * item.Qty;
                     row.Cells[31].Value = item.CustomerStockCode;
+                    row.Cells[QuoDetailNo.Index].Value = item.ID;
                     dgSaleAddedItems.Rows.Add(row);
                     dgSaleAddedItems.CurrentCell = dgSaleAddedItems.Rows[rowcount].Cells[0];
                     rowcount++;

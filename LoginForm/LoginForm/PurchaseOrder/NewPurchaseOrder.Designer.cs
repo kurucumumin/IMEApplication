@@ -32,10 +32,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtOrderNumber = new System.Windows.Forms.TextBox();
             this.dgPurchase = new System.Windows.Forms.DataGridView();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnExcel = new System.Windows.Forms.Button();
-            this.btnCreate = new System.Windows.Forms.Button();
-            this.customerAddressBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.SLC = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.c_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QuotationNos = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +47,11 @@
             this.AdressTitle = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.UPIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaleID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnExcel = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
+            this.customerAddressBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgPurchase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerAddressBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -58,17 +59,19 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 13);
+            this.label1.Location = new System.Drawing.Point(12, 16);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(123, 13);
+            this.label1.Size = new System.Drawing.Size(166, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Order Number Beginning";
             // 
             // txtOrderNumber
             // 
-            this.txtOrderNumber.Location = new System.Drawing.Point(12, 40);
+            this.txtOrderNumber.Location = new System.Drawing.Point(16, 49);
+            this.txtOrderNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtOrderNumber.Name = "txtOrderNumber";
-            this.txtOrderNumber.Size = new System.Drawing.Size(120, 20);
+            this.txtOrderNumber.Size = new System.Drawing.Size(159, 22);
             this.txtOrderNumber.TabIndex = 2;
             // 
             // dgPurchase
@@ -91,53 +94,21 @@
             this.AddressType,
             this.AdressTitle,
             this.UPIME,
-            this.Total});
-            this.dgPurchase.Location = new System.Drawing.Point(12, 66);
+            this.Total,
+            this.SaleID});
+            this.dgPurchase.Location = new System.Drawing.Point(16, 81);
+            this.dgPurchase.Margin = new System.Windows.Forms.Padding(4);
             this.dgPurchase.Name = "dgPurchase";
-            this.dgPurchase.Size = new System.Drawing.Size(1320, 556);
+            this.dgPurchase.Size = new System.Drawing.Size(1760, 684);
             this.dgPurchase.TabIndex = 10;
             this.dgPurchase.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgPurchase_DataError);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(1257, 628);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 42);
-            this.btnClose.TabIndex = 13;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnExcel
-            // 
-            this.btnExcel.Location = new System.Drawing.Point(913, 628);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(166, 42);
-            this.btnExcel.TabIndex = 12;
-            this.btnExcel.Text = "Export to Excel";
-            this.btnExcel.UseVisualStyleBackColor = true;
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
-            // 
-            // btnCreate
-            // 
-            this.btnCreate.Location = new System.Drawing.Point(1085, 628);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(166, 42);
-            this.btnCreate.TabIndex = 11;
-            this.btnCreate.Text = "Create an Order That is Chosen";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
-            // 
-            // customerAddressBindingSource
-            // 
-            this.customerAddressBindingSource.DataSource = typeof(LoginForm.DataSet.CustomerAddress);
             // 
             // SLC
             // 
             this.SLC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.SLC.HeaderText = "SLC";
             this.SLC.Name = "SLC";
-            this.SLC.Width = 33;
+            this.SLC.Width = 40;
             // 
             // c_name
             // 
@@ -220,17 +191,62 @@
             this.Total.HeaderText = "Total";
             this.Total.Name = "Total";
             // 
+            // SaleID
+            // 
+            this.SaleID.HeaderText = "SaleID";
+            this.SaleID.Name = "SaleID";
+            this.SaleID.ReadOnly = true;
+            this.SaleID.Visible = false;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(1676, 773);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(100, 52);
+            this.btnClose.TabIndex = 13;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnExcel
+            // 
+            this.btnExcel.Location = new System.Drawing.Point(1217, 773);
+            this.btnExcel.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(221, 52);
+            this.btnExcel.TabIndex = 12;
+            this.btnExcel.Text = "Export to Excel";
+            this.btnExcel.UseVisualStyleBackColor = true;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
+            // btnCreate
+            // 
+            this.btnCreate.Location = new System.Drawing.Point(1447, 773);
+            this.btnCreate.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(221, 52);
+            this.btnCreate.TabIndex = 11;
+            this.btnCreate.Text = "Create an Order That is Chosen";
+            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            // 
+            // customerAddressBindingSource
+            // 
+            this.customerAddressBindingSource.DataSource = typeof(LoginForm.DataSet.CustomerAddress);
+            // 
             // NewPurchaseOrder
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1344, 682);
+            this.ClientSize = new System.Drawing.Size(1792, 839);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnExcel);
             this.Controls.Add(this.btnCreate);
             this.Controls.Add(this.dgPurchase);
             this.Controls.Add(this.txtOrderNumber);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "NewPurchaseOrder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NewPurchaseOrder";
@@ -273,5 +289,6 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn AdressTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn UPIME;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SaleID;
     }
 }

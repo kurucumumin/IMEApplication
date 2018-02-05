@@ -23,7 +23,7 @@ namespace LoginForm.CustomControls
             cbCurrency.DataSource = db.Currencies.ToList();
             cbCurrency.SelectedValue = m.DefaultCurrency;
 
-            txtDataSeperator.Text = m.DataSeperator;
+            txtDataSeperator.Text = m.DataSeperetor;
             txtBranchCode.Text = m.Company.BranchCode;
         }
 
@@ -36,7 +36,7 @@ namespace LoginForm.CustomControls
                 management.VAT = Convert.ToDecimal(txtVAT.Text);
                 management.DefaultCurrency = Convert.ToDecimal(cbCurrency.SelectedValue);
                 management.Factor = numericFactor.Value;
-                management.DataSeperator = txtDataSeperator.Text;
+                management.DataSeperetor = txtDataSeperator.Text;
                 IME.SaveChanges();
 
                 Company c = IME.Companies.Where(x => x.companyId == management.CurrentCompanyId).FirstOrDefault();

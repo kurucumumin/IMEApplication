@@ -60,11 +60,9 @@ namespace LoginForm.nsSaleOrder
                            DeliveryContact =cw1.cw_name,
                            Address = ca.AdressTitle,
                            DeliveryAddress =ca1.AdressTitle,
-
+                           SaleID = so.SaleOrderID
                        };
             populateGrid(list.ToList());
-
-
         }
 
         private void populateGrid<T>(List<T> queryable)
@@ -128,17 +126,17 @@ namespace LoginForm.nsSaleOrder
 
         private void PurchaseOrderMenu_Click(object sender, EventArgs e)
         {
-            string item_code = null;
+            decimal item_code = 0;
            // string purchasecode = "";
             IMEEntities IME = new IMEEntities();
 
             if (dgSales.CurrentRow.Cells["SoNO"].Value != null)
             {
-                item_code = dgSales.CurrentRow.Cells["SoNO"].Value.ToString();
+                item_code = Convert.ToDecimal(dgSales.CurrentRow.Cells["SaleID"].Value.ToString());
                 //purchasecode = IME.PurchaseOrders.OrderByDescending(q => q.FicheNo).FirstOrDefault().FicheNo;
                 //purchasecode += 1;
             }
-            if (item_code == null)
+            if (item_code == 0)
                 MessageBox.Show("Please Enter a Item Code", "Eror !");
             else
             {

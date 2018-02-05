@@ -108,7 +108,8 @@ namespace LoginForm.nsSaleOrder
                     }
                 }
                 this.Close();
-                FormSaleSale form1 = new FormSaleSale((Customer)lbCustomerList.SelectedItem, list, quotationIDs);
+                FormSaleOrderAdd form1 = new FormSaleOrderAdd((Customer)lbCustomerList.SelectedItem, list, quotationIDs);
+                //TODO form tekrar açılıp kapatımış. Doğru olan yöntemi bul
                 FormSalesOrderMain f = new FormSalesOrderMain();
                 f.Close();
                 form1.ShowDialog();
@@ -117,7 +118,8 @@ namespace LoginForm.nsSaleOrder
             else
             {
                 this.Close();
-                FormSaleSale form1 = new FormSaleSale((Customer)lbCustomerList.SelectedItem);
+                FormSaleOrderAdd form1 = new FormSaleOrderAdd((Customer)lbCustomerList.SelectedItem);
+                //TODO form tekrar açılıp kapatımış. Doğru olan yöntemi bul
                 FormSalesOrderMain f = new FormSalesOrderMain();
                 f.Close();
                 form1.ShowDialog();

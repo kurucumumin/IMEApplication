@@ -729,6 +729,9 @@
     <Compile Include="DataSet\FinancialYear.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\GetInvoiceNoCorrespondingtoLedgerInRegister_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -742,6 +745,12 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\GetPurchaseReturnInvoiceNoCorrespondingtoLedger_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Godown.cs">

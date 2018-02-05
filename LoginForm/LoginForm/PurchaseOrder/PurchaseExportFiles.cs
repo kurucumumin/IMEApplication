@@ -113,12 +113,12 @@ namespace LoginForm.PurchaseOrder
 
             #region SAVE
             DataSet.PurchaseOrder po = new DataSet.PurchaseOrder();
-            string s = rowList[0].Cells[3].Value.ToString();
+            decimal s = (decimal)rowList[0].Cells["SaleID"].Value;
 
             po.FicheNo = fiche.ToString();
-            po.CustomerID = IME.SaleOrders.Where(a => a.SaleOrderNo == s).FirstOrDefault().CustomerID;
+            po.CustomerID = IME.SaleOrders.Where(a => a.SaleOrderID == s).FirstOrDefault().CustomerID;
             po.PurchaseOrderDate = DateTime.Today.Date;
-            po.CameDate = IME.SaleOrders.Where(a => a.SaleOrderNo == s).FirstOrDefault().SaleDate;
+            po.CameDate = IME.SaleOrders.Where(a => a.SaleOrderID == s).FirstOrDefault().SaleDate;
 
             IME.PurchaseOrders.Add(po);
             IME.SaveChanges();
@@ -132,7 +132,7 @@ namespace LoginForm.PurchaseOrder
                 PurchaseOrderDetail pod = new PurchaseOrderDetail();
 
                 pod.QuotationNo = row.Cells[2].Value.ToString();
-                pod.SaleOrderNo = row.Cells[3].Value.ToString();
+                pod.SaleOrderID = Convert.ToDecimal(row.Cells[3].Value);
                 pod.ItemCode = row.Cells[4].Value.ToString();
                 pod.ItemDescription = row.Cells[5].Value.ToString();
                 //if (row.Cells[5].Value.ToString() == null || row.Cells[5].Value.ToString() =="") pod.ItemDescription = null;
@@ -172,7 +172,8 @@ namespace LoginForm.PurchaseOrder
             mail.Subject = "TeamERP"; mail.IsBodyHtml = true; mail.Body = "IME programı test mail";
             Attachment attachment;
             //attachment = new Attachment(@"C:\Users\pomak\Desktop\Order.txt");
-            attachment = new Attachment(@"C:\Users\pomak\Desktop\"+ filename+".txt");
+            //attachment = new Attachment(@"C:\Users\pomak\Desktop\"+ filename+".txt");
+            attachment = new Attachment(@"C:\RsFiles\" + filename + ".txt");
             mail.Attachments.Add(attachment);
             int i = 0;
             toList.Clear();
@@ -203,7 +204,8 @@ namespace LoginForm.PurchaseOrder
         {
             List<string> TXTList = new List<string>();
             string Line1;
-            string s = rowList[0].Cells[3].Value.ToString();
+            //TODO 's' hiçbiryerde kullanılmadığı için yorumlandı
+            //string s = rowList[0].Cells["SaleID"].Value.ToString();
             string orderN= rowList[0].Cells[10].Value.ToString();
             string billTo = rowList[0].Cells[11].Value.ToString();
             string COO ="   ";//TO DO COUNTRYCODE
@@ -237,7 +239,8 @@ namespace LoginForm.PurchaseOrder
             {
                 AccountNumber += " ";
             }
-            string saleOrderN = rowList.FirstOrDefault().Cells["SaleOrderNo"].Value.ToString();
+            //string saleOrderN = rowList.FirstOrDefault().Cells["SaleOrderNo"].Value.ToString();
+            decimal saleID = (decimal)rowList.FirstOrDefault().Cells["SaleID"].Value;
 
             string OrderNature = "";
             if (orderN == "XDOC")
@@ -256,7 +259,7 @@ namespace LoginForm.PurchaseOrder
                 CustomerDistOrderReference += " ";
             }
             string MethodofDespatch = "";
-            switch (IME.SaleOrders.Where(a => a.SaleOrderNo == saleOrderN).FirstOrDefault().ShippingType)
+            switch (IME.SaleOrders.Where(a => a.SaleOrderID == saleID).FirstOrDefault().ShippingType)
             {
                 case "Air Freight":
                     MethodofDespatch = "AFT";
@@ -378,8 +381,10 @@ namespace LoginForm.PurchaseOrder
             foreach (var item in rowList)
             {
                 string productNumber = item.Cells["ItemCode"].Value.ToString();
-                string saleOrderNumber = item.Cells["SaleOrderNo"].Value.ToString();
-                SaleOrderDetail po = IME.SaleOrderDetails.Where(b=>b.SaleOrderNo== saleOrderNumber).Where(a => a.ItemCode == productNumber).FirstOrDefault();
+                //string saleOrderNumber = item.Cells["SaleOrderNo"].Value.ToString();
+                //TODO Grid'e SaleOrderID eklenecek
+                decimal saleOrderID = Convert.ToDecimal(item.Cells["SaleID"].Value.ToString());
+                SaleOrderDetail po = IME.SaleOrderDetails.Where(b=>b.SaleOrderID== saleOrderID).Where(a => a.ItemCode == productNumber).FirstOrDefault();
                 //if (productNumber.Length == 6) productNumber = "0" + productNumber;
                 int productnumberlenght = productNumber.Length;
                 for (int i = 0; i < 18- productnumberlenght; i++)

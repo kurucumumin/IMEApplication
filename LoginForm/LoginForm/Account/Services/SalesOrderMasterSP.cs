@@ -27,7 +27,7 @@ namespace LoginForm.Account.Services
             {
                 var row = dt.NewRow();
                 row["invoiceNo"] = item.invoiceNo;
-                row["SaleOrderNo"] = item.SaleOrderNo;
+                row["SaleOrderNo"] = item.SaleOrderID;
 
                                 dt.Rows.Add(row);
             }

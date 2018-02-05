@@ -1026,7 +1026,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ExtendedRangeADD", articleNoParameter, brandParameter, mPNParameter, articleDescriptionParameter, extendedRangeLengthParameter, widthParameter, heightParameter, dimensionUoMParameter, weightUoMParameter, cCCNParameter, countryofOriginParameter, unitofMeasureParameter, packSizeParameter, salesUoMParameter, costPriceCurrencyParameter, col1PriceParameter, col2PriceParameter, col3PriceParameter, col4PriceParameter, col5PriceParameter, col1BreakParameter, col2BreakParameter, col3BreakParameter, col4BreakParameter, col5BreakParameter, discountedPrice1Parameter, discountedPrice2Parameter, discountedPrice3Parameter, discountedPrice4Parameter, discountedPrice5Parameter, manufacturerCodeParameter, extendedRangeWeightParameter);
         }
     
-        public virtual int GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI(Nullable<decimal> ledgerId, Nullable<decimal> salesMasterId, Nullable<decimal> voucherTypeId)
+        public virtual ObjectResult<GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result> GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI(Nullable<decimal> ledgerId, Nullable<decimal> salesMasterId, Nullable<decimal> voucherTypeId)
         {
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
@@ -1040,7 +1040,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI", ledgerIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result>("GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI", ledgerIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
         }
     
         public virtual ObjectResult<GetInvoiceNoCorrespondingtoLedger_Result> GetInvoiceNoCorrespondingtoLedger(Nullable<decimal> ledgerId, Nullable<decimal> voucherTypeId)
@@ -1104,7 +1104,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetPurchaseReturnInvoiceNoCorrespondingtoLedger_Result>("GetPurchaseReturnInvoiceNoCorrespondingtoLedger", ledgerIdParameter, purchaseReturnMasterIdParameter, voucherTypeIdParameter);
         }
     
-        public virtual int GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI(Nullable<decimal> ledgerId, Nullable<decimal> salesMasterId, Nullable<decimal> voucherTypeId)
+        public virtual ObjectResult<GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI_Result> GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI(Nullable<decimal> ledgerId, Nullable<decimal> salesMasterId, Nullable<decimal> voucherTypeId)
         {
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
@@ -1118,10 +1118,10 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI", ledgerIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI_Result>("GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI", ledgerIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
         }
     
-        public virtual int GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI(string ledgerId, string salesMasterId, Nullable<decimal> voucherTypeId)
+        public virtual ObjectResult<GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result> GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI(string ledgerId, string salesMasterId, Nullable<decimal> voucherTypeId)
         {
             var ledgerIdParameter = ledgerId != null ?
                 new ObjectParameter("ledgerId", ledgerId) :
@@ -1135,7 +1135,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI", ledgerIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result>("GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI", ledgerIdParameter, salesMasterIdParameter, voucherTypeIdParameter);
         }
     
         public virtual ObjectResult<Nullable<int>> GetTaxIdForTaxSelection(Nullable<decimal> voucherTypeId)

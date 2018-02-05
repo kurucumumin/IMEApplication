@@ -15531,7 +15531,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="ManufacturerCode" Mode="In" Type="String" />
             <Parameter Name="ExtendedRangeWeight" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI">
+          <FunctionImport Name="GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI" ReturnType="Collection(IMEModel.GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result)">
             <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
             <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
@@ -15554,12 +15554,12 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="purchaseReturnMasterId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI">
+          <FunctionImport Name="GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI" ReturnType="Collection(IMEModel.GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI_Result)">
             <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
             <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI">
+          <FunctionImport Name="GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI" ReturnType="Collection(IMEModel.GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result)">
             <Parameter Name="ledgerId" Mode="In" Type="String" />
             <Parameter Name="salesMasterId" Mode="In" Type="String" />
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
@@ -16606,6 +16606,10 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="narration" Nullable="true" />
           <Property Type="String" Name="userName" Nullable="false" MaxLength="25" />
         </ComplexType>
+        <ComplexType Name="GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result">
+          <Property Type="Decimal" Name="deliveryNoteMasterId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="invoiceNo" Nullable="true" />
+        </ComplexType>
         <ComplexType Name="GetInvoiceNoCorrespondingtoLedger_Result">
           <Property Type="Decimal" Name="purchaseMasterId" Nullable="false" Precision="18" Scale="0" />
           <Property Type="String" Name="invoiceNo" Nullable="true" />
@@ -16624,6 +16628,14 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
         </ComplexType>
         <ComplexType Name="GetPurchaseReturnInvoiceNoCorrespondingtoLedger_Result">
           <Property Type="Decimal" Name="purchaseMasterId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="invoiceNo" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI_Result">
+          <Property Type="Decimal" Name="SaleOrderID" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="invoiceNo" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result">
+          <Property Type="String" Name="QuotationNo" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="invoiceNo" Nullable="true" />
         </ComplexType>
         <ComplexType Name="GroupNameViewForComboFill_Result">
@@ -19796,7 +19808,14 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ExchangeRateViewByExchangeRateId" FunctionName="IMEModel.Store.ExchangeRateViewByExchangeRateId" />
           <FunctionImportMapping FunctionImportName="ExtendedRangeADD" FunctionName="IMEModel.Store.ExtendedRangeADD" />
-          <FunctionImportMapping FunctionImportName="GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI" FunctionName="IMEModel.Store.GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI" />
+          <FunctionImportMapping FunctionImportName="GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI" FunctionName="IMEModel.Store.GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result">
+                <ScalarProperty Name="deliveryNoteMasterId" ColumnName="deliveryNoteMasterId" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetInvoiceNoCorrespondingtoLedger" FunctionName="IMEModel.Store.GetInvoiceNoCorrespondingtoLedger">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.GetInvoiceNoCorrespondingtoLedger_Result">
@@ -19837,8 +19856,22 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI" FunctionName="IMEModel.Store.GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI" />
-          <FunctionImportMapping FunctionImportName="GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI" FunctionName="IMEModel.Store.GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI" />
+          <FunctionImportMapping FunctionImportName="GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI" FunctionName="IMEModel.Store.GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.GetSalesOrderNoIncludePendingCorrespondingtoLedgerforSI_Result">
+                <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI" FunctionName="IMEModel.Store.GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.GetSalesQuotationIncludePendingCorrespondingtoLedgerForSI_Result">
+                <ScalarProperty Name="QuotationNo" ColumnName="QuotationNo" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetTaxIdForTaxSelection" FunctionName="IMEModel.Store.GetTaxIdForTaxSelection" />
           <FunctionImportMapping FunctionImportName="GroupNameViewForComboFill" FunctionName="IMEModel.Store.GroupNameViewForComboFill">
             <ResultMapping>
