@@ -2191,7 +2191,9 @@ namespace LoginForm.QuotationModule
             IMEEntities IME = new IMEEntities();
             //List<Quotation> quotList = IME.Quotations.Where(q => q.QuotationNo == Convert.ToDateTime(IME.CurrentDate().First()).Year).toList();
             //int ID;
-            Quotation quo = IME.Quotations.Where(a => a.StartDate.Value.Year == Convert.ToDateTime(IME.CurrentDate().First()).Year).OrderByDescending(q => q.QuotationNo).FirstOrDefault();
+            //Quotation quo = IME.Quotations.Where(a => a.StartDate.Value.Year == Convert.ToDateTime(IME.CurrentDate().First()).Year).OrderByDescending(q => q.QuotationNo).FirstOrDefault();
+            DateTime year = (DateTime)IME.CurrentDate().First();
+            Quotation quo = IME.Quotations.Where(a => a.StartDate.Value.Year == year.Year).OrderByDescending(q => q.QuotationNo).FirstOrDefault();
             string q1;
             if (quo == null)
             {
