@@ -105,7 +105,6 @@ namespace LoginForm.DataSet
         public virtual DbSet<Rack> Racks { get; set; }
         public virtual DbSet<Rate> Rates { get; set; }
         public virtual DbSet<ReceiptDetail> ReceiptDetails { get; set; }
-        public virtual DbSet<ReceiptDetail1> ReceiptDetails1 { get; set; }
         public virtual DbSet<ReceiptMaster> ReceiptMasters { get; set; }
         public virtual DbSet<RejectionInDetail> RejectionInDetails { get; set; }
         public virtual DbSet<RejectionInMaster> RejectionInMasters { get; set; }

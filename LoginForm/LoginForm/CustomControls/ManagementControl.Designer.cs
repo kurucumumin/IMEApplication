@@ -36,6 +36,7 @@
             this.numericFactor = new System.Windows.Forms.NumericUpDown();
             this.lblFactor = new System.Windows.Forms.Label();
             this.cbCurrency = new System.Windows.Forms.ComboBox();
+            this.currencyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblDefaultCurrency = new System.Windows.Forms.Label();
             this.btnTermsOfPayment = new System.Windows.Forms.Button();
             this.txtVAT = new System.Windows.Forms.TextBox();
@@ -44,7 +45,10 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.txtLowMarginLimit = new System.Windows.Forms.TextBox();
             this.lblLowMarginLimit = new System.Windows.Forms.Label();
-            this.currencyBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.txtDataSeperator = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtBranchCode = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel31.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericFactor)).BeginInit();
@@ -72,6 +76,10 @@
             // panel31
             // 
             this.panel31.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel31.Controls.Add(this.txtBranchCode);
+            this.panel31.Controls.Add(this.label2);
+            this.panel31.Controls.Add(this.txtDataSeperator);
+            this.panel31.Controls.Add(this.label1);
             this.panel31.Controls.Add(this.btnCategorySubCategory);
             this.panel31.Controls.Add(this.button1);
             this.panel31.Controls.Add(this.numericFactor);
@@ -163,6 +171,10 @@
             this.cbCurrency.Size = new System.Drawing.Size(125, 26);
             this.cbCurrency.TabIndex = 10;
             this.cbCurrency.ValueMember = "currencyID";
+            // 
+            // currencyBindingSource
+            // 
+            this.currencyBindingSource.DataSource = typeof(LoginForm.DataSet.Currency);
             // 
             // lblDefaultCurrency
             // 
@@ -263,9 +275,44 @@
             this.lblLowMarginLimit.TabIndex = 0;
             this.lblLowMarginLimit.Text = "Low Margin Limit";
             // 
-            // currencyBindingSource
+            // txtDataSeperator
             // 
-            this.currencyBindingSource.DataSource = typeof(LoginForm.DataSet.Currency);
+            this.txtDataSeperator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDataSeperator.Location = new System.Drawing.Point(191, 207);
+            this.txtDataSeperator.Margin = new System.Windows.Forms.Padding(3, 3, 16, 3);
+            this.txtDataSeperator.Name = "txtDataSeperator";
+            this.txtDataSeperator.Size = new System.Drawing.Size(125, 24);
+            this.txtDataSeperator.TabIndex = 17;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(16, 200);
+            this.label1.Margin = new System.Windows.Forms.Padding(16, 0, 3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(143, 42);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Data Seperator For Purchase Order";
+            // 
+            // txtBranchCode
+            // 
+            this.txtBranchCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBranchCode.Location = new System.Drawing.Point(191, 255);
+            this.txtBranchCode.Margin = new System.Windows.Forms.Padding(3, 3, 16, 3);
+            this.txtBranchCode.Name = "txtBranchCode";
+            this.txtBranchCode.Size = new System.Drawing.Size(125, 24);
+            this.txtBranchCode.TabIndex = 19;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 258);
+            this.label2.Margin = new System.Windows.Forms.Padding(16, 0, 3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(95, 18);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Branch Code";
             // 
             // ManagementControl
             // 
@@ -301,5 +348,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnCategorySubCategory;
         private System.Windows.Forms.BindingSource currencyBindingSource;
+        private System.Windows.Forms.TextBox txtDataSeperator;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtBranchCode;
+        private System.Windows.Forms.Label label2;
     }
 }

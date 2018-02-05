@@ -21,7 +21,6 @@ namespace LoginForm.Account.Services
             dtbl.Columns["SL.NO"].AutoIncrementStep = 1;
             try
             {
-
                 var adaptor = (from c in IME.Companies.Where(x => x.companyId == decCompanyId)
                                from cur in IME.Currencies.Where(x => x.currencyID == c.currencyId)
                                select new

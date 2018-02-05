@@ -15,14 +15,16 @@ namespace LoginForm.CustomControls
 
         public void setManagementModule(Management m)
         {
+            IMEEntities db = new IMEEntities();
             txtLowMarginLimit.Text = Convert.ToString(m.LowMarginLimit);
             txtVAT.Text = Convert.ToString(m.VAT);
             numericFactor.Value = m.Factor;
 
-            cbCurrency.DataSource = new IMEEntities().Currencies.ToList();
-
+            cbCurrency.DataSource = db.Currencies.ToList();
             cbCurrency.SelectedValue = m.DefaultCurrency;
 
+            txtDataSeperator.Text = m.DataSeperetor;
+            txtBranchCode.Text = m.Company.BranchCode;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -34,13 +36,19 @@ namespace LoginForm.CustomControls
                 management.VAT = Convert.ToDecimal(txtVAT.Text);
                 management.DefaultCurrency = Convert.ToDecimal(cbCurrency.SelectedValue);
                 management.Factor = numericFactor.Value;
+                management.DataSeperetor = txtDataSeperator.Text;
+                IME.SaveChanges();
+
+                Company c = IME.Companies.Where(x => x.companyId == management.CurrentCompanyId).FirstOrDefault();
+                c.BranchCode = txtBranchCode.Text;
+
                 IME.SaveChanges();
 
                 MessageBox.Show("Changes Saved");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("An error occured while saving changes. Try again.");
+                MessageBox.Show("MC1: An error occured while saving changes. Try again.");
                 throw;
             }
         }

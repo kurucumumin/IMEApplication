@@ -14,6 +14,12 @@ namespace LoginForm.DataSet
     
     public partial class Company
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Company()
+        {
+            this.Managements = new HashSet<Management>();
+        }
+    
         public decimal companyId { get; set; }
         public string companyName { get; set; }
         public string mailingName { get; set; }
@@ -31,7 +37,10 @@ namespace LoginForm.DataSet
         public string tin { get; set; }
         public string cst { get; set; }
         public string pan { get; set; }
+        public string BranchCode { get; set; }
     
         public virtual Currency Currency { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Management> Managements { get; set; }
     }
 }

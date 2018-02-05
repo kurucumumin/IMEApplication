@@ -1026,9 +1026,6 @@
     <Compile Include="DataSet\ReceiptDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\ReceiptDetail1.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\ReceiptMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>

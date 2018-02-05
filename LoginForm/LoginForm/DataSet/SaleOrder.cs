@@ -55,6 +55,7 @@ namespace LoginForm.DataSet
         public string invoiceNo { get; set; }
         public Nullable<int> exchangeRateID { get; set; }
         public Nullable<decimal> pricingLevelId { get; set; }
+        public decimal SaleOrderID { get; set; }
     
         public virtual AccountLedger AccountLedger { get; set; }
         public virtual Customer Customer { get; set; }
@@ -69,8 +70,8 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
         public virtual Worker Worker { get; set; }
+        public virtual VoucherType VoucherType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleOrderDetail> SaleOrderDetails { get; set; }
-        public virtual VoucherType VoucherType { get; set; }
     }
 }

@@ -83,15 +83,15 @@ namespace LoginForm
         /// </summary>
         public void GotoPurchaseOrder()
         {
-            string item_code = null;
+            decimal item_code = 0;
 
             try
             {
                 if (dgvVoucherSearch.CurrentRow.Cells["Id"].Value != null)
                 {
-                    item_code = dgvVoucherSearch.CurrentRow.Cells["Id"].Value.ToString();
+                    item_code = Convert.ToDecimal(dgvVoucherSearch.CurrentRow.Cells["Id"].Value.ToString());
 
-                    if (item_code == null)
+                    if (item_code == 0)
                         MessageBox.Show("Please Enter a ID", "Eror !");
                     else
                     {
@@ -192,13 +192,13 @@ namespace LoginForm
                     else
                     {
                         this.Close();
-                        FormSaleSale f = new FormSaleSale(item_code);
+                        FormSaleOrderAdd f = new FormSaleOrderAdd(item_code);
                         f.ShowDialog();
                     }
                 }
                 else
                 {
-                    FormSaleSale f = new FormSaleSale(item_code);
+                    FormSaleOrderAdd f = new FormSaleOrderAdd(item_code);
                 }
             }
             catch (Exception ex)
