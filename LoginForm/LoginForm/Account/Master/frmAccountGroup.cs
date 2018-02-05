@@ -367,6 +367,9 @@ namespace LoginForm
                     {
                         Messages.InformationMessage("Select nature");
                         cmbNature.Focus();
+                    }else if (IME.AccountGroups.Where(a=>a.accountGroupName== txtAccountGroupName.Text.Trim())!=null)
+                    {
+                        MessageBox.Show("There is already exist a Group Name");
                     }
                     else
                     {

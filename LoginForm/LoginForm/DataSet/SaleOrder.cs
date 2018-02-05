@@ -55,6 +55,7 @@ namespace LoginForm.DataSet
         public string invoiceNo { get; set; }
         public Nullable<int> exchangeRateID { get; set; }
         public Nullable<decimal> pricingLevelId { get; set; }
+        public decimal SaleOrderID { get; set; }
     
         public virtual AccountLedger AccountLedger { get; set; }
         public virtual Customer Customer { get; set; }

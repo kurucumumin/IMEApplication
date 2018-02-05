@@ -20,7 +20,10 @@ namespace LoginForm.DataSet
         public Nullable<decimal> DefaultCurrency { get; set; }
         public decimal Factor { get; set; }
         public Nullable<decimal> CurrentFinancialYear { get; set; }
+        public Nullable<decimal> CurrentCompanyId { get; set; }
+        public string DataSeperetor { get; set; }
     
+        public virtual Company Company { get; set; }
         public virtual Currency Currency { get; set; }
         public virtual FinancialYear FinancialYear { get; set; }
     }

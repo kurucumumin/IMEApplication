@@ -199,6 +199,7 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="tin" Type="varchar(max)" />
           <Property Name="cst" Type="varchar(max)" />
           <Property Name="pan" Type="varchar(max)" />
+          <Property Name="BranchCode" Type="nvarchar" MaxLength="5" />
         </EntityType>
         <EntityType Name="ContactType">
           <Key>
@@ -636,6 +637,8 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="DefaultCurrency" Type="numeric" Precision="18" Scale="0" />
           <Property Name="Factor" Type="decimal" Precision="6" Scale="3" Nullable="false" />
           <Property Name="CurrentFinancialYear" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="CurrentCompanyId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="DataSeperetor" Type="nvarchar" MaxLength="1" Nullable="false" />
         </EntityType>
         <EntityType Name="Master">
           <Key>
@@ -1190,18 +1193,6 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="receiptMasterId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="ledgerId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="amount" Type="decimal" Precision="18" Scale="5" />
-          <Property Name="exchangeRateId" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="chequeNo" Type="varchar(max)" />
-          <Property Name="chequeDate" Type="datetime" />
-        </EntityType>
-        <EntityType Name="ReceiptDetails">
-          <Key>
-            <PropertyRef Name="receiptDetailsId" />
-          </Key>
-          <Property Name="receiptDetailsId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="receiptMasterId" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="ledgerId" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="amount" Type="decimal" Precision="18" Scale="5" />
           <Property Name="exchangeRateId" Type="int" />
           <Property Name="chequeNo" Type="varchar(max)" />
           <Property Name="chequeDate" Type="datetime" />
@@ -1397,6 +1388,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="invoiceNo" Type="nvarchar(max)" />
           <Property Name="exchangeRateID" Type="int" />
           <Property Name="pricingLevelId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="SaleOrderID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="SaleOrderDetail">
           <Key>
@@ -4039,30 +4031,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReceiptDe__excha__65E11278">
-          <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
-          <End Role="ReceiptDetails" Type="Self.ReceiptDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ExchangeRate">
-              <PropertyRef Name="exchangeRateID" />
-            </Principal>
-            <Dependent Role="ReceiptDetails">
-              <PropertyRef Name="exchangeRateId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ReceiptDe__ledge__67C95AEA">
-          <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
-          <End Role="ReceiptDetails" Type="Self.ReceiptDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AccountLedger">
-              <PropertyRef Name="ledgerId" />
-            </Principal>
-            <Dependent Role="ReceiptDetails">
-              <PropertyRef Name="ledgerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__ReceiptDe__ledge__6B99EBCE">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="ReceiptDetail" Type="Self.ReceiptDetail" Multiplicity="*" />
@@ -4072,18 +4040,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Principal>
             <Dependent Role="ReceiptDetail">
               <PropertyRef Name="ledgerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ReceiptDe__recei__66D536B1">
-          <End Role="ReceiptMaster" Type="Self.ReceiptMaster" Multiplicity="0..1" />
-          <End Role="ReceiptDetails" Type="Self.ReceiptDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ReceiptMaster">
-              <PropertyRef Name="receiptMasterId" />
-            </Principal>
-            <Dependent Role="ReceiptDetails">
-              <PropertyRef Name="receiptMasterId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -5527,6 +5483,30 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ManagementCompany">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="Management" Type="Self.Management" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="companyId" />
+            </Principal>
+            <Dependent Role="Management">
+              <PropertyRef Name="CurrentCompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceiptDetailExchangeRate">
+          <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
+          <End Role="ReceiptDetail" Type="Self.ReceiptDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExchangeRate">
+              <PropertyRef Name="exchangeRateID" />
+            </Principal>
+            <Dependent Role="ReceiptDetail">
+              <PropertyRef Name="exchangeRateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="AccountGroupAddWithIdentity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="accountGroupName" Type="varchar(max)" Mode="In" />
           <Parameter Name="groupUnder" Type="varchar(max)" Mode="In" />
@@ -6713,7 +6693,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <EntitySet Name="Rack" EntityType="Self.Rack" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rate" EntityType="Self.Rate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ReceiptDetail" EntityType="Self.ReceiptDetail" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ReceiptDetails" EntityType="Self.ReceiptDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ReceiptMaster" EntityType="Self.ReceiptMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RejectionInDetails" EntityType="Self.RejectionInDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RejectionInMaster" EntityType="Self.RejectionInMaster" Schema="dbo" store:Type="Tables" />
@@ -7473,21 +7452,9 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="Godown" EntitySet="Godown" />
             <End Role="Rack" EntitySet="Rack" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__excha__65E11278" Association="Self.FK__ReceiptDe__excha__65E11278">
-            <End Role="ExchangeRate" EntitySet="ExchangeRate" />
-            <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__ledge__67C95AEA" Association="Self.FK__ReceiptDe__ledge__67C95AEA">
-            <End Role="AccountLedger" EntitySet="AccountLedger" />
-            <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
-          </AssociationSet>
           <AssociationSet Name="FK__ReceiptDe__ledge__6B99EBCE" Association="Self.FK__ReceiptDe__ledge__6B99EBCE">
             <End Role="AccountLedger" EntitySet="AccountLedger" />
             <End Role="ReceiptDetail" EntitySet="ReceiptDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__recei__66D536B1" Association="Self.FK__ReceiptDe__recei__66D536B1">
-            <End Role="ReceiptMaster" EntitySet="ReceiptMaster" />
-            <End Role="ReceiptDetails" EntitySet="ReceiptDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__ReceiptDe__recei__6AA5C795" Association="Self.FK__ReceiptDe__recei__6AA5C795">
             <End Role="ReceiptMaster" EntitySet="ReceiptMaster" />
@@ -7969,6 +7936,14 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="Notes" EntitySet="Notes" />
             <End Role="Worker" EntitySet="Worker" />
           </AssociationSet>
+          <AssociationSet Name="FK_ManagementCompany" Association="Self.FK_ManagementCompany">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Management" EntitySet="Management" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceiptDetailExchangeRate" Association="Self.FK_ReceiptDetailExchangeRate">
+            <End Role="ExchangeRate" EntitySet="ExchangeRate" />
+            <End Role="ReceiptDetail" EntitySet="ReceiptDetail" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -8037,8 +8012,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <NavigationProperty Name="PurchaseMasters" Relationship="Self.FK__PurchaseM__ledge__118A8A8C" FromRole="AccountLedger" ToRole="PurchaseMaster" />
           <NavigationProperty Name="PurchaseOrders" Relationship="Self.FK__PurchaseO__ledge__32EB7E57" FromRole="AccountLedger" ToRole="PurchaseOrder" />
           <NavigationProperty Name="PurchaseReturnMasters" Relationship="Self.FK__PurchaseR__ledge__1BD30ED5" FromRole="AccountLedger" ToRole="PurchaseReturnMaster" />
-          <NavigationProperty Name="ReceiptDetails" Relationship="Self.FK__ReceiptDe__ledge__67C95AEA" FromRole="AccountLedger" ToRole="ReceiptDetails" />
-          <NavigationProperty Name="ReceiptDetails1" Relationship="Self.FK__ReceiptDe__ledge__6B99EBCE" FromRole="AccountLedger" ToRole="ReceiptDetail" />
+          <NavigationProperty Name="ReceiptDetails" Relationship="Self.FK__ReceiptDe__ledge__6B99EBCE" FromRole="AccountLedger" ToRole="ReceiptDetail" />
           <NavigationProperty Name="RejectionInMasters" Relationship="Self.FK__Rejection__ledge__407A839F" FromRole="AccountLedger" ToRole="RejectionInMaster" />
           <NavigationProperty Name="RejectionOutMasters" Relationship="Self.FK__Rejection__ledge__6A3BB341" FromRole="AccountLedger" ToRole="RejectionOutMaster" />
           <NavigationProperty Name="SalaryVoucherMasters" Relationship="Self.FK__SalaryVou__ledge__76177A41" FromRole="AccountLedger" ToRole="SalaryVoucherMaster" />
@@ -8198,7 +8172,9 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="tin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="cst" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="pan" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BranchCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Currency" Relationship="Self.FK__Company__currenc__0371755F" FromRole="Company" ToRole="Currency" />
+          <NavigationProperty Name="Managements" Relationship="Self.FK_ManagementCompany" FromRole="Company" ToRole="Management" />
         </EntityType>
         <EntityType Name="ContactType">
           <Key>
@@ -8565,11 +8541,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <NavigationProperty Name="PurchaseOrders" Relationship="Self.FK__PurchaseO__excha__61DB776A" FromRole="ExchangeRate" ToRole="PurchaseOrder" />
           <NavigationProperty Name="PurchaseReturnMasters" Relationship="Self.FK__PurchaseR__excha__1EAF7B80" FromRole="ExchangeRate" ToRole="PurchaseReturnMaster" />
           <NavigationProperty Name="Quotations" Relationship="Self.FK__Quotation__Excha__4321E620" FromRole="ExchangeRate" ToRole="Quotation" />
-          <NavigationProperty Name="ReceiptDetails" Relationship="Self.FK__ReceiptDe__excha__65E11278" FromRole="ExchangeRate" ToRole="ReceiptDetails" />
           <NavigationProperty Name="RejectionOutMasters" Relationship="Self.FK__Rejection__excha__69478F08" FromRole="ExchangeRate" ToRole="RejectionOutMaster" />
           <NavigationProperty Name="SaleOrders" Relationship="Self.FK__SaleOrder__excha__5C229E14" FromRole="ExchangeRate" ToRole="SaleOrder" />
           <NavigationProperty Name="SalesMasters" Relationship="Self.FK__SalesMast__excha__76D69450" FromRole="ExchangeRate" ToRole="SalesMaster" />
           <NavigationProperty Name="SalesReturnMasters" Relationship="Self.FK__SalesRetu__excha__6C5905DD" FromRole="ExchangeRate" ToRole="SalesReturnMaster" />
+          <NavigationProperty Name="ReceiptDetails" Relationship="Self.FK_ReceiptDetailExchangeRate" FromRole="ExchangeRate" ToRole="ReceiptDetail" />
         </EntityType>
         <EntityType Name="ExtendedRange">
           <Key>
@@ -8776,6 +8752,9 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="DefaultCurrency" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Factor" Type="Decimal" Precision="6" Scale="3" Nullable="false" />
           <Property Name="CurrentFinancialYear" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CurrentCompanyId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DataSeperetor" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_ManagementCompany" FromRole="Management" ToRole="Company" />
           <NavigationProperty Name="Currency" Relationship="Self.FK__Managemen__Defau__253C7D7E" FromRole="Management" ToRole="Currency" />
           <NavigationProperty Name="FinancialYear" Relationship="Self.FK__Managemen__Curre__338A9CD5" FromRole="Management" ToRole="FinancialYear" />
         </EntityType>
@@ -9477,27 +9456,13 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="receiptMasterId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="amount" Type="Decimal" Precision="18" Scale="5" />
-          <Property Name="exchangeRateId" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="chequeNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="chequeDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__ReceiptDe__ledge__6B99EBCE" FromRole="ReceiptDetail" ToRole="AccountLedger" />
-          <NavigationProperty Name="PurchaseDetails" Relationship="Self.FK__PurchaseD__recei__25918339" FromRole="ReceiptDetail" ToRole="PurchaseDetails" />
-          <NavigationProperty Name="ReceiptMaster" Relationship="Self.FK__ReceiptDe__recei__6AA5C795" FromRole="ReceiptDetail" ToRole="ReceiptMaster" />
-        </EntityType>
-        <EntityType Name="ReceiptDetail1">
-          <Key>
-            <PropertyRef Name="receiptDetailsId" />
-          </Key>
-          <Property Name="receiptDetailsId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="receiptMasterId" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="amount" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="exchangeRateId" Type="Int32" />
           <Property Name="chequeNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="chequeDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__ReceiptDe__ledge__67C95AEA" FromRole="ReceiptDetails" ToRole="AccountLedger" />
-          <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__ReceiptDe__excha__65E11278" FromRole="ReceiptDetails" ToRole="ExchangeRate" />
-          <NavigationProperty Name="ReceiptMaster" Relationship="Self.FK__ReceiptDe__recei__66D536B1" FromRole="ReceiptDetails" ToRole="ReceiptMaster" />
+          <NavigationProperty Name="AccountLedger" Relationship="Self.FK__ReceiptDe__ledge__6B99EBCE" FromRole="ReceiptDetail" ToRole="AccountLedger" />
+          <NavigationProperty Name="ExchangeRate" Relationship="Self.FK_ReceiptDetailExchangeRate" FromRole="ReceiptDetail" ToRole="ExchangeRate" />
+          <NavigationProperty Name="PurchaseDetails" Relationship="Self.FK__PurchaseD__recei__25918339" FromRole="ReceiptDetail" ToRole="PurchaseDetails" />
+          <NavigationProperty Name="ReceiptMaster" Relationship="Self.FK__ReceiptDe__recei__6AA5C795" FromRole="ReceiptDetail" ToRole="ReceiptMaster" />
         </EntityType>
         <EntityType Name="ReceiptMaster">
           <Key>
@@ -9516,7 +9481,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="PurchaseMasters" Relationship="Self.FK__PurchaseM__mater__1466F737" FromRole="ReceiptMaster" ToRole="PurchaseMaster" />
           <NavigationProperty Name="ReceiptDetails" Relationship="Self.FK__ReceiptDe__recei__6AA5C795" FromRole="ReceiptMaster" ToRole="ReceiptDetail" />
-          <NavigationProperty Name="ReceiptDetails1" Relationship="Self.FK__ReceiptDe__recei__66D536B1" FromRole="ReceiptMaster" ToRole="ReceiptDetails" />
         </EntityType>
         <EntityType Name="RejectionInDetail">
           <Key>
@@ -9712,6 +9676,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="invoiceNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="exchangeRateID" Type="Int32" />
           <Property Name="pricingLevelId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SaleOrderID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="AccountLedger" Relationship="Self.FK__SaleOrder__ledge__4A03EDD9" FromRole="SaleOrder" ToRole="AccountLedger" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__SaleOrder__Custo__1CDC41A7" FromRole="SaleOrder" ToRole="Customer" />
           <NavigationProperty Name="CustomerAddress" Relationship="Self.FK__SaleOrder__Deliv__21A0F6C4" FromRole="SaleOrder" ToRole="CustomerAddress" />
@@ -10731,18 +10696,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReceiptDe__ledge__67C95AEA">
-          <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
-          <End Role="ReceiptDetails" Type="Self.ReceiptDetail1" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AccountLedger">
-              <PropertyRef Name="ledgerId" />
-            </Principal>
-            <Dependent Role="ReceiptDetails">
-              <PropertyRef Name="ledgerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__ReceiptDe__ledge__6B99EBCE">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="ReceiptDetail" Type="Self.ReceiptDetail" Multiplicity="*" />
@@ -11040,6 +10993,18 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Principal>
             <Dependent Role="Company">
               <PropertyRef Name="currencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManagementCompany">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="Management" Type="Self.Management" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="companyId" />
+            </Principal>
+            <Dependent Role="Management">
+              <PropertyRef Name="CurrentCompanyId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -11859,18 +11824,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReceiptDe__excha__65E11278">
-          <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
-          <End Role="ReceiptDetails" Type="Self.ReceiptDetail1" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ExchangeRate">
-              <PropertyRef Name="exchangeRateID" />
-            </Principal>
-            <Dependent Role="ReceiptDetails">
-              <PropertyRef Name="exchangeRateId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Rejection__excha__69478F08">
           <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
           <End Role="RejectionOutMaster" Type="Self.RejectionOutMaster" Multiplicity="*" />
@@ -11915,6 +11868,18 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               <PropertyRef Name="exchangeRateID" />
             </Principal>
             <Dependent Role="SalesReturnMaster">
+              <PropertyRef Name="exchangeRateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReceiptDetailExchangeRate">
+          <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
+          <End Role="ReceiptDetail" Type="Self.ReceiptDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExchangeRate">
+              <PropertyRef Name="exchangeRateID" />
+            </Principal>
+            <Dependent Role="ReceiptDetail">
               <PropertyRef Name="exchangeRateId" />
             </Dependent>
           </ReferentialConstraint>
@@ -13287,18 +13252,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__ReceiptDe__recei__66D536B1">
-          <End Role="ReceiptMaster" Type="Self.ReceiptMaster" Multiplicity="0..1" />
-          <End Role="ReceiptDetails" Type="Self.ReceiptDetail1" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ReceiptMaster">
-              <PropertyRef Name="receiptMasterId" />
-            </Principal>
-            <Dependent Role="ReceiptDetails">
-              <PropertyRef Name="receiptMasterId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Rejection__rejec__444B1483">
           <End Role="RejectionInMaster" Type="Self.RejectionInMaster" Multiplicity="0..1" />
           <End Role="RejectionInDetails" Type="Self.RejectionInDetail" Multiplicity="*" />
@@ -14106,7 +14059,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <EntitySet Name="Racks" EntityType="Self.Rack" />
           <EntitySet Name="Rates" EntityType="Self.Rate" />
           <EntitySet Name="ReceiptDetails" EntityType="Self.ReceiptDetail" />
-          <EntitySet Name="ReceiptDetails1" EntityType="Self.ReceiptDetail1" />
           <EntitySet Name="ReceiptMasters" EntityType="Self.ReceiptMaster" />
           <EntitySet Name="RejectionInDetails" EntityType="Self.RejectionInDetail" />
           <EntitySet Name="RejectionInMasters" EntityType="Self.RejectionInMaster" />
@@ -14228,10 +14180,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="PurchaseReturnMaster" EntitySet="PurchaseReturnMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__ledge__67C95AEA" Association="Self.FK__ReceiptDe__ledge__67C95AEA">
-            <End Role="AccountLedger" EntitySet="AccountLedgers" />
-            <End Role="ReceiptDetails" EntitySet="ReceiptDetails1" />
-          </AssociationSet>
           <AssociationSet Name="FK__ReceiptDe__ledge__6B99EBCE" Association="Self.FK__ReceiptDe__ledge__6B99EBCE">
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
             <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
@@ -14331,6 +14279,10 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <AssociationSet Name="FK__Company__currenc__0371755F" Association="Self.FK__Company__currenc__0371755F">
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Company" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManagementCompany" Association="Self.FK_ManagementCompany">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Management" EntitySet="Managements" />
           </AssociationSet>
           <AssociationSet Name="FK__CustomerW__Conta__4CC05EF3" Association="Self.FK__CustomerW__Conta__4CC05EF3">
             <End Role="ContactType" EntitySet="ContactTypes" />
@@ -14604,10 +14556,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="ExchangeRate" EntitySet="ExchangeRates" />
             <End Role="Quotation" EntitySet="Quotations" />
           </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__excha__65E11278" Association="Self.FK__ReceiptDe__excha__65E11278">
-            <End Role="ExchangeRate" EntitySet="ExchangeRates" />
-            <End Role="ReceiptDetails" EntitySet="ReceiptDetails1" />
-          </AssociationSet>
           <AssociationSet Name="FK__Rejection__excha__69478F08" Association="Self.FK__Rejection__excha__69478F08">
             <End Role="ExchangeRate" EntitySet="ExchangeRates" />
             <End Role="RejectionOutMaster" EntitySet="RejectionOutMasters" />
@@ -14623,6 +14571,10 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <AssociationSet Name="FK__SalesRetu__excha__6C5905DD" Association="Self.FK__SalesRetu__excha__6C5905DD">
             <End Role="ExchangeRate" EntitySet="ExchangeRates" />
             <End Role="SalesReturnMaster" EntitySet="SalesReturnMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReceiptDetailExchangeRate" Association="Self.FK_ReceiptDetailExchangeRate">
+            <End Role="ExchangeRate" EntitySet="ExchangeRates" />
+            <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__JournalMa__finan__7B113988" Association="Self.FK__JournalMa__finan__7B113988">
             <End Role="FinancialYear" EntitySet="FinancialYears" />
@@ -15079,10 +15031,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <AssociationSet Name="FK__ReceiptDe__recei__6AA5C795" Association="Self.FK__ReceiptDe__recei__6AA5C795">
             <End Role="ReceiptMaster" EntitySet="ReceiptMasters" />
             <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ReceiptDe__recei__66D536B1" Association="Self.FK__ReceiptDe__recei__66D536B1">
-            <End Role="ReceiptMaster" EntitySet="ReceiptMasters" />
-            <End Role="ReceiptDetails" EntitySet="ReceiptDetails1" />
           </AssociationSet>
           <AssociationSet Name="FK__Rejection__rejec__444B1483" Association="Self.FK__Rejection__rejec__444B1483">
             <End Role="RejectionInMaster" EntitySet="RejectionInMasters" />
@@ -16263,11 +16211,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition">
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(IMEModel.sp_helpdiagramdefinition_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams">
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(IMEModel.sp_helpdiagrams_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -17348,6 +17296,17 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="ledgerName" Nullable="true" />
           <Property Type="Decimal" Name="grandTotal" Nullable="true" Precision="18" Scale="2" />
         </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
         <ComplexType Name="TaxSearch_Result">
           <Property Type="Int32" Name="taxId" Nullable="false" />
           <Property Type="String" Name="taxName" Nullable="true" MaxLength="100" />
@@ -17413,7 +17372,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="typeOfVoucher" Nullable="true" />
           <Property Type="String" Name="methodOfVoucherNumbering" Nullable="true" />
           <Property Type="Boolean" Name="isTaxApplicable" Nullable="true" />
-          <Property Type="String" Name="isActive" Nullable="true" />
+          <Property Type="String" Name="narration" Nullable="true" />
+          <Property Type="Boolean" Name="isActive" Nullable="true" />
           <Property Type="Int32" Name="masterId" Nullable="true" />
           <Property Type="String" Name="declaration" Nullable="true" />
           <Property Type="String" Name="heading1" Nullable="true" />
@@ -17615,6 +17575,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="tin" ColumnName="tin" />
                 <ScalarProperty Name="cst" ColumnName="cst" />
                 <ScalarProperty Name="pan" ColumnName="pan" />
+                <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -18085,6 +18046,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="DefaultCurrency" ColumnName="DefaultCurrency" />
                 <ScalarProperty Name="Factor" ColumnName="Factor" />
                 <ScalarProperty Name="CurrentFinancialYear" ColumnName="CurrentFinancialYear" />
+                <ScalarProperty Name="CurrentCompanyId" ColumnName="CurrentCompanyId" />
+                <ScalarProperty Name="DataSeperetor" ColumnName="DataSeperetor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -18677,19 +18640,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ReceiptDetails1">
-            <EntityTypeMapping TypeName="IMEModel.ReceiptDetail1">
-              <MappingFragment StoreEntitySet="ReceiptDetails">
-                <ScalarProperty Name="receiptDetailsId" ColumnName="receiptDetailsId" />
-                <ScalarProperty Name="receiptMasterId" ColumnName="receiptMasterId" />
-                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
-                <ScalarProperty Name="amount" ColumnName="amount" />
-                <ScalarProperty Name="exchangeRateId" ColumnName="exchangeRateId" />
-                <ScalarProperty Name="chequeNo" ColumnName="chequeNo" />
-                <ScalarProperty Name="chequeDate" ColumnName="chequeDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ReceiptMasters">
             <EntityTypeMapping TypeName="IMEModel.ReceiptMaster">
               <MappingFragment StoreEntitySet="ReceiptMaster">
@@ -18873,6 +18823,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
                 <ScalarProperty Name="exchangeRateID" ColumnName="exchangeRateID" />
                 <ScalarProperty Name="pricingLevelId" ColumnName="pricingLevelId" />
+                <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -20841,8 +20792,25 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="IMEModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="IMEModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="IMEModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="IMEModel.Store.sp_helpdiagramdefinition" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="IMEModel.Store.sp_helpdiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="IMEModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="IMEModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="IMEModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="IMEModel.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="StockCheckForProductSale" FunctionName="IMEModel.Store.StockCheckForProductSale" />
@@ -20957,6 +20925,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="typeOfVoucher" ColumnName="typeOfVoucher" />
                 <ScalarProperty Name="methodOfVoucherNumbering" ColumnName="methodOfVoucherNumbering" />
                 <ScalarProperty Name="isTaxApplicable" ColumnName="isTaxApplicable" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
                 <ScalarProperty Name="isActive" ColumnName="isActive" />
                 <ScalarProperty Name="masterId" ColumnName="masterId" />
                 <ScalarProperty Name="declaration" ColumnName="declaration" />
