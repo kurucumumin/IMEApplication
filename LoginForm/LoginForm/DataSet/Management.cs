@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Management
     {
         public int ID { get; set; }
@@ -24,7 +24,7 @@ namespace LoginForm.DataSet
         public string DataSeperetor { get; set; }
         public int SaleOrderNoStart { get; set; }
         public int PurchaseOrderNoStart { get; set; }
-    
+
         public virtual Company Company { get; set; }
         public virtual Currency Currency { get; set; }
         public virtual FinancialYear FinancialYear { get; set; }
