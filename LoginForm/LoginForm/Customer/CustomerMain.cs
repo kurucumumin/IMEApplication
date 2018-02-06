@@ -1632,5 +1632,10 @@ namespace LoginForm
             CustomerSubCategory form = new CustomerSubCategory();
             form.ShowDialog();
         }
+
+        private void AddressDel_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

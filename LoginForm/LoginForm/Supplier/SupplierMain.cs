@@ -3,6 +3,7 @@ using LoginForm.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -88,8 +89,8 @@ namespace LoginForm
 
         private void dgSupplier_Click(object sender, EventArgs e)
         {
-            gridselectedindex = dgSupplier.CurrentCell.RowIndex;
-            supplierClicksearch();
+            //gridselectedindex = dgSupplier.CurrentCell.RowIndex;
+            //supplierClicksearch();
         }
 
         private void listContact_SelectedIndexChanged(object sender, EventArgs e)
@@ -166,7 +167,7 @@ namespace LoginForm
         private void supplierClicksearch()
         {
             string supplierID = dgSupplier.CurrentRow.Cells["ID"].Value.ToString();
-            Supplier c = IME.Suppliers.Where(a => a.ID == supplierID).FirstOrDefault();
+           DataSet.Supplier c = IME.Suppliers.Where(a => a.ID == supplierID).FirstOrDefault();
            // dateTimePicker1.Value = c.CreateDate.Value;
             txtcode.Text = c.ID;
             AdressList.DataSource = IME.SupplierAdresses.Where(customera => customera.SupplierID == txtcode.Text).ToList();
@@ -183,7 +184,7 @@ namespace LoginForm
             if (c.accountrepresentaryID != null) cmbAcountRep.Text = IME.Workers.Where(a => a.WorkerID == c.accountrepresentaryID).FirstOrDefault().NameLastName;
             if (c.PaymentTerm != null) cmbAcountTerms.SelectedValue = c.PaymentTerm.ID;
             listContact.DataSource = IME.SupplierWorkers.Where(customerw => customerw.supplierID == txtcode.Text).ToList();
-            listContact.DisplayMember = "cw_name";
+            listContact.DisplayMember = "sw_name";
             cmbMainContact.DataSource = IME.SupplierWorkers.Where(customerw => customerw.supplierID == txtcode.Text).ToList();
             cmbMainContact.DisplayMember = "sw_name";
             if (c.Note != null) txtnotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
@@ -665,7 +666,7 @@ namespace LoginForm
             if (dgSupplier.RowCount != 0)
             {
                 string supplierID = dgSupplier.CurrentRow.Cells["ID"].Value.ToString();
-                Supplier c = IME.Suppliers.Where(a => a.ID == supplierID).FirstOrDefault();
+                DataSet.Supplier c = IME.Suppliers.Where(a => a.ID == supplierID).FirstOrDefault();
                 txtcode.Text = c.ID;
                 AdressList.DataSource = IME.SupplierAdresses.Where(customera => customera.SupplierID == txtcode.Text).ToList();
                 AdressList.DisplayMember = "AdressDetails";
@@ -677,7 +678,7 @@ namespace LoginForm
                 if (c.accountrepresentaryID != null) cmbAcountRep.Text = IME.Workers.Where(a => a.WorkerID == c.accountrepresentaryID).FirstOrDefault().NameLastName;
                 if (c.PaymentTerm != null) cmbAcountTerms.SelectedValue = c.PaymentTerm.ID;
                 listContact.DataSource = IME.SupplierWorkers.Where(customerw => customerw.supplierID == txtcode.Text).ToList();
-                listContact.DisplayMember = "cw_name";
+                listContact.DisplayMember = "sw_name";
                 cmbMainContact.DataSource = IME.SupplierWorkers.Where(customerw => customerw.supplierID == txtcode.Text).ToList();
                 cmbMainContact.DisplayMember = "sw_name";
                 if (c.Note != null) txtnotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
@@ -780,7 +781,7 @@ namespace LoginForm
                             IME.SupplierWorkers.Add(cw);
                             IME.SaveChanges();
                             contactTabEnableFalse();
-                            if (btnnew.Text == "Add")
+                            if (btnnew.Text == "CREATE")
                             {
                                 txtsearch.Enabled = true;
                                 dgSupplier.Enabled = true;
@@ -943,7 +944,7 @@ namespace LoginForm
                 //
                 listContact.DataSource = null;
                 txtcode.Text = suppliercode;
-                Supplier s = new Supplier();
+                DataSet.Supplier s = new DataSet.Supplier();
                 s.ID = txtcode.Text;
                 IME.Suppliers.Add(s);
                 IME.SaveChanges();
@@ -969,7 +970,7 @@ namespace LoginForm
                         btnnew.Text = "Add";
                         btnupdate.Text = "Modify";
 
-                        Supplier s = new Supplier();
+                        DataSet.Supplier s = new DataSet.Supplier();
                         s = IME.Suppliers.Where(a => a.ID == txtcode.Text).FirstOrDefault();
                         s.s_name = txtname.Text;
                         try { if (txtdiscount.Text != "") { s.discountrate = Int32.Parse(txtdiscount.Text); } } catch { };
@@ -1091,7 +1092,7 @@ namespace LoginForm
                     //üstteki işlem adresses için de yapılmalı
                     //
 
-                    Supplier s = new Supplier();
+                    DataSet.Supplier s = new DataSet.Supplier();
                     s = IME.Suppliers.Where(a => a.ID == txtcode.Text).FirstOrDefault();
                     IME.Suppliers.Remove(s);
                     IME.SaveChanges();
@@ -1131,6 +1132,7 @@ namespace LoginForm
             txtweb.Text = "";
             txtphone.Text = "";
             txtfax.Text = "";
+            txtpobox.Text = "";
             txtCompanyAddress.Text = "";
             AdressAdd.Visible = false;
             AdressCancel.Visible = true;
@@ -1203,6 +1205,7 @@ namespace LoginForm
                 IME.SupplierAdresses.Add(ca);
                 IME.SaveChanges();
             }
+
             AdressTabEnableFalse();
             if (btnnew.Text == "CREATE")
             {
@@ -1211,7 +1214,7 @@ namespace LoginForm
             }
             AdressList.DataSource = null;
             AdressList.DataSource = IME.SupplierAdresses.Where(suppliera => suppliera.SupplierID == txtcode.Text).ToList();
-            AdressList.DisplayMember = "sw_name";
+            AdressList.DisplayMember = "AdressDetails";
 
             AdressAdd.Visible = true;
             AddressDel.Visible = true;
@@ -1416,8 +1419,7 @@ namespace LoginForm
 
         private void txtdiscount_TextChanged(object sender, EventArgs e)
         {
-            decimal DiscountRateValue = Decimal.Parse(txtdiscount.Text);
-            
+            try { decimal DiscountRateValue = Decimal.Parse(txtdiscount.Text); } catch { }
         }
 
         private void cmbrepresentative_MouseClick(object sender, MouseEventArgs e)
@@ -1425,6 +1427,77 @@ namespace LoginForm
             cmbrepresentative.DataSource = IME.Workers.ToList();
             cmbrepresentative.DisplayMember = "NameLastName";
             cmbrepresentative.ValueMember = "ID";
+        }
+
+        private void dgSupplier_DoubleClick(object sender, EventArgs e)
+        {
+            DataSet.Supplier model = new DataSet.Supplier();
+
+            if (dgSupplier.CurrentRow.Index != -1)
+            {
+                model.ID = dgSupplier.CurrentRow.Cells["ID"].Value.ToString();
+                using (IMEEntities db = new IMEEntities())
+                {
+                    model = db.Suppliers.Where(x => x.ID == model.ID).FirstOrDefault();
+
+                    txtname.Text = model.s_name;
+                    txtcode.Text = model.ID;
+                    //cmbrepresentative.SelectedItem= model.representaryID;
+                    if (model.Worker1 != null) cmbrepresentative.SelectedValue = model.Worker1.WorkerID;
+                    txtTaxOffice.Text = model.taxoffice;
+                    txtTaxNumber.Text = Convert.ToString(model.taxnumber);
+                    //cmbAcountRep.SelectedItem =model.accountrepresentaryID;
+                    if (model.accountrepresentaryID != null) cmbAcountRep.Text = db.Workers.Where(a => a.WorkerID == model.accountrepresentaryID).FirstOrDefault().NameLastName;
+                    //cmbAcountTerms.SelectedItem=model.payment_termID ;
+                    if (model.PaymentTerm != null) cmbAcountTerms.SelectedValue = model.PaymentTerm.ID;
+                    //cmbAcountMethod.SelectedItem=model.paymentmethodID;
+                    if (model.PaymentMethod != null) cmbAcountMethod.SelectedValue = model.PaymentMethod.ID;
+                    txtdiscount.Text = Convert.ToString(model.discountrate);
+                    // cmbInvoiceCur.SelectedItem= model.CurrNameInv;
+                    if (model.CurrNameInv != null) cmbInvoiceCur.SelectedValue = model.CurrNameInv;
+                    // cmbCurrenyt.SelectedItem=model.CurrNameQuo;
+                    if (model.CurrNameQuo != null) cmbCurrenyt.SelectedValue = model.CurrNameQuo;
+
+                    Note n1 = new Note();
+                    try { n1 = db.Notes.Where(a => a.ID == model.Note.ID).FirstOrDefault(); } catch { }
+                    if (model.Note == null)
+                    {
+                        txtnotes.Text = n1.Note_name;
+                        n1 = model.Note;
+                    }
+                    else
+                    {
+                        txtnotes.Text = n1.Note_name;
+                    }
+                    if (model.SupplierNoteID == null)
+                    {
+                        Note n = new Note();
+                        txtAccountNotes.Text = n.Note_name;
+                        //n.ID=model.SupplierNoteID;
+                    }
+                    else
+                    {
+                        Note n = db.Notes.Where(a => a.ID == model.SupplierNoteID).FirstOrDefault();
+                        txtAccountNotes.Text = n.Note_name;
+                    }
+
+                    SupplierBank n2 = new SupplierBank();
+                    try { n2 = db.SupplierBanks.Where(a => a.ID == model.SupplierBank.ID).FirstOrDefault(); } catch { }
+                    if (model.SupplierBank == null)
+                    {
+                        cmbBankName.SelectedItem = n2.bankname;
+                        n2 = model.SupplierBank;
+                    }
+                    else
+                    {
+                        cmbBankName.SelectedItem = n2.bankname;
+                    }
+                    txtBankCode.Text = model.branchcode;
+                    txtBankCode.Text = model.accountnumber;
+                    txtBankIban.Text = model.iban;
+
+                }
+            }
         }
     }
 

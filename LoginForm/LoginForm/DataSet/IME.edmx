@@ -16215,11 +16215,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(IMEModel.sp_helpdiagramdefinition_Result)">
+          <FunctionImport Name="sp_helpdiagramdefinition">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(IMEModel.sp_helpdiagrams_Result)">
+          <FunctionImport Name="sp_helpdiagrams">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -16875,12 +16875,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
         </ComplexType>
         <ComplexType Name="productviewbyproductNameforSR_Result">
           <Property Type="String" Name="Article_No" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="barcode" Nullable="true" />
           <Property Type="String" Name="Article_Desc" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="qty" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="unitConversionId" Nullable="false" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="conversionRate" Nullable="true" Precision="18" Scale="5" />
-          <Property Type="Decimal" Name="batchId" Nullable="false" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="discountPercent" Nullable="true" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="discount" Nullable="true" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="netvalue" Nullable="true" Precision="18" Scale="0" />
@@ -17299,17 +17295,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="userName" Nullable="false" MaxLength="25" />
           <Property Type="String" Name="ledgerName" Nullable="true" />
           <Property Type="Decimal" Name="grandTotal" Nullable="true" Precision="18" Scale="2" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
         <ComplexType Name="TaxSearch_Result">
           <Property Type="Int32" Name="taxId" Nullable="false" />
@@ -20230,12 +20215,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.productviewbyproductNameforSR_Result">
                 <ScalarProperty Name="Article_No" ColumnName="Article_No" />
-                <ScalarProperty Name="barcode" ColumnName="barcode" />
                 <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
                 <ScalarProperty Name="qty" ColumnName="qty" />
-                <ScalarProperty Name="unitConversionId" ColumnName="unitConversionId" />
-                <ScalarProperty Name="conversionRate" ColumnName="conversionRate" />
-                <ScalarProperty Name="batchId" ColumnName="batchId" />
                 <ScalarProperty Name="discountPercent" ColumnName="discountPercent" />
                 <ScalarProperty Name="discount" ColumnName="discount" />
                 <ScalarProperty Name="netvalue" ColumnName="netvalue" />
@@ -20798,25 +20779,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="IMEModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="IMEModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="IMEModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="IMEModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IMEModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="IMEModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="IMEModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="IMEModel.Store.sp_helpdiagramdefinition" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="IMEModel.Store.sp_helpdiagrams" />
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="IMEModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="IMEModel.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="StockCheckForProductSale" FunctionName="IMEModel.Store.StockCheckForProductSale" />

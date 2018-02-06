@@ -1162,6 +1162,7 @@ namespace LoginForm
             this.dgSupplier.Size = new System.Drawing.Size(919, 184);
             this.dgSupplier.TabIndex = 1;
             this.dgSupplier.Click += new System.EventHandler(this.dgSupplier_Click);
+            this.dgSupplier.DoubleClick += new System.EventHandler(this.dgSupplier_DoubleClick);
             // 
             // btnupdate
             // 

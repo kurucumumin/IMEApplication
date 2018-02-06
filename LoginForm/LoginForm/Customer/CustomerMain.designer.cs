@@ -904,6 +904,7 @@
             this.AddressDel.TabIndex = 14;
             this.AddressDel.Text = "Dlt";
             this.AddressDel.UseVisualStyleBackColor = true;
+            this.AddressDel.Click += new System.EventHandler(this.AddressDel_Click_1);
             // 
             // AddressUpd
             // 
@@ -1168,7 +1169,7 @@
             // btnContactAdd
             // 
             this.btnContactAdd.Enabled = false;
-            this.btnContactAdd.Location = new System.Drawing.Point(547, 233);
+            this.btnContactAdd.Location = new System.Drawing.Point(548, 233);
             this.btnContactAdd.Name = "btnContactAdd";
             this.btnContactAdd.Size = new System.Drawing.Size(43, 25);
             this.btnContactAdd.TabIndex = 15;
