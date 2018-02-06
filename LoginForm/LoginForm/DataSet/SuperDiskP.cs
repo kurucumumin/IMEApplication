@@ -21,7 +21,7 @@ namespace LoginForm.DataSet
         public Nullable<int> Unit_Content { get; set; }
         public string Unit_Measure { get; set; }
         public Nullable<decimal> Uk_Col_1 { get; set; }
-        public Nullable<int> Standard_Weight { get; set; }
+        public Nullable<decimal> Standard_Weight { get; set; }
         public string Hazardous_Ind { get; set; }
         public string Calibration_Ind { get; set; }
         public string Obsolete_Flag { get; set; }

@@ -1651,7 +1651,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="Unit_Content" Type="int" />
           <Property Name="Unit_Measure" Type="nvarchar" MaxLength="50" />
           <Property Name="Uk_Col_1" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="Standard_Weight" Type="int" />
+          <Property Name="Standard_Weight" Type="decimal" Precision="18" Scale="5" />
           <Property Name="Hazardous_Ind" Type="nvarchar" MaxLength="50" />
           <Property Name="Calibration_Ind" Type="nvarchar" MaxLength="50" />
           <Property Name="Obsolete_Flag" Type="nvarchar" MaxLength="50" />
@@ -1697,7 +1697,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="Unit_Content" Type="int" />
           <Property Name="Unit_Measure" Type="nvarchar" MaxLength="50" />
           <Property Name="Uk_Col_1" Type="decimal" Precision="18" Scale="3" />
-          <Property Name="Standard_Weight" Type="int" />
+          <Property Name="Standard_Weight" Type="decimal" Precision="18" Scale="5" />
           <Property Name="Hazardous_Ind" Type="nvarchar" MaxLength="50" />
           <Property Name="Calibration_Ind" Type="nvarchar" MaxLength="50" />
           <Property Name="Obsolete_Flag" Type="nvarchar" MaxLength="50" />
@@ -6488,7 +6488,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Parameter Name="Unit_Content" Type="int" Mode="In" />
           <Parameter Name="Unit_Measure" Type="nvarchar" Mode="In" />
           <Parameter Name="Uk_Col_1" Type="decimal" Mode="In" />
-          <Parameter Name="Standard_Weight" Type="int" Mode="In" />
+          <Parameter Name="Standard_Weight" Type="decimal" Mode="In" />
           <Parameter Name="Hazardous_Ind" Type="nvarchar" Mode="In" />
           <Parameter Name="Calibration_Ind" Type="nvarchar" Mode="In" />
           <Parameter Name="Obsolete_Flag" Type="nvarchar" Mode="In" />
@@ -6531,7 +6531,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Parameter Name="Unit_Content" Type="int" Mode="In" />
           <Parameter Name="Unit_Measure" Type="nvarchar" Mode="In" />
           <Parameter Name="Uk_Col_1" Type="decimal" Mode="In" />
-          <Parameter Name="Standard_Weight" Type="int" Mode="In" />
+          <Parameter Name="Standard_Weight" Type="decimal" Mode="In" />
           <Parameter Name="Hazardous_Ind" Type="nvarchar" Mode="In" />
           <Parameter Name="Calibration_Ind" Type="nvarchar" Mode="In" />
           <Parameter Name="Obsolete_Flag" Type="nvarchar" Mode="In" />
@@ -6740,25 +6740,25 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <EntitySet Name="VoucherTypeTax" EntityType="Self.VoucherTypeTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdditionalCost" EntityType="Self.AdditionalCost" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [AdditionalCost].[additionalCostId] AS [additionalCostId],
-    [AdditionalCost].[voucherTypeId] AS [voucherTypeId],
-    [AdditionalCost].[voucherNo] AS [voucherNo],
-    [AdditionalCost].[ledgerId] AS [ledgerId],
-    [AdditionalCost].[debit] AS [debit],
+            <DefiningQuery>SELECT 
+    [AdditionalCost].[additionalCostId] AS [additionalCostId], 
+    [AdditionalCost].[voucherTypeId] AS [voucherTypeId], 
+    [AdditionalCost].[voucherNo] AS [voucherNo], 
+    [AdditionalCost].[ledgerId] AS [ledgerId], 
+    [AdditionalCost].[debit] AS [debit], 
     [AdditionalCost].[credit] AS [credit]
     FROM [dbo].[AdditionalCost] AS [AdditionalCost]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="SalaryVoucherDetail" EntityType="Self.SalaryVoucherDetail" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId],
-    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId],
-    [SalaryVoucherDetail].[employeeId] AS [employeeId],
-    [SalaryVoucherDetail].[bonus] AS [bonus],
-    [SalaryVoucherDetail].[deduction] AS [deduction],
-    [SalaryVoucherDetail].[advance] AS [advance],
-    [SalaryVoucherDetail].[lop] AS [lop],
-    [SalaryVoucherDetail].[salary] AS [salary],
+            <DefiningQuery>SELECT 
+    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId], 
+    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId], 
+    [SalaryVoucherDetail].[employeeId] AS [employeeId], 
+    [SalaryVoucherDetail].[bonus] AS [bonus], 
+    [SalaryVoucherDetail].[deduction] AS [deduction], 
+    [SalaryVoucherDetail].[advance] AS [advance], 
+    [SalaryVoucherDetail].[lop] AS [lop], 
+    [SalaryVoucherDetail].[salary] AS [salary], 
     [SalaryVoucherDetail].[status] AS [status]
     FROM [dbo].[SalaryVoucherDetail] AS [SalaryVoucherDetail]</DefiningQuery>
           </EntitySet>
@@ -10016,7 +10016,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="Unit_Content" Type="Int32" />
           <Property Name="Unit_Measure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Uk_Col_1" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Standard_Weight" Type="Int32" />
+          <Property Name="Standard_Weight" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="Hazardous_Ind" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Calibration_Ind" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Obsolete_Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -10062,7 +10062,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="Unit_Content" Type="Int32" />
           <Property Name="Unit_Measure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Uk_Col_1" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="Standard_Weight" Type="Int32" />
+          <Property Name="Standard_Weight" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="Hazardous_Ind" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Calibration_Ind" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Obsolete_Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -16215,11 +16215,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition">
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(IMEModel.sp_helpdiagramdefinition_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams">
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(IMEModel.sp_helpdiagrams_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -16257,7 +16257,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="Unit_Content" Mode="In" Type="Int32" />
             <Parameter Name="Unit_Measure" Mode="In" Type="String" />
             <Parameter Name="Uk_Col_1" Mode="In" Type="Decimal" />
-            <Parameter Name="Standard_Weight" Mode="In" Type="Int32" />
+            <Parameter Name="Standard_Weight" Mode="In" Type="Decimal" />
             <Parameter Name="Hazardous_Ind" Mode="In" Type="String" />
             <Parameter Name="Calibration_Ind" Mode="In" Type="String" />
             <Parameter Name="Obsolete_Flag" Mode="In" Type="String" />
@@ -16300,7 +16300,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="Unit_Content" Mode="In" Type="Int32" />
             <Parameter Name="Unit_Measure" Mode="In" Type="String" />
             <Parameter Name="Uk_Col_1" Mode="In" Type="Decimal" />
-            <Parameter Name="Standard_Weight" Mode="In" Type="Int32" />
+            <Parameter Name="Standard_Weight" Mode="In" Type="Decimal" />
             <Parameter Name="Hazardous_Ind" Mode="In" Type="String" />
             <Parameter Name="Calibration_Ind" Mode="In" Type="String" />
             <Parameter Name="Obsolete_Flag" Mode="In" Type="String" />
@@ -16511,7 +16511,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="Article_No" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Article_Desc" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Unit_Measure" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="Standard_Weight" Nullable="true" />
+          <Property Type="Decimal" Name="Standard_Weight" Nullable="true" Precision="18" Scale="5" />
           <Property Type="String" Name="CofO" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="CCCN_No" Nullable="true" />
           <Property Type="String" Name="MPN" Nullable="true" MaxLength="50" />
@@ -16524,7 +16524,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="Article_No" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Article_Desc" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Unit_Measure" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="Standard_Weight" Nullable="true" />
+          <Property Type="Decimal" Name="Standard_Weight" Nullable="true" Precision="18" Scale="5" />
           <Property Type="String" Name="CofO" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="CCCN_No" Nullable="true" />
           <Property Type="String" Name="MPN" Nullable="true" MaxLength="50" />
@@ -16537,7 +16537,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="Article_No" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Article_Desc" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Unit_Measure" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="Standard_Weight" Nullable="true" />
+          <Property Type="Decimal" Name="Standard_Weight" Nullable="true" Precision="18" Scale="5" />
           <Property Type="String" Name="CofO" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="CCCN_No" Nullable="true" />
           <Property Type="String" Name="MPN" Nullable="true" MaxLength="50" />
@@ -16817,7 +16817,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="Article_No" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Article_Desc" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Unit_Measure" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="Standard_Weight" Nullable="true" />
+          <Property Type="Decimal" Name="Standard_Weight" Nullable="true" Precision="18" Scale="5" />
           <Property Type="String" Name="CofO" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="CCCN_No" Nullable="true" />
           <Property Type="String" Name="MPN" Nullable="true" MaxLength="50" />
@@ -17299,6 +17299,17 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="userName" Nullable="false" MaxLength="25" />
           <Property Type="String" Name="ledgerName" Nullable="true" />
           <Property Type="Decimal" Name="grandTotal" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
         <ComplexType Name="TaxSearch_Result">
           <Property Type="Int32" Name="taxId" Nullable="false" />
@@ -20787,8 +20798,25 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="IMEModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="IMEModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="IMEModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="IMEModel.Store.sp_helpdiagramdefinition" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="IMEModel.Store.sp_helpdiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="IMEModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="IMEModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="IMEModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="IMEModel.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="StockCheckForProductSale" FunctionName="IMEModel.Store.StockCheckForProductSale" />
