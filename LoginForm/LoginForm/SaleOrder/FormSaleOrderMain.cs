@@ -41,25 +41,25 @@ namespace LoginForm.nsSaleOrder
             BringSalesList(DateTime.Today, DateTime.Today.AddDays(-7));
         }
 
-        private void BringSalesList(DateTime startDate, DateTime endDate)
+        private void BringSalesList(DateTime endDate, DateTime startDate)
         {
             IMEEntities IME = new IMEEntities();
-
+            endDate = endDate.AddDays(1);
             var list = from so in IME.SaleOrders
                        from cw in IME.CustomerWorkers.Where(x => x.ID == so.ContactID)
                        from ca in IME.CustomerAddresses.Where(x => x.ID == so.InvoiceAddressID)
                        from cw1 in IME.CustomerWorkers.Where(x => x.ID == so.DeliveryContactID).DefaultIfEmpty()
                        from ca1 in IME.CustomerAddresses.Where(x => x.ID == so.DeliveryAddressID).DefaultIfEmpty()
-                       where so.SaleDate >= endDate && so.SaleDate <= startDate
+                       where so.SaleDate <= endDate && so.SaleDate >= startDate
                        select new
                        {
                            Date = so.SaleDate,
                            SoNO = so.SaleOrderNo,
                            CustomerName = cw.Customer.c_name,
                            Contact = cw.cw_name,
-                           DeliveryContact =cw1.cw_name,
+                           DeliveryContact = cw1.cw_name,
                            Address = ca.AdressTitle,
-                           DeliveryAddress =ca1.AdressTitle,
+                           DeliveryAddress = ca1.AdressTitle,
                            SaleID = so.SaleOrderID
                        };
             populateGrid(list.ToList());
