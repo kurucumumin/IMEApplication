@@ -904,7 +904,6 @@
             this.AddressDel.TabIndex = 14;
             this.AddressDel.Text = "Dlt";
             this.AddressDel.UseVisualStyleBackColor = true;
-            this.AddressDel.Click += new System.EventHandler(this.AddressDel_Click_1);
             // 
             // AddressUpd
             // 

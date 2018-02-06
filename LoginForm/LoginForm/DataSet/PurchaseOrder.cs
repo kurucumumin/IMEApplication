@@ -26,7 +26,6 @@ namespace LoginForm.DataSet
         public Nullable<System.DateTime> PurchaseOrderDate { get; set; }
         public Nullable<System.DateTime> CameDate { get; set; }
         public string Reason { get; set; }
-        public string FicheNo { get; set; }
         public Nullable<int> exchangeRateID { get; set; }
         public Nullable<int> userId { get; set; }
         public string voucherNo { get; set; }
@@ -39,6 +38,8 @@ namespace LoginForm.DataSet
         public string narration { get; set; }
         public Nullable<decimal> totalAmount { get; set; }
         public Nullable<decimal> voucherTypeId { get; set; }
+        public int purchaseOrderId { get; set; }
+        public string FicheNo { get; set; }
     
         public virtual AccountLedger AccountLedger { get; set; }
         public virtual Customer Customer { get; set; }
