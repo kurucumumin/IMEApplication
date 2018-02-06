@@ -379,6 +379,12 @@ namespace LoginForm
                     cmbGroup.Focus();
                     tbctrlLedger.SelectedTab = tbMainDetails;
                 }
+                else if (txtOpeningBalance.Text !="0" && txtOpeningBalance.Text!="")
+                {
+                    Messages.InformationMessage("Enter Opening Balance");
+                    txtOpeningBalance.Focus();
+                    tbctrlLedger.SelectedTab = tbMainDetails;
+                }
                 else
                 {
                     if (btnSave.Text == "Save")
