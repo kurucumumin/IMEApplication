@@ -221,4 +221,16 @@ namespace LoginForm.Services
         public string YouPay { get; set; }
         public string Price { get; set; }
     }
+    public class XmlCustomer
+    {
+        public string ID { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Telephone { get; set; }
+        public string Email { get; set; }
+    }
+    public class XmlAddress
+    {
+
+    }
 }

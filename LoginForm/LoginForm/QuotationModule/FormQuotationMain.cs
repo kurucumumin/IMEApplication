@@ -144,7 +144,7 @@ namespace LoginForm.QuotationModule
         private void BringQuotationList()
         {
             IMEEntities IME = new IMEEntities();
-            BringQuotationList(dateNow.AddMonths(-1), dateNow);
+            BringQuotationList(dateNow.AddMonths(-1), dateNow.AddDays(1));
         }
 
         private void BringQuotationList(DateTime fromDate, DateTime toDate)
@@ -155,7 +155,7 @@ namespace LoginForm.QuotationModule
           //  MessageBox.Show(time.ToString());
             var list = from q in IME.Quotations
                        join c in IME.Customers on q.CustomerID equals c.ID
-                       where q.StartDate >= fromDate && q.StartDate <= toDate
+                       where q.StartDate >= fromDate && q.StartDate < toDate
                        select new
                        {
                            Date = q.StartDate,

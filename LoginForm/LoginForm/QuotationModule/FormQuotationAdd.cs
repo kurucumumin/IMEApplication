@@ -248,7 +248,6 @@ namespace LoginForm.QuotationModule
 
         private void dgQuotationAddedItems_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-
             #region MyRegion
             switch (dgQuotationAddedItems.CurrentCell.ColumnIndex)
             {
