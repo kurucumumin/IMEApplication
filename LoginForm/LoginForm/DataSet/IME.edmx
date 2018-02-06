@@ -16875,8 +16875,12 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
         </ComplexType>
         <ComplexType Name="productviewbyproductNameforSR_Result">
           <Property Type="String" Name="Article_No" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="barcode" Nullable="true" />
           <Property Type="String" Name="Article_Desc" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="qty" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="unitConversionId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="conversionRate" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="batchId" Nullable="false" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="discountPercent" Nullable="true" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="discount" Nullable="true" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="netvalue" Nullable="true" Precision="18" Scale="0" />
@@ -20215,8 +20219,12 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.productviewbyproductNameforSR_Result">
                 <ScalarProperty Name="Article_No" ColumnName="Article_No" />
+                <ScalarProperty Name="barcode" ColumnName="barcode" />
                 <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
                 <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="unitConversionId" ColumnName="unitConversionId" />
+                <ScalarProperty Name="conversionRate" ColumnName="conversionRate" />
+                <ScalarProperty Name="batchId" ColumnName="batchId" />
                 <ScalarProperty Name="discountPercent" ColumnName="discountPercent" />
                 <ScalarProperty Name="discount" ColumnName="discount" />
                 <ScalarProperty Name="netvalue" ColumnName="netvalue" />
