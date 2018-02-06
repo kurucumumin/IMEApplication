@@ -30,7 +30,7 @@ namespace LoginForm.CustomControls
 
         private void btnSupplier_Click(object sender, EventArgs e)
         {
-            MainSupplier supplierMain = new MainSupplier();
+            SupplierMain supplierMain = new SupplierMain();
             supplierMain.ShowDialog();
         }
 

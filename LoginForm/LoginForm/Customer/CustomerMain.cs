@@ -1627,5 +1627,10 @@ namespace LoginForm
         {
 
         }
+
+        private void AddressDel_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
