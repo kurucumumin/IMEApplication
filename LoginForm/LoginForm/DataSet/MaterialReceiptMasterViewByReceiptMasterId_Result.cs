@@ -18,7 +18,7 @@ namespace LoginForm.DataSet
         public string invoiceNo { get; set; }
         public string date { get; set; }
         public Nullable<decimal> ledgerId { get; set; }
-        public string orderMasterId { get; set; }
+        public Nullable<int> purchaseOrderId { get; set; }
         public string narration { get; set; }
         public Nullable<int> exchangeRateId { get; set; }
         public Nullable<decimal> totalAmount { get; set; }

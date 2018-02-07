@@ -19,7 +19,7 @@ namespace LoginForm.Account.Services
             {
                 var adaptor = db.PurchaseOrderMasterViewByOrderMasterId(decOrderMasterId).ToList();
 
-                dtbl.Columns.Add("FicheNo");
+                dtbl.Columns.Add("purchaseOrderId");
                 dtbl.Columns.Add("voucherNo");
                 dtbl.Columns.Add("invoiceNo");
                 dtbl.Columns.Add("userId");
@@ -37,7 +37,7 @@ namespace LoginForm.Account.Services
                 {
                     DataRow row = dtbl.NewRow();
 
-                    row["FicheNo"] = item.FicheNo;
+                    row["purchaseOrderId"] = item.FicheNo;
                     row["voucherNo"] = item.voucherNo;
                     row["invoiceNo"] = item.invoiceNo;
                     row["userId"] = item.userId;
@@ -59,7 +59,7 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
-        public DataSet.PurchaseOrder PurchaseOrderMasterView(string purchaseOrderMasterId)
+        public DataSet.PurchaseOrder PurchaseOrderMasterView(int purchaseOrderMasterId)
         {
             DataSet.PurchaseOrder p = new DataSet.PurchaseOrder();
             try

@@ -26,7 +26,7 @@ namespace LoginForm.DataSet
         public Nullable<int> exchangeRateId { get; set; }
         public string narration { get; set; }
         public Nullable<decimal> purchaseAccount { get; set; }
-        public string purchaseOrderMasterId { get; set; }
+        public Nullable<int> purchaseOrderId { get; set; }
         public Nullable<decimal> materialReceiptMasterId { get; set; }
         public Nullable<decimal> additionalCost { get; set; }
         public Nullable<decimal> totalTax { get; set; }

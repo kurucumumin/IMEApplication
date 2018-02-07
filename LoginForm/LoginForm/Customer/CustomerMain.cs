@@ -1633,9 +1633,5 @@ namespace LoginForm
             form.ShowDialog();
         }
 
-        private void AddressDel_Click_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }

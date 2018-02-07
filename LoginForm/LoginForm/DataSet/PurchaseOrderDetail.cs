@@ -33,13 +33,13 @@ namespace LoginForm.DataSet
         public bool Calibration { get; set; }
         public Nullable<decimal> UnitPrice { get; set; }
         public string Unit { get; set; }
-        public string FicheNo { get; set; }
         public Nullable<int> AccountNumber { get; set; }
         public Nullable<decimal> unitConversionId { get; set; }
         public Nullable<decimal> unitId { get; set; }
         public Nullable<decimal> rate { get; set; }
         public Nullable<decimal> amount { get; set; }
         public Nullable<decimal> SaleOrderID { get; set; }
+        public Nullable<int> purchaseOrderId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MaterialReceiptDetail> MaterialReceiptDetails { get; set; }

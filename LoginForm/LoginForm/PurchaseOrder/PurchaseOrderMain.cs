@@ -31,15 +31,15 @@ namespace LoginForm.PurchaseOrder
         private void btnCreate_Click(object sender, EventArgs e)
         {
             #region ProductHistory
-            string fish_no ="0";
+            int fish_no =0;
 
             if (dgPurchase.CurrentRow.Cells["FicheNo"].Value != null)
-                fish_no = dgPurchase.CurrentRow.Cells["FicheNo"].Value.ToString();
+                fish_no = Convert.ToInt32(dgPurchase.CurrentRow.Cells["FicheNo"].Value.ToString());
             if (dgPurchase.CurrentRow.Cells["FicheNo"].Value == null)
                 MessageBox.Show("Please Enter a Fiche No", "Eror !");
             else
             {
-                fish_no = dgPurchase.CurrentRow.Cells["FicheNo"].Value.ToString();
+                fish_no = Convert.ToInt32(dgPurchase.CurrentRow.Cells["FicheNo"].Value.ToString());
                 NewPurchaseOrder f = new NewPurchaseOrder(fish_no, 1);
                 try { this.Hide(); f.ShowDialog(); this.Show(); } catch { }
             }
@@ -247,15 +247,15 @@ namespace LoginForm.PurchaseOrder
         private void dgPurchase_DoubleClick(object sender, EventArgs e)
         {
             #region ProductHistory
-            string fish_no = "0";
+            int fish_no = 0;
 
             if (dgPurchase.CurrentRow.Cells["FicheNo"].Value != null)
-                fish_no = dgPurchase.CurrentRow.Cells["FicheNo"].Value.ToString();
+                fish_no = Convert.ToInt32(dgPurchase.CurrentRow.Cells["FicheNo"].Value.ToString());
             if (dgPurchase.CurrentRow.Cells["FicheNo"].Value == null)
                 MessageBox.Show("Please Enter a Fiche No", "Eror !");
             else
             {
-                fish_no = dgPurchase.CurrentRow.Cells["FicheNo"].Value.ToString();
+                fish_no = Convert.ToInt32(dgPurchase.CurrentRow.Cells["FicheNo"].Value.ToString());
                 NewPurchaseOrder f = new NewPurchaseOrder(fish_no, 1);
                 try { this.Hide(); f.ShowDialog(); this.Show(); } catch { }
             }

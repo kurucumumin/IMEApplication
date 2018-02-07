@@ -31,7 +31,7 @@ namespace LoginForm.Account.Services
             foreach (var item in IME.OverduePurchaseOrdersCorrespondingAccountLedger(decLedgerId))
             {
                 var row = dtbl.NewRow();
-                row["PurchaseOrderMasterId"] = item.FicheNo;
+                row["purchaseOrderId"] = item.FicheNo;
                 row["InvoicedMasterId"] = item.InvoicedMasterId;
                 row["MR_OrderMasterId"] = item.MR_OrderMasterId;
                 row["ledgerId"] = item.ledgerId;

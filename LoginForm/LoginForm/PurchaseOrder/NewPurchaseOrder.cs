@@ -31,7 +31,7 @@ namespace LoginForm.PurchaseOrder
             PurchaseOrdersDetailFill(item_code);
         }
 
-        public NewPurchaseOrder(string ficheNo, int sayac)
+        public NewPurchaseOrder(int ficheNo, int sayac)
         {
             InitializeComponent();
 
@@ -141,11 +141,11 @@ namespace LoginForm.PurchaseOrder
 
         }
 
-        private void PurchaseOrdersDetailFill2(string ficheNo)
+        private void PurchaseOrdersDetailFill2(int ficheNo)
         {
             IME = new IMEEntities();
             #region Purchase Orders Detail Fill
-            var adapter = (from p in IME.PurchaseOrderDetails.Where(p => p.FicheNo == ficheNo.ToString())
+            var adapter = (from p in IME.PurchaseOrderDetails.Where(p => p.purchaseOrderId == ficheNo)
                            select new
                            {
                                p.PurchaseOrder.Customer.c_name,

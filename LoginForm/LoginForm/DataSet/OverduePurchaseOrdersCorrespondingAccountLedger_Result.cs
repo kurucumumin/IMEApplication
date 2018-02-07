@@ -20,7 +20,7 @@ namespace LoginForm.DataSet
         public string ledgerName { get; set; }
         public string dueDate { get; set; }
         public Nullable<decimal> totalAmount { get; set; }
-        public string InvoicedMasterId { get; set; }
-        public string MR_OrderMasterId { get; set; }
+        public Nullable<int> InvoicedMasterId { get; set; }
+        public Nullable<int> MR_OrderMasterId { get; set; }
     }
 }

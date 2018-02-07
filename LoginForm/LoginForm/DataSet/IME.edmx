@@ -688,7 +688,6 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="voucherTypeId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="date" Type="datetime" />
           <Property Name="ledgerId" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="orderMasterId" Type="varchar" MaxLength="50" />
           <Property Name="narration" Type="varchar(max)" />
           <Property Name="totalAmount" Type="decimal" Precision="18" Scale="5" />
           <Property Name="exchangeRateId" Type="int" />
@@ -696,6 +695,7 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="lrNo" Type="varchar(max)" />
           <Property Name="transportationCompany" Type="varchar(max)" />
           <Property Name="financialYearId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="purchaseOrderId" Type="int" />
         </EntityType>
         <EntityType Name="MonthlySalary">
           <Key>
@@ -987,7 +987,6 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="exchangeRateId" Type="int" />
           <Property Name="narration" Type="varchar(max)" />
           <Property Name="purchaseAccount" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="purchaseOrderMasterId" Type="varchar" MaxLength="50" />
           <Property Name="materialReceiptMasterId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="additionalCost" Type="decimal" Precision="18" Scale="5" />
           <Property Name="totalTax" Type="decimal" Precision="18" Scale="5" />
@@ -998,16 +997,16 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="lrNo" Type="varchar(max)" />
           <Property Name="transportationCompany" Type="varchar(max)" />
           <Property Name="financialYearId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="purchaseOrderId" Type="int" />
         </EntityType>
         <EntityType Name="PurchaseOrder">
           <Key>
-            <PropertyRef Name="FicheNo" />
+            <PropertyRef Name="purchaseOrderId" />
           </Key>
           <Property Name="CustomerID" Type="nvarchar" MaxLength="15" />
           <Property Name="PurchaseOrderDate" Type="date" />
           <Property Name="CameDate" Type="date" />
           <Property Name="Reason" Type="nvarchar" MaxLength="50" />
-          <Property Name="FicheNo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="exchangeRateID" Type="int" />
           <Property Name="userId" Type="int" />
           <Property Name="voucherNo" Type="varchar(max)" />
@@ -1020,6 +1019,8 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="narration" Type="varchar(max)" />
           <Property Name="totalAmount" Type="decimal" Precision="18" Scale="5" />
           <Property Name="voucherTypeId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="purchaseOrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FicheNo" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="PurchaseOrderDetail">
           <Key>
@@ -1036,13 +1037,13 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="Calibration" Type="bit" Nullable="false" />
           <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="0" />
           <Property Name="Unit" Type="nvarchar" MaxLength="10" />
-          <Property Name="FicheNo" Type="varchar" MaxLength="50" />
           <Property Name="AccountNumber" Type="int" />
           <Property Name="unitConversionId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="unitId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="rate" Type="numeric" Precision="18" Scale="5" />
           <Property Name="amount" Type="decimal" Precision="18" Scale="5" />
           <Property Name="SaleOrderID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="purchaseOrderId" Type="int" />
         </EntityType>
         <EntityType Name="PurchaseReturnBilltax">
           <Key>
@@ -2941,18 +2942,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MaterialR__order__544C7222">
-          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
-          <End Role="MaterialReceiptMaster" Type="Self.MaterialReceiptMaster" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PurchaseOrder">
-              <PropertyRef Name="FicheNo" />
-            </Principal>
-            <Dependent Role="MaterialReceiptMaster">
-              <PropertyRef Name="orderMasterId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__MaterialR__order__5ECA0095">
           <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="0..1" />
           <End Role="MaterialReceiptDetails" Type="Self.MaterialReceiptDetails" Multiplicity="*" />
@@ -2962,6 +2951,18 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Principal>
             <Dependent Role="MaterialReceiptDetails">
               <PropertyRef Name="orderDetailsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MaterialR__purch__066DDD9B">
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
+          <End Role="MaterialReceiptMaster" Type="Self.MaterialReceiptMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrder">
+              <PropertyRef Name="purchaseOrderId" />
+            </Principal>
+            <Dependent Role="MaterialReceiptMaster">
+              <PropertyRef Name="purchaseOrderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3529,15 +3530,15 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PurchaseM__purch__4D9F7493">
+        <Association Name="FK__PurchaseM__purch__076201D4">
           <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
           <End Role="PurchaseMaster" Type="Self.PurchaseMaster" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PurchaseOrder">
-              <PropertyRef Name="FicheNo" />
+              <PropertyRef Name="purchaseOrderId" />
             </Principal>
             <Dependent Role="PurchaseMaster">
-              <PropertyRef Name="purchaseOrderMasterId" />
+              <PropertyRef Name="purchaseOrderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3601,18 +3602,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PurchaseO__Fiche__4E9398CC">
-          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
-          <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PurchaseOrder">
-              <PropertyRef Name="FicheNo" />
-            </Principal>
-            <Dependent Role="PurchaseOrderDetail">
-              <PropertyRef Name="FicheNo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__PurchaseO__ledge__32EB7E57">
           <End Role="AccountLedger" Type="Self.AccountLedger" Multiplicity="0..1" />
           <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
@@ -3622,6 +3611,18 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Principal>
             <Dependent Role="PurchaseOrder">
               <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PurchaseO__purch__0856260D">
+          <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
+          <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseOrder">
+              <PropertyRef Name="purchaseOrderId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderDetail">
+              <PropertyRef Name="purchaseOrderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7090,13 +7091,13 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="MaterialReceiptMaster" EntitySet="MaterialReceiptMaster" />
             <End Role="MaterialReceiptDetails" EntitySet="MaterialReceiptDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__MaterialR__order__544C7222" Association="Self.FK__MaterialR__order__544C7222">
-            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
-            <End Role="MaterialReceiptMaster" EntitySet="MaterialReceiptMaster" />
-          </AssociationSet>
           <AssociationSet Name="FK__MaterialR__order__5ECA0095" Association="Self.FK__MaterialR__order__5ECA0095">
             <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
             <End Role="MaterialReceiptDetails" EntitySet="MaterialReceiptDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MaterialR__purch__066DDD9B" Association="Self.FK__MaterialR__purch__066DDD9B">
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+            <End Role="MaterialReceiptMaster" EntitySet="MaterialReceiptMaster" />
           </AssociationSet>
           <AssociationSet Name="FK__MaterialR__rackI__638EB5B2" Association="Self.FK__MaterialR__rackI__638EB5B2">
             <End Role="Rack" EntitySet="Rack" />
@@ -7286,7 +7287,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="ReceiptMaster" EntitySet="ReceiptMaster" />
             <End Role="PurchaseMaster" EntitySet="PurchaseMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__PurchaseM__purch__4D9F7493" Association="Self.FK__PurchaseM__purch__4D9F7493">
+          <AssociationSet Name="FK__PurchaseM__purch__076201D4" Association="Self.FK__PurchaseM__purch__076201D4">
             <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
             <End Role="PurchaseMaster" EntitySet="PurchaseMaster" />
           </AssociationSet>
@@ -7310,13 +7311,13 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="ExchangeRate" EntitySet="ExchangeRate" />
             <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK__PurchaseO__Fiche__4E9398CC" Association="Self.FK__PurchaseO__Fiche__4E9398CC">
-            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
-            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
-          </AssociationSet>
           <AssociationSet Name="FK__PurchaseO__ledge__32EB7E57" Association="Self.FK__PurchaseO__ledge__32EB7E57">
             <End Role="AccountLedger" EntitySet="AccountLedger" />
             <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PurchaseO__purch__0856260D" Association="Self.FK__PurchaseO__purch__0856260D">
+            <End Role="PurchaseOrder" EntitySet="PurchaseOrder" />
+            <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetail" />
           </AssociationSet>
           <AssociationSet Name="FK__PurchaseO__suffi__31F75A1E" Association="Self.FK__PurchaseO__suffi__31F75A1E">
             <End Role="SuffixPrefix" EntitySet="SuffixPrefix" />
@@ -8816,7 +8817,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="date" Type="DateTime" Precision="3" />
           <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="orderMasterId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="totalAmount" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="exchangeRateId" Type="Int32" />
@@ -8824,11 +8824,12 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="lrNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="transportationCompany" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="purchaseOrderId" Type="Int32" />
           <NavigationProperty Name="AccountLedger" Relationship="Self.FK__MaterialR__ledge__53584DE9" FromRole="MaterialReceiptMaster" ToRole="AccountLedger" />
           <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__MaterialR__excha__5540965B" FromRole="MaterialReceiptMaster" ToRole="ExchangeRate" />
           <NavigationProperty Name="FinancialYear" Relationship="Self.FK__MaterialR__finan__5728DECD" FromRole="MaterialReceiptMaster" ToRole="FinancialYear" />
           <NavigationProperty Name="MaterialReceiptDetails" Relationship="Self.FK__MaterialR__mater__5DD5DC5C" FromRole="MaterialReceiptMaster" ToRole="MaterialReceiptDetails" />
-          <NavigationProperty Name="PurchaseOrder" Relationship="Self.FK__MaterialR__order__544C7222" FromRole="MaterialReceiptMaster" ToRole="PurchaseOrder" />
+          <NavigationProperty Name="PurchaseOrder" Relationship="Self.FK__MaterialR__purch__066DDD9B" FromRole="MaterialReceiptMaster" ToRole="PurchaseOrder" />
           <NavigationProperty Name="SuffixPrefix" Relationship="Self.FK__MaterialR__suffi__51700577" FromRole="MaterialReceiptMaster" ToRole="SuffixPrefix" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__MaterialR__userI__5634BA94" FromRole="MaterialReceiptMaster" ToRole="Worker" />
           <NavigationProperty Name="VoucherType" Relationship="Self.FK__MaterialR__vouch__526429B0" FromRole="MaterialReceiptMaster" ToRole="VoucherType" />
@@ -9181,7 +9182,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="exchangeRateId" Type="Int32" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="purchaseAccount" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="purchaseOrderMasterId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="materialReceiptMasterId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="additionalCost" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="totalTax" Type="Decimal" Precision="18" Scale="5" />
@@ -9192,12 +9192,13 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="lrNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="transportationCompany" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="purchaseOrderId" Type="Int32" />
           <NavigationProperty Name="AccountLedger" Relationship="Self.FK__PurchaseM__ledge__118A8A8C" FromRole="PurchaseMaster" ToRole="AccountLedger" />
           <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__PurchaseM__excha__127EAEC5" FromRole="PurchaseMaster" ToRole="ExchangeRate" />
           <NavigationProperty Name="FinancialYear" Relationship="Self.FK__PurchaseM__finan__164F3FA9" FromRole="PurchaseMaster" ToRole="FinancialYear" />
           <NavigationProperty Name="PurchaseDetails" Relationship="Self.FK__PurchaseD__purch__249D5F00" FromRole="PurchaseMaster" ToRole="PurchaseDetails" />
           <NavigationProperty Name="ReceiptMaster" Relationship="Self.FK__PurchaseM__mater__1466F737" FromRole="PurchaseMaster" ToRole="ReceiptMaster" />
-          <NavigationProperty Name="PurchaseOrder" Relationship="Self.FK__PurchaseM__purch__4D9F7493" FromRole="PurchaseMaster" ToRole="PurchaseOrder" />
+          <NavigationProperty Name="PurchaseOrder" Relationship="Self.FK__PurchaseM__purch__076201D4" FromRole="PurchaseMaster" ToRole="PurchaseOrder" />
           <NavigationProperty Name="SuffixPrefix" Relationship="Self.FK__PurchaseM__suffi__0FA2421A" FromRole="PurchaseMaster" ToRole="SuffixPrefix" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__PurchaseM__userI__155B1B70" FromRole="PurchaseMaster" ToRole="Worker" />
           <NavigationProperty Name="VoucherType" Relationship="Self.FK__PurchaseM__vouch__10966653" FromRole="PurchaseMaster" ToRole="VoucherType" />
@@ -9205,13 +9206,12 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
         </EntityType>
         <EntityType Name="PurchaseOrder">
           <Key>
-            <PropertyRef Name="FicheNo" />
+            <PropertyRef Name="purchaseOrderId" />
           </Key>
           <Property Name="CustomerID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="PurchaseOrderDate" Type="DateTime" Precision="0" />
           <Property Name="CameDate" Type="DateTime" Precision="0" />
           <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FicheNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="exchangeRateID" Type="Int32" />
           <Property Name="userId" Type="Int32" />
           <Property Name="voucherNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -9224,12 +9224,14 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="totalAmount" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="purchaseOrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FicheNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AccountLedger" Relationship="Self.FK__PurchaseO__ledge__32EB7E57" FromRole="PurchaseOrder" ToRole="AccountLedger" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__PurchaseO__Custo__420DC656" FromRole="PurchaseOrder" ToRole="Customer" />
           <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__PurchaseO__excha__61DB776A" FromRole="PurchaseOrder" ToRole="ExchangeRate" />
-          <NavigationProperty Name="MaterialReceiptMasters" Relationship="Self.FK__MaterialR__order__544C7222" FromRole="PurchaseOrder" ToRole="MaterialReceiptMaster" />
-          <NavigationProperty Name="PurchaseMasters" Relationship="Self.FK__PurchaseM__purch__4D9F7493" FromRole="PurchaseOrder" ToRole="PurchaseMaster" />
-          <NavigationProperty Name="PurchaseOrderDetails" Relationship="Self.FK__PurchaseO__Fiche__4E9398CC" FromRole="PurchaseOrder" ToRole="PurchaseOrderDetail" />
+          <NavigationProperty Name="MaterialReceiptMasters" Relationship="Self.FK__MaterialR__purch__066DDD9B" FromRole="PurchaseOrder" ToRole="MaterialReceiptMaster" />
+          <NavigationProperty Name="PurchaseMasters" Relationship="Self.FK__PurchaseM__purch__076201D4" FromRole="PurchaseOrder" ToRole="PurchaseMaster" />
+          <NavigationProperty Name="PurchaseOrderDetails" Relationship="Self.FK__PurchaseO__purch__0856260D" FromRole="PurchaseOrder" ToRole="PurchaseOrderDetail" />
           <NavigationProperty Name="SuffixPrefix" Relationship="Self.FK__PurchaseO__suffi__31F75A1E" FromRole="PurchaseOrder" ToRole="SuffixPrefix" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__PurchaseO__userI__63C3BFDC" FromRole="PurchaseOrder" ToRole="Worker" />
           <NavigationProperty Name="VoucherType" Relationship="Self.FK__PurchaseO__vouch__011F1899" FromRole="PurchaseOrder" ToRole="VoucherType" />
@@ -9249,16 +9251,16 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="Calibration" Type="Boolean" Nullable="false" />
           <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="FicheNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="AccountNumber" Type="Int32" />
           <Property Name="unitConversionId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="unitId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="rate" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="amount" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="SaleOrderID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="purchaseOrderId" Type="Int32" />
           <NavigationProperty Name="MaterialReceiptDetails" Relationship="Self.FK__MaterialR__order__5ECA0095" FromRole="PurchaseOrderDetail" ToRole="MaterialReceiptDetails" />
           <NavigationProperty Name="PurchaseDetails" Relationship="Self.FK__PurchaseD__order__4BB72C21" FromRole="PurchaseOrderDetail" ToRole="PurchaseDetails" />
-          <NavigationProperty Name="PurchaseOrder" Relationship="Self.FK__PurchaseO__Fiche__4E9398CC" FromRole="PurchaseOrderDetail" ToRole="PurchaseOrder" />
+          <NavigationProperty Name="PurchaseOrder" Relationship="Self.FK__PurchaseO__purch__0856260D" FromRole="PurchaseOrderDetail" ToRole="PurchaseOrder" />
           <NavigationProperty Name="UnitConvertion" Relationship="Self.FK__PurchaseO__unitC__76A18A26" FromRole="PurchaseOrderDetail" ToRole="UnitConvertion" />
           <NavigationProperty Name="Unit1" Relationship="Self.FK__PurchaseO__unitI__797DF6D1" FromRole="PurchaseOrderDetail" ToRole="Unit" />
           <NavigationProperty Name="PurchaseReturnDetails" Relationship="Self.FK__PurchaseR__purch__377B294A" FromRole="PurchaseOrderDetail" ToRole="PurchaseReturnDetails" />
@@ -12332,15 +12334,15 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MaterialR__order__544C7222">
+        <Association Name="FK__MaterialR__purch__066DDD9B">
           <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
           <End Role="MaterialReceiptMaster" Type="Self.MaterialReceiptMaster" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PurchaseOrder">
-              <PropertyRef Name="FicheNo" />
+              <PropertyRef Name="purchaseOrderId" />
             </Principal>
             <Dependent Role="MaterialReceiptMaster">
-              <PropertyRef Name="orderMasterId" />
+              <PropertyRef Name="purchaseOrderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -12812,15 +12814,15 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PurchaseM__purch__4D9F7493">
+        <Association Name="FK__PurchaseM__purch__076201D4">
           <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
           <End Role="PurchaseMaster" Type="Self.PurchaseMaster" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PurchaseOrder">
-              <PropertyRef Name="FicheNo" />
+              <PropertyRef Name="purchaseOrderId" />
             </Principal>
             <Dependent Role="PurchaseMaster">
-              <PropertyRef Name="purchaseOrderMasterId" />
+              <PropertyRef Name="purchaseOrderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -12872,15 +12874,15 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PurchaseO__Fiche__4E9398CC">
+        <Association Name="FK__PurchaseO__purch__0856260D">
           <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
           <End Role="PurchaseOrderDetail" Type="Self.PurchaseOrderDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PurchaseOrder">
-              <PropertyRef Name="FicheNo" />
+              <PropertyRef Name="purchaseOrderId" />
             </Principal>
             <Dependent Role="PurchaseOrderDetail">
-              <PropertyRef Name="FicheNo" />
+              <PropertyRef Name="purchaseOrderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -14728,7 +14730,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="MaterialReceiptDetails" EntitySet="MaterialReceiptDetails" />
             <End Role="RejectionOutDetails" EntitySet="RejectionOutDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__MaterialR__order__544C7222" Association="Self.FK__MaterialR__order__544C7222">
+          <AssociationSet Name="FK__MaterialR__purch__066DDD9B" Association="Self.FK__MaterialR__purch__066DDD9B">
             <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
             <End Role="MaterialReceiptMaster" EntitySet="MaterialReceiptMasters" />
           </AssociationSet>
@@ -14888,7 +14890,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="ReceiptMaster" EntitySet="ReceiptMasters" />
             <End Role="PurchaseMaster" EntitySet="PurchaseMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__PurchaseM__purch__4D9F7493" Association="Self.FK__PurchaseM__purch__4D9F7493">
+          <AssociationSet Name="FK__PurchaseM__purch__076201D4" Association="Self.FK__PurchaseM__purch__076201D4">
             <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
             <End Role="PurchaseMaster" EntitySet="PurchaseMasters" />
           </AssociationSet>
@@ -14908,7 +14910,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="PurchaseMaster" EntitySet="PurchaseMasters" />
             <End Role="PurchaseReturnMaster" EntitySet="PurchaseReturnMasters" />
           </AssociationSet>
-          <AssociationSet Name="FK__PurchaseO__Fiche__4E9398CC" Association="Self.FK__PurchaseO__Fiche__4E9398CC">
+          <AssociationSet Name="FK__PurchaseO__purch__0856260D" Association="Self.FK__PurchaseO__purch__0856260D">
             <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
             <End Role="PurchaseOrderDetail" EntitySet="PurchaseOrderDetails" />
           </AssociationSet>
@@ -15841,7 +15843,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
             <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="PurchaseMasterAdd" ReturnType="Collection(Decimal)">
+          <FunctionImport Name="PurchaseMasterAdd">
             <Parameter Name="voucherNo" Mode="In" Type="String" />
             <Parameter Name="invoiceNo" Mode="In" Type="String" />
             <Parameter Name="suffixPrefixId" Mode="In" Type="Decimal" />
@@ -16623,7 +16625,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="invoiceNo" Nullable="true" />
         </ComplexType>
         <ComplexType Name="GetOrderNoCorrespondingtoLedgerByNotInCurrPI_Result">
-          <Property Type="String" Name="purchaseOrderMasterId" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="purchaseOrderMasterId" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="invoiceNo" Nullable="true" />
         </ComplexType>
         <ComplexType Name="GetPurchaseReturnInvoiceNoCorrespondingtoLedger_Result">
@@ -16692,7 +16694,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="Decimal" Name="voucherTypeId" Nullable="true" Precision="18" Scale="0" />
           <Property Type="DateTime" Name="date" Nullable="true" Precision="23" />
           <Property Type="Decimal" Name="ledgerId" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="String" Name="orderMasterId" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="purchaseOrderId" Nullable="true" />
           <Property Type="String" Name="narration" Nullable="true" />
           <Property Type="Int32" Name="exchangeRateId" Nullable="true" />
           <Property Type="Decimal" Name="totalAmount" Nullable="true" Precision="18" Scale="5" />
@@ -16707,7 +16709,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="invoiceNo" Nullable="true" />
           <Property Type="String" Name="date" Nullable="true" MaxLength="8000" />
           <Property Type="Decimal" Name="ledgerId" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="String" Name="orderMasterId" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="purchaseOrderId" Nullable="true" />
           <Property Type="String" Name="narration" Nullable="true" />
           <Property Type="Int32" Name="exchangeRateId" Nullable="true" />
           <Property Type="Decimal" Name="totalAmount" Nullable="true" Precision="24" Scale="2" />
@@ -16719,15 +16721,15 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="Refer" Nullable="true" MaxLength="1" />
         </ComplexType>
         <ComplexType Name="OverduePurchaseOrdersCorrespondingAccountLedger_Result">
-          <Property Type="String" Name="FicheNo" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="FicheNo" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="OrderNO" Nullable="true" />
           <Property Type="String" Name="date" Nullable="true" />
           <Property Type="Decimal" Name="ledgerId" Nullable="true" Precision="18" Scale="0" />
           <Property Type="String" Name="ledgerName" Nullable="true" />
           <Property Type="String" Name="dueDate" Nullable="true" />
           <Property Type="Decimal" Name="totalAmount" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="String" Name="InvoicedMasterId" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="MR_OrderMasterId" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="InvoicedMasterId" Nullable="true" />
+          <Property Type="Int32" Name="MR_OrderMasterId" Nullable="true" />
         </ComplexType>
         <ComplexType Name="PayHeadGet_Result">
           <Property Type="Decimal" Name="PayheadId" Nullable="false" Precision="18" Scale="0" />
@@ -17021,7 +17023,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="Int32" Name="exchangeRateId" Nullable="true" />
           <Property Type="String" Name="narration" Nullable="true" />
           <Property Type="Decimal" Name="purchaseAccount" Nullable="true" Precision="18" Scale="0" />
-          <Property Type="String" Name="purchaseOrderMasterId" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="purchaseOrderId" Nullable="true" />
           <Property Type="Decimal" Name="materialReceiptMasterId" Nullable="true" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="additionalCost" Nullable="true" Precision="18" Scale="5" />
           <Property Type="Decimal" Name="totalTax" Nullable="true" Precision="18" Scale="5" />
@@ -17069,7 +17071,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="Int32" Name="exchangeRateId" Nullable="true" />
         </ComplexType>
         <ComplexType Name="PurchaseOrderMasterViewByOrderMasterId_Result">
-          <Property Type="String" Name="FicheNo" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="FicheNo" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="voucherNo" Nullable="true" />
           <Property Type="String" Name="invoiceNo" Nullable="true" />
           <Property Type="Int32" Name="userId" Nullable="true" />
@@ -18093,7 +18095,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
-                <ScalarProperty Name="orderMasterId" ColumnName="orderMasterId" />
                 <ScalarProperty Name="narration" ColumnName="narration" />
                 <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
                 <ScalarProperty Name="exchangeRateId" ColumnName="exchangeRateId" />
@@ -18101,6 +18102,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="lrNo" ColumnName="lrNo" />
                 <ScalarProperty Name="transportationCompany" ColumnName="transportationCompany" />
                 <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+                <ScalarProperty Name="purchaseOrderId" ColumnName="purchaseOrderId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -18411,7 +18413,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="exchangeRateId" ColumnName="exchangeRateId" />
                 <ScalarProperty Name="narration" ColumnName="narration" />
                 <ScalarProperty Name="purchaseAccount" ColumnName="purchaseAccount" />
-                <ScalarProperty Name="purchaseOrderMasterId" ColumnName="purchaseOrderMasterId" />
                 <ScalarProperty Name="materialReceiptMasterId" ColumnName="materialReceiptMasterId" />
                 <ScalarProperty Name="additionalCost" ColumnName="additionalCost" />
                 <ScalarProperty Name="totalTax" ColumnName="totalTax" />
@@ -18422,6 +18423,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="lrNo" ColumnName="lrNo" />
                 <ScalarProperty Name="transportationCompany" ColumnName="transportationCompany" />
                 <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+                <ScalarProperty Name="purchaseOrderId" ColumnName="purchaseOrderId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -18432,7 +18434,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="PurchaseOrderDate" ColumnName="PurchaseOrderDate" />
                 <ScalarProperty Name="CameDate" ColumnName="CameDate" />
                 <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="FicheNo" ColumnName="FicheNo" />
                 <ScalarProperty Name="exchangeRateID" ColumnName="exchangeRateID" />
                 <ScalarProperty Name="userId" ColumnName="userId" />
                 <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
@@ -18445,6 +18446,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="narration" ColumnName="narration" />
                 <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
                 <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="purchaseOrderId" ColumnName="purchaseOrderId" />
+                <ScalarProperty Name="FicheNo" ColumnName="FicheNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -18462,13 +18465,13 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="Calibration" ColumnName="Calibration" />
                 <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="FicheNo" ColumnName="FicheNo" />
                 <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
                 <ScalarProperty Name="unitConversionId" ColumnName="unitConversionId" />
                 <ScalarProperty Name="unitId" ColumnName="unitId" />
                 <ScalarProperty Name="rate" ColumnName="rate" />
                 <ScalarProperty Name="amount" ColumnName="amount" />
                 <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
+                <ScalarProperty Name="purchaseOrderId" ColumnName="purchaseOrderId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -19949,7 +19952,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
-                <ScalarProperty Name="orderMasterId" ColumnName="orderMasterId" />
+                <ScalarProperty Name="purchaseOrderId" ColumnName="purchaseOrderId" />
                 <ScalarProperty Name="narration" ColumnName="narration" />
                 <ScalarProperty Name="exchangeRateId" ColumnName="exchangeRateId" />
                 <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
@@ -19968,7 +19971,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
-                <ScalarProperty Name="orderMasterId" ColumnName="orderMasterId" />
+                <ScalarProperty Name="purchaseOrderId" ColumnName="purchaseOrderId" />
                 <ScalarProperty Name="narration" ColumnName="narration" />
                 <ScalarProperty Name="exchangeRateId" ColumnName="exchangeRateId" />
                 <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
@@ -20413,7 +20416,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="exchangeRateId" ColumnName="exchangeRateId" />
                 <ScalarProperty Name="narration" ColumnName="narration" />
                 <ScalarProperty Name="purchaseAccount" ColumnName="purchaseAccount" />
-                <ScalarProperty Name="purchaseOrderMasterId" ColumnName="purchaseOrderMasterId" />
+                <ScalarProperty Name="purchaseOrderId" ColumnName="purchaseOrderId" />
                 <ScalarProperty Name="materialReceiptMasterId" ColumnName="materialReceiptMasterId" />
                 <ScalarProperty Name="additionalCost" ColumnName="additionalCost" />
                 <ScalarProperty Name="totalTax" ColumnName="totalTax" />

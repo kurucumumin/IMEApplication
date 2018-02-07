@@ -24,7 +24,7 @@ namespace LoginForm.Account.Services
                 dtbl.Columns.Add("invoiceNo");
                 dtbl.Columns.Add("date");
                 dtbl.Columns.Add("ledgerId");
-                dtbl.Columns.Add("orderMasterId");
+                dtbl.Columns.Add("purchaseOrderId");
                 dtbl.Columns.Add("narration");
                 dtbl.Columns.Add("exchangeRateId");
                 dtbl.Columns.Add("totalAmount");
@@ -44,7 +44,7 @@ namespace LoginForm.Account.Services
                     row["invoiceNo"] = item.invoiceNo;
                     row["date"] = item.date;
                     row["ledgerId"] = item.ledgerId;
-                    row["orderMasterId"] = item.orderMasterId;
+                    row["purchaseOrderId"] = item.purchaseOrderId;
                     row["narration"] = item.narration;
                     row["exchangeRateId"] = item.exchangeRateId;
                     row["totalAmount"] = item.totalAmount;
@@ -80,7 +80,7 @@ namespace LoginForm.Account.Services
                 mr.voucherTypeId = m.voucherTypeId;
                 mr.date = m.date;
                 mr.ledgerId = m.ledgerId;
-                mr.orderMasterId = m.orderMasterId;
+                mr.purchaseOrderId = m.purchaseOrderId;
                 mr.narration = m.narration;
                 mr.exchangeRateId = m.exchangeRateId;
                 mr.totalAmount = m.totalAmount;
