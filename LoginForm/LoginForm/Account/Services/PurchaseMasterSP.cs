@@ -264,7 +264,7 @@ namespace LoginForm.Account.Services
                     p.exchangeRateId,
                     p.narration,
                     p.purchaseAccount,
-                    p.purchaseOrderMasterId,
+                    p.purchaseOrderId.ToString(),
                     p.materialReceiptMasterId,
                     p.additionalCost,
                     p.totalTax,
@@ -304,7 +304,7 @@ namespace LoginForm.Account.Services
                 purchasemasterinfo.exchangeRateId = p.exchangeRateId;
                 purchasemasterinfo.narration = p.narration;
                 purchasemasterinfo.purchaseAccount = p.purchaseAccount;
-                purchasemasterinfo.purchaseOrderMasterId = p.purchaseOrderMasterId;
+                purchasemasterinfo.purchaseOrderId = p.purchaseOrderId;
                 purchasemasterinfo.materialReceiptMasterId = p.materialReceiptMasterId;
                 purchasemasterinfo.additionalCost = p.additionalCost;
                 purchasemasterinfo.totalTax = p.totalTax;
@@ -342,7 +342,7 @@ namespace LoginForm.Account.Services
                     p.exchangeRateId,
                     p.narration,
                     p.purchaseAccount,
-                    p.purchaseOrderMasterId,
+                    p.purchaseOrderId.ToString(),
                     p.materialReceiptMasterId,
                     p.additionalCost,
                     p.totalTax,

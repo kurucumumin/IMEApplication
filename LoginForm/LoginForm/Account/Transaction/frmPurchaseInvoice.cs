@@ -1719,11 +1719,11 @@ namespace LoginForm
                 infoPurchaseMaster.purchaseAccount = Convert.ToDecimal(cmbPurchaseAccount.SelectedValue.ToString());
                 if (cmbPurchaseMode.Text == "Against PurchaseOrder")
                 {
-                    infoPurchaseMaster.purchaseOrderMasterId = cmbOrderNo.SelectedValue.ToString();
+                    infoPurchaseMaster.purchaseOrderId = Convert.ToInt32(cmbOrderNo.SelectedValue.ToString());
                 }
                 else
                 {
-                    infoPurchaseMaster.purchaseOrderMasterId = "0";
+                    infoPurchaseMaster.purchaseOrderId = 0;
                 }
                 infoPurchaseMaster.totalAmount = Convert.ToDecimal(txtTotalAmount.Text);
                 infoPurchaseMaster.totalTax = Convert.ToDecimal(lblTaxAmount.Text);
@@ -1733,7 +1733,7 @@ namespace LoginForm
                 infoPurchaseMaster.vendorInvoiceNo = txtVendorInvoiceNo.Text;
                 infoPurchaseMaster.voucherTypeId = decPurchaseInvoiceVoucherTypeId;
                 decPurchaseMasterId = spPurchaseMaster.PurchaseMasterAdd(infoPurchaseMaster);
-                infoPurchaseOrderMaster = spPurchaseOrderMaster.PurchaseOrderMasterView(infoPurchaseMaster.purchaseOrderMasterId);
+                infoPurchaseOrderMaster = spPurchaseOrderMaster.PurchaseOrderMasterView(Convert.ToInt32(infoPurchaseMaster.purchaseOrderId));
                 infoMaterialReceiptMaster = spMaterialReceiptMaster.MaterialReceiptMasterView(Convert.ToDecimal(infoPurchaseMaster.materialReceiptMasterId));
                 foreach (DataGridViewRow dgvrow in dgvProductDetails.Rows)
                 {
@@ -2037,11 +2037,11 @@ namespace LoginForm
                 infoPurchaseMaster.purchaseAccount = Convert.ToDecimal(cmbPurchaseAccount.SelectedValue.ToString());
                 if (cmbPurchaseMode.Text == "Against PurchaseOrder")
                 {
-                    infoPurchaseMaster.purchaseOrderMasterId = cmbOrderNo.SelectedValue.ToString();
+                    infoPurchaseMaster.purchaseOrderId = Convert.ToInt32(cmbOrderNo.SelectedValue.ToString());
                 }
                 else
                 {
-                    infoPurchaseMaster.purchaseOrderMasterId = "0";
+                    infoPurchaseMaster.purchaseOrderId = 0;
                 }
                 infoPurchaseMaster.totalAmount = Convert.ToDecimal(txtTotalAmount.Text);
                 infoPurchaseMaster.totalTax = Convert.ToDecimal(lblTaxAmount.Text);
@@ -2052,7 +2052,7 @@ namespace LoginForm
                 infoPurchaseMaster.voucherTypeId = decPurchaseInvoiceVoucherTypeId;
                 infoPurchaseMaster.purchaseMasterId = decPurchaseMasterId;
                 spPurchaseMaster.PurchaseMasterEdit(infoPurchaseMaster);
-                infoPurchaseOrderMaster = spPurchaseOrderMaster.PurchaseOrderMasterView(infoPurchaseMaster.purchaseOrderMasterId);
+                infoPurchaseOrderMaster = spPurchaseOrderMaster.PurchaseOrderMasterView(Convert.ToInt32(infoPurchaseMaster.purchaseOrderId));
                 infoMaterialReceiptMaster = spMaterialReceiptMaster.MaterialReceiptMasterView(Convert.ToDecimal(infoPurchaseMaster.materialReceiptMasterId));
                 spLedgerPosting.LedgerPostDelete(strVoucherNo, decPurchaseInvoiceVoucherTypeId);
                 spAccountLedger.PartyBalanceDeleteByVoucherTypeVoucherNoAndReferenceType(strVoucherNo, decPurchaseInvoiceVoucherTypeId);
@@ -2450,7 +2450,7 @@ namespace LoginForm
                         if (cmbPurchaseMode.Text == "Against PurchaseOrder")
                         {
                             decPurchaseOrderMasterId = cmbOrderNo.SelectedValue.ToString();
-                            infoPurchaseOrderMaster = spPurchaseOrderMaster.PurchaseOrderMasterView(decPurchaseOrderMasterId);
+                            infoPurchaseOrderMaster = spPurchaseOrderMaster.PurchaseOrderMasterView(Convert.ToInt32(decPurchaseOrderMasterId));
                         }
                         else if (cmbPurchaseMode.Text == "Against MaterialReceipt")
                         {
@@ -3098,19 +3098,19 @@ namespace LoginForm
                 dtpVoucherDate.Value = Convert.ToDateTime(infoPurchaseMaster.date);
                 dtpInvoiceDate.Value = Convert.ToDateTime(infoPurchaseMaster.vendorInvoiceDate);
                 cmbCashOrParty.SelectedValue = infoPurchaseMaster.ledgerId;
-                if (infoPurchaseMaster.purchaseOrderMasterId == "0" && infoPurchaseMaster.materialReceiptMasterId == 0)
+                if (infoPurchaseMaster.purchaseOrderId == 0 && infoPurchaseMaster.materialReceiptMasterId == 0)
                 {
                     cmbPurchaseMode.SelectedItem = "NA";
                 }
-                else if (infoPurchaseMaster.purchaseOrderMasterId != "0" && infoPurchaseMaster.materialReceiptMasterId == 0)
+                else if (infoPurchaseMaster.purchaseOrderId != 0 && infoPurchaseMaster.materialReceiptMasterId == 0)
                 {
                     cmbPurchaseMode.SelectedItem = "Against PurchaseOrder";
-                    infoPurchaseOrderMaster = spPurchaseOrderMaster.PurchaseOrderMasterView(infoPurchaseMaster.purchaseOrderMasterId);
+                    infoPurchaseOrderMaster = spPurchaseOrderMaster.PurchaseOrderMasterView(Convert.ToInt32(infoPurchaseMaster.purchaseOrderId));
                     cmbVoucherType.SelectedValue = infoPurchaseOrderMaster.voucherTypeId;
                     OrderComboFill();
-                    cmbOrderNo.SelectedValue = infoPurchaseMaster.purchaseOrderMasterId;
+                    cmbOrderNo.SelectedValue = infoPurchaseMaster.purchaseOrderId;
                 }
-                else if (infoPurchaseMaster.purchaseOrderMasterId == "0" && infoPurchaseMaster.materialReceiptMasterId != 0)
+                else if (infoPurchaseMaster.purchaseOrderId == 0 && infoPurchaseMaster.materialReceiptMasterId != 0)
                 {
                     cmbPurchaseMode.SelectedItem = "Against MaterialReceipt";
                     infoMaterialReceiptMaster = spMaterialReceiptMaster.MaterialReceiptMasterView(Convert.ToDecimal(infoPurchaseMaster.materialReceiptMasterId));

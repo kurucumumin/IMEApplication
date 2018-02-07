@@ -13986,7 +13986,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <End Role="AuthorizationValue" Type="Self.AuthorizationValue" Multiplicity="*" />
           <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="IME" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="IMEEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AccountGroups" EntityType="Self.AccountGroup" />
           <EntitySet Name="AccountLedgers" EntityType="Self.AccountLedger" />
           <EntitySet Name="AdvancePayments" EntityType="Self.AdvancePayment" />
@@ -15547,7 +15547,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="ledgerId" Mode="In" Type="String" />
             <Parameter Name="purchaseMasterId" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="GetOrderNoCorrespondingtoLedgerByNotInCurrPI">
+          <FunctionImport Name="GetOrderNoCorrespondingtoLedgerByNotInCurrPI" ReturnType="Collection(IMEModel.GetOrderNoCorrespondingtoLedgerByNotInCurrPI_Result)">
             <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
             <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
@@ -15612,13 +15612,13 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="purchaseMasterId" Mode="In" Type="String" />
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="MaterialReceiptMasterView">
+          <FunctionImport Name="MaterialReceiptMasterView" ReturnType="Collection(IMEModel.MaterialReceiptMasterView_Result)">
             <Parameter Name="materialReceiptMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="MaterialReceiptMasterViewByReceiptMasterId">
+          <FunctionImport Name="MaterialReceiptMasterViewByReceiptMasterId" ReturnType="Collection(IMEModel.MaterialReceiptMasterViewByReceiptMasterId_Result)">
             <Parameter Name="MaterialReceiptMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="OverduePurchaseOrdersCorrespondingAccountLedger">
+          <FunctionImport Name="OverduePurchaseOrdersCorrespondingAccountLedger" ReturnType="Collection(IMEModel.OverduePurchaseOrdersCorrespondingAccountLedger_Result)">
             <Parameter Name="accountLedgerId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PartyBalanceAmountViewByVoucherNoVoucherTypeIdAndReferenceType" ReturnType="Collection(Decimal)">
@@ -15901,13 +15901,13 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
             <Parameter Name="purchaseDetailsId" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="PurchaseMasterView">
+          <FunctionImport Name="PurchaseMasterView" ReturnType="Collection(IMEModel.PurchaseMasterView_Result)">
             <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PurchaseMasterVoucherMax" ReturnType="Collection(Decimal)">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="PurchaseOrderDetailsViewByOrderMasterIdWithRemainingByNotInCurrPI">
+          <FunctionImport Name="PurchaseOrderDetailsViewByOrderMasterIdWithRemainingByNotInCurrPI" ReturnType="Collection(IMEModel.PurchaseOrderDetailsViewByOrderMasterIdWithRemainingByNotInCurrPI_Result)">
             <Parameter Name="purchaseOrderMasterId" Mode="In" Type="String" />
             <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
@@ -15915,7 +15915,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImport Name="PurchaseOrderMasterView" ReturnType="Collection(IMEModel.PurchaseOrderMasterView_Result)">
             <Parameter Name="purchaseOrderMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="PurchaseOrderMasterViewByOrderMasterId">
+          <FunctionImport Name="PurchaseOrderMasterViewByOrderMasterId" ReturnType="Collection(IMEModel.PurchaseOrderMasterViewByOrderMasterId_Result)">
             <Parameter Name="orderMasterId" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="PurchaseReturnDetailsDelete">
@@ -16624,6 +16624,10 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="Decimal" Name="materialReceiptMasterId" Nullable="false" Precision="18" Scale="0" />
           <Property Type="String" Name="invoiceNo" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="GetOrderNoCorrespondingtoLedgerByNotInCurrPI_Result">
+          <Property Type="String" Name="purchaseOrderMasterId" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="invoiceNo" Nullable="true" />
+        </ComplexType>
         <ComplexType Name="GetPurchaseReturnInvoiceNoCorrespondingtoLedger_Result">
           <Property Type="Decimal" Name="purchaseMasterId" Nullable="false" Precision="18" Scale="0" />
           <Property Type="String" Name="invoiceNo" Nullable="true" />
@@ -16681,6 +16685,51 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="Int32" Name="taxId" Nullable="false" />
           <Property Type="Decimal" Name="taxAmount" Nullable="true" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="Amount" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="MaterialReceiptMasterView_Result">
+          <Property Type="Decimal" Name="materialReceiptMasterId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="voucherNo" Nullable="true" />
+          <Property Type="String" Name="invoiceNo" Nullable="true" />
+          <Property Type="Decimal" Name="suffixPrefixId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="voucherTypeId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="date" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="ledgerId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="purchaseOrderId" Nullable="true" />
+          <Property Type="String" Name="narration" Nullable="true" />
+          <Property Type="Int32" Name="exchangeRateId" Nullable="true" />
+          <Property Type="Decimal" Name="totalAmount" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="String" Name="lrNo" Nullable="true" />
+          <Property Type="String" Name="transportationCompany" Nullable="true" />
+          <Property Type="Decimal" Name="financialYearId" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="MaterialReceiptMasterViewByReceiptMasterId_Result">
+          <Property Type="Decimal" Name="materialReceiptMasterId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="voucherNo" Nullable="true" />
+          <Property Type="String" Name="invoiceNo" Nullable="true" />
+          <Property Type="String" Name="date" Nullable="true" MaxLength="8000" />
+          <Property Type="Decimal" Name="ledgerId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="purchaseOrderId" Nullable="true" />
+          <Property Type="String" Name="narration" Nullable="true" />
+          <Property Type="Int32" Name="exchangeRateId" Nullable="true" />
+          <Property Type="Decimal" Name="totalAmount" Nullable="true" Precision="24" Scale="2" />
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="Decimal" Name="suffixPrefixId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="lrNo" Nullable="true" />
+          <Property Type="String" Name="transportationCompany" Nullable="true" />
+          <Property Type="Decimal" Name="currencyId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="Refer" Nullable="true" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="OverduePurchaseOrdersCorrespondingAccountLedger_Result">
+          <Property Type="String" Name="FicheNo" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="OrderNO" Nullable="true" />
+          <Property Type="String" Name="date" Nullable="true" />
+          <Property Type="Decimal" Name="ledgerId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="ledgerName" Nullable="true" />
+          <Property Type="String" Name="dueDate" Nullable="true" />
+          <Property Type="Decimal" Name="totalAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="InvoicedMasterId" Nullable="true" />
+          <Property Type="Int32" Name="MR_OrderMasterId" Nullable="true" />
         </ComplexType>
         <ComplexType Name="PayHeadGet_Result">
           <Property Type="Decimal" Name="PayheadId" Nullable="false" Precision="18" Scale="0" />
@@ -16960,6 +17009,55 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="ledgerName" Nullable="true" />
           <Property Type="Decimal" Name="ledgerId" Nullable="false" Precision="18" Scale="0" />
         </ComplexType>
+        <ComplexType Name="PurchaseMasterView_Result">
+          <Property Type="Decimal" Name="purchaseMasterId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="voucherNo" Nullable="true" />
+          <Property Type="String" Name="invoiceNo" Nullable="true" />
+          <Property Type="Decimal" Name="suffixPrefixId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="voucherTypeId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="date" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="ledgerId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="vendorInvoiceNo" Nullable="true" />
+          <Property Type="DateTime" Name="vendorInvoiceDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="creditPeriod" Nullable="true" />
+          <Property Type="Int32" Name="exchangeRateId" Nullable="true" />
+          <Property Type="String" Name="narration" Nullable="true" />
+          <Property Type="Decimal" Name="purchaseAccount" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="purchaseOrderId" Nullable="true" />
+          <Property Type="Decimal" Name="materialReceiptMasterId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="additionalCost" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="totalTax" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="billDiscount" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="grandTotal" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="totalAmount" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="String" Name="lrNo" Nullable="true" />
+          <Property Type="String" Name="transportationCompany" Nullable="true" />
+          <Property Type="Decimal" Name="financialYearId" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="PurchaseOrderDetailsViewByOrderMasterIdWithRemainingByNotInCurrPI_Result">
+          <Property Type="Decimal" Name="purchaseDetailsId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="purchaseOrderDetailsId" Nullable="false" />
+          <Property Type="Decimal" Name="materialReceiptDetailsId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="ItemCode" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="barcode" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Article_No" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="productName" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="qty" Nullable="true" Precision="24" Scale="2" />
+          <Property Type="Decimal" Name="unitConversionId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="unitId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="godownId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="rackId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="batchId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="rate" Nullable="true" Precision="24" Scale="2" />
+          <Property Type="Decimal" Name="grossValue" Nullable="true" Precision="24" Scale="2" />
+          <Property Type="Decimal" Name="discountPercent" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="discount" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="netvalue" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="taxId" Nullable="false" />
+          <Property Type="Decimal" Name="taxAmount" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="Amount" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
         <ComplexType Name="PurchaseOrderMasterView_Result">
           <Property Type="String" Name="voucherNo" Nullable="true" />
           <Property Type="String" Name="invoiceNo" Nullable="true" />
@@ -16971,6 +17069,21 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="narration" Nullable="true" />
           <Property Type="Decimal" Name="totalAmount" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Int32" Name="exchangeRateId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="PurchaseOrderMasterViewByOrderMasterId_Result">
+          <Property Type="String" Name="FicheNo" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="voucherNo" Nullable="true" />
+          <Property Type="String" Name="invoiceNo" Nullable="true" />
+          <Property Type="Int32" Name="userId" Nullable="true" />
+          <Property Type="Decimal" Name="suffixPrefixId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="date" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="dueDate" Nullable="true" MaxLength="8000" />
+          <Property Type="Boolean" Name="cancelled" Nullable="true" />
+          <Property Type="Decimal" Name="ledgerId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="narration" Nullable="true" />
+          <Property Type="Int32" Name="exchangeRateId" Nullable="true" />
+          <Property Type="Decimal" Name="totalAmount" Nullable="true" Precision="24" Scale="2" />
+          <Property Type="String" Name="Refer" Nullable="true" MaxLength="1" />
         </ComplexType>
         <ComplexType Name="PurchaseReturnDetailsViewByMasterId_Result">
           <Property Type="Decimal" Name="purchaseReturnDetailsId" Nullable="false" Precision="18" Scale="0" />
@@ -17272,7 +17385,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="IMEModelStoreContainer" CdmEntityContainer="IME">
+        <EntityContainerMapping StorageEntityContainer="IMEModelStoreContainer" CdmEntityContainer="IMEEntities">
           <EntitySetMapping Name="AccountGroups">
             <EntityTypeMapping TypeName="IMEModel.AccountGroup">
               <MappingFragment StoreEntitySet="AccountGroup">
@@ -19730,7 +19843,14 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="GetOrderNoCorrespondingtoLedgerByNotInCurrPI" FunctionName="IMEModel.Store.GetOrderNoCorrespondingtoLedgerByNotInCurrPI" />
+          <FunctionImportMapping FunctionImportName="GetOrderNoCorrespondingtoLedgerByNotInCurrPI" FunctionName="IMEModel.Store.GetOrderNoCorrespondingtoLedgerByNotInCurrPI">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.GetOrderNoCorrespondingtoLedgerByNotInCurrPI_Result">
+                <ScalarProperty Name="purchaseOrderMasterId" ColumnName="purchaseOrderMasterId" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetPurchaseReturnInvoiceNoCorrespondingtoLedger" FunctionName="IMEModel.Store.GetPurchaseReturnInvoiceNoCorrespondingtoLedger">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.GetPurchaseReturnInvoiceNoCorrespondingtoLedger_Result">
@@ -19822,9 +19942,63 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="MaterialReceiptMasterView" FunctionName="IMEModel.Store.MaterialReceiptMasterView" />
-          <FunctionImportMapping FunctionImportName="MaterialReceiptMasterViewByReceiptMasterId" FunctionName="IMEModel.Store.MaterialReceiptMasterViewByReceiptMasterId" />
-          <FunctionImportMapping FunctionImportName="OverduePurchaseOrdersCorrespondingAccountLedger" FunctionName="IMEModel.Store.OverduePurchaseOrdersCorrespondingAccountLedger" />
+          <FunctionImportMapping FunctionImportName="MaterialReceiptMasterView" FunctionName="IMEModel.Store.MaterialReceiptMasterView">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.MaterialReceiptMasterView_Result">
+                <ScalarProperty Name="materialReceiptMasterId" ColumnName="materialReceiptMasterId" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="purchaseOrderId" ColumnName="purchaseOrderId" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="exchangeRateId" ColumnName="exchangeRateId" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="lrNo" ColumnName="lrNo" />
+                <ScalarProperty Name="transportationCompany" ColumnName="transportationCompany" />
+                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="MaterialReceiptMasterViewByReceiptMasterId" FunctionName="IMEModel.Store.MaterialReceiptMasterViewByReceiptMasterId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.MaterialReceiptMasterViewByReceiptMasterId_Result">
+                <ScalarProperty Name="materialReceiptMasterId" ColumnName="materialReceiptMasterId" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="purchaseOrderId" ColumnName="purchaseOrderId" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="exchangeRateId" ColumnName="exchangeRateId" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
+                <ScalarProperty Name="lrNo" ColumnName="lrNo" />
+                <ScalarProperty Name="transportationCompany" ColumnName="transportationCompany" />
+                <ScalarProperty Name="currencyId" ColumnName="currencyId" />
+                <ScalarProperty Name="Refer" ColumnName="Refer" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="OverduePurchaseOrdersCorrespondingAccountLedger" FunctionName="IMEModel.Store.OverduePurchaseOrdersCorrespondingAccountLedger">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.OverduePurchaseOrdersCorrespondingAccountLedger_Result">
+                <ScalarProperty Name="FicheNo" ColumnName="FicheNo" />
+                <ScalarProperty Name="OrderNO" ColumnName="OrderNO" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
+                <ScalarProperty Name="dueDate" ColumnName="dueDate" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="InvoicedMasterId" ColumnName="InvoicedMasterId" />
+                <ScalarProperty Name="MR_OrderMasterId" ColumnName="MR_OrderMasterId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="PartyBalanceAmountViewByVoucherNoVoucherTypeIdAndReferenceType" FunctionName="IMEModel.Store.PartyBalanceAmountViewByVoucherNoVoucherTypeIdAndReferenceType" />
           <FunctionImportMapping FunctionImportName="PartyBalanceDeleteByVoucherTypeVoucherNoAndReferenceType" FunctionName="IMEModel.Store.PartyBalanceDeleteByVoucherTypeVoucherNoAndReferenceType" />
           <FunctionImportMapping FunctionImportName="PartyBalanceEditByVoucherNoVoucherTypeIdAndReferenceType" FunctionName="IMEModel.Store.PartyBalanceEditByVoucherNoVoucherTypeIdAndReferenceType" />
@@ -20226,9 +20400,64 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImportMapping FunctionImportName="PurchaseMasterDelete" FunctionName="IMEModel.Store.PurchaseMasterDelete" />
           <FunctionImportMapping FunctionImportName="PurchaseMasterEdit" FunctionName="IMEModel.Store.PurchaseMasterEdit" />
           <FunctionImportMapping FunctionImportName="PurchaseMasterReferenceCheck" FunctionName="IMEModel.Store.PurchaseMasterReferenceCheck" />
-          <FunctionImportMapping FunctionImportName="PurchaseMasterView" FunctionName="IMEModel.Store.PurchaseMasterView" />
+          <FunctionImportMapping FunctionImportName="PurchaseMasterView" FunctionName="IMEModel.Store.PurchaseMasterView">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.PurchaseMasterView_Result">
+                <ScalarProperty Name="purchaseMasterId" ColumnName="purchaseMasterId" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="vendorInvoiceNo" ColumnName="vendorInvoiceNo" />
+                <ScalarProperty Name="vendorInvoiceDate" ColumnName="vendorInvoiceDate" />
+                <ScalarProperty Name="creditPeriod" ColumnName="creditPeriod" />
+                <ScalarProperty Name="exchangeRateId" ColumnName="exchangeRateId" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="purchaseAccount" ColumnName="purchaseAccount" />
+                <ScalarProperty Name="purchaseOrderId" ColumnName="purchaseOrderId" />
+                <ScalarProperty Name="materialReceiptMasterId" ColumnName="materialReceiptMasterId" />
+                <ScalarProperty Name="additionalCost" ColumnName="additionalCost" />
+                <ScalarProperty Name="totalTax" ColumnName="totalTax" />
+                <ScalarProperty Name="billDiscount" ColumnName="billDiscount" />
+                <ScalarProperty Name="grandTotal" ColumnName="grandTotal" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="lrNo" ColumnName="lrNo" />
+                <ScalarProperty Name="transportationCompany" ColumnName="transportationCompany" />
+                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="PurchaseMasterVoucherMax" FunctionName="IMEModel.Store.PurchaseMasterVoucherMax" />
-          <FunctionImportMapping FunctionImportName="PurchaseOrderDetailsViewByOrderMasterIdWithRemainingByNotInCurrPI" FunctionName="IMEModel.Store.PurchaseOrderDetailsViewByOrderMasterIdWithRemainingByNotInCurrPI" />
+          <FunctionImportMapping FunctionImportName="PurchaseOrderDetailsViewByOrderMasterIdWithRemainingByNotInCurrPI" FunctionName="IMEModel.Store.PurchaseOrderDetailsViewByOrderMasterIdWithRemainingByNotInCurrPI">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.PurchaseOrderDetailsViewByOrderMasterIdWithRemainingByNotInCurrPI_Result">
+                <ScalarProperty Name="purchaseDetailsId" ColumnName="purchaseDetailsId" />
+                <ScalarProperty Name="purchaseOrderDetailsId" ColumnName="purchaseOrderDetailsId" />
+                <ScalarProperty Name="materialReceiptDetailsId" ColumnName="materialReceiptDetailsId" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="barcode" ColumnName="barcode" />
+                <ScalarProperty Name="Article_No" ColumnName="Article_No" />
+                <ScalarProperty Name="productName" ColumnName="productName" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="unitConversionId" ColumnName="unitConversionId" />
+                <ScalarProperty Name="unitId" ColumnName="unitId" />
+                <ScalarProperty Name="godownId" ColumnName="godownId" />
+                <ScalarProperty Name="rackId" ColumnName="rackId" />
+                <ScalarProperty Name="batchId" ColumnName="batchId" />
+                <ScalarProperty Name="rate" ColumnName="rate" />
+                <ScalarProperty Name="grossValue" ColumnName="grossValue" />
+                <ScalarProperty Name="discountPercent" ColumnName="discountPercent" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+                <ScalarProperty Name="netvalue" ColumnName="netvalue" />
+                <ScalarProperty Name="taxId" ColumnName="taxId" />
+                <ScalarProperty Name="taxAmount" ColumnName="taxAmount" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="PurchaseOrderMasterView" FunctionName="IMEModel.Store.PurchaseOrderMasterView">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.PurchaseOrderMasterView_Result">
@@ -20245,7 +20474,25 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="PurchaseOrderMasterViewByOrderMasterId" FunctionName="IMEModel.Store.PurchaseOrderMasterViewByOrderMasterId" />
+          <FunctionImportMapping FunctionImportName="PurchaseOrderMasterViewByOrderMasterId" FunctionName="IMEModel.Store.PurchaseOrderMasterViewByOrderMasterId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.PurchaseOrderMasterViewByOrderMasterId_Result">
+                <ScalarProperty Name="FicheNo" ColumnName="FicheNo" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="dueDate" ColumnName="dueDate" />
+                <ScalarProperty Name="cancelled" ColumnName="cancelled" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="exchangeRateId" ColumnName="exchangeRateId" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="Refer" ColumnName="Refer" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="PurchaseReturnDetailsDelete" FunctionName="IMEModel.Store.PurchaseReturnDetailsDelete" />
           <FunctionImportMapping FunctionImportName="PurchaseReturnDetailsQtyViewByPurchaseDetailsId" FunctionName="IMEModel.Store.PurchaseReturnDetailsQtyViewByPurchaseDetailsId" />
           <FunctionImportMapping FunctionImportName="PurchaseReturnDetailsViewByMasterId" FunctionName="IMEModel.Store.PurchaseReturnDetailsViewByMasterId">

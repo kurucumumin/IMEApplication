@@ -15,10 +15,10 @@ namespace LoginForm.DataSet
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class IME : DbContext
+    public partial class IMEEntities : DbContext
     {
-        public IME()
-            : base("name=IME")
+        public IMEEntities()
+            : base("name=IMEEntities")
         {
         }
     
@@ -1074,7 +1074,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetMaterialReceiptNoCorrespondingtoLedgerByNotInCurrPI_Result>("GetMaterialReceiptNoCorrespondingtoLedgerByNotInCurrPI", ledgerIdParameter, purchaseMasterIdParameter);
         }
     
-        public virtual int GetOrderNoCorrespondingtoLedgerByNotInCurrPI(Nullable<decimal> ledgerId, Nullable<decimal> purchaseMasterId)
+        public virtual ObjectResult<GetOrderNoCorrespondingtoLedgerByNotInCurrPI_Result> GetOrderNoCorrespondingtoLedgerByNotInCurrPI(Nullable<decimal> ledgerId, Nullable<decimal> purchaseMasterId)
         {
             var ledgerIdParameter = ledgerId.HasValue ?
                 new ObjectParameter("ledgerId", ledgerId) :
@@ -1084,7 +1084,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("purchaseMasterId", purchaseMasterId) :
                 new ObjectParameter("purchaseMasterId", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("GetOrderNoCorrespondingtoLedgerByNotInCurrPI", ledgerIdParameter, purchaseMasterIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetOrderNoCorrespondingtoLedgerByNotInCurrPI_Result>("GetOrderNoCorrespondingtoLedgerByNotInCurrPI", ledgerIdParameter, purchaseMasterIdParameter);
         }
     
         public virtual ObjectResult<GetPurchaseReturnInvoiceNoCorrespondingtoLedger_Result> GetPurchaseReturnInvoiceNoCorrespondingtoLedger(Nullable<decimal> ledgerId, Nullable<decimal> purchaseReturnMasterId, Nullable<decimal> voucherTypeId)
@@ -1299,31 +1299,31 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MaterialReceiptDetailsViewByMaterialReceiptMasterIdWithRemainingByNotInCurrPI_Result>("MaterialReceiptDetailsViewByMaterialReceiptMasterIdWithRemainingByNotInCurrPI", materialReceiptMasterIdParameter, purchaseMasterIdParameter, voucherTypeIdParameter);
         }
     
-        public virtual int MaterialReceiptMasterView(Nullable<decimal> materialReceiptMasterId)
+        public virtual ObjectResult<MaterialReceiptMasterView_Result> MaterialReceiptMasterView(Nullable<decimal> materialReceiptMasterId)
         {
             var materialReceiptMasterIdParameter = materialReceiptMasterId.HasValue ?
                 new ObjectParameter("materialReceiptMasterId", materialReceiptMasterId) :
                 new ObjectParameter("materialReceiptMasterId", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MaterialReceiptMasterView", materialReceiptMasterIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MaterialReceiptMasterView_Result>("MaterialReceiptMasterView", materialReceiptMasterIdParameter);
         }
     
-        public virtual int MaterialReceiptMasterViewByReceiptMasterId(Nullable<decimal> materialReceiptMasterId)
+        public virtual ObjectResult<MaterialReceiptMasterViewByReceiptMasterId_Result> MaterialReceiptMasterViewByReceiptMasterId(Nullable<decimal> materialReceiptMasterId)
         {
             var materialReceiptMasterIdParameter = materialReceiptMasterId.HasValue ?
                 new ObjectParameter("MaterialReceiptMasterId", materialReceiptMasterId) :
                 new ObjectParameter("MaterialReceiptMasterId", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("MaterialReceiptMasterViewByReceiptMasterId", materialReceiptMasterIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MaterialReceiptMasterViewByReceiptMasterId_Result>("MaterialReceiptMasterViewByReceiptMasterId", materialReceiptMasterIdParameter);
         }
     
-        public virtual int OverduePurchaseOrdersCorrespondingAccountLedger(Nullable<decimal> accountLedgerId)
+        public virtual ObjectResult<OverduePurchaseOrdersCorrespondingAccountLedger_Result> OverduePurchaseOrdersCorrespondingAccountLedger(Nullable<decimal> accountLedgerId)
         {
             var accountLedgerIdParameter = accountLedgerId.HasValue ?
                 new ObjectParameter("accountLedgerId", accountLedgerId) :
                 new ObjectParameter("accountLedgerId", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("OverduePurchaseOrdersCorrespondingAccountLedger", accountLedgerIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<OverduePurchaseOrdersCorrespondingAccountLedger_Result>("OverduePurchaseOrdersCorrespondingAccountLedger", accountLedgerIdParameter);
         }
     
         public virtual ObjectResult<Nullable<decimal>> PartyBalanceAmountViewByVoucherNoVoucherTypeIdAndReferenceType(string voucherNo, Nullable<decimal> voucherTypeId, string referenceType)
@@ -2326,13 +2326,13 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("PurchaseMasterReferenceCheck", purchaseMasterIdParameter, purchaseDetailsIdParameter);
         }
     
-        public virtual int PurchaseMasterView(Nullable<decimal> purchaseMasterId)
+        public virtual ObjectResult<PurchaseMasterView_Result> PurchaseMasterView(Nullable<decimal> purchaseMasterId)
         {
             var purchaseMasterIdParameter = purchaseMasterId.HasValue ?
                 new ObjectParameter("purchaseMasterId", purchaseMasterId) :
                 new ObjectParameter("purchaseMasterId", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PurchaseMasterView", purchaseMasterIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PurchaseMasterView_Result>("PurchaseMasterView", purchaseMasterIdParameter);
         }
     
         public virtual ObjectResult<Nullable<decimal>> PurchaseMasterVoucherMax(Nullable<decimal> voucherTypeId)
@@ -2344,7 +2344,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("PurchaseMasterVoucherMax", voucherTypeIdParameter);
         }
     
-        public virtual int PurchaseOrderDetailsViewByOrderMasterIdWithRemainingByNotInCurrPI(string purchaseOrderMasterId, Nullable<decimal> purchaseMasterId, Nullable<decimal> voucherTypeId)
+        public virtual ObjectResult<PurchaseOrderDetailsViewByOrderMasterIdWithRemainingByNotInCurrPI_Result> PurchaseOrderDetailsViewByOrderMasterIdWithRemainingByNotInCurrPI(string purchaseOrderMasterId, Nullable<decimal> purchaseMasterId, Nullable<decimal> voucherTypeId)
         {
             var purchaseOrderMasterIdParameter = purchaseOrderMasterId != null ?
                 new ObjectParameter("purchaseOrderMasterId", purchaseOrderMasterId) :
@@ -2358,7 +2358,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("voucherTypeId", voucherTypeId) :
                 new ObjectParameter("voucherTypeId", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PurchaseOrderDetailsViewByOrderMasterIdWithRemainingByNotInCurrPI", purchaseOrderMasterIdParameter, purchaseMasterIdParameter, voucherTypeIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PurchaseOrderDetailsViewByOrderMasterIdWithRemainingByNotInCurrPI_Result>("PurchaseOrderDetailsViewByOrderMasterIdWithRemainingByNotInCurrPI", purchaseOrderMasterIdParameter, purchaseMasterIdParameter, voucherTypeIdParameter);
         }
     
         public virtual ObjectResult<PurchaseOrderMasterView_Result> PurchaseOrderMasterView(Nullable<decimal> purchaseOrderMasterId)
@@ -2370,13 +2370,13 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PurchaseOrderMasterView_Result>("PurchaseOrderMasterView", purchaseOrderMasterIdParameter);
         }
     
-        public virtual int PurchaseOrderMasterViewByOrderMasterId(string orderMasterId)
+        public virtual ObjectResult<PurchaseOrderMasterViewByOrderMasterId_Result> PurchaseOrderMasterViewByOrderMasterId(string orderMasterId)
         {
             var orderMasterIdParameter = orderMasterId != null ?
                 new ObjectParameter("orderMasterId", orderMasterId) :
                 new ObjectParameter("orderMasterId", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("PurchaseOrderMasterViewByOrderMasterId", orderMasterIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PurchaseOrderMasterViewByOrderMasterId_Result>("PurchaseOrderMasterViewByOrderMasterId", orderMasterIdParameter);
         }
     
         public virtual int PurchaseReturnDetailsDelete(Nullable<decimal> purchaseReturnDetailsId)
