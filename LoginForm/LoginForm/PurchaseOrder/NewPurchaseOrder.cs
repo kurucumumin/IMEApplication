@@ -75,6 +75,7 @@ namespace LoginForm.PurchaseOrder
         private void NewPurchaseOrder_Load(object sender, EventArgs e)
         {
             IMEEntities IME = new IMEEntities();
+            txtOrderNumber.Enabled = false;
             if (IME.PurchaseOrders.Count() == 0)
             {
                 txtOrderNumber.Text = "1";

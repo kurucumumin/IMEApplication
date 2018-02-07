@@ -242,10 +242,10 @@
             // purchaseOrderId
             // 
             this.purchaseOrderId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.purchaseOrderId.HeaderText = "purchaseOrderId";
+            this.purchaseOrderId.HeaderText = "ID";
             this.purchaseOrderId.Name = "purchaseOrderId";
             this.purchaseOrderId.ReadOnly = true;
-            this.purchaseOrderId.Width = 111;
+            this.purchaseOrderId.Width = 43;
             // 
             // FicheNo
             // 

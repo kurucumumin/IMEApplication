@@ -152,6 +152,7 @@ namespace LoginForm.PurchaseOrder
                     pod.AccountNumber = 8894479;
                 }
                 pod.purchaseOrderId = po.purchaseOrderId;
+                //pod.purchaseOrderId = puchaseId;
                 pod.Unit = row.Cells[13].Value.ToString();
                 podList.Add(pod);
             }
