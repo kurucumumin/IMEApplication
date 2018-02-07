@@ -18,7 +18,7 @@ namespace LoginForm.PurchaseOrder
     {
         IMEEntities IME = new IMEEntities();
         List<SaleOrderDetail> saleItemList = new List<SaleOrderDetail>();
-        string purchasecode;
+        int purchasecode;
 
         public NewPurchaseOrder()
         {
@@ -31,12 +31,12 @@ namespace LoginForm.PurchaseOrder
             PurchaseOrdersDetailFill(item_code);
         }
 
-        public NewPurchaseOrder(int ficheNo, int sayac)
+        public NewPurchaseOrder(int purchaseId, int sayac)
         {
             InitializeComponent();
 
             if (sayac == 1)
-                PurchaseOrdersDetailFill2(ficheNo);
+                PurchaseOrdersDetailFill2(purchaseId);
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -55,7 +55,7 @@ namespace LoginForm.PurchaseOrder
             if (rowList.Count != 0)
             {
                 //PurchaseExportFiles form = new PurchaseExportFiles(rowList, purchasecode);
-                PurchaseExportFiles form = new PurchaseExportFiles(rowList, txtOrderNumber.Text);
+                PurchaseExportFiles form = new PurchaseExportFiles(rowList, Convert.ToInt32(txtOrderNumber.Text));
                 form.ShowDialog();
                 this.Close();
             }
@@ -78,13 +78,13 @@ namespace LoginForm.PurchaseOrder
             if (IME.PurchaseOrders.Count() == 0)
             {
                 txtOrderNumber.Text = "1";
-                purchasecode = "1";
+                purchasecode = 1;
             }
             else
             {
-                purchasecode = IME.PurchaseOrders.OrderByDescending(q => q.FicheNo).FirstOrDefault().FicheNo;
-                txtOrderNumber.Text = (Int32.Parse(purchasecode) + 1).ToString();
-                purchasecode = (Int32.Parse(purchasecode) + 1).ToString();
+                purchasecode = IME.PurchaseOrders.OrderByDescending(q => q.purchaseOrderId).FirstOrDefault().purchaseOrderId;
+                txtOrderNumber.Text = (purchasecode + 1).ToString();
+                purchasecode = purchasecode + 1;
             }
         }
 
@@ -141,11 +141,11 @@ namespace LoginForm.PurchaseOrder
 
         }
 
-        private void PurchaseOrdersDetailFill2(int ficheNo)
+        private void PurchaseOrdersDetailFill2(int purchaseId)
         {
             IME = new IMEEntities();
             #region Purchase Orders Detail Fill
-            var adapter = (from p in IME.PurchaseOrderDetails.Where(p => p.purchaseOrderId == ficheNo)
+            var adapter = (from p in IME.PurchaseOrderDetails.Where(p => p.purchaseOrderId == purchaseId)
                            select new
                            {
                                p.PurchaseOrder.Customer.c_name,

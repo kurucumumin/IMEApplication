@@ -21,7 +21,7 @@ namespace LoginForm.PurchaseOrder
         IMEEntities IME = new IMEEntities();
         List<DataGridViewRow> rowList = new List<DataGridViewRow>();
         List<Mail> MailList = new List<Mail>();
-        string fiche;
+        int puchaseId;
         SmtpClient sc = new SmtpClient();
         MailMessage mail = new MailMessage();
         List<string> ccList = new List<string>();
@@ -33,11 +33,11 @@ namespace LoginForm.PurchaseOrder
             InitializeComponent();
         }
 
-        public PurchaseExportFiles(List<DataGridViewRow> List, string ficheNo)
+        public PurchaseExportFiles(List<DataGridViewRow> List, int purchase_Id)
         {
             InitializeComponent();
             rowList = List;
-            fiche = ficheNo;
+            puchaseId = purchase_Id;
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -115,15 +115,16 @@ namespace LoginForm.PurchaseOrder
             DataSet.PurchaseOrder po = new DataSet.PurchaseOrder();
             decimal s = (decimal)rowList[0].Cells["SaleID"].Value;
 
-            po.FicheNo = fiche.ToString();
+            po.purchaseOrderId = puchaseId;
             po.CustomerID = IME.SaleOrders.Where(a => a.SaleOrderID == s).FirstOrDefault().CustomerID;
             po.PurchaseOrderDate = DateTime.Today.Date;
             po.CameDate = IME.SaleOrders.Where(a => a.SaleOrderID == s).FirstOrDefault().SaleDate;
+            po.FicheNo = filename;
 
             IME.PurchaseOrders.Add(po);
             IME.SaveChanges();
-
-            po = IME.PurchaseOrders.Where(x => x.FicheNo == fiche.ToString()).FirstOrDefault();
+              
+            po = IME.PurchaseOrders.Where(x => x.purchaseOrderId == puchaseId).FirstOrDefault();
 
             List<PurchaseOrderDetail> podList = new List<PurchaseOrderDetail>();
 
@@ -216,18 +217,7 @@ namespace LoginForm.PurchaseOrder
             {
                 filler1 = filler1 + " ";
             }
-            //switch (sale.SaleOrderDetails.FirstOrDefault().DependantTable)
-            //{
-            //    case "sd":
-            //        COO = IME.SuperDisks.Where(a => a.Article_No == articleNO).FirstOrDefault().CofO;
-            //        break;
-            //    case "sdP":
-            //        COO = IME.SuperDiskPs.Where(a => a.Article_No == articleNO).FirstOrDefault().CofO;
-            //        break;
-            //    case "exd":
-            //        COO = IME.ExtendedRanges.Where(a => a.ArticleNo == articleNO).FirstOrDefault().CountryofOrigin;
-            //        break;
-            //}
+            
             Line1 = "FH" + COO + OrderDate + OrderTime + filler1;
             TXTList.Add(Line1);
             string Line2 = "";
@@ -250,7 +240,7 @@ namespace LoginForm.PurchaseOrder
             else { OrderNature = "D"; }
             string PackType = " ";
             string OrderNumber = "     ";
-            string CustomerDistOrderReference = Convert.ToString(fiche);
+            string CustomerDistOrderReference = Convert.ToString(puchaseId);
             CustomerDistOrderReference = CustomerDistOrderReference+"/DB/"+Convert.ToDateTime(IME.CurrentDate().First()).ToString("MMM") +"/"+Convert.ToDateTime(IME.CurrentDate().First()).ToString("yy");
             int CustomerDistOrderReferencelength = CustomerDistOrderReference.Length;
             for (int i = 0; i < 30- CustomerDistOrderReferencelength; i++)

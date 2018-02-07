@@ -15,32 +15,32 @@ namespace LoginForm.PurchaseOrder
     public partial class PurchaseOrderMain : Form
     {
         IMEEntities IME = new IMEEntities();
-        string ficheNumber;
+        int purchaseId;
 
         public PurchaseOrderMain()
         {
             InitializeComponent();
         }
 
-        public PurchaseOrderMain(string ficheNo)
+        public PurchaseOrderMain(int purchaseOrderId)
         {
             InitializeComponent();
-            ficheNumber = ficheNo;
+            purchaseId = purchaseOrderId;
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
             #region ProductHistory
-            int fish_no =0;
+            int purchaseId =0;
 
-            if (dgPurchase.CurrentRow.Cells["FicheNo"].Value != null)
-                fish_no = Convert.ToInt32(dgPurchase.CurrentRow.Cells["FicheNo"].Value.ToString());
+            if (dgPurchase.CurrentRow.Cells["purchaseOrderId"].Value != null)
+                purchaseId = Convert.ToInt32(dgPurchase.CurrentRow.Cells["purchaseOrderId"].Value);
             if (dgPurchase.CurrentRow.Cells["FicheNo"].Value == null)
                 MessageBox.Show("Please Enter a Fiche No", "Eror !");
             else
             {
-                fish_no = Convert.ToInt32(dgPurchase.CurrentRow.Cells["FicheNo"].Value.ToString());
-                NewPurchaseOrder f = new NewPurchaseOrder(fish_no, 1);
+                purchaseId = Convert.ToInt32(dgPurchase.CurrentRow.Cells["purchaseOrderId"].Value);
+                NewPurchaseOrder f = new NewPurchaseOrder(purchaseId, 1);
                 try { this.Hide(); f.ShowDialog(); this.Show(); } catch { }
             }
             #endregion
@@ -54,10 +54,11 @@ namespace LoginForm.PurchaseOrder
             for (int i = 0; i < dgPurchase.RowCount - 1; i++)
             {
                 DataGridViewRow row = dgPurchase.Rows[i];
-                string ID =row.Cells[FicheNo.Index].Value.ToString();
+                int ID =Convert.ToInt32(row.Cells[purchaseOrderId.Index].Value);
                 if (row.Cells[FicheNo.Index].Value != null)
                 {
-                    var adapter = IME.PurchaseOrders.Where(a => a.FicheNo == ID).FirstOrDefault();
+                    var adapter = IME.PurchaseOrders.Where(a => a.purchaseOrderId == ID).FirstOrDefault();
+                    adapter.purchaseOrderId = Convert.ToInt32(row.Cells[purchaseOrderId.Index].Value);
                     adapter.FicheNo = row.Cells[FicheNo.Index].Value.ToString();
                     adapter.PurchaseOrderDate = (DateTime)row.Cells[PurchaseOrderDate.Index].Value;
                     adapter.CustomerID = row.Cells[CustomerID.Index].Value.ToString();
@@ -93,6 +94,7 @@ namespace LoginForm.PurchaseOrder
                            where p.PurchaseOrderDate >= endDate && p.PurchaseOrderDate <= startDate
                            select new
                            {
+                               p.purchaseOrderId,
                                p.FicheNo,
                                p.PurchaseOrderDate,
                                p.CustomerID,
@@ -106,6 +108,7 @@ namespace LoginForm.PurchaseOrder
                 int rowIndex = dgPurchase.Rows.Add();
                 DataGridViewRow row = dgPurchase.Rows[rowIndex];
 
+                row.Cells[purchaseOrderId.Index].Value = item.purchaseOrderId;
                 row.Cells[FicheNo.Index].Value = item.FicheNo;
                 row.Cells[PurchaseOrderDate.Index].Value = item.PurchaseOrderDate;
                 row.Cells[CustomerID.Index].Value = item.CustomerID;
@@ -138,6 +141,7 @@ namespace LoginForm.PurchaseOrder
                     var fichenolist = (from p in IME.PurchaseOrders.Where(p => p.Customer.c_name == search)
                                        select new
                                        {
+                                           p.purchaseOrderId,
                                            p.FicheNo,
                                            p.PurchaseOrderDate,
                                            p.CustomerID,
@@ -153,18 +157,20 @@ namespace LoginForm.PurchaseOrder
                     dgPurchase.Columns[3].Visible = false;
                     dgPurchase.Columns[4].Visible = false;
                     dgPurchase.Columns[5].Visible = false;
+                    dgPurchase.Columns[6].Visible = false;
                     #endregion
                     dgPurchase.DataSource = fichenolist.ToList();
                 }
                 else
                 {
                     string sayac =search;
-                 var fno = IME.PurchaseOrders.Where(b => b.FicheNo == sayac).FirstOrDefault();
+                 var fno = IME.PurchaseOrders.Where(b => b.purchaseOrderId == Convert.ToInt32(sayac)).FirstOrDefault();
                     if (fno != null)
                     {
-                        var fichenolist = (from p in IME.PurchaseOrders.Where(p => p.FicheNo == sayac)
+                        var fichenolist = (from p in IME.PurchaseOrders.Where(p => p.purchaseOrderId == Convert.ToInt32(sayac))
                                            select new
                                            {
+                                               p.purchaseOrderId,
                                                p.FicheNo,
                                                p.PurchaseOrderDate,
                                                p.CustomerID,
@@ -180,6 +186,7 @@ namespace LoginForm.PurchaseOrder
                         dgPurchase.Columns[3].Visible = false;
                         dgPurchase.Columns[4].Visible = false;
                         dgPurchase.Columns[5].Visible = false;
+                        dgPurchase.Columns[6].Visible = false;
                         #endregion
                         dgPurchase.DataSource = fichenolist.ToList();
                     }
@@ -215,6 +222,7 @@ namespace LoginForm.PurchaseOrder
                            //.Where(po => po.Invoice != null && po.Invoice == sayac)
                            select new
                            {
+                               po.purchaseOrderId,
                                po.FicheNo,
                                po.PurchaseOrderDate,
                                po.CustomerID,
@@ -227,8 +235,8 @@ namespace LoginForm.PurchaseOrder
 
         private void btnExcel_Click(object sender, EventArgs e)
         {
-            string PurchaseNo = dgPurchase.CurrentRow.Cells[0].Value.ToString();
-            ExcelPurchaseOrder.Export(dgPurchase, PurchaseNo);
+            int PurchaseNo = Convert.ToInt32(dgPurchase.CurrentRow.Cells[0].Value);
+            ExcelPurchaseOrder.Export(dgPurchase, PurchaseNo.ToString());
         }
 
         private void dgPurchase_DataError(object sender, DataGridViewDataErrorEventArgs e)
@@ -247,16 +255,16 @@ namespace LoginForm.PurchaseOrder
         private void dgPurchase_DoubleClick(object sender, EventArgs e)
         {
             #region ProductHistory
-            int fish_no = 0;
+            int purchase_Id = 0;
 
-            if (dgPurchase.CurrentRow.Cells["FicheNo"].Value != null)
-                fish_no = Convert.ToInt32(dgPurchase.CurrentRow.Cells["FicheNo"].Value.ToString());
-            if (dgPurchase.CurrentRow.Cells["FicheNo"].Value == null)
-                MessageBox.Show("Please Enter a Fiche No", "Eror !");
+            if (dgPurchase.CurrentRow.Cells["purchaseOrderId"].Value != null)
+                purchase_Id = Convert.ToInt32(dgPurchase.CurrentRow.Cells["purchaseOrderId"].Value);
+            if (dgPurchase.CurrentRow.Cells["purchaseOrderId"].Value == null)
+                MessageBox.Show("Please Enter a purchaseOrderId", "Eror !");
             else
             {
-                fish_no = Convert.ToInt32(dgPurchase.CurrentRow.Cells["FicheNo"].Value.ToString());
-                NewPurchaseOrder f = new NewPurchaseOrder(fish_no, 1);
+                purchase_Id = Convert.ToInt32(dgPurchase.CurrentRow.Cells["purchaseOrderId"].Value);
+                NewPurchaseOrder f = new NewPurchaseOrder(purchase_Id, 1);
                 try { this.Hide(); f.ShowDialog(); this.Show(); } catch { }
             }
             #endregion
