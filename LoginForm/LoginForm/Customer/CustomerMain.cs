@@ -121,12 +121,12 @@ namespace LoginForm
             Represantative1.DataSource = IME.Workers.ToList();
             Represantative1.DisplayMember = "NameLastName";
             Represantative1.ValueMember = "WorkerID";
-            SubCategory.DataSource = IME.CustomerSubCategories.ToList();
-            SubCategory.DisplayMember = "subcategoryname";
-            SubCategory.ValueMember = "ID";
             MainCategory.DataSource = IME.CustomerCategories.ToList();
             MainCategory.DisplayMember = "categoryname";
             MainCategory.ValueMember = "ID";
+            SubCategory.DataSource = IME.CustomerSubCategories.ToList();
+            SubCategory.DisplayMember = "subcategoryname";
+            SubCategory.ValueMember = "ID";
             QuoCurrencyName.DataSource = IME.Currencies.ToList();
             QuoCurrencyName.DisplayMember = "currencyName";
             QuoCurrencyName.ValueMember = "currencyId";
@@ -253,7 +253,6 @@ namespace LoginForm
             try { c_categoryID = ((CustomerCategory)((ComboBox)sender).SelectedValue).ID; } catch { c_categoryID = 0; }
             SubCategory.DataSource = IME.CustomerSubCategories.Where(b => b.categoryID == c_categoryID).ToList();
             SubCategory.DisplayMember = "subcategoryname";
-            SubCategory.ValueMember = "ID";
         }
 
         private void Search_Click(object sender, EventArgs e)
