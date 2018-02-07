@@ -11,7 +11,7 @@ namespace LoginForm.PurchaseOrder
 {
     class ExcelPurchaseOrder
     {
-        public static void Export(DataGridView dg, string ficheNo)
+        public static void Export(DataGridView dg, string purchaseId)
         {
             #region Copy All Items
             dg.SelectAll();
@@ -43,8 +43,8 @@ namespace LoginForm.PurchaseOrder
             }
             SaveFileDialog savefile = new SaveFileDialog();
             savefile.Filter = "Excel Files (*.xls)|*.xls|All files (*.xls)|*.xls";
-            ficheNo = ficheNo.Replace("/", "-");
-            savefile.FileName = ficheNo;
+            purchaseId = purchaseId.Replace("/", "-");
+            savefile.FileName = purchaseId;
             if (savefile.ShowDialog() == DialogResult.OK)
             {
                 string path = savefile.FileName;
