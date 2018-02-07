@@ -183,19 +183,31 @@ namespace LoginForm.QuotationModule
             if (GetUserAutorities(1021)) { txtTotalMarge.Visible = true; cbDeliverDiscount.Visible = true; }
         }
 
-        private void txtCustomerName_KeyDown(object sender, KeyEventArgs e)
+        //private void txtCustomerName_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    if (e.KeyCode == Keys.Enter)
+        //    {
+        //        classQuotationAdd.customersearchID = "";
+        //        classQuotationAdd.customersearchname = txtCustomerName.Text;
+        //        FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch();
+        //        this.Enabled = false;
+        //        form.ShowDialog();
+        //        this.Enabled = true;
+        //        fillCustomer();
+        //        if (classQuotationAdd.customersearchID != "") { cbRep.DataSource = IME.CustomerWorkers.Where(a => a.customerID == IME.Customers.Where(b => b.ID == classQuotationAdd.customersearchID).FirstOrDefault().ID).ToList(); cbRep.DisplayMember = "cw_name"; }
+        //    }
+        //}
+
+        private void SearchCustomerWithName()
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                classQuotationAdd.customersearchID = "";
-                classQuotationAdd.customersearchname = txtCustomerName.Text;
-                FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch();
-                this.Enabled = false;
-                form.ShowDialog();
-                this.Enabled = true;
-                fillCustomer();
-                if (classQuotationAdd.customersearchID != "") { cbRep.DataSource = IME.CustomerWorkers.Where(a => a.customerID == IME.Customers.Where(b => b.ID == classQuotationAdd.customersearchID).FirstOrDefault().ID).ToList(); cbRep.DisplayMember = "cw_name"; }
-            }
+            classQuotationAdd.customersearchID = "";
+            classQuotationAdd.customersearchname = txtCustomerName.Text;
+            FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch();
+            this.Enabled = false;
+            form.ShowDialog();
+            this.Enabled = true;
+            fillCustomer();
+            if (classQuotationAdd.customersearchID != "") { cbRep.DataSource = IME.CustomerWorkers.Where(a => a.customerID == IME.Customers.Where(b => b.ID == classQuotationAdd.customersearchID).FirstOrDefault().ID).ToList(); cbRep.DisplayMember = "cw_name"; }
         }
 
         private void fillCustomer()
@@ -2861,14 +2873,14 @@ namespace LoginForm.QuotationModule
 
         private void btnImportFromXML_Click(object sender, EventArgs e)
         {
-            XmlToQuotation xml;
+            XmlObject xml;
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "xml files (*.xml)|*.xml";
             DialogResult result = openFileDialog.ShowDialog();
 
             if (result == DialogResult.OK)
             {
-                xml = new XmlToQuotation(openFileDialog.FileName);
+                xml = new XmlObject(openFileDialog.FileName);
 
                 int index = 0;
                 List<XmlProduct> productList = xml.XmlGetProductInfo();
