@@ -1,4 +1,5 @@
 ﻿using LoginForm.DataSet;
+using LoginForm.Services;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,6 +12,8 @@ namespace LoginForm.QuotationModule
     {
         IMEEntities IME = new IMEEntities();
         public Customer customer;
+        public XmlCustomer xmlCustomer;
+        bool fromXmlCustomer = false;
         public FormQuaotationCustomerSearch()
         {
             InitializeComponent();
@@ -22,12 +25,30 @@ namespace LoginForm.QuotationModule
             this.customer = customer;
         }
 
+        public FormQuaotationCustomerSearch(XmlCustomer customer)
+        {
+            InitializeComponent();
+            fromXmlCustomer = true;
+            this.xmlCustomer = customer;
+        }
+
         private void FormQuaotationCustomerSearch_Load(object sender, EventArgs e)
         {
             CustomerCode.Text = classQuotationAdd.customersearchID.ToString();
             CustomerName.Text = classQuotationAdd.customersearchname;
             List<Customer> c = classQuotationAdd.CustomerSearch();
             CustomerSearchGrid.DataSource = c;
+            if(fromXmlCustomer && c.Count <= 0)
+            {
+                MessageBox.Show("Customer Not Found!");
+                frmXmlCustomerAdd frm = new frmXmlCustomerAdd(xmlCustomer);
+                frm.ShowDialog();
+            }
+            else
+            {
+                CustomerSearchGrid.DataSource = c;
+            }
+
         }
 
         private void CustomerSearchGrid_DoubleClick(object sender, EventArgs e)

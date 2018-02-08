@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>52</ApplicationRevision>
+    <ApplicationRevision>55</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -840,6 +840,9 @@
     <Compile Include="DataSet\MonthlySalary.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\MultipleAccountLedgerComboFill_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Note.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1380,6 +1383,12 @@
     <Compile Include="QuotationModule\frmQuotationExport.Designer.cs">
       <DependentUpon>frmQuotationExport.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuotationModule\frmXmlCustomerAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuotationModule\frmXmlCustomerAdd.Designer.cs">
+      <DependentUpon>frmXmlCustomerAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuotationModule\ViewProductHistory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1719,6 +1728,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\frmQuotationExport.resx">
       <DependentUpon>frmQuotationExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuotationModule\frmXmlCustomerAdd.resx">
+      <DependentUpon>frmXmlCustomerAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\ViewProductHistory.resx">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>

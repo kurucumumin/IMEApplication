@@ -16,7 +16,6 @@ namespace LoginForm
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
                 var dep = IME.CustomerCategories.Where(a => a.categoryname == comboBox1.Text).FirstOrDefault();
                 if (dep != null)
                 {

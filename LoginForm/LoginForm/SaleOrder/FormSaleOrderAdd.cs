@@ -408,7 +408,7 @@ namespace LoginForm.nmSaleOrder
                                 {
 
                                     this.Enabled = false;
-                                    FormQuotationItemSearch itemsearch = new FormQuotationItemSearch(dgSaleAddedItems.CurrentCell.Value.ToString());
+                                    FormSaleItemSearch itemsearch = new FormSaleItemSearch(dgSaleAddedItems.CurrentCell.Value.ToString());
                                     itemsearch.ShowDialog();
 
                                         //Bu item daha önceden eklimi diye kontrol ediyor
@@ -1669,7 +1669,7 @@ namespace LoginForm.nmSaleOrder
             //if (q.ForFinancelIsTrue == 1) { chkbForFinance.Checked = true; }
             fillCustomer();
             #region QuotationDetails
-            cbCurrency.SelectedIndex = 1;
+            cbCurrency.SelectedValue = Utils.getManagement().DefaultCurrency;
             //cbCurrType.SelectedItem = q.CurrType;
             cbWorkers.SelectedValue = (customer.MainContactID != null) ? customer.MainContactID : cbWorkers.SelectedValue;
             int rowcount = 0;
@@ -2659,7 +2659,7 @@ namespace LoginForm.nmSaleOrder
             {
                 string ArticleNO = null;
                 if (dgSaleAddedItems.CurrentCell.Value != null) ArticleNO = dgSaleAddedItems.CurrentCell.Value.ToString();
-                FormQuotationItemSearch itemsearch = new FormQuotationItemSearch(ArticleNO);
+                FormSaleItemSearch itemsearch = new FormSaleItemSearch(ArticleNO);
                 itemsearch.ShowDialog();
                 try
                 {
