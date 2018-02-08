@@ -41,5 +41,34 @@ namespace LoginForm
             return dtbl;
         }
 
+        public int ServiceMasterGetMax(decimal decVoucherTypeId)
+        {
+            IMEEntities IME = new IMEEntities();
+            int max = 0;
+            try
+            {
+                max = Convert.ToInt32(IME.ServiceVoucherMasterMax(decVoucherTypeId));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return max;
+        }
+
+        public bool ServiceVoucherCheckExistence(string strInvoiceNo, decimal voucherTypeId, decimal masterId)
+        {
+            IMEEntities IME = new IMEEntities();
+            bool trueOrfalse = false;
+            try
+            {
+                trueOrfalse= Convert.ToBoolean(IME.ServiceVoucherCheckExistence(strInvoiceNo, masterId, voucherTypeId));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return trueOrfalse;
+        }
     }
 }

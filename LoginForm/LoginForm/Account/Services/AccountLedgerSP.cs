@@ -804,5 +804,26 @@ namespace LoginForm.Account.Services
             }
             return decLedgerId;
         }
+
+        public AccountLedger accountLedgerviewbyId(decimal ledgerId)
+        {
+            IMEEntities IME = new IMEEntities();
+            AccountLedger accountledgerinfo = new AccountLedger();
+            try
+            {
+                var a = IME.AccountLedgerView(ledgerId).FirstOrDefault();
+
+                accountledgerinfo.ledgerId = a.ledgerId;
+                accountledgerinfo.ledgerName = a.ledgerName;
+                accountledgerinfo.creditPeriod = a.creditPeriod;
+                accountledgerinfo.pricinglevelId = a.pricinglevelId;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return accountledgerinfo;
+        }
     }
 }

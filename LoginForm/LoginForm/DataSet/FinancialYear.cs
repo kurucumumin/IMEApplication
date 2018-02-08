@@ -35,6 +35,7 @@ namespace LoginForm.DataSet
             this.SalaryVoucherMasters = new HashSet<SalaryVoucherMaster>();
             this.SalesMasters = new HashSet<SalesMaster>();
             this.SalesReturnMasters = new HashSet<SalesReturnMaster>();
+            this.ServiceMasters = new HashSet<ServiceMaster>();
         }
     
         public decimal financialYearId { get; set; }
@@ -78,5 +79,7 @@ namespace LoginForm.DataSet
         public virtual ICollection<SalesMaster> SalesMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesReturnMaster> SalesReturnMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ServiceMaster> ServiceMasters { get; set; }
     }
 }
