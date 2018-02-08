@@ -11,10 +11,7 @@ namespace LoginForm.Account.Services
 {
     class AccountGroupSP
     {
-        /// <summary>
-        /// Function to get details of Account Group ViewAll ComboFill For AccountLedger
-        /// </summary>
-        /// <returns></returns>
+        
         public DataTable AccountGroupViewAllComboFillForAccountLedger()
         {
             DataTable dtbl = new DataTable();
@@ -51,12 +48,7 @@ namespace LoginForm.Account.Services
             }
             return dtbl;
         }
-
-        /// <summary>
-        /// Function to insert values to account group table and return the Curresponding row's Id
-        /// </summary>
-        /// <param name="a"></param>
-        /// <returns></returns>
+       
         public decimal AccountGroupAddWithIdentity(AccountGroup a)
         {
             decimal decAccountGroupId = 0;
@@ -376,6 +368,21 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.Message);
             }
             return dtblAccountGroup;
+        }
+
+        public string MultipleAccountLedgerCrOrDr(string strAccountGroup)
+        {
+            IMEEntities IME = new IMEEntities();
+            string strNature = string.Empty;
+            try
+            {
+                strNature = IME.MultipleAccountLedgerCrOrDr(strAccountGroup).ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return strNature;
         }
     }
 }

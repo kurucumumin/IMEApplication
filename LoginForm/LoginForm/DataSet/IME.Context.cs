@@ -276,6 +276,103 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountGroupViewForUpdate_Result>("AccountGroupViewForUpdate", accountGroupIdParameter);
         }
     
+        public virtual ObjectResult<Nullable<decimal>> AccountLedgerAddWithIdentity(Nullable<decimal> accountGroupId, string ledgerName, Nullable<decimal> openingBalance, string crOrDr, string narration, string mailingName, string address, Nullable<bool> isDefault, string phone, string mobile, string email, Nullable<int> creditPeriod, Nullable<decimal> creditLimit, Nullable<decimal> pricinglevelId, Nullable<bool> billByBill, string tin, string cst, string pan, Nullable<decimal> routeId, string bankAccountNumber, string branchName, string branchCode, Nullable<decimal> areaId)
+        {
+            var accountGroupIdParameter = accountGroupId.HasValue ?
+                new ObjectParameter("accountGroupId", accountGroupId) :
+                new ObjectParameter("accountGroupId", typeof(decimal));
+    
+            var ledgerNameParameter = ledgerName != null ?
+                new ObjectParameter("ledgerName", ledgerName) :
+                new ObjectParameter("ledgerName", typeof(string));
+    
+            var openingBalanceParameter = openingBalance.HasValue ?
+                new ObjectParameter("openingBalance", openingBalance) :
+                new ObjectParameter("openingBalance", typeof(decimal));
+    
+            var crOrDrParameter = crOrDr != null ?
+                new ObjectParameter("crOrDr", crOrDr) :
+                new ObjectParameter("crOrDr", typeof(string));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            var mailingNameParameter = mailingName != null ?
+                new ObjectParameter("mailingName", mailingName) :
+                new ObjectParameter("mailingName", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("address", address) :
+                new ObjectParameter("address", typeof(string));
+    
+            var isDefaultParameter = isDefault.HasValue ?
+                new ObjectParameter("isDefault", isDefault) :
+                new ObjectParameter("isDefault", typeof(bool));
+    
+            var phoneParameter = phone != null ?
+                new ObjectParameter("phone", phone) :
+                new ObjectParameter("phone", typeof(string));
+    
+            var mobileParameter = mobile != null ?
+                new ObjectParameter("mobile", mobile) :
+                new ObjectParameter("mobile", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            var creditPeriodParameter = creditPeriod.HasValue ?
+                new ObjectParameter("creditPeriod", creditPeriod) :
+                new ObjectParameter("creditPeriod", typeof(int));
+    
+            var creditLimitParameter = creditLimit.HasValue ?
+                new ObjectParameter("creditLimit", creditLimit) :
+                new ObjectParameter("creditLimit", typeof(decimal));
+    
+            var pricinglevelIdParameter = pricinglevelId.HasValue ?
+                new ObjectParameter("pricinglevelId", pricinglevelId) :
+                new ObjectParameter("pricinglevelId", typeof(decimal));
+    
+            var billByBillParameter = billByBill.HasValue ?
+                new ObjectParameter("billByBill", billByBill) :
+                new ObjectParameter("billByBill", typeof(bool));
+    
+            var tinParameter = tin != null ?
+                new ObjectParameter("tin", tin) :
+                new ObjectParameter("tin", typeof(string));
+    
+            var cstParameter = cst != null ?
+                new ObjectParameter("cst", cst) :
+                new ObjectParameter("cst", typeof(string));
+    
+            var panParameter = pan != null ?
+                new ObjectParameter("pan", pan) :
+                new ObjectParameter("pan", typeof(string));
+    
+            var routeIdParameter = routeId.HasValue ?
+                new ObjectParameter("routeId", routeId) :
+                new ObjectParameter("routeId", typeof(decimal));
+    
+            var bankAccountNumberParameter = bankAccountNumber != null ?
+                new ObjectParameter("bankAccountNumber", bankAccountNumber) :
+                new ObjectParameter("bankAccountNumber", typeof(string));
+    
+            var branchNameParameter = branchName != null ?
+                new ObjectParameter("branchName", branchName) :
+                new ObjectParameter("branchName", typeof(string));
+    
+            var branchCodeParameter = branchCode != null ?
+                new ObjectParameter("branchCode", branchCode) :
+                new ObjectParameter("branchCode", typeof(string));
+    
+            var areaIdParameter = areaId.HasValue ?
+                new ObjectParameter("areaId", areaId) :
+                new ObjectParameter("areaId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("AccountLedgerAddWithIdentity", accountGroupIdParameter, ledgerNameParameter, openingBalanceParameter, crOrDrParameter, narrationParameter, mailingNameParameter, addressParameter, isDefaultParameter, phoneParameter, mobileParameter, emailParameter, creditPeriodParameter, creditLimitParameter, pricinglevelIdParameter, billByBillParameter, tinParameter, cstParameter, panParameter, routeIdParameter, bankAccountNumberParameter, branchNameParameter, branchCodeParameter, areaIdParameter);
+        }
+    
         public virtual int AccountLedgerEdit(Nullable<decimal> ledgerId, Nullable<decimal> accountGroupId, string ledgerName, Nullable<decimal> openingBalance, string crOrDr, string narration, string mailingName, string address, Nullable<bool> isDefault, string phone, string mobile, string email, Nullable<int> creditPeriod, Nullable<decimal> creditLimit, Nullable<decimal> pricinglevelId, Nullable<bool> billByBill, string tin, string cst, string pan, Nullable<decimal> routeId, string bankAccountNumber, string branchName, string branchCode, Nullable<decimal> areaId)
         {
             var ledgerIdParameter = ledgerId.HasValue ?
@@ -1315,6 +1412,20 @@ namespace LoginForm.DataSet
                 new ObjectParameter("MaterialReceiptMasterId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MaterialReceiptMasterViewByReceiptMasterId_Result>("MaterialReceiptMasterViewByReceiptMasterId", materialReceiptMasterIdParameter);
+        }
+    
+        public virtual ObjectResult<MultipleAccountLedgerComboFill_Result> MultipleAccountLedgerComboFill()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MultipleAccountLedgerComboFill_Result>("MultipleAccountLedgerComboFill");
+        }
+    
+        public virtual ObjectResult<string> MultipleAccountLedgerCrOrDr(string accountGroupName)
+        {
+            var accountGroupNameParameter = accountGroupName != null ?
+                new ObjectParameter("accountGroupName", accountGroupName) :
+                new ObjectParameter("accountGroupName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("MultipleAccountLedgerCrOrDr", accountGroupNameParameter);
         }
     
         public virtual ObjectResult<OverduePurchaseOrdersCorrespondingAccountLedger_Result> OverduePurchaseOrdersCorrespondingAccountLedger(Nullable<decimal> accountLedgerId)
@@ -2666,6 +2777,124 @@ namespace LoginForm.DataSet
                 new ObjectParameter("godownId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RackFillForStock_Result>("RackFillForStock", godownIdParameter);
+        }
+    
+        public virtual int RS_InvoiceDetailsADD(Nullable<int> rS_InvoiceID, string purchaseOrderNumber, Nullable<int> purchaseOrderItemNumber, string productNumber, Nullable<int> billingItemNumber, Nullable<decimal> quantity, string salesUnit, Nullable<decimal> unitPrice, Nullable<decimal> discount, Nullable<decimal> goodsValue, Nullable<decimal> amount, string cCCNNO, string countryofOrigin, string articleDescription, Nullable<int> deliveryNumber, Nullable<int> deliveryItemNumber)
+        {
+            var rS_InvoiceIDParameter = rS_InvoiceID.HasValue ?
+                new ObjectParameter("RS_InvoiceID", rS_InvoiceID) :
+                new ObjectParameter("RS_InvoiceID", typeof(int));
+    
+            var purchaseOrderNumberParameter = purchaseOrderNumber != null ?
+                new ObjectParameter("PurchaseOrderNumber", purchaseOrderNumber) :
+                new ObjectParameter("PurchaseOrderNumber", typeof(string));
+    
+            var purchaseOrderItemNumberParameter = purchaseOrderItemNumber.HasValue ?
+                new ObjectParameter("PurchaseOrderItemNumber", purchaseOrderItemNumber) :
+                new ObjectParameter("PurchaseOrderItemNumber", typeof(int));
+    
+            var productNumberParameter = productNumber != null ?
+                new ObjectParameter("ProductNumber", productNumber) :
+                new ObjectParameter("ProductNumber", typeof(string));
+    
+            var billingItemNumberParameter = billingItemNumber.HasValue ?
+                new ObjectParameter("BillingItemNumber", billingItemNumber) :
+                new ObjectParameter("BillingItemNumber", typeof(int));
+    
+            var quantityParameter = quantity.HasValue ?
+                new ObjectParameter("Quantity", quantity) :
+                new ObjectParameter("Quantity", typeof(decimal));
+    
+            var salesUnitParameter = salesUnit != null ?
+                new ObjectParameter("SalesUnit", salesUnit) :
+                new ObjectParameter("SalesUnit", typeof(string));
+    
+            var unitPriceParameter = unitPrice.HasValue ?
+                new ObjectParameter("UnitPrice", unitPrice) :
+                new ObjectParameter("UnitPrice", typeof(decimal));
+    
+            var discountParameter = discount.HasValue ?
+                new ObjectParameter("Discount", discount) :
+                new ObjectParameter("Discount", typeof(decimal));
+    
+            var goodsValueParameter = goodsValue.HasValue ?
+                new ObjectParameter("GoodsValue", goodsValue) :
+                new ObjectParameter("GoodsValue", typeof(decimal));
+    
+            var amountParameter = amount.HasValue ?
+                new ObjectParameter("Amount", amount) :
+                new ObjectParameter("Amount", typeof(decimal));
+    
+            var cCCNNOParameter = cCCNNO != null ?
+                new ObjectParameter("CCCNNO", cCCNNO) :
+                new ObjectParameter("CCCNNO", typeof(string));
+    
+            var countryofOriginParameter = countryofOrigin != null ?
+                new ObjectParameter("CountryofOrigin", countryofOrigin) :
+                new ObjectParameter("CountryofOrigin", typeof(string));
+    
+            var articleDescriptionParameter = articleDescription != null ?
+                new ObjectParameter("ArticleDescription", articleDescription) :
+                new ObjectParameter("ArticleDescription", typeof(string));
+    
+            var deliveryNumberParameter = deliveryNumber.HasValue ?
+                new ObjectParameter("DeliveryNumber", deliveryNumber) :
+                new ObjectParameter("DeliveryNumber", typeof(int));
+    
+            var deliveryItemNumberParameter = deliveryItemNumber.HasValue ?
+                new ObjectParameter("DeliveryItemNumber", deliveryItemNumber) :
+                new ObjectParameter("DeliveryItemNumber", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RS_InvoiceDetailsADD", rS_InvoiceIDParameter, purchaseOrderNumberParameter, purchaseOrderItemNumberParameter, productNumberParameter, billingItemNumberParameter, quantityParameter, salesUnitParameter, unitPriceParameter, discountParameter, goodsValueParameter, amountParameter, cCCNNOParameter, countryofOriginParameter, articleDescriptionParameter, deliveryNumberParameter, deliveryItemNumberParameter);
+        }
+    
+        public virtual int RSInvoiceADD(string shipmentReference, string billingDocumentReference, string shippingCondition, Nullable<System.DateTime> billingDocumentDate, string supplyingECCompany, string customerReference, Nullable<decimal> invoiceTaxValue, Nullable<decimal> invoiceGoodsValue, Nullable<decimal> invoiceNettValue, string currency, string airwayBillNumber)
+        {
+            var shipmentReferenceParameter = shipmentReference != null ?
+                new ObjectParameter("ShipmentReference", shipmentReference) :
+                new ObjectParameter("ShipmentReference", typeof(string));
+    
+            var billingDocumentReferenceParameter = billingDocumentReference != null ?
+                new ObjectParameter("BillingDocumentReference", billingDocumentReference) :
+                new ObjectParameter("BillingDocumentReference", typeof(string));
+    
+            var shippingConditionParameter = shippingCondition != null ?
+                new ObjectParameter("ShippingCondition", shippingCondition) :
+                new ObjectParameter("ShippingCondition", typeof(string));
+    
+            var billingDocumentDateParameter = billingDocumentDate.HasValue ?
+                new ObjectParameter("BillingDocumentDate", billingDocumentDate) :
+                new ObjectParameter("BillingDocumentDate", typeof(System.DateTime));
+    
+            var supplyingECCompanyParameter = supplyingECCompany != null ?
+                new ObjectParameter("SupplyingECCompany", supplyingECCompany) :
+                new ObjectParameter("SupplyingECCompany", typeof(string));
+    
+            var customerReferenceParameter = customerReference != null ?
+                new ObjectParameter("CustomerReference", customerReference) :
+                new ObjectParameter("CustomerReference", typeof(string));
+    
+            var invoiceTaxValueParameter = invoiceTaxValue.HasValue ?
+                new ObjectParameter("InvoiceTaxValue", invoiceTaxValue) :
+                new ObjectParameter("InvoiceTaxValue", typeof(decimal));
+    
+            var invoiceGoodsValueParameter = invoiceGoodsValue.HasValue ?
+                new ObjectParameter("InvoiceGoodsValue", invoiceGoodsValue) :
+                new ObjectParameter("InvoiceGoodsValue", typeof(decimal));
+    
+            var invoiceNettValueParameter = invoiceNettValue.HasValue ?
+                new ObjectParameter("InvoiceNettValue", invoiceNettValue) :
+                new ObjectParameter("InvoiceNettValue", typeof(decimal));
+    
+            var currencyParameter = currency != null ?
+                new ObjectParameter("Currency", currency) :
+                new ObjectParameter("Currency", typeof(string));
+    
+            var airwayBillNumberParameter = airwayBillNumber != null ?
+                new ObjectParameter("AirwayBillNumber", airwayBillNumber) :
+                new ObjectParameter("AirwayBillNumber", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("RSInvoiceADD", shipmentReferenceParameter, billingDocumentReferenceParameter, shippingConditionParameter, billingDocumentDateParameter, supplyingECCompanyParameter, customerReferenceParameter, invoiceTaxValueParameter, invoiceGoodsValueParameter, invoiceNettValueParameter, currencyParameter, airwayBillNumberParameter);
         }
     
         public virtual ObjectResult<SalesAccountComboFill_Result> SalesAccountComboFill()

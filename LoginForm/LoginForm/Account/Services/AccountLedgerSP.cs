@@ -672,20 +672,6 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
-        //public AccountLedger AccountLedgerView(decimal ledgerId)
-        //{
-        //    IMEEntities IME = new IMEEntities();
-        //    AccountLedger accountledgerinfo = new AccountLedger();
-        //    try
-        //    {
-        //        accountledgerinfo = IME.AccountLedgers.Where(x => x.ledgerId == ledgerId).FirstOrDefault();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.ToString());
-        //    }
-        //    return accountledgerinfo;
-        //}
         public AccountLedger AccountLedgerView(decimal ledgerId)
         {
             IMEEntities db = new IMEEntities();
@@ -727,17 +713,90 @@ namespace LoginForm.Account.Services
             return accountledgerinfo;
           }
 
-        /// <summary>
-        /// Account ledger Id get by name
-        /// </summary>
-        /// <param name="strLedgerName"></param>
-        /// <returns></returns>
         public decimal AccountLedgerIdGetByName(string strLedgerName)
         {
             decimal decLedgerId = 0;
             try
             {
                 decLedgerId = Convert.ToDecimal(new IMEEntities().AccountLedgerIdGetByName(strLedgerName).FirstOrDefault());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decLedgerId;
+        }
+
+        public DataTable MultipleAccountLedgerComboFill()
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.MultipleAccountLedgerComboFill();
+
+                dtbl.Columns.Add("accountGroupId");
+                dtbl.Columns.Add("accountGroupName");
+                dtbl.Columns.Add("nature");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["accountGroupName"] = item.accountGroupName;
+                    row["nature"] = item.nature;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+        public decimal AccountLedgerAddWithIdentity(AccountLedger ac)
+        {
+            IMEEntities IME = new IMEEntities();
+            decimal decLedgerId = 0;
+            try
+            {
+                object obj = IME.AccountLedgerAddWithIdentity(
+                    ac.accountGroupID,
+                    ac.ledgerName,
+                    ac.openingBalance,
+                    ac.crOrDr,
+                    ac.narration,
+                    ac.mailingName,
+                    ac.address,
+                    ac.isDefault,
+                    ac.phone,
+                    ac.mobile,
+                    ac.email,
+                    ac.creditPeriod,
+                    ac.creditLimit,
+                    ac.pricinglevelId,
+                    ac.billByBill,
+                    ac.tin,
+                    ac.cst,
+                    ac.pan,
+                    ac.routeId,
+                    ac.bankAccountNumber,
+                    ac.branchName,
+                    ac.branchCode,
+                    ac.areaId);
+
+                if (obj != null)
+                {
+                    decLedgerId = decimal.Parse(obj.ToString());
+                }
+                else
+                {
+                    decLedgerId = 0;
+                }
+
+
             }
             catch (Exception ex)
             {
