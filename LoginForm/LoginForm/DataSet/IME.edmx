@@ -5546,6 +5546,31 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
         <Function Name="AccountGroupViewForUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="accountGroupId" Type="numeric" Mode="In" />
         </Function>
+        <Function Name="AccountLedgerAddWithIdentity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="accountGroupId" Type="numeric" Mode="In" />
+          <Parameter Name="ledgerName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="openingBalance" Type="decimal" Mode="In" />
+          <Parameter Name="crOrDr" Type="varchar(max)" Mode="In" />
+          <Parameter Name="narration" Type="varchar(max)" Mode="In" />
+          <Parameter Name="mailingName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="address" Type="varchar(max)" Mode="In" />
+          <Parameter Name="isDefault" Type="bit" Mode="In" />
+          <Parameter Name="phone" Type="varchar(max)" Mode="In" />
+          <Parameter Name="mobile" Type="varchar(max)" Mode="In" />
+          <Parameter Name="email" Type="varchar(max)" Mode="In" />
+          <Parameter Name="creditPeriod" Type="int" Mode="In" />
+          <Parameter Name="creditLimit" Type="decimal" Mode="In" />
+          <Parameter Name="pricinglevelId" Type="numeric" Mode="In" />
+          <Parameter Name="billByBill" Type="bit" Mode="In" />
+          <Parameter Name="tin" Type="varchar(max)" Mode="In" />
+          <Parameter Name="cst" Type="varchar(max)" Mode="In" />
+          <Parameter Name="pan" Type="varchar(max)" Mode="In" />
+          <Parameter Name="routeId" Type="numeric" Mode="In" />
+          <Parameter Name="bankAccountNumber" Type="varchar(max)" Mode="In" />
+          <Parameter Name="branchName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="branchCode" Type="varchar(max)" Mode="In" />
+          <Parameter Name="areaId" Type="numeric" Mode="In" />
+        </Function>
         <Function Name="AccountLedgerEdit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ledgerId" Type="numeric" Mode="In" />
           <Parameter Name="accountGroupId" Type="numeric" Mode="In" />
@@ -5847,6 +5872,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
         <Function Name="MaterialReceiptMasterViewByReceiptMasterId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MaterialReceiptMasterId" Type="numeric" Mode="In" />
         </Function>
+        <Function Name="MultipleAccountLedgerComboFill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="OverduePurchaseOrdersCorrespondingAccountLedger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="accountLedgerId" Type="decimal" Mode="In" />
         </Function>
@@ -6225,6 +6251,37 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
         </Function>
         <Function Name="RackFillForStock" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="godownId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="RS_InvoiceDetailsADD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RS_InvoiceID" Type="int" Mode="In" />
+          <Parameter Name="PurchaseOrderNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="PurchaseOrderItemNumber" Type="int" Mode="In" />
+          <Parameter Name="ProductNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="BillingItemNumber" Type="int" Mode="In" />
+          <Parameter Name="Quantity" Type="decimal" Mode="In" />
+          <Parameter Name="SalesUnit" Type="nvarchar" Mode="In" />
+          <Parameter Name="UnitPrice" Type="decimal" Mode="In" />
+          <Parameter Name="Discount" Type="decimal" Mode="In" />
+          <Parameter Name="GoodsValue" Type="decimal" Mode="In" />
+          <Parameter Name="Amount" Type="decimal" Mode="In" />
+          <Parameter Name="CCCNNO" Type="nvarchar" Mode="In" />
+          <Parameter Name="CountryofOrigin" Type="nvarchar" Mode="In" />
+          <Parameter Name="ArticleDescription" Type="nvarchar" Mode="In" />
+          <Parameter Name="DeliveryNumber" Type="int" Mode="In" />
+          <Parameter Name="DeliveryItemNumber" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RSInvoiceADD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShipmentReference" Type="nvarchar" Mode="In" />
+          <Parameter Name="BillingDocumentReference" Type="nvarchar" Mode="In" />
+          <Parameter Name="ShippingCondition" Type="nvarchar" Mode="In" />
+          <Parameter Name="BillingDocumentDate" Type="datetime" Mode="In" />
+          <Parameter Name="SupplyingECCompany" Type="nvarchar" Mode="In" />
+          <Parameter Name="CustomerReference" Type="nvarchar" Mode="In" />
+          <Parameter Name="InvoiceTaxValue" Type="decimal" Mode="In" />
+          <Parameter Name="InvoiceGoodsValue" Type="decimal" Mode="In" />
+          <Parameter Name="InvoiceNettValue" Type="decimal" Mode="In" />
+          <Parameter Name="Currency" Type="nvarchar" Mode="In" />
+          <Parameter Name="AirwayBillNumber" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="SalesAccountComboFill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SalesBillTaxEditBySalesMasterIdAndTaxId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -15321,6 +15378,31 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImport Name="AccountGroupViewForUpdate" ReturnType="Collection(IMEModel.AccountGroupViewForUpdate_Result)">
             <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="AccountLedgerAddWithIdentity" ReturnType="Collection(Decimal)">
+            <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
+            <Parameter Name="ledgerName" Mode="In" Type="String" />
+            <Parameter Name="openingBalance" Mode="In" Type="Decimal" />
+            <Parameter Name="crOrDr" Mode="In" Type="String" />
+            <Parameter Name="narration" Mode="In" Type="String" />
+            <Parameter Name="mailingName" Mode="In" Type="String" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="isDefault" Mode="In" Type="Boolean" />
+            <Parameter Name="phone" Mode="In" Type="String" />
+            <Parameter Name="mobile" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="creditPeriod" Mode="In" Type="Int32" />
+            <Parameter Name="creditLimit" Mode="In" Type="Decimal" />
+            <Parameter Name="pricinglevelId" Mode="In" Type="Decimal" />
+            <Parameter Name="billByBill" Mode="In" Type="Boolean" />
+            <Parameter Name="tin" Mode="In" Type="String" />
+            <Parameter Name="cst" Mode="In" Type="String" />
+            <Parameter Name="pan" Mode="In" Type="String" />
+            <Parameter Name="routeId" Mode="In" Type="Decimal" />
+            <Parameter Name="bankAccountNumber" Mode="In" Type="String" />
+            <Parameter Name="branchName" Mode="In" Type="String" />
+            <Parameter Name="branchCode" Mode="In" Type="String" />
+            <Parameter Name="areaId" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="AccountLedgerEdit">
             <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
             <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
@@ -15616,6 +15698,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImport Name="MaterialReceiptMasterViewByReceiptMasterId" ReturnType="Collection(IMEModel.MaterialReceiptMasterViewByReceiptMasterId_Result)">
             <Parameter Name="MaterialReceiptMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="MultipleAccountLedgerComboFill" ReturnType="Collection(IMEModel.MultipleAccountLedgerComboFill_Result)" />
           <FunctionImport Name="OverduePurchaseOrdersCorrespondingAccountLedger" ReturnType="Collection(IMEModel.OverduePurchaseOrdersCorrespondingAccountLedger_Result)">
             <Parameter Name="accountLedgerId" Mode="In" Type="Decimal" />
           </FunctionImport>
@@ -15994,6 +16077,37 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           </FunctionImport>
           <FunctionImport Name="RackFillForStock" ReturnType="Collection(IMEModel.RackFillForStock_Result)">
             <Parameter Name="godownId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="RS_InvoiceDetailsADD">
+            <Parameter Name="RS_InvoiceID" Mode="In" Type="Int32" />
+            <Parameter Name="PurchaseOrderNumber" Mode="In" Type="String" />
+            <Parameter Name="PurchaseOrderItemNumber" Mode="In" Type="Int32" />
+            <Parameter Name="ProductNumber" Mode="In" Type="String" />
+            <Parameter Name="BillingItemNumber" Mode="In" Type="Int32" />
+            <Parameter Name="Quantity" Mode="In" Type="Decimal" />
+            <Parameter Name="SalesUnit" Mode="In" Type="String" />
+            <Parameter Name="UnitPrice" Mode="In" Type="Decimal" />
+            <Parameter Name="Discount" Mode="In" Type="Decimal" />
+            <Parameter Name="GoodsValue" Mode="In" Type="Decimal" />
+            <Parameter Name="Amount" Mode="In" Type="Decimal" />
+            <Parameter Name="CCCNNO" Mode="In" Type="String" />
+            <Parameter Name="CountryofOrigin" Mode="In" Type="String" />
+            <Parameter Name="ArticleDescription" Mode="In" Type="String" />
+            <Parameter Name="DeliveryNumber" Mode="In" Type="Int32" />
+            <Parameter Name="DeliveryItemNumber" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RSInvoiceADD">
+            <Parameter Name="ShipmentReference" Mode="In" Type="String" />
+            <Parameter Name="BillingDocumentReference" Mode="In" Type="String" />
+            <Parameter Name="ShippingCondition" Mode="In" Type="String" />
+            <Parameter Name="BillingDocumentDate" Mode="In" Type="DateTime" />
+            <Parameter Name="SupplyingECCompany" Mode="In" Type="String" />
+            <Parameter Name="CustomerReference" Mode="In" Type="String" />
+            <Parameter Name="InvoiceTaxValue" Mode="In" Type="Decimal" />
+            <Parameter Name="InvoiceGoodsValue" Mode="In" Type="Decimal" />
+            <Parameter Name="InvoiceNettValue" Mode="In" Type="Decimal" />
+            <Parameter Name="Currency" Mode="In" Type="String" />
+            <Parameter Name="AirwayBillNumber" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SalesAccountComboFill" ReturnType="Collection(IMEModel.SalesAccountComboFill_Result)" />
           <FunctionImport Name="SalesBillTaxEditBySalesMasterIdAndTaxId">
@@ -16717,6 +16831,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="transportationCompany" Nullable="true" />
           <Property Type="Decimal" Name="currencyId" Nullable="true" Precision="18" Scale="0" />
           <Property Type="String" Name="Refer" Nullable="true" MaxLength="1" />
+        </ComplexType>
+        <ComplexType Name="MultipleAccountLedgerComboFill_Result">
+          <Property Type="Int32" Name="accountGroupId" Nullable="false" />
+          <Property Type="String" Name="accountGroupName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="nature" Nullable="true" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="OverduePurchaseOrdersCorrespondingAccountLedger_Result">
           <Property Type="String" Name="FicheNo" Nullable="false" MaxLength="50" />
@@ -19508,6 +19627,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AccountLedgerAddWithIdentity" FunctionName="IMEModel.Store.AccountLedgerAddWithIdentity" />
           <FunctionImportMapping FunctionImportName="AccountLedgerEdit" FunctionName="IMEModel.Store.AccountLedgerEdit" />
           <FunctionImportMapping FunctionImportName="AccountLedgerIdGetByName" FunctionName="IMEModel.Store.AccountLedgerIdGetByName" />
           <FunctionImportMapping FunctionImportName="AccountLedgerSearchForServiceAccountUnderIncome" FunctionName="IMEModel.Store.AccountLedgerSearchForServiceAccountUnderIncome">
@@ -19978,6 +20098,15 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="transportationCompany" ColumnName="transportationCompany" />
                 <ScalarProperty Name="currencyId" ColumnName="currencyId" />
                 <ScalarProperty Name="Refer" ColumnName="Refer" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="MultipleAccountLedgerComboFill" FunctionName="IMEModel.Store.MultipleAccountLedgerComboFill">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.MultipleAccountLedgerComboFill_Result">
+                <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
+                <ScalarProperty Name="accountGroupName" ColumnName="accountGroupName" />
+                <ScalarProperty Name="nature" ColumnName="nature" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -20566,6 +20695,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RS_InvoiceDetailsADD" FunctionName="IMEModel.Store.RS_InvoiceDetailsADD" />
+          <FunctionImportMapping FunctionImportName="RSInvoiceADD" FunctionName="IMEModel.Store.RSInvoiceADD" />
           <FunctionImportMapping FunctionImportName="SalesAccountComboFill" FunctionName="IMEModel.Store.SalesAccountComboFill">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.SalesAccountComboFill_Result">

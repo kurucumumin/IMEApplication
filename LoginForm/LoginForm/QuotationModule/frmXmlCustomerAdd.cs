@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LoginForm.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,25 @@ namespace LoginForm.QuotationModule
 {
     public partial class frmXmlCustomerAdd : Form
     {
-        public frmXmlCustomerAdd()
+        public XmlCustomer customer;
+        public frmXmlCustomerAdd(XmlCustomer customer)
         {
             InitializeComponent();
+            this.customer = customer;
+        }
+
+        private void SaveCustomer()
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occured while saving the customer");
+
+                throw;
+            }
         }
     }
 }

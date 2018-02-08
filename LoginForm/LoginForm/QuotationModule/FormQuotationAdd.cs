@@ -1209,28 +1209,8 @@ namespace LoginForm.QuotationModule
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                classQuotationAdd.customersearchID = CustomerCode.Text;
-                classQuotationAdd.customersearchname = "";
-                FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(customer);
-                this.Enabled = false;
-                var result = form.ShowDialog();
-
-                if (result == DialogResult.OK)
-                {
-                    customer = form.customer;
-                    cbWorkers.DataSource = customer.CustomerWorkers.Where(a => a.cw_name != null).ToList();
-                    cbWorkers.DisplayMember = "cw_name";
-                    cbWorkers.ValueMember = "ID";
-                }
-                this.Enabled = true;
-                fillCustomer();
-
+                CustomerSearchInput();
             }
-        }
-
-        private void cbRep_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void txtLength_TextChanged(object sender, EventArgs e)
@@ -2256,6 +2236,11 @@ namespace LoginForm.QuotationModule
 
         private void CustomerCode_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            CustomerSearchInput();
+        }
+
+        public void CustomerSearchInput()
+        {
             classQuotationAdd.customersearchID = CustomerCode.Text;
             classQuotationAdd.customersearchname = "";
             FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(customer);
@@ -2882,28 +2867,77 @@ namespace LoginForm.QuotationModule
             {
                 xml = new XmlObject(openFileDialog.FileName);
 
-                int index = 0;
-                List<XmlProduct> productList = xml.XmlGetProductInfo();
-                foreach (XmlProduct product in productList)
-                {
-                    if (index + 1 != productList.Count())
-                    {
-                        dgQuotationAddedItems.Rows.Add();
-                    }
-                    DataGridViewCell cell = dgQuotationAddedItems.Rows[index].Cells[dgProductCode.Index];
-                    cell.Value = product.StockCode;
-                    dgQuotationAddedItems.CurrentCell = cell;
-                    ItemDetailsFiller(product.StockCode);
-                    DataGridViewCell curCell = dgQuotationAddedItems.Rows[cell.RowIndex].Cells[dgQty.Index];
-                    dgQuotationAddedItems.CurrentCell = curCell;
-                    //dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].ReadOnly = false;
-                    //dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Style = dgQuotationAddedItems.DefaultCellStyle;
-                    curCell.Value = product.Quantity;
-                    dgQuotationAddedItems_CellEndEdit(null, null);
-                    SendKeys.Send("{TAB}");
-                    index++;
-                }
+                XmlToCustomer(xml.XmlGetCustomerData());
+
+                XmlToDataGrid(xml.XmlGetProductInfo());
+
+                //int index = 0;
+                //List<XmlProduct> productList = xml.XmlGetProductInfo();
+                //foreach (XmlProduct product in productList)
+                //{
+                //    if (index + 1 != productList.Count())
+                //    {
+                //        dgQuotationAddedItems.Rows.Add();
+                //    }
+                //    DataGridViewCell cell = dgQuotationAddedItems.Rows[index].Cells[dgProductCode.Index];
+                //    cell.Value = product.StockCode;
+                //    dgQuotationAddedItems.CurrentCell = cell;
+                //    ItemDetailsFiller(product.StockCode);
+                //    DataGridViewCell curCell = dgQuotationAddedItems.Rows[cell.RowIndex].Cells[dgQty.Index];
+                //    dgQuotationAddedItems.CurrentCell = curCell;
+                //    //dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].ReadOnly = false;
+                //    //dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Style = dgQuotationAddedItems.DefaultCellStyle;
+                //    curCell.Value = product.Quantity;
+                //    dgQuotationAddedItems_CellEndEdit(null, null);
+                //    SendKeys.Send("{TAB}");
+                //    index++;
+                //}
             }
+        }
+
+        
+
+        private void XmlToDataGrid(List<XmlProduct> XmlProductList)
+        {
+            int index = 0;
+            foreach (XmlProduct product in XmlProductList)
+            {
+                if (index + 1 != XmlProductList.Count())
+                {
+                    dgQuotationAddedItems.Rows.Add();
+                }
+                DataGridViewCell cell = dgQuotationAddedItems.Rows[index].Cells[dgProductCode.Index];
+                cell.Value = product.StockCode;
+                dgQuotationAddedItems.CurrentCell = cell;
+                ItemDetailsFiller(product.StockCode);
+                DataGridViewCell curCell = dgQuotationAddedItems.Rows[cell.RowIndex].Cells[dgQty.Index];
+                dgQuotationAddedItems.CurrentCell = curCell;
+                dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].ReadOnly = false;
+                dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Style = dgQuotationAddedItems.DefaultCellStyle;
+                curCell.Value = product.Quantity;
+                dgQuotationAddedItems_CellEndEdit(null, null);
+                SendKeys.Send("{TAB}");
+                index++;
+            }
+        }
+
+        private void XmlToCustomer(XmlCustomer xmlCustomer)
+        {
+            classQuotationAdd.customersearchID = CustomerCode.Text;
+            classQuotationAdd.customersearchname = xmlCustomer.Name;
+            FormQuaotationCustomerSearch form = new FormQuaotationCustomerSearch(xmlCustomer);
+            this.Enabled = false;
+            var result = form.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                customer = form.customer;
+                cbWorkers.DataSource = customer.CustomerWorkers.ToList();
+                cbWorkers.DisplayMember = "cw_name";
+                cbWorkers.ValueMember = "ID";
+            }
+            this.Enabled = true;
+            fillCustomer();
         }
     }
 }
