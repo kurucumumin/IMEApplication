@@ -162,6 +162,12 @@
     <Compile Include="Account\Master\frmExchangeRate.designer.cs">
       <DependentUpon>frmExchangeRate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Master\frmSalesman.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Master\frmSalesman.designer.cs">
+      <DependentUpon>frmSalesman.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Master\frmTax.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +179,12 @@
     </Compile>
     <Compile Include="Account\Master\frmVoucherType.designer.cs">
       <DependentUpon>frmVoucherType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Master\frmMultipleAccountLedger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Master\frmMultipleAccountLedger.Designer.cs">
+      <DependentUpon>frmMultipleAccountLedger.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\Other\frmLedgerPopup.cs">
       <SubType>Form</SubType>
@@ -1497,11 +1509,17 @@
     <EmbeddedResource Include="Account\Master\frmExchangeRate.resx">
       <DependentUpon>frmExchangeRate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\Master\frmSalesman.resx">
+      <DependentUpon>frmSalesman.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Account\Master\frmTax.resx">
       <DependentUpon>frmTax.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Master\frmVoucherType.resx">
       <DependentUpon>frmVoucherType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Master\frmMultipleAccountLedger.resx">
+      <DependentUpon>frmMultipleAccountLedger.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Other\frmLedgerPopup.resx">
       <DependentUpon>frmLedgerPopup.cs</DependentUpon>
