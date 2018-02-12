@@ -2421,78 +2421,78 @@ namespace LoginForm.QuotationModule
 
         private void textBox10_Click(object sender, EventArgs e)
         {
-            if (textBox10.Text != null && textBox10.Text != "")
-            {
-                decimal sonuc = Decimal.Parse(textBox10.Text);
-                textBox10.Text = sonuc.ToString();
-            }
+            //if (textBox10.Text != null && textBox10.Text != "")
+            //{
+            //    decimal sonuc = Decimal.Parse(textBox10.Text);
+            //    textBox10.Text = sonuc.ToString();
+            //}
         }
 
         private void textBox10_Leave(object sender, EventArgs e)
         {
-            if (textBox10.Text != null && textBox10.Text != "")
-            {
-                decimal sonuc = Decimal.Parse(textBox10.Text);
-                sonuc = Math.Round(sonuc, 4);
-                textBox10.Text = sonuc.ToString();
-            }
+            //if (textBox10.Text != null && textBox10.Text != "")
+            //{
+            //    decimal sonuc = Decimal.Parse(textBox10.Text);
+            //    sonuc = Math.Round(sonuc, 4);
+            //    textBox10.Text = sonuc.ToString();
+            //}
         }
 
         private void txtTotalMargin_Click(object sender, EventArgs e)
         {
-            if (txtTotalMargin.Text != null && txtTotalMargin.Text != "")
-            {
-                decimal sonuc = Decimal.Parse(txtTotalMargin.Text);
-                txtTotalMargin.Text = sonuc.ToString();
-            }
+            //if (txtTotalMargin.Text != null && txtTotalMargin.Text != "")
+            //{
+            //    decimal sonuc = Decimal.Parse(txtTotalMargin.Text);
+            //    txtTotalMargin.Text = sonuc.ToString();
+            //}
         }
 
         private void txtTotalMargin_Leave(object sender, EventArgs e)
         {
-            if (txtTotalMargin.Text != null && txtTotalMargin.Text != "")
-            {
-                decimal sonuc = Decimal.Parse(txtTotalMargin.Text);
-                sonuc = Math.Round(sonuc, 4);
-                txtTotalMargin.Text = sonuc.ToString();
-            }
+            //if (txtTotalMargin.Text != null && txtTotalMargin.Text != "")
+            //{
+            //    decimal sonuc = Decimal.Parse(txtTotalMargin.Text);
+            //    sonuc = Math.Round(sonuc, 4);
+            //    txtTotalMargin.Text = sonuc.ToString();
+            //}
         }
 
         private void textBox11_Click(object sender, EventArgs e)
         {
-            if (textBox11.Text != null && textBox11.Text != "")
-            {
-                decimal sonuc = Decimal.Parse(textBox11.Text);
-                textBox11.Text = sonuc.ToString();
-            }
+            //if (textBox11.Text != null && textBox11.Text != "")
+            //{
+            //    decimal sonuc = Decimal.Parse(textBox11.Text);
+            //    textBox11.Text = sonuc.ToString();
+            //}
         }
 
         private void textBox11_Leave(object sender, EventArgs e)
         {
-            if (textBox11.Text != null && textBox11.Text != "")
-            {
-                decimal sonuc = Decimal.Parse(textBox11.Text);
-                sonuc = Math.Round(sonuc, 4);
-                textBox11.Text = sonuc.ToString();
-            }
+            //if (textBox11.Text != null && textBox11.Text != "")
+            //{
+            //    decimal sonuc = Decimal.Parse(textBox11.Text);
+            //    sonuc = Math.Round(sonuc, 4);
+            //    textBox11.Text = sonuc.ToString();
+            //}
         }
 
         private void lblsubtotal_Click(object sender, EventArgs e)
         {
-            if (lblsubtotal.Text != null && lblsubtotal.Text != "")
-            {
-                decimal sonuc = Decimal.Parse(lblsubtotal.Text);
-                lblsubtotal.Text = sonuc.ToString();
-            }
+            //if (lblsubtotal.Text != null && lblsubtotal.Text != "")
+            //{
+            //    decimal sonuc = Decimal.Parse(lblsubtotal.Text);
+            //    lblsubtotal.Text = sonuc.ToString();
+            //}
         }
 
         private void lblsubtotal_Leave(object sender, EventArgs e)
         {
-            if (lblsubtotal.Text != null && lblsubtotal.Text != "")
-            {
-                decimal sonuc = Decimal.Parse(lblsubtotal.Text);
-                sonuc = Math.Round(sonuc, 4);
-                lblsubtotal.Text = sonuc.ToString();
-            }
+            //if (lblsubtotal.Text != null && lblsubtotal.Text != "")
+            //{
+            //    decimal sonuc = Decimal.Parse(lblsubtotal.Text);
+            //    sonuc = Math.Round(sonuc, 4);
+            //    lblsubtotal.Text = sonuc.ToString();
+            //}
         }
 
         private void txtTotalDis2_Leave(object sender, EventArgs e)
