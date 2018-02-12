@@ -18,8 +18,7 @@ namespace LoginForm.nmSaleOrder
         #region Definitions
         Customer customer;
         List<QuotationDetail> items;
-
-
+        
         GetWorkerService GetWorkerService = new GetWorkerService();
 
         IMEEntities IME = new IMEEntities();
@@ -142,7 +141,7 @@ namespace LoginForm.nmSaleOrder
                 DataGridViewRow dgRow = (DataGridViewRow)dgSaleAddedItems.RowTemplate.Clone();
                 
                 dgSaleAddedItems.Rows.Add(dgRow);
-                //txtSaleOrderNo.Text = NewQuotationID();
+                txtSaleOrderNo.Text = "SO" + IME.CreteNewSaleOrderNo().FirstOrDefault().ToString();
                 //dgQuotationAddedItems.Rows[0].Cells["dgQty"].Value = "0";
                 dgSaleAddedItems.Rows[0].Cells[0].Value = 1.ToString();
                 LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
@@ -1508,6 +1507,7 @@ namespace LoginForm.nmSaleOrder
                 s.SubTotal = Convert.ToDecimal(lblsubtotal.Text);
                 s.DiscOnSubtotal = (txtTotalDis.Text != null && txtTotalDis.Text != String.Empty) ? Convert.ToDecimal(txtTotalDis.Text) : 0;
                 s.ExtraCharges = (txtExtraCharges.Text != null && txtExtraCharges.Text != String.Empty) ?Convert.ToDecimal(txtExtraCharges.Text) : 0;
+                
 
 
                 IME.SaleOrders.Add(s);
@@ -2172,42 +2172,42 @@ namespace LoginForm.nmSaleOrder
             catch { }
         }
 
-        private string NewQuotationID()
-        {
-            IMEEntities IME = new IMEEntities();
-            //List<Quotation> quotList = IME.Quotations.Where(q => q.QuotationNo == Convert.ToDateTime(IME.CurrentDate().First()).Year).toList();
-            //int ID;
-            Quotation quo = IME.Quotations.OrderByDescending(q => q.QuotationNo).FirstOrDefault();
-            string q1;
-            if (quo == null)
-            {
-                q1 = Convert.ToDateTime(IME.CurrentDate().First()).Year.ToString() + "/1";
-            }
-            else
-            {
-                q1 = quo.QuotationNo;
-                while (IME.Quotations.Where(a => a.QuotationNo == q1).ToList().Count > 0)
-                {
+        //private string CreateSaleOrderID()
+        //{
+        //    IMEEntities IME = new IMEEntities();
+        //    //List<Quotation> quotList = IME.Quotations.Where(q => q.QuotationNo == Convert.ToDateTime(IME.CurrentDate().First()).Year).toList();
+        //    //int ID;
+        //    Quotation quo = IME.Quotations.OrderByDescending(q => q.QuotationNo).FirstOrDefault();
+        //    string q1;
+        //    if (quo == null)
+        //    {
+        //        q1 = Convert.ToDateTime(IME.CurrentDate().First()).Year.ToString() + "/1";
+        //    }
+        //    else
+        //    {
+        //        q1 = quo.QuotationNo;
+        //        while (IME.Quotations.Where(a => a.QuotationNo == q1).ToList().Count > 0)
+        //        {
 
-                    if (quo.QuotationNo.Contains("v"))
-                    {
-                        int quoID = Int32.Parse(q1.Substring(quo.QuotationNo.LastIndexOf('/') + 1, (quo.QuotationNo.LastIndexOf('v') + 1) - (quo.QuotationNo.LastIndexOf('/') + 1) - 1)) + 1;
+        //            if (quo.QuotationNo.Contains("v"))
+        //            {
+        //                int quoID = Int32.Parse(q1.Substring(quo.QuotationNo.LastIndexOf('/') + 1, (quo.QuotationNo.LastIndexOf('v') + 1) - (quo.QuotationNo.LastIndexOf('/') + 1) - 1)) + 1;
 
-                        q1 = (quo.QuotationNo.Substring(0, quo.QuotationNo.IndexOf('/') + 1)).ToString();
+        //                q1 = (quo.QuotationNo.Substring(0, quo.QuotationNo.IndexOf('/') + 1)).ToString();
 
-                        q1 = q1 + quoID.ToString();
+        //                q1 = q1 + quoID.ToString();
 
-                    }
-                    else
-                    {
-                        int quoID = Int32.Parse(q1.Substring(quo.QuotationNo.LastIndexOf('/') + 1)) + 1;
+        //            }
+        //            else
+        //            {
+        //                int quoID = Int32.Parse(q1.Substring(quo.QuotationNo.LastIndexOf('/') + 1)) + 1;
 
-                        q1 = Convert.ToDateTime(IME.CurrentDate().First()).Year.ToString() + "/" + quoID.ToString();
-                    }
-                }
-            }
-            return q1;
-        }
+        //                q1 = Convert.ToDateTime(IME.CurrentDate().First()).Year.ToString() + "/" + quoID.ToString();
+        //            }
+        //        }
+        //    }
+        //    return q1;
+        //}
 
         //private void btnCreateRev_Click(object sender, EventArgs e)
         //{

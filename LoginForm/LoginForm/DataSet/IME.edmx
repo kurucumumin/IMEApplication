@@ -1021,6 +1021,7 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="voucherTypeId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="purchaseOrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FicheNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="financialYearId" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="PurchaseOrderDetail">
           <Key>
@@ -1392,6 +1393,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="exchangeRateID" Type="int" />
           <Property Name="pricingLevelId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="SaleOrderID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="financialYearId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="SaleOrderDetail">
           <Key>
@@ -1547,6 +1549,56 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="discount" Type="decimal" Precision="18" Scale="5" />
           <Property Name="grandTotal" Type="decimal" Precision="18" Scale="5" />
           <Property Name="financialYearId" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="serviceId" />
+          </Key>
+          <Property Name="serviceId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="serviceName" Type="varchar(max)" />
+          <Property Name="serviceCategoryId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="rate" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="narration" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="ServiceCategory">
+          <Key>
+            <PropertyRef Name="serviceCategoryId" />
+          </Key>
+          <Property Name="serviceCategoryId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="categoryName" Type="varchar(max)" />
+          <Property Name="narration" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="ServiceDetails">
+          <Key>
+            <PropertyRef Name="serviceDetailsId" />
+          </Key>
+          <Property Name="serviceDetailsId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="serviceMasterId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="serviceId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="measure" Type="varchar(max)" />
+          <Property Name="amount" Type="decimal" Precision="18" Scale="5" />
+        </EntityType>
+        <EntityType Name="ServiceMaster">
+          <Key>
+            <PropertyRef Name="serviceMasterId" />
+          </Key>
+          <Property Name="serviceMasterId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="voucherNo" Type="varchar(max)" />
+          <Property Name="invoiceNo" Type="varchar(max)" />
+          <Property Name="suffixPrefixId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="ledgerId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="totalAmount" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="narration" Type="varchar(max)" />
+          <Property Name="creditPeriod" Type="int" />
+          <Property Name="serviceAccount" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="employeeId" Type="int" />
+          <Property Name="customer" Type="varchar(max)" />
+          <Property Name="discount" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="grandTotal" Type="decimal" Precision="18" Scale="5" />
+          <Property Name="voucherTypeId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="financialYearId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="exchangeRateId" Type="int" />
         </EntityType>
         <EntityType Name="Settings">
           <Key>
@@ -4922,6 +4974,114 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Service__service__12D3B480">
+          <End Role="ServiceCategory" Type="Self.ServiceCategory" Multiplicity="0..1" />
+          <End Role="Service" Type="Self.Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceCategory">
+              <PropertyRef Name="serviceCategoryId" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="serviceCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceDe__servi__25E688F4">
+          <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+          <End Role="ServiceDetails" Type="Self.ServiceDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="serviceId" />
+            </Principal>
+            <Dependent Role="ServiceDetails">
+              <PropertyRef Name="serviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceDe__servi__26DAAD2D">
+          <End Role="ServiceMaster" Type="Self.ServiceMaster" Multiplicity="0..1" />
+          <End Role="ServiceDetails" Type="Self.ServiceDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceMaster">
+              <PropertyRef Name="serviceMasterId" />
+            </Principal>
+            <Dependent Role="ServiceDetails">
+              <PropertyRef Name="serviceMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceMa__emplo__202DAF9E">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+          <End Role="ServiceMaster" Type="Self.ServiceMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerID" />
+            </Principal>
+            <Dependent Role="ServiceMaster">
+              <PropertyRef Name="employeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceMa__excha__230A1C49">
+          <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
+          <End Role="ServiceMaster" Type="Self.ServiceMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExchangeRate">
+              <PropertyRef Name="exchangeRateID" />
+            </Principal>
+            <Dependent Role="ServiceMaster">
+              <PropertyRef Name="exchangeRateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceMa__finan__2215F810">
+          <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
+          <End Role="ServiceMaster" Type="Self.ServiceMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinancialYear">
+              <PropertyRef Name="financialYearId" />
+            </Principal>
+            <Dependent Role="ServiceMaster">
+              <PropertyRef Name="financialYearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceMa__ledge__1F398B65">
+          <End Role="LedgerPosting" Type="Self.LedgerPosting" Multiplicity="0..1" />
+          <End Role="ServiceMaster" Type="Self.ServiceMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LedgerPosting">
+              <PropertyRef Name="ledgerPostingId" />
+            </Principal>
+            <Dependent Role="ServiceMaster">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceMa__suffi__1E45672C">
+          <End Role="SuffixPrefix" Type="Self.SuffixPrefix" Multiplicity="0..1" />
+          <End Role="ServiceMaster" Type="Self.ServiceMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SuffixPrefix">
+              <PropertyRef Name="suffixprefixId" />
+            </Principal>
+            <Dependent Role="ServiceMaster">
+              <PropertyRef Name="suffixPrefixId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceMa__vouch__2121D3D7">
+          <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
+          <End Role="ServiceMaster" Type="Self.ServiceMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="ServiceMaster">
+              <PropertyRef Name="voucherTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Stock__currencyI__2156DE01">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
@@ -5498,6 +5658,18 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SaleOrder_FinancialYear">
+          <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="1" />
+          <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinancialYear">
+              <PropertyRef Name="financialYearId" />
+            </Principal>
+            <Dependent Role="SaleOrder">
+              <PropertyRef Name="financialYearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SaleOrderDetail_SaleOrder">
           <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="0..1" />
           <End Role="SaleOrderDetail" Type="Self.SaleOrderDetail" Multiplicity="*" />
@@ -5715,11 +5887,15 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Parameter Name="employeeId" Type="decimal" Mode="In" />
           <Parameter Name="month" Type="datetime" Mode="In" />
         </Function>
+        <Function Name="CompanyView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="companyId" Type="numeric" Mode="In" />
+        </Function>
         <Function Name="CreditNoteRegisterSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
           <Parameter Name="fromDate" Type="datetime" Mode="In" />
           <Parameter Name="toDate" Type="datetime" Mode="In" />
         </Function>
+        <Function Name="CreteNewSaleOrderNo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="CurrencyComboByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="date" Type="datetime" Mode="In" />
         </Function>
@@ -6461,6 +6637,14 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Parameter Name="employeeId" Type="numeric" Mode="In" />
           <Parameter Name="productCode" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="ServiceVoucherCheckExistence" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="invoiceNo" Type="varchar(max)" Mode="In" />
+          <Parameter Name="serviceMasterId" Type="numeric" Mode="In" />
+          <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="ServiceVoucherMasterMax" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
+        </Function>
         <Function Name="SlidingPriceAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ArticleNo" Type="nvarchar" Mode="In" />
           <Parameter Name="ArticleDescription" Type="nvarchar" Mode="In" />
@@ -6773,6 +6957,10 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <EntitySet Name="SalesReturnBillTax" EntityType="Self.SalesReturnBillTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SalesReturnDetails" EntityType="Self.SalesReturnDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SalesReturnMaster" EntityType="Self.SalesReturnMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceCategory" EntityType="Self.ServiceCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceDetails" EntityType="Self.ServiceDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceMaster" EntityType="Self.ServiceMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SlidingPrice" EntityType="Self.SlidingPrice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
@@ -6801,25 +6989,25 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <EntitySet Name="VoucherTypeTax" EntityType="Self.VoucherTypeTax" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdditionalCost" EntityType="Self.AdditionalCost" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [AdditionalCost].[additionalCostId] AS [additionalCostId],
-    [AdditionalCost].[voucherTypeId] AS [voucherTypeId],
-    [AdditionalCost].[voucherNo] AS [voucherNo],
-    [AdditionalCost].[ledgerId] AS [ledgerId],
-    [AdditionalCost].[debit] AS [debit],
+            <DefiningQuery>SELECT 
+    [AdditionalCost].[additionalCostId] AS [additionalCostId], 
+    [AdditionalCost].[voucherTypeId] AS [voucherTypeId], 
+    [AdditionalCost].[voucherNo] AS [voucherNo], 
+    [AdditionalCost].[ledgerId] AS [ledgerId], 
+    [AdditionalCost].[debit] AS [debit], 
     [AdditionalCost].[credit] AS [credit]
     FROM [dbo].[AdditionalCost] AS [AdditionalCost]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="SalaryVoucherDetail" EntityType="Self.SalaryVoucherDetail" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT
-    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId],
-    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId],
-    [SalaryVoucherDetail].[employeeId] AS [employeeId],
-    [SalaryVoucherDetail].[bonus] AS [bonus],
-    [SalaryVoucherDetail].[deduction] AS [deduction],
-    [SalaryVoucherDetail].[advance] AS [advance],
-    [SalaryVoucherDetail].[lop] AS [lop],
-    [SalaryVoucherDetail].[salary] AS [salary],
+            <DefiningQuery>SELECT 
+    [SalaryVoucherDetail].[salaryVoucherDetailsId] AS [salaryVoucherDetailsId], 
+    [SalaryVoucherDetail].[salaryVoucherMasterId] AS [salaryVoucherMasterId], 
+    [SalaryVoucherDetail].[employeeId] AS [employeeId], 
+    [SalaryVoucherDetail].[bonus] AS [bonus], 
+    [SalaryVoucherDetail].[deduction] AS [deduction], 
+    [SalaryVoucherDetail].[advance] AS [advance], 
+    [SalaryVoucherDetail].[lop] AS [lop], 
+    [SalaryVoucherDetail].[salary] AS [salary], 
     [SalaryVoucherDetail].[status] AS [status]
     FROM [dbo].[SalaryVoucherDetail] AS [SalaryVoucherDetail]</DefiningQuery>
           </EntitySet>
@@ -7811,6 +7999,42 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="SalesReturnMaster" EntitySet="SalesReturnMaster" />
           </AssociationSet>
+          <AssociationSet Name="FK__Service__service__12D3B480" Association="Self.FK__Service__service__12D3B480">
+            <End Role="ServiceCategory" EntitySet="ServiceCategory" />
+            <End Role="Service" EntitySet="Service" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceDe__servi__25E688F4" Association="Self.FK__ServiceDe__servi__25E688F4">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="ServiceDetails" EntitySet="ServiceDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceDe__servi__26DAAD2D" Association="Self.FK__ServiceDe__servi__26DAAD2D">
+            <End Role="ServiceMaster" EntitySet="ServiceMaster" />
+            <End Role="ServiceDetails" EntitySet="ServiceDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceMa__emplo__202DAF9E" Association="Self.FK__ServiceMa__emplo__202DAF9E">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="ServiceMaster" EntitySet="ServiceMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceMa__excha__230A1C49" Association="Self.FK__ServiceMa__excha__230A1C49">
+            <End Role="ExchangeRate" EntitySet="ExchangeRate" />
+            <End Role="ServiceMaster" EntitySet="ServiceMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceMa__finan__2215F810" Association="Self.FK__ServiceMa__finan__2215F810">
+            <End Role="FinancialYear" EntitySet="FinancialYear" />
+            <End Role="ServiceMaster" EntitySet="ServiceMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceMa__ledge__1F398B65" Association="Self.FK__ServiceMa__ledge__1F398B65">
+            <End Role="LedgerPosting" EntitySet="LedgerPosting" />
+            <End Role="ServiceMaster" EntitySet="ServiceMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceMa__suffi__1E45672C" Association="Self.FK__ServiceMa__suffi__1E45672C">
+            <End Role="SuffixPrefix" EntitySet="SuffixPrefix" />
+            <End Role="ServiceMaster" EntitySet="ServiceMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceMa__vouch__2121D3D7" Association="Self.FK__ServiceMa__vouch__2121D3D7">
+            <End Role="VoucherType" EntitySet="VoucherType" />
+            <End Role="ServiceMaster" EntitySet="ServiceMaster" />
+          </AssociationSet>
           <AssociationSet Name="FK__Stock__currencyI__2156DE01" Association="Self.FK__Stock__currencyI__2156DE01">
             <End Role="Currency" EntitySet="Currency" />
             <End Role="Stock" EntitySet="Stock" />
@@ -8002,6 +8226,10 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <AssociationSet Name="FK_ReceiptDetailExchangeRate" Association="Self.FK_ReceiptDetailExchangeRate">
             <End Role="ExchangeRate" EntitySet="ExchangeRate" />
             <End Role="ReceiptDetail" EntitySet="ReceiptDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SaleOrder_FinancialYear" Association="Self.FK_SaleOrder_FinancialYear">
+            <End Role="FinancialYear" EntitySet="FinancialYear" />
+            <End Role="SaleOrder" EntitySet="SaleOrder" />
           </AssociationSet>
           <AssociationSet Name="FK_SaleOrderDetail_SaleOrder" Association="Self.FK_SaleOrderDetail_SaleOrder">
             <End Role="SaleOrder" EntitySet="SaleOrder" />
@@ -8608,6 +8836,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <NavigationProperty Name="SaleOrders" Relationship="Self.FK__SaleOrder__excha__5C229E14" FromRole="ExchangeRate" ToRole="SaleOrder" />
           <NavigationProperty Name="SalesMasters" Relationship="Self.FK__SalesMast__excha__76D69450" FromRole="ExchangeRate" ToRole="SalesMaster" />
           <NavigationProperty Name="SalesReturnMasters" Relationship="Self.FK__SalesRetu__excha__6C5905DD" FromRole="ExchangeRate" ToRole="SalesReturnMaster" />
+          <NavigationProperty Name="ServiceMasters" Relationship="Self.FK__ServiceMa__excha__230A1C49" FromRole="ExchangeRate" ToRole="ServiceMaster" />
           <NavigationProperty Name="ReceiptDetails" Relationship="Self.FK_ReceiptDetailExchangeRate" FromRole="ExchangeRate" ToRole="ReceiptDetail" />
         </EntityType>
         <EntityType Name="ExtendedRange">
@@ -8673,6 +8902,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <NavigationProperty Name="SalaryVoucherMasters" Relationship="Self.FK__SalaryVou__finan__733B0D96" FromRole="FinancialYear" ToRole="SalaryVoucherMaster" />
           <NavigationProperty Name="SalesMasters" Relationship="Self.FK__SalesMast__finan__7AA72534" FromRole="FinancialYear" ToRole="SalesMaster" />
           <NavigationProperty Name="SalesReturnMasters" Relationship="Self.FK__SalesRetu__finan__6D4D2A16" FromRole="FinancialYear" ToRole="SalesReturnMaster" />
+          <NavigationProperty Name="ServiceMasters" Relationship="Self.FK__ServiceMa__finan__2215F810" FromRole="FinancialYear" ToRole="ServiceMaster" />
+          <NavigationProperty Name="SaleOrders" Relationship="Self.FK_SaleOrder_FinancialYear" FromRole="FinancialYear" ToRole="SaleOrder" />
         </EntityType>
         <EntityType Name="Godown">
           <Key>
@@ -8778,6 +9009,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <NavigationProperty Name="FinancialYear" Relationship="Self.FK__LedgerPos__yearI__61516785" FromRole="LedgerPosting" ToRole="FinancialYear" />
           <NavigationProperty Name="VoucherType" Relationship="Self.FK__LedgerPos__vouch__5F691F13" FromRole="LedgerPosting" ToRole="VoucherType" />
           <NavigationProperty Name="SalesMasters" Relationship="Self.FK__SalesMast__ledge__7211DF33" FromRole="LedgerPosting" ToRole="SalesMaster" />
+          <NavigationProperty Name="ServiceMasters" Relationship="Self.FK__ServiceMa__ledge__1F398B65" FromRole="LedgerPosting" ToRole="ServiceMaster" />
         </EntityType>
         <EntityType Name="LoaderDate">
           <Key>
@@ -9286,6 +9518,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="purchaseOrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FicheNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="AccountLedger" Relationship="Self.FK__PurchaseO__ledge__32EB7E57" FromRole="PurchaseOrder" ToRole="AccountLedger" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__PurchaseO__Custo__420DC656" FromRole="PurchaseOrder" ToRole="Customer" />
           <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__PurchaseO__excha__61DB776A" FromRole="PurchaseOrder" ToRole="ExchangeRate" />
@@ -9743,6 +9976,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="exchangeRateID" Type="Int32" />
           <Property Name="pricingLevelId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="SaleOrderID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <NavigationProperty Name="AccountLedger" Relationship="Self.FK__SaleOrder__ledge__4A03EDD9" FromRole="SaleOrder" ToRole="AccountLedger" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__SaleOrder__Custo__1CDC41A7" FromRole="SaleOrder" ToRole="Customer" />
           <NavigationProperty Name="CustomerAddress" Relationship="Self.FK__SaleOrder__Deliv__21A0F6C4" FromRole="SaleOrder" ToRole="CustomerAddress" />
@@ -9751,6 +9985,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <NavigationProperty Name="CustomerWorker1" Relationship="Self.FK__SaleOrder__Conta__1EC48A19" FromRole="SaleOrder" ToRole="CustomerWorker" />
           <NavigationProperty Name="CustomerWorker2" Relationship="Self.FK__SaleOrder__Deliv__1FB8AE52" FromRole="SaleOrder" ToRole="CustomerWorker" />
           <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__SaleOrder__excha__5C229E14" FromRole="SaleOrder" ToRole="ExchangeRate" />
+          <NavigationProperty Name="FinancialYear" Relationship="Self.FK_SaleOrder_FinancialYear" FromRole="SaleOrder" ToRole="FinancialYear" />
           <NavigationProperty Name="PaymentMethod" Relationship="Self.FK__SaleOrder__Payme__1BE81D6E" FromRole="SaleOrder" ToRole="PaymentMethod" />
           <NavigationProperty Name="PaymentTerm" Relationship="Self.FK__SaleOrder__Payme__1AF3F935" FromRole="SaleOrder" ToRole="PaymentTerm" />
           <NavigationProperty Name="PurchaseOrderDetails" Relationship="Self.FK_PurchaseOrderDetail_SaleOrder" FromRole="SaleOrder" ToRole="PurchaseOrderDetail" />
@@ -9950,6 +10185,68 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <NavigationProperty Name="Worker" Relationship="Self.FK__SalesRetu__userI__6A70BD6B" FromRole="SalesReturnMaster" ToRole="Worker" />
           <NavigationProperty Name="VoucherType" Relationship="Self.FK__SalesRetu__vouch__65AC084E" FromRole="SalesReturnMaster" ToRole="VoucherType" />
         </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="serviceId" />
+          </Key>
+          <Property Name="serviceId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="serviceName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="serviceCategoryId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="rate" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ServiceCategory" Relationship="Self.FK__Service__service__12D3B480" FromRole="Service" ToRole="ServiceCategory" />
+          <NavigationProperty Name="ServiceDetails" Relationship="Self.FK__ServiceDe__servi__25E688F4" FromRole="Service" ToRole="ServiceDetails" />
+        </EntityType>
+        <EntityType Name="ServiceCategory">
+          <Key>
+            <PropertyRef Name="serviceCategoryId" />
+          </Key>
+          <Property Name="serviceCategoryId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="categoryName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Services" Relationship="Self.FK__Service__service__12D3B480" FromRole="ServiceCategory" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="ServiceDetail">
+          <Key>
+            <PropertyRef Name="serviceDetailsId" />
+          </Key>
+          <Property Name="serviceDetailsId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="serviceMasterId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="serviceId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="measure" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="amount" Type="Decimal" Precision="18" Scale="5" />
+          <NavigationProperty Name="Service" Relationship="Self.FK__ServiceDe__servi__25E688F4" FromRole="ServiceDetails" ToRole="Service" />
+          <NavigationProperty Name="ServiceMaster" Relationship="Self.FK__ServiceDe__servi__26DAAD2D" FromRole="ServiceDetails" ToRole="ServiceMaster" />
+        </EntityType>
+        <EntityType Name="ServiceMaster">
+          <Key>
+            <PropertyRef Name="serviceMasterId" />
+          </Key>
+          <Property Name="serviceMasterId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="voucherNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="invoiceNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="suffixPrefixId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="ledgerId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="totalAmount" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="creditPeriod" Type="Int32" />
+          <Property Name="serviceAccount" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="employeeId" Type="Int32" />
+          <Property Name="customer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="discount" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="grandTotal" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="voucherTypeId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="financialYearId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="exchangeRateId" Type="Int32" />
+          <NavigationProperty Name="ExchangeRate" Relationship="Self.FK__ServiceMa__excha__230A1C49" FromRole="ServiceMaster" ToRole="ExchangeRate" />
+          <NavigationProperty Name="FinancialYear" Relationship="Self.FK__ServiceMa__finan__2215F810" FromRole="ServiceMaster" ToRole="FinancialYear" />
+          <NavigationProperty Name="LedgerPosting" Relationship="Self.FK__ServiceMa__ledge__1F398B65" FromRole="ServiceMaster" ToRole="LedgerPosting" />
+          <NavigationProperty Name="ServiceDetails" Relationship="Self.FK__ServiceDe__servi__26DAAD2D" FromRole="ServiceMaster" ToRole="ServiceDetails" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK__ServiceMa__emplo__202DAF9E" FromRole="ServiceMaster" ToRole="Worker" />
+          <NavigationProperty Name="SuffixPrefix" Relationship="Self.FK__ServiceMa__suffi__1E45672C" FromRole="ServiceMaster" ToRole="SuffixPrefix" />
+          <NavigationProperty Name="VoucherType" Relationship="Self.FK__ServiceMa__vouch__2121D3D7" FromRole="ServiceMaster" ToRole="VoucherType" />
+        </EntityType>
         <EntityType Name="Setting">
           <Key>
             <PropertyRef Name="settingsId" />
@@ -10065,6 +10362,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <NavigationProperty Name="SalaryVoucherMasters" Relationship="Self.FK__SalaryVou__suffi__75235608" FromRole="SuffixPrefix" ToRole="SalaryVoucherMaster" />
           <NavigationProperty Name="SalesMasters" Relationship="Self.FK__SalesMast__suffi__711DBAFA" FromRole="SuffixPrefix" ToRole="SalesMaster" />
           <NavigationProperty Name="SalesReturnMasters" Relationship="Self.FK__SalesRetu__suffi__66A02C87" FromRole="SuffixPrefix" ToRole="SalesReturnMaster" />
+          <NavigationProperty Name="ServiceMasters" Relationship="Self.FK__ServiceMa__suffi__1E45672C" FromRole="SuffixPrefix" ToRole="ServiceMaster" />
           <NavigationProperty Name="VoucherType" Relationship="Self.FK__SuffixPre__vouch__7740A8A4" FromRole="SuffixPrefix" ToRole="VoucherType" />
         </EntityType>
         <EntityType Name="SuperDisk">
@@ -10439,6 +10737,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <NavigationProperty Name="SaleOrders" Relationship="Self.FK__SaleOrder__Vouch__705EA0EB" FromRole="VoucherType" ToRole="SaleOrder" />
           <NavigationProperty Name="SalesMasters" Relationship="Self.FK__SalesMast__vouch__702996C1" FromRole="VoucherType" ToRole="SalesMaster" />
           <NavigationProperty Name="SalesReturnMasters" Relationship="Self.FK__SalesRetu__vouch__65AC084E" FromRole="VoucherType" ToRole="SalesReturnMaster" />
+          <NavigationProperty Name="ServiceMasters" Relationship="Self.FK__ServiceMa__vouch__2121D3D7" FromRole="VoucherType" ToRole="ServiceMaster" />
           <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__voucherTy__47E69B3D" FromRole="VoucherType" ToRole="Stock" />
           <NavigationProperty Name="StockPostings" Relationship="Self.FK__StockPost__vouch__0F6D37F0" FromRole="VoucherType" ToRole="StockPosting" />
           <NavigationProperty Name="SuffixPrefixes" Relationship="Self.FK__SuffixPre__vouch__7740A8A4" FromRole="VoucherType" ToRole="SuffixPrefix" />
@@ -10500,6 +10799,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <NavigationProperty Name="SaleOrders" Relationship="Self.FK__SaleOrder__Repre__22951AFD" FromRole="Worker" ToRole="SaleOrder" />
           <NavigationProperty Name="SalesMasters" Relationship="Self.FK__SalesMast__Worke__77CAB889" FromRole="Worker" ToRole="SalesMaster" />
           <NavigationProperty Name="SalesReturnMasters" Relationship="Self.FK__SalesRetu__userI__6A70BD6B" FromRole="Worker" ToRole="SalesReturnMaster" />
+          <NavigationProperty Name="ServiceMasters" Relationship="Self.FK__ServiceMa__emplo__202DAF9E" FromRole="Worker" ToRole="ServiceMaster" />
           <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__accoun__2DB1C7EE" FromRole="Worker" ToRole="Supplier" />
           <NavigationProperty Name="Suppliers1" Relationship="Self.FK__Supplier__repres__65370702" FromRole="Worker" ToRole="Supplier" />
           <NavigationProperty Name="SalaryVoucherDetails" Relationship="Self.FK__SalaryVou__emplo__78F3E6EC" FromRole="Worker" ToRole="SalaryVoucherDetail" />
@@ -11938,6 +12238,18 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__ServiceMa__excha__230A1C49">
+          <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
+          <End Role="ServiceMaster" Type="Self.ServiceMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExchangeRate">
+              <PropertyRef Name="exchangeRateID" />
+            </Principal>
+            <Dependent Role="ServiceMaster">
+              <PropertyRef Name="exchangeRateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ReceiptDetailExchangeRate">
           <End Role="ExchangeRate" Type="Self.ExchangeRate" Multiplicity="0..1" />
           <End Role="ReceiptDetail" Type="Self.ReceiptDetail" Multiplicity="*" />
@@ -12130,6 +12442,30 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__ServiceMa__finan__2215F810">
+          <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="0..1" />
+          <End Role="ServiceMaster" Type="Self.ServiceMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinancialYear">
+              <PropertyRef Name="financialYearId" />
+            </Principal>
+            <Dependent Role="ServiceMaster">
+              <PropertyRef Name="financialYearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SaleOrder_FinancialYear">
+          <End Role="FinancialYear" Type="Self.FinancialYear" Multiplicity="1" />
+          <End Role="SaleOrder" Type="Self.SaleOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinancialYear">
+              <PropertyRef Name="financialYearId" />
+            </Principal>
+            <Dependent Role="SaleOrder">
+              <PropertyRef Name="financialYearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__MaterialR__godow__629A9179">
           <End Role="Godown" Type="Self.Godown" Multiplicity="0..1" />
           <End Role="MaterialReceiptDetails" Type="Self.MaterialReceiptDetail" Multiplicity="*" />
@@ -12318,6 +12654,18 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               <PropertyRef Name="ledgerPostingId" />
             </Principal>
             <Dependent Role="SalesMaster">
+              <PropertyRef Name="ledgerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceMa__ledge__1F398B65">
+          <End Role="LedgerPosting" Type="Self.LedgerPosting" Multiplicity="0..1" />
+          <End Role="ServiceMaster" Type="Self.ServiceMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LedgerPosting">
+              <PropertyRef Name="ledgerPostingId" />
+            </Principal>
+            <Dependent Role="ServiceMaster">
               <PropertyRef Name="ledgerId" />
             </Dependent>
           </ReferentialConstraint>
@@ -13714,6 +14062,78 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Service__service__12D3B480">
+          <End Role="ServiceCategory" Type="Self.ServiceCategory" Multiplicity="0..1" />
+          <End Role="Service" Type="Self.Service" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceCategory">
+              <PropertyRef Name="serviceCategoryId" />
+            </Principal>
+            <Dependent Role="Service">
+              <PropertyRef Name="serviceCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceDe__servi__25E688F4">
+          <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+          <End Role="ServiceDetails" Type="Self.ServiceDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="serviceId" />
+            </Principal>
+            <Dependent Role="ServiceDetails">
+              <PropertyRef Name="serviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceDe__servi__26DAAD2D">
+          <End Role="ServiceMaster" Type="Self.ServiceMaster" Multiplicity="0..1" />
+          <End Role="ServiceDetails" Type="Self.ServiceDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceMaster">
+              <PropertyRef Name="serviceMasterId" />
+            </Principal>
+            <Dependent Role="ServiceDetails">
+              <PropertyRef Name="serviceMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceMa__emplo__202DAF9E">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+          <End Role="ServiceMaster" Type="Self.ServiceMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="WorkerID" />
+            </Principal>
+            <Dependent Role="ServiceMaster">
+              <PropertyRef Name="employeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceMa__suffi__1E45672C">
+          <End Role="SuffixPrefix" Type="Self.SuffixPrefix" Multiplicity="0..1" />
+          <End Role="ServiceMaster" Type="Self.ServiceMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SuffixPrefix">
+              <PropertyRef Name="suffixprefixId" />
+            </Principal>
+            <Dependent Role="ServiceMaster">
+              <PropertyRef Name="suffixPrefixId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ServiceMa__vouch__2121D3D7">
+          <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
+          <End Role="ServiceMaster" Type="Self.ServiceMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoucherType">
+              <PropertyRef Name="voucherTypeId" />
+            </Principal>
+            <Dependent Role="ServiceMaster">
+              <PropertyRef Name="voucherTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Stock__voucherTy__47E69B3D">
           <End Role="VoucherType" Type="Self.VoucherType" Multiplicity="0..1" />
           <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
@@ -14142,6 +14562,10 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <EntitySet Name="SalesReturnBillTaxes" EntityType="Self.SalesReturnBillTax" />
           <EntitySet Name="SalesReturnDetails" EntityType="Self.SalesReturnDetail" />
           <EntitySet Name="SalesReturnMasters" EntityType="Self.SalesReturnMaster" />
+          <EntitySet Name="Services" EntityType="Self.Service" />
+          <EntitySet Name="ServiceCategories" EntityType="Self.ServiceCategory" />
+          <EntitySet Name="ServiceDetails" EntityType="Self.ServiceDetail" />
+          <EntitySet Name="ServiceMasters" EntityType="Self.ServiceMaster" />
           <EntitySet Name="Settings" EntityType="Self.Setting" />
           <EntitySet Name="SlidingPrices" EntityType="Self.SlidingPrice" />
           <EntitySet Name="Stocks" EntityType="Self.Stock" />
@@ -14638,6 +15062,10 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="ExchangeRate" EntitySet="ExchangeRates" />
             <End Role="SalesReturnMaster" EntitySet="SalesReturnMasters" />
           </AssociationSet>
+          <AssociationSet Name="FK__ServiceMa__excha__230A1C49" Association="Self.FK__ServiceMa__excha__230A1C49">
+            <End Role="ExchangeRate" EntitySet="ExchangeRates" />
+            <End Role="ServiceMaster" EntitySet="ServiceMasters" />
+          </AssociationSet>
           <AssociationSet Name="FK_ReceiptDetailExchangeRate" Association="Self.FK_ReceiptDetailExchangeRate">
             <End Role="ExchangeRate" EntitySet="ExchangeRates" />
             <End Role="ReceiptDetail" EntitySet="ReceiptDetails" />
@@ -14702,6 +15130,14 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="FinancialYear" EntitySet="FinancialYears" />
             <End Role="SalesReturnMaster" EntitySet="SalesReturnMasters" />
           </AssociationSet>
+          <AssociationSet Name="FK__ServiceMa__finan__2215F810" Association="Self.FK__ServiceMa__finan__2215F810">
+            <End Role="FinancialYear" EntitySet="FinancialYears" />
+            <End Role="ServiceMaster" EntitySet="ServiceMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SaleOrder_FinancialYear" Association="Self.FK_SaleOrder_FinancialYear">
+            <End Role="FinancialYear" EntitySet="FinancialYears" />
+            <End Role="SaleOrder" EntitySet="SaleOrders" />
+          </AssociationSet>
           <AssociationSet Name="FK__MaterialR__godow__629A9179" Association="Self.FK__MaterialR__godow__629A9179">
             <End Role="Godown" EntitySet="Godowns" />
             <End Role="MaterialReceiptDetails" EntitySet="MaterialReceiptDetails" />
@@ -14765,6 +15201,10 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <AssociationSet Name="FK__SalesMast__ledge__7211DF33" Association="Self.FK__SalesMast__ledge__7211DF33">
             <End Role="LedgerPosting" EntitySet="LedgerPostings" />
             <End Role="SalesMaster" EntitySet="SalesMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceMa__ledge__1F398B65" Association="Self.FK__ServiceMa__ledge__1F398B65">
+            <End Role="LedgerPosting" EntitySet="LedgerPostings" />
+            <End Role="ServiceMaster" EntitySet="ServiceMasters" />
           </AssociationSet>
           <AssociationSet Name="FK__MaterialR__mater__5DD5DC5C" Association="Self.FK__MaterialR__mater__5DD5DC5C">
             <End Role="MaterialReceiptMaster" EntitySet="MaterialReceiptMasters" />
@@ -15230,6 +15670,30 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="SalesReturnMaster" EntitySet="SalesReturnMasters" />
           </AssociationSet>
+          <AssociationSet Name="FK__Service__service__12D3B480" Association="Self.FK__Service__service__12D3B480">
+            <End Role="ServiceCategory" EntitySet="ServiceCategories" />
+            <End Role="Service" EntitySet="Services" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceDe__servi__25E688F4" Association="Self.FK__ServiceDe__servi__25E688F4">
+            <End Role="Service" EntitySet="Services" />
+            <End Role="ServiceDetails" EntitySet="ServiceDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceDe__servi__26DAAD2D" Association="Self.FK__ServiceDe__servi__26DAAD2D">
+            <End Role="ServiceMaster" EntitySet="ServiceMasters" />
+            <End Role="ServiceDetails" EntitySet="ServiceDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceMa__emplo__202DAF9E" Association="Self.FK__ServiceMa__emplo__202DAF9E">
+            <End Role="Worker" EntitySet="Workers" />
+            <End Role="ServiceMaster" EntitySet="ServiceMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceMa__suffi__1E45672C" Association="Self.FK__ServiceMa__suffi__1E45672C">
+            <End Role="SuffixPrefix" EntitySet="SuffixPrefixes" />
+            <End Role="ServiceMaster" EntitySet="ServiceMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ServiceMa__vouch__2121D3D7" Association="Self.FK__ServiceMa__vouch__2121D3D7">
+            <End Role="VoucherType" EntitySet="VoucherTypes" />
+            <End Role="ServiceMaster" EntitySet="ServiceMasters" />
+          </AssociationSet>
           <AssociationSet Name="FK__Stock__voucherTy__47E69B3D" Association="Self.FK__Stock__voucherTy__47E69B3D">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="Stock" EntitySet="Stocks" />
@@ -15551,11 +16015,15 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="employeeId" Mode="In" Type="Decimal" />
             <Parameter Name="month" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="CompanyView" ReturnType="Collection(IMEModel.CompanyView_Result)">
+            <Parameter Name="companyId" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="CreditNoteRegisterSearch" ReturnType="Collection(IMEModel.CreditNoteRegisterSearch_Result)">
             <Parameter Name="voucherNo" Mode="In" Type="String" />
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="CreteNewSaleOrderNo" ReturnType="Collection(Int32)" />
           <FunctionImport Name="CurrencyComboByDate" ReturnType="Collection(IMEModel.CurrencyComboByDate_Result)">
             <Parameter Name="date" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -16291,6 +16759,14 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="employeeId" Mode="In" Type="Decimal" />
             <Parameter Name="productCode" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="ServiceVoucherCheckExistence" ReturnType="Collection(Int32)">
+            <Parameter Name="invoiceNo" Mode="In" Type="String" />
+            <Parameter Name="serviceMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="ServiceVoucherMasterMax" ReturnType="Collection(Decimal)">
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="SlidingPriceAdd">
             <Parameter Name="ArticleNo" Mode="In" Type="String" />
             <Parameter Name="ArticleDescription" Mode="In" Type="String" />
@@ -16696,6 +17172,24 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
         <ComplexType Name="CashOrBankComboFill_Result">
           <Property Type="String" Name="ledgerName" Nullable="true" />
           <Property Type="Decimal" Name="ledgerId" Nullable="false" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="CompanyView_Result">
+          <Property Type="Decimal" Name="companyId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="companyName" Nullable="true" />
+          <Property Type="String" Name="mailingName" Nullable="true" />
+          <Property Type="String" Name="address" Nullable="true" />
+          <Property Type="String" Name="phone" Nullable="true" />
+          <Property Type="String" Name="mobile" Nullable="true" />
+          <Property Type="String" Name="web" Nullable="true" />
+          <Property Type="String" Name="country" Nullable="true" />
+          <Property Type="String" Name="state" Nullable="true" />
+          <Property Type="String" Name="pin" Nullable="true" />
+          <Property Type="Decimal" Name="currencyId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="financialYearFrom" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="booksBeginingFrom" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="tin" Nullable="true" />
+          <Property Type="String" Name="cst" Nullable="true" />
+          <Property Type="String" Name="pan" Nullable="true" />
         </ComplexType>
         <ComplexType Name="CreditNoteRegisterSearch_Result">
           <Property Type="Decimal" Name="creditNoteMasterId" Nullable="false" Precision="18" Scale="0" />
@@ -18573,6 +19067,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
                 <ScalarProperty Name="purchaseOrderId" ColumnName="purchaseOrderId" />
                 <ScalarProperty Name="FicheNo" ColumnName="FicheNo" />
+                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -18947,6 +19442,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="exchangeRateID" ColumnName="exchangeRateID" />
                 <ScalarProperty Name="pricingLevelId" ColumnName="pricingLevelId" />
                 <ScalarProperty Name="SaleOrderID" ColumnName="SaleOrderID" />
+                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -19109,6 +19605,60 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="discount" ColumnName="discount" />
                 <ScalarProperty Name="grandTotal" ColumnName="grandTotal" />
                 <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="IMEModel.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="serviceId" ColumnName="serviceId" />
+                <ScalarProperty Name="serviceName" ColumnName="serviceName" />
+                <ScalarProperty Name="serviceCategoryId" ColumnName="serviceCategoryId" />
+                <ScalarProperty Name="rate" ColumnName="rate" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceCategories">
+            <EntityTypeMapping TypeName="IMEModel.ServiceCategory">
+              <MappingFragment StoreEntitySet="ServiceCategory">
+                <ScalarProperty Name="serviceCategoryId" ColumnName="serviceCategoryId" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceDetails">
+            <EntityTypeMapping TypeName="IMEModel.ServiceDetail">
+              <MappingFragment StoreEntitySet="ServiceDetails">
+                <ScalarProperty Name="serviceDetailsId" ColumnName="serviceDetailsId" />
+                <ScalarProperty Name="serviceMasterId" ColumnName="serviceMasterId" />
+                <ScalarProperty Name="serviceId" ColumnName="serviceId" />
+                <ScalarProperty Name="measure" ColumnName="measure" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceMasters">
+            <EntityTypeMapping TypeName="IMEModel.ServiceMaster">
+              <MappingFragment StoreEntitySet="ServiceMaster">
+                <ScalarProperty Name="serviceMasterId" ColumnName="serviceMasterId" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="ledgerId" ColumnName="ledgerId" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="creditPeriod" ColumnName="creditPeriod" />
+                <ScalarProperty Name="serviceAccount" ColumnName="serviceAccount" />
+                <ScalarProperty Name="employeeId" ColumnName="employeeId" />
+                <ScalarProperty Name="customer" ColumnName="customer" />
+                <ScalarProperty Name="discount" ColumnName="discount" />
+                <ScalarProperty Name="grandTotal" ColumnName="grandTotal" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+                <ScalarProperty Name="exchangeRateId" ColumnName="exchangeRateId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -19885,6 +20435,28 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImportMapping FunctionImportName="CheckForDefaultVoucherType" FunctionName="IMEModel.Store.CheckForDefaultVoucherType" />
           <FunctionImportMapping FunctionImportName="CheckSalaryAlreadyPaidOrNot" FunctionName="IMEModel.Store.CheckSalaryAlreadyPaidOrNot" />
           <FunctionImportMapping FunctionImportName="CheckSalaryAlreadyPaidOrNotForAdvancePayment" FunctionName="IMEModel.Store.CheckSalaryAlreadyPaidOrNotForAdvancePayment" />
+          <FunctionImportMapping FunctionImportName="CompanyView" FunctionName="IMEModel.Store.CompanyView">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.CompanyView_Result">
+                <ScalarProperty Name="companyId" ColumnName="companyId" />
+                <ScalarProperty Name="companyName" ColumnName="companyName" />
+                <ScalarProperty Name="mailingName" ColumnName="mailingName" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="web" ColumnName="web" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="pin" ColumnName="pin" />
+                <ScalarProperty Name="currencyId" ColumnName="currencyId" />
+                <ScalarProperty Name="financialYearFrom" ColumnName="financialYearFrom" />
+                <ScalarProperty Name="booksBeginingFrom" ColumnName="booksBeginingFrom" />
+                <ScalarProperty Name="tin" ColumnName="tin" />
+                <ScalarProperty Name="cst" ColumnName="cst" />
+                <ScalarProperty Name="pan" ColumnName="pan" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="CreditNoteRegisterSearch" FunctionName="IMEModel.Store.CreditNoteRegisterSearch">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.CreditNoteRegisterSearch_Result">
@@ -19901,6 +20473,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CreteNewSaleOrderNo" FunctionName="IMEModel.Store.CreteNewSaleOrderNo" />
           <FunctionImportMapping FunctionImportName="CurrencyComboByDate" FunctionName="IMEModel.Store.CurrencyComboByDate">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.CurrencyComboByDate_Result">
@@ -20924,6 +21497,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ServiceVoucherCheckExistence" FunctionName="IMEModel.Store.ServiceVoucherCheckExistence" />
+          <FunctionImportMapping FunctionImportName="ServiceVoucherMasterMax" FunctionName="IMEModel.Store.ServiceVoucherMasterMax" />
           <FunctionImportMapping FunctionImportName="SlidingPriceAdd" FunctionName="IMEModel.Store.SlidingPriceAdd" />
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="IMEModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="IMEModel.Store.sp_creatediagram" />
