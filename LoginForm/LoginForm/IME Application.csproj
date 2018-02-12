@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>55</ApplicationRevision>
+    <ApplicationRevision>52</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -162,9 +162,7 @@
     <Compile Include="Account\Master\frmExchangeRate.designer.cs">
       <DependentUpon>frmExchangeRate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\Master\frmSalesman.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Account\Master\frmSalesman.cs" />
     <Compile Include="Account\Master\frmSalesman.designer.cs">
       <DependentUpon>frmSalesman.cs</DependentUpon>
     </Compile>
@@ -415,7 +413,9 @@
     <Compile Include="Account\Services\SalesReturnBillTaxSP.cs" />
     <Compile Include="Account\Services\SalesReturnDetailsSP.cs" />
     <Compile Include="Account\Services\SalesReturnMasterSP.cs" />
+    <Compile Include="Account\Services\ServiceDetailsSP.cs" />
     <Compile Include="Account\Services\ServiceMasterSP.cs" />
+    <Compile Include="Account\Services\ServiceSP.cs" />
     <Compile Include="Account\Services\SettingsSP.cs" />
     <Compile Include="Account\Services\spBankReconciliation.cs" />
     <Compile Include="Account\Services\StockPostingInfo.cs" />
@@ -505,6 +505,12 @@
     </Compile>
     <Compile Include="Account\Transaction\frmSalesReturn.Designer.cs">
       <DependentUpon>frmSalesReturn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Transaction\frmServiceVoucher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Transaction\frmServiceVoucher.Designer.cs">
+      <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\AccountCustomControl\BudgetMasterPayroll.cs">
       <SubType>UserControl</SubType>
@@ -670,6 +676,9 @@
     </Compile>
     <Compile Include="DataSet\classExchangeRate.cs" />
     <Compile Include="DataSet\Company.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\CompanyView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\ContactType.cs">
@@ -1128,6 +1137,18 @@
     <Compile Include="DataSet\SalesReturnReportGrideFill_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\Service.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ServiceCategory.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ServiceDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ServiceMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Setting.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1395,12 +1416,6 @@
     <Compile Include="QuotationModule\frmQuotationExport.Designer.cs">
       <DependentUpon>frmQuotationExport.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuotationModule\frmXmlCustomerAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="QuotationModule\frmXmlCustomerAdd.Designer.cs">
-      <DependentUpon>frmXmlCustomerAdd.cs</DependentUpon>
-    </Compile>
     <Compile Include="QuotationModule\ViewProductHistory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1641,6 +1656,9 @@
     <EmbeddedResource Include="Account\Transaction\frmSalesReturn.resx">
       <DependentUpon>frmSalesReturn.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Account\Transaction\frmServiceVoucher.resx">
+      <DependentUpon>frmServiceVoucher.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountCustomControl\BudgetMasterPayroll.resx">
       <DependentUpon>BudgetMasterPayroll.cs</DependentUpon>
     </EmbeddedResource>
@@ -1746,9 +1764,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\frmQuotationExport.resx">
       <DependentUpon>frmQuotationExport.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="QuotationModule\frmXmlCustomerAdd.resx">
-      <DependentUpon>frmXmlCustomerAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\ViewProductHistory.resx">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>

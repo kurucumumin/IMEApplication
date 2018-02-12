@@ -636,7 +636,7 @@ namespace LoginForm
             {
                 ServiceMaster infoServiceMaster = new ServiceMaster();
                 ServiceMasterSP spServiceMaster = new ServiceMasterSP();
-                ServiceDetails infoServiceDetails = new ServiceDetails();
+                ServiceDetail infoServiceDetails = new ServiceDetail();
                 ServiceDetailsSP spServiceDetails = new ServiceDetailsSP();
                 LedgerPostingSP spLedgerPosting = new LedgerPostingSP();
                 LedgerPosting infoLedgerPosting = new LedgerPosting();
@@ -653,44 +653,38 @@ namespace LoginForm
                 if (inValue > 0)
                 {
                     txtDiscount.Enabled = true;
-                    infoServiceMaster.InvoiceNo = txtInvoiceNumber.Text;
+                    infoServiceMaster.invoiceNo = txtInvoiceNumber.Text;
                     if (isAutomatic)
                     {
-                        infoServiceMaster.VoucherNo = strVoucherNo;
+                        infoServiceMaster.voucherNo = strVoucherNo;
                     }
                     else
                     {
-                        infoServiceMaster.VoucherNo = Convert.ToString(spServiceMaster.ServiceMasterGetMax(DecServicetVoucherTypeId) + 1);
+                        infoServiceMaster.voucherNo = Convert.ToString(spServiceMaster.ServiceMasterGetMax(DecServicetVoucherTypeId) + 1);
                     }
-                    infoServiceMaster.SuffixPrefixId = decServiceSuffixPrefixId;
-                    infoServiceMaster.Date = Convert.ToDateTime(txtVoucherDate.Text);
-                    infoServiceMaster.LedgerId = Convert.ToDecimal(cmbCashParty.SelectedValue.ToString());
-                    infoServiceMaster.TotalAmount = Convert.ToDecimal(txtTotalAmount.Text);
-                    infoServiceMaster.Narration = txtNarration.Text.Trim();
-                    infoServiceMaster.UserId = Utils.getCurrentUser().WorkerID;
-                    infoServiceMaster.CreditPeriod = Convert.ToInt32(txtCreditPeriod.Text);
-                    infoServiceMaster.ServiceAccount = Convert.ToDecimal(cmbServiceAC.SelectedValue.ToString());
+                    infoServiceMaster.suffixPrefixId = decServiceSuffixPrefixId;
+                    infoServiceMaster.date = Convert.ToDateTime(txtVoucherDate.Text);
+                    infoServiceMaster.ledgerId = Convert.ToDecimal(cmbCashParty.SelectedValue.ToString());
+                    infoServiceMaster.totalAmount = Convert.ToDecimal(txtTotalAmount.Text);
+                    infoServiceMaster.narration = txtNarration.Text.Trim();
+                    infoServiceMaster.employeeId = Utils.getCurrentUser().WorkerID;
+                    infoServiceMaster.creditPeriod = Convert.ToInt32(txtCreditPeriod.Text);
+                    infoServiceMaster.serviceAccount = Convert.ToDecimal(cmbServiceAC.SelectedValue.ToString());
                     decimal decExchangeRateId = Convert.ToDecimal(cmbCurrency.SelectedValue.ToString());//spExchangeRate.GetExchangeRateByCurrencyId(Convert.ToDecimal(cmbCurrency.SelectedValue.ToString()));
-                    infoServiceMaster.ExchangeRateId = decExchangeRateId;
-                    infoServiceMaster.EmployeeId = Convert.ToDecimal(cmbSalesman.SelectedValue.ToString());
-                    infoServiceMaster.Customer = txtCustomer.Text.Trim();
-                    infoServiceMaster.Discount = Convert.ToDecimal(txtDiscount.Text.Trim());
-                    infoServiceMaster.GrandTotal = Convert.ToDecimal(txtGrandTotal.Text);
-                    infoServiceMaster.VoucherTypeId = DecServicetVoucherTypeId;
-                    infoServiceMaster.FinancialYearId = PublicVariables._decCurrentFinancialYearId;
-                    infoServiceMaster.ExtraDate = PublicVariables._dtCurrentDate;
-                    infoServiceMaster.Extra1 = string.Empty;
-                    infoServiceMaster.Extra2 = string.Empty;
+                    infoServiceMaster.exchangeRateId = Convert.ToInt32(decExchangeRateId);
+                   // infoServiceMaster.employeeId = Convert.ToDecimal(cmbSalesman.SelectedValue.ToString());
+                    infoServiceMaster.customer = txtCustomer.Text.Trim();
+                    infoServiceMaster.discount = Convert.ToDecimal(txtDiscount.Text.Trim());
+                    infoServiceMaster.grandTotal = Convert.ToDecimal(txtGrandTotal.Text);
+                    infoServiceMaster.voucherTypeId = DecServicetVoucherTypeId;
+                    infoServiceMaster.financialYearId = Utils.getManagement().CurrentFinancialYear;
                     decServiceMasterId = spServiceMaster.ServiceMasterAddReturnWithIdentity(infoServiceMaster);
-                    infoServiceDetails.ServiceMasterId = decServiceMasterId;
-                    infoServiceDetails.Extra1 = string.Empty;
-                    infoServiceDetails.Extra2 = string.Empty;
-                    infoServiceDetails.ExtraDate = PublicVariables._dtCurrentDate;
+                    infoServiceDetails.serviceMasterId = decServiceMasterId;
                     for (int i = 0; i < inRowCount - 1; i++)
                     {
                         if (dgvServiceVoucher.Rows[i].Cells["dgvcmbParticulars"].Value != null && dgvServiceVoucher.Rows[i].Cells["dgvcmbParticulars"].Value.ToString() != string.Empty)
                         {
-                            infoServiceDetails.ServiceId = Convert.ToDecimal(dgvServiceVoucher.Rows[i].Cells["dgvcmbParticulars"].Value.ToString());
+                            infoServiceDetails.serviceId = Convert.ToDecimal(dgvServiceVoucher.Rows[i].Cells["dgvcmbParticulars"].Value.ToString());
                         }
                         if (dgvServiceVoucher.Rows[i].Cells["dgvtxtMeasure"].Value != null && dgvServiceVoucher.Rows[i].Cells["dgvtxtMeasure"].Value.ToString() != string.Empty)
                         {
@@ -703,12 +697,12 @@ namespace LoginForm
                         }
                         decServiceDetailsId = spServiceDetails.ServiceDetailsAddReturnWithIdentity(infoServiceDetails);
                     }
-                    decSelectedCurrencyRate = spExchangeRate.GetExchangeRateByExchangeRateId(infoServiceMaster.ExchangeRateId);
+                    decSelectedCurrencyRate = spExchangeRate.GetExchangeRateByExchangeRateId(Convert.ToDecimal(infoServiceMaster.exchangeRateId));
                     decConvertRate = decAmount * decSelectedCurrencyRate;
                     decCredit = 0;
                     decDebit = decConvertRate;
                     decLedgerId = Convert.ToDecimal(cmbCashParty.SelectedValue.ToString());
-                    LedgerPosting(decLedgerId, decCredit, decDebit, decServiceDetailsId, infoServiceMaster.VoucherNo);
+                    LedgerPosting(decLedgerId, decCredit, decDebit, decServiceDetailsId, infoServiceMaster.voucherNo);
                     AccountLedgerSP spAccountLedger = new AccountLedgerSP();
                     decimal decI = Convert.ToDecimal(spAccountLedger.AccountGroupIdCheck(cmbCashParty.Text));
                     if (decI > 0)
@@ -742,7 +736,7 @@ namespace LoginForm
                         }
                         else
                         {
-                            Print(decServiceMasterId, infoServiceMaster.ExchangeRateId);
+                            Print(decServiceMasterId, Convert.ToDecimal(infoServiceMaster.exchangeRateId));
                         }
                     }
                     Clear();

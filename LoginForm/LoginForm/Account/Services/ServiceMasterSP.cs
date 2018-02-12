@@ -70,5 +70,45 @@ namespace LoginForm
             }
             return trueOrfalse;
         }
+
+        public decimal ServiceMasterAddReturnWithIdentity(ServiceMaster ac)
+        {
+            IMEEntities IME = new IMEEntities();
+            decimal decIdentity = 0;
+            try
+            {
+                object obj = IME.ServiceMasterAddReturnWithIdentity(
+                    ac.voucherNo,
+                    ac.invoiceNo,
+                    ac.suffixPrefixId,
+                    ac.date,
+                    ac.ledgerId,
+                    ac.totalAmount,
+                    ac.narration,
+                    ac.creditPeriod,
+                    ac.serviceAccount,
+                    ac.exchangeRateId,
+                    ac.employeeId,
+                    ac.customer,
+                    ac.discount,
+                    ac.grandTotal,
+                    ac.voucherTypeId,
+                    ac.financialYearId);
+
+                if (obj != null)
+                {
+                    decIdentity = decimal.Parse(obj.ToString());
+                }
+                else
+                {
+                    decIdentity = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return decIdentity;
+        }
     }
 }

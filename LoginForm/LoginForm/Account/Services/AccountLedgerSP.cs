@@ -825,5 +825,36 @@ namespace LoginForm.Account.Services
             }
             return accountledgerinfo;
         }
+
+        public DataTable AccountLedgerSearchForServiceAccountUnderIncome()
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+               var adaptor= IME.AccountLedgerSearchForServiceAccountUnderIncome();
+
+                dtbl.Columns.Add("ledgerId");
+                dtbl.Columns.Add("accountGroupId");
+                dtbl.Columns.Add("ledgerName");
+                dtbl.Columns.Add("Balance");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+                    row["ledgerId"] = item.ledgerId;
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["ledgerName"] = item.ledgerName;
+                    row["Balance"] = item.Balance;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
     }
 }
