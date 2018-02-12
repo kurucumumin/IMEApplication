@@ -25,6 +25,7 @@ namespace LoginForm.User
         }
         public FormWorkerManagement(FormMain formMain ,Worker worker, FormUserMain form)
         {
+
             InitializeComponent();
             this.worker = worker;
             this.formMain = formMain;
