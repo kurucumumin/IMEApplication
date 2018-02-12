@@ -233,7 +233,7 @@ namespace LoginForm
             this.Enabled = false;
             this.SendToBack();
             form.ShowDialog();
-            ContactDepartment.DataSource = IME.CustomerDepartments;
+            ContactDepartment.DataSource = new IMEEntities().CustomerDepartments.ToList();
             this.Enabled = true;
         }
 
@@ -243,7 +243,7 @@ namespace LoginForm
             this.Enabled = false;
             this.SendToBack();
             form.ShowDialog();
-            ContactTitle.DataSource = IME.CustomerTitles;
+            ContactTitle.DataSource = new IMEEntities().CustomerTitles.ToList();
             this.Enabled = true;
         }
 
