@@ -56,6 +56,7 @@ namespace LoginForm.DataSet
         public Nullable<int> exchangeRateID { get; set; }
         public Nullable<decimal> pricingLevelId { get; set; }
         public decimal SaleOrderID { get; set; }
+        public decimal financialYearId { get; set; }
     
         public virtual AccountLedger AccountLedger { get; set; }
         public virtual Customer Customer { get; set; }
@@ -65,6 +66,7 @@ namespace LoginForm.DataSet
         public virtual CustomerWorker CustomerWorker1 { get; set; }
         public virtual CustomerWorker CustomerWorker2 { get; set; }
         public virtual ExchangeRate ExchangeRate { get; set; }
+        public virtual FinancialYear FinancialYear { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
         public virtual PaymentTerm PaymentTerm { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

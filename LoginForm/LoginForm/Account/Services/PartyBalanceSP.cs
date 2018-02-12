@@ -212,5 +212,35 @@ namespace LoginForm.Account.Services
             return decAmount;
         }
 
+        public PartyBalance PartyBalanceViewByVoucherNoAndVoucherTypeId(decimal decVoucherTypeId, string strVoucherNo, DateTime dtDate)
+        {
+            IMEEntities IME = new IMEEntities();
+            PartyBalance partybalanceinfo = new PartyBalance();
+            
+            try
+            {
+                var a = IME.PartyBalanceViewByVoucherNoAndVoucherType(decVoucherTypeId, strVoucherNo, dtDate).FirstOrDefault();
+
+                partybalanceinfo.ledgerId = a.LedgerId;
+                partybalanceinfo.voucherTypeId = a.AgainstVoucherTypeId;
+                partybalanceinfo.voucherNo = a.AgainstVoucherNo;
+                partybalanceinfo.referenceType = a.ReferenceType;
+                //partybalanceinfo.a = a.Amount;
+                partybalanceinfo.againstInvoiceNo = a.AgainstInvoiceNo;
+                partybalanceinfo.debit = Convert.ToDecimal(a.DebitOrCredit);
+                //partybalanceinfo.p = a.PendingAmount;
+                partybalanceinfo.partyBalanceId = a.PartyBalanceId;
+                partybalanceinfo.againstVoucherTypeId = a.VoucherTypeId;
+                partybalanceinfo.againstVoucherNo = a.VoucherNo;
+                partybalanceinfo.againstInvoiceNo = a.InvoiceNo;
+                partybalanceinfo.exchangeRateId = Convert.ToInt32(a.OldExchangeRate);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            
+            return partybalanceinfo;
+        }
     }
 }

@@ -110,5 +110,109 @@ namespace LoginForm
             }
             return decIdentity;
         }
+
+        public void ServiceVoucherDelete(decimal decPartyBalanceId, decimal decVoucherTypeId, string strVoucherNo, decimal decServiceMasterId)
+        {
+            IMEEntities IME = new IMEEntities();
+            try
+            {
+                IME.ServiceVoucherDelete(decPartyBalanceId, decVoucherTypeId, strVoucherNo, decServiceMasterId);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public DataTable LedgerPostingIdByServiceMaasterId(decimal decServiceMasterId)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.LedgerPostingIdByServiceMaasterId(decServiceMasterId);
+
+                dtbl.Columns.Add("ledgerPostingId");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["ledgerPostingId"] = item;
+
+                    dtbl.Rows.Add(row);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+        public void ServiceMasterEdit(ServiceMaster ac)
+        {
+            IMEEntities IME = new IMEEntities();
+            try
+            {
+                object obj = IME.ServiceMasterEdit(
+                     ac.serviceMasterId,
+                     ac.suffixPrefixId,
+                     ac.date,
+                     ac.ledgerId,
+                     ac.totalAmount,
+                     ac.narration,
+                     ac.creditPeriod,
+                     ac.serviceAccount,
+                     ac.exchangeRateId,
+                     ac.employeeId,
+                     ac.customer,
+                     ac.discount,
+                     ac.grandTotal,
+                     ac.voucherTypeId,
+                     ac.financialYearId);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public ServiceMaster ServiceMasterView(decimal serviceMasterId)
+        {
+            IMEEntities IME = new IMEEntities();
+            ServiceMaster servicemasterinfo = new ServiceMaster();
+            try
+            {
+                var a = IME.ServiceMasterView(serviceMasterId).FirstOrDefault();
+
+                servicemasterinfo.serviceMasterId = a.serviceMasterId;
+                servicemasterinfo.voucherNo = a.voucherNo;
+                servicemasterinfo.invoiceNo = a.invoiceNo;
+                servicemasterinfo.suffixPrefixId = a.suffixPrefixId;
+                servicemasterinfo.date = Convert.ToDateTime(a.date);
+                servicemasterinfo.ledgerId = a.ledgerId;
+                servicemasterinfo.totalAmount = a.totalAmount;
+                servicemasterinfo.narration = a.narration;
+                servicemasterinfo.creditPeriod = a.creditPeriod;
+                servicemasterinfo.serviceAccount = a.serviceAccount;
+                servicemasterinfo.exchangeRateId = a.exchangeRateId;
+                servicemasterinfo.employeeId = a.employeeId;
+                servicemasterinfo.customer = a.customer;
+                servicemasterinfo.discount = a.discount;
+                servicemasterinfo.grandTotal = a.grandTotal;
+                servicemasterinfo.voucherTypeId = a.voucherTypeId;
+                servicemasterinfo.financialYearId = a.financialYearId;
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return servicemasterinfo;
+        }
     }
 }

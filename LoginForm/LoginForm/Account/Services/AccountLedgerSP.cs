@@ -795,8 +795,6 @@ namespace LoginForm.Account.Services
                 {
                     decLedgerId = 0;
                 }
-
-
             }
             catch (Exception ex)
             {

@@ -9,7 +9,6 @@ namespace LoginForm.Account.Services
 {
     class ServiceSP
     {
-
         public DataTable ServiceViewAll()
         {
             IMEEntities IME = new IMEEntities();
