@@ -314,6 +314,7 @@
             this.cbSMethod = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtNoteForCustomer = new System.Windows.Forms.TextBox();
+            this.label42 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -2893,6 +2894,7 @@
             // groupBox11
             // 
             this.groupBox11.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.groupBox11.Controls.Add(this.label42);
             this.groupBox11.Controls.Add(this.cbDeliverDiscount);
             this.groupBox11.Controls.Add(this.lblTotalExtra);
             this.groupBox11.Controls.Add(this.lblTotalDis);
@@ -2922,7 +2924,7 @@
             // 
             // cbDeliverDiscount
             // 
-            this.cbDeliverDiscount.Location = new System.Drawing.Point(329, 47);
+            this.cbDeliverDiscount.Location = new System.Drawing.Point(327, 89);
             this.cbDeliverDiscount.Margin = new System.Windows.Forms.Padding(4);
             this.cbDeliverDiscount.Name = "cbDeliverDiscount";
             this.cbDeliverDiscount.Size = new System.Drawing.Size(93, 39);
@@ -3040,7 +3042,7 @@
             // 
             // txtTotalMarge
             // 
-            this.txtTotalMarge.Location = new System.Drawing.Point(329, 18);
+            this.txtTotalMarge.Location = new System.Drawing.Point(327, 42);
             this.txtTotalMarge.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotalMarge.Name = "txtTotalMarge";
             this.txtTotalMarge.Size = new System.Drawing.Size(71, 22);
@@ -3204,6 +3206,15 @@
             this.txtNoteForCustomer.Name = "txtNoteForCustomer";
             this.txtNoteForCustomer.Size = new System.Drawing.Size(537, 43);
             this.txtNoteForCustomer.TabIndex = 0;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(324, 21);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(87, 17);
+            this.label42.TabIndex = 59;
+            this.label42.Text = "Total Margin";
             // 
             // FormQuotationAdd
             // 
@@ -3511,5 +3522,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCCCNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgDependantTable;
         private System.Windows.Forms.Button btnImportFromXML;
+        private System.Windows.Forms.Label label42;
     }
 }
