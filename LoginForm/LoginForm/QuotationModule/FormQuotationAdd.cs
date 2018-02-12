@@ -479,7 +479,8 @@ namespace LoginForm.QuotationModule
                 case 21://Total
                     {
                         //TO DO depends on authority
-                        if (dgQuotationAddedItems.CurrentRow.Cells[dgHZ.Index].Style.BackColor == Color.White)
+                        //if (dgQuotationAddedItems.CurrentRow.Cells[dgHZ.Index].Style.BackColor == Color.White)
+                        if (txtHazardousInd.Text == "N")
                         {
                             #region Total
                             decimal total = decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString());
@@ -502,7 +503,7 @@ namespace LoginForm.QuotationModule
                             CalculateSubTotal();
                             #endregion
                         }
-                        else
+                        else if(txtHazardousInd.Text == "Y")
                         {
                             dgQuotationAddedItems.CurrentRow.Cells[dgUCUPCurr.Index].Value = dgQuotationAddedItems.CurrentRow.Cells[dgUPIME.Index].Value.ToString();
                             MessageBox.Show("Hazardous item's price cannot be chanced");

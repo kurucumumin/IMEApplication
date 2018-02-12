@@ -6637,10 +6637,46 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Parameter Name="employeeId" Type="numeric" Mode="In" />
           <Parameter Name="productCode" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="ServiceDetailsAddReturnWithIdentity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="serviceMasterId" Type="numeric" Mode="In" />
+          <Parameter Name="serviceId" Type="numeric" Mode="In" />
+          <Parameter Name="measure" Type="varchar(max)" Mode="In" />
+          <Parameter Name="amount" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="ServiceDetailsEdit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="serviceDetailsId" Type="numeric" Mode="In" />
+          <Parameter Name="serviceMasterId" Type="numeric" Mode="In" />
+          <Parameter Name="serviceId" Type="numeric" Mode="In" />
+          <Parameter Name="measure" Type="varchar(max)" Mode="In" />
+          <Parameter Name="amount" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="ServiceMasterEdit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="serviceMasterId" Type="numeric" Mode="In" />
+          <Parameter Name="suffixPrefixId" Type="numeric" Mode="In" />
+          <Parameter Name="date" Type="datetime" Mode="In" />
+          <Parameter Name="ledgerId" Type="numeric" Mode="In" />
+          <Parameter Name="totalAmount" Type="decimal" Mode="In" />
+          <Parameter Name="narration" Type="varchar(max)" Mode="In" />
+          <Parameter Name="creditPeriod" Type="int" Mode="In" />
+          <Parameter Name="serviceAccount" Type="numeric" Mode="In" />
+          <Parameter Name="exchangeRateId" Type="numeric" Mode="In" />
+          <Parameter Name="employeeId" Type="numeric" Mode="In" />
+          <Parameter Name="customer" Type="varchar(max)" Mode="In" />
+          <Parameter Name="discount" Type="decimal" Mode="In" />
+          <Parameter Name="grandTotal" Type="decimal" Mode="In" />
+          <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
+          <Parameter Name="financialYearId" Type="numeric" Mode="In" />
+        </Function>
         <Function Name="ServiceVoucherCheckExistence" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="invoiceNo" Type="varchar(max)" Mode="In" />
           <Parameter Name="serviceMasterId" Type="numeric" Mode="In" />
           <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="ServiceVoucherDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="partyBalanceId" Type="numeric" Mode="In" />
+          <Parameter Name="voucherTypeId" Type="decimal" Mode="In" />
+          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
+          <Parameter Name="serviceMasterId" Type="numeric" Mode="In" />
         </Function>
         <Function Name="ServiceVoucherMasterMax" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
@@ -16759,10 +16795,46 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="employeeId" Mode="In" Type="Decimal" />
             <Parameter Name="productCode" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="ServiceDetailsAddReturnWithIdentity" ReturnType="Collection(Decimal)">
+            <Parameter Name="serviceMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="serviceId" Mode="In" Type="Decimal" />
+            <Parameter Name="measure" Mode="In" Type="String" />
+            <Parameter Name="amount" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="ServiceDetailsEdit">
+            <Parameter Name="serviceDetailsId" Mode="In" Type="Decimal" />
+            <Parameter Name="serviceMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="serviceId" Mode="In" Type="Decimal" />
+            <Parameter Name="measure" Mode="In" Type="String" />
+            <Parameter Name="amount" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="ServiceMasterEdit">
+            <Parameter Name="serviceMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="suffixPrefixId" Mode="In" Type="Decimal" />
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
+            <Parameter Name="totalAmount" Mode="In" Type="Decimal" />
+            <Parameter Name="narration" Mode="In" Type="String" />
+            <Parameter Name="creditPeriod" Mode="In" Type="Int32" />
+            <Parameter Name="serviceAccount" Mode="In" Type="Decimal" />
+            <Parameter Name="exchangeRateId" Mode="In" Type="Decimal" />
+            <Parameter Name="employeeId" Mode="In" Type="Decimal" />
+            <Parameter Name="customer" Mode="In" Type="String" />
+            <Parameter Name="discount" Mode="In" Type="Decimal" />
+            <Parameter Name="grandTotal" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="financialYearId" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="ServiceVoucherCheckExistence" ReturnType="Collection(Int32)">
             <Parameter Name="invoiceNo" Mode="In" Type="String" />
             <Parameter Name="serviceMasterId" Mode="In" Type="Decimal" />
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="ServiceVoucherDelete">
+            <Parameter Name="partyBalanceId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
+            <Parameter Name="serviceMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="ServiceVoucherMasterMax" ReturnType="Collection(Decimal)">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
@@ -21497,7 +21569,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ServiceDetailsAddReturnWithIdentity" FunctionName="IMEModel.Store.ServiceDetailsAddReturnWithIdentity" />
+          <FunctionImportMapping FunctionImportName="ServiceDetailsEdit" FunctionName="IMEModel.Store.ServiceDetailsEdit" />
+          <FunctionImportMapping FunctionImportName="ServiceMasterEdit" FunctionName="IMEModel.Store.ServiceMasterEdit" />
           <FunctionImportMapping FunctionImportName="ServiceVoucherCheckExistence" FunctionName="IMEModel.Store.ServiceVoucherCheckExistence" />
+          <FunctionImportMapping FunctionImportName="ServiceVoucherDelete" FunctionName="IMEModel.Store.ServiceVoucherDelete" />
           <FunctionImportMapping FunctionImportName="ServiceVoucherMasterMax" FunctionName="IMEModel.Store.ServiceVoucherMasterMax" />
           <FunctionImportMapping FunctionImportName="SlidingPriceAdd" FunctionName="IMEModel.Store.SlidingPriceAdd" />
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="IMEModel.Store.sp_alterdiagram" />
