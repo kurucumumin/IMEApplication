@@ -14,19 +14,10 @@ namespace LoginForm.DataSet
     
     public partial class PayHead
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PayHead()
-        {
-            this.SalaryPackageDetails = new HashSet<SalaryPackageDetail>();
-        }
-    
         public decimal payHeadId { get; set; }
         public string payHeadName { get; set; }
         public string type { get; set; }
         public string narration { get; set; }
         public Nullable<System.DateTime> extraDate { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SalaryPackageDetail> SalaryPackageDetails { get; set; }
     }
 }
