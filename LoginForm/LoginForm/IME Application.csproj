@@ -162,7 +162,9 @@
     <Compile Include="Account\Master\frmExchangeRate.designer.cs">
       <DependentUpon>frmExchangeRate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Account\Master\frmSalesman.cs" />
+    <Compile Include="Account\Master\frmSalesman.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Account\Master\frmSalesman.designer.cs">
       <DependentUpon>frmSalesman.cs</DependentUpon>
     </Compile>
@@ -367,6 +369,7 @@
     <Compile Include="Account\Services\DebitNoteMasterSP.cs" />
     <Compile Include="Account\Services\DeliveryNoteDetailsSP.cs" />
     <Compile Include="Account\Services\DeliveryNoteMasterSP.cs" />
+    <Compile Include="Account\Services\EmployeeSP.cs" />
     <Compile Include="Account\Services\ExchangeRateSP.cs" />
     <Compile Include="Account\Services\ExportNew.cs" />
     <Compile Include="Account\Services\FinancialStatementSP.cs" />
@@ -876,6 +879,9 @@
     <Compile Include="DataSet\PartyBalance.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PartyBalanceViewByVoucherNoAndVoucherType_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PayHead.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1074,6 +1080,18 @@
     <Compile Include="DataSet\RSPro.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\RS_Invoice.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\RS_InvoiceDetails.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalaryPackage.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalaryPackageDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\SalaryVoucherDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1108,6 +1126,12 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SalesInvoiceSalesBillTaxViewAllBySalesMasterId_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalesmanSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalesmanViewSpecificFeilds_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SalesMaster.cs">
@@ -1146,7 +1170,16 @@
     <Compile Include="DataSet\ServiceDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\ServiceDetailsViewWithMasterId_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\ServiceMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ServiceMasterView_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ServiceViewAll_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Setting.cs">
@@ -1415,6 +1448,12 @@
     </Compile>
     <Compile Include="QuotationModule\frmQuotationExport.Designer.cs">
       <DependentUpon>frmQuotationExport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuotationModule\frmXmlCustomerAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuotationModule\frmXmlCustomerAdd.Designer.cs">
+      <DependentUpon>frmXmlCustomerAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="QuotationModule\ViewProductHistory.cs">
       <SubType>Form</SubType>
@@ -1764,6 +1803,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\frmQuotationExport.resx">
       <DependentUpon>frmQuotationExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuotationModule\frmXmlCustomerAdd.resx">
+      <DependentUpon>frmXmlCustomerAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuotationModule\ViewProductHistory.resx">
       <DependentUpon>ViewProductHistory.cs</DependentUpon>

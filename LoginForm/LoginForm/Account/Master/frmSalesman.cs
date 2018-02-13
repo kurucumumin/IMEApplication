@@ -124,16 +124,16 @@ namespace LoginForm
             try
             {
                 EmployeeSP spEmployee = new EmployeeSP();
-                Employee infoEmployee = new Employee();
+                Worker infoEmployee = new Worker();
                 infoEmployee = spEmployee.SalesmanViewSpecificFeilds(Convert.ToDecimal(strSalesmanId.ToString()));
-                txtSalesmanCode.Text = infoEmployee.EmployeeCode;
-                txtName.Text = infoEmployee.EmployeeName;
+                txtSalesmanCode.Text = infoEmployee.UserName;
+                txtName.Text = infoEmployee.NameLastName;
                 txtEmail.Text = infoEmployee.Email;
-                txtPhone.Text = infoEmployee.PhoneNumber;
-                txtMobile.Text = infoEmployee.MobileNumber;
-                txtAddress.Text = infoEmployee.Address;
-                txtNarration.Text = infoEmployee.Narration;
-                if (infoEmployee.IsActive)
+                txtPhone.Text = infoEmployee.Phone;
+                txtMobile.Text = infoEmployee.mobileNumber;
+                txtAddress.Text = infoEmployee.address;
+                txtNarration.Text = infoEmployee.narration;
+                if (infoEmployee.isActive==1)
                 {
                     cbxActive.Checked = true;
                 }
@@ -141,7 +141,7 @@ namespace LoginForm
                 {
                     cbxActive.Checked = false;
                 }
-                decSalesManId = infoEmployee.EmployeeId;
+                decSalesManId = infoEmployee.WorkerID;
             }
             catch (Exception ex)
             {
@@ -176,48 +176,46 @@ namespace LoginForm
             IMEEntities IME = new IMEEntities();
             try
             {
-                EmployeeInfo InfoEmployee = new EmployeeInfo();
+                Worker InfoEmployee = new Worker();
                 EmployeeSP SpEmployee = new EmployeeSP();
-                InfoEmployee.EmployeeCode = txtSalesmanCode.Text.Trim();
-                InfoEmployee.DesignationId = Convert.ToDecimal(SpEmployee.SalesmanGetDesignationId());
-                InfoEmployee.EmployeeName = txtName.Text.Trim();
+                InfoEmployee.WorkerID = Convert.ToInt32(txtSalesmanCode.Text.Trim());
+                InfoEmployee.designationId = Convert.ToDecimal(SpEmployee.SalesmanGetDesignationId());
+                InfoEmployee.NameLastName = txtName.Text.Trim();
                 InfoEmployee.Email = txtEmail.Text.Trim();
-                InfoEmployee.PhoneNumber = txtPhone.Text.Trim();
-                InfoEmployee.MobileNumber = txtMobile.Text.Trim();
-                InfoEmployee.Address = txtAddress.Text.Trim();
-                InfoEmployee.Narration = txtNarration.Text.Trim();
-                InfoEmployee.Dob = DateTime.Now;
-                InfoEmployee.MaritalStatus = "Single";
-                InfoEmployee.Gender = "Male";
-                InfoEmployee.Qualification = string.Empty;
-                InfoEmployee.BloodGroup = string.Empty;
-                InfoEmployee.JoiningDate = IME.CurrentDate().FirstOrDefault();
-                InfoEmployee.TerminationDate = DateTime.Now;
+                InfoEmployee.Phone = txtPhone.Text.Trim();
+                InfoEmployee.mobileNumber = txtMobile.Text.Trim();
+                InfoEmployee.address = txtAddress.Text.Trim();
+                InfoEmployee.narration = txtNarration.Text.Trim();
+                InfoEmployee.dob = DateTime.Now;
+                InfoEmployee.maritalStatus = "Single";
+                InfoEmployee.gender = "Male";
+                InfoEmployee.qualification = string.Empty;
+                InfoEmployee.bloodGroup = string.Empty;
+                InfoEmployee.joiningDate = IME.CurrentDate().FirstOrDefault();
+                InfoEmployee.terminationDate = DateTime.Now;
                 if (cbxActive.Checked)
                 {
-                    InfoEmployee.IsActive = true;
+                    InfoEmployee.isActive = 1;
                 }
                 else
                 {
-                    InfoEmployee.IsActive = false;
+                    InfoEmployee.isActive = 0;
                 }
-                InfoEmployee.SalaryType = "Monthly";
-                InfoEmployee.DefaultPackageId = 1;
-                InfoEmployee.BankName = string.Empty;
-                InfoEmployee.BankAccountNumber = string.Empty;
-                InfoEmployee.BranchName = string.Empty;
-                InfoEmployee.BranchCode = string.Empty;
-                InfoEmployee.PanNumber = string.Empty;
-                InfoEmployee.PfNumber = string.Empty;
-                InfoEmployee.EsiNumber = string.Empty;
-                InfoEmployee.PassportNo = string.Empty;
-                InfoEmployee.PassportExpiryDate = DateTime.Now;
-                InfoEmployee.VisaNumber = string.Empty;
-                InfoEmployee.VisaExpiryDate = DateTime.Now;
-                InfoEmployee.LabourCardNumber = string.Empty;
-                InfoEmployee.LabourCardExpiryDate = DateTime.Now;
-                InfoEmployee.Extra1 = string.Empty;
-                InfoEmployee.Extra2 = string.Empty;
+                InfoEmployee.salaryType = "Monthly";
+                InfoEmployee.defaultPackageId = 1;
+                InfoEmployee.bankName = string.Empty;
+                InfoEmployee.bankAccountNumber = string.Empty;
+                InfoEmployee.branchName = string.Empty;
+                InfoEmployee.branchCode = string.Empty;
+                InfoEmployee.panNumber = string.Empty;
+                InfoEmployee.pfNumber = string.Empty;
+                InfoEmployee.esiNumber = string.Empty;
+                InfoEmployee.passportNo = string.Empty;
+                InfoEmployee.passportExpiryDate = DateTime.Now;
+                InfoEmployee.visaNumber = string.Empty;
+                InfoEmployee.visaExpiryDate = DateTime.Now;
+                InfoEmployee.labourCardNumber = string.Empty;
+                InfoEmployee.labourCardExpiryDate = DateTime.Now;
                 if (SpEmployee.EmployeeCodeCheckExistance(txtSalesmanCode.Text.Trim().ToString(), 0) == false)
                 {
                     decSalesManId = SpEmployee.EmployeeAddWithReturnIdentity(InfoEmployee);
@@ -261,23 +259,23 @@ namespace LoginForm
         {
             try
             {
-                EmployeeInfo InfoEmployee = new EmployeeInfo();
+                Worker InfoEmployee = new Worker();
                 EmployeeSP SpEmployee = new EmployeeSP();
-                InfoEmployee.EmployeeId = decSalesManId;
-                InfoEmployee.EmployeeCode = txtSalesmanCode.Text.Trim();
-                InfoEmployee.EmployeeName = txtName.Text.Trim();
+                InfoEmployee.WorkerID = Convert.ToInt32(decSalesManId);
+                InfoEmployee.UserName = txtSalesmanCode.Text.Trim();
+                InfoEmployee.NameLastName = txtName.Text.Trim();
                 InfoEmployee.Email = txtEmail.Text.Trim();
-                InfoEmployee.PhoneNumber = txtPhone.Text.Trim();
-                InfoEmployee.MobileNumber = txtMobile.Text.Trim();
-                InfoEmployee.Address = txtAddress.Text.Trim();
-                InfoEmployee.Narration = txtNarration.Text.Trim();
+                InfoEmployee.Phone = txtPhone.Text.Trim();
+                InfoEmployee.mobileNumber = txtMobile.Text.Trim();
+                InfoEmployee.address = txtAddress.Text.Trim();
+                InfoEmployee.narration = txtNarration.Text.Trim();
                 if (cbxActive.Checked)
                 {
-                    InfoEmployee.IsActive = true;
+                    InfoEmployee.isActive = 1;
                 }
                 else
                 {
-                    InfoEmployee.IsActive = false;
+                    InfoEmployee.isActive = 0;
                 }
                 if (SpEmployee.EmployeeCodeCheckExistance(txtSalesmanCode.Text.Trim().ToString(), decSalesManId) == false)
                 {
@@ -305,7 +303,7 @@ namespace LoginForm
         {
             try
             {
-                EmployeeInfo infoEmployee = new EmployeeInfo();
+                
                 if (txtSalesmanCode.Text.Trim() == string.Empty)
                 {
                     Messages.InformationMessage("Enter salesman code");
@@ -751,8 +749,6 @@ namespace LoginForm
                 {
                     if (Convert.ToDecimal(dgvSalesman.CurrentRow.Cells["dgvtxtemployeeId"].Value) != 1)
                     {
-                        EmployeeSP spEmployee = new EmployeeSP();
-                        EmployeeInfo infoEmployee = new EmployeeInfo();
                         strSalesmanId = dgvSalesman.CurrentRow.Cells["dgvtxtemployeeId"].Value.ToString();
                         FillControls();
                         btnSave.Text = "Update";

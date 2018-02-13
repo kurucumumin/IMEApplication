@@ -54,8 +54,11 @@ namespace LoginForm
        // frmServiceReport frmServiceReportObj;                           //  To use in call from service report function
        // frmServices frmServicesObj = new frmServices();                 //  To use in call from service ledger pop function
         SettingsSP spSettings = new SettingsSP();                       //  To select data from settings table
-        frmDayBook frmDayBookObj = null;                                 //  To use in call from frmDayBook 
-        frmAgeingReport frmAgeingObj = null;                                 //  To use in call from frmAgeing
+
+        //TODO: Bu formlar eklenecek.
+        //frmDayBook frmDayBookObj = null;                                 //  To use in call from frmDayBook 
+        //frmAgeingReport frmAgeingObj = null;                                 //  To use in call from frmAgeing
+
         frmVoucherSearch objVoucherSearch = null;                               //To use in call from VoucherSearch
        // frmLedgerDetails frmLedgerDetailsObj = null;
         #endregion
@@ -254,7 +257,6 @@ namespace LoginForm
             try
             {
                 DataTable dtblSalesmen = new DataTable();
-                EmployeeSP spEmployee = new EmployeeSP();
                 TransactionsGeneralFill TransactiongeneralFillObj = new TransactionsGeneralFill();
                 dtblSalesmen = TransactiongeneralFillObj.SalesmanViewAllForComboFill(cmbSalesman, false);
                 cmbSalesman.DataSource = dtblSalesmen;
@@ -2181,17 +2183,17 @@ namespace LoginForm
                 //    frmServiceVoucherRegisterObj.Enabled = true;
                 //    frmServiceVoucherRegisterObj.GridFill();
                 //}
-                if (frmDayBookObj != null)
-                {
-                    frmDayBookObj.Enabled = true;
-                    frmDayBookObj.dayBookGridFill();
-                    frmDayBookObj = null;
-                }
-                if (frmAgeingObj != null)
-                {
-                    frmAgeingObj.Enabled = true;
-                    frmAgeingObj.FillGrid();
-                }
+                //if (frmDayBookObj != null)
+                //{
+                //    frmDayBookObj.Enabled = true;
+                //    frmDayBookObj.dayBookGridFill();
+                //    frmDayBookObj = null;
+                //}
+                //if (frmAgeingObj != null)
+                //{
+                //    frmAgeingObj.Enabled = true;
+                //    frmAgeingObj.FillGrid();
+                //}
                 if (objVoucherSearch != null)
                 {
                     objVoucherSearch.Enabled = true;
