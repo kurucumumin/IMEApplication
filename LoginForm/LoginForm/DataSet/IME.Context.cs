@@ -113,6 +113,8 @@ namespace LoginForm.DataSet
         public virtual DbSet<RoleValue> RoleValues { get; set; }
         public virtual DbSet<Route> Routes { get; set; }
         public virtual DbSet<RSPro> RSProes { get; set; }
+        public virtual DbSet<SalaryPackage> SalaryPackages { get; set; }
+        public virtual DbSet<SalaryPackageDetail> SalaryPackageDetails { get; set; }
         public virtual DbSet<SalaryVoucherMaster> SalaryVoucherMasters { get; set; }
         public virtual DbSet<SaleOrder> SaleOrders { get; set; }
         public virtual DbSet<SaleOrderDetail> SaleOrderDetails { get; set; }
@@ -997,6 +999,161 @@ namespace LoginForm.DataSet
                 new ObjectParameter("ledgerId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DebitNoteReportSearch_Result>("DebitNoteReportSearch", fromDateParameter, toDateParameter, voucherTypeIdParameter, ledgerIdParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> EmployeeCodeCheckExistance(string employeeCode, Nullable<decimal> employeeId)
+        {
+            var employeeCodeParameter = employeeCode != null ?
+                new ObjectParameter("employeeCode", employeeCode) :
+                new ObjectParameter("employeeCode", typeof(string));
+    
+            var employeeIdParameter = employeeId.HasValue ?
+                new ObjectParameter("employeeId", employeeId) :
+                new ObjectParameter("employeeId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("EmployeeCodeCheckExistance", employeeCodeParameter, employeeIdParameter);
+        }
+    
+        public virtual int EmployeeDelete(Nullable<decimal> employeeId)
+        {
+            var employeeIdParameter = employeeId.HasValue ?
+                new ObjectParameter("employeeId", employeeId) :
+                new ObjectParameter("employeeId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EmployeeDelete", employeeIdParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> EmployeeForTakingEmployeeId(Nullable<decimal> designationId, string employeeName, string employeeCode, Nullable<System.DateTime> dob, string maritalStatus, string gender, string qualification, string address, string phoneNumber, string mobileNumber, string email, Nullable<System.DateTime> joiningDate, Nullable<System.DateTime> terminationDate, Nullable<int> active, string narration, string bloodGroup, string passportNo, Nullable<System.DateTime> passportExpiryDate, string labourCardNumber, Nullable<System.DateTime> labourCardExpiryDate, string visaNumber, Nullable<System.DateTime> visaExpiryDate, string salaryType, Nullable<decimal> dailyWage, string bankName, string branchName, string bankAccountNumber, string branchCode, string panNumber, string pfNumber, string esiNumber, Nullable<decimal> defaultPackageId)
+        {
+            var designationIdParameter = designationId.HasValue ?
+                new ObjectParameter("designationId", designationId) :
+                new ObjectParameter("designationId", typeof(decimal));
+    
+            var employeeNameParameter = employeeName != null ?
+                new ObjectParameter("employeeName", employeeName) :
+                new ObjectParameter("employeeName", typeof(string));
+    
+            var employeeCodeParameter = employeeCode != null ?
+                new ObjectParameter("employeeCode", employeeCode) :
+                new ObjectParameter("employeeCode", typeof(string));
+    
+            var dobParameter = dob.HasValue ?
+                new ObjectParameter("dob", dob) :
+                new ObjectParameter("dob", typeof(System.DateTime));
+    
+            var maritalStatusParameter = maritalStatus != null ?
+                new ObjectParameter("maritalStatus", maritalStatus) :
+                new ObjectParameter("maritalStatus", typeof(string));
+    
+            var genderParameter = gender != null ?
+                new ObjectParameter("gender", gender) :
+                new ObjectParameter("gender", typeof(string));
+    
+            var qualificationParameter = qualification != null ?
+                new ObjectParameter("qualification", qualification) :
+                new ObjectParameter("qualification", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("address", address) :
+                new ObjectParameter("address", typeof(string));
+    
+            var phoneNumberParameter = phoneNumber != null ?
+                new ObjectParameter("phoneNumber", phoneNumber) :
+                new ObjectParameter("phoneNumber", typeof(string));
+    
+            var mobileNumberParameter = mobileNumber != null ?
+                new ObjectParameter("mobileNumber", mobileNumber) :
+                new ObjectParameter("mobileNumber", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            var joiningDateParameter = joiningDate.HasValue ?
+                new ObjectParameter("joiningDate", joiningDate) :
+                new ObjectParameter("joiningDate", typeof(System.DateTime));
+    
+            var terminationDateParameter = terminationDate.HasValue ?
+                new ObjectParameter("terminationDate", terminationDate) :
+                new ObjectParameter("terminationDate", typeof(System.DateTime));
+    
+            var activeParameter = active.HasValue ?
+                new ObjectParameter("active", active) :
+                new ObjectParameter("active", typeof(int));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            var bloodGroupParameter = bloodGroup != null ?
+                new ObjectParameter("bloodGroup", bloodGroup) :
+                new ObjectParameter("bloodGroup", typeof(string));
+    
+            var passportNoParameter = passportNo != null ?
+                new ObjectParameter("passportNo", passportNo) :
+                new ObjectParameter("passportNo", typeof(string));
+    
+            var passportExpiryDateParameter = passportExpiryDate.HasValue ?
+                new ObjectParameter("passportExpiryDate", passportExpiryDate) :
+                new ObjectParameter("passportExpiryDate", typeof(System.DateTime));
+    
+            var labourCardNumberParameter = labourCardNumber != null ?
+                new ObjectParameter("labourCardNumber", labourCardNumber) :
+                new ObjectParameter("labourCardNumber", typeof(string));
+    
+            var labourCardExpiryDateParameter = labourCardExpiryDate.HasValue ?
+                new ObjectParameter("labourCardExpiryDate", labourCardExpiryDate) :
+                new ObjectParameter("labourCardExpiryDate", typeof(System.DateTime));
+    
+            var visaNumberParameter = visaNumber != null ?
+                new ObjectParameter("visaNumber", visaNumber) :
+                new ObjectParameter("visaNumber", typeof(string));
+    
+            var visaExpiryDateParameter = visaExpiryDate.HasValue ?
+                new ObjectParameter("visaExpiryDate", visaExpiryDate) :
+                new ObjectParameter("visaExpiryDate", typeof(System.DateTime));
+    
+            var salaryTypeParameter = salaryType != null ?
+                new ObjectParameter("salaryType", salaryType) :
+                new ObjectParameter("salaryType", typeof(string));
+    
+            var dailyWageParameter = dailyWage.HasValue ?
+                new ObjectParameter("dailyWage", dailyWage) :
+                new ObjectParameter("dailyWage", typeof(decimal));
+    
+            var bankNameParameter = bankName != null ?
+                new ObjectParameter("bankName", bankName) :
+                new ObjectParameter("bankName", typeof(string));
+    
+            var branchNameParameter = branchName != null ?
+                new ObjectParameter("branchName", branchName) :
+                new ObjectParameter("branchName", typeof(string));
+    
+            var bankAccountNumberParameter = bankAccountNumber != null ?
+                new ObjectParameter("bankAccountNumber", bankAccountNumber) :
+                new ObjectParameter("bankAccountNumber", typeof(string));
+    
+            var branchCodeParameter = branchCode != null ?
+                new ObjectParameter("branchCode", branchCode) :
+                new ObjectParameter("branchCode", typeof(string));
+    
+            var panNumberParameter = panNumber != null ?
+                new ObjectParameter("panNumber", panNumber) :
+                new ObjectParameter("panNumber", typeof(string));
+    
+            var pfNumberParameter = pfNumber != null ?
+                new ObjectParameter("pfNumber", pfNumber) :
+                new ObjectParameter("pfNumber", typeof(string));
+    
+            var esiNumberParameter = esiNumber != null ?
+                new ObjectParameter("esiNumber", esiNumber) :
+                new ObjectParameter("esiNumber", typeof(string));
+    
+            var defaultPackageIdParameter = defaultPackageId.HasValue ?
+                new ObjectParameter("defaultPackageId", defaultPackageId) :
+                new ObjectParameter("defaultPackageId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("EmployeeForTakingEmployeeId", designationIdParameter, employeeNameParameter, employeeCodeParameter, dobParameter, maritalStatusParameter, genderParameter, qualificationParameter, addressParameter, phoneNumberParameter, mobileNumberParameter, emailParameter, joiningDateParameter, terminationDateParameter, activeParameter, narrationParameter, bloodGroupParameter, passportNoParameter, passportExpiryDateParameter, labourCardNumberParameter, labourCardExpiryDateParameter, visaNumberParameter, visaExpiryDateParameter, salaryTypeParameter, dailyWageParameter, bankNameParameter, branchNameParameter, bankAccountNumberParameter, branchCodeParameter, panNumberParameter, pfNumberParameter, esiNumberParameter, defaultPackageIdParameter);
         }
     
         public virtual ObjectResult<Nullable<decimal>> ExchangeRateViewByExchangeRateId(Nullable<decimal> exchangeRateId)
@@ -3219,6 +3376,95 @@ namespace LoginForm.DataSet
                 new ObjectParameter("SalesMasterId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesInvoiceSalesBillTaxViewAllBySalesMasterId_Result>("SalesInvoiceSalesBillTaxViewAllBySalesMasterId", salesMasterIdParameter);
+        }
+    
+        public virtual int SalesmanCheckReferenceAndDelete(Nullable<decimal> workerID)
+        {
+            var workerIDParameter = workerID.HasValue ?
+                new ObjectParameter("WorkerID", workerID) :
+                new ObjectParameter("WorkerID", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalesmanCheckReferenceAndDelete", workerIDParameter);
+        }
+    
+        public virtual int SalesmanEdit(Nullable<decimal> employeeId, string employeeCode, string employeeName, string email, string phoneNumber, string mobileNumber, string address, string narration, Nullable<bool> isActive)
+        {
+            var employeeIdParameter = employeeId.HasValue ?
+                new ObjectParameter("employeeId", employeeId) :
+                new ObjectParameter("employeeId", typeof(decimal));
+    
+            var employeeCodeParameter = employeeCode != null ?
+                new ObjectParameter("employeeCode", employeeCode) :
+                new ObjectParameter("employeeCode", typeof(string));
+    
+            var employeeNameParameter = employeeName != null ?
+                new ObjectParameter("employeeName", employeeName) :
+                new ObjectParameter("employeeName", typeof(string));
+    
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            var phoneNumberParameter = phoneNumber != null ?
+                new ObjectParameter("phoneNumber", phoneNumber) :
+                new ObjectParameter("phoneNumber", typeof(string));
+    
+            var mobileNumberParameter = mobileNumber != null ?
+                new ObjectParameter("mobileNumber", mobileNumber) :
+                new ObjectParameter("mobileNumber", typeof(string));
+    
+            var addressParameter = address != null ?
+                new ObjectParameter("address", address) :
+                new ObjectParameter("address", typeof(string));
+    
+            var narrationParameter = narration != null ?
+                new ObjectParameter("narration", narration) :
+                new ObjectParameter("narration", typeof(string));
+    
+            var isActiveParameter = isActive.HasValue ?
+                new ObjectParameter("isActive", isActive) :
+                new ObjectParameter("isActive", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SalesmanEdit", employeeIdParameter, employeeCodeParameter, employeeNameParameter, emailParameter, phoneNumberParameter, mobileNumberParameter, addressParameter, narrationParameter, isActiveParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> SalesManGetDesignationId()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("SalesManGetDesignationId");
+        }
+    
+        public virtual ObjectResult<SalesmanSearch_Result> SalesmanSearch(string employeeCode, string employeeName, string mobileNumber, string phoneNumber, string isActive)
+        {
+            var employeeCodeParameter = employeeCode != null ?
+                new ObjectParameter("employeeCode", employeeCode) :
+                new ObjectParameter("employeeCode", typeof(string));
+    
+            var employeeNameParameter = employeeName != null ?
+                new ObjectParameter("employeeName", employeeName) :
+                new ObjectParameter("employeeName", typeof(string));
+    
+            var mobileNumberParameter = mobileNumber != null ?
+                new ObjectParameter("mobileNumber", mobileNumber) :
+                new ObjectParameter("mobileNumber", typeof(string));
+    
+            var phoneNumberParameter = phoneNumber != null ?
+                new ObjectParameter("phoneNumber", phoneNumber) :
+                new ObjectParameter("phoneNumber", typeof(string));
+    
+            var isActiveParameter = isActive != null ?
+                new ObjectParameter("isActive", isActive) :
+                new ObjectParameter("isActive", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesmanSearch_Result>("SalesmanSearch", employeeCodeParameter, employeeNameParameter, mobileNumberParameter, phoneNumberParameter, isActiveParameter);
+        }
+    
+        public virtual ObjectResult<SalesmanViewSpecificFeilds_Result> SalesmanViewSpecificFeilds(Nullable<decimal> employeeId)
+        {
+            var employeeIdParameter = employeeId.HasValue ?
+                new ObjectParameter("employeeId", employeeId) :
+                new ObjectParameter("employeeId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SalesmanViewSpecificFeilds_Result>("SalesmanViewSpecificFeilds", employeeIdParameter);
         }
     
         public virtual ObjectResult<Nullable<decimal>> SalesMasterAdd(string voucherNo, string invoiceNo, Nullable<decimal> voucherTypeId, Nullable<decimal> suffixPrefixId, Nullable<System.DateTime> date, Nullable<int> creditPeriod, Nullable<decimal> ledgerId, Nullable<decimal> pricinglevelId, Nullable<decimal> salesAccount, Nullable<decimal> deliveryNoteMasterId, Nullable<decimal> orderMasterId, string narration, string customerName, Nullable<decimal> exchangeRateId, Nullable<decimal> taxAmount, Nullable<decimal> additionalCost, Nullable<decimal> billDiscount, Nullable<decimal> grandTotal, Nullable<decimal> totalAmount, Nullable<decimal> workerId, string lrNo, string transportationCompany, Nullable<decimal> quotationMasterId, Nullable<bool> pOS, Nullable<decimal> counterId, Nullable<decimal> financialYearId)

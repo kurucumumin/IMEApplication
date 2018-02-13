@@ -1124,7 +1124,7 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="Factor" Type="decimal" Precision="20" Scale="5" />
           <Property Name="IsVatValue" Type="int" />
           <Property Name="VatValue" Type="decimal" Precision="5" Scale="2" />
-          <Property Name="CurrName" Type="nvarchar" MaxLength="10" />
+          <Property Name="CurrName" Type="nvarchar" MaxLength="15" />
           <Property Name="QuotationNo" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="RFQNo" Type="nvarchar" MaxLength="20" />
           <Property Name="CurrType" Type="nvarchar" MaxLength="15" />
@@ -1321,6 +1321,26 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="Lenght" Type="nvarchar" MaxLength="15" />
           <Property Name="Height" Type="nvarchar" MaxLength="15" />
           <Property Name="GrossWeight" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="SalaryPackage">
+          <Key>
+            <PropertyRef Name="salaryPackageId" />
+          </Key>
+          <Property Name="salaryPackageId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="salaryPackageName" Type="varchar(max)" />
+          <Property Name="isActive" Type="bit" />
+          <Property Name="narration" Type="varchar(max)" />
+          <Property Name="totalAmount" Type="decimal" Precision="18" Scale="5" />
+        </EntityType>
+        <EntityType Name="SalaryPackageDetail">
+          <Key>
+            <PropertyRef Name="salaryPackageDetailsId" />
+          </Key>
+          <Property Name="salaryPackageDetailsId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="salaryPackageId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="payHeadId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="amount" Type="numeric" Precision="18" Scale="5" />
+          <Property Name="narration" Type="varchar(max)" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -2009,6 +2029,32 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="isActive" Type="int" />
           <Property Name="desinationID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="designationId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="dob" Type="datetime" />
+          <Property Name="maritalStatus" Type="varchar(max)" />
+          <Property Name="gender" Type="varchar(max)" />
+          <Property Name="qualification" Type="varchar(max)" />
+          <Property Name="address" Type="varchar(max)" />
+          <Property Name="mobileNumber" Type="varchar(max)" />
+          <Property Name="joiningDate" Type="datetime" />
+          <Property Name="terminationDate" Type="datetime" />
+          <Property Name="narration" Type="varchar(max)" />
+          <Property Name="bloodGroup" Type="varchar(max)" />
+          <Property Name="passportNo" Type="varchar(max)" />
+          <Property Name="passportExpiryDate" Type="datetime" />
+          <Property Name="labourCardNumber" Type="varchar(max)" />
+          <Property Name="labourCardExpiryDate" Type="datetime" />
+          <Property Name="visaNumber" Type="varchar(max)" />
+          <Property Name="visaExpiryDate" Type="datetime" />
+          <Property Name="salaryType" Type="varchar(max)" />
+          <Property Name="dailyWage" Type="numeric" Precision="18" Scale="5" />
+          <Property Name="bankName" Type="varchar(max)" />
+          <Property Name="branchName" Type="varchar(max)" />
+          <Property Name="bankAccountNumber" Type="varchar(max)" />
+          <Property Name="branchCode" Type="varchar(max)" />
+          <Property Name="panNumber" Type="varchar(max)" />
+          <Property Name="pfNumber" Type="varchar(max)" />
+          <Property Name="esiNumber" Type="varchar(max)" />
+          <Property Name="defaultPackageId" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <Association Name="FK__AccountLe__accou__5E74FADA">
           <End Role="AccountGroup" Type="Self.AccountGroup" Multiplicity="0..1" />
@@ -4410,6 +4456,30 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__SalaryPac__payHe__46535886">
+          <End Role="PayHead" Type="Self.PayHead" Multiplicity="0..1" />
+          <End Role="SalaryPackageDetail" Type="Self.SalaryPackageDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PayHead">
+              <PropertyRef Name="payHeadId" />
+            </Principal>
+            <Dependent Role="SalaryPackageDetail">
+              <PropertyRef Name="payHeadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalaryPac__salar__455F344D">
+          <End Role="SalaryPackage" Type="Self.SalaryPackage" Multiplicity="0..1" />
+          <End Role="SalaryPackageDetail" Type="Self.SalaryPackageDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalaryPackage">
+              <PropertyRef Name="salaryPackageId" />
+            </Principal>
+            <Dependent Role="SalaryPackageDetail">
+              <PropertyRef Name="salaryPackageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__SalaryVou__emplo__78F3E6EC">
           <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
           <End Role="SalaryVoucherDetail" Type="Self.SalaryVoucherDetail" Multiplicity="*" />
@@ -5586,6 +5656,18 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Worker__defaultP__47477CBF">
+          <End Role="SalaryPackage" Type="Self.SalaryPackage" Multiplicity="0..1" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalaryPackage">
+              <PropertyRef Name="salaryPackageId" />
+            </Principal>
+            <Dependent Role="Worker">
+              <PropertyRef Name="defaultPackageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Worker__designat__6F6A7CB2">
           <End Role="Designation" Type="Self.Designation" Multiplicity="0..1" />
           <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
@@ -5920,6 +6002,47 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Parameter Name="toDate" Type="datetime" Mode="In" />
           <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
           <Parameter Name="ledgerId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="EmployeeCodeCheckExistance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="employeeCode" Type="varchar(max)" Mode="In" />
+          <Parameter Name="employeeId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="EmployeeDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="employeeId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="EmployeeForTakingEmployeeId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="designationId" Type="numeric" Mode="In" />
+          <Parameter Name="employeeName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="employeeCode" Type="varchar(max)" Mode="In" />
+          <Parameter Name="dob" Type="datetime" Mode="In" />
+          <Parameter Name="maritalStatus" Type="varchar(max)" Mode="In" />
+          <Parameter Name="gender" Type="varchar(max)" Mode="In" />
+          <Parameter Name="qualification" Type="varchar(max)" Mode="In" />
+          <Parameter Name="address" Type="varchar(max)" Mode="In" />
+          <Parameter Name="phoneNumber" Type="varchar(max)" Mode="In" />
+          <Parameter Name="mobileNumber" Type="varchar(max)" Mode="In" />
+          <Parameter Name="email" Type="varchar(max)" Mode="In" />
+          <Parameter Name="joiningDate" Type="datetime" Mode="In" />
+          <Parameter Name="terminationDate" Type="datetime" Mode="In" />
+          <Parameter Name="active" Type="int" Mode="In" />
+          <Parameter Name="narration" Type="varchar(max)" Mode="In" />
+          <Parameter Name="bloodGroup" Type="varchar(max)" Mode="In" />
+          <Parameter Name="passportNo" Type="varchar(max)" Mode="In" />
+          <Parameter Name="passportExpiryDate" Type="datetime" Mode="In" />
+          <Parameter Name="labourCardNumber" Type="varchar(max)" Mode="In" />
+          <Parameter Name="labourCardExpiryDate" Type="datetime" Mode="In" />
+          <Parameter Name="visaNumber" Type="varchar(max)" Mode="In" />
+          <Parameter Name="visaExpiryDate" Type="datetime" Mode="In" />
+          <Parameter Name="salaryType" Type="varchar(max)" Mode="In" />
+          <Parameter Name="dailyWage" Type="numeric" Mode="In" />
+          <Parameter Name="bankName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="branchName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="bankAccountNumber" Type="varchar(max)" Mode="In" />
+          <Parameter Name="branchCode" Type="varchar(max)" Mode="In" />
+          <Parameter Name="panNumber" Type="varchar(max)" Mode="In" />
+          <Parameter Name="pfNumber" Type="varchar(max)" Mode="In" />
+          <Parameter Name="esiNumber" Type="varchar(max)" Mode="In" />
+          <Parameter Name="defaultPackageId" Type="numeric" Mode="In" />
         </Function>
         <Function Name="ExchangeRateViewByExchangeRateId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="exchangeRateId" Type="numeric" Mode="In" />
@@ -6549,6 +6672,31 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
         <Function Name="SalesInvoiceSalesBillTaxViewAllBySalesMasterId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="SalesMasterId" Type="numeric" Mode="In" />
         </Function>
+        <Function Name="SalesmanCheckReferenceAndDelete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WorkerID" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="SalesmanEdit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="employeeId" Type="numeric" Mode="In" />
+          <Parameter Name="employeeCode" Type="varchar(max)" Mode="In" />
+          <Parameter Name="employeeName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="email" Type="varchar(max)" Mode="In" />
+          <Parameter Name="phoneNumber" Type="varchar(max)" Mode="In" />
+          <Parameter Name="mobileNumber" Type="varchar(max)" Mode="In" />
+          <Parameter Name="address" Type="varchar(max)" Mode="In" />
+          <Parameter Name="narration" Type="varchar(max)" Mode="In" />
+          <Parameter Name="isActive" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="SalesManGetDesignationId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SalesmanSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="employeeCode" Type="varchar(max)" Mode="In" />
+          <Parameter Name="employeeName" Type="varchar(max)" Mode="In" />
+          <Parameter Name="mobileNumber" Type="varchar(max)" Mode="In" />
+          <Parameter Name="phoneNumber" Type="varchar(max)" Mode="In" />
+          <Parameter Name="isActive" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="SalesmanViewSpecificFeilds" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="employeeId" Type="numeric" Mode="In" />
+        </Function>
         <Function Name="SalesMasterAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
           <Parameter Name="invoiceNo" Type="varchar(max)" Mode="In" />
@@ -6984,6 +7132,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <EntitySet Name="RoleValue" EntityType="Self.RoleValue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Route" EntityType="Self.Route" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RSPro" EntityType="Self.RSPro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalaryPackage" EntityType="Self.SalaryPackage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalaryPackageDetail" EntityType="Self.SalaryPackageDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SalaryVoucherMaster" EntityType="Self.SalaryVoucherMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SaleOrder" EntityType="Self.SaleOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SaleOrderDetail" EntityType="Self.SaleOrderDetail" Schema="dbo" store:Type="Tables" />
@@ -7847,6 +7997,14 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="Area" EntitySet="Area" />
             <End Role="Route" EntitySet="Route" />
           </AssociationSet>
+          <AssociationSet Name="FK__SalaryPac__payHe__46535886" Association="Self.FK__SalaryPac__payHe__46535886">
+            <End Role="PayHead" EntitySet="PayHead" />
+            <End Role="SalaryPackageDetail" EntitySet="SalaryPackageDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalaryPac__salar__455F344D" Association="Self.FK__SalaryPac__salar__455F344D">
+            <End Role="SalaryPackage" EntitySet="SalaryPackage" />
+            <End Role="SalaryPackageDetail" EntitySet="SalaryPackageDetail" />
+          </AssociationSet>
           <AssociationSet Name="FK__SalaryVou__emplo__78F3E6EC" Association="Self.FK__SalaryVou__emplo__78F3E6EC">
             <End Role="Worker" EntitySet="Worker" />
             <End Role="SalaryVoucherDetail" EntitySet="SalaryVoucherDetail" />
@@ -8238,6 +8396,10 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <AssociationSet Name="FK__VoucherTy__vouch__69279377" Association="Self.FK__VoucherTy__vouch__69279377">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="VoucherTypeTax" EntitySet="VoucherTypeTax" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Worker__defaultP__47477CBF" Association="Self.FK__Worker__defaultP__47477CBF">
+            <End Role="SalaryPackage" EntitySet="SalaryPackage" />
+            <End Role="Worker" EntitySet="Worker" />
           </AssociationSet>
           <AssociationSet Name="FK__Worker__designat__6F6A7CB2" Association="Self.FK__Worker__designat__6F6A7CB2">
             <End Role="Designation" EntitySet="Designation" />
@@ -9238,6 +9400,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="extraDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SalaryPackageDetails" Relationship="Self.FK__SalaryPac__payHe__46535886" FromRole="PayHead" ToRole="SalaryPackageDetail" />
         </EntityType>
         <EntityType Name="PaymentDetail">
           <Key>
@@ -9692,7 +9855,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="Factor" Type="Decimal" Precision="20" Scale="5" />
           <Property Name="IsVatValue" Type="Int32" />
           <Property Name="VatValue" Type="Decimal" Precision="5" Scale="2" />
-          <Property Name="CurrName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CurrName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="QuotationNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RFQNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="CurrType" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
@@ -9951,6 +10114,30 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="Lenght" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="Height" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="GrossWeight" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SalaryPackage">
+          <Key>
+            <PropertyRef Name="salaryPackageId" />
+          </Key>
+          <Property Name="salaryPackageId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="salaryPackageName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="totalAmount" Type="Decimal" Precision="18" Scale="5" />
+          <NavigationProperty Name="SalaryPackageDetails" Relationship="Self.FK__SalaryPac__salar__455F344D" FromRole="SalaryPackage" ToRole="SalaryPackageDetail" />
+          <NavigationProperty Name="Workers" Relationship="Self.FK__Worker__defaultP__47477CBF" FromRole="SalaryPackage" ToRole="Worker" />
+        </EntityType>
+        <EntityType Name="SalaryPackageDetail">
+          <Key>
+            <PropertyRef Name="salaryPackageDetailsId" />
+          </Key>
+          <Property Name="salaryPackageDetailsId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="salaryPackageId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="payHeadId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="amount" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PayHead" Relationship="Self.FK__SalaryPac__payHe__46535886" FromRole="SalaryPackageDetail" ToRole="PayHead" />
+          <NavigationProperty Name="SalaryPackage" Relationship="Self.FK__SalaryPac__salar__455F344D" FromRole="SalaryPackageDetail" ToRole="SalaryPackage" />
         </EntityType>
         <EntityType Name="SalaryVoucherMaster">
           <Key>
@@ -10807,6 +10994,32 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="isActive" Type="Int32" />
           <Property Name="desinationID" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="designationId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="dob" Type="DateTime" Precision="3" />
+          <Property Name="maritalStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="gender" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="qualification" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="mobileNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="joiningDate" Type="DateTime" Precision="3" />
+          <Property Name="terminationDate" Type="DateTime" Precision="3" />
+          <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="bloodGroup" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="passportNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="passportExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="labourCardNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="labourCardExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="visaNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="visaExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="salaryType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="dailyWage" Type="Decimal" Precision="18" Scale="5" />
+          <Property Name="bankName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="branchName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="bankAccountNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="branchCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="panNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="pfNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="esiNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="defaultPackageId" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="AdvancePayments" Relationship="Self.FK__AdvancePa__emplo__4D4A6ED8" FromRole="Worker" ToRole="AdvancePayment" />
           <NavigationProperty Name="BonusDeductions" Relationship="Self.FK__BonusDedu__Worke__40E497F3" FromRole="Worker" ToRole="BonusDeduction" />
           <NavigationProperty Name="CreditNoteMasters" Relationship="Self.FK__CreditNot__userI__737017C0" FromRole="Worker" ToRole="CreditNoteMaster" />
@@ -10832,6 +11045,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <NavigationProperty Name="Quotations1" Relationship="Self.FK__Quotation__Repre__422DC1E7" FromRole="Worker" ToRole="Quotation" />
           <NavigationProperty Name="RejectionInMasters" Relationship="Self.FK__Rejection__emplo__3F865F66" FromRole="Worker" ToRole="RejectionInMaster" />
           <NavigationProperty Name="RejectionOutMasters" Relationship="Self.FK__Rejection__userI__6B2FD77A" FromRole="Worker" ToRole="RejectionOutMaster" />
+          <NavigationProperty Name="SalaryPackage" Relationship="Self.FK__Worker__defaultP__47477CBF" FromRole="Worker" ToRole="SalaryPackage" />
           <NavigationProperty Name="SaleOrders" Relationship="Self.FK__SaleOrder__Repre__22951AFD" FromRole="Worker" ToRole="SaleOrder" />
           <NavigationProperty Name="SalesMasters" Relationship="Self.FK__SalesMast__Worke__77CAB889" FromRole="Worker" ToRole="SalesMaster" />
           <NavigationProperty Name="SalesReturnMasters" Relationship="Self.FK__SalesRetu__userI__6A70BD6B" FromRole="Worker" ToRole="SalesReturnMaster" />
@@ -12922,6 +13136,18 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__SalaryPac__payHe__46535886">
+          <End Role="PayHead" Type="Self.PayHead" Multiplicity="0..1" />
+          <End Role="SalaryPackageDetail" Type="Self.SalaryPackageDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PayHead">
+              <PropertyRef Name="payHeadId" />
+            </Principal>
+            <Dependent Role="SalaryPackageDetail">
+              <PropertyRef Name="payHeadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PaymentDe__payme__7EACC042">
           <End Role="PaymentMaster" Type="Self.PaymentMaster" Multiplicity="0..1" />
           <End Role="PaymentDetail" Type="Self.PaymentDetail" Multiplicity="*" />
@@ -13846,6 +14072,30 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__SalaryPac__salar__455F344D">
+          <End Role="SalaryPackage" Type="Self.SalaryPackage" Multiplicity="0..1" />
+          <End Role="SalaryPackageDetail" Type="Self.SalaryPackageDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalaryPackage">
+              <PropertyRef Name="salaryPackageId" />
+            </Principal>
+            <Dependent Role="SalaryPackageDetail">
+              <PropertyRef Name="salaryPackageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Worker__defaultP__47477CBF">
+          <End Role="SalaryPackage" Type="Self.SalaryPackage" Multiplicity="0..1" />
+          <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SalaryPackage">
+              <PropertyRef Name="salaryPackageId" />
+            </Principal>
+            <Dependent Role="Worker">
+              <PropertyRef Name="defaultPackageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__SalaryVou__salar__77FFC2B3">
           <End Role="SalaryVoucherMaster" Type="Self.SalaryVoucherMaster" Multiplicity="0..1" />
           <End Role="SalaryVoucherDetail" Type="Self.SalaryVoucherDetail" Multiplicity="*" />
@@ -14589,6 +14839,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <EntitySet Name="RoleValues" EntityType="Self.RoleValue" />
           <EntitySet Name="Routes" EntityType="Self.Route" />
           <EntitySet Name="RSProes" EntityType="Self.RSPro" />
+          <EntitySet Name="SalaryPackages" EntityType="Self.SalaryPackage" />
+          <EntitySet Name="SalaryPackageDetails" EntityType="Self.SalaryPackageDetail" />
           <EntitySet Name="SalaryVoucherMasters" EntityType="Self.SalaryVoucherMaster" />
           <EntitySet Name="SaleOrders" EntityType="Self.SaleOrder" />
           <EntitySet Name="SaleOrderDetails" EntityType="Self.SaleOrderDetail" />
@@ -15314,6 +15566,10 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="PartyBalance" EntitySet="PartyBalances" />
           </AssociationSet>
+          <AssociationSet Name="FK__SalaryPac__payHe__46535886" Association="Self.FK__SalaryPac__payHe__46535886">
+            <End Role="PayHead" EntitySet="PayHeads" />
+            <End Role="SalaryPackageDetail" EntitySet="SalaryPackageDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK__PaymentDe__payme__7EACC042" Association="Self.FK__PaymentDe__payme__7EACC042">
             <End Role="PaymentMaster" EntitySet="PaymentMasters" />
             <End Role="PaymentDetail" EntitySet="PaymentDetails" />
@@ -15621,6 +15877,14 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <AssociationSet Name="FK__Rejection__vouch__675F4696" Association="Self.FK__Rejection__vouch__675F4696">
             <End Role="VoucherType" EntitySet="VoucherTypes" />
             <End Role="RejectionOutMaster" EntitySet="RejectionOutMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalaryPac__salar__455F344D" Association="Self.FK__SalaryPac__salar__455F344D">
+            <End Role="SalaryPackage" EntitySet="SalaryPackages" />
+            <End Role="SalaryPackageDetail" EntitySet="SalaryPackageDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Worker__defaultP__47477CBF" Association="Self.FK__Worker__defaultP__47477CBF">
+            <End Role="SalaryPackage" EntitySet="SalaryPackages" />
+            <End Role="Worker" EntitySet="Workers" />
           </AssociationSet>
           <AssociationSet Name="FK__SalaryVou__salar__77FFC2B3" Association="Self.FK__SalaryVou__salar__77FFC2B3">
             <End Role="SalaryVoucherMaster" EntitySet="SalaryVoucherMasters" />
@@ -16084,6 +16348,47 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
             <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="EmployeeCodeCheckExistance" ReturnType="Collection(Int32)">
+            <Parameter Name="employeeCode" Mode="In" Type="String" />
+            <Parameter Name="employeeId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="EmployeeDelete">
+            <Parameter Name="employeeId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="EmployeeForTakingEmployeeId" ReturnType="Collection(Decimal)">
+            <Parameter Name="designationId" Mode="In" Type="Decimal" />
+            <Parameter Name="employeeName" Mode="In" Type="String" />
+            <Parameter Name="employeeCode" Mode="In" Type="String" />
+            <Parameter Name="dob" Mode="In" Type="DateTime" />
+            <Parameter Name="maritalStatus" Mode="In" Type="String" />
+            <Parameter Name="gender" Mode="In" Type="String" />
+            <Parameter Name="qualification" Mode="In" Type="String" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="phoneNumber" Mode="In" Type="String" />
+            <Parameter Name="mobileNumber" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="joiningDate" Mode="In" Type="DateTime" />
+            <Parameter Name="terminationDate" Mode="In" Type="DateTime" />
+            <Parameter Name="active" Mode="In" Type="Int32" />
+            <Parameter Name="narration" Mode="In" Type="String" />
+            <Parameter Name="bloodGroup" Mode="In" Type="String" />
+            <Parameter Name="passportNo" Mode="In" Type="String" />
+            <Parameter Name="passportExpiryDate" Mode="In" Type="DateTime" />
+            <Parameter Name="labourCardNumber" Mode="In" Type="String" />
+            <Parameter Name="labourCardExpiryDate" Mode="In" Type="DateTime" />
+            <Parameter Name="visaNumber" Mode="In" Type="String" />
+            <Parameter Name="visaExpiryDate" Mode="In" Type="DateTime" />
+            <Parameter Name="salaryType" Mode="In" Type="String" />
+            <Parameter Name="dailyWage" Mode="In" Type="Decimal" />
+            <Parameter Name="bankName" Mode="In" Type="String" />
+            <Parameter Name="branchName" Mode="In" Type="String" />
+            <Parameter Name="bankAccountNumber" Mode="In" Type="String" />
+            <Parameter Name="branchCode" Mode="In" Type="String" />
+            <Parameter Name="panNumber" Mode="In" Type="String" />
+            <Parameter Name="pfNumber" Mode="In" Type="String" />
+            <Parameter Name="esiNumber" Mode="In" Type="String" />
+            <Parameter Name="defaultPackageId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="ExchangeRateViewByExchangeRateId" ReturnType="Collection(Decimal)">
             <Parameter Name="exchangeRateId" Mode="In" Type="Decimal" />
@@ -16706,6 +17011,31 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           </FunctionImport>
           <FunctionImport Name="SalesInvoiceSalesBillTaxViewAllBySalesMasterId" ReturnType="Collection(IMEModel.SalesInvoiceSalesBillTaxViewAllBySalesMasterId_Result)">
             <Parameter Name="SalesMasterId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SalesmanCheckReferenceAndDelete">
+            <Parameter Name="WorkerID" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="SalesmanEdit">
+            <Parameter Name="employeeId" Mode="In" Type="Decimal" />
+            <Parameter Name="employeeCode" Mode="In" Type="String" />
+            <Parameter Name="employeeName" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="phoneNumber" Mode="In" Type="String" />
+            <Parameter Name="mobileNumber" Mode="In" Type="String" />
+            <Parameter Name="address" Mode="In" Type="String" />
+            <Parameter Name="narration" Mode="In" Type="String" />
+            <Parameter Name="isActive" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SalesManGetDesignationId" ReturnType="Collection(Decimal)" />
+          <FunctionImport Name="SalesmanSearch" ReturnType="Collection(IMEModel.SalesmanSearch_Result)">
+            <Parameter Name="employeeCode" Mode="In" Type="String" />
+            <Parameter Name="employeeName" Mode="In" Type="String" />
+            <Parameter Name="mobileNumber" Mode="In" Type="String" />
+            <Parameter Name="phoneNumber" Mode="In" Type="String" />
+            <Parameter Name="isActive" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SalesmanViewSpecificFeilds" ReturnType="Collection(IMEModel.SalesmanViewSpecificFeilds_Result)">
+            <Parameter Name="employeeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalesMasterAdd" ReturnType="Collection(Decimal)">
             <Parameter Name="voucherNo" Mode="In" Type="String" />
@@ -17902,6 +18232,25 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="calculatingMode" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="rate" Nullable="true" Precision="20" Scale="5" />
           <Property Type="Decimal" Name="taxAmount" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="SalesmanSearch_Result">
+          <Property Type="Int32" Name="WorkerID" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="NameLastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="mobileNumber" Nullable="true" />
+          <Property Type="String" Name="isActive" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SalesmanViewSpecificFeilds_Result">
+          <Property Type="Int32" Name="WorkerID" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="NameLastName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="mobileNumber" Nullable="true" />
+          <Property Type="String" Name="address" Nullable="true" />
+          <Property Type="String" Name="narration" Nullable="true" />
+          <Property Type="Int32" Name="isActive" Nullable="true" />
         </ComplexType>
         <ComplexType Name="SalesMasterView_Result">
           <Property Type="Decimal" Name="salesMasterId" Nullable="false" Precision="18" Scale="0" />
@@ -19459,6 +19808,28 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="SalaryPackages">
+            <EntityTypeMapping TypeName="IMEModel.SalaryPackage">
+              <MappingFragment StoreEntitySet="SalaryPackage">
+                <ScalarProperty Name="salaryPackageId" ColumnName="salaryPackageId" />
+                <ScalarProperty Name="salaryPackageName" ColumnName="salaryPackageName" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalaryPackageDetails">
+            <EntityTypeMapping TypeName="IMEModel.SalaryPackageDetail">
+              <MappingFragment StoreEntitySet="SalaryPackageDetail">
+                <ScalarProperty Name="salaryPackageDetailsId" ColumnName="salaryPackageDetailsId" />
+                <ScalarProperty Name="salaryPackageId" ColumnName="salaryPackageId" />
+                <ScalarProperty Name="payHeadId" ColumnName="payHeadId" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="SalaryVoucherMasters">
             <EntityTypeMapping TypeName="IMEModel.SalaryVoucherMaster">
               <MappingFragment StoreEntitySet="SalaryVoucherMaster">
@@ -20159,6 +20530,32 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="isActive" ColumnName="isActive" />
                 <ScalarProperty Name="desinationID" ColumnName="desinationID" />
                 <ScalarProperty Name="designationId" ColumnName="designationId" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="maritalStatus" ColumnName="maritalStatus" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="qualification" ColumnName="qualification" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="mobileNumber" ColumnName="mobileNumber" />
+                <ScalarProperty Name="joiningDate" ColumnName="joiningDate" />
+                <ScalarProperty Name="terminationDate" ColumnName="terminationDate" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="bloodGroup" ColumnName="bloodGroup" />
+                <ScalarProperty Name="passportNo" ColumnName="passportNo" />
+                <ScalarProperty Name="passportExpiryDate" ColumnName="passportExpiryDate" />
+                <ScalarProperty Name="labourCardNumber" ColumnName="labourCardNumber" />
+                <ScalarProperty Name="labourCardExpiryDate" ColumnName="labourCardExpiryDate" />
+                <ScalarProperty Name="visaNumber" ColumnName="visaNumber" />
+                <ScalarProperty Name="visaExpiryDate" ColumnName="visaExpiryDate" />
+                <ScalarProperty Name="salaryType" ColumnName="salaryType" />
+                <ScalarProperty Name="dailyWage" ColumnName="dailyWage" />
+                <ScalarProperty Name="bankName" ColumnName="bankName" />
+                <ScalarProperty Name="branchName" ColumnName="branchName" />
+                <ScalarProperty Name="bankAccountNumber" ColumnName="bankAccountNumber" />
+                <ScalarProperty Name="branchCode" ColumnName="branchCode" />
+                <ScalarProperty Name="panNumber" ColumnName="panNumber" />
+                <ScalarProperty Name="pfNumber" ColumnName="pfNumber" />
+                <ScalarProperty Name="esiNumber" ColumnName="esiNumber" />
+                <ScalarProperty Name="defaultPackageId" ColumnName="defaultPackageId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -20580,6 +20977,9 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="EmployeeCodeCheckExistance" FunctionName="IMEModel.Store.EmployeeCodeCheckExistance" />
+          <FunctionImportMapping FunctionImportName="EmployeeDelete" FunctionName="IMEModel.Store.EmployeeDelete" />
+          <FunctionImportMapping FunctionImportName="EmployeeForTakingEmployeeId" FunctionName="IMEModel.Store.EmployeeForTakingEmployeeId" />
           <FunctionImportMapping FunctionImportName="ExchangeRateViewByExchangeRateId" FunctionName="IMEModel.Store.ExchangeRateViewByExchangeRateId" />
           <FunctionImportMapping FunctionImportName="ExtendedRangeADD" FunctionName="IMEModel.Store.ExtendedRangeADD" />
           <FunctionImportMapping FunctionImportName="GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI" FunctionName="IMEModel.Store.GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI">
@@ -21453,6 +21853,36 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="calculatingMode" ColumnName="calculatingMode" />
                 <ScalarProperty Name="rate" ColumnName="rate" />
                 <ScalarProperty Name="taxAmount" ColumnName="taxAmount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SalesmanCheckReferenceAndDelete" FunctionName="IMEModel.Store.SalesmanCheckReferenceAndDelete" />
+          <FunctionImportMapping FunctionImportName="SalesmanEdit" FunctionName="IMEModel.Store.SalesmanEdit" />
+          <FunctionImportMapping FunctionImportName="SalesManGetDesignationId" FunctionName="IMEModel.Store.SalesManGetDesignationId" />
+          <FunctionImportMapping FunctionImportName="SalesmanSearch" FunctionName="IMEModel.Store.SalesmanSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.SalesmanSearch_Result">
+                <ScalarProperty Name="WorkerID" ColumnName="WorkerID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="NameLastName" ColumnName="NameLastName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="mobileNumber" ColumnName="mobileNumber" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SalesmanViewSpecificFeilds" FunctionName="IMEModel.Store.SalesmanViewSpecificFeilds">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.SalesmanViewSpecificFeilds_Result">
+                <ScalarProperty Name="WorkerID" ColumnName="WorkerID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="NameLastName" ColumnName="NameLastName" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="mobileNumber" ColumnName="mobileNumber" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
