@@ -1665,6 +1665,7 @@ namespace LoginForm.QuotationModule
         private void modifyQuotation(Quotation q)
         {
             #region QuotationLoader
+            cbCurrency.SelectedItem = q.CurrName;
             LandingCost.Enabled = true;
             txtQuotationNo.Text = q.QuotationNo;
             txtRFQNo.Text = q.RFQNo;
@@ -1675,7 +1676,6 @@ namespace LoginForm.QuotationModule
             if (q.ForFinancelIsTrue == 1) { chkbForFinance.Checked = true; }
             fillCustomer();
             #region QuotationDetails
-            cbCurrency.SelectedItem = q.CurrName;
             //cbCurrType.SelectedItem = q.CurrType;
             cbWorkers.SelectedItem = q.Customer.MainContactID;
             foreach (var item in q.QuotationDetails)
@@ -2056,9 +2056,7 @@ namespace LoginForm.QuotationModule
             {
                 GetCurrency(dtpDate.Value);
                 ChangeCurr();
-
             }
-
         }
 
         private void ChangeCurr(int rowindex)
