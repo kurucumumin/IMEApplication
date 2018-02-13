@@ -470,6 +470,10 @@ namespace LoginForm.QuotationModule
 
                         dgQuotationAddedItems.CurrentRow.Cells["dgCustDescription"].ReadOnly = false;
                         dgQuotationAddedItems.CurrentRow.Cells["dgCustDescription"].Style = dgQuotationAddedItems.DefaultCellStyle;
+
+                        dgQuotationAddedItems.CurrentRow.Cells["dgLandingCost"].Style.Format = "n3";
+                        dgQuotationAddedItems.CurrentRow.Cells["dgUPIME"].Style.Format = "n3";
+                        dgQuotationAddedItems.CurrentRow.Cells["dgMargin"].Style.Format = "n3";
                     }
                     //LOW MARGIN
                     if (dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Value != null && Decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Value.ToString()) > 0) { GetMarginMark(); }
@@ -2387,6 +2391,12 @@ namespace LoginForm.QuotationModule
             {
                 CustomerMain f = new CustomerMain(1, CustomerCode.Text);
                 f.ShowDialog();
+
+                IME = new IMEEntities();
+
+                cbWorkers.DataSource = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text).ToList();
+                cbWorkers.DisplayMember = "cw_name";
+                cbWorkers.ValueMember = "ID";
             }
         }
 
@@ -2394,12 +2404,19 @@ namespace LoginForm.QuotationModule
         {
             if (CustomerCode.Text == null)
             {
-                MessageBox.Show("Customer not selected !", "Eror !");
+                MessageBox.Show("Customer not selected !", "Error !");
             }
             else
             {
                 CustomerMain f = new CustomerMain(1, CustomerCode.Text);
                 f.ShowDialog();
+
+                IME = new IMEEntities();
+
+                fillCustomer();
+                cbWorkers.DataSource = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text).ToList();
+                cbWorkers.DisplayMember = "cw_name";
+                cbWorkers.ValueMember = "ID";
             }
 
         }
