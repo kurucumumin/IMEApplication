@@ -40,7 +40,6 @@ namespace LoginForm.DataSet
         public Nullable<decimal> voucherTypeId { get; set; }
         public int purchaseOrderId { get; set; }
         public string FicheNo { get; set; }
-        public Nullable<decimal> financialYearId { get; set; }
     
         public virtual AccountLedger AccountLedger { get; set; }
         public virtual Customer Customer { get; set; }

@@ -470,7 +470,6 @@ namespace LoginForm.QuotationModule
 
                         dgQuotationAddedItems.CurrentRow.Cells["dgCustDescription"].ReadOnly = false;
                         dgQuotationAddedItems.CurrentRow.Cells["dgCustDescription"].Style = dgQuotationAddedItems.DefaultCellStyle;
-
                     }
                     //LOW MARGIN
                     if (dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Value != null && Decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Value.ToString()) > 0) { GetMarginMark(); }
