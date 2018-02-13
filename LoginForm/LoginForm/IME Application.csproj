@@ -12,7 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\cm_gn\Desktop\Shaji\</PublishUrl>
+    <PublishUrl>C:\Users\PC\Desktop\IMEApp\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>56</ApplicationRevision>
+    <ApplicationRevision>52</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -369,6 +369,7 @@
     <Compile Include="Account\Services\DebitNoteMasterSP.cs" />
     <Compile Include="Account\Services\DeliveryNoteDetailsSP.cs" />
     <Compile Include="Account\Services\DeliveryNoteMasterSP.cs" />
+    <Compile Include="Account\Services\EmployeeSP.cs" />
     <Compile Include="Account\Services\ExchangeRateSP.cs" />
     <Compile Include="Account\Services\ExportNew.cs" />
     <Compile Include="Account\Services\FinancialStatementSP.cs" />
@@ -415,7 +416,9 @@
     <Compile Include="Account\Services\SalesReturnBillTaxSP.cs" />
     <Compile Include="Account\Services\SalesReturnDetailsSP.cs" />
     <Compile Include="Account\Services\SalesReturnMasterSP.cs" />
+    <Compile Include="Account\Services\ServiceDetailsSP.cs" />
     <Compile Include="Account\Services\ServiceMasterSP.cs" />
+    <Compile Include="Account\Services\ServiceSP.cs" />
     <Compile Include="Account\Services\SettingsSP.cs" />
     <Compile Include="Account\Services\spBankReconciliation.cs" />
     <Compile Include="Account\Services\StockPostingInfo.cs" />
@@ -505,6 +508,12 @@
     </Compile>
     <Compile Include="Account\Transaction\frmSalesReturn.Designer.cs">
       <DependentUpon>frmSalesReturn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Transaction\frmServiceVoucher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Transaction\frmServiceVoucher.Designer.cs">
+      <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\AccountCustomControl\BudgetMasterPayroll.cs">
       <SubType>UserControl</SubType>
@@ -870,6 +879,9 @@
     <Compile Include="DataSet\PartyBalance.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\PartyBalanceViewByVoucherNoAndVoucherType_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PayHead.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1068,6 +1080,18 @@
     <Compile Include="DataSet\RSPro.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\RS_Invoice.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\RS_InvoiceDetails.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalaryPackage.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalaryPackageDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\SalaryVoucherDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1102,6 +1126,12 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SalesInvoiceSalesBillTaxViewAllBySalesMasterId_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalesmanSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalesmanViewSpecificFeilds_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SalesMaster.cs">
@@ -1140,7 +1170,16 @@
     <Compile Include="DataSet\ServiceDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\ServiceDetailsViewWithMasterId_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\ServiceMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ServiceMasterView_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ServiceViewAll_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Setting.cs">
@@ -1655,6 +1694,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmSalesReturn.resx">
       <DependentUpon>frmSalesReturn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Transaction\frmServiceVoucher.resx">
+      <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountCustomControl\BudgetMasterPayroll.resx">
       <DependentUpon>BudgetMasterPayroll.cs</DependentUpon>

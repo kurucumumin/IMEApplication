@@ -51,7 +51,7 @@ namespace LoginForm
         frmReceiptVoucher frmReceiptVoucherObj;
         frmJournalVoucher frmJournalVoucherObj;
         //frmPurchaseOrder frmPurchaseOrderObj;
-        //frmServiceVoucher frmServiceVoucherObj;
+        frmServiceVoucher frmServiceVoucherObj;
         //frmMaterialReceipt frmMaterialReceptObj = null;
         frmDebitNote frmDebitNoteObj = null;
         frmCreditNote frmCreditNoteObj = null;
@@ -1233,24 +1233,24 @@ namespace LoginForm
         /// </summary>
         /// <param name="frmServiceVoucherObj"></param> 
         /// //TODO OpenMiracle Function
-        //public void CallFromServiceVoucher(frmServiceVoucher frmServiceVoucherObj)
-        //{
-        //    try
-        //    {
-        //        this.frmServiceVoucherObj = frmServiceVoucherObj;
-        //        frmServiceVoucherObj.Enabled = false;
-        //        base.Show();
-        //        dgvAccountLedger.Enabled = false;
-        //        txtLedgerNameSearch.Enabled = false;
-        //        cmbGroupSearch.Enabled = false;
-        //        btnSearch.Enabled = false;
-        //        cmbGroup.SelectedValue = 27;    // 27 is account group id for cash in hand
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("AL29:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromServiceVoucher(frmServiceVoucher frmServiceVoucherObj)
+        {
+            try
+            {
+                this.frmServiceVoucherObj = frmServiceVoucherObj;
+                frmServiceVoucherObj.Enabled = false;
+                base.Show();
+                dgvAccountLedger.Enabled = false;
+                txtLedgerNameSearch.Enabled = false;
+                cmbGroupSearch.Enabled = false;
+                btnSearch.Enabled = false;
+                cmbGroup.SelectedValue = 27;    // 27 is account group id for cash in hand
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL29:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to call this form from frmDebitNote for creating new account ledger
         /// </summary>
