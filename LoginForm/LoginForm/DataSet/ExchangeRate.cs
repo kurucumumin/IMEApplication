@@ -31,6 +31,7 @@ namespace LoginForm.DataSet
             this.SaleOrders = new HashSet<SaleOrder>();
             this.SalesMasters = new HashSet<SalesMaster>();
             this.SalesReturnMasters = new HashSet<SalesReturnMaster>();
+            this.ServiceMasters = new HashSet<ServiceMaster>();
             this.ReceiptDetails = new HashSet<ReceiptDetail>();
         }
     
@@ -68,6 +69,8 @@ namespace LoginForm.DataSet
         public virtual ICollection<SalesMaster> SalesMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesReturnMaster> SalesReturnMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ServiceMaster> ServiceMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReceiptDetail> ReceiptDetails { get; set; }
     }

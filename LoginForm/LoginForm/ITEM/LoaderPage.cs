@@ -132,6 +132,17 @@ namespace LoginForm.Item
                     dataGridView1.DataSource = null;
                     dataGridView1.DataSource = IME.RSProes.Take(10).ToList();
                     break;
+                case "RSInvoice":
+                    txtReader.RSInvoiceReader();
+                    //{
+                    //    LoaderDate ld = new LoaderDate();
+                    //    ld.RSPro_Date = DTPLoaderDate.Value;
+                    //    IME.LoaderDates.Add(ld);
+                    //    IME.SaveChanges();
+                    //}
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = IME.RS_Invoice.Take(10).ToList();
+                    break;
                 case "Stock":
                     
                     break;

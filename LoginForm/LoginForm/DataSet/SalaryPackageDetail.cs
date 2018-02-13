@@ -10,10 +10,17 @@
 namespace LoginForm.DataSet
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class TaxViewAllByVoucherTypeIdApplicaleForProduct_Result
+    public partial class SalaryPackageDetail
     {
-        public int taxId { get; set; }
-        public string taxName { get; set; }
+        public decimal salaryPackageDetailsId { get; set; }
+        public Nullable<decimal> salaryPackageId { get; set; }
+        public Nullable<decimal> payHeadId { get; set; }
+        public Nullable<decimal> amount { get; set; }
+        public string narration { get; set; }
+    
+        public virtual PayHead PayHead { get; set; }
+        public virtual SalaryPackage SalaryPackage { get; set; }
     }
 }

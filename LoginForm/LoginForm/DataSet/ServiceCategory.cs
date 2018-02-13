@@ -12,21 +12,19 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class PayHead
+    public partial class ServiceCategory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PayHead()
+        public ServiceCategory()
         {
-            this.SalaryPackageDetails = new HashSet<SalaryPackageDetail>();
+            this.Services = new HashSet<Service>();
         }
     
-        public decimal payHeadId { get; set; }
-        public string payHeadName { get; set; }
-        public string type { get; set; }
+        public decimal serviceCategoryId { get; set; }
+        public string categoryName { get; set; }
         public string narration { get; set; }
-        public Nullable<System.DateTime> extraDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SalaryPackageDetail> SalaryPackageDetails { get; set; }
+        public virtual ICollection<Service> Services { get; set; }
     }
 }

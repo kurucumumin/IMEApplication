@@ -10,10 +10,17 @@
 namespace LoginForm.DataSet
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class AccountLedgerViewAllForComboBox_Result
+    public partial class ServiceDetail
     {
-        public decimal ledgerId { get; set; }
-        public string ledgerName { get; set; }
+        public decimal serviceDetailsId { get; set; }
+        public Nullable<decimal> serviceMasterId { get; set; }
+        public Nullable<decimal> serviceId { get; set; }
+        public string measure { get; set; }
+        public Nullable<decimal> amount { get; set; }
+    
+        public virtual Service Service { get; set; }
+        public virtual ServiceMaster ServiceMaster { get; set; }
     }
 }

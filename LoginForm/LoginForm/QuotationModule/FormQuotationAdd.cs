@@ -2354,18 +2354,22 @@ namespace LoginForm.QuotationModule
                 {
                     int rownumber = Int32.Parse(dgQuotationAddedItems.Rows[item.Index].Cells["dgNo"].Value.ToString());
                     dgQuotationDeleted.Rows.Add();
-                    for (int i = 0; i < dgQuotationAddedItems.Columns.Count; i++)
+                    for (int i = 0; i < dgQuotationDeleted.Columns.Count; i++)
                     {
-                        dgQuotationDeleted.Rows[dgQuotationDeleted.Rows.Count - 2].Cells[i].Value = item.Cells[i].Value;
+                       dgQuotationDeleted.Rows[dgQuotationDeleted.Rows.Count - 2].Cells[i].Value = item.Cells[i].Value;                         
                     }
 
                     var st = SubTotal.Where(a => a.Item1 == rownumber).FirstOrDefault();
-                    lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - st.Item2).ToString();
-                    SubDeletingTotal.Add(new Tuple<int, decimal>(rownumber, SubTotal.Where(a => a.Item1 == rownumber).FirstOrDefault().Item2));
-                    SubTotal.Remove(st);
-                    SubTotal.Add(new Tuple<int, decimal>(rownumber, 0));
+                    if (st != null)
+                    {
+                        lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - st.Item2).ToString();
+                        SubDeletingTotal.Add(new Tuple<int, decimal>(rownumber, SubTotal.Where(a => a.Item1 == rownumber).FirstOrDefault().Item2));
+                        SubTotal.Remove(st);
+                        SubTotal.Add(new Tuple<int, decimal>(rownumber, 0));
+                    }
 
                 }
+                
             }
         }
 
@@ -2891,6 +2895,15 @@ namespace LoginForm.QuotationModule
                     SendKeys.Send("{TAB}");
                     index++;
                 }
+            }
+        }
+
+        private void dgQuotationAddedItems_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            if (dgQuotationAddedItems.Rows.Count == 0)
+            {
+                dgQuotationAddedItems.Rows.Add();
+                dgQuotationAddedItems.Rows[0].Cells[0].Value = "1";
             }
         }
     }
