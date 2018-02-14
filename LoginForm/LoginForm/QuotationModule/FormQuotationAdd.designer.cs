@@ -429,7 +429,7 @@
             this.dgQuotationAddedItems.TabIndex = 9;
             this.dgQuotationAddedItems.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotationAddedItems_CellEndEdit);
             this.dgQuotationAddedItems.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgQuotationAddedItems_RowsAdded);
-            this.dgQuotationAddedItems.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgQuotationAddedItems_RowsRemoved);
+            //this.dgQuotationAddedItems.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgQuotationAddedItems_RowsRemoved);
             this.dgQuotationAddedItems.Click += new System.EventHandler(this.dgQuotationAddedItems_Click);
             this.dgQuotationAddedItems.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgQuotationAddedItems_KeyDown);
             // 
