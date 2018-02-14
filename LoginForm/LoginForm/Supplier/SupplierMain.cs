@@ -1426,7 +1426,7 @@ namespace LoginForm
         {
             cmbrepresentative.DataSource = IME.Workers.ToList();
             cmbrepresentative.DisplayMember = "NameLastName";
-            cmbrepresentative.ValueMember = "ID";
+            cmbrepresentative.ValueMember = "WorkerID";
         }
 
         private void dgSupplier_DoubleClick(object sender, EventArgs e)

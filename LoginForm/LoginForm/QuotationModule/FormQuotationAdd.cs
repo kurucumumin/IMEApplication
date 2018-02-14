@@ -146,6 +146,7 @@ namespace LoginForm.QuotationModule
 
         private void QuotationForm_Load(object sender, EventArgs e)
         {
+            
             DeletedQuotationMenu.MenuItems.Add(new MenuItem("Add to Quotation", DeletedQuotationMenu_Click));
             if (!modifyMod)
             {
@@ -2589,6 +2590,7 @@ namespace LoginForm.QuotationModule
                 }
                 getTotalDiscMargin();
                 if (txtTotalMarge.Visible == true) txtTotalMarge.Text = calculateTotalMargin().ToString();
+
             }
         }
 
