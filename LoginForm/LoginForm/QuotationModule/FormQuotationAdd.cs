@@ -472,9 +472,6 @@ namespace LoginForm.QuotationModule
                         dgQuotationAddedItems.CurrentRow.Cells["dgCustDescription"].ReadOnly = false;
                         dgQuotationAddedItems.CurrentRow.Cells["dgCustDescription"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
-                        dgQuotationAddedItems.CurrentRow.Cells["dgLandingCost"].Style.Format = "n3";
-                        dgQuotationAddedItems.CurrentRow.Cells["dgUPIME"].Style.Format = "n3";
-                        dgQuotationAddedItems.CurrentRow.Cells["dgMargin"].Style.Format = "n3";
                     }
                     //LOW MARGIN
                     if (dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Value != null && Decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Value.ToString()) > 0) { GetMarginMark(); }
@@ -2265,41 +2262,12 @@ namespace LoginForm.QuotationModule
 
         private void ChangeCurrnetCell(int currindex)
         {
-            //int row = dgQuotationAddedItems.CurrentCell.RowIndex;
-            //while (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex].ReadOnly == true)
-            //{
-            //    if (currindex == dgQuotationAddedItems.ColumnCount - 2)
-            //    {
-            //        if (currindex == 14 && dgQuotationAddedItems.Rows[row].Cells[14].Value == null) break;
-            //        if (dgQuotationAddedItems.RowCount - 1 == row && dgQuotationAddedItems.CurrentRow.Cells["dgDesc"].Value != null)
-            //        {
-            //            DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
-            //            dgQuotationAddedItems.Rows.Add(dgRow);
-            //        }
-            //        if (dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value == null)
-            //        {
-            //            currindex = 13;
-            //        }
-            //        else
-            //        {
-            //            currindex = 6;
-            //            row++;
-            //        }
-            //    }
-            //    else
-            //    {
-            //        if (currindex == 14 && dgQuotationAddedItems.Rows[row].Cells[14].Value == null) break;
-            //        currindex++;
-            //    }
-            //}
-
-            //dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[row].Cells[currindex];
-
             try
             {
                 if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[dgQty.Index].Value == null)
                 {
                     dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[dgQty.Index];
+                    
                 }
                 else
                 {
@@ -2307,6 +2275,7 @@ namespace LoginForm.QuotationModule
                     DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
                     dgQuotationAddedItems.Rows.Add(dgRow);
                     dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex+1].Cells[dgProductCode.Index];
+                    
                 }
 
 
@@ -2975,6 +2944,11 @@ namespace LoginForm.QuotationModule
             }
             this.Enabled = true;
             fillCustomer();
+        }
+
+        private void dgQuotationAddedItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
