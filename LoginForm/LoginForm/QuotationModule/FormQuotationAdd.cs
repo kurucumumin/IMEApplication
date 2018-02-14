@@ -146,7 +146,7 @@ namespace LoginForm.QuotationModule
 
         private void QuotationForm_Load(object sender, EventArgs e)
         {
-            
+
             DeletedQuotationMenu.MenuItems.Add(new MenuItem("Add to Quotation", DeletedQuotationMenu_Click));
             if (!modifyMod)
             {
@@ -395,11 +395,11 @@ namespace LoginForm.QuotationModule
                                             if (row != null) MessageBox.Show("There is already an item added this qoutation in the " + row.Cells["dgNo"].Value.ToString() + ". Row and the price " + row.Cells["dgUCUPCurr"].Value.ToString());
 
                                         }
-                                        else
-                                        {
-                                            if (row != null) MessageBox.Show("There is already an item added this qoutation in the " + row.Cells["dgNo"].Value.ToString() + ". Row");
+                                        //else
+                                        //{
+                                        //    if (row != null) MessageBox.Show("There is already an item added this qoutation in the " + row.Cells["dgNo"].Value.ToString() + ". Row");
 
-                                        }
+                                        //}
                                     dgQuotationAddedItems.CurrentCell.Value = classQuotationAdd.ItemCode;
                                     if (IME.ArticleSearchCheckExistence(dgQuotationAddedItems.CurrentCell.Value.ToString()).ToList()[0] > 0)
                                     {
@@ -2267,7 +2267,7 @@ namespace LoginForm.QuotationModule
                 if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[dgQty.Index].Value == null)
                 {
                     dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[dgQty.Index];
-                    
+
                 }
                 else
                 {
@@ -2275,7 +2275,7 @@ namespace LoginForm.QuotationModule
                     DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
                     dgQuotationAddedItems.Rows.Add(dgRow);
                     dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex+1].Cells[dgProductCode.Index];
-                    
+
                 }
 
 
@@ -2344,16 +2344,19 @@ namespace LoginForm.QuotationModule
                 {
                     int rownumber = Int32.Parse(dgQuotationAddedItems.Rows[item.Index].Cells["dgNo"].Value.ToString());
                     dgQuotationDeleted.Rows.Add();
-                    for (int i = 0; i < dgQuotationAddedItems.Columns.Count; i++)
+                    for (int i = 0; i < dgQuotationDeleted.Columns.Count; i++)
                     {
                         dgQuotationDeleted.Rows[dgQuotationDeleted.Rows.Count - 2].Cells[i].Value = item.Cells[i].Value;
                     }
 
                     var st = SubTotal.Where(a => a.Item1 == rownumber).FirstOrDefault();
-                    lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - st.Item2).ToString();
-                    SubDeletingTotal.Add(new Tuple<int, decimal>(rownumber, SubTotal.Where(a => a.Item1 == rownumber).FirstOrDefault().Item2));
-                    SubTotal.Remove(st);
-                    SubTotal.Add(new Tuple<int, decimal>(rownumber, 0));
+                    if(st!=null)lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - st.Item2).ToString();
+                    if (SubTotal.Count > 0)
+                    {
+                        SubDeletingTotal.Add(new Tuple<int, decimal>(rownumber, SubTotal.Where(a => a.Item1 == rownumber).FirstOrDefault().Item2));
+                        SubTotal.Remove(st);
+                        SubTotal.Add(new Tuple<int, decimal>(rownumber, 0));
+                    }
                 }
             }
         }
@@ -2774,6 +2777,17 @@ namespace LoginForm.QuotationModule
                     }
                     int rowindex1 = dgQuotationAddedItems.RowCount;
                     dgQuotationAddedItems.Rows.Add();
+                    int row1 = Int32.Parse(dgQuotationAddedItems.Rows[rowindex1].Cells[0].Value.ToString());
+
+                    for (int i = 0; i < dgQuotationAddedItems.Rows.Count; i++)
+                    {
+                        if(Int32.Parse(dgQuotationAddedItems.Rows[i].Cells[0].Value.ToString())== Int32.Parse(dgQuotationDeleted.Rows[item.Index].Cells[0].Value.ToString())&& (dgQuotationAddedItems.Rows[i].Cells[7].Value=="" || dgQuotationAddedItems.Rows[i].Cells[7].Value==null))
+                        {
+                            dgQuotationAddedItems.Rows.Remove(dgQuotationAddedItems.Rows[i]);
+                            rowindex1--;
+                        }
+                    }
+
                     for (int i = 0; i < dgQuotationDeleted.Columns.Count; i++)
                     {
                         dgQuotationAddedItems.Rows[rowindex1].Cells[i].Value = dgQuotationDeleted.Rows[item.Index].Cells[i].Value;
@@ -2946,9 +2960,14 @@ namespace LoginForm.QuotationModule
             fillCustomer();
         }
 
-        private void dgQuotationAddedItems_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgQuotationAddedItems_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
         {
+            if (dgQuotationAddedItems.Rows.Count == 0)
+            {
 
+                dgQuotationAddedItems.Rows.Add();
+                dgQuotationAddedItems.Rows[0].Cells[0].Value = "1";
+            }
         }
     }
 }
