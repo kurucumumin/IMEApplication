@@ -206,22 +206,36 @@ namespace LoginForm
                     ContactListItem.ID = cw_ID;
                     string contactname = ((CustomerWorker)((ListBox)sender).SelectedItem).cw_name;
                     ContactListItem.contactName = contactname;
-                    var contact1 = IME.CustomerWorkers.Where(cw => cw.ID == cw_ID).ToList();
-                    foreach (var a in contact1)
-                    {
-                        selectedContactID = a.ID;
-                        if (a.ContactTypeID != null) ContactType.SelectedValue = a.ContactTypeID;
-                        ContactName.Text = a.cw_name;
-                        ContactEmail.Text = a.cw_email;
-                        if(a.CustomerDepartment!=null) ContactDepartment.SelectedValue = ContactDepartment.FindStringExact(a.CustomerDepartment.departmentname);
-                        if (a.CustomerTitle != null) ContactTitle.SelectedValue = ContactTitle.FindStringExact(a.CustomerTitle.titlename);
-                        ContactFAX.Text = a.fax;
-                        ContactMobilePhone.Text = a.mobilephone;
-                        ContactPhone.Text = a.phone;
-                        if (a.CustomerWorkerAdress != null) ContactAdress.SelectedItem = Int32.Parse(a.CustomerWorkerAdress.ToString());
-                        CommunicationLanguage.SelectedValue = CommunicationLanguage.FindStringExact(a.Language.languagename);
-                        if (a.Note != null) { ContactNotes.Text = a.Note.Note_name; } else { ContactNotes.Text = ""; }
-                    }
+                    var a = IME.CustomerWorkers.Where(cw => cw.ID == cw_ID).FirstOrDefault();
+
+                    selectedContactID = a.ID;
+                    if (a.ContactTypeID != null) ContactType.SelectedValue = a.ContactTypeID;
+                    ContactName.Text = a.cw_name;
+                    ContactEmail.Text = a.cw_email;
+                    if (a.CustomerDepartment != null) ContactDepartment.SelectedValue = ContactDepartment.FindStringExact(a.CustomerDepartment.departmentname);
+                    if (a.CustomerTitle != null) ContactTitle.SelectedValue = ContactTitle.FindStringExact(a.CustomerTitle.titlename);
+                    ContactFAX.Text = a.fax;
+                    ContactMobilePhone.Text = a.mobilephone;
+                    ContactPhone.Text = a.phone;
+                    if (a.CustomerWorkerAdress != null) ContactAdress.SelectedItem = Int32.Parse(a.CustomerWorkerAdress.ToString());
+                    CommunicationLanguage.SelectedValue = CommunicationLanguage.FindStringExact(a.Language.languagename);
+                    if (a.Note != null) { ContactNotes.Text = a.Note.Note_name; } else { ContactNotes.Text = ""; }
+
+                    //foreach (var a in contact1)
+                    //{
+                    //    selectedContactID = a.ID;
+                    //    if (a.ContactTypeID != null) ContactType.SelectedValue = a.ContactTypeID;
+                    //    ContactName.Text = a.cw_name;
+                    //    ContactEmail.Text = a.cw_email;
+                    //    if (a.CustomerDepartment != null) ContactDepartment.SelectedValue = ContactDepartment.FindStringExact(a.CustomerDepartment.departmentname);
+                    //    if (a.CustomerTitle != null) ContactTitle.SelectedValue = ContactTitle.FindStringExact(a.CustomerTitle.titlename);
+                    //    ContactFAX.Text = a.fax;
+                    //    ContactMobilePhone.Text = a.mobilephone;
+                    //    ContactPhone.Text = a.phone;
+                    //    if (a.CustomerWorkerAdress != null) ContactAdress.SelectedItem = Int32.Parse(a.CustomerWorkerAdress.ToString());
+                    //    CommunicationLanguage.SelectedValue = CommunicationLanguage.FindStringExact(a.Language.languagename);
+                    //    if (a.Note != null) { ContactNotes.Text = a.Note.Note_name; } else { ContactNotes.Text = ""; }
+                    //}
                 }
             }
             #endregion
