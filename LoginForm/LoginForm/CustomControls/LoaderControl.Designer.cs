@@ -70,6 +70,7 @@
             this.panel22 = new System.Windows.Forms.Panel();
             this.panel21 = new System.Windows.Forms.Panel();
             this.btnRSProList = new System.Windows.Forms.Button();
+            this.btnRSInvoice = new System.Windows.Forms.Button();
             this.tableRightPanel.SuspendLayout();
             this.panel20.SuspendLayout();
             this.panel17.SuspendLayout();
@@ -81,6 +82,7 @@
             this.panel10.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.panel22.SuspendLayout();
             this.panel21.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -562,6 +564,7 @@
             // 
             // panel22
             // 
+            this.panel22.Controls.Add(this.btnRSInvoice);
             this.panel22.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel22.Location = new System.Drawing.Point(501, 353);
             this.panel22.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -596,6 +599,23 @@
             this.btnRSProList.UseVisualStyleBackColor = false;
             this.btnRSProList.Click += new System.EventHandler(this.btnRSProList_Click);
             // 
+            // btnRSInvoice
+            // 
+            this.btnRSInvoice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(155)))), ((int)(((byte)(229)))));
+            this.btnRSInvoice.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRSInvoice.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRSInvoice.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(129)))), ((int)(((byte)(212)))), ((int)(((byte)(250)))));
+            this.btnRSInvoice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRSInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRSInvoice.Location = new System.Drawing.Point(0, 0);
+            this.btnRSInvoice.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRSInvoice.Name = "btnRSInvoice";
+            this.btnRSInvoice.Size = new System.Drawing.Size(160, 113);
+            this.btnRSInvoice.TabIndex = 11;
+            this.btnRSInvoice.Text = "RS Invoice";
+            this.btnRSInvoice.UseVisualStyleBackColor = false;
+            this.btnRSInvoice.Click += new System.EventHandler(this.btnRSInvoice_Click);
+            // 
             // LoaderControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -615,6 +635,7 @@
             this.panel10.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
+            this.panel22.ResumeLayout(false);
             this.panel21.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -664,5 +685,6 @@
         private System.Windows.Forms.Panel panel22;
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.Button btnRSProList;
+        private System.Windows.Forms.Button btnRSInvoice;
     }
 }

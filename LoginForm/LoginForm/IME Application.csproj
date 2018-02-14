@@ -506,6 +506,12 @@
     <Compile Include="Account\Transaction\frmSalesReturn.Designer.cs">
       <DependentUpon>frmSalesReturn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Transaction\frmServiceVoucher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Transaction\frmServiceVoucher.Designer.cs">
+      <DependentUpon>frmServiceVoucher.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomControls\AccountCustomControl\BudgetMasterPayroll.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1685,6 +1691,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmSalesReturn.resx">
       <DependentUpon>frmSalesReturn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Transaction\frmServiceVoucher.resx">
+      <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountCustomControl\BudgetMasterPayroll.resx">
       <DependentUpon>BudgetMasterPayroll.cs</DependentUpon>

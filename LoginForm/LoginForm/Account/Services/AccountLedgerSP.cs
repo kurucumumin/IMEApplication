@@ -23,7 +23,7 @@ namespace LoginForm.Account.Services
             var accountGroup = IME.AccountGroups.Where(a => a.accountGroupName == "Indirect Expenses").ToList();
             var adaptor = (from al in IME.AccountLedgers
                            from ac in accountGroup
-                           where (al.accountGroupID==ac.accountGroupId)
+                           where (al.accountGroupID == ac.accountGroupId)
                            select new
                            {
                                al.ledgerName,
@@ -101,7 +101,7 @@ namespace LoginForm.Account.Services
 
         public void PartyBalanceDeleteByVoucherTypeVoucherNoAndReferenceType(string strVocuherNumber, decimal decVoucherTypeId)
         {
-            
+
             try
             {
                 new IMEEntities().PartyBalanceDeleteByVoucherTypeVoucherNoAndReferenceType(strVocuherNumber, decVoucherTypeId);
@@ -215,10 +215,10 @@ namespace LoginForm.Account.Services
             try
             {
                 var adaptor = (from ag in db.AccountGroups.Where(x => x.accountGroupName == "Sundry Creditors" || x.accountGroupName == "Sundry Debtors")
-                                select new
-                                {
-                                    AccountGroupId = ag.accountGroupId,
-                                    hierarchyLevel = 1
+                               select new
+                               {
+                                   AccountGroupId = ag.accountGroupId,
+                                   hierarchyLevel = 1
                                }).ToList();
 
                 List<int> IDs = adaptor.Select(x => x.AccountGroupId).ToList();
@@ -233,7 +233,7 @@ namespace LoginForm.Account.Services
 
                 foreach (var item in adaptor2)
                 {
-                    if(!adaptor.Exists(x=>x.AccountGroupId == item.AccountGroupId))
+                    if (!adaptor.Exists(x => x.AccountGroupId == item.AccountGroupId))
                     {
                         adaptor.Add(item);
                     }
@@ -316,7 +316,8 @@ namespace LoginForm.Account.Services
                 if (strNature == "Assets" || strNature == "Expenses")
                 {
                     strNature = "Dr";
-                }else if (strNature == "Liabilities" || strNature == "Income")
+                }
+                else if (strNature == "Liabilities" || strNature == "Income")
                 {
                     strNature = "Cr";
                 }
@@ -507,7 +508,7 @@ namespace LoginForm.Account.Services
             bool isExist = false;
             try
             {
-                var obj = (from rm in IME.PDCClearanceMasters.Where(r =>r.againstId == decPDCReceivableMasterId)
+                var obj = (from rm in IME.PDCClearanceMasters.Where(r => r.againstId == decPDCReceivableMasterId)
                            select rm.againstId).ToList();
 
                 if (obj != null)
@@ -531,10 +532,10 @@ namespace LoginForm.Account.Services
             bool isSundryDebit = false;
             try
             {
-                var obj = (from rm in IME.AccountLedgers.Where(r => r.ledgerName == strLedgerName && r.AccountGroup.accountGroupName== "Sundry Debtors" && r.billByBill==true)
+                var obj = (from rm in IME.AccountLedgers.Where(r => r.ledgerName == strLedgerName && r.AccountGroup.accountGroupName == "Sundry Debtors" && r.billByBill == true)
                            select rm.ledgerId).ToList();
 
-                isSundryDebit=(obj.Count() > 0) ? true : false;
+                isSundryDebit = (obj.Count() > 0) ? true : false;
             }
             catch (Exception ex)
             {
@@ -555,7 +556,7 @@ namespace LoginForm.Account.Services
                                     select new { dn.debit }).Sum(x => x.debit);
 
                 decimal? adapter2 = (from dn in IME.LedgerPostings.Where(p => p.ledgerId == decledgerId)
-                                    select new { dn.credit }).Sum(x => x.credit);
+                                     select new { dn.credit }).Sum(x => x.credit);
 
 
 
@@ -711,7 +712,7 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
             return accountledgerinfo;
-          }
+        }
 
         public decimal AccountLedgerIdGetByName(string strLedgerName)
         {
@@ -803,6 +804,58 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
             return decLedgerId;
+        }
+
+        public AccountLedger accountLedgerviewbyId(decimal ledgerId)
+        {
+            IMEEntities IME = new IMEEntities();
+            AccountLedger accountledgerinfo = new AccountLedger();
+            try
+            {
+                var a = IME.AccountLedgerView(ledgerId).FirstOrDefault();
+
+                accountledgerinfo.ledgerId = a.ledgerId;
+                accountledgerinfo.ledgerName = a.ledgerName;
+                accountledgerinfo.creditPeriod = a.creditPeriod;
+                accountledgerinfo.pricinglevelId = a.pricinglevelId;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return accountledgerinfo;
+        }
+
+        public DataTable AccountLedgerSearchForServiceAccountUnderIncome()
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.AccountLedgerSearchForServiceAccountUnderIncome();
+
+                dtbl.Columns.Add("ledgerId");
+                dtbl.Columns.Add("accountGroupId");
+                dtbl.Columns.Add("ledgerName");
+                dtbl.Columns.Add("Balance");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+                    row["ledgerId"] = item.ledgerId;
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["ledgerName"] = item.ledgerName;
+                    row["Balance"] = item.Balance;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
         }
     }
 }
