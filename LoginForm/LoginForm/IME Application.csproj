@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>52</ApplicationRevision>
+    <ApplicationRevision>56</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -98,6 +98,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -365,7 +366,6 @@
     <Compile Include="Account\Services\DebitNoteMasterSP.cs" />
     <Compile Include="Account\Services\DeliveryNoteDetailsSP.cs" />
     <Compile Include="Account\Services\DeliveryNoteMasterSP.cs" />
-    <Compile Include="Account\Services\EmployeeSP.cs" />
     <Compile Include="Account\Services\ExchangeRateSP.cs" />
     <Compile Include="Account\Services\ExportNew.cs" />
     <Compile Include="Account\Services\FinancialStatementSP.cs" />
@@ -412,9 +412,7 @@
     <Compile Include="Account\Services\SalesReturnBillTaxSP.cs" />
     <Compile Include="Account\Services\SalesReturnDetailsSP.cs" />
     <Compile Include="Account\Services\SalesReturnMasterSP.cs" />
-    <Compile Include="Account\Services\ServiceDetailsSP.cs" />
     <Compile Include="Account\Services\ServiceMasterSP.cs" />
-    <Compile Include="Account\Services\ServiceSP.cs" />
     <Compile Include="Account\Services\SettingsSP.cs" />
     <Compile Include="Account\Services\spBankReconciliation.cs" />
     <Compile Include="Account\Services\StockPostingInfo.cs" />
@@ -504,12 +502,6 @@
     </Compile>
     <Compile Include="Account\Transaction\frmSalesReturn.Designer.cs">
       <DependentUpon>frmSalesReturn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Account\Transaction\frmServiceVoucher.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Account\Transaction\frmServiceVoucher.Designer.cs">
-      <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </Compile>
     <Compile Include="CustomControls\AccountCustomControl\BudgetMasterPayroll.cs">
       <SubType>UserControl</SubType>
@@ -1690,9 +1682,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Transaction\frmSalesReturn.resx">
       <DependentUpon>frmSalesReturn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Account\Transaction\frmServiceVoucher.resx">
-      <DependentUpon>frmServiceVoucher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControls\AccountCustomControl\BudgetMasterPayroll.resx">
       <DependentUpon>BudgetMasterPayroll.cs</DependentUpon>

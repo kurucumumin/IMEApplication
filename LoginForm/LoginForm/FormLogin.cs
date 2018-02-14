@@ -57,8 +57,7 @@ namespace LoginForm
                     Utils.setCurrentUser(Logged);
                     FormMain formMain = new FormMain();
                     this.Hide();
-                   formMain.ShowDialog();
-
+                    formMain.ShowDialog();
                     this.Close();
                 }
                 else

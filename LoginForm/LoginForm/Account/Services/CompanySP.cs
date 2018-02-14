@@ -91,38 +91,6 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
-        public Company CompanyView(decimal companyId)
-        {
-            IMEEntities IME = new IMEEntities();
-            Company companyinfo = new Company();
-            
-            try
-            {
-                var a = IME.CompanyView(companyId).FirstOrDefault();
 
-                companyinfo.companyId = a.companyId;
-                companyinfo.companyName = a.companyName;
-                companyinfo.mailingName = a.mailingName;
-                companyinfo.address = a.address;
-                companyinfo.phone = a.phone;
-                companyinfo.mobile = a.mobile;
-                companyinfo.web = a.web;
-                companyinfo.country = a.country;
-                companyinfo.state = a.state;
-                companyinfo.pin = a.pin;
-                companyinfo.currencyId = a.currencyId;
-                companyinfo.financialYearFrom = Convert.ToDateTime(a.financialYearFrom);
-                companyinfo.booksBeginingFrom = Convert.ToDateTime(a.booksBeginingFrom);
-                companyinfo.tin = a.tin;
-                companyinfo.cst = a.cst;
-                companyinfo.pan = a.pan;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            return companyinfo;
-        }
     }
 }

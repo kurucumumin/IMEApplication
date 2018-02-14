@@ -34,7 +34,7 @@ namespace LoginForm
         frmPaymentVoucher frmPaymentVoucherObj;
         frmReceiptVoucher frmReceiptVoucherObj;
         PurchaseOrderMain frmPurchaseOrderObj;
-        frmServiceVoucher frmServiceVoucherObj;
+        //frmServiceVoucher frmServiceVoucherObj;
         string strComboTypes = string.Empty;
         frmJournalVoucher frmJournalVoucherObj;
         frmDebitNote frmDebitNoteObj = null;
@@ -413,29 +413,29 @@ namespace LoginForm
         /// <param name="frmServiceVoucher"></param>
         /// <param name="decId"></param>
         /// <param name="strComboType"></param>
-        public void CallFromServiceVoucher(frmServiceVoucher frmServiceVoucher, decimal decId, string strComboType) //PopUp
-        {
-            try
-            {
-                strComboTypes = strComboType;
-                base.Show();
-                this.frmServiceVoucherObj = frmServiceVoucher;
-                frmServiceVoucherObj.Enabled = false;
-                int inRowCount = dgvLedgerPopup.Rows.Count;
-                for (int i = 0; i < inRowCount; i++)
-                {
-                    if (Convert.ToDecimal(dgvLedgerPopup.Rows[i].Cells["dgvtxtLedgerId"].Value.ToString()) == decId)
-                    {
-                        dgvLedgerPopup.Rows[i].DefaultCellStyle.BackColor = Color.MediumSeaGreen;
-                    }
-                }
-                txtLedgerName.Focus();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("LP14:" + ex.Message, "Open Miracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        //public void CallFromServiceVoucher(frmServiceVoucher frmServiceVoucher, decimal decId, string strComboType) //PopUp
+        //{
+        //    try
+        //    {
+        //        strComboTypes = strComboType;
+        //        base.Show();
+        //        this.frmServiceVoucherObj = frmServiceVoucher;
+        //        frmServiceVoucherObj.Enabled = false;
+        //        int inRowCount = dgvLedgerPopup.Rows.Count;
+        //        for (int i = 0; i < inRowCount; i++)
+        //        {
+        //            if (Convert.ToDecimal(dgvLedgerPopup.Rows[i].Cells["dgvtxtLedgerId"].Value.ToString()) == decId)
+        //            {
+        //                dgvLedgerPopup.Rows[i].DefaultCellStyle.BackColor = Color.MediumSeaGreen;
+        //            }
+        //        }
+        //        txtLedgerName.Focus();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("LP14:" + ex.Message, "Open Miracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
 
 
         /// <summary>

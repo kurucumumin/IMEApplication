@@ -471,6 +471,9 @@ namespace LoginForm.QuotationModule
                         dgQuotationAddedItems.CurrentRow.Cells["dgCustDescription"].ReadOnly = false;
                         dgQuotationAddedItems.CurrentRow.Cells["dgCustDescription"].Style = dgQuotationAddedItems.DefaultCellStyle;
 
+                        dgQuotationAddedItems.CurrentRow.Cells["dgLandingCost"].Style.Format = "n3";
+                        dgQuotationAddedItems.CurrentRow.Cells["dgUPIME"].Style.Format = "n3";
+                        dgQuotationAddedItems.CurrentRow.Cells["dgMargin"].Style.Format = "n3";
                     }
                     //LOW MARGIN
                     if (dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Value != null && Decimal.Parse(dgQuotationAddedItems.CurrentRow.Cells["dgQty"].Value.ToString()) > 0) { GetMarginMark(); }
@@ -2261,12 +2264,63 @@ namespace LoginForm.QuotationModule
 
         private void ChangeCurrnetCell(int currindex)
         {
+            //int row = dgQuotationAddedItems.CurrentCell.RowIndex;
+            //while (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex].ReadOnly == true)
+            //{
+            //    if (currindex == dgQuotationAddedItems.ColumnCount - 2)
+            //    {
+            //        if (currindex == 14 && dgQuotationAddedItems.Rows[row].Cells[14].Value == null) break;
+            //        if (dgQuotationAddedItems.RowCount - 1 == row && dgQuotationAddedItems.CurrentRow.Cells["dgDesc"].Value != null)
+            //        {
+            //            DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
+            //            dgQuotationAddedItems.Rows.Add(dgRow);
+            //        }
+            //        if (dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value == null)
+            //        {
+            //            currindex = 13;
+            //        }
+            //        else
+            //        {
+            //            currindex = 6;
+            //            row++;
+            //        }
+            //    }
+            //    else
+            //    {
+            //        if (currindex == 14 && dgQuotationAddedItems.Rows[row].Cells[14].Value == null) break;
+            //        currindex++;
+            //    }
+            //}
+
+            //dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[row].Cells[currindex];
+
+            try
+            {
+                if (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[dgQty.Index].Value == null)
+                {
+                    dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[dgQty.Index];
+                }
+                else
+                {
+
+                    DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
+                    dgQuotationAddedItems.Rows.Add(dgRow);
+                    dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex+1].Cells[dgProductCode.Index];
+                }
+
+
+            }
+            catch { }
+        }
+
+        private void ChangeCurrnetCellTabKey(int currindex)
+        {
             int row = dgQuotationAddedItems.CurrentCell.RowIndex;
             while (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex].ReadOnly == true)
             {
                 if (currindex == dgQuotationAddedItems.ColumnCount - 2)
                 {
-                    if (currindex == 14 && dgQuotationAddedItems.Rows[row].Cells[14].Value == null) break;
+
                     if (dgQuotationAddedItems.RowCount - 1 == row && dgQuotationAddedItems.CurrentRow.Cells["dgDesc"].Value != null)
                     {
                         DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
@@ -2284,39 +2338,6 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                    if (currindex == 14 && dgQuotationAddedItems.Rows[row].Cells[14].Value == null) break;
-                    currindex++;
-                }
-            }
-
-            dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[row].Cells[currindex];
-
-        }
-
-        private void ChangeCurrnetCellTabKey(int currindex)
-        {
-            int row = dgQuotationAddedItems.CurrentCell.RowIndex;
-            while (dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells[currindex].ReadOnly == true)
-            {
-                if (currindex == dgQuotationAddedItems.ColumnCount - 2)
-                {
-
-                    if (dgQuotationAddedItems.RowCount - 1 == row && dgQuotationAddedItems.CurrentRow.Cells["dgDesc"].Value != null)
-                    {
-                        DataGridViewRow dgRow = (DataGridViewRow)dgQuotationAddedItems.RowTemplate.Clone();
-                        dgQuotationAddedItems.Rows.Add(dgRow);
-                    }
-                    if (dgQuotationAddedItems.CurrentRow.Cells[dgQty.Index].Value==null)
-                    {
-                        currindex = 13;
-                    }else
-                    {
-                        currindex = 6;
-                        row++;
-                    }
-                }
-                else
-                {
                     //if (currindex == 14 && dgQuotationAddedItems.Rows[row].Cells[14].Value == null) break;
                     currindex++;
                 }
@@ -2326,6 +2347,7 @@ namespace LoginForm.QuotationModule
                 dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[row].Cells[currindex - 1];
             }
             catch { }
+
         }
 
         private void dgQuotationAddedItems_KeyDown(object sender, KeyEventArgs e)
@@ -2352,22 +2374,17 @@ namespace LoginForm.QuotationModule
                 {
                     int rownumber = Int32.Parse(dgQuotationAddedItems.Rows[item.Index].Cells["dgNo"].Value.ToString());
                     dgQuotationDeleted.Rows.Add();
-                    for (int i = 0; i < dgQuotationDeleted.Columns.Count; i++)
+                    for (int i = 0; i < dgQuotationAddedItems.Columns.Count; i++)
                     {
-                       dgQuotationDeleted.Rows[dgQuotationDeleted.Rows.Count - 2].Cells[i].Value = item.Cells[i].Value;
+                        dgQuotationDeleted.Rows[dgQuotationDeleted.Rows.Count - 2].Cells[i].Value = item.Cells[i].Value;
                     }
 
                     var st = SubTotal.Where(a => a.Item1 == rownumber).FirstOrDefault();
-                    if (st != null)
-                    {
-                        lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - st.Item2).ToString();
-                        SubDeletingTotal.Add(new Tuple<int, decimal>(rownumber, SubTotal.Where(a => a.Item1 == rownumber).FirstOrDefault().Item2));
-                        SubTotal.Remove(st);
-                        SubTotal.Add(new Tuple<int, decimal>(rownumber, 0));
-                    }
-
+                    lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) - st.Item2).ToString();
+                    SubDeletingTotal.Add(new Tuple<int, decimal>(rownumber, SubTotal.Where(a => a.Item1 == rownumber).FirstOrDefault().Item2));
+                    SubTotal.Remove(st);
+                    SubTotal.Add(new Tuple<int, decimal>(rownumber, 0));
                 }
-
             }
         }
 
@@ -2394,6 +2411,12 @@ namespace LoginForm.QuotationModule
             {
                 CustomerMain f = new CustomerMain(1, CustomerCode.Text);
                 f.ShowDialog();
+
+                IME = new IMEEntities();
+
+                cbWorkers.DataSource = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text).ToList();
+                cbWorkers.DisplayMember = "cw_name";
+                cbWorkers.ValueMember = "ID";
             }
         }
 
@@ -2401,12 +2424,19 @@ namespace LoginForm.QuotationModule
         {
             if (CustomerCode.Text == null)
             {
-                MessageBox.Show("Customer not selected !", "Eror !");
+                MessageBox.Show("Customer not selected !", "Error !");
             }
             else
             {
                 CustomerMain f = new CustomerMain(1, CustomerCode.Text);
                 f.ShowDialog();
+
+                IME = new IMEEntities();
+
+                fillCustomer();
+                cbWorkers.DataSource = IME.CustomerWorkers.Where(a => a.customerID == CustomerCode.Text).ToList();
+                cbWorkers.DisplayMember = "cw_name";
+                cbWorkers.ValueMember = "ID";
             }
 
         }
@@ -2926,7 +2956,6 @@ namespace LoginForm.QuotationModule
             }
         }
 
-
         private void XmlToCustomer(XmlCustomer xmlCustomer)
         {
             classQuotationAdd.customersearchID = CustomerCode.Text;
@@ -2944,7 +2973,6 @@ namespace LoginForm.QuotationModule
             }
             this.Enabled = true;
             fillCustomer();
-
         }
     }
 }
