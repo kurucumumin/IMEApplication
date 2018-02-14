@@ -366,6 +366,7 @@
     <Compile Include="Account\Services\DebitNoteMasterSP.cs" />
     <Compile Include="Account\Services\DeliveryNoteDetailsSP.cs" />
     <Compile Include="Account\Services\DeliveryNoteMasterSP.cs" />
+    <Compile Include="Account\Services\EmployeeSP.cs" />
     <Compile Include="Account\Services\ExchangeRateSP.cs" />
     <Compile Include="Account\Services\ExportNew.cs" />
     <Compile Include="Account\Services\FinancialStatementSP.cs" />
@@ -412,7 +413,9 @@
     <Compile Include="Account\Services\SalesReturnBillTaxSP.cs" />
     <Compile Include="Account\Services\SalesReturnDetailsSP.cs" />
     <Compile Include="Account\Services\SalesReturnMasterSP.cs" />
+    <Compile Include="Account\Services\ServiceDetailsSP.cs" />
     <Compile Include="Account\Services\ServiceMasterSP.cs" />
+    <Compile Include="Account\Services\ServiceSP.cs" />
     <Compile Include="Account\Services\SettingsSP.cs" />
     <Compile Include="Account\Services\spBankReconciliation.cs" />
     <Compile Include="Account\Services\StockPostingInfo.cs" />

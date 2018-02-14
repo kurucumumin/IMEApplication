@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -124,16 +124,16 @@ namespace LoginForm
             try
             {
                 EmployeeSP spEmployee = new EmployeeSP();
-                Employee infoEmployee = new Employee();
+                Worker infoEmployee = new Worker();
                 infoEmployee = spEmployee.SalesmanViewSpecificFeilds(Convert.ToDecimal(strSalesmanId.ToString()));
-                txtSalesmanCode.Text = infoEmployee.EmployeeCode;
-                txtName.Text = infoEmployee.EmployeeName;
+                txtSalesmanCode.Text = infoEmployee.UserName;
+                txtName.Text = infoEmployee.NameLastName;
                 txtEmail.Text = infoEmployee.Email;
-                txtPhone.Text = infoEmployee.PhoneNumber;
-                txtMobile.Text = infoEmployee.MobileNumber;
-                txtAddress.Text = infoEmployee.Address;
-                txtNarration.Text = infoEmployee.Narration;
-                if (infoEmployee.IsActive)
+                txtPhone.Text = infoEmployee.Phone;
+                txtMobile.Text = infoEmployee.mobileNumber;
+                txtAddress.Text = infoEmployee.address;
+                txtNarration.Text = infoEmployee.narration;
+                if (infoEmployee.isActive==1)
                 {
                     cbxActive.Checked = true;
                 }
@@ -141,7 +141,7 @@ namespace LoginForm
                 {
                     cbxActive.Checked = false;
                 }
-                decSalesManId = infoEmployee.EmployeeId;
+                decSalesManId = infoEmployee.WorkerID;
             }
             catch (Exception ex)
             {
@@ -173,60 +173,56 @@ namespace LoginForm
         /// </summary>
         public void SaveFunction()
         {
+            IMEEntities IME = new IMEEntities();
             try
             {
-                EmployeeInfo InfoEmployee = new EmployeeInfo();
+                Worker InfoEmployee = new Worker();
                 EmployeeSP SpEmployee = new EmployeeSP();
-                InfoEmployee.EmployeeCode = txtSalesmanCode.Text.Trim();
-                InfoEmployee.DesignationId = Convert.ToDecimal(SpEmployee.SalesmanGetDesignationId());
-                InfoEmployee.EmployeeName = txtName.Text.Trim();
+                InfoEmployee.WorkerID = Convert.ToInt32(txtSalesmanCode.Text.Trim());
+                InfoEmployee.designationId = Convert.ToDecimal(SpEmployee.SalesmanGetDesignationId());
+                InfoEmployee.NameLastName = txtName.Text.Trim();
                 InfoEmployee.Email = txtEmail.Text.Trim();
-                InfoEmployee.PhoneNumber = txtPhone.Text.Trim();
-                InfoEmployee.MobileNumber = txtMobile.Text.Trim();
-                InfoEmployee.Address = txtAddress.Text.Trim();
-                InfoEmployee.Narration = txtNarration.Text.Trim();
-                InfoEmployee.Dob = DateTime.Now;
-                InfoEmployee.MaritalStatus = "Single";
-                InfoEmployee.Gender = "Male";
-                InfoEmployee.Qualification = string.Empty;
-                InfoEmployee.BloodGroup = string.Empty;
-                InfoEmployee.JoiningDate = PublicVariables._dtCurrentDate;
-                InfoEmployee.TerminationDate = DateTime.Now;
+                InfoEmployee.Phone = txtPhone.Text.Trim();
+                InfoEmployee.mobileNumber = txtMobile.Text.Trim();
+                InfoEmployee.address = txtAddress.Text.Trim();
+                InfoEmployee.narration = txtNarration.Text.Trim();
+                InfoEmployee.dob = DateTime.Now;
+                InfoEmployee.maritalStatus = "Single";
+                InfoEmployee.gender = "Male";
+                InfoEmployee.qualification = string.Empty;
+                InfoEmployee.bloodGroup = string.Empty;
+                InfoEmployee.joiningDate = IME.CurrentDate().FirstOrDefault();
+                InfoEmployee.terminationDate = DateTime.Now;
                 if (cbxActive.Checked)
                 {
-                    InfoEmployee.IsActive = true;
+                    InfoEmployee.isActive = 1;
                 }
                 else
                 {
-                    InfoEmployee.IsActive = false;
+                    InfoEmployee.isActive = 0;
                 }
-                InfoEmployee.SalaryType = "Monthly";
-                InfoEmployee.DefaultPackageId = 1;
-                InfoEmployee.BankName = string.Empty;
-                InfoEmployee.BankAccountNumber = string.Empty;
-                InfoEmployee.BranchName = string.Empty;
-                InfoEmployee.BranchCode = string.Empty;
-                InfoEmployee.PanNumber = string.Empty;
-                InfoEmployee.PfNumber = string.Empty;
-                InfoEmployee.EsiNumber = string.Empty;
-                InfoEmployee.PassportNo = string.Empty;
-                InfoEmployee.PassportExpiryDate = DateTime.Now;
-                InfoEmployee.VisaNumber = string.Empty;
-                InfoEmployee.VisaExpiryDate = DateTime.Now;
-                InfoEmployee.LabourCardNumber = string.Empty;
-                InfoEmployee.LabourCardExpiryDate = DateTime.Now;
-                InfoEmployee.Extra1 = string.Empty;
-                InfoEmployee.Extra2 = string.Empty;
+                InfoEmployee.salaryType = "Monthly";
+                InfoEmployee.defaultPackageId = 1;
+                InfoEmployee.bankName = string.Empty;
+                InfoEmployee.bankAccountNumber = string.Empty;
+                InfoEmployee.branchName = string.Empty;
+                InfoEmployee.branchCode = string.Empty;
+                InfoEmployee.panNumber = string.Empty;
+                InfoEmployee.pfNumber = string.Empty;
+                InfoEmployee.esiNumber = string.Empty;
+                InfoEmployee.passportNo = string.Empty;
+                InfoEmployee.passportExpiryDate = DateTime.Now;
+                InfoEmployee.visaNumber = string.Empty;
+                InfoEmployee.visaExpiryDate = DateTime.Now;
+                InfoEmployee.labourCardNumber = string.Empty;
+                InfoEmployee.labourCardExpiryDate = DateTime.Now;
                 if (SpEmployee.EmployeeCodeCheckExistance(txtSalesmanCode.Text.Trim().ToString(), 0) == false)
                 {
                     decSalesManId = SpEmployee.EmployeeAddWithReturnIdentity(InfoEmployee);
                     Messages.SavedMessage();
                     Clear();
                     Gridfill();
-                    if (frmRejectionInObj != null)
-                    {
-                        this.Close();
-                    }
+                    this.Close();
                     if (frmSalesQuotationObj != null)
                     {
                         this.Close();
@@ -249,10 +245,7 @@ namespace LoginForm
                 {
                     this.Close();
                 }
-                if (frmPOSObj != null)
-                {
                     this.Close();
-                }
             }
             catch (Exception ex)
             {
@@ -266,23 +259,23 @@ namespace LoginForm
         {
             try
             {
-                EmployeeInfo InfoEmployee = new EmployeeInfo();
+                Worker InfoEmployee = new Worker();
                 EmployeeSP SpEmployee = new EmployeeSP();
-                InfoEmployee.EmployeeId = decSalesManId;
-                InfoEmployee.EmployeeCode = txtSalesmanCode.Text.Trim();
-                InfoEmployee.EmployeeName = txtName.Text.Trim();
+                InfoEmployee.WorkerID = Convert.ToInt32(decSalesManId);
+                InfoEmployee.UserName = txtSalesmanCode.Text.Trim();
+                InfoEmployee.NameLastName = txtName.Text.Trim();
                 InfoEmployee.Email = txtEmail.Text.Trim();
-                InfoEmployee.PhoneNumber = txtPhone.Text.Trim();
-                InfoEmployee.MobileNumber = txtMobile.Text.Trim();
-                InfoEmployee.Address = txtAddress.Text.Trim();
-                InfoEmployee.Narration = txtNarration.Text.Trim();
+                InfoEmployee.Phone = txtPhone.Text.Trim();
+                InfoEmployee.mobileNumber = txtMobile.Text.Trim();
+                InfoEmployee.address = txtAddress.Text.Trim();
+                InfoEmployee.narration = txtNarration.Text.Trim();
                 if (cbxActive.Checked)
                 {
-                    InfoEmployee.IsActive = true;
+                    InfoEmployee.isActive = 1;
                 }
                 else
                 {
-                    InfoEmployee.IsActive = false;
+                    InfoEmployee.isActive = 0;
                 }
                 if (SpEmployee.EmployeeCodeCheckExistance(txtSalesmanCode.Text.Trim().ToString(), decSalesManId) == false)
                 {
@@ -310,7 +303,7 @@ namespace LoginForm
         {
             try
             {
-                EmployeeInfo infoEmployee = new EmployeeInfo();
+                
                 if (txtSalesmanCode.Text.Trim() == string.Empty)
                 {
                     Messages.InformationMessage("Enter salesman code");
@@ -344,8 +337,8 @@ namespace LoginForm
                                 txtName.Focus();
                             }
                         }
-                        if (frmDeliveryNoteObj != null)
-                        {
+                        //if (frmDeliveryNoteObj != null)
+                        //{
                             if (decIdForOtherForm != 0)
                             {
                                 this.Close();
@@ -354,29 +347,27 @@ namespace LoginForm
                             {
                                 txtName.Focus();
                             }
-                        }
-                        if (frmPOSObj != null)
+                        //}
+                        //if (frmPOSObj != null)
+                        //{
+                        if (decIdForOtherForm != 0)
                         {
-                            if (decIdForOtherForm != 0)
-                            {
-                                this.Close();
-                            }
-                            else
-                            {
-                                txtName.Focus();
-                            }
+                            this.Close();
                         }
-                    }
-                    else
-                    {
+                        else
+                        {
+                            txtName.Focus();
+                        }
+                        //    }
+                        //}
+                        //else
+                        //{
 
                         if (Messages.UpdateMessage())
                         {
                             EditFunction();
                         }
-
                         EditFunction();
-
                     }
                 }
             }
@@ -456,100 +447,100 @@ namespace LoginForm
         /// Function to load the form while calling from the SalesOrder form to add new salesman
         /// </summary>
         /// <param name="frmSalesOrder"></param>
-        public void CallFromSalesOrder(frmSalesOrder frmSalesOrder)
-        {
-            try
-            {
-                this.frmSalesOrderObj = frmSalesOrder;
-                frmSalesOrderObj.Enabled = false;
-                base.Show();
-                dgvSalesman.Enabled = false;
-                txtCode.Enabled = false;
-                txtNameSearch.Enabled = false;
-                txtMobileSearch.Enabled = false;
-                txtPhoneSearch.Enabled = false;
-                cmbIsActive.Enabled = false;
-                btnSearch.Enabled = false;
-                btnClearSearch.Enabled = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("S11:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        //public void CallFromSalesOrder(frmSalesOrder frmSalesOrder)
+        //{
+        //    try
+        //    {
+        //        this.frmSalesOrderObj = frmSalesOrder;
+        //        frmSalesOrderObj.Enabled = false;
+        //        base.Show();
+        //        dgvSalesman.Enabled = false;
+        //        txtCode.Enabled = false;
+        //        txtNameSearch.Enabled = false;
+        //        txtMobileSearch.Enabled = false;
+        //        txtPhoneSearch.Enabled = false;
+        //        cmbIsActive.Enabled = false;
+        //        btnSearch.Enabled = false;
+        //        btnClearSearch.Enabled = false;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("S11:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
         /// <summary>
         /// Function to load the form while calling from the RejectionIn form to add new salesman
         /// </summary>
         /// <param name="frmrejectionin"></param>
-        public void CallFromRejectionIn(frmRejectionIn frmrejectionin)
-        {
-            try
-            {
-                this.frmRejectionInObj = frmrejectionin;
-                frmRejectionInObj.Enabled = false;
-                base.Show();
-                dgvSalesman.Enabled = false;
-                txtCode.Enabled = false;
-                txtNameSearch.Enabled = false;
-                txtMobileSearch.Enabled = false;
-                txtPhoneSearch.Enabled = false;
-                cmbIsActive.Enabled = false;
-                btnSearch.Enabled = false;
-                btnClearSearch.Enabled = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        //public void CallFromRejectionIn(frmRejectionIn frmrejectionin)
+        //{
+        //    try
+        //    {
+        //        this.frmRejectionInObj = frmrejectionin;
+        //        frmRejectionInObj.Enabled = false;
+        //        base.Show();
+        //        dgvSalesman.Enabled = false;
+        //        txtCode.Enabled = false;
+        //        txtNameSearch.Enabled = false;
+        //        txtMobileSearch.Enabled = false;
+        //        txtPhoneSearch.Enabled = false;
+        //        cmbIsActive.Enabled = false;
+        //        btnSearch.Enabled = false;
+        //        btnClearSearch.Enabled = false;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
         /// <summary>
         /// Function to load the form while calling from the SalesQuatation form to add new salesman
         /// </summary>
         /// <param name="frmSalesQuotaion"></param>
-        public void CallFromSalesQuotation(frmSalesQuotation frmSalesQuotaion)
-        {
-            try
-            {
-                this.frmSalesQuotationObj = frmSalesQuotaion;
-                dgvSalesman.Enabled = false;
-                txtCode.Enabled = false;
-                txtNameSearch.Enabled = false;
-                txtMobileSearch.Enabled = false;
-                txtPhoneSearch.Enabled = false;
-                cmbIsActive.Enabled = false;
-                btnSearch.Enabled = false;
-                btnClearSearch.Enabled = false;
-                base.Show();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("S12:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        //public void CallFromSalesQuotation(frmSalesQuotation frmSalesQuotaion)
+        //{
+        //    try
+        //    {
+        //        this.frmSalesQuotationObj = frmSalesQuotaion;
+        //        dgvSalesman.Enabled = false;
+        //        txtCode.Enabled = false;
+        //        txtNameSearch.Enabled = false;
+        //        txtMobileSearch.Enabled = false;
+        //        txtPhoneSearch.Enabled = false;
+        //        cmbIsActive.Enabled = false;
+        //        btnSearch.Enabled = false;
+        //        btnClearSearch.Enabled = false;
+        //        base.Show();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("S12:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
         /// <summary>
         /// Function to load the form while calling from the DeliveryNote form to add new salesman
         /// </summary>
         /// <param name="frmDeliveryNoteObj"></param>
-        public void CallFromDeliveryNote(frmDeliveryNote frmDeliveryNoteObj)
-        {
-            try
-            {
-                dgvSalesman.Enabled = false;
-                txtCode.Enabled = false;
-                txtNameSearch.Enabled = false;
-                txtMobileSearch.Enabled = false;
-                txtPhoneSearch.Enabled = false;
-                cmbIsActive.Enabled = false;
-                btnSearch.Enabled = false;
-                btnClearSearch.Enabled = false;
-                this.frmDeliveryNoteObj = frmDeliveryNoteObj;
-                base.Show();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("S13: " + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        //public void CallFromDeliveryNote(frmDeliveryNote frmDeliveryNoteObj)
+        //{
+        //    try
+        //    {
+        //        dgvSalesman.Enabled = false;
+        //        txtCode.Enabled = false;
+        //        txtNameSearch.Enabled = false;
+        //        txtMobileSearch.Enabled = false;
+        //        txtPhoneSearch.Enabled = false;
+        //        cmbIsActive.Enabled = false;
+        //        btnSearch.Enabled = false;
+        //        btnClearSearch.Enabled = false;
+        //        this.frmDeliveryNoteObj = frmDeliveryNoteObj;
+        //        base.Show();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("S13: " + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
         /// <summary>
         /// Function to load the form while calling from the SalesReturn form to add new salesman
         /// </summary>
@@ -607,26 +598,26 @@ namespace LoginForm
         /// Function to load the form while calling from the POS form to add new salesman
         /// </summary>
         /// <param name="frmPOS"></param>
-        public void callFromPOS(frmPOS frmPOS)
-        {
-            try
-            {
-                this.frmPOSObj = frmPOS;
-                base.Show();
-                dgvSalesman.Enabled = false;
-                txtCode.Enabled = false;
-                txtNameSearch.Enabled = false;
-                txtMobileSearch.Enabled = false;
-                txtPhoneSearch.Enabled = false;
-                cmbIsActive.Enabled = false;
-                btnSearch.Enabled = false;
-                btnClearSearch.Enabled = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("S :16" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
+        //public void callFromPOS(frmPOS frmPOS)
+        //{
+        //    try
+        //    {
+        //        this.frmPOSObj = frmPOS;
+        //        base.Show();
+        //        dgvSalesman.Enabled = false;
+        //        txtCode.Enabled = false;
+        //        txtNameSearch.Enabled = false;
+        //        txtMobileSearch.Enabled = false;
+        //        txtPhoneSearch.Enabled = false;
+        //        cmbIsActive.Enabled = false;
+        //        btnSearch.Enabled = false;
+        //        btnClearSearch.Enabled = false;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("S :16" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //}
         #endregion
         #region Events
         /// <summary>
@@ -638,14 +629,8 @@ namespace LoginForm
         {
             try
             {
-                if (PublicVariables.isMessageClose)
-                {
                     Messages.CloseMessage(this);
-                }
-                else
-                {
                     this.Close();
-                }
             }
             catch (Exception ex)
             {
@@ -693,14 +678,8 @@ namespace LoginForm
         {
             try
             {
-                if (CheckUserPrivilege.PrivilegeCheck(PublicVariables._decCurrentUserId, this.Name, btnSave.Text))
-                {
                     SaveOrEdit();
-                }
-                else
-                {
-                    Messages.NoPrivillageMessage();
-                }
+                    Messages.NoPrivillageMessage();   
             }
             catch (Exception ex)
             {
@@ -770,8 +749,6 @@ namespace LoginForm
                 {
                     if (Convert.ToDecimal(dgvSalesman.CurrentRow.Cells["dgvtxtemployeeId"].Value) != 1)
                     {
-                        EmployeeSP spEmployee = new EmployeeSP();
-                        EmployeeInfo infoEmployee = new EmployeeInfo();
                         strSalesmanId = dgvSalesman.CurrentRow.Cells["dgvtxtemployeeId"].Value.ToString();
                         FillControls();
                         btnSave.Text = "Update";
@@ -796,22 +773,22 @@ namespace LoginForm
         /// <param name="e"></param>
         private void frmSalesman_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (frmRejectionInObj != null)
-            {
-                frmRejectionInObj.ReturnFromSalesMan(decSalesManId);
-                frmRejectionInObj.Enabled = true;
-                frmRejectionInObj.Activate();
-            }
-            if (frmDeliveryNoteObj != null)
-            {
-                frmDeliveryNoteObj.ReturnFromSalesManForm(decSalesManId);
-            }
-            if (frmSalesOrderObj != null)
-            {
-                frmSalesOrderObj.ReturnFromSalesManForm(decSalesManId);
-                frmSalesOrderObj.Enabled = true;
-                frmSalesOrderObj.Activate();
-            }
+            //if (frmRejectionInObj != null)
+            //{
+            //    frmRejectionInObj.ReturnFromSalesMan(decSalesManId);
+            //    frmRejectionInObj.Enabled = true;
+            //    frmRejectionInObj.Activate();
+            //}
+            //if (frmDeliveryNoteObj != null)
+            //{
+            //    frmDeliveryNoteObj.ReturnFromSalesManForm(decSalesManId);
+            //}
+            //if (frmSalesOrderObj != null)
+            //{
+            //    frmSalesOrderObj.ReturnFromSalesManForm(decSalesManId);
+            //    frmSalesOrderObj.Enabled = true;
+            //    frmSalesOrderObj.Activate();
+            //}
             if (frmSalesReturnObj != null)
             {
                 frmSalesReturnObj.ReturnFromSalesMan(decSalesManId);
@@ -822,16 +799,16 @@ namespace LoginForm
             }
             if (frmSalesQuotationObj != null)
             {
-                frmSalesQuotationObj.ReturnFromSalesMan(decSalesManId);
+                //frmSalesQuotationObj.ReturnFromSalesMan(decSalesManId);
             }
             if (frmServiceVoucherObj != null)
             {
                 frmServiceVoucherObj.ReturnFromSalesman(decSalesManId);
             }
-            if (frmPOSObj != null)
-            {
-                frmPOSObj.ReturnFromSalesman(decSalesManId);
-            }
+            //if (frmPOSObj != null)
+            //{
+            //    frmPOSObj.ReturnFromSalesman(decSalesManId);
+            //}
         }
         #endregion
         #region Navigation
