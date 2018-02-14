@@ -170,7 +170,7 @@
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(9, 9);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(939, 372);
@@ -211,9 +211,9 @@
             this.tab_company.Controls.Add(this.CustomerCode);
             this.tab_company.Controls.Add(this.label1);
             this.tab_company.Location = new System.Drawing.Point(4, 29);
-            this.tab_company.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tab_company.Margin = new System.Windows.Forms.Padding(4);
             this.tab_company.Name = "tab_company";
-            this.tab_company.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tab_company.Padding = new System.Windows.Forms.Padding(4);
             this.tab_company.Size = new System.Drawing.Size(931, 339);
             this.tab_company.TabIndex = 0;
             this.tab_company.Text = "Company Info";
@@ -223,7 +223,7 @@
             // 
             this.txt3partyCode.Enabled = false;
             this.txt3partyCode.Location = new System.Drawing.Point(164, 59);
-            this.txt3partyCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt3partyCode.Margin = new System.Windows.Forms.Padding(4);
             this.txt3partyCode.Name = "txt3partyCode";
             this.txt3partyCode.Size = new System.Drawing.Size(241, 26);
             this.txt3partyCode.TabIndex = 102;
@@ -243,7 +243,7 @@
             this.dateTimePicker1.Enabled = false;
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(283, 23);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(123, 26);
             this.dateTimePicker1.TabIndex = 100;
@@ -253,7 +253,7 @@
             this.cbMainContact.Enabled = false;
             this.cbMainContact.FormattingEnabled = true;
             this.cbMainContact.Location = new System.Drawing.Point(628, 220);
-            this.cbMainContact.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbMainContact.Margin = new System.Windows.Forms.Padding(4);
             this.cbMainContact.Name = "cbMainContact";
             this.cbMainContact.Size = new System.Drawing.Size(261, 28);
             this.cbMainContact.TabIndex = 13;
@@ -296,7 +296,7 @@
             this.rb_passive.AutoSize = true;
             this.rb_passive.Enabled = false;
             this.rb_passive.Location = new System.Drawing.Point(757, 25);
-            this.rb_passive.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rb_passive.Margin = new System.Windows.Forms.Padding(4);
             this.rb_passive.Name = "rb_passive";
             this.rb_passive.Size = new System.Drawing.Size(89, 24);
             this.rb_passive.TabIndex = 8;
@@ -309,7 +309,7 @@
             this.rb_active.AutoSize = true;
             this.rb_active.Enabled = false;
             this.rb_active.Location = new System.Drawing.Point(628, 25);
-            this.rb_active.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rb_active.Margin = new System.Windows.Forms.Padding(4);
             this.rb_active.Name = "rb_active";
             this.rb_active.Size = new System.Drawing.Size(76, 24);
             this.rb_active.TabIndex = 7;
@@ -322,7 +322,7 @@
             this.Represantative2.Enabled = false;
             this.Represantative2.FormattingEnabled = true;
             this.Represantative2.Location = new System.Drawing.Point(164, 300);
-            this.Represantative2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Represantative2.Margin = new System.Windows.Forms.Padding(4);
             this.Represantative2.Name = "Represantative2";
             this.Represantative2.Size = new System.Drawing.Size(241, 28);
             this.Represantative2.TabIndex = 6;
@@ -333,7 +333,7 @@
             this.Represantative1.Enabled = false;
             this.Represantative1.FormattingEnabled = true;
             this.Represantative1.Location = new System.Drawing.Point(164, 250);
-            this.Represantative1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Represantative1.Margin = new System.Windows.Forms.Padding(4);
             this.Represantative1.Name = "Represantative1";
             this.Represantative1.Size = new System.Drawing.Size(241, 28);
             this.Represantative1.TabIndex = 5;
@@ -355,7 +355,7 @@
             this.SubCategory.Enabled = false;
             this.SubCategory.FormattingEnabled = true;
             this.SubCategory.Location = new System.Drawing.Point(164, 199);
-            this.SubCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SubCategory.Margin = new System.Windows.Forms.Padding(4);
             this.SubCategory.Name = "SubCategory";
             this.SubCategory.Size = new System.Drawing.Size(241, 28);
             this.SubCategory.TabIndex = 4;
@@ -390,7 +390,7 @@
             "Strange",
             "Individual"});
             this.Capital.Location = new System.Drawing.Point(628, 64);
-            this.Capital.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Capital.Margin = new System.Windows.Forms.Padding(4);
             this.Capital.Name = "Capital";
             this.Capital.Size = new System.Drawing.Size(264, 28);
             this.Capital.TabIndex = 9;
@@ -402,7 +402,7 @@
             this.MainCategory.Enabled = false;
             this.MainCategory.FormattingEnabled = true;
             this.MainCategory.Location = new System.Drawing.Point(164, 149);
-            this.MainCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MainCategory.Margin = new System.Windows.Forms.Padding(4);
             this.MainCategory.Name = "MainCategory";
             this.MainCategory.Size = new System.Drawing.Size(241, 28);
             this.MainCategory.TabIndex = 3;
@@ -444,7 +444,7 @@
             this.CompanyNotes.AcceptsTab = true;
             this.CompanyNotes.Enabled = false;
             this.CompanyNotes.Location = new System.Drawing.Point(628, 266);
-            this.CompanyNotes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CompanyNotes.Margin = new System.Windows.Forms.Padding(4);
             this.CompanyNotes.Multiline = true;
             this.CompanyNotes.Name = "CompanyNotes";
             this.CompanyNotes.Size = new System.Drawing.Size(264, 58);
@@ -455,7 +455,7 @@
             // 
             this.WebAdress.Enabled = false;
             this.WebAdress.Location = new System.Drawing.Point(628, 185);
-            this.WebAdress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.WebAdress.Margin = new System.Windows.Forms.Padding(4);
             this.WebAdress.Name = "WebAdress";
             this.WebAdress.Size = new System.Drawing.Size(264, 26);
             this.WebAdress.TabIndex = 12;
@@ -464,7 +464,7 @@
             // 
             this.CustomerFax.Enabled = false;
             this.CustomerFax.Location = new System.Drawing.Point(628, 144);
-            this.CustomerFax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CustomerFax.Margin = new System.Windows.Forms.Padding(4);
             this.CustomerFax.Name = "CustomerFax";
             this.CustomerFax.Size = new System.Drawing.Size(264, 26);
             this.CustomerFax.TabIndex = 11;
@@ -493,7 +493,7 @@
             // 
             this.CustomerName.Enabled = false;
             this.CustomerName.Location = new System.Drawing.Point(164, 98);
-            this.CustomerName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CustomerName.Margin = new System.Windows.Forms.Padding(4);
             this.CustomerName.Name = "CustomerName";
             this.CustomerName.Size = new System.Drawing.Size(241, 26);
             this.CustomerName.TabIndex = 2;
@@ -502,7 +502,7 @@
             // 
             this.Telephone.Enabled = false;
             this.Telephone.Location = new System.Drawing.Point(628, 103);
-            this.Telephone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Telephone.Margin = new System.Windows.Forms.Padding(4);
             this.Telephone.Name = "Telephone";
             this.Telephone.Size = new System.Drawing.Size(264, 26);
             this.Telephone.TabIndex = 10;
@@ -541,7 +541,7 @@
             // 
             this.CustomerCode.Enabled = false;
             this.CustomerCode.Location = new System.Drawing.Point(164, 23);
-            this.CustomerCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CustomerCode.Margin = new System.Windows.Forms.Padding(4);
             this.CustomerCode.Name = "CustomerCode";
             this.CustomerCode.Size = new System.Drawing.Size(109, 26);
             this.CustomerCode.TabIndex = 1;
@@ -583,10 +583,10 @@
             this.tab_account.Controls.Add(this.label21);
             this.tab_account.Controls.Add(this.QuoCurrencyType);
             this.tab_account.Location = new System.Drawing.Point(4, 29);
-            this.tab_account.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tab_account.Margin = new System.Windows.Forms.Padding(4);
             this.tab_account.Name = "tab_account";
-            this.tab_account.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tab_account.Size = new System.Drawing.Size(931, 340);
+            this.tab_account.Padding = new System.Windows.Forms.Padding(4);
+            this.tab_account.Size = new System.Drawing.Size(931, 339);
             this.tab_account.TabIndex = 2;
             this.tab_account.Text = "Account";
             this.tab_account.UseVisualStyleBackColor = true;
@@ -595,7 +595,7 @@
             // 
             this.factor.Enabled = false;
             this.factor.Location = new System.Drawing.Point(655, 17);
-            this.factor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.factor.Margin = new System.Windows.Forms.Padding(4);
             this.factor.Name = "factor";
             this.factor.Size = new System.Drawing.Size(231, 26);
             this.factor.TabIndex = 7;
@@ -605,7 +605,7 @@
             // 
             this.DiscountRate.Enabled = false;
             this.DiscountRate.Location = new System.Drawing.Point(655, 70);
-            this.DiscountRate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.DiscountRate.Margin = new System.Windows.Forms.Padding(4);
             this.DiscountRate.Name = "DiscountRate";
             this.DiscountRate.Size = new System.Drawing.Size(231, 26);
             this.DiscountRate.TabIndex = 8;
@@ -616,7 +616,7 @@
             this.AccountingNotes.AcceptsTab = true;
             this.AccountingNotes.Enabled = false;
             this.AccountingNotes.Location = new System.Drawing.Point(656, 226);
-            this.AccountingNotes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AccountingNotes.Margin = new System.Windows.Forms.Padding(4);
             this.AccountingNotes.Multiline = true;
             this.AccountingNotes.Name = "AccountingNotes";
             this.AccountingNotes.Size = new System.Drawing.Size(236, 79);
@@ -627,7 +627,7 @@
             this.InvCurrencyName.Enabled = false;
             this.InvCurrencyName.FormattingEnabled = true;
             this.InvCurrencyName.Location = new System.Drawing.Point(656, 175);
-            this.InvCurrencyName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.InvCurrencyName.Margin = new System.Windows.Forms.Padding(4);
             this.InvCurrencyName.Name = "InvCurrencyName";
             this.InvCurrencyName.Size = new System.Drawing.Size(236, 28);
             this.InvCurrencyName.TabIndex = 11;
@@ -643,7 +643,7 @@
             "Sale",
             "Eff. Sale"});
             this.InvCurrencyType.Location = new System.Drawing.Point(776, 175);
-            this.InvCurrencyType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.InvCurrencyType.Margin = new System.Windows.Forms.Padding(4);
             this.InvCurrencyType.Name = "InvCurrencyType";
             this.InvCurrencyType.Size = new System.Drawing.Size(116, 28);
             this.InvCurrencyType.TabIndex = 12;
@@ -654,7 +654,7 @@
             this.QuoCurrencyName.Enabled = false;
             this.QuoCurrencyName.FormattingEnabled = true;
             this.QuoCurrencyName.Location = new System.Drawing.Point(655, 124);
-            this.QuoCurrencyName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.QuoCurrencyName.Margin = new System.Windows.Forms.Padding(4);
             this.QuoCurrencyName.Name = "QuoCurrencyName";
             this.QuoCurrencyName.Size = new System.Drawing.Size(237, 28);
             this.QuoCurrencyName.TabIndex = 9;
@@ -675,7 +675,7 @@
             this.PaymentMethod.Enabled = false;
             this.PaymentMethod.FormattingEnabled = true;
             this.PaymentMethod.Location = new System.Drawing.Point(164, 224);
-            this.PaymentMethod.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PaymentMethod.Margin = new System.Windows.Forms.Padding(4);
             this.PaymentMethod.Name = "PaymentMethod";
             this.PaymentMethod.Size = new System.Drawing.Size(231, 28);
             this.PaymentMethod.TabIndex = 5;
@@ -696,7 +696,7 @@
             this.TermsofPayments.Enabled = false;
             this.TermsofPayments.FormattingEnabled = true;
             this.TermsofPayments.Location = new System.Drawing.Point(164, 174);
-            this.TermsofPayments.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TermsofPayments.Margin = new System.Windows.Forms.Padding(4);
             this.TermsofPayments.Name = "TermsofPayments";
             this.TermsofPayments.Size = new System.Drawing.Size(231, 28);
             this.TermsofPayments.TabIndex = 4;
@@ -717,7 +717,7 @@
             this.AccountRepresentary.Enabled = false;
             this.AccountRepresentary.FormattingEnabled = true;
             this.AccountRepresentary.Location = new System.Drawing.Point(164, 22);
-            this.AccountRepresentary.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AccountRepresentary.Margin = new System.Windows.Forms.Padding(4);
             this.AccountRepresentary.Name = "AccountRepresentary";
             this.AccountRepresentary.Size = new System.Drawing.Size(231, 28);
             this.AccountRepresentary.TabIndex = 1;
@@ -797,7 +797,7 @@
             // 
             this.CreditLimit.Enabled = false;
             this.CreditLimit.Location = new System.Drawing.Point(164, 278);
-            this.CreditLimit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CreditLimit.Margin = new System.Windows.Forms.Padding(4);
             this.CreditLimit.Name = "CreditLimit";
             this.CreditLimit.Size = new System.Drawing.Size(236, 26);
             this.CreditLimit.TabIndex = 6;
@@ -806,7 +806,7 @@
             // 
             this.taxNumber.Enabled = false;
             this.taxNumber.Location = new System.Drawing.Point(164, 122);
-            this.taxNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.taxNumber.Margin = new System.Windows.Forms.Padding(4);
             this.taxNumber.Name = "taxNumber";
             this.taxNumber.Size = new System.Drawing.Size(231, 26);
             this.taxNumber.TabIndex = 3;
@@ -815,7 +815,7 @@
             // 
             this.TaxOffice.Enabled = false;
             this.TaxOffice.Location = new System.Drawing.Point(164, 74);
-            this.TaxOffice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TaxOffice.Margin = new System.Windows.Forms.Padding(4);
             this.TaxOffice.Name = "TaxOffice";
             this.TaxOffice.Size = new System.Drawing.Size(231, 26);
             this.TaxOffice.TabIndex = 2;
@@ -840,7 +840,7 @@
             "Sale",
             "Eff. Sale"});
             this.QuoCurrencyType.Location = new System.Drawing.Point(776, 124);
-            this.QuoCurrencyType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.QuoCurrencyType.Margin = new System.Windows.Forms.Padding(4);
             this.QuoCurrencyType.Name = "QuoCurrencyType";
             this.QuoCurrencyType.Size = new System.Drawing.Size(116, 28);
             this.QuoCurrencyType.TabIndex = 10;
@@ -872,9 +872,9 @@
             this.tab_adresses.Controls.Add(this.AdressDone);
             this.tab_adresses.Controls.Add(this.AdressCancel);
             this.tab_adresses.Location = new System.Drawing.Point(4, 29);
-            this.tab_adresses.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tab_adresses.Margin = new System.Windows.Forms.Padding(4);
             this.tab_adresses.Name = "tab_adresses";
-            this.tab_adresses.Size = new System.Drawing.Size(931, 340);
+            this.tab_adresses.Size = new System.Drawing.Size(931, 339);
             this.tab_adresses.TabIndex = 3;
             this.tab_adresses.Text = "Adresses";
             this.tab_adresses.UseVisualStyleBackColor = true;
@@ -896,7 +896,7 @@
             this.cbIMEOffice.AutoSize = true;
             this.cbIMEOffice.Enabled = false;
             this.cbIMEOffice.Location = new System.Drawing.Point(428, 298);
-            this.cbIMEOffice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbIMEOffice.Margin = new System.Windows.Forms.Padding(4);
             this.cbIMEOffice.Name = "cbIMEOffice";
             this.cbIMEOffice.Size = new System.Drawing.Size(110, 24);
             this.cbIMEOffice.TabIndex = 9;
@@ -908,7 +908,7 @@
             this.cbDafultDeliveryAdress.AutoSize = true;
             this.cbDafultDeliveryAdress.Enabled = false;
             this.cbDafultDeliveryAdress.Location = new System.Drawing.Point(428, 267);
-            this.cbDafultDeliveryAdress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbDafultDeliveryAdress.Margin = new System.Windows.Forms.Padding(4);
             this.cbDafultDeliveryAdress.Name = "cbDafultDeliveryAdress";
             this.cbDafultDeliveryAdress.Size = new System.Drawing.Size(209, 24);
             this.cbDafultDeliveryAdress.TabIndex = 8;
@@ -923,7 +923,7 @@
             "Delivery Adress",
             "Invoice Adress"});
             this.AddressType.Location = new System.Drawing.Point(117, 70);
-            this.AddressType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AddressType.Margin = new System.Windows.Forms.Padding(4);
             this.AddressType.Name = "AddressType";
             this.AddressType.Size = new System.Drawing.Size(200, 28);
             this.AddressType.TabIndex = 2;
@@ -944,7 +944,7 @@
             // 
             this.AddressDetails.Enabled = false;
             this.AddressDetails.Location = new System.Drawing.Point(428, 22);
-            this.AddressDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AddressDetails.Margin = new System.Windows.Forms.Padding(4);
             this.AddressDetails.Multiline = true;
             this.AddressDetails.Name = "AddressDetails";
             this.AddressDetails.Size = new System.Drawing.Size(240, 230);
@@ -963,7 +963,7 @@
             // 
             this.AddressDel.Enabled = false;
             this.AddressDel.Location = new System.Drawing.Point(841, 263);
-            this.AddressDel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AddressDel.Margin = new System.Windows.Forms.Padding(4);
             this.AddressDel.Name = "AddressDel";
             this.AddressDel.Size = new System.Drawing.Size(60, 31);
             this.AddressDel.TabIndex = 14;
@@ -974,7 +974,7 @@
             // 
             this.AddressUpd.Enabled = false;
             this.AddressUpd.Location = new System.Drawing.Point(781, 262);
-            this.AddressUpd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AddressUpd.Margin = new System.Windows.Forms.Padding(4);
             this.AddressUpd.Name = "AddressUpd";
             this.AddressUpd.Size = new System.Drawing.Size(60, 31);
             this.AddressUpd.TabIndex = 13;
@@ -986,7 +986,7 @@
             // 
             this.AdressAdd.Enabled = false;
             this.AdressAdd.Location = new System.Drawing.Point(725, 262);
-            this.AdressAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AdressAdd.Margin = new System.Windows.Forms.Padding(4);
             this.AdressAdd.Name = "AdressAdd";
             this.AdressAdd.Size = new System.Drawing.Size(56, 31);
             this.AdressAdd.TabIndex = 12;
@@ -999,7 +999,7 @@
             this.AdressList.FormattingEnabled = true;
             this.AdressList.ItemHeight = 20;
             this.AdressList.Location = new System.Drawing.Point(725, 22);
-            this.AdressList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AdressList.Margin = new System.Windows.Forms.Padding(4);
             this.AdressList.Name = "AdressList";
             this.AdressList.Size = new System.Drawing.Size(173, 184);
             this.AdressList.TabIndex = 10;
@@ -1010,7 +1010,7 @@
             this.cbTown.Enabled = false;
             this.cbTown.FormattingEnabled = true;
             this.cbTown.Location = new System.Drawing.Point(117, 209);
-            this.cbTown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbTown.Margin = new System.Windows.Forms.Padding(4);
             this.cbTown.Name = "cbTown";
             this.cbTown.Size = new System.Drawing.Size(200, 28);
             this.cbTown.TabIndex = 5;
@@ -1021,7 +1021,7 @@
             this.cbCity.Enabled = false;
             this.cbCity.FormattingEnabled = true;
             this.cbCity.Location = new System.Drawing.Point(117, 161);
-            this.cbCity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbCity.Margin = new System.Windows.Forms.Padding(4);
             this.cbCity.Name = "cbCity";
             this.cbCity.Size = new System.Drawing.Size(200, 28);
             this.cbCity.TabIndex = 4;
@@ -1033,7 +1033,7 @@
             this.cbCountry.Enabled = false;
             this.cbCountry.FormattingEnabled = true;
             this.cbCountry.Location = new System.Drawing.Point(117, 113);
-            this.cbCountry.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbCountry.Margin = new System.Windows.Forms.Padding(4);
             this.cbCountry.Name = "cbCountry";
             this.cbCountry.Size = new System.Drawing.Size(200, 28);
             this.cbCountry.TabIndex = 3;
@@ -1074,7 +1074,7 @@
             // 
             this.txtAdressTitle.Enabled = false;
             this.txtAdressTitle.Location = new System.Drawing.Point(117, 28);
-            this.txtAdressTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAdressTitle.Margin = new System.Windows.Forms.Padding(4);
             this.txtAdressTitle.Name = "txtAdressTitle";
             this.txtAdressTitle.Size = new System.Drawing.Size(200, 26);
             this.txtAdressTitle.TabIndex = 1;
@@ -1094,7 +1094,7 @@
             // 
             this.PostCode.Enabled = false;
             this.PostCode.Location = new System.Drawing.Point(117, 255);
-            this.PostCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PostCode.Margin = new System.Windows.Forms.Padding(4);
             this.PostCode.Name = "PostCode";
             this.PostCode.Size = new System.Drawing.Size(200, 26);
             this.PostCode.TabIndex = 6;
@@ -1112,7 +1112,7 @@
             // AdressDone
             // 
             this.AdressDone.Location = new System.Drawing.Point(731, 265);
-            this.AdressDone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AdressDone.Margin = new System.Windows.Forms.Padding(4);
             this.AdressDone.Name = "AdressDone";
             this.AdressDone.Size = new System.Drawing.Size(76, 28);
             this.AdressDone.TabIndex = 10;
@@ -1124,7 +1124,7 @@
             // AdressCancel
             // 
             this.AdressCancel.Location = new System.Drawing.Point(813, 265);
-            this.AdressCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AdressCancel.Margin = new System.Windows.Forms.Padding(4);
             this.AdressCancel.Name = "AdressCancel";
             this.AdressCancel.Size = new System.Drawing.Size(76, 28);
             this.AdressCancel.TabIndex = 11;
@@ -1167,9 +1167,9 @@
             this.tab_contact.Controls.Add(this.btnContactDone);
             this.tab_contact.Controls.Add(this.btnContactCancel);
             this.tab_contact.Location = new System.Drawing.Point(4, 29);
-            this.tab_contact.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tab_contact.Margin = new System.Windows.Forms.Padding(4);
             this.tab_contact.Name = "tab_contact";
-            this.tab_contact.Size = new System.Drawing.Size(931, 340);
+            this.tab_contact.Size = new System.Drawing.Size(931, 339);
             this.tab_contact.TabIndex = 4;
             this.tab_contact.Text = "Contact";
             this.tab_contact.UseVisualStyleBackColor = true;
@@ -1179,7 +1179,7 @@
             this.ContactAdress.Enabled = false;
             this.ContactAdress.FormattingEnabled = true;
             this.ContactAdress.Location = new System.Drawing.Point(129, 292);
-            this.ContactAdress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ContactAdress.Margin = new System.Windows.Forms.Padding(4);
             this.ContactAdress.Name = "ContactAdress";
             this.ContactAdress.Size = new System.Drawing.Size(232, 28);
             this.ContactAdress.TabIndex = 43;
@@ -1198,7 +1198,7 @@
             // 
             this.txtExtNumber.Enabled = false;
             this.txtExtNumber.Location = new System.Drawing.Point(285, 247);
-            this.txtExtNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtExtNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtExtNumber.Name = "txtExtNumber";
             this.txtExtNumber.Size = new System.Drawing.Size(76, 26);
             this.txtExtNumber.TabIndex = 7;
@@ -1208,7 +1208,7 @@
             this.departmentAdd.Enabled = false;
             this.departmentAdd.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.departmentAdd.Location = new System.Drawing.Point(328, 66);
-            this.departmentAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.departmentAdd.Margin = new System.Windows.Forms.Padding(4);
             this.departmentAdd.Name = "departmentAdd";
             this.departmentAdd.Size = new System.Drawing.Size(25, 28);
             this.departmentAdd.TabIndex = 33;
@@ -1221,7 +1221,7 @@
             this.titleAdd.Enabled = false;
             this.titleAdd.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.titleAdd.Location = new System.Drawing.Point(328, 112);
-            this.titleAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.titleAdd.Margin = new System.Windows.Forms.Padding(4);
             this.titleAdd.Name = "titleAdd";
             this.titleAdd.Size = new System.Drawing.Size(25, 28);
             this.titleAdd.TabIndex = 32;
@@ -1233,7 +1233,7 @@
             // 
             this.btnContactDelete.Enabled = false;
             this.btnContactDelete.Location = new System.Drawing.Point(856, 287);
-            this.btnContactDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnContactDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnContactDelete.Name = "btnContactDelete";
             this.btnContactDelete.Size = new System.Drawing.Size(57, 31);
             this.btnContactDelete.TabIndex = 17;
@@ -1245,7 +1245,7 @@
             // 
             this.btnContactUpdate.Enabled = false;
             this.btnContactUpdate.Location = new System.Drawing.Point(791, 287);
-            this.btnContactUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnContactUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnContactUpdate.Name = "btnContactUpdate";
             this.btnContactUpdate.Size = new System.Drawing.Size(61, 31);
             this.btnContactUpdate.TabIndex = 16;
@@ -1257,7 +1257,7 @@
             // 
             this.btnContactAdd.Enabled = false;
             this.btnContactAdd.Location = new System.Drawing.Point(731, 287);
-            this.btnContactAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnContactAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnContactAdd.Name = "btnContactAdd";
             this.btnContactAdd.Size = new System.Drawing.Size(57, 31);
             this.btnContactAdd.TabIndex = 15;
@@ -1270,7 +1270,7 @@
             this.ContactList.FormattingEnabled = true;
             this.ContactList.ItemHeight = 20;
             this.ContactList.Location = new System.Drawing.Point(731, 22);
-            this.ContactList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ContactList.Margin = new System.Windows.Forms.Padding(4);
             this.ContactList.Name = "ContactList";
             this.ContactList.Size = new System.Drawing.Size(181, 224);
             this.ContactList.TabIndex = 29;
@@ -1280,7 +1280,7 @@
             // 
             this.ContactNotes.Enabled = false;
             this.ContactNotes.Location = new System.Drawing.Point(509, 158);
-            this.ContactNotes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ContactNotes.Margin = new System.Windows.Forms.Padding(4);
             this.ContactNotes.Multiline = true;
             this.ContactNotes.Name = "ContactNotes";
             this.ContactNotes.Size = new System.Drawing.Size(200, 162);
@@ -1301,7 +1301,7 @@
             this.CommunicationLanguage.Enabled = false;
             this.CommunicationLanguage.FormattingEnabled = true;
             this.CommunicationLanguage.Location = new System.Drawing.Point(509, 114);
-            this.CommunicationLanguage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CommunicationLanguage.Margin = new System.Windows.Forms.Padding(4);
             this.CommunicationLanguage.Name = "CommunicationLanguage";
             this.CommunicationLanguage.Size = new System.Drawing.Size(200, 28);
             this.CommunicationLanguage.TabIndex = 11;
@@ -1312,7 +1312,7 @@
             this.ContactType.Enabled = false;
             this.ContactType.FormattingEnabled = true;
             this.ContactType.Location = new System.Drawing.Point(131, 22);
-            this.ContactType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ContactType.Margin = new System.Windows.Forms.Padding(4);
             this.ContactType.Name = "ContactType";
             this.ContactType.Size = new System.Drawing.Size(188, 28);
             this.ContactType.TabIndex = 1;
@@ -1323,7 +1323,7 @@
             this.ContactTitle.Enabled = false;
             this.ContactTitle.FormattingEnabled = true;
             this.ContactTitle.Location = new System.Drawing.Point(131, 112);
-            this.ContactTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ContactTitle.Margin = new System.Windows.Forms.Padding(4);
             this.ContactTitle.Name = "ContactTitle";
             this.ContactTitle.Size = new System.Drawing.Size(188, 28);
             this.ContactTitle.TabIndex = 3;
@@ -1343,7 +1343,7 @@
             this.ContactDepartment.Enabled = false;
             this.ContactDepartment.FormattingEnabled = true;
             this.ContactDepartment.Location = new System.Drawing.Point(131, 66);
-            this.ContactDepartment.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ContactDepartment.Margin = new System.Windows.Forms.Padding(4);
             this.ContactDepartment.Name = "ContactDepartment";
             this.ContactDepartment.Size = new System.Drawing.Size(188, 28);
             this.ContactDepartment.TabIndex = 2;
@@ -1373,7 +1373,7 @@
             // 
             this.ContactFAX.Enabled = false;
             this.ContactFAX.Location = new System.Drawing.Point(509, 66);
-            this.ContactFAX.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ContactFAX.Margin = new System.Windows.Forms.Padding(4);
             this.ContactFAX.Name = "ContactFAX";
             this.ContactFAX.Size = new System.Drawing.Size(200, 26);
             this.ContactFAX.TabIndex = 10;
@@ -1392,7 +1392,7 @@
             // 
             this.ContactPhone.Enabled = false;
             this.ContactPhone.Location = new System.Drawing.Point(131, 247);
-            this.ContactPhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ContactPhone.Margin = new System.Windows.Forms.Padding(4);
             this.ContactPhone.Name = "ContactPhone";
             this.ContactPhone.Size = new System.Drawing.Size(145, 26);
             this.ContactPhone.TabIndex = 6;
@@ -1411,7 +1411,7 @@
             // 
             this.ContactMobilePhone.Enabled = false;
             this.ContactMobilePhone.Location = new System.Drawing.Point(509, 22);
-            this.ContactMobilePhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ContactMobilePhone.Margin = new System.Windows.Forms.Padding(4);
             this.ContactMobilePhone.Name = "ContactMobilePhone";
             this.ContactMobilePhone.Size = new System.Drawing.Size(200, 26);
             this.ContactMobilePhone.TabIndex = 9;
@@ -1420,7 +1420,7 @@
             // 
             this.ContactName.Enabled = false;
             this.ContactName.Location = new System.Drawing.Point(129, 158);
-            this.ContactName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ContactName.Margin = new System.Windows.Forms.Padding(4);
             this.ContactName.Name = "ContactName";
             this.ContactName.Size = new System.Drawing.Size(232, 26);
             this.ContactName.TabIndex = 4;
@@ -1429,7 +1429,7 @@
             // 
             this.ContactEmail.Enabled = false;
             this.ContactEmail.Location = new System.Drawing.Point(129, 202);
-            this.ContactEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ContactEmail.Margin = new System.Windows.Forms.Padding(4);
             this.ContactEmail.Name = "ContactEmail";
             this.ContactEmail.Size = new System.Drawing.Size(232, 26);
             this.ContactEmail.TabIndex = 5;
@@ -1477,7 +1477,7 @@
             // btnContactDone
             // 
             this.btnContactDone.Location = new System.Drawing.Point(731, 289);
-            this.btnContactDone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnContactDone.Margin = new System.Windows.Forms.Padding(4);
             this.btnContactDone.Name = "btnContactDone";
             this.btnContactDone.Size = new System.Drawing.Size(76, 28);
             this.btnContactDone.TabIndex = 13;
@@ -1489,7 +1489,7 @@
             // btnContactCancel
             // 
             this.btnContactCancel.Location = new System.Drawing.Point(815, 289);
-            this.btnContactCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnContactCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnContactCancel.Name = "btnContactCancel";
             this.btnContactCancel.Size = new System.Drawing.Size(99, 28);
             this.btnContactCancel.TabIndex = 14;
@@ -1505,7 +1505,7 @@
             this.CustomerDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.CustomerDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CustomerDataGrid.Location = new System.Drawing.Point(9, 464);
-            this.CustomerDataGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CustomerDataGrid.Margin = new System.Windows.Forms.Padding(4);
             this.CustomerDataGrid.MultiSelect = false;
             this.CustomerDataGrid.Name = "CustomerDataGrid";
             this.CustomerDataGrid.ReadOnly = true;
@@ -1519,7 +1519,7 @@
             // 
             this.Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Search.Location = new System.Drawing.Point(349, 22);
-            this.Search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Search.Margin = new System.Windows.Forms.Padding(4);
             this.Search.Name = "Search";
             this.Search.Size = new System.Drawing.Size(100, 30);
             this.Search.TabIndex = 53;
@@ -1531,7 +1531,7 @@
             // 
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(155, 22);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(187, 26);
             this.txtSearch.TabIndex = 52;
@@ -1551,7 +1551,7 @@
             // 
             this.btnCreate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreate.Location = new System.Drawing.Point(487, 12);
-            this.btnCreate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreate.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(201, 43);
             this.btnCreate.TabIndex = 50;
@@ -1563,7 +1563,7 @@
             // 
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.Location = new System.Drawing.Point(696, 12);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(201, 43);
             this.btnUpdate.TabIndex = 51;
@@ -1582,7 +1582,7 @@
             this.tableMain.Location = new System.Drawing.Point(0, 0);
             this.tableMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableMain.Name = "tableMain";
-            this.tableMain.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tableMain.Padding = new System.Windows.Forms.Padding(5);
             this.tableMain.RowCount = 3;
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 380F));
             this.tableMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
@@ -1611,7 +1611,7 @@
             this.ClientSize = new System.Drawing.Size(957, 822);
             this.Controls.Add(this.tableMain);
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(973, 717);
             this.Name = "CustomerMain";
             this.Text = "Customer Card";
