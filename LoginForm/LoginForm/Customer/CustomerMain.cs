@@ -196,7 +196,7 @@ namespace LoginForm
             cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
             cbMainContact.DisplayMember = "cw_name";
             cbMainContact.ValueMember = "ID";
-            AddressType.SelectedItem = null; cbIMEOffice.Checked = true;
+            AddressType.SelectedItem = null; cbDefaultInvoiceAdress.Checked = true;
             if (c.Note != null) CompanyNotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
             if (c.customerAccountantNoteID != null) AccountingNotes.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name;
             if(c.creditlimit!=null) CreditLimit.Text = c.creditlimit.ToString();
@@ -312,8 +312,8 @@ namespace LoginForm
             CommunicationLanguage.Enabled = false;
             ContactNotes.Enabled = false;
             departmentAdd.Enabled = false;
-            cbIMEOffice.Enabled = false;
-            cbDafultDeliveryAdress.Enabled = false;
+            cbDefaultInvoiceAdress.Enabled = false;
+            cbDefaultDeliveryAdress.Enabled = false;
 
             titleAdd.Enabled = false;
             ContactList.Enabled = true;
@@ -404,9 +404,9 @@ namespace LoginForm
             cbTown.Enabled = false;
             TownAdd.Enabled = false;
             AddressDetails.Enabled = false;
-            cbIMEOffice.Enabled = false;
-            cbDafultDeliveryAdress.Enabled = false;
-            cbIMEOffice.Enabled = false;
+            cbDefaultInvoiceAdress.Enabled = false;
+            cbDefaultDeliveryAdress.Enabled = false;
+            cbDefaultInvoiceAdress.Enabled = false;
             AdressList.Enabled = true;
             txtAdressTitle.Enabled = false;
             if (ContactList.DataSource != null)
@@ -423,7 +423,7 @@ namespace LoginForm
         private void AdressTabEnableTrue()
         {
             #region contactTabEnableTrue
-            if (cbIMEOffice.Checked == false)
+            if (cbDefaultInvoiceAdress.Checked == false)
             {
                 AddressType.Enabled = true;
             }
@@ -434,9 +434,9 @@ namespace LoginForm
             txtAdressTitle.Enabled = true;
             cbTown.Enabled = true;
             AddressDetails.Enabled = true;
-            cbIMEOffice.Enabled = true;
-            cbDafultDeliveryAdress.Enabled = true;
-            cbIMEOffice.Enabled = true;
+            cbDefaultInvoiceAdress.Enabled = true;
+            cbDefaultDeliveryAdress.Enabled = true;
+            cbDefaultInvoiceAdress.Enabled = true;
             AdressList.Enabled = false;
             txtAdressTitle.Enabled = true;
             TownAdd.Enabled = true;
@@ -556,7 +556,7 @@ namespace LoginForm
                 cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
                 cbMainContact.DisplayMember = "cw_name";
                 cbMainContact.ValueMember = "ID";
-                AddressType.SelectedItem = null; cbIMEOffice.Checked = true;
+                AddressType.SelectedItem = null; cbDefaultInvoiceAdress.Checked = true;
                 if (c.Note != null) CompanyNotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
                 if (c.customerAccountantNoteID != null) AccountingNotes.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name;
                 CreditLimit.Text = c.creditlimit.ToString();
@@ -593,7 +593,7 @@ namespace LoginForm
             cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
             cbMainContact.DisplayMember = "cw_name";
             cbMainContact.ValueMember = "ID";
-            AddressType.SelectedItem = null; cbIMEOffice.Checked = true;
+            AddressType.SelectedItem = null; cbDefaultInvoiceAdress.Checked = true;
             if (c.Note != null) CompanyNotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
             if (c.customerAccountantNoteID != null) AccountingNotes.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name;
             CreditLimit.Text = c.creditlimit.ToString();
@@ -1182,9 +1182,9 @@ namespace LoginForm
             AdressTabEnableTrue();
             AddressType.Text = "";
             cbCountry.Text = "";
-            cbIMEOffice.Checked = false;
-            cbDafultDeliveryAdress.Checked = false;
-            cbIMEOffice.Checked = false;
+            cbDefaultInvoiceAdress.Checked = false;
+            cbDefaultDeliveryAdress.Checked = false;
+            cbDefaultInvoiceAdress.Checked = false;
             cbCity.Text = "";
             cbTown.Text = "";
             PostCode.Text = "";
@@ -1252,7 +1252,7 @@ namespace LoginForm
                 ca.CityID = ((cbCity).SelectedItem as City).ID;
                 //AddresType
                 ca.isInvoiceAddress = false;
-                if (cbIMEOffice.Checked == false)
+                if (cbDefaultInvoiceAdress.Checked == false)
                 {
                     ca.isInvoiceAddress = true;
                 }
@@ -1260,8 +1260,8 @@ namespace LoginForm
 
                 ca.PostCode = PostCode.Text;
                 ca.AdressDetails = AddressDetails.Text;
-                if (cbIMEOffice.Checked) { ca.isDeliveryAddress = true; } else { ca.isDeliveryAddress = false; }
-                if (cbDafultDeliveryAdress.Checked) { ca.isInvoiceAddress = true; } else { ca.isInvoiceAddress = false; }
+                if (cbDefaultInvoiceAdress.Checked) { ca.isInvoiceAddress = true; } else { ca.isInvoiceAddress = false; }
+                if (cbDefaultDeliveryAdress.Checked) { ca.isDeliveryAddress = true; } else { ca.isDeliveryAddress = false; }
                 IME.SaveChanges();
             }
             else
@@ -1275,14 +1275,14 @@ namespace LoginForm
                 ca.AdressTitle = txtAdressTitle.Text;
                 //AddresType
                 ca.isInvoiceAddress = false;
-                if (cbIMEOffice.Checked == false)
+                if (cbDefaultInvoiceAdress.Checked == false)
                 {
                     ca.isInvoiceAddress = true;
                 }
                 ca.PostCode = PostCode.Text;
                 ca.AdressDetails = AddressDetails.Text;
-                if (cbIMEOffice.Checked) { ca.isDeliveryAddress = true; } else { ca.isDeliveryAddress = false; }
-                if (cbDafultDeliveryAdress.Checked) { ca.isInvoiceAddress = true; } else { ca.isInvoiceAddress = false; }
+                if (cbDefaultInvoiceAdress.Checked) { ca.isInvoiceAddress = true; } else { ca.isInvoiceAddress = false; }
+                if (cbDefaultDeliveryAdress.Checked) { ca.isDeliveryAddress = true; } else { ca.isDeliveryAddress = false; }
                 IME.CustomerAddresses.Add(ca);
                 IME.SaveChanges();
             }
@@ -1309,7 +1309,7 @@ namespace LoginForm
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbIMEOffice.Checked)
+            if (cbDefaultInvoiceAdress.Checked)
             {
                 AddressType.Enabled = false;
                 AddressType.SelectedItem = null;
@@ -1371,8 +1371,8 @@ namespace LoginForm
                 var contact1 = IME.CustomerAddresses.Where(cw => cw.ID == cw_ID).ToList();
                 foreach (var a in contact1)
                 {
-                    if (a.isDeliveryAddress == null || !(bool)a.isDeliveryAddress) { cbIMEOffice.Checked = false;  } else { cbIMEOffice.Checked = true; }
-                    if (a.isInvoiceAddress == null || !(bool)a.isInvoiceAddress) { cbDafultDeliveryAdress.Checked = false;  } else { cbDafultDeliveryAdress.Checked = true; }
+                    if (a.isDeliveryAddress == null || !(bool)a.isDeliveryAddress) { cbDefaultDeliveryAdress.Checked = false;  } else { cbDefaultDeliveryAdress.Checked = true; }
+                    if (a.isInvoiceAddress == null || !(bool)a.isInvoiceAddress) { cbDefaultInvoiceAdress.Checked = false;  } else { cbDefaultInvoiceAdress.Checked = true; }
                     txtAdressTitle.Text = a.AdressTitle;
                     cbCountry.SelectedItem = a.Country;
                     if (a.City != null) cbCity.SelectedIndex = cbCity.FindStringExact(a.City.City_name);
@@ -1639,18 +1639,6 @@ namespace LoginForm
             }
         }
 
-        private void factor_TextChanged(object sender, EventArgs e)
-        {
-            decimal factorValue = Decimal.Parse(factor.Text);
-            DiscountRate.Text = (100 - ((factorValue * 100) / Utils.getManagement().Factor)).ToString();
-        }
-
-        private void DiscountRate_TextChanged(object sender, EventArgs e)
-        {
-            decimal DiscountRateValue = Decimal.Parse(DiscountRate.Text);
-            factor.Text = (Utils.getManagement().Factor - ((DiscountRateValue * Utils.getManagement().Factor) / 100)).ToString();
-        }
-
         private void TownAdd_Click(object sender, EventArgs e)
         {
             FormTownAdd form = new FormTownAdd();
@@ -1678,5 +1666,18 @@ namespace LoginForm
             SubCategory.ValueMember = "ID";
         }
 
+        private void factor_Leave(object sender, EventArgs e)
+        {
+            if (factor.Text == "") factor.Text = 0.ToString();
+            decimal factorValue = Decimal.Parse(factor.Text);
+            DiscountRate.Text = (100 - ((factorValue * 100) / Utils.getManagement().Factor)).ToString();
+
+        }
+
+        private void DiscountRate_Leave(object sender, EventArgs e)
+        {
+            decimal DiscountRateValue = Decimal.Parse(DiscountRate.Text);
+            factor.Text = (Utils.getManagement().Factor - ((DiscountRateValue * Utils.getManagement().Factor) / 100)).ToString();
+        }
     }
 }
