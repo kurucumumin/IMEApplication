@@ -124,7 +124,7 @@ namespace LoginForm
             MainCategory.DataSource = IME.CustomerCategories.ToList();
             MainCategory.DisplayMember = "categoryname";
             MainCategory.ValueMember = "ID";
-            SubCategory.DataSource = IME.CustomerSubCategories.ToList();
+            SubCategory.DataSource = IME.CustomerSubCategories.Where(a=>a.categoryID==(int)MainCategory.SelectedValue);
             SubCategory.DisplayMember = "subcategoryname";
             SubCategory.ValueMember = "ID";
             QuoCurrencyName.DataSource = IME.Currencies.ToList();
@@ -180,13 +180,22 @@ namespace LoginForm
             if (c.Worker1 != null) Represantative1.SelectedValue = c.Worker1.WorkerID;
             if (c.accountrepresentaryID != null) AccountRepresentary.Text = IME.Workers.Where(a => a.WorkerID == c.accountrepresentaryID).FirstOrDefault().NameLastName;
             if (c.CustomerCategory != null) MainCategory.SelectedValue = c.CustomerCategory.ID;
-            if (c.CustomerSubCategory != null) SubCategory.SelectedValue = c.CustomerSubCategory.ID;
+            if (c.CustomerSubCategory != null)
+            {
+                SubCategory.SelectedValue = c.CustomerSubCategory.ID;
+            }
+            else
+            {
+                SubCategory.SelectedValue = -1;
+            }
             if (c.PaymentTerm!=null) TermsofPayments.SelectedValue = c.PaymentTerm.ID;
             if (c.isactive == 1) { rb_active.Checked = true; } else { rb_passive.Checked = true; }
             ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
             ContactList.DisplayMember = "cw_name";
+            ContactList.ValueMember = "ID";
             cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
             cbMainContact.DisplayMember = "cw_name";
+            cbMainContact.ValueMember = "ID";
             AddressType.SelectedItem = null; cbIMEOffice.Checked = true;
             if (c.Note != null) CompanyNotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
             if (c.customerAccountantNoteID != null) AccountingNotes.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name;
@@ -195,12 +204,12 @@ namespace LoginForm
 
         private void ContactList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            #region ContactList
-            //contact daki list box a tıklandığında contact ın bilgileri tıklanan göre doldurulmasıse
-            int cw_ID = 0;
-            try { cw_ID = ((CustomerWorker)((ListBox)sender).SelectedItem).ID; } catch { cw_ID = 0; }
-            if (ContactListItem.ID != cw_ID)
-            {
+            try {
+                #region ContactList
+                //contact daki list box a tıklandığında contact ın bilgileri tıklanan göre doldurulmasıse
+                int cw_ID = (int)ContactList.SelectedValue;
+
+                cw_ID = (int)ContactList.SelectedValue;
                 if (CustomerName.Text != string.Empty)
                 {
                     ContactListItem.ID = cw_ID;
@@ -236,9 +245,11 @@ namespace LoginForm
                     //    CommunicationLanguage.SelectedValue = CommunicationLanguage.FindStringExact(a.Language.languagename);
                     //    if (a.Note != null) { ContactNotes.Text = a.Note.Note_name; } else { ContactNotes.Text = ""; }
                     //}
+
                 }
+                #endregion
             }
-            #endregion
+            catch { }
         }
 
         private void departmentAdd_Click(object sender, EventArgs e)
@@ -264,9 +275,12 @@ namespace LoginForm
         private void MainCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             int c_categoryID;
-            try { c_categoryID = ((CustomerCategory)((ComboBox)sender).SelectedValue).ID; } catch { c_categoryID = 0; }
+            try {
+                c_categoryID = (int)((ComboBox)sender).SelectedValue;
+            } catch { c_categoryID = 0; }
             SubCategory.DataSource = IME.CustomerSubCategories.Where(b => b.categoryID == c_categoryID).ToList();
             SubCategory.DisplayMember = "subcategoryname";
+            SubCategory.ValueMember = "ID";
         }
 
         private void Search_Click(object sender, EventArgs e)
@@ -538,8 +552,10 @@ namespace LoginForm
                 if (c.isactive == 1) { rb_active.Checked = true; } else { rb_passive.Checked = true; }
                 ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
                 ContactList.DisplayMember = "cw_name";
+                ContactList.ValueMember = "ID";
                 cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
                 cbMainContact.DisplayMember = "cw_name";
+                cbMainContact.ValueMember = "ID";
                 AddressType.SelectedItem = null; cbIMEOffice.Checked = true;
                 if (c.Note != null) CompanyNotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
                 if (c.customerAccountantNoteID != null) AccountingNotes.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name;
@@ -573,8 +589,10 @@ namespace LoginForm
             if (c.isactive == 1) { rb_active.Checked = true; } else { rb_passive.Checked = true; }
             ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
             ContactList.DisplayMember = "cw_name";
+            ContactList.ValueMember = "ID";
             cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
             cbMainContact.DisplayMember = "cw_name";
+            cbMainContact.ValueMember = "ID";
             AddressType.SelectedItem = null; cbIMEOffice.Checked = true;
             if (c.Note != null) CompanyNotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
             if (c.customerAccountantNoteID != null) AccountingNotes.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name;
@@ -677,9 +695,11 @@ namespace LoginForm
                 }
                 ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
                 ContactList.DisplayMember = "cw_name";
+                ContactList.ValueMember = "ID";
                 //catch { MessageBox.Show("Contact is NOT successfull"); }
                 cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
                 cbMainContact.DisplayMember = "cw_name";
+                cbMainContact.ValueMember = "ID";
                 contactTabEnableFalse();
             }
             else
@@ -727,8 +747,10 @@ namespace LoginForm
                     }
                     ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
                     ContactList.DisplayMember = "cw_name";
+                    cbMainContact.ValueMember = "ID";
                     cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
                     cbMainContact.DisplayMember = "cw_name";
+                    cbMainContact.ValueMember = "ID";
                 }
                 else { MessageBox.Show("Please choose a contact to update"); }
             }
@@ -763,9 +785,11 @@ namespace LoginForm
                 IME.SaveChanges();
                 ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
                 ContactList.DisplayMember = "cw_name";
+                ContactList.ValueMember = "ID";
                 cbMainContact.DataSource = null;
                 cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
                 cbMainContact.DisplayMember = "cw_name";
+                cbMainContact.ValueMember = "ID";
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -1050,6 +1074,7 @@ namespace LoginForm
             cbMainContact.Enabled = false;
             CustomerFax.Enabled = false;
             CustomerName.Enabled = false;
+            txt3partyCode.Enabled = false;
             Telephone.Enabled = false;
             CustomerCode.Enabled = false;
             tab_adresses.Enabled = false;
@@ -1102,6 +1127,7 @@ namespace LoginForm
             cbMainContact.Enabled = true;
             CustomerFax.Enabled = true;
             CustomerName.Enabled = true;
+            txt3partyCode.Enabled = true;
             Telephone.Enabled = true;
             tab_adresses.Enabled = true;
             tab_contact.Enabled = true;
@@ -1638,12 +1664,18 @@ namespace LoginForm
         {
             CustomerMainCategory form = new CustomerMainCategory();
             form.ShowDialog();
+            MainCategory.DataSource = IME.CustomerCategories.ToList();
+            MainCategory.DisplayMember = "categoryname";
+            MainCategory.ValueMember = "ID";
         }
 
         private void btnAddSubcategory_Click(object sender, EventArgs e)
         {
             CustomerSubCategory form = new CustomerSubCategory();
             form.ShowDialog();
+            SubCategory.DataSource = IME.CustomerSubCategories.Where(a => a.categoryID == (int)MainCategory.SelectedValue).ToList();
+            SubCategory.DisplayMember = "subcategoryname";
+            SubCategory.ValueMember = "ID";
         }
 
     }
