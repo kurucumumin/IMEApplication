@@ -427,7 +427,7 @@
             this.dgQuotationAddedItems.Name = "dgQuotationAddedItems";
             this.dgQuotationAddedItems.Size = new System.Drawing.Size(1227, 178);
             this.dgQuotationAddedItems.TabIndex = 9;
-            this.dgQuotationAddedItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotationAddedItems_CellContentClick);
+            //this.dgQuotationAddedItems.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotationAddedItems_CellContentClick);
             this.dgQuotationAddedItems.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgQuotationAddedItems_CellEndEdit);
             this.dgQuotationAddedItems.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgQuotationAddedItems_RowsAdded);
             this.dgQuotationAddedItems.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgQuotationAddedItems_RowsRemoved);
