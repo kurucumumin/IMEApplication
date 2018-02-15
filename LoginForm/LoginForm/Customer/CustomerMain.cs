@@ -143,7 +143,7 @@ namespace LoginForm
             AccountRepresentary.DataSource = IME.Workers.ToList();
             AccountRepresentary.DisplayMember = "NameLastName";
             AccountRepresentary.ValueMember = "WorkerID";
-            cbCountry.DataSource = IME.Countries.ToList();
+            cbCountry.DataSource = IME.Countries.OrderBy(x=>x.Country_name).ToList();
             cbCountry.DisplayMember = "Country_name";
             cbCountry.ValueMember = "ID";
             ContactType.DataSource = IME.ContactTypes.ToList();
@@ -441,10 +441,10 @@ namespace LoginForm
         private void AdressTabEnableTrue()
         {
             #region contactTabEnableTrue
-            if (cbDefaultInvoiceAdress.Checked == false)
-            {
+            //if (cbIMEOffice.Checked == false)
+            //{
                 AddressType.Enabled = true;
-            }
+            //}
             cbCountry.Enabled = true;
             cbCity.Enabled = true;
             cbTown.Enabled = true;
@@ -818,7 +818,7 @@ namespace LoginForm
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-
+            Management m = Utils.getManagement();
             if (btnCreate.Text == "CREATE")
             {
                 dateTimePicker1.Value = DateTime.Today;
@@ -839,9 +839,9 @@ namespace LoginForm
                 AccountRepresentary.Text = (ComboboxString);
                 TermsofPayments.Text = (ComboboxString);
                 PaymentMethod.Text = (ComboboxString);
-                QuoCurrencyName.Text = (ComboboxString);
+                QuoCurrencyName.SelectedValue = m.DefaultCurrency;
                 QuoCurrencyType.Text = (ComboboxString);
-                InvCurrencyName.Text = (ComboboxString);
+                InvCurrencyName.SelectedValue = m.DefaultCurrency;
                 InvCurrencyType.Text = (ComboboxString);
                 AddressType.Text = (ComboboxString);
                 cbCountry.Text = (ComboboxString);

@@ -84,11 +84,11 @@ namespace LoginForm.nmSaleOrder
             items = list;
 
             this.Text = "Edit Quotation";
-            modifyMod = true;
+            //modifyMod = true;
             InitializeComponent();
             txtQuotationNo.Text = QuotationNOs;
             dtpDate.Value = DateTime.Today.Date;
-            dtpDate.MaxDate = DateTime.Today.Date;
+            //dtpDate.MaxDate = DateTime.Today.Date;
             cbCurrency.DataSource = IME.Currencies.ToList();
             cbCurrency.DisplayMember = "currencyName";
             cbCurrency.ValueMember = "currencyID";
@@ -143,7 +143,7 @@ namespace LoginForm.nmSaleOrder
                 dgSaleAddedItems.Rows.Add(dgRow);
                 txtSaleOrderNo.Text = "SO" + IME.CreteNewSaleOrderNo().FirstOrDefault().ToString();
                 //dgQuotationAddedItems.Rows[0].Cells["dgQty"].Value = "0";
-                dgSaleAddedItems.Rows[0].Cells[0].Value = 1.ToString();
+                dgSaleAddedItems.Rows[0].Cells[0].Value = "1";
                 LowMarginLimit = Decimal.Parse(IME.Managements.FirstOrDefault().LowMarginLimit.ToString());
                 lblVat.Text = Utils.getManagement().VAT.ToString();
                 #region ComboboxFiller.
@@ -1480,7 +1480,7 @@ namespace LoginForm.nmSaleOrder
             {
                 SaleOrder s = new SaleOrder();
                 //TODO (SALEORDER) ID Formatını öğren ve ID'yi düzenle
-                s.SaleOrderNo = txtSaleOrderNo.Text;
+                s.SaleOrderNo = Int32.Parse(txtSaleOrderNo.Text.Substring(2));
                 s.SaleDate = Convert.ToDateTime(IME.CurrentDate().First());
                 s.OnlineConfirmationNo = txtOnlineConfirmationNo.Text;
                 s.QuotationNos = txtQuotationNo.Text;
