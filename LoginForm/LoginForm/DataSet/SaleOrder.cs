@@ -21,7 +21,7 @@ namespace LoginForm.DataSet
             this.SaleOrderDetails = new HashSet<SaleOrderDetail>();
         }
     
-        public string SaleOrderNo { get; set; }
+        public decimal SaleOrderNo { get; set; }
         public System.DateTime SaleDate { get; set; }
         public string OnlineConfirmationNo { get; set; }
         public string QuotationNos { get; set; }

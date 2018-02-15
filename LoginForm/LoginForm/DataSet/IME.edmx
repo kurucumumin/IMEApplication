@@ -1416,7 +1416,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Key>
             <PropertyRef Name="SaleOrderID" />
           </Key>
-          <Property Name="SaleOrderNo" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="SaleOrderNo" Type="numeric" Precision="18" Scale="0" Nullable="false" />
           <Property Name="SaleDate" Type="date" Nullable="false" />
           <Property Name="OnlineConfirmationNo" Type="nvarchar" MaxLength="15" />
           <Property Name="QuotationNos" Type="nvarchar" MaxLength="50" />
@@ -10286,7 +10286,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Key>
             <PropertyRef Name="SaleOrderID" />
           </Key>
-          <Property Name="SaleOrderNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SaleOrderNo" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="SaleDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="OnlineConfirmationNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="QuotationNos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />

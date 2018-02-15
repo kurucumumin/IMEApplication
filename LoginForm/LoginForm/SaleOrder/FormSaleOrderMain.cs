@@ -91,9 +91,11 @@ namespace LoginForm.nsSaleOrder
                 {
                     IMEEntities IME = new IMEEntities();
 
-                    string SaleOrderNo = dgSales.CurrentRow.Cells[1].Value.ToString();
+                    //string SaleOrderNo = dgSales.CurrentRow.Cells[1].Value.ToString();
+                    //TODO gridde saleID'de olmalı.
+                    decimal SaleID = (decimal)dgSales.CurrentRow.Cells[1].Value;
 
-                    SaleOrder so = IME.SaleOrders.Where(x => x.SaleOrderNo == SaleOrderNo).FirstOrDefault();
+                    SaleOrder so = IME.SaleOrders.Where(x => x.SaleOrderID == SaleID).FirstOrDefault();
 
                    // NewPurchaseOrder form = new NewPurchaseOrder(so);
                    // form.ShowDialog();
@@ -107,9 +109,11 @@ namespace LoginForm.nsSaleOrder
             {
                 IMEEntities IME = new IMEEntities();
 
-                string SaleOrderNo = dgSales.CurrentRow.Cells[1].Value.ToString();
+                //string SaleOrderNo = dgSales.CurrentRow.Cells[1].Value.ToString();
+                //TODO gridde saleID'de olmalı.
+                decimal SaleID = (decimal)dgSales.CurrentRow.Cells[1].Value;
 
-                SaleOrder so = IME.SaleOrders.Where(x => x.SaleOrderNo == SaleOrderNo).FirstOrDefault();
+                SaleOrder so = IME.SaleOrders.Where(x => x.SaleOrderID == SaleID).FirstOrDefault();
 
                // NewPurchaseOrder form = new NewPurchaseOrder(so);
               //  form.ShowDialog();
@@ -152,8 +156,10 @@ namespace LoginForm.nsSaleOrder
             IMEEntities db = new IMEEntities();
             foreach (DataGridViewRow row in dgSales.SelectedRows)
             {
-                string SaleID = row.Cells[1].Value.ToString();
-                SaleOrder s = db.SaleOrders.Where(x => x.SaleOrderNo == SaleID).FirstOrDefault();
+                //string SaleID = row.Cells[1].Value.ToString();
+                //TODO gridde saleID'de olmalı.
+                decimal SaleID = (decimal)dgSales.CurrentRow.Cells[1].Value;
+                SaleOrder s = db.SaleOrders.Where(x => x.SaleOrderID == SaleID).FirstOrDefault();
                 if(s != null)
                 {
                     if (s.SaleOrderDetails != null)

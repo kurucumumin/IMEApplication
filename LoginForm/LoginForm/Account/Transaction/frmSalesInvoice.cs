@@ -1790,7 +1790,7 @@ namespace LoginForm
                     }
                     dgvSalesInvoice.Rows.Clear();
                     isValueChange = true;
-                    DataTable dtblMaster = SPSalesOrderMaster.SalesInvoiceGridfillAgainestSalesOrder(cmbSalesModeOrderNo.SelectedValue.ToString());
+                    DataTable dtblMaster = SPSalesOrderMaster.SalesInvoiceGridfillAgainestSalesOrder((decimal)cmbSalesModeOrderNo.SelectedValue);
                     cmbPricingLevel.SelectedValue = Convert.ToDecimal(dtblMaster.Rows[0]["pricingLevelId"].ToString());
                     cmbCurrency.SelectedValue = Convert.ToDecimal(dtblMaster.Rows[0]["exchangeRateId"].ToString());
                     if (dtblMaster.Rows[0]["employeeId"].ToString() != string.Empty)

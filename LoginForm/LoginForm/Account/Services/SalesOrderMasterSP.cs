@@ -34,12 +34,12 @@ namespace LoginForm.Account.Services
             return dt;
         }
 
-        public DataTable SalesInvoiceGridfillAgainestSalesOrder(string strOrderMasterId)
+        public DataTable SalesInvoiceGridfillAgainestSalesOrder(decimal strOrderMasterId)
         {
             IMEEntities IME = new IMEEntities();
             DataTable dt = new DataTable();
 
-            var adaptor = IME.SaleOrders.Where(a => a.SaleOrderNo == strOrderMasterId);
+            var adaptor = IME.SaleOrders.Where(a => a.SaleOrderID == strOrderMasterId).ToList();
             dt.Columns.Add("invoiceNo");
             dt.Columns.Add("SaleOrderNo");
             dt.Columns.Add("ledgerId");
