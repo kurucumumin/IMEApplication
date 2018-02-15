@@ -130,9 +130,11 @@ namespace LoginForm
             QuoCurrencyName.DataSource = IME.Currencies.ToList();
             QuoCurrencyName.DisplayMember = "currencyName";
             QuoCurrencyName.ValueMember = "currencyId";
+            QuoCurrencyName.SelectedIndex = -1;
             InvCurrencyName.DataSource = IME.Currencies.ToList();
             InvCurrencyName.DisplayMember = "currencyName";
             InvCurrencyName.ValueMember = "currencyId";
+            InvCurrencyName.SelectedIndex = -1;
             TermsofPayments.DataSource = IME.PaymentTerms.OrderBy(p => p.timespan).ToList();
             TermsofPayments.DisplayMember = "term_name";
             TermsofPayments.ValueMember = "ID";
@@ -196,6 +198,24 @@ namespace LoginForm
             cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
             cbMainContact.DisplayMember = "cw_name";
             cbMainContact.ValueMember = "ID";
+            if(c.CurrNameQuo != null)
+            {
+                QuoCurrencyName.SelectedValue = QuoCurrencyName.FindStringExact(c.CurrNameQuo);
+            }
+            else
+            {
+                QuoCurrencyName.SelectedIndex = -1;
+            }
+            if (c.CurrNameInv != null)
+            {
+                InvCurrencyName.SelectedValue = InvCurrencyName.FindStringExact(c.CurrNameInv);
+            }
+            else
+            {
+                InvCurrencyName.SelectedIndex = -1;
+            }
+            //QuoCurrencyName.SelectedValue = c.CurrNameQuo ?? -1;
+            //InvCurrencyName.SelectedValue = c.CurrNameInv ?? -1;
             AddressType.SelectedItem = null; cbIMEOffice.Checked = true;
             if (c.Note != null) CompanyNotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
             if (c.customerAccountantNoteID != null) AccountingNotes.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name;
@@ -208,8 +228,6 @@ namespace LoginForm
                 #region ContactList
                 //contact daki list box a tıklandığında contact ın bilgileri tıklanan göre doldurulmasıse
                 int cw_ID = (int)ContactList.SelectedValue;
-
-                cw_ID = (int)ContactList.SelectedValue;
                 if (CustomerName.Text != string.Empty)
                 {
                     ContactListItem.ID = cw_ID;
@@ -221,13 +239,13 @@ namespace LoginForm
                     if (a.ContactTypeID != null) ContactType.SelectedValue = a.ContactTypeID;
                     ContactName.Text = a.cw_name;
                     ContactEmail.Text = a.cw_email;
-                    if (a.CustomerDepartment != null) ContactDepartment.SelectedValue = ContactDepartment.FindStringExact(a.CustomerDepartment.departmentname);
-                    if (a.CustomerTitle != null) ContactTitle.SelectedValue = ContactTitle.FindStringExact(a.CustomerTitle.titlename);
+                    if (a.CustomerDepartment != null) ContactDepartment.SelectedValue = a.CustomerDepartment.ID;
+                    if (a.CustomerTitle != null) ContactTitle.SelectedValue = a.CustomerTitle.ID;
                     ContactFAX.Text = a.fax;
                     ContactMobilePhone.Text = a.mobilephone;
                     ContactPhone.Text = a.phone;
                     if (a.CustomerWorkerAdress != null) ContactAdress.SelectedItem = Int32.Parse(a.CustomerWorkerAdress.ToString());
-                    CommunicationLanguage.SelectedValue = CommunicationLanguage.FindStringExact(a.Language.languagename);
+                    CommunicationLanguage.SelectedValue = CommunicationLanguage.SelectedValue = a.Language.ID;
                     if (a.Note != null) { ContactNotes.Text = a.Note.Note_name; } else { ContactNotes.Text = ""; }
 
                     //foreach (var a in contact1)
@@ -882,7 +900,7 @@ namespace LoginForm
                 {
                     if (MainCategory.Text == ComboboxString || SubCategory.Text == ComboboxString || Represantative2.Text == ComboboxString || Capital.Text == ComboboxString || cbMainContact.Text == ComboboxString || AccountRepresentary.Text == ComboboxString || TermsofPayments.Text == ComboboxString || PaymentMethod.Text == ComboboxString || QuoCurrencyName.Text == ComboboxString || QuoCurrencyType.Text == ComboboxString || InvCurrencyName.Text == ComboboxString || InvCurrencyType.Text == ComboboxString || AddressType.Text == ComboboxString || cbCountry.Text == ComboboxString || cbCity.Text == ComboboxString || cbTown.Text == ComboboxString || ContactType.Text == ComboboxString || ContactDepartment.Text == ComboboxString || ContactTitle.Text == ComboboxString || CommunicationLanguage.Text == ComboboxString)
                     {
-                        MessageBox.Show("Combobox is empty", "WARNİNG", MessageBoxButtons.OK);
+                        MessageBox.Show("Combobox is empty", "WARNING", MessageBoxButtons.OK);
 
                     }
                     else
@@ -1018,18 +1036,18 @@ namespace LoginForm
         private void itemsClear()
         {
             #region itemClaer
-            ContactType.Text = "";
-            ContactDepartment.Text = "";
-            ContactTitle.Text = "";
+            ContactType.SelectedIndex = -1;
+            ContactDepartment.SelectedIndex = -1;
+            ContactTitle.SelectedIndex = -1;
             ContactName.Text = "";
             ContactEmail.Text = "";
             ContactPhone.Text = "";
             ContactMobilePhone.Text = "";
             ContactFAX.Text = "";
-            CommunicationLanguage.Text = "";
+            CommunicationLanguage.SelectedIndex = -1;
             ContactNotes.Text = "";
-            MainCategory.SelectedIndex = 0;
-            if (SubCategory.Items.Count != 0) SubCategory.SelectedIndex = 0;
+            MainCategory.SelectedIndex = -1;
+            if (SubCategory.Items.Count != 0) SubCategory.SelectedIndex = -1;
             CompanyNotes.Text = "";
             WebAdress.Text = "";
             CustomerFax.Text = "";
@@ -1040,21 +1058,20 @@ namespace LoginForm
             CustomerCode.Text = "";
             AccountingNotes.Text = "";
             DiscountRate.Text = "";
-            PaymentMethod.Text = "";
-            TermsofPayments.Text = "";
+            PaymentMethod.SelectedIndex = -1;
+            TermsofPayments.SelectedIndex = -1;
             TaxOffice.Text = "";
-            Represantative2.Text = "";
-            Represantative1.Text = "";
-            InvCurrencyName.Text = "";
+            Represantative2.SelectedIndex = -1;
+            Represantative1.SelectedIndex = -1;
+            InvCurrencyName.SelectedIndex = -1;
             InvCurrencyType.Text = "";
             QuoCurrencyType.Text = "";
-            QuoCurrencyName.Text = "";
-            AccountRepresentary.Text = "";
-            CommunicationLanguage.Text = "";
+            QuoCurrencyName.SelectedIndex = -1;
+            AccountRepresentary.SelectedIndex = -1;
             CreditLimit.Text = "";
             taxNumber.Text = "";
             factor.Text = "";
-            Capital.Text = "";
+            Capital.SelectedIndex = -1;
             ContactEmail.Text = "";
             AdressList.DataSource = null;
             ContactList.DataSource = null;
