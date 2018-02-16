@@ -1488,6 +1488,12 @@
     <Compile Include="SaleOrder\FormSaleItemSearch.Designer.cs">
       <DependentUpon>FormSaleItemSearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="SaleOrder\FormSaleGridCustomize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaleOrder\FormSaleGridCustomize.Designer.cs">
+      <DependentUpon>FormSaleGridCustomize.cs</DependentUpon>
+    </Compile>
     <Compile Include="SaleOrder\SalesOrderHelper.cs" />
     <Compile Include="Services\Common.cs" />
     <Compile Include="Services\DateValidation.cs" />
@@ -1828,6 +1834,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SaleOrder\FormSaleItemSearch.resx">
       <DependentUpon>FormSaleItemSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaleOrder\FormSaleGridCustomize.resx">
+      <DependentUpon>FormSaleGridCustomize.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\FormUsersMain.resx">
       <DependentUpon>FormUsersMain.cs</DependentUpon>

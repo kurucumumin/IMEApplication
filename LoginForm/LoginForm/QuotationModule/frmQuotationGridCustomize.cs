@@ -53,11 +53,6 @@ namespace LoginForm.QuotationModule
 
         }
 
-        private void frmQuotationExport_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSelectAll_Click(object sender, EventArgs e)
         {
             foreach (var item in cboxList)

@@ -1,6 +1,6 @@
-﻿namespace LoginForm.QuotationModule
+﻿namespace LoginForm.nmSaleOrder
 {
-    partial class frmQuotationGridCustomize
+    partial class FormSaleGridCustomize
     {
         /// <summary>
         /// Required designer variable.
@@ -35,9 +35,10 @@
             // 
             // ExportButton
             // 
-            this.ExportButton.Location = new System.Drawing.Point(423, 337);
+            this.ExportButton.Location = new System.Drawing.Point(564, 415);
+            this.ExportButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ExportButton.Name = "ExportButton";
-            this.ExportButton.Size = new System.Drawing.Size(98, 37);
+            this.ExportButton.Size = new System.Drawing.Size(131, 46);
             this.ExportButton.TabIndex = 1;
             this.ExportButton.Text = "Done";
             this.ExportButton.UseVisualStyleBackColor = true;
@@ -45,9 +46,10 @@
             // 
             // btnSelectAll
             // 
-            this.btnSelectAll.Location = new System.Drawing.Point(12, 337);
+            this.btnSelectAll.Location = new System.Drawing.Point(16, 415);
+            this.btnSelectAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSelectAll.Name = "btnSelectAll";
-            this.btnSelectAll.Size = new System.Drawing.Size(49, 37);
+            this.btnSelectAll.Size = new System.Drawing.Size(65, 46);
             this.btnSelectAll.TabIndex = 1;
             this.btnSelectAll.Text = "Select All";
             this.btnSelectAll.UseVisualStyleBackColor = true;
@@ -55,24 +57,27 @@
             // 
             // btnClearAll
             // 
-            this.btnClearAll.Location = new System.Drawing.Point(67, 337);
+            this.btnClearAll.Location = new System.Drawing.Point(89, 415);
+            this.btnClearAll.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClearAll.Name = "btnClearAll";
-            this.btnClearAll.Size = new System.Drawing.Size(49, 37);
+            this.btnClearAll.Size = new System.Drawing.Size(65, 46);
             this.btnClearAll.TabIndex = 1;
             this.btnClearAll.Text = "Clear All";
             this.btnClearAll.UseVisualStyleBackColor = true;
             this.btnClearAll.Click += new System.EventHandler(this.button1_Click);
             // 
-            // frmQuotationGridCustomize
+            // FormSaleGridCustomize
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(983, 386);
+            this.ClientSize = new System.Drawing.Size(1311, 475);
             this.Controls.Add(this.btnClearAll);
             this.Controls.Add(this.btnSelectAll);
             this.Controls.Add(this.ExportButton);
-            this.Name = "frmQuotationGridCustomize";
-            this.Text = "Quotation Grid Customize";
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "FormSaleGridCustomize";
+            this.Text = "Sale Grid Customize";
+            this.Load += new System.EventHandler(this.FormSaleGridCustomize_Load);
             this.ResumeLayout(false);
 
         }

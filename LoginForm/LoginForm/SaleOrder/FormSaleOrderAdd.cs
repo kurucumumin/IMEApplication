@@ -2940,5 +2940,24 @@ namespace LoginForm.nmSaleOrder
             customer = IME.Customers.Where(x => x.ID == CustomerCode.Text).FirstOrDefault();
             fillCustomer();
         }
+
+        private void btnCustomizeGrid_Click(object sender, EventArgs e)
+        {
+            FormSaleGridCustomize form = new FormSaleGridCustomize(dgSaleAddedItems);
+            form.ShowDialog();
+            List<string> SaleVisibleFalseNames = QuotationDatagridCustomize.VisibleFalseNames;
+            ;
+
+            foreach (DataGridViewColumn item in dgSaleAddedItems.Columns)
+            {
+                item.Visible = true;
+            }
+
+            foreach (var item in SaleVisibleFalseNames)
+            {
+                dgSaleAddedItems.Columns[item].Visible = false;
+            }
+
+        }
     }
 }

@@ -2985,7 +2985,6 @@ namespace LoginForm.QuotationModule
             {
                 dgQuotationAddedItems.Columns[item].Visible = false;
             }
-
         }
     }
 }
