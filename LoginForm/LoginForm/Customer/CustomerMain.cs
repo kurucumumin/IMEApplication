@@ -1708,5 +1708,12 @@ namespace LoginForm
             decimal DiscountRateValue = Decimal.Parse(DiscountRate.Text);
             factor.Text = (Utils.getManagement().Factor - ((DiscountRateValue * Utils.getManagement().Factor) / 100)).ToString();
         }
+
+        private void CustomerDataGrid_SelectionChanged(object sender, EventArgs e)
+        {
+            itemsClear();
+            gridselectedindex = CustomerDataGrid.CurrentCell.RowIndex;
+            customerClicksearch();
+        }
     }
 }
