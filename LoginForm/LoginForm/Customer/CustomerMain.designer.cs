@@ -904,6 +904,7 @@
             this.AddressDel.TabIndex = 14;
             this.AddressDel.Text = "Dlt";
             this.AddressDel.UseVisualStyleBackColor = true;
+            this.AddressDel.Click += new System.EventHandler(this.AddressDel_Click);
             // 
             // AddressUpd
             // 
@@ -933,7 +934,7 @@
             this.AdressList.ItemHeight = 16;
             this.AdressList.Location = new System.Drawing.Point(544, 18);
             this.AdressList.Name = "AdressList";
-            this.AdressList.Size = new System.Drawing.Size(131, 148);
+            this.AdressList.Size = new System.Drawing.Size(131, 180);
             this.AdressList.TabIndex = 10;
             this.AdressList.SelectedIndexChanged += new System.EventHandler(this.AdressList_SelectedIndexChanged);
             // 
@@ -1182,7 +1183,7 @@
             this.ContactList.ItemHeight = 16;
             this.ContactList.Location = new System.Drawing.Point(548, 18);
             this.ContactList.Name = "ContactList";
-            this.ContactList.Size = new System.Drawing.Size(137, 180);
+            this.ContactList.Size = new System.Drawing.Size(137, 196);
             this.ContactList.TabIndex = 29;
             this.ContactList.SelectedIndexChanged += new System.EventHandler(this.ContactList_SelectedIndexChanged);
             // 

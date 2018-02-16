@@ -146,7 +146,12 @@ namespace LoginForm.QuotationModule
 
         private void QuotationForm_Load(object sender, EventArgs e)
         {
-
+            List<string> quotationVisibleFalseNames = QuotationDatagridCustomize.VisibleFalseNames;
+            ;
+            foreach (var item in quotationVisibleFalseNames)
+            {
+                dgQuotationAddedItems.Columns[item].Visible = false;
+            }
             DeletedQuotationMenu.MenuItems.Add(new MenuItem("Add to Quotation", DeletedQuotationMenu_Click));
             if (!modifyMod)
             {
@@ -2968,6 +2973,19 @@ namespace LoginForm.QuotationModule
                 dgQuotationAddedItems.Rows.Add();
                 dgQuotationAddedItems.Rows[0].Cells[0].Value = "1";
             }
+        }
+
+        private void btnCustomizeGrid_Click(object sender, EventArgs e)
+        {
+            frmQuotationGridCustomize form = new frmQuotationGridCustomize(dgQuotationAddedItems);
+            form.ShowDialog();
+            List<string> quotationVisibleFalseNames = QuotationDatagridCustomize.VisibleFalseNames;
+             ;
+            foreach (var item in quotationVisibleFalseNames)
+            {
+                dgQuotationAddedItems.Columns[item].Visible = false;
+            }
+
         }
     }
 }

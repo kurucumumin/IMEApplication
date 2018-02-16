@@ -143,9 +143,10 @@ namespace LoginForm
             AccountRepresentary.DataSource = IME.Workers.ToList();
             AccountRepresentary.DisplayMember = "NameLastName";
             AccountRepresentary.ValueMember = "WorkerID";
-            cbCountry.DataSource = IME.Countries.OrderBy(x=>x.Country_name).ToList();
+            cbCountry.DataSource = IME.Countries.OrderBy(a=>a.Country_name).ToList();
             cbCountry.DisplayMember = "Country_name";
             cbCountry.ValueMember = "ID";
+
             ContactType.DataSource = IME.ContactTypes.ToList();
             ContactType.ValueMember = "ID";
             ContactType.DisplayMember = "ContactTypeName";
@@ -245,7 +246,7 @@ namespace LoginForm
                     ContactMobilePhone.Text = a.mobilephone;
                     ContactPhone.Text = a.phone;
                     if (a.CustomerWorkerAdress != null) ContactAdress.SelectedItem = Int32.Parse(a.CustomerWorkerAdress.ToString());
-                    CommunicationLanguage.SelectedValue = CommunicationLanguage.SelectedValue = a.Language.ID;
+                    CommunicationLanguage.SelectedValue  = a.Language.ID;
                     if (a.Note != null) { ContactNotes.Text = a.Note.Note_name; } else { ContactNotes.Text = ""; }
 
                     //foreach (var a in contact1)
@@ -798,9 +799,20 @@ namespace LoginForm
             DialogResult dialogResult = MessageBox.Show("Are You Sure Delete Contact " + ContactListItem.contactName + " ?", "Delete", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                CustomerWorker cw = IME.CustomerWorkers.First(a => a.ID == ContactListItem.ID);
+
+                CustomerWorker cw = IME.CustomerWorkers.First(a => a.ID == (int)ContactList.SelectedValue);
                 IME.CustomerWorkers.Remove(cw);
                 IME.SaveChanges();
+                ContactType.SelectedIndex = -1;
+                ContactDepartment.SelectedIndex = -1;
+                ContactTitle.SelectedIndex = -1;
+                ContactName.Text = "";
+                ContactEmail.Text = "";
+                ContactPhone.Text = "";
+                ContactMobilePhone.Text = "";
+                ContactFAX.Text = "";
+                CommunicationLanguage.SelectedIndex = -1;
+                ContactNotes.Text = "";
                 ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
                 ContactList.DisplayMember = "cw_name";
                 ContactList.ValueMember = "ID";
