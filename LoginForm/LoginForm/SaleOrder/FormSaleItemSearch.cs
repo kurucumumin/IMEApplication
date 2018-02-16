@@ -55,7 +55,7 @@ namespace LoginForm.nmSaleOrder
                                      {
                                          ArticleNo = a.Article_No,
                                          ArticleDesc = a.Article_Desc,
-                                         MPN = a.MPN,
+                                         a.MPN,
                                          customerworker.Note.Note_name,
                                          //Supplier = a.Manufacturer,
                                          UniteCode = a.Unit_Content,
@@ -72,7 +72,7 @@ namespace LoginForm.nmSaleOrder
                              {
                                  ArticleNo = a.Article_No,
                                  ArticleDesc = a.Article_Desc,
-                                 MPN = a.MPN,
+                                 a.MPN,
                                  customerworker.Note.Note_name,
                                  //Supplier = a.Manufacturer,
                                  UniteCode = a.Unit_Content,
@@ -91,9 +91,9 @@ namespace LoginForm.nmSaleOrder
 
                              select new
                              {
-                                 ArticleNo = a.ArticleNo,
+                                 a.ArticleNo,
                                  ArticleDesc = a.ArticleDescription,
-                                 MPN = a.MPN,
+                                 a.MPN,
                                  customerworker.Note.Note_name,
                                  //Supplier = sup.s_name,
                                  UniteCode = a.PackSize,
@@ -112,7 +112,7 @@ namespace LoginForm.nmSaleOrder
                                      {
                                          ArticleNo = a.Article_No,
                                          ArticleDesc = a.Article_Desc,
-                                         MPN = a.MPN,
+                                         a.MPN,
                                          customerworker.Note.Note_name,
                                          dependantTable = "sd"
                                      }
@@ -124,7 +124,7 @@ namespace LoginForm.nmSaleOrder
                              {
                                  ArticleNo = a.Article_No,
                                  ArticleDesc = a.Article_Desc,
-                                 MPN = a.MPN,
+                                 a.MPN,
                                  customerworker.Note.Note_name,
                                  dependantTable = "sdp"
                                  //a.CofO,
@@ -136,9 +136,9 @@ namespace LoginForm.nmSaleOrder
                              let customerworker = customerworkeres.Select(customerworker1 => customerworker1).FirstOrDefault()
                              select new
                              {
-                                 ArticleNo = a.ArticleNo,
+                                 a.ArticleNo,
                                  ArticleDesc = a.ArticleDescription,
-                                 MPN = a.MPN,
+                                 a.MPN,
                                  customerworker.Note.Note_name,
                                  dependantTable = "ext"
                              }
@@ -153,10 +153,27 @@ namespace LoginForm.nmSaleOrder
 
         private void dgItemSearch_DoubleClick(object sender, EventArgs e)
         {
-            selectedItemCode = dgItemSearch.CurrentRow.Cells[0].Value.ToString();
-            selectedItemTable = dgItemSearch.CurrentRow.Cells[6].Value.ToString();
+            //selectedItemCode = dgItemSearch.CurrentRow.Cells[0].Value.ToString();
+            //selectedItemTable = dgItemSearch.CurrentRow.Cells[6].Value.ToString();
 
-            this.DialogResult = DialogResult.OK;
+            //this.DialogResult = DialogResult.OK;
+            //this.Close();
+
+            if (dgItemSearch.DataSource != null)
+            {
+                if (dgItemSearch.CurrentRow.Cells[2].Value.ToString() != "")
+                {
+                    classQuotationAdd.ItemCode = dgItemSearch.Rows[dgItemSearch.CurrentCell.RowIndex].Cells["ArticleNo"].Value.ToString();
+
+                    var MPNItemList = new IMEEntities().ArticleSearchwithMPN(dgItemSearch.CurrentRow.Cells[2].Value.ToString()).ToList();
+                    if (MPNItemList.Count > 1)
+                    {
+                        FormQuotationMPN form = new FormQuotationMPN(MPNItemList);
+                        form.ShowDialog();
+                    }
+                }
+            }
+            classQuotationAdd.ItemCode = dgItemSearch.Rows[dgItemSearch.CurrentCell.RowIndex].Cells["ArticleNo"].Value.ToString();
             this.Close();
 
             //SetItemToSend(ItemCode,dependantTable);
