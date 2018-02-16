@@ -15,7 +15,8 @@ namespace LoginForm.QuotationModule
     {
         #region Definitions
         GetWorkerService GetWorkerService = new GetWorkerService();
-
+        DataTable TotalCostList = new DataTable();
+        
         IMEEntities IME = new IMEEntities();
         decimal price;
         List<Tuple<int, decimal>> SubTotal = new List<Tuple<int, decimal>>();
@@ -146,6 +147,8 @@ namespace LoginForm.QuotationModule
 
         private void QuotationForm_Load(object sender, EventArgs e)
         {
+            TotalCostList.Columns.Add("dgNo",typeof(int));
+            TotalCostList.Columns.Add("cost", typeof(decimal));
             List<string> quotationVisibleFalseNames = QuotationDatagridCustomize.VisibleFalseNames;
             ;
             foreach (var item in quotationVisibleFalseNames)
@@ -698,7 +701,7 @@ namespace LoginForm.QuotationModule
                                 st = SubTotal.Where(a => a.Item1 == (Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells[0].Value.ToString()))).FirstOrDefault();
                                 lblsubtotal.Text = (decimal.Parse(lblsubtotal.Text) + st.Item2).ToString();
                             }
-
+                            
                             //ChangeCurr(rowindex);
                             if (dgQuotationAddedItems.CurrentCell == null) dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[rowindex].Cells[0];
                             GetMargin();
@@ -2981,6 +2984,10 @@ namespace LoginForm.QuotationModule
             form.ShowDialog();
             List<string> quotationVisibleFalseNames = QuotationDatagridCustomize.VisibleFalseNames;
              ;
+            foreach (DataGridViewColumn item in dgQuotationAddedItems.Columns)
+            {
+               if ( item.Name != "dgHZ" && item.Name != "dgCL" && item.Name != "dgCR") item.Visible = true;
+            }
             foreach (var item in quotationVisibleFalseNames)
             {
                 dgQuotationAddedItems.Columns[item].Visible = false;

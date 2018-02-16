@@ -1401,6 +1401,7 @@
             this.CustomerDataGrid.Size = new System.Drawing.Size(704, 284);
             this.CustomerDataGrid.TabIndex = 56;
             this.CustomerDataGrid.TabStop = false;
+            this.CustomerDataGrid.SelectionChanged += new System.EventHandler(this.CustomerDataGrid_SelectionChanged);
             this.CustomerDataGrid.Click += new System.EventHandler(this.CustomerDataGrid_Click);
             // 
             // Search
