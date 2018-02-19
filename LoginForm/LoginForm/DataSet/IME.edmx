@@ -140,6 +140,15 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="deductionAmount" Type="decimal" Precision="18" Scale="5" />
           <Property Name="narration" Type="varchar(max)" />
         </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="brandId" />
+          </Key>
+          <Property Name="brandId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="brandName" Type="varchar(max)" />
+          <Property Name="narration" Type="varchar(max)" />
+          <Property Name="manufacturer" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="BudgetDetail">
           <Key>
             <PropertyRef Name="budgetDetailsId" />
@@ -2092,6 +2101,17 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="pfNumber" Type="varchar(max)" />
           <Property Name="esiNumber" Type="varchar(max)" />
           <Property Name="defaultPackageId" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_Product">
+          <Key>
+            <PropertyRef Name="Article_No" />
+          </Key>
+          <Property Name="Article_No" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Article_Desc" Type="nvarchar" MaxLength="50" />
+          <Property Name="Unit_Measure" Type="nvarchar" MaxLength="50" />
+          <Property Name="Brandname" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <Association Name="FK__AccountLe__accou__5E74FADA">
           <End Role="AccountGroup" Type="Self.AccountGroup" Multiplicity="0..1" />
@@ -5985,6 +6005,9 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
         <Function Name="BatchViewByProductId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="productId" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="BrandView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="brandId" Type="numeric" Mode="In" />
+        </Function>
         <Function Name="BudgetDetailsDeleteWithMasterId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="budgetMasterId" Type="numeric" Mode="In" />
         </Function>
@@ -6766,7 +6789,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Parameter Name="WorkerId" Type="numeric" Mode="In" />
           <Parameter Name="lrNo" Type="varchar(max)" Mode="In" />
           <Parameter Name="transportationCompany" Type="varchar(max)" Mode="In" />
-          <Parameter Name="quotationNoId" Type="numeric" Mode="In" />
+          <Parameter Name="quotationNoId" Type="varchar(max)" Mode="In" />
           <Parameter Name="POS" Type="bit" Mode="In" />
           <Parameter Name="counterId" Type="numeric" Mode="In" />
           <Parameter Name="financialYearId" Type="numeric" Mode="In" />
@@ -7131,6 +7154,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <EntitySet Name="BankReconciliation" EntityType="Self.BankReconciliation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Batch" EntityType="Self.Batch" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BonusDeduction" EntityType="Self.BonusDeduction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BudgetDetail" EntityType="Self.BudgetDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BudgetMaster" EntityType="Self.BudgetMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Capital" EntityType="Self.Capital" Schema="dbo" store:Type="Tables" />
@@ -7275,6 +7299,14 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
     [SalaryVoucherDetail].[salary] AS [salary], 
     [SalaryVoucherDetail].[status] AS [status]
     FROM [dbo].[SalaryVoucherDetail] AS [SalaryVoucherDetail]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_Product" EntityType="Self.V_Product" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_Product].[Article_No] AS [Article_No], 
+    [V_Product].[Article_Desc] AS [Article_Desc], 
+    [V_Product].[Unit_Measure] AS [Unit_Measure], 
+    [V_Product].[Brandname] AS [Brandname]
+    FROM [dbo].[V_Product] AS [V_Product]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__AccountLe__accou__5E74FADA" Association="Self.FK__AccountLe__accou__5E74FADA">
             <End Role="AccountGroup" EntitySet="AccountGroup" />
@@ -8674,6 +8706,15 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="deductionAmount" Type="Decimal" Precision="18" Scale="5" />
           <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__BonusDedu__Worke__40E497F3" FromRole="BonusDeduction" ToRole="Worker" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="brandId" />
+          </Key>
+          <Property Name="brandId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="brandName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="narration" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="manufacturer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="BudgetDetail">
           <Key>
@@ -11199,6 +11240,15 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="SalaryVoucherMaster" Relationship="Self.FK__SalaryVou__salar__77FFC2B3" FromRole="SalaryVoucherDetail" ToRole="SalaryVoucherMaster" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__SalaryVou__emplo__78F3E6EC" FromRole="SalaryVoucherDetail" ToRole="Worker" />
+        </EntityType>
+        <EntityType Name="V_Product">
+          <Key>
+            <PropertyRef Name="Article_No" />
+          </Key>
+          <Property Name="Article_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Article_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Unit_Measure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Brandname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK__AccountLe__accou__5E74FADA">
           <End Role="AccountGroup" Type="Self.AccountGroup" Multiplicity="0..1" />
@@ -14877,6 +14927,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <EntitySet Name="BankReconciliations" EntityType="Self.BankReconciliation" />
           <EntitySet Name="Batches" EntityType="Self.Batch" />
           <EntitySet Name="BonusDeductions" EntityType="Self.BonusDeduction" />
+          <EntitySet Name="Brands" EntityType="Self.Brand" />
           <EntitySet Name="BudgetDetails" EntityType="Self.BudgetDetail" />
           <EntitySet Name="BudgetMasters" EntityType="Self.BudgetMaster" />
           <EntitySet Name="Capitals" EntityType="Self.Capital" />
@@ -15000,6 +15051,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <EntitySet Name="Workers" EntityType="Self.Worker" />
           <EntitySet Name="AdditionalCosts" EntityType="Self.AdditionalCost" />
           <EntitySet Name="SalaryVoucherDetails" EntityType="Self.SalaryVoucherDetail" />
+          <EntitySet Name="V_Product" EntityType="Self.V_Product" />
           <AssociationSet Name="FK__AccountLe__accou__5E74FADA" Association="Self.FK__AccountLe__accou__5E74FADA">
             <End Role="AccountGroup" EntitySet="AccountGroups" />
             <End Role="AccountLedger" EntitySet="AccountLedgers" />
@@ -16412,6 +16464,9 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImport Name="BatchViewByProductId" ReturnType="Collection(Decimal)">
             <Parameter Name="productId" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="BrandView" ReturnType="Collection(IMEModel.BrandView_Result)">
+            <Parameter Name="brandId" Mode="In" Type="Decimal" />
+          </FunctionImport>
           <FunctionImport Name="BudgetDetailsDeleteWithMasterId">
             <Parameter Name="budgetMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
@@ -17182,7 +17237,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="WorkerId" Mode="In" Type="Decimal" />
             <Parameter Name="lrNo" Mode="In" Type="String" />
             <Parameter Name="transportationCompany" Mode="In" Type="String" />
-            <Parameter Name="quotationNoId" Mode="In" Type="Decimal" />
+            <Parameter Name="quotationNoId" Mode="In" Type="String" />
             <Parameter Name="POS" Mode="In" Type="Boolean" />
             <Parameter Name="counterId" Mode="In" Type="Decimal" />
             <Parameter Name="financialYearId" Mode="In" Type="Decimal" />
@@ -17713,6 +17768,12 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="String" Name="chequeDate" Nullable="true" MaxLength="20" />
           <Property Type="Decimal" Name="debit" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="credit" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="BrandView_Result">
+          <Property Type="Decimal" Name="brandId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="brandName" Nullable="true" />
+          <Property Type="String" Name="narration" Nullable="true" />
+          <Property Type="String" Name="manufacturer" Nullable="true" />
         </ComplexType>
         <ComplexType Name="BudgetVariance_Result">
           <Property Type="Int64" Name="Sl_NO" Nullable="true" />
@@ -18768,6 +18829,16 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="bonusAmount" ColumnName="bonusAmount" />
                 <ScalarProperty Name="deductionAmount" ColumnName="deductionAmount" />
                 <ScalarProperty Name="narration" ColumnName="narration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="IMEModel.Brand">
+              <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="brandId" ColumnName="brandId" />
+                <ScalarProperty Name="brandName" ColumnName="brandName" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -20848,6 +20919,16 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="V_Product">
+            <EntityTypeMapping TypeName="IMEModel.V_Product">
+              <MappingFragment StoreEntitySet="V_Product">
+                <ScalarProperty Name="Article_No" ColumnName="Article_No" />
+                <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
+                <ScalarProperty Name="Unit_Measure" ColumnName="Unit_Measure" />
+                <ScalarProperty Name="Brandname" ColumnName="Brandname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <AssociationSetMapping Name="AuthRole" TypeName="IMEModel.AuthRole" StoreEntitySet="AuthRole">
             <EndProperty Name="AuthorizationValue">
               <ScalarProperty Name="AuthorizationID" ColumnName="AuthID" />
@@ -21140,6 +21221,16 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImportMapping FunctionImportName="BarcodeViewByBatchId" FunctionName="IMEModel.Store.BarcodeViewByBatchId" />
           <FunctionImportMapping FunctionImportName="BatchIdViewByProductId" FunctionName="IMEModel.Store.BatchIdViewByProductId" />
           <FunctionImportMapping FunctionImportName="BatchViewByProductId" FunctionName="IMEModel.Store.BatchViewByProductId" />
+          <FunctionImportMapping FunctionImportName="BrandView" FunctionName="IMEModel.Store.BrandView">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.BrandView_Result">
+                <ScalarProperty Name="brandId" ColumnName="brandId" />
+                <ScalarProperty Name="brandName" ColumnName="brandName" />
+                <ScalarProperty Name="narration" ColumnName="narration" />
+                <ScalarProperty Name="manufacturer" ColumnName="manufacturer" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="BudgetDetailsDeleteWithMasterId" FunctionName="IMEModel.Store.BudgetDetailsDeleteWithMasterId" />
           <FunctionImportMapping FunctionImportName="BudgetVariance" FunctionName="IMEModel.Store.BudgetVariance">
             <ResultMapping>

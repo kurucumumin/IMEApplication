@@ -35,6 +35,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<BankReconciliation> BankReconciliations { get; set; }
         public virtual DbSet<Batch> Batches { get; set; }
         public virtual DbSet<BonusDeduction> BonusDeductions { get; set; }
+        public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<BudgetDetail> BudgetDetails { get; set; }
         public virtual DbSet<BudgetMaster> BudgetMasters { get; set; }
         public virtual DbSet<Capital> Capitals { get; set; }
@@ -158,6 +159,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<Worker> Workers { get; set; }
         public virtual DbSet<AdditionalCost> AdditionalCosts { get; set; }
         public virtual DbSet<SalaryVoucherDetail> SalaryVoucherDetails { get; set; }
+        public virtual DbSet<V_Product> V_Product { get; set; }
     
         public virtual ObjectResult<Nullable<decimal>> AccountGroupAddWithIdentity(string accountGroupName, string groupUnder, string narration, Nullable<bool> isDefault, string nature, string affectGrossProfit)
         {
@@ -814,6 +816,15 @@ namespace LoginForm.DataSet
                 new ObjectParameter("productId", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("BatchViewByProductId", productIdParameter);
+        }
+    
+        public virtual ObjectResult<BrandView_Result> BrandView(Nullable<decimal> brandId)
+        {
+            var brandIdParameter = brandId.HasValue ?
+                new ObjectParameter("brandId", brandId) :
+                new ObjectParameter("brandId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BrandView_Result>("BrandView", brandIdParameter);
         }
     
         public virtual int BudgetDetailsDeleteWithMasterId(Nullable<decimal> budgetMasterId)

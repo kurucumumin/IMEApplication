@@ -648,6 +648,12 @@
     <Compile Include="DataSet\BonusDeduction.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\Brand.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\BrandView_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\BudgetDetail.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1280,6 +1286,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\VoucherTypeView_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\V_Product.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Worker.cs">
