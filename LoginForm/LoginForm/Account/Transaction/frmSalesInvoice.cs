@@ -1772,7 +1772,7 @@ namespace LoginForm
             SalesOrderDetailsSP spSalesOrderDetails = new SalesOrderDetailsSP();
             ProductInfo infoproduct = new ProductInfo();
             SalesMasterSP spSalesMaster = new SalesMasterSP();
-            BrandInfo InfoBrand = new BrandInfo();
+            Brand InfoBrand = new Brand();
             Tax infoTax = new Tax();
             TaxSP SPTax = new TaxSP();
             try
@@ -1830,7 +1830,7 @@ namespace LoginForm
                         dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoicePurchaseRate"].Value = infoproduct.PurchaseRate;
                         dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoiceSalesRate"].Value = infoproduct.SalesRate;
                         InfoBrand = new BrandSP().BrandView(infoproduct.BrandId);
-                        dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoiceBrand"].Value = InfoBrand.BrandName;
+                        dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoiceBrand"].Value = InfoBrand.brandName;
                         infoTax = SPTax.TaxViewByProductId(Convert.ToDecimal(dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoiceProductId"].Value).ToString());
                         dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvcmbSalesInvoiceTaxName"].Value = infoTax.TaxID;
                         isValueChange = false;
@@ -1882,7 +1882,7 @@ namespace LoginForm
             SalesQuotationDetailsSP SPQuotationDetails = new SalesQuotationDetailsSP();
             ProductInfo infoproduct = new ProductInfo();
             SalesMasterSP spSalesMaster = new SalesMasterSP();
-            BrandInfo InfoBrand = new BrandInfo();
+            Brand InfoBrand = new Brand();
             Tax infoTax = new Tax();
             TaxSP SPTax = new TaxSP();
             try
@@ -1939,7 +1939,7 @@ namespace LoginForm
                         dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoicePurchaseRate"].Value = infoproduct.PurchaseRate;
                         dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoiceSalesRate"].Value = infoproduct.SalesRate;
                         InfoBrand = new BrandSP().BrandView(infoproduct.BrandId);
-                        dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoiceBrand"].Value = InfoBrand.BrandName;
+                        dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoiceBrand"].Value = InfoBrand.brandName;
                         infoTax = SPTax.TaxViewByProductId(Convert.ToDecimal(dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoiceProductId"].Value).ToString());
                         dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvcmbSalesInvoiceTaxName"].Value = infoTax.TaxID;
                         dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoiceUnitConversionId"].Value = drowDetails["unitConversionId"].ToString();
@@ -1992,7 +1992,7 @@ namespace LoginForm
             DeliveryNoteDetailsSP SPDeliveryNoteDetails = new DeliveryNoteDetailsSP();
             ProductInfo infoproduct = new ProductInfo();
             SalesMasterSP spSalesMaster = new SalesMasterSP();
-            BrandInfo InfoBrand = new BrandInfo();
+            Brand InfoBrand = new Brand();
             Tax infoTax = new Tax();
             TaxSP SPTax = new TaxSP();
             try
@@ -2040,7 +2040,7 @@ namespace LoginForm
                         dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoicePurchaseRate"].Value = infoproduct.PurchaseRate;
                         dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoiceSalesRate"].Value = infoproduct.SalesRate;
                         InfoBrand = new BrandSP().BrandView(infoproduct.BrandId);
-                        dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoiceBrand"].Value = InfoBrand.BrandName;
+                        dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoiceBrand"].Value = InfoBrand.brandName;
                         infoTax = SPTax.TaxViewByProductId(Convert.ToDecimal(dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvtxtSalesInvoiceProductId"].Value).ToString());
                         dgvSalesInvoice.Rows[dgvSalesInvoice.Rows.Count - 2].Cells["dgvcmbSalesInvoiceTaxName"].Value = infoTax.TaxID;
                         isValueChange = false;

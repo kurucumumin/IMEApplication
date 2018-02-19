@@ -12,14 +12,28 @@ namespace LoginForm.Account.Services
 {
     class BrandSP
     {
-        public BrandInfo BrandView(decimal brandId)
+        /// <summary>
+        /// Function to get particular values from brand table based on the parameter
+        /// </summary>
+        /// <param name="brandId"></param>
+        /// <returns></returns>
+        public Brand BrandView(decimal brandId)
         {
-            IMEEntities IME = new IMEEntities();
-            BrandInfo brandinfo = new BrandInfo();
+            Brand brand = new Brand();
+            try
+            {
+                var b = new IMEEntities().BrandView(brandId).FirstOrDefault();
 
-            //TO DO: Yapılacaklar !!!!!
-
-            return brandinfo;
+                brand.brandId = b.brandId;
+                brand.brandName = b.brandName;
+                brand.narration = b.narration;
+                brand.manufacturer = b.manufacturer;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return brand;
         }
     }
 }
