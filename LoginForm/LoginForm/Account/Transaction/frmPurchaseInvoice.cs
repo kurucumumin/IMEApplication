@@ -175,16 +175,14 @@ namespace LoginForm
                 if (open == null)
                 {
                     frmAccountLedgerObj.WindowState = FormWindowState.Normal;
-                    //frmAccountLedgerObj.MdiParent = formMDI.MDIObj;
-                    //TODO Alt satır açılacak CallFromPurchaseInvoice
-                    //frmAccountLedgerObj.CallFromPurchaseInvoice(this);
+                    frmAccountLedgerObj.MdiParent = FormMain.MDIObj;
+                    frmAccountLedgerObj.CallFromPurchaseInvoice(this);
                 }
                 else
                 {
                     //open.MdiParent = formMDI.MDIObj;
                     open.BringToFront();
-                    //TODO Alt satır açılacak CallFromPurchaseInvoice
-                    //open.CallFromPurchaseInvoice(this);
+                    open.CallFromPurchaseInvoice(this);
                     if (open.WindowState == FormWindowState.Minimized)
                     {
                         open.WindowState = FormWindowState.Normal;

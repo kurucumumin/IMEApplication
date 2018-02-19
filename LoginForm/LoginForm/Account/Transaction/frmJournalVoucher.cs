@@ -277,7 +277,6 @@ namespace LoginForm
             CurrencyList.AddRange(IME.Currencies.ToList());
             dgvcmbCurrency.DataSource = CurrencyList;
             dgvcmbCurrency.DisplayMember = "currencyName";
-            //TODO Crashes here
             dgvcmbCurrency.ValueMember = "currencyID";
 
             if (IME.Settings.Where(a => a.settingsName == "MultiCurrency").FirstOrDefault().status == "Yes")

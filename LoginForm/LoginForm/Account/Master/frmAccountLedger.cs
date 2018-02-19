@@ -1357,25 +1357,24 @@ namespace LoginForm
         /// <summary>
         /// Function to call this form from frmPurchaseInvoice for creating new account ledger
         /// </summary>
-        /// <param name="frmPurchaseInvoiceObj"></param>    
-        //TODO OpenMiracle Function
-        //public void CallFromPurchaseInvoice(frmPurchaseInvoice frmPurchaseInvoiceObj)
-        //{
-        //    try
-        //    {
-        //        dgvAccountLedger.Enabled = false;
-        //        this.frmPurchaseInvoiceObj = frmPurchaseInvoiceObj;
-        //        base.Show();
-        //        dgvAccountLedger.Enabled = false;
-        //        txtLedgerNameSearch.Enabled = false;
-        //        cmbGroupSearch.Enabled = false;
-        //        btnSearch.Enabled = false;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("AL35:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        /// <param name="frmPurchaseInvoiceObj"></param>
+        public void CallFromPurchaseInvoice(frmPurchaseInvoice frmPurchaseInvoiceObj)
+        {
+            try
+            {
+                dgvAccountLedger.Enabled = false;
+                this.frmPurchaseInvoiceObj = frmPurchaseInvoiceObj;
+                base.Show();
+                dgvAccountLedger.Enabled = false;
+                txtLedgerNameSearch.Enabled = false;
+                cmbGroupSearch.Enabled = false;
+                btnSearch.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("AL35:" + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to call this form from frmPurchaseReturn for creating new account ledger
         /// </summary>

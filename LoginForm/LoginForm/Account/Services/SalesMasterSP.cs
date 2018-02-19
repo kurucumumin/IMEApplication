@@ -451,11 +451,10 @@ namespace LoginForm.Account.Services
                 return isBillByBill;
             }
 
-            public decimal SalesMasterAdd(SalesMasterInfo salesmasterinfo)
+            public decimal SalesMasterAdd(SalesMaster salesmasterinfo)
             {
-
                 IMEEntities IME = new IMEEntities();
-                var decSalesMasterId =IME.SalesMasterAdd(salesmasterinfo.VoucherNo, salesmasterinfo.InvoiceNo, salesmasterinfo.VoucherTypeId, salesmasterinfo.SuffixPrefixId ,salesmasterinfo.Date, salesmasterinfo.CreditPeriod, salesmasterinfo.LedgerId, salesmasterinfo.PricinglevelId, salesmasterinfo.SalesAccount, salesmasterinfo.DeliveryNoteMasterId, salesmasterinfo.OrderMasterId, salesmasterinfo.Narration, salesmasterinfo.CustomerName, salesmasterinfo.ExchangeRateId, salesmasterinfo.TaxAmount, salesmasterinfo.AdditionalCost, salesmasterinfo.BillDiscount, salesmasterinfo.GrandTotal, salesmasterinfo.TotalAmount, salesmasterinfo.EmployeeId, salesmasterinfo.LrNo, salesmasterinfo.TransportationCompany, salesmasterinfo.QuotationMasterId, salesmasterinfo.POS, salesmasterinfo.CounterId, salesmasterinfo.FinancialYearId);
+                var decSalesMasterId =IME.SalesMasterAdd(salesmasterinfo.voucherNo, salesmasterinfo.invoiceNo, salesmasterinfo.voucherTypeId, salesmasterinfo.suffixPrefixId ,salesmasterinfo.date, salesmasterinfo.creditPeriod, salesmasterinfo.ledgerId, salesmasterinfo.pricinglevelId, salesmasterinfo.salesAccount, salesmasterinfo.deliveryNoteMasterId, salesmasterinfo.orderMasterId, salesmasterinfo.narration, salesmasterinfo.customerName, salesmasterinfo.exchangeRateId, salesmasterinfo.taxAmount, salesmasterinfo.additionalCost, salesmasterinfo.billDiscount, salesmasterinfo.grandTotal, salesmasterinfo.totalAmount, salesmasterinfo.WorkerId, salesmasterinfo.lrNo, salesmasterinfo.transportationCompany, salesmasterinfo.quotationNoId, salesmasterinfo.POS, salesmasterinfo.counterId, salesmasterinfo.financialYearId);
                 return decimal.Parse(decSalesMasterId.ToString());
             }
 

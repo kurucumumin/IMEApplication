@@ -44,14 +44,14 @@ namespace LoginForm.Account.Services
             return dt;
         }
 
-        public decimal SalesBillTaxAdd(SalesBillTaxInfo salesbilltaxinfo)
+        public decimal SalesBillTaxAdd(SalesBillTax salesbilltaxinfo)
         {
             decimal dcSalesBillTaxId = 0;
             IMEEntities IME = new IMEEntities();
             SalesBillTax sbt = new SalesBillTax();
-            sbt.taxId= salesbilltaxinfo.TaxId;
-            sbt.taxAmount = salesbilltaxinfo.TaxAmount;
-            sbt.salesMasterId = salesbilltaxinfo.SalesMasterId;
+            sbt.taxId= salesbilltaxinfo.taxId;
+            sbt.taxAmount = salesbilltaxinfo.taxAmount;
+            sbt.salesMasterId = salesbilltaxinfo.salesMasterId;
             IME.SalesBillTaxes.Add(sbt);
             dcSalesBillTaxId = sbt.salesBillTaxId;
             return dcSalesBillTaxId;

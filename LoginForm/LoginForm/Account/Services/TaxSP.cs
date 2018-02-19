@@ -421,7 +421,7 @@ namespace LoginForm.Account.Services
         public Tax TaxViewByProductId(string strProductCode)
         {
             Tax taxInfo = new Tax();
-            //TODO Ürün bazında vergilendirme
+            //TODO 2 Ürün bazında vergilendirme
             //SqlDataReader sdrreader = null;
             //try
             //{

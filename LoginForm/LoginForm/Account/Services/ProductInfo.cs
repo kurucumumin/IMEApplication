@@ -39,9 +39,6 @@ namespace LoginForm.Account.Services
         private string _narration;
         private bool _isActive;
         private bool _isshowRemember;
-        private string _extra1;
-        private string _extra2;
-        private DateTime _extraDate;
         private string _partNo;
 
         public string ProductId

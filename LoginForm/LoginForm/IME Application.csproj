@@ -347,7 +347,6 @@
     </Compile>
     <Compile Include="Account\Services\AccountGroupSP.cs" />
     <Compile Include="Account\Services\AccountLedgerSP.cs" />
-    <Compile Include="Account\Services\AdditionalCostInfo.cs" />
     <Compile Include="Account\Services\AdditionalCostSP.cs" />
     <Compile Include="Account\Services\AdvancePaymentSP.cs" />
     <Compile Include="Account\Services\AreaSP.cs" />
@@ -361,7 +360,6 @@
     <Compile Include="Account\Services\CreditNoteDetailsSP.cs" />
     <Compile Include="Account\Services\CreditNoteMasterSP.cs" />
     <Compile Include="Account\Services\CurrencySP.cs" />
-    <Compile Include="Account\Services\DebitNoteDetailsInfo.cs" />
     <Compile Include="Account\Services\DebitNoteDetailsSP.cs" />
     <Compile Include="Account\Services\DebitNoteMasterSP.cs" />
     <Compile Include="Account\Services\DeliveryNoteDetailsSP.cs" />
@@ -378,7 +376,6 @@
     <Compile Include="Account\Services\MaterialReceiptMasterSP.cs" />
     <Compile Include="Account\Services\MonthlySalarySP.cs" />
     <Compile Include="Account\Services\NumToText.cs" />
-    <Compile Include="Account\Services\PartyBalanceInfo.cs" />
     <Compile Include="Account\Services\PartyBalanceSP.cs" />
     <Compile Include="Account\Services\PayHeadSP.cs" />
     <Compile Include="Account\Services\PaymentMasterSP.cs" />
@@ -400,11 +397,8 @@
     <Compile Include="Account\Services\ReceiptMasterSP.cs" />
     <Compile Include="Account\Services\ReminderSP.cs" />
     <Compile Include="Account\Services\RouteSP.cs" />
-    <Compile Include="Account\Services\SalesBillTaxInfo.cs" />
     <Compile Include="Account\Services\SalesBillTaxSP.cs" />
-    <Compile Include="Account\Services\SalesDetailsInfo.cs" />
     <Compile Include="Account\Services\SalesDetailsSP.cs" />
-    <Compile Include="Account\Services\SalesMasterInfo.cs" />
     <Compile Include="Account\Services\SalesMasterSP.cs" />
     <Compile Include="Account\Services\SalesOrderDetailsSP.cs" />
     <Compile Include="Account\Services\SalesOrderMasterSP.cs" />
@@ -418,11 +412,9 @@
     <Compile Include="Account\Services\ServiceSP.cs" />
     <Compile Include="Account\Services\SettingsSP.cs" />
     <Compile Include="Account\Services\spBankReconciliation.cs" />
-    <Compile Include="Account\Services\StockPostingInfo.cs" />
     <Compile Include="Account\Services\StockPostingSP.cs" />
     <Compile Include="Account\Services\SuffixPrefixSP.cs" />
     <Compile Include="Account\Services\TaxDetailsSP.cs" />
-    <Compile Include="Account\Services\TaxInfo.cs" />
     <Compile Include="Account\Services\TaxSP.cs" />
     <Compile Include="Account\Services\TransactionsGeneralFill.cs" />
     <Compile Include="Account\Services\UnitConvertionSP.cs" />
@@ -1120,6 +1112,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SalesInvoiceDetailsViewByProductNameForSI_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\SalesInvoiceGridfillAgainestDeliveryNoteUsingDeliveryNoteDetails_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SalesInvoiceSalesBillTaxViewAllBySalesMasterId_Result.cs">

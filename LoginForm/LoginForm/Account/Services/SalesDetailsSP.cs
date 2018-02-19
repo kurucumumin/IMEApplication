@@ -384,10 +384,10 @@ namespace LoginForm.Account.Services
                 return dt;
             }
 
-            public void SalesDetailsEdit(SalesDetailsInfo salesdetailsinfo)
+            public void SalesDetailsEdit(SalesDetail salesdetailsinfo)
             {
                 IMEEntities IME = new IMEEntities();
-                IME.SalesDetailsEdit(salesdetailsinfo.SalesDetailsId, salesdetailsinfo.SalesMasterId, salesdetailsinfo.DeliveryNoteDetailsId, salesdetailsinfo.OrderDetailsId, salesdetailsinfo.QuotationDetailsId, salesdetailsinfo.ProductId, salesdetailsinfo.Qty, salesdetailsinfo.Rate, salesdetailsinfo.UnitId, salesdetailsinfo.UnitConversionId, salesdetailsinfo.Discount, salesdetailsinfo.TaxId, salesdetailsinfo.BatchId, salesdetailsinfo.GodownId, salesdetailsinfo.RackId, salesdetailsinfo.TaxAmount, salesdetailsinfo.GrossAmount, salesdetailsinfo.NetAmount, salesdetailsinfo.Amount, salesdetailsinfo.SlNo, salesdetailsinfo.ExtraDate, salesdetailsinfo.Extra1, salesdetailsinfo.Extra2);
+                IME.SalesDetailsEdit(salesdetailsinfo.salesDetailsId, salesdetailsinfo.salesMasterId, salesdetailsinfo.deliveryNoteDetailsId, salesdetailsinfo.orderDetailsId, salesdetailsinfo.quotationDetailsId, salesdetailsinfo.productId, salesdetailsinfo.qty, salesdetailsinfo.rate, salesdetailsinfo.unitId, salesdetailsinfo.unitConversionId, salesdetailsinfo.discount, salesdetailsinfo.taxId, salesdetailsinfo.batchId, salesdetailsinfo.godownId, salesdetailsinfo.rackId, salesdetailsinfo.taxAmount, salesdetailsinfo.grossAmount, salesdetailsinfo.netAmount, salesdetailsinfo.amount, salesdetailsinfo.slNo);
                     //SqlCommand sccmd = new SqlCommand("SalesDetailsEdit", sqlcon);
 
             }
@@ -414,30 +414,30 @@ namespace LoginForm.Account.Services
                 return dt;
             }
 
-            public void SalesDetailsAdd(SalesDetailsInfo salesdetailsinfo)
+            public void SalesDetailsAdd(SalesDetail salesdetailsinfo)
             {
                 IMEEntities IME = new IMEEntities();
                 SalesDetail sd = new SalesDetail();
-                sd.amount = salesdetailsinfo.Amount;
-                sd.batchId = salesdetailsinfo.BatchId;
-                sd.deliveryNoteDetailsId = salesdetailsinfo.DeliveryNoteDetailsId;
-                sd.discount = salesdetailsinfo.Discount;
-                sd.godownId = salesdetailsinfo.GodownId;
-                sd.grossAmount = salesdetailsinfo.GrossAmount;
-                sd.netAmount = salesdetailsinfo.NetAmount;
-                sd.orderDetailsId = salesdetailsinfo.OrderDetailsId;
-                sd.productId = salesdetailsinfo.ProductId;
-                sd.qty = salesdetailsinfo.Qty;
-                sd.quotationDetailsId = salesdetailsinfo.QuotationDetailsId;
-                sd.rackId = salesdetailsinfo.RackId;
-                sd.rate = salesdetailsinfo.Rate;
-                sd.salesDetailsId = salesdetailsinfo.SalesDetailsId;
-                sd.salesMasterId = salesdetailsinfo.SalesMasterId;
-                sd.slNo = salesdetailsinfo.SlNo;
-                sd.taxAmount = salesdetailsinfo.TaxAmount;
-                sd.taxId = salesdetailsinfo.TaxId;
-                sd.unitConversionId = salesdetailsinfo.UnitConversionId;
-                sd.unitId = salesdetailsinfo.UnitId;
+                sd.amount = salesdetailsinfo.amount;
+                sd.batchId = salesdetailsinfo.batchId;
+                sd.deliveryNoteDetailsId = salesdetailsinfo.deliveryNoteDetailsId;
+                sd.discount = salesdetailsinfo.discount;
+                sd.godownId = salesdetailsinfo.godownId;
+                sd.grossAmount = salesdetailsinfo.grossAmount;
+                sd.netAmount = salesdetailsinfo.netAmount;
+                sd.orderDetailsId = salesdetailsinfo.orderDetailsId;
+                sd.productId = salesdetailsinfo.productId;
+                sd.qty = salesdetailsinfo.qty;
+                sd.quotationDetailsId = salesdetailsinfo.quotationDetailsId;
+                sd.rackId = salesdetailsinfo.rackId;
+                sd.rate = salesdetailsinfo.rate;
+                sd.salesDetailsId = salesdetailsinfo.salesDetailsId;
+                sd.salesMasterId = salesdetailsinfo.salesMasterId;
+                sd.slNo = salesdetailsinfo.slNo;
+                sd.taxAmount = salesdetailsinfo.taxAmount;
+                sd.taxId = salesdetailsinfo.taxId;
+                sd.unitConversionId = salesdetailsinfo.unitConversionId;
+                sd.unitId = salesdetailsinfo.unitId;
                 IME.SalesDetails.Add(sd);
                 IME.SaveChanges();
 

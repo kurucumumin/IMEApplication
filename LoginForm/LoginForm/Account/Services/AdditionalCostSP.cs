@@ -87,10 +87,10 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
         }
-        public void AdditionalCostEditByVoucherTypeIdAndVoucherNo(AdditionalCostInfo additionalcostinfo)
+        public void AdditionalCostEditByVoucherTypeIdAndVoucherNo(AdditionalCost additionalcostinfo)
         {
             IMEEntities IME = new IMEEntities();
-            IME.AdditionalCostEditByVoucherTypeIdAndVoucherNo(additionalcostinfo.VoucherTypeId, additionalcostinfo.VoucherNo, additionalcostinfo.LedgerId, additionalcostinfo.Debit, additionalcostinfo.Credit, additionalcostinfo.ExtraDate, additionalcostinfo.Extra1, additionalcostinfo.Extra2);
+            IME.AdditionalCostEditByVoucherTypeIdAndVoucherNo(additionalcostinfo.voucherTypeId, additionalcostinfo.voucherNo, additionalcostinfo.ledgerId, additionalcostinfo.debit, additionalcostinfo.credit);
         }
 
         //public void AdditionalCostDelete(decimal AdditionalCostId)
@@ -98,11 +98,5 @@ namespace LoginForm.Account.Services
         //    IMEEntities IME = new IMEEntities();
         //    IME.AdditionalCostDelete(AdditionalCostId);
         //}
-
-        public void AdditionalCostAdd(AdditionalCostInfo additionalcostinfo)
-        {
-            IMEEntities IME = new IMEEntities();
-            IME.AdditionalCostAdd(additionalcostinfo.VoucherTypeId, additionalcostinfo.VoucherNo, additionalcostinfo.LedgerId,additionalcostinfo.Debit, additionalcostinfo.Credit);
-        }
     }
 }

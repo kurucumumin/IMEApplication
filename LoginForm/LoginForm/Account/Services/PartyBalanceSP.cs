@@ -10,10 +10,10 @@ namespace LoginForm.Account.Services
 {
     class PartyBalanceSP
     {
-        public void PartyBalanceEditByVoucherNoVoucherTypeIdAndReferenceType(PartyBalanceInfo infoPartyBalance)
+        public void PartyBalanceEditByVoucherNoVoucherTypeIdAndReferenceType(PartyBalance infoPartyBalance)
         {
             IMEEntities IME = new IMEEntities();
-            IME.PartyBalanceEditByVoucherNoVoucherTypeIdAndReferenceType(infoPartyBalance.Date, infoPartyBalance.LedgerId, infoPartyBalance.VoucherTypeId, infoPartyBalance.VoucherNo, infoPartyBalance.AgainstVoucherTypeId, infoPartyBalance.AgainstVoucherNo, infoPartyBalance.InvoiceNo, infoPartyBalance.AgainstInvoiceNo, infoPartyBalance.ReferenceType, infoPartyBalance.Debit, infoPartyBalance.Credit, infoPartyBalance.CreditPeriod, infoPartyBalance.ExchangeRateId, infoPartyBalance.FinancialYearId, infoPartyBalance.ExtraDate, infoPartyBalance.Extra1, infoPartyBalance.Extra2);
+            IME.PartyBalanceEditByVoucherNoVoucherTypeIdAndReferenceType(infoPartyBalance.date, infoPartyBalance.ledgerId, infoPartyBalance.voucherTypeId, infoPartyBalance.voucherNo, infoPartyBalance.againstVoucherTypeId, infoPartyBalance.againstVoucherNo, infoPartyBalance.invoiceNo, infoPartyBalance.againstInvoiceNo, infoPartyBalance.referenceType, infoPartyBalance.debit, infoPartyBalance.credit, infoPartyBalance.creditPeriod, infoPartyBalance.exchangeRateId, infoPartyBalance.financialYearId);
         }
 
         public void PartyBalanceAdd(PartyBalance partybalanceinfo)

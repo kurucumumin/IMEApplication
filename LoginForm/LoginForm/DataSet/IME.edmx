@@ -5923,9 +5923,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Parameter Name="ledgerId" Type="numeric" Mode="In" />
           <Parameter Name="debit" Type="decimal" Mode="In" />
           <Parameter Name="credit" Type="decimal" Mode="In" />
-          <Parameter Name="extraDate" Type="datetime" Mode="In" />
-          <Parameter Name="extra1" Type="varchar(max)" Mode="In" />
-          <Parameter Name="extra2" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="AdditionalCostViewAllByVoucherTypeIdAndVoucherNo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
@@ -6248,9 +6245,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Parameter Name="creditPeriod" Type="int" Mode="In" />
           <Parameter Name="exchangeRateId" Type="numeric" Mode="In" />
           <Parameter Name="financialYearId" Type="numeric" Mode="In" />
-          <Parameter Name="extraDate" Type="datetime" Mode="In" />
-          <Parameter Name="extra1" Type="varchar(max)" Mode="In" />
-          <Parameter Name="extra2" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="PartyBalanceViewByVoucherNoAndVoucherType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
@@ -6669,9 +6663,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Parameter Name="netAmount" Type="decimal" Mode="In" />
           <Parameter Name="amount" Type="decimal" Mode="In" />
           <Parameter Name="slNo" Type="int" Mode="In" />
-          <Parameter Name="extraDate" Type="datetime" Mode="In" />
-          <Parameter Name="extra1" Type="varchar(max)" Mode="In" />
-          <Parameter Name="extra2" Type="varchar(max)" Mode="In" />
         </Function>
         <Function Name="SalesInvoiceAdditionalCostViewByVoucherNoUnderVoucherType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherTypeId" Type="decimal" Mode="In" />
@@ -6693,6 +6684,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
         <Function Name="SalesInvoiceDetailsViewByProductNameForSI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
           <Parameter Name="productName" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="SalesInvoiceGridfillAgainestDeliveryNoteUsingDeliveryNoteDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="deliveryNoteMasterId" Type="numeric" Mode="In" />
+          <Parameter Name="salesMasterId" Type="numeric" Mode="In" />
+          <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
         </Function>
         <Function Name="SalesInvoiceQuantityDetailsAgainstSalesReturn" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
@@ -6770,7 +6766,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Parameter Name="WorkerId" Type="numeric" Mode="In" />
           <Parameter Name="lrNo" Type="varchar(max)" Mode="In" />
           <Parameter Name="transportationCompany" Type="varchar(max)" Mode="In" />
-          <Parameter Name="quotationMasterId" Type="numeric" Mode="In" />
+          <Parameter Name="quotationNoId" Type="numeric" Mode="In" />
           <Parameter Name="POS" Type="bit" Mode="In" />
           <Parameter Name="counterId" Type="numeric" Mode="In" />
           <Parameter Name="financialYearId" Type="numeric" Mode="In" />
@@ -16354,9 +16350,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
             <Parameter Name="debit" Mode="In" Type="Decimal" />
             <Parameter Name="credit" Mode="In" Type="Decimal" />
-            <Parameter Name="extraDate" Mode="In" Type="DateTime" />
-            <Parameter Name="extra1" Mode="In" Type="String" />
-            <Parameter Name="extra2" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="AdditionalCostViewAllByVoucherTypeIdAndVoucherNo" ReturnType="Collection(IMEModel.AdditionalCostViewAllByVoucherTypeIdAndVoucherNo_Result)">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
@@ -16668,9 +16661,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="creditPeriod" Mode="In" Type="Int32" />
             <Parameter Name="exchangeRateId" Mode="In" Type="Decimal" />
             <Parameter Name="financialYearId" Mode="In" Type="Decimal" />
-            <Parameter Name="extraDate" Mode="In" Type="DateTime" />
-            <Parameter Name="extra1" Mode="In" Type="String" />
-            <Parameter Name="extra2" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="PartyBalanceViewByVoucherNoAndVoucherType" ReturnType="Collection(IMEModel.PartyBalanceViewByVoucherNoAndVoucherType_Result)">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
@@ -17089,9 +17079,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="netAmount" Mode="In" Type="Decimal" />
             <Parameter Name="amount" Mode="In" Type="Decimal" />
             <Parameter Name="slNo" Mode="In" Type="Int32" />
-            <Parameter Name="extraDate" Mode="In" Type="DateTime" />
-            <Parameter Name="extra1" Mode="In" Type="String" />
-            <Parameter Name="extra2" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SalesInvoiceAdditionalCostViewByVoucherNoUnderVoucherType" ReturnType="Collection(IMEModel.SalesInvoiceAdditionalCostViewByVoucherNoUnderVoucherType_Result)">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
@@ -17113,6 +17100,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <FunctionImport Name="SalesInvoiceDetailsViewByProductNameForSI" ReturnType="Collection(IMEModel.SalesInvoiceDetailsViewByProductNameForSI_Result)">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
             <Parameter Name="productName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SalesInvoiceGridfillAgainestDeliveryNoteUsingDeliveryNoteDetails" ReturnType="Collection(IMEModel.SalesInvoiceGridfillAgainestDeliveryNoteUsingDeliveryNoteDetails_Result)">
+            <Parameter Name="deliveryNoteMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SalesInvoiceQuantityDetailsAgainstSalesReturn" ReturnType="Collection(Int32)">
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
@@ -17190,7 +17182,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
             <Parameter Name="WorkerId" Mode="In" Type="Decimal" />
             <Parameter Name="lrNo" Mode="In" Type="String" />
             <Parameter Name="transportationCompany" Mode="In" Type="String" />
-            <Parameter Name="quotationMasterId" Mode="In" Type="Decimal" />
+            <Parameter Name="quotationNoId" Mode="In" Type="Decimal" />
             <Parameter Name="POS" Mode="In" Type="Boolean" />
             <Parameter Name="counterId" Mode="In" Type="Decimal" />
             <Parameter Name="financialYearId" Mode="In" Type="Decimal" />
@@ -18400,6 +18392,27 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Type="Int32" Name="taxId" Nullable="false" />
           <Property Type="Decimal" Name="taxAmount" Nullable="true" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="Amount" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="SalesInvoiceGridfillAgainestDeliveryNoteUsingDeliveryNoteDetails_Result">
+          <Property Type="Decimal" Name="deliveryNoteDetailsId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="deliveryNoteMasterId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="productId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="barcode" Nullable="true" />
+          <Property Type="Decimal" Name="batchId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="batchNo" Nullable="true" />
+          <Property Type="String" Name="unitName" Nullable="true" />
+          <Property Type="String" Name="productCode" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="productName" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="qty" Nullable="true" Precision="24" Scale="2" />
+          <Property Type="Decimal" Name="rate" Nullable="true" Precision="24" Scale="2" />
+          <Property Type="Decimal" Name="currencyId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="unitConversionId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="taxId" Nullable="false" />
+          <Property Type="String" Name="voucherNo" Nullable="true" />
+          <Property Type="String" Name="invoiceNo" Nullable="true" />
+          <Property Type="Decimal" Name="voucherTypeId" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="conversionRate" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="amount" Nullable="true" Precision="24" Scale="2" />
         </ComplexType>
         <ComplexType Name="SalesInvoiceSalesBillTaxViewAllBySalesMasterId_Result">
           <Property Type="Int32" Name="taxId" Nullable="false" />
@@ -22106,6 +22119,31 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
                 <ScalarProperty Name="taxId" ColumnName="taxId" />
                 <ScalarProperty Name="taxAmount" ColumnName="taxAmount" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SalesInvoiceGridfillAgainestDeliveryNoteUsingDeliveryNoteDetails" FunctionName="IMEModel.Store.SalesInvoiceGridfillAgainestDeliveryNoteUsingDeliveryNoteDetails">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.SalesInvoiceGridfillAgainestDeliveryNoteUsingDeliveryNoteDetails_Result">
+                <ScalarProperty Name="deliveryNoteDetailsId" ColumnName="deliveryNoteDetailsId" />
+                <ScalarProperty Name="deliveryNoteMasterId" ColumnName="deliveryNoteMasterId" />
+                <ScalarProperty Name="productId" ColumnName="productId" />
+                <ScalarProperty Name="barcode" ColumnName="barcode" />
+                <ScalarProperty Name="batchId" ColumnName="batchId" />
+                <ScalarProperty Name="batchNo" ColumnName="batchNo" />
+                <ScalarProperty Name="unitName" ColumnName="unitName" />
+                <ScalarProperty Name="productCode" ColumnName="productCode" />
+                <ScalarProperty Name="productName" ColumnName="productName" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="rate" ColumnName="rate" />
+                <ScalarProperty Name="currencyId" ColumnName="currencyId" />
+                <ScalarProperty Name="unitConversionId" ColumnName="unitConversionId" />
+                <ScalarProperty Name="taxId" ColumnName="taxId" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="invoiceNo" ColumnName="invoiceNo" />
+                <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
+                <ScalarProperty Name="conversionRate" ColumnName="conversionRate" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
