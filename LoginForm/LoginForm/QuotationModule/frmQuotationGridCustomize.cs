@@ -24,6 +24,7 @@ namespace LoginForm.QuotationModule
 
         public frmQuotationGridCustomize( DataGridView dg)
         {
+
             datagrid = dg;
             InitializeComponent();
             CheckBox box;
@@ -31,26 +32,27 @@ namespace LoginForm.QuotationModule
             int y = 10;
             for (int i = 0; i < datagrid.Columns.Count; i++)
             {
-
-                box = new CheckBox();
-                box.Tag = i.ToString();
-                box.Text = datagrid.Columns[i].Name;
-                box.AutoSize = true;
-                if (10 + previousLength >= this.Width)
+                if (datagrid.Columns[i].Name != "dgHZ" && datagrid.Columns[i].Name != "dgCL" && datagrid.Columns[i].Name != "dgCR")
                 {
-                    y = y + 30;
-                    previousLength = 0;
+                    box = new CheckBox();
+                    box.Tag = i.ToString();
+                    box.Text = datagrid.Columns[i].Name;
+                    box.AutoSize = true;
+                    if (10 + previousLength >= this.Width)
+                    {
+                        y = y + 30;
+                        previousLength = 0;
+                    }
+                    box.Location = new Point(10 + previousLength, y);
+                    previousLength = previousLength + box.Width;
+                    cboxList.Add(box);
+                    this.Controls.Add(box);
+                    ischecked.Add(false);
                 }
-                box.Location = new Point(10 + previousLength, y);
-                previousLength = previousLength + box.Width;
-                cboxList.Add(box);
-                this.Controls.Add(box);
-                ischecked.Add(false);
             }
             ExportButton.Location = new Point(this.Width / 2, y + 30);
             btnSelectAll.Location = new Point(0, y + 30);
             btnClearAll.Location = new Point(btnSelectAll.Width + 5, y + 30);
-
         }
 
         private void btnSelectAll_Click(object sender, EventArgs e)
