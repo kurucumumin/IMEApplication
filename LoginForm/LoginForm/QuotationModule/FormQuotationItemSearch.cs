@@ -18,6 +18,7 @@ namespace LoginForm.QuotationModule
 
         public FormQuotationItemSearch(string ItemCode)
         {
+            classQuotationAdd.ItemCode = null;
             InitializeComponent();
             ArticleCode = ItemCode;
             if (ArticleCode != null)
