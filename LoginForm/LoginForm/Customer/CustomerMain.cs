@@ -293,6 +293,7 @@ namespace LoginForm
 
         private void MainCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
+            SubCategory.Text = "";
             int c_categoryID;
             try {
                 c_categoryID = (int)((ComboBox)sender).SelectedValue;
