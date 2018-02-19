@@ -15,7 +15,7 @@ namespace LoginForm.Account.Services
     {
         public decimal SalesInvoiceProductRateForSales(int currencyID)
         {
-            //TODO check Again
+            //TODO 6 check Again
             decimal decRate = 0;
             IMEEntities IME = new IMEEntities();
             decRate = (decimal)IME.ExchangeRates.Where(a=>a.currencyId== currencyID).OrderByDescending(a=>a.date).FirstOrDefault().rate;

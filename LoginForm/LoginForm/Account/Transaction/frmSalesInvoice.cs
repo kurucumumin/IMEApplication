@@ -3077,7 +3077,7 @@ namespace LoginForm
                             infoStockPosting.financialYearId = (decimal)Utils.getManagement().CurrentFinancialYear;
                             if (dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceDeliveryNoteDetailsId"].Value != null)
                             {
-                                // TODO bizim stock sistemimiz çalışmalı
+                                // TODO @ bizim stock sistemimiz çalışmalı
 
                                 //if (Convert.ToDecimal(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceDeliveryNoteDetailsId"].Value.ToString()) != 0)
                                 //{
@@ -4250,7 +4250,7 @@ namespace LoginForm
                         }
                         spSalesDetails.SalesDetailsEdit(InfoSalesDetails);
                     }
-                    //TODO  stock   changing
+                    //TODO stock changing
                     infoStockPosting.date = Convert.ToDateTime(txtDate.Text.Trim().ToString());
                     //TODO 5 : ProductID Int değil
                     infoStockPosting.productId = Convert.ToInt32(dgvSalesInvoice.Rows[inI].Cells["dgvtxtSalesInvoiceProductId"].Value.ToString());

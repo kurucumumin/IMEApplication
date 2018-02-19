@@ -206,7 +206,7 @@ namespace LoginForm.PurchaseOrder
         {
             List<string> TXTList = new List<string>();
             string Line1;
-            //TODO 's' hiçbiryerde kullanılmadığı için yorumlandı
+            //TODO ! 's' hiçbiryerde kullanılmadığı için yorumlandı
             //string s = rowList[0].Cells["SaleID"].Value.ToString();
             string orderN= rowList[0].Cells[10].Value.ToString();
             string billTo = rowList[0].Cells[11].Value.ToString();

@@ -217,7 +217,8 @@ namespace LoginForm
             }
             //QuoCurrencyName.SelectedValue = c.CurrNameQuo ?? -1;
             //InvCurrencyName.SelectedValue = c.CurrNameInv ?? -1;
-            AddressType.SelectedItem = null; cbDefaultInvoiceAdress.Checked = true;
+            //AddressType.SelectedItem = null;
+            cbDefaultInvoiceAdress.Checked = true;
             if (c.Note != null) CompanyNotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
             if (c.customerAccountantNoteID != null) AccountingNotes.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name;
             if(c.creditlimit!=null) CreditLimit.Text = c.creditlimit.ToString();
@@ -1087,6 +1088,7 @@ namespace LoginForm
             ContactEmail.Text = "";
             AdressList.DataSource = null;
             ContactList.DataSource = null;
+            AddressType.SelectedIndex = -1;
             #endregion
 
         }
@@ -1404,6 +1406,7 @@ namespace LoginForm
                     if (a.isInvoiceAddress == null || !(bool)a.isInvoiceAddress) { cbDefaultInvoiceAdress.Checked = false;  } else { cbDefaultInvoiceAdress.Checked = true; }
                     txtAdressTitle.Text = a.AdressTitle;
                     cbCountry.SelectedItem = a.Country;
+                    AddressType.SelectedItem = a.AddressType;
                     if (a.City != null) cbCity.SelectedIndex = cbCity.FindStringExact(a.City.City_name);
                     if (a.Town != null) cbTown.SelectedIndex = cbTown.FindStringExact(a.Town.Town_name);
                     PostCode.Text = a.PostCode;

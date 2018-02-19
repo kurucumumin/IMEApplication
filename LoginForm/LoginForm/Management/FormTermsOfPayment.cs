@@ -160,10 +160,9 @@ namespace LoginForm.ManagementModule
 
         private void populateListBox()
         {
-            //TODO CEEMMMMMMM
-            //lbPaymentList.DataSource = new IMEEntities().OrderBy(p => p.OrderNo).PaymentTerms.ToList();
-            //lbPaymentList.DisplayMember = "term_name";
-            //lbPaymentList.ValueMember = "ID";
+            lbPaymentList.DataSource = new IMEEntities().PaymentTerms.OrderBy(p => p.OrderNo).ToList();
+            lbPaymentList.DisplayMember = "term_name";
+            lbPaymentList.ValueMember = "ID";
 
             cbCount.SelectedIndex = 0;
             cbType.SelectedIndex = 0;

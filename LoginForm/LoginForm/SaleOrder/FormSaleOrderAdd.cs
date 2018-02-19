@@ -543,9 +543,9 @@ namespace LoginForm.nmSaleOrder
                     {
                         txtGrossWeight.Text = (Decimal.Parse(txtStandartWeight.Text) * Decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
                     }
-                    //TODO Cost hesaplama
+                    //TODO ! Cost hesaplama
                     dgSaleAddedItems.Rows[rowindex].Cells["dgCost"].Value = classQuotationAdd.GetCost(dgSaleAddedItems.Rows[rowindex].Cells["dgProductCode"].Value.ToString(), Int32.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString("G29");
-                    //TODO LandingCost hesaplatma
+                    //TODO ! LandingCost hesaplatma
                     if (dgSaleAddedItems.Rows[rowindex].Cells["dgCost"].Value.ToString() != "-1") { String.Format("{0:0.0000}", Decimal.Parse(dgSaleAddedItems.Rows[rowindex].Cells["dgCost"].Value.ToString())).ToString(); }
                     GetLandingCost(rowindex);
                     //  dgQuotationAddedItems.Rows[rowindex].Cells["dgLandingCost"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgLandingCost"].Value.ToString())).ToString();

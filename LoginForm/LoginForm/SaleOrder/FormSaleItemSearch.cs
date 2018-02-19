@@ -236,7 +236,7 @@ namespace LoginForm.nmSaleOrder
                     item.Height = (decimal)itemSD.Heigh;
                     item.Width = (decimal)itemSD.Width;
                     item.Length = (decimal)itemSD.Length;
-                    // TODO  TotalWeight hesaplaması - Grossweight farkı
+                    // TODO ! TotalWeight hesaplaması - Grossweight farkı
                     item.TotalWeight = (decimal)(item.UnitWeight * itemSD.Unit_Content);
                     item.UC = (int)itemSD.Unit_Content;
                     item.HZ = (itemSD.Hazardous_Ind == "Y") ? true : false;

@@ -352,7 +352,6 @@
     <Compile Include="Account\Services\AreaSP.cs" />
     <Compile Include="Account\Services\BankReconciliationSP.cs" />
     <Compile Include="Account\Services\BatchSP.cs" />
-    <Compile Include="Account\Services\BrandInfo.cs" />
     <Compile Include="Account\Services\BrandSP.cs" />
     <Compile Include="Account\Services\BudgetDetailsSP.cs" />
     <Compile Include="Account\Services\BudgetMasterSP.cs" />
