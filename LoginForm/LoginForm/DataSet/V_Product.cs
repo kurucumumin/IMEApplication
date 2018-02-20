@@ -18,5 +18,6 @@ namespace LoginForm.DataSet
         public string Article_Desc { get; set; }
         public string Unit_Measure { get; set; }
         public string Brandname { get; set; }
+        public string dependantTable { get; set; }
     }
 }

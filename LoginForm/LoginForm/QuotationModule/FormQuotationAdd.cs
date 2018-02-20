@@ -110,6 +110,7 @@ namespace LoginForm.QuotationModule
             btnSave.Enabled = false;
             LowMarginLimit = (Decimal)Utils.getManagement().LowMarginLimit;
             modifyQuotation(q1);
+            //cbCurrency.SelectedValue=
 
             //fillCustomer();
             cbSMethod.SelectedIndex = (int)q1.ShippingMethodID;
@@ -168,10 +169,7 @@ namespace LoginForm.QuotationModule
                 lblVat.Text = Utils.getManagement().VAT.ToString();
                 #region ComboboxFiller.
 
-                cbCurrency.DataSource = IME.Currencies.ToList();
-                cbCurrency.DisplayMember = "currencyName";
-                cbCurrency.ValueMember = "currencyID";
-                cbCurrency.SelectedIndex = 0;
+                
                 dtpDate.Value = Convert.ToDateTime(IME.CurrentDate().First());
                 cbPayment.DataSource = IME.PaymentMethods.ToList();
                 cbPayment.DisplayMember = "Payment";
@@ -181,6 +179,10 @@ namespace LoginForm.QuotationModule
                 cbRep.DisplayMember = "NameLastName";
                 cbRep.SelectedValue = Utils.getCurrentUser().WorkerID;
                 cbFactor.Text = Utils.getManagement().Factor.ToString();
+                cbCurrency.DataSource = IME.Currencies.ToList();
+                cbCurrency.DisplayMember = "currencyName";
+                cbCurrency.ValueMember = "currencyID";
+                cbCurrency.SelectedValue = Utils.getManagement().DefaultCurrency;
                 #endregion
             }
             GetCurrency(dtpDate.Value);
@@ -1508,8 +1510,10 @@ namespace LoginForm.QuotationModule
             if (chkbForFinance.Checked) { q.ForFinancelIsTrue = 1; } else { q.ForFinancelIsTrue = 0; }
             if (ckItemCost.Checked) { q.IsItemCost = 1; } else { q.IsItemCost = 0; }
             if (ckWeightCost.Checked) { q.IsWeightCost = 1; } else { q.IsWeightCost = 0; }
+            q.CurrencyID = (decimal)cbCurrency.SelectedValue;
             if (ckCustomsDuties.Checked) { q.IsCustomsDuties = 1; } else { q.IsCustomsDuties = 0; }
             q.ShippingMethodID = cbSMethod.SelectedIndex;
+            
             try { q.DiscOnSubTotal2 = decimal.Parse(txtTotalDis2.Text); } catch { }
             try { q.ExtraCharges = decimal.Parse(txtExtraChanges.Text); } catch { }
             if (chkVat.Checked) { q.IsVatValue = 1; } else { q.IsVatValue = 0; }
@@ -1574,6 +1578,7 @@ namespace LoginForm.QuotationModule
             if (ckWeightCost.Checked) { q.IsWeightCost = 1; } else { q.IsWeightCost = 0; }
             if (ckCustomsDuties.Checked) { q.IsCustomsDuties = 1; } else { q.IsCustomsDuties = 0; }
             q.ShippingMethodID = cbSMethod.SelectedIndex;
+            q.CurrencyID = (decimal)cbCurrency.SelectedValue;
             try { q.DiscOnSubTotal2 = decimal.Parse(txtTotalDis2.Text); } catch { }
             try { q.ExtraCharges = decimal.Parse(txtExtraChanges.Text); } catch { }
             if (chkVat.Checked) { q.IsVatValue = 1; } else { q.IsVatValue = 0; }
@@ -1612,7 +1617,7 @@ namespace LoginForm.QuotationModule
             }
             if (Note1 != 0) q.NoteForUsID = Note1;
             if (Note2 != 0) q.NoteForCustomerID = Note2;
-
+            IME = new IMEEntities();
             IME.Quotations.Add(q);
             IME.SaveChanges();
         }
@@ -1643,7 +1648,7 @@ namespace LoginForm.QuotationModule
                     if (dgQuotationAddedItems.Rows[i].Cells["dgSSM"].Value != null) qd.SSM = Int32.Parse(dgQuotationAddedItems.Rows[i].Cells["dgSSM"].Value.ToString());
                     if (dgQuotationAddedItems.Rows[i].Cells["dgUnitWeigt"].Value != null) qd.UnitWeight = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUnitWeigt"].Value.ToString());
                     if (dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value != null) qd.Marge = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString());
-                    qd.DependantTable = dgQuotationAddedItems.Rows[i].Cells["dgDependantTable"].Value.ToString();
+                    if(dgQuotationAddedItems.Rows[i].Cells["dgDependantTable"].Value!=null) qd.DependantTable = dgQuotationAddedItems.Rows[i].Cells["dgDependantTable"].Value.ToString();
                     IME.QuotationDetails.Add(qd);
                     IME.SaveChanges();
                 }
@@ -1687,13 +1692,13 @@ namespace LoginForm.QuotationModule
             txtQuotationNo.Text = q.QuotationNo;
             txtRFQNo.Text = q.RFQNo;
             CustomerCode.Text = q.Customer.ID;
+            cbCurrency.SelectedValue = q.CurrencyID;
             cbFactor.Text = q.Factor.ToString();
             if (q.NoteForCustomerID != null) txtNoteForCustomer.Text = IME.Notes.Where(a => a.ID == q.NoteForCustomerID).FirstOrDefault().Note_name;
             if (q.NoteForCustomerID != null) txtNoteForUs.Text = IME.Notes.Where(a => a.ID == q.NoteForUsID).FirstOrDefault().Note_name;
             if (q.ForFinancelIsTrue == 1) { chkbForFinance.Checked = true; }
             fillCustomer();
             #region QuotationDetails
-            cbCurrency.SelectedItem = q.CurrName;
             //cbCurrType.SelectedItem = q.CurrType;
             cbWorkers.SelectedItem = q.Customer.MainContactID;
             foreach (var item in q.QuotationDetails)
@@ -1754,6 +1759,10 @@ namespace LoginForm.QuotationModule
             //buradaki yazılanların sırası önemli sırayı değiştirmeyin
             lblsubtotal.Text = q.SubTotal.ToString();
             txtTotalDis2.Text = q.DiscOnSubTotal2.ToString();
+            if (txtTotalDis2.Text == null || txtTotalDis2.Text == "") txtTotalDis2.Text = "0";
+            decimal totaldis = (Decimal.Parse(txtTotalDis2.Text) * 100) / decimal.Parse(lblsubtotal.Text);
+            txtTotalDis.Text = totaldis.ToString();
+            lbltotal.Text = (Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)).ToString();
             txtExtraChanges.Text = q.ExtraCharges.ToString();
             lblVat.Text = q.VatValue.ToString();
             if (q.IsVatValue == 1) { chkVat.Checked = true; } else { chkVat.Checked = false; }
@@ -2237,8 +2246,8 @@ namespace LoginForm.QuotationModule
 
         private void btnCreateRev_Click(object sender, EventArgs e)
         {
-            try
-            {
+            //try
+            //{
                 //string newID = NewQuotationID();
                 //if (txtQuotationNo.Text != newID) { txtQuotationNo.Text = newID; }
                 if (ControlSave())
@@ -2246,11 +2255,11 @@ namespace LoginForm.QuotationModule
                     QuotationSave(txtQuotationNo.Text);
                     QuotationDetailsSave();
                 }
-            }
-            catch
-            {
-                MessageBox.Show("Error Occured", "Failure");
-            }
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Error Occured", "Failure");
+            //}
         }
 
         private void CustomerCode_MouseDoubleClick(object sender, MouseEventArgs e)
