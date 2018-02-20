@@ -295,6 +295,7 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="categoryID" Type="int" />
           <Property Name="subcategoryID" Type="int" />
           <Property Name="ThirdPartyCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="Capital" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="CustomerAddress">
           <Key>
@@ -4035,7 +4036,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Quotation__Curre__7CAF6937">
+        <Association Name="FK__Quotation__Curre__0A096455">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -7951,7 +7952,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="PurchaseReturnMaster" EntitySet="PurchaseReturnMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__Quotation__Curre__7CAF6937" Association="Self.FK__Quotation__Curre__7CAF6937">
+          <AssociationSet Name="FK__Quotation__Curre__0A096455" Association="Self.FK__Quotation__Curre__0A096455">
             <End Role="Currency" EntitySet="Currency" />
             <End Role="Quotation" EntitySet="Quotation" />
           </AssociationSet>
@@ -8850,7 +8851,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="subunitName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Companies" Relationship="Self.FK__Company__currenc__0371755F" FromRole="Currency" ToRole="Company" />
           <NavigationProperty Name="Managements" Relationship="Self.FK__Managemen__Defau__253C7D7E" FromRole="Currency" ToRole="Management" />
-          <NavigationProperty Name="Quotations" Relationship="Self.FK__Quotation__Curre__7CAF6937" FromRole="Currency" ToRole="Quotation" />
+          <NavigationProperty Name="Quotations" Relationship="Self.FK__Quotation__Curre__0A096455" FromRole="Currency" ToRole="Quotation" />
           <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__currencyI__2156DE01" FromRole="Currency" ToRole="Stock" />
           <NavigationProperty Name="ExchangeRates" Relationship="Self.FK__tbl_Excha__curre__52442E1F" FromRole="Currency" ToRole="ExchangeRate" />
         </EntityType>
@@ -8888,6 +8889,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="categoryID" Type="Int32" />
           <Property Name="subcategoryID" Type="Int32" />
           <Property Name="ThirdPartyCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Capital" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__Customer__accoun__6EF57B66" FromRole="Customer" ToRole="Worker" />
           <NavigationProperty Name="CustomerCategory" Relationship="Self.FK__Customer__catego__636EBA21" FromRole="Customer" ToRole="CustomerCategory" />
           <NavigationProperty Name="Note" Relationship="Self.FK__Customer__custom__3B75D760" FromRole="Customer" ToRole="Notes" />
@@ -9991,7 +9993,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
           <Property Name="GrossTotal" Type="Decimal" Precision="18" Scale="4" />
           <Property Name="CurrencyID" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="Currency" Relationship="Self.FK__Quotation__Curre__7CAF6937" FromRole="Quotation" ToRole="Currency" />
+          <NavigationProperty Name="Currency" Relationship="Self.FK__Quotation__Curre__0A096455" FromRole="Quotation" ToRole="Currency" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__Quotation__Custo__00750D23" FromRole="Quotation" ToRole="Customer" />
           <NavigationProperty Name="DeliveryNoteDetails" Relationship="Self.FK__DeliveryN__quota__39CD8610" FromRole="Quotation" ToRole="DeliveryNoteDetail" />
           <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__quota__25077354" FromRole="Quotation" ToRole="DeliveryNoteMaster" />
@@ -11891,7 +11893,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Quotation__Curre__7CAF6937">
+        <Association Name="FK__Quotation__Curre__0A096455">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -15269,7 +15271,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Management" EntitySet="Managements" />
           </AssociationSet>
-          <AssociationSet Name="FK__Quotation__Curre__7CAF6937" Association="Self.FK__Quotation__Curre__7CAF6937">
+          <AssociationSet Name="FK__Quotation__Curre__0A096455" Association="Self.FK__Quotation__Curre__0A096455">
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Quotation" EntitySet="Quotations" />
           </AssociationSet>
@@ -19002,6 +19004,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="categoryID" ColumnName="categoryID" />
                 <ScalarProperty Name="subcategoryID" ColumnName="subcategoryID" />
                 <ScalarProperty Name="ThirdPartyCode" ColumnName="ThirdPartyCode" />
+                <ScalarProperty Name="Capital" ColumnName="Capital" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
