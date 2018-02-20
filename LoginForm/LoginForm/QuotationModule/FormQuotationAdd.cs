@@ -147,6 +147,12 @@ namespace LoginForm.QuotationModule
 
         private void QuotationForm_Load(object sender, EventArgs e)
         {
+            if (txtCustomerName.Text == null || txtCustomerName.Text == "")
+            {
+                btnContactAdd.Enabled = false;
+                btnContactUpdate.Enabled = false;
+            }
+
             TotalCostList.Columns.Add("dgNo",typeof(int));
             TotalCostList.Columns.Add("cost", typeof(decimal));
             List<string> quotationVisibleFalseNames = QuotationDatagridCustomize.VisibleFalseNames;
@@ -221,6 +227,12 @@ namespace LoginForm.QuotationModule
 
         private void fillCustomer()
         {
+            if (txtCustomerName.Text != null || txtCustomerName.Text != "")
+            {
+                btnContactAdd.Enabled = true;
+                btnContactUpdate.Enabled = true;
+            }
+
             if (!modifyMod)
             {
                 CustomerCode.Text = classQuotationAdd.customerID;

@@ -267,7 +267,7 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           </Key>
           <Property Name="ID" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="c_name" Type="nvarchar" MaxLength="50" />
-          <Property Name="discountrate" Type="int" />
+          <Property Name="discountrate" Type="decimal" Precision="6" Scale="4" />
           <Property Name="paymentmethodID" Type="int" />
           <Property Name="creditlimit" Type="int" />
           <Property Name="webadress" Type="nvarchar" MaxLength="50" />
@@ -279,7 +279,7 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="isactive" Type="int" />
           <Property Name="rateIDinvoice" Type="int" />
           <Property Name="taxoffice" Type="nvarchar" MaxLength="150" />
-          <Property Name="taxnumber" Type="int" />
+          <Property Name="taxnumber" Type="nvarchar" MaxLength="50" />
           <Property Name="MainContactID" Type="int" />
           <Property Name="CurrTypeInv" Type="nvarchar" MaxLength="15" />
           <Property Name="CurrNameInv" Type="nvarchar" MaxLength="15" />
@@ -295,6 +295,7 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="categoryID" Type="int" />
           <Property Name="subcategoryID" Type="int" />
           <Property Name="ThirdPartyCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="Capital" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="CustomerAddress">
           <Key>
@@ -302,7 +303,6 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CustomerID" Type="nvarchar" MaxLength="15" />
-          <Property Name="ContactID" Type="int" />
           <Property Name="PostCode" Type="nvarchar" MaxLength="50" />
           <Property Name="AdressDetails" Type="nvarchar" MaxLength="200" />
           <Property Name="isDeliveryAddress" Type="bit" />
@@ -1148,6 +1148,7 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="suffixPrefixId" Type="numeric" Precision="18" Scale="0" />
           <Property Name="DeliveryDate" Type="datetime" />
           <Property Name="GrossTotal" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="CurrencyID" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="QuotationDetail">
           <Key>
@@ -2107,11 +2108,13 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         <EntityType Name="V_Product">
           <Key>
             <PropertyRef Name="Article_No" />
+            <PropertyRef Name="dependantTable" />
           </Key>
           <Property Name="Article_No" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Article_Desc" Type="nvarchar" MaxLength="50" />
           <Property Name="Unit_Measure" Type="nvarchar" MaxLength="50" />
           <Property Name="Brandname" Type="nvarchar" MaxLength="100" />
+          <Property Name="dependantTable" Type="varchar" MaxLength="3" Nullable="false" />
         </EntityType>
         <Association Name="FK__AccountLe__accou__5E74FADA">
           <End Role="AccountGroup" Type="Self.AccountGroup" Multiplicity="0..1" />
@@ -2482,18 +2485,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Principal>
             <Dependent Role="CustomerAddress">
               <PropertyRef Name="CityID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CustomerA__Conta__45BE5BA9">
-          <End Role="CustomerWorker" Type="Self.CustomerWorker" Multiplicity="0..1" />
-          <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CustomerWorker">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="CustomerAddress">
-              <PropertyRef Name="ContactID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -4042,6 +4033,18 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Principal>
             <Dependent Role="PurchaseReturnMaster">
               <PropertyRef Name="voucherTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Quotation__Curre__0A096455">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="currencyID" />
+            </Principal>
+            <Dependent Role="Quotation">
+              <PropertyRef Name="CurrencyID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -7305,7 +7308,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
     [V_Product].[Article_No] AS [Article_No], 
     [V_Product].[Article_Desc] AS [Article_Desc], 
     [V_Product].[Unit_Measure] AS [Unit_Measure], 
-    [V_Product].[Brandname] AS [Brandname]
+    [V_Product].[Brandname] AS [Brandname], 
+    [V_Product].[dependantTable] AS [dependantTable]
     FROM [dbo].[V_Product] AS [V_Product]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__AccountLe__accou__5E74FADA" Association="Self.FK__AccountLe__accou__5E74FADA">
@@ -7430,10 +7434,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </AssociationSet>
           <AssociationSet Name="FK__CustomerA__CityI__4E53A1AA" Association="Self.FK__CustomerA__CityI__4E53A1AA">
             <End Role="City" EntitySet="City" />
-            <End Role="CustomerAddress" EntitySet="CustomerAddress" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CustomerA__Conta__45BE5BA9" Association="Self.FK__CustomerA__Conta__45BE5BA9">
-            <End Role="CustomerWorker" EntitySet="CustomerWorker" />
             <End Role="CustomerAddress" EntitySet="CustomerAddress" />
           </AssociationSet>
           <AssociationSet Name="FK__CustomerA__Count__503BEA1C" Association="Self.FK__CustomerA__Count__503BEA1C">
@@ -7951,6 +7951,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <AssociationSet Name="FK__PurchaseR__vouch__19EAC663" Association="Self.FK__PurchaseR__vouch__19EAC663">
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="PurchaseReturnMaster" EntitySet="PurchaseReturnMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Quotation__Curre__0A096455" Association="Self.FK__Quotation__Curre__0A096455">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="Quotation" EntitySet="Quotation" />
           </AssociationSet>
           <AssociationSet Name="FK__Quotation__Custo__00750D23" Association="Self.FK__Quotation__Custo__00750D23">
             <End Role="Customer" EntitySet="Customer" />
@@ -8847,6 +8851,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="subunitName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Companies" Relationship="Self.FK__Company__currenc__0371755F" FromRole="Currency" ToRole="Company" />
           <NavigationProperty Name="Managements" Relationship="Self.FK__Managemen__Defau__253C7D7E" FromRole="Currency" ToRole="Management" />
+          <NavigationProperty Name="Quotations" Relationship="Self.FK__Quotation__Curre__0A096455" FromRole="Currency" ToRole="Quotation" />
           <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__currencyI__2156DE01" FromRole="Currency" ToRole="Stock" />
           <NavigationProperty Name="ExchangeRates" Relationship="Self.FK__tbl_Excha__curre__52442E1F" FromRole="Currency" ToRole="ExchangeRate" />
         </EntityType>
@@ -8856,7 +8861,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </Key>
           <Property Name="ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="c_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="discountrate" Type="Int32" />
+          <Property Name="discountrate" Type="Decimal" Precision="6" Scale="4" />
           <Property Name="paymentmethodID" Type="Int32" />
           <Property Name="creditlimit" Type="Int32" />
           <Property Name="webadress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -8868,7 +8873,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="isactive" Type="Int32" />
           <Property Name="rateIDinvoice" Type="Int32" />
           <Property Name="taxoffice" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="taxnumber" Type="Int32" />
+          <Property Name="taxnumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MainContactID" Type="Int32" />
           <Property Name="CurrTypeInv" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="CurrNameInv" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
@@ -8884,6 +8889,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="categoryID" Type="Int32" />
           <Property Name="subcategoryID" Type="Int32" />
           <Property Name="ThirdPartyCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Capital" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__Customer__accoun__6EF57B66" FromRole="Customer" ToRole="Worker" />
           <NavigationProperty Name="CustomerCategory" Relationship="Self.FK__Customer__catego__636EBA21" FromRole="Customer" ToRole="CustomerCategory" />
           <NavigationProperty Name="Note" Relationship="Self.FK__Customer__custom__3B75D760" FromRole="Customer" ToRole="Notes" />
@@ -8906,7 +8912,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CustomerID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="ContactID" Type="Int32" />
           <Property Name="PostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AdressDetails" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="isDeliveryAddress" Type="Boolean" />
@@ -8919,7 +8924,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <NavigationProperty Name="City" Relationship="Self.FK__CustomerA__CityI__4E53A1AA" FromRole="CustomerAddress" ToRole="City" />
           <NavigationProperty Name="Country" Relationship="Self.FK__CustomerA__Count__503BEA1C" FromRole="CustomerAddress" ToRole="Country" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__CustomerA__Custo__44CA3770" FromRole="CustomerAddress" ToRole="Customer" />
-          <NavigationProperty Name="CustomerWorker" Relationship="Self.FK__CustomerA__Conta__45BE5BA9" FromRole="CustomerAddress" ToRole="CustomerWorker" />
           <NavigationProperty Name="Town" Relationship="Self.FK__CustomerA__TownI__2FEF161B" FromRole="CustomerAddress" ToRole="Town" />
           <NavigationProperty Name="SaleOrders" Relationship="Self.FK__SaleOrder__Deliv__21A0F6C4" FromRole="CustomerAddress" ToRole="SaleOrder" />
           <NavigationProperty Name="SaleOrders1" Relationship="Self.FK__SaleOrder__Invoi__20ACD28B" FromRole="CustomerAddress" ToRole="SaleOrder" />
@@ -8979,7 +8983,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <NavigationProperty Name="ContactType" Relationship="Self.FK__CustomerW__Conta__4CC05EF3" FromRole="CustomerWorker" ToRole="ContactType" />
           <NavigationProperty Name="Customers" Relationship="Self.FK__Customer__MainCo__19AACF41" FromRole="CustomerWorker" ToRole="Customer" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__CustomerW__custo__4316F928" FromRole="CustomerWorker" ToRole="Customer" />
-          <NavigationProperty Name="CustomerAddresses" Relationship="Self.FK__CustomerA__Conta__45BE5BA9" FromRole="CustomerWorker" ToRole="CustomerAddress" />
           <NavigationProperty Name="CustomerDepartment" Relationship="Self.FK__CustomerW__depar__44FF419A" FromRole="CustomerWorker" ToRole="CustomerDepartment" />
           <NavigationProperty Name="CustomerTitle" Relationship="Self.FK__CustomerW__title__45F365D3" FromRole="CustomerWorker" ToRole="CustomerTitle" />
           <NavigationProperty Name="Note" Relationship="Self.FK__CustomerW__custo__4222D4EF" FromRole="CustomerWorker" ToRole="Notes" />
@@ -9989,6 +9992,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="suffixPrefixId" Type="Decimal" Precision="18" Scale="0" />
           <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
           <Property Name="GrossTotal" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CurrencyID" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Currency" Relationship="Self.FK__Quotation__Curre__0A096455" FromRole="Quotation" ToRole="Currency" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__Quotation__Custo__00750D23" FromRole="Quotation" ToRole="Customer" />
           <NavigationProperty Name="DeliveryNoteDetails" Relationship="Self.FK__DeliveryN__quota__39CD8610" FromRole="Quotation" ToRole="DeliveryNoteDetail" />
           <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__quota__25077354" FromRole="Quotation" ToRole="DeliveryNoteMaster" />
@@ -11244,11 +11249,13 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         <EntityType Name="V_Product">
           <Key>
             <PropertyRef Name="Article_No" />
+            <PropertyRef Name="dependantTable" />
           </Key>
           <Property Name="Article_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Article_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Unit_Measure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Brandname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="dependantTable" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <Association Name="FK__AccountLe__accou__5E74FADA">
           <End Role="AccountGroup" Type="Self.AccountGroup" Multiplicity="0..1" />
@@ -11886,6 +11893,18 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Quotation__Curre__0A096455">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="currencyID" />
+            </Principal>
+            <Dependent Role="Quotation">
+              <PropertyRef Name="CurrencyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Stock__currencyI__2156DE01">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
@@ -12087,18 +12106,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Principal>
             <Dependent Role="SaleOrder">
               <PropertyRef Name="CustomerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CustomerA__Conta__45BE5BA9">
-          <End Role="CustomerWorker" Type="Self.CustomerWorker" Multiplicity="0..1" />
-          <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CustomerWorker">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="CustomerAddress">
-              <PropertyRef Name="ContactID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -15264,6 +15271,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Management" EntitySet="Managements" />
           </AssociationSet>
+          <AssociationSet Name="FK__Quotation__Curre__0A096455" Association="Self.FK__Quotation__Curre__0A096455">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="Quotation" EntitySet="Quotations" />
+          </AssociationSet>
           <AssociationSet Name="FK__Stock__currencyI__2156DE01" Association="Self.FK__Stock__currencyI__2156DE01">
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Stock" EntitySet="Stocks" />
@@ -15331,10 +15342,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <AssociationSet Name="FK__SaleOrder__Custo__1CDC41A7" Association="Self.FK__SaleOrder__Custo__1CDC41A7">
             <End Role="Customer" EntitySet="Customers" />
             <End Role="SaleOrder" EntitySet="SaleOrders" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CustomerA__Conta__45BE5BA9" Association="Self.FK__CustomerA__Conta__45BE5BA9">
-            <End Role="CustomerWorker" EntitySet="CustomerWorkers" />
-            <End Role="CustomerAddress" EntitySet="CustomerAddresses" />
           </AssociationSet>
           <AssociationSet Name="FK__CustomerA__TownI__2FEF161B" Association="Self.FK__CustomerA__TownI__2FEF161B">
             <End Role="Town" EntitySet="Towns" />
@@ -18997,6 +19004,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="categoryID" ColumnName="categoryID" />
                 <ScalarProperty Name="subcategoryID" ColumnName="subcategoryID" />
                 <ScalarProperty Name="ThirdPartyCode" ColumnName="ThirdPartyCode" />
+                <ScalarProperty Name="Capital" ColumnName="Capital" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -19005,7 +19013,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               <MappingFragment StoreEntitySet="CustomerAddress">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
                 <ScalarProperty Name="PostCode" ColumnName="PostCode" />
                 <ScalarProperty Name="AdressDetails" ColumnName="AdressDetails" />
                 <ScalarProperty Name="isDeliveryAddress" ColumnName="isDeliveryAddress" />
@@ -19905,6 +19912,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="suffixPrefixId" ColumnName="suffixPrefixId" />
                 <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
                 <ScalarProperty Name="GrossTotal" ColumnName="GrossTotal" />
+                <ScalarProperty Name="CurrencyID" ColumnName="CurrencyID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -20926,6 +20934,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
                 <ScalarProperty Name="Unit_Measure" ColumnName="Unit_Measure" />
                 <ScalarProperty Name="Brandname" ColumnName="Brandname" />
+                <ScalarProperty Name="dependantTable" ColumnName="dependantTable" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

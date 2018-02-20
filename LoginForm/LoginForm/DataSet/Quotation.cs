@@ -57,7 +57,9 @@ namespace LoginForm.DataSet
         public Nullable<decimal> suffixPrefixId { get; set; }
         public Nullable<System.DateTime> DeliveryDate { get; set; }
         public Nullable<decimal> GrossTotal { get; set; }
+        public Nullable<decimal> CurrencyID { get; set; }
     
+        public virtual Currency Currency { get; set; }
         public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DeliveryNoteDetail> DeliveryNoteDetails { get; set; }
