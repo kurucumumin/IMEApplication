@@ -950,6 +950,12 @@ namespace LoginForm
                         c.payment_termID = c_termpayment;
                         int c_paymentmeth = ((PaymentMethod)(PaymentMethod).SelectedItem).ID;
                         c.paymentmethodID = c_paymentmeth;
+
+                        c.MainContactID = (int)cbMainContact.SelectedValue;
+                        c.CurrNameQuo = QuoCurrencyName.SelectedText;
+                        c.CurrNameInv = InvCurrencyName.SelectedText;
+                        c.factor = Decimal.Parse(factor.Text);
+
                         //Notes kısmına kayıt ediliyor
                         Note n1 = new Note();
                         try { n1 = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault(); } catch { }
