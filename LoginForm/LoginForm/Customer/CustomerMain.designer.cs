@@ -1263,7 +1263,7 @@
             this.btnContactAdd.TabIndex = 15;
             this.btnContactAdd.Text = "Add";
             this.btnContactAdd.UseVisualStyleBackColor = true;
-            this.btnContactAdd.Click += new System.EventHandler(this.button1_Click);
+            this.btnContactAdd.Click += new System.EventHandler(this.btnContactAdd_Click);
             // 
             // ContactList
             // 
