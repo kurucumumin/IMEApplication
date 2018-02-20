@@ -394,7 +394,6 @@
             this.Capital.Name = "Capital";
             this.Capital.Size = new System.Drawing.Size(264, 28);
             this.Capital.TabIndex = 9;
-            this.Capital.SelectedIndexChanged += new System.EventHandler(this.MainCategory_SelectedIndexChanged);
             this.Capital.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Capital_KeyPress);
             // 
             // MainCategory

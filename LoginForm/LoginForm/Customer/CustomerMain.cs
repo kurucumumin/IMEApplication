@@ -140,6 +140,7 @@ namespace LoginForm
             TermsofPayments.ValueMember = "ID";
             PaymentMethod.DataSource = IME.PaymentMethods.ToList();
             PaymentMethod.DisplayMember = "Payment";
+            PaymentMethod.ValueMember = "ID";
             AccountRepresentary.DataSource = IME.Workers.ToList();
             AccountRepresentary.DisplayMember = "NameLastName";
             AccountRepresentary.ValueMember = "WorkerID";
@@ -173,7 +174,7 @@ namespace LoginForm
             AdressList.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
             AdressList.DisplayMember = "AdressTitle";
             ContactAdress.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
-            ContactAdress.DisplayMember = "AdressDetails";
+            ContactAdress.DisplayMember = "AdressTitle";
             CustomerName.Text = c.c_name;
             Telephone.Text = c.telephone;
             if(c.payment_termID!=null) TermsofPayments.SelectedValue = c.payment_termID;
@@ -182,15 +183,7 @@ namespace LoginForm
             if (c.Worker2 != null) Represantative2.SelectedValue = c.Worker2.WorkerID;
             if (c.Worker1 != null) Represantative1.SelectedValue = c.Worker1.WorkerID;
             if (c.accountrepresentaryID != null) AccountRepresentary.Text = IME.Workers.Where(a => a.WorkerID == c.accountrepresentaryID).FirstOrDefault().NameLastName;
-            if (c.CustomerCategory != null) MainCategory.SelectedValue = c.CustomerCategory.ID;
-            if (c.CustomerSubCategory != null)
-            {
-                SubCategory.SelectedValue = c.CustomerSubCategory.ID;
-            }
-            else
-            {
-                SubCategory.SelectedValue = -1;
-            }
+            
             if (c.PaymentTerm!=null) TermsofPayments.SelectedValue = c.PaymentTerm.ID;
             if (c.isactive == 1) { rb_active.Checked = true; } else { rb_passive.Checked = true; }
             ContactList.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
@@ -201,7 +194,7 @@ namespace LoginForm
             cbMainContact.ValueMember = "ID";
             if(c.CurrNameQuo != null)
             {
-                QuoCurrencyName.SelectedValue = QuoCurrencyName.FindStringExact(c.CurrNameQuo);
+                QuoCurrencyName.SelectedIndex = QuoCurrencyName.FindStringExact(c.CurrNameQuo);
             }
             else
             {
@@ -209,11 +202,24 @@ namespace LoginForm
             }
             if (c.CurrNameInv != null)
             {
-                InvCurrencyName.SelectedValue = InvCurrencyName.FindStringExact(c.CurrNameInv);
+                InvCurrencyName.SelectedIndex = InvCurrencyName.FindStringExact(c.CurrNameInv);
             }
             else
             {
                 InvCurrencyName.SelectedIndex = -1;
+            }
+
+            if (c.CustomerCategory != null)
+            {
+                MainCategory.SelectedValue = c.CustomerCategory.ID;
+                if (c.CustomerSubCategory != null)
+                {
+                    SubCategory.SelectedValue = c.subcategoryID;
+                }
+                else
+                {
+                    SubCategory.SelectedValue = -1;
+                }
             }
             //QuoCurrencyName.SelectedValue = c.CurrNameQuo ?? -1;
             //InvCurrencyName.SelectedValue = c.CurrNameInv ?? -1;
@@ -222,6 +228,16 @@ namespace LoginForm
             if (c.Note != null) CompanyNotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
             if (c.customerAccountantNoteID != null) AccountingNotes.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name;
             if(c.creditlimit!=null) CreditLimit.Text = c.creditlimit.ToString();
+            if (c.creditlimit != null) CreditLimit.Text = c.creditlimit.ToString();
+
+            txt3partyCode.Text = c.ThirdPartyCode ?? txt3partyCode.Text;
+            Capital.SelectedIndex = Capital.FindStringExact(c.Capital);
+            CustomerFax.Text = c.fax ?? CustomerFax.Text;
+            TaxOffice.Text = c.taxoffice ?? TaxOffice.Text;
+            taxNumber.Text = c.taxnumber ?? taxNumber.Text;
+            PaymentMethod.SelectedValue = c.paymentmethodID ?? PaymentMethod.SelectedValue;
+            factor.Text = c.factor.ToString() ?? factor.Text;
+            DiscountRate.Text = c.discountrate.ToString() ?? DiscountRate.Text;
         }
 
         private void ContactList_SelectedIndexChanged(object sender, EventArgs e)
@@ -561,7 +577,7 @@ namespace LoginForm
                 AdressList.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
                 AdressList.DisplayMember = "AdressTitle";
                 ContactAdress.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
-                ContactAdress.DisplayMember = "AdressDetails";
+                ContactAdress.DisplayMember = "AdressTitle";
                 CustomerName.Text = c.c_name;
                 Telephone.Text = c.telephone;
                 ContactFAX.Text = c.fax;
@@ -597,7 +613,7 @@ namespace LoginForm
             AdressList.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
             AdressList.DisplayMember = "AdressTitle";
             ContactAdress.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
-            ContactAdress.DisplayMember = "AdressDetails";
+            ContactAdress.DisplayMember = "AdressTitle";
             CustomerName.Text = c.c_name;
             txt3partyCode.Text = c.ThirdPartyCode;
             Telephone.Text = c.telephone;
@@ -935,7 +951,7 @@ namespace LoginForm
                         c.webadress = WebAdress.Text;
                         c.taxoffice = CustomerFax.Text;
                         if (CreditLimit.Text != "") { c.creditlimit = Int32.Parse(CreditLimit.Text); }
-                        if (DiscountRate.Text != "") { c.discountrate = Int32.Parse(DiscountRate.Text); }
+                        if (DiscountRate.Text != "") { c.discountrate = Decimal.Parse(DiscountRate.Text); }
                         c.taxoffice = TaxOffice.Text;
                         if (taxNumber.Text != "") { c.taxnumber = taxNumber.Text; }
 
@@ -1098,6 +1114,8 @@ namespace LoginForm
             AdressList.DataSource = null;
             ContactList.DataSource = null;
             AddressType.SelectedIndex = -1;
+            txtAdressTitle.Text = "";
+            AddressDetails.Text = "";
             #endregion
 
         }
@@ -1338,13 +1356,12 @@ namespace LoginForm
             AdressList.DisplayMember = "AdressTitle";
             ContactAdress.DataSource = null;
             ContactAdress.DataSource = IME.CustomerAddresses.Where(customerw => customerw.CustomerID == CustomerCode.Text).ToList();
-            ContactAdress.DisplayMember = "AdressDetails";
+            ContactAdress.DisplayMember = "AdressTitle";
             AdressAdd.Visible = true;
             AddressDel.Visible = true;
             AddressUpd.Visible = true;
             AdressCancel.Visible = false;
             AdressDone.Visible = false;
-
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -1384,6 +1401,7 @@ namespace LoginForm
             {
                 cbCity.DataSource = IME.Cities.Where(a => a.CountryID == ((Country)(cbCountry).SelectedItem).ID).ToList();
                 cbCity.DisplayMember = "City_name";
+                cbCity.ValueMember = "ID";
             }
             catch { }
         }
@@ -1416,9 +1434,15 @@ namespace LoginForm
                     if (a.isInvoiceAddress == null || !(bool)a.isInvoiceAddress) { cbDefaultInvoiceAdress.Checked = false;  } else { cbDefaultInvoiceAdress.Checked = true; }
                     txtAdressTitle.Text = a.AdressTitle;
                     cbCountry.SelectedItem = a.Country;
-                    AddressType.SelectedItem = a.AddressType;
-                    if (a.City != null) cbCity.SelectedIndex = cbCity.FindStringExact(a.City.City_name);
-                    if (a.Town != null) cbTown.SelectedIndex = cbTown.FindStringExact(a.Town.Town_name);
+                    AddressType.SelectedIndex = AddressType.FindStringExact(a.AddressType);
+                    if (a.City != null)
+                    {
+                        cbCity.SelectedValue = a.CityID;
+                    } 
+                    if (a.Town != null)
+                    {
+                        cbTown.SelectedValue = a.TownID;
+                    }
                     PostCode.Text = a.PostCode;
                     AddressDetails.Text = a.AdressDetails;
                 }
