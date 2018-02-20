@@ -474,8 +474,9 @@ namespace LoginForm
 
         private void customersearch()
         {
-            if(searchtxt==null|| searchtxt == "")
+            if(searchtxt==null || searchtxt == "")
             {
+                // TODO 7 : Veritabanından customer araması sql'den çekilecek
                 var CustomerList =(from c in IME.Customers.Take(100).Where(a => a.c_name.Contains(searchtxt))
                                    select new
                                    {
@@ -514,7 +515,8 @@ namespace LoginForm
             }
             else
             {
-                var CustomerList = (from c in IME.Customers.Take(100).Where(a => a.c_name.Contains(searchtxt))
+                // TODO 7 : Veritabanından customer araması sql'den çekilecek
+                var CustomerList = (from c in IME.Customers.Where(a => a.c_name.Contains(searchtxt))
                                     select new
                                     {
                                         c.ID,
@@ -912,7 +914,7 @@ namespace LoginForm
             {
                 if (ControlSave())
                 {
-                    if (MainCategory.Text == ComboboxString || SubCategory.Text == ComboboxString || Represantative2.Text == ComboboxString || Capital.Text == ComboboxString || cbMainContact.Text == ComboboxString || AccountRepresentary.Text == ComboboxString || TermsofPayments.Text == ComboboxString || PaymentMethod.Text == ComboboxString || QuoCurrencyName.Text == ComboboxString || QuoCurrencyType.Text == ComboboxString || InvCurrencyName.Text == ComboboxString || InvCurrencyType.Text == ComboboxString || AddressType.Text == ComboboxString || cbCountry.Text == ComboboxString || cbCity.Text == ComboboxString || cbTown.Text == ComboboxString || ContactType.Text == ComboboxString || ContactDepartment.Text == ComboboxString || ContactTitle.Text == ComboboxString || CommunicationLanguage.Text == ComboboxString)
+                    if (MainCategory.Text == ComboboxString || SubCategory.Text == ComboboxString || Represantative2.Text == ComboboxString || Capital.Text == ComboboxString || cbMainContact.Text == ComboboxString || AccountRepresentary.Text == ComboboxString || TermsofPayments.Text == ComboboxString || PaymentMethod.Text == ComboboxString || QuoCurrencyName.Text == ComboboxString || /*QuoCurrencyType.Text == ComboboxString ||*/ InvCurrencyName.Text == ComboboxString || /*InvCurrencyType.Text == ComboboxString ||*/ AddressType.Text == ComboboxString || cbCountry.Text == ComboboxString || cbCity.Text == ComboboxString || cbTown.Text == ComboboxString || ContactType.Text == ComboboxString || ContactDepartment.Text == ComboboxString || ContactTitle.Text == ComboboxString || CommunicationLanguage.Text == ComboboxString)
                     {
                         MessageBox.Show("Combobox is empty", "WARNING", MessageBoxButtons.OK);
 
@@ -935,10 +937,10 @@ namespace LoginForm
                         if (CreditLimit.Text != "") { c.creditlimit = Int32.Parse(CreditLimit.Text); }
                         if (DiscountRate.Text != "") { c.discountrate = Int32.Parse(DiscountRate.Text); }
                         c.taxoffice = TaxOffice.Text;
-                        if (taxNumber.Text != "") { c.taxnumber = Int32.Parse(taxNumber.Text); }
+                        if (taxNumber.Text != "") { c.taxnumber = taxNumber.Text; }
 
-                        MainCategory.SelectedValue = c.categoryID;
-                        SubCategory.SelectedValue = c.subcategoryID;
+                        c.categoryID = Int32.Parse(MainCategory.SelectedValue.ToString());
+                        c.subcategoryID = Int32.Parse(SubCategory.SelectedValue.ToString());
 
                         c.accountrepresentaryID = (AccountRepresentary.SelectedItem as Worker).WorkerID;
                         c.representaryID = Utils.getCurrentUser().WorkerID;

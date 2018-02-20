@@ -267,7 +267,7 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           </Key>
           <Property Name="ID" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="c_name" Type="nvarchar" MaxLength="50" />
-          <Property Name="discountrate" Type="int" />
+          <Property Name="discountrate" Type="decimal" Precision="6" Scale="4" />
           <Property Name="paymentmethodID" Type="int" />
           <Property Name="creditlimit" Type="int" />
           <Property Name="webadress" Type="nvarchar" MaxLength="50" />
@@ -279,7 +279,7 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="isactive" Type="int" />
           <Property Name="rateIDinvoice" Type="int" />
           <Property Name="taxoffice" Type="nvarchar" MaxLength="150" />
-          <Property Name="taxnumber" Type="int" />
+          <Property Name="taxnumber" Type="nvarchar" MaxLength="50" />
           <Property Name="MainContactID" Type="int" />
           <Property Name="CurrTypeInv" Type="nvarchar" MaxLength="15" />
           <Property Name="CurrNameInv" Type="nvarchar" MaxLength="15" />
@@ -8856,7 +8856,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </Key>
           <Property Name="ID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="c_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="discountrate" Type="Int32" />
+          <Property Name="discountrate" Type="Decimal" Precision="6" Scale="4" />
           <Property Name="paymentmethodID" Type="Int32" />
           <Property Name="creditlimit" Type="Int32" />
           <Property Name="webadress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -8868,7 +8868,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="isactive" Type="Int32" />
           <Property Name="rateIDinvoice" Type="Int32" />
           <Property Name="taxoffice" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="taxnumber" Type="Int32" />
+          <Property Name="taxnumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MainContactID" Type="Int32" />
           <Property Name="CurrTypeInv" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="CurrNameInv" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
