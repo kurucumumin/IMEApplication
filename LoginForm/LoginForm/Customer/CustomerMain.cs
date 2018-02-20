@@ -935,7 +935,7 @@ namespace LoginForm
                         if (CreditLimit.Text != "") { c.creditlimit = Int32.Parse(CreditLimit.Text); }
                         if (DiscountRate.Text != "") { c.discountrate = Int32.Parse(DiscountRate.Text); }
                         c.taxoffice = TaxOffice.Text;
-                        if (taxNumber.Text != "") { c.taxnumber = Int32.Parse(taxNumber.Text); }
+                        if (taxNumber.Text != "") { c.taxnumber = taxNumber.Text; }
 
                         MainCategory.SelectedValue = c.categoryID;
                         SubCategory.SelectedValue = c.subcategoryID;

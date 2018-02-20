@@ -27,7 +27,7 @@ namespace LoginForm.DataSet
     
         public string ID { get; set; }
         public string c_name { get; set; }
-        public Nullable<int> discountrate { get; set; }
+        public Nullable<decimal> discountrate { get; set; }
         public Nullable<int> paymentmethodID { get; set; }
         public Nullable<int> creditlimit { get; set; }
         public string webadress { get; set; }
@@ -39,7 +39,7 @@ namespace LoginForm.DataSet
         public Nullable<int> isactive { get; set; }
         public Nullable<int> rateIDinvoice { get; set; }
         public string taxoffice { get; set; }
-        public Nullable<int> taxnumber { get; set; }
+        public string taxnumber { get; set; }
         public Nullable<int> MainContactID { get; set; }
         public string CurrTypeInv { get; set; }
         public string CurrNameInv { get; set; }
