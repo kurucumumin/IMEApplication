@@ -23,7 +23,6 @@ namespace LoginForm.DataSet
     
         public int ID { get; set; }
         public string CustomerID { get; set; }
-        public Nullable<int> ContactID { get; set; }
         public string PostCode { get; set; }
         public string AdressDetails { get; set; }
         public Nullable<bool> isDeliveryAddress { get; set; }
@@ -37,7 +36,6 @@ namespace LoginForm.DataSet
         public virtual City City { get; set; }
         public virtual Country Country { get; set; }
         public virtual Customer Customer { get; set; }
-        public virtual CustomerWorker CustomerWorker { get; set; }
         public virtual Town Town { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleOrder> SaleOrders { get; set; }

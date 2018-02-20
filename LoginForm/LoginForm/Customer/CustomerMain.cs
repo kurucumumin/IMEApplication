@@ -1306,21 +1306,21 @@ namespace LoginForm
             }
             else
             {
-                ca = new CustomerAddress();
-                ca.AddressType = AddressType.Text;
-                //CustomerCode.Text;
-                ca.CustomerID = CustomerCode.Text;
-                ca.CountryID = ((cbCountry).SelectedItem as Country).ID;
-                ca.CityID = ((cbCity).SelectedItem as City).ID;
-                ca.AdressTitle = txtAdressTitle.Text;
-                //AddresType
-                ca.isInvoiceAddress = false;
-                if (cbDefaultInvoiceAdress.Checked == false)
+                ca = new CustomerAddress
                 {
-                    ca.isInvoiceAddress = true;
-                }
-                ca.PostCode = PostCode.Text;
-                ca.AdressDetails = AddressDetails.Text;
+                    AddressType = AddressType.Text,
+                    //CustomerCode.Text;
+                    CustomerID = CustomerCode.Text,
+                    CountryID = ((cbCountry).SelectedItem as Country).ID,
+                    CityID = ((cbCity).SelectedItem as City).ID,
+                    TownID = (int)cbTown.SelectedValue,
+                    AdressTitle = txtAdressTitle.Text,
+                    //AddresType
+                    isInvoiceAddress = false,
+                    PostCode = PostCode.Text,
+                    AdressDetails = AddressDetails.Text
+            };
+                //if (!cbDefaultInvoiceAdress.Checked) { ca.isInvoiceAddress = true;}
                 if (cbDefaultInvoiceAdress.Checked) { ca.isInvoiceAddress = true; } else { ca.isInvoiceAddress = false; }
                 if (cbDefaultDeliveryAdress.Checked) { ca.isDeliveryAddress = true; } else { ca.isDeliveryAddress = false; }
                 IME.CustomerAddresses.Add(ca);
@@ -1394,6 +1394,7 @@ namespace LoginForm
             {
                 cbTown.DataSource = IME.Towns.Where(a => a.CityID == ((City)(cbCity).SelectedItem).ID).ToList();
                 cbTown.DisplayMember = "Town_name";
+                cbTown.ValueMember = "ID";
             }
             catch { }
         }
