@@ -226,8 +226,6 @@ namespace LoginForm
             }
             //QuoCurrencyName.SelectedValue = c.CurrNameQuo ?? -1;
             //InvCurrencyName.SelectedValue = c.CurrNameInv ?? -1;
-            //AddressType.SelectedItem = null;
-            cbDefaultInvoiceAdress.Checked = true;
             if (c.Note != null) CompanyNotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
             if (c.customerAccountantNoteID != null) AccountingNotes.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name;
             if(c.creditlimit!=null) CreditLimit.Text = c.creditlimit.ToString();
@@ -496,39 +494,40 @@ namespace LoginForm
             if(searchtxt==null || searchtxt == "")
             {
                 // TODO 7 : Veritabanından customer araması sql'den çekilecek
-                var CustomerList =(from c in IME.Customers.Take(100).Where(a => a.c_name.Contains(searchtxt))
-                                   select new
-                                   {
-                                       c.ID,
-                                       CustomerName = c.c_name,
-                                       Disc = c.discountrate,
-                                       PaymentMethod = c.PaymentMethod.Payment,
-                                       CrediLimit = c.creditlimit,
-                                       Web = c.webadress,
-                                       PaymentTerm = c.PaymentTerm.term_name,
-                                       Representative = c.representaryID,
-                                       NoteName = c.Note.Note_name,
-                                       Representative2 = c.representary2ID,
-                                       AccountRepresentative = c.accountrepresentaryID,
-                                       IsActive=c.isactive,
-                                       RateInvoice = c.rateIDinvoice,
-                                       TaxOffice = c.taxoffice,
-                                       TaxNumber = c.taxnumber,
-                                       MainContact = c.MainContactID,
-                                       CurTypeInvoice = c.CurrTypeInv,
-                                       CurNameInvoice = c.CurrNameInv,
-                                       CurTypeQuo = c.CurrTypeQuo,
-                                       CurNameQuo = c.CurrNameQuo,
-                                       AccountNote = c.customerAccountantNoteID,
-                                       ExtensionNumber = c.extensionnumber,
-                                       Factor = c.factor,
-                                       CreditDay = c.creditDay,
-                                       CreateDate = c.CreateDate,
-                                       Telephone = c.telephone,
-                                       Fax = c.fax,
-                                       Category = c.categoryID,
-                                       SubCategory = c.subcategoryID,
-                                       ThirdPartyCode = c.ThirdPartyCode,
+                var CustomerList = (from c in IME.Customers.Take(100).Where(a => a.c_name.Contains(searchtxt))
+                                    select new
+                                    {
+                                        c.ID,
+                                        CustomerName = c.c_name,
+                                        Disc = c.discountrate,
+                                        PaymentMethod = c.PaymentMethod.Payment,
+                                        CrediLimit = c.creditlimit,
+                                        Web = c.webadress,
+                                        PaymentTerm = c.PaymentTerm.term_name,
+                                        Representative = c.representaryID,
+                                        NoteName = c.Note.Note_name,
+                                        Representative2 = c.representary2ID,
+                                        AccountRepresentative = c.accountrepresentaryID,
+                                        IsActive = c.isactive,
+                                        RateInvoice = c.rateIDinvoice,
+                                        TaxOffice = c.taxoffice,
+                                        TaxNumber = c.taxnumber,
+                                        MainContact = c.MainContactID,
+                                        CurTypeInvoice = c.CurrTypeInv,
+                                        CurNameInvoice = c.CurrNameInv,
+                                        CurTypeQuo = c.CurrTypeQuo,
+                                        CurNameQuo = c.CurrNameQuo,
+                                        AccountNote = c.customerAccountantNoteID,
+                                        ExtensionNumber = c.extensionnumber,
+                                        Factor = c.factor,
+                                        CreditDay = c.creditDay,
+                                        c.CreateDate,
+                                        Telephone = c.telephone,
+                                        Fax = c.fax,
+                                        Category = c.categoryID,
+                                        SubCategory = c.subcategoryID,
+                                        c.ThirdPartyCode,
+                                        c.Capital
                                    }).ToList();
                 CustomerDataGrid.DataSource = CustomerList;
             }
@@ -568,6 +567,7 @@ namespace LoginForm
                                         Category = c.categoryID,
                                         SubCategory = c.subcategoryID,
                                         ThirdPartyCode = c.ThirdPartyCode,
+                                        c.Capital
                                     }).ToList();
                 CustomerDataGrid.DataSource = CustomerList;
             }
@@ -598,7 +598,6 @@ namespace LoginForm
                 cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
                 cbMainContact.DisplayMember = "cw_name";
                 cbMainContact.ValueMember = "ID";
-                AddressType.SelectedItem = null; cbDefaultInvoiceAdress.Checked = true;
                 if (c.Note != null) CompanyNotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
                 if (c.customerAccountantNoteID != null) AccountingNotes.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name;
                 CreditLimit.Text = c.creditlimit.ToString();
@@ -635,7 +634,6 @@ namespace LoginForm
             cbMainContact.DataSource = IME.CustomerWorkers.Where(customerw => customerw.customerID == CustomerCode.Text).ToList();
             cbMainContact.DisplayMember = "cw_name";
             cbMainContact.ValueMember = "ID";
-            AddressType.SelectedItem = null; cbDefaultInvoiceAdress.Checked = true;
             if (c.Note != null) CompanyNotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
             if (c.customerAccountantNoteID != null) AccountingNotes.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name;
             CreditLimit.Text = c.creditlimit.ToString();
@@ -1015,9 +1013,10 @@ namespace LoginForm
                         c.paymentmethodID = c_paymentmeth;
 
                         c.MainContactID = (int)cbMainContact.SelectedValue;
-                        c.CurrNameQuo = QuoCurrencyName.SelectedText;
-                        c.CurrNameInv = InvCurrencyName.SelectedText;
+                        c.CurrNameQuo = ((DataSet.Currency)QuoCurrencyName.SelectedItem).currencyName;
+                        c.CurrNameInv = ((DataSet.Currency)InvCurrencyName.SelectedItem).currencyName;
                         c.factor = Decimal.Parse(factor.Text);
+                        c.Capital = Capital.SelectedItem.ToString();
 
                         //Notes kısmına kayıt ediliyor
                         Note n1 = new Note();
@@ -1411,17 +1410,6 @@ namespace LoginForm
             AdressDone.Visible = false;
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbDefaultInvoiceAdress.Checked)
-            {
-                AddressType.Enabled = false;
-                AddressType.SelectedItem = null;
-            }
-            else { AddressType.Enabled = true; }
-
-        }
-
         private void AdressCancel_Click(object sender, EventArgs e)
         {
             AdressTabEnableFalse();
@@ -1477,8 +1465,23 @@ namespace LoginForm
                 var contact1 = IME.CustomerAddresses.Where(cw => cw.ID == cw_ID).ToList();
                 foreach (var a in contact1)
                 {
-                    if (a.isDeliveryAddress == null || !(bool)a.isDeliveryAddress) { cbDefaultDeliveryAdress.Checked = false;  } else { cbDefaultDeliveryAdress.Checked = true; }
-                    if (a.isInvoiceAddress == null || !(bool)a.isInvoiceAddress) { cbDefaultInvoiceAdress.Checked = false;  } else { cbDefaultInvoiceAdress.Checked = true; }
+                    if (a.isDeliveryAddress != null && (bool)a.isDeliveryAddress)
+                    {
+                        cbDefaultDeliveryAdress.Checked = true;
+                    }
+                    else
+                    {
+                        cbDefaultDeliveryAdress.Checked = false;
+                    }
+
+                    if (a.isInvoiceAddress != null && (bool)a.isInvoiceAddress)
+                    {
+                        cbDefaultInvoiceAdress.Checked = true;
+                    }
+                    else
+                    {
+                        cbDefaultInvoiceAdress.Checked = false;
+                    }
                     txtAdressTitle.Text = a.AdressTitle;
                     cbCountry.SelectedItem = a.Country;
                     AddressType.SelectedIndex = AddressType.FindStringExact(a.AddressType);
