@@ -50,10 +50,10 @@ namespace LoginForm
         public CustomerMain(int x, string CustomerID)
         {
             //Qoutation Customer Details
-
             InitializeComponent();
             if (x == 1)
             {
+                btnContactClick();
                 isModify = true;
                 CustomerDataGrid.Enabled = false;
                 txtSearch.Enabled = false;
@@ -67,9 +67,11 @@ namespace LoginForm
                 btnContactUpdate.Enabled = true;
                 tabControl1.SelectedTab = tab_contact;
                 QuotationCustomerSearch(CustomerID);
+                
             }
             if (x == 2)
             {
+                btnContactUpdateClick();
                 isModify = true;
                 CustomerDataGrid.Enabled = false;
                 txtSearch.Enabled = false;
@@ -87,6 +89,7 @@ namespace LoginForm
                 AdressDone.Enabled = true;
                 AdressCancel.Enabled = true;
                 tabControl1.SelectedTab = tab_adresses;
+                tabControl1.Enabled = false;
                 QuotationCustomerSearch(CustomerID);
             }
         }
@@ -636,11 +639,42 @@ namespace LoginForm
             if (c.Note != null) CompanyNotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
             if (c.customerAccountantNoteID != null) AccountingNotes.Text = IME.Notes.Where(a => a.ID == c.customerAccountantNoteID).FirstOrDefault().Note_name;
             CreditLimit.Text = c.creditlimit.ToString();
-            CustomerDataGrid.CurrentCell = CustomerDataGrid.Rows[gridselectedindex].Cells[0];
+           // CustomerDataGrid.CurrentCell = CustomerDataGrid.Rows[gridselectedindex].Cells[0];
         }
 
         //CONTACT ADD NEW
-        private void button1_Click(object sender, EventArgs e)
+        private void btnContactAdd_Click(object sender, EventArgs e)
+        {
+            //#region addContactButton
+            //contactnewID = 0;
+            //contactTabEnableTrue();
+            //ContactType.Text = "";
+            //ContactDepartment.Text = "";
+            //ContactTitle.Text = "";
+            //cbMainContact.Text = "";
+            //ContactName.Text = "";
+            //ContactEmail.Text = "";
+            //ContactPhone.Text = "";
+            //ContactMobilePhone.Text = "";
+            //ContactFAX.Text = "";
+            //CommunicationLanguage.Text = "";
+            //ContactNotes.Text = "";
+            //btnContactAdd.Visible = false;
+            //btnContactCancel.Visible = true;
+            //btnContactDelete.Visible = false;
+            //btnContactDone.Visible = true;
+            //btnContactUpdate.Visible = false;
+            //ContactList.Enabled = false;
+
+            //ContactType.Text = (ComboboxString);
+            //ContactDepartment.Text = (ComboboxString);
+            //ContactTitle.Text = (ComboboxString);
+            //CommunicationLanguage.Text = (ComboboxString);
+            //#endregion
+            btnContactClick();
+        }
+
+        private void btnContactClick()
         {
             #region addContactButton
             contactnewID = 0;
@@ -691,7 +725,21 @@ namespace LoginForm
         //CONTACT UPDATE
         private void btnContactUpdate_Click(object sender, EventArgs e)
         {
-            #region  btnContactUpdate
+            //#region  btnContactUpdate
+            //contactnewID = 1;
+            //contactTabEnableTrue();
+            //btnContactAdd.Visible = false;
+            //btnContactCancel.Visible = true;
+            //btnContactDelete.Visible = false;
+            //btnContactDone.Visible = true;
+            //btnContactUpdate.Visible = false;
+            //#endregion
+
+            btnContactUpdateClick();
+        }
+
+        private void btnContactUpdateClick()
+        {
             contactnewID = 1;
             contactTabEnableTrue();
             btnContactAdd.Visible = false;
@@ -699,7 +747,6 @@ namespace LoginForm
             btnContactDelete.Visible = false;
             btnContactDone.Visible = true;
             btnContactUpdate.Visible = false;
-            #endregion
         }
 
         private void btnContactDone_Click(object sender, EventArgs e)
@@ -1752,5 +1799,32 @@ namespace LoginForm
             gridselectedindex = CustomerDataGrid.CurrentCell.RowIndex;
             customerClicksearch();
         }
+
+        //public static void EnableTab(TabPage page, bool enable)
+        //{
+        //    EnableControls(page.Controls, enable);
+        //}
+        //private static void EnableControls(Control.ControlCollection ctls, bool enable)
+        //{
+        //    foreach (Control ctl in ctls)
+        //    {
+        //        ctl.Enabled = enable;
+        //        EnableControls(ctl.Controls, enable);
+        //    }
+        //}
+
+        //public static void DisablePage(TabPage pTabPage)
+        //{
+        //    pTabPage.Enabled = false;
+        //}
+
+        //private void tabControl1_SelectedIndexChanged(object sender, System.EventArgs e)
+        //{
+        //    // Check Credentials Here  
+        //    if (tabControl1.SelectedTab == tab_contact)
+        //    {
+        //        tabControl1.SelectedTab = tab_contact;
+        //    }
+        //}
     }
 }
