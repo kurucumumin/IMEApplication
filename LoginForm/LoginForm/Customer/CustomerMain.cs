@@ -89,7 +89,7 @@ namespace LoginForm
                 AdressDone.Enabled = true;
                 AdressCancel.Enabled = true;
                 tabControl1.SelectedTab = tab_adresses;
-                tabControl1.Enabled = false;
+             //   tabControl1.Enabled = false;
                 QuotationCustomerSearch(CustomerID);
             }
         }

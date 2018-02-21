@@ -24,7 +24,12 @@ namespace LoginForm.nsSaleOrder
         private void FormSaleOrderCustList_Load(object sender, EventArgs e)
         {
             customerList = IME.Customers.ToList();
-            PopulateCustomerList(customerList);
+            tempCustomerList = customerList.ToList();
+            lbCustomerList.DataSource = customerList;
+            lbCustomerList.DisplayMember = "c_name";
+            lbCustomerList.DataSource = tempCustomerList;
+            lbCustomerList.DisplayMember = "c_name";
+            //  PopulateCustomerList(customerList);
         }
 
         private void PopulateCustomerList(List<Customer> list)
@@ -35,8 +40,11 @@ namespace LoginForm.nsSaleOrder
 
         private void txtSearchCustomer_TextChanged(object sender, EventArgs e)
         {
-            tempCustomerList = customerList.Where(c => c.c_name.IndexOf(txtSearchCustomer.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
-            PopulateCustomerList(tempCustomerList);
+            
+            //tempCustomerList = customerList.Where(a => a.c_name.Contains(txtSearchCustomer.Text)).ToList().Where(a => a.c_name != null).Where(b => b.c_name != string.Empty).ToList();
+            //PopulateCustomerList(tempCustomerList);
+
+
         }
 
         private void lbCustomerList_SelectedValueChanged(object sender, EventArgs e)
@@ -140,6 +148,17 @@ namespace LoginForm.nsSaleOrder
             for (int i = 0; i < dgItems.Rows.Count; i++)
             {
                 dgItems.Rows[i].Cells[chk.Index].Value = false;
+            }
+        }
+
+        private void txtSearchCustomer_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                tempCustomerList = customerList.Where(c => c.c_name.IndexOf(txtSearchCustomer.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+                lbCustomerList.DataSource = null;
+                lbCustomerList.DataSource = tempCustomerList;
+                lbCustomerList.DisplayMember = "c_name";
             }
         }
     }

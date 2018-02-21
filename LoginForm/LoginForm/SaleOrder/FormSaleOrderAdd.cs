@@ -222,7 +222,8 @@ namespace LoginForm.nmSaleOrder
                 if (delv != null)
                 {
                     cbDeliveryAddress.SelectedValue = delv.ID;
-                } else
+                }
+                else
                 {
                     if (inv != null)
                     {
@@ -1207,6 +1208,14 @@ namespace LoginForm.nmSaleOrder
                     cbWorkers.DataSource = customer.CustomerWorkers.Where(a => a.cw_name != null).ToList();
                     cbWorkers.DisplayMember = "cw_name";
                     cbWorkers.ValueMember = "ID";
+
+                    cbInvoiceAdress.DataSource = customer.CustomerAddresses.Where(b => b.isInvoiceAddress == true).ToList();
+                    cbInvoiceAdress.DisplayMember = "AdressTitle";
+                    cbInvoiceAdress.ValueMember = "ID";
+
+                    cbDeliveryAddress.DataSource = customer.CustomerAddresses.Where(a => a.isDeliveryAddress == true).ToList();
+                    cbDeliveryAddress.DisplayMember = "AdressTitle";
+                    cbDeliveryAddress.ValueMember = "ID";
                 }
                 this.Enabled = true;
                 fillCustomer();
@@ -2240,6 +2249,15 @@ namespace LoginForm.nmSaleOrder
                 cbWorkers.DataSource = customer.CustomerWorkers.ToList();
                 cbWorkers.DisplayMember = "cw_name";
                 cbWorkers.ValueMember = "ID";
+
+                cbInvoiceAdress.DataSource = customer.CustomerAddresses.ToList();
+                cbInvoiceAdress.DisplayMember = "AdressTitle";
+                cbInvoiceAdress.ValueMember = "ID";
+
+                cbDeliveryAddress.DataSource = customer.CustomerAddresses.ToList();
+                cbDeliveryAddress.DisplayMember = "AdressTitle";
+                cbDeliveryAddress.ValueMember = "ID";
+                
             }
             this.Enabled = true;
             fillCustomer();

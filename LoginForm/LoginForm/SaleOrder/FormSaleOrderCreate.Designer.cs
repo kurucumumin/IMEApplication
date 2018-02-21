@@ -134,6 +134,7 @@
             this.txtSearchCustomer.Size = new System.Drawing.Size(286, 21);
             this.txtSearchCustomer.TabIndex = 10;
             this.txtSearchCustomer.TextChanged += new System.EventHandler(this.txtSearchCustomer_TextChanged);
+            this.txtSearchCustomer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchCustomer_KeyDown);
             // 
             // label1
             // 
