@@ -809,7 +809,8 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
+                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString()) * CurrValue1
+                        ) / ((Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
 
                 }
             }
@@ -832,7 +833,8 @@ namespace LoginForm.QuotationModule
                         }
                         else
                         {
-                            dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value = (((1 - (Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString())) / ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
+                            dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value = (((1 - (Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString())
+                                * CurrValue1) / ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
 
                         }
                     }
@@ -985,6 +987,7 @@ namespace LoginForm.QuotationModule
                 if (sd.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sd.Standard_Weight) / (decimal)1000).ToString("G29"); } else { }
                 txtHazardousInd.Text = sd.Hazardous_Ind;
                 txtCalibrationInd.Text = sd.Calibration_Ind;
+                
                 //ObsoluteFlag.Text = sd.Obsolete_Flag.ToString();
                 //LowDiscontInd.Text = sd.Low_Discount_Ind;
                 //LicensedInd.Text = sd.Licensed_Ind.ToString();
@@ -1016,6 +1019,7 @@ namespace LoginForm.QuotationModule
                 if (sdP.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sdP.Standard_Weight) / (decimal)1000).ToString("G29"); }
                 txtHazardousInd.Text = sdP.Hazardous_Ind;
                 txtCalibrationInd.Text = sdP.Calibration_Ind;
+
                 //ObsoluteFlag.Text = sdP.Obsolete_Flag.ToString();
                 //LowDiscontInd.Text = sdP.Low_Discount_Ind;
                 //LicensedInd.Text = sdP.Licensed_Ind.ToString();
@@ -1177,9 +1181,8 @@ namespace LoginForm.QuotationModule
                 }
 
                 #endregion
+
                 #region Low Margin Mark
-
-
                 if (txtLithium.Text != "")
                 {
                     label64.BackColor = Color.Red;
@@ -1852,6 +1855,7 @@ namespace LoginForm.QuotationModule
                 if (sd.Standard_Weight != 0) { txtStandartWeight.Text = ((decimal)(sd.Standard_Weight) / (decimal)1000).ToString("G29"); } else { }
                 txtHazardousInd.Text = sd.Hazardous_Ind;
                 txtCalibrationInd.Text = sd.Calibration_Ind;
+                if (sd.Calibration_Ind == "Y") isCalibrationInd = true;
                 //ObsoluteFlag.Text = sd.Obsolete_Flag.ToString();
                 //LowDiscontInd.Text = sd.Low_Discount_Ind;
                 //LicensedInd.Text = sd.Licensed_Ind.ToString();
@@ -1984,7 +1988,7 @@ namespace LoginForm.QuotationModule
                 txtRunOn.Text = dd.Runon.ToString();
                 txtReferral.Text = dd.Referral.ToString();
             }
-            if (du != null) { txtLicenceType.Text = du.LicenceType; }
+            if (du != null) { txtLicenceType.Text = du.LicenceType; isLicenceType = true; }
             //
             #endregion
             #region ItemMarginFiller
