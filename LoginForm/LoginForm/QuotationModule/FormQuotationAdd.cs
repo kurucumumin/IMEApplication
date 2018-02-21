@@ -452,9 +452,18 @@ namespace LoginForm.QuotationModule
 
                                     }
 
-                                    if (dgQuotationAddedItems.CurrentCell.ColumnIndex == 7) dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentRow.Index].Cells[dgQuotationAddedItems.CurrentCell.ColumnIndex + 1];
-                                    dgQuotationAddedItems.Select();
-                                    ChangeCurrnetCellTabKey(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
+                                    if (dgQuotationAddedItems.CurrentCell.ColumnIndex == 7)
+                                    {
+                                        int i=8;
+                                        while(dgQuotationAddedItems.CurrentRow.Cells[i].Visible==false)
+                                        {
+                                            i++;
+                                        }
+                                        dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentRow.Index].Cells[i];
+                                        dgQuotationAddedItems.Select();
+                                        ChangeCurrnetCellTabKey(dgQuotationAddedItems.CurrentCell.ColumnIndex + 1);
+                                    }
+
                                     this.Enabled = true;
                                 }
 
@@ -809,7 +818,7 @@ namespace LoginForm.QuotationModule
                 }
                 else
                 {
-                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString()) * CurrValue1
+                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgMargin"].Value = ((1 - ((Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgLandingCost"].Value.ToString())
                         ) / ((Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
 
                 }
@@ -818,7 +827,7 @@ namespace LoginForm.QuotationModule
         }
 
         private void GetAllMargin()
-        {
+         {
             #region Get Margin
             DateTime today = DateTime.Today;
             for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
@@ -834,7 +843,7 @@ namespace LoginForm.QuotationModule
                         else
                         {
                             dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value = (((1 - (Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgLandingCost"].Value.ToString())
-                                * CurrValue1) / ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
+                               ) / ((Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUCUPCurr"].Value.ToString()))))) * 100).ToString("G29");
 
                         }
                     }
@@ -1765,7 +1774,7 @@ namespace LoginForm.QuotationModule
 
                 GetLandingCost(i);
                 dgQuotationAddedItems.CurrentCell = dgQuotationAddedItems.Rows[i].Cells[0];
-                GetMargin();
+                //GetMargin();
                 GetQuotationQuantity(i);
 
             }
