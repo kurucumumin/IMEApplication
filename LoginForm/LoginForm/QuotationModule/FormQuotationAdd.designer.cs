@@ -302,7 +302,7 @@
             this.dgQty1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgUOM1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgSSM1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgUC1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgUPIME1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgDisc1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -839,7 +839,7 @@
             this.dgQty1,
             this.dataGridViewTextBoxColumn17,
             this.dgUOM1,
-            this.dataGridViewTextBoxColumn19,
+            this.dgSSM1,
             this.dgUC1,
             this.dgUPIME1,
             this.dgDisc1,
@@ -2972,11 +2972,11 @@
             this.dgUOM1.Name = "dgUOM1";
             this.dgUOM1.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn19
+            // dgSSM1
             // 
-            this.dataGridViewTextBoxColumn19.HeaderText = "SSM";
-            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            this.dataGridViewTextBoxColumn19.ReadOnly = true;
+            this.dgSSM1.HeaderText = "SSM";
+            this.dgSSM1.Name = "dgSSM1";
+            this.dgSSM1.ReadOnly = true;
             // 
             // dgUC1
             // 
@@ -3371,7 +3371,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgQty1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgUOM1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgSSM1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgUC1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgUPIME1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgDisc1;
