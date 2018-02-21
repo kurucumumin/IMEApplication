@@ -301,10 +301,10 @@
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgQty1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUOM1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUC1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUPIME1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgDisc1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgUCUPCurr1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgTotal1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -314,7 +314,7 @@
             this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgUnitWeigt1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgCustomerStokCode1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgCustDescription1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -838,10 +838,10 @@
             this.dataGridViewTextBoxColumn15,
             this.dgQty1,
             this.dataGridViewTextBoxColumn17,
-            this.dataGridViewTextBoxColumn18,
+            this.dgUOM1,
             this.dataGridViewTextBoxColumn19,
-            this.dataGridViewTextBoxColumn20,
-            this.dataGridViewTextBoxColumn21,
+            this.dgUC1,
+            this.dgUPIME1,
             this.dgDisc1,
             this.dgUCUPCurr1,
             this.dgTotal1,
@@ -851,7 +851,7 @@
             this.dataGridViewTextBoxColumn28,
             this.dataGridViewTextBoxColumn29,
             this.dataGridViewTextBoxColumn30,
-            this.dataGridViewTextBoxColumn31,
+            this.dgUnitWeigt1,
             this.dataGridViewTextBoxColumn32,
             this.dgCustomerStokCode1,
             this.dgCustDescription1,
@@ -2966,11 +2966,11 @@
             this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
             this.dataGridViewTextBoxColumn17.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn18
+            // dgUOM1
             // 
-            this.dataGridViewTextBoxColumn18.HeaderText = "UOM";
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            this.dataGridViewTextBoxColumn18.ReadOnly = true;
+            this.dgUOM1.HeaderText = "UOM";
+            this.dgUOM1.Name = "dgUOM1";
+            this.dgUOM1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn19
             // 
@@ -2978,17 +2978,17 @@
             this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
             this.dataGridViewTextBoxColumn19.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn20
+            // dgUC1
             // 
-            this.dataGridViewTextBoxColumn20.HeaderText = "U/C";
-            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
-            this.dataGridViewTextBoxColumn20.ReadOnly = true;
+            this.dgUC1.HeaderText = "U/C";
+            this.dgUC1.Name = "dgUC1";
+            this.dgUC1.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn21
+            // dgUPIME1
             // 
-            this.dataGridViewTextBoxColumn21.HeaderText = "U/P IME L/P ";
-            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
-            this.dataGridViewTextBoxColumn21.ReadOnly = true;
+            this.dgUPIME1.HeaderText = "U/P IME L/P ";
+            this.dgUPIME1.Name = "dgUPIME1";
+            this.dgUPIME1.ReadOnly = true;
             // 
             // dgDisc1
             // 
@@ -3044,11 +3044,11 @@
             this.dataGridViewTextBoxColumn30.Name = "dataGridViewTextBoxColumn30";
             this.dataGridViewTextBoxColumn30.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn31
+            // dgUnitWeigt1
             // 
-            this.dataGridViewTextBoxColumn31.HeaderText = "Unit Weigt (Kg)";
-            this.dataGridViewTextBoxColumn31.Name = "dataGridViewTextBoxColumn31";
-            this.dataGridViewTextBoxColumn31.ReadOnly = true;
+            this.dgUnitWeigt1.HeaderText = "Unit Weigt (Kg)";
+            this.dgUnitWeigt1.Name = "dgUnitWeigt1";
+            this.dgUnitWeigt1.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn32
             // 
@@ -3370,10 +3370,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgQty1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUOM1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUC1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUPIME1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgDisc1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgUCUPCurr1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgTotal1;
@@ -3383,7 +3383,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn30;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgUnitWeigt1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCustomerStokCode1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgCustDescription1;

@@ -39,6 +39,7 @@ namespace LoginForm
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -108,7 +109,6 @@ namespace LoginForm
             this.txtPassWord.Size = new System.Drawing.Size(111, 23);
             this.txtPassWord.TabIndex = 17;
             this.txtPassWord.Text = "admin";
-            this.txtPassWord.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterPress);
             // 
             // btnLogin
             // 
@@ -186,6 +186,7 @@ namespace LoginForm
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(222)))), ((int)(((byte)(251)))));
+            this.panel2.Controls.Add(this.btnClose);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -194,10 +195,25 @@ namespace LoginForm
             this.panel2.Size = new System.Drawing.Size(546, 153);
             this.panel2.TabIndex = 0;
             // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Location = new System.Drawing.Point(344, 56);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(10, 23);
+            this.btnClose.TabIndex = 20;
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // FormLogin
             // 
+            this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(546, 460);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
@@ -232,6 +248,7 @@ namespace LoginForm
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnClose;
     }
 }
 

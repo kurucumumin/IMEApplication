@@ -74,7 +74,6 @@ namespace LoginForm
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
-
             //txtReader.excelCustomerCategory1();
             //Rate DolarRate1 = new Rate();
             //DolarRate1 = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).FirstOrDefault();
@@ -106,36 +105,10 @@ namespace LoginForm
             //}
         }
 
-
-        //protected override void OnFormClosing(FormClosingEventArgs e)
-        //{
-        //    if (!closeRequest)
-        //    {
-        //        base.OnFormClosing(e);
-        //        if (e.CloseReason == CloseReason.WindowsShutDown) return;
-
-        //        switch (MessageBox.Show(this, "Are you sure you want to close?", "Closing", MessageBoxButtons.YesNo))
-        //        {
-        //            case DialogResult.Yes:
-        //                closeRequest = true;
-        //                Application.Exit();
-        //                break;
-        //            case DialogResult.No:
-        //                e.Cancel = true;
-        //                break;
-        //            default:
-        //                break;
-        //        }
-        //    }
-        //}
-
-
-        private void EnterPress(object sender, KeyEventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                btnLogin.PerformClick();
-            }
+            this.Close();
+            Application.Exit();
         }
     }
 }
