@@ -100,5 +100,17 @@ namespace LoginForm.CustomControls
             frmCreditNoteRegister form = new frmCreditNoteRegister();
             form.ShowDialog();
         }
+
+        private void btnServiceVoucherRegister_Click(object sender, EventArgs e)
+        {
+            frmServiceVoucherRegister form = new frmServiceVoucherRegister();
+            form.ShowDialog();
+        }
+
+        private void btnPersonelReminder_Click(object sender, EventArgs e)
+        {
+            frmPersonalReminder form = new frmPersonalReminder();
+            form.ShowDialog();
+        }
     }
 }

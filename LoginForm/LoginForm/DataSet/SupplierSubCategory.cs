@@ -17,15 +17,15 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SupplierSubCategory()
         {
-            this.SupplierCategorySubCategories = new HashSet<SupplierCategorySubCategory>();
+            this.Suppliers = new HashSet<Supplier>();
         }
     
         public int ID { get; set; }
         public string subcategoryname { get; set; }
         public Nullable<int> categoryID { get; set; }
     
-        public virtual SupplierCategory SupplierCategory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SupplierCategorySubCategory> SupplierCategorySubCategories { get; set; }
+        public virtual ICollection<Supplier> Suppliers { get; set; }
+        public virtual SupplierCategory SupplierCategory { get; set; }
     }
 }

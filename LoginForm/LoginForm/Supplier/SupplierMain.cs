@@ -898,15 +898,15 @@ namespace LoginForm
                         catch { }
                         int s_bank = ((SupplierBank)(cmbBankName).SelectedItem).ID; s.BankID = s_bank;
                         //CategorySubCategory Tablosuna veri ekleniyor(ara tabloya)
-                        SupplierCategorySubCategory SupplierCatSubCat = new SupplierCategorySubCategory();
-                        //UPDATE YAPILIRKEN BU ŞEKİLDE OLUYOR
-                        if (IME.SupplierCategorySubCategories.Where(a => a.supplierID == txtcode.Text).FirstOrDefault() != null) { SupplierCatSubCat = IME.SupplierCategorySubCategories.Where(a => a.supplierID == txtcode.Text).FirstOrDefault(); }
-                        SupplierCatSubCat.supplierID = txtcode.Text;
-                        int c_CategoryID = ((SupplierCategory)(cmbcategory).SelectedItem).ID;
-                        SupplierCatSubCat.categoryID = c_CategoryID;
-                        int c_SubcategoryID = ((SupplierSubCategory)(cmbsub).SelectedItem).ID;
-                        SupplierCatSubCat.subcategoryID = c_SubcategoryID;
-                        if (IME.SupplierCategorySubCategories.Where(a => a.supplierID == txtcode.Text).FirstOrDefault() == null) { IME.SupplierCategorySubCategories.Add(SupplierCatSubCat); }
+                        //SupplierCategorySubCategory SupplierCatSubCat = new SupplierCategorySubCategory();
+                        ////UPDATE YAPILIRKEN BU ŞEKİLDE OLUYOR
+                        //if (IME.SupplierCategorySubCategories.Where(a => a.supplierID == txtcode.Text).FirstOrDefault() != null) { SupplierCatSubCat = IME.SupplierCategorySubCategories.Where(a => a.supplierID == txtcode.Text).FirstOrDefault(); }
+                        //SupplierCatSubCat.supplierID = txtcode.Text;
+                        //int c_CategoryID = ((SupplierCategory)(cmbcategory).SelectedItem).ID;
+                        //SupplierCatSubCat.categoryID = c_CategoryID;
+                        //int c_SubcategoryID = ((SupplierSubCategory)(cmbsub).SelectedItem).ID;
+                        //SupplierCatSubCat.subcategoryID = c_SubcategoryID;
+                        //if (IME.SupplierCategorySubCategories.Where(a => a.supplierID == txtcode.Text).FirstOrDefault() == null) { IME.SupplierCategorySubCategories.Add(SupplierCatSubCat); }
                         IME.SaveChanges();
                         //        
                         //Notes kısmına kayıt ediliyor

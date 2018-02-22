@@ -273,6 +273,12 @@
     <Compile Include="Account\Reminder\frmOverdueSalesOrder.designer.cs">
       <DependentUpon>frmOverdueSalesOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Reminder\frmPersonalReminder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reminder\frmPersonalReminder.designer.cs">
+      <DependentUpon>frmPersonalReminder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Reminder\frmReminderPopUp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1071,6 +1077,18 @@
     <Compile Include="DataSet\RejectionOutMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\Reminder.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ReminderSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ReminderViewAll_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ReminderView_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\RoleValue.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1221,13 +1239,7 @@
     <Compile Include="DataSet\SupplierCategory.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\SupplierCategorySubCategory.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\SupplierDepartment.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SupplierMainContact.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SupplierSubCategory.cs">
@@ -1647,6 +1659,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Reminder\frmOverdueSalesOrder.resx">
       <DependentUpon>frmOverdueSalesOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reminder\frmPersonalReminder.resx">
+      <DependentUpon>frmPersonalReminder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Reminder\frmReminderPopUp.resx">
       <DependentUpon>frmReminderPopUp.cs</DependentUpon>

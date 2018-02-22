@@ -14,12 +14,6 @@ namespace LoginForm.DataSet
     
     public partial class SupplierWorker
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SupplierWorker()
-        {
-            this.SupplierMainContacts = new HashSet<SupplierMainContact>();
-        }
-    
         public int ID { get; set; }
         public string sw_name { get; set; }
         public Nullable<int> departmentID { get; set; }
@@ -38,10 +32,7 @@ namespace LoginForm.DataSet
         public virtual Note Note { get; set; }
         public virtual Supplier Supplier { get; set; }
         public virtual SupplierAdress SupplierAdress { get; set; }
-        public virtual SupplierCategory SupplierCategory { get; set; }
         public virtual SupplierDepartment SupplierDepartment { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SupplierMainContact> SupplierMainContacts { get; set; }
         public virtual SupplierTitle SupplierTitle { get; set; }
     }
 }

@@ -111,6 +111,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<RejectionInMaster> RejectionInMasters { get; set; }
         public virtual DbSet<RejectionOutDetail> RejectionOutDetails { get; set; }
         public virtual DbSet<RejectionOutMaster> RejectionOutMasters { get; set; }
+        public virtual DbSet<Reminder> Reminders { get; set; }
         public virtual DbSet<RoleValue> RoleValues { get; set; }
         public virtual DbSet<Route> Routes { get; set; }
         public virtual DbSet<RS_Invoice> RS_Invoice { get; set; }
@@ -142,9 +143,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<SupplierAdress> SupplierAdresses { get; set; }
         public virtual DbSet<SupplierBank> SupplierBanks { get; set; }
         public virtual DbSet<SupplierCategory> SupplierCategories { get; set; }
-        public virtual DbSet<SupplierCategorySubCategory> SupplierCategorySubCategories { get; set; }
         public virtual DbSet<SupplierDepartment> SupplierDepartments { get; set; }
-        public virtual DbSet<SupplierMainContact> SupplierMainContacts { get; set; }
         public virtual DbSet<SupplierSubCategory> SupplierSubCategories { get; set; }
         public virtual DbSet<SupplierTitle> SupplierTitles { get; set; }
         public virtual DbSet<SupplierWorker> SupplierWorkers { get; set; }
@@ -2967,6 +2966,80 @@ namespace LoginForm.DataSet
                 new ObjectParameter("godownId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<RackFillForStock_Result>("RackFillForStock", godownIdParameter);
+        }
+    
+        public virtual int ReminderAdd(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string remindAbout)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var remindAboutParameter = remindAbout != null ?
+                new ObjectParameter("remindAbout", remindAbout) :
+                new ObjectParameter("remindAbout", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ReminderAdd", fromDateParameter, toDateParameter, remindAboutParameter);
+        }
+    
+        public virtual int ReminderDelete(Nullable<decimal> reminderId)
+        {
+            var reminderIdParameter = reminderId.HasValue ?
+                new ObjectParameter("reminderId", reminderId) :
+                new ObjectParameter("reminderId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ReminderDelete", reminderIdParameter);
+        }
+    
+        public virtual int ReminderEdit(Nullable<decimal> reminderId, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, string remindAbout)
+        {
+            var reminderIdParameter = reminderId.HasValue ?
+                new ObjectParameter("reminderId", reminderId) :
+                new ObjectParameter("reminderId", typeof(decimal));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var remindAboutParameter = remindAbout != null ?
+                new ObjectParameter("remindAbout", remindAbout) :
+                new ObjectParameter("remindAbout", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ReminderEdit", reminderIdParameter, fromDateParameter, toDateParameter, remindAboutParameter);
+        }
+    
+        public virtual ObjectResult<ReminderSearch_Result> ReminderSearch(Nullable<System.DateTime> fromdate, Nullable<System.DateTime> todate)
+        {
+            var fromdateParameter = fromdate.HasValue ?
+                new ObjectParameter("fromdate", fromdate) :
+                new ObjectParameter("fromdate", typeof(System.DateTime));
+    
+            var todateParameter = todate.HasValue ?
+                new ObjectParameter("todate", todate) :
+                new ObjectParameter("todate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReminderSearch_Result>("ReminderSearch", fromdateParameter, todateParameter);
+        }
+    
+        public virtual ObjectResult<ReminderView_Result> ReminderView(Nullable<decimal> reminderId)
+        {
+            var reminderIdParameter = reminderId.HasValue ?
+                new ObjectParameter("reminderId", reminderId) :
+                new ObjectParameter("reminderId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReminderView_Result>("ReminderView", reminderIdParameter);
+        }
+    
+        public virtual ObjectResult<ReminderViewAll_Result> ReminderViewAll()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ReminderViewAll_Result>("ReminderViewAll");
         }
     
         public virtual int RS_InvoiceDetailsADD(Nullable<int> rS_InvoiceID, string purchaseOrderNumber, Nullable<int> purchaseOrderItemNumber, string productNumber, Nullable<int> billingItemNumber, Nullable<decimal> quantity, string salesUnit, Nullable<decimal> unitPrice, Nullable<decimal> discount, Nullable<decimal> goodsValue, Nullable<decimal> amount, string cCCNNO, string countryofOrigin, string articleDescription, Nullable<int> deliveryNumber, Nullable<int> deliveryItemNumber)

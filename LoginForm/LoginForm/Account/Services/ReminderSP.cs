@@ -22,7 +22,7 @@ namespace LoginForm.Account.Services
             dtbl.Columns["SlNo"].AutoIncrement = true;
             dtbl.Columns["SlNo"].AutoIncrementStep = 1;
             dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
-            
+
             dtbl.Columns.Add("PurchaseOrderMasterId");
             dtbl.Columns.Add("InvoicedMasterId");
             dtbl.Columns.Add("MR_OrderMasterId");
@@ -77,5 +77,157 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
+        public bool ReminderAdd(Reminder reminderinfo)
+        {
+            IMEEntities IME = new IMEEntities();
+            Reminder r = reminderinfo;
+            try
+            {
+                object adaptor = IME.ReminderAdd(r.fromDate,r.toDate,r.remindAbout);
+
+                if (adaptor != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return false;
+            }
+        }
+
+        public bool RemainderEdit(Reminder r)
+        {
+            IMEEntities IME = new IMEEntities();
+            
+            try
+            {
+                object adaptor = IME.ReminderEdit(
+                    r.reminderId,
+                    r.fromDate,
+                    r.toDate,
+                    r.remindAbout
+                    ).ToString();
+
+                if (adaptor!=null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return false;
+            }
+        }
+
+        public bool RemainderDelete(decimal Remainder)
+        {
+            IMEEntities IME = new IMEEntities();
+            try
+            {
+                object adaptor = IME.ReminderDelete(Remainder);
+
+                if (adaptor != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return false;
+        }
+
+        public DataTable ReminderSearch(string strfromDate, string strToDate)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("SlNo", typeof(int));
+            dtbl.Columns["SlNo"].AutoIncrement = true;
+            dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
+            dtbl.Columns["SlNo"].AutoIncrementStep = 1;
+
+
+            dtbl.Columns.Add("reminderId");
+            dtbl.Columns.Add("fromDate");
+            dtbl.Columns.Add("toDate");
+            dtbl.Columns.Add("remindAbout");
+
+            foreach (var item in IME.ReminderSearch(Convert.ToDateTime(strfromDate), Convert.ToDateTime(strToDate)))
+            {
+                var row = dtbl.NewRow();
+                row["reminderId"] = item.reminderId;
+                row["fromDate"] = item.fromDate;
+                row["toDate"] = item.toDate;
+                row["remindAbout"] = item.remindAbout;
+                dtbl.Rows.Add(row);
+            }
+            return dtbl;
+        }
+
+        public DataTable RemainderViewAll()
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                dtbl.Columns.Add("reminderId");
+                dtbl.Columns.Add("fromDate");
+                dtbl.Columns.Add("toDate");
+                dtbl.Columns.Add("remindAbout");
+
+                foreach (var item in IME.ReminderViewAll())
+                {
+                    var row = dtbl.NewRow();
+                    row["reminderId"] = item.reminderId;
+                    row["fromDate"] = item.fromDate;
+                    row["toDate"] = item.toDate;
+                    row["remindAbout"] = item.remindAbout;
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+        
+        public Reminder RemainderView(decimal remainder)
+        {
+            IMEEntities IME = new IMEEntities();
+            Reminder remainderinfo = new Reminder();
+            
+            try
+            {
+                var a = IME.ReminderView(remainder).FirstOrDefault();
+
+                remainderinfo.fromDate = a.fromDate;
+                remainderinfo.toDate = a.toDate;
+                remainderinfo.remindAbout = a.remindAbout;
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return remainderinfo;
+        }
     }
 }
