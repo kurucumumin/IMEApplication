@@ -1,6 +1,6 @@
 namespace LoginForm
 {
-    partial class CSupplierMain
+    partial class CemSupplierMainCem
     {
         /// <summary>
         ///Gerekli tasarımcı değişkeni.
@@ -88,7 +88,7 @@ namespace LoginForm
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.tabAccounting = new System.Windows.Forms.TabPage();
-            this.txtExtNumber = new System.Windows.Forms.TextBox();
+            this.txtExtraNumber = new System.Windows.Forms.TextBox();
             this.cmbMainContact = new System.Windows.Forms.ComboBox();
             this.label28 = new System.Windows.Forms.Label();
             this.btnContactCancel = new System.Windows.Forms.Button();
@@ -308,6 +308,7 @@ namespace LoginForm
             // 
             this.cmbMainCategory.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cmbMainCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMainCategory.Enabled = false;
             this.cmbMainCategory.FormattingEnabled = true;
             this.cmbMainCategory.Location = new System.Drawing.Point(508, 14);
             this.cmbMainCategory.Margin = new System.Windows.Forms.Padding(4);
@@ -852,7 +853,7 @@ namespace LoginForm
             // 
             // tabAccounting
             // 
-            this.tabAccounting.Controls.Add(this.txtExtNumber);
+            this.tabAccounting.Controls.Add(this.txtExtraNumber);
             this.tabAccounting.Controls.Add(this.cmbMainContact);
             this.tabAccounting.Controls.Add(this.label28);
             this.tabAccounting.Controls.Add(this.btnContactCancel);
@@ -892,14 +893,14 @@ namespace LoginForm
             this.tabAccounting.Text = "Contact";
             this.tabAccounting.UseVisualStyleBackColor = true;
             // 
-            // txtExtNumber
+            // txtExtraNumber
             // 
-            this.txtExtNumber.Enabled = false;
-            this.txtExtNumber.Location = new System.Drawing.Point(255, 187);
-            this.txtExtNumber.Margin = new System.Windows.Forms.Padding(4);
-            this.txtExtNumber.Name = "txtExtNumber";
-            this.txtExtNumber.Size = new System.Drawing.Size(61, 26);
-            this.txtExtNumber.TabIndex = 5;
+            this.txtExtraNumber.Enabled = false;
+            this.txtExtraNumber.Location = new System.Drawing.Point(255, 187);
+            this.txtExtraNumber.Margin = new System.Windows.Forms.Padding(4);
+            this.txtExtraNumber.Name = "txtExtraNumber";
+            this.txtExtraNumber.Size = new System.Drawing.Size(61, 26);
+            this.txtExtraNumber.TabIndex = 5;
             // 
             // cmbMainContact
             // 
@@ -1354,6 +1355,7 @@ namespace LoginForm
             this.dgSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgSupplier.Location = new System.Drawing.Point(4, 349);
             this.dgSupplier.Margin = new System.Windows.Forms.Padding(4);
+            this.dgSupplier.MultiSelect = false;
             this.dgSupplier.Name = "dgSupplier";
             this.dgSupplier.ReadOnly = true;
             this.dgSupplier.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -1372,6 +1374,7 @@ namespace LoginForm
             this.btnModify.TabIndex = 51;
             this.btnModify.Text = "Modify";
             this.btnModify.UseVisualStyleBackColor = true;
+            this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
             // 
             // btnExit
             // 
@@ -1851,7 +1854,7 @@ namespace LoginForm
         private System.Windows.Forms.Button btnAddressCancel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtExtNumber;
+        private System.Windows.Forms.TextBox txtExtraNumber;
         private System.Windows.Forms.ComboBox cmbMainContact;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label36;

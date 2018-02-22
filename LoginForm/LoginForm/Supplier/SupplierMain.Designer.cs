@@ -156,7 +156,7 @@ namespace LoginForm
             this.tabgenel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabgenel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabgenel.Location = new System.Drawing.Point(4, 4);
-            this.tabgenel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabgenel.Margin = new System.Windows.Forms.Padding(4);
             this.tabgenel.Name = "tabgenel";
             this.tabgenel.SelectedIndex = 0;
             this.tabgenel.Size = new System.Drawing.Size(1225, 252);
@@ -181,9 +181,9 @@ namespace LoginForm
             this.tabinfo.Controls.Add(this.label3);
             this.tabinfo.Controls.Add(this.label2);
             this.tabinfo.Location = new System.Drawing.Point(4, 29);
-            this.tabinfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabinfo.Margin = new System.Windows.Forms.Padding(4);
             this.tabinfo.Name = "tabinfo";
-            this.tabinfo.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabinfo.Padding = new System.Windows.Forms.Padding(4);
             this.tabinfo.Size = new System.Drawing.Size(1217, 219);
             this.tabinfo.TabIndex = 0;
             this.tabinfo.Text = "Info";
@@ -195,7 +195,7 @@ namespace LoginForm
             this.cmbsub.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbsub.FormattingEnabled = true;
             this.cmbsub.Location = new System.Drawing.Point(868, 14);
-            this.cmbsub.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbsub.Margin = new System.Windows.Forms.Padding(4);
             this.cmbsub.Name = "cmbsub";
             this.cmbsub.Size = new System.Drawing.Size(193, 28);
             this.cmbsub.TabIndex = 6;
@@ -215,7 +215,7 @@ namespace LoginForm
             // 
             this.txtTaxNumber.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtTaxNumber.Location = new System.Drawing.Point(868, 71);
-            this.txtTaxNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTaxNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtTaxNumber.Name = "txtTaxNumber";
             this.txtTaxNumber.Size = new System.Drawing.Size(193, 26);
             this.txtTaxNumber.TabIndex = 7;
@@ -224,7 +224,7 @@ namespace LoginForm
             // 
             this.txtTaxOffice.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtTaxOffice.Location = new System.Drawing.Point(508, 71);
-            this.txtTaxOffice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTaxOffice.Margin = new System.Windows.Forms.Padding(4);
             this.txtTaxOffice.Name = "txtTaxOffice";
             this.txtTaxOffice.Size = new System.Drawing.Size(193, 26);
             this.txtTaxOffice.TabIndex = 5;
@@ -255,7 +255,7 @@ namespace LoginForm
             // 
             this.txtnotes.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtnotes.Location = new System.Drawing.Point(508, 123);
-            this.txtnotes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtnotes.Margin = new System.Windows.Forms.Padding(4);
             this.txtnotes.Multiline = true;
             this.txtnotes.Name = "txtnotes";
             this.txtnotes.Size = new System.Drawing.Size(553, 85);
@@ -267,7 +267,7 @@ namespace LoginForm
             this.cmbcategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbcategory.FormattingEnabled = true;
             this.cmbcategory.Location = new System.Drawing.Point(508, 14);
-            this.cmbcategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbcategory.Margin = new System.Windows.Forms.Padding(4);
             this.cmbcategory.Name = "cmbcategory";
             this.cmbcategory.Size = new System.Drawing.Size(193, 28);
             this.cmbcategory.TabIndex = 4;
@@ -277,7 +277,7 @@ namespace LoginForm
             // 
             this.txtname.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtname.Location = new System.Drawing.Point(157, 134);
-            this.txtname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtname.Margin = new System.Windows.Forms.Padding(4);
             this.txtname.Name = "txtname";
             this.txtname.Size = new System.Drawing.Size(183, 26);
             this.txtname.TabIndex = 3;
@@ -288,7 +288,7 @@ namespace LoginForm
             this.cmbrepresentative.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbrepresentative.FormattingEnabled = true;
             this.cmbrepresentative.Location = new System.Drawing.Point(157, 71);
-            this.cmbrepresentative.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbrepresentative.Margin = new System.Windows.Forms.Padding(4);
             this.cmbrepresentative.Name = "cmbrepresentative";
             this.cmbrepresentative.Size = new System.Drawing.Size(183, 28);
             this.cmbrepresentative.TabIndex = 2;
@@ -298,7 +298,7 @@ namespace LoginForm
             // 
             this.txtcode.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtcode.Location = new System.Drawing.Point(157, 14);
-            this.txtcode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtcode.Margin = new System.Windows.Forms.Padding(4);
             this.txtcode.Name = "txtcode";
             this.txtcode.Size = new System.Drawing.Size(183, 26);
             this.txtcode.TabIndex = 1;
@@ -375,9 +375,9 @@ namespace LoginForm
             this.tabaccount.Controls.Add(this.label8);
             this.tabaccount.Controls.Add(this.label7);
             this.tabaccount.Location = new System.Drawing.Point(4, 29);
-            this.tabaccount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabaccount.Margin = new System.Windows.Forms.Padding(4);
             this.tabaccount.Name = "tabaccount";
-            this.tabaccount.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabaccount.Padding = new System.Windows.Forms.Padding(4);
             this.tabaccount.Size = new System.Drawing.Size(1217, 219);
             this.tabaccount.TabIndex = 1;
             this.tabaccount.Text = "Account";
@@ -386,7 +386,7 @@ namespace LoginForm
             // txtAccountNotes
             // 
             this.txtAccountNotes.Location = new System.Drawing.Point(771, 41);
-            this.txtAccountNotes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAccountNotes.Margin = new System.Windows.Forms.Padding(4);
             this.txtAccountNotes.Multiline = true;
             this.txtAccountNotes.Name = "txtAccountNotes";
             this.txtAccountNotes.Size = new System.Drawing.Size(409, 146);
@@ -397,7 +397,7 @@ namespace LoginForm
             this.cmbInvoiceCur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbInvoiceCur.FormattingEnabled = true;
             this.cmbInvoiceCur.Location = new System.Drawing.Point(539, 158);
-            this.cmbInvoiceCur.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbInvoiceCur.Margin = new System.Windows.Forms.Padding(4);
             this.cmbInvoiceCur.Name = "cmbInvoiceCur";
             this.cmbInvoiceCur.Size = new System.Drawing.Size(160, 28);
             this.cmbInvoiceCur.TabIndex = 14;
@@ -407,7 +407,7 @@ namespace LoginForm
             this.cmbCurrenyt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCurrenyt.FormattingEnabled = true;
             this.cmbCurrenyt.Location = new System.Drawing.Point(539, 81);
-            this.cmbCurrenyt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbCurrenyt.Margin = new System.Windows.Forms.Padding(4);
             this.cmbCurrenyt.Name = "cmbCurrenyt";
             this.cmbCurrenyt.Size = new System.Drawing.Size(160, 28);
             this.cmbCurrenyt.TabIndex = 13;
@@ -415,7 +415,7 @@ namespace LoginForm
             // txtdiscount
             // 
             this.txtdiscount.Location = new System.Drawing.Point(539, 14);
-            this.txtdiscount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtdiscount.Margin = new System.Windows.Forms.Padding(4);
             this.txtdiscount.Name = "txtdiscount";
             this.txtdiscount.Size = new System.Drawing.Size(160, 26);
             this.txtdiscount.TabIndex = 12;
@@ -426,7 +426,7 @@ namespace LoginForm
             this.cmbAcountMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAcountMethod.FormattingEnabled = true;
             this.cmbAcountMethod.Location = new System.Drawing.Point(157, 158);
-            this.cmbAcountMethod.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbAcountMethod.Margin = new System.Windows.Forms.Padding(4);
             this.cmbAcountMethod.Name = "cmbAcountMethod";
             this.cmbAcountMethod.Size = new System.Drawing.Size(160, 28);
             this.cmbAcountMethod.TabIndex = 11;
@@ -436,7 +436,7 @@ namespace LoginForm
             this.cmbAcountTerms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAcountTerms.FormattingEnabled = true;
             this.cmbAcountTerms.Location = new System.Drawing.Point(157, 81);
-            this.cmbAcountTerms.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbAcountTerms.Margin = new System.Windows.Forms.Padding(4);
             this.cmbAcountTerms.Name = "cmbAcountTerms";
             this.cmbAcountTerms.Size = new System.Drawing.Size(160, 28);
             this.cmbAcountTerms.TabIndex = 10;
@@ -446,7 +446,7 @@ namespace LoginForm
             this.cmbAcountRep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAcountRep.FormattingEnabled = true;
             this.cmbAcountRep.Location = new System.Drawing.Point(157, 14);
-            this.cmbAcountRep.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbAcountRep.Margin = new System.Windows.Forms.Padding(4);
             this.cmbAcountRep.Name = "cmbAcountRep";
             this.cmbAcountRep.Size = new System.Drawing.Size(160, 28);
             this.cmbAcountRep.TabIndex = 9;
@@ -548,9 +548,9 @@ namespace LoginForm
             this.tabadres.Controls.Add(this.label17);
             this.tabadres.Controls.Add(this.label16);
             this.tabadres.Location = new System.Drawing.Point(4, 29);
-            this.tabadres.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabadres.Margin = new System.Windows.Forms.Padding(4);
             this.tabadres.Name = "tabadres";
-            this.tabadres.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabadres.Padding = new System.Windows.Forms.Padding(4);
             this.tabadres.Size = new System.Drawing.Size(1217, 219);
             this.tabadres.TabIndex = 2;
             this.tabadres.Text = "Company Address";
@@ -560,7 +560,7 @@ namespace LoginForm
             // 
             this.AddressDel.Enabled = false;
             this.AddressDel.Location = new System.Drawing.Point(1128, 178);
-            this.AddressDel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AddressDel.Margin = new System.Windows.Forms.Padding(4);
             this.AddressDel.Name = "AddressDel";
             this.AddressDel.Size = new System.Drawing.Size(48, 32);
             this.AddressDel.TabIndex = 23;
@@ -572,7 +572,7 @@ namespace LoginForm
             // 
             this.AddressUpd.Enabled = false;
             this.AddressUpd.Location = new System.Drawing.Point(1072, 178);
-            this.AddressUpd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AddressUpd.Margin = new System.Windows.Forms.Padding(4);
             this.AddressUpd.Name = "AddressUpd";
             this.AddressUpd.Size = new System.Drawing.Size(48, 32);
             this.AddressUpd.TabIndex = 22;
@@ -584,7 +584,7 @@ namespace LoginForm
             // 
             this.AdressAdd.Enabled = false;
             this.AdressAdd.Location = new System.Drawing.Point(1016, 178);
-            this.AdressAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AdressAdd.Margin = new System.Windows.Forms.Padding(4);
             this.AdressAdd.Name = "AdressAdd";
             this.AdressAdd.Size = new System.Drawing.Size(48, 32);
             this.AdressAdd.TabIndex = 21;
@@ -597,7 +597,7 @@ namespace LoginForm
             this.AdressList.FormattingEnabled = true;
             this.AdressList.ItemHeight = 20;
             this.AdressList.Location = new System.Drawing.Point(1016, 47);
-            this.AdressList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AdressList.Margin = new System.Windows.Forms.Padding(4);
             this.AdressList.Name = "AdressList";
             this.AdressList.Size = new System.Drawing.Size(159, 104);
             this.AdressList.TabIndex = 19;
@@ -606,7 +606,7 @@ namespace LoginForm
             // AdressDone
             // 
             this.AdressDone.Location = new System.Drawing.Point(1016, 178);
-            this.AdressDone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AdressDone.Margin = new System.Windows.Forms.Padding(4);
             this.AdressDone.Name = "AdressDone";
             this.AdressDone.Size = new System.Drawing.Size(76, 32);
             this.AdressDone.TabIndex = 19;
@@ -618,7 +618,7 @@ namespace LoginForm
             // AdressCancel
             // 
             this.AdressCancel.Location = new System.Drawing.Point(1100, 178);
-            this.AdressCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AdressCancel.Margin = new System.Windows.Forms.Padding(4);
             this.AdressCancel.Name = "AdressCancel";
             this.AdressCancel.Size = new System.Drawing.Size(76, 32);
             this.AdressCancel.TabIndex = 20;
@@ -630,7 +630,7 @@ namespace LoginForm
             // txtpobox
             // 
             this.txtpobox.Location = new System.Drawing.Point(83, 166);
-            this.txtpobox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtpobox.Margin = new System.Windows.Forms.Padding(4);
             this.txtpobox.Name = "txtpobox";
             this.txtpobox.Size = new System.Drawing.Size(132, 26);
             this.txtpobox.TabIndex = 6;
@@ -648,7 +648,7 @@ namespace LoginForm
             // txtCompanyAddress
             // 
             this.txtCompanyAddress.Location = new System.Drawing.Point(800, 47);
-            this.txtCompanyAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCompanyAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txtCompanyAddress.Multiline = true;
             this.txtCompanyAddress.Name = "txtCompanyAddress";
             this.txtCompanyAddress.Size = new System.Drawing.Size(193, 147);
@@ -669,7 +669,7 @@ namespace LoginForm
             this.cmbtown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbtown.FormattingEnabled = true;
             this.cmbtown.Location = new System.Drawing.Point(301, 166);
-            this.cmbtown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbtown.Margin = new System.Windows.Forms.Padding(4);
             this.cmbtown.Name = "cmbtown";
             this.cmbtown.Size = new System.Drawing.Size(160, 28);
             this.cmbtown.TabIndex = 15;
@@ -679,7 +679,7 @@ namespace LoginForm
             this.cmbcity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbcity.FormattingEnabled = true;
             this.cmbcity.Location = new System.Drawing.Point(301, 85);
-            this.cmbcity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbcity.Margin = new System.Windows.Forms.Padding(4);
             this.cmbcity.Name = "cmbcity";
             this.cmbcity.Size = new System.Drawing.Size(160, 28);
             this.cmbcity.TabIndex = 14;
@@ -690,7 +690,7 @@ namespace LoginForm
             this.cmbcounrty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbcounrty.FormattingEnabled = true;
             this.cmbcounrty.Location = new System.Drawing.Point(301, 12);
-            this.cmbcounrty.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbcounrty.Margin = new System.Windows.Forms.Padding(4);
             this.cmbcounrty.Name = "cmbcounrty";
             this.cmbcounrty.Size = new System.Drawing.Size(160, 28);
             this.cmbcounrty.TabIndex = 13;
@@ -729,7 +729,7 @@ namespace LoginForm
             // txtweb
             // 
             this.txtweb.Location = new System.Drawing.Point(603, 87);
-            this.txtweb.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtweb.Margin = new System.Windows.Forms.Padding(4);
             this.txtweb.Name = "txtweb";
             this.txtweb.Size = new System.Drawing.Size(171, 26);
             this.txtweb.TabIndex = 17;
@@ -737,7 +737,7 @@ namespace LoginForm
             // txtpost
             // 
             this.txtpost.Location = new System.Drawing.Point(603, 14);
-            this.txtpost.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtpost.Margin = new System.Windows.Forms.Padding(4);
             this.txtpost.Name = "txtpost";
             this.txtpost.Size = new System.Drawing.Size(167, 26);
             this.txtpost.TabIndex = 16;
@@ -745,7 +745,7 @@ namespace LoginForm
             // txtfax
             // 
             this.txtfax.Location = new System.Drawing.Point(83, 87);
-            this.txtfax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtfax.Margin = new System.Windows.Forms.Padding(4);
             this.txtfax.Name = "txtfax";
             this.txtfax.Size = new System.Drawing.Size(132, 26);
             this.txtfax.TabIndex = 5;
@@ -754,7 +754,7 @@ namespace LoginForm
             // txtphone
             // 
             this.txtphone.Location = new System.Drawing.Point(83, 14);
-            this.txtphone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtphone.Margin = new System.Windows.Forms.Padding(4);
             this.txtphone.Name = "txtphone";
             this.txtphone.Size = new System.Drawing.Size(132, 26);
             this.txtphone.TabIndex = 4;
@@ -834,9 +834,9 @@ namespace LoginForm
             this.tabcountact.Controls.Add(this.label27);
             this.tabcountact.Controls.Add(this.label26);
             this.tabcountact.Location = new System.Drawing.Point(4, 29);
-            this.tabcountact.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabcountact.Margin = new System.Windows.Forms.Padding(4);
             this.tabcountact.Name = "tabcountact";
-            this.tabcountact.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabcountact.Padding = new System.Windows.Forms.Padding(4);
             this.tabcountact.Size = new System.Drawing.Size(1217, 219);
             this.tabcountact.TabIndex = 3;
             this.tabcountact.Text = "Contact";
@@ -845,7 +845,7 @@ namespace LoginForm
             // txtExtNumber
             // 
             this.txtExtNumber.Location = new System.Drawing.Point(255, 187);
-            this.txtExtNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtExtNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtExtNumber.Name = "txtExtNumber";
             this.txtExtNumber.Size = new System.Drawing.Size(61, 26);
             this.txtExtNumber.TabIndex = 5;
@@ -855,7 +855,7 @@ namespace LoginForm
             this.cmbMainContact.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMainContact.FormattingEnabled = true;
             this.cmbMainContact.Location = new System.Drawing.Point(460, 66);
-            this.cmbMainContact.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbMainContact.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMainContact.Name = "cmbMainContact";
             this.cmbMainContact.Size = new System.Drawing.Size(160, 28);
             this.cmbMainContact.TabIndex = 7;
@@ -873,7 +873,7 @@ namespace LoginForm
             // btnContactCancel
             // 
             this.btnContactCancel.Location = new System.Drawing.Point(1093, 156);
-            this.btnContactCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnContactCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnContactCancel.Name = "btnContactCancel";
             this.btnContactCancel.Size = new System.Drawing.Size(85, 28);
             this.btnContactCancel.TabIndex = 14;
@@ -885,7 +885,7 @@ namespace LoginForm
             // btnContactDone
             // 
             this.btnContactDone.Location = new System.Drawing.Point(967, 156);
-            this.btnContactDone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnContactDone.Margin = new System.Windows.Forms.Padding(4);
             this.btnContactDone.Name = "btnContactDone";
             this.btnContactDone.Size = new System.Drawing.Size(100, 28);
             this.btnContactDone.TabIndex = 13;
@@ -897,7 +897,7 @@ namespace LoginForm
             // btnContactDelete
             // 
             this.btnContactDelete.Location = new System.Drawing.Point(1107, 181);
-            this.btnContactDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnContactDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnContactDelete.Name = "btnContactDelete";
             this.btnContactDelete.Size = new System.Drawing.Size(73, 28);
             this.btnContactDelete.TabIndex = 17;
@@ -908,7 +908,7 @@ namespace LoginForm
             // btnContactUpdate
             // 
             this.btnContactUpdate.Location = new System.Drawing.Point(1032, 181);
-            this.btnContactUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnContactUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnContactUpdate.Name = "btnContactUpdate";
             this.btnContactUpdate.Size = new System.Drawing.Size(67, 28);
             this.btnContactUpdate.TabIndex = 16;
@@ -919,7 +919,7 @@ namespace LoginForm
             // btnContactNew
             // 
             this.btnContactNew.Location = new System.Drawing.Point(967, 181);
-            this.btnContactNew.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnContactNew.Margin = new System.Windows.Forms.Padding(4);
             this.btnContactNew.Name = "btnContactNew";
             this.btnContactNew.Size = new System.Drawing.Size(57, 28);
             this.btnContactNew.TabIndex = 15;
@@ -932,7 +932,7 @@ namespace LoginForm
             this.listContact.FormattingEnabled = true;
             this.listContact.ItemHeight = 20;
             this.listContact.Location = new System.Drawing.Point(967, 4);
-            this.listContact.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listContact.Margin = new System.Windows.Forms.Padding(4);
             this.listContact.Name = "listContact";
             this.listContact.Size = new System.Drawing.Size(212, 124);
             this.listContact.TabIndex = 17;
@@ -942,7 +942,7 @@ namespace LoginForm
             // btnPos
             // 
             this.btnPos.Location = new System.Drawing.Point(285, 70);
-            this.btnPos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnPos.Margin = new System.Windows.Forms.Padding(4);
             this.btnPos.Name = "btnPos";
             this.btnPos.Size = new System.Drawing.Size(32, 28);
             this.btnPos.TabIndex = 19;
@@ -953,7 +953,7 @@ namespace LoginForm
             // btnDep
             // 
             this.btnDep.Location = new System.Drawing.Point(285, 12);
-            this.btnDep.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDep.Margin = new System.Windows.Forms.Padding(4);
             this.btnDep.Name = "btnDep";
             this.btnDep.Size = new System.Drawing.Size(32, 28);
             this.btnDep.TabIndex = 18;
@@ -964,7 +964,7 @@ namespace LoginForm
             // txtContactNotes
             // 
             this.txtContactNotes.Location = new System.Drawing.Point(733, 128);
-            this.txtContactNotes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtContactNotes.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactNotes.Multiline = true;
             this.txtContactNotes.Name = "txtContactNotes";
             this.txtContactNotes.Size = new System.Drawing.Size(204, 82);
@@ -975,7 +975,7 @@ namespace LoginForm
             this.cmblanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmblanguage.FormattingEnabled = true;
             this.cmblanguage.Location = new System.Drawing.Point(733, 7);
-            this.cmblanguage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmblanguage.Margin = new System.Windows.Forms.Padding(4);
             this.cmblanguage.Name = "cmblanguage";
             this.cmblanguage.Size = new System.Drawing.Size(204, 28);
             this.cmblanguage.TabIndex = 10;
@@ -983,7 +983,7 @@ namespace LoginForm
             // txtContactAddress
             // 
             this.txtContactAddress.Location = new System.Drawing.Point(733, 49);
-            this.txtContactAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtContactAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactAddress.Multiline = true;
             this.txtContactAddress.Name = "txtContactAddress";
             this.txtContactAddress.Size = new System.Drawing.Size(204, 50);
@@ -992,7 +992,7 @@ namespace LoginForm
             // txtContactfax
             // 
             this.txtContactfax.Location = new System.Drawing.Point(460, 185);
-            this.txtContactfax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtContactfax.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactfax.Name = "txtContactfax";
             this.txtContactfax.Size = new System.Drawing.Size(157, 26);
             this.txtContactfax.TabIndex = 9;
@@ -1001,7 +1001,7 @@ namespace LoginForm
             // txtContactMobile
             // 
             this.txtContactMobile.Location = new System.Drawing.Point(461, 128);
-            this.txtContactMobile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtContactMobile.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactMobile.Name = "txtContactMobile";
             this.txtContactMobile.Size = new System.Drawing.Size(159, 26);
             this.txtContactMobile.TabIndex = 8;
@@ -1010,7 +1010,7 @@ namespace LoginForm
             // txtContactPhone
             // 
             this.txtContactPhone.Location = new System.Drawing.Point(113, 186);
-            this.txtContactPhone.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtContactPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactPhone.Name = "txtContactPhone";
             this.txtContactPhone.Size = new System.Drawing.Size(132, 26);
             this.txtContactPhone.TabIndex = 4;
@@ -1019,7 +1019,7 @@ namespace LoginForm
             // txtContactMail
             // 
             this.txtContactMail.Location = new System.Drawing.Point(460, 12);
-            this.txtContactMail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtContactMail.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactMail.Name = "txtContactMail";
             this.txtContactMail.Size = new System.Drawing.Size(157, 26);
             this.txtContactMail.TabIndex = 6;
@@ -1028,7 +1028,7 @@ namespace LoginForm
             // txtContactName
             // 
             this.txtContactName.Location = new System.Drawing.Point(113, 128);
-            this.txtContactName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtContactName.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactName.Name = "txtContactName";
             this.txtContactName.Size = new System.Drawing.Size(203, 26);
             this.txtContactName.TabIndex = 3;
@@ -1038,7 +1038,7 @@ namespace LoginForm
             this.cmbposition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbposition.FormattingEnabled = true;
             this.cmbposition.Location = new System.Drawing.Point(113, 70);
-            this.cmbposition.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbposition.Margin = new System.Windows.Forms.Padding(4);
             this.cmbposition.Name = "cmbposition";
             this.cmbposition.Size = new System.Drawing.Size(164, 28);
             this.cmbposition.TabIndex = 2;
@@ -1048,7 +1048,7 @@ namespace LoginForm
             this.cmbdepartman.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbdepartman.FormattingEnabled = true;
             this.cmbdepartman.Location = new System.Drawing.Point(117, 12);
-            this.cmbdepartman.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbdepartman.Margin = new System.Windows.Forms.Padding(4);
             this.cmbdepartman.Name = "cmbdepartman";
             this.cmbdepartman.Size = new System.Drawing.Size(160, 28);
             this.cmbdepartman.TabIndex = 1;
@@ -1165,7 +1165,7 @@ namespace LoginForm
             this.tabbank.Controls.Add(this.label38);
             this.tabbank.Controls.Add(this.label37);
             this.tabbank.Location = new System.Drawing.Point(4, 29);
-            this.tabbank.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabbank.Margin = new System.Windows.Forms.Padding(4);
             this.tabbank.Name = "tabbank";
             this.tabbank.Size = new System.Drawing.Size(1217, 219);
             this.tabbank.TabIndex = 4;
@@ -1178,7 +1178,7 @@ namespace LoginForm
             this.cmbBankName.FormattingEnabled = true;
             this.cmbBankName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.cmbBankName.Location = new System.Drawing.Point(156, 12);
-            this.cmbBankName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbBankName.Margin = new System.Windows.Forms.Padding(4);
             this.cmbBankName.Name = "cmbBankName";
             this.cmbBankName.Size = new System.Drawing.Size(247, 28);
             this.cmbBankName.TabIndex = 1;
@@ -1186,7 +1186,7 @@ namespace LoginForm
             // txtBankIban
             // 
             this.txtBankIban.Location = new System.Drawing.Point(156, 177);
-            this.txtBankIban.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBankIban.Margin = new System.Windows.Forms.Padding(4);
             this.txtBankIban.Name = "txtBankIban";
             this.txtBankIban.Size = new System.Drawing.Size(247, 26);
             this.txtBankIban.TabIndex = 4;
@@ -1195,7 +1195,7 @@ namespace LoginForm
             // txtBankNumber
             // 
             this.txtBankNumber.Location = new System.Drawing.Point(156, 124);
-            this.txtBankNumber.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBankNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtBankNumber.Name = "txtBankNumber";
             this.txtBankNumber.Size = new System.Drawing.Size(247, 26);
             this.txtBankNumber.TabIndex = 3;
@@ -1203,7 +1203,7 @@ namespace LoginForm
             // txtBankCode
             // 
             this.txtBankCode.Location = new System.Drawing.Point(156, 68);
-            this.txtBankCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBankCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtBankCode.Name = "txtBankCode";
             this.txtBankCode.Size = new System.Drawing.Size(247, 26);
             this.txtBankCode.TabIndex = 2;
@@ -1255,7 +1255,7 @@ namespace LoginForm
             this.dgSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgSupplier.Location = new System.Drawing.Point(4, 349);
-            this.dgSupplier.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgSupplier.Margin = new System.Windows.Forms.Padding(4);
             this.dgSupplier.Name = "dgSupplier";
             this.dgSupplier.ReadOnly = true;
             this.dgSupplier.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -1270,7 +1270,7 @@ namespace LoginForm
             this.btnupdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnupdate.ForeColor = System.Drawing.Color.SteelBlue;
             this.btnupdate.Location = new System.Drawing.Point(805, 2);
-            this.btnupdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnupdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnupdate.Name = "btnupdate";
             this.btnupdate.Size = new System.Drawing.Size(188, 69);
             this.btnupdate.TabIndex = 51;
@@ -1284,7 +1284,7 @@ namespace LoginForm
             this.btnexit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnexit.ForeColor = System.Drawing.Color.Red;
             this.btnexit.Location = new System.Drawing.Point(1007, 2);
-            this.btnexit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnexit.Margin = new System.Windows.Forms.Padding(4);
             this.btnexit.Name = "btnexit";
             this.btnexit.Size = new System.Drawing.Size(177, 69);
             this.btnexit.TabIndex = 53;
@@ -1298,7 +1298,7 @@ namespace LoginForm
             this.btnnew.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnnew.ForeColor = System.Drawing.Color.LimeGreen;
             this.btnnew.Location = new System.Drawing.Point(621, 2);
-            this.btnnew.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnnew.Margin = new System.Windows.Forms.Padding(4);
             this.btnnew.Name = "btnnew";
             this.btnnew.Size = new System.Drawing.Size(176, 69);
             this.btnnew.TabIndex = 50;
@@ -1323,7 +1323,7 @@ namespace LoginForm
             this.txtsearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtsearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtsearch.Location = new System.Drawing.Point(163, 27);
-            this.txtsearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtsearch.Margin = new System.Windows.Forms.Padding(4);
             this.txtsearch.Name = "txtsearch";
             this.txtsearch.Size = new System.Drawing.Size(164, 26);
             this.txtsearch.TabIndex = 52;
@@ -1369,7 +1369,7 @@ namespace LoginForm
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(1233, 578);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1249, 614);
             this.Name = "SupplierMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
