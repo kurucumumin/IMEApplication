@@ -1509,11 +1509,11 @@
     <Compile Include="Services\ToolTipService.cs" />
     <Compile Include="Services\txtCreate.cs" />
     <Compile Include="Services\XmlToObject.cs" />
-    <Compile Include="Supplier\CSupplierMain.cs">
+    <Compile Include="Supplier\CemSupplierMainCem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Supplier\CSupplierMain.designer.cs">
-      <DependentUpon>CSupplierMain.cs</DependentUpon>
+    <Compile Include="Supplier\CemSupplierMainCem.designer.cs">
+      <DependentUpon>CemSupplierMainCem.cs</DependentUpon>
     </Compile>
     <Compile Include="User\FormUsersMain.cs">
       <SubType>Form</SubType>
@@ -1847,8 +1847,8 @@
     <EmbeddedResource Include="SaleOrder\FormSaleGridCustomize.resx">
       <DependentUpon>FormSaleGridCustomize.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Supplier\CSupplierMain.resx">
-      <DependentUpon>CSupplierMain.cs</DependentUpon>
+    <EmbeddedResource Include="Supplier\CemSupplierMainCem.resx">
+      <DependentUpon>CemSupplierMainCem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\FormUsersMain.resx">
       <DependentUpon>FormUsersMain.cs</DependentUpon>
