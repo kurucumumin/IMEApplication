@@ -255,6 +255,12 @@
     <Compile Include="Account\Register\frmReceiptRegister.designer.cs">
       <DependentUpon>frmReceiptRegister.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Register\frmServiceVoucherRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Register\frmServiceVoucherRegister.designer.cs">
+      <DependentUpon>frmServiceVoucherRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Reminder\frmOverduePurchaseOrder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1176,6 +1182,9 @@
     <Compile Include="DataSet\ServiceMasterView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\ServiceRegisterSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\ServiceViewAll_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1629,6 +1638,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Register\frmReceiptRegister.resx">
       <DependentUpon>frmReceiptRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Register\frmServiceVoucherRegister.resx">
+      <DependentUpon>frmServiceVoucherRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Reminder\frmOverduePurchaseOrder.resx">
       <DependentUpon>frmOverduePurchaseOrder.cs</DependentUpon>

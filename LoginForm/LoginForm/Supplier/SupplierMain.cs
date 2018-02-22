@@ -874,7 +874,7 @@ namespace LoginForm
                         try { int s_repAcoID = ((Worker)(cmbAcountRep).SelectedItem).WorkerID; s.accountrepresentaryID = s_repAcoID; } catch { };
                         s.taxoffice = txtTaxOffice.Text;
                         s.PoBox = txtpobox.Text;
-                        try { if (txtTaxNumber.Text != "") { s.taxnumber = Int32.Parse(txtTaxNumber.Text); } } catch { };
+                        try { if (txtTaxNumber.Text != "") { s.taxnumber = txtTaxNumber.Text; } } catch { };
                         try
                         {
                             if (s.BankID != null)
