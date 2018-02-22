@@ -33,7 +33,7 @@ namespace LoginForm.DataSet
         public Nullable<int> representaryID { get; set; }
         public Nullable<int> rate_ID { get; set; }
         public string taxoffice { get; set; }
-        public Nullable<int> taxnumber { get; set; }
+        public string taxnumber { get; set; }
         public Nullable<int> accountrepresentaryID { get; set; }
         public Nullable<int> SupplierNoteID { get; set; }
         public Nullable<int> MainContactID { get; set; }

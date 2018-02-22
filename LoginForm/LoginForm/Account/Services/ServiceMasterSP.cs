@@ -215,5 +215,42 @@ namespace LoginForm
             return servicemasterinfo;
         }
 
+        public DataTable ServiceVoucherRegisterSearch(DateTime dtdateFrom, DateTime dtdateTo, string strVoucherNo, string strLedgerName)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("SlNo", typeof(decimal));
+            dtbl.Columns["SlNo"].AutoIncrement = true;
+            dtbl.Columns["SlNo"].AutoIncrementSeed = 1;
+            dtbl.Columns["SlNo"].AutoIncrementStep = 1;
+            try
+            {
+                var adaptor = IME.ServiceRegisterSearch(dtdateFrom, dtdateTo, strVoucherNo, strLedgerName);
+
+                dtbl.Columns.Add("serviceMasterId");
+                dtbl.Columns.Add("voucherNo");
+                dtbl.Columns.Add("date");
+                dtbl.Columns.Add("ledgerName");
+                dtbl.Columns.Add("amount");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["serviceMasterId"] = item.serviceMasterId;
+                    row["voucherNo"] = item.voucherNo;
+                    row["date"] = item.date;
+                    row["ledgerName"] = item.ledgerName;
+                    row["amount"] = item.amount;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
     }
 }

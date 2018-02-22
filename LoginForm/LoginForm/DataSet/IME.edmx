@@ -1868,7 +1868,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="representaryID" Type="int" />
           <Property Name="rate_ID" Type="int" />
           <Property Name="taxoffice" Type="nvarchar" MaxLength="150" />
-          <Property Name="taxnumber" Type="int" />
+          <Property Name="taxnumber" Type="nvarchar" MaxLength="50" />
           <Property Name="accountrepresentaryID" Type="int" />
           <Property Name="SupplierNoteID" Type="int" />
           <Property Name="MainContactID" Type="int" />
@@ -6917,6 +6917,12 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         <Function Name="ServiceMasterView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="serviceMasterId" Type="numeric" Mode="In" />
         </Function>
+        <Function Name="ServiceRegisterSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dateFrom" Type="datetime" Mode="In" />
+          <Parameter Name="dateTo" Type="datetime" Mode="In" />
+          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
+          <Parameter Name="ledgerName" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="ServiceViewAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ServiceVoucherCheckExistence" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="invoiceNo" Type="varchar(max)" Mode="In" />
@@ -10859,7 +10865,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="representaryID" Type="Int32" />
           <Property Name="rate_ID" Type="Int32" />
           <Property Name="taxoffice" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="taxnumber" Type="Int32" />
+          <Property Name="taxnumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="accountrepresentaryID" Type="Int32" />
           <Property Name="SupplierNoteID" Type="Int32" />
           <Property Name="MainContactID" Type="Int32" />
@@ -17369,6 +17375,12 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <FunctionImport Name="ServiceMasterView" ReturnType="Collection(IMEModel.ServiceMasterView_Result)">
             <Parameter Name="serviceMasterId" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="ServiceRegisterSearch" ReturnType="Collection(IMEModel.ServiceRegisterSearch_Result)">
+            <Parameter Name="dateFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="dateTo" Mode="In" Type="DateTime" />
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
+            <Parameter Name="ledgerName" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="ServiceViewAll" ReturnType="Collection(IMEModel.ServiceViewAll_Result)" />
           <FunctionImport Name="ServiceVoucherCheckExistence" ReturnType="Collection(Int32)">
             <Parameter Name="invoiceNo" Mode="In" Type="String" />
@@ -18625,6 +18637,13 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="Decimal" Name="grandTotal" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="voucherTypeId" Nullable="true" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="financialYearId" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="ServiceRegisterSearch_Result">
+          <Property Type="Decimal" Name="serviceMasterId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="voucherNo" Nullable="true" />
+          <Property Type="String" Name="date" Nullable="true" />
+          <Property Type="String" Name="ledgerName" Nullable="true" />
+          <Property Type="Decimal" Name="amount" Nullable="true" Precision="18" Scale="2" />
         </ComplexType>
         <ComplexType Name="ServiceViewAll_Result">
           <Property Type="Decimal" Name="serviceId" Nullable="false" Precision="18" Scale="0" />
@@ -22444,6 +22463,17 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="grandTotal" ColumnName="grandTotal" />
                 <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
                 <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ServiceRegisterSearch" FunctionName="IMEModel.Store.ServiceRegisterSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ServiceRegisterSearch_Result">
+                <ScalarProperty Name="serviceMasterId" ColumnName="serviceMasterId" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

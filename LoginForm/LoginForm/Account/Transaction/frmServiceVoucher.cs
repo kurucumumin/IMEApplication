@@ -50,7 +50,7 @@ namespace LoginForm
         ArrayList strArrayOfRemovedLedgerPostingId = new ArrayList();   //  Array of Index to remove row from tbl_LedgerPosting
        // frmEmployeePopup frmEmployeePopupObj;                           //  To use in call from emoloyee popup function    
         frmLedgerPopup frmLedgerPopupObj;                               //  To use in call from ledger popup function          
-        //frmServiceVoucherRegister frmServiceVoucherRegisterObj;         //  To use in call from service register function
+        frmServiceVoucherRegister frmServiceVoucherRegisterObj;         //  To use in call from service register function
        // frmServiceReport frmServiceReportObj;                           //  To use in call from service report function
        // frmServices frmServicesObj = new frmServices();                 //  To use in call from service ledger pop function
         SettingsSP spSettings = new SettingsSP();                       //  To select data from settings table
@@ -1162,11 +1162,11 @@ namespace LoginForm
                         }
                     }
                     this.Close();
-                    //if (frmServiceVoucherRegisterObj != null)
-                    //{
-                    //    frmServiceVoucherRegisterObj.Show();
-                    //    frmServiceVoucherRegisterObj.GridFill();
-                    //}
+                    if (frmServiceVoucherRegisterObj != null)
+                    {
+                        frmServiceVoucherRegisterObj.Show();
+                        frmServiceVoucherRegisterObj.GridFill();
+                    }
                     //else if (frmServiceReportObj != null)
                     //{
                     //    frmServiceReportObj.Show();
@@ -1337,27 +1337,27 @@ namespace LoginForm
         /// <param name="frmServiceVoucherRegister"></param>
         /// <param name="decId"></param>
         /// <param name="decVoucherNoFromRegister"></param>
-        //public void CallFromServiceVoucherRegister(frmServiceVoucherRegister frmServiceVoucherRegister, decimal decId, decimal decVoucherNoFromRegister)
-        //{
-        //    try
-        //    {
-        //        base.Show();
-        //        txtVoucherDate.Select();
-        //        this.frmServiceVoucherRegisterObj = frmServiceVoucherRegister;
-        //        frmServiceVoucherRegister.Enabled = false;
-        //        btnSave.Text = "Update";
-        //        btnDelete.Enabled = true;
-        //        isEditMode = true;
-        //        decimal decVoucherNos = 0;
-        //        decVoucherNos = decVoucherNoFromRegister;
-        //        decMasterId = decId;
-        //        FillFunction();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("SV 29 : " + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //    }
-        //}
+        public void CallFromServiceVoucherRegister(frmServiceVoucherRegister frmServiceVoucherRegister, decimal decId, decimal decVoucherNoFromRegister)
+        {
+            try
+            {
+                base.Show();
+                txtVoucherDate.Select();
+                this.frmServiceVoucherRegisterObj = frmServiceVoucherRegister;
+                frmServiceVoucherRegister.Enabled = false;
+                btnSave.Text = "Update";
+                btnDelete.Enabled = true;
+                isEditMode = true;
+                decimal decVoucherNos = 0;
+                decVoucherNos = decVoucherNoFromRegister;
+                decMasterId = decId;
+                FillFunction();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("SV 29 : " + ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         /// <summary>
         /// Function to load the voucher to edit or delete while calling from the ServiceVoucher report
         /// </summary>
@@ -2178,11 +2178,11 @@ namespace LoginForm
                 //    frmServiceReportObj.Enabled = true;
                 //    frmServiceReportObj.GridFill();
                 //}
-                //if (frmServiceVoucherRegisterObj != null)
-                //{
-                //    frmServiceVoucherRegisterObj.Enabled = true;
-                //    frmServiceVoucherRegisterObj.GridFill();
-                //}
+                if (frmServiceVoucherRegisterObj != null)
+                {
+                    frmServiceVoucherRegisterObj.Enabled = true;
+                    frmServiceVoucherRegisterObj.GridFill();
+                }
                 //if (frmDayBookObj != null)
                 //{
                 //    frmDayBookObj.Enabled = true;

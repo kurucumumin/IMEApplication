@@ -4031,6 +4031,27 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ServiceMasterView_Result>("ServiceMasterView", serviceMasterIdParameter);
         }
     
+        public virtual ObjectResult<ServiceRegisterSearch_Result> ServiceRegisterSearch(Nullable<System.DateTime> dateFrom, Nullable<System.DateTime> dateTo, string voucherNo, string ledgerName)
+        {
+            var dateFromParameter = dateFrom.HasValue ?
+                new ObjectParameter("dateFrom", dateFrom) :
+                new ObjectParameter("dateFrom", typeof(System.DateTime));
+    
+            var dateToParameter = dateTo.HasValue ?
+                new ObjectParameter("dateTo", dateTo) :
+                new ObjectParameter("dateTo", typeof(System.DateTime));
+    
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            var ledgerNameParameter = ledgerName != null ?
+                new ObjectParameter("ledgerName", ledgerName) :
+                new ObjectParameter("ledgerName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ServiceRegisterSearch_Result>("ServiceRegisterSearch", dateFromParameter, dateToParameter, voucherNoParameter, ledgerNameParameter);
+        }
+    
         public virtual ObjectResult<ServiceViewAll_Result> ServiceViewAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ServiceViewAll_Result>("ServiceViewAll");
