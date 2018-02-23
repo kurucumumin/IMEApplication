@@ -43,7 +43,7 @@ namespace LoginForm
             this.cmbMainCategory = new System.Windows.Forms.ComboBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.cmbRepresentative = new System.Windows.Forms.ComboBox();
-            this.txtCode = new System.Windows.Forms.TextBox();
+            this.txtSupplierCode = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -216,7 +216,7 @@ namespace LoginForm
             this.tabInfo.Controls.Add(this.cmbMainCategory);
             this.tabInfo.Controls.Add(this.txtName);
             this.tabInfo.Controls.Add(this.cmbRepresentative);
-            this.tabInfo.Controls.Add(this.txtCode);
+            this.tabInfo.Controls.Add(this.txtSupplierCode);
             this.tabInfo.Controls.Add(this.label6);
             this.tabInfo.Controls.Add(this.label5);
             this.tabInfo.Controls.Add(this.label4);
@@ -366,15 +366,15 @@ namespace LoginForm
             this.cmbRepresentative.Size = new System.Drawing.Size(183, 28);
             this.cmbRepresentative.TabIndex = 2;
             // 
-            // txtCode
+            // txtSupplierCode
             // 
-            this.txtCode.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtCode.Enabled = false;
-            this.txtCode.Location = new System.Drawing.Point(157, 14);
-            this.txtCode.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(183, 26);
-            this.txtCode.TabIndex = 1;
+            this.txtSupplierCode.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtSupplierCode.Enabled = false;
+            this.txtSupplierCode.Location = new System.Drawing.Point(157, 14);
+            this.txtSupplierCode.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSupplierCode.Name = "txtSupplierCode";
+            this.txtSupplierCode.Size = new System.Drawing.Size(183, 26);
+            this.txtSupplierCode.TabIndex = 1;
             // 
             // label6
             // 
@@ -761,6 +761,7 @@ namespace LoginForm
             this.cmbCity.Name = "cmbCity";
             this.cmbCity.Size = new System.Drawing.Size(160, 28);
             this.cmbCity.TabIndex = 14;
+            this.cmbCity.SelectedIndexChanged += new System.EventHandler(this.cmbCity_SelectedIndexChanged);
             // 
             // cmbCounrty
             // 
@@ -772,6 +773,7 @@ namespace LoginForm
             this.cmbCounrty.Name = "cmbCounrty";
             this.cmbCounrty.Size = new System.Drawing.Size(160, 28);
             this.cmbCounrty.TabIndex = 13;
+            this.cmbCounrty.SelectedIndexChanged += new System.EventHandler(this.cmbCounrty_SelectedIndexChanged);
             // 
             // label22
             // 
@@ -1138,6 +1140,7 @@ namespace LoginForm
             this.cmbDepartment.Name = "cmbDepartment";
             this.cmbDepartment.Size = new System.Drawing.Size(160, 28);
             this.cmbDepartment.TabIndex = 1;
+            this.cmbDepartment.SelectedIndexChanged += new System.EventHandler(this.cmbDepartment_SelectedIndexChanged);
             // 
             // label36
             // 
@@ -1785,7 +1788,7 @@ namespace LoginForm
         private System.Windows.Forms.ComboBox cmbMainCategory;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.ComboBox cmbRepresentative;
-        private System.Windows.Forms.TextBox txtCode;
+        private System.Windows.Forms.TextBox txtSupplierCode;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;

@@ -39,7 +39,7 @@ namespace LoginForm
                 }
                 else
                 {
-                    MessageBox.Show("There is already a category name with " + txtCategory.Text, "Failure");
+                    MessageBox.Show("There is already a category named " + txtCategory.Text, "Failure");
                 }
             }
             catch (Exception ex)

@@ -50,7 +50,7 @@ namespace LoginForm
                 }
                 else
                 {
-                    MessageBox.Show("There is already a subcategory with the same name in this category", "Failure");
+                    MessageBox.Show("There is already a subcategory named " + txtSubCategoryName.Text + " in this category", "Failure");
                 }
             }
             catch (Exception ex)
