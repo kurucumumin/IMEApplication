@@ -168,7 +168,6 @@ namespace LoginForm
             this.rateIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.accountrepresentaryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supplierBankDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.supplierMainContactDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.worker1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supplierAdressesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supplierWorkersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -638,35 +637,38 @@ namespace LoginForm
             // btnAddressDelete
             // 
             this.btnAddressDelete.Enabled = false;
-            this.btnAddressDelete.Location = new System.Drawing.Point(1131, 179);
+            this.btnAddressDelete.Location = new System.Drawing.Point(1131, 157);
             this.btnAddressDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddressDelete.Name = "btnAddressDelete";
             this.btnAddressDelete.Size = new System.Drawing.Size(48, 32);
             this.btnAddressDelete.TabIndex = 23;
             this.btnAddressDelete.Text = "Del";
             this.btnAddressDelete.UseVisualStyleBackColor = true;
+            this.btnAddressDelete.Click += new System.EventHandler(this.btnAddressDelete_Click);
             // 
             // btnAddressUpdate
             // 
             this.btnAddressUpdate.Enabled = false;
-            this.btnAddressUpdate.Location = new System.Drawing.Point(1072, 179);
+            this.btnAddressUpdate.Location = new System.Drawing.Point(1072, 157);
             this.btnAddressUpdate.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddressUpdate.Name = "btnAddressUpdate";
             this.btnAddressUpdate.Size = new System.Drawing.Size(48, 32);
             this.btnAddressUpdate.TabIndex = 22;
             this.btnAddressUpdate.Text = "Upd";
             this.btnAddressUpdate.UseVisualStyleBackColor = true;
+            this.btnAddressUpdate.Click += new System.EventHandler(this.btnAddressUpdate_Click);
             // 
             // btnAddressAdd
             // 
             this.btnAddressAdd.Enabled = false;
-            this.btnAddressAdd.Location = new System.Drawing.Point(1016, 179);
+            this.btnAddressAdd.Location = new System.Drawing.Point(1016, 157);
             this.btnAddressAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddressAdd.Name = "btnAddressAdd";
             this.btnAddressAdd.Size = new System.Drawing.Size(48, 32);
             this.btnAddressAdd.TabIndex = 21;
             this.btnAddressAdd.Text = "Add";
             this.btnAddressAdd.UseVisualStyleBackColor = true;
+            this.btnAddressAdd.Click += new System.EventHandler(this.btnAddressAdd_Click);
             // 
             // lbAddressList
             // 
@@ -689,6 +691,7 @@ namespace LoginForm
             this.btnAddressDone.Text = "Done";
             this.btnAddressDone.UseVisualStyleBackColor = true;
             this.btnAddressDone.Visible = false;
+            this.btnAddressDone.Click += new System.EventHandler(this.btnAddressDone_Click);
             // 
             // btnAddressCancel
             // 
@@ -700,6 +703,7 @@ namespace LoginForm
             this.btnAddressCancel.Text = "Cancel";
             this.btnAddressCancel.UseVisualStyleBackColor = true;
             this.btnAddressCancel.Visible = false;
+            this.btnAddressCancel.Click += new System.EventHandler(this.btnAddressCancel_Click);
             // 
             // txtPoBox
             // 
@@ -1376,7 +1380,6 @@ namespace LoginForm
             this.rateIDDataGridViewTextBoxColumn,
             this.accountrepresentaryIDDataGridViewTextBoxColumn,
             this.supplierBankDataGridViewTextBoxColumn,
-            this.supplierMainContactDataGridViewTextBoxColumn,
             this.worker1DataGridViewTextBoxColumn,
             this.supplierAdressesDataGridViewTextBoxColumn,
             this.supplierWorkersDataGridViewTextBoxColumn,
@@ -1699,13 +1702,6 @@ namespace LoginForm
             this.supplierBankDataGridViewTextBoxColumn.HeaderText = "SupplierBank";
             this.supplierBankDataGridViewTextBoxColumn.Name = "supplierBankDataGridViewTextBoxColumn";
             this.supplierBankDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // supplierMainContactDataGridViewTextBoxColumn
-            // 
-            this.supplierMainContactDataGridViewTextBoxColumn.DataPropertyName = "SupplierMainContact";
-            this.supplierMainContactDataGridViewTextBoxColumn.HeaderText = "SupplierMainContact";
-            this.supplierMainContactDataGridViewTextBoxColumn.Name = "supplierMainContactDataGridViewTextBoxColumn";
-            this.supplierMainContactDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // worker1DataGridViewTextBoxColumn
             // 

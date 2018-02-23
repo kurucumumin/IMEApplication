@@ -13,7 +13,12 @@ namespace LoginForm
     //deneme
     public partial class CemSupplierMainCem : Form
     {
-        string InputMode = String.Empty;
+        private static string AddressButtonsModeOpen = "Open";
+        private static string AddressButtonsModeClose = "Close";
+
+        string SupplierCustomerMode = String.Empty;
+        string AddressMode = String.Empty;
+        string ContactMode = String.Empty;
 
         private List<Supplier> gridSupplierList;
 
@@ -122,7 +127,7 @@ namespace LoginForm
             switch (btnAdd.Text)
             {
                 case "Add":
-                    InputMode = "Add";
+                    SupplierCustomerMode = "Add";
                     EnableGeneralInput(true);
 
                     txtSupplierCode.Text = NewSupplierID();
@@ -136,7 +141,7 @@ namespace LoginForm
                 case "Save":
 
 
-                    InputMode = String.Empty;
+                    SupplierCustomerMode = String.Empty;
                     break;
                 default:
                     break;
@@ -172,33 +177,7 @@ namespace LoginForm
             cmbInvoiceCurrency.Enabled = state;
             txtAccountNotes.Enabled = state;
 
-            txtPhone.Enabled = state;
-            txtFax.Enabled = state;
-            txtPoBox.Enabled = state;
-            cmbCounrty.Enabled = state;
-            txtPostCode.Enabled = state;
-            txtWeb.Enabled = state;
-            txtAddressDetail.Enabled = state;
-            lbAddressList.Enabled = state;
             btnAddressAdd.Enabled = state;
-            btnAddressUpdate.Enabled = state;
-            btnAddressDelete.Enabled = state;
-            if (state && cmbCounrty.SelectedIndex > 0)
-            {
-                cmbCity.Enabled = true;
-            }
-            else
-            {
-                cmbCity.Enabled = false;
-            }
-            if (state && cmbCity.SelectedIndex > 0)
-            {
-                cmbTown.Enabled = true;
-            }
-            else
-            {
-                cmbTown.Enabled = false;
-            }
 
             cmbDepartment.Enabled = state;
             btnDep.Enabled = state;
@@ -232,6 +211,61 @@ namespace LoginForm
             txtBankBranchCode.Enabled = state;
             txtBankAccountNumber.Enabled = state;
             txtBankIban.Enabled = state;
+            if (!state)
+            {
+                cmbCounrty.SelectedIndex = 0;
+            }
+        }
+
+        private void EnableAddressInput(bool state)
+        {
+            txtPhone.Enabled = state;
+            txtFax.Enabled = state;
+            txtPoBox.Enabled = state;
+            cmbCounrty.Enabled = state;
+            txtPostCode.Enabled = state;
+            txtWeb.Enabled = state;
+            txtAddressDetail.Enabled = state;
+            lbAddressList.Enabled = state;
+            if (state && cmbCounrty.SelectedIndex > 0)
+            {
+                cmbCity.Enabled = true;
+            }
+            else
+            {
+                cmbCity.Enabled = false;
+            }
+            if (state && cmbCity.SelectedIndex > 0)
+            {
+                cmbTown.Enabled = true;
+            }
+            else
+            {
+                cmbTown.Enabled = false;
+            }
+
+            if (state)
+            {
+                if (lbAddressList.Items.Count > 0)
+                {
+                    btnAddressUpdate.Enabled = state;
+                    btnAddressDelete.Enabled = state;
+                }
+                else
+                {
+                    btnAddressUpdate.Enabled = !state;
+                    btnAddressDelete.Enabled = !state;
+                }
+            }
+            else
+            {
+                if (SupplierCustomerMode == String.Empty)
+                {
+                    btnAddressAdd.Enabled = state;
+                }
+                btnAddressUpdate.Enabled = state;
+                btnAddressDelete.Enabled = state;
+            }
         }
 
         private void btnModify_Click(object sender, EventArgs e)
@@ -239,7 +273,7 @@ namespace LoginForm
             switch (btnModify.Text)
             {
                 case "Modify":
-                    InputMode = "Modify";
+                    SupplierCustomerMode = "Modify";
                     if (dgSupplier.SelectedRows.Count != 0)
                     {
                         EnableGeneralInput(true);
@@ -253,11 +287,23 @@ namespace LoginForm
                     }
                     break;
                 case "Cancel":
-                    EnableGeneralInput(false);
-
+                    if (SupplierCustomerMode == "Add")
+                    {
+                        // Clear all input areas and close them
+                        ClearInputs();
+                    }
+                    else
+                    {
+                        // Just close Inputs
+                    }
+                    AddressButtonsMode(AddressButtonsModeClose);
+                    SupplierCustomerMode = String.Empty;
+                    EnableAddressInput(false);
                     btnAdd.Text = "Add";
                     btnModify.Text = "Modify";
-                    InputMode = String.Empty;
+                    EnableGeneralInput(false);
+
+
                     break;
                 default:
 
@@ -291,6 +337,13 @@ namespace LoginForm
 
 
             
+
+        }
+
+        private void ClearInputs()
+        {
+            txtSupplierCode.Text = String.Empty;
+
 
         }
 
@@ -508,6 +561,52 @@ namespace LoginForm
                 btnPos.Enabled = true;
                 cmbPosition.Enabled = true;
             }
+        }
+
+        private void btnAddressAdd_Click(object sender, EventArgs e)
+        {
+            EnableAddressInput(true);
+            AddressButtonsMode(AddressButtonsModeOpen);
+        }
+
+        private void AddressButtonsMode(string Mode)
+        {
+            if (Mode == AddressButtonsModeOpen)
+            {
+                btnAddressAdd.Visible = false;
+                btnAddressUpdate.Visible = false;
+                btnAddressDelete.Visible = false;
+                btnAddressDone.Visible = true;
+                btnAddressCancel.Visible = true;
+            }else if (Mode == AddressButtonsModeClose)
+            {
+                btnAddressAdd.Visible = true;
+                btnAddressUpdate.Visible = true;
+                btnAddressDelete.Visible = true;
+                btnAddressDone.Visible = false;
+                btnAddressCancel.Visible = false;
+            }
+        }
+
+        private void btnAddressCancel_Click(object sender, EventArgs e)
+        {
+            EnableAddressInput(false);
+            AddressButtonsMode("Close");
+        }
+
+        private void btnAddressDone_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddressUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddressDelete_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
