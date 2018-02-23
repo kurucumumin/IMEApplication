@@ -1092,7 +1092,6 @@
     <Compile Include="DataSet\Reminder.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="DataSet\ReminderSearch_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1102,8 +1101,6 @@
     <Compile Include="DataSet\ReminderView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-=======
->>>>>>> Cem-Develop
     <Compile Include="DataSet\RoleValue.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
