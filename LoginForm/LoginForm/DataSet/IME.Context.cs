@@ -4511,6 +4511,50 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockPostingDeleteForSalesInvoiceAgainstDeliveryNote", againstvoucherTypeIdParameter, againstVoucherNoParameter, voucherNoParameter, voucherTypeIdParameter);
         }
     
+        public virtual int StockValueOnDateByAVCO(Nullable<System.DateTime> date)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByAVCO", dateParameter);
+        }
+    
+        public virtual int StockValueOnDateByAVCOForOpeningStock(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByAVCOForOpeningStock", dateParameter, fromDateParameter);
+        }
+    
+        public virtual int StockValueOnDateByAVCOForOpeningStockForBalanceSheet(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByAVCOForOpeningStockForBalanceSheet", dateParameter, fromDateParameter);
+        }
+    
+        public virtual int StockValueOnDateByFIFO(Nullable<System.DateTime> date)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByFIFO", dateParameter);
+        }
+    
         public virtual int StockValueOnDateByFIFOForOpeningStock(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
         {
             var dateParameter = date.HasValue ?
@@ -4522,6 +4566,124 @@ namespace LoginForm.DataSet
                 new ObjectParameter("fromDate", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByFIFOForOpeningStock", dateParameter, fromDateParameter);
+        }
+    
+        public virtual int StockValueOnDateByFIFOForOpeningStockForBalancesheet(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByFIFOForOpeningStockForBalancesheet", dateParameter, fromDateParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> StockValueOnDateByHighCost(Nullable<System.DateTime> date)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("StockValueOnDateByHighCost", dateParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> StockValueOnDateByHighCostForOpeningStock(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("StockValueOnDateByHighCostForOpeningStock", dateParameter, fromDateParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> StockValueOnDateByHighCostForOpeningStockBlncSheet(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("StockValueOnDateByHighCostForOpeningStockBlncSheet", dateParameter, fromDateParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> StockValueOnDateByLastPurchaseRate(Nullable<System.DateTime> date)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("StockValueOnDateByLastPurchaseRate", dateParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> StockValueOnDateByLastPurchaseRateForOpeningStock(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("StockValueOnDateByLastPurchaseRateForOpeningStock", dateParameter, fromDateParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> StockValueOnDateByLastPurchaseRateForOpeningStockBlncSheet(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("StockValueOnDateByLastPurchaseRateForOpeningStockBlncSheet", dateParameter, fromDateParameter);
+        }
+    
+        public virtual int StockValueOnDateByLowCost(Nullable<System.DateTime> date)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByLowCost", dateParameter);
+        }
+    
+        public virtual int StockValueOnDateByLowCostForOpeningStock(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByLowCostForOpeningStock", dateParameter, fromDateParameter);
+        }
+    
+        public virtual int StockValueOnDateByLowCostForOpeningStockForBlncSheet(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByLowCostForOpeningStockForBlncSheet", dateParameter, fromDateParameter);
         }
     
         public virtual int SuperDiskAdd(string article_No, string article_Desc, Nullable<int> pack_Code, Nullable<int> pack_Quantity, Nullable<int> unit_Content, string unit_Measure, Nullable<decimal> uk_Col_1, Nullable<decimal> standard_Weight, string hazardous_Ind, string calibration_Ind, string obsolete_Flag, string mH1, string low_Discount_Ind, string licensed_Ind, string shelf_Life, string cofO, string eUR1_Indicator, string cCCN_No, string supercede_Date, string current_Cat_page, string uk_Intro_Date, string filler, string uk_Disc_Date, string substitute_By, string bHC_Flag, string filler1, Nullable<decimal> future_Sell_Price, string int_Cat, string new_Prod_Change_Ind, string out_of_Stock_Prohibit_change_ind, string disc_Change_Ind, string superceded_Change_Ind, string pack_Size_Change_Ind, string rolled_Product_Change_Ind, string expiring_Product_Change_Ind, string manufacturer, string mPN, string mH_Code_Level_1, Nullable<decimal> heigh, Nullable<decimal> width, Nullable<decimal> length)

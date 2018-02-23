@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Supplier
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,7 +20,7 @@ namespace LoginForm.DataSet
             this.SupplierAdresses = new HashSet<SupplierAdress>();
             this.SupplierWorkers = new HashSet<SupplierWorker>();
         }
-
+    
         public string ID { get; set; }
         public string s_name { get; set; }
         public string telephone { get; set; }
@@ -48,7 +48,7 @@ namespace LoginForm.DataSet
         public string CurrNameQuo { get; set; }
         public Nullable<int> CategoryID { get; set; }
         public Nullable<int> SubCategoryID { get; set; }
-
+    
         public virtual Note Note { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
         public virtual PaymentTerm PaymentTerm { get; set; }
@@ -56,7 +56,6 @@ namespace LoginForm.DataSet
         public virtual Worker Worker { get; set; }
         public virtual SupplierBank SupplierBank { get; set; }
         public virtual SupplierCategory SupplierCategory { get; set; }
-        public virtual SupplierMainContact SupplierMainContact { get; set; }
         public virtual Worker Worker1 { get; set; }
         public virtual SupplierSubCategory SupplierSubCategory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
