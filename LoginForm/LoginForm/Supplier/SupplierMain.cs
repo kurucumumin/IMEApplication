@@ -131,7 +131,7 @@ namespace LoginForm
 
         private void btnDep_Click(object sender, EventArgs e)
         {
-            SupplierDepartmentAdd form = new SupplierDepartmentAdd();
+            frmSupplierCategoryAdd form = new frmSupplierCategoryAdd();
             this.Enabled = false;
             this.SendToBack();
             form.ShowDialog();
@@ -141,10 +141,10 @@ namespace LoginForm
 
         private void btnPos_Click(object sender, EventArgs e)
         {
-            SupplierPositionAdd form = new SupplierPositionAdd();
+            //frmSupplierSubCategoryAdd form = new frmSupplierSubCategoryAdd();
             this.Enabled = false;
             this.SendToBack();
-            form.ShowDialog();
+            //form.ShowDialog();
             cmbposition.DataSource = IME.SupplierTitles;
             this.Enabled = true;
         }

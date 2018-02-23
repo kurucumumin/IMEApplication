@@ -1958,7 +1958,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="supplierID" Type="nvarchar" MaxLength="15" />
           <Property Name="supplierNoteID" Type="int" />
           <Property Name="languageID" Type="int" />
-          <Property Name="categoryID" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -5340,6 +5339,21 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         </Association>
         <Association Name="FK__Supplier__Catego__1FF8A574">
           <End Role="SupplierCategory" Type="Self.SupplierCategory" Multiplicity="0..1" />
+<<<<<<< HEAD
+=======
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Supplier__MainCo__0A688BB1">
+          <End Role="SupplierMainContact" Type="Self.SupplierMainContact" Multiplicity="0..1" />
+>>>>>>> Cem-Develop
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SupplierCategory">
@@ -5470,6 +5484,21 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+<<<<<<< HEAD
+=======
+        <Association Name="FK__SupplierM__suppl__00DF2177">
+          <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="0..1" />
+          <End Role="SupplierMainContact" Type="Self.SupplierMainContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierWorker">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SupplierMainContact">
+              <PropertyRef Name="supplierWorkerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+>>>>>>> Cem-Develop
         <Association Name="FK__SupplierS__categ__03BB8E22">
           <End Role="SupplierCategory" Type="Self.SupplierCategory" Multiplicity="0..1" />
           <End Role="SupplierSubCategory" Type="Self.SupplierSubCategory" Multiplicity="*" />
@@ -8363,6 +8392,13 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </AssociationSet>
           <AssociationSet Name="FK__Supplier__Catego__1FF8A574" Association="Self.FK__Supplier__Catego__1FF8A574">
             <End Role="SupplierCategory" EntitySet="SupplierCategory" />
+<<<<<<< HEAD
+=======
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Supplier__MainCo__0A688BB1" Association="Self.FK__Supplier__MainCo__0A688BB1">
+            <End Role="SupplierMainContact" EntitySet="SupplierMainContact" />
+>>>>>>> Cem-Develop
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
           <AssociationSet Name="FK__Supplier__paymen__634EBE90" Association="Self.FK__Supplier__paymen__634EBE90">
@@ -8405,6 +8441,13 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="Town" EntitySet="Town" />
             <End Role="SupplierAdresses" EntitySet="SupplierAdresses" />
           </AssociationSet>
+<<<<<<< HEAD
+=======
+          <AssociationSet Name="FK__SupplierM__suppl__00DF2177" Association="Self.FK__SupplierM__suppl__00DF2177">
+            <End Role="SupplierWorker" EntitySet="SupplierWorker" />
+            <End Role="SupplierMainContact" EntitySet="SupplierMainContact" />
+          </AssociationSet>
+>>>>>>> Cem-Develop
           <AssociationSet Name="FK__SupplierS__categ__03BB8E22" Association="Self.FK__SupplierS__categ__03BB8E22">
             <End Role="SupplierCategory" EntitySet="SupplierCategory" />
             <End Role="SupplierSubCategory" EntitySet="SupplierSubCategory" />
@@ -10848,6 +10891,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <NavigationProperty Name="Worker" Relationship="Self.FK__Supplier__accoun__2DB1C7EE" FromRole="Supplier" ToRole="Worker" />
           <NavigationProperty Name="SupplierBank" Relationship="Self.FK__Supplier__BankID__0C50D423" FromRole="Supplier" ToRole="SupplierBank" />
           <NavigationProperty Name="SupplierCategory" Relationship="Self.FK__Supplier__Catego__1FF8A574" FromRole="Supplier" ToRole="SupplierCategory" />
+<<<<<<< HEAD
+=======
+          <NavigationProperty Name="SupplierMainContact" Relationship="Self.FK__Supplier__MainCo__0A688BB1" FromRole="Supplier" ToRole="SupplierMainContact" />
+>>>>>>> Cem-Develop
           <NavigationProperty Name="Worker1" Relationship="Self.FK__Supplier__repres__65370702" FromRole="Supplier" ToRole="Worker" />
           <NavigationProperty Name="SupplierSubCategory" Relationship="Self.FK__Supplier__SubCat__20ECC9AD" FromRole="Supplier" ToRole="SupplierSubCategory" />
           <NavigationProperty Name="SupplierAdresses" Relationship="Self.FK__SupplierA__Suppl__42ACE4D4" FromRole="Supplier" ToRole="SupplierAdresses" />
@@ -10931,7 +10978,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="supplierID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="supplierNoteID" Type="Int32" />
           <Property Name="languageID" Type="Int32" />
-          <Property Name="categoryID" Type="Int32" />
           <NavigationProperty Name="Language" Relationship="Self.FK__SupplierW__langu__72910220" FromRole="SupplierWorker" ToRole="Languages" />
           <NavigationProperty Name="Note" Relationship="Self.FK__SupplierW__suppl__73852659" FromRole="SupplierWorker" ToRole="Notes" />
           <NavigationProperty Name="Supplier" Relationship="Self.FK__SupplierW__suppl__74794A92" FromRole="SupplierWorker" ToRole="Supplier" />
@@ -14610,6 +14656,21 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         </Association>
         <Association Name="FK__Supplier__Catego__1FF8A574">
           <End Role="SupplierCategory" Type="Self.SupplierCategory" Multiplicity="0..1" />
+<<<<<<< HEAD
+=======
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Supplier__MainCo__0A688BB1">
+          <End Role="SupplierMainContact" Type="Self.SupplierMainContact" Multiplicity="0..1" />
+>>>>>>> Cem-Develop
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SupplierCategory">
@@ -16091,6 +16152,13 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </AssociationSet>
           <AssociationSet Name="FK__Supplier__Catego__1FF8A574" Association="Self.FK__Supplier__Catego__1FF8A574">
             <End Role="SupplierCategory" EntitySet="SupplierCategories" />
+<<<<<<< HEAD
+=======
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Supplier__MainCo__0A688BB1" Association="Self.FK__Supplier__MainCo__0A688BB1">
+            <End Role="SupplierMainContact" EntitySet="SupplierMainContacts" />
+>>>>>>> Cem-Develop
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
           <AssociationSet Name="FK__Supplier__repres__65370702" Association="Self.FK__Supplier__repres__65370702">
@@ -20681,7 +20749,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="supplierID" ColumnName="supplierID" />
                 <ScalarProperty Name="supplierNoteID" ColumnName="supplierNoteID" />
                 <ScalarProperty Name="languageID" ColumnName="languageID" />
-                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

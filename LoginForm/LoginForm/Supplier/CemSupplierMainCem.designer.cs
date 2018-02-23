@@ -31,6 +31,8 @@ namespace LoginForm
             this.components = new System.ComponentModel.Container();
             this.tabgenel = new System.Windows.Forms.TabControl();
             this.tabInfo = new System.Windows.Forms.TabPage();
+            this.btnSubCategoryAdd = new System.Windows.Forms.Button();
+            this.btnMainCategoryAdd = new System.Windows.Forms.Button();
             this.cmbSubCategory = new System.Windows.Forms.ComboBox();
             this.label42 = new System.Windows.Forms.Label();
             this.txtTaxNumber = new System.Windows.Forms.TextBox();
@@ -41,7 +43,7 @@ namespace LoginForm
             this.cmbMainCategory = new System.Windows.Forms.ComboBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.cmbRepresentative = new System.Windows.Forms.ComboBox();
-            this.txtCode = new System.Windows.Forms.TextBox();
+            this.txtSupplierCode = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -136,7 +138,7 @@ namespace LoginForm
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.snameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telephoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.faxDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -169,7 +171,6 @@ namespace LoginForm
             this.supplierMainContactDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.worker1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supplierAdressesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.supplierCategorySubCategoriesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supplierWorkersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paymentmethodIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -203,6 +204,8 @@ namespace LoginForm
             // 
             // tabInfo
             // 
+            this.tabInfo.Controls.Add(this.btnSubCategoryAdd);
+            this.tabInfo.Controls.Add(this.btnMainCategoryAdd);
             this.tabInfo.Controls.Add(this.cmbSubCategory);
             this.tabInfo.Controls.Add(this.label42);
             this.tabInfo.Controls.Add(this.txtTaxNumber);
@@ -213,7 +216,7 @@ namespace LoginForm
             this.tabInfo.Controls.Add(this.cmbMainCategory);
             this.tabInfo.Controls.Add(this.txtName);
             this.tabInfo.Controls.Add(this.cmbRepresentative);
-            this.tabInfo.Controls.Add(this.txtCode);
+            this.tabInfo.Controls.Add(this.txtSupplierCode);
             this.tabInfo.Controls.Add(this.label6);
             this.tabInfo.Controls.Add(this.label5);
             this.tabInfo.Controls.Add(this.label4);
@@ -228,13 +231,37 @@ namespace LoginForm
             this.tabInfo.Text = "Info";
             this.tabInfo.UseVisualStyleBackColor = true;
             // 
+            // btnSubCategoryAdd
+            // 
+            this.btnSubCategoryAdd.Enabled = false;
+            this.btnSubCategoryAdd.Location = new System.Drawing.Point(1110, 14);
+            this.btnSubCategoryAdd.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSubCategoryAdd.Name = "btnSubCategoryAdd";
+            this.btnSubCategoryAdd.Size = new System.Drawing.Size(32, 28);
+            this.btnSubCategoryAdd.TabIndex = 21;
+            this.btnSubCategoryAdd.Text = "+";
+            this.btnSubCategoryAdd.UseVisualStyleBackColor = true;
+            this.btnSubCategoryAdd.Click += new System.EventHandler(this.btnSubCategoryAdd_Click);
+            // 
+            // btnMainCategoryAdd
+            // 
+            this.btnMainCategoryAdd.Enabled = false;
+            this.btnMainCategoryAdd.Location = new System.Drawing.Point(709, 14);
+            this.btnMainCategoryAdd.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMainCategoryAdd.Name = "btnMainCategoryAdd";
+            this.btnMainCategoryAdd.Size = new System.Drawing.Size(32, 28);
+            this.btnMainCategoryAdd.TabIndex = 20;
+            this.btnMainCategoryAdd.Text = "+";
+            this.btnMainCategoryAdd.UseVisualStyleBackColor = true;
+            this.btnMainCategoryAdd.Click += new System.EventHandler(this.btnMainCategoryAdd_Click);
+            // 
             // cmbSubCategory
             // 
             this.cmbSubCategory.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cmbSubCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSubCategory.Enabled = false;
             this.cmbSubCategory.FormattingEnabled = true;
-            this.cmbSubCategory.Location = new System.Drawing.Point(868, 14);
+            this.cmbSubCategory.Location = new System.Drawing.Point(909, 14);
             this.cmbSubCategory.Margin = new System.Windows.Forms.Padding(4);
             this.cmbSubCategory.Name = "cmbSubCategory";
             this.cmbSubCategory.Size = new System.Drawing.Size(193, 28);
@@ -244,7 +271,7 @@ namespace LoginForm
             // 
             this.label42.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(723, 16);
+            this.label42.Location = new System.Drawing.Point(764, 16);
             this.label42.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(110, 20);
@@ -255,7 +282,7 @@ namespace LoginForm
             // 
             this.txtTaxNumber.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtTaxNumber.Enabled = false;
-            this.txtTaxNumber.Location = new System.Drawing.Point(868, 71);
+            this.txtTaxNumber.Location = new System.Drawing.Point(909, 71);
             this.txtTaxNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtTaxNumber.Name = "txtTaxNumber";
             this.txtTaxNumber.Size = new System.Drawing.Size(193, 26);
@@ -275,7 +302,7 @@ namespace LoginForm
             // 
             this.label25.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(731, 78);
+            this.label25.Location = new System.Drawing.Point(772, 78);
             this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(100, 20);
@@ -315,6 +342,7 @@ namespace LoginForm
             this.cmbMainCategory.Name = "cmbMainCategory";
             this.cmbMainCategory.Size = new System.Drawing.Size(193, 28);
             this.cmbMainCategory.TabIndex = 4;
+            this.cmbMainCategory.SelectedIndexChanged += new System.EventHandler(this.cmbMainCategory_SelectedIndexChanged);
             // 
             // txtName
             // 
@@ -338,15 +366,15 @@ namespace LoginForm
             this.cmbRepresentative.Size = new System.Drawing.Size(183, 28);
             this.cmbRepresentative.TabIndex = 2;
             // 
-            // txtCode
+            // txtSupplierCode
             // 
-            this.txtCode.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.txtCode.Enabled = false;
-            this.txtCode.Location = new System.Drawing.Point(157, 14);
-            this.txtCode.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(183, 26);
-            this.txtCode.TabIndex = 1;
+            this.txtSupplierCode.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtSupplierCode.Enabled = false;
+            this.txtSupplierCode.Location = new System.Drawing.Point(157, 14);
+            this.txtSupplierCode.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSupplierCode.Name = "txtSupplierCode";
+            this.txtSupplierCode.Size = new System.Drawing.Size(183, 26);
+            this.txtSupplierCode.TabIndex = 1;
             // 
             // label6
             // 
@@ -733,6 +761,7 @@ namespace LoginForm
             this.cmbCity.Name = "cmbCity";
             this.cmbCity.Size = new System.Drawing.Size(160, 28);
             this.cmbCity.TabIndex = 14;
+            this.cmbCity.SelectedIndexChanged += new System.EventHandler(this.cmbCity_SelectedIndexChanged);
             // 
             // cmbCounrty
             // 
@@ -744,6 +773,7 @@ namespace LoginForm
             this.cmbCounrty.Name = "cmbCounrty";
             this.cmbCounrty.Size = new System.Drawing.Size(160, 28);
             this.cmbCounrty.TabIndex = 13;
+            this.cmbCounrty.SelectedIndexChanged += new System.EventHandler(this.cmbCounrty_SelectedIndexChanged);
             // 
             // label22
             // 
@@ -1110,6 +1140,7 @@ namespace LoginForm
             this.cmbDepartment.Name = "cmbDepartment";
             this.cmbDepartment.Size = new System.Drawing.Size(160, 28);
             this.cmbDepartment.TabIndex = 1;
+            this.cmbDepartment.SelectedIndexChanged += new System.EventHandler(this.cmbDepartment_SelectedIndexChanged);
             // 
             // label36
             // 
@@ -1315,7 +1346,7 @@ namespace LoginForm
             this.dgSupplier.AutoGenerateColumns = false;
             this.dgSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgSupplier.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.iDDataGridViewTextBoxColumn,
+            this.colID,
             this.snameDataGridViewTextBoxColumn,
             this.telephoneDataGridViewTextBoxColumn,
             this.faxDataGridViewTextBoxColumn,
@@ -1348,7 +1379,6 @@ namespace LoginForm
             this.supplierMainContactDataGridViewTextBoxColumn,
             this.worker1DataGridViewTextBoxColumn,
             this.supplierAdressesDataGridViewTextBoxColumn,
-            this.supplierCategorySubCategoriesDataGridViewTextBoxColumn,
             this.supplierWorkersDataGridViewTextBoxColumn,
             this.paymentmethodIDDataGridViewTextBoxColumn});
             this.dgSupplier.DataSource = this.supplierBindingSource;
@@ -1361,6 +1391,7 @@ namespace LoginForm
             this.dgSupplier.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgSupplier.Size = new System.Drawing.Size(1225, 225);
             this.dgSupplier.TabIndex = 1;
+            this.dgSupplier.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSupplier_CellClick);
             // 
             // btnModify
             // 
@@ -1457,12 +1488,12 @@ namespace LoginForm
             this.panel1.Size = new System.Drawing.Size(1227, 81);
             this.panel1.TabIndex = 2;
             // 
-            // iDDataGridViewTextBoxColumn
+            // colID
             // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.colID.DataPropertyName = "ID";
+            this.colID.HeaderText = "ID";
+            this.colID.Name = "colID";
+            this.colID.ReadOnly = true;
             // 
             // snameDataGridViewTextBoxColumn
             // 
@@ -1690,13 +1721,6 @@ namespace LoginForm
             this.supplierAdressesDataGridViewTextBoxColumn.Name = "supplierAdressesDataGridViewTextBoxColumn";
             this.supplierAdressesDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // supplierCategorySubCategoriesDataGridViewTextBoxColumn
-            // 
-            this.supplierCategorySubCategoriesDataGridViewTextBoxColumn.DataPropertyName = "SupplierCategorySubCategories";
-            this.supplierCategorySubCategoriesDataGridViewTextBoxColumn.HeaderText = "SupplierCategorySubCategories";
-            this.supplierCategorySubCategoriesDataGridViewTextBoxColumn.Name = "supplierCategorySubCategoriesDataGridViewTextBoxColumn";
-            this.supplierCategorySubCategoriesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // supplierWorkersDataGridViewTextBoxColumn
             // 
             this.supplierWorkersDataGridViewTextBoxColumn.DataPropertyName = "SupplierWorkers";
@@ -1715,7 +1739,7 @@ namespace LoginForm
             // 
             this.supplierBindingSource.DataSource = typeof(LoginForm.DataSet.Supplier);
             // 
-            // CSupplierMain
+            // CemSupplierMainCem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1724,7 +1748,7 @@ namespace LoginForm
             this.Controls.Add(this.tableLayoutPanel1);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1249, 614);
-            this.Name = "CSupplierMain";
+            this.Name = "CemSupplierMainCem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Supplier";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -1764,7 +1788,7 @@ namespace LoginForm
         private System.Windows.Forms.ComboBox cmbMainCategory;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.ComboBox cmbRepresentative;
-        private System.Windows.Forms.TextBox txtCode;
+        private System.Windows.Forms.TextBox txtSupplierCode;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -1858,7 +1882,9 @@ namespace LoginForm
         private System.Windows.Forms.ComboBox cmbMainContact;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn supplierCategorySubCategoriesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource supplierBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colID;
         private System.Windows.Forms.DataGridViewTextBoxColumn snameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn telephoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn faxDataGridViewTextBoxColumn;
@@ -1891,10 +1917,10 @@ namespace LoginForm
         private System.Windows.Forms.DataGridViewTextBoxColumn supplierMainContactDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn worker1DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn supplierAdressesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn supplierCategorySubCategoriesDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn supplierWorkersDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn paymentmethodIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource supplierBindingSource;
+        private System.Windows.Forms.Button btnSubCategoryAdd;
+        private System.Windows.Forms.Button btnMainCategoryAdd;
     }
 }
 

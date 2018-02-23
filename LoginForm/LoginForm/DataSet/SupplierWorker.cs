@@ -26,7 +26,6 @@ namespace LoginForm.DataSet
         public string supplierID { get; set; }
         public Nullable<int> supplierNoteID { get; set; }
         public Nullable<int> languageID { get; set; }
-        public Nullable<int> categoryID { get; set; }
     
         public virtual Language Language { get; set; }
         public virtual Note Note { get; set; }

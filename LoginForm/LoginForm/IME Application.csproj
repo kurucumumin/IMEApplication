@@ -1080,6 +1080,7 @@
     <Compile Include="DataSet\Reminder.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="DataSet\ReminderSearch_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1089,6 +1090,8 @@
     <Compile Include="DataSet\ReminderView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+=======
+>>>>>>> Cem-Develop
     <Compile Include="DataSet\RoleValue.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1552,11 +1555,11 @@
     <Compile Include="Services\txtReader.cs" />
     <Compile Include="Services\Utils.cs" />
     <Compile Include="Services\WorkerService.cs" />
-    <Compile Include="Supplier\SupplierDepartmentAdd.cs">
+    <Compile Include="Supplier\frmSupplierCategoryAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Supplier\SupplierDepartmentAdd.designer.cs">
-      <DependentUpon>SupplierDepartmentAdd.cs</DependentUpon>
+    <Compile Include="Supplier\frmSupplierCategoryAdd.designer.cs">
+      <DependentUpon>frmSupplierCategoryAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Supplier\SupplierMain.cs">
       <SubType>Form</SubType>
@@ -1564,11 +1567,11 @@
     <Compile Include="Supplier\SupplierMain.designer.cs">
       <DependentUpon>SupplierMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Supplier\SupplierPositionAdd.cs">
+    <Compile Include="Supplier\frmSupplierSubCategoryAdd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Supplier\SupplierPositionAdd.designer.cs">
-      <DependentUpon>SupplierPositionAdd.cs</DependentUpon>
+    <Compile Include="Supplier\frmSupplierSubCategoryAdd.designer.cs">
+      <DependentUpon>frmSupplierSubCategoryAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Management\FormRoleAuth.cs">
       <SubType>Form</SubType>
@@ -1880,14 +1883,14 @@
     <EmbeddedResource Include="User\FormUsersMain.resx">
       <DependentUpon>FormUsersMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Supplier\SupplierDepartmentAdd.resx">
-      <DependentUpon>SupplierDepartmentAdd.cs</DependentUpon>
+    <EmbeddedResource Include="Supplier\frmSupplierCategoryAdd.resx">
+      <DependentUpon>frmSupplierCategoryAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier\SupplierMain.resx">
       <DependentUpon>SupplierMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Supplier\SupplierPositionAdd.resx">
-      <DependentUpon>SupplierPositionAdd.cs</DependentUpon>
+    <EmbeddedResource Include="Supplier\frmSupplierSubCategoryAdd.resx">
+      <DependentUpon>frmSupplierSubCategoryAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Management\FormRoleAuth.resx">
       <DependentUpon>FormRoleAuth.cs</DependentUpon>
