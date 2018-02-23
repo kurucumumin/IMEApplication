@@ -1303,6 +1303,15 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="transportationCompany" Type="varchar(max)" />
           <Property Name="financialYearId" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
+        <EntityType Name="Reminder">
+          <Key>
+            <PropertyRef Name="reminderId" />
+          </Key>
+          <Property Name="reminderId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fromDate" Type="datetime" />
+          <Property Name="toDate" Type="datetime" />
+          <Property Name="remindAbout" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="RoleValue">
           <Key>
             <PropertyRef Name="RoleID" />
@@ -1868,7 +1877,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="representaryID" Type="int" />
           <Property Name="rate_ID" Type="int" />
           <Property Name="taxoffice" Type="nvarchar" MaxLength="150" />
-          <Property Name="taxnumber" Type="int" />
+          <Property Name="taxnumber" Type="nvarchar" MaxLength="50" />
           <Property Name="accountrepresentaryID" Type="int" />
           <Property Name="SupplierNoteID" Type="int" />
           <Property Name="MainContactID" Type="int" />
@@ -1882,6 +1891,8 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="CurrNameInv" Type="nvarchar" MaxLength="15" />
           <Property Name="CurrTypeQuo" Type="nvarchar" MaxLength="15" />
           <Property Name="CurrNameQuo" Type="nvarchar" MaxLength="15" />
+          <Property Name="CategoryID" Type="int" />
+          <Property Name="SubCategoryID" Type="int" />
         </EntityType>
         <EntityType Name="SupplierAdresses">
           <Key>
@@ -1907,15 +1918,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="categoryname" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <EntityType Name="SupplierCategorySubCategory">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="categoryID" Type="int" />
-          <Property Name="subcategoryID" Type="int" />
-          <Property Name="supplierID" Type="nvarchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="SupplierDepartment">
           <Key>
@@ -1964,7 +1966,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="supplierID" Type="nvarchar" MaxLength="15" />
           <Property Name="supplierNoteID" Type="int" />
           <Property Name="languageID" Type="int" />
-          <Property Name="categoryID" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -5344,6 +5345,18 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Supplier__Catego__1FF8A574">
+          <End Role="SupplierCategory" Type="Self.SupplierCategory" Multiplicity="0..1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Supplier__MainCo__0A688BB1">
           <End Role="SupplierMainContact" Type="Self.SupplierMainContact" Multiplicity="0..1" />
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
@@ -5401,6 +5414,18 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Principal>
             <Dependent Role="Supplier">
               <PropertyRef Name="representaryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Supplier__SubCat__20ECC9AD">
+          <End Role="SupplierSubCategory" Type="Self.SupplierSubCategory" Multiplicity="0..1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierSubCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="SubCategoryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -5464,42 +5489,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SupplierC__categ__0697FACD">
-          <End Role="SupplierCategory" Type="Self.SupplierCategory" Multiplicity="0..1" />
-          <End Role="SupplierCategorySubCategory" Type="Self.SupplierCategorySubCategory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SupplierCategory">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="SupplierCategorySubCategory">
-              <PropertyRef Name="categoryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SupplierC__subca__078C1F06">
-          <End Role="SupplierSubCategory" Type="Self.SupplierSubCategory" Multiplicity="0..1" />
-          <End Role="SupplierCategorySubCategory" Type="Self.SupplierCategorySubCategory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SupplierSubCategory">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="SupplierCategorySubCategory">
-              <PropertyRef Name="subcategoryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SupplierC__suppl__0880433F">
-          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
-          <End Role="SupplierCategorySubCategory" Type="Self.SupplierCategorySubCategory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Supplier">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="SupplierCategorySubCategory">
-              <PropertyRef Name="supplierID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__SupplierM__suppl__00DF2177">
           <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="0..1" />
           <End Role="SupplierMainContact" Type="Self.SupplierMainContact" Multiplicity="*" />
@@ -5533,18 +5522,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Principal>
             <Dependent Role="SupplierTitle">
               <PropertyRef Name="departmnetID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SupplierW__categ__793DFFAF">
-          <End Role="SupplierCategory" Type="Self.SupplierCategory" Multiplicity="0..1" />
-          <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SupplierCategory">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="SupplierWorker">
-              <PropertyRef Name="categoryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -6917,6 +6894,12 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         <Function Name="ServiceMasterView" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="serviceMasterId" Type="numeric" Mode="In" />
         </Function>
+        <Function Name="ServiceRegisterSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dateFrom" Type="datetime" Mode="In" />
+          <Parameter Name="dateTo" Type="datetime" Mode="In" />
+          <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
+          <Parameter Name="ledgerName" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="ServiceViewAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="ServiceVoucherCheckExistence" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="invoiceNo" Type="varchar(max)" Mode="In" />
@@ -7233,6 +7216,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <EntitySet Name="RejectionInMaster" EntityType="Self.RejectionInMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RejectionOutDetails" EntityType="Self.RejectionOutDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RejectionOutMaster" EntityType="Self.RejectionOutMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reminder" EntityType="Self.Reminder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoleValue" EntityType="Self.RoleValue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Route" EntityType="Self.Route" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RS_Invoice" EntityType="Self.RS_Invoice" Schema="dbo" store:Type="Tables" />
@@ -7264,7 +7248,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <EntitySet Name="SupplierAdresses" EntityType="Self.SupplierAdresses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierBank" EntityType="Self.SupplierBank" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierCategory" EntityType="Self.SupplierCategory" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SupplierCategorySubCategory" EntityType="Self.SupplierCategorySubCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierDepartment" EntityType="Self.SupplierDepartment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierMainContact" EntityType="Self.SupplierMainContact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierSubCategory" EntityType="Self.SupplierSubCategory" Schema="dbo" store:Type="Tables" />
@@ -8388,6 +8371,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="SupplierBank" EntitySet="SupplierBank" />
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
+          <AssociationSet Name="FK__Supplier__Catego__1FF8A574" Association="Self.FK__Supplier__Catego__1FF8A574">
+            <End Role="SupplierCategory" EntitySet="SupplierCategory" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
           <AssociationSet Name="FK__Supplier__MainCo__0A688BB1" Association="Self.FK__Supplier__MainCo__0A688BB1">
             <End Role="SupplierMainContact" EntitySet="SupplierMainContact" />
             <End Role="Supplier" EntitySet="Supplier" />
@@ -8406,6 +8393,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </AssociationSet>
           <AssociationSet Name="FK__Supplier__repres__65370702" Association="Self.FK__Supplier__repres__65370702">
             <End Role="Worker" EntitySet="Worker" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Supplier__SubCat__20ECC9AD" Association="Self.FK__Supplier__SubCat__20ECC9AD">
+            <End Role="SupplierSubCategory" EntitySet="SupplierSubCategory" />
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
           <AssociationSet Name="FK__Supplier__Suppli__09746778" Association="Self.FK__Supplier__Suppli__09746778">
@@ -8428,18 +8419,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="Town" EntitySet="Town" />
             <End Role="SupplierAdresses" EntitySet="SupplierAdresses" />
           </AssociationSet>
-          <AssociationSet Name="FK__SupplierC__categ__0697FACD" Association="Self.FK__SupplierC__categ__0697FACD">
-            <End Role="SupplierCategory" EntitySet="SupplierCategory" />
-            <End Role="SupplierCategorySubCategory" EntitySet="SupplierCategorySubCategory" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierC__subca__078C1F06" Association="Self.FK__SupplierC__subca__078C1F06">
-            <End Role="SupplierSubCategory" EntitySet="SupplierSubCategory" />
-            <End Role="SupplierCategorySubCategory" EntitySet="SupplierCategorySubCategory" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierC__suppl__0880433F" Association="Self.FK__SupplierC__suppl__0880433F">
-            <End Role="Supplier" EntitySet="Supplier" />
-            <End Role="SupplierCategorySubCategory" EntitySet="SupplierCategorySubCategory" />
-          </AssociationSet>
           <AssociationSet Name="FK__SupplierM__suppl__00DF2177" Association="Self.FK__SupplierM__suppl__00DF2177">
             <End Role="SupplierWorker" EntitySet="SupplierWorker" />
             <End Role="SupplierMainContact" EntitySet="SupplierMainContact" />
@@ -8451,10 +8430,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <AssociationSet Name="FK__SupplierT__depar__6BE40491" Association="Self.FK__SupplierT__depar__6BE40491">
             <End Role="SupplierDepartment" EntitySet="SupplierDepartment" />
             <End Role="SupplierTitle" EntitySet="SupplierTitle" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierW__categ__793DFFAF" Association="Self.FK__SupplierW__categ__793DFFAF">
-            <End Role="SupplierCategory" EntitySet="SupplierCategory" />
-            <End Role="SupplierWorker" EntitySet="SupplierWorker" />
           </AssociationSet>
           <AssociationSet Name="FK__SupplierW__depar__76619304" Association="Self.FK__SupplierW__depar__76619304">
             <End Role="SupplierDepartment" EntitySet="SupplierDepartment" />
@@ -10207,6 +10182,15 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <NavigationProperty Name="Worker" Relationship="Self.FK__Rejection__userI__6B2FD77A" FromRole="RejectionOutMaster" ToRole="Worker" />
           <NavigationProperty Name="VoucherType" Relationship="Self.FK__Rejection__vouch__675F4696" FromRole="RejectionOutMaster" ToRole="VoucherType" />
         </EntityType>
+        <EntityType Name="Reminder">
+          <Key>
+            <PropertyRef Name="reminderId" />
+          </Key>
+          <Property Name="reminderId" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fromDate" Type="DateTime" Precision="3" />
+          <Property Name="toDate" Type="DateTime" Precision="3" />
+          <Property Name="remindAbout" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="RoleValue">
           <Key>
             <PropertyRef Name="RoleID" />
@@ -10859,7 +10843,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="representaryID" Type="Int32" />
           <Property Name="rate_ID" Type="Int32" />
           <Property Name="taxoffice" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="taxnumber" Type="Int32" />
+          <Property Name="taxnumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="accountrepresentaryID" Type="Int32" />
           <Property Name="SupplierNoteID" Type="Int32" />
           <Property Name="MainContactID" Type="Int32" />
@@ -10873,16 +10857,19 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="CurrNameInv" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="CurrTypeQuo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="CurrNameQuo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryID" Type="Int32" />
+          <Property Name="SubCategoryID" Type="Int32" />
           <NavigationProperty Name="Note" Relationship="Self.FK__Supplier__Suppli__09746778" FromRole="Supplier" ToRole="Notes" />
           <NavigationProperty Name="PaymentMethod" Relationship="Self.FK__Supplier__paymen__634EBE90" FromRole="Supplier" ToRole="PaymentMethod" />
           <NavigationProperty Name="PaymentTerm" Relationship="Self.FK__Supplier__paymen__6442E2C9" FromRole="Supplier" ToRole="PaymentTerm" />
           <NavigationProperty Name="Rate" Relationship="Self.FK__Supplier__rate_I__625A9A57" FromRole="Supplier" ToRole="Rate" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__Supplier__accoun__2DB1C7EE" FromRole="Supplier" ToRole="Worker" />
           <NavigationProperty Name="SupplierBank" Relationship="Self.FK__Supplier__BankID__0C50D423" FromRole="Supplier" ToRole="SupplierBank" />
+          <NavigationProperty Name="SupplierCategory" Relationship="Self.FK__Supplier__Catego__1FF8A574" FromRole="Supplier" ToRole="SupplierCategory" />
           <NavigationProperty Name="SupplierMainContact" Relationship="Self.FK__Supplier__MainCo__0A688BB1" FromRole="Supplier" ToRole="SupplierMainContact" />
           <NavigationProperty Name="Worker1" Relationship="Self.FK__Supplier__repres__65370702" FromRole="Supplier" ToRole="Worker" />
+          <NavigationProperty Name="SupplierSubCategory" Relationship="Self.FK__Supplier__SubCat__20ECC9AD" FromRole="Supplier" ToRole="SupplierSubCategory" />
           <NavigationProperty Name="SupplierAdresses" Relationship="Self.FK__SupplierA__Suppl__42ACE4D4" FromRole="Supplier" ToRole="SupplierAdresses" />
-          <NavigationProperty Name="SupplierCategorySubCategories" Relationship="Self.FK__SupplierC__suppl__0880433F" FromRole="Supplier" ToRole="SupplierCategorySubCategory" />
           <NavigationProperty Name="SupplierWorkers" Relationship="Self.FK__SupplierW__suppl__74794A92" FromRole="Supplier" ToRole="SupplierWorker" />
         </EntityType>
         <EntityType Name="SupplierAdress">
@@ -10915,21 +10902,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="categoryname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="SupplierCategorySubCategories" Relationship="Self.FK__SupplierC__categ__0697FACD" FromRole="SupplierCategory" ToRole="SupplierCategorySubCategory" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__Catego__1FF8A574" FromRole="SupplierCategory" ToRole="Supplier" />
           <NavigationProperty Name="SupplierSubCategories" Relationship="Self.FK__SupplierS__categ__03BB8E22" FromRole="SupplierCategory" ToRole="SupplierSubCategory" />
-          <NavigationProperty Name="SupplierWorkers" Relationship="Self.FK__SupplierW__categ__793DFFAF" FromRole="SupplierCategory" ToRole="SupplierWorker" />
-        </EntityType>
-        <EntityType Name="SupplierCategorySubCategory">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="categoryID" Type="Int32" />
-          <Property Name="subcategoryID" Type="Int32" />
-          <Property Name="supplierID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Supplier" Relationship="Self.FK__SupplierC__suppl__0880433F" FromRole="SupplierCategorySubCategory" ToRole="Supplier" />
-          <NavigationProperty Name="SupplierCategory" Relationship="Self.FK__SupplierC__categ__0697FACD" FromRole="SupplierCategorySubCategory" ToRole="SupplierCategory" />
-          <NavigationProperty Name="SupplierSubCategory" Relationship="Self.FK__SupplierC__subca__078C1F06" FromRole="SupplierCategorySubCategory" ToRole="SupplierSubCategory" />
         </EntityType>
         <EntityType Name="SupplierDepartment">
           <Key>
@@ -10957,8 +10931,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="subcategoryname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="categoryID" Type="Int32" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__SubCat__20ECC9AD" FromRole="SupplierSubCategory" ToRole="Supplier" />
           <NavigationProperty Name="SupplierCategory" Relationship="Self.FK__SupplierS__categ__03BB8E22" FromRole="SupplierSubCategory" ToRole="SupplierCategory" />
-          <NavigationProperty Name="SupplierCategorySubCategories" Relationship="Self.FK__SupplierC__subca__078C1F06" FromRole="SupplierSubCategory" ToRole="SupplierCategorySubCategory" />
         </EntityType>
         <EntityType Name="SupplierTitle">
           <Key>
@@ -10986,12 +10960,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="supplierID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="supplierNoteID" Type="Int32" />
           <Property Name="languageID" Type="Int32" />
-          <Property Name="categoryID" Type="Int32" />
           <NavigationProperty Name="Language" Relationship="Self.FK__SupplierW__langu__72910220" FromRole="SupplierWorker" ToRole="Languages" />
           <NavigationProperty Name="Note" Relationship="Self.FK__SupplierW__suppl__73852659" FromRole="SupplierWorker" ToRole="Notes" />
           <NavigationProperty Name="Supplier" Relationship="Self.FK__SupplierW__suppl__74794A92" FromRole="SupplierWorker" ToRole="Supplier" />
           <NavigationProperty Name="SupplierAdress" Relationship="Self.FK__SupplierW__suppl__756D6ECB" FromRole="SupplierWorker" ToRole="SupplierAdresses" />
-          <NavigationProperty Name="SupplierCategory" Relationship="Self.FK__SupplierW__categ__793DFFAF" FromRole="SupplierWorker" ToRole="SupplierCategory" />
           <NavigationProperty Name="SupplierDepartment" Relationship="Self.FK__SupplierW__depar__76619304" FromRole="SupplierWorker" ToRole="SupplierDepartment" />
           <NavigationProperty Name="SupplierMainContacts" Relationship="Self.FK__SupplierM__suppl__00DF2177" FromRole="SupplierWorker" ToRole="SupplierMainContact" />
           <NavigationProperty Name="SupplierTitle" Relationship="Self.FK__SupplierW__title__7755B73D" FromRole="SupplierWorker" ToRole="SupplierTitle" />
@@ -14665,6 +14637,18 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Supplier__Catego__1FF8A574">
+          <End Role="SupplierCategory" Type="Self.SupplierCategory" Multiplicity="0..1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Supplier__MainCo__0A688BB1">
           <End Role="SupplierMainContact" Type="Self.SupplierMainContact" Multiplicity="0..1" />
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
@@ -14689,6 +14673,18 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Supplier__SubCat__20ECC9AD">
+          <End Role="SupplierSubCategory" Type="Self.SupplierSubCategory" Multiplicity="0..1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SupplierSubCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="SubCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__SupplierA__Suppl__42ACE4D4">
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
           <End Role="SupplierAdresses" Type="Self.SupplierAdress" Multiplicity="*" />
@@ -14698,18 +14694,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Principal>
             <Dependent Role="SupplierAdresses">
               <PropertyRef Name="SupplierID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SupplierC__suppl__0880433F">
-          <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
-          <End Role="SupplierCategorySubCategory" Type="Self.SupplierCategorySubCategory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Supplier">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="SupplierCategorySubCategory">
-              <PropertyRef Name="supplierID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -14749,18 +14733,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SupplierC__categ__0697FACD">
-          <End Role="SupplierCategory" Type="Self.SupplierCategory" Multiplicity="0..1" />
-          <End Role="SupplierCategorySubCategory" Type="Self.SupplierCategorySubCategory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SupplierCategory">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="SupplierCategorySubCategory">
-              <PropertyRef Name="categoryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__SupplierS__categ__03BB8E22">
           <End Role="SupplierCategory" Type="Self.SupplierCategory" Multiplicity="0..1" />
           <End Role="SupplierSubCategory" Type="Self.SupplierSubCategory" Multiplicity="*" />
@@ -14770,30 +14742,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Principal>
             <Dependent Role="SupplierSubCategory">
               <PropertyRef Name="categoryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SupplierW__categ__793DFFAF">
-          <End Role="SupplierCategory" Type="Self.SupplierCategory" Multiplicity="0..1" />
-          <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SupplierCategory">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="SupplierWorker">
-              <PropertyRef Name="categoryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SupplierC__subca__078C1F06">
-          <End Role="SupplierSubCategory" Type="Self.SupplierSubCategory" Multiplicity="0..1" />
-          <End Role="SupplierCategorySubCategory" Type="Self.SupplierCategorySubCategory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SupplierSubCategory">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="SupplierCategorySubCategory">
-              <PropertyRef Name="subcategoryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -15010,6 +14958,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <EntitySet Name="RejectionInMasters" EntityType="Self.RejectionInMaster" />
           <EntitySet Name="RejectionOutDetails" EntityType="Self.RejectionOutDetail" />
           <EntitySet Name="RejectionOutMasters" EntityType="Self.RejectionOutMaster" />
+          <EntitySet Name="Reminders" EntityType="Self.Reminder" />
           <EntitySet Name="RoleValues" EntityType="Self.RoleValue" />
           <EntitySet Name="Routes" EntityType="Self.Route" />
           <EntitySet Name="RS_Invoice" EntityType="Self.RS_Invoice" />
@@ -15041,7 +14990,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <EntitySet Name="SupplierAdresses" EntityType="Self.SupplierAdress" />
           <EntitySet Name="SupplierBanks" EntityType="Self.SupplierBank" />
           <EntitySet Name="SupplierCategories" EntityType="Self.SupplierCategory" />
-          <EntitySet Name="SupplierCategorySubCategories" EntityType="Self.SupplierCategorySubCategory" />
           <EntitySet Name="SupplierDepartments" EntityType="Self.SupplierDepartment" />
           <EntitySet Name="SupplierMainContacts" EntityType="Self.SupplierMainContact" />
           <EntitySet Name="SupplierSubCategories" EntityType="Self.SupplierSubCategory" />
@@ -16195,6 +16143,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="SupplierBank" EntitySet="SupplierBanks" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
+          <AssociationSet Name="FK__Supplier__Catego__1FF8A574" Association="Self.FK__Supplier__Catego__1FF8A574">
+            <End Role="SupplierCategory" EntitySet="SupplierCategories" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
           <AssociationSet Name="FK__Supplier__MainCo__0A688BB1" Association="Self.FK__Supplier__MainCo__0A688BB1">
             <End Role="SupplierMainContact" EntitySet="SupplierMainContacts" />
             <End Role="Supplier" EntitySet="Suppliers" />
@@ -16203,13 +16155,13 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="Worker" EntitySet="Workers" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
+          <AssociationSet Name="FK__Supplier__SubCat__20ECC9AD" Association="Self.FK__Supplier__SubCat__20ECC9AD">
+            <End Role="SupplierSubCategory" EntitySet="SupplierSubCategories" />
+            <End Role="Supplier" EntitySet="Suppliers" />
+          </AssociationSet>
           <AssociationSet Name="FK__SupplierA__Suppl__42ACE4D4" Association="Self.FK__SupplierA__Suppl__42ACE4D4">
             <End Role="Supplier" EntitySet="Suppliers" />
             <End Role="SupplierAdresses" EntitySet="SupplierAdresses" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierC__suppl__0880433F" Association="Self.FK__SupplierC__suppl__0880433F">
-            <End Role="Supplier" EntitySet="Suppliers" />
-            <End Role="SupplierCategorySubCategory" EntitySet="SupplierCategorySubCategories" />
           </AssociationSet>
           <AssociationSet Name="FK__SupplierW__suppl__74794A92" Association="Self.FK__SupplierW__suppl__74794A92">
             <End Role="Supplier" EntitySet="Suppliers" />
@@ -16223,21 +16175,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="SupplierAdresses" EntitySet="SupplierAdresses" />
             <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
           </AssociationSet>
-          <AssociationSet Name="FK__SupplierC__categ__0697FACD" Association="Self.FK__SupplierC__categ__0697FACD">
-            <End Role="SupplierCategory" EntitySet="SupplierCategories" />
-            <End Role="SupplierCategorySubCategory" EntitySet="SupplierCategorySubCategories" />
-          </AssociationSet>
           <AssociationSet Name="FK__SupplierS__categ__03BB8E22" Association="Self.FK__SupplierS__categ__03BB8E22">
             <End Role="SupplierCategory" EntitySet="SupplierCategories" />
             <End Role="SupplierSubCategory" EntitySet="SupplierSubCategories" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierW__categ__793DFFAF" Association="Self.FK__SupplierW__categ__793DFFAF">
-            <End Role="SupplierCategory" EntitySet="SupplierCategories" />
-            <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierC__subca__078C1F06" Association="Self.FK__SupplierC__subca__078C1F06">
-            <End Role="SupplierSubCategory" EntitySet="SupplierSubCategories" />
-            <End Role="SupplierCategorySubCategory" EntitySet="SupplierCategorySubCategories" />
           </AssociationSet>
           <AssociationSet Name="FK__SupplierT__depar__6BE40491" Association="Self.FK__SupplierT__depar__6BE40491">
             <End Role="SupplierDepartment" EntitySet="SupplierDepartments" />
@@ -17368,6 +17308,12 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </FunctionImport>
           <FunctionImport Name="ServiceMasterView" ReturnType="Collection(IMEModel.ServiceMasterView_Result)">
             <Parameter Name="serviceMasterId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="ServiceRegisterSearch" ReturnType="Collection(IMEModel.ServiceRegisterSearch_Result)">
+            <Parameter Name="dateFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="dateTo" Mode="In" Type="DateTime" />
+            <Parameter Name="voucherNo" Mode="In" Type="String" />
+            <Parameter Name="ledgerName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ServiceViewAll" ReturnType="Collection(IMEModel.ServiceViewAll_Result)" />
           <FunctionImport Name="ServiceVoucherCheckExistence" ReturnType="Collection(Int32)">
@@ -18625,6 +18571,13 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="Decimal" Name="grandTotal" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="voucherTypeId" Nullable="true" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="financialYearId" Nullable="true" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="ServiceRegisterSearch_Result">
+          <Property Type="Decimal" Name="serviceMasterId" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="voucherNo" Nullable="true" />
+          <Property Type="String" Name="date" Nullable="true" />
+          <Property Type="String" Name="ledgerName" Nullable="true" />
+          <Property Type="Decimal" Name="amount" Nullable="true" Precision="18" Scale="2" />
         </ComplexType>
         <ComplexType Name="ServiceViewAll_Result">
           <Property Type="Decimal" Name="serviceId" Nullable="false" Precision="18" Scale="0" />
@@ -20078,6 +20031,16 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Reminders">
+            <EntityTypeMapping TypeName="IMEModel.Reminder">
+              <MappingFragment StoreEntitySet="Reminder">
+                <ScalarProperty Name="reminderId" ColumnName="reminderId" />
+                <ScalarProperty Name="fromDate" ColumnName="fromDate" />
+                <ScalarProperty Name="toDate" ColumnName="toDate" />
+                <ScalarProperty Name="remindAbout" ColumnName="remindAbout" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="RoleValues">
             <EntityTypeMapping TypeName="IMEModel.RoleValue">
               <MappingFragment StoreEntitySet="RoleValue">
@@ -20667,6 +20630,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="CurrNameInv" ColumnName="CurrNameInv" />
                 <ScalarProperty Name="CurrTypeQuo" ColumnName="CurrTypeQuo" />
                 <ScalarProperty Name="CurrNameQuo" ColumnName="CurrNameQuo" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -20695,16 +20660,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               <MappingFragment StoreEntitySet="SupplierCategory">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="categoryname" ColumnName="categoryname" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SupplierCategorySubCategories">
-            <EntityTypeMapping TypeName="IMEModel.SupplierCategorySubCategory">
-              <MappingFragment StoreEntitySet="SupplierCategorySubCategory">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
-                <ScalarProperty Name="subcategoryID" ColumnName="subcategoryID" />
-                <ScalarProperty Name="supplierID" ColumnName="supplierID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -20758,7 +20713,6 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="supplierID" ColumnName="supplierID" />
                 <ScalarProperty Name="supplierNoteID" ColumnName="supplierNoteID" />
                 <ScalarProperty Name="languageID" ColumnName="languageID" />
-                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -22444,6 +22398,17 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="grandTotal" ColumnName="grandTotal" />
                 <ScalarProperty Name="voucherTypeId" ColumnName="voucherTypeId" />
                 <ScalarProperty Name="financialYearId" ColumnName="financialYearId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ServiceRegisterSearch" FunctionName="IMEModel.Store.ServiceRegisterSearch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ServiceRegisterSearch_Result">
+                <ScalarProperty Name="serviceMasterId" ColumnName="serviceMasterId" />
+                <ScalarProperty Name="voucherNo" ColumnName="voucherNo" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -12,15 +12,11 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class SupplierCategorySubCategory
+    public partial class Reminder
     {
-        public int ID { get; set; }
-        public Nullable<int> categoryID { get; set; }
-        public Nullable<int> subcategoryID { get; set; }
-        public string supplierID { get; set; }
-    
-        public virtual Supplier Supplier { get; set; }
-        public virtual SupplierCategory SupplierCategory { get; set; }
-        public virtual SupplierSubCategory SupplierSubCategory { get; set; }
+        public decimal reminderId { get; set; }
+        public Nullable<System.DateTime> fromDate { get; set; }
+        public Nullable<System.DateTime> toDate { get; set; }
+        public string remindAbout { get; set; }
     }
 }

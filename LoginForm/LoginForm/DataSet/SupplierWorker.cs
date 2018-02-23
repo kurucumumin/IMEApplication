@@ -32,13 +32,11 @@ namespace LoginForm.DataSet
         public string supplierID { get; set; }
         public Nullable<int> supplierNoteID { get; set; }
         public Nullable<int> languageID { get; set; }
-        public Nullable<int> categoryID { get; set; }
     
         public virtual Language Language { get; set; }
         public virtual Note Note { get; set; }
         public virtual Supplier Supplier { get; set; }
         public virtual SupplierAdress SupplierAdress { get; set; }
-        public virtual SupplierCategory SupplierCategory { get; set; }
         public virtual SupplierDepartment SupplierDepartment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SupplierMainContact> SupplierMainContacts { get; set; }

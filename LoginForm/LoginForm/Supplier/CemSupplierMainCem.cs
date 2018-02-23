@@ -40,10 +40,9 @@ namespace LoginForm
             IMEEntities db = new IMEEntities();
 
             int workerId = Utils.getCurrentUser().WorkerID;
-
-            cmbRepresentative.Items.AddRange(db.Workers.Where(a => a.WorkerID == workerId).ToArray());
             cmbRepresentative.DisplayMember = "NameLastName";
             //cmbRepresentative.ValueMember = "WorkerID";
+            cmbRepresentative.Items.AddRange(db.Workers.ToArray());
             cmbRepresentative.Items.Insert(0,"Choose");
             cmbRepresentative.SelectedIndex = 0;
 
@@ -53,11 +52,11 @@ namespace LoginForm
             cmbMainCategory.Items.Insert(0, "Choose");
             cmbMainCategory.SelectedIndex = 0;
 
-            cmbSubCategory.Items.AddRange(db.SupplierSubCategories.ToArray());
-            cmbSubCategory.DisplayMember = "subcategoryname";
-            //cmbSubCategory.ValueMember = "ID";
-            cmbSubCategory.Items.Insert(0, "Choose");
-            cmbSubCategory.SelectedIndex = 0;
+            //cmbSubCategory.Items.AddRange(db.SupplierSubCategories.ToArray());
+            //cmbSubCategory.DisplayMember = "subcategoryname";
+            ////cmbSubCategory.ValueMember = "ID";
+            //cmbSubCategory.Items.Insert(0, "Choose");
+            //cmbSubCategory.SelectedIndex = 0;
 
             cmbAccountRep.Items.AddRange(db.Workers.ToArray());
             cmbAccountRep.DisplayMember = "NameLastName";
@@ -106,6 +105,12 @@ namespace LoginForm
             //cmbPosition.ValueMember = "ID";
             //cmbPosition.SelectedIndex = -1;
 
+            cmbMainContact.Items.AddRange(db.SupplierWorkers.ToArray());
+            cmbMainContact.DisplayMember = "languagename";
+            //cmbLanguage.ValueMember = "ID";
+            cmbMainContact.Items.Insert(0, "Choose");
+            cmbMainContact.SelectedIndex = 0;
+
             cmbLanguage.Items.AddRange(db.Languages.ToArray());
             cmbLanguage.DisplayMember = "languagename";
             //cmbLanguage.ValueMember = "ID";
@@ -117,6 +122,8 @@ namespace LoginForm
             //cmbBankName.ValueMember = "ID";
             cmbBankName.Items.Insert(0, "Choose");
             cmbBankName.SelectedIndex = 0;
+
+            // TODO 100001 ComboBoxların kalanlarını sadece 'Choose' ile doldur
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -146,10 +153,21 @@ namespace LoginForm
             cmbRepresentative.Enabled = state;
             txtName.Enabled = state;
             cmbMainCategory.Enabled = state;
+            btnMainCategoryAdd.Enabled = state;
             txtTaxOffice.Enabled = state;
             txtSupplierNotes.Enabled = state;
-            cmbSubCategory.Enabled = state;
+            if (state && cmbMainCategory.SelectedIndex > 0)
+            {
+                cmbSubCategory.Enabled = true;
+                btnSubCategoryAdd.Enabled = true;
+            }
+            else
+            {
+                cmbSubCategory.Enabled = false;
+                btnSubCategoryAdd.Enabled = false;
+            }
             txtTaxNumber.Enabled = state;
+
             cmbAccountRep.Enabled = state;
             cmbAccountTerms.Enabled = state;
             cmbAccountMethod.Enabled = state;
@@ -157,6 +175,7 @@ namespace LoginForm
             cmbQuoCurrency.Enabled = state;
             cmbInvoiceCurrency.Enabled = state;
             txtAccountNotes.Enabled = state;
+
             txtPhone.Enabled = state;
             txtFax.Enabled = state;
             txtPoBox.Enabled = state;
@@ -168,12 +187,15 @@ namespace LoginForm
             btnAddressAdd.Enabled = state;
             btnAddressUpdate.Enabled = state;
             btnAddressDelete.Enabled = state;
+
             cmbDepartment.Enabled = state;
-            cmbPosition.Enabled = state;
+            btnDep.Enabled = state;
+            //cmbPosition.Enabled = state;
+            btnPos.Enabled = state;
             txtContactName.Enabled = state;
             txtContactPhone.Enabled = state;
             txtExtraNumber.Enabled = state;
-            txtExtraNumber.Enabled = state;
+            txtContactMail.Enabled = state;
             cmbMainContact.Enabled = state;
             txtContactMobile.Enabled = state;
             txtContactFax.Enabled = state;
@@ -184,6 +206,7 @@ namespace LoginForm
             btnContactNew.Enabled = state;
             btnContactUpdate.Enabled = state;
             btnContactDelete.Enabled = state;
+
             cmbBankName.Enabled = state;
             txtBankBranchCode.Enabled = state;
             txtBankAccountNumber.Enabled = state;
@@ -216,6 +239,108 @@ namespace LoginForm
                 default:
 
                     break;
+            }
+        }
+
+        private void dgSupplier_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            FillSupplierInfo(dgSupplier.Rows[e.RowIndex].Cells[colID.Index].Value.ToString());
+        }
+
+        private void FillSupplierInfo(string SupplierID)
+        {
+            Supplier s = gridSupplierList.Where(x=>x.ID == SupplierID).FirstOrDefault();
+
+            txtCode.Text = s.ID;
+            txtName.Text = s.s_name;
+            txtTaxOffice.Text = s.taxoffice;
+            txtTaxNumber.Text = s.taxnumber;
+            txtSupplierNotes.Text = s.Note.Note_name;
+
+            string name = s.Worker1.NameLastName;
+            cmbRepresentative.SelectedIndex = cmbRepresentative.FindStringExact(name);
+
+            name = s.SupplierCategory.categoryname;
+            cmbMainCategory.SelectedIndex = cmbMainCategory.FindStringExact(name);
+
+            name = s.SupplierSubCategory.subcategoryname;
+            cmbSubCategory.SelectedIndex = cmbSubCategory.FindStringExact(name);
+
+
+            
+
+        }
+
+        //private void btnDep_Click(object sender, EventArgs e)
+        //{
+        //    SupplierCategoryAdd form = new SupplierCategoryAdd();
+        //    form.ShowDialog();
+
+        //    cmbDepartment.Items.Clear();
+        //    cmbDepartment.DisplayMember = "departmentname";
+        //    cmbDepartment.Items.AddRange(new IMEEntities().SupplierDepartments.ToArray());
+        //    cmbDepartment.Items.Insert(0, "Choose");
+        //    cmbDepartment.SelectedIndex = 0;
+
+        //}
+
+        private void btnMainCategoryAdd_Click(object sender, EventArgs e)
+        {
+            frmSupplierCategoryAdd form = new frmSupplierCategoryAdd();
+            DialogResult result = form.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                cmbMainCategory.Items.Clear();
+                cmbMainCategory.DisplayMember = "categoryname";
+                cmbMainCategory.Items.AddRange(new IMEEntities().SupplierCategories.ToArray());
+                cmbMainCategory.Items.Insert(0, "Choose");
+                cmbMainCategory.SelectedIndex = cmbMainCategory.Items.Count - 1;
+            }
+        }
+
+        private void btnSubCategoryAdd_Click(object sender, EventArgs e)
+        {
+            SupplierCategory sc = ((SupplierCategory)cmbMainCategory.SelectedItem);
+            frmSupplierSubCategoryAdd form = new frmSupplierSubCategoryAdd(sc.categoryname);
+            DialogResult result = form.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                cmbSubCategory.Items.Clear();
+                cmbSubCategory.DisplayMember = "subcategoryname";
+                cmbSubCategory.Items.AddRange(new IMEEntities().SupplierSubCategories.Where(x=>x.categoryID == sc.ID).ToArray());
+                cmbSubCategory.Items.Insert(0, "Choose");
+                cmbSubCategory.SelectedIndex = cmbSubCategory.Items.Count - 1;
+            }
+        }
+
+        private void cmbMainCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbMainCategory.Items.Count != 0)
+            {
+                if (cmbMainCategory.SelectedIndex > 0)
+                {
+                    int id = ((SupplierCategory)cmbMainCategory.SelectedItem).ID;
+
+                    cmbSubCategory.Items.Clear();
+                    cmbSubCategory.DisplayMember = "subcategoryname";
+                    cmbSubCategory.Items.AddRange(new IMEEntities().SupplierSubCategories.Where(x => x.categoryID == id).ToArray());
+                    cmbSubCategory.Items.Insert(0, "Choose");
+                    cmbSubCategory.SelectedIndex = 0;
+
+                    cmbSubCategory.Enabled = true;
+                    btnSubCategoryAdd.Enabled = true;
+                }
+                else
+                {
+                    cmbSubCategory.Enabled = false;
+                    btnSubCategoryAdd.Enabled = false;
+                }
+            }else
+            {
+                cmbSubCategory.Enabled = true;
+                btnSubCategoryAdd.Enabled = false;
             }
         }
     }

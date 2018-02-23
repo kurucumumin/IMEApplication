@@ -111,6 +111,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<RejectionInMaster> RejectionInMasters { get; set; }
         public virtual DbSet<RejectionOutDetail> RejectionOutDetails { get; set; }
         public virtual DbSet<RejectionOutMaster> RejectionOutMasters { get; set; }
+        public virtual DbSet<Reminder> Reminders { get; set; }
         public virtual DbSet<RoleValue> RoleValues { get; set; }
         public virtual DbSet<Route> Routes { get; set; }
         public virtual DbSet<RS_Invoice> RS_Invoice { get; set; }
@@ -142,7 +143,6 @@ namespace LoginForm.DataSet
         public virtual DbSet<SupplierAdress> SupplierAdresses { get; set; }
         public virtual DbSet<SupplierBank> SupplierBanks { get; set; }
         public virtual DbSet<SupplierCategory> SupplierCategories { get; set; }
-        public virtual DbSet<SupplierCategorySubCategory> SupplierCategorySubCategories { get; set; }
         public virtual DbSet<SupplierDepartment> SupplierDepartments { get; set; }
         public virtual DbSet<SupplierMainContact> SupplierMainContacts { get; set; }
         public virtual DbSet<SupplierSubCategory> SupplierSubCategories { get; set; }
@@ -4029,6 +4029,27 @@ namespace LoginForm.DataSet
                 new ObjectParameter("serviceMasterId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ServiceMasterView_Result>("ServiceMasterView", serviceMasterIdParameter);
+        }
+    
+        public virtual ObjectResult<ServiceRegisterSearch_Result> ServiceRegisterSearch(Nullable<System.DateTime> dateFrom, Nullable<System.DateTime> dateTo, string voucherNo, string ledgerName)
+        {
+            var dateFromParameter = dateFrom.HasValue ?
+                new ObjectParameter("dateFrom", dateFrom) :
+                new ObjectParameter("dateFrom", typeof(System.DateTime));
+    
+            var dateToParameter = dateTo.HasValue ?
+                new ObjectParameter("dateTo", dateTo) :
+                new ObjectParameter("dateTo", typeof(System.DateTime));
+    
+            var voucherNoParameter = voucherNo != null ?
+                new ObjectParameter("voucherNo", voucherNo) :
+                new ObjectParameter("voucherNo", typeof(string));
+    
+            var ledgerNameParameter = ledgerName != null ?
+                new ObjectParameter("ledgerName", ledgerName) :
+                new ObjectParameter("ledgerName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ServiceRegisterSearch_Result>("ServiceRegisterSearch", dateFromParameter, dateToParameter, voucherNoParameter, ledgerNameParameter);
         }
     
         public virtual ObjectResult<ServiceViewAll_Result> ServiceViewAll()

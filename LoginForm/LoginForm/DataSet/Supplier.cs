@@ -18,7 +18,6 @@ namespace LoginForm.DataSet
         public Supplier()
         {
             this.SupplierAdresses = new HashSet<SupplierAdress>();
-            this.SupplierCategorySubCategories = new HashSet<SupplierCategorySubCategory>();
             this.SupplierWorkers = new HashSet<SupplierWorker>();
         }
     
@@ -33,7 +32,7 @@ namespace LoginForm.DataSet
         public Nullable<int> representaryID { get; set; }
         public Nullable<int> rate_ID { get; set; }
         public string taxoffice { get; set; }
-        public Nullable<int> taxnumber { get; set; }
+        public string taxnumber { get; set; }
         public Nullable<int> accountrepresentaryID { get; set; }
         public Nullable<int> SupplierNoteID { get; set; }
         public Nullable<int> MainContactID { get; set; }
@@ -47,6 +46,8 @@ namespace LoginForm.DataSet
         public string CurrNameInv { get; set; }
         public string CurrTypeQuo { get; set; }
         public string CurrNameQuo { get; set; }
+        public Nullable<int> CategoryID { get; set; }
+        public Nullable<int> SubCategoryID { get; set; }
     
         public virtual Note Note { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
@@ -54,12 +55,12 @@ namespace LoginForm.DataSet
         public virtual Rate Rate { get; set; }
         public virtual Worker Worker { get; set; }
         public virtual SupplierBank SupplierBank { get; set; }
+        public virtual SupplierCategory SupplierCategory { get; set; }
         public virtual SupplierMainContact SupplierMainContact { get; set; }
         public virtual Worker Worker1 { get; set; }
+        public virtual SupplierSubCategory SupplierSubCategory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SupplierAdress> SupplierAdresses { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SupplierCategorySubCategory> SupplierCategorySubCategories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SupplierWorker> SupplierWorkers { get; set; }
     }

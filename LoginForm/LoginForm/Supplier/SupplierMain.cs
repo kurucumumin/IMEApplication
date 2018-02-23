@@ -131,7 +131,7 @@ namespace LoginForm
 
         private void btnDep_Click(object sender, EventArgs e)
         {
-            SupplierDepartmentAdd form = new SupplierDepartmentAdd();
+            frmSupplierCategoryAdd form = new frmSupplierCategoryAdd();
             this.Enabled = false;
             this.SendToBack();
             form.ShowDialog();
@@ -141,10 +141,10 @@ namespace LoginForm
 
         private void btnPos_Click(object sender, EventArgs e)
         {
-            SupplierPositionAdd form = new SupplierPositionAdd();
+            //frmSupplierSubCategoryAdd form = new frmSupplierSubCategoryAdd();
             this.Enabled = false;
             this.SendToBack();
-            form.ShowDialog();
+            //form.ShowDialog();
             cmbposition.DataSource = IME.SupplierTitles;
             this.Enabled = true;
         }
@@ -874,7 +874,7 @@ namespace LoginForm
                         try { int s_repAcoID = ((Worker)(cmbAcountRep).SelectedItem).WorkerID; s.accountrepresentaryID = s_repAcoID; } catch { };
                         s.taxoffice = txtTaxOffice.Text;
                         s.PoBox = txtpobox.Text;
-                        try { if (txtTaxNumber.Text != "") { s.taxnumber = Int32.Parse(txtTaxNumber.Text); } } catch { };
+                        try { if (txtTaxNumber.Text != "") { s.taxnumber = txtTaxNumber.Text; } } catch { };
                         try
                         {
                             if (s.BankID != null)
@@ -898,15 +898,15 @@ namespace LoginForm
                         catch { }
                         int s_bank = ((SupplierBank)(cmbBankName).SelectedItem).ID; s.BankID = s_bank;
                         //CategorySubCategory Tablosuna veri ekleniyor(ara tabloya)
-                        SupplierCategorySubCategory SupplierCatSubCat = new SupplierCategorySubCategory();
-                        //UPDATE YAPILIRKEN BU ŞEKİLDE OLUYOR
-                        if (IME.SupplierCategorySubCategories.Where(a => a.supplierID == txtcode.Text).FirstOrDefault() != null) { SupplierCatSubCat = IME.SupplierCategorySubCategories.Where(a => a.supplierID == txtcode.Text).FirstOrDefault(); }
-                        SupplierCatSubCat.supplierID = txtcode.Text;
-                        int c_CategoryID = ((SupplierCategory)(cmbcategory).SelectedItem).ID;
-                        SupplierCatSubCat.categoryID = c_CategoryID;
-                        int c_SubcategoryID = ((SupplierSubCategory)(cmbsub).SelectedItem).ID;
-                        SupplierCatSubCat.subcategoryID = c_SubcategoryID;
-                        if (IME.SupplierCategorySubCategories.Where(a => a.supplierID == txtcode.Text).FirstOrDefault() == null) { IME.SupplierCategorySubCategories.Add(SupplierCatSubCat); }
+                        //SupplierCategorySubCategory SupplierCatSubCat = new SupplierCategorySubCategory();
+                        ////UPDATE YAPILIRKEN BU ŞEKİLDE OLUYOR
+                        //if (IME.SupplierCategorySubCategories.Where(a => a.supplierID == txtcode.Text).FirstOrDefault() != null) { SupplierCatSubCat = IME.SupplierCategorySubCategories.Where(a => a.supplierID == txtcode.Text).FirstOrDefault(); }
+                        //SupplierCatSubCat.supplierID = txtcode.Text;
+                        //int c_CategoryID = ((SupplierCategory)(cmbcategory).SelectedItem).ID;
+                        //SupplierCatSubCat.categoryID = c_CategoryID;
+                        //int c_SubcategoryID = ((SupplierSubCategory)(cmbsub).SelectedItem).ID;
+                        //SupplierCatSubCat.subcategoryID = c_SubcategoryID;
+                        //if (IME.SupplierCategorySubCategories.Where(a => a.supplierID == txtcode.Text).FirstOrDefault() == null) { IME.SupplierCategorySubCategories.Add(SupplierCatSubCat); }
                         IME.SaveChanges();
                         //        
                         //Notes kısmına kayıt ediliyor

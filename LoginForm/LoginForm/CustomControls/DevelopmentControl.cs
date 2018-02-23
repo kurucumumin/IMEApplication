@@ -57,5 +57,11 @@ namespace LoginForm.CustomControls
             PurchaseOrderMain form = new PurchaseOrderMain();
             form.ShowDialog();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CemSupplierMainCem supplierMain = new CemSupplierMainCem();
+            supplierMain.ShowDialog();
+        }
     }
 }

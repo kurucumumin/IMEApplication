@@ -38,15 +38,6 @@ namespace LoginForm.nsSaleOrder
             lbCustomerList.ClearSelected();
         }
 
-        private void txtSearchCustomer_TextChanged(object sender, EventArgs e)
-        {
-            
-            //tempCustomerList = customerList.Where(a => a.c_name.Contains(txtSearchCustomer.Text)).ToList().Where(a => a.c_name != null).Where(b => b.c_name != string.Empty).ToList();
-            //PopulateCustomerList(tempCustomerList);
-
-
-        }
-
         private void lbCustomerList_SelectedValueChanged(object sender, EventArgs e)
         {
             if(lbCustomerList.SelectedValue != null)
@@ -153,9 +144,11 @@ namespace LoginForm.nsSaleOrder
 
         private void txtSearchCustomer_KeyDown(object sender, KeyEventArgs e)
         {
+            int i = 0;
             if (e.KeyCode == Keys.Enter)
             {
                 tempCustomerList = customerList.Where(c => c.c_name.IndexOf(txtSearchCustomer.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+                i++;
                 lbCustomerList.DataSource = null;
                 lbCustomerList.DataSource = tempCustomerList;
                 lbCustomerList.DisplayMember = "c_name";
