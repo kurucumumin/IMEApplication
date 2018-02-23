@@ -160,6 +160,26 @@ namespace LoginForm.DataSet
         public virtual DbSet<SalaryVoucherDetail> SalaryVoucherDetails { get; set; }
         public virtual DbSet<V_Product> V_Product { get; set; }
     
+        [DbFunction("IMEEntities", "AccountGroupHierarchy")]
+        public virtual IQueryable<AccountGroupHierarchy_Result> AccountGroupHierarchy(Nullable<decimal> groupId)
+        {
+            var groupIdParameter = groupId.HasValue ?
+                new ObjectParameter("groupId", groupId) :
+                new ObjectParameter("groupId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<AccountGroupHierarchy_Result>("[IMEEntities].[AccountGroupHierarchy](@groupId)", groupIdParameter);
+        }
+    
+        [DbFunction("IMEEntities", "AccountLedgerGetGroupUnderFunction")]
+        public virtual IQueryable<AccountLedgerGetGroupUnderFunction_Result> AccountLedgerGetGroupUnderFunction(string accountGroupId)
+        {
+            var accountGroupIdParameter = accountGroupId != null ?
+                new ObjectParameter("accountGroupId", accountGroupId) :
+                new ObjectParameter("accountGroupId", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<AccountLedgerGetGroupUnderFunction_Result>("[IMEEntities].[AccountLedgerGetGroupUnderFunction](@accountGroupId)", accountGroupIdParameter);
+        }
+    
         public virtual ObjectResult<Nullable<decimal>> AccountGroupAddWithIdentity(string accountGroupName, string groupUnder, string narration, Nullable<bool> isDefault, string nature, string affectGrossProfit)
         {
             var accountGroupNameParameter = accountGroupName != null ?
@@ -766,6 +786,19 @@ namespace LoginForm.DataSet
         public virtual ObjectResult<ArticleSelectAll_Result> ArticleSelectAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ArticleSelectAll_Result>("ArticleSelectAll");
+        }
+    
+        public virtual ObjectResult<BalanceSheet_Result> BalanceSheet(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
+        {
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalanceSheet_Result>("BalanceSheet", toDateParameter, fromDateParameter);
         }
     
         public virtual ObjectResult<BankAccountComboFill_Result> BankAccountComboFill()
@@ -2081,6 +2114,19 @@ namespace LoginForm.DataSet
                 new ObjectParameter("productID", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductViewWithID_Result>("ProductViewWithID", productIDParameter);
+        }
+    
+        public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForBalansheet_Result> ProfitAndLossAnalysisUpToaDateForBalansheet(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForBalansheet_Result>("ProfitAndLossAnalysisUpToaDateForBalansheet", fromDateParameter, toDateParameter);
         }
     
         public virtual int PurchaseBillTaxAdd(Nullable<decimal> purchaseMasterId, Nullable<decimal> taxId, Nullable<decimal> taxAmount)
@@ -4465,6 +4511,19 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockPostingDeleteForSalesInvoiceAgainstDeliveryNote", againstvoucherTypeIdParameter, againstVoucherNoParameter, voucherNoParameter, voucherTypeIdParameter);
         }
     
+        public virtual int StockValueOnDateByFIFOForOpeningStock(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByFIFOForOpeningStock", dateParameter, fromDateParameter);
+        }
+    
         public virtual int SuperDiskAdd(string article_No, string article_Desc, Nullable<int> pack_Code, Nullable<int> pack_Quantity, Nullable<int> unit_Content, string unit_Measure, Nullable<decimal> uk_Col_1, Nullable<decimal> standard_Weight, string hazardous_Ind, string calibration_Ind, string obsolete_Flag, string mH1, string low_Discount_Ind, string licensed_Ind, string shelf_Life, string cofO, string eUR1_Indicator, string cCCN_No, string supercede_Date, string current_Cat_page, string uk_Intro_Date, string filler, string uk_Disc_Date, string substitute_By, string bHC_Flag, string filler1, Nullable<decimal> future_Sell_Price, string int_Cat, string new_Prod_Change_Ind, string out_of_Stock_Prohibit_change_ind, string disc_Change_Ind, string superceded_Change_Ind, string pack_Size_Change_Ind, string rolled_Product_Change_Ind, string expiring_Product_Change_Ind, string manufacturer, string mPN, string mH_Code_Level_1, Nullable<decimal> heigh, Nullable<decimal> width, Nullable<decimal> length)
         {
             var article_NoParameter = article_No != null ?
@@ -4882,6 +4941,23 @@ namespace LoginForm.DataSet
         public virtual ObjectResult<TaxViewAllForVoucherType_Result> TaxViewAllForVoucherType()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxViewAllForVoucherType_Result>("TaxViewAllForVoucherType");
+        }
+    
+        public virtual ObjectResult<Trialbalance_Result> Trialbalance(Nullable<decimal> accountGroupId, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var accountGroupIdParameter = accountGroupId.HasValue ?
+                new ObjectParameter("accountGroupId", accountGroupId) :
+                new ObjectParameter("accountGroupId", typeof(decimal));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Trialbalance_Result>("Trialbalance", accountGroupIdParameter, fromDateParameter, toDateParameter);
         }
     
         public virtual ObjectResult<UnitConversionIdAndConRateViewallByProductId_Result> UnitConversionIdAndConRateViewallByProductId(string productId)
