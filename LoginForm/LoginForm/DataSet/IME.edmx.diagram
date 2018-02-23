@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="43c6f0b9d2b64dccb5844933435ed43b" Name="Diagram1">
+      <Diagram DiagramId="eb1efb54cf3a4c7f92ab5fbaaf89163d" Name="Diagram1">
         <EntityTypeShape EntityType="IMEModel.AccountGroup" Width="1.5" PointX="9.75" PointY="55.625" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AccountLedger" Width="1.5" PointX="12" PointY="54.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AdvancePayment" Width="1.5" PointX="20.25" PointY="79.375" IsExpanded="true" />
@@ -190,7 +190,7 @@
         <AssociationConnector Association="IMEModel.FK__CreditNot__userI__737017C0" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__CreditNot__vouch__6C8E1007" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Managemen__Defau__253C7D7E" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__Quotation__Curre__0A096455" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__Quotation__Curre__7CAF6937" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Stock__currencyI__2156DE01" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__tbl_Excha__curre__52442E1F" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Customer__accoun__6EF57B66" ManuallyRouted="false" />
@@ -421,9 +421,9 @@
         <AssociationConnector Association="IMEModel.FK__SuffixPre__vouch__7740A8A4" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Supplier__accoun__2DB1C7EE" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Supplier__BankID__0C50D423" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__Supplier__Catego__1FF8A574" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__Supplier__Catego__007FFA1B" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Supplier__repres__65370702" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__Supplier__SubCat__20ECC9AD" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__Supplier__SubCat__01741E54" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SupplierA__Suppl__42ACE4D4" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SupplierW__suppl__74794A92" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SupplierA__TownI__30E33A54" ManuallyRouted="false" />

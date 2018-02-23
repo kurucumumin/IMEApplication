@@ -2101,11 +2101,11 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
 warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="V_Product">
           <Key>
-            <PropertyRef Name="Article_No" />
+            <PropertyRef Name="productId" />
             <PropertyRef Name="dependantTable" />
           </Key>
-          <Property Name="Article_No" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Article_Desc" Type="nvarchar" MaxLength="50" />
+          <Property Name="productId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="productCode" Type="nvarchar" MaxLength="50" />
           <Property Name="Unit_Measure" Type="nvarchar" MaxLength="50" />
           <Property Name="Brandname" Type="nvarchar" MaxLength="100" />
           <Property Name="dependantTable" Type="varchar" MaxLength="3" Nullable="false" />
@@ -4030,7 +4030,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Quotation__Curre__0A096455">
+        <Association Name="FK__Quotation__Curre__7CAF6937">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5338,7 +5338,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Supplier__Catego__1FF8A574">
+        <Association Name="FK__Supplier__Catego__007FFA1B">
           <End Role="SupplierCategory" Type="Self.SupplierCategory" Multiplicity="0..1" />
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5398,7 +5398,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Supplier__SubCat__20ECC9AD">
+        <Association Name="FK__Supplier__SubCat__01741E54">
           <End Role="SupplierSubCategory" Type="Self.SupplierSubCategory" Multiplicity="0..1" />
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5790,6 +5790,16 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="nature" Type="varchar(max)" Mode="In" />
           <Parameter Name="affectGrossProfit" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="AccountGroupHierarchy" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="groupId" Type="numeric" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="accountGroupId" Type="numeric" Precision="18" Scale="0" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="AccountGroupNatureUnderGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="accountGroupId" Type="decimal" Mode="In" />
         </Function>
@@ -5857,6 +5867,16 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="branchName" Type="varchar(max)" Mode="In" />
           <Parameter Name="branchCode" Type="varchar(max)" Mode="In" />
           <Parameter Name="areaId" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="AccountLedgerGetGroupUnderFunction" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="accountGroupId" Type="varchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="accountGroupId" Type="int" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
         </Function>
         <Function Name="AccountLedgerIdGetByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ledgerName" Type="varchar(max)" Mode="In" />
@@ -5939,6 +5959,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="MPNNo" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="ArticleSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="BalanceSheet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="BankAccountComboFill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="BankReconciliationFillUnrecon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ledgerId" Type="numeric" Mode="In" />
@@ -6325,6 +6349,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         </Function>
         <Function Name="ProductViewWithID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="productID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossAnalysisUpToaDateForBalansheet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
         </Function>
         <Function Name="PurchaseBillTaxAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="purchaseMasterId" Type="numeric" Mode="In" />
@@ -6986,6 +7014,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Parameter Name="voucherNo" Type="varchar" Mode="In" />
           <Parameter Name="voucherTypeId" Type="decimal" Mode="In" />
         </Function>
+        <Function Name="StockValueOnDateByFIFOForOpeningStock" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="date" Type="datetime" Mode="In" />
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="SuperDiskAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Article_No" Type="nvarchar" Mode="In" />
           <Parameter Name="Article_Desc" Type="nvarchar" Mode="In" />
@@ -7096,6 +7128,11 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         <Function Name="TaxViewAllForProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="TaxViewAllForTaxSelection" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="TaxViewAllForVoucherType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Trialbalance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="accountGroupId" Type="numeric" Mode="In" />
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="UnitConversionIdAndConRateViewallByProductId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="productId" Type="nvarchar" Mode="In" />
         </Function>
@@ -7278,8 +7315,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </EntitySet>
           <EntitySet Name="V_Product" EntityType="Self.V_Product" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [V_Product].[Article_No] AS [Article_No], 
-    [V_Product].[Article_Desc] AS [Article_Desc], 
+    [V_Product].[productId] AS [productId], 
+    [V_Product].[productCode] AS [productCode], 
     [V_Product].[Unit_Measure] AS [Unit_Measure], 
     [V_Product].[Brandname] AS [Brandname], 
     [V_Product].[dependantTable] AS [dependantTable]
@@ -7925,7 +7962,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="PurchaseReturnMaster" EntitySet="PurchaseReturnMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__Quotation__Curre__0A096455" Association="Self.FK__Quotation__Curre__0A096455">
+          <AssociationSet Name="FK__Quotation__Curre__7CAF6937" Association="Self.FK__Quotation__Curre__7CAF6937">
             <End Role="Currency" EntitySet="Currency" />
             <End Role="Quotation" EntitySet="Quotation" />
           </AssociationSet>
@@ -8361,7 +8398,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="SupplierBank" EntitySet="SupplierBank" />
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
-          <AssociationSet Name="FK__Supplier__Catego__1FF8A574" Association="Self.FK__Supplier__Catego__1FF8A574">
+          <AssociationSet Name="FK__Supplier__Catego__007FFA1B" Association="Self.FK__Supplier__Catego__007FFA1B">
             <End Role="SupplierCategory" EntitySet="SupplierCategory" />
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
@@ -8381,7 +8418,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="Worker" EntitySet="Worker" />
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
-          <AssociationSet Name="FK__Supplier__SubCat__20ECC9AD" Association="Self.FK__Supplier__SubCat__20ECC9AD">
+          <AssociationSet Name="FK__Supplier__SubCat__01741E54" Association="Self.FK__Supplier__SubCat__01741E54">
             <End Role="SupplierSubCategory" EntitySet="SupplierSubCategory" />
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
@@ -8511,6 +8548,12 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="IMEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="AccountGroupHierarchy_Result">
+          <Property Name="accountGroupId" Type="Decimal" Precision="18" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="AccountLedgerGetGroupUnderFunction_Result">
+          <Property Name="accountGroupId" Type="Int32" />
+        </ComplexType>
         <EntityType Name="AccountGroup">
           <Key>
             <PropertyRef Name="accountGroupId" />
@@ -8808,7 +8851,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="subunitName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Companies" Relationship="Self.FK__Company__currenc__0371755F" FromRole="Currency" ToRole="Company" />
           <NavigationProperty Name="Managements" Relationship="Self.FK__Managemen__Defau__253C7D7E" FromRole="Currency" ToRole="Management" />
-          <NavigationProperty Name="Quotations" Relationship="Self.FK__Quotation__Curre__0A096455" FromRole="Currency" ToRole="Quotation" />
+          <NavigationProperty Name="Quotations" Relationship="Self.FK__Quotation__Curre__7CAF6937" FromRole="Currency" ToRole="Quotation" />
           <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__currencyI__2156DE01" FromRole="Currency" ToRole="Stock" />
           <NavigationProperty Name="ExchangeRates" Relationship="Self.FK__tbl_Excha__curre__52442E1F" FromRole="Currency" ToRole="ExchangeRate" />
         </EntityType>
@@ -9950,7 +9993,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
           <Property Name="GrossTotal" Type="Decimal" Precision="18" Scale="4" />
           <Property Name="CurrencyID" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="Currency" Relationship="Self.FK__Quotation__Curre__0A096455" FromRole="Quotation" ToRole="Currency" />
+          <NavigationProperty Name="Currency" Relationship="Self.FK__Quotation__Curre__7CAF6937" FromRole="Quotation" ToRole="Currency" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__Quotation__Custo__00750D23" FromRole="Quotation" ToRole="Customer" />
           <NavigationProperty Name="DeliveryNoteDetails" Relationship="Self.FK__DeliveryN__quota__39CD8610" FromRole="Quotation" ToRole="DeliveryNoteDetail" />
           <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__quota__25077354" FromRole="Quotation" ToRole="DeliveryNoteMaster" />
@@ -10847,9 +10890,9 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <NavigationProperty Name="Rate" Relationship="Self.FK__Supplier__rate_I__625A9A57" FromRole="Supplier" ToRole="Rate" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__Supplier__accoun__2DB1C7EE" FromRole="Supplier" ToRole="Worker" />
           <NavigationProperty Name="SupplierBank" Relationship="Self.FK__Supplier__BankID__0C50D423" FromRole="Supplier" ToRole="SupplierBank" />
-          <NavigationProperty Name="SupplierCategory" Relationship="Self.FK__Supplier__Catego__1FF8A574" FromRole="Supplier" ToRole="SupplierCategory" />
+          <NavigationProperty Name="SupplierCategory" Relationship="Self.FK__Supplier__Catego__007FFA1B" FromRole="Supplier" ToRole="SupplierCategory" />
           <NavigationProperty Name="Worker1" Relationship="Self.FK__Supplier__repres__65370702" FromRole="Supplier" ToRole="Worker" />
-          <NavigationProperty Name="SupplierSubCategory" Relationship="Self.FK__Supplier__SubCat__20ECC9AD" FromRole="Supplier" ToRole="SupplierSubCategory" />
+          <NavigationProperty Name="SupplierSubCategory" Relationship="Self.FK__Supplier__SubCat__01741E54" FromRole="Supplier" ToRole="SupplierSubCategory" />
           <NavigationProperty Name="SupplierAdresses" Relationship="Self.FK__SupplierA__Suppl__42ACE4D4" FromRole="Supplier" ToRole="SupplierAdresses" />
           <NavigationProperty Name="SupplierWorkers" Relationship="Self.FK__SupplierW__suppl__74794A92" FromRole="Supplier" ToRole="SupplierWorker" />
         </EntityType>
@@ -10883,7 +10926,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="categoryname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__Catego__1FF8A574" FromRole="SupplierCategory" ToRole="Supplier" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__Catego__007FFA1B" FromRole="SupplierCategory" ToRole="Supplier" />
           <NavigationProperty Name="SupplierSubCategories" Relationship="Self.FK__SupplierS__categ__03BB8E22" FromRole="SupplierCategory" ToRole="SupplierSubCategory" />
         </EntityType>
         <EntityType Name="SupplierDepartment">
@@ -10902,7 +10945,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="subcategoryname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="categoryID" Type="Int32" />
-          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__SubCat__20ECC9AD" FromRole="SupplierSubCategory" ToRole="Supplier" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__SubCat__01741E54" FromRole="SupplierSubCategory" ToRole="Supplier" />
           <NavigationProperty Name="SupplierCategory" Relationship="Self.FK__SupplierS__categ__03BB8E22" FromRole="SupplierSubCategory" ToRole="SupplierCategory" />
         </EntityType>
         <EntityType Name="SupplierTitle">
@@ -11191,11 +11234,11 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
         </EntityType>
         <EntityType Name="V_Product">
           <Key>
-            <PropertyRef Name="Article_No" />
+            <PropertyRef Name="productId" />
             <PropertyRef Name="dependantTable" />
           </Key>
-          <Property Name="Article_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Article_Desc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="productId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="productCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Unit_Measure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Brandname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="dependantTable" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
@@ -11836,7 +11879,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Quotation__Curre__0A096455">
+        <Association Name="FK__Quotation__Curre__7CAF6937">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -14608,7 +14651,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Supplier__Catego__1FF8A574">
+        <Association Name="FK__Supplier__Catego__007FFA1B">
           <End Role="SupplierCategory" Type="Self.SupplierCategory" Multiplicity="0..1" />
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
@@ -14632,7 +14675,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Supplier__SubCat__20ECC9AD">
+        <Association Name="FK__Supplier__SubCat__01741E54">
           <End Role="SupplierSubCategory" Type="Self.SupplierSubCategory" Multiplicity="0..1" />
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
@@ -15165,7 +15208,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Management" EntitySet="Managements" />
           </AssociationSet>
-          <AssociationSet Name="FK__Quotation__Curre__0A096455" Association="Self.FK__Quotation__Curre__0A096455">
+          <AssociationSet Name="FK__Quotation__Curre__7CAF6937" Association="Self.FK__Quotation__Curre__7CAF6937">
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Quotation" EntitySet="Quotations" />
           </AssociationSet>
@@ -16089,7 +16132,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="SupplierBank" EntitySet="SupplierBanks" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
-          <AssociationSet Name="FK__Supplier__Catego__1FF8A574" Association="Self.FK__Supplier__Catego__1FF8A574">
+          <AssociationSet Name="FK__Supplier__Catego__007FFA1B" Association="Self.FK__Supplier__Catego__007FFA1B">
             <End Role="SupplierCategory" EntitySet="SupplierCategories" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
@@ -16097,7 +16140,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="Worker" EntitySet="Workers" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
-          <AssociationSet Name="FK__Supplier__SubCat__20ECC9AD" Association="Self.FK__Supplier__SubCat__20ECC9AD">
+          <AssociationSet Name="FK__Supplier__SubCat__01741E54" Association="Self.FK__Supplier__SubCat__01741E54">
             <End Role="SupplierSubCategory" EntitySet="SupplierSubCategories" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
@@ -16165,6 +16208,12 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <End Role="AuthorizationValue" EntitySet="AuthorizationValues" />
             <End Role="Worker" EntitySet="Workers" />
           </AssociationSet>
+          <FunctionImport Name="AccountGroupHierarchy" IsComposable="true" ReturnType="Collection(IMEModel.AccountGroupHierarchy_Result)">
+            <Parameter Name="groupId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="AccountLedgerGetGroupUnderFunction" IsComposable="true" ReturnType="Collection(IMEModel.AccountLedgerGetGroupUnderFunction_Result)">
+            <Parameter Name="accountGroupId" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="AccountGroupAddWithIdentity" ReturnType="Collection(Decimal)">
             <Parameter Name="accountGroupName" Mode="In" Type="String" />
             <Parameter Name="groupUnder" Mode="In" Type="String" />
@@ -16334,6 +16383,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="MPNNo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ArticleSelectAll" ReturnType="Collection(IMEModel.ArticleSelectAll_Result)" />
+          <FunctionImport Name="BalanceSheet" ReturnType="Collection(IMEModel.BalanceSheet_Result)">
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="BankAccountComboFill" ReturnType="Collection(IMEModel.BankAccountComboFill_Result)" />
           <FunctionImport Name="BankReconciliationFillUnrecon" ReturnType="Collection(IMEModel.BankReconciliationFillUnrecon_Result)">
             <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
@@ -16709,6 +16762,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           </FunctionImport>
           <FunctionImport Name="ProductViewWithID" ReturnType="Collection(IMEModel.ProductViewWithID_Result)">
             <Parameter Name="productID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForBalansheet" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheet_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="PurchaseBillTaxAdd">
             <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
@@ -17370,6 +17427,10 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
             <Parameter Name="voucherNo" Mode="In" Type="String" />
             <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="StockValueOnDateByFIFOForOpeningStock">
+            <Parameter Name="date" Mode="In" Type="DateTime" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="SuperDiskAdd">
             <Parameter Name="Article_No" Mode="In" Type="String" />
             <Parameter Name="Article_Desc" Mode="In" Type="String" />
@@ -17480,6 +17541,11 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <FunctionImport Name="TaxViewAllForProduct" ReturnType="Collection(IMEModel.TaxViewAllForProduct_Result)" />
           <FunctionImport Name="TaxViewAllForTaxSelection" ReturnType="Collection(IMEModel.TaxViewAllForTaxSelection_Result)" />
           <FunctionImport Name="TaxViewAllForVoucherType" ReturnType="Collection(IMEModel.TaxViewAllForVoucherType_Result)" />
+          <FunctionImport Name="Trialbalance" ReturnType="Collection(IMEModel.Trialbalance_Result)">
+            <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="UnitConversionIdAndConRateViewallByProductId" ReturnType="Collection(IMEModel.UnitConversionIdAndConRateViewallByProductId_Result)">
             <Parameter Name="productId" Mode="In" Type="String" />
           </FunctionImport>
@@ -17666,6 +17732,11 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="Decimal" Name="Heigh" Nullable="true" Precision="20" Scale="5" />
           <Property Type="Decimal" Name="Width" Nullable="true" Precision="20" Scale="5" />
           <Property Type="Decimal" Name="Length" Nullable="true" Precision="20" Scale="5" />
+        </ComplexType>
+        <ComplexType Name="BalanceSheet_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="18" Scale="2" />
         </ComplexType>
         <ComplexType Name="BankAccountComboFill_Result">
           <Property Type="String" Name="ledgerName" Nullable="true" />
@@ -18059,6 +18130,11 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="String" Name="Article_Desc" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Unit_Measure" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Brandname" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisUpToaDateForBalansheet_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Debit" Nullable="true" Precision="38" Scale="2" />
         </ComplexType>
         <ComplexType Name="PurchaseBillTaxViewAllByPurchaseMasterId_Result">
           <Property Type="Decimal" Name="purchaseBillTaxId" Nullable="false" Precision="18" Scale="0" />
@@ -18609,6 +18685,17 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <Property Type="Int32" Name="taxId" Nullable="false" />
           <Property Type="String" Name="taxName" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="applicableOn" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Trialbalance_Result">
+          <Property Type="Int32" Name="Sl_No" Nullable="true" />
+          <Property Type="Int32" Name="accountGroupId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="debit" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="credit" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="OpeningBalance" Nullable="true" />
+          <Property Type="String" Name="Balance" Nullable="true" />
+          <Property Type="Decimal" Name="OpBalance" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Balance1" Nullable="true" Precision="18" Scale="2" />
         </ComplexType>
         <ComplexType Name="UnitConversionIdAndConRateViewallByProductId_Result">
           <Property Type="Decimal" Name="unitId" Nullable="false" Precision="18" Scale="0" />
@@ -20853,8 +20940,8 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <EntitySetMapping Name="V_Product">
             <EntityTypeMapping TypeName="IMEModel.V_Product">
               <MappingFragment StoreEntitySet="V_Product">
-                <ScalarProperty Name="Article_No" ColumnName="Article_No" />
-                <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
+                <ScalarProperty Name="productId" ColumnName="productId" />
+                <ScalarProperty Name="productCode" ColumnName="productCode" />
                 <ScalarProperty Name="Unit_Measure" ColumnName="Unit_Measure" />
                 <ScalarProperty Name="Brandname" ColumnName="Brandname" />
                 <ScalarProperty Name="dependantTable" ColumnName="dependantTable" />
@@ -20877,6 +20964,20 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
               <ScalarProperty Name="WorkerID" ColumnName="WorkerID" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionName="IMEModel.Store.AccountGroupHierarchy" FunctionImportName="AccountGroupHierarchy">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.AccountGroupHierarchy_Result">
+                <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="IMEModel.Store.AccountLedgerGetGroupUnderFunction" FunctionImportName="AccountLedgerGetGroupUnderFunction">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.AccountLedgerGetGroupUnderFunction_Result">
+                <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="AccountGroupAddWithIdentity" FunctionName="IMEModel.Store.AccountGroupAddWithIdentity" />
           <FunctionImportMapping FunctionImportName="AccountGroupCheckExistenceOfUnderGroup" FunctionName="IMEModel.Store.AccountGroupCheckExistenceOfUnderGroup" />
           <FunctionImportMapping FunctionImportName="AccountGroupEdit" FunctionName="IMEModel.Store.AccountGroupEdit" />
@@ -21124,6 +21225,15 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="Heigh" ColumnName="Heigh" />
                 <ScalarProperty Name="Width" ColumnName="Width" />
                 <ScalarProperty Name="Length" ColumnName="Length" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BalanceSheet" FunctionName="IMEModel.Store.BalanceSheet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.BalanceSheet_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -21731,6 +21841,15 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="Article_Desc" ColumnName="Article_Desc" />
                 <ScalarProperty Name="Unit_Measure" ColumnName="Unit_Measure" />
                 <ScalarProperty Name="Brandname" ColumnName="Brandname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisUpToaDateForBalansheet" FunctionName="IMEModel.Store.ProfitAndLossAnalysisUpToaDateForBalansheet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheet_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -22439,6 +22558,7 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
           <FunctionImportMapping FunctionImportName="StockPostingDeleteByagainstVoucherTypeIdAndagainstVoucherNoAndVoucherNoAndVoucherType" FunctionName="IMEModel.Store.StockPostingDeleteByagainstVoucherTypeIdAndagainstVoucherNoAndVoucherNoAndVoucherType" />
           <FunctionImportMapping FunctionImportName="StockPostingDeleteByVoucherTypeAndVoucherNo" FunctionName="IMEModel.Store.StockPostingDeleteByVoucherTypeAndVoucherNo" />
           <FunctionImportMapping FunctionImportName="StockPostingDeleteForSalesInvoiceAgainstDeliveryNote" FunctionName="IMEModel.Store.StockPostingDeleteForSalesInvoiceAgainstDeliveryNote" />
+          <FunctionImportMapping FunctionImportName="StockValueOnDateByFIFOForOpeningStock" FunctionName="IMEModel.Store.StockValueOnDateByFIFOForOpeningStock" />
           <FunctionImportMapping FunctionImportName="SuperDiskAdd" FunctionName="IMEModel.Store.SuperDiskAdd" />
           <FunctionImportMapping FunctionImportName="SuperDiskPAdd" FunctionName="IMEModel.Store.SuperDiskPAdd" />
           <FunctionImportMapping FunctionImportName="TaxDetailsViewAllByTaxId" FunctionName="IMEModel.Store.TaxDetailsViewAllByTaxId" />
@@ -22515,6 +22635,21 @@ warning 6002: The table/view 'IME.dbo.V_Product' does not have a primary key def
                 <ScalarProperty Name="taxId" ColumnName="taxId" />
                 <ScalarProperty Name="taxName" ColumnName="taxName" />
                 <ScalarProperty Name="applicableOn" ColumnName="applicableOn" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Trialbalance" FunctionName="IMEModel.Store.Trialbalance">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.Trialbalance_Result">
+                <ScalarProperty Name="Sl_No" ColumnName="Sl No" />
+                <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="debit" ColumnName="debit" />
+                <ScalarProperty Name="credit" ColumnName="credit" />
+                <ScalarProperty Name="OpeningBalance" ColumnName="OpeningBalance" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="OpBalance" ColumnName="OpBalance" />
+                <ScalarProperty Name="Balance1" ColumnName="Balance1" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
