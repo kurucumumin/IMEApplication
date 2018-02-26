@@ -30,8 +30,6 @@ namespace LoginForm.DataSet
         public virtual Language Language { get; set; }
         public virtual Note Note { get; set; }
         public virtual Supplier Supplier { get; set; }
-        public virtual SupplierAdress SupplierAdress { get; set; }
-        public virtual SupplierDepartment SupplierDepartment { get; set; }
-        public virtual SupplierTitle SupplierTitle { get; set; }
+        public virtual SupplierAddress SupplierAddress { get; set; }
     }
 }

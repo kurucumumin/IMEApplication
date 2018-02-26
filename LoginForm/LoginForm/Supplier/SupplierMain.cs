@@ -60,17 +60,17 @@ namespace LoginForm
             cmbrepresentative.DisplayMember = "NameLastName";
             cmbrepresentative.ValueMember = "WorkerID";
 
-            cmbdepartman.DataSource = IME.SupplierDepartments.ToList();
-            cmbdepartman.DisplayMember = "departmentname";
-            cmbdepartman.ValueMember = "ID";
+            //cmbdepartman.DataSource = IME.SupplierDepartments.ToList();
+            //cmbdepartman.DisplayMember = "departmentname";
+            //cmbdepartman.ValueMember = "ID";
 
             cmblanguage.DataSource = IME.Languages.ToList();
             cmblanguage.DisplayMember = "languagename";
             cmblanguage.ValueMember = "ID";
 
-            cmbposition.DataSource = IME.SupplierTitles.ToList();
-            cmbposition.DisplayMember = "titlename";
-            cmbposition.ValueMember = "ID";
+            //cmbposition.DataSource = IME.SupplierTitles.ToList();
+            //cmbposition.DisplayMember = "titlename";
+            //cmbposition.ValueMember = "ID";
 
             cmbBankName.DataSource = IME.SupplierBanks.ToList();
             cmbBankName.DisplayMember = "bankname";
@@ -113,15 +113,15 @@ namespace LoginForm
                     foreach (var a in contact1)
                     {
                         selectedContactID = a.ID;
-                        if (a.SupplierDepartment != null) cmbdepartman.SelectedValue = cmbdepartman.FindStringExact(a.SupplierDepartment.departmentname);
-                        if (a.SupplierTitle != null) cmbposition.SelectedValue = cmbposition.FindStringExact(a.SupplierTitle.titlename);
-                        cmblanguage.SelectedIndex = cmblanguage.FindStringExact(a.Language.languagename);
-                        txtContactName.Text = a.sw_name;
-                        txtContactMail.Text = a.sw_email;
-                        txtContactfax.Text = a.fax;
-                        txtContactMobile.Text = a.mobilephone;
-                        txtContactPhone.Text = a.phone;
-                        if (a.Note != null) { txtContactNotes.Text = a.Note.Note_name; } else { txtContactNotes.Text = ""; }
+                        //if (a.SupplierDepartment != null) cmbdepartman.SelectedValue = cmbdepartman.FindStringExact(a.SupplierDepartment.departmentname);
+                        //if (a.SupplierTitle != null) cmbposition.SelectedValue = cmbposition.FindStringExact(a.SupplierTitle.titlename);
+                        //cmblanguage.SelectedIndex = cmblanguage.FindStringExact(a.Language.languagename);
+                        //txtContactName.Text = a.sw_name;
+                        //txtContactMail.Text = a.sw_email;
+                        //txtContactfax.Text = a.fax;
+                        //txtContactMobile.Text = a.mobilephone;
+                        //txtContactPhone.Text = a.phone;
+                        //if (a.Note != null) { txtContactNotes.Text = a.Note.Note_name; } else { txtContactNotes.Text = ""; }
                     }
                 }
             }
@@ -135,7 +135,7 @@ namespace LoginForm
             this.Enabled = false;
             this.SendToBack();
             form.ShowDialog();
-            cmbdepartman.DataSource = IME.SupplierDepartments;
+            //cmbdepartman.DataSource = IME.SupplierDepartments;
             this.Enabled = true;
         }
 
@@ -145,7 +145,7 @@ namespace LoginForm
             this.Enabled = false;
             this.SendToBack();
             //form.ShowDialog();
-            cmbposition.DataSource = IME.SupplierTitles;
+            //cmbposition.DataSource = IME.SupplierTitles;
             this.Enabled = true;
         }
 
@@ -170,7 +170,7 @@ namespace LoginForm
            DataSet.Supplier c = IME.Suppliers.Where(a => a.ID == supplierID).FirstOrDefault();
            // dateTimePicker1.Value = c.CreateDate.Value;
             txtcode.Text = c.ID;
-            AdressList.DataSource = IME.SupplierAdresses.Where(customera => customera.SupplierID == txtcode.Text).ToList();
+            AdressList.DataSource = IME.SupplierAddresses.Where(customera => customera.SupplierID == txtcode.Text).ToList();
             AdressList.DisplayMember = "AdressDetails";
             AdressList.ValueMember = "ID";
             //ContactAdress.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
@@ -559,7 +559,7 @@ namespace LoginForm
                 string supplierID = dgSupplier.CurrentRow.Cells["ID"].Value.ToString();
                 DataSet.Supplier c = IME.Suppliers.Where(a => a.ID == supplierID).FirstOrDefault();
                 txtcode.Text = c.ID;
-                AdressList.DataSource = IME.SupplierAdresses.Where(customera => customera.SupplierID == txtcode.Text).ToList();
+                AdressList.DataSource = IME.SupplierAddresses.Where(customera => customera.SupplierID == txtcode.Text).ToList();
                 AdressList.DisplayMember = "AdressDetails";
                 txtname.Text = c.s_name;
                 txtphone.Text = c.telephone;
@@ -656,8 +656,8 @@ namespace LoginForm
                         {
                             SupplierWorker cw = new SupplierWorker();
                             cw.supplierID = txtcode.Text;
-                            cw.departmentID = ((SupplierDepartment)(cmbdepartman).SelectedItem).ID;
-                            cw.titleID = ((SupplierTitle)(cmbposition).SelectedItem).ID;
+                            //cw.departmentID = ((SupplierDepartment)(cmbdepartman).SelectedItem).ID;
+                            //cw.titleID = ((SupplierTitle)(cmbposition).SelectedItem).ID;
                             cw.sw_name = txtContactName.Text;
                             cw.sw_email = txtContactMail.Text;
                             cw.phone = txtContactPhone.Text;
@@ -701,8 +701,8 @@ namespace LoginForm
                             {
                                 //UPDATE CONTACT
                                 cw.supplierID = txtcode.Text;
-                                cw.departmentID = ((SupplierDepartment)(cmbdepartman).SelectedItem).ID;
-                                cw.titleID = ((SupplierTitle)(cmbposition).SelectedItem).ID;
+                                //cw.departmentID = ((SupplierDepartment)(cmbdepartman).SelectedItem).ID;
+                                //cw.titleID = ((SupplierTitle)(cmbposition).SelectedItem).ID;
                                 cw.sw_name = txtContactName.Text;
                                 cw.sw_email = txtContactMail.Text;
                                 cw.phone = txtContactPhone.Text;
@@ -776,8 +776,8 @@ namespace LoginForm
         private void cmbdepartman_SelectedIndexChanged(object sender, EventArgs e)
         {
             int s_departmentID;
-            try { s_departmentID = ((SupplierDepartment)((ComboBox)sender).SelectedItem).ID; } catch { s_departmentID = 0; }
-            cmbposition.DataSource = IME.SupplierTitles.Where(b => b.SupplierDepartment.ID == s_departmentID).ToList();
+            //try { s_departmentID = ((SupplierDepartment)((ComboBox)sender).SelectedItem).ID; } catch { s_departmentID = 0; }
+            //cmbposition.DataSource = IME.SupplierTitles.Where(b => b.SupplierDepartment.ID == s_departmentID).ToList();
             cmbposition.DisplayMember = "titlename";
         }
 
@@ -1052,10 +1052,10 @@ namespace LoginForm
             DialogResult dialogResult = MessageBox.Show("Are You Sure Delete This Adress ?", "Delete", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                SupplierAdress ca = IME.SupplierAdresses.First(a => a.ID == ContactListItem.AdressID);
-                IME.SupplierAdresses.Remove(ca);
+                SupplierAddress ca = IME.SupplierAddresses.First(a => a.ID == ContactListItem.AdressID);
+                IME.SupplierAddresses.Remove(ca);
                 IME.SaveChanges();
-                AdressList.DataSource = IME.SupplierAdresses.Where(suppliera => suppliera.SupplierID == txtcode.Text).ToList();
+                AdressList.DataSource = IME.SupplierAddresses.Where(suppliera => suppliera.SupplierID == txtcode.Text).ToList();
                 AdressList.DisplayMember = "AdressDetails";
             }
             else if (dialogResult == DialogResult.No)
@@ -1066,11 +1066,11 @@ namespace LoginForm
 
         private void AdressDone_Click(object sender, EventArgs e)
         {
-            SupplierAdress ca = new SupplierAdress();
+            SupplierAddress ca = new SupplierAddress();
             if (isUpdateAdress == 1)
             {
-                int saID = ((AdressList).SelectedItem as SupplierAdress).ID;
-                ca = IME.SupplierAdresses.Where(a => a.ID == saID).FirstOrDefault();
+                int saID = ((AdressList).SelectedItem as SupplierAddress).ID;
+                ca = IME.SupplierAddresses.Where(a => a.ID == saID).FirstOrDefault();
             }
             else { ca = null; }
 
@@ -1086,14 +1086,14 @@ namespace LoginForm
             }
             else
             {
-                ca = new SupplierAdress();
+                ca = new SupplierAddress();
                 ca.SupplierID = txtcode.Text;
                 ca.CountryID = ((cmbcounrty).SelectedItem as Country).ID;
                 ca.CityID = ((cmbcity).SelectedItem as City).ID;
                 ca.TownID = ((cmbtown).SelectedItem as Town).ID;
                 ca.AdressDetails = txtCompanyAddress.Text;
                 
-                IME.SupplierAdresses.Add(ca);
+                IME.SupplierAddresses.Add(ca);
                 IME.SaveChanges();
             }
 
@@ -1104,7 +1104,7 @@ namespace LoginForm
                 dgSupplier.Enabled = true;
             }
             AdressList.DataSource = null;
-            AdressList.DataSource = IME.SupplierAdresses.Where(suppliera => suppliera.SupplierID == txtcode.Text).ToList();
+            AdressList.DataSource = IME.SupplierAddresses.Where(suppliera => suppliera.SupplierID == txtcode.Text).ToList();
             AdressList.DisplayMember = "AdressDetails";
 
             AdressAdd.Visible = true;
@@ -1122,7 +1122,7 @@ namespace LoginForm
                 txtsearch.Enabled = true;
                 dgSupplier.Enabled = true;
             }
-            AdressList.DataSource = IME.SupplierAdresses.Where(suppliera => suppliera.SupplierID == txtcode.Text).ToList();
+            AdressList.DataSource = IME.SupplierAddresses.Where(suppliera => suppliera.SupplierID == txtcode.Text).ToList();
             AdressList.DisplayMember = "AdressDetails";
 
             AdressAdd.Visible = true;
@@ -1138,14 +1138,14 @@ namespace LoginForm
             #region AdressList
             //contact daki list box a tıklandığında contact ın bilgileri tıklanan göre doldurulmasıse
             int cw_ID = 0;
-            try { cw_ID = ((SupplierAdress)((ListBox)sender).SelectedValue).ID; } catch { cw_ID = 0; }
+            try { cw_ID = ((SupplierAddress)((ListBox)sender).SelectedValue).ID; } catch { cw_ID = 0; }
             try
             {
                 if (ContactListItem.AdressID != cw_ID)
                 {
                     ContactListItem.AdressID = cw_ID;
 
-                    var contact1 = IME.SupplierAdresses.Where(cw => cw.ID == cw_ID).ToList();
+                    var contact1 = IME.SupplierAddresses.Where(cw => cw.ID == cw_ID).ToList();
                     foreach (var a in contact1)
                     {
                        

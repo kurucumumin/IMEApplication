@@ -1242,7 +1242,7 @@
     <Compile Include="DataSet\Supplier.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\SupplierAdress.cs">
+    <Compile Include="DataSet\SupplierAddress.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SupplierBank.cs">
@@ -1251,13 +1251,7 @@
     <Compile Include="DataSet\SupplierCategory.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\SupplierDepartment.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\SupplierSubCategory.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SupplierTitle.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SupplierWorker.cs">

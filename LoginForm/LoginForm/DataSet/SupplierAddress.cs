@@ -12,19 +12,30 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class SupplierTitle
+    public partial class SupplierAddress
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SupplierTitle()
+        public SupplierAddress()
         {
             this.SupplierWorkers = new HashSet<SupplierWorker>();
         }
     
         public int ID { get; set; }
-        public string titlename { get; set; }
-        public Nullable<int> departmnetID { get; set; }
+        public string SupplierID { get; set; }
+        public string AdressDetails { get; set; }
+        public Nullable<int> TownID { get; set; }
+        public Nullable<int> CityID { get; set; }
+        public Nullable<int> CountryID { get; set; }
+        public string Title { get; set; }
+        public string Phone { get; set; }
+        public string Fax { get; set; }
+        public string PoBox { get; set; }
+        public string PostCode { get; set; }
     
-        public virtual SupplierDepartment SupplierDepartment { get; set; }
+        public virtual City City { get; set; }
+        public virtual Country Country { get; set; }
+        public virtual Supplier Supplier { get; set; }
+        public virtual Town Town { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SupplierWorker> SupplierWorkers { get; set; }
     }
