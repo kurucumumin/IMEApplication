@@ -83,11 +83,17 @@ namespace LoginForm.QuotationModule
 
         public FormQuotationAdd(Quotation quotation)
         {
+            InitializeComponent();
+
+            DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgQuotationAddedItems.Columns[dgDelivery.Index];
+            deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
+            deliveryColumn.DisplayMember = "DeliveryName";
+            deliveryColumn.ValueMember = "ID";
             //Son versiyonu açmayı sağlıyor
             Quotation q1 = IME.Quotations.Where(a => a.QuotationNo.Contains(quotation.QuotationNo)).OrderByDescending(b => b.QuotationNo).FirstOrDefault();
             this.Text = "Edit Quotation";
             modifyMod = true;
-            InitializeComponent();
+            
 
             cbCurrency.DataSource = IME.Currencies.ToList();
             cbCurrency.DisplayMember = "currencyName";
@@ -148,6 +154,13 @@ namespace LoginForm.QuotationModule
        
         private void QuotationForm_Load(object sender, EventArgs e)
         {
+            DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgQuotationAddedItems.Columns[dgDelivery.Index];
+            if (deliveryColumn.DataSource==null)
+            {
+                deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
+                deliveryColumn.DisplayMember = "DeliveryName";
+                deliveryColumn.ValueMember = "ID";
+            }
            
             if (txtCustomerName.Text == null || txtCustomerName.Text == "")
             {
@@ -1726,6 +1739,9 @@ namespace LoginForm.QuotationModule
                     if (dgQuotationAddedItems.Rows[i].Cells["dgUnitWeigt"].Value != null) qd.UnitWeight = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgUnitWeigt"].Value.ToString());
                     if (dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value != null) qd.Marge = Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString());
                     if(dgQuotationAddedItems.Rows[i].Cells["dgDependantTable"].Value!=null) qd.DependantTable = dgQuotationAddedItems.Rows[i].Cells["dgDependantTable"].Value.ToString();
+
+                    qd.quotationDeliveryID = (int)((DataGridViewComboBoxCell)dgQuotationAddedItems.Rows[i].Cells[dgDelivery.Index]).Value;
+                    
                     IME.QuotationDetails.Add(qd);
                     IME.SaveChanges();
                 }
@@ -1791,6 +1807,7 @@ namespace LoginForm.QuotationModule
                     row.Cells[19].Value = item.UPIME;
                     row.Cells[21].Value = item.UCUPCurr;
                     row.Cells[20].Value = item.Disc;
+                    row.Cells[dgDelivery1.Index].Value = item.quotationDeliveryID;
                     row.Cells[22].Value = item.Total;
                     row.Cells[23].Value = item.TargetUP;
                     row.Cells[24].Value = item.Competitor;
@@ -1810,6 +1827,7 @@ namespace LoginForm.QuotationModule
                     row.Cells[18].Value = item.UC;
                     row.Cells[19].Value = item.UPIME;
                     row.Cells[21].Value = item.UCUPCurr;
+                    row.Cells[dgDelivery.Index].Value = item.quotationDeliveryID;
                     row.Cells[20].Value = item.Disc;
                     row.Cells[22].Value = item.Total;
                     row.Cells[23].Value = item.TargetUP;
