@@ -133,6 +133,13 @@ namespace LoginForm
             this.label38 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.dgSupplier = new System.Windows.Forms.DataGridView();
+            this.btnModify = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.snameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telephoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -167,13 +174,6 @@ namespace LoginForm
             this.supplierWorkersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paymentmethodIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnModify = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.tabgenel.SuspendLayout();
             this.tabInfo.SuspendLayout();
             this.tabAccount.SuspendLayout();
@@ -181,13 +181,13 @@ namespace LoginForm
             this.tabAccounting.SuspendLayout();
             this.tabBank.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSupplier)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             this.SuspendLayout();
-            //
+            // 
             // tabgenel
-            //
+            // 
             this.tabgenel.Controls.Add(this.tabInfo);
             this.tabgenel.Controls.Add(this.tabAccount);
             this.tabgenel.Controls.Add(this.tabAddress);
@@ -201,9 +201,9 @@ namespace LoginForm
             this.tabgenel.SelectedIndex = 0;
             this.tabgenel.Size = new System.Drawing.Size(1225, 252);
             this.tabgenel.TabIndex = 0;
-            //
+            // 
             // tabInfo
-            //
+            // 
             this.tabInfo.Controls.Add(this.txtWeb);
             this.tabInfo.Controls.Add(this.label18);
             this.tabInfo.Controls.Add(this.btnSubCategoryAdd);
@@ -232,18 +232,18 @@ namespace LoginForm
             this.tabInfo.TabIndex = 0;
             this.tabInfo.Text = "Info";
             this.tabInfo.UseVisualStyleBackColor = true;
-            //
+            // 
             // txtWeb
-            //
+            // 
             this.txtWeb.Enabled = false;
             this.txtWeb.Location = new System.Drawing.Point(157, 183);
             this.txtWeb.Margin = new System.Windows.Forms.Padding(4);
             this.txtWeb.Name = "txtWeb";
             this.txtWeb.Size = new System.Drawing.Size(183, 26);
             this.txtWeb.TabIndex = 23;
-            //
+            // 
             // label18
-            //
+            // 
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(9, 186);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -251,9 +251,9 @@ namespace LoginForm
             this.label18.Size = new System.Drawing.Size(110, 20);
             this.label18.TabIndex = 22;
             this.label18.Text = "Web Address";
-            //
+            // 
             // btnSubCategoryAdd
-            //
+            // 
             this.btnSubCategoryAdd.Enabled = false;
             this.btnSubCategoryAdd.Location = new System.Drawing.Point(1110, 14);
             this.btnSubCategoryAdd.Margin = new System.Windows.Forms.Padding(4);
@@ -263,9 +263,9 @@ namespace LoginForm
             this.btnSubCategoryAdd.Text = "+";
             this.btnSubCategoryAdd.UseVisualStyleBackColor = true;
             this.btnSubCategoryAdd.Click += new System.EventHandler(this.btnSubCategoryAdd_Click);
-            //
+            // 
             // btnMainCategoryAdd
-            //
+            // 
             this.btnMainCategoryAdd.Enabled = false;
             this.btnMainCategoryAdd.Location = new System.Drawing.Point(709, 14);
             this.btnMainCategoryAdd.Margin = new System.Windows.Forms.Padding(4);
@@ -275,9 +275,9 @@ namespace LoginForm
             this.btnMainCategoryAdd.Text = "+";
             this.btnMainCategoryAdd.UseVisualStyleBackColor = true;
             this.btnMainCategoryAdd.Click += new System.EventHandler(this.btnMainCategoryAdd_Click);
-            //
+            // 
             // cmbSubCategory
-            //
+            // 
             this.cmbSubCategory.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cmbSubCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSubCategory.Enabled = false;
@@ -287,9 +287,9 @@ namespace LoginForm
             this.cmbSubCategory.Name = "cmbSubCategory";
             this.cmbSubCategory.Size = new System.Drawing.Size(193, 28);
             this.cmbSubCategory.TabIndex = 6;
-            //
+            // 
             // label42
-            //
+            // 
             this.label42.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label42.AutoSize = true;
             this.label42.Location = new System.Drawing.Point(764, 16);
@@ -298,9 +298,9 @@ namespace LoginForm
             this.label42.Size = new System.Drawing.Size(110, 20);
             this.label42.TabIndex = 14;
             this.label42.Text = "Sub Category";
-            //
+            // 
             // txtTaxNumber
-            //
+            // 
             this.txtTaxNumber.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtTaxNumber.Enabled = false;
             this.txtTaxNumber.Location = new System.Drawing.Point(909, 71);
@@ -308,9 +308,9 @@ namespace LoginForm
             this.txtTaxNumber.Name = "txtTaxNumber";
             this.txtTaxNumber.Size = new System.Drawing.Size(193, 26);
             this.txtTaxNumber.TabIndex = 7;
-            //
+            // 
             // txtTaxOffice
-            //
+            // 
             this.txtTaxOffice.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtTaxOffice.Enabled = false;
             this.txtTaxOffice.Location = new System.Drawing.Point(508, 71);
@@ -318,9 +318,9 @@ namespace LoginForm
             this.txtTaxOffice.Name = "txtTaxOffice";
             this.txtTaxOffice.Size = new System.Drawing.Size(193, 26);
             this.txtTaxOffice.TabIndex = 5;
-            //
+            // 
             // label25
-            //
+            // 
             this.label25.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(772, 78);
@@ -329,9 +329,9 @@ namespace LoginForm
             this.label25.Size = new System.Drawing.Size(100, 20);
             this.label25.TabIndex = 11;
             this.label25.Text = "Tax Number";
-            //
+            // 
             // label13
-            //
+            // 
             this.label13.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(363, 74);
@@ -340,9 +340,9 @@ namespace LoginForm
             this.label13.Size = new System.Drawing.Size(86, 20);
             this.label13.TabIndex = 10;
             this.label13.Text = "Tax Office";
-            //
+            // 
             // txtSupplierNotes
-            //
+            // 
             this.txtSupplierNotes.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtSupplierNotes.Enabled = false;
             this.txtSupplierNotes.Location = new System.Drawing.Point(508, 123);
@@ -351,9 +351,9 @@ namespace LoginForm
             this.txtSupplierNotes.Name = "txtSupplierNotes";
             this.txtSupplierNotes.Size = new System.Drawing.Size(594, 85);
             this.txtSupplierNotes.TabIndex = 8;
-            //
+            // 
             // cmbMainCategory
-            //
+            // 
             this.cmbMainCategory.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cmbMainCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMainCategory.Enabled = false;
@@ -364,9 +364,9 @@ namespace LoginForm
             this.cmbMainCategory.Size = new System.Drawing.Size(193, 28);
             this.cmbMainCategory.TabIndex = 4;
             this.cmbMainCategory.SelectedIndexChanged += new System.EventHandler(this.cmbMainCategory_SelectedIndexChanged);
-            //
+            // 
             // txtName
-            //
+            // 
             this.txtName.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtName.Enabled = false;
             this.txtName.Location = new System.Drawing.Point(157, 128);
@@ -374,9 +374,9 @@ namespace LoginForm
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(183, 26);
             this.txtName.TabIndex = 3;
-            //
+            // 
             // cmbRepresentative
-            //
+            // 
             this.cmbRepresentative.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cmbRepresentative.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRepresentative.Enabled = false;
@@ -386,9 +386,9 @@ namespace LoginForm
             this.cmbRepresentative.Name = "cmbRepresentative";
             this.cmbRepresentative.Size = new System.Drawing.Size(183, 28);
             this.cmbRepresentative.TabIndex = 2;
-            //
+            // 
             // txtSupplierCode
-            //
+            // 
             this.txtSupplierCode.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtSupplierCode.Enabled = false;
             this.txtSupplierCode.Location = new System.Drawing.Point(157, 14);
@@ -396,9 +396,9 @@ namespace LoginForm
             this.txtSupplierCode.Name = "txtSupplierCode";
             this.txtSupplierCode.Size = new System.Drawing.Size(183, 26);
             this.txtSupplierCode.TabIndex = 1;
-            //
+            // 
             // label6
-            //
+            // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(363, 131);
@@ -407,9 +407,9 @@ namespace LoginForm
             this.label6.Size = new System.Drawing.Size(119, 20);
             this.label6.TabIndex = 4;
             this.label6.Text = "Supplier Notes";
-            //
+            // 
             // label5
-            //
+            // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(363, 16);
@@ -418,9 +418,9 @@ namespace LoginForm
             this.label5.Size = new System.Drawing.Size(117, 20);
             this.label5.TabIndex = 3;
             this.label5.Text = "Main Category";
-            //
+            // 
             // label4
-            //
+            // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(9, 131);
@@ -429,9 +429,9 @@ namespace LoginForm
             this.label4.Size = new System.Drawing.Size(119, 20);
             this.label4.TabIndex = 2;
             this.label4.Text = "Supplier Name";
-            //
+            // 
             // label3
-            //
+            // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(9, 74);
@@ -440,9 +440,9 @@ namespace LoginForm
             this.label3.Size = new System.Drawing.Size(121, 20);
             this.label3.TabIndex = 1;
             this.label3.Text = "Representative";
-            //
+            // 
             // label2
-            //
+            // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(9, 16);
@@ -451,9 +451,9 @@ namespace LoginForm
             this.label2.Size = new System.Drawing.Size(114, 20);
             this.label2.TabIndex = 0;
             this.label2.Text = "Supplier Code";
-            //
+            // 
             // tabAccount
-            //
+            // 
             this.tabAccount.Controls.Add(this.txtAccountNotes);
             this.tabAccount.Controls.Add(this.cmbInvoiceCurrency);
             this.tabAccount.Controls.Add(this.cmbQuoCurrency);
@@ -476,9 +476,9 @@ namespace LoginForm
             this.tabAccount.TabIndex = 1;
             this.tabAccount.Text = "Account";
             this.tabAccount.UseVisualStyleBackColor = true;
-            //
+            // 
             // txtAccountNotes
-            //
+            // 
             this.txtAccountNotes.Enabled = false;
             this.txtAccountNotes.Location = new System.Drawing.Point(771, 41);
             this.txtAccountNotes.Margin = new System.Windows.Forms.Padding(4);
@@ -486,9 +486,9 @@ namespace LoginForm
             this.txtAccountNotes.Name = "txtAccountNotes";
             this.txtAccountNotes.Size = new System.Drawing.Size(409, 146);
             this.txtAccountNotes.TabIndex = 15;
-            //
+            // 
             // cmbInvoiceCurrency
-            //
+            // 
             this.cmbInvoiceCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbInvoiceCurrency.Enabled = false;
             this.cmbInvoiceCurrency.FormattingEnabled = true;
@@ -497,9 +497,9 @@ namespace LoginForm
             this.cmbInvoiceCurrency.Name = "cmbInvoiceCurrency";
             this.cmbInvoiceCurrency.Size = new System.Drawing.Size(160, 28);
             this.cmbInvoiceCurrency.TabIndex = 14;
-            //
+            // 
             // cmbQuoCurrency
-            //
+            // 
             this.cmbQuoCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbQuoCurrency.Enabled = false;
             this.cmbQuoCurrency.FormattingEnabled = true;
@@ -508,18 +508,18 @@ namespace LoginForm
             this.cmbQuoCurrency.Name = "cmbQuoCurrency";
             this.cmbQuoCurrency.Size = new System.Drawing.Size(160, 28);
             this.cmbQuoCurrency.TabIndex = 13;
-            //
+            // 
             // txtDiscountRate
-            //
+            // 
             this.txtDiscountRate.Enabled = false;
             this.txtDiscountRate.Location = new System.Drawing.Point(539, 14);
             this.txtDiscountRate.Margin = new System.Windows.Forms.Padding(4);
             this.txtDiscountRate.Name = "txtDiscountRate";
             this.txtDiscountRate.Size = new System.Drawing.Size(160, 26);
             this.txtDiscountRate.TabIndex = 12;
-            //
+            // 
             // cmbAccountMethod
-            //
+            // 
             this.cmbAccountMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAccountMethod.Enabled = false;
             this.cmbAccountMethod.FormattingEnabled = true;
@@ -528,9 +528,9 @@ namespace LoginForm
             this.cmbAccountMethod.Name = "cmbAccountMethod";
             this.cmbAccountMethod.Size = new System.Drawing.Size(160, 28);
             this.cmbAccountMethod.TabIndex = 11;
-            //
+            // 
             // cmbAccountTerms
-            //
+            // 
             this.cmbAccountTerms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAccountTerms.Enabled = false;
             this.cmbAccountTerms.FormattingEnabled = true;
@@ -539,9 +539,9 @@ namespace LoginForm
             this.cmbAccountTerms.Name = "cmbAccountTerms";
             this.cmbAccountTerms.Size = new System.Drawing.Size(160, 28);
             this.cmbAccountTerms.TabIndex = 10;
-            //
+            // 
             // cmbAccountRep
-            //
+            // 
             this.cmbAccountRep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAccountRep.Enabled = false;
             this.cmbAccountRep.FormattingEnabled = true;
@@ -550,9 +550,9 @@ namespace LoginForm
             this.cmbAccountRep.Name = "cmbAccountRep";
             this.cmbAccountRep.Size = new System.Drawing.Size(160, 28);
             this.cmbAccountRep.TabIndex = 9;
-            //
+            // 
             // label15
-            //
+            // 
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(765, 17);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -560,9 +560,9 @@ namespace LoginForm
             this.label15.Size = new System.Drawing.Size(53, 20);
             this.label15.TabIndex = 8;
             this.label15.Text = "Notes";
-            //
+            // 
             // label12
-            //
+            // 
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(381, 161);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -570,9 +570,9 @@ namespace LoginForm
             this.label12.Size = new System.Drawing.Size(134, 20);
             this.label12.TabIndex = 5;
             this.label12.Text = "Invoice Currency";
-            //
+            // 
             // label11
-            //
+            // 
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(363, 84);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -580,9 +580,9 @@ namespace LoginForm
             this.label11.Size = new System.Drawing.Size(154, 20);
             this.label11.TabIndex = 4;
             this.label11.Text = "Quotation Currency";
-            //
+            // 
             // label10
-            //
+            // 
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(381, 17);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -590,9 +590,9 @@ namespace LoginForm
             this.label10.Size = new System.Drawing.Size(116, 20);
             this.label10.TabIndex = 3;
             this.label10.Text = "Discount Rate";
-            //
+            // 
             // label9
-            //
+            // 
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(8, 161);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -600,9 +600,9 @@ namespace LoginForm
             this.label9.Size = new System.Drawing.Size(134, 20);
             this.label9.TabIndex = 2;
             this.label9.Text = "Payment Method";
-            //
+            // 
             // label8
-            //
+            // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(-5, 84);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -610,9 +610,9 @@ namespace LoginForm
             this.label8.Size = new System.Drawing.Size(146, 20);
             this.label8.TabIndex = 1;
             this.label8.Text = "Terms of Payment";
-            //
+            // 
             // label7
-            //
+            // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(8, 17);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -620,9 +620,9 @@ namespace LoginForm
             this.label7.Size = new System.Drawing.Size(121, 20);
             this.label7.TabIndex = 0;
             this.label7.Text = "Representative";
-            //
+            // 
             // tabAddress
-            //
+            // 
             this.tabAddress.Controls.Add(this.txtAddressTitle);
             this.tabAddress.Controls.Add(this.label23);
             this.tabAddress.Controls.Add(this.btnAddressDelete);
@@ -655,18 +655,18 @@ namespace LoginForm
             this.tabAddress.TabIndex = 2;
             this.tabAddress.Text = "Company Address";
             this.tabAddress.UseVisualStyleBackColor = true;
-            //
+            // 
             // txtAddressTitle
-            //
+            // 
             this.txtAddressTitle.Enabled = false;
             this.txtAddressTitle.Location = new System.Drawing.Point(80, 14);
             this.txtAddressTitle.Margin = new System.Windows.Forms.Padding(4);
             this.txtAddressTitle.Name = "txtAddressTitle";
             this.txtAddressTitle.Size = new System.Drawing.Size(132, 26);
             this.txtAddressTitle.TabIndex = 25;
-            //
+            // 
             // label23
-            //
+            // 
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(5, 17);
             this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -674,9 +674,9 @@ namespace LoginForm
             this.label23.Size = new System.Drawing.Size(41, 20);
             this.label23.TabIndex = 24;
             this.label23.Text = "Title";
-            //
+            // 
             // btnAddressDelete
-            //
+            // 
             this.btnAddressDelete.Enabled = false;
             this.btnAddressDelete.Location = new System.Drawing.Point(1131, 157);
             this.btnAddressDelete.Margin = new System.Windows.Forms.Padding(4);
@@ -685,9 +685,10 @@ namespace LoginForm
             this.btnAddressDelete.TabIndex = 23;
             this.btnAddressDelete.Text = "Del";
             this.btnAddressDelete.UseVisualStyleBackColor = true;
-            //
+            this.btnAddressDelete.Click += new System.EventHandler(this.btnAddressDelete_Click);
+            // 
             // btnAddressUpdate
-            //
+            // 
             this.btnAddressUpdate.Enabled = false;
             this.btnAddressUpdate.Location = new System.Drawing.Point(1072, 157);
             this.btnAddressUpdate.Margin = new System.Windows.Forms.Padding(4);
@@ -696,9 +697,9 @@ namespace LoginForm
             this.btnAddressUpdate.TabIndex = 22;
             this.btnAddressUpdate.Text = "Upd";
             this.btnAddressUpdate.UseVisualStyleBackColor = true;
-            //
+            // 
             // btnAddressAdd
-            //
+            // 
             this.btnAddressAdd.Enabled = false;
             this.btnAddressAdd.Location = new System.Drawing.Point(1016, 157);
             this.btnAddressAdd.Margin = new System.Windows.Forms.Padding(4);
@@ -708,9 +709,9 @@ namespace LoginForm
             this.btnAddressAdd.Text = "Add";
             this.btnAddressAdd.UseVisualStyleBackColor = true;
             this.btnAddressAdd.Click += new System.EventHandler(this.btnAddressAdd_Click);
-            //
+            // 
             // lbAddressList
-            //
+            // 
             this.lbAddressList.Enabled = false;
             this.lbAddressList.FormattingEnabled = true;
             this.lbAddressList.ItemHeight = 20;
@@ -720,9 +721,9 @@ namespace LoginForm
             this.lbAddressList.Size = new System.Drawing.Size(159, 104);
             this.lbAddressList.TabIndex = 19;
             this.lbAddressList.SelectedIndexChanged += new System.EventHandler(this.lbAddressList_SelectedIndexChanged);
-            //
+            // 
             // btnAddressDone
-            //
+            // 
             this.btnAddressDone.Location = new System.Drawing.Point(1016, 178);
             this.btnAddressDone.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddressDone.Name = "btnAddressDone";
@@ -732,9 +733,9 @@ namespace LoginForm
             this.btnAddressDone.UseVisualStyleBackColor = true;
             this.btnAddressDone.Visible = false;
             this.btnAddressDone.Click += new System.EventHandler(this.btnAddressDone_Click);
-            //
+            // 
             // btnAddressCancel
-            //
+            // 
             this.btnAddressCancel.Location = new System.Drawing.Point(1100, 178);
             this.btnAddressCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddressCancel.Name = "btnAddressCancel";
@@ -744,18 +745,18 @@ namespace LoginForm
             this.btnAddressCancel.UseVisualStyleBackColor = true;
             this.btnAddressCancel.Visible = false;
             this.btnAddressCancel.Click += new System.EventHandler(this.btnAddressCancel_Click);
-            //
+            // 
             // txtPoBox
-            //
+            // 
             this.txtPoBox.Enabled = false;
             this.txtPoBox.Location = new System.Drawing.Point(606, 14);
             this.txtPoBox.Margin = new System.Windows.Forms.Padding(4);
             this.txtPoBox.Name = "txtPoBox";
             this.txtPoBox.Size = new System.Drawing.Size(167, 26);
             this.txtPoBox.TabIndex = 6;
-            //
+            // 
             // label14
-            //
+            // 
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(493, 17);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -763,9 +764,9 @@ namespace LoginForm
             this.label14.Size = new System.Drawing.Size(75, 20);
             this.label14.TabIndex = 18;
             this.label14.Text = "P.O. Box";
-            //
+            // 
             // txtAddressDetail
-            //
+            // 
             this.txtAddressDetail.Enabled = false;
             this.txtAddressDetail.Location = new System.Drawing.Point(800, 47);
             this.txtAddressDetail.Margin = new System.Windows.Forms.Padding(4);
@@ -773,9 +774,9 @@ namespace LoginForm
             this.txtAddressDetail.Name = "txtAddressDetail";
             this.txtAddressDetail.Size = new System.Drawing.Size(193, 147);
             this.txtAddressDetail.TabIndex = 18;
-            //
+            // 
             // label24
-            //
+            // 
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(796, 17);
             this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -783,9 +784,9 @@ namespace LoginForm
             this.label24.Size = new System.Drawing.Size(129, 20);
             this.label24.TabIndex = 16;
             this.label24.Text = "Address Details";
-            //
+            // 
             // cmbTown
-            //
+            // 
             this.cmbTown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTown.Enabled = false;
             this.cmbTown.FormattingEnabled = true;
@@ -794,9 +795,9 @@ namespace LoginForm
             this.cmbTown.Name = "cmbTown";
             this.cmbTown.Size = new System.Drawing.Size(160, 28);
             this.cmbTown.TabIndex = 15;
-            //
+            // 
             // cmbCity
-            //
+            // 
             this.cmbCity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCity.Enabled = false;
             this.cmbCity.FormattingEnabled = true;
@@ -806,9 +807,9 @@ namespace LoginForm
             this.cmbCity.Size = new System.Drawing.Size(160, 28);
             this.cmbCity.TabIndex = 14;
             this.cmbCity.SelectedIndexChanged += new System.EventHandler(this.cmbCity_SelectedIndexChanged);
-            //
+            // 
             // cmbCountry
-            //
+            // 
             this.cmbCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCountry.Enabled = false;
             this.cmbCountry.FormattingEnabled = true;
@@ -818,9 +819,9 @@ namespace LoginForm
             this.cmbCountry.Size = new System.Drawing.Size(160, 28);
             this.cmbCountry.TabIndex = 13;
             this.cmbCountry.SelectedIndexChanged += new System.EventHandler(this.cmbCounrty_SelectedIndexChanged);
-            //
+            // 
             // label22
-            //
+            // 
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(231, 169);
             this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -828,9 +829,9 @@ namespace LoginForm
             this.label22.Size = new System.Drawing.Size(49, 20);
             this.label22.TabIndex = 10;
             this.label22.Text = "Town";
-            //
+            // 
             // label21
-            //
+            // 
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(231, 88);
             this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -838,9 +839,9 @@ namespace LoginForm
             this.label21.Size = new System.Drawing.Size(38, 20);
             this.label21.TabIndex = 9;
             this.label21.Text = "City";
-            //
+            // 
             // label20
-            //
+            // 
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(231, 17);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -848,36 +849,36 @@ namespace LoginForm
             this.label20.Size = new System.Drawing.Size(67, 20);
             this.label20.TabIndex = 8;
             this.label20.Text = "Country";
-            //
+            // 
             // txtPostCode
-            //
+            // 
             this.txtPostCode.Enabled = false;
             this.txtPostCode.Location = new System.Drawing.Point(606, 87);
             this.txtPostCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtPostCode.Name = "txtPostCode";
             this.txtPostCode.Size = new System.Drawing.Size(167, 26);
             this.txtPostCode.TabIndex = 16;
-            //
+            // 
             // txtFax
-            //
+            // 
             this.txtFax.Enabled = false;
             this.txtFax.Location = new System.Drawing.Point(80, 166);
             this.txtFax.Margin = new System.Windows.Forms.Padding(4);
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(132, 26);
             this.txtFax.TabIndex = 5;
-            //
+            // 
             // txtPhone
-            //
+            // 
             this.txtPhone.Enabled = false;
             this.txtPhone.Location = new System.Drawing.Point(80, 93);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(132, 26);
             this.txtPhone.TabIndex = 4;
-            //
+            // 
             // label19
-            //
+            // 
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(493, 90);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -885,9 +886,9 @@ namespace LoginForm
             this.label19.Size = new System.Drawing.Size(87, 20);
             this.label19.TabIndex = 3;
             this.label19.Text = "Post Code";
-            //
+            // 
             // label17
-            //
+            // 
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(5, 169);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -895,9 +896,9 @@ namespace LoginForm
             this.label17.Size = new System.Drawing.Size(36, 20);
             this.label17.TabIndex = 1;
             this.label17.Text = "Fax";
-            //
+            // 
             // label16
-            //
+            // 
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(5, 96);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -905,9 +906,9 @@ namespace LoginForm
             this.label16.Size = new System.Drawing.Size(56, 20);
             this.label16.TabIndex = 0;
             this.label16.Text = "Phone";
-            //
+            // 
             // tabAccounting
-            //
+            // 
             this.tabAccounting.Controls.Add(this.txtExtraNumber);
             this.tabAccounting.Controls.Add(this.cmbMainContact);
             this.tabAccounting.Controls.Add(this.label28);
@@ -947,18 +948,18 @@ namespace LoginForm
             this.tabAccounting.TabIndex = 3;
             this.tabAccounting.Text = "Contact";
             this.tabAccounting.UseVisualStyleBackColor = true;
-            //
+            // 
             // txtExtraNumber
-            //
+            // 
             this.txtExtraNumber.Enabled = false;
             this.txtExtraNumber.Location = new System.Drawing.Point(255, 187);
             this.txtExtraNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtExtraNumber.Name = "txtExtraNumber";
             this.txtExtraNumber.Size = new System.Drawing.Size(61, 26);
             this.txtExtraNumber.TabIndex = 5;
-            //
+            // 
             // cmbMainContact
-            //
+            // 
             this.cmbMainContact.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMainContact.Enabled = false;
             this.cmbMainContact.FormattingEnabled = true;
@@ -967,9 +968,9 @@ namespace LoginForm
             this.cmbMainContact.Name = "cmbMainContact";
             this.cmbMainContact.Size = new System.Drawing.Size(160, 28);
             this.cmbMainContact.TabIndex = 7;
-            //
+            // 
             // label28
-            //
+            // 
             this.label28.AutoSize = true;
             this.label28.Location = new System.Drawing.Point(337, 70);
             this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -977,9 +978,9 @@ namespace LoginForm
             this.label28.Size = new System.Drawing.Size(108, 20);
             this.label28.TabIndex = 34;
             this.label28.Text = "Main Contact";
-            //
+            // 
             // btnContactCancel
-            //
+            // 
             this.btnContactCancel.Enabled = false;
             this.btnContactCancel.Location = new System.Drawing.Point(1093, 156);
             this.btnContactCancel.Margin = new System.Windows.Forms.Padding(4);
@@ -989,9 +990,9 @@ namespace LoginForm
             this.btnContactCancel.Text = "Cancel";
             this.btnContactCancel.UseVisualStyleBackColor = true;
             this.btnContactCancel.Visible = false;
-            //
+            // 
             // btnContactDone
-            //
+            // 
             this.btnContactDone.Enabled = false;
             this.btnContactDone.Location = new System.Drawing.Point(967, 156);
             this.btnContactDone.Margin = new System.Windows.Forms.Padding(4);
@@ -1001,9 +1002,9 @@ namespace LoginForm
             this.btnContactDone.Text = "Done";
             this.btnContactDone.UseVisualStyleBackColor = true;
             this.btnContactDone.Visible = false;
-            //
+            // 
             // btnContactDelete
-            //
+            // 
             this.btnContactDelete.Enabled = false;
             this.btnContactDelete.Location = new System.Drawing.Point(1107, 181);
             this.btnContactDelete.Margin = new System.Windows.Forms.Padding(4);
@@ -1012,9 +1013,9 @@ namespace LoginForm
             this.btnContactDelete.TabIndex = 17;
             this.btnContactDelete.Text = "Delete";
             this.btnContactDelete.UseVisualStyleBackColor = true;
-            //
+            // 
             // btnContactUpdate
-            //
+            // 
             this.btnContactUpdate.Enabled = false;
             this.btnContactUpdate.Location = new System.Drawing.Point(1032, 181);
             this.btnContactUpdate.Margin = new System.Windows.Forms.Padding(4);
@@ -1023,9 +1024,9 @@ namespace LoginForm
             this.btnContactUpdate.TabIndex = 16;
             this.btnContactUpdate.Text = "Update";
             this.btnContactUpdate.UseVisualStyleBackColor = true;
-            //
+            // 
             // btnContactNew
-            //
+            // 
             this.btnContactNew.Enabled = false;
             this.btnContactNew.Location = new System.Drawing.Point(967, 181);
             this.btnContactNew.Margin = new System.Windows.Forms.Padding(4);
@@ -1034,9 +1035,9 @@ namespace LoginForm
             this.btnContactNew.TabIndex = 15;
             this.btnContactNew.Text = "New";
             this.btnContactNew.UseVisualStyleBackColor = true;
-            //
+            // 
             // lbContacts
-            //
+            // 
             this.lbContacts.Enabled = false;
             this.lbContacts.FormattingEnabled = true;
             this.lbContacts.ItemHeight = 20;
@@ -1045,9 +1046,9 @@ namespace LoginForm
             this.lbContacts.Name = "lbContacts";
             this.lbContacts.Size = new System.Drawing.Size(212, 124);
             this.lbContacts.TabIndex = 17;
-            //
+            // 
             // btnPos
-            //
+            // 
             this.btnPos.Enabled = false;
             this.btnPos.Location = new System.Drawing.Point(285, 70);
             this.btnPos.Margin = new System.Windows.Forms.Padding(4);
@@ -1056,9 +1057,9 @@ namespace LoginForm
             this.btnPos.TabIndex = 19;
             this.btnPos.Text = "+";
             this.btnPos.UseVisualStyleBackColor = true;
-            //
+            // 
             // btnDep
-            //
+            // 
             this.btnDep.Enabled = false;
             this.btnDep.Location = new System.Drawing.Point(285, 12);
             this.btnDep.Margin = new System.Windows.Forms.Padding(4);
@@ -1067,9 +1068,9 @@ namespace LoginForm
             this.btnDep.TabIndex = 18;
             this.btnDep.Text = "+";
             this.btnDep.UseVisualStyleBackColor = true;
-            //
+            // 
             // txtContactNotes
-            //
+            // 
             this.txtContactNotes.Enabled = false;
             this.txtContactNotes.Location = new System.Drawing.Point(733, 128);
             this.txtContactNotes.Margin = new System.Windows.Forms.Padding(4);
@@ -1077,9 +1078,9 @@ namespace LoginForm
             this.txtContactNotes.Name = "txtContactNotes";
             this.txtContactNotes.Size = new System.Drawing.Size(204, 82);
             this.txtContactNotes.TabIndex = 12;
-            //
+            // 
             // cmbLanguage
-            //
+            // 
             this.cmbLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLanguage.Enabled = false;
             this.cmbLanguage.FormattingEnabled = true;
@@ -1088,9 +1089,9 @@ namespace LoginForm
             this.cmbLanguage.Name = "cmbLanguage";
             this.cmbLanguage.Size = new System.Drawing.Size(204, 28);
             this.cmbLanguage.TabIndex = 10;
-            //
+            // 
             // txtContactAddress
-            //
+            // 
             this.txtContactAddress.Enabled = false;
             this.txtContactAddress.Location = new System.Drawing.Point(733, 49);
             this.txtContactAddress.Margin = new System.Windows.Forms.Padding(4);
@@ -1098,54 +1099,54 @@ namespace LoginForm
             this.txtContactAddress.Name = "txtContactAddress";
             this.txtContactAddress.Size = new System.Drawing.Size(204, 50);
             this.txtContactAddress.TabIndex = 11;
-            //
+            // 
             // txtContactFax
-            //
+            // 
             this.txtContactFax.Enabled = false;
             this.txtContactFax.Location = new System.Drawing.Point(460, 185);
             this.txtContactFax.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactFax.Name = "txtContactFax";
             this.txtContactFax.Size = new System.Drawing.Size(157, 26);
             this.txtContactFax.TabIndex = 9;
-            //
+            // 
             // txtContactMobile
-            //
+            // 
             this.txtContactMobile.Enabled = false;
             this.txtContactMobile.Location = new System.Drawing.Point(461, 128);
             this.txtContactMobile.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactMobile.Name = "txtContactMobile";
             this.txtContactMobile.Size = new System.Drawing.Size(159, 26);
             this.txtContactMobile.TabIndex = 8;
-            //
+            // 
             // txtContactPhone
-            //
+            // 
             this.txtContactPhone.Enabled = false;
             this.txtContactPhone.Location = new System.Drawing.Point(113, 186);
             this.txtContactPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactPhone.Name = "txtContactPhone";
             this.txtContactPhone.Size = new System.Drawing.Size(132, 26);
             this.txtContactPhone.TabIndex = 4;
-            //
+            // 
             // txtContactMail
-            //
+            // 
             this.txtContactMail.Enabled = false;
             this.txtContactMail.Location = new System.Drawing.Point(460, 12);
             this.txtContactMail.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactMail.Name = "txtContactMail";
             this.txtContactMail.Size = new System.Drawing.Size(157, 26);
             this.txtContactMail.TabIndex = 6;
-            //
+            // 
             // txtContactName
-            //
+            // 
             this.txtContactName.Enabled = false;
             this.txtContactName.Location = new System.Drawing.Point(113, 128);
             this.txtContactName.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactName.Name = "txtContactName";
             this.txtContactName.Size = new System.Drawing.Size(203, 26);
             this.txtContactName.TabIndex = 3;
-            //
+            // 
             // cmbPosition
-            //
+            // 
             this.cmbPosition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPosition.Enabled = false;
             this.cmbPosition.FormattingEnabled = true;
@@ -1154,9 +1155,9 @@ namespace LoginForm
             this.cmbPosition.Name = "cmbPosition";
             this.cmbPosition.Size = new System.Drawing.Size(164, 28);
             this.cmbPosition.TabIndex = 2;
-            //
+            // 
             // cmbDepartment
-            //
+            // 
             this.cmbDepartment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDepartment.Enabled = false;
             this.cmbDepartment.FormattingEnabled = true;
@@ -1166,9 +1167,9 @@ namespace LoginForm
             this.cmbDepartment.Size = new System.Drawing.Size(160, 28);
             this.cmbDepartment.TabIndex = 1;
             this.cmbDepartment.SelectedIndexChanged += new System.EventHandler(this.cmbDepartment_SelectedIndexChanged);
-            //
+            // 
             // label36
-            //
+            // 
             this.label36.AutoSize = true;
             this.label36.Location = new System.Drawing.Point(627, 135);
             this.label36.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -1176,9 +1177,9 @@ namespace LoginForm
             this.label36.Size = new System.Drawing.Size(53, 20);
             this.label36.TabIndex = 11;
             this.label36.Text = "Notes";
-            //
+            // 
             // label35
-            //
+            // 
             this.label35.AutoSize = true;
             this.label35.Location = new System.Drawing.Point(627, 15);
             this.label35.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -1186,9 +1187,9 @@ namespace LoginForm
             this.label35.Size = new System.Drawing.Size(82, 20);
             this.label35.TabIndex = 10;
             this.label35.Text = "Language";
-            //
+            // 
             // label34
-            //
+            // 
             this.label34.AutoSize = true;
             this.label34.Location = new System.Drawing.Point(627, 73);
             this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -1196,9 +1197,9 @@ namespace LoginForm
             this.label34.Size = new System.Drawing.Size(71, 20);
             this.label34.TabIndex = 9;
             this.label34.Text = "Address";
-            //
+            // 
             // label33
-            //
+            // 
             this.label33.AutoSize = true;
             this.label33.Location = new System.Drawing.Point(337, 187);
             this.label33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -1206,9 +1207,9 @@ namespace LoginForm
             this.label33.Size = new System.Drawing.Size(36, 20);
             this.label33.TabIndex = 8;
             this.label33.Text = "Fax";
-            //
+            // 
             // label32
-            //
+            // 
             this.label32.AutoSize = true;
             this.label32.Location = new System.Drawing.Point(337, 130);
             this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -1216,9 +1217,9 @@ namespace LoginForm
             this.label32.Size = new System.Drawing.Size(58, 20);
             this.label32.TabIndex = 7;
             this.label32.Text = "Mobile";
-            //
+            // 
             // label31
-            //
+            // 
             this.label31.AutoSize = true;
             this.label31.Location = new System.Drawing.Point(4, 190);
             this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -1226,9 +1227,9 @@ namespace LoginForm
             this.label31.Size = new System.Drawing.Size(56, 20);
             this.label31.TabIndex = 6;
             this.label31.Text = "Phone";
-            //
+            // 
             // label30
-            //
+            // 
             this.label30.AutoSize = true;
             this.label30.Location = new System.Drawing.Point(337, 15);
             this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -1236,9 +1237,9 @@ namespace LoginForm
             this.label30.Size = new System.Drawing.Size(57, 20);
             this.label30.TabIndex = 5;
             this.label30.Text = "E-mail";
-            //
+            // 
             // label29
-            //
+            // 
             this.label29.AutoSize = true;
             this.label29.Location = new System.Drawing.Point(8, 130);
             this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -1246,9 +1247,9 @@ namespace LoginForm
             this.label29.Size = new System.Drawing.Size(53, 20);
             this.label29.TabIndex = 4;
             this.label29.Text = "Name";
-            //
+            // 
             // label27
-            //
+            // 
             this.label27.AutoSize = true;
             this.label27.Location = new System.Drawing.Point(8, 73);
             this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -1256,9 +1257,9 @@ namespace LoginForm
             this.label27.Size = new System.Drawing.Size(69, 20);
             this.label27.TabIndex = 2;
             this.label27.Text = "Position";
-            //
+            // 
             // label26
-            //
+            // 
             this.label26.AutoSize = true;
             this.label26.Location = new System.Drawing.Point(8, 15);
             this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -1266,9 +1267,9 @@ namespace LoginForm
             this.label26.Size = new System.Drawing.Size(97, 20);
             this.label26.TabIndex = 1;
             this.label26.Text = "Department";
-            //
+            // 
             // tabBank
-            //
+            // 
             this.tabBank.Controls.Add(this.cmbBankName);
             this.tabBank.Controls.Add(this.txtBankIban);
             this.tabBank.Controls.Add(this.txtBankAccountNumber);
@@ -1284,9 +1285,9 @@ namespace LoginForm
             this.tabBank.TabIndex = 4;
             this.tabBank.Text = "Bank Info";
             this.tabBank.UseVisualStyleBackColor = true;
-            //
+            // 
             // cmbBankName
-            //
+            // 
             this.cmbBankName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBankName.Enabled = false;
             this.cmbBankName.FormattingEnabled = true;
@@ -1296,36 +1297,36 @@ namespace LoginForm
             this.cmbBankName.Name = "cmbBankName";
             this.cmbBankName.Size = new System.Drawing.Size(247, 28);
             this.cmbBankName.TabIndex = 1;
-            //
+            // 
             // txtBankIban
-            //
+            // 
             this.txtBankIban.Enabled = false;
             this.txtBankIban.Location = new System.Drawing.Point(156, 177);
             this.txtBankIban.Margin = new System.Windows.Forms.Padding(4);
             this.txtBankIban.Name = "txtBankIban";
             this.txtBankIban.Size = new System.Drawing.Size(247, 26);
             this.txtBankIban.TabIndex = 4;
-            //
+            // 
             // txtBankAccountNumber
-            //
+            // 
             this.txtBankAccountNumber.Enabled = false;
             this.txtBankAccountNumber.Location = new System.Drawing.Point(156, 124);
             this.txtBankAccountNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtBankAccountNumber.Name = "txtBankAccountNumber";
             this.txtBankAccountNumber.Size = new System.Drawing.Size(247, 26);
             this.txtBankAccountNumber.TabIndex = 3;
-            //
+            // 
             // txtBankBranchCode
-            //
+            // 
             this.txtBankBranchCode.Enabled = false;
             this.txtBankBranchCode.Location = new System.Drawing.Point(156, 68);
             this.txtBankBranchCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtBankBranchCode.Name = "txtBankBranchCode";
             this.txtBankBranchCode.Size = new System.Drawing.Size(247, 26);
             this.txtBankBranchCode.TabIndex = 2;
-            //
+            // 
             // label40
-            //
+            // 
             this.label40.AutoSize = true;
             this.label40.Location = new System.Drawing.Point(8, 177);
             this.label40.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -1333,9 +1334,9 @@ namespace LoginForm
             this.label40.Size = new System.Drawing.Size(48, 20);
             this.label40.TabIndex = 3;
             this.label40.Text = "IBAN";
-            //
+            // 
             // label39
-            //
+            // 
             this.label39.AutoSize = true;
             this.label39.Location = new System.Drawing.Point(8, 124);
             this.label39.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -1343,9 +1344,9 @@ namespace LoginForm
             this.label39.Size = new System.Drawing.Size(134, 20);
             this.label39.TabIndex = 2;
             this.label39.Text = "Account Number";
-            //
+            // 
             // label38
-            //
+            // 
             this.label38.AutoSize = true;
             this.label38.Location = new System.Drawing.Point(8, 66);
             this.label38.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -1353,9 +1354,9 @@ namespace LoginForm
             this.label38.Size = new System.Drawing.Size(107, 20);
             this.label38.TabIndex = 1;
             this.label38.Text = "Branch Code";
-            //
+            // 
             // label37
-            //
+            // 
             this.label37.AutoSize = true;
             this.label37.Location = new System.Drawing.Point(8, 12);
             this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -1363,9 +1364,9 @@ namespace LoginForm
             this.label37.Size = new System.Drawing.Size(53, 20);
             this.label37.TabIndex = 0;
             this.label37.Text = "Name";
-            //
+            // 
             // dgSupplier
-            //
+            // 
             this.dgSupplier.AllowUserToAddRows = false;
             this.dgSupplier.AllowUserToDeleteRows = false;
             this.dgSupplier.AutoGenerateColumns = false;
@@ -1415,246 +1416,9 @@ namespace LoginForm
             this.dgSupplier.Size = new System.Drawing.Size(1225, 225);
             this.dgSupplier.TabIndex = 1;
             this.dgSupplier.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSupplier_CellClick);
-            //
-            // colID
-            //
-            this.colID.DataPropertyName = "ID";
-            this.colID.HeaderText = "ID";
-            this.colID.Name = "colID";
-            this.colID.ReadOnly = true;
-            //
-            // snameDataGridViewTextBoxColumn
-            //
-            this.snameDataGridViewTextBoxColumn.DataPropertyName = "s_name";
-            this.snameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.snameDataGridViewTextBoxColumn.Name = "snameDataGridViewTextBoxColumn";
-            this.snameDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // telephoneDataGridViewTextBoxColumn
-            //
-            this.telephoneDataGridViewTextBoxColumn.DataPropertyName = "telephone";
-            this.telephoneDataGridViewTextBoxColumn.HeaderText = "Tel";
-            this.telephoneDataGridViewTextBoxColumn.Name = "telephoneDataGridViewTextBoxColumn";
-            this.telephoneDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // faxDataGridViewTextBoxColumn
-            //
-            this.faxDataGridViewTextBoxColumn.DataPropertyName = "fax";
-            this.faxDataGridViewTextBoxColumn.HeaderText = "Fax";
-            this.faxDataGridViewTextBoxColumn.Name = "faxDataGridViewTextBoxColumn";
-            this.faxDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // creditlimitDataGridViewTextBoxColumn
-            //
-            this.creditlimitDataGridViewTextBoxColumn.DataPropertyName = "creditlimit";
-            this.creditlimitDataGridViewTextBoxColumn.HeaderText = "Credit Limit";
-            this.creditlimitDataGridViewTextBoxColumn.Name = "creditlimitDataGridViewTextBoxColumn";
-            this.creditlimitDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // webadressDataGridViewTextBoxColumn
-            //
-            this.webadressDataGridViewTextBoxColumn.DataPropertyName = "webadress";
-            this.webadressDataGridViewTextBoxColumn.HeaderText = "Web";
-            this.webadressDataGridViewTextBoxColumn.Name = "webadressDataGridViewTextBoxColumn";
-            this.webadressDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // taxofficeDataGridViewTextBoxColumn
-            //
-            this.taxofficeDataGridViewTextBoxColumn.DataPropertyName = "taxoffice";
-            this.taxofficeDataGridViewTextBoxColumn.HeaderText = "Tax Office";
-            this.taxofficeDataGridViewTextBoxColumn.Name = "taxofficeDataGridViewTextBoxColumn";
-            this.taxofficeDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // taxnumberDataGridViewTextBoxColumn
-            //
-            this.taxnumberDataGridViewTextBoxColumn.DataPropertyName = "taxnumber";
-            this.taxnumberDataGridViewTextBoxColumn.HeaderText = "Tax Number";
-            this.taxnumberDataGridViewTextBoxColumn.Name = "taxnumberDataGridViewTextBoxColumn";
-            this.taxnumberDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // poBoxDataGridViewTextBoxColumn
-            //
-            this.poBoxDataGridViewTextBoxColumn.DataPropertyName = "PoBox";
-            this.poBoxDataGridViewTextBoxColumn.HeaderText = "Po Box";
-            this.poBoxDataGridViewTextBoxColumn.Name = "poBoxDataGridViewTextBoxColumn";
-            this.poBoxDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // discountrateDataGridViewTextBoxColumn
-            //
-            this.discountrateDataGridViewTextBoxColumn.DataPropertyName = "discountrate";
-            this.discountrateDataGridViewTextBoxColumn.HeaderText = "Discount Rate";
-            this.discountrateDataGridViewTextBoxColumn.Name = "discountrateDataGridViewTextBoxColumn";
-            this.discountrateDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // ibanDataGridViewTextBoxColumn
-            //
-            this.ibanDataGridViewTextBoxColumn.DataPropertyName = "iban";
-            this.ibanDataGridViewTextBoxColumn.HeaderText = "Iban";
-            this.ibanDataGridViewTextBoxColumn.Name = "ibanDataGridViewTextBoxColumn";
-            this.ibanDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // branchcodeDataGridViewTextBoxColumn
-            //
-            this.branchcodeDataGridViewTextBoxColumn.DataPropertyName = "branchcode";
-            this.branchcodeDataGridViewTextBoxColumn.HeaderText = "Branch Code";
-            this.branchcodeDataGridViewTextBoxColumn.Name = "branchcodeDataGridViewTextBoxColumn";
-            this.branchcodeDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // accountnumberDataGridViewTextBoxColumn
-            //
-            this.accountnumberDataGridViewTextBoxColumn.DataPropertyName = "accountnumber";
-            this.accountnumberDataGridViewTextBoxColumn.HeaderText = "Account Number";
-            this.accountnumberDataGridViewTextBoxColumn.Name = "accountnumberDataGridViewTextBoxColumn";
-            this.accountnumberDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // currNameInvDataGridViewTextBoxColumn
-            //
-            this.currNameInvDataGridViewTextBoxColumn.DataPropertyName = "CurrNameInv";
-            this.currNameInvDataGridViewTextBoxColumn.HeaderText = "Inv Currency";
-            this.currNameInvDataGridViewTextBoxColumn.Name = "currNameInvDataGridViewTextBoxColumn";
-            this.currNameInvDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // currTypeInvDataGridViewTextBoxColumn
-            //
-            this.currTypeInvDataGridViewTextBoxColumn.DataPropertyName = "CurrTypeInv";
-            this.currTypeInvDataGridViewTextBoxColumn.HeaderText = "CurrTypeInv";
-            this.currTypeInvDataGridViewTextBoxColumn.Name = "currTypeInvDataGridViewTextBoxColumn";
-            this.currTypeInvDataGridViewTextBoxColumn.ReadOnly = true;
-            this.currTypeInvDataGridViewTextBoxColumn.Visible = false;
-            //
-            // currNameQuoDataGridViewTextBoxColumn
-            //
-            this.currNameQuoDataGridViewTextBoxColumn.DataPropertyName = "CurrNameQuo";
-            this.currNameQuoDataGridViewTextBoxColumn.HeaderText = "Quo Currecy";
-            this.currNameQuoDataGridViewTextBoxColumn.Name = "currNameQuoDataGridViewTextBoxColumn";
-            this.currNameQuoDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // currTypeQuoDataGridViewTextBoxColumn
-            //
-            this.currTypeQuoDataGridViewTextBoxColumn.DataPropertyName = "CurrTypeQuo";
-            this.currTypeQuoDataGridViewTextBoxColumn.HeaderText = "CurrTypeQuo";
-            this.currTypeQuoDataGridViewTextBoxColumn.Name = "currTypeQuoDataGridViewTextBoxColumn";
-            this.currTypeQuoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.currTypeQuoDataGridViewTextBoxColumn.Visible = false;
-            //
-            // noteDataGridViewTextBoxColumn
-            //
-            this.noteDataGridViewTextBoxColumn.DataPropertyName = "Note";
-            this.noteDataGridViewTextBoxColumn.HeaderText = "Note";
-            this.noteDataGridViewTextBoxColumn.Name = "noteDataGridViewTextBoxColumn";
-            this.noteDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // paymentMethodDataGridViewTextBoxColumn
-            //
-            this.paymentMethodDataGridViewTextBoxColumn.DataPropertyName = "PaymentMethod";
-            this.paymentMethodDataGridViewTextBoxColumn.HeaderText = "Payment Method";
-            this.paymentMethodDataGridViewTextBoxColumn.Name = "paymentMethodDataGridViewTextBoxColumn";
-            this.paymentMethodDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // paymentTermDataGridViewTextBoxColumn
-            //
-            this.paymentTermDataGridViewTextBoxColumn.DataPropertyName = "PaymentTerm";
-            this.paymentTermDataGridViewTextBoxColumn.HeaderText = "Payment Term";
-            this.paymentTermDataGridViewTextBoxColumn.Name = "paymentTermDataGridViewTextBoxColumn";
-            this.paymentTermDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // paymenttermIDDataGridViewTextBoxColumn
-            //
-            this.paymenttermIDDataGridViewTextBoxColumn.DataPropertyName = "payment_termID";
-            this.paymenttermIDDataGridViewTextBoxColumn.HeaderText = "payment_termID";
-            this.paymenttermIDDataGridViewTextBoxColumn.Name = "paymenttermIDDataGridViewTextBoxColumn";
-            this.paymenttermIDDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // representaryIDDataGridViewTextBoxColumn
-            //
-            this.representaryIDDataGridViewTextBoxColumn.DataPropertyName = "representaryID";
-            this.representaryIDDataGridViewTextBoxColumn.HeaderText = "representaryID";
-            this.representaryIDDataGridViewTextBoxColumn.Name = "representaryIDDataGridViewTextBoxColumn";
-            this.representaryIDDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // bankIDDataGridViewTextBoxColumn
-            //
-            this.bankIDDataGridViewTextBoxColumn.DataPropertyName = "BankID";
-            this.bankIDDataGridViewTextBoxColumn.HeaderText = "BankID";
-            this.bankIDDataGridViewTextBoxColumn.Name = "bankIDDataGridViewTextBoxColumn";
-            this.bankIDDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // mainContactIDDataGridViewTextBoxColumn
-            //
-            this.mainContactIDDataGridViewTextBoxColumn.DataPropertyName = "MainContactID";
-            this.mainContactIDDataGridViewTextBoxColumn.HeaderText = "MainContactID";
-            this.mainContactIDDataGridViewTextBoxColumn.Name = "mainContactIDDataGridViewTextBoxColumn";
-            this.mainContactIDDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // supplierNoteIDDataGridViewTextBoxColumn
-            //
-            this.supplierNoteIDDataGridViewTextBoxColumn.DataPropertyName = "SupplierNoteID";
-            this.supplierNoteIDDataGridViewTextBoxColumn.HeaderText = "SupplierNoteID";
-            this.supplierNoteIDDataGridViewTextBoxColumn.Name = "supplierNoteIDDataGridViewTextBoxColumn";
-            this.supplierNoteIDDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // rateDataGridViewTextBoxColumn
-            //
-            this.rateDataGridViewTextBoxColumn.DataPropertyName = "Rate";
-            this.rateDataGridViewTextBoxColumn.HeaderText = "Rate";
-            this.rateDataGridViewTextBoxColumn.Name = "rateDataGridViewTextBoxColumn";
-            this.rateDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // workerDataGridViewTextBoxColumn
-            //
-            this.workerDataGridViewTextBoxColumn.DataPropertyName = "Worker";
-            this.workerDataGridViewTextBoxColumn.HeaderText = "Worker";
-            this.workerDataGridViewTextBoxColumn.Name = "workerDataGridViewTextBoxColumn";
-            this.workerDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // rateIDDataGridViewTextBoxColumn
-            //
-            this.rateIDDataGridViewTextBoxColumn.DataPropertyName = "rate_ID";
-            this.rateIDDataGridViewTextBoxColumn.HeaderText = "rate_ID";
-            this.rateIDDataGridViewTextBoxColumn.Name = "rateIDDataGridViewTextBoxColumn";
-            this.rateIDDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // accountrepresentaryIDDataGridViewTextBoxColumn
-            //
-            this.accountrepresentaryIDDataGridViewTextBoxColumn.DataPropertyName = "accountrepresentaryID";
-            this.accountrepresentaryIDDataGridViewTextBoxColumn.HeaderText = "accountrepresentaryID";
-            this.accountrepresentaryIDDataGridViewTextBoxColumn.Name = "accountrepresentaryIDDataGridViewTextBoxColumn";
-            this.accountrepresentaryIDDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // supplierBankDataGridViewTextBoxColumn
-            //
-            this.supplierBankDataGridViewTextBoxColumn.DataPropertyName = "SupplierBank";
-            this.supplierBankDataGridViewTextBoxColumn.HeaderText = "SupplierBank";
-            this.supplierBankDataGridViewTextBoxColumn.Name = "supplierBankDataGridViewTextBoxColumn";
-            this.supplierBankDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // worker1DataGridViewTextBoxColumn
-            //
-            this.worker1DataGridViewTextBoxColumn.DataPropertyName = "Worker1";
-            this.worker1DataGridViewTextBoxColumn.HeaderText = "Worker1";
-            this.worker1DataGridViewTextBoxColumn.Name = "worker1DataGridViewTextBoxColumn";
-            this.worker1DataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // supplierWorkersDataGridViewTextBoxColumn
-            //
-            this.supplierWorkersDataGridViewTextBoxColumn.DataPropertyName = "SupplierWorkers";
-            this.supplierWorkersDataGridViewTextBoxColumn.HeaderText = "SupplierWorkers";
-            this.supplierWorkersDataGridViewTextBoxColumn.Name = "supplierWorkersDataGridViewTextBoxColumn";
-            this.supplierWorkersDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // paymentmethodIDDataGridViewTextBoxColumn
-            //
-            this.paymentmethodIDDataGridViewTextBoxColumn.DataPropertyName = "paymentmethodID";
-            this.paymentmethodIDDataGridViewTextBoxColumn.HeaderText = "paymentmethodID";
-            this.paymentmethodIDDataGridViewTextBoxColumn.Name = "paymentmethodIDDataGridViewTextBoxColumn";
-            this.paymentmethodIDDataGridViewTextBoxColumn.ReadOnly = true;
-            //
-            // supplierBindingSource
-            //
-            this.supplierBindingSource.DataSource = typeof(LoginForm.DataSet.Supplier);
-            //
+            // 
             // btnModify
-            //
+            // 
             this.btnModify.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnModify.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModify.ForeColor = System.Drawing.Color.SteelBlue;
@@ -1666,9 +1430,9 @@ namespace LoginForm
             this.btnModify.Text = "Modify";
             this.btnModify.UseVisualStyleBackColor = true;
             this.btnModify.Click += new System.EventHandler(this.btnModify_Click);
-            //
+            // 
             // btnExit
-            //
+            // 
             this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.Color.Red;
@@ -1679,9 +1443,9 @@ namespace LoginForm
             this.btnExit.TabIndex = 53;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
-            //
+            // 
             // btnAdd
-            //
+            // 
             this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.LimeGreen;
@@ -1693,9 +1457,9 @@ namespace LoginForm
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            //
+            // 
             // label1
-            //
+            // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1705,9 +1469,9 @@ namespace LoginForm
             this.label1.Size = new System.Drawing.Size(124, 20);
             this.label1.TabIndex = 5;
             this.label1.Text = "Supplier Name:";
-            //
+            // 
             // txtSearch
-            //
+            // 
             this.txtSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(163, 27);
@@ -1715,9 +1479,9 @@ namespace LoginForm
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(164, 26);
             this.txtSearch.TabIndex = 52;
-            //
+            // 
             // tableLayoutPanel1
-            //
+            // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.dgSupplier, 0, 2);
@@ -1733,9 +1497,9 @@ namespace LoginForm
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1233, 578);
             this.tableLayoutPanel1.TabIndex = 7;
-            //
+            // 
             // panel1
-            //
+            // 
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtSearch);
             this.panel1.Controls.Add(this.btnModify);
@@ -1747,9 +1511,246 @@ namespace LoginForm
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1227, 81);
             this.panel1.TabIndex = 2;
-            //
+            // 
+            // colID
+            // 
+            this.colID.DataPropertyName = "ID";
+            this.colID.HeaderText = "ID";
+            this.colID.Name = "colID";
+            this.colID.ReadOnly = true;
+            // 
+            // snameDataGridViewTextBoxColumn
+            // 
+            this.snameDataGridViewTextBoxColumn.DataPropertyName = "s_name";
+            this.snameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.snameDataGridViewTextBoxColumn.Name = "snameDataGridViewTextBoxColumn";
+            this.snameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // telephoneDataGridViewTextBoxColumn
+            // 
+            this.telephoneDataGridViewTextBoxColumn.DataPropertyName = "telephone";
+            this.telephoneDataGridViewTextBoxColumn.HeaderText = "Tel";
+            this.telephoneDataGridViewTextBoxColumn.Name = "telephoneDataGridViewTextBoxColumn";
+            this.telephoneDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // faxDataGridViewTextBoxColumn
+            // 
+            this.faxDataGridViewTextBoxColumn.DataPropertyName = "fax";
+            this.faxDataGridViewTextBoxColumn.HeaderText = "Fax";
+            this.faxDataGridViewTextBoxColumn.Name = "faxDataGridViewTextBoxColumn";
+            this.faxDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // creditlimitDataGridViewTextBoxColumn
+            // 
+            this.creditlimitDataGridViewTextBoxColumn.DataPropertyName = "creditlimit";
+            this.creditlimitDataGridViewTextBoxColumn.HeaderText = "Credit Limit";
+            this.creditlimitDataGridViewTextBoxColumn.Name = "creditlimitDataGridViewTextBoxColumn";
+            this.creditlimitDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // webadressDataGridViewTextBoxColumn
+            // 
+            this.webadressDataGridViewTextBoxColumn.DataPropertyName = "webadress";
+            this.webadressDataGridViewTextBoxColumn.HeaderText = "Web";
+            this.webadressDataGridViewTextBoxColumn.Name = "webadressDataGridViewTextBoxColumn";
+            this.webadressDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // taxofficeDataGridViewTextBoxColumn
+            // 
+            this.taxofficeDataGridViewTextBoxColumn.DataPropertyName = "taxoffice";
+            this.taxofficeDataGridViewTextBoxColumn.HeaderText = "Tax Office";
+            this.taxofficeDataGridViewTextBoxColumn.Name = "taxofficeDataGridViewTextBoxColumn";
+            this.taxofficeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // taxnumberDataGridViewTextBoxColumn
+            // 
+            this.taxnumberDataGridViewTextBoxColumn.DataPropertyName = "taxnumber";
+            this.taxnumberDataGridViewTextBoxColumn.HeaderText = "Tax Number";
+            this.taxnumberDataGridViewTextBoxColumn.Name = "taxnumberDataGridViewTextBoxColumn";
+            this.taxnumberDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // poBoxDataGridViewTextBoxColumn
+            // 
+            this.poBoxDataGridViewTextBoxColumn.DataPropertyName = "PoBox";
+            this.poBoxDataGridViewTextBoxColumn.HeaderText = "Po Box";
+            this.poBoxDataGridViewTextBoxColumn.Name = "poBoxDataGridViewTextBoxColumn";
+            this.poBoxDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // discountrateDataGridViewTextBoxColumn
+            // 
+            this.discountrateDataGridViewTextBoxColumn.DataPropertyName = "discountrate";
+            this.discountrateDataGridViewTextBoxColumn.HeaderText = "Discount Rate";
+            this.discountrateDataGridViewTextBoxColumn.Name = "discountrateDataGridViewTextBoxColumn";
+            this.discountrateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ibanDataGridViewTextBoxColumn
+            // 
+            this.ibanDataGridViewTextBoxColumn.DataPropertyName = "iban";
+            this.ibanDataGridViewTextBoxColumn.HeaderText = "Iban";
+            this.ibanDataGridViewTextBoxColumn.Name = "ibanDataGridViewTextBoxColumn";
+            this.ibanDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // branchcodeDataGridViewTextBoxColumn
+            // 
+            this.branchcodeDataGridViewTextBoxColumn.DataPropertyName = "branchcode";
+            this.branchcodeDataGridViewTextBoxColumn.HeaderText = "Branch Code";
+            this.branchcodeDataGridViewTextBoxColumn.Name = "branchcodeDataGridViewTextBoxColumn";
+            this.branchcodeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // accountnumberDataGridViewTextBoxColumn
+            // 
+            this.accountnumberDataGridViewTextBoxColumn.DataPropertyName = "accountnumber";
+            this.accountnumberDataGridViewTextBoxColumn.HeaderText = "Account Number";
+            this.accountnumberDataGridViewTextBoxColumn.Name = "accountnumberDataGridViewTextBoxColumn";
+            this.accountnumberDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // currNameInvDataGridViewTextBoxColumn
+            // 
+            this.currNameInvDataGridViewTextBoxColumn.DataPropertyName = "CurrNameInv";
+            this.currNameInvDataGridViewTextBoxColumn.HeaderText = "Inv Currency";
+            this.currNameInvDataGridViewTextBoxColumn.Name = "currNameInvDataGridViewTextBoxColumn";
+            this.currNameInvDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // currTypeInvDataGridViewTextBoxColumn
+            // 
+            this.currTypeInvDataGridViewTextBoxColumn.DataPropertyName = "CurrTypeInv";
+            this.currTypeInvDataGridViewTextBoxColumn.HeaderText = "CurrTypeInv";
+            this.currTypeInvDataGridViewTextBoxColumn.Name = "currTypeInvDataGridViewTextBoxColumn";
+            this.currTypeInvDataGridViewTextBoxColumn.ReadOnly = true;
+            this.currTypeInvDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // currNameQuoDataGridViewTextBoxColumn
+            // 
+            this.currNameQuoDataGridViewTextBoxColumn.DataPropertyName = "CurrNameQuo";
+            this.currNameQuoDataGridViewTextBoxColumn.HeaderText = "Quo Currecy";
+            this.currNameQuoDataGridViewTextBoxColumn.Name = "currNameQuoDataGridViewTextBoxColumn";
+            this.currNameQuoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // currTypeQuoDataGridViewTextBoxColumn
+            // 
+            this.currTypeQuoDataGridViewTextBoxColumn.DataPropertyName = "CurrTypeQuo";
+            this.currTypeQuoDataGridViewTextBoxColumn.HeaderText = "CurrTypeQuo";
+            this.currTypeQuoDataGridViewTextBoxColumn.Name = "currTypeQuoDataGridViewTextBoxColumn";
+            this.currTypeQuoDataGridViewTextBoxColumn.ReadOnly = true;
+            this.currTypeQuoDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // noteDataGridViewTextBoxColumn
+            // 
+            this.noteDataGridViewTextBoxColumn.DataPropertyName = "Note";
+            this.noteDataGridViewTextBoxColumn.HeaderText = "Note";
+            this.noteDataGridViewTextBoxColumn.Name = "noteDataGridViewTextBoxColumn";
+            this.noteDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // paymentMethodDataGridViewTextBoxColumn
+            // 
+            this.paymentMethodDataGridViewTextBoxColumn.DataPropertyName = "PaymentMethod";
+            this.paymentMethodDataGridViewTextBoxColumn.HeaderText = "Payment Method";
+            this.paymentMethodDataGridViewTextBoxColumn.Name = "paymentMethodDataGridViewTextBoxColumn";
+            this.paymentMethodDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // paymentTermDataGridViewTextBoxColumn
+            // 
+            this.paymentTermDataGridViewTextBoxColumn.DataPropertyName = "PaymentTerm";
+            this.paymentTermDataGridViewTextBoxColumn.HeaderText = "Payment Term";
+            this.paymentTermDataGridViewTextBoxColumn.Name = "paymentTermDataGridViewTextBoxColumn";
+            this.paymentTermDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // paymenttermIDDataGridViewTextBoxColumn
+            // 
+            this.paymenttermIDDataGridViewTextBoxColumn.DataPropertyName = "payment_termID";
+            this.paymenttermIDDataGridViewTextBoxColumn.HeaderText = "payment_termID";
+            this.paymenttermIDDataGridViewTextBoxColumn.Name = "paymenttermIDDataGridViewTextBoxColumn";
+            this.paymenttermIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // representaryIDDataGridViewTextBoxColumn
+            // 
+            this.representaryIDDataGridViewTextBoxColumn.DataPropertyName = "representaryID";
+            this.representaryIDDataGridViewTextBoxColumn.HeaderText = "representaryID";
+            this.representaryIDDataGridViewTextBoxColumn.Name = "representaryIDDataGridViewTextBoxColumn";
+            this.representaryIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bankIDDataGridViewTextBoxColumn
+            // 
+            this.bankIDDataGridViewTextBoxColumn.DataPropertyName = "BankID";
+            this.bankIDDataGridViewTextBoxColumn.HeaderText = "BankID";
+            this.bankIDDataGridViewTextBoxColumn.Name = "bankIDDataGridViewTextBoxColumn";
+            this.bankIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // mainContactIDDataGridViewTextBoxColumn
+            // 
+            this.mainContactIDDataGridViewTextBoxColumn.DataPropertyName = "MainContactID";
+            this.mainContactIDDataGridViewTextBoxColumn.HeaderText = "MainContactID";
+            this.mainContactIDDataGridViewTextBoxColumn.Name = "mainContactIDDataGridViewTextBoxColumn";
+            this.mainContactIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // supplierNoteIDDataGridViewTextBoxColumn
+            // 
+            this.supplierNoteIDDataGridViewTextBoxColumn.DataPropertyName = "SupplierNoteID";
+            this.supplierNoteIDDataGridViewTextBoxColumn.HeaderText = "SupplierNoteID";
+            this.supplierNoteIDDataGridViewTextBoxColumn.Name = "supplierNoteIDDataGridViewTextBoxColumn";
+            this.supplierNoteIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // rateDataGridViewTextBoxColumn
+            // 
+            this.rateDataGridViewTextBoxColumn.DataPropertyName = "Rate";
+            this.rateDataGridViewTextBoxColumn.HeaderText = "Rate";
+            this.rateDataGridViewTextBoxColumn.Name = "rateDataGridViewTextBoxColumn";
+            this.rateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // workerDataGridViewTextBoxColumn
+            // 
+            this.workerDataGridViewTextBoxColumn.DataPropertyName = "Worker";
+            this.workerDataGridViewTextBoxColumn.HeaderText = "Worker";
+            this.workerDataGridViewTextBoxColumn.Name = "workerDataGridViewTextBoxColumn";
+            this.workerDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // rateIDDataGridViewTextBoxColumn
+            // 
+            this.rateIDDataGridViewTextBoxColumn.DataPropertyName = "rate_ID";
+            this.rateIDDataGridViewTextBoxColumn.HeaderText = "rate_ID";
+            this.rateIDDataGridViewTextBoxColumn.Name = "rateIDDataGridViewTextBoxColumn";
+            this.rateIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // accountrepresentaryIDDataGridViewTextBoxColumn
+            // 
+            this.accountrepresentaryIDDataGridViewTextBoxColumn.DataPropertyName = "accountrepresentaryID";
+            this.accountrepresentaryIDDataGridViewTextBoxColumn.HeaderText = "accountrepresentaryID";
+            this.accountrepresentaryIDDataGridViewTextBoxColumn.Name = "accountrepresentaryIDDataGridViewTextBoxColumn";
+            this.accountrepresentaryIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // supplierBankDataGridViewTextBoxColumn
+            // 
+            this.supplierBankDataGridViewTextBoxColumn.DataPropertyName = "SupplierBank";
+            this.supplierBankDataGridViewTextBoxColumn.HeaderText = "SupplierBank";
+            this.supplierBankDataGridViewTextBoxColumn.Name = "supplierBankDataGridViewTextBoxColumn";
+            this.supplierBankDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // worker1DataGridViewTextBoxColumn
+            // 
+            this.worker1DataGridViewTextBoxColumn.DataPropertyName = "Worker1";
+            this.worker1DataGridViewTextBoxColumn.HeaderText = "Worker1";
+            this.worker1DataGridViewTextBoxColumn.Name = "worker1DataGridViewTextBoxColumn";
+            this.worker1DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // supplierWorkersDataGridViewTextBoxColumn
+            // 
+            this.supplierWorkersDataGridViewTextBoxColumn.DataPropertyName = "SupplierWorkers";
+            this.supplierWorkersDataGridViewTextBoxColumn.HeaderText = "SupplierWorkers";
+            this.supplierWorkersDataGridViewTextBoxColumn.Name = "supplierWorkersDataGridViewTextBoxColumn";
+            this.supplierWorkersDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // paymentmethodIDDataGridViewTextBoxColumn
+            // 
+            this.paymentmethodIDDataGridViewTextBoxColumn.DataPropertyName = "paymentmethodID";
+            this.paymentmethodIDDataGridViewTextBoxColumn.HeaderText = "paymentmethodID";
+            this.paymentmethodIDDataGridViewTextBoxColumn.Name = "paymentmethodIDDataGridViewTextBoxColumn";
+            this.paymentmethodIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // supplierBindingSource
+            // 
+            this.supplierBindingSource.DataSource = typeof(LoginForm.DataSet.Supplier);
+            // 
             // CemSupplierMainCem
-            //
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -1774,10 +1775,10 @@ namespace LoginForm
             this.tabBank.ResumeLayout(false);
             this.tabBank.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSupplier)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

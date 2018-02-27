@@ -144,7 +144,7 @@ namespace LoginForm
                 case "Save":
 
 
-                    SupplierAddMode = String.Empty;
+                    //SupplierAddMode = String.Empty;
                     break;
                 default:
                     break;
@@ -221,63 +221,7 @@ namespace LoginForm
             }
         }
 
-        private void EnableAddressInput(bool state)
-        {
-            txtAddressTitle.Enabled = state;
-            txtPhone.Enabled = state;
-            txtFax.Enabled = state;
-            txtPoBox.Enabled = state;
-            cmbCountry.Enabled = state;
-            txtPostCode.Enabled = state;
-            txtAddressDetail.Enabled = state;
-            if(SupplierAddMode == String.Empty)
-            {
-                lbAddressList.Enabled = state;
-            }
-            else
-            {
-                lbAddressList.Enabled = !state;
-            }
-            if (state && cmbCountry.SelectedIndex > 0)
-            {
-                cmbCity.Enabled = true;
-            }
-            else
-            {
-                cmbCity.Enabled = false;
-            }
-            if (state && cmbCity.SelectedIndex > 0)
-            {
-                cmbTown.Enabled = true;
-            }
-            else
-            {
-                cmbTown.Enabled = false;
-            }
-
-            if (state)
-            {
-                if (lbAddressList.Items.Count > 0)
-                {
-                    btnAddressUpdate.Enabled = state;
-                    btnAddressDelete.Enabled = state;
-                }
-                else
-                {
-                    btnAddressUpdate.Enabled = !state;
-                    btnAddressDelete.Enabled = !state;
-                }
-            }
-            else
-            {
-                if (SupplierAddMode == String.Empty)
-                {
-                    btnAddressAdd.Enabled = state;
-                }
-                btnAddressUpdate.Enabled = state;
-                btnAddressDelete.Enabled = state;
-            }
-        }
+        
 
         private void btnModify_Click(object sender, EventArgs e)
         {
@@ -313,6 +257,7 @@ namespace LoginForm
                     btnAdd.Text = "Add";
                     btnModify.Text = "Modify";
                     EnableGeneralInput(false);
+                    ClearAddressInputs();
 
 
                     break;
@@ -376,19 +321,6 @@ namespace LoginForm
 
 
         }
-
-        //private void btnDep_Click(object sender, EventArgs e)
-        //{
-        //    SupplierCategoryAdd form = new SupplierCategoryAdd();
-        //    form.ShowDialog();
-
-        //    cmbDepartment.Items.Clear();
-        //    cmbDepartment.DisplayMember = "departmentname";
-        //    cmbDepartment.Items.AddRange(new IMEEntities().SupplierDepartments.ToArray());
-        //    cmbDepartment.Items.Insert(0, "Choose");
-        //    cmbDepartment.SelectedIndex = 0;
-
-        //}
 
         private void btnMainCategoryAdd_Click(object sender, EventArgs e)
         {
@@ -493,6 +425,71 @@ namespace LoginForm
             {
                 return "SC0001";
             }
+        }
+
+
+
+
+
+
+
+        private void EnableAddressInput(bool state)
+        {
+            txtAddressTitle.Enabled = state;
+            txtPhone.Enabled = state;
+            txtFax.Enabled = state;
+            txtPoBox.Enabled = state;
+            cmbCountry.Enabled = state;
+            txtPostCode.Enabled = state;
+            txtAddressDetail.Enabled = state;
+            if (SupplierAddMode == String.Empty)
+            {
+                lbAddressList.Enabled = state;
+            }
+            else
+            {
+                lbAddressList.Enabled = !state;
+            }
+            if (state && cmbCountry.SelectedIndex > 0)
+            {
+                cmbCity.Enabled = true;
+            }
+            else
+            {
+                cmbCity.Enabled = false;
+            }
+            if (state && cmbCity.SelectedIndex > 0)
+            {
+                cmbTown.Enabled = true;
+            }
+            else
+            {
+                cmbTown.Enabled = false;
+            }
+            if (state)
+            {
+                if (lbAddressList.Items.Count > 0)
+                {
+                    btnAddressUpdate.Enabled = state;
+                    btnAddressDelete.Enabled = state;
+                }
+                else
+                {
+                    btnAddressUpdate.Enabled = !state;
+                    btnAddressDelete.Enabled = !state;
+                }
+            }
+            else
+            {
+                if (SupplierAddMode == String.Empty)
+                {
+                    btnAddressAdd.Enabled = state;
+                }
+                btnAddressUpdate.Enabled = state;
+                btnAddressDelete.Enabled = state;
+            }
+
+
         }
 
         private void cmbCounrty_SelectedIndexChanged(object sender, EventArgs e)
@@ -601,6 +598,7 @@ namespace LoginForm
             ClearAddressInputs();
             EnableAddressInput(true);
             AddressButtonsMode(AddressButtonsModeOpen);
+            ManageDeleteAndModifyButtons(lbAddressList, btnAddressUpdate, btnAddressDelete);
         }
 
         private void AddressButtonsMode(string Mode)
@@ -639,6 +637,11 @@ namespace LoginForm
             cmbCountry.SelectedIndex = 0;
             txtPostCode.Clear();
             txtAddressDetail.Clear();
+            if (SupplierAddMode == String.Empty)
+            {
+                SavedAddresses.Clear();
+
+            }
         }
 
         private void btnAddressDone_Click(object sender, EventArgs e)
@@ -672,7 +675,20 @@ namespace LoginForm
 
                 cmbCity.Enabled = false;
                 cmbTown.Enabled = false;
+
+                ManageDeleteAndModifyButtons(lbAddressList, btnAddressUpdate, btnAddressDelete);
             }
+        }
+
+        private void ManageDeleteAndModifyButtons(ListBox lb, Button btnUpdate, Button btnDelete)
+        {
+            bool state = false;
+            if(lb.Items.Count != 0)
+            {
+                state = true;
+            }
+            btnUpdate.Enabled = state;
+            btnDelete.Enabled = state;
         }
 
         private void btnAddressUpdate_Click(object sender, EventArgs e)
@@ -682,7 +698,13 @@ namespace LoginForm
 
         private void btnAddressDelete_Click(object sender, EventArgs e)
         {
+            SupplierAddress sa = (SupplierAddress)lbAddressList.SelectedItem;
+            SavedAddresses.Remove(sa);
 
+            ClearAddressInputs();
+
+            EnableAddressInput(false);
+            AddressButtonsMode(AddressButtonsModeClose);
         }
 
         private void lbAddressList_SelectedIndexChanged(object sender, EventArgs e)
@@ -700,6 +722,7 @@ namespace LoginForm
             txtFax.Text = address.Fax;
             txtPoBox.Text = address.TownID.ToString();
             txtPostCode.Text = address.PostCode;
+            txtAddressDetail.Text = address.AdressDetails;
 
             var list = cmbCountry.Items.Cast<object>().ToList();
             list.RemoveAt(0);
