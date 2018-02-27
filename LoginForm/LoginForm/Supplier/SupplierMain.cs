@@ -60,17 +60,17 @@ namespace LoginForm
             cmbrepresentative.DisplayMember = "NameLastName";
             cmbrepresentative.ValueMember = "WorkerID";
 
-            cmbdepartman.DataSource = IME.SupplierDepartments.ToList();
-            cmbdepartman.DisplayMember = "departmentname";
-            cmbdepartman.ValueMember = "ID";
+            //cmbdepartman.DataSource = IME.SupplierDepartments.ToList();
+            //cmbdepartman.DisplayMember = "departmentname";
+            //cmbdepartman.ValueMember = "ID";
 
             cmblanguage.DataSource = IME.Languages.ToList();
             cmblanguage.DisplayMember = "languagename";
             cmblanguage.ValueMember = "ID";
 
-            cmbposition.DataSource = IME.SupplierTitles.ToList();
-            cmbposition.DisplayMember = "titlename";
-            cmbposition.ValueMember = "ID";
+            //cmbposition.DataSource = IME.SupplierTitles.ToList();
+            //cmbposition.DisplayMember = "titlename";
+            //cmbposition.ValueMember = "ID";
 
             cmbBankName.DataSource = IME.SupplierBanks.ToList();
             cmbBankName.DisplayMember = "bankname";
@@ -113,15 +113,15 @@ namespace LoginForm
                     foreach (var a in contact1)
                     {
                         selectedContactID = a.ID;
-                        if (a.SupplierDepartment != null) cmbdepartman.SelectedValue = cmbdepartman.FindStringExact(a.SupplierDepartment.departmentname);
-                        if (a.SupplierTitle != null) cmbposition.SelectedValue = cmbposition.FindStringExact(a.SupplierTitle.titlename);
-                        cmblanguage.SelectedIndex = cmblanguage.FindStringExact(a.Language.languagename);
-                        txtContactName.Text = a.sw_name;
-                        txtContactMail.Text = a.sw_email;
-                        txtContactfax.Text = a.fax;
-                        txtContactMobile.Text = a.mobilephone;
-                        txtContactPhone.Text = a.phone;
-                        if (a.Note != null) { txtContactNotes.Text = a.Note.Note_name; } else { txtContactNotes.Text = ""; }
+                        //if (a.SupplierDepartment != null) cmbdepartman.SelectedValue = cmbdepartman.FindStringExact(a.SupplierDepartment.departmentname);
+                        //if (a.SupplierTitle != null) cmbposition.SelectedValue = cmbposition.FindStringExact(a.SupplierTitle.titlename);
+                        //cmblanguage.SelectedIndex = cmblanguage.FindStringExact(a.Language.languagename);
+                        //txtContactName.Text = a.sw_name;
+                        //txtContactMail.Text = a.sw_email;
+                        //txtContactfax.Text = a.fax;
+                        //txtContactMobile.Text = a.mobilephone;
+                        //txtContactPhone.Text = a.phone;
+                        //if (a.Note != null) { txtContactNotes.Text = a.Note.Note_name; } else { txtContactNotes.Text = ""; }
                     }
                 }
             }
@@ -135,7 +135,7 @@ namespace LoginForm
             this.Enabled = false;
             this.SendToBack();
             form.ShowDialog();
-            cmbdepartman.DataSource = IME.SupplierDepartments;
+            //cmbdepartman.DataSource = IME.SupplierDepartments;
             this.Enabled = true;
         }
 
@@ -145,7 +145,7 @@ namespace LoginForm
             this.Enabled = false;
             this.SendToBack();
             //form.ShowDialog();
-            cmbposition.DataSource = IME.SupplierTitles;
+            //cmbposition.DataSource = IME.SupplierTitles;
             this.Enabled = true;
         }
 
@@ -656,8 +656,8 @@ namespace LoginForm
                         {
                             SupplierWorker cw = new SupplierWorker();
                             cw.supplierID = txtcode.Text;
-                            cw.departmentID = ((SupplierDepartment)(cmbdepartman).SelectedItem).ID;
-                            cw.titleID = ((SupplierTitle)(cmbposition).SelectedItem).ID;
+                            //cw.departmentID = ((SupplierDepartment)(cmbdepartman).SelectedItem).ID;
+                            //cw.titleID = ((SupplierTitle)(cmbposition).SelectedItem).ID;
                             cw.sw_name = txtContactName.Text;
                             cw.sw_email = txtContactMail.Text;
                             cw.phone = txtContactPhone.Text;
@@ -701,8 +701,8 @@ namespace LoginForm
                             {
                                 //UPDATE CONTACT
                                 cw.supplierID = txtcode.Text;
-                                cw.departmentID = ((SupplierDepartment)(cmbdepartman).SelectedItem).ID;
-                                cw.titleID = ((SupplierTitle)(cmbposition).SelectedItem).ID;
+                                //cw.departmentID = ((SupplierDepartment)(cmbdepartman).SelectedItem).ID;
+                                //cw.titleID = ((SupplierTitle)(cmbposition).SelectedItem).ID;
                                 cw.sw_name = txtContactName.Text;
                                 cw.sw_email = txtContactMail.Text;
                                 cw.phone = txtContactPhone.Text;
@@ -776,8 +776,8 @@ namespace LoginForm
         private void cmbdepartman_SelectedIndexChanged(object sender, EventArgs e)
         {
             int s_departmentID;
-            try { s_departmentID = ((SupplierDepartment)((ComboBox)sender).SelectedItem).ID; } catch { s_departmentID = 0; }
-            cmbposition.DataSource = IME.SupplierTitles.Where(b => b.SupplierDepartment.ID == s_departmentID).ToList();
+            //try { s_departmentID = ((SupplierDepartment)((ComboBox)sender).SelectedItem).ID; } catch { s_departmentID = 0; }
+            //cmbposition.DataSource = IME.SupplierTitles.Where(b => b.SupplierDepartment.ID == s_departmentID).ToList();
             cmbposition.DisplayMember = "titlename";
         }
 

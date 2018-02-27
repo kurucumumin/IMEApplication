@@ -2,6 +2,7 @@
 using LoginForm.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
@@ -13,7 +14,14 @@ namespace LoginForm
     //deneme
     public partial class CemSupplierMainCem : Form
     {
-        string InputMode = String.Empty;
+        private static string AddressButtonsModeOpen = "Open";
+        private static string AddressButtonsModeClose = "Close";
+
+        BindingList<SupplierAddress> SavedAddresses = new BindingList<SupplierAddress>();
+
+        string SupplierAddMode = String.Empty;
+        string AddressMode = String.Empty;
+        string ContactMode = String.Empty;
 
         private List<Supplier> gridSupplierList;
 
@@ -84,10 +92,10 @@ namespace LoginForm
             cmbInvoiceCurrency.Items.Insert(0, "Choose");
             cmbInvoiceCurrency.SelectedIndex = 0;
 
-            cmbCounrty.Items.AddRange(db.Countries.ToArray());
-            cmbCounrty.DisplayMember = "Country_name";
-            cmbCounrty.Items.Insert(0, "Choose");
-            cmbCounrty.SelectedIndex = 0;
+            cmbCountry.Items.AddRange(db.Countries.ToArray());
+            cmbCountry.DisplayMember = "Country_name";
+            cmbCountry.Items.Insert(0, "Choose");
+            cmbCountry.SelectedIndex = 0;
 
             cmbDepartment.Items.AddRange(db.CustomerDepartments.ToArray());
             cmbDepartment.DisplayMember = "departmentname";
@@ -122,7 +130,7 @@ namespace LoginForm
             switch (btnAdd.Text)
             {
                 case "Add":
-                    InputMode = "Add";
+                    SupplierAddMode = "Add";
                     EnableGeneralInput(true);
 
                     txtSupplierCode.Text = NewSupplierID();
@@ -136,7 +144,7 @@ namespace LoginForm
                 case "Save":
 
 
-                    InputMode = String.Empty;
+                    //SupplierAddMode = String.Empty;
                     break;
                 default:
                     break;
@@ -145,6 +153,7 @@ namespace LoginForm
 
         private void EnableGeneralInput(bool state)
         {
+            txtWeb.Enabled = state;
             dgSupplier.Enabled = !state;
             cmbRepresentative.Enabled = state;
             txtName.Enabled = state;
@@ -172,33 +181,7 @@ namespace LoginForm
             cmbInvoiceCurrency.Enabled = state;
             txtAccountNotes.Enabled = state;
 
-            txtPhone.Enabled = state;
-            txtFax.Enabled = state;
-            txtPoBox.Enabled = state;
-            cmbCounrty.Enabled = state;
-            txtPostCode.Enabled = state;
-            txtWeb.Enabled = state;
-            txtAddressDetail.Enabled = state;
-            lbAddressList.Enabled = state;
             btnAddressAdd.Enabled = state;
-            btnAddressUpdate.Enabled = state;
-            btnAddressDelete.Enabled = state;
-            if (state && cmbCounrty.SelectedIndex > 0)
-            {
-                cmbCity.Enabled = true;
-            }
-            else
-            {
-                cmbCity.Enabled = false;
-            }
-            if (state && cmbCity.SelectedIndex > 0)
-            {
-                cmbTown.Enabled = true;
-            }
-            else
-            {
-                cmbTown.Enabled = false;
-            }
 
             cmbDepartment.Enabled = state;
             btnDep.Enabled = state;
@@ -232,14 +215,20 @@ namespace LoginForm
             txtBankBranchCode.Enabled = state;
             txtBankAccountNumber.Enabled = state;
             txtBankIban.Enabled = state;
+            if (!state)
+            {
+                cmbCountry.SelectedIndex = 0;
+            }
         }
+
+        
 
         private void btnModify_Click(object sender, EventArgs e)
         {
             switch (btnModify.Text)
             {
                 case "Modify":
-                    InputMode = "Modify";
+                    SupplierAddMode = "Modify";
                     if (dgSupplier.SelectedRows.Count != 0)
                     {
                         EnableGeneralInput(true);
@@ -253,11 +242,24 @@ namespace LoginForm
                     }
                     break;
                 case "Cancel":
-                    EnableGeneralInput(false);
-
+                    if (SupplierAddMode == "Add")
+                    {
+                        // Clear all input areas and close them
+                        ClearGeneralInputs();
+                    }
+                    else
+                    {
+                        // Just close Inputs
+                    }
+                    AddressButtonsMode(AddressButtonsModeClose);
+                    SupplierAddMode = String.Empty;
+                    EnableAddressInput(false);
                     btnAdd.Text = "Add";
                     btnModify.Text = "Modify";
-                    InputMode = String.Empty;
+                    EnableGeneralInput(false);
+                    ClearAddressInputs();
+
+
                     break;
                 default:
 
@@ -294,18 +296,31 @@ namespace LoginForm
 
         }
 
-        //private void btnDep_Click(object sender, EventArgs e)
-        //{
-        //    SupplierCategoryAdd form = new SupplierCategoryAdd();
-        //    form.ShowDialog();
+        private void ClearGeneralInputs()
+        {
+            txtSupplierCode.Clear();
+            cmbRepresentative.SelectedIndex = 0;
+            txtName.Clear();
+            cmbMainCategory.SelectedIndex = 0;
+            txtTaxOffice.Clear();
+            txtWeb.Clear();
+            txtSupplierNotes.Clear();
+            txtTaxNumber.Clear();
 
-        //    cmbDepartment.Items.Clear();
-        //    cmbDepartment.DisplayMember = "departmentname";
-        //    cmbDepartment.Items.AddRange(new IMEEntities().SupplierDepartments.ToArray());
-        //    cmbDepartment.Items.Insert(0, "Choose");
-        //    cmbDepartment.SelectedIndex = 0;
+            cmbAccountRep.SelectedIndex = 0;
+            cmbAccountTerms.SelectedIndex = 0;
+            cmbAccountMethod.SelectedIndex = 0;
+            txtDiscountRate.Clear();
+            cmbQuoCurrency.SelectedIndex = 0;
+            cmbInvoiceCurrency.SelectedIndex = 0;
+            txtAccountNotes.Clear();
 
-        //}
+
+
+            ClearAddressInputs();
+
+
+        }
 
         private void btnMainCategoryAdd_Click(object sender, EventArgs e)
         {
@@ -412,13 +427,78 @@ namespace LoginForm
             }
         }
 
+
+
+
+
+
+
+        private void EnableAddressInput(bool state)
+        {
+            txtAddressTitle.Enabled = state;
+            txtPhone.Enabled = state;
+            txtFax.Enabled = state;
+            txtPoBox.Enabled = state;
+            cmbCountry.Enabled = state;
+            txtPostCode.Enabled = state;
+            txtAddressDetail.Enabled = state;
+            if (SupplierAddMode == String.Empty)
+            {
+                lbAddressList.Enabled = state;
+            }
+            else
+            {
+                lbAddressList.Enabled = !state;
+            }
+            if (state && cmbCountry.SelectedIndex > 0)
+            {
+                cmbCity.Enabled = true;
+            }
+            else
+            {
+                cmbCity.Enabled = false;
+            }
+            if (state && cmbCity.SelectedIndex > 0)
+            {
+                cmbTown.Enabled = true;
+            }
+            else
+            {
+                cmbTown.Enabled = false;
+            }
+            if (state)
+            {
+                if (lbAddressList.Items.Count > 0)
+                {
+                    btnAddressUpdate.Enabled = state;
+                    btnAddressDelete.Enabled = state;
+                }
+                else
+                {
+                    btnAddressUpdate.Enabled = !state;
+                    btnAddressDelete.Enabled = !state;
+                }
+            }
+            else
+            {
+                if (SupplierAddMode == String.Empty)
+                {
+                    btnAddressAdd.Enabled = state;
+                }
+                btnAddressUpdate.Enabled = state;
+                btnAddressDelete.Enabled = state;
+            }
+
+
+        }
+
         private void cmbCounrty_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbCounrty.Items.Count != 0)
+            if (cmbCountry.Items.Count != 0)
             {
-                if (cmbCounrty.SelectedIndex > 0)
+                if (cmbCountry.SelectedIndex > 0)
                 {
-                    int id = ((Country)cmbCounrty.SelectedItem).ID;
+                    int id = ((Country)cmbCountry.SelectedItem).ID;
 
                     cmbCity.Items.Clear();
                     cmbCity.DisplayMember = "City_name";
@@ -508,6 +588,162 @@ namespace LoginForm
                 btnPos.Enabled = true;
                 cmbPosition.Enabled = true;
             }
+        }
+
+        private void btnAddressAdd_Click(object sender, EventArgs e)
+        {
+            lbAddressList.ClearSelected();
+            lbAddressList.Enabled = false;
+
+            ClearAddressInputs();
+            EnableAddressInput(true);
+            AddressButtonsMode(AddressButtonsModeOpen);
+            ManageDeleteAndModifyButtons(lbAddressList, btnAddressUpdate, btnAddressDelete);
+        }
+
+        private void AddressButtonsMode(string Mode)
+        {
+            if (Mode == AddressButtonsModeOpen)
+            {
+                btnAddressAdd.Visible = false;
+                btnAddressUpdate.Visible = false;
+                btnAddressDelete.Visible = false;
+                btnAddressDone.Visible = true;
+                btnAddressCancel.Visible = true;
+            }else if (Mode == AddressButtonsModeClose)
+            {
+                btnAddressAdd.Visible = true;
+                btnAddressUpdate.Visible = true;
+                btnAddressDelete.Visible = true;
+                btnAddressDone.Visible = false;
+                btnAddressCancel.Visible = false;
+            }
+        }
+
+        private void btnAddressCancel_Click(object sender, EventArgs e)
+        {
+            ClearAddressInputs();
+
+            EnableAddressInput(false);
+            AddressButtonsMode(AddressButtonsModeClose);
+        }
+
+        private void ClearAddressInputs()
+        {
+            txtAddressTitle.Clear();
+            txtPhone.Clear();
+            txtFax.Clear();
+            txtPoBox.Clear();
+            cmbCountry.SelectedIndex = 0;
+            txtPostCode.Clear();
+            txtAddressDetail.Clear();
+            if (SupplierAddMode == String.Empty)
+            {
+                SavedAddresses.Clear();
+
+            }
+        }
+
+        private void btnAddressDone_Click(object sender, EventArgs e)
+        {
+            if (/*EmptyInputExist_Address()*/false)
+            {
+                MessageBox.Show("Empty ares exists!", "Fail");
+            }
+            else
+            {
+                SupplierAddress address = new SupplierAddress
+                {
+                    Title = txtAddressTitle.Text,
+                    Phone = txtPhone.Text,
+                    Fax = txtFax.Text,
+                    CountryID = ((Country)cmbCountry.SelectedItem).ID,
+                    CityID = ((City)cmbCity.SelectedItem).ID,
+                    TownID = ((Town)cmbTown.SelectedItem).ID,
+                    PoBox = txtPoBox.Text,
+                    PostCode = txtPostCode.Text,
+                    AdressDetails = txtAddressDetail.Text
+                };
+
+                SavedAddresses.Add(address);
+
+                lbAddressList.DataSource = SavedAddresses;
+                lbAddressList.DisplayMember = "Title";
+                
+                btnAddressCancel.PerformClick();
+                lbAddressList.Enabled = true;
+
+                cmbCity.Enabled = false;
+                cmbTown.Enabled = false;
+
+                ManageDeleteAndModifyButtons(lbAddressList, btnAddressUpdate, btnAddressDelete);
+            }
+        }
+
+        private void ManageDeleteAndModifyButtons(ListBox lb, Button btnUpdate, Button btnDelete)
+        {
+            bool state = false;
+            if(lb.Items.Count != 0)
+            {
+                state = true;
+            }
+            btnUpdate.Enabled = state;
+            btnDelete.Enabled = state;
+        }
+
+        private void btnAddressUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAddressDelete_Click(object sender, EventArgs e)
+        {
+            SupplierAddress sa = (SupplierAddress)lbAddressList.SelectedItem;
+            SavedAddresses.Remove(sa);
+
+            ClearAddressInputs();
+
+            EnableAddressInput(false);
+            AddressButtonsMode(AddressButtonsModeClose);
+        }
+
+        private void lbAddressList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbAddressList.SelectedIndex >= 0)
+            {
+                AddressFill((SupplierAddress)lbAddressList.SelectedItem);
+            }
+        }
+
+        private void AddressFill(SupplierAddress address)
+        {
+            txtAddressTitle.Text = address.Title;
+            txtPhone.Text = address.Phone;
+            txtFax.Text = address.Fax;
+            txtPoBox.Text = address.TownID.ToString();
+            txtPostCode.Text = address.PostCode;
+            txtAddressDetail.Text = address.AdressDetails;
+
+            var list = cmbCountry.Items.Cast<object>().ToList();
+            list.RemoveAt(0);
+            string CountryName = list.Cast<Country>().Where(x => x.ID == address.CountryID).FirstOrDefault().Country_name;
+            cmbCountry.SelectedIndex = cmbCountry.FindStringExact(CountryName);
+
+            
+            list = cmbCity.Items.Cast<object>().ToList();
+            list.RemoveAt(0);
+            string CityName = list.Cast<City>().Where(x => x.ID == address.CityID).FirstOrDefault().City_name;
+            cmbCity.SelectedIndex = cmbCity.FindStringExact(CityName);
+            cmbCity.Enabled = txtAddressTitle.Enabled;
+
+
+            list = cmbTown.Items.Cast<object>().ToList();
+            list.RemoveAt(0);
+            string TownName = list.Cast<Town>().Where(x => x.ID == address.TownID).FirstOrDefault().Town_name;
+            cmbTown.SelectedIndex = cmbTown.FindStringExact(TownName);
+            cmbTown.Enabled = txtAddressTitle.Enabled;
+
+            list = null;
         }
     }
 

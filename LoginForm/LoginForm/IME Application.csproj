@@ -12,7 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\cm_gn\Desktop\Shaji\</PublishUrl>
+    <PublishUrl>C:\Users\nebib\Desktop\IMEApp\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>67</ApplicationRevision>
+    <ApplicationRevision>74</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -128,18 +128,6 @@
     </Compile>
     <Compile Include="Account\Budget\frmBudgetVariance.Designer.cs">
       <DependentUpon>frmBudgetVariance.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Account\FinancialStatements\frmProfitAndLoss.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Account\FinancialStatements\frmProfitAndLoss.Designer.cs">
-      <DependentUpon>frmProfitAndLoss.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Account\FinancialStatements\frmTrialBalance.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Account\FinancialStatements\frmTrialBalance.Designer.cs">
-      <DependentUpon>frmTrialBalance.cs</DependentUpon>
     </Compile>
     <Compile Include="Account\Master\frmAccountGroup.cs">
       <SubType>Form</SubType>
@@ -1005,24 +993,6 @@
     <Compile Include="DataSet\ProductView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisDirectExpenses_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisDirectIncome_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisInDirectExpenses_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisInDirectIncome_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisPurchaseAccount_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysisSalesAccount_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1042,12 +1012,6 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForBalansheet_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysis_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\ProfitAndLossReportPrintCompany_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PurchaseBillTax.cs">
@@ -1123,9 +1087,6 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Quotation.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\QuotationDelivery.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\QuotationDetail.cs">
@@ -1320,13 +1281,7 @@
     <Compile Include="DataSet\SupplierCategory.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\SupplierDepartment.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\SupplierSubCategory.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SupplierTitle.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SupplierWorker.cs">
@@ -1363,15 +1318,6 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Town.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\Trialbalance1_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\Trialbalance2_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\Trialbalance3_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Trialbalance_Result.cs">
@@ -1645,9 +1591,11 @@
     <Compile Include="Services\txtReader.cs" />
     <Compile Include="Services\Utils.cs" />
     <Compile Include="Services\WorkerService.cs" />
-    <Compile Include="Supplier\SupplierDepartmentAdd.cs" />
-    <Compile Include="Supplier\SupplierDepartmentAdd.designer.cs">
-      <DependentUpon>SupplierDepartmentAdd.cs</DependentUpon>
+    <Compile Include="Supplier\frmSupplierCategoryAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier\frmSupplierCategoryAdd.designer.cs">
+      <DependentUpon>frmSupplierCategoryAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Supplier\SupplierMain.cs">
       <SubType>Form</SubType>
@@ -1655,9 +1603,11 @@
     <Compile Include="Supplier\SupplierMain.designer.cs">
       <DependentUpon>SupplierMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Supplier\SupplierPositionAdd.cs" />
-    <Compile Include="Supplier\SupplierPositionAdd.designer.cs">
-      <DependentUpon>SupplierPositionAdd.cs</DependentUpon>
+    <Compile Include="Supplier\frmSupplierSubCategoryAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier\frmSupplierSubCategoryAdd.designer.cs">
+      <DependentUpon>frmSupplierSubCategoryAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Management\FormRoleAuth.cs">
       <SubType>Form</SubType>
@@ -1676,12 +1626,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Budget\frmBudgetVariance.resx">
       <DependentUpon>frmBudgetVariance.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Account\FinancialStatements\frmProfitAndLoss.resx">
-      <DependentUpon>frmProfitAndLoss.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Account\FinancialStatements\frmTrialBalance.resx">
-      <DependentUpon>frmTrialBalance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Master\frmAccountGroup.resx">
       <DependentUpon>frmAccountGroup.cs</DependentUpon>
@@ -1975,14 +1919,14 @@
     <EmbeddedResource Include="User\FormUsersMain.resx">
       <DependentUpon>FormUsersMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Supplier\SupplierDepartmentAdd.resx">
-      <DependentUpon>SupplierDepartmentAdd.cs</DependentUpon>
+    <EmbeddedResource Include="Supplier\frmSupplierCategoryAdd.resx">
+      <DependentUpon>frmSupplierCategoryAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier\SupplierMain.resx">
       <DependentUpon>SupplierMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Supplier\SupplierPositionAdd.resx">
-      <DependentUpon>SupplierPositionAdd.cs</DependentUpon>
+    <EmbeddedResource Include="Supplier\frmSupplierSubCategoryAdd.resx">
+      <DependentUpon>frmSupplierSubCategoryAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Management\FormRoleAuth.resx">
       <DependentUpon>FormRoleAuth.cs</DependentUpon>
