@@ -140,7 +140,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<SuperDisk> SuperDisks { get; set; }
         public virtual DbSet<SuperDiskP> SuperDiskPs { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
-        public virtual DbSet<SupplierAdress> SupplierAdresses { get; set; }
+        public virtual DbSet<SupplierAddress> SupplierAddresses { get; set; }
         public virtual DbSet<SupplierBank> SupplierBanks { get; set; }
         public virtual DbSet<SupplierCategory> SupplierCategories { get; set; }
         public virtual DbSet<SupplierDepartment> SupplierDepartments { get; set; }

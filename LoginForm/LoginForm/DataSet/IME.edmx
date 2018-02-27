@@ -1894,7 +1894,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="CategoryID" Type="int" />
           <Property Name="SubCategoryID" Type="int" />
         </EntityType>
-        <EntityType Name="SupplierAdresses">
+        <EntityType Name="SupplierAddress">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -1904,6 +1904,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="TownID" Type="int" />
           <Property Name="CityID" Type="int" />
           <Property Name="CountryID" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="30" Nullable="false" />
         </EntityType>
         <EntityType Name="SupplierBank">
           <Key>
@@ -1958,6 +1959,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="supplierID" Type="nvarchar" MaxLength="15" />
           <Property Name="supplierNoteID" Type="int" />
           <Property Name="languageID" Type="int" />
+          <Property Name="categoryID" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -4035,7 +4037,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Quotation__Curre__0A096455">
+        <Association Name="FK__Quotation__Curre__7CAF6937">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5343,7 +5345,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Supplier__Catego__1FF8A574">
+        <Association Name="FK__Supplier__Catego__007FFA1B">
           <End Role="SupplierCategory" Type="Self.SupplierCategory" Multiplicity="0..1" />
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5403,7 +5405,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Supplier__SubCat__20ECC9AD">
+        <Association Name="FK__Supplier__SubCat__01741E54">
           <End Role="SupplierSubCategory" Type="Self.SupplierSubCategory" Multiplicity="0..1" />
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5429,48 +5431,48 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         </Association>
         <Association Name="FK__SupplierA__CityI__40C49C62">
           <End Role="City" Type="Self.City" Multiplicity="0..1" />
-          <End Role="SupplierAdresses" Type="Self.SupplierAdresses" Multiplicity="*" />
+          <End Role="SupplierAddress" Type="Self.SupplierAddress" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="City">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="SupplierAdresses">
+            <Dependent Role="SupplierAddress">
               <PropertyRef Name="CityID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SupplierA__Count__3FD07829">
           <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
-          <End Role="SupplierAdresses" Type="Self.SupplierAdresses" Multiplicity="*" />
+          <End Role="SupplierAddress" Type="Self.SupplierAddress" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Country">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="SupplierAdresses">
+            <Dependent Role="SupplierAddress">
               <PropertyRef Name="CountryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SupplierA__Suppl__42ACE4D4">
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
-          <End Role="SupplierAdresses" Type="Self.SupplierAdresses" Multiplicity="*" />
+          <End Role="SupplierAddress" Type="Self.SupplierAddress" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Supplier">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="SupplierAdresses">
+            <Dependent Role="SupplierAddress">
               <PropertyRef Name="SupplierID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SupplierA__TownI__30E33A54">
           <End Role="Town" Type="Self.Town" Multiplicity="0..1" />
-          <End Role="SupplierAdresses" Type="Self.SupplierAdresses" Multiplicity="*" />
+          <End Role="SupplierAddress" Type="Self.SupplierAddress" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Town">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="SupplierAdresses">
+            <Dependent Role="SupplierAddress">
               <PropertyRef Name="TownID" />
             </Dependent>
           </ReferentialConstraint>
@@ -5548,10 +5550,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SupplierW__suppl__756D6ECB">
-          <End Role="SupplierAdresses" Type="Self.SupplierAdresses" Multiplicity="0..1" />
+          <End Role="SupplierAddress" Type="Self.SupplierAddress" Multiplicity="0..1" />
           <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="SupplierAdresses">
+            <Principal Role="SupplierAddress">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="SupplierWorker">
@@ -7329,7 +7331,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="SuperDisk" EntityType="Self.SuperDisk" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SuperDiskP" EntityType="Self.SuperDiskP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SupplierAdresses" EntityType="Self.SupplierAdresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SupplierAddress" EntityType="Self.SupplierAddress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierBank" EntityType="Self.SupplierBank" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierCategory" EntityType="Self.SupplierCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierDepartment" EntityType="Self.SupplierDepartment" Schema="dbo" store:Type="Tables" />
@@ -8018,7 +8020,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="PurchaseReturnMaster" EntitySet="PurchaseReturnMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__Quotation__Curre__0A096455" Association="Self.FK__Quotation__Curre__0A096455">
+          <AssociationSet Name="FK__Quotation__Curre__7CAF6937" Association="Self.FK__Quotation__Curre__7CAF6937">
             <End Role="Currency" EntitySet="Currency" />
             <End Role="Quotation" EntitySet="Quotation" />
           </AssociationSet>
@@ -8454,7 +8456,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="SupplierBank" EntitySet="SupplierBank" />
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
-          <AssociationSet Name="FK__Supplier__Catego__1FF8A574" Association="Self.FK__Supplier__Catego__1FF8A574">
+          <AssociationSet Name="FK__Supplier__Catego__007FFA1B" Association="Self.FK__Supplier__Catego__007FFA1B">
             <End Role="SupplierCategory" EntitySet="SupplierCategory" />
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
@@ -8474,7 +8476,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Worker" EntitySet="Worker" />
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
-          <AssociationSet Name="FK__Supplier__SubCat__20ECC9AD" Association="Self.FK__Supplier__SubCat__20ECC9AD">
+          <AssociationSet Name="FK__Supplier__SubCat__01741E54" Association="Self.FK__Supplier__SubCat__01741E54">
             <End Role="SupplierSubCategory" EntitySet="SupplierSubCategory" />
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
@@ -8484,19 +8486,19 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </AssociationSet>
           <AssociationSet Name="FK__SupplierA__CityI__40C49C62" Association="Self.FK__SupplierA__CityI__40C49C62">
             <End Role="City" EntitySet="City" />
-            <End Role="SupplierAdresses" EntitySet="SupplierAdresses" />
+            <End Role="SupplierAddress" EntitySet="SupplierAddress" />
           </AssociationSet>
           <AssociationSet Name="FK__SupplierA__Count__3FD07829" Association="Self.FK__SupplierA__Count__3FD07829">
             <End Role="Country" EntitySet="Country" />
-            <End Role="SupplierAdresses" EntitySet="SupplierAdresses" />
+            <End Role="SupplierAddress" EntitySet="SupplierAddress" />
           </AssociationSet>
           <AssociationSet Name="FK__SupplierA__Suppl__42ACE4D4" Association="Self.FK__SupplierA__Suppl__42ACE4D4">
             <End Role="Supplier" EntitySet="Supplier" />
-            <End Role="SupplierAdresses" EntitySet="SupplierAdresses" />
+            <End Role="SupplierAddress" EntitySet="SupplierAddress" />
           </AssociationSet>
           <AssociationSet Name="FK__SupplierA__TownI__30E33A54" Association="Self.FK__SupplierA__TownI__30E33A54">
             <End Role="Town" EntitySet="Town" />
-            <End Role="SupplierAdresses" EntitySet="SupplierAdresses" />
+            <End Role="SupplierAddress" EntitySet="SupplierAddress" />
           </AssociationSet>
           <AssociationSet Name="FK__SupplierS__categ__03BB8E22" Association="Self.FK__SupplierS__categ__03BB8E22">
             <End Role="SupplierCategory" EntitySet="SupplierCategory" />
@@ -8523,7 +8525,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="SupplierWorker" EntitySet="SupplierWorker" />
           </AssociationSet>
           <AssociationSet Name="FK__SupplierW__suppl__756D6ECB" Association="Self.FK__SupplierW__suppl__756D6ECB">
-            <End Role="SupplierAdresses" EntitySet="SupplierAdresses" />
+            <End Role="SupplierAddress" EntitySet="SupplierAddress" />
             <End Role="SupplierWorker" EntitySet="SupplierWorker" />
           </AssociationSet>
           <AssociationSet Name="FK__SupplierW__title__7755B73D" Association="Self.FK__SupplierW__title__7755B73D">
@@ -8817,7 +8819,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="CountryID" Type="Int32" />
           <NavigationProperty Name="Country" Relationship="Self.FK__City__CountryID__51300E55" FromRole="City" ToRole="Country" />
           <NavigationProperty Name="CustomerAddresses" Relationship="Self.FK__CustomerA__CityI__4E53A1AA" FromRole="City" ToRole="CustomerAddress" />
-          <NavigationProperty Name="SupplierAdresses" Relationship="Self.FK__SupplierA__CityI__40C49C62" FromRole="City" ToRole="SupplierAdresses" />
+          <NavigationProperty Name="SupplierAddresses" Relationship="Self.FK__SupplierA__CityI__40C49C62" FromRole="City" ToRole="SupplierAddress" />
           <NavigationProperty Name="Towns" Relationship="Self.FK__Town__CityID__2EFAF1E2" FromRole="City" ToRole="Town" />
         </EntityType>
         <EntityType Name="Company">
@@ -8861,7 +8863,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="Country_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Cities" Relationship="Self.FK__City__CountryID__51300E55" FromRole="Country" ToRole="City" />
           <NavigationProperty Name="CustomerAddresses" Relationship="Self.FK__CustomerA__Count__503BEA1C" FromRole="Country" ToRole="CustomerAddress" />
-          <NavigationProperty Name="SupplierAdresses" Relationship="Self.FK__SupplierA__Count__3FD07829" FromRole="Country" ToRole="SupplierAdresses" />
+          <NavigationProperty Name="SupplierAddresses" Relationship="Self.FK__SupplierA__Count__3FD07829" FromRole="Country" ToRole="SupplierAddress" />
         </EntityType>
         <EntityType Name="CreditNoteDetail">
           <Key>
@@ -8907,7 +8909,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="subunitName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Companies" Relationship="Self.FK__Company__currenc__0371755F" FromRole="Currency" ToRole="Company" />
           <NavigationProperty Name="Managements" Relationship="Self.FK__Managemen__Defau__253C7D7E" FromRole="Currency" ToRole="Management" />
-          <NavigationProperty Name="Quotations" Relationship="Self.FK__Quotation__Curre__0A096455" FromRole="Currency" ToRole="Quotation" />
+          <NavigationProperty Name="Quotations" Relationship="Self.FK__Quotation__Curre__7CAF6937" FromRole="Currency" ToRole="Quotation" />
           <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__currencyI__2156DE01" FromRole="Currency" ToRole="Stock" />
           <NavigationProperty Name="ExchangeRates" Relationship="Self.FK__tbl_Excha__curre__52442E1F" FromRole="Currency" ToRole="ExchangeRate" />
         </EntityType>
@@ -10049,7 +10051,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
           <Property Name="GrossTotal" Type="Decimal" Precision="18" Scale="4" />
           <Property Name="CurrencyID" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="Currency" Relationship="Self.FK__Quotation__Curre__0A096455" FromRole="Quotation" ToRole="Currency" />
+          <NavigationProperty Name="Currency" Relationship="Self.FK__Quotation__Curre__7CAF6937" FromRole="Quotation" ToRole="Currency" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__Quotation__Custo__00750D23" FromRole="Quotation" ToRole="Customer" />
           <NavigationProperty Name="DeliveryNoteDetails" Relationship="Self.FK__DeliveryN__quota__39CD8610" FromRole="Quotation" ToRole="DeliveryNoteDetail" />
           <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__quota__25077354" FromRole="Quotation" ToRole="DeliveryNoteMaster" />
@@ -10946,13 +10948,13 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="Rate" Relationship="Self.FK__Supplier__rate_I__625A9A57" FromRole="Supplier" ToRole="Rate" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__Supplier__accoun__2DB1C7EE" FromRole="Supplier" ToRole="Worker" />
           <NavigationProperty Name="SupplierBank" Relationship="Self.FK__Supplier__BankID__0C50D423" FromRole="Supplier" ToRole="SupplierBank" />
-          <NavigationProperty Name="SupplierCategory" Relationship="Self.FK__Supplier__Catego__1FF8A574" FromRole="Supplier" ToRole="SupplierCategory" />
+          <NavigationProperty Name="SupplierCategory" Relationship="Self.FK__Supplier__Catego__007FFA1B" FromRole="Supplier" ToRole="SupplierCategory" />
           <NavigationProperty Name="Worker1" Relationship="Self.FK__Supplier__repres__65370702" FromRole="Supplier" ToRole="Worker" />
-          <NavigationProperty Name="SupplierSubCategory" Relationship="Self.FK__Supplier__SubCat__20ECC9AD" FromRole="Supplier" ToRole="SupplierSubCategory" />
-          <NavigationProperty Name="SupplierAdresses" Relationship="Self.FK__SupplierA__Suppl__42ACE4D4" FromRole="Supplier" ToRole="SupplierAdresses" />
+          <NavigationProperty Name="SupplierSubCategory" Relationship="Self.FK__Supplier__SubCat__01741E54" FromRole="Supplier" ToRole="SupplierSubCategory" />
+          <NavigationProperty Name="SupplierAddresses" Relationship="Self.FK__SupplierA__Suppl__42ACE4D4" FromRole="Supplier" ToRole="SupplierAddress" />
           <NavigationProperty Name="SupplierWorkers" Relationship="Self.FK__SupplierW__suppl__74794A92" FromRole="Supplier" ToRole="SupplierWorker" />
         </EntityType>
-        <EntityType Name="SupplierAdress">
+        <EntityType Name="SupplierAddress">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -10962,11 +10964,12 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="TownID" Type="Int32" />
           <Property Name="CityID" Type="Int32" />
           <Property Name="CountryID" Type="Int32" />
-          <NavigationProperty Name="City" Relationship="Self.FK__SupplierA__CityI__40C49C62" FromRole="SupplierAdresses" ToRole="City" />
-          <NavigationProperty Name="Country" Relationship="Self.FK__SupplierA__Count__3FD07829" FromRole="SupplierAdresses" ToRole="Country" />
-          <NavigationProperty Name="Supplier" Relationship="Self.FK__SupplierA__Suppl__42ACE4D4" FromRole="SupplierAdresses" ToRole="Supplier" />
-          <NavigationProperty Name="Town" Relationship="Self.FK__SupplierA__TownI__30E33A54" FromRole="SupplierAdresses" ToRole="Town" />
-          <NavigationProperty Name="SupplierWorkers" Relationship="Self.FK__SupplierW__suppl__756D6ECB" FromRole="SupplierAdresses" ToRole="SupplierWorker" />
+          <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="Self.FK__SupplierA__CityI__40C49C62" FromRole="SupplierAddress" ToRole="City" />
+          <NavigationProperty Name="Country" Relationship="Self.FK__SupplierA__Count__3FD07829" FromRole="SupplierAddress" ToRole="Country" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK__SupplierA__Suppl__42ACE4D4" FromRole="SupplierAddress" ToRole="Supplier" />
+          <NavigationProperty Name="Town" Relationship="Self.FK__SupplierA__TownI__30E33A54" FromRole="SupplierAddress" ToRole="Town" />
+          <NavigationProperty Name="SupplierWorkers" Relationship="Self.FK__SupplierW__suppl__756D6ECB" FromRole="SupplierAddress" ToRole="SupplierWorker" />
         </EntityType>
         <EntityType Name="SupplierBank">
           <Key>
@@ -10982,7 +10985,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="categoryname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__Catego__1FF8A574" FromRole="SupplierCategory" ToRole="Supplier" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__Catego__007FFA1B" FromRole="SupplierCategory" ToRole="Supplier" />
           <NavigationProperty Name="SupplierSubCategories" Relationship="Self.FK__SupplierS__categ__03BB8E22" FromRole="SupplierCategory" ToRole="SupplierSubCategory" />
         </EntityType>
         <EntityType Name="SupplierDepartment">
@@ -11001,7 +11004,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="subcategoryname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="categoryID" Type="Int32" />
-          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__SubCat__20ECC9AD" FromRole="SupplierSubCategory" ToRole="Supplier" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__SubCat__01741E54" FromRole="SupplierSubCategory" ToRole="Supplier" />
           <NavigationProperty Name="SupplierCategory" Relationship="Self.FK__SupplierS__categ__03BB8E22" FromRole="SupplierSubCategory" ToRole="SupplierCategory" />
         </EntityType>
         <EntityType Name="SupplierTitle">
@@ -11030,10 +11033,11 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="supplierID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="supplierNoteID" Type="Int32" />
           <Property Name="languageID" Type="Int32" />
+          <Property Name="categoryID" Type="Int32" />
           <NavigationProperty Name="Language" Relationship="Self.FK__SupplierW__langu__72910220" FromRole="SupplierWorker" ToRole="Languages" />
           <NavigationProperty Name="Note" Relationship="Self.FK__SupplierW__suppl__73852659" FromRole="SupplierWorker" ToRole="Notes" />
           <NavigationProperty Name="Supplier" Relationship="Self.FK__SupplierW__suppl__74794A92" FromRole="SupplierWorker" ToRole="Supplier" />
-          <NavigationProperty Name="SupplierAdress" Relationship="Self.FK__SupplierW__suppl__756D6ECB" FromRole="SupplierWorker" ToRole="SupplierAdresses" />
+          <NavigationProperty Name="SupplierAddress" Relationship="Self.FK__SupplierW__suppl__756D6ECB" FromRole="SupplierWorker" ToRole="SupplierAddress" />
           <NavigationProperty Name="SupplierDepartment" Relationship="Self.FK__SupplierW__depar__76619304" FromRole="SupplierWorker" ToRole="SupplierDepartment" />
           <NavigationProperty Name="SupplierTitle" Relationship="Self.FK__SupplierW__title__7755B73D" FromRole="SupplierWorker" ToRole="SupplierTitle" />
         </EntityType>
@@ -11084,7 +11088,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="CityID" Type="Int32" />
           <NavigationProperty Name="City" Relationship="Self.FK__Town__CityID__2EFAF1E2" FromRole="Town" ToRole="City" />
           <NavigationProperty Name="CustomerAddresses" Relationship="Self.FK__CustomerA__TownI__2FEF161B" FromRole="Town" ToRole="CustomerAddress" />
-          <NavigationProperty Name="SupplierAdresses" Relationship="Self.FK__SupplierA__TownI__30E33A54" FromRole="Town" ToRole="SupplierAdresses" />
+          <NavigationProperty Name="SupplierAddresses" Relationship="Self.FK__SupplierA__TownI__30E33A54" FromRole="Town" ToRole="SupplierAddress" />
         </EntityType>
         <EntityType Name="Unit">
           <Key>
@@ -11792,12 +11796,12 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         </Association>
         <Association Name="FK__SupplierA__CityI__40C49C62">
           <End Role="City" Type="Self.City" Multiplicity="0..1" />
-          <End Role="SupplierAdresses" Type="Self.SupplierAdress" Multiplicity="*" />
+          <End Role="SupplierAddress" Type="Self.SupplierAddress" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="City">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="SupplierAdresses">
+            <Dependent Role="SupplierAddress">
               <PropertyRef Name="CityID" />
             </Dependent>
           </ReferentialConstraint>
@@ -11864,12 +11868,12 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         </Association>
         <Association Name="FK__SupplierA__Count__3FD07829">
           <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
-          <End Role="SupplierAdresses" Type="Self.SupplierAdress" Multiplicity="*" />
+          <End Role="SupplierAddress" Type="Self.SupplierAddress" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Country">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="SupplierAdresses">
+            <Dependent Role="SupplierAddress">
               <PropertyRef Name="CountryID" />
             </Dependent>
           </ReferentialConstraint>
@@ -11934,7 +11938,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Quotation__Curre__0A096455">
+        <Association Name="FK__Quotation__Curre__7CAF6937">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -14706,7 +14710,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Supplier__Catego__1FF8A574">
+        <Association Name="FK__Supplier__Catego__007FFA1B">
           <End Role="SupplierCategory" Type="Self.SupplierCategory" Multiplicity="0..1" />
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
@@ -14730,7 +14734,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Supplier__SubCat__20ECC9AD">
+        <Association Name="FK__Supplier__SubCat__01741E54">
           <End Role="SupplierSubCategory" Type="Self.SupplierSubCategory" Multiplicity="0..1" />
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
@@ -14744,12 +14748,12 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         </Association>
         <Association Name="FK__SupplierA__Suppl__42ACE4D4">
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
-          <End Role="SupplierAdresses" Type="Self.SupplierAdress" Multiplicity="*" />
+          <End Role="SupplierAddress" Type="Self.SupplierAddress" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Supplier">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="SupplierAdresses">
+            <Dependent Role="SupplierAddress">
               <PropertyRef Name="SupplierID" />
             </Dependent>
           </ReferentialConstraint>
@@ -14768,21 +14772,21 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         </Association>
         <Association Name="FK__SupplierA__TownI__30E33A54">
           <End Role="Town" Type="Self.Town" Multiplicity="0..1" />
-          <End Role="SupplierAdresses" Type="Self.SupplierAdress" Multiplicity="*" />
+          <End Role="SupplierAddress" Type="Self.SupplierAddress" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Town">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="SupplierAdresses">
+            <Dependent Role="SupplierAddress">
               <PropertyRef Name="TownID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SupplierW__suppl__756D6ECB">
-          <End Role="SupplierAdresses" Type="Self.SupplierAdress" Multiplicity="0..1" />
+          <End Role="SupplierAddress" Type="Self.SupplierAddress" Multiplicity="0..1" />
           <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="SupplierAdresses">
+            <Principal Role="SupplierAddress">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="SupplierWorker">
@@ -15032,7 +15036,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="SuperDisks" EntityType="Self.SuperDisk" />
           <EntitySet Name="SuperDiskPs" EntityType="Self.SuperDiskP" />
           <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
-          <EntitySet Name="SupplierAdresses" EntityType="Self.SupplierAdress" />
+          <EntitySet Name="SupplierAddresses" EntityType="Self.SupplierAddress" />
           <EntitySet Name="SupplierBanks" EntityType="Self.SupplierBank" />
           <EntitySet Name="SupplierCategories" EntityType="Self.SupplierCategory" />
           <EntitySet Name="SupplierDepartments" EntityType="Self.SupplierDepartment" />
@@ -15217,7 +15221,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </AssociationSet>
           <AssociationSet Name="FK__SupplierA__CityI__40C49C62" Association="Self.FK__SupplierA__CityI__40C49C62">
             <End Role="City" EntitySet="Cities" />
-            <End Role="SupplierAdresses" EntitySet="SupplierAdresses" />
+            <End Role="SupplierAddress" EntitySet="SupplierAddresses" />
           </AssociationSet>
           <AssociationSet Name="FK__Town__CityID__2EFAF1E2" Association="Self.FK__Town__CityID__2EFAF1E2">
             <End Role="City" EntitySet="Cities" />
@@ -15241,7 +15245,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </AssociationSet>
           <AssociationSet Name="FK__SupplierA__Count__3FD07829" Association="Self.FK__SupplierA__Count__3FD07829">
             <End Role="Country" EntitySet="Countries" />
-            <End Role="SupplierAdresses" EntitySet="SupplierAdresses" />
+            <End Role="SupplierAddress" EntitySet="SupplierAddresses" />
           </AssociationSet>
           <AssociationSet Name="FK__CreditNot__credi__62108194" Association="Self.FK__CreditNot__credi__62108194">
             <End Role="CreditNoteMaster" EntitySet="CreditNoteMasters" />
@@ -15263,7 +15267,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Management" EntitySet="Managements" />
           </AssociationSet>
-          <AssociationSet Name="FK__Quotation__Curre__0A096455" Association="Self.FK__Quotation__Curre__0A096455">
+          <AssociationSet Name="FK__Quotation__Curre__7CAF6937" Association="Self.FK__Quotation__Curre__7CAF6937">
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Quotation" EntitySet="Quotations" />
           </AssociationSet>
@@ -16187,7 +16191,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="SupplierBank" EntitySet="SupplierBanks" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
-          <AssociationSet Name="FK__Supplier__Catego__1FF8A574" Association="Self.FK__Supplier__Catego__1FF8A574">
+          <AssociationSet Name="FK__Supplier__Catego__007FFA1B" Association="Self.FK__Supplier__Catego__007FFA1B">
             <End Role="SupplierCategory" EntitySet="SupplierCategories" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
@@ -16195,13 +16199,13 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Worker" EntitySet="Workers" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
-          <AssociationSet Name="FK__Supplier__SubCat__20ECC9AD" Association="Self.FK__Supplier__SubCat__20ECC9AD">
+          <AssociationSet Name="FK__Supplier__SubCat__01741E54" Association="Self.FK__Supplier__SubCat__01741E54">
             <End Role="SupplierSubCategory" EntitySet="SupplierSubCategories" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
           <AssociationSet Name="FK__SupplierA__Suppl__42ACE4D4" Association="Self.FK__SupplierA__Suppl__42ACE4D4">
             <End Role="Supplier" EntitySet="Suppliers" />
-            <End Role="SupplierAdresses" EntitySet="SupplierAdresses" />
+            <End Role="SupplierAddress" EntitySet="SupplierAddresses" />
           </AssociationSet>
           <AssociationSet Name="FK__SupplierW__suppl__74794A92" Association="Self.FK__SupplierW__suppl__74794A92">
             <End Role="Supplier" EntitySet="Suppliers" />
@@ -16209,10 +16213,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </AssociationSet>
           <AssociationSet Name="FK__SupplierA__TownI__30E33A54" Association="Self.FK__SupplierA__TownI__30E33A54">
             <End Role="Town" EntitySet="Towns" />
-            <End Role="SupplierAdresses" EntitySet="SupplierAdresses" />
+            <End Role="SupplierAddress" EntitySet="SupplierAddresses" />
           </AssociationSet>
           <AssociationSet Name="FK__SupplierW__suppl__756D6ECB" Association="Self.FK__SupplierW__suppl__756D6ECB">
-            <End Role="SupplierAdresses" EntitySet="SupplierAdresses" />
+            <End Role="SupplierAddress" EntitySet="SupplierAddresses" />
             <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
           </AssociationSet>
           <AssociationSet Name="FK__SupplierS__categ__03BB8E22" Association="Self.FK__SupplierS__categ__03BB8E22">
@@ -20805,15 +20809,16 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SupplierAdresses">
-            <EntityTypeMapping TypeName="IMEModel.SupplierAdress">
-              <MappingFragment StoreEntitySet="SupplierAdresses">
+          <EntitySetMapping Name="SupplierAddresses">
+            <EntityTypeMapping TypeName="IMEModel.SupplierAddress">
+              <MappingFragment StoreEntitySet="SupplierAddress">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
                 <ScalarProperty Name="AdressDetails" ColumnName="AdressDetails" />
                 <ScalarProperty Name="TownID" ColumnName="TownID" />
                 <ScalarProperty Name="CityID" ColumnName="CityID" />
                 <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -20874,6 +20879,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="supplierID" ColumnName="supplierID" />
                 <ScalarProperty Name="supplierNoteID" ColumnName="supplierNoteID" />
                 <ScalarProperty Name="languageID" ColumnName="languageID" />
+                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -12,10 +12,10 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class SupplierAdress
+    public partial class SupplierAddress
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SupplierAdress()
+        public SupplierAddress()
         {
             this.SupplierWorkers = new HashSet<SupplierWorker>();
         }
@@ -26,6 +26,7 @@ namespace LoginForm.DataSet
         public Nullable<int> TownID { get; set; }
         public Nullable<int> CityID { get; set; }
         public Nullable<int> CountryID { get; set; }
+        public string Title { get; set; }
     
         public virtual City City { get; set; }
         public virtual Country Country { get; set; }

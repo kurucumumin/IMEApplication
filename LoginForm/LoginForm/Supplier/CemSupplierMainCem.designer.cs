@@ -170,7 +170,7 @@ namespace LoginForm
             this.supplierBankDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supplierMainContactDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.worker1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.supplierAdressesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplierAddressesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supplierWorkersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.paymentmethodIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -1378,7 +1378,7 @@ namespace LoginForm
             this.supplierBankDataGridViewTextBoxColumn,
             this.supplierMainContactDataGridViewTextBoxColumn,
             this.worker1DataGridViewTextBoxColumn,
-            this.supplierAdressesDataGridViewTextBoxColumn,
+            this.SupplierAddressesDataGridViewTextBoxColumn,
             this.supplierWorkersDataGridViewTextBoxColumn,
             this.paymentmethodIDDataGridViewTextBoxColumn});
             this.dgSupplier.DataSource = this.supplierBindingSource;
@@ -1714,12 +1714,12 @@ namespace LoginForm
             this.worker1DataGridViewTextBoxColumn.Name = "worker1DataGridViewTextBoxColumn";
             this.worker1DataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // supplierAdressesDataGridViewTextBoxColumn
+            // SupplierAddressesDataGridViewTextBoxColumn
             // 
-            this.supplierAdressesDataGridViewTextBoxColumn.DataPropertyName = "SupplierAdresses";
-            this.supplierAdressesDataGridViewTextBoxColumn.HeaderText = "SupplierAdresses";
-            this.supplierAdressesDataGridViewTextBoxColumn.Name = "supplierAdressesDataGridViewTextBoxColumn";
-            this.supplierAdressesDataGridViewTextBoxColumn.ReadOnly = true;
+            this.SupplierAddressesDataGridViewTextBoxColumn.DataPropertyName = "SupplierAddresses";
+            this.SupplierAddressesDataGridViewTextBoxColumn.HeaderText = "SupplierAddresses";
+            this.SupplierAddressesDataGridViewTextBoxColumn.Name = "SupplierAddressesDataGridViewTextBoxColumn";
+            this.SupplierAddressesDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // supplierWorkersDataGridViewTextBoxColumn
             // 
@@ -1916,7 +1916,7 @@ namespace LoginForm
         private System.Windows.Forms.DataGridViewTextBoxColumn supplierBankDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn supplierMainContactDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn worker1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn supplierAdressesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierAddressesDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn supplierWorkersDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn paymentmethodIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnSubCategoryAdd;
