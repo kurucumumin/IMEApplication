@@ -1044,9 +1044,6 @@
     <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForBalansheet_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\ProfitAndLossAnalysis_Result.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\ProfitAndLossReportPrintCompany_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1320,13 +1317,7 @@
     <Compile Include="DataSet\SupplierCategory.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\SupplierDepartment.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSet\SupplierSubCategory.cs">
-      <DependentUpon>IME.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataSet\SupplierTitle.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SupplierWorker.cs">
@@ -1629,6 +1620,18 @@
     <Compile Include="Supplier\CemSupplierMainCem.designer.cs">
       <DependentUpon>CemSupplierMainCem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Supplier\frmSupplierCategoryAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier\frmSupplierCategoryAdd.designer.cs">
+      <DependentUpon>frmSupplierCategoryAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier\frmSupplierSubCategoryAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier\frmSupplierSubCategoryAdd.designer.cs">
+      <DependentUpon>frmSupplierSubCategoryAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="User\FormUsersMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1645,19 +1648,11 @@
     <Compile Include="Services\txtReader.cs" />
     <Compile Include="Services\Utils.cs" />
     <Compile Include="Services\WorkerService.cs" />
-    <Compile Include="Supplier\SupplierDepartmentAdd.cs" />
-    <Compile Include="Supplier\SupplierDepartmentAdd.designer.cs">
-      <DependentUpon>SupplierDepartmentAdd.cs</DependentUpon>
-    </Compile>
     <Compile Include="Supplier\SupplierMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Supplier\SupplierMain.designer.cs">
       <DependentUpon>SupplierMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Supplier\SupplierPositionAdd.cs" />
-    <Compile Include="Supplier\SupplierPositionAdd.designer.cs">
-      <DependentUpon>SupplierPositionAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Management\FormRoleAuth.cs">
       <SubType>Form</SubType>
@@ -1972,17 +1967,17 @@
     <EmbeddedResource Include="Supplier\CemSupplierMainCem.resx">
       <DependentUpon>CemSupplierMainCem.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Supplier\frmSupplierCategoryAdd.resx">
+      <DependentUpon>frmSupplierCategoryAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplier\frmSupplierSubCategoryAdd.resx">
+      <DependentUpon>frmSupplierSubCategoryAdd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="User\FormUsersMain.resx">
       <DependentUpon>FormUsersMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Supplier\SupplierDepartmentAdd.resx">
-      <DependentUpon>SupplierDepartmentAdd.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Supplier\SupplierMain.resx">
       <DependentUpon>SupplierMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Supplier\SupplierPositionAdd.resx">
-      <DependentUpon>SupplierPositionAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Management\FormRoleAuth.resx">
       <DependentUpon>FormRoleAuth.cs</DependentUpon>

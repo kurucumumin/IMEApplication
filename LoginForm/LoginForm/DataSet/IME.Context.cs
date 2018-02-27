@@ -144,9 +144,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<SupplierAddress> SupplierAddresses { get; set; }
         public virtual DbSet<SupplierBank> SupplierBanks { get; set; }
         public virtual DbSet<SupplierCategory> SupplierCategories { get; set; }
-        public virtual DbSet<SupplierDepartment> SupplierDepartments { get; set; }
         public virtual DbSet<SupplierSubCategory> SupplierSubCategories { get; set; }
-        public virtual DbSet<SupplierTitle> SupplierTitles { get; set; }
         public virtual DbSet<SupplierWorker> SupplierWorkers { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Tax> Taxes { get; set; }
@@ -2180,19 +2178,6 @@ namespace LoginForm.DataSet
                 new ObjectParameter("productID", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductViewWithID_Result>("ProductViewWithID", productIDParameter);
-        }
-    
-        public virtual ObjectResult<ProfitAndLossAnalysis_Result> ProfitAndLossAnalysis(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
-        {
-            var fromDateParameter = fromDate.HasValue ?
-                new ObjectParameter("fromDate", fromDate) :
-                new ObjectParameter("fromDate", typeof(System.DateTime));
-    
-            var toDateParameter = toDate.HasValue ?
-                new ObjectParameter("toDate", toDate) :
-                new ObjectParameter("toDate", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysis_Result>("ProfitAndLossAnalysis", fromDateParameter, toDateParameter);
         }
     
         public virtual ObjectResult<ProfitAndLossAnalysisDirectExpenses_Result> ProfitAndLossAnalysisDirectExpenses(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
