@@ -129,6 +129,12 @@
     <Compile Include="Account\Budget\frmBudgetVariance.Designer.cs">
       <DependentUpon>frmBudgetVariance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\FinancialStatements\frmProfitAndLoss.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\FinancialStatements\frmProfitAndLoss.Designer.cs">
+      <DependentUpon>frmProfitAndLoss.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\FinancialStatements\frmTrialBalance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -999,6 +1005,24 @@
     <Compile Include="DataSet\ProductView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\ProfitAndLossAnalysisDirectExpenses_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ProfitAndLossAnalysisDirectIncome_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ProfitAndLossAnalysisInDirectExpenses_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ProfitAndLossAnalysisInDirectIncome_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ProfitAndLossAnalysisPurchaseAccount_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ProfitAndLossAnalysisSalesAccount_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1018,6 +1042,12 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForBalansheet_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ProfitAndLossAnalysis_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ProfitAndLossReportPrintCompany_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PurchaseBillTax.cs">
@@ -1615,9 +1645,7 @@
     <Compile Include="Services\txtReader.cs" />
     <Compile Include="Services\Utils.cs" />
     <Compile Include="Services\WorkerService.cs" />
-    <Compile Include="Supplier\SupplierDepartmentAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Supplier\SupplierDepartmentAdd.cs" />
     <Compile Include="Supplier\SupplierDepartmentAdd.designer.cs">
       <DependentUpon>SupplierDepartmentAdd.cs</DependentUpon>
     </Compile>
@@ -1627,9 +1655,7 @@
     <Compile Include="Supplier\SupplierMain.designer.cs">
       <DependentUpon>SupplierMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Supplier\SupplierPositionAdd.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Supplier\SupplierPositionAdd.cs" />
     <Compile Include="Supplier\SupplierPositionAdd.designer.cs">
       <DependentUpon>SupplierPositionAdd.cs</DependentUpon>
     </Compile>
@@ -1650,6 +1676,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Budget\frmBudgetVariance.resx">
       <DependentUpon>frmBudgetVariance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\FinancialStatements\frmProfitAndLoss.resx">
+      <DependentUpon>frmProfitAndLoss.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\FinancialStatements\frmTrialBalance.resx">
       <DependentUpon>frmTrialBalance.cs</DependentUpon>

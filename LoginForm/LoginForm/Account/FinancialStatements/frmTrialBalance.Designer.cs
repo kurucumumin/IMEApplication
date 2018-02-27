@@ -1,4 +1,4 @@
-﻿namespace LoginForm
+﻿namespace LoginForm.Account
 {
     partial class frmTrialBalance
     {

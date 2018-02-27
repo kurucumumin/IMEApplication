@@ -26,7 +26,6 @@ namespace LoginForm.DataSet
         public Nullable<int> TownID { get; set; }
         public Nullable<int> CityID { get; set; }
         public Nullable<int> CountryID { get; set; }
-        public string Title { get; set; }
     
         public virtual City City { get; set; }
         public virtual Country Country { get; set; }

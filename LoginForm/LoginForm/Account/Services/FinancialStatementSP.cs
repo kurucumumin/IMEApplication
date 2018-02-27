@@ -433,5 +433,252 @@ namespace LoginForm.Account.Services
             }
             return dts;
         }
+
+        public System.Data.DataSet ProfitAndLossAnalysis(DateTime fromDate, DateTime toDate)
+        {
+            IMEEntities IME = new IMEEntities();
+            System.Data.DataSet dts = new System.Data.DataSet();
+            dts.Tables.Add(new DataTable());
+            try
+            {
+                DataTable dtbl1 = new DataTable();
+
+                var adaptor1 = (IME.ProfitAndLossAnalysisPurchaseAccount(fromDate, toDate)).ToList();
+                foreach (var item in adaptor1)
+                {
+                    DataRow row = dtbl1.NewRow();
+                    row["ID"] = item.ID;
+                    row["Name"] = item.Name;
+                    row["Debit"] = item.Debit;
+
+                    dts.Tables[0].Rows.Add(row);
+                }
+                dts.Tables.Add(dtbl1);
+
+
+
+                DataTable dtbl2 = new DataTable();
+                var adaptor2 = (IME.ProfitAndLossAnalysisSalesAccount(fromDate, toDate)).ToList();
+
+                foreach (var item in adaptor2)
+                {
+                    DataRow row = dtbl2.NewRow();
+                    row["ID"] = item.ID;
+                    row["Name"] = item.Name;
+                    row["Credit"] = item.Credit;
+
+                    dts.Tables[1].Rows.Add(row);
+                }
+                dts.Tables.Add(dtbl2);
+
+
+                DataTable dtbl3 = new DataTable();
+                var adaptor3 = (IME.ProfitAndLossAnalysisDirectExpenses(fromDate, toDate)).ToList();
+
+                foreach (var item in adaptor3)
+                {
+                    DataRow row = dtbl3.NewRow();
+                    row["ID"] = item.ID;
+                    row["Name"] = item.Name;
+                    row["Debit"] = item.Debit;
+
+                    dts.Tables[2].Rows.Add(row);
+                }
+                dts.Tables.Add(dtbl3);
+
+
+
+                DataTable dtbl4 = new DataTable();
+                var adaptor4 = (IME.ProfitAndLossAnalysisDirectIncome(fromDate, toDate)).ToList();
+
+                foreach (var item in adaptor4)
+                {
+                    DataRow row = dtbl4.NewRow();
+                    row["ID"] = item.ID;
+                    row["Name"] = item.Name;
+                    row["Credit"] = item.Credit;
+
+                    dts.Tables[3].Rows.Add(row);
+                }
+                dts.Tables.Add(dtbl4);
+
+
+                DataTable dtbl5 = new DataTable();
+                var adaptor5 = (IME.ProfitAndLossAnalysisInDirectExpenses(fromDate, toDate)).ToList();
+
+                foreach (var item in adaptor5)
+                {
+                    DataRow row = dtbl5.NewRow();
+                    row["ID"] = item.ID;
+                    row["Name"] = item.Name;
+                    row["Debit"] = item.Debit;
+
+                    dts.Tables[4].Rows.Add(row);
+                }
+                dts.Tables.Add(dtbl5);
+
+
+                DataTable dtbl6 = new DataTable();
+                var adaptor6 = (IME.ProfitAndLossAnalysisInDirectIncome(fromDate, toDate)).ToList();
+
+                foreach (var item in adaptor6)
+                {
+                    DataRow row = dtbl6.NewRow();
+                    row["ID"] = item.ID;
+                    row["Name"] = item.Name;
+                    row["Credit"] = item.Credit;
+
+                    dts.Tables[5].Rows.Add(row);
+                }
+                dts.Tables.Add(dtbl6);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            return dts;
+        }
+
+        public decimal StockValueGetOnDate(DateTime date, DateTime dtToDate, string calculationMethod, bool isOpeningStock, bool isFromBalanceSheet)
+        {
+            IMEEntities IME = new IMEEntities();
+            decimal dcstockValue = 0;
+            try
+            {
+                if (calculationMethod == "FIFO")
+                {
+                    if (isOpeningStock)
+                    {
+                        if (!isFromBalanceSheet)
+                        {
+                            dcstockValue = IME.StockValueOnDateByFIFOForOpeningStock(date, dtToDate);
+                        }
+                        else
+                        {
+                            dcstockValue = IME.StockValueOnDateByFIFOForOpeningStockForBalancesheet(date, dtToDate);
+                        }
+                    }
+                    else
+                    {
+                        dcstockValue = IME.StockValueOnDateByFIFO(date);
+                    }
+                }
+                else if (calculationMethod == "Average Cost")
+                {
+                    if (isOpeningStock)
+                    {
+                        if (!isFromBalanceSheet)
+                        {
+                            dcstockValue = IME.StockValueOnDateByAVCOForOpeningStock(date, dtToDate);
+                        }
+                        else
+                        {
+                            dcstockValue = IME.StockValueOnDateByAVCOForOpeningStockForBalanceSheet(date, dtToDate);
+                        }
+                    }
+                    else
+                    {
+                        dcstockValue = IME.StockValueOnDateByAVCO(date);
+                    }
+                }
+                else if (calculationMethod == "High Cost")
+                {
+                    if (isOpeningStock)
+                    {
+                        if (!isFromBalanceSheet)
+                        {
+                            dcstockValue = Convert.ToDecimal(IME.StockValueOnDateByHighCostForOpeningStock(date, dtToDate));
+                        }
+                        else
+                        {
+                            dcstockValue = Convert.ToDecimal(IME.StockValueOnDateByHighCostForOpeningStockBlncSheet(date, dtToDate));
+                        }
+                    }
+                    else
+                    {
+                        dcstockValue = Convert.ToDecimal(IME.StockValueOnDateByHighCost(date));
+                    }
+                }
+                else if (calculationMethod == "Low Cost")
+                {
+                    if (isOpeningStock)
+                    {
+                        if (!isFromBalanceSheet)
+                        {
+                            dcstockValue = IME.StockValueOnDateByLowCostForOpeningStock(date, dtToDate);
+                        }
+                        else
+                        {
+                            dcstockValue = IME.StockValueOnDateByLowCostForOpeningStockForBlncSheet(date, dtToDate);
+                        }
+                    }
+                    else
+                    {
+                        dcstockValue = IME.StockValueOnDateByLowCost(date);
+                    }
+                }
+                else if (calculationMethod == "Last Purchase Rate")
+                {
+                    if (isOpeningStock)
+                    {
+                        if (!isFromBalanceSheet)
+                        {
+                            dcstockValue = Convert.ToDecimal(IME.StockValueOnDateByLastPurchaseRateForOpeningStock(date, dtToDate));
+                        }
+                        else
+                        {
+                            dcstockValue = Convert.ToDecimal(IME.StockValueOnDateByLastPurchaseRateForOpeningStockBlncSheet(date, dtToDate));
+                        }
+                    }
+                    else
+                    {
+                        dcstockValue = Convert.ToDecimal(IME.StockValueOnDateByLastPurchaseRate(date));
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "OpenMiracle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            return dcstockValue;
+        }
+
+        public DataTable ProfitAndLossReportPrintCompany(decimal decCompanyId)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.ProfitAndLossReportPrintCompany(decCompanyId).ToList();
+
+                dtbl.Columns.Add("companyName");
+                dtbl.Columns.Add("address");
+                dtbl.Columns.Add("phone");
+                dtbl.Columns.Add("email");
+                dtbl.Columns.Add("currencyName");
+
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["companyName"] = item.companyName;
+                    row["address"] = item.address;
+                    row["phone"] = item.phone;
+                    row["email"] = item.email;
+                    row["currencyName"] = item.currencyName;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return dtbl;
+        }
+
+
     }
 }

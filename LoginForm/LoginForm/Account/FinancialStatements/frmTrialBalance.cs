@@ -11,7 +11,7 @@ using LoginForm.DataSet;
 using LoginForm.Services;
 using LoginForm.Account.Services;
 
-namespace LoginForm
+namespace LoginForm.Account
 {
     public partial class frmTrialBalance : Form
     {
