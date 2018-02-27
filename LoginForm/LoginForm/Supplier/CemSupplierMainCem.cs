@@ -592,6 +592,7 @@ namespace LoginForm
 
         private void btnAddressAdd_Click(object sender, EventArgs e)
         {
+            AddressMode = "Add";
             lbAddressList.ClearSelected();
             lbAddressList.Enabled = false;
 
@@ -626,6 +627,10 @@ namespace LoginForm
 
             EnableAddressInput(false);
             AddressButtonsMode(AddressButtonsModeClose);
+
+            ManageDeleteAndModifyButtons(lbAddressList, btnAddressUpdate, btnAddressDelete);
+            AddressMode = String.Empty;
+
         }
 
         private void ClearAddressInputs()
@@ -652,24 +657,42 @@ namespace LoginForm
             }
             else
             {
-                SupplierAddress address = new SupplierAddress
+                if (AddressMode == "Add")
                 {
-                    Title = txtAddressTitle.Text,
-                    Phone = txtPhone.Text,
-                    Fax = txtFax.Text,
-                    CountryID = ((Country)cmbCountry.SelectedItem).ID,
-                    CityID = ((City)cmbCity.SelectedItem).ID,
-                    TownID = ((Town)cmbTown.SelectedItem).ID,
-                    PoBox = txtPoBox.Text,
-                    PostCode = txtPostCode.Text,
-                    AdressDetails = txtAddressDetail.Text
-                };
+                    SupplierAddress address = new SupplierAddress
+                    {
+                        Title = txtAddressTitle.Text,
+                        Phone = txtPhone.Text,
+                        Fax = txtFax.Text,
+                        CountryID = ((Country)cmbCountry.SelectedItem).ID,
+                        CityID = ((City)cmbCity.SelectedItem).ID,
+                        TownID = ((Town)cmbTown.SelectedItem).ID,
+                        PoBox = txtPoBox.Text,
+                        PostCode = txtPostCode.Text,
+                        AdressDetails = txtAddressDetail.Text
+                    };
 
-                SavedAddresses.Add(address);
+                    SavedAddresses.Add(address);
+                }
+                else if(AddressMode == "Update")
+                {
+                    SupplierAddress s = (SupplierAddress)lbAddressList.SelectedItem;
+                    SupplierAddress address = SavedAddresses.Where(x => x.Title == s.Title).FirstOrDefault();
 
+                    address.Title = txtAddressTitle.Text;
+                    address.Phone = txtPhone.Text;
+                    address.Fax = txtFax.Text;
+                    address.CountryID = ((Country)cmbCountry.SelectedItem).ID;
+                    address.CityID = ((City)cmbCity.SelectedItem).ID;
+                    address.TownID = ((Town)cmbTown.SelectedItem).ID;
+                    address.PoBox = txtPoBox.Text;
+                    address.PostCode = txtPostCode.Text;
+                    address.AdressDetails = txtAddressDetail.Text;
+                }
                 lbAddressList.DataSource = SavedAddresses;
                 lbAddressList.DisplayMember = "Title";
-                
+                lbAddressList.SelectedIndex = -1;
+
                 btnAddressCancel.PerformClick();
                 lbAddressList.Enabled = true;
 
@@ -677,6 +700,7 @@ namespace LoginForm
                 cmbTown.Enabled = false;
 
                 ManageDeleteAndModifyButtons(lbAddressList, btnAddressUpdate, btnAddressDelete);
+                AddressMode = String.Empty;
             }
         }
 
@@ -693,18 +717,38 @@ namespace LoginForm
 
         private void btnAddressUpdate_Click(object sender, EventArgs e)
         {
+            if (lbAddressList.SelectedIndex != -1)
+            {
+                AddressMode = "Update";
 
+                EnableAddressInput(true);
+                AddressButtonsMode(AddressButtonsModeOpen);
+            }
+            else
+            {
+                MessageBox.Show("Please choose an address from the list!", "Warning");
+            }
         }
 
         private void btnAddressDelete_Click(object sender, EventArgs e)
         {
-            SupplierAddress sa = (SupplierAddress)lbAddressList.SelectedItem;
-            SavedAddresses.Remove(sa);
+            if (lbAddressList.SelectedIndex != -1)
+            {
+                SupplierAddress sa = (SupplierAddress)lbAddressList.SelectedItem;
+                SavedAddresses.Remove(sa);
 
-            ClearAddressInputs();
+                ClearAddressInputs();
 
-            EnableAddressInput(false);
-            AddressButtonsMode(AddressButtonsModeClose);
+                EnableAddressInput(false);
+                AddressButtonsMode(AddressButtonsModeClose);
+                ManageDeleteAndModifyButtons(lbAddressList, btnAddressUpdate, btnAddressDelete);
+            }
+            else
+            {
+                MessageBox.Show("Please choose an address from the list!", "Warning");
+            }
+
+            
         }
 
         private void lbAddressList_SelectedIndexChanged(object sender, EventArgs e)
