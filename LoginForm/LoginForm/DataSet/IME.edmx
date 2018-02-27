@@ -1150,6 +1150,13 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="GrossTotal" Type="decimal" Precision="18" Scale="4" />
           <Property Name="CurrencyID" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
+        <EntityType Name="QuotationDelivery">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeliveryName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="QuotationDetail">
           <Key>
             <PropertyRef Name="ID" />
@@ -1175,6 +1182,7 @@ warning 6002: The table/view 'IME.dbo.AdditionalCost' does not have a primary ke
           <Property Name="UnitWeight" Type="decimal" Precision="15" Scale="4" />
           <Property Name="DependantTable" Type="nvarchar" MaxLength="10" />
           <Property Name="unitConversionId" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="quotationDeliveryID" Type="int" />
         </EntityType>
         <EntityType Name="Rack">
           <Key>
@@ -1905,6 +1913,10 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="CityID" Type="int" />
           <Property Name="CountryID" Type="int" />
           <Property Name="Title" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="Fax" Type="varchar" MaxLength="20" />
+          <Property Name="PoBox" Type="varchar" MaxLength="20" />
+          <Property Name="PostCode" Type="varchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="SupplierBank">
           <Key>
@@ -1920,13 +1932,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="categoryname" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="SupplierDepartment">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="departmentname" Type="nvarchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="SupplierSubCategory">
           <Key>
             <PropertyRef Name="ID" />
@@ -1934,14 +1939,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="subcategoryname" Type="nvarchar" MaxLength="50" />
           <Property Name="categoryID" Type="int" />
-        </EntityType>
-        <EntityType Name="SupplierTitle">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="titlename" Type="nvarchar" MaxLength="50" />
-          <Property Name="departmnetID" Type="int" />
         </EntityType>
         <EntityType Name="SupplierWorker">
           <Key>
@@ -1959,7 +1956,6 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="supplierID" Type="nvarchar" MaxLength="15" />
           <Property Name="supplierNoteID" Type="int" />
           <Property Name="languageID" Type="int" />
-          <Property Name="categoryID" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -4037,7 +4033,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Quotation__Curre__7CAF6937">
+        <Association Name="FK__Quotation__Curre__0A096455">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -4118,6 +4114,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Principal>
             <Dependent Role="QuotationDetail">
               <PropertyRef Name="QuotationNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Quotation__quota__51900108">
+          <End Role="QuotationDelivery" Type="Self.QuotationDelivery" Multiplicity="0..1" />
+          <End Role="QuotationDetail" Type="Self.QuotationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuotationDelivery">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="QuotationDetail">
+              <PropertyRef Name="quotationDeliveryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -5345,7 +5353,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Supplier__Catego__007FFA1B">
+        <Association Name="FK__Supplier__Catego__1FF8A574">
           <End Role="SupplierCategory" Type="Self.SupplierCategory" Multiplicity="0..1" />
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5405,7 +5413,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Supplier__SubCat__01741E54">
+        <Association Name="FK__Supplier__SubCat__20ECC9AD">
           <End Role="SupplierSubCategory" Type="Self.SupplierSubCategory" Multiplicity="0..1" />
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
@@ -5489,30 +5497,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SupplierT__depar__6BE40491">
-          <End Role="SupplierDepartment" Type="Self.SupplierDepartment" Multiplicity="0..1" />
-          <End Role="SupplierTitle" Type="Self.SupplierTitle" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SupplierDepartment">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="SupplierTitle">
-              <PropertyRef Name="departmnetID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SupplierW__depar__76619304">
-          <End Role="SupplierDepartment" Type="Self.SupplierDepartment" Multiplicity="0..1" />
-          <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SupplierDepartment">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="SupplierWorker">
-              <PropertyRef Name="departmentID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__SupplierW__langu__72910220">
           <End Role="Languages" Type="Self.Languages" Multiplicity="0..1" />
           <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="*" />
@@ -5558,18 +5542,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Principal>
             <Dependent Role="SupplierWorker">
               <PropertyRef Name="supplieradressID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SupplierW__title__7755B73D">
-          <End Role="SupplierTitle" Type="Self.SupplierTitle" Multiplicity="0..1" />
-          <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SupplierTitle">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="SupplierWorker">
-              <PropertyRef Name="titleID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -5970,6 +5942,26 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="toDate" Type="datetime" Mode="In" />
           <Parameter Name="fromDate" Type="datetime" Mode="In" />
         </Function>
+        <Function Name="BalanceSheetAssets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="BalanceSheetDifference" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="BalanceSheetLiabilities" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="BalanceSheetProfitAndLoss" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="BalanceSheetProfitAndLossAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="BankAccountComboFill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="BankReconciliationFillUnrecon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ledgerId" Type="numeric" Mode="In" />
@@ -6357,9 +6349,60 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <Function Name="ProductViewWithID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="productID" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="ProfitAndLossAnalysisDirectExpenses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossAnalysisDirectIncome" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossAnalysisInDirectExpenses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossAnalysisInDirectIncome" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossAnalysisPurchaseAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossAnalysisSalesAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="ProfitAndLossAnalysisUpToaDateForBalansheet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fromDate" Type="datetime" Mode="In" />
           <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossReportPrintCompany" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="companyId" Type="numeric" Mode="In" />
         </Function>
         <Function Name="PurchaseBillTaxAdd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="purchaseMasterId" Type="numeric" Mode="In" />
@@ -7191,6 +7234,21 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="fromDate" Type="datetime" Mode="In" />
           <Parameter Name="toDate" Type="datetime" Mode="In" />
         </Function>
+        <Function Name="Trialbalance1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="accountGroupId" Type="numeric" Mode="In" />
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Trialbalance2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="accountGroupId" Type="numeric" Mode="In" />
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="Trialbalance3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="accountGroupId" Type="numeric" Mode="In" />
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="UnitConversionIdAndConRateViewallByProductId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="productId" Type="nvarchar" Mode="In" />
         </Function>
@@ -7293,6 +7351,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="PurchaseReturnDetails" EntityType="Self.PurchaseReturnDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PurchaseReturnMaster" EntityType="Self.PurchaseReturnMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Quotation" EntityType="Self.Quotation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QuotationDelivery" EntityType="Self.QuotationDelivery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuotationDetail" EntityType="Self.QuotationDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rack" EntityType="Self.Rack" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rate" EntityType="Self.Rate" Schema="dbo" store:Type="Tables" />
@@ -7334,9 +7393,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="SupplierAddress" EntityType="Self.SupplierAddress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierBank" EntityType="Self.SupplierBank" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierCategory" EntityType="Self.SupplierCategory" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SupplierDepartment" EntityType="Self.SupplierDepartment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierSubCategory" EntityType="Self.SupplierSubCategory" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SupplierTitle" EntityType="Self.SupplierTitle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SupplierWorker" EntityType="Self.SupplierWorker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tax" EntityType="Self.Tax" Schema="dbo" store:Type="Tables" />
@@ -8020,7 +8077,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="VoucherType" EntitySet="VoucherType" />
             <End Role="PurchaseReturnMaster" EntitySet="PurchaseReturnMaster" />
           </AssociationSet>
-          <AssociationSet Name="FK__Quotation__Curre__7CAF6937" Association="Self.FK__Quotation__Curre__7CAF6937">
+          <AssociationSet Name="FK__Quotation__Curre__0A096455" Association="Self.FK__Quotation__Curre__0A096455">
             <End Role="Currency" EntitySet="Currency" />
             <End Role="Quotation" EntitySet="Quotation" />
           </AssociationSet>
@@ -8046,6 +8103,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </AssociationSet>
           <AssociationSet Name="FK__Quotation__Quota__147C05D0" Association="Self.FK__Quotation__Quota__147C05D0">
             <End Role="Quotation" EntitySet="Quotation" />
+            <End Role="QuotationDetail" EntitySet="QuotationDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Quotation__quota__51900108" Association="Self.FK__Quotation__quota__51900108">
+            <End Role="QuotationDelivery" EntitySet="QuotationDelivery" />
             <End Role="QuotationDetail" EntitySet="QuotationDetail" />
           </AssociationSet>
           <AssociationSet Name="FK__Quotation__Repre__41399DAE" Association="Self.FK__Quotation__Repre__41399DAE">
@@ -8456,7 +8517,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="SupplierBank" EntitySet="SupplierBank" />
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
-          <AssociationSet Name="FK__Supplier__Catego__007FFA1B" Association="Self.FK__Supplier__Catego__007FFA1B">
+          <AssociationSet Name="FK__Supplier__Catego__1FF8A574" Association="Self.FK__Supplier__Catego__1FF8A574">
             <End Role="SupplierCategory" EntitySet="SupplierCategory" />
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
@@ -8476,7 +8537,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Worker" EntitySet="Worker" />
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
-          <AssociationSet Name="FK__Supplier__SubCat__01741E54" Association="Self.FK__Supplier__SubCat__01741E54">
+          <AssociationSet Name="FK__Supplier__SubCat__20ECC9AD" Association="Self.FK__Supplier__SubCat__20ECC9AD">
             <End Role="SupplierSubCategory" EntitySet="SupplierSubCategory" />
             <End Role="Supplier" EntitySet="Supplier" />
           </AssociationSet>
@@ -8504,14 +8565,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="SupplierCategory" EntitySet="SupplierCategory" />
             <End Role="SupplierSubCategory" EntitySet="SupplierSubCategory" />
           </AssociationSet>
-          <AssociationSet Name="FK__SupplierT__depar__6BE40491" Association="Self.FK__SupplierT__depar__6BE40491">
-            <End Role="SupplierDepartment" EntitySet="SupplierDepartment" />
-            <End Role="SupplierTitle" EntitySet="SupplierTitle" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierW__depar__76619304" Association="Self.FK__SupplierW__depar__76619304">
-            <End Role="SupplierDepartment" EntitySet="SupplierDepartment" />
-            <End Role="SupplierWorker" EntitySet="SupplierWorker" />
-          </AssociationSet>
           <AssociationSet Name="FK__SupplierW__langu__72910220" Association="Self.FK__SupplierW__langu__72910220">
             <End Role="Languages" EntitySet="Languages" />
             <End Role="SupplierWorker" EntitySet="SupplierWorker" />
@@ -8526,10 +8579,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </AssociationSet>
           <AssociationSet Name="FK__SupplierW__suppl__756D6ECB" Association="Self.FK__SupplierW__suppl__756D6ECB">
             <End Role="SupplierAddress" EntitySet="SupplierAddress" />
-            <End Role="SupplierWorker" EntitySet="SupplierWorker" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierW__title__7755B73D" Association="Self.FK__SupplierW__title__7755B73D">
-            <End Role="SupplierTitle" EntitySet="SupplierTitle" />
             <End Role="SupplierWorker" EntitySet="SupplierWorker" />
           </AssociationSet>
           <AssociationSet Name="FK__TaxDetail__taxID__72B0FDB1" Association="Self.FK__TaxDetail__taxID__72B0FDB1">
@@ -8909,7 +8958,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="subunitName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Companies" Relationship="Self.FK__Company__currenc__0371755F" FromRole="Currency" ToRole="Company" />
           <NavigationProperty Name="Managements" Relationship="Self.FK__Managemen__Defau__253C7D7E" FromRole="Currency" ToRole="Management" />
-          <NavigationProperty Name="Quotations" Relationship="Self.FK__Quotation__Curre__7CAF6937" FromRole="Currency" ToRole="Quotation" />
+          <NavigationProperty Name="Quotations" Relationship="Self.FK__Quotation__Curre__0A096455" FromRole="Currency" ToRole="Quotation" />
           <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__currencyI__2156DE01" FromRole="Currency" ToRole="Stock" />
           <NavigationProperty Name="ExchangeRates" Relationship="Self.FK__tbl_Excha__curre__52442E1F" FromRole="Currency" ToRole="ExchangeRate" />
         </EntityType>
@@ -10051,7 +10100,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
           <Property Name="GrossTotal" Type="Decimal" Precision="18" Scale="4" />
           <Property Name="CurrencyID" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="Currency" Relationship="Self.FK__Quotation__Curre__7CAF6937" FromRole="Quotation" ToRole="Currency" />
+          <NavigationProperty Name="Currency" Relationship="Self.FK__Quotation__Curre__0A096455" FromRole="Quotation" ToRole="Currency" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__Quotation__Custo__00750D23" FromRole="Quotation" ToRole="Customer" />
           <NavigationProperty Name="DeliveryNoteDetails" Relationship="Self.FK__DeliveryN__quota__39CD8610" FromRole="Quotation" ToRole="DeliveryNoteDetail" />
           <NavigationProperty Name="DeliveryNoteMasters" Relationship="Self.FK__DeliveryN__quota__25077354" FromRole="Quotation" ToRole="DeliveryNoteMaster" />
@@ -10065,6 +10114,14 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="SuffixPrefix" Relationship="Self.FK__Quotation__suffi__44160A59" FromRole="Quotation" ToRole="SuffixPrefix" />
           <NavigationProperty Name="VoucherType" Relationship="Self.FK__Quotation__vouch__5669C4BE" FromRole="Quotation" ToRole="VoucherType" />
           <NavigationProperty Name="SalesMasters" Relationship="Self.FK__SalesMast__quota__79B300FB" FromRole="Quotation" ToRole="SalesMaster" />
+        </EntityType>
+        <EntityType Name="QuotationDelivery">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeliveryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="QuotationDetails" Relationship="Self.FK__Quotation__quota__51900108" FromRole="QuotationDelivery" ToRole="QuotationDetail" />
         </EntityType>
         <EntityType Name="QuotationDetail">
           <Key>
@@ -10091,7 +10148,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="UnitWeight" Type="Decimal" Precision="15" Scale="4" />
           <Property Name="DependantTable" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="unitConversionId" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="quotationDeliveryID" Type="Int32" />
           <NavigationProperty Name="Quotation" Relationship="Self.FK__Quotation__Quota__147C05D0" FromRole="QuotationDetail" ToRole="Quotation" />
+          <NavigationProperty Name="QuotationDelivery" Relationship="Self.FK__Quotation__quota__51900108" FromRole="QuotationDetail" ToRole="QuotationDelivery" />
           <NavigationProperty Name="SaleOrderDetails" Relationship="Self.FK__SaleOrder__quota__310335E5" FromRole="QuotationDetail" ToRole="SaleOrderDetail" />
           <NavigationProperty Name="SalesDetails" Relationship="Self.FK__SalesDeta__quota__1C0818FF" FromRole="QuotationDetail" ToRole="SalesDetails" />
         </EntityType>
@@ -10948,9 +11007,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <NavigationProperty Name="Rate" Relationship="Self.FK__Supplier__rate_I__625A9A57" FromRole="Supplier" ToRole="Rate" />
           <NavigationProperty Name="Worker" Relationship="Self.FK__Supplier__accoun__2DB1C7EE" FromRole="Supplier" ToRole="Worker" />
           <NavigationProperty Name="SupplierBank" Relationship="Self.FK__Supplier__BankID__0C50D423" FromRole="Supplier" ToRole="SupplierBank" />
-          <NavigationProperty Name="SupplierCategory" Relationship="Self.FK__Supplier__Catego__007FFA1B" FromRole="Supplier" ToRole="SupplierCategory" />
+          <NavigationProperty Name="SupplierCategory" Relationship="Self.FK__Supplier__Catego__1FF8A574" FromRole="Supplier" ToRole="SupplierCategory" />
           <NavigationProperty Name="Worker1" Relationship="Self.FK__Supplier__repres__65370702" FromRole="Supplier" ToRole="Worker" />
-          <NavigationProperty Name="SupplierSubCategory" Relationship="Self.FK__Supplier__SubCat__01741E54" FromRole="Supplier" ToRole="SupplierSubCategory" />
+          <NavigationProperty Name="SupplierSubCategory" Relationship="Self.FK__Supplier__SubCat__20ECC9AD" FromRole="Supplier" ToRole="SupplierSubCategory" />
           <NavigationProperty Name="SupplierAddresses" Relationship="Self.FK__SupplierA__Suppl__42ACE4D4" FromRole="Supplier" ToRole="SupplierAddress" />
           <NavigationProperty Name="SupplierWorkers" Relationship="Self.FK__SupplierW__suppl__74794A92" FromRole="Supplier" ToRole="SupplierWorker" />
         </EntityType>
@@ -10965,6 +11024,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="CityID" Type="Int32" />
           <Property Name="CountryID" Type="Int32" />
           <Property Name="Title" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PoBox" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PostCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="City" Relationship="Self.FK__SupplierA__CityI__40C49C62" FromRole="SupplierAddress" ToRole="City" />
           <NavigationProperty Name="Country" Relationship="Self.FK__SupplierA__Count__3FD07829" FromRole="SupplierAddress" ToRole="Country" />
           <NavigationProperty Name="Supplier" Relationship="Self.FK__SupplierA__Suppl__42ACE4D4" FromRole="SupplierAddress" ToRole="Supplier" />
@@ -10985,17 +11048,8 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="categoryname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__Catego__007FFA1B" FromRole="SupplierCategory" ToRole="Supplier" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__Catego__1FF8A574" FromRole="SupplierCategory" ToRole="Supplier" />
           <NavigationProperty Name="SupplierSubCategories" Relationship="Self.FK__SupplierS__categ__03BB8E22" FromRole="SupplierCategory" ToRole="SupplierSubCategory" />
-        </EntityType>
-        <EntityType Name="SupplierDepartment">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="departmentname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="SupplierTitles" Relationship="Self.FK__SupplierT__depar__6BE40491" FromRole="SupplierDepartment" ToRole="SupplierTitle" />
-          <NavigationProperty Name="SupplierWorkers" Relationship="Self.FK__SupplierW__depar__76619304" FromRole="SupplierDepartment" ToRole="SupplierWorker" />
         </EntityType>
         <EntityType Name="SupplierSubCategory">
           <Key>
@@ -11004,18 +11058,8 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="subcategoryname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="categoryID" Type="Int32" />
-          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__SubCat__01741E54" FromRole="SupplierSubCategory" ToRole="Supplier" />
+          <NavigationProperty Name="Suppliers" Relationship="Self.FK__Supplier__SubCat__20ECC9AD" FromRole="SupplierSubCategory" ToRole="Supplier" />
           <NavigationProperty Name="SupplierCategory" Relationship="Self.FK__SupplierS__categ__03BB8E22" FromRole="SupplierSubCategory" ToRole="SupplierCategory" />
-        </EntityType>
-        <EntityType Name="SupplierTitle">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="titlename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="departmnetID" Type="Int32" />
-          <NavigationProperty Name="SupplierDepartment" Relationship="Self.FK__SupplierT__depar__6BE40491" FromRole="SupplierTitle" ToRole="SupplierDepartment" />
-          <NavigationProperty Name="SupplierWorkers" Relationship="Self.FK__SupplierW__title__7755B73D" FromRole="SupplierTitle" ToRole="SupplierWorker" />
         </EntityType>
         <EntityType Name="SupplierWorker">
           <Key>
@@ -11033,13 +11077,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="supplierID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="supplierNoteID" Type="Int32" />
           <Property Name="languageID" Type="Int32" />
-          <Property Name="categoryID" Type="Int32" />
           <NavigationProperty Name="Language" Relationship="Self.FK__SupplierW__langu__72910220" FromRole="SupplierWorker" ToRole="Languages" />
           <NavigationProperty Name="Note" Relationship="Self.FK__SupplierW__suppl__73852659" FromRole="SupplierWorker" ToRole="Notes" />
           <NavigationProperty Name="Supplier" Relationship="Self.FK__SupplierW__suppl__74794A92" FromRole="SupplierWorker" ToRole="Supplier" />
           <NavigationProperty Name="SupplierAddress" Relationship="Self.FK__SupplierW__suppl__756D6ECB" FromRole="SupplierWorker" ToRole="SupplierAddress" />
-          <NavigationProperty Name="SupplierDepartment" Relationship="Self.FK__SupplierW__depar__76619304" FromRole="SupplierWorker" ToRole="SupplierDepartment" />
-          <NavigationProperty Name="SupplierTitle" Relationship="Self.FK__SupplierW__title__7755B73D" FromRole="SupplierWorker" ToRole="SupplierTitle" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -11938,7 +11979,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Quotation__Curre__7CAF6937">
+        <Association Name="FK__Quotation__Curre__0A096455">
           <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
           <End Role="Quotation" Type="Self.Quotation" Multiplicity="*" />
           <ReferentialConstraint>
@@ -14038,6 +14079,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Quotation__quota__51900108">
+          <End Role="QuotationDelivery" Type="Self.QuotationDelivery" Multiplicity="0..1" />
+          <End Role="QuotationDetail" Type="Self.QuotationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuotationDelivery">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="QuotationDetail">
+              <PropertyRef Name="quotationDeliveryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__SaleOrder__quota__310335E5">
           <End Role="QuotationDetail" Type="Self.QuotationDetail" Multiplicity="0..1" />
           <End Role="SaleOrderDetail" Type="Self.SaleOrderDetail" Multiplicity="*" />
@@ -14710,7 +14763,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Supplier__Catego__007FFA1B">
+        <Association Name="FK__Supplier__Catego__1FF8A574">
           <End Role="SupplierCategory" Type="Self.SupplierCategory" Multiplicity="0..1" />
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
@@ -14734,7 +14787,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Supplier__SubCat__01741E54">
+        <Association Name="FK__Supplier__SubCat__20ECC9AD">
           <End Role="SupplierSubCategory" Type="Self.SupplierSubCategory" Multiplicity="0..1" />
           <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
           <ReferentialConstraint>
@@ -14803,42 +14856,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             </Principal>
             <Dependent Role="SupplierSubCategory">
               <PropertyRef Name="categoryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SupplierT__depar__6BE40491">
-          <End Role="SupplierDepartment" Type="Self.SupplierDepartment" Multiplicity="0..1" />
-          <End Role="SupplierTitle" Type="Self.SupplierTitle" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SupplierDepartment">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="SupplierTitle">
-              <PropertyRef Name="departmnetID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SupplierW__depar__76619304">
-          <End Role="SupplierDepartment" Type="Self.SupplierDepartment" Multiplicity="0..1" />
-          <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SupplierDepartment">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="SupplierWorker">
-              <PropertyRef Name="departmentID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SupplierW__title__7755B73D">
-          <End Role="SupplierTitle" Type="Self.SupplierTitle" Multiplicity="0..1" />
-          <End Role="SupplierWorker" Type="Self.SupplierWorker" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SupplierTitle">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="SupplierWorker">
-              <PropertyRef Name="titleID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -14998,6 +15015,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="PurchaseReturnDetails" EntityType="Self.PurchaseReturnDetail" />
           <EntitySet Name="PurchaseReturnMasters" EntityType="Self.PurchaseReturnMaster" />
           <EntitySet Name="Quotations" EntityType="Self.Quotation" />
+          <EntitySet Name="QuotationDeliveries" EntityType="Self.QuotationDelivery" />
           <EntitySet Name="QuotationDetails" EntityType="Self.QuotationDetail" />
           <EntitySet Name="Racks" EntityType="Self.Rack" />
           <EntitySet Name="Rates" EntityType="Self.Rate" />
@@ -15039,9 +15057,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <EntitySet Name="SupplierAddresses" EntityType="Self.SupplierAddress" />
           <EntitySet Name="SupplierBanks" EntityType="Self.SupplierBank" />
           <EntitySet Name="SupplierCategories" EntityType="Self.SupplierCategory" />
-          <EntitySet Name="SupplierDepartments" EntityType="Self.SupplierDepartment" />
           <EntitySet Name="SupplierSubCategories" EntityType="Self.SupplierSubCategory" />
-          <EntitySet Name="SupplierTitles" EntityType="Self.SupplierTitle" />
           <EntitySet Name="SupplierWorkers" EntityType="Self.SupplierWorker" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Taxes" EntityType="Self.Tax" />
@@ -15267,7 +15283,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Management" EntitySet="Managements" />
           </AssociationSet>
-          <AssociationSet Name="FK__Quotation__Curre__7CAF6937" Association="Self.FK__Quotation__Curre__7CAF6937">
+          <AssociationSet Name="FK__Quotation__Curre__0A096455" Association="Self.FK__Quotation__Curre__0A096455">
             <End Role="Currency" EntitySet="Currencies" />
             <End Role="Quotation" EntitySet="Quotations" />
           </AssociationSet>
@@ -15967,6 +15983,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Quotation" EntitySet="Quotations" />
             <End Role="SalesMaster" EntitySet="SalesMasters" />
           </AssociationSet>
+          <AssociationSet Name="FK__Quotation__quota__51900108" Association="Self.FK__Quotation__quota__51900108">
+            <End Role="QuotationDelivery" EntitySet="QuotationDeliveries" />
+            <End Role="QuotationDetail" EntitySet="QuotationDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK__SaleOrder__quota__310335E5" Association="Self.FK__SaleOrder__quota__310335E5">
             <End Role="QuotationDetail" EntitySet="QuotationDetails" />
             <End Role="SaleOrderDetail" EntitySet="SaleOrderDetails" />
@@ -16191,7 +16211,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="SupplierBank" EntitySet="SupplierBanks" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
-          <AssociationSet Name="FK__Supplier__Catego__007FFA1B" Association="Self.FK__Supplier__Catego__007FFA1B">
+          <AssociationSet Name="FK__Supplier__Catego__1FF8A574" Association="Self.FK__Supplier__Catego__1FF8A574">
             <End Role="SupplierCategory" EntitySet="SupplierCategories" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
@@ -16199,7 +16219,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <End Role="Worker" EntitySet="Workers" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
-          <AssociationSet Name="FK__Supplier__SubCat__01741E54" Association="Self.FK__Supplier__SubCat__01741E54">
+          <AssociationSet Name="FK__Supplier__SubCat__20ECC9AD" Association="Self.FK__Supplier__SubCat__20ECC9AD">
             <End Role="SupplierSubCategory" EntitySet="SupplierSubCategories" />
             <End Role="Supplier" EntitySet="Suppliers" />
           </AssociationSet>
@@ -16222,18 +16242,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <AssociationSet Name="FK__SupplierS__categ__03BB8E22" Association="Self.FK__SupplierS__categ__03BB8E22">
             <End Role="SupplierCategory" EntitySet="SupplierCategories" />
             <End Role="SupplierSubCategory" EntitySet="SupplierSubCategories" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierT__depar__6BE40491" Association="Self.FK__SupplierT__depar__6BE40491">
-            <End Role="SupplierDepartment" EntitySet="SupplierDepartments" />
-            <End Role="SupplierTitle" EntitySet="SupplierTitles" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierW__depar__76619304" Association="Self.FK__SupplierW__depar__76619304">
-            <End Role="SupplierDepartment" EntitySet="SupplierDepartments" />
-            <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SupplierW__title__7755B73D" Association="Self.FK__SupplierW__title__7755B73D">
-            <End Role="SupplierTitle" EntitySet="SupplierTitles" />
-            <End Role="SupplierWorker" EntitySet="SupplierWorkers" />
           </AssociationSet>
           <AssociationSet Name="FK__TaxDetail__taxID__72B0FDB1" Association="Self.FK__TaxDetail__taxID__72B0FDB1">
             <End Role="Tax" EntitySet="Taxes" />
@@ -16443,6 +16451,26 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </FunctionImport>
           <FunctionImport Name="ArticleSelectAll" ReturnType="Collection(IMEModel.ArticleSelectAll_Result)" />
           <FunctionImport Name="BalanceSheet" ReturnType="Collection(IMEModel.BalanceSheet_Result)">
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="BalanceSheetAssets" ReturnType="Collection(IMEModel.BalanceSheetAssets_Result)">
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="BalanceSheetDifference">
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="BalanceSheetLiabilities" ReturnType="Collection(IMEModel.BalanceSheetLiabilities_Result)">
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="BalanceSheetProfitAndLoss" ReturnType="Collection(IMEModel.BalanceSheetProfitAndLoss_Result)">
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="BalanceSheetProfitAndLossAccount" ReturnType="Collection(IMEModel.BalanceSheetProfitAndLossAccount_Result)">
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -16822,9 +16850,60 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImport Name="ProductViewWithID" ReturnType="Collection(IMEModel.ProductViewWithID_Result)">
             <Parameter Name="productID" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisDirectExpenses" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisDirectExpenses_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisDirectIncome" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisDirectIncome_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisInDirectExpenses" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisInDirectExpenses_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisInDirectIncome" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisInDirectIncome_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisPurchaseAccount" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisPurchaseAccount_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisSalesAccount" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisSalesAccount_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForBalansheet" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheet_Result)">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossReportPrintCompany" ReturnType="Collection(IMEModel.ProfitAndLossReportPrintCompany_Result)">
+            <Parameter Name="companyId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="PurchaseBillTaxAdd">
             <Parameter Name="purchaseMasterId" Mode="In" Type="Decimal" />
@@ -17656,6 +17735,21 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="Trialbalance1" ReturnType="Collection(IMEModel.Trialbalance1_Result)">
+            <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Trialbalance2" ReturnType="Collection(IMEModel.Trialbalance2_Result)">
+            <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="Trialbalance3" ReturnType="Collection(IMEModel.Trialbalance3_Result)">
+            <Parameter Name="accountGroupId" Mode="In" Type="Decimal" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="UnitConversionIdAndConRateViewallByProductId" ReturnType="Collection(IMEModel.UnitConversionIdAndConRateViewallByProductId_Result)">
             <Parameter Name="productId" Mode="In" Type="String" />
           </FunctionImport>
@@ -17847,6 +17941,26 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="Balance" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="BalanceSheetAssets_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="BalanceSheetLiabilities_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="BalanceSheetProfitAndLoss_Result">
+          <Property Type="String" Name="ID" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="15" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="24" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="BalanceSheetProfitAndLossAccount_Result">
+          <Property Type="String" Name="ID" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="23" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="24" Scale="2" />
         </ComplexType>
         <ComplexType Name="BankAccountComboFill_Result">
           <Property Type="String" Name="ledgerName" Nullable="true" />
@@ -18241,10 +18355,77 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="String" Name="Unit_Measure" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Brandname" Nullable="true" MaxLength="100" />
         </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisDirectExpenses_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Debit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisDirectIncome_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Credit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisInDirectExpenses_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Debit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisInDirectIncome_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Credit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisPurchaseAccount_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Debit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisSalesAccount_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Credit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
         <ComplexType Name="ProfitAndLossAnalysisUpToaDateForBalansheet_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="Debit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Debit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Credit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Debit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Credit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Debit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Credit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossReportPrintCompany_Result">
+          <Property Type="String" Name="companyName" Nullable="true" />
+          <Property Type="String" Name="address" Nullable="true" />
+          <Property Type="String" Name="phone" Nullable="true" />
+          <Property Type="String" Name="email" Nullable="true" />
+          <Property Type="String" Name="currencyName" Nullable="true" />
         </ComplexType>
         <ComplexType Name="PurchaseBillTaxViewAllByPurchaseMasterId_Result">
           <Property Type="Decimal" Name="purchaseBillTaxId" Nullable="false" Precision="18" Scale="0" />
@@ -18806,6 +18987,33 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="String" Name="Balance" Nullable="true" />
           <Property Type="Decimal" Name="OpBalance" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="Balance1" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="Trialbalance1_Result">
+          <Property Type="Int32" Name="Sl_No" Nullable="true" />
+          <Property Type="Int32" Name="accountGroupId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="debit" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="credit" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="OpeningBalance" Nullable="true" />
+          <Property Type="String" Name="Balance" Nullable="true" />
+          <Property Type="Decimal" Name="OpBalance" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Balance1" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="Trialbalance2_Result">
+          <Property Type="String" Name="ID" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="15" />
+          <Property Type="Decimal" Name="debit" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="credit" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="OpeningBalance" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="Trialbalance3_Result">
+          <Property Type="String" Name="ID" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="15" />
+          <Property Type="Decimal" Name="debit" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="credit" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="OpeningBalance" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="18" Scale="2" />
         </ComplexType>
         <ComplexType Name="UnitConversionIdAndConRateViewallByProductId_Result">
           <Property Type="Decimal" Name="unitId" Nullable="false" Precision="18" Scale="0" />
@@ -20043,6 +20251,14 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="QuotationDeliveries">
+            <EntityTypeMapping TypeName="IMEModel.QuotationDelivery">
+              <MappingFragment StoreEntitySet="QuotationDelivery">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DeliveryName" ColumnName="DeliveryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="QuotationDetails">
             <EntityTypeMapping TypeName="IMEModel.QuotationDetail">
               <MappingFragment StoreEntitySet="QuotationDetail">
@@ -20067,6 +20283,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="UnitWeight" ColumnName="UnitWeight" />
                 <ScalarProperty Name="DependantTable" ColumnName="DependantTable" />
                 <ScalarProperty Name="unitConversionId" ColumnName="unitConversionId" />
+                <ScalarProperty Name="quotationDeliveryID" ColumnName="quotationDeliveryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -20819,6 +21036,10 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="CityID" ColumnName="CityID" />
                 <ScalarProperty Name="CountryID" ColumnName="CountryID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="PoBox" ColumnName="PoBox" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -20838,29 +21059,12 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SupplierDepartments">
-            <EntityTypeMapping TypeName="IMEModel.SupplierDepartment">
-              <MappingFragment StoreEntitySet="SupplierDepartment">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="departmentname" ColumnName="departmentname" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SupplierSubCategories">
             <EntityTypeMapping TypeName="IMEModel.SupplierSubCategory">
               <MappingFragment StoreEntitySet="SupplierSubCategory">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="subcategoryname" ColumnName="subcategoryname" />
                 <ScalarProperty Name="categoryID" ColumnName="categoryID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SupplierTitles">
-            <EntityTypeMapping TypeName="IMEModel.SupplierTitle">
-              <MappingFragment StoreEntitySet="SupplierTitle">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="titlename" ColumnName="titlename" />
-                <ScalarProperty Name="departmnetID" ColumnName="departmnetID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -20879,7 +21083,6 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="supplierID" ColumnName="supplierID" />
                 <ScalarProperty Name="supplierNoteID" ColumnName="supplierNoteID" />
                 <ScalarProperty Name="languageID" ColumnName="languageID" />
-                <ScalarProperty Name="categoryID" ColumnName="categoryID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -21342,6 +21545,43 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImportMapping FunctionImportName="BalanceSheet" FunctionName="IMEModel.Store.BalanceSheet">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.BalanceSheet_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BalanceSheetAssets" FunctionName="IMEModel.Store.BalanceSheetAssets">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.BalanceSheetAssets_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BalanceSheetDifference" FunctionName="IMEModel.Store.BalanceSheetDifference" />
+          <FunctionImportMapping FunctionImportName="BalanceSheetLiabilities" FunctionName="IMEModel.Store.BalanceSheetLiabilities">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.BalanceSheetLiabilities_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BalanceSheetProfitAndLoss" FunctionName="IMEModel.Store.BalanceSheetProfitAndLoss">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.BalanceSheetProfitAndLoss_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BalanceSheetProfitAndLossAccount" FunctionName="IMEModel.Store.BalanceSheetProfitAndLossAccount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.BalanceSheetProfitAndLossAccount_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Balance" ColumnName="Balance" />
@@ -21955,12 +22195,131 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisDirectExpenses" FunctionName="IMEModel.Store.ProfitAndLossAnalysisDirectExpenses">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisDirectExpenses_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisDirectIncome" FunctionName="IMEModel.Store.ProfitAndLossAnalysisDirectIncome">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisDirectIncome_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisInDirectExpenses" FunctionName="IMEModel.Store.ProfitAndLossAnalysisInDirectExpenses">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisInDirectExpenses_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisInDirectIncome" FunctionName="IMEModel.Store.ProfitAndLossAnalysisInDirectIncome">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisInDirectIncome_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisPurchaseAccount" FunctionName="IMEModel.Store.ProfitAndLossAnalysisPurchaseAccount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisPurchaseAccount_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisSalesAccount" FunctionName="IMEModel.Store.ProfitAndLossAnalysisSalesAccount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisSalesAccount_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisUpToaDateForBalansheet" FunctionName="IMEModel.Store.ProfitAndLossAnalysisUpToaDateForBalansheet">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheet_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Debit" ColumnName="Debit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses" FunctionName="IMEModel.Store.ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome" FunctionName="IMEModel.Store.ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses" FunctionName="IMEModel.Store.ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome" FunctionName="IMEModel.Store.ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount" FunctionName="IMEModel.Store.ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount" FunctionName="IMEModel.Store.ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossReportPrintCompany" FunctionName="IMEModel.Store.ProfitAndLossReportPrintCompany">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossReportPrintCompany_Result">
+                <ScalarProperty Name="companyName" ColumnName="companyName" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="currencyName" ColumnName="currencyName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -22775,6 +23134,45 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="Balance" ColumnName="Balance" />
                 <ScalarProperty Name="OpBalance" ColumnName="OpBalance" />
                 <ScalarProperty Name="Balance1" ColumnName="Balance1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Trialbalance1" FunctionName="IMEModel.Store.Trialbalance1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.Trialbalance1_Result">
+                <ScalarProperty Name="Sl_No" ColumnName="Sl No" />
+                <ScalarProperty Name="accountGroupId" ColumnName="accountGroupId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="debit" ColumnName="debit" />
+                <ScalarProperty Name="credit" ColumnName="credit" />
+                <ScalarProperty Name="OpeningBalance" ColumnName="OpeningBalance" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="OpBalance" ColumnName="OpBalance" />
+                <ScalarProperty Name="Balance1" ColumnName="Balance1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Trialbalance2" FunctionName="IMEModel.Store.Trialbalance2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.Trialbalance2_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="debit" ColumnName="debit" />
+                <ScalarProperty Name="credit" ColumnName="credit" />
+                <ScalarProperty Name="OpeningBalance" ColumnName="OpeningBalance" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Trialbalance3" FunctionName="IMEModel.Store.Trialbalance3">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.Trialbalance3_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="debit" ColumnName="debit" />
+                <ScalarProperty Name="credit" ColumnName="credit" />
+                <ScalarProperty Name="OpeningBalance" ColumnName="OpeningBalance" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
