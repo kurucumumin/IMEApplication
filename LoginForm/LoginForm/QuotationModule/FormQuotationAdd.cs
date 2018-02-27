@@ -145,9 +145,10 @@ namespace LoginForm.QuotationModule
 
             }
         }
-
+       
         private void QuotationForm_Load(object sender, EventArgs e)
         {
+           
             if (txtCustomerName.Text == null || txtCustomerName.Text == "")
             {
                 btnContactAdd.Enabled = false;
@@ -738,7 +739,8 @@ namespace LoginForm.QuotationModule
                                 GetMargin();
                                 dgQuotationAddedItems.Rows[rowindex].Cells["dgMargin"].Value = String.Format("{0:0.0000}", Decimal.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgMargin"].Value.ToString())).ToString();
                                 if (dgQuotationAddedItems.CurrentRow.Cells["dgUnitWeigt"].Value != null && dgQuotationAddedItems.CurrentRow.Cells["dgUnitWeigt"].Value != "") dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgTotalWeight"].Value = (Decimal.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.CurrentCell.RowIndex].Cells["dgUnitWeigt"].Value.ToString()) * Int32.Parse(dgQuotationAddedItems.Rows[rowindex].Cells["dgQty"].Value.ToString())).ToString();
-                                txtTotalMargin.Text = calculateTotalMargin().ToString();
+                                
+                                txtTotalMargin.Text = String.Format("{0:0.0000}", calculateTotalMargin()).ToString();
                             }
                             //else { MessageBox.Show("This product does not have price"); }
                         }
@@ -754,8 +756,33 @@ namespace LoginForm.QuotationModule
                 #endregion
             }
             txtTotalMarge.Text = txtTotalMarge.Text = calculateTotalMargin().ToString();
+            
+            txtTotalMarge.Text = String.Format("{0:0.0000}", Decimal.Parse(txtTotalMarge.Text)).ToString();
+            calculateTotalCost();
         }
 
+
+        private void calculateTotalCost()
+        {
+            try {
+                decimal totalCost = 0;
+                for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+                {
+                    decimal LandingCost = 0;
+                    decimal Quantity = 0;
+                    LandingCost = decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgLandingCost.Index].Value.ToString());
+                    Quantity = decimal.Parse(dgQuotationAddedItems.Rows[i].Cells[dgQty.Index].Value.ToString());
+                    totalCost += (LandingCost * Quantity);
+                }
+                decimal PoundRate = 0;
+                decimal CurrentRate = 0;
+                 PoundRate = (decimal)IME.ExchangeRates.Where(a => a.Currency.currencyName == "Pound").OrderByDescending(a=>a.date).FirstOrDefault().rate;
+                CurrentRate = (decimal)IME.ExchangeRates.Where(a => a.currencyId == (decimal)cbCurrency.SelectedValue).OrderByDescending(a => a.date).FirstOrDefault().rate;
+                totalCost = totalCost * PoundRate/(CurrentRate) ;
+                txtTotalCost.Text = String.Format("{0:0.0000}", totalCost).ToString();
+            }
+            catch { }
+        }
         private void GetMarginMark(int rowindex)
         {
             try
@@ -878,7 +905,11 @@ namespace LoginForm.QuotationModule
                 catch { }
 
             }
-            if(total!=0)txtTotalMarge.Text = (totalMargin / total).ToString();
+            if (total != 0)
+            {
+                txtTotalMarge.Text = (totalMargin / total).ToString();
+                txtTotalMarge.Text = String.Format("{0:0.0000}", Decimal.Parse(txtTotalMarge.Text)).ToString();
+            }
             #endregion
         }
 
@@ -1513,7 +1544,12 @@ namespace LoginForm.QuotationModule
             if (txtCustomerName.Text == null || txtCustomerName.Text == String.Empty) { MessageBox.Show("Please Enter a Customer"); return false; }
             for (int i = 0; i < dgQuotationAddedItems.RowCount - 1; i++)
             {
-                if (dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value != null && Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString()) < Utils.getCurrentUser().MinMarge) { MessageBox.Show("Please Check Merge of Products "); return false; }
+                if (dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value != null && Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString()) < Utils.getCurrentUser().MinMarge) { MessageBox.Show("Please Check Margin of Products "); return false; }
+                if (Utils.getCurrentUser().MinMarge <decimal.Parse(txtTotalMarge.Text))
+                {
+                    MessageBox.Show("You are not able to give this Total Margin. Please check the Total Margin");
+                    return false;
+                }
             }
             return true;
         }
@@ -2125,7 +2161,7 @@ namespace LoginForm.QuotationModule
             {
                 GetCurrency(dtpDate.Value);
                 ChangeCurr();
-
+                calculateTotalCost();
             }
 
         }
@@ -2588,10 +2624,14 @@ namespace LoginForm.QuotationModule
                 }
                 //
                 decimal totaldis = (Decimal.Parse(txtTotalDis2.Text) * 100) / subtotal;
-                txtTotalDis.Text = totaldis.ToString();
+                txtTotalDis.Text = String.Format("{0:0.0000}", totaldis).ToString();
                 lbltotal.Text = (Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)).ToString();
                 getTotalDiscMargin();
-                if (txtTotalMarge.Visible == true) txtTotalMarge.Text = calculateTotalMargin().ToString();
+                if (txtTotalMarge.Visible == true)
+                {
+                    txtTotalMarge.Text = calculateTotalMargin().ToString();
+                    txtTotalMarge.Text = String.Format("{0:0.0000}", Decimal.Parse(txtTotalMarge.Text)).ToString();
+                }
             }
         }
 
@@ -2637,14 +2677,14 @@ namespace LoginForm.QuotationModule
                     //
                     decimal subtotal = Decimal.Parse(lblsubtotal.Text) - hztotal;
                     decimal dis2 = subtotal * Decimal.Parse(txtTotalDis.Text) / 100;
-                    txtTotalDis2.Text = dis2.ToString();
-                    lbltotal.Text = (Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text)).ToString();
+                    txtTotalDis2.Text = String.Format("{0:0.0000}", dis2).ToString();
+                    lbltotal.Text = String.Format("{0:0.0000}", (Decimal.Parse(lblsubtotal.Text) - decimal.Parse(txtTotalDis2.Text))).ToString(); 
                 }
                 if (cbDeliverDiscount.Checked) getTotalDiscMargin();
                 if (txtTotalMarge.Visible == true) {
                     
                         txtTotalMarge.Text = calculateTotalMargin().ToString();
-                   
+                    txtTotalMarge.Text = String.Format("{0:0.0000}", Decimal.Parse(txtTotalMarge.Text)).ToString();
                 } 
                     
                         
@@ -2688,7 +2728,8 @@ namespace LoginForm.QuotationModule
             }
             if (cbDeliverDiscount.Checked)
             {
-                txtTotalMargin.Text = (totalMargin / subtotal).ToString();
+                
+                txtTotalMargin.Text = String.Format("{0:0.0000}", totalMargin / subtotal).ToString();
             }
             else
             {
@@ -2704,7 +2745,8 @@ namespace LoginForm.QuotationModule
                     subtotal1 += Itemtotal1;
                     totalMargin1 += (margin1 * Itemtotal1);
                 }
-                txtTotalMargin.Text = (totalMargin1 / subtotal1).ToString();
+
+                txtTotalMargin.Text = String.Format("{0:0.0000}", totalMargin1 / subtotal1).ToString();
             }
                 
            
@@ -2981,7 +3023,8 @@ namespace LoginForm.QuotationModule
             }
             lblsubtotal.Text = subtotal.ToString();
             GetAllMargin();
-            txtTotalMarge.Text = calculateTotalMargin().ToString(); 
+            txtTotalMarge.Text = calculateTotalMargin().ToString();
+            txtTotalMarge.Text = String.Format("{0:0.0000}", Decimal.Parse(txtTotalMarge.Text)).ToString();
         }
 
         private void cbFactor_Leave(object sender, EventArgs e)
@@ -3105,6 +3148,7 @@ namespace LoginForm.QuotationModule
 
                 dgQuotationAddedItems.Rows.Add();
                 dgQuotationAddedItems.Rows[0].Cells[0].Value = "1";
+                calculateTotalCost();
             }
         }
 
