@@ -10,7 +10,6 @@ using System.Windows.Forms;
 
 namespace LoginForm
 {
-    //
     public partial class SupplierMain : Form
         {
         IMEEntities IME = new IMEEntities();
