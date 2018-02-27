@@ -1608,6 +1608,18 @@
     <Compile Include="Supplier\CemSupplierMainCem.designer.cs">
       <DependentUpon>CemSupplierMainCem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Supplier\frmSupplierCategoryAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier\frmSupplierCategoryAdd.designer.cs">
+      <DependentUpon>frmSupplierCategoryAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier\frmSupplierSubCategoryAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supplier\frmSupplierSubCategoryAdd.designer.cs">
+      <DependentUpon>frmSupplierSubCategoryAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="User\FormUsersMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1948,6 +1960,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Supplier\CemSupplierMainCem.resx">
       <DependentUpon>CemSupplierMainCem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplier\frmSupplierCategoryAdd.resx">
+      <DependentUpon>frmSupplierCategoryAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supplier\frmSupplierSubCategoryAdd.resx">
+      <DependentUpon>frmSupplierSubCategoryAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="User\FormUsersMain.resx">
       <DependentUpon>FormUsersMain.cs</DependentUpon>
