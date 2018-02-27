@@ -799,6 +799,71 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalanceSheet_Result>("BalanceSheet", toDateParameter, fromDateParameter);
         }
     
+        public virtual ObjectResult<BalanceSheetAssets_Result> BalanceSheetAssets(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
+        {
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalanceSheetAssets_Result>("BalanceSheetAssets", toDateParameter, fromDateParameter);
+        }
+    
+        public virtual int BalanceSheetDifference(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
+        {
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("BalanceSheetDifference", toDateParameter, fromDateParameter);
+        }
+    
+        public virtual ObjectResult<BalanceSheetLiabilities_Result> BalanceSheetLiabilities(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
+        {
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalanceSheetLiabilities_Result>("BalanceSheetLiabilities", toDateParameter, fromDateParameter);
+        }
+    
+        public virtual ObjectResult<BalanceSheetProfitAndLoss_Result> BalanceSheetProfitAndLoss(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
+        {
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalanceSheetProfitAndLoss_Result>("BalanceSheetProfitAndLoss", toDateParameter, fromDateParameter);
+        }
+    
+        public virtual ObjectResult<BalanceSheetProfitAndLossAccount_Result> BalanceSheetProfitAndLossAccount(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
+        {
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalanceSheetProfitAndLossAccount_Result>("BalanceSheetProfitAndLossAccount", toDateParameter, fromDateParameter);
+        }
+    
         public virtual ObjectResult<BankAccountComboFill_Result> BankAccountComboFill()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BankAccountComboFill_Result>("BankAccountComboFill");
@@ -2125,6 +2190,84 @@ namespace LoginForm.DataSet
                 new ObjectParameter("toDate", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForBalansheet_Result>("ProfitAndLossAnalysisUpToaDateForBalansheet", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses_Result> ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses_Result>("ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome_Result> ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome_Result>("ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses_Result> ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses_Result>("ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome_Result> ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome_Result>("ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount_Result> ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount_Result>("ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount_Result> ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount_Result>("ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount", fromDateParameter, toDateParameter);
         }
     
         public virtual int PurchaseBillTaxAdd(Nullable<decimal> purchaseMasterId, Nullable<decimal> taxId, Nullable<decimal> taxAmount)

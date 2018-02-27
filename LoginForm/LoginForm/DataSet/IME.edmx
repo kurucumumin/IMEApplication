@@ -5922,6 +5922,26 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="toDate" Type="datetime" Mode="In" />
           <Parameter Name="fromDate" Type="datetime" Mode="In" />
         </Function>
+        <Function Name="BalanceSheetAssets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="BalanceSheetDifference" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="BalanceSheetLiabilities" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="BalanceSheetProfitAndLoss" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="BalanceSheetProfitAndLossAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="BankAccountComboFill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="BankReconciliationFillUnrecon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ledgerId" Type="numeric" Mode="In" />
@@ -6310,6 +6330,30 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="productID" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="ProfitAndLossAnalysisUpToaDateForBalansheet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="fromDate" Type="datetime" Mode="In" />
           <Parameter Name="toDate" Type="datetime" Mode="In" />
         </Function>
@@ -16316,6 +16360,26 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="BalanceSheetAssets" ReturnType="Collection(IMEModel.BalanceSheetAssets_Result)">
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="BalanceSheetDifference">
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="BalanceSheetLiabilities" ReturnType="Collection(IMEModel.BalanceSheetLiabilities_Result)">
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="BalanceSheetProfitAndLoss" ReturnType="Collection(IMEModel.BalanceSheetProfitAndLoss_Result)">
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="BalanceSheetProfitAndLossAccount" ReturnType="Collection(IMEModel.BalanceSheetProfitAndLossAccount_Result)">
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="BankAccountComboFill" ReturnType="Collection(IMEModel.BankAccountComboFill_Result)" />
           <FunctionImport Name="BankReconciliationFillUnrecon" ReturnType="Collection(IMEModel.BankReconciliationFillUnrecon_Result)">
             <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
@@ -16693,6 +16757,30 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="productID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForBalansheet" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheet_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount" ReturnType="Collection(IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount_Result)">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -17718,6 +17806,26 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="Balance" Nullable="true" Precision="18" Scale="2" />
         </ComplexType>
+        <ComplexType Name="BalanceSheetAssets_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="BalanceSheetLiabilities_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="BalanceSheetProfitAndLoss_Result">
+          <Property Type="String" Name="ID" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="15" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="24" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="BalanceSheetProfitAndLossAccount_Result">
+          <Property Type="String" Name="ID" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="23" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="24" Scale="2" />
+        </ComplexType>
         <ComplexType Name="BankAccountComboFill_Result">
           <Property Type="String" Name="ledgerName" Nullable="true" />
           <Property Type="Decimal" Name="ledgerId" Nullable="false" Precision="18" Scale="0" />
@@ -18115,6 +18223,36 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="Debit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Debit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Credit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Debit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Credit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Debit" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Credit" Nullable="true" Precision="38" Scale="2" />
         </ComplexType>
         <ComplexType Name="PurchaseBillTaxViewAllByPurchaseMasterId_Result">
           <Property Type="Decimal" Name="purchaseBillTaxId" Nullable="false" Precision="18" Scale="0" />
@@ -21204,6 +21342,43 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BalanceSheetAssets" FunctionName="IMEModel.Store.BalanceSheetAssets">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.BalanceSheetAssets_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BalanceSheetDifference" FunctionName="IMEModel.Store.BalanceSheetDifference" />
+          <FunctionImportMapping FunctionImportName="BalanceSheetLiabilities" FunctionName="IMEModel.Store.BalanceSheetLiabilities">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.BalanceSheetLiabilities_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BalanceSheetProfitAndLoss" FunctionName="IMEModel.Store.BalanceSheetProfitAndLoss">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.BalanceSheetProfitAndLoss_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BalanceSheetProfitAndLossAccount" FunctionName="IMEModel.Store.BalanceSheetProfitAndLossAccount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.BalanceSheetProfitAndLossAccount_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="BankAccountComboFill" FunctionName="IMEModel.Store.BankAccountComboFill">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.BankAccountComboFill_Result">
@@ -21817,6 +21992,60 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Debit" ColumnName="Debit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses" FunctionName="IMEModel.Store.ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome" FunctionName="IMEModel.Store.ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses" FunctionName="IMEModel.Store.ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome" FunctionName="IMEModel.Store.ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount" FunctionName="IMEModel.Store.ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Debit" ColumnName="Debit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount" FunctionName="IMEModel.Store.ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
