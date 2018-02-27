@@ -129,6 +129,12 @@
     <Compile Include="Account\Budget\frmBudgetVariance.Designer.cs">
       <DependentUpon>frmBudgetVariance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\FinancialStatements\frmTrialBalance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\FinancialStatements\frmTrialBalance.Designer.cs">
+      <DependentUpon>frmTrialBalance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Master\frmAccountGroup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -578,6 +584,9 @@
     <Compile Include="DataSet\AccountGroup.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\AccountGroupHierarchy_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\AccountGroupSearch_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -591,6 +600,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\AccountLedger.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\AccountLedgerGetGroupUnderFunction_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\AccountLedgerSearchForServiceAccountUnderIncome_Result.cs">
@@ -642,6 +654,21 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\AuthorizationValue.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\BalanceSheetAssets_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\BalanceSheetLiabilities_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\BalanceSheetProfitAndLossAccount_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\BalanceSheetProfitAndLoss_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\BalanceSheet_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\BankAccountComboFill_Result.cs">
@@ -972,6 +999,27 @@
     <Compile Include="DataSet\ProductView_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ProfitAndLossAnalysisUpToaDateForBalansheet_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\PurchaseBillTax.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -1045,6 +1093,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Quotation.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\QuotationDelivery.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\QuotationDetail.cs">
@@ -1230,7 +1281,7 @@
     <Compile Include="DataSet\Supplier.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataSet\SupplierAdress.cs">
+    <Compile Include="DataSet\SupplierAddress.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\SupplierBank.cs">
@@ -1282,6 +1333,18 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Town.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Trialbalance1_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Trialbalance2_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Trialbalance3_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\Trialbalance_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Unit.cs">
@@ -1587,6 +1650,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Budget\frmBudgetVariance.resx">
       <DependentUpon>frmBudgetVariance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\FinancialStatements\frmTrialBalance.resx">
+      <DependentUpon>frmTrialBalance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Master\frmAccountGroup.resx">
       <DependentUpon>frmAccountGroup.cs</DependentUpon>

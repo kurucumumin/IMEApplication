@@ -42,8 +42,10 @@ namespace LoginForm.DataSet
         public Nullable<decimal> UnitWeight { get; set; }
         public string DependantTable { get; set; }
         public Nullable<decimal> unitConversionId { get; set; }
+        public Nullable<int> quotationDeliveryID { get; set; }
     
         public virtual Quotation Quotation { get; set; }
+        public virtual QuotationDelivery QuotationDelivery { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SaleOrderDetail> SaleOrderDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -12,24 +12,26 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class Country
+    public partial class SupplierAddress
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Country()
+        public SupplierAddress()
         {
-            this.Cities = new HashSet<City>();
-            this.CustomerAddresses = new HashSet<CustomerAddress>();
-            this.SupplierAddresses = new HashSet<SupplierAddress>();
+            this.SupplierWorkers = new HashSet<SupplierWorker>();
         }
     
         public int ID { get; set; }
-        public string Country_name { get; set; }
+        public string SupplierID { get; set; }
+        public string AdressDetails { get; set; }
+        public Nullable<int> TownID { get; set; }
+        public Nullable<int> CityID { get; set; }
+        public Nullable<int> CountryID { get; set; }
     
+        public virtual City City { get; set; }
+        public virtual Country Country { get; set; }
+        public virtual Supplier Supplier { get; set; }
+        public virtual Town Town { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<City> Cities { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerAddress> CustomerAddresses { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SupplierAddress> SupplierAddresses { get; set; }
+        public virtual ICollection<SupplierWorker> SupplierWorkers { get; set; }
     }
 }

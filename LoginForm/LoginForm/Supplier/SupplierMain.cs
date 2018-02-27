@@ -170,7 +170,7 @@ namespace LoginForm
            DataSet.Supplier c = IME.Suppliers.Where(a => a.ID == supplierID).FirstOrDefault();
            // dateTimePicker1.Value = c.CreateDate.Value;
             txtcode.Text = c.ID;
-            AdressList.DataSource = IME.SupplierAdresses.Where(customera => customera.SupplierID == txtcode.Text).ToList();
+            AdressList.DataSource = IME.SupplierAddresses.Where(customera => customera.SupplierID == txtcode.Text).ToList();
             AdressList.DisplayMember = "AdressDetails";
             AdressList.ValueMember = "ID";
             //ContactAdress.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
@@ -559,7 +559,7 @@ namespace LoginForm
                 string supplierID = dgSupplier.CurrentRow.Cells["ID"].Value.ToString();
                 DataSet.Supplier c = IME.Suppliers.Where(a => a.ID == supplierID).FirstOrDefault();
                 txtcode.Text = c.ID;
-                AdressList.DataSource = IME.SupplierAdresses.Where(customera => customera.SupplierID == txtcode.Text).ToList();
+                AdressList.DataSource = IME.SupplierAddresses.Where(customera => customera.SupplierID == txtcode.Text).ToList();
                 AdressList.DisplayMember = "AdressDetails";
                 txtname.Text = c.s_name;
                 txtphone.Text = c.telephone;
@@ -1052,10 +1052,10 @@ namespace LoginForm
             DialogResult dialogResult = MessageBox.Show("Are You Sure Delete This Adress ?", "Delete", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                SupplierAdress ca = IME.SupplierAdresses.First(a => a.ID == ContactListItem.AdressID);
-                IME.SupplierAdresses.Remove(ca);
+                SupplierAddress ca = IME.SupplierAddresses.First(a => a.ID == ContactListItem.AdressID);
+                IME.SupplierAddresses.Remove(ca);
                 IME.SaveChanges();
-                AdressList.DataSource = IME.SupplierAdresses.Where(suppliera => suppliera.SupplierID == txtcode.Text).ToList();
+                AdressList.DataSource = IME.SupplierAddresses.Where(suppliera => suppliera.SupplierID == txtcode.Text).ToList();
                 AdressList.DisplayMember = "AdressDetails";
             }
             else if (dialogResult == DialogResult.No)
@@ -1066,11 +1066,11 @@ namespace LoginForm
 
         private void AdressDone_Click(object sender, EventArgs e)
         {
-            SupplierAdress ca = new SupplierAdress();
+            SupplierAddress ca = new SupplierAddress();
             if (isUpdateAdress == 1)
             {
-                int saID = ((AdressList).SelectedItem as SupplierAdress).ID;
-                ca = IME.SupplierAdresses.Where(a => a.ID == saID).FirstOrDefault();
+                int saID = ((AdressList).SelectedItem as SupplierAddress).ID;
+                ca = IME.SupplierAddresses.Where(a => a.ID == saID).FirstOrDefault();
             }
             else { ca = null; }
 
@@ -1086,14 +1086,14 @@ namespace LoginForm
             }
             else
             {
-                ca = new SupplierAdress();
+                ca = new SupplierAddress();
                 ca.SupplierID = txtcode.Text;
                 ca.CountryID = ((cmbcounrty).SelectedItem as Country).ID;
                 ca.CityID = ((cmbcity).SelectedItem as City).ID;
                 ca.TownID = ((cmbtown).SelectedItem as Town).ID;
                 ca.AdressDetails = txtCompanyAddress.Text;
                 
-                IME.SupplierAdresses.Add(ca);
+                IME.SupplierAddresses.Add(ca);
                 IME.SaveChanges();
             }
 
@@ -1104,7 +1104,7 @@ namespace LoginForm
                 dgSupplier.Enabled = true;
             }
             AdressList.DataSource = null;
-            AdressList.DataSource = IME.SupplierAdresses.Where(suppliera => suppliera.SupplierID == txtcode.Text).ToList();
+            AdressList.DataSource = IME.SupplierAddresses.Where(suppliera => suppliera.SupplierID == txtcode.Text).ToList();
             AdressList.DisplayMember = "AdressDetails";
 
             AdressAdd.Visible = true;
@@ -1122,7 +1122,7 @@ namespace LoginForm
                 txtsearch.Enabled = true;
                 dgSupplier.Enabled = true;
             }
-            AdressList.DataSource = IME.SupplierAdresses.Where(suppliera => suppliera.SupplierID == txtcode.Text).ToList();
+            AdressList.DataSource = IME.SupplierAddresses.Where(suppliera => suppliera.SupplierID == txtcode.Text).ToList();
             AdressList.DisplayMember = "AdressDetails";
 
             AdressAdd.Visible = true;
@@ -1138,14 +1138,14 @@ namespace LoginForm
             #region AdressList
             //contact daki list box a tıklandığında contact ın bilgileri tıklanan göre doldurulmasıse
             int cw_ID = 0;
-            try { cw_ID = ((SupplierAdress)((ListBox)sender).SelectedValue).ID; } catch { cw_ID = 0; }
+            try { cw_ID = ((SupplierAddress)((ListBox)sender).SelectedValue).ID; } catch { cw_ID = 0; }
             try
             {
                 if (ContactListItem.AdressID != cw_ID)
                 {
                     ContactListItem.AdressID = cw_ID;
 
-                    var contact1 = IME.SupplierAdresses.Where(cw => cw.ID == cw_ID).ToList();
+                    var contact1 = IME.SupplierAddresses.Where(cw => cw.ID == cw_ID).ToList();
                     foreach (var a in contact1)
                     {
                        

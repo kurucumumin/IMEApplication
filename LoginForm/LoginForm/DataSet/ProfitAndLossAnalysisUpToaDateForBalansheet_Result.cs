@@ -10,14 +10,11 @@
 namespace LoginForm.DataSet
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class V_Product
+    public partial class ProfitAndLossAnalysisUpToaDateForBalansheet_Result
     {
-        public string productId { get; set; }
-        public string productCode { get; set; }
-        public string Unit_Measure { get; set; }
-        public string Brandname { get; set; }
-        public string dependantTable { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public Nullable<decimal> Debit { get; set; }
     }
 }

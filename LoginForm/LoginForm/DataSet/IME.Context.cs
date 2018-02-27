@@ -102,6 +102,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<PurchaseReturnDetail> PurchaseReturnDetails { get; set; }
         public virtual DbSet<PurchaseReturnMaster> PurchaseReturnMasters { get; set; }
         public virtual DbSet<Quotation> Quotations { get; set; }
+        public virtual DbSet<QuotationDelivery> QuotationDeliveries { get; set; }
         public virtual DbSet<QuotationDetail> QuotationDetails { get; set; }
         public virtual DbSet<Rack> Racks { get; set; }
         public virtual DbSet<Rate> Rates { get; set; }
@@ -140,7 +141,7 @@ namespace LoginForm.DataSet
         public virtual DbSet<SuperDisk> SuperDisks { get; set; }
         public virtual DbSet<SuperDiskP> SuperDiskPs { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
-        public virtual DbSet<SupplierAdress> SupplierAdresses { get; set; }
+        public virtual DbSet<SupplierAddress> SupplierAddresses { get; set; }
         public virtual DbSet<SupplierBank> SupplierBanks { get; set; }
         public virtual DbSet<SupplierCategory> SupplierCategories { get; set; }
         public virtual DbSet<SupplierDepartment> SupplierDepartments { get; set; }
@@ -159,6 +160,26 @@ namespace LoginForm.DataSet
         public virtual DbSet<AdditionalCost> AdditionalCosts { get; set; }
         public virtual DbSet<SalaryVoucherDetail> SalaryVoucherDetails { get; set; }
         public virtual DbSet<V_Product> V_Product { get; set; }
+    
+        [DbFunction("IMEEntities", "AccountGroupHierarchy")]
+        public virtual IQueryable<AccountGroupHierarchy_Result> AccountGroupHierarchy(Nullable<decimal> groupId)
+        {
+            var groupIdParameter = groupId.HasValue ?
+                new ObjectParameter("groupId", groupId) :
+                new ObjectParameter("groupId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<AccountGroupHierarchy_Result>("[IMEEntities].[AccountGroupHierarchy](@groupId)", groupIdParameter);
+        }
+    
+        [DbFunction("IMEEntities", "AccountLedgerGetGroupUnderFunction")]
+        public virtual IQueryable<AccountLedgerGetGroupUnderFunction_Result> AccountLedgerGetGroupUnderFunction(string accountGroupId)
+        {
+            var accountGroupIdParameter = accountGroupId != null ?
+                new ObjectParameter("accountGroupId", accountGroupId) :
+                new ObjectParameter("accountGroupId", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<AccountLedgerGetGroupUnderFunction_Result>("[IMEEntities].[AccountLedgerGetGroupUnderFunction](@accountGroupId)", accountGroupIdParameter);
+        }
     
         public virtual ObjectResult<Nullable<decimal>> AccountGroupAddWithIdentity(string accountGroupName, string groupUnder, string narration, Nullable<bool> isDefault, string nature, string affectGrossProfit)
         {
@@ -766,6 +787,84 @@ namespace LoginForm.DataSet
         public virtual ObjectResult<ArticleSelectAll_Result> ArticleSelectAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ArticleSelectAll_Result>("ArticleSelectAll");
+        }
+    
+        public virtual ObjectResult<BalanceSheet_Result> BalanceSheet(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
+        {
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalanceSheet_Result>("BalanceSheet", toDateParameter, fromDateParameter);
+        }
+    
+        public virtual ObjectResult<BalanceSheetAssets_Result> BalanceSheetAssets(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
+        {
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalanceSheetAssets_Result>("BalanceSheetAssets", toDateParameter, fromDateParameter);
+        }
+    
+        public virtual int BalanceSheetDifference(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
+        {
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("BalanceSheetDifference", toDateParameter, fromDateParameter);
+        }
+    
+        public virtual ObjectResult<BalanceSheetLiabilities_Result> BalanceSheetLiabilities(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
+        {
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalanceSheetLiabilities_Result>("BalanceSheetLiabilities", toDateParameter, fromDateParameter);
+        }
+    
+        public virtual ObjectResult<BalanceSheetProfitAndLoss_Result> BalanceSheetProfitAndLoss(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
+        {
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalanceSheetProfitAndLoss_Result>("BalanceSheetProfitAndLoss", toDateParameter, fromDateParameter);
+        }
+    
+        public virtual ObjectResult<BalanceSheetProfitAndLossAccount_Result> BalanceSheetProfitAndLossAccount(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
+        {
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalanceSheetProfitAndLossAccount_Result>("BalanceSheetProfitAndLossAccount", toDateParameter, fromDateParameter);
         }
     
         public virtual ObjectResult<BankAccountComboFill_Result> BankAccountComboFill()
@@ -2081,6 +2180,97 @@ namespace LoginForm.DataSet
                 new ObjectParameter("productID", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProductViewWithID_Result>("ProductViewWithID", productIDParameter);
+        }
+    
+        public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForBalansheet_Result> ProfitAndLossAnalysisUpToaDateForBalansheet(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForBalansheet_Result>("ProfitAndLossAnalysisUpToaDateForBalansheet", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses_Result> ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses_Result>("ProfitAndLossAnalysisUpToaDateForBalansheetDirectExpenses", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome_Result> ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome_Result>("ProfitAndLossAnalysisUpToaDateForBalansheetDirectincome", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses_Result> ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses_Result>("ProfitAndLossAnalysisUpToaDateForBalansheetIndirectExpenses", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome_Result> ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome_Result>("ProfitAndLossAnalysisUpToaDateForBalansheetIndirectincome", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount_Result> ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount_Result>("ProfitAndLossAnalysisUpToaDateForBalansheetPurchaseAcount", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount_Result> ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount_Result>("ProfitAndLossAnalysisUpToaDateForBalansheetSalesAcount", fromDateParameter, toDateParameter);
         }
     
         public virtual int PurchaseBillTaxAdd(Nullable<decimal> purchaseMasterId, Nullable<decimal> taxId, Nullable<decimal> taxAmount)
@@ -4465,6 +4655,181 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockPostingDeleteForSalesInvoiceAgainstDeliveryNote", againstvoucherTypeIdParameter, againstVoucherNoParameter, voucherNoParameter, voucherTypeIdParameter);
         }
     
+        public virtual int StockValueOnDateByAVCO(Nullable<System.DateTime> date)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByAVCO", dateParameter);
+        }
+    
+        public virtual int StockValueOnDateByAVCOForOpeningStock(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByAVCOForOpeningStock", dateParameter, fromDateParameter);
+        }
+    
+        public virtual int StockValueOnDateByAVCOForOpeningStockForBalanceSheet(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByAVCOForOpeningStockForBalanceSheet", dateParameter, fromDateParameter);
+        }
+    
+        public virtual int StockValueOnDateByFIFO(Nullable<System.DateTime> date)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByFIFO", dateParameter);
+        }
+    
+        public virtual int StockValueOnDateByFIFOForOpeningStock(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByFIFOForOpeningStock", dateParameter, fromDateParameter);
+        }
+    
+        public virtual int StockValueOnDateByFIFOForOpeningStockForBalancesheet(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByFIFOForOpeningStockForBalancesheet", dateParameter, fromDateParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> StockValueOnDateByHighCost(Nullable<System.DateTime> date)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("StockValueOnDateByHighCost", dateParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> StockValueOnDateByHighCostForOpeningStock(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("StockValueOnDateByHighCostForOpeningStock", dateParameter, fromDateParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> StockValueOnDateByHighCostForOpeningStockBlncSheet(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("StockValueOnDateByHighCostForOpeningStockBlncSheet", dateParameter, fromDateParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> StockValueOnDateByLastPurchaseRate(Nullable<System.DateTime> date)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("StockValueOnDateByLastPurchaseRate", dateParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> StockValueOnDateByLastPurchaseRateForOpeningStock(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("StockValueOnDateByLastPurchaseRateForOpeningStock", dateParameter, fromDateParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> StockValueOnDateByLastPurchaseRateForOpeningStockBlncSheet(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("StockValueOnDateByLastPurchaseRateForOpeningStockBlncSheet", dateParameter, fromDateParameter);
+        }
+    
+        public virtual int StockValueOnDateByLowCost(Nullable<System.DateTime> date)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByLowCost", dateParameter);
+        }
+    
+        public virtual int StockValueOnDateByLowCostForOpeningStock(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByLowCostForOpeningStock", dateParameter, fromDateParameter);
+        }
+    
+        public virtual int StockValueOnDateByLowCostForOpeningStockForBlncSheet(Nullable<System.DateTime> date, Nullable<System.DateTime> fromDate)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("date", date) :
+                new ObjectParameter("date", typeof(System.DateTime));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockValueOnDateByLowCostForOpeningStockForBlncSheet", dateParameter, fromDateParameter);
+        }
+    
         public virtual int SuperDiskAdd(string article_No, string article_Desc, Nullable<int> pack_Code, Nullable<int> pack_Quantity, Nullable<int> unit_Content, string unit_Measure, Nullable<decimal> uk_Col_1, Nullable<decimal> standard_Weight, string hazardous_Ind, string calibration_Ind, string obsolete_Flag, string mH1, string low_Discount_Ind, string licensed_Ind, string shelf_Life, string cofO, string eUR1_Indicator, string cCCN_No, string supercede_Date, string current_Cat_page, string uk_Intro_Date, string filler, string uk_Disc_Date, string substitute_By, string bHC_Flag, string filler1, Nullable<decimal> future_Sell_Price, string int_Cat, string new_Prod_Change_Ind, string out_of_Stock_Prohibit_change_ind, string disc_Change_Ind, string superceded_Change_Ind, string pack_Size_Change_Ind, string rolled_Product_Change_Ind, string expiring_Product_Change_Ind, string manufacturer, string mPN, string mH_Code_Level_1, Nullable<decimal> heigh, Nullable<decimal> width, Nullable<decimal> length)
         {
             var article_NoParameter = article_No != null ?
@@ -4882,6 +5247,74 @@ namespace LoginForm.DataSet
         public virtual ObjectResult<TaxViewAllForVoucherType_Result> TaxViewAllForVoucherType()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxViewAllForVoucherType_Result>("TaxViewAllForVoucherType");
+        }
+    
+        public virtual ObjectResult<Trialbalance_Result> Trialbalance(Nullable<decimal> accountGroupId, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var accountGroupIdParameter = accountGroupId.HasValue ?
+                new ObjectParameter("accountGroupId", accountGroupId) :
+                new ObjectParameter("accountGroupId", typeof(decimal));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Trialbalance_Result>("Trialbalance", accountGroupIdParameter, fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<Trialbalance1_Result> Trialbalance1(Nullable<decimal> accountGroupId, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var accountGroupIdParameter = accountGroupId.HasValue ?
+                new ObjectParameter("accountGroupId", accountGroupId) :
+                new ObjectParameter("accountGroupId", typeof(decimal));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Trialbalance1_Result>("Trialbalance1", accountGroupIdParameter, fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<Trialbalance2_Result> Trialbalance2(Nullable<decimal> accountGroupId, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var accountGroupIdParameter = accountGroupId.HasValue ?
+                new ObjectParameter("accountGroupId", accountGroupId) :
+                new ObjectParameter("accountGroupId", typeof(decimal));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Trialbalance2_Result>("Trialbalance2", accountGroupIdParameter, fromDateParameter, toDateParameter);
+        }
+    
+        public virtual ObjectResult<Trialbalance3_Result> Trialbalance3(Nullable<decimal> accountGroupId, Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var accountGroupIdParameter = accountGroupId.HasValue ?
+                new ObjectParameter("accountGroupId", accountGroupId) :
+                new ObjectParameter("accountGroupId", typeof(decimal));
+    
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Trialbalance3_Result>("Trialbalance3", accountGroupIdParameter, fromDateParameter, toDateParameter);
         }
     
         public virtual ObjectResult<UnitConversionIdAndConRateViewallByProductId_Result> UnitConversionIdAndConRateViewallByProductId(string productId)

@@ -17,7 +17,7 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Supplier()
         {
-            this.SupplierAdresses = new HashSet<SupplierAdress>();
+            this.SupplierAddresses = new HashSet<SupplierAddress>();
             this.SupplierWorkers = new HashSet<SupplierWorker>();
         }
     
@@ -59,7 +59,7 @@ namespace LoginForm.DataSet
         public virtual Worker Worker1 { get; set; }
         public virtual SupplierSubCategory SupplierSubCategory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SupplierAdress> SupplierAdresses { get; set; }
+        public virtual ICollection<SupplierAddress> SupplierAddresses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SupplierWorker> SupplierWorkers { get; set; }
     }

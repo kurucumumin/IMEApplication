@@ -10,14 +10,14 @@
 namespace LoginForm.DataSet
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class V_Product
+    public partial class Trialbalance3_Result
     {
-        public string productId { get; set; }
-        public string productCode { get; set; }
-        public string Unit_Measure { get; set; }
-        public string Brandname { get; set; }
-        public string dependantTable { get; set; }
+        public string ID { get; set; }
+        public string Name { get; set; }
+        public Nullable<decimal> debit { get; set; }
+        public Nullable<decimal> credit { get; set; }
+        public Nullable<decimal> OpeningBalance { get; set; }
+        public Nullable<decimal> Balance { get; set; }
     }
 }
