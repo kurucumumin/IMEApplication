@@ -1395,6 +1395,84 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ExtendedRangeADD", articleNoParameter, brandParameter, mPNParameter, articleDescriptionParameter, extendedRangeLengthParameter, widthParameter, heightParameter, dimensionUoMParameter, weightUoMParameter, cCCNParameter, countryofOriginParameter, unitofMeasureParameter, packSizeParameter, salesUoMParameter, costPriceCurrencyParameter, col1PriceParameter, col2PriceParameter, col3PriceParameter, col4PriceParameter, col5PriceParameter, col1BreakParameter, col2BreakParameter, col3BreakParameter, col4BreakParameter, col5BreakParameter, discountedPrice1Parameter, discountedPrice2Parameter, discountedPrice3Parameter, discountedPrice4Parameter, discountedPrice5Parameter, manufacturerCodeParameter, extendedRangeWeightParameter);
         }
     
+        public virtual int FundFlow1(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FundFlow1", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual int FundFlow2(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FundFlow2", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual int FundFlow3(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FundFlow3", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual int FundFlow4(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FundFlow4", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual int FundFlow5(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FundFlow5", fromDateParameter, toDateParameter);
+        }
+    
+        public virtual int FundFlow6(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FundFlow6", fromDateParameter, toDateParameter);
+        }
+    
         public virtual ObjectResult<GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result> GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI(Nullable<decimal> ledgerId, Nullable<decimal> salesMasterId, Nullable<decimal> voucherTypeId)
         {
             var ledgerIdParameter = ledgerId.HasValue ?

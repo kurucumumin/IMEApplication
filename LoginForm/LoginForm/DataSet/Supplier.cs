@@ -48,6 +48,7 @@ namespace LoginForm.DataSet
         public string CurrNameQuo { get; set; }
         public Nullable<int> CategoryID { get; set; }
         public Nullable<int> SubCategoryID { get; set; }
+        public string extraNumber { get; set; }
     
         public virtual Note Note { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
