@@ -679,6 +679,117 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
+        public System.Data.DataSet FundFlow(DateTime fromDate, DateTime toDate)
+        {
+            IMEEntities IME = new IMEEntities();
+            System.Data.DataSet dts = new System.Data.DataSet();
+            dts.Tables.Add(new DataTable());
+            try
+            {
+                //DataTable dtbl1 = new DataTable();
 
+                //var adaptor1 = (IME.FundFlow1(fromDate, toDate)).ToList();
+                //foreach (var item in adaptor1)
+                //{
+                //    DataRow row = dtbl1.NewRow();
+                //    row["ID"] = item.ID;
+                //    row["Name"] = item.Name;
+                //    row["Balance"] = item.Balance;
+
+                //    dts.Tables[0].Rows.Add(row);
+                //}
+                //dts.Tables.Add(dtbl1);
+
+
+
+                //DataTable dtbl2 = new DataTable();
+                //var adaptor2 = (IME.FundFlow2(fromDate, toDate)).ToList();
+
+                //foreach (var item in adaptor2)
+                //{
+                //    DataRow row = dtbl2.NewRow();
+                //    row["ID"] = item.ID;
+                //    row["Name"] = item.Name;
+                //    row["Balance"] = item.Balance;
+
+                //    dts.Tables[1].Rows.Add(row);
+                //}
+                //dts.Tables.Add(dtbl2);
+
+
+                //DataTable dtbl3 = new DataTable();
+                //var adaptor3 = (IME.FundFlow3(fromDate, toDate)).ToList();
+
+                //foreach (var item in adaptor3)
+                //{
+                //    DataRow row = dtbl3.NewRow();
+                //    row["ID"] = item.ID;
+                //    row["Name"] = item.Name;
+                //    row["OpeningBalance"] = item.OpeningBalance;
+                //    row["Debit"] = item.Debit;
+                //    row["Credit"] = item.credit;
+                //    row["ClosingBalance"] = item.ClosingBalance;
+
+                //    dts.Tables[2].Rows.Add(row);
+                //}
+                //dts.Tables.Add(dtbl3);
+
+
+
+                //DataTable dtbl4 = new DataTable();
+                //var adaptor4 = (IME.FundFlow4(fromDate, toDate)).ToList();
+
+                //foreach (var item in adaptor4)
+                //{
+                //    DataRow row = dtbl4.NewRow();
+                //    row["ID"] = item.ID;
+                //    row["Name"] = item.Name;
+                //    row["OpeningBalance"] = item.OpeningBalance;
+                //    row["ClosingBalance"] = item.ClosingBalance;
+
+                //    dts.Tables[3].Rows.Add(row);
+                //}
+                //dts.Tables.Add(dtbl4);
+
+
+                //DataTable dtbl5 = new DataTable();
+                //var adaptor5 = (IME.FundFlow5(fromDate, toDate)).ToList();
+
+                //foreach (var item in adaptor5)
+                //{
+                //    DataRow row = dtbl5.NewRow();
+                //    row["ID"] = item.ID;
+                //    row["Name"] = item.Name;
+                //    row["OpeningBalance"] = item.OpeningBalance;
+                //    row["Debit"] = item.Debit;
+                //    row["Credit"] = item.credit;
+                //    row["ClosingBalance"] = item.ClosingBalance;
+
+                //    dts.Tables[4].Rows.Add(row);
+                //}
+                //dts.Tables.Add(dtbl5);
+
+
+                //DataTable dtbl6 = new DataTable();
+                //var adaptor6 = (IME.FundFlow6(fromDate, toDate)).ToList();
+
+                //foreach (var item in adaptor6)
+                //{
+                //    DataRow row = dtbl6.NewRow();
+                //    row["ID"] = item.ID;
+                //    row["Name"] = item.Name;
+                //    row["OpeningBalance"] = item.OpeningBalance;
+                //    row["ClosingBalance"] = item.ClosingBalance;
+
+                //    dts.Tables[5].Rows.Add(row); 
+                //}
+                //dts.Tables.Add(dtbl6);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return dts;
+        }
     }
 }

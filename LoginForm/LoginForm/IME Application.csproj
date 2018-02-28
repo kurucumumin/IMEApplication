@@ -129,6 +129,24 @@
     <Compile Include="Account\Budget\frmBudgetVariance.Designer.cs">
       <DependentUpon>frmBudgetVariance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\FinancialStatements\frmFundFlow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\FinancialStatements\frmFundFlow.Designer.cs">
+      <DependentUpon>frmFundFlow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\FinancialStatements\frmProfitAndLoss.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\FinancialStatements\frmProfitAndLoss.Designer.cs">
+      <DependentUpon>frmProfitAndLoss.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Account\FinancialStatements\frmTrialBalance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\FinancialStatements\frmTrialBalance.Designer.cs">
+      <DependentUpon>frmTrialBalance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Master\frmAccountGroup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1659,6 +1677,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Budget\frmBudgetVariance.resx">
       <DependentUpon>frmBudgetVariance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\FinancialStatements\frmFundFlow.resx">
+      <DependentUpon>frmFundFlow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\FinancialStatements\frmProfitAndLoss.resx">
+      <DependentUpon>frmProfitAndLoss.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\FinancialStatements\frmTrialBalance.resx">
+      <DependentUpon>frmTrialBalance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Master\frmAccountGroup.resx">
       <DependentUpon>frmAccountGroup.cs</DependentUpon>

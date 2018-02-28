@@ -1901,6 +1901,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="CurrNameQuo" Type="nvarchar" MaxLength="15" />
           <Property Name="CategoryID" Type="int" />
           <Property Name="SubCategoryID" Type="int" />
+          <Property Name="extraNumber" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="SupplierAddress">
           <Key>
@@ -1956,6 +1957,7 @@ warning 6002: The table/view 'IME.dbo.SalaryVoucherDetail' does not have a prima
           <Property Name="supplierID" Type="nvarchar" MaxLength="15" />
           <Property Name="supplierNoteID" Type="int" />
           <Property Name="languageID" Type="int" />
+          <Property Name="PhoneExternalNum" Type="nvarchar" MaxLength="6" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -6111,6 +6113,30 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="ExtendedRangeWeight" Type="decimal" Mode="In" />
         </Function>
         <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="FundFlow1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="FundFlow2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="FundFlow3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="FundFlow4" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="FundFlow5" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="FundFlow6" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+        </Function>
         <Function Name="GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ledgerId" Type="numeric" Mode="In" />
           <Parameter Name="salesMasterId" Type="numeric" Mode="In" />
@@ -11001,6 +11027,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="CurrNameQuo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="CategoryID" Type="Int32" />
           <Property Name="SubCategoryID" Type="Int32" />
+          <Property Name="extraNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Note" Relationship="Self.FK__Supplier__Suppli__09746778" FromRole="Supplier" ToRole="Notes" />
           <NavigationProperty Name="PaymentMethod" Relationship="Self.FK__Supplier__paymen__634EBE90" FromRole="Supplier" ToRole="PaymentMethod" />
           <NavigationProperty Name="PaymentTerm" Relationship="Self.FK__Supplier__paymen__6442E2C9" FromRole="Supplier" ToRole="PaymentTerm" />
@@ -11077,6 +11104,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Name="supplierID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="supplierNoteID" Type="Int32" />
           <Property Name="languageID" Type="Int32" />
+          <Property Name="PhoneExternalNum" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Language" Relationship="Self.FK__SupplierW__langu__72910220" FromRole="SupplierWorker" ToRole="Languages" />
           <NavigationProperty Name="Note" Relationship="Self.FK__SupplierW__suppl__73852659" FromRole="SupplierWorker" ToRole="Notes" />
           <NavigationProperty Name="Supplier" Relationship="Self.FK__SupplierW__suppl__74794A92" FromRole="SupplierWorker" ToRole="Supplier" />
@@ -16622,6 +16650,30 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="ManufacturerCode" Mode="In" Type="String" />
             <Parameter Name="ExtendedRangeWeight" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="FundFlow1">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="FundFlow2">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="FundFlow3">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="FundFlow4">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="FundFlow5">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="FundFlow6">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI" ReturnType="Collection(IMEModel.GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result)">
             <Parameter Name="ledgerId" Mode="In" Type="Decimal" />
             <Parameter Name="salesMasterId" Mode="In" Type="Decimal" />
@@ -21023,6 +21075,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="CurrNameQuo" ColumnName="CurrNameQuo" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+                <ScalarProperty Name="extraNumber" ColumnName="extraNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -21083,6 +21136,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="supplierID" ColumnName="supplierID" />
                 <ScalarProperty Name="supplierNoteID" ColumnName="supplierNoteID" />
                 <ScalarProperty Name="languageID" ColumnName="languageID" />
+                <ScalarProperty Name="PhoneExternalNum" ColumnName="PhoneExternalNum" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -21728,6 +21782,12 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImportMapping FunctionImportName="EmployeeForTakingEmployeeId" FunctionName="IMEModel.Store.EmployeeForTakingEmployeeId" />
           <FunctionImportMapping FunctionImportName="ExchangeRateViewByExchangeRateId" FunctionName="IMEModel.Store.ExchangeRateViewByExchangeRateId" />
           <FunctionImportMapping FunctionImportName="ExtendedRangeADD" FunctionName="IMEModel.Store.ExtendedRangeADD" />
+          <FunctionImportMapping FunctionImportName="FundFlow1" FunctionName="IMEModel.Store.FundFlow1" />
+          <FunctionImportMapping FunctionImportName="FundFlow2" FunctionName="IMEModel.Store.FundFlow2" />
+          <FunctionImportMapping FunctionImportName="FundFlow3" FunctionName="IMEModel.Store.FundFlow3" />
+          <FunctionImportMapping FunctionImportName="FundFlow4" FunctionName="IMEModel.Store.FundFlow4" />
+          <FunctionImportMapping FunctionImportName="FundFlow5" FunctionName="IMEModel.Store.FundFlow5" />
+          <FunctionImportMapping FunctionImportName="FundFlow6" FunctionName="IMEModel.Store.FundFlow6" />
           <FunctionImportMapping FunctionImportName="GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI" FunctionName="IMEModel.Store.GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result">
