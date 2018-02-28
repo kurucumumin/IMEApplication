@@ -77,11 +77,6 @@ namespace LoginForm.Account.Services
             return decAccountGroupId;
         }
 
-        /// <summary>
-        /// Account group Update based on the condition
-        /// </summary>
-        /// <param name="accountgroupinfo"></param>
-        /// <returns></returns>
         public bool AccountGroupUpdate(AccountGroup a)
         {
             bool isEdit = false;
@@ -217,11 +212,6 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
-        /// <summary>
-        /// Function to get particular values from account group table based on the parameter for update
-        /// </summary>
-        /// <param name="decAccountGroupId"></param>
-        /// <returns></returns>
         public AccountGroup AccountGroupViewForUpdate(decimal decAccountGroupId)
         {
             AccountGroup accountgroupinfo = new AccountGroup();
@@ -244,11 +234,6 @@ namespace LoginForm.Account.Services
             return accountgroupinfo;
         }
 
-        /// <summary>
-        /// Function to get Account Group CheckExistence Of Under Group
-        /// </summary>
-        /// <param name="decAccountGroupId"></param>
-        /// <returns></returns>
         public bool AccountGroupCheckExistenceOfUnderGroup(decimal decAccountGroupId)
         {
             bool isDelete = false;
@@ -284,11 +269,6 @@ namespace LoginForm.Account.Services
             return strNature;
         }
 
-        /// <summary>
-        /// Function to get Account Group Reference Delete
-        /// </summary>
-        /// <param name="AccountGroupId"></param>
-        /// <returns></returns>
         public decimal AccountGroupReferenceDelete(decimal AccountGroupId)
         {
             decimal decReturnValue = 0;
@@ -303,11 +283,6 @@ namespace LoginForm.Account.Services
             return decReturnValue;
         }
 
-        /// <summary>
-        /// Function to get particular values from account group table based on the parameter
-        /// </summary>
-        /// <param name="accountGroupId"></param>
-        /// <returns></returns>
         public AccountGroup AccountGroupView(decimal accountGroupId)
         {
             AccountGroup accountgroupinfo = new AccountGroup();
@@ -330,12 +305,6 @@ namespace LoginForm.Account.Services
             return accountgroupinfo;
         }
 
-        /// <summary>
-        /// Function to Account Group Search based on the parameter
-        /// </summary>
-        /// <param name="strAccountGroupName"></param>
-        /// <param name="strGroupUnder"></param>
-        /// <returns></returns>
         public DataTable AccountGroupSearch(string strAccountGroupName, string strGroupUnder)
         {
             DataTable dtblAccountGroup = new DataTable();
@@ -383,6 +352,32 @@ namespace LoginForm.Account.Services
                 MessageBox.Show(ex.ToString());
             }
             return strNature;
+        }
+
+        public DataTable AccountGroupViewAllByGroupUnder(decimal decaccountGroupId)
+        {
+            IMEEntities db = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = db.AccountGroupViewAllByGroupUnder();
+
+                dtbl.Columns.Add("accountGroupId");
+                dtbl.Columns.Add("accountGroupName");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["accountGroupName"] = item.accountGroupName;
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
         }
     }
 }

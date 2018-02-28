@@ -290,6 +290,15 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountGroupView_Result>("AccountGroupView", accountGroupIdParameter);
         }
     
+        public virtual ObjectResult<AccountGroupViewAllByGroupUnder_Result> AccountGroupViewAllByGroupUnder(Nullable<decimal> accountGroupId)
+        {
+            var accountGroupIdParameter = accountGroupId.HasValue ?
+                new ObjectParameter("accountGroupId", accountGroupId) :
+                new ObjectParameter("accountGroupId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountGroupViewAllByGroupUnder_Result>("AccountGroupViewAllByGroupUnder", accountGroupIdParameter);
+        }
+    
         public virtual ObjectResult<AccountGroupViewAllComboFillForAccountLedger_Result> AccountGroupViewAllComboFillForAccountLedger()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountGroupViewAllComboFillForAccountLedger_Result>("AccountGroupViewAllComboFillForAccountLedger");
@@ -528,6 +537,15 @@ namespace LoginForm.DataSet
         public virtual ObjectResult<AccountLedgerViewAll_Result> AccountLedgerViewAll()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerViewAll_Result>("AccountLedgerViewAll");
+        }
+    
+        public virtual ObjectResult<AccountLedgerViewAllByLedgerName_Result> AccountLedgerViewAllByLedgerName(Nullable<decimal> accountGroupId)
+        {
+            var accountGroupIdParameter = accountGroupId.HasValue ?
+                new ObjectParameter("accountGroupId", accountGroupId) :
+                new ObjectParameter("accountGroupId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<AccountLedgerViewAllByLedgerName_Result>("AccountLedgerViewAllByLedgerName", accountGroupIdParameter);
         }
     
         public virtual ObjectResult<AccountLedgerViewAllForComboBox_Result> AccountLedgerViewAllForComboBox()

@@ -857,5 +857,34 @@ namespace LoginForm.Account.Services
             }
             return dtbl;
         }
+
+        public DataTable AccountLedgerViewAllByLedgerName(decimal decaccountGroupId)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.AccountLedgerViewAllByLedgerName(decaccountGroupId);
+
+                dtbl.Columns.Add("ledgerId");
+                dtbl.Columns.Add("accountGroupId");
+                dtbl.Columns.Add("ledgerName");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+                    row["ledgerId"] = item.ledgerId;
+                    row["accountGroupId"] = item.accountGroupId;
+                    row["ledgerName"] = item.ledgerName;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
     }
 }
