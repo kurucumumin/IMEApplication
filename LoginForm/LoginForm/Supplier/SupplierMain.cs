@@ -231,7 +231,7 @@ namespace LoginForm
             txtContactMobile.Text = "";
             txtContactfax.Text = "";
             cmblanguage.Text = "";
-            txtContactAddress.Text = "";
+            //txtContactAddress.Text = "";
             txtContactNotes.Text = "";
 
             cmbBankName.Text = "";
@@ -258,7 +258,7 @@ namespace LoginForm
             txtContactPhone.Enabled = false;
             txtExtNumber.Enabled = false;
 
-            txtContactAddress.Enabled = false;
+            //txtContactAddress.Enabled = false;
             txtContactMobile.Enabled = false;
             txtContactfax.Enabled = false;
             txtContactNotes.Enabled = false;
@@ -300,7 +300,7 @@ namespace LoginForm
             txtContactName.Enabled = true;
             cmbMainContact.Enabled = true;
             txtContactMail.Enabled = true;
-            txtContactAddress.Enabled = true;
+            //txtContactAddress.Enabled = true;
             txtContactPhone.Enabled = true;
             txtExtNumber.Enabled = true;
             txtContactMobile.Enabled = true;
@@ -360,7 +360,7 @@ namespace LoginForm
             txtContactMobile.Enabled = false;
             txtContactfax.Enabled = false;
             cmblanguage.Enabled = false;
-            txtContactAddress.Enabled = false;
+            //txtContactAddress.Enabled = false;
             txtContactNotes.Enabled = false;
 
             cmbBankName.Enabled = false;
@@ -425,7 +425,7 @@ namespace LoginForm
             txtContactMobile.Enabled = true;
             txtContactfax.Enabled = true;
             cmblanguage.Enabled = true;
-            txtContactAddress.Enabled = true;
+            //txtContactAddress.Enabled = true;
             txtContactNotes.Enabled = true;
 
             cmbBankName.Enabled = true;
@@ -590,7 +590,7 @@ namespace LoginForm
             cmbMainContact.Text = "";
             txtContactfax.Text = "";
             cmblanguage.Text = "";
-            txtContactAddress.Text = "";
+            //txtContactAddress.Text = "";
             txtpobox.Text = "";
             txtContactNotes.Text = "";
 

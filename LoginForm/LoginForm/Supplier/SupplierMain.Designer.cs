@@ -100,7 +100,6 @@ namespace LoginForm
             this.btnDep = new System.Windows.Forms.Button();
             this.txtContactNotes = new System.Windows.Forms.TextBox();
             this.cmblanguage = new System.Windows.Forms.ComboBox();
-            this.txtContactAddress = new System.Windows.Forms.TextBox();
             this.txtContactfax = new System.Windows.Forms.TextBox();
             this.txtContactMobile = new System.Windows.Forms.TextBox();
             this.txtContactPhone = new System.Windows.Forms.TextBox();
@@ -135,6 +134,7 @@ namespace LoginForm
             this.txtsearch = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbContactAddress = new System.Windows.Forms.ComboBox();
             this.tabgenel.SuspendLayout();
             this.tabinfo.SuspendLayout();
             this.tabaccount.SuspendLayout();
@@ -802,6 +802,7 @@ namespace LoginForm
             // 
             // tabcountact
             // 
+            this.tabcountact.Controls.Add(this.cmbContactAddress);
             this.tabcountact.Controls.Add(this.txtExtNumber);
             this.tabcountact.Controls.Add(this.cmbMainContact);
             this.tabcountact.Controls.Add(this.label28);
@@ -815,7 +816,6 @@ namespace LoginForm
             this.tabcountact.Controls.Add(this.btnDep);
             this.tabcountact.Controls.Add(this.txtContactNotes);
             this.tabcountact.Controls.Add(this.cmblanguage);
-            this.tabcountact.Controls.Add(this.txtContactAddress);
             this.tabcountact.Controls.Add(this.txtContactfax);
             this.tabcountact.Controls.Add(this.txtContactMobile);
             this.tabcountact.Controls.Add(this.txtContactPhone);
@@ -844,7 +844,7 @@ namespace LoginForm
             // 
             // txtExtNumber
             // 
-            this.txtExtNumber.Location = new System.Drawing.Point(255, 187);
+            this.txtExtNumber.Location = new System.Drawing.Point(255, 180);
             this.txtExtNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtExtNumber.Name = "txtExtNumber";
             this.txtExtNumber.Size = new System.Drawing.Size(61, 26);
@@ -854,7 +854,7 @@ namespace LoginForm
             // 
             this.cmbMainContact.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMainContact.FormattingEnabled = true;
-            this.cmbMainContact.Location = new System.Drawing.Point(460, 66);
+            this.cmbMainContact.Location = new System.Drawing.Point(460, 180);
             this.cmbMainContact.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMainContact.Name = "cmbMainContact";
             this.cmbMainContact.Size = new System.Drawing.Size(160, 28);
@@ -863,7 +863,7 @@ namespace LoginForm
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(337, 70);
+            this.label28.Location = new System.Drawing.Point(336, 183);
             this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(108, 20);
@@ -980,18 +980,9 @@ namespace LoginForm
             this.cmblanguage.Size = new System.Drawing.Size(204, 28);
             this.cmblanguage.TabIndex = 10;
             // 
-            // txtContactAddress
-            // 
-            this.txtContactAddress.Location = new System.Drawing.Point(733, 49);
-            this.txtContactAddress.Margin = new System.Windows.Forms.Padding(4);
-            this.txtContactAddress.Multiline = true;
-            this.txtContactAddress.Name = "txtContactAddress";
-            this.txtContactAddress.Size = new System.Drawing.Size(204, 50);
-            this.txtContactAddress.TabIndex = 11;
-            // 
             // txtContactfax
             // 
-            this.txtContactfax.Location = new System.Drawing.Point(460, 185);
+            this.txtContactfax.Location = new System.Drawing.Point(459, 127);
             this.txtContactfax.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactfax.Name = "txtContactfax";
             this.txtContactfax.Size = new System.Drawing.Size(157, 26);
@@ -1000,7 +991,7 @@ namespace LoginForm
             // 
             // txtContactMobile
             // 
-            this.txtContactMobile.Location = new System.Drawing.Point(461, 128);
+            this.txtContactMobile.Location = new System.Drawing.Point(460, 70);
             this.txtContactMobile.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactMobile.Name = "txtContactMobile";
             this.txtContactMobile.Size = new System.Drawing.Size(159, 26);
@@ -1009,7 +1000,7 @@ namespace LoginForm
             // 
             // txtContactPhone
             // 
-            this.txtContactPhone.Location = new System.Drawing.Point(113, 186);
+            this.txtContactPhone.Location = new System.Drawing.Point(113, 180);
             this.txtContactPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txtContactPhone.Name = "txtContactPhone";
             this.txtContactPhone.Size = new System.Drawing.Size(132, 26);
@@ -1087,7 +1078,7 @@ namespace LoginForm
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(337, 187);
+            this.label33.Location = new System.Drawing.Point(336, 129);
             this.label33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(36, 20);
@@ -1097,7 +1088,7 @@ namespace LoginForm
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(337, 130);
+            this.label32.Location = new System.Drawing.Point(336, 72);
             this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(58, 20);
@@ -1107,7 +1098,7 @@ namespace LoginForm
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(4, 190);
+            this.label31.Location = new System.Drawing.Point(4, 184);
             this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(56, 20);
@@ -1362,6 +1353,16 @@ namespace LoginForm
             this.panel1.Size = new System.Drawing.Size(1227, 81);
             this.panel1.TabIndex = 2;
             // 
+            // cmbContactAddress
+            // 
+            this.cmbContactAddress.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbContactAddress.FormattingEnabled = true;
+            this.cmbContactAddress.Location = new System.Drawing.Point(733, 70);
+            this.cmbContactAddress.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbContactAddress.Name = "cmbContactAddress";
+            this.cmbContactAddress.Size = new System.Drawing.Size(204, 28);
+            this.cmbContactAddress.TabIndex = 35;
+            // 
             // SupplierMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1457,7 +1458,6 @@ namespace LoginForm
         private System.Windows.Forms.Button btnDep;
         private System.Windows.Forms.TextBox txtContactNotes;
         private System.Windows.Forms.ComboBox cmblanguage;
-        private System.Windows.Forms.TextBox txtContactAddress;
         private System.Windows.Forms.TextBox txtContactfax;
         private System.Windows.Forms.TextBox txtContactMobile;
         private System.Windows.Forms.TextBox txtContactPhone;
@@ -1504,6 +1504,7 @@ namespace LoginForm
         private System.Windows.Forms.ComboBox cmbMainContact;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.ComboBox cmbContactAddress;
     }
 }
 

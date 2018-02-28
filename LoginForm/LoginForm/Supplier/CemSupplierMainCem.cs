@@ -17,7 +17,11 @@ namespace LoginForm
         private static string AddressButtonsModeOpen = "Open";
         private static string AddressButtonsModeClose = "Close";
 
+        private static string ContactButtonsModeOpen = "Open";
+        private static string ContactButtonsModeClose = "Close";
+
         BindingList<SupplierAddress> SavedAddresses = new BindingList<SupplierAddress>();
+        BindingList<SupplierWorker> SavedContacts = new BindingList<SupplierWorker>();
 
         string SupplierAddMode = String.Empty;
         string AddressMode = String.Empty;
@@ -106,10 +110,9 @@ namespace LoginForm
             //cmbPosition.DisplayMember = "titlename";
             //cmbPosition.ValueMember = "ID";
             //cmbPosition.SelectedIndex = -1;
-
-            cmbMainContact.Items.AddRange(db.SupplierWorkers.ToArray());
-            cmbMainContact.DisplayMember = "languagename";
+            
             cmbMainContact.Items.Insert(0, "Choose");
+            cmbMainContact.DisplayMember = "languagename";
             cmbMainContact.SelectedIndex = 0;
 
             cmbLanguage.Items.AddRange(db.Languages.ToArray());
@@ -121,6 +124,11 @@ namespace LoginForm
             cmbBankName.DisplayMember = "bankname";
             cmbBankName.Items.Insert(0, "Choose");
             cmbBankName.SelectedIndex = 0;
+
+            cmbContactAddress.Items.Insert(0, "Choose");
+            cmbContactAddress.DisplayMember = "Title";
+            cmbContactAddress.SelectedIndex = 0;
+
 
             // TODO 100001 ComboBoxların kalanlarını sadece 'Choose' ile doldur
         }
@@ -172,6 +180,7 @@ namespace LoginForm
                 btnSubCategoryAdd.Enabled = false;
             }
             txtTaxNumber.Enabled = state;
+            cmbMainContact.Enabled = state;
 
             cmbAccountRep.Enabled = state;
             cmbAccountTerms.Enabled = state;
@@ -183,33 +192,7 @@ namespace LoginForm
 
             btnAddressAdd.Enabled = state;
 
-            cmbDepartment.Enabled = state;
-            btnDep.Enabled = state;
-            btnPos.Enabled = state;
-            txtContactName.Enabled = state;
-            txtContactPhone.Enabled = state;
-            txtExtraNumber.Enabled = state;
-            txtContactMail.Enabled = state;
-            cmbMainContact.Enabled = state;
-            txtContactMobile.Enabled = state;
-            txtContactFax.Enabled = state;
-            cmbLanguage.Enabled = state;
-            txtContactAddress.Enabled = state;
-            txtContactNotes.Enabled = state;
-            lbContacts.Enabled = state;
             btnContactNew.Enabled = state;
-            btnContactUpdate.Enabled = state;
-            btnContactDelete.Enabled = state;
-            if (state && cmbDepartment.SelectedIndex > 0)
-            {
-                cmbPosition.Enabled = true;
-                btnPos.Enabled = true;
-            }
-            else
-            {
-                cmbPosition.Enabled = false;
-                btnPos.Enabled = false;
-            }
 
             cmbBankName.Enabled = state;
             txtBankBranchCode.Enabled = state;
@@ -245,19 +228,23 @@ namespace LoginForm
                     if (SupplierAddMode == "Add")
                     {
                         // Clear all input areas and close them
-                        ClearGeneralInputs();
+                        
                     }
                     else
                     {
                         // Just close Inputs
                     }
                     AddressButtonsMode(AddressButtonsModeClose);
+                    ContactButtonsMode(ContactButtonsModeClose);
                     SupplierAddMode = String.Empty;
                     EnableAddressInput(false);
+                    EnableContactInput(false);
                     btnAdd.Text = "Add";
                     btnModify.Text = "Modify";
                     EnableGeneralInput(false);
+                    ClearGeneralInputs();
                     ClearAddressInputs();
+                    ClearContactInputs();
 
 
                     break;
@@ -315,11 +302,10 @@ namespace LoginForm
             cmbInvoiceCurrency.SelectedIndex = 0;
             txtAccountNotes.Clear();
 
-
-
-            ClearAddressInputs();
-
-
+            cmbBankName.SelectedIndex = 0;
+            txtBankBranchCode.Clear();
+            txtBankAccountNumber.Clear();
+            txtBankIban.Clear();
         }
 
         private void btnMainCategoryAdd_Click(object sender, EventArgs e)
@@ -488,8 +474,6 @@ namespace LoginForm
                 btnAddressUpdate.Enabled = state;
                 btnAddressDelete.Enabled = state;
             }
-
-
         }
 
         private void cmbCounrty_SelectedIndexChanged(object sender, EventArgs e)
@@ -555,41 +539,6 @@ namespace LoginForm
             }
         }
 
-        private void cmbDepartment_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbDepartment.Items.Count != 0)
-            {
-                if (cmbDepartment.SelectedIndex > 0)
-                {
-                    int id = ((CustomerDepartment)cmbDepartment.SelectedItem).ID;
-
-                    cmbPosition.Items.Clear();
-                    cmbPosition.DisplayMember = "titlename";
-                    cmbPosition.Items.AddRange(new IMEEntities().CustomerTitles.ToArray());
-                    cmbPosition.Items.Insert(0, "Choose");
-                    cmbPosition.SelectedIndex = 0;
-
-                    btnPos.Enabled = true;
-                    cmbPosition.Enabled = true;
-                }
-                else
-                {
-
-                    if (cmbPosition.Items.Count != 0)
-                    {
-                        cmbPosition.SelectedIndex = 0;
-                    }
-                    btnPos.Enabled = false;
-                    cmbPosition.Enabled = false;
-                }
-            }
-            else
-            {
-                btnPos.Enabled = true;
-                cmbPosition.Enabled = true;
-            }
-        }
-
         private void btnAddressAdd_Click(object sender, EventArgs e)
         {
             AddressMode = "Add";
@@ -645,7 +594,6 @@ namespace LoginForm
             if (SupplierAddMode == String.Empty)
             {
                 SavedAddresses.Clear();
-
             }
         }
 
@@ -673,6 +621,11 @@ namespace LoginForm
                     };
 
                     SavedAddresses.Add(address);
+
+                    cmbContactAddress.DataSource = null;
+                    cmbContactAddress.DataSource = SavedAddresses;
+                    cmbContactAddress.DisplayMember = "Title";
+                    cmbContactAddress.SelectedIndex = -1;
                 }
                 else if(AddressMode == "Update")
                 {
@@ -689,9 +642,16 @@ namespace LoginForm
                     address.PostCode = txtPostCode.Text;
                     address.AdressDetails = txtAddressDetail.Text;
                 }
+
+                lbAddressList.DataSource = null;
                 lbAddressList.DataSource = SavedAddresses;
                 lbAddressList.DisplayMember = "Title";
                 lbAddressList.SelectedIndex = -1;
+
+                cmbContactAddress.DataSource = null;
+                cmbContactAddress.DataSource = SavedAddresses;
+                cmbContactAddress.DisplayMember = "Title";
+                cmbContactAddress.SelectedIndex = -1;
 
                 btnAddressCancel.PerformClick();
                 lbAddressList.Enabled = true;
@@ -742,6 +702,8 @@ namespace LoginForm
                 EnableAddressInput(false);
                 AddressButtonsMode(AddressButtonsModeClose);
                 ManageDeleteAndModifyButtons(lbAddressList, btnAddressUpdate, btnAddressDelete);
+
+                lbAddressList.ClearSelected();
             }
             else
             {
@@ -789,7 +751,419 @@ namespace LoginForm
 
             list = null;
         }
-    }
 
-    
+        private void EnableContactInput(bool state)
+        {
+            txtContactName.Enabled = state;
+            txtContactPhone.Enabled = state;
+            txtExternalNumber.Enabled = state;
+            txtContactMail.Enabled = state;
+            cmbDepartment.Enabled = state;
+            txtContactMobile.Enabled = state;
+            txtContactFax.Enabled = state;
+            cmbLanguage.Enabled = state;
+            cmbContactAddress.Enabled = state;
+            txtContactNotes.Enabled = state;
+            if (SupplierAddMode == String.Empty)
+            {
+                lbContacts.Enabled = state;
+            }
+            else
+            {
+                lbContacts.Enabled = !state;
+            }
+            if (state && cmbDepartment.SelectedIndex > 0)
+            {
+                cmbPosition.Enabled = true;
+            }
+            else
+            {
+                cmbPosition.Enabled = false;
+            }
+            if (state)
+            {
+                if (lbContacts.Items.Count > 0)
+                {
+                    btnContactUpdate.Enabled = state;
+                    btnContactDelete.Enabled = state;
+                }
+                else
+                {
+                    btnContactUpdate.Enabled = !state;
+                    btnContactDelete.Enabled = !state;
+                }
+            }
+            else
+            {
+                if (SupplierAddMode == String.Empty)
+                {
+                    btnContactNew.Enabled = state;
+                }
+                btnContactUpdate.Enabled = state;
+                btnContactDelete.Enabled = state;
+            }
+
+
+        }
+
+        //private void cmbDep_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if (cmbCountry.Items.Count != 0)
+        //    {
+        //        if (cmbCountry.SelectedIndex > 0)
+        //        {
+        //            int id = ((Country)cmbCountry.SelectedItem).ID;
+
+        //            cmbCity.Items.Clear();
+        //            cmbCity.DisplayMember = "City_name";
+        //            cmbCity.Items.AddRange(new IMEEntities().Cities.Where(x => x.CountryID == id).ToArray());
+        //            cmbCity.Items.Insert(0, "Choose");
+        //            cmbCity.SelectedIndex = 0;
+
+        //            cmbCity.Enabled = true;
+        //        }
+        //        else
+        //        {
+        //            if (cmbCity.Items.Count != 0)
+        //            {
+        //                cmbCity.SelectedIndex = 0;
+        //            }
+        //            cmbCity.Enabled = false;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        cmbCity.Enabled = true;
+        //    }
+        //}
+
+        //private void cmbPosition_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if (cmbCity.Items.Count != 0)
+        //    {
+        //        if (cmbCity.SelectedIndex > 0)
+        //        {
+        //            int id = ((City)cmbCity.SelectedItem).ID;
+
+        //            cmbTown.Items.Clear();
+        //            cmbTown.DisplayMember = "Town_name";
+        //            cmbTown.Items.AddRange(new IMEEntities().Towns.Where(x => x.CityID == id).ToArray());
+        //            cmbTown.Items.Insert(0, "Choose");
+        //            cmbTown.SelectedIndex = 0;
+
+        //            cmbTown.Enabled = true;
+        //        }
+        //        else
+        //        {
+
+        //            if (cmbTown.Items.Count != 0)
+        //            {
+        //                cmbTown.SelectedIndex = 0;
+        //            }
+        //            cmbTown.Enabled = false;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        cmbTown.Enabled = true;
+        //    }
+        //}
+
+        private void cmbDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbDepartment.Items.Count != 0)
+            {
+                if (cmbDepartment.SelectedIndex > 0)
+                {
+                    int id = ((CustomerDepartment)cmbDepartment.SelectedItem).ID;
+
+                    cmbPosition.Items.Clear();
+                    cmbPosition.DisplayMember = "titlename";
+                    cmbPosition.Items.AddRange(new IMEEntities().CustomerTitles.ToArray());
+                    cmbPosition.Items.Insert(0, "Choose");
+                    cmbPosition.SelectedIndex = 0;
+
+                    btnPos.Enabled = true;
+                    cmbPosition.Enabled = true;
+                }
+                else
+                {
+
+                    if (cmbPosition.Items.Count != 0)
+                    {
+                        cmbPosition.SelectedIndex = 0;
+                    }
+                    btnPos.Enabled = false;
+                    cmbPosition.Enabled = false;
+                }
+            }
+            else
+            {
+                btnPos.Enabled = true;
+                cmbPosition.Enabled = true;
+            }
+        }
+
+        private void btnContactNew_Click(object sender, EventArgs e)
+        {
+            ContactMode = "Add";
+            lbContacts.ClearSelected();
+            lbContacts.Enabled = false;
+
+            ClearContactInputs();
+            EnableContactInput(true);
+            ContactButtonsMode(ContactButtonsModeOpen);
+            ManageDeleteAndModifyButtons(lbContacts, btnContactUpdate, btnContactDelete);
+        }
+
+        private void ContactButtonsMode(string Mode)
+        {
+            if (Mode == ContactButtonsModeOpen)
+            {
+                btnContactNew.Visible = false;
+                btnContactUpdate.Visible = false;
+                btnContactDelete.Visible = false;
+                btnContactDone.Visible = true;
+                btnContactCancel.Visible = true;
+            }
+            else if (Mode == ContactButtonsModeClose)
+            {
+                btnContactNew.Visible = true;
+                btnContactUpdate.Visible = true;
+                btnContactDelete.Visible = true;
+                btnContactDone.Visible = false;
+                btnContactCancel.Visible = false;
+            }
+        }
+
+        private void btnContactCancel_Click(object sender, EventArgs e)
+        {
+            ClearContactInputs();
+
+            EnableContactInput(false);
+            ContactButtonsMode(ContactButtonsModeClose);
+
+            ManageDeleteAndModifyButtons(lbContacts, btnContactUpdate, btnContactDelete);
+            ContactMode = String.Empty;
+
+        }
+
+        private void ClearContactInputs()
+        {
+            txtContactName.Clear();
+            txtContactPhone.Clear();
+            txtExternalNumber.Clear();
+            txtContactMail.Clear();
+            txtContactFax.Clear();
+            txtContactMobile.Clear();
+            cmbDepartment.SelectedIndex = 0;
+            cmbLanguage.SelectedIndex = 0;
+            cmbContactAddress.SelectedIndex = -1;
+            txtContactNotes.Clear();
+            if (SupplierAddMode == String.Empty)
+            {
+                SavedContacts.Clear();
+            }
+        }
+
+        private void btnContactDone_Click(object sender, EventArgs e)
+        {
+            if (EmptyInputExist_Contact())
+            {
+                MessageBox.Show("Empty areas exist!", "Fail");
+            }
+            else
+            {
+                if (ContactMode == "Add")
+                {
+                    SupplierWorker worker = new SupplierWorker
+                    {
+                        sw_name = txtContactName.Text,
+                        phone = txtContactPhone.Text,
+                        languageID = ((Language)cmbLanguage.SelectedItem).ID,
+                        PhoneExternalNum = (txtExternalNumber.Text != String.Empty) ? txtExternalNumber.Text : null,
+                        sw_email = (txtContactMail.Text != String.Empty) ? txtContactMail.Text : null,
+                        fax = (txtContactFax.Text != String.Empty) ? txtContactFax.Text : null,
+                        mobilephone = (txtContactMobile.Text != String.Empty) ? txtContactMobile.Text : null
+                        
+                    };
+
+                    if (cmbDepartment.SelectedIndex > 0) { worker.departmentID = ((CustomerDepartment)cmbDepartment.SelectedItem).ID; }
+                    if (cmbPosition.SelectedIndex > 0) { worker.titleID = ((CustomerTitle)cmbPosition.SelectedItem).ID; }
+                    if (cmbContactAddress.SelectedIndex > 0) { worker.SupplierAddress = (SupplierAddress)cmbContactAddress.SelectedItem; }
+
+                    if (txtContactNotes.Text != String.Empty)
+                    {
+                        Note n = new Note();
+                        n.Note_name = txtContactNotes.Text;
+                        worker.Note = n;
+                    }
+                    SavedContacts.Add(worker);
+                }
+                else if (ContactMode == "Update")
+                {
+                    SupplierWorker worker = (SupplierWorker)lbContacts.SelectedItem;
+                    SupplierWorker address = SavedContacts.Where(x => x.sw_name == worker.sw_name).FirstOrDefault();
+
+                    worker.sw_name = txtContactName.Text;
+                    worker.departmentID = ((CustomerDepartment)cmbDepartment.SelectedItem).ID;
+                    worker.phone = txtContactPhone.Text;
+                    worker.titleID = ((CustomerTitle)cmbPosition.SelectedItem).ID;
+                    worker.PhoneExternalNum = txtExternalNumber.Text;
+                    worker.sw_email = txtContactMail.Text;
+                    worker.fax = txtContactFax.Text;
+                    worker.mobilephone = txtContactMobile.Text;
+                    worker.languageID = ((Language)cmbLanguage.SelectedItem).ID;
+                    worker.SupplierAddress = (SupplierAddress)cmbContactAddress.SelectedItem;
+                    
+                    worker.Note.Note_name = txtContactNotes.Text;
+                }
+
+                lbContacts.DataSource = null;
+                lbContacts.DataSource = SavedContacts;
+                lbContacts.DisplayMember = "sw_name";
+                lbContacts.SelectedIndex = -1;
+
+                cmbMainContact.DataSource = null;
+                cmbMainContact.DataSource = SavedContacts;
+                cmbMainContact.DisplayMember = "sw_name";
+                cmbMainContact.SelectedIndex = -1;
+
+                btnContactCancel.PerformClick();
+                lbContacts.Enabled = true;
+
+                cmbPosition.Enabled = false;
+
+                ManageDeleteAndModifyButtons(lbContacts, btnContactUpdate, btnContactDelete);
+                ContactMode = String.Empty;
+            }
+        }
+
+        //private void ManageDeleteAndModifyButtons(ListBox lb, Button btnUpdate, Button btnDelete)
+        //{
+        //    bool state = false;
+        //    if (lb.Items.Count != 0)
+        //    {
+        //        state = true;
+        //    }
+        //    btnUpdate.Enabled = state;
+        //    btnDelete.Enabled = state;
+        //}
+
+        private void btnContactUpdate_Click(object sender, EventArgs e)
+        {
+            if (lbContacts.SelectedIndex != -1)
+            {
+                ContactMode = "Update";
+
+                EnableContactInput(true);
+                ContactButtonsMode(ContactButtonsModeOpen);
+            }
+            else
+            {
+                MessageBox.Show("Please choose an contact from the list!", "Warning");
+            }
+        }
+
+        private void btnContactDelete_Click(object sender, EventArgs e)
+        {
+            if (lbContacts.SelectedIndex != -1)
+            {
+                SupplierWorker sw = (SupplierWorker)lbContacts.SelectedItem;
+                SavedContacts.Remove(sw);
+
+                ClearContactInputs();
+
+                EnableContactInput(false);
+                ContactButtonsMode(ContactButtonsModeClose);
+                ManageDeleteAndModifyButtons(lbContacts, btnContactUpdate, btnContactDelete);
+
+                lbContacts.ClearSelected();
+            }
+            else
+            {
+                MessageBox.Show("Please choose an contact from the list!", "Warning");
+            }
+        }
+
+        private void lbContacts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbContacts.SelectedIndex >= 0)
+            {
+                ContactFill((SupplierWorker)lbContacts.SelectedItem);
+            }
+        }
+
+        private void ContactFill(SupplierWorker worker)
+        {
+            var list = cmbDepartment.Items.Cast<object>().ToList();
+            list.RemoveAt(0);
+            string DepartmentName = (worker.departmentID != null) ? (list.Cast<CustomerDepartment>().Where(x => x.ID == worker.departmentID).FirstOrDefault().departmentname) : "Choose";
+            cmbDepartment.SelectedIndex = cmbDepartment.FindStringExact(DepartmentName);
+            
+            list = cmbPosition.Items.Cast<object>().ToList();
+            list.RemoveAt(0);
+            string PositionName = (worker.titleID != null) ? (list.Cast<CustomerTitle>().Where(x => x.ID == worker.titleID).FirstOrDefault().titlename) : "Choose";
+            cmbPosition.SelectedIndex = cmbPosition.FindStringExact(PositionName);
+            cmbPosition.Enabled = txtContactName.Enabled;
+
+            list = lbAddressList.Items.Cast<object>().ToList();
+            string AddressTitle = (worker.SupplierAddress != null) ? (list.Cast<SupplierAddress>().Where(x => x.Title == worker.SupplierAddress.Title).FirstOrDefault().Title) : String.Empty;
+            cmbContactAddress.SelectedIndex = (AddressTitle != String.Empty) ? cmbContactAddress.FindStringExact(AddressTitle) : -1;
+
+            list = cmbLanguage.Items.Cast<object>().ToList();
+            list.RemoveAt(0);
+            string Language = list.Cast<Language>().Where(x => x.ID == worker.languageID).FirstOrDefault().languagename;
+            cmbLanguage.SelectedIndex = cmbLanguage.FindStringExact(Language);
+
+            list = null;
+
+            txtContactName.Text = worker.sw_name;
+            txtContactPhone.Text = worker.phone;
+            txtExternalNumber.Text = worker.PhoneExternalNum;
+            txtContactMail.Text = worker.sw_email;
+            txtContactFax.Text = worker.fax;
+            txtContactMobile.Text = worker.mobilephone;
+            txtContactNotes.Text = (worker.Note != null) ? worker.Note.Note_name : null;
+        }
+        private bool EmptyInputExist_Contact()
+        {
+            List<string> ErrorLog = new List<string>();
+            
+            if (txtContactName.Text == String.Empty)
+            {
+                ErrorLog.Add("Name must not be empty!");
+            }
+
+            if (txtContactPhone.Text == String.Empty)
+            {
+                ErrorLog.Add("Phone must not be empty!");
+            }
+
+            if (cmbLanguage.SelectedIndex <= 0)
+            {
+                ErrorLog.Add("You should choose a communication language");
+            }
+
+            string ErrorString = String.Empty;
+            for (int i = 0; i < ErrorLog.Count; i++)
+            {
+                ErrorString += ErrorLog[i];
+                if (i != ErrorLog.Count - 1)
+                {
+                    ErrorString += "\n";
+                }
+            }
+
+            if (ErrorLog.Count != 0)
+            {
+                MessageBox.Show(ErrorString, "Null Data");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
 }
