@@ -106,6 +106,7 @@ namespace LoginForm
             this.txtPassWord.Location = new System.Drawing.Point(318, 105);
             this.txtPassWord.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassWord.Name = "txtPassWord";
+            this.txtPassWord.PasswordChar = '*';
             this.txtPassWord.Size = new System.Drawing.Size(111, 23);
             this.txtPassWord.TabIndex = 17;
             this.txtPassWord.Text = "admin";

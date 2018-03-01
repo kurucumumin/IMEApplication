@@ -42,7 +42,7 @@ namespace LoginForm
         
         public void checkAuthorities()
         {
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1009).Count() <= 0)
+            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1024).Count() <= 0)
             {
                 btnManagement.Visible = false;
             }
@@ -52,13 +52,18 @@ namespace LoginForm
                 setManagementControl();
             }
 
-            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1007).Count() <= 0)
+            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1022).Count() <= 0)
             {
                 btnLoader.Visible = false;
             }
             else
             {
                 btnLoader.Visible = true;
+            }
+
+            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1023).Count() <= 0)
+            {
+                btnDevelopment.Visible = false;
             }
         }
 
