@@ -12,15 +12,14 @@ namespace LoginForm.DataSet
     using System;
     using System.Collections.Generic;
     
-    public partial class Rate
+    public partial class DailySalaryVoucherDetail
     {
-        public int ID { get; set; }
-        public Nullable<System.DateTime> rate_date { get; set; }
-        public Nullable<decimal> currency { get; set; }
-        public string CurType { get; set; }
-        public Nullable<decimal> RateBuy { get; set; }
-        public Nullable<decimal> RateSell { get; set; }
-        public Nullable<decimal> RateBuyEffective { get; set; }
-        public Nullable<decimal> RateSellEffective { get; set; }
+        public decimal dailySalaryVoucherDetailsId { get; set; }
+        public Nullable<decimal> dailySalaryVoucherMasterId { get; set; }
+        public Nullable<decimal> employeeId { get; set; }
+        public Nullable<decimal> wage { get; set; }
+        public string status { get; set; }
+    
+        public virtual DailySalaryVoucherMaster DailySalaryVoucherMaster { get; set; }
     }
 }

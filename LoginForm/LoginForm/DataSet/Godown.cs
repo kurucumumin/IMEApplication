@@ -19,12 +19,14 @@ namespace LoginForm.DataSet
         {
             this.DeliveryNoteDetails = new HashSet<DeliveryNoteDetail>();
             this.MaterialReceiptDetails = new HashSet<MaterialReceiptDetail>();
+            this.PhysicalStockDetails = new HashSet<PhysicalStockDetail>();
             this.PurchaseDetails = new HashSet<PurchaseDetail>();
             this.PurchaseReturnDetails = new HashSet<PurchaseReturnDetail>();
             this.Racks = new HashSet<Rack>();
             this.RejectionInDetails = new HashSet<RejectionInDetail>();
             this.RejectionOutDetails = new HashSet<RejectionOutDetail>();
             this.SalesDetails = new HashSet<SalesDetail>();
+            this.StockJournalDetails = new HashSet<StockJournalDetail>();
             this.StockPostings = new HashSet<StockPosting>();
         }
     
@@ -37,6 +39,8 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MaterialReceiptDetail> MaterialReceiptDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PhysicalStockDetail> PhysicalStockDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseDetail> PurchaseDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseReturnDetail> PurchaseReturnDetails { get; set; }
@@ -48,6 +52,8 @@ namespace LoginForm.DataSet
         public virtual ICollection<RejectionOutDetail> RejectionOutDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesDetail> SalesDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StockJournalDetail> StockJournalDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StockPosting> StockPostings { get; set; }
     }

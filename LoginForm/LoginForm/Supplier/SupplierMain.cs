@@ -1345,9 +1345,9 @@ namespace LoginForm
                     if (model.PaymentMethod != null) cmbAcountMethod.SelectedValue = model.PaymentMethod.ID;
                     txtdiscount.Text = Convert.ToString(model.discountrate);
                     // cmbInvoiceCur.SelectedItem= model.CurrNameInv;
-                    if (model.CurrNameInv != null) cmbInvoiceCur.SelectedValue = model.CurrNameInv;
+                    //if (model.CurrNameInv != null) cmbInvoiceCur.SelectedValue = model.CurrNameInv;
                     // cmbCurrenyt.SelectedItem=model.CurrNameQuo;
-                    if (model.CurrNameQuo != null) cmbCurrenyt.SelectedValue = model.CurrNameQuo;
+                    //if (model.CurrNameQuo != null) cmbCurrenyt.SelectedValue = model.CurrNameQuo;
 
                     Note n1 = new Note();
                     try { n1 = db.Notes.Where(a => a.ID == model.Note.ID).FirstOrDefault(); } catch { }
