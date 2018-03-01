@@ -19,7 +19,9 @@ namespace LoginForm.DataSet
         {
             this.AdditionalCosts = new HashSet<AdditionalCost>();
             this.AdvancePayments = new HashSet<AdvancePayment>();
+            this.ContraMasters = new HashSet<ContraMaster>();
             this.CreditNoteDetails = new HashSet<CreditNoteDetail>();
+            this.DailySalaryVoucherMasters = new HashSet<DailySalaryVoucherMaster>();
             this.DebitNoteDetails = new HashSet<DebitNoteDetail>();
             this.DeliveryNoteMasters = new HashSet<DeliveryNoteMaster>();
             this.LedgerPostings = new HashSet<LedgerPosting>();
@@ -74,7 +76,11 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AdvancePayment> AdvancePayments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ContraMaster> ContraMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CreditNoteDetail> CreditNoteDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DailySalaryVoucherMaster> DailySalaryVoucherMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DebitNoteDetail> DebitNoteDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

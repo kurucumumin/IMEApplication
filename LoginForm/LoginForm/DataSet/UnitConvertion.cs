@@ -18,12 +18,14 @@ namespace LoginForm.DataSet
         public UnitConvertion()
         {
             this.MaterialReceiptDetails = new HashSet<MaterialReceiptDetail>();
+            this.PhysicalStockDetails = new HashSet<PhysicalStockDetail>();
             this.PurchaseDetails = new HashSet<PurchaseDetail>();
             this.PurchaseOrderDetails = new HashSet<PurchaseOrderDetail>();
             this.PurchaseReturnDetails = new HashSet<PurchaseReturnDetail>();
             this.RejectionInDetails = new HashSet<RejectionInDetail>();
             this.RejectionOutDetails = new HashSet<RejectionOutDetail>();
             this.SalesDetails = new HashSet<SalesDetail>();
+            this.StockJournalDetails = new HashSet<StockJournalDetail>();
         }
     
         public decimal unitconversionId { get; set; }
@@ -34,6 +36,8 @@ namespace LoginForm.DataSet
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MaterialReceiptDetail> MaterialReceiptDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PhysicalStockDetail> PhysicalStockDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PurchaseDetail> PurchaseDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -46,6 +50,8 @@ namespace LoginForm.DataSet
         public virtual ICollection<RejectionOutDetail> RejectionOutDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesDetail> SalesDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StockJournalDetail> StockJournalDetails { get; set; }
         public virtual Unit Unit { get; set; }
     }
 }

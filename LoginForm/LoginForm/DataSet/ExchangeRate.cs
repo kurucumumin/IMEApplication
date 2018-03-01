@@ -17,6 +17,7 @@ namespace LoginForm.DataSet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ExchangeRate()
         {
+            this.ContraDetails = new HashSet<ContraDetail>();
             this.DebitNoteDetails = new HashSet<DebitNoteDetail>();
             this.DeliveryNoteMasters = new HashSet<DeliveryNoteMaster>();
             this.JournalDetails = new HashSet<JournalDetail>();
@@ -32,6 +33,7 @@ namespace LoginForm.DataSet
             this.SalesMasters = new HashSet<SalesMaster>();
             this.SalesReturnMasters = new HashSet<SalesReturnMaster>();
             this.ServiceMasters = new HashSet<ServiceMaster>();
+            this.StockJournalMasters = new HashSet<StockJournalMaster>();
             this.ReceiptDetails = new HashSet<ReceiptDetail>();
         }
     
@@ -40,6 +42,8 @@ namespace LoginForm.DataSet
         public Nullable<System.DateTime> date { get; set; }
         public Nullable<decimal> rate { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ContraDetail> ContraDetails { get; set; }
         public virtual Currency Currency { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DebitNoteDetail> DebitNoteDetails { get; set; }
@@ -71,6 +75,8 @@ namespace LoginForm.DataSet
         public virtual ICollection<SalesReturnMaster> SalesReturnMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ServiceMaster> ServiceMasters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StockJournalMaster> StockJournalMasters { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReceiptDetail> ReceiptDetails { get; set; }
     }

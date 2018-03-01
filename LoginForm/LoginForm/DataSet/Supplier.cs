@@ -42,14 +42,12 @@ namespace LoginForm.DataSet
         public string iban { get; set; }
         public string branchcode { get; set; }
         public string accountnumber { get; set; }
-        public string CurrTypeInv { get; set; }
-        public string CurrNameInv { get; set; }
-        public string CurrTypeQuo { get; set; }
-        public string CurrNameQuo { get; set; }
         public Nullable<int> CategoryID { get; set; }
         public Nullable<int> SubCategoryID { get; set; }
         public string extraNumber { get; set; }
+        public Nullable<decimal> DefaultCurrency { get; set; }
     
+        public virtual Currency Currency { get; set; }
         public virtual Note Note { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
         public virtual PaymentTerm PaymentTerm { get; set; }
