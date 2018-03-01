@@ -14,12 +14,6 @@ namespace LoginForm.DataSet
     
     public partial class Rate
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Rate()
-        {
-            this.Suppliers = new HashSet<Supplier>();
-        }
-    
         public int ID { get; set; }
         public Nullable<System.DateTime> rate_date { get; set; }
         public Nullable<decimal> currency { get; set; }
@@ -28,8 +22,5 @@ namespace LoginForm.DataSet
         public Nullable<decimal> RateSell { get; set; }
         public Nullable<decimal> RateBuyEffective { get; set; }
         public Nullable<decimal> RateSellEffective { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Supplier> Suppliers { get; set; }
     }
 }

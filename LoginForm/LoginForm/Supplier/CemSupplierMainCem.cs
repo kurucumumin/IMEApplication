@@ -20,6 +20,14 @@ namespace LoginForm
         private static string ContactButtonsModeOpen = "Open";
         private static string ContactButtonsModeClose = "Close";
 
+        private static string EmptyCheckTypeGeneral = "General";
+        private static string EmptyCheckTypeContact = "Contact";
+        private static string EmptyCheckTypeAddress = "Address";
+
+        private static string SupplierModeAdd = "Add";
+        private static string SupplierModeModify = "Modify";
+
+
         BindingList<SupplierAddress> SavedAddresses = new BindingList<SupplierAddress>();
         BindingList<SupplierWorker> SavedContacts = new BindingList<SupplierWorker>();
 
@@ -86,15 +94,15 @@ namespace LoginForm
             cmbAccountMethod.Items.Insert(0, "Choose");
             cmbAccountMethod.SelectedIndex = 0;
 
-            cmbQuoCurrency.Items.AddRange(db.Currencies.ToArray());
-            cmbQuoCurrency.DisplayMember = "currencyName";
-            cmbQuoCurrency.Items.Insert(0, "Choose");
-            cmbQuoCurrency.SelectedIndex = 0;
+            cmbCurrency.Items.AddRange(db.Currencies.ToArray());
+            cmbCurrency.DisplayMember = "currencyName";
+            cmbCurrency.Items.Insert(0, "Choose");
+            cmbCurrency.SelectedIndex = 0;
 
-            cmbInvoiceCurrency.Items.AddRange(db.Currencies.ToArray());
-            cmbInvoiceCurrency.DisplayMember = "currencyName";
-            cmbInvoiceCurrency.Items.Insert(0, "Choose");
-            cmbInvoiceCurrency.SelectedIndex = 0;
+            //cmbInvoiceCurrency.Items.AddRange(db.Currencies.ToArray());
+            //cmbInvoiceCurrency.DisplayMember = "currencyName";
+            //cmbInvoiceCurrency.Items.Insert(0, "Choose");
+            //cmbInvoiceCurrency.SelectedIndex = 0;
 
             cmbCountry.Items.AddRange(db.Countries.ToArray());
             cmbCountry.DisplayMember = "Country_name";
@@ -111,9 +119,9 @@ namespace LoginForm
             //cmbPosition.ValueMember = "ID";
             //cmbPosition.SelectedIndex = -1;
             
-            cmbMainContact.Items.Insert(0, "Choose");
-            cmbMainContact.DisplayMember = "languagename";
-            cmbMainContact.SelectedIndex = 0;
+            //cmbMainContact.Items.Insert(0, "Choose");
+            //cmbMainContact.DisplayMember = "languagename";
+            //cmbMainContact.SelectedIndex = 0;
 
             cmbLanguage.Items.AddRange(db.Languages.ToArray());
             cmbLanguage.DisplayMember = "languagename";
@@ -138,19 +146,60 @@ namespace LoginForm
             switch (btnAdd.Text)
             {
                 case "Add":
-                    SupplierAddMode = "Add";
+                    SupplierAddMode = SupplierModeAdd;
                     EnableGeneralInput(true);
 
                     txtSupplierCode.Text = NewSupplierID();
-
-
-
 
                     btnAdd.Text = "Save";
                     btnModify.Text = "Cancel";
                     break;
                 case "Save":
+                    if (SupplierAddMode == SupplierModeAdd)
+                    {
+                        if (!EmptyInputExist(EmptyCheckTypeGeneral))
+                        {
+                            IMEEntities db = new IMEEntities();
 
+                            Supplier s = new Supplier();
+                            s.ID = txtSupplierCode.Text;
+                            s.representaryID = ((Worker)cmbRepresentative.SelectedItem).WorkerID;
+                            s.s_name = txtName.Text;
+                            s.CategoryID = ((SupplierCategory)cmbMainCategory.SelectedItem).ID;
+                            s.SubCategoryID = ((SupplierSubCategory)cmbSubCategory.SelectedItem).ID;
+                            s.taxoffice = txtTaxOffice.Text;
+                            s.taxnumber = txtTaxNumber.Text;
+                            s.accountrepresentaryID = ((Worker)cmbAccountRep.SelectedItem).WorkerID;
+                            s.payment_termID = ((PaymentTerm)cmbAccountTerms.SelectedItem).ID;
+                            s.paymentmethodID = ((PaymentMethod)cmbAccountMethod.SelectedItem).ID;
+                            s.accountrepresentaryID = ((Worker)cmbRepresentative.SelectedItem).WorkerID;
+                            s.discountrate = Convert.ToDecimal(txtDiscountRate.Text);
+                            s.DefaultCurrency = ((Currency)cmbCurrency.SelectedItem).currencyID;
+                            s.BankID = ((SupplierBank)cmbBankName.SelectedItem).ID;
+                            s.branchcode = txtBankBranchCode.Text;
+                            s.accountnumber = txtBankAccountNumber.Text;
+                            s.iban = txtBankIban.Text;
+
+                            s.webadress = (txtWeb.Text != String.Empty) ? txtWeb.Text : null;
+
+                            if (txtSupplierNotes.Text != String.Empty)
+                            {
+                                try
+                                {
+                                    Note n = new Note();
+                                    n.Note_name = txtSupplierNotes.Text;
+                                    db.Notes.Add(n);
+
+                                    s.SupplierNoteID = n.ID;
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show("SN1: SupplierNote could not be added!." + "/n" + ex.ToString(), "Note Saving Error");
+                                }
+                            }
+                        }
+                    }
+                    
 
                     //SupplierAddMode = String.Empty;
                     break;
@@ -186,9 +235,9 @@ namespace LoginForm
             cmbAccountTerms.Enabled = state;
             cmbAccountMethod.Enabled = state;
             txtDiscountRate.Enabled = state;
-            cmbQuoCurrency.Enabled = state;
-            cmbInvoiceCurrency.Enabled = state;
-            txtAccountNotes.Enabled = state;
+            cmbCurrency.Enabled = state;
+            //cmbInvoiceCurrency.Enabled = state;
+            //txtAccountNotes.Enabled = state;
 
             btnAddressAdd.Enabled = state;
 
@@ -211,7 +260,7 @@ namespace LoginForm
             switch (btnModify.Text)
             {
                 case "Modify":
-                    SupplierAddMode = "Modify";
+                    SupplierAddMode = SupplierModeModify;
                     if (dgSupplier.SelectedRows.Count != 0)
                     {
                         EnableGeneralInput(true);
@@ -298,9 +347,9 @@ namespace LoginForm
             cmbAccountTerms.SelectedIndex = 0;
             cmbAccountMethod.SelectedIndex = 0;
             txtDiscountRate.Clear();
-            cmbQuoCurrency.SelectedIndex = 0;
-            cmbInvoiceCurrency.SelectedIndex = 0;
-            txtAccountNotes.Clear();
+            cmbCurrency.SelectedIndex = 0;
+            //cmbInvoiceCurrency.SelectedIndex = 0;
+            //txtAccountNotes.Clear();
 
             cmbBankName.SelectedIndex = 0;
             txtBankBranchCode.Clear();
@@ -599,11 +648,7 @@ namespace LoginForm
 
         private void btnAddressDone_Click(object sender, EventArgs e)
         {
-            if (/*EmptyInputExist_Address()*/false)
-            {
-                MessageBox.Show("Empty ares exists!", "Fail");
-            }
-            else
+            if (!EmptyInputExist(EmptyCheckTypeAddress))
             {
                 if (AddressMode == "Add")
                 {
@@ -611,7 +656,7 @@ namespace LoginForm
                     {
                         Title = txtAddressTitle.Text,
                         Phone = txtPhone.Text,
-                        Fax = txtFax.Text,
+                        Fax = (txtFax.Text != String.Empty) ? txtFax.Text : null,
                         CountryID = ((Country)cmbCountry.SelectedItem).ID,
                         CityID = ((City)cmbCity.SelectedItem).ID,
                         TownID = ((Town)cmbTown.SelectedItem).ID,
@@ -620,6 +665,7 @@ namespace LoginForm
                         AdressDetails = txtAddressDetail.Text
                     };
 
+
                     SavedAddresses.Add(address);
 
                     cmbContactAddress.DataSource = null;
@@ -627,14 +673,14 @@ namespace LoginForm
                     cmbContactAddress.DisplayMember = "Title";
                     cmbContactAddress.SelectedIndex = -1;
                 }
-                else if(AddressMode == "Update")
+                else if (AddressMode == "Update")
                 {
                     SupplierAddress s = (SupplierAddress)lbAddressList.SelectedItem;
                     SupplierAddress address = SavedAddresses.Where(x => x.Title == s.Title).FirstOrDefault();
 
                     address.Title = txtAddressTitle.Text;
                     address.Phone = txtPhone.Text;
-                    address.Fax = txtFax.Text;
+                    address.Fax = (txtFax.Text != String.Empty) ? txtFax.Text : null;
                     address.CountryID = ((Country)cmbCountry.SelectedItem).ID;
                     address.CityID = ((City)cmbCity.SelectedItem).ID;
                     address.TownID = ((Town)cmbTown.SelectedItem).ID;
@@ -725,7 +771,7 @@ namespace LoginForm
         {
             txtAddressTitle.Text = address.Title;
             txtPhone.Text = address.Phone;
-            txtFax.Text = address.Fax;
+            txtFax.Text = (address.Fax != null) ? address.Fax : String.Empty;
             txtPoBox.Text = address.TownID.ToString();
             txtPostCode.Text = address.PostCode;
             txtAddressDetail.Text = address.AdressDetails;
@@ -968,11 +1014,7 @@ namespace LoginForm
 
         private void btnContactDone_Click(object sender, EventArgs e)
         {
-            if (EmptyInputExist_Contact())
-            {
-                MessageBox.Show("Empty areas exist!", "Fail");
-            }
-            else
+            if (!EmptyInputExist(EmptyCheckTypeContact))
             {
                 if (ContactMode == "Add")
                 {
@@ -985,7 +1027,7 @@ namespace LoginForm
                         sw_email = (txtContactMail.Text != String.Empty) ? txtContactMail.Text : null,
                         fax = (txtContactFax.Text != String.Empty) ? txtContactFax.Text : null,
                         mobilephone = (txtContactMobile.Text != String.Empty) ? txtContactMobile.Text : null
-                        
+
                     };
 
                     if (cmbDepartment.SelectedIndex > 0) { worker.departmentID = ((CustomerDepartment)cmbDepartment.SelectedItem).ID; }
@@ -1006,17 +1048,26 @@ namespace LoginForm
                     SupplierWorker address = SavedContacts.Where(x => x.sw_name == worker.sw_name).FirstOrDefault();
 
                     worker.sw_name = txtContactName.Text;
-                    worker.departmentID = ((CustomerDepartment)cmbDepartment.SelectedItem).ID;
+                    if (cmbDepartment.SelectedIndex > 0) { worker.departmentID = ((CustomerDepartment)cmbDepartment.SelectedItem).ID; }
                     worker.phone = txtContactPhone.Text;
-                    worker.titleID = ((CustomerTitle)cmbPosition.SelectedItem).ID;
-                    worker.PhoneExternalNum = txtExternalNumber.Text;
-                    worker.sw_email = txtContactMail.Text;
-                    worker.fax = txtContactFax.Text;
-                    worker.mobilephone = txtContactMobile.Text;
+                    if (cmbPosition.SelectedIndex > 0) { worker.titleID = ((CustomerTitle)cmbPosition.SelectedItem).ID; }
+                    worker.PhoneExternalNum = (txtExternalNumber.Text != String.Empty) ? txtExternalNumber.Text : null;
+                    worker.sw_email = (txtContactMail.Text != String.Empty) ? txtContactMail.Text : null;
+                    worker.fax = (txtContactFax.Text != String.Empty) ? txtContactFax.Text : null;
+                    worker.mobilephone = (txtContactMobile.Text != String.Empty) ? txtContactMobile.Text : null;
                     worker.languageID = ((Language)cmbLanguage.SelectedItem).ID;
-                    worker.SupplierAddress = (SupplierAddress)cmbContactAddress.SelectedItem;
-                    
-                    worker.Note.Note_name = txtContactNotes.Text;
+                    if (cmbContactAddress.SelectedIndex >= 0) { worker.SupplierAddress = (SupplierAddress)cmbContactAddress.SelectedItem; }
+
+                    if (worker.Note != null)
+                    {
+                        worker.Note.Note_name = txtContactNotes.Text;
+                    }
+                    else
+                    {
+                        Note n = new Note();
+                        n.Note_name = txtContactNotes.Text;
+                        worker.Note = n;
+                    }
                 }
 
                 lbContacts.DataSource = null;
@@ -1102,10 +1153,14 @@ namespace LoginForm
             cmbDepartment.SelectedIndex = cmbDepartment.FindStringExact(DepartmentName);
             
             list = cmbPosition.Items.Cast<object>().ToList();
-            list.RemoveAt(0);
-            string PositionName = (worker.titleID != null) ? (list.Cast<CustomerTitle>().Where(x => x.ID == worker.titleID).FirstOrDefault().titlename) : "Choose";
-            cmbPosition.SelectedIndex = cmbPosition.FindStringExact(PositionName);
-            cmbPosition.Enabled = txtContactName.Enabled;
+            if(list.Count > 1)
+            {
+                list.RemoveAt(0);
+                string PositionName = (worker.titleID != null) ? (list.Cast<CustomerTitle>().Where(x => x.ID == worker.titleID).FirstOrDefault().titlename) : "Choose";
+                cmbPosition.SelectedIndex = cmbPosition.FindStringExact(PositionName);
+                cmbPosition.Enabled = txtContactName.Enabled;
+                btnPos.Enabled = txtContactName.Enabled;
+            }
 
             list = lbAddressList.Items.Cast<object>().ToList();
             string AddressTitle = (worker.SupplierAddress != null) ? (list.Cast<SupplierAddress>().Where(x => x.Title == worker.SupplierAddress.Title).FirstOrDefault().Title) : String.Empty;
@@ -1124,45 +1179,214 @@ namespace LoginForm
             txtContactMail.Text = worker.sw_email;
             txtContactFax.Text = worker.fax;
             txtContactMobile.Text = worker.mobilephone;
-            txtContactNotes.Text = (worker.Note != null) ? worker.Note.Note_name : null;
+            txtContactNotes.Text = (worker.Note != null) ? worker.Note.Note_name : String.Empty;
         }
-        private bool EmptyInputExist_Contact()
+        private bool EmptyInputExist(string type)
         {
             List<string> ErrorLog = new List<string>();
-            
-            if (txtContactName.Text == String.Empty)
-            {
-                ErrorLog.Add("Name must not be empty!");
-            }
 
-            if (txtContactPhone.Text == String.Empty)
+            switch (type)
             {
-                ErrorLog.Add("Phone must not be empty!");
-            }
+                #region Contact
+                case "Contact":
+                    if (txtContactName.Text == String.Empty)
+                    {
+                        ErrorLog.Add("Name must not be empty!");
+                    }
 
-            if (cmbLanguage.SelectedIndex <= 0)
-            {
-                ErrorLog.Add("You should choose a communication language");
-            }
+                    if (txtContactPhone.Text == String.Empty)
+                    {
+                        ErrorLog.Add("Phone must not be empty!");
+                    }
 
-            string ErrorString = String.Empty;
-            for (int i = 0; i < ErrorLog.Count; i++)
-            {
-                ErrorString += ErrorLog[i];
-                if (i != ErrorLog.Count - 1)
-                {
-                    ErrorString += "\n";
-                }
-            }
+                    if (cmbLanguage.SelectedIndex <= 0)
+                    {
+                        ErrorLog.Add("You should choose a Communication Language!");
+                    }
 
-            if (ErrorLog.Count != 0)
-            {
-                MessageBox.Show(ErrorString, "Null Data");
-                return true;
-            }
-            else
-            {
-                return false;
+
+                    string ErrorStringContact = String.Empty;
+                    for (int i = 0; i < ErrorLog.Count; i++)
+                    {
+                        ErrorStringContact += ErrorLog[i];
+                        if (i != ErrorLog.Count - 1)
+                        {
+                            ErrorStringContact += "\n";
+                        }
+                    }
+
+                    if (ErrorLog.Count != 0)
+                    {
+                        MessageBox.Show(ErrorStringContact, "Empty Areas");
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                #endregion
+                #region Address
+                case "Address":
+
+                    if (txtAddressTitle.Text == String.Empty)
+                    {
+                        ErrorLog.Add("Title must not be empty!");
+                    }
+                    if (txtPhone.Text == String.Empty)
+                    {
+                        ErrorLog.Add("Phone must not be empty!");
+                    }
+                    if (txtPoBox.Text == String.Empty)
+                    {
+                        ErrorLog.Add("P.O.Box must not be empty!");
+                    }
+                    if (txtPostCode.Text == String.Empty)
+                    {
+                        ErrorLog.Add("Post Code must not be empty!");
+                    }
+                    if (txtAddressDetail.Text == String.Empty)
+                    {
+                        ErrorLog.Add("Address details must not be empty!");
+                    }
+
+                    if (cmbCountry.SelectedIndex <= 0)
+                    {
+                        ErrorLog.Add("You should choose a Country!");
+                    }
+                    if (cmbCity.SelectedIndex <= 0)
+                    {
+                        ErrorLog.Add("You should choose a City!");
+                    }
+                    if (cmbTown.SelectedIndex <= 0)
+                    {
+                        ErrorLog.Add("You should choose a Town!");
+                    }
+
+                    string ErrorStringAddress = String.Empty;
+                    for (int i = 0; i < ErrorLog.Count; i++)
+                    {
+                        ErrorStringAddress += ErrorLog[i];
+                        if (i != ErrorLog.Count - 1)
+                        {
+                            ErrorStringAddress += "\n";
+                        }
+                    }
+
+                    if (ErrorLog.Count != 0)
+                    {
+                        MessageBox.Show(ErrorStringAddress, "Empty Areas");
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                #endregion
+                #region General
+                case "General":
+
+                    if (cmbRepresentative.SelectedIndex <= 0)
+                    {
+                        ErrorLog.Add("You should choose a General Representative!");
+                    }
+                    if (txtName.Text == String.Empty)
+                    {
+                        ErrorLog.Add("Name must not be empty!");
+                    }
+                    if (cmbMainCategory.SelectedIndex <= 0)
+                    {
+                        ErrorLog.Add("You should choose a Main Category!");
+                    }
+                    if (cmbSubCategory.SelectedIndex <= 0)
+                    {
+                        ErrorLog.Add("You should choose a Sub Category!");
+                    }
+                    if (txtTaxOffice.Text == String.Empty)
+                    {
+                        ErrorLog.Add("Tax Office must not be empty!");
+                    }
+                    if (txtTaxNumber.Text == String.Empty)
+                    {
+                        ErrorLog.Add("Tax Number must not be empty!");
+                    }
+                    if (cmbMainContact.SelectedIndex < 0)
+                    {
+                        ErrorLog.Add("You should choose a Main Contact!");
+                    }
+                    if (cmbAccountRep.SelectedIndex <= 0)
+                    {
+                        ErrorLog.Add("You should choose an Account Representative!");
+                    }
+                    if (cmbAccountTerms.SelectedIndex <= 0)
+                    {
+                        ErrorLog.Add("You should choose a Terms of Payment!");
+                    }
+                    if (cmbAccountMethod.SelectedIndex <= 0)
+                    {
+                        ErrorLog.Add("You should choose a Payment Method!");
+                    }
+                    if (txtDiscountRate.Text == String.Empty)
+                    {
+                        ErrorLog.Add("Discount Rate must not be empty!");
+                    }
+                    if (cmbCurrency.SelectedIndex <= 0)
+                    {
+                        ErrorLog.Add("You should choose a Currency!");
+                    }
+                    //if (cmbInvoiceCurrency.SelectedIndex <= 0)
+                    //{
+                    //    ErrorLog.Add("You should choose a Currency for Invoices!");
+                    //}
+                    if (lbAddressList.Items.Count <= 0)
+                    {
+                        ErrorLog.Add("You should add at least one Address!");
+                    }
+                    if (lbContacts.Items.Count <= 0)
+                    {
+                        ErrorLog.Add("You should add at least Contact!");
+                    }
+                    if (cmbBankName.SelectedIndex <= 0)
+                    {
+                        ErrorLog.Add("You should choose a Bank!");
+                    }
+                    if (txtBankBranchCode.Text == String.Empty)
+                    {
+                        ErrorLog.Add("Branch Code must not be empty!");
+                    }
+                    if (txtBankAccountNumber.Text == String.Empty)
+                    {
+                        ErrorLog.Add("Account Number must not be empty!");
+                    }
+                    if (txtBankIban.Text == String.Empty)
+                    {
+                        ErrorLog.Add("IBAN must not be empty!");
+                    }
+
+
+                    string ErrorStringGeneral = String.Empty;
+                    for (int i = 0; i < ErrorLog.Count; i++)
+                    {
+                        ErrorStringGeneral += ErrorLog[i];
+                        if (i != ErrorLog.Count - 1)
+                        {
+                            ErrorStringGeneral += "\n";
+                        }
+                    }
+
+                    if (ErrorLog.Count != 0)
+                    {
+                        MessageBox.Show(ErrorStringGeneral, "Empty Areas");
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                    return false;
+                #endregion
+                default:
+                    return false;
             }
         }
     }

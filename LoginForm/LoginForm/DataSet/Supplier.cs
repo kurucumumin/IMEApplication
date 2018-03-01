@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Supplier
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,38 +20,31 @@ namespace LoginForm.DataSet
             this.SupplierAddresses = new HashSet<SupplierAddress>();
             this.SupplierWorkers = new HashSet<SupplierWorker>();
         }
-    
+
         public string ID { get; set; }
         public string s_name { get; set; }
-        public string telephone { get; set; }
         public Nullable<int> paymentmethodID { get; set; }
-        public string fax { get; set; }
-        public Nullable<int> creditlimit { get; set; }
         public string webadress { get; set; }
         public Nullable<int> payment_termID { get; set; }
         public Nullable<int> representaryID { get; set; }
-        public Nullable<int> rate_ID { get; set; }
         public string taxoffice { get; set; }
         public string taxnumber { get; set; }
         public Nullable<int> accountrepresentaryID { get; set; }
         public Nullable<int> SupplierNoteID { get; set; }
         public Nullable<int> MainContactID { get; set; }
         public Nullable<int> BankID { get; set; }
-        public string PoBox { get; set; }
         public Nullable<decimal> discountrate { get; set; }
         public string iban { get; set; }
         public string branchcode { get; set; }
         public string accountnumber { get; set; }
         public Nullable<int> CategoryID { get; set; }
         public Nullable<int> SubCategoryID { get; set; }
-        public string extraNumber { get; set; }
         public Nullable<decimal> DefaultCurrency { get; set; }
-    
+
         public virtual Currency Currency { get; set; }
         public virtual Note Note { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
         public virtual PaymentTerm PaymentTerm { get; set; }
-        public virtual Rate Rate { get; set; }
         public virtual Worker Worker { get; set; }
         public virtual SupplierBank SupplierBank { get; set; }
         public virtual SupplierCategory SupplierCategory { get; set; }

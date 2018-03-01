@@ -55,20 +55,19 @@ namespace LoginForm
             this.label2 = new System.Windows.Forms.Label();
             this.tabAccount = new System.Windows.Forms.TabPage();
             this.txtAccountNotes = new System.Windows.Forms.TextBox();
-            this.cmbInvoiceCurrency = new System.Windows.Forms.ComboBox();
-            this.cmbQuoCurrency = new System.Windows.Forms.ComboBox();
+            this.cmbCurrency = new System.Windows.Forms.ComboBox();
             this.txtDiscountRate = new System.Windows.Forms.TextBox();
             this.cmbAccountMethod = new System.Windows.Forms.ComboBox();
             this.cmbAccountTerms = new System.Windows.Forms.ComboBox();
             this.cmbAccountRep = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tabAddress = new System.Windows.Forms.TabPage();
+            this.label41 = new System.Windows.Forms.Label();
             this.txtAddressTitle = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.btnAddressDelete = new System.Windows.Forms.Button();
@@ -94,6 +93,7 @@ namespace LoginForm
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.tabAccounting = new System.Windows.Forms.TabPage();
+            this.label43 = new System.Windows.Forms.Label();
             this.cmbContactAddress = new System.Windows.Forms.ComboBox();
             this.txtExternalNumber = new System.Windows.Forms.TextBox();
             this.btnContactCancel = new System.Windows.Forms.Button();
@@ -174,8 +174,6 @@ namespace LoginForm
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label43 = new System.Windows.Forms.Label();
             this.tabgenel.SuspendLayout();
             this.tabInfo.SuspendLayout();
             this.tabAccount.SuspendLayout();
@@ -480,14 +478,12 @@ namespace LoginForm
             // tabAccount
             // 
             this.tabAccount.Controls.Add(this.txtAccountNotes);
-            this.tabAccount.Controls.Add(this.cmbInvoiceCurrency);
-            this.tabAccount.Controls.Add(this.cmbQuoCurrency);
+            this.tabAccount.Controls.Add(this.cmbCurrency);
             this.tabAccount.Controls.Add(this.txtDiscountRate);
             this.tabAccount.Controls.Add(this.cmbAccountMethod);
             this.tabAccount.Controls.Add(this.cmbAccountTerms);
             this.tabAccount.Controls.Add(this.cmbAccountRep);
             this.tabAccount.Controls.Add(this.label15);
-            this.tabAccount.Controls.Add(this.label12);
             this.tabAccount.Controls.Add(this.label11);
             this.tabAccount.Controls.Add(this.label10);
             this.tabAccount.Controls.Add(this.label9);
@@ -505,39 +501,29 @@ namespace LoginForm
             // txtAccountNotes
             // 
             this.txtAccountNotes.Enabled = false;
-            this.txtAccountNotes.Location = new System.Drawing.Point(771, 41);
+            this.txtAccountNotes.Location = new System.Drawing.Point(761, 14);
             this.txtAccountNotes.Margin = new System.Windows.Forms.Padding(4);
             this.txtAccountNotes.Multiline = true;
             this.txtAccountNotes.Name = "txtAccountNotes";
-            this.txtAccountNotes.Size = new System.Drawing.Size(409, 146);
+            this.txtAccountNotes.Size = new System.Drawing.Size(227, 172);
             this.txtAccountNotes.TabIndex = 15;
+            this.txtAccountNotes.Visible = false;
             // 
-            // cmbInvoiceCurrency
+            // cmbCurrency
             // 
-            this.cmbInvoiceCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbInvoiceCurrency.Enabled = false;
-            this.cmbInvoiceCurrency.FormattingEnabled = true;
-            this.cmbInvoiceCurrency.Location = new System.Drawing.Point(539, 158);
-            this.cmbInvoiceCurrency.Margin = new System.Windows.Forms.Padding(4);
-            this.cmbInvoiceCurrency.Name = "cmbInvoiceCurrency";
-            this.cmbInvoiceCurrency.Size = new System.Drawing.Size(160, 28);
-            this.cmbInvoiceCurrency.TabIndex = 14;
-            // 
-            // cmbQuoCurrency
-            // 
-            this.cmbQuoCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbQuoCurrency.Enabled = false;
-            this.cmbQuoCurrency.FormattingEnabled = true;
-            this.cmbQuoCurrency.Location = new System.Drawing.Point(539, 81);
-            this.cmbQuoCurrency.Margin = new System.Windows.Forms.Padding(4);
-            this.cmbQuoCurrency.Name = "cmbQuoCurrency";
-            this.cmbQuoCurrency.Size = new System.Drawing.Size(160, 28);
-            this.cmbQuoCurrency.TabIndex = 13;
+            this.cmbCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCurrency.Enabled = false;
+            this.cmbCurrency.FormattingEnabled = true;
+            this.cmbCurrency.Location = new System.Drawing.Point(514, 81);
+            this.cmbCurrency.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbCurrency.Name = "cmbCurrency";
+            this.cmbCurrency.Size = new System.Drawing.Size(160, 28);
+            this.cmbCurrency.TabIndex = 13;
             // 
             // txtDiscountRate
             // 
             this.txtDiscountRate.Enabled = false;
-            this.txtDiscountRate.Location = new System.Drawing.Point(539, 14);
+            this.txtDiscountRate.Location = new System.Drawing.Point(514, 14);
             this.txtDiscountRate.Margin = new System.Windows.Forms.Padding(4);
             this.txtDiscountRate.Name = "txtDiscountRate";
             this.txtDiscountRate.Size = new System.Drawing.Size(160, 26);
@@ -548,7 +534,7 @@ namespace LoginForm
             this.cmbAccountMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAccountMethod.Enabled = false;
             this.cmbAccountMethod.FormattingEnabled = true;
-            this.cmbAccountMethod.Location = new System.Drawing.Point(157, 158);
+            this.cmbAccountMethod.Location = new System.Drawing.Point(159, 158);
             this.cmbAccountMethod.Margin = new System.Windows.Forms.Padding(4);
             this.cmbAccountMethod.Name = "cmbAccountMethod";
             this.cmbAccountMethod.Size = new System.Drawing.Size(160, 28);
@@ -559,7 +545,7 @@ namespace LoginForm
             this.cmbAccountTerms.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAccountTerms.Enabled = false;
             this.cmbAccountTerms.FormattingEnabled = true;
-            this.cmbAccountTerms.Location = new System.Drawing.Point(157, 81);
+            this.cmbAccountTerms.Location = new System.Drawing.Point(159, 81);
             this.cmbAccountTerms.Margin = new System.Windows.Forms.Padding(4);
             this.cmbAccountTerms.Name = "cmbAccountTerms";
             this.cmbAccountTerms.Size = new System.Drawing.Size(160, 28);
@@ -570,7 +556,7 @@ namespace LoginForm
             this.cmbAccountRep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAccountRep.Enabled = false;
             this.cmbAccountRep.FormattingEnabled = true;
-            this.cmbAccountRep.Location = new System.Drawing.Point(157, 14);
+            this.cmbAccountRep.Location = new System.Drawing.Point(159, 14);
             this.cmbAccountRep.Margin = new System.Windows.Forms.Padding(4);
             this.cmbAccountRep.Name = "cmbAccountRep";
             this.cmbAccountRep.Size = new System.Drawing.Size(160, 28);
@@ -579,32 +565,23 @@ namespace LoginForm
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(765, 17);
+            this.label15.Location = new System.Drawing.Point(700, 17);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(53, 20);
             this.label15.TabIndex = 8;
             this.label15.Text = "Notes";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(381, 161);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(134, 20);
-            this.label12.TabIndex = 5;
-            this.label12.Text = "Invoice Currency";
+            this.label15.Visible = false;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(363, 84);
+            this.label11.Location = new System.Drawing.Point(381, 84);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(154, 20);
+            this.label11.Size = new System.Drawing.Size(77, 20);
             this.label11.TabIndex = 4;
-            this.label11.Text = "Quotation Currency";
+            this.label11.Text = "Currency";
             // 
             // label10
             // 
@@ -629,7 +606,7 @@ namespace LoginForm
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(-5, 84);
+            this.label8.Location = new System.Drawing.Point(8, 84);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(146, 20);
@@ -681,6 +658,16 @@ namespace LoginForm
             this.tabAddress.TabIndex = 2;
             this.tabAddress.Text = "Company Address";
             this.tabAddress.UseVisualStyleBackColor = true;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(1012, 12);
+            this.label41.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(89, 20);
+            this.label41.TabIndex = 26;
+            this.label41.Text = "Addresses";
             // 
             // txtAddressTitle
             // 
@@ -974,6 +961,16 @@ namespace LoginForm
             this.tabAccounting.TabIndex = 3;
             this.tabAccounting.Text = "Contact";
             this.tabAccounting.UseVisualStyleBackColor = true;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(963, 16);
+            this.label43.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(76, 20);
+            this.label43.TabIndex = 36;
+            this.label43.Text = "Contacts";
             // 
             // cmbContactAddress
             // 
@@ -1759,26 +1756,6 @@ namespace LoginForm
             this.panel1.Size = new System.Drawing.Size(1227, 81);
             this.panel1.TabIndex = 2;
             // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(1012, 12);
-            this.label41.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(89, 20);
-            this.label41.TabIndex = 26;
-            this.label41.Text = "Addresses";
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(963, 16);
-            this.label43.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(76, 20);
-            this.label43.TabIndex = 36;
-            this.label43.Text = "Contacts";
-            // 
             // CemSupplierMainCem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1837,15 +1814,13 @@ namespace LoginForm
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtAccountNotes;
-        private System.Windows.Forms.ComboBox cmbInvoiceCurrency;
-        private System.Windows.Forms.ComboBox cmbQuoCurrency;
+        private System.Windows.Forms.ComboBox cmbCurrency;
         private System.Windows.Forms.TextBox txtDiscountRate;
         private System.Windows.Forms.ComboBox cmbAccountMethod;
         private System.Windows.Forms.ComboBox cmbAccountTerms;

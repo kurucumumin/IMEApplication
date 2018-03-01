@@ -5418,6 +5418,64 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("TaxIdForTaxSelectionUpdate", taxIdParameter);
         }
     
+        public virtual int TaxReportGridFillByBillWise(Nullable<System.DateTime> fromdate, Nullable<System.DateTime> todate, Nullable<decimal> taxId, Nullable<decimal> voucherTypeId, string typeOfVoucher, Nullable<bool> input)
+        {
+            var fromdateParameter = fromdate.HasValue ?
+                new ObjectParameter("fromdate", fromdate) :
+                new ObjectParameter("fromdate", typeof(System.DateTime));
+    
+            var todateParameter = todate.HasValue ?
+                new ObjectParameter("todate", todate) :
+                new ObjectParameter("todate", typeof(System.DateTime));
+    
+            var taxIdParameter = taxId.HasValue ?
+                new ObjectParameter("taxId", taxId) :
+                new ObjectParameter("taxId", typeof(decimal));
+    
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            var typeOfVoucherParameter = typeOfVoucher != null ?
+                new ObjectParameter("typeOfVoucher", typeOfVoucher) :
+                new ObjectParameter("typeOfVoucher", typeof(string));
+    
+            var inputParameter = input.HasValue ?
+                new ObjectParameter("input", input) :
+                new ObjectParameter("input", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("TaxReportGridFillByBillWise", fromdateParameter, todateParameter, taxIdParameter, voucherTypeIdParameter, typeOfVoucherParameter, inputParameter);
+        }
+    
+        public virtual int TaxReportGridFillByProductwise(Nullable<System.DateTime> fromdate, Nullable<System.DateTime> todate, Nullable<decimal> taxId, Nullable<decimal> voucherTypeId, string typeOfVoucher, Nullable<bool> input)
+        {
+            var fromdateParameter = fromdate.HasValue ?
+                new ObjectParameter("fromdate", fromdate) :
+                new ObjectParameter("fromdate", typeof(System.DateTime));
+    
+            var todateParameter = todate.HasValue ?
+                new ObjectParameter("todate", todate) :
+                new ObjectParameter("todate", typeof(System.DateTime));
+    
+            var taxIdParameter = taxId.HasValue ?
+                new ObjectParameter("taxId", taxId) :
+                new ObjectParameter("taxId", typeof(decimal));
+    
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            var typeOfVoucherParameter = typeOfVoucher != null ?
+                new ObjectParameter("typeOfVoucher", typeOfVoucher) :
+                new ObjectParameter("typeOfVoucher", typeof(string));
+    
+            var inputParameter = input.HasValue ?
+                new ObjectParameter("input", input) :
+                new ObjectParameter("input", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("TaxReportGridFillByProductwise", fromdateParameter, todateParameter, taxIdParameter, voucherTypeIdParameter, typeOfVoucherParameter, inputParameter);
+        }
+    
         public virtual ObjectResult<TaxSearch_Result> TaxSearch(string taxName, string applicableOn, string calculatingMode, string isActive)
         {
             var taxNameParameter = taxName != null ?
@@ -5549,6 +5607,11 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Trialbalance3_Result>("Trialbalance3", accountGroupIdParameter, fromDateParameter, toDateParameter);
         }
     
+        public virtual ObjectResult<TypeOfVoucherCombofillForVatAndTaxReport_Result> TypeOfVoucherCombofillForVatAndTaxReport()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TypeOfVoucherCombofillForVatAndTaxReport_Result>("TypeOfVoucherCombofillForVatAndTaxReport");
+        }
+    
         public virtual ObjectResult<UnitConversionIdAndConRateViewallByProductId_Result> UnitConversionIdAndConRateViewallByProductId(string productId)
         {
             var productIdParameter = productId != null ?
@@ -5577,6 +5640,15 @@ namespace LoginForm.DataSet
                 new ObjectParameter("txtBox", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("VoucherNumberAutomaicGeneration", voucherTypeIdParameter, dateParameter, tab_nameParameter, txtBoxParameter);
+        }
+    
+        public virtual ObjectResult<VoucherTypeNameCorrespondingToTypeOfVoucher_Result> VoucherTypeNameCorrespondingToTypeOfVoucher(string typeOfVoucher)
+        {
+            var typeOfVoucherParameter = typeOfVoucher != null ?
+                new ObjectParameter("typeOfVoucher", typeOfVoucher) :
+                new ObjectParameter("typeOfVoucher", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VoucherTypeNameCorrespondingToTypeOfVoucher_Result>("VoucherTypeNameCorrespondingToTypeOfVoucher", typeOfVoucherParameter);
         }
     
         public virtual ObjectResult<VoucherTypeSearch_Result> VoucherTypeSearch(string voucherTypeName, string typeOfVoucher)
