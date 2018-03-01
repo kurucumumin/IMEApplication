@@ -791,5 +791,88 @@ namespace LoginForm.Account.Services
             }
             return dts;
         }
+
+        public DataTable DayBook(DateTime dtFromDate, DateTime dtToDate, decimal decVoucherTypeId, decimal decLedgerId, bool blCondenced)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            dtbl.Columns.Add("Sl No");
+            try
+            {
+                var adaptor = IME.DayBook(dtFromDate, dtToDate, decVoucherTypeId, decLedgerId, blCondenced).ToList();
+
+                dtbl.Columns.Add("Date");
+                dtbl.Columns.Add("voucherTypeId");
+                dtbl.Columns.Add("voucherNo");
+                dtbl.Columns.Add("Voucher_Type");
+                dtbl.Columns.Add("Invoice_No");
+                dtbl.Columns.Add("typeOfVoucher");
+                dtbl.Columns.Add("Ledger");
+                dtbl.Columns.Add("Debit");
+                dtbl.Columns.Add("Credit");
+                dtbl.Columns.Add("Inward_Qty");
+                dtbl.Columns.Add("Outward_Qty");
+                dtbl.Columns.Add("MasterId");
+
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["Date"] = item.Date;
+                    row["voucherTypeId"] = item.voucherTypeId;
+                    row["voucherNo"] = item.voucherNo;
+                    row["Voucher_Type"] = item.Voucher_Type;
+                    row["Invoice_No"] = item.Invoice_No;
+                    row["typeOfVoucher"] = item.typeOfVoucher;
+                    row["Ledger"] = item.Ledger;
+                    row["Debit"] = item.Debit;
+                    row["Credit"] = item.Credit;
+                    row["Inward_Qty"] = item.Inward_Qty;
+                    row["Outward_Qty"] = item.Outward_Qty;
+                    row["MasterId"] = item.MasterId;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return dtbl;
+        }
+
+        public DataTable DayBookReportPrintCompany()
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.DayBookReportPrintCompany().ToList();
+
+                dtbl.Columns.Add("companyName");
+                dtbl.Columns.Add("address");
+                dtbl.Columns.Add("phone");
+                dtbl.Columns.Add("email");
+
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["companyName"] = item.companyName;
+                    row["address"] = item.address;
+                    row["phone"] = item.phone;
+                    row["email"] = item.email;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return dtbl;
+        }
     }
 }

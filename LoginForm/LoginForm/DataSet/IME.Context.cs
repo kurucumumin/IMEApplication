@@ -42,6 +42,8 @@ namespace LoginForm.DataSet
         public virtual DbSet<City> Cities { get; set; }
         public virtual DbSet<Company> Companies { get; set; }
         public virtual DbSet<ContactType> ContactTypes { get; set; }
+        public virtual DbSet<ContraDetail> ContraDetails { get; set; }
+        public virtual DbSet<ContraMaster> ContraMasters { get; set; }
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<CreditNoteDetail> CreditNoteDetails { get; set; }
         public virtual DbSet<CreditNoteMaster> CreditNoteMasters { get; set; }
@@ -54,6 +56,8 @@ namespace LoginForm.DataSet
         public virtual DbSet<CustomerTitle> CustomerTitles { get; set; }
         public virtual DbSet<CustomerWorker> CustomerWorkers { get; set; }
         public virtual DbSet<DailyDiscontinued> DailyDiscontinueds { get; set; }
+        public virtual DbSet<DailySalaryVoucherDetail> DailySalaryVoucherDetails { get; set; }
+        public virtual DbSet<DailySalaryVoucherMaster> DailySalaryVoucherMasters { get; set; }
         public virtual DbSet<DebitNoteDetail> DebitNoteDetails { get; set; }
         public virtual DbSet<DebitNoteMaster> DebitNoteMasters { get; set; }
         public virtual DbSet<DeliveryNoteDetail> DeliveryNoteDetails { get; set; }
@@ -89,6 +93,8 @@ namespace LoginForm.DataSet
         public virtual DbSet<PDCClearanceMaster> PDCClearanceMasters { get; set; }
         public virtual DbSet<PDCPayableMaster> PDCPayableMasters { get; set; }
         public virtual DbSet<PDCReceivableMaster> PDCReceivableMasters { get; set; }
+        public virtual DbSet<PhysicalStockDetail> PhysicalStockDetails { get; set; }
+        public virtual DbSet<PhysicalStockMaster> PhysicalStockMasters { get; set; }
         public virtual DbSet<PricingLevel> PricingLevels { get; set; }
         public virtual DbSet<PrintFormat> PrintFormats { get; set; }
         public virtual DbSet<PurchaseBillTax> PurchaseBillTaxes { get; set; }
@@ -136,6 +142,8 @@ namespace LoginForm.DataSet
         public virtual DbSet<Setting> Settings { get; set; }
         public virtual DbSet<SlidingPrice> SlidingPrices { get; set; }
         public virtual DbSet<Stock> Stocks { get; set; }
+        public virtual DbSet<StockJournalDetail> StockJournalDetails { get; set; }
+        public virtual DbSet<StockJournalMaster> StockJournalMasters { get; set; }
         public virtual DbSet<StockPosting> StockPostings { get; set; }
         public virtual DbSet<SuffixPrefix> SuffixPrefixes { get; set; }
         public virtual DbSet<SuperDisk> SuperDisks { get; set; }
@@ -1093,6 +1101,49 @@ namespace LoginForm.DataSet
         public virtual ObjectResult<Nullable<System.DateTime>> CurrentDate()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.DateTime>>("CurrentDate");
+        }
+    
+        public virtual ObjectResult<DayBook_Result> DayBook(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<decimal> voucherTypeId, Nullable<decimal> ledgerId, Nullable<bool> iscondensed)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            var ledgerIdParameter = ledgerId.HasValue ?
+                new ObjectParameter("ledgerId", ledgerId) :
+                new ObjectParameter("ledgerId", typeof(decimal));
+    
+            var iscondensedParameter = iscondensed.HasValue ?
+                new ObjectParameter("iscondensed", iscondensed) :
+                new ObjectParameter("iscondensed", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DayBook_Result>("DayBook", fromDateParameter, toDateParameter, voucherTypeIdParameter, ledgerIdParameter, iscondensedParameter);
+        }
+    
+        public virtual ObjectResult<DayBookReportPrintCompany_Result> DayBookReportPrintCompany()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DayBookReportPrintCompany_Result>("DayBookReportPrintCompany");
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> DayBookSalesInvoiceOrPOS(Nullable<decimal> salesMasterId, Nullable<decimal> voucherTypeId)
+        {
+            var salesMasterIdParameter = salesMasterId.HasValue ?
+                new ObjectParameter("salesMasterId", salesMasterId) :
+                new ObjectParameter("salesMasterId", typeof(decimal));
+    
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("DayBookSalesInvoiceOrPOS", salesMasterIdParameter, voucherTypeIdParameter);
         }
     
         public virtual ObjectResult<DebitNoteReportSearch_Result> DebitNoteReportSearch(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<decimal> voucherTypeId, Nullable<decimal> ledgerId)

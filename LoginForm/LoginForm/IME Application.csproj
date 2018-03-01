@@ -129,6 +129,12 @@
     <Compile Include="Account\Budget\frmBudgetVariance.Designer.cs">
       <DependentUpon>frmBudgetVariance.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\FinancialStatements\frmChartOfAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\FinancialStatements\frmChartOfAccount.Designer.cs">
+      <DependentUpon>frmChartOfAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\FinancialStatements\frmFundFlow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -602,6 +608,9 @@
     <Compile Include="DataSet\AccountGroupSearch_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\AccountGroupViewAllByGroupUnder_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\AccountGroupViewAllComboFillForAccountLedger_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -618,6 +627,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\AccountLedgerSearchForServiceAccountUnderIncome_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\AccountLedgerViewAllByLedgerName_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\AccountLedgerViewAllForComboBox_Result.cs">
@@ -1677,6 +1689,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Budget\frmBudgetVariance.resx">
       <DependentUpon>frmBudgetVariance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\FinancialStatements\frmChartOfAccount.resx">
+      <DependentUpon>frmChartOfAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\FinancialStatements\frmFundFlow.resx">
       <DependentUpon>frmFundFlow.cs</DependentUpon>

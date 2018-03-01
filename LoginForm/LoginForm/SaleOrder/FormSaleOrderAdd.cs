@@ -47,6 +47,12 @@ namespace LoginForm.nmSaleOrder
             fillCustomer();
         }
 
+        public FormSaleOrderAdd()
+        {
+            InitializeComponent();
+            
+        }
+
         public FormSaleOrderAdd(string item_code)
         {
             InitializeComponent();

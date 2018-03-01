@@ -516,5 +516,26 @@ namespace LoginForm.Account.Services
             decVoucherNoMax = (decimal)IME.SaleOrders.Where(a => a.VoucherTypeId == decVoucherTypeId).OrderByDescending(a => a.VoucherNo).FirstOrDefault().VoucherNo;
             return decVoucherNoMax;
         }
+
+        public bool DayBookSalesInvoiceOrPOS(decimal decSalesMasterId, decimal decVoucherTypeId)
+        {
+            IMEEntities IME = new IMEEntities();
+            bool isPos = false;
+            try
+            {
+                var adaptor=IME.DayBookSalesInvoiceOrPOS(decSalesMasterId, decVoucherTypeId).ToList();
+
+                if (adaptor!=null)
+                {
+                    isPos=true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Messages.ErrorMessage(ex.ToString());
+            }
+            return isPos;
+        }
     }
 }
