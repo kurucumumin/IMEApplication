@@ -7745,6 +7745,14 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="typeOfVoucher" Type="varchar(max)" Mode="In" />
           <Parameter Name="input" Type="bit" Mode="In" />
         </Function>
+        <Function Name="TaxReportGridFillByProductwise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromdate" Type="datetime" Mode="In" />
+          <Parameter Name="todate" Type="datetime" Mode="In" />
+          <Parameter Name="taxId" Type="decimal" Mode="In" />
+          <Parameter Name="voucherTypeId" Type="decimal" Mode="In" />
+          <Parameter Name="typeOfVoucher" Type="varchar(max)" Mode="In" />
+          <Parameter Name="input" Type="bit" Mode="In" />
+        </Function>
         <Function Name="TaxSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="taxName" Type="varchar(max)" Mode="In" />
           <Parameter Name="applicableOn" Type="varchar(max)" Mode="In" />
@@ -19110,6 +19118,14 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="typeOfVoucher" Mode="In" Type="String" />
             <Parameter Name="input" Mode="In" Type="Boolean" />
           </FunctionImport>
+          <FunctionImport Name="TaxReportGridFillByProductwise">
+            <Parameter Name="fromdate" Mode="In" Type="DateTime" />
+            <Parameter Name="todate" Mode="In" Type="DateTime" />
+            <Parameter Name="taxId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="typeOfVoucher" Mode="In" Type="String" />
+            <Parameter Name="input" Mode="In" Type="Boolean" />
+          </FunctionImport>
           <FunctionImport Name="TaxSearch" ReturnType="Collection(IMEModel.TaxSearch_Result)">
             <Parameter Name="taxName" Mode="In" Type="String" />
             <Parameter Name="applicableOn" Mode="In" Type="String" />
@@ -24659,6 +24675,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImportMapping FunctionImportName="TaxDetailsViewAllByTaxId" FunctionName="IMEModel.Store.TaxDetailsViewAllByTaxId" />
           <FunctionImportMapping FunctionImportName="TaxIdForTaxSelectionUpdate" FunctionName="IMEModel.Store.TaxIdForTaxSelectionUpdate" />
           <FunctionImportMapping FunctionImportName="TaxReportGridFillByBillWise" FunctionName="IMEModel.Store.TaxReportGridFillByBillWise" />
+          <FunctionImportMapping FunctionImportName="TaxReportGridFillByProductwise" FunctionName="IMEModel.Store.TaxReportGridFillByProductwise" />
           <FunctionImportMapping FunctionImportName="TaxSearch" FunctionName="IMEModel.Store.TaxSearch">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.TaxSearch_Result">

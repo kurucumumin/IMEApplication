@@ -5447,6 +5447,35 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("TaxReportGridFillByBillWise", fromdateParameter, todateParameter, taxIdParameter, voucherTypeIdParameter, typeOfVoucherParameter, inputParameter);
         }
     
+        public virtual int TaxReportGridFillByProductwise(Nullable<System.DateTime> fromdate, Nullable<System.DateTime> todate, Nullable<decimal> taxId, Nullable<decimal> voucherTypeId, string typeOfVoucher, Nullable<bool> input)
+        {
+            var fromdateParameter = fromdate.HasValue ?
+                new ObjectParameter("fromdate", fromdate) :
+                new ObjectParameter("fromdate", typeof(System.DateTime));
+    
+            var todateParameter = todate.HasValue ?
+                new ObjectParameter("todate", todate) :
+                new ObjectParameter("todate", typeof(System.DateTime));
+    
+            var taxIdParameter = taxId.HasValue ?
+                new ObjectParameter("taxId", taxId) :
+                new ObjectParameter("taxId", typeof(decimal));
+    
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            var typeOfVoucherParameter = typeOfVoucher != null ?
+                new ObjectParameter("typeOfVoucher", typeOfVoucher) :
+                new ObjectParameter("typeOfVoucher", typeof(string));
+    
+            var inputParameter = input.HasValue ?
+                new ObjectParameter("input", input) :
+                new ObjectParameter("input", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("TaxReportGridFillByProductwise", fromdateParameter, todateParameter, taxIdParameter, voucherTypeIdParameter, typeOfVoucherParameter, inputParameter);
+        }
+    
         public virtual ObjectResult<TaxSearch_Result> TaxSearch(string taxName, string applicableOn, string calculatingMode, string isActive)
         {
             var taxNameParameter = taxName != null ?
