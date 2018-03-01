@@ -31,7 +31,8 @@ namespace LoginForm
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            DateTime time = Convert.ToDateTime(IME.CurrentDate().First());
+            //DateTime time = Convert.ToDateTime(IME.CurrentDate().First());
+            DateTime time = (DateTime)IME.CurrentDate().First();
             #region LoginBlock
             string UserName = txtID.Text;
             string PW = Utils.MD5Hash(txtPassWord.Text);
@@ -41,7 +42,7 @@ namespace LoginForm
                 Logged = IME.Workers
                .Where(uName => uName.UserName == UserName)
                .Where(pw => pw.UserPass == PW)
-               //.Where(status => status.isActive == 1)S
+               //.Where(status => status.isActive == 1)
                .FirstOrDefault();
             //}
             //catch (Exception ex)
@@ -76,6 +77,18 @@ namespace LoginForm
         {
             txtID.Focus();
 
+            //
+            //for admin to see everything
+            //Worker admin = IME.Workers.Where(a => a.WorkerID == 1).FirstOrDefault();
+            //foreach (AuthorizationValue item in IME.AuthorizationValues)
+            //{
+            //    if (admin.AuthorizationValues.Where(a => a.AuthorizationID == item.AuthorizationID).FirstOrDefault() == null)
+            //    {
+            //        admin.AuthorizationValues.Add(item);
+            //    }
+            //}
+            //IME.SaveChanges();
+            //
             //txtReader.excelCustomerCategory1();
             //Rate DolarRate1 = new Rate();
             //DolarRate1 = IME.Rates.Where(a => a.rate_date == DateTime.Today.Date).FirstOrDefault();

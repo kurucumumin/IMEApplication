@@ -92,6 +92,7 @@
             this.tableLayoutPanel1.Controls.Add(this.gbAuthorities, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // groupBox1
             // 
@@ -392,6 +393,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FormWorkerManagement";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FormWorkerManagement_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.gbRoles.ResumeLayout(false);

@@ -84,6 +84,7 @@ namespace LoginForm.QuotationModule
         public FormQuotationAdd(Quotation quotation)
         {
             InitializeComponent();
+              
 
             DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgQuotationAddedItems.Columns[dgDelivery.Index];
             deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
@@ -149,6 +150,25 @@ namespace LoginForm.QuotationModule
             {
                 QuotataionModifyItemDetailsFiller(dgQuotationAddedItems.Rows[i].Cells["dgProductCode"].Value.ToString(), i);
 
+            }
+            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1125).FirstOrDefault() == null)
+            {
+                dgQuotationAddedItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                foreach (DataGridViewRow item in dgQuotationAddedItems.Rows)
+                {
+                    item.ReadOnly = true;
+                }
+                foreach (DataGridViewRow item in dgQuotationDeleted.Rows)
+                {
+                    item.ReadOnly = true;
+                }
+                gbCustomer.Enabled = false;
+                btnCreateRev.Enabled = false;
+                LandingCost.Enabled = false;
+                gbShipment.Enabled = false;
+                groupBox11.Enabled = false;
+                groupBox7.Enabled = false;
+                groupBox3.Enabled = false;
             }
         }
        
@@ -3059,6 +3079,7 @@ namespace LoginForm.QuotationModule
                 {
                     isHZ = true;
                 }
+
                 //else if ()//HE için
                 //{
                 //isHZ = true;
