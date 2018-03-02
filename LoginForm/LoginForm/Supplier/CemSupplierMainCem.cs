@@ -40,6 +40,7 @@ namespace LoginForm
         public CemSupplierMainCem()
         {
             InitializeComponent();
+            this.dgSupplier.AutoGenerateColumns = false;
         }
         private void CSupplierMain_Load(object sender, EventArgs e)
         {
@@ -160,48 +161,84 @@ namespace LoginForm
                         if (!EmptyInputExist(EmptyCheckTypeGeneral))
                         {
                             IMEEntities db = new IMEEntities();
-
-                            Supplier s = new Supplier();
-                            s.ID = txtSupplierCode.Text;
-                            s.representaryID = ((Worker)cmbRepresentative.SelectedItem).WorkerID;
-                            s.s_name = txtName.Text;
-                            s.CategoryID = ((SupplierCategory)cmbMainCategory.SelectedItem).ID;
-                            s.SubCategoryID = ((SupplierSubCategory)cmbSubCategory.SelectedItem).ID;
-                            s.taxoffice = txtTaxOffice.Text;
-                            s.taxnumber = txtTaxNumber.Text;
-                            s.accountrepresentaryID = ((Worker)cmbAccountRep.SelectedItem).WorkerID;
-                            s.payment_termID = ((PaymentTerm)cmbAccountTerms.SelectedItem).ID;
-                            s.paymentmethodID = ((PaymentMethod)cmbAccountMethod.SelectedItem).ID;
-                            s.accountrepresentaryID = ((Worker)cmbRepresentative.SelectedItem).WorkerID;
-                            s.discountrate = Convert.ToDecimal(txtDiscountRate.Text);
-                            s.DefaultCurrency = ((Currency)cmbCurrency.SelectedItem).currencyID;
-                            s.BankID = ((SupplierBank)cmbBankName.SelectedItem).ID;
-                            s.branchcode = txtBankBranchCode.Text;
-                            s.accountnumber = txtBankAccountNumber.Text;
-                            s.iban = txtBankIban.Text;
-
-                            s.webadress = (txtWeb.Text != String.Empty) ? txtWeb.Text : null;
-
-                            if (txtSupplierNotes.Text != String.Empty)
+                            try
                             {
-                                try
+                                Supplier s = new Supplier
                                 {
-                                    Note n = new Note();
-                                    n.Note_name = txtSupplierNotes.Text;
-                                    db.Notes.Add(n);
+                                    ID = txtSupplierCode.Text,
+                                    representaryID = ((Worker)cmbRepresentative.SelectedItem).WorkerID,
+                                    s_name = txtName.Text,
+                                    CategoryID = ((SupplierCategory)cmbMainCategory.SelectedItem).ID,
+                                    SubCategoryID = ((SupplierSubCategory)cmbSubCategory.SelectedItem).ID,
+                                    taxoffice = txtTaxOffice.Text,
+                                    taxnumber = txtTaxNumber.Text,
+                                    accountrepresentaryID = ((Worker)cmbAccountRep.SelectedItem).WorkerID,
+                                    payment_termID = ((PaymentTerm)cmbAccountTerms.SelectedItem).ID,
+                                    paymentmethodID = ((PaymentMethod)cmbAccountMethod.SelectedItem).ID,
+                                    discountrate = Convert.ToDecimal(txtDiscountRate.Text),
+                                    DefaultCurrency = ((Currency)cmbCurrency.SelectedItem).currencyID,
+                                    BankID = ((SupplierBank)cmbBankName.SelectedItem).ID,
+                                    branchcode = txtBankBranchCode.Text,
+                                    accountnumber = txtBankAccountNumber.Text,
+                                    iban = txtBankIban.Text,
 
-                                    s.SupplierNoteID = n.ID;
-                                }
-                                catch (Exception ex)
+                                    webadress = (txtWeb.Text != String.Empty) ? txtWeb.Text : null
+                                };
+
+                                if (txtSupplierNotes.Text != String.Empty)
                                 {
-                                    MessageBox.Show("SN1: SupplierNote could not be added!." + "/n" + ex.ToString(), "Note Saving Error");
+                                    try
+                                    {
+                                        Note n = new Note();
+                                        n.Note_name = txtSupplierNotes.Text;
+                                        db.Notes.Add(n);
+                                        db.SaveChanges();
+
+                                        s.SupplierNoteID = n.ID;
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        MessageBox.Show("SN1: SupplierNote could not be added!." + "/n" + ex.ToString(), "Note Saving Error");
+                                    }
                                 }
+
+                                db.Suppliers.Add(s);
+                                db.SaveChanges();
+
+
+                                foreach (SupplierAddress address in SavedAddresses)
+                                {
+                                    db.SupplierAddresses.Add(address);
+                                    db.SaveChanges();
+                                }
+
+
+                                foreach (SupplierWorker worker in SavedContacts)
+                                {
+                                    if(worker.Note != null)
+                                    {
+                                        Note n = worker.Note;
+                                        worker.Note = null;
+                                        db.Notes.Add(n);
+                                        db.SaveChanges();
+                                        worker.supplierNoteID = n.ID;
+                                    }
+                                    db.SupplierWorkers.Add(worker);
+                                    db.SaveChanges();
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("S1:An error occured while saving the Supplier! Try Again Later /n" + ex.ToString() , "Error");
+                                throw;
+                            }
+                            finally
+                            {
+                                SupplierAddMode = String.Empty;
+                                dgSupplier.DataSource = new IMEEntities().Suppliers.ToList();
                             }
                         }
                     }
-                    
-
-                    //SupplierAddMode = String.Empty;
                     break;
                 default:
                     break;
@@ -662,7 +699,8 @@ namespace LoginForm
                         TownID = ((Town)cmbTown.SelectedItem).ID,
                         PoBox = txtPoBox.Text,
                         PostCode = txtPostCode.Text,
-                        AdressDetails = txtAddressDetail.Text
+                        AdressDetails = txtAddressDetail.Text,
+                        SupplierID = txtSupplierCode.Text
                     };
 
 
@@ -1020,6 +1058,7 @@ namespace LoginForm
                 {
                     SupplierWorker worker = new SupplierWorker
                     {
+                        supplierID = txtSupplierCode.Text,
                         sw_name = txtContactName.Text,
                         phone = txtContactPhone.Text,
                         languageID = ((Language)cmbLanguage.SelectedItem).ID,
@@ -1027,7 +1066,6 @@ namespace LoginForm
                         sw_email = (txtContactMail.Text != String.Empty) ? txtContactMail.Text : null,
                         fax = (txtContactFax.Text != String.Empty) ? txtContactFax.Text : null,
                         mobilephone = (txtContactMobile.Text != String.Empty) ? txtContactMobile.Text : null
-
                     };
 
                     if (cmbDepartment.SelectedIndex > 0) { worker.departmentID = ((CustomerDepartment)cmbDepartment.SelectedItem).ID; }

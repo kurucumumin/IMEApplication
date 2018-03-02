@@ -11,7 +11,7 @@ namespace LoginForm.DataSet
 {
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Supplier
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,7 +20,7 @@ namespace LoginForm.DataSet
             this.SupplierAddresses = new HashSet<SupplierAddress>();
             this.SupplierWorkers = new HashSet<SupplierWorker>();
         }
-
+    
         public string ID { get; set; }
         public string s_name { get; set; }
         public Nullable<int> paymentmethodID { get; set; }
@@ -40,7 +40,7 @@ namespace LoginForm.DataSet
         public Nullable<int> CategoryID { get; set; }
         public Nullable<int> SubCategoryID { get; set; }
         public Nullable<decimal> DefaultCurrency { get; set; }
-
+    
         public virtual Currency Currency { get; set; }
         public virtual Note Note { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
