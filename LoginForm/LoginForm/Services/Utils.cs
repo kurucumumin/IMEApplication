@@ -21,6 +21,30 @@ namespace LoginForm.Services
             }
             return hash.ToString();
         }
+        public static bool HasOnlyNumbers(string numberInputText)
+        {
+            bool result = true;
+            foreach (var c in numberInputText)
+            {
+                if (!System.Char.IsNumber(c))
+                {
+                    result = false;
+                }
+            }
+            return result;
+        }
+        public static bool HasNumbersIn(string numberInputText)
+        {
+            bool result = false;
+            foreach (var c in numberInputText)
+            {
+                if (System.Char.IsNumber(c))
+                {
+                    result = true;
+                }
+            }
+            return result;
+        }
 
         public static void setCurrentUser(Worker w)
         {
