@@ -53,7 +53,22 @@ namespace LoginForm.Account.Services
 
             try
             {
+                dtbl.Columns.Add("OrderNO");
+                dtbl.Columns.Add("date");
+                dtbl.Columns.Add("dueDate");
+                dtbl.Columns.Add("totalAmount");
+                dtbl.Columns.Add("QuotationNo");
 
+                foreach (var item in IME.OverdueSalesOrderCorrespondingAccountLedger(decLedgerId.ToString()))
+                {
+                    var row = dtbl.NewRow();
+                    row["OrderNO"] = item.OrderNO;
+                    row["date"] = item.date;
+                    row["dueDate"] = item.dueDate;
+                    row["totalAmount"] = item.totalAmount;
+                    row["QuotationNo"] = item.QuotationNo;
+                    dtbl.Rows.Add(row);
+                }
             }
             catch (Exception ex)
             {

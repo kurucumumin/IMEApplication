@@ -490,14 +490,6 @@ namespace LoginForm.Account.Services
             return dtbl;
         }
 
-        /// <summary>
-        /// Function for tax search based on parameter
-        /// </summary>
-        /// <param name="strTaxName"></param>
-        /// <param name="strApplicableOn"></param>
-        /// <param name="strCalculatingMode"></param>
-        /// <param name="strActive"></param>
-        /// <returns></returns>
         public DataTable TaxSearch(String strTaxName, String strApplicableOn, String c, string strActive)
         {
             DataTable dtblTaxSearch = new DataTable();
@@ -633,5 +625,153 @@ namespace LoginForm.Account.Services
         //    }
         //    return dtbl;
         //}
+
+        public DataTable TaxReportGridFillByProductwise(DateTime fromdate, DateTime todate, decimal dectaxId, decimal decvoucherTypeId, string strTypeofVoucher, bool isInput)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.TaxReportGridFillByProductwise(fromdate, todate, dectaxId, decvoucherTypeId, strTypeofVoucher, isInput);
+
+                dtbl.Columns.Add("ID");
+                dtbl.Columns.Add("Date");
+                dtbl.Columns.Add("Voucher_Type");
+                dtbl.Columns.Add("TypeofVoucher");
+                dtbl.Columns.Add("Bill_No");
+                dtbl.Columns.Add("Item");
+                dtbl.Columns.Add("Bill_Amount");
+                dtbl.Columns.Add("Tax");
+                dtbl.Columns.Add("Tax_Amount");
+                dtbl.Columns.Add("Total_Amount");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["ID"] = item.ID;
+                    row["Date"] = item.Date;
+                    row["Voucher_Type"] = item.Voucher_Type;
+                    row["TypeofVoucher"] = item.TypeofVoucher;
+                    row["Bill_No"] = item.Bill_No;
+                    row["Item"] = item.Item;
+                    row["Bill_Amount"] = item.Bill_Amount;
+                    row["Tax"] = item.Tax;
+                    row["Tax_Amount"] = item.Tax_Amount;
+                    row["Total_Amount"] = item.Total_Amount;
+
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+        public DataTable TaxReportGridFillByBillWise(DateTime fromdate, DateTime todate, decimal dectaxId, decimal decvoucherTypeId, string strTypeofVoucher, bool isInput)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.TaxReportGridFillByBillWise(fromdate, todate, dectaxId, decvoucherTypeId, strTypeofVoucher, isInput);
+
+                dtbl.Columns.Add("ID");
+                dtbl.Columns.Add("Date");
+                dtbl.Columns.Add("TypeofVoucher");
+                dtbl.Columns.Add("Voucher_No");
+                dtbl.Columns.Add("Cash_Party");
+                dtbl.Columns.Add("TIN");
+                dtbl.Columns.Add("CST");
+                dtbl.Columns.Add("Bill_Amount");
+                dtbl.Columns.Add("Cess_Amount");
+                dtbl.Columns.Add("Tax_Amount");
+
+                foreach (var item in adaptor)
+                {
+                    var row = dtbl.NewRow();
+
+                    row["ID"] = item.ID;
+                    row["Date"] = item.Date;
+                    row["TypeofVoucher"] = item.TypeofVoucher;
+                    row["Voucher_No"] = item.Voucher_No;
+                    row["Cash_Party"] = item.Cash_Party;
+                    row["TIN"] = item.TIN;
+                    row["CST"] = item.CST;
+                    row["Bill_Amount"] = item.Bill_Amount;
+                    row["Cess_Amount"] = item.Cess_Amount;
+                    row["Tax_Amount"] = item.Tax_Amount;
+
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+        public System.Data.DataSet TaxCrystalReportGridFillByBillWise(decimal deccompanyId, DateTime fromdate, DateTime todate, decimal dectaxId, decimal decvoucherTypeId, bool isInput)
+        {
+            IMEEntities IME = new IMEEntities();
+            System.Data.DataSet dts = new System.Data.DataSet();
+            dts.Tables.Add(new DataTable());
+            try
+            {
+                DataTable dtbl1 = new DataTable();
+
+                var adaptor = (IME.TaxCrystalReportGridFillByBillWise(deccompanyId, fromdate, todate, dectaxId, decvoucherTypeId, isInput)).ToList();
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl1.NewRow();
+                    row["companyName"] = item.companyName;
+                    row["address"] = item.address;
+                    row["phone"] = item.phone;
+                    row["email"] = item.email;
+
+                    dts.Tables[0].Rows.Add(row);
+                }
+                dts.Tables.Add(dtbl1);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dts;
+        }
+
+        public System.Data.DataSet TaxCrystalReportGridFillByProductwise(decimal deccompanyId, DateTime fromdate, DateTime todate, decimal dectaxId, decimal decvoucherTypeId, bool isInput)
+        {
+            IMEEntities IME = new IMEEntities();
+            System.Data.DataSet dts = new System.Data.DataSet();
+            dts.Tables.Add(new DataTable());
+            try
+            {
+                DataTable dtbl1 = new DataTable();
+
+                var adaptor = (IME.TaxCrystalReportGridFillByProductwise(deccompanyId, fromdate, todate, dectaxId, decvoucherTypeId, isInput)).ToList();
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl1.NewRow();
+                    row["companyName"] = item.companyName;
+                    row["address"] = item.address;
+                    row["phone"] = item.phone;
+                    row["email"] = item.email;
+
+                    dts.Tables[0].Rows.Add(row);
+                }
+                dts.Tables.Add(dtbl1);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dts;
+        }
     }
 }

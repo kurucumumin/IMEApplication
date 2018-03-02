@@ -327,6 +327,12 @@
     <Compile Include="Account\Reports\frmCreditNoteReport.designer.cs">
       <DependentUpon>frmCreditNoteReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Reports\frmDayBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reports\frmDayBook.designer.cs">
+      <DependentUpon>frmDayBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Reports\frmJournalReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -744,6 +750,12 @@
     <Compile Include="DataSet\ContactType.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\ContraDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\ContraMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Country.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -787,6 +799,18 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\DailyDiscontinued.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DailySalaryVoucherDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DailySalaryVoucherMaster.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DayBookReportPrintCompany_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DayBook_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\DebitNoteDetail.cs">
@@ -982,6 +1006,12 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PdcReceivableReportSearch_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PhysicalStockDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PhysicalStockMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PricingLevel.cs">
@@ -1309,6 +1339,12 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\Stock.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\StockJournalDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\StockJournalMaster.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\StockPosting.cs">
@@ -1788,6 +1824,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Reports\frmCreditNoteReport.resx">
       <DependentUpon>frmCreditNoteReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reports\frmDayBook.resx">
+      <DependentUpon>frmDayBook.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Reports\frmJournalReport.resx">
       <DependentUpon>frmJournalReport.cs</DependentUpon>

@@ -360,7 +360,7 @@ namespace LoginForm.Account.Services
             DataTable dtbl = new DataTable();
             try
             {
-                var adaptor = db.AccountGroupViewAllByGroupUnder();
+                var adaptor = db.AccountGroupViewAllByGroupUnder(decaccountGroupId).ToList();
 
                 dtbl.Columns.Add("accountGroupId");
                 dtbl.Columns.Add("accountGroupName");

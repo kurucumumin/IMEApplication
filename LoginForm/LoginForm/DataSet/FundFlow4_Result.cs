@@ -10,17 +10,12 @@
 namespace LoginForm.DataSet
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Rate
+    public partial class FundFlow4_Result
     {
         public int ID { get; set; }
-        public Nullable<System.DateTime> rate_date { get; set; }
-        public Nullable<decimal> currency { get; set; }
-        public string CurType { get; set; }
-        public Nullable<decimal> RateBuy { get; set; }
-        public Nullable<decimal> RateSell { get; set; }
-        public Nullable<decimal> RateBuyEffective { get; set; }
-        public Nullable<decimal> RateSellEffective { get; set; }
+        public string Name { get; set; }
+        public Nullable<decimal> OpeningBalance { get; set; }
+        public Nullable<decimal> ClosingBalance { get; set; }
     }
 }
