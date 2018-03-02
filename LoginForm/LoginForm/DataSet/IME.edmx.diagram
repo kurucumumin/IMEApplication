@@ -4,21 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6a26f6d077084ab99458a4301baed2e1" Name="Diagram1">
+      <Diagram DiagramId="ed45c359acbe49fda3b6cd78a95ec089" Name="Diagram1">
         <EntityTypeShape EntityType="IMEModel.AccountGroup" Width="1.5" PointX="9.75" PointY="57.375" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AccountLedger" Width="1.5" PointX="12" PointY="56.25" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AdvancePayment" Width="1.5" PointX="20.25" PointY="81.625" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Area" Width="1.5" PointX="9.75" PointY="60.875" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AuthorizationValue" Width="1.5" PointX="6.75" PointY="77.25" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.BankReconciliation" Width="1.5" PointX="36.75" PointY="69.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Batch" Width="1.5" PointX="30.75" PointY="70" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Batch" Width="1.5" PointX="30.75" PointY="101.875" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.BonusDeduction" Width="1.5" PointX="11.25" PointY="88.625" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Brand" Width="1.5" PointX="5.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.BudgetDetail" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.BudgetMaster" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Capital" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.City" Width="1.5" PointX="9" PointY="95.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Company" Width="1.5" PointX="29.25" PointY="56.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Company" Width="1.5" PointX="29.25" PointY="62.125" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.ContactType" Width="1.5" PointX="9" PointY="73.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.ContraDetail" Width="1.5" PointX="22.5" PointY="70.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.ContraMaster" Width="1.5" PointX="17.25" PointY="72.875" IsExpanded="true" />
@@ -34,8 +34,8 @@
         <EntityTypeShape EntityType="IMEModel.CustomerTitle" Width="1.5" PointX="9" PointY="68.375" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.CustomerWorker" Width="1.5" PointX="11.25" PointY="75.375" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.DailyDiscontinued" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.DailySalaryVoucherDetail" Width="1.5" PointX="30.75" PointY="62" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.DailySalaryVoucherMaster" Width="1.5" PointX="28.5" PointY="69" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.DailySalaryVoucherDetail" Width="1.5" PointX="33.75" PointY="64" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.DailySalaryVoucherMaster" Width="1.5" PointX="31.5" PointY="71" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.DebitNoteDetail" Width="1.5" PointX="25.5" PointY="74.5" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.DebitNoteMaster" Width="1.5" PointX="20.25" PointY="76.375" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.DeliveryNoteDetail" Width="1.5" PointX="25.5" PointY="87.625" IsExpanded="true" />
@@ -46,7 +46,7 @@
         <EntityTypeShape EntityType="IMEModel.ExchangeRate" Width="1.5" PointX="12" PointY="97.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.ExtendedRange" Width="1.5" PointX="5.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.FinancialYear" Width="1.5" PointX="20.25" PointY="63.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Godown" Width="1.5" PointX="30.75" PointY="101.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Godown" Width="1.5" PointX="30.75" PointY="107.125" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Hazardou" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.ItemNote" Width="1.5" PointX="3" PointY="93.875" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.JournalDetail" Width="1.5" PointX="28.5" PointY="88.625" IsExpanded="true" />
@@ -55,7 +55,7 @@
         <EntityTypeShape EntityType="IMEModel.LedgerPosting" Width="1.5" PointX="34.5" PointY="67.625" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.LoaderDate" Width="1.5" PointX="7.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Mail" Width="1.5" PointX="9.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Management" Width="1.5" PointX="31.5" PointY="65.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Management" Width="1.5" PointX="31.5" PointY="66.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Master" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.MaterialReceiptDetail" Width="1.5" PointX="33" PointY="91.125" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.MaterialReceiptMaster" Width="1.5" PointX="22.5" PointY="74.5" IsExpanded="true" />
@@ -71,7 +71,7 @@
         <EntityTypeShape EntityType="IMEModel.PDCClearanceMaster" Width="1.5" PointX="14.25" PointY="92.875" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.PDCPayableMaster" Width="1.5" PointX="20.25" PointY="70.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.PDCReceivableMaster" Width="1.5" PointX="11.25" PointY="69.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.PhysicalStockDetail" Width="1.5" PointX="43.75" PointY="91.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.PhysicalStockDetail" Width="1.5" PointX="40.75" PointY="101.375" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.PhysicalStockMaster" Width="1.5" PointX="38.5" PointY="91.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.PricingLevel" Width="1.5" PointX="39.75" PointY="77.125" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.PrintFormat" Width="1.5" PointX="11.75" PointY="11.75" IsExpanded="true" />
@@ -88,7 +88,7 @@
         <EntityTypeShape EntityType="IMEModel.Quotation" Width="1.5" PointX="17.25" PointY="78.875" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.QuotationDelivery" Width="1.5" PointX="26.25" PointY="71.25" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.QuotationDetail" Width="1.5" PointX="28.5" PointY="74.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Rack" Width="1.5" PointX="30.75" PointY="106.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Rack" Width="1.5" PointX="30.75" PointY="111.5" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Rate" Width="1.5" PointX="13.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.ReceiptDetail" Width="1.5" PointX="27.75" PointY="100" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.ReceiptMaster" Width="1.5" PointX="23.25" PointY="65.5" IsExpanded="true" />
@@ -113,16 +113,16 @@
         <EntityTypeShape EntityType="IMEModel.SalesReturnBillTax" Width="1.5" PointX="44.25" PointY="83.125" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SalesReturnDetail" Width="1.5" PointX="36" PointY="90" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SalesReturnMaster" Width="1.5" PointX="42" PointY="80.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Service" Width="1.5" PointX="29.25" PointY="65.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.ServiceCategory" Width="1.5" PointX="27" PointY="66.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Service" Width="1.5" PointX="29.25" PointY="67.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.ServiceCategory" Width="1.5" PointX="27" PointY="68.25" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.ServiceDetail" Width="1.5" PointX="31.5" PointY="82.875" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.ServiceMaster" Width="1.5" PointX="23.25" PointY="81.25" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Setting" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SlidingPrice" Width="1.5" PointX="12" PointY="48.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Stock" Width="1.5" PointX="15" PointY="103.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.StockJournalDetail" Width="1.5" PointX="46.75" PointY="92.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.StockJournalMaster" Width="1.5" PointX="38.5" PointY="96.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.StockPosting" Width="1.5" PointX="41" PointY="95.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.StockJournalDetail" Width="1.5" PointX="40.75" PointY="106.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.StockJournalMaster" Width="1.5" PointX="38.5" PointY="96.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.StockPosting" Width="1.5" PointX="33" PointY="105" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SuffixPrefix" Width="1.5" PointX="12" PointY="105.5" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SuperDisk" Width="1.5" PointX="2.75" PointY="14.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SuperDiskP" Width="1.5" PointX="7.75" PointY="14.75" IsExpanded="true" />
@@ -134,12 +134,12 @@
         <EntityTypeShape EntityType="IMEModel.SupplierWorker" Width="1.5" PointX="25.5" PointY="93.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.sysdiagram" Width="1.5" PointX="14.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Tax" Width="1.5" PointX="27.75" PointY="103.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.TaxDetail" Width="1.5" PointX="30" PointY="112.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.TaxDetail" Width="1.5" PointX="30" PointY="116.625" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Town" Width="1.5" PointX="9" PointY="53.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.Unit" Width="1.5" PointX="23.25" PointY="100.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.UnitConvertion" Width="1.5" PointX="25.5" PointY="100.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.Unit" Width="1.5" PointX="23.25" PointY="99.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.UnitConvertion" Width="1.5" PointX="25.5" PointY="100" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.VoucherType" Width="1.5" PointX="9.75" PointY="104" IsExpanded="true" />
-        <EntityTypeShape EntityType="IMEModel.VoucherTypeTax" Width="1.5" PointX="33" PointY="108" IsExpanded="true" />
+        <EntityTypeShape EntityType="IMEModel.VoucherTypeTax" Width="1.5" PointX="33" PointY="112" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.Worker" Width="1.5" PointX="9" PointY="76.625" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.AdditionalCost" Width="1.5" PointX="14.25" PointY="70.875" IsExpanded="true" />
         <EntityTypeShape EntityType="IMEModel.SalaryVoucherDetail" Width="1.5" PointX="20.25" PointY="93.5" IsExpanded="true" />
@@ -149,9 +149,9 @@
         <AssociationConnector Association="IMEModel.FK__AccountLe__route__5D80D6A1" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Additiona__ledge__7F36D027" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__AdvancePa__ledge__4F32B74A" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__ContraMas__ledge__0BBCA29D" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__ContraMas__ledge__03275C9C" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__CreditNot__ledge__6304A5CD" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__DailySala__ledge__03275C9C" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__DailySala__ledge__7A92169B" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__DebitNote__ledge__5A6F5FCC" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__DeliveryN__ledge__2136E270" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__LedgerPos__ledge__605D434C" ManuallyRouted="false" />
@@ -177,16 +177,13 @@
         <AssociationConnector Association="IMEModel.FK__BankRecon__ledge__3726238F" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__DeliveryN__batch__37E53D9E" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__MaterialR__batch__61A66D40" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__PhysicalS__batch__3F3C46A3" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__PhysicalS__batch__2D1D9668" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__PurchaseD__batch__2A563856" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__PurchaseR__batch__349EBC9F" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Rejection__batch__4727812E" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Rejection__batch__73C51D7B" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SalesDeta__batch__1FD8A9E3" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__StockJour__batch__19169DBB" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__StockJour__batch__20B7BF83" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__StockJour__batch__2D1D9668" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__StockJour__batch__32D66FBE" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__StockPost__batch__10615C29" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__BonusDedu__Worke__40E497F3" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__BudgetDet__budge__33208881" ManuallyRouted="false" />
@@ -197,12 +194,12 @@
         <AssociationConnector Association="IMEModel.FK__Company__currenc__0371755F" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK_ManagementCompany" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__CustomerW__Conta__4CC05EF3" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__ContraDet__contr__1269A02C" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__ContraDet__excha__135DC465" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__ContraMas__finan__0E990F48" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__ContraMas__suffi__0CB0C6D6" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__ContraMas__userI__0F8D3381" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__ContraMas__vouch__0DA4EB0F" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__ContraDet__contr__09D45A2B" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__ContraDet__excha__0AC87E64" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__ContraMas__finan__0603C947" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__ContraMas__suffi__041B80D5" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__ContraMas__userI__06F7ED80" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__ContraMas__vouch__050FA50E" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__CustomerA__Count__503BEA1C" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SupplierA__Count__3FD07829" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__CreditNot__credi__62108194" ManuallyRouted="false" />
@@ -212,7 +209,7 @@
         <AssociationConnector Association="IMEModel.FK__Managemen__Defau__253C7D7E" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Quotation__Curre__0A096455" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Stock__currencyI__2156DE01" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__Supplier__Defaul__4218B34E" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__Supplier__Defaul__30EE274C" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__tbl_Excha__curre__52442E1F" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Customer__accoun__6EF57B66" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Customer__catego__636EBA21" ManuallyRouted="false" />
@@ -240,10 +237,10 @@
         <AssociationConnector Association="IMEModel.FK__SaleOrder__Conta__1DD065E0" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SaleOrder__Conta__1EC48A19" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SaleOrder__Deliv__1FB8AE52" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__DailySala__daily__08E035F2" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__DailySala__finan__0603C947" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__DailySala__suffi__041B80D5" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__DailySala__vouch__050FA50E" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__DailySala__daily__004AEFF1" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__DailySala__finan__7D6E8346" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__DailySala__suffi__7B863AD4" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__DailySala__vouch__7C7A5F0D" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__DebitNote__debit__597B3B93" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__DebitNote__excha__5B638405" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__DebitNote__userI__55AAAAAF" ManuallyRouted="false" />
@@ -279,7 +276,7 @@
         <AssociationConnector Association="IMEModel.FK__SalesMast__excha__76D69450" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SalesRetu__excha__6C5905DD" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__ServiceMa__excha__230A1C49" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__StockJour__excha__2858E14B" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__StockJour__excha__1AFEE62D" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK_ReceiptDetailExchangeRate" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__JournalMa__finan__7B113988" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__LedgerPos__yearI__61516785" ManuallyRouted="false" />
@@ -290,7 +287,7 @@
         <AssociationConnector Association="IMEModel.FK__PDCCleara__finan__4D1564AE" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__PDCPayabl__finan__2CA8951C" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__PDCReceiv__finan__4668671F" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__PhysicalS__finan__39836D4D" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__PhysicalS__finan__2764BD12" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__PurchaseM__finan__164F3FA9" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__PurchaseR__finan__1DBB5747" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Rejection__finan__6C23FBB3" ManuallyRouted="false" />
@@ -298,20 +295,17 @@
         <AssociationConnector Association="IMEModel.FK__SalesMast__finan__7AA72534" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SalesRetu__finan__6D4D2A16" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__ServiceMa__finan__2215F810" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__StockJour__finan__2764BD12" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__StockJour__finan__1A0AC1F4" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK_SaleOrder_FinancialYear" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__MaterialR__godow__629A9179" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__PhysicalS__godow__40306ADC" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__PhysicalS__godow__2E11BAA1" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__PurchaseD__godow__2B4A5C8F" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__PurchaseR__godow__3592E0D8" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Rack__godownId__2B7F66B9" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Rejection__godow__46335CF5" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Rejection__godow__74B941B4" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SalesDeta__godow__20CCCE1C" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__StockJour__godow__1AFEE62D" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__StockJour__godow__22A007F5" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__StockJour__godow__2F05DEDA" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__StockJour__godow__34BEB830" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__StockPost__godow__1249A49B" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__ItemNote__NoteID__2B0A656D" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__JournalDe__journ__01BE3717" ManuallyRouted="false" />
@@ -358,12 +352,12 @@
         <AssociationConnector Association="IMEModel.FK__PDCReceiv__suffi__4297D63B" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__PDCReceiv__userI__44801EAD" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__PDCReceiv__vouch__457442E6" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__PhysicalS__physi__3C5FD9F8" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__PhysicalS__rackI__41248F15" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__PhysicalS__unitC__3E48226A" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__PhysicalS__unitI__3D53FE31" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__PhysicalS__suffi__379B24DB" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__PhysicalS__vouch__388F4914" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__PhysicalS__physi__2A4129BD" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__PhysicalS__rackI__2F05DEDA" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__PhysicalS__unitC__2C29722F" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__PhysicalS__unitI__2B354DF6" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__PhysicalS__suffi__257C74A0" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__PhysicalS__vouch__267098D9" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SalesMast__prici__7306036C" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SalesRetu__prici__679450C0" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__PurchaseD__order__4BB72C21" ManuallyRouted="false" />
@@ -410,10 +404,7 @@
         <AssociationConnector Association="IMEModel.FK__Rejection__rackI__453F38BC" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Rejection__rackI__75AD65ED" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SalesDeta__rackI__21C0F255" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__StockJour__rackI__1A0AC1F4" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__StockJour__rackI__21ABE3BC" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__StockJour__rackI__2E11BAA1" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__StockJour__rackI__33CA93F7" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__StockPost__rackI__133DC8D4" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__ReceiptDe__recei__6AA5C795" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Rejection__rejec__444B1483" ManuallyRouted="false" />
@@ -459,18 +450,11 @@
         <AssociationConnector Association="IMEModel.FK__ServiceMa__suffi__1E45672C" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__ServiceMa__vouch__2121D3D7" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__Stock__voucherTy__47E69B3D" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__StockJour__stock__2A4129BD" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__StockJour__stock__2FFA0313" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__StockJour__unitC__18227982" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__StockJour__stock__1DDB52D8" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__StockJour__unitC__1FC39B4A" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__StockJour__unitC__2C29722F" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__StockJour__unitC__31E24B85" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__StockJour__unitI__172E5549" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__StockJour__unitI__1ECF7711" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__StockJour__unitI__2B354DF6" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__StockJour__unitI__30EE274C" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__StockJour__suffi__257C74A0" ManuallyRouted="false" />
-        <AssociationConnector Association="IMEModel.FK__StockJour__vouch__267098D9" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__StockJour__suffi__18227982" ManuallyRouted="false" />
+        <AssociationConnector Association="IMEModel.FK__StockJour__vouch__19169DBB" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__StockPost__unitI__11558062" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__StockPost__vouch__0F6D37F0" ManuallyRouted="false" />
         <AssociationConnector Association="IMEModel.FK__SuffixPre__vouch__7740A8A4" ManuallyRouted="false" />
