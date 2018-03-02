@@ -47,7 +47,7 @@ namespace LoginForm
             cmbsub.DataSource = IME.SupplierSubCategories.ToList();
             cmbsub.DisplayMember = "subcategoryname";
             cmbsub.ValueMember = "ID";
- 
+
             cmbCurrenyt.DataSource = IME.Currencies.ToList();
             cmbCurrenyt.DisplayMember = "currencyName";
             cmbCurrenyt.ValueMember = "currencyId";
@@ -80,7 +80,7 @@ namespace LoginForm
             cmbcounrty.DisplayMember = "Country_name";
             cmbcounrty.ValueMember = "ID";
 
-            
+
             #endregion
             itemsEnableFalse();
             contactTabEnableFalse();
@@ -189,7 +189,7 @@ namespace LoginForm
             cmbMainContact.DisplayMember = "sw_name";
             if (c.Note != null) txtnotes.Text = IME.Notes.Where(a => a.ID == c.Note.ID).FirstOrDefault().Note_name;
             if (c.SupplierNoteID != null) txtAccountNotes.Text = IME.Notes.Where(a => a.ID == c.SupplierNoteID).FirstOrDefault().Note_name;
-           
+
         }
 
         private void itemsClear()
@@ -492,7 +492,7 @@ namespace LoginForm
             #endregion
         }
 
-        
+
 
         //CONTACT ADD NEW
         private void suppliersearch()
@@ -563,7 +563,7 @@ namespace LoginForm
                 AdressList.DisplayMember = "AdressDetails";
                 txtname.Text = c.s_name;
                 //txtphone.Text = c.telephone;
-                //txtfax.Text = c.fax;
+                ////txtfax.Text = c.fax;
                 txtweb.Text = c.webadress;
                 if (c.Worker1 != null) cmbrepresentative.SelectedValue = c.Worker1.WorkerID;
                 if (c.accountrepresentaryID != null) cmbAcountRep.Text = IME.Workers.Where(a => a.WorkerID == c.accountrepresentaryID).FirstOrDefault().NameLastName;
@@ -908,7 +908,7 @@ namespace LoginForm
                         //SupplierCatSubCat.subcategoryID = c_SubcategoryID;
                         //if (IME.SupplierCategorySubCategories.Where(a => a.supplierID == txtcode.Text).FirstOrDefault() == null) { IME.SupplierCategorySubCategories.Add(SupplierCatSubCat); }
                         IME.SaveChanges();
-                        //        
+                        //
                         //Notes kısmına kayıt ediliyor
                         try
                         {
@@ -1092,7 +1092,7 @@ namespace LoginForm
                 ca.CityID = ((cmbcity).SelectedItem as City).ID;
                 ca.TownID = ((cmbtown).SelectedItem as Town).ID;
                 ca.AdressDetails = txtCompanyAddress.Text;
-                
+
                 IME.SupplierAddresses.Add(ca);
                 IME.SaveChanges();
             }
@@ -1148,7 +1148,7 @@ namespace LoginForm
                     var contact1 = IME.SupplierAddresses.Where(cw => cw.ID == cw_ID).ToList();
                     foreach (var a in contact1)
                     {
-                       
+
                         cmbcounrty.SelectedItem = a.Country;
                         cmbcity.SelectedIndex = cmbcity.FindStringExact(a.City.City_name);
                         cmbtown.SelectedIndex = cmbtown.FindStringExact(a.Town.Town_name);
