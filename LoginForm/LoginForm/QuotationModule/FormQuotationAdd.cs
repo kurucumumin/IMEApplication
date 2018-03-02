@@ -87,6 +87,7 @@ namespace LoginForm.QuotationModule
               
 
             DataGridViewComboBoxColumn deliveryColumn = (DataGridViewComboBoxColumn)dgQuotationAddedItems.Columns[dgDelivery.Index];
+            
             deliveryColumn.DataSource = IME.QuotationDeliveries.ToList();
             deliveryColumn.DisplayMember = "DeliveryName";
             deliveryColumn.ValueMember = "ID";
@@ -1578,9 +1579,17 @@ namespace LoginForm.QuotationModule
             for (int i = 0; i < dgQuotationAddedItems.RowCount - 1; i++)
             {
                 if (dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value != null && Decimal.Parse(dgQuotationAddedItems.Rows[i].Cells["dgMargin"].Value.ToString()) < Utils.getCurrentUser().MinMarge) { MessageBox.Show("Please Check Margin of Products "); return false; }
-                if (Utils.getCurrentUser().MinMarge <decimal.Parse(txtTotalMarge.Text))
+                if (Utils.getCurrentUser().MinMarge >decimal.Parse(txtTotalMarge.Text))
                 {
                     MessageBox.Show("You are not able to give this Total Margin. Please check the Total Margin");
+                    return false;
+                }
+            }
+            for (int i = 0; i < dgQuotationAddedItems.RowCount; i++)
+            {
+              if(((DataGridViewComboBoxCell)dgQuotationAddedItems.Rows[i].Cells[dgDelivery.Index]).Value==null)
+                {
+                    MessageBox.Show("Delivery part cannot be left blank. Please check Delivery Parts of Items");
                     return false;
                 }
             }
@@ -1887,11 +1896,14 @@ namespace LoginForm.QuotationModule
             if (q.IsCustomsDuties == 1) { ckCustomsDuties.Checked = true; } else { ckCustomsDuties.Checked = false; }
             //Buraya Curr verileri gelecek
             #endregion
-            if (dgQuotationAddedItems.RowCount > 1)
-            {
-                dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[0].Value = (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 2].Cells[0].Value.ToString()) + 1).ToString();
+            try {
+                if (dgQuotationAddedItems.RowCount > 1)
+                {
+                    dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 1].Cells[0].Value = (Int32.Parse(dgQuotationAddedItems.Rows[dgQuotationAddedItems.RowCount - 2].Cells[0].Value.ToString()) + 1).ToString();
+                }
+                else { dgQuotationAddedItems.Rows[0].Cells[0].Value = 1.ToString(); }
             }
-            else { dgQuotationAddedItems.Rows[0].Cells[0].Value = 1.ToString(); }
+            catch { }
             string q1 = q.QuotationNo;
             if (IME.Quotations.Where(a => a.QuotationNo == q1).ToList().Count > 0)
             {

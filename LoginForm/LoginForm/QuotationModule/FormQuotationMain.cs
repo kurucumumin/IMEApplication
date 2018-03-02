@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using LoginForm.Services;
 
 namespace LoginForm.QuotationModule
 {
@@ -34,7 +35,11 @@ namespace LoginForm.QuotationModule
 
         private void dgQuotation_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            ModifyQuotation();
+            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1125).FirstOrDefault() == null)//Can Edit any Quotation
+            {
+                ModifyQuotation();
+            }
+           
         }
 
         private void btnDeleteQuotation_Click(object sender, EventArgs e)
@@ -86,6 +91,10 @@ namespace LoginForm.QuotationModule
 
         private void FormQuotationMain_Load(object sender, EventArgs e)
         {
+            if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1126).FirstOrDefault() == null)//Can Delete Quotation
+            {
+               btnDeleteQuotation.Enabled = false;
+            }
             BringQuotationList();
         }
 
@@ -177,7 +186,12 @@ namespace LoginForm.QuotationModule
         {
             if (e.KeyCode == Keys.Delete)
             {
-                btnDeleteQuotation.PerformClick();
+                if (Utils.getCurrentUser().AuthorizationValues.Where(a => a.AuthorizationID == 1126).FirstOrDefault() == null)//Can Delete Quotation
+                {
+                    btnDeleteQuotation.PerformClick();
+                }
+
+                
             }
         }
 

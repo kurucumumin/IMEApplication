@@ -11,7 +11,6 @@ using LoginForm.DataSet;
 using LoginForm.Services;
 //using LoginForm.Quotation;
 
-
 namespace LoginForm
 {
     public partial class FormLogin : Form
@@ -79,7 +78,7 @@ namespace LoginForm
 
             //
             //for admin to see everything
-            //Worker admin = IME.Workers.Where(a => a.WorkerID == 1).FirstOrDefault();
+            //RoleValue admin = IME.RoleValues.Where(a => a.RoleID == 1009).FirstOrDefault();
             //foreach (AuthorizationValue item in IME.AuthorizationValues)
             //{
             //    if (admin.AuthorizationValues.Where(a => a.AuthorizationID == item.AuthorizationID).FirstOrDefault() == null)

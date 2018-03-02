@@ -176,8 +176,8 @@ namespace LoginForm
             //ContactAdress.DataSource = IME.CustomerAddresses.Where(customera => customera.CustomerID == CustomerCode.Text).ToList();
             //ContactAdress.DisplayMember = "AdressDetails";
             txtname.Text = c.s_name;
-            txtphone.Text = c.telephone;
-            txtfax.Text = c.fax;
+            //txtphone.Text = c.telephone;
+            //txtfax.Text = c.fax;
             txtweb.Text = c.webadress;
            // if (c.Worker2 != null) Represantative2.SelectedValue = c.Worker2.WorkerID;
             if (c.Worker1 != null) cmbrepresentative.SelectedValue = c.Worker1.WorkerID;
@@ -503,21 +503,21 @@ namespace LoginForm
                                    select new {
                                        c.ID,
                                        CustomerName = c.s_name,
-                                       Telephone = c.telephone,
+                                       //Telephone = c.telephone,
                                        PaymentMethod = c.PaymentMethod.Payment,
-                                       Fax = c.fax,
-                                       CrediLimit = c.creditlimit,
+                                       //Fax = c.fax,
+                                       //CrediLimit = c.creditlimit,
                                        Web = c.webadress,
                                        PaymentTerm = c.PaymentTerm.term_name,
                                        WorkerName = c.Worker.NameLastName,
-                                       CurType = c.Rate.CurType,
+                                       //CurType = c.Rate.CurType,
                                        TaxOffice = c.taxoffice,
                                        TaxNumber = c.taxnumber,
                                        Representative = c.accountrepresentaryID,
                                        NoteName = c.Note.Note_name,
                                        MainContact = c.MainContactID,
                                        BankName = c.SupplierBank.bankname,
-                                       PoBox = c.PoBox,
+                                       //PoBox = c.PoBox,
                                        Disc = c.discountrate,
                                        Iban = c.iban,
                                        BrancCoe = c.branchcode,
@@ -532,21 +532,21 @@ namespace LoginForm
                                     {
                                         c.ID,
                                         CustomerName = c.s_name,
-                                        Telephone = c.telephone,
+                                        //Telephone = c.telephone,
                                         PaymentMethod = c.PaymentMethod.Payment,
-                                        Fax = c.fax,
-                                        CrediLimit = c.creditlimit,
+                                        //Fax = c.fax,
+                                        //CrediLimit = c.creditlimit,
                                         Web = c.webadress,
                                         PaymentTerm = c.PaymentTerm.term_name,
                                         WorkerName = c.Worker.NameLastName,
-                                        CurType = c.Rate.CurType,
+                                        //CurType = c.Rate.CurType,
                                         TaxOffice = c.taxoffice,
                                         TaxNumber = c.taxnumber,
                                         Representative = c.accountrepresentaryID,
                                         NoteName = c.Note.Note_name,
                                         MainContact = c.MainContactID,
                                         BankName = c.SupplierBank.bankname,
-                                        PoBox = c.PoBox,
+                                        //PoBox = c.PoBox,
                                         Disc = c.discountrate,
                                         Iban = c.iban,
                                         BrancCoe = c.branchcode,
@@ -562,8 +562,8 @@ namespace LoginForm
                 AdressList.DataSource = IME.SupplierAddresses.Where(customera => customera.SupplierID == txtcode.Text).ToList();
                 AdressList.DisplayMember = "AdressDetails";
                 txtname.Text = c.s_name;
-                txtphone.Text = c.telephone;
-                txtfax.Text = c.fax;
+                //txtphone.Text = c.telephone;
+                ////txtfax.Text = c.fax;
                 txtweb.Text = c.webadress;
                 if (c.Worker1 != null) cmbrepresentative.SelectedValue = c.Worker1.WorkerID;
                 if (c.accountrepresentaryID != null) cmbAcountRep.Text = IME.Workers.Where(a => a.WorkerID == c.accountrepresentaryID).FirstOrDefault().NameLastName;
@@ -865,15 +865,15 @@ namespace LoginForm
                         s = IME.Suppliers.Where(a => a.ID == txtcode.Text).FirstOrDefault();
                         s.s_name = txtname.Text;
                         try { if (txtdiscount.Text != "") { s.discountrate = Int32.Parse(txtdiscount.Text); } } catch { };
-                        try { if (txtphone.Text != "") { s.telephone = txtphone.Text; } } catch { };
+                        //try { if (txtphone.Text != "") { s.telephone = txtphone.Text; } } catch { };
                         try { int s_paymentmeth = ((PaymentMethod)(cmbAcountMethod).SelectedItem).ID; s.paymentmethodID = s_paymentmeth; } catch { };
-                        try { if (txtfax.Text != "") { s.fax = txtfax.Text; } } catch { };
+                        //try { if (txtfax.Text != "") { s.fax = txtfax.Text; } } catch { };
                         s.webadress = txtweb.Text;
                         try { int s_termpayment = ((PaymentTerm)(cmbAcountTerms).SelectedItem).ID; s.payment_termID = s_termpayment; } catch { };
                         try { int s_rep1ID = ((Worker)(cmbrepresentative).SelectedItem).WorkerID; s.representaryID = s_rep1ID; } catch { };
                         try { int s_repAcoID = ((Worker)(cmbAcountRep).SelectedItem).WorkerID; s.accountrepresentaryID = s_repAcoID; } catch { };
                         s.taxoffice = txtTaxOffice.Text;
-                        s.PoBox = txtpobox.Text;
+                        //s.PoBox = txtpobox.Text;
                         try { if (txtTaxNumber.Text != "") { s.taxnumber = txtTaxNumber.Text; } } catch { };
                         try
                         {
@@ -1345,9 +1345,9 @@ namespace LoginForm
                     if (model.PaymentMethod != null) cmbAcountMethod.SelectedValue = model.PaymentMethod.ID;
                     txtdiscount.Text = Convert.ToString(model.discountrate);
                     // cmbInvoiceCur.SelectedItem= model.CurrNameInv;
-                    if (model.CurrNameInv != null) cmbInvoiceCur.SelectedValue = model.CurrNameInv;
+                    //if (model.CurrNameInv != null) cmbInvoiceCur.SelectedValue = model.CurrNameInv;
                     // cmbCurrenyt.SelectedItem=model.CurrNameQuo;
-                    if (model.CurrNameQuo != null) cmbCurrenyt.SelectedValue = model.CurrNameQuo;
+                    //if (model.CurrNameQuo != null) cmbCurrenyt.SelectedValue = model.CurrNameQuo;
 
                     Note n1 = new Note();
                     try { n1 = db.Notes.Where(a => a.ID == model.Note.ID).FirstOrDefault(); } catch { }
