@@ -377,5 +377,61 @@ namespace LoginForm.Account.Services
             }
             return isDefault;
         }
+
+        public DataTable VoucherTypeCombofillForTaxAndVat(string strVoucherType)
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.VoucherTypeNameCorrespondingToTypeOfVoucher(strVoucherType).ToList();
+
+                dtbl.Columns.Add("voucherTypeId");
+                dtbl.Columns.Add("voucherTypeName");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+
+                    row["voucherTypeId"] = item.voucherTypeId;
+                    row["voucherTypeName"] = item.voucherTypeName;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
+
+        public DataTable TypeOfVoucherCombofillForVatAndTaxReport()
+        {
+            IMEEntities IME = new IMEEntities();
+            DataTable dtbl = new DataTable();
+            try
+            {
+                var adaptor = IME.TypeOfVoucherCombofillForVatAndTaxReport().ToList();
+
+                dtbl.Columns.Add("voucherTypeId");
+                dtbl.Columns.Add("typeOfVoucher");
+
+                foreach (var item in adaptor)
+                {
+                    DataRow row = dtbl.NewRow();
+
+                    row["voucherTypeId"] = item.voucherTypeId;
+                    row["typeOfVoucher"] = item.typeOfVoucher;
+
+                    dtbl.Rows.Add(row);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return dtbl;
+        }
     }
 }

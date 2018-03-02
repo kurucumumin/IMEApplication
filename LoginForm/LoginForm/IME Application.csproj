@@ -327,6 +327,12 @@
     <Compile Include="Account\Reports\frmCreditNoteReport.designer.cs">
       <DependentUpon>frmCreditNoteReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Reports\frmDayBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reports\frmDayBook.designer.cs">
+      <DependentUpon>frmDayBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Reports\frmJournalReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1857,6 +1863,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Reports\frmCreditNoteReport.resx">
       <DependentUpon>frmCreditNoteReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reports\frmDayBook.resx">
+      <DependentUpon>frmDayBook.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Reports\frmJournalReport.resx">
       <DependentUpon>frmJournalReport.cs</DependentUpon>
