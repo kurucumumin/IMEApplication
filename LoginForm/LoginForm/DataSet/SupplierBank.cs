@@ -19,7 +19,12 @@ namespace LoginForm.DataSet
         {
             this.Suppliers = new HashSet<Supplier>();
         }
-    
+
+        public override string ToString()
+        {
+            return bankname;
+        }
+
         public int ID { get; set; }
         public string bankname { get; set; }
     
