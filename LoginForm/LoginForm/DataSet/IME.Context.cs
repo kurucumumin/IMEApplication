@@ -839,7 +839,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalanceSheetAssets_Result>("BalanceSheetAssets", toDateParameter, fromDateParameter);
         }
     
-        public virtual int BalanceSheetDifference(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
+        public virtual ObjectResult<BalanceSheetDifference_Result> BalanceSheetDifference(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
         {
             var toDateParameter = toDate.HasValue ?
                 new ObjectParameter("toDate", toDate) :
@@ -849,7 +849,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("fromDate", fromDate) :
                 new ObjectParameter("fromDate", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("BalanceSheetDifference", toDateParameter, fromDateParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<BalanceSheetDifference_Result>("BalanceSheetDifference", toDateParameter, fromDateParameter);
         }
     
         public virtual ObjectResult<BalanceSheetLiabilities_Result> BalanceSheetLiabilities(Nullable<System.DateTime> toDate, Nullable<System.DateTime> fromDate)
@@ -1464,7 +1464,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ExtendedRangeADD", articleNoParameter, brandParameter, mPNParameter, articleDescriptionParameter, extendedRangeLengthParameter, widthParameter, heightParameter, dimensionUoMParameter, weightUoMParameter, cCCNParameter, countryofOriginParameter, unitofMeasureParameter, packSizeParameter, salesUoMParameter, costPriceCurrencyParameter, col1PriceParameter, col2PriceParameter, col3PriceParameter, col4PriceParameter, col5PriceParameter, col1BreakParameter, col2BreakParameter, col3BreakParameter, col4BreakParameter, col5BreakParameter, discountedPrice1Parameter, discountedPrice2Parameter, discountedPrice3Parameter, discountedPrice4Parameter, discountedPrice5Parameter, manufacturerCodeParameter, extendedRangeWeightParameter);
         }
     
-        public virtual int FundFlow1(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        public virtual ObjectResult<FundFlow1_Result> FundFlow1(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
@@ -1474,10 +1474,10 @@ namespace LoginForm.DataSet
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FundFlow1", fromDateParameter, toDateParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FundFlow1_Result>("FundFlow1", fromDateParameter, toDateParameter);
         }
     
-        public virtual int FundFlow2(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        public virtual ObjectResult<FundFlow2_Result> FundFlow2(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
@@ -1487,10 +1487,10 @@ namespace LoginForm.DataSet
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FundFlow2", fromDateParameter, toDateParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FundFlow2_Result>("FundFlow2", fromDateParameter, toDateParameter);
         }
     
-        public virtual int FundFlow3(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        public virtual ObjectResult<FundFlow3_Result> FundFlow3(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
@@ -1500,10 +1500,10 @@ namespace LoginForm.DataSet
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FundFlow3", fromDateParameter, toDateParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FundFlow3_Result>("FundFlow3", fromDateParameter, toDateParameter);
         }
     
-        public virtual int FundFlow4(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        public virtual ObjectResult<FundFlow4_Result> FundFlow4(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
@@ -1513,10 +1513,10 @@ namespace LoginForm.DataSet
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FundFlow4", fromDateParameter, toDateParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FundFlow4_Result>("FundFlow4", fromDateParameter, toDateParameter);
         }
     
-        public virtual int FundFlow5(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        public virtual ObjectResult<FundFlow5_Result> FundFlow5(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
@@ -1526,10 +1526,10 @@ namespace LoginForm.DataSet
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FundFlow5", fromDateParameter, toDateParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FundFlow5_Result>("FundFlow5", fromDateParameter, toDateParameter);
         }
     
-        public virtual int FundFlow6(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
+        public virtual ObjectResult<FundFlow6_Result> FundFlow6(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate)
         {
             var fromDateParameter = fromDate.HasValue ?
                 new ObjectParameter("fromDate", fromDate) :
@@ -1539,7 +1539,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("toDate", toDate) :
                 new ObjectParameter("toDate", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("FundFlow6", fromDateParameter, toDateParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FundFlow6_Result>("FundFlow6", fromDateParameter, toDateParameter);
         }
     
         public virtual ObjectResult<GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result> GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI(Nullable<decimal> ledgerId, Nullable<decimal> salesMasterId, Nullable<decimal> voucherTypeId)
@@ -1863,6 +1863,15 @@ namespace LoginForm.DataSet
                 new ObjectParameter("accountLedgerId", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<OverduePurchaseOrdersCorrespondingAccountLedger_Result>("OverduePurchaseOrdersCorrespondingAccountLedger", accountLedgerIdParameter);
+        }
+    
+        public virtual ObjectResult<OverdueSalesOrderCorrespondingAccountLedger_Result> OverdueSalesOrderCorrespondingAccountLedger(string accountLedgerId)
+        {
+            var accountLedgerIdParameter = accountLedgerId != null ?
+                new ObjectParameter("accountLedgerId", accountLedgerId) :
+                new ObjectParameter("accountLedgerId", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<OverdueSalesOrderCorrespondingAccountLedger_Result>("OverdueSalesOrderCorrespondingAccountLedger", accountLedgerIdParameter);
         }
     
         public virtual ObjectResult<Nullable<decimal>> PartyBalanceAmountViewByVoucherNoVoucherTypeIdAndReferenceType(string voucherNo, Nullable<decimal> voucherTypeId, string referenceType)
@@ -5400,6 +5409,64 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SuperDiskPAdd", article_NoParameter, article_DescParameter, pack_CodeParameter, pack_QuantityParameter, unit_ContentParameter, unit_MeasureParameter, uk_Col_1Parameter, standard_WeightParameter, hazardous_IndParameter, calibration_IndParameter, obsolete_FlagParameter, mH1Parameter, low_Discount_IndParameter, licensed_IndParameter, shelf_LifeParameter, cofOParameter, eUR1_IndicatorParameter, cCCN_NoParameter, supercede_DateParameter, current_Cat_pageParameter, uk_Intro_DateParameter, fillerParameter, uk_Disc_DateParameter, substitute_ByParameter, bHC_FlagParameter, filler1Parameter, future_Sell_PriceParameter, int_CatParameter, new_Prod_Change_IndParameter, out_of_Stock_Prohibit_change_indParameter, disc_Change_IndParameter, superceded_Change_IndParameter, pack_Size_Change_IndParameter, rolled_Product_Change_IndParameter, expiring_Product_Change_IndParameter, manufacturerParameter, mPNParameter, mH_Code_Level_1Parameter, heighParameter, widthParameter, lengthParameter);
         }
     
+        public virtual ObjectResult<TaxCrystalReportGridFillByBillWise_Result> TaxCrystalReportGridFillByBillWise(Nullable<decimal> companyId, Nullable<System.DateTime> fromdate, Nullable<System.DateTime> todate, Nullable<decimal> taxId, Nullable<decimal> voucherTypeId, Nullable<bool> input)
+        {
+            var companyIdParameter = companyId.HasValue ?
+                new ObjectParameter("companyId", companyId) :
+                new ObjectParameter("companyId", typeof(decimal));
+    
+            var fromdateParameter = fromdate.HasValue ?
+                new ObjectParameter("fromdate", fromdate) :
+                new ObjectParameter("fromdate", typeof(System.DateTime));
+    
+            var todateParameter = todate.HasValue ?
+                new ObjectParameter("todate", todate) :
+                new ObjectParameter("todate", typeof(System.DateTime));
+    
+            var taxIdParameter = taxId.HasValue ?
+                new ObjectParameter("taxId", taxId) :
+                new ObjectParameter("taxId", typeof(decimal));
+    
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            var inputParameter = input.HasValue ?
+                new ObjectParameter("input", input) :
+                new ObjectParameter("input", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxCrystalReportGridFillByBillWise_Result>("TaxCrystalReportGridFillByBillWise", companyIdParameter, fromdateParameter, todateParameter, taxIdParameter, voucherTypeIdParameter, inputParameter);
+        }
+    
+        public virtual ObjectResult<TaxCrystalReportGridFillByProductwise_Result> TaxCrystalReportGridFillByProductwise(Nullable<decimal> companyId, Nullable<System.DateTime> fromdate, Nullable<System.DateTime> todate, Nullable<decimal> taxId, Nullable<decimal> voucherTypeId, Nullable<bool> input)
+        {
+            var companyIdParameter = companyId.HasValue ?
+                new ObjectParameter("companyId", companyId) :
+                new ObjectParameter("companyId", typeof(decimal));
+    
+            var fromdateParameter = fromdate.HasValue ?
+                new ObjectParameter("fromdate", fromdate) :
+                new ObjectParameter("fromdate", typeof(System.DateTime));
+    
+            var todateParameter = todate.HasValue ?
+                new ObjectParameter("todate", todate) :
+                new ObjectParameter("todate", typeof(System.DateTime));
+    
+            var taxIdParameter = taxId.HasValue ?
+                new ObjectParameter("taxId", taxId) :
+                new ObjectParameter("taxId", typeof(decimal));
+    
+            var voucherTypeIdParameter = voucherTypeId.HasValue ?
+                new ObjectParameter("voucherTypeId", voucherTypeId) :
+                new ObjectParameter("voucherTypeId", typeof(decimal));
+    
+            var inputParameter = input.HasValue ?
+                new ObjectParameter("input", input) :
+                new ObjectParameter("input", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxCrystalReportGridFillByProductwise_Result>("TaxCrystalReportGridFillByProductwise", companyIdParameter, fromdateParameter, todateParameter, taxIdParameter, voucherTypeIdParameter, inputParameter);
+        }
+    
         public virtual ObjectResult<Nullable<int>> TaxDetailsViewAllByTaxId(Nullable<decimal> taxId)
         {
             var taxIdParameter = taxId.HasValue ?
@@ -5418,7 +5485,7 @@ namespace LoginForm.DataSet
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("TaxIdForTaxSelectionUpdate", taxIdParameter);
         }
     
-        public virtual int TaxReportGridFillByBillWise(Nullable<System.DateTime> fromdate, Nullable<System.DateTime> todate, Nullable<decimal> taxId, Nullable<decimal> voucherTypeId, string typeOfVoucher, Nullable<bool> input)
+        public virtual ObjectResult<TaxReportGridFillByBillWise_Result> TaxReportGridFillByBillWise(Nullable<System.DateTime> fromdate, Nullable<System.DateTime> todate, Nullable<decimal> taxId, Nullable<decimal> voucherTypeId, string typeOfVoucher, Nullable<bool> input)
         {
             var fromdateParameter = fromdate.HasValue ?
                 new ObjectParameter("fromdate", fromdate) :
@@ -5444,7 +5511,7 @@ namespace LoginForm.DataSet
                 new ObjectParameter("input", input) :
                 new ObjectParameter("input", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("TaxReportGridFillByBillWise", fromdateParameter, todateParameter, taxIdParameter, voucherTypeIdParameter, typeOfVoucherParameter, inputParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<TaxReportGridFillByBillWise_Result>("TaxReportGridFillByBillWise", fromdateParameter, todateParameter, taxIdParameter, voucherTypeIdParameter, typeOfVoucherParameter, inputParameter);
         }
     
         public virtual int TaxReportGridFillByProductwise(Nullable<System.DateTime> fromdate, Nullable<System.DateTime> todate, Nullable<decimal> taxId, Nullable<decimal> voucherTypeId, string typeOfVoucher, Nullable<bool> input)

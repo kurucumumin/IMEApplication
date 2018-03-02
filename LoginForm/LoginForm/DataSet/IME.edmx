@@ -6934,6 +6934,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
         <Function Name="OverduePurchaseOrdersCorrespondingAccountLedger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="accountLedgerId" Type="decimal" Mode="In" />
         </Function>
+        <Function Name="OverdueSalesOrderCorrespondingAccountLedger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="accountLedgerId" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="PartyBalanceAmountViewByVoucherNoVoucherTypeIdAndReferenceType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="voucherNo" Type="varchar(max)" Mode="In" />
           <Parameter Name="voucherTypeId" Type="numeric" Mode="In" />
@@ -7922,6 +7925,22 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Parameter Name="Heigh" Type="decimal" Mode="In" />
           <Parameter Name="Width" Type="decimal" Mode="In" />
           <Parameter Name="Length" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="TaxCrystalReportGridFillByBillWise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="companyId" Type="numeric" Mode="In" />
+          <Parameter Name="fromdate" Type="datetime" Mode="In" />
+          <Parameter Name="todate" Type="datetime" Mode="In" />
+          <Parameter Name="taxId" Type="decimal" Mode="In" />
+          <Parameter Name="voucherTypeId" Type="decimal" Mode="In" />
+          <Parameter Name="input" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="TaxCrystalReportGridFillByProductwise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="companyId" Type="numeric" Mode="In" />
+          <Parameter Name="fromdate" Type="datetime" Mode="In" />
+          <Parameter Name="todate" Type="datetime" Mode="In" />
+          <Parameter Name="taxId" Type="decimal" Mode="In" />
+          <Parameter Name="voucherTypeId" Type="decimal" Mode="In" />
+          <Parameter Name="input" Type="bit" Mode="In" />
         </Function>
         <Function Name="TaxDetailsViewAllByTaxId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="taxId" Type="numeric" Mode="In" />
@@ -18364,7 +18383,7 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="BalanceSheetDifference">
+          <FunctionImport Name="BalanceSheetDifference" ReturnType="Collection(IMEModel.BalanceSheetDifference_Result)">
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -18540,27 +18559,27 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="ManufacturerCode" Mode="In" Type="String" />
             <Parameter Name="ExtendedRangeWeight" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="FundFlow1">
+          <FunctionImport Name="FundFlow1" ReturnType="Collection(IMEModel.FundFlow1_Result)">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="FundFlow2">
+          <FunctionImport Name="FundFlow2" ReturnType="Collection(IMEModel.FundFlow2_Result)">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="FundFlow3">
+          <FunctionImport Name="FundFlow3" ReturnType="Collection(IMEModel.FundFlow3_Result)">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="FundFlow4">
+          <FunctionImport Name="FundFlow4" ReturnType="Collection(IMEModel.FundFlow4_Result)">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="FundFlow5">
+          <FunctionImport Name="FundFlow5" ReturnType="Collection(IMEModel.FundFlow5_Result)">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="FundFlow6">
+          <FunctionImport Name="FundFlow6" ReturnType="Collection(IMEModel.FundFlow6_Result)">
             <Parameter Name="fromDate" Mode="In" Type="DateTime" />
             <Parameter Name="toDate" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -18658,6 +18677,9 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           </FunctionImport>
           <FunctionImport Name="OverduePurchaseOrdersCorrespondingAccountLedger" ReturnType="Collection(IMEModel.OverduePurchaseOrdersCorrespondingAccountLedger_Result)">
             <Parameter Name="accountLedgerId" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="OverdueSalesOrderCorrespondingAccountLedger" ReturnType="Collection(IMEModel.OverdueSalesOrderCorrespondingAccountLedger_Result)">
+            <Parameter Name="accountLedgerId" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="PartyBalanceAmountViewByVoucherNoVoucherTypeIdAndReferenceType" ReturnType="Collection(Decimal)">
             <Parameter Name="voucherNo" Mode="In" Type="String" />
@@ -19648,13 +19670,29 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
             <Parameter Name="Width" Mode="In" Type="Decimal" />
             <Parameter Name="Length" Mode="In" Type="Decimal" />
           </FunctionImport>
+          <FunctionImport Name="TaxCrystalReportGridFillByBillWise" ReturnType="Collection(IMEModel.TaxCrystalReportGridFillByBillWise_Result)">
+            <Parameter Name="companyId" Mode="In" Type="Decimal" />
+            <Parameter Name="fromdate" Mode="In" Type="DateTime" />
+            <Parameter Name="todate" Mode="In" Type="DateTime" />
+            <Parameter Name="taxId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="input" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="TaxCrystalReportGridFillByProductwise" ReturnType="Collection(IMEModel.TaxCrystalReportGridFillByProductwise_Result)">
+            <Parameter Name="companyId" Mode="In" Type="Decimal" />
+            <Parameter Name="fromdate" Mode="In" Type="DateTime" />
+            <Parameter Name="todate" Mode="In" Type="DateTime" />
+            <Parameter Name="taxId" Mode="In" Type="Decimal" />
+            <Parameter Name="voucherTypeId" Mode="In" Type="Decimal" />
+            <Parameter Name="input" Mode="In" Type="Boolean" />
+          </FunctionImport>
           <FunctionImport Name="TaxDetailsViewAllByTaxId" ReturnType="Collection(Int32)">
             <Parameter Name="taxId" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="TaxIdForTaxSelectionUpdate" ReturnType="Collection(Int32)">
             <Parameter Name="taxId" Mode="In" Type="Decimal" />
           </FunctionImport>
-          <FunctionImport Name="TaxReportGridFillByBillWise">
+          <FunctionImport Name="TaxReportGridFillByBillWise" ReturnType="Collection(IMEModel.TaxReportGridFillByBillWise_Result)">
             <Parameter Name="fromdate" Mode="In" Type="DateTime" />
             <Parameter Name="todate" Mode="In" Type="DateTime" />
             <Parameter Name="taxId" Mode="In" Type="Decimal" />
@@ -19918,6 +19956,11 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
           <Property Type="Decimal" Name="Balance" Nullable="true" Precision="18" Scale="2" />
         </ComplexType>
+        <ComplexType Name="BalanceSheetDifference_Result">
+          <Property Type="String" Name="ID" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="13" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
         <ComplexType Name="BalanceSheetLiabilities_Result">
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
@@ -20036,6 +20079,44 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Decimal" Name="totalAmount" Nullable="true" Precision="18" Scale="2" />
           <Property Type="String" Name="narration" Nullable="true" />
           <Property Type="String" Name="userName" Nullable="false" MaxLength="25" />
+        </ComplexType>
+        <ComplexType Name="FundFlow1_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="26" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="FundFlow2_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Balance" Nullable="true" Precision="26" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="FundFlow3_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="OpeningBalance" Nullable="false" Precision="38" Scale="5" />
+          <Property Type="Decimal" Name="debit" Nullable="false" Precision="38" Scale="5" />
+          <Property Type="Decimal" Name="credit" Nullable="false" Precision="38" Scale="5" />
+          <Property Type="Decimal" Name="ClosingBalance" Nullable="false" Precision="38" Scale="5" />
+        </ComplexType>
+        <ComplexType Name="FundFlow4_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="OpeningBalance" Nullable="true" Precision="24" Scale="2" />
+          <Property Type="Decimal" Name="ClosingBalance" Nullable="true" Precision="24" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="FundFlow5_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="OpeningBalance" Nullable="false" Precision="38" Scale="5" />
+          <Property Type="Decimal" Name="debit" Nullable="false" Precision="38" Scale="5" />
+          <Property Type="Decimal" Name="credit" Nullable="false" Precision="38" Scale="5" />
+          <Property Type="Decimal" Name="ClosingBalance" Nullable="false" Precision="38" Scale="5" />
+        </ComplexType>
+        <ComplexType Name="FundFlow6_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="OpeningBalance" Nullable="true" Precision="24" Scale="2" />
+          <Property Type="Decimal" Name="ClosingBalance" Nullable="true" Precision="24" Scale="2" />
         </ComplexType>
         <ComplexType Name="GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result">
           <Property Type="Decimal" Name="deliveryNoteMasterId" Nullable="false" Precision="18" Scale="0" />
@@ -20164,6 +20245,14 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Decimal" Name="totalAmount" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Int32" Name="InvoicedMasterId" Nullable="true" />
           <Property Type="Int32" Name="MR_OrderMasterId" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="OverdueSalesOrderCorrespondingAccountLedger_Result">
+          <Property Type="String" Name="OrderNO" Nullable="true" />
+          <Property Type="String" Name="date" Nullable="true" />
+          <Property Type="String" Name="ledgerName" Nullable="true" />
+          <Property Type="String" Name="dueDate" Nullable="true" />
+          <Property Type="Decimal" Name="totalAmount" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="QuotationNo" Nullable="false" MaxLength="20" />
         </ComplexType>
         <ComplexType Name="PartyBalanceViewByVoucherNoAndVoucherType_Result">
           <Property Type="Decimal" Name="LedgerId" Nullable="true" Precision="18" Scale="0" />
@@ -20920,6 +21009,31 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <Property Type="Decimal" Name="serviceCategoryId" Nullable="true" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="rate" Nullable="true" Precision="18" Scale="5" />
           <Property Type="String" Name="narration" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="TaxCrystalReportGridFillByBillWise_Result">
+          <Property Type="String" Name="companyName" Nullable="true" />
+          <Property Type="String" Name="address" Nullable="true" />
+          <Property Type="String" Name="phone" Nullable="true" />
+          <Property Type="String" Name="email" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="TaxCrystalReportGridFillByProductwise_Result">
+          <Property Type="String" Name="companyName" Nullable="true" />
+          <Property Type="String" Name="address" Nullable="true" />
+          <Property Type="String" Name="phone" Nullable="true" />
+          <Property Type="String" Name="email" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="TaxReportGridFillByBillWise_Result">
+          <Property Type="Decimal" Name="ID" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Int64" Name="Sl_NO" Nullable="true" />
+          <Property Type="String" Name="Date" Nullable="true" MaxLength="8000" />
+          <Property Type="String" Name="TypeofVoucher" Nullable="true" />
+          <Property Type="String" Name="Voucher_No" Nullable="true" />
+          <Property Type="String" Name="Cash_Party" Nullable="true" />
+          <Property Type="String" Name="TIN" Nullable="true" />
+          <Property Type="String" Name="CST" Nullable="true" />
+          <Property Type="Decimal" Name="Bill_Amount" Nullable="true" Precision="18" Scale="5" />
+          <Property Type="Decimal" Name="Cess_Amount" Nullable="true" Precision="38" Scale="5" />
+          <Property Type="Decimal" Name="Tax_Amount" Nullable="true" Precision="18" Scale="5" />
         </ComplexType>
         <ComplexType Name="TaxSearch_Result">
           <Property Type="Int32" Name="taxId" Nullable="false" />
@@ -23696,7 +23810,15 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="BalanceSheetDifference" FunctionName="IMEModel.Store.BalanceSheetDifference" />
+          <FunctionImportMapping FunctionImportName="BalanceSheetDifference" FunctionName="IMEModel.Store.BalanceSheetDifference">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.BalanceSheetDifference_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="BalanceSheetLiabilities" FunctionName="IMEModel.Store.BalanceSheetLiabilities">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.BalanceSheetLiabilities_Result">
@@ -23893,12 +24015,68 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImportMapping FunctionImportName="EmployeeForTakingEmployeeId" FunctionName="IMEModel.Store.EmployeeForTakingEmployeeId" />
           <FunctionImportMapping FunctionImportName="ExchangeRateViewByExchangeRateId" FunctionName="IMEModel.Store.ExchangeRateViewByExchangeRateId" />
           <FunctionImportMapping FunctionImportName="ExtendedRangeADD" FunctionName="IMEModel.Store.ExtendedRangeADD" />
-          <FunctionImportMapping FunctionImportName="FundFlow1" FunctionName="IMEModel.Store.FundFlow1" />
-          <FunctionImportMapping FunctionImportName="FundFlow2" FunctionName="IMEModel.Store.FundFlow2" />
-          <FunctionImportMapping FunctionImportName="FundFlow3" FunctionName="IMEModel.Store.FundFlow3" />
-          <FunctionImportMapping FunctionImportName="FundFlow4" FunctionName="IMEModel.Store.FundFlow4" />
-          <FunctionImportMapping FunctionImportName="FundFlow5" FunctionName="IMEModel.Store.FundFlow5" />
-          <FunctionImportMapping FunctionImportName="FundFlow6" FunctionName="IMEModel.Store.FundFlow6" />
+          <FunctionImportMapping FunctionImportName="FundFlow1" FunctionName="IMEModel.Store.FundFlow1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.FundFlow1_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="FundFlow2" FunctionName="IMEModel.Store.FundFlow2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.FundFlow2_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="FundFlow3" FunctionName="IMEModel.Store.FundFlow3">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.FundFlow3_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OpeningBalance" ColumnName="OpeningBalance" />
+                <ScalarProperty Name="debit" ColumnName="debit" />
+                <ScalarProperty Name="credit" ColumnName="credit" />
+                <ScalarProperty Name="ClosingBalance" ColumnName="ClosingBalance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="FundFlow4" FunctionName="IMEModel.Store.FundFlow4">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.FundFlow4_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OpeningBalance" ColumnName="OpeningBalance" />
+                <ScalarProperty Name="ClosingBalance" ColumnName="ClosingBalance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="FundFlow5" FunctionName="IMEModel.Store.FundFlow5">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.FundFlow5_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OpeningBalance" ColumnName="OpeningBalance" />
+                <ScalarProperty Name="debit" ColumnName="debit" />
+                <ScalarProperty Name="credit" ColumnName="credit" />
+                <ScalarProperty Name="ClosingBalance" ColumnName="ClosingBalance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="FundFlow6" FunctionName="IMEModel.Store.FundFlow6">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.FundFlow6_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OpeningBalance" ColumnName="OpeningBalance" />
+                <ScalarProperty Name="ClosingBalance" ColumnName="ClosingBalance" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI" FunctionName="IMEModel.Store.GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI">
             <ResultMapping>
               <ComplexTypeMapping TypeName="IMEModel.GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result">
@@ -24095,6 +24273,18 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
                 <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
                 <ScalarProperty Name="InvoicedMasterId" ColumnName="InvoicedMasterId" />
                 <ScalarProperty Name="MR_OrderMasterId" ColumnName="MR_OrderMasterId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="OverdueSalesOrderCorrespondingAccountLedger" FunctionName="IMEModel.Store.OverdueSalesOrderCorrespondingAccountLedger">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.OverdueSalesOrderCorrespondingAccountLedger_Result">
+                <ScalarProperty Name="OrderNO" ColumnName="OrderNO" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="ledgerName" ColumnName="ledgerName" />
+                <ScalarProperty Name="dueDate" ColumnName="dueDate" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="QuotationNo" ColumnName="QuotationNo" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -25216,9 +25406,45 @@ warning 6013: The table/view 'IME.dbo.vwMaxRate' does not have a primary key def
           <FunctionImportMapping FunctionImportName="StockValueOnDateByLowCostForOpeningStockForBlncSheet" FunctionName="IMEModel.Store.StockValueOnDateByLowCostForOpeningStockForBlncSheet" />
           <FunctionImportMapping FunctionImportName="SuperDiskAdd" FunctionName="IMEModel.Store.SuperDiskAdd" />
           <FunctionImportMapping FunctionImportName="SuperDiskPAdd" FunctionName="IMEModel.Store.SuperDiskPAdd" />
+          <FunctionImportMapping FunctionImportName="TaxCrystalReportGridFillByBillWise" FunctionName="IMEModel.Store.TaxCrystalReportGridFillByBillWise">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.TaxCrystalReportGridFillByBillWise_Result">
+                <ScalarProperty Name="companyName" ColumnName="companyName" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="TaxCrystalReportGridFillByProductwise" FunctionName="IMEModel.Store.TaxCrystalReportGridFillByProductwise">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.TaxCrystalReportGridFillByProductwise_Result">
+                <ScalarProperty Name="companyName" ColumnName="companyName" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="TaxDetailsViewAllByTaxId" FunctionName="IMEModel.Store.TaxDetailsViewAllByTaxId" />
           <FunctionImportMapping FunctionImportName="TaxIdForTaxSelectionUpdate" FunctionName="IMEModel.Store.TaxIdForTaxSelectionUpdate" />
-          <FunctionImportMapping FunctionImportName="TaxReportGridFillByBillWise" FunctionName="IMEModel.Store.TaxReportGridFillByBillWise" />
+          <FunctionImportMapping FunctionImportName="TaxReportGridFillByBillWise" FunctionName="IMEModel.Store.TaxReportGridFillByBillWise">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMEModel.TaxReportGridFillByBillWise_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Sl_NO" ColumnName="Sl_NO" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="TypeofVoucher" ColumnName="TypeofVoucher" />
+                <ScalarProperty Name="Voucher_No" ColumnName="Voucher_No" />
+                <ScalarProperty Name="Cash_Party" ColumnName="Cash_Party" />
+                <ScalarProperty Name="TIN" ColumnName="TIN" />
+                <ScalarProperty Name="CST" ColumnName="CST" />
+                <ScalarProperty Name="Bill_Amount" ColumnName="Bill_Amount" />
+                <ScalarProperty Name="Cess_Amount" ColumnName="Cess_Amount" />
+                <ScalarProperty Name="Tax_Amount" ColumnName="Tax_Amount" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="TaxReportGridFillByProductwise" FunctionName="IMEModel.Store.TaxReportGridFillByProductwise" />
           <FunctionImportMapping FunctionImportName="TaxSearch" FunctionName="IMEModel.Store.TaxSearch">
             <ResultMapping>
