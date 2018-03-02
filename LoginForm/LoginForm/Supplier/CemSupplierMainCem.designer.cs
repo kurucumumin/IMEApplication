@@ -133,40 +133,6 @@ namespace LoginForm
             this.label38 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.dgSupplier = new System.Windows.Forms.DataGridView();
-            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.snameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.telephoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.faxDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.creditlimitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.webadressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.taxofficeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.taxnumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.poBoxDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.discountrateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ibanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.branchcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accountnumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currNameInvDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currTypeInvDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currNameQuoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.currTypeQuoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paymentMethodDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paymentTermDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paymenttermIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.representaryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bankIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mainContactIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.supplierNoteIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.workerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rateIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accountrepresentaryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.supplierBankDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.worker1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.supplierWorkersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paymentmethodIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnModify = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -174,6 +140,32 @@ namespace LoginForm
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.snameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paymentmethodIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.webadressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paymenttermIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.representaryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.taxofficeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.taxnumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountrepresentaryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplierNoteIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mainContactIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bankIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.discountrateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ibanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.branchcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountnumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subCategoryIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.defaultCurrencyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplierBankDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplierCategoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.worker1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplierSubCategoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplierAddressesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.supplierWorkersDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabgenel.SuspendLayout();
             this.tabInfo.SuspendLayout();
             this.tabAccount.SuspendLayout();
@@ -181,9 +173,9 @@ namespace LoginForm
             this.tabAccounting.SuspendLayout();
             this.tabBank.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSupplier)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabgenel
@@ -1379,39 +1371,31 @@ namespace LoginForm
             this.dgSupplier.AutoGenerateColumns = false;
             this.dgSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgSupplier.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colID,
+            this.iDDataGridViewTextBoxColumn,
             this.snameDataGridViewTextBoxColumn,
-            this.telephoneDataGridViewTextBoxColumn,
-            this.faxDataGridViewTextBoxColumn,
-            this.creditlimitDataGridViewTextBoxColumn,
+            this.paymentmethodIDDataGridViewTextBoxColumn,
             this.webadressDataGridViewTextBoxColumn,
+            this.paymenttermIDDataGridViewTextBoxColumn,
+            this.representaryIDDataGridViewTextBoxColumn,
             this.taxofficeDataGridViewTextBoxColumn,
             this.taxnumberDataGridViewTextBoxColumn,
-            this.poBoxDataGridViewTextBoxColumn,
+            this.accountrepresentaryIDDataGridViewTextBoxColumn,
+            this.supplierNoteIDDataGridViewTextBoxColumn,
+            this.mainContactIDDataGridViewTextBoxColumn,
+            this.bankIDDataGridViewTextBoxColumn,
             this.discountrateDataGridViewTextBoxColumn,
             this.ibanDataGridViewTextBoxColumn,
             this.branchcodeDataGridViewTextBoxColumn,
             this.accountnumberDataGridViewTextBoxColumn,
-            this.currNameInvDataGridViewTextBoxColumn,
-            this.currTypeInvDataGridViewTextBoxColumn,
-            this.currNameQuoDataGridViewTextBoxColumn,
-            this.currTypeQuoDataGridViewTextBoxColumn,
-            this.noteDataGridViewTextBoxColumn,
-            this.paymentMethodDataGridViewTextBoxColumn,
-            this.paymentTermDataGridViewTextBoxColumn,
-            this.paymenttermIDDataGridViewTextBoxColumn,
-            this.representaryIDDataGridViewTextBoxColumn,
-            this.bankIDDataGridViewTextBoxColumn,
-            this.mainContactIDDataGridViewTextBoxColumn,
-            this.supplierNoteIDDataGridViewTextBoxColumn,
-            this.rateDataGridViewTextBoxColumn,
-            this.workerDataGridViewTextBoxColumn,
-            this.rateIDDataGridViewTextBoxColumn,
-            this.accountrepresentaryIDDataGridViewTextBoxColumn,
+            this.categoryIDDataGridViewTextBoxColumn,
+            this.subCategoryIDDataGridViewTextBoxColumn,
+            this.defaultCurrencyDataGridViewTextBoxColumn,
             this.supplierBankDataGridViewTextBoxColumn,
+            this.supplierCategoryDataGridViewTextBoxColumn,
             this.worker1DataGridViewTextBoxColumn,
-            this.supplierWorkersDataGridViewTextBoxColumn,
-            this.paymentmethodIDDataGridViewTextBoxColumn});
+            this.supplierSubCategoryDataGridViewTextBoxColumn,
+            this.supplierAddressesDataGridViewTextBoxColumn,
+            this.supplierWorkersDataGridViewTextBoxColumn});
             this.dgSupplier.DataSource = this.supplierBindingSource;
             this.dgSupplier.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgSupplier.Location = new System.Drawing.Point(4, 349);
@@ -1423,243 +1407,6 @@ namespace LoginForm
             this.dgSupplier.Size = new System.Drawing.Size(1225, 225);
             this.dgSupplier.TabIndex = 1;
             this.dgSupplier.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgSupplier_CellClick);
-            // 
-            // colID
-            // 
-            this.colID.DataPropertyName = "ID";
-            this.colID.HeaderText = "ID";
-            this.colID.Name = "colID";
-            this.colID.ReadOnly = true;
-            // 
-            // snameDataGridViewTextBoxColumn
-            // 
-            this.snameDataGridViewTextBoxColumn.DataPropertyName = "s_name";
-            this.snameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.snameDataGridViewTextBoxColumn.Name = "snameDataGridViewTextBoxColumn";
-            this.snameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // telephoneDataGridViewTextBoxColumn
-            // 
-            this.telephoneDataGridViewTextBoxColumn.DataPropertyName = "telephone";
-            this.telephoneDataGridViewTextBoxColumn.HeaderText = "Tel";
-            this.telephoneDataGridViewTextBoxColumn.Name = "telephoneDataGridViewTextBoxColumn";
-            this.telephoneDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // faxDataGridViewTextBoxColumn
-            // 
-            this.faxDataGridViewTextBoxColumn.DataPropertyName = "fax";
-            this.faxDataGridViewTextBoxColumn.HeaderText = "Fax";
-            this.faxDataGridViewTextBoxColumn.Name = "faxDataGridViewTextBoxColumn";
-            this.faxDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // creditlimitDataGridViewTextBoxColumn
-            // 
-            this.creditlimitDataGridViewTextBoxColumn.DataPropertyName = "creditlimit";
-            this.creditlimitDataGridViewTextBoxColumn.HeaderText = "Credit Limit";
-            this.creditlimitDataGridViewTextBoxColumn.Name = "creditlimitDataGridViewTextBoxColumn";
-            this.creditlimitDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // webadressDataGridViewTextBoxColumn
-            // 
-            this.webadressDataGridViewTextBoxColumn.DataPropertyName = "webadress";
-            this.webadressDataGridViewTextBoxColumn.HeaderText = "Web";
-            this.webadressDataGridViewTextBoxColumn.Name = "webadressDataGridViewTextBoxColumn";
-            this.webadressDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // taxofficeDataGridViewTextBoxColumn
-            // 
-            this.taxofficeDataGridViewTextBoxColumn.DataPropertyName = "taxoffice";
-            this.taxofficeDataGridViewTextBoxColumn.HeaderText = "Tax Office";
-            this.taxofficeDataGridViewTextBoxColumn.Name = "taxofficeDataGridViewTextBoxColumn";
-            this.taxofficeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // taxnumberDataGridViewTextBoxColumn
-            // 
-            this.taxnumberDataGridViewTextBoxColumn.DataPropertyName = "taxnumber";
-            this.taxnumberDataGridViewTextBoxColumn.HeaderText = "Tax Number";
-            this.taxnumberDataGridViewTextBoxColumn.Name = "taxnumberDataGridViewTextBoxColumn";
-            this.taxnumberDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // poBoxDataGridViewTextBoxColumn
-            // 
-            this.poBoxDataGridViewTextBoxColumn.DataPropertyName = "PoBox";
-            this.poBoxDataGridViewTextBoxColumn.HeaderText = "Po Box";
-            this.poBoxDataGridViewTextBoxColumn.Name = "poBoxDataGridViewTextBoxColumn";
-            this.poBoxDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // discountrateDataGridViewTextBoxColumn
-            // 
-            this.discountrateDataGridViewTextBoxColumn.DataPropertyName = "discountrate";
-            this.discountrateDataGridViewTextBoxColumn.HeaderText = "Discount Rate";
-            this.discountrateDataGridViewTextBoxColumn.Name = "discountrateDataGridViewTextBoxColumn";
-            this.discountrateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // ibanDataGridViewTextBoxColumn
-            // 
-            this.ibanDataGridViewTextBoxColumn.DataPropertyName = "iban";
-            this.ibanDataGridViewTextBoxColumn.HeaderText = "Iban";
-            this.ibanDataGridViewTextBoxColumn.Name = "ibanDataGridViewTextBoxColumn";
-            this.ibanDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // branchcodeDataGridViewTextBoxColumn
-            // 
-            this.branchcodeDataGridViewTextBoxColumn.DataPropertyName = "branchcode";
-            this.branchcodeDataGridViewTextBoxColumn.HeaderText = "Branch Code";
-            this.branchcodeDataGridViewTextBoxColumn.Name = "branchcodeDataGridViewTextBoxColumn";
-            this.branchcodeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // accountnumberDataGridViewTextBoxColumn
-            // 
-            this.accountnumberDataGridViewTextBoxColumn.DataPropertyName = "accountnumber";
-            this.accountnumberDataGridViewTextBoxColumn.HeaderText = "Account Number";
-            this.accountnumberDataGridViewTextBoxColumn.Name = "accountnumberDataGridViewTextBoxColumn";
-            this.accountnumberDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // currNameInvDataGridViewTextBoxColumn
-            // 
-            this.currNameInvDataGridViewTextBoxColumn.DataPropertyName = "CurrNameInv";
-            this.currNameInvDataGridViewTextBoxColumn.HeaderText = "Inv Currency";
-            this.currNameInvDataGridViewTextBoxColumn.Name = "currNameInvDataGridViewTextBoxColumn";
-            this.currNameInvDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // currTypeInvDataGridViewTextBoxColumn
-            // 
-            this.currTypeInvDataGridViewTextBoxColumn.DataPropertyName = "CurrTypeInv";
-            this.currTypeInvDataGridViewTextBoxColumn.HeaderText = "CurrTypeInv";
-            this.currTypeInvDataGridViewTextBoxColumn.Name = "currTypeInvDataGridViewTextBoxColumn";
-            this.currTypeInvDataGridViewTextBoxColumn.ReadOnly = true;
-            this.currTypeInvDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // currNameQuoDataGridViewTextBoxColumn
-            // 
-            this.currNameQuoDataGridViewTextBoxColumn.DataPropertyName = "CurrNameQuo";
-            this.currNameQuoDataGridViewTextBoxColumn.HeaderText = "Quo Currecy";
-            this.currNameQuoDataGridViewTextBoxColumn.Name = "currNameQuoDataGridViewTextBoxColumn";
-            this.currNameQuoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // currTypeQuoDataGridViewTextBoxColumn
-            // 
-            this.currTypeQuoDataGridViewTextBoxColumn.DataPropertyName = "CurrTypeQuo";
-            this.currTypeQuoDataGridViewTextBoxColumn.HeaderText = "CurrTypeQuo";
-            this.currTypeQuoDataGridViewTextBoxColumn.Name = "currTypeQuoDataGridViewTextBoxColumn";
-            this.currTypeQuoDataGridViewTextBoxColumn.ReadOnly = true;
-            this.currTypeQuoDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // noteDataGridViewTextBoxColumn
-            // 
-            this.noteDataGridViewTextBoxColumn.DataPropertyName = "Note";
-            this.noteDataGridViewTextBoxColumn.HeaderText = "Note";
-            this.noteDataGridViewTextBoxColumn.Name = "noteDataGridViewTextBoxColumn";
-            this.noteDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // paymentMethodDataGridViewTextBoxColumn
-            // 
-            this.paymentMethodDataGridViewTextBoxColumn.DataPropertyName = "PaymentMethod";
-            this.paymentMethodDataGridViewTextBoxColumn.HeaderText = "Payment Method";
-            this.paymentMethodDataGridViewTextBoxColumn.Name = "paymentMethodDataGridViewTextBoxColumn";
-            this.paymentMethodDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // paymentTermDataGridViewTextBoxColumn
-            // 
-            this.paymentTermDataGridViewTextBoxColumn.DataPropertyName = "PaymentTerm";
-            this.paymentTermDataGridViewTextBoxColumn.HeaderText = "Payment Term";
-            this.paymentTermDataGridViewTextBoxColumn.Name = "paymentTermDataGridViewTextBoxColumn";
-            this.paymentTermDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // paymenttermIDDataGridViewTextBoxColumn
-            // 
-            this.paymenttermIDDataGridViewTextBoxColumn.DataPropertyName = "payment_termID";
-            this.paymenttermIDDataGridViewTextBoxColumn.HeaderText = "payment_termID";
-            this.paymenttermIDDataGridViewTextBoxColumn.Name = "paymenttermIDDataGridViewTextBoxColumn";
-            this.paymenttermIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // representaryIDDataGridViewTextBoxColumn
-            // 
-            this.representaryIDDataGridViewTextBoxColumn.DataPropertyName = "representaryID";
-            this.representaryIDDataGridViewTextBoxColumn.HeaderText = "representaryID";
-            this.representaryIDDataGridViewTextBoxColumn.Name = "representaryIDDataGridViewTextBoxColumn";
-            this.representaryIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bankIDDataGridViewTextBoxColumn
-            // 
-            this.bankIDDataGridViewTextBoxColumn.DataPropertyName = "BankID";
-            this.bankIDDataGridViewTextBoxColumn.HeaderText = "BankID";
-            this.bankIDDataGridViewTextBoxColumn.Name = "bankIDDataGridViewTextBoxColumn";
-            this.bankIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // mainContactIDDataGridViewTextBoxColumn
-            // 
-            this.mainContactIDDataGridViewTextBoxColumn.DataPropertyName = "MainContactID";
-            this.mainContactIDDataGridViewTextBoxColumn.HeaderText = "MainContactID";
-            this.mainContactIDDataGridViewTextBoxColumn.Name = "mainContactIDDataGridViewTextBoxColumn";
-            this.mainContactIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // supplierNoteIDDataGridViewTextBoxColumn
-            // 
-            this.supplierNoteIDDataGridViewTextBoxColumn.DataPropertyName = "SupplierNoteID";
-            this.supplierNoteIDDataGridViewTextBoxColumn.HeaderText = "SupplierNoteID";
-            this.supplierNoteIDDataGridViewTextBoxColumn.Name = "supplierNoteIDDataGridViewTextBoxColumn";
-            this.supplierNoteIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // rateDataGridViewTextBoxColumn
-            // 
-            this.rateDataGridViewTextBoxColumn.DataPropertyName = "Rate";
-            this.rateDataGridViewTextBoxColumn.HeaderText = "Rate";
-            this.rateDataGridViewTextBoxColumn.Name = "rateDataGridViewTextBoxColumn";
-            this.rateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // workerDataGridViewTextBoxColumn
-            // 
-            this.workerDataGridViewTextBoxColumn.DataPropertyName = "Worker";
-            this.workerDataGridViewTextBoxColumn.HeaderText = "Worker";
-            this.workerDataGridViewTextBoxColumn.Name = "workerDataGridViewTextBoxColumn";
-            this.workerDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // rateIDDataGridViewTextBoxColumn
-            // 
-            this.rateIDDataGridViewTextBoxColumn.DataPropertyName = "rate_ID";
-            this.rateIDDataGridViewTextBoxColumn.HeaderText = "rate_ID";
-            this.rateIDDataGridViewTextBoxColumn.Name = "rateIDDataGridViewTextBoxColumn";
-            this.rateIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // accountrepresentaryIDDataGridViewTextBoxColumn
-            // 
-            this.accountrepresentaryIDDataGridViewTextBoxColumn.DataPropertyName = "accountrepresentaryID";
-            this.accountrepresentaryIDDataGridViewTextBoxColumn.HeaderText = "accountrepresentaryID";
-            this.accountrepresentaryIDDataGridViewTextBoxColumn.Name = "accountrepresentaryIDDataGridViewTextBoxColumn";
-            this.accountrepresentaryIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // supplierBankDataGridViewTextBoxColumn
-            // 
-            this.supplierBankDataGridViewTextBoxColumn.DataPropertyName = "SupplierBank";
-            this.supplierBankDataGridViewTextBoxColumn.HeaderText = "SupplierBank";
-            this.supplierBankDataGridViewTextBoxColumn.Name = "supplierBankDataGridViewTextBoxColumn";
-            this.supplierBankDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // worker1DataGridViewTextBoxColumn
-            // 
-            this.worker1DataGridViewTextBoxColumn.DataPropertyName = "Worker1";
-            this.worker1DataGridViewTextBoxColumn.HeaderText = "Worker1";
-            this.worker1DataGridViewTextBoxColumn.Name = "worker1DataGridViewTextBoxColumn";
-            this.worker1DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // supplierWorkersDataGridViewTextBoxColumn
-            // 
-            this.supplierWorkersDataGridViewTextBoxColumn.DataPropertyName = "SupplierWorkers";
-            this.supplierWorkersDataGridViewTextBoxColumn.HeaderText = "SupplierWorkers";
-            this.supplierWorkersDataGridViewTextBoxColumn.Name = "supplierWorkersDataGridViewTextBoxColumn";
-            this.supplierWorkersDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // paymentmethodIDDataGridViewTextBoxColumn
-            // 
-            this.paymentmethodIDDataGridViewTextBoxColumn.DataPropertyName = "paymentmethodID";
-            this.paymentmethodIDDataGridViewTextBoxColumn.HeaderText = "paymentmethodID";
-            this.paymentmethodIDDataGridViewTextBoxColumn.Name = "paymentmethodIDDataGridViewTextBoxColumn";
-            this.paymentmethodIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // supplierBindingSource
-            // 
-            this.supplierBindingSource.DataSource = typeof(LoginForm.DataSet.Supplier);
             // 
             // btnModify
             // 
@@ -1756,6 +1503,185 @@ namespace LoginForm
             this.panel1.Size = new System.Drawing.Size(1227, 81);
             this.panel1.TabIndex = 2;
             // 
+            // supplierBindingSource
+            // 
+            this.supplierBindingSource.DataSource = typeof(LoginForm.DataSet.Supplier);
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // snameDataGridViewTextBoxColumn
+            // 
+            this.snameDataGridViewTextBoxColumn.DataPropertyName = "s_name";
+            this.snameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.snameDataGridViewTextBoxColumn.Name = "snameDataGridViewTextBoxColumn";
+            this.snameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // paymentmethodIDDataGridViewTextBoxColumn
+            // 
+            this.paymentmethodIDDataGridViewTextBoxColumn.DataPropertyName = "paymentmethodID";
+            this.paymentmethodIDDataGridViewTextBoxColumn.HeaderText = "paymentmethodID";
+            this.paymentmethodIDDataGridViewTextBoxColumn.Name = "paymentmethodIDDataGridViewTextBoxColumn";
+            this.paymentmethodIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // webadressDataGridViewTextBoxColumn
+            // 
+            this.webadressDataGridViewTextBoxColumn.DataPropertyName = "webadress";
+            this.webadressDataGridViewTextBoxColumn.HeaderText = "Web";
+            this.webadressDataGridViewTextBoxColumn.Name = "webadressDataGridViewTextBoxColumn";
+            this.webadressDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // paymenttermIDDataGridViewTextBoxColumn
+            // 
+            this.paymenttermIDDataGridViewTextBoxColumn.DataPropertyName = "payment_termID";
+            this.paymenttermIDDataGridViewTextBoxColumn.HeaderText = "payment_termID";
+            this.paymenttermIDDataGridViewTextBoxColumn.Name = "paymenttermIDDataGridViewTextBoxColumn";
+            this.paymenttermIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // representaryIDDataGridViewTextBoxColumn
+            // 
+            this.representaryIDDataGridViewTextBoxColumn.DataPropertyName = "representaryID";
+            this.representaryIDDataGridViewTextBoxColumn.HeaderText = "representaryID";
+            this.representaryIDDataGridViewTextBoxColumn.Name = "representaryIDDataGridViewTextBoxColumn";
+            this.representaryIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // taxofficeDataGridViewTextBoxColumn
+            // 
+            this.taxofficeDataGridViewTextBoxColumn.DataPropertyName = "taxoffice";
+            this.taxofficeDataGridViewTextBoxColumn.HeaderText = "Tax Office";
+            this.taxofficeDataGridViewTextBoxColumn.Name = "taxofficeDataGridViewTextBoxColumn";
+            this.taxofficeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // taxnumberDataGridViewTextBoxColumn
+            // 
+            this.taxnumberDataGridViewTextBoxColumn.DataPropertyName = "taxnumber";
+            this.taxnumberDataGridViewTextBoxColumn.HeaderText = "Tax Number";
+            this.taxnumberDataGridViewTextBoxColumn.Name = "taxnumberDataGridViewTextBoxColumn";
+            this.taxnumberDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // accountrepresentaryIDDataGridViewTextBoxColumn
+            // 
+            this.accountrepresentaryIDDataGridViewTextBoxColumn.DataPropertyName = "accountrepresentaryID";
+            this.accountrepresentaryIDDataGridViewTextBoxColumn.HeaderText = "accountrepresentaryID";
+            this.accountrepresentaryIDDataGridViewTextBoxColumn.Name = "accountrepresentaryIDDataGridViewTextBoxColumn";
+            this.accountrepresentaryIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // supplierNoteIDDataGridViewTextBoxColumn
+            // 
+            this.supplierNoteIDDataGridViewTextBoxColumn.DataPropertyName = "SupplierNoteID";
+            this.supplierNoteIDDataGridViewTextBoxColumn.HeaderText = "SupplierNoteID";
+            this.supplierNoteIDDataGridViewTextBoxColumn.Name = "supplierNoteIDDataGridViewTextBoxColumn";
+            this.supplierNoteIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // mainContactIDDataGridViewTextBoxColumn
+            // 
+            this.mainContactIDDataGridViewTextBoxColumn.DataPropertyName = "MainContactID";
+            this.mainContactIDDataGridViewTextBoxColumn.HeaderText = "MainContactID";
+            this.mainContactIDDataGridViewTextBoxColumn.Name = "mainContactIDDataGridViewTextBoxColumn";
+            this.mainContactIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bankIDDataGridViewTextBoxColumn
+            // 
+            this.bankIDDataGridViewTextBoxColumn.DataPropertyName = "BankID";
+            this.bankIDDataGridViewTextBoxColumn.HeaderText = "BankID";
+            this.bankIDDataGridViewTextBoxColumn.Name = "bankIDDataGridViewTextBoxColumn";
+            this.bankIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // discountrateDataGridViewTextBoxColumn
+            // 
+            this.discountrateDataGridViewTextBoxColumn.DataPropertyName = "discountrate";
+            this.discountrateDataGridViewTextBoxColumn.HeaderText = "Disc. Rate";
+            this.discountrateDataGridViewTextBoxColumn.Name = "discountrateDataGridViewTextBoxColumn";
+            this.discountrateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ibanDataGridViewTextBoxColumn
+            // 
+            this.ibanDataGridViewTextBoxColumn.DataPropertyName = "iban";
+            this.ibanDataGridViewTextBoxColumn.HeaderText = "IBAN";
+            this.ibanDataGridViewTextBoxColumn.Name = "ibanDataGridViewTextBoxColumn";
+            this.ibanDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // branchcodeDataGridViewTextBoxColumn
+            // 
+            this.branchcodeDataGridViewTextBoxColumn.DataPropertyName = "branchcode";
+            this.branchcodeDataGridViewTextBoxColumn.HeaderText = "Branch Code";
+            this.branchcodeDataGridViewTextBoxColumn.Name = "branchcodeDataGridViewTextBoxColumn";
+            this.branchcodeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // accountnumberDataGridViewTextBoxColumn
+            // 
+            this.accountnumberDataGridViewTextBoxColumn.DataPropertyName = "accountnumber";
+            this.accountnumberDataGridViewTextBoxColumn.HeaderText = "Account Number";
+            this.accountnumberDataGridViewTextBoxColumn.Name = "accountnumberDataGridViewTextBoxColumn";
+            this.accountnumberDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // categoryIDDataGridViewTextBoxColumn
+            // 
+            this.categoryIDDataGridViewTextBoxColumn.DataPropertyName = "CategoryID";
+            this.categoryIDDataGridViewTextBoxColumn.HeaderText = "CategoryID";
+            this.categoryIDDataGridViewTextBoxColumn.Name = "categoryIDDataGridViewTextBoxColumn";
+            this.categoryIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // subCategoryIDDataGridViewTextBoxColumn
+            // 
+            this.subCategoryIDDataGridViewTextBoxColumn.DataPropertyName = "SubCategoryID";
+            this.subCategoryIDDataGridViewTextBoxColumn.HeaderText = "SubCategoryID";
+            this.subCategoryIDDataGridViewTextBoxColumn.Name = "subCategoryIDDataGridViewTextBoxColumn";
+            this.subCategoryIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // defaultCurrencyDataGridViewTextBoxColumn
+            // 
+            this.defaultCurrencyDataGridViewTextBoxColumn.DataPropertyName = "DefaultCurrency";
+            this.defaultCurrencyDataGridViewTextBoxColumn.HeaderText = "Default Currency";
+            this.defaultCurrencyDataGridViewTextBoxColumn.Name = "defaultCurrencyDataGridViewTextBoxColumn";
+            this.defaultCurrencyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // supplierBankDataGridViewTextBoxColumn
+            // 
+            this.supplierBankDataGridViewTextBoxColumn.DataPropertyName = "SupplierBank";
+            this.supplierBankDataGridViewTextBoxColumn.HeaderText = "SupplierBank";
+            this.supplierBankDataGridViewTextBoxColumn.Name = "supplierBankDataGridViewTextBoxColumn";
+            this.supplierBankDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // supplierCategoryDataGridViewTextBoxColumn
+            // 
+            this.supplierCategoryDataGridViewTextBoxColumn.DataPropertyName = "SupplierCategory";
+            this.supplierCategoryDataGridViewTextBoxColumn.HeaderText = "SupplierCategory";
+            this.supplierCategoryDataGridViewTextBoxColumn.Name = "supplierCategoryDataGridViewTextBoxColumn";
+            this.supplierCategoryDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // worker1DataGridViewTextBoxColumn
+            // 
+            this.worker1DataGridViewTextBoxColumn.DataPropertyName = "Worker1";
+            this.worker1DataGridViewTextBoxColumn.HeaderText = "Worker1";
+            this.worker1DataGridViewTextBoxColumn.Name = "worker1DataGridViewTextBoxColumn";
+            this.worker1DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // supplierSubCategoryDataGridViewTextBoxColumn
+            // 
+            this.supplierSubCategoryDataGridViewTextBoxColumn.DataPropertyName = "SupplierSubCategory";
+            this.supplierSubCategoryDataGridViewTextBoxColumn.HeaderText = "SupplierSubCategory";
+            this.supplierSubCategoryDataGridViewTextBoxColumn.Name = "supplierSubCategoryDataGridViewTextBoxColumn";
+            this.supplierSubCategoryDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // supplierAddressesDataGridViewTextBoxColumn
+            // 
+            this.supplierAddressesDataGridViewTextBoxColumn.DataPropertyName = "SupplierAddresses";
+            this.supplierAddressesDataGridViewTextBoxColumn.HeaderText = "SupplierAddresses";
+            this.supplierAddressesDataGridViewTextBoxColumn.Name = "supplierAddressesDataGridViewTextBoxColumn";
+            this.supplierAddressesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // supplierWorkersDataGridViewTextBoxColumn
+            // 
+            this.supplierWorkersDataGridViewTextBoxColumn.DataPropertyName = "SupplierWorkers";
+            this.supplierWorkersDataGridViewTextBoxColumn.HeaderText = "SupplierWorkers";
+            this.supplierWorkersDataGridViewTextBoxColumn.Name = "supplierWorkersDataGridViewTextBoxColumn";
+            this.supplierWorkersDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // CemSupplierMainCem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1782,10 +1708,10 @@ namespace LoginForm
             this.tabBank.ResumeLayout(false);
             this.tabBank.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSupplier)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1893,42 +1819,18 @@ namespace LoginForm
         private System.Windows.Forms.TextBox txtExternalNumber;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.DataGridViewTextBoxColumn supplierCategorySubCategoriesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource supplierBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn snameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn telephoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn faxDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn creditlimitDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn webadressDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn taxofficeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn taxnumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn poBoxDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn discountrateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ibanDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn branchcodeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn accountnumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn currNameInvDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn currTypeInvDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn currNameQuoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn currTypeQuoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn noteDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn paymentMethodDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn paymentTermDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn paymenttermIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn representaryIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bankIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mainContactIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn supplierNoteIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn workerDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rateIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn accountrepresentaryIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn supplierBankDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn supplierMainContactDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn worker1DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn supplierAdressesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn supplierWorkersDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn paymentmethodIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnSubCategoryAdd;
         private System.Windows.Forms.Button btnMainCategoryAdd;
         private System.Windows.Forms.TextBox txtAddressTitle;
@@ -1940,5 +1842,31 @@ namespace LoginForm
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn snameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn paymentmethodIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn webadressDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn paymenttermIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn representaryIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn taxofficeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn taxnumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accountrepresentaryIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn supplierNoteIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mainContactIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bankIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn discountrateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ibanDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn branchcodeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accountnumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categoryIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subCategoryIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn defaultCurrencyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn supplierBankDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn supplierCategoryDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn worker1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn supplierSubCategoryDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn supplierAddressesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn supplierWorkersDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource supplierBindingSource;
     }
 }

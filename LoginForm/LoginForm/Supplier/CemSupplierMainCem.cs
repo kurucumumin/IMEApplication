@@ -181,6 +181,7 @@ namespace LoginForm
                                     branchcode = txtBankBranchCode.Text,
                                     accountnumber = txtBankAccountNumber.Text,
                                     iban = txtBankIban.Text,
+                                    MainContactID = ((SupplierWorker)cmbMainContact.SelectedItem).ID,
 
                                     webadress = (txtWeb.Text != String.Empty) ? txtWeb.Text : null
                                 };
@@ -236,11 +237,15 @@ namespace LoginForm
                             {
                                 SupplierAddMode = String.Empty;
                                 dgSupplier.DataSource = new IMEEntities().Suppliers.ToList();
+                                EnableGeneralInput(false);
+                                EnableAddressInput(false);
+                                EnableContactInput(false);
+
+                                btnAdd.Text = SupplierModeAdd;
+                                btnModify.Text = SupplierModeModify;
                             }
                         }
                     }
-                    break;
-                default:
                     break;
             }
         }
@@ -342,7 +347,7 @@ namespace LoginForm
 
         private void dgSupplier_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            FillSupplierInfo(dgSupplier.Rows[e.RowIndex].Cells[colID.Index].Value.ToString());
+            FillSupplierInfo(dgSupplier.Rows[e.RowIndex].Cells[iDDataGridViewTextBoxColumn.Index].Value.ToString());
         }
 
         private void FillSupplierInfo(string SupplierID)
