@@ -22,7 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>76</ApplicationRevision>
+    <ApplicationRevision>74</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -381,6 +381,12 @@
     <Compile Include="Account\Reports\frmSalesReturnReport.Designer.cs">
       <DependentUpon>frmSalesReturnReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Account\Reports\frmTaxReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Account\Reports\frmTaxReport.designer.cs">
+      <DependentUpon>frmTaxReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Account\Search\frmVoucherSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -689,6 +695,9 @@
     <Compile Include="DataSet\BalanceSheetAssets_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\BalanceSheetDifference_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\BalanceSheetLiabilities_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -846,6 +855,24 @@
     <Compile Include="DataSet\FinancialYear.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\FundFlow1_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\FundFlow2_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\FundFlow3_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\FundFlow4_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\FundFlow5_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\FundFlow6_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\GetDeleveryNoteNoIncludePendingCorrespondingtoLedgerForSI_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
@@ -955,6 +982,9 @@
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\OverduePurchaseOrdersCorrespondingAccountLedger_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\OverdueSalesOrderCorrespondingAccountLedger_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\PartyBalance.cs">
@@ -1383,7 +1413,19 @@
     <Compile Include="DataSet\Tax.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\TaxCrystalReportGridFillByBillWise_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\TaxCrystalReportGridFillByProductwise_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\TaxDetail.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\TaxReportGridFillByBillWise_Result.cs">
+      <DependentUpon>IME.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\TaxReportGridFillByProductwise_Result.cs">
       <DependentUpon>IME.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSet\TaxSearch_Result.cs">
@@ -1857,6 +1899,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Reports\frmSalesReturnReport.resx">
       <DependentUpon>frmSalesReturnReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Account\Reports\frmTaxReport.resx">
+      <DependentUpon>frmTaxReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Account\Search\frmVoucherSearch.resx">
       <DependentUpon>frmVoucherSearch.cs</DependentUpon>

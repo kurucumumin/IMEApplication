@@ -32,4 +32,3 @@ namespace LoginForm.Account.Services
 
     }
 }
-SET FMTONLY OFF;
